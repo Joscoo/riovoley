@@ -1,0 +1,126 @@
+/* src/styles/HomePage.module.css */
+
+.pageContainer {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: auto;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Fondo en video cubriendo toda la pantalla, centrado y ajustado */
+.videoBg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Bienvenida, sobre fondo, contenido arriba de video */
+.bienvenida {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* Contenedor con fondo semi-transparente */
+.welcomeContent {
+  max-width: 800px;
+  padding: 40px 30px;
+  
+  /* Fondo semi-transparente igual que en AboutUs */
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 15px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.titulo {
+  font-size: 3em;
+  margin-bottom: 20px;
+  color: #ffd700; /* dorado/amarillo */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.subtitulo {
+  font-size: 1.5em;
+  margin-bottom: 30px;
+  color: #f0f0f0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  line-height: 1.6;
+}
+
+.btn {
+  padding: 15px 30px;
+  background: linear-gradient(135deg, #ffd700 0%, #f0c14b 100%);
+  color: #000;
+  font-weight: bold;
+  border: 2px solid #ffd700;
+  border-radius: 8px;
+  margin: 10px;
+  text-decoration: none;
+  font-size: 1.2em;
+  transition: all 0.3s ease;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #f0c14b 0%, #daa520 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+}
+
+/* Responsivo */
+@media(max-width: 768px) {
+  .titulo {
+    font-size: 2.5em;
+  }
+  
+  .subtitulo {
+    font-size: 1.2em;
+  }
+  
+  .welcomeContent {
+    margin: 20px;
+    padding: 30px 20px;
+  }
+  
+  .btn {
+    font-size: 1.1em;
+    padding: 12px 25px;
+  }
+}
+
+@media(max-width: 480px) {
+  .titulo {
+    font-size: 2em;
+  }
+  
+  .subtitulo {
+    font-size: 1em;
+  }
+  
+  .welcomeContent {
+    margin: 15px;
+    padding: 25px 15px;
+  }
+}
