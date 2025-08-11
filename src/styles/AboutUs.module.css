@@ -76,7 +76,7 @@
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
-.mapContainer {
+/* .mapContainer {
   width: 100%;
   margin-top: 20px;
   text-align: center;
@@ -86,7 +86,7 @@
   color: #ffd700;
   margin-bottom: 15px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-}
+} */
 
 .mapContainer iframe {
   border-radius: 10px;
@@ -109,5 +109,227 @@
   .container {
     margin: 20px;
     padding: 30px 20px;
+  }
+}
+
+/* Agregar estos estilos al archivo existente */
+
+/* Sección de Contacto */
+.contactSection {
+  margin: 40px 0;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contactSection h3 {
+  color: #ffd700;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.contactBox {
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contactBox h4 {
+  color: #ffd700;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.phoneNumbers {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.phoneLink {
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 20px;
+  background-color: rgba(47, 128, 237, 0.2);
+  border-radius: 8px;
+  border: 1px solid rgba(47, 128, 237, 0.4);
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.phoneLink:hover {
+  background-color: rgba(47, 128, 237, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(47, 128, 237, 0.3);
+}
+
+.whatsappLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  text-decoration: none;
+  padding: 15px 25px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.whatsappLink:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+}
+
+.whatsappIcon {
+  font-size: 1.3rem;
+}
+
+/* Sección de Redes Sociales */
+.socialSection {
+  margin: 40px 0;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.socialSection h3 {
+  color: #ffd700;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.socialGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.socialLink {
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease;
+}
+
+.socialLink:hover {
+  transform: translateY(-5px);
+}
+
+.socialCard {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.socialCard:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.4);
+}
+
+.socialIcon {
+  font-size: 2.5rem;
+  min-width: 60px;
+  text-align: center;
+}
+
+.socialInfo h4 {
+  color: #ffd700;
+  margin: 0 0 5px 0;
+  font-size: 1.2rem;
+}
+
+.socialInfo p {
+  color: #fff;
+  margin: 0 0 5px 0;
+  font-weight: 600;
+}
+
+.socialDesc {
+  color: #ccc;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* Ubicación actualizada */
+.mapContainer {
+  margin: 40px 0;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mapContainer h3 {
+  color: #ffd700;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.locationInfo {
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.locationInfo p {
+  margin: 8px 0;
+  color: #f0f0f0;
+  font-size: 1.1rem;
+}
+
+.locationInfo strong {
+  color: #ffd700;
+}
+
+
+/* Responsivo */
+@media(max-width: 768px) {
+  .contactGrid, .socialGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .socialCard {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .socialIcon {
+    min-width: auto;
+  }
+  
+  .phoneNumbers {
+    gap: 8px;
+  }
+  
+  .phoneLink {
+    padding: 10px 15px;
+    font-size: 1rem;
   }
 }

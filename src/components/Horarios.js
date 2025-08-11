@@ -6,22 +6,32 @@ const Horarios = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [debugInfo, setDebugInfo] = useState('');
 
   useEffect(() => {
     const loadCalendarEvents = async () => {
       try {
         setLoading(true);
+        setDebugInfo('Iniciando conexión con Google Calendar...');
+        
         const initialized = await initializeGapi();
         
         if (initialized) {
+          setDebugInfo('API inicializada. Obteniendo eventos...');
           const calendarEvents = await getCalendarEvents();
-          setEvents(calendarEvents);
+          
+          if (calendarEvents.length > 0) {
+            setEvents(calendarEvents);
+            setDebugInfo(`Se encontraron ${calendarEvents.length} eventos`);
+          } else {
+            setDebugInfo('No se encontraron eventos en el calendario');
+          }
         } else {
-          setError('No se pudo conectar con Google Calendar');
+          setError('No se pudo conectar con Google Calendar API');
         }
       } catch (error) {
         console.error('Error loading calendar:', error);
-        setError('Error al cargar los horarios');
+        setError(`Error al cargar los horarios: ${error.message}`);
       } finally {
         setLoading(false);
       }
@@ -30,6 +40,7 @@ const Horarios = () => {
     loadCalendarEvents();
   }, []);
 
+  // Resto del componente igual...
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('es-ES', {
@@ -63,7 +74,7 @@ const Horarios = () => {
         <div className={styles.container}>
           <div className={styles.loading}>
             <h2>🔄 Cargando horarios...</h2>
-            <p>Conectando con Google Calendar</p>
+            <p>{debugInfo}</p>
           </div>
         </div>
       </div>
@@ -80,6 +91,7 @@ const Horarios = () => {
           <div className={styles.error}>
             <h2>❌ Error</h2>
             <p>{error}</p>
+            <p><small>Debug: {debugInfo}</small></p>
           </div>
         </div>
       </div>
@@ -132,6 +144,7 @@ const Horarios = () => {
           <div className={styles.noEvents}>
             <h3>📭 No hay entrenamientos programados</h3>
             <p>Los horarios se actualizarán pronto en Google Calendar.</p>
+            <p><small>Debug: {debugInfo}</small></p>
           </div>
         )}
 
