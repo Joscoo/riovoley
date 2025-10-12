@@ -1,18 +1,8 @@
 // src/components/Login.js
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { supabase, getCurrentUser } from '../config/supabase';
-
-// Función auxiliar para obtener color del rol
-const getRoleColor = (role) => {
-  const roleColors = {
-    'admin': '#dc3545',
-    'moderador': '#fd7e14',
-    'usuario': '#28a745',
-    'premium': '#6f42c1',
-    'invitado': '#6c757d'
-  };
-  return roleColors[role?.toLowerCase()] || '#17a2b8';
-};
+import { useUserProfile } from '../hooks/useUserProfile';
 
 function Login({ onLoginSuccess }) {
   const [email, setEmail] = useState('');
@@ -21,7 +11,22 @@ function Login({ onLoginSuccess }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
-  const [userProfile, setUserProfile] = useState(null);
+  const navigate = useNavigate();
+  
+  // Usar el hook para manejar el perfil
+  const { profile: userProfile, getRoleColor } = useUserProfile(user);
+
+  // Redirigir automáticamente si el usuario es administrador
+  useEffect(() => {
+    if (user && userProfile && userProfile.role?.toLowerCase() === 'administrador') {
+      // Esperar un momento para mostrar el mensaje de bienvenida
+      const timer = setTimeout(() => {
+        navigate('/admin');
+      }, 1500); // Redirigir después de 1.5 segundos
+      
+      return () => clearTimeout(timer);
+    }
+  }, [user, userProfile, navigate]);
 
   // Verificar si hay un usuario logueado al cargar el componente
   useEffect(() => {
@@ -33,18 +38,12 @@ function Login({ onLoginSuccess }) {
         setUser(session.user);
         setIsLoggedIn(true);
         
-        // Solo cargar perfil si es un evento de login, no en cada cambio
-        if (event === 'SIGNED_IN') {
-          await loadUserProfile(session.user);
-        }
-        
         // Llamar callback si se proporciona
         if (onLoginSuccess) {
           onLoginSuccess(session.user);
         }
       } else {
         setUser(null);
-        setUserProfile(null);
         setIsLoggedIn(false);
       }
     });
@@ -59,38 +58,9 @@ function Login({ onLoginSuccess }) {
       setUser(currentUser);
       setIsLoggedIn(true);
       
-      // Cargar perfil del usuario
-      await loadUserProfile(currentUser);
-      
       if (onLoginSuccess) {
         onLoginSuccess(currentUser);
       }
-    }
-  };
-
-  const loadUserProfile = async (user) => {
-    // Evitar cargar el perfil si ya está cargado para el mismo usuario
-    if (userProfile && userProfile.id === user.id) {
-      return;
-    }
-
-    try {
-      const { data, error } = await supabase
-        .from('user_profiles')
-        .select('id, role, organization_id, full_name')
-        .eq('id', user.id)
-        .single();
-
-      if (error) {
-        console.error('Error al obtener perfil:', error);
-        setUserProfile(null);
-      } else {
-        console.log('👤 Perfil cargado en Login:', data);
-        setUserProfile(data);
-      }
-    } catch (error) {
-      console.error('Error en loadUserProfile:', error);
-      setUserProfile(null);
     }
   };
 
@@ -167,7 +137,7 @@ function Login({ onLoginSuccess }) {
               <span style={{
                 ...styles.infoValue,
                 ...styles.roleTag,
-                backgroundColor: getRoleColor(userProfile?.role)
+                backgroundColor: getRoleColor()
               }}>
                 {userProfile?.role || 'Sin rol asignado'}
               </span>
@@ -183,6 +153,24 @@ function Login({ onLoginSuccess }) {
               </span>
             </div>
           </div>
+
+          {/* Mensaje especial para administradores */}
+          {userProfile?.role?.toLowerCase() === 'administrador' && (
+            <div style={styles.adminMessage}>
+              <h3 style={styles.adminTitle}>🔴 Panel de Administración</h3>
+              <p style={styles.adminText}>
+                Redirigiendo al panel de administración...
+              </p>
+              <div style={styles.adminActions}>
+                <button 
+                  onClick={() => navigate('/admin')} 
+                  style={styles.adminButton}
+                >
+                  Ir al Panel Admin
+                </button>
+              </div>
+            </div>
+          )}
           
           <button 
             onClick={handleLogout} 
@@ -385,6 +373,43 @@ const styles = {
     backgroundColor: '#d4edda',
     color: '#155724',
     border: '1px solid #c3e6cb'
+  },
+  adminMessage: {
+    backgroundColor: 'linear-gradient(135deg, #dc3545 0%, #c82333 100%)',
+    background: 'linear-gradient(135deg, #dc3545 0%, #c82333 100%)',
+    color: 'white',
+    padding: '20px',
+    borderRadius: '12px',
+    margin: '20px 0',
+    textAlign: 'center',
+    border: '2px solid #a71e2a',
+    boxShadow: '0 4px 15px rgba(220, 53, 69, 0.3)'
+  },
+  adminTitle: {
+    margin: '0 0 10px 0',
+    fontSize: '18px',
+    fontWeight: 'bold'
+  },
+  adminText: {
+    margin: '0 0 15px 0',
+    fontSize: '14px',
+    opacity: 0.9
+  },
+  adminActions: {
+    display: 'flex',
+    justifyContent: 'center'
+  },
+  adminButton: {
+    backgroundColor: 'white',
+    color: '#dc3545',
+    border: 'none',
+    padding: '10px 20px',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    fontWeight: 'bold',
+    fontSize: '14px',
+    transition: 'all 0.3s ease',
+    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
   }
 };
 

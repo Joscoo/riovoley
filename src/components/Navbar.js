@@ -6,11 +6,9 @@ import styles from '../styles/Navbar.module.css';
 // Función auxiliar para obtener color del rol
 const getRoleColor = (role) => {
   const roleColors = {
-    'admin': '#dc3545',
-    'moderador': '#fd7e14',
-    'usuario': '#28a745', 
-    'premium': '#6f42c1',
-    'invitado': '#6c757d'
+    'administrador': '#dc3545',  // Rojo para administrador
+    'entrenador': '#fd7e14',     // Naranja para entrenador
+    'usuario': '#28a745'         // Verde para usuario
   };
   return roleColors[role?.toLowerCase()] || '#17a2b8';
 };
@@ -53,6 +51,9 @@ const Navbar = ({ user, userProfile, onLogout }) => {
           <li><Link to="/">Inicio</Link></li>
           <li><Link to="/sobre">Sobre Nosotros</Link></li>
           <li><Link to="/horarios">Horarios</Link></li>
+          {userProfile?.role?.toLowerCase() === 'administrador' && (
+            <li><Link to="/admin" className={styles.adminLink}>🔴 Panel Admin</Link></li>
+          )}
         </ul>
 
         {/* Botón de login/logout para pantallas grandes */}
@@ -92,6 +93,9 @@ const Navbar = ({ user, userProfile, onLogout }) => {
         <li><Link to="/">Inicio</Link></li>
         <li><Link to="/sobre">Sobre Nosotros</Link></li>
         <li><Link to="/horarios">Horarios</Link></li>
+        {userProfile?.role?.toLowerCase() === 'administrador' && (
+          <li><Link to="/admin" className={styles.adminLink}>🔴 Panel Admin</Link></li>
+        )}
         <li>
           {user ? (
             <div className={styles.mobileUserSection}>

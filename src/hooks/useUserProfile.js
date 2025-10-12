@@ -27,7 +27,7 @@ export const useUserProfile = (user) => {
     try {
       const { data, error: profileError } = await supabase
         .from('user_profiles')
-        .select('id, role, organization_id, full_name')
+        .select('id, role, organization_id, full_name, created_at')
         .eq('id', currentUser.id)
         .single();
 
@@ -83,15 +83,15 @@ export const useUserProfile = (user) => {
     error,
     refreshProfile,
     hasRole: (role) => profile?.role?.toLowerCase() === role?.toLowerCase(),
-    isAdmin: () => profile?.role?.toLowerCase() === 'admin',
-    isModerator: () => ['admin', 'moderador'].includes(profile?.role?.toLowerCase()),
+    isAdmin: () => profile?.role?.toLowerCase() === 'administrador',
+    isModerator: () => ['administrador', 'entrenador'].includes(profile?.role?.toLowerCase()),
+    isCoach: () => profile?.role?.toLowerCase() === 'entrenador',
+    isUser: () => profile?.role?.toLowerCase() === 'usuario',
     getRoleColor: () => {
       const roleColors = {
-        'admin': '#dc3545',
-        'moderador': '#fd7e14', 
-        'usuario': '#28a745',
-        'premium': '#6f42c1',
-        'invitado': '#6c757d'
+        'administrador': '#dc3545',  // Rojo para administrador
+        'entrenador': '#fd7e14',     // Naranja para entrenador  
+        'usuario': '#28a745'         // Verde para usuario
       };
       return roleColors[profile?.role?.toLowerCase()] || '#17a2b8';
     }

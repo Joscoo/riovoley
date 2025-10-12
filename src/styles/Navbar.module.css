@@ -83,6 +83,23 @@
   color: #ffd700; /* Solo cambio de color al hacer hover */
 }
 
+/* Estilo especial para el enlace del panel de admin */
+.adminLink {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
+  color: white !important;
+  font-weight: 700 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+.adminLink:hover {
+  background: linear-gradient(135deg, #c82333 0%, #a71e2a 100%) !important;
+  color: white !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4) !important;
+}
+
 /* Botón de inicio de sesión en pantallas grandes - MANTENER EFECTOS */
 .loginButton {
   padding: 12px 20px;
