@@ -5,6 +5,7 @@ import Dashboard from './Dashboard';
 import AtletasManager from './AtletasManager';
 import PagosManager from './PagosManager';
 import AsistenciasManager from './AsistenciasManager';
+import TestsFisicosManager from './TestsFisicosManager';
 import styles from '../../styles/AdminPanel.module.css';
 
 const AdminPanel = ({ user }) => {
@@ -34,7 +35,8 @@ const AdminPanel = ({ user }) => {
     { id: 'dashboard', icon: '📊', label: 'Dashboard', description: 'Resumen y estadísticas' },
     { id: 'atletas', icon: '🏐', label: 'Atletas', description: 'Gestionar deportistas' },
     { id: 'pagos', icon: '💰', label: 'Pagos', description: 'Mensualidades y facturación' },
-    { id: 'asistencias', icon: '📅', label: 'Asistencias', description: 'Control de entrenamientos' }
+    { id: 'asistencias', icon: '📅', label: 'Asistencias', description: 'Control de entrenamientos' },
+    { id: 'tests-fisicos', icon: '🏋️', label: 'Tests Físicos', description: 'Evaluaciones físicas' }
   ];
 
   const renderActiveSection = () => {
@@ -47,6 +49,8 @@ const AdminPanel = ({ user }) => {
         return <PagosManager user={user} />;
       case 'asistencias':
         return <AsistenciasManager user={user} />;
+      case 'tests-fisicos':
+        return <TestsFisicosManager user={user} />;
       default:
         return <Dashboard user={user} />;
     }

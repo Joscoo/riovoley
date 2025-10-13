@@ -490,7 +490,7 @@ const AtletasManager = ({ user }) => {
                       type="tel"
                       value={formData.telefono}
                       onChange={(e) => setFormData({...formData, telefono: e.target.value})}
-                      placeholder="+54 9 11 xxxx-xxxx"
+                      placeholder="09xxxxxxxx"
                     />
                   </div>
                   
