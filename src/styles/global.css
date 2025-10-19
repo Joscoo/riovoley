@@ -1,17 +1,75 @@
 /* src/styles/global.css */
+
+/* Reset básico y configuración base */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   padding-top: 60px; /* debe ser igual a la altura de la navbar */
   background-color: #fff;
   color: #000;
+  /* Mejorar experiencia táctil */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Permitir selección de texto donde sea apropiado */
+input, textarea, [contenteditable] {
+  -webkit-user-select: auto;
+  user-select: auto;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+  /* Mejorar área táctil */
+  touch-action: manipulation;
 }
+
 button {
   cursor: pointer;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  /* Mejorar respuesta táctil */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Estilos responsivos globales */
+@media (max-width: 768px) {
+  body {
+    padding-top: 65px; /* Altura aumentada del navbar móvil */
+  }
+  
+  /* Asegurar que los botones tengan tamaño mínimo táctil */
+  button, .button, input[type="button"], input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Mejorar los elementos de formulario en móvil */
+  input, select, textarea {
+    font-size: 16px; /* Evitar zoom en iOS */
+    min-height: 44px;
+  }
+  
+  /* Mejorar los elementos clickeables */
+  a, button, [role="button"], [tabindex="0"] {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Asegurar padding apropiado en pantallas muy pequeñas */
+  .container, .main-content {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }

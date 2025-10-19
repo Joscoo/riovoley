@@ -159,7 +159,7 @@
   gap: 0.5rem;
 }
 
-.editButton, .deleteButton {
+.editButton, .emailButton, .deleteButton {
   background: none;
   border: none;
   padding: 0.5rem;
@@ -175,6 +175,15 @@
 
 .editButton:hover {
   background: rgba(32, 201, 151, 0.4);
+  transform: scale(1.1);
+}
+
+.emailButton {
+  background: rgba(0, 123, 255, 0.2);
+}
+
+.emailButton:hover {
+  background: rgba(0, 123, 255, 0.4);
   transform: scale(1.1);
 }
 
@@ -483,5 +492,47 @@
   .modal {
     width: 95%;
     margin: 1rem;
+  }
+}
+
+/* Contenedor de botones del header */
+.headerButtons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Botón de limpieza de base de datos */
+.cleanButton {
+  background: linear-gradient(45deg, #ffc107, #fd7e14);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+  transition: all 0.3s ease;
+}
+
+.cleanButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
+  background: linear-gradient(45deg, #e0a800, #e8690b);
+}
+
+/* Responsive para botones */
+@media (max-width: 768px) {
+  .headerButtons {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  
+  .cleanButton,
+  .addButton {
+    width: 100%;
+    text-align: center;
   }
 }

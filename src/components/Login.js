@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase, getCurrentUser } from '../config/supabase';
 import { useUserProfile } from '../hooks/useUserProfile';
+import ChangePasswordModal from './ChangePasswordModal';
 
 function Login({ onLoginSuccess }) {
   const [email, setEmail] = useState('');
@@ -11,6 +12,8 @@ function Login({ onLoginSuccess }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
+  const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
+  const [userNeedsPasswordChange, setUserNeedsPasswordChange] = useState(null);
   const navigate = useNavigate();
   
   // Usar el hook para manejar el perfil
@@ -64,6 +67,36 @@ function Login({ onLoginSuccess }) {
     }
   };
 
+  const checkFirstLogin = async (email) => {
+    try {
+      // Consultar la tabla users para verificar si es primer login
+      const { data: userData, error } = await supabase
+        .from('users')
+        .select('id, first_login, nombre, apellido')
+        .eq('email', email)
+        .single();
+
+      if (error) {
+        console.error('Error verificando first_login:', error);
+        return;
+      }
+
+      if (userData && userData.first_login) {
+        // Mostrar modal de cambio de contraseña
+        setUserNeedsPasswordChange(userData);
+        setShowChangePasswordModal(true);
+      }
+    } catch (error) {
+      console.error('Error en checkFirstLogin:', error);
+    }
+  };
+
+  const handlePasswordChanged = () => {
+    setShowChangePasswordModal(false);
+    setUserNeedsPasswordChange(null);
+    setMensaje('✅ ¡Contraseña actualizada correctamente! Ya puedes usar la plataforma.');
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -90,6 +123,9 @@ function Login({ onLoginSuccess }) {
           setMensaje('Error al iniciar sesión: ' + error.message);
         }
       } else {
+        // Verificar si el usuario necesita cambiar la contraseña
+        await checkFirstLogin(email.trim());
+        
         setMensaje('¡Inicio de sesión exitoso!');
         // Limpiar formulario
         setEmail('');
@@ -241,6 +277,14 @@ function Login({ onLoginSuccess }) {
           </div>
         )}
       </div>
+      
+      {/* Modal de cambio de contraseña obligatorio */}
+      {showChangePasswordModal && userNeedsPasswordChange && (
+        <ChangePasswordModal
+          user={userNeedsPasswordChange}
+          onPasswordChanged={handlePasswordChanged}
+        />
+      )}
     </div>
   );
 }

@@ -1,6 +1,8 @@
 // src/components/admin/AtletasManager.js
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../../config/supabase';
+import { generateTemporaryPassword } from '../../utils/passwordUtils';
+import { EmailService } from '../../services/emailService';
 import styles from '../../styles/AtletasManager.module.css';
 
 const AtletasManager = ({ user }) => {
@@ -45,14 +47,20 @@ const AtletasManager = ({ user }) => {
       let query = supabase
         .from('students')
         .select(`
-          *,
+          id,
+          user_id,
+          categoria,
+          altura,
+          peso,
+          fecha_nacimiento,
           users!inner(
             id,
             email,
             nombre,
             apellido,
             telefono,
-            role
+            role,
+            created_at
           )
         `);
 
@@ -142,7 +150,19 @@ const AtletasManager = ({ user }) => {
       loadAtletas();
     } catch (error) {
       console.error('Error guardando atleta:', error);
-      alert('Error: ' + error.message);
+      
+      // Mejorar mensajes de error para casos específicos
+      let errorMessage = error.message;
+      
+      if (error.message.includes('duplicate key value violates unique constraint "users_email_key"')) {
+        errorMessage = `❌ El email "${formData.email}" ya está registrado. Por favor usa un email diferente.`;
+      } else if (error.message.includes('ya está registrado')) {
+        errorMessage = `❌ ${error.message}`;
+      } else if (error.message.includes('El email') && error.message.includes('requerido')) {
+        errorMessage = `❌ ${error.message}`;
+      }
+      
+      alert(errorMessage);
     }
   };
 
@@ -150,6 +170,22 @@ const AtletasManager = ({ user }) => {
     // Validar que se haya ingresado email (requerido para crear usuario)
     if (!formData.email || !formData.email.trim()) {
       throw new Error('El email es requerido para crear el usuario');
+    }
+
+    // Verificar si el email ya existe
+    const { data: existingUser, error: checkError } = await supabase
+      .from('users')
+      .select('email')
+      .eq('email', formData.email.trim())
+      .single();
+
+    if (checkError && checkError.code !== 'PGRST116') {
+      // PGRST116 significa "no rows returned" (no existe el usuario)
+      throw new Error(`Error verificando email: ${checkError.message}`);
+    }
+
+    if (existingUser) {
+      throw new Error(`El email "${formData.email}" ya está registrado. Por favor usa un email diferente.`);
     }
 
     // Paso 1: Crear usuario en public.users (no en auth.users por RLS)
@@ -230,19 +266,146 @@ const AtletasManager = ({ user }) => {
     }
 
     try {
-      // Eliminar el atleta (esto también eliminará el usuario por CASCADE)
-      const { error } = await supabase
+      console.log('🗑️ Eliminando atleta:', atleta);
+      
+      // Paso 1: Eliminar el registro del atleta en students
+      const { error: studentError } = await supabase
         .from('students')
         .delete()
         .eq('id', atleta.id);
 
-      if (error) throw error;
+      if (studentError) {
+        throw new Error(`Error eliminando estudiante: ${studentError.message}`);
+      }
+
+      console.log('✅ Atleta eliminado de students');
+
+      // Paso 2: Eliminar el usuario relacionado si existe
+      if (atleta.user_id) {
+        console.log('🗑️ Eliminando usuario con ID:', atleta.user_id);
+        
+        const { error: userError } = await supabase
+          .from('users')
+          .delete()
+          .eq('id', atleta.user_id);
+
+        if (userError) {
+          console.warn('⚠️ Error eliminando usuario:', userError.message);
+          // No lanzamos error aquí para no fallar toda la operación
+        } else {
+          console.log('✅ Usuario eliminado exitosamente');
+        }
+      } else {
+        console.log('ℹ️ No hay user_id asociado para eliminar');
+      }
 
       loadAtletas();
-      alert('Atleta eliminado exitosamente');
+      alert('✅ Atleta y usuario eliminados exitosamente');
     } catch (error) {
-      console.error('Error eliminando atleta:', error);
-      alert('Error: ' + error.message);
+      console.error('❌ Error eliminando atleta:', error);
+      alert('❌ Error: ' + error.message);
+    }
+  };
+
+  // Función para reenviar credenciales por email
+  const resendCredentials = async (atleta) => {
+    try {
+      console.log('📧 Reenviando credenciales para:', atleta.full_name);
+      
+      // Preparar datos del usuario
+      const userData = {
+        id: atleta.user_id,
+        email: atleta.users.email,
+        nombre: atleta.users.nombre,
+        apellido: atleta.users.apellido,
+        full_name: `${atleta.users.nombre} ${atleta.users.apellido}`.trim(),
+        // Generar nueva contraseña temporal
+        password: generateTemporaryPassword()
+      };
+
+      console.log('👤 Datos del usuario:', { 
+        email: userData.email, 
+        nombre: userData.nombre,
+        apellido: userData.apellido 
+      });
+
+      // Actualizar la contraseña en la base de datos
+      const { error: passwordError } = await supabase
+        .from('users')
+        .update({ 
+          password: userData.password,
+          first_login: true // Marcar para que cambie la contraseña
+        })
+        .eq('id', atleta.user_id);
+
+      if (passwordError) {
+        throw new Error(`Error actualizando contraseña: ${passwordError.message}`);
+      }
+
+      console.log('🔑 Contraseña actualizada en la base de datos');
+
+      // Enviar email con las nuevas credenciales
+      const emailResult = await EmailService.sendCredentials(userData);
+      
+      if (emailResult.success) {
+        alert(`✅ Credenciales enviadas exitosamente a ${userData.email}`);
+      } else {
+        console.warn('⚠️ El email no se pudo enviar, pero se mostró el modal con las credenciales');
+      }
+    } catch (error) {
+      console.error('❌ Error reenviando credenciales:', error);
+      alert('❌ Error: ' + error.message);
+    }
+  };
+
+  // Función utilitaria para limpiar usuarios huérfanos (opcional)
+  const cleanOrphanUsers = async () => {
+    if (!window.confirm('¿Deseas limpiar usuarios que ya no tienen atletas asociados? Esta acción no se puede deshacer.')) {
+      return;
+    }
+
+    try {
+      console.log('🧹 Limpiando usuarios huérfanos...');
+      
+      // Obtener todos los user_ids que están en students
+      const { data: studentsUserIds, error: studentsError } = await supabase
+        .from('students')
+        .select('user_id');
+
+      if (studentsError) throw studentsError;
+
+      const activeUserIds = studentsUserIds.map(s => s.user_id).filter(Boolean);
+
+      // Obtener usuarios con role 'estudiante' que no están en la lista de activos
+      const { data: orphanUsers, error: usersError } = await supabase
+        .from('users')
+        .select('id, email, nombre, apellido')
+        .eq('role', 'estudiante')
+        .not('id', 'in', `(${activeUserIds.join(',')})`);
+
+      if (usersError) throw usersError;
+
+      if (orphanUsers.length === 0) {
+        alert('✅ No se encontraron usuarios huérfanos');
+        return;
+      }
+
+      console.log('👻 Usuarios huérfanos encontrados:', orphanUsers);
+
+      // Eliminar usuarios huérfanos
+      const { error: deleteError } = await supabase
+        .from('users')
+        .delete()
+        .eq('role', 'estudiante')
+        .not('id', 'in', `(${activeUserIds.join(',')})`);
+
+      if (deleteError) throw deleteError;
+
+      alert(`✅ Se eliminaron ${orphanUsers.length} usuarios huérfanos`);
+      console.log('🧹 Limpieza completada');
+    } catch (error) {
+      console.error('❌ Error limpiando usuarios huérfanos:', error);
+      alert('❌ Error: ' + error.message);
     }
   };
 
@@ -283,15 +446,42 @@ const AtletasManager = ({ user }) => {
 
   const calculateAge = (birthDate) => {
     if (!birthDate) return '--';
-    const today = new Date();
-    const birth = new Date(birthDate);
-    const age = today.getFullYear() - birth.getFullYear();
-    const monthDiff = today.getMonth() - birth.getMonth();
     
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
-      return age - 1;
+    try {
+      const today = new Date();
+      const birth = new Date(birthDate);
+      
+      // Verificar si la fecha es válida
+      if (isNaN(birth.getTime())) {
+        return '--';
+      }
+      
+      const age = today.getFullYear() - birth.getFullYear();
+      const monthDiff = today.getMonth() - birth.getMonth();
+      
+      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+        return age - 1;
+      }
+      return age;
+    } catch (error) {
+      console.warn('Error calculando edad:', error);
+      return '--';
     }
-    return age;
+  };
+
+  const formatIngresoDate = (atleta) => {
+    try {
+      if (atleta.users?.created_at) {
+        const date = new Date(atleta.users.created_at);
+        // Verificar si la fecha es válida
+        if (!isNaN(date.getTime())) {
+          return date.toLocaleDateString();
+        }
+      }
+    } catch (error) {
+      console.warn('Error formateando fecha de ingreso:', error);
+    }
+    return 'No registrado';
   };
 
   const formatCategoria = (categoria) => {
@@ -306,12 +496,21 @@ const AtletasManager = ({ user }) => {
           <h2>🏐 Gestión de Atletas</h2>
           <p>Administrar deportistas del club</p>
         </div>
-        <button 
-          className={styles.addButton}
-          onClick={() => openModal()}
-        >
-          ➕ Agregar Atleta
-        </button>
+        <div className={styles.headerButtons}>
+          <button 
+            className={styles.addButton}
+            onClick={() => openModal()}
+          >
+            ➕ Agregar Atleta
+          </button>
+          <button 
+            className={styles.cleanButton}
+            onClick={cleanOrphanUsers}
+            title="Limpiar usuarios sin atletas asociados"
+          >
+            🧹 Limpiar DB
+          </button>
+        </div>
       </div>
 
       {/* Filtros */}
@@ -364,6 +563,13 @@ const AtletasManager = ({ user }) => {
                       ✏️
                     </button>
                     <button 
+                      onClick={() => resendCredentials(atleta)}
+                      className={styles.emailButton}
+                      title="Reenviar credenciales por email"
+                    >
+                      📧
+                    </button>
+                    <button 
                       onClick={() => deleteAtleta(atleta)}
                       className={styles.deleteButton}
                       title="Eliminar"
@@ -413,7 +619,7 @@ const AtletasManager = ({ user }) => {
                 
                 <div className={styles.atletaFooter}>
                   <small>
-                    Ingreso: {new Date(atleta.fecha_ingreso).toLocaleDateString()}
+                    Ingreso: {formatIngresoDate(atleta)}
                   </small>
                 </div>
               </div>

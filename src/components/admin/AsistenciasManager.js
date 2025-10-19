@@ -1,5 +1,6 @@
 // src/components/admin/AsistenciasManager.js
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/AsistenciasManager.module.css';
 
@@ -7,7 +8,6 @@ const AsistenciasManager = ({ user }) => {
   const [asistencias, setAsistencias] = useState([]);
   const [atletas, setAtletas] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [showModal, setShowModal] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
   const [filters, setFilters] = useState({
     fecha_inicio: new Date(new Date().setDate(new Date().getDate() - 7)).toISOString().split('T')[0],
@@ -51,17 +51,10 @@ const AsistenciasManager = ({ user }) => {
       if (atletasError) throw atletasError;
       setAtletas(atletasData || []);
 
-      // Cargar asistencias con filtros
+      // Cargar asistencias con filtros - Estrategia separada para evitar problemas de JOIN
       let query = supabase
-        .from('attendance')
-        .select(`
-          *,
-          student:students(
-            id,
-            categoria,
-            user:users(id, nombre, apellido, email)
-          )
-        `)
+        .from('attendances')
+        .select('*')
         .order('fecha', { ascending: false });
 
       // Aplicar filtros de fecha
@@ -87,10 +80,31 @@ const AsistenciasManager = ({ user }) => {
         query = query.eq('student_id', filters.atleta);
       }
 
-      const { data: asistenciasData, error: asistenciasError } = await query;
+      const { data: asistenciasRaw, error: asistenciasError } = await query;
 
       if (asistenciasError) throw asistenciasError;
-      setAsistencias(asistenciasData || []);
+
+      // Combinar asistencias con datos de estudiantes
+      const asistenciasWithDetails = await Promise.all(
+        (asistenciasRaw || []).map(async (asistencia) => {
+          const { data: student } = await supabase
+            .from('students')
+            .select(`
+              id,
+              categoria,
+              users!inner(id, nombre, apellido, email)
+            `)
+            .eq('id', asistencia.student_id)
+            .single();
+
+          return {
+            ...asistencia,
+            students: student
+          };
+        })
+      );
+
+      setAsistencias(asistenciasWithDetails);
 
     } catch (error) {
       console.error('Error cargando datos:', error);
@@ -103,16 +117,9 @@ const AsistenciasManager = ({ user }) => {
   const loadTodayAttendance = async () => {
     try {
       // Cargar asistencias del día seleccionado
-      const { data, error } = await supabase
-        .from('attendance')
-        .select(`
-          *,
-          student:students(
-            id,
-            categoria,
-            user:users(id, nombre, apellido, email)
-          )
-        `)
+      const { data: rawAttendance, error } = await supabase
+        .from('attendances')
+        .select('*')
         .eq('fecha', selectedDate)
         .order('fecha', { ascending: false });
 
@@ -120,7 +127,7 @@ const AsistenciasManager = ({ user }) => {
 
       // Crear mapa de asistencias por atleta
       const attendanceMap = {};
-      (data || []).forEach(attendance => {
+      (rawAttendance || []).forEach(attendance => {
         attendanceMap[attendance.student_id] = attendance;
       });
 
@@ -136,38 +143,24 @@ const AsistenciasManager = ({ user }) => {
     }
   };
 
-  const toggleAttendance = async (atletaId, currentStatus) => {
+  const toggleAttendance = async (atletaId, isCurrentlyPresent) => {
     try {
-      const newStatus = currentStatus === 'presente' ? 'ausente' : 'presente';
-      
-      // Buscar si ya existe una asistencia para este día
-      const { data: existing, error: findError } = await supabase
-        .from('attendance')
-        .select('*')
-        .eq('student_id', atletaId)
-        .eq('fecha', selectedDate)
-        .single();
-
-      if (findError && findError.code !== 'PGRST116') { // PGRST116 = no rows found
-        throw findError;
-      }
-
-      if (existing) {
-        // Actualizar existente
+      if (isCurrentlyPresent) {
+        // Si está presente, eliminar el registro (marcar como ausente)
         const { error } = await supabase
-          .from('attendance')
-          .update({ status: newStatus })
-          .eq('id', existing.id);
+          .from('attendances')
+          .delete()
+          .eq('student_id', atletaId)
+          .eq('fecha', selectedDate);
 
         if (error) throw error;
       } else {
-        // Crear nueva asistencia
+        // Si está ausente, crear registro (marcar como presente)
         const { error } = await supabase
-          .from('attendance')
+          .from('attendances')
           .insert({
             student_id: atletaId,
-            fecha: selectedDate,
-            status: newStatus
+            fecha: selectedDate
           });
 
         if (error) throw error;
@@ -188,7 +181,10 @@ const AsistenciasManager = ({ user }) => {
 
     try {
       for (const atleta of todayAttendance) {
-        await toggleAttendance(atleta.id, 'ausente'); // Esto los marcará como presentes
+        const isCurrentlyPresent = atleta.attendance !== null;
+        if (!isCurrentlyPresent) {
+          await toggleAttendance(atleta.id, false); // Marcar como presente
+        }
       }
       alert('Todos los atletas marcados como presentes');
     } catch (error) {
@@ -204,7 +200,7 @@ const AsistenciasManager = ({ user }) => {
 
     try {
       const { error } = await supabase
-        .from('attendance')
+        .from('attendances')
         .delete()
         .eq('fecha', selectedDate);
 
@@ -220,19 +216,21 @@ const AsistenciasManager = ({ user }) => {
   };
 
   const calculateStats = () => {
-    const total = asistencias.length;
-    const presentes = asistencias.filter(a => a.status === 'presente').length;
-    const ausentes = asistencias.filter(a => a.status === 'ausente').length;
-    const porcentajeAsistencia = total > 0 ? ((presentes / total) * 100).toFixed(1) : 0;
+    // En la nueva lógica, solo tenemos registros de presentes
+    const totalPresentes = asistencias.length; // Todos los registros son presencias
+    const totalAtletas = atletas.length;
+    const ausentes = totalAtletas > 0 ? totalAtletas - totalPresentes : 0; // Estimación basada en total de atletas
+    const porcentajeAsistencia = totalAtletas > 0 ? ((totalPresentes / totalAtletas) * 100).toFixed(1) : 0;
 
     // Estadísticas por categoría
     const categoriaStats = {};
     categorias.forEach(cat => {
-      const catAsistencias = asistencias.filter(a => 
-        a.student?.categoria === cat
+      const atletasCategoria = atletas.filter(a => a.categoria === cat);
+      const asistenciasCategoria = asistencias.filter(a => 
+        a.students?.categoria === cat
       );
-      const catPresentes = catAsistencias.filter(a => a.status === 'presente').length;
-      const catTotal = catAsistencias.length;
+      const catTotal = atletasCategoria.length;
+      const catPresentes = asistenciasCategoria.length;
       
       categoriaStats[cat] = {
         total: catTotal,
@@ -241,7 +239,13 @@ const AsistenciasManager = ({ user }) => {
       };
     });
 
-    return { total, presentes, ausentes, porcentajeAsistencia, categoriaStats };
+    return { 
+      total: totalAtletas, 
+      presentes: totalPresentes, 
+      ausentes, 
+      porcentajeAsistencia, 
+      categoriaStats 
+    };
   };
 
   const formatCategoria = (categoria) => {
@@ -301,8 +305,8 @@ const AsistenciasManager = ({ user }) => {
       </div>
 
       {bulkMode ? (
-        /* Modo de Registro Rápido */
-        <div className={styles.bulkAttendance}>
+        /* Modo de Registro por Categorías */
+        <div className={styles.categoryAttendance}>
           <div className={styles.bulkHeader}>
             <div className={styles.dateSelector}>
               <label htmlFor="attendance-date">Fecha de Entrenamiento:</label>
@@ -325,29 +329,170 @@ const AsistenciasManager = ({ user }) => {
             </div>
           </div>
 
-          <div className={styles.attendanceGrid}>
-            {todayAttendance.map(atleta => {
-              const isPresent = atleta.attendance?.status === 'presente';
-              return (
-                <div key={atleta.id} className={styles.atletaAttendance}>
-                  <div className={styles.atletaInfo}>
-                    <h4>{atleta.users?.nombre} {atleta.users?.apellido}</h4>
-                    <span className={styles.categoria}>
-                      {formatCategoria(atleta.categoria)}
-                    </span>
+          {/* Registro por Categorías */}
+          <div className={styles.categorySections}>
+            {/* Iniciación */}
+            <div className={styles.categorySection}>
+              <h3 className={styles.categoryTitle}>
+                🏐 Iniciación
+                <span className={styles.categoryCount}>
+                  {todayAttendance.filter(a => a.categoria?.includes('iniciacion')).length} atletas
+                </span>
+              </h3>
+              <div className={styles.categorySubGrid}>
+                <div className={styles.subCategory}>
+                  <h4>👨 Hombres</h4>
+                  <div className={styles.atletasList}>
+                    {todayAttendance
+                      .filter(atleta => atleta.categoria === 'iniciacion_hombres')
+                      .map(atleta => {
+                        const isPresent = atleta.attendance !== null;
+                        return (
+                          <div key={atleta.id} className={styles.atletaItem}>
+                            <span className={styles.atletaName}>
+                              {atleta.users?.nombre} {atleta.users?.apellido}
+                            </span>
+                            <button
+                              onClick={() => toggleAttendance(atleta.id, isPresent)}
+                              className={`${styles.attendanceToggle} ${
+                                isPresent ? styles.present : styles.absent
+                              }`}
+                            >
+                              {isPresent ? '✅' : '❌'}
+                            </button>
+                          </div>
+                        );
+                      })}
                   </div>
-                  
-                  <button
-                    onClick={() => toggleAttendance(atleta.id, atleta.attendance?.status)}
-                    className={`${styles.attendanceButton} ${
-                      isPresent ? styles.present : styles.absent
-                    }`}
-                  >
-                    {isPresent ? '✅ Presente' : '❌ Ausente'}
-                  </button>
                 </div>
-              );
-            })}
+                
+                <div className={styles.subCategory}>
+                  <h4>👩 Mujeres</h4>
+                  <div className={styles.atletasList}>
+                    {todayAttendance
+                      .filter(atleta => atleta.categoria === 'iniciacion_mujeres')
+                      .map(atleta => {
+                        const isPresent = atleta.attendance !== null;
+                        return (
+                          <div key={atleta.id} className={styles.atletaItem}>
+                            <span className={styles.atletaName}>
+                              {atleta.users?.nombre} {atleta.users?.apellido}
+                            </span>
+                            <button
+                              onClick={() => toggleAttendance(atleta.id, isPresent)}
+                              className={`${styles.attendanceToggle} ${
+                                isPresent ? styles.present : styles.absent
+                              }`}
+                            >
+                              {isPresent ? '✅' : '❌'}
+                            </button>
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Perfeccionamiento */}
+            <div className={styles.categorySection}>
+              <h3 className={styles.categoryTitle}>
+                🏆 Perfeccionamiento
+                <span className={styles.categoryCount}>
+                  {todayAttendance.filter(a => a.categoria?.includes('perfeccionamiento')).length} atletas
+                </span>
+              </h3>
+              <div className={styles.categorySubGrid}>
+                <div className={styles.subCategory}>
+                  <h4>👨 Hombres</h4>
+                  <div className={styles.atletasList}>
+                    {todayAttendance
+                      .filter(atleta => atleta.categoria === 'perfeccionamiento_hombres')
+                      .map(atleta => {
+                        const isPresent = atleta.attendance !== null;
+                        return (
+                          <div key={atleta.id} className={styles.atletaItem}>
+                            <span className={styles.atletaName}>
+                              {atleta.users?.nombre} {atleta.users?.apellido}
+                            </span>
+                            <button
+                              onClick={() => toggleAttendance(atleta.id, isPresent)}
+                              className={`${styles.attendanceToggle} ${
+                                isPresent ? styles.present : styles.absent
+                              }`}
+                            >
+                              {isPresent ? '✅' : '❌'}
+                            </button>
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+                
+                <div className={styles.subCategory}>
+                  <h4>👩 Mujeres</h4>
+                  <div className={styles.atletasList}>
+                    {todayAttendance
+                      .filter(atleta => atleta.categoria === 'perfeccionamiento_mujeres')
+                      .map(atleta => {
+                        const isPresent = atleta.attendance !== null;
+                        return (
+                          <div key={atleta.id} className={styles.atletaItem}>
+                            <span className={styles.atletaName}>
+                              {atleta.users?.nombre} {atleta.users?.apellido}
+                            </span>
+                            <button
+                              onClick={() => toggleAttendance(atleta.id, isPresent)}
+                              className={`${styles.attendanceToggle} ${
+                                isPresent ? styles.present : styles.absent
+                              }`}
+                            >
+                              {isPresent ? '✅' : '❌'}
+                            </button>
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Master */}
+            <div className={styles.categorySection}>
+              <h3 className={styles.categoryTitle}>
+                🥇 Master
+                <span className={styles.categoryCount}>
+                  {todayAttendance.filter(a => a.categoria?.includes('master')).length} atletas
+                </span>
+              </h3>
+              <div className={styles.categorySubGrid}>
+                <div className={styles.subCategory}>
+                  <h4>👩 Mujeres</h4>
+                  <div className={styles.atletasList}>
+                    {todayAttendance
+                      .filter(atleta => atleta.categoria === 'master_mujeres')
+                      .map(atleta => {
+                        const isPresent = atleta.attendance !== null;
+                        return (
+                          <div key={atleta.id} className={styles.atletaItem}>
+                            <span className={styles.atletaName}>
+                              {atleta.users?.nombre} {atleta.users?.apellido}
+                            </span>
+                            <button
+                              onClick={() => toggleAttendance(atleta.id, isPresent)}
+                              className={`${styles.attendanceToggle} ${
+                                isPresent ? styles.present : styles.absent
+                              }`}
+                            >
+                              {isPresent ? '✅' : '❌'}
+                            </button>
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       ) : (
@@ -459,18 +604,14 @@ const AsistenciasManager = ({ user }) => {
                           <td>{new Date(asistencia.fecha).toLocaleDateString()}</td>
                           <td>
                             <div className={styles.atletaCell}>
-                              <strong>{asistencia.student?.user?.nombre} {asistencia.student?.user?.apellido}</strong>
-                              <small>{asistencia.student?.user?.email}</small>
+                              <strong>{asistencia.students?.users?.nombre} {asistencia.students?.users?.apellido}</strong>
+                              <small>{asistencia.students?.users?.email}</small>
                             </div>
                           </td>
-                          <td>{formatCategoria(asistencia.student?.categoria)}</td>
+                          <td>{formatCategoria(asistencia.students?.categoria)}</td>
                           <td>
-                            <span 
-                              className={`${styles.statusBadge} ${
-                                asistencia.status === 'presente' ? styles.present : styles.absent
-                              }`}
-                            >
-                              {asistencia.status === 'presente' ? '✅ Presente' : '❌ Ausente'}
+                            <span className={`${styles.statusBadge} ${styles.present}`}>
+                              ✅ Presente
                             </span>
                           </td>
                         </tr>
@@ -490,6 +631,10 @@ const AsistenciasManager = ({ user }) => {
       )}
     </div>
   );
+};
+
+AsistenciasManager.propTypes = {
+  user: PropTypes.object
 };
 
 export default AsistenciasManager;

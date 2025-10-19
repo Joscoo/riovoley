@@ -1,5 +1,6 @@
 // src/components/admin/AdminPanel.js
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useUserProfile } from '../../hooks/useUserProfile';
 import Dashboard from './Dashboard';
 import AtletasManager from './AtletasManager';
@@ -39,10 +40,14 @@ const AdminPanel = ({ user }) => {
     { id: 'tests-fisicos', icon: '🏋️', label: 'Tests Físicos', description: 'Evaluaciones físicas' }
   ];
 
+  const handleNavigateToSection = (sectionId) => {
+    setActiveSection(sectionId);
+  };
+
   const renderActiveSection = () => {
     switch (activeSection) {
       case 'dashboard':
-        return <Dashboard user={user} />;
+        return <Dashboard user={user} onNavigateToSection={handleNavigateToSection} />;
       case 'atletas':
         return <AtletasManager user={user} />;
       case 'pagos':
@@ -127,6 +132,13 @@ const AdminPanel = ({ user }) => {
       </div>
     </div>
   );
+};
+
+AdminPanel.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.string,
+    email: PropTypes.string
+  })
 };
 
 export default AdminPanel;

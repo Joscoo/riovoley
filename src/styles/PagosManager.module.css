@@ -316,23 +316,27 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
   backdrop-filter: blur(5px);
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .modal {
   background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
   border-radius: 15px;
-  width: 90%;
-  max-width: 600px;
-  max-height: 90vh;
-  overflow-y: auto;
+  width: 100%;
+  max-width: 700px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
 }
 
 .modalHeader {
@@ -343,6 +347,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px 15px 0 0;
+  flex-shrink: 0;
 }
 
 .modalHeader h3 {
@@ -369,14 +374,38 @@
 
 /* Formulario */
 .form {
-  padding: 2rem;
+  padding: 1.5rem 2rem 2rem;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+}
+
+.form::-webkit-scrollbar {
+  width: 6px;
+}
+
+.form::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.form::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.form::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .formGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  flex: 1;
 }
 
 .inputGroup {
@@ -404,6 +433,8 @@
   font-size: 1rem;
   backdrop-filter: blur(5px);
   transition: all 0.3s ease;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .inputGroup input:focus,
@@ -435,8 +466,10 @@
   display: flex;
   gap: 1rem;
   justify-content: flex-end;
-  padding-top: 1.5rem;
+  padding: 1.5rem 0 0;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: auto;
+  flex-shrink: 0;
 }
 
 .cancelButton {
@@ -502,15 +535,53 @@
   
   .formGrid {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
   
   .formActions {
     flex-direction: column;
+    gap: 0.75rem;
   }
   
+  /* Mejorar modal para móvil */
+  .modalOverlay {
+    padding: 10px;
+  }
+
   .modal {
-    width: 95%;
-    margin: 1rem;
+    width: 100%;
+    height: calc(100vh - 20px);
+    max-height: calc(100vh - 20px);
+    border-radius: 15px;
+    margin: 0;
+  }
+  
+  .form {
+    padding: 1rem;
+  }
+  
+  .modalHeader {
+    padding: 1rem;
+  }
+
+  .modalHeader h3 {
+    font-size: 1.3rem;
+  }
+  
+  .formActions button {
+    width: 100%;
+    text-align: center;
+    min-height: 48px;
+    font-size: 1rem;
+  }
+
+  /* Mejorar elementos del formulario en móvil */
+  .inputGroup input,
+  .inputGroup select,
+  .inputGroup textarea {
+    min-height: 48px;
+    font-size: 16px; /* Evitar zoom en iOS */
+    padding: 12px;
   }
   
   .tableContainer {
@@ -520,5 +591,80 @@
   .actions {
     flex-direction: column;
     gap: 0.25rem;
+  }
+}
+
+/* Estilos para tablets */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .modal {
+    width: 95%;
+    max-width: 600px;
+  }
+  
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+/* Mejoras adicionales para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .pagosManager {
+    padding: 0.5rem;
+  }
+
+  .modalOverlay {
+    padding: 5px;
+  }
+
+  .modal {
+    height: calc(100vh - 10px);
+    max-height: calc(100vh - 10px);
+    border-radius: 10px;
+  }
+
+  .modalHeader {
+    padding: 0.75rem;
+  }
+
+  .modalHeader h3 {
+    font-size: 1.2rem;
+  }
+  
+  .form {
+    padding: 0.75rem;
+  }
+
+  .inputGroup {
+    gap: 0.4rem;
+  }
+
+  .inputGroup label {
+    font-size: 0.9rem;
+  }
+  
+  .inputGroup input,
+  .inputGroup select,
+  .inputGroup textarea {
+    padding: 12px;
+    font-size: 16px;
+    min-height: 48px;
+  }
+
+  .formActions {
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .formActions button {
+    min-height: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .closeButton {
+    padding: 8px;
+    min-width: 40px;
+    min-height: 40px;
   }
 }

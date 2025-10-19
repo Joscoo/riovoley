@@ -149,15 +149,16 @@
 /* RESPONSIVO: MÓVILES Y TABLETS */
 @media(max-width: 768px) {
   .navbar {
-    padding: 0 20px;
+    padding: 0 15px;
+    height: 65px; /* Aumentar altura en móvil para mejor toque */
   }
 
   .title {
-    font-size: 1.6em;
+    font-size: 1.5em;
   }
 
   .logo {
-    height: 35px;
+    height: 40px;
   }
 
   /* Ocultar elementos de computador */
@@ -165,30 +166,38 @@
     display: none !important;
   }
 
-  /* Mostrar botón hamburguesa */
+  /* Mostrar botón hamburguesa - mejorado para móvil */
   .menuToggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    padding: 10px;
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 8px;
   }
 
-  /* Contenedor del menú desplegable móvil */
+  /* Contenedor del menú desplegable móvil - mejorado */
   .linksContainer {
     position: absolute;
-    top: 60px;
-    right: 15px;
-    background: linear-gradient(135deg, #232d3a 0%, rgba(35, 45, 58, 0.95) 100%);
+    top: 65px;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #232d3a 0%, rgba(35, 45, 58, 0.98) 100%);
     flex-direction: column;
-    width: 180px;
+    width: 100%;
     display: none; /* Oculto por defecto */
     list-style: none;
-    padding: 15px 10px;
+    padding: 20px 15px;
     margin: 0;
     align-items: stretch;
-    gap: 8px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    border-radius: 0 0 12px 12px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.1);
+    gap: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
     animation: slideDown 0.3s ease-out;
+    z-index: 998;
   }
 
   /* Mostrar cuando tenga clase 'show' */
@@ -196,73 +205,79 @@
     display: flex;
   }
 
-  /* Elementos de lista (li) del menú móvil */
+  /* Elementos de lista (li) del menú móvil - mejorados */
   .linksContainer li {
     width: 100%;
     margin: 0;
     padding: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: stretch;
   }
 
-  /* Enlaces del menú móvil */
+  /* Enlaces del menú móvil - mejorados para touch */
   .linksContainer a {
     width: 100%;
-    min-height: 40px;
-    padding: 10px 12px;
+    min-height: 52px; /* Aumentado para mejor toque */
+    padding: 15px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.08);
     color: #fff;
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.9em;
+    font-size: 1.05em; /* Texto más grande */
     transition: all 0.3s ease;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     box-sizing: border-box;
+    touch-action: manipulation; /* Mejorar respuesta táctil */
   }
 
-  .linksContainer a:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  .linksContainer a:hover,
+  .linksContainer a:active {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   }
 
   /* Elemento li específico para el botón login móvil */
   .linksContainer li:last-child {
-    margin-top: 5px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  /* Botón login móvil */
+  /* Botón login móvil - mejorado */
   .mobileLoginButton {
     width: 100%;
-    min-height: 40px;
-    padding: 10px 12px;
+    min-height: 52px; /* Consistente con otros botones */
+    padding: 15px 20px;
     margin: 0;
     background: linear-gradient(135deg, #000 0%, #222 100%);
     color: #ffd700;
-    border-radius: 8px;
+    border-radius: 10px;
     text-align: center;
     text-decoration: none;
     font-weight: bold;
-    font-size: 0.9em;
+    font-size: 1.05em;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
     border: 2px solid #ffd700;
     box-sizing: border-box;
+    touch-action: manipulation;
   }
 
-  .mobileLoginButton:hover {
+  .mobileLoginButton:hover,
+  .mobileLoginButton:active {
     background: linear-gradient(135deg, #ffd700 0%, #f0c14b 100%);
     color: #000;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    transform: scale(1.02);
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
   }
 
   @keyframes slideDown {
@@ -280,20 +295,34 @@
 /* Pantallas muy pequeñas */
 @media(max-width: 480px) {
   .navbar {
-    padding: 0 15px;
-  }
-  
-  .linksContainer {
-    right: 10px;
-    width: 160px;
+    padding: 0 10px;
+    height: 60px;
   }
   
   .title {
-    font-size: 1.4em;
+    font-size: 1.3em;
   }
 
   .logo {
-    height: 30px;
+    height: 35px;
+  }
+
+  .menuToggle {
+    min-width: 45px;
+    min-height: 45px;
+    font-size: 1.8em;
+  }
+
+  .linksContainer {
+    padding: 15px 10px;
+    gap: 10px;
+  }
+
+  .linksContainer a,
+  .mobileLoginButton {
+    min-height: 48px;
+    padding: 12px 15px;
+    font-size: 1em;
   }
 }
 
@@ -346,52 +375,69 @@
   box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
 }
 
-/* Sección de usuario en móvil */
+/* Sección de usuario en móvil - mejorada */
 .mobileUserSection {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mobileUserInfo {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
   color: #fff;
-  font-size: 0.9em;
+  font-size: 1em;
+}
+
+.mobileUserInfo span:first-child {
+  font-weight: 600;
+  color: #ffd700;
 }
 
 .mobileUserRole {
   color: white;
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 0.75em;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.8em;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   align-self: flex-start;
+  margin-top: 4px;
 }
 
-/* Botón de logout en móvil */
+/* Botón de logout en móvil - mejorado */
 .mobileLogoutButton {
   width: 100%;
-  padding: 12px;
+  min-height: 48px;
+  padding: 12px 15px;
   background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
   color: white;
   border: none;
-  border-radius: 6px;
-  font-weight: 500;
-  font-size: 1em;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.05em;
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
   text-align: center;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
 }
 
-.mobileLogoutButton:hover {
+.mobileLogoutButton:hover,
+.mobileLogoutButton:active {
   background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
+  transform: scale(1.02);
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
 }
 
 /* Pantallas muy grandes */

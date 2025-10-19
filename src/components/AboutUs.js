@@ -33,13 +33,10 @@ const AboutUs = () => {
           <h3>📞 Información de Contacto</h3>
           <div className={styles.contactGrid}>
             <div className={styles.contactBox}>
-              <h4>📱 Teléfonos</h4>
+              <h4>📱 Teléfono</h4>
               <div className={styles.phoneNumbers}>
                 <a href="tel:+593963840728" className={styles.phoneLink}>
                   📞 0963 840 728
-                </a>
-                <a href="tel:+593992680789" className={styles.phoneLink}>
-                  📞 0992 680 789
                 </a>
               </div>
             </div>

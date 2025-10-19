@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../config/supabase';
 import styles from '../styles/Navbar.module.css';
@@ -15,10 +15,28 @@ const getRoleColor = (role) => {
 
 const Navbar = ({ user, userProfile, onLogout }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navRef = useRef(null);
 
   const toggleMenu = () => {
     setMenuOpen(prev => !prev);
   };
+
+  // Cerrar menú cuando se hace clic fuera
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    };
+
+    if (menuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [menuOpen]);
 
   const handleLogout = async () => {
     try {
@@ -33,7 +51,7 @@ const Navbar = ({ user, userProfile, onLogout }) => {
   };
 
   return (
-    <nav className={styles.navbar}>
+    <nav className={styles.navbar} ref={navRef}>
       {/* Logo y título */}
       <Link to="/" className={styles.logoContainer}>
         <img 
@@ -90,11 +108,11 @@ const Navbar = ({ user, userProfile, onLogout }) => {
       <ul
         className={`${styles.linksContainer} ${menuOpen ? styles.show : ''}`}
       >
-        <li><Link to="/">Inicio</Link></li>
-        <li><Link to="/sobre">Sobre Nosotros</Link></li>
-        <li><Link to="/horarios">Horarios</Link></li>
+        <li><Link to="/" onClick={() => setMenuOpen(false)}>Inicio</Link></li>
+        <li><Link to="/sobre" onClick={() => setMenuOpen(false)}>Sobre Nosotros</Link></li>
+        <li><Link to="/horarios" onClick={() => setMenuOpen(false)}>Horarios</Link></li>
         {userProfile?.role?.toLowerCase() === 'administrador' && (
-          <li><Link to="/admin" className={styles.adminLink}>🔴 Panel Admin</Link></li>
+          <li><Link to="/admin" className={styles.adminLink} onClick={() => setMenuOpen(false)}>🔴 Panel Admin</Link></li>
         )}
         <li>
           {user ? (
@@ -115,7 +133,7 @@ const Navbar = ({ user, userProfile, onLogout }) => {
               </button>
             </div>
           ) : (
-            <Link className={styles.mobileLoginButton} to="/login">
+            <Link className={styles.mobileLoginButton} to="/login" onClick={() => setMenuOpen(false)}>
               Iniciar Sesión
             </Link>
           )}

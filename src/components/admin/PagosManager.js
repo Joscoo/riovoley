@@ -1,6 +1,8 @@
 // src/components/admin/PagosManager.js
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
+import { EmailService } from '../../services/emailService';
 import styles from '../../styles/PagosManager.module.css';
 
 const PagosManager = ({ user }) => {
@@ -106,8 +108,16 @@ const PagosManager = ({ user }) => {
     try {
       if (editingPago) {
         await updatePago();
+        alert('✅ Pago actualizado exitosamente');
       } else {
-        await createPago();
+        const result = await createPago();
+        if (result?.emailSent) {
+          alert('✅ Pago registrado exitosamente. Se ha enviado una confirmación por email al atleta.');
+        } else if (result?.emailError) {
+          alert(`✅ Pago registrado exitosamente.\n⚠️ No se pudo enviar el email: ${result.emailError}`);
+        } else {
+          alert('✅ Pago registrado exitosamente.');
+        }
       }
       
       setShowModal(false);
@@ -115,12 +125,13 @@ const PagosManager = ({ user }) => {
       loadData();
     } catch (error) {
       console.error('Error guardando pago:', error);
-      alert('Error: ' + error.message);
+      alert('❌ Error: ' + error.message);
     }
   };
 
   const createPago = async () => {
-    const { error } = await supabase
+    // Crear el pago en la base de datos
+    const { data: pagoCreado, error } = await supabase
       .from('payments')
       .insert({
         student_id: formData.student_id,
@@ -129,9 +140,75 @@ const PagosManager = ({ user }) => {
         fecha_fin: formData.fecha_fin || null,
         fecha_pago: formData.fecha_pago || null,
         estado: formData.estado
-      });
+      })
+      .select()
+      .single();
 
     if (error) throw error;
+
+    console.log('✅ Pago creado exitosamente:', pagoCreado);
+
+    // Obtener información del atleta directamente de Supabase
+    try {
+      console.log('🔍 Obteniendo información del atleta con ID:', formData.student_id);
+      
+      const { data: atletaData, error: atletaError } = await supabase
+        .from('students')
+        .select(`
+          id,
+          categoria,
+          users!inner(
+            id,
+            email,
+            nombre,
+            apellido
+          )
+        `)
+        .eq('id', formData.student_id)
+        .single();
+
+      if (atletaError) {
+        console.error('❌ Error obteniendo datos del atleta:', atletaError);
+        return { emailSent: false, emailError: 'No se pudo obtener información del atleta' };
+      }
+
+      if (!atletaData?.users?.email) {
+        console.warn('⚠️ No se encontró email para el atleta');
+        return { emailSent: false, emailError: 'El atleta no tiene email configurado' };
+      }
+
+      console.log('👤 Datos del atleta encontrados:', {
+        email: atletaData.users.email,
+        nombre: atletaData.users.nombre,
+        apellido: atletaData.users.apellido
+      });
+
+      // Enviar email de confirmación de pago
+      console.log('📧 Enviando notificación de pago a:', atletaData.users.email);
+      
+      const emailResult = await EmailService.sendPaymentConfirmation({
+        email: atletaData.users.email,
+        nombre: atletaData.users.nombre,
+        apellido: atletaData.users.apellido,
+        monto: parseFloat(formData.monto),
+        fecha_inicio: formData.fecha_inicio,
+        fecha_fin: formData.fecha_fin,
+        fecha_pago: formData.fecha_pago,
+        estado: formData.estado
+      });
+      
+      if (emailResult.success) {
+        console.log('✅ Email de confirmación enviado exitosamente');
+        return { emailSent: true };
+      } else {
+        console.warn('⚠️ El email no se pudo enviar:', emailResult.error);
+        return { emailSent: false, emailError: emailResult.error };
+      }
+      
+    } catch (emailError) {
+      console.error('❌ Error en proceso de envío de email:', emailError);
+      return { emailSent: false, emailError: emailError.message };
+    }
   };
 
   const updatePago = async () => {
@@ -585,6 +662,13 @@ const PagosManager = ({ user }) => {
       )}
     </div>
   );
+};
+
+PagosManager.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.string,
+    email: PropTypes.string
+  })
 };
 
 export default PagosManager;
