@@ -7,6 +7,7 @@ import AboutUs from './components/AboutUs';
 import Horarios from './components/Horarios';
 import Login from './components/Login';
 import AdminPanel from './components/admin/AdminPanel';
+import StudentViewDebug from './components/StudentViewDebug';
 import { getCurrentUser } from './config/supabase';
 import { useUserProfile } from './hooks/useUserProfile';
 
@@ -61,6 +62,7 @@ function App() {
         <Route path="/horarios" element={<Horarios />} />
         <Route path="/login" element={<Login onLoginSuccess={handleLoginSuccess} />} />
         <Route path="/admin" element={<AdminPanel user={user} />} />
+        <Route path="/estudiante" element={<StudentViewDebug user={user} />} />
       </Routes>
     </Router>
   );

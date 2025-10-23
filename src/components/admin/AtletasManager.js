@@ -1,8 +1,8 @@
 // src/components/admin/AtletasManager.js
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../../config/supabase';
-import { generateTemporaryPassword } from '../../utils/passwordUtils';
 import { EmailService } from '../../services/emailService';
+import { createStudentWorking, resendWorkingCredentials } from '../../services/userCreationWorking';
 import styles from '../../styles/AtletasManager.module.css';
 
 const AtletasManager = ({ user }) => {
@@ -172,63 +172,69 @@ const AtletasManager = ({ user }) => {
       throw new Error('El email es requerido para crear el usuario');
     }
 
-    // Verificar si el email ya existe
-    const { data: existingUser, error: checkError } = await supabase
-      .from('users')
-      .select('email')
-      .eq('email', formData.email.trim())
-      .single();
+    try {
+      console.log('🔐 Creando estudiante con método que funciona...');
 
-    if (checkError && checkError.code !== 'PGRST116') {
-      // PGRST116 significa "no rows returned" (no existe el usuario)
-      throw new Error(`Error verificando email: ${checkError.message}`);
-    }
-
-    if (existingUser) {
-      throw new Error(`El email "${formData.email}" ya está registrado. Por favor usa un email diferente.`);
-    }
-
-    // Paso 1: Crear usuario en public.users (no en auth.users por RLS)
-    const { data: userData, error: userError } = await supabase
-      .from('users')
-      .insert({
+      // Usar el nuevo servicio que funciona (mismo método que confirm-fix)
+      const result = await createStudentWorking({
+        // Datos de usuario
         email: formData.email.trim(),
-        password: 'temp123456', // Contraseña temporal (se debería hashear)
-        role: 'estudiante',
         nombre: formData.nombre.trim(),
         apellido: formData.apellido.trim(),
         fecha_nacimiento: formData.fecha_nacimiento,
-        telefono: formData.telefono || null
-      })
-      .select()
-      .single();
-
-    if (userError) {
-      throw new Error(`Error creando usuario: ${userError.message}`);
-    }
-
-    const userId = userData.id;
-    console.log('Usuario creado con ID:', userId);
-
-    // Paso 2: Crear registro en students vinculado al usuario
-    const { error: atletaError } = await supabase
-      .from('students')
-      .insert({
-        user_id: userId,
+        telefono: formData.telefono || null,
+        // Datos específicos de estudiante
         categoria: formData.categoria,
-        altura: formData.altura ? parseFloat(formData.altura) : null,
-        peso: formData.peso ? parseFloat(formData.peso) : null,
-        fecha_nacimiento: formData.fecha_nacimiento
+        altura: formData.altura,
+        peso: formData.peso
       });
 
-    if (atletaError) {
-      // Si falla, intentar eliminar el usuario creado
-      await supabase.from('users').delete().eq('id', userId);
-      throw new Error(`Error creando atleta: ${atletaError.message}`);
-    }
+      console.log('✅ Estudiante creado exitosamente:', result);
 
-    console.log('Usuario y atleta creados exitosamente');
-    alert('✅ ¡Usuario y atleta registrados correctamente!');
+      // Mostrar mensaje de éxito con credenciales que funcionan y opción de enviar email
+      const message = `✅ ¡Estudiante creado exitosamente!
+
+📧 Email: ${result.credentials.email}
+🔑 Contraseña temporal: ${result.credentials.password}
+🌐 URL de ingreso: ${result.credentials.loginUrl}
+
+${result.canLogin ? '✅ El usuario puede ingresar inmediatamente.' : '⚠️ Puede requerir verificación de email.'}
+
+⚠️ IMPORTANTE: Guarda esta información y compártela de forma segura con el estudiante.
+
+¿Deseas enviar estas credenciales por email al estudiante?`;
+
+      const shouldSendEmail = globalThis.confirm(message);
+      
+      if (shouldSendEmail) {
+        try {
+          const userData = {
+            email: result.credentials.email,
+            nombre: result.user.nombre,
+            apellido: result.user.apellido,
+            full_name: `${result.user.nombre} ${result.user.apellido}`.trim(),
+            password: result.credentials.password
+          };
+
+          const emailResult = await EmailService.sendCredentials(userData);
+          
+          if (emailResult.success) {
+            alert(`✅ Credenciales enviadas exitosamente a ${result.credentials.email}`);
+          } else {
+            alert(`⚠️ No se pudo enviar el email automáticamente. Las credenciales ya se mostraron anteriormente.`);
+          }
+        } catch (emailError) {
+          console.error('❌ Error enviando email:', emailError);
+          alert(`⚠️ Error enviando email: ${emailError.message}. Las credenciales ya se mostraron anteriormente.`);
+        }
+      }
+
+      return result;
+
+    } catch (error) {
+      console.error('❌ Error creando estudiante:', error);
+      throw error;
+    }
   };
 
   const updateAtleta = async () => {
@@ -311,46 +317,57 @@ const AtletasManager = ({ user }) => {
   const resendCredentials = async (atleta) => {
     try {
       console.log('📧 Reenviando credenciales para:', atleta.full_name);
-      
-      // Preparar datos del usuario
-      const userData = {
-        id: atleta.user_id,
+
+      // Usar la función que maneja las credenciales correctamente
+      const result = await resendWorkingCredentials({
+        user_id: atleta.user_id,
         email: atleta.users.email,
+        nombre: atleta.users.nombre,
+        apellido: atleta.users.apellido
+      });
+
+      if (!result.success) {
+        throw new Error('No se pudieron obtener las credenciales');
+      }
+
+      const userData = {
+        email: result.credentials.email,
         nombre: atleta.users.nombre,
         apellido: atleta.users.apellido,
         full_name: `${atleta.users.nombre} ${atleta.users.apellido}`.trim(),
-        // Generar nueva contraseña temporal
-        password: generateTemporaryPassword()
+        password: result.credentials.password
       };
 
-      console.log('👤 Datos del usuario:', { 
-        email: userData.email, 
-        nombre: userData.nombre,
-        apellido: userData.apellido 
+      console.log('🔑 Enviando credenciales que funcionan:', {
+        email: userData.email,
+        hasPassword: !!userData.password,
+        isOriginal: !result.needsPasswordReset
       });
 
-      // Actualizar la contraseña en la base de datos
-      const { error: passwordError } = await supabase
-        .from('users')
-        .update({ 
-          password: userData.password,
-          first_login: true // Marcar para que cambie la contraseña
-        })
-        .eq('id', atleta.user_id);
-
-      if (passwordError) {
-        throw new Error(`Error actualizando contraseña: ${passwordError.message}`);
-      }
-
-      console.log('🔑 Contraseña actualizada en la base de datos');
-
-      // Enviar email con las nuevas credenciales
+      // Enviar email con las credenciales que funcionan
       const emailResult = await EmailService.sendCredentials(userData);
       
       if (emailResult.success) {
-        alert(`✅ Credenciales enviadas exitosamente a ${userData.email}`);
+        alert(`✅ Credenciales enviadas exitosamente a ${userData.email}
+
+📧 Email: ${result.credentials.email}
+🔑 Contraseña: ${result.credentials.password}
+🌐 URL: ${result.credentials.loginUrl}
+
+${result.needsPasswordReset ? '⚠️ NOTA: Se generó una nueva contraseña temporal.' : '✅ Se enviaron las credenciales originales que funcionan.'}
+
+${result.message}`);
       } else {
-        console.warn('⚠️ El email no se pudo enviar, pero se mostró el modal con las credenciales');
+        // Si el email falla, mostrar las credenciales directamente
+        alert(`⚠️ No se pudo enviar el email automáticamente.
+
+📧 Email: ${result.credentials.email}
+🔑 Contraseña: ${result.credentials.password}
+🌐 URL: ${result.credentials.loginUrl}
+
+${result.message}
+
+Por favor, envía esta información al estudiante de forma manual.`);
       }
     } catch (error) {
       console.error('❌ Error reenviando credenciales:', error);

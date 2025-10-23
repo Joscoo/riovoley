@@ -69,6 +69,9 @@ const Navbar = ({ user, userProfile, onLogout }) => {
           <li><Link to="/">Inicio</Link></li>
           <li><Link to="/sobre">Sobre Nosotros</Link></li>
           <li><Link to="/horarios">Horarios</Link></li>
+          {user && userProfile?.role?.toLowerCase() !== 'administrador' && (
+            <li><Link to="/estudiante" className={styles.studentLink}>👤 Mi Perfil</Link></li>
+          )}
           {userProfile?.role?.toLowerCase() === 'administrador' && (
             <li><Link to="/admin" className={styles.adminLink}>🔴 Panel Admin</Link></li>
           )}
@@ -111,6 +114,9 @@ const Navbar = ({ user, userProfile, onLogout }) => {
         <li><Link to="/" onClick={() => setMenuOpen(false)}>Inicio</Link></li>
         <li><Link to="/sobre" onClick={() => setMenuOpen(false)}>Sobre Nosotros</Link></li>
         <li><Link to="/horarios" onClick={() => setMenuOpen(false)}>Horarios</Link></li>
+        {user && userProfile?.role?.toLowerCase() !== 'administrador' && (
+          <li><Link to="/estudiante" className={styles.studentLink} onClick={() => setMenuOpen(false)}>👤 Mi Perfil</Link></li>
+        )}
         {userProfile?.role?.toLowerCase() === 'administrador' && (
           <li><Link to="/admin" className={styles.adminLink} onClick={() => setMenuOpen(false)}>🔴 Panel Admin</Link></li>
         )}

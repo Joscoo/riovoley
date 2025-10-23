@@ -1,0 +1,491 @@
+/* src/styles/StudentView.module.css */
+
+.studentView {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 30px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.studentInfo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: bold;
+  backdrop-filter: blur(10px);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.personalInfo h1 {
+  margin: 0 0 10px 0;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.category,
+.email,
+.phone {
+  margin: 5px 0;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.currentPaymentStatus {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.currentPaymentStatus h3 {
+  margin: 0 0 15px 0;
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.statusBadge {
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  font-weight: 500;
+}
+
+.statusIcon {
+  font-size: 24px;
+}
+
+.statusText {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.statusLabel {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.statusText small {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Navegación */
+.tabNavigation {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.tab {
+  padding: 15px 25px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: #6c757d;
+  border-radius: 10px 10px 0 0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tab:hover {
+  background-color: #f8f9fa;
+  color: #495057;
+}
+
+.tab.active {
+  background-color: #007bff;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #007bff;
+}
+
+/* Contenido de pestañas */
+.tabContent {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Pestaña Overview */
+.overviewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.overviewCard {
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 25px;
+  border-left: 5px solid #007bff;
+}
+
+.overviewCard h3 {
+  margin: 0 0 20px 0;
+  color: #495057;
+  font-size: 20px;
+}
+
+.paymentsSummary,
+.testsSummary {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.summaryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.summaryItem:last-child {
+  border-bottom: none;
+}
+
+.summaryItem span {
+  font-size: 16px;
+}
+
+.summaryItem strong {
+  color: #007bff;
+  font-size: 18px;
+}
+
+.currentStatus {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #e9ecef;
+}
+
+.statusIndicator {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.progressIndicator {
+  text-align: center;
+  padding: 15px;
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+/* Pestaña Pagos */
+.paymentsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.paymentCard {
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 20px;
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.paymentCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.paymentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.paymentPeriod {
+  font-weight: 600;
+  color: #495057;
+  font-size: 16px;
+}
+
+.paymentStatus {
+  font-weight: 500;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.paymentDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.paymentAmount {
+  font-size: 24px;
+  font-weight: 700;
+  color: #28a745;
+}
+
+.paymentDate {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.paymentNotes {
+  font-size: 14px;
+  color: #6c757d;
+  font-style: italic;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  border-left: 3px solid #007bff;
+}
+
+/* Pestaña Tests */
+.testsContent {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.chartContainer {
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 25px;
+  border: 1px solid #e9ecef;
+}
+
+.testsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.testCard {
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 20px;
+  border: 1px solid #e9ecef;
+}
+
+.testHeader h4 {
+  margin: 0 0 15px 0;
+  color: #495057;
+  font-size: 18px;
+}
+
+.testMetrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.metricLabel {
+  font-size: 12px;
+  color: #6c757d;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.metricValue {
+  font-size: 16px;
+  font-weight: 600;
+  color: #007bff;
+}
+
+.testNotes {
+  font-size: 14px;
+  color: #6c757d;
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+  border-left: 3px solid #28a745;
+}
+
+/* Estados vacíos */
+.emptyState {
+  text-align: center;
+  padding: 60px 20px;
+  color: #6c757d;
+}
+
+.emptyState p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.emptyState small {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* Loading */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 20px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* No estudiante */
+.notStudent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 20px;
+}
+
+.notStudentContent {
+  text-align: center;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+}
+
+.notStudentContent h2 {
+  color: #495057;
+  margin-bottom: 20px;
+}
+
+.notStudentContent p {
+  color: #6c757d;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.errorMessage {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+  border: 1px solid #f5c6cb;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .studentView {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .studentInfo {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .personalInfo h1 {
+    font-size: 24px;
+  }
+
+  .tabNavigation {
+    flex-wrap: wrap;
+  }
+
+  .tab {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .tabContent {
+    padding: 20px;
+  }
+
+  .overviewGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .paymentsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .testsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .testMetrics {
+    grid-template-columns: 1fr;
+  }
+}

@@ -8,6 +8,7 @@ import ChangePasswordModal from './ChangePasswordModal';
 function Login({ onLoginSuccess }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [mensaje, setMensaje] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -108,21 +109,45 @@ function Login({ onLoginSuccess }) {
       return;
     }
 
+    // Validación adicional del email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.trim())) {
+      setMensaje('Por favor, ingresa un email válido');
+      setIsLoading(false);
+      return;
+    }
+
+    console.log('🔐 Intentando login con:', { 
+      email: email.trim(), 
+      passwordLength: password.length 
+    });
+
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      const { data, error } = await supabase.auth.signInWithPassword({
         email: email.trim(),
         password: password,
       });
 
+      console.log('🔍 Resultado de login:', { data, error });
+
       if (error) {
+        console.error('❌ Error de autenticación:', error);
+        
+        // Manejo específico de errores
         if (error.message.includes('Invalid login credentials')) {
           setMensaje('Credenciales incorrectas. Verifica tu email y contraseña.');
         } else if (error.message.includes('Email not confirmed')) {
           setMensaje('Tu cuenta no ha sido confirmada. Revisa tu email.');
+        } else if (error.message.includes('Too many requests')) {
+          setMensaje('Demasiados intentos. Espera unos minutos e inténtalo de nuevo.');
+        } else if (error.status === 400) {
+          setMensaje(`Error de solicitud: ${error.message}. Verifica tu email y contraseña.`);
         } else {
           setMensaje('Error al iniciar sesión: ' + error.message);
         }
       } else {
+        console.log('✅ Login exitoso:', data);
+        
         // Verificar si el usuario necesita cambiar la contraseña
         await checkFirstLogin(email.trim());
         
@@ -132,6 +157,7 @@ function Login({ onLoginSuccess }) {
         setPassword('');
       }
     } catch (error) {
+      console.error('💥 Error inesperado en login:', error);
       setMensaje('Error inesperado: ' + error.message);
     } finally {
       setIsLoading(false);
@@ -243,16 +269,26 @@ function Login({ onLoginSuccess }) {
           
           <div style={styles.inputGroup}>
             <label htmlFor="password" style={styles.label}>Contraseña</label>
-            <input
-              id="password"
-              type="password"
-              placeholder="Tu contraseña"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              style={styles.input}
-              disabled={isLoading}
-              required
-            />
+            <div style={styles.passwordContainer}>
+              <input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                placeholder="Tu contraseña"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                style={styles.passwordInput}
+                disabled={isLoading}
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                style={styles.passwordToggle}
+                disabled={isLoading}
+              >
+                {showPassword ? '🙈' : '👁️'}
+              </button>
+            </div>
           </div>
           
           <button 
@@ -274,6 +310,26 @@ function Login({ onLoginSuccess }) {
                 styles.errorMessage : styles.successMessage)
           }}>
             {mensaje}
+          </div>
+        )}
+
+        {/* Botón de diagnóstico en desarrollo */}
+        {process.env.NODE_ENV === 'development' && (
+          <div style={{ marginTop: '20px', textAlign: 'center' }}>
+            <a 
+              href="/test" 
+              style={{ 
+                color: '#007bff', 
+                textDecoration: 'none', 
+                fontSize: '14px',
+                padding: '10px 15px',
+                border: '1px solid #007bff',
+                borderRadius: '5px',
+                display: 'inline-block'
+              }}
+            >
+              🔧 Diagnóstico de Conexión
+            </a>
           </div>
         )}
       </div>
@@ -344,6 +400,32 @@ const styles = {
     fontSize: '16px',
     transition: 'border-color 0.2s ease',
     outline: 'none'
+  },
+  passwordContainer: {
+    position: 'relative',
+    display: 'flex',
+    alignItems: 'center'
+  },
+  passwordInput: {
+    padding: '12px 50px 12px 12px',
+    border: '2px solid #e1e5e9',
+    borderRadius: '8px',
+    fontSize: '16px',
+    transition: 'border-color 0.2s ease',
+    outline: 'none',
+    width: '100%',
+    boxSizing: 'border-box'
+  },
+  passwordToggle: {
+    position: 'absolute',
+    right: '12px',
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    fontSize: '18px',
+    padding: '5px',
+    borderRadius: '4px',
+    transition: 'background-color 0.2s ease'
   },
   loginButton: {
     padding: '12px',
