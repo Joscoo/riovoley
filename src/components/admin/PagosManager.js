@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import { EmailService } from '../../services/emailService';
+import WhatsAppService from '../../services/whatsappService';
+import WhatsAppBusinessService from '../../services/whatsappBusinessService';
+import PagoStatusService from '../../services/pagoStatusService';
 import styles from '../../styles/PagosManager.module.css';
 
 const PagosManager = ({ user }) => {
@@ -11,6 +14,7 @@ const PagosManager = ({ user }) => {
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [editingPago, setEditingPago] = useState(null);
+  const [whatsAppBusiness] = useState(new WhatsAppBusinessService());
   const [filters, setFilters] = useState({
     fecha_inicio: new Date().toISOString().split('T')[0],
     fecha_fin: '',
@@ -24,12 +28,9 @@ const PagosManager = ({ user }) => {
     fecha_inicio: new Date().toISOString().split('T')[0],
     fecha_fin: '',
     monto: '',
-    fecha_pago: new Date().toISOString().split('T')[0],
-    estado: 'activo',
+    fecha_pago: '', // Vacío por defecto - solo se llena cuando realmente se paga
     observaciones: ''
   });
-
-  const estadosPago = ['activo', 'vencido', 'proximo_a_vencer'];
 
   useEffect(() => {
     loadData();
@@ -59,7 +60,7 @@ const PagosManager = ({ user }) => {
           student:students(
             id,
             categoria,
-            user:users(id, nombre, apellido, email)
+            user:users(id, nombre, apellido, email, telefono)
           )
         `)
         .order('fecha_inicio', { ascending: false });
@@ -93,6 +94,18 @@ const PagosManager = ({ user }) => {
         );
       }
 
+      // Actualizar estados automáticamente en segundo plano
+      console.log('🔄 Verificando y actualizando estados de pagos...');
+      const resultadoActualizacion = await PagoStatusService.actualizarTodosLosEstados(supabase);
+      if (resultadoActualizacion.actualizados > 0) {
+        console.log(`✅ ${resultadoActualizacion.actualizados} pagos actualizados automáticamente`);
+        // Recargar datos si hubo cambios
+        const { data: pagosActualizados } = await query;
+        if (pagosActualizados) {
+          filteredData = pagosActualizados;
+        }
+      }
+
       setPagos(filteredData);
     } catch (error) {
       console.error('Error cargando datos:', error);
@@ -111,13 +124,24 @@ const PagosManager = ({ user }) => {
         alert('✅ Pago actualizado exitosamente');
       } else {
         const result = await createPago();
+        
+        let mensaje = '✅ Pago registrado exitosamente.';
+        
         if (result?.emailSent) {
-          alert('✅ Pago registrado exitosamente. Se ha enviado una confirmación por email al atleta.');
+          mensaje += '\n📧 Email de confirmación enviado.';
         } else if (result?.emailError) {
-          alert(`✅ Pago registrado exitosamente.\n⚠️ No se pudo enviar el email: ${result.emailError}`);
-        } else {
-          alert('✅ Pago registrado exitosamente.');
+          mensaje += `\n⚠️ Email no enviado: ${result.emailError}`;
         }
+        
+        if (result?.whatsappSent && result?.messageId) {
+          mensaje += '\n📱 WhatsApp Business enviado automáticamente.';
+        } else if (result?.whatsappError) {
+          mensaje += `\n⚠️ WhatsApp Business error: ${result.whatsappError}`;
+        } else if (result?.whatsappSent) {
+          mensaje += '\n📱 WhatsApp enviado.';
+        }
+        
+        alert(mensaje);
       }
       
       setShowModal(false);
@@ -130,16 +154,24 @@ const PagosManager = ({ user }) => {
   };
 
   const createPago = async () => {
+    // Crear objeto temporal para calcular estado
+    const pagoTemporal = {
+      student_id: formData.student_id,
+      monto: Number.parseFloat(formData.monto),
+      fecha_inicio: formData.fecha_inicio || null,
+      fecha_fin: formData.fecha_fin || null,
+      fecha_pago: formData.fecha_pago || null
+    };
+    
+    // Calcular estado automáticamente
+    const estadoCalculado = PagoStatusService.calcularEstado(pagoTemporal);
+    
     // Crear el pago en la base de datos
     const { data: pagoCreado, error } = await supabase
       .from('payments')
       .insert({
-        student_id: formData.student_id,
-        monto: parseFloat(formData.monto),
-        fecha_inicio: formData.fecha_inicio || null,
-        fecha_fin: formData.fecha_fin || null,
-        fecha_pago: formData.fecha_pago || null,
-        estado: formData.estado
+        ...pagoTemporal,
+        estado: estadoCalculado
       })
       .select()
       .single();
@@ -161,7 +193,8 @@ const PagosManager = ({ user }) => {
             id,
             email,
             nombre,
-            apellido
+            apellido,
+            telefono
           )
         `)
         .eq('id', formData.student_id)
@@ -199,6 +232,51 @@ const PagosManager = ({ user }) => {
       
       if (emailResult.success) {
         console.log('✅ Email de confirmación enviado exitosamente');
+        
+        // Verificar si el atleta tiene teléfono para WhatsApp Business
+        if (atletaData.users.telefono && WhatsAppService.validarTelefono(atletaData.users.telefono)) {
+          // Verificar configuración de WhatsApp Business
+          const businessConfig = whatsAppBusiness.validateConfiguration();
+          
+          if (businessConfig.isValid) {
+            // Usar WhatsApp Business API (automático)
+            console.log('📱 Enviando mensaje por WhatsApp Business...');
+            
+            const whatsAppResult = await whatsAppBusiness.sendPaymentConfirmation({
+              id: pagoCreado.id,
+              estudiante_nombre: `${atletaData.users.nombre} ${atletaData.users.apellido}`,
+              monto: Number.parseFloat(formData.monto),
+              fecha_pago: formData.fecha_pago,
+              concepto: 'Mensualidad Club de Voley'
+            }, atletaData.users.telefono);
+            
+            if (whatsAppResult.success) {
+              console.log('✅ WhatsApp Business enviado exitosamente');
+              return { emailSent: true, whatsappSent: true, messageId: whatsAppResult.messageId };
+            } else {
+              console.warn('⚠️ Error en WhatsApp Business:', whatsAppResult.error);
+              return { emailSent: true, whatsappSent: false, whatsappError: whatsAppResult.error };
+            }
+          } else {
+            // Fallback: usar WhatsApp Web (manual)
+            console.log('⚠️ WhatsApp Business no configurado, usando método manual');
+            const telefonoFormateado = WhatsAppService.formatearTelefono(atletaData.users.telefono);
+            const mensajeWhatsApp = WhatsAppService.crearMensajePago({
+              id: pagoCreado.id,
+              estudiante_nombre: `${atletaData.users.nombre} ${atletaData.users.apellido}`,
+              monto: Number.parseFloat(formData.monto),
+              fecha_pago: formData.fecha_pago,
+              concepto: 'Mensualidad Club de Voley',
+              observaciones: formData.observaciones
+            });
+            
+            if (globalThis.confirm('¿Desea enviar confirmación por WhatsApp al atleta?')) {
+              WhatsAppService.sendMessage(telefonoFormateado, mensajeWhatsApp);
+              return { emailSent: true, whatsappSent: true };
+            }
+          }
+        }
+        
         return { emailSent: true };
       } else {
         console.warn('⚠️ El email no se pudo enviar:', emailResult.error);
@@ -212,15 +290,23 @@ const PagosManager = ({ user }) => {
   };
 
   const updatePago = async () => {
+    // Crear objeto temporal para calcular estado
+    const pagoTemporal = {
+      student_id: formData.student_id,
+      monto: Number.parseFloat(formData.monto),
+      fecha_inicio: formData.fecha_inicio || null,
+      fecha_fin: formData.fecha_fin || null,
+      fecha_pago: formData.fecha_pago || null
+    };
+    
+    // Calcular estado automáticamente
+    const estadoCalculado = PagoStatusService.calcularEstado(pagoTemporal);
+    
     const { error } = await supabase
       .from('payments')
       .update({
-        student_id: formData.student_id,
-        monto: parseFloat(formData.monto),
-        fecha_inicio: formData.fecha_inicio || null,
-        fecha_fin: formData.fecha_fin || null,
-        fecha_pago: formData.fecha_pago || null,
-        estado: formData.estado
+        ...pagoTemporal,
+        estado: estadoCalculado
       })
       .eq('id', editingPago.id);
 
@@ -228,7 +314,7 @@ const PagosManager = ({ user }) => {
   };
 
   const deletePago = async (pago) => {
-    if (!window.confirm(`¿Eliminar pago de ${pago.student?.user?.nombre} ${pago.student?.user?.apellido}?`)) {
+    if (!globalThis.confirm(`¿Eliminar pago de ${pago.student?.user?.nombre} ${pago.student?.user?.apellido}?`)) {
       return;
     }
 
@@ -248,12 +334,73 @@ const PagosManager = ({ user }) => {
     }
   };
 
+  const enviarWhatsAppPago = async (pago) => {
+    const atletaInfo = pago.student?.user;
+    if (!atletaInfo) {
+      alert('❌ No se encontró información del atleta');
+      return;
+    }
+
+    // Verificar si el atleta tiene teléfono
+    if (!atletaInfo.telefono) {
+      alert('❌ El atleta no tiene número de teléfono registrado');
+      return;
+    }
+
+    if (!WhatsAppService.validarTelefono(atletaInfo.telefono)) {
+      alert('❌ El número de teléfono no es válido');
+      return;
+    }
+
+    try {
+      // Verificar configuración de WhatsApp Business
+      const businessConfig = whatsAppBusiness.validateConfiguration();
+      
+      if (businessConfig.isValid) {
+        // Usar WhatsApp Business API
+        console.log('📱 Enviando mensaje por WhatsApp Business...');
+        
+        const whatsAppResult = await whatsAppBusiness.sendPaymentConfirmation({
+          id: pago.id,
+          estudiante_nombre: `${atletaInfo.nombre} ${atletaInfo.apellido}`,
+          monto: pago.monto,
+          fecha_pago: pago.fecha_pago,
+          concepto: 'Mensualidad Club de Voley'
+        }, atletaInfo.telefono);
+        
+        if (whatsAppResult.success) {
+          alert(`✅ WhatsApp Business enviado exitosamente\n📱 ID: ${whatsAppResult.messageId}`);
+        } else {
+          alert(`❌ Error en WhatsApp Business: ${whatsAppResult.error}`);
+        }
+      } else {
+        // Fallback: usar WhatsApp Web (manual)
+        console.log('⚠️ WhatsApp Business no configurado, usando método manual');
+        console.log('Issues:', businessConfig.issues);
+        
+        const telefonoFormateado = WhatsAppService.formatearTelefono(atletaInfo.telefono);
+        const mensajeWhatsApp = WhatsAppService.crearMensajePago({
+          id: pago.id,
+          estudiante_nombre: `${atletaInfo.nombre} ${atletaInfo.apellido}`,
+          monto: pago.monto,
+          fecha_pago: pago.fecha_pago,
+          concepto: 'Mensualidad Club de Voley',
+          observaciones: pago.observaciones || ''
+        });
+
+        WhatsAppService.sendMessage(telefonoFormateado, mensajeWhatsApp);
+      }
+    } catch (error) {
+      console.error('Error enviando WhatsApp:', error);
+      alert(`❌ Error: ${error.message}`);
+    }
+  };
+
   const marcarComoPagado = async (pago) => {
     try {
       const { error } = await supabase
         .from('payments')
         .update({
-          estado: 'activo',
           fecha_pago: new Date().toISOString().split('T')[0]
         })
         .eq('id', pago.id);
@@ -261,7 +408,7 @@ const PagosManager = ({ user }) => {
       if (error) throw error;
 
       loadData();
-      alert('Pago marcado como activo');
+      alert('✅ Fecha de pago registrada');
     } catch (error) {
       console.error('Error actualizando pago:', error);
       alert('Error: ' + error.message);
@@ -277,7 +424,6 @@ const PagosManager = ({ user }) => {
         fecha_fin: pago.fecha_fin || '',
         monto: pago.monto?.toString() || '',
         fecha_pago: pago.fecha_pago || '',
-        estado: pago.estado,
         observaciones: ''
       });
     } else {
@@ -293,8 +439,7 @@ const PagosManager = ({ user }) => {
       fecha_inicio: new Date().toISOString().split('T')[0],
       fecha_fin: '',
       monto: '',
-      fecha_pago: new Date().toISOString().split('T')[0],
-      estado: 'activo',
+      fecha_pago: '', // Vacío por defecto
       observaciones: ''
     });
   };
@@ -315,15 +460,6 @@ const PagosManager = ({ user }) => {
     }).format(monto);
   };
 
-  const getEstadoColor = (estado) => {
-    switch (estado) {
-      case 'activo': return '#28a745';
-      case 'proximo_a_vencer': return '#ffc107';
-      case 'vencido': return '#dc3545';
-      default: return '#6c757d';
-    }
-  };
-
   const calcularEstadisticas = () => {
     const totalPagos = pagos.length;
     const activos = pagos.filter(p => p.estado === 'activo').length;
@@ -338,6 +474,23 @@ const PagosManager = ({ user }) => {
 
   const stats = calcularEstadisticas();
 
+  const actualizarEstadosManualmente = async () => {
+    try {
+      console.log('🔄 Actualizando estados manualmente...');
+      const resultados = await PagoStatusService.actualizarTodosLosEstados(supabase);
+      
+      if (resultados.actualizados > 0) {
+        alert(`✅ ${resultados.actualizados} pagos actualizados.\n📊 Estados sincronizados correctamente.`);
+        loadData(); // Recargar datos
+      } else {
+        alert('ℹ️ Todos los estados ya están actualizados.');
+      }
+    } catch (error) {
+      console.error('Error actualizando estados:', error);
+      alert('❌ Error al actualizar estados: ' + error.message);
+    }
+  };
+
   return (
     <div className={styles.pagosManager}>
       <div className={styles.header}>
@@ -345,12 +498,21 @@ const PagosManager = ({ user }) => {
           <h2>💰 Gestión de Pagos</h2>
           <p>Administrar mensualidades y pagos del club</p>
         </div>
-        <button 
-          className={styles.addButton}
-          onClick={() => openModal()}
-        >
-          ➕ Registrar Pago
-        </button>
+        <div className={styles.headerButtons}>
+          <button 
+            className={styles.updateButton}
+            onClick={actualizarEstadosManualmente}
+            title="Actualizar estados automáticamente"
+          >
+            🔄 Actualizar Estados
+          </button>
+          <button 
+            className={styles.addButton}
+            onClick={() => openModal()}
+          >
+            ➕ Registrar Pago
+          </button>
+        </div>
       </div>
 
       {/* Estadísticas */}
@@ -431,11 +593,9 @@ const PagosManager = ({ user }) => {
             className={styles.filterSelect}
           >
             <option value="">📋 Todos los estados</option>
-            {estadosPago.map(estado => (
-              <option key={estado} value={estado}>
-                {estado.toUpperCase()}
-              </option>
-            ))}
+            <option value="activo">✅ Activo</option>
+            <option value="proximo_a_vencer">⚠️ Próximo a Vencer</option>
+            <option value="vencido">❌ Vencido</option>
           </select>
         </div>
 
@@ -488,11 +648,11 @@ const PagosManager = ({ user }) => {
                       <td>{formatPeriodo(pago.fecha_inicio, pago.fecha_fin)}</td>
                       <td className={styles.monto}>{formatMonto(pago.monto)}</td>
                       <td>
-                        <span 
+                        <span
                           className={styles.estadoBadge}
-                          style={{ backgroundColor: getEstadoColor(pago.estado) }}
+                          style={{ backgroundColor: PagoStatusService.getStatusInfo(pago).color }}
                         >
-                          {pago.estado.replace(/_/g, ' ').toUpperCase()}
+                          {PagoStatusService.getStatusInfo(pago).icono} {PagoStatusService.getStatusInfo(pago).mensaje}
                         </span>
                       </td>
                       <td>
@@ -503,15 +663,22 @@ const PagosManager = ({ user }) => {
                       </td>
                       <td>
                         <div className={styles.actions}>
-                          {pago.estado !== 'activo' && (
+                          {!pago.fecha_pago && (
                             <button
                               onClick={() => marcarComoPagado(pago)}
                               className={styles.paidButton}
-                              title="Marcar como activo"
+                              title="Registrar fecha de pago"
                             >
-                              ✅
+                              💰
                             </button>
                           )}
+                          <button
+                            onClick={() => enviarWhatsAppPago(pago)}
+                            className={styles.whatsappButton}
+                            title="Enviar por WhatsApp"
+                          >
+                            📱
+                          </button>
                           <button
                             onClick={() => openModal(pago)}
                             className={styles.editButton}
@@ -609,24 +776,6 @@ const PagosManager = ({ user }) => {
                     placeholder="0.00"
                   />
                 </div>
-                
-                <div className={styles.inputGroup}>
-                  <label htmlFor="estado">Estado *</label>
-                  <select
-                    id="estado"
-                    value={formData.estado}
-                    onChange={(e) => setFormData({...formData, estado: e.target.value})}
-                    required
-                  >
-                    {estadosPago.map(estado => (
-                      <option key={estado} value={estado}>
-                        {estado.replace(/_/g, ' ').toUpperCase()}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                
-
                 
                 <div className={styles.inputGroup}>
                   <label htmlFor="fecha_pago">Fecha de Pago</label>

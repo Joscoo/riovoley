@@ -7,6 +7,7 @@ import AtletasManager from './AtletasManager';
 import PagosManager from './PagosManager';
 import AsistenciasManager from './AsistenciasManager';
 import TestsFisicosManager from './TestsFisicosManager';
+import UsuariosManager from './UsuariosManager';
 import styles from '../../styles/AdminPanel.module.css';
 
 const AdminPanel = ({ user }) => {
@@ -37,7 +38,8 @@ const AdminPanel = ({ user }) => {
     { id: 'atletas', icon: '🏐', label: 'Atletas', description: 'Gestionar deportistas' },
     { id: 'pagos', icon: '💰', label: 'Pagos', description: 'Mensualidades y facturación' },
     { id: 'asistencias', icon: '📅', label: 'Asistencias', description: 'Control de entrenamientos' },
-    { id: 'tests-fisicos', icon: '🏋️', label: 'Tests Físicos', description: 'Evaluaciones físicas' }
+    { id: 'tests-fisicos', icon: '🏋️', label: 'Tests Físicos', description: 'Evaluaciones físicas' },
+    { id: 'usuarios', icon: '👥', label: 'Usuarios', description: 'Gestión de usuarios y roles' }
   ];
 
   const handleNavigateToSection = (sectionId) => {
@@ -56,6 +58,8 @@ const AdminPanel = ({ user }) => {
         return <AsistenciasManager user={user} />;
       case 'tests-fisicos':
         return <TestsFisicosManager user={user} />;
+      case 'usuarios':
+        return <UsuariosManager user={user} />;
       default:
         return <Dashboard user={user} />;
     }

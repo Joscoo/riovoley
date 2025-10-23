@@ -8,6 +8,7 @@ const AsistenciasManager = ({ user }) => {
   const [asistencias, setAsistencias] = useState([]);
   const [atletas, setAtletas] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadingAtletas, setLoadingAtletas] = useState(true);
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
   const [filters, setFilters] = useState({
     fecha_inicio: new Date(new Date().setDate(new Date().getDate() - 7)).toISOString().split('T')[0],
@@ -28,28 +29,41 @@ const AsistenciasManager = ({ user }) => {
   ];
 
   useEffect(() => {
+    // Cargar datos iniciales al montar el componente
+    loadData();
+  }, []);
+
+  useEffect(() => {
+    // Recargar cuando cambien los filtros (excluyendo la carga inicial)
     loadData();
   }, [filters]);
 
   useEffect(() => {
-    loadTodayAttendance();
-  }, [selectedDate]);
+    // Solo cargar asistencias del día si ya tenemos atletas cargados
+    if (atletas.length > 0) {
+      loadTodayAttendance();
+    }
+  }, [selectedDate, atletas]);
 
   const loadData = async () => {
     setLoading(true);
     try {
-      // Cargar atletas
-      const { data: atletasData, error: atletasError } = await supabase
-        .from('students')
-        .select(`
-          id,
-          categoria,
-          users(id, nombre, apellido, email)
-        `)
-        .order('users(apellido)', { ascending: true });
+      // Cargar atletas solo si no están ya cargados
+      if (atletas.length === 0) {
+        setLoadingAtletas(true);
+        const { data: atletasData, error: atletasError } = await supabase
+          .from('students')
+          .select(`
+            id,
+            categoria,
+            users(id, nombre, apellido, email)
+          `)
+          .order('users(apellido)', { ascending: true });
 
-      if (atletasError) throw atletasError;
-      setAtletas(atletasData || []);
+        if (atletasError) throw atletasError;
+        setAtletas(atletasData || []);
+        setLoadingAtletas(false);
+      }
 
       // Cargar asistencias con filtros - Estrategia separada para evitar problemas de JOIN
       let query = supabase
@@ -66,7 +80,7 @@ const AsistenciasManager = ({ user }) => {
 
       // Filtro por categoría
       if (filters.categoria) {
-        const atletasCategoria = atletasData
+        const atletasCategoria = (atletas.length > 0 ? atletas : await loadAtletasForFilter())
           .filter(a => a.categoria === filters.categoria)
           .map(a => a.id);
         
@@ -85,17 +99,28 @@ const AsistenciasManager = ({ user }) => {
       if (asistenciasError) throw asistenciasError;
 
       // Combinar asistencias con datos de estudiantes
+      const currentAtletas = atletas.length > 0 ? atletas : await loadAtletasForFilter();
       const asistenciasWithDetails = await Promise.all(
         (asistenciasRaw || []).map(async (asistencia) => {
-          const { data: student } = await supabase
-            .from('students')
-            .select(`
-              id,
-              categoria,
-              users!inner(id, nombre, apellido, email)
-            `)
-            .eq('id', asistencia.student_id)
-            .single();
+          const student = currentAtletas.find(a => a.id === asistencia.student_id);
+          
+          if (!student) {
+            // Si no encontramos el estudiante en cache, cargarlo
+            const { data: studentData } = await supabase
+              .from('students')
+              .select(`
+                id,
+                categoria,
+                users!inner(id, nombre, apellido, email)
+              `)
+              .eq('id', asistencia.student_id)
+              .single();
+              
+            return {
+              ...asistencia,
+              students: studentData
+            };
+          }
 
           return {
             ...asistencia,
@@ -112,6 +137,27 @@ const AsistenciasManager = ({ user }) => {
     } finally {
       setLoading(false);
     }
+  };
+
+  // Función auxiliar para cargar atletas cuando se necesitan para filtros
+  const loadAtletasForFilter = async () => {
+    const { data: atletasData, error: atletasError } = await supabase
+      .from('students')
+      .select(`
+        id,
+        categoria,
+        users(id, nombre, apellido, email)
+      `)
+      .order('users(apellido)', { ascending: true });
+
+    if (atletasError) throw atletasError;
+    const atletasResult = atletasData || [];
+    
+    if (atletas.length === 0) {
+      setAtletas(atletasResult);
+    }
+    
+    return atletasResult;
   };
 
   const loadTodayAttendance = async () => {
@@ -175,7 +221,8 @@ const AsistenciasManager = ({ user }) => {
   };
 
   const markAllPresent = async () => {
-    if (!window.confirm('¿Marcar todos los atletas como presentes?')) {
+    // eslint-disable-next-line no-restricted-globals
+    if (!confirm('¿Marcar todos los atletas como presentes?')) {
       return;
     }
 
@@ -186,15 +233,16 @@ const AsistenciasManager = ({ user }) => {
           await toggleAttendance(atleta.id, false); // Marcar como presente
         }
       }
-      alert('Todos los atletas marcados como presentes');
+      alert('✅ Todos los atletas marcados como presentes');
     } catch (error) {
       console.error('Error marcando asistencias masivas:', error);
-      alert('Error: ' + error.message);
+      alert('❌ Error: ' + error.message);
     }
   };
 
   const clearAllAttendance = async () => {
-    if (!window.confirm('¿Limpiar todas las asistencias del día?')) {
+    // eslint-disable-next-line no-restricted-globals
+    if (!confirm('¿Limpiar todas las asistencias del día?')) {
       return;
     }
 
@@ -206,9 +254,9 @@ const AsistenciasManager = ({ user }) => {
 
       if (error) throw error;
 
+      // Recargar solo las asistencias del día, mantener atletas
       loadTodayAttendance();
-      loadData();
-      alert('Asistencias del día limpiadas');
+      alert('✅ Asistencias del día limpiadas correctamente');
     } catch (error) {
       console.error('Error limpiando asistencias:', error);
       alert('Error: ' + error.message);

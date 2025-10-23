@@ -4,7 +4,7 @@
   padding: 1rem;
   max-width: 1400px;
   margin: 0 auto;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
   min-height: 100vh;
   color: white;
   position: relative;
@@ -287,6 +287,13 @@
   -webkit-overflow-scrolling: touch;
 }
 
+@media (max-width: 480px) {
+  .modalOverlay {
+    padding: 0.5rem;
+    align-items: flex-start;
+  }
+}
+
 .modalOverlay::-webkit-scrollbar {
   width: 8px;
 }
@@ -305,7 +312,7 @@
 }
 
 .modal {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
   border-radius: 20px;
   width: 100%;
   max-width: 900px;
@@ -400,9 +407,16 @@
 
 .formGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
   margin-bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
 .inputGroup {
@@ -537,8 +551,13 @@
   border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-.cancelButton:hover {
+.cancelButton:hover:not(:disabled) {
   background: rgba(255, 255, 255, 0.2);
+}
+
+.cancelButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .saveButton {
@@ -547,9 +566,16 @@
   box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
 }
 
-.saveButton:hover {
+.saveButton:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
+.saveButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.2);
 }
 
 /* Responsive */

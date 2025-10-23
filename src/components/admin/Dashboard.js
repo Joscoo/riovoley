@@ -369,6 +369,17 @@ const Dashboard = ({ user, onNavigateToSection }) => {
                 <p>Nueva mensualidad</p>
               </div>
             </button>
+
+            <button 
+              className={styles.actionButton}
+              onClick={() => onNavigateToSection('usuarios')}
+            >
+              <span>👥</span>
+              <div>
+                <strong>Gestionar Usuarios</strong>
+                <p>Roles y permisos</p>
+              </div>
+            </button>
             
             <button 
               className={styles.actionButton}

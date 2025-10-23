@@ -9,6 +9,7 @@ const TestsFisicosManager = ({ user }) => {
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [editingTest, setEditingTest] = useState(null);
+  const [saving, setSaving] = useState(false);
   const [filters, setFilters] = useState({
     atletaId: '',
     fechaDesde: '',
@@ -123,31 +124,58 @@ const TestsFisicosManager = ({ user }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Validaciones
-    if (!formData.student_id) {
-      alert('Error: Debe seleccionar un atleta');
-      return;
-    }
-    
-    if (!formData.fecha_test) {
-      alert('Error: La fecha del test es requerida');
-      return;
-    }
-
-    // Validar que al menos un campo de medición esté completo
-    const mediciones = [
-      formData.estatura, formData.peso, formData.brazo_extend_inicial,
-      formData.brazo_extend_sin_impulso, formData.brazo_extend_con_impulso,
-      formData.fuerza_explosiva_salto_largo, formData.envergadura_brazos_extendidos_lateral
-    ];
-
-    if (!mediciones.some(medicion => medicion && String(medicion).trim() !== '')) {
-      alert('Error: Debe ingresar al menos una medición física');
-      return;
-    }
+    setSaving(true);
     
     try {
+      // Validaciones básicas
+      if (!formData.student_id) {
+        alert('❌ Error: Debe seleccionar un atleta');
+        return;
+      }
+      
+      if (!formData.fecha_test) {
+        alert('❌ Error: La fecha del test es requerida');
+        return;
+      }
+
+      // Validar fecha no futura
+      const fechaTest = new Date(formData.fecha_test);
+      const hoy = new Date();
+      hoy.setHours(23, 59, 59, 999);
+      
+      if (fechaTest > hoy) {
+        alert('❌ Error: La fecha del test no puede ser futura');
+        return;
+      }
+
+      // Validar que al menos un campo de medición esté completo
+      const mediciones = [
+        formData.estatura, formData.peso, formData.brazo_extend_inicial,
+        formData.brazo_extend_sin_impulso, formData.brazo_extend_con_impulso,
+        formData.fuerza_explosiva_salto_largo, formData.envergadura_brazos_extendidos_lateral
+      ];
+
+      if (!mediciones.some(medicion => medicion && String(medicion).trim() !== '')) {
+        alert('❌ Error: Debe ingresar al menos una medición física');
+        return;
+      }
+
+      // Validaciones específicas de rangos
+      if (formData.estatura && (Number.parseFloat(formData.estatura) < 0.5 || Number.parseFloat(formData.estatura) > 3.0)) {
+        alert('❌ Error: La estatura debe estar entre 0.5m y 3.0m');
+        return;
+      }
+
+      if (formData.peso && (Number.parseFloat(formData.peso) < 20 || Number.parseFloat(formData.peso) > 300)) {
+        alert('❌ Error: El peso debe estar entre 20kg y 300kg');
+        return;
+      }
+
+      if (formData.fuerza_explosiva_salto_largo && Number.parseFloat(formData.fuerza_explosiva_salto_largo) > 10) {
+        alert('❌ Error: El salto largo no puede ser mayor a 10 metros');
+        return;
+      }
+      
       if (editingTest) {
         await updateTest();
       } else {
@@ -159,7 +187,9 @@ const TestsFisicosManager = ({ user }) => {
       loadTests();
     } catch (error) {
       console.error('Error guardando test físico:', error);
-      alert('Error: ' + error.message);
+      alert('❌ Error: ' + error.message);
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -607,14 +637,16 @@ const TestsFisicosManager = ({ user }) => {
                   type="button"
                   onClick={() => setShowModal(false)}
                   className={styles.cancelButton}
+                  disabled={saving}
                 >
                   Cancelar
                 </button>
                 <button 
                   type="submit"
                   className={styles.saveButton}
+                  disabled={saving}
                 >
-                  {editingTest ? 'Actualizar Test' : 'Guardar Test'}
+                  {saving ? '⏳ Guardando...' : (editingTest ? '✏️ Actualizar Test' : '💾 Guardar Test')}
                 </button>
               </div>
             </form>
