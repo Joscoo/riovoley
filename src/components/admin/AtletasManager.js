@@ -1,5 +1,6 @@
 // src/components/admin/AtletasManager.js
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import { EmailService } from '../../services/emailService';
 import { createStudentWorking, resendWorkingCredentials } from '../../services/userCreationWorking';
@@ -257,8 +258,8 @@ ${result.canLogin ? '✅ El usuario puede ingresar inmediatamente.' : '⚠️ Pu
       .from('students')
       .update({
         categoria: formData.categoria,
-        altura: formData.altura ? parseFloat(formData.altura) : null,
-        peso: formData.peso ? parseFloat(formData.peso) : null,
+        altura: formData.altura ? Number.parseFloat(formData.altura) : null,
+        peso: formData.peso ? Number.parseFloat(formData.peso) : null,
         fecha_nacimiento: formData.fecha_nacimiento
       })
       .eq('id', editingAtleta.id);
@@ -503,7 +504,7 @@ Por favor, envía esta información al estudiante de forma manual.`);
 
   const formatCategoria = (categoria) => {
     if (!categoria) return '--';
-    return categoria.replace(/_/g, ' ').toUpperCase();
+    return categoria.replaceAll('_', ' ').toUpperCase();
   };
 
   return (
@@ -802,6 +803,14 @@ Por favor, envía esta información al estudiante de forma manual.`);
       )}
     </div>
   );
+};
+
+AtletasManager.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.string,
+    email: PropTypes.string,
+    role: PropTypes.string
+  }).isRequired
 };
 
 export default AtletasManager;

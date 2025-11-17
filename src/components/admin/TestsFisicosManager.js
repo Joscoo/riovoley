@@ -1,5 +1,6 @@
 // src/components/admin/TestsFisicosManager.js
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/TestsFisicosManager.module.css';
 
@@ -196,13 +197,13 @@ const TestsFisicosManager = ({ user }) => {
   const createTest = async () => {
     const testData = {
       student_id: formData.student_id,
-      estatura: formData.estatura ? parseFloat(formData.estatura) : null,
-      peso: formData.peso ? parseFloat(formData.peso) : null,
-      brazo_extend_inicial: formData.brazo_extend_inicial ? parseFloat(formData.brazo_extend_inicial) : null,
-      brazo_extend_sin_impulso: formData.brazo_extend_sin_impulso ? parseFloat(formData.brazo_extend_sin_impulso) : null,
-      brazo_extend_con_impulso: formData.brazo_extend_con_impulso ? parseFloat(formData.brazo_extend_con_impulso) : null,
-      fuerza_explosiva_salto_largo: formData.fuerza_explosiva_salto_largo ? parseFloat(formData.fuerza_explosiva_salto_largo) : null,
-      envergadura_brazos_extendidos_lateral: formData.envergadura_brazos_extendidos_lateral ? parseFloat(formData.envergadura_brazos_extendidos_lateral) : null,
+      estatura: formData.estatura ? Number.parseFloat(formData.estatura) : null,
+      peso: formData.peso ? Number.parseFloat(formData.peso) : null,
+      brazo_extend_inicial: formData.brazo_extend_inicial ? Number.parseFloat(formData.brazo_extend_inicial) : null,
+      brazo_extend_sin_impulso: formData.brazo_extend_sin_impulso ? Number.parseFloat(formData.brazo_extend_sin_impulso) : null,
+      brazo_extend_con_impulso: formData.brazo_extend_con_impulso ? Number.parseFloat(formData.brazo_extend_con_impulso) : null,
+      fuerza_explosiva_salto_largo: formData.fuerza_explosiva_salto_largo ? Number.parseFloat(formData.fuerza_explosiva_salto_largo) : null,
+      envergadura_brazos_extendidos_lateral: formData.envergadura_brazos_extendidos_lateral ? Number.parseFloat(formData.envergadura_brazos_extendidos_lateral) : null,
       observaciones: formData.observaciones || null,
       fecha_test: formData.fecha_test,
       modified_at: new Date().toISOString()
@@ -222,13 +223,13 @@ const TestsFisicosManager = ({ user }) => {
   const updateTest = async () => {
     const testData = {
       student_id: formData.student_id,
-      estatura: formData.estatura ? parseFloat(formData.estatura) : null,
-      peso: formData.peso ? parseFloat(formData.peso) : null,
-      brazo_extend_inicial: formData.brazo_extend_inicial ? parseFloat(formData.brazo_extend_inicial) : null,
-      brazo_extend_sin_impulso: formData.brazo_extend_sin_impulso ? parseFloat(formData.brazo_extend_sin_impulso) : null,
-      brazo_extend_con_impulso: formData.brazo_extend_con_impulso ? parseFloat(formData.brazo_extend_con_impulso) : null,
-      fuerza_explosiva_salto_largo: formData.fuerza_explosiva_salto_largo ? parseFloat(formData.fuerza_explosiva_salto_largo) : null,
-      envergadura_brazos_extendidos_lateral: formData.envergadura_brazos_extendidos_lateral ? parseFloat(formData.envergadura_brazos_extendidos_lateral) : null,
+      estatura: formData.estatura ? Number.parseFloat(formData.estatura) : null,
+      peso: formData.peso ? Number.parseFloat(formData.peso) : null,
+      brazo_extend_inicial: formData.brazo_extend_inicial ? Number.parseFloat(formData.brazo_extend_inicial) : null,
+      brazo_extend_sin_impulso: formData.brazo_extend_sin_impulso ? Number.parseFloat(formData.brazo_extend_sin_impulso) : null,
+      brazo_extend_con_impulso: formData.brazo_extend_con_impulso ? Number.parseFloat(formData.brazo_extend_con_impulso) : null,
+      fuerza_explosiva_salto_largo: formData.fuerza_explosiva_salto_largo ? Number.parseFloat(formData.fuerza_explosiva_salto_largo) : null,
+      envergadura_brazos_extendidos_lateral: formData.envergadura_brazos_extendidos_lateral ? Number.parseFloat(formData.envergadura_brazos_extendidos_lateral) : null,
       observaciones: formData.observaciones || null,
       fecha_test: formData.fecha_test,
       modified_at: new Date().toISOString() // Agregar el campo que el trigger espera
@@ -487,7 +488,7 @@ const TestsFisicosManager = ({ user }) => {
                       <option value="">Seleccionar atleta</option>
                       {atletas.map(atleta => (
                         <option key={atleta.id} value={atleta.id}>
-                          {atleta.full_name} ({atleta.categoria?.replace(/_/g, ' ').toUpperCase()})
+                          {atleta.full_name} ({atleta.categoria?.replaceAll('_', ' ').toUpperCase()})
                         </option>
                       ))}
                     </select>
@@ -655,6 +656,14 @@ const TestsFisicosManager = ({ user }) => {
       )}
     </div>
   );
+};
+
+TestsFisicosManager.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.string,
+    email: PropTypes.string,
+    role: PropTypes.string
+  }).isRequired
 };
 
 export default TestsFisicosManager;

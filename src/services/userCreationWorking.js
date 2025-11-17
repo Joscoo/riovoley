@@ -94,6 +94,27 @@ export const createUserWorking = async (userData) => {
 
     console.log('✅ Usuario creado en tabla pública');
 
+    // Crear perfil en user_profiles con el rol correspondiente
+    try {
+      const { data: profileData, error: profileError } = await supabase
+        .from('user_profiles')
+        .insert({
+          id: authUserId,
+          full_name: `${nombre.trim()} ${apellido.trim()}`,
+          role: role
+        })
+        .select()
+        .single();
+
+      if (profileError) {
+        console.warn('⚠️ No se pudo crear perfil en user_profiles:', profileError.message);
+      } else {
+        console.log('✅ Perfil creado en user_profiles con rol:', role);
+      }
+    } catch (profileError) {
+      console.warn('⚠️ Error al crear perfil en user_profiles:', profileError);
+    }
+
     // Cerrar sesión automática
     await supabase.auth.signOut();
 

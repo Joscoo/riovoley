@@ -6,41 +6,31 @@ const Horarios = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [debugInfo, setDebugInfo] = useState('');
 
   useEffect(() => {
-    const loadCalendarEvents = async () => {
-      try {
-        setLoading(true);
-        setDebugInfo('Iniciando conexión con Google Calendar...');
-        
-        const initialized = await initializeGapi();
-        
-        if (initialized) {
-          setDebugInfo('API inicializada. Obteniendo eventos...');
-          const calendarEvents = await getCalendarEvents();
-          
-          if (calendarEvents.length > 0) {
-            setEvents(calendarEvents);
-            setDebugInfo(`Se encontraron ${calendarEvents.length} eventos`);
-          } else {
-            setDebugInfo('No se encontraron eventos en el calendario');
-          }
-        } else {
-          setError('No se pudo conectar con Google Calendar API');
-        }
-      } catch (error) {
-        console.error('Error loading calendar:', error);
-        setError(`Error al cargar los horarios: ${error.message}`);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     loadCalendarEvents();
   }, []);
 
-  // Resto del componente igual...
+  const loadCalendarEvents = async () => {
+    try {
+      setLoading(true);
+      
+      const initialized = await initializeGapi();
+      
+      if (initialized) {
+        const calendarEvents = await getCalendarEvents();
+        setEvents(calendarEvents);
+      } else {
+        setError('No se pudo conectar con Google Calendar API');
+      }
+    } catch (error) {
+      console.error('Error loading calendar:', error);
+      setError(`Error al cargar los horarios: ${error.message}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('es-ES', {
@@ -59,23 +49,23 @@ const Horarios = () => {
     });
   };
 
-  const getDayOfWeek = (dateString) => {
-    const date = new Date(dateString);
-    const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-    return days[date.getDay()];
-  };
-
   if (loading) {
     return (
       <div className={styles.pageContainer}>
-        <video autoPlay muted loop playsInline className={styles.videoBg}>
+        {/* Video de fondo */}
+        <video className={styles.videoBg} autoPlay loop muted playsInline>
           <source src="/videos/bg-video.mp4" type="video/mp4" />
         </video>
-        <div className={styles.container}>
-          <div className={styles.loading}>
-            <h2>🔄 Cargando horarios...</h2>
-            <p>{debugInfo}</p>
-          </div>
+        <div className={styles.overlay}></div>
+
+        <section className={styles.heroSection}>
+          <h1 className={styles.title}>Horarios de Entrenamientos</h1>
+          <p className={styles.subtitle}>Consulta nuestros horarios actualizados</p>
+        </section>
+        
+        <div className={styles.loadingContainer}>
+          <div className={styles.spinner}></div>
+          <p className={styles.loadingText}>Cargando horarios...</p>
         </div>
       </div>
     );
@@ -84,15 +74,24 @@ const Horarios = () => {
   if (error) {
     return (
       <div className={styles.pageContainer}>
-        <video autoPlay muted loop playsInline className={styles.videoBg}>
+        {/* Video de fondo */}
+        <video className={styles.videoBg} autoPlay loop muted playsInline>
           <source src="/videos/bg-video.mp4" type="video/mp4" />
         </video>
-        <div className={styles.container}>
-          <div className={styles.error}>
-            <h2>❌ Error</h2>
-            <p>{error}</p>
-            <p><small>Debug: {debugInfo}</small></p>
-          </div>
+        <div className={styles.overlay}></div>
+
+        <section className={styles.heroSection}>
+          <h1 className={styles.title}>Horarios de Entrenamientos</h1>
+          <p className={styles.subtitle}>Consulta nuestros horarios actualizados</p>
+        </section>
+        
+        <div className={styles.errorContainer}>
+          <div className={styles.errorIcon}>⚠️</div>
+          <h2 className={styles.errorTitle}>Error al Cargar Horarios</h2>
+          <p className={styles.errorMessage}>{error}</p>
+          <button onClick={loadCalendarEvents} className={styles.retryButton}>
+            Reintentar
+          </button>
         </div>
       </div>
     );
@@ -100,60 +99,93 @@ const Horarios = () => {
 
   return (
     <div className={styles.pageContainer}>
-      <video autoPlay muted loop playsInline className={styles.videoBg}>
+      {/* Video de fondo */}
+      <video className={styles.videoBg} autoPlay loop muted playsInline>
         <source src="/videos/bg-video.mp4" type="video/mp4" />
       </video>
+      <div className={styles.overlay}></div>
 
-      <div className={styles.container}>
-        <h2 className={styles.title}>📅 Horarios de Entrenamientos</h2>
-        
-        {events.length > 0 ? (
-          <div className={styles.calendarGrid}>
-            {events.map((event, index) => (
-              <div key={index} className={styles.eventCard}>
+      <section className={styles.heroSection}>
+        <h1 className={styles.title}>Horarios de Entrenamientos</h1>
+        <p className={styles.subtitle}>
+          Consulta nuestros horarios actualizados y elige el mejor momento para entrenar
+        </p>
+      </section>
+      
+      {events.length > 0 ? (
+        <div className={styles.eventsContainer}>
+          <div className={styles.eventsGrid}>
+            {events.map((event) => (
+              <div key={event.id} className={styles.eventCard}>
                 <div className={styles.eventHeader}>
+                  <div className={styles.eventIcon}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
                   <h3 className={styles.eventTitle}>{event.summary}</h3>
-                  <span className={styles.dayBadge}>
-                    {getDayOfWeek(event.start.dateTime || event.start.date)}
-                  </span>
                 </div>
+                
                 <div className={styles.eventDetails}>
-                  <p className={styles.eventDate}>
-                    📅 {formatDate(event.start.dateTime || event.start.date)}
-                  </p>
+                  <div className={styles.detailItem}>
+                    <div className={styles.detailIcon}>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                    <div className={styles.detailContent}>
+                      <p className={styles.detailLabel}>Fecha</p>
+                      <p className={styles.detailValue}>{formatDate(event.start.dateTime || event.start.date)}</p>
+                    </div>
+                  </div>
+
                   {event.start.dateTime && event.end.dateTime && (
-                    <p className={styles.eventTime}>
-                      🕐 {formatTime(event.start.dateTime)} - {formatTime(event.end.dateTime)}
-                    </p>
+                    <div className={styles.detailItem}>
+                      <div className={styles.detailIcon}>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <circle cx="12" cy="12" r="10"/>
+                          <polyline points="12 6 12 12 16 14" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </div>
+                      <div className={styles.detailContent}>
+                        <p className={styles.detailLabel}>Hora</p>
+                        <p className={styles.detailValue}>{formatTime(event.start.dateTime)} - {formatTime(event.end.dateTime)}</p>
+                      </div>
+                    </div>
                   )}
-                  {event.description && (
-                    <p className={styles.eventDescription}>
-                      📝 {event.description}
-                    </p>
-                  )}
+
                   {event.location && (
-                    <p className={styles.eventLocation}>
-                      📍 {event.location}
-                    </p>
+                    <div className={styles.detailItem}>
+                      <div className={styles.detailIcon}>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </div>
+                      <div className={styles.detailContent}>
+                        <p className={styles.detailLabel}>Ubicación</p>
+                        <p className={styles.detailValue}>{event.location}</p>
+                      </div>
+                    </div>
                   )}
                 </div>
+
+                {event.description && (
+                  <div className={styles.eventDescription}>
+                    <p>{event.description}</p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
-        ) : (
-          <div className={styles.noEvents}>
-            <h3>📭 No hay entrenamientos programados</h3>
-            <p>Los horarios se actualizarán pronto en Google Calendar.</p>
-            <p><small>Debug: {debugInfo}</small></p>
-          </div>
-        )}
-
-        <div className={styles.calendarInfo}>
-          <h3>💡 Información</h3>
-          <p>Los horarios se actualizan automáticamente desde nuestro Google Calendar.</p>
-          <p>Para cambios de último momento, revisa esta página regularmente.</p>
         </div>
-      </div>
+      ) : (
+        <div className={styles.emptyState}>
+          <div className={styles.emptyIcon}>📅</div>
+          <h3 className={styles.emptyTitle}>No hay entrenamientos programados</h3>
+          <p className={styles.emptyText}>Los horarios se actualizarán pronto. Revisa esta página regularmente.</p>
+        </div>
+      )}
     </div>
   );
 };

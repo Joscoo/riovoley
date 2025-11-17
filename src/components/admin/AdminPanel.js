@@ -8,6 +8,8 @@ import PagosManager from './PagosManager';
 import AsistenciasManager from './AsistenciasManager';
 import TestsFisicosManager from './TestsFisicosManager';
 import UsuariosManager from './UsuariosManager';
+import EntrenadoresManager from './EntrenadoresManager';
+import ProfileSettings from './ProfileSettings';
 import styles from '../../styles/AdminPanel.module.css';
 
 const AdminPanel = ({ user }) => {
@@ -36,10 +38,12 @@ const AdminPanel = ({ user }) => {
   const menuItems = [
     { id: 'dashboard', icon: '📊', label: 'Dashboard', description: 'Resumen y estadísticas' },
     { id: 'atletas', icon: '🏐', label: 'Atletas', description: 'Gestionar deportistas' },
+    { id: 'entrenadores', icon: '👨‍🏫', label: 'Entrenadores', description: 'Gestionar entrenadores' },
     { id: 'pagos', icon: '💰', label: 'Pagos', description: 'Mensualidades y facturación' },
     { id: 'asistencias', icon: '📅', label: 'Asistencias', description: 'Control de entrenamientos' },
     { id: 'tests-fisicos', icon: '🏋️', label: 'Tests Físicos', description: 'Evaluaciones físicas' },
-    { id: 'usuarios', icon: '👥', label: 'Usuarios', description: 'Gestión de usuarios y roles' }
+    { id: 'usuarios', icon: '👥', label: 'Usuarios', description: 'Gestión de usuarios y roles' },
+    { id: 'configuracion', icon: '⚙️', label: 'Configuración', description: 'Perfil y seguridad' }
   ];
 
   const handleNavigateToSection = (sectionId) => {
@@ -52,6 +56,8 @@ const AdminPanel = ({ user }) => {
         return <Dashboard user={user} onNavigateToSection={handleNavigateToSection} />;
       case 'atletas':
         return <AtletasManager user={user} />;
+      case 'entrenadores':
+        return <EntrenadoresManager user={user} />;
       case 'pagos':
         return <PagosManager user={user} />;
       case 'asistencias':
@@ -60,6 +66,8 @@ const AdminPanel = ({ user }) => {
         return <TestsFisicosManager user={user} />;
       case 'usuarios':
         return <UsuariosManager user={user} />;
+      case 'configuracion':
+        return <ProfileSettings user={user} />;
       default:
         return <Dashboard user={user} />;
     }

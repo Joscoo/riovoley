@@ -8,7 +8,7 @@ const AsistenciasManager = ({ user }) => {
   const [asistencias, setAsistencias] = useState([]);
   const [atletas, setAtletas] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [loadingAtletas, setLoadingAtletas] = useState(true);
+  const [loadingAtletas, setLoadingAtletas] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
   const [filters, setFilters] = useState({
     fecha_inicio: new Date(new Date().setDate(new Date().getDate() - 7)).toISOString().split('T')[0],
@@ -298,7 +298,7 @@ const AsistenciasManager = ({ user }) => {
 
   const formatCategoria = (categoria) => {
     if (!categoria) return '--';
-    return categoria.replace(/_/g, ' ').toUpperCase();
+    return categoria.replaceAll('_', ' ').toUpperCase();
   };
 
   const stats = calculateStats();

@@ -223,7 +223,7 @@ const PagosManager = ({ user }) => {
         email: atletaData.users.email,
         nombre: atletaData.users.nombre,
         apellido: atletaData.users.apellido,
-        monto: parseFloat(formData.monto),
+        monto: Number.parseFloat(formData.monto),
         fecha_inicio: formData.fecha_inicio,
         fecha_fin: formData.fecha_fin,
         fecha_pago: formData.fecha_pago,
@@ -642,7 +642,7 @@ const PagosManager = ({ user }) => {
                       <td>
                         <div className={styles.atletaInfo}>
                           <strong>{pago.student?.user?.nombre} {pago.student?.user?.apellido}</strong>
-                          <small>{pago.student?.categoria?.replace(/_/g, ' ').toUpperCase()}</small>
+                          <small>{pago.student?.categoria?.replaceAll('_', ' ').toUpperCase()}</small>
                         </div>
                       </td>
                       <td>{formatPeriodo(pago.fecha_inicio, pago.fecha_fin)}</td>
@@ -736,7 +736,7 @@ const PagosManager = ({ user }) => {
                     <option value="">Seleccionar atleta</option>
                     {atletas.map(atleta => (
                       <option key={atleta.id} value={atleta.id}>
-                        {atleta.users?.nombre} {atleta.users?.apellido} - {atleta.categoria?.replace(/_/g, ' ').toUpperCase()}
+                        {atleta.users?.nombre} {atleta.users?.apellido} - {atleta.categoria?.replaceAll('_', ' ').toUpperCase()}
                       </option>
                     ))}
                   </select>

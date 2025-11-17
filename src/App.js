@@ -6,7 +6,9 @@ import HomePage from './components/HomePage';
 import AboutUs from './components/AboutUs';
 import Horarios from './components/Horarios';
 import Login from './components/Login';
+import ResetPassword from './components/ResetPassword';
 import AdminPanel from './components/admin/AdminPanel';
+import TrainerPanel from './components/trainer/TrainerPanel';
 import StudentViewDebug from './components/StudentViewDebug';
 import { getCurrentUser } from './config/supabase';
 import { useUserProfile } from './hooks/useUserProfile';
@@ -61,7 +63,9 @@ function App() {
         <Route path="/sobre" element={<AboutUs />} />
         <Route path="/horarios" element={<Horarios />} />
         <Route path="/login" element={<Login onLoginSuccess={handleLoginSuccess} />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/admin" element={<AdminPanel user={user} />} />
+        <Route path="/entrenador" element={<TrainerPanel user={user} />} />
         <Route path="/estudiante" element={<StudentViewDebug user={user} />} />
       </Routes>
     </Router>

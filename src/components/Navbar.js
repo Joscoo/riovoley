@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { supabase } from '../config/supabase';
 import styles from '../styles/Navbar.module.css';
 
@@ -69,8 +70,11 @@ const Navbar = ({ user, userProfile, onLogout }) => {
           <li><Link to="/">Inicio</Link></li>
           <li><Link to="/sobre">Sobre Nosotros</Link></li>
           <li><Link to="/horarios">Horarios</Link></li>
-          {user && userProfile?.role?.toLowerCase() !== 'administrador' && (
+          {user && userProfile?.role?.toLowerCase() === 'estudiante' && (
             <li><Link to="/estudiante" className={styles.studentLink}>👤 Mi Perfil</Link></li>
+          )}
+          {userProfile?.role?.toLowerCase() === 'entrenador' && (
+            <li><Link to="/entrenador" className={styles.trainerLink}>🟠 Panel Entrenador</Link></li>
           )}
           {userProfile?.role?.toLowerCase() === 'administrador' && (
             <li><Link to="/admin" className={styles.adminLink}>🔴 Panel Admin</Link></li>
@@ -114,8 +118,11 @@ const Navbar = ({ user, userProfile, onLogout }) => {
         <li><Link to="/" onClick={() => setMenuOpen(false)}>Inicio</Link></li>
         <li><Link to="/sobre" onClick={() => setMenuOpen(false)}>Sobre Nosotros</Link></li>
         <li><Link to="/horarios" onClick={() => setMenuOpen(false)}>Horarios</Link></li>
-        {user && userProfile?.role?.toLowerCase() !== 'administrador' && (
+        {user && userProfile?.role?.toLowerCase() === 'estudiante' && (
           <li><Link to="/estudiante" className={styles.studentLink} onClick={() => setMenuOpen(false)}>👤 Mi Perfil</Link></li>
+        )}
+        {userProfile?.role?.toLowerCase() === 'entrenador' && (
+          <li><Link to="/entrenador" className={styles.trainerLink} onClick={() => setMenuOpen(false)}>🟠 Panel Entrenador</Link></li>
         )}
         {userProfile?.role?.toLowerCase() === 'administrador' && (
           <li><Link to="/admin" className={styles.adminLink} onClick={() => setMenuOpen(false)}>🔴 Panel Admin</Link></li>
@@ -149,34 +156,14 @@ const Navbar = ({ user, userProfile, onLogout }) => {
   );
 };
 
-// PropTypes validation
 Navbar.propTypes = {
-  user: function(props, propName, componentName) {
-    const user = props[propName];
-    if (user !== null && user !== undefined && (typeof user !== 'object' || !user.email)) {
-      return new Error(
-        'Invalid prop `' + propName + '` supplied to `' + componentName + 
-        '`. Expected null or an object with email property.'
-      );
-    }
-  },
-  userProfile: function(props, propName, componentName) {
-    const userProfile = props[propName];
-    if (userProfile !== null && userProfile !== undefined && typeof userProfile !== 'object') {
-      return new Error(
-        'Invalid prop `' + propName + '` supplied to `' + componentName + 
-        '`. Expected null or an object.'
-      );
-    }
-  },
-  onLogout: function(props, propName, componentName) {
-    if (props[propName] && typeof props[propName] !== 'function') {
-      return new Error(
-        'Invalid prop `' + propName + '` of type `' + typeof props[propName] +
-        '` supplied to `' + componentName + '`, expected `function`.'
-      );
-    }
-  }
+  user: PropTypes.shape({
+    email: PropTypes.string
+  }),
+  userProfile: PropTypes.shape({
+    role: PropTypes.string
+  }),
+  onLogout: PropTypes.func
 };
 
 export default Navbar;

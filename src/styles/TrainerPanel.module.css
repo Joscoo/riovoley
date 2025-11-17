@@ -1,0 +1,294 @@
+/* TrainerPanel.module.css */
+
+.trainerPanel {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+}
+
+/* Header */
+.header {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 1.5rem 2rem;
+}
+
+.headerContent {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.welcomeSection h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: white;
+}
+
+.welcomeSection p {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.welcomeSection strong {
+  color: #20c997;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.trainerBadge {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(45deg, #28a745, #20c997);
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+/* Main Container */
+.mainContainer {
+  display: flex;
+  max-width: 1600px;
+  margin: 0 auto;
+  min-height: calc(100vh - 100px);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 280px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-right: 2px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem 0;
+}
+
+.sidebarHeader {
+  padding: 0 1.5rem 1.5rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.sidebarHeader h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+.menuList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menuList li {
+  margin-bottom: 0.5rem;
+}
+
+.menuItem {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  color: white;
+  border-left: 3px solid transparent;
+}
+
+.menuItem:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-left-color: #20c997;
+}
+
+.menuItem.active {
+  background: rgba(32, 201, 151, 0.2);
+  border-left-color: #20c997;
+}
+
+.menuIcon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.menuText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.menuLabel {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.menuDescription {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* Content Area */
+.content {
+  flex: 1;
+  overflow-x: hidden;
+}
+
+/* Loading State */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #20c997;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading p {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+/* Access Denied */
+.accessDenied {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.accessDenied h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #dc3545;
+}
+
+.accessDenied p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+}
+
+.accessDenied strong {
+  color: #20c997;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 240px;
+  }
+
+  .menuItem {
+    padding: 0.875rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContainer {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 0;
+  }
+
+  .sidebarHeader {
+    padding: 0 1rem 1rem;
+  }
+
+  .menuList {
+    display: flex;
+    overflow-x: auto;
+    padding: 0 0.5rem;
+  }
+
+  .menuList li {
+    margin-bottom: 0;
+    min-width: auto;
+  }
+
+  .menuItem {
+    flex-direction: column;
+    padding: 0.75rem 1rem;
+    gap: 0.5rem;
+    text-align: center;
+    white-space: nowrap;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+  }
+
+  .menuItem:hover,
+  .menuItem.active {
+    border-left: none;
+    border-bottom-color: #20c997;
+  }
+
+  .menuDescription {
+    display: none;
+  }
+
+  .headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .welcomeSection h1 {
+    font-size: 1.5rem;
+  }
+
+  .menuIcon {
+    font-size: 1.25rem;
+  }
+
+  .menuLabel {
+    font-size: 0.9rem;
+  }
+}
