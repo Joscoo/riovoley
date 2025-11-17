@@ -15,7 +15,6 @@ const ResetPassword = () => {
   useEffect(() => {
     const initPasswordReset = async () => {
       // Supabase maneja automáticamente el token de la URL
-      // Solo necesitamos verificar si hay una sesión activa después del redirect
       const { data: { session } } = await supabase.auth.getSession();
       
       console.log('🔍 Sesión actual:', session);
@@ -24,13 +23,35 @@ const ResetPassword = () => {
         console.log('✅ Sesión de recuperación activa');
         setIsValidToken(true);
       } else {
-        console.log('❌ No hay sesión de recuperación');
-        setMensaje('Enlace de recuperación inválido o expirado. Por favor, solicita un nuevo enlace.');
-        setIsValidToken(false);
+        console.log('⏳ Esperando autenticación de Supabase...');
       }
     };
 
+    // Escuchar cambios en la autenticación
+    const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+      console.log('🔔 Evento de auth:', event);
+      console.log('🔔 Sesión:', session);
+      
+      if (event === 'PASSWORD_RECOVERY') {
+        console.log('✅ Evento de recuperación de contraseña detectado');
+        setIsValidToken(true);
+        setMensaje('');
+      } else if (event === 'SIGNED_IN' && session) {
+        console.log('✅ Usuario autenticado para recuperación');
+        setIsValidToken(true);
+        setMensaje('');
+      } else if (event === 'TOKEN_REFRESHED') {
+        console.log('✅ Token refrescado');
+        setIsValidToken(true);
+      }
+    });
+
     initPasswordReset();
+
+    // Cleanup
+    return () => {
+      authListener?.subscription?.unsubscribe();
+    };
   }, []);
 
   const handleResetPassword = async (e) => {
