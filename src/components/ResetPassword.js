@@ -14,13 +14,21 @@ const ResetPassword = () => {
 
   useEffect(() => {
     // Verificar si hay un hash de recuperación en la URL
+    console.log('🔍 URL completa:', window.location.href);
+    console.log('🔍 Hash:', window.location.hash);
+    
     const hashParams = new URLSearchParams(window.location.hash.substring(1));
     const accessToken = hashParams.get('access_token');
     const type = hashParams.get('type');
+    
+    console.log('🔍 Access Token:', accessToken);
+    console.log('🔍 Type:', type);
 
     if (type === 'recovery' && accessToken) {
+      console.log('✅ Token válido detectado');
       setIsValidToken(true);
     } else {
+      console.log('❌ Token inválido o no encontrado');
       setMensaje('Enlace de recuperación inválido o expirado');
     }
   }, []);
