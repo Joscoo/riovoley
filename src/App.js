@@ -57,16 +57,15 @@ function App() {
 
   return (
     <Router>
-      <Navbar user={user} userProfile={userProfile} onLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/sobre" element={<AboutUs />} />
-        <Route path="/horarios" element={<Horarios />} />
-        <Route path="/login" element={<Login onLoginSuccess={handleLoginSuccess} />} />
+        <Route path="/" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><HomePage /></>} />
+        <Route path="/sobre" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><AboutUs /></>} />
+        <Route path="/horarios" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><Horarios /></>} />
+        <Route path="/login" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><Login onLoginSuccess={handleLoginSuccess} /></>} />
         <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/admin" element={<AdminPanel user={user} />} />
-        <Route path="/entrenador" element={<TrainerPanel user={user} />} />
-        <Route path="/estudiante" element={<StudentViewDebug user={user} />} />
+        <Route path="/admin" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><AdminPanel user={user} /></>} />
+        <Route path="/entrenador" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><TrainerPanel user={user} /></>} />
+        <Route path="/estudiante" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><StudentViewDebug user={user} /></>} />
       </Routes>
     </Router>
   );
