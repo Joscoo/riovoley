@@ -134,8 +134,12 @@ function Login({ onLoginSuccess }) {
       } else if (userRole === 'entrenador') {
         console.log('➡️ Redirigiendo a /entrenador');
         navigate('/entrenador');
+      } else if (userRole === 'estudiante' || userRole === 'usuario') {
+        console.log('➡️ Redirigiendo a /estudiante');
+        navigate('/estudiante');
       } else {
-        console.log('ℹ️ Rol no requiere redirección automática:', userRole);
+        console.log('ℹ️ Rol no reconocido, redirigiendo a /estudiante:', userRole);
+        navigate('/estudiante');
       }
     }
   }, [user, userProfile, isLoading, navigate]);

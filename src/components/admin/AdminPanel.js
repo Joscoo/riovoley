@@ -10,6 +10,7 @@ import TestsFisicosManager from './TestsFisicosManager';
 import UsuariosManager from './UsuariosManager';
 import EntrenadoresManager from './EntrenadoresManager';
 import ProfileSettings from './ProfileSettings';
+import AnunciosManager from './AnunciosManager';
 import styles from '../../styles/AdminPanel.module.css';
 
 const AdminPanel = ({ user }) => {
@@ -43,6 +44,7 @@ const AdminPanel = ({ user }) => {
     { id: 'asistencias', icon: '📅', label: 'Asistencias', description: 'Control de entrenamientos' },
     { id: 'tests-fisicos', icon: '🏋️', label: 'Tests Físicos', description: 'Evaluaciones físicas' },
     { id: 'usuarios', icon: '👥', label: 'Usuarios', description: 'Gestión de usuarios y roles' },
+    { id: 'anuncios', icon: '📢', label: 'Anuncios', description: 'Comunicados y notificaciones' },
     { id: 'configuracion', icon: '⚙️', label: 'Configuración', description: 'Perfil y seguridad' }
   ];
 
@@ -66,6 +68,8 @@ const AdminPanel = ({ user }) => {
         return <TestsFisicosManager user={user} />;
       case 'usuarios':
         return <UsuariosManager user={user} />;
+      case 'anuncios':
+        return <AnunciosManager user={user} />;
       case 'configuracion':
         return <ProfileSettings user={user} />;
       default:
@@ -75,59 +79,29 @@ const AdminPanel = ({ user }) => {
 
   return (
     <div className={styles.adminPanel}>
-      {/* Header */}
-      <header className={styles.header}>
-        <div className={styles.headerContent}>
-          <div className={styles.welcomeSection}>
-            <h1>🔴 Panel de Administración</h1>
-            <p>Bienvenido, <strong>{profile?.full_name || user?.email}</strong></p>
-          </div>
-          <div className={styles.userInfo}>
-            <span className={styles.adminBadge}>ADMINISTRADOR</span>
-          </div>
-        </div>
-      </header>
-
       <div className={styles.mainContainer}>
         {/* Sidebar Navigation */}
         <nav className={styles.sidebar}>
           <div className={styles.sidebarHeader}>
-            <h3>🏐 RioVoley Admin</h3>
+            <div className={styles.userAvatar}>👤</div>
+            <h3>{profile?.full_name || user?.email}</h3>
+            <p className={styles.userRole}>Administrador</p>
+            <span className={styles.adminBadge}>ADMINISTRADOR</span>
           </div>
-          
-          <ul className={styles.menuList}>
+
+          <nav className={styles.menu}>
             {menuItems.map((item) => (
-              <li key={item.id}>
-                <button
-                  className={`${styles.menuItem} ${activeSection === item.id ? styles.active : ''}`}
-                  onClick={() => setActiveSection(item.id)}
-                >
-                  <span className={styles.menuIcon}>{item.icon}</span>
-                  <div className={styles.menuText}>
-                    <span className={styles.menuLabel}>{item.label}</span>
-                    <span className={styles.menuDescription}>{item.description}</span>
-                  </div>
-                </button>
-              </li>
+              <button
+                key={item.id}
+                className={`${styles.menuItem} ${activeSection === item.id ? styles.active : ''}`}
+                onClick={() => setActiveSection(item.id)}
+              >
+                <span className={styles.menuIcon}>{item.icon}</span>
+                <span>{item.label}</span>
+              </button>
             ))}
-          </ul>
-
-          <div className={styles.sidebarFooter}>
-            <div className={styles.quickStats}>
-              <h4>📈 Resumen Rápido</h4>
-              <div className={styles.statItem}>
-                <span>👥 Atletas Activos</span>
-                <span className={styles.statValue}>--</span>
-              </div>
-              <div className={styles.statItem}>
-                <span>💰 Ingresos del Mes</span>
-                <span className={styles.statValue}>--</span>
-              </div>
-            </div>
-          </div>
-        </nav>
-
-        {/* Main Content */}
+          </nav>
+        </nav>        {/* Main Content */}
         <main className={styles.mainContent}>
           <div className={styles.contentHeader}>
             <div className={styles.breadcrumb}>

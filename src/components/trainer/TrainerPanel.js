@@ -8,6 +8,7 @@ import TrainerAsistenciasManager from './TrainerAsistenciasManager';
 import TrainerTestsFisicosManager from './TrainerTestsFisicosManager';
 import TrainerPagosManager from './TrainerPagosManager';
 import TrainerProfileSettings from './TrainerProfileSettings';
+import AnunciosManager from '../admin/AnunciosManager';
 import styles from '../../styles/TrainerPanel.module.css';
 
 const TrainerPanel = ({ user }) => {
@@ -41,6 +42,7 @@ const TrainerPanel = ({ user }) => {
     { id: 'asistencias', icon: '📅', label: 'Asistencias', description: 'Registrar asistencias' },
     { id: 'tests-fisicos', icon: '🏋️', label: 'Tests Físicos', description: 'Evaluaciones físicas' },
     { id: 'pagos', icon: '💰', label: 'Pagos', description: 'Registrar pagos' },
+    { id: 'anuncios', icon: '📢', label: 'Anuncios', description: 'Comunicados y notificaciones' },
     { id: 'configuracion', icon: '⚙️', label: 'Configuración', description: 'Perfil y seguridad' }
   ];
 
@@ -60,6 +62,8 @@ const TrainerPanel = ({ user }) => {
         return <TrainerTestsFisicosManager user={user} />;
       case 'pagos':
         return <TrainerPagosManager user={user} />;
+      case 'anuncios':
+        return <AnunciosManager user={user} />;
       case 'configuracion':
         return <TrainerProfileSettings user={user} />;
       default:
@@ -69,47 +73,40 @@ const TrainerPanel = ({ user }) => {
 
   return (
     <div className={styles.trainerPanel}>
-      {/* Header */}
-      <header className={styles.header}>
-        <div className={styles.headerContent}>
-          <div className={styles.welcomeSection}>
-            <h1>🏐 Panel del Entrenador</h1>
-            <p>Bienvenido, <strong>{profile?.full_name || user?.email}</strong></p>
-          </div>
-          <div className={styles.userInfo}>
-            <span className={styles.trainerBadge}>ENTRENADOR</span>
-          </div>
-        </div>
-      </header>
-
       <div className={styles.mainContainer}>
         {/* Sidebar Navigation */}
         <nav className={styles.sidebar}>
           <div className={styles.sidebarHeader}>
-            <h3>🏐 RioVoley</h3>
+            <div className={styles.userAvatar}>
+              👤
+            </div>
+            <h3>{profile?.full_name || user?.email?.split('@')[0] || 'Entrenador'}</h3>
+            <p className={styles.userRole}>Entrenador</p>
+            <span className={styles.trainerBadge}>ENTRENADOR</span>
           </div>
           
-          <ul className={styles.menuList}>
+          <div className={styles.menu}>
             {menuItems.map((item) => (
-              <li key={item.id}>
-                <button
-                  className={`${styles.menuItem} ${activeSection === item.id ? styles.active : ''}`}
-                  onClick={() => setActiveSection(item.id)}
-                >
-                  <span className={styles.menuIcon}>{item.icon}</span>
-                  <div className={styles.menuText}>
-                    <span className={styles.menuLabel}>{item.label}</span>
-                    <span className={styles.menuDescription}>{item.description}</span>
-                  </div>
-                </button>
-              </li>
+              <button
+                key={item.id}
+                className={`${styles.menuItem} ${activeSection === item.id ? styles.active : ''}`}
+                onClick={() => setActiveSection(item.id)}
+              >
+                <span className={styles.menuIcon}>{item.icon}</span>
+                <div className={styles.menuText}>
+                  <span className={styles.menuLabel}>{item.label}</span>
+                  <span className={styles.menuDescription}>{item.description}</span>
+                </div>
+              </button>
             ))}
-          </ul>
+          </div>
         </nav>
 
         {/* Main Content */}
-        <main className={styles.content}>
-          {renderActiveSection()}
+        <main className={styles.mainContent}>
+          <div className={styles.contentBody}>
+            {renderActiveSection()}
+          </div>
         </main>
       </div>
     </div>
