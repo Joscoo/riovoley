@@ -158,6 +158,7 @@ function Login({ onLoginSuccess }) {
         if (onLoginSuccess) {
           onLoginSuccess(session.user);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
       } else {
         setUser(null);
         setIsLoggedIn(false);

@@ -41,6 +41,7 @@ const TestsFisicosManager = ({ user }) => {
   useEffect(() => {
     loadAtletas();
     loadTests();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
 
   // Cerrar dropdown al hacer clic fuera

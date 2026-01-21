@@ -39,6 +39,7 @@ const AtletasManager = ({ user }) => {
 
   useEffect(() => {
     loadAtletas();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
 
   const loadAtletas = async () => {

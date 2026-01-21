@@ -18,6 +18,7 @@ export const useUserProfile = (user) => {
       setProfile(null);
       setError(null);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user?.id]); // Solo reaccionar al cambio de ID del usuario
 
   const loadUserProfile = async (currentUser) => {

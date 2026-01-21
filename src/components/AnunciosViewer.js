@@ -18,6 +18,7 @@ const AnunciosViewer = ({ userRole = 'all', limit = null, showFilters = false })
 
   useEffect(() => {
     loadAnuncios();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userRole, selectedPriority]);
 
   const loadAnuncios = async () => {

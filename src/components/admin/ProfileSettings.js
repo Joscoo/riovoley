@@ -31,6 +31,7 @@ const ProfileSettings = ({ user }) => {
     if (user) {
       loadUserData();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const loadUserData = async () => {

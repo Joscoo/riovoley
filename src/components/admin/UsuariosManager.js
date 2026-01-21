@@ -34,6 +34,7 @@ const UsuariosManager = ({ user }) => {
 
   useEffect(() => {
     loadUsuarios();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
 
   const loadUsuarios = async () => {

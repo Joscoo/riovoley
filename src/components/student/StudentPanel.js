@@ -21,6 +21,7 @@ const StudentPanel = ({ user }) => {
     if (user?.id && !profileLoading) {
       loadStudentData();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, profileLoading]);
 
   const loadStudentData = async () => {

@@ -96,7 +96,7 @@ export const createUserWorking = async (userData) => {
 
     // Crear perfil en user_profiles con el rol correspondiente
     try {
-      const { data: profileData, error: profileError } = await supabase
+      const { error: profileError } = await supabase
         .from('user_profiles')
         .insert({
           id: authUserId,
@@ -224,9 +224,10 @@ export const createStudentWorking = async (studentData) => {
 export const resendWorkingCredentials = async (userData) => {
   const { 
     user_id,
-    email, 
-    nombre, 
-    apellido
+    email
+    // nombre y apellido se usan en versiones futuras
+    // nombre, 
+    // apellido
   } = userData;
 
   try {

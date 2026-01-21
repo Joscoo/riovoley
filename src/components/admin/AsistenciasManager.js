@@ -8,7 +8,6 @@ const AsistenciasManager = ({ user }) => {
   const [asistencias, setAsistencias] = useState([]);
   const [atletas, setAtletas] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [loadingAtletas, setLoadingAtletas] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
   const [filters, setFilters] = useState({
     fecha_inicio: new Date(new Date().setDate(new Date().getDate() - 7)).toISOString().split('T')[0],
@@ -31,11 +30,13 @@ const AsistenciasManager = ({ user }) => {
   useEffect(() => {
     // Cargar datos iniciales al montar el componente
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     // Recargar cuando cambien los filtros (excluyendo la carga inicial)
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
 
   useEffect(() => {
@@ -43,6 +44,7 @@ const AsistenciasManager = ({ user }) => {
     if (atletas.length > 0) {
       loadTodayAttendance();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedDate, atletas]);
 
   const loadData = async () => {
