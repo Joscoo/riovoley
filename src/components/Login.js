@@ -167,6 +167,7 @@ function Login({ onLoginSuccess }) {
 
     // Limpiar la suscripción cuando el componente se desmonte
     return () => subscription.unsubscribe();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onLoginSuccess]);
 
   const checkUser = async () => {

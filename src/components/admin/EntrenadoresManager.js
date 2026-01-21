@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
-import { createUserWorking, generateTemporaryPassword } from '../../services/userCreationWorking';
+import { createUserWorking } from '../../services/userCreationWorking';
 import styles from '../../styles/EntrenadoresManager.module.css';
 
 const EntrenadoresManager = ({ user }) => {
