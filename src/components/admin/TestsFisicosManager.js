@@ -1,5 +1,5 @@
 // src/components/admin/TestsFisicosManager.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/TestsFisicosManager.module.css';
@@ -8,9 +8,12 @@ const TestsFisicosManager = ({ user }) => {
   const [tests, setTests] = useState([]);
   const [atletas, setAtletas] = useState([]);
   const [loading, setLoading] = useState(true);
+  const searchableSelectRef = useRef(null);
   const [showModal, setShowModal] = useState(false);
   const [editingTest, setEditingTest] = useState(null);
   const [saving, setSaving] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showAtletasList, setShowAtletasList] = useState(false);
   const [filters, setFilters] = useState({
     atletaId: '',
     fechaDesde: '',
@@ -27,6 +30,10 @@ const TestsFisicosManager = ({ user }) => {
     brazo_extend_con_impulso: '',
     fuerza_explosiva_salto_largo: '',
     envergadura_brazos_extendidos_lateral: '',
+    fuerza_abdomen: '',
+    fuerza_brazos: '',
+    fuerza_piernas: '',
+    elevaciones_barra: '',
     observaciones: '',
     fecha_test: new Date().toISOString().split('T')[0]
   });
@@ -35,6 +42,23 @@ const TestsFisicosManager = ({ user }) => {
     loadAtletas();
     loadTests();
   }, [filters]);
+
+  // Cerrar dropdown al hacer clic fuera
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchableSelectRef.current && !searchableSelectRef.current.contains(event.target)) {
+        setShowAtletasList(false);
+      }
+    };
+
+    if (showAtletasList) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showAtletasList]);
 
   const loadAtletas = async () => {
     try {
@@ -162,7 +186,7 @@ const TestsFisicosManager = ({ user }) => {
       }
 
       // Validaciones específicas de rangos
-      if (formData.estatura && (Number.parseFloat(formData.estatura) < 0.5 || Number.parseFloat(formData.estatura) > 3.0)) {
+      if (formData.estatura && (Number.parseFloat(formData.estatura) < 0.5 || Number.parseFloat(formData.estatura) > 3)) {
         alert('❌ Error: La estatura debe estar entre 0.5m y 3.0m');
         return;
       }
@@ -204,6 +228,10 @@ const TestsFisicosManager = ({ user }) => {
       brazo_extend_con_impulso: formData.brazo_extend_con_impulso ? Number.parseFloat(formData.brazo_extend_con_impulso) : null,
       fuerza_explosiva_salto_largo: formData.fuerza_explosiva_salto_largo ? Number.parseFloat(formData.fuerza_explosiva_salto_largo) : null,
       envergadura_brazos_extendidos_lateral: formData.envergadura_brazos_extendidos_lateral ? Number.parseFloat(formData.envergadura_brazos_extendidos_lateral) : null,
+      fuerza_abdomen: formData.fuerza_abdomen ? Number.parseInt(formData.fuerza_abdomen) : null,
+      fuerza_brazos: formData.fuerza_brazos ? Number.parseInt(formData.fuerza_brazos) : null,
+      fuerza_piernas: formData.fuerza_piernas ? Number.parseInt(formData.fuerza_piernas) : null,
+      elevaciones_barra: formData.elevaciones_barra ? Number.parseInt(formData.elevaciones_barra) : null,
       observaciones: formData.observaciones || null,
       fecha_test: formData.fecha_test,
       modified_at: new Date().toISOString()
@@ -230,6 +258,10 @@ const TestsFisicosManager = ({ user }) => {
       brazo_extend_con_impulso: formData.brazo_extend_con_impulso ? Number.parseFloat(formData.brazo_extend_con_impulso) : null,
       fuerza_explosiva_salto_largo: formData.fuerza_explosiva_salto_largo ? Number.parseFloat(formData.fuerza_explosiva_salto_largo) : null,
       envergadura_brazos_extendidos_lateral: formData.envergadura_brazos_extendidos_lateral ? Number.parseFloat(formData.envergadura_brazos_extendidos_lateral) : null,
+      fuerza_abdomen: formData.fuerza_abdomen ? Number.parseInt(formData.fuerza_abdomen) : null,
+      fuerza_brazos: formData.fuerza_brazos ? Number.parseInt(formData.fuerza_brazos) : null,
+      fuerza_piernas: formData.fuerza_piernas ? Number.parseInt(formData.fuerza_piernas) : null,
+      elevaciones_barra: formData.elevaciones_barra ? Number.parseInt(formData.elevaciones_barra) : null,
       observaciones: formData.observaciones || null,
       fecha_test: formData.fecha_test,
       modified_at: new Date().toISOString() // Agregar el campo que el trigger espera
@@ -254,7 +286,8 @@ const TestsFisicosManager = ({ user }) => {
   };
 
   const deleteTest = async (test) => {
-    if (!window.confirm(`¿Estás seguro de eliminar el test físico de ${test.atleta_name}?`)) {
+    const confirmDelete = globalThis.confirm(`¿Estás seguro de eliminar el test físico de ${test.atleta_name}?`);
+    if (!confirmDelete) {
       return;
     }
 
@@ -286,9 +319,20 @@ const TestsFisicosManager = ({ user }) => {
         brazo_extend_con_impulso: test.brazo_extend_con_impulso || '',
         fuerza_explosiva_salto_largo: test.fuerza_explosiva_salto_largo || '',
         envergadura_brazos_extendidos_lateral: test.envergadura_brazos_extendidos_lateral || '',
+        fuerza_abdomen: test.fuerza_abdomen || '',
+        fuerza_brazos: test.fuerza_brazos || '',
+        fuerza_piernas: test.fuerza_piernas || '',
+        elevaciones_barra: test.elevaciones_barra || '',
         observaciones: test.observaciones || '',
         fecha_test: test.fecha_test || new Date().toISOString().split('T')[0]
       });
+      // Establecer el nombre del atleta en el campo de búsqueda al editar
+      if (test.student_id) {
+        const atleta = atletas.find(a => a.id === test.student_id);
+        if (atleta) {
+          setSearchTerm(`${atleta.full_name} (${atleta.categoria?.replaceAll('_', ' ').toUpperCase()})`);
+        }
+      }
     } else {
       setEditingTest(null);
       resetForm();
@@ -306,9 +350,34 @@ const TestsFisicosManager = ({ user }) => {
       brazo_extend_con_impulso: '',
       fuerza_explosiva_salto_largo: '',
       envergadura_brazos_extendidos_lateral: '',
+      fuerza_abdomen: '',
+      fuerza_brazos: '',
+      fuerza_piernas: '',
+      elevaciones_barra: '',
       observaciones: '',
       fecha_test: new Date().toISOString().split('T')[0]
     });
+    setSearchTerm('');
+    setShowAtletasList(false);
+  };
+
+  // Filtrar atletas por término de búsqueda
+  const filteredAtletas = atletas.filter(atleta => 
+    atleta.full_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    atleta.categoria?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  // Obtener el nombre del atleta seleccionado
+  const getSelectedAtletaName = () => {
+    const selected = atletas.find(a => a.id === formData.student_id);
+    return selected ? `${selected.full_name} (${selected.categoria?.replaceAll('_', ' ').toUpperCase()})` : '';
+  };
+
+  // Seleccionar un atleta
+  const selectAtleta = (atleta) => {
+    setFormData({...formData, student_id: atleta.id});
+    setSearchTerm(`${atleta.full_name} (${atleta.categoria?.replaceAll('_', ' ').toUpperCase()})`);
+    setShowAtletasList(false);
   };
 
   return (
@@ -439,6 +508,34 @@ const TestsFisicosManager = ({ user }) => {
                     </div>
                   )}
                   
+                  {test.fuerza_abdomen && (
+                    <div className={styles.infoItem}>
+                      <span className={styles.label}>Abdominales (1min):</span>
+                      <span>{test.fuerza_abdomen} reps</span>
+                    </div>
+                  )}
+                  
+                  {test.fuerza_brazos && (
+                    <div className={styles.infoItem}>
+                      <span className={styles.label}>Flexiones (1min):</span>
+                      <span>{test.fuerza_brazos} reps</span>
+                    </div>
+                  )}
+                  
+                  {test.fuerza_piernas && (
+                    <div className={styles.infoItem}>
+                      <span className={styles.label}>Sentadillas (1min):</span>
+                      <span>{test.fuerza_piernas} reps</span>
+                    </div>
+                  )}
+                  
+                  {test.elevaciones_barra && (
+                    <div className={styles.infoItem}>
+                      <span className={styles.label}>Elevaciones (1min):</span>
+                      <span>{test.elevaciones_barra} reps</span>
+                    </div>
+                  )}
+                  
                   {test.observaciones && (
                     <div className={styles.infoItem}>
                       <span className={styles.label}>Observaciones:</span>
@@ -478,20 +575,64 @@ const TestsFisicosManager = ({ user }) => {
                 <h4 className={styles.sectionTitle}>📋 Información General</h4>
                 <div className={styles.formGrid}>
                   <div className={styles.inputGroup}>
-                    <label htmlFor="student_id">Atleta *</label>
-                    <select
-                      id="student_id"
-                      value={formData.student_id}
-                      onChange={(e) => setFormData({...formData, student_id: e.target.value})}
-                      required
-                    >
-                      <option value="">Seleccionar atleta</option>
-                      {atletas.map(atleta => (
-                        <option key={atleta.id} value={atleta.id}>
-                          {atleta.full_name} ({atleta.categoria?.replaceAll('_', ' ').toUpperCase()})
-                        </option>
-                      ))}
-                    </select>
+                    <label htmlFor="student_search">Atleta *</label>
+                    <div className={styles.searchableSelect} ref={searchableSelectRef}>
+                      <input
+                        id="student_search"
+                        type="text"
+                        value={searchTerm}
+                        onChange={(e) => {
+                          setSearchTerm(e.target.value);
+                          setShowAtletasList(true);
+                          // Limpiar selección si el usuario modifica el texto
+                          if (getSelectedAtletaName() !== e.target.value) {
+                            setFormData({...formData, student_id: ''});
+                          }
+                        }}
+                        onFocus={() => setShowAtletasList(true)}
+                        placeholder="🔍 Buscar atleta por nombre o categoría..."
+                        required={!formData.student_id}
+                        className={styles.searchInput}
+                        autoComplete="off"
+                      />
+                      {showAtletasList && searchTerm && (
+                        <div className={styles.dropdownList}>
+                          {filteredAtletas.length > 0 ? (
+                            filteredAtletas.map(atleta => (
+                              <button
+                                key={atleta.id}
+                                type="button"
+                                className={`${styles.dropdownItem} ${formData.student_id === atleta.id ? styles.selected : ''}`}
+                                onClick={() => selectAtleta(atleta)}
+                              >
+                                <div className={styles.atletaName}>{atleta.full_name}</div>
+                                <div className={styles.atletaCategoria}>
+                                  {atleta.categoria?.replaceAll('_', ' ').toUpperCase()}
+                                </div>
+                              </button>
+                            ))
+                          ) : (
+                            <div className={styles.dropdownEmpty}>
+                              No se encontraron atletas
+                            </div>
+                          )}
+                        </div>
+                      )}
+                      {formData.student_id && (
+                        <button
+                          type="button"
+                          className={styles.clearButton}
+                          onClick={() => {
+                            setFormData({...formData, student_id: ''});
+                            setSearchTerm('');
+                            setShowAtletasList(false);
+                          }}
+                          title="Limpiar selección"
+                        >
+                          ✕
+                        </button>
+                      )}
+                    </div>
                   </div>
                   
                   <div className={styles.inputGroup}>
@@ -617,6 +758,64 @@ const TestsFisicosManager = ({ user }) => {
                 </div>
               </div>
 
+              {/* Pruebas de Fuerza Muscular */}
+              <div className={styles.formSection}>
+                <h4 className={styles.sectionTitle}>💪 Fuerza Muscular (repeticiones por minuto)</h4>
+                <div className={styles.formGrid}>
+                  <div className={styles.inputGroup}>
+                    <label htmlFor="fuerza_abdomen">Abdominales (1 min)</label>
+                    <input
+                      id="fuerza_abdomen"
+                      type="number"
+                      min="0"
+                      max="200"
+                      value={formData.fuerza_abdomen}
+                      onChange={(e) => setFormData({...formData, fuerza_abdomen: e.target.value})}
+                      placeholder="50"
+                    />
+                  </div>
+                  
+                  <div className={styles.inputGroup}>
+                    <label htmlFor="fuerza_brazos">Flexiones de brazo (1 min)</label>
+                    <input
+                      id="fuerza_brazos"
+                      type="number"
+                      min="0"
+                      max="200"
+                      value={formData.fuerza_brazos}
+                      onChange={(e) => setFormData({...formData, fuerza_brazos: e.target.value})}
+                      placeholder="30"
+                    />
+                  </div>
+                  
+                  <div className={styles.inputGroup}>
+                    <label htmlFor="fuerza_piernas">Sentadillas (1 min)</label>
+                    <input
+                      id="fuerza_piernas"
+                      type="number"
+                      min="0"
+                      max="300"
+                      value={formData.fuerza_piernas}
+                      onChange={(e) => setFormData({...formData, fuerza_piernas: e.target.value})}
+                      placeholder="40"
+                    />
+                  </div>
+                  
+                  <div className={styles.inputGroup}>
+                    <label htmlFor="elevaciones_barra">Elevaciones en barra (1 min)</label>
+                    <input
+                      id="elevaciones_barra"
+                      type="number"
+                      min="0"
+                      max="100"
+                      value={formData.elevaciones_barra}
+                      onChange={(e) => setFormData({...formData, elevaciones_barra: e.target.value})}
+                      placeholder="10"
+                    />
+                  </div>
+                </div>
+              </div>
+
               {/* Observaciones */}
               <div className={styles.formSection}>
                 <h4 className={styles.sectionTitle}>📝 Observaciones</h4>
@@ -647,7 +846,10 @@ const TestsFisicosManager = ({ user }) => {
                   className={styles.saveButton}
                   disabled={saving}
                 >
-                  {saving ? '⏳ Guardando...' : (editingTest ? '✏️ Actualizar Test' : '💾 Guardar Test')}
+                  {(() => {
+                    if (saving) return '⏳ Guardando...';
+                    return editingTest ? '✏️ Actualizar Test' : '💾 Guardar Test';
+                  })()}
                 </button>
               </div>
             </form>

@@ -112,6 +112,10 @@ brazo_extend_sin_impulso numeric NULL
 brazo_extend_con_impulso numeric NULL
 fuerza_explosiva_salto_largo numeric NULL
 envergadura_brazos_extendidos_lateral numeric NULL
+fuerza_abdomen integer NULL CHECK (fuerza_abdomen >= 0 AND fuerza_abdomen <= 200)
+fuerza_brazos integer NULL CHECK (fuerza_brazos >= 0 AND fuerza_brazos <= 200)
+fuerza_piernas integer NULL CHECK (fuerza_piernas >= 0 AND fuerza_piernas <= 300)
+elevaciones_barra integer NULL CHECK (elevaciones_barra >= 0 AND elevaciones_barra <= 100)
 observaciones text NULL
 fecha_test date DEFAULT CURRENT_DATE
 created_at timestamptz DEFAULT CURRENT_TIMESTAMP

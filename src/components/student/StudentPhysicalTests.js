@@ -474,6 +474,46 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
                           </div>
                         </div>
                       )}
+
+                      {test.fuerza_abdomen && (
+                        <div className={styles.metricCard}>
+                          <div className={styles.metricIcon}>🔥</div>
+                          <div className={styles.metricInfo}>
+                            <div className={styles.metricLabel}>Abdominales (1min)</div>
+                            <div className={styles.metricValue}>{test.fuerza_abdomen} reps</div>
+                          </div>
+                        </div>
+                      )}
+
+                      {test.fuerza_brazos && (
+                        <div className={styles.metricCard}>
+                          <div className={styles.metricIcon}>💪</div>
+                          <div className={styles.metricInfo}>
+                            <div className={styles.metricLabel}>Flexiones (1min)</div>
+                            <div className={styles.metricValue}>{test.fuerza_brazos} reps</div>
+                          </div>
+                        </div>
+                      )}
+
+                      {test.fuerza_piernas && (
+                        <div className={styles.metricCard}>
+                          <div className={styles.metricIcon}>🦵</div>
+                          <div className={styles.metricInfo}>
+                            <div className={styles.metricLabel}>Sentadillas (1min)</div>
+                            <div className={styles.metricValue}>{test.fuerza_piernas} reps</div>
+                          </div>
+                        </div>
+                      )}
+
+                      {test.elevaciones_barra && (
+                        <div className={styles.metricCard}>
+                          <div className={styles.metricIcon}>🏋️</div>
+                          <div className={styles.metricInfo}>
+                            <div className={styles.metricLabel}>Elevaciones (1min)</div>
+                            <div className={styles.metricValue}>{test.elevaciones_barra} reps</div>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 );

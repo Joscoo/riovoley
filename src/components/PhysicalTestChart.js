@@ -28,7 +28,11 @@ const PhysicalTestChart = ({ tests }) => {
     { key: 'brazo_extend_sin_impulso', label: 'Brazo Sin Impulso (cm)', color: '#ff7300', unit: 'cm' },
     { key: 'brazo_extend_con_impulso', label: 'Brazo Con Impulso (cm)', color: '#8dd1e1', unit: 'cm' },
     { key: 'fuerza_explosiva_salto_largo', label: 'Salto Largo (m)', color: '#d084d0', unit: 'm' },
-    { key: 'envergadura_brazos_extendidos_lateral', label: 'Envergadura (cm)', color: '#ffb347', unit: 'cm' }
+    { key: 'envergadura_brazos_extendidos_lateral', label: 'Envergadura (cm)', color: '#ffb347', unit: 'cm' },
+    { key: 'fuerza_abdomen', label: 'Abdominales (reps/min)', color: '#ff6b6b', unit: 'reps' },
+    { key: 'fuerza_brazos', label: 'Flexiones (reps/min)', color: '#4ecdc4', unit: 'reps' },
+    { key: 'fuerza_piernas', label: 'Sentadillas (reps/min)', color: '#95e1d3', unit: 'reps' },
+    { key: 'elevaciones_barra', label: 'Elevaciones (reps/min)', color: '#f38181', unit: 'reps' }
   ];
 
   // Preparar datos para el gráfico de evolución
