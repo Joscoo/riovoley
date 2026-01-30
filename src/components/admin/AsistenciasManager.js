@@ -52,7 +52,6 @@ const AsistenciasManager = ({ user }) => {
     try {
       // Cargar atletas solo si no están ya cargados
       if (atletas.length === 0) {
-        setLoadingAtletas(true);
         const { data: atletasData, error: atletasError } = await supabase
           .from('students')
           .select(`
@@ -64,7 +63,6 @@ const AsistenciasManager = ({ user }) => {
 
         if (atletasError) throw atletasError;
         setAtletas(atletasData || []);
-        setLoadingAtletas(false);
       }
 
       // Cargar asistencias con filtros - Estrategia separada para evitar problemas de JOIN

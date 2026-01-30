@@ -72,12 +72,13 @@ export const createUserWorking = async (userData) => {
     console.log('✅ Usuario creado en Auth con ID:', authUserId);
 
     // Crear usuario en public.users con el mismo ID
+    // NOTA: NO guardamos password aquí por seguridad (Supabase Auth lo maneja)
     const { data: publicUserData, error: publicUserError } = await supabase
       .from('users')
       .insert({
         id: authUserId,
         email: email.trim(),
-        password: temporaryPassword, // Guardar la contraseña real que funciona
+        // password: NO se guarda por seguridad
         role: role,
         nombre: nombre.trim(),
         apellido: apellido.trim(),
@@ -161,9 +162,7 @@ export const createStudentWorking = async (studentData) => {
     apellido,
     fecha_nacimiento,
     telefono,
-    categoria,
-    altura,
-    peso
+    categoria
   } = studentData;
 
   try {
@@ -187,8 +186,6 @@ export const createStudentWorking = async (studentData) => {
       .insert({
         user_id: userId,
         categoria: categoria,
-        altura: altura ? Number.parseFloat(altura) : null,
-        peso: peso ? Number.parseFloat(peso) : null,
         fecha_nacimiento: fecha_nacimiento
       })
       .select()
@@ -219,63 +216,59 @@ export const createStudentWorking = async (studentData) => {
 };
 
 /**
- * Reenvía credenciales existentes o genera nuevas credenciales válidas
+ * Reenvía credenciales generando una NUEVA contraseña temporal
+ * NOTA: No se puede recuperar la contraseña anterior de Supabase Auth por seguridad
  */
 export const resendWorkingCredentials = async (userData) => {
   const { 
     user_id,
     email
-    // nombre y apellido se usan en versiones futuras
-    // nombre, 
-    // apellido
+    // nombre y apellido disponibles si se necesitan en el futuro
   } = userData;
 
   try {
-    console.log('🔐 Reenviando credenciales que funcionan...');
+    console.log('🔐 Generando nueva contraseña temporal para reenviar credenciales...');
 
-    // Primero intentar obtener la contraseña guardada
-    const { data: existingUser, error: getUserError } = await supabase
-      .from('users')
-      .select('password')
-      .eq('id', user_id)
-      .single();
+    // SIEMPRE generar nueva contraseña (no se puede recuperar la anterior)
+    const newPassword = generateTemporaryPassword();
+    
+    console.log('🔑 Nueva contraseña temporal generada');
 
-    let workingPassword;
-    let needsNewPassword = false;
+    // Actualizar la contraseña en Supabase Auth
+    const { error: updateAuthError } = await supabase.auth.admin.updateUserById(
+      user_id,
+      { password: newPassword }
+    );
 
-    if (getUserError || !existingUser?.password || existingUser.password === 'managed_by_supabase_auth') {
-      // Si no hay contraseña guardada o es el placeholder, generar nueva
-      needsNewPassword = true;
-      workingPassword = generateTemporaryPassword();
-      
-      console.log('🔑 Generando nueva contraseña funcional...');
-      
-      // Actualizar en la tabla users con la nueva contraseña
-      const { error: updateError } = await supabase
-        .from('users')
-        .update({ password: workingPassword })
-        .eq('id', user_id);
+    if (updateAuthError) {
+      throw new Error(`Error actualizando contraseña en Auth: ${updateAuthError.message}`);
+    }
 
-      if (updateError) {
-        console.warn('⚠️ No se pudo actualizar la contraseña en DB:', updateError.message);
-      }
-    } else {
-      // Usar la contraseña guardada que sabemos que funciona
-      workingPassword = existingUser.password;
-      console.log('✅ Usando contraseña guardada que funciona');
+    console.log('✅ Contraseña actualizada en Supabase Auth');
+
+    // Verificar que la nueva contraseña funciona
+    const { data: loginTest, error: loginError } = await supabase.auth.signInWithPassword({
+      email: email.trim(),
+      password: newPassword
+    });
+
+    const canLogin = !loginError;
+    
+    if (loginTest?.user) {
+      await supabase.auth.signOut();
     }
 
     return {
       success: true,
       credentials: {
         email: email.trim(),
-        password: workingPassword,
+        password: newPassword,
         loginUrl: `${globalThis.location.origin}/login`
       },
-      needsPasswordReset: needsNewPassword,
-      message: needsNewPassword 
-        ? 'Se generó una nueva contraseña. El usuario puede necesitar restablecer su contraseña si esta no funciona.'
-        : 'Se están enviando las credenciales originales que funcionan.'
+      canLogin: canLogin,
+      loginError: loginError?.message,
+      message: `Nueva contraseña temporal generada. ${canLogin ? 'Login verificado.' : 'Puede requerir confirmación.'}`,
+      isNewPassword: true // Siempre es nueva
     };
 
   } catch (error) {

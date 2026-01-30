@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import { EmailService } from '../../services/emailService';
+import WhatsAppBusinessService from '../../services/whatsappBusinessService';
 import { createStudentWorking, resendWorkingCredentials } from '../../services/userCreationWorking';
 import styles from '../../styles/AtletasManager.module.css';
 
@@ -11,6 +12,7 @@ const AtletasManager = ({ user }) => {
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [editingAtleta, setEditingAtleta] = useState(null);
+  const [whatsAppBusiness] = useState(new WhatsAppBusinessService());
   const [filters, setFilters] = useState({
     categoria: '',
     search: ''
@@ -27,8 +29,6 @@ const AtletasManager = ({ user }) => {
   const [formData, setFormData] = useState({
     user_id: '',
     categoria: '',
-    altura: '',
-    peso: '',
     fecha_nacimiento: '',
     // Datos del usuario asociado
     email: '',
@@ -45,6 +45,8 @@ const AtletasManager = ({ user }) => {
   const loadAtletas = async () => {
     setLoading(true);
     try {
+      console.log('📥 Cargando atletas...');
+      
       // Obtener atletas con datos de usuario mediante JOIN
       let query = supabase
         .from('students')
@@ -52,8 +54,6 @@ const AtletasManager = ({ user }) => {
           id,
           user_id,
           categoria,
-          altura,
-          peso,
           fecha_nacimiento,
           users!inner(
             id,
@@ -72,6 +72,12 @@ const AtletasManager = ({ user }) => {
       }
 
       const { data: studentsData, error: studentsError } = await query;
+      
+      console.log('📊 Resultado de query atletas:', { 
+        count: studentsData?.length || 0, 
+        error: studentsError,
+        data: studentsData 
+      });
 
       if (studentsError) throw studentsError;
 
@@ -186,9 +192,7 @@ const AtletasManager = ({ user }) => {
         fecha_nacimiento: formData.fecha_nacimiento,
         telefono: formData.telefono || null,
         // Datos específicos de estudiante
-        categoria: formData.categoria,
-        altura: formData.altura,
-        peso: formData.peso
+        categoria: formData.categoria
       });
 
       console.log('✅ Estudiante creado exitosamente:', result);
@@ -259,8 +263,6 @@ ${result.canLogin ? '✅ El usuario puede ingresar inmediatamente.' : '⚠️ Pu
       .from('students')
       .update({
         categoria: formData.categoria,
-        altura: formData.altura ? Number.parseFloat(formData.altura) : null,
-        peso: formData.peso ? Number.parseFloat(formData.peso) : null,
         fecha_nacimiento: formData.fecha_nacimiento
       })
       .eq('id', editingAtleta.id);
@@ -315,7 +317,7 @@ ${result.canLogin ? '✅ El usuario puede ingresar inmediatamente.' : '⚠️ Pu
     }
   };
 
-  // Función para reenviar credenciales por email
+  // Función para reenviar credenciales por email y WhatsApp
   const resendCredentials = async (atleta) => {
     try {
       console.log('📧 Reenviando credenciales para:', atleta.full_name);
@@ -336,6 +338,7 @@ ${result.canLogin ? '✅ El usuario puede ingresar inmediatamente.' : '⚠️ Pu
         email: result.credentials.email,
         nombre: atleta.users.nombre,
         apellido: atleta.users.apellido,
+        telefono: atleta.users.telefono,
         full_name: `${atleta.users.nombre} ${atleta.users.apellido}`.trim(),
         password: result.credentials.password
       };
@@ -343,29 +346,53 @@ ${result.canLogin ? '✅ El usuario puede ingresar inmediatamente.' : '⚠️ Pu
       console.log('🔑 Enviando credenciales que funcionan:', {
         email: userData.email,
         hasPassword: !!userData.password,
-        isOriginal: !result.needsPasswordReset
+        isNewPassword: result.isNewPassword,
+        hasTelefono: !!userData.telefono
       });
 
       // Enviar email con las credenciales que funcionan
       const emailResult = await EmailService.sendCredentials(userData);
       
-      if (emailResult.success) {
-        alert(`✅ Credenciales enviadas exitosamente a ${userData.email}
+      // Intentar enviar por WhatsApp si tiene teléfono
+      let whatsappResult = { success: false };
+      if (userData.telefono) {
+        console.log('📱 Intentando enviar credenciales por WhatsApp...');
+        whatsappResult = await whatsAppBusiness.sendCredentials(userData, userData.password);
+        
+        if (whatsappResult.success) {
+          console.log('✅ Credenciales enviadas por WhatsApp');
+        } else {
+          console.log('⚠️ No se pudo enviar por WhatsApp:', whatsappResult.error);
+        }
+      }
+      
+      // Mensaje de confirmación según los canales exitosos
+      const canalesExitosos = [];
+      if (emailResult.success) canalesExitosos.push('📧 Email');
+      if (whatsappResult.success) canalesExitosos.push('📱 WhatsApp');
+      
+      if (canalesExitosos.length > 0) {
+        alert(`✅ Nueva contraseña temporal generada y enviada vía:
+${canalesExitosos.join('\n')}
 
 📧 Email: ${result.credentials.email}
-🔑 Contraseña: ${result.credentials.password}
+🔑 Nueva Contraseña: ${result.credentials.password}
 🌐 URL: ${result.credentials.loginUrl}
 
-${result.needsPasswordReset ? '⚠️ NOTA: Se generó una nueva contraseña temporal.' : '✅ Se enviaron las credenciales originales que funcionan.'}
+⚠️ IMPORTANTE: Esta es una NUEVA contraseña temporal.
+La contraseña anterior ya no funciona.
 
 ${result.message}`);
       } else {
-        // Si el email falla, mostrar las credenciales directamente
-        alert(`⚠️ No se pudo enviar el email automáticamente.
+        // Si todo falla, mostrar las credenciales directamente
+        alert(`⚠️ No se pudo enviar por Email ni WhatsApp.
 
 📧 Email: ${result.credentials.email}
-🔑 Contraseña: ${result.credentials.password}
+🔑 Nueva Contraseña: ${result.credentials.password}
 🌐 URL: ${result.credentials.loginUrl}
+
+⚠️ IMPORTANTE: Esta es una NUEVA contraseña temporal.
+La contraseña anterior ya no funciona.
 
 ${result.message}
 
@@ -434,8 +461,6 @@ Por favor, envía esta información al estudiante de forma manual.`);
       setFormData({
         user_id: atleta.user_id,
         categoria: atleta.categoria || '',
-        altura: atleta.altura || '',
-        peso: atleta.peso || '',
         fecha_nacimiento: atleta.fecha_nacimiento || '',
         email: atleta.users?.email || '',
         nombre: atleta.users?.nombre || '',
@@ -453,8 +478,6 @@ Por favor, envía esta información al estudiante de forma manual.`);
     setFormData({
       user_id: '',
       categoria: '',
-      altura: '',
-      peso: '',
       fecha_nacimiento: '',
       email: '',
       nombre: '',
@@ -620,20 +643,6 @@ Por favor, envía esta información al estudiante de forma manual.`);
                     <span className={styles.label}>Teléfono:</span>
                     <span>{atleta.telefono || '--'}</span>
                   </div>
-                  
-                  {atleta.altura && (
-                    <div className={styles.infoItem}>
-                      <span className={styles.label}>Altura:</span>
-                      <span>{atleta.altura}m</span>
-                    </div>
-                  )}
-                  
-                  {atleta.peso && (
-                    <div className={styles.infoItem}>
-                      <span className={styles.label}>Peso:</span>
-                      <span>{atleta.peso}kg</span>
-                    </div>
-                  )}
                 </div>
                 
                 <div className={styles.atletaFooter}>
@@ -751,34 +760,6 @@ Por favor, envía esta información al estudiante de forma manual.`);
                         </option>
                       ))}
                     </select>
-                  </div>
-                  
-                  <div className={styles.inputGroup}>
-                    <label htmlFor="altura">Altura (metros)</label>
-                    <input
-                      id="altura"
-                      type="number"
-                      step="0.01"
-                      min="1.00"
-                      max="2.50"
-                      value={formData.altura}
-                      onChange={(e) => setFormData({...formData, altura: e.target.value})}
-                      placeholder="1.75"
-                    />
-                  </div>
-                  
-                  <div className={styles.inputGroup}>
-                    <label htmlFor="peso">Peso (kg)</label>
-                    <input
-                      id="peso"
-                      type="number"
-                      step="0.1"
-                      min="30"
-                      max="150"
-                      value={formData.peso}
-                      onChange={(e) => setFormData({...formData, peso: e.target.value})}
-                      placeholder="70.0"
-                    />
                   </div>
                 </div>
               </div>

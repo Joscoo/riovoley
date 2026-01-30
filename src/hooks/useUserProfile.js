@@ -26,6 +26,8 @@ export const useUserProfile = (user) => {
     setError(null);
     
     try {
+      console.log('📥 Cargando perfil para usuario:', currentUser.id);
+      
       // Primero intentar obtener desde user_profiles
       const { data: profileData, error: profileError } = await supabase
         .from('user_profiles')
@@ -34,19 +36,23 @@ export const useUserProfile = (user) => {
         .single();
 
       if (profileError && profileError.code !== 'PGRST116') {
-        console.error('Error al obtener perfil desde user_profiles:', profileError);
+        console.error('❌ Error al obtener perfil desde user_profiles:', profileError);
       }
 
       // Si existe en user_profiles, usar ese rol
       if (profileData) {
-        console.log('👤 Perfil encontrado en user_profiles:', profileData);
+        console.log('✅ Perfil encontrado en user_profiles:', {
+          id: profileData.id,
+          role: profileData.role,
+          full_name: profileData.full_name
+        });
         setProfile(profileData);
         setLoading(false);
         return;
       }
 
       // Si no existe en user_profiles, buscar en la tabla users
-      console.log('🔍 Buscando rol en tabla users...');
+      console.log('🔍 Perfil no encontrado en user_profiles, buscando en tabla users...');
       const { data: userData, error: userError } = await supabase
         .from('users')
         .select('id, role, nombre, apellido')
@@ -76,7 +82,7 @@ export const useUserProfile = (user) => {
             .insert(basicProfile);
           console.log('📝 Perfil sincronizado en user_profiles');
         } catch (syncError) {
-          console.log('ℹ️ No se pudo sincronizar a user_profiles (puede que ya exista)');
+          console.log('ℹ️ No se pudo sincronizar a user_profiles:', syncError?.message || 'puede que ya exista');
         }
       } else {
         // No se encontró en ninguna tabla, crear perfil básico
@@ -109,9 +115,11 @@ export const useUserProfile = (user) => {
     }
   };
 
-  const refreshProfile = () => {
+  const refreshProfile = async () => {
     if (user) {
-      loadUserProfile(user);
+      console.log('🔄 Refrescando perfil de usuario manualmente...');
+      loadedUserRef.current = null; // Resetear para forzar recarga
+      await loadUserProfile(user);
     }
   };
 

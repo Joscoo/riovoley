@@ -109,6 +109,24 @@ class WhatsAppBusinessService {
   }
 
   /**
+   * Envía credenciales de acceso a nuevo usuario/atleta
+   * @param {Object} userData - Datos del usuario
+   * @param {string} password - Contraseña generada
+   * @returns {Promise<Object>} Resultado del envío
+   */
+  async sendCredentials(userData, password) {
+    return await this.sendTemplateMessage(
+      userData.telefono,
+      'credenciales_acceso', // Nombre de plantilla para credenciales
+      {
+        nombre: `${userData.nombre} ${userData.apellido}`,
+        email: userData.email,
+        password: password
+      }
+    );
+  }
+
+  /**
    * Construye los componentes de la plantilla
    * @param {Object} parameters - Parámetros de la plantilla
    * @returns {Array} Componentes formateados
@@ -240,6 +258,7 @@ class WhatsAppBusinessService {
     return {
       CONFIRMACION_PAGO: 'confirmacion_pago',
       RECORDATORIO_PAGO: 'recordatorio_pago',
+      CREDENCIALES_ACCESO: 'credenciales_acceso',
       BIENVENIDA: 'bienvenida_club',
       SUSPENSION_CUENTA: 'suspension_cuenta',
       REACTIVACION_CUENTA: 'reactivacion_cuenta'

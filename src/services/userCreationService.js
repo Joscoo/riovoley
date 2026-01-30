@@ -159,8 +159,6 @@ export const createCompleteStudent = async (studentData) => {
     telefono,
     // Datos específicos de estudiante
     categoria,
-    altura,
-    peso,
     nivel_experiencia,
     objetivos,
     contacto_emergencia_nombre,
@@ -190,8 +188,6 @@ export const createCompleteStudent = async (studentData) => {
       .insert({
         user_id: userId,
         categoria: categoria,
-        altura: altura ? Number.parseFloat(altura) : null,
-        peso: peso ? Number.parseFloat(peso) : null,
         nivel_experiencia: nivel_experiencia || null,
         objetivos: objetivos || null,
         contacto_emergencia_nombre: contacto_emergencia_nombre || null,

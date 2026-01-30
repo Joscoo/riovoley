@@ -40,6 +40,8 @@ const UsuariosManager = ({ user }) => {
   const loadUsuarios = async () => {
     setLoading(true);
     try {
+      console.log('📥 Cargando usuarios...');
+      
       let query = supabase
         .from('users')
         .select(`
@@ -65,6 +67,12 @@ const UsuariosManager = ({ user }) => {
       }
 
       const { data: usuariosData, error } = await query;
+      
+      console.log('📊 Resultado de query usuarios:', { 
+        count: usuariosData?.length || 0, 
+        error: error,
+        data: usuariosData 
+      });
 
       if (error) throw error;
 
@@ -101,7 +109,15 @@ const UsuariosManager = ({ user }) => {
     if (!editingUser) return;
     
     try {
-      const { error } = await supabase
+      console.log('🔄 Actualizando usuario:', { 
+        id: editingUser.id, 
+        email: editingUser.email,
+        rolAntiguo: editingUser.role, 
+        rolNuevo: formData.role 
+      });
+
+      // Actualizar tabla users
+      const { error: usersError } = await supabase
         .from('users')
         .update({
           role: formData.role,
@@ -111,9 +127,41 @@ const UsuariosManager = ({ user }) => {
         })
         .eq('id', editingUser.id);
 
-      if (error) throw error;
+      if (usersError) {
+        console.error('❌ Error actualizando users:', usersError);
+        throw usersError;
+      }
+      console.log('✅ Tabla users actualizada');
 
-      alert('✅ Usuario actualizado correctamente');
+      // Actualizar tabla user_profiles (donde realmente se guarda el rol para autenticación)
+      const { data: profileUpdateData, error: profileError } = await supabase
+        .from('user_profiles')
+        .upsert({
+          id: editingUser.id,
+          role: formData.role,
+          full_name: `${formData.nombre} ${formData.apellido}`.trim()
+        }, {
+          onConflict: 'id'
+        })
+        .select();
+
+      if (profileError) {
+        console.error('❌ Error actualizando user_profiles:', profileError);
+        throw new Error(`Error actualizando perfil: ${profileError.message}`);
+      }
+      
+      console.log('✅ Tabla user_profiles actualizada:', profileUpdateData);
+
+      // Verificar que el cambio se hizo correctamente
+      const { data: verifyData } = await supabase
+        .from('user_profiles')
+        .select('id, role, full_name')
+        .eq('id', editingUser.id)
+        .single();
+      
+      console.log('🔍 Verificación del rol actualizado:', verifyData);
+
+      alert(`✅ Usuario actualizado correctamente\n\n📧 ${editingUser.email}\n🎭 Rol: ${formData.role}\n\n⚠️ El usuario debe cerrar sesión y volver a iniciar para ver los cambios.`);
       setShowModal(false);
       loadUsuarios();
       resetForm();
