@@ -8,6 +8,7 @@ import TrainerAsistenciasManager from './TrainerAsistenciasManager';
 import TrainerTestsFisicosManager from './TrainerTestsFisicosManager';
 import TrainerPagosManager from './TrainerPagosManager';
 import TrainerProfileSettings from './TrainerProfileSettings';
+import { FaVolleyballBall, FaChartBar, FaCalendar, FaDumbbell, FaDollarSign, FaBullhorn, FaCog } from 'react-icons/fa';
 import AnunciosManager from '../admin/AnunciosManager';
 import styles from '../../styles/TrainerPanel.module.css';
 
@@ -37,13 +38,13 @@ const TrainerPanel = ({ user }) => {
   }
 
   const menuItems = [
-    { id: 'dashboard', icon: '📊', label: 'Dashboard', description: 'Resumen general' },
-    { id: 'atletas', icon: '🏐', label: 'Atletas', description: 'Gestionar deportistas' },
-    { id: 'asistencias', icon: '📅', label: 'Asistencias', description: 'Registrar asistencias' },
-    { id: 'tests-fisicos', icon: '🏋️', label: 'Tests Físicos', description: 'Evaluaciones físicas' },
-    { id: 'pagos', icon: '💰', label: 'Pagos', description: 'Registrar pagos' },
-    { id: 'anuncios', icon: '📢', label: 'Anuncios', description: 'Comunicados y notificaciones' },
-    { id: 'configuracion', icon: '⚙️', label: 'Configuración', description: 'Perfil y seguridad' }
+    { id: 'dashboard', icon: <FaChartBar />, label: 'Dashboard', description: 'Resumen general' },
+    { id: 'atletas', icon: <FaVolleyballBall />, label: 'Atletas', description: 'Gestionar deportistas' },
+    { id: 'asistencias', icon: <FaCalendar />, label: 'Asistencias', description: 'Registrar asistencias' },
+    { id: 'tests-fisicos', icon: <FaDumbbell />, label: 'Tests Físicos', description: 'Evaluaciones físicas' },
+    { id: 'pagos', icon: <FaDollarSign />, label: 'Pagos', description: 'Registrar pagos' },
+    { id: 'anuncios', icon: <FaBullhorn />, label: 'Anuncios', description: 'Comunicados y notificaciones' },
+    { id: 'configuracion', icon: <FaCog />, label: 'Configuración', description: 'Perfil y seguridad' }
   ];
 
   const handleNavigateToSection = (sectionId) => {

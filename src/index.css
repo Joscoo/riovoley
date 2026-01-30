@@ -11,3 +11,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Estilos globales para iconos de React Icons */
+svg {
+  vertical-align: middle;
+}
+
+/* Asegurar que los iconos sean visibles en fondos oscuros */
+.statIcon svg,
+.metricIcon svg,
+.summaryIcon svg,
+.btnIcon svg,
+button svg {
+  color: inherit;
+}
+
+/* Color dorado por defecto para iconos en elementos con clase statIcon */
+[class*="statIcon"] {
+  color: #ffd700 !important;
+}
+
+[class*="metricIcon"] {
+  color: #ffd700 !important;
+}
+
+[class*="summaryIcon"] {
+  color: #ffd700 !important;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

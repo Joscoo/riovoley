@@ -79,6 +79,10 @@
   cursor: pointer;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  color: #ffd700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btnIcon:hover {

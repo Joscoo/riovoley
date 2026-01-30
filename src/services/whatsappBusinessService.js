@@ -53,7 +53,7 @@ class WhatsAppBusinessService {
         throw new Error(result.error?.message || 'Error enviando mensaje de WhatsApp');
       }
 
-      console.log('✅ Mensaje de WhatsApp Business enviado:', result);
+      console.log('[SUCCESS] Mensaje de WhatsApp Business enviado:', result);
       return {
         success: true,
         messageId: result.messages[0].id,
@@ -61,7 +61,7 @@ class WhatsAppBusinessService {
       };
 
     } catch (error) {
-      console.error('❌ Error enviando WhatsApp Business:', error);
+      console.error('[ERROR] Error enviando WhatsApp Business:', error);
       return {
         success: false,
         error: error.message

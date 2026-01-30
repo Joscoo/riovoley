@@ -21,7 +21,7 @@ export class EmailService {
       // Construir el nombre completo con fallbacks
       const displayName = full_name || `${nombre || ''} ${apellido || ''}`.trim() || 'Usuario';
       
-      console.log('📧 Datos recibidos para email:', { email, full_name, nombre, apellido, displayName });
+      console.log('[EMAIL] Datos recibidos para email:', { email, full_name, nombre, apellido, displayName });
       
       // Template del correo
       const emailHTML = this.generateCredentialsEmailTemplate({
@@ -34,7 +34,7 @@ export class EmailService {
       console.log('Enviando correo a:', email);
       
       console.log('🔍 Intentando enviar correo a:', email);
-      console.log('📧 Datos del correo:', { 
+      console.log('[EMAIL] Datos del correo:', { 
         to: email, 
         subject: '🏐 Bienvenido al Club Riovoley - Credenciales de Acceso',
         htmlLength: emailHTML.length
@@ -51,13 +51,13 @@ export class EmailService {
       console.log('📡 Respuesta completa de Edge Function:', { data, error });
       
       if (error) {
-        console.error('❌ Error de Supabase Functions:', error);
-        console.error('❌ Tipo de error:', error.constructor.name);
-        console.error('❌ Mensaje completo:', error.message);
+        console.error('[ERROR] Error de Supabase Functions:', error);
+        console.error('[ERROR] Tipo de error:', error.constructor.name);
+        console.error('[ERROR] Mensaje completo:', error.message);
         
         // Si es un FunctionsHttpError, intentamos obtener más detalles
         if (error.context) {
-          console.error('❌ Contexto del error:', error.context);
+          console.error('[ERROR] Contexto del error:', error.context);
         }
         
         // Fallback: mostrar la información al administrador
@@ -67,7 +67,7 @@ export class EmailService {
       
       // Verificar si la respuesta de la Edge Function indica éxito
       if (data && data.success) {
-        console.log('✅ Correo enviado exitosamente:', data);
+        console.log('[SUCCESS] Correo enviado exitosamente:', data);
         return { success: true, data };
       } else {
         console.error('❌ Edge Function devolvió error:', data);

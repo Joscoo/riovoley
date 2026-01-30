@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from '../../styles/StudentPanel.module.css';
+import { FaDumbbell, FaFire, FaClipboardList, FaRunning, FaExclamationTriangle, FaCheckCircle, FaExclamationCircle, FaWeight, FaUtensils } from 'react-icons/fa';
 
 const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
   const calculateIMC = (peso, estatura) => {
@@ -10,10 +11,10 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
   };
 
   const getIMCCategory = (imc) => {
-    if (imc < 18.5) return { category: 'Bajo peso', color: '#ffeb3b', icon: '⚠️' };
-    if (imc < 25) return { category: 'Peso normal', color: '#4caf50', icon: '✅' };
-    if (imc < 30) return { category: 'Sobrepeso', color: '#ff9800', icon: '⚠️' };
-    return { category: 'Obesidad', color: '#ff5252', icon: '🚨' };
+    if (imc < 18.5) return { category: 'Bajo peso', color: '#ffeb3b', icon: <FaExclamationTriangle /> };
+    if (imc < 25) return { category: 'Peso normal', color: '#4caf50', icon: <FaCheckCircle /> };
+    if (imc < 30) return { category: 'Sobrepeso', color: '#ff9800', icon: <FaExclamationTriangle /> };
+    return { category: 'Obesidad', color: '#ff5252', icon: <FaExclamationCircle /> };
   };
 
   const getNutritionRecommendation = (imc) => {
@@ -23,44 +24,44 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
       return {
         title: 'Aumentar masa muscular',
         recommendations: [
-          '🥩 Aumenta la ingesta de proteínas: carnes magras, huevos, legumbres',
-          '🥜 Consume grasas saludables: frutos secos, aguacate, aceite de oliva',
-          '🍚 Incrementa carbohidratos complejos: arroz integral, avena, batata',
-          '💪 Realiza entrenamiento de fuerza junto con tu práctica de voleibol',
-          '🍽️ Come 5-6 comidas pequeñas al día para mantener energía'
+          '• Aumenta la ingesta de proteínas: carnes magras, huevos, legumbres',
+          '• Consume grasas saludables: frutos secos, aguacate, aceite de oliva',
+          '• Incrementa carbohidratos complejos: arroz integral, avena, batata',
+          '• Realiza entrenamiento de fuerza junto con tu práctica de voleibol',
+          '• Come 5-6 comidas pequeñas al día para mantener energía'
         ]
       };
     } else if (imcValue < 25) {
       return {
         title: 'Mantener peso saludable',
         recommendations: [
-          '🥗 Dieta balanceada: 40% carbohidratos, 30% proteínas, 30% grasas',
-          '🍗 Proteínas magras: pollo, pescado, claras de huevo',
-          '🥦 Abundantes vegetales y frutas para vitaminas y minerales',
-          '💧 Hidratación constante: 2-3 litros de agua al día',
-          '⚡ Snacks pre-entreno: banana, frutos secos, barras energéticas'
+          '• Dieta balanceada: 40% carbohidratos, 30% proteínas, 30% grasas',
+          '• Proteínas magras: pollo, pescado, claras de huevo',
+          '• Abundantes vegetales y frutas para vitaminas y minerales',
+          '• Hidratación constante: 2-3 litros de agua al día',
+          '• Snacks pre-entreno: banana, frutos secos, barras energéticas'
         ]
       };
     } else if (imcValue < 30) {
       return {
         title: 'Reducir grasa corporal',
         recommendations: [
-          '🥗 Aumenta consumo de vegetales y reduce carbohidratos simples',
-          '🍗 Proteínas magras en cada comida para mantener masa muscular',
-          '🚫 Evita: bebidas azucaradas, frituras, comida procesada',
-          '🏃 Aumenta actividad cardiovascular además del voleibol',
-          '⏰ Controla porciones y evita comer 2-3 horas antes de dormir'
+          '• Aumenta consumo de vegetales y reduce carbohidratos simples',
+          '• Proteínas magras en cada comida para mantener masa muscular',
+          '• Evita: bebidas azucaradas, frituras, comida procesada',
+          '• Aumenta actividad cardiovascular además del voleibol',
+          '• Controla porciones y evita comer 2-3 horas antes de dormir'
         ]
       };
     } else {
       return {
         title: 'Plan de reducción de peso',
         recommendations: [
-          '👨‍⚕️ Consulta con un nutricionista para plan personalizado',
-          '🥗 Dieta hipocalórica rica en vegetales y proteínas',
-          '🚶 Inicia con ejercicio de baja intensidad y aumenta gradualmente',
-          '📊 Monitoreo constante de progreso y ajustes según resultados',
-          '💪 Enfócate en cambios de hábitos a largo plazo, no dietas extremas'
+          '• Consulta con un nutricionista para plan personalizado',
+          '• Dieta hipocalórica rica en vegetales y proteínas',
+          '• Inicia con ejercicio de baja intensidad y aumenta gradualmente',
+          '• Monitoreo constante de progreso y ajustes según resultados',
+          '• Enfócate en cambios de hábitos a largo plazo, no dietas extremas'
         ]
       };
     }
@@ -90,7 +91,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
     <div className={styles.section}>
       <div className={styles.sectionHeader}>
         <div>
-          <h2>🏋️ Tests Físicos y Rendimiento</h2>
+          <h2><FaDumbbell style={{ marginRight: '10px', verticalAlign: 'middle' }} /> Tests Físicos y Rendimiento</h2>
           <p>Monitorea tu progreso físico y obtén recomendaciones personalizadas</p>
         </div>
         <button 
@@ -116,7 +117,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
               </div>
 
               <div className={styles.summaryCard}>
-                <div className={styles.summaryIcon}>⚖️</div>
+                <div className={styles.summaryIcon}><FaWeight /></div>
                 <div className={styles.summaryInfo}>
                   <div className={styles.summaryLabel}>Cambio de Peso</div>
                   <div className={styles.summaryValue}>
@@ -127,7 +128,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
 
               {physicalTests.some(t => t.brazo_extend_con_impulso) && (
                 <div className={styles.summaryCard}>
-                  <div className={styles.summaryIcon}>💪</div>
+                  <div className={styles.summaryIcon}><FaDumbbell /></div>
                   <div className={styles.summaryInfo}>
                     <div className={styles.summaryLabel}>Progreso Salto</div>
                     <div className={styles.summaryValue}>
@@ -234,7 +235,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
               {/* Plan de Alimentación */}
               {nutritionPlan && (
                 <div className={styles.nutritionCard}>
-                  <h3>🍽️ {nutritionPlan.title}</h3>
+                  <h3><FaUtensils style={{ marginRight: '10px' }} /> {nutritionPlan.title}</h3>
                   <p className={styles.nutritionIntro}>Recomendaciones nutricionales basadas en tu IMC y actividad deportiva:</p>
                   <ul className={styles.recommendationsList}>
                     {nutritionPlan.recommendations.map((rec, index) => (
@@ -255,7 +256,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
             
             {/* Gráfica de Peso */}
             <div className={styles.chartCard}>
-              <h4>⚖️ Evolución del Peso (kg)</h4>
+              <h4><FaWeight style={{ marginRight: '8px' }} /> Evolución del Peso (kg)</h4>
               <div className={styles.chart}>
                 {physicalTests.map((test) => {
                   const maxPeso = Math.max(...physicalTests.map(t => t.peso));
@@ -373,7 +374,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
             {/* Gráfica de Brazo Extendido Con Impulso */}
             {physicalTests.some(t => t.brazo_extend_con_impulso) && (
               <div className={styles.chartCard}>
-                <h4>💪 Brazo Extendido Con Impulso (cm)</h4>
+                <h4><FaDumbbell style={{ marginRight: '8px' }} /> Brazo Extendido Con Impulso (cm)</h4>
                 <div className={styles.chart}>
                   {physicalTests.filter(t => t.brazo_extend_con_impulso).map((test) => {
                     const testsConBrazo = physicalTests.filter(t => t.brazo_extend_con_impulso);
@@ -403,7 +404,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
 
           {/* Historial de Tests */}
           <div className={styles.testsHistory}>
-            <h3>📋 Historial Completo de Tests Físicos</h3>
+            <h3><FaClipboardList style={{ marginRight: '10px' }} /> Historial Completo de Tests Físicos</h3>
             <div className={styles.testsTable}>
               {[...physicalTests].reverse().map((test) => {
                 const testIMC = calculateIMC(test.peso, test.estatura);
@@ -430,7 +431,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
                     
                     <div className={styles.testMetricsGrid}>
                       <div className={styles.metricCard}>
-                        <div className={styles.metricIcon}>⚖️</div>
+                        <div className={styles.metricIcon}><FaWeight /></div>
                         <div className={styles.metricInfo}>
                           <div className={styles.metricLabel}>Peso</div>
                           <div className={styles.metricValue}>{test.peso} kg</div>
@@ -467,7 +468,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
 
                       {test.brazo_extend_con_impulso && (
                         <div className={styles.metricCard}>
-                          <div className={styles.metricIcon}>💪</div>
+                          <div className={styles.metricIcon}><FaDumbbell /></div>
                           <div className={styles.metricInfo}>
                             <div className={styles.metricLabel}>Con Impulso</div>
                             <div className={styles.metricValue}>{test.brazo_extend_con_impulso} cm</div>
@@ -477,7 +478,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
 
                       {test.fuerza_abdomen && (
                         <div className={styles.metricCard}>
-                          <div className={styles.metricIcon}>🔥</div>
+                          <div className={styles.metricIcon}><FaFire /></div>
                           <div className={styles.metricInfo}>
                             <div className={styles.metricLabel}>Abdominales (1min)</div>
                             <div className={styles.metricValue}>{test.fuerza_abdomen} reps</div>
@@ -487,7 +488,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
 
                       {test.fuerza_brazos && (
                         <div className={styles.metricCard}>
-                          <div className={styles.metricIcon}>💪</div>
+                          <div className={styles.metricIcon}><FaDumbbell /></div>
                           <div className={styles.metricInfo}>
                             <div className={styles.metricLabel}>Flexiones (1min)</div>
                             <div className={styles.metricValue}>{test.fuerza_brazos} reps</div>
@@ -497,7 +498,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
 
                       {test.fuerza_piernas && (
                         <div className={styles.metricCard}>
-                          <div className={styles.metricIcon}>🦵</div>
+                          <div className={styles.metricIcon}><FaRunning /></div>
                           <div className={styles.metricInfo}>
                             <div className={styles.metricLabel}>Sentadillas (1min)</div>
                             <div className={styles.metricValue}>{test.fuerza_piernas} reps</div>
@@ -507,7 +508,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
 
                       {test.elevaciones_barra && (
                         <div className={styles.metricCard}>
-                          <div className={styles.metricIcon}>🏋️</div>
+                          <div className={styles.metricIcon}><FaDumbbell /></div>
                           <div className={styles.metricInfo}>
                             <div className={styles.metricLabel}>Elevaciones (1min)</div>
                             <div className={styles.metricValue}>{test.elevaciones_barra} reps</div>

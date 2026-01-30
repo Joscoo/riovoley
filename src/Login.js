@@ -5,6 +5,7 @@ import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import app from './config/firebase';
 import styles from './styles/Login.module.css';
+import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -221,7 +222,7 @@ function Login() {
         <form onSubmit={handleLogin} className={styles.form}>
           <div className={styles.inputGroup}>
             <label htmlFor="email" className={styles.label}>
-              <span className={styles.labelIcon}>📧</span>
+              <FaEnvelope className={styles.labelIcon} />
               Correo Electrónico
             </label>
             <div className={styles.inputWrapper}>
@@ -240,7 +241,7 @@ function Login() {
 
           <div className={styles.inputGroup}>
             <label htmlFor="password" className={styles.label}>
-              <span className={styles.labelIcon}>🔒</span>
+              <FaLock className={styles.labelIcon} />
               Contraseña
             </label>
             <div className={styles.passwordContainer}>
@@ -261,7 +262,7 @@ function Login() {
                 disabled={loading}
                 aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
               >
-                {showPassword ? '🙈' : '👁️'}
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
           </div>

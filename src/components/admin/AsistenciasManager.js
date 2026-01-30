@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/AsistenciasManager.module.css';
+import { FaChartBar, FaCheckCircle, FaTimesCircle, FaChartLine } from 'react-icons/fa';
 
 const AsistenciasManager = ({ user }) => {
   const [asistencias, setAsistencias] = useState([]);
@@ -323,28 +324,28 @@ const AsistenciasManager = ({ user }) => {
       {/* Estadísticas Generales */}
       <div className={styles.statsGrid}>
         <div className={styles.statCard}>
-          <div className={styles.statIcon}>📊</div>
+          <div className={styles.statIcon}><FaChartBar /></div>
           <div className={styles.statInfo}>
             <h3>{stats.total}</h3>
             <p>Total Registros</p>
           </div>
         </div>
         <div className={styles.statCard}>
-          <div className={styles.statIcon}>✅</div>
+          <div className={styles.statIcon}><FaCheckCircle /></div>
           <div className={styles.statInfo}>
             <h3>{stats.presentes}</h3>
             <p>Presentes</p>
           </div>
         </div>
         <div className={styles.statCard}>
-          <div className={styles.statIcon}>❌</div>
+          <div className={styles.statIcon}><FaTimesCircle /></div>
           <div className={styles.statInfo}>
             <h3>{stats.ausentes}</h3>
             <p>Ausentes</p>
           </div>
         </div>
         <div className={styles.statCard}>
-          <div className={styles.statIcon}>📈</div>
+          <div className={styles.statIcon}><FaChartLine /></div>
           <div className={styles.statInfo}>
             <h3>{stats.porcentajeAsistencia}%</h3>
             <p>Asistencia Promedio</p>

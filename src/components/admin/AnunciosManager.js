@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/AnunciosManager.module.css';
+import { FaBell, FaBellSlash, FaEdit, FaTrash } from 'react-icons/fa';
 
 const AnunciosManager = ({ user }) => {
   const [anuncios, setAnuncios] = useState([]);
@@ -288,7 +289,7 @@ const AnunciosManager = ({ user }) => {
       <div className={styles.filters}>
         <input
           type="text"
-          placeholder="🔍 Buscar por título o contenido..."
+          placeholder="Buscar por título o contenido..."
           value={filters.search}
           onChange={(e) => setFilters({ ...filters, search: e.target.value })}
           className={styles.searchInput}
@@ -362,21 +363,21 @@ const AnunciosManager = ({ user }) => {
                       className={styles.btnIcon}
                       title={anuncio.is_active ? 'Desactivar' : 'Activar'}
                     >
-                      {anuncio.is_active ? '🔕' : '🔔'}
+                      {anuncio.is_active ? <FaBellSlash /> : <FaBell />}
                     </button>
                     <button
                       onClick={() => handleOpenModal(anuncio)}
                       className={styles.btnIcon}
                       title="Editar"
                     >
-                      ✏️
+                      <FaEdit />
                     </button>
                     <button
                       onClick={() => handleDelete(anuncio.id)}
                       className={styles.btnIcon}
                       title="Eliminar"
                     >
-                      🗑️
+                      <FaTrash />
                     </button>
                   </div>
                 </div>

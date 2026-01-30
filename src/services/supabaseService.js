@@ -28,7 +28,7 @@ export const getUserProfile = async () => {
       return { data: null, error };
     }
 
-    console.log('👤 Perfil del usuario:', data);
+    console.log('[USER] Perfil del usuario:', data);
     return { data: { ...data, auth_user: user }, error: null };
   } catch (error) {
     console.error('Error al obtener perfil del usuario:', error);

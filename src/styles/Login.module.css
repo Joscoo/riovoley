@@ -276,8 +276,14 @@
 }
 
 .labelIcon {
-  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  font-size: 1.1rem;
+  color: var(--primary-gold);
   filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.3));
+  vertical-align: middle;
 }
 
 .inputWrapper {
@@ -390,18 +396,21 @@
   right: 12px;
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   cursor: pointer;
   padding: 8px;
   border-radius: 8px;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: rgba(255, 215, 0, 0.7);
 }
 
 .passwordToggle:hover {
   background: rgba(255, 215, 0, 0.1);
+  color: rgba(255, 215, 0, 1);
+  transform: scale(1.1);
 }
 
 .passwordToggle:disabled {

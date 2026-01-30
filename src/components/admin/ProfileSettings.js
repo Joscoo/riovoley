@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/ProfileSettings.module.css';
+import { FaCog, FaClipboardList, FaInfoCircle } from 'react-icons/fa';
 
 const ProfileSettings = ({ user }) => {
   const [loading, setLoading] = useState(false);
@@ -252,7 +253,7 @@ const ProfileSettings = ({ user }) => {
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.headerLeft}>
-          <h2>⚙️ Configuración de Perfil</h2>
+          <h2><FaCog style={{ marginRight: '10px', verticalAlign: 'middle' }} /> Configuración de Perfil</h2>
           <p className={styles.subtitle}>Administra tu información personal y seguridad</p>
         </div>
       </div>
@@ -266,7 +267,7 @@ const ProfileSettings = ({ user }) => {
       {/* Información del Usuario */}
       <div className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h3>📋 Información Personal</h3>
+          <h3><FaClipboardList style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Información Personal</h3>
           {!editMode && (
             <button 
               className={styles.editButton}
@@ -466,7 +467,7 @@ const ProfileSettings = ({ user }) => {
       {/* Información de la Cuenta */}
       <div className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h3>ℹ️ Información de la Cuenta</h3>
+          <h3><FaInfoCircle style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Información de la Cuenta</h3>
         </div>
         <div className={styles.infoGrid}>
           <div className={styles.infoItem}>

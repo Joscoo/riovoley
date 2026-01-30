@@ -229,7 +229,7 @@ export const createCompleteStudent = async (studentData) => {
  */
 export const sendCredentialsEmail = async (email, temporaryPassword, fullName) => {
   // Futuro: Implementar envío de email con servicios como SendGrid o Nodemailer
-  console.log('📧 Enviando credenciales por email a:', email);
+  console.log('[EMAIL] Enviando credenciales por email a:', email);
   console.log('Nombre:', fullName);
   console.log('Contraseña temporal:', temporaryPassword);
   

@@ -6,6 +6,7 @@ import { EmailService } from '../../services/emailService';
 import WhatsAppBusinessService from '../../services/whatsappBusinessService';
 import { createStudentWorking, resendWorkingCredentials } from '../../services/userCreationWorking';
 import styles from '../../styles/AtletasManager.module.css';
+import { FaEdit, FaPlus } from 'react-icons/fa';
 
 const AtletasManager = ({ user }) => {
   const [atletas, setAtletas] = useState([]);
@@ -360,38 +361,38 @@ ${result.canLogin ? '✅ El usuario puede ingresar inmediatamente.' : '⚠️ Pu
         whatsappResult = await whatsAppBusiness.sendCredentials(userData, userData.password);
         
         if (whatsappResult.success) {
-          console.log('✅ Credenciales enviadas por WhatsApp');
+          console.log('[SUCCESS] Credenciales enviadas por WhatsApp');
         } else {
-          console.log('⚠️ No se pudo enviar por WhatsApp:', whatsappResult.error);
+          console.log('[WARNING] No se pudo enviar por WhatsApp:', whatsappResult.error);
         }
       }
       
       // Mensaje de confirmación según los canales exitosos
       const canalesExitosos = [];
-      if (emailResult.success) canalesExitosos.push('📧 Email');
-      if (whatsappResult.success) canalesExitosos.push('📱 WhatsApp');
+      if (emailResult.success) canalesExitosos.push('✉ Email');
+      if (whatsappResult.success) canalesExitosos.push('☎ WhatsApp');
       
       if (canalesExitosos.length > 0) {
-        alert(`✅ Nueva contraseña temporal generada y enviada vía:
+        alert(`✓ Nueva contraseña temporal generada y enviada vía:
 ${canalesExitosos.join('\n')}
 
-📧 Email: ${result.credentials.email}
+✉ Email: ${result.credentials.email}
 🔑 Nueva Contraseña: ${result.credentials.password}
 🌐 URL: ${result.credentials.loginUrl}
 
-⚠️ IMPORTANTE: Esta es una NUEVA contraseña temporal.
+⚠ IMPORTANTE: Esta es una NUEVA contraseña temporal.
 La contraseña anterior ya no funciona.
 
 ${result.message}`);
       } else {
         // Si todo falla, mostrar las credenciales directamente
-        alert(`⚠️ No se pudo enviar por Email ni WhatsApp.
+        alert(`⚠ No se pudo enviar por Email ni WhatsApp.
 
-📧 Email: ${result.credentials.email}
+✉ Email: ${result.credentials.email}
 🔑 Nueva Contraseña: ${result.credentials.password}
 🌐 URL: ${result.credentials.loginUrl}
 
-⚠️ IMPORTANTE: Esta es una NUEVA contraseña temporal.
+⚠ IMPORTANTE: Esta es una NUEVA contraseña temporal.
 La contraseña anterior ya no funciona.
 
 ${result.message}
@@ -560,7 +561,7 @@ Por favor, envía esta información al estudiante de forma manual.`);
         <div className={styles.filterGroup}>
           <input
             type="text"
-            placeholder="🔍 Buscar por nombre, apellido o email..."
+            placeholder="Buscar por nombre, apellido o email..."
             value={filters.search}
             onChange={(e) => setFilters({...filters, search: e.target.value})}
             className={styles.searchInput}
@@ -666,7 +667,13 @@ Por favor, envía esta información al estudiante de forma manual.`);
         <div className={styles.modalOverlay}>
           <div className={styles.modal}>
             <div className={styles.modalHeader}>
-              <h3>{editingAtleta ? '✏️ Editar Atleta' : '➕ Agregar Nuevo Atleta'}</h3>
+              <h3>
+                {editingAtleta ? (
+                  <><FaEdit style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Editar Atleta</>
+                ) : (
+                  <><FaPlus style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Agregar Nuevo Atleta</>
+                )}
+              </h3>
               <button 
                 onClick={() => setShowModal(false)}
                 className={styles.closeButton}

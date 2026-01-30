@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/UsuariosManager.module.css';
+import { FaCrown, FaVolleyballBall, FaRunning, FaUser, FaPause, FaPlay, FaEdit, FaTrash, FaPhone, FaBan, FaCalendar } from 'react-icons/fa';
 
 const UsuariosManager = ({ user }) => {
   const [usuarios, setUsuarios] = useState([]);
@@ -27,9 +28,9 @@ const UsuariosManager = ({ user }) => {
   });
 
   const roles = [
-    { value: 'administrador', label: 'Administrador', icon: '👑' },
-    { value: 'entrenador', label: 'Entrenador', icon: '🏐' },
-    { value: 'estudiante', label: 'Estudiante', icon: '🏃‍♂️' }
+    { value: 'administrador', label: 'Administrador', icon: <FaCrown /> },
+    { value: 'entrenador', label: 'Entrenador', icon: <FaVolleyballBall /> },
+    { value: 'estudiante', label: 'Estudiante', icon: <FaRunning /> }
   ];
 
   useEffect(() => {
@@ -40,7 +41,7 @@ const UsuariosManager = ({ user }) => {
   const loadUsuarios = async () => {
     setLoading(true);
     try {
-      console.log('📥 Cargando usuarios...');
+      console.log('[INFO] Cargando usuarios...');
       
       let query = supabase
         .from('users')
@@ -159,7 +160,7 @@ const UsuariosManager = ({ user }) => {
         .eq('id', editingUser.id)
         .single();
       
-      console.log('🔍 Verificación del rol actualizado:', verifyData);
+      console.log('[DEBUG] Verificación del rol actualizado:', verifyData);
 
       alert(`✅ Usuario actualizado correctamente\n\n📧 ${editingUser.email}\n🎭 Rol: ${formData.role}\n\n⚠️ El usuario debe cerrar sesión y volver a iniciar para ver los cambios.`);
       setShowModal(false);
@@ -260,11 +261,11 @@ const UsuariosManager = ({ user }) => {
 
       if (error) throw error;
 
-      alert('✅ Usuario reactivado correctamente');
+      alert('✓ Usuario reactivado correctamente');
       loadUsuarios();
     } catch (error) {
       console.error('Error reactivando usuario:', error);
-      alert('❌ Error: ' + error.message);
+      alert('✗ Error: ' + error.message);
     }
   };
 
@@ -287,7 +288,7 @@ const UsuariosManager = ({ user }) => {
 
   const getRoleIcon = (role) => {
     const roleObj = roles.find(r => r.value === role);
-    return roleObj ? roleObj.icon : '👤';
+    return roleObj ? roleObj.icon : <FaUser />;
   };
 
   const getRoleLabel = (role) => {
@@ -416,7 +417,7 @@ const UsuariosManager = ({ user }) => {
                 <div className={styles.userHeader}>
                   <div className={styles.userInfo}>
                     <div className={styles.userRole}>
-                      {usuario.suspended ? '⏸️' : getRoleIcon(usuario.role)}
+                      {usuario.suspended ? <FaPause /> : getRoleIcon(usuario.role)}
                     </div>
                     <div className={styles.userDetails}>
                       <h3>{usuario.nombre} {usuario.apellido}</h3>
@@ -433,21 +434,21 @@ const UsuariosManager = ({ user }) => {
                       className={styles.editButton}
                       title="Editar usuario"
                     >
-                      ✏️
+                      <FaEdit />
                     </button>
                     <button
                       onClick={() => handleSuspensionToggle(usuario)}
                       className={`${styles.suspendButton} ${usuario.suspended ? styles.reactivateButton : ''}`}
                       title={usuario.suspended ? "Reactivar usuario" : "Suspender usuario"}
                     >
-                      {usuario.suspended ? '✅' : '⏸️'}
+                      {usuario.suspended ? <FaPlay /> : <FaPause />}
                     </button>
                     <button
                       onClick={() => deleteUser(usuario)}
                       className={styles.deleteButton}
                       title="Eliminar usuario"
                     >
-                      🗑️
+                      <FaTrash />
                     </button>
                   </div>
                 </div>
@@ -455,13 +456,13 @@ const UsuariosManager = ({ user }) => {
                 <div className={styles.userMeta}>
                   {usuario.telefono && (
                     <div className={styles.metaItem}>
-                      <span className={styles.metaLabel}>📞 Teléfono:</span>
+                      <span className={styles.metaLabel}><FaPhone style={{ marginRight: '5px', verticalAlign: 'middle' }} /> Teléfono:</span>
                       <span>{usuario.telefono}</span>
                     </div>
                   )}
                   
                   <div className={styles.metaItem}>
-                    <span className={styles.metaLabel}>📅 Registrado:</span>
+                    <span className={styles.metaLabel}><FaCalendar style={{ marginRight: '5px', verticalAlign: 'middle' }} /> Registrado:</span>
                     <span>{new Date(usuario.created_at).toLocaleDateString()}</span>
                   </div>
 
@@ -505,7 +506,7 @@ const UsuariosManager = ({ user }) => {
         <div className={styles.modalOverlay}>
           <div className={styles.modal}>
             <div className={styles.modalHeader}>
-              <h3>✏️ Editar Usuario</h3>
+              <h3><FaEdit style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Editar Usuario</h3>
               <button 
                 onClick={() => setShowModal(false)}
                 className={styles.closeButton}

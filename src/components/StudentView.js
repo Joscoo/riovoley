@@ -15,20 +15,20 @@ const StudentView = ({ user }) => {
 
   useEffect(() => {
     if (user?.id) {
-      console.log('🎯 Usuario logueado detectado:', user);
+      console.log('[TARGET] Usuario logueado detectado:', user);
       console.log('🆔 User ID:', user.id);
       console.log('📧 User Email:', user.email);
       loadStudentData();
     } else {
       console.log('❌ No hay usuario logueado o falta ID');
-      console.log('🕵️ Objeto user recibido:', user);
+      console.log('[DETECTIVE] Objeto user recibido:', user);
     }
   }, [user]);
 
   const loadStudentData = async () => {
     setLoading(true);
     try {
-      console.log('🔍 Buscando datos del estudiante para user.id:', user.id);
+      console.log('[DEBUG] Buscando datos del estudiante para user.id:', user.id);
       
       // Obtener datos del estudiante
       const { data: studentInfo, error: studentError } = await supabase
@@ -49,7 +49,7 @@ const StudentView = ({ user }) => {
         .eq('user_id', user.id)
         .single();
 
-      console.log('📋 Resultado de consulta estudiante:', { studentInfo, studentError });
+      console.log('[CLIPBOARD] Resultado de consulta estudiante:', { studentInfo, studentError });
 
       if (studentError) {
         if (studentError.code === 'PGRST116') {
@@ -180,7 +180,7 @@ const StudentView = ({ user }) => {
           <div className={styles.personalInfo}>
             <h1>{studentData.users.nombre} {studentData.users.apellido}</h1>
             <p className={styles.category}>
-              📋 {studentData.categoria?.replace(/_/g, ' ').toUpperCase()}
+              Categoría: {studentData.categoria?.replace(/_/g, ' ').toUpperCase()}
             </p>
             <p className={styles.email}>📧 {studentData.users.email}</p>
             {studentData.users.telefono && (
@@ -225,7 +225,7 @@ const StudentView = ({ user }) => {
           className={`${styles.tab} ${activeTab === 'tests' ? styles.active : ''}`}
           onClick={() => setActiveTab('tests')}
         >
-          🏋️ Tests Físicos
+          Tests Físicos
         </button>
       </div>
 
@@ -267,7 +267,7 @@ const StudentView = ({ user }) => {
 
               {/* Resumen de tests físicos */}
               <div className={styles.overviewCard}>
-                <h3>🏋️ Progreso Físico</h3>
+                <h3>Progreso Físico</h3>
                 {physicalTests.length > 0 ? (
                   <div className={styles.testsSummary}>
                     <div className={styles.summaryItem}>
@@ -338,7 +338,7 @@ const StudentView = ({ user }) => {
 
         {activeTab === 'tests' && (
           <div className={styles.testsTab}>
-            <h3>🏋️ Evolución Física</h3>
+            <h3>Evolución Física</h3>
             {physicalTests.length > 0 ? (
               <div className={styles.testsContent}>
                 {physicalTests.length >= 2 && (

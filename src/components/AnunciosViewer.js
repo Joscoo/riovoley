@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../config/supabase';
 import styles from '../styles/AnunciosViewer.module.css';
+import { FaBullhorn, FaExclamationCircle, FaExclamationTriangle } from 'react-icons/fa';
 
 const AnunciosViewer = ({ userRole = 'all', limit = null, showFilters = false }) => {
   const [anuncios, setAnuncios] = useState([]);
@@ -10,10 +11,10 @@ const AnunciosViewer = ({ userRole = 'all', limit = null, showFilters = false })
   const [selectedPriority, setSelectedPriority] = useState('all');
 
   const priorities = [
-    { value: 'low', label: 'Baja', color: '#4ade80', icon: 'ℹ️' },
-    { value: 'normal', label: 'Normal', color: '#60a5fa', icon: '📢' },
-    { value: 'high', label: 'Alta', color: '#fb923c', icon: '⚠️' },
-    { value: 'urgent', label: 'Urgente', color: '#f87171', icon: '🚨' }
+    { value: 'low', label: 'Baja', color: '#4ade80', icon: <FaExclamationCircle /> },
+    { value: 'normal', label: 'Normal', color: '#60a5fa', icon: <FaBullhorn /> },
+    { value: 'high', label: 'Alta', color: '#fb923c', icon: <FaExclamationCircle /> },
+    { value: 'urgent', label: 'Urgente', color: '#f87171', icon: <FaExclamationTriangle /> }
   ];
 
   useEffect(() => {

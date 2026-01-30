@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../config/supabase';
+import { FaEye, FaEyeSlash, FaLock, FaKey, FaExclamationTriangle } from 'react-icons/fa';
 
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState('');
@@ -17,7 +18,7 @@ const ResetPassword = () => {
       // Supabase maneja automáticamente el token de la URL
       const { data: { session } } = await supabase.auth.getSession();
       
-      console.log('🔍 Sesión actual:', session);
+      console.log('[DEBUG] Sesión actual:', session);
       
       if (session) {
         console.log('✅ Sesión de recuperación activa');
@@ -122,14 +123,14 @@ const ResetPassword = () => {
               </svg>
             </div>
           </div>
-          <h2 style={styles.title}>🔑 Restablecer Contraseña</h2>
+          <h2 style={styles.title}><FaKey style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Restablecer Contraseña</h2>
           <p style={styles.subtitle}>Ingresa tu nueva contraseña</p>
           <div style={styles.decorLine}></div>
         </div>
 
         {!isValidToken ? (
           <div style={styles.errorContainer}>
-            <div style={styles.errorIcon}>⚠️</div>
+            <div style={styles.errorIcon}><FaExclamationTriangle /></div>
             <p style={styles.errorText}>
               El enlace de recuperación es inválido o ha expirado.
             </p>
@@ -144,7 +145,7 @@ const ResetPassword = () => {
           <form onSubmit={handleResetPassword} style={styles.form}>
             <div style={styles.inputGroup}>
               <label htmlFor="new-password" style={styles.label}>
-                <span style={styles.labelIcon}>🔒</span>
+                <span style={styles.labelIcon}><FaLock /></span>
                 {' '}NUEVA CONTRASEÑA
               </label>
               <div style={styles.passwordContainer}>
@@ -165,7 +166,7 @@ const ResetPassword = () => {
                   style={styles.passwordToggle}
                   disabled={isLoading}
                 >
-                  {showPassword ? '🙈' : '👁️'}
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </button>
               </div>
               <small style={styles.hint}>Mínimo 6 caracteres</small>
@@ -173,7 +174,7 @@ const ResetPassword = () => {
 
             <div style={styles.inputGroup}>
               <label htmlFor="confirm-password" style={styles.label}>
-                <span style={styles.labelIcon}>🔒</span>
+                <span style={styles.labelIcon}><FaLock /></span>
                 {' '}CONFIRMAR CONTRASEÑA
               </label>
               <div style={styles.passwordContainer}>

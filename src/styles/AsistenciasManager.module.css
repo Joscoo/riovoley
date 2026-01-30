@@ -85,6 +85,10 @@
 .statIcon {
   font-size: 2rem;
   opacity: 1;
+  color: #ffd700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .statInfo h3 {

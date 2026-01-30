@@ -7,6 +7,7 @@ import WhatsAppService from '../../services/whatsappService';
 import WhatsAppBusinessService from '../../services/whatsappBusinessService';
 import PagoStatusService from '../../services/pagoStatusService';
 import styles from '../../styles/PagosManager.module.css';
+import { FaChartBar, FaCheckCircle, FaHourglassHalf, FaExclamationTriangle, FaDollarSign, FaEdit, FaPlus } from 'react-icons/fa';
 
 const PagosManager = ({ user }) => {
   const [pagos, setPagos] = useState([]);
@@ -183,7 +184,7 @@ const PagosManager = ({ user }) => {
 
     // Obtener información del atleta directamente de Supabase
     try {
-      console.log('🔍 Obteniendo información del atleta con ID:', formData.student_id);
+      console.log('[DEBUG] Obteniendo información del atleta con ID:', formData.student_id);
       
       const { data: atletaData, error: atletaError } = await supabase
         .from('students')
@@ -519,35 +520,35 @@ const PagosManager = ({ user }) => {
       {/* Estadísticas */}
       <div className={styles.statsGrid}>
         <div className={styles.statCard}>
-          <div className={styles.statIcon}>📊</div>
+          <div className={styles.statIcon}><FaChartBar /></div>
           <div className={styles.statInfo}>
             <h3>{stats.totalPagos}</h3>
             <p>Total Pagos</p>
           </div>
         </div>
         <div className={styles.statCard}>
-          <div className={styles.statIcon}>✅</div>
+          <div className={styles.statIcon}><FaCheckCircle /></div>
           <div className={styles.statInfo}>
             <h3>{stats.activos}</h3>
             <p>Activos</p>
           </div>
         </div>
         <div className={styles.statCard}>
-          <div className={styles.statIcon}>⏳</div>
+          <div className={styles.statIcon}><FaHourglassHalf /></div>
           <div className={styles.statInfo}>
             <h3>{stats.proximosVencer}</h3>
             <p>Próximos a Vencer</p>
           </div>
         </div>
         <div className={styles.statCard}>
-          <div className={styles.statIcon}>⚠️</div>
+          <div className={styles.statIcon}><FaExclamationTriangle /></div>
           <div className={styles.statInfo}>
             <h3>{stats.vencidos}</h3>
             <p>Vencidos</p>
           </div>
         </div>
         <div className={styles.statCard}>
-          <div className={styles.statIcon}>💵</div>
+          <div className={styles.statIcon}><FaDollarSign /></div>
           <div className={styles.statInfo}>
             <h3>{formatMonto(stats.totalRecaudado)}</h3>
             <p>Total Recaudado</p>
@@ -560,7 +561,7 @@ const PagosManager = ({ user }) => {
         <div className={styles.filterGroup}>
           <input
             type="text"
-            placeholder="🔍 Buscar por nombre del atleta..."
+            placeholder="Buscar por nombre del atleta..."
             value={filters.search}
             onChange={(e) => setFilters({...filters, search: e.target.value})}
             className={styles.searchInput}
@@ -715,7 +716,13 @@ const PagosManager = ({ user }) => {
         <div className={styles.modalOverlay}>
           <div className={styles.modal}>
             <div className={styles.modalHeader}>
-              <h3>{editingPago ? '✏️ Editar Pago' : '➕ Registrar Nuevo Pago'}</h3>
+              <h3>
+                {editingPago ? (
+                  <><FaEdit style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Editar Pago</>
+                ) : (
+                  <><FaPlus style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Registrar Nuevo Pago</>
+                )}
+              </h3>
               <button 
                 onClick={() => setShowModal(false)}
                 className={styles.closeButton}

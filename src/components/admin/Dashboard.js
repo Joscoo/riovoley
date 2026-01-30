@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/Dashboard.module.css';
+import { FaUsers, FaDollarSign, FaExclamationTriangle, FaChartBar, FaRunning, FaClipboardList, FaBolt, FaUserPlus, FaCreditCard, FaUsersCog, FaCheckCircle } from 'react-icons/fa';
 
 // Componente StatCard separado para evitar problemas de lint
 const StatCard = ({ title, value, icon, color, subtitle, loading }) => (
@@ -23,7 +24,7 @@ const StatCard = ({ title, value, icon, color, subtitle, loading }) => (
 StatCard.propTypes = {
   title: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.node.isRequired,
   color: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
   loading: PropTypes.bool
@@ -222,7 +223,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
               tipo: 'asistencia',
               descripcion: `${student?.users?.nombre} ${student?.users?.apellido} asistió al entrenamiento`,
               fecha: new Date(asistencia.fecha).toLocaleDateString(),
-              icono: '✅'
+              icono: <FaCheckCircle style={{ color: '#28a745' }} />
             });
           } catch (err) {
             console.error('Error cargando datos de estudiante:', err);
@@ -248,7 +249,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
               tipo: 'pago',
               descripcion: `${student?.users?.nombre} ${student?.users?.apellido} realizó un pago de $${pago.monto}`,
               fecha: new Date(pago.fecha_pago).toLocaleDateString(),
-              icono: '💰'
+              icono: <FaDollarSign style={{ color: '#17a2b8' }} />
             });
           } catch (err) {
             console.error('Error cargando datos de estudiante para pago:', err);
@@ -263,7 +264,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
           tipo: 'info',
           descripcion: 'No hay actividad reciente registrada',
           fecha: 'Hoy',
-          icono: '📋'
+          icono: <FaClipboardList style={{ color: '#6c757d' }} />
         });
       }
 
@@ -278,7 +279,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
   return (
     <div className={styles.dashboard}>
       <div className={styles.dashboardHeader}>
-        <h2>📊 Dashboard - Resumen General</h2>
+        <h2><FaChartBar style={{ marginRight: '10px', verticalAlign: 'middle' }} /> Dashboard - Resumen General</h2>
         <p>Vista general de RioVoley Club</p>
       </div>
 
@@ -287,7 +288,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
         <StatCard
           title="Total Atletas"
           value={stats.totalAtletas}
-          icon="👥"
+          icon={<FaUsers />}
           color="#28a745"
           subtitle="Registrados en el sistema"
           loading={stats.loading}
@@ -299,7 +300,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
           })}`}
-          icon="💰"
+          icon={<FaDollarSign />}
           color="#17a2b8"
           subtitle="Pagos recibidos este mes"
           loading={stats.loading}
@@ -308,7 +309,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
         <StatCard
           title="Pagos Vencidos"
           value={stats.pagosVencidos}
-          icon="⚠️"
+          icon={<FaExclamationTriangle />}
           color={stats.pagosVencidos > 0 ? "#dc3545" : "#ffc107"}
           subtitle={stats.pagosVencidos > 0 ? "Requieren seguimiento" : "Todo al día"}
           loading={stats.loading}
@@ -317,7 +318,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
         <StatCard
           title="Atletas Activos"
           value={stats.atletasActivos}
-          icon="🏃"
+          icon={<FaRunning />}
           color="#28a745"
           subtitle={`${stats.atletasActivos} de ${stats.totalAtletas} con pagos activos`}
           loading={stats.loading}
@@ -327,7 +328,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
       <div className={styles.dashboardContent}>
         {/* Actividad Reciente */}
         <div className={styles.activitySection}>
-          <h3>📋 Actividad Reciente</h3>
+          <h3><FaClipboardList style={{ marginRight: '10px', verticalAlign: 'middle' }} /> Actividad Reciente</h3>
           <div className={styles.activityList}>
             {recentActivity.length > 0 ? (
               recentActivity.map((activity) => (
@@ -347,13 +348,13 @@ const Dashboard = ({ user, onNavigateToSection }) => {
 
         {/* Acciones Rápidas */}
         <div className={styles.quickActions}>
-          <h3>⚡ Acciones Rápidas</h3>
+          <h3><FaBolt style={{ marginRight: '10px', verticalAlign: 'middle' }} /> Acciones Rápidas</h3>
           <div className={styles.actionButtons}>
             <button 
               className={styles.actionButton}
               onClick={() => onNavigateToSection('atletas')}
             >
-              <span>👤</span>
+              <span><FaUserPlus /></span>
               <div>
                 <strong>Agregar Atleta</strong>
                 <p>Registrar nuevo deportista</p>
@@ -364,7 +365,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
               className={styles.actionButton}
               onClick={() => onNavigateToSection('pagos')}
             >
-              <span>💳</span>
+              <span><FaCreditCard /></span>
               <div>
                 <strong>Registrar Pago</strong>
                 <p>Nueva mensualidad</p>
@@ -375,7 +376,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
               className={styles.actionButton}
               onClick={() => onNavigateToSection('usuarios')}
             >
-              <span>👥</span>
+              <span><FaUsersCog /></span>
               <div>
                 <strong>Gestionar Usuarios</strong>
                 <p>Roles y permisos</p>
@@ -386,7 +387,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
               className={styles.actionButton}
               onClick={() => onNavigateToSection('reportes')}
             >
-              <span>📊</span>
+              <span><FaChartBar /></span>
               <div>
                 <strong>Ver Reportes</strong>
                 <p>Estadísticas detalladas</p>

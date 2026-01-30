@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { supabase } from '../config/supabase';
 import { validatePassword } from '../utils/passwordUtils';
 import styles from '../styles/ChangePasswordModal.module.css';
+import { FaLock, FaCheckCircle, FaTimesCircle, FaEye, FaEyeSlash, FaClipboardList, FaSpinner, FaShieldAlt } from 'react-icons/fa';
 
 const ChangePasswordModal = ({ user, onPasswordChanged }) => {
   const [formData, setFormData] = useState({
@@ -70,7 +71,7 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
         throw new Error('Contraseña actual incorrecta o error al actualizar');
       }
 
-      alert('✅ ¡Contraseña actualizada correctamente!');
+      alert('✓ ¡Contraseña actualizada correctamente!');
       onPasswordChanged();
 
     } catch (error) {
@@ -92,14 +93,14 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
     <div className={styles.modalOverlay}>
       <div className={styles.modal}>
         <div className={styles.modalHeader}>
-          <h2>🔐 Cambio de Contraseña Obligatorio</h2>
+          <h2><FaLock style={{ marginRight: '10px', verticalAlign: 'middle' }} /> Cambio de Contraseña Obligatorio</h2>
           <p>Por seguridad, debes cambiar tu contraseña temporal</p>
         </div>
 
         <form onSubmit={handleSubmit} className={styles.form}>
           {errors.length > 0 && (
             <div className={styles.errorContainer}>
-              <h4>❌ Errores encontrados:</h4>
+              <h4><FaTimesCircle style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Errores encontrados:</h4>
               <ul>
                 {errors.map((error, index) => (
                   <li key={index}>{error}</li>
@@ -125,7 +126,7 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
                 className={styles.togglePassword}
                 onClick={() => togglePasswordVisibility('current')}
               >
-                {showPasswords.current ? '👁️' : '🙈'}
+                {showPasswords.current ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
           </div>
@@ -147,7 +148,7 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
                 className={styles.togglePassword}
                 onClick={() => togglePasswordVisibility('new')}
               >
-                {showPasswords.new ? '👁️' : '🙈'}
+                {showPasswords.new ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
           </div>
@@ -169,14 +170,14 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
                 className={styles.togglePassword}
                 onClick={() => togglePasswordVisibility('confirm')}
               >
-                {showPasswords.confirm ? '👁️' : '🙈'}
+                {showPasswords.confirm ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
           </div>
 
           {/* Requisitos de contraseña */}
           <div className={styles.passwordRequirements}>
-            <h4>📋 Requisitos de la contraseña:</h4>
+            <h4><FaClipboardList style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Requisitos de la contraseña:</h4>
             <ul>
               <li>Mínimo 8 caracteres</li>
               <li>Al menos una letra minúscula</li>
@@ -192,7 +193,15 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
               className={styles.saveButton}
               disabled={loading}
             >
-              {loading ? '🔄 Actualizando...' : '🔐 Cambiar Contraseña'}
+              {loading ? (
+                <>
+                  <FaSpinner style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Actualizando...
+                </>
+              ) : (
+                <>
+                  <FaShieldAlt style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Cambiar Contraseña
+                </>
+              )}
             </button>
           </div>
         </form>

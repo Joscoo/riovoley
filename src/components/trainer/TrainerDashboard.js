@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/TrainerDashboard.module.css';
+import { FaVolleyballBall, FaDumbbell } from 'react-icons/fa';
 
 const TrainerDashboard = ({ user, onNavigateToSection }) => {
   const [stats, setStats] = useState({
@@ -84,7 +85,7 @@ const TrainerDashboard = ({ user, onNavigateToSection }) => {
           role="button"
           tabIndex={0}
         >
-          <div className={styles.statIcon}>🏐</div>
+          <div className={styles.statIcon}><FaVolleyballBall /></div>
           <div className={styles.statInfo}>
             <h3>{stats.totalAtletas}</h3>
             <p>Atletas Registrados</p>
@@ -110,7 +111,7 @@ const TrainerDashboard = ({ user, onNavigateToSection }) => {
           role="button"
           tabIndex={0}
         >
-          <div className={styles.statIcon}>🏋️</div>
+          <div className={styles.statIcon}><FaDumbbell /></div>
           <div className={styles.statInfo}>
             <h3>{stats.testsPendientes}</h3>
             <p>Tests (30 días)</p>

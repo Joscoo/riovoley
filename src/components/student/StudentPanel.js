@@ -7,6 +7,7 @@ import AnunciosViewer from '../AnunciosViewer';
 import ProfileSettings from '../admin/ProfileSettings';
 import StudentPhysicalTests from './StudentPhysicalTests';
 import styles from '../../styles/StudentPanel.module.css';
+import { FaCog, FaDumbbell } from 'react-icons/fa';
 
 const StudentPanel = ({ user }) => {
   const [activeSection, setActiveSection] = useState('anuncios');
@@ -122,7 +123,7 @@ const StudentPanel = ({ user }) => {
 
       if (error) throw error;
 
-      console.log('🏋️ Tests físicos cargados:', tests);
+      console.log('[TESTS] Tests físicos cargados:', tests);
       setPhysicalTests(tests || []);
     } catch (error) {
       console.error('Error cargando tests físicos:', error);
@@ -216,7 +217,7 @@ const StudentPanel = ({ user }) => {
                 </>
               ) : (
                 <>
-                  <span className={styles.statusIcon}>⚠️</span>
+                  <span className={styles.statusIcon}>⚠</span>
                   <h3>⏰ Pago Pendiente</h3>
                   <p>Tienes un pago pendiente para {paymentStatus.monthName}</p>
                 </>
@@ -378,7 +379,7 @@ const StudentPanel = ({ user }) => {
   const renderProfile = () => (
     <div className={styles.section}>
       <div className={styles.sectionHeader}>
-        <h2>⚙️ Configuración de Perfil</h2>
+        <h2><FaCog style={{ marginRight: '10px', verticalAlign: 'middle' }} /> Configuración de Perfil</h2>
         <p>Actualiza tu información personal</p>
       </div>
       <ProfileSettings user={user} />
@@ -472,7 +473,7 @@ const StudentPanel = ({ user }) => {
             className={`${styles.menuItem} ${activeSection === 'tests-fisicos' ? styles.active : ''}`}
             onClick={() => setActiveSection('tests-fisicos')}
           >
-            <span className={styles.menuIcon}>🏋️</span>
+            <span className={styles.menuIcon}><FaDumbbell /></span>
             <span>Tests Físicos</span>
           </button>
 
@@ -480,7 +481,7 @@ const StudentPanel = ({ user }) => {
             className={`${styles.menuItem} ${activeSection === 'perfil' ? styles.active : ''}`}
             onClick={() => setActiveSection('perfil')}
           >
-            <span className={styles.menuIcon}>⚙️</span>
+            <span className={styles.menuIcon}><FaCog /></span>
             <span>Mi Perfil</span>
           </button>
         </nav>

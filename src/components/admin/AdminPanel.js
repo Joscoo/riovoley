@@ -12,6 +12,7 @@ import EntrenadoresManager from './EntrenadoresManager';
 import ProfileSettings from './ProfileSettings';
 import AnunciosManager from './AnunciosManager';
 import styles from '../../styles/AdminPanel.module.css';
+import { FaChartBar, FaVolleyballBall, FaChalkboardTeacher, FaDollarSign, FaCalendar, FaDumbbell, FaUsers, FaBullhorn, FaCog } from 'react-icons/fa';
 
 const AdminPanel = ({ user }) => {
   const { profile, isAdmin, loading } = useUserProfile(user);
@@ -37,15 +38,15 @@ const AdminPanel = ({ user }) => {
   }
 
   const menuItems = [
-    { id: 'dashboard', icon: '📊', label: 'Dashboard', description: 'Resumen y estadísticas' },
-    { id: 'atletas', icon: '🏐', label: 'Atletas', description: 'Gestionar deportistas' },
-    { id: 'entrenadores', icon: '👨‍🏫', label: 'Entrenadores', description: 'Gestionar entrenadores' },
-    { id: 'pagos', icon: '💰', label: 'Pagos', description: 'Mensualidades y facturación' },
-    { id: 'asistencias', icon: '📅', label: 'Asistencias', description: 'Control de entrenamientos' },
-    { id: 'tests-fisicos', icon: '🏋️', label: 'Tests Físicos', description: 'Evaluaciones físicas' },
-    { id: 'usuarios', icon: '👥', label: 'Usuarios', description: 'Gestión de usuarios y roles' },
-    { id: 'anuncios', icon: '📢', label: 'Anuncios', description: 'Comunicados y notificaciones' },
-    { id: 'configuracion', icon: '⚙️', label: 'Configuración', description: 'Perfil y seguridad' }
+    { id: 'dashboard', icon: <FaChartBar />, label: 'Dashboard', description: 'Resumen y estadísticas' },
+    { id: 'atletas', icon: <FaVolleyballBall />, label: 'Atletas', description: 'Gestionar deportistas' },
+    { id: 'entrenadores', icon: <FaChalkboardTeacher />, label: 'Entrenadores', description: 'Gestionar entrenadores' },
+    { id: 'pagos', icon: <FaDollarSign />, label: 'Pagos', description: 'Mensualidades y facturación' },
+    { id: 'asistencias', icon: <FaCalendar />, label: 'Asistencias', description: 'Control de entrenamientos' },
+    { id: 'tests-fisicos', icon: <FaDumbbell />, label: 'Tests Físicos', description: 'Evaluaciones físicas' },
+    { id: 'usuarios', icon: <FaUsers />, label: 'Usuarios', description: 'Gestión de usuarios y roles' },
+    { id: 'anuncios', icon: <FaBullhorn />, label: 'Anuncios', description: 'Comunicados y notificaciones' },
+    { id: 'configuracion', icon: <FaCog />, label: 'Configuración', description: 'Perfil y seguridad' }
   ];
 
   const handleNavigateToSection = (sectionId) => {

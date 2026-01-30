@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { supabase, getCurrentUser } from '../config/supabase';
 import { useUserProfile } from '../hooks/useUserProfile';
 import ChangePasswordModal from './ChangePasswordModal';
+import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
 
 // Agregar estilos de animaciones globales
 const styleSheet = document.createElement("style");
@@ -129,16 +130,16 @@ function Login({ onLoginSuccess }) {
       
       // Redirigir inmediatamente según el rol
       if (userRole === 'administrador') {
-        console.log('➡️ Redirigiendo a /admin');
+        console.log('[REDIRECT] Redirigiendo a /admin');
         navigate('/admin');
       } else if (userRole === 'entrenador') {
-        console.log('➡️ Redirigiendo a /entrenador');
+        console.log('[REDIRECT] Redirigiendo a /entrenador');
         navigate('/entrenador');
       } else if (userRole === 'estudiante' || userRole === 'usuario') {
-        console.log('➡️ Redirigiendo a /estudiante');
+        console.log('[REDIRECT] Redirigiendo a /estudiante');
         navigate('/estudiante');
       } else {
-        console.log('ℹ️ Rol no reconocido, redirigiendo a /estudiante:', userRole);
+        console.log('[INFO] Rol no reconocido, redirigiendo a /estudiante:', userRole);
         navigate('/estudiante');
       }
     }
@@ -209,7 +210,7 @@ function Login({ onLoginSuccess }) {
   const handlePasswordChanged = () => {
     setShowChangePasswordModal(false);
     setUserNeedsPasswordChange(null);
-    setMensaje('✅ ¡Contraseña actualizada correctamente! Ya puedes usar la plataforma.');
+    setMensaje('✓ ¡Contraseña actualizada correctamente! Ya puedes usar la plataforma.');
   };
 
   const handleLogin = async (e) => {
@@ -242,10 +243,10 @@ function Login({ onLoginSuccess }) {
         password: password,
       });
 
-      console.log('🔍 Resultado de login:', { data, error });
+      console.log('[DEBUG] Resultado de login:', { data, error });
 
       if (error) {
-        console.error('❌ Error de autenticación:', error);
+        console.error('[ERROR] Error de autenticación:', error);
         
         // Manejo específico de errores
         if (error.message.includes('Invalid login credentials')) {
@@ -260,7 +261,7 @@ function Login({ onLoginSuccess }) {
           setMensaje('Error al iniciar sesión: ' + error.message);
         }
       } else {
-        console.log('✅ Login exitoso:', data);
+        console.log('[SUCCESS] Login exitoso:', data);
         
         // Verificar si el usuario necesita cambiar la contraseña
         await checkFirstLogin(email.trim());
@@ -316,7 +317,7 @@ function Login({ onLoginSuccess }) {
         console.error('Error al enviar email de recuperación:', error);
         setResetMessage('Error: ' + error.message);
       } else {
-        setResetMessage('✅ Se ha enviado un enlace de recuperación a tu email');
+        setResetMessage('✓ Se ha enviado un enlace de recuperación a tu email');
         setResetEmail('');
         setTimeout(() => {
           setShowForgotPassword(false);
@@ -464,8 +465,8 @@ function Login({ onLoginSuccess }) {
         <form onSubmit={handleLogin} style={styles.form}>
           <div style={styles.inputGroup}>
             <label htmlFor="email" style={styles.label}>
-              <span style={styles.labelIcon}>📧</span>
-              {' '}CORREO ELECTRÓNICO
+              <FaEnvelope style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+              CORREO ELECTRÓNICO
             </label>
             <div style={styles.inputWrapper}>
               <input
@@ -483,8 +484,8 @@ function Login({ onLoginSuccess }) {
           
           <div style={styles.inputGroup}>
             <label htmlFor="password" style={styles.label}>
-              <span style={styles.labelIcon}>🔒</span>
-              {' '}CONTRASEÑA
+              <FaLock style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+              CONTRASEÑA
             </label>
             <div style={styles.passwordContainer}>
               <input
@@ -503,7 +504,7 @@ function Login({ onLoginSuccess }) {
                 style={styles.passwordToggle}
                 disabled={isLoading}
               >
-                {showPassword ? '🙈' : '👁️'}
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
           </div>
@@ -563,7 +564,7 @@ function Login({ onLoginSuccess }) {
         <div style={styles.modalOverlay}>
           <div style={styles.modalContent}>
             <div style={styles.modalHeader}>
-              <h3 style={styles.modalTitle}>🔑 Recuperar Contraseña</h3>
+              <h3 style={styles.modalTitle}><FaKey style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Recuperar Contraseña</h3>
               <button
                 onClick={() => {
                   setShowForgotPassword(false);
@@ -583,8 +584,8 @@ function Login({ onLoginSuccess }) {
             <form onSubmit={handleForgotPassword} style={styles.modalForm}>
               <div style={styles.inputGroup}>
                 <label htmlFor="reset-email" style={styles.label}>
-                  <span style={styles.labelIcon}>📧</span>
-                  {' '}CORREO ELECTRÓNICO
+                  <FaEnvelope style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+                  CORREO ELECTRÓNICO
                 </label>
                 <input
                   id="reset-email"

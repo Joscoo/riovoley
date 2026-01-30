@@ -1,0 +1,70 @@
+/* Estilos para iconos de React Icons */
+
+/* Iconos en tarjetas de estadísticas */
+.statIcon {
+  font-size: 2rem;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Iconos en botones */
+.buttonIcon {
+  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+/* Iconos en encabezados */
+.headerIcon {
+  margin-right: 10px;
+  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Iconos pequeños inline */
+.inlineIcon {
+  margin-right: 8px;
+  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Colores de iconos según contexto */
+.iconSuccess {
+  color: #28a745;
+}
+
+.iconError {
+  color: #dc3545;
+}
+
+.iconWarning {
+  color: #ffc107;
+}
+
+.iconInfo {
+  color: #17a2b8;
+}
+
+.iconPrimary {
+  color: #ffd700;
+}
+
+/* Animación para iconos de carga */
+.iconSpin {
+  animation: iconRotate 1s linear infinite;
+}
+
+@keyframes iconRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

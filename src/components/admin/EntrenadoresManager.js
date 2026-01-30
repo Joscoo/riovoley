@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import { createUserWorking } from '../../services/userCreationWorking';
 import styles from '../../styles/EntrenadoresManager.module.css';
+import { FaEdit, FaPlus, FaSave, FaCheckCircle } from 'react-icons/fa';
 
 const EntrenadoresManager = ({ user }) => {
   const [entrenadores, setEntrenadores] = useState([]);
@@ -203,7 +204,7 @@ ${userResult.canLogin ? '✅ Login verificado: El entrenador puede iniciar sesi�
       <div className={styles.searchBar}>
         <input
           type="text"
-          placeholder="🔍 Buscar por nombre, apellido o email..."
+          placeholder="Buscar por nombre, apellido o email..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className={styles.searchInput}
@@ -231,7 +232,7 @@ ${userResult.canLogin ? '✅ Login verificado: El entrenador puede iniciar sesi�
             {filteredEntrenadores.length === 0 ? (
               <tr>
                 <td colSpan="7" className={styles.emptyState}>
-                  {searchTerm ? '🔍 No se encontraron entrenadores' : '📋 No hay entrenadores registrados'}
+                  {searchTerm ? 'No se encontraron entrenadores' : 'No hay entrenadores registrados'}
                 </td>
               </tr>
             ) : (
@@ -285,7 +286,13 @@ ${userResult.canLogin ? '✅ Login verificado: El entrenador puede iniciar sesi�
         <div className={styles.modalOverlay} onClick={() => setShowModal(false)}>
           <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
             <div className={styles.modalHeader}>
-              <h3>{editingEntrenador ? '✏️ Editar Entrenador' : '➕ Nuevo Entrenador'}</h3>
+              <h3>
+                {editingEntrenador ? (
+                  <><FaEdit style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Editar Entrenador</>
+                ) : (
+                  <><FaPlus style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Nuevo Entrenador</>
+                )}
+              </h3>
               <button className={styles.closeBtn} onClick={() => setShowModal(false)}>
                 ✖
               </button>
@@ -356,7 +363,11 @@ ${userResult.canLogin ? '✅ Login verificado: El entrenador puede iniciar sesi�
                   Cancelar
                 </button>
                 <button type="submit" className={styles.btnPrimary}>
-                  {editingEntrenador ? '💾 Actualizar' : '✅ Registrar'}
+                  {editingEntrenador ? (
+                    <><FaSave style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Actualizar</>
+                  ) : (
+                    <><FaCheckCircle style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Registrar</>
+                  )}
                 </button>
               </div>
             </form>

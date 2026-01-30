@@ -12,10 +12,10 @@ const StudentViewDebug = ({ user }) => {
   }, [user]);
 
   const debugStudentAccess = async () => {
-    console.log('🔍 === DEBUG STUDENT ACCESS ===');
-    console.log('👤 User object:', user);
-    console.log('🆔 User ID:', user?.id);
-    console.log('📧 User Email:', user?.email);
+    console.log('[DEBUG] === DEBUG STUDENT ACCESS ===');
+    console.log('[USER] User object:', user);
+    console.log('[ID] User ID:', user?.id);
+    console.log('[EMAIL] User Email:', user?.email);
 
     try {
       // Verificar si existe en la tabla students
@@ -36,7 +36,7 @@ const StudentViewDebug = ({ user }) => {
         `)
         .eq('user_id', user.id);
 
-      console.log('📋 Students query result:', { studentData, studentError });
+      console.log('[CLIPBOARD] Students query result:', { studentData, studentError });
 
       // Verificar si existe en la tabla users
       const { data: userData, error: userError } = await supabase
@@ -62,7 +62,7 @@ const StudentViewDebug = ({ user }) => {
           )
         `);
 
-      console.log('🎓 All students:', { allStudents, allStudentsError });
+      console.log('[STUDENT] All students:', { allStudents, allStudentsError });
 
       setDebugInfo({
         userObject: user,
@@ -102,7 +102,7 @@ const StudentViewDebug = ({ user }) => {
 
       {debugInfo.studentData && (
         <div style={{ marginBottom: '20px' }}>
-          <h3>🎓 Student Data</h3>
+          <h3>Student Data</h3>
           <pre style={{ background: '#fff', padding: '10px', borderRadius: '5px', overflow: 'auto' }}>
             {JSON.stringify(debugInfo.studentData, null, 2)}
           </pre>

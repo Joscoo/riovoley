@@ -12,6 +12,11 @@ import {
   ResponsiveContainer
 } from 'recharts';
 import styles from '../styles/PhysicalTestChart.module.css';
+import { FaChartBar } from 'react-icons/fa';
+  Legend,
+  ResponsiveContainer
+} from 'recharts';
+import styles from '../styles/PhysicalTestChart.module.css';
 
 const PhysicalTestChart = ({ tests }) => {
   const [selectedMetric, setSelectedMetric] = useState('peso');
@@ -276,7 +281,7 @@ const PhysicalTestChart = ({ tests }) => {
         {/* Mensaje cuando no hay suficientes datos */}
         {tests.length < 2 && (
           <div className={styles.insufficientData}>
-            <h4>📊 Gráfica de Evolución</h4>
+            <h4><FaChartBar style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Gráfica de Evolución</h4>
             <p>Se necesitan al menos 2 tests físicos para mostrar la evolución</p>
             <p>Actual: {tests.length} test{tests.length !== 1 ? 's' : ''} registrado{tests.length !== 1 ? 's' : ''}</p>
           </div>

@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/TestsFisicosManager.module.css';
+import { FaEdit, FaPlus, FaClock, FaSave, FaDumbbell } from 'react-icons/fa';
 
 const TestsFisicosManager = ({ user }) => {
   const [tests, setTests] = useState([]);
@@ -385,14 +386,14 @@ const TestsFisicosManager = ({ user }) => {
     <div className={styles.testsFisicosManager}>
       <div className={styles.header}>
         <div className={styles.headerLeft}>
-          <h2>🏋️ Gestión de Tests Físicos</h2>
+          <h2><FaDumbbell style={{ marginRight: '10px', verticalAlign: 'middle' }} /> Gestión de Tests Físicos</h2>
           <p>Registrar y seguir el rendimiento físico de los atletas</p>
         </div>
         <button 
           className={styles.addButton}
           onClick={() => openModal()}
         >
-          ➕ Nuevo Test Físico
+          <FaPlus style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Nuevo Test Físico
         </button>
       </div>
 
@@ -436,7 +437,7 @@ const TestsFisicosManager = ({ user }) => {
         <div className={styles.filterGroup}>
           <input
             type="text"
-            placeholder="🔍 Buscar por atleta u observaciones..."
+            placeholder="Buscar por atleta u observaciones..."
             value={filters.search}
             onChange={(e) => setFilters({...filters, search: e.target.value})}
             className={styles.searchInput}
@@ -548,7 +549,7 @@ const TestsFisicosManager = ({ user }) => {
             ))
           ) : (
             <div className={styles.noTests}>
-              <h3>🏋️ No hay tests físicos registrados</h3>
+              <h3><FaDumbbell style={{ marginRight: '8px', verticalAlign: 'middle' }} /> No hay tests físicos registrados</h3>
               <p>Registra el primer test físico para comenzar el seguimiento</p>
             </div>
           )}
@@ -560,7 +561,13 @@ const TestsFisicosManager = ({ user }) => {
         <div className={styles.modalOverlay}>
           <div className={styles.modal}>
             <div className={styles.modalHeader}>
-              <h3>{editingTest ? '✏️ Editar Test Físico' : '➕ Nuevo Test Físico'}</h3>
+              <h3>
+                {editingTest ? (
+                  <><FaEdit style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Editar Test Físico</>
+                ) : (
+                  <><FaPlus style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Nuevo Test Físico</>
+                )}
+              </h3>
               <button 
                 onClick={() => setShowModal(false)}
                 className={styles.closeButton}
@@ -591,7 +598,7 @@ const TestsFisicosManager = ({ user }) => {
                           }
                         }}
                         onFocus={() => setShowAtletasList(true)}
-                        placeholder="🔍 Buscar atleta por nombre o categoría..."
+                        placeholder="Buscar atleta por nombre o categoría..."
                         required={!formData.student_id}
                         className={styles.searchInput}
                         autoComplete="off"
@@ -848,8 +855,14 @@ const TestsFisicosManager = ({ user }) => {
                   disabled={saving}
                 >
                   {(() => {
-                    if (saving) return '⏳ Guardando...';
-                    return editingTest ? '✏️ Actualizar Test' : '💾 Guardar Test';
+                    if (saving) return (
+                      <><FaClock style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Guardando...</>
+                    );
+                    return editingTest ? (
+                      <><FaEdit style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Actualizar Test</>
+                    ) : (
+                      <><FaSave style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Guardar Test</>
+                    );
                   })()}
                 </button>
               </div>
