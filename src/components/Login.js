@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { supabase, getCurrentUser } from '../config/supabase';
 import { useUserProfile } from '../hooks/useUserProfile';
 import ChangePasswordModal from './ChangePasswordModal';
-import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaKey } from 'react-icons/fa';
 
 // Agregar estilos de animaciones globales
 const styleSheet = document.createElement("style");
