@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/UsuariosManager.module.css';
-import { FaCrown, FaVolleyballBall, FaRunning, FaUser, FaPause, FaPlay, FaEdit, FaTrash, FaPhone, FaBan, FaCalendar } from 'react-icons/fa';
+import { FaCrown, FaVolleyballBall, FaRunning, FaUser, FaPause, FaPlay, FaEdit, FaTrash, FaPhone, FaCalendar } from 'react-icons/fa';
 
 const UsuariosManager = ({ user }) => {
   const [usuarios, setUsuarios] = useState([]);

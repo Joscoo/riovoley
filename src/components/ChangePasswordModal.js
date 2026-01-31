@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { supabase } from '../config/supabase';
 import { validatePassword } from '../utils/passwordUtils';
 import styles from '../styles/ChangePasswordModal.module.css';
-import { FaLock, FaCheckCircle, FaTimesCircle, FaEye, FaEyeSlash, FaClipboardList, FaSpinner, FaShieldAlt } from 'react-icons/fa';
+import { FaLock, FaTimesCircle, FaEye, FaEyeSlash, FaClipboardList, FaSpinner, FaShieldAlt } from 'react-icons/fa';
 
 const ChangePasswordModal = ({ user, onPasswordChanged }) => {
   const [formData, setFormData] = useState({
