@@ -234,14 +234,36 @@ export const resendWorkingCredentials = async (userData) => {
     
     console.log('🔑 Nueva contraseña temporal generada');
 
-    // Actualizar la contraseña en Supabase Auth
-    const { error: updateAuthError } = await supabase.auth.admin.updateUserById(
-      user_id,
-      { password: newPassword }
+    // Obtener el token de sesión actual
+    const { data: { session } } = await supabase.auth.getSession();
+    
+    if (!session) {
+      throw new Error('No hay sesión activa. Debes estar autenticado.');
+    }
+
+    // Actualizar la contraseña usando Edge Function
+    const { data: updateData, error: updateAuthError } = await supabase.functions.invoke(
+      'update-user-password',
+      {
+        body: { 
+          userId: user_id, 
+          newPassword: newPassword 
+        },
+        headers: {
+          Authorization: `Bearer ${session.access_token}`
+        }
+      }
     );
 
-    if (updateAuthError) {
-      throw new Error(`Error actualizando contraseña en Auth: ${updateAuthError.message}`);
+    console.log('📊 Respuesta de Edge Function:', { updateData, updateAuthError });
+
+    if (updateAuthError || !updateData?.success) {
+      console.error('❌ Error detallado:', {
+        error: updateAuthError,
+        data: updateData,
+        fullError: JSON.stringify({ updateAuthError, updateData }, null, 2)
+      });
+      throw new Error(`Error actualizando contraseña: ${updateAuthError?.message || updateData?.error || 'Error desconocido'}`);
     }
 
     console.log('✅ Contraseña actualizada en Supabase Auth');

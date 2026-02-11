@@ -77,32 +77,28 @@ export class PagoStatusService {
   static buildStatusInfo(estado, pago, diasRestantes) {
     let mensaje = '';
     let color = '';
-    let icono = '';
+    const icono = '';
     
     switch (estado) {
       case 'activo': {
         const info = this.getActivoInfo(pago, diasRestantes);
         mensaje = info.mensaje;
         color = '#28a745';
-        icono = '✅';
         break;
       }
       case 'proximo_a_vencer': {
         mensaje = this.getProximoVencerMensaje(diasRestantes);
         color = '#ffc107';
-        icono = '⚠️';
         break;
       }
       case 'vencido': {
         mensaje = this.getVencidoMensaje(diasRestantes);
         color = '#dc3545';
-        icono = '❌';
         break;
       }
       default:
         mensaje = 'Estado desconocido';
         color = '#6c757d';
-        icono = '❓';
     }
     
     return {

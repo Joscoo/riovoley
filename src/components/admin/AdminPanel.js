@@ -12,7 +12,7 @@ import EntrenadoresManager from './EntrenadoresManager';
 import ProfileSettings from './ProfileSettings';
 import AnunciosManager from './AnunciosManager';
 import styles from '../../styles/AdminPanel.module.css';
-import { FaChartBar, FaVolleyballBall, FaChalkboardTeacher, FaDollarSign, FaCalendar, FaDumbbell, FaUsers, FaBullhorn, FaCog } from 'react-icons/fa';
+import { FaChartBar, FaVolleyballBall, FaChalkboardTeacher, FaDollarSign, FaCalendar, FaDumbbell, FaUsers, FaBullhorn, FaCog, FaBan, FaUser } from 'react-icons/fa';
 
 const AdminPanel = ({ user }) => {
   const { profile, isAdmin, loading } = useUserProfile(user);
@@ -30,7 +30,7 @@ const AdminPanel = ({ user }) => {
   if (!isAdmin()) {
     return (
       <div className={styles.accessDenied}>
-        <h2>🚫 Acceso Denegado</h2>
+        <h2><FaBan style={{ marginRight: '10px', verticalAlign: 'middle' }} /> Acceso Denegado</h2>
         <p>Solo los administradores pueden acceder a este panel.</p>
         <p>Tu rol actual: <strong>{profile?.role || 'Sin rol'}</strong></p>
       </div>
@@ -84,7 +84,7 @@ const AdminPanel = ({ user }) => {
         {/* Sidebar Navigation */}
         <nav className={styles.sidebar}>
           <div className={styles.sidebarHeader}>
-            <div className={styles.userAvatar}>👤</div>
+            <div className={styles.userAvatar}><FaUser /></div>
             <h3>{profile?.full_name || user?.email}</h3>
             <p className={styles.userRole}>Administrador</p>
             <span className={styles.adminBadge}>ADMINISTRADOR</span>

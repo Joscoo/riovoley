@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/Dashboard.module.css';
-import { FaUsers, FaDollarSign, FaExclamationTriangle, FaChartBar, FaRunning, FaClipboardList, FaBolt, FaUserPlus, FaCreditCard, FaUsersCog, FaCheckCircle } from 'react-icons/fa';
+import { FaUsers, FaDollarSign, FaExclamationTriangle, FaChartBar, FaRunning, FaClipboardList, FaBolt, FaUserPlus, FaCreditCard, FaUsersCog, FaCheckCircle, FaVolleyballBall } from 'react-icons/fa';
 
 // Componente StatCard separado para evitar problemas de lint
 const StatCard = ({ title, value, icon, color, subtitle, loading }) => (
@@ -399,7 +399,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
 
       {/* Resumen por Categorías */}
       <div className={styles.categoriesOverview}>
-        <h3>🏐 Resumen por Categorías</h3>
+        <h3><FaVolleyballBall style={{ marginRight: '10px', verticalAlign: 'middle' }} /> Resumen por Categorías</h3>
         <div className={styles.categoriesGrid}>
           <div className={styles.categoryCard}>
             <h4>Iniciación Hombres</h4>

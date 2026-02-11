@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/UsuariosManager.module.css';
-import { FaCrown, FaVolleyballBall, FaRunning, FaUser, FaPause, FaPlay, FaEdit, FaTrash, FaPhone, FaCalendar } from 'react-icons/fa';
+import { FaCrown, FaVolleyballBall, FaRunning, FaUser, FaPause, FaPlay, FaEdit, FaTrash, FaPhone, FaCalendar, FaUsers, FaChartBar, FaCheckCircle, FaBan, FaClock, FaStickyNote } from 'react-icons/fa';
 
 const UsuariosManager = ({ user }) => {
   const [usuarios, setUsuarios] = useState([]);
@@ -98,7 +98,7 @@ const UsuariosManager = ({ user }) => {
       setUsuarios(filteredData);
     } catch (error) {
       console.error('Error cargando usuarios:', error);
-      alert('❌ Error al cargar usuarios: ' + error.message);
+      alert('Error al cargar usuarios: ' + error.message);
     } finally {
       setLoading(false);
     }
@@ -162,13 +162,13 @@ const UsuariosManager = ({ user }) => {
       
       console.log('[DEBUG] Verificación del rol actualizado:', verifyData);
 
-      alert(`✅ Usuario actualizado correctamente\n\n📧 ${editingUser.email}\n🎭 Rol: ${formData.role}\n\n⚠️ El usuario debe cerrar sesión y volver a iniciar para ver los cambios.`);
+      alert(`Usuario actualizado correctamente\n\n${editingUser.email}\nRol: ${formData.role}\n\nEl usuario debe cerrar sesión y volver a iniciar para ver los cambios.`);
       setShowModal(false);
       loadUsuarios();
       resetForm();
     } catch (error) {
       console.error('Error actualizando usuario:', error);
-      alert('❌ Error: ' + error.message);
+      alert('Error: ' + error.message);
     }
   };
 
@@ -212,11 +212,11 @@ const UsuariosManager = ({ user }) => {
 
       if (error) throw error;
 
-      alert('✅ Usuario eliminado correctamente');
+      alert('Usuario eliminado correctamente');
       loadUsuarios();
     } catch (error) {
       console.error('Error eliminando usuario:', error);
-      alert('❌ Error: ' + error.message);
+      alert('Error: ' + error.message);
     }
   };
 
@@ -234,11 +234,11 @@ const UsuariosManager = ({ user }) => {
 
       if (error) throw error;
 
-      alert('⏸️ Usuario suspendido temporalmente');
+      alert('Usuario suspendido temporalmente');
       loadUsuarios();
     } catch (error) {
       console.error('Error suspendiendo usuario:', error);
-      alert('❌ Error: ' + error.message);
+      alert('Error: ' + error.message);
     }
   };
 
@@ -318,7 +318,7 @@ const UsuariosManager = ({ user }) => {
     <div className={styles.usuariosManager}>
       <div className={styles.header}>
         <div className={styles.headerLeft}>
-          <h2>👥 Gestión de Usuarios</h2>
+          <h2><FaUsers style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Gestión de Usuarios</h2>
           <p>Administrar usuarios y sus roles en el sistema</p>
         </div>
       </div>
@@ -335,21 +335,21 @@ const UsuariosManager = ({ user }) => {
           </div>
         ))}
         <div className={styles.statCard}>
-          <div className={styles.statIcon}>📊</div>
+          <div className={styles.statIcon}><FaChartBar /></div>
           <div className={styles.statInfo}>
             <h3>{statusStats.totalUsuarios}</h3>
             <p>Total Usuarios</p>
           </div>
         </div>
         <div className={styles.statCard}>
-          <div className={styles.statIcon}>✅</div>
+          <div className={styles.statIcon}><FaCheckCircle /></div>
           <div className={styles.statInfo}>
             <h3>{statusStats.activos}</h3>
             <p>Activos</p>
           </div>
         </div>
         <div className={styles.statCard}>
-          <div className={styles.statIcon}>⛔</div>
+          <div className={styles.statIcon}><FaBan /></div>
           <div className={styles.statInfo}>
             <h3>{statusStats.suspendidos}</h3>
             <p>Suspendidos</p>
@@ -397,8 +397,8 @@ const UsuariosManager = ({ user }) => {
             className={styles.filterSelect}
           >
             <option value="">Todos</option>
-            <option value="activo">✅ Activos</option>
-            <option value="suspendido">⛔ Suspendidos</option>
+            <option value="activo">Activos</option>
+            <option value="suspendido">Suspendidos</option>
           </select>
         </div>
       </div>
@@ -468,14 +468,14 @@ const UsuariosManager = ({ user }) => {
 
                   {usuario.last_login && (
                     <div className={styles.metaItem}>
-                      <span className={styles.metaLabel}>🕐 Último acceso:</span>
+                      <span className={styles.metaLabel}><FaClock style={{ marginRight: '4px' }} /> Último acceso:</span>
                       <span>{new Date(usuario.last_login).toLocaleDateString()}</span>
                     </div>
                   )}
 
                   {usuario.suspended && (
                     <div className={styles.metaItem}>
-                      <span className={styles.metaLabel}>⏸️ Estado:</span>
+                      <span className={styles.metaLabel}><FaPause style={{ marginRight: '4px' }} /> Estado:</span>
                       <span className={styles.suspendedStatus}>
                         SUSPENDIDO
                         {usuario.suspension_until && ` hasta ${new Date(usuario.suspension_until).toLocaleDateString()}`}
@@ -485,7 +485,7 @@ const UsuariosManager = ({ user }) => {
 
                   {usuario.suspension_reason && (
                     <div className={styles.metaItem}>
-                      <span className={styles.metaLabel}>📝 Motivo:</span>
+                      <span className={styles.metaLabel}><FaStickyNote style={{ marginRight: '4px' }} /> Motivo:</span>
                       <span className={styles.suspensionReason}>{usuario.suspension_reason}</span>
                     </div>
                   )}
@@ -494,7 +494,7 @@ const UsuariosManager = ({ user }) => {
             ))
           ) : (
             <div className={styles.noUsers}>
-              <h3>👥 No hay usuarios encontrados</h3>
+              <h3><FaUsers style={{ marginRight: '8px', verticalAlign: 'middle' }} /> No hay usuarios encontrados</h3>
               <p>No se encontraron usuarios con los filtros aplicados</p>
             </div>
           )}
@@ -519,7 +519,7 @@ const UsuariosManager = ({ user }) => {
               
               {/* Información básica */}
               <div className={styles.formSection}>
-                <h4 className={styles.sectionTitle}>👤 Información Personal</h4>
+                <h4 className={styles.sectionTitle}><FaUser style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Información Personal</h4>
                 <div className={styles.formGrid}>
                   <div className={styles.inputGroup}>
                     <label htmlFor="nombre">Nombre</label>

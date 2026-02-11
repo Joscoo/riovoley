@@ -7,22 +7,45 @@ import WhatsAppService from '../../services/whatsappService';
 import WhatsAppBusinessService from '../../services/whatsappBusinessService';
 import PagoStatusService from '../../services/pagoStatusService';
 import styles from '../../styles/PagosManager.module.css';
-import { FaChartBar, FaCheckCircle, FaHourglassHalf, FaExclamationTriangle, FaDollarSign, FaEdit, FaPlus } from 'react-icons/fa';
+import { 
+  FaChartBar, 
+  FaCheckCircle, 
+  FaHourglassHalf, 
+  FaExclamationTriangle, 
+  FaDollarSign, 
+  FaEdit, 
+  FaPlus, 
+  FaMoneyBillWave, 
+  FaSync, 
+  FaWhatsapp, 
+  FaTrash, 
+  FaTimes, 
+  FaUsers, 
+  FaCreditCard, 
+  FaClipboardList 
+} from 'react-icons/fa';
 
 const PagosManager = ({ user }) => {
   const [pagos, setPagos] = useState([]);
+  const [allPagos, setAllPagos] = useState([]); // Almacenar todos los pagos sin filtrar
   const [atletas, setAtletas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [editingPago, setEditingPago] = useState(null);
   const [whatsAppBusiness] = useState(new WhatsAppBusinessService());
   const [filters, setFilters] = useState({
-    fecha_inicio: new Date().toISOString().split('T')[0],
+    fecha_inicio: '',
     fecha_fin: '',
     estado: '',
     atleta: '',
     search: ''
   });
+
+  // Estados para búsqueda de atleta en formulario
+  const [atletaBusqueda, setAtletaBusqueda] = useState('');
+  const [atletasFiltrados, setAtletasFiltrados] = useState([]);
+  const [mostrarSugerencias, setMostrarSugerencias] = useState(false);
+  const [atletaSeleccionado, setAtletaSeleccionado] = useState(null);
 
   const [formData, setFormData] = useState({
     student_id: '',
@@ -36,7 +59,13 @@ const PagosManager = ({ user }) => {
   useEffect(() => {
     loadData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filters]);
+  }, []);
+
+  // Aplicar filtros localmente cuando cambien los filters
+  useEffect(() => {
+    applyFilters();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters, allPagos]);
 
   const loadData = async () => {
     setLoading(true);
@@ -54,8 +83,8 @@ const PagosManager = ({ user }) => {
       if (atletasError) throw atletasError;
       setAtletas(atletasData || []);
 
-      // Cargar pagos con filtros
-      let query = supabase
+      // Cargar TODOS los pagos sin filtros
+      const { data: pagosData, error: pagosError } = await supabase
         .from('payments')
         .select(`
           *,
@@ -67,48 +96,36 @@ const PagosManager = ({ user }) => {
         `)
         .order('fecha_inicio', { ascending: false });
 
-      // Aplicar filtros
-      if (filters.fecha_inicio) {
-        query = query.gte('fecha_inicio', filters.fecha_inicio);
-      }
-      if (filters.fecha_fin) {
-        query = query.lte('fecha_fin', filters.fecha_fin);
-      }
-      if (filters.estado) {
-        query = query.eq('estado', filters.estado);
-      }
-      if (filters.atleta) {
-        query = query.eq('student_id', filters.atleta);
-      }
-
-      const { data: pagosData, error: pagosError } = await query;
-
       if (pagosError) throw pagosError;
-
-      // Filtrar por búsqueda local
-      let filteredData = pagosData || [];
-      if (filters.search) {
-        const searchLower = filters.search.toLowerCase();
-        filteredData = filteredData.filter(pago => 
-          pago.student?.user?.nombre?.toLowerCase().includes(searchLower) ||
-          pago.student?.user?.apellido?.toLowerCase().includes(searchLower) ||
-          pago.student?.user?.email?.toLowerCase().includes(searchLower)
-        );
-      }
 
       // Actualizar estados automáticamente en segundo plano
       console.log('🔄 Verificando y actualizando estados de pagos...');
       const resultadoActualizacion = await PagoStatusService.actualizarTodosLosEstados(supabase);
       if (resultadoActualizacion.actualizados > 0) {
         console.log(`✅ ${resultadoActualizacion.actualizados} pagos actualizados automáticamente`);
-        // Recargar datos si hubo cambios
-        const { data: pagosActualizados } = await query;
+        // Recargar todos los pagos si hubo cambios
+        const { data: pagosActualizados } = await supabase
+          .from('payments')
+          .select(`
+            *,
+            student:students(
+              id,
+              categoria,
+              user:users(id, nombre, apellido, email, telefono)
+            )
+          `)
+          .order('fecha_inicio', { ascending: false });
+        
         if (pagosActualizados) {
-          filteredData = pagosActualizados;
+          setAllPagos(pagosActualizados);
+        } else {
+          setAllPagos(pagosData || []);
         }
+      } else {
+        setAllPagos(pagosData || []);
       }
 
-      setPagos(filteredData);
+      // Los filtros se aplicarán automáticamente por el useEffect de filters
     } catch (error) {
       console.error('Error cargando datos:', error);
       alert('Error al cargar los datos: ' + error.message);
@@ -117,30 +134,73 @@ const PagosManager = ({ user }) => {
     }
   };
 
+  // Función para aplicar filtros localmente
+  const applyFilters = () => {
+    let filteredData = [...allPagos];
+
+    // Filtrar por fecha de inicio
+    if (filters.fecha_inicio) {
+      filteredData = filteredData.filter(pago => {
+        if (!pago.fecha_inicio) return false;
+        return pago.fecha_inicio >= filters.fecha_inicio;
+      });
+    }
+
+    // Filtrar por fecha fin
+    if (filters.fecha_fin) {
+      filteredData = filteredData.filter(pago => {
+        if (!pago.fecha_fin) return true; // Si no tiene fecha fin, incluirlo
+        return pago.fecha_fin <= filters.fecha_fin;
+      });
+    }
+
+    // Filtrar por estado
+    if (filters.estado) {
+      filteredData = filteredData.filter(pago => pago.estado === filters.estado);
+    }
+
+    // Filtrar por atleta
+    if (filters.atleta) {
+      filteredData = filteredData.filter(pago => pago.student_id?.toString() === filters.atleta);
+    }
+
+    // Filtrar por búsqueda de texto
+    if (filters.search) {
+      const searchLower = filters.search.toLowerCase();
+      filteredData = filteredData.filter(pago => 
+        pago.student?.user?.nombre?.toLowerCase().includes(searchLower) ||
+        pago.student?.user?.apellido?.toLowerCase().includes(searchLower) ||
+        pago.student?.user?.email?.toLowerCase().includes(searchLower)
+      );
+    }
+
+    setPagos(filteredData);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     
     try {
       if (editingPago) {
         await updatePago();
-        alert('✅ Pago actualizado exitosamente');
+        alert('Pago actualizado exitosamente');
       } else {
         const result = await createPago();
         
-        let mensaje = '✅ Pago registrado exitosamente.';
+        let mensaje = 'Pago registrado exitosamente.';
         
         if (result?.emailSent) {
-          mensaje += '\n📧 Email de confirmación enviado.';
+          mensaje += '\nEmail de confirmación enviado.';
         } else if (result?.emailError) {
-          mensaje += `\n⚠️ Email no enviado: ${result.emailError}`;
+          mensaje += `\nEmail no enviado: ${result.emailError}`;
         }
         
         if (result?.whatsappSent && result?.messageId) {
-          mensaje += '\n📱 WhatsApp Business enviado automáticamente.';
+          mensaje += '\nWhatsApp Business enviado automáticamente.';
         } else if (result?.whatsappError) {
-          mensaje += `\n⚠️ WhatsApp Business error: ${result.whatsappError}`;
+          mensaje += `\nWhatsApp Business error: ${result.whatsappError}`;
         } else if (result?.whatsappSent) {
-          mensaje += '\n📱 WhatsApp enviado.';
+          mensaje += '\nWhatsApp enviado.';
         }
         
         alert(mensaje);
@@ -151,7 +211,7 @@ const PagosManager = ({ user }) => {
       loadData();
     } catch (error) {
       console.error('Error guardando pago:', error);
-      alert('❌ Error: ' + error.message);
+      alert('Error: ' + error.message);
     }
   };
 
@@ -339,18 +399,18 @@ const PagosManager = ({ user }) => {
   const enviarWhatsAppPago = async (pago) => {
     const atletaInfo = pago.student?.user;
     if (!atletaInfo) {
-      alert('❌ No se encontró información del atleta');
+      alert('No se encontró información del atleta');
       return;
     }
 
     // Verificar si el atleta tiene teléfono
     if (!atletaInfo.telefono) {
-      alert('❌ El atleta no tiene número de teléfono registrado');
+      alert('El atleta no tiene número de teléfono registrado');
       return;
     }
 
     if (!WhatsAppService.validarTelefono(atletaInfo.telefono)) {
-      alert('❌ El número de teléfono no es válido');
+      alert('El número de teléfono no es válido');
       return;
     }
 
@@ -371,9 +431,9 @@ const PagosManager = ({ user }) => {
         }, atletaInfo.telefono);
         
         if (whatsAppResult.success) {
-          alert(`✅ WhatsApp Business enviado exitosamente\n📱 ID: ${whatsAppResult.messageId}`);
+          alert(`WhatsApp Business enviado exitosamente\nID: ${whatsAppResult.messageId}`);
         } else {
-          alert(`❌ Error en WhatsApp Business: ${whatsAppResult.error}`);
+          alert(`Error en WhatsApp Business: ${whatsAppResult.error}`);
         }
       } else {
         // Fallback: usar WhatsApp Web (manual)
@@ -394,7 +454,7 @@ const PagosManager = ({ user }) => {
       }
     } catch (error) {
       console.error('Error enviando WhatsApp:', error);
-      alert(`❌ Error: ${error.message}`);
+      alert(`Error: ${error.message}`);
     }
   };
 
@@ -410,7 +470,7 @@ const PagosManager = ({ user }) => {
       if (error) throw error;
 
       loadData();
-      alert('✅ Fecha de pago registrada');
+      alert('Fecha de pago registrada');
     } catch (error) {
       console.error('Error actualizando pago:', error);
       alert('Error: ' + error.message);
@@ -428,6 +488,14 @@ const PagosManager = ({ user }) => {
         fecha_pago: pago.fecha_pago || '',
         observaciones: ''
       });
+      
+      // Establecer el atleta en el campo de búsqueda
+      const atleta = atletas.find(a => a.id === pago.student_id);
+      if (atleta) {
+        const nombreCompleto = `${atleta.users?.nombre || ''} ${atleta.users?.apellido || ''}`;
+        setAtletaBusqueda(nombreCompleto);
+        setAtletaSeleccionado(atleta);
+      }
     } else {
       setEditingPago(null);
       resetForm();
@@ -444,6 +512,42 @@ const PagosManager = ({ user }) => {
       fecha_pago: '', // Vacío por defecto
       observaciones: ''
     });
+    setAtletaBusqueda('');
+    setAtletaSeleccionado(null);
+    setAtletasFiltrados([]);
+    setMostrarSugerencias(false);
+  };
+
+  // Función para manejar la búsqueda de atletas
+  const handleAtletaBusqueda = (valorBusqueda) => {
+    setAtletaBusqueda(valorBusqueda);
+    
+    if (valorBusqueda.trim() === '') {
+      setAtletasFiltrados([]);
+      setMostrarSugerencias(false);
+      setFormData({...formData, student_id: ''});
+      setAtletaSeleccionado(null);
+      return;
+    }
+
+    // Filtrar atletas por nombre o apellido
+    const filtrados = atletas.filter(atleta => {
+      const nombreCompleto = `${atleta.users?.nombre || ''} ${atleta.users?.apellido || ''}`.toLowerCase();
+      return nombreCompleto.includes(valorBusqueda.toLowerCase());
+    });
+
+    setAtletasFiltrados(filtrados);
+    setMostrarSugerencias(true);
+  };
+
+  // Función para seleccionar un atleta de las sugerencias
+  const seleccionarAtleta = (atleta) => {
+    const nombreCompleto = `${atleta.users?.nombre || ''} ${atleta.users?.apellido || ''}`;
+    setAtletaBusqueda(nombreCompleto);
+    setAtletaSeleccionado(atleta);
+    setFormData({...formData, student_id: atleta.id.toString()});
+    setMostrarSugerencias(false);
+    setAtletasFiltrados([]);
   };
 
   const formatPeriodo = (fecha_inicio, fecha_fin) => {
@@ -482,14 +586,14 @@ const PagosManager = ({ user }) => {
       const resultados = await PagoStatusService.actualizarTodosLosEstados(supabase);
       
       if (resultados.actualizados > 0) {
-        alert(`✅ ${resultados.actualizados} pagos actualizados.\n📊 Estados sincronizados correctamente.`);
+        alert(`${resultados.actualizados} pagos actualizados.\nEstados sincronizados correctamente.`);
         loadData(); // Recargar datos
       } else {
-        alert('ℹ️ Todos los estados ya están actualizados.');
+        alert('Todos los estados ya están actualizados.');
       }
     } catch (error) {
       console.error('Error actualizando estados:', error);
-      alert('❌ Error al actualizar estados: ' + error.message);
+      alert('Error al actualizar estados: ' + error.message);
     }
   };
 
@@ -497,7 +601,7 @@ const PagosManager = ({ user }) => {
     <div className={styles.pagosManager}>
       <div className={styles.header}>
         <div className={styles.headerLeft}>
-          <h2>💰 Gestión de Pagos</h2>
+          <h2><FaMoneyBillWave style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Gestión de Pagos</h2>
           <p>Administrar mensualidades y pagos del club</p>
         </div>
         <div className={styles.headerButtons}>
@@ -506,13 +610,13 @@ const PagosManager = ({ user }) => {
             onClick={actualizarEstadosManualmente}
             title="Actualizar estados automáticamente"
           >
-            🔄 Actualizar Estados
+            <FaSync style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Actualizar Estados
           </button>
           <button 
             className={styles.addButton}
             onClick={() => openModal()}
           >
-            ➕ Registrar Pago
+            <FaPlus style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Registrar Pago
           </button>
         </div>
       </div>
@@ -594,10 +698,10 @@ const PagosManager = ({ user }) => {
             onChange={(e) => setFilters({...filters, estado: e.target.value})}
             className={styles.filterSelect}
           >
-            <option value="">📋 Todos los estados</option>
-            <option value="activo">✅ Activo</option>
-            <option value="proximo_a_vencer">⚠️ Próximo a Vencer</option>
-            <option value="vencido">❌ Vencido</option>
+            <option value=""><FaClipboardList style={{ marginRight: '6px' }} /> Todos los estados</option>
+            <option value="activo"><FaCheckCircle style={{ marginRight: '6px' }} /> Activo</option>
+            <option value="proximo_a_vencer"><FaHourglassHalf style={{ marginRight: '6px' }} /> Próximo a Vencer</option>
+            <option value="vencido"><FaExclamationTriangle style={{ marginRight: '6px' }} /> Vencido</option>
           </select>
         </div>
 
@@ -607,7 +711,7 @@ const PagosManager = ({ user }) => {
             onChange={(e) => setFilters({...filters, atleta: e.target.value})}
             className={styles.filterSelect}
           >
-            <option value="">👥 Todos los atletas</option>
+            <option value=""><FaUsers style={{ marginRight: '6px' }} /> Todos los atletas</option>
             {atletas.map(atleta => (
               <option key={atleta.id} value={atleta.id}>
                 {atleta.users?.nombre} {atleta.users?.apellido}
@@ -654,7 +758,7 @@ const PagosManager = ({ user }) => {
                           className={styles.estadoBadge}
                           style={{ backgroundColor: PagoStatusService.getStatusInfo(pago).color }}
                         >
-                          {PagoStatusService.getStatusInfo(pago).icono} {PagoStatusService.getStatusInfo(pago).mensaje}
+                          {PagoStatusService.getStatusInfo(pago).mensaje}
                         </span>
                       </td>
                       <td>
@@ -671,7 +775,7 @@ const PagosManager = ({ user }) => {
                               className={styles.paidButton}
                               title="Registrar fecha de pago"
                             >
-                              💰
+                              <FaDollarSign />
                             </button>
                           )}
                           <button
@@ -679,21 +783,21 @@ const PagosManager = ({ user }) => {
                             className={styles.whatsappButton}
                             title="Enviar por WhatsApp"
                           >
-                            📱
+                            <FaWhatsapp />
                           </button>
                           <button
                             onClick={() => openModal(pago)}
                             className={styles.editButton}
                             title="Editar"
                           >
-                            ✏️
+                            <FaEdit />
                           </button>
                           <button
                             onClick={() => deletePago(pago)}
                             className={styles.deleteButton}
                             title="Eliminar"
                           >
-                            🗑️
+                            <FaTrash />
                           </button>
                         </div>
                       </td>
@@ -704,7 +808,7 @@ const PagosManager = ({ user }) => {
             </div>
           ) : (
             <div className={styles.noPagos}>
-              <h3>💳 No hay pagos registrados</h3>
+              <h3><FaCreditCard style={{ marginRight: '8px', verticalAlign: 'middle' }} /> No hay pagos registrados</h3>
               <p>Registra el primer pago del club</p>
             </div>
           )}
@@ -727,7 +831,7 @@ const PagosManager = ({ user }) => {
                 onClick={() => setShowModal(false)}
                 className={styles.closeButton}
               >
-                ✕
+                <FaTimes />
               </button>
             </div>
             
@@ -735,19 +839,53 @@ const PagosManager = ({ user }) => {
               <div className={styles.formGrid}>
                 <div className={styles.inputGroup}>
                   <label htmlFor="student_id">Atleta *</label>
-                  <select
-                    id="student_id"
-                    value={formData.student_id}
-                    onChange={(e) => setFormData({...formData, student_id: e.target.value})}
-                    required
-                  >
-                    <option value="">Seleccionar atleta</option>
-                    {atletas.map(atleta => (
-                      <option key={atleta.id} value={atleta.id}>
-                        {atleta.users?.nombre} {atleta.users?.apellido} - {atleta.categoria?.replaceAll('_', ' ').toUpperCase()}
-                      </option>
-                    ))}
-                  </select>
+                  <div className={styles.autosuggestContainer}>
+                    <input
+                      id="student_id"
+                      type="text"
+                      value={atletaBusqueda}
+                      onChange={(e) => handleAtletaBusqueda(e.target.value)}
+                      onFocus={() => {
+                        if (atletaBusqueda && atletasFiltrados.length > 0) {
+                          setMostrarSugerencias(true);
+                        }
+                      }}
+                      placeholder="Escribe el nombre del atleta..."
+                      required
+                      autoComplete="off"
+                    />
+                    {mostrarSugerencias && atletasFiltrados.length > 0 && (
+                      <ul className={styles.sugerenciasList}>
+                        {atletasFiltrados.map(atleta => (
+                          <li 
+                            key={atleta.id}
+                            onClick={() => seleccionarAtleta(atleta)}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                seleccionarAtleta(atleta);
+                              }
+                            }}
+                            className={styles.sugerenciaItem}
+                            role="button"
+                            tabIndex={0}
+                          >
+                            <span className={styles.sugerenciaNombre}>
+                              {atleta.users?.nombre} {atleta.users?.apellido}
+                            </span>
+                            <span className={styles.sugerenciaCategoria}>
+                              {atleta.categoria?.replaceAll('_', ' ').toUpperCase()}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    {mostrarSugerencias && atletaBusqueda && atletasFiltrados.length === 0 && (
+                      <div className={styles.noResultados}>
+                        No se encontraron atletas
+                      </div>
+                    )}
+                  </div>
                 </div>
                 
                 <div className={styles.inputGroup}>

@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/TestsFisicosManager.module.css';
-import { FaEdit, FaPlus, FaClock, FaSave, FaDumbbell } from 'react-icons/fa';
+import { FaEdit, FaPlus, FaClock, FaSave, FaDumbbell, FaTrash } from 'react-icons/fa';
 
 const TestsFisicosManager = ({ user }) => {
   const [tests, setTests] = useState([]);
@@ -156,12 +156,12 @@ const TestsFisicosManager = ({ user }) => {
     try {
       // Validaciones básicas
       if (!formData.student_id) {
-        alert('❌ Error: Debe seleccionar un atleta');
+        alert('Error: Debe seleccionar un atleta');
         return;
       }
       
       if (!formData.fecha_test) {
-        alert('❌ Error: La fecha del test es requerida');
+        alert('Error: La fecha del test es requerida');
         return;
       }
 
@@ -171,7 +171,7 @@ const TestsFisicosManager = ({ user }) => {
       hoy.setHours(23, 59, 59, 999);
       
       if (fechaTest > hoy) {
-        alert('❌ Error: La fecha del test no puede ser futura');
+        alert('Error: La fecha del test no puede ser futura');
         return;
       }
 
@@ -183,23 +183,23 @@ const TestsFisicosManager = ({ user }) => {
       ];
 
       if (!mediciones.some(medicion => medicion && String(medicion).trim() !== '')) {
-        alert('❌ Error: Debe ingresar al menos una medición física');
+        alert('Error: Debe ingresar al menos una medición física');
         return;
       }
 
       // Validaciones específicas de rangos
       if (formData.estatura && (Number.parseFloat(formData.estatura) < 0.5 || Number.parseFloat(formData.estatura) > 3)) {
-        alert('❌ Error: La estatura debe estar entre 0.5m y 3.0m');
+        alert('Error: La estatura debe estar entre 0.5m y 3.0m');
         return;
       }
 
       if (formData.peso && (Number.parseFloat(formData.peso) < 20 || Number.parseFloat(formData.peso) > 300)) {
-        alert('❌ Error: El peso debe estar entre 20kg y 300kg');
+        alert('Error: El peso debe estar entre 20kg y 300kg');
         return;
       }
 
       if (formData.fuerza_explosiva_salto_largo && Number.parseFloat(formData.fuerza_explosiva_salto_largo) > 10) {
-        alert('❌ Error: El salto largo no puede ser mayor a 10 metros');
+        alert('Error: El salto largo no puede ser mayor a 10 metros');
         return;
       }
       
@@ -214,7 +214,7 @@ const TestsFisicosManager = ({ user }) => {
       loadTests();
     } catch (error) {
       console.error('Error guardando test físico:', error);
-      alert('❌ Error: ' + error.message);
+      alert('Error: ' + error.message);
     } finally {
       setSaving(false);
     }
@@ -247,7 +247,7 @@ const TestsFisicosManager = ({ user }) => {
       throw new Error(`Error creando test físico: ${error.message}`);
     }
 
-    alert('✅ ¡Test físico registrado correctamente!');
+    alert('Test físico registrado correctamente');
   };
 
   const updateTest = async () => {
@@ -284,7 +284,7 @@ const TestsFisicosManager = ({ user }) => {
     
     console.log('Actualización exitosa:', data);
 
-    alert('✅ ¡Test físico actualizado correctamente!');
+    alert('Test físico actualizado correctamente');
   };
 
   const deleteTest = async (test) => {
@@ -405,7 +405,7 @@ const TestsFisicosManager = ({ user }) => {
             onChange={(e) => setFilters({...filters, atletaId: e.target.value})}
             className={styles.filterSelect}
           >
-            <option value="">👥 Todos los atletas</option>
+            <option value="">Todos los atletas</option>
             {atletas.map(atleta => (
               <option key={atleta.id} value={atleta.id}>
                 {atleta.full_name}
@@ -464,14 +464,14 @@ const TestsFisicosManager = ({ user }) => {
                       className={styles.editButton}
                       title="Editar"
                     >
-                      ✏️
+                      <FaEdit />
                     </button>
                     <button 
                       onClick={() => deleteTest(test)}
                       className={styles.deleteButton}
                       title="Eliminar"
                     >
-                      🗑️
+                      <FaTrash />
                     </button>
                   </div>
                 </div>
@@ -706,7 +706,7 @@ const TestsFisicosManager = ({ user }) => {
 
               {/* Tests de Fuerza */}
               <div className={styles.formSection}>
-                <h4 className={styles.sectionTitle}>💪 Tests de Fuerza y Explosividad</h4>
+                <h4 className={styles.sectionTitle}>Tests de Fuerza y Explosividad</h4>
                 <div className={styles.formGrid}>
                   <div className={styles.inputGroup}>
                     <label htmlFor="brazo_inicial">Extensión brazo inicial (cm)</label>
@@ -768,7 +768,7 @@ const TestsFisicosManager = ({ user }) => {
 
               {/* Pruebas de Fuerza Muscular */}
               <div className={styles.formSection}>
-                <h4 className={styles.sectionTitle}>💪 Fuerza Muscular (repeticiones por minuto)</h4>
+                <h4 className={styles.sectionTitle}>Fuerza Muscular (repeticiones por minuto)</h4>
                 <div className={styles.formGrid}>
                   <div className={styles.inputGroup}>
                     <label htmlFor="fuerza_abdomen">Abdominales (1 min)</label>
@@ -826,7 +826,7 @@ const TestsFisicosManager = ({ user }) => {
 
               {/* Observaciones */}
               <div className={styles.formSection}>
-                <h4 className={styles.sectionTitle}>📝 Observaciones</h4>
+                <h4 className={styles.sectionTitle}>Observaciones</h4>
                 <div className={styles.inputGroup}>
                   <label htmlFor="observaciones">Comentarios adicionales</label>
                   <textarea

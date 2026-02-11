@@ -139,7 +139,7 @@ const AnunciosViewer = ({ userRole = 'all', limit = null, showFilters = false })
 
       {anuncios.length === 0 ? (
         <div className={styles.empty}>
-          <span className={styles.emptyIcon}>📢</span>
+          <span className={styles.emptyIcon}><FaBullhorn /></span>
           <p>No hay anuncios {selectedPriority !== 'all' ? `de prioridad ${priorities.find(p => p.value === selectedPriority)?.label.toLowerCase()}` : ''} en este momento</p>
         </div>
       ) : (

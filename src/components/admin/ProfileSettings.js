@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/ProfileSettings.module.css';
-import { FaCog, FaClipboardList, FaInfoCircle } from 'react-icons/fa';
+import { FaCog, FaClipboardList, FaInfoCircle, FaEdit, FaLock, FaKey, FaExclamationTriangle } from 'react-icons/fa';
 
 const ProfileSettings = ({ user }) => {
   const [loading, setLoading] = useState(false);
@@ -168,7 +168,7 @@ const ProfileSettings = ({ user }) => {
 
       if (profileError) throw profileError;
 
-      setMensaje({ tipo: 'success', texto: '✅ Perfil actualizado correctamente' });
+      setMensaje({ tipo: 'success', texto: 'Perfil actualizado correctamente' });
       setEditMode(false);
       await loadUserData();
 
@@ -224,7 +224,7 @@ const ProfileSettings = ({ user }) => {
 
       if (updateError) throw updateError;
 
-      setMensaje({ tipo: 'success', texto: '✅ Contraseña actualizada correctamente' });
+      setMensaje({ tipo: 'success', texto: 'Contraseña actualizada correctamente' });
       setPasswordData({
         currentPassword: '',
         newPassword: '',
@@ -273,7 +273,7 @@ const ProfileSettings = ({ user }) => {
               className={styles.editButton}
               onClick={() => setEditMode(true)}
             >
-              ✏️ Editar
+              <FaEdit style={{ marginRight: '6px', verticalAlign: 'middle' }} /> Editar
             </button>
           )}
         </div>
@@ -386,7 +386,7 @@ const ProfileSettings = ({ user }) => {
       {/* Sección de Seguridad */}
       <div className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h3>🔒 Seguridad</h3>
+          <h3><FaLock style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Seguridad</h3>
         </div>
 
         {!showChangePassword ? (
@@ -394,12 +394,12 @@ const ProfileSettings = ({ user }) => {
             className={styles.changePasswordButton}
             onClick={() => setShowChangePassword(true)}
           >
-            🔑 Cambiar Contraseña
+            <FaKey style={{ marginRight: '6px', verticalAlign: 'middle' }} /> Cambiar Contraseña
           </button>
         ) : (
           <form onSubmit={handleChangePassword} className={styles.form}>
             <div className={styles.passwordNotice}>
-              <p>⚠️ La contraseña debe tener al menos 6 caracteres</p>
+              <p><FaExclamationTriangle style={{ marginRight: '6px', verticalAlign: 'middle' }} /> La contraseña debe tener al menos 6 caracteres</p>
             </div>
 
             <div className={styles.formGroup}>

@@ -4,7 +4,15 @@ import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import { createUserWorking } from '../../services/userCreationWorking';
 import styles from '../../styles/EntrenadoresManager.module.css';
-import { FaEdit, FaPlus, FaSave, FaCheckCircle } from 'react-icons/fa';
+import { 
+  FaEdit, 
+  FaPlus, 
+  FaSave, 
+  FaCheckCircle, 
+  FaVolleyballBall, 
+  FaTrash, 
+  FaTimes 
+} from 'react-icons/fa';
 
 const EntrenadoresManager = ({ user }) => {
   const [entrenadores, setEntrenadores] = useState([]);
@@ -38,7 +46,7 @@ const EntrenadoresManager = ({ user }) => {
       setEntrenadores(data || []);
     } catch (error) {
       console.error('Error cargando entrenadores:', error);
-      alert('❌ Error al cargar entrenadores: ' + error.message);
+      alert('Error al cargar entrenadores: ' + error.message);
     } finally {
       setLoading(false);
     }
@@ -63,7 +71,7 @@ const EntrenadoresManager = ({ user }) => {
           .eq('id', editingEntrenador.id);
 
         if (error) throw error;
-        alert('✅ Entrenador actualizado correctamente');
+        alert('Entrenador actualizado correctamente');
       } else {
         // Crear nuevo entrenador usando el método que funciona
         console.log('🏐 Creando entrenador con método que funciona...');
@@ -94,7 +102,7 @@ ${userResult.canLogin ? '✅ Login verificado: El entrenador puede iniciar sesi�
           const credentialsText = `Email: ${userResult.credentials.email}\nContraseña: ${userResult.credentials.password}\nURL: ${userResult.credentials.loginUrl}`;
           navigator.clipboard.writeText(credentialsText)
             .then(() => alert('📋 Credenciales copiadas al portapapeles'))
-            .catch(() => alert('⚠️ No se pudieron copiar las credenciales automáticamente'));
+            .catch(() => alert('No se pudieron copiar las credenciales automáticamente'));
         }
       }
 
@@ -123,11 +131,11 @@ ${userResult.canLogin ? '✅ Login verificado: El entrenador puede iniciar sesi�
         .eq('id', entrenadorId);
 
       if (error) throw error;
-      alert('✅ Entrenador eliminado correctamente');
+      alert('Entrenador eliminado correctamente');
       loadEntrenadores();
     } catch (error) {
       console.error('Error eliminando entrenador:', error);
-      alert('❌ Error: ' + error.message);
+      alert('Error: ' + error.message);
     }
   };
 
@@ -192,11 +200,11 @@ ${userResult.canLogin ? '✅ Login verificado: El entrenador puede iniciar sesi�
       {/* Header */}
       <div className={styles.header}>
         <div>
-          <h2 className={styles.title}>🏐 Gestión de Entrenadores</h2>
+          <h2 className={styles.title}><FaVolleyballBall style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Gestión de Entrenadores</h2>
           <p className={styles.subtitle}>Administrar el equipo de entrenadores</p>
         </div>
         <button className={styles.btnPrimary} onClick={() => openModal()}>
-          ➕ Nuevo Entrenador
+          <FaPlus style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Nuevo Entrenador
         </button>
       </div>
 
@@ -263,14 +271,14 @@ ${userResult.canLogin ? '✅ Login verificado: El entrenador puede iniciar sesi�
                         onClick={() => openModal(entrenador)}
                         title="Editar"
                       >
-                        ✏️
+                        <FaEdit />
                       </button>
                       <button 
                         className={styles.btnDelete}
                         onClick={() => handleDelete(entrenador.id)}
                         title="Eliminar"
                       >
-                        🗑️
+                        <FaTrash />
                       </button>
                     </div>
                   </td>
@@ -294,7 +302,7 @@ ${userResult.canLogin ? '✅ Login verificado: El entrenador puede iniciar sesi�
                 )}
               </h3>
               <button className={styles.closeBtn} onClick={() => setShowModal(false)}>
-                ✖
+                <FaTimes />
               </button>
             </div>
 

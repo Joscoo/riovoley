@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { supabase } from '../config/supabase';
+import { FaUser, FaUserShield, FaChalkboardTeacher, FaBars } from 'react-icons/fa';
 import styles from '../styles/Navbar.module.css';
 
 // Función auxiliar para obtener color del rol
@@ -71,13 +72,13 @@ const Navbar = ({ user, userProfile, onLogout }) => {
           <li><Link to="/sobre">Sobre Nosotros</Link></li>
           <li><Link to="/horarios">Horarios</Link></li>
           {user && userProfile?.role?.toLowerCase() === 'estudiante' && (
-            <li><Link to="/estudiante" className={styles.studentLink}>👤 Mi Perfil</Link></li>
+            <li><Link to="/estudiante" className={styles.studentLink}><FaUser style={{ marginRight: '6px', verticalAlign: 'middle' }} /> Mi Perfil</Link></li>
           )}
           {userProfile?.role?.toLowerCase() === 'entrenador' && (
-            <li><Link to="/entrenador" className={styles.trainerLink}>🟠 Panel Entrenador</Link></li>
+            <li><Link to="/entrenador" className={styles.trainerLink}><FaChalkboardTeacher style={{ marginRight: '6px', verticalAlign: 'middle' }} /> Panel Entrenador</Link></li>
           )}
           {userProfile?.role?.toLowerCase() === 'administrador' && (
-            <li><Link to="/admin" className={styles.adminLink}>🔴 Panel Admin</Link></li>
+            <li><Link to="/admin" className={styles.adminLink}><FaUserShield style={{ marginRight: '6px', verticalAlign: 'middle' }} /> Panel Admin</Link></li>
           )}
         </ul>
 
@@ -108,7 +109,7 @@ const Navbar = ({ user, userProfile, onLogout }) => {
 
       {/* Botón menú en móvil */}
       <button className={styles.menuToggle} onClick={toggleMenu}>
-        ☰
+        <FaBars />
       </button>
 
       {/* Lista de enlaces móvil */}
@@ -119,13 +120,13 @@ const Navbar = ({ user, userProfile, onLogout }) => {
         <li><Link to="/sobre" onClick={() => setMenuOpen(false)}>Sobre Nosotros</Link></li>
         <li><Link to="/horarios" onClick={() => setMenuOpen(false)}>Horarios</Link></li>
         {user && userProfile?.role?.toLowerCase() === 'estudiante' && (
-          <li><Link to="/estudiante" className={styles.studentLink} onClick={() => setMenuOpen(false)}>👤 Mi Perfil</Link></li>
+          <li><Link to="/estudiante" className={styles.studentLink} onClick={() => setMenuOpen(false)}><FaUser style={{ marginRight: '6px', verticalAlign: 'middle' }} /> Mi Perfil</Link></li>
         )}
         {userProfile?.role?.toLowerCase() === 'entrenador' && (
-          <li><Link to="/entrenador" className={styles.trainerLink} onClick={() => setMenuOpen(false)}>🟠 Panel Entrenador</Link></li>
+          <li><Link to="/entrenador" className={styles.trainerLink} onClick={() => setMenuOpen(false)}><FaChalkboardTeacher style={{ marginRight: '6px', verticalAlign: 'middle' }} /> Panel Entrenador</Link></li>
         )}
         {userProfile?.role?.toLowerCase() === 'administrador' && (
-          <li><Link to="/admin" className={styles.adminLink} onClick={() => setMenuOpen(false)}>🔴 Panel Admin</Link></li>
+          <li><Link to="/admin" className={styles.adminLink} onClick={() => setMenuOpen(false)}><FaUserShield style={{ marginRight: '6px', verticalAlign: 'middle' }} /> Panel Admin</Link></li>
         )}
         <li>
           {user ? (

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/AnunciosManager.module.css';
-import { FaBell, FaBellSlash, FaEdit, FaTrash } from 'react-icons/fa';
+import { FaBell, FaBellSlash, FaEdit, FaTrash, FaBullhorn, FaPlus } from 'react-icons/fa';
 
 const AnunciosManager = ({ user }) => {
   const [anuncios, setAnuncios] = useState([]);
@@ -268,13 +268,13 @@ const AnunciosManager = ({ user }) => {
       {/* Header */}
       <div className={styles.header}>
         <div>
-          <h1 className={styles.title}>📢 Gestión de Anuncios</h1>
+          <h1 className={styles.title}><FaBullhorn style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Gestión de Anuncios</h1>
           <p className={styles.subtitle}>
             Crea y administra anuncios para estudiantes, entrenadores y administradores
           </p>
         </div>
         <button onClick={() => handleOpenModal()} className={styles.btnPrimary}>
-          ➕ Nuevo Anuncio
+          <FaPlus style={{ marginRight: '6px', verticalAlign: 'middle' }} /> Nuevo Anuncio
         </button>
       </div>
 
@@ -325,7 +325,7 @@ const AnunciosManager = ({ user }) => {
         </div>
       ) : anuncios.length === 0 ? (
         <div className={styles.empty}>
-          <p>📢 No hay anuncios para mostrar</p>
+          <p><FaBullhorn style={{ marginRight: '8px', verticalAlign: 'middle' }} /> No hay anuncios para mostrar</p>
           <button onClick={() => handleOpenModal()} className={styles.btnSecondary}>
             Crear primer anuncio
           </button>
@@ -390,7 +390,7 @@ const AnunciosManager = ({ user }) => {
                 <div className={styles.cardFooter}>
                   <div className={styles.cardMeta}>
                     <span className={styles.metaItem}>
-                      👤 {anuncio.creator_name || 'Usuario'}
+                      <FaUser style={{ marginRight: '6px', verticalAlign: 'middle' }} /> {anuncio.creator_name || 'Usuario'}
                     </span>
                     <span className={styles.metaItem}>
                       📅 {formatDate(anuncio.created_at)}

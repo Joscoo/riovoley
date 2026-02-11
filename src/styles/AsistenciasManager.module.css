@@ -663,6 +663,119 @@
   margin-top: 2rem;
 }
 
+/* Tabs de Categorías */
+.categoryTabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.tabButton {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 150px;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tabButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 215, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.tabButton.tabActive {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.9) 0%, rgba(255, 180, 0, 0.9) 100%);
+  border-color: rgba(255, 215, 0, 1);
+  color: #0a0a0a;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.tabIcon {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.tabName {
+  font-weight: 700;
+}
+
+.tabCount {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  margin-left: 4px;
+  font-weight: 600;
+}
+
+/* Barra de Estadísticas de Categoría */
+.categoryStatsBar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.miniStat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.miniIcon {
+  font-size: 1.2rem;
+  color: #ffd700;
+}
+
+/* Contenido de Categorías */
+.categoryContent {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 1.5rem;
+  min-height: 300px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.allCategoriesView {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.filteredCategoryView {
+  display: flex;
+  flex-direction: column;
+}
+
 .categorySection {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
@@ -771,6 +884,19 @@
 
 /* Responsive para categorías */
 @media (max-width: 768px) {
+  .categoryTabs {
+    gap: 0.75rem;
+  }
+
+  .tabButton {
+    min-width: 120px;
+    padding: 10px 18px;
+  }
+
+  .categoryStatsBar {
+    gap: 0.75rem;
+  }
+
   .categorySubGrid {
     grid-template-columns: 1fr;
   }
@@ -813,6 +939,43 @@
   .categorySections {
     gap: 0.75rem;
     margin-top: 1rem;
+  }
+  
+  .categoryTabs {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+
+  .tabButton {
+    min-width: 100%;
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+
+  .tabCount {
+    font-size: 0.75rem;
+  }
+
+  .categoryStatsBar {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.75rem;
+  }
+
+  .miniStat {
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .miniIcon {
+    font-size: 1rem;
+  }
+
+  .categoryContent {
+    padding: 1rem;
   }
   
   .categorySection {

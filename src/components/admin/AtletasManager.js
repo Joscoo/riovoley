@@ -6,7 +6,17 @@ import { EmailService } from '../../services/emailService';
 import WhatsAppBusinessService from '../../services/whatsappBusinessService';
 import { createStudentWorking, resendWorkingCredentials } from '../../services/userCreationWorking';
 import styles from '../../styles/AtletasManager.module.css';
-import { FaEdit, FaPlus } from 'react-icons/fa';
+import { 
+  FaEdit, 
+  FaPlus, 
+  FaVolleyballBall, 
+  FaUser, 
+  FaTrash, 
+  FaEnvelope, 
+  FaBroom,
+  FaTimes,
+  FaUsers
+} from 'react-icons/fa';
 
 const AtletasManager = ({ user }) => {
   const [atletas, setAtletas] = useState([]);
@@ -226,13 +236,13 @@ ${result.canLogin ? '✅ El usuario puede ingresar inmediatamente.' : '⚠️ Pu
           const emailResult = await EmailService.sendCredentials(userData);
           
           if (emailResult.success) {
-            alert(`✅ Credenciales enviadas exitosamente a ${result.credentials.email}`);
+            alert(`Credenciales enviadas exitosamente a ${result.credentials.email}`);
           } else {
-            alert(`⚠️ No se pudo enviar el email automáticamente. Las credenciales ya se mostraron anteriormente.`);
+            alert(`No se pudo enviar el email automáticamente. Las credenciales ya se mostraron anteriormente.`);
           }
         } catch (emailError) {
           console.error('❌ Error enviando email:', emailError);
-          alert(`⚠️ Error enviando email: ${emailError.message}. Las credenciales ya se mostraron anteriormente.`);
+          alert(`Error enviando email: ${emailError.message}. Las credenciales ya se mostraron anteriormente.`);
         }
       }
 
@@ -311,10 +321,10 @@ ${result.canLogin ? '✅ El usuario puede ingresar inmediatamente.' : '⚠️ Pu
       }
 
       loadAtletas();
-      alert('✅ Atleta y usuario eliminados exitosamente');
+      alert('Atleta y usuario eliminados exitosamente');
     } catch (error) {
       console.error('❌ Error eliminando atleta:', error);
-      alert('❌ Error: ' + error.message);
+      alert('Error: ' + error.message);
     }
   };
 
@@ -386,7 +396,7 @@ La contraseña anterior ya no funciona.
 ${result.message}`);
       } else {
         // Si todo falla, mostrar las credenciales directamente
-        alert(`⚠ No se pudo enviar por Email ni WhatsApp.
+        alert(`No se pudo enviar por Email ni WhatsApp.
 
 ✉ Email: ${result.credentials.email}
 🔑 Nueva Contraseña: ${result.credentials.password}
@@ -401,7 +411,7 @@ Por favor, envía esta información al estudiante de forma manual.`);
       }
     } catch (error) {
       console.error('❌ Error reenviando credenciales:', error);
-      alert('❌ Error: ' + error.message);
+      alert('Error: ' + error.message);
     }
   };
 
@@ -433,7 +443,7 @@ Por favor, envía esta información al estudiante de forma manual.`);
       if (usersError) throw usersError;
 
       if (orphanUsers.length === 0) {
-        alert('✅ No se encontraron usuarios huérfanos');
+        alert('No se encontraron usuarios huérfanos');
         return;
       }
 
@@ -448,11 +458,11 @@ Por favor, envía esta información al estudiante de forma manual.`);
 
       if (deleteError) throw deleteError;
 
-      alert(`✅ Se eliminaron ${orphanUsers.length} usuarios huérfanos`);
+      alert(`Se eliminaron ${orphanUsers.length} usuarios huérfanos`);
       console.log('🧹 Limpieza completada');
     } catch (error) {
       console.error('❌ Error limpiando usuarios huérfanos:', error);
-      alert('❌ Error: ' + error.message);
+      alert('Error: ' + error.message);
     }
   };
 
@@ -536,7 +546,7 @@ Por favor, envía esta información al estudiante de forma manual.`);
     <div className={styles.atletasManager}>
       <div className={styles.header}>
         <div className={styles.headerLeft}>
-          <h2>🏐 Gestión de Atletas</h2>
+          <h2><FaVolleyballBall style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Gestión de Atletas</h2>
           <p>Administrar deportistas del club</p>
         </div>
         <div className={styles.headerButtons}>
@@ -544,14 +554,14 @@ Por favor, envía esta información al estudiante de forma manual.`);
             className={styles.addButton}
             onClick={() => openModal()}
           >
-            ➕ Agregar Atleta
+            <FaPlus style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Agregar Atleta
           </button>
           <button 
             className={styles.cleanButton}
             onClick={cleanOrphanUsers}
             title="Limpiar usuarios sin atletas asociados"
           >
-            🧹 Limpiar DB
+            <FaBroom style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Limpiar DB
           </button>
         </div>
       </div>
@@ -574,7 +584,7 @@ Por favor, envía esta información al estudiante de forma manual.`);
             onChange={(e) => setFilters({...filters, categoria: e.target.value})}
             className={styles.filterSelect}
           >
-            <option value="">🏐 Todas las categorías</option>
+            <option value=""><FaVolleyballBall style={{ marginRight: '8px' }} /> Todas las categorías</option>
             {categorias.map(categoria => (
               <option key={categoria} value={categoria}>
                 {formatCategoria(categoria)}
@@ -603,21 +613,21 @@ Por favor, envía esta información al estudiante de forma manual.`);
                       className={styles.editButton}
                       title="Editar"
                     >
-                      ✏️
+                      <FaEdit />
                     </button>
                     <button 
                       onClick={() => resendCredentials(atleta)}
                       className={styles.emailButton}
                       title="Reenviar credenciales por email"
                     >
-                      📧
+                      <FaEnvelope />
                     </button>
                     <button 
                       onClick={() => deleteAtleta(atleta)}
                       className={styles.deleteButton}
                       title="Eliminar"
                     >
-                      🗑️
+                      <FaTrash />
                     </button>
                   </div>
                 </div>
@@ -655,7 +665,7 @@ Por favor, envía esta información al estudiante de forma manual.`);
             ))
           ) : (
             <div className={styles.noAtletas}>
-              <h3>👥 No hay atletas registrados</h3>
+              <h3><FaUsers style={{ marginRight: '8px', verticalAlign: 'middle' }} /> No hay atletas registrados</h3>
               <p>Agrega el primer atleta al club</p>
             </div>
           )}
@@ -678,7 +688,7 @@ Por favor, envía esta información al estudiante de forma manual.`);
                 onClick={() => setShowModal(false)}
                 className={styles.closeButton}
               >
-                ✕
+                <FaTimes />
               </button>
             </div>
             
@@ -686,7 +696,7 @@ Por favor, envía esta información al estudiante de forma manual.`);
               
               {/* Sección: Datos de Usuario */}
               <div className={styles.formSection}>
-                <h4 className={styles.sectionTitle}>👤 Información Personal del Usuario</h4>
+                <h4 className={styles.sectionTitle}><FaUser style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Información Personal del Usuario</h4>
                 <div className={styles.formGrid}>
                   <div className={styles.inputGroup}>
                     <label htmlFor="nombre">Nombre *</label>
@@ -750,7 +760,7 @@ Por favor, envía esta información al estudiante de forma manual.`);
 
               {/* Sección: Datos Deportivos */}
               <div className={styles.formSection}>
-                <h4 className={styles.sectionTitle}>🏐 Información Deportiva</h4>
+                <h4 className={styles.sectionTitle}><FaVolleyballBall style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Información Deportiva</h4>
                 <div className={styles.formGrid}>
                   <div className={styles.inputGroup}>
                     <label htmlFor="categoria">Categoría *</label>

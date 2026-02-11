@@ -3,7 +3,22 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/AsistenciasManager.module.css';
-import { FaChartBar, FaCheckCircle, FaTimesCircle, FaChartLine } from 'react-icons/fa';
+import { 
+  FaChartBar, 
+  FaCheckCircle, 
+  FaTimesCircle, 
+  FaChartLine, 
+  FaCalendarAlt, 
+  FaUsers, 
+  FaVolleyballBall, 
+  FaMars, 
+  FaVenus, 
+  FaTrophy, 
+  FaMedal, 
+  FaTrash, 
+  FaTimes, 
+  FaCheck 
+} from 'react-icons/fa';
 
 const AsistenciasManager = ({ user }) => {
   const [asistencias, setAsistencias] = useState([]);
@@ -19,6 +34,7 @@ const AsistenciasManager = ({ user }) => {
 
   const [todayAttendance, setTodayAttendance] = useState([]);
   const [bulkMode, setBulkMode] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('all'); // Nueva: categoría seleccionada en tabs
 
   const categorias = [
     'iniciacion_hombres',
@@ -26,6 +42,14 @@ const AsistenciasManager = ({ user }) => {
     'perfeccionamiento_mujeres',
     'perfeccionamiento_hombres',
     'master_mujeres'
+  ];
+
+  // Categorías agrupadas para los tabs
+  const categoriasAgrupadas = [
+    { id: 'all', nombre: 'Todas', icono: <FaUsers /> },
+    { id: 'iniciacion', nombre: 'Iniciación', icono: <FaVolleyballBall /> },
+    { id: 'perfeccionamiento', nombre: 'Perfeccionamiento', icono: <FaTrophy /> },
+    { id: 'master', nombre: 'Master', icono: <FaMedal /> }
   ];
 
   useEffect(() => {
@@ -234,10 +258,10 @@ const AsistenciasManager = ({ user }) => {
           await toggleAttendance(atleta.id, false); // Marcar como presente
         }
       }
-      alert('✅ Todos los atletas marcados como presentes');
+      alert('Todos los atletas marcados como presentes');
     } catch (error) {
       console.error('Error marcando asistencias masivas:', error);
-      alert('❌ Error: ' + error.message);
+      alert('Error: ' + error.message);
     }
   };
 
@@ -257,7 +281,7 @@ const AsistenciasManager = ({ user }) => {
 
       // Recargar solo las asistencias del día, mantener atletas
       loadTodayAttendance();
-      alert('✅ Asistencias del día limpiadas correctamente');
+      alert('Asistencias del día limpiadas correctamente');
     } catch (error) {
       console.error('Error limpiando asistencias:', error);
       alert('Error: ' + error.message);
@@ -302,13 +326,34 @@ const AsistenciasManager = ({ user }) => {
     return categoria.replaceAll('_', ' ').toUpperCase();
   };
 
+  // Filtrar atletas según categoría seleccionada en tabs
+  const getFilteredAtletas = () => {
+    if (selectedCategory === 'all') {
+      return todayAttendance;
+    }
+    return todayAttendance.filter(atleta => 
+      atleta.categoria?.includes(selectedCategory)
+    );
+  };
+
+  // Obtener estadísticas de la categoría seleccionada
+  const getCategoryStats = () => {
+    const filteredAtletas = getFilteredAtletas();
+    const presentes = filteredAtletas.filter(a => a.attendance !== null).length;
+    const total = filteredAtletas.length;
+    const ausentes = total - presentes;
+    const porcentaje = total > 0 ? ((presentes / total) * 100).toFixed(1) : 0;
+
+    return { total, presentes, ausentes, porcentaje };
+  };
+
   const stats = calculateStats();
 
   return (
     <div className={styles.asistenciasManager}>
       <div className={styles.header}>
         <div className={styles.headerLeft}>
-          <h2>📅 Control de Asistencias</h2>
+          <h2><FaCalendarAlt style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Control de Asistencias</h2>
           <p>Registro y seguimiento de entrenamientos</p>
         </div>
         <div className={styles.headerActions}>
@@ -316,7 +361,11 @@ const AsistenciasManager = ({ user }) => {
             className={styles.bulkButton}
             onClick={() => setBulkMode(!bulkMode)}
           >
-            {bulkMode ? '📊 Ver Reportes' : '✅ Registro Rápido'}
+            {bulkMode ? (
+              <><FaChartBar style={{ marginRight: '6px', verticalAlign: 'middle' }} /> Ver Reportes</>
+            ) : (
+              <><FaCheckCircle style={{ marginRight: '6px', verticalAlign: 'middle' }} /> Registro Rápido</>
+            )}
           </button>
         </div>
       </div>
@@ -370,177 +419,372 @@ const AsistenciasManager = ({ user }) => {
             
             <div className={styles.bulkActions}>
               <button onClick={markAllPresent} className={styles.allPresentButton}>
-                ✅ Todos Presentes
+                <FaCheckCircle style={{ marginRight: '6px', verticalAlign: 'middle' }} /> Todos Presentes
               </button>
               <button onClick={clearAllAttendance} className={styles.clearButton}>
-                🗑️ Limpiar Día
+                <FaTrash style={{ marginRight: '6px', verticalAlign: 'middle' }} /> Limpiar Día
               </button>
             </div>
           </div>
 
           {/* Registro por Categorías */}
           <div className={styles.categorySections}>
-            {/* Iniciación */}
-            <div className={styles.categorySection}>
-              <h3 className={styles.categoryTitle}>
-                🏐 Iniciación
-                <span className={styles.categoryCount}>
-                  {todayAttendance.filter(a => a.categoria?.includes('iniciacion')).length} atletas
-                </span>
-              </h3>
-              <div className={styles.categorySubGrid}>
-                <div className={styles.subCategory}>
-                  <h4>👨 Hombres</h4>
-                  <div className={styles.atletasList}>
-                    {todayAttendance
-                      .filter(atleta => atleta.categoria === 'iniciacion_hombres')
-                      .map(atleta => {
-                        const isPresent = atleta.attendance !== null;
-                        return (
-                          <div key={atleta.id} className={styles.atletaItem}>
-                            <span className={styles.atletaName}>
-                              {atleta.users?.nombre} {atleta.users?.apellido}
-                            </span>
-                            <button
-                              onClick={() => toggleAttendance(atleta.id, isPresent)}
-                              className={`${styles.attendanceToggle} ${
-                                isPresent ? styles.present : styles.absent
-                              }`}
-                            >
-                              {isPresent ? '✅' : '❌'}
-                            </button>
-                          </div>
-                        );
-                      })}
-                  </div>
-                </div>
+            {/* Tabs de Categorías */}
+            <div className={styles.categoryTabs}>
+              {categoriasAgrupadas.map(cat => {
+                const categoryStats = getCategoryStats();
+                const isActive = selectedCategory === cat.id;
                 
-                <div className={styles.subCategory}>
-                  <h4>👩 Mujeres</h4>
-                  <div className={styles.atletasList}>
-                    {todayAttendance
-                      .filter(atleta => atleta.categoria === 'iniciacion_mujeres')
-                      .map(atleta => {
-                        const isPresent = atleta.attendance !== null;
-                        return (
-                          <div key={atleta.id} className={styles.atletaItem}>
-                            <span className={styles.atletaName}>
-                              {atleta.users?.nombre} {atleta.users?.apellido}
-                            </span>
-                            <button
-                              onClick={() => toggleAttendance(atleta.id, isPresent)}
-                              className={`${styles.attendanceToggle} ${
-                                isPresent ? styles.present : styles.absent
-                              }`}
-                            >
-                              {isPresent ? '✅' : '❌'}
-                            </button>
-                          </div>
-                        );
-                      })}
-                  </div>
-                </div>
-              </div>
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setSelectedCategory(cat.id)}
+                    className={`${styles.tabButton} ${isActive ? styles.tabActive : ''}`}
+                  >
+                    <span className={styles.tabIcon}>{cat.icono}</span>
+                    <span className={styles.tabName}>{cat.nombre}</span>
+                    {isActive && (
+                      <span className={styles.tabCount}>
+                        {categoryStats.presentes}/{categoryStats.total}
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
             </div>
 
-            {/* Perfeccionamiento */}
-            <div className={styles.categorySection}>
-              <h3 className={styles.categoryTitle}>
-                🏆 Perfeccionamiento
-                <span className={styles.categoryCount}>
-                  {todayAttendance.filter(a => a.categoria?.includes('perfeccionamiento')).length} atletas
-                </span>
-              </h3>
-              <div className={styles.categorySubGrid}>
-                <div className={styles.subCategory}>
-                  <h4>👨 Hombres</h4>
-                  <div className={styles.atletasList}>
-                    {todayAttendance
-                      .filter(atleta => atleta.categoria === 'perfeccionamiento_hombres')
-                      .map(atleta => {
-                        const isPresent = atleta.attendance !== null;
-                        return (
-                          <div key={atleta.id} className={styles.atletaItem}>
-                            <span className={styles.atletaName}>
-                              {atleta.users?.nombre} {atleta.users?.apellido}
-                            </span>
-                            <button
-                              onClick={() => toggleAttendance(atleta.id, isPresent)}
-                              className={`${styles.attendanceToggle} ${
-                                isPresent ? styles.present : styles.absent
-                              }`}
-                            >
-                              {isPresent ? '✅' : '❌'}
-                            </button>
-                          </div>
-                        );
-                      })}
-                  </div>
-                </div>
-                
-                <div className={styles.subCategory}>
-                  <h4>👩 Mujeres</h4>
-                  <div className={styles.atletasList}>
-                    {todayAttendance
-                      .filter(atleta => atleta.categoria === 'perfeccionamiento_mujeres')
-                      .map(atleta => {
-                        const isPresent = atleta.attendance !== null;
-                        return (
-                          <div key={atleta.id} className={styles.atletaItem}>
-                            <span className={styles.atletaName}>
-                              {atleta.users?.nombre} {atleta.users?.apellido}
-                            </span>
-                            <button
-                              onClick={() => toggleAttendance(atleta.id, isPresent)}
-                              className={`${styles.attendanceToggle} ${
-                                isPresent ? styles.present : styles.absent
-                              }`}
-                            >
-                              {isPresent ? '✅' : '❌'}
-                            </button>
-                          </div>
-                        );
-                      })}
-                  </div>
-                </div>
-              </div>
+            {/* Estadísticas de la categoría seleccionada */}
+            <div className={styles.categoryStatsBar}>
+              {(() => {
+                const catStats = getCategoryStats();
+                return (
+                  <>
+                    <div className={styles.miniStat}>
+                      <FaUsers className={styles.miniIcon} />
+                      <span>Total: {catStats.total}</span>
+                    </div>
+                    <div className={styles.miniStat}>
+                      <FaCheckCircle className={styles.miniIcon} style={{ color: '#28a745' }} />
+                      <span>Presentes: {catStats.presentes}</span>
+                    </div>
+                    <div className={styles.miniStat}>
+                      <FaTimesCircle className={styles.miniIcon} style={{ color: '#dc3545' }} />
+                      <span>Ausentes: {catStats.ausentes}</span>
+                    </div>
+                    <div className={styles.miniStat}>
+                      <FaChartLine className={styles.miniIcon} />
+                      <span>Asistencia: {catStats.porcentaje}%</span>
+                    </div>
+                  </>
+                );
+              })()}
             </div>
 
-            {/* Master */}
-            <div className={styles.categorySection}>
-              <h3 className={styles.categoryTitle}>
-                🥇 Master
-                <span className={styles.categoryCount}>
-                  {todayAttendance.filter(a => a.categoria?.includes('master')).length} atletas
-                </span>
-              </h3>
-              <div className={styles.categorySubGrid}>
-                <div className={styles.subCategory}>
-                  <h4>👩 Mujeres</h4>
-                  <div className={styles.atletasList}>
-                    {todayAttendance
-                      .filter(atleta => atleta.categoria === 'master_mujeres')
-                      .map(atleta => {
-                        const isPresent = atleta.attendance !== null;
-                        return (
-                          <div key={atleta.id} className={styles.atletaItem}>
-                            <span className={styles.atletaName}>
-                              {atleta.users?.nombre} {atleta.users?.apellido}
-                            </span>
-                            <button
-                              onClick={() => toggleAttendance(atleta.id, isPresent)}
-                              className={`${styles.attendanceToggle} ${
-                                isPresent ? styles.present : styles.absent
-                              }`}
-                            >
-                              {isPresent ? '✅' : '❌'}
-                            </button>
-                          </div>
-                        );
-                      })}
+            {/* Contenido de la categoría seleccionada */}
+            <div className={styles.categoryContent}>
+              {selectedCategory === 'all' ? (
+                /* Vista de todas las categorías */
+                <div className={styles.allCategoriesView}>
+                  {/* Iniciación */}
+                  <div className={styles.categorySection}>
+                    <h3 className={styles.categoryTitle}>
+                      <FaVolleyballBall style={{ marginRight: '8px' }} /> Iniciación
+                    </h3>
+                    <div className={styles.categorySubGrid}>
+                      <div className={styles.subCategory}>
+                        <h4><FaMars style={{ marginRight: '6px' }} /> Hombres</h4>
+                        <div className={styles.atletasList}>
+                          {todayAttendance
+                            .filter(atleta => atleta.categoria === 'iniciacion_hombres')
+                            .map(atleta => {
+                              const isPresent = atleta.attendance !== null;
+                              return (
+                                <div key={atleta.id} className={styles.atletaItem}>
+                                  <span className={styles.atletaName}>
+                                    {atleta.users?.nombre} {atleta.users?.apellido}
+                                  </span>
+                                  <button
+                                    onClick={() => toggleAttendance(atleta.id, isPresent)}
+                                    className={`${styles.attendanceToggle} ${
+                                      isPresent ? styles.present : styles.absent
+                                    }`}
+                                  >
+                                    {isPresent ? <FaCheck /> : <FaTimes />}
+                                  </button>
+                                </div>
+                              );
+                            })}
+                        </div>
+                      </div>
+                      
+                      <div className={styles.subCategory}>
+                        <h4><FaVenus style={{ marginRight: '6px' }} /> Mujeres</h4>
+                        <div className={styles.atletasList}>
+                          {todayAttendance
+                            .filter(atleta => atleta.categoria === 'iniciacion_mujeres')
+                            .map(atleta => {
+                              const isPresent = atleta.attendance !== null;
+                              return (
+                                <div key={atleta.id} className={styles.atletaItem}>
+                                  <span className={styles.atletaName}>
+                                    {atleta.users?.nombre} {atleta.users?.apellido}
+                                  </span>
+                                  <button
+                                    onClick={() => toggleAttendance(atleta.id, isPresent)}
+                                    className={`${styles.attendanceToggle} ${
+                                      isPresent ? styles.present : styles.absent
+                                    }`}
+                                  >
+                                    {isPresent ? <FaCheck /> : <FaTimes />}
+                                  </button>
+                                </div>
+                              );
+                            })}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Perfeccionamiento */}
+                  <div className={styles.categorySection}>
+                    <h3 className={styles.categoryTitle}>
+                      <FaTrophy style={{ marginRight: '8px' }} /> Perfeccionamiento
+                    </h3>
+                    <div className={styles.categorySubGrid}>
+                      <div className={styles.subCategory}>
+                        <h4><FaMars style={{ marginRight: '6px' }} /> Hombres</h4>
+                        <div className={styles.atletasList}>
+                          {todayAttendance
+                            .filter(atleta => atleta.categoria === 'perfeccionamiento_hombres')
+                            .map(atleta => {
+                              const isPresent = atleta.attendance !== null;
+                              return (
+                                <div key={atleta.id} className={styles.atletaItem}>
+                                  <span className={styles.atletaName}>
+                                    {atleta.users?.nombre} {atleta.users?.apellido}
+                                  </span>
+                                  <button
+                                    onClick={() => toggleAttendance(atleta.id, isPresent)}
+                                    className={`${styles.attendanceToggle} ${
+                                      isPresent ? styles.present : styles.absent
+                                    }`}
+                                  >
+                                    {isPresent ? <FaCheck /> : <FaTimes />}
+                                  </button>
+                                </div>
+                              );
+                            })}
+                        </div>
+                      </div>
+                      
+                      <div className={styles.subCategory}>
+                        <h4><FaVenus style={{ marginRight: '6px' }} /> Mujeres</h4>
+                        <div className={styles.atletasList}>
+                          {todayAttendance
+                            .filter(atleta => atleta.categoria === 'perfeccionamiento_mujeres')
+                            .map(atleta => {
+                              const isPresent = atleta.attendance !== null;
+                              return (
+                                <div key={atleta.id} className={styles.atletaItem}>
+                                  <span className={styles.atletaName}>
+                                    {atleta.users?.nombre} {atleta.users?.apellido}
+                                  </span>
+                                  <button
+                                    onClick={() => toggleAttendance(atleta.id, isPresent)}
+                                    className={`${styles.attendanceToggle} ${
+                                      isPresent ? styles.present : styles.absent
+                                    }`}
+                                  >
+                                    {isPresent ? <FaCheck /> : <FaTimes />}
+                                  </button>
+                                </div>
+                              );
+                            })}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Master */}
+                  <div className={styles.categorySection}>
+                    <h3 className={styles.categoryTitle}>
+                      <FaMedal style={{ marginRight: '8px' }} /> Master
+                    </h3>
+                    <div className={styles.categorySubGrid}>
+                      <div className={styles.subCategory}>
+                        <h4><FaVenus style={{ marginRight: '6px' }} /> Mujeres</h4>
+                        <div className={styles.atletasList}>
+                          {todayAttendance
+                            .filter(atleta => atleta.categoria === 'master_mujeres')
+                            .map(atleta => {
+                              const isPresent = atleta.attendance !== null;
+                              return (
+                                <div key={atleta.id} className={styles.atletaItem}>
+                                  <span className={styles.atletaName}>
+                                    {atleta.users?.nombre} {atleta.users?.apellido}
+                                  </span>
+                                  <button
+                                    onClick={() => toggleAttendance(atleta.id, isPresent)}
+                                    className={`${styles.attendanceToggle} ${
+                                      isPresent ? styles.present : styles.absent
+                                    }`}
+                                  >
+                                    {isPresent ? <FaCheck /> : <FaTimes />}
+                                  </button>
+                                </div>
+                              );
+                            })}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ) : (
+                /* Vista filtrada por categoría específica */
+                <div className={styles.filteredCategoryView}>
+                  {selectedCategory === 'iniciacion' && (
+                    <div className={styles.categorySubGrid}>
+                      <div className={styles.subCategory}>
+                        <h4><FaMars style={{ marginRight: '6px' }} /> Hombres</h4>
+                        <div className={styles.atletasList}>
+                          {todayAttendance
+                            .filter(atleta => atleta.categoria === 'iniciacion_hombres')
+                            .map(atleta => {
+                              const isPresent = atleta.attendance !== null;
+                              return (
+                                <div key={atleta.id} className={styles.atletaItem}>
+                                  <span className={styles.atletaName}>
+                                    {atleta.users?.nombre} {atleta.users?.apellido}
+                                  </span>
+                                  <button
+                                    onClick={() => toggleAttendance(atleta.id, isPresent)}
+                                    className={`${styles.attendanceToggle} ${
+                                      isPresent ? styles.present : styles.absent
+                                    }`}
+                                  >
+                                    {isPresent ? <FaCheck /> : <FaTimes />}
+                                  </button>
+                                </div>
+                              );
+                            })}
+                        </div>
+                      </div>
+                      
+                      <div className={styles.subCategory}>
+                        <h4><FaVenus style={{ marginRight: '6px' }} /> Mujeres</h4>
+                        <div className={styles.atletasList}>
+                          {todayAttendance
+                            .filter(atleta => atleta.categoria === 'iniciacion_mujeres')
+                            .map(atleta => {
+                              const isPresent = atleta.attendance !== null;
+                              return (
+                                <div key={atleta.id} className={styles.atletaItem}>
+                                  <span className={styles.atletaName}>
+                                    {atleta.users?.nombre} {atleta.users?.apellido}
+                                  </span>
+                                  <button
+                                    onClick={() => toggleAttendance(atleta.id, isPresent)}
+                                    className={`${styles.attendanceToggle} ${
+                                      isPresent ? styles.present : styles.absent
+                                    }`}
+                                  >
+                                    {isPresent ? <FaCheck /> : <FaTimes />}
+                                  </button>
+                                </div>
+                              );
+                            })}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {selectedCategory === 'perfeccionamiento' && (
+                    <div className={styles.categorySubGrid}>
+                      <div className={styles.subCategory}>
+                        <h4><FaMars style={{ marginRight: '6px' }} /> Hombres</h4>
+                        <div className={styles.atletasList}>
+                          {todayAttendance
+                            .filter(atleta => atleta.categoria === 'perfeccionamiento_hombres')
+                            .map(atleta => {
+                              const isPresent = atleta.attendance !== null;
+                              return (
+                                <div key={atleta.id} className={styles.atletaItem}>
+                                  <span className={styles.atletaName}>
+                                    {atleta.users?.nombre} {atleta.users?.apellido}
+                                  </span>
+                                  <button
+                                    onClick={() => toggleAttendance(atleta.id, isPresent)}
+                                    className={`${styles.attendanceToggle} ${
+                                      isPresent ? styles.present : styles.absent
+                                    }`}
+                                  >
+                                    {isPresent ? <FaCheck /> : <FaTimes />}
+                                  </button>
+                                </div>
+                              );
+                            })}
+                        </div>
+                      </div>
+                      
+                      <div className={styles.subCategory}>
+                        <h4><FaVenus style={{ marginRight: '6px' }} /> Mujeres</h4>
+                        <div className={styles.atletasList}>
+                          {todayAttendance
+                            .filter(atleta => atleta.categoria === 'perfeccionamiento_mujeres')
+                            .map(atleta => {
+                              const isPresent = atleta.attendance !== null;
+                              return (
+                                <div key={atleta.id} className={styles.atletaItem}>
+                                  <span className={styles.atletaName}>
+                                    {atleta.users?.nombre} {atleta.users?.apellido}
+                                  </span>
+                                  <button
+                                    onClick={() => toggleAttendance(atleta.id, isPresent)}
+                                    className={`${styles.attendanceToggle} ${
+                                      isPresent ? styles.present : styles.absent
+                                    }`}
+                                  >
+                                    {isPresent ? <FaCheck /> : <FaTimes />}
+                                  </button>
+                                </div>
+                              );
+                            })}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {selectedCategory === 'master' && (
+                    <div className={styles.categorySubGrid}>
+                      <div className={styles.subCategory}>
+                        <h4><FaVenus style={{ marginRight: '6px' }} /> Mujeres</h4>
+                        <div className={styles.atletasList}>
+                          {todayAttendance
+                            .filter(atleta => atleta.categoria === 'master_mujeres')
+                            .map(atleta => {
+                              const isPresent = atleta.attendance !== null;
+                              return (
+                                <div key={atleta.id} className={styles.atletaItem}>
+                                  <span className={styles.atletaName}>
+                                    {atleta.users?.nombre} {atleta.users?.apellido}
+                                  </span>
+                                  <button
+                                    onClick={() => toggleAttendance(atleta.id, isPresent)}
+                                    className={`${styles.attendanceToggle} ${
+                                      isPresent ? styles.present : styles.absent
+                                    }`}
+                                  >
+                                    {isPresent ? <FaCheck /> : <FaTimes />}
+                                  </button>
+                                </div>
+                              );
+                            })}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -579,7 +823,7 @@ const AsistenciasManager = ({ user }) => {
                 onChange={(e) => setFilters({...filters, categoria: e.target.value})}
                 className={styles.filterSelect}
               >
-                <option value="">🏐 Todas las categorías</option>
+                <option value=""><FaVolleyballBall style={{ marginRight: '6px' }} /> Todas las categorías</option>
                 {categorias.map(categoria => (
                   <option key={categoria} value={categoria}>
                     {formatCategoria(categoria)}
@@ -596,7 +840,7 @@ const AsistenciasManager = ({ user }) => {
                 onChange={(e) => setFilters({...filters, atleta: e.target.value})}
                 className={styles.filterSelect}
               >
-                <option value="">👥 Todos los atletas</option>
+                <option value=""><FaUsers style={{ marginRight: '6px' }} /> Todos los atletas</option>
                 {atletas.map(atleta => (
                   <option key={atleta.id} value={atleta.id}>
                     {atleta.users?.nombre} {atleta.users?.apellido}
@@ -608,7 +852,7 @@ const AsistenciasManager = ({ user }) => {
 
           {/* Estadísticas por Categoría */}
           <div className={styles.categoryStats}>
-            <h3>📊 Estadísticas por Categoría</h3>
+            <h3><FaChartBar style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Estadísticas por Categoría</h3>
             <div className={styles.categoryGrid}>
               {categorias.map(categoria => {
                 const catStats = stats.categoriaStats[categoria];
@@ -660,7 +904,7 @@ const AsistenciasManager = ({ user }) => {
                           <td>{formatCategoria(asistencia.students?.categoria)}</td>
                           <td>
                             <span className={`${styles.statusBadge} ${styles.present}`}>
-                              ✅ Presente
+                              <FaCheckCircle style={{ marginRight: '6px', verticalAlign: 'middle' }} /> Presente
                             </span>
                           </td>
                         </tr>
@@ -670,7 +914,7 @@ const AsistenciasManager = ({ user }) => {
                 </div>
               ) : (
                 <div className={styles.noData}>
-                  <h3>📅 No hay registros de asistencia</h3>
+                  <h3><FaCalendarAlt style={{ marginRight: '8px', verticalAlign: 'middle' }} /> No hay registros de asistencia</h3>
                   <p>Selecciona un rango de fechas o ajusta los filtros</p>
                 </div>
               )}
