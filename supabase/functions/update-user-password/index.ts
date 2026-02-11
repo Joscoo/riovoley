@@ -42,8 +42,11 @@ serve(async (req) => {
     const { data: { user: requestingUser }, error: authError } = await supabaseAdmin.auth.getUser(token)
 
     if (authError || !requestingUser) {
+      console.error('Auth error:', authError)
       throw new Error('No autorizado')
     }
+
+    console.log('Requesting user ID:', requestingUser.id)
 
     // Verificar que el usuario tenga rol de admin
     const { data: userProfile, error: profileError } = await supabaseAdmin
@@ -52,9 +55,24 @@ serve(async (req) => {
       .eq('id', requestingUser.id)
       .single()
 
-    if (profileError || !userProfile || userProfile.role !== 'admin') {
-      throw new Error('No tienes permisos de administrador')
+    console.log('User profile:', userProfile, 'Error:', profileError)
+
+    if (profileError) {
+      console.error('Profile error:', profileError)
+      throw new Error(`Error verificando permisos: ${profileError.message}`)
     }
+
+    if (!userProfile) {
+      throw new Error('Usuario no encontrado en la tabla users')
+    }
+
+    // Permitir a admin y entrenador
+    const allowedRoles = ['admin', 'entrenador']
+    if (!allowedRoles.includes(userProfile.role)) {
+      throw new Error(`No tienes permisos. Tu rol actual es: ${userProfile.role}. Se requiere: admin o entrenador`)
+    }
+
+    console.log('Permissions verified (role:', userProfile.role, '), proceeding to update password')
 
     // Obtener datos del request
     const { userId, newPassword } = await req.json()
