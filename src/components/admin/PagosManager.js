@@ -45,7 +45,6 @@ const PagosManager = ({ user }) => {
   const [atletaBusqueda, setAtletaBusqueda] = useState('');
   const [atletasFiltrados, setAtletasFiltrados] = useState([]);
   const [mostrarSugerencias, setMostrarSugerencias] = useState(false);
-  const [atletaSeleccionado, setAtletaSeleccionado] = useState(null);
 
   const [formData, setFormData] = useState({
     student_id: '',
@@ -494,7 +493,6 @@ const PagosManager = ({ user }) => {
       if (atleta) {
         const nombreCompleto = `${atleta.users?.nombre || ''} ${atleta.users?.apellido || ''}`;
         setAtletaBusqueda(nombreCompleto);
-        setAtletaSeleccionado(atleta);
       }
     } else {
       setEditingPago(null);
@@ -513,7 +511,6 @@ const PagosManager = ({ user }) => {
       observaciones: ''
     });
     setAtletaBusqueda('');
-    setAtletaSeleccionado(null);
     setAtletasFiltrados([]);
     setMostrarSugerencias(false);
   };
@@ -526,7 +523,6 @@ const PagosManager = ({ user }) => {
       setAtletasFiltrados([]);
       setMostrarSugerencias(false);
       setFormData({...formData, student_id: ''});
-      setAtletaSeleccionado(null);
       return;
     }
 
@@ -544,7 +540,6 @@ const PagosManager = ({ user }) => {
   const seleccionarAtleta = (atleta) => {
     const nombreCompleto = `${atleta.users?.nombre || ''} ${atleta.users?.apellido || ''}`;
     setAtletaBusqueda(nombreCompleto);
-    setAtletaSeleccionado(atleta);
     setFormData({...formData, student_id: atleta.id.toString()});
     setMostrarSugerencias(false);
     setAtletasFiltrados([]);
