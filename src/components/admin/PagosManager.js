@@ -288,7 +288,7 @@ const PagosManager = ({ user }) => {
         fecha_inicio: formData.fecha_inicio,
         fecha_fin: formData.fecha_fin,
         fecha_pago: formData.fecha_pago,
-        estado: formData.estado
+        estado: pagoCreado.estado
       });
       
       if (emailResult.success) {

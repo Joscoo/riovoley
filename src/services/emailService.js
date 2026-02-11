@@ -400,7 +400,11 @@ export class EmailService {
     const formatDate = (dateStr) => {
       if (!dateStr) return 'No especificada';
       try {
-        return new Date(dateStr).toLocaleDateString('es-ES', {
+        // Parsear la fecha en formato YYYY-MM-DD sin conversión de zona horaria
+        const [year, month, day] = dateStr.split('T')[0].split('-');
+        const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+        
+        return date.toLocaleDateString('es-ES', {
           year: 'numeric',
           month: 'long', 
           day: 'numeric'
