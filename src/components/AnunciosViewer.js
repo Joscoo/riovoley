@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../config/supabase';
 import styles from '../styles/AnunciosViewer.module.css';
-import { FaBullhorn, FaExclamationCircle, FaExclamationTriangle } from 'react-icons/fa';
+import { FaBullhorn, FaExclamationCircle, FaExclamationTriangle, FaClock, FaUser } from 'react-icons/fa';
 
 const AnunciosViewer = ({ userRole = 'all', limit = null, showFilters = false }) => {
   const [anuncios, setAnuncios] = useState([]);
@@ -171,7 +171,7 @@ const AnunciosViewer = ({ userRole = 'all', limit = null, showFilters = false })
                 </div>
                 {expirationText && (
                   <span className={styles.expirationBadge}>
-                    ⏰ {expirationText}
+                    <FaClock style={{ marginRight: '4px', verticalAlign: 'middle' }} />{expirationText}
                   </span>
                 )}
               </div>
@@ -183,7 +183,7 @@ const AnunciosViewer = ({ userRole = 'all', limit = null, showFilters = false })
               {/* Footer */}
               <div className={styles.cardFooter}>
                 <span className={styles.creatorInfo}>
-                  👤 {anuncio.creator_name || 'Riovoley'}
+                  <FaUser style={{ marginRight: '6px', verticalAlign: 'middle' }} />{anuncio.creator_name || 'Riovoley'}
                 </span>
                 <span className={styles.dateInfo}>
                   {formatCreatedDate(anuncio.created_at)}

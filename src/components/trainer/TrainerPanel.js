@@ -8,7 +8,7 @@ import TrainerAsistenciasManager from './TrainerAsistenciasManager';
 import TrainerTestsFisicosManager from './TrainerTestsFisicosManager';
 import TrainerPagosManager from './TrainerPagosManager';
 import TrainerProfileSettings from './TrainerProfileSettings';
-import { FaVolleyballBall, FaChartBar, FaCalendar, FaDumbbell, FaDollarSign, FaBullhorn, FaCog } from 'react-icons/fa';
+import { FaVolleyballBall, FaChartBar, FaCalendar, FaDumbbell, FaDollarSign, FaBullhorn, FaCog, FaBan, FaUserCircle } from 'react-icons/fa';
 import AnunciosManager from '../admin/AnunciosManager';
 import styles from '../../styles/TrainerPanel.module.css';
 
@@ -30,7 +30,7 @@ const TrainerPanel = ({ user }) => {
   if (!isTrainer) {
     return (
       <div className={styles.accessDenied}>
-        <h2>🚫 Acceso Denegado</h2>
+        <h2><FaBan style={{ marginRight: '10px', verticalAlign: 'middle' }} />Acceso Denegado</h2>
         <p>Solo los entrenadores pueden acceder a este panel.</p>
         <p>Tu rol actual: <strong>{profile?.role || 'Sin rol'}</strong></p>
       </div>
@@ -79,7 +79,7 @@ const TrainerPanel = ({ user }) => {
         <nav className={styles.sidebar}>
           <div className={styles.sidebarHeader}>
             <div className={styles.userAvatar}>
-              👤
+              <FaUserCircle />
             </div>
             <h3>{profile?.full_name || user?.email?.split('@')[0] || 'Entrenador'}</h3>
             <p className={styles.userRole}>Entrenador</p>

@@ -7,7 +7,7 @@ import AnunciosViewer from '../AnunciosViewer';
 import ProfileSettings from '../admin/ProfileSettings';
 import StudentPhysicalTests from './StudentPhysicalTests';
 import styles from '../../styles/StudentPanel.module.css';
-import { FaCog, FaDumbbell } from 'react-icons/fa';
+import { FaCog, FaDumbbell, FaBullhorn, FaSyncAlt, FaCheckCircle, FaStar, FaExclamationTriangle, FaClock, FaCalendar, FaMoneyBillWave, FaClipboardList, FaChartBar, FaBan, FaTimes, FaUserCircle } from 'react-icons/fa';
 
 const StudentPanel = ({ user }) => {
   const [activeSection, setActiveSection] = useState('anuncios');
@@ -176,7 +176,7 @@ const StudentPanel = ({ user }) => {
   const renderAnuncios = () => (
     <div className={styles.section}>
       <div className={styles.sectionHeader}>
-        <h2>📢 Anuncios y Comunicados</h2>
+        <h2><FaBullhorn style={{ marginRight: '10px', verticalAlign: 'middle' }} />Anuncios y Comunicados</h2>
         <p>Mantente informado de las novedades del club</p>
       </div>
       <div>
@@ -193,7 +193,7 @@ const StudentPanel = ({ user }) => {
     <div className={styles.section}>
       <div className={styles.sectionHeader}>
         <div>
-          <h2>💳 Estado de Mensualidad</h2>
+          <h2><FaMoneyBillWave style={{ marginRight: '10px', verticalAlign: 'middle' }} />Estado de Mensualidad</h2>
           <p>Revisa el estado de tus pagos y el tiempo restante de tu mensualidad activa</p>
         </div>
         <button 
@@ -201,7 +201,7 @@ const StudentPanel = ({ user }) => {
           className={styles.refreshButton}
           title="Actualizar información"
         >
-          🔄 Actualizar
+          <FaSyncAlt style={{ marginRight: '8px', verticalAlign: 'middle' }} />Actualizar
         </button>
       </div>
 
@@ -211,14 +211,14 @@ const StudentPanel = ({ user }) => {
             <div className={styles.paymentStatus}>
               {paymentStatus.hasPaid ? (
                 <>
-                  <span className={styles.statusIcon}>✅</span>
-                  <h3>✨ Mensualidad Activa</h3>
+                  <span className={styles.statusIcon}><FaCheckCircle /></span>
+                  <h3><FaStar style={{ marginRight: '8px', verticalAlign: 'middle' }} />Mensualidad Activa</h3>
                   <p>Tu pago está al día para {paymentStatus.monthName}</p>
                 </>
               ) : (
                 <>
-                  <span className={styles.statusIcon}>⚠</span>
-                  <h3>⏰ Pago Pendiente</h3>
+                  <span className={styles.statusIcon}><FaExclamationTriangle /></span>
+                  <h3><FaClock style={{ marginRight: '8px', verticalAlign: 'middle' }} />Pago Pendiente</h3>
                   <p>Tienes un pago pendiente para {paymentStatus.monthName}</p>
                 </>
               )}
@@ -227,7 +227,7 @@ const StudentPanel = ({ user }) => {
             {paymentStatus.payment && (
               <div className={styles.paymentDetails}>
                 <div className={styles.detailRow}>
-                  <span className={styles.label}>📅 Período de Mensualidad</span>
+                  <span className={styles.label}><FaCalendar style={{ marginRight: '8px', verticalAlign: 'middle' }} />Período de Mensualidad</span>
                   <span className={styles.value}>
                     {new Date(paymentStatus.payment.fecha_inicio + 'T00:00:00').toLocaleDateString('es-EC', { 
                       timeZone: 'America/Guayaquil',
@@ -243,7 +243,7 @@ const StudentPanel = ({ user }) => {
                   </span>
                 </div>
                 <div className={styles.detailRow}>
-                  <span className={styles.label}>⏰ Tiempo restante</span>
+                  <span className={styles.label}><FaClock style={{ marginRight: '8px', verticalAlign: 'middle' }} />Tiempo restante</span>
                   <span className={`${styles.value} ${styles.timeRemaining}`}>
                     {(() => {
                       const today = new Date();
@@ -251,27 +251,27 @@ const StudentPanel = ({ user }) => {
                       const diffTime = endDate - today;
                       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
                       
-                      if (diffDays < 0) return <span className={styles.expired}>⚠️ Vencido</span>;
-                      if (diffDays === 0) return <span className={styles.urgent}>⚠️ Vence hoy</span>;
-                      if (diffDays === 1) return <span className={styles.urgent}>⚠️ 1 día</span>;
+                      if (diffDays < 0) return <span className={styles.expired}><FaExclamationTriangle style={{ marginRight: '4px' }} />Vencido</span>;
+                      if (diffDays === 0) return <span className={styles.urgent}><FaExclamationTriangle style={{ marginRight: '4px' }} />Vence hoy</span>;
+                      if (diffDays === 1) return <span className={styles.urgent}><FaExclamationTriangle style={{ marginRight: '4px' }} />1 día</span>;
                       if (diffDays <= 7) return <span className={styles.warning}>{diffDays} días</span>;
                       return <span className={styles.normal}>{diffDays} días</span>;
                     })()}
                   </span>
                 </div>
                 <div className={styles.detailRow}>
-                  <span className={styles.label}>💰 Monto</span>
+                  <span className={styles.label}><FaMoneyBillWave style={{ marginRight: '8px', verticalAlign: 'middle' }} />Monto</span>
                   <span className={styles.value}>${paymentStatus.payment.monto}</span>
                 </div>
                 <div className={styles.detailRow}>
-                  <span className={styles.label}>📋 Estado</span>
+                  <span className={styles.label}><FaClipboardList style={{ marginRight: '8px', verticalAlign: 'middle' }} />Estado</span>
                   <span className={`${styles.badge} ${styles[paymentStatus.payment.estado]}`}>
                     {paymentStatus.payment.estado.toUpperCase()}
                   </span>
                 </div>
                 {paymentStatus.payment.fecha_pago && (
                   <div className={styles.detailRow}>
-                    <span className={styles.label}>✅ Fecha de pago</span>
+                    <span className={styles.label}><FaCheckCircle style={{ marginRight: '8px', verticalAlign: 'middle' }} />Fecha de pago</span>
                     <span className={styles.value}>
                       {new Date(paymentStatus.payment.fecha_pago + 'T00:00:00').toLocaleDateString('es-EC', { 
                         timeZone: 'America/Guayaquil',
@@ -305,7 +305,7 @@ const StudentPanel = ({ user }) => {
     <div className={styles.section}>
       <div className={styles.sectionHeader}>
         <div>
-          <h2>📊 Mis Asistencias</h2>
+          <h2><FaChartBar style={{ marginRight: '10px', verticalAlign: 'middle' }} />Mis Asistencias</h2>
           <p>Resumen de tu asistencia a entrenamientos</p>
         </div>
         <button 
@@ -313,7 +313,7 @@ const StudentPanel = ({ user }) => {
           className={styles.refreshButton}
           title="Actualizar información"
         >
-          🔄 Actualizar
+          <FaSyncAlt style={{ marginRight: '8px', verticalAlign: 'middle' }} />Actualizar
         </button>
       </div>
 
@@ -322,7 +322,7 @@ const StudentPanel = ({ user }) => {
           {/* Estadísticas generales */}
           <div className={styles.statsGrid}>
             <div className={styles.statCard}>
-              <div className={styles.statIcon}>✅</div>
+              <div className={styles.statIcon}><FaCheckCircle /></div>
               <div className={styles.statInfo}>
                 <h3>{attendanceStats.presentDays}</h3>
                 <p>Días presente este mes</p>
@@ -330,7 +330,7 @@ const StudentPanel = ({ user }) => {
             </div>
 
             <div className={styles.statCard}>
-              <div className={styles.statIcon}>📅</div>
+              <div className={styles.statIcon}><FaCalendar /></div>
               <div className={styles.statInfo}>
                 <h3>{attendanceStats.totalDays}</h3>
                 <p>Entrenamientos registrados</p>
@@ -357,7 +357,7 @@ const StudentPanel = ({ user }) => {
                         })}
                       </span>
                       <span className={`${styles.attendanceStatus} ${styles.present}`}>
-                        ✅ Presente
+                        <FaCheckCircle style={{ marginRight: '6px', verticalAlign: 'middle' }} />Presente
                       </span>
                     </div>
                   );
@@ -404,7 +404,7 @@ const StudentPanel = ({ user }) => {
   if (userRole && !validRoles.includes(userRole)) {
     return (
       <div className={styles.error}>
-        <h2>🚫 Acceso Denegado</h2>
+        <h2><FaBan style={{ marginRight: '10px', verticalAlign: 'middle' }} />Acceso Denegado</h2>
         <p>Esta sección es solo para estudiantes.</p>
         <p>Tu rol actual es: <strong>{userRole}</strong></p>
         <button 
@@ -420,7 +420,7 @@ const StudentPanel = ({ user }) => {
   if (!studentData) {
     return (
       <div className={styles.error}>
-        <h2>❌ Error</h2>
+        <h2><FaTimes style={{ marginRight: '10px', verticalAlign: 'middle' }} />Error</h2>
         <p>No se pudo cargar la información del estudiante</p>
         <p>Por favor, contacta con la administración.</p>
         <button 
@@ -438,7 +438,7 @@ const StudentPanel = ({ user }) => {
       {/* Sidebar */}
       <aside className={styles.sidebar}>
         <div className={styles.sidebarHeader}>
-          <div className={styles.userAvatar}>👤</div>
+          <div className={styles.userAvatar}><FaUserCircle /></div>
           <h3>{studentData.users?.nombre} {studentData.users?.apellido}</h3>
           <p className={styles.userRole}>Estudiante</p>
           <span className={styles.categoryBadge}>{studentData.categoria?.replaceAll('_', ' ').toUpperCase()}</span>
@@ -449,7 +449,7 @@ const StudentPanel = ({ user }) => {
             className={`${styles.menuItem} ${activeSection === 'anuncios' ? styles.active : ''}`}
             onClick={() => setActiveSection('anuncios')}
           >
-            <span className={styles.menuIcon}>📢</span>
+            <span className={styles.menuIcon}><FaBullhorn /></span>
             <span>Anuncios</span>
           </button>
 
@@ -457,7 +457,7 @@ const StudentPanel = ({ user }) => {
             className={`${styles.menuItem} ${activeSection === 'mensualidad' ? styles.active : ''}`}
             onClick={() => setActiveSection('mensualidad')}
           >
-            <span className={styles.menuIcon}>💳</span>
+            <span className={styles.menuIcon}><FaMoneyBillWave /></span>
             <span>Mensualidad</span>
           </button>
 
@@ -465,7 +465,7 @@ const StudentPanel = ({ user }) => {
             className={`${styles.menuItem} ${activeSection === 'asistencias' ? styles.active : ''}`}
             onClick={() => setActiveSection('asistencias')}
           >
-            <span className={styles.menuIcon}>📊</span>
+            <span className={styles.menuIcon}><FaChartBar /></span>
             <span>Asistencias</span>
           </button>
 

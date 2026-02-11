@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/TrainerDashboard.module.css';
-import { FaVolleyballBall, FaDumbbell } from 'react-icons/fa';
+import { FaVolleyballBall, FaDumbbell, FaChartBar, FaCalendar, FaDollarSign, FaBolt, FaPlus, FaCheckCircle, FaClipboardList, FaMoneyBillWave } from 'react-icons/fa';
 
 const TrainerDashboard = ({ user, onNavigateToSection }) => {
   const [stats, setStats] = useState({
@@ -73,7 +73,7 @@ const TrainerDashboard = ({ user, onNavigateToSection }) => {
   return (
     <div className={styles.dashboard}>
       <div className={styles.welcome}>
-        <h2>📊 Dashboard del Entrenador</h2>
+        <h2><FaChartBar style={{ marginRight: '10px', verticalAlign: 'middle' }} />Dashboard del Entrenador</h2>
         <p>Resumen de tus actividades y atletas</p>
       </div>
 
@@ -98,7 +98,7 @@ const TrainerDashboard = ({ user, onNavigateToSection }) => {
           role="button"
           tabIndex={0}
         >
-          <div className={styles.statIcon}>📅</div>
+          <div className={styles.statIcon}><FaCalendar /></div>
           <div className={styles.statInfo}>
             <h3>{stats.asistenciasHoy}</h3>
             <p>Asistencias Hoy</p>
@@ -124,7 +124,7 @@ const TrainerDashboard = ({ user, onNavigateToSection }) => {
           role="button"
           tabIndex={0}
         >
-          <div className={styles.statIcon}>💰</div>
+          <div className={styles.statIcon}><FaDollarSign /></div>
           <div className={styles.statInfo}>
             <h3>{stats.pagosDelMes}</h3>
             <p>Pagos del Mes</p>
@@ -134,13 +134,13 @@ const TrainerDashboard = ({ user, onNavigateToSection }) => {
 
       {/* Quick Actions */}
       <div className={styles.quickActions}>
-        <h3>⚡ Acciones Rápidas</h3>
+        <h3><FaBolt style={{ marginRight: '10px', verticalAlign: 'middle' }} />Acciones Rápidas</h3>
         <div className={styles.actionsGrid}>
           <button 
             className={styles.actionCard}
             onClick={() => onNavigateToSection('atletas')}
           >
-            <span className={styles.actionIcon}>➕</span>
+            <span className={styles.actionIcon}><FaPlus /></span>
             <span>Registrar Atleta</span>
           </button>
           
@@ -148,7 +148,7 @@ const TrainerDashboard = ({ user, onNavigateToSection }) => {
             className={styles.actionCard}
             onClick={() => onNavigateToSection('asistencias')}
           >
-            <span className={styles.actionIcon}>✅</span>
+            <span className={styles.actionIcon}><FaCheckCircle /></span>
             <span>Tomar Asistencia</span>
           </button>
           
@@ -156,7 +156,7 @@ const TrainerDashboard = ({ user, onNavigateToSection }) => {
             className={styles.actionCard}
             onClick={() => onNavigateToSection('tests-fisicos')}
           >
-            <span className={styles.actionIcon}>📝</span>
+            <span className={styles.actionIcon}><FaClipboardList /></span>
             <span>Registrar Test</span>
           </button>
           
@@ -164,7 +164,7 @@ const TrainerDashboard = ({ user, onNavigateToSection }) => {
             className={styles.actionCard}
             onClick={() => onNavigateToSection('pagos')}
           >
-            <span className={styles.actionIcon}>💵</span>
+            <span className={styles.actionIcon}><FaMoneyBillWave /></span>
             <span>Registrar Pago</span>
           </button>
         </div>

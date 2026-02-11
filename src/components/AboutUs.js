@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '../styles/AboutUs.module.css';
+import { FaInstagram, FaTiktok, FaWhatsapp } from 'react-icons/fa';
 
 const AboutUs = () => {
   return (
@@ -115,7 +116,9 @@ const AboutUs = () => {
               rel="noopener noreferrer"
               className={styles.socialCard}
             >
-              <div className={styles.socialIcon}>📸</div>
+              <div className={styles.socialIcon}>
+                <FaInstagram />
+              </div>
               <p className={styles.socialName}>Instagram</p>
             </a>
 
@@ -125,7 +128,9 @@ const AboutUs = () => {
               rel="noopener noreferrer"
               className={styles.socialCard}
             >
-              <div className={styles.socialIcon}>🎵</div>
+              <div className={styles.socialIcon}>
+                <FaTiktok />
+              </div>
               <p className={styles.socialName}>TikTok</p>
             </a>
 
@@ -135,7 +140,9 @@ const AboutUs = () => {
               rel="noopener noreferrer"
               className={styles.socialCard}
             >
-              <div className={styles.socialIcon}>💬</div>
+              <div className={styles.socialIcon}>
+                <FaWhatsapp />
+              </div>
               <p className={styles.socialName}>WhatsApp</p>
             </a>
           </div>

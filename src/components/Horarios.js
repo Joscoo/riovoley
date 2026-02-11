@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { initializeGapi, getCalendarEvents } from '../services/googleCalendar';
 import styles from '../styles/Horarios.module.css';
+import { FaExclamationTriangle, FaCalendarAlt } from 'react-icons/fa';
 
 const Horarios = () => {
   const [events, setEvents] = useState([]);
@@ -86,7 +87,7 @@ const Horarios = () => {
         </section>
         
         <div className={styles.errorContainer}>
-          <div className={styles.errorIcon}>⚠️</div>
+          <div className={styles.errorIcon}><FaExclamationTriangle /></div>
           <h2 className={styles.errorTitle}>Error al Cargar Horarios</h2>
           <p className={styles.errorMessage}>{error}</p>
           <button onClick={loadCalendarEvents} className={styles.retryButton}>
@@ -181,7 +182,7 @@ const Horarios = () => {
         </div>
       ) : (
         <div className={styles.emptyState}>
-          <div className={styles.emptyIcon}>📅</div>
+          <div className={styles.emptyIcon}><FaCalendarAlt /></div>
           <h3 className={styles.emptyTitle}>No hay entrenamientos programados</h3>
           <p className={styles.emptyText}>Los horarios se actualizarán pronto. Revisa esta página regularmente.</p>
         </div>
