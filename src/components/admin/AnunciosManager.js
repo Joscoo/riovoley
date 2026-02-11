@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/AnunciosManager.module.css';
-import { FaBell, FaBellSlash, FaEdit, FaTrash, FaBullhorn, FaPlus } from 'react-icons/fa';
+import { FaBell, FaBellSlash, FaEdit, FaTrash, FaBullhorn, FaPlus, FaUser } from 'react-icons/fa';
 
 const AnunciosManager = ({ user }) => {
   const [anuncios, setAnuncios] = useState([]);
