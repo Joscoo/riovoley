@@ -216,14 +216,15 @@ export const createStudentWorking = async (studentData) => {
 };
 
 /**
- * Reenvía credenciales generando una NUEVA contraseña temporal
+ * Reenvía credenciales generando una NUEVA contraseña temporal y enviando email
  * NOTA: No se puede recuperar la contraseña anterior de Supabase Auth por seguridad
  */
 export const resendWorkingCredentials = async (userData) => {
   const { 
     user_id,
-    email
-    // nombre y apellido disponibles si se necesitan en el futuro
+    email,
+    nombre = 'Usuario',
+    apellido = ''
   } = userData;
 
   try {
@@ -255,7 +256,7 @@ export const resendWorkingCredentials = async (userData) => {
       }
     );
 
-    console.log('📊 Respuesta de Edge Function:', { updateData, updateAuthError });
+    console.log('📊 Respuesta de Edge Function update-user-password:', { updateData, updateAuthError });
 
     if (updateAuthError || !updateData?.success) {
       console.error('❌ Error detallado:', {
@@ -268,16 +269,73 @@ export const resendWorkingCredentials = async (userData) => {
 
     console.log('✅ Contraseña actualizada en Supabase Auth');
 
-    // Verificar que la nueva contraseña funciona
-    const { data: loginTest, error: loginError } = await supabase.auth.signInWithPassword({
-      email: email.trim(),
-      password: newPassword
-    });
-
-    const canLogin = !loginError;
+    // Enviar email con las credenciales usando Resend
+    const nombreCompleto = `${nombre} ${apellido}`.trim();
+    const loginUrl = `${globalThis.location.origin}/login`;
     
-    if (loginTest?.user) {
-      await supabase.auth.signOut();
+    const emailHtml = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+            .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+            .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+            .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
+            .credentials { background: white; padding: 20px; border-left: 4px solid #667eea; margin: 20px 0; }
+            .button { display: inline-block; background: #667eea; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; margin: 20px 0; }
+            .footer { text-align: center; margin-top: 30px; color: #666; font-size: 12px; }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="header">
+              <h1>🏐 Bienvenido a Rio Voley</h1>
+            </div>
+            <div class="content">
+              <p>Hola <strong>${nombreCompleto}</strong>,</p>
+              <p>Tus credenciales de acceso al sistema han sido actualizadas. A continuación encontrarás tu nueva contraseña temporal:</p>
+              
+              <div class="credentials">
+                <p><strong>📧 Email:</strong> ${email}</p>
+                <p><strong>🔑 Contraseña temporal:</strong> <code style="background: #f0f0f0; padding: 5px 10px; border-radius: 3px;">${newPassword}</code></p>
+              </div>
+
+              <p><strong>⚠️ IMPORTANTE:</strong> Por favor, cambia esta contraseña temporal después de iniciar sesión por primera vez.</p>
+              
+              <div style="text-align: center;">
+                <a href="${loginUrl}" class="button">Iniciar Sesión</a>
+              </div>
+
+              <p>Si tienes problemas para iniciar sesión, contacta al administrador.</p>
+            </div>
+            <div class="footer">
+              <p>Este es un correo automático, por favor no responder.</p>
+              <p>&copy; 2026 Rio Voley - Sistema de Gestión de Atletas</p>
+            </div>
+          </div>
+        </body>
+      </html>
+    `;
+
+    console.log('📧 Enviando email con credenciales...');
+
+    const { data: emailData, error: emailError } = await supabase.functions.invoke(
+      'send-email',
+      {
+        body: {
+          to: email,
+          subject: '🔑 Tus credenciales de acceso - Rio Voley',
+          html: emailHtml
+        }
+      }
+    );
+
+    console.log('📊 Respuesta de Edge Function send-email:', { emailData, emailError });
+
+    if (emailError) {
+      console.warn('⚠️ Error enviando email:', emailError);
+      // No lanzar error, solo advertir - el usuario fue creado exitosamente
     }
 
     return {
@@ -285,11 +343,11 @@ export const resendWorkingCredentials = async (userData) => {
       credentials: {
         email: email.trim(),
         password: newPassword,
-        loginUrl: `${globalThis.location.origin}/login`
+        loginUrl: loginUrl
       },
-      canLogin: canLogin,
-      loginError: loginError?.message,
-      message: `Nueva contraseña temporal generada. ${canLogin ? 'Login verificado.' : 'Puede requerir confirmación.'}`,
+      emailSent: !emailError,
+      emailError: emailError?.message,
+      message: `Nueva contraseña temporal generada. ${!emailError ? 'Email enviado exitosamente.' : 'Email no pudo ser enviado, pero la contraseña fue actualizada.'}`,
       isNewPassword: true // Siempre es nueva
     };
 
