@@ -545,11 +545,29 @@ const PagosManager = ({ user }) => {
     setAtletasFiltrados([]);
   };
 
+  // Función helper para formatear fechas sin problemas de zona horaria
+  const formatDateSafe = (dateStr) => {
+    if (!dateStr) return null;
+    try {
+      // Parsear la fecha en formato YYYY-MM-DD sin conversión de zona horaria
+      const [year, month, day] = dateStr.split('T')[0].split('-');
+      const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+      
+      return date.toLocaleDateString('es-ES', {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric'
+      });
+    } catch (error) {
+      return dateStr;
+    }
+  };
+
   const formatPeriodo = (fecha_inicio, fecha_fin) => {
     if (!fecha_inicio) return '--';
-    const inicio = new Date(fecha_inicio).toLocaleDateString();
+    const inicio = formatDateSafe(fecha_inicio);
     if (!fecha_fin) return `Desde: ${inicio}`;
-    const fin = new Date(fecha_fin).toLocaleDateString();
+    const fin = formatDateSafe(fecha_fin);
     return `${inicio} - ${fin}`;
   };
 
@@ -758,7 +776,7 @@ const PagosManager = ({ user }) => {
                       </td>
                       <td>
                         {pago.fecha_pago ? 
-                          new Date(pago.fecha_pago).toLocaleDateString() : 
+                          formatDateSafe(pago.fecha_pago) : 
                           '--'
                         }
                       </td>
