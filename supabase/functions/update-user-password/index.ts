@@ -49,7 +49,7 @@ serve(async (req) => {
     const { data: userProfile, error: profileError } = await supabaseAdmin
       .from('users')
       .select('role')
-      .eq('user_id', requestingUser.id)
+      .eq('id', requestingUser.id)
       .single()
 
     if (profileError || !userProfile || userProfile.role !== 'admin') {
