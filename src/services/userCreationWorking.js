@@ -142,7 +142,7 @@ export const createUserWorking = async (userData) => {
       credentials: {
         email: email.trim(),
         password: temporaryPassword,
-        loginUrl: `${globalThis.location.origin}/login`
+        loginUrl: 'https://riovoley.com/login'
       }
     };
 
@@ -271,7 +271,8 @@ export const resendWorkingCredentials = async (userData) => {
 
     // Enviar email con las credenciales usando Resend
     const nombreCompleto = `${nombre} ${apellido}`.trim();
-    const loginUrl = `${globalThis.location.origin}/login`;
+    // Usar la URL de producción
+    const loginUrl = 'https://riovoley.com/login';
     
     const emailHtml = `
       <!DOCTYPE html>
