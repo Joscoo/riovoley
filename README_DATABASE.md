@@ -85,7 +85,8 @@ public.payment_types
 id integer PRIMARY KEY DEFAULT nextval('payment_types_id_seq'::regclass)
 nombre text UNIQUE NOT NULL
 descripcion text NULL
-precio numeric NOT NULL
+precio numeric NULL
+Comentario: catálogo de métodos de pago. Valores estándar: 'pago_diario', 'mensualidad', 'tarjeta'. Usado en attendances.metodo_pago_id para registrar cómo pagó cada atleta su asistencia.
 public.attendances
 
 id uuid PRIMARY KEY DEFAULT uuid_generate_v4()

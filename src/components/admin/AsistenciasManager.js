@@ -17,7 +17,12 @@ import {
   FaMedal, 
   FaTrash, 
   FaTimes, 
-  FaCheck 
+  FaCheck,
+  FaDollarSign,
+  FaCalendarCheck,
+  FaCreditCard,
+  FaFileExport,
+  FaPrint
 } from 'react-icons/fa';
 
 const AsistenciasManager = ({ user }) => {
@@ -35,6 +40,12 @@ const AsistenciasManager = ({ user }) => {
   const [todayAttendance, setTodayAttendance] = useState([]);
   const [bulkMode, setBulkMode] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('all'); // Nueva: categoría seleccionada en tabs
+  const [paymentTypes, setPaymentTypes] = useState([]); // Métodos de pago disponibles
+  const [showExportModal, setShowExportModal] = useState(false);
+  const [exportObservations, setExportObservations] = useState('');
+  const [expandedDays, setExpandedDays] = useState([]); // Días expandidos en el historial
+  const [asistenciasByDate, setAsistenciasByDate] = useState({}); // Asistencias agrupadas por fecha
+  const [dateToExport, setDateToExport] = useState(null); // Fecha a exportar
 
   const categorias = [
     'iniciacion_hombres',
@@ -55,6 +66,7 @@ const AsistenciasManager = ({ user }) => {
   useEffect(() => {
     // Cargar datos iniciales al montar el componente
     loadData();
+    loadPaymentTypes();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -82,8 +94,9 @@ const AsistenciasManager = ({ user }) => {
           .select(`
             id,
             categoria,
-            users(id, nombre, apellido, email)
+            users!inner(id, nombre, apellido, email, role)
           `)
+          .eq('users.role', 'usuario')
           .order('users(apellido)', { ascending: true });
 
         if (atletasError) throw atletasError;
@@ -156,6 +169,17 @@ const AsistenciasManager = ({ user }) => {
 
       setAsistencias(asistenciasWithDetails);
 
+      // Agrupar asistencias por fecha
+      const grouped = {};
+      asistenciasWithDetails.forEach(asistencia => {
+        const fecha = asistencia.fecha;
+        if (!grouped[fecha]) {
+          grouped[fecha] = [];
+        }
+        grouped[fecha].push(asistencia);
+      });
+      setAsistenciasByDate(grouped);
+
     } catch (error) {
       console.error('Error cargando datos:', error);
       alert('Error al cargar los datos: ' + error.message);
@@ -171,8 +195,9 @@ const AsistenciasManager = ({ user }) => {
       .select(`
         id,
         categoria,
-        users(id, nombre, apellido, email)
+        users!inner(id, nombre, apellido, email, role)
       `)
+      .eq('users.role', 'usuario')
       .order('users(apellido)', { ascending: true });
 
     if (atletasError) throw atletasError;
@@ -214,6 +239,83 @@ const AsistenciasManager = ({ user }) => {
     }
   };
 
+  const loadPaymentTypes = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('payment_types')
+        .select('*')
+        .order('id');
+
+      if (error) throw error;
+      setPaymentTypes(data || []);
+      console.log('📋 Métodos de pago cargados:', data);
+    } catch (error) {
+      console.error('Error cargando métodos de pago:', error);
+    }
+  };
+
+  const registerAttendanceWithPayment = async (atletaId, paymentTypeId) => {
+    try {
+      // Verificar si ya existe asistencia para este día
+      const { data: existing, error: findError } = await supabase
+        .from('attendances')
+        .select('id, metodo_pago_id')
+        .eq('student_id', atletaId)
+        .eq('fecha', selectedDate)
+        .maybeSingle(); // Usar maybeSingle() en lugar de single()
+
+      if (findError) {
+        console.error('Error buscando asistencia existente:', findError);
+        throw findError;
+      }
+
+      if (existing) {
+        // Si ya existe, actualizar el método de pago
+        const { error } = await supabase
+          .from('attendances')
+          .update({ metodo_pago_id: paymentTypeId })
+          .eq('id', existing.id);
+
+        if (error) throw error;
+      } else {
+        // Si no existe, crear nuevo registro
+        const { error } = await supabase
+          .from('attendances')
+          .insert({
+            student_id: atletaId,
+            fecha: selectedDate,
+            metodo_pago_id: paymentTypeId
+          });
+
+        if (error) throw error;
+      }
+
+      loadTodayAttendance();
+      loadData(); // Refrescar la lista general
+    } catch (error) {
+      console.error('Error registrando asistencia:', error);
+      alert('Error: ' + error.message);
+    }
+  };
+
+  const removeAttendance = async (atletaId) => {
+    try {
+      const { error } = await supabase
+        .from('attendances')
+        .delete()
+        .eq('student_id', atletaId)
+        .eq('fecha', selectedDate);
+
+      if (error) throw error;
+
+      loadTodayAttendance();
+      loadData(); // Refrescar la lista general
+    } catch (error) {
+      console.error('Error eliminando asistencia:', error);
+      alert('Error: ' + error.message);
+    }
+  };
+
   const toggleAttendance = async (atletaId, isCurrentlyPresent) => {
     try {
       if (isCurrentlyPresent) {
@@ -247,18 +349,27 @@ const AsistenciasManager = ({ user }) => {
 
   const markAllPresent = async () => {
     // eslint-disable-next-line no-restricted-globals
-    if (!confirm('¿Marcar todos los atletas como presentes?')) {
+    if (!confirm('¿Marcar todos los atletas como presentes con MENSUALIDAD?')) {
       return;
     }
 
     try {
+      // Buscar el ID de mensualidad
+      const mensualidad = paymentTypes.find(pt => pt.nombre === 'mensualidad');
+      
+      if (!mensualidad) {
+        alert('Error: No se encontró el método de pago "mensualidad"');
+        return;
+      }
+
       for (const atleta of todayAttendance) {
         const isCurrentlyPresent = atleta.attendance !== null;
         if (!isCurrentlyPresent) {
-          await toggleAttendance(atleta.id, false); // Marcar como presente
+          // Registrar con mensualidad por defecto
+          await registerAttendanceWithPayment(atleta.id, mensualidad.id);
         }
       }
-      alert('Todos los atletas marcados como presentes');
+      alert('Todos los atletas marcados como presentes con MENSUALIDAD');
     } catch (error) {
       console.error('Error marcando asistencias masivas:', error);
       alert('Error: ' + error.message);
@@ -347,6 +458,454 @@ const AsistenciasManager = ({ user }) => {
     return { total, presentes, ausentes, porcentaje };
   };
 
+  // Renderizar atleta con botones de métodos de pago
+  const renderAtletaWithPaymentMethods = (atleta) => {
+    const isPresent = atleta.attendance !== null;
+    const currentPaymentMethod = atleta.attendance?.metodo_pago_id;
+    
+    // Obtener nombres de métodos de pago
+    const getPaymentMethodInfo = (ptId) => {
+      const pt = paymentTypes.find(p => p.id === ptId);
+      if (!pt) return { nombre: '', icono: null };
+      
+      // Iconos según método de pago usando react-icons
+      const iconos = {
+        'pago_diario': <FaDollarSign />,
+        'mensualidad': <FaCalendarCheck />,
+        'tarjeta': <FaCreditCard />
+      };
+      
+      return {
+        nombre: pt.nombre,
+        icono: iconos[pt.nombre] || <FaDollarSign />
+      };
+    };
+
+    return (
+      <div key={atleta.id} className={styles.atletaItemNew}>
+        <div className={styles.atletaNameSection}>
+          <span className={styles.atletaName}>
+            {atleta.users?.nombre} {atleta.users?.apellido}
+          </span>
+          {isPresent && currentPaymentMethod && (
+            <span className={styles.currentPaymentBadge}>
+              {getPaymentMethodInfo(currentPaymentMethod).icono}
+            </span>
+          )}
+        </div>
+        
+        <div className={styles.paymentButtons}>
+          {paymentTypes.map(pt => {
+            const isSelected = currentPaymentMethod === pt.id;
+            const info = getPaymentMethodInfo(pt.id);
+            
+            return (
+              <button
+                key={pt.id}
+                onClick={() => registerAttendanceWithPayment(atleta.id, pt.id)}
+                className={`${styles.paymentMethodBtn} ${
+                  isSelected ? styles.paymentMethodActive : ''
+                }`}
+                title={pt.descripcion}
+              >
+                {info.icono}
+              </button>
+            );
+          })}
+          
+          {isPresent && (
+            <button
+              onClick={() => removeAttendance(atleta.id)}
+              className={styles.removeAttendanceBtn}
+              title="Eliminar asistencia"
+            >
+              <FaTimes />
+            </button>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  const exportAttendance = (fecha = null) => {
+    setDateToExport(fecha || selectedDate);
+    setShowExportModal(true);
+  };
+
+  const toggleDayExpansion = (fecha) => {
+    setExpandedDays(prev => 
+      prev.includes(fecha) 
+        ? prev.filter(d => d !== fecha)
+        : [...prev, fecha]
+    );
+  };
+
+  const generateExportDocument = () => {
+    const exportFecha = dateToExport || selectedDate;
+    
+    // Si es desde el historial, usar las asistencias agrupadas, si no, usar todayAttendance
+    let attendancesData;
+    if (asistenciasByDate[exportFecha]) {
+      // Desde historial - mapear a formato similar a todayAttendance
+      attendancesData = asistenciasByDate[exportFecha].map(asistencia => ({
+        ...asistencia.students,
+        attendance: {
+          metodo_pago_id: asistencia.metodo_pago_id
+        }
+      }));
+    } else {
+      // Desde modo bulk
+      attendancesData = todayAttendance.filter(a => a.attendance !== null);
+    }
+
+    // Agrupar por categorías
+    const iniciacion = attendancesData.filter(a => 
+      a.categoria === 'iniciacion_hombres' || a.categoria === 'iniciacion_mujeres'
+    );
+    const perfHombres = attendancesData.filter(a => 
+      a.categoria === 'perfeccionamiento_hombres'
+    );
+    const perfMujeres = attendancesData.filter(a => 
+      a.categoria === 'perfeccionamiento_mujeres' || a.categoria === 'master_mujeres'
+    );
+
+    // Función auxiliar para obtener método de pago
+    const getPaymentMethodName = (metodoPagoId) => {
+      const pt = paymentTypes.find(p => p.id === metodoPagoId);
+      if (!pt) return 'N/A';
+      switch(pt.nombre) {
+        case 'pago_diario': return 'Pago Diario';
+        case 'mensualidad': return 'Mensualidad';
+        case 'tarjeta': return 'Tarjeta';
+        default: return pt.nombre;
+      }
+    };
+
+    // Generar HTML para imprimir
+    const printWindow = window.open('', '_blank');
+    const fechaFormateada = new Date(exportFecha).toLocaleDateString('es-ES', { 
+      weekday: 'long', 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    });
+
+    const html = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Asistencias - ${fechaFormateada}</title>
+        <style>
+          @page {
+            size: A4;
+            margin: 15mm 15mm 15mm 15mm;
+          }
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+          body {
+            font-family: Arial, sans-serif;
+            padding: 0;
+            color: #333;
+            max-width: 210mm;
+            margin: 0 auto;
+          }
+          .header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #1e3a8a;
+            padding-bottom: 12px;
+          }
+          .header h1 {
+            color: #1e3a8a;
+            font-size: 22px;
+            margin-bottom: 6px;
+          }
+          .header .date {
+            font-size: 14px;
+            color: #666;
+            text-transform: capitalize;
+          }
+          .section {
+            margin-bottom: 25px;
+            page-break-inside: avoid;
+          }
+          .section-title {
+            background: #1e3a8a;
+            color: white;
+            padding: 6px 12px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-radius: 3px;
+          }
+          .subsection-title {
+            background: #ffd700;
+            color: #0a0a0a;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 10px 0 6px 0;
+            border-radius: 2px;
+          }
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 8px;
+            font-size: 11px;
+          }
+          th {
+            background: #f0f0f0;
+            padding: 6px 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+            font-weight: bold;
+            font-size: 11px;
+          }
+          td {
+            padding: 5px 8px;
+            border: 1px solid #ddd;
+          }
+          tr:nth-child(even) {
+            background: #f9f9f9;
+          }
+          .summary {
+            background: #f0f0f0;
+            padding: 6px 10px;
+            margin-top: 5px;
+            margin-bottom: 8px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 11px;
+          }
+          .observations {
+            margin-top: 20px;
+            padding: 12px;
+            background: #fffbea;
+            border: 2px solid #ffd700;
+            border-radius: 3px;
+            page-break-inside: avoid;
+          }
+          .observations h3 {
+            color: #1e3a8a;
+            margin-bottom: 8px;
+            font-size: 13px;
+          }
+          .observations p {
+            line-height: 1.4;
+            white-space: pre-wrap;
+            font-size: 11px;
+          }
+          .footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #999;
+            font-size: 9px;
+            padding-top: 12px;
+            border-top: 1px solid #ddd;
+          }
+          @media print {
+            body {
+              padding: 0;
+              max-width: 100%;
+            }
+            .section {
+              page-break-inside: avoid;
+            }
+            .observations {
+              page-break-before: avoid;
+            }
+            @page {
+              margin: 15mm;
+            }
+          }
+          @media screen {
+            body {
+              padding: 20px;
+              background: white;
+            }
+          }
+        </style>
+      </head>
+      <body>
+        <div class="header">
+          <h1>🏐 RIO VOLEY - Control de Asistencias</h1>
+          <div class="date">${fechaFormateada}</div>
+        </div>
+
+        <!-- TABLA 1: INICIACIÓN -->
+        <div class="section">
+          <div class="section-title">1. INICIACIÓN</div>
+          
+          <div class="subsection-title">👨 Hombres</div>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Método de Pago</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${iniciacion
+                .filter(a => a.categoria === 'iniciacion_hombres')
+                .map((atleta, index) => `
+                  <tr>
+                    <td>${index + 1}</td>
+                    <td>${atleta.users?.nombre} ${atleta.users?.apellido}</td>
+                    <td>${getPaymentMethodName(atleta.attendance?.metodo_pago_id)}</td>
+                  </tr>
+                `).join('') || '<tr><td colspan="3" style="text-align: center; color: #999;">Sin asistencias</td></tr>'}
+            </tbody>
+          </table>
+          <div class="summary">
+            Total Hombres: ${iniciacion.filter(a => a.categoria === 'iniciacion_hombres').length}
+          </div>
+
+          <div class="subsection-title">👩 Mujeres</div>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Método de Pago</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${iniciacion
+                .filter(a => a.categoria === 'iniciacion_mujeres')
+                .map((atleta, index) => `
+                  <tr>
+                    <td>${index + 1}</td>
+                    <td>${atleta.users?.nombre} ${atleta.users?.apellido}</td>
+                    <td>${getPaymentMethodName(atleta.attendance?.metodo_pago_id)}</td>
+                  </tr>
+                `).join('') || '<tr><td colspan="3" style="text-align: center; color: #999;">Sin asistencias</td></tr>'}
+            </tbody>
+          </table>
+          <div class="summary">
+            Total Mujeres: ${iniciacion.filter(a => a.categoria === 'iniciacion_mujeres').length} | 
+            Total Iniciación: ${iniciacion.length}
+          </div>
+        </div>
+
+        <!-- TABLA 2: PERFECCIONAMIENTO HOMBRES -->
+        <div class="section">
+          <div class="section-title">2. PERFECCIONAMIENTO - HOMBRES</div>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Método de Pago</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${perfHombres
+                .map((atleta, index) => `
+                  <tr>
+                    <td>${index + 1}</td>
+                    <td>${atleta.users?.nombre} ${atleta.users?.apellido}</td>
+                    <td>${getPaymentMethodName(atleta.attendance?.metodo_pago_id)}</td>
+                  </tr>
+                `).join('') || '<tr><td colspan="3" style="text-align: center; color: #999;">Sin asistencias</td></tr>'}
+            </tbody>
+          </table>
+          <div class="summary">
+            Total Perfeccionamiento Hombres: ${perfHombres.length}
+          </div>
+        </div>
+
+        <!-- TABLA 3: PERFECCIONAMIENTO MUJERES -->
+        <div class="section">
+          <div class="section-title">3. PERFECCIONAMIENTO - MUJERES</div>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Método de Pago</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${perfMujeres
+                .map((atleta, index) => `
+                  <tr>
+                    <td>${index + 1}</td>
+                    <td>${atleta.users?.nombre} ${atleta.users?.apellido}</td>
+                    <td>${atleta.categoria === 'master_mujeres' ? 'Master' : 'Perfeccionamiento'}</td>
+                    <td>${getPaymentMethodName(atleta.attendance?.metodo_pago_id)}</td>
+                  </tr>
+                `).join('') || '<tr><td colspan="4" style="text-align: center; color: #999;">Sin asistencias</td></tr>'}
+            </tbody>
+          </table>
+          <div class="summary">
+            Total Perfeccionamiento Mujeres: ${perfMujeres.length}
+          </div>
+        </div>
+
+        <!-- RESUMEN GENERAL -->
+        <div class="section">
+          <div class="section-title">RESUMEN GENERAL</div>
+          <table>
+            <thead>
+              <tr>
+                <th>Categoría</th>
+                <th>Total Asistencias</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Iniciación</td>
+                <td>${iniciacion.length}</td>
+              </tr>
+              <tr>
+                <td>Perfeccionamiento Hombres</td>
+                <td>${perfHombres.length}</td>
+              </tr>
+              <tr>
+                <td>Perfeccionamiento Mujeres</td>
+                <td>${perfMujeres.length}</td>
+              </tr>
+              <tr style="background: #1e3a8a; color: white; font-weight: bold;">
+                <td>TOTAL</td>
+                <td>${attendancesData.length}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        ${exportObservations ? `
+          <div class="observations">
+            <h3>📝 Observaciones:</h3>
+            <p>${exportObservations}</p>
+          </div>
+        ` : ''}
+
+        <div class="footer">
+          Generado el ${new Date().toLocaleString('es-ES')} - RIO VOLEY
+        </div>
+
+        <script>
+          window.onload = function() {
+            window.print();
+          }
+        </script>
+      </body>
+      </html>
+    `;
+
+    printWindow.document.write(html);
+    printWindow.document.close();
+    
+    setShowExportModal(false);
+    setExportObservations('');
+    setDateToExport(null);
+  };
+
   const stats = calculateStats();
 
   return (
@@ -357,6 +916,15 @@ const AsistenciasManager = ({ user }) => {
           <p>Registro y seguimiento de entrenamientos</p>
         </div>
         <div className={styles.headerActions}>
+          {bulkMode && (
+            <button 
+              className={styles.exportButton}
+              onClick={exportAttendance}
+              title="Exportar asistencias del día"
+            >
+              <FaFileExport style={{ marginRight: '6px', verticalAlign: 'middle' }} /> Exportar
+            </button>
+          )}
           <button 
             className={styles.bulkButton}
             onClick={() => setBulkMode(!bulkMode)}
@@ -496,24 +1064,8 @@ const AsistenciasManager = ({ user }) => {
                         <div className={styles.atletasList}>
                           {todayAttendance
                             .filter(atleta => atleta.categoria === 'iniciacion_hombres')
-                            .map(atleta => {
-                              const isPresent = atleta.attendance !== null;
-                              return (
-                                <div key={atleta.id} className={styles.atletaItem}>
-                                  <span className={styles.atletaName}>
-                                    {atleta.users?.nombre} {atleta.users?.apellido}
-                                  </span>
-                                  <button
-                                    onClick={() => toggleAttendance(atleta.id, isPresent)}
-                                    className={`${styles.attendanceToggle} ${
-                                      isPresent ? styles.present : styles.absent
-                                    }`}
-                                  >
-                                    {isPresent ? <FaCheck /> : <FaTimes />}
-                                  </button>
-                                </div>
-                              );
-                            })}
+                            .map(atleta => renderAtletaWithPaymentMethods(atleta)
+                            )}
                         </div>
                       </div>
                       
@@ -522,24 +1074,8 @@ const AsistenciasManager = ({ user }) => {
                         <div className={styles.atletasList}>
                           {todayAttendance
                             .filter(atleta => atleta.categoria === 'iniciacion_mujeres')
-                            .map(atleta => {
-                              const isPresent = atleta.attendance !== null;
-                              return (
-                                <div key={atleta.id} className={styles.atletaItem}>
-                                  <span className={styles.atletaName}>
-                                    {atleta.users?.nombre} {atleta.users?.apellido}
-                                  </span>
-                                  <button
-                                    onClick={() => toggleAttendance(atleta.id, isPresent)}
-                                    className={`${styles.attendanceToggle} ${
-                                      isPresent ? styles.present : styles.absent
-                                    }`}
-                                  >
-                                    {isPresent ? <FaCheck /> : <FaTimes />}
-                                  </button>
-                                </div>
-                              );
-                            })}
+                            .map(atleta => renderAtletaWithPaymentMethods(atleta)
+                            )}
                         </div>
                       </div>
                     </div>
@@ -556,24 +1092,8 @@ const AsistenciasManager = ({ user }) => {
                         <div className={styles.atletasList}>
                           {todayAttendance
                             .filter(atleta => atleta.categoria === 'perfeccionamiento_hombres')
-                            .map(atleta => {
-                              const isPresent = atleta.attendance !== null;
-                              return (
-                                <div key={atleta.id} className={styles.atletaItem}>
-                                  <span className={styles.atletaName}>
-                                    {atleta.users?.nombre} {atleta.users?.apellido}
-                                  </span>
-                                  <button
-                                    onClick={() => toggleAttendance(atleta.id, isPresent)}
-                                    className={`${styles.attendanceToggle} ${
-                                      isPresent ? styles.present : styles.absent
-                                    }`}
-                                  >
-                                    {isPresent ? <FaCheck /> : <FaTimes />}
-                                  </button>
-                                </div>
-                              );
-                            })}
+                            .map(atleta => renderAtletaWithPaymentMethods(atleta)
+                            )}
                         </div>
                       </div>
                       
@@ -582,24 +1102,8 @@ const AsistenciasManager = ({ user }) => {
                         <div className={styles.atletasList}>
                           {todayAttendance
                             .filter(atleta => atleta.categoria === 'perfeccionamiento_mujeres')
-                            .map(atleta => {
-                              const isPresent = atleta.attendance !== null;
-                              return (
-                                <div key={atleta.id} className={styles.atletaItem}>
-                                  <span className={styles.atletaName}>
-                                    {atleta.users?.nombre} {atleta.users?.apellido}
-                                  </span>
-                                  <button
-                                    onClick={() => toggleAttendance(atleta.id, isPresent)}
-                                    className={`${styles.attendanceToggle} ${
-                                      isPresent ? styles.present : styles.absent
-                                    }`}
-                                  >
-                                    {isPresent ? <FaCheck /> : <FaTimes />}
-                                  </button>
-                                </div>
-                              );
-                            })}
+                            .map(atleta => renderAtletaWithPaymentMethods(atleta)
+                            )}
                         </div>
                       </div>
                     </div>
@@ -649,24 +1153,8 @@ const AsistenciasManager = ({ user }) => {
                         <div className={styles.atletasList}>
                           {todayAttendance
                             .filter(atleta => atleta.categoria === 'iniciacion_hombres')
-                            .map(atleta => {
-                              const isPresent = atleta.attendance !== null;
-                              return (
-                                <div key={atleta.id} className={styles.atletaItem}>
-                                  <span className={styles.atletaName}>
-                                    {atleta.users?.nombre} {atleta.users?.apellido}
-                                  </span>
-                                  <button
-                                    onClick={() => toggleAttendance(atleta.id, isPresent)}
-                                    className={`${styles.attendanceToggle} ${
-                                      isPresent ? styles.present : styles.absent
-                                    }`}
-                                  >
-                                    {isPresent ? <FaCheck /> : <FaTimes />}
-                                  </button>
-                                </div>
-                              );
-                            })}
+                            .map(atleta => renderAtletaWithPaymentMethods(atleta)
+                            )}
                         </div>
                       </div>
                       
@@ -675,24 +1163,8 @@ const AsistenciasManager = ({ user }) => {
                         <div className={styles.atletasList}>
                           {todayAttendance
                             .filter(atleta => atleta.categoria === 'iniciacion_mujeres')
-                            .map(atleta => {
-                              const isPresent = atleta.attendance !== null;
-                              return (
-                                <div key={atleta.id} className={styles.atletaItem}>
-                                  <span className={styles.atletaName}>
-                                    {atleta.users?.nombre} {atleta.users?.apellido}
-                                  </span>
-                                  <button
-                                    onClick={() => toggleAttendance(atleta.id, isPresent)}
-                                    className={`${styles.attendanceToggle} ${
-                                      isPresent ? styles.present : styles.absent
-                                    }`}
-                                  >
-                                    {isPresent ? <FaCheck /> : <FaTimes />}
-                                  </button>
-                                </div>
-                              );
-                            })}
+                            .map(atleta => renderAtletaWithPaymentMethods(atleta)
+                            )}
                         </div>
                       </div>
                     </div>
@@ -705,24 +1177,8 @@ const AsistenciasManager = ({ user }) => {
                         <div className={styles.atletasList}>
                           {todayAttendance
                             .filter(atleta => atleta.categoria === 'perfeccionamiento_hombres')
-                            .map(atleta => {
-                              const isPresent = atleta.attendance !== null;
-                              return (
-                                <div key={atleta.id} className={styles.atletaItem}>
-                                  <span className={styles.atletaName}>
-                                    {atleta.users?.nombre} {atleta.users?.apellido}
-                                  </span>
-                                  <button
-                                    onClick={() => toggleAttendance(atleta.id, isPresent)}
-                                    className={`${styles.attendanceToggle} ${
-                                      isPresent ? styles.present : styles.absent
-                                    }`}
-                                  >
-                                    {isPresent ? <FaCheck /> : <FaTimes />}
-                                  </button>
-                                </div>
-                              );
-                            })}
+                            .map(atleta => renderAtletaWithPaymentMethods(atleta)
+                            )}
                         </div>
                       </div>
                       
@@ -731,24 +1187,8 @@ const AsistenciasManager = ({ user }) => {
                         <div className={styles.atletasList}>
                           {todayAttendance
                             .filter(atleta => atleta.categoria === 'perfeccionamiento_mujeres')
-                            .map(atleta => {
-                              const isPresent = atleta.attendance !== null;
-                              return (
-                                <div key={atleta.id} className={styles.atletaItem}>
-                                  <span className={styles.atletaName}>
-                                    {atleta.users?.nombre} {atleta.users?.apellido}
-                                  </span>
-                                  <button
-                                    onClick={() => toggleAttendance(atleta.id, isPresent)}
-                                    className={`${styles.attendanceToggle} ${
-                                      isPresent ? styles.present : styles.absent
-                                    }`}
-                                  >
-                                    {isPresent ? <FaCheck /> : <FaTimes />}
-                                  </button>
-                                </div>
-                              );
-                            })}
+                            .map(atleta => renderAtletaWithPaymentMethods(atleta)
+                            )}
                         </div>
                       </div>
                     </div>
@@ -761,24 +1201,8 @@ const AsistenciasManager = ({ user }) => {
                         <div className={styles.atletasList}>
                           {todayAttendance
                             .filter(atleta => atleta.categoria === 'master_mujeres')
-                            .map(atleta => {
-                              const isPresent = atleta.attendance !== null;
-                              return (
-                                <div key={atleta.id} className={styles.atletaItem}>
-                                  <span className={styles.atletaName}>
-                                    {atleta.users?.nombre} {atleta.users?.apellido}
-                                  </span>
-                                  <button
-                                    onClick={() => toggleAttendance(atleta.id, isPresent)}
-                                    className={`${styles.attendanceToggle} ${
-                                      isPresent ? styles.present : styles.absent
-                                    }`}
-                                  >
-                                    {isPresent ? <FaCheck /> : <FaTimes />}
-                                  </button>
-                                </div>
-                              );
-                            })}
+                            .map(atleta => renderAtletaWithPaymentMethods(atleta)
+                            )}
                         </div>
                       </div>
                     </div>
@@ -870,7 +1294,7 @@ const AsistenciasManager = ({ user }) => {
             </div>
           </div>
 
-          {/* Lista de Asistencias */}
+          {/* Lista de Asistencias Agrupadas por Día */}
           {loading ? (
             <div className={styles.loading}>
               <div className={styles.spinner}></div>
@@ -878,39 +1302,237 @@ const AsistenciasManager = ({ user }) => {
             </div>
           ) : (
             <div className={styles.attendanceTable}>
-              <h3>📋 Historial de Asistencias</h3>
+              <h3>📋 Historial de Asistencias por Día</h3>
               
-              {asistencias.length > 0 ? (
-                <div className={styles.tableContainer}>
-                  <table className={styles.table}>
-                    <thead>
-                      <tr>
-                        <th>Fecha</th>
-                        <th>Atleta</th>
-                        <th>Categoría</th>
-                        <th>Estado</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {asistencias.map(asistencia => (
-                        <tr key={asistencia.id} className={styles.tableRow}>
-                          <td>{new Date(asistencia.fecha).toLocaleDateString()}</td>
-                          <td>
-                            <div className={styles.atletaCell}>
-                              <strong>{asistencia.students?.users?.nombre} {asistencia.students?.users?.apellido}</strong>
-                              <small>{asistencia.students?.users?.email}</small>
+              {Object.keys(asistenciasByDate).length > 0 ? (
+                <div className={styles.daysContainer}>
+                  {Object.keys(asistenciasByDate)
+                    .sort((a, b) => new Date(b) - new Date(a)) // Ordenar por fecha descendente
+                    .map(fecha => {
+                      const dayAttendances = asistenciasByDate[fecha];
+                      const isExpanded = expandedDays.includes(fecha);
+                      const fechaFormateada = new Date(fecha).toLocaleDateString('es-ES', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      });
+
+                      // Agrupar por categorías para este día
+                      const iniciacion = dayAttendances.filter(a =>
+                        a.students?.categoria === 'iniciacion_hombres' || 
+                        a.students?.categoria === 'iniciacion_mujeres'
+                      );
+                      const perfHombres = dayAttendances.filter(a =>
+                        a.students?.categoria === 'perfeccionamiento_hombres'
+                      );
+                      const perfMujeres = dayAttendances.filter(a =>
+                        a.students?.categoria === 'perfeccionamiento_mujeres' || 
+                        a.students?.categoria === 'master_mujeres'
+                      );
+
+                      const getPaymentMethodName = (metodoPagoId) => {
+                        const pt = paymentTypes.find(p => p.id === metodoPagoId);
+                        if (!pt) return 'N/A';
+                        switch(pt.nombre) {
+                          case 'pago_diario': return <><FaDollarSign /> Pago Diario</>;
+                          case 'mensualidad': return <><FaCalendarCheck /> Mensualidad</>;
+                          case 'tarjeta': return <><FaCreditCard /> Tarjeta</>;
+                          default: return pt.nombre;
+                        }
+                      };
+
+                      return (
+                        <div key={fecha} className={styles.dayCard}>
+                          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
+                          <div 
+                            className={styles.dayHeader}
+                            onClick={() => toggleDayExpansion(fecha)}
+                          >
+                            <div className={styles.dayInfo}>
+                              <h4>
+                                <FaCalendarAlt style={{ marginRight: '8px' }} />
+                                {fechaFormateada}
+                              </h4>
+                              <span className={styles.dayCount}>
+                                {dayAttendances.length} asistencias
+                              </span>
                             </div>
-                          </td>
-                          <td>{formatCategoria(asistencia.students?.categoria)}</td>
-                          <td>
-                            <span className={`${styles.statusBadge} ${styles.present}`}>
-                              <FaCheckCircle style={{ marginRight: '6px', verticalAlign: 'middle' }} /> Presente
-                            </span>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                            <div className={styles.dayActions}>
+                              <button
+                                className={styles.exportDayButton}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  exportAttendance(fecha);
+                                }}
+                                title="Exportar este día"
+                              >
+                                <FaFileExport style={{ marginRight: '6px' }} />
+                                Exportar
+                              </button>
+                              <span className={styles.expandIcon}>
+                                {isExpanded ? '▼' : '▶'}
+                              </span>
+                            </div>
+                          </div>
+
+                          {isExpanded && (
+                            <div className={styles.dayContent}>
+                              {/* Tabla 1: Iniciación */}
+                              {iniciacion.length > 0 && (
+                                <div className={styles.categorySection}>
+                                  <h5 className={styles.categorySectionTitle}>
+                                    <FaVolleyballBall style={{ marginRight: '8px' }} />
+                                    Iniciación
+                                  </h5>
+                                  <div className={styles.categoryTables}>
+                                    {/* Hombres */}
+                                    {iniciacion.filter(a => a.students?.categoria === 'iniciacion_hombres').length > 0 && (
+                                      <div className={styles.subCategoryTable}>
+                                        <h6><FaMars style={{ marginRight: '6px' }} /> Hombres</h6>
+                                        <table className={styles.compactTable}>
+                                          <thead>
+                                            <tr>
+                                              <th>#</th>
+                                              <th>Atleta</th>
+                                              <th>Método de Pago</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            {iniciacion
+                                              .filter(a => a.students?.categoria === 'iniciacion_hombres')
+                                              .map((asistencia, index) => (
+                                                <tr key={asistencia.id}>
+                                                  <td>{index + 1}</td>
+                                                  <td>{asistencia.students?.users?.nombre} {asistencia.students?.users?.apellido}</td>
+                                                  <td className={styles.paymentCell}>
+                                                    {getPaymentMethodName(asistencia.metodo_pago_id)}
+                                                  </td>
+                                                </tr>
+                                              ))}
+                                          </tbody>
+                                        </table>
+                                        <div className={styles.subtotal}>
+                                          Total: {iniciacion.filter(a => a.students?.categoria === 'iniciacion_hombres').length}
+                                        </div>
+                                      </div>
+                                    )}
+
+                                    {/* Mujeres */}
+                                    {iniciacion.filter(a => a.students?.categoria === 'iniciacion_mujeres').length > 0 && (
+                                      <div className={styles.subCategoryTable}>
+                                        <h6><FaVenus style={{ marginRight: '6px' }} /> Mujeres</h6>
+                                        <table className={styles.compactTable}>
+                                          <thead>
+                                            <tr>
+                                              <th>#</th>
+                                              <th>Atleta</th>
+                                              <th>Método de Pago</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            {iniciacion
+                                              .filter(a => a.students?.categoria === 'iniciacion_mujeres')
+                                              .map((asistencia, index) => (
+                                                <tr key={asistencia.id}>
+                                                  <td>{index + 1}</td>
+                                                  <td>{asistencia.students?.users?.nombre} {asistencia.students?.users?.apellido}</td>
+                                                  <td className={styles.paymentCell}>
+                                                    {getPaymentMethodName(asistencia.metodo_pago_id)}
+                                                  </td>
+                                                </tr>
+                                              ))}
+                                          </tbody>
+                                        </table>
+                                        <div className={styles.subtotal}>
+                                          Total: {iniciacion.filter(a => a.students?.categoria === 'iniciacion_mujeres').length}
+                                        </div>
+                                      </div>
+                                    )}
+                                  </div>
+                                  <div className={styles.categoryTotal}>
+                                    Total Iniciación: {iniciacion.length}
+                                  </div>
+                                </div>
+                              )}
+
+                              {/* Tabla 2: Perfeccionamiento Hombres */}
+                              {perfHombres.length > 0 && (
+                                <div className={styles.categorySection}>
+                                  <h5 className={styles.categorySectionTitle}>
+                                    <FaTrophy style={{ marginRight: '8px' }} />
+                                    Perfeccionamiento - Hombres
+                                  </h5>
+                                  <table className={styles.compactTable}>
+                                    <thead>
+                                      <tr>
+                                        <th>#</th>
+                                        <th>Atleta</th>
+                                        <th>Método de Pago</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      {perfHombres.map((asistencia, index) => (
+                                        <tr key={asistencia.id}>
+                                          <td>{index + 1}</td>
+                                          <td>{asistencia.students?.users?.nombre} {asistencia.students?.users?.apellido}</td>
+                                          <td className={styles.paymentCell}>
+                                            {getPaymentMethodName(asistencia.metodo_pago_id)}
+                                          </td>
+                                        </tr>
+                                      ))}
+                                    </tbody>
+                                  </table>
+                                  <div className={styles.categoryTotal}>
+                                    Total: {perfHombres.length}
+                                  </div>
+                                </div>
+                              )}
+
+                              {/* Tabla 3: Perfeccionamiento Mujeres */}
+                              {perfMujeres.length > 0 && (
+                                <div className={styles.categorySection}>
+                                  <h5 className={styles.categorySectionTitle}>
+                                    <FaMedal style={{ marginRight: '8px' }} />
+                                    Perfeccionamiento - Mujeres
+                                  </h5>
+                                  <table className={styles.compactTable}>
+                                    <thead>
+                                      <tr>
+                                        <th>#</th>
+                                        <th>Atleta</th>
+                                        <th>Categoría</th>
+                                        <th>Método de Pago</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      {perfMujeres.map((asistencia, index) => (
+                                        <tr key={asistencia.id}>
+                                          <td>{index + 1}</td>
+                                          <td>{asistencia.students?.users?.nombre} {asistencia.students?.users?.apellido}</td>
+                                          <td>{asistencia.students?.categoria === 'master_mujeres' ? 'Master' : 'Perfeccionamiento'}</td>
+                                          <td className={styles.paymentCell}>
+                                            {getPaymentMethodName(asistencia.metodo_pago_id)}
+                                          </td>
+                                        </tr>
+                                      ))}
+                                    </tbody>
+                                  </table>
+                                  <div className={styles.categoryTotal}>
+                                    Total: {perfMujeres.length}
+                                  </div>
+                                </div>
+                              )}
+
+                              {/* Resumen del día */}
+                              <div className={styles.dayResumen}>
+                                <strong>Total del día: {dayAttendances.length} asistencias</strong>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
                 </div>
               ) : (
                 <div className={styles.noData}>
@@ -920,6 +1542,87 @@ const AsistenciasManager = ({ user }) => {
               )}
             </div>
           )}
+        </div>
+      )}
+
+      {/* Modal de Exportación */}
+      {showExportModal && (
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+        <div 
+          className={styles.modalOverlay} 
+          onClick={() => setShowExportModal(false)}
+        >
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
+          <div 
+            className={styles.modalContent} 
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className={styles.modalHeader}>
+              <h3><FaPrint style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Exportar Asistencias</h3>
+              <button 
+                className={styles.modalClose}
+                onClick={() => setShowExportModal(false)}
+              >
+                <FaTimes />
+              </button>
+            </div>
+
+            <div className={styles.modalBody}>
+              <div className={styles.exportInfo}>
+                <p><strong>Fecha:</strong> {new Date(selectedDate).toLocaleDateString('es-ES', { 
+                  weekday: 'long', 
+                  year: 'numeric', 
+                  month: 'long', 
+                  day: 'numeric' 
+                })}</p>
+                <p><strong>Total asistencias:</strong> {todayAttendance.filter(a => a.attendance !== null).length}</p>
+              </div>
+
+              <div className={styles.formGroup}>
+                <label htmlFor="observations">
+                  📝 Observaciones (opcional)
+                </label>
+                <textarea
+                  id="observations"
+                  className={styles.observationsTextarea}
+                  placeholder="Escribe aquí cualquier observación que desees incluir en el documento exportado..."
+                  rows={5}
+                  value={exportObservations}
+                  onChange={(e) => setExportObservations(e.target.value)}
+                />
+              </div>
+
+              <div className={styles.exportPreview}>
+                <h4>📋 El documento incluirá:</h4>
+                <ul>
+                  <li>✅ Tabla 1: Iniciación (Hombres y Mujeres)</li>
+                  <li>✅ Tabla 2: Perfeccionamiento Hombres</li>
+                  <li>✅ Tabla 3: Perfeccionamiento Mujeres</li>
+                  <li>✅ Resumen general de asistencias</li>
+                  {exportObservations && <li>✅ Observaciones</li>}
+                </ul>
+              </div>
+            </div>
+
+            <div className={styles.modalFooter}>
+              <button 
+                className={styles.cancelButton}
+                onClick={() => {
+                  setShowExportModal(false);
+                  setExportObservations('');
+                }}
+              >
+                Cancelar
+              </button>
+              <button 
+                className={styles.confirmButton}
+                onClick={generateExportDocument}
+              >
+                <FaPrint style={{ marginRight: '6px', verticalAlign: 'middle' }} /> 
+                Exportar e Imprimir
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>
