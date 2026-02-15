@@ -94,13 +94,21 @@ const AsistenciasManager = ({ user }) => {
           .select(`
             id,
             categoria,
-            users!inner(id, nombre, apellido, email, role)
+            users(id, nombre, apellido, email, role)
           `)
-          .eq('users.role', 'usuario')
           .order('users(apellido)', { ascending: true });
 
         if (atletasError) throw atletasError;
-        setAtletas(atletasData || []);
+        // Debug: Ver qué roles tienen los usuarios
+        console.log('🔍 Roles encontrados:', (atletasData || []).map(a => ({ 
+          nombre: a.users?.nombre, 
+          role: a.users?.role 
+        })));
+        
+        // Filtrar solo usuarios con role='estudiante' (atletas, no admins ni entrenadores)
+        const atletasFiltrados = (atletasData || []).filter(a => a.users?.role === 'estudiante');
+        console.log('📊 Total students:', atletasData?.length, '| Atletas (role=estudiante):', atletasFiltrados.length);
+        setAtletas(atletasFiltrados);
       }
 
       // Cargar asistencias con filtros - Estrategia separada para evitar problemas de JOIN
@@ -195,13 +203,13 @@ const AsistenciasManager = ({ user }) => {
       .select(`
         id,
         categoria,
-        users!inner(id, nombre, apellido, email, role)
+        users(id, nombre, apellido, email, role)
       `)
-      .eq('users.role', 'usuario')
       .order('users(apellido)', { ascending: true });
 
     if (atletasError) throw atletasError;
-    const atletasResult = atletasData || [];
+    // Filtrar solo usuarios con role='estudiante'
+    const atletasResult = (atletasData || []).filter(a => a.users?.role === 'estudiante');
     
     if (atletas.length === 0) {
       setAtletas(atletasResult);
@@ -1247,7 +1255,7 @@ const AsistenciasManager = ({ user }) => {
                 onChange={(e) => setFilters({...filters, categoria: e.target.value})}
                 className={styles.filterSelect}
               >
-                <option value=""><FaVolleyballBall style={{ marginRight: '6px' }} /> Todas las categorías</option>
+                <option value="">Todas las categorías</option>
                 {categorias.map(categoria => (
                   <option key={categoria} value={categoria}>
                     {formatCategoria(categoria)}
@@ -1264,7 +1272,7 @@ const AsistenciasManager = ({ user }) => {
                 onChange={(e) => setFilters({...filters, atleta: e.target.value})}
                 className={styles.filterSelect}
               >
-                <option value=""><FaUsers style={{ marginRight: '6px' }} /> Todos los atletas</option>
+                <option value="">Todos los atletas</option>
                 {atletas.map(atleta => (
                   <option key={atleta.id} value={atleta.id}>
                     {atleta.users?.nombre} {atleta.users?.apellido}
@@ -1323,6 +1331,9 @@ const AsistenciasManager = ({ user }) => {
                         a.students?.categoria === 'iniciacion_hombres' || 
                         a.students?.categoria === 'iniciacion_mujeres'
                       );
+                      const iniciacionHombres = iniciacion.filter(a => a.students?.categoria === 'iniciacion_hombres');
+                      const iniciacionMujeres = iniciacion.filter(a => a.students?.categoria === 'iniciacion_mujeres');
+                      
                       const perfHombres = dayAttendances.filter(a =>
                         a.students?.categoria === 'perfeccionamiento_hombres'
                       );
@@ -1387,7 +1398,7 @@ const AsistenciasManager = ({ user }) => {
                                   </h5>
                                   <div className={styles.categoryTables}>
                                     {/* Hombres */}
-                                    {iniciacion.filter(a => a.students?.categoria === 'iniciacion_hombres').length > 0 && (
+                                    {iniciacionHombres.length > 0 && (
                                       <div className={styles.subCategoryTable}>
                                         <h6><FaMars style={{ marginRight: '6px' }} /> Hombres</h6>
                                         <table className={styles.compactTable}>
@@ -1399,8 +1410,7 @@ const AsistenciasManager = ({ user }) => {
                                             </tr>
                                           </thead>
                                           <tbody>
-                                            {iniciacion
-                                              .filter(a => a.students?.categoria === 'iniciacion_hombres')
+                                            {iniciacionHombres
                                               .map((asistencia, index) => (
                                                 <tr key={asistencia.id}>
                                                   <td>{index + 1}</td>
@@ -1413,13 +1423,13 @@ const AsistenciasManager = ({ user }) => {
                                           </tbody>
                                         </table>
                                         <div className={styles.subtotal}>
-                                          Total: {iniciacion.filter(a => a.students?.categoria === 'iniciacion_hombres').length}
+                                          Total: {iniciacionHombres.length}
                                         </div>
                                       </div>
                                     )}
 
                                     {/* Mujeres */}
-                                    {iniciacion.filter(a => a.students?.categoria === 'iniciacion_mujeres').length > 0 && (
+                                    {iniciacionMujeres.length > 0 && (
                                       <div className={styles.subCategoryTable}>
                                         <h6><FaVenus style={{ marginRight: '6px' }} /> Mujeres</h6>
                                         <table className={styles.compactTable}>
@@ -1431,8 +1441,7 @@ const AsistenciasManager = ({ user }) => {
                                             </tr>
                                           </thead>
                                           <tbody>
-                                            {iniciacion
-                                              .filter(a => a.students?.categoria === 'iniciacion_mujeres')
+                                            {iniciacionMujeres
                                               .map((asistencia, index) => (
                                                 <tr key={asistencia.id}>
                                                   <td>{index + 1}</td>
@@ -1445,7 +1454,7 @@ const AsistenciasManager = ({ user }) => {
                                           </tbody>
                                         </table>
                                         <div className={styles.subtotal}>
-                                          Total: {iniciacion.filter(a => a.students?.categoria === 'iniciacion_mujeres').length}
+                                          Total: {iniciacionMujeres.length}
                                         </div>
                                       </div>
                                     )}
