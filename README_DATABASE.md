@@ -101,7 +101,7 @@ id integer PRIMARY KEY DEFAULT nextval('schedules_id_seq'::regclass)
 dia_semana text NULL CHECK (dia_semana = ANY (ARRAY['lunes'::text, 'martes'::text, 'miercoles'::text, 'jueves'::text, 'viernes'::text, 'sabado'::text, 'domingo'::text]))
 hora_inicio time NOT NULL
 hora_fin time NOT NULL
-categoria text NULL CHECK (categoria = ANY (ARRAY['iniciacion_hombres'::text, 'iniciacion_mujeres'::text, 'perfeccionamiento_mujeres'::text, 'perfeccionamiento_hombres'::text, 'master_mujeres'::text, 'juego_sabado'::text, 'juego_domingo'::text]))
+categoria text NULL CHECK (categoria = ANY (ARRAY['iniciacion_hombres'::text, 'iniciacion_mujeres'::text, 'perfeccionamiento_mujeres'::text, 'perfeccionamiento_hombres'::text, 'master_mujeres'::text, 'open_gym'::text]))
 public.physical_tests
 
 id uuid PRIMARY KEY DEFAULT gen_random_uuid()

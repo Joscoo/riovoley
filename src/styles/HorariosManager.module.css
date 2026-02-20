@@ -1,17 +1,20 @@
 /* src/styles/HorariosManager.module.css */
 
 .container {
-  width: 100%;
+  padding: 30px;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 20px;
+  min-height: calc(100vh - 80px);
+  background: linear-gradient(135deg, #0a0a0a 0%, #1e3a8a 100%);
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /* Header */
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 30px;
   flex-wrap: wrap;
   gap: 20px;
@@ -26,19 +29,21 @@
 .headerIcon {
   font-size: 2.5rem;
   color: #ffd700;
+  filter: drop-shadow(0 2px 10px rgba(255, 215, 0, 0.5));
 }
 
 .title {
-  font-size: 2rem;
-  margin: 0;
-  color: #2c3e50;
+  font-size: 2.5rem;
+  margin: 0 0 10px 0;
+  color: #ffffff;
   font-weight: 700;
+  text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
 }
 
 .subtitle {
-  margin: 5px 0 0;
-  color: #7f8c8d;
-  font-size: 0.95rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
 }
 
 .addButton {
@@ -46,19 +51,22 @@
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
-  background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
-  color: #000;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 1) 0%, rgba(255, 180, 0, 1) 100%);
+  color: #0a0a0a;
   border: none;
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 1rem;
 }
 
 .addButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
 }
 
 /* Stats Grid */
@@ -70,19 +78,21 @@
 }
 
 .statCard {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 215, 0, 0.2);
   border-radius: 12px;
   padding: 20px;
   display: flex;
   align-items: center;
   gap: 15px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
 }
 
 .statCard:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.4);
 }
 
 .statIcon {
@@ -96,7 +106,7 @@
 
 .statLabel {
   margin: 0;
-  color: #7f8c8d;
+  color: rgba(255, 255, 255, 0.7);
   font-size: 0.85rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -107,31 +117,188 @@
   margin: 5px 0 0;
   font-size: 1.8rem;
   font-weight: 700;
-  color: #2c3e50;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
 }
 
 /* Form Card */
 .formCard {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 215, 0, 0.3);
   border-radius: 12px;
   padding: 30px;
   margin-bottom: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  border: 2px solid #ffd700;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .formTitle {
   margin: 0 0 25px;
-  color: #2c3e50;
+  color: #ffffff;
   font-size: 1.5rem;
   font-weight: 700;
   display: flex;
   align-items: center;
   gap: 10px;
+  text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
 }
 
 .form {
   width: 100%;
+}
+
+/* Secciones del formulario */
+.formSection {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: #ffd700;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Checkbox para "Todos los días" */
+.checkboxGroup {
+  margin-bottom: 15px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.checkboxLabel:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #ffd700;
+}
+
+/* Grid de días */
+.daysGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.dayButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.dayButton:hover {
+  border-color: rgba(255, 215, 0, 0.5);
+  background: rgba(255, 215, 0, 0.1);
+  color: #ffd700;
+  transform: translateY(-2px);
+}
+
+.dayButton svg {
+  font-size: 1.3rem;
+}
+
+.dayButtonActive {
+  border-color: #ffd700;
+  background: rgba(255, 215, 0, 0.15);
+  color: #ffd700;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+/* Grid de categorías */
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.categoryButton {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-left-width: 5px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+.categoryButton:hover {
+  border-color: rgba(255, 215, 0, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+.categoryButton svg {
+  font-size: 1.2rem;
+}
+
+.categoryButtonActive {
+  border-right-color: rgba(255, 215, 0, 0.5);
+  border-top-color: rgba(255, 215, 0, 0.5);
+  border-bottom-color: rgba(255, 215, 0, 0.5);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Resumen de selección */
+.selectionSummary {
+  padding: 15px;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 180, 0, 0.05) 100%);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.summaryText {
+  color: #ffffff;
+  font-size: 1rem;
+  margin: 0;
+  text-align: center;
+}
+
+.summaryText strong {
+  color: #ffd700;
 }
 
 .formGrid {
@@ -152,7 +319,7 @@
   align-items: center;
   gap: 8px;
   font-weight: 600;
-  color: #2c3e50;
+  color: #ffffff;
   font-size: 0.95rem;
 }
 
@@ -164,19 +331,35 @@
 .input,
 .select {
   width: 100%;
-  padding: 12px 15px;
-  border: 2px solid #e0e0e0;
+  padding: 12px 16px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
   border-radius: 8px;
   font-size: 1rem;
   transition: all 0.3s ease;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  backdrop-filter: blur(10px);
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .input:focus,
 .select:focus {
   outline: none;
-  border-color: #ffd700;
+  border-color: rgba(255, 215, 0, 0.6);
+  background: rgba(255, 255, 255, 0.15);
   box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+}
+
+.select {
+  cursor: pointer;
+}
+
+.select option {
+  background: #0a0a0a;
+  color: #ffffff;
 }
 
 .formActions {
@@ -194,39 +377,44 @@
   padding: 12px 24px;
   border: none;
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .cancelButton {
-  background: #ecf0f1;
-  color: #2c3e50;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .cancelButton:hover {
-  background: #bdc3c7;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .saveButton {
-  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
-  color: #fff;
-  box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+  background: linear-gradient(135deg, rgba(40, 167, 69, 1) 0%, rgba(32, 201, 151, 1) 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
 }
 
 .saveButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.5);
 }
 
 /* Filters Card */
 .filtersCard {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 215, 0, 0.2);
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .filtersHeader {
@@ -234,7 +422,7 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 15px;
-  color: #2c3e50;
+  color: #ffffff;
   font-weight: 600;
   font-size: 1.1rem;
 }
@@ -258,25 +446,32 @@
 
 .filterLabel {
   font-weight: 600;
-  color: #2c3e50;
+  color: #ffffff;
   font-size: 0.9rem;
 }
 
 .filterSelect {
   width: 100%;
   padding: 10px 15px;
-  border: 2px solid #e0e0e0;
+  border: 2px solid rgba(255, 215, 0, 0.3);
   border-radius: 8px;
   font-size: 0.95rem;
   transition: all 0.3s ease;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
   cursor: pointer;
+  backdrop-filter: blur(10px);
 }
 
 .filterSelect:focus {
   outline: none;
-  border-color: #ffd700;
-  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+  border-color: rgba(255, 215, 0, 0.6);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.filterSelect option {
+  background: #0a0a0a;
+  color: #ffffff;
 }
 
 /* Schedules Container */
@@ -287,26 +482,33 @@
 }
 
 .daySection {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 215, 0, 0.2);
   border-radius: 12px;
   padding: 25px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.daySection:hover {
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.4);
 }
 
 .dayTitle {
   margin: 0 0 20px;
-  color: #2c3e50;
+  color: #ffd700;
   font-size: 1.4rem;
   font-weight: 700;
   display: flex;
   align-items: center;
   gap: 12px;
   padding-bottom: 15px;
-  border-bottom: 3px solid #ffd700;
+  border-bottom: 3px solid rgba(255, 215, 0, 0.3);
+  text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
 }
 
 .dayTitle svg {
-  color: #ffd700;
   font-size: 1.3rem;
 }
 
@@ -317,7 +519,7 @@
 }
 
 .scheduleCard {
-  background: #f8f9fa;
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 10px;
   padding: 20px;
   border-left: 4px solid #ffd700;
@@ -325,11 +527,13 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+  backdrop-filter: blur(10px);
 }
 
 .scheduleCard:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .scheduleHeader {
@@ -348,6 +552,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .scheduleTime {
@@ -355,8 +560,9 @@
   align-items: center;
   gap: 12px;
   padding: 12px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
 }
 
 .timeIcon {
@@ -367,7 +573,7 @@
 .time {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: #ffffff;
 }
 
 .scheduleActions {
@@ -387,51 +593,56 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 600;
 }
 
 .editButton {
-  background: #3498db;
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
   color: #fff;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
 }
 
 .editButton:hover {
-  background: #2980b9;
   transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.5);
 }
 
 .deleteButton {
-  background: #e74c3c;
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
   color: #fff;
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
 }
 
 .deleteButton:hover {
-  background: #c0392b;
   transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(231, 76, 60, 0.5);
 }
 
 /* Empty State */
 .emptyState {
   text-align: center;
   padding: 60px 20px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 215, 0, 0.2);
   border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .emptyIcon {
   font-size: 4rem;
-  color: #bdc3c7;
+  color: rgba(255, 215, 0, 0.5);
   margin-bottom: 20px;
 }
 
 .emptyState h3 {
-  color: #2c3e50;
+  color: #ffffff;
   font-size: 1.5rem;
   margin: 0 0 10px;
+  text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
 }
 
 .emptyState p {
-  color: #7f8c8d;
+  color: rgba(255, 255, 255, 0.7);
   font-size: 1rem;
 }
 
@@ -459,7 +670,7 @@
 }
 
 .loading p {
-  color: #2c3e50;
+  color: #ffffff;
   font-size: 1.1rem;
   font-weight: 500;
 }
@@ -467,7 +678,7 @@
 /* Responsive */
 @media (max-width: 768px) {
   .container {
-    padding: 15px;
+    padding: 20px 15px;
   }
 
   .header {
@@ -476,7 +687,7 @@
   }
 
   .title {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   .addButton {
@@ -490,6 +701,18 @@
 
   .formCard {
     padding: 20px;
+  }
+
+  .formSection {
+    padding: 15px;
+  }
+
+  .daysGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .categoriesGrid {
+    grid-template-columns: 1fr;
   }
 
   .formGrid {
@@ -517,6 +740,10 @@
   .dayTitle {
     font-size: 1.2rem;
   }
+
+  .daySection {
+    padding: 15px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -525,7 +752,7 @@
   }
 
   .title {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 
   .statValue {
@@ -536,7 +763,21 @@
     font-size: 1.2rem;
   }
 
-  .daySection {
-    padding: 15px;
+  .sectionLabel {
+    font-size: 1rem;
+  }
+
+  .daysGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .dayButton,
+  .categoryButton {
+    padding: 12px;
+    font-size: 0.85rem;
+  }
+
+  .summaryText {
+    font-size: 0.9rem;
   }
 }

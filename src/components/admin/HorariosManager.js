@@ -24,10 +24,11 @@ const HorariosManager = ({ user }) => {
   const [filterDay, setFilterDay] = useState('todos');
   const [filterCategory, setFilterCategory] = useState('todos');
   const [formData, setFormData] = useState({
-    dia_semana: 'lunes',
+    dias_seleccionados: ['lunes'],
     hora_inicio: '',
     hora_fin: '',
-    categoria: 'iniciacion_hombres'
+    categorias_seleccionadas: ['iniciacion_hombres'],
+    aplicar_todos_dias: false
   });
 
   const diasSemana = [
@@ -46,8 +47,7 @@ const HorariosManager = ({ user }) => {
     { value: 'perfeccionamiento_hombres', label: 'Perfeccionamiento Hombres' },
     { value: 'perfeccionamiento_mujeres', label: 'Perfeccionamiento Mujeres' },
     { value: 'master_mujeres', label: 'Master Mujeres' },
-    { value: 'juego_sabado', label: 'Juego Sábado' },
-    { value: 'juego_domingo', label: 'Juego Domingo' }
+    { value: 'open_gym', label: 'Open Gym' }
   ];
 
   useEffect(() => {
@@ -96,24 +96,57 @@ const HorariosManager = ({ user }) => {
       return;
     }
 
+    if (formData.categorias_seleccionadas.length === 0) {
+      alert('Debes seleccionar al menos una categoría');
+      return;
+    }
+
+    if (!formData.aplicar_todos_dias && formData.dias_seleccionados.length === 0) {
+      alert('Debes seleccionar al menos un día');
+      return;
+    }
+
     try {
       if (editingId) {
-        // Actualizar horario existente
+        // Actualizar horario existente - solo una categoría por vez
         const { error } = await supabase
           .from('schedules')
-          .update(formData)
+          .update({
+            hora_inicio: formData.hora_inicio,
+            hora_fin: formData.hora_fin,
+            categoria: formData.categorias_seleccionadas[0] // Solo primera categoría en edición
+          })
           .eq('id', editingId);
 
         if (error) throw error;
         alert('✅ Horario actualizado exitosamente');
       } else {
-        // Crear nuevo horario
+        // Crear nuevos horarios - uno por cada combinación de día y categoría
+        const diasParaCrear = formData.aplicar_todos_dias 
+          ? diasSemana.map(d => d.value) 
+          : formData.dias_seleccionados;
+
+        const horariosParaInsertar = [];
+        
+        for (const dia of diasParaCrear) {
+          for (const categoria of formData.categorias_seleccionadas) {
+            horariosParaInsertar.push({
+              dia_semana: dia,
+              hora_inicio: formData.hora_inicio,
+              hora_fin: formData.hora_fin,
+              categoria: categoria
+            });
+          }
+        }
+
         const { error } = await supabase
           .from('schedules')
-          .insert([formData]);
+          .insert(horariosParaInsertar);
 
         if (error) throw error;
-        alert('✅ Horario creado exitosamente');
+        
+        const totalCreados = horariosParaInsertar.length;
+        alert(`✅ ${totalCreados} horario${totalCreados > 1 ? 's' : ''} creado${totalCreados > 1 ? 's' : ''} exitosamente`);
       }
 
       resetForm();
@@ -126,10 +159,11 @@ const HorariosManager = ({ user }) => {
 
   const handleEdit = (horario) => {
     setFormData({
-      dia_semana: horario.dia_semana,
+      dias_seleccionados: [horario.dia_semana],
       hora_inicio: horario.hora_inicio,
       hora_fin: horario.hora_fin,
-      categoria: horario.categoria
+      categorias_seleccionadas: [horario.categoria],
+      aplicar_todos_dias: false
     });
     setEditingId(horario.id);
     setShowForm(true);
@@ -156,19 +190,57 @@ const HorariosManager = ({ user }) => {
 
   const resetForm = () => {
     setFormData({
-      dia_semana: 'lunes',
+      dias_seleccionados: ['lunes'],
       hora_inicio: '',
       hora_fin: '',
-      categoria: 'iniciacion_hombres'
+      categorias_seleccionadas: ['iniciacion_hombres'],
+      aplicar_todos_dias: false
     });
     setEditingId(null);
     setShowForm(false);
   };
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
+    const { name, value, type, checked } = e.target;
+    
+    if (type === 'checkbox' && name === 'aplicar_todos_dias') {
+      setFormData({
+        ...formData,
+        aplicar_todos_dias: checked
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value
+      });
+    }
+  };
+
+  const handleDiaToggle = (diaValue) => {
+    setFormData(prev => {
+      const yaSeleccionado = prev.dias_seleccionados.includes(diaValue);
+      const nuevosDias = yaSeleccionado
+        ? prev.dias_seleccionados.filter(d => d !== diaValue)
+        : [...prev.dias_seleccionados, diaValue];
+      
+      return {
+        ...prev,
+        dias_seleccionados: nuevosDias.length > 0 ? nuevosDias : [diaValue] // Al menos uno
+      };
+    });
+  };
+
+  const handleCategoriaToggle = (categoriaValue) => {
+    setFormData(prev => {
+      const yaSeleccionada = prev.categorias_seleccionadas.includes(categoriaValue);
+      const nuevasCategorias = yaSeleccionada
+        ? prev.categorias_seleccionadas.filter(c => c !== categoriaValue)
+        : [...prev.categorias_seleccionadas, categoriaValue];
+      
+      return {
+        ...prev,
+        categorias_seleccionadas: nuevasCategorias.length > 0 ? nuevasCategorias : [categoriaValue] // Al menos una
+      };
     });
   };
 
@@ -189,8 +261,7 @@ const HorariosManager = ({ user }) => {
       'perfeccionamiento_hombres': '#2ecc71',
       'perfeccionamiento_mujeres': '#9b59b6',
       'master_mujeres': '#f39c12',
-      'juego_sabado': '#e74c3c',
-      'juego_domingo': '#16a085'
+      'open_gym': '#1abc9c'
     };
     return colores[categoria] || '#95a5a6';
   };
@@ -271,47 +342,78 @@ const HorariosManager = ({ user }) => {
             {editingId ? 'Editar Horario' : 'Nuevo Horario'}
           </h3>
           <form onSubmit={handleSubmit} className={styles.form}>
-            <div className={styles.formGrid}>
-              <div className={styles.formGroup}>
-                <label className={styles.label}>
+            
+            {/* Selector de días */}
+            {!editingId && (
+              <div className={styles.formSection}>
+                <label className={styles.sectionLabel}>
                   <FaCalendarAlt className={styles.labelIcon} />
-                  Día de la Semana
+                  Selecciona los días
                 </label>
-                <select
-                  name="dia_semana"
-                  value={formData.dia_semana}
-                  onChange={handleChange}
-                  className={styles.select}
-                  required
-                >
-                  {diasSemana.map(dia => (
-                    <option key={dia.value} value={dia.value}>
-                      {dia.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
+                
+                <div className={styles.checkboxGroup}>
+                  <label className={styles.checkboxLabel}>
+                    <input
+                      type="checkbox"
+                      name="aplicar_todos_dias"
+                      checked={formData.aplicar_todos_dias}
+                      onChange={handleChange}
+                      className={styles.checkbox}
+                    />
+                    <span>Aplicar a todos los días de la semana</span>
+                  </label>
+                </div>
 
-              <div className={styles.formGroup}>
-                <label className={styles.label}>
-                  <FaUsers className={styles.labelIcon} />
-                  Categoría
-                </label>
-                <select
-                  name="categoria"
-                  value={formData.categoria}
-                  onChange={handleChange}
-                  className={styles.select}
-                  required
-                >
-                  {categorias.map(cat => (
-                    <option key={cat.value} value={cat.value}>
-                      {cat.label}
-                    </option>
-                  ))}
-                </select>
+                {!formData.aplicar_todos_dias && (
+                  <div className={styles.daysGrid}>
+                    {diasSemana.map(dia => (
+                      <button
+                        key={dia.value}
+                        type="button"
+                        onClick={() => handleDiaToggle(dia.value)}
+                        className={`${styles.dayButton} ${
+                          formData.dias_seleccionados.includes(dia.value) ? styles.dayButtonActive : ''
+                        }`}
+                      >
+                        <FaCalendarAlt />
+                        <span>{dia.label}</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
+            )}
 
+            {/* Selector de categorías */}
+            <div className={styles.formSection}>
+              <label className={styles.sectionLabel}>
+                <FaUsers className={styles.labelIcon} />
+                Selecciona las categorías
+              </label>
+              <div className={styles.categoriesGrid}>
+                {categorias.map(cat => (
+                  <button
+                    key={cat.value}
+                    type="button"
+                    onClick={() => handleCategoriaToggle(cat.value)}
+                    className={`${styles.categoryButton} ${
+                      formData.categorias_seleccionadas.includes(cat.value) ? styles.categoryButtonActive : ''
+                    }`}
+                    style={{
+                      borderLeftColor: formData.categorias_seleccionadas.includes(cat.value) 
+                        ? getCategoriaColor(cat.value) 
+                        : 'transparent'
+                    }}
+                  >
+                    <FaUsers />
+                    <span>{cat.label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Horarios */}
+            <div className={styles.formGrid}>
               <div className={styles.formGroup}>
                 <label className={styles.label}>
                   <FaClock className={styles.labelIcon} />
@@ -342,6 +444,22 @@ const HorariosManager = ({ user }) => {
                 />
               </div>
             </div>
+
+            {/* Resumen de selección */}
+            {!editingId && (
+              <div className={styles.selectionSummary}>
+                <p className={styles.summaryText}>
+                  <strong>Resumen:</strong> Se crearán {
+                    (formData.aplicar_todos_dias ? diasSemana.length : formData.dias_seleccionados.length) * 
+                    formData.categorias_seleccionadas.length
+                  } horario(s) - {
+                    formData.aplicar_todos_dias 
+                      ? 'Todos los días' 
+                      : `${formData.dias_seleccionados.length} día(s)`
+                  } × {formData.categorias_seleccionadas.length} categoría(s)
+                </p>
+              </div>
+            )}
 
             <div className={styles.formActions}>
               <button type="button" onClick={resetForm} className={styles.cancelButton}>

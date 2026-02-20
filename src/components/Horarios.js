@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../config/supabase';
 import styles from '../styles/Horarios.module.css';
-import { FaClock, FaCalendarAlt, FaUsers, FaExclamationTriangle } from 'react-icons/fa';
+import { FaClock, FaCalendarAlt, FaUsers, FaExclamationTriangle, FaMapMarkerAlt, FaPhone, FaInstagram } from 'react-icons/fa';
 
 const Horarios = () => {
   const [horarios, setHorarios] = useState([]);
@@ -67,8 +67,7 @@ const Horarios = () => {
       'perfeccionamiento_hombres': 'Perfeccionamiento Hombres',
       'perfeccionamiento_mujeres': 'Perfeccionamiento Mujeres',
       'master_mujeres': 'Master Mujeres',
-      'juego_sabado': 'Juego Sábado',
-      'juego_domingo': 'Juego Domingo'
+      'open_gym': 'Open Gym'
     };
     return labels[categoria] || categoria;
   };
@@ -80,8 +79,7 @@ const Horarios = () => {
       'perfeccionamiento_hombres': '#2ecc71',
       'perfeccionamiento_mujeres': '#9b59b6',
       'master_mujeres': '#f39c12',
-      'juego_sabado': '#e74c3c',
-      'juego_domingo': '#16a085'
+      'open_gym': '#1abc9c'
     };
     return colores[categoria] || '#95a5a6';
   };
@@ -109,6 +107,19 @@ const Horarios = () => {
         </video>
         <div className={styles.overlay}></div>
 
+        {/* Header con Logo y Ubicación */}
+        <div className={styles.headerBanner}>
+          <div className={styles.bannerContent}>
+            <div className={styles.logoSection}>
+              <img src="/images/logoRio.png" alt="RioVoley Logo" className={styles.logo} />
+              <div className={styles.brandInfo}>
+                <h2 className={styles.brandName}>RioVoley</h2>
+                <p className={styles.brandTagline}>Academia de Voleibol</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <section className={styles.heroSection}>
           <h1 className={styles.title}>Horarios de Entrenamientos</h1>
           <p className={styles.subtitle}>Consulta nuestros horarios actualizados</p>
@@ -130,6 +141,19 @@ const Horarios = () => {
           <source src="/videos/bg-video.mp4" type="video/mp4" />
         </video>
         <div className={styles.overlay}></div>
+
+        {/* Header con Logo y Ubicación */}
+        <div className={styles.headerBanner}>
+          <div className={styles.bannerContent}>
+            <div className={styles.logoSection}>
+              <img src="/images/logoRio.png" alt="RioVoley Logo" className={styles.logo} />
+              <div className={styles.brandInfo}>
+                <h2 className={styles.brandName}>RioVoley</h2>
+                <p className={styles.brandTagline}>Academia de Voleibol</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <section className={styles.heroSection}>
           <h1 className={styles.title}>Horarios de Entrenamientos</h1>
@@ -155,6 +179,43 @@ const Horarios = () => {
         <source src="/videos/bg-video.mp4" type="video/mp4" />
       </video>
       <div className={styles.overlay}></div>
+
+      {/* Header con Logo y Ubicación */}
+      <div className={styles.headerBanner}>
+        <div className={styles.bannerContent}>
+          <div className={styles.logoSection}>
+            <img src="/images/logoRio.png" alt="RioVoley Logo" className={styles.logo} />
+            <div className={styles.brandInfo}>
+              <h2 className={styles.brandName}>RioVoley</h2>
+              <p className={styles.brandTagline}>Academia de Voleibol</p>
+            </div>
+          </div>
+          
+          <div className={styles.locationInfo}>
+            <div className={styles.infoItem}>
+              <FaMapMarkerAlt className={styles.infoIcon} />
+              <div>
+                <p className={styles.infoLabel}>Ubicación</p>
+                <p className={styles.infoValue}>Av. Principal 123, Caracas</p>
+              </div>
+            </div>
+            <div className={styles.infoItem}>
+              <FaPhone className={styles.infoIcon} />
+              <div>
+                <p className={styles.infoLabel}>Teléfono</p>
+                <p className={styles.infoValue}>+58 424-1234567</p>
+              </div>
+            </div>
+            <div className={styles.infoItem}>
+              <FaInstagram className={styles.infoIcon} />
+              <div>
+                <p className={styles.infoLabel}>Instagram</p>
+                <p className={styles.infoValue}>@riovoley</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <section className={styles.heroSection}>
         <h1 className={styles.title}>Horarios de Entrenamientos</h1>
@@ -230,13 +291,8 @@ const Horarios = () => {
         </div>
       ) : (
         <div className={styles.emptyState}>
-<<<<<<< Updated upstream
           <div className={styles.emptyIcon}><FaCalendarAlt /></div>
-          <h3 className={styles.emptyTitle}>No hay entrenamientos programados</h3>
-=======
-          <div className={styles.emptyIcon}>📅</div>
           <h3 className={styles.emptyTitle}>No hay horarios programados</h3>
->>>>>>> Stashed changes
           <p className={styles.emptyText}>Los horarios se actualizarán pronto. Revisa esta página regularmente.</p>
         </div>
       )}
