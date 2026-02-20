@@ -11,8 +11,9 @@ import UsuariosManager from './UsuariosManager';
 import EntrenadoresManager from './EntrenadoresManager';
 import ProfileSettings from './ProfileSettings';
 import AnunciosManager from './AnunciosManager';
+import HorariosManager from './HorariosManager';
 import styles from '../../styles/AdminPanel.module.css';
-import { FaChartBar, FaVolleyballBall, FaChalkboardTeacher, FaDollarSign, FaCalendar, FaDumbbell, FaUsers, FaBullhorn, FaCog, FaBan, FaUser } from 'react-icons/fa';
+import { FaChartBar, FaVolleyballBall, FaChalkboardTeacher, FaDollarSign, FaCalendar, FaDumbbell, FaUsers, FaBullhorn, FaCog, FaBan, FaUser, FaClock } from 'react-icons/fa';
 
 const AdminPanel = ({ user }) => {
   const { profile, isAdmin, loading } = useUserProfile(user);
@@ -43,6 +44,7 @@ const AdminPanel = ({ user }) => {
     { id: 'entrenadores', icon: <FaChalkboardTeacher />, label: 'Entrenadores', description: 'Gestionar entrenadores' },
     { id: 'pagos', icon: <FaDollarSign />, label: 'Pagos', description: 'Mensualidades y facturación' },
     { id: 'asistencias', icon: <FaCalendar />, label: 'Asistencias', description: 'Control de entrenamientos' },
+    { id: 'horarios', icon: <FaClock />, label: 'Horarios', description: 'Gestión de horarios de entrenamientos' },
     { id: 'tests-fisicos', icon: <FaDumbbell />, label: 'Tests Físicos', description: 'Evaluaciones físicas' },
     { id: 'usuarios', icon: <FaUsers />, label: 'Usuarios', description: 'Gestión de usuarios y roles' },
     { id: 'anuncios', icon: <FaBullhorn />, label: 'Anuncios', description: 'Comunicados y notificaciones' },
@@ -65,6 +67,8 @@ const AdminPanel = ({ user }) => {
         return <PagosManager user={user} />;
       case 'asistencias':
         return <AsistenciasManager user={user} />;
+      case 'horarios':
+        return <HorariosManager user={user} />;
       case 'tests-fisicos':
         return <TestsFisicosManager user={user} />;
       case 'usuarios':

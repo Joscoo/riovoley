@@ -1,54 +1,104 @@
 import React, { useState, useEffect } from 'react';
-import { initializeGapi, getCalendarEvents } from '../services/googleCalendar';
+import { supabase } from '../config/supabase';
 import styles from '../styles/Horarios.module.css';
-import { FaExclamationTriangle, FaCalendarAlt } from 'react-icons/fa';
+import { FaClock, FaCalendarAlt, FaUsers, FaExclamationTriangle } from 'react-icons/fa';
 
 const Horarios = () => {
-  const [events, setEvents] = useState([]);
+  const [horarios, setHorarios] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedDay, setSelectedDay] = useState('todos');
+
+  const diasSemana = [
+    { value: 'todos', label: 'Todos los días' },
+    { value: 'lunes', label: 'Lunes' },
+    { value: 'martes', label: 'Martes' },
+    { value: 'miercoles', label: 'Miércoles' },
+    { value: 'jueves', label: 'Jueves' },
+    { value: 'viernes', label: 'Viernes' },
+    { value: 'sabado', label: 'Sábado' },
+    { value: 'domingo', label: 'Domingo' }
+  ];
 
   useEffect(() => {
-    loadCalendarEvents();
+    loadSchedules();
   }, []);
 
-  const loadCalendarEvents = async () => {
+  const loadSchedules = async () => {
     try {
       setLoading(true);
+      setError(null);
       
-      const initialized = await initializeGapi();
-      
-      if (initialized) {
-        const calendarEvents = await getCalendarEvents();
-        setEvents(calendarEvents);
-      } else {
-        setError('No se pudo conectar con Google Calendar API');
-      }
+      const { data, error: supabaseError } = await supabase
+        .from('schedules')
+        .select('*')
+        .order('dia_semana', { ascending: true })
+        .order('hora_inicio', { ascending: true });
+
+      if (supabaseError) throw supabaseError;
+
+      // Ordenar por día de la semana correctamente
+      const ordenDias = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'];
+      const horariosOrdenados = data.sort((a, b) => {
+        const diaA = ordenDias.indexOf(a.dia_semana);
+        const diaB = ordenDias.indexOf(b.dia_semana);
+        if (diaA !== diaB) return diaA - diaB;
+        return a.hora_inicio.localeCompare(b.hora_inicio);
+      });
+
+      setHorarios(horariosOrdenados);
     } catch (error) {
-      console.error('Error loading calendar:', error);
+      console.error('Error loading schedules:', error);
       setError(`Error al cargar los horarios: ${error.message}`);
     } finally {
       setLoading(false);
     }
   };
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('es-ES', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
+  const formatTime = (time) => {
+    if (!time) return '';
+    return time.substring(0, 5); // HH:MM
   };
 
-  const formatTime = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleTimeString('es-ES', {
-      hour: '2-digit',
-      minute: '2-digit',
-    });
+  const getCategoriaLabel = (categoria) => {
+    const labels = {
+      'iniciacion_hombres': 'Iniciación Hombres',
+      'iniciacion_mujeres': 'Iniciación Mujeres',
+      'perfeccionamiento_hombres': 'Perfeccionamiento Hombres',
+      'perfeccionamiento_mujeres': 'Perfeccionamiento Mujeres',
+      'master_mujeres': 'Master Mujeres',
+      'juego_sabado': 'Juego Sábado',
+      'juego_domingo': 'Juego Domingo'
+    };
+    return labels[categoria] || categoria;
   };
+
+  const getCategoriaColor = (categoria) => {
+    const colores = {
+      'iniciacion_hombres': '#3498db',
+      'iniciacion_mujeres': '#e91e63',
+      'perfeccionamiento_hombres': '#2ecc71',
+      'perfeccionamiento_mujeres': '#9b59b6',
+      'master_mujeres': '#f39c12',
+      'juego_sabado': '#e74c3c',
+      'juego_domingo': '#16a085'
+    };
+    return colores[categoria] || '#95a5a6';
+  };
+
+  // Filtrar horarios por día
+  const horariosFiltrados = selectedDay === 'todos' 
+    ? horarios 
+    : horarios.filter(h => h.dia_semana === selectedDay);
+
+  // Agrupar horarios por día
+  const horariosAgrupados = horariosFiltrados.reduce((acc, horario) => {
+    if (!acc[horario.dia_semana]) {
+      acc[horario.dia_semana] = [];
+    }
+    acc[horario.dia_semana].push(horario);
+    return acc;
+  }, {});
 
   if (loading) {
     return (
@@ -90,7 +140,7 @@ const Horarios = () => {
           <div className={styles.errorIcon}><FaExclamationTriangle /></div>
           <h2 className={styles.errorTitle}>Error al Cargar Horarios</h2>
           <p className={styles.errorMessage}>{error}</p>
-          <button onClick={loadCalendarEvents} className={styles.retryButton}>
+          <button onClick={loadSchedules} className={styles.retryButton}>
             Reintentar
           </button>
         </div>
@@ -112,78 +162,81 @@ const Horarios = () => {
           Consulta nuestros horarios actualizados y elige el mejor momento para entrenar
         </p>
       </section>
-      
-      {events.length > 0 ? (
-        <div className={styles.eventsContainer}>
-          <div className={styles.eventsGrid}>
-            {events.map((event) => (
-              <div key={event.id} className={styles.eventCard}>
-                <div className={styles.eventHeader}>
-                  <div className={styles.eventIcon}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                  <h3 className={styles.eventTitle}>{event.summary}</h3>
-                </div>
-                
-                <div className={styles.eventDetails}>
-                  <div className={styles.detailItem}>
-                    <div className={styles.detailIcon}>
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
-                    <div className={styles.detailContent}>
-                      <p className={styles.detailLabel}>Fecha</p>
-                      <p className={styles.detailValue}>{formatDate(event.start.dateTime || event.start.date)}</p>
-                    </div>
-                  </div>
 
-                  {event.start.dateTime && event.end.dateTime && (
-                    <div className={styles.detailItem}>
-                      <div className={styles.detailIcon}>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <circle cx="12" cy="12" r="10"/>
-                          <polyline points="12 6 12 12 16 14" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </div>
-                      <div className={styles.detailContent}>
-                        <p className={styles.detailLabel}>Hora</p>
-                        <p className={styles.detailValue}>{formatTime(event.start.dateTime)} - {formatTime(event.end.dateTime)}</p>
-                      </div>
-                    </div>
-                  )}
-
-                  {event.location && (
-                    <div className={styles.detailItem}>
-                      <div className={styles.detailIcon}>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" strokeLinecap="round" strokeLinejoin="round"/>
-                          <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </div>
-                      <div className={styles.detailContent}>
-                        <p className={styles.detailLabel}>Ubicación</p>
-                        <p className={styles.detailValue}>{event.location}</p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {event.description && (
-                  <div className={styles.eventDescription}>
-                    <p>{event.description}</p>
-                  </div>
-                )}
-              </div>
+      {/* Filtro por día */}
+      <div className={styles.filterContainer}>
+        <div className={styles.filterWrapper}>
+          <FaCalendarAlt className={styles.filterIcon} />
+          <select 
+            value={selectedDay}
+            onChange={(e) => setSelectedDay(e.target.value)}
+            className={styles.dayFilter}
+          >
+            {diasSemana.map(dia => (
+              <option key={dia.value} value={dia.value}>
+                {dia.label}
+              </option>
             ))}
-          </div>
+          </select>
+        </div>
+      </div>
+      
+      {horariosFiltrados.length > 0 ? (
+        <div className={styles.schedulesSection}>
+          {diasSemana
+            .filter(dia => dia.value !== 'todos' && horariosAgrupados[dia.value])
+            .map(dia => (
+              <div key={dia.value} className={styles.dayGroup}>
+                <h2 className={styles.dayTitle}>
+                  <FaCalendarAlt className={styles.dayIcon} />
+                  {dia.label}
+                </h2>
+                <div className={styles.eventsGrid}>
+                  {horariosAgrupados[dia.value].map((horario) => (
+                    <div 
+                      key={horario.id} 
+                      className={styles.eventCard}
+                      style={{ borderLeftColor: getCategoriaColor(horario.categoria) }}
+                    >
+                      <div className={styles.eventHeader}>
+                        <span 
+                          className={styles.categoryBadge}
+                          style={{ backgroundColor: getCategoriaColor(horario.categoria) }}
+                        >
+                          <FaUsers className={styles.badgeIcon} />
+                          {getCategoriaLabel(horario.categoria)}
+                        </span>
+                      </div>
+                      
+                      <div className={styles.eventDetails}>
+                        <div className={styles.detailItem}>
+                          <div className={styles.detailIcon}>
+                            <FaClock />
+                          </div>
+                          <div className={styles.detailContent}>
+                            <p className={styles.detailLabel}>Horario</p>
+                            <p className={styles.detailValue}>
+                              {formatTime(horario.hora_inicio)} - {formatTime(horario.hora_fin)}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))
+          }
         </div>
       ) : (
         <div className={styles.emptyState}>
+<<<<<<< Updated upstream
           <div className={styles.emptyIcon}><FaCalendarAlt /></div>
           <h3 className={styles.emptyTitle}>No hay entrenamientos programados</h3>
+=======
+          <div className={styles.emptyIcon}>📅</div>
+          <h3 className={styles.emptyTitle}>No hay horarios programados</h3>
+>>>>>>> Stashed changes
           <p className={styles.emptyText}>Los horarios se actualizarán pronto. Revisa esta página regularmente.</p>
         </div>
       )}

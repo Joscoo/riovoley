@@ -438,3 +438,161 @@
     font-size: 1rem;
   }
 }
+
+/* Filter Container - Nuevo para el selector de día */
+.filterContainer {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  padding: 0 20px;
+}
+
+.filterWrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: var(--dark-card);
+  padding: 20px;
+  border-radius: 15px;
+  border: 2px solid rgba(255, 215, 0, 0.2);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.8s ease-out 0.4s backwards;
+}
+
+.filterIcon {
+  font-size: 1.5rem;
+  color: var(--primary-gold);
+}
+
+.dayFilter {
+  flex: 1;
+  padding: 12px 20px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-light);
+  background: rgba(30, 58, 138, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dayFilter:hover,
+.dayFilter:focus {
+  border-color: var(--primary-gold);
+  background: rgba(30, 58, 138, 0.5);
+  outline: none;
+}
+
+.dayFilter option {
+  background: var(--dark-bg);
+  color: var(--text-light);
+}
+
+/* Schedules Section */
+.schedulesSection {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.dayGroup {
+  background: var(--dark-card);
+  border-radius: 20px;
+  padding: 30px;
+  border: 2px solid rgba(255, 215, 0, 0.2);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.dayTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-gold);
+  margin: 0 0 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid rgba(255, 215, 0, 0.3);
+}
+
+.dayIcon {
+  font-size: 1.8rem;
+}
+
+/* Category Badge */
+.categoryBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.badgeIcon {
+  font-size: 1rem;
+}
+
+/* Ajustes para las cards de eventos */
+.eventCard {
+  border-left-width: 5px;
+  border-left-style: solid;
+  transition: all 0.3s ease;
+}
+
+.eventCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+}
+
+/* Responsive adicional */
+@media (max-width: 768px) {
+  .filterWrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filterIcon {
+    align-self: center;
+  }
+
+  .dayFilter {
+    width: 100%;
+  }
+
+  .dayGroup {
+    padding: 20px;
+  }
+
+  .dayTitle {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dayTitle {
+    font-size: 1.3rem;
+    gap: 10px;
+  }
+
+  .dayIcon {
+    font-size: 1.3rem;
+  }
+
+  .categoryBadge {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+}
