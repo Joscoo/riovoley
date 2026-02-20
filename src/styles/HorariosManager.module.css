@@ -362,6 +362,39 @@
   color: #ffffff;
 }
 
+.textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  backdrop-filter: blur(10px);
+  font-family: inherit;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: rgba(255, 215, 0, 0.6);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+}
+
+.helpText {
+  margin: 8px 0 0 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+}
+
 .formActions {
   display: flex;
   gap: 15px;

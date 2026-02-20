@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../config/supabase';
 import styles from '../styles/Horarios.module.css';
-import { FaClock, FaCalendarAlt, FaUsers, FaExclamationTriangle } from 'react-icons/fa';
+import { FaClock, FaCalendarAlt, FaUsers, FaExclamationTriangle, FaInfoCircle } from 'react-icons/fa';
 
 const Horarios = () => {
   const [horarios, setHorarios] = useState([]);
@@ -70,6 +70,18 @@ const Horarios = () => {
       'open_gym': 'Open Gym'
     };
     return labels[categoria] || categoria;
+  };
+
+  const getDescripcionPorDefecto = (categoria) => {
+    const descripciones = {
+      'iniciacion_hombres': 'Perfecto para quienes se inician en el voleibol. Aprende los fundamentos básicos: recepción, saque, golpe de dedos, antebrazo y posicionamiento en cancha. Entrenamiento progresivo y didáctico.',
+      'iniciacion_mujeres': 'Ideal para principiantes que quieren aprender voleibol desde cero. Desarrolla técnica básica, coordinación y trabajo en equipo en un ambiente motivador y de apoyo constante.',
+      'perfeccionamiento_hombres': 'Para jugadores con experiencia que buscan mejorar su técnica y táctica de juego. Enfoque en remates, bloqueos, sistemas defensivos y estrategias avanzadas de competición.',
+      'perfeccionamiento_mujeres': 'Entrenamiento avanzado para jugadoras con bases sólidas. Perfecciona tus habilidades técnicas, lee el juego rival, mejora tu táctica individual y colectiva para competir al máximo nivel.',
+      'master_mujeres': 'Categoría especial para atletas mayores de 18 años con experiencia previa en voleibol. Mantén tu nivel competitivo, mejora tu condición física y disfruta del juego con compañeras de tu edad y experiencia.',
+      'open_gym': 'Sesión de juego libre para todos los niveles. Practica lo aprendido, conoce jugadores de diferentes categorías y disfruta partidos recreativos en un ambiente divertido y competitivo.'
+    };
+    return descripciones[categoria] || '';
   };
 
   const getCategoriaColor = (categoria) => {
@@ -217,6 +229,15 @@ const Horarios = () => {
                               {formatTime(horario.hora_inicio)} - {formatTime(horario.hora_fin)}
                             </p>
                           </div>
+                        </div>
+                        
+                        <div className={styles.descriptionItem}>
+                          <div className={styles.descriptionIcon}>
+                            <FaInfoCircle />
+                          </div>
+                          <p className={styles.descriptionText}>
+                            {horario.descripcion || getDescripcionPorDefecto(horario.categoria)}
+                          </p>
                         </div>
                       </div>
                     </div>

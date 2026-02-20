@@ -28,7 +28,8 @@ const HorariosManager = ({ user }) => {
     hora_inicio: '',
     hora_fin: '',
     categorias_seleccionadas: ['iniciacion_hombres'],
-    aplicar_todos_dias: false
+    aplicar_todos_dias: false,
+    descripcion: ''
   });
 
   const diasSemana = [
@@ -49,6 +50,18 @@ const HorariosManager = ({ user }) => {
     { value: 'master_mujeres', label: 'Master Mujeres' },
     { value: 'open_gym', label: 'Open Gym' }
   ];
+
+  const getDescripcionPorDefecto = (categoria) => {
+    const descripciones = {
+      'iniciacion_hombres': 'Perfecto para quienes se inician en el voleibol. Aprende los fundamentos básicos: recepción, saque, golpe de dedos, antebrazo y posicionamiento en cancha. Entrenamiento progresivo y didáctico.',
+      'iniciacion_mujeres': 'Ideal para principiantes que quieren aprender voleibol desde cero. Desarrolla técnica básica, coordinación y trabajo en equipo en un ambiente motivador y de apoyo constante.',
+      'perfeccionamiento_hombres': 'Para jugadores con experiencia que buscan mejorar su técnica y táctica de juego. Enfoque en remates, bloqueos, sistemas defensivos y estrategias avanzadas de competición.',
+      'perfeccionamiento_mujeres': 'Entrenamiento avanzado para jugadoras con bases sólidas. Perfecciona tus habilidades técnicas, lee el juego rival, mejora tu táctica individual y colectiva para competir al máximo nivel.',
+      'master_mujeres': 'Categoría especial para atletas mayores de 18 años con experiencia previa en voleibol. Mantén tu nivel competitivo, mejora tu condición física y disfruta del juego con compañeras de tu edad y experiencia.',
+      'open_gym': 'Sesión de juego libre para todos los niveles. Practica lo aprendido, conoce jugadores de diferentes categorías y disfruta partidos recreativos en un ambiente divertido y competitivo.'
+    };
+    return descripciones[categoria] || '';
+  };
 
   useEffect(() => {
     fetchHorarios();
@@ -114,7 +127,8 @@ const HorariosManager = ({ user }) => {
           .update({
             hora_inicio: formData.hora_inicio,
             hora_fin: formData.hora_fin,
-            categoria: formData.categorias_seleccionadas[0] // Solo primera categoría en edición
+            categoria: formData.categorias_seleccionadas[0],
+            descripcion: formData.descripcion || getDescripcionPorDefecto(formData.categorias_seleccionadas[0])
           })
           .eq('id', editingId);
 
@@ -134,7 +148,8 @@ const HorariosManager = ({ user }) => {
               dia_semana: dia,
               hora_inicio: formData.hora_inicio,
               hora_fin: formData.hora_fin,
-              categoria: categoria
+              categoria: categoria,
+              descripcion: formData.descripcion || getDescripcionPorDefecto(categoria)
             });
           }
         }
@@ -163,7 +178,8 @@ const HorariosManager = ({ user }) => {
       hora_inicio: horario.hora_inicio,
       hora_fin: horario.hora_fin,
       categorias_seleccionadas: [horario.categoria],
-      aplicar_todos_dias: false
+      aplicar_todos_dias: false,
+      descripcion: horario.descripcion || getDescripcionPorDefecto(horario.categoria)
     });
     setEditingId(horario.id);
     setShowForm(true);
@@ -194,7 +210,8 @@ const HorariosManager = ({ user }) => {
       hora_inicio: '',
       hora_fin: '',
       categorias_seleccionadas: ['iniciacion_hombres'],
-      aplicar_todos_dias: false
+      aplicar_todos_dias: false,
+      descripcion: ''
     });
     setEditingId(null);
     setShowForm(false);
@@ -443,6 +460,25 @@ const HorariosManager = ({ user }) => {
                   required
                 />
               </div>
+            </div>
+
+            {/* Descripción */}
+            <div className={styles.formGroup}>
+              <label className={styles.label}>
+                <FaUsers className={styles.labelIcon} />
+                Descripción (opcional)
+              </label>
+              <textarea
+                name="descripcion"
+                value={formData.descripcion}
+                onChange={handleChange}
+                className={styles.textarea}
+                rows="3"
+                placeholder={`Descripción sugerida: ${getDescripcionPorDefecto(formData.categorias_seleccionadas[0])}`}
+              />
+              <p className={styles.helpText}>
+                Si dejas vacío, se usará la descripción por defecto según la categoría
+              </p>
             </div>
 
             {/* Resumen de selección */}
