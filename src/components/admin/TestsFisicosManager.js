@@ -681,6 +681,19 @@ const TestsFisicosManager = ({ user }) => {
       {/* Filtros */}
       <div className={styles.filtersSection}>
         <div className={styles.filterGroup}>
+          <label htmlFor="search-tests"><FaSearch /> Buscar Atleta</label>
+          <input
+            id="search-tests"
+            type="text"
+            placeholder="Buscar por nombre de atleta..."
+            value={filters.search}
+            onChange={(e) => setFilters({...filters, search: e.target.value})}
+            className={styles.searchInput}
+            autoComplete="off"
+          />
+        </div>
+
+        <div className={styles.filterGroup}>
           <label><FaFilter /> Filtrar por Atleta</label>
           <select
             value={filters.atletaId}
@@ -715,18 +728,6 @@ const TestsFisicosManager = ({ user }) => {
             value={filters.fechaHasta}
             onChange={(e) => setFilters({...filters, fechaHasta: e.target.value})}
             className={styles.filterInput}
-          />
-        </div>
-        
-        <div className={styles.filterGroup}>
-          <label htmlFor="search-tests"><FaSearch /> Buscar</label>
-          <input
-            id="search-tests"
-            type="text"
-            placeholder="Buscar por atleta u observaciones..."
-            value={filters.search}
-            onChange={(e) => setFilters({...filters, search: e.target.value})}
-            className={styles.searchInput}
           />
         </div>
 
