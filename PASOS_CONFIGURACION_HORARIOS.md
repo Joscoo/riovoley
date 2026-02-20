@@ -34,13 +34,6 @@ Error al guardar horario: {
 - ✅ Muestra estado actual y final
 - ✅ Soluciona error 403
 
-**Pasos:**
-1. Crea una nueva query en SQL Editor
-2. Copia TODO el contenido de `database/disable_schedules_rls.sql`
-3. Pega en el editor
-4. Haz clic en **RUN** (o presiona Ctrl+Enter)
-5. Verifica que aparezca "✅ RLS Deshabilitado"
-
 ---
 
 ### Paso 3: Ejecutar Segundo Script - Actualizar Categorías
@@ -63,25 +56,43 @@ Error al guardar horario: {
   - master_mujeres
   - **open_gym** ← NUEVA
 
-**Pasos:**
-1. Crea otra nueva query en SQL Editor
-2. Copia TODO el contenido de `database/update_open_gym_category.sql`
-3. Pega en el editor
-4. Haz clic en **RUN** (o presiona Ctrl+Enter)
-5. Verifica los resultados de cada paso
+---
+
+### Paso 4: Ejecutar Tercer Script - Agregar Descripciones
+
+📄 **Archivo:** `database/add_schedule_descriptions.sql`
+
+```sql
+-- Ejecuta TODO el contenido de este archivo
+-- Esto agrega descripciones informativas a cada horario
+```
+
+**Qué hace:**
+- ✅ Agrega columna `descripcion` a tabla schedules
+- ✅ Puebla descripciones automáticamente según categoría:
+  - **Iniciación**: Fundamentos básicos para principiantes
+  - **Perfeccionamiento**: Técnica avanzada y táctica de juego
+  - **Master**: Atletas mayores de 18 años con experiencia
+  - **Open Gym**: Juego libre para todos los niveles
+- ✅ Textos descriptivos y atractivos para cada nivel
 
 ---
 
 ## ✅ Verificación Final
 
-Después de ejecutar ambos scripts, verifica:
+Después de ejecutar los tres scripts, verifica:
 
 ```sql
 -- Ejecuta esto para confirmar que todo está bien
 SELECT 
-    'Categorías disponibles' as info,
+    'Estado completo de schedules' as info,
     categoria,
-    COUNT(*) as cantidad
+    COUNT(*) as total_horarios,
+    COUNT(descripcion) as con_descripcion,
+    CASE 
+        WHEN COUNT(*) = COUNT(descripcion) THEN '✅ Listo'
+        ELSE '⚠️ Falta configurar'
+    END as estado
 FROM public.schedules
 GROUP BY categoria
 ORDER BY categoria;
@@ -90,6 +101,7 @@ ORDER BY categoria;
 **Debes ver:**
 - ✅ `open_gym` como categoría válida
 - ✅ Sin errores de constraint
+- ✅ Todas las categorías con descripción
 - ✅ Horarios existentes migrados correctamente
 
 ---
@@ -102,49 +114,38 @@ ORDER BY categoria;
    - Categoría única "Open Gym" en lugar de Juego Sábado/Domingo
    - Color turquesa (#1abc9c)
    - Multi-selección de días y categorías funcional
+   - **Campo de descripción opcional** con placeholder inteligente
+   - Valores por defecto según categoría seleccionada
 
 2. **Horarios.js** - Vista Pública
-   - Nuevo header con logo y ubicación
-   - Información de contacto visible (teléfono, Instagram)
-   - Diseño más atractivo y profesional
-   - Responsive en mobile
+   - Nuevo diseño simplificado sin header
+   - **Descripciones visibles** en cada card de horario
+   - Icono informativo con texto descriptivo
+   - Diseño responsive en mobile
 
 3. **Estilos Mejorados**
-   - Header con logo, nombre de marca y ubicación
-   - Cards de horarios con mejor contraste
+   - Cards de horarios con descripción integrada
+   - Textarea para editar descripciones
    - Animaciones suaves
    - Diseño responsive en tablets y móviles
 
 ---
 
-## 📍 Personalización
+## 📝 Descripciones por Categoría
 
-Edita la información de contacto en: `src/components/Horarios.js`
+Las descripciones creadas son:
 
-```javascript
-// Línea ~170
-<div className={styles.infoItem}>
-  <FaMapMarkerAlt className={styles.infoIcon} />
-  <div>
-    <p className={styles.infoLabel}>Ubicación</p>
-    <p className={styles.infoValue}>Av. Principal 123, Caracas</p> ← EDITAR
-  </div>
-</div>
-<div className={styles.infoItem}>
-  <FaPhone className={styles.infoIcon} />
-  <div>
-    <p className={styles.infoLabel}>Teléfono</p>
-    <p className={styles.infoValue}>+58 424-1234567</p> ← EDITAR
-  </div>
-</div>
-<div className={styles.infoItem}>
-  <FaInstagram className={styles.infoIcon} />
-  <div>
-    <p className={styles.infoLabel}>Instagram</p>
-    <p className={styles.infoValue}>@riovoley</p> ← EDITAR
-  </div>
-</div>
-```
+### 🔵 Iniciación Hombres / Mujeres
+*"Perfecto para quienes se inician en el voleibol. Aprende los fundamentos básicos: recepción, saque, golpe de dedos, antebrazo y posicionamiento en cancha. Entrenamiento progresivo y didáctico."*
+
+### 🟢 Perfeccionamiento Hombres / Mujeres
+*"Para jugadores con experiencia que buscan mejorar su técnica y táctica de juego. Enfoque en remates, bloqueos, sistemas defensivos y estrategias avanzadas de competición."*
+
+### 🟠 Master Mujeres
+*"Categoría especial para atletas mayores de 18 años con experiencia previa en voleibol. Mantén tu nivel competitivo, mejora tu condición física y disfruta del juego con compañeras de tu edad y experiencia."*
+
+### 🟢 Open Gym
+*"Sesión de juego libre para todos los niveles. Practica lo aprendido, conoce jugadores de diferentes categorías y disfruta partidos recreativos en un ambiente divertido y competitivo."*
 
 ---
 
@@ -152,9 +153,10 @@ Edita la información de contacto en: `src/components/Horarios.js`
 
 1. ✅ Ejecutar `disable_schedules_rls.sql` en Supabase SQL Editor
 2. ✅ Ejecutar `update_open_gym_category.sql` en Supabase SQL Editor
-3. ✅ Verificar resultados con query de verificación
-4. ✅ Recargar la app y probar crear un horario "Open Gym"
-5. ✅ Personalizar datos de contacto en Horarios.js
+3. ✅ Ejecutar `add_schedule_descriptions.sql` en Supabase SQL Editor
+4. ✅ Verificar resultados con query de verificación
+5. ✅ Recargar la app y probar crear un horario "Open Gym"
+6. ✅ Ver descripciones en la vista pública de horarios
 
 ---
 
