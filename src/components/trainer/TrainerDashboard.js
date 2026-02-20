@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/TrainerDashboard.module.css';
+import { getEcuadorDate, getEcuadorDateMinusDays, getEcuadorFirstDayOfMonth } from '../../utils/dateUtils';
 import { FaVolleyballBall, FaDumbbell, FaChartBar, FaCalendar, FaDollarSign, FaBolt, FaPlus, FaCheckCircle, FaClipboardList, FaMoneyBillWave } from 'react-icons/fa';
 
 const TrainerDashboard = ({ user, onNavigateToSection }) => {
@@ -27,22 +28,21 @@ const TrainerDashboard = ({ user, onNavigateToSection }) => {
         .select('*', { count: 'exact', head: true });
 
       // Asistencias de hoy
-      const today = new Date().toISOString().split('T')[0];
+      const today = getEcuadorDate();
       const { count: asistenciasCount } = await supabase
         .from('attendances')
         .select('*', { count: 'exact', head: true })
         .eq('fecha', today);
 
       // Tests físicos (últimos 30 días)
-      const thirtyDaysAgo = new Date();
-      thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+      const thirtyDaysAgo = getEcuadorDateMinusDays(30);
       const { count: testsCount } = await supabase
         .from('physical_tests')
         .select('*', { count: 'exact', head: true })
-        .gte('fecha_test', thirtyDaysAgo.toISOString().split('T')[0]);
+        .gte('fecha_test', thirtyDaysAgo);
 
       // Pagos del mes actual
-      const firstDayOfMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1).toISOString().split('T')[0];
+      const firstDayOfMonth = getEcuadorFirstDayOfMonth();
       const { count: pagosCount } = await supabase
         .from('payments')
         .select('*', { count: 'exact', head: true })

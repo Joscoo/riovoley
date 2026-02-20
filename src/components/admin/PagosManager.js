@@ -6,6 +6,7 @@ import { EmailService } from '../../services/emailService';
 import WhatsAppService from '../../services/whatsappService';
 import WhatsAppBusinessService from '../../services/whatsappBusinessService';
 import PagoStatusService from '../../services/pagoStatusService';
+import { getEcuadorDate } from '../../utils/dateUtils';
 import styles from '../../styles/PagosManager.module.css';
 import { 
   FaChartBar, 
@@ -48,7 +49,7 @@ const PagosManager = ({ user }) => {
 
   const [formData, setFormData] = useState({
     student_id: '',
-    fecha_inicio: new Date().toISOString().split('T')[0],
+    fecha_inicio: getEcuadorDate(),
     fecha_fin: '',
     monto: '',
     fecha_pago: '', // Vacío por defecto - solo se llena cuando realmente se paga
@@ -82,7 +83,7 @@ const PagosManager = ({ user }) => {
       if (atletasError) throw atletasError;
       setAtletas(atletasData || []);
 
-      // Cargar TODOS los pagos sin filtros
+      // Cargar TODOS los pagos sin filtros (solo los no eliminados)
       const { data: pagosData, error: pagosError } = await supabase
         .from('payments')
         .select(`
@@ -93,6 +94,7 @@ const PagosManager = ({ user }) => {
             user:users(id, nombre, apellido, email, telefono)
           )
         `)
+        .is('deleted_at', null)
         .order('fecha_inicio', { ascending: false });
 
       if (pagosError) throw pagosError;
@@ -113,15 +115,22 @@ const PagosManager = ({ user }) => {
               user:users(id, nombre, apellido, email, telefono)
             )
           `)
+          .is('deleted_at', null)
           .order('fecha_inicio', { ascending: false });
         
         if (pagosActualizados) {
           setAllPagos(pagosActualizados);
+          // Mostrar todos los pagos inicialmente
+          setPagos(pagosActualizados);
         } else {
           setAllPagos(pagosData || []);
+          // Mostrar todos los pagos inicialmente
+          setPagos(pagosData || []);
         }
       } else {
         setAllPagos(pagosData || []);
+        // Mostrar todos los pagos inicialmente
+        setPagos(pagosData || []);
       }
 
       // Los filtros se aplicarán automáticamente por el useEffect de filters
@@ -375,20 +384,26 @@ const PagosManager = ({ user }) => {
   };
 
   const deletePago = async (pago) => {
-    if (!globalThis.confirm(`¿Eliminar pago de ${pago.student?.user?.nombre} ${pago.student?.user?.apellido}?`)) {
+    if (!globalThis.confirm(
+      `⚠️ ATENCIÓN: ¿Eliminar pago de ${pago.student?.user?.nombre} ${pago.student?.user?.apellido}?\n\n` +
+      `Monto: $${pago.monto}\n` +
+      `Período: ${formatPeriodo(pago.fecha_inicio, pago.fecha_fin)}\n\n` +
+      `Esta acción se puede revertir durante 30 días.`
+    )) {
       return;
     }
 
     try {
+      // Soft delete: marcar como eliminado en lugar de borrar
       const { error } = await supabase
         .from('payments')
-        .delete()
+        .update({ deleted_at: new Date().toISOString() })
         .eq('id', pago.id);
 
       if (error) throw error;
 
       loadData();
-      alert('Pago eliminado exitosamente');
+      alert('✅ Pago marcado como eliminado.\nSe puede recuperar desde la base de datos durante 30 días.');
     } catch (error) {
       console.error('Error eliminando pago:', error);
       alert('Error: ' + error.message);
@@ -462,7 +477,7 @@ const PagosManager = ({ user }) => {
       const { error } = await supabase
         .from('payments')
         .update({
-          fecha_pago: new Date().toISOString().split('T')[0]
+          fecha_pago: getEcuadorDate()
         })
         .eq('id', pago.id);
 
@@ -504,7 +519,7 @@ const PagosManager = ({ user }) => {
   const resetForm = () => {
     setFormData({
       student_id: '',
-      fecha_inicio: new Date().toISOString().split('T')[0],
+      fecha_inicio: getEcuadorDate(),
       fecha_fin: '',
       monto: '',
       fecha_pago: '', // Vacío por defecto

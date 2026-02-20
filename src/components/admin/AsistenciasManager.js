@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/AsistenciasManager.module.css';
+import { getEcuadorDate, getEcuadorDateMinusDays, formatDateString } from '../../utils/dateUtils';
 import { 
   FaChartBar, 
   FaCheckCircle, 
@@ -22,17 +23,18 @@ import {
   FaCalendarCheck,
   FaCreditCard,
   FaFileExport,
-  FaPrint
+  FaPrint,
+  FaSearch
 } from 'react-icons/fa';
 
 const AsistenciasManager = ({ user }) => {
   const [asistencias, setAsistencias] = useState([]);
   const [atletas, setAtletas] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
+  const [selectedDate, setSelectedDate] = useState(getEcuadorDate());
   const [filters, setFilters] = useState({
-    fecha_inicio: new Date(new Date().setDate(new Date().getDate() - 7)).toISOString().split('T')[0],
-    fecha_fin: new Date().toISOString().split('T')[0],
+    fecha_inicio: getEcuadorDateMinusDays(7),
+    fecha_fin: getEcuadorDate(),
     categoria: '',
     atleta: ''
   });
@@ -46,6 +48,7 @@ const AsistenciasManager = ({ user }) => {
   const [expandedDays, setExpandedDays] = useState([]); // Días expandidos en el historial
   const [asistenciasByDate, setAsistenciasByDate] = useState({}); // Asistencias agrupadas por fecha
   const [dateToExport, setDateToExport] = useState(null); // Fecha a exportar
+  const [searchTerm, setSearchTerm] = useState(''); // Término de búsqueda de atletas
 
   const categorias = [
     'iniciacion_hombres',
@@ -445,14 +448,43 @@ const AsistenciasManager = ({ user }) => {
     return categoria.replaceAll('_', ' ').toUpperCase();
   };
 
-  // Filtrar atletas según categoría seleccionada en tabs
+  // Filtrar atletas según categoría seleccionada en tabs y término de búsqueda
   const getFilteredAtletas = () => {
-    if (selectedCategory === 'all') {
-      return todayAttendance;
+    let filtered = todayAttendance;
+    
+    // Filtrar por categoría
+    if (selectedCategory !== 'all') {
+      filtered = filtered.filter(atleta => 
+        atleta.categoria?.includes(selectedCategory)
+      );
     }
-    return todayAttendance.filter(atleta => 
-      atleta.categoria?.includes(selectedCategory)
-    );
+    
+    // Filtrar por término de búsqueda (nombre o apellido)
+    if (searchTerm.trim()) {
+      const searchLower = searchTerm.toLowerCase().trim();
+      filtered = filtered.filter(atleta => {
+        const nombreCompleto = `${atleta.users?.nombre || ''} ${atleta.users?.apellido || ''}`.toLowerCase();
+        return nombreCompleto.includes(searchLower);
+      });
+    }
+    
+    return filtered;
+  };
+
+  // Filtrar atletas por categoría específica y término de búsqueda
+  const filterAtletasBySearchAndCategory = (categoria) => {
+    let filtered = todayAttendance.filter(atleta => atleta.categoria === categoria);
+    
+    // Aplicar filtro de búsqueda si existe
+    if (searchTerm.trim()) {
+      const searchLower = searchTerm.toLowerCase().trim();
+      filtered = filtered.filter(atleta => {
+        const nombreCompleto = `${atleta.users?.nombre || ''} ${atleta.users?.apellido || ''}`.toLowerCase();
+        return nombreCompleto.includes(searchLower);
+      });
+    }
+    
+    return filtered;
   };
 
   // Obtener estadísticas de la categoría seleccionada
@@ -591,12 +623,7 @@ const AsistenciasManager = ({ user }) => {
 
     // Generar HTML para imprimir
     const printWindow = window.open('', '_blank');
-    const fechaFormateada = new Date(exportFecha).toLocaleDateString('es-ES', { 
-      weekday: 'long', 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    });
+    const fechaFormateada = formatDateString(exportFecha);
 
     const html = `
       <!DOCTYPE html>
@@ -993,6 +1020,26 @@ const AsistenciasManager = ({ user }) => {
               />
             </div>
             
+            <div className={styles.searchBox}>
+              <FaSearch className={styles.searchIcon} />
+              <input
+                type="text"
+                placeholder="Buscar atleta por nombre..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className={styles.searchInput}
+              />
+              {searchTerm && (
+                <button
+                  onClick={() => setSearchTerm('')}
+                  className={styles.clearSearch}
+                  title="Limpiar búsqueda"
+                >
+                  <FaTimes />
+                </button>
+              )}
+            </div>
+            
             <div className={styles.bulkActions}>
               <button onClick={markAllPresent} className={styles.allPresentButton}>
                 <FaCheckCircle style={{ marginRight: '6px', verticalAlign: 'middle' }} /> Todos Presentes
@@ -1070,8 +1117,7 @@ const AsistenciasManager = ({ user }) => {
                       <div className={styles.subCategory}>
                         <h4><FaMars style={{ marginRight: '6px' }} /> Hombres</h4>
                         <div className={styles.atletasList}>
-                          {todayAttendance
-                            .filter(atleta => atleta.categoria === 'iniciacion_hombres')
+                          {filterAtletasBySearchAndCategory('iniciacion_hombres')
                             .map(atleta => renderAtletaWithPaymentMethods(atleta)
                             )}
                         </div>
@@ -1080,8 +1126,7 @@ const AsistenciasManager = ({ user }) => {
                       <div className={styles.subCategory}>
                         <h4><FaVenus style={{ marginRight: '6px' }} /> Mujeres</h4>
                         <div className={styles.atletasList}>
-                          {todayAttendance
-                            .filter(atleta => atleta.categoria === 'iniciacion_mujeres')
+                          {filterAtletasBySearchAndCategory('iniciacion_mujeres')
                             .map(atleta => renderAtletaWithPaymentMethods(atleta)
                             )}
                         </div>
@@ -1098,8 +1143,7 @@ const AsistenciasManager = ({ user }) => {
                       <div className={styles.subCategory}>
                         <h4><FaMars style={{ marginRight: '6px' }} /> Hombres</h4>
                         <div className={styles.atletasList}>
-                          {todayAttendance
-                            .filter(atleta => atleta.categoria === 'perfeccionamiento_hombres')
+                          {filterAtletasBySearchAndCategory('perfeccionamiento_hombres')
                             .map(atleta => renderAtletaWithPaymentMethods(atleta)
                             )}
                         </div>
@@ -1108,8 +1152,7 @@ const AsistenciasManager = ({ user }) => {
                       <div className={styles.subCategory}>
                         <h4><FaVenus style={{ marginRight: '6px' }} /> Mujeres</h4>
                         <div className={styles.atletasList}>
-                          {todayAttendance
-                            .filter(atleta => atleta.categoria === 'perfeccionamiento_mujeres')
+                          {filterAtletasBySearchAndCategory('perfeccionamiento_mujeres')
                             .map(atleta => renderAtletaWithPaymentMethods(atleta)
                             )}
                         </div>
@@ -1126,8 +1169,7 @@ const AsistenciasManager = ({ user }) => {
                       <div className={styles.subCategory}>
                         <h4><FaVenus style={{ marginRight: '6px' }} /> Mujeres</h4>
                         <div className={styles.atletasList}>
-                          {todayAttendance
-                            .filter(atleta => atleta.categoria === 'master_mujeres')
+                          {filterAtletasBySearchAndCategory('master_mujeres')
                             .map(atleta => {
                               const isPresent = atleta.attendance !== null;
                               return (
@@ -1159,8 +1201,7 @@ const AsistenciasManager = ({ user }) => {
                       <div className={styles.subCategory}>
                         <h4><FaMars style={{ marginRight: '6px' }} /> Hombres</h4>
                         <div className={styles.atletasList}>
-                          {todayAttendance
-                            .filter(atleta => atleta.categoria === 'iniciacion_hombres')
+                          {filterAtletasBySearchAndCategory('iniciacion_hombres')
                             .map(atleta => renderAtletaWithPaymentMethods(atleta)
                             )}
                         </div>
@@ -1169,8 +1210,7 @@ const AsistenciasManager = ({ user }) => {
                       <div className={styles.subCategory}>
                         <h4><FaVenus style={{ marginRight: '6px' }} /> Mujeres</h4>
                         <div className={styles.atletasList}>
-                          {todayAttendance
-                            .filter(atleta => atleta.categoria === 'iniciacion_mujeres')
+                          {filterAtletasBySearchAndCategory('iniciacion_mujeres')
                             .map(atleta => renderAtletaWithPaymentMethods(atleta)
                             )}
                         </div>
@@ -1183,8 +1223,7 @@ const AsistenciasManager = ({ user }) => {
                       <div className={styles.subCategory}>
                         <h4><FaMars style={{ marginRight: '6px' }} /> Hombres</h4>
                         <div className={styles.atletasList}>
-                          {todayAttendance
-                            .filter(atleta => atleta.categoria === 'perfeccionamiento_hombres')
+                          {filterAtletasBySearchAndCategory('perfeccionamiento_hombres')
                             .map(atleta => renderAtletaWithPaymentMethods(atleta)
                             )}
                         </div>
@@ -1193,8 +1232,7 @@ const AsistenciasManager = ({ user }) => {
                       <div className={styles.subCategory}>
                         <h4><FaVenus style={{ marginRight: '6px' }} /> Mujeres</h4>
                         <div className={styles.atletasList}>
-                          {todayAttendance
-                            .filter(atleta => atleta.categoria === 'perfeccionamiento_mujeres')
+                          {filterAtletasBySearchAndCategory('perfeccionamiento_mujeres')
                             .map(atleta => renderAtletaWithPaymentMethods(atleta)
                             )}
                         </div>
@@ -1207,8 +1245,7 @@ const AsistenciasManager = ({ user }) => {
                       <div className={styles.subCategory}>
                         <h4><FaVenus style={{ marginRight: '6px' }} /> Mujeres</h4>
                         <div className={styles.atletasList}>
-                          {todayAttendance
-                            .filter(atleta => atleta.categoria === 'master_mujeres')
+                          {filterAtletasBySearchAndCategory('master_mujeres')
                             .map(atleta => renderAtletaWithPaymentMethods(atleta)
                             )}
                         </div>
@@ -1319,12 +1356,7 @@ const AsistenciasManager = ({ user }) => {
                     .map(fecha => {
                       const dayAttendances = asistenciasByDate[fecha];
                       const isExpanded = expandedDays.includes(fecha);
-                      const fechaFormateada = new Date(fecha).toLocaleDateString('es-ES', {
-                        weekday: 'long',
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                      });
+                      const fechaFormateada = formatDateString(fecha);
 
                       // Agrupar por categorías para este día
                       const iniciacion = dayAttendances.filter(a =>
@@ -1578,12 +1610,7 @@ const AsistenciasManager = ({ user }) => {
 
             <div className={styles.modalBody}>
               <div className={styles.exportInfo}>
-                <p><strong>Fecha:</strong> {new Date(selectedDate).toLocaleDateString('es-ES', { 
-                  weekday: 'long', 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric' 
-                })}</p>
+                <p><strong>Fecha:</strong> {formatDateString(selectedDate)}</p>
                 <p><strong>Total asistencias:</strong> {todayAttendance.filter(a => a.attendance !== null).length}</p>
               </div>
 

@@ -7,6 +7,7 @@ import AnunciosViewer from '../AnunciosViewer';
 import ProfileSettings from '../admin/ProfileSettings';
 import StudentPhysicalTests from './StudentPhysicalTests';
 import styles from '../../styles/StudentPanel.module.css';
+import { getEcuadorDate, getEcuadorFirstDayOfMonth, formatDateString, formatDateStringShort } from '../../utils/dateUtils';
 import { FaCog, FaDumbbell, FaBullhorn, FaSyncAlt, FaCheckCircle, FaStar, FaExclamationTriangle, FaClock, FaCalendar, FaMoneyBillWave, FaClipboardList, FaChartBar, FaBan, FaTimes, FaUserCircle } from 'react-icons/fa';
 
 const StudentPanel = ({ user }) => {
@@ -72,9 +73,7 @@ const StudentPanel = ({ user }) => {
   const loadPaymentStatus = async (studentId) => {
     try {
       // Usar zona horaria de Ecuador
-      const now = new Date();
-      const ecuadorDate = new Date(now.toLocaleString('en-US', { timeZone: 'America/Guayaquil' }));
-      const today = ecuadorDate.toISOString().split('T')[0];
+      const today = getEcuadorDate();
 
       console.log('💳 Consultando pagos del estudiante:', studentId);
       console.log('📅 Fecha actual (Ecuador):', today);
@@ -100,7 +99,7 @@ const StudentPanel = ({ user }) => {
       setPaymentStatus({
         hasPaid: currentPayment && currentPayment.estado === 'pagado',
         payment: currentPayment,
-        monthName: ecuadorDate.toLocaleDateString('es-EC', { month: 'long', year: 'numeric' })
+        monthName: new Date().toLocaleDateString('es-EC', { month: 'long', year: 'numeric', timeZone: 'America/Guayaquil' })
       });
 
       console.log('✅ Estado de pago actualizado:', {
@@ -133,12 +132,9 @@ const StudentPanel = ({ user }) => {
   const loadAttendanceStats = async (studentId) => {
     try {
       // Usar zona horaria de Ecuador (UTC-5)
-      const now = new Date();
-      const ecuadorDate = new Date(now.toLocaleString('en-US', { timeZone: 'America/Guayaquil' }));
-      const firstDayOfMonth = new Date(ecuadorDate.getFullYear(), ecuadorDate.getMonth(), 1);
-      const firstDayFormatted = firstDayOfMonth.toISOString().split('T')[0];
+      const firstDayFormatted = getEcuadorFirstDayOfMonth();
 
-      console.log('📅 Fecha actual Ecuador:', ecuadorDate.toISOString());
+      console.log('📅 Fecha actual Ecuador:', getEcuadorDate());
       console.log('📅 Primer día del mes:', firstDayFormatted);
 
       // Obtener asistencias del mes actual
@@ -229,17 +225,7 @@ const StudentPanel = ({ user }) => {
                 <div className={styles.detailRow}>
                   <span className={styles.label}><FaCalendar style={{ marginRight: '8px', verticalAlign: 'middle' }} />Período de Mensualidad</span>
                   <span className={styles.value}>
-                    {new Date(paymentStatus.payment.fecha_inicio + 'T00:00:00').toLocaleDateString('es-EC', { 
-                      timeZone: 'America/Guayaquil',
-                      day: '2-digit', 
-                      month: 'short', 
-                      year: 'numeric' 
-                    })} - {new Date(paymentStatus.payment.fecha_fin + 'T00:00:00').toLocaleDateString('es-EC', { 
-                      timeZone: 'America/Guayaquil',
-                      day: '2-digit', 
-                      month: 'short', 
-                      year: 'numeric' 
-                    })}
+                    {formatDateStringShort(paymentStatus.payment.fecha_inicio)} - {formatDateStringShort(paymentStatus.payment.fecha_fin)}
                   </span>
                 </div>
                 <div className={styles.detailRow}>
@@ -273,12 +259,7 @@ const StudentPanel = ({ user }) => {
                   <div className={styles.detailRow}>
                     <span className={styles.label}><FaCheckCircle style={{ marginRight: '8px', verticalAlign: 'middle' }} />Fecha de pago</span>
                     <span className={styles.value}>
-                      {new Date(paymentStatus.payment.fecha_pago + 'T00:00:00').toLocaleDateString('es-EC', { 
-                        timeZone: 'America/Guayaquil',
-                        day: '2-digit', 
-                        month: 'short', 
-                        year: 'numeric' 
-                      })}
+                      {formatDateStringShort(paymentStatus.payment.fecha_pago)}
                     </span>
                   </div>
                 )}
@@ -344,17 +325,10 @@ const StudentPanel = ({ user }) => {
             {attendanceStats.recentAttendances.length > 0 ? (
               <div className={styles.attendanceList}>
                 {attendanceStats.recentAttendances.map((attendance) => {
-                  // Convertir fecha a zona horaria de Ecuador
-                  const fecha = new Date(attendance.fecha + 'T00:00:00');
                   return (
                     <div key={attendance.id} className={styles.attendanceItem}>
                       <span className={styles.attendanceDate}>
-                        {fecha.toLocaleDateString('es-EC', { 
-                          timeZone: 'America/Guayaquil',
-                          weekday: 'short', 
-                          day: '2-digit', 
-                          month: 'short' 
-                        })}
+                        {formatDateString(attendance.fecha, { weekday: 'short', day: '2-digit', month: 'short' })}
                       </span>
                       <span className={`${styles.attendanceStatus} ${styles.present}`}>
                         <FaCheckCircle style={{ marginRight: '6px', verticalAlign: 'middle' }} />Presente
