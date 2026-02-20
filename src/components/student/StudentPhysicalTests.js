@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from '../../styles/StudentPanel.module.css';
-import { FaDumbbell, FaFire, FaClipboardList, FaRunning, FaExclamationTriangle, FaCheckCircle, FaExclamationCircle, FaWeight, FaUtensils } from 'react-icons/fa';
+import { FaDumbbell, FaFire, FaClipboardList, FaRunning, FaExclamationTriangle, FaCheckCircle, FaExclamationCircle, FaWeight, FaUtensils, FaChartBar, FaSyncAlt, FaCalendar, FaRuler, FaChartLine, FaLightbulb } from 'react-icons/fa';
 
 const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
   const calculateIMC = (peso, estatura) => {
@@ -99,7 +99,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
           className={styles.refreshButton}
           title="Actualizar información"
         >
-          🔄 Actualizar
+          <FaSyncAlt style={{ marginRight: '8px', verticalAlign: 'middle' }} />Actualizar
         </button>
       </div>
 
@@ -109,7 +109,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
           {physicalTests.length > 1 && (
             <div className={styles.summaryCards}>
               <div className={styles.summaryCard}>
-                <div className={styles.summaryIcon}>📊</div>
+                <div className={styles.summaryIcon}><FaChartBar /></div>
                 <div className={styles.summaryInfo}>
                   <div className={styles.summaryLabel}>Total de Tests</div>
                   <div className={styles.summaryValue}>{physicalTests.length}</div>
@@ -144,7 +144,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
               )}
 
               <div className={styles.summaryCard}>
-                <div className={styles.summaryIcon}>📅</div>
+                <div className={styles.summaryIcon}><FaCalendar /></div>
                 <div className={styles.summaryInfo}>
                   <div className={styles.summaryLabel}>Último Test</div>
                   <div className={styles.summaryValue}>
@@ -243,7 +243,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
                     ))}
                   </ul>
                   <div className={styles.nutritionNote}>
-                    <strong>💡 Nota:</strong> Estas son recomendaciones generales. Para un plan personalizado, consulta con un nutricionista deportivo.
+                    <strong><FaLightbulb style={{ marginRight: '6px', verticalAlign: 'middle' }} />Nota:</strong> Estas son recomendaciones generales. Para un plan personalizado, consulta con un nutricionista deportivo.
                   </div>
                 </div>
               )}
@@ -252,7 +252,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
 
           {/* Gráficas de Progreso */}
           <div className={styles.progressSection}>
-            <h3>📈 Progreso en el Tiempo</h3>
+            <h3><FaChartLine style={{ marginRight: '10px', verticalAlign: 'middle' }} />Progreso en el Tiempo</h3>
             
             {/* Gráfica de Peso */}
             <div className={styles.chartCard}>
@@ -284,7 +284,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
             {/* Gráfica de Estatura */}
             {physicalTests.some(t => t.estatura) && (
               <div className={styles.chartCard}>
-                <h4>📏 Estatura (m)</h4>
+                <h4><FaRuler style={{ marginRight: '8px' }} />Estatura (m)</h4>
                 <div className={styles.chart}>
                   {physicalTests.filter(t => t.estatura).map((test) => {
                     const testsConEstatura = physicalTests.filter(t => t.estatura);
@@ -414,7 +414,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
                   <div key={test.id} className={styles.testRow}>
                     <div className={styles.testHeader}>
                       <div className={styles.testDate}>
-                        📅 {new Date(test.fecha_test + 'T00:00:00').toLocaleDateString('es-EC', {
+                        <FaCalendar style={{ marginRight: '8px', verticalAlign: 'middle' }} />{new Date(test.fecha_test + 'T00:00:00').toLocaleDateString('es-EC', {
                           timeZone: 'America/Guayaquil',
                           weekday: 'long',
                           day: '2-digit',
@@ -439,7 +439,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
                       </div>
 
                       <div className={styles.metricCard}>
-                        <div className={styles.metricIcon}>📏</div>
+                        <div className={styles.metricIcon}><FaRuler /></div>
                         <div className={styles.metricInfo}>
                           <div className={styles.metricLabel}>Estatura</div>
                           <div className={styles.metricValue}>{test.estatura} m</div>
@@ -524,7 +524,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
         </div>
       ) : (
         <div className={styles.noData}>
-          <p>📊 Aún no tienes tests físicos registrados</p>
+          <p><FaChartBar style={{ marginRight: '8px', verticalAlign: 'middle' }} />Aún no tienes tests físicos registrados</p>
           <p>Los entrenadores realizarán evaluaciones periódicas para monitorear tu progreso</p>
         </div>
       )}

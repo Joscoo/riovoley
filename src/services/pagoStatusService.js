@@ -1,4 +1,6 @@
 // Servicio para manejo automático de estados de pagos
+import { getEcuadorDate, getEcuadorDateTime } from '../utils/dateUtils';
+
 export class PagoStatusService {
   
   /**
@@ -7,14 +9,15 @@ export class PagoStatusService {
    * @returns {string} Estado calculado
    */
   static calcularEstado(pago) {
-    const hoy = new Date();
+    // Usar fecha de Ecuador para cálculos
+    const hoy = getEcuadorDateTime();
     hoy.setHours(0, 0, 0, 0); // Normalizar a medianoche para comparaciones
     
     console.log('🔍 Calculando estado para pago:', {
       id: pago.id,
       fecha_inicio: pago.fecha_inicio,
       fecha_fin: pago.fecha_fin,
-      hoy: hoy.toISOString().split('T')[0]
+      hoy: getEcuadorDate()
     });
     
     // Si no tiene fecha de fin, no se puede determinar vencimiento
@@ -30,7 +33,7 @@ export class PagoStatusService {
     const diferenciaMs = fechaFin.getTime() - hoy.getTime();
     const diferenciaDias = Math.ceil(diferenciaMs / (1000 * 60 * 60 * 24));
     
-    console.log(`📅 Días restantes: ${diferenciaDias} (fecha fin: ${fechaFin.toISOString().split('T')[0]})`);
+    console.log(`📅 Días restantes: ${diferenciaDias} (fecha fin: ${pago.fecha_fin})`);
     
     // Determinar estado basado SOLO en días restantes hasta fecha fin
     let estado;
@@ -53,7 +56,7 @@ export class PagoStatusService {
    */
   static getStatusInfo(pago) {
     const estado = this.calcularEstado(pago);
-    const hoy = new Date();
+    const hoy = getEcuadorDateTime();
     hoy.setHours(0, 0, 0, 0);
     
     let diasRestantes = 0;

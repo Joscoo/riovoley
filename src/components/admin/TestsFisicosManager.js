@@ -2,8 +2,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
+import { getEcuadorDate } from '../../utils/dateUtils';
 import styles from '../../styles/TestsFisicosManager.module.css';
-import { FaEdit, FaPlus, FaClock, FaSave, FaDumbbell, FaTrash } from 'react-icons/fa';
+import { 
+  FaEdit, FaPlus, FaClock, FaSave, FaDumbbell, FaTrash, 
+  FaUsers, FaCheckCircle, FaExclamationTriangle, FaChartLine,
+  FaArrowUp, FaArrowDown, FaEye, FaEyeSlash,
+  FaCalendarAlt, FaFilter, FaRulerVertical, FaWeight,
+  FaHandPaper, FaRunning, FaFire, FaArrowsAltH,
+  FaStickyNote, FaSearch
+} from 'react-icons/fa';
 
 const TestsFisicosManager = ({ user }) => {
   const [tests, setTests] = useState([]);
@@ -19,8 +27,21 @@ const TestsFisicosManager = ({ user }) => {
     atletaId: '',
     fechaDesde: '',
     fechaHasta: '',
-    search: ''
+    search: '',
+    onlyPending: false  // Nueva: mostrar solo atletas sin test este mes
   });
+
+  const [stats, setStats] = useState({
+    totalAtletas: 0,
+    conTestEsteMes: 0,
+    sinTestEsteMes: 0,
+    promedioTestsPorAtleta: 0
+  });
+
+  const [atletasPendientes, setAtletasPendientes] = useState([]);
+  const [atletasPendientesPorCategoria, setAtletasPendientesPorCategoria] = useState({});
+  const [showPendientes, setShowPendientes] = useState(false);
+  const [categoriaSeleccionadaPendientes, setCategoriaSeleccionadaPendientes] = useState('todas');
 
   const [formData, setFormData] = useState({
     student_id: '',
@@ -36,7 +57,7 @@ const TestsFisicosManager = ({ user }) => {
     fuerza_piernas: '',
     elevaciones_barra: '',
     observaciones: '',
-    fecha_test: new Date().toISOString().split('T')[0]
+    fecha_test: getEcuadorDate()
   });
 
   useEffect(() => {
@@ -44,6 +65,66 @@ const TestsFisicosManager = ({ user }) => {
     loadTests();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
+
+  useEffect(() => {
+    if (atletas.length > 0) {
+      calculateStats();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [atletas, tests]);
+
+  // Función para calcular estadísticas
+  const calculateStats = () => {
+    const now = new Date();
+    const firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+    const lastDayOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+
+    // Atletas con test este mes
+    const atletasConTestEsteMes = new Set();
+    tests.forEach(test => {
+      const testDate = new Date(test.fecha_test);
+      if (testDate >= firstDayOfMonth && testDate <= lastDayOfMonth) {
+        atletasConTestEsteMes.add(test.student_id);
+      }
+    });
+
+    // Atletas sin test este mes
+    const atletasSinTest = atletas.filter(atleta => 
+      !atletasConTestEsteMes.has(atleta.id)
+    );
+
+    // Promedio de tests por atleta
+    const testsPorAtleta = {};
+    tests.forEach(test => {
+      if (!testsPorAtleta[test.student_id]) {
+        testsPorAtleta[test.student_id] = 0;
+      }
+      testsPorAtleta[test.student_id]++;
+    });
+
+    const totalTests = Object.values(testsPorAtleta).reduce((sum, count) => sum + count, 0);
+    const promedio = atletas.length > 0 ? (totalTests / atletas.length).toFixed(1) : 0;
+
+    setStats({
+      totalAtletas: atletas.length,
+      conTestEsteMes: atletasConTestEsteMes.size,
+      sinTestEsteMes: atletasSinTest.length,
+      promedioTestsPorAtleta: promedio
+    });
+
+    setAtletasPendientes(atletasSinTest);
+
+    // Agrupar atletas pendientes por categoría
+    const porCategoria = {};
+    atletasSinTest.forEach(atleta => {
+      const categoria = atleta.categoria || 'sin_categoria';
+      if (!porCategoria[categoria]) {
+        porCategoria[categoria] = [];
+      }
+      porCategoria[categoria].push(atleta);
+    });
+    setAtletasPendientesPorCategoria(porCategoria);
+  };
 
   // Cerrar dropdown al hacer clic fuera
   useEffect(() => {
@@ -326,7 +407,7 @@ const TestsFisicosManager = ({ user }) => {
         fuerza_piernas: test.fuerza_piernas || '',
         elevaciones_barra: test.elevaciones_barra || '',
         observaciones: test.observaciones || '',
-        fecha_test: test.fecha_test || new Date().toISOString().split('T')[0]
+        fecha_test: test.fecha_test || getEcuadorDate()
       });
       // Establecer el nombre del atleta en el campo de búsqueda al editar
       if (test.student_id) {
@@ -357,7 +438,7 @@ const TestsFisicosManager = ({ user }) => {
       fuerza_piernas: '',
       elevaciones_barra: '',
       observaciones: '',
-      fecha_test: new Date().toISOString().split('T')[0]
+      fecha_test: getEcuadorDate()
     });
     setSearchTerm('');
     setShowAtletasList(false);
@@ -382,6 +463,49 @@ const TestsFisicosManager = ({ user }) => {
     setShowAtletasList(false);
   };
 
+  // Obtener test anterior de un atleta para comparación
+  const getPreviousTest = (currentTest) => {
+    const atletaTests = tests
+      .filter(t => t.student_id === currentTest.student_id && t.id !== currentTest.id)
+      .sort((a, b) => new Date(b.fecha_test) - new Date(a.fecha_test));
+    
+    return atletaTests[0] || null;
+  };
+
+  // Calcular diferencia y tipo de cambio
+  const calculateChange = (current, previous) => {
+    if (!previous || !current) return { value: 0, type: 'neutral' };
+    
+    const diff = current - previous;
+    const percentage = previous === 0 ? 0 : ((diff / previous) * 100).toFixed(1);
+    
+    let changeType = 'neutral';
+    if (diff > 0) {
+      changeType = 'improvement';
+    } else if (diff < 0) {
+      changeType = 'regression';
+    }
+    
+    return {
+      value: diff,
+      percentage: percentage,
+      type: changeType
+    };
+  };
+
+  // Renderizar indicador de cambio
+  const renderChangeIndicator = (change) => {
+    if (!change || change.type === 'neutral') return null;
+    
+    const isImprovement = change.type === 'improvement';
+    return (
+      <span className={`${styles.changeIndicator} ${styles[change.type]}`}>
+        {isImprovement ? <FaArrowUp /> : <FaArrowDown />}
+        {Math.abs(change.value).toFixed(2)}
+      </span>
+    );
+  };
+
   return (
     <div className={styles.testsFisicosManager}>
       <div className={styles.header}>
@@ -397,9 +521,167 @@ const TestsFisicosManager = ({ user }) => {
         </button>
       </div>
 
+      {/* Estadísticas Generales */}
+      <div className={styles.statsGrid}>
+        <div className={styles.statCard}>
+          <div className={styles.statIcon} style={{ color: '#3b82f6' }}>
+            <FaUsers />
+          </div>
+          <div className={styles.statInfo}>
+            <h3>{stats.totalAtletas}</h3>
+            <p>Total Atletas</p>
+          </div>
+        </div>
+
+        <div className={styles.statCard}>
+          <div className={styles.statIcon} style={{ color: '#10b981' }}>
+            <FaCheckCircle />
+          </div>
+          <div className={styles.statInfo}>
+            <h3>{stats.conTestEsteMes}</h3>
+            <p>Con Test Este Mes</p>
+          </div>
+        </div>
+
+        <div className={styles.statCard}>
+          <div className={styles.statIcon} style={{ color: '#f59e0b' }}>
+            <FaExclamationTriangle />
+          </div>
+          <div className={styles.statInfo}>
+            <h3>{stats.sinTestEsteMes}</h3>
+            <p>Sin Test Este Mes</p>
+          </div>
+        </div>
+
+        <div className={styles.statCard}>
+          <div className={styles.statIcon} style={{ color: '#8b5cf6' }}>
+            <FaChartLine />
+          </div>
+          <div className={styles.statInfo}>
+            <h3>{stats.promedioTestsPorAtleta}</h3>
+            <p>Tests Promedio/Atleta</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Sección de Atletas Pendientes */}
+      {atletasPendientes.length > 0 && (
+        <div className={styles.pendientesSection}>
+          <div className={styles.pendientesHeader}>
+            <h3>
+              <FaExclamationTriangle style={{ marginRight: '10px', color: '#f59e0b' }} />
+              Atletas Sin Test Este Mes ({atletasPendientes.length})
+            </h3>
+            <button 
+              className={styles.toggleButton}
+              onClick={() => setShowPendientes(!showPendientes)}
+            >
+              {showPendientes ? <FaEyeSlash /> : <FaEye />}
+              {showPendientes ? ' Ocultar' : ' Ver Detalles'}
+            </button>
+          </div>
+          
+          {showPendientes && (
+            <>
+              {/* Botones de filtro por categoría */}
+              <div className={styles.categoriaFilters}>
+                <button
+                  className={`${styles.categoriaFilterBtn} ${categoriaSeleccionadaPendientes === 'todas' ? styles.active : ''}`}
+                  onClick={() => setCategoriaSeleccionadaPendientes('todas')}
+                >
+                  <FaUsers /> Todas ({atletasPendientes.length})
+                </button>
+                {Object.keys(atletasPendientesPorCategoria).sort().map(categoria => (
+                  <button
+                    key={categoria}
+                    className={`${styles.categoriaFilterBtn} ${categoriaSeleccionadaPendientes === categoria ? styles.active : ''}`}
+                    onClick={() => setCategoriaSeleccionadaPendientes(categoria)}
+                  >
+                    {categoria.replaceAll('_', ' ').toUpperCase()}
+                    <span className={styles.filterCount}>
+                      ({atletasPendientesPorCategoria[categoria].length})
+                    </span>
+                  </button>
+                ))}
+              </div>
+
+              {/* Contenido filtrado por categoría */}
+              <div className={styles.pendientesCategorias}>
+                {categoriaSeleccionadaPendientes === 'todas' ? (
+                  // Mostrar todas las categorías
+                  Object.keys(atletasPendientesPorCategoria).sort().map(categoria => (
+                    <div key={categoria} className={styles.categoriaGroup}>
+                      <h4 className={styles.categoriaTitulo}>
+                        {categoria.replaceAll('_', ' ').toUpperCase()}
+                        <span className={styles.categoriaCount}>
+                          ({atletasPendientesPorCategoria[categoria].length})
+                        </span>
+                      </h4>
+                      <div className={styles.pendientesGrid}>
+                        {atletasPendientesPorCategoria[categoria].map(atleta => (
+                          <div key={atleta.id} className={styles.pendienteCard}>
+                            <div className={styles.pendienteInfo}>
+                              <h4>{atleta.full_name}</h4>
+                            </div>
+                            <button
+                              className={styles.quickAddButton}
+                              onClick={() => {
+                                setFormData({
+                                  ...formData,
+                                  student_id: atleta.id
+                                });
+                                setSearchTerm(`${atleta.full_name} (${atleta.categoria?.replaceAll('_', ' ').toUpperCase()})`);
+                                openModal();
+                              }}
+                              title="Agregar test físico"
+                            >
+                              <FaPlus />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  // Mostrar solo la categoría seleccionada
+                  atletasPendientesPorCategoria[categoriaSeleccionadaPendientes] && (
+                    <div className={styles.categoriaGroup}>
+                      <div className={styles.pendientesGrid}>
+                        {atletasPendientesPorCategoria[categoriaSeleccionadaPendientes].map(atleta => (
+                          <div key={atleta.id} className={styles.pendienteCard}>
+                            <div className={styles.pendienteInfo}>
+                              <h4>{atleta.full_name}</h4>
+                            </div>
+                            <button
+                              className={styles.quickAddButton}
+                              onClick={() => {
+                                setFormData({
+                                  ...formData,
+                                  student_id: atleta.id
+                                });
+                                setSearchTerm(`${atleta.full_name} (${atleta.categoria?.replaceAll('_', ' ').toUpperCase()})`);
+                                openModal();
+                              }}
+                              title="Agregar test físico"
+                            >
+                              <FaPlus />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )
+                )}
+              </div>
+            </>
+          )}
+        </div>
+      )}
+
       {/* Filtros */}
       <div className={styles.filtersSection}>
         <div className={styles.filterGroup}>
+          <label><FaFilter /> Filtrar por Atleta</label>
           <select
             value={filters.atletaId}
             onChange={(e) => setFilters({...filters, atletaId: e.target.value})}
@@ -415,6 +697,7 @@ const TestsFisicosManager = ({ user }) => {
         </div>
         
         <div className={styles.filterGroup}>
+          <label><FaCalendarAlt /> Desde</label>
           <input
             type="date"
             placeholder="Fecha desde"
@@ -425,6 +708,7 @@ const TestsFisicosManager = ({ user }) => {
         </div>
 
         <div className={styles.filterGroup}>
+          <label><FaCalendarAlt /> Hasta</label>
           <input
             type="date"
             placeholder="Fecha hasta"
@@ -435,13 +719,27 @@ const TestsFisicosManager = ({ user }) => {
         </div>
         
         <div className={styles.filterGroup}>
+          <label htmlFor="search-tests"><FaSearch /> Buscar</label>
           <input
+            id="search-tests"
             type="text"
             placeholder="Buscar por atleta u observaciones..."
             value={filters.search}
             onChange={(e) => setFilters({...filters, search: e.target.value})}
             className={styles.searchInput}
           />
+        </div>
+
+        <div className={styles.filterGroup}>
+          <label className={styles.checkboxLabel}>
+            <input
+              type="checkbox"
+              checked={filters.onlyPending}
+              onChange={(e) => setFilters({...filters, onlyPending: e.target.checked})}
+              className={styles.checkbox}
+            />
+            <span>Solo sin test este mes</span>
+          </label>
         </div>
       </div>
 
@@ -454,99 +752,183 @@ const TestsFisicosManager = ({ user }) => {
       ) : (
         <div className={styles.testsGrid}>
           {tests.length > 0 ? (
-            tests.map(test => (
-              <div key={test.id} className={styles.testCard}>
-                <div className={styles.testHeader}>
-                  <h3>{test.atleta_name}</h3>
-                  <div className={styles.testActions}>
-                    <button 
-                      onClick={() => openModal(test)}
-                      className={styles.editButton}
-                      title="Editar"
-                    >
-                      <FaEdit />
-                    </button>
-                    <button 
-                      onClick={() => deleteTest(test)}
-                      className={styles.deleteButton}
-                      title="Eliminar"
-                    >
-                      <FaTrash />
-                    </button>
+            tests.map(test => {
+              const previousTest = getPreviousTest(test);
+              const hasComparison = previousTest !== null;
+
+              return (
+                <div key={test.id} className={styles.testCard}>
+                  <div className={styles.testHeader}>
+                    <div className={styles.testHeaderLeft}>
+                      <h3>{test.atleta_name}</h3>
+                      <span className={styles.categoria}>
+                        {test.students?.categoria?.replaceAll('_', ' ').toUpperCase()}
+                      </span>
+                    </div>
+                    <div className={styles.testActions}>
+                      <button 
+                        onClick={() => openModal(test)}
+                        className={styles.editButton}
+                        title="Editar"
+                      >
+                        <FaEdit />
+                      </button>
+                      <button 
+                        onClick={() => deleteTest(test)}
+                        className={styles.deleteButton}
+                        title="Eliminar"
+                      >
+                        <FaTrash />
+                      </button>
+                    </div>
+                  </div>
+                  
+                  <div className={styles.testDate}>
+                    <FaCalendarAlt />
+                    <span>{new Date(test.fecha_test).toLocaleDateString('es-ES', { 
+                      day: '2-digit', 
+                      month: 'long', 
+                      year: 'numeric' 
+                    })}</span>
+                  </div>
+
+                  {hasComparison && (
+                    <div className={styles.comparisonBadge}>
+                      <FaChartLine /> Con datos de comparación
+                    </div>
+                  )}
+                  
+                  <div className={styles.testInfo}>
+                    {test.estatura && (
+                      <div className={styles.infoItem}>
+                        <span className={styles.label}><FaRulerVertical /> Estatura:</span>
+                        <div className={styles.valueWithChange}>
+                          <span className={styles.value}>{test.estatura}m</span>
+                          {hasComparison && previousTest.estatura && 
+                            renderChangeIndicator(calculateChange(test.estatura, previousTest.estatura))
+                          }
+                        </div>
+                      </div>
+                    )}
+                    
+                    {test.peso && (
+                      <div className={styles.infoItem}>
+                        <span className={styles.label}><FaWeight /> Peso:</span>
+                        <div className={styles.valueWithChange}>
+                          <span className={styles.value}>{test.peso}kg</span>
+                          {hasComparison && previousTest.peso && 
+                            renderChangeIndicator(calculateChange(test.peso, previousTest.peso))
+                          }
+                        </div>
+                      </div>
+                    )}
+                    
+                    {test.brazo_extend_inicial && (
+                      <div className={styles.infoItem}>
+                        <span className={styles.label}><FaHandPaper /> Ext. brazo inicial:</span>
+                        <div className={styles.valueWithChange}>
+                          <span className={styles.value}>{test.brazo_extend_inicial}cm</span>
+                          {hasComparison && previousTest.brazo_extend_inicial && 
+                            renderChangeIndicator(calculateChange(test.brazo_extend_inicial, previousTest.brazo_extend_inicial))
+                          }
+                        </div>
+                      </div>
+                    )}
+
+                    {test.brazo_extend_sin_impulso && (
+                      <div className={styles.infoItem}>
+                        <span className={styles.label}><FaHandPaper /> Ext. sin impulso:</span>
+                        <div className={styles.valueWithChange}>
+                          <span className={styles.value}>{test.brazo_extend_sin_impulso}cm</span>
+                          {hasComparison && previousTest.brazo_extend_sin_impulso && 
+                            renderChangeIndicator(calculateChange(test.brazo_extend_sin_impulso, previousTest.brazo_extend_sin_impulso))
+                          }
+                        </div>
+                      </div>
+                    )}
+
+                    {test.brazo_extend_con_impulso && (
+                      <div className={styles.infoItem}>
+                        <span className={styles.label}><FaHandPaper /> Ext. con impulso:</span>
+                        <div className={styles.valueWithChange}>
+                          <span className={styles.value}>{test.brazo_extend_con_impulso}cm</span>
+                          {hasComparison && previousTest.brazo_extend_con_impulso && 
+                            renderChangeIndicator(calculateChange(test.brazo_extend_con_impulso, previousTest.brazo_extend_con_impulso))
+                          }
+                        </div>
+                      </div>
+                    )}
+                    
+                    {test.fuerza_explosiva_salto_largo && (
+                      <div className={styles.infoItem}>
+                        <span className={styles.label}><FaRunning /> Salto largo:</span>
+                        <div className={styles.valueWithChange}>
+                          <span className={styles.value}>{test.fuerza_explosiva_salto_largo}m</span>
+                          {hasComparison && previousTest.fuerza_explosiva_salto_largo && 
+                            renderChangeIndicator(calculateChange(test.fuerza_explosiva_salto_largo, previousTest.fuerza_explosiva_salto_largo))
+                          }
+                        </div>
+                      </div>
+                    )}
+                    
+                    {test.fuerza_abdomen && (
+                      <div className={styles.infoItem}>
+                        <span className={styles.label}><FaFire /> Abdominales:</span>
+                        <div className={styles.valueWithChange}>
+                          <span className={styles.value}>{test.fuerza_abdomen} reps</span>
+                          {hasComparison && previousTest.fuerza_abdomen && 
+                            renderChangeIndicator(calculateChange(test.fuerza_abdomen, previousTest.fuerza_abdomen))
+                          }
+                        </div>
+                      </div>
+                    )}
+                    
+                    {test.fuerza_brazos && (
+                      <div className={styles.infoItem}>
+                        <span className={styles.label}><FaDumbbell /> Flexiones:</span>
+                        <div className={styles.valueWithChange}>
+                          <span className={styles.value}>{test.fuerza_brazos} reps</span>
+                          {hasComparison && previousTest.fuerza_brazos && 
+                            renderChangeIndicator(calculateChange(test.fuerza_brazos, previousTest.fuerza_brazos))
+                          }
+                        </div>
+                      </div>
+                    )}
+                    
+                    {test.fuerza_piernas && (
+                      <div className={styles.infoItem}>
+                        <span className={styles.label}><FaRunning /> Sentadillas:</span>
+                        <div className={styles.valueWithChange}>
+                          <span className={styles.value}>{test.fuerza_piernas} reps</span>
+                          {hasComparison && previousTest.fuerza_piernas && 
+                            renderChangeIndicator(calculateChange(test.fuerza_piernas, previousTest.fuerza_piernas))
+                          }
+                        </div>
+                      </div>
+                    )}
+                    
+                    {test.elevaciones_barra && (
+                      <div className={styles.infoItem}>
+                        <span className={styles.label}><FaArrowsAltH /> Elevaciones:</span>
+                        <div className={styles.valueWithChange}>
+                          <span className={styles.value}>{test.elevaciones_barra} reps</span>
+                          {hasComparison && previousTest.elevaciones_barra && 
+                            renderChangeIndicator(calculateChange(test.elevaciones_barra, previousTest.elevaciones_barra))
+                          }
+                        </div>
+                      </div>
+                    )}
+                    
+                    {test.observaciones && (
+                      <div className={styles.observacionesSection}>
+                        <span className={styles.label}><FaStickyNote /> Observaciones:</span>
+                        <p className={styles.observaciones}>{test.observaciones}</p>
+                      </div>
+                    )}
                   </div>
                 </div>
-                
-                <div className={styles.testInfo}>
-                  <div className={styles.infoItem}>
-                    <span className={styles.label}>Fecha:</span>
-                    <span>{new Date(test.fecha_test).toLocaleDateString()}</span>
-                  </div>
-                  
-                  {test.estatura && (
-                    <div className={styles.infoItem}>
-                      <span className={styles.label}>Estatura:</span>
-                      <span>{test.estatura}m</span>
-                    </div>
-                  )}
-                  
-                  {test.peso && (
-                    <div className={styles.infoItem}>
-                      <span className={styles.label}>Peso:</span>
-                      <span>{test.peso}kg</span>
-                    </div>
-                  )}
-                  
-                  {test.brazo_extend_inicial && (
-                    <div className={styles.infoItem}>
-                      <span className={styles.label}>Extensión brazo inicial:</span>
-                      <span>{test.brazo_extend_inicial}cm</span>
-                    </div>
-                  )}
-                  
-                  {test.fuerza_explosiva_salto_largo && (
-                    <div className={styles.infoItem}>
-                      <span className={styles.label}>Salto largo:</span>
-                      <span>{test.fuerza_explosiva_salto_largo}m</span>
-                    </div>
-                  )}
-                  
-                  {test.fuerza_abdomen && (
-                    <div className={styles.infoItem}>
-                      <span className={styles.label}>Abdominales (1min):</span>
-                      <span>{test.fuerza_abdomen} reps</span>
-                    </div>
-                  )}
-                  
-                  {test.fuerza_brazos && (
-                    <div className={styles.infoItem}>
-                      <span className={styles.label}>Flexiones (1min):</span>
-                      <span>{test.fuerza_brazos} reps</span>
-                    </div>
-                  )}
-                  
-                  {test.fuerza_piernas && (
-                    <div className={styles.infoItem}>
-                      <span className={styles.label}>Sentadillas (1min):</span>
-                      <span>{test.fuerza_piernas} reps</span>
-                    </div>
-                  )}
-                  
-                  {test.elevaciones_barra && (
-                    <div className={styles.infoItem}>
-                      <span className={styles.label}>Elevaciones (1min):</span>
-                      <span>{test.elevaciones_barra} reps</span>
-                    </div>
-                  )}
-                  
-                  {test.observaciones && (
-                    <div className={styles.infoItem}>
-                      <span className={styles.label}>Observaciones:</span>
-                      <span>{test.observaciones}</span>
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))
+              );
+            })
           ) : (
             <div className={styles.noTests}>
               <h3><FaDumbbell style={{ marginRight: '8px', verticalAlign: 'middle' }} /> No hay tests físicos registrados</h3>
@@ -580,7 +962,7 @@ const TestsFisicosManager = ({ user }) => {
               
               {/* Información General */}
               <div className={styles.formSection}>
-                <h4 className={styles.sectionTitle}>📋 Información General</h4>
+                <h4 className={styles.sectionTitle}><FaCalendarAlt /> Información General</h4>
                 <div className={styles.formGrid}>
                   <div className={styles.inputGroup}>
                     <label htmlFor="student_search">Atleta *</label>
@@ -658,7 +1040,7 @@ const TestsFisicosManager = ({ user }) => {
 
               {/* Mediciones Corporales */}
               <div className={styles.formSection}>
-                <h4 className={styles.sectionTitle}>📏 Mediciones Corporales</h4>
+                <h4 className={styles.sectionTitle}><FaRulerVertical /> Mediciones Corporales</h4>
                 <div className={styles.formGrid}>
                   <div className={styles.inputGroup}>
                     <label htmlFor="estatura">Estatura (m)</label>
@@ -706,7 +1088,7 @@ const TestsFisicosManager = ({ user }) => {
 
               {/* Tests de Fuerza */}
               <div className={styles.formSection}>
-                <h4 className={styles.sectionTitle}>Tests de Fuerza y Explosividad</h4>
+                <h4 className={styles.sectionTitle}><FaDumbbell /> Tests de Fuerza y Explosividad</h4>
                 <div className={styles.formGrid}>
                   <div className={styles.inputGroup}>
                     <label htmlFor="brazo_inicial">Extensión brazo inicial (cm)</label>
@@ -768,7 +1150,7 @@ const TestsFisicosManager = ({ user }) => {
 
               {/* Pruebas de Fuerza Muscular */}
               <div className={styles.formSection}>
-                <h4 className={styles.sectionTitle}>Fuerza Muscular (repeticiones por minuto)</h4>
+                <h4 className={styles.sectionTitle}><FaFire /> Fuerza Muscular (repeticiones por minuto)</h4>
                 <div className={styles.formGrid}>
                   <div className={styles.inputGroup}>
                     <label htmlFor="fuerza_abdomen">Abdominales (1 min)</label>
@@ -826,7 +1208,7 @@ const TestsFisicosManager = ({ user }) => {
 
               {/* Observaciones */}
               <div className={styles.formSection}>
-                <h4 className={styles.sectionTitle}>Observaciones</h4>
+                <h4 className={styles.sectionTitle}><FaStickyNote /> Observaciones</h4>
                 <div className={styles.inputGroup}>
                   <label htmlFor="observaciones">Comentarios adicionales</label>
                   <textarea

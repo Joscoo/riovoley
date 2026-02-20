@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/Dashboard.module.css';
+import { getEcuadorDate, getEcuadorFirstDayOfMonth, getEcuadorLastDayOfMonth } from '../../utils/dateUtils';
 import { FaUsers, FaDollarSign, FaExclamationTriangle, FaChartBar, FaRunning, FaClipboardList, FaBolt, FaUserPlus, FaCreditCard, FaUsersCog, FaCheckCircle, FaVolleyballBall } from 'react-icons/fa';
 
 // Componente StatCard separado para evitar problemas de lint
@@ -114,17 +115,16 @@ const Dashboard = ({ user, onNavigateToSection }) => {
 
   const loadPagosStats = async () => {
     try {
-      const currentDate = new Date();
-      const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-      const lastDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+      const firstDayOfMonth = getEcuadorFirstDayOfMonth();
+      const lastDayOfMonth = getEcuadorLastDayOfMonth();
 
       // Ingresos del mes actual - solo pagos que tienen fecha_pago (han sido pagados)
       const { data: pagosDelMes } = await supabase
         .from('payments')
         .select('monto')
         .not('fecha_pago', 'is', null)
-        .gte('fecha_pago', firstDayOfMonth.toISOString().split('T')[0])
-        .lte('fecha_pago', lastDayOfMonth.toISOString().split('T')[0]);
+        .gte('fecha_pago', firstDayOfMonth)
+        .lte('fecha_pago', lastDayOfMonth);
 
       const ingresos = pagosDelMes?.reduce((sum, pago) => sum + (pago.monto || 0), 0) || 0;
 
@@ -143,7 +143,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
 
   const loadAsistenciasStats = async () => {
     try {
-      const today = new Date().toISOString().split('T')[0];
+      const today = getEcuadorDate();
 
       const { count: hoy } = await supabase
         .from('attendances')
