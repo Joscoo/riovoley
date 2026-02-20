@@ -296,7 +296,7 @@
 .detailIcon svg {
   width: 20px;
   height: 20px;
-  stroke: var(--primary-gold);
+  color: #ffffff;
 }
 
 .detailContent {
@@ -340,8 +340,8 @@
 .descriptionIcon svg {
   width: 18px;
   height: 18px;
-  color: var(--primary-gold);
-  opacity: 0.8;
+  color: #ffffff;
+  opacity: 0.9;
 }
 
 .descriptionText {
@@ -496,7 +496,7 @@
 
 .filterIcon {
   font-size: 1.5rem;
-  color: var(--primary-gold);
+  color: #ffffff;
 }
 
 .dayFilter {
@@ -558,6 +558,7 @@
 
 .dayIcon {
   font-size: 1.8rem;
+  color: #ffffff;
 }
 
 /* Category Badge */
