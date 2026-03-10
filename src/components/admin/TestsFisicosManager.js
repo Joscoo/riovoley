@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
-import { getEcuadorDate } from '../../utils/dateUtils';
+import { getEcuadorDate, getEcuadorISOString, getEcuadorDateTime } from '../../utils/dateUtils';
 import styles from '../../styles/TestsFisicosManager.module.css';
 import { 
   FaEdit, FaPlus, FaClock, FaSave, FaDumbbell, FaTrash, 
@@ -75,7 +75,7 @@ const TestsFisicosManager = ({ user }) => {
 
   // Función para calcular estadísticas
   const calculateStats = () => {
-    const now = new Date();
+    const now = getEcuadorDateTime();
     const firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
     const lastDayOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
 
@@ -248,7 +248,7 @@ const TestsFisicosManager = ({ user }) => {
 
       // Validar fecha no futura
       const fechaTest = new Date(formData.fecha_test);
-      const hoy = new Date();
+      const hoy = getEcuadorDateTime();
       hoy.setHours(23, 59, 59, 999);
       
       if (fechaTest > hoy) {
@@ -317,7 +317,7 @@ const TestsFisicosManager = ({ user }) => {
       elevaciones_barra: formData.elevaciones_barra ? Number.parseInt(formData.elevaciones_barra) : null,
       observaciones: formData.observaciones || null,
       fecha_test: formData.fecha_test,
-      modified_at: new Date().toISOString()
+      modified_at: getEcuadorISOString()
     };
 
     const { error } = await supabase
@@ -347,7 +347,7 @@ const TestsFisicosManager = ({ user }) => {
       elevaciones_barra: formData.elevaciones_barra ? Number.parseInt(formData.elevaciones_barra) : null,
       observaciones: formData.observaciones || null,
       fecha_test: formData.fecha_test,
-      modified_at: new Date().toISOString() // Agregar el campo que el trigger espera
+      modified_at: getEcuadorISOString() // Agregar el campo que el trigger espera
     };
 
     console.log('Actualizando test físico:', testData);

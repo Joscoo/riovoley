@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/Dashboard.module.css';
-import { getEcuadorDate, getEcuadorFirstDayOfMonth, getEcuadorLastDayOfMonth } from '../../utils/dateUtils';
+import { getEcuadorDate, getEcuadorFirstDayOfMonth, getEcuadorLastDayOfMonth, calcularDiferenciaDias } from '../../utils/dateUtils';
 import { FaUsers, FaDollarSign, FaExclamationTriangle, FaChartBar, FaRunning, FaClipboardList, FaBolt, FaUserPlus, FaCreditCard, FaUsersCog, FaCheckCircle, FaVolleyballBall } from 'react-icons/fa';
 
 // Componente StatCard separado para evitar problemas de lint
@@ -36,6 +36,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
     totalAtletas: 0,
     ingresosDelMes: 0,
     pagosVencidos: 0,
+    renovacionesPendientes: 0,
     asistenciasHoy: 0,
     atletasActivos: 0,
     loading: true
@@ -70,11 +71,18 @@ const Dashboard = ({ user, onNavigateToSection }) => {
         loadCategoriesStats()
       ]);
 
+      console.log('📊 Debug - Datos recibidos:', {
+        atletasData,
+        pagosData,
+        asistenciasData
+      });
+
       setStats({
         totalAtletas: atletasData.total || 0,
         atletasActivos: atletasData.activos || 0,
         ingresosDelMes: pagosData.ingresos || 0,
-        pagosVencidos: pagosData.vencidos || 0,
+        pagosVencidos: pagosData.pagosVencidos || 0,
+        renovacionesPendientes: pagosData.renovacionesPendientes || 0,
         asistenciasHoy: asistenciasData.hoy || 0,
         loading: false
       });
@@ -115,29 +123,80 @@ const Dashboard = ({ user, onNavigateToSection }) => {
 
   const loadPagosStats = async () => {
     try {
+      const hoy = getEcuadorDate();
       const firstDayOfMonth = getEcuadorFirstDayOfMonth();
       const lastDayOfMonth = getEcuadorLastDayOfMonth();
 
-      // Ingresos del mes actual - solo pagos que tienen fecha_pago (han sido pagados)
+      // Ingresos del mes actual
       const { data: pagosDelMes } = await supabase
         .from('payments')
         .select('monto')
         .not('fecha_pago', 'is', null)
         .gte('fecha_pago', firstDayOfMonth)
-        .lte('fecha_pago', lastDayOfMonth);
+        .lte('fecha_pago', lastDayOfMonth)
+        .is('deleted_at', null);
 
       const ingresos = pagosDelMes?.reduce((sum, pago) => sum + (pago.monto || 0), 0) || 0;
 
-      // Pagos vencidos
-      const { count: vencidos } = await supabase
+      // NUEVA LÓGICA OPTIMIZADA: Solo atletas con historial de pagos
+      // 1. Obtener todos los pagos (no eliminados) ordenados por fecha más reciente
+      const { data: todosPagos, error: pagosError } = await supabase
         .from('payments')
-        .select('*', { count: 'exact', head: true })
-        .eq('estado', 'vencido');
+        .select('student_id, fecha_fin, fecha_inicio')
+        .is('deleted_at', null)
+        .order('fecha_fin', { ascending: false });
 
-      return { ingresos, vencidos: vencidos || 0 };
+      if (pagosError) {
+        console.error('❌ Error cargando pagos:', pagosError);
+        throw pagosError;
+      }
+
+      if (!todosPagos || todosPagos.length === 0) {
+        return { ingresos, vencidos: 0, renovacionesPendientes: 0 };
+      }
+
+      // 2. Agrupar pagos por atleta y obtener solo el último de cada uno
+      const ultimosPagos = new Map();
+      (todosPagos || []).forEach(pago => {
+        if (!ultimosPagos.has(pago.student_id)) {
+          ultimosPagos.set(pago.student_id, pago);
+        }
+      });
+
+      console.log(`🔍 Debug - Atletas con historial de pagos: ${ultimosPagos.size}`);
+      console.log(`🔍 Debug - Fecha de hoy: ${hoy}`);
+
+      // 3. Calcular estadísticas SOLO para atletas con pagos
+      let vencidos = 0;
+      let proximosVencer = 0;
+
+      ultimosPagos.forEach((ultimoPago, studentId) => {
+        const diferenciaDias = calcularDiferenciaDias(ultimoPago.fecha_fin, hoy);
+
+        console.log(`   Atleta ${studentId}: fecha_fin=${ultimoPago.fecha_fin}, días=${diferenciaDias}`);
+
+        if (diferenciaDias <= 0) {
+          // Período vencido (hoy o antes)
+          vencidos++;
+        } else if (diferenciaDias <= 5) {
+          // Próximo a vencer (1-5 días restantes)
+          proximosVencer++;
+        }
+      });
+
+      console.log(`📊 Estadísticas de períodos:`);
+      console.log(`   🔴 Períodos vencidos: ${vencidos} atletas`);
+      console.log(`   🟡 Próximos a vencer (≤5 días): ${proximosVencer} atletas`);
+      console.log(`   🟢 Total atletas con pagos: ${ultimosPagos.size}`);
+
+      return { 
+        ingresos, 
+        pagosVencidos: vencidos,  // ← Nombre correcto para el estado
+        renovacionesPendientes: proximosVencer
+      };
     } catch (error) {
       console.error('Error cargando stats de pagos:', error);
-      return { ingresos: 0, vencidos: 0 };
+      return { ingresos: 0, pagosVencidos: 0, renovacionesPendientes: 0 };
     }
   };
 
@@ -307,11 +366,20 @@ const Dashboard = ({ user, onNavigateToSection }) => {
         />
         
         <StatCard
-          title="Pagos Vencidos"
+          title="Períodos Vencidos"
           value={stats.pagosVencidos}
           icon={<FaExclamationTriangle />}
-          color={stats.pagosVencidos > 0 ? "#dc3545" : "#ffc107"}
-          subtitle={stats.pagosVencidos > 0 ? "Requieren seguimiento" : "Todo al día"}
+          color={stats.pagosVencidos > 0 ? "#dc3545" : "#28a745"}
+          subtitle={stats.pagosVencidos > 0 ? "Necesitan registrar nuevo pago" : "Todos con período vigente"}
+          loading={stats.loading}
+        />
+        
+        <StatCard
+          title="Próximos a Vencer"
+          value={stats.renovacionesPendientes}
+          icon={<FaCreditCard />}
+          color={stats.renovacionesPendientes > 0 ? "#ff9800" : "#28a745"}
+          subtitle={stats.renovacionesPendientes > 0 ? "Vencen en 5 días o menos" : "Sin vencimientos próximos"}
           loading={stats.loading}
         />
         

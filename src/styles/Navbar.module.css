@@ -60,11 +60,11 @@
   transform: translateY(-2px);
 }
 
-/* Contenedor para agrupar enlaces y botón a la derecha */
+/* Contenedor para agrupar enlaces, notificaciones y botón a la derecha */
 .rightContent {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 15px;
   margin-left: auto; /* Empuja todo hacia la derecha */
 }
 
@@ -233,15 +233,26 @@
   display: none;
 }
 
+/* Campana móvil - oculta en desktop */
+.mobileNotificationBell {
+  display: none;
+}
+
 /* RESPONSIVO: MÓVILES Y TABLETS */
 @media(max-width: 768px) {
   .navbar {
     padding: 0 15px;
     height: 65px; /* Aumentar altura en móvil para mejor toque */
+    display: flex;
+    justify-content: space-between;
   }
 
   .title {
     font-size: 1.5em;
+  }
+
+  .logoContainer {
+    order: 1;
   }
 
   .logo {
@@ -254,6 +265,14 @@
     display: none !important;
   }
 
+  /* Mostrar campana de notificaciones en móvil */
+  .mobileNotificationBell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: 2;
+  }
+
   /* Mostrar botón hamburguesa - mejorado para móvil */
   .menuToggle {
     display: flex;
@@ -264,6 +283,7 @@
     min-width: 50px;
     min-height: 50px;
     border-radius: 8px;
+    order: 3;
   }
 
   /* Contenedor del menú desplegable móvil - mejorado */
@@ -388,17 +408,18 @@
   }
   
   .title {
-    font-size: 1.3em;
+    font-size: 1.2em;
   }
 
   .logo {
-    height: 35px;
+    height: 40px;
+    margin-right: 10px;
   }
 
   .menuToggle {
     min-width: 45px;
     min-height: 45px;
-    font-size: 1.8em;
+    font-size: 1.6em;
   }
 
   .linksContainer {

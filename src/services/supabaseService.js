@@ -1,5 +1,6 @@
 // src/services/supabaseService.js
 import { supabase } from '../config/supabase';
+import { getEcuadorISOString } from '../utils/dateUtils';
 
 // ==================== OPERACIONES DE PERFILES DE USUARIO ====================
 
@@ -76,7 +77,7 @@ export const upsertUserProfile = async (userId, profileData) => {
       .upsert({
         id: userId,
         ...profileData,
-        updated_at: new Date().toISOString()
+        updated_at: getEcuadorISOString()
       })
       .select()
       .single();
