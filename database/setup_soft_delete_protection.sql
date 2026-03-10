@@ -22,7 +22,7 @@ WHERE deleted_at IS NULL;
 
 CREATE TABLE IF NOT EXISTS payments_audit (
   id BIGSERIAL PRIMARY KEY,
-  payment_id BIGINT,
+  payment_id UUID,
   action VARCHAR(10), -- INSERT, UPDATE, DELETE
   old_data JSONB,
   new_data JSONB,
@@ -83,7 +83,7 @@ WHERE deleted_at IS NULL;
 -- 7. Crear función para soft delete
 -- ============================================
 
-CREATE OR REPLACE FUNCTION soft_delete_payment(payment_id BIGINT)
+CREATE OR REPLACE FUNCTION soft_delete_payment(payment_id UUID)
 RETURNS BOOLEAN AS $$
 BEGIN
   UPDATE payments
@@ -98,7 +98,7 @@ $$ LANGUAGE plpgsql SECURITY DEFINER;
 -- 8. Crear función para restaurar pagos
 -- ============================================
 
-CREATE OR REPLACE FUNCTION restore_payment(payment_id BIGINT)
+CREATE OR REPLACE FUNCTION restore_payment(payment_id UUID)
 RETURNS BOOLEAN AS $$
 BEGIN
   UPDATE payments
