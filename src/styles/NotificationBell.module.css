@@ -1,0 +1,302 @@
+/* Contenedor principal */
+.notificationBell {
+  position: relative;
+  display: inline-block;
+}
+
+/* Botón de campana */
+.bellButton {
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bellButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.bellIcon {
+  font-size: 22px;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.bellButton:hover .bellIcon {
+  transform: scale(1.1);
+  animation: ring 0.5s ease;
+}
+
+@keyframes ring {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-15deg); }
+  50% { transform: rotate(15deg); }
+  75% { transform: rotate(-10deg); }
+}
+
+/* Badge contador */
+.badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: #dc3545;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 5px;
+  border-radius: 10px;
+  min-width: 18px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 380px;
+  max-height: 500px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  overflow: hidden;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header del dropdown */
+.dropdownHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 2px solid #f0f0f0;
+  background: #f8f9fa;
+}
+
+.dropdownHeader h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.count {
+  background: #007bff;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Contenido del dropdown */
+.dropdownContent {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.dropdownContent::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdownContent::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.dropdownContent::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.dropdownContent::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* Lista de notificaciones */
+.notificationList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Item de notificación */
+.notificationItem {
+  display: flex;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s ease;
+  cursor: pointer;
+}
+
+.notificationItem:hover {
+  background: #f8f9fa;
+}
+
+.notificationItem:last-child {
+  border-bottom: none;
+}
+
+/* Tipos de notificaciones */
+.notificationItem.danger {
+  border-left: 3px solid #dc3545;
+}
+
+.notificationItem.danger .notifIcon {
+  color: #dc3545;
+}
+
+.notificationItem.warning {
+  border-left: 3px solid #ff9800;
+}
+
+.notificationItem.warning .notifIcon {
+  color: #ff9800;
+}
+
+.notificationItem.info {
+  border-left: 3px solid #17a2b8;
+}
+
+.notificationItem.info .notifIcon {
+  color: #17a2b8;
+}
+
+/* Ícono de notificación */
+.notifIcon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Contenido de notificación */
+.notifContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.notifMensaje {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  line-height: 1.4;
+}
+
+.notifDescripcion {
+  margin: 4px 0;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.3;
+}
+
+.notifFecha {
+  font-size: 11px;
+  color: #999;
+  text-transform: uppercase;
+}
+
+/* Estados especiales */
+.loading,
+.empty {
+  padding: 40px 20px;
+  text-align: center;
+  color: #999;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.empty svg {
+  font-size: 40px;
+  color: #ddd;
+}
+
+.empty p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .dropdown {
+    width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dropdown {
+    position: fixed;
+    width: 340px;
+    right: 10px;
+    left: auto;
+  }
+
+  .notifMensaje {
+    font-size: 13px;
+  }
+
+  .notifDescripcion {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dropdown {
+    position: fixed;
+    top: 65px !important;
+    left: 5px;
+    right: 5px;
+    width: auto;
+    max-height: calc(100vh - 75px);
+  }
+
+  .dropdownContent {
+    max-height: calc(100vh - 145px);
+  }
+
+  .bellButton {
+    padding: 6px 10px;
+  }
+
+  .bellIcon {
+    font-size: 20px;
+  }
+
+  .badge {
+    top: 2px;
+    right: 2px;
+    font-size: 9px;
+    min-width: 16px;
+    padding: 1px 4px;
+  }
+}

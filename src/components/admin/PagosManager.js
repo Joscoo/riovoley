@@ -6,7 +6,7 @@ import { EmailService } from '../../services/emailService';
 import WhatsAppService from '../../services/whatsappService';
 import WhatsAppBusinessService from '../../services/whatsappBusinessService';
 import PagoStatusService from '../../services/pagoStatusService';
-import { getEcuadorDate } from '../../utils/dateUtils';
+import { getEcuadorDate, getEcuadorISOString } from '../../utils/dateUtils';
 import styles from '../../styles/PagosManager.module.css';
 import { 
   FaChartBar, 
@@ -397,7 +397,7 @@ const PagosManager = ({ user }) => {
       // Soft delete: marcar como eliminado en lugar de borrar
       const { error } = await supabase
         .from('payments')
-        .update({ deleted_at: new Date().toISOString() })
+        .update({ deleted_at: getEcuadorISOString() })
         .eq('id', pago.id);
 
       if (error) throw error;
@@ -595,11 +595,12 @@ const PagosManager = ({ user }) => {
   };
 
   const calcularEstadisticas = () => {
-    const totalPagos = pagos.length;
-    const activos = pagos.filter(p => p.estado === 'activo').length;
-    const proximosVencer = pagos.filter(p => p.estado === 'proximo_a_vencer').length;
-    const vencidos = pagos.filter(p => p.estado === 'vencido').length;
-    const totalRecaudado = pagos
+    // Las estadísticas deben calcularse sobre TODOS los pagos, no solo los filtrados
+    const totalPagos = allPagos.length;
+    const activos = allPagos.filter(p => p.estado === 'activo').length;
+    const proximosVencer = allPagos.filter(p => p.estado === 'proximo_a_vencer').length;
+    const vencidos = allPagos.filter(p => p.estado === 'vencido').length;
+    const totalRecaudado = allPagos
       .filter(p => p.estado === 'activo')
       .reduce((sum, p) => sum + (p.monto || 0), 0);
 

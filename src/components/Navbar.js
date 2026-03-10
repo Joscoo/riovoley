@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { supabase } from '../config/supabase';
 import { FaUser, FaUserShield, FaChalkboardTeacher, FaBars } from 'react-icons/fa';
+import NotificationBell from './NotificationBell';
 import styles from '../styles/Navbar.module.css';
 
 // Función auxiliar para obtener color del rol
@@ -82,6 +83,11 @@ const Navbar = ({ user, userProfile, onLogout }) => {
           )}
         </ul>
 
+        {/* Campana de notificaciones (solo si hay usuario logueado) */}
+        {user && userProfile?.role && (
+          <NotificationBell userRole={userProfile.role} />
+        )}
+
         {/* Botón de login/logout para pantallas grandes */}
         {user ? (
           <div className={styles.userSection}>
@@ -104,6 +110,13 @@ const Navbar = ({ user, userProfile, onLogout }) => {
           <Link to="/login" className={styles.loginButton}>
             Iniciar Sesión
           </Link>
+        )}
+      </div>
+
+      {/* Campana de notificaciones visible en móvil */}
+      <div className={styles.mobileNotificationBell}>
+        {user && userProfile?.role && (
+          <NotificationBell userRole={userProfile.role} />
         )}
       </div>
 

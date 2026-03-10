@@ -1,5 +1,6 @@
 // src/services/userCreationService.js
 import supabase from '../config/supabase';
+import { getEcuadorISOString } from '../utils/dateUtils';
 
 /**
  * Genera una contraseña temporal segura
@@ -97,8 +98,8 @@ export const createCompleteUser = async (userData) => {
         apellido: apellido.trim(),
         fecha_nacimiento: fecha_nacimiento,
         telefono: telefono || null,
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString()
+        created_at: getEcuadorISOString(),
+        updated_at: getEcuadorISOString()
       })
       .select()
       .single();
@@ -119,8 +120,8 @@ export const createCompleteUser = async (userData) => {
           id: authUserId,
           full_name: `${nombre} ${apellido}`,
           role: role,
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
+          created_at: getEcuadorISOString(),
+          updated_at: getEcuadorISOString()
         });
 
       if (profileError) {
@@ -194,8 +195,8 @@ export const createCompleteStudent = async (studentData) => {
         contacto_emergencia_telefono: contacto_emergencia_telefono || null,
         observaciones_medicas: observaciones_medicas || null,
         estado: 'activo',
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString()
+        created_at: getEcuadorISOString(),
+        updated_at: getEcuadorISOString()
       })
       .select()
       .single();

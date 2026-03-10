@@ -7,7 +7,7 @@ import AnunciosViewer from '../AnunciosViewer';
 import ProfileSettings from '../admin/ProfileSettings';
 import StudentPhysicalTests from './StudentPhysicalTests';
 import styles from '../../styles/StudentPanel.module.css';
-import { getEcuadorDate, getEcuadorFirstDayOfMonth, formatDateString, formatDateStringShort } from '../../utils/dateUtils';
+import { getEcuadorDate, getEcuadorFirstDayOfMonth, formatDateString, formatDateStringShort, calcularDiferenciaDias } from '../../utils/dateUtils';
 import { FaCog, FaDumbbell, FaBullhorn, FaSyncAlt, FaCheckCircle, FaStar, FaExclamationTriangle, FaClock, FaCalendar, FaMoneyBillWave, FaClipboardList, FaChartBar, FaBan, FaTimes, FaUserCircle } from 'react-icons/fa';
 
 const StudentPanel = ({ user }) => {
@@ -232,10 +232,8 @@ const StudentPanel = ({ user }) => {
                   <span className={styles.label}><FaClock style={{ marginRight: '8px', verticalAlign: 'middle' }} />Tiempo restante</span>
                   <span className={`${styles.value} ${styles.timeRemaining}`}>
                     {(() => {
-                      const today = new Date();
-                      const endDate = new Date(paymentStatus.payment.fecha_fin + 'T23:59:59');
-                      const diffTime = endDate - today;
-                      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                      const today = getEcuadorDate();
+                      const diffDays = calcularDiferenciaDias(paymentStatus.payment.fecha_fin, today);
                       
                       if (diffDays < 0) return <span className={styles.expired}><FaExclamationTriangle style={{ marginRight: '4px' }} />Vencido</span>;
                       if (diffDays === 0) return <span className={styles.urgent}><FaExclamationTriangle style={{ marginRight: '4px' }} />Vence hoy</span>;

@@ -414,8 +414,29 @@ const AsistenciasManager = ({ user }) => {
     // En la nueva lógica, solo tenemos registros de presentes
     const totalPresentes = asistencias.length; // Todos los registros son presencias
     const totalAtletas = atletas.length;
-    const ausentes = totalAtletas > 0 ? totalAtletas - totalPresentes : 0; // Estimación basada en total de atletas
-    const porcentajeAsistencia = totalAtletas > 0 ? ((totalPresentes / totalAtletas) * 100).toFixed(1) : 0;
+    
+    // Calcular estadísticas de manera diferente según el modo
+    let ausentes, porcentajeAsistencia;
+    
+    if (bulkMode) {
+      // Modo día actual: calcular sobre atletas totales del día
+      ausentes = totalAtletas > 0 ? totalAtletas - todayAttendance.filter(a => a.attendance !== null).length : 0;
+      const presentesHoy = todayAttendance.filter(a => a.attendance !== null).length;
+      porcentajeAsistencia = totalAtletas > 0 ? ((presentesHoy / totalAtletas) * 100).toFixed(1) : 0;
+    } else {
+      // Modo historial: calcular promedio por día del rango de fechas
+      const diasUnicos = new Set(asistencias.map(a => a.fecha)).size;
+      
+      if (diasUnicos > 0 && totalAtletas > 0) {
+        // Promedio de asistencia = asistencias totales / (días * atletas totales) * 100
+        porcentajeAsistencia = ((totalPresentes / (diasUnicos * totalAtletas)) * 100).toFixed(1);
+        // Ausentes promedio por día
+        ausentes = Math.round(totalAtletas - (totalPresentes / diasUnicos));
+      } else {
+        porcentajeAsistencia = 0;
+        ausentes = 0;
+      }
+    }
 
     // Estadísticas por categoría
     const categoriaStats = {};
@@ -435,8 +456,8 @@ const AsistenciasManager = ({ user }) => {
     });
 
     return { 
-      total: totalAtletas, 
-      presentes: totalPresentes, 
+      total: bulkMode ? totalAtletas : totalPresentes, // En bulk muestra total atletas, en histórico total asistencias
+      presentes: bulkMode ? todayAttendance.filter(a => a.attendance !== null).length : totalPresentes, 
       ausentes, 
       porcentajeAsistencia, 
       categoriaStats 

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { supabase } from '../config/supabase';
 import styles from '../styles/AnunciosViewer.module.css';
 import { FaBullhorn, FaExclamationCircle, FaExclamationTriangle, FaClock, FaUser } from 'react-icons/fa';
+import { getEcuadorDate, calcularDiferenciaDias, getEcuadorISOString, getEcuadorDateTime } from '../utils/dateUtils';
 
 const AnunciosViewer = ({ userRole = 'all', limit = null, showFilters = false }) => {
   const [anuncios, setAnuncios] = useState([]);
@@ -38,7 +39,7 @@ const AnunciosViewer = ({ userRole = 'all', limit = null, showFilters = false })
       }
 
       // Filtrar anuncios no expirados
-      query = query.or('expires_at.is.null,expires_at.gt.' + new Date().toISOString());
+      query = query.or('expires_at.is.null,expires_at.gt.' + getEcuadorISOString());
 
       // Filtrar por prioridad seleccionada
       if (selectedPriority !== 'all') {
@@ -68,16 +69,15 @@ const AnunciosViewer = ({ userRole = 'all', limit = null, showFilters = false })
 
   const formatDate = (dateString) => {
     if (!dateString) return '';
-    const date = new Date(dateString);
-    const now = new Date();
-    const diffTime = date - now;
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    const now = getEcuadorDate();
+    const diffDays = calcularDiferenciaDias(dateString, now); // expires_at - hoy
 
     if (diffDays < 0) return '';
     if (diffDays === 0) return 'Expira hoy';
     if (diffDays === 1) return 'Expira mañana';
     if (diffDays <= 7) return `Expira en ${diffDays} días`;
     
+    const date = new Date(dateString);
     return `Válido hasta ${date.toLocaleDateString('es-ES', { 
       day: 'numeric', 
       month: 'short' 
@@ -86,7 +86,7 @@ const AnunciosViewer = ({ userRole = 'all', limit = null, showFilters = false })
 
   const formatCreatedDate = (dateString) => {
     const date = new Date(dateString);
-    const now = new Date();
+    const now = getEcuadorDateTime();
     const diffTime = now - date;
     const diffMinutes = Math.floor(diffTime / (1000 * 60));
     const diffHours = Math.floor(diffTime / (1000 * 60 * 60));

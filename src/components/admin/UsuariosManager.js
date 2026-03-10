@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
+import { getEcuadorISOString } from '../../utils/dateUtils';
 import styles from '../../styles/UsuariosManager.module.css';
 import { FaCrown, FaVolleyballBall, FaRunning, FaUser, FaPause, FaPlay, FaEdit, FaTrash, FaPhone, FaCalendar, FaUsers, FaChartBar, FaCheckCircle, FaBan, FaClock, FaStickyNote } from 'react-icons/fa';
 
@@ -228,7 +229,7 @@ const UsuariosManager = ({ user }) => {
           suspended: true,
           suspension_reason: suspensionData.reason,
           suspension_until: suspensionData.until,
-          suspended_at: new Date().toISOString()
+          suspended_at: getEcuadorISOString()
         })
         .eq('id', usuario.id);
 

@@ -1,5 +1,5 @@
 // Servicio para manejo automático de estados de pagos
-import { getEcuadorDate, getEcuadorDateTime } from '../utils/dateUtils';
+import { getEcuadorDate, calcularDiferenciaDias } from '../utils/dateUtils';
 
 export class PagoStatusService {
   
@@ -10,14 +10,13 @@ export class PagoStatusService {
    */
   static calcularEstado(pago) {
     // Usar fecha de Ecuador para cálculos
-    const hoy = getEcuadorDateTime();
-    hoy.setHours(0, 0, 0, 0); // Normalizar a medianoche para comparaciones
+    const hoy = getEcuadorDate();
     
     console.log('🔍 Calculando estado para pago:', {
       id: pago.id,
       fecha_inicio: pago.fecha_inicio,
       fecha_fin: pago.fecha_fin,
-      hoy: getEcuadorDate()
+      hoy: hoy
     });
     
     // Si no tiene fecha de fin, no se puede determinar vencimiento
@@ -26,16 +25,13 @@ export class PagoStatusService {
       return 'activo';
     }
     
-    const fechaFin = new Date(pago.fecha_fin);
-    fechaFin.setHours(0, 0, 0, 0);
-    
-    // Calcular diferencia en días
-    const diferenciaMs = fechaFin.getTime() - hoy.getTime();
-    const diferenciaDias = Math.ceil(diferenciaMs / (1000 * 60 * 60 * 24));
+    // Calcular diferencia en días usando función timezone-safe
+    const diferenciaDias = calcularDiferenciaDias(pago.fecha_fin, hoy);
     
     console.log(`📅 Días restantes: ${diferenciaDias} (fecha fin: ${pago.fecha_fin})`);
     
-    // Determinar estado basado SOLO en días restantes hasta fecha fin
+    // Determinar estado basado en período de cobertura (fecha_fin)
+    // NO importa si tiene fecha_pago o no, solo importa si el período venció
     let estado;
     if (diferenciaDias < 0) {
       estado = 'vencido';
@@ -56,15 +52,11 @@ export class PagoStatusService {
    */
   static getStatusInfo(pago) {
     const estado = this.calcularEstado(pago);
-    const hoy = getEcuadorDateTime();
-    hoy.setHours(0, 0, 0, 0);
+    const hoy = getEcuadorDate();
     
     let diasRestantes = 0;
     if (pago.fecha_fin) {
-      const fechaFin = new Date(pago.fecha_fin);
-      fechaFin.setHours(0, 0, 0, 0);
-      const diferenciaMs = fechaFin.getTime() - hoy.getTime();
-      diasRestantes = Math.ceil(diferenciaMs / (1000 * 60 * 60 * 24));
+      diasRestantes = calcularDiferenciaDias(pago.fecha_fin, hoy);
     }
     
     return this.buildStatusInfo(estado, pago, diasRestantes);
@@ -185,13 +177,20 @@ export class PagoStatusService {
    */
   static async actualizarTodosLosEstados(supabase) {
     try {
-      // Obtener todos los pagos que no están marcados como pagados
+      // Obtener todos los pagos no eliminados
+      // NOTA: Ya no filtramos por fecha_pago porque en este modelo todos los pagos
+      // se registran con fecha_pago. El estado depende solo del período de cobertura.
       const { data: pagos, error } = await supabase
         .from('payments')
         .select('*')
-        .is('fecha_pago', null); // Solo pagos sin fecha de pago
+        .is('deleted_at', null); // Solo pagos no eliminados
         
-      if (error) throw error;
+      if (error) {
+        console.error('❌ Error obteniendo pagos:', error);
+        throw error;
+      }
+      
+      console.log(`🔍 Evaluando ${pagos.length} pagos...`);
       
       const resultados = {
         total: pagos.length,
@@ -215,12 +214,12 @@ export class PagoStatusService {
         }
       }
       
-      console.log(`📊 Actualización masiva completada: ${resultados.actualizados} actualizados, ${resultados.errores} errores`);
+      console.log(`📊 Actualización masiva completada: ${resultados.actualizados} actualizados, ${resultados.errores} errores de ${resultados.total} pagos evaluados`);
       return resultados;
       
     } catch (error) {
       console.error('❌ Error en actualización masiva:', error);
-      return { success: false, error: error.message };
+      return { success: false, error: error.message, total: 0, actualizados: 0, errores: 1 };
     }
   }
   
