@@ -1,7 +1,7 @@
 /* src/styles/TestsFisicosManager.module.css */
 
 .testsFisicosManager {
-  padding: 30px;
+  padding: 20px;
   max-width: 1400px;
   margin: 0 auto;
   min-height: calc(100vh - 80px);
@@ -25,6 +25,7 @@
   color: #ffffff;
   margin: 0 0 10px 0;
   text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+  line-height: 1.3;
 }
 
 .headerLeft p {
@@ -94,6 +95,7 @@
   font-weight: 700;
   color: #ffffff;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
 }
 
 .statInfo p {
@@ -270,8 +272,10 @@
   background: rgba(245, 158, 11, 0.3);
   color: #fbbf24;
   border: 1px solid rgba(245, 158, 11, 0.4);
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -744,8 +748,10 @@
   border: none;
   color: white;
   font-size: 1.5rem;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -855,7 +861,7 @@
   .cancelButton,
   .saveButton,
   .closeButton {
-    min-height: 44px;
+    min-height: 48px;
     touch-action: manipulation;
   }
   
@@ -865,7 +871,7 @@
   .filterSelect,
   .filterInput,
   .textarea {
-    min-height: 44px;
+    min-height: 48px;
     touch-action: manipulation;
   }
   
@@ -1038,8 +1044,10 @@
   color: white;
   border: none;
   border-radius: 50%;
-  width: 28px;
-  height: 28px;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1197,8 +1205,10 @@
   }
 
   .closeButton {
-    width: 35px;
-    height: 35px;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
     font-size: 1.3rem;
   }
 
@@ -1233,162 +1243,228 @@
   }
 }
 
+/* Mobile Optimization - iPhone 14 Pro Max (430px) */
 @media (max-width: 480px) {
   .testsFisicosManager {
-    padding: 0.25rem;
+    padding: 0.75rem;
+    min-height: calc(100vh - 60px);
   }
 
   .header {
-    padding: 0.75rem;
-    margin-bottom: 0.75rem;
+    padding: 0;
+    margin-bottom: 1.25rem;
+    flex-direction: column;
+    gap: 15px;
   }
 
   .headerLeft h2 {
-    font-size: 1.2rem;
-    margin-bottom: 0.25rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin-bottom: 8px;
   }
 
   .headerLeft p {
-    font-size: 0.85rem;
-  }
-
-  .addButton {
-    max-width: 100%;
-    padding: 0.75rem 1rem;
     font-size: 0.9rem;
   }
 
+  .addButton {
+    width: 100%;
+    min-height: 48px;
+    padding: 14px 20px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 1.25rem;
+  }
+
+  .statCard {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .statIcon {
+    font-size: 1.6rem;
+  }
+
+  .statInfo h3 {
+    font-size: 1.5rem;
+  }
+
+  .statInfo p {
+    font-size: 0.85rem;
+  }
+
   .dropdownList {
-    max-height: 200px;
+    max-height: 220px;
   }
 
   .dropdownItem {
-    padding: 8px 10px;
+    padding: 10px 12px;
+    min-height: 44px;
   }
 
   .clearButton {
-    width: 24px;
-    height: 24px;
-    font-size: 14px;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    font-size: 15px;
   }
 
   .filtersSection {
-    padding: 0.6rem;
-    margin-bottom: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+    gap: 12px;
+    border-radius: 12px;
   }
 
   .filterGroup {
-    gap: 0.3rem;
+    gap: 0.4rem;
+  }
+
+  .filterGroup label {
+    font-size: 0.9rem;
   }
 
   .searchInput,
   .filterSelect,
   .filterInput {
-    padding: 0.55rem;
-    font-size: 0.85rem;
+    padding: 11px 12px;
+    font-size: 16px;
+    min-height: 48px;
   }
 
   .testsGrid {
-    gap: 0.75rem;
+    gap: 12px;
   }
 
   .testCard {
-    padding: 0.75rem;
+    padding: 14px 12px;
+    border-radius: 12px;
   }
 
   .testHeader {
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
   }
 
   .testHeader h3 {
-    font-size: 1rem;
-  }
-
-  .infoItem {
-    padding: 0.3rem 0;
-    gap: 0.25rem;
-  }
-
-  .label {
-    font-size: 0.8rem;
-    min-width: 100px;
-  }
-
-  .infoItem span:last-child {
-    font-size: 0.85rem;
-  }
-
-  .modal {
-    width: 98vw;
-    margin: 0.25rem auto;
-    border-radius: 12px;
-    max-height: calc(100vh - 0.5rem);
-  }
-
-  .modalOverlay {
-    padding: 0.25rem;
-  }
-
-  .modalHeader {
-    padding: 0.75rem;
-  }
-
-  .modalHeader h3 {
-    font-size: 1.15rem;
-  }
-
-  .closeButton {
-    width: 32px;
-    height: 32px;
     font-size: 1.1rem;
   }
 
+  .infoItem {
+    padding: 8px 0;
+    gap: 0.5rem;
+  }
+
+  .label {
+    font-size: 0.85rem;
+    min-width: 110px;
+  }
+
+  .infoItem span:last-child {
+    font-size: 0.9rem;
+  }
+
+  /* Modal optimizations - Full width bottom sheet */
+  .modalOverlay {
+    padding: 0;
+    align-items: flex-end;
+    background: rgba(0, 0, 0, 0.9);
+  }
+
+  .modal {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    max-height: 100vh;
+    height: 100vh;
+  }
+
+  .modalHeader {
+    padding: 1rem;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .modalHeader h3 {
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+  }
+
+  .closeButton {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    font-size: 1.3rem;
+  }
+
   .form {
-    padding: 0.75rem;
+    padding: 1rem 0.75rem;
   }
 
   .formSection {
-    padding: 0.6rem;
-    margin-bottom: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
   }
 
   .sectionTitle {
-    font-size: 1rem;
-    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
   }
 
   .formGrid {
-    gap: 0.6rem;
+    gap: 1rem;
+    grid-template-columns: 1fr;
   }
 
   .inputGroup {
-    gap: 0.3rem;
+    gap: 0.4rem;
   }
 
   .inputGroup label {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     letter-spacing: 0.3px;
   }
 
   .inputGroup input,
   .inputGroup select {
-    padding: 0.55rem;
-    font-size: 0.85rem;
+    padding: 11px 12px;
+    font-size: 16px;
+    min-height: 48px;
   }
 
   .textarea {
-    padding: 0.55rem;
-    font-size: 0.85rem;
+    padding: 11px 12px;
+    font-size: 16px;
+    min-height: 80px;
   }
 
   .formActions {
-    padding-top: 0.75rem;
-    gap: 0.5rem;
+    padding-top: 1rem;
+    gap: 0.75rem;
+    flex-direction: column;
   }
 
   .cancelButton,
   .saveButton {
-    padding: 0.8rem;
-    font-size: 0.9rem;
+    width: 100%;
+    min-height: 48px;
+    padding: 14px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+  }
+
+  .cancelButton {
+    order: 2;
+  }
+
+  .saveButton {
+    order: 1;
   }
 }

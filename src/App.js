@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 
 import Navbar from './components/Navbar'; // Con mayúscula
@@ -7,11 +7,30 @@ import AboutUs from './components/AboutUs';
 import Horarios from './components/Horarios';
 import Login from './components/Login';
 import ResetPassword from './components/ResetPassword';
-import AdminPanel from './components/admin/AdminPanel';
-import TrainerPanel from './components/trainer/TrainerPanel';
-import StudentPanel from './components/student/StudentPanel';
 import { getCurrentUser } from './config/supabase';
 import { useUserProfile } from './hooks/useUserProfile';
+import { ToastProvider } from './contexts/ToastContext';
+
+// Code splitting: Lazy load de paneles pesados
+const AdminPanel = lazy(() => import('./components/admin/AdminPanel'));
+const TrainerPanel = lazy(() => import('./components/trainer/TrainerPanel'));
+const StudentPanel = lazy(() => import('./components/student/StudentPanel'));
+
+// Loading fallback component
+const LoadingFallback = () => (
+  <div style={{ 
+    display: 'flex', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    height: '100vh',
+    fontSize: '18px',
+    color: '#666'
+  }}>
+    <div>
+      <div style={{ marginBottom: '10px' }}>⏳ Cargando...</div>
+    </div>
+  </div>
+);
 
 function AppContent() {
   const [user, setUser] = useState(null);
@@ -58,24 +77,28 @@ function AppContent() {
   }
 
   return (
-    <Routes>
-      <Route path="/" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><HomePage /></>} />
-      <Route path="/sobre" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><AboutUs /></>} />
-      <Route path="/horarios" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><Horarios /></>} />
-      <Route path="/login" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><Login onLoginSuccess={handleLoginSuccess} /></>} />
-      <Route path="/reset-password" element={<ResetPassword />} />
-      <Route path="/admin" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><AdminPanel user={user} /></>} />
-      <Route path="/entrenador" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><TrainerPanel user={user} /></>} />
-      <Route path="/estudiante" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><StudentPanel user={user} /></>} />
-    </Routes>
+    <Suspense fallback={<LoadingFallback />}>
+      <Routes>
+        <Route path="/" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><HomePage /></>} />
+        <Route path="/sobre" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><AboutUs /></>} />
+        <Route path="/horarios" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><Horarios /></>} />
+        <Route path="/login" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><Login onLoginSuccess={handleLoginSuccess} /></>} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/admin" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><AdminPanel user={user} /></>} />
+        <Route path="/entrenador" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><TrainerPanel user={user} /></>} />
+        <Route path="/estudiante" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><StudentPanel user={user} /></>} />
+      </Routes>
+    </Suspense>
   );
 }
 
 function App() {
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <ToastProvider>
+      <Router>
+        <AppContent />
+      </Router>
+    </ToastProvider>
   );
 }
 

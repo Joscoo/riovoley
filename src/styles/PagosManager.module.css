@@ -1,7 +1,7 @@
 /* src/styles/PagosManager.module.css */
 
 .pagosManager {
-  padding: 30px;
+  padding: 20px;
   max-width: 1400px;
   margin: 0 auto;
   min-height: calc(100vh - 80px);
@@ -24,12 +24,14 @@
   color: #ffffff;
   margin: 0 0 10px 0;
   text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+  line-height: 1.3;
 }
 
 .headerLeft p {
   color: rgba(255, 255, 255, 0.7);
   font-size: 1rem;
   margin: 0;
+  line-height: 1.6;
 }
 
 .headerButtons {
@@ -121,6 +123,7 @@
   font-weight: 700;
   color: #ffffff;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
 }
 
 .statInfo p {
@@ -130,6 +133,7 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
 }
 
 /* Filtros */
@@ -745,32 +749,274 @@
   }
 }
 
-/* Mejoras adicionales para pantallas muy pequeñas */
+/* Mejoras adicionales para pantallas muy pequeñas - iPhone 14 Pro Max (430px) */
 @media (max-width: 480px) {
   .pagosManager {
-    padding: 0.5rem;
+    padding: 0.75rem;
+    min-height: calc(100vh - 60px);
   }
 
+  /* Header optimizations */
+  .header {
+    margin-bottom: 1.25rem;
+    gap: 15px;
+  }
+
+  .headerLeft h2 {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin-bottom: 8px;
+  }
+
+  .headerLeft p {
+    font-size: 0.9rem;
+  }
+
+  .headerButtons {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .updateButton,
+  .addButton {
+    width: 100%;
+    min-height: 48px;
+    padding: 14px 20px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Stats Grid - Single Column */
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 1.25rem;
+  }
+
+  .statCard {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .statIcon {
+    font-size: 1.6rem;
+  }
+
+  .statInfo h3 {
+    font-size: 1.5rem;
+  }
+
+  .statInfo p {
+    font-size: 0.85rem;
+  }
+
+  /* Filters Section */
+  .filtersSection {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .filterGroup label {
+    font-size: 0.9rem;
+  }
+
+  .filterGroup input,
+  .filterGroup select {
+    padding: 11px 12px;
+    font-size: 16px;
+    min-height: 48px;
+    border-radius: 8px;
+  }
+
+  /* ========== TABLE TO CARD CONVERSION ========== */
+  /* Hide table on mobile, show card-based layout */
+  .tableContainer {
+    border-radius: 12px;
+    overflow: visible; /* Allow cards to show properly */
+  }
+
+  .table {
+    display: block;
+    min-width: 100%;
+  }
+
+  .table thead {
+    display: none; /* Hide table headers on mobile */
+  }
+
+  .table tbody {
+    display: block;
+  }
+
+  .tableRow {
+    display: block;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    transition: all 0.2s ease;
+  }
+
+  .tableRow:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 215, 0, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .table tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 0;
+    border: none;
+    min-height: auto;
+    gap: 12px;
+  }
+
+  /* Add labels before each cell content on mobile */
+  .table tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #ffd700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+    width: 110px;
+  }
+
+  /* Athlete info card style */
+  .atletaInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: right;
+  }
+
+  .atletaInfo strong {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .atletaInfo small {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+
+  /* Monto (amount) emphasis */
+  .monto {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  /* Estado badge mobile optimized */
+  .estadoBadge {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    border-radius: 8px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* Actions buttons - Stack vertically on mobile */
+  .actions {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .paidButton,
+  .editButton,
+  .deleteButton,
+  .whatsappButton {
+    min-width: 48px;
+    min-height: 48px;
+    padding: 12px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Loading & Empty States */
+  .loading {
+    padding: 2.5rem 1rem;
+    border-radius: 12px;
+  }
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+  }
+
+  .noPagos {
+    padding: 2.5rem 1rem;
+  }
+
+  .noPagos h3 {
+    font-size: 1.3rem;
+  }
+
+  .noPagos p {
+    font-size: 0.9rem;
+  }
+
+  /* Modal optimizations - Full width bottom sheet style */
   .modalOverlay {
-    padding: 5px;
+    padding: 0;
+    align-items: flex-end;
   }
 
   .modal {
+    width: 100%;
+    max-width: 100%;
     height: calc(100vh - 10px);
     max-height: calc(100vh - 10px);
-    border-radius: 10px;
+    border-radius: 16px 16px 0 0;
+    margin: 0;
   }
 
   .modalHeader {
-    padding: 0.75rem;
+    padding: 1rem;
+    border-radius: 16px 16px 0 0;
   }
 
   .modalHeader h3 {
-    font-size: 1.2rem;
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
   }
-  
+
+  .closeButton {
+    padding: 10px;
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Form */
   .form {
-    padding: 0.75rem;
+    padding: 1rem 0.75rem;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   .inputGroup {
@@ -780,29 +1026,76 @@
   .inputGroup label {
     font-size: 0.9rem;
   }
-  
+
   .inputGroup input,
   .inputGroup select,
   .inputGroup textarea {
-    padding: 12px;
+    padding: 11px 12px;
     font-size: 16px;
     min-height: 48px;
+    border-radius: 8px;
   }
 
+  .inputGroup textarea {
+    min-height: 80px;
+  }
+
+  /* Autosuggest */
+  .autosuggestContainer {
+    width: 100%;
+  }
+
+  .sugerenciasList {
+    max-height: 180px;
+    border-radius: 0 0 8px 8px;
+  }
+
+  .sugerenciaItem {
+    padding: 10px 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .sugerenciaNombre {
+    font-size: 0.9rem;
+  }
+
+  .sugerenciaCategoria {
+    font-size: 0.75rem;
+    padding: 3px 6px;
+  }
+
+  .noResultados {
+    padding: 12px;
+    font-size: 0.85rem;
+  }
+
+  /* Form Actions */
   .formActions {
-    gap: 0.5rem;
+    gap: 0.75rem;
     margin-top: 1rem;
+    padding-top: 1rem;
+    flex-direction: column;
   }
 
   .formActions button {
-    min-height: 50px;
-    font-size: 1rem;
+    width: 100%;
+    min-height: 48px;
+    font-size: 0.95rem;
     font-weight: 600;
+    padding: 14px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .closeButton {
-    padding: 8px;
-    min-width: 40px;
-    min-height: 40px;
+  .cancelButton {
+    order: 2;
+  }
+
+  .saveButton {
+    order: 1;
   }
 }

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/AsistenciasManager.module.css';
 import { getEcuadorDate, getEcuadorDateMinusDays, formatDateString } from '../../utils/dateUtils';
+import { exportAttendancePdf } from '../../utils/exportAttendancePdf';
 import { 
   FaChartBar, 
   FaCheckCircle, 
@@ -589,7 +590,8 @@ const AsistenciasManager = ({ user }) => {
   };
 
   const exportAttendance = (fecha = null) => {
-    setDateToExport(fecha || selectedDate);
+    const isValidDateString = typeof fecha === 'string' && fecha.includes('-');
+    setDateToExport(isValidDateString ? fecha : selectedDate);
     setShowExportModal(true);
   };
 
@@ -601,368 +603,76 @@ const AsistenciasManager = ({ user }) => {
     );
   };
 
-  const generateExportDocument = () => {
-    const exportFecha = dateToExport || selectedDate;
-    
-    // Si es desde el historial, usar las asistencias agrupadas, si no, usar todayAttendance
-    let attendancesData;
+  const getExportAttendanceData = (exportFecha) => {
     if (asistenciasByDate[exportFecha]) {
-      // Desde historial - mapear a formato similar a todayAttendance
-      attendancesData = asistenciasByDate[exportFecha].map(asistencia => ({
+      return asistenciasByDate[exportFecha].map(asistencia => ({
         ...asistencia.students,
         attendance: {
           metodo_pago_id: asistencia.metodo_pago_id
         }
       }));
-    } else {
-      // Desde modo bulk
-      attendancesData = todayAttendance.filter(a => a.attendance !== null);
     }
 
-    // Agrupar por categorías
-    const iniciacion = attendancesData.filter(a => 
-      a.categoria === 'iniciacion_hombres' || a.categoria === 'iniciacion_mujeres'
-    );
-    const perfHombres = attendancesData.filter(a => 
-      a.categoria === 'perfeccionamiento_hombres'
-    );
-    const perfMujeres = attendancesData.filter(a => 
-      a.categoria === 'perfeccionamiento_mujeres' || a.categoria === 'master_mujeres'
-    );
+    return todayAttendance.filter(a => a.attendance !== null);
+  };
 
-    // Función auxiliar para obtener método de pago
-    const getPaymentMethodName = (metodoPagoId) => {
-      const pt = paymentTypes.find(p => p.id === metodoPagoId);
-      if (!pt) return 'N/A';
-      switch(pt.nombre) {
-        case 'pago_diario': return 'Pago Diario';
-        case 'mensualidad': return 'Mensualidad';
-        case 'tarjeta': return 'Tarjeta';
-        default: return pt.nombre;
-      }
+  const getExportPaymentMethodName = (metodoPagoId) => {
+    const pt = paymentTypes.find(p => p.id === metodoPagoId);
+    if (!pt) return 'N/A';
+    switch (pt.nombre) {
+      case 'pago_diario': return 'Pago Diario';
+      case 'mensualidad': return 'Mensualidad';
+      case 'tarjeta': return 'Tarjeta';
+      default: return pt.nombre;
+    }
+  };
+
+  const getExportSummary = () => {
+    const exportFecha = dateToExport || selectedDate;
+    const attendancesData = getExportAttendanceData(exportFecha);
+
+    return {
+      exportFecha,
+      formattedDate: formatDateString(exportFecha),
+      totalAttendances: attendancesData.length,
+      attendancesData
     };
+  };
 
-    // Generar HTML para imprimir
-    const printWindow = window.open('', '_blank');
-    const fechaFormateada = formatDateString(exportFecha);
+  const generateExportDocument = () => {
+    try {
+      const { exportFecha, formattedDate, attendancesData } = getExportSummary();
 
-    const html = `
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <title>Asistencias - ${fechaFormateada}</title>
-        <style>
-          @page {
-            size: A4;
-            margin: 15mm 15mm 15mm 15mm;
-          }
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-          }
-          body {
-            font-family: Arial, sans-serif;
-            padding: 0;
-            color: #333;
-            max-width: 210mm;
-            margin: 0 auto;
-          }
-          .header {
-            text-align: center;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #1e3a8a;
-            padding-bottom: 12px;
-          }
-          .header h1 {
-            color: #1e3a8a;
-            font-size: 22px;
-            margin-bottom: 6px;
-          }
-          .header .date {
-            font-size: 14px;
-            color: #666;
-            text-transform: capitalize;
-          }
-          .section {
-            margin-bottom: 25px;
-            page-break-inside: avoid;
-          }
-          .section-title {
-            background: #1e3a8a;
-            color: white;
-            padding: 6px 12px;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            border-radius: 3px;
-          }
-          .subsection-title {
-            background: #ffd700;
-            color: #0a0a0a;
-            padding: 5px 10px;
-            font-size: 12px;
-            font-weight: bold;
-            margin: 10px 0 6px 0;
-            border-radius: 2px;
-          }
-          table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 8px;
-            font-size: 11px;
-          }
-          th {
-            background: #f0f0f0;
-            padding: 6px 8px;
-            text-align: left;
-            border: 1px solid #ddd;
-            font-weight: bold;
-            font-size: 11px;
-          }
-          td {
-            padding: 5px 8px;
-            border: 1px solid #ddd;
-          }
-          tr:nth-child(even) {
-            background: #f9f9f9;
-          }
-          .summary {
-            background: #f0f0f0;
-            padding: 6px 10px;
-            margin-top: 5px;
-            margin-bottom: 8px;
-            border-radius: 3px;
-            font-weight: bold;
-            font-size: 11px;
-          }
-          .observations {
-            margin-top: 20px;
-            padding: 12px;
-            background: #fffbea;
-            border: 2px solid #ffd700;
-            border-radius: 3px;
-            page-break-inside: avoid;
-          }
-          .observations h3 {
-            color: #1e3a8a;
-            margin-bottom: 8px;
-            font-size: 13px;
-          }
-          .observations p {
-            line-height: 1.4;
-            white-space: pre-wrap;
-            font-size: 11px;
-          }
-          .footer {
-            margin-top: 20px;
-            text-align: center;
-            color: #999;
-            font-size: 9px;
-            padding-top: 12px;
-            border-top: 1px solid #ddd;
-          }
-          @media print {
-            body {
-              padding: 0;
-              max-width: 100%;
-            }
-            .section {
-              page-break-inside: avoid;
-            }
-            .observations {
-              page-break-before: avoid;
-            }
-            @page {
-              margin: 15mm;
-            }
-          }
-          @media screen {
-            body {
-              padding: 20px;
-              background: white;
-            }
-          }
-        </style>
-      </head>
-      <body>
-        <div class="header">
-          <h1>🏐 RIO VOLEY - Control de Asistencias</h1>
-          <div class="date">${fechaFormateada}</div>
-        </div>
+      if (!exportFecha) {
+        alert('Selecciona una fecha valida para exportar.');
+        return;
+      }
 
-        <!-- TABLA 1: INICIACIÓN -->
-        <div class="section">
-          <div class="section-title">1. INICIACIÓN</div>
-          
-          <div class="subsection-title">👨 Hombres</div>
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Nombre</th>
-                <th>Método de Pago</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${iniciacion
-                .filter(a => a.categoria === 'iniciacion_hombres')
-                .map((atleta, index) => `
-                  <tr>
-                    <td>${index + 1}</td>
-                    <td>${atleta.users?.nombre} ${atleta.users?.apellido}</td>
-                    <td>${getPaymentMethodName(atleta.attendance?.metodo_pago_id)}</td>
-                  </tr>
-                `).join('') || '<tr><td colspan="3" style="text-align: center; color: #999;">Sin asistencias</td></tr>'}
-            </tbody>
-          </table>
-          <div class="summary">
-            Total Hombres: ${iniciacion.filter(a => a.categoria === 'iniciacion_hombres').length}
-          </div>
+      if (attendancesData.length === 0) {
+        alert('No hay asistencias registradas para exportar en la fecha seleccionada.');
+        return;
+      }
 
-          <div class="subsection-title">👩 Mujeres</div>
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Nombre</th>
-                <th>Método de Pago</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${iniciacion
-                .filter(a => a.categoria === 'iniciacion_mujeres')
-                .map((atleta, index) => `
-                  <tr>
-                    <td>${index + 1}</td>
-                    <td>${atleta.users?.nombre} ${atleta.users?.apellido}</td>
-                    <td>${getPaymentMethodName(atleta.attendance?.metodo_pago_id)}</td>
-                  </tr>
-                `).join('') || '<tr><td colspan="3" style="text-align: center; color: #999;">Sin asistencias</td></tr>'}
-            </tbody>
-          </table>
-          <div class="summary">
-            Total Mujeres: ${iniciacion.filter(a => a.categoria === 'iniciacion_mujeres').length} | 
-            Total Iniciación: ${iniciacion.length}
-          </div>
-        </div>
+      exportAttendancePdf({
+        exportDate: exportFecha,
+        formattedDate,
+        attendancesData,
+        observations: exportObservations,
+        getPaymentMethodName: getExportPaymentMethodName
+      });
 
-        <!-- TABLA 2: PERFECCIONAMIENTO HOMBRES -->
-        <div class="section">
-          <div class="section-title">2. PERFECCIONAMIENTO - HOMBRES</div>
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Nombre</th>
-                <th>Método de Pago</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${perfHombres
-                .map((atleta, index) => `
-                  <tr>
-                    <td>${index + 1}</td>
-                    <td>${atleta.users?.nombre} ${atleta.users?.apellido}</td>
-                    <td>${getPaymentMethodName(atleta.attendance?.metodo_pago_id)}</td>
-                  </tr>
-                `).join('') || '<tr><td colspan="3" style="text-align: center; color: #999;">Sin asistencias</td></tr>'}
-            </tbody>
-          </table>
-          <div class="summary">
-            Total Perfeccionamiento Hombres: ${perfHombres.length}
-          </div>
-        </div>
-
-        <!-- TABLA 3: PERFECCIONAMIENTO MUJERES -->
-        <div class="section">
-          <div class="section-title">3. PERFECCIONAMIENTO - MUJERES</div>
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Nombre</th>
-                <th>Categoría</th>
-                <th>Método de Pago</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${perfMujeres
-                .map((atleta, index) => `
-                  <tr>
-                    <td>${index + 1}</td>
-                    <td>${atleta.users?.nombre} ${atleta.users?.apellido}</td>
-                    <td>${atleta.categoria === 'master_mujeres' ? 'Master' : 'Perfeccionamiento'}</td>
-                    <td>${getPaymentMethodName(atleta.attendance?.metodo_pago_id)}</td>
-                  </tr>
-                `).join('') || '<tr><td colspan="4" style="text-align: center; color: #999;">Sin asistencias</td></tr>'}
-            </tbody>
-          </table>
-          <div class="summary">
-            Total Perfeccionamiento Mujeres: ${perfMujeres.length}
-          </div>
-        </div>
-
-        <!-- RESUMEN GENERAL -->
-        <div class="section">
-          <div class="section-title">RESUMEN GENERAL</div>
-          <table>
-            <thead>
-              <tr>
-                <th>Categoría</th>
-                <th>Total Asistencias</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Iniciación</td>
-                <td>${iniciacion.length}</td>
-              </tr>
-              <tr>
-                <td>Perfeccionamiento Hombres</td>
-                <td>${perfHombres.length}</td>
-              </tr>
-              <tr>
-                <td>Perfeccionamiento Mujeres</td>
-                <td>${perfMujeres.length}</td>
-              </tr>
-              <tr style="background: #1e3a8a; color: white; font-weight: bold;">
-                <td>TOTAL</td>
-                <td>${attendancesData.length}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        ${exportObservations ? `
-          <div class="observations">
-            <h3>📝 Observaciones:</h3>
-            <p>${exportObservations}</p>
-          </div>
-        ` : ''}
-
-        <div class="footer">
-          Generado el ${new Date().toLocaleString('es-ES')} - RIO VOLEY
-        </div>
-
-        <script>
-          window.onload = function() {
-            window.print();
-          }
-        </script>
-      </body>
-      </html>
-    `;
-
-    printWindow.document.write(html);
-    printWindow.document.close();
-    
-    setShowExportModal(false);
-    setExportObservations('');
-    setDateToExport(null);
+      setShowExportModal(false);
+      setExportObservations('');
+      setDateToExport(null);
+      alert('Reporte PDF generado correctamente.');
+    } catch (error) {
+      console.error('Error generando PDF de asistencias:', error);
+      alert(`No se pudo generar el PDF: ${error.message}`);
+    }
   };
 
   const stats = calculateStats();
+  const exportSummary = getExportSummary();
 
   return (
     <div className={styles.asistenciasManager}>
@@ -975,7 +685,7 @@ const AsistenciasManager = ({ user }) => {
           {bulkMode && (
             <button 
               className={styles.exportButton}
-              onClick={exportAttendance}
+              onClick={() => exportAttendance()}
               title="Exportar asistencias del día"
             >
               <FaFileExport style={{ marginRight: '6px', verticalAlign: 'middle' }} /> Exportar
@@ -1466,9 +1176,9 @@ const AsistenciasManager = ({ user }) => {
                                             {iniciacionHombres
                                               .map((asistencia, index) => (
                                                 <tr key={asistencia.id}>
-                                                  <td>{index + 1}</td>
-                                                  <td>{asistencia.students?.users?.nombre} {asistencia.students?.users?.apellido}</td>
-                                                  <td className={styles.paymentCell}>
+                                                  <td data-label="#">{index + 1}</td>
+                                                  <td data-label="Atleta">{asistencia.students?.users?.nombre} {asistencia.students?.users?.apellido}</td>
+                                                  <td className={styles.paymentCell} data-label="Método de Pago">
                                                     {getPaymentMethodName(asistencia.metodo_pago_id)}
                                                   </td>
                                                 </tr>
@@ -1497,9 +1207,9 @@ const AsistenciasManager = ({ user }) => {
                                             {iniciacionMujeres
                                               .map((asistencia, index) => (
                                                 <tr key={asistencia.id}>
-                                                  <td>{index + 1}</td>
-                                                  <td>{asistencia.students?.users?.nombre} {asistencia.students?.users?.apellido}</td>
-                                                  <td className={styles.paymentCell}>
+                                                  <td data-label="#">{index + 1}</td>
+                                                  <td data-label="Atleta">{asistencia.students?.users?.nombre} {asistencia.students?.users?.apellido}</td>
+                                                  <td className={styles.paymentCell} data-label="Método de Pago">
                                                     {getPaymentMethodName(asistencia.metodo_pago_id)}
                                                   </td>
                                                 </tr>
@@ -1536,9 +1246,9 @@ const AsistenciasManager = ({ user }) => {
                                     <tbody>
                                       {perfHombres.map((asistencia, index) => (
                                         <tr key={asistencia.id}>
-                                          <td>{index + 1}</td>
-                                          <td>{asistencia.students?.users?.nombre} {asistencia.students?.users?.apellido}</td>
-                                          <td className={styles.paymentCell}>
+                                          <td data-label="#">{index + 1}</td>
+                                          <td data-label="Atleta">{asistencia.students?.users?.nombre} {asistencia.students?.users?.apellido}</td>
+                                          <td className={styles.paymentCell} data-label="Método de Pago">
                                             {getPaymentMethodName(asistencia.metodo_pago_id)}
                                           </td>
                                         </tr>
@@ -1570,10 +1280,10 @@ const AsistenciasManager = ({ user }) => {
                                     <tbody>
                                       {perfMujeres.map((asistencia, index) => (
                                         <tr key={asistencia.id}>
-                                          <td>{index + 1}</td>
-                                          <td>{asistencia.students?.users?.nombre} {asistencia.students?.users?.apellido}</td>
-                                          <td>{asistencia.students?.categoria === 'master_mujeres' ? 'Master' : 'Perfeccionamiento'}</td>
-                                          <td className={styles.paymentCell}>
+                                          <td data-label="#">{index + 1}</td>
+                                          <td data-label="Atleta">{asistencia.students?.users?.nombre} {asistencia.students?.users?.apellido}</td>
+                                          <td data-label="Categoría">{asistencia.students?.categoria === 'master_mujeres' ? 'Master' : 'Perfeccionamiento'}</td>
+                                          <td className={styles.paymentCell} data-label="Método de Pago">
                                             {getPaymentMethodName(asistencia.metodo_pago_id)}
                                           </td>
                                         </tr>
@@ -1631,8 +1341,8 @@ const AsistenciasManager = ({ user }) => {
 
             <div className={styles.modalBody}>
               <div className={styles.exportInfo}>
-                <p><strong>Fecha:</strong> {formatDateString(selectedDate)}</p>
-                <p><strong>Total asistencias:</strong> {todayAttendance.filter(a => a.attendance !== null).length}</p>
+                <p><strong>Fecha:</strong> {exportSummary.formattedDate}</p>
+                <p><strong>Total asistencias:</strong> {exportSummary.totalAttendances}</p>
               </div>
 
               <div className={styles.formGroup}>
@@ -1667,6 +1377,7 @@ const AsistenciasManager = ({ user }) => {
                 onClick={() => {
                   setShowExportModal(false);
                   setExportObservations('');
+                  setDateToExport(null);
                 }}
               >
                 Cancelar
@@ -1675,8 +1386,8 @@ const AsistenciasManager = ({ user }) => {
                 className={styles.confirmButton}
                 onClick={generateExportDocument}
               >
-                <FaPrint style={{ marginRight: '6px', verticalAlign: 'middle' }} /> 
-                Exportar e Imprimir
+                <FaFileExport style={{ marginRight: '6px', verticalAlign: 'middle' }} /> 
+                Exportar PDF
               </button>
             </div>
           </div>

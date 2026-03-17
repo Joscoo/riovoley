@@ -95,6 +95,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: left;
+  min-height: 48px;
 }
 
 .menuItem:hover {
@@ -116,7 +117,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
 }
 
 /* Main Content */
@@ -727,7 +730,8 @@
   }
 
   .menuIcon {
-    width: auto !important;
+    width: 48px !important;
+    height: 48px !important;
     font-size: 1.5rem !important;
   }
 
@@ -757,43 +761,60 @@
   }
 }
 
+/* Mobile Optimization - iPhone 14 Pro Max (430px) */
 @media (max-width: 480px) {
   .sidebar {
-    padding: 0.75rem 0;
+    padding: 0.5rem 0;
+    height: auto;
+    position: static;
+    width: 100%;
   }
 
   .sidebarHeader {
-    padding: 0 0.75rem 0.75rem;
-    gap: 0.75rem;
+    padding: 0 0.75rem 1rem;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    margin-bottom: 1rem;
   }
 
   .userAvatar {
-    width: 45px;
-    height: 45px;
-    font-size: 1.3rem;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    font-size: 1.2rem;
+    border-width: 2px;
   }
 
   .sidebarHeader h3 {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
 
   .userRole {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 
   .categoryBadge {
-    padding: 0.25rem 0.6rem;
+    padding: 4px 10px;
     font-size: 0.65rem;
   }
 
   .menu {
+    flex-direction: row;
     padding: 0 0.5rem;
-    gap: 0.4rem;
+    gap: 0.25rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .menuItem {
-    min-width: 85px;
-    padding: 0.6rem 0.4rem;
+    flex-direction: column;
+    min-width: 80px;
+    padding: 0.6rem 0.3rem;
+    gap: 0.4rem;
+    text-align: center;
+    border-radius: 10px;
+    min-height: 48px;
   }
 
   .menuIcon {
@@ -801,20 +822,70 @@
   }
 
   .menuLabel {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     line-height: 1.2;
+    white-space: nowrap;
   }
 
-  .statsGrid {
-    grid-template-columns: 1fr;
+  .menuItem.active {
+    background: rgba(255, 215, 0, 0.2);
   }
 
   .mainContent {
     padding: 0.75rem;
+    width: 100%;
   }
 
   .section {
-    padding: 1.5rem;
+    padding: 1rem 0.75rem;
+    border-radius: 12px;
+  }
+
+  .sectionHeader h2 {
+    font-size: clamp(1.3rem, 4vw, 1.8rem) !important;
+    margin-bottom: 1rem;
+  }
+
+  /* Stats Grid */
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 1.25rem;
+  }
+
+  .statCard {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .statIcon {
+    font-size: 1.6rem;
+  }
+
+  .statValue {
+    font-size: 1.5rem;
+  }
+
+  .statLabel {
+    font-size: 0.85rem;
+  }
+
+  /* Summary Cards */
+  .summaryCards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .summaryCard {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  /* Action buttons */
+  .actionButton {
+    min-height: 48px;
+    padding: 14px 20px;
+    font-size: 0.9rem;
   }
 }
 

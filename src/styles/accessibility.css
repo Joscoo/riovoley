@@ -1,0 +1,229 @@
+/* src/styles/accessibility.css */
+/* Mejoras de accesibilidad y responsividad global */
+
+/* Asegurar que todos los botones e interactivos tengan tamaño mínimo para móviles */
+@media (max-width: 768px) {
+  /* Botones táctiles */
+  button,
+  [role="button"],
+  input[type="submit"],
+  input[type="button"],
+  .button, 
+  [class*="Button"],
+  [class*="button"] {
+    min-height: 48px !important;
+    min-width: 48px !important;
+    padding: 12px 16px !important;
+  }
+
+  /* Enlaces y elementos cliqueable */
+  a,
+  [role="link"] {
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 12px;
+  }
+
+  /* Inputs de formulario */  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="date"],
+  select,
+  textarea {
+    min-height: 48px !important;
+    font-size: 16px !important; /* Previene zoom en iOS */
+    padding: 12px 16px !important;
+  }
+
+  /* Checkboxes y radios más grandes */
+  input[type="checkbox"],
+  input[type="radio"] {
+    min-width: 24px;
+    min-height: 24px;
+    cursor: pointer;
+  }
+
+  /* Iconos de acción más grandes */
+  [class*="icon"],
+  [class*="Icon"],
+  svg[class*="icon"],
+  svg[class*="Icon"] {
+    min-width: 28px;
+    min-height: 28px;
+  }
+}
+
+/* Mejoras de scroll y touch */
+* {
+  -webkit-tap-highlight-color: rgba(255, 215, 0, 0.2);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Overflow seguro para móviles */
+body {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Contenedores con scroll horizontal en móvil */
+.table-responsive,
+[class*="table"],
+[class*="Table"] {
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+  .table-responsive,
+  [class*="table"]:not([class*="tableCell"]) {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    display: block;
+    width: 100%;
+  }
+}
+
+/* Espaciado mejorado en móvil */
+@media (max-width: 480px) {
+  /* Padding reducido en contenedores principales */
+  [class*="container"],
+  [class*="Container"],
+  [class*="panel"],
+  [class*="Panel"],
+  [class*="manager"],
+  [class*="Manager"] {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  /* Headers más compactos */
+  h1 {
+    font-size: 1.75rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+  }
+
+  h3 {
+    font-size: 1.25rem !important;
+  }
+
+  /* Modales full-width en móviles muy pequeños */
+  [class*="modal"],
+  [class*="Modal"],
+  [class*="dialog"],
+  [class*="Dialog"] {
+    max-width: 95vw !important;
+    margin: 10px !important;
+  }
+}
+
+/* Focus visible para accesibilidad con teclado */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #ffd700;
+  outline-offset: 2px;
+}
+
+/* Prevenir texto seleccionable en botones */
+button,
+[role="button"] {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Transiciones suaves globales */
+button,
+a,
+input,
+select,
+textarea {
+  transition: all 0.2s ease;
+}
+
+/* Loading states - evitar FOUC */
+[data-loading="true"] {
+  opacity: 0.6;
+  pointer-events: none;
+  filter: grayscale(40%);
+}
+
+/* Skeleton screens */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.1) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Indicador de carga en pequeños elementos */
+.loading-inline {
+  position: relative;
+}
+
+.loading-inline::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-top-color: #ffd700;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mejoras de rendimiento */
+img,
+video {
+  will-change: transform;
+}
+
+/* Prevenir layout shift */
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Safe area para dispositivos con notch */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
+}

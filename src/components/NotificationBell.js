@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../config/supabase';
 import { getEcuadorDate, calcularDiferenciaDias } from '../utils/dateUtils';
+import { getLatestPaymentsList } from '../utils/paymentUtils';
 import { FaBell, FaExclamationTriangle, FaBullhorn, FaInfoCircle } from 'react-icons/fa';
 import styles from '../styles/NotificationBell.module.css';
 
@@ -65,18 +66,12 @@ const NotificationBell = ({ userRole }) => {
 
       if (pagosError) throw pagosError;
 
-      // Agrupar por atleta y obtener el último pago
-      const ultimosPagos = new Map();
-      (todosPagos || []).forEach(pago => {
-        if (!ultimosPagos.has(pago.student_id)) {
-          ultimosPagos.set(pago.student_id, pago);
-        }
-      });
+      const ultimosPagos = getLatestPaymentsList(todosPagos || []);
 
       const notificacionesPagos = [];
 
       // Obtener información de estudiantes en una sola consulta
-      const studentIds = Array.from(ultimosPagos.keys());
+      const studentIds = ultimosPagos.map((pago) => pago.student_id);
       if (studentIds.length === 0) return [];
 
       const { data: estudiantes, error: estudiantesError } = await supabase
@@ -93,19 +88,21 @@ const NotificationBell = ({ userRole }) => {
       });
 
       // Filtrar solo los que vencen en los próximos 5 días o ya vencieron
-      for (const [studentId, pago] of ultimosPagos.entries()) {
+      for (const pago of ultimosPagos) {
+        if (!pago.fecha_fin) continue;
+
         // Usar la función de dateUtils que maneja correctamente la zona horaria
         const diferenciaDias = calcularDiferenciaDias(pago.fecha_fin, hoy);
 
         if (diferenciaDias <= 5) {
-          const estudiante = estudiantesMap.get(studentId);
+          const estudiante = estudiantesMap.get(pago.student_id);
           if (estudiante) {
             const nombreCompleto = `${estudiante.users.nombre} ${estudiante.users.apellido}`;
             const mensaje = generarMensajePago(diferenciaDias, nombreCompleto);
             const tipo = determinarTipoNotificacion(diferenciaDias);
 
             notificacionesPagos.push({
-              id: `pago-${studentId}`,
+              id: `pago-${pago.student_id}`,
               tipo_notificacion: 'pago',
               mensaje,
               tipo,

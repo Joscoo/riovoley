@@ -1,7 +1,7 @@
 /* src/styles/AnunciosManager.module.css */
 
 .container {
-  padding: 30px;
+  padding: 20px;
   max-width: 1400px;
   margin: 0 auto;
   min-height: calc(100vh - 80px);
@@ -399,8 +399,10 @@
   border: none;
   color: #f87171;
   font-size: 1.5rem;
-  width: 35px;
-  height: 35px;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -560,22 +562,150 @@
   }
 }
 
+/* Mobile Optimization - iPhone 14 Pro Max (430px) */
 @media (max-width: 480px) {
+  .container {
+    padding: 0.75rem;
+    min-height: calc(100vh - 60px);
+  }
+
+  .header {
+    margin-bottom: 1.25rem;
+    flex-direction: column;
+    gap: 15px;
+  }
+
   .title {
-    font-size: 1.5rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
   }
 
   .btnPrimary,
   .btnSecondary {
     width: 100%;
-    padding: 12px;
+    min-height: 48px;
+    padding: 14px 20px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btnIcon {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px;
+    font-size: 1.3rem;
+  }
+
+  /* Anuncios Grid */
+  .anunciosGrid {
+    gap: 12px;
+  }
+
+  .anuncioCard {
+    padding: 14px 12px;
+    border-radius: 12px;
+  }
+
+  .anuncioCard h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .anuncioCard p {
+    font-size: 0.9rem;
+  }
+
+  .cardActions {
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .cardActions button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Modal optimizations */
+  .modalOverlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .modal {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 16px 16px 0 0;
+    max-height: calc(100vh - 10px);
+    height: calc(100vh - 10px);
+    margin: 0;
+  }
+
+  .modalHeader {
+    padding: 1rem;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .modalHeader h3 {
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+  }
+
+  .closeButton {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .form {
+    padding: 1rem 0.75rem;
+  }
+
+  .formGroup {
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .formGroup label {
+    font-size: 0.9rem;
+  }
+
+  .formGroup input,
+  .formGroup select,
+  .formGroup textarea {
+    padding: 11px 12px;
+    font-size: 16px;
+    min-height: 48px;
+  }
+
+  .formGroup textarea {
+    min-height: 100px;
   }
 
   .formActions {
-    flex-direction: column-reverse;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 1rem;
   }
 
   .formActions button {
     width: 100%;
+    min-height: 48px;
+    padding: 14px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+  }
+
+  .cancelButton {
+    order: 2;
+  }
+
+  .saveButton {
+    order: 1;
   }
 }

@@ -83,6 +83,7 @@ const StudentPanel = ({ user }) => {
         .from('payments')
         .select('*')
         .eq('student_id', studentId)
+        .is('deleted_at', null)
         .lte('fecha_inicio', today)  // fecha_inicio debe ser <= hoy
         .gte('fecha_fin', today)     // fecha_fin debe ser >= hoy
         .order('fecha_inicio', { ascending: false });
@@ -97,13 +98,13 @@ const StudentPanel = ({ user }) => {
       const currentPayment = payments && payments.length > 0 ? payments[0] : null;
       
       setPaymentStatus({
-        hasPaid: currentPayment && currentPayment.estado === 'pagado',
+        hasPaid: Boolean(currentPayment),
         payment: currentPayment,
         monthName: new Date().toLocaleDateString('es-EC', { month: 'long', year: 'numeric', timeZone: 'America/Guayaquil' })
       });
 
       console.log('✅ Estado de pago actualizado:', {
-        hasPaid: currentPayment && currentPayment.estado === 'pagado',
+        hasPaid: Boolean(currentPayment),
         payment: currentPayment
       });
 

@@ -246,15 +246,15 @@ ${userResult.canLogin ? '✅ Login verificado: El entrenador puede iniciar sesi�
             ) : (
               filteredEntrenadores.map((entrenador) => (
                 <tr key={entrenador.id}>
-                  <td>
+                  <td data-label="Nombre">
                     <div className={styles.nameCell}>
                       <strong>{entrenador.nombre} {entrenador.apellido}</strong>
                     </div>
                   </td>
-                  <td>{entrenador.email}</td>
-                  <td>{entrenador.telefono || 'N/A'}</td>
-                  <td>{formatDate(entrenador.fecha_nacimiento)}</td>
-                  <td>
+                  <td data-label="Email">{entrenador.email}</td>
+                  <td data-label="Teléfono">{entrenador.telefono || 'N/A'}</td>
+                  <td data-label="Fecha Nacimiento">{formatDate(entrenador.fecha_nacimiento)}</td>
+                  <td data-label="Último Login">
                     {entrenador.last_login ? (
                       <span className={styles.lastLogin}>
                         {formatDate(entrenador.last_login)}
@@ -263,8 +263,8 @@ ${userResult.canLogin ? '✅ Login verificado: El entrenador puede iniciar sesi�
                       <span className={styles.neverLoggedIn}>Nunca</span>
                     )}
                   </td>
-                  <td>{formatDate(entrenador.created_at)}</td>
-                  <td>
+                  <td data-label="Fecha Registro">{formatDate(entrenador.created_at)}</td>
+                  <td data-label="Acciones">
                     <div className={styles.actions}>
                       <button 
                         className={styles.btnEdit}

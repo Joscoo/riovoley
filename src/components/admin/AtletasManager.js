@@ -1,5 +1,5 @@
 // src/components/admin/AtletasManager.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import { EmailService } from '../../services/emailService';
@@ -19,7 +19,7 @@ import {
 } from 'react-icons/fa';
 
 const AtletasManager = ({ user }) => {
-  const [atletas, setAtletas] = useState([]);
+  const [allAtletas, setAllAtletas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [editingAtleta, setEditingAtleta] = useState(null);
@@ -50,8 +50,29 @@ const AtletasManager = ({ user }) => {
 
   useEffect(() => {
     loadAtletas();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filters]);
+  }, []);
+
+  // Filtrado optimizado con useMemo - solo recalcula cuando cambian atletas o filtros
+  const filteredAtletas = useMemo(() => {
+    let result = allAtletas;
+
+    // Filtrar por categoría
+    if (filters.categoria) {
+      result = result.filter(atleta => atleta.categoria === filters.categoria);
+    }
+
+    // Filtrar por búsqueda
+    if (filters.search) {
+      const searchLower = filters.search.toLowerCase();
+      result = result.filter(atleta => 
+        atleta.full_name?.toLowerCase().includes(searchLower) ||
+        atleta.categoria?.toLowerCase().includes(searchLower) ||
+        atleta.email?.toLowerCase().includes(searchLower)
+      );
+    }
+
+    return result;
+  }, [allAtletas, filters]);
 
   const loadAtletas = async () => {
     setLoading(true);
@@ -59,7 +80,7 @@ const AtletasManager = ({ user }) => {
       console.log('📥 Cargando atletas...');
       
       // Obtener atletas con datos de usuario mediante JOIN
-      let query = supabase
+      const { data: studentsData, error: studentsError } = await supabase
         .from('students')
         .select(`
           id,
@@ -76,13 +97,6 @@ const AtletasManager = ({ user }) => {
             created_at
           )
         `);
-
-      // Aplicar filtros si existen
-      if (filters.categoria) {
-        query = query.eq('categoria', filters.categoria);
-      }
-
-      const { data: studentsData, error: studentsError } = await query;
       
       console.log('📊 Resultado de query atletas:', { 
         count: studentsData?.length || 0, 
@@ -100,18 +114,7 @@ const AtletasManager = ({ user }) => {
         full_name: `${student.users?.nombre || ''} ${student.users?.apellido || ''}`.trim() || `Atleta ${student.id}`
       }));
 
-      // Filtrar por búsqueda local si hay término
-      let filteredData = atletasWithProfiles || [];
-      if (filters.search) {
-        const searchLower = filters.search.toLowerCase();
-        filteredData = filteredData.filter(atleta => 
-          atleta.full_name?.toLowerCase().includes(searchLower) ||
-          atleta.categoria?.toLowerCase().includes(searchLower) ||
-          atleta.email?.toLowerCase().includes(searchLower)
-        );
-      }
-
-      setAtletas(filteredData);
+      setAllAtletas(atletasWithProfiles);
     } catch (error) {
       console.error('Error cargando atletas:', error);
       alert('Error al cargar los atletas: ' + error.message);
@@ -584,7 +587,7 @@ Por favor, envía esta información al estudiante de forma manual.`);
             onChange={(e) => setFilters({...filters, categoria: e.target.value})}
             className={styles.filterSelect}
           >
-            <option value=""><FaVolleyballBall style={{ marginRight: '8px' }} /> Todas las categorías</option>
+            <option value="">Todas las categorías</option>
             {categorias.map(categoria => (
               <option key={categoria} value={categoria}>
                 {formatCategoria(categoria)}
@@ -602,8 +605,8 @@ Por favor, envía esta información al estudiante de forma manual.`);
         </div>
       ) : (
         <div className={styles.atletasGrid}>
-          {atletas.length > 0 ? (
-            atletas.map(atleta => (
+          {filteredAtletas.length > 0 ? (
+            filteredAtletas.map(atleta => (
               <div key={atleta.id} className={styles.atletaCard}>
                 <div className={styles.atletaHeader}>
                   <h3>{atleta.full_name}</h3>

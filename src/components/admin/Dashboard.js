@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import styles from '../../styles/Dashboard.module.css';
 import { getEcuadorDate, getEcuadorFirstDayOfMonth, getEcuadorLastDayOfMonth, calcularDiferenciaDias } from '../../utils/dateUtils';
+import { getLatestPaymentsList } from '../../utils/paymentUtils';
 import { FaUsers, FaDollarSign, FaExclamationTriangle, FaChartBar, FaRunning, FaClipboardList, FaBolt, FaUserPlus, FaCreditCard, FaUsersCog, FaCheckCircle, FaVolleyballBall } from 'react-icons/fa';
 
-// Componente StatCard separado para evitar problemas de lint
-const StatCard = ({ title, value, icon, color, subtitle, loading }) => (
+// Componente StatCard memoizado para evitar re-renders innecesarios
+const StatCard = React.memo(({ title, value, icon, color, subtitle, loading }) => (
   <div className={styles.statCard} style={{ borderLeftColor: color }}>
     <div className={styles.statHeader}>
       <div className={styles.statInfo}>
@@ -20,7 +21,7 @@ const StatCard = ({ title, value, icon, color, subtitle, loading }) => (
       </div>
     </div>
   </div>
-);
+));
 
 StatCard.propTypes = {
   title: PropTypes.string.isRequired,
@@ -155,25 +156,23 @@ const Dashboard = ({ user, onNavigateToSection }) => {
         return { ingresos, vencidos: 0, renovacionesPendientes: 0 };
       }
 
-      // 2. Agrupar pagos por atleta y obtener solo el último de cada uno
-      const ultimosPagos = new Map();
-      (todosPagos || []).forEach(pago => {
-        if (!ultimosPagos.has(pago.student_id)) {
-          ultimosPagos.set(pago.student_id, pago);
-        }
-      });
+      const ultimosPagos = getLatestPaymentsList(todosPagos || []);
 
-      console.log(`🔍 Debug - Atletas con historial de pagos: ${ultimosPagos.size}`);
+      console.log(`🔍 Debug - Atletas con historial de pagos: ${ultimosPagos.length}`);
       console.log(`🔍 Debug - Fecha de hoy: ${hoy}`);
 
       // 3. Calcular estadísticas SOLO para atletas con pagos
       let vencidos = 0;
       let proximosVencer = 0;
 
-      ultimosPagos.forEach((ultimoPago, studentId) => {
+      ultimosPagos.forEach((ultimoPago) => {
+        if (!ultimoPago.fecha_fin) {
+          return;
+        }
+
         const diferenciaDias = calcularDiferenciaDias(ultimoPago.fecha_fin, hoy);
 
-        console.log(`   Atleta ${studentId}: fecha_fin=${ultimoPago.fecha_fin}, días=${diferenciaDias}`);
+        console.log(`   Atleta ${ultimoPago.student_id}: fecha_fin=${ultimoPago.fecha_fin}, días=${diferenciaDias}`);
 
         if (diferenciaDias <= 0) {
           // Período vencido (hoy o antes)
@@ -187,7 +186,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
       console.log(`📊 Estadísticas de períodos:`);
       console.log(`   🔴 Períodos vencidos: ${vencidos} atletas`);
       console.log(`   🟡 Próximos a vencer (≤5 días): ${proximosVencer} atletas`);
-      console.log(`   🟢 Total atletas con pagos: ${ultimosPagos.size}`);
+      console.log(`   🟢 Total atletas con pagos: ${ultimosPagos.length}`);
 
       return { 
         ingresos, 

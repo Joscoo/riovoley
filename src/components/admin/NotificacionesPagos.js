@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import { getEcuadorDate, calcularDiferenciaDias } from '../../utils/dateUtils';
+import { getLatestPaymentsList } from '../../utils/paymentUtils';
 import { FaBell, FaExclamationTriangle, FaInfoCircle } from 'react-icons/fa';
 import styles from '../../styles/NotificacionesPagos.module.css';
 
@@ -53,18 +54,14 @@ const NotificacionesPagos = ({ userRole }) => {
 
       if (pagosError) throw pagosError;
 
-      // Agrupar por atleta y obtener el último pago de cada uno
-      const ultimosPagos = new Map();
-      (todosPagos || []).forEach(pago => {
-        if (!ultimosPagos.has(pago.student_id)) {
-          ultimosPagos.set(pago.student_id, pago);
-        }
-      });
+      const ultimosPagos = getLatestPaymentsList(todosPagos || []);
 
       // Filtrar solo los que vencen pronto y obtener datos del atleta
       const notificacionesTemp = [];
       
-      for (const [studentId, pago] of ultimosPagos.entries()) {
+      for (const pago of ultimosPagos) {
+        if (!pago.fecha_fin) continue;
+
         const diferenciaDias = calcularDiferenciaDias(pago.fecha_fin, hoy);
 
         // Solo notificar si vence hoy, mañana o en los próximos 3 días, o ya venció
@@ -77,7 +74,7 @@ const NotificacionesPagos = ({ userRole }) => {
               categoria,
               users!inner(nombre, apellido, email)
             `)
-            .eq('id', studentId)
+            .eq('id', pago.student_id)
             .single();
 
           if (!estudianteError && estudiante) {
@@ -85,7 +82,7 @@ const NotificacionesPagos = ({ userRole }) => {
             const { mensaje, tipo } = calcularMensajeYTipo(diferenciaDias, nombreCompleto);
 
             notificacionesTemp.push({
-              id: studentId,
+              id: pago.student_id,
               mensaje,
               tipo,
               fecha_fin: pago.fecha_fin,

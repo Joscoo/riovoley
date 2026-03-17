@@ -839,6 +839,10 @@ const getStyles = (isMobile, isSmallMobile) => ({
     border: 'none',
     cursor: 'pointer',
     fontSize: isSmallMobile ? '1.3rem' : '1.5rem',
+    width: '48px',
+    height: '48px',
+    minWidth: '48px',
+    minHeight: '48px',
     padding: '8px',
     borderRadius: '8px',
     transition: 'background 0.3s ease'
@@ -1007,7 +1011,11 @@ const getStyles = (isMobile, isSmallMobile) => ({
     cursor: 'pointer',
     textDecoration: 'underline',
     transition: 'all 0.3s ease',
-    padding: '5px 10px'
+    minHeight: '48px',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '10px 12px'
   },
   modalOverlay: {
     position: 'fixed',
@@ -1056,8 +1064,10 @@ const getStyles = (isMobile, isSmallMobile) => ({
     border: 'none',
     color: 'white',
     fontSize: '1.5rem',
-    width: '35px',
-    height: '35px',
+    width: '48px',
+    height: '48px',
+    minWidth: '48px',
+    minHeight: '48px',
     borderRadius: '50%',
     cursor: 'pointer',
     transition: 'all 0.3s ease',
