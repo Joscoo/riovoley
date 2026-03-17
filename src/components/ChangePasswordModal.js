@@ -71,21 +71,18 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
         throw new Error(authUpdateError.message || 'No se pudo actualizar la contraseña');
       }
 
-      const { data: updatedRows, error: updateError } = await supabase
-        .from('users')
-        .update({
-          first_login: false // Marcar que ya no es el primer login
-        })
-        .eq('id', user.id)
-        .select('id')
-        .limit(1);
-
-      if (updateError || !updatedRows || updatedRows.length === 0) {
-        console.warn('No se pudo sincronizar first_login=false desde cliente. Se continuará con el acceso.', updateError);
-      }
-
-      alert('✓ ¡Contraseña actualizada correctamente!');
+      // Cerrar inmediatamente el modal; la sincronización en users se resuelve en paralelo.
       onPasswordChanged();
+
+      supabase
+        .from('users')
+        .update({ first_login: false })
+        .eq('id', user.id)
+        .then(({ error }) => {
+          if (error) {
+            console.warn('No se pudo sincronizar first_login=false desde cliente. Trigger SQL debería cubrir este caso.', error);
+          }
+        });
 
     } catch (error) {
       console.error('Error cambiando contraseña:', error);
