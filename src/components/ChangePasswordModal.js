@@ -36,15 +36,6 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
     setLoading(true);
     setErrors([]);
 
-    const withTimeout = (promise, timeoutMs = 15000) => {
-      return Promise.race([
-        promise,
-        new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('La operación tardó demasiado. Intenta nuevamente.')), timeoutMs)
-        )
-      ]);
-    };
-
     try {
       // Validaciones
       if (!formData.currentPassword) {
@@ -66,12 +57,15 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
         return;
       }
 
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        throw new Error('Tu sesión expiró. Inicia sesión nuevamente para cambiar la contraseña.');
+      }
+
       // El usuario ya está autenticado; actualizamos la contraseña directamente en Auth.
-      const { error: authUpdateError } = await withTimeout(
-        supabase.auth.updateUser({
-          password: formData.newPassword
-        })
-      );
+      const { error: authUpdateError } = await supabase.auth.updateUser({
+        password: formData.newPassword
+      });
 
       if (authUpdateError) {
         throw new Error(authUpdateError.message || 'No se pudo actualizar la contraseña');
@@ -89,8 +83,6 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
       if (updateError || !updatedRows || updatedRows.length === 0) {
         console.warn('No se pudo sincronizar first_login=false desde cliente. Se continuará con el acceso.', updateError);
       }
-
-      localStorage.setItem(`password_changed_${user.id}`, new Date().toISOString());
 
       alert('✓ ¡Contraseña actualizada correctamente!');
       onPasswordChanged();

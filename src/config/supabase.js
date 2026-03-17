@@ -34,7 +34,9 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 export const getCurrentUser = async () => {
   const { data: { user }, error } = await supabase.auth.getUser()
   if (error) {
-    console.error('Error al obtener el usuario:', error)
+    if (error.name !== 'AuthSessionMissingError') {
+      console.error('Error al obtener el usuario:', error)
+    }
     return null
   }
   return user
