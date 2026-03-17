@@ -17,6 +17,9 @@ serve(async (req) => {
     if (!to || !subject || !html) {
       return new Response(
         JSON.stringify({ 
+          success: false,
+          code: 'MISSING_FIELDS',
+          message: 'Missing required fields: to, subject, html',
           error: 'Missing required fields: to, subject, html' 
         }),
         {
@@ -71,6 +74,7 @@ serve(async (req) => {
     return new Response(
       JSON.stringify({ 
         success: true, 
+        code: 'EMAIL_SENT',
         messageId: result.id,
         message: 'Email sent successfully' 
       }),
@@ -86,6 +90,8 @@ serve(async (req) => {
     return new Response(
       JSON.stringify({ 
         success: false, 
+        code: 'SEND_EMAIL_FAILED',
+        message: error.message,
         error: error.message 
       }),
       {

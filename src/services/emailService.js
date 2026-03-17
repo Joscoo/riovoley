@@ -1,6 +1,19 @@
 // src/services/emailService.js
 import { supabase } from '../config/supabase.js';
 
+const getAppBaseUrl = () => {
+  const configuredUrl = process.env.REACT_APP_APP_URL?.trim();
+  if (configuredUrl) {
+    return configuredUrl.replace(/\/+$/, '');
+  }
+
+  return 'https://riovoley.com';
+};
+
+const APP_BASE_URL = getAppBaseUrl();
+const APP_LOGIN_URL = `${APP_BASE_URL}/login`;
+const APP_RESET_PASSWORD_URL = `${APP_BASE_URL}/reset-password`;
+
 /**
  * Servicio para envío de correos electrónicos
  */
@@ -289,8 +302,8 @@ export class EmailService {
                 </div>
                 
                 <p><strong>Enlace de acceso:</strong><br>
-                <a href="${window.location.origin}" style="color: #667eea; text-decoration: none; font-weight: 600;">
-                    ${window.location.origin}
+                <a href="${APP_LOGIN_URL}" style="color: #667eea; text-decoration: none; font-weight: 600;">
+                  ${APP_LOGIN_URL}
                 </a></p>
                 
                 <p>Si tienes alguna pregunta o necesitas ayuda, no dudes en contactar con nuestro equipo administrativo.</p>
@@ -379,7 +392,7 @@ export class EmailService {
   static async sendPasswordReset(userData) {
     try {
       const { error } = await supabase.auth.resetPasswordForEmail(userData.email, {
-        redirectTo: `${window.location.origin}/reset-password`
+          redirectTo: APP_RESET_PASSWORD_URL
       });
       
       if (error) throw error;

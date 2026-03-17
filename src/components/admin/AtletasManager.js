@@ -364,9 +364,6 @@ ${result.canLogin ? '✅ El usuario puede ingresar inmediatamente.' : '⚠️ Pu
         hasTelefono: !!userData.telefono
       });
 
-      // Enviar email con las credenciales que funcionan
-      const emailResult = await EmailService.sendCredentials(userData);
-      
       // Intentar enviar por WhatsApp si tiene teléfono
       let whatsappResult = { success: false };
       if (userData.telefono) {
@@ -382,7 +379,7 @@ ${result.canLogin ? '✅ El usuario puede ingresar inmediatamente.' : '⚠️ Pu
       
       // Mensaje de confirmación según los canales exitosos
       const canalesExitosos = [];
-      if (emailResult.success) canalesExitosos.push('✉ Email');
+      if (result.emailSent) canalesExitosos.push('✉ Email');
       if (whatsappResult.success) canalesExitosos.push('☎ WhatsApp');
       
       if (canalesExitosos.length > 0) {

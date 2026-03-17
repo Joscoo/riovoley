@@ -1,6 +1,27 @@
 // src/services/userCreationWorking.js
 import { supabase } from '../config/supabase';
 
+const getResendErrorMessage = (invokeError, data) => {
+  const backendCode = data?.code;
+  const backendMessage = data?.message || data?.error;
+  const rawMessage = invokeError?.message || backendMessage || 'Error desconocido';
+  const lowered = rawMessage.toLowerCase();
+
+  if (backendCode === 'AUTH_REQUIRED' || lowered.includes('token') || lowered.includes('autoriz')) {
+    return 'Tu sesión expiró o no es válida. Inicia sesión nuevamente y vuelve a intentarlo.';
+  }
+
+  if (backendCode === 'ROLE_NOT_ALLOWED' || backendCode === 'PROFILE_NOT_FOUND' || lowered.includes('permis')) {
+    return 'No tienes permisos para reenviar credenciales. Se requiere rol administrador o entrenador.';
+  }
+
+  if (backendCode === 'INVALID_REQUEST' || backendCode === 'MISSING_FIELDS' || lowered.includes('required')) {
+    return 'Los datos del usuario están incompletos para reenviar credenciales.';
+  }
+
+  return backendMessage || rawMessage;
+};
+
 /**
  * Genera una contraseña temporal segura
  */
@@ -228,7 +249,16 @@ export const resendWorkingCredentials = async (userData) => {
   } = userData;
 
   try {
+    if (!user_id) {
+      throw new Error('No se encontró el identificador del usuario para reenviar credenciales.');
+    }
+
+    if (!email || !email.includes('@')) {
+      throw new Error('El email del usuario es inválido o está vacío.');
+    }
+
     console.log('🔐 Generando nueva contraseña temporal para reenviar credenciales...');
+    const requestId = `resend-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
 
     // SIEMPRE generar nueva contraseña (no se puede recuperar la anterior)
     const newPassword = generateTemporaryPassword();
@@ -240,6 +270,10 @@ export const resendWorkingCredentials = async (userData) => {
     
     if (!session) {
       throw new Error('No hay sesión activa. Debes estar autenticado.');
+    }
+
+    if (!session.access_token) {
+      throw new Error('No se encontró un token de sesión válido. Vuelve a iniciar sesión.');
     }
 
     // Actualizar la contraseña usando Edge Function
@@ -256,15 +290,24 @@ export const resendWorkingCredentials = async (userData) => {
       }
     );
 
-    console.log('📊 Respuesta de Edge Function update-user-password:', { updateData, updateAuthError });
+    console.log('📊 Respuesta de Edge Function update-user-password:', {
+      requestId,
+      success: updateData?.success,
+      code: updateData?.code,
+      status: updateAuthError?.context?.response?.status,
+      hasError: !!updateAuthError
+    });
 
     if (updateAuthError || !updateData?.success) {
       console.error('❌ Error detallado:', {
+        requestId,
         error: updateAuthError,
         data: updateData,
         fullError: JSON.stringify({ updateAuthError, updateData }, null, 2)
       });
-      throw new Error(`Error actualizando contraseña: ${updateAuthError?.message || updateData?.error || 'Error desconocido'}`);
+
+      const readableError = getResendErrorMessage(updateAuthError, updateData);
+      throw new Error(`Error actualizando contraseña: ${readableError}`);
     }
 
     console.log('✅ Contraseña actualizada en Supabase Auth');
@@ -332,7 +375,12 @@ export const resendWorkingCredentials = async (userData) => {
       }
     );
 
-    console.log('📊 Respuesta de Edge Function send-email:', { emailData, emailError });
+    console.log('📊 Respuesta de Edge Function send-email:', {
+      requestId,
+      success: emailData?.success,
+      hasError: !!emailError,
+      status: emailError?.context?.response?.status
+    });
 
     if (emailError) {
       console.warn('⚠️ Error enviando email:', emailError);
