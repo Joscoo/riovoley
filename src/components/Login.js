@@ -112,6 +112,7 @@ function Login({ onLoginSuccess }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
+  const [passwordChangeRequired, setPasswordChangeRequired] = useState(false);
   const [userNeedsPasswordChange, setUserNeedsPasswordChange] = useState(null);
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [resetEmail, setResetEmail] = useState('');
@@ -124,7 +125,7 @@ function Login({ onLoginSuccess }) {
 
   // Redirigir automáticamente según el rol del usuario
   useEffect(() => {
-    if (user && userProfile && !isLoading) {
+    if (user && userProfile && !isLoading && !passwordChangeRequired && !showChangePasswordModal) {
       const userRole = userProfile.role?.toLowerCase();
       console.log('🔄 Verificando redirección:', { userRole, userProfile });
       
@@ -143,7 +144,7 @@ function Login({ onLoginSuccess }) {
         navigate('/estudiante');
       }
     }
-  }, [user, userProfile, isLoading, navigate]);
+  }, [user, userProfile, isLoading, navigate, passwordChangeRequired, showChangePasswordModal]);
 
   // Verificar si hay un usuario logueado al cargar el componente
   useEffect(() => {
@@ -153,7 +154,18 @@ function Login({ onLoginSuccess }) {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (session?.user) {
         setUser(session.user);
-        setIsLoggedIn(true);
+
+        const mustChangePassword = await checkFirstLogin(session.user.id);
+        if (mustChangePassword) {
+          setPasswordChangeRequired(true);
+          setIsLoggedIn(false);
+          setMensaje('Debes cambiar tu contraseña temporal para continuar.');
+        } else {
+          setPasswordChangeRequired(false);
+          setShowChangePasswordModal(false);
+          setUserNeedsPasswordChange(null);
+          setIsLoggedIn(true);
+        }
         
         // Llamar callback si se proporciona
         if (onLoginSuccess) {
@@ -163,6 +175,9 @@ function Login({ onLoginSuccess }) {
       } else {
         setUser(null);
         setIsLoggedIn(false);
+        setPasswordChangeRequired(false);
+        setShowChangePasswordModal(false);
+        setUserNeedsPasswordChange(null);
       }
     });
 
@@ -175,7 +190,15 @@ function Login({ onLoginSuccess }) {
     const currentUser = await getCurrentUser();
     if (currentUser) {
       setUser(currentUser);
-      setIsLoggedIn(true);
+
+      const mustChangePassword = await checkFirstLogin(currentUser.id);
+      if (mustChangePassword) {
+        setPasswordChangeRequired(true);
+        setIsLoggedIn(false);
+      } else {
+        setPasswordChangeRequired(false);
+        setIsLoggedIn(true);
+      }
       
       if (onLoginSuccess) {
         onLoginSuccess(currentUser);
@@ -183,34 +206,63 @@ function Login({ onLoginSuccess }) {
     }
   };
 
-  const checkFirstLogin = async (email) => {
+  const checkFirstLogin = async (userId) => {
+    if (!userId) {
+      return false;
+    }
+
     try {
       // Consultar la tabla users para verificar si es primer login
       const { data: userData, error } = await supabase
         .from('users')
         .select('id, first_login, nombre, apellido')
-        .eq('email', email)
+        .eq('id', userId)
         .single();
 
       if (error) {
         console.error('Error verificando first_login:', error);
-        return;
+        return false;
       }
 
       if (userData && userData.first_login) {
         // Mostrar modal de cambio de contraseña
         setUserNeedsPasswordChange(userData);
         setShowChangePasswordModal(true);
+        return true;
       }
+
+      return false;
     } catch (error) {
       console.error('Error en checkFirstLogin:', error);
+      return false;
     }
   };
 
   const handlePasswordChanged = () => {
     setShowChangePasswordModal(false);
     setUserNeedsPasswordChange(null);
+    setPasswordChangeRequired(false);
+    setIsLoggedIn(true);
     setMensaje('✓ ¡Contraseña actualizada correctamente! Ya puedes usar la plataforma.');
+  };
+
+  const updateLastLogin = async (authUser) => {
+    if (!authUser?.id) return;
+
+    try {
+      const { error } = await supabase
+        .from('users')
+        .update({
+          last_login: new Date().toISOString()
+        })
+        .eq('id', authUser.id);
+
+      if (error) {
+        console.error('Error actualizando last_login:', error);
+      }
+    } catch (error) {
+      console.error('Error inesperado actualizando last_login:', error);
+    }
   };
 
   const handleLogin = async (e) => {
@@ -262,9 +314,17 @@ function Login({ onLoginSuccess }) {
         }
       } else {
         console.log('[SUCCESS] Login exitoso:', data);
+
+        // Persistir último login para paneles administrativos y auditoría.
+        await updateLastLogin(data?.user);
         
         // Verificar si el usuario necesita cambiar la contraseña
-        await checkFirstLogin(email.trim());
+        const mustChangePassword = await checkFirstLogin(data?.user?.id);
+        setPasswordChangeRequired(!!mustChangePassword);
+        if (!mustChangePassword) {
+          setShowChangePasswordModal(false);
+          setUserNeedsPasswordChange(null);
+        }
         
         setMensaje('¡Inicio de sesión exitoso!');
         // Limpiar formulario
@@ -554,7 +614,10 @@ function Login({ onLoginSuccess }) {
       {/* Modal de cambio de contraseña obligatorio */}
       {showChangePasswordModal && userNeedsPasswordChange && (
         <ChangePasswordModal
-          user={userNeedsPasswordChange}
+          user={{
+            ...userNeedsPasswordChange,
+            email: user?.email || userNeedsPasswordChange?.email
+          }}
           onPasswordChanged={handlePasswordChanged}
         />
       )}

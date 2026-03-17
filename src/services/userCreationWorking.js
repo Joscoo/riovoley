@@ -100,6 +100,7 @@ export const createUserWorking = async (userData) => {
         id: authUserId,
         email: email.trim(),
         // password: NO se guarda por seguridad
+        first_login: true,
         role: role,
         nombre: nombre.trim(),
         apellido: apellido.trim(),
@@ -311,6 +312,16 @@ export const resendWorkingCredentials = async (userData) => {
     }
 
     console.log('✅ Contraseña actualizada en Supabase Auth');
+
+    // Marcar que debe cambiar contraseña en el próximo ingreso.
+    const { error: updateFirstLoginError } = await supabase
+      .from('users')
+      .update({ first_login: true })
+      .eq('id', user_id);
+
+    if (updateFirstLoginError) {
+      console.warn('⚠️ No se pudo marcar first_login=true tras reenviar credenciales:', updateFirstLoginError.message);
+    }
 
     // Enviar email con las credenciales usando Resend
     const nombreCompleto = `${nombre} ${apellido}`.trim();

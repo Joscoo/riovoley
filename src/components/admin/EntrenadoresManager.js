@@ -184,6 +184,17 @@ ${userResult.canLogin ? 'âœ… Login verificado: El entrenador puede iniciar sesiÃ
     });
   };
 
+  const formatDateTime = (dateString) => {
+    if (!dateString) return 'N/A';
+    return new Date(dateString).toLocaleString('es-ES', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  };
+
   if (loading) {
     return (
       <div className={styles.container}>
@@ -257,7 +268,7 @@ ${userResult.canLogin ? 'âœ… Login verificado: El entrenador puede iniciar sesiÃ
                   <td data-label="Ãšltimo Login">
                     {entrenador.last_login ? (
                       <span className={styles.lastLogin}>
-                        {formatDate(entrenador.last_login)}
+                        {formatDateTime(entrenador.last_login)}
                       </span>
                     ) : (
                       <span className={styles.neverLoggedIn}>Nunca</span>

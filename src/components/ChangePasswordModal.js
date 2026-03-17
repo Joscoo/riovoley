@@ -57,18 +57,33 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
         return;
       }
 
-      // Verificar contraseña actual y actualizar
+      // Verificar contraseña actual reautenticando con Supabase Auth.
+      const { error: signInError } = await supabase.auth.signInWithPassword({
+        email: user.email,
+        password: formData.currentPassword
+      });
+
+      if (signInError) {
+        throw new Error('Contraseña actual incorrecta');
+      }
+
+      const { error: authUpdateError } = await supabase.auth.updateUser({
+        password: formData.newPassword
+      });
+
+      if (authUpdateError) {
+        throw new Error(authUpdateError.message || 'No se pudo actualizar la contraseña');
+      }
+
       const { error: updateError } = await supabase
         .from('users')
         .update({
-          password: formData.newPassword,
           first_login: false // Marcar que ya no es el primer login
         })
-        .eq('id', user.id)
-        .eq('password', formData.currentPassword); // Verificar contraseña actual
+        .eq('id', user.id);
 
       if (updateError) {
-        throw new Error('Contraseña actual incorrecta o error al actualizar');
+        throw new Error('La contraseña se cambió, pero no se pudo actualizar first_login');
       }
 
       alert('✓ ¡Contraseña actualizada correctamente!');
