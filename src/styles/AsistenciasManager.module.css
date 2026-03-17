@@ -1,7 +1,7 @@
 /* src/styles/AsistenciasManager.module.css */
 
 .asistenciasManager {
-  padding: 30px;
+  padding: 20px;
   max-width: 1400px;
   margin: 0 auto;
   min-height: calc(100vh - 80px);
@@ -24,6 +24,7 @@
   color: #ffffff;
   margin: 0 0 10px 0;
   text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+  line-height: 1.3;
 }
 
 .headerLeft p {
@@ -121,6 +122,7 @@
   font-weight: 700;
   color: #ffffff;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
 }
 
 .statInfo p {
@@ -130,6 +132,7 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
 }
 
 /* Modo de Registro Rápido */
@@ -229,15 +232,17 @@
   background: rgba(255, 255, 255, 0.2);
   border: none;
   color: white;
-  width: 24px;
-  height: 24px;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-size: 0.75rem;
+  font-size: 1rem;
 }
 
 .clearSearch:hover {
@@ -717,45 +722,187 @@
   }
 }
 
+/* Mobile Optimization - iPhone 14 Pro Max (430px) */
 @media (max-width: 480px) {
   .asistenciasManager {
-    padding: 0.5rem;
+    padding: 0.75rem;
+    min-height: calc(100vh - 60px);
   }
   
   .header {
-    padding: 0.75rem;
-    margin-bottom: 1rem;
+    padding: 0;
+    margin-bottom: 1.25rem;
+    flex-direction: column;
+    gap: 15px;
   }
   
   .headerLeft h2 {
-    font-size: 1.3rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin-bottom: 8px;
   }
   
   .headerLeft p {
     font-size: 0.9rem;
   }
+
+  .headerActions {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
   
   .statsGrid {
     grid-template-columns: 1fr;
-    gap: 0.5rem;
+    gap: 12px;
+    margin-bottom: 1.25rem;
   }
   
   .statCard {
-    padding: 0.75rem;
-    border-radius: 10px;
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .statIcon {
+    font-size: 1.6rem;
   }
   
   .statInfo h3 {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
   }
   
   .statInfo p {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
   
-  .bulkButton {
-    padding: 0.6rem 1rem;
+  .bulkButton,
+  .exportButton {
+    width: 100%;
+    min-height: 48px;
+    padding: 14px 20px;
     font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* ========================================
+     TABLE TO CARD CONVERSION - Mobile Pattern
+     ======================================== */
+  
+  /* Allow cards to show without horizontal scroll */
+  .tableContainer {
+    overflow: visible;
+    -webkit-overflow-scrolling: auto;
+  }
+  
+  /* Break table layout structure */
+  .table {
+    display: block;
+    min-width: 100%;
+    border: none;
+  }
+  
+  /* Hide table headers - will show as labels in rows */
+  .table thead {
+    display: none;
+  }
+  
+  /* Make tbody a block container */
+  .table tbody {
+    display: block;
+  }
+  
+  /* Convert each row to a card */
+  .tableRow {
+    display: block;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .tableRow:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Make each cell a flex row with label + data */
+  .table tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .table tbody td:last-child {
+    border-bottom: none;
+  }
+  
+  /* Add column header as pseudo-element */
+  .table tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #ffd700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    width: 120px;
+    flex-shrink: 0;
+  }
+  
+  /* Atleta cell styling */
+  .atletaCell {
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    gap: 4px;
+  }
+  
+  .atletaCell strong {
+    font-size: 1rem;
+    color: #fff;
+  }
+  
+  .atletaCell small {
+    font-size: 0.85rem;
+    opacity: 0.8;
+  }
+  
+  /* Status badge optimization */
+  .statusBadge {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 20px;
+  }
+  
+  /* Attendance buttons - ensure 48px touch target */
+  .attendanceButton {
+    min-width: 48px;
+    min-height: 48px;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    width: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .attendanceButton.present,
+  .attendanceButton.absent {
+    flex: 1;
+  }
+  
+  /* Category badge mobile optimization */
+  .categoria {
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    border-radius: 6px;
   }
 }
 
@@ -1232,46 +1379,51 @@
 
 @media (max-width: 480px) {
   .categoryTabs {
-    gap: 0.5rem;
-    padding: 0.5rem;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 10px;
   }
   
   .tabButton {
-    min-width: 100px;
-    padding: 8px 12px;
-    font-size: 0.85rem;
+    min-width: 120px;
+    min-height: 48px;
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    border-radius: 10px;
   }
   
   .categoryStatsBar {
-    gap: 0.5rem;
-    padding: 0.5rem;
-    font-size: 0.8rem;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    font-size: 0.85rem;
   }
   
   .miniStat {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     flex-direction: column;
     gap: 4px;
     text-align: center;
   }
   
   .miniIcon {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   
   .categorySection {
-    padding: 0.75rem;
+    padding: 1rem 0.75rem;
+    border-radius: 12px;
   }
   
   .categoryTitle {
-    font-size: 1.1rem;
+    font-size: clamp(1.1rem, 4vw, 1.5rem);
   }
   
   /* Mejorar aún más en móviles pequeños */
   .atletaItemNew {
-    padding: 0.75rem 0.5rem;
+    padding: 12px 10px;
     flex-direction: column;
     align-items: stretch;
+    border-radius: 10px;
   }
   
   .atletaNameSection {
@@ -1281,116 +1433,133 @@
   }
   
   .atletaNameSection .atletaName {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     text-align: left;
   }
   
   .currentPaymentBadge {
     font-size: 0.9rem;
+    padding: 4px 10px;
   }
   
   .paymentButtons {
     width: 100%;
     justify-content: space-between;
-    gap: 0.5rem;
+    gap: 0.75rem;
+    flex-wrap: nowrap;
   }
   
   .paymentMethodBtn {
     flex: 1;
-    max-width: 70px;
+    max-width: 80px;
     min-width: 48px;
+    min-height: 48px;
     height: 48px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    border-radius: 10px;
   }
   
   .removeAttendanceBtn {
     flex: 0 0 48px;
     width: 48px;
+    min-width: 48px;
     height: 48px;
+    min-height: 48px;
+    border-radius: 10px;
+    font-size: 1.2rem;
   }
 }
 
 @media (max-width: 480px) {
   .categorySections {
-    gap: 0.75rem;
-    margin-top: 1rem;
+    gap: 1rem;
+    margin-top: 1.25rem;
   }
   
   .categoryTabs {
     flex-direction: column;
-    gap: 0.5rem;
-    padding: 0.75rem;
+    gap: 0.75rem;
+    padding: 1rem;
   }
 
   .tabButton {
+    width: 100%;
     min-width: 100%;
-    padding: 10px 16px;
-    font-size: 0.9rem;
+    min-height: 48px;
+    padding: 12px 18px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+    justify-content: space-between;
   }
 
   .tabCount {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
+    padding: 4px 10px;
   }
 
   .categoryStatsBar {
     flex-direction: row;
     justify-content: space-between;
-    padding: 0.75rem;
+    padding: 1rem;
+    gap: 0.75rem;
   }
 
   .miniStat {
     flex-direction: column;
     gap: 4px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     text-align: center;
   }
 
   .miniIcon {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   .categoryContent {
-    padding: 1rem;
+    padding: 1rem 0.75rem;
   }
   
   .categorySection {
-    padding: 0.75rem;
-    border-radius: 8px;
+    padding: 1rem;
+    border-radius: 12px;
   }
   
   .categoryTitle {
-    font-size: 1.1rem;
+    font-size: clamp(1.1rem, 4vw, 1.5rem);
     margin-bottom: 1rem;
   }
   
   .categoryCount {
-    font-size: 0.8rem;
-    padding: 0.2rem 0.5rem;
+    font-size: 0.85rem;
+    padding: 4px 10px;
   }
   
   .subCategory {
-    padding: 0.75rem;
-    border-radius: 8px;
+    padding: 1rem;
+    border-radius: 10px;
   }
   
   .subCategory h4 {
-    font-size: 1rem;
+    font-size: 1.05rem;
     margin-bottom: 0.75rem;
   }
   
   .atletaItem {
-    padding: 0.4rem;
-    border-radius: 6px;
+    padding: 10px 8px;
+    border-radius: 8px;
   }
   
   .atletaName {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
   
   .attendanceToggle {
-    width: 32px;
-    height: 32px;
-    font-size: 0.9rem;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 1rem;
+    border-radius: 8px;
   }
 }
 
@@ -1460,8 +1629,10 @@
   background: rgba(220, 53, 69, 0.8);
   border: none;
   color: white;
-  width: 35px;
-  height: 35px;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
   border-radius: 50%;
   display: flex;
   align-items: center;

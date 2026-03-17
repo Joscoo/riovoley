@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../config/supabase';
 import PagoStatusService from '../services/pagoStatusService';
+import { getLatestPaymentsList } from '../utils/paymentUtils';
 import PhysicalTestChart from './PhysicalTestChart';
 import styles from '../styles/StudentView.module.css';
 
@@ -87,6 +88,7 @@ const StudentView = ({ user }) => {
         .from('payments')
         .select('*')
         .eq('student_id', studentId)
+        .is('deleted_at', null)
         .order('fecha_inicio', { ascending: false });
 
       if (error) throw error;
@@ -122,12 +124,7 @@ const StudentView = ({ user }) => {
   };
 
   const getCurrentPayment = () => {
-    const today = new Date();
-    return payments.find(payment => {
-      const fechaInicio = new Date(payment.fecha_inicio);
-      const fechaFin = new Date(payment.fecha_fin);
-      return fechaInicio <= today && fechaFin >= today;
-    });
+    return getLatestPaymentsList(payments)[0] || null;
   };
 
   const formatCurrency = (amount) => {

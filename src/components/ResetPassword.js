@@ -376,6 +376,10 @@ const styles = {
     border: 'none',
     cursor: 'pointer',
     fontSize: '1.3rem',
+    width: '48px',
+    height: '48px',
+    minWidth: '48px',
+    minHeight: '48px',
     padding: '5px',
     display: 'flex',
     alignItems: 'center',
@@ -454,6 +458,7 @@ const styles = {
   },
   backButton: {
     padding: '14px 30px',
+    minHeight: '48px',
     background: 'linear-gradient(135deg, #ffd700 0%, #f0c14b 100%)',
     color: '#1a1a2e',
     border: 'none',

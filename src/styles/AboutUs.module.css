@@ -397,6 +397,7 @@
 .mapIframe {
   display: block;
   width: 100%;
+  aspect-ratio: 16 / 10;
   border-radius: 20px;
 }
 
@@ -515,7 +516,7 @@
   .valueCard,
   .contactCard,
   .socialCard {
-    padding: 25px 20px;
+    padding: 20px 16px;
   }
 
   .cardTitle {
@@ -530,5 +531,12 @@
   .locationContent {
     padding: 30px 20px;
     border-radius: 16px;
+  }
+
+  .contactButton,
+  .mapButton {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 16px;
   }
 }

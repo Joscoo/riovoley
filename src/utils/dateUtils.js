@@ -74,12 +74,27 @@ export const getEcuadorLastDayOfMonth = () => {
  */
 export const formatDateString = (dateString, options = {}) => {
   if (!dateString) return '';
-  
-  // Separar los componentes de la fecha
-  const [year, month, day] = dateString.split('-').map(num => Number.parseInt(num, 10));
-  
-  // Crear fecha usando componentes individuales (evita problemas de zona horaria)
-  const date = new Date(year, month - 1, day);
+
+  let date;
+
+  if (dateString instanceof Date) {
+    date = dateString;
+  } else if (typeof dateString === 'number') {
+    date = new Date(dateString);
+  } else if (typeof dateString === 'string') {
+    if (dateString.includes('-')) {
+      // Separar los componentes de la fecha (YYYY-MM-DD)
+      const [year, month, day] = dateString.split('-').map(num => Number.parseInt(num, 10));
+      date = new Date(year, month - 1, day);
+    } else {
+      // Fallback para strings ISO u otros formatos parseables
+      date = new Date(dateString);
+    }
+  } else {
+    return '';
+  }
+
+  if (Number.isNaN(date.getTime())) return '';
   
   // Opciones por defecto
   const defaultOptions = {

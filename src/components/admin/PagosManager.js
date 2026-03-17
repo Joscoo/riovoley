@@ -7,6 +7,7 @@ import WhatsAppService from '../../services/whatsappService';
 import WhatsAppBusinessService from '../../services/whatsappBusinessService';
 import PagoStatusService from '../../services/pagoStatusService';
 import { getEcuadorDate, getEcuadorISOString } from '../../utils/dateUtils';
+import { getLatestPaymentsList } from '../../utils/paymentUtils';
 import styles from '../../styles/PagosManager.module.css';
 import { 
   FaChartBar, 
@@ -144,7 +145,8 @@ const PagosManager = ({ user }) => {
 
   // Función para aplicar filtros localmente
   const applyFilters = () => {
-    let filteredData = [...allPagos];
+    // Mostrar solo el pago mas reciente por atleta para evitar vencidos historicos en la vista principal.
+    let filteredData = getLatestPaymentsList(allPagos);
 
     // Filtrar por fecha de inicio
     if (filters.fecha_inicio) {
@@ -164,7 +166,9 @@ const PagosManager = ({ user }) => {
 
     // Filtrar por estado
     if (filters.estado) {
-      filteredData = filteredData.filter(pago => pago.estado === filters.estado);
+      filteredData = filteredData.filter(
+        pago => PagoStatusService.getStatusInfo(pago).estado === filters.estado
+      );
     }
 
     // Filtrar por atleta
@@ -474,10 +478,17 @@ const PagosManager = ({ user }) => {
 
   const marcarComoPagado = async (pago) => {
     try {
+      const fechaPago = getEcuadorDate();
+      const estadoCalculado = PagoStatusService.calcularEstado({
+        ...pago,
+        fecha_pago: fechaPago
+      });
+
       const { error } = await supabase
         .from('payments')
         .update({
-          fecha_pago: getEcuadorDate()
+          fecha_pago: fechaPago,
+          estado: estadoCalculado
         })
         .eq('id', pago.id);
 
@@ -595,13 +606,18 @@ const PagosManager = ({ user }) => {
   };
 
   const calcularEstadisticas = () => {
-    // Las estadísticas deben calcularse sobre TODOS los pagos, no solo los filtrados
-    const totalPagos = allPagos.length;
-    const activos = allPagos.filter(p => p.estado === 'activo').length;
-    const proximosVencer = allPagos.filter(p => p.estado === 'proximo_a_vencer').length;
-    const vencidos = allPagos.filter(p => p.estado === 'vencido').length;
-    const totalRecaudado = allPagos
-      .filter(p => p.estado === 'activo')
+    const pagosVigentes = getLatestPaymentsList(allPagos);
+    const pagosConEstado = pagosVigentes.map((pago) => ({
+      ...pago,
+      estadoCalculado: PagoStatusService.getStatusInfo(pago).estado
+    }));
+
+    const totalPagos = pagosConEstado.length;
+    const activos = pagosConEstado.filter(p => p.estadoCalculado === 'activo').length;
+    const proximosVencer = pagosConEstado.filter(p => p.estadoCalculado === 'proximo_a_vencer').length;
+    const vencidos = pagosConEstado.filter(p => p.estadoCalculado === 'vencido').length;
+    const totalRecaudado = pagosConEstado
+      .filter(p => p.estadoCalculado === 'activo')
       .reduce((sum, p) => sum + (p.monto || 0), 0);
 
     return { totalPagos, activos, proximosVencer, vencidos, totalRecaudado };
@@ -774,15 +790,15 @@ const PagosManager = ({ user }) => {
                 <tbody>
                   {pagos.map(pago => (
                     <tr key={pago.id} className={styles.tableRow}>
-                      <td>
+                      <td data-label="Atleta">
                         <div className={styles.atletaInfo}>
                           <strong>{pago.student?.user?.nombre} {pago.student?.user?.apellido}</strong>
                           <small>{pago.student?.categoria?.replaceAll('_', ' ').toUpperCase()}</small>
                         </div>
                       </td>
-                      <td>{formatPeriodo(pago.fecha_inicio, pago.fecha_fin)}</td>
-                      <td className={styles.monto}>{formatMonto(pago.monto)}</td>
-                      <td>
+                      <td data-label="Período">{formatPeriodo(pago.fecha_inicio, pago.fecha_fin)}</td>
+                      <td className={styles.monto} data-label="Monto">{formatMonto(pago.monto)}</td>
+                      <td data-label="Estado">
                         <span
                           className={styles.estadoBadge}
                           style={{ backgroundColor: PagoStatusService.getStatusInfo(pago).color }}
@@ -790,13 +806,13 @@ const PagosManager = ({ user }) => {
                           {PagoStatusService.getStatusInfo(pago).mensaje}
                         </span>
                       </td>
-                      <td>
+                      <td data-label="Fecha Pago">
                         {pago.fecha_pago ? 
                           formatDateSafe(pago.fecha_pago) : 
                           '--'
                         }
                       </td>
-                      <td>
+                      <td data-label="Acciones">
                         <div className={styles.actions}>
                           {!pago.fecha_pago && (
                             <button

@@ -1,7 +1,7 @@
 /* src/styles/HorariosManager.module.css */
 
 .container {
-  padding: 30px;
+  padding: 20px;
   max-width: 1400px;
   margin: 0 auto;
   min-height: calc(100vh - 80px);
@@ -180,9 +180,10 @@
   color: #ffffff;
   font-size: 1rem;
   cursor: pointer;
-  padding: 10px;
+  padding: 14px 10px;
   border-radius: 6px;
   transition: all 0.3s ease;
+  min-height: 48px;
 }
 
 .checkboxLabel:hover {
@@ -779,38 +780,183 @@
   }
 }
 
+/* Mobile Optimization - iPhone 14 Pro Max (430px) */
 @media (max-width: 480px) {
+  .container {
+    padding: 0.75rem;
+    min-height: calc(100vh - 60px);
+  }
+
+  .header {
+    margin-bottom: 1.25rem;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
   .headerIcon {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .title {
-    font-size: 1.5rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .addButton {
+    width: 100%;
+    min-height: 48px;
+    padding: 14px 20px;
+    font-size: 0.9rem;
+    justify-content: center;
+  }
+
+  /* Stats Grid */
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 1.25rem;
+  }
+
+  .statCard {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .statIcon {
+    font-size: 1.6rem;
   }
 
   .statValue {
     font-size: 1.5rem;
   }
 
+  .statLabel {
+    font-size: 0.85rem;
+  }
+
+  /* Modal optimizations */
+  .modal {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    max-height: 100vh;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .modalOverlay {
+    padding: 0;
+    align-items: flex-end;
+    background: rgba(0, 0, 0, 0.9);
+  }
+
   .formTitle {
-    font-size: 1.2rem;
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+  }
+
+  .closeButton {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+  }
+
+  .form {
+    padding: 1rem 0.75rem;
   }
 
   .sectionLabel {
-    font-size: 1rem;
+    font-size: 1.05rem;
+    margin-bottom: 0.75rem;
   }
 
-  .daysGrid {
+  .daysGrid,
+  .categoriesGrid {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 
   .dayButton,
   .categoryButton {
-    padding: 12px;
-    font-size: 0.85rem;
+    min-height: 48px;
+    padding: 14px 16px;
+    font-size: 0.9rem;
+    border-radius: 10px;
+  }
+
+  .inputGroup {
+    gap: 0.4rem;
+  }
+
+  .inputGroup label {
+    font-size: 0.9rem;
+  }
+
+  .inputGroup input,
+  .inputGroup select,
+  .inputGroup textarea {
+    padding: 11px 12px;
+    font-size: 16px;
+    min-height: 48px;
   }
 
   .summaryText {
     font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .formActions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .formActions button {
+    width: 100%;
+    min-height: 48px;
+    padding: 14px;
+    font-size: 0.95rem;
+  }
+
+  /* Schedule Grid/Table */
+  .scheduleContainer {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+  }
+
+  .scheduleCard {
+    padding: 14px 12px;
+    border-radius: 12px;
+  }
+
+  .daySection {
+    padding: 14px 12px;
+    border-radius: 10px;
+  }
+
+  .daySection h4 {
+    font-size: 1.1rem;
+  }
+
+  /* Action buttons */
+  .editButton,
+  .deleteButton {
+    min-width: 48px;
+    min-height: 48px;
+    padding: 0.75rem;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 }

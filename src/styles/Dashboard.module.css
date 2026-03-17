@@ -14,7 +14,7 @@
 .dashboardHeader h2 {
   margin: 0 0 10px 0;
   color: #ffffff;
-  font-size: 2.5rem;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
 }
 
@@ -292,7 +292,11 @@
   }
   
   .statsGrid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+  }
+  
+  .categoriesGrid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
   }
 }
 
@@ -313,30 +317,139 @@
   
   .statsGrid {
     grid-template-columns: 1fr !important;
-    gap: 15px !important;
+    gap: 12px !important;
     padding: 0 10px !important;
+    margin-bottom: 30px !important;
   }
   
   .statCard {
-    padding: 15px !important;
+    padding: 16px !important;
   }
   
   .statValue {
-    font-size: 1.8rem !important;
-  }
-  
-  .statIcon {
-    font-size: 2rem !important;
+    font-size: 1.6rem !important;
   }
   
   .categoriesGrid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    padding: 0 10px !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
   }
   
-  .activitySection,
-  .quickStatsSection {
-    margin: 0 10px !important;
+  .categoryCard {
+    padding: 16px !important;
+  }
+  
+  .dashboardContent {
+    padding: 0 10px !important;
+    gap: 20px !important;
+  }
+  
+  .activitySection, .categoriesOverview {
+    padding: 20px !important;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 8px !important;
+  }
+  
+  .dashboardHeader {
+    padding: 0 8px !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .dashboardHeader h2 {
+    font-size: 1.5rem !important;
+    margin-bottom: 5px !important;
+  }
+  
+  .dashboardHeader p {
+    font-size: 0.85rem !important;
+  }
+  
+  .statsGrid {
+    padding: 0 8px !important;
+    gap: 10px !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .statCard {
+    padding: 12px !important;
+    border-radius: 10px !important;
+  }
+  
+  .statInfo h3 {
+    font-size: 0.8rem !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .statValue {
+    font-size: 1.4rem !important;
+  }
+  
+  .statSubtitle {
+    font-size: 0.75rem !important;
+  }
+  
+  .statIcon {
+    font-size: 1.8rem !important;
+  }
+  
+  .dashboardContent {
+    padding: 0 8px !important;
+    gap: 15px !important;
+  }
+  
+  .activitySection, .categoriesOverview {
+    padding: 15px !important;
+    border-radius: 10px !important;
+  }
+  
+  .activitySection h3, .categoriesOverview h3 {
+    font-size: 1rem !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .categoriesGrid {
+    gap: 10px !important;
+  }
+  
+  .categoryCard {
+    padding: 14px !important;
+  }
+  
+  .categoryCard h4 {
+    font-size: 0.85rem !important;
+  }
+  
+  .categoryCount {
+    font-size: 1.2rem !important;
+  }
+  
+  .quickActionsGrid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  
+  .actionButton {
+    padding: 14px !important;
+    gap: 10px !important;
+  }
+  
+  .actionButton span {
+    font-size: 1.3rem !important;
+  }
+  
+  .actionButton div strong {
+    font-size: 0.85rem !important;
+  }
+  
+  .actionButton div p {
+    font-size: 0.7rem !important;
   }
 }
 

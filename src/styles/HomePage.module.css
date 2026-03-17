@@ -63,7 +63,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 120px 20px 80px;
+  padding: 100px 20px 60px;
   opacity: 0;
   transform: translateY(30px);
   transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
@@ -113,7 +113,7 @@
 
 /* Título principal */
 .mainTitle {
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(2rem, 8vw, 6rem);
   font-weight: 900;
   margin: 0;
   line-height: 1.1;
@@ -163,7 +163,7 @@
 
 /* Tagline */
 .tagline {
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-size: clamp(0.9rem, 3vw, 1.8rem);
   font-weight: 300;
   color: var(--primary-gold);
   margin: 20px 0;
@@ -174,7 +174,7 @@
 
 /* Descripción */
 .description {
-  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-size: clamp(0.9rem, 2.5vw, 1.3rem);
   line-height: 1.8;
   color: var(--text-muted);
   max-width: 700px;
@@ -441,7 +441,7 @@
 }
 
 .statNumber {
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 900;
   color: var(--primary-gold);
   margin-bottom: 10px;
@@ -484,12 +484,13 @@
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .heroSection {
-    padding: 100px 15px 60px;
+    padding: 80px 15px 50px;
   }
 
   .ctaButtons {
     flex-direction: column;
     align-items: stretch;
+    gap: 12px;
   }
 
   .btn {
@@ -503,38 +504,90 @@
   }
 
   .statsGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 20px;
   }
 
   .scrollIndicator {
     bottom: 20px;
   }
+  
+  .featureCard {
+    padding: 24px 20px;
+  }
 }
 
 @media (max-width: 480px) {
+  .heroSection {
+    padding: 70px 12px 40px;
+    min-height: 100vh;
+  }
+  
   .mainTitle {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    line-height: 1.2;
   }
 
   .tagline {
-    font-size: 1rem;
+    font-size: 0.85rem;
+    margin: 15px 0;
+    letter-spacing: 0.05em;
   }
 
   .description {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 20px auto;
+  }
+  
+  .ctaButtons {
+    margin-top: 30px;
+    gap: 10px;
   }
 
   .btn {
-    padding: 14px 24px;
-    font-size: 1rem;
+    padding: 14px 20px;
+    font-size: 0.95rem;
   }
 
   .statsGrid {
     grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .statCard {
+    padding: 20px 15px;
+  }
+  
+  .statNumber {
+    font-size: 2rem;
+  }
+  
+  .statLabel {
+    font-size: 0.95rem;
   }
 
   .featureCard {
-    padding: 30px 20px;
+    padding: 20px 15px;
+  }
+  
+  .featureCard h3 {
+    font-size: 1.25rem;
+  }
+  
+  .featureCard p {
+    font-size: 0.9rem;
+  }
+  
+  .ctaSection {
+    padding: 60px 15px;
+  }
+  
+  .ctaTitle {
+    font-size: 2rem;
+  }
+  
+  .ctaText {
+    font-size: 0.9rem;
   }
 }
