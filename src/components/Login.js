@@ -238,12 +238,40 @@ function Login({ onLoginSuccess }) {
     }
   };
 
-  const handlePasswordChanged = () => {
+  const handlePasswordChanged = async () => {
     setShowChangePasswordModal(false);
     setUserNeedsPasswordChange(null);
     setPasswordChangeRequired(false);
     setIsLoggedIn(true);
     setMensaje('✓ ¡Contraseña actualizada correctamente! Ya puedes usar la plataforma.');
+
+    try {
+      const currentUser = await getCurrentUser();
+      if (!currentUser) return;
+
+      setUser(currentUser);
+      if (onLoginSuccess) {
+        onLoginSuccess(currentUser);
+      }
+
+      // Redirigir inmediatamente según rol para evitar esperar una recarga manual.
+      const { data: profileData } = await supabase
+        .from('user_profiles')
+        .select('role')
+        .eq('id', currentUser.id)
+        .single();
+
+      const role = profileData?.role?.toLowerCase();
+      if (role === 'administrador') {
+        navigate('/admin');
+      } else if (role === 'entrenador') {
+        navigate('/entrenador');
+      } else {
+        navigate('/estudiante');
+      }
+    } catch (error) {
+      console.error('Error finalizando flujo post-cambio de contraseña:', error);
+    }
   };
 
   const updateLastLogin = async (authUser) => {
