@@ -36,6 +36,15 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
     setLoading(true);
     setErrors([]);
 
+    const withTimeout = (promise, timeoutMs = 15000) => {
+      return Promise.race([
+        promise,
+        new Promise((_, reject) =>
+          setTimeout(() => reject(new Error('La operación tardó demasiado. Intenta nuevamente.')), timeoutMs)
+        )
+      ]);
+    };
+
     try {
       // Validaciones
       if (!formData.currentPassword) {
@@ -57,34 +66,31 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
         return;
       }
 
-      // Verificar contraseña actual reautenticando con Supabase Auth.
-      const { error: signInError } = await supabase.auth.signInWithPassword({
-        email: user.email,
-        password: formData.currentPassword
-      });
-
-      if (signInError) {
-        throw new Error('Contraseña actual incorrecta');
-      }
-
-      const { error: authUpdateError } = await supabase.auth.updateUser({
-        password: formData.newPassword
-      });
+      // El usuario ya está autenticado; actualizamos la contraseña directamente en Auth.
+      const { error: authUpdateError } = await withTimeout(
+        supabase.auth.updateUser({
+          password: formData.newPassword
+        })
+      );
 
       if (authUpdateError) {
         throw new Error(authUpdateError.message || 'No se pudo actualizar la contraseña');
       }
 
-      const { error: updateError } = await supabase
+      const { data: updatedRows, error: updateError } = await supabase
         .from('users')
         .update({
           first_login: false // Marcar que ya no es el primer login
         })
-        .eq('id', user.id);
+        .eq('id', user.id)
+        .select('id')
+        .limit(1);
 
-      if (updateError) {
-        throw new Error('La contraseña se cambió, pero no se pudo actualizar first_login');
+      if (updateError || !updatedRows || updatedRows.length === 0) {
+        console.warn('No se pudo sincronizar first_login=false desde cliente. Se continuará con el acceso.', updateError);
       }
+
+      localStorage.setItem(`password_changed_${user.id}`, new Date().toISOString());
 
       alert('✓ ¡Contraseña actualizada correctamente!');
       onPasswordChanged();

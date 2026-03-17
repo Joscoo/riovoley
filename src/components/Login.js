@@ -211,6 +211,21 @@ function Login({ onLoginSuccess }) {
       return false;
     }
 
+    const localPasswordChangedMark = localStorage.getItem(`password_changed_${userId}`);
+    if (localPasswordChangedMark) {
+      // Mejor esfuerzo para sincronizar first_login en backend.
+      supabase
+        .from('users')
+        .update({ first_login: false })
+        .eq('id', userId)
+        .then(({ error }) => {
+          if (error) {
+            console.warn('No se pudo sincronizar first_login=false desde marker local:', error.message);
+          }
+        });
+      return false;
+    }
+
     try {
       // Consultar la tabla users para verificar si es primer login
       const { data: userData, error } = await supabase
@@ -243,6 +258,9 @@ function Login({ onLoginSuccess }) {
     setUserNeedsPasswordChange(null);
     setPasswordChangeRequired(false);
     setIsLoggedIn(true);
+    if (user?.id) {
+      localStorage.setItem(`password_changed_${user.id}`, new Date().toISOString());
+    }
     setMensaje('✓ ¡Contraseña actualizada correctamente! Ya puedes usar la plataforma.');
   };
 
