@@ -1,5 +1,5 @@
 // src/components/Login.js
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase, getCurrentUser } from '../config/supabase';
 import { useUserProfile } from '../hooks/useUserProfile';
@@ -117,6 +117,7 @@ function Login({ onLoginSuccess }) {
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [resetEmail, setResetEmail] = useState('');
   const [resetMessage, setResetMessage] = useState('');
+  const isCompletingPasswordChangeRef = useRef(false);
   const navigate = useNavigate();
   const { isMobile, isSmallMobile } = useIsMobile();
   
@@ -153,6 +154,19 @@ function Login({ onLoginSuccess }) {
     // Escuchar cambios en el estado de autenticación
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (session?.user) {
+        if (isCompletingPasswordChangeRef.current) {
+          setUser(session.user);
+          setPasswordChangeRequired(false);
+          setShowChangePasswordModal(false);
+          setUserNeedsPasswordChange(null);
+          setIsLoggedIn(true);
+
+          if (onLoginSuccess) {
+            onLoginSuccess(session.user);
+          }
+          return;
+        }
+
         setUser(session.user);
 
         const mustChangePassword = await checkFirstLogin(session.user.id);
@@ -211,6 +225,10 @@ function Login({ onLoginSuccess }) {
       return false;
     }
 
+    if (isCompletingPasswordChangeRef.current) {
+      return false;
+    }
+
     try {
       // Consultar la tabla users para verificar si es primer login
       const { data: userData, error } = await supabase
@@ -239,6 +257,7 @@ function Login({ onLoginSuccess }) {
   };
 
   const handlePasswordChanged = async () => {
+    isCompletingPasswordChangeRef.current = true;
     setShowChangePasswordModal(false);
     setUserNeedsPasswordChange(null);
     setPasswordChangeRequired(false);
@@ -271,6 +290,10 @@ function Login({ onLoginSuccess }) {
       }
     } catch (error) {
       console.error('Error finalizando flujo post-cambio de contraseña:', error);
+    } finally {
+      setTimeout(() => {
+        isCompletingPasswordChangeRef.current = false;
+      }, 5000);
     }
   };
 
