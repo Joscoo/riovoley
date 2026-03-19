@@ -51,8 +51,10 @@
   background: rgba(255, 255, 255, 0.1);
   color: white;
   font-size: 1rem;
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   transition: all 0.3s ease;
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .searchInput::placeholder {
@@ -82,8 +84,8 @@
   overflow: hidden;
   overflow-x: auto;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  -webkit-overflow-scrolling: touch;
 }
 
 .table {
@@ -167,6 +169,11 @@
   background: rgba(255, 255, 255, 0.1);
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  min-width: var(--rv-touch-target, 48px);
+  min-height: var(--rv-touch-target, 48px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btnEdit:hover {
@@ -193,6 +200,7 @@
   font-size: 1rem;
   box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
   transition: all 0.3s ease;
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .btnPrimary:hover {
@@ -211,6 +219,7 @@
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .btnSecondary:hover {
@@ -232,6 +241,7 @@
   justify-content: center;
   z-index: 1000;
   padding: 20px;
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
 }
 
@@ -270,8 +280,8 @@
   transition: all 0.3s ease;
   padding: 0.5rem 0.75rem;
   border-radius: 8px;
-  width: 40px;
-  height: 40px;
+  width: var(--rv-touch-target, 48px);
+  height: var(--rv-touch-target, 48px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -317,7 +327,9 @@
   color: white;
   font-size: 1rem;
   transition: all 0.3s ease;
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .formGroup input::placeholder,
@@ -493,7 +505,6 @@
   .tableContainer {
     border-radius: 12px;
     overflow: visible;
-    -webkit-overflow-scrolling: auto;
   }
 
   /* ========================================
@@ -583,8 +594,8 @@
   /* Ensure 48px touch targets for action buttons */
   .btnEdit,
   .btnDelete {
-    min-width: 48px;
-    min-height: 48px;
+    min-width: var(--rv-touch-target, 48px);
+    min-height: var(--rv-touch-target, 48px);
     padding: 0.75rem;
     display: inline-flex;
     align-items: center;
@@ -614,10 +625,10 @@
   }
 
   .closeBtn {
-    width: 48px;
-    height: 48px;
-    min-width: 48px;
-    min-height: 48px;
+    width: var(--rv-touch-target, 48px);
+    height: var(--rv-touch-target, 48px);
+    min-width: var(--rv-touch-target, 48px);
+    min-height: var(--rv-touch-target, 48px);
   }
 
   .form {
@@ -637,7 +648,7 @@
   .formGroup select {
     padding: 11px 12px;
     font-size: 16px;
-    min-height: 48px;
+    min-height: var(--rv-touch-target, 48px);
   }
 
   .formActions {
@@ -647,8 +658,49 @@
 
   .formActions button {
     width: 100%;
-    min-height: 48px;
+    min-height: var(--rv-touch-target, 48px);
     padding: 14px;
     font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .title {
+    font-size: clamp(1.3rem, 5vw, 1.9rem);
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+  }
+
+  .searchBar {
+    gap: 10px;
+  }
+
+  .counter {
+    padding: 8px 12px;
+    font-size: 0.82rem;
+  }
+
+  .table tbody tr {
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+
+  .table td {
+    padding: 8px 0;
+  }
+
+  .table td::before {
+    width: 100px;
+    font-size: 0.72rem;
+  }
+
+  .form {
+    padding: 0.85rem 0.6rem;
   }
 }

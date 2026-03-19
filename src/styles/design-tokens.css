@@ -1,0 +1,21 @@
+/* Responsive design tokens shared across role-based panels */
+:root {
+  --rv-breakpoint-mobile-sm: 390px;
+  --rv-breakpoint-mobile: 480px;
+  --rv-breakpoint-tablet: 768px;
+  --rv-breakpoint-desktop: 1024px;
+
+  --rv-space-xs: 8px;
+  --rv-space-sm: 12px;
+  --rv-space-md: 16px;
+  --rv-space-lg: 24px;
+  --rv-space-xl: 32px;
+
+  --rv-touch-target: 48px;
+
+  --rv-navbar-height-desktop: 60px;
+  --rv-navbar-height-mobile: 65px;
+
+  --rv-sidebar-width-desktop: 280px;
+  --rv-sidebar-width-tablet: 240px;
+}

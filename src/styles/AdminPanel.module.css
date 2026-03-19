@@ -52,8 +52,9 @@
 
 /* Sidebar Styles */
 .sidebar {
-  width: 280px;
+  width: var(--rv-sidebar-width-desktop, 280px);
   background: rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-right: 2px solid rgba(255, 215, 0, 0.3);
   padding: 2rem 0;
@@ -229,6 +230,7 @@
   padding: 25px 30px;
   border-bottom: 2px solid rgba(255, 215, 0, 0.2);
   background: rgba(0, 0, 0, 0.2);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
@@ -254,7 +256,7 @@
 /* Responsive Design - Mejorado para móviles */
 @media (max-width: 1024px) {
   .sidebar {
-    width: 240px;
+    width: var(--rv-sidebar-width-tablet, 240px);
   }
   
   .contentHeader {
@@ -285,15 +287,15 @@
     padding: 1rem 0 !important;
     overflow-x: auto;
     overflow-y: visible;
-    -webkit-overflow-scrolling: touch;
     max-height: none !important;
   }
 
   .sidebarHeader {
-    display: flex !important;
-    flex-direction: row !important;
+    display: grid !important;
+    grid-template-columns: auto 1fr !important;
     align-items: center;
-    gap: 0.75rem;
+    column-gap: 0.75rem;
+    row-gap: 0.2rem;
     padding: 0 1rem 1rem !important;
     text-align: left !important;
     border-bottom: none !important;
@@ -309,27 +311,41 @@
     font-size: 1.3rem !important;
     margin: 0 !important;
     flex-shrink: 0;
+    grid-column: 1;
+    grid-row: 1 / 4;
   }
 
   .sidebarHeader h3 {
     font-size: 0.95rem !important;
-    margin-bottom: 0.25rem !important;
+    margin: 0 !important;
     line-height: 1.3 !important;
-    word-wrap: break-word !important;
-    overflow-wrap: break-word !important;
-    white-space: normal !important;
-    flex: 1;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
     min-width: 0;
   }
 
   .userRole {
     font-size: 0.8rem !important;
     margin: 0 !important;
+    grid-column: 2;
+    grid-row: 2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .adminBadge {
     padding: 0.3rem 0.8rem !important;
     font-size: 0.7rem !important;
+    grid-column: 2;
+    grid-row: 3;
+    justify-self: start;
+    max-width: 100%;
+    white-space: nowrap;
   }
 
   .menu {
@@ -338,7 +354,6 @@
     gap: 0.75rem !important;
     overflow-x: auto;
     overflow-y: visible;
-    -webkit-overflow-scrolling: touch;
     scroll-snap-type: x proximity;
   }
 
@@ -421,6 +436,7 @@
     padding: 0 0.75rem 0.75rem !important;
     gap: 0.5rem !important;
     min-height: 50px;
+    column-gap: 0.5rem !important;
   }
 
   .userAvatar {
@@ -478,7 +494,7 @@
 /* Tablets en modo landscape */
 @media (min-width: 768px) and (max-width: 1024px) {
   .sidebar {
-    width: 240px;
+    width: var(--rv-sidebar-width-tablet, 240px);
   }
 
   .sidebarHeader {
@@ -521,5 +537,30 @@
 
   .menuItem {
     padding: 0.85rem 0.9rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .menu {
+    gap: 0.25rem !important;
+    padding: 0 0.35rem !important;
+  }
+
+  .menuItem {
+    min-width: 76px !important;
+    max-width: 82px !important;
+    padding: 0.55rem 0.25rem !important;
+  }
+
+  .menuLabel {
+    font-size: 0.7rem !important;
+  }
+
+  .contentHeader {
+    padding: 0.65rem 0.45rem !important;
+  }
+
+  .contentBody {
+    padding: 0.65rem 0.45rem !important;
   }
 }

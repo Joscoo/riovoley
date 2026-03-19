@@ -17,7 +17,7 @@ body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.6;
-  padding-top: 60px; /* debe ser igual a la altura de la navbar */
+  padding-top: var(--rv-navbar-height-desktop, 60px); /* debe ser igual a la altura de la navbar */
   background-color: #fff;
   color: #000;
   /* Mejorar experiencia táctil */
@@ -50,13 +50,13 @@ button {
 /* Estilos responsivos globales */
 @media (max-width: 768px) {
   body {
-    padding-top: 65px; /* Altura aumentada del navbar móvil */
+    padding-top: var(--rv-navbar-height-mobile, 65px); /* Altura aumentada del navbar móvil */
   }
   
   /* Asegurar que los botones tengan tamaño mínimo táctil */
   button, .button, input[type="button"], input[type="submit"] {
-    min-height: 48px;
-    min-width: 48px;
+    min-height: var(--rv-touch-target, 48px);
+    min-width: var(--rv-touch-target, 48px);
   }
   
   /* Mejorar los elementos de formulario en móvil */
@@ -69,8 +69,8 @@ button {
 @media (max-width: 480px) {
   /* Asegurar padding apropiado en pantallas muy pequeñas */
   .container, .main-content {
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: var(--rv-space-sm, 12px);
+    padding-right: var(--rv-space-sm, 12px);
   }
 }
 

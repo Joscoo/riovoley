@@ -12,8 +12,9 @@
 
 /* Sidebar */
 .sidebar {
-  width: 280px;
+  width: var(--rv-sidebar-width-desktop, 280px);
   background: rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-right: 2px solid rgba(255, 215, 0, 0.3);
   padding: 2rem 0;
@@ -95,7 +96,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: left;
-  min-height: 48px;
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .menuItem:hover {
@@ -117,9 +118,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: var(--rv-touch-target, 48px);
+  height: var(--rv-touch-target, 48px);
   flex-shrink: 0;
+}
+
+.menuText {
+  flex: 1;
+}
+
+.menuLabel {
+  display: block;
+  font-weight: 600;
+  font-size: 1em;
+  margin-bottom: 0;
 }
 
 /* Main Content */
@@ -153,6 +165,7 @@
   background: rgba(0, 0, 0, 0.3);
   border-radius: 15px;
   padding: 2rem;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 215, 0, 0.2);
   margin-bottom: 2rem;
@@ -428,6 +441,7 @@
   background: rgba(0, 0, 0, 0.5);
   border-radius: 12px;
   padding: 1.5rem;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 215, 0, 0.3);
   display: flex;
@@ -602,14 +616,14 @@
 /* Responsive */
 @media (max-width: 1024px) {
   .sidebar {
-    width: 250px;
+    width: var(--rv-sidebar-width-tablet, 240px);
   }
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
   .sidebar {
-    width: 240px;
+    width: var(--rv-sidebar-width-tablet, 240px);
   }
 
   .sidebarHeader {
@@ -654,7 +668,6 @@
     padding: 1rem 0 !important;
     overflow-x: auto;
     overflow-y: visible;
-    -webkit-overflow-scrolling: touch;
   }
 
   .sidebarHeader {
@@ -695,7 +708,6 @@
     padding: 0 0.5rem !important;
     gap: 0.75rem !important;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
     flex-shrink: 0 !important;
     scroll-snap-type: x proximity;
   }
@@ -804,7 +816,6 @@
     padding: 0 0.5rem;
     gap: 0.25rem;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
   }
 
   .menuItem {
@@ -814,7 +825,7 @@
     gap: 0.4rem;
     text-align: center;
     border-radius: 10px;
-    min-height: 48px;
+    min-height: var(--rv-touch-target, 48px);
   }
 
   .menuIcon {
@@ -883,9 +894,34 @@
 
   /* Action buttons */
   .actionButton {
-    min-height: 48px;
+    min-height: var(--rv-touch-target, 48px);
     padding: 14px 20px;
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .menu {
+    gap: 0.25rem !important;
+    padding: 0 0.35rem !important;
+  }
+
+  .menuItem {
+    min-width: 76px !important;
+    max-width: 82px !important;
+    padding: 0.55rem 0.25rem !important;
+  }
+
+  .menuLabel {
+    font-size: 0.7rem !important;
+  }
+
+  .mainContent {
+    padding: 0.65rem !important;
+  }
+
+  .section {
+    padding: 0.9rem 0.6rem !important;
   }
 }
 
@@ -961,6 +997,7 @@
   border-radius: 16px;
   padding: 2rem;
   text-align: center;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
@@ -1064,6 +1101,7 @@
   background: rgba(255, 255, 255, 0.05);
   border-radius: 16px;
   padding: 2rem;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
@@ -1130,6 +1168,7 @@
   border-radius: 16px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }
@@ -1221,6 +1260,7 @@
   border-radius: 16px;
   padding: 2rem;
   border: 1px solid rgba(255, 193, 7, 0.2);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }

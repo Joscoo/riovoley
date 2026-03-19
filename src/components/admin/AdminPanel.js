@@ -102,7 +102,10 @@ const AdminPanel = ({ user }) => {
                 onClick={() => setActiveSection(item.id)}
               >
                 <span className={styles.menuIcon}>{item.icon}</span>
-                <span>{item.label}</span>
+                <span className={styles.menuText}>
+                  <span className={styles.menuLabel}>{item.label}</span>
+                  <span className={styles.menuDescription}>{item.description}</span>
+                </span>
               </button>
             ))}
           </nav>

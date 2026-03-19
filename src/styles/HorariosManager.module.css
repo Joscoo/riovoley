@@ -62,6 +62,7 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-size: 1rem;
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .addButton:hover {
@@ -79,6 +80,7 @@
 
 .statCard {
   background: rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 215, 0, 0.2);
   border-radius: 12px;
@@ -124,6 +126,7 @@
 /* Form Card */
 .formCard {
   background: rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 215, 0, 0.3);
   border-radius: 12px;
@@ -183,7 +186,7 @@
   padding: 14px 10px;
   border-radius: 6px;
   transition: all 0.3s ease;
-  min-height: 48px;
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .checkboxLabel:hover {
@@ -218,6 +221,7 @@
   transition: all 0.3s ease;
   font-weight: 600;
   font-size: 0.9rem;
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .dayButton:hover {
@@ -260,6 +264,7 @@
   font-weight: 600;
   font-size: 0.95rem;
   text-align: left;
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .categoryButton:hover {
@@ -339,7 +344,9 @@
   transition: all 0.3s ease;
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .input::placeholder {
@@ -372,6 +379,7 @@
   transition: all 0.3s ease;
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   font-family: inherit;
   resize: vertical;
@@ -417,6 +425,7 @@
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .cancelButton {
@@ -444,6 +453,7 @@
 /* Filters Card */
 .filtersCard {
   background: rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 215, 0, 0.2);
   border-radius: 12px;
@@ -494,7 +504,9 @@
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
   cursor: pointer;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .filterSelect:focus {
@@ -517,6 +529,7 @@
 
 .daySection {
   background: rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 215, 0, 0.2);
   border-radius: 12px;
@@ -561,6 +574,7 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
@@ -628,6 +642,8 @@
   align-items: center;
   justify-content: center;
   font-weight: 600;
+  min-width: var(--rv-touch-target, 48px);
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .editButton {
@@ -657,6 +673,7 @@
   text-align: center;
   padding: 60px 20px;
   background: rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 215, 0, 0.2);
   border-radius: 12px;
@@ -888,7 +905,7 @@
 
   .dayButton,
   .categoryButton {
-    min-height: 48px;
+    min-height: var(--rv-touch-target, 48px);
     padding: 14px 16px;
     font-size: 0.9rem;
     border-radius: 10px;
@@ -922,7 +939,7 @@
 
   .formActions button {
     width: 100%;
-    min-height: 48px;
+    min-height: var(--rv-touch-target, 48px);
     padding: 14px;
     font-size: 0.95rem;
   }
@@ -930,7 +947,6 @@
   /* Schedule Grid/Table */
   .scheduleContainer {
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
     border-radius: 12px;
   }
 
@@ -951,12 +967,60 @@
   /* Action buttons */
   .editButton,
   .deleteButton {
-    min-width: 48px;
-    min-height: 48px;
+    min-width: var(--rv-touch-target, 48px);
+    min-height: var(--rv-touch-target, 48px);
     padding: 0.75rem;
     font-size: 1.1rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+}
+
+@media (max-width: 390px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .title {
+    font-size: clamp(1.3rem, 5vw, 1.9rem);
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+  }
+
+  .statCard {
+    padding: 12px;
+  }
+
+  .formCard,
+  .filtersCard,
+  .daySection {
+    padding: 0.75rem;
+  }
+
+  .formSection {
+    padding: 0.75rem;
+    margin-bottom: 16px;
+  }
+
+  .dayButton,
+  .categoryButton {
+    padding: 12px 10px;
+    font-size: 0.85rem;
+  }
+
+  .time {
+    font-size: 1.05rem;
+  }
+
+  .scheduleCard {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .scheduleActions {
+    gap: 8px;
   }
 }

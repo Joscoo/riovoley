@@ -423,7 +423,9 @@ const StudentPanel = ({ user }) => {
             onClick={() => setActiveSection('anuncios')}
           >
             <span className={styles.menuIcon}><FaBullhorn /></span>
-            <span>Anuncios</span>
+            <span className={styles.menuText}>
+              <span className={styles.menuLabel}>Anuncios</span>
+            </span>
           </button>
 
           <button
@@ -431,7 +433,9 @@ const StudentPanel = ({ user }) => {
             onClick={() => setActiveSection('mensualidad')}
           >
             <span className={styles.menuIcon}><FaMoneyBillWave /></span>
-            <span>Mensualidad</span>
+            <span className={styles.menuText}>
+              <span className={styles.menuLabel}>Mensualidad</span>
+            </span>
           </button>
 
           <button
@@ -439,7 +443,9 @@ const StudentPanel = ({ user }) => {
             onClick={() => setActiveSection('asistencias')}
           >
             <span className={styles.menuIcon}><FaChartBar /></span>
-            <span>Asistencias</span>
+            <span className={styles.menuText}>
+              <span className={styles.menuLabel}>Asistencias</span>
+            </span>
           </button>
 
           <button
@@ -447,7 +453,9 @@ const StudentPanel = ({ user }) => {
             onClick={() => setActiveSection('tests-fisicos')}
           >
             <span className={styles.menuIcon}><FaDumbbell /></span>
-            <span>Tests Físicos</span>
+            <span className={styles.menuText}>
+              <span className={styles.menuLabel}>Tests Fisicos</span>
+            </span>
           </button>
 
           <button
@@ -455,7 +463,9 @@ const StudentPanel = ({ user }) => {
             onClick={() => setActiveSection('perfil')}
           >
             <span className={styles.menuIcon}><FaCog /></span>
-            <span>Mi Perfil</span>
+            <span className={styles.menuText}>
+              <span className={styles.menuLabel}>Mi Perfil</span>
+            </span>
           </button>
         </nav>
       </aside>

@@ -57,7 +57,8 @@ async function getSmallTouchTargets(page) {
 
 for (const route of PUBLIC_ROUTES) {
   test(`public route responsive guard: ${route}`, async ({ page }) => {
-    await page.goto(route, { waitUntil: 'networkidle' });
+    await page.goto(route, { waitUntil: 'domcontentloaded' });
+    await page.waitForLoadState('load');
 
     const overflow = await getOverflowInfo(page);
     expect(
@@ -96,13 +97,21 @@ test('role dashboards responsive guard (optional env credentials)', async ({ pag
       continue;
     }
 
-    await page.goto('/login', { waitUntil: 'networkidle' });
+    await page.goto('/login', { waitUntil: 'domcontentloaded' });
+    await page.waitForLoadState('load');
     await page.getByLabel('Correo Electrónico').fill(role.email);
     await page.getByLabel('Contraseña').fill(role.password);
-    await page.getByRole('button', { name: /iniciar sesion|iniciar sesión/i }).click();
+
+    const submitButton = page.locator('form button[type="submit"]').first();
+    if (await submitButton.count()) {
+      await submitButton.click();
+    } else {
+      await page.getByRole('button', { name: /ingresar|iniciar sesion|iniciar sesión|iniciar sesión con supabase/i }).first().click();
+    }
 
     await page.waitForURL(new RegExp(`${role.route}|/login`), { timeout: 20000 });
-    await page.goto(role.route, { waitUntil: 'networkidle' });
+    await page.goto(role.route, { waitUntil: 'domcontentloaded' });
+    await page.waitForLoadState('load');
 
     const overflow = await getOverflowInfo(page);
     expect(

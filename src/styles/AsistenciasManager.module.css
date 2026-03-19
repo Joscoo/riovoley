@@ -51,6 +51,7 @@
   box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .bulkButton:hover {
@@ -72,6 +73,7 @@
   box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .exportButton:hover {
@@ -92,6 +94,7 @@
   background: rgba(0, 0, 0, 0.5);
   border-radius: 15px;
   padding: 1.5rem;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 215, 0, 0.3);
   display: flex;
@@ -140,6 +143,7 @@
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   padding: 2rem;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -174,6 +178,7 @@
   background: rgba(255, 255, 255, 0.1);
   color: white;
   font-size: 1rem;
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   transition: all 0.3s ease;
 }
@@ -203,8 +208,10 @@
   background: rgba(255, 255, 255, 0.1);
   color: white;
   font-size: 1rem;
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   transition: all 0.3s ease;
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .searchInput::placeholder {
@@ -266,6 +273,7 @@
   font-weight: 600;
   box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
   transition: all 0.3s ease;
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .allPresentButton:hover {
@@ -283,6 +291,7 @@
   font-weight: 600;
   box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
   transition: all 0.3s ease;
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .clearButton:hover {
@@ -339,6 +348,7 @@
   font-size: 0.9rem;
   transition: all 0.3s ease;
   min-width: 100px;
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .attendanceButton.present {
@@ -372,6 +382,7 @@
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -398,8 +409,10 @@
   background: rgba(255, 255, 255, 0.1);
   color: white;
   font-size: 1rem;
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   transition: all 0.3s ease;
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .filterInput:focus, .filterSelect:focus {
@@ -419,6 +432,7 @@
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   padding: 2rem;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -479,6 +493,7 @@
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   padding: 2rem;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -492,7 +507,6 @@
 
 .tableContainer {
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 .table {
@@ -588,6 +602,7 @@
   padding: 4rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -680,7 +695,6 @@
     flex-direction: column;
     text-align: center;
     gap: 0.5rem;
-    min-height: auto;
   }
   
   .statIcon {
@@ -792,7 +806,6 @@
   /* Allow cards to show without horizontal scroll */
   .tableContainer {
     overflow: visible;
-    -webkit-overflow-scrolling: auto;
   }
   
   /* Break table layout structure */
@@ -911,6 +924,7 @@
   background: rgba(255, 255, 255, 0.05);
   border-radius: 15px;
   padding: 2rem;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -952,6 +966,7 @@
   justify-content: center;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .tabButton:hover {
@@ -1114,8 +1129,8 @@
   background: none;
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: var(--rv-touch-target, 48px);
+  height: var(--rv-touch-target, 48px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1143,8 +1158,8 @@
 
 /* Nuevos estilos para métodos de pago */
 .atletaItemNew {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   padding: 1rem;
   background: rgba(255, 255, 255, 0.08);
@@ -1165,7 +1180,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  flex: 1;
+  width: 100%;
   min-width: 0;
 }
 
@@ -1174,7 +1189,10 @@
   color: #fff;
   font-size: 1rem;
   white-space: normal;
-  word-break: break-word;
+  word-break: normal;
+  overflow-wrap: break-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
   line-height: 1.3;
 }
 
@@ -1200,7 +1218,8 @@
   display: flex;
   gap: 0.75rem;
   align-items: center;
-  flex-shrink: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .paymentMethodBtn {
@@ -1334,15 +1353,15 @@
   
   /* Estilos mejorados para modo de pago */
   .atletaItemNew {
+    grid-template-columns: 1fr;
     padding: 1rem 0.75rem;
-    gap: 0.75rem;
-    flex-wrap: wrap;
+    gap: 0.6rem;
   }
   
   .atletaNameSection {
-    flex: 1 1 100%;
+    width: 100%;
     min-width: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
   }
   
   .atletaNameSection .atletaName {
@@ -1351,9 +1370,10 @@
   }
   
   .paymentButtons {
+    width: 100%;
     gap: 0.5rem;
-    justify-content: center;
-    flex: 1 1 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
   }
   
   .paymentMethodBtn {
@@ -1421,14 +1441,14 @@
   /* Mejorar aún más en móviles pequeños */
   .atletaItemNew {
     padding: 12px 10px;
-    flex-direction: column;
+    grid-template-columns: 1fr;
     align-items: stretch;
     border-radius: 10px;
   }
   
   .atletaNameSection {
-    flex: 1 1 auto;
-    margin-bottom: 0.75rem;
+    width: 100%;
+    margin-bottom: 0;
     justify-content: flex-start;
   }
   
@@ -1444,15 +1464,17 @@
   
   .paymentButtons {
     width: 100%;
-    justify-content: space-between;
-    gap: 0.75rem;
-    flex-wrap: nowrap;
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    flex-wrap: wrap;
   }
   
   .paymentMethodBtn {
-    flex: 1;
-    max-width: 80px;
-    min-width: 48px;
+    flex: 0 0 var(--rv-touch-target, 48px);
+    width: var(--rv-touch-target, 48px);
+    max-width: var(--rv-touch-target, 48px);
+    min-width: var(--rv-touch-target, 48px);
     min-height: 48px;
     height: 48px;
     font-size: 1.3rem;
@@ -1460,13 +1482,32 @@
   }
   
   .removeAttendanceBtn {
-    flex: 0 0 48px;
-    width: 48px;
-    min-width: 48px;
+    flex: 0 0 var(--rv-touch-target, 48px);
+    width: var(--rv-touch-target, 48px);
+    min-width: var(--rv-touch-target, 48px);
     height: 48px;
     min-height: 48px;
     border-radius: 10px;
     font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .atletaItemNew {
+    padding: 10px 8px;
+  }
+
+  .atletaNameSection {
+    margin-bottom: 0.5rem;
+  }
+
+  .atletaNameSection .atletaName {
+    font-size: 0.9rem;
+    line-height: 1.25;
+  }
+
+  .paymentButtons {
+    gap: 0.4rem;
   }
 }
 
@@ -1563,6 +1604,221 @@
   }
 }
 
+@media (max-width: 390px) {
+  .asistenciasManager {
+    padding: 0.5rem;
+  }
+
+  .headerLeft h2 {
+    font-size: clamp(1.3rem, 5vw, 1.9rem);
+  }
+
+  .headerLeft p {
+    font-size: 0.85rem;
+  }
+
+  .statsGrid {
+    gap: 10px;
+  }
+
+  .statCard {
+    padding: 12px;
+  }
+
+  .bulkAttendance,
+  .categoryAttendance,
+  .attendanceTable,
+  .filtersSection {
+    padding: 0.75rem;
+  }
+
+  .tableRow {
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+
+  .table tbody td {
+    padding: 8px 0;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .table tbody td::before {
+    width: 90px;
+    font-size: 0.72rem;
+  }
+
+  .tabButton {
+    min-width: 100%;
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    gap: 6px;
+  }
+
+  .tabIcon {
+    font-size: 1rem;
+  }
+
+  .atletaNameSection .atletaName {
+    font-size: 0.92rem;
+  }
+}
+
+/* Quick Attendance Grid Rework - maximize horizontal content area */
+.categoryAttendance {
+  width: 100%;
+  padding: 1rem;
+}
+
+.categoryAttendance .categorySections {
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.categoryAttendance .categoryContent {
+  width: 100%;
+  padding: 0.85rem;
+}
+
+.categoryAttendance .allCategoriesView,
+.categoryAttendance .filteredCategoryView {
+  gap: 1rem;
+}
+
+.categoryAttendance .categorySection {
+  padding: 0.9rem;
+  margin-bottom: 0;
+}
+
+.categoryAttendance .categorySubGrid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: 0.85rem;
+}
+
+.categoryAttendance .subCategory {
+  padding: 0.8rem;
+}
+
+.categoryAttendance .atletasList {
+  gap: 0.45rem;
+}
+
+.categoryAttendance .atletaItemNew {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+  padding: 0.7rem;
+}
+
+.categoryAttendance .atletaNameSection {
+  min-width: 0;
+  width: 100%;
+}
+
+.categoryAttendance .atletaNameSection .atletaName {
+  font-size: 0.98rem;
+  line-height: 1.3;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.categoryAttendance .paymentButtons {
+  justify-content: flex-end;
+  gap: 0.35rem;
+  flex-wrap: nowrap;
+}
+
+.categoryAttendance .paymentMethodBtn,
+.categoryAttendance .removeAttendanceBtn {
+  width: var(--rv-touch-target, 48px);
+  height: var(--rv-touch-target, 48px);
+  min-width: var(--rv-touch-target, 48px);
+  min-height: var(--rv-touch-target, 48px);
+  flex: 0 0 var(--rv-touch-target, 48px);
+}
+
+@media (max-width: 768px) {
+  .categoryAttendance {
+    padding: 0.75rem;
+  }
+
+  .categoryAttendance .categoryTabs {
+    padding: 0.65rem;
+    gap: 0.55rem;
+  }
+
+  .categoryAttendance .tabButton {
+    min-width: 0;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.86rem;
+  }
+
+  .categoryAttendance .categoryStatsBar {
+    padding: 0.65rem;
+    gap: 0.55rem;
+  }
+
+  .categoryAttendance .categorySubGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .categoryAttendance {
+    padding: 0.6rem;
+  }
+
+  .categoryAttendance .categorySections {
+    margin-top: 0.7rem;
+    gap: 0.7rem;
+  }
+
+  .categoryAttendance .categoryContent,
+  .categoryAttendance .categorySection,
+  .categoryAttendance .subCategory {
+    padding: 0.6rem;
+  }
+
+  .categoryAttendance .categoryStatsBar {
+    gap: 0.45rem;
+  }
+
+  .categoryAttendance .atletaItemNew {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+    padding: 0.6rem;
+  }
+
+  .categoryAttendance .paymentButtons {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .categoryAttendance .atletaNameSection .atletaName {
+    font-size: 0.92rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .categoryAttendance {
+    padding: 0.5rem;
+  }
+
+  .categoryAttendance .tabButton {
+    font-size: 0.8rem;
+    padding: 0.55rem 0.65rem;
+  }
+
+  .categoryAttendance .atletaNameSection .atletaName {
+    font-size: 0.88rem;
+  }
+}
+
 /* Modal de Exportación */
 .modalOverlay {
   position: fixed;
@@ -1575,6 +1831,7 @@
   align-items: center;
   justify-content: center;
   z-index: 10000;
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   animation: fadeIn 0.2s ease;
 }
@@ -1788,6 +2045,7 @@
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
@@ -1804,6 +2062,7 @@
   background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(218, 165, 32, 0.1) 100%);
   cursor: pointer;
   transition: all 0.3s ease;
+  -webkit-user-select: none;
   user-select: none;
 }
 
@@ -2015,4 +2274,318 @@
   color: rgba(255, 255, 255, 0.95);
   font-size: 1.1rem;
   border: 2px solid rgba(40, 167, 69, 0.4);
+}
+
+@media (max-width: 480px) {
+  .daysContainer {
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .dayHeader {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .dayInfo {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  .dayInfo h4 {
+    font-size: 1.05rem;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  .dayCount {
+    font-size: 0.88rem;
+  }
+
+  .dayActions {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .exportDayButton {
+    min-height: var(--rv-touch-target, 48px);
+    max-width: 100%;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.85rem;
+    white-space: normal;
+  }
+
+  .dayContent {
+    padding: 1rem;
+  }
+
+  .categorySection {
+    padding: 1rem;
+    overflow-x: auto;
+  }
+
+  .categoryTables {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .subCategoryTable {
+    padding: 0.75rem;
+    overflow-x: auto;
+  }
+
+  .compactTable {
+    min-width: 430px;
+  }
+
+  .compactTable thead th,
+  .compactTable tbody td {
+    padding: 0.6rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .dayHeader {
+    padding: 0.75rem;
+  }
+
+  .dayInfo h4 {
+    font-size: 0.95rem;
+  }
+
+  .dayCount {
+    font-size: 0.82rem;
+  }
+
+  .dayContent {
+    padding: 0.75rem;
+  }
+
+  .categorySection {
+    padding: 0.75rem;
+  }
+
+  .subCategoryTable {
+    padding: 0.5rem;
+  }
+
+  .compactTable {
+    min-width: 400px;
+  }
+}
+
+/* Quick Attendance Grid Normalization */
+.categoryAttendance {
+  width: 100%;
+  padding: clamp(0.7rem, 2.5vw, 1rem);
+}
+
+.categoryAttendance .categorySections {
+  margin-top: 0.75rem;
+  gap: 0.85rem;
+}
+
+.categoryAttendance .categoryContent {
+  padding: 0.75rem;
+}
+
+.categoryAttendance .allCategoriesView,
+.categoryAttendance .filteredCategoryView {
+  gap: 0.85rem;
+}
+
+.categoryAttendance .categorySection {
+  margin-bottom: 0;
+  padding: 0.75rem;
+}
+
+.categoryAttendance .categorySubGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.categoryAttendance .subCategory {
+  padding: 0.65rem;
+}
+
+.categoryAttendance .atletasList {
+  gap: 0.45rem;
+}
+
+.categoryAttendance .atletaItemNew {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.65rem;
+}
+
+.categoryAttendance .atletaNameSection {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+.categoryAttendance .atletaNameSection .atletaName {
+  display: block;
+  font-size: 0.95rem;
+  line-height: 1.25;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.categoryAttendance .paymentButtons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  flex-wrap: nowrap;
+}
+
+.categoryAttendance .paymentMethodBtn,
+.categoryAttendance .removeAttendanceBtn {
+  width: var(--rv-touch-target, 48px);
+  height: var(--rv-touch-target, 48px);
+  min-width: var(--rv-touch-target, 48px);
+  min-height: var(--rv-touch-target, 48px);
+  flex: 0 0 var(--rv-touch-target, 48px);
+}
+
+@media (max-width: 768px) {
+  .categoryAttendance .categoryTabs {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 0.6rem;
+  }
+
+  .categoryAttendance .tabButton {
+    min-width: 0;
+    padding: 0.6rem 0.7rem;
+    font-size: 0.85rem;
+    justify-content: flex-start;
+  }
+
+  .categoryAttendance .categoryStatsBar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    padding: 0.6rem;
+  }
+
+  .categoryAttendance .categorySubGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .categoryAttendance {
+    padding: 0.6rem;
+  }
+
+  .categoryAttendance .categorySections {
+    gap: 0.7rem;
+    margin-top: 0.6rem;
+  }
+
+  .categoryAttendance .categoryContent,
+  .categoryAttendance .categorySection,
+  .categoryAttendance .subCategory {
+    padding: 0.55rem;
+  }
+
+  .categoryAttendance .categoryStatsBar {
+    grid-template-columns: 1fr;
+  }
+
+  .categoryAttendance .atletaItemNew {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+    padding: 0.55rem;
+  }
+
+  .categoryAttendance .atletaNameSection {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .categoryAttendance .atletaNameSection .atletaName {
+    font-size: 0.92rem;
+    line-height: 1.28;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+
+  .categoryAttendance .paymentButtons {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .categoryAttendance .tabButton {
+    font-size: 0.8rem;
+  }
+
+  .categoryAttendance .atletaNameSection .atletaName {
+    font-size: 0.88rem;
+  }
+}
+
+/* Final mobile hard-fix for quick attendance row composition */
+@media (max-width: 768px) {
+  .categoryAttendance .atletaItemNew {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: 0.45rem !important;
+    width: 100% !important;
+    padding: 0.6rem !important;
+  }
+
+  .categoryAttendance .atletaNameSection {
+    order: 1 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+  }
+
+  .categoryAttendance .atletaNameSection .atletaName {
+    display: block !important;
+    width: 100% !important;
+    font-size: 0.94rem !important;
+    line-height: 1.28 !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .categoryAttendance .paymentButtons {
+    order: 2 !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 0.35rem !important;
+  }
+
+  .categoryAttendance .paymentMethodBtn,
+  .categoryAttendance .removeAttendanceBtn {
+    width: var(--rv-touch-target, 48px) !important;
+    height: var(--rv-touch-target, 48px) !important;
+    min-width: var(--rv-touch-target, 48px) !important;
+    min-height: var(--rv-touch-target, 48px) !important;
+    flex: 0 0 var(--rv-touch-target, 48px) !important;
+  }
 }

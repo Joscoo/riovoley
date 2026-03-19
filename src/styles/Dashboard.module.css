@@ -37,6 +37,7 @@
   border: 2px solid rgba(255, 215, 0, 0.3);
   border-radius: 12px;
   padding: 20px;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }
@@ -98,6 +99,7 @@
   border: 2px solid rgba(255, 215, 0, 0.3);
   border-radius: 12px;
   padding: 25px;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }
@@ -169,6 +171,7 @@
   border: 2px solid rgba(255, 215, 0, 0.3);
   border-radius: 12px;
   padding: 25px;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }
@@ -202,7 +205,9 @@
   align-items: center;
   gap: 15px;
   text-align: left;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
+  min-height: var(--rv-touch-target, 48px);
 }
 
 .actionButton:hover {
@@ -235,6 +240,7 @@
   border: 2px solid rgba(255, 215, 0, 0.3);
   border-radius: 12px;
   padding: 25px;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }
@@ -263,6 +269,7 @@
   border-radius: 8px;
   text-align: center;
   transition: all 0.3s ease;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
@@ -438,6 +445,7 @@
   .actionButton {
     padding: 14px !important;
     gap: 10px !important;
+    min-height: var(--rv-touch-target, 48px);
   }
   
   .actionButton span {
@@ -478,5 +486,57 @@
   
   .dashboardHeader h2 {
     font-size: 1.5rem !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .dashboard {
+    padding: 0 6px !important;
+  }
+
+  .dashboardHeader {
+    padding: 0 6px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .dashboardHeader h2 {
+    font-size: clamp(1.25rem, 5vw, 1.7rem) !important;
+  }
+
+  .dashboardHeader p {
+    font-size: 0.82rem !important;
+  }
+
+  .statsGrid {
+    padding: 0 6px !important;
+    gap: 8px !important;
+  }
+
+  .statCard {
+    padding: 10px !important;
+  }
+
+  .statValue {
+    font-size: 1.25rem !important;
+  }
+
+  .dashboardContent {
+    padding: 0 6px !important;
+    gap: 12px !important;
+  }
+
+  .activitySection,
+  .quickActions,
+  .categoriesOverview {
+    padding: 12px !important;
+  }
+
+  .actionButton {
+    padding: 12px !important;
+    gap: 8px !important;
+  }
+
+  .actionButton span {
+    font-size: 1.15rem !important;
   }
 }
