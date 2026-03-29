@@ -60,7 +60,7 @@ export const createUserWorking = async (userData) => {
   try {
     console.log('🔐 Creando usuario con método que funciona...');
 
-    // Verificar si el email ya existe en public.users
+    // Verificar si el email ya existe en core.users
     const { data: existingUser, error: checkError } = await supabase
       .from('users')
       .select('email')
@@ -92,7 +92,7 @@ export const createUserWorking = async (userData) => {
     const authUserId = authData.user.id;
     console.log('✅ Usuario creado en Auth con ID:', authUserId);
 
-    // Crear usuario en public.users con el mismo ID
+    // Crear usuario en core.users con el mismo ID
     // NOTA: NO guardamos password aquí por seguridad (Supabase Auth lo maneja)
     const { data: publicUserData, error: publicUserError } = await supabase
       .from('users')

@@ -47,9 +47,9 @@ export const createCompleteUser = async (userData) => {
       throw new Error(`El email "${email}" ya está registrado en el sistema de autenticación.`);
     }
 
-    // Paso 2: Verificar si el email ya existe en public.users
+    // Paso 2: Verificar si el email ya existe en core.users
     const { data: existingUser, error: checkError } = await supabase
-      .from('users')
+        .from('users')
       .select('email')
       .eq('email', email.trim())
       .single();
@@ -86,9 +86,9 @@ export const createCompleteUser = async (userData) => {
     const authUserId = authData.user.id;
     console.log('✅ Usuario creado en Auth con ID:', authUserId);
 
-    // Paso 5: Crear usuario en public.users con el mismo ID de auth
+    // Paso 5: Crear usuario en core.users con el mismo ID de auth
     const { data: publicUserData, error: publicUserError } = await supabase
-      .from('users')
+        .from('users')
       .insert({
         id: authUserId, // Usar el mismo ID que auth.users
         email: email.trim(),
@@ -115,7 +115,7 @@ export const createCompleteUser = async (userData) => {
     // Paso 6: Crear perfil en user_profiles si existe esa tabla
     try {
       const { error: profileError } = await supabase
-        .from('user_profiles')
+          .from('user_profiles')
         .insert({
           id: authUserId,
           full_name: `${nombre} ${apellido}`,
@@ -185,7 +185,7 @@ export const createCompleteStudent = async (studentData) => {
 
     // Paso 2: Crear registro en students
     const { data: studentRecord, error: studentError } = await supabase
-      .from('students')
+        .from('students')
       .insert({
         user_id: userId,
         categoria: categoria,

@@ -3,7 +3,7 @@ Estado: documentación técnica para desarrolladores / operaciones
 
 Resumen
 
-Esquema principal: public.
+Esquemas de dominio: core, billing, training, profiles, public_content, audit, security.
 Uso de UUIDs para la mayoría de PKs; secuencias para algunos integer PKs.
 RLS (Row-Level Security) habilitado en tablas sensibles. Políticas aplicadas basadas en auth.uid() y claims JWT (por ejemplo, role).
 Convenciones: nombres de columnas en español, constraints CHECK para enums lógicos, timestamps para auditoría.
@@ -29,7 +29,7 @@ Anexos — snippets útiles
 
 Tablas y definición de columnas (técnico)
 
-public.users
+core.users
 
 id uuid PRIMARY KEY — default: uuid_generate_v4() o gen_random_uuid()
 email text UNIQUE NOT NULL
@@ -42,7 +42,7 @@ telefono text NULL
 last_login timestamptz NULL
 created_at timestamptz DEFAULT now()
 Comentario: usada como cuenta base; referenciada por students.user_id y workouts.owner_id.
-public.user_profiles
+profiles.user_profiles
 
 id uuid PRIMARY KEY — FK -> auth.users.id
 full_name text NULL
@@ -50,10 +50,10 @@ organization_id uuid NULL
 role user_role_enum DEFAULT 'usuario' (enum values: administrador, entrenador, usuario)
 created_at timestamptz DEFAULT now()
 RLS: habilitado (políticas owner + admin aplicadas)
-public.students
+core.students
 
 id uuid PRIMARY KEY
-user_id uuid NULL REFERENCES public.users(id)
+user_id uuid NULL REFERENCES core.users(id)
 categoria text NULL CHECK (categoria = ANY (ARRAY['iniciacion_hombres'::text, 'iniciacion_mujeres'::text, 'perfeccionamiento_mujeres'::text, 'perfeccionamiento_hombres'::text, 'master_mujeres'::text]))
 altura numeric NULL
 peso numeric NULL
@@ -64,48 +64,48 @@ Comentario: entidad central para datos deportivos; PK id referenciado por múlti
 public.training_cards
 
 id uuid PRIMARY KEY DEFAULT uuid_generate_v4()
-student_id uuid NULL REFERENCES public.students(id)
+student_id uuid NULL REFERENCES core.students(id)
 fecha_compra date DEFAULT CURRENT_DATE
 fecha_expiracion date NULL
 sesiones_totales integer DEFAULT 12
 sesiones_usadas integer DEFAULT 0
 activa boolean DEFAULT true
-public.payments
+billing.payments
 
 id uuid PRIMARY KEY DEFAULT uuid_generate_v4()
-student_id uuid NULL REFERENCES public.students(id)
-payment_type_id int NULL REFERENCES public.payment_types(id)
+student_id uuid NULL REFERENCES core.students(id)
+payment_type_id int NULL REFERENCES billing.payment_types(id)
 monto numeric NOT NULL
 fecha_inicio date NULL
 fecha_fin date NULL
 fecha_pago date DEFAULT CURRENT_DATE
 estado text NULL CHECK (estado = ANY (ARRAY['activo'::text, 'vencido'::text, 'proximo_a_vencer'::text]))
-public.payment_types
+billing.payment_types
 
 id integer PRIMARY KEY DEFAULT nextval('payment_types_id_seq'::regclass)
 nombre text UNIQUE NOT NULL
 descripcion text NULL
 precio numeric NULL
 Comentario: catálogo de métodos de pago. Valores estándar: 'pago_diario', 'mensualidad', 'tarjeta'. Usado en attendances.metodo_pago_id para registrar cómo pagó cada atleta su asistencia.
-public.attendances
+training.attendances
 
 id uuid PRIMARY KEY DEFAULT uuid_generate_v4()
-student_id uuid NULL REFERENCES public.students(id)
-schedule_id integer NULL REFERENCES public.schedules(id)
-metodo_pago_id integer NULL REFERENCES public.payment_types(id)
+student_id uuid NULL REFERENCES core.students(id)
+schedule_id integer NULL REFERENCES training.schedules(id)
+metodo_pago_id integer NULL REFERENCES billing.payment_types(id)
 fecha date DEFAULT CURRENT_DATE
 hora_entrada timestamptz DEFAULT now()
-public.schedules
+training.schedules
 
 id integer PRIMARY KEY DEFAULT nextval('schedules_id_seq'::regclass)
 dia_semana text NULL CHECK (dia_semana = ANY (ARRAY['lunes'::text, 'martes'::text, 'miercoles'::text, 'jueves'::text, 'viernes'::text, 'sabado'::text, 'domingo'::text]))
 hora_inicio time NOT NULL
 hora_fin time NOT NULL
 categoria text NULL CHECK (categoria = ANY (ARRAY['iniciacion_hombres'::text, 'iniciacion_mujeres'::text, 'perfeccionamiento_mujeres'::text, 'perfeccionamiento_hombres'::text, 'master_mujeres'::text, 'open_gym'::text]))
-public.physical_tests
+training.physical_tests
 
 id uuid PRIMARY KEY DEFAULT gen_random_uuid()
-student_id uuid NULL REFERENCES public.students(id)
+student_id uuid NULL REFERENCES core.students(id)
 estatura numeric NULL CHECK (estatura > 0::numeric AND estatura < 3::numeric)
 peso numeric NULL CHECK (peso > 0::numeric AND peso < 300::numeric)
 brazo_extend_inicial numeric NULL
@@ -131,15 +131,15 @@ organization_id uuid NULL
 is_public boolean DEFAULT false
 created_at timestamptz DEFAULT now()
 Relaciones (FK) — lista técnica
-public.students.user_id -> public.users.id
-public.user_profiles.id -> auth.users.id
-public.training_cards.student_id -> public.students.id
-public.payments.student_id -> public.students.id
-public.payments.payment_type_id -> public.payment_types.id
-public.attendances.student_id -> public.students.id
-public.attendances.schedule_id -> public.schedules.id
-public.attendances.metodo_pago_id -> public.payment_types.id
-public.physical_tests.student_id -> public.students.id
+core.students.user_id -> core.users.id
+profiles.user_profiles.id -> auth.users.id
+public.training_cards.student_id -> core.students.id
+billing.payments.student_id -> core.students.id
+billing.payments.payment_type_id -> billing.payment_types.id
+training.attendances.student_id -> core.students.id
+training.attendances.schedule_id -> training.schedules.id
+training.attendances.metodo_pago_id -> billing.payment_types.id
+training.physical_tests.student_id -> core.students.id
 public.workouts.owner_id -> auth.users.id
 Restricciones, checks e índices recomendados
 Checks ya presentes:
@@ -147,11 +147,11 @@ users.role, students.categoria, schedules.dia_semana, payments.estado, physical_
 Unicidades:
 users.email, payment_types.nombre.
 Índices recomendados (si no existen):
-CREATE INDEX ON public.students(user_id);
+CREATE INDEX ON core.students(user_id);
 CREATE INDEX ON public.training_cards(student_id);
-CREATE INDEX ON public.payments(student_id);
-CREATE INDEX ON public.attendances(student_id);
-CREATE INDEX ON public.attendances(schedule_id);
+CREATE INDEX ON billing.payments(student_id);
+CREATE INDEX ON training.attendances(student_id);
+CREATE INDEX ON training.attendances(schedule_id);
 Confirmar PK index en user_profiles.id (debe existir por PK).
 Si se habilita multitenancy (organization_id) crear índices compuestos:
 CREATE INDEX idx_user_org_user_org ON public.user_organizations(user_id, organization_id);
@@ -160,8 +160,8 @@ Modelo aplicado para user_profiles: propietario + administrador.
 Admin claim: JWT claim role = 'administrador' => FOR ALL.
 Owner: filas donde id = auth.uid() tienen permiso para SELECT/INSERT/UPDATE/DELETE.
 Ejemplo de política (aplicada):
-CREATE POLICY "profiles_admin_full_access" ON public.user_profiles FOR ALL TO authenticated USING ((auth.jwt() ->> 'role') = 'administrador') WITH CHECK ((auth.jwt() ->> 'role') = 'administrador');
-CREATE POLICY "profiles_select_owner" ON public.user_profiles FOR SELECT TO authenticated USING ((SELECT auth.uid()) = id OR (auth.jwt() ->> 'role') = 'administrador');
+CREATE POLICY "profiles_admin_full_access" ON profiles.user_profiles FOR ALL TO authenticated USING ((auth.jwt() ->> 'role') = 'administrador') WITH CHECK ((auth.jwt() ->> 'role') = 'administrador');
+CREATE POLICY "profiles_select_owner" ON profiles.user_profiles FOR SELECT TO authenticated USING ((SELECT auth.uid()) = id OR (auth.jwt() ->> 'role') = 'administrador');
 Otras políticas análogas para INSERT/UPDATE/DELETE.
 Nota técnica: usar (SELECT auth.uid()) en WHERE/USING/WITH CHECK para mejor compatibilidad con planes y caché.
 Funciones auxiliares y extensiones requeridas
@@ -172,17 +172,17 @@ Funciones de negocio:
 calculate_age(date) — función que calcula edad desde fecha de nacimiento; si se usa en generated column, debe existir y preferiblemente ser STABLE.
 Recomendación: marcar funciones usadas en políticas como SECURITY DEFINER y revocar ejecución a roles públicos si contienen lógica sensible.
 DDL de ejemplo (habilitar RLS + políticas owner/admin) Nota: ejecutar DDL que cambia políticas requiere privilegios y pruebas. Este bloque es un ejemplo de referencia.
--- Habilitar RLS ALTER TABLE public.user_profiles ENABLE ROW LEVEL SECURITY;
+-- Habilitar RLS ALTER TABLE profiles.user_profiles ENABLE ROW LEVEL SECURITY;
 
--- Políticas owner + admin (ejemplo) CREATE POLICY "profiles_admin_full_access" ON public.user_profiles FOR ALL TO authenticated USING ((auth.jwt() ->> 'role') = 'administrador') WITH CHECK ((auth.jwt() ->> 'role') = 'administrador');
+-- Políticas owner + admin (ejemplo) CREATE POLICY "profiles_admin_full_access" ON profiles.user_profiles FOR ALL TO authenticated USING ((auth.jwt() ->> 'role') = 'administrador') WITH CHECK ((auth.jwt() ->> 'role') = 'administrador');
 
-CREATE POLICY "profiles_select_owner" ON public.user_profiles FOR SELECT TO authenticated USING ((SELECT auth.uid()) = id OR (auth.jwt() ->> 'role') = 'administrador');
+CREATE POLICY "profiles_select_owner" ON profiles.user_profiles FOR SELECT TO authenticated USING ((SELECT auth.uid()) = id OR (auth.jwt() ->> 'role') = 'administrador');
 
-CREATE POLICY "profiles_insert_owner_or_admin" ON public.user_profiles FOR INSERT TO authenticated WITH CHECK ((SELECT auth.uid()) = id OR (auth.jwt() ->> 'role') = 'administrador');
+CREATE POLICY "profiles_insert_owner_or_admin" ON profiles.user_profiles FOR INSERT TO authenticated WITH CHECK ((SELECT auth.uid()) = id OR (auth.jwt() ->> 'role') = 'administrador');
 
-CREATE POLICY "profiles_update_owner" ON public.user_profiles FOR UPDATE TO authenticated USING ((SELECT auth.uid()) = id OR (auth.jwt() ->> 'role') = 'administrador') WITH CHECK ((SELECT auth.uid()) = id OR (auth.jwt() ->> 'role') = 'administrador');
+CREATE POLICY "profiles_update_owner" ON profiles.user_profiles FOR UPDATE TO authenticated USING ((SELECT auth.uid()) = id OR (auth.jwt() ->> 'role') = 'administrador') WITH CHECK ((SELECT auth.uid()) = id OR (auth.jwt() ->> 'role') = 'administrador');
 
-CREATE POLICY "profiles_delete_owner" ON public.user_profiles FOR DELETE TO authenticated USING ((SELECT auth.uid()) = id OR (auth.jwt() ->> 'role') = 'administrador');
+CREATE POLICY "profiles_delete_owner" ON profiles.user_profiles FOR DELETE TO authenticated USING ((SELECT auth.uid()) = id OR (auth.jwt() ->> 'role') = 'administrador');
 
 Pruebas y validación (procedimiento)
 Validación de RLS:
@@ -190,7 +190,7 @@ Generar JWT para:
 Usuario A (sub = , role = 'usuario')
 Usuario B (sub = , role = 'usuario')
 Admin (sub = , role = 'administrador')
-Intentar SELECT/INSERT/UPDATE/DELETE sobre public.user_profiles para cada token y verificar permisos.
+Intentar SELECT/INSERT/UPDATE/DELETE sobre profiles.user_profiles para cada token y verificar permisos.
 Pruebas unitarias:
 Crear fixtures en DB para cada rol y ejecutar queries via CI (p. ej., usando supabase-js en tests).
 Pruebas de integridad referencial:
@@ -211,7 +211,7 @@ Añadir índices para columnas usadas frecuentemente por WHERE/USING en polític
 Revisar advisors de Supabase y logs periódicamente.
 Anexos — snippets útiles
 Crear índice ejemplo:
-CREATE INDEX idx_students_user_id ON public.students(user_id);
+CREATE INDEX idx_students_user_id ON core.students(user_id);
 Extensión:
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 Ejemplo función calculate_age (simple):
@@ -257,4 +257,4 @@ P
 Nota: ajustar permisos y marcar SECURITY DEFINER si se usa en políticas.
 Cambios recientes aplicados en esta sesión
 
-Se aplicaron políticas RLS en public.user_profiles para adoptar el modelo propietario + administrador (políticas FOR ALL, SELECT, INSERT, UPDATE, DELETE). Verifica con pruebas de token/claims.
+Se aplicaron políticas RLS en profiles.user_profiles para adoptar el modelo propietario + administrador (políticas FOR ALL, SELECT, INSERT, UPDATE, DELETE). Verifica con pruebas de token/claims.

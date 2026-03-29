@@ -1,8 +1,8 @@
--- Sincroniza users.last_login con auth.users.last_sign_in_at
+-- Sincroniza core.users.last_login con auth.users.last_sign_in_at
 -- Ejecutar una vez en Supabase SQL Editor
 
 -- 1) Backfill inicial para usuarios existentes
-UPDATE public.users u
+UPDATE core.users u
 SET last_login = au.last_sign_in_at
 FROM auth.users au
 WHERE au.id = u.id
@@ -14,12 +14,12 @@ CREATE OR REPLACE FUNCTION public.sync_last_login_from_auth()
 RETURNS TRIGGER
 LANGUAGE plpgsql
 SECURITY DEFINER
-SET search_path = public, auth
+SET search_path = ''
 AS $$
 BEGIN
   -- Solo sincronizar si cambió el dato de último inicio de sesión
   IF NEW.last_sign_in_at IS DISTINCT FROM OLD.last_sign_in_at THEN
-    UPDATE public.users
+    UPDATE core.users
     SET last_login = NEW.last_sign_in_at
     WHERE id = NEW.id;
   END IF;

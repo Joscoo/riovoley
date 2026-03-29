@@ -1,4 +1,4 @@
--- Trigger para mantener sincronizados los roles entre users y user_profiles
+-- Trigger para mantener sincronizados los roles entre core.users y profiles.user_profiles
 -- Fecha: 2026-01-29
 -- Propósito: Actualizar automáticamente user_profiles cuando cambie el rol en users
 
@@ -10,7 +10,7 @@ BEGIN
     IF NEW.role IS DISTINCT FROM OLD.role THEN
         -- Actualizar o crear el perfil en user_profiles
         -- Mapear 'estudiante' a 'usuario' si es necesario
-        INSERT INTO public.user_profiles (id, full_name, role, created_at)
+        INSERT INTO profiles.user_profiles (id, full_name, role, created_at)
         VALUES (
             NEW.id,
             TRIM(CONCAT(NEW.nombre, ' ', NEW.apellido)),
@@ -36,10 +36,10 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- 2. Crear el trigger
-DROP TRIGGER IF EXISTS trigger_sync_user_profile ON public.users;
+DROP TRIGGER IF EXISTS trigger_sync_user_profile ON core.users;
 
 CREATE TRIGGER trigger_sync_user_profile
-    AFTER UPDATE ON public.users
+    AFTER UPDATE ON core.users
     FOR EACH ROW
     WHEN (OLD.role IS DISTINCT FROM NEW.role)
     EXECUTE FUNCTION sync_user_profile_on_user_update();
@@ -48,7 +48,7 @@ CREATE TRIGGER trigger_sync_user_profile
 COMMENT ON FUNCTION sync_user_profile_on_user_update() IS 
 'Sincroniza automáticamente el rol en user_profiles cuando se actualiza en users';
 
-COMMENT ON TRIGGER trigger_sync_user_profile ON public.users IS 
+COMMENT ON TRIGGER trigger_sync_user_profile ON core.users IS 
 'Mantiene sincronizados los roles entre users y user_profiles';
 
 -- 4. Verificación

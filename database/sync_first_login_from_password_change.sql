@@ -6,12 +6,12 @@ CREATE OR REPLACE FUNCTION public.sync_first_login_on_password_change()
 RETURNS TRIGGER
 LANGUAGE plpgsql
 SECURITY DEFINER
-SET search_path = public, auth
+SET search_path = ''
 AS $$
 BEGIN
   -- encrypted_password cambia cuando el usuario actualiza su contraseña.
   IF NEW.encrypted_password IS DISTINCT FROM OLD.encrypted_password THEN
-    UPDATE public.users
+    UPDATE core.users
     SET first_login = false
     WHERE id = NEW.id;
   END IF;
