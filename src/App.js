@@ -64,15 +64,18 @@ function AppContent() {
 
   if (isLoading) {
     return (
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        height: '100vh',
-        fontSize: '18px'
-      }}>
-        Cargando...
-      </div>
+      <>
+        <Navbar user={null} userProfile={null} onLogout={handleLogout} />
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          minHeight: 'calc(100vh - 65px)',
+          fontSize: '18px'
+        }}>
+          Cargando...
+        </div>
+      </>
     );
   }
 

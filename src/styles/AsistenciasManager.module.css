@@ -1179,29 +1179,59 @@
 .atletaNameSection {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.75rem;
   width: 100%;
   min-width: 0;
+}
+
+.atletaIdentity {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.atletaInitials {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgba(255, 215, 0, 0.95);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 180, 0, 0.05) 100%);
+  border: 1px solid rgba(255, 215, 0, 0.38);
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.1);
 }
 
 .atletaNameSection .atletaName {
   font-weight: 500;
   color: #fff;
   font-size: 1rem;
-  white-space: normal;
-  word-break: normal;
-  overflow-wrap: break-word;
-  -webkit-hyphens: auto;
-  hyphens: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   line-height: 1.3;
 }
 
 .currentPaymentBadge {
-  font-size: 1rem;
+  min-width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  font-size: 0.92rem;
   color: #ffd700;
+  border: 1px solid rgba(255, 215, 0, 0.45);
+  background: rgba(255, 215, 0, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 auto;
   animation: pulse 2s infinite;
 }
 
@@ -1237,6 +1267,13 @@
   transition: all 0.2s ease;
   position: relative;
   flex-shrink: 0;
+}
+
+.paymentMethodBtn:focus-visible,
+.removeAttendanceBtn:focus-visible,
+.attendanceToggle:focus-visible {
+  outline: 2px solid rgba(255, 215, 0, 0.9);
+  outline-offset: 2px;
 }
 
 .paymentMethodBtn:hover {
@@ -2418,34 +2455,51 @@
 
 .categoryAttendance .atletaItemNew {
   width: 100%;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 0.65rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.6rem;
+  padding: 0.75rem;
+  border-radius: 12px;
+  border-color: rgba(255, 215, 0, 0.18);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 215, 0, 0.05) 100%);
 }
 
 .categoryAttendance .atletaNameSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   min-width: 0;
   margin: 0;
 }
 
+.categoryAttendance .atletaIdentity {
+  min-width: 0;
+}
+
+.categoryAttendance .atletaInitials {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+}
+
 .categoryAttendance .atletaNameSection .atletaName {
   display: block;
-  font-size: 0.95rem;
+  font-size: 0.96rem;
   line-height: 1.25;
-  white-space: normal;
-  word-break: normal;
-  overflow-wrap: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .categoryAttendance .paymentButtons {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 0.35rem;
-  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .categoryAttendance .paymentMethodBtn,
@@ -2505,9 +2559,8 @@
   }
 
   .categoryAttendance .atletaItemNew {
-    grid-template-columns: 1fr;
-    gap: 0.45rem;
-    padding: 0.55rem;
+    gap: 0.5rem;
+    padding: 0.62rem;
   }
 
   .categoryAttendance .atletaNameSection {
@@ -2516,18 +2569,39 @@
   }
 
   .categoryAttendance .atletaNameSection .atletaName {
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     line-height: 1.28;
-    white-space: normal;
-    word-break: normal;
-    overflow-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .categoryAttendance .atletaInitials,
+  .categoryAttendance .currentPaymentBadge {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
   }
 
   .categoryAttendance .paymentButtons {
     width: 100%;
     justify-content: flex-start;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 0.3rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 0.2rem;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .categoryAttendance .paymentMethodBtn,
+  .categoryAttendance .removeAttendanceBtn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    flex: 0 0 44px;
   }
 }
 
@@ -2537,55 +2611,15 @@
   }
 
   .categoryAttendance .atletaNameSection .atletaName {
-    font-size: 0.88rem;
+    font-size: 0.86rem;
   }
-}
 
-/* Final mobile hard-fix for quick attendance row composition */
-@media (max-width: 768px) {
   .categoryAttendance .atletaItemNew {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    justify-content: flex-start !important;
-    gap: 0.45rem !important;
-    width: 100% !important;
-    padding: 0.6rem !important;
-  }
-
-  .categoryAttendance .atletaNameSection {
-    order: 1 !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    margin: 0 !important;
-  }
-
-  .categoryAttendance .atletaNameSection .atletaName {
-    display: block !important;
-    width: 100% !important;
-    font-size: 0.94rem !important;
-    line-height: 1.28 !important;
-    white-space: normal !important;
-    word-break: normal !important;
-    overflow-wrap: break-word !important;
+    padding: 0.55rem;
+    gap: 0.45rem;
   }
 
   .categoryAttendance .paymentButtons {
-    order: 2 !important;
-    width: 100% !important;
-    display: flex !important;
-    justify-content: flex-start !important;
-    align-items: center !important;
-    flex-wrap: wrap !important;
-    gap: 0.35rem !important;
-  }
-
-  .categoryAttendance .paymentMethodBtn,
-  .categoryAttendance .removeAttendanceBtn {
-    width: var(--rv-touch-target, 48px) !important;
-    height: var(--rv-touch-target, 48px) !important;
-    min-width: var(--rv-touch-target, 48px) !important;
-    min-height: var(--rv-touch-target, 48px) !important;
-    flex: 0 0 var(--rv-touch-target, 48px) !important;
+    gap: 0.25rem;
   }
 }

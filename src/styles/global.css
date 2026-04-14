@@ -50,7 +50,7 @@ button {
 /* Estilos responsivos globales */
 @media (max-width: 768px) {
   body {
-    padding-top: var(--rv-navbar-height-mobile, 65px); /* Altura aumentada del navbar móvil */
+    padding-top: calc(var(--rv-navbar-height-mobile, 65px) + env(safe-area-inset-top)); /* Altura de navbar móvil + notch */
   }
   
   /* Asegurar que los botones tengan tamaño mínimo táctil */

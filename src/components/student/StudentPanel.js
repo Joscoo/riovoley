@@ -6,6 +6,7 @@ import { useUserProfile } from '../../hooks/useUserProfile';
 import AnunciosViewer from '../AnunciosViewer';
 import ProfileSettings from '../admin/ProfileSettings';
 import StudentPhysicalTests from './StudentPhysicalTests';
+import RoleSidebar from '../layout/RoleSidebar';
 import styles from '../../styles/StudentPanel.module.css';
 import { getEcuadorDate, getEcuadorFirstDayOfMonth, formatDateString, formatDateStringShort, calcularDiferenciaDias } from '../../utils/dateUtils';
 import { FaCog, FaDumbbell, FaBullhorn, FaSyncAlt, FaCheckCircle, FaStar, FaExclamationTriangle, FaClock, FaCalendar, FaMoneyBillWave, FaClipboardList, FaChartBar, FaBan, FaTimes, FaUserCircle } from 'react-icons/fa';
@@ -406,69 +407,28 @@ const StudentPanel = ({ user }) => {
     );
   }
 
+  const menuItems = [
+    { id: 'anuncios', icon: <FaBullhorn />, label: 'Anuncios' },
+    { id: 'mensualidad', icon: <FaMoneyBillWave />, label: 'Mensualidad' },
+    { id: 'asistencias', icon: <FaChartBar />, label: 'Asistencias' },
+    { id: 'tests-fisicos', icon: <FaDumbbell />, label: 'Tests Fisicos' },
+    { id: 'perfil', icon: <FaCog />, label: 'Mi Perfil' }
+  ];
+
   return (
     <div className={styles.studentPanel}>
-      {/* Sidebar */}
-      <aside className={styles.sidebar}>
-        <div className={styles.sidebarHeader}>
-          <div className={styles.userAvatar}><FaUserCircle /></div>
-          <h3>{studentData.users?.nombre} {studentData.users?.apellido}</h3>
-          <p className={styles.userRole}>Estudiante</p>
-          <span className={styles.categoryBadge}>{studentData.categoria?.replaceAll('_', ' ').toUpperCase()}</span>
-        </div>
-
-        <nav className={styles.menu}>
-          <button
-            className={`${styles.menuItem} ${activeSection === 'anuncios' ? styles.active : ''}`}
-            onClick={() => setActiveSection('anuncios')}
-          >
-            <span className={styles.menuIcon}><FaBullhorn /></span>
-            <span className={styles.menuText}>
-              <span className={styles.menuLabel}>Anuncios</span>
-            </span>
-          </button>
-
-          <button
-            className={`${styles.menuItem} ${activeSection === 'mensualidad' ? styles.active : ''}`}
-            onClick={() => setActiveSection('mensualidad')}
-          >
-            <span className={styles.menuIcon}><FaMoneyBillWave /></span>
-            <span className={styles.menuText}>
-              <span className={styles.menuLabel}>Mensualidad</span>
-            </span>
-          </button>
-
-          <button
-            className={`${styles.menuItem} ${activeSection === 'asistencias' ? styles.active : ''}`}
-            onClick={() => setActiveSection('asistencias')}
-          >
-            <span className={styles.menuIcon}><FaChartBar /></span>
-            <span className={styles.menuText}>
-              <span className={styles.menuLabel}>Asistencias</span>
-            </span>
-          </button>
-
-          <button
-            className={`${styles.menuItem} ${activeSection === 'tests-fisicos' ? styles.active : ''}`}
-            onClick={() => setActiveSection('tests-fisicos')}
-          >
-            <span className={styles.menuIcon}><FaDumbbell /></span>
-            <span className={styles.menuText}>
-              <span className={styles.menuLabel}>Tests Fisicos</span>
-            </span>
-          </button>
-
-          <button
-            className={`${styles.menuItem} ${activeSection === 'perfil' ? styles.active : ''}`}
-            onClick={() => setActiveSection('perfil')}
-          >
-            <span className={styles.menuIcon}><FaCog /></span>
-            <span className={styles.menuText}>
-              <span className={styles.menuLabel}>Mi Perfil</span>
-            </span>
-          </button>
-        </nav>
-      </aside>
+      <RoleSidebar
+        as="aside"
+        variant="student"
+        title={`${studentData.users?.nombre || ''} ${studentData.users?.apellido || ''}`.trim() || 'Estudiante'}
+        roleLabel="Estudiante"
+        badgeLabel={studentData.categoria?.replaceAll('_', ' ').toUpperCase() || 'ESTUDIANTE'}
+        avatarIcon={<FaUserCircle />}
+        menuItems={menuItems}
+        activeSection={activeSection}
+        onSectionChange={setActiveSection}
+        showDescriptions={false}
+      />
 
       {/* Main Content */}
       <main className={styles.mainContent}>

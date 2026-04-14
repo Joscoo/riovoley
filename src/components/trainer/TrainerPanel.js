@@ -10,6 +10,7 @@ import TrainerPagosManager from './TrainerPagosManager';
 import TrainerProfileSettings from './TrainerProfileSettings';
 import { FaVolleyballBall, FaChartBar, FaCalendar, FaDumbbell, FaDollarSign, FaBullhorn, FaCog, FaBan, FaUserCircle } from 'react-icons/fa';
 import AnunciosManager from '../admin/AnunciosManager';
+import RoleSidebar from '../layout/RoleSidebar';
 import styles from '../../styles/TrainerPanel.module.css';
 
 const TrainerPanel = ({ user }) => {
@@ -75,33 +76,16 @@ const TrainerPanel = ({ user }) => {
   return (
     <div className={styles.trainerPanel}>
       <div className={styles.mainContainer}>
-        {/* Sidebar Navigation */}
-        <nav className={styles.sidebar}>
-          <div className={styles.sidebarHeader}>
-            <div className={styles.userAvatar}>
-              <FaUserCircle />
-            </div>
-            <h3>{profile?.full_name || user?.email?.split('@')[0] || 'Entrenador'}</h3>
-            <p className={styles.userRole}>Entrenador</p>
-            <span className={styles.trainerBadge}>ENTRENADOR</span>
-          </div>
-          
-          <div className={styles.menu}>
-            {menuItems.map((item) => (
-              <button
-                key={item.id}
-                className={`${styles.menuItem} ${activeSection === item.id ? styles.active : ''}`}
-                onClick={() => setActiveSection(item.id)}
-              >
-                <span className={styles.menuIcon}>{item.icon}</span>
-                <div className={styles.menuText}>
-                  <span className={styles.menuLabel}>{item.label}</span>
-                  <span className={styles.menuDescription}>{item.description}</span>
-                </div>
-              </button>
-            ))}
-          </div>
-        </nav>
+        <RoleSidebar
+          variant="trainer"
+          title={profile?.full_name || user?.email?.split('@')[0] || 'Entrenador'}
+          roleLabel="Entrenador"
+          badgeLabel="ENTRENADOR"
+          avatarIcon={<FaUserCircle />}
+          menuItems={menuItems}
+          activeSection={activeSection}
+          onSectionChange={setActiveSection}
+        />
 
         {/* Main Content */}
         <main className={styles.mainContent}>

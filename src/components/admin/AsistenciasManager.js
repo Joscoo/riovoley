@@ -67,6 +67,83 @@ const AsistenciasManager = ({ user }) => {
     { id: 'master', nombre: 'Master', icono: <FaMedal /> }
   ];
 
+  const splitName = (value = '') => value.trim().split(/\s+/).filter(Boolean);
+
+  const getAthleteNameParts = (athleteUser) => {
+    const nombreOriginal = athleteUser?.nombre?.trim() || '';
+    const apellidoOriginal = athleteUser?.apellido?.trim() || '';
+
+    const nombreParts = splitName(nombreOriginal);
+    const apellidoParts = splitName(apellidoOriginal);
+
+    const primerNombre = nombreParts[0] || '';
+    const primerApellido = apellidoParts[0] || '';
+    const segundoApellido = apellidoParts.slice(1).join(' ');
+    const nombreCompleto = `${nombreOriginal} ${apellidoOriginal}`.trim();
+
+    return {
+      nombreOriginal,
+      apellidoOriginal,
+      primerNombre,
+      primerApellido,
+      segundoApellido,
+      nombreCompleto
+    };
+  };
+
+  const getHomonymKey = (athleteUser) => {
+    const { primerNombre, primerApellido } = getAthleteNameParts(athleteUser);
+    if (!primerNombre && !primerApellido) return '';
+    return `${primerNombre.toLowerCase()}|${primerApellido.toLowerCase()}`;
+  };
+
+  const getCompactDisplayName = (athleteUser, isHomonym = false) => {
+    const {
+      nombreOriginal,
+      primerNombre,
+      primerApellido,
+      segundoApellido,
+      nombreCompleto
+    } = getAthleteNameParts(athleteUser);
+
+    const nombreBase = `${primerNombre || nombreOriginal} ${primerApellido}`.trim();
+
+    if (!nombreBase) {
+      return nombreCompleto || 'Sin nombre';
+    }
+
+    if (isHomonym) {
+      if (segundoApellido) {
+        return `${nombreBase} ${segundoApellido}`.trim();
+      }
+
+      return nombreCompleto || nombreBase;
+    }
+
+    return nombreBase;
+  };
+
+  const getSearchNameBlob = (athleteUser) => {
+    const { nombreOriginal, apellidoOriginal, primerNombre, primerApellido, segundoApellido, nombreCompleto } = getAthleteNameParts(athleteUser);
+
+    return [
+      `${nombreOriginal} ${apellidoOriginal}`.trim(),
+      `${primerNombre || nombreOriginal} ${primerApellido}`.trim(),
+      `${primerNombre || nombreOriginal} ${primerApellido} ${segundoApellido}`.trim(),
+      nombreCompleto
+    ]
+      .filter(Boolean)
+      .join(' ')
+      .toLowerCase();
+  };
+
+  const getAthleteInitials = (athleteUser) => {
+    const { primerNombre, primerApellido, nombreOriginal, apellidoOriginal } = getAthleteNameParts(athleteUser);
+    const first = (primerNombre || nombreOriginal || 'A').charAt(0);
+    const last = (primerApellido || apellidoOriginal || 'A').charAt(0);
+    return `${first}${last}`.toUpperCase();
+  };
+
   useEffect(() => {
     // Cargar datos iniciales al montar el componente
     loadData();
@@ -471,27 +548,25 @@ const AsistenciasManager = ({ user }) => {
   };
 
   // Filtrar atletas según categoría seleccionada en tabs y término de búsqueda
-  const getFilteredAtletas = () => {
+  const filteredAtletas = (() => {
     let filtered = todayAttendance;
-    
-    // Filtrar por categoría
+
     if (selectedCategory !== 'all') {
       filtered = filtered.filter(atleta => 
         atleta.categoria?.includes(selectedCategory)
       );
     }
-    
-    // Filtrar por término de búsqueda (nombre o apellido)
+
     if (searchTerm.trim()) {
       const searchLower = searchTerm.toLowerCase().trim();
       filtered = filtered.filter(atleta => {
-        const nombreCompleto = `${atleta.users?.nombre || ''} ${atleta.users?.apellido || ''}`.toLowerCase();
-        return nombreCompleto.includes(searchLower);
+        const searchableNames = getSearchNameBlob(atleta.users);
+        return searchableNames.includes(searchLower);
       });
     }
-    
+
     return filtered;
-  };
+  })();
 
   // Filtrar atletas por categoría específica y término de búsqueda
   const filterAtletasBySearchAndCategory = (categoria) => {
@@ -501,8 +576,8 @@ const AsistenciasManager = ({ user }) => {
     if (searchTerm.trim()) {
       const searchLower = searchTerm.toLowerCase().trim();
       filtered = filtered.filter(atleta => {
-        const nombreCompleto = `${atleta.users?.nombre || ''} ${atleta.users?.apellido || ''}`.toLowerCase();
-        return nombreCompleto.includes(searchLower);
+        const searchableNames = getSearchNameBlob(atleta.users);
+        return searchableNames.includes(searchLower);
       });
     }
     
@@ -511,7 +586,6 @@ const AsistenciasManager = ({ user }) => {
 
   // Obtener estadísticas de la categoría seleccionada
   const getCategoryStats = () => {
-    const filteredAtletas = getFilteredAtletas();
     const presentes = filteredAtletas.filter(a => a.attendance !== null).length;
     const total = filteredAtletas.length;
     const ausentes = total - presentes;
@@ -520,10 +594,25 @@ const AsistenciasManager = ({ user }) => {
     return { total, presentes, ausentes, porcentaje };
   };
 
+  const homonymsByCompactName = (() => {
+    const counts = {};
+
+    filteredAtletas.forEach((atleta) => {
+      const key = getHomonymKey(atleta.users);
+      if (!key) return;
+      counts[key] = (counts[key] || 0) + 1;
+    });
+
+    return counts;
+  })();
+
   // Renderizar atleta con botones de métodos de pago
   const renderAtletaWithPaymentMethods = (atleta) => {
     const isPresent = atleta.attendance !== null;
     const currentPaymentMethod = atleta.attendance?.metodo_pago_id;
+    const homonymCount = homonymsByCompactName[getHomonymKey(atleta.users)] || 0;
+    const displayName = getCompactDisplayName(atleta.users, homonymCount > 1);
+    const fullName = getAthleteNameParts(atleta.users).nombreCompleto || displayName;
     
     // Obtener nombres de métodos de pago
     const getPaymentMethodInfo = (ptId) => {
@@ -546,9 +635,14 @@ const AsistenciasManager = ({ user }) => {
     return (
       <div key={atleta.id} className={styles.atletaItemNew}>
         <div className={styles.atletaNameSection}>
-          <span className={styles.atletaName}>
-            {atleta.users?.nombre} {atleta.users?.apellido}
-          </span>
+          <div className={styles.atletaIdentity}>
+            <span className={styles.atletaInitials} aria-hidden="true">
+              {getAthleteInitials(atleta.users)}
+            </span>
+            <span className={styles.atletaName} title={fullName}>
+              {displayName}
+            </span>
+          </div>
           {isPresent && currentPaymentMethod && (
             <span className={styles.currentPaymentBadge}>
               {getPaymentMethodInfo(currentPaymentMethod).icono}
@@ -568,6 +662,7 @@ const AsistenciasManager = ({ user }) => {
                 className={`${styles.paymentMethodBtn} ${
                   isSelected ? styles.paymentMethodActive : ''
                 }`}
+                aria-label={`Marcar asistencia con ${pt.nombre.replaceAll('_', ' ')}`}
                 title={pt.descripcion}
               >
                 {info.icono}
@@ -579,6 +674,7 @@ const AsistenciasManager = ({ user }) => {
             <button
               onClick={() => removeAttendance(atleta.id)}
               className={styles.removeAttendanceBtn}
+              aria-label="Eliminar asistencia"
               title="Eliminar asistencia"
             >
               <FaTimes />
@@ -905,8 +1001,11 @@ const AsistenciasManager = ({ user }) => {
                               const isPresent = atleta.attendance !== null;
                               return (
                                 <div key={atleta.id} className={styles.atletaItem}>
-                                  <span className={styles.atletaName}>
-                                    {atleta.users?.nombre} {atleta.users?.apellido}
+                                  <span className={styles.atletaName} title={getAthleteNameParts(atleta.users).nombreCompleto}>
+                                    {getCompactDisplayName(
+                                      atleta.users,
+                                      (homonymsByCompactName[getHomonymKey(atleta.users)] || 0) > 1
+                                    )}
                                   </span>
                                   <button
                                     onClick={() => toggleAttendance(atleta.id, isPresent)}

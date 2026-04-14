@@ -12,6 +12,7 @@ import EntrenadoresManager from './EntrenadoresManager';
 import ProfileSettings from './ProfileSettings';
 import AnunciosManager from './AnunciosManager';
 import HorariosManager from './HorariosManager';
+import RoleSidebar from '../layout/RoleSidebar';
 import styles from '../../styles/AdminPanel.module.css';
 import { FaChartBar, FaVolleyballBall, FaChalkboardTeacher, FaDollarSign, FaCalendar, FaDumbbell, FaUsers, FaBullhorn, FaCog, FaBan, FaUser, FaClock } from 'react-icons/fa';
 
@@ -85,31 +86,18 @@ const AdminPanel = ({ user }) => {
   return (
     <div className={styles.adminPanel}>
       <div className={styles.mainContainer}>
-        {/* Sidebar Navigation */}
-        <nav className={styles.sidebar}>
-          <div className={styles.sidebarHeader}>
-            <div className={styles.userAvatar}><FaUser /></div>
-            <h3>{profile?.full_name || user?.email}</h3>
-            <p className={styles.userRole}>Administrador</p>
-            <span className={styles.adminBadge}>ADMINISTRADOR</span>
-          </div>
+        <RoleSidebar
+          variant="admin"
+          title={profile?.full_name || user?.email || 'Administrador'}
+          roleLabel="Administrador"
+          badgeLabel="ADMINISTRADOR"
+          avatarIcon={<FaUser />}
+          menuItems={menuItems}
+          activeSection={activeSection}
+          onSectionChange={setActiveSection}
+        />
 
-          <nav className={styles.menu}>
-            {menuItems.map((item) => (
-              <button
-                key={item.id}
-                className={`${styles.menuItem} ${activeSection === item.id ? styles.active : ''}`}
-                onClick={() => setActiveSection(item.id)}
-              >
-                <span className={styles.menuIcon}>{item.icon}</span>
-                <span className={styles.menuText}>
-                  <span className={styles.menuLabel}>{item.label}</span>
-                  <span className={styles.menuDescription}>{item.description}</span>
-                </span>
-              </button>
-            ))}
-          </nav>
-        </nav>        {/* Main Content */}
+        {/* Main Content */}
         <main className={styles.mainContent}>
           <div className={styles.contentHeader}>
             <div className={styles.breadcrumb}>

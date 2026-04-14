@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer components {
+  .rv-panel-bg {
+    @apply bg-rv-panel;
+  }
+
+  .rv-touch-target {
+    @apply min-h-touch min-w-touch;
+  }
+
+  .rv-sidebar-scrollbar {
+    scroll-behavior: smooth;
+  }
+
+  .rv-sidebar-scrollbar::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .rv-sidebar-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+  }
+
+  .rv-sidebar-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(255, 215, 0, 0.75) 0%, rgba(255, 170, 0, 0.7) 100%);
+    border-radius: 999px;
+    border: 1px solid rgba(255, 215, 0, 0.35);
+  }
+
+  .rv-sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(255, 225, 90, 0.9) 0%, rgba(255, 185, 35, 0.88) 100%);
+  }
+}
+
+@layer utilities {
+  @keyframes slide-in-right {
+    from {
+      transform: translateX(120%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes ring {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-15deg);
+    }
+    50% {
+      transform: rotate(15deg);
+    }
+    75% {
+      transform: rotate(-10deg);
+    }
+  }
+
+  @keyframes notif-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+}

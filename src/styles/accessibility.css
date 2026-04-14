@@ -75,14 +75,17 @@ body {
 
 /* Contenedores con scroll horizontal en móvil */
 .table-responsive,
-[class*="table"],
-[class*="Table"] {
+table,
+.table,
+.Table {
   -webkit-overflow-scrolling: touch;
 }
 
 @media (max-width: 768px) {
   .table-responsive,
-  [class*="table"]:not([class*="tableCell"]) {
+  table,
+  .table,
+  .Table {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     display: block;
