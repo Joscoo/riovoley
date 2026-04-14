@@ -1,6 +1,7 @@
 // src/services/supabaseService.js
 import { supabase } from '../config/supabase';
 import { getEcuadorISOString } from '../utils/dateUtils';
+import { withEncryptedUserContactFields } from '../utils/piiCrypto';
 
 // ==================== OPERACIONES DE PERFILES DE USUARIO ====================
 
@@ -131,9 +132,11 @@ export const getUserById = async (id) => {
  */
 export const createUser = async (userData) => {
   try {
+    const userPayload = await withEncryptedUserContactFields(userData);
+
     const { data, error } = await supabase
       .from('users')
-      .insert([userData])
+      .insert([userPayload])
       .select()
       .single();
     
@@ -150,9 +153,11 @@ export const createUser = async (userData) => {
  */
 export const updateUser = async (id, userData) => {
   try {
+    const userPayload = await withEncryptedUserContactFields(userData);
+
     const { data, error } = await supabase
       .from('users')
-      .update(userData)
+      .update(userPayload)
       .eq('id', id)
       .select()
       .single();

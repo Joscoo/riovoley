@@ -5,6 +5,7 @@ import { supabase } from '../../config/supabase';
 import { EmailService } from '../../services/emailService';
 import WhatsAppBusinessService from '../../services/whatsappBusinessService';
 import { createStudentWorking, resendWorkingCredentials } from '../../services/userCreationWorking';
+import { withEncryptedUserContactFields } from '../../utils/piiCrypto';
 import styles from '../../styles/AtletasManager.module.css';
 import { 
   FaEdit, 
@@ -258,16 +259,18 @@ ${result.canLogin ? '✅ El usuario puede ingresar inmediatamente.' : '⚠️ Pu
   };
 
   const updateAtleta = async () => {
+    const userUpdatePayload = await withEncryptedUserContactFields({
+      email: formData.email,
+      nombre: formData.nombre,
+      apellido: formData.apellido,
+      telefono: formData.telefono,
+      fecha_nacimiento: formData.fecha_nacimiento
+    });
+
     // Actualizar datos del usuario
     const { error: userError } = await supabase
       .from('users')
-      .update({
-        email: formData.email,
-        nombre: formData.nombre,
-        apellido: formData.apellido,
-        telefono: formData.telefono,
-        fecha_nacimiento: formData.fecha_nacimiento
-      })
+      .update(userUpdatePayload)
       .eq('id', editingAtleta.user_id);
 
     if (userError) throw userError;

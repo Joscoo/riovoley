@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import { createUserWorking } from '../../services/userCreationWorking';
+import { withEncryptedUserContactFields } from '../../utils/piiCrypto';
 import styles from '../../styles/EntrenadoresManager.module.css';
 import { 
   FaEdit, 
@@ -58,12 +59,13 @@ const EntrenadoresManager = ({ user }) => {
     try {
       if (editingEntrenador) {
         // Actualizar entrenador existente
-        const updateData = {
+        const updateData = await withEncryptedUserContactFields({
           nombre: formData.nombre,
           apellido: formData.apellido,
+          email: formData.email,
           telefono: formData.telefono,
           fecha_nacimiento: formData.fecha_nacimiento || null
-        };
+        });
 
         const { error } = await supabase
           .from('users')

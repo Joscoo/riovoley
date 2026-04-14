@@ -1,5 +1,6 @@
 // src/services/userCreationWorking.js
 import { supabase } from '../config/supabase';
+import { withEncryptedUserContactFields } from '../utils/piiCrypto';
 
 const getResendErrorMessage = (invokeError, data) => {
   const backendCode = data?.code;
@@ -86,6 +87,12 @@ export const createUserWorking = async (userData) => {
     });
 
     if (authError) {
+      const authMessage = authError.message || '';
+      if (authMessage.toLowerCase().includes('user already registered')) {
+        throw new Error(
+          'Error creando usuario en Auth: User already registered. Existe un usuario en auth.users con ese email (posible huerfano). Eliminalo de auth.users o sincronizalo en core.users antes de reintentar.'
+        );
+      }
       throw new Error(`Error creando usuario en Auth: ${authError.message}`);
     }
 
@@ -94,19 +101,21 @@ export const createUserWorking = async (userData) => {
 
     // Crear usuario en core.users con el mismo ID
     // NOTA: NO guardamos password aquí por seguridad (Supabase Auth lo maneja)
+    const userInsertPayload = await withEncryptedUserContactFields({
+      id: authUserId,
+      email: email.trim(),
+      // password: NO se guarda por seguridad
+      first_login: true,
+      role: role,
+      nombre: nombre.trim(),
+      apellido: apellido.trim(),
+      fecha_nacimiento: fecha_nacimiento,
+      telefono: telefono || null
+    });
+
     const { data: publicUserData, error: publicUserError } = await supabase
       .from('users')
-      .insert({
-        id: authUserId,
-        email: email.trim(),
-        // password: NO se guarda por seguridad
-        first_login: true,
-        role: role,
-        nombre: nombre.trim(),
-        apellido: apellido.trim(),
-        fecha_nacimiento: fecha_nacimiento,
-        telefono: telefono || null
-      })
+      .insert(userInsertPayload)
       .select()
       .single();
 
