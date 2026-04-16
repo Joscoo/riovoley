@@ -1,71 +1,185 @@
-# Getting Started with Create React App
+# RioVoley
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <strong>Plataforma de gestion para clubes de voley y gimnasia</strong><br/>
+  Management platform for volleyball and gym clubs
+</p>
 
-## Available Scripts
+<p align="center">
+  Operacion diaria, control de pagos, seguimiento deportivo y seguridad de datos en una sola aplicacion.
+</p>
 
-In the project directory, you can run:
+<p align="center">
+  <img alt="React" src="https://img.shields.io/badge/React-19.1.1-61DAFB?logo=react&logoColor=white" />
+  <img alt="Supabase" src="https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?logo=supabase&logoColor=white" />
+  <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind-3.4-06B6D4?logo=tailwindcss&logoColor=white" />
+  <img alt="Playwright" src="https://img.shields.io/badge/Testing-Playwright-2EAD33?logo=playwright&logoColor=white" />
+  <img alt="Build" src="https://img.shields.io/badge/Build-React%20Scripts%205-09B3AF" />
+</p>
 
-### `npm start`
+## Quick Navigation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Que es RioVoley](#que-es-riovoley--what-is-riovoley)
+- [Arquitectura y Stack](#arquitectura-y-stack--architecture-and-tech-stack)
+- [Capacidades](#capacidades-principales--core-capabilities)
+- [Quick Start](#quick-start-local)
+- [Scripts](#scripts)
+- [Estructura del Proyecto](#estructura-rapida--quick-project-map)
+- [Seguridad](#seguridad-y-datos--security-and-data)
+- [Documentacion](#documentacion-relacionada--related-docs)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Que es RioVoley | What Is RioVoley
 
-### `npm test`
+**ES:** RioVoley es un sistema web para administrar el ciclo completo de un club: usuarios por rol, atletas, asistencias, pagos, horarios, pruebas fisicas, notificaciones y seguridad de datos sensibles.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**EN:** RioVoley is a web platform to run the full club lifecycle: role-based users, athlete records, attendance, payments, schedules, physical tests, notifications, and sensitive-data security.
 
-### `npm run build`
+### Valor por rol | Role-Based Value
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Administracion / Admin:** control operativo, pagos, asistencia, gestion de usuarios.
+- **Entrenadores / Coaches:** seguimiento deportivo, horarios, pruebas fisicas.
+- **Atletas / Students:** visibilidad de progreso y datos personales del entrenamiento.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Arquitectura y Stack | Architecture and Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```text
+React SPA (UI por rol)
+  |-- Admin modules
+  |-- Trainer modules
+  |-- Student modules
+  |
+  | supabase-js
+  v
+Supabase (PostgreSQL + Auth + RLS)
+  |-- Domain schemas (core, training, billing, profiles, ...)
+  |-- Row Level Security by role
+  |-- Edge Functions (email workflows)
+  |
+  +--> External integrations (WhatsApp Business, Google Calendar)
+```
 
-### `npm run eject`
+| Layer | Stack | Purpose |
+|---|---|---|
+| Frontend | React 19, React Router 7, Tailwind CSS 3 | SPA y experiencia por rol |
+| Data/BaaS | Supabase (PostgreSQL, Auth, RLS) | Persistencia, autenticacion y permisos |
+| Analytics/UI | Recharts, React Icons | Visualizacion y UI operativa |
+| Docs/Exports | jsPDF, jspdf-autotable | Reportes PDF |
+| Testing | Playwright | E2E multi flujo |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Capacidades Principales | Core Capabilities
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| Capability | Status in Repo |
+|---|---|
+| Gestion de atletas | Implementado en modulos admin |
+| Registro de asistencias | Implementado |
+| Pagos y vencimientos | Implementado |
+| Pruebas fisicas | Implementado |
+| Dashboards por rol | Implementado |
+| Notificaciones WhatsApp/Email | Integracion disponible (requiere setup) |
+| Cifrado de PII (email/telefono) | Implementado |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Quick Start (Local)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 1) Requisitos
 
-## Learn More
+- Node.js 18+
+- npm
+- Git
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 2) Instalar
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+git clone <URL_DEL_REPOSITORIO>
+cd riovoley
+npm install
+```
 
-### Code Splitting
+### 3) Configurar entorno
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+# PowerShell
+Copy-Item .env.example .env.local
+```
 
-### Analyzing the Bundle Size
+Variables obligatorias para iniciar:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- `REACT_APP_SUPABASE_URL`
+- `REACT_APP_SUPABASE_ANON_KEY`
 
-### Making a Progressive Web App
+Variables opcionales (integraciones):
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- `REACT_APP_PII_ENCRYPTION_KEY`
+- `REACT_APP_WHATSAPP_ACCESS_TOKEN`
+- `REACT_APP_WHATSAPP_PHONE_NUMBER_ID`
+- `REACT_APP_WHATSAPP_BUSINESS_ACCOUNT_ID`
+- `REACT_APP_CLUB_ADMIN_PHONE`
+- `REACT_APP_CLUB_COACH_PHONE`
+- `REACT_APP_CLUB_EMERGENCY_PHONE`
 
-### Advanced Configuration
+### 4) Ejecutar
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+npm start
+```
 
-### Deployment
+Aplicacion local: `http://localhost:3000`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Scripts
 
-### `npm run build` fails to minify
+```bash
+npm start            # desarrollo
+npm test             # tests unitarios/react-scripts
+npm run build        # build produccion
+npm run e2e          # E2E Playwright
+npm run e2e:ui       # E2E en modo UI
+npm run e2e:install  # instala browsers de Playwright
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-"# riovoley" 
+## Estructura Rapida | Quick Project Map
+
+```text
+src/
+  components/        UI por rol (admin/trainer/student)
+  services/          Integraciones y logica de datos
+  utils/             Utilidades (pagos, crypto, PDF, fechas)
+database/            SQL scripts y migraciones
+functions/           Supabase Edge Functions
+tests/               E2E tests (Playwright)
+```
+
+## Seguridad y Datos | Security and Data
+
+- Cifrado en cliente para PII (email/telefono).
+- Control de acceso por autenticacion y RLS en Supabase.
+- Secretos locales en `.env.local` (no versionar credenciales reales).
+
+Documentacion tecnica:
+
+- [DOCUMENTACION_ENCRIPTACION_PII.md](DOCUMENTACION_ENCRIPTACION_PII.md)
+- [README_DATABASE.md](README_DATABASE.md)
+
+## Documentacion Relacionada | Related Docs
+
+- [GUIA_SETUP_OTRA_PC.md](GUIA_SETUP_OTRA_PC.md) - onboarding en otra maquina
+- [GUIA_WHATSAPP_PASO_A_PASO.md](GUIA_WHATSAPP_PASO_A_PASO.md) - configuracion WhatsApp
+- [EDGE_FUNCTION_SETUP.md](EDGE_FUNCTION_SETUP.md) - setup de funciones
+- [README_DATABASE.md](README_DATABASE.md) - esquema y consideraciones DB
+- [DOCUMENTACION_ENCRIPTACION_PII.md](DOCUMENTACION_ENCRIPTACION_PII.md) - estrategia de cifrado
+
+## Alcance Actual | Current Scope
+
+Este repositorio implementa la plataforma web y su base tecnica.
+
+- Integraciones externas requieren credenciales y configuracion.
+- El comportamiento final depende de la configuracion de entorno y Supabase.
+
+## Contribuciones
+
+1. Crear rama de trabajo.
+2. Implementar cambios.
+3. Probar localmente (`npm start`, y si aplica `npm run e2e`).
+4. Abrir Pull Request.
+
+---
+
+Proximo upgrade recomendado para destacar aun mas en GitHub: agregar capturas del panel admin y un GIF corto del flujo principal (login -> dashboard -> pagos).
