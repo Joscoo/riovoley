@@ -1,260 +1,410 @@
-Estructura de la base de datos — Esquema public
-Estado: documentación técnica para desarrolladores / operaciones
+# Base de Datos - Estado Actual (Produccion)
 
-Resumen
+Estado: documentacion tecnica para desarrollo y operaciones.
 
-Esquemas de dominio: core, billing, training, profiles, public_content, audit, security.
-Uso de UUIDs para la mayoría de PKs; secuencias para algunos integer PKs.
-RLS (Row-Level Security) habilitado en tablas sensibles. Políticas aplicadas basadas en auth.uid() y claims JWT (por ejemplo, role).
-Convenciones: nombres de columnas en español, constraints CHECK para enums lógicos, timestamps para auditoría.
-Índice
+Fecha de corte: 2026-04-16
+Fuente de verdad: consultas ejecutadas en produccion (evidencia de esta conversacion).
 
-Tablas y definición de columnas
+## 1) Resumen Ejecutivo
 
-Relaciones (FK)
+- La migracion por esquemas esta activa: core, billing, training, profiles, public_content, audit, security.
+- La aplicacion consume principalmente vistas de compatibilidad en public.*.
+- Existen politicas RLS extensas, pero varias tablas criticas estan con RLS desactivado.
+- Hay grants amplios en vistas public.* para anon/authenticated (incluyendo permisos de escritura), lo cual es un riesgo alto si no se corrige.
+- RBAC no esta totalmente unificado: conviven reglas basadas en user_role/admin y role/administrador.
 
-Restricciones, checks e índices recomendados
+## 2) Esquemas Activos
 
-RLS — políticas aplicadas (resumen técnico)
+- audit
+- billing
+- core
+- profiles
+- public
+- public_content
+- security
+- training
 
-Funciones auxiliares y extensiones requeridas
+## 3) Estado Efectivo de Tablas y RLS
 
-DDL de ejemplo (habilitar RLS + políticas owner/admin)
+Tabla por tabla (estado real):
 
-Pruebas y validación
+| Esquema | Tabla | RLS habilitado |
+|---|---|---|
+| audit | payments_audit | NO |
+| audit | sql_errors | NO |
+| audit | sql_executions | NO |
+| billing | payment_types | SI |
+| billing | payments | NO |
+| core | students | NO |
+| core | users | NO |
+| profiles | user_profiles | SI |
+| public_content | announcements | NO |
+| security | users_password_backup | NO |
+| training | attendances | SI |
+| training | physical_tests | NO |
+| training | schedules | NO |
 
-Recomendaciones operacionales y migraciones
+Nota operativa clave:
 
-Anexos — snippets útiles
+- Si una tabla tiene politicas pero RLS esta en NO, esas politicas no protegen accesos sobre esa tabla.
 
-Tablas y definición de columnas (técnico)
+## 4) Estructura Principal Verificada
 
-core.users
+### 4.1 core.users
 
-id uuid PRIMARY KEY — default: uuid_generate_v4() o gen_random_uuid()
-email text UNIQUE NOT NULL
-password text NOT NULL (hash)
-role text NOT NULL CHECK (role = ANY (ARRAY['administrador'::text, 'entrenador'::text, 'estudiante'::text]))
-nombre text
-apellido text
-fecha_nacimiento date NULL
-telefono text NULL
-last_login timestamptz NULL
-created_at timestamptz DEFAULT now()
-Comentario: usada como cuenta base; referenciada por students.user_id y workouts.owner_id.
-profiles.user_profiles
+Campos relevantes verificados:
 
-id uuid PRIMARY KEY — FK -> auth.users.id
-full_name text NULL
-organization_id uuid NULL
-role user_role_enum DEFAULT 'usuario' (enum values: administrador, entrenador, usuario)
-created_at timestamptz DEFAULT now()
-RLS: habilitado (políticas owner + admin aplicadas)
-core.students
+- id (uuid, PK)
+- email (text, unique)
+- role (text, check)
+- nombre, apellido
+- fecha_nacimiento, telefono
+- created_at, last_login, first_login
+- suspended, suspension_reason, suspension_until, suspended_at
+- email_ciphertext, email_search_exact, email_search_partial, email_masked
+- telefono_ciphertext, telefono_search_exact, telefono_search_partial, telefono_masked
 
-id uuid PRIMARY KEY
-user_id uuid NULL REFERENCES core.users(id)
-categoria text NULL CHECK (categoria = ANY (ARRAY['iniciacion_hombres'::text, 'iniciacion_mujeres'::text, 'perfeccionamiento_mujeres'::text, 'perfeccionamiento_hombres'::text, 'master_mujeres'::text]))
-altura numeric NULL
-peso numeric NULL
-fecha_ingreso date DEFAULT CURRENT_DATE
-fecha_nacimiento date
-edad integer GENERATED/nullable — default calculado por calculate_age(fecha_nacimiento) (función DB)
-Comentario: entidad central para datos deportivos; PK id referenciado por múltiples tablas.
-public.training_cards
+### 4.2 core.students
 
-id uuid PRIMARY KEY DEFAULT uuid_generate_v4()
-student_id uuid NULL REFERENCES core.students(id)
-fecha_compra date DEFAULT CURRENT_DATE
-fecha_expiracion date NULL
-sesiones_totales integer DEFAULT 12
-sesiones_usadas integer DEFAULT 0
-activa boolean DEFAULT true
-billing.payments
+Campos relevantes verificados:
 
-id uuid PRIMARY KEY DEFAULT uuid_generate_v4()
-student_id uuid NULL REFERENCES core.students(id)
-payment_type_id int NULL REFERENCES billing.payment_types(id)
-monto numeric NOT NULL
-fecha_inicio date NULL
-fecha_fin date NULL
-fecha_pago date DEFAULT CURRENT_DATE
-estado text NULL CHECK (estado = ANY (ARRAY['activo'::text, 'vencido'::text, 'proximo_a_vencer'::text]))
-billing.payment_types
+- id (uuid, PK)
+- user_id (FK a core.users.id)
+- categoria
+- fecha_ingreso
+- fecha_nacimiento (NOT NULL)
+- edad
 
-id integer PRIMARY KEY DEFAULT nextval('payment_types_id_seq'::regclass)
-nombre text UNIQUE NOT NULL
-descripcion text NULL
-precio numeric NULL
-Comentario: catálogo de métodos de pago. Valores estándar: 'pago_diario', 'mensualidad', 'tarjeta'. Usado en attendances.metodo_pago_id para registrar cómo pagó cada atleta su asistencia.
-training.attendances
+### 4.3 billing.payments
 
-id uuid PRIMARY KEY DEFAULT uuid_generate_v4()
-student_id uuid NULL REFERENCES core.students(id)
-schedule_id integer NULL REFERENCES training.schedules(id)
-metodo_pago_id integer NULL REFERENCES billing.payment_types(id)
-fecha date DEFAULT CURRENT_DATE
-hora_entrada timestamptz DEFAULT now()
-training.schedules
+Campos relevantes verificados:
 
-id integer PRIMARY KEY DEFAULT nextval('schedules_id_seq'::regclass)
-dia_semana text NULL CHECK (dia_semana = ANY (ARRAY['lunes'::text, 'martes'::text, 'miercoles'::text, 'jueves'::text, 'viernes'::text, 'sabado'::text, 'domingo'::text]))
-hora_inicio time NOT NULL
-hora_fin time NOT NULL
-categoria text NULL CHECK (categoria = ANY (ARRAY['iniciacion_hombres'::text, 'iniciacion_mujeres'::text, 'perfeccionamiento_mujeres'::text, 'perfeccionamiento_hombres'::text, 'master_mujeres'::text, 'open_gym'::text]))
-training.physical_tests
+- id (uuid, PK)
+- student_id (FK a core.students.id)
+- payment_type_id (FK a billing.payment_types.id)
+- monto
+- fecha_pago, fecha_inicio, fecha_fin
+- estado
+- deleted_at
 
-id uuid PRIMARY KEY DEFAULT gen_random_uuid()
-student_id uuid NULL REFERENCES core.students(id)
-estatura numeric NULL CHECK (estatura > 0::numeric AND estatura < 3::numeric)
-peso numeric NULL CHECK (peso > 0::numeric AND peso < 300::numeric)
-brazo_extend_inicial numeric NULL
-brazo_extend_sin_impulso numeric NULL
-brazo_extend_con_impulso numeric NULL
-fuerza_explosiva_salto_largo numeric NULL
-envergadura_brazos_extendidos_lateral numeric NULL
-fuerza_abdomen integer NULL CHECK (fuerza_abdomen >= 0 AND fuerza_abdomen <= 200)
-fuerza_brazos integer NULL CHECK (fuerza_brazos >= 0 AND fuerza_brazos <= 200)
-fuerza_piernas integer NULL CHECK (fuerza_piernas >= 0 AND fuerza_piernas <= 300)
-elevaciones_barra integer NULL CHECK (elevaciones_barra >= 0 AND elevaciones_barra <= 100)
-observaciones text NULL
-fecha_test date DEFAULT CURRENT_DATE
-created_at timestamptz DEFAULT CURRENT_TIMESTAMP
-updated_at timestamptz DEFAULT CURRENT_TIMESTAMP
-public.workouts
+### 4.4 training.physical_tests
 
-id uuid PRIMARY KEY DEFAULT gen_random_uuid()
-title text NOT NULL
-description text NULL
-owner_id uuid NULL REFERENCES auth.users(id)
-organization_id uuid NULL
-is_public boolean DEFAULT false
-created_at timestamptz DEFAULT now()
-Relaciones (FK) — lista técnica
-core.students.user_id -> core.users.id
-profiles.user_profiles.id -> auth.users.id
-public.training_cards.student_id -> core.students.id
-billing.payments.student_id -> core.students.id
-billing.payments.payment_type_id -> billing.payment_types.id
-training.attendances.student_id -> core.students.id
-training.attendances.schedule_id -> training.schedules.id
-training.attendances.metodo_pago_id -> billing.payment_types.id
-training.physical_tests.student_id -> core.students.id
-public.workouts.owner_id -> auth.users.id
-Restricciones, checks e índices recomendados
-Checks ya presentes:
-users.role, students.categoria, schedules.dia_semana, payments.estado, physical_tests ranges.
-Unicidades:
-users.email, payment_types.nombre.
-Índices recomendados (si no existen):
-CREATE INDEX ON core.students(user_id);
-CREATE INDEX ON public.training_cards(student_id);
-CREATE INDEX ON billing.payments(student_id);
-CREATE INDEX ON training.attendances(student_id);
-CREATE INDEX ON training.attendances(schedule_id);
-Confirmar PK index en user_profiles.id (debe existir por PK).
-Si se habilita multitenancy (organization_id) crear índices compuestos:
-CREATE INDEX idx_user_org_user_org ON public.user_organizations(user_id, organization_id);
-RLS — políticas aplicadas (resumen técnico)
-Modelo aplicado para user_profiles: propietario + administrador.
-Admin claim: JWT claim role = 'administrador' => FOR ALL.
-Owner: filas donde id = auth.uid() tienen permiso para SELECT/INSERT/UPDATE/DELETE.
-Ejemplo de política (aplicada):
-CREATE POLICY "profiles_admin_full_access" ON profiles.user_profiles FOR ALL TO authenticated USING ((auth.jwt() ->> 'role') = 'administrador') WITH CHECK ((auth.jwt() ->> 'role') = 'administrador');
-CREATE POLICY "profiles_select_owner" ON profiles.user_profiles FOR SELECT TO authenticated USING ((SELECT auth.uid()) = id OR (auth.jwt() ->> 'role') = 'administrador');
-Otras políticas análogas para INSERT/UPDATE/DELETE.
-Nota técnica: usar (SELECT auth.uid()) en WHERE/USING/WITH CHECK para mejor compatibilidad con planes y caché.
-Funciones auxiliares y extensiones requeridas
-Extensiones típicas:
-pgcrypto (gen_random_uuid())
-uuid-ossp (uuid_generate_v4()) — usar una u otra según preferencia.
-Funciones de negocio:
-calculate_age(date) — función que calcula edad desde fecha de nacimiento; si se usa en generated column, debe existir y preferiblemente ser STABLE.
-Recomendación: marcar funciones usadas en políticas como SECURITY DEFINER y revocar ejecución a roles públicos si contienen lógica sensible.
-DDL de ejemplo (habilitar RLS + políticas owner/admin) Nota: ejecutar DDL que cambia políticas requiere privilegios y pruebas. Este bloque es un ejemplo de referencia.
--- Habilitar RLS ALTER TABLE profiles.user_profiles ENABLE ROW LEVEL SECURITY;
+Campos relevantes verificados:
 
--- Políticas owner + admin (ejemplo) CREATE POLICY "profiles_admin_full_access" ON profiles.user_profiles FOR ALL TO authenticated USING ((auth.jwt() ->> 'role') = 'administrador') WITH CHECK ((auth.jwt() ->> 'role') = 'administrador');
+- id (uuid, PK)
+- student_id (FK a core.students.id)
+- metrica corporal y de fuerza
+- fecha_test
+- observaciones
+- created_at, updated_at, modified_at
 
-CREATE POLICY "profiles_select_owner" ON profiles.user_profiles FOR SELECT TO authenticated USING ((SELECT auth.uid()) = id OR (auth.jwt() ->> 'role') = 'administrador');
+### 4.5 profiles.user_profiles
 
-CREATE POLICY "profiles_insert_owner_or_admin" ON profiles.user_profiles FOR INSERT TO authenticated WITH CHECK ((SELECT auth.uid()) = id OR (auth.jwt() ->> 'role') = 'administrador');
+Campos relevantes verificados:
 
-CREATE POLICY "profiles_update_owner" ON profiles.user_profiles FOR UPDATE TO authenticated USING ((SELECT auth.uid()) = id OR (auth.jwt() ->> 'role') = 'administrador') WITH CHECK ((SELECT auth.uid()) = id OR (auth.jwt() ->> 'role') = 'administrador');
+- id (uuid, PK, FK a auth.users.id)
+- full_name
+- role (user_role_enum, default usuario)
+- organization_id
+- created_at
 
-CREATE POLICY "profiles_delete_owner" ON profiles.user_profiles FOR DELETE TO authenticated USING ((SELECT auth.uid()) = id OR (auth.jwt() ->> 'role') = 'administrador');
+### 4.6 public_content.announcements
 
-Pruebas y validación (procedimiento)
-Validación de RLS:
-Generar JWT para:
-Usuario A (sub = , role = 'usuario')
-Usuario B (sub = , role = 'usuario')
-Admin (sub = , role = 'administrador')
-Intentar SELECT/INSERT/UPDATE/DELETE sobre profiles.user_profiles para cada token y verificar permisos.
-Pruebas unitarias:
-Crear fixtures en DB para cada rol y ejecutar queries via CI (p. ej., usando supabase-js en tests).
-Pruebas de integridad referencial:
-Asegurar que inserciones en dependencias (payments → payment_types) fallen si FK incumple.
-Recomendaciones operacionales y migraciones
-Mantener los DDL en migraciones SQL versionadas (carpeta db/migrations).
-Incluir versiones de extensiones requeridas en migraciones iniciales:
-CREATE EXTENSION IF NOT EXISTS pgcrypto;
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-Si se agrega multitenancy:
-Crear tabla public.user_organizations(user_id uuid, organization_id uuid, primary key (user_id, organization_id))
-Ajustar políticas RLS para usar EXISTS(...) sobre user_organizations.
-Seguridad:
-No exponer funciones SECURITY DEFINER a roles no confiables.
-Minimizar uso del rol service_role en producción; usarlo sólo para tareas de backend controladas.
-Monitoreo:
-Añadir índices para columnas usadas frecuentemente por WHERE/USING en políticas.
-Revisar advisors de Supabase y logs periódicamente.
-Anexos — snippets útiles
-Crear índice ejemplo:
-CREATE INDEX idx_students_user_id ON core.students(user_id);
-Extensión:
-CREATE EXTENSION IF NOT EXISTS pgcrypto;
-Ejemplo función calculate_age (simple):
-CREATE OR REPLACE FUNCTION public.calculate_age(d date) RETURNS integer LANGUAGE sql STABLE AS 
-S
-E
-L
-E
-C
-T
-D
-A
-T
-E
-P
-A
-R
-T
-(
-′
-y
-e
-a
-r
-′
-,
-A
-G
-E
-(
-d
-)
-)
-;
-SELECTDATE 
-P
-​
- ART( 
-′
- year 
-′
- ,AGE(d));;
-Nota: ajustar permisos y marcar SECURITY DEFINER si se usa en políticas.
-Cambios recientes aplicados en esta sesión
+Campos relevantes verificados:
 
-Se aplicaron políticas RLS en profiles.user_profiles para adoptar el modelo propietario + administrador (políticas FOR ALL, SELECT, INSERT, UPDATE, DELETE). Verifica con pruebas de token/claims.
+- id (uuid, PK)
+- title, content, priority
+- target_audience, is_active
+- created_by (FK a auth.users.id)
+- created_at, updated_at, expires_at
+- image_url, attachment_url
+
+### 4.7 security.users_password_backup
+
+Campos relevantes verificados:
+
+- id, email, password, created_at
+
+Estado de acceso confirmado:
+
+- Grantee postgres y service_role tienen permisos.
+- Debe mantenerse sin acceso para anon/authenticated.
+
+## 5) Relaciones FK Confirmadas
+
+- billing.payments.payment_type_id -> billing.payment_types.id
+- billing.payments.student_id -> core.students.id
+- core.students.user_id -> core.users.id
+- training.attendances.metodo_pago_id -> billing.payment_types.id
+- training.attendances.schedule_id -> training.schedules.id
+- training.attendances.student_id -> core.students.id
+- training.physical_tests.student_id -> core.students.id
+
+## 6) Vistas de Compatibilidad public.* (Consumo de App)
+
+Vistas confirmadas:
+
+- public.users -> core.users
+- public.students -> core.students
+- public.user_profiles -> profiles.user_profiles
+- public.payment_types -> billing.payment_types
+- public.payments -> billing.payments
+- public.schedules -> training.schedules
+- public.attendances -> training.attendances
+- public.physical_tests -> training.physical_tests
+- public.announcements -> public_content.announcements
+- public.announcements_with_creator -> public_content.announcements LEFT JOIN profiles.user_profiles
+- public.payments_audit -> audit.payments_audit
+- public.users_password_backup -> security.users_password_backup
+
+Observacion importante:
+
+- public.users incluye cedula como NULL::text para compatibilidad.
+
+## 7) Politicas, RLS y Grants (Estado Real)
+
+### 7.1 Politicas detectadas
+
+Hay politicas activas para tablas como:
+
+- billing.payment_types
+- billing.payments
+- core.students
+- profiles.user_profiles
+- public_content.announcements
+- training.attendances
+- training.physical_tests
+- training.schedules
+
+### 7.2 Efectividad real
+
+- billing.payment_types: RLS SI -> politicas aplican.
+- profiles.user_profiles: RLS SI -> politicas aplican.
+- training.attendances: RLS SI -> politicas aplican.
+- billing.payments, core.students, training.physical_tests, public_content.announcements, training.schedules: RLS NO -> politicas no aplican actualmente.
+
+### 7.3 Grants detectados en public.*
+
+Se observaron grants amplios para anon y authenticated en vistas de negocio (incluyendo permisos de escritura y operacion como INSERT/UPDATE/DELETE/TRUNCATE/TRIGGER/REFERENCES).
+
+Esto incrementa riesgo cuando la tabla base no tiene RLS efectivo.
+
+## 8) Funciones y Triggers Vigentes
+
+### 8.1 Funciones public relevantes
+
+- public.handle_new_user()
+- public.is_admin()
+- public.is_admin_or_trainer()
+- public.sync_first_login_on_password_change()
+- public.sync_last_login_from_auth()
+- public.sync_user_profile_on_user_update()
+- public.audit_payments()
+
+Notas relevantes:
+
+- is_admin e is_admin_or_trainer consultan public.users y aceptan valores administrador/admin.
+- sync_last_login_from_auth y sync_first_login_on_password_change actualizan core.users.
+- Se detecto bug historico: sync_user_profile_on_user_update mapeaba estudiante -> usuario en profiles.user_profiles.
+- Fix implementado en Fase P6: database/fix_student_role_sync_phase7_2026_04_16.sql (ejecutado en produccion, 2026-04-16).
+
+### 8.2 Triggers activos confirmados
+
+- auth.users: on_auth_user_created
+- auth.users: trigger_sync_first_login_on_password_change
+- auth.users: trigger_sync_last_login_from_auth
+- billing.payments: payments_audit_trigger
+- core.users: trigger_sync_user_profile
+- public_content.announcements: trigger_update_announcements_updated_at
+- training.physical_tests: update_physical_test_modtime
+
+## 9) Estado de Roles en Datos
+
+### 9.1 core.users.role
+
+- administrador: 2
+- entrenador: 4
+- estudiante: 86
+
+### 9.2 profiles.user_profiles.role
+
+- administrador: 2
+- entrenador: 4
+- usuario: 47
+- estudiante: 44
+
+Observacion:
+
+- Existe coexistencia de estudiante y usuario en perfiles, consistente con el mapeo parcial en flujos de sincronizacion.
+
+## 10) Riesgos Abiertos Priorizados
+
+### P0
+
+- Mitigado 2026-04-16: RLS activado en tablas criticas y grants public.* reducidos.
+- Mantener monitoreo post-cambio por posibles regresiones funcionales por rol.
+
+### P1
+
+- RBAC mixto residual: aun existen rutas con role/administrador y otras con helper is_admin().
+- Duplicidad semantica de politicas reducida en tablas criticas (consolidacion parcial ejecutada).
+
+### P2
+
+- Deuda documental de scripts legacy/hotfix en carpeta database que pueden inducir ejecuciones incorrectas.
+
+## 11) Proximos Pasos Tecnicos
+
+1. Reducir grants en public.* a minimo necesario por rol.
+	Script preparado: database/hardening_public_view_grants_phase1_2026_04_16.sql
+	Estado: ejecutado en produccion (2026-04-16).
+2. Activar RLS por fases en tablas criticas hoy en NO.
+	Script preparado: database/enable_rls_phase2_2026_04_16.sql
+	Estado: ejecutado en produccion (2026-04-16).
+3. Normalizar contrato RBAC (claim y valores canonicos).
+   Script preparado: database/normalize_rbac_phase3_2026_04_16.sql
+	Estado: ejecutado en produccion (2026-04-16).
+4. Consolidar politicas para eliminar redundancias.
+	Script preparado: database/consolidate_policies_phase4_2026_04_16.sql
+	Estado: ejecutado en produccion (2026-04-16).
+5. Revalidar app por rol (admin, entrenador, estudiante) tras cada fase.
+	Script tecnico de verificacion preparado: database/verify_security_matrix_phase5_2026_04_16.sql
+	Estado: ejecutado en produccion (2026-04-16).
+6. Implementar lockout de login (5 intentos fallidos / 60s de bloqueo).
+	Script preparado: database/login_lockout_phase6_2026_04_16.sql
+	Estado: ejecutado en produccion (2026-04-16).
+7. Corregir asignacion de rol de atletas (estudiante) en perfiles y backfill historico.
+	Script preparado: database/fix_student_role_sync_phase7_2026_04_16.sql
+	Estado: ejecutado en produccion (2026-04-16).
+8. Limpiar usuarios huerfanos en auth.users por lista de emails bloqueados.
+	Script preparado: database/cleanup_orphan_auth_users_phase8_2026_04_16.sql
+	Estado: ejecutado en produccion (2026-04-16).
+
+## 12) Scripts Legacy y Uso Seguro
+
+Regla operativa:
+
+- No ejecutar scripts fix_* antiguos sin verificar primero estado real en produccion.
+- Priorizar scripts idempotentes y canonicos de migracion/compatibilidad.
+- Mantener esta documentacion como baseline de ejecucion hasta cerrar saneamiento de seguridad.
+
+## 13) Bitacora de Cambios de BD
+
+### 2026-04-16
+
+- Se creo script de contencion P0 de grants en vistas public.*:
+	database/hardening_public_view_grants_phase1_2026_04_16.sql
+- Alcance del script:
+	- Revocar permisos amplios en vistas de compatibilidad para anon/authenticated.
+	- Mantener lectura publica minima (announcements, announcements_with_creator, schedules).
+	- Mantener users_password_backup restringida y con acceso de service_role.
+- Estado: ejecutado en produccion.
+- Verificacion post-ejecucion:
+	- anon: solo SELECT en announcements, announcements_with_creator y schedules.
+	- authenticated: mantiene SELECT/INSERT/UPDATE/DELETE en vistas operativas de panel.
+	- users_password_backup: sin permisos para anon/authenticated; acceso en postgres/service_role.
+
+- Se creo script de Fase P1 para activar RLS en tablas criticas:
+	database/enable_rls_phase2_2026_04_16.sql
+- Alcance del script:
+	- Activa RLS en public_content.announcements, billing.payments, core.students,
+		training.physical_tests y training.schedules.
+	- Ejecucion recomendada por bloques con validacion funcional entre cada bloque.
+- Estado: ejecutado en produccion.
+- Verificacion post-ejecucion:
+	- billing.payments: rls_enabled = true
+	- core.students: rls_enabled = true
+	- public_content.announcements: rls_enabled = true
+	- training.physical_tests: rls_enabled = true
+	- training.schedules: rls_enabled = true
+
+- Se creo script de Fase P2 para normalizar RBAC:
+	database/normalize_rbac_phase3_2026_04_16.sql
+- Alcance del script:
+	- Endurece helpers public.is_admin() y public.is_admin_or_trainer() con search_path seguro y fuente canonica core.users.
+	- Reemplaza policies legacy que dependian de auth.jwt()->>'user_role' = 'admin'
+	  en billing.payment_types, core.students y training.schedules.
+- Estado: ejecutado en produccion.
+- Verificacion post-ejecucion:
+	- public.is_admin() y public.is_admin_or_trainer() actualizadas con search_path seguro y consulta a core.users.
+	- Policies normalizadas en:
+	  - billing.payment_types (Admins manage payment types)
+	  - core.students (Admins can manage all student records)
+	  - training.schedules (Admins manage schedules)
+
+- Se creo script de Fase P3 para consolidar policies redundantes:
+	database/consolidate_policies_phase4_2026_04_16.sql
+- Alcance del script:
+	- Elimina policies duplicadas/solapadas en core.students, billing.payments,
+	  training.attendances y training.physical_tests.
+	- Conserva comportamiento de autorizacion al mantener policies FOR ALL y ownership principales.
+- Estado: ejecutado en produccion.
+- Verificacion post-ejecucion:
+	- billing.payments: se mantienen policies ALL de admin/trainer y ownership CRUD.
+	- core.students: se mantiene policy admin ALL, trainer ALL y ownership Users can ...
+	  sin duplicados Students can ...
+	- training.attendances: se mantienen policies ALL de admin/trainer y ownership CRUD,
+	  sin policies view redundantes.
+	- training.physical_tests: se mantienen policies ALL de admin/trainer y ownership CRUD,
+	  sin policies view redundantes.
+
+- Se creo script de Fase P4 para verificacion de matriz de seguridad:
+	database/verify_security_matrix_phase5_2026_04_16.sql
+- Alcance del script:
+	- Verifica RLS, policies, grants, helpers RBAC y triggers criticos.
+	- Incluye chequeo de readiness para objetos de lockout de login en esquema security.
+- Estado: ejecutado en produccion.
+- Verificacion post-ejecucion:
+	- RLS habilitado en tablas funcionales criticas (billing/core/profiles/public_content/training).
+	- Policies activas consistentes con ownership + admin/trainer.
+	- Grants de vistas public.* conforme al hardening aplicado en Fase P0.
+	- Helpers RBAC vigentes con search_path seguro y base canonica core.users.
+	- Triggers criticos de auth/sync/auditoria activos.
+	- Readiness lockout (actualizado): verificado y listo para uso.
+
+- Se creo script de Fase P5 para lockout de login:
+	database/login_lockout_phase6_2026_04_16.sql
+- Alcance del script:
+	- Crea tablas de auditoria y bloqueo en esquema security.
+	- Crea RPCs public.check_login_allowed y public.record_login_attempt.
+	- Aplica grants/revokes para impedir acceso directo a tablas y permitir RPC desde frontend.
+- Estado: ejecutado en produccion.
+- Verificacion post-ejecucion:
+	- Objetos creados:
+	  - security.login_attempts
+	  - security.login_blocks
+	  - public.check_login_allowed(text)
+	  - public.record_login_attempt(text, boolean, text)
+	- Prueba inicial RPC:
+	  - check_login_allowed('test@example.com') => allowed=true, retry_after_seconds=0,
+	    remaining_attempts=5, block_reason=null.
+
+- Se creo script de Fase P6 para correccion de rol de atletas:
+	database/fix_student_role_sync_phase7_2026_04_16.sql
+- Alcance del script:
+	- Corrige public.handle_new_user() para tomar role desde raw_user_meta_data
+	  (con fallback seguro a usuario) y hacer upsert de profiles.user_profiles.
+	- Corrige public.sync_user_profile_on_user_update() para NO convertir estudiante a usuario.
+	- Re-crea trigger trigger_sync_user_profile y aplica backfill historico:
+	  atletas en profiles.user_profiles con role=usuario pasan a role=estudiante
+	  cuando existe relacion en core.students y core.users.role=estudiante.
+- Estado: ejecutado en produccion (2026-04-16).
+- Verificacion post-ejecucion:
+	- Definicion de funciones aplicada correctamente para:
+	  - public.handle_new_user
+	  - public.sync_user_profile_on_user_update
+	- Conteo por rol en perfiles de atletas (join core.students):
+	  - estudiante: 86
+	  - usuario: 0
+
+- Se creo script de Fase P7 para limpieza de usuarios huerfanos en auth:
+	database/cleanup_orphan_auth_users_phase8_2026_04_16.sql
+- Alcance del script:
+	- Permite cargar lista puntual de emails bloqueados (target_emails).
+	- Previsualiza candidatos y elimina solo cuentas ORPHAN:
+	  existentes en auth.users pero ausentes en core.users.
+	- Incluye verificacion post-delete y consulta opcional de huerfanos globales.
+- Estado: ejecutado en produccion (2026-04-16).
+- Verificacion post-ejecucion:
+	- Resultado final del SELECT de verificacion: No rows returned.
+	- Conclusion: no quedaron correos objetivo presentes en auth.users.

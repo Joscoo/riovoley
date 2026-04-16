@@ -1,6 +1,25 @@
 // src/services/userCreationWorking.js
+import { createClient } from '@supabase/supabase-js';
 import { supabase } from '../config/supabase';
 import { withEncryptedUserContactFields } from '../utils/piiCrypto';
+
+const createIsolatedAuthClient = () => {
+  const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || '';
+  const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY || '';
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    return null;
+  }
+
+  // Cliente aislado para no modificar la sesion del usuario actual en la app.
+  return createClient(supabaseUrl, supabaseAnonKey, {
+    auth: {
+      persistSession: false,
+      autoRefreshToken: false,
+      detectSessionInUrl: false,
+    },
+  });
+};
 
 const getResendErrorMessage = (invokeError, data) => {
   const backendCode = data?.code;
@@ -60,6 +79,7 @@ export const createUserWorking = async (userData) => {
 
   try {
     console.log('🔐 Creando usuario con método que funciona...');
+    const isolatedAuthClient = createIsolatedAuthClient();
 
     // Verificar si el email ya existe en core.users
     const { data: existingUser, error: checkError } = await supabase
@@ -81,9 +101,16 @@ export const createUserWorking = async (userData) => {
     console.log('🔑 Contraseña temporal generada');
 
     // MÉTODO QUE FUNCIONA: signUp simple como en confirm-fix
-    const { data: authData, error: authError } = await supabase.auth.signUp({
+    const authClient = isolatedAuthClient || supabase;
+    const { data: authData, error: authError } = await authClient.auth.signUp({
       email: email.trim(),
-      password: temporaryPassword
+      password: temporaryPassword,
+      options: {
+        data: {
+          full_name: `${nombre.trim()} ${apellido.trim()}`,
+          role
+        }
+      }
     });
 
     if (authError) {
@@ -130,11 +157,11 @@ export const createUserWorking = async (userData) => {
     try {
       const { error: profileError } = await supabase
         .from('user_profiles')
-        .insert({
+        .upsert({
           id: authUserId,
           full_name: `${nombre.trim()} ${apellido.trim()}`,
           role: role
-        })
+        }, { onConflict: 'id' })
         .select()
         .single();
 
@@ -147,11 +174,8 @@ export const createUserWorking = async (userData) => {
       console.warn('⚠️ Error al crear perfil en user_profiles:', profileError);
     }
 
-    // Cerrar sesión automática
-    await supabase.auth.signOut();
-
     // VERIFICAR QUE FUNCIONA: Probar login inmediato
-    const { data: loginTest, error: loginError } = await supabase.auth.signInWithPassword({
+    const { data: loginTest, error: loginError } = await authClient.auth.signInWithPassword({
       email: email.trim(),
       password: temporaryPassword
     });
@@ -159,7 +183,7 @@ export const createUserWorking = async (userData) => {
     const canLogin = !loginError;
     
     if (loginTest?.user) {
-      await supabase.auth.signOut();
+      await authClient.auth.signOut();
     }
 
     return {
@@ -224,6 +248,15 @@ export const createStudentWorking = async (studentData) => {
 
     if (studentError) {
       console.error('❌ Error creando estudiante:', studentError);
+
+      // Rollback best-effort en tablas de app para evitar registros parciales.
+      try {
+        await supabase.from('user_profiles').delete().eq('id', userId);
+        await supabase.from('users').delete().eq('id', userId);
+      } catch (rollbackError) {
+        console.error('⚠️ Error en rollback de tablas app tras fallo en students:', rollbackError);
+      }
+
       throw new Error(`Error creando registro de estudiante: ${studentError.message}`);
     }
 

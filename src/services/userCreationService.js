@@ -116,13 +116,13 @@ export const createCompleteUser = async (userData) => {
     try {
       const { error: profileError } = await supabase
           .from('user_profiles')
-        .insert({
+        .upsert({
           id: authUserId,
           full_name: `${nombre} ${apellido}`,
           role: role,
           created_at: getEcuadorISOString(),
           updated_at: getEcuadorISOString()
-        });
+        }, { onConflict: 'id' });
 
       if (profileError) {
         console.warn('⚠️ No se pudo crear perfil (tabla user_profiles puede no existir):', profileError.message);

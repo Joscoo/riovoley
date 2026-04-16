@@ -316,6 +316,41 @@ function Login({ onLoginSuccess }) {
     }
   };
 
+  const checkLoginAllowed = async (normalizedEmail) => {
+    try {
+      const { data, error } = await supabase.rpc('check_login_allowed', {
+        p_email: normalizedEmail
+      });
+
+      if (error) {
+        console.error('Error verificando lockout de login:', error);
+        return { allowed: true };
+      }
+
+      const row = Array.isArray(data) ? data[0] : data;
+      return row || { allowed: true };
+    } catch (error) {
+      console.error('Error inesperado en pre-check de login:', error);
+      return { allowed: true };
+    }
+  };
+
+  const recordLoginAttempt = async (normalizedEmail, success, errorCode = null) => {
+    try {
+      const { error } = await supabase.rpc('record_login_attempt', {
+        p_email: normalizedEmail,
+        p_success: success,
+        p_error_code: errorCode,
+      });
+
+      if (error) {
+        console.error('Error registrando intento de login:', error);
+      }
+    } catch (error) {
+      console.error('Error inesperado registrando intento de login:', error);
+    }
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -335,36 +370,35 @@ function Login({ onLoginSuccess }) {
       return;
     }
 
-    console.log('🔐 Intentando login con:', { 
-      email: email.trim(), 
-      passwordLength: password.length 
-    });
+    const normalizedEmail = email.trim().toLowerCase();
 
     try {
+      // Pre-check para bloqueo temporal por demasiados intentos fallidos.
+      const lockStatus = await checkLoginAllowed(normalizedEmail);
+      if (lockStatus?.allowed === false) {
+        const retryAfter = Math.max(1, Number(lockStatus?.retry_after_seconds || 0));
+        setMensaje(`Demasiados intentos fallidos. Intenta nuevamente en ${retryAfter} segundos.`);
+        return;
+      }
+
       const { data, error } = await supabase.auth.signInWithPassword({
-        email: email.trim(),
+        email: normalizedEmail,
         password: password,
       });
 
-      console.log('[DEBUG] Resultado de login:', { data, error });
-
       if (error) {
-        console.error('[ERROR] Error de autenticación:', error);
-        
-        // Manejo específico de errores
-        if (error.message.includes('Invalid login credentials')) {
-          setMensaje('Credenciales incorrectas. Verifica tu email y contraseña.');
-        } else if (error.message.includes('Email not confirmed')) {
-          setMensaje('Tu cuenta no ha sido confirmada. Revisa tu email.');
-        } else if (error.message.includes('Too many requests')) {
+
+        await recordLoginAttempt(normalizedEmail, false, error?.code || error?.name || null);
+
+        if (error.message.includes('Too many requests')) {
           setMensaje('Demasiados intentos. Espera unos minutos e inténtalo de nuevo.');
-        } else if (error.status === 400) {
-          setMensaje(`Error de solicitud: ${error.message}. Verifica tu email y contraseña.`);
         } else {
-          setMensaje('Error al iniciar sesión: ' + error.message);
+          // Mensaje genérico para evitar enumeración de cuentas.
+          setMensaje('Email o contraseña inválidos.');
         }
       } else {
-        console.log('[SUCCESS] Login exitoso:', data);
+
+        await recordLoginAttempt(normalizedEmail, true);
 
         // Persistir último login para paneles administrativos y auditoría.
         await updateLastLogin(data?.user);
