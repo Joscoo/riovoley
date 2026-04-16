@@ -89,7 +89,7 @@ export const exportAttendancePdf = ({
   const doc = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
 
   doc.setFontSize(15);
-  doc.text('RIO VOLEY - Control de Asistencias', 14, 16);
+  doc.text('Control de Asistencias - RIOVOLEY', 14, 16);
   doc.setFontSize(10);
   doc.setTextColor(90, 90, 90);
   doc.text(`Fecha: ${formattedDate || exportDate}`, 14, 22);
