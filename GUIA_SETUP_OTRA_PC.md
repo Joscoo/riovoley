@@ -30,6 +30,7 @@ Este proyecto usa variables de entorno. No se debe compartir el archivo real con
 
 ```bash
 # PowerShell
+Set-Location .\riovoley   # solo si estas en C:\Riovoley
 Copy-Item .env.example .env.local
 ```
 
@@ -37,6 +38,7 @@ Alternativa (si prefieres la plantilla local):
 
 ```bash
 # PowerShell
+Set-Location .\riovoley   # solo si estas en C:\Riovoley
 Copy-Item .env.local.example .env.local
 ```
 
@@ -89,6 +91,16 @@ Solucion:
 ### Cambie variables y no impacta
 
 Siempre reinicia el servidor de desarrollo cuando cambias variables de entorno.
+
+### Error `Copy-Item` no encuentra `.env.local.example`
+
+Si aparece una ruta como `C:\Riovoley\.env.local.example`, estas parado en la carpeta padre.
+
+Solucion:
+
+1. Ir a la carpeta del proyecto: `Set-Location C:\Riovoley\riovoley`
+2. Verificar archivo: `Test-Path .env.local.example` (debe devolver `True`)
+3. Ejecutar copia: `Copy-Item .env.local.example .env.local`
 
 ## 8) Reglas de seguridad para el equipo
 
