@@ -1,4 +1,4 @@
 node_modules/
 *.local
-README_DATABASE.md
-
+.README_DATABASE.md
+.env.production
