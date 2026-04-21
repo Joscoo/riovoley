@@ -1,0 +1,72 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - link "Logo Riovoley" [ref=e4]:
+      - /url: /
+      - img "Logo Riovoley" [ref=e5]
+    - button "Abrir menú" [ref=e7] [cursor=pointer]:
+      - img [ref=e8]
+  - list:
+    - listitem:
+      - link "Inicio":
+        - /url: /
+    - listitem:
+      - link "Sobre Nosotros":
+        - /url: /sobre
+    - listitem:
+      - link "Horarios":
+        - /url: /horarios
+    - listitem:
+      - link "Iniciar Sesión":
+        - /url: /login
+  - generic [ref=e10]:
+    - generic [ref=e11]: Tu navegador no soporta el elemento de video.
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - heading "Rio voley" [level=1] [ref=e16]:
+          - generic [ref=e17]: Rio
+          - generic [ref=e18]: voley
+        - paragraph [ref=e19]: Formando Campeones, Construyendo Sueños
+        - paragraph [ref=e20]: La escuela de voleibol más prestigiosa de Riobamba. Desarrollamos talento deportivo con excelencia y pasión.
+        - generic [ref=e21]:
+          - link "Conoce Nuestra Historia" [ref=e22]:
+            - /url: /sobre
+            - generic [ref=e23]: Conoce Nuestra Historia
+            - img [ref=e24]
+          - link "Ver Horarios" [ref=e26]:
+            - /url: /horarios
+            - generic [ref=e27]: Ver Horarios
+            - img [ref=e28]
+      - paragraph [ref=e33]: Desliza para más
+    - generic [ref=e35]:
+      - heading "¿Por Qué Elegirnos?" [level=2] [ref=e36]
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - img [ref=e40]
+          - heading "Entrenadores Profesionales" [level=3] [ref=e42]
+          - paragraph [ref=e43]: Staff técnico certificado con experiencia a nivel nacional
+        - generic [ref=e44]:
+          - img [ref=e46]
+          - heading "Instalaciones Modernas" [level=3] [ref=e49]
+          - paragraph [ref=e50]: Canchas de primer nivel totalmente equipadas
+        - generic [ref=e51]:
+          - img [ref=e53]
+          - heading "Resultados Comprobados" [level=3] [ref=e55]
+          - paragraph [ref=e56]: Múltiples campeonatos y reconocimientos a nivel regional y nacional
+    - generic [ref=e59]:
+      - generic [ref=e60]:
+        - generic [ref=e61]: 50+
+        - generic [ref=e62]: Estudiantes Activos
+      - generic [ref=e63]:
+        - generic [ref=e64]: 5+
+        - generic [ref=e65]: Años de Experiencia
+    - generic [ref=e67]:
+      - heading "¿Listo para Empezar?" [level=2] [ref=e68]
+      - paragraph [ref=e69]: Comienza tu viaje hacia la excelencia deportiva hoy mismo
+      - link "Acceder al Portal" [ref=e70]:
+        - /url: /login
+        - generic [ref=e71]: Acceder al Portal
+        - img [ref=e72]
+```

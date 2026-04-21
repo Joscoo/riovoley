@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase, getCurrentUser } from '../config/supabase';
+import { APP_RESET_PASSWORD_URL } from '../config/appUrls';
 import { useUserProfile } from '../hooks/useUserProfile';
 import ChangePasswordModal from './ChangePasswordModal';
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaKey } from 'react-icons/fa';
@@ -455,7 +456,7 @@ function Login({ onLoginSuccess }) {
 
     try {
       const { error } = await supabase.auth.resetPasswordForEmail(resetEmail.trim(), {
-        redirectTo: `${window.location.origin}/reset-password`
+        redirectTo: APP_RESET_PASSWORD_URL
       });
 
       if (error) {

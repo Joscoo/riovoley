@@ -4,6 +4,20 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '../config/supabase';
 import { FaEye, FaEyeSlash, FaLock, FaKey, FaExclamationTriangle } from 'react-icons/fa';
 
+const clearRecoveryParamsFromUrl = () => {
+  if (typeof window === 'undefined') return;
+  window.history.replaceState({}, document.title, '/reset-password');
+};
+
+const PASSWORD_REQUIREMENTS = [
+  { key: 'minLength', label: 'Al menos 10 caracteres' },
+  { key: 'uppercase', label: 'Incluye una letra mayúscula (A-Z)' },
+  { key: 'lowercase', label: 'Incluye una letra minúscula (a-z)' },
+  { key: 'number', label: 'Incluye al menos un número (0-9)' },
+  { key: 'special', label: 'Incluye al menos un símbolo (!@#$...)' },
+  { key: 'noSpaces', label: 'No contiene espacios' }
+];
+
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -11,20 +25,75 @@ const ResetPassword = () => {
   const [mensaje, setMensaje] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isValidToken, setIsValidToken] = useState(false);
+  const [isCheckingToken, setIsCheckingToken] = useState(true);
   const navigate = useNavigate();
 
+  const passwordChecks = {
+    minLength: newPassword.length >= 10,
+    uppercase: /[A-Z]/.test(newPassword),
+    lowercase: /[a-z]/.test(newPassword),
+    number: /\d/.test(newPassword),
+    special: /[^A-Za-z0-9]/.test(newPassword),
+    noSpaces: !/\s/.test(newPassword)
+  };
+
+  const isStrongPassword = Object.values(passwordChecks).every(Boolean);
+  const passwordsMatch = Boolean(confirmPassword) && newPassword === confirmPassword;
+
   useEffect(() => {
+    let isMounted = true;
+
     const initPasswordReset = async () => {
-      // Supabase maneja automáticamente el token de la URL
-      const { data: { session } } = await supabase.auth.getSession();
-      
-      console.log('[DEBUG] Sesión actual:', session);
-      
-      if (session) {
-        console.log('✅ Sesión de recuperación activa');
-        setIsValidToken(true);
-      } else {
-        console.log('⏳ Esperando autenticación de Supabase...');
+      try {
+        let hasRecoverySession = false;
+
+        const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+        const queryParams = new URLSearchParams(window.location.search);
+
+        const recoveryAccessToken = hashParams.get('access_token');
+        const recoveryRefreshToken = hashParams.get('refresh_token');
+        const recoveryType = hashParams.get('type');
+        const exchangeCode = queryParams.get('code');
+
+        if (exchangeCode) {
+          const { error } = await supabase.auth.exchangeCodeForSession(exchangeCode);
+          if (!error) {
+            hasRecoverySession = true;
+            clearRecoveryParamsFromUrl();
+          }
+        } else if (recoveryAccessToken && recoveryRefreshToken && recoveryType === 'recovery') {
+          const { error } = await supabase.auth.setSession({
+            access_token: recoveryAccessToken,
+            refresh_token: recoveryRefreshToken
+          });
+
+          if (!error) {
+            hasRecoverySession = true;
+            clearRecoveryParamsFromUrl();
+          }
+        }
+
+        if (!hasRecoverySession) {
+          const { data: { session } } = await supabase.auth.getSession();
+          hasRecoverySession = Boolean(session);
+        }
+
+        if (!isMounted) return;
+
+        setIsValidToken(hasRecoverySession);
+        if (!hasRecoverySession) {
+          setMensaje('El enlace de recuperación es inválido o ha expirado.');
+        }
+      } catch (error) {
+        console.error('Error inicializando recuperación:', error);
+        if (!isMounted) return;
+
+        setIsValidToken(false);
+        setMensaje('No se pudo validar el enlace de recuperación. Solicita uno nuevo.');
+      } finally {
+        if (isMounted) {
+          setIsCheckingToken(false);
+        }
       }
     };
 
@@ -36,14 +105,19 @@ const ResetPassword = () => {
       if (event === 'PASSWORD_RECOVERY') {
         console.log('✅ Evento de recuperación de contraseña detectado');
         setIsValidToken(true);
+        setIsCheckingToken(false);
         setMensaje('');
+        clearRecoveryParamsFromUrl();
       } else if (event === 'SIGNED_IN' && session) {
         console.log('✅ Usuario autenticado para recuperación');
         setIsValidToken(true);
+        setIsCheckingToken(false);
         setMensaje('');
+        clearRecoveryParamsFromUrl();
       } else if (event === 'TOKEN_REFRESHED') {
         console.log('✅ Token refrescado');
         setIsValidToken(true);
+        setIsCheckingToken(false);
       }
     });
 
@@ -51,6 +125,7 @@ const ResetPassword = () => {
 
     // Cleanup
     return () => {
+      isMounted = false;
       authListener?.subscription?.unsubscribe();
     };
   }, []);
@@ -67,13 +142,13 @@ const ResetPassword = () => {
       return;
     }
 
-    if (newPassword.length < 6) {
-      setMensaje('La contraseña debe tener al menos 6 caracteres');
+    if (!isStrongPassword) {
+      setMensaje('La contraseña no cumple los requisitos de seguridad.');
       setIsLoading(false);
       return;
     }
 
-    if (newPassword !== confirmPassword) {
+    if (!passwordsMatch) {
       setMensaje('Las contraseñas no coinciden');
       setIsLoading(false);
       return;
@@ -123,16 +198,20 @@ const ResetPassword = () => {
               </svg>
             </div>
           </div>
-          <h2 style={styles.title}><FaKey style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Restablecer Contraseña</h2>
+          <h2 style={styles.title}><FaKey style={styles.titleIcon} /> Restablecer Contraseña</h2>
           <p style={styles.subtitle}>Ingresa tu nueva contraseña</p>
           <div style={styles.decorLine}></div>
         </div>
 
-        {!isValidToken ? (
+        {isCheckingToken ? (
+          <div style={styles.errorContainer}>
+            <p style={styles.errorText}>Validando enlace de recuperación...</p>
+          </div>
+        ) : !isValidToken ? (
           <div style={styles.errorContainer}>
             <div style={styles.errorIcon}><FaExclamationTriangle /></div>
             <p style={styles.errorText}>
-              El enlace de recuperación es inválido o ha expirado.
+              {mensaje || 'El enlace de recuperación es inválido o ha expirado.'}
             </p>
             <button 
               onClick={() => navigate('/login')}
@@ -158,7 +237,7 @@ const ResetPassword = () => {
                   style={styles.passwordInput}
                   disabled={isLoading}
                   required
-                  minLength={6}
+                  minLength={10}
                 />
                 <button
                   type="button"
@@ -169,7 +248,32 @@ const ResetPassword = () => {
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </button>
               </div>
-              <small style={styles.hint}>Mínimo 6 caracteres</small>
+
+              <div style={styles.checklist}>
+                {PASSWORD_REQUIREMENTS.map((requirement) => {
+                  const passed = passwordChecks[requirement.key];
+                  return (
+                    <div
+                      key={requirement.key}
+                      style={{
+                        ...styles.checklistItem,
+                        ...(passed ? styles.checklistItemPassed : styles.checklistItemPending)
+                      }}
+                    >
+                      <span
+                        style={{
+                          ...styles.checklistIcon,
+                          ...(passed ? styles.checklistIconPassed : styles.checklistIconPending)
+                        }}
+                        aria-hidden="true"
+                      >
+                        {passed ? '✓' : '○'}
+                      </span>
+                      <span>{requirement.label}</span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
 
             <div style={styles.inputGroup}>
@@ -187,17 +291,28 @@ const ResetPassword = () => {
                   style={styles.passwordInput}
                   disabled={isLoading}
                   required
-                  minLength={6}
+                  minLength={10}
                 />
               </div>
+
+              {confirmPassword && (
+                <small
+                  style={{
+                    ...styles.hint,
+                    ...(passwordsMatch ? styles.matchHintSuccess : styles.matchHintError)
+                  }}
+                >
+                  {passwordsMatch ? '✓ Las contraseñas coinciden' : 'Las contraseñas no coinciden'}
+                </small>
+              )}
             </div>
 
             <button 
               type="submit"
-              disabled={isLoading || !newPassword || !confirmPassword}
+              disabled={isLoading || !newPassword || !confirmPassword || !isStrongPassword || !passwordsMatch}
               style={{
                 ...styles.submitButton,
-                ...(isLoading || !newPassword || !confirmPassword ? styles.disabledButton : {})
+                ...(isLoading || !newPassword || !confirmPassword || !isStrongPassword || !passwordsMatch ? styles.disabledButton : {})
               }}
             >
               {isLoading ? (
@@ -316,6 +431,13 @@ const styles = {
     backgroundClip: 'text',
     letterSpacing: '0.5px'
   },
+  titleIcon: {
+    marginRight: '10px',
+    color: '#ffffff',
+    display: 'inline-block',
+    verticalAlign: 'middle',
+    transform: 'translateY(-1px)'
+  },
   subtitle: {
     margin: '0 0 15px 0',
     fontSize: '1rem',
@@ -350,7 +472,11 @@ const styles = {
     gap: '6px'
   },
   labelIcon: {
-    fontSize: '1rem'
+    fontSize: '1rem',
+    color: '#ffffff',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   passwordContainer: {
     position: 'relative',
@@ -381,6 +507,7 @@ const styles = {
     minWidth: '48px',
     minHeight: '48px',
     padding: '5px',
+    color: '#ffffff',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -390,6 +517,46 @@ const styles = {
     color: 'rgba(255, 255, 255, 0.6)',
     fontSize: '0.8rem',
     marginTop: '4px'
+  },
+  checklist: {
+    display: 'grid',
+    gap: '6px',
+    marginTop: '8px',
+    padding: '12px',
+    borderRadius: '10px',
+    background: 'rgba(15, 23, 42, 0.45)',
+    border: '1px solid rgba(148, 163, 184, 0.25)'
+  },
+  checklistItem: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    fontSize: '0.82rem',
+    lineHeight: 1.35
+  },
+  checklistItemPending: {
+    color: 'rgba(203, 213, 225, 0.9)'
+  },
+  checklistItemPassed: {
+    color: '#86efac'
+  },
+  checklistIcon: {
+    width: '16px',
+    textAlign: 'center',
+    fontWeight: '700',
+    fontSize: '0.9rem'
+  },
+  checklistIconPending: {
+    color: 'rgba(203, 213, 225, 0.8)'
+  },
+  checklistIconPassed: {
+    color: '#4ade80'
+  },
+  matchHintSuccess: {
+    color: '#4ade80'
+  },
+  matchHintError: {
+    color: '#f87171'
   },
   submitButton: {
     width: '100%',
@@ -448,6 +615,7 @@ const styles = {
   },
   errorIcon: {
     fontSize: '4rem',
+    color: '#ffffff',
     marginBottom: '20px'
   },
   errorText: {

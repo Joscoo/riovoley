@@ -1,18 +1,6 @@
 // src/services/emailService.js
 import { supabase } from '../config/supabase.js';
-
-const getAppBaseUrl = () => {
-  const configuredUrl = process.env.REACT_APP_APP_URL?.trim();
-  if (configuredUrl) {
-    return configuredUrl.replace(/\/+$/, '');
-  }
-
-  return 'https://riovoley.com';
-};
-
-const APP_BASE_URL = getAppBaseUrl();
-const APP_LOGIN_URL = `${APP_BASE_URL}/login`;
-const APP_RESET_PASSWORD_URL = `${APP_BASE_URL}/reset-password`;
+import { APP_BASE_URL, APP_LOGIN_URL, APP_RESET_PASSWORD_URL } from '../config/appUrls.js';
 
 /**
  * Servicio para envío de correos electrónicos
@@ -176,8 +164,8 @@ export class EmailService {
             body {
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 line-height: 1.6;
-                color: #333;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              color: #0f172a;
+              background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
                 margin: 0;
                 padding: 20px;
             }
@@ -187,13 +175,15 @@ export class EmailService {
                 background: white;
                 border-radius: 15px;
                 overflow: hidden;
-                box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+              border: 1px solid rgba(148, 163, 184, 0.35);
+              box-shadow: 0 24px 60px rgba(0,0,0,0.35);
             }
             .header {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
                 color: white;
                 padding: 30px;
                 text-align: center;
+              border-bottom: 3px solid #f59e0b;
             }
             .header h1 {
                 margin: 0;
@@ -204,8 +194,8 @@ export class EmailService {
                 padding: 30px;
             }
             .credentials-box {
-                background: #f8f9fa;
-                border-left: 4px solid #667eea;
+              background: #f8fafc;
+              border-left: 4px solid #f59e0b;
                 padding: 20px;
                 margin: 20px 0;
                 border-radius: 8px;
@@ -235,8 +225,8 @@ export class EmailService {
                 margin: 20px 0;
             }
             .steps {
-                background: #d1ecf1;
-                border: 1px solid #bee5eb;
+              background: #eff6ff;
+              border: 1px solid #bfdbfe;
                 padding: 20px;
                 border-radius: 8px;
                 margin: 20px 0;
@@ -250,8 +240,19 @@ export class EmailService {
                 content: "→";
                 position: absolute;
                 left: 0;
-                color: #667eea;
+              color: #1e3a8a;
                 font-weight: bold;
+            }
+            .login-button {
+              display: inline-block;
+              margin-top: 14px;
+              padding: 12px 22px;
+              border-radius: 8px;
+              background: linear-gradient(135deg, #f59e0b 0%, #facc15 100%);
+              color: #0f172a;
+              font-weight: 700;
+              text-decoration: none;
+              border: 1px solid #d97706;
             }
             .footer {
                 background: #f8f9fa;
@@ -305,6 +306,9 @@ export class EmailService {
                 <a href="${APP_LOGIN_URL}" style="color: #667eea; text-decoration: none; font-weight: 600;">
                   ${APP_LOGIN_URL}
                 </a></p>
+                <p>
+                  <a href="${APP_LOGIN_URL}" class="login-button">Iniciar Sesion</a>
+                </p>
                 
                 <p>Si tienes alguna pregunta o necesitas ayuda, no dudes en contactar con nuestro equipo administrativo.</p>
                 
@@ -314,7 +318,7 @@ export class EmailService {
             <div class="footer">
                 <p><strong>Club Riovoley</strong></p>
                 <p>📧 Email: riovoleyrbb@gmail.com | 📞 Teléfono: 0963840728</p>
-                <p>🌐 Web: riovoley.vercel.app</p>
+              <p>🌐 Web: <a href="${APP_BASE_URL}" style="color: #1e3a8a; font-weight: 600; text-decoration: none;">${APP_BASE_URL}</a></p>
                 <p style="margin-top: 1rem; font-size: 0.85rem; color: #6c757d;">
                     Este correo fue enviado automáticamente. Por favor, no respondas a este mensaje.
                 </p>
@@ -471,8 +475,8 @@ export class EmailService {
             body {
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 line-height: 1.6;
-                color: #333;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              color: #0f172a;
+              background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
                 margin: 0;
                 padding: 20px;
             }
@@ -482,13 +486,15 @@ export class EmailService {
                 background: white;
                 border-radius: 15px;
                 overflow: hidden;
-                box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+              border: 1px solid rgba(148, 163, 184, 0.35);
+              box-shadow: 0 24px 60px rgba(0,0,0,0.35);
             }
             .header {
                 background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
                 color: white;
                 padding: 2rem;
                 text-align: center;
+              border-bottom: 3px solid #f59e0b;
             }
             .header h1 {
                 margin: 0;
@@ -648,7 +654,7 @@ export class EmailService {
             <div class="footer">
                 <p><strong>Club Riovoley</strong></p>
                 <p>📧 Email: riovoleyrbb@gmail.com | 📞 Teléfono: 0963840728</p>
-                <p>🌐 Web: riovoley.vercel.app</p>
+              <p>🌐 Web: <a href="${APP_BASE_URL}" style="color: #1e3a8a; font-weight: 600; text-decoration: none;">${APP_BASE_URL}</a></p>
             </div>
             
             <div class="club-info">

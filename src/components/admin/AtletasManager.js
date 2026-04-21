@@ -1,11 +1,18 @@
 // src/components/admin/AtletasManager.js
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import { EmailService } from '../../services/emailService';
 import WhatsAppBusinessService from '../../services/whatsappBusinessService';
+import { deleteAuthUserById } from '../../services/authAdminService';
 import { createStudentWorking, resendWorkingCredentials } from '../../services/userCreationWorking';
 import { withEncryptedUserContactFields } from '../../utils/piiCrypto';
+import {
+  MIN_ATHLETE_AGE,
+  calculateAgeFromDate,
+  getMaxBirthDateForAge,
+  validateAthleteBirthDate,
+} from '../../utils/athleteValidation';
 import styles from '../../styles/AtletasManager.module.css';
 import { 
   FaEdit, 
@@ -20,6 +27,9 @@ import {
 } from 'react-icons/fa';
 
 const AtletasManager = ({ user }) => {
+  const modalTitleId = 'atleta-modal-title';
+  const birthDateHintId = 'fecha-nacimiento-hint';
+  const initialFocusRef = useRef(null);
   const [allAtletas, setAllAtletas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -27,7 +37,9 @@ const AtletasManager = ({ user }) => {
   const [whatsAppBusiness] = useState(new WhatsAppBusinessService());
   const [filters, setFilters] = useState({
     categoria: '',
-    search: ''
+    search: '',
+    sortBy: 'apellido',
+    sortOrder: 'asc'
   });
 
   const categorias = [
@@ -49,13 +61,66 @@ const AtletasManager = ({ user }) => {
     telefono: ''
   });
 
+  const maxBirthDate = useMemo(() => getMaxBirthDateForAge(MIN_ATHLETE_AGE), []);
+
   useEffect(() => {
     loadAtletas();
   }, []);
 
+  useEffect(() => {
+    if (!showModal) {
+      return undefined;
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    };
+
+    const previousBodyOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', handleKeyDown);
+
+    globalThis.setTimeout(() => {
+      initialFocusRef.current?.focus();
+    }, 0);
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [showModal]);
+
   // Filtrado optimizado con useMemo - solo recalcula cuando cambian atletas o filtros
   const filteredAtletas = useMemo(() => {
-    let result = allAtletas;
+    const normalizeText = (value = '') => value
+      .toString()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase();
+
+    const getSortableValue = (atleta) => {
+      switch (filters.sortBy) {
+        case 'nombre':
+          return normalizeText(atleta.users?.nombre || atleta.full_name || '');
+        case 'categoria':
+          return normalizeText(atleta.categoria || '');
+        case 'edad': {
+          const age = calculateAgeFromDate(atleta.fecha_nacimiento);
+          return Number.isFinite(age) ? age : Number.MAX_SAFE_INTEGER;
+        }
+        case 'ingreso': {
+          const ingresoDate = atleta.users?.created_at ? new Date(atleta.users.created_at).getTime() : Number.MAX_SAFE_INTEGER;
+          return Number.isFinite(ingresoDate) ? ingresoDate : Number.MAX_SAFE_INTEGER;
+        }
+        case 'apellido':
+        default:
+          return normalizeText(atleta.users?.apellido || atleta.full_name || '');
+      }
+    };
+
+    let result = [...allAtletas];
 
     // Filtrar por categoría
     if (filters.categoria) {
@@ -64,16 +129,46 @@ const AtletasManager = ({ user }) => {
 
     // Filtrar por búsqueda
     if (filters.search) {
-      const searchLower = filters.search.toLowerCase();
+      const searchLower = normalizeText(filters.search);
       result = result.filter(atleta => 
-        atleta.full_name?.toLowerCase().includes(searchLower) ||
-        atleta.categoria?.toLowerCase().includes(searchLower) ||
-        atleta.email?.toLowerCase().includes(searchLower)
+        normalizeText(atleta.full_name).includes(searchLower) ||
+        normalizeText(atleta.users?.nombre).includes(searchLower) ||
+        normalizeText(atleta.users?.apellido).includes(searchLower) ||
+        normalizeText(atleta.categoria).includes(searchLower) ||
+        normalizeText(atleta.email).includes(searchLower)
       );
     }
 
+    result.sort((a, b) => {
+      const valueA = getSortableValue(a);
+      const valueB = getSortableValue(b);
+
+      if (typeof valueA === 'number' && typeof valueB === 'number') {
+        return filters.sortOrder === 'asc' ? valueA - valueB : valueB - valueA;
+      }
+
+      if (valueA < valueB) {
+        return filters.sortOrder === 'asc' ? -1 : 1;
+      }
+
+      if (valueA > valueB) {
+        return filters.sortOrder === 'asc' ? 1 : -1;
+      }
+
+      return 0;
+    });
+
     return result;
   }, [allAtletas, filters]);
+
+  const resetFilters = () => {
+    setFilters({
+      categoria: '',
+      search: '',
+      sortBy: 'apellido',
+      sortOrder: 'asc'
+    });
+  };
 
   const loadAtletas = async () => {
     setLoading(true);
@@ -147,6 +242,12 @@ const AtletasManager = ({ user }) => {
       alert('Error: La fecha de nacimiento es requerida');
       return;
     }
+
+    const birthDateValidation = validateAthleteBirthDate(formData.fecha_nacimiento, MIN_ATHLETE_AGE);
+    if (!birthDateValidation.isValid) {
+      alert(`Error: ${birthDateValidation.error}`);
+      return;
+    }
     
     // Validaciones - Datos Deportivos
     if (!formData.categoria) {
@@ -168,7 +269,7 @@ const AtletasManager = ({ user }) => {
         await createAtleta();
       }
       
-      setShowModal(false);
+      closeModal();
       resetForm();
       loadAtletas();
     } catch (error) {
@@ -259,6 +360,11 @@ ${result.canLogin ? '✅ El usuario puede ingresar inmediatamente.' : '⚠️ Pu
   };
 
   const updateAtleta = async () => {
+    const birthDateValidation = validateAthleteBirthDate(formData.fecha_nacimiento, MIN_ATHLETE_AGE);
+    if (!birthDateValidation.isValid) {
+      throw new Error(birthDateValidation.error);
+    }
+
     const userUpdatePayload = await withEncryptedUserContactFields({
       email: formData.email,
       nombre: formData.nombre,
@@ -294,8 +400,15 @@ ${result.canLogin ? '✅ El usuario puede ingresar inmediatamente.' : '⚠️ Pu
 
     try {
       console.log('🗑️ Eliminando atleta:', atleta);
+
+      // Paso 1: Eliminar el usuario en Supabase Auth para evitar correos bloqueados al recrear atletas
+      if (atleta.user_id) {
+        console.log('🛡️ Eliminando usuario en Auth con ID:', atleta.user_id);
+        await deleteAuthUserById(atleta.user_id);
+        console.log('✅ Usuario eliminado de Auth');
+      }
       
-      // Paso 1: Eliminar el registro del atleta en students
+      // Paso 2: Eliminar el registro del atleta en students
       const { error: studentError } = await supabase
         .from('students')
         .delete()
@@ -307,7 +420,7 @@ ${result.canLogin ? '✅ El usuario puede ingresar inmediatamente.' : '⚠️ Pu
 
       console.log('✅ Atleta eliminado de students');
 
-      // Paso 2: Eliminar el usuario relacionado si existe
+      // Paso 3: Eliminar el usuario relacionado si existe
       if (atleta.user_id) {
         console.log('🗑️ Eliminando usuario con ID:', atleta.user_id);
         
@@ -437,11 +550,16 @@ Por favor, envía esta información al estudiante de forma manual.`);
       const activeUserIds = studentsUserIds.map(s => s.user_id).filter(Boolean);
 
       // Obtener usuarios con role 'estudiante' que no están en la lista de activos
-      const { data: orphanUsers, error: usersError } = await supabase
+      let orphanUsersQuery = supabase
         .from('users')
         .select('id, email, nombre, apellido')
-        .eq('role', 'estudiante')
-        .not('id', 'in', `(${activeUserIds.join(',')})`);
+        .eq('role', 'estudiante');
+
+      if (activeUserIds.length > 0) {
+        orphanUsersQuery = orphanUsersQuery.not('id', 'in', `(${activeUserIds.join(',')})`);
+      }
+
+      const { data: orphanUsers, error: usersError } = await orphanUsersQuery;
 
       if (usersError) throw usersError;
 
@@ -452,16 +570,30 @@ Por favor, envía esta información al estudiante de forma manual.`);
 
       console.log('👻 Usuarios huérfanos encontrados:', orphanUsers);
 
-      // Eliminar usuarios huérfanos
-      const { error: deleteError } = await supabase
-        .from('users')
-        .delete()
-        .eq('role', 'estudiante')
-        .not('id', 'in', `(${activeUserIds.join(',')})`);
+      let deletedCount = 0;
+      let failedCount = 0;
 
-      if (deleteError) throw deleteError;
+      for (const orphanUser of orphanUsers) {
+        try {
+          await deleteAuthUserById(orphanUser.id);
 
-      alert(`Se eliminaron ${orphanUsers.length} usuarios huérfanos`);
+          const { error: deleteError } = await supabase
+            .from('users')
+            .delete()
+            .eq('id', orphanUser.id);
+
+          if (deleteError) {
+            throw deleteError;
+          }
+
+          deletedCount += 1;
+        } catch (deleteUserError) {
+          failedCount += 1;
+          console.warn(`⚠️ No se pudo limpiar el usuario ${orphanUser.email}:`, deleteUserError.message);
+        }
+      }
+
+      alert(`Limpieza completada: ${deletedCount} usuarios eliminados${failedCount > 0 ? `, ${failedCount} con error` : ''}`);
       console.log('🧹 Limpieza completada');
     } catch (error) {
       console.error('❌ Error limpiando usuarios huérfanos:', error);
@@ -488,6 +620,10 @@ Por favor, envía esta información al estudiante de forma manual.`);
     setShowModal(true);
   };
 
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   const resetForm = () => {
     setFormData({
       user_id: '',
@@ -504,20 +640,11 @@ Por favor, envía esta información al estudiante de forma manual.`);
     if (!birthDate) return '--';
     
     try {
-      const today = new Date();
-      const birth = new Date(birthDate);
-      
-      // Verificar si la fecha es válida
-      if (isNaN(birth.getTime())) {
+      const age = calculateAgeFromDate(birthDate);
+      if (age === null || age < 0) {
         return '--';
       }
-      
-      const age = today.getFullYear() - birth.getFullYear();
-      const monthDiff = today.getMonth() - birth.getMonth();
-      
-      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
-        return age - 1;
-      }
+
       return age;
     } catch (error) {
       console.warn('Error calculando edad:', error);
@@ -572,20 +699,26 @@ Por favor, envía esta información al estudiante de forma manual.`);
       {/* Filtros */}
       <div className={styles.filtersSection}>
         <div className={styles.filterGroup}>
+          <label className={styles.filterLabel} htmlFor="athlete-search">Busqueda</label>
           <input
+            id="athlete-search"
             type="text"
-            placeholder="Buscar por nombre, apellido o email..."
+            placeholder="Buscar por nombre, apellido, categoria o email..."
             value={filters.search}
             onChange={(e) => setFilters({...filters, search: e.target.value})}
             className={styles.searchInput}
+            aria-label="Buscar atletas"
           />
         </div>
         
         <div className={styles.filterGroup}>
+          <label className={styles.filterLabel} htmlFor="athlete-category-filter">Categoria</label>
           <select
+            id="athlete-category-filter"
             value={filters.categoria}
             onChange={(e) => setFilters({...filters, categoria: e.target.value})}
-            className={styles.filterSelect}
+            className={`${styles.filterSelect} ${styles.brandSelect}`}
+            aria-label="Filtrar por categoria"
           >
             <option value="">Todas las categorías</option>
             {categorias.map(categoria => (
@@ -595,7 +728,50 @@ Por favor, envía esta información al estudiante de forma manual.`);
             ))}
           </select>
         </div>
+
+        <div className={styles.filterGroup}>
+          <label className={styles.filterLabel} htmlFor="athlete-sort-by">Ordenar por</label>
+          <select
+            id="athlete-sort-by"
+            value={filters.sortBy}
+            onChange={(e) => setFilters({...filters, sortBy: e.target.value})}
+            className={`${styles.filterSelect} ${styles.brandSelect}`}
+            aria-label="Ordenar por"
+          >
+            <option value="apellido">Ordenar por apellido</option>
+            <option value="nombre">Ordenar por nombre</option>
+            <option value="categoria">Ordenar por categoria</option>
+            <option value="edad">Ordenar por edad</option>
+            <option value="ingreso">Ordenar por fecha de ingreso</option>
+          </select>
+        </div>
+
+        <div className={styles.filterGroup}>
+          <label className={styles.filterLabel} htmlFor="athlete-sort-order">Direccion</label>
+          <select
+            id="athlete-sort-order"
+            value={filters.sortOrder}
+            onChange={(e) => setFilters({...filters, sortOrder: e.target.value})}
+            className={`${styles.filterSelect} ${styles.brandSelect}`}
+            aria-label="Direccion de orden"
+          >
+            <option value="asc">Ascendente</option>
+            <option value="desc">Descendente</option>
+          </select>
+        </div>
+
+        <button
+          type="button"
+          className={styles.clearFiltersButton}
+          onClick={resetFilters}
+        >
+          Limpiar filtros
+        </button>
       </div>
+
+      <p className={styles.filterSummary}>
+        Mostrando {filteredAtletas.length} de {allAtletas.length} atletas.
+      </p>
 
       {/* Lista de Atletas */}
       {loading ? (
@@ -677,10 +853,16 @@ Por favor, envía esta información al estudiante de forma manual.`);
 
       {/* Modal para Agregar/Editar */}
       {showModal && (
-        <div className={styles.modalOverlay}>
-          <div className={styles.modal}>
+        <div className={styles.modalOverlay} onClick={closeModal}>
+          <div
+            className={styles.modal}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={modalTitleId}
+            onClick={(event) => event.stopPropagation()}
+          >
             <div className={styles.modalHeader}>
-              <h3>
+              <h3 id={modalTitleId}>
                 {editingAtleta ? (
                   <><FaEdit style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Editar Atleta</>
                 ) : (
@@ -688,8 +870,9 @@ Por favor, envía esta información al estudiante de forma manual.`);
                 )}
               </h3>
               <button 
-                onClick={() => setShowModal(false)}
+                onClick={closeModal}
                 className={styles.closeButton}
+                aria-label="Cerrar modal"
               >
                 <FaTimes />
               </button>
@@ -704,6 +887,7 @@ Por favor, envía esta información al estudiante de forma manual.`);
                   <div className={styles.inputGroup}>
                     <label htmlFor="nombre">Nombre *</label>
                     <input
+                      ref={initialFocusRef}
                       id="nombre"
                       type="text"
                       value={formData.nombre}
@@ -755,8 +939,18 @@ Por favor, envía esta información al estudiante de forma manual.`);
                       type="date"
                       value={formData.fecha_nacimiento}
                       onChange={(e) => setFormData({...formData, fecha_nacimiento: e.target.value})}
+                      max={maxBirthDate}
+                      aria-describedby={birthDateHintId}
                       required
                     />
+                    <p id={birthDateHintId} className={styles.inputHint}>
+                      Edad minima permitida: {MIN_ATHLETE_AGE} años.
+                    </p>
+                    {formData.fecha_nacimiento && (
+                      <p className={styles.inputMeta}>
+                        Edad calculada: {calculateAge(formData.fecha_nacimiento)} años.
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
@@ -771,6 +965,7 @@ Por favor, envía esta información al estudiante de forma manual.`);
                       id="categoria"
                       value={formData.categoria}
                       onChange={(e) => setFormData({...formData, categoria: e.target.value})}
+                      className={styles.brandSelect}
                       required
                     >
                       <option value="">Seleccionar categoría</option>
@@ -787,7 +982,7 @@ Por favor, envía esta información al estudiante de forma manual.`);
               <div className={styles.formActions}>
                 <button 
                   type="button"
-                  onClick={() => setShowModal(false)}
+                  onClick={closeModal}
                   className={styles.cancelButton}
                 >
                   Cancelar

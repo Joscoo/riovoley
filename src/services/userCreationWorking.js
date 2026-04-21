@@ -2,6 +2,7 @@
 import { createClient } from '@supabase/supabase-js';
 import { supabase } from '../config/supabase';
 import { withEncryptedUserContactFields } from '../utils/piiCrypto';
+import { MIN_ATHLETE_AGE, validateAthleteBirthDate } from '../utils/athleteValidation';
 
 const createIsolatedAuthClient = () => {
   const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || '';
@@ -222,6 +223,11 @@ export const createStudentWorking = async (studentData) => {
 
   try {
     console.log('👨‍🎓 Creando estudiante con método que funciona...');
+
+    const birthDateValidation = validateAthleteBirthDate(fecha_nacimiento, MIN_ATHLETE_AGE);
+    if (!birthDateValidation.isValid) {
+      throw new Error(birthDateValidation.error);
+    }
 
     // Crear usuario base
     const userResult = await createUserWorking({

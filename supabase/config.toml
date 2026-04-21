@@ -67,6 +67,8 @@ file_size_limit = "50MiB"
 enabled = true
 # The base URL of your website. Used as an allow-list for redirects and for constructing URLs used
 # in emails.
+# NOTE: Esta configuracion aplica al entorno local de Supabase CLI.
+# La configuracion de produccion se gestiona en Supabase Dashboard > Auth > URL Configuration.
 site_url = "http://localhost:3000"
 # A list of *exact* URLs that auth providers are permitted to redirect to post authentication.
 additional_redirect_urls = ["https://localhost:3000"]

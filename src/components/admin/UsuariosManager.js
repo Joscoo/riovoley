@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
+import { deleteAuthUserById } from '../../services/authAdminService';
 import { getEcuadorISOString } from '../../utils/dateUtils';
 import styles from '../../styles/UsuariosManager.module.css';
 import { FaCrown, FaVolleyballBall, FaRunning, FaUser, FaPause, FaPlay, FaEdit, FaTrash, FaPhone, FaCalendar, FaUsers, FaChartBar, FaCheckCircle, FaBan, FaClock, FaStickyNote } from 'react-icons/fa';
@@ -206,6 +207,8 @@ const UsuariosManager = ({ user }) => {
     }
 
     try {
+      await deleteAuthUserById(usuario.id);
+
       const { error } = await supabase
         .from('users')
         .delete()
