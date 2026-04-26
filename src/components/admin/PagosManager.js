@@ -1,5 +1,5 @@
 // src/components/admin/PagosManager.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { supabase } from '../../config/supabase';
 import { EmailService } from '../../services/emailService';
@@ -19,15 +19,15 @@ import {
   FaPlus, 
   FaMoneyBillWave, 
   FaSync, 
-  FaWhatsapp, 
   FaTrash, 
   FaTimes, 
   FaUsers, 
-  FaCreditCard, 
-  FaClipboardList 
+  FaCreditCard
 } from 'react-icons/fa';
 
 const PagosManager = ({ user }) => {
+  const modalTitleId = 'payment-modal-title';
+  const firstPaymentFieldRef = useRef(null);
   const [pagos, setPagos] = useState([]);
   const [allPagos, setAllPagos] = useState([]); // Almacenar todos los pagos sin filtrar
   const [atletas, setAtletas] = useState([]);
@@ -40,13 +40,16 @@ const PagosManager = ({ user }) => {
     fecha_fin: '',
     estado: '',
     atleta: '',
-    search: ''
+    search: '',
+    sortBy: 'apellido',
+    sortOrder: 'asc'
   });
 
   // Estados para búsqueda de atleta en formulario
   const [atletaBusqueda, setAtletaBusqueda] = useState('');
   const [atletasFiltrados, setAtletasFiltrados] = useState([]);
   const [mostrarSugerencias, setMostrarSugerencias] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
 
   const [formData, setFormData] = useState({
     student_id: '',
@@ -67,6 +70,101 @@ const PagosManager = ({ user }) => {
     applyFilters();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters, allPagos]);
+
+  useEffect(() => {
+    if (!showModal) {
+      return undefined;
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    };
+
+    const previousBodyOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', handleKeyDown);
+
+    globalThis.setTimeout(() => {
+      firstPaymentFieldRef.current?.focus();
+    }, 0);
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [showModal]);
+
+  const getTodayDateString = () => getEcuadorDate();
+
+  const parseDateOnly = (value) => {
+    if (!value) {
+      return null;
+    }
+
+    const [year, month, day] = value.split('-').map(Number);
+    if (!year || !month || !day) {
+      return null;
+    }
+
+    return new Date(year, month - 1, day);
+  };
+
+  const validatePaymentForm = () => {
+    const errors = {};
+    const monto = Number.parseFloat(formData.monto);
+    const startDate = parseDateOnly(formData.fecha_inicio);
+    const endDate = parseDateOnly(formData.fecha_fin);
+    const paidDate = parseDateOnly(formData.fecha_pago);
+    const todayDate = parseDateOnly(getTodayDateString());
+
+    if (!formData.student_id) {
+      errors.student_id = 'Selecciona un atleta de la lista para continuar.';
+    }
+
+    if (!formData.fecha_inicio || !startDate) {
+      errors.fecha_inicio = 'La fecha de inicio es obligatoria.';
+    }
+
+    if (formData.fecha_fin && !endDate) {
+      errors.fecha_fin = 'La fecha fin no es valida.';
+    }
+
+    if (startDate && endDate && endDate < startDate) {
+      errors.fecha_fin = 'La fecha fin no puede ser anterior a la fecha de inicio.';
+    }
+
+    if (!Number.isFinite(monto) || monto <= 0) {
+      errors.monto = 'Ingresa un monto mayor a 0.';
+    }
+
+    if (formData.fecha_pago && !paidDate) {
+      errors.fecha_pago = 'La fecha de pago no es valida.';
+    }
+
+    if (paidDate && todayDate && paidDate > todayDate) {
+      errors.fecha_pago = 'La fecha de pago no puede estar en el futuro.';
+    }
+
+    if (formData.observaciones && formData.observaciones.length > 300) {
+      errors.observaciones = 'Las observaciones no deben superar 300 caracteres.';
+    }
+
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const paymentStatusPreview = useMemo(() => {
+    const pagoTemporal = {
+      monto: Number.parseFloat(formData.monto || '0'),
+      fecha_inicio: formData.fecha_inicio || null,
+      fecha_fin: formData.fecha_fin || null,
+      fecha_pago: formData.fecha_pago || null
+    };
+
+    return PagoStatusService.getStatusInfo(pagoTemporal);
+  }, [formData.monto, formData.fecha_inicio, formData.fecha_fin, formData.fecha_pago]);
 
   const loadData = async () => {
     setLoading(true);
@@ -145,6 +243,29 @@ const PagosManager = ({ user }) => {
 
   // Función para aplicar filtros localmente
   const applyFilters = () => {
+    const normalizeText = (value = '') => value
+      .toString()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .trim();
+
+    const getSortableValue = (pago) => {
+      switch (filters.sortBy) {
+        case 'nombre':
+          return normalizeText(pago.student?.user?.nombre || '');
+        case 'estado':
+          return normalizeText(PagoStatusService.getStatusInfo(pago).estado || '');
+        case 'monto':
+          return Number(pago.monto || 0);
+        case 'fecha_inicio':
+          return new Date(pago.fecha_inicio || '1900-01-01').getTime();
+        case 'apellido':
+        default:
+          return normalizeText(pago.student?.user?.apellido || '');
+      }
+    };
+
     // Mostrar solo el pago mas reciente por atleta para evitar vencidos historicos en la vista principal.
     let filteredData = getLatestPaymentsList(allPagos);
 
@@ -178,19 +299,54 @@ const PagosManager = ({ user }) => {
 
     // Filtrar por búsqueda de texto
     if (filters.search) {
-      const searchLower = filters.search.toLowerCase();
+      const searchLower = normalizeText(filters.search);
       filteredData = filteredData.filter(pago => 
-        pago.student?.user?.nombre?.toLowerCase().includes(searchLower) ||
-        pago.student?.user?.apellido?.toLowerCase().includes(searchLower) ||
-        pago.student?.user?.email?.toLowerCase().includes(searchLower)
+        normalizeText(pago.student?.user?.nombre).includes(searchLower) ||
+        normalizeText(pago.student?.user?.apellido).includes(searchLower) ||
+        normalizeText(pago.student?.user?.email).includes(searchLower)
       );
     }
+
+    filteredData.sort((a, b) => {
+      const valueA = getSortableValue(a);
+      const valueB = getSortableValue(b);
+
+      if (typeof valueA === 'number' && typeof valueB === 'number') {
+        return filters.sortOrder === 'asc' ? valueA - valueB : valueB - valueA;
+      }
+
+      if (valueA < valueB) {
+        return filters.sortOrder === 'asc' ? -1 : 1;
+      }
+
+      if (valueA > valueB) {
+        return filters.sortOrder === 'asc' ? 1 : -1;
+      }
+
+      return 0;
+    });
 
     setPagos(filteredData);
   };
 
+  const resetFilters = () => {
+    setFilters({
+      fecha_inicio: '',
+      fecha_fin: '',
+      estado: '',
+      atleta: '',
+      search: '',
+      sortBy: 'apellido',
+      sortOrder: 'asc'
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validatePaymentForm()) {
+      return;
+    }
     
     try {
       if (editingPago) {
@@ -414,68 +570,6 @@ const PagosManager = ({ user }) => {
     }
   };
 
-  const enviarWhatsAppPago = async (pago) => {
-    const atletaInfo = pago.student?.user;
-    if (!atletaInfo) {
-      alert('No se encontró información del atleta');
-      return;
-    }
-
-    // Verificar si el atleta tiene teléfono
-    if (!atletaInfo.telefono) {
-      alert('El atleta no tiene número de teléfono registrado');
-      return;
-    }
-
-    if (!WhatsAppService.validarTelefono(atletaInfo.telefono)) {
-      alert('El número de teléfono no es válido');
-      return;
-    }
-
-    try {
-      // Verificar configuración de WhatsApp Business
-      const businessConfig = whatsAppBusiness.validateConfiguration();
-      
-      if (businessConfig.isValid) {
-        // Usar WhatsApp Business API
-        console.log('📱 Enviando mensaje por WhatsApp Business...');
-        
-        const whatsAppResult = await whatsAppBusiness.sendPaymentConfirmation({
-          id: pago.id,
-          estudiante_nombre: `${atletaInfo.nombre} ${atletaInfo.apellido}`,
-          monto: pago.monto,
-          fecha_pago: pago.fecha_pago,
-          concepto: 'Mensualidad Club de Voley'
-        }, atletaInfo.telefono);
-        
-        if (whatsAppResult.success) {
-          alert(`WhatsApp Business enviado exitosamente\nID: ${whatsAppResult.messageId}`);
-        } else {
-          alert(`Error en WhatsApp Business: ${whatsAppResult.error}`);
-        }
-      } else {
-        // Fallback: usar WhatsApp Web (manual)
-        console.log('⚠️ WhatsApp Business no configurado, usando método manual');
-        console.log('Issues:', businessConfig.issues);
-        
-        const telefonoFormateado = WhatsAppService.formatearTelefono(atletaInfo.telefono);
-        const mensajeWhatsApp = WhatsAppService.crearMensajePago({
-          id: pago.id,
-          estudiante_nombre: `${atletaInfo.nombre} ${atletaInfo.apellido}`,
-          monto: pago.monto,
-          fecha_pago: pago.fecha_pago,
-          concepto: 'Mensualidad Club de Voley',
-          observaciones: pago.observaciones || ''
-        });
-
-        WhatsAppService.sendMessage(telefonoFormateado, mensajeWhatsApp);
-      }
-    } catch (error) {
-      console.error('Error enviando WhatsApp:', error);
-      alert(`Error: ${error.message}`);
-    }
-  };
-
   const marcarComoPagado = async (pago) => {
     try {
       const fechaPago = getEcuadorDate();
@@ -503,6 +597,7 @@ const PagosManager = ({ user }) => {
   };
 
   const openModal = (pago = null) => {
+    setFormErrors({});
     if (pago) {
       setEditingPago(pago);
       setFormData({
@@ -527,6 +622,11 @@ const PagosManager = ({ user }) => {
     setShowModal(true);
   };
 
+  const closeModal = () => {
+    setShowModal(false);
+    setFormErrors({});
+  };
+
   const resetForm = () => {
     setFormData({
       student_id: '',
@@ -539,11 +639,13 @@ const PagosManager = ({ user }) => {
     setAtletaBusqueda('');
     setAtletasFiltrados([]);
     setMostrarSugerencias(false);
+    setFormErrors({});
   };
 
   // Función para manejar la búsqueda de atletas
   const handleAtletaBusqueda = (valorBusqueda) => {
     setAtletaBusqueda(valorBusqueda);
+    setFormErrors((previousErrors) => ({ ...previousErrors, student_id: undefined }));
     
     if (valorBusqueda.trim() === '') {
       setAtletasFiltrados([]);
@@ -569,6 +671,7 @@ const PagosManager = ({ user }) => {
     setFormData({...formData, student_id: atleta.id.toString()});
     setMostrarSugerencias(false);
     setAtletasFiltrados([]);
+    setFormErrors((previousErrors) => ({ ...previousErrors, student_id: undefined }));
   };
 
   // Función helper para formatear fechas sin problemas de zona horaria
@@ -708,17 +811,22 @@ const PagosManager = ({ user }) => {
       {/* Filtros */}
       <div className={styles.filtersSection}>
         <div className={styles.filterGroup}>
+          <label htmlFor="payments-search" className={styles.filterLabel}>Busqueda</label>
           <input
+            id="payments-search"
             type="text"
-            placeholder="Buscar por nombre del atleta..."
+            placeholder="Buscar por nombre, apellido o email..."
             value={filters.search}
             onChange={(e) => setFilters({...filters, search: e.target.value})}
             className={styles.searchInput}
+            aria-label="Buscar pagos por atleta"
           />
         </div>
         
         <div className={styles.filterGroup}>
+          <label htmlFor="payments-start-date" className={styles.filterLabel}>Desde</label>
           <input
+            id="payments-start-date"
             type="date"
             placeholder="Fecha inicio"
             value={filters.fecha_inicio}
@@ -728,7 +836,9 @@ const PagosManager = ({ user }) => {
         </div>
         
         <div className={styles.filterGroup}>
+          <label htmlFor="payments-end-date" className={styles.filterLabel}>Hasta</label>
           <input
+            id="payments-end-date"
             type="date"
             placeholder="Fecha fin"
             value={filters.fecha_fin}
@@ -738,25 +848,31 @@ const PagosManager = ({ user }) => {
         </div>
 
         <div className={styles.filterGroup}>
+          <label htmlFor="payments-status-filter" className={styles.filterLabel}>Estado</label>
           <select
+            id="payments-status-filter"
             value={filters.estado}
             onChange={(e) => setFilters({...filters, estado: e.target.value})}
             className={styles.filterSelect}
+            aria-label="Filtrar por estado de pago"
           >
-            <option value=""><FaClipboardList style={{ marginRight: '6px' }} /> Todos los estados</option>
-            <option value="activo"><FaCheckCircle style={{ marginRight: '6px' }} /> Activo</option>
-            <option value="proximo_a_vencer"><FaHourglassHalf style={{ marginRight: '6px' }} /> Próximo a Vencer</option>
-            <option value="vencido"><FaExclamationTriangle style={{ marginRight: '6px' }} /> Vencido</option>
+            <option value="">Todos los estados</option>
+            <option value="activo">Activo</option>
+            <option value="proximo_a_vencer">Proximo a Vencer</option>
+            <option value="vencido">Vencido</option>
           </select>
         </div>
 
         <div className={styles.filterGroup}>
+          <label htmlFor="payments-athlete-filter" className={styles.filterLabel}>Atleta</label>
           <select
+            id="payments-athlete-filter"
             value={filters.atleta}
             onChange={(e) => setFilters({...filters, atleta: e.target.value})}
             className={styles.filterSelect}
+            aria-label="Filtrar por atleta"
           >
-            <option value=""><FaUsers style={{ marginRight: '6px' }} /> Todos los atletas</option>
+            <option value="">Todos los atletas</option>
             {atletas.map(atleta => (
               <option key={atleta.id} value={atleta.id}>
                 {atleta.users?.nombre} {atleta.users?.apellido}
@@ -764,7 +880,47 @@ const PagosManager = ({ user }) => {
             ))}
           </select>
         </div>
+
+        <div className={styles.filterGroup}>
+          <label htmlFor="payments-sort-by" className={styles.filterLabel}>Ordenar por</label>
+          <select
+            id="payments-sort-by"
+            value={filters.sortBy}
+            onChange={(e) => setFilters({...filters, sortBy: e.target.value})}
+            className={styles.filterSelect}
+            aria-label="Ordenar pagos por"
+          >
+            <option value="apellido">Apellido</option>
+            <option value="nombre">Nombre</option>
+            <option value="estado">Estado</option>
+            <option value="monto">Monto</option>
+            <option value="fecha_inicio">Fecha de inicio</option>
+          </select>
+        </div>
+
+        <div className={styles.filterGroup}>
+          <label htmlFor="payments-sort-order" className={styles.filterLabel}>Direccion</label>
+          <select
+            id="payments-sort-order"
+            value={filters.sortOrder}
+            onChange={(e) => setFilters({...filters, sortOrder: e.target.value})}
+            className={styles.filterSelect}
+            aria-label="Direccion de orden"
+          >
+            <option value="asc">Ascendente</option>
+            <option value="desc">Descendente</option>
+          </select>
+        </div>
+
+        <div className={styles.filterGroup}>
+          <label className={styles.filterLabel} htmlFor="payments-clear-filters">Acciones</label>
+          <button id="payments-clear-filters" type="button" className={styles.clearFiltersButton} onClick={resetFilters}>
+            Limpiar filtros
+          </button>
+        </div>
       </div>
+
+      <p className={styles.filterSummary}>Mostrando {pagos.length} de {getLatestPaymentsList(allPagos).length} pagos.</p>
 
       {/* Lista de Pagos */}
       {loading ? (
@@ -824,13 +980,6 @@ const PagosManager = ({ user }) => {
                             </button>
                           )}
                           <button
-                            onClick={() => enviarWhatsAppPago(pago)}
-                            className={styles.whatsappButton}
-                            title="Enviar por WhatsApp"
-                          >
-                            <FaWhatsapp />
-                          </button>
-                          <button
                             onClick={() => openModal(pago)}
                             className={styles.editButton}
                             title="Editar"
@@ -862,10 +1011,16 @@ const PagosManager = ({ user }) => {
 
       {/* Modal para Agregar/Editar */}
       {showModal && (
-        <div className={styles.modalOverlay}>
-          <div className={styles.modal}>
+        <div className={styles.modalOverlay} onClick={closeModal}>
+          <div
+            className={styles.modal}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={modalTitleId}
+            onClick={(event) => event.stopPropagation()}
+          >
             <div className={styles.modalHeader}>
-              <h3>
+              <h3 id={modalTitleId}>
                 {editingPago ? (
                   <><FaEdit style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Editar Pago</>
                 ) : (
@@ -873,109 +1028,186 @@ const PagosManager = ({ user }) => {
                 )}
               </h3>
               <button 
-                onClick={() => setShowModal(false)}
+                onClick={closeModal}
                 className={styles.closeButton}
+                aria-label="Cerrar modal"
               >
                 <FaTimes />
               </button>
             </div>
             
             <form onSubmit={handleSubmit} className={styles.form}>
-              <div className={styles.formGrid}>
-                <div className={styles.inputGroup}>
-                  <label htmlFor="student_id">Atleta *</label>
-                  <div className={styles.autosuggestContainer}>
+              {Object.values(formErrors).filter(Boolean).length > 0 && (
+                <div className={styles.formErrorSummary} role="alert">
+                  {Object.values(formErrors).filter(Boolean)[0]}
+                </div>
+              )}
+
+              <div className={styles.statusPreview}>
+                <span className={styles.statusPreviewLabel}>Estado estimado:</span>
+                <span className={styles.statusPreviewBadge} style={{ backgroundColor: paymentStatusPreview.color }}>
+                  {paymentStatusPreview.mensaje}
+                </span>
+              </div>
+
+              <div className={styles.formSection}>
+                <h4 className={styles.sectionTitle}><FaUsers style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Atleta y Periodo</h4>
+                <div className={styles.formGrid}>
+                  <div className={styles.inputGroup}>
+                    <label htmlFor="student_id">Atleta *</label>
+                    <div className={styles.autosuggestContainer}>
+                      <input
+                        ref={firstPaymentFieldRef}
+                        id="student_id"
+                        type="text"
+                        value={atletaBusqueda}
+                        onChange={(e) => handleAtletaBusqueda(e.target.value)}
+                        onFocus={() => {
+                          if (atletaBusqueda && atletasFiltrados.length > 0) {
+                            setMostrarSugerencias(true);
+                          }
+                        }}
+                        placeholder="Escribe el nombre del atleta..."
+                        required
+                        autoComplete="off"
+                        aria-invalid={Boolean(formErrors.student_id)}
+                        aria-describedby={formErrors.student_id ? 'payment-student-error' : undefined}
+                      />
+                      {formErrors.student_id && (
+                        <p id="payment-student-error" className={styles.fieldError}>{formErrors.student_id}</p>
+                      )}
+                      {mostrarSugerencias && atletasFiltrados.length > 0 && (
+                        <ul className={styles.sugerenciasList}>
+                          {atletasFiltrados.map(atleta => (
+                            <li
+                              key={atleta.id}
+                              onClick={() => seleccionarAtleta(atleta)}
+                              onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                  e.preventDefault();
+                                  seleccionarAtleta(atleta);
+                                }
+                              }}
+                              className={styles.sugerenciaItem}
+                              role="button"
+                              tabIndex={0}
+                            >
+                              <span className={styles.sugerenciaNombre}>
+                                {atleta.users?.nombre} {atleta.users?.apellido}
+                              </span>
+                              <span className={styles.sugerenciaCategoria}>
+                                {atleta.categoria?.replaceAll('_', ' ').toUpperCase()}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      {mostrarSugerencias && atletaBusqueda && atletasFiltrados.length === 0 && (
+                        <div className={styles.noResultados}>
+                          No se encontraron atletas
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className={styles.inputGroup}>
+                    <label htmlFor="fecha_inicio">Fecha Inicio *</label>
                     <input
-                      id="student_id"
-                      type="text"
-                      value={atletaBusqueda}
-                      onChange={(e) => handleAtletaBusqueda(e.target.value)}
-                      onFocus={() => {
-                        if (atletaBusqueda && atletasFiltrados.length > 0) {
-                          setMostrarSugerencias(true);
-                        }
+                      id="fecha_inicio"
+                      type="date"
+                      value={formData.fecha_inicio}
+                      onChange={(e) => {
+                        setFormData({...formData, fecha_inicio: e.target.value});
+                        setFormErrors((previousErrors) => ({ ...previousErrors, fecha_inicio: undefined, fecha_fin: undefined }));
                       }}
-                      placeholder="Escribe el nombre del atleta..."
                       required
-                      autoComplete="off"
+                      max={getTodayDateString()}
+                      aria-invalid={Boolean(formErrors.fecha_inicio)}
+                      aria-describedby={formErrors.fecha_inicio ? 'payment-start-error' : 'payment-start-hint'}
                     />
-                    {mostrarSugerencias && atletasFiltrados.length > 0 && (
-                      <ul className={styles.sugerenciasList}>
-                        {atletasFiltrados.map(atleta => (
-                          <li 
-                            key={atleta.id}
-                            onClick={() => seleccionarAtleta(atleta)}
-                            onKeyDown={(e) => {
-                              if (e.key === 'Enter' || e.key === ' ') {
-                                e.preventDefault();
-                                seleccionarAtleta(atleta);
-                              }
-                            }}
-                            className={styles.sugerenciaItem}
-                            role="button"
-                            tabIndex={0}
-                          >
-                            <span className={styles.sugerenciaNombre}>
-                              {atleta.users?.nombre} {atleta.users?.apellido}
-                            </span>
-                            <span className={styles.sugerenciaCategoria}>
-                              {atleta.categoria?.replaceAll('_', ' ').toUpperCase()}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                    {mostrarSugerencias && atletaBusqueda && atletasFiltrados.length === 0 && (
-                      <div className={styles.noResultados}>
-                        No se encontraron atletas
-                      </div>
-                    )}
+                    <p id="payment-start-hint" className={styles.fieldHint}>Inicio del periodo a cubrir.</p>
+                    {formErrors.fecha_inicio && <p id="payment-start-error" className={styles.fieldError}>{formErrors.fecha_inicio}</p>}
+                  </div>
+
+                  <div className={styles.inputGroup}>
+                    <label htmlFor="fecha_fin">Fecha Fin</label>
+                    <input
+                      id="fecha_fin"
+                      type="date"
+                      value={formData.fecha_fin}
+                      onChange={(e) => {
+                        setFormData({...formData, fecha_fin: e.target.value});
+                        setFormErrors((previousErrors) => ({ ...previousErrors, fecha_fin: undefined }));
+                      }}
+                      min={formData.fecha_inicio || undefined}
+                      aria-invalid={Boolean(formErrors.fecha_fin)}
+                      aria-describedby={formErrors.fecha_fin ? 'payment-end-error' : 'payment-end-hint'}
+                    />
+                    <p id="payment-end-hint" className={styles.fieldHint}>Opcional. Debe ser igual o posterior al inicio.</p>
+                    {formErrors.fecha_fin && <p id="payment-end-error" className={styles.fieldError}>{formErrors.fecha_fin}</p>}
                   </div>
                 </div>
-                
-                <div className={styles.inputGroup}>
-                  <label htmlFor="fecha_inicio">Fecha Inicio *</label>
-                  <input
-                    id="fecha_inicio"
-                    type="date"
-                    value={formData.fecha_inicio}
-                    onChange={(e) => setFormData({...formData, fecha_inicio: e.target.value})}
-                    required
-                  />
-                </div>
-                
-                <div className={styles.inputGroup}>
-                  <label htmlFor="fecha_fin">Fecha Fin</label>
-                  <input
-                    id="fecha_fin"
-                    type="date"
-                    value={formData.fecha_fin}
-                    onChange={(e) => setFormData({...formData, fecha_fin: e.target.value})}
-                  />
-                </div>
-                
-                <div className={styles.inputGroup}>
-                  <label htmlFor="monto">Monto *</label>
-                  <input
-                    id="monto"
-                    type="number"
-                    step="0.01"
-                    min="0"
-                    value={formData.monto}
-                    onChange={(e) => setFormData({...formData, monto: e.target.value})}
-                    required
-                    placeholder="0.00"
-                  />
-                </div>
-                
-                <div className={styles.inputGroup}>
-                  <label htmlFor="fecha_pago">Fecha de Pago</label>
-                  <input
-                    id="fecha_pago"
-                    type="date"
-                    value={formData.fecha_pago}
-                    onChange={(e) => setFormData({...formData, fecha_pago: e.target.value})}
-                  />
+              </div>
+
+              <div className={styles.formSection}>
+                <h4 className={styles.sectionTitle}><FaDollarSign style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Datos del Pago</h4>
+                <div className={styles.formGrid}>
+                  <div className={styles.inputGroup}>
+                    <label htmlFor="monto">Monto *</label>
+                    <input
+                      id="monto"
+                      type="number"
+                      step="0.01"
+                      min="0.01"
+                      value={formData.monto}
+                      onChange={(e) => {
+                        setFormData({...formData, monto: e.target.value});
+                        setFormErrors((previousErrors) => ({ ...previousErrors, monto: undefined }));
+                      }}
+                      required
+                      placeholder="0.00"
+                      aria-invalid={Boolean(formErrors.monto)}
+                      aria-describedby={formErrors.monto ? 'payment-amount-error' : 'payment-amount-hint'}
+                    />
+                    <p id="payment-amount-hint" className={styles.fieldHint}>Monto total del periodo.</p>
+                    {formErrors.monto && <p id="payment-amount-error" className={styles.fieldError}>{formErrors.monto}</p>}
+                  </div>
+
+                  <div className={styles.inputGroup}>
+                    <label htmlFor="fecha_pago">Fecha de Pago</label>
+                    <input
+                      id="fecha_pago"
+                      type="date"
+                      value={formData.fecha_pago}
+                      onChange={(e) => {
+                        setFormData({...formData, fecha_pago: e.target.value});
+                        setFormErrors((previousErrors) => ({ ...previousErrors, fecha_pago: undefined }));
+                      }}
+                      max={getTodayDateString()}
+                      aria-invalid={Boolean(formErrors.fecha_pago)}
+                      aria-describedby={formErrors.fecha_pago ? 'payment-date-error' : 'payment-date-hint'}
+                    />
+                    <p id="payment-date-hint" className={styles.fieldHint}>Opcional. Solo fechas hasta hoy.</p>
+                    {formErrors.fecha_pago && <p id="payment-date-error" className={styles.fieldError}>{formErrors.fecha_pago}</p>}
+                  </div>
+
+                  <div className={styles.inputGroupFullWidth}>
+                    <label htmlFor="observaciones">Observaciones</label>
+                    <textarea
+                      id="observaciones"
+                      value={formData.observaciones}
+                      onChange={(e) => {
+                        setFormData({...formData, observaciones: e.target.value});
+                        setFormErrors((previousErrors) => ({ ...previousErrors, observaciones: undefined }));
+                      }}
+                      maxLength={300}
+                      placeholder="Notas internas del pago (opcional)"
+                      aria-invalid={Boolean(formErrors.observaciones)}
+                      aria-describedby={formErrors.observaciones ? 'payment-notes-error' : 'payment-notes-hint'}
+                    />
+                    <p id="payment-notes-hint" className={styles.fieldHint}>{formData.observaciones.length}/300 caracteres</p>
+                    {formErrors.observaciones && <p id="payment-notes-error" className={styles.fieldError}>{formErrors.observaciones}</p>}
+                  </div>
                 </div>
               </div>
               
@@ -984,7 +1216,7 @@ const PagosManager = ({ user }) => {
               <div className={styles.formActions}>
                 <button 
                   type="button"
-                  onClick={() => setShowModal(false)}
+                  onClick={closeModal}
                   className={styles.cancelButton}
                 >
                   Cancelar

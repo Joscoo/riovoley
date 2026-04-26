@@ -760,13 +760,17 @@ Por favor, envía esta información al estudiante de forma manual.`);
           </select>
         </div>
 
-        <button
-          type="button"
-          className={styles.clearFiltersButton}
-          onClick={resetFilters}
-        >
-          Limpiar filtros
-        </button>
+        <div className={styles.filterGroup}>
+          <label className={styles.filterLabel} htmlFor="athlete-clear-filters">Acciones</label>
+          <button
+            id="athlete-clear-filters"
+            type="button"
+            className={styles.clearFiltersButton}
+            onClick={resetFilters}
+          >
+            Limpiar filtros
+          </button>
+        </div>
       </div>
 
       <p className={styles.filterSummary}>

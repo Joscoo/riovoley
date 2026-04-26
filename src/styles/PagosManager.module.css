@@ -157,6 +157,15 @@
 .filterGroup {
   display: flex;
   flex-direction: column;
+  gap: 6px;
+}
+
+.filterLabel {
+  color: rgba(255, 215, 0, 0.92);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
 }
 
 .searchInput, .filterInput, .filterSelect {
@@ -187,6 +196,35 @@
 .filterSelect option {
   background: #1e3c72;
   color: white;
+}
+
+.clearFiltersButton {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid rgba(255, 215, 0, 0.35);
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.55);
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: var(--rv-touch-target, 48px);
+}
+
+.clearFiltersButton:hover {
+  background: rgba(255, 215, 0, 0.14);
+  border-color: rgba(255, 215, 0, 0.65);
+}
+
+.clearFiltersButton:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+}
+
+.filterSummary {
+  margin: -10px 0 1.25rem;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.9rem;
 }
 
 /* Tabla de Pagos */
@@ -275,7 +313,7 @@
   align-items: center;
 }
 
-.paidButton, .editButton, .deleteButton, .whatsappButton {
+.paidButton, .editButton, .deleteButton {
   background: none;
   border: none;
   padding: 0.5rem;
@@ -305,15 +343,6 @@
 
 .editButton:hover {
   background: rgba(32, 201, 151, 0.4);
-  transform: scale(1.1);
-}
-
-.whatsappButton {
-  background: rgba(37, 211, 102, 0.2);
-}
-
-.whatsappButton:hover {
-  background: rgba(37, 211, 102, 0.4);
   transform: scale(1.1);
 }
 
@@ -389,15 +418,17 @@
 }
 
 .modal {
-  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  background:
+    radial-gradient(circle at top right, rgba(255, 215, 0, 0.16), transparent 40%),
+    linear-gradient(135deg, rgba(10, 10, 10, 0.96) 0%, rgba(30, 58, 138, 0.88) 100%);
   border-radius: 15px;
   width: 100%;
   max-width: 700px;
   max-height: 85vh;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 215, 0, 0.32);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
 
@@ -406,8 +437,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+  background: rgba(15, 23, 42, 0.45);
   border-radius: 15px 15px 0 0;
   flex-shrink: 0;
 }
@@ -431,17 +462,36 @@
 }
 
 .closeButton:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 215, 0, 0.14);
 }
 
 /* Formulario */
 .form {
-  padding: 1.5rem 2rem 2rem;
+  padding: 2rem;
   overflow-y: auto;
   flex: 1;
   display: flex;
   flex-direction: column;
   scroll-behavior: smooth;
+}
+
+.formSection {
+  margin-bottom: 1.35rem;
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: 12px;
+  padding: 1.15rem;
+  border: 1px solid rgba(255, 215, 0, 0.16);
+}
+
+.sectionTitle {
+  margin: 0 0 1rem 0;
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: #fff;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(255, 215, 0, 0.22);
+  display: flex;
+  align-items: center;
 }
 
 .form::-webkit-scrollbar {
@@ -466,8 +516,55 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
-  margin-bottom: 2rem;
-  flex: 1;
+  margin-bottom: 0;
+}
+
+.inputGroupFullWidth {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formErrorSummary {
+  margin-bottom: 1rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 8px;
+  background: rgba(220, 53, 69, 0.18);
+  border: 1px solid rgba(220, 53, 69, 0.35);
+  color: #ffd9dd;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.statusPreview {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(255, 215, 0, 0.14);
+  border-radius: 10px;
+  padding: 0.55rem 0.7rem;
+}
+
+.statusPreviewLabel {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.statusPreviewBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  color: white;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .inputGroup {
@@ -488,9 +585,9 @@
 .inputGroup select,
 .inputGroup textarea {
   padding: 0.75rem;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
   color: white;
   font-size: 1rem;
   -webkit-backdrop-filter: blur(5px);
@@ -504,9 +601,9 @@
 .inputGroup select:focus,
 .inputGroup textarea:focus {
   outline: none;
-  border-color: #20c997;
+  border-color: #ffd700;
   background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 0 3px rgba(32, 201, 151, 0.1);
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.18);
 }
 
 .inputGroup input::placeholder,
@@ -515,13 +612,26 @@
 }
 
 .inputGroup select option {
-  background: #1e3c72;
+  background: #0f172a;
   color: white;
 }
 
 .inputGroup textarea {
   resize: vertical;
   min-height: 80px;
+}
+
+.fieldHint {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.8rem;
+}
+
+.fieldError {
+  margin: 0;
+  color: #ffd5d5;
+  font-size: 0.82rem;
+  font-weight: 600;
 }
 /* Autosuggest - Búsqueda de Atletas */
 .autosuggestContainer {
@@ -626,7 +736,7 @@
   gap: 1rem;
   justify-content: flex-end;
   padding: 1.5rem 0 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 215, 0, 0.25);
   margin-top: auto;
   flex-shrink: 0;
 }
@@ -634,7 +744,7 @@
 .cancelButton {
   background: transparent;
   color: white;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 215, 0, 0.35);
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   cursor: pointer;
@@ -644,27 +754,27 @@
 }
 
 .cancelButton:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 215, 0, 0.12);
+  border-color: rgba(255, 215, 0, 0.6);
 }
 
 .saveButton {
-  background: linear-gradient(45deg, #28a745, #20c997);
-  color: white;
+  background: linear-gradient(135deg, #ffd700 0%, #f0c14b 100%);
+  color: #0a0a0a;
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+  box-shadow: 0 8px 24px rgba(255, 215, 0, 0.35);
   transition: all 0.3s ease;
   min-height: var(--rv-touch-target, 48px);
 }
 
 .saveButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
-  background: linear-gradient(45deg, #20c997, #28a745);
+  box-shadow: 0 10px 28px rgba(255, 215, 0, 0.45);
+  background: linear-gradient(135deg, #ffe168 0%, #ffd700 100%);
 }
 
 /* Responsive */
@@ -957,8 +1067,7 @@
 
   .paidButton,
   .editButton,
-  .deleteButton,
-  .whatsappButton {
+  .deleteButton {
     min-width: var(--rv-touch-target, 48px);
     min-height: var(--rv-touch-target, 48px);
     padding: 12px;
@@ -1168,8 +1277,7 @@
 
   .paidButton,
   .editButton,
-  .deleteButton,
-  .whatsappButton {
+  .deleteButton {
     padding: 10px;
     font-size: 1rem;
     border-radius: 8px;
