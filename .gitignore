@@ -20,7 +20,7 @@
 .env.production.local
 .env.production
 
-.README_DATABASE.md
+README_DATABASE.md
 
 npm-debug.log*
 yarn-debug.log*
