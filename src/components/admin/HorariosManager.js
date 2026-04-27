@@ -63,6 +63,14 @@ const HorariosManager = ({ user }) => {
     return descripciones[categoria] || '';
   };
 
+  const isDescripcionMissingError = (error) => {
+    const message = error?.message?.toLowerCase() || '';
+    return (
+      message.includes("could not find the 'descripcion' column") ||
+      (message.includes('descripcion') && message.includes('schema cache'))
+    );
+  };
+
   useEffect(() => {
     fetchHorarios();
   }, []);
@@ -120,20 +128,39 @@ const HorariosManager = ({ user }) => {
     }
 
     try {
+      let descripcionOmitida = false;
+
       if (editingId) {
         // Actualizar horario existente - solo una categoría por vez
-        const { error } = await supabase
+        const payloadConDescripcion = {
+          hora_inicio: formData.hora_inicio,
+          hora_fin: formData.hora_fin,
+          categoria: formData.categorias_seleccionadas[0],
+          descripcion: formData.descripcion || getDescripcionPorDefecto(formData.categorias_seleccionadas[0])
+        };
+
+        let { error } = await supabase
           .from('schedules')
-          .update({
-            hora_inicio: formData.hora_inicio,
-            hora_fin: formData.hora_fin,
-            categoria: formData.categorias_seleccionadas[0],
-            descripcion: formData.descripcion || getDescripcionPorDefecto(formData.categorias_seleccionadas[0])
-          })
+          .update(payloadConDescripcion)
           .eq('id', editingId);
 
+        if (error && isDescripcionMissingError(error)) {
+          descripcionOmitida = true;
+          const { error: retryError } = await supabase
+            .from('schedules')
+            .update({
+              hora_inicio: formData.hora_inicio,
+              hora_fin: formData.hora_fin,
+              categoria: formData.categorias_seleccionadas[0]
+            })
+            .eq('id', editingId);
+          error = retryError;
+        }
+
         if (error) throw error;
-        alert('✅ Horario actualizado exitosamente');
+        alert(descripcionOmitida
+          ? '✅ Horario actualizado. Nota: la descripción no se guardó porque la columna no existe en BD.'
+          : '✅ Horario actualizado exitosamente');
       } else {
         // Crear nuevos horarios - uno por cada combinación de día y categoría
         const diasParaCrear = formData.aplicar_todos_dias 
@@ -154,14 +181,25 @@ const HorariosManager = ({ user }) => {
           }
         }
 
-        const { error } = await supabase
+        let { error } = await supabase
           .from('schedules')
           .insert(horariosParaInsertar);
+
+        if (error && isDescripcionMissingError(error)) {
+          descripcionOmitida = true;
+          const horariosSinDescripcion = horariosParaInsertar.map(({ descripcion, ...horario }) => horario);
+          const { error: retryError } = await supabase
+            .from('schedules')
+            .insert(horariosSinDescripcion);
+          error = retryError;
+        }
 
         if (error) throw error;
         
         const totalCreados = horariosParaInsertar.length;
-        alert(`✅ ${totalCreados} horario${totalCreados > 1 ? 's' : ''} creado${totalCreados > 1 ? 's' : ''} exitosamente`);
+        alert(descripcionOmitida
+          ? `✅ ${totalCreados} horario${totalCreados > 1 ? 's' : ''} creado${totalCreados > 1 ? 's' : ''}. Nota: la descripción no se guardó porque la columna no existe en BD.`
+          : `✅ ${totalCreados} horario${totalCreados > 1 ? 's' : ''} creado${totalCreados > 1 ? 's' : ''} exitosamente`);
       }
 
       resetForm();

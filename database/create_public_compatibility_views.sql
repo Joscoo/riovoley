@@ -81,6 +81,14 @@ select * from training.physical_tests;
 create or replace view public.announcements as
 select * from public_content.announcements;
 
+create or replace view public.announcements_with_creator as
+select
+  a.*,
+  up.full_name as creator_name,
+  up.role as creator_role
+from public_content.announcements a
+left join profiles.user_profiles up on up.id = a.created_by;
+
 create or replace view public.payments_audit as
 select * from audit.payments_audit;
 
@@ -98,6 +106,7 @@ grant select, insert, update, delete on
   public.attendances,
   public.physical_tests,
   public.announcements,
+  public.announcements_with_creator,
   public.payments_audit
 to authenticated;
 
@@ -111,6 +120,7 @@ grant select on
   public.attendances,
   public.physical_tests,
   public.announcements,
+  public.announcements_with_creator,
   public.payments_audit
 to anon;
 
@@ -126,6 +136,6 @@ commit;
 --   and table_name in (
 --     'users','students','user_profiles','payment_types','payments',
 --     'schedules','attendances','physical_tests','announcements',
---     'payments_audit','users_password_backup'
+--     'announcements_with_creator','payments_audit','users_password_backup'
 --   )
 -- order by table_name;
