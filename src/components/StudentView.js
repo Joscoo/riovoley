@@ -13,6 +13,8 @@ const StudentView = ({ user }) => {
   const [physicalTests, setPhysicalTests] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
+  const [currentPage, setCurrentPage] = useState(1);
+  const PAGE_SIZE = 8;
 
   useEffect(() => {
     if (user?.id) {
@@ -118,6 +120,7 @@ const StudentView = ({ user }) => {
 
       if (error) throw error;
       setPhysicalTests(testsData || []);
+      setCurrentPage(1);
     } catch (error) {
       console.error('Error cargando tests físicos:', error);
     }
@@ -345,37 +348,44 @@ const StudentView = ({ user }) => {
                 )}
                 
                 <div className={styles.testsGrid}>
-                  {physicalTests.map(test => (
-                    <div key={test.id} className={styles.testCard}>
+                  {(() => {
+                    const totalPages = Math.max(1, Math.ceil(physicalTests.length / PAGE_SIZE));
+                    const start = (currentPage - 1) * PAGE_SIZE;
+                    const paginated = physicalTests.slice(start, start + PAGE_SIZE);
+                    return (
+                      <>
+                        {paginated.map(test => (
+                          <div key={test.id} className={styles.testCard}>
+                          
                       <div className={styles.testHeader}>
                         <h4>Test del {formatDate(test.fecha_test)}</h4>
                       </div>
                       <div className={styles.testMetrics}>
-                        {test.estatura && (
+                        {test.estatura != null && (
                           <div className={styles.metric}>
                             <span className={styles.metricLabel}>Estatura:</span>
                             <span className={styles.metricValue}>{test.estatura}m</span>
                           </div>
                         )}
-                        {test.peso && (
+                        {test.peso != null && (
                           <div className={styles.metric}>
                             <span className={styles.metricLabel}>Peso:</span>
                             <span className={styles.metricValue}>{test.peso}kg</span>
                           </div>
                         )}
-                        {test.brazo_extend_inicial && (
+                        {test.brazo_extend_inicial != null && (
                           <div className={styles.metric}>
                             <span className={styles.metricLabel}>Brazo extendido:</span>
                             <span className={styles.metricValue}>{test.brazo_extend_inicial}cm</span>
                           </div>
                         )}
-                        {test.fuerza_explosiva_salto_largo && (
+                        {test.fuerza_explosiva_salto_largo != null && (
                           <div className={styles.metric}>
                             <span className={styles.metricLabel}>Salto largo:</span>
                             <span className={styles.metricValue}>{test.fuerza_explosiva_salto_largo}m</span>
                           </div>
                         )}
-                        {test.envergadura_brazos_extendidos_lateral && (
+                        {test.envergadura_brazos_extendidos_lateral != null && (
                           <div className={styles.metric}>
                             <span className={styles.metricLabel}>Envergadura:</span>
                             <span className={styles.metricValue}>{test.envergadura_brazos_extendidos_lateral}cm</span>
@@ -390,6 +400,13 @@ const StudentView = ({ user }) => {
                     </div>
                   ))}
                 </div>
+
+                <div className={styles.pagination}>
+                  <button onClick={() => setCurrentPage(p => Math.max(1, p - 1))} disabled={currentPage === 1}>Anterior</button>
+                  <span>Página {currentPage} de {Math.max(1, Math.ceil(physicalTests.length / PAGE_SIZE))}</span>
+                  <button onClick={() => setCurrentPage(p => Math.min(Math.max(1, Math.ceil(physicalTests.length / PAGE_SIZE)), p + 1))} disabled={currentPage === Math.max(1, Math.ceil(physicalTests.length / PAGE_SIZE))}>Siguiente</button>
+                </div>
+
               </div>
             ) : (
               <div className={styles.emptyState}>

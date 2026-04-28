@@ -35,6 +35,8 @@ const PagosManager = ({ user }) => {
   const [showModal, setShowModal] = useState(false);
   const [editingPago, setEditingPago] = useState(null);
   const [whatsAppBusiness] = useState(new WhatsAppBusinessService());
+  const [currentPage, setCurrentPage] = useState(1);
+  const PAGE_SIZE = 10;
   const [filters, setFilters] = useState({
     fecha_inicio: '',
     fecha_fin: '',
@@ -69,6 +71,10 @@ const PagosManager = ({ user }) => {
   useEffect(() => {
     applyFilters();
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters, allPagos]);
+
+  useEffect(() => {
+    setCurrentPage(1);
   }, [filters, allPagos]);
 
   useEffect(() => {
@@ -328,6 +334,12 @@ const PagosManager = ({ user }) => {
 
     setPagos(filteredData);
   };
+
+  const totalPages = Math.max(1, Math.ceil(pagos.length / PAGE_SIZE));
+  const paginatedPagos = pagos.slice(
+    (currentPage - 1) * PAGE_SIZE,
+    (currentPage - 1) * PAGE_SIZE + PAGE_SIZE
+  );
 
   const resetFilters = () => {
     setFilters({
@@ -920,7 +932,7 @@ const PagosManager = ({ user }) => {
         </div>
       </div>
 
-      <p className={styles.filterSummary}>Mostrando {pagos.length} de {getLatestPaymentsList(allPagos).length} pagos.</p>
+      <p className={styles.filterSummary}>Mostrando {paginatedPagos.length} de {pagos.length} pagos.</p>
 
       {/* Lista de Pagos */}
       {loading ? (
@@ -931,7 +943,28 @@ const PagosManager = ({ user }) => {
       ) : (
         <div className={styles.pagosTable}>
           {pagos.length > 0 ? (
-            <div className={styles.tableContainer}>
+            <>
+              <div className={styles.pagination}>
+                <button
+                  onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                  disabled={currentPage === 1}
+                  className={styles.pageButton}
+                >
+                  Anterior
+                </button>
+
+                <span className={styles.pageInfo}>Página {currentPage} de {totalPages}</span>
+
+                <button
+                  onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                  disabled={currentPage === totalPages}
+                  className={styles.pageButton}
+                >
+                  Siguiente
+                </button>
+              </div>
+
+              <div className={styles.tableContainer}>
               <table className={styles.table}>
                 <thead>
                   <tr>
@@ -944,7 +977,7 @@ const PagosManager = ({ user }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {pagos.map(pago => (
+                  {paginatedPagos.map(pago => (
                     <tr key={pago.id} className={styles.tableRow}>
                       <td data-label="Atleta">
                         <div className={styles.atletaInfo}>
@@ -1000,6 +1033,26 @@ const PagosManager = ({ user }) => {
                 </tbody>
               </table>
             </div>
+              <div className={styles.pagination}>
+                <button
+                  onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                  disabled={currentPage === 1}
+                  className={styles.pageButton}
+                >
+                  Anterior
+                </button>
+
+                <span className={styles.pageInfo}>Página {currentPage} de {totalPages}</span>
+
+                <button
+                  onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                  disabled={currentPage === totalPages}
+                  className={styles.pageButton}
+                >
+                  Siguiente
+                </button>
+              </div>
+            </>
           ) : (
             <div className={styles.noPagos}>
               <h3><FaCreditCard style={{ marginRight: '8px', verticalAlign: 'middle' }} /> No hay pagos registrados</h3>

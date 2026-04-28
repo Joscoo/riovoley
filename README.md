@@ -21,6 +21,7 @@
 
 - [Que es RioVoley](#que-es-riovoley--what-is-riovoley)
 - [Arquitectura y Stack](#arquitectura-y-stack--architecture-and-tech-stack)
+- [Tecnologias Verificadas](#tecnologias-verificadas--verified-technologies)
 - [Capacidades](#capacidades-principales--core-capabilities)
 - [Quick Start](#quick-start-local)
 - [Scripts](#scripts)
@@ -65,6 +66,28 @@ Supabase (PostgreSQL + Auth + RLS)
 | Analytics/UI | Recharts, React Icons | Visualizacion y UI operativa |
 | Docs/Exports | jsPDF, jspdf-autotable | Reportes PDF |
 | Testing | Playwright | E2E multi flujo |
+
+## Tecnologias Verificadas | Verified Technologies
+
+| Tecnologia | Uso en el proyecto | Justificacion (por que se usa) | Evidencia |
+|---|---|---|---|
+| React 19.1.1 | SPA con modulos por rol | Ecosistema estable para UI compleja y componentes reutilizables | [package.json](package.json) |
+| React Router 7.7.0 | Navegacion y rutas por rol | Enrutamiento declarativo para flujos por permisos | [package.json](package.json) |
+| Tailwind CSS 3.4.13 | Estilos y UI operativa | Velocidad de desarrollo y consistencia visual | [package.json](package.json) |
+| PostCSS 8.5.9 | Procesado de CSS | Pipeline moderno para CSS utilitario | [package.json](package.json) |
+| Autoprefixer 10.5.0 | Compatibilidad CSS | Soporte cross-browser sin friccion | [package.json](package.json) |
+| React Scripts 5.0.1 (CRA) | Build y dev server | Tooling listo para SPA sin configurar bundler | [package.json](package.json) |
+| Supabase + Postgres 17 | Data/BaaS y seguridad | Backend administrado con permisos por rol y DB confiable | [supabase/config.toml](supabase/config.toml) |
+| Supabase JS Client 2.74.0 | Acceso a datos desde frontend | SDK oficial para queries, auth y realtime | [package.json](package.json) |
+| Supabase Edge Functions (Deno) | Funciones serverless | Automatiza flujos sensibles cerca del backend | [supabase/functions/delete-auth-user/index.ts](supabase/functions/delete-auth-user/index.ts) |
+| Node.js 22 + Express 5.1.0 | Backend de funciones | API flexible para integraciones y automatizaciones | [functions/package.json](functions/package.json) |
+| TypeScript 5.8.3 (backend) | Tipado en funciones | Reduce errores en integraciones y modelos | [functions/package.json](functions/package.json) |
+| Genkit 1.15.5 | Orquestacion de flujos (funciones) | Estandariza pipelines y automatizaciones | [functions/package.json](functions/package.json) |
+| Playwright 1.53.0 | Testing E2E | Cobertura real de flujos por rol | [package.json](package.json) |
+| Testing Library + Jest DOM | Tests de UI | Pruebas orientadas a usuario y aserciones claras | [package.json](package.json) |
+| Recharts 3.3.0 | Dashboards y graficos | Visualizaciones rapidas para operacion | [package.json](package.json) |
+| React Icons 5.5.0 | Iconografia | Consistencia visual y velocidad de UI | [package.json](package.json) |
+| jsPDF 4.2.0 + jspdf-autotable 5.0.7 | Reportes PDF | Exportacion de datos para admin y auditoria | [package.json](package.json) |
 
 ## Capacidades Principales | Core Capabilities
 

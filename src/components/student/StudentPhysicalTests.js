@@ -446,7 +446,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
                         </div>
                       </div>
 
-                      {test.brazo_extend_inicial && (
+                      {test.brazo_extend_inicial != null && (
                         <div className={styles.metricCard}>
                           <div className={styles.metricIcon}>🙌</div>
                           <div className={styles.metricInfo}>
@@ -456,7 +456,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
                         </div>
                       )}
 
-                      {test.brazo_extend_sin_impulso && (
+                      {test.brazo_extend_sin_impulso != null && (
                         <div className={styles.metricCard}>
                           <div className={styles.metricIcon}>🤚</div>
                           <div className={styles.metricInfo}>
@@ -466,7 +466,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
                         </div>
                       )}
 
-                      {test.brazo_extend_con_impulso && (
+                      {test.brazo_extend_con_impulso != null && (
                         <div className={styles.metricCard}>
                           <div className={styles.metricIcon}><FaDumbbell /></div>
                           <div className={styles.metricInfo}>
@@ -476,7 +476,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
                         </div>
                       )}
 
-                      {test.fuerza_abdomen && (
+                      {test.fuerza_abdomen != null && (
                         <div className={styles.metricCard}>
                           <div className={styles.metricIcon}><FaFire /></div>
                           <div className={styles.metricInfo}>
@@ -486,7 +486,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
                         </div>
                       )}
 
-                      {test.fuerza_brazos && (
+                      {test.fuerza_brazos != null && (
                         <div className={styles.metricCard}>
                           <div className={styles.metricIcon}><FaDumbbell /></div>
                           <div className={styles.metricInfo}>
@@ -496,7 +496,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
                         </div>
                       )}
 
-                      {test.fuerza_piernas && (
+                      {test.fuerza_piernas != null && (
                         <div className={styles.metricCard}>
                           <div className={styles.metricIcon}><FaRunning /></div>
                           <div className={styles.metricInfo}>
@@ -506,7 +506,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
                         </div>
                       )}
 
-                      {test.elevaciones_barra && (
+                      {test.elevaciones_barra != null && (
                         <div className={styles.metricCard}>
                           <div className={styles.metricIcon}><FaDumbbell /></div>
                           <div className={styles.metricInfo}>

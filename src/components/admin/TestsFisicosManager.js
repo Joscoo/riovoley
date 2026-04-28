@@ -60,6 +60,11 @@ const TestsFisicosManager = ({ user }) => {
     fecha_test: getEcuadorDate()
   });
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const PAGE_SIZE = 8;
+  const totalPages = Math.max(1, Math.ceil(tests.length / PAGE_SIZE));
+  const paginatedTests = tests.slice((currentPage - 1) * PAGE_SIZE, (currentPage - 1) * PAGE_SIZE + PAGE_SIZE);
+
   useEffect(() => {
     loadAtletas();
     loadTests();
@@ -222,6 +227,7 @@ const TestsFisicosManager = ({ user }) => {
       }
 
       setTests(filteredData);
+      setCurrentPage(1);
     } catch (error) {
       console.error('Error cargando tests físicos:', error);
       alert('Error al cargar los tests físicos: ' + error.message);
@@ -256,6 +262,20 @@ const TestsFisicosManager = ({ user }) => {
         return;
       }
 
+      // Validar edad mínima (5 años) usando datos cargados de `atletas`
+      const selectedAtleta = atletas.find(a => a.id === formData.student_id);
+      if (selectedAtleta) {
+        const birthStr = selectedAtleta.fecha_nacimiento || selectedAtleta.users?.fecha_nacimiento || selectedAtleta.users?.birthday;
+        if (birthStr) {
+          const birth = new Date(birthStr);
+          const age = fechaTest.getFullYear() - birth.getFullYear() - (fechaTest < new Date(fechaTest.getFullYear(), birth.getMonth(), birth.getDate()) ? 1 : 0);
+          if (age < 5) {
+            alert('Error: El atleta debe tener al menos 5 años en la fecha del test');
+            return;
+          }
+        }
+      }
+
       // Validar que al menos un campo de medición esté completo
       const mediciones = [
         formData.estatura, formData.peso, formData.brazo_extend_inicial,
@@ -268,19 +288,40 @@ const TestsFisicosManager = ({ user }) => {
         return;
       }
 
-      // Validaciones específicas de rangos
-      if (formData.estatura && (Number.parseFloat(formData.estatura) < 0.5 || Number.parseFloat(formData.estatura) > 3)) {
-        alert('Error: La estatura debe estar entre 0.5m y 3.0m');
+      // Validaciones específicas de rangos (ajustadas para edad mínima 5 años)
+      if (formData.estatura && (Number.parseFloat(formData.estatura) < 0.8 || Number.parseFloat(formData.estatura) > 3)) {
+        alert('Error: La estatura debe estar entre 0.8m y 3.0m');
         return;
       }
 
-      if (formData.peso && (Number.parseFloat(formData.peso) < 20 || Number.parseFloat(formData.peso) > 300)) {
-        alert('Error: El peso debe estar entre 20kg y 300kg');
+      if (formData.peso && (Number.parseFloat(formData.peso) < 15 || Number.parseFloat(formData.peso) > 300)) {
+        alert('Error: El peso debe estar entre 15kg y 300kg');
         return;
       }
 
       if (formData.fuerza_explosiva_salto_largo && Number.parseFloat(formData.fuerza_explosiva_salto_largo) > 10) {
         alert('Error: El salto largo no puede ser mayor a 10 metros');
+        return;
+      }
+
+      // Validaciones para campos de fuerza (coherentes con constraints de BD)
+      if (formData.fuerza_abdomen && (Number.parseInt(formData.fuerza_abdomen, 10) < 0 || Number.parseInt(formData.fuerza_abdomen, 10) > 400)) {
+        alert('Error: Fuerza abdomen debe estar entre 0 y 400 repeticiones');
+        return;
+      }
+
+      if (formData.fuerza_brazos && (Number.parseInt(formData.fuerza_brazos, 10) < 0 || Number.parseInt(formData.fuerza_brazos, 10) > 400)) {
+        alert('Error: Fuerza brazos debe estar entre 0 y 400 repeticiones');
+        return;
+      }
+
+      if (formData.fuerza_piernas && (Number.parseInt(formData.fuerza_piernas, 10) < 0 || Number.parseInt(formData.fuerza_piernas, 10) > 600)) {
+        alert('Error: Fuerza piernas debe estar entre 0 y 600 repeticiones');
+        return;
+      }
+
+      if (formData.elevaciones_barra && (Number.parseInt(formData.elevaciones_barra, 10) < 0 || Number.parseInt(formData.elevaciones_barra, 10) > 300)) {
+        alert('Error: Elevaciones en barra debe estar entre 0 y 300 repeticiones');
         return;
       }
       
@@ -472,6 +513,7 @@ const TestsFisicosManager = ({ user }) => {
     return atletaTests[0] || null;
   };
 
+
   // Calcular diferencia y tipo de cambio
   const calculateChange = (current, previous) => {
     if (!previous || !current) return { value: 0, type: 'neutral' };
@@ -505,6 +547,144 @@ const TestsFisicosManager = ({ user }) => {
       </span>
     );
   };
+
+  const renderedTests = paginatedTests.map(test => {
+    const previousTest = getPreviousTest(test);
+    const hasComparison = previousTest !== null;
+
+    return (
+      <div key={test.id} className={styles.testCard}>
+        <div className={styles.testHeader}>
+          <div className={styles.testHeaderLeft}>
+            <h3>{test.atleta_name}</h3>
+            <span className={styles.categoria}>{test.students?.categoria?.replaceAll('_', ' ').toUpperCase()}</span>
+          </div>
+          <div className={styles.testActions}>
+            <button onClick={() => openModal(test)} className={styles.editButton} title="Editar"><FaEdit /></button>
+            <button onClick={() => deleteTest(test)} className={styles.deleteButton} title="Eliminar"><FaTrash /></button>
+          </div>
+        </div>
+
+        <div className={styles.testDate}>
+          <FaCalendarAlt />
+          <span>{new Date(test.fecha_test).toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}</span>
+        </div>
+
+        {hasComparison && (
+          <div className={styles.comparisonBadge}><FaChartLine /> Con datos de comparación</div>
+        )}
+
+        <div className={styles.testInfo}>
+          {test.estatura != null && (
+            <div className={styles.infoItem}>
+              <span className={styles.label}><FaRulerVertical /> Estatura:</span>
+              <div className={styles.valueWithChange}>
+                <span className={styles.value}>{test.estatura}m</span>
+                {hasComparison && previousTest.estatura != null && renderChangeIndicator(calculateChange(test.estatura, previousTest.estatura))}
+              </div>
+            </div>
+          )}
+
+          {test.peso != null && (
+            <div className={styles.infoItem}>
+              <span className={styles.label}><FaWeight /> Peso:</span>
+              <div className={styles.valueWithChange}>
+                <span className={styles.value}>{test.peso}kg</span>
+                {hasComparison && previousTest.peso != null && renderChangeIndicator(calculateChange(test.peso, previousTest.peso))}
+              </div>
+            </div>
+          )}
+
+          {test.brazo_extend_inicial != null && (
+            <div className={styles.infoItem}>
+              <span className={styles.label}><FaHandPaper /> Ext. brazo inicial:</span>
+              <div className={styles.valueWithChange}>
+                <span className={styles.value}>{test.brazo_extend_inicial}cm</span>
+                {hasComparison && previousTest.brazo_extend_inicial != null && renderChangeIndicator(calculateChange(test.brazo_extend_inicial, previousTest.brazo_extend_inicial))}
+              </div>
+            </div>
+          )}
+
+          {test.brazo_extend_sin_impulso != null && (
+            <div className={styles.infoItem}>
+              <span className={styles.label}><FaHandPaper /> Ext. sin impulso:</span>
+              <div className={styles.valueWithChange}>
+                <span className={styles.value}>{test.brazo_extend_sin_impulso}cm</span>
+                {hasComparison && previousTest.brazo_extend_sin_impulso != null && renderChangeIndicator(calculateChange(test.brazo_extend_sin_impulso, previousTest.brazo_extend_sin_impulso))}
+              </div>
+            </div>
+          )}
+
+          {test.brazo_extend_con_impulso != null && (
+            <div className={styles.infoItem}>
+              <span className={styles.label}><FaHandPaper /> Ext. con impulso:</span>
+              <div className={styles.valueWithChange}>
+                <span className={styles.value}>{test.brazo_extend_con_impulso}cm</span>
+                {hasComparison && previousTest.brazo_extend_con_impulso != null && renderChangeIndicator(calculateChange(test.brazo_extend_con_impulso, previousTest.brazo_extend_con_impulso))}
+              </div>
+            </div>
+          )}
+
+          {test.fuerza_explosiva_salto_largo != null && (
+            <div className={styles.infoItem}>
+              <span className={styles.label}><FaRunning /> Salto largo:</span>
+              <div className={styles.valueWithChange}>
+                <span className={styles.value}>{test.fuerza_explosiva_salto_largo}m</span>
+                {hasComparison && previousTest.fuerza_explosiva_salto_largo != null && renderChangeIndicator(calculateChange(test.fuerza_explosiva_salto_largo, previousTest.fuerza_explosiva_salto_largo))}
+              </div>
+            </div>
+          )}
+
+          {test.fuerza_abdomen != null && (
+            <div className={styles.infoItem}>
+              <span className={styles.label}><FaFire /> Abdominales:</span>
+              <div className={styles.valueWithChange}>
+                <span className={styles.value}>{test.fuerza_abdomen} reps</span>
+                {hasComparison && previousTest.fuerza_abdomen != null && renderChangeIndicator(calculateChange(test.fuerza_abdomen, previousTest.fuerza_abdomen))}
+              </div>
+            </div>
+          )}
+
+          {test.fuerza_brazos != null && (
+            <div className={styles.infoItem}>
+              <span className={styles.label}><FaDumbbell /> Flexiones:</span>
+              <div className={styles.valueWithChange}>
+                <span className={styles.value}>{test.fuerza_brazos} reps</span>
+                {hasComparison && previousTest.fuerza_brazos != null && renderChangeIndicator(calculateChange(test.fuerza_brazos, previousTest.fuerza_brazos))}
+              </div>
+            </div>
+          )}
+
+          {test.fuerza_piernas != null && (
+            <div className={styles.infoItem}>
+              <span className={styles.label}><FaRunning /> Sentadillas:</span>
+              <div className={styles.valueWithChange}>
+                <span className={styles.value}>{test.fuerza_piernas} reps</span>
+                {hasComparison && previousTest.fuerza_piernas != null && renderChangeIndicator(calculateChange(test.fuerza_piernas, previousTest.fuerza_piernas))}
+              </div>
+            </div>
+          )}
+
+          {test.elevaciones_barra != null && (
+            <div className={styles.infoItem}>
+              <span className={styles.label}><FaArrowsAltH /> Elevaciones:</span>
+              <div className={styles.valueWithChange}>
+                <span className={styles.value}>{test.elevaciones_barra} reps</span>
+                {hasComparison && previousTest.elevaciones_barra != null && renderChangeIndicator(calculateChange(test.elevaciones_barra, previousTest.elevaciones_barra))}
+              </div>
+            </div>
+          )}
+
+          {test.observaciones && (
+            <div className={styles.observacionesSection}>
+              <span className={styles.label}><FaStickyNote /> Observaciones:</span>
+              <p className={styles.observaciones}>{test.observaciones}</p>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  });
 
   return (
     <div className={styles.testsFisicosManager}>
@@ -753,183 +933,49 @@ const TestsFisicosManager = ({ user }) => {
       ) : (
         <div className={styles.testsGrid}>
           {tests.length > 0 ? (
-            tests.map(test => {
-              const previousTest = getPreviousTest(test);
-              const hasComparison = previousTest !== null;
+            <>
+              <div className={styles.pagination}>
+                <button
+                  onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                  disabled={currentPage === 1}
+                  className={styles.pageButton}
+                >
+                  Anterior
+                </button>
 
-              return (
-                <div key={test.id} className={styles.testCard}>
-                  <div className={styles.testHeader}>
-                    <div className={styles.testHeaderLeft}>
-                      <h3>{test.atleta_name}</h3>
-                      <span className={styles.categoria}>
-                        {test.students?.categoria?.replaceAll('_', ' ').toUpperCase()}
-                      </span>
-                    </div>
-                    <div className={styles.testActions}>
-                      <button 
-                        onClick={() => openModal(test)}
-                        className={styles.editButton}
-                        title="Editar"
-                      >
-                        <FaEdit />
-                      </button>
-                      <button 
-                        onClick={() => deleteTest(test)}
-                        className={styles.deleteButton}
-                        title="Eliminar"
-                      >
-                        <FaTrash />
-                      </button>
-                    </div>
-                  </div>
-                  
-                  <div className={styles.testDate}>
-                    <FaCalendarAlt />
-                    <span>{new Date(test.fecha_test).toLocaleDateString('es-ES', { 
-                      day: '2-digit', 
-                      month: 'long', 
-                      year: 'numeric' 
-                    })}</span>
-                  </div>
+                <span className={styles.pageInfo}>Página {currentPage} de {totalPages}</span>
 
-                  {hasComparison && (
-                    <div className={styles.comparisonBadge}>
-                      <FaChartLine /> Con datos de comparación
-                    </div>
-                  )}
-                  
-                  <div className={styles.testInfo}>
-                    {test.estatura && (
-                      <div className={styles.infoItem}>
-                        <span className={styles.label}><FaRulerVertical /> Estatura:</span>
-                        <div className={styles.valueWithChange}>
-                          <span className={styles.value}>{test.estatura}m</span>
-                          {hasComparison && previousTest.estatura && 
-                            renderChangeIndicator(calculateChange(test.estatura, previousTest.estatura))
-                          }
-                        </div>
-                      </div>
-                    )}
-                    
-                    {test.peso && (
-                      <div className={styles.infoItem}>
-                        <span className={styles.label}><FaWeight /> Peso:</span>
-                        <div className={styles.valueWithChange}>
-                          <span className={styles.value}>{test.peso}kg</span>
-                          {hasComparison && previousTest.peso && 
-                            renderChangeIndicator(calculateChange(test.peso, previousTest.peso))
-                          }
-                        </div>
-                      </div>
-                    )}
-                    
-                    {test.brazo_extend_inicial && (
-                      <div className={styles.infoItem}>
-                        <span className={styles.label}><FaHandPaper /> Ext. brazo inicial:</span>
-                        <div className={styles.valueWithChange}>
-                          <span className={styles.value}>{test.brazo_extend_inicial}cm</span>
-                          {hasComparison && previousTest.brazo_extend_inicial && 
-                            renderChangeIndicator(calculateChange(test.brazo_extend_inicial, previousTest.brazo_extend_inicial))
-                          }
-                        </div>
-                      </div>
-                    )}
+                <button
+                  onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                  disabled={currentPage === totalPages}
+                  className={styles.pageButton}
+                >
+                  Siguiente
+                </button>
+              </div>
 
-                    {test.brazo_extend_sin_impulso && (
-                      <div className={styles.infoItem}>
-                        <span className={styles.label}><FaHandPaper /> Ext. sin impulso:</span>
-                        <div className={styles.valueWithChange}>
-                          <span className={styles.value}>{test.brazo_extend_sin_impulso}cm</span>
-                          {hasComparison && previousTest.brazo_extend_sin_impulso && 
-                            renderChangeIndicator(calculateChange(test.brazo_extend_sin_impulso, previousTest.brazo_extend_sin_impulso))
-                          }
-                        </div>
-                      </div>
-                    )}
+              {renderedTests}
 
-                    {test.brazo_extend_con_impulso && (
-                      <div className={styles.infoItem}>
-                        <span className={styles.label}><FaHandPaper /> Ext. con impulso:</span>
-                        <div className={styles.valueWithChange}>
-                          <span className={styles.value}>{test.brazo_extend_con_impulso}cm</span>
-                          {hasComparison && previousTest.brazo_extend_con_impulso && 
-                            renderChangeIndicator(calculateChange(test.brazo_extend_con_impulso, previousTest.brazo_extend_con_impulso))
-                          }
-                        </div>
-                      </div>
-                    )}
-                    
-                    {test.fuerza_explosiva_salto_largo && (
-                      <div className={styles.infoItem}>
-                        <span className={styles.label}><FaRunning /> Salto largo:</span>
-                        <div className={styles.valueWithChange}>
-                          <span className={styles.value}>{test.fuerza_explosiva_salto_largo}m</span>
-                          {hasComparison && previousTest.fuerza_explosiva_salto_largo && 
-                            renderChangeIndicator(calculateChange(test.fuerza_explosiva_salto_largo, previousTest.fuerza_explosiva_salto_largo))
-                          }
-                        </div>
-                      </div>
-                    )}
-                    
-                    {test.fuerza_abdomen && (
-                      <div className={styles.infoItem}>
-                        <span className={styles.label}><FaFire /> Abdominales:</span>
-                        <div className={styles.valueWithChange}>
-                          <span className={styles.value}>{test.fuerza_abdomen} reps</span>
-                          {hasComparison && previousTest.fuerza_abdomen && 
-                            renderChangeIndicator(calculateChange(test.fuerza_abdomen, previousTest.fuerza_abdomen))
-                          }
-                        </div>
-                      </div>
-                    )}
-                    
-                    {test.fuerza_brazos && (
-                      <div className={styles.infoItem}>
-                        <span className={styles.label}><FaDumbbell /> Flexiones:</span>
-                        <div className={styles.valueWithChange}>
-                          <span className={styles.value}>{test.fuerza_brazos} reps</span>
-                          {hasComparison && previousTest.fuerza_brazos && 
-                            renderChangeIndicator(calculateChange(test.fuerza_brazos, previousTest.fuerza_brazos))
-                          }
-                        </div>
-                      </div>
-                    )}
-                    
-                    {test.fuerza_piernas && (
-                      <div className={styles.infoItem}>
-                        <span className={styles.label}><FaRunning /> Sentadillas:</span>
-                        <div className={styles.valueWithChange}>
-                          <span className={styles.value}>{test.fuerza_piernas} reps</span>
-                          {hasComparison && previousTest.fuerza_piernas && 
-                            renderChangeIndicator(calculateChange(test.fuerza_piernas, previousTest.fuerza_piernas))
-                          }
-                        </div>
-                      </div>
-                    )}
-                    
-                    {test.elevaciones_barra && (
-                      <div className={styles.infoItem}>
-                        <span className={styles.label}><FaArrowsAltH /> Elevaciones:</span>
-                        <div className={styles.valueWithChange}>
-                          <span className={styles.value}>{test.elevaciones_barra} reps</span>
-                          {hasComparison && previousTest.elevaciones_barra && 
-                            renderChangeIndicator(calculateChange(test.elevaciones_barra, previousTest.elevaciones_barra))
-                          }
-                        </div>
-                      </div>
-                    )}
-                    
-                    {test.observaciones && (
-                      <div className={styles.observacionesSection}>
-                        <span className={styles.label}><FaStickyNote /> Observaciones:</span>
-                        <p className={styles.observaciones}>{test.observaciones}</p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })
+              <div className={styles.pagination}>
+                <button
+                  onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                  disabled={currentPage === 1}
+                  className={styles.pageButton}
+                >
+                  Anterior
+                </button>
+
+                <span className={styles.pageInfo}>Página {currentPage} de {totalPages}</span>
+
+                <button
+                  onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                  disabled={currentPage === totalPages}
+                  className={styles.pageButton}
+                >
+                  Siguiente
+                </button>
+              </div>
+            </>
           ) : (
             <div className={styles.noTests}>
               <h3><FaDumbbell style={{ marginRight: '8px', verticalAlign: 'middle' }} /> No hay tests físicos registrados</h3>

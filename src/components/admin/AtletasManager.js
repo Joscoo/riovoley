@@ -41,6 +41,8 @@ const AtletasManager = ({ user }) => {
     sortBy: 'apellido',
     sortOrder: 'asc'
   });
+  const [currentPage, setCurrentPage] = useState(1);
+  const PAGE_SIZE = 9;
 
   const categorias = [
     'iniciacion_hombres',
@@ -160,6 +162,16 @@ const AtletasManager = ({ user }) => {
 
     return result;
   }, [allAtletas, filters]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [filters]);
+
+  const totalPages = Math.max(1, Math.ceil(filteredAtletas.length / PAGE_SIZE));
+  const paginatedAtletas = filteredAtletas.slice(
+    (currentPage - 1) * PAGE_SIZE,
+    (currentPage - 1) * PAGE_SIZE + PAGE_SIZE
+  );
 
   const resetFilters = () => {
     setFilters({
@@ -774,7 +786,7 @@ Por favor, envía esta información al estudiante de forma manual.`);
       </div>
 
       <p className={styles.filterSummary}>
-        Mostrando {filteredAtletas.length} de {allAtletas.length} atletas.
+        Mostrando {paginatedAtletas.length} de {filteredAtletas.length} atletas.
       </p>
 
       {/* Lista de Atletas */}
@@ -786,8 +798,29 @@ Por favor, envía esta información al estudiante de forma manual.`);
       ) : (
         <div className={styles.atletasGrid}>
           {filteredAtletas.length > 0 ? (
-            filteredAtletas.map(atleta => (
-              <div key={atleta.id} className={styles.atletaCard}>
+            <>
+              <div className={styles.pagination}>
+                <button
+                  onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                  disabled={currentPage === 1}
+                  className={styles.pageButton}
+                >
+                  Anterior
+                </button>
+
+                <span className={styles.pageInfo}>Página {currentPage} de {totalPages}</span>
+
+                <button
+                  onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                  disabled={currentPage === totalPages}
+                  className={styles.pageButton}
+                >
+                  Siguiente
+                </button>
+              </div>
+
+              {paginatedAtletas.map(atleta => (
+                <div key={atleta.id} className={styles.atletaCard}>
                 <div className={styles.atletaHeader}>
                   <h3>{atleta.full_name}</h3>
                   <div className={styles.atletaActions}>
@@ -845,7 +878,28 @@ Por favor, envía esta información al estudiante de forma manual.`);
                   </small>
                 </div>
               </div>
-            ))
+              ))}
+
+              <div className={styles.pagination}>
+                <button
+                  onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                  disabled={currentPage === 1}
+                  className={styles.pageButton}
+                >
+                  Anterior
+                </button>
+
+                <span className={styles.pageInfo}>Página {currentPage} de {totalPages}</span>
+
+                <button
+                  onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                  disabled={currentPage === totalPages}
+                  className={styles.pageButton}
+                >
+                  Siguiente
+                </button>
+              </div>
+            </>
           ) : (
             <div className={styles.noAtletas}>
               <h3><FaUsers style={{ marginRight: '8px', verticalAlign: 'middle' }} /> No hay atletas registrados</h3>
