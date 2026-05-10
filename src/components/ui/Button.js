@@ -11,25 +11,33 @@ const buttonVariants = cva(
         primary: 'bg-rv-gold text-rv-dark hover:brightness-105 shadow-rv-gold',
         secondary: 'bg-white/10 text-white hover:bg-white/20 border border-white/20',
         danger: 'bg-red-600 text-white hover:bg-red-700 border border-red-500',
-        ghost: 'bg-transparent text-white hover:bg-white/10'
+        ghost: 'bg-transparent text-white hover:bg-white/10',
+        outline: 'border border-rv-gold/55 bg-transparent text-rv-gold hover:bg-rv-gold/15',
+        link: 'bg-transparent text-rv-gold underline-offset-4 hover:underline'
       },
       size: {
         sm: 'px-3 py-1.5 text-sm',
         md: 'px-4 py-2 text-sm',
         lg: 'px-6 py-3 text-base',
         icon: 'h-12 w-12 p-0'
+      },
+      state: {
+        default: '',
+        active: 'scale-[0.99] ring-2 ring-rv-gold/70 ring-offset-0',
+        subtle: 'opacity-90 hover:opacity-100'
       }
     },
     defaultVariants: {
       variant: 'primary',
-      size: 'md'
+      size: 'md',
+      state: 'default'
     }
   }
 );
 
-const Button = ({ className, variant, size, type = 'button', children, ...props }) => {
+const Button = ({ className, variant, size, state, type = 'button', children, ...props }) => {
   return (
-    <button type={type} className={cn(buttonVariants({ variant, size }), className)} {...props}>
+    <button type={type} className={cn(buttonVariants({ variant, size, state }), className)} {...props}>
       {children}
     </button>
   );
@@ -37,8 +45,9 @@ const Button = ({ className, variant, size, type = 'button', children, ...props 
 
 Button.propTypes = {
   className: PropTypes.string,
-  variant: PropTypes.oneOf(['primary', 'secondary', 'danger', 'ghost']),
+  variant: PropTypes.oneOf(['primary', 'secondary', 'danger', 'ghost', 'outline', 'link']),
   size: PropTypes.oneOf(['sm', 'md', 'lg', 'icon']),
+  state: PropTypes.oneOf(['default', 'active', 'subtle']),
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   children: PropTypes.node
 };

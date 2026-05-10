@@ -1,6 +1,5 @@
-// src/hooks/useUserProfile.js
 import { useState, useEffect, useRef } from 'react';
-import { supabase } from '../config/supabase';
+import { authProfileService } from '../features/auth-profile';
 
 export const useUserProfile = (user) => {
   const [profile, setProfile] = useState(null);
@@ -8,8 +7,23 @@ export const useUserProfile = (user) => {
   const [error, setError] = useState(null);
   const loadedUserRef = useRef(null);
 
+  const loadUserProfile = async (currentUser) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const resolvedProfile = await authProfileService.loadUserProfile(currentUser);
+      setProfile(resolvedProfile || null);
+    } catch (err) {
+      console.error('Error en useUserProfile.loadUserProfile:', err);
+      setError(err);
+      setProfile(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    // Evitar cargar el mismo usuario múltiples veces
     if (user && user.id !== loadedUserRef.current) {
       loadedUserRef.current = user.id;
       loadUserProfile(user);
@@ -19,108 +33,12 @@ export const useUserProfile = (user) => {
       setError(null);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user?.id]); // Solo reaccionar al cambio de ID del usuario
-
-  const loadUserProfile = async (currentUser) => {
-    setLoading(true);
-    setError(null);
-    
-    try {
-      console.log('📥 Cargando perfil para usuario:', currentUser.id);
-      
-      // Primero intentar obtener desde user_profiles
-      const { data: profileData, error: profileError } = await supabase
-        .from('user_profiles')
-        .select('id, role, organization_id, full_name, created_at')
-        .eq('id', currentUser.id)
-        .single();
-
-      if (profileError && profileError.code !== 'PGRST116') {
-        console.error('❌ Error al obtener perfil desde user_profiles:', profileError);
-      }
-
-      // Si existe en user_profiles, usar ese rol
-      if (profileData) {
-        console.log('✅ Perfil encontrado en user_profiles:', {
-          id: profileData.id,
-          role: profileData.role,
-          full_name: profileData.full_name
-        });
-        setProfile(profileData);
-        setLoading(false);
-        return;
-      }
-
-      // Si no existe en user_profiles, buscar en la tabla users
-      console.log('🔍 Perfil no encontrado en user_profiles, buscando en tabla users...');
-      const { data: userData, error: userError } = await supabase
-        .from('users')
-        .select('id, role, nombre, apellido')
-        .eq('id', currentUser.id)
-        .single();
-
-      if (userError) {
-        console.error('Error al obtener usuario desde users:', userError);
-        setError(userError);
-        setProfile(null);
-      } else if (userData && userData.role) {
-        // Crear perfil básico con el rol de la tabla users
-        console.log('✅ Rol encontrado en tabla users:', userData);
-        const basicProfile = {
-          id: userData.id,
-          role: userData.role,
-          full_name: `${userData.nombre || ''} ${userData.apellido || ''}`.trim(),
-          organization_id: null,
-          created_at: null
-        };
-        setProfile(basicProfile);
-        
-        // Opcionalmente, crear el registro en user_profiles para futuras consultas
-        try {
-          await supabase
-            .from('user_profiles')
-            .insert(basicProfile);
-          console.log('📝 Perfil sincronizado en user_profiles');
-        } catch (syncError) {
-          console.log('ℹ️ No se pudo sincronizar a user_profiles:', syncError?.message || 'puede que ya exista');
-        }
-      } else {
-        // No se encontró en ninguna tabla, crear perfil básico
-        console.log('📝 No se encontró rol, creando perfil básico...');
-        const { data: newProfile, error: insertError } = await supabase
-          .from('user_profiles')
-          .insert({
-            id: currentUser.id,
-            full_name: currentUser.user_metadata?.full_name || null,
-            role: 'usuario'
-          })
-          .select()
-          .single();
-
-        if (insertError) {
-          console.error('Error al crear perfil:', insertError);
-          setError(insertError);
-          setProfile(null);
-        } else {
-          console.log('✅ Perfil creado:', newProfile);
-          setProfile(newProfile);
-        }
-      }
-    } catch (err) {
-      console.error('Error en loadUserProfile:', err);
-      setError(err);
-      setProfile(null);
-    } finally {
-      setLoading(false);
-    }
-  };
+  }, [user?.id]);
 
   const refreshProfile = async () => {
-    if (user) {
-      console.log('🔄 Refrescando perfil de usuario manualmente...');
-      loadedUserRef.current = null; // Resetear para forzar recarga
-      await loadUserProfile(user);
-    }
+    if (!user) return;
+    loadedUserRef.current = null;
+    await loadUserProfile(user);
   };
 
   return {
@@ -136,12 +54,12 @@ export const useUserProfile = (user) => {
     isUser: () => profile?.role?.toLowerCase() === 'usuario',
     getRoleColor: () => {
       const roleColors = {
-        'administrador': '#dc3545',  // Rojo para administrador
-        'entrenador': '#fd7e14',     // Naranja para entrenador
-        'estudiante': '#28a745',     // Verde para estudiante
-        'usuario': '#28a745'         // Verde para usuario (tratado como estudiante)
+        administrador: '#dc3545',
+        entrenador: '#fd7e14',
+        estudiante: '#28a745',
+        usuario: '#28a745',
       };
       return roleColors[profile?.role?.toLowerCase()] || '#17a2b8';
-    }
+    },
   };
 };

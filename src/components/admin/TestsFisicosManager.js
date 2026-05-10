@@ -1,9 +1,8 @@
 // src/components/admin/TestsFisicosManager.js
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { supabase } from '../../config/supabase';
-import { getEcuadorDate, getEcuadorISOString, getEcuadorDateTime } from '../../utils/dateUtils';
-import styles from '../../styles/TestsFisicosManager.module.css';
+import { physicalTestsService } from '../../features/physical-tests';
+import { getEcuadorDate, getEcuadorDateTime } from '../../utils/dateUtils';
 import { 
   FaEdit, FaPlus, FaClock, FaSave, FaDumbbell, FaTrash, 
   FaUsers, FaCheckCircle, FaExclamationTriangle, FaChartLine,
@@ -12,6 +11,87 @@ import {
   FaHandPaper, FaRunning, FaFire, FaArrowsAltH,
   FaStickyNote, FaSearch
 } from 'react-icons/fa';
+
+const styles = {
+  testsFisicosManager: 'mx-auto w-full max-w-7xl space-y-4',
+  header: 'flex flex-wrap items-start justify-between gap-3',
+  headerLeft: '[&_h2]:text-xl [&_h2]:font-black [&_h2]:text-white mobile:[&_h2]:text-2xl [&_p]:mt-1 [&_p]:text-sm [&_p]:text-slate-200',
+  addButton: 'inline-flex min-h-[48px] items-center justify-center rounded-xl bg-rv-gold px-4 py-2 text-sm font-black uppercase tracking-wide text-rv-dark shadow-rv-gold transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80',
+  statsGrid: 'grid gap-3 mobile:grid-cols-2 desktop:grid-cols-4',
+  statCard: 'rounded-2xl border border-rv-gold/25 bg-black/35 p-4 backdrop-blur-md transition hover:-translate-y-0.5 hover:border-rv-gold/50',
+  statIcon: 'mb-2 inline-flex text-2xl',
+  statInfo: '[&_h3]:text-3xl [&_h3]:font-black [&_h3]:text-white [&_p]:mt-1 [&_p]:text-xs [&_p]:font-semibold [&_p]:uppercase [&_p]:tracking-wide [&_p]:text-slate-300',
+  pendientesSection: 'rounded-2xl border border-amber-300/35 bg-amber-900/15 p-4 backdrop-blur-md',
+  pendientesHeader: 'flex flex-wrap items-center justify-between gap-2 [&_h3]:text-lg [&_h3]:font-black [&_h3]:text-white',
+  toggleButton: 'inline-flex min-h-[48px] items-center gap-2 rounded-xl border border-amber-300/45 bg-amber-500/15 px-3 py-2 text-sm font-semibold text-amber-200 transition hover:bg-amber-500/25',
+  categoriaFilters: 'mt-3 flex flex-wrap gap-2 rounded-xl border border-amber-300/20 bg-black/20 p-2',
+  categoriaFilterBtn: 'inline-flex min-h-[48px] items-center gap-2 rounded-xl border border-amber-300/35 bg-amber-500/10 px-3 py-2 text-xs font-bold uppercase tracking-wide text-slate-100 transition hover:bg-amber-500/20',
+  active: 'border-amber-300/80 bg-amber-500/30 text-white shadow',
+  filterCount: 'rounded-full bg-black/30 px-2 py-0.5 text-[11px] font-semibold',
+  pendientesCategorias: 'mt-3 space-y-3',
+  categoriaGroup: 'rounded-xl border border-amber-300/20 bg-black/20 p-3',
+  categoriaTitulo: 'mb-2 flex items-center gap-2 border-b border-amber-300/25 pb-2 text-sm font-black uppercase tracking-wide text-amber-200',
+  categoriaCount: 'text-xs font-semibold text-slate-300',
+  pendientesGrid: 'grid gap-2 mobile:grid-cols-2 desktop:grid-cols-3',
+  pendienteCard: 'flex items-center justify-between gap-2 rounded-xl border border-amber-300/30 bg-black/30 p-3',
+  pendienteInfo: '[&_h4]:text-sm [&_h4]:font-bold [&_h4]:text-white',
+  quickAddButton: 'inline-flex min-h-[48px] min-w-[48px] items-center justify-center rounded-full border border-amber-300/45 bg-amber-500/20 text-amber-200 transition hover:bg-amber-500/35',
+  filtersSection: 'grid gap-3 rounded-2xl border border-white/15 bg-black/30 p-4 mobile:grid-cols-2 tablet:grid-cols-3 desktop:grid-cols-5',
+  filterGroup: '[&_label]:mb-1 [&_label]:inline-flex [&_label]:items-center [&_label]:gap-2 [&_label]:text-xs [&_label]:font-bold [&_label]:uppercase [&_label]:tracking-wide [&_label]:text-rv-gold/90',
+  searchInput: 'min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70',
+  filterSelect: 'min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70',
+  filterInput: 'min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70',
+  checkboxLabel: 'inline-flex min-h-[48px] cursor-pointer items-center gap-2 rounded-xl border border-white/15 bg-black/20 px-3 py-2 text-sm text-slate-100',
+  checkbox: 'h-4 w-4 accent-rv-gold',
+  loading: 'flex min-h-[40dvh] flex-col items-center justify-center gap-3 text-white',
+  spinner: 'h-10 w-10 animate-spin rounded-full border-4 border-white/25 border-t-rv-gold',
+  testsGrid: 'space-y-3',
+  pagination: 'flex flex-wrap items-center justify-center gap-2 rounded-xl border border-white/15 bg-black/20 p-3',
+  pageButton: 'min-h-[48px] rounded-xl bg-rv-gold px-4 py-2 text-sm font-bold text-rv-dark transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-45',
+  pageInfo: 'rounded-full border border-rv-gold/30 bg-black/40 px-3 py-1 text-sm font-semibold text-white',
+  noTests: 'rounded-2xl border border-white/15 bg-black/25 p-8 text-center text-slate-200 [&_h3]:text-lg [&_h3]:font-black [&_h3]:text-white',
+  testCard: 'rounded-2xl border border-white/15 bg-black/30 p-4 backdrop-blur-md',
+  testHeader: 'flex flex-wrap items-start justify-between gap-2',
+  testHeaderLeft: '[&_h3]:text-lg [&_h3]:font-black [&_h3]:text-white',
+  categoria: 'mt-1 inline-flex rounded-full border border-rv-gold/35 bg-rv-gold/15 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-rv-gold',
+  testActions: 'flex items-center gap-1',
+  editButton: 'inline-flex min-h-[48px] min-w-[48px] items-center justify-center rounded-lg border border-amber-400/30 bg-amber-500/20 text-amber-200 transition hover:bg-amber-500/35',
+  deleteButton: 'inline-flex min-h-[48px] min-w-[48px] items-center justify-center rounded-lg border border-red-400/30 bg-red-500/20 text-red-200 transition hover:bg-red-500/35',
+  testDate: 'mt-2 inline-flex items-center gap-2 text-xs text-slate-300',
+  comparisonBadge: 'mt-2 inline-flex items-center gap-2 rounded-full border border-sky-300/35 bg-sky-500/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-sky-200',
+  testInfo: 'mt-3 grid gap-2 mobile:grid-cols-2 desktop:grid-cols-3',
+  infoItem: 'rounded-xl border border-white/10 bg-black/20 p-2',
+  label: 'inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wide text-rv-gold/90',
+  valueWithChange: 'mt-1 flex items-center justify-between gap-2',
+  value: 'text-sm font-black text-white',
+  changeIndicator: 'inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-bold',
+  improvement: 'bg-emerald-500/20 text-emerald-300',
+  regression: 'bg-red-500/20 text-red-300',
+  neutral: 'bg-white/10 text-slate-200',
+  observacionesSection: 'mobile:col-span-2 desktop:col-span-3 rounded-xl border border-white/10 bg-black/20 p-2',
+  observaciones: 'mt-1 text-sm text-slate-200',
+  modalOverlay: 'fixed inset-0 z-[1200] flex items-center justify-center bg-black/75 p-3 backdrop-blur-sm',
+  modal: 'max-h-[92dvh] w-full max-w-5xl overflow-y-auto rounded-2xl border border-rv-gold/25 bg-slate-950/95 p-4 text-white shadow-2xl mobile:p-6',
+  modalHeader: 'mb-4 flex items-start justify-between gap-3 border-b border-white/15 pb-3 [&_h3]:text-lg [&_h3]:font-black',
+  closeButton: 'inline-flex min-h-[48px] min-w-[48px] items-center justify-center rounded-xl border border-white/20 bg-white/10 text-white transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80',
+  form: 'space-y-4',
+  formSection: 'rounded-2xl border border-white/15 bg-black/25 p-4',
+  sectionTitle: 'mb-3 inline-flex items-center gap-2 text-base font-black text-white',
+  formGrid: 'grid gap-3 tablet:grid-cols-2',
+  inputGroup: 'space-y-1 [&_label]:text-xs [&_label]:font-bold [&_label]:uppercase [&_label]:tracking-wide [&_label]:text-rv-gold/90 [&_input]:min-h-[48px] [&_input]:w-full [&_input]:rounded-xl [&_input]:border [&_input]:border-white/20 [&_input]:bg-black/30 [&_input]:px-3 [&_input]:py-2 [&_input]:text-sm [&_input]:text-white [&_input]:placeholder:text-slate-400 [&_input]:focus:border-rv-gold [&_input]:focus:outline-none [&_input]:focus:ring-2 [&_input]:focus:ring-rv-gold/70 [&_textarea]:w-full [&_textarea]:rounded-xl [&_textarea]:border [&_textarea]:border-white/20 [&_textarea]:bg-black/30 [&_textarea]:px-3 [&_textarea]:py-2 [&_textarea]:text-sm [&_textarea]:text-white [&_textarea]:placeholder:text-slate-400 [&_textarea]:focus:border-rv-gold [&_textarea]:focus:outline-none [&_textarea]:focus:ring-2 [&_textarea]:focus:ring-rv-gold/70',
+  searchableSelect: 'relative',
+  dropdownList: 'absolute z-20 mt-1 max-h-64 w-full overflow-y-auto rounded-xl border border-white/20 bg-slate-950/95 shadow-2xl',
+  dropdownItem: 'w-full border-b border-white/10 px-3 py-2 text-left transition last:border-0 hover:bg-rv-gold/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80',
+  selected: 'bg-rv-gold/20',
+  atletaName: 'text-sm font-semibold text-white',
+  atletaCategoria: 'text-[11px] uppercase tracking-wide text-slate-300',
+  dropdownEmpty: 'px-3 py-2 text-sm text-slate-300',
+  clearButton: 'absolute right-2 top-1/2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg border border-white/20 bg-white/10 text-white transition hover:bg-white/20',
+  textarea: '',
+  formActions: 'flex flex-wrap justify-end gap-2 pt-2',
+  cancelButton: 'inline-flex min-h-[48px] items-center justify-center rounded-xl border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/20',
+  saveButton: 'inline-flex min-h-[48px] items-center justify-center rounded-xl bg-rv-gold px-4 py-2 text-sm font-black text-rv-dark shadow-rv-gold transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60'
+};
 
 const TestsFisicosManager = ({ user }) => {
   const [tests, setTests] = useState([]);
@@ -150,24 +230,7 @@ const TestsFisicosManager = ({ user }) => {
 
   const loadAtletas = async () => {
     try {
-      const { data: studentsData, error: studentsError } = await supabase
-        .from('students')
-        .select(`
-          *,
-          users!inner(
-            id,
-            nombre,
-            apellido
-          )
-        `);
-
-      if (studentsError) throw studentsError;
-
-      const atletasWithNames = studentsData.map(student => ({
-        ...student,
-        full_name: `${student.users?.nombre || ''} ${student.users?.apellido || ''}`.trim()
-      }));
-
+      const atletasWithNames = await physicalTestsService.loadAtletas();
       setAtletas(atletasWithNames);
     } catch (error) {
       console.error('Error cargando atletas:', error);
@@ -178,59 +241,12 @@ const TestsFisicosManager = ({ user }) => {
   const loadTests = async () => {
     setLoading(true);
     try {
-      let query = supabase
-        .from('physical_tests')
-        .select(`
-          *,
-          students!inner(
-            id,
-            categoria,
-            users!inner(
-              nombre,
-              apellido
-            )
-          )
-        `)
-        .order('fecha_test', { ascending: false });
-
-      // Aplicar filtros
-      if (filters.atletaId) {
-        query = query.eq('student_id', filters.atletaId);
-      }
-
-      if (filters.fechaDesde) {
-        query = query.gte('fecha_test', filters.fechaDesde);
-      }
-
-      if (filters.fechaHasta) {
-        query = query.lte('fecha_test', filters.fechaHasta);
-      }
-
-      const { data: testsData, error: testsError } = await query;
-
-      if (testsError) throw testsError;
-
-      // Procesar datos de tests
-      const testsWithAtletaNames = testsData.map(test => ({
-        ...test,
-        atleta_name: `${test.students?.users?.nombre || ''} ${test.students?.users?.apellido || ''}`.trim()
-      }));
-
-      // Filtrar por búsqueda local si hay término
-      let filteredData = testsWithAtletaNames || [];
-      if (filters.search) {
-        const searchLower = filters.search.toLowerCase();
-        filteredData = filteredData.filter(test => 
-          test.atleta_name?.toLowerCase().includes(searchLower) ||
-          test.observaciones?.toLowerCase().includes(searchLower)
-        );
-      }
-
+      const filteredData = await physicalTestsService.loadTests({ filters });
       setTests(filteredData);
       setCurrentPage(1);
     } catch (error) {
-      console.error('Error cargando tests físicos:', error);
-      alert('Error al cargar los tests físicos: ' + error.message);
+      console.error('Error cargando tests fisicos:', error);
+      alert('Error al cargar los tests fisicos: ' + error.message);
     } finally {
       setLoading(false);
     }
@@ -343,90 +359,34 @@ const TestsFisicosManager = ({ user }) => {
   };
 
   const createTest = async () => {
-    const testData = {
-      student_id: formData.student_id,
-      estatura: formData.estatura ? Number.parseFloat(formData.estatura) : null,
-      peso: formData.peso ? Number.parseFloat(formData.peso) : null,
-      brazo_extend_inicial: formData.brazo_extend_inicial ? Number.parseFloat(formData.brazo_extend_inicial) : null,
-      brazo_extend_sin_impulso: formData.brazo_extend_sin_impulso ? Number.parseFloat(formData.brazo_extend_sin_impulso) : null,
-      brazo_extend_con_impulso: formData.brazo_extend_con_impulso ? Number.parseFloat(formData.brazo_extend_con_impulso) : null,
-      fuerza_explosiva_salto_largo: formData.fuerza_explosiva_salto_largo ? Number.parseFloat(formData.fuerza_explosiva_salto_largo) : null,
-      envergadura_brazos_extendidos_lateral: formData.envergadura_brazos_extendidos_lateral ? Number.parseFloat(formData.envergadura_brazos_extendidos_lateral) : null,
-      fuerza_abdomen: formData.fuerza_abdomen ? Number.parseInt(formData.fuerza_abdomen) : null,
-      fuerza_brazos: formData.fuerza_brazos ? Number.parseInt(formData.fuerza_brazos) : null,
-      fuerza_piernas: formData.fuerza_piernas ? Number.parseInt(formData.fuerza_piernas) : null,
-      elevaciones_barra: formData.elevaciones_barra ? Number.parseInt(formData.elevaciones_barra) : null,
-      observaciones: formData.observaciones || null,
-      fecha_test: formData.fecha_test,
-      modified_at: getEcuadorISOString()
-    };
-
-    const { error } = await supabase
-      .from('physical_tests')
-      .insert(testData);
-
-    if (error) {
-      throw new Error(`Error creando test físico: ${error.message}`);
-    }
-
-    alert('Test físico registrado correctamente');
+    await physicalTestsService.createTest({ formData });
+    alert('Test fisico registrado correctamente');
   };
 
   const updateTest = async () => {
-    const testData = {
-      student_id: formData.student_id,
-      estatura: formData.estatura ? Number.parseFloat(formData.estatura) : null,
-      peso: formData.peso ? Number.parseFloat(formData.peso) : null,
-      brazo_extend_inicial: formData.brazo_extend_inicial ? Number.parseFloat(formData.brazo_extend_inicial) : null,
-      brazo_extend_sin_impulso: formData.brazo_extend_sin_impulso ? Number.parseFloat(formData.brazo_extend_sin_impulso) : null,
-      brazo_extend_con_impulso: formData.brazo_extend_con_impulso ? Number.parseFloat(formData.brazo_extend_con_impulso) : null,
-      fuerza_explosiva_salto_largo: formData.fuerza_explosiva_salto_largo ? Number.parseFloat(formData.fuerza_explosiva_salto_largo) : null,
-      envergadura_brazos_extendidos_lateral: formData.envergadura_brazos_extendidos_lateral ? Number.parseFloat(formData.envergadura_brazos_extendidos_lateral) : null,
-      fuerza_abdomen: formData.fuerza_abdomen ? Number.parseInt(formData.fuerza_abdomen) : null,
-      fuerza_brazos: formData.fuerza_brazos ? Number.parseInt(formData.fuerza_brazos) : null,
-      fuerza_piernas: formData.fuerza_piernas ? Number.parseInt(formData.fuerza_piernas) : null,
-      elevaciones_barra: formData.elevaciones_barra ? Number.parseInt(formData.elevaciones_barra) : null,
-      observaciones: formData.observaciones || null,
-      fecha_test: formData.fecha_test,
-      modified_at: getEcuadorISOString() // Agregar el campo que el trigger espera
-    };
+    const data = await physicalTestsService.updateTest({
+      testId: editingTest.id,
+      formData
+    });
+    console.log('Actualizacion exitosa:', data);
 
-    console.log('Actualizando test físico:', testData);
-    
-    const { data, error } = await supabase
-      .from('physical_tests')
-      .update(testData)
-      .eq('id', editingTest.id)
-      .select();
-
-    if (error) {
-      console.error('Error actualizando:', error);
-      throw new Error(`Error actualizando test físico: ${error.message}`);
-    }
-    
-    console.log('Actualización exitosa:', data);
-
-    alert('Test físico actualizado correctamente');
+    alert('Test fisico actualizado correctamente');
   };
 
   const deleteTest = async (test) => {
-    const confirmDelete = globalThis.confirm(`¿Estás seguro de eliminar el test físico de ${test.atleta_name}?`);
+    const confirmDelete = globalThis.confirm(
+      `Estas seguro de eliminar el test fisico de ${test.atleta_name}?`
+    );
     if (!confirmDelete) {
       return;
     }
 
     try {
-      const { error } = await supabase
-        .from('physical_tests')
-        .delete()
-        .eq('id', test.id);
-
-      if (error) throw error;
-
+      await physicalTestsService.deleteTest({ testId: test.id });
       loadTests();
-      alert('Test físico eliminado exitosamente');
+      alert('Test fisico eliminado exitosamente');
     } catch (error) {
-      console.error('Error eliminando test físico:', error);
+      console.error('Error eliminando test fisico:', error);
       alert('Error: ' + error.message);
     }
   };
@@ -690,21 +650,21 @@ const TestsFisicosManager = ({ user }) => {
     <div className={styles.testsFisicosManager}>
       <div className={styles.header}>
         <div className={styles.headerLeft}>
-          <h2><FaDumbbell style={{ marginRight: '10px', verticalAlign: 'middle' }} /> Gestión de Tests Físicos</h2>
+          <h2><FaDumbbell className="mr-2.5 inline align-middle" /> Gestión de Tests Físicos</h2>
           <p>Registrar y seguir el rendimiento físico de los atletas</p>
         </div>
         <button 
           className={styles.addButton}
           onClick={() => openModal()}
         >
-          <FaPlus style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Nuevo Test Físico
+          <FaPlus className="mr-2 inline align-middle" /> Nuevo Test Físico
         </button>
       </div>
 
       {/* Estadísticas Generales */}
       <div className={styles.statsGrid}>
         <div className={styles.statCard}>
-          <div className={styles.statIcon} style={{ color: '#3b82f6' }}>
+          <div className={`${styles.statIcon} text-blue-500`}>
             <FaUsers />
           </div>
           <div className={styles.statInfo}>
@@ -714,7 +674,7 @@ const TestsFisicosManager = ({ user }) => {
         </div>
 
         <div className={styles.statCard}>
-          <div className={styles.statIcon} style={{ color: '#10b981' }}>
+          <div className={`${styles.statIcon} text-emerald-500`}>
             <FaCheckCircle />
           </div>
           <div className={styles.statInfo}>
@@ -724,7 +684,7 @@ const TestsFisicosManager = ({ user }) => {
         </div>
 
         <div className={styles.statCard}>
-          <div className={styles.statIcon} style={{ color: '#f59e0b' }}>
+          <div className={`${styles.statIcon} text-amber-500`}>
             <FaExclamationTriangle />
           </div>
           <div className={styles.statInfo}>
@@ -734,7 +694,7 @@ const TestsFisicosManager = ({ user }) => {
         </div>
 
         <div className={styles.statCard}>
-          <div className={styles.statIcon} style={{ color: '#8b5cf6' }}>
+          <div className={`${styles.statIcon} text-violet-500`}>
             <FaChartLine />
           </div>
           <div className={styles.statInfo}>
@@ -749,7 +709,7 @@ const TestsFisicosManager = ({ user }) => {
         <div className={styles.pendientesSection}>
           <div className={styles.pendientesHeader}>
             <h3>
-              <FaExclamationTriangle style={{ marginRight: '10px', color: '#f59e0b' }} />
+              <FaExclamationTriangle className="mr-2.5 text-amber-500" />
               Atletas Sin Test Este Mes ({atletasPendientes.length})
             </h3>
             <button 
@@ -978,7 +938,7 @@ const TestsFisicosManager = ({ user }) => {
             </>
           ) : (
             <div className={styles.noTests}>
-              <h3><FaDumbbell style={{ marginRight: '8px', verticalAlign: 'middle' }} /> No hay tests físicos registrados</h3>
+              <h3><FaDumbbell className="mr-2 inline align-middle" /> No hay tests físicos registrados</h3>
               <p>Registra el primer test físico para comenzar el seguimiento</p>
             </div>
           )}
@@ -992,9 +952,9 @@ const TestsFisicosManager = ({ user }) => {
             <div className={styles.modalHeader}>
               <h3>
                 {editingTest ? (
-                  <><FaEdit style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Editar Test Físico</>
+                  <><FaEdit className="mr-2 inline align-middle" /> Editar Test Físico</>
                 ) : (
-                  <><FaPlus style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Nuevo Test Físico</>
+                  <><FaPlus className="mr-2 inline align-middle" /> Nuevo Test Físico</>
                 )}
               </h3>
               <button 
@@ -1285,12 +1245,12 @@ const TestsFisicosManager = ({ user }) => {
                 >
                   {(() => {
                     if (saving) return (
-                      <><FaClock style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Guardando...</>
+                      <><FaClock className="mr-2 inline align-middle" /> Guardando...</>
                     );
                     return editingTest ? (
-                      <><FaEdit style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Actualizar Test</>
+                      <><FaEdit className="mr-2 inline align-middle" /> Actualizar Test</>
                     ) : (
-                      <><FaSave style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Guardar Test</>
+                      <><FaSave className="mr-2 inline align-middle" /> Guardar Test</>
                     );
                   })()}
                 </button>
@@ -1312,3 +1272,4 @@ TestsFisicosManager.propTypes = {
 };
 
 export default TestsFisicosManager;
+

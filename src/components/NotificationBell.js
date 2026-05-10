@@ -1,9 +1,7 @@
 // src/components/NotificationBell.js
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { supabase } from '../config/supabase';
-import { getEcuadorDate, calcularDiferenciaDias } from '../utils/dateUtils';
-import { getLatestPaymentsList } from '../utils/paymentUtils';
+import { notificationsService } from '../features/notifications';
 import { FaBell, FaExclamationTriangle, FaBullhorn, FaInfoCircle } from 'react-icons/fa';
 import { cn } from '../lib/cn';
 
@@ -15,9 +13,9 @@ const NotificationBell = ({ userRole }) => {
 
   useEffect(() => {
     cargarNotificaciones();
-  }, [userRole]); // eslint-disable-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userRole]);
 
-  // Cerrar dropdown al hacer clic fuera
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -34,139 +32,10 @@ const NotificationBell = ({ userRole }) => {
     };
   }, [isOpen]);
 
-  const determinarTipoNotificacion = (diferenciaDias) => {
-    if (diferenciaDias <= 0) return 'danger';
-    if (diferenciaDias === 1) return 'warning';
-    return 'info';
-  };
-
-  const generarMensajePago = (diferenciaDias, nombreCompleto) => {
-    if (diferenciaDias === 0) {
-      return `${nombreCompleto} - Vence HOY`;
-    }
-    if (diferenciaDias < 0) {
-      return `${nombreCompleto} - Venció hace ${Math.abs(diferenciaDias)} día(s)`;
-    }
-    if (diferenciaDias === 1) {
-      return `${nombreCompleto} - Vence MAÑANA`;
-    }
-    return `${nombreCompleto} - Vence en ${diferenciaDias} días`;
-  };
-
-  const cargarNotificacionesPagos = async () => {
-    try {
-      const hoy = getEcuadorDate();
-
-      // Obtener todos los pagos no eliminados
-      const { data: todosPagos, error: pagosError } = await supabase
-        .from('payments')
-        .select('student_id, fecha_fin')
-        .is('deleted_at', null)
-        .order('fecha_fin', { ascending: false });
-
-      if (pagosError) throw pagosError;
-
-      const ultimosPagos = getLatestPaymentsList(todosPagos || []);
-
-      const notificacionesPagos = [];
-
-      // Obtener información de estudiantes en una sola consulta
-      const studentIds = ultimosPagos.map((pago) => pago.student_id);
-      if (studentIds.length === 0) return [];
-
-      const { data: estudiantes, error: estudiantesError } = await supabase
-        .from('students')
-        .select('id, users!inner(nombre, apellido)')
-        .in('id', studentIds);
-
-      if (estudiantesError) throw estudiantesError;
-
-      // Crear un mapa de estudiantes por ID
-      const estudiantesMap = new Map();
-      (estudiantes || []).forEach(est => {
-        estudiantesMap.set(est.id, est);
-      });
-
-      // Filtrar solo los que vencen en los próximos 5 días o ya vencieron
-      for (const pago of ultimosPagos) {
-        if (!pago.fecha_fin) continue;
-
-        // Usar la función de dateUtils que maneja correctamente la zona horaria
-        const diferenciaDias = calcularDiferenciaDias(pago.fecha_fin, hoy);
-
-        if (diferenciaDias <= 5) {
-          const estudiante = estudiantesMap.get(pago.student_id);
-          if (estudiante) {
-            const nombreCompleto = `${estudiante.users.nombre} ${estudiante.users.apellido}`;
-            const mensaje = generarMensajePago(diferenciaDias, nombreCompleto);
-            const tipo = determinarTipoNotificacion(diferenciaDias);
-
-            notificacionesPagos.push({
-              id: `pago-${pago.student_id}`,
-              tipo_notificacion: 'pago',
-              mensaje,
-              tipo,
-              fecha: pago.fecha_fin,
-              orden: diferenciaDias
-            });
-          }
-        }
-      }
-
-      return notificacionesPagos;
-    } catch (error) {
-      console.error('Error cargando notificaciones de pagos:', error);
-      return [];
-    }
-  };
-
-  const cargarAnuncios = async () => {
-    try {
-      // Cargar anuncios activos de los últimos 7 días
-      const hoy = getEcuadorDate();
-      const hace7Dias = new Date(hoy);
-      hace7Dias.setDate(hace7Dias.getDate() - 7);
-      const fecha7DiasAtras = hace7Dias.toISOString().split('T')[0];
-
-      const { data: anuncios, error: anunciosError } = await supabase
-        .from('announcements')
-        .select('id, title, content, created_at, is_active')
-        .eq('is_active', true)
-        .gte('created_at', fecha7DiasAtras)
-        .order('created_at', { ascending: false })
-        .limit(5);
-
-      if (anunciosError) throw anunciosError;
-
-      return (anuncios || []).map(anuncio => ({
-        id: `anuncio-${anuncio.id}`,
-        tipo_notificacion: 'anuncio',
-        mensaje: anuncio.title,
-        descripcion: anuncio.content.length > 80 
-          ? anuncio.content.substring(0, 80) + '...'
-          : anuncio.content,
-        tipo: 'info',
-        fecha: anuncio.created_at,
-        orden: 100 // Los anuncios van después de los pagos urgentes
-      }));
-    } catch (error) {
-      console.error('Error cargando anuncios:', error);
-      return [];
-    }
-  };
-
   const cargarNotificaciones = async () => {
     setLoading(true);
     try {
-      const [notifPagos, notifAnuncios] = await Promise.all([
-        cargarNotificacionesPagos(),
-        cargarAnuncios()
-      ]);
-
-      // Combinar y ordenar notificaciones
-      const todasNotificaciones = [...notifPagos, ...notifAnuncios];
-      todasNotificaciones.sort((a, b) => a.orden - b.orden);
-
+      const todasNotificaciones = await notificationsService.loadBellNotifications({ userRole });
       setNotificaciones(todasNotificaciones);
     } catch (error) {
       console.error('Error cargando notificaciones:', error);
@@ -178,7 +47,7 @@ const NotificationBell = ({ userRole }) => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
     if (!isOpen) {
-      cargarNotificaciones(); // Recargar al abrir
+      cargarNotificaciones();
     }
   };
 
@@ -208,7 +77,7 @@ const NotificationBell = ({ userRole }) => {
 
   return (
     <div className="relative inline-block" ref={dropdownRef}>
-      <button 
+      <button
         className="group relative flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full bg-transparent p-2 text-white transition-all duration-200 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
         onClick={toggleDropdown}
         aria-label="Notificaciones"
@@ -243,8 +112,8 @@ const NotificationBell = ({ userRole }) => {
             {!loading && totalNotificaciones > 0 && (
               <ul className="m-0 list-none p-0">
                 {notificaciones.map((notif) => (
-                  <li 
-                    key={notif.id} 
+                  <li
+                    key={notif.id}
                     className={cn(
                       'flex cursor-pointer gap-3 border-b border-slate-100 px-[18px] py-3.5 transition-colors duration-150 hover:bg-slate-50',
                       'border-l-[3px]',

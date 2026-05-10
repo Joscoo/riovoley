@@ -1,260 +1,220 @@
-import React, { useState, useEffect } from 'react';
-import { supabase } from '../config/supabase';
-import styles from '../styles/Horarios.module.css';
-import { FaClock, FaCalendarAlt, FaUsers, FaExclamationTriangle, FaInfoCircle } from 'react-icons/fa';
+import React, { useEffect, useMemo, useState } from 'react';
+import { FaCalendarAlt, FaClock, FaExclamationTriangle, FaInfoCircle, FaUsers } from 'react-icons/fa';
+import { schedulesService } from '../features/schedules';
+import { cn } from '../lib/cn';
+import PageShell from './ui/PageShell';
+import Card from './ui/Card';
+import SectionHeader from './ui/SectionHeader';
+import EmptyState from './ui/EmptyState';
+import StatusBadge from './ui/StatusBadge';
+import Button from './ui/Button';
+
+const DAYS = [
+  { value: 'todos', label: 'Todos los dias' },
+  { value: 'lunes', label: 'Lunes' },
+  { value: 'martes', label: 'Martes' },
+  { value: 'miercoles', label: 'Miercoles' },
+  { value: 'jueves', label: 'Jueves' },
+  { value: 'viernes', label: 'Viernes' },
+  { value: 'sabado', label: 'Sabado' },
+  { value: 'domingo', label: 'Domingo' }
+];
+
+const CATEGORY_DATA = {
+  iniciacion_hombres: {
+    label: 'Iniciacion Hombres',
+    borderClass: 'border-l-sky-500',
+    badgeClass: 'bg-sky-500/20 text-sky-300',
+    description:
+      'Perfecto para quienes se inician en voleibol. Aprende fundamentos basicos como recepcion, saque y posicionamiento.'
+  },
+  iniciacion_mujeres: {
+    label: 'Iniciacion Mujeres',
+    borderClass: 'border-l-pink-500',
+    badgeClass: 'bg-pink-500/20 text-pink-300',
+    description:
+      'Ideal para principiantes que quieren aprender desde cero en un entorno motivador y de apoyo constante.'
+  },
+  perfeccionamiento_hombres: {
+    label: 'Perfeccionamiento Hombres',
+    borderClass: 'border-l-emerald-500',
+    badgeClass: 'bg-emerald-500/20 text-emerald-300',
+    description:
+      'Para jugadores con experiencia que buscan mejorar tecnica y tactica con enfoque competitivo.'
+  },
+  perfeccionamiento_mujeres: {
+    label: 'Perfeccionamiento Mujeres',
+    borderClass: 'border-l-violet-500',
+    badgeClass: 'bg-violet-500/20 text-violet-300',
+    description:
+      'Entrenamiento avanzado para jugadoras con bases solidas y mejora tactica individual y colectiva.'
+  },
+  master_mujeres: {
+    label: 'Master Mujeres',
+    borderClass: 'border-l-amber-500',
+    badgeClass: 'bg-amber-500/20 text-amber-300',
+    description:
+      'Categoria para atletas mayores de 18 anos con experiencia previa para mantener nivel competitivo.'
+  },
+  open_gym: {
+    label: 'Open Gym',
+    borderClass: 'border-l-teal-500',
+    badgeClass: 'bg-teal-500/20 text-teal-300',
+    description:
+      'Sesion de juego libre para practicar, compartir con otras categorias y disfrutar partidos recreativos.'
+  }
+};
+
+const formatTime = (time) => (time ? time.slice(0, 5) : '');
 
 const Horarios = () => {
   const [horarios, setHorarios] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
   const [selectedDay, setSelectedDay] = useState('todos');
-
-  const diasSemana = [
-    { value: 'todos', label: 'Todos los días' },
-    { value: 'lunes', label: 'Lunes' },
-    { value: 'martes', label: 'Martes' },
-    { value: 'miercoles', label: 'Miércoles' },
-    { value: 'jueves', label: 'Jueves' },
-    { value: 'viernes', label: 'Viernes' },
-    { value: 'sabado', label: 'Sábado' },
-    { value: 'domingo', label: 'Domingo' }
-  ];
-
-  useEffect(() => {
-    loadSchedules();
-  }, []);
 
   const loadSchedules = async () => {
     try {
       setLoading(true);
-      setError(null);
-      
-      const { data, error: supabaseError } = await supabase
-        .from('schedules')
-        .select('*')
-        .order('dia_semana', { ascending: true })
-        .order('hora_inicio', { ascending: true });
+      setError('');
 
-      if (supabaseError) throw supabaseError;
-
-      // Ordenar por día de la semana correctamente
-      const ordenDias = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'];
-      const horariosOrdenados = data.sort((a, b) => {
-        const diaA = ordenDias.indexOf(a.dia_semana);
-        const diaB = ordenDias.indexOf(b.dia_semana);
-        if (diaA !== diaB) return diaA - diaB;
-        return a.hora_inicio.localeCompare(b.hora_inicio);
-      });
-
-      setHorarios(horariosOrdenados);
-    } catch (error) {
-      console.error('Error loading schedules:', error);
-      setError(`Error al cargar los horarios: ${error.message}`);
+      const sorted = await schedulesService.loadHorarios();
+      setHorarios(sorted);
+    } catch (requestError) {
+      console.error('Error loading schedules:', requestError);
+      setError(`Error al cargar los horarios: ${requestError.message}`);
     } finally {
       setLoading(false);
     }
   };
 
-  const formatTime = (time) => {
-    if (!time) return '';
-    return time.substring(0, 5); // HH:MM
-  };
+  useEffect(() => {
+    loadSchedules();
+  }, []);
 
-  const getCategoriaLabel = (categoria) => {
-    const labels = {
-      'iniciacion_hombres': 'Iniciación Hombres',
-      'iniciacion_mujeres': 'Iniciación Mujeres',
-      'perfeccionamiento_hombres': 'Perfeccionamiento Hombres',
-      'perfeccionamiento_mujeres': 'Perfeccionamiento Mujeres',
-      'master_mujeres': 'Master Mujeres',
-      'open_gym': 'Open Gym'
-    };
-    return labels[categoria] || categoria;
-  };
+  const filteredSchedules = useMemo(() => {
+    if (selectedDay === 'todos') return horarios;
+    return horarios.filter((item) => item.dia_semana === selectedDay);
+  }, [horarios, selectedDay]);
 
-  const getDescripcionPorDefecto = (categoria) => {
-    const descripciones = {
-      'iniciacion_hombres': 'Perfecto para quienes se inician en el voleibol. Aprende los fundamentos básicos: recepción, saque, golpe de dedos, antebrazo y posicionamiento en cancha. Entrenamiento progresivo y didáctico.',
-      'iniciacion_mujeres': 'Ideal para principiantes que quieren aprender voleibol desde cero. Desarrolla técnica básica, coordinación y trabajo en equipo en un ambiente motivador y de apoyo constante.',
-      'perfeccionamiento_hombres': 'Para jugadores con experiencia que buscan mejorar su técnica y táctica de juego. Enfoque en remates, bloqueos, sistemas defensivos y estrategias avanzadas de competición.',
-      'perfeccionamiento_mujeres': 'Entrenamiento avanzado para jugadoras con bases sólidas. Perfecciona tus habilidades técnicas, lee el juego rival, mejora tu táctica individual y colectiva para competir al máximo nivel.',
-      'master_mujeres': 'Categoría especial para atletas mayores de 18 años con experiencia previa en voleibol. Mantén tu nivel competitivo, mejora tu condición física y disfruta del juego con compañeras de tu edad y experiencia.',
-      'open_gym': 'Sesión de juego libre para todos los niveles. Practica lo aprendido, conoce jugadores de diferentes categorías y disfruta partidos recreativos en un ambiente divertido y competitivo.'
-    };
-    return descripciones[categoria] || '';
-  };
-
-  const getCategoriaColor = (categoria) => {
-    const colores = {
-      'iniciacion_hombres': '#3498db',
-      'iniciacion_mujeres': '#e91e63',
-      'perfeccionamiento_hombres': '#2ecc71',
-      'perfeccionamiento_mujeres': '#9b59b6',
-      'master_mujeres': '#f39c12',
-      'open_gym': '#1abc9c'
-    };
-    return colores[categoria] || '#95a5a6';
-  };
-
-  // Filtrar horarios por día
-  const horariosFiltrados = selectedDay === 'todos' 
-    ? horarios 
-    : horarios.filter(h => h.dia_semana === selectedDay);
-
-  // Agrupar horarios por día
-  const horariosAgrupados = horariosFiltrados.reduce((acc, horario) => {
-    if (!acc[horario.dia_semana]) {
-      acc[horario.dia_semana] = [];
-    }
-    acc[horario.dia_semana].push(horario);
-    return acc;
-  }, {});
-
-  if (loading) {
-    return (
-      <div className={styles.pageContainer}>
-        {/* Video de fondo */}
-        <video className={styles.videoBg} autoPlay loop muted playsInline>
-          <source src="/videos/bg-video.mp4" type="video/mp4" />
-        </video>
-        <div className={styles.overlay}></div>
-
-        <section className={styles.heroSection}>
-          <h1 className={styles.title}>Horarios de Entrenamientos</h1>
-          <p className={styles.subtitle}>Consulta nuestros horarios actualizados</p>
-        </section>
-        
-        <div className={styles.loadingContainer}>
-          <div className={styles.spinner}></div>
-          <p className={styles.loadingText}>Cargando horarios...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className={styles.pageContainer}>
-        {/* Video de fondo */}
-        <video className={styles.videoBg} autoPlay loop muted playsInline>
-          <source src="/videos/bg-video.mp4" type="video/mp4" />
-        </video>
-        <div className={styles.overlay}></div>
-
-        <section className={styles.heroSection}>
-          <h1 className={styles.title}>Horarios de Entrenamientos</h1>
-          <p className={styles.subtitle}>Consulta nuestros horarios actualizados</p>
-        </section>
-        
-        <div className={styles.errorContainer}>
-          <div className={styles.errorIcon}><FaExclamationTriangle /></div>
-          <h2 className={styles.errorTitle}>Error al Cargar Horarios</h2>
-          <p className={styles.errorMessage}>{error}</p>
-          <button onClick={loadSchedules} className={styles.retryButton}>
-            Reintentar
-          </button>
-        </div>
-      </div>
-    );
-  }
+  const groupedSchedules = useMemo(() => {
+    return filteredSchedules.reduce((accumulator, schedule) => {
+      if (!accumulator[schedule.dia_semana]) {
+        accumulator[schedule.dia_semana] = [];
+      }
+      accumulator[schedule.dia_semana].push(schedule);
+      return accumulator;
+    }, {});
+  }, [filteredSchedules]);
 
   return (
-    <div className={styles.pageContainer}>
-      {/* Video de fondo */}
-      <video className={styles.videoBg} autoPlay loop muted playsInline>
-        <source src="/videos/bg-video.mp4" type="video/mp4" />
-      </video>
-      <div className={styles.overlay}></div>
+    <PageShell>
+      <section className="px-4 pb-8 pt-16 mobile:px-6 tablet:px-10">
+        <div className="mx-auto max-w-6xl">
+          <SectionHeader
+            title="Horarios de Entrenamientos"
+            subtitle="Consulta nuestros horarios actualizados y elige el mejor momento para entrenar."
+            centered
+          />
 
-      <section className={styles.heroSection}>
-        <h1 className={styles.title}>Horarios de Entrenamientos</h1>
-        <p className={styles.subtitle}>
-          Consulta nuestros horarios actualizados y elige el mejor momento para entrenar
-        </p>
+          <div className="mx-auto mt-6 max-w-xl rounded-2xl border border-rv-gold/25 bg-black/35 p-3 backdrop-blur-md mobile:p-4">
+            <label className="mb-2 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-rv-gold/95">
+              <FaCalendarAlt /> Filtrar por dia
+            </label>
+            <select
+              value={selectedDay}
+              onChange={(event) => setSelectedDay(event.target.value)}
+              className="h-12 w-full rounded-xl border border-rv-gold/35 bg-slate-900/70 px-4 text-sm text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+            >
+              {DAYS.map((day) => (
+                <option key={day.value} value={day.value}>
+                  {day.label}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
       </section>
 
-      {/* Filtro por día */}
-      <div className={styles.filterContainer}>
-        <div className={styles.filterWrapper}>
-          <FaCalendarAlt className={styles.filterIcon} />
-          <select 
-            value={selectedDay}
-            onChange={(e) => setSelectedDay(e.target.value)}
-            className={styles.dayFilter}
-          >
-            {diasSemana.map(dia => (
-              <option key={dia.value} value={dia.value}>
-                {dia.label}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-      
-      {horariosFiltrados.length > 0 ? (
-        <div className={styles.schedulesSection}>
-          {diasSemana
-            .filter(dia => dia.value !== 'todos' && horariosAgrupados[dia.value])
-            .map(dia => (
-              <div key={dia.value} className={styles.dayGroup}>
-                <h2 className={styles.dayTitle}>
-                  <FaCalendarAlt className={styles.dayIcon} />
-                  {dia.label}
-                </h2>
-                <div className={styles.eventsGrid}>
-                  {horariosAgrupados[dia.value].map((horario) => (
-                    <div 
-                      key={horario.id} 
-                      className={styles.eventCard}
-                      style={{ borderLeftColor: getCategoriaColor(horario.categoria) }}
-                    >
-                      <div className={styles.eventHeader}>
-                        <span 
-                          className={styles.categoryBadge}
-                          style={{ backgroundColor: getCategoriaColor(horario.categoria) }}
+      <section className="px-4 pb-16 mobile:px-6 tablet:px-10">
+        <div className="mx-auto max-w-6xl">
+          {loading && (
+            <EmptyState
+              title="Cargando horarios..."
+              description="Estamos consultando la planificacion mas reciente del club."
+              icon={<FaClock />}
+            />
+          )}
+
+          {!loading && error && (
+            <EmptyState
+              title="Error al Cargar Horarios"
+              description={error}
+              icon={<FaExclamationTriangle />}
+              action={<Button onClick={loadSchedules}>Reintentar</Button>}
+            />
+          )}
+
+          {!loading && !error && filteredSchedules.length === 0 && (
+            <EmptyState
+              title="No hay horarios programados"
+              description="Los horarios se actualizaran pronto. Revisa esta pagina regularmente."
+              icon={<FaCalendarAlt />}
+            />
+          )}
+
+          {!loading && !error && filteredSchedules.length > 0 && (
+            <div className="space-y-8">
+              {DAYS.filter((day) => day.value !== 'todos' && groupedSchedules[day.value]).map((day) => (
+                <div key={day.value} className="space-y-3">
+                  <h2 className="inline-flex items-center gap-2 text-2xl font-black text-white">
+                    <FaCalendarAlt className="text-rv-gold" /> {day.label}
+                  </h2>
+
+                  <div className="grid gap-4 tablet:grid-cols-2">
+                    {groupedSchedules[day.value].map((schedule) => {
+                      const categoryInfo = CATEGORY_DATA[schedule.categoria] || {
+                        label: schedule.categoria,
+                        borderClass: 'border-l-slate-400',
+                        badgeClass: 'bg-slate-500/20 text-slate-300',
+                        description: ''
+                      };
+
+                      return (
+                        <Card
+                          key={schedule.id}
+                          className={cn('h-full border-l-4', categoryInfo.borderClass)}
+                          padding="lg"
                         >
-                          <FaUsers className={styles.badgeIcon} />
-                          {getCategoriaLabel(horario.categoria)}
-                        </span>
-                      </div>
-                      
-                      <div className={styles.eventDetails}>
-                        <div className={styles.detailItem}>
-                          <div className={styles.detailIcon}>
-                            <FaClock />
+                          <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
+                            <StatusBadge className={cn('border-none text-[12px]', categoryInfo.badgeClass)}>
+                              <FaUsers className="mr-1" /> {categoryInfo.label}
+                            </StatusBadge>
                           </div>
-                          <div className={styles.detailContent}>
-                            <p className={styles.detailLabel}>Horario</p>
-                            <p className={styles.detailValue}>
-                              {formatTime(horario.hora_inicio)} - {formatTime(horario.hora_fin)}
+
+                          <div className="rounded-xl border border-white/10 bg-black/30 p-3">
+                            <p className="inline-flex items-center gap-2 text-sm font-semibold text-slate-100">
+                              <FaClock className="text-rv-gold" /> {formatTime(schedule.hora_inicio)} - {formatTime(schedule.hora_fin)}
                             </p>
                           </div>
-                        </div>
-                        
-                        <div className={styles.descriptionItem}>
-                          <div className={styles.descriptionIcon}>
-                            <FaInfoCircle />
+
+                          <div className="mt-4 rounded-xl border border-white/10 bg-black/20 p-3">
+                            <p className="mb-2 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-rv-gold/95">
+                              <FaInfoCircle /> Descripcion
+                            </p>
+                            <p className="text-sm leading-relaxed text-slate-200">{schedule.descripcion || categoryInfo.description}</p>
                           </div>
-                          <p className={styles.descriptionText}>
-                            {horario.descripcion || getDescripcionPorDefecto(horario.categoria)}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+                        </Card>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            ))
-          }
+              ))}
+            </div>
+          )}
         </div>
-      ) : (
-        <div className={styles.emptyState}>
-          <div className={styles.emptyIcon}><FaCalendarAlt /></div>
-          <h3 className={styles.emptyTitle}>No hay horarios programados</h3>
-          <p className={styles.emptyText}>Los horarios se actualizarán pronto. Revisa esta página regularmente.</p>
-        </div>
-      )}
-    </div>
+      </section>
+    </PageShell>
   );
 };
 

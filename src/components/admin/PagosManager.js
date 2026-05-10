@@ -1,14 +1,11 @@
 // src/components/admin/PagosManager.js
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { supabase } from '../../config/supabase';
-import { EmailService } from '../../services/emailService';
 import WhatsAppService from '../../services/whatsappService';
-import WhatsAppBusinessService from '../../services/whatsappBusinessService';
 import PagoStatusService from '../../services/pagoStatusService';
-import { getEcuadorDate, getEcuadorISOString } from '../../utils/dateUtils';
+import { paymentsService } from '../../features/payments';
+import { getEcuadorDate } from '../../utils/dateUtils';
 import { getLatestPaymentsList } from '../../utils/paymentUtils';
-import styles from '../../styles/PagosManager.module.css';
 import { 
   FaChartBar, 
   FaCheckCircle, 
@@ -25,6 +22,76 @@ import {
   FaCreditCard
 } from 'react-icons/fa';
 
+const styles = {
+  pagosManager: 'mx-auto w-full max-w-7xl space-y-4',
+  header: 'flex flex-wrap items-start justify-between gap-3',
+  headerLeft: '',
+  headerButtons: 'flex flex-wrap items-center gap-2',
+  updateButton: 'inline-flex min-h-[48px] items-center justify-center rounded-xl border border-rv-gold/40 bg-white/10 px-4 py-2 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-rv-gold/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80',
+  addButton: 'inline-flex min-h-[48px] items-center justify-center rounded-xl bg-rv-gold px-4 py-2 text-sm font-black uppercase tracking-wide text-rv-dark shadow-rv-gold transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80',
+  statsGrid: 'grid gap-3 mobile:grid-cols-2 desktop:grid-cols-5',
+  statCard: 'rounded-2xl border border-rv-gold/25 bg-black/35 p-4 backdrop-blur-md transition hover:-translate-y-0.5 hover:border-rv-gold/50',
+  statIcon: 'mb-2 inline-flex text-2xl text-rv-gold',
+  statInfo: '',
+  filtersSection: 'grid gap-3 rounded-2xl border border-white/15 bg-black/30 p-4 mobile:grid-cols-2 tablet:grid-cols-3 desktop:grid-cols-7',
+  filterGroup: 'space-y-1',
+  filterLabel: 'text-[11px] font-bold uppercase tracking-wide text-rv-gold/90',
+  searchInput: 'min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70',
+  filterInput: 'min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70',
+  filterSelect: 'min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70',
+  clearFiltersButton: 'min-h-[48px] w-full rounded-xl border border-rv-gold/40 bg-slate-900/50 px-3 py-2 text-sm font-semibold text-white transition hover:bg-rv-gold/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80',
+  filterSummary: 'text-sm text-slate-200',
+  loading: 'flex min-h-[40dvh] flex-col items-center justify-center gap-3 text-white',
+  spinner: 'h-10 w-10 animate-spin rounded-full border-4 border-white/25 border-t-rv-gold',
+  pagosTable: 'rounded-2xl border border-white/15 bg-black/30 backdrop-blur-md',
+  pagination: 'flex flex-wrap items-center justify-center gap-2 p-3',
+  pageButton: 'min-h-[48px] rounded-xl bg-rv-gold px-4 py-2 text-sm font-bold text-rv-dark transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-45',
+  pageInfo: 'rounded-full border border-rv-gold/30 bg-black/40 px-3 py-1 text-sm font-semibold text-white',
+  tableContainer: 'overflow-x-auto',
+  table: 'w-full min-w-[900px] border-collapse [&_thead_th]:border-b [&_thead_th]:border-white/20 [&_thead_th]:bg-white/10 [&_thead_th]:px-4 [&_thead_th]:py-3 [&_thead_th]:text-left [&_thead_th]:text-xs [&_thead_th]:font-bold [&_thead_th]:uppercase [&_thead_th]:tracking-wide [&_thead_th]:text-white [&_tbody_td]:border-b [&_tbody_td]:border-white/10 [&_tbody_td]:px-4 [&_tbody_td]:py-3 [&_tbody_td]:align-middle [&_tbody_td]:text-sm [&_tbody_td]:text-white',
+  tableRow: 'transition hover:bg-white/5',
+  atletaInfo: 'flex flex-col gap-0.5',
+  monto: 'text-base font-black text-emerald-300',
+  estadoBadge: 'inline-flex rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-white',
+  actions: 'flex items-center gap-1',
+  paidButton: 'inline-flex min-h-[48px] min-w-[48px] items-center justify-center rounded-lg border border-emerald-400/30 bg-emerald-500/20 text-emerald-200 transition hover:bg-emerald-500/35',
+  editButton: 'inline-flex min-h-[48px] min-w-[48px] items-center justify-center rounded-lg border border-amber-400/30 bg-amber-500/20 text-amber-200 transition hover:bg-amber-500/35',
+  deleteButton: 'inline-flex min-h-[48px] min-w-[48px] items-center justify-center rounded-lg border border-red-400/30 bg-red-500/20 text-red-200 transition hover:bg-red-500/35',
+  noPagos: 'rounded-2xl border border-white/15 bg-black/25 p-8 text-center text-slate-200',
+  modalOverlay: 'fixed inset-0 z-[1200] flex items-center justify-center bg-black/75 p-3 backdrop-blur-sm',
+  modal: 'max-h-[92dvh] w-full max-w-4xl overflow-y-auto rounded-2xl border border-rv-gold/25 bg-slate-950/95 p-4 text-white shadow-2xl mobile:p-6',
+  modalHeader: 'mb-4 flex items-start justify-between gap-3 border-b border-white/15 pb-3',
+  closeButton: 'inline-flex min-h-[48px] min-w-[48px] items-center justify-center rounded-xl border border-white/20 bg-white/10 text-white transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80',
+  form: 'space-y-4',
+  formErrorSummary: 'rounded-xl border border-red-400/35 bg-red-500/15 px-3 py-2 text-sm text-red-100',
+  statusPreview: 'flex flex-wrap items-center gap-2 rounded-xl border border-white/15 bg-black/25 px-3 py-2',
+  statusPreviewLabel: 'text-sm font-semibold text-slate-200',
+  statusPreviewBadge: 'inline-flex rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wide text-white',
+  formSection: 'rounded-2xl border border-white/15 bg-black/25 p-4',
+  sectionTitle: 'mb-3 text-base font-black text-white',
+  formGrid: 'grid gap-3 tablet:grid-cols-2',
+  inputGroup: 'space-y-1',
+  inputGroupFullWidth: 'space-y-1 tablet:col-span-2',
+  autosuggestContainer: 'relative',
+  fieldError: 'text-xs font-semibold text-red-300',
+  fieldHint: 'text-xs text-slate-400',
+  sugerenciasList: 'absolute z-20 mt-1 max-h-64 w-full overflow-y-auto rounded-xl border border-white/20 bg-slate-950/95 shadow-2xl',
+  sugerenciaItem: 'w-full border-b border-white/10 px-3 py-2 text-left transition last:border-0 hover:bg-rv-gold/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80',
+  sugerenciaNombre: 'block text-sm font-semibold text-white',
+  sugerenciaCategoria: 'block text-[11px] uppercase tracking-wide text-slate-300',
+  noResultados: 'rounded-xl border border-white/15 bg-black/20 px-3 py-2 text-sm text-slate-300',
+  formActions: 'flex flex-wrap justify-end gap-2 pt-2',
+  cancelButton: 'inline-flex min-h-[48px] items-center justify-center rounded-xl border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80',
+  saveButton: 'inline-flex min-h-[48px] items-center justify-center rounded-xl bg-rv-gold px-4 py-2 text-sm font-black text-rv-dark shadow-rv-gold transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60'
+};
+
+const getPaymentStatusClass = (status) => {
+  if (status === 'activo') return 'bg-emerald-600 text-white';
+  if (status === 'proximo_a_vencer') return 'bg-amber-400 text-slate-900';
+  if (status === 'vencido') return 'bg-red-600 text-white';
+  return 'bg-slate-500 text-white';
+};
+
 const PagosManager = ({ user }) => {
   const modalTitleId = 'payment-modal-title';
   const firstPaymentFieldRef = useRef(null);
@@ -34,7 +101,6 @@ const PagosManager = ({ user }) => {
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [editingPago, setEditingPago] = useState(null);
-  const [whatsAppBusiness] = useState(new WhatsAppBusinessService());
   const [currentPage, setCurrentPage] = useState(1);
   const PAGE_SIZE = 10;
   const [filters, setFilters] = useState({
@@ -175,70 +241,14 @@ const PagosManager = ({ user }) => {
   const loadData = async () => {
     setLoading(true);
     try {
-      // Cargar atletas para el selector
-      const { data: atletasData, error: atletasError } = await supabase
-        .from('students')
-        .select(`
-          id,
-          categoria,
-          users(id, nombre, apellido, email)
-        `)
-        .order('users(apellido)', { ascending: true });
+      const { athletes, payments, statusUpdateSummary } = await paymentsService.listModuleData();
+      setAtletas(athletes || []);
+      setAllPagos(payments || []);
+      setPagos(payments || []);
 
-      if (atletasError) throw atletasError;
-      setAtletas(atletasData || []);
-
-      // Cargar TODOS los pagos sin filtros (solo los no eliminados)
-      const { data: pagosData, error: pagosError } = await supabase
-        .from('payments')
-        .select(`
-          *,
-          student:students(
-            id,
-            categoria,
-            user:users(id, nombre, apellido, email, telefono)
-          )
-        `)
-        .is('deleted_at', null)
-        .order('fecha_inicio', { ascending: false });
-
-      if (pagosError) throw pagosError;
-
-      // Actualizar estados automáticamente en segundo plano
-      console.log('🔄 Verificando y actualizando estados de pagos...');
-      const resultadoActualizacion = await PagoStatusService.actualizarTodosLosEstados(supabase);
-      if (resultadoActualizacion.actualizados > 0) {
-        console.log(`✅ ${resultadoActualizacion.actualizados} pagos actualizados automáticamente`);
-        // Recargar todos los pagos si hubo cambios
-        const { data: pagosActualizados } = await supabase
-          .from('payments')
-          .select(`
-            *,
-            student:students(
-              id,
-              categoria,
-              user:users(id, nombre, apellido, email, telefono)
-            )
-          `)
-          .is('deleted_at', null)
-          .order('fecha_inicio', { ascending: false });
-        
-        if (pagosActualizados) {
-          setAllPagos(pagosActualizados);
-          // Mostrar todos los pagos inicialmente
-          setPagos(pagosActualizados);
-        } else {
-          setAllPagos(pagosData || []);
-          // Mostrar todos los pagos inicialmente
-          setPagos(pagosData || []);
-        }
-      } else {
-        setAllPagos(pagosData || []);
-        // Mostrar todos los pagos inicialmente
-        setPagos(pagosData || []);
+      if (statusUpdateSummary?.actualizados > 0) {
+        console.log(`✅ ${statusUpdateSummary.actualizados} pagos actualizados automáticamente`);
       }
-
-      // Los filtros se aplicarán automáticamente por el useEffect de filters
     } catch (error) {
       console.error('Error cargando datos:', error);
       alert('Error al cargar los datos: ' + error.message);
@@ -249,89 +259,10 @@ const PagosManager = ({ user }) => {
 
   // Función para aplicar filtros localmente
   const applyFilters = () => {
-    const normalizeText = (value = '') => value
-      .toString()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .toLowerCase()
-      .trim();
-
-    const getSortableValue = (pago) => {
-      switch (filters.sortBy) {
-        case 'nombre':
-          return normalizeText(pago.student?.user?.nombre || '');
-        case 'estado':
-          return normalizeText(PagoStatusService.getStatusInfo(pago).estado || '');
-        case 'monto':
-          return Number(pago.monto || 0);
-        case 'fecha_inicio':
-          return new Date(pago.fecha_inicio || '1900-01-01').getTime();
-        case 'apellido':
-        default:
-          return normalizeText(pago.student?.user?.apellido || '');
-      }
-    };
-
-    // Mostrar solo el pago mas reciente por atleta para evitar vencidos historicos en la vista principal.
-    let filteredData = getLatestPaymentsList(allPagos);
-
-    // Filtrar por fecha de inicio
-    if (filters.fecha_inicio) {
-      filteredData = filteredData.filter(pago => {
-        if (!pago.fecha_inicio) return false;
-        return pago.fecha_inicio >= filters.fecha_inicio;
-      });
-    }
-
-    // Filtrar por fecha fin
-    if (filters.fecha_fin) {
-      filteredData = filteredData.filter(pago => {
-        if (!pago.fecha_fin) return true; // Si no tiene fecha fin, incluirlo
-        return pago.fecha_fin <= filters.fecha_fin;
-      });
-    }
-
-    // Filtrar por estado
-    if (filters.estado) {
-      filteredData = filteredData.filter(
-        pago => PagoStatusService.getStatusInfo(pago).estado === filters.estado
-      );
-    }
-
-    // Filtrar por atleta
-    if (filters.atleta) {
-      filteredData = filteredData.filter(pago => pago.student_id?.toString() === filters.atleta);
-    }
-
-    // Filtrar por búsqueda de texto
-    if (filters.search) {
-      const searchLower = normalizeText(filters.search);
-      filteredData = filteredData.filter(pago => 
-        normalizeText(pago.student?.user?.nombre).includes(searchLower) ||
-        normalizeText(pago.student?.user?.apellido).includes(searchLower) ||
-        normalizeText(pago.student?.user?.email).includes(searchLower)
-      );
-    }
-
-    filteredData.sort((a, b) => {
-      const valueA = getSortableValue(a);
-      const valueB = getSortableValue(b);
-
-      if (typeof valueA === 'number' && typeof valueB === 'number') {
-        return filters.sortOrder === 'asc' ? valueA - valueB : valueB - valueA;
-      }
-
-      if (valueA < valueB) {
-        return filters.sortOrder === 'asc' ? -1 : 1;
-      }
-
-      if (valueA > valueB) {
-        return filters.sortOrder === 'asc' ? 1 : -1;
-      }
-
-      return 0;
+    const filteredData = paymentsService.filterAndSortLatestPayments({
+      allPayments: allPagos,
+      filters,
     });
-
     setPagos(filteredData);
   };
 
@@ -396,163 +327,37 @@ const PagosManager = ({ user }) => {
   };
 
   const createPago = async () => {
-    // Crear objeto temporal para calcular estado
-    const pagoTemporal = {
-      student_id: formData.student_id,
-      monto: Number.parseFloat(formData.monto),
-      fecha_inicio: formData.fecha_inicio || null,
-      fecha_fin: formData.fecha_fin || null,
-      fecha_pago: formData.fecha_pago || null
-    };
-    
-    // Calcular estado automáticamente
-    const estadoCalculado = PagoStatusService.calcularEstado(pagoTemporal);
-    
-    // Crear el pago en la base de datos
-    const { data: pagoCreado, error } = await supabase
-      .from('payments')
-      .insert({
-        ...pagoTemporal,
-        estado: estadoCalculado
-      })
-      .select()
-      .single();
+    const result = await paymentsService.createPayment({ formData });
 
-    if (error) throw error;
+    if (!result.whatsappSent) {
+      const selectedAthlete = atletas.find((athlete) => String(athlete.id) === String(formData.student_id));
+      const phone = selectedAthlete?.users?.telefono;
+      if (phone && WhatsAppService.validarTelefono(phone)) {
+        const formattedPhone = WhatsAppService.formatearTelefono(phone);
+        const whatsappMessage = WhatsAppService.crearMensajePago({
+          id: result.createdPayment?.id,
+          estudiante_nombre: `${selectedAthlete?.users?.nombre || ''} ${selectedAthlete?.users?.apellido || ''}`.trim(),
+          monto: Number.parseFloat(formData.monto),
+          fecha_pago: formData.fecha_pago,
+          concepto: 'Mensualidad Club de Voley',
+          observaciones: formData.observaciones,
+        });
 
-    console.log('✅ Pago creado exitosamente:', pagoCreado);
-
-    // Obtener información del atleta directamente de Supabase
-    try {
-      console.log('[DEBUG] Obteniendo información del atleta con ID:', formData.student_id);
-      
-      const { data: atletaData, error: atletaError } = await supabase
-        .from('students')
-        .select(`
-          id,
-          categoria,
-          users!inner(
-            id,
-            email,
-            nombre,
-            apellido,
-            telefono
-          )
-        `)
-        .eq('id', formData.student_id)
-        .single();
-
-      if (atletaError) {
-        console.error('❌ Error obteniendo datos del atleta:', atletaError);
-        return { emailSent: false, emailError: 'No se pudo obtener información del atleta' };
-      }
-
-      if (!atletaData?.users?.email) {
-        console.warn('⚠️ No se encontró email para el atleta');
-        return { emailSent: false, emailError: 'El atleta no tiene email configurado' };
-      }
-
-      console.log('👤 Datos del atleta encontrados:', {
-        email: atletaData.users.email,
-        nombre: atletaData.users.nombre,
-        apellido: atletaData.users.apellido
-      });
-
-      // Enviar email de confirmación de pago
-      console.log('📧 Enviando notificación de pago a:', atletaData.users.email);
-      
-      const emailResult = await EmailService.sendPaymentConfirmation({
-        email: atletaData.users.email,
-        nombre: atletaData.users.nombre,
-        apellido: atletaData.users.apellido,
-        monto: Number.parseFloat(formData.monto),
-        fecha_inicio: formData.fecha_inicio,
-        fecha_fin: formData.fecha_fin,
-        fecha_pago: formData.fecha_pago,
-        estado: pagoCreado.estado
-      });
-      
-      if (emailResult.success) {
-        console.log('✅ Email de confirmación enviado exitosamente');
-        
-        // Verificar si el atleta tiene teléfono para WhatsApp Business
-        if (atletaData.users.telefono && WhatsAppService.validarTelefono(atletaData.users.telefono)) {
-          // Verificar configuración de WhatsApp Business
-          const businessConfig = whatsAppBusiness.validateConfiguration();
-          
-          if (businessConfig.isValid) {
-            // Usar WhatsApp Business API (automático)
-            console.log('📱 Enviando mensaje por WhatsApp Business...');
-            
-            const whatsAppResult = await whatsAppBusiness.sendPaymentConfirmation({
-              id: pagoCreado.id,
-              estudiante_nombre: `${atletaData.users.nombre} ${atletaData.users.apellido}`,
-              monto: Number.parseFloat(formData.monto),
-              fecha_pago: formData.fecha_pago,
-              concepto: 'Mensualidad Club de Voley'
-            }, atletaData.users.telefono);
-            
-            if (whatsAppResult.success) {
-              console.log('✅ WhatsApp Business enviado exitosamente');
-              return { emailSent: true, whatsappSent: true, messageId: whatsAppResult.messageId };
-            } else {
-              console.warn('⚠️ Error en WhatsApp Business:', whatsAppResult.error);
-              return { emailSent: true, whatsappSent: false, whatsappError: whatsAppResult.error };
-            }
-          } else {
-            // Fallback: usar WhatsApp Web (manual)
-            console.log('⚠️ WhatsApp Business no configurado, usando método manual');
-            const telefonoFormateado = WhatsAppService.formatearTelefono(atletaData.users.telefono);
-            const mensajeWhatsApp = WhatsAppService.crearMensajePago({
-              id: pagoCreado.id,
-              estudiante_nombre: `${atletaData.users.nombre} ${atletaData.users.apellido}`,
-              monto: Number.parseFloat(formData.monto),
-              fecha_pago: formData.fecha_pago,
-              concepto: 'Mensualidad Club de Voley',
-              observaciones: formData.observaciones
-            });
-            
-            if (globalThis.confirm('¿Desea enviar confirmación por WhatsApp al atleta?')) {
-              WhatsAppService.sendMessage(telefonoFormateado, mensajeWhatsApp);
-              return { emailSent: true, whatsappSent: true };
-            }
-          }
+        if (globalThis.confirm('¿Desea enviar confirmación por WhatsApp al atleta?')) {
+          WhatsAppService.sendMessage(formattedPhone, whatsappMessage);
+          return { ...result, whatsappSent: true };
         }
-        
-        return { emailSent: true };
-      } else {
-        console.warn('⚠️ El email no se pudo enviar:', emailResult.error);
-        return { emailSent: false, emailError: emailResult.error };
       }
-      
-    } catch (emailError) {
-      console.error('❌ Error en proceso de envío de email:', emailError);
-      return { emailSent: false, emailError: emailError.message };
     }
+
+    return result;
   };
 
   const updatePago = async () => {
-    // Crear objeto temporal para calcular estado
-    const pagoTemporal = {
-      student_id: formData.student_id,
-      monto: Number.parseFloat(formData.monto),
-      fecha_inicio: formData.fecha_inicio || null,
-      fecha_fin: formData.fecha_fin || null,
-      fecha_pago: formData.fecha_pago || null
-    };
-    
-    // Calcular estado automáticamente
-    const estadoCalculado = PagoStatusService.calcularEstado(pagoTemporal);
-    
-    const { error } = await supabase
-      .from('payments')
-      .update({
-        ...pagoTemporal,
-        estado: estadoCalculado
-      })
-      .eq('id', editingPago.id);
-
-    if (error) throw error;
+    await paymentsService.updatePayment({
+      paymentId: editingPago.id,
+      formData,
+    });
   };
 
   const deletePago = async (pago) => {
@@ -566,13 +371,7 @@ const PagosManager = ({ user }) => {
     }
 
     try {
-      // Soft delete: marcar como eliminado en lugar de borrar
-      const { error } = await supabase
-        .from('payments')
-        .update({ deleted_at: getEcuadorISOString() })
-        .eq('id', pago.id);
-
-      if (error) throw error;
+      await paymentsService.deletePayment({ paymentId: pago.id });
 
       loadData();
       alert('✅ Pago marcado como eliminado.\nSe puede recuperar desde la base de datos durante 30 días.');
@@ -584,21 +383,7 @@ const PagosManager = ({ user }) => {
 
   const marcarComoPagado = async (pago) => {
     try {
-      const fechaPago = getEcuadorDate();
-      const estadoCalculado = PagoStatusService.calcularEstado({
-        ...pago,
-        fecha_pago: fechaPago
-      });
-
-      const { error } = await supabase
-        .from('payments')
-        .update({
-          fecha_pago: fechaPago,
-          estado: estadoCalculado
-        })
-        .eq('id', pago.id);
-
-      if (error) throw error;
+      await paymentsService.markPaymentAsPaid({ payment: pago });
 
       loadData();
       alert('Fecha de pago registrada');
@@ -761,7 +546,7 @@ const PagosManager = ({ user }) => {
     <div className={styles.pagosManager}>
       <div className={styles.header}>
         <div className={styles.headerLeft}>
-          <h2><FaMoneyBillWave style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Gestión de Pagos</h2>
+          <h2><FaMoneyBillWave className="mr-2 inline align-middle" /> Gestión de Pagos</h2>
           <p>Administrar mensualidades y pagos del club</p>
         </div>
         <div className={styles.headerButtons}>
@@ -770,13 +555,13 @@ const PagosManager = ({ user }) => {
             onClick={actualizarEstadosManualmente}
             title="Actualizar estados automáticamente"
           >
-            <FaSync style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Actualizar Estados
+            <FaSync className="mr-2 inline align-middle" /> Actualizar Estados
           </button>
           <button 
             className={styles.addButton}
             onClick={() => openModal()}
           >
-            <FaPlus style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Registrar Pago
+            <FaPlus className="mr-2 inline align-middle" /> Registrar Pago
           </button>
         </div>
       </div>
@@ -977,7 +762,9 @@ const PagosManager = ({ user }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {paginatedPagos.map(pago => (
+                  {paginatedPagos.map((pago) => {
+                    const statusInfo = PagoStatusService.getStatusInfo(pago);
+                    return (
                     <tr key={pago.id} className={styles.tableRow}>
                       <td data-label="Atleta">
                         <div className={styles.atletaInfo}>
@@ -989,10 +776,9 @@ const PagosManager = ({ user }) => {
                       <td className={styles.monto} data-label="Monto">{formatMonto(pago.monto)}</td>
                       <td data-label="Estado">
                         <span
-                          className={styles.estadoBadge}
-                          style={{ backgroundColor: PagoStatusService.getStatusInfo(pago).color }}
+                          className={`${styles.estadoBadge} ${getPaymentStatusClass(statusInfo.estado)}`}
                         >
-                          {PagoStatusService.getStatusInfo(pago).mensaje}
+                          {statusInfo.mensaje}
                         </span>
                       </td>
                       <td data-label="Fecha Pago">
@@ -1029,7 +815,8 @@ const PagosManager = ({ user }) => {
                         </div>
                       </td>
                     </tr>
-                  ))}
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
@@ -1055,7 +842,7 @@ const PagosManager = ({ user }) => {
             </>
           ) : (
             <div className={styles.noPagos}>
-              <h3><FaCreditCard style={{ marginRight: '8px', verticalAlign: 'middle' }} /> No hay pagos registrados</h3>
+              <h3><FaCreditCard className="mr-2 inline align-middle" /> No hay pagos registrados</h3>
               <p>Registra el primer pago del club</p>
             </div>
           )}
@@ -1072,12 +859,12 @@ const PagosManager = ({ user }) => {
             aria-labelledby={modalTitleId}
             onClick={(event) => event.stopPropagation()}
           >
-            <div className={styles.modalHeader}>
-              <h3 id={modalTitleId}>
+<div className={styles.modalHeader}>
+              <h3 id={modalTitleId} className="text-xl font-bold text-white">
                 {editingPago ? (
-                  <><FaEdit style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Editar Pago</>
+                  <><FaEdit className="mr-2 inline align-middle" /> Editar Pago</>
                 ) : (
-                  <><FaPlus style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Registrar Nuevo Pago</>
+                  <><FaPlus className="mr-2 inline align-middle" /> Registrar Nuevo Pago</>
                 )}
               </h3>
               <button 
@@ -1098,16 +885,18 @@ const PagosManager = ({ user }) => {
 
               <div className={styles.statusPreview}>
                 <span className={styles.statusPreviewLabel}>Estado estimado:</span>
-                <span className={styles.statusPreviewBadge} style={{ backgroundColor: paymentStatusPreview.color }}>
+                <span
+                  className={`${styles.statusPreviewBadge} ${getPaymentStatusClass(paymentStatusPreview.estado)}`}
+                >
                   {paymentStatusPreview.mensaje}
                 </span>
               </div>
 
-              <div className={styles.formSection}>
-                <h4 className={styles.sectionTitle}><FaUsers style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Atleta y Periodo</h4>
+<div className={styles.formSection}>
+                <h4 className={styles.sectionTitle}><FaUsers className="mr-2 inline align-middle" />Atleta y Periodo</h4>
                 <div className={styles.formGrid}>
-                  <div className={styles.inputGroup}>
-                    <label htmlFor="student_id">Atleta *</label>
+<div className={styles.inputGroup}>
+                    <label htmlFor="student_id" className="block text-sm font-semibold text-white">Atleta *</label>
                     <div className={styles.autosuggestContainer}>
                       <input
                         ref={firstPaymentFieldRef}
@@ -1123,6 +912,7 @@ const PagosManager = ({ user }) => {
                         placeholder="Escribe el nombre del atleta..."
                         required
                         autoComplete="off"
+                        className="min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
                         aria-invalid={Boolean(formErrors.student_id)}
                         aria-describedby={formErrors.student_id ? 'payment-student-error' : undefined}
                       />
@@ -1163,8 +953,8 @@ const PagosManager = ({ user }) => {
                     </div>
                   </div>
 
-                  <div className={styles.inputGroup}>
-                    <label htmlFor="fecha_inicio">Fecha Inicio *</label>
+<div className={styles.inputGroup}>
+                    <label htmlFor="fecha_inicio" className="block text-sm font-semibold text-white">Fecha Inicio *</label>
                     <input
                       id="fecha_inicio"
                       type="date"
@@ -1175,6 +965,7 @@ const PagosManager = ({ user }) => {
                       }}
                       required
                       max={getTodayDateString()}
+                      className="min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
                       aria-invalid={Boolean(formErrors.fecha_inicio)}
                       aria-describedby={formErrors.fecha_inicio ? 'payment-start-error' : 'payment-start-hint'}
                     />
@@ -1183,7 +974,7 @@ const PagosManager = ({ user }) => {
                   </div>
 
                   <div className={styles.inputGroup}>
-                    <label htmlFor="fecha_fin">Fecha Fin</label>
+                    <label htmlFor="fecha_fin" className="block text-sm font-semibold text-white">Fecha Fin</label>
                     <input
                       id="fecha_fin"
                       type="date"
@@ -1193,6 +984,7 @@ const PagosManager = ({ user }) => {
                         setFormErrors((previousErrors) => ({ ...previousErrors, fecha_fin: undefined }));
                       }}
                       min={formData.fecha_inicio || undefined}
+                      className="min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
                       aria-invalid={Boolean(formErrors.fecha_fin)}
                       aria-describedby={formErrors.fecha_fin ? 'payment-end-error' : 'payment-end-hint'}
                     />
@@ -1202,11 +994,11 @@ const PagosManager = ({ user }) => {
                 </div>
               </div>
 
-              <div className={styles.formSection}>
-                <h4 className={styles.sectionTitle}><FaDollarSign style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Datos del Pago</h4>
+<div className={styles.formSection}>
+                <h4 className={styles.sectionTitle}><FaDollarSign className="mr-2 inline align-middle" />Datos del Pago</h4>
                 <div className={styles.formGrid}>
-                  <div className={styles.inputGroup}>
-                    <label htmlFor="monto">Monto *</label>
+<div className={styles.inputGroup}>
+                    <label htmlFor="monto" className="block text-sm font-semibold text-white">Monto *</label>
                     <input
                       id="monto"
                       type="number"
@@ -1219,6 +1011,7 @@ const PagosManager = ({ user }) => {
                       }}
                       required
                       placeholder="0.00"
+                      className="min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
                       aria-invalid={Boolean(formErrors.monto)}
                       aria-describedby={formErrors.monto ? 'payment-amount-error' : 'payment-amount-hint'}
                     />
@@ -1227,7 +1020,7 @@ const PagosManager = ({ user }) => {
                   </div>
 
                   <div className={styles.inputGroup}>
-                    <label htmlFor="fecha_pago">Fecha de Pago</label>
+                    <label htmlFor="fecha_pago" className="block text-sm font-semibold text-white">Fecha de Pago</label>
                     <input
                       id="fecha_pago"
                       type="date"
@@ -1237,6 +1030,7 @@ const PagosManager = ({ user }) => {
                         setFormErrors((previousErrors) => ({ ...previousErrors, fecha_pago: undefined }));
                       }}
                       max={getTodayDateString()}
+                      className="min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
                       aria-invalid={Boolean(formErrors.fecha_pago)}
                       aria-describedby={formErrors.fecha_pago ? 'payment-date-error' : 'payment-date-hint'}
                     />
@@ -1245,7 +1039,7 @@ const PagosManager = ({ user }) => {
                   </div>
 
                   <div className={styles.inputGroupFullWidth}>
-                    <label htmlFor="observaciones">Observaciones</label>
+                    <label htmlFor="observaciones" className="block text-sm font-semibold text-white">Observaciones</label>
                     <textarea
                       id="observaciones"
                       value={formData.observaciones}
@@ -1255,6 +1049,7 @@ const PagosManager = ({ user }) => {
                       }}
                       maxLength={300}
                       placeholder="Notas internas del pago (opcional)"
+                      className="min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
                       aria-invalid={Boolean(formErrors.observaciones)}
                       aria-describedby={formErrors.observaciones ? 'payment-notes-error' : 'payment-notes-hint'}
                     />
@@ -1297,3 +1092,4 @@ PagosManager.propTypes = {
 };
 
 export default PagosManager;
+

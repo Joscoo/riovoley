@@ -1,20 +1,29 @@
 // src/components/admin/AdminPanel.js
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { FaBan, FaBullhorn, FaCalendar, FaChartBar, FaClock, FaCog, FaDollarSign, FaDumbbell, FaUser, FaUsers } from 'react-icons/fa';
 import { useUserProfile } from '../../hooks/useUserProfile';
-import Dashboard from './Dashboard';
-import AtletasManager from './AtletasManager';
-import PagosManager from './PagosManager';
-import AsistenciasManager from './AsistenciasManager';
-import TestsFisicosManager from './TestsFisicosManager';
-import UsuariosManager from './UsuariosManager';
-import EntrenadoresManager from './EntrenadoresManager';
-import ProfileSettings from './ProfileSettings';
-import AnunciosManager from './AnunciosManager';
-import HorariosManager from './HorariosManager';
-import RoleSidebar from '../layout/RoleSidebar';
-import styles from '../../styles/AdminPanel.module.css';
-import { FaChartBar, FaVolleyballBall, FaChalkboardTeacher, FaDollarSign, FaCalendar, FaDumbbell, FaUsers, FaBullhorn, FaCog, FaBan, FaUser, FaClock } from 'react-icons/fa';
+import * as AnunciosManagerModule from './AnunciosManager';
+import * as AsistenciasManagerModule from './AsistenciasManager';
+import * as DashboardModule from './Dashboard';
+import * as HorariosManagerModule from './HorariosManager';
+import * as PagosManagerModule from './PagosManager';
+import * as ProfileSettingsModule from './ProfileSettings';
+import * as TestsFisicosManagerModule from './TestsFisicosManager';
+import * as RolePanelLayoutModule from '../layout/RolePanelLayout';
+import * as UserManagementModule from './UserManagement/UserManagementPanel';
+
+const resolveComponent = (module, namedExport) => module?.default || module?.[namedExport] || null;
+
+const AnunciosManager = resolveComponent(AnunciosManagerModule, 'AnunciosManager');
+const AsistenciasManager = resolveComponent(AsistenciasManagerModule, 'AsistenciasManager');
+const Dashboard = resolveComponent(DashboardModule, 'Dashboard');
+const HorariosManager = resolveComponent(HorariosManagerModule, 'HorariosManager');
+const PagosManager = resolveComponent(PagosManagerModule, 'PagosManager');
+const ProfileSettings = resolveComponent(ProfileSettingsModule, 'ProfileSettings');
+const TestsFisicosManager = resolveComponent(TestsFisicosManagerModule, 'TestsFisicosManager');
+const RolePanelLayout = resolveComponent(RolePanelLayoutModule, 'RolePanelLayout');
+const UserManagementPanel = resolveComponent(UserManagementModule, 'UserManagementPanel');
 
 const AdminPanel = ({ user }) => {
   const { profile, isAdmin, loading } = useUserProfile(user);
@@ -22,48 +31,76 @@ const AdminPanel = ({ user }) => {
 
   if (loading) {
     return (
-      <div className={styles.loading}>
-        <div className={styles.spinner}></div>
-        <p>Cargando panel de administración...</p>
+      <div className="flex min-h-[60dvh] flex-col items-center justify-center gap-4 text-white">
+        <div className="h-10 w-10 animate-spin rounded-full border-4 border-white/25 border-t-red-500" />
+        <p className="text-sm font-semibold mobile:text-base">Cargando panel de administracion...</p>
       </div>
     );
   }
 
   if (!isAdmin()) {
     return (
-      <div className={styles.accessDenied}>
-        <h2><FaBan style={{ marginRight: '10px', verticalAlign: 'middle' }} /> Acceso Denegado</h2>
-        <p>Solo los administradores pueden acceder a este panel.</p>
-        <p>Tu rol actual: <strong>{profile?.role || 'Sin rol'}</strong></p>
+      <div className="mx-auto mt-10 max-w-xl rounded-2xl border border-red-300/35 bg-white p-8 text-center shadow-xl">
+        <h2 className="inline-flex items-center gap-2 text-2xl font-black text-red-700"><FaBan /> Acceso Denegado</h2>
+        <p className="mt-3 text-slate-700">Solo los administradores pueden acceder a este panel.</p>
+        <p className="mt-1 text-slate-700">
+          Tu rol actual: <strong>{profile?.role || 'Sin rol'}</strong>
+        </p>
       </div>
     );
   }
 
-  const menuItems = [
-    { id: 'dashboard', icon: <FaChartBar />, label: 'Dashboard', description: 'Resumen y estadísticas' },
-    { id: 'atletas', icon: <FaVolleyballBall />, label: 'Atletas', description: 'Gestionar deportistas' },
-    { id: 'entrenadores', icon: <FaChalkboardTeacher />, label: 'Entrenadores', description: 'Gestionar entrenadores' },
-    { id: 'pagos', icon: <FaDollarSign />, label: 'Pagos', description: 'Mensualidades y facturación' },
+const menuItems = [
+    { id: 'dashboard', icon: <FaChartBar />, label: 'Dashboard', description: 'Resumen y estadisticas' },
+    { id: 'usuarios', icon: <FaUsers />, label: 'Gestion de Usuarios', description: 'Atletas, entrenadores y administradores' },
+    { id: 'pagos', icon: <FaDollarSign />, label: 'Pagos', description: 'Mensualidades y facturacion' },
     { id: 'asistencias', icon: <FaCalendar />, label: 'Asistencias', description: 'Control de entrenamientos' },
-    { id: 'horarios', icon: <FaClock />, label: 'Horarios', description: 'Gestión de horarios de entrenamientos' },
-    { id: 'tests-fisicos', icon: <FaDumbbell />, label: 'Tests Físicos', description: 'Evaluaciones físicas' },
-    { id: 'usuarios', icon: <FaUsers />, label: 'Usuarios', description: 'Gestión de usuarios y roles' },
+    { id: 'horarios', icon: <FaClock />, label: 'Horarios', description: 'Gestion de horarios de entrenamientos' },
+    { id: 'tests-fisicos', icon: <FaDumbbell />, label: 'Tests Fisicos', description: 'Evaluaciones fisicas' },
     { id: 'anuncios', icon: <FaBullhorn />, label: 'Anuncios', description: 'Comunicados y notificaciones' },
-    { id: 'configuracion', icon: <FaCog />, label: 'Configuración', description: 'Perfil y seguridad' }
+    { id: 'configuracion', icon: <FaCog />, label: 'Configuracion', description: 'Perfil y seguridad' }
   ];
 
   const handleNavigateToSection = (sectionId) => {
     setActiveSection(sectionId);
   };
 
-  const renderActiveSection = () => {
+const componentRegistry = {
+    Dashboard,
+    PagosManager,
+    AsistenciasManager,
+    HorariosManager,
+    TestsFisicosManager,
+    AnunciosManager,
+    ProfileSettings,
+    RolePanelLayout,
+    UserManagementPanel
+  };
+
+  const invalidComponents = Object.entries(componentRegistry)
+    .filter(([, component]) => !component)
+    .map(([name]) => name);
+
+  if (invalidComponents.length > 0) {
+    return (
+      <div className="mx-auto mt-10 max-w-2xl rounded-2xl border border-red-300/35 bg-white p-8 text-center shadow-xl">
+        <h2 className="inline-flex items-center gap-2 text-2xl font-black text-red-700"><FaBan />Error de Componentes</h2>
+        <p className="mt-3 text-slate-700">
+          Hay modulos del panel que no se pudieron cargar correctamente.
+        </p>
+        <p className="mt-2 text-sm font-semibold text-slate-800">
+          Componentes afectados: {invalidComponents.join(', ')}
+        </p>
+      </div>
+    );
+  }
+
+const renderActiveSection = () => {
     switch (activeSection) {
       case 'dashboard':
         return <Dashboard user={user} onNavigateToSection={handleNavigateToSection} />;
-      case 'atletas':
-        return <AtletasManager user={user} />;
-      case 'entrenadores':
-        return <EntrenadoresManager user={user} />;
+      case 'usuarios':
+        return <UserManagementPanel user={user} userRole="administrador" />;
       case 'pagos':
         return <PagosManager user={user} />;
       case 'asistencias':
@@ -72,8 +109,6 @@ const AdminPanel = ({ user }) => {
         return <HorariosManager user={user} />;
       case 'tests-fisicos':
         return <TestsFisicosManager user={user} />;
-      case 'usuarios':
-        return <UsuariosManager user={user} />;
       case 'anuncios':
         return <AnunciosManager user={user} />;
       case 'configuracion':
@@ -84,35 +119,25 @@ const AdminPanel = ({ user }) => {
   };
 
   return (
-    <div className={styles.adminPanel}>
-      <div className={styles.mainContainer}>
-        <RoleSidebar
-          variant="admin"
-          title={profile?.full_name || user?.email || 'Administrador'}
-          roleLabel="Administrador"
-          badgeLabel="ADMINISTRADOR"
-          avatarIcon={<FaUser />}
-          menuItems={menuItems}
-          activeSection={activeSection}
-          onSectionChange={setActiveSection}
-        />
-
-        {/* Main Content */}
-        <main className={styles.mainContent}>
-          <div className={styles.contentHeader}>
-            <div className={styles.breadcrumb}>
-              <span>Panel Admin</span>
-              <span className={styles.separator}>›</span>
-              <span>{menuItems.find(item => item.id === activeSection)?.label}</span>
-            </div>
-          </div>
-          
-          <div className={styles.contentBody}>
-            {renderActiveSection()}
-          </div>
-        </main>
-      </div>
-    </div>
+    <RolePanelLayout
+      variant="admin"
+      title={profile?.full_name || user?.email || 'Administrador'}
+      roleLabel="Administrador"
+      badgeLabel="ADMINISTRADOR"
+      avatarIcon={<FaUser />}
+      menuItems={menuItems}
+      activeSection={activeSection}
+      onSectionChange={setActiveSection}
+      topBar={(
+        <div className="text-sm text-slate-200 mobile:text-base">
+          <span className="font-semibold text-white">Panel Admin</span>
+          <span className="mx-2 text-rv-gold/70">›</span>
+          <span>{menuItems.find((item) => item.id === activeSection)?.label}</span>
+        </div>
+      )}
+    >
+      {renderActiveSection()}
+    </RolePanelLayout>
   );
 };
 

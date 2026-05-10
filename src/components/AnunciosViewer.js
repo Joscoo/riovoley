@@ -1,22 +1,52 @@
 // src/components/AnunciosViewer.js
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { supabase } from '../config/supabase';
-import styles from '../styles/AnunciosViewer.module.css';
-import { FaBullhorn, FaExclamationCircle, FaExclamationTriangle, FaClock, FaUser } from 'react-icons/fa';
-import { getEcuadorDate, calcularDiferenciaDias, getEcuadorISOString, getEcuadorDateTime } from '../utils/dateUtils';
+import { FaBullhorn, FaClock, FaExclamationCircle, FaExclamationTriangle, FaUser } from 'react-icons/fa';
+import { announcementsService } from '../features/announcements';
+import { calcularDiferenciaDias, getEcuadorDate, getEcuadorDateTime } from '../utils/dateUtils';
+import { cn } from '../lib/cn';
+import Card from './ui/Card';
+import EmptyState from './ui/EmptyState';
+
+const PRIORITIES = [
+  {
+    value: 'low',
+    label: 'Baja',
+    icon: <FaExclamationCircle />,
+    borderClass: 'border-l-green-400',
+    activeFilterClass: 'border-green-400 bg-green-500/20 text-green-100',
+    iconClass: 'text-green-300'
+  },
+  {
+    value: 'normal',
+    label: 'Normal',
+    icon: <FaBullhorn />,
+    borderClass: 'border-l-blue-400',
+    activeFilterClass: 'border-blue-400 bg-blue-500/20 text-blue-100',
+    iconClass: 'text-blue-300'
+  },
+  {
+    value: 'high',
+    label: 'Alta',
+    icon: <FaExclamationCircle />,
+    borderClass: 'border-l-orange-400',
+    activeFilterClass: 'border-orange-400 bg-orange-500/20 text-orange-100',
+    iconClass: 'text-orange-300'
+  },
+  {
+    value: 'urgent',
+    label: 'Urgente',
+    icon: <FaExclamationTriangle />,
+    borderClass: 'border-l-red-400',
+    activeFilterClass: 'border-red-400 bg-red-500/20 text-red-100',
+    iconClass: 'text-red-300'
+  }
+];
 
 const AnunciosViewer = ({ userRole = 'all', limit = null, showFilters = false }) => {
   const [anuncios, setAnuncios] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedPriority, setSelectedPriority] = useState('all');
-
-  const priorities = [
-    { value: 'low', label: 'Baja', color: '#4ade80', icon: <FaExclamationCircle /> },
-    { value: 'normal', label: 'Normal', color: '#60a5fa', icon: <FaBullhorn /> },
-    { value: 'high', label: 'Alta', color: '#fb923c', icon: <FaExclamationCircle /> },
-    { value: 'urgent', label: 'Urgente', color: '#f87171', icon: <FaExclamationTriangle /> }
-  ];
 
   useEffect(() => {
     loadAnuncios();
@@ -26,34 +56,11 @@ const AnunciosViewer = ({ userRole = 'all', limit = null, showFilters = false })
   const loadAnuncios = async () => {
     setLoading(true);
     try {
-      let query = supabase
-        .from('announcements_with_creator')
-        .select('*')
-        .eq('is_active', true)
-        .order('priority', { ascending: false })
-        .order('created_at', { ascending: false });
-
-      // Filtrar por audiencia
-      if (userRole !== 'all') {
-        query = query.or(`target_audience.cs.{all},target_audience.cs.{${userRole}}`);
-      }
-
-      // Filtrar anuncios no expirados
-      query = query.or('expires_at.is.null,expires_at.gt.' + getEcuadorISOString());
-
-      // Filtrar por prioridad seleccionada
-      if (selectedPriority !== 'all') {
-        query = query.eq('priority', selectedPriority);
-      }
-
-      // Limitar resultados si se especifica
-      if (limit) {
-        query = query.limit(limit);
-      }
-
-      const { data, error } = await query;
-
-      if (error) throw error;
+      const data = await announcementsService.loadViewerAnnouncements({
+        userRole,
+        selectedPriority,
+        limit
+      });
       setAnuncios(data || []);
     } catch (error) {
       console.error('Error al cargar anuncios:', error);
@@ -63,25 +70,20 @@ const AnunciosViewer = ({ userRole = 'all', limit = null, showFilters = false })
     }
   };
 
-  const getPriorityInfo = (priority) => {
-    return priorities.find(p => p.value === priority) || priorities[1];
-  };
+  const getPriorityInfo = (priority) => PRIORITIES.find((item) => item.value === priority) || PRIORITIES[1];
 
   const formatDate = (dateString) => {
     if (!dateString) return '';
     const now = getEcuadorDate();
-    const diffDays = calcularDiferenciaDias(dateString, now); // expires_at - hoy
+    const diffDays = calcularDiferenciaDias(dateString, now);
 
     if (diffDays < 0) return '';
     if (diffDays === 0) return 'Expira hoy';
-    if (diffDays === 1) return 'Expira mañana';
-    if (diffDays <= 7) return `Expira en ${diffDays} días`;
-    
+    if (diffDays === 1) return 'Expira manana';
+    if (diffDays <= 7) return `Expira en ${diffDays} dias`;
+
     const date = new Date(dateString);
-    return `Válido hasta ${date.toLocaleDateString('es-ES', { 
-      day: 'numeric', 
-      month: 'short' 
-    })}`;
+    return `Valido hasta ${date.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })}`;
   };
 
   const formatCreatedDate = (dateString) => {
@@ -94,10 +96,10 @@ const AnunciosViewer = ({ userRole = 'all', limit = null, showFilters = false })
 
     if (diffMinutes < 60) return `Hace ${diffMinutes} minutos`;
     if (diffHours < 24) return `Hace ${diffHours} horas`;
-    if (diffDays < 7) return `Hace ${diffDays} días`;
-    
-    return date.toLocaleDateString('es-ES', { 
-      day: 'numeric', 
+    if (diffDays < 7) return `Hace ${diffDays} dias`;
+
+    return date.toLocaleDateString('es-ES', {
+      day: 'numeric',
       month: 'short',
       year: diffDays > 365 ? 'numeric' : undefined
     });
@@ -105,93 +107,94 @@ const AnunciosViewer = ({ userRole = 'all', limit = null, showFilters = false })
 
   if (loading) {
     return (
-      <div className={styles.loading}>
-        <div className={styles.spinner}></div>
-        <p>Cargando anuncios...</p>
-      </div>
+      <Card className="flex flex-col items-center justify-center gap-3 py-10 text-center">
+        <div className="h-10 w-10 animate-spin rounded-full border-4 border-rv-gold/25 border-t-rv-gold" />
+        <p className="text-sm text-slate-200 mobile:text-base">Cargando anuncios...</p>
+      </Card>
     );
   }
 
   return (
-    <div className={styles.container}>
+    <div className="w-full">
       {showFilters && (
-        <div className={styles.filters}>
+        <div className="mb-4 flex flex-wrap gap-2 rounded-xl border border-rv-gold/20 bg-white/5 p-3 backdrop-blur-md mobile:p-4">
           <button
-            className={`${styles.filterBtn} ${selectedPriority === 'all' ? styles.active : ''}`}
+            type="button"
+            className={cn(
+              'inline-flex min-h-[48px] items-center justify-center rounded-lg border border-transparent px-4 py-2 text-sm font-semibold text-slate-100 transition-all duration-200 hover:border-rv-gold/40 hover:bg-rv-gold/15',
+              selectedPriority === 'all' && 'border-rv-gold/50 bg-rv-gold/25 text-white'
+            )}
             onClick={() => setSelectedPriority('all')}
           >
             Todos
           </button>
-          {priorities.map(p => (
+          {PRIORITIES.map((priority) => (
             <button
-              key={p.value}
-              className={`${styles.filterBtn} ${selectedPriority === p.value ? styles.active : ''}`}
-              onClick={() => setSelectedPriority(p.value)}
-              style={{ 
-                borderColor: selectedPriority === p.value ? p.color : 'transparent'
-              }}
+              key={priority.value}
+              type="button"
+              className={cn(
+                'inline-flex min-h-[48px] items-center justify-center gap-2 rounded-lg border px-4 py-2 text-sm font-semibold text-slate-100 transition-all duration-200 hover:bg-white/10',
+                selectedPriority === priority.value ? priority.activeFilterClass : 'border-transparent'
+              )}
+              onClick={() => setSelectedPriority(priority.value)}
             >
-              {p.icon} {p.label}
+              <span className={cn('text-base', priority.iconClass)}>{priority.icon}</span>
+              {priority.label}
             </button>
           ))}
         </div>
       )}
 
       {anuncios.length === 0 ? (
-        <div className={styles.empty}>
-          <span className={styles.emptyIcon}><FaBullhorn /></span>
-          <p>No hay anuncios {selectedPriority !== 'all' ? `de prioridad ${priorities.find(p => p.value === selectedPriority)?.label.toLowerCase()}` : ''} en este momento</p>
-        </div>
+        <EmptyState
+          icon={<FaBullhorn />}
+          title="No hay anuncios disponibles"
+          description={
+            selectedPriority !== 'all'
+              ? `No hay anuncios de prioridad ${PRIORITIES.find((item) => item.value === selectedPriority)?.label.toLowerCase()} en este momento.`
+              : 'No hay anuncios en este momento.'
+          }
+        />
       ) : (
-        <div className={styles.anunciosList}>
-          {anuncios.map(anuncio => {
+        <div className="grid gap-4 tablet:grid-cols-2">
+          {anuncios.map((anuncio) => {
             const priorityInfo = getPriorityInfo(anuncio.priority);
             const expirationText = formatDate(anuncio.expires_at);
-          
-          return (
-            <div 
-              key={anuncio.id} 
-              className={styles.anuncioCard}
-              style={{
-                borderLeftColor: priorityInfo.color
-              }}
-            >
-              {/* Header */}
-              <div className={styles.cardHeader}>
-                <div className={styles.priorityInfo}>
-                  <span className={styles.priorityIcon}>
-                    {priorityInfo.icon}
-                  </span>
-                  <span 
-                    className={styles.priorityLabel}
-                    style={{ color: priorityInfo.color }}
-                  >
-                    {priorityInfo.label}
-                  </span>
+
+            return (
+              <Card
+                key={anuncio.id}
+                className={cn('flex h-full flex-col gap-3 border-l-4', priorityInfo.borderClass)}
+              >
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="inline-flex items-center gap-2">
+                    <span className={cn('text-lg', priorityInfo.iconClass)}>
+                      {priorityInfo.icon}
+                    </span>
+                    <span className={cn('text-xs font-black uppercase tracking-wide', priorityInfo.iconClass)}>
+                      {priorityInfo.label}
+                    </span>
+                  </div>
+                  {expirationText ? (
+                    <span className="inline-flex items-center rounded-md border border-orange-300/50 bg-orange-500/15 px-2 py-1 text-[11px] font-semibold text-orange-200">
+                      <FaClock className="mr-1" />
+                      {expirationText}
+                    </span>
+                  ) : null}
                 </div>
-                {expirationText && (
-                  <span className={styles.expirationBadge}>
-                    <FaClock style={{ marginRight: '4px', verticalAlign: 'middle' }} />{expirationText}
+
+                <h3 className="text-lg font-bold leading-tight text-white">{anuncio.title}</h3>
+                <p className="flex-1 text-sm leading-relaxed text-slate-200">{anuncio.content}</p>
+
+                <div className="flex flex-wrap items-center justify-between gap-2 border-t border-rv-gold/20 pt-3 text-xs">
+                  <span className="inline-flex items-center text-rv-gold">
+                    <FaUser className="mr-1" /> {anuncio.creator_name || 'Riovoley'}
                   </span>
-                )}
-              </div>
-
-              {/* Contenido */}
-              <h3 className={styles.cardTitle}>{anuncio.title}</h3>
-              <p className={styles.cardContent}>{anuncio.content}</p>
-
-              {/* Footer */}
-              <div className={styles.cardFooter}>
-                <span className={styles.creatorInfo}>
-                  <FaUser style={{ marginRight: '6px', verticalAlign: 'middle' }} />{anuncio.creator_name || 'Riovoley'}
-                </span>
-                <span className={styles.dateInfo}>
-                  {formatCreatedDate(anuncio.created_at)}
-                </span>
-              </div>
-            </div>
-          );
-        })}
+                  <span className="text-slate-400">{formatCreatedDate(anuncio.created_at)}</span>
+                </div>
+              </Card>
+            );
+          })}
         </div>
       )}
     </div>

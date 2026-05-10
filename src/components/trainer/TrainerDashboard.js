@@ -1,10 +1,22 @@
 // src/components/trainer/TrainerDashboard.js
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { supabase } from '../../config/supabase';
-import styles from '../../styles/TrainerDashboard.module.css';
-import { getEcuadorDate, getEcuadorDateMinusDays, getEcuadorFirstDayOfMonth } from '../../utils/dateUtils';
-import { FaVolleyballBall, FaDumbbell, FaChartBar, FaCalendar, FaDollarSign, FaBolt, FaPlus, FaCheckCircle, FaClipboardList, FaMoneyBillWave } from 'react-icons/fa';
+import {
+  FaBolt,
+  FaCalendar,
+  FaChartBar,
+  FaCheckCircle,
+  FaClipboardList,
+  FaDollarSign,
+  FaDumbbell,
+  FaMoneyBillWave,
+  FaPlus,
+  FaVolleyballBall
+} from 'react-icons/fa';
+import { trainerDashboardService } from '../../features/trainer-dashboard';
+import Button from '../ui/Button';
+import Card from '../ui/Card';
+import SectionHeader from '../ui/SectionHeader';
 
 const TrainerDashboard = ({ user, onNavigateToSection }) => {
   const [stats, setStats] = useState({
@@ -22,40 +34,10 @@ const TrainerDashboard = ({ user, onNavigateToSection }) => {
   const loadStats = async () => {
     setLoading(true);
     try {
-      // Total de atletas
-      const { count: atletasCount } = await supabase
-        .from('students')
-        .select('*', { count: 'exact', head: true });
-
-      // Asistencias de hoy
-      const today = getEcuadorDate();
-      const { count: asistenciasCount } = await supabase
-        .from('attendances')
-        .select('*', { count: 'exact', head: true })
-        .eq('fecha', today);
-
-      // Tests físicos (últimos 30 días)
-      const thirtyDaysAgo = getEcuadorDateMinusDays(30);
-      const { count: testsCount } = await supabase
-        .from('physical_tests')
-        .select('*', { count: 'exact', head: true })
-        .gte('fecha_test', thirtyDaysAgo);
-
-      // Pagos del mes actual
-      const firstDayOfMonth = getEcuadorFirstDayOfMonth();
-      const { count: pagosCount } = await supabase
-        .from('payments')
-        .select('*', { count: 'exact', head: true })
-        .gte('fecha_pago', firstDayOfMonth);
-
-      setStats({
-        totalAtletas: atletasCount || 0,
-        asistenciasHoy: asistenciasCount || 0,
-        testsPendientes: testsCount || 0,
-        pagosDelMes: pagosCount || 0
-      });
+      const dashboardStats = await trainerDashboardService.loadStats();
+      setStats(dashboardStats);
     } catch (error) {
-      console.error('Error cargando estadísticas:', error);
+      console.error('Error cargando estadisticas:', error);
     } finally {
       setLoading(false);
     }
@@ -63,112 +45,109 @@ const TrainerDashboard = ({ user, onNavigateToSection }) => {
 
   if (loading) {
     return (
-      <div className={styles.loading}>
-        <div className={styles.spinner}></div>
-        <p>Cargando dashboard...</p>
-      </div>
+      <Card>
+        <div className="flex min-h-[180px] flex-col items-center justify-center gap-3 text-slate-200">
+          <div className="h-10 w-10 animate-spin rounded-full border-2 border-rv-gold/30 border-t-rv-gold" />
+          <p className="text-sm">Cargando dashboard...</p>
+        </div>
+      </Card>
     );
   }
 
+  const statCards = [
+    {
+      id: 'atletas',
+      title: 'Atletas Registrados',
+      value: stats.totalAtletas,
+      icon: <FaVolleyballBall />,
+      color: 'text-rv-gold',
+      bg: 'bg-rv-gold/15'
+    },
+    {
+      id: 'asistencias',
+      title: 'Asistencias Hoy',
+      value: stats.asistenciasHoy,
+      icon: <FaCalendar />,
+      color: 'text-cyan-300',
+      bg: 'bg-cyan-500/15'
+    },
+    {
+      id: 'tests-fisicos',
+      title: 'Tests (30 dias)',
+      value: stats.testsPendientes,
+      icon: <FaDumbbell />,
+      color: 'text-emerald-300',
+      bg: 'bg-emerald-500/15'
+    },
+    {
+      id: 'pagos',
+      title: 'Pagos del Mes',
+      value: stats.pagosDelMes,
+      icon: <FaDollarSign />,
+      color: 'text-amber-300',
+      bg: 'bg-amber-500/15'
+    }
+  ];
+
   return (
-    <div className={styles.dashboard}>
-      <div className={styles.welcome}>
-        <h2><FaChartBar style={{ marginRight: '10px', verticalAlign: 'middle' }} />Dashboard del Entrenador</h2>
-        <p>Resumen de tus actividades y atletas</p>
+    <div className="mx-auto w-full max-w-7xl">
+      <SectionHeader
+        title="Dashboard del Entrenador"
+        subtitle={`Resumen de tus actividades y atletas${user?.email ? ` - Sesion: ${user.email}` : ''}`}
+        icon={<FaChartBar />}
+      />
+
+      <div className="mb-6 grid gap-4 mobile:grid-cols-2">
+        {statCards.map((stat) => (
+          <Card
+            key={stat.id}
+            className="cursor-pointer transition-transform hover:-translate-y-0.5"
+            role="button"
+            tabIndex={0}
+            onClick={() => onNavigateToSection(stat.id)}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                onNavigateToSection(stat.id);
+              }
+            }}
+          >
+            <div className="flex items-center gap-3">
+              <span className={`inline-flex h-12 w-12 items-center justify-center rounded-xl text-2xl ${stat.bg} ${stat.color}`}>
+                {stat.icon}
+              </span>
+              <div className="min-w-0">
+                <p className="text-2xl font-black text-white">{stat.value}</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.8px] text-slate-300">{stat.title}</p>
+              </div>
+            </div>
+          </Card>
+        ))}
       </div>
 
-      {/* Stats Grid */}
-      <div className={styles.statsGrid}>
-        <div 
-          className={styles.statCard}
-          onClick={() => onNavigateToSection('atletas')}
-          role="button"
-          tabIndex={0}
-        >
-          <div className={styles.statIcon}><FaVolleyballBall /></div>
-          <div className={styles.statInfo}>
-            <h3>{stats.totalAtletas}</h3>
-            <p>Atletas Registrados</p>
-          </div>
-        </div>
+      <Card>
+        <h3 className="mb-4 text-lg font-bold text-white">
+          <FaBolt className="mr-2 inline align-middle text-rv-gold" />
+          <span className="align-middle">Acciones Rapidas</span>
+        </h3>
+        <div className="grid gap-3 mobile:grid-cols-2">
+          <Button variant="secondary" className="justify-start" onClick={() => onNavigateToSection('usuarios')}>
+            <FaPlus className="mr-2" /> Registrar Atleta
+          </Button>
 
-        <div 
-          className={styles.statCard}
-          onClick={() => onNavigateToSection('asistencias')}
-          role="button"
-          tabIndex={0}
-        >
-          <div className={styles.statIcon}><FaCalendar /></div>
-          <div className={styles.statInfo}>
-            <h3>{stats.asistenciasHoy}</h3>
-            <p>Asistencias Hoy</p>
-          </div>
-        </div>
+          <Button variant="secondary" className="justify-start" onClick={() => onNavigateToSection('asistencias')}>
+            <FaCheckCircle className="mr-2" /> Tomar Asistencia
+          </Button>
 
-        <div 
-          className={styles.statCard}
-          onClick={() => onNavigateToSection('tests-fisicos')}
-          role="button"
-          tabIndex={0}
-        >
-          <div className={styles.statIcon}><FaDumbbell /></div>
-          <div className={styles.statInfo}>
-            <h3>{stats.testsPendientes}</h3>
-            <p>Tests (30 días)</p>
-          </div>
-        </div>
+          <Button variant="secondary" className="justify-start" onClick={() => onNavigateToSection('tests-fisicos')}>
+            <FaClipboardList className="mr-2" /> Registrar Test
+          </Button>
 
-        <div 
-          className={styles.statCard}
-          onClick={() => onNavigateToSection('pagos')}
-          role="button"
-          tabIndex={0}
-        >
-          <div className={styles.statIcon}><FaDollarSign /></div>
-          <div className={styles.statInfo}>
-            <h3>{stats.pagosDelMes}</h3>
-            <p>Pagos del Mes</p>
-          </div>
+          <Button variant="secondary" className="justify-start" onClick={() => onNavigateToSection('pagos')}>
+            <FaMoneyBillWave className="mr-2" /> Registrar Pago
+          </Button>
         </div>
-      </div>
-
-      {/* Quick Actions */}
-      <div className={styles.quickActions}>
-        <h3><FaBolt style={{ marginRight: '10px', verticalAlign: 'middle' }} />Acciones Rápidas</h3>
-        <div className={styles.actionsGrid}>
-          <button 
-            className={styles.actionCard}
-            onClick={() => onNavigateToSection('atletas')}
-          >
-            <span className={styles.actionIcon}><FaPlus /></span>
-            <span>Registrar Atleta</span>
-          </button>
-          
-          <button 
-            className={styles.actionCard}
-            onClick={() => onNavigateToSection('asistencias')}
-          >
-            <span className={styles.actionIcon}><FaCheckCircle /></span>
-            <span>Tomar Asistencia</span>
-          </button>
-          
-          <button 
-            className={styles.actionCard}
-            onClick={() => onNavigateToSection('tests-fisicos')}
-          >
-            <span className={styles.actionIcon}><FaClipboardList /></span>
-            <span>Registrar Test</span>
-          </button>
-          
-          <button 
-            className={styles.actionCard}
-            onClick={() => onNavigateToSection('pagos')}
-          >
-            <span className={styles.actionIcon}><FaMoneyBillWave /></span>
-            <span>Registrar Pago</span>
-          </button>
-        </div>
-      </div>
+      </Card>
     </div>
   );
 };

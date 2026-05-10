@@ -1,9 +1,48 @@
 // src/components/admin/AnunciosManager.js
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { supabase } from '../../config/supabase';
-import styles from '../../styles/AnunciosManager.module.css';
-import { FaBell, FaBellSlash, FaEdit, FaTrash, FaBullhorn, FaPlus, FaUser } from 'react-icons/fa';
+import { FaBell, FaBellSlash, FaBullhorn, FaEdit, FaPlus, FaTrash, FaUser } from 'react-icons/fa';
+import { announcementsService } from '../../features/announcements';
+import { cn } from '../../lib/cn';
+import Button from '../ui/Button';
+import Card from '../ui/Card';
+import EmptyState from '../ui/EmptyState';
+import Field from '../ui/Field';
+import SectionHeader from '../ui/SectionHeader';
+
+const PRIORITIES = [
+  {
+    value: 'low',
+    label: 'Baja',
+    borderClass: 'border-l-green-400',
+    badgeClass: 'bg-green-400 text-slate-950'
+  },
+  {
+    value: 'normal',
+    label: 'Normal',
+    borderClass: 'border-l-blue-400',
+    badgeClass: 'bg-blue-400 text-slate-950'
+  },
+  {
+    value: 'high',
+    label: 'Alta',
+    borderClass: 'border-l-orange-400',
+    badgeClass: 'bg-orange-400 text-slate-950'
+  },
+  {
+    value: 'urgent',
+    label: 'Urgente',
+    borderClass: 'border-l-red-400',
+    badgeClass: 'bg-red-400 text-slate-950'
+  }
+];
+
+const AUDIENCES = [
+  { value: 'all', label: 'Todos' },
+  { value: 'estudiantes', label: 'Estudiantes' },
+  { value: 'entrenadores', label: 'Entrenadores' },
+  { value: 'administradores', label: 'Administradores' }
+];
 
 const AnunciosManager = ({ user }) => {
   const [anuncios, setAnuncios] = useState([]);
@@ -15,7 +54,6 @@ const AnunciosManager = ({ user }) => {
     is_active: 'all',
     search: ''
   });
-
   const [formData, setFormData] = useState({
     title: '',
     content: '',
@@ -24,22 +62,7 @@ const AnunciosManager = ({ user }) => {
     is_active: true,
     expires_at: ''
   });
-
   const [message, setMessage] = useState({ type: '', text: '' });
-
-  const priorities = [
-    { value: 'low', label: 'Baja', color: '#4ade80' },
-    { value: 'normal', label: 'Normal', color: '#60a5fa' },
-    { value: 'high', label: 'Alta', color: '#fb923c' },
-    { value: 'urgent', label: 'Urgente', color: '#f87171' }
-  ];
-
-  const audiences = [
-    { value: 'all', label: 'Todos' },
-    { value: 'estudiantes', label: 'Estudiantes' },
-    { value: 'entrenadores', label: 'Entrenadores' },
-    { value: 'administradores', label: 'Administradores' }
-  ];
 
   useEffect(() => {
     loadAnuncios();
@@ -49,27 +72,7 @@ const AnunciosManager = ({ user }) => {
   const loadAnuncios = async () => {
     setLoading(true);
     try {
-      let query = supabase
-        .from('announcements_with_creator')
-        .select('*')
-        .order('created_at', { ascending: false });
-
-      // Aplicar filtros
-      if (filters.priority) {
-        query = query.eq('priority', filters.priority);
-      }
-
-      if (filters.is_active !== 'all') {
-        query = query.eq('is_active', filters.is_active === 'true');
-      }
-
-      if (filters.search) {
-        query = query.or(`title.ilike.%${filters.search}%,content.ilike.%${filters.search}%`);
-      }
-
-      const { data, error } = await query;
-
-      if (error) throw error;
+      const data = await announcementsService.loadAdminAnnouncements({ filters });
       setAnuncios(data || []);
     } catch (error) {
       console.error('Error al cargar anuncios:', error);
@@ -82,6 +85,17 @@ const AnunciosManager = ({ user }) => {
   const showMessage = (type, text) => {
     setMessage({ type, text });
     setTimeout(() => setMessage({ type: '', text: '' }), 4000);
+  };
+
+  const resetFormData = () => {
+    setFormData({
+      title: '',
+      content: '',
+      priority: 'normal',
+      target_audience: ['all'],
+      is_active: true,
+      expires_at: ''
+    });
   };
 
   const handleOpenModal = (anuncio = null) => {
@@ -97,14 +111,7 @@ const AnunciosManager = ({ user }) => {
       });
     } else {
       setEditingAnuncio(null);
-      setFormData({
-        title: '',
-        content: '',
-        priority: 'normal',
-        target_audience: ['all'],
-        is_active: true,
-        expires_at: ''
-      });
+      resetFormData();
     }
     setShowModal(true);
   };
@@ -112,89 +119,59 @@ const AnunciosManager = ({ user }) => {
   const handleCloseModal = () => {
     setShowModal(false);
     setEditingAnuncio(null);
-    setFormData({
-      title: '',
-      content: '',
-      priority: 'normal',
-      target_audience: ['all'],
-      is_active: true,
-      expires_at: ''
-    });
+    resetFormData();
   };
 
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
+  const handleInputChange = (event) => {
+    const { name, value, type, checked } = event.target;
+    setFormData((prev) => ({
       ...prev,
       [name]: type === 'checkbox' ? checked : value
     }));
   };
 
   const handleAudienceChange = (audienceValue) => {
-    setFormData(prev => {
+    setFormData((prev) => {
       let newAudience = [...prev.target_audience];
-      
+
       if (audienceValue === 'all') {
-        // Si se selecciona "Todos", solo mantener ese
         newAudience = ['all'];
       } else {
-        // Remover "all" si está presente
-        newAudience = newAudience.filter(a => a !== 'all');
-        
+        newAudience = newAudience.filter((audience) => audience !== 'all');
+
         if (newAudience.includes(audienceValue)) {
-          // Remover si ya está seleccionado
-          newAudience = newAudience.filter(a => a !== audienceValue);
+          newAudience = newAudience.filter((audience) => audience !== audienceValue);
         } else {
-          // Agregar si no está seleccionado
           newAudience.push(audienceValue);
         }
-        
-        // Si no hay nada seleccionado, agregar "all"
+
         if (newAudience.length === 0) {
           newAudience = ['all'];
         }
       }
-      
+
       return { ...prev, target_audience: newAudience };
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
     if (!formData.title.trim() || !formData.content.trim()) {
-      showMessage('error', 'El título y contenido son obligatorios');
+      showMessage('error', 'El titulo y contenido son obligatorios');
       return;
     }
 
     try {
-      const anuncioData = {
-        title: formData.title.trim(),
-        content: formData.content.trim(),
-        priority: formData.priority,
-        target_audience: formData.target_audience,
-        is_active: formData.is_active,
-        expires_at: formData.expires_at || null
-      };
+      const { mode } = await announcementsService.saveAnnouncement({
+        editingAnuncio,
+        formData,
+        userId: user.id
+      });
 
-      if (editingAnuncio) {
-        // Actualizar anuncio existente
-        const { error } = await supabase
-          .from('announcements')
-          .update(anuncioData)
-          .eq('id', editingAnuncio.id);
-
-        if (error) throw error;
+      if (mode === 'updated') {
         showMessage('success', 'Anuncio actualizado correctamente');
       } else {
-        // Crear nuevo anuncio
-        anuncioData.created_by = user.id;
-        
-        const { error } = await supabase
-          .from('announcements')
-          .insert([anuncioData]);
-
-        if (error) throw error;
         showMessage('success', 'Anuncio creado correctamente');
       }
 
@@ -208,12 +185,7 @@ const AnunciosManager = ({ user }) => {
 
   const handleToggleActive = async (anuncio) => {
     try {
-      const { error } = await supabase
-        .from('announcements')
-        .update({ is_active: !anuncio.is_active })
-        .eq('id', anuncio.id);
-
-      if (error) throw error;
+      await announcementsService.toggleAnnouncementActive({ anuncio });
       showMessage('success', `Anuncio ${!anuncio.is_active ? 'activado' : 'desactivado'}`);
       loadAnuncios();
     } catch (error) {
@@ -223,17 +195,12 @@ const AnunciosManager = ({ user }) => {
   };
 
   const handleDelete = async (anuncioId) => {
-    if (!window.confirm('¿Estás seguro de eliminar este anuncio? Esta acción no se puede deshacer.')) {
+    if (!window.confirm('Estas seguro de eliminar este anuncio? Esta accion no se puede deshacer.')) {
       return;
     }
 
     try {
-      const { error } = await supabase
-        .from('announcements')
-        .delete()
-        .eq('id', anuncioId);
-
-      if (error) throw error;
+      await announcementsService.removeAnnouncement({ announcementId: anuncioId });
       showMessage('success', 'Anuncio eliminado correctamente');
       loadAnuncios();
     } catch (error) {
@@ -242,16 +209,14 @@ const AnunciosManager = ({ user }) => {
     }
   };
 
-  const getPriorityInfo = (priority) => {
-    return priorities.find(p => p.value === priority) || priorities[1];
-  };
+  const getPriorityInfo = (priority) => PRIORITIES.find((item) => item.value === priority) || PRIORITIES[1];
 
   const formatDate = (dateString) => {
     if (!dateString) return 'Sin fecha';
     const date = new Date(dateString);
-    return date.toLocaleDateString('es-ES', { 
-      year: 'numeric', 
-      month: 'long', 
+    return date.toLocaleDateString('es-ES', {
+      year: 'numeric',
+      month: 'long',
       day: 'numeric',
       hour: '2-digit',
       minute: '2-digit'
@@ -264,117 +229,137 @@ const AnunciosManager = ({ user }) => {
   };
 
   return (
-    <div className={styles.container}>
-      {/* Header */}
-      <div className={styles.header}>
-        <div>
-          <h1 className={styles.title}><FaBullhorn style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Gestión de Anuncios</h1>
-          <p className={styles.subtitle}>
-            Crea y administra anuncios para estudiantes, entrenadores y administradores
-          </p>
-        </div>
-        <button onClick={() => handleOpenModal()} className={styles.btnPrimary}>
-          <FaPlus style={{ marginRight: '6px', verticalAlign: 'middle' }} /> Nuevo Anuncio
-        </button>
-      </div>
+    <div className="mx-auto w-full max-w-7xl">
+      <SectionHeader
+        title="Gestion de Anuncios"
+        subtitle="Crea y administra anuncios para estudiantes, entrenadores y administradores."
+        icon={<FaBullhorn />}
+        actions={(
+          <Button onClick={() => handleOpenModal()} className="w-full mobile:w-auto">
+            <FaPlus className="mr-2" /> Nuevo Anuncio
+          </Button>
+        )}
+      />
 
-      {/* Message Alert */}
-      {message.text && (
-        <div className={`${styles.message} ${styles[message.type]}`}>
+      {message.text ? (
+        <div
+          className={cn(
+            'mb-4 rounded-xl border px-4 py-3 text-sm font-semibold',
+            message.type === 'success'
+              ? 'border-emerald-400/40 bg-emerald-500/15 text-emerald-200'
+              : 'border-red-400/40 bg-red-500/15 text-red-200'
+          )}
+        >
           {message.text}
         </div>
-      )}
+      ) : null}
 
-      {/* Filters */}
-      <div className={styles.filters}>
-        <input
-          type="text"
-          placeholder="Buscar por título o contenido..."
-          value={filters.search}
-          onChange={(e) => setFilters({ ...filters, search: e.target.value })}
-          className={styles.searchInput}
-        />
-        
-        <select
-          value={filters.priority}
-          onChange={(e) => setFilters({ ...filters, priority: e.target.value })}
-          className={styles.select}
-        >
-          <option value="">Todas las prioridades</option>
-          {priorities.map(p => (
-            <option key={p.value} value={p.value}>{p.label}</option>
-          ))}
-        </select>
+      <Card className="mb-5" padding="sm">
+        <div className="grid gap-3 tablet:grid-cols-4">
+          <input
+            type="text"
+            placeholder="Buscar por titulo o contenido..."
+            value={filters.search}
+            onChange={(event) => setFilters({ ...filters, search: event.target.value })}
+            className="h-12 rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-sm text-white placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 tablet:col-span-2"
+          />
 
-        <select
-          value={filters.is_active}
-          onChange={(e) => setFilters({ ...filters, is_active: e.target.value })}
-          className={styles.select}
-        >
-          <option value="all">Todos los estados</option>
-          <option value="true">Activos</option>
-          <option value="false">Inactivos</option>
-        </select>
-      </div>
+          <select
+            value={filters.priority}
+            onChange={(event) => setFilters({ ...filters, priority: event.target.value })}
+            className="h-12 rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-sm text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+          >
+            <option value="">Todas las prioridades</option>
+            {PRIORITIES.map((priority) => (
+              <option key={priority.value} value={priority.value}>
+                {priority.label}
+              </option>
+            ))}
+          </select>
 
-      {/* Loading */}
+          <select
+            value={filters.is_active}
+            onChange={(event) => setFilters({ ...filters, is_active: event.target.value })}
+            className="h-12 rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-sm text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+          >
+            <option value="all">Todos los estados</option>
+            <option value="true">Activos</option>
+            <option value="false">Inactivos</option>
+          </select>
+        </div>
+      </Card>
+
       {loading ? (
-        <div className={styles.loading}>
-          <div className={styles.spinner}></div>
-          <p>Cargando anuncios...</p>
-        </div>
+        <Card className="flex flex-col items-center justify-center gap-3 py-12 text-center">
+          <div className="h-12 w-12 animate-spin rounded-full border-4 border-rv-gold/20 border-t-rv-gold" />
+          <p className="text-slate-200">Cargando anuncios...</p>
+        </Card>
       ) : anuncios.length === 0 ? (
-        <div className={styles.empty}>
-          <p><FaBullhorn style={{ marginRight: '8px', verticalAlign: 'middle' }} /> No hay anuncios para mostrar</p>
-          <button onClick={() => handleOpenModal()} className={styles.btnSecondary}>
-            Crear primer anuncio
-          </button>
-        </div>
+        <EmptyState
+          icon={<FaBullhorn />}
+          title="No hay anuncios para mostrar"
+          description="Crea el primer anuncio para comenzar la comunicacion con el club."
+          action={<Button onClick={() => handleOpenModal()}>Crear primer anuncio</Button>}
+        />
       ) : (
-        <div className={styles.anunciosList}>
-          {anuncios.map(anuncio => {
+        <div className="grid gap-4 tablet:grid-cols-2 desktop:grid-cols-3">
+          {anuncios.map((anuncio) => {
             const priorityInfo = getPriorityInfo(anuncio.priority);
             const expired = isExpired(anuncio.expires_at);
-            
+
             return (
-              <div 
-                key={anuncio.id} 
-                className={`${styles.anuncioCard} ${!anuncio.is_active ? styles.inactive : ''} ${expired ? styles.expired : ''}`}
+              <Card
+                key={anuncio.id}
+                className={cn(
+                  'flex h-full flex-col gap-3 border-l-4',
+                  priorityInfo.borderClass,
+                  !anuncio.is_active && 'opacity-65',
+                  expired && 'border-red-400/60'
+                )}
               >
-                {/* Header del card */}
-                <div className={styles.cardHeader}>
-                  <div className={styles.cardHeaderLeft}>
-                    <span 
-                      className={styles.priorityBadge}
-                      style={{ backgroundColor: priorityInfo.color }}
+                <div className="flex flex-wrap items-start justify-between gap-2">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span
+                      className={cn(
+                        'rounded-full px-2.5 py-1 text-[11px] font-black uppercase tracking-wide',
+                        priorityInfo.badgeClass
+                      )}
                     >
                       {priorityInfo.label}
                     </span>
-                    {!anuncio.is_active && (
-                      <span className={styles.statusBadge}>Inactivo</span>
-                    )}
-                    {expired && (
-                      <span className={styles.expiredBadge}>Expirado</span>
-                    )}
+                    {!anuncio.is_active ? (
+                      <span className="rounded-full border border-slate-300/40 bg-slate-400/15 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-slate-300">
+                        Inactivo
+                      </span>
+                    ) : null}
+                    {expired ? (
+                      <span className="rounded-full border border-red-300/45 bg-red-500/15 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-red-200">
+                        Expirado
+                      </span>
+                    ) : null}
                   </div>
-                  <div className={styles.cardActions}>
+
+                  <div className="flex items-center gap-1">
                     <button
+                      type="button"
+                      className="inline-flex h-12 w-12 items-center justify-center rounded-lg border border-rv-gold/25 bg-black/25 text-rv-gold transition-all duration-200 hover:bg-rv-gold/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
                       onClick={() => handleToggleActive(anuncio)}
-                      className={styles.btnIcon}
                       title={anuncio.is_active ? 'Desactivar' : 'Activar'}
                     >
                       {anuncio.is_active ? <FaBellSlash /> : <FaBell />}
                     </button>
                     <button
+                      type="button"
+                      className="inline-flex h-12 w-12 items-center justify-center rounded-lg border border-rv-gold/25 bg-black/25 text-rv-gold transition-all duration-200 hover:bg-rv-gold/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
                       onClick={() => handleOpenModal(anuncio)}
-                      className={styles.btnIcon}
                       title="Editar"
                     >
                       <FaEdit />
                     </button>
                     <button
+                      type="button"
+                      className="inline-flex h-12 w-12 items-center justify-center rounded-lg border border-red-400/35 bg-red-500/10 text-red-200 transition-all duration-200 hover:bg-red-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300/80"
                       onClick={() => handleDelete(anuncio.id)}
-                      className={styles.btnIcon}
                       title="Eliminar"
                     >
                       <FaTrash />
@@ -382,149 +367,140 @@ const AnunciosManager = ({ user }) => {
                   </div>
                 </div>
 
-                {/* Contenido */}
-                <h3 className={styles.cardTitle}>{anuncio.title}</h3>
-                <p className={styles.cardContent}>{anuncio.content}</p>
+                <h3 className="text-lg font-bold leading-tight text-white">{anuncio.title}</h3>
+                <p className="line-clamp-5 flex-1 text-sm leading-relaxed text-slate-200">{anuncio.content}</p>
 
-                {/* Footer del card */}
-                <div className={styles.cardFooter}>
-                  <div className={styles.cardMeta}>
-                    <span className={styles.metaItem}>
-                      <FaUser style={{ marginRight: '6px', verticalAlign: 'middle' }} /> {anuncio.creator_name || 'Usuario'}
-                    </span>
-                    <span className={styles.metaItem}>
-                      📅 {formatDate(anuncio.created_at)}
-                    </span>
-                    {anuncio.expires_at && (
-                      <span className={styles.metaItem}>
-                        ⏰ Expira: {formatDate(anuncio.expires_at)}
-                      </span>
-                    )}
-                  </div>
-                  <div className={styles.audienceTags}>
-                    {anuncio.target_audience?.map(audience => (
-                      <span key={audience} className={styles.audienceTag}>
-                        {audiences.find(a => a.value === audience)?.label || audience}
+                <div className="space-y-2 border-t border-rv-gold/15 pt-3 text-xs text-slate-300">
+                  <p className="inline-flex items-center"><FaUser className="mr-1.5" /> {anuncio.creator_name || 'Usuario'}</p>
+                  <p>Creado: {formatDate(anuncio.created_at)}</p>
+                  {anuncio.expires_at ? <p>Expira: {formatDate(anuncio.expires_at)}</p> : null}
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {anuncio.target_audience?.map((audience) => (
+                      <span key={audience} className="rounded-md border border-sky-300/35 bg-sky-500/15 px-2 py-0.5 text-[11px] font-semibold text-sky-200">
+                        {AUDIENCES.find((item) => item.value === audience)?.label || audience}
                       </span>
                     ))}
                   </div>
                 </div>
-              </div>
+              </Card>
             );
           })}
         </div>
       )}
 
-      {/* Modal */}
-      {showModal && (
-        <div className={styles.modalOverlay} onClick={handleCloseModal}>
-          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-            <div className={styles.modalHeader}>
-              <h2>{editingAnuncio ? 'Editar Anuncio' : 'Nuevo Anuncio'}</h2>
-              <button onClick={handleCloseModal} className={styles.btnClose}>✕</button>
+      {showModal ? (
+        <div
+          className="fixed inset-0 z-[1300] flex items-end justify-center bg-black/80 p-0 backdrop-blur-sm mobile:items-center mobile:p-4"
+          onClick={handleCloseModal}
+        >
+          <Card
+            className="max-h-[95dvh] w-full max-w-2xl overflow-y-auto rounded-t-2xl border-rv-gold/30 bg-rv-panel mobile:rounded-2xl"
+            padding="none"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="sticky top-0 z-10 flex items-center justify-between border-b border-rv-gold/20 bg-rv-dark/95 px-4 py-3 backdrop-blur-md mobile:px-6 mobile:py-4">
+              <h2 className="text-lg font-black text-white mobile:text-xl">{editingAnuncio ? 'Editar Anuncio' : 'Nuevo Anuncio'}</h2>
+              <button
+                type="button"
+                onClick={handleCloseModal}
+                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-red-300/35 bg-red-500/10 text-red-200 transition-all duration-200 hover:rotate-90 hover:bg-red-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300/80"
+              >
+                ×
+              </button>
             </div>
 
-            <form onSubmit={handleSubmit} className={styles.form}>
-              {/* Título */}
-              <div className={styles.formGroup}>
-                <label htmlFor="title">Título *</label>
+            <form onSubmit={handleSubmit} className="space-y-4 px-4 py-4 mobile:px-6 mobile:py-5">
+              <Field label="Titulo *">
                 <input
                   type="text"
-                  id="title"
                   name="title"
                   value={formData.title}
                   onChange={handleInputChange}
-                  placeholder="Título del anuncio"
+                  placeholder="Titulo del anuncio"
                   required
                   maxLength="255"
+                  className="h-12 w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-white placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
                 />
-              </div>
+              </Field>
 
-              {/* Contenido */}
-              <div className={styles.formGroup}>
-                <label htmlFor="content">Contenido *</label>
+              <Field label="Contenido *">
                 <textarea
-                  id="content"
                   name="content"
                   value={formData.content}
                   onChange={handleInputChange}
                   placeholder="Describe el anuncio..."
                   required
                   rows="6"
+                  className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2.5 text-white placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
                 />
-              </div>
+              </Field>
 
-              {/* Prioridad */}
-              <div className={styles.formGroup}>
-                <label htmlFor="priority">Prioridad</label>
+              <Field label="Prioridad">
                 <select
-                  id="priority"
                   name="priority"
                   value={formData.priority}
                   onChange={handleInputChange}
+                  className="h-12 w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
                 >
-                  {priorities.map(p => (
-                    <option key={p.value} value={p.value}>{p.label}</option>
+                  {PRIORITIES.map((priority) => (
+                    <option key={priority.value} value={priority.value}>{priority.label}</option>
                   ))}
                 </select>
-              </div>
+              </Field>
 
-              {/* Audiencia objetivo */}
-              <div className={styles.formGroup}>
-                <label>Audiencia Objetivo</label>
-                <div className={styles.checkboxGroup}>
-                  {audiences.map(audience => (
-                    <label key={audience.value} className={styles.checkboxLabel}>
+              <Field label="Audiencia Objetivo">
+                <div className="grid gap-2 mobile:grid-cols-2">
+                  {AUDIENCES.map((audience) => (
+                    <label
+                      key={audience.value}
+                      className="flex min-h-[48px] cursor-pointer items-center gap-2 rounded-lg border border-rv-gold/20 bg-white/5 px-3 py-2.5 text-sm text-slate-100 transition-all duration-200 hover:bg-rv-gold/10"
+                    >
                       <input
                         type="checkbox"
                         checked={formData.target_audience.includes(audience.value)}
                         onChange={() => handleAudienceChange(audience.value)}
+                        className="h-4 w-4 accent-yellow-400"
                       />
                       <span>{audience.label}</span>
                     </label>
                   ))}
                 </div>
-              </div>
+              </Field>
 
-              {/* Fecha de expiración */}
-              <div className={styles.formGroup}>
-                <label htmlFor="expires_at">Fecha de Expiración (opcional)</label>
+              <Field label="Fecha de Expiracion (opcional)">
                 <input
                   type="date"
-                  id="expires_at"
                   name="expires_at"
                   value={formData.expires_at}
                   onChange={handleInputChange}
                   min={new Date().toISOString().split('T')[0]}
+                  className="h-12 w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
                 />
-              </div>
+              </Field>
 
-              {/* Estado activo */}
-              <div className={styles.formGroup}>
-                <label className={styles.checkboxLabel}>
-                  <input
-                    type="checkbox"
-                    name="is_active"
-                    checked={formData.is_active}
-                    onChange={handleInputChange}
-                  />
-                  <span>Anuncio activo</span>
-                </label>
-              </div>
+              <label className="inline-flex min-h-[48px] cursor-pointer items-center gap-2 rounded-lg border border-rv-gold/20 bg-white/5 px-3 py-2.5 text-sm text-slate-100">
+                <input
+                  type="checkbox"
+                  name="is_active"
+                  checked={formData.is_active}
+                  onChange={handleInputChange}
+                  className="h-4 w-4 accent-yellow-400"
+                />
+                <span>Anuncio activo</span>
+              </label>
 
-              {/* Botones */}
-              <div className={styles.formActions}>
-                <button type="button" onClick={handleCloseModal} className={styles.btnSecondary}>
+              <div className="grid gap-3 border-t border-rv-gold/15 pt-4 mobile:grid-cols-2">
+                <Button type="button" variant="secondary" className="w-full" onClick={handleCloseModal}>
                   Cancelar
-                </button>
-                <button type="submit" className={styles.btnPrimary}>
+                </Button>
+                <Button type="submit" className="w-full">
                   {editingAnuncio ? 'Actualizar' : 'Crear'} Anuncio
-                </button>
+                </Button>
               </div>
             </form>
-          </div>
+          </Card>
         </div>
-      )}
+      ) : null}
     </div>
   );
 };

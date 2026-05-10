@@ -1,17 +1,16 @@
 // src/components/trainer/TrainerPanel.js
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { FaBan, FaBullhorn, FaCalendar, FaChartBar, FaCog, FaDollarSign, FaDumbbell, FaUserCircle, FaUsers } from 'react-icons/fa';
 import { useUserProfile } from '../../hooks/useUserProfile';
-import TrainerDashboard from './TrainerDashboard';
-import TrainerAtletasManager from './TrainerAtletasManager';
+import AnunciosManager from '../admin/AnunciosManager';
+import RolePanelLayout from '../layout/RolePanelLayout';
 import TrainerAsistenciasManager from './TrainerAsistenciasManager';
-import TrainerTestsFisicosManager from './TrainerTestsFisicosManager';
+import TrainerDashboard from './TrainerDashboard';
 import TrainerPagosManager from './TrainerPagosManager';
 import TrainerProfileSettings from './TrainerProfileSettings';
-import { FaVolleyballBall, FaChartBar, FaCalendar, FaDumbbell, FaDollarSign, FaBullhorn, FaCog, FaBan, FaUserCircle } from 'react-icons/fa';
-import AnunciosManager from '../admin/AnunciosManager';
-import RoleSidebar from '../layout/RoleSidebar';
-import styles from '../../styles/TrainerPanel.module.css';
+import TrainerTestsFisicosManager from './TrainerTestsFisicosManager';
+import UserManagementPanel from '../admin/UserManagement/UserManagementPanel';
 
 const TrainerPanel = ({ user }) => {
   const { profile, loading } = useUserProfile(user);
@@ -19,45 +18,47 @@ const TrainerPanel = ({ user }) => {
 
   if (loading) {
     return (
-      <div className={styles.loading}>
-        <div className={styles.spinner}></div>
-        <p>Cargando panel del entrenador...</p>
+      <div className="flex min-h-[60dvh] flex-col items-center justify-center gap-4 text-white">
+        <div className="h-10 w-10 animate-spin rounded-full border-4 border-white/25 border-t-orange-500" />
+        <p className="text-sm font-semibold mobile:text-base">Cargando panel del entrenador...</p>
       </div>
     );
   }
 
   const isTrainer = profile?.role === 'entrenador';
-  
+
   if (!isTrainer) {
     return (
-      <div className={styles.accessDenied}>
-        <h2><FaBan style={{ marginRight: '10px', verticalAlign: 'middle' }} />Acceso Denegado</h2>
-        <p>Solo los entrenadores pueden acceder a este panel.</p>
-        <p>Tu rol actual: <strong>{profile?.role || 'Sin rol'}</strong></p>
+      <div className="mx-auto mt-10 max-w-xl rounded-2xl border border-red-300/35 bg-white p-8 text-center shadow-xl">
+        <h2 className="inline-flex items-center gap-2 text-2xl font-black text-red-700"><FaBan /> Acceso Denegado</h2>
+        <p className="mt-3 text-slate-700">Solo los entrenadores pueden acceder a este panel.</p>
+        <p className="mt-1 text-slate-700">
+          Tu rol actual: <strong>{profile?.role || 'Sin rol'}</strong>
+        </p>
       </div>
     );
   }
 
-  const menuItems = [
+const menuItems = [
     { id: 'dashboard', icon: <FaChartBar />, label: 'Dashboard', description: 'Resumen general' },
-    { id: 'atletas', icon: <FaVolleyballBall />, label: 'Atletas', description: 'Gestionar deportistas' },
+    { id: 'usuarios', icon: <FaUsers />, label: 'Gestion de Usuarios', description: 'Administrar atletas' },
     { id: 'asistencias', icon: <FaCalendar />, label: 'Asistencias', description: 'Registrar asistencias' },
-    { id: 'tests-fisicos', icon: <FaDumbbell />, label: 'Tests Físicos', description: 'Evaluaciones físicas' },
+    { id: 'tests-fisicos', icon: <FaDumbbell />, label: 'Tests Fisicos', description: 'Evaluaciones fisicas' },
     { id: 'pagos', icon: <FaDollarSign />, label: 'Pagos', description: 'Registrar pagos' },
     { id: 'anuncios', icon: <FaBullhorn />, label: 'Anuncios', description: 'Comunicados y notificaciones' },
-    { id: 'configuracion', icon: <FaCog />, label: 'Configuración', description: 'Perfil y seguridad' }
+    { id: 'configuracion', icon: <FaCog />, label: 'Configuracion', description: 'Perfil y seguridad' }
   ];
 
   const handleNavigateToSection = (sectionId) => {
     setActiveSection(sectionId);
   };
 
-  const renderActiveSection = () => {
+const renderActiveSection = () => {
     switch (activeSection) {
       case 'dashboard':
         return <TrainerDashboard user={user} onNavigateToSection={handleNavigateToSection} />;
-      case 'atletas':
-        return <TrainerAtletasManager user={user} />;
+      case 'usuarios':
+        return <UserManagementPanel user={user} userRole="entrenador" />;
       case 'asistencias':
         return <TrainerAsistenciasManager user={user} />;
       case 'tests-fisicos':
@@ -74,27 +75,25 @@ const TrainerPanel = ({ user }) => {
   };
 
   return (
-    <div className={styles.trainerPanel}>
-      <div className={styles.mainContainer}>
-        <RoleSidebar
-          variant="trainer"
-          title={profile?.full_name || user?.email?.split('@')[0] || 'Entrenador'}
-          roleLabel="Entrenador"
-          badgeLabel="ENTRENADOR"
-          avatarIcon={<FaUserCircle />}
-          menuItems={menuItems}
-          activeSection={activeSection}
-          onSectionChange={setActiveSection}
-        />
-
-        {/* Main Content */}
-        <main className={styles.mainContent}>
-          <div className={styles.contentBody}>
-            {renderActiveSection()}
-          </div>
-        </main>
-      </div>
-    </div>
+    <RolePanelLayout
+      variant="trainer"
+      title={profile?.full_name || user?.email?.split('@')[0] || 'Entrenador'}
+      roleLabel="Entrenador"
+      badgeLabel="ENTRENADOR"
+      avatarIcon={<FaUserCircle />}
+      menuItems={menuItems}
+      activeSection={activeSection}
+      onSectionChange={setActiveSection}
+      topBar={(
+        <div className="text-sm text-slate-200 mobile:text-base">
+          <span className="font-semibold text-white">Panel Entrenador</span>
+          <span className="mx-2 text-rv-gold/70">›</span>
+          <span>{menuItems.find((item) => item.id === activeSection)?.label}</span>
+        </div>
+      )}
+    >
+      {renderActiveSection()}
+    </RolePanelLayout>
   );
 };
 

@@ -1,6 +1,6 @@
-/* src/styles/global.css */
+﻿/* src/styles/global.css */
 
-/* Reset básico y configuración base */
+/* Basic reset and base setup */
 * {
   box-sizing: border-box;
 }
@@ -17,18 +17,15 @@ body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.6;
-  padding-top: var(--rv-navbar-height-desktop, 60px); /* debe ser igual a la altura de la navbar */
+  padding-top: var(--rv-navbar-height-desktop, 60px);
   background-color: #fff;
   color: #000;
-  /* Mejorar experiencia táctil */
   -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  user-select: none;
 }
 
-/* Permitir selección de texto donde sea apropiado */
-input, textarea, [contenteditable] {
+input,
+textarea,
+[contenteditable] {
   -webkit-user-select: auto;
   user-select: auto;
 }
@@ -42,33 +39,26 @@ a {
 button {
   cursor: pointer;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  /* Mejorar respuesta táctil */
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Estilos responsivos globales */
 @media (max-width: 768px) {
   body {
-    padding-top: calc(var(--rv-navbar-height-mobile, 65px) + env(safe-area-inset-top)); /* Altura de navbar móvil + notch */
+    padding-top: calc(var(--rv-navbar-height-mobile, 65px) + env(safe-area-inset-top));
   }
-  
-  /* Asegurar que los botones tengan tamaño mínimo táctil */
-  button, .button, input[type="button"], input[type="submit"] {
-    min-height: var(--rv-touch-target, 48px);
-    min-width: var(--rv-touch-target, 48px);
-  }
-  
-  /* Mejorar los elementos de formulario en móvil */
-  input, select, textarea {
-    font-size: 16px; /* Evitar zoom en iOS */
+
+  input,
+  select,
+  textarea {
+    font-size: 16px;
     min-height: 48px;
   }
 }
 
 @media (max-width: 480px) {
-  /* Asegurar padding apropiado en pantallas muy pequeñas */
-  .container, .main-content {
+  .container,
+  .main-content {
     padding-left: var(--rv-space-sm, 12px);
     padding-right: var(--rv-space-sm, 12px);
   }

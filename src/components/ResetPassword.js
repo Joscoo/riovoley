@@ -1,8 +1,13 @@
-// src/components/ResetPassword.js
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '../config/supabase';
-import { FaEye, FaEyeSlash, FaLock, FaKey, FaExclamationTriangle } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaExclamationTriangle, FaKey, FaLock } from 'react-icons/fa';
+import { authSessionService } from '../features/auth-session';
+import { cn } from '../lib/cn';
+import PageShell from './ui/PageShell';
+import Card from './ui/Card';
+import Field from './ui/Field';
+import Button from './ui/Button';
+import EmptyState from './ui/EmptyState';
 
 const clearRecoveryParamsFromUrl = () => {
   if (typeof window === 'undefined') return;
@@ -11,10 +16,10 @@ const clearRecoveryParamsFromUrl = () => {
 
 const PASSWORD_REQUIREMENTS = [
   { key: 'minLength', label: 'Al menos 10 caracteres' },
-  { key: 'uppercase', label: 'Incluye una letra mayúscula (A-Z)' },
-  { key: 'lowercase', label: 'Incluye una letra minúscula (a-z)' },
-  { key: 'number', label: 'Incluye al menos un número (0-9)' },
-  { key: 'special', label: 'Incluye al menos un símbolo (!@#$...)' },
+  { key: 'uppercase', label: 'Incluye una letra mayuscula (A-Z)' },
+  { key: 'lowercase', label: 'Incluye una letra minuscula (a-z)' },
+  { key: 'number', label: 'Incluye al menos un numero (0-9)' },
+  { key: 'special', label: 'Incluye al menos un simbolo (!@#$...)' },
   { key: 'noSpaces', label: 'No contiene espacios' }
 ];
 
@@ -56,25 +61,25 @@ const ResetPassword = () => {
         const exchangeCode = queryParams.get('code');
 
         if (exchangeCode) {
-          const { error } = await supabase.auth.exchangeCodeForSession(exchangeCode);
-          if (!error) {
+          try {
+            await authSessionService.exchangeCodeForSession(exchangeCode);
             hasRecoverySession = true;
             clearRecoveryParamsFromUrl();
+          } catch (_error) {
+            hasRecoverySession = false;
           }
         } else if (recoveryAccessToken && recoveryRefreshToken && recoveryType === 'recovery') {
-          const { error } = await supabase.auth.setSession({
-            access_token: recoveryAccessToken,
-            refresh_token: recoveryRefreshToken
-          });
-
-          if (!error) {
+          try {
+            await authSessionService.setRecoverySession(recoveryAccessToken, recoveryRefreshToken);
             hasRecoverySession = true;
             clearRecoveryParamsFromUrl();
+          } catch (_error) {
+            hasRecoverySession = false;
           }
         }
 
         if (!hasRecoverySession) {
-          const { data: { session } } = await supabase.auth.getSession();
+          const session = await authSessionService.getSession();
           hasRecoverySession = Boolean(session);
         }
 
@@ -82,14 +87,14 @@ const ResetPassword = () => {
 
         setIsValidToken(hasRecoverySession);
         if (!hasRecoverySession) {
-          setMensaje('El enlace de recuperación es inválido o ha expirado.');
+          setMensaje('El enlace de recuperacion es invalido o ha expirado.');
         }
       } catch (error) {
-        console.error('Error inicializando recuperación:', error);
+        console.error('Error inicializando recuperacion:', error);
         if (!isMounted) return;
 
         setIsValidToken(false);
-        setMensaje('No se pudo validar el enlace de recuperación. Solicita uno nuevo.');
+        setMensaje('No se pudo validar el enlace de recuperacion. Solicita uno nuevo.');
       } finally {
         if (isMounted) {
           setIsCheckingToken(false);
@@ -97,25 +102,20 @@ const ResetPassword = () => {
       }
     };
 
-    // Escuchar cambios en la autenticación
-    const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
-      console.log('🔔 Evento de auth:', event);
-      console.log('🔔 Sesión:', session);
-      
+    const {
+      data: { subscription }
+    } = authSessionService.onAuthStateChange((event, session) => {
       if (event === 'PASSWORD_RECOVERY') {
-        console.log('✅ Evento de recuperación de contraseña detectado');
         setIsValidToken(true);
         setIsCheckingToken(false);
         setMensaje('');
         clearRecoveryParamsFromUrl();
       } else if (event === 'SIGNED_IN' && session) {
-        console.log('✅ Usuario autenticado para recuperación');
         setIsValidToken(true);
         setIsCheckingToken(false);
         setMensaje('');
         clearRecoveryParamsFromUrl();
       } else if (event === 'TOKEN_REFRESHED') {
-        console.log('✅ Token refrescado');
         setIsValidToken(true);
         setIsCheckingToken(false);
       }
@@ -123,19 +123,17 @@ const ResetPassword = () => {
 
     initPasswordReset();
 
-    // Cleanup
     return () => {
       isMounted = false;
-      authListener?.subscription?.unsubscribe();
+      subscription.unsubscribe();
     };
   }, []);
 
-  const handleResetPassword = async (e) => {
-    e.preventDefault();
+  const handleResetPassword = async (event) => {
+    event.preventDefault();
     setIsLoading(true);
     setMensaje('');
 
-    // Validaciones
     if (!newPassword || !confirmPassword) {
       setMensaje('Por favor, completa todos los campos');
       setIsLoading(false);
@@ -143,500 +141,150 @@ const ResetPassword = () => {
     }
 
     if (!isStrongPassword) {
-      setMensaje('La contraseña no cumple los requisitos de seguridad.');
+      setMensaje('La contrasena no cumple los requisitos de seguridad.');
       setIsLoading(false);
       return;
     }
 
     if (!passwordsMatch) {
-      setMensaje('Las contraseñas no coinciden');
+      setMensaje('Las contrasenas no coinciden');
       setIsLoading(false);
       return;
     }
 
     try {
-      const { error } = await supabase.auth.updateUser({
-        password: newPassword
-      });
-
-      if (error) {
-        console.error('Error al actualizar contraseña:', error);
-        setMensaje('Error al actualizar la contraseña: ' + error.message);
-      } else {
-        setMensaje('✅ Contraseña actualizada correctamente. Redirigiendo...');
-        setNewPassword('');
-        setConfirmPassword('');
-        
-        // Redirigir al login después de 3 segundos
-        setTimeout(() => {
-          navigate('/login');
-        }, 3000);
-      }
+      await authSessionService.updatePassword(newPassword);
+      setMensaje('Contrasena actualizada correctamente. Redirigiendo...');
+      setNewPassword('');
+      setConfirmPassword('');
+      setTimeout(() => {
+        navigate('/login');
+      }, 3000);
     } catch (error) {
-      console.error('Error inesperado:', error);
-      setMensaje('Error inesperado: ' + error.message);
+      setMensaje(`Error inesperado: ${error.message}`);
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div style={styles.container}>
-      {/* Video de fondo */}
-      <video style={styles.videoBg} autoPlay loop muted playsInline>
-        <source src="/videos/bg-video.mp4" type="video/mp4" />
-      </video>
-      <div style={styles.overlay}></div>
-
-      <div style={styles.card}>
-        <div style={styles.logoSection}>
-          <div style={styles.logoWrapper}>
-            <div style={styles.logoGlow}></div>
-            <div style={styles.logo}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={styles.logoSvg}>
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-              </svg>
-            </div>
-          </div>
-          <h2 style={styles.title}><FaKey style={styles.titleIcon} /> Restablecer Contraseña</h2>
-          <p style={styles.subtitle}>Ingresa tu nueva contraseña</p>
-          <div style={styles.decorLine}></div>
-        </div>
-
-        {isCheckingToken ? (
-          <div style={styles.errorContainer}>
-            <p style={styles.errorText}>Validando enlace de recuperación...</p>
-          </div>
-        ) : !isValidToken ? (
-          <div style={styles.errorContainer}>
-            <div style={styles.errorIcon}><FaExclamationTriangle /></div>
-            <p style={styles.errorText}>
-              {mensaje || 'El enlace de recuperación es inválido o ha expirado.'}
-            </p>
-            <button 
-              onClick={() => navigate('/login')}
-              style={styles.backButton}
-            >
-              Volver al inicio de sesión
-            </button>
-          </div>
-        ) : (
-          <form onSubmit={handleResetPassword} style={styles.form}>
-            <div style={styles.inputGroup}>
-              <label htmlFor="new-password" style={styles.label}>
-                <span style={styles.labelIcon}><FaLock /></span>
-                {' '}NUEVA CONTRASEÑA
-              </label>
-              <div style={styles.passwordContainer}>
-                <input
-                  id="new-password"
-                  type={showPassword ? "text" : "password"}
-                  placeholder="••••••••"
-                  value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
-                  style={styles.passwordInput}
-                  disabled={isLoading}
-                  required
-                  minLength={10}
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  style={styles.passwordToggle}
-                  disabled={isLoading}
-                >
-                  {showPassword ? <FaEyeSlash /> : <FaEye />}
-                </button>
+    <PageShell contentClassName="px-4 py-10 mobile:px-6">
+      <div className="mx-auto flex min-h-[calc(100dvh-80px)] w-full max-w-xl items-center justify-center">
+        <Card padding="lg" className="w-full border-rv-gold/30 bg-[linear-gradient(140deg,rgba(10,10,10,0.96)_0%,rgba(30,58,138,0.7)_100%)]">
+          <div className="mb-8 text-center">
+            <div className="relative mx-auto mb-4 h-20 w-20">
+              <div className="absolute inset-0 rounded-full bg-rv-gold/25 blur-xl" aria-hidden="true" />
+              <div className="relative flex h-full w-full items-center justify-center rounded-full bg-gradient-to-br from-rv-gold to-amber-400 text-rv-dark shadow-rv-gold">
+                <FaKey className="text-3xl" />
               </div>
+            </div>
+            <h1 className="bg-gradient-to-r from-white to-rv-gold bg-clip-text text-3xl font-black text-transparent mobile:text-4xl">
+              Restablecer Contrasena
+            </h1>
+            <p className="mt-2 text-sm text-slate-200">Ingresa tu nueva contrasena</p>
+            <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-transparent via-rv-gold to-transparent" aria-hidden="true" />
+          </div>
 
-              <div style={styles.checklist}>
-                {PASSWORD_REQUIREMENTS.map((requirement) => {
-                  const passed = passwordChecks[requirement.key];
-                  return (
-                    <div
-                      key={requirement.key}
-                      style={{
-                        ...styles.checklistItem,
-                        ...(passed ? styles.checklistItemPassed : styles.checklistItemPending)
-                      }}
-                    >
-                      <span
-                        style={{
-                          ...styles.checklistIcon,
-                          ...(passed ? styles.checklistIconPassed : styles.checklistIconPending)
-                        }}
-                        aria-hidden="true"
+          {isCheckingToken && (
+            <EmptyState title="Validando enlace de recuperacion..." description="Estamos verificando tu sesion de recuperacion." icon={<FaKey />} />
+          )}
+
+          {!isCheckingToken && !isValidToken && (
+            <EmptyState
+              title="Enlace invalido o expirado"
+              description={mensaje || 'Solicita un nuevo enlace desde la pantalla de inicio de sesion.'}
+              icon={<FaExclamationTriangle />}
+              action={<Button onClick={() => navigate('/login')}>Volver al inicio de sesion</Button>}
+            />
+          )}
+
+          {!isCheckingToken && isValidToken && (
+            <form onSubmit={handleResetPassword} className="space-y-4">
+              <Field label="Nueva contrasena" icon={<FaLock />}>
+                <div className="relative">
+                  <input
+                    id="new-password"
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder="��������"
+                    value={newPassword}
+                    onChange={(event) => setNewPassword(event.target.value)}
+                    disabled={isLoading}
+                    required
+                    minLength={10}
+                    className="h-12 w-full rounded-xl border border-rv-gold/35 bg-slate-900/70 px-4 pr-12 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                    disabled={isLoading}
+                    className="absolute right-1 top-1 inline-flex h-10 w-10 items-center justify-center rounded-lg text-white/85 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+                  >
+                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                  </button>
+                </div>
+
+                <div className="mt-3 grid gap-1 rounded-xl border border-white/15 bg-slate-900/60 p-3">
+                  {PASSWORD_REQUIREMENTS.map((requirement) => {
+                    const passed = passwordChecks[requirement.key];
+                    return (
+                      <p
+                        key={requirement.key}
+                        className={cn('text-xs', passed ? 'text-emerald-300' : 'text-slate-300')}
                       >
-                        {passed ? '✓' : '○'}
-                      </span>
-                      <span>{requirement.label}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+                        <span className="mr-1 font-bold">{passed ? '?' : '?'}</span>
+                        {requirement.label}
+                      </p>
+                    );
+                  })}
+                </div>
+              </Field>
 
-            <div style={styles.inputGroup}>
-              <label htmlFor="confirm-password" style={styles.label}>
-                <span style={styles.labelIcon}><FaLock /></span>
-                {' '}CONFIRMAR CONTRASEÑA
-              </label>
-              <div style={styles.passwordContainer}>
+              <Field label="Confirmar contrasena" icon={<FaLock />}>
                 <input
                   id="confirm-password"
-                  type={showPassword ? "text" : "password"}
-                  placeholder="••••••••"
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="��������"
                   value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  style={styles.passwordInput}
+                  onChange={(event) => setConfirmPassword(event.target.value)}
                   disabled={isLoading}
                   required
                   minLength={10}
+                  className="h-12 w-full rounded-xl border border-rv-gold/35 bg-slate-900/70 px-4 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
                 />
-              </div>
+                {confirmPassword ? (
+                  <p className={cn('text-xs font-semibold', passwordsMatch ? 'text-emerald-300' : 'text-red-300')}>
+                    {passwordsMatch ? '? Las contrasenas coinciden' : 'Las contrasenas no coinciden'}
+                  </p>
+                ) : null}
+              </Field>
 
-              {confirmPassword && (
-                <small
-                  style={{
-                    ...styles.hint,
-                    ...(passwordsMatch ? styles.matchHintSuccess : styles.matchHintError)
-                  }}
+              <Button
+                type="submit"
+                disabled={isLoading || !newPassword || !confirmPassword || !isStrongPassword || !passwordsMatch}
+                className="w-full"
+                size="lg"
+              >
+                {isLoading ? 'Actualizando...' : 'Actualizar Contrasena'}
+              </Button>
+
+              {mensaje ? (
+                <div
+                  className={cn(
+                    'rounded-xl border px-4 py-3 text-sm font-semibold',
+                    mensaje.toLowerCase().includes('error') || mensaje.toLowerCase().includes('invalido')
+                      ? 'border-red-400/45 bg-red-500/15 text-red-200'
+                      : 'border-emerald-400/45 bg-emerald-500/15 text-emerald-200'
+                  )}
                 >
-                  {passwordsMatch ? '✓ Las contraseñas coinciden' : 'Las contraseñas no coinciden'}
-                </small>
-              )}
-            </div>
-
-            <button 
-              type="submit"
-              disabled={isLoading || !newPassword || !confirmPassword || !isStrongPassword || !passwordsMatch}
-              style={{
-                ...styles.submitButton,
-                ...(isLoading || !newPassword || !confirmPassword || !isStrongPassword || !passwordsMatch ? styles.disabledButton : {})
-              }}
-            >
-              {isLoading ? (
-                <>
-                  <span style={styles.loader}></span>
-                  {' Actualizando...'}
-                </>
-              ) : (
-                'Actualizar Contraseña'
-              )}
-            </button>
-
-            {mensaje && (
-              <div style={{
-                ...styles.message,
-                ...(mensaje.includes('Error') || mensaje.includes('inválido') ? 
-                    styles.errorMessage : styles.successMessage)
-              }}>
-                {mensaje}
-              </div>
-            )}
-          </form>
-        )}
+                  {mensaje}
+                </div>
+              ) : null}
+            </form>
+          )}
+        </Card>
       </div>
-    </div>
+    </PageShell>
   );
-};
-
-const styles = {
-  container: {
-    minHeight: '100vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '20px',
-    position: 'relative',
-    overflow: 'hidden'
-  },
-  videoBg: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-    zIndex: 0,
-    filter: 'brightness(0.4) blur(3px) saturate(1.3)'
-  },
-  overlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    background: 'linear-gradient(135deg, rgba(10,10,10,0.95) 0%, rgba(30,58,138,0.4) 50%, rgba(10,10,10,0.95) 100%)',
-    zIndex: 1
-  },
-  card: {
-    position: 'relative',
-    zIndex: 2,
-    background: 'linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(30, 58, 138, 0.85) 100%)',
-    backdropFilter: 'blur(25px)',
-    borderRadius: '30px',
-    padding: '45px',
-    maxWidth: '480px',
-    width: '100%',
-    border: '2px solid rgba(255, 215, 0, 0.3)',
-    boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5)',
-    animation: 'slideInScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) backwards'
-  },
-  logoSection: {
-    textAlign: 'center',
-    marginBottom: '35px'
-  },
-  logoWrapper: {
-    position: 'relative',
-    display: 'inline-block',
-    marginBottom: '20px'
-  },
-  logoGlow: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: '120px',
-    height: '120px',
-    background: 'radial-gradient(circle, rgba(255, 215, 0, 0.4), transparent 70%)',
-    filter: 'blur(25px)',
-    animation: 'pulse 3s ease-in-out infinite'
-  },
-  logo: {
-    position: 'relative',
-    width: '85px',
-    height: '85px',
-    margin: '0 auto',
-    background: 'linear-gradient(135deg, #ffd700 0%, #f0c14b 100%)',
-    borderRadius: '50%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    boxShadow: '0 15px 40px rgba(255, 215, 0, 0.4)',
-    border: '3px solid rgba(255, 255, 255, 0.2)'
-  },
-  logoSvg: {
-    width: '40px',
-    height: '40px',
-    color: '#1a1a2e'
-  },
-  title: {
-    margin: '0 0 10px 0',
-    fontSize: '2rem',
-    fontWeight: '800',
-    background: 'linear-gradient(135deg, #ffffff 0%, #ffd700 100%)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    backgroundClip: 'text',
-    letterSpacing: '0.5px'
-  },
-  titleIcon: {
-    marginRight: '10px',
-    color: '#ffffff',
-    display: 'inline-block',
-    verticalAlign: 'middle',
-    transform: 'translateY(-1px)'
-  },
-  subtitle: {
-    margin: '0 0 15px 0',
-    fontSize: '1rem',
-    color: 'rgba(255, 255, 255, 0.8)',
-    fontWeight: '500'
-  },
-  decorLine: {
-    width: '60px',
-    height: '3px',
-    background: 'linear-gradient(90deg, transparent, #ffd700, transparent)',
-    margin: '0 auto',
-    borderRadius: '2px'
-  },
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '20px'
-  },
-  inputGroup: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '8px'
-  },
-  label: {
-    color: 'rgba(255, 215, 0, 0.95)',
-    fontSize: '0.8rem',
-    fontWeight: '700',
-    letterSpacing: '0.5px',
-    textTransform: 'uppercase',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '6px'
-  },
-  labelIcon: {
-    fontSize: '1rem',
-    color: '#ffffff',
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  passwordContainer: {
-    position: 'relative',
-    display: 'flex',
-    alignItems: 'center'
-  },
-  passwordInput: {
-    width: '100%',
-    padding: '16px 50px 16px 20px',
-    background: 'rgba(255, 255, 255, 0.08)',
-    border: '2px solid rgba(255, 215, 0, 0.3)',
-    borderRadius: '12px',
-    color: '#f8f9fa',
-    fontSize: '1rem',
-    outline: 'none',
-    transition: 'all 0.3s ease',
-    backdropFilter: 'blur(10px)'
-  },
-  passwordToggle: {
-    position: 'absolute',
-    right: '15px',
-    background: 'transparent',
-    border: 'none',
-    cursor: 'pointer',
-    fontSize: '1.3rem',
-    width: '48px',
-    height: '48px',
-    minWidth: '48px',
-    minHeight: '48px',
-    padding: '5px',
-    color: '#ffffff',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    transition: 'transform 0.2s ease'
-  },
-  hint: {
-    color: 'rgba(255, 255, 255, 0.6)',
-    fontSize: '0.8rem',
-    marginTop: '4px'
-  },
-  checklist: {
-    display: 'grid',
-    gap: '6px',
-    marginTop: '8px',
-    padding: '12px',
-    borderRadius: '10px',
-    background: 'rgba(15, 23, 42, 0.45)',
-    border: '1px solid rgba(148, 163, 184, 0.25)'
-  },
-  checklistItem: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    fontSize: '0.82rem',
-    lineHeight: 1.35
-  },
-  checklistItemPending: {
-    color: 'rgba(203, 213, 225, 0.9)'
-  },
-  checklistItemPassed: {
-    color: '#86efac'
-  },
-  checklistIcon: {
-    width: '16px',
-    textAlign: 'center',
-    fontWeight: '700',
-    fontSize: '0.9rem'
-  },
-  checklistIconPending: {
-    color: 'rgba(203, 213, 225, 0.8)'
-  },
-  checklistIconPassed: {
-    color: '#4ade80'
-  },
-  matchHintSuccess: {
-    color: '#4ade80'
-  },
-  matchHintError: {
-    color: '#f87171'
-  },
-  submitButton: {
-    width: '100%',
-    padding: '18px',
-    background: 'linear-gradient(135deg, #ffd700 0%, #f0c14b 100%)',
-    color: '#1a1a2e',
-    border: 'none',
-    borderRadius: '12px',
-    fontWeight: '800',
-    fontSize: '1.1rem',
-    cursor: 'pointer',
-    transition: 'all 0.3s ease',
-    textTransform: 'uppercase',
-    letterSpacing: '0.5px',
-    boxShadow: '0 10px 30px rgba(255, 215, 0, 0.4)',
-    marginTop: '10px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '10px'
-  },
-  disabledButton: {
-    opacity: 0.5,
-    cursor: 'not-allowed'
-  },
-  loader: {
-    width: '16px',
-    height: '16px',
-    border: '2px solid rgba(26, 26, 46, 0.3)',
-    borderTopColor: '#1a1a2e',
-    borderRadius: '50%',
-    animation: 'spin 0.6s linear infinite',
-    display: 'inline-block'
-  },
-  message: {
-    padding: '15px 20px',
-    borderRadius: '12px',
-    fontSize: '0.95rem',
-    fontWeight: '600',
-    textAlign: 'center',
-    marginTop: '10px'
-  },
-  successMessage: {
-    background: 'rgba(40, 167, 69, 0.15)',
-    color: '#4ade80',
-    border: '2px solid rgba(40, 167, 69, 0.4)'
-  },
-  errorMessage: {
-    background: 'rgba(239, 68, 68, 0.15)',
-    color: '#ff6b6b',
-    border: '2px solid rgba(239, 68, 68, 0.4)'
-  },
-  errorContainer: {
-    textAlign: 'center',
-    padding: '30px 20px'
-  },
-  errorIcon: {
-    fontSize: '4rem',
-    color: '#ffffff',
-    marginBottom: '20px'
-  },
-  errorText: {
-    color: 'rgba(255, 255, 255, 0.9)',
-    fontSize: '1.1rem',
-    marginBottom: '30px',
-    lineHeight: '1.6'
-  },
-  backButton: {
-    padding: '14px 30px',
-    minHeight: '48px',
-    background: 'linear-gradient(135deg, #ffd700 0%, #f0c14b 100%)',
-    color: '#1a1a2e',
-    border: 'none',
-    borderRadius: '12px',
-    fontWeight: '700',
-    fontSize: '1rem',
-    cursor: 'pointer',
-    transition: 'all 0.3s ease',
-    boxShadow: '0 10px 30px rgba(255, 215, 0, 0.4)'
-  }
 };
 
 export default ResetPassword;

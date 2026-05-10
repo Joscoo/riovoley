@@ -1,11 +1,48 @@
 // src/components/admin/UsuariosManager.js
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
-import { supabase } from '../../config/supabase';
-import { deleteAuthUserById } from '../../services/authAdminService';
-import { getEcuadorISOString } from '../../utils/dateUtils';
-import styles from '../../styles/UsuariosManager.module.css';
-import { FaCrown, FaVolleyballBall, FaRunning, FaUser, FaPause, FaPlay, FaEdit, FaTrash, FaPhone, FaCalendar, FaUsers, FaChartBar, FaCheckCircle, FaBan, FaClock, FaStickyNote } from 'react-icons/fa';
+import {
+  FaBan,
+  FaCalendar,
+  FaChartBar,
+  FaCheckCircle,
+  FaClock,
+  FaCrown,
+  FaEdit,
+  FaPause,
+  FaPhone,
+  FaPlay,
+  FaRunning,
+  FaStickyNote,
+  FaTrash,
+  FaUser,
+  FaUsers,
+  FaVolleyballBall
+} from 'react-icons/fa';
+import { accountAdminService } from '../../features/account-admin';
+import { cn } from '../../lib/cn';
+import Button from '../ui/Button';
+import Card from '../ui/Card';
+import EmptyState from '../ui/EmptyState';
+import Field from '../ui/Field';
+import SectionHeader from '../ui/SectionHeader';
+
+const INITIAL_FORM = {
+  role: '',
+  nombre: '',
+  apellido: '',
+  email: '',
+  telefono: '',
+  suspended: false,
+  suspension_reason: '',
+  suspension_until: ''
+};
+
+const ROLE_CONFIG = [
+  { value: 'administrador', label: 'Administrador', icon: <FaCrown />, color: 'text-amber-300' },
+  { value: 'entrenador', label: 'Entrenador', icon: <FaVolleyballBall />, color: 'text-indigo-300' },
+  { value: 'estudiante', label: 'Estudiante', icon: <FaRunning />, color: 'text-emerald-300' }
+];
 
 const UsuariosManager = ({ user }) => {
   const [usuarios, setUsuarios] = useState([]);
@@ -17,621 +54,554 @@ const UsuariosManager = ({ user }) => {
     search: '',
     status: ''
   });
-
-  const [formData, setFormData] = useState({
-    role: '',
-    nombre: '',
-    apellido: '',
-    email: '',
-    telefono: '',
-    suspended: false,
-    suspension_reason: '',
-    suspension_until: ''
-  });
-
-  const roles = [
-    { value: 'administrador', label: 'Administrador', icon: <FaCrown /> },
-    { value: 'entrenador', label: 'Entrenador', icon: <FaVolleyballBall /> },
-    { value: 'estudiante', label: 'Estudiante', icon: <FaRunning /> }
-  ];
+  const [formData, setFormData] = useState(INITIAL_FORM);
+  const [message, setMessage] = useState({ type: '', text: '' });
 
   useEffect(() => {
     loadUsuarios();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
 
+  const showMessage = (type, text) => {
+    setMessage({ type, text });
+    globalThis.setTimeout(() => {
+      setMessage((current) => (current.text === text ? { type: '', text: '' } : current));
+    }, 4500);
+  };
+
   const loadUsuarios = async () => {
     setLoading(true);
+
     try {
-      console.log('[INFO] Cargando usuarios...');
-      
-      let query = supabase
-        .from('users')
-        .select(`
-          id,
-          email,
-          role,
-          nombre,
-          apellido,
-          telefono,
-          fecha_nacimiento,
-          last_login,
-          created_at,
-          suspended,
-          suspension_reason,
-          suspension_until,
-          suspended_at
-        `)
-        .order('created_at', { ascending: false });
-
-      // Aplicar filtro por rol
-      if (filters.role) {
-        query = query.eq('role', filters.role);
-      }
-
-      const { data: usuariosData, error } = await query;
-      
-      console.log('📊 Resultado de query usuarios:', { 
-        count: usuariosData?.length || 0, 
-        error: error,
-        data: usuariosData 
-      });
-
-      if (error) throw error;
-
-      // Filtrar por búsqueda local
-      let filteredData = usuariosData || [];
-      if (filters.search) {
-        const searchLower = filters.search.toLowerCase();
-        filteredData = filteredData.filter(usuario => 
-          usuario.nombre?.toLowerCase().includes(searchLower) ||
-          usuario.apellido?.toLowerCase().includes(searchLower) ||
-          usuario.email?.toLowerCase().includes(searchLower)
-        );
-      }
-
-      // Filtrar por estado
-      if (filters.status === 'activo') {
-        filteredData = filteredData.filter(usuario => !usuario.suspended);
-      } else if (filters.status === 'suspendido') {
-        filteredData = filteredData.filter(usuario => usuario.suspended);
-      }
-
+      const filteredData = await accountAdminService.loadUsuarios({ filters });
       setUsuarios(filteredData);
     } catch (error) {
       console.error('Error cargando usuarios:', error);
-      alert('Error al cargar usuarios: ' + error.message);
+      showMessage('error', `Error al cargar usuarios: ${error.message}`);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (!editingUser) return;
-    
-    try {
-      console.log('🔄 Actualizando usuario:', { 
-        id: editingUser.id, 
-        email: editingUser.email,
-        rolAntiguo: editingUser.role, 
-        rolNuevo: formData.role 
-      });
-
-      // Actualizar tabla users
-      const { error: usersError } = await supabase
-        .from('users')
-        .update({
-          role: formData.role,
-          nombre: formData.nombre,
-          apellido: formData.apellido,
-          telefono: formData.telefono
-        })
-        .eq('id', editingUser.id);
-
-      if (usersError) {
-        console.error('❌ Error actualizando users:', usersError);
-        throw usersError;
-      }
-      console.log('✅ Tabla users actualizada');
-
-      // Actualizar tabla user_profiles (donde realmente se guarda el rol para autenticación)
-      const { data: profileUpdateData, error: profileError } = await supabase
-        .from('user_profiles')
-        .upsert({
-          id: editingUser.id,
-          role: formData.role,
-          full_name: `${formData.nombre} ${formData.apellido}`.trim()
-        }, {
-          onConflict: 'id'
-        })
-        .select();
-
-      if (profileError) {
-        console.error('❌ Error actualizando user_profiles:', profileError);
-        throw new Error(`Error actualizando perfil: ${profileError.message}`);
-      }
-      
-      console.log('✅ Tabla user_profiles actualizada:', profileUpdateData);
-
-      // Verificar que el cambio se hizo correctamente
-      const { data: verifyData } = await supabase
-        .from('user_profiles')
-        .select('id, role, full_name')
-        .eq('id', editingUser.id)
-        .single();
-      
-      console.log('[DEBUG] Verificación del rol actualizado:', verifyData);
-
-      alert(`Usuario actualizado correctamente\n\n${editingUser.email}\nRol: ${formData.role}\n\nEl usuario debe cerrar sesión y volver a iniciar para ver los cambios.`);
-      setShowModal(false);
-      loadUsuarios();
-      resetForm();
-    } catch (error) {
-      console.error('Error actualizando usuario:', error);
-      alert('Error: ' + error.message);
-    }
+  const resetForm = () => {
+    setFormData(INITIAL_FORM);
+    setEditingUser(null);
   };
 
-  const openModal = (usuario) => {
-    setEditingUser(usuario);
+  const closeModal = () => {
+    setShowModal(false);
+    resetForm();
+  };
+
+  const openModal = (usuarioEntry) => {
+    setEditingUser(usuarioEntry);
     setFormData({
-      role: usuario.role || '',
-      nombre: usuario.nombre || '',
-      apellido: usuario.apellido || '',
-      email: usuario.email || '',
-      telefono: usuario.telefono || ''
+      role: usuarioEntry.role || '',
+      nombre: usuarioEntry.nombre || '',
+      apellido: usuarioEntry.apellido || '',
+      email: usuarioEntry.email || '',
+      telefono: usuarioEntry.telefono || '',
+      suspended: Boolean(usuarioEntry.suspended),
+      suspension_reason: usuarioEntry.suspension_reason || '',
+      suspension_until: usuarioEntry.suspension_until || ''
     });
     setShowModal(true);
   };
 
-  const resetForm = () => {
-    setFormData({
-      role: '',
-      nombre: '',
-      apellido: '',
-      email: '',
-      telefono: '',
-      suspended: false,
-      suspension_reason: '',
-      suspension_until: ''
-    });
-    setEditingUser(null);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!editingUser) return;
+
+    try {
+      await accountAdminService.updateManagedUser({
+        editingUser,
+        formData
+      });
+
+      showMessage('success', `${editingUser.email} actualizado. Debe reiniciar sesion para ver cambios de rol.`);
+      closeModal();
+      loadUsuarios();
+    } catch (error) {
+      console.error('Error actualizando usuario:', error);
+      showMessage('error', `Error al actualizar usuario: ${error.message}`);
+    }
   };
 
-  const deleteUser = async (usuario) => {
-    // eslint-disable-next-line no-restricted-globals
-    if (!confirm(`¿Estás seguro de eliminar al usuario ${usuario.nombre} ${usuario.apellido}?`)) {
+  const deleteUser = async (usuarioEntry) => {
+    const confirmed = globalThis.confirm(
+      `Estas seguro de eliminar al usuario ${usuarioEntry.nombre} ${usuarioEntry.apellido}?`
+    );
+
+    if (!confirmed) {
       return;
     }
 
     try {
-      await deleteAuthUserById(usuario.id);
+      await accountAdminService.deleteManagedUser({ userId: usuarioEntry.id });
 
-      const { error } = await supabase
-        .from('users')
-        .delete()
-        .eq('id', usuario.id);
-
-      if (error) throw error;
-
-      alert('Usuario eliminado correctamente');
+      showMessage('success', 'Usuario eliminado correctamente');
       loadUsuarios();
     } catch (error) {
       console.error('Error eliminando usuario:', error);
-      alert('Error: ' + error.message);
+      showMessage('error', `Error al eliminar usuario: ${error.message}`);
     }
   };
 
-  const suspendUser = async (usuario, suspensionData) => {
+  const suspendUser = async (usuarioEntry, suspensionData) => {
     try {
-      const { error } = await supabase
-        .from('users')
-        .update({
-          suspended: true,
-          suspension_reason: suspensionData.reason,
-          suspension_until: suspensionData.until,
-          suspended_at: getEcuadorISOString()
-        })
-        .eq('id', usuario.id);
+      await accountAdminService.suspendManagedUser({
+        userId: usuarioEntry.id,
+        reason: suspensionData.reason,
+        until: suspensionData.until
+      });
 
-      if (error) throw error;
-
-      alert('Usuario suspendido temporalmente');
+      showMessage('success', 'Usuario suspendido temporalmente');
       loadUsuarios();
     } catch (error) {
       console.error('Error suspendiendo usuario:', error);
-      alert('Error: ' + error.message);
+      showMessage('error', `Error al suspender usuario: ${error.message}`);
     }
   };
 
-  const reactivateUser = async (usuario) => {
-    // eslint-disable-next-line no-restricted-globals
-    if (!confirm(`¿Reactivar la cuenta de ${usuario.nombre} ${usuario.apellido}?`)) {
+  const reactivateUser = async (usuarioEntry) => {
+    const confirmed = globalThis.confirm(`Reactivar la cuenta de ${usuarioEntry.nombre} ${usuarioEntry.apellido}?`);
+    if (!confirmed) {
       return;
     }
 
     try {
-      const { error } = await supabase
-        .from('users')
-        .update({
-          suspended: false,
-          suspension_reason: null,
-          suspension_until: null,
-          suspended_at: null
-        })
-        .eq('id', usuario.id);
+      await accountAdminService.reactivateManagedUser({ userId: usuarioEntry.id });
 
-      if (error) throw error;
-
-      alert('✓ Usuario reactivado correctamente');
+      showMessage('success', 'Usuario reactivado correctamente');
       loadUsuarios();
     } catch (error) {
       console.error('Error reactivando usuario:', error);
-      alert('✗ Error: ' + error.message);
+      showMessage('error', `Error al reactivar usuario: ${error.message}`);
     }
   };
 
-  const handleSuspensionToggle = (usuario) => {
-    if (usuario.suspended) {
-      reactivateUser(usuario);
-    } else {
-      // Abrir modal de suspensión
-      const reason = prompt('Motivo de la suspensión:');
-      if (!reason) return;
-
-      const until = prompt('Fecha de finalización (YYYY-MM-DD) o dejar vacío para indefinido:');
-      
-      suspendUser(usuario, {
-        reason,
-        until: until || null
-      });
+  const handleSuspensionToggle = (usuarioEntry) => {
+    if (usuarioEntry.suspended) {
+      reactivateUser(usuarioEntry);
+      return;
     }
+
+    const reason = globalThis.prompt('Motivo de la suspension:');
+    if (!reason) return;
+
+    const until = globalThis.prompt('Fecha de finalizacion (YYYY-MM-DD) o vacio para indefinido:');
+
+    suspendUser(usuarioEntry, {
+      reason,
+      until: until || null
+    });
   };
 
-  const getRoleIcon = (role) => {
-    const roleObj = roles.find(r => r.value === role);
-    return roleObj ? roleObj.icon : <FaUser />;
+  const getRoleInfo = (role) => {
+    return ROLE_CONFIG.find((entry) => entry.value === role) || {
+      value: role,
+      label: role,
+      icon: <FaUser />,
+      color: 'text-slate-200'
+    };
   };
 
-  const getRoleLabel = (role) => {
-    const roleObj = roles.find(r => r.value === role);
-    return roleObj ? roleObj.label : role;
-  };
-
-  const getRoleStats = () => {
+  const roleStats = useMemo(() => {
     const stats = {};
-    for (const role of roles) {
-      stats[role.value] = usuarios.filter(u => u.role === role.value).length;
-    }
+    ROLE_CONFIG.forEach((role) => {
+      stats[role.value] = usuarios.filter((usuarioEntry) => usuarioEntry.role === role.value).length;
+    });
     return stats;
-  };
+  }, [usuarios]);
 
-  const getStatusStats = () => {
+  const statusStats = useMemo(() => {
     const totalUsuarios = usuarios.length;
-    const suspendidos = usuarios.filter(u => u.suspended).length;
-    const activos = totalUsuarios - suspendidos;
-    return { totalUsuarios, activos, suspendidos };
+    const suspendidos = usuarios.filter((usuarioEntry) => usuarioEntry.suspended).length;
+    return {
+      totalUsuarios,
+      activos: totalUsuarios - suspendidos,
+      suspendidos
+    };
+  }, [usuarios]);
+
+  const formatShortDate = (value) => {
+    if (!value) return 'N/A';
+    return new Date(value).toLocaleDateString('es-ES');
   };
 
-  const stats = getRoleStats();
-  const statusStats = getStatusStats();
+  const getRoleDescription = (role) => {
+    switch (role) {
+      case 'administrador':
+        return 'Acceso completo al sistema';
+      case 'entrenador':
+        return 'Gestion de entrenamientos y atletas';
+      case 'estudiante':
+        return 'Acceso basico como atleta';
+      default:
+        return 'Usuario del sistema';
+    }
+  };
 
   return (
-    <div className={styles.usuariosManager}>
-      <div className={styles.header}>
-        <div className={styles.headerLeft}>
-          <h2><FaUsers style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Gestión de Usuarios</h2>
-          <p>Administrar usuarios y sus roles en el sistema</p>
-        </div>
-      </div>
+    <div className="mx-auto w-full max-w-7xl">
+      <SectionHeader
+        title="Gestion de Usuarios"
+        subtitle="Administra roles, estado de cuenta y datos basicos de todos los usuarios."
+        icon={<FaUsers />}
+      />
 
-      {/* Estadísticas */}
-      <div className={styles.statsGrid}>
-        {roles.map(role => (
-          <div key={role.value} className={styles.statCard}>
-            <div className={styles.statIcon}>{role.icon}</div>
-            <div className={styles.statInfo}>
-              <h3>{stats[role.value] || 0}</h3>
-              <p>{role.label}s</p>
+      {message.text ? (
+        <div
+          className={cn(
+            'mb-4 rounded-xl border px-4 py-3 text-sm font-semibold',
+            message.type === 'success'
+              ? 'border-emerald-400/40 bg-emerald-500/15 text-emerald-200'
+              : 'border-red-400/40 bg-red-500/15 text-red-200'
+          )}
+        >
+          {message.text}
+        </div>
+      ) : null}
+
+      <div className="mb-4 grid gap-4 mobile:grid-cols-2 desktop:grid-cols-3">
+        {ROLE_CONFIG.map((role) => (
+          <Card key={role.value} className="flex items-center gap-3">
+            <div className={cn('inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 text-2xl', role.color)}>
+              {role.icon}
             </div>
-          </div>
+            <div>
+              <p className="text-2xl font-black text-white">{roleStats[role.value] || 0}</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.8px] text-slate-300">{role.label}s</p>
+            </div>
+          </Card>
         ))}
-        <div className={styles.statCard}>
-          <div className={styles.statIcon}><FaChartBar /></div>
-          <div className={styles.statInfo}>
-            <h3>{statusStats.totalUsuarios}</h3>
-            <p>Total Usuarios</p>
+
+        <Card className="flex items-center gap-3">
+          <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/20 text-2xl text-cyan-200">
+            <FaChartBar />
           </div>
-        </div>
-        <div className={styles.statCard}>
-          <div className={styles.statIcon}><FaCheckCircle /></div>
-          <div className={styles.statInfo}>
-            <h3>{statusStats.activos}</h3>
-            <p>Activos</p>
+          <div>
+            <p className="text-2xl font-black text-white">{statusStats.totalUsuarios}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.8px] text-slate-300">Total Usuarios</p>
           </div>
-        </div>
-        <div className={styles.statCard}>
-          <div className={styles.statIcon}><FaBan /></div>
-          <div className={styles.statInfo}>
-            <h3>{statusStats.suspendidos}</h3>
-            <p>Suspendidos</p>
+        </Card>
+
+        <Card className="flex items-center gap-3">
+          <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/20 text-2xl text-emerald-200">
+            <FaCheckCircle />
           </div>
-        </div>
+          <div>
+            <p className="text-2xl font-black text-white">{statusStats.activos}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.8px] text-slate-300">Activos</p>
+          </div>
+        </Card>
+
+        <Card className="flex items-center gap-3">
+          <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-amber-500/20 text-2xl text-amber-200">
+            <FaBan />
+          </div>
+          <div>
+            <p className="text-2xl font-black text-white">{statusStats.suspendidos}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.8px] text-slate-300">Suspendidos</p>
+          </div>
+        </Card>
       </div>
 
-      {/* Filtros */}
-      <div className={styles.filtersSection}>
-        <div className={styles.filterGroup}>
-          <label htmlFor="roleFilter">Filtrar por Rol:</label>
-          <select
-            id="roleFilter"
-            value={filters.role}
-            onChange={(e) => setFilters({...filters, role: e.target.value})}
-            className={styles.filterSelect}
-          >
-            <option value="">Todos los roles</option>
-            {roles.map(role => (
-              <option key={role.value} value={role.value}>
-                {role.icon} {role.label}
-              </option>
-            ))}
-          </select>
-        </div>
+      <Card className="mb-4">
+        <div className="grid gap-4 mobile:grid-cols-2 desktop:grid-cols-3">
+          <Field label="Filtrar por rol">
+            <select
+              value={filters.role}
+              onChange={(event) => setFilters((prev) => ({ ...prev, role: event.target.value }))}
+              className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
+            >
+              <option value="">Todos los roles</option>
+              {ROLE_CONFIG.map((role) => (
+                <option key={role.value} value={role.value}>
+                  {role.label}
+                </option>
+              ))}
+            </select>
+          </Field>
 
-        <div className={styles.filterGroup}>
-          <label htmlFor="searchFilter">Buscar Usuario:</label>
-          <input
-            id="searchFilter"
-            type="text"
-            placeholder="Nombre, apellido o email..."
-            value={filters.search}
-            onChange={(e) => setFilters({...filters, search: e.target.value})}
-            className={styles.searchInput}
-          />
-        </div>
+          <Field label="Buscar usuario">
+            <input
+              type="text"
+              value={filters.search}
+              onChange={(event) => setFilters((prev) => ({ ...prev, search: event.target.value }))}
+              placeholder="Nombre, apellido o email"
+              className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
+            />
+          </Field>
 
-        <div className={styles.filterGroup}>
-          <label htmlFor="statusFilter">Estado:</label>
-          <select
-            id="statusFilter"
-            value={filters.status}
-            onChange={(e) => setFilters({...filters, status: e.target.value})}
-            className={styles.filterSelect}
-          >
-            <option value="">Todos</option>
-            <option value="activo">Activos</option>
-            <option value="suspendido">Suspendidos</option>
-          </select>
+          <Field label="Estado">
+            <select
+              value={filters.status}
+              onChange={(event) => setFilters((prev) => ({ ...prev, status: event.target.value }))}
+              className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
+            >
+              <option value="">Todos</option>
+              <option value="activo">Activos</option>
+              <option value="suspendido">Suspendidos</option>
+            </select>
+          </Field>
         </div>
-      </div>
+      </Card>
 
-      {/* Lista de usuarios */}
       {loading ? (
-        <div className={styles.loading}>
-          <div className={styles.spinner}></div>
-          <p>Cargando usuarios...</p>
-        </div>
+        <Card>
+          <div className="flex min-h-[180px] flex-col items-center justify-center gap-3 text-slate-200">
+            <div className="h-9 w-9 animate-spin rounded-full border-2 border-rv-gold/30 border-t-rv-gold" />
+            <p className="text-sm">Cargando usuarios...</p>
+          </div>
+        </Card>
+      ) : usuarios.length === 0 ? (
+        <EmptyState
+          icon={<FaUsers />}
+          title="No hay usuarios encontrados"
+          description="No se encontraron usuarios con los filtros aplicados."
+        />
       ) : (
-        <div className={styles.usuariosGrid}>
-          {usuarios.length > 0 ? (
-            usuarios.map(usuario => (
-              <div key={usuario.id} className={`${styles.userCard} ${usuario.suspended ? styles.suspendedCard : ''}`}>
-                <div className={styles.userHeader}>
-                  <div className={styles.userInfo}>
-                    <div className={styles.userRole}>
-                      {usuario.suspended ? <FaPause /> : getRoleIcon(usuario.role)}
+        <div className="grid gap-4 tablet:grid-cols-2 desktop:grid-cols-3">
+          {usuarios.map((usuarioEntry) => {
+            const roleInfo = getRoleInfo(usuarioEntry.role);
+            const suspended = Boolean(usuarioEntry.suspended);
+
+            return (
+              <Card
+                key={usuarioEntry.id}
+                className={cn(
+                  'flex h-full flex-col gap-4 border',
+                  suspended ? 'border-amber-300/45 bg-amber-500/10' : 'border-white/15'
+                )}
+              >
+                <div className="flex items-start justify-between gap-3 border-b border-white/10 pb-3">
+                  <div className="flex min-w-0 flex-1 gap-3">
+                    <div
+                      className={cn(
+                        'inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/10 text-xl',
+                        suspended ? 'text-amber-200' : roleInfo.color
+                      )}
+                    >
+                      {suspended ? <FaPause /> : roleInfo.icon}
                     </div>
-                    <div className={styles.userDetails}>
-                      <h3>{usuario.nombre} {usuario.apellido}</h3>
-                      <p className={styles.userEmail}>{usuario.email}</p>
-                      <span className={`${styles.roleBadge} ${styles[usuario.role]} ${usuario.suspended ? styles.suspended : ''}`}>
-                        {usuario.suspended ? 'SUSPENDIDO' : getRoleLabel(usuario.role)}
+
+                    <div className="min-w-0">
+                      <p className="truncate text-base font-bold text-white">
+                        {usuarioEntry.nombre} {usuarioEntry.apellido}
+                      </p>
+                      <p className="break-all text-sm text-slate-300">{usuarioEntry.email}</p>
+                      <span
+                        className={cn(
+                          'mt-2 inline-flex rounded-full px-3 py-1 text-xs font-bold uppercase tracking-[0.7px]',
+                          suspended ? 'bg-amber-500/25 text-amber-100' : 'bg-white/10 text-white'
+                        )}
+                      >
+                        {suspended ? 'Suspendido' : roleInfo.label}
                       </span>
                     </div>
                   </div>
-                  
-                  <div className={styles.userActions}>
-                    <button
-                      onClick={() => openModal(usuario)}
-                      className={styles.editButton}
-                      title="Editar usuario"
+
+                  <div className="flex shrink-0 gap-2">
+                    <Button
+                      variant="secondary"
+                      size="icon"
+                      onClick={() => openModal(usuarioEntry)}
+                      aria-label={`Editar usuario ${usuarioEntry.nombre} ${usuarioEntry.apellido}`}
                     >
                       <FaEdit />
-                    </button>
-                    <button
-                      onClick={() => handleSuspensionToggle(usuario)}
-                      className={`${styles.suspendButton} ${usuario.suspended ? styles.reactivateButton : ''}`}
-                      title={usuario.suspended ? "Reactivar usuario" : "Suspender usuario"}
+                    </Button>
+                    <Button
+                      variant={suspended ? 'outline' : 'ghost'}
+                      size="icon"
+                      onClick={() => handleSuspensionToggle(usuarioEntry)}
+                      aria-label={
+                        suspended
+                          ? `Reactivar usuario ${usuarioEntry.nombre} ${usuarioEntry.apellido}`
+                          : `Suspender usuario ${usuarioEntry.nombre} ${usuarioEntry.apellido}`
+                      }
                     >
-                      {usuario.suspended ? <FaPlay /> : <FaPause />}
-                    </button>
-                    <button
-                      onClick={() => deleteUser(usuario)}
-                      className={styles.deleteButton}
-                      title="Eliminar usuario"
+                      {suspended ? <FaPlay /> : <FaPause />}
+                    </Button>
+                    <Button
+                      variant="danger"
+                      size="icon"
+                      onClick={() => deleteUser(usuarioEntry)}
+                      aria-label={`Eliminar usuario ${usuarioEntry.nombre} ${usuarioEntry.apellido}`}
                     >
                       <FaTrash />
-                    </button>
+                    </Button>
                   </div>
                 </div>
 
-                <div className={styles.userMeta}>
-                  {usuario.telefono && (
-                    <div className={styles.metaItem}>
-                      <span className={styles.metaLabel}><FaPhone style={{ marginRight: '5px', verticalAlign: 'middle' }} /> Teléfono:</span>
-                      <span>{usuario.telefono}</span>
+                <dl className="space-y-2 text-sm text-slate-200">
+                  {usuarioEntry.telefono ? (
+                    <div className="grid grid-cols-[120px_1fr] gap-2">
+                      <dt className="font-semibold text-slate-300">
+                        <FaPhone className="mr-1 inline align-middle" /> Telefono
+                      </dt>
+                      <dd className="break-words">{usuarioEntry.telefono}</dd>
                     </div>
-                  )}
-                  
-                  <div className={styles.metaItem}>
-                    <span className={styles.metaLabel}><FaCalendar style={{ marginRight: '5px', verticalAlign: 'middle' }} /> Registrado:</span>
-                    <span>{new Date(usuario.created_at).toLocaleDateString()}</span>
+                  ) : null}
+
+                  <div className="grid grid-cols-[120px_1fr] gap-2">
+                    <dt className="font-semibold text-slate-300">
+                      <FaCalendar className="mr-1 inline align-middle" /> Registro
+                    </dt>
+                    <dd>{formatShortDate(usuarioEntry.created_at)}</dd>
                   </div>
 
-                  {usuario.last_login && (
-                    <div className={styles.metaItem}>
-                      <span className={styles.metaLabel}><FaClock style={{ marginRight: '4px' }} /> Último acceso:</span>
-                      <span>{new Date(usuario.last_login).toLocaleDateString()}</span>
+                  {usuarioEntry.last_login ? (
+                    <div className="grid grid-cols-[120px_1fr] gap-2">
+                      <dt className="font-semibold text-slate-300">
+                        <FaClock className="mr-1 inline align-middle" /> Ultimo acceso
+                      </dt>
+                      <dd>{formatShortDate(usuarioEntry.last_login)}</dd>
                     </div>
-                  )}
+                  ) : null}
 
-                  {usuario.suspended && (
-                    <div className={styles.metaItem}>
-                      <span className={styles.metaLabel}><FaPause style={{ marginRight: '4px' }} /> Estado:</span>
-                      <span className={styles.suspendedStatus}>
-                        SUSPENDIDO
-                        {usuario.suspension_until && ` hasta ${new Date(usuario.suspension_until).toLocaleDateString()}`}
-                      </span>
+                  {suspended ? (
+                    <div className="grid grid-cols-[120px_1fr] gap-2">
+                      <dt className="font-semibold text-slate-300">
+                        <FaPause className="mr-1 inline align-middle" /> Estado
+                      </dt>
+                      <dd className="font-semibold text-amber-100">
+                        Suspendido
+                        {usuarioEntry.suspension_until
+                          ? ` hasta ${formatShortDate(usuarioEntry.suspension_until)}`
+                          : ''}
+                      </dd>
                     </div>
-                  )}
+                  ) : null}
 
-                  {usuario.suspension_reason && (
-                    <div className={styles.metaItem}>
-                      <span className={styles.metaLabel}><FaStickyNote style={{ marginRight: '4px' }} /> Motivo:</span>
-                      <span className={styles.suspensionReason}>{usuario.suspension_reason}</span>
+                  {usuarioEntry.suspension_reason ? (
+                    <div className="grid grid-cols-[120px_1fr] gap-2">
+                      <dt className="font-semibold text-slate-300">
+                        <FaStickyNote className="mr-1 inline align-middle" /> Motivo
+                      </dt>
+                      <dd className="italic text-amber-50">{usuarioEntry.suspension_reason}</dd>
                     </div>
-                  )}
-                </div>
-              </div>
-            ))
-          ) : (
-            <div className={styles.noUsers}>
-              <h3><FaUsers style={{ marginRight: '8px', verticalAlign: 'middle' }} /> No hay usuarios encontrados</h3>
-              <p>No se encontraron usuarios con los filtros aplicados</p>
-            </div>
-          )}
+                  ) : null}
+                </dl>
+              </Card>
+            );
+          })}
         </div>
       )}
 
-      {/* Modal para Editar Usuario */}
-      {showModal && editingUser && (
-        <div className={styles.modalOverlay}>
-          <div className={styles.modal}>
-            <div className={styles.modalHeader}>
-              <h3><FaEdit style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Editar Usuario</h3>
-              <button 
-                onClick={() => setShowModal(false)}
-                className={styles.closeButton}
-              >
-                ✕
-              </button>
+      {showModal && editingUser ? (
+        <div className="fixed inset-0 z-[90] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm">
+          <Card className="max-h-[90vh] w-full max-w-3xl overflow-y-auto">
+            <div className="mb-5 flex items-center justify-between gap-3 border-b border-white/10 pb-3">
+              <h3 className="text-lg font-bold text-white mobile:text-xl">
+                <FaEdit className="mr-2 inline align-middle text-rv-gold" />
+                <span className="align-middle">Editar Usuario</span>
+              </h3>
+              <Button variant="ghost" size="icon" onClick={closeModal} aria-label="Cerrar modal de usuario">
+                <span className="text-lg leading-none">x</span>
+              </Button>
             </div>
-            
-            <form onSubmit={handleSubmit} className={styles.form}>
-              
-              {/* Información básica */}
-              <div className={styles.formSection}>
-                <h4 className={styles.sectionTitle}><FaUser style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Información Personal</h4>
-                <div className={styles.formGrid}>
-                  <div className={styles.inputGroup}>
-                    <label htmlFor="nombre">Nombre</label>
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <section className="space-y-3">
+                <h4 className="text-sm font-bold uppercase tracking-[0.8px] text-rv-gold">Informacion Personal</h4>
+
+                <div className="grid gap-4 mobile:grid-cols-2">
+                  <Field label="Nombre">
                     <input
-                      id="nombre"
                       type="text"
                       value={formData.nombre}
-                      onChange={(e) => setFormData({...formData, nombre: e.target.value})}
+                      onChange={(event) => setFormData((prev) => ({ ...prev, nombre: event.target.value }))}
+                      className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
                       placeholder="Nombre del usuario"
                     />
-                  </div>
-                  
-                  <div className={styles.inputGroup}>
-                    <label htmlFor="apellido">Apellido</label>
+                  </Field>
+
+                  <Field label="Apellido">
                     <input
-                      id="apellido"
                       type="text"
                       value={formData.apellido}
-                      onChange={(e) => setFormData({...formData, apellido: e.target.value})}
+                      onChange={(event) => setFormData((prev) => ({ ...prev, apellido: event.target.value }))}
+                      className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
                       placeholder="Apellido del usuario"
                     />
-                  </div>
+                  </Field>
 
-                  <div className={styles.inputGroup}>
-                    <label htmlFor="email">Email (Solo lectura)</label>
+                  <Field label="Email" hint="Solo lectura">
                     <input
-                      id="email"
                       type="email"
                       value={formData.email}
                       disabled
-                      className={styles.readOnly}
+                      className="min-h-12 w-full cursor-not-allowed rounded-lg border border-white/20 bg-black/20 px-3 py-2 text-sm text-slate-300 opacity-80"
                     />
-                  </div>
-                  
-                  <div className={styles.inputGroup}>
-                    <label htmlFor="telefono">Teléfono</label>
+                  </Field>
+
+                  <Field label="Telefono">
                     <input
-                      id="telefono"
                       type="tel"
                       value={formData.telefono}
-                      onChange={(e) => setFormData({...formData, telefono: e.target.value})}
-                      placeholder="Número de teléfono"
+                      onChange={(event) => setFormData((prev) => ({ ...prev, telefono: event.target.value }))}
+                      className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
+                      placeholder="Numero de telefono"
                     />
-                  </div>
+                  </Field>
                 </div>
-              </div>
+              </section>
 
-              {/* Rol del usuario */}
-              <div className={styles.formSection}>
-                <h4 className={styles.sectionTitle}>🔐 Rol y Permisos</h4>
-                <div className={styles.roleSelector}>
-                  {roles.map(role => (
-                    <label key={role.value} className={styles.roleOption} aria-label={`Seleccionar rol ${role.label}`}>
-                      <input
-                        type="radio"
-                        name="role"
-                        value={role.value}
-                        checked={formData.role === role.value}
-                        onChange={(e) => setFormData({...formData, role: e.target.value})}
-                      />
-                      <div className={`${styles.roleCard} ${formData.role === role.value ? styles.selected : ''}`}>
-                        <div className={styles.roleIcon}>{role.icon}</div>
-                        <div className={styles.roleInfo}>
-                          <h5>{role.label}</h5>
-                          <p>{getRoleDescription(role.value)}</p>
+              <section className="space-y-3">
+                <h4 className="text-sm font-bold uppercase tracking-[0.8px] text-rv-gold">Rol y Permisos</h4>
+
+                <div className="grid gap-3 mobile:grid-cols-2">
+                  {ROLE_CONFIG.map((role) => {
+                    const selected = formData.role === role.value;
+                    return (
+                      <label key={role.value} className="block cursor-pointer" aria-label={`Seleccionar rol ${role.label}`}>
+                        <input
+                          type="radio"
+                          name="role"
+                          value={role.value}
+                          checked={selected}
+                          onChange={(event) => setFormData((prev) => ({ ...prev, role: event.target.value }))}
+                          className="sr-only"
+                        />
+                        <div
+                          className={cn(
+                            'rounded-xl border p-4 transition',
+                            selected
+                              ? 'border-rv-gold bg-rv-gold/15 ring-2 ring-rv-gold/50'
+                              : 'border-white/20 bg-black/25 hover:border-white/35'
+                          )}
+                        >
+                          <div className="flex items-center gap-3">
+                            <span className={cn('text-2xl', role.color)}>{role.icon}</span>
+                            <div>
+                              <p className="font-bold text-white">{role.label}</p>
+                              <p className="text-xs text-slate-300">{getRoleDescription(role.value)}</p>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </label>
-                  ))}
+                      </label>
+                    );
+                  })}
                 </div>
-              </div>
-              
-              <div className={styles.formActions}>
-                <button 
-                  type="button"
-                  onClick={() => setShowModal(false)}
-                  className={styles.cancelButton}
-                >
+              </section>
+
+              <div className="flex flex-col-reverse gap-3 border-t border-white/10 pt-4 mobile:flex-row mobile:justify-end">
+                <Button type="button" variant="secondary" className="w-full mobile:w-auto" onClick={closeModal}>
                   Cancelar
-                </button>
-                <button 
-                  type="submit"
-                  className={styles.saveButton}
-                >
-                  💾 Guardar Cambios
-                </button>
+                </Button>
+                <Button type="submit" className="w-full mobile:w-auto">
+                  Guardar Cambios
+                </Button>
               </div>
             </form>
-          </div>
+          </Card>
         </div>
-      )}
+      ) : null}
     </div>
   );
 };
-
-// Función auxiliar para describir roles
-function getRoleDescription(role) {
-  switch (role) {
-    case 'administrador':
-      return 'Acceso completo al sistema';
-    case 'entrenador':
-      return 'Gestión de entrenamientos y atletas';
-    case 'estudiante':
-      return 'Acceso básico como atleta';
-    default:
-      return 'Usuario del sistema';
-  }
-}
 
 UsuariosManager.propTypes = {
   user: PropTypes.object.isRequired

@@ -1,6 +1,6 @@
 // src/components/ChangePasswordModal.js
 import React, { useState } from 'react';
-import { supabase } from '../config/supabase';
+import { authSessionService } from '../features/auth-session';
 import { validatePassword } from '../utils/passwordUtils';
 import { FaLock, FaTimesCircle, FaEye, FaEyeSlash, FaClipboardList, FaSpinner, FaShieldAlt } from 'react-icons/fa';
 
@@ -56,32 +56,20 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
         return;
       }
 
-      const { data: { session } } = await supabase.auth.getSession();
+      const session = await authSessionService.getSession();
       if (!session) {
         throw new Error('Tu sesión expiró. Inicia sesión nuevamente para cambiar la contraseña.');
       }
 
       // El usuario ya está autenticado; actualizamos la contraseña directamente en Auth.
-      const { error: authUpdateError } = await supabase.auth.updateUser({
-        password: formData.newPassword
-      });
-
-      if (authUpdateError) {
-        throw new Error(authUpdateError.message || 'No se pudo actualizar la contraseña');
-      }
+      await authSessionService.updatePassword(formData.newPassword);
 
       // Cerrar inmediatamente el modal; la sincronización en users se resuelve en paralelo.
       onPasswordChanged();
 
-      supabase
-        .from('users')
-        .update({ first_login: false })
-        .eq('id', user.id)
-        .then(({ error }) => {
-          if (error) {
-            console.warn('No se pudo sincronizar first_login=false desde cliente. Trigger SQL debería cubrir este caso.', error);
-          }
-        });
+      authSessionService.markFirstLoginCompleted(user.id).catch((error) => {
+        console.warn('No se pudo sincronizar first_login=false desde cliente. Trigger SQL deberia cubrir este caso.', error);
+      });
 
     } catch (error) {
       console.error('Error cambiando contraseña:', error);

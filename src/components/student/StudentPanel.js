@@ -1,15 +1,41 @@
 // src/components/student/StudentPanel.js
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { supabase } from '../../config/supabase';
-import { useUserProfile } from '../../hooks/useUserProfile';
-import AnunciosViewer from '../AnunciosViewer';
+import {
+  FaBan,
+  FaBullhorn,
+  FaCalendar,
+  FaChartBar,
+  FaCheckCircle,
+  FaClipboardList,
+  FaClock,
+  FaCog,
+  FaDumbbell,
+  FaExclamationTriangle,
+  FaMoneyBillWave,
+  FaStar,
+  FaSyncAlt,
+  FaTimes,
+  FaUserCircle
+} from 'react-icons/fa';
+import {
+  calcularDiferenciaDias,
+  formatDateString,
+  formatDateStringShort,
+  getEcuadorDate
+} from '../../utils/dateUtils';
+import { studentDashboardService } from '../../features/student-dashboard';
 import ProfileSettings from '../admin/ProfileSettings';
+import RolePanelLayout from '../layout/RolePanelLayout';
+import AnunciosViewer from '../AnunciosViewer';
+import { useUserProfile } from '../../hooks/useUserProfile';
 import StudentPhysicalTests from './StudentPhysicalTests';
-import RoleSidebar from '../layout/RoleSidebar';
-import styles from '../../styles/StudentPanel.module.css';
-import { getEcuadorDate, getEcuadorFirstDayOfMonth, formatDateString, formatDateStringShort, calcularDiferenciaDias } from '../../utils/dateUtils';
-import { FaCog, FaDumbbell, FaBullhorn, FaSyncAlt, FaCheckCircle, FaStar, FaExclamationTriangle, FaClock, FaCalendar, FaMoneyBillWave, FaClipboardList, FaChartBar, FaBan, FaTimes, FaUserCircle } from 'react-icons/fa';
+import Button from '../ui/Button';
+import Card from '../ui/Card';
+import EmptyState from '../ui/EmptyState';
+import SectionHeader from '../ui/SectionHeader';
+import StatusBadge from '../ui/StatusBadge';
+import { cn } from '../../lib/cn';
 
 const StudentPanel = ({ user }) => {
   const [activeSection, setActiveSection] = useState('anuncios');
@@ -30,40 +56,11 @@ const StudentPanel = ({ user }) => {
   const loadStudentData = async () => {
     setLoading(true);
     try {
-      // Cargar datos del estudiante con rol del usuario
-      const { data: student, error: studentError } = await supabase
-        .from('students')
-        .select(`
-          *,
-          users!inner(
-            id,
-            nombre,
-            apellido,
-            email,
-            telefono,
-            role
-          )
-        `)
-        .eq('user_id', user.id)
-        .single();
-
-      if (studentError) {
-        console.error('Error cargando estudiante:', studentError);
-        throw studentError;
-      }
-      
-      console.log('📚 Datos del estudiante cargados:', student);
-      setStudentData(student);
-
-      // Cargar estado de pago del mes actual
-      await loadPaymentStatus(student.id);
-
-      // Cargar estadísticas de asistencia
-      await loadAttendanceStats(student.id);
-
-      // Cargar tests físicos
-      await loadPhysicalTests(student.id);
-
+      const panelData = await studentDashboardService.loadStudentPanelData(user.id);
+      setStudentData(panelData.studentData);
+      setPaymentStatus(panelData.paymentStatus);
+      setAttendanceStats(panelData.attendanceStats);
+      setPhysicalTests(panelData.physicalTests || []);
     } catch (error) {
       console.error('Error cargando datos del estudiante:', error);
     } finally {
@@ -73,42 +70,8 @@ const StudentPanel = ({ user }) => {
 
   const loadPaymentStatus = async (studentId) => {
     try {
-      // Usar zona horaria de Ecuador
-      const today = getEcuadorDate();
-
-      console.log('💳 Consultando pagos del estudiante:', studentId);
-      console.log('📅 Fecha actual (Ecuador):', today);
-
-      // Buscar pagos que estén activos HOY (fecha_inicio <= hoy <= fecha_fin)
-      const { data: payments, error } = await supabase
-        .from('payments')
-        .select('*')
-        .eq('student_id', studentId)
-        .is('deleted_at', null)
-        .lte('fecha_inicio', today)  // fecha_inicio debe ser <= hoy
-        .gte('fecha_fin', today)     // fecha_fin debe ser >= hoy
-        .order('fecha_inicio', { ascending: false });
-
-      if (error) {
-        console.error('❌ Error consultando pagos:', error);
-        throw error;
-      }
-
-      console.log('💰 Pagos encontrados:', payments);
-
-      const currentPayment = payments && payments.length > 0 ? payments[0] : null;
-      
-      setPaymentStatus({
-        hasPaid: Boolean(currentPayment),
-        payment: currentPayment,
-        monthName: new Date().toLocaleDateString('es-EC', { month: 'long', year: 'numeric', timeZone: 'America/Guayaquil' })
-      });
-
-      console.log('✅ Estado de pago actualizado:', {
-        hasPaid: Boolean(currentPayment),
-        payment: currentPayment
-      });
-
+      const paymentData = await studentDashboardService.loadPaymentStatus(studentId);
+      setPaymentStatus(paymentData);
     } catch (error) {
       console.error('Error cargando estado de pago:', error);
     }
@@ -116,274 +79,284 @@ const StudentPanel = ({ user }) => {
 
   const loadPhysicalTests = async (studentId) => {
     try {
-      const { data: tests, error } = await supabase
-        .from('physical_tests')
-        .select('*')
-        .eq('student_id', studentId)
-        .order('fecha_test', { ascending: true });
-
-      if (error) throw error;
-
-      console.log('[TESTS] Tests físicos cargados:', tests);
+      const tests = await studentDashboardService.loadPhysicalTests(studentId);
       setPhysicalTests(tests || []);
     } catch (error) {
-      console.error('Error cargando tests físicos:', error);
+      console.error('Error cargando tests fisicos:', error);
     }
   };
 
   const loadAttendanceStats = async (studentId) => {
     try {
-      // Usar zona horaria de Ecuador (UTC-5)
-      const firstDayFormatted = getEcuadorFirstDayOfMonth();
-
-      console.log('📅 Fecha actual Ecuador:', getEcuadorDate());
-      console.log('📅 Primer día del mes:', firstDayFormatted);
-
-      // Obtener asistencias del mes actual
-      const { data: attendances, error } = await supabase
-        .from('attendances')
-        .select('*')
-        .eq('student_id', studentId)
-        .gte('fecha', firstDayFormatted)
-        .order('fecha', { ascending: false });
-
-      if (error) throw error;
-
-      console.log('📊 Asistencias cargadas:', attendances);
-
-      // Sistema: si hay registro = PRESENTE, si NO hay registro = AUSENTE
-      // Todos los registros obtenidos son días presentes
-      const totalDays = attendances?.length || 0;
-      const presentDays = totalDays; // Todos los registros son presencias
-      const absentDays = 0; // No podemos calcular ausencias sin saber días totales de entrenamiento
-      const attendanceRate = totalDays > 0 ? '100.0' : '0.0'; // Solo tenemos registros de presencias
-
-      setAttendanceStats({
-        totalDays,
-        presentDays,
-        absentDays,
-        attendanceRate,
-        recentAttendances: attendances?.slice(0, 10) || []
-      });
-
+      const attendanceData = await studentDashboardService.loadAttendanceStats(studentId);
+      setAttendanceStats(attendanceData);
     } catch (error) {
-      console.error('Error cargando estadísticas de asistencia:', error);
+      console.error('Error cargando estadisticas de asistencia:', error);
     }
   };
 
   const renderAnuncios = () => (
-    <div className={styles.section}>
-      <div className={styles.sectionHeader}>
-        <h2><FaBullhorn style={{ marginRight: '10px', verticalAlign: 'middle' }} />Anuncios y Comunicados</h2>
-        <p>Mantente informado de las novedades del club</p>
-      </div>
+    <Card className="border-rv-gold/20 bg-black/30" padding="lg">
+      <SectionHeader
+        title="Anuncios y Comunicados"
+        subtitle="Mantente informado de las novedades del club."
+        icon={<FaBullhorn />}
+      />
       <div>
-        <AnunciosViewer 
-          userRole="estudiantes" 
-          limit={null}
-          showFilters={true}
-        />
+        <AnunciosViewer userRole="estudiantes" limit={null} showFilters />
       </div>
-    </div>
+    </Card>
   );
 
-  const renderPaymentStatus = () => (
-    <div className={styles.section}>
-      <div className={styles.sectionHeader}>
-        <div>
-          <h2><FaMoneyBillWave style={{ marginRight: '10px', verticalAlign: 'middle' }} />Estado de Mensualidad</h2>
-          <p>Revisa el estado de tus pagos y el tiempo restante de tu mensualidad activa</p>
-        </div>
-        <button 
-          onClick={() => studentData && loadPaymentStatus(studentData.id)}
-          className={styles.refreshButton}
-          title="Actualizar información"
-        >
-          <FaSyncAlt style={{ marginRight: '8px', verticalAlign: 'middle' }} />Actualizar
-        </button>
-      </div>
+  const getPaymentRemainingStatus = (payment) => {
+    if (!payment?.fecha_fin) return null;
+    const today = getEcuadorDate();
+    const diffDays = calcularDiferenciaDias(payment.fecha_fin, today);
 
-      {paymentStatus ? (
-        <div className={styles.paymentContent}>
-          <div className={`${styles.paymentCard} ${paymentStatus.hasPaid ? styles.paid : styles.pending}`}>
-            <div className={styles.paymentStatus}>
-              {paymentStatus.hasPaid ? (
-                <>
-                  <span className={styles.statusIcon}><FaCheckCircle /></span>
-                  <h3><FaStar style={{ marginRight: '8px', verticalAlign: 'middle' }} />Mensualidad Activa</h3>
-                  <p>Tu pago está al día para {paymentStatus.monthName}</p>
-                </>
-              ) : (
-                <>
-                  <span className={styles.statusIcon}><FaExclamationTriangle /></span>
-                  <h3><FaClock style={{ marginRight: '8px', verticalAlign: 'middle' }} />Pago Pendiente</h3>
-                  <p>Tienes un pago pendiente para {paymentStatus.monthName}</p>
-                </>
-              )}
-            </div>
+    if (diffDays < 0) {
+      return { tone: 'danger', label: 'Vencido', icon: <FaExclamationTriangle className="mr-1" /> };
+    }
+    if (diffDays === 0) {
+      return { tone: 'warning', label: 'Vence hoy', icon: <FaExclamationTriangle className="mr-1" /> };
+    }
+    if (diffDays === 1) {
+      return { tone: 'warning', label: '1 dia restante', icon: <FaExclamationTriangle className="mr-1" /> };
+    }
+    if (diffDays <= 7) {
+      return { tone: 'warning', label: `${diffDays} dias restantes`, icon: <FaClock className="mr-1" /> };
+    }
+    return { tone: 'success', label: `${diffDays} dias restantes`, icon: <FaClock className="mr-1" /> };
+  };
 
-            {paymentStatus.payment && (
-              <div className={styles.paymentDetails}>
-                <div className={styles.detailRow}>
-                  <span className={styles.label}><FaCalendar style={{ marginRight: '8px', verticalAlign: 'middle' }} />Período de Mensualidad</span>
-                  <span className={styles.value}>
-                    {formatDateStringShort(paymentStatus.payment.fecha_inicio)} - {formatDateStringShort(paymentStatus.payment.fecha_fin)}
-                  </span>
-                </div>
-                <div className={styles.detailRow}>
-                  <span className={styles.label}><FaClock style={{ marginRight: '8px', verticalAlign: 'middle' }} />Tiempo restante</span>
-                  <span className={`${styles.value} ${styles.timeRemaining}`}>
-                    {(() => {
-                      const today = getEcuadorDate();
-                      const diffDays = calcularDiferenciaDias(paymentStatus.payment.fecha_fin, today);
-                      
-                      if (diffDays < 0) return <span className={styles.expired}><FaExclamationTriangle style={{ marginRight: '4px' }} />Vencido</span>;
-                      if (diffDays === 0) return <span className={styles.urgent}><FaExclamationTriangle style={{ marginRight: '4px' }} />Vence hoy</span>;
-                      if (diffDays === 1) return <span className={styles.urgent}><FaExclamationTriangle style={{ marginRight: '4px' }} />1 día</span>;
-                      if (diffDays <= 7) return <span className={styles.warning}>{diffDays} días</span>;
-                      return <span className={styles.normal}>{diffDays} días</span>;
-                    })()}
-                  </span>
-                </div>
-                <div className={styles.detailRow}>
-                  <span className={styles.label}><FaMoneyBillWave style={{ marginRight: '8px', verticalAlign: 'middle' }} />Monto</span>
-                  <span className={styles.value}>${paymentStatus.payment.monto}</span>
-                </div>
-                <div className={styles.detailRow}>
-                  <span className={styles.label}><FaClipboardList style={{ marginRight: '8px', verticalAlign: 'middle' }} />Estado</span>
-                  <span className={`${styles.badge} ${styles[paymentStatus.payment.estado]}`}>
-                    {paymentStatus.payment.estado.toUpperCase()}
-                  </span>
-                </div>
-                {paymentStatus.payment.fecha_pago && (
-                  <div className={styles.detailRow}>
-                    <span className={styles.label}><FaCheckCircle style={{ marginRight: '8px', verticalAlign: 'middle' }} />Fecha de pago</span>
-                    <span className={styles.value}>
-                      {formatDateStringShort(paymentStatus.payment.fecha_pago)}
-                    </span>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
+  const getPaymentStateTone = (estado) => {
+    const normalized = (estado || '').toLowerCase();
+    if (['pagado', 'activo'].includes(normalized)) return 'success';
+    if (normalized === 'pendiente') return 'warning';
+    if (normalized === 'vencido') return 'danger';
+    return 'info';
+  };
 
-          {!paymentStatus.hasPaid && (
-            <div className={styles.paymentHelp}>
-              <h4>¿Cómo realizar el pago?</h4>
-              <p>Contacta con la administración para obtener los detalles de pago o acércate directamente al club.</p>
-            </div>
+  const renderPaymentStatus = () => {
+    const currentPayment = paymentStatus?.payment;
+    const remainingStatus = currentPayment ? getPaymentRemainingStatus(currentPayment) : null;
+
+    return (
+      <Card className="border-rv-gold/20 bg-black/30" padding="lg">
+        <SectionHeader
+          title="Estado de Mensualidad"
+          subtitle="Revisa el estado de tus pagos y el tiempo restante de tu mensualidad activa."
+          icon={<FaMoneyBillWave />}
+          actions={(
+            <Button
+              variant="secondary"
+              size="sm"
+              onClick={() => studentData && loadPaymentStatus(studentData.id)}
+              title="Actualizar informacion"
+            >
+              <FaSyncAlt className="mr-2" />
+              Actualizar
+            </Button>
           )}
-        </div>
-      ) : (
-        <div className={styles.noData}>
-          <p>No hay información de pagos disponible</p>
-        </div>
-      )}
-    </div>
-  );
+        />
+
+        {paymentStatus ? (
+          <div className="space-y-4">
+            <Card
+              className={cn(
+                'border-2 bg-black/35',
+                paymentStatus.hasPaid ? 'border-emerald-300/45' : 'border-amber-300/45'
+              )}
+            >
+              <div className="mb-5 text-center">
+                <span
+                  className={cn(
+                    'mb-3 inline-flex h-16 w-16 items-center justify-center rounded-full text-3xl',
+                    paymentStatus.hasPaid ? 'bg-emerald-500/20 text-emerald-300' : 'bg-amber-500/20 text-amber-300'
+                  )}
+                >
+                  {paymentStatus.hasPaid ? <FaCheckCircle /> : <FaExclamationTriangle />}
+                </span>
+                <h3 className="text-2xl font-black text-white">
+                  {paymentStatus.hasPaid ? (
+                    <>
+                      <FaStar className="mr-2 inline align-middle text-rv-gold" />
+                      <span className="align-middle">Mensualidad Activa</span>
+                    </>
+                  ) : (
+                    <>
+                      <FaClock className="mr-2 inline align-middle text-amber-300" />
+                      <span className="align-middle">Pago Pendiente</span>
+                    </>
+                  )}
+                </h3>
+                <p className="mt-1 text-sm text-slate-200 mobile:text-base">
+                  {paymentStatus.hasPaid
+                    ? `Tu pago esta al dia para ${paymentStatus.monthName}.`
+                    : `Tienes un pago pendiente para ${paymentStatus.monthName}.`}
+                </p>
+              </div>
+
+              {currentPayment ? (
+                <div className="space-y-2 rounded-xl border border-white/15 bg-black/25 p-3 mobile:p-4">
+                  <PaymentRow
+                    icon={<FaCalendar />}
+                    label="Periodo de mensualidad"
+                    value={`${formatDateStringShort(currentPayment.fecha_inicio)} - ${formatDateStringShort(currentPayment.fecha_fin)}`}
+                  />
+
+                  {remainingStatus ? (
+                    <PaymentRow
+                      icon={<FaClock />}
+                      label="Tiempo restante"
+                      value={(
+                        <StatusBadge tone={remainingStatus.tone}>
+                          {remainingStatus.icon}
+                          {remainingStatus.label}
+                        </StatusBadge>
+                      )}
+                    />
+                  ) : null}
+
+                  <PaymentRow
+                    icon={<FaMoneyBillWave />}
+                    label="Monto"
+                    value={<span className="font-black text-white">${currentPayment.monto}</span>}
+                  />
+
+                  <PaymentRow
+                    icon={<FaClipboardList />}
+                    label="Estado"
+                    value={<StatusBadge tone={getPaymentStateTone(currentPayment.estado)}>{currentPayment.estado?.toUpperCase() || 'N/A'}</StatusBadge>}
+                  />
+
+                  {currentPayment.fecha_pago ? (
+                    <PaymentRow
+                      icon={<FaCheckCircle />}
+                      label="Fecha de pago"
+                      value={formatDateStringShort(currentPayment.fecha_pago)}
+                    />
+                  ) : null}
+                </div>
+              ) : null}
+            </Card>
+
+            {!paymentStatus.hasPaid ? (
+              <Card className="border-amber-300/45 bg-amber-600/10">
+                <h4 className="text-base font-extrabold text-amber-200 mobile:text-lg">Como realizar el pago</h4>
+                <p className="mt-1 text-sm text-slate-100 mobile:text-base">
+                  Contacta con la administracion para obtener los detalles de pago o acercate directamente al club.
+                </p>
+              </Card>
+            ) : null}
+          </div>
+        ) : (
+          <EmptyState title="No hay informacion de pagos disponible" description="Intenta actualizar en unos segundos." />
+        )}
+      </Card>
+    );
+  };
 
   const renderAttendance = () => (
-    <div className={styles.section}>
-      <div className={styles.sectionHeader}>
-        <div>
-          <h2><FaChartBar style={{ marginRight: '10px', verticalAlign: 'middle' }} />Mis Asistencias</h2>
-          <p>Resumen de tu asistencia a entrenamientos</p>
-        </div>
-        <button 
-          onClick={() => studentData && loadAttendanceStats(studentData.id)}
-          className={styles.refreshButton}
-          title="Actualizar información"
-        >
-          <FaSyncAlt style={{ marginRight: '8px', verticalAlign: 'middle' }} />Actualizar
-        </button>
-      </div>
+    <Card className="border-rv-gold/20 bg-black/30" padding="lg">
+      <SectionHeader
+        title="Mis Asistencias"
+        subtitle="Resumen mensual de asistencia a entrenamientos."
+        icon={<FaChartBar />}
+        actions={(
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={() => studentData && loadAttendanceStats(studentData.id)}
+            title="Actualizar informacion"
+          >
+            <FaSyncAlt className="mr-2" />
+            Actualizar
+          </Button>
+        )}
+      />
 
       {attendanceStats ? (
-        <div className={styles.attendanceContent}>
-          {/* Estadísticas generales */}
-          <div className={styles.statsGrid}>
-            <div className={styles.statCard}>
-              <div className={styles.statIcon}><FaCheckCircle /></div>
-              <div className={styles.statInfo}>
-                <h3>{attendanceStats.presentDays}</h3>
-                <p>Días presente este mes</p>
-              </div>
-            </div>
+        <div className="space-y-4">
+          <div className="grid gap-3 mobile:grid-cols-2">
+            <Card className="border-emerald-300/35 bg-emerald-900/15" padding="sm">
+              <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-emerald-100">
+                <FaCheckCircle />
+                Dias presente este mes
+              </p>
+              <p className="mt-1 text-3xl font-black text-white">{attendanceStats.presentDays}</p>
+            </Card>
 
-            <div className={styles.statCard}>
-              <div className={styles.statIcon}><FaCalendar /></div>
-              <div className={styles.statInfo}>
-                <h3>{attendanceStats.totalDays}</h3>
-                <p>Entrenamientos registrados</p>
-              </div>
-            </div>
+            <Card className="border-cyan-300/35 bg-cyan-900/15" padding="sm">
+              <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-cyan-100">
+                <FaCalendar />
+                Entrenamientos registrados
+              </p>
+              <p className="mt-1 text-3xl font-black text-white">{attendanceStats.totalDays}</p>
+            </Card>
           </div>
 
-          {/* Historial reciente */}
-          <div className={styles.recentAttendance}>
-            <h3>Historial Reciente</h3>
+          <Card className="border-white/15 bg-black/25" padding="sm">
+            <h3 className="text-base font-extrabold text-white mobile:text-lg">Historial Reciente</h3>
             {attendanceStats.recentAttendances.length > 0 ? (
-              <div className={styles.attendanceList}>
-                {attendanceStats.recentAttendances.map((attendance) => {
-                  return (
-                    <div key={attendance.id} className={styles.attendanceItem}>
-                      <span className={styles.attendanceDate}>
-                        {formatDateString(attendance.fecha, { weekday: 'short', day: '2-digit', month: 'short' })}
-                      </span>
-                      <span className={`${styles.attendanceStatus} ${styles.present}`}>
-                        <FaCheckCircle style={{ marginRight: '6px', verticalAlign: 'middle' }} />Presente
-                      </span>
-                    </div>
-                  );
-                })}
+              <div className="mt-3 space-y-2">
+                {attendanceStats.recentAttendances.map((attendance) => (
+                  <div
+                    key={attendance.id}
+                    className="flex flex-col gap-2 rounded-xl border border-white/15 bg-black/20 p-3 mobile:flex-row mobile:items-center mobile:justify-between"
+                  >
+                    <span className="text-sm font-bold capitalize text-slate-200">
+                      {formatDateString(attendance.fecha, { weekday: 'short', day: '2-digit', month: 'short' })}
+                    </span>
+                    <StatusBadge tone="success">
+                      <FaCheckCircle className="mr-1" />
+                      Presente
+                    </StatusBadge>
+                  </div>
+                ))}
               </div>
             ) : (
-              <p className={styles.noData}>No hay registros de asistencia este mes</p>
+              <p className="mt-2 text-sm text-slate-300">No hay registros de asistencia este mes.</p>
             )}
-          </div>
+          </Card>
         </div>
       ) : (
-        <div className={styles.noData}>
-          <p>No hay información de asistencias disponible</p>
-        </div>
+        <EmptyState title="No hay informacion de asistencias disponible" description="Intenta actualizar en unos segundos." />
       )}
-    </div>
+    </Card>
   );
 
   const renderProfile = () => (
-    <div className={styles.section}>
-      <div className={styles.sectionHeader}>
-        <h2><FaCog style={{ marginRight: '10px', verticalAlign: 'middle' }} /> Configuración de Perfil</h2>
-        <p>Actualiza tu información personal</p>
-      </div>
+    <Card className="border-rv-gold/20 bg-black/30" padding="lg">
+      <SectionHeader
+        title="Configuracion de Perfil"
+        subtitle="Actualiza tu informacion personal."
+        icon={<FaCog />}
+      />
       <ProfileSettings user={user} />
-    </div>
+    </Card>
   );
 
-  // Verificar acceso
   if (profileLoading || loading) {
     return (
-      <div className={styles.loading}>
-        <div className={styles.spinner}></div>
-        <p>Cargando información...</p>
+      <div className="flex min-h-[60dvh] flex-col items-center justify-center gap-4 text-white">
+        <div className="h-10 w-10 animate-spin rounded-full border-4 border-white/25 border-t-rv-gold" />
+        <p className="text-sm font-semibold mobile:text-base">Cargando informacion...</p>
       </div>
     );
   }
 
-  // Verificar rol de estudiante desde userProfile o desde studentData
-  // Aceptar tanto "estudiante" como "usuario" como roles válidos
   const userRole = userProfile?.role?.toLowerCase() || studentData?.users?.role?.toLowerCase();
   const validRoles = ['estudiante', 'usuario'];
-  
+
   if (userRole && !validRoles.includes(userRole)) {
     return (
-      <div className={styles.error}>
-        <h2><FaBan style={{ marginRight: '10px', verticalAlign: 'middle' }} />Acceso Denegado</h2>
-        <p>Esta sección es solo para estudiantes.</p>
-        <p>Tu rol actual es: <strong>{userRole}</strong></p>
-        <button 
-          onClick={() => window.location.href = '/'}
-          className={styles.errorButton}
+      <div className="mx-auto mt-10 max-w-xl rounded-2xl border border-red-300/35 bg-white p-8 text-center shadow-xl">
+        <h2 className="inline-flex items-center gap-2 text-2xl font-black text-red-700"><FaBan />Acceso Denegado</h2>
+        <p className="mt-3 text-slate-700">Esta seccion es solo para estudiantes.</p>
+        <p className="mt-1 text-slate-700">Tu rol actual es: <strong>{userRole}</strong></p>
+        <button
+          onClick={() => { window.location.href = '/'; }}
+          className="mt-5 inline-flex min-h-[48px] items-center justify-center rounded-xl bg-rv-gold px-5 py-2.5 font-bold text-rv-dark transition-all duration-200 hover:brightness-105"
         >
           Volver al Inicio
         </button>
@@ -393,13 +366,13 @@ const StudentPanel = ({ user }) => {
 
   if (!studentData) {
     return (
-      <div className={styles.error}>
-        <h2><FaTimes style={{ marginRight: '10px', verticalAlign: 'middle' }} />Error</h2>
-        <p>No se pudo cargar la información del estudiante</p>
-        <p>Por favor, contacta con la administración.</p>
-        <button 
-          onClick={() => window.location.href = '/'}
-          className={styles.errorButton}
+      <div className="mx-auto mt-10 max-w-xl rounded-2xl border border-red-300/35 bg-white p-8 text-center shadow-xl">
+        <h2 className="inline-flex items-center gap-2 text-2xl font-black text-red-700"><FaTimes />Error</h2>
+        <p className="mt-3 text-slate-700">No se pudo cargar la informacion del estudiante.</p>
+        <p className="mt-1 text-slate-700">Por favor, contacta con la administracion.</p>
+        <button
+          onClick={() => { window.location.href = '/'; }}
+          className="mt-5 inline-flex min-h-[48px] items-center justify-center rounded-xl bg-rv-gold px-5 py-2.5 font-bold text-rv-dark transition-all duration-200 hover:brightness-105"
         >
           Volver al Inicio
         </button>
@@ -416,42 +389,37 @@ const StudentPanel = ({ user }) => {
   ];
 
   return (
-    <div className={styles.studentPanel}>
-      <RoleSidebar
-        as="aside"
-        variant="student"
-        title={`${studentData.users?.nombre || ''} ${studentData.users?.apellido || ''}`.trim() || 'Estudiante'}
-        roleLabel="Estudiante"
-        badgeLabel={studentData.categoria?.replaceAll('_', ' ').toUpperCase() || 'ESTUDIANTE'}
-        avatarIcon={<FaUserCircle />}
-        menuItems={menuItems}
-        activeSection={activeSection}
-        onSectionChange={setActiveSection}
-        showDescriptions={false}
-      />
-
-      {/* Main Content */}
-      <main className={styles.mainContent}>
-        <div className={styles.contentHeader}>
-          <h1>Panel de Estudiante</h1>
-          <p>Bienvenido, {studentData.users?.nombre}</p>
+    <RolePanelLayout
+      as="aside"
+      variant="student"
+      title={`${studentData.users?.nombre || ''} ${studentData.users?.apellido || ''}`.trim() || 'Estudiante'}
+      roleLabel="Estudiante"
+      badgeLabel={studentData.categoria?.replaceAll('_', ' ').toUpperCase() || 'ESTUDIANTE'}
+      avatarIcon={<FaUserCircle />}
+      menuItems={menuItems}
+      activeSection={activeSection}
+      onSectionChange={setActiveSection}
+      showDescriptions={false}
+      topBar={(
+        <div>
+          <h1 className="text-xl font-black text-white mobile:text-2xl">Panel de Estudiante</h1>
+          <p className="mt-1 text-sm text-slate-200 mobile:text-base">Bienvenido, {studentData.users?.nombre}</p>
         </div>
-
-        <div className={styles.contentBody}>
-          {activeSection === 'anuncios' && renderAnuncios()}
-          {activeSection === 'mensualidad' && renderPaymentStatus()}
-          {activeSection === 'asistencias' && renderAttendance()}
-          {activeSection === 'tests-fisicos' && (
-            <StudentPhysicalTests 
-              physicalTests={physicalTests}
-              studentData={studentData}
-              onRefresh={() => studentData && loadPhysicalTests(studentData.id)}
-            />
-          )}
-          {activeSection === 'perfil' && renderProfile()}
-        </div>
-      </main>
-    </div>
+      )}
+      contentClassName="space-y-4 mobile:space-y-5"
+    >
+      {activeSection === 'anuncios' && renderAnuncios()}
+      {activeSection === 'mensualidad' && renderPaymentStatus()}
+      {activeSection === 'asistencias' && renderAttendance()}
+      {activeSection === 'tests-fisicos' && (
+        <StudentPhysicalTests
+          physicalTests={physicalTests}
+          studentData={studentData}
+          onRefresh={() => studentData && loadPhysicalTests(studentData.id)}
+        />
+      )}
+      {activeSection === 'perfil' && renderProfile()}
+    </RolePanelLayout>
   );
 };
 
@@ -463,3 +431,24 @@ StudentPanel.propTypes = {
 };
 
 export default StudentPanel;
+
+const PaymentRow = ({ icon, label, value }) => (
+  <div className="flex flex-col gap-2 rounded-xl border border-white/10 bg-black/20 px-3 py-2.5 mobile:flex-row mobile:items-center mobile:justify-between">
+    <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-rv-gold">
+      {icon}
+      {label}
+    </span>
+    <span className="text-sm font-semibold text-white mobile:text-base">{value}</span>
+  </div>
+);
+
+PaymentRow.propTypes = {
+  icon: PropTypes.node.isRequired,
+  label: PropTypes.string.isRequired,
+  value: PropTypes.node.isRequired
+};
+
+
+
+
+

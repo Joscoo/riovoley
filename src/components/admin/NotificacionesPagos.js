@@ -1,11 +1,13 @@
 // src/components/admin/NotificacionesPagos.js
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { supabase } from '../../config/supabase';
-import { getEcuadorDate, calcularDiferenciaDias } from '../../utils/dateUtils';
-import { getLatestPaymentsList } from '../../utils/paymentUtils';
 import { FaBell, FaExclamationTriangle, FaInfoCircle } from 'react-icons/fa';
-import styles from '../../styles/NotificacionesPagos.module.css';
+import { notificationsService } from '../../features/notifications';
+import { cn } from '../../lib/cn';
+import Button from '../ui/Button';
+import Card from '../ui/Card';
+import EmptyState from '../ui/EmptyState';
+import SectionHeader from '../ui/SectionHeader';
 
 const NotificacionesPagos = ({ userRole }) => {
   const [notificaciones, setNotificaciones] = useState([]);
@@ -16,88 +18,10 @@ const NotificacionesPagos = ({ userRole }) => {
     cargarNotificaciones();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const calcularMensajeYTipo = (diferenciaDias, nombreCompleto) => {
-    if (diferenciaDias < 0) {
-      return {
-        mensaje: `El período de ${nombreCompleto} venció hace ${Math.abs(diferenciaDias)} día(s)`,
-        tipo: 'danger'
-      };
-    }
-    if (diferenciaDias === 0) {
-      return {
-        mensaje: `El período de ${nombreCompleto} vence HOY`,
-        tipo: 'danger'
-      };
-    }
-    if (diferenciaDias === 1) {
-      return {
-        mensaje: `El período de ${nombreCompleto} vence MAÑANA`,
-        tipo: 'warning'
-      };
-    }
-    return {
-      mensaje: `El período de ${nombreCompleto} vence en ${diferenciaDias} días`,
-      tipo: 'info'
-    };
-  };
-
   const cargarNotificaciones = async () => {
     try {
-      const hoy = getEcuadorDate();
-
-      // Obtener todos los pagos no eliminados
-      const { data: todosPagos, error: pagosError } = await supabase
-        .from('payments')
-        .select('student_id, fecha_fin, fecha_inicio')
-        .is('deleted_at', null)
-        .order('fecha_fin', { ascending: false });
-
-      if (pagosError) throw pagosError;
-
-      const ultimosPagos = getLatestPaymentsList(todosPagos || []);
-
-      // Filtrar solo los que vencen pronto y obtener datos del atleta
-      const notificacionesTemp = [];
-      
-      for (const pago of ultimosPagos) {
-        if (!pago.fecha_fin) continue;
-
-        const diferenciaDias = calcularDiferenciaDias(pago.fecha_fin, hoy);
-
-        // Solo notificar si vence hoy, mañana o en los próximos 3 días, o ya venció
-        if (diferenciaDias <= 3) {
-          // Obtener información del estudiante
-          const { data: estudiante, error: estudianteError } = await supabase
-            .from('students')
-            .select(`
-              id,
-              categoria,
-              users!inner(nombre, apellido, email)
-            `)
-            .eq('id', pago.student_id)
-            .single();
-
-          if (!estudianteError && estudiante) {
-            const nombreCompleto = `${estudiante.users.nombre} ${estudiante.users.apellido}`;
-            const { mensaje, tipo } = calcularMensajeYTipo(diferenciaDias, nombreCompleto);
-
-            notificacionesTemp.push({
-              id: pago.student_id,
-              mensaje,
-              tipo,
-              fecha_fin: pago.fecha_fin,
-              diasRestantes: diferenciaDias,
-              atleta: nombreCompleto,
-              categoria: estudiante.categoria
-            });
-          }
-        }
-      }
-
-      // Ordenar: primero los vencidos, luego por días restantes
-      notificacionesTemp.sort((a, b) => a.diasRestantes - b.diasRestantes);
-
-      setNotificaciones(notificacionesTemp);
+      const notifications = await notificationsService.loadPaymentNotifications();
+      setNotificaciones(notifications);
       setLoading(false);
     } catch (error) {
       console.error('Error cargando notificaciones:', error);
@@ -118,67 +42,108 @@ const NotificacionesPagos = ({ userRole }) => {
     }
   };
 
+  const getTipoStyles = (tipo) => {
+    switch (tipo) {
+      case 'danger':
+        return {
+          container: 'border-red-300/55 bg-red-500/10',
+          icon: 'text-red-300'
+        };
+      case 'warning':
+        return {
+          container: 'border-amber-300/55 bg-amber-500/10',
+          icon: 'text-amber-300'
+        };
+      case 'info':
+      default:
+        return {
+          container: 'border-cyan-300/55 bg-cyan-500/10',
+          icon: 'text-cyan-300'
+        };
+    }
+  };
+
   const notificacionesAMostrar = mostrarTodas ? notificaciones : notificaciones.slice(0, 5);
 
   if (loading) {
     return (
-      <div className={styles.notificacionesContainer}>
-        <div className={styles.header}>
-          <FaBell className={styles.headerIcon} />
-          <h3>Notificaciones de Pagos</h3>
+      <Card variant="solid" className="mb-6 text-slate-900">
+        <SectionHeader
+          title="Notificaciones de Pagos"
+          icon={<FaBell className="text-blue-600" />}
+          className="mb-4 border-b border-slate-200 pb-3"
+        />
+        <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-10 text-center text-sm font-medium text-slate-600">
+          Cargando notificaciones...
         </div>
-        <div className={styles.loading}>Cargando notificaciones...</div>
-      </div>
+      </Card>
     );
   }
 
   if (notificaciones.length === 0) {
     return (
-      <div className={styles.notificacionesContainer}>
-        <div className={styles.header}>
-          <FaBell className={styles.headerIcon} />
-          <h3>Notificaciones de Pagos</h3>
-        </div>
-        <div className={styles.sinNotificaciones}>
-          <FaInfoCircle />
-          <p>No hay notificaciones de períodos próximos a vencer</p>
-        </div>
-      </div>
+      <Card variant="solid" className="mb-6 text-slate-900">
+        <SectionHeader
+          title="Notificaciones de Pagos"
+          icon={<FaBell className="text-blue-600" />}
+          className="mb-4 border-b border-slate-200 pb-3"
+        />
+        <EmptyState
+          icon={<FaInfoCircle />}
+          title="Sin notificaciones"
+          description="No hay notificaciones de periodos proximos a vencer."
+          className="max-w-none border-slate-200 bg-slate-50 text-slate-800"
+        />
+      </Card>
     );
   }
 
   return (
-    <div className={styles.notificacionesContainer}>
-      <div className={styles.header}>
-        <div className={styles.headerLeft}>
-          <FaBell className={styles.headerIcon} />
-          <h3>Notificaciones de Pagos</h3>
-          <span className={styles.badge}>{notificaciones.length}</span>
-        </div>
-        <button 
-          onClick={() => setMostrarTodas(!mostrarTodas)}
-          className={styles.toggleBtn}
-        >
-          {mostrarTodas ? 'Ver menos' : `Ver todas (${notificaciones.length})`}
-        </button>
+    <Card variant="solid" className="mb-6 text-slate-900">
+      <SectionHeader
+        title="Notificaciones de Pagos"
+        icon={<FaBell className="text-blue-600" />}
+        className="mb-4 border-b border-slate-200 pb-3"
+        actions={(
+          <div className="flex w-full flex-col gap-2 mobile:w-auto mobile:flex-row mobile:items-center">
+            <span className="inline-flex min-h-12 items-center justify-center rounded-full bg-blue-600 px-4 text-xs font-bold uppercase tracking-[0.8px] text-white">
+              {notificaciones.length}
+            </span>
+            <Button variant="outline" onClick={() => setMostrarTodas(!mostrarTodas)} className="w-full mobile:w-auto">
+              {mostrarTodas ? 'Ver menos' : `Ver todas (${notificaciones.length})`}
+            </Button>
+          </div>
+        )}
+      />
+
+      <div className="space-y-3">
+        {notificacionesAMostrar.map((notif) => {
+          const typeStyles = getTipoStyles(notif.tipo);
+          return (
+            <div
+              key={notif.id}
+              className={cn(
+                'flex items-start gap-3 rounded-xl border-l-4 px-4 py-3 transition-shadow hover:shadow-md',
+                typeStyles.container
+              )}
+            >
+              <div className={cn('mt-1 text-xl', typeStyles.icon)}>{getIcono(notif.tipo)}</div>
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-semibold text-slate-900 mobile:text-base">{notif.mensaje}</p>
+                <span className="mt-1 block text-xs text-slate-600 mobile:text-sm">
+                  Categoria: {notif.categoria.replaceAll('_', ' ')} • Vence:{' '}
+                  {new Date(notif.fecha_fin).toLocaleDateString('es-ES')}
+                </span>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
-      <div className={styles.notificacionesList}>
-        {notificacionesAMostrar.map((notif) => (
-          <div key={notif.id} className={`${styles.notificacion} ${styles[notif.tipo]}`}>
-            <div className={styles.notifIcono}>
-              {getIcono(notif.tipo)}
-            </div>
-            <div className={styles.notifContenido}>
-              <p className={styles.notifMensaje}>{notif.mensaje}</p>
-              <span className={styles.notifDetalles}>
-                Categoría: {notif.categoria.replaceAll('_', ' ')} • Vence: {new Date(notif.fecha_fin).toLocaleDateString('es-ES')}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+      <p className="mt-4 text-xs text-slate-500">
+        Rol actual: <span className="font-semibold">{userRole}</span>
+      </p>
+    </Card>
   );
 };
 
