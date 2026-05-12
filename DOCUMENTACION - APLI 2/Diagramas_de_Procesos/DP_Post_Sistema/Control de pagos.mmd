@@ -1,0 +1,16 @@
+flowchart TD
+    A[Inicio] --> B[Administrador ingresa al módulo de pagos]
+    B --> C[Selecciona atleta]
+    C --> D[Registra concepto de pago]
+    D --> E[Ingresa monto, fecha y estado]
+    E --> F{¿Pago completo?}
+
+    F -->|Sí| G[Registrar como pagado]
+    F -->|No| H[Registrar como pendiente]
+
+    G --> I[Actualizar historial de pagos]
+    H --> I
+
+    I --> J[Generar comprobante o registro interno]
+    J --> K[Actualizar reporte administrativo]
+    K --> L[Fin]

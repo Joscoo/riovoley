@@ -1,0 +1,998 @@
+================================================================================
+                        RIOVOLEY - DOCUMENTACION COMPLETA
+                  Plataforma de Gestion para Clubes de Voley/Gimnasia
+================================================================================
+
+Ultima Actualizacion: 20 de abril de 2026
+Estado: Rama 'apolo' sincronizada con 'origin/main'
+Repositorio: https://github.com/Joscoo/riovoley
+
+================================================================================
+1. PROPOSITO GENERAL
+================================================================================
+
+RioVoley es una plataforma web integral de gestion operativa para clubes de 
+voleibol y gimnasia. Centraliza el ciclo completo de operacion del club:
+
+  • Gestion de usuarios y roles (Admin, Entrenador, Estudiante)
+  • Registro y seguimiento de atletas
+  • Control de asistencias a entrenamientos
+  • Sistema de pagos y facturacion
+  • Pruebas fisicas y evaluaciones
+  • Gestion de horarios
+  • Notificaciones automaticas (WhatsApp, Email)
+  • Proteccion de datos sensibles (PII - encriptacion)
+
+VALOR POR ROL:
+  - Admin: Control operativo total, pagos, asistencia, gestion de usuarios
+  - Entrenador/Coach: Seguimiento deportivo, horarios, pruebas fisicas
+  - Atleta/Estudiante: Visualizacion de progreso y datos personales
+
+================================================================================
+2. STACK TECNOLOGICO
+================================================================================
+
+FRONTEND:
+  • React 19.1.1 - Framework UI principal
+  • React Router 7.7.0 - Navegacion SPA
+  • Tailwind CSS 3.4.13 - Estilos y diseño responsivo
+  • Recharts 3.3.0 - Visualizacion de datos y graficos
+  • jsPDF 4.2.0 + jspdf-autotable 5.0.7 - Generacion de reportes PDF
+  • React Icons 5.5.0 - Iconografia
+  • React Testing Library - Pruebas unitarias
+
+BACKEND & BASE DE DATOS:
+  • Supabase (BaaS completo)
+    - PostgreSQL - BD relacional
+    - Auth - Autenticacion con JWT
+    - Row Level Security (RLS) - Control por roles
+    - Edge Functions - Funciones serverless
+    - Realtime - Actualizaciones en tiempo real
+
+TESTING:
+  • Playwright 1.53.0 - Pruebas E2E
+  • React Testing Library - Unitarias
+
+INTEGRACIONES EXTERNAS:
+  • WhatsApp Business API v18.0 - Mensajeria automatizada
+  • Google Calendar API - Sincronizacion de eventos
+  • Resend Email Service - Servicio de email
+  • gapi-script - Google API client
+
+BUILD & DEVOPS:
+  • Node.js 18+ con npm
+  • React Scripts 5.0.1 - Build tools
+  • PostCSS - Procesamiento de CSS
+  • Cross-env - Variables de entorno multiplataforma
+
+================================================================================
+3. ARQUITECTURA GENERAL
+================================================================================
+
+FLUJO DE DATOS:
+
+  ┌─────────────────────────────────────────┐
+  │    React SPA (Single Page Application)  │
+  │  ├─ AdminPanel     (administradores)    │
+  │  ├─ TrainerPanel   (entrenadores)       │
+  │  └─ StudentPanel   (atletas)            │
+  └─────────────┬───────────────────────────┘
+                │ supabase-js client
+                ↓
+  ┌─────────────────────────────────────────┐
+  │   Supabase (Backend as a Service)       │
+  │  ├─ PostgreSQL Database                 │
+  │  ├─ Row Level Security (RLS) Policies   │
+  │  ├─ Edge Functions (serverless)         │
+  │  ├─ Authentication (JWT)                │
+  │  └─ Realtime Subscriptions              │
+  └─────────────┬───────────────────────────┘
+                │
+      ┌─────────┼──────────┐
+      ↓         ↓          ↓
+    WhatsApp  Google    Resend
+    Business Calendar   Email
+    API       API       Service
+
+PATRONES DE ARQUITECTURA:
+  - SPA con Code Splitting
+  - Component-based design
+  - Service Layer Pattern
+  - Context API + Hooks
+  - RLS para control de acceso en BD
+
+================================================================================
+4. MODULOS POR ROL
+================================================================================
+
+ADMIN PANEL (/admin)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Dashboard
+   - Resumen de estadisticas generales
+   - Graficos de asistencia, pagos, estudiantes
+   - KPIs operativos
+
+2. Atletas
+   - CRUD completo de deportistas
+   - Busqueda y filtrado por nombre, categoria, estado
+   - Importacion/exportacion de datos
+   - Edicion de datos personales
+
+3. Entrenadores
+   - Gestion de personal de coaching
+   - Asignacion de permisos
+   - Datos de contacto
+
+4. Pagos
+   - Registro de mensualidades
+   - Gestion de tipos de pago
+   - Estados de pago (pagado, pendiente, vencido)
+   - Notificaciones de pagos vencidos
+   - Generacion de reportes
+
+5. Asistencias
+   - Registro de asistencias por sesion
+   - Control diario de entrenamientos
+   - Reportes de asistencia por atleta
+
+6. Horarios
+   - Gestion de horarios de entrenamientos
+   - Asignacion de horarios a categorias
+   - Sincronizacion con Google Calendar (opcional)
+
+7. Tests Fisicos
+   - Registro de pruebas fisicas
+   - Metricas corporales (altura, peso, IMC)
+   - Pruebas de fuerza
+   - Graficos de evolucion
+
+8. Usuarios
+   - Gestion de usuarios del sistema
+   - Asignacion de roles
+   - Control de suspensiones
+   - Reseteo de contraseñas
+
+9. Anuncios
+   - Creacion de comunicados
+   - Notificaciones a usuarios
+   - Gestion de anuncios publicos
+
+10. Configuracion
+    - Perfil del administrador
+    - Seguridad (cambio de contraseña)
+
+TRAINER PANEL (/entrenador)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Dashboard
+   - Resumen de atletas asignados
+   - Estadisticas de asistencia
+   - Proximos entrenamientos
+
+2. Atletas
+   - Vista filtrada de sus atletas
+   - Seguimiento de progreso
+   - Visualizacion de datos personales
+
+3. Asistencias
+   - Registro rapido de asistencias
+   - Control de presencia por entrenamiento
+
+4. Tests Fisicos
+   - Evaluaciones fisicas periodicas
+   - Seguimiento de metricas
+   - Graficos de progreso del atleta
+
+5. Pagos
+   - Vista de pagos de sus atletas
+   - Reporte de deudas
+
+6. Anuncios
+   - Crear comunicados para atletas
+
+7. Configuracion
+   - Perfil y seguridad
+
+STUDENT PANEL (/estudiante)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Ver Perfil
+   - Datos personales
+   - Categoria de atleta
+
+2. Tests Fisicos
+   - Ver historial de evaluaciones
+   - Graficos de progreso personal
+   - Comparacion de metricas en el tiempo
+
+3. Anuncios
+   - Ver comunicados del club
+
+4. Horarios
+   - Ver entrenamientos disponibles
+
+================================================================================
+5. CARACTERISTICAS IMPLEMENTADAS
+================================================================================
+
+SEGURIDAD & AUTENTICACION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Autenticacion con Supabase Auth (Email/Password, JWT)
+✓ Row Level Security (RLS) - Politicas por rol en tablas criticas
+✓ Encriptacion de PII (Email y Telefono)
+  - AES-GCM para datos en reposo
+  - HMAC-SHA256 para tokens de busqueda
+  - Enmascaramiento de campos sensibles
+✓ Password Reset - Reset de contraseña via email
+✓ First Login Detection - Deteccion de primer login
+✓ Login Lockout - Proteccion contra intentos fallidos
+✓ Suspension de Usuarios - Capacidad de suspender usuarios
+
+GESTION DE USUARIOS & ROLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Roles implementados: admin, entrenador, estudiante
+✓ RBAC completo - Control de acceso basado en roles
+✓ Sincronizacion de roles - Entre auth.users y user_profiles
+✓ Perfiles de usuario - Tabla user_profiles con roles
+
+GESTION DE ATLETAS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ CRUD de estudiantes - Crear, leer, actualizar, eliminar
+✓ Categorizacion - Por nivel/categoria
+✓ Busqueda y filtrado - Por nombre, categoria, estado
+✓ Importacion de datos - Carga masiva de atletas
+✓ Datos personales encriptados - Email y telefono protegidos
+
+CONTROL DE ASISTENCIAS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Registro de asistencias - Por sesion de entrenamiento
+✓ Vista rapida - Interfaz intuitiva para marcar presencia
+✓ Reportes de asistencia - Historicos por atleta
+✓ Responsividad - Funciona en desktop y movil
+
+SISTEMA DE PAGOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Registro de pagos - Por estudiante y tipo de pago
+✓ Tipos de pago - Mensualidades, cuotas, eventos
+✓ Estados de pago - Pagado, Pendiente, Vencido
+✓ Deteccion de vencimientos - Alertas de pagos atrasados
+✓ Notificaciones WhatsApp - Recordatorios de pago (opcional)
+✓ Historial de pagos - Completo con fechas
+✓ Soft delete - Registros eliminados pero recuperables
+
+TESTS FISICOS & EVALUACIONES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Registro de evaluaciones - Pruebas periodicas
+✓ Metricas corporales - Altura, peso, IMC
+✓ Pruebas de fuerza - Resistencia, velocidad, salto
+✓ Graficos de evolucion - Visualizacion de progreso
+✓ Historico completo - Seguimiento en el tiempo
+✓ Exportacion PDF - Reportes de evaluaciones
+
+GESTION DE HORARIOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ CRUD de horarios - Crear, editar, eliminar
+✓ Asignacion a categorias - Horarios por nivel
+✓ Sincronizacion Google Calendar - Integracion (opcional)
+✓ Descripciones de horarios - Detalles y observaciones
+✓ Vista publica - Los atletas ven horarios disponibles
+
+NOTIFICACIONES & COMUNICACIONES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Email de bienvenida - Al crear usuarios
+✓ WhatsApp Business - Mensajes de credenciales y pagos
+✓ Sistema de anuncios - Comunicados internos
+✓ Notificacion de pagos vencidos - Alertas automaticas
+✓ Notificaciones de contexto - Toast notifications en la UI
+
+DASHBOARDS & REPORTES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Dashboard de Admin - KPIs generales, graficos
+✓ Dashboard de Entrenador - Su vista personalizada
+✓ Exportacion PDF - Reportes de asistencia, pagos, evaluaciones
+✓ Graficos dinamicos - Con Recharts
+
+INTEGRACIONES EXTERNAS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Google Calendar - Sincronizacion de eventos
+✓ WhatsApp Business API - Mensajeria automatizada
+✓ Resend Email - Envio de correos
+✓ Edge Functions - Procesamiento serverless
+
+================================================================================
+6. BASE DE DATOS - ESQUEMA
+================================================================================
+
+ESQUEMAS EN POSTGRESQL:
+
+  core          - Datos principales (usuarios, estudiantes)
+  billing       - Pagos y facturacion
+  training      - Entrenamientos y tests fisicos
+  profiles      - Perfiles de usuario
+  audit         - Logs y auditoria
+  security      - Passwords y acceso
+  public_content - Contenido publico
+
+TABLAS PRINCIPALES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+core.users (Usuarios del sistema)
+  - id (UUID, PK)
+  - email (TEXT, unique, encriptado)
+  - role (admin | entrenador | estudiante)
+  - nombre, apellido, fecha_nacimiento, telefono
+  - email_ciphertext, email_search_exact, email_search_partial, email_masked
+  - telefono_ciphertext, telefono_search_exact, telefono_search_partial, telefono_masked
+  - created_at, last_login, first_login
+  - suspended, suspension_reason, suspension_until
+
+core.students (Deportistas)
+  - id (UUID, PK)
+  - user_id (FK → core.users.id)
+  - categoria (TEXT)
+  - fecha_ingreso, fecha_nacimiento (DATE)
+  - edad (INT)
+
+profiles.user_profiles (Perfiles de usuario)
+  - id (UUID, PK, FK → auth.users.id)
+  - full_name (TEXT)
+  - role (TEXT)
+  - organization_id (UUID)
+  - created_at, updated_at
+
+billing.payments (Pagos/Mensualidades)
+  - id (UUID, PK)
+  - student_id (FK → core.students.id)
+  - payment_type_id (FK → billing.payment_types.id)
+  - monto (NUMERIC)
+  - fecha_pago, fecha_inicio, fecha_fin
+  - estado (pagado | pendiente | vencido)
+  - deleted_at (soft delete)
+
+billing.payment_types (Tipos de pago)
+  - id (UUID, PK)
+  - nombre (TEXT)
+  - descripcion (TEXT)
+  - monto_default (NUMERIC)
+
+training.attendances (Asistencias)
+  - id (UUID, PK)
+  - student_id (FK → core.students.id)
+  - fecha_asistencia (DATE)
+  - presente (BOOLEAN)
+  - entrenador_id (FK → core.users.id)
+  - created_at, updated_at
+
+training.schedules (Horarios de entrenamiento)
+  - id (UUID, PK)
+  - categoria (TEXT)
+  - dia_semana (INT)
+  - hora_inicio, hora_fin
+  - descripcion (TEXT)
+  - created_at
+
+training.physical_tests (Tests fisicos)
+  - id (UUID, PK)
+  - student_id (FK → core.students.id)
+  - fecha_test (DATE)
+  - altura, peso (NUMERIC)
+  - fuerza_brazos, velocidad, salto (NUMERIC)
+  - observaciones (TEXT)
+  - created_at, updated_at
+
+audit.payments_audit (Auditoria de pagos)
+  - id (UUID, PK)
+  - payment_id (FK)
+  - operation (INSERT | UPDATE | DELETE)
+  - changed_fields (JSONB)
+  - changed_at (TIMESTAMPTZ)
+  - changed_by (UUID)
+
+security.users_password_backup (Backup de contraseñas)
+  - id (UUID, PK)
+  - user_id (FK)
+  - password_hash (TEXT, encriptado)
+  - created_at
+
+ROW LEVEL SECURITY (RLS) - POLITICAS IMPLEMENTADAS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Tabla                           RLS    Estado
+──────────────────────────────────────────────
+user_profiles                   ✓      Activo
+training.attendances            ✓      Activo
+billing.payment_types           ✓      Activo
+core.users                      ✗      En proceso
+core.students                   ✗      En proceso
+billing.payments                ✗      En proceso
+training.physical_tests         ✗      En proceso
+
+Nota: Hay plan de hardening de seguridad (fase 2026-04-16) para activar 
+      RLS en todas las tablas criticas.
+
+INDICES PRINCIPALES:
+  - idx_user_profiles_role - Busqueda por rol
+  - idx_user_profiles_organization - Busqueda por organizacion
+  - Indices en busqueda: email_search_exact, email_search_partial, 
+                         telefono_search_*
+
+================================================================================
+7. SERVICIOS E INTEGRACIONES
+================================================================================
+
+SERVICIOS FRONTEND:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+supabaseService.js
+  - CRUD general
+  - Queries a BD
+  - Autenticacion
+  - Manejo de errores
+
+emailService.js
+  - Envio de correos via Resend Edge Function
+  - Templates HTML personalizables
+
+whatsappBusinessService.js
+  - Mensajes con plantillas de WhatsApp
+  - Integracion con Meta Cloud API v18.0
+
+googleCalendar.js
+  - Sincronizacion de eventos
+  - Lectura de proximos eventos
+
+userCreationWorking.js
+  - Creacion de usuarios
+  - Encriptacion de email/telefono
+  - Validacion de datos
+
+pagoStatusService.js
+  - Logica de estados de pago
+  - Notificaciones de vencimiento
+
+EDGE FUNCTIONS (Supabase Serverless):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+send-email
+  - Ubicacion: supabase/functions/send-email/
+  - Propósito: Envio de correos electronicos
+  - Usa: Resend Email Service
+
+update-user-password
+  - Ubicacion: supabase/functions/update-user-password/
+  - Propósito: Actualizacion segura de contraseñas
+
+INTEGRACIONES EXTERNAS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. WhatsApp Business API (v18.0)
+   - Plantillas aprobadas para credenciales y pagos
+   - Formato: 5491234567 (Argentina)
+   - Requiere:
+     * Access Token
+     * Phone Number ID
+     * Business Account ID
+
+2. Google Calendar API
+   - Lectura de eventos
+   - Rango: proximos 30 dias
+   - Requiere:
+     * API Key
+     * Calendar ID
+
+3. Resend Email Service
+   - SMTP alternativo
+   - Templates HTML personalizables
+   - Requiere:
+     * API Key (re_xxxxx)
+
+4. Supabase (PostgreSQL + Auth)
+   - BD relacional con RLS
+   - Auth nativo con JWT
+   - Realtime para actualizaciones en vivo
+
+================================================================================
+8. CONTEXTOS Y HOOKS REACT
+================================================================================
+
+CONTEXT API:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ToastContext (src/contexts/ToastContext.js)
+  - Propósito: Notificaciones toast (mensajes ephemeral)
+  - Hook: useToast()
+  - Métodos:
+    * showToast(message, type, duration)
+    * success(message, duration)
+    * error(message, duration)
+    * warning(message, duration)
+    * info(message, duration)
+    * hideToast(id)
+  - Provider: Envuelve toda la app en App.js
+
+CUSTOM HOOKS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+useUserProfile (src/hooks/useUserProfile.js)
+  - Propósito: Cargar y cachear perfil del usuario actual
+  - Inputs: user (usuario de Supabase Auth)
+  - Outputs:
+    {
+      profile: { id, role, full_name, organization_id },
+      loading: boolean,
+      error: object,
+      isAdmin: () => boolean,
+      isTrainer: () => boolean,
+      isStudent: () => boolean
+    }
+  - Características:
+    * Fallback: si no existe en user_profiles, busca en tabla users
+    * Crea automaticamente registro en user_profiles si falta
+    * Caché para evitar queries duplicadas
+
+================================================================================
+9. TESTING
+================================================================================
+
+PRUEBAS E2E (PLAYWRIGHT):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+asistencias.guided.review.spec.js
+  - Scope: Módulo de asistencias en modo responsive
+  - Valida interfaz y funcionamiento
+
+responsive.smoke.spec.js
+  - Scope: Validacion general en multiples viewports
+  - Verifica responsive design
+  - Detecta horizontal overflow
+
+Requisitos:
+  - Credenciales: E2E_ADMIN_EMAIL, E2E_ADMIN_PASSWORD
+  - Pruebas de accesibilidad
+  - Métricas de ancho de componentes
+
+Ejecutar:
+  npm run e2e              # Modo headless
+  npm run e2e:ui          # Modo UI interactivo
+  npm run e2e:install     # Instalar browsers
+
+PRUEBAS UNITARIAS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Setup con:
+  - @testing-library/react
+  - @testing-library/jest-dom
+
+Comando: npm test
+
+================================================================================
+10. SEGURIDAD - IMPLEMENTACIONES DETALLADAS
+================================================================================
+
+ENCRIPTACION DE PII (Personally Identifiable Information):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Archivo Central: src/utils/piiCrypto.js
+
+Algoritmos:
+  - Cifrado: AES-GCM (Web Crypto API)
+  - Key derivation: SHA-256
+  - HMAC: HMAC-SHA256 para tokens de busqueda
+
+Campos Protegidos:
+
+1. EMAIL:
+   - email_ciphertext        Email cifrado (AES-GCM)
+   - email_search_exact      Hash para busqueda exacta
+   - email_search_partial    Hashes n-gramas para busqueda parcial
+   - email_masked            Version enmascarada para UI (ej: a****@b***.com)
+
+2. TELEFONO:
+   - telefono_ciphertext     Teléfono cifrado (AES-GCM)
+   - telefono_search_exact   Hash exacto
+   - telefono_search_partial Hashes parciales
+   - telefono_masked         Version enmascarada (ej: ****6789)
+
+Flujo de Encriptacion:
+  1. Entrada: Usuario registra email/teléfono
+  2. Validacion: Normalizacion (lowercase, sin espacios)
+  3. Cifrado: AES-GCM con IV aleatorio
+  4. Hashing: HMAC-SHA256 para busqueda
+  5. Enmascaramiento: Para visualizacion en UI
+  6. Persistencia: Todos los campos en core.users
+
+Donde se Aplica:
+  - userCreationWorking.js - Alta de usuarios
+  - AtletasManager.js - Edicion de atletas
+  - EntrenadoresManager.js - Edicion de entrenadores
+  - supabaseService.js - Capa generica
+
+Variable de Entorno:
+  REACT_APP_PII_ENCRYPTION_KEY=tu_clave_secreta
+
+AUTENTICACION & AUTORIZACION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ JWT Token: Supabase Auth con JWT
+✓ Row Level Security (RLS): Politicas por tabla
+✓ Role-based Access Control (RBAC): Roles (admin, entrenador, estudiante)
+✓ Password Reset: Via email con token temporal
+✓ First Login Detection: Campo first_login en core.users
+✓ Login Lockout: Proteccion contra fuerza bruta
+
+AUDITORIA:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Tabla: audit.payments_audit
+Campos:
+  - operation (INSERT, UPDATE, DELETE)
+  - changed_fields (JSONB con cambios)
+  - changed_at (TIMESTAMPTZ)
+  - changed_by (usuario que hizo el cambio)
+Triggers: Registro automatico de cambios en pagos
+
+SOFT DELETE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Campo: deleted_at en billing.payments
+Propósito: Recuperacion de registros eliminados
+Politica: Datos no se borran fisicamente, solo se marcan
+
+MANEJO DE SECRETOS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- Variables de entorno en .env.local (no en git)
+- Edge Functions usan variables de entorno de Supabase
+- PII encryption key en entorno frontend
+- Tokens WhatsApp/Google en Supabase o .env.local
+
+================================================================================
+11. CAMBIOS RECIENTES (Abril 2026)
+================================================================================
+
+FASES DE HARDENING DE SEGURIDAD (2026-04-16):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Fase 8: Cleanup de Usuarios Huérfanos
+  Script: cleanup_orphan_auth_users_phase8_2026_04_16.sql
+  Cambio: Elimina usuarios en auth.users sin registro en core.users
+
+Fase 7: Sincronizacion de Roles de Estudiantes
+  Script: fix_student_role_sync_phase7_2026_04_16.sql
+  Cambio: Asegura sincronizacion de rol 'estudiante' entre auth y BD
+
+Fase 6: Login Lockout
+  Script: login_lockout_phase6_2026_04_16.sql
+  Cambio: Implementa proteccion contra intentos fallidos
+
+Fase 5: Verificacion de Matriz de Seguridad
+  Script: verify_security_matrix_phase5_2026_04_16.sql
+  Cambio: Valida RLS y politicas por tabla
+
+Fase 4: Consolidacion de Politicas
+  Script: consolidate_policies_phase4_2026_04_16.sql
+  Cambio: Unifica RLS policies en todas las tablas
+
+Fase 3: Normalizacion de RBAC
+  Script: normalize_rbac_phase3_2026_04_16.sql
+  Cambio: Estandardiza nombres de roles (admin, entrenador, estudiante)
+
+Fase 2: Hardening de Vistas Públicas
+  Script: hardening_public_view_grants_phase1_2026_04_16.sql
+  Cambio: Restringe acceso a vistas publicas por rol
+
+REFACTORINGS RECIENTES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Migracion de Esquemas (2026-03-29)
+  Script: migracion_esquemas_2026_03_29.sql
+  Cambio: Separacion en esquemas (core, billing, training, profiles, etc.)
+
+Encriptacion de PII
+  Script: add_email_phone_encryption_fields.sql
+  Cambio: Agrego campos de cifrado y busqueda a core.users
+
+Tests Fisicos Mejorados
+  Script: add_physical_test_strength_fields.sql
+  Cambio: Nuevas metricas de fuerza
+
+CAMBIOS EN CODIGO:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+src/Login.js
+  - Actualizado (297 lineas modificadas)
+  - Mejoras en flujo de autenticacion
+
+src/components/Login.js
+  - Actualizado (72 lineas modificadas)
+  - Componente de login mejorado
+
+riovoley/index.js
+  - Actualizado (41 lineas modificadas)
+  - Integracion de cambios
+
+CAMBIOS EN GIT (Sync 2026-04-20):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Rama apolo sincronizada con origin/main
+Cambios principales:
+  - 70 archivos modificados
+  - +5,143 lineas insertadas
+  - -24,616 lineas eliminadas
+  - 41 documentos de setup movidos a documentacion
+  - 8 scripts de migracion/seguridad agregados
+  - .env.local.backup y .env.production eliminados
+
+================================================================================
+12. ESTRUCTURA DEL PROYECTO
+================================================================================
+
+riovoley/
+│
+├── src/
+│   ├── components/
+│   │   ├── admin/                  ← Panel administrativo
+│   │   │   ├── AdminPanel.js
+│   │   │   ├── Dashboard.js
+│   │   │   ├── AtletasManager.js
+│   │   │   ├── PagosManager.js
+│   │   │   ├── AsistenciasManager.js
+│   │   │   ├── TestsFisicosManager.js
+│   │   │   ├── HorariosManager.js
+│   │   │   ├── UsuariosManager.js
+│   │   │   ├── EntrenadoresManager.js
+│   │   │   ├── AnunciosManager.js
+│   │   │   └── ProfileSettings.js
+│   │   ├── trainer/                ← Panel entrenador
+│   │   │   ├── TrainerPanel.js
+│   │   │   ├── TrainerDashboard.js
+│   │   │   ├── TrainerAtletasManager.js
+│   │   │   ├── TrainerAsistenciasManager.js
+│   │   │   ├── TrainerTestsFisicosManager.js
+│   │   │   ├── TrainerPagosManager.js
+│   │   │   └── TrainerProfileSettings.js
+│   │   ├── student/               ← Panel estudiante
+│   │   │   ├── StudentPanel.js
+│   │   │   └── StudentPhysicalTests.js
+│   │   ├── layout/                ← Layout components
+│   │   │   └── RoleSidebar.js
+│   │   ├── ui/                    ← Componentes reutilizables
+│   │   │   └── Button.js
+│   │   ├── HomePage.js
+│   │   ├── Navbar.js
+│   │   ├── Login.js
+│   │   ├── ResetPassword.js
+│   │   ├── ProtectedRoute.js
+│   │   ├── Horarios.js
+│   │   ├── AboutUs.js
+│   │   ├── NotificationBell.js
+│   │   ├── AnunciosViewer.js
+│   │   ├── ChangePasswordModal.js
+│   │   ├── PhysicalTestChart.js
+│   │   ├── Toast.js
+│   │   └── LoadingSpinner.js
+│   │
+│   ├── services/                  ← Logica de negocio
+│   │   ├── supabaseService.js      (CRUD general)
+│   │   ├── emailService.js         (Correos)
+│   │   ├── whatsappBusinessService.js (WhatsApp)
+│   │   ├── whatsappService.js      (WhatsApp alternativo)
+│   │   ├── googleCalendar.js       (Google Calendar)
+│   │   ├── pagoStatusService.js    (Estados de pago)
+│   │   ├── userCreationService.js  (Creacion de usuarios)
+│   │   └── userCreationWorking.js  (Creacion con PII)
+│   │
+│   ├── utils/                     ← Utilidades
+│   │   ├── piiCrypto.js           (Encriptacion de PII)
+│   │   ├── dateUtils.js
+│   │   ├── exportAttendancePdf.js
+│   │   └── ...
+│   │
+│   ├── contexts/                  ← Context API
+│   │   └── ToastContext.js
+│   │
+│   ├── hooks/                     ← Custom hooks
+│   │   └── useUserProfile.js
+│   │
+│   ├── config/                    ← Configuracion
+│   │   ├── supabase.js
+│   │   └── googleCalendar.js
+│   │
+│   ├── lib/                       ← Librerias custom
+│   ├── styles/                    ← CSS modules
+│   ├── assets/                    ← Imagenes y recursos
+│   ├── App.js                     ← Root component
+│   ├── index.js
+│   ├── App.css
+│   └── index.css
+│
+├── supabase/                      ← Configuracion Supabase
+│   ├── functions/                 ← Edge Functions
+│   │   ├── send-email/
+│   │   │   └── index.ts
+│   │   ├── update-user-password/
+│   │   │   └── index.ts
+│   │   └── _shared/
+│   ├── config.toml
+│   └── .env.example
+│
+├── database/                      ← Scripts SQL
+│   ├── *.sql                      (Migraciones y schemas)
+│   └── (55+ archivos SQL)
+│
+├── tests/                         ← Pruebas
+│   └── e2e/
+│       ├── asistencias.guided.review.spec.js
+│       └── responsive.smoke.spec.js
+│
+├── public/                        ← Assets publicos
+│
+├── package.json                   ← Dependencias
+├── package-lock.json
+├── tailwind.config.js             ← Config Tailwind
+├── postcss.config.js              ← Config PostCSS
+├── playwright.config.js           ← Config Playwright
+├── .env.example                   ← Variables de entorno
+├── README.md                      ← Documentacion principal
+└── README_DATABASE.md             ← Documentacion de BD
+
+================================================================================
+13. VARIABLES DE ENTORNO REQUERIDAS
+================================================================================
+
+OBLIGATORIAS:
+  REACT_APP_SUPABASE_URL         - URL de Supabase
+  REACT_APP_SUPABASE_ANON_KEY    - Clave anonima de Supabase
+
+OPCIONALES (Integraciones):
+  REACT_APP_PII_ENCRYPTION_KEY           - Clave de encriptacion PII
+  REACT_APP_WHATSAPP_ACCESS_TOKEN        - Token WhatsApp Business
+  REACT_APP_WHATSAPP_PHONE_NUMBER_ID     - ID de numero WhatsApp
+  REACT_APP_WHATSAPP_BUSINESS_ACCOUNT_ID - ID de cuenta WhatsApp
+  REACT_APP_CLUB_ADMIN_PHONE             - Telefono admin
+  REACT_APP_CLUB_COACH_PHONE             - Telefono entrenador
+  REACT_APP_CLUB_EMERGENCY_PHONE         - Telefono emergencia
+
+================================================================================
+14. SCRIPTS NPM DISPONIBLES
+================================================================================
+
+npm start              - Inicia aplicacion en modo desarrollo
+                       URL: http://localhost:3000
+
+npm test               - Ejecuta tests unitarios (React Scripts)
+
+npm run build          - Build para produccion
+                       Genera carpeta /build
+
+npm run eject          - Eject configuracion (CUIDADO: irreversible)
+
+npm run e2e            - Ejecuta tests E2E (Playwright headless)
+
+npm run e2e:ui         - Ejecuta tests E2E en modo UI interactivo
+
+npm run e2e:install    - Instala browsers para Playwright
+
+================================================================================
+15. CHECKLIST DE CARACTERISTICAS
+================================================================================
+
+AUTENTICACION & SEGURIDAD:
+  [✓] Autenticacion multi-rol (admin, entrenador, estudiante)
+  [✓] JWT tokens con Supabase Auth
+  [✓] Encriptacion de PII (email, telefono)
+  [✓] Row Level Security (RLS)
+  [✓] RBAC completo
+  [✓] Password reset por email
+  [✓] First login detection
+  [✓] Login lockout (proteccion fuerza bruta)
+  [✓] Suspension de usuarios
+  [✓] Auditoria de cambios
+
+GESTION DE ATLETAS:
+  [✓] CRUD completo
+  [✓] Categorizacion por nivel
+  [✓] Busqueda y filtrado
+  [✓] Importacion/exportacion
+  [✓] Datos encriptados
+
+OPERACIONES OPERATIVAS:
+  [✓] Control de asistencias responsivo
+  [✓] Registro de pagos
+  [✓] Estados de pago (pagado, pendiente, vencido)
+  [✓] Deteccion de vencimientos
+  [✓] Tests fisicos con metricas
+  [✓] Graficos de evolucion
+  [✓] Gestion de horarios
+  [✓] Sincronizacion Google Calendar
+
+NOTIFICACIONES:
+  [✓] Email automatizado
+  [✓] WhatsApp Business
+  [✓] Toast notifications
+  [✓] Alertas de pagos vencidos
+
+DASHBOARDS & REPORTES:
+  [✓] Dashboard Admin con KPIs
+  [✓] Dashboard Entrenador personalizado
+  [✓] Exportacion PDF
+  [✓] Graficos con Recharts
+
+TESTING:
+  [✓] Pruebas E2E con Playwright
+  [✓] Pruebas unitarias con React Testing Library
+  [✓] Validacion responsiva
+  [✓] Smoke tests
+
+OTROS:
+  [✓] API REST con PostgREST
+  [✓] Realtime updates
+  [✓] Soft delete para recuperacion
+  [✓] Versionado de cambios
+
+================================================================================
+16. PROXIMOS PASOS SUGERIDOS
+================================================================================
+
+CORTO PLAZO (1-2 semanas):
+  1. Completar hardening de RLS - Activar en todas las tablas criticas
+  2. Implementar full-text search - Busqueda mejorada de atletas
+  3. Documentar API REST - OpenAPI/Swagger
+
+MEDIANO PLAZO (1 mes):
+  4. Analytics avanzados - Dashboard de tendencias
+  5. Integracion con Stripe - Pagos online
+  6. Implementar 2FA - Two-Factor Authentication
+
+LARGO PLAZO (2-3 meses):
+  7. Sincronizacion offline - Service Workers
+  8. Mobile app - React Native
+  9. Video training - Biblioteca de videos para atletas
+  10. Sistema de reportes avanzados - BI integration
+
+================================================================================
+17. SOPORTE Y RECURSOS
+================================================================================
+
+DOCUMENTACION:
+  - README.md - Documentacion principal del proyecto
+  - README_DATABASE.md - Documentacion de BD y estado actual
+  - DOCUMENTACION_ENCRIPTACION_PII.md - Guia de cifrado PII
+  - EDGE_FUNCTION_SETUP.md - Setup de Edge Functions
+
+REPOSITORIO:
+  - GitHub: https://github.com/Joscoo/riovoley
+  - Ramas: main (produccion), apolo (desarrollo), dev
+
+HERRAMIENTAS:
+  - Supabase Dashboard: https://supabase.com/dashboard
+  - Node.js: https://nodejs.org/
+  - React Docs: https://react.dev
+  - Tailwind CSS: https://tailwindcss.com
+
+CONTACTO/ISSUES:
+  - Crear issues en GitHub para bugs/features
+  - Documentar cambios en commits con mensajes descriptivos
+
+================================================================================
+FIN DE LA DOCUMENTACION
+================================================================================
+
+Documento generado: 20 de abril de 2026
+Rama: apolo (sincronizada con origin/main)
+Version del Stack: React 19, Supabase, Tailwind CSS 3, Playwright
+
+Para mas informacion consulta los archivos README.md y README_DATABASE.md
+
+================================================================================

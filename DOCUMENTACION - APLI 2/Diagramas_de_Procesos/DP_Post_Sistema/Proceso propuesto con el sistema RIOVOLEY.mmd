@@ -1,0 +1,27 @@
+flowchart TD
+    A[Inicio] --> B[Usuario ingresa al sistema]
+    B --> C{Rol del usuario}
+
+    C --> D[Administrador]
+    C --> E[Entrenador]
+    C --> F[Atleta]
+
+    D --> G[Gestiona usuarios, pagos, horarios y categorías]
+    E --> H[Registra asistencias, pruebas físicas y comunicados]
+    F --> I[Consulta progreso, logros, niveles e insignias]
+
+    G --> J[El sistema valida y almacena la información]
+    H --> J
+    I --> K[El sistema muestra información personalizada]
+
+    J --> L[Base de datos centralizada]
+    L --> M[Generación de reportes]
+    L --> N[Actualización de progreso del atleta]
+    N --> O[Aplicación de gamificación]
+    O --> P[Visualización en app móvil]
+
+    M --> Q[Apoyo a la toma de decisiones]
+    P --> R[Mayor motivación y seguimiento]
+    Q --> S[Fin]
+    R --> S
+    

@@ -1,0 +1,21 @@
+flowchart TD
+    A[Inicio] --> B[Entrenador o administrador crea comunicado]
+    B --> C[Selecciona destinatarios]
+    C --> D{Tipo de destinatario}
+
+    D --> E[Usuarios web]
+    D --> F[Atletas en app móvil]
+
+    E --> G[Publicar notificación en plataforma web]
+    F --> H[Enviar notificación a aplicación móvil]
+
+    G --> I[Usuario revisa comunicado]
+    H --> I
+
+    I --> J{¿Requiere acción del usuario?}
+    J -->|Sí| K[Usuario responde o realiza acción solicitada]
+    J -->|No| L[Finaliza lectura]
+
+    K --> M[Registrar interacción]
+    L --> M
+    M --> N[Fin]

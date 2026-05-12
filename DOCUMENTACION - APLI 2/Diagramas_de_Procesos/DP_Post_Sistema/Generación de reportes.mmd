@@ -1,0 +1,25 @@
+flowchart TD
+    A[Inicio] --> B[Administrador o entrenador accede al módulo de reportes]
+    B --> C[Selecciona tipo de reporte]
+    C --> D{Tipo de reporte}
+
+    D --> E[Pagos]
+    D --> F[Asistencias]
+    D --> G[Pruebas físicas]
+    D --> H[Progreso gamificado]
+
+    E --> I[Consultar datos en la base de datos]
+    F --> I
+    G --> I
+    H --> I
+
+    I --> J[Procesar información]
+    J --> K[Generar tablas, gráficos o indicadores]
+    K --> L[Visualizar reporte]
+    L --> M{¿Exportar reporte?}
+
+    M -->|Sí| N[Descargar o guardar reporte]
+    M -->|No| O[Finalizar consulta]
+
+    N --> P[Fin]
+    O --> P

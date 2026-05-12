@@ -1,0 +1,14 @@
+flowchart TD
+    A[Inicio] --> B[Administrador o entrenador recopila información]
+
+    B --> D[Comunicados]
+
+    D --> E[Envío por WhatsApp u otro medio informal]
+
+    E --> K{¿La información está completa?}
+
+    K -->|Sí| L[Se usa para control interno]
+    K -->|No| M[Se solicita nuevamente la información]
+    M --> B
+
+    L --> N[Fin]

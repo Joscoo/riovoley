@@ -1,0 +1,23 @@
+flowchart TD
+    A[Inicio] --> B[Entrenador selecciona módulo de pruebas físicas]
+    B --> C[Selecciona atleta o grupo]
+    C --> D[Selecciona tipo de prueba]
+    D --> E{Tipo de prueba}
+
+    E --> F[Condicional]
+    E --> G[Antropométrica]
+    E --> H[Técnica]
+
+    F --> I[Registra resultado obtenido]
+    G --> I
+    H --> I
+
+    I --> J{¿Resultado válido?}
+    J -->|No| K[Corregir dato]
+    K --> I
+
+    J -->|Sí| L[Guardar resultado]
+    L --> M[Actualizar historial del atleta]
+    M --> N[Generar comparación de progreso]
+    N --> O[Enviar datos al módulo de gamificación]
+    O --> P[Fin]

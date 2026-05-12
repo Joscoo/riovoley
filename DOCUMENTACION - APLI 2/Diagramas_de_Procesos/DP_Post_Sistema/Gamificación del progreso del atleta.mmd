@@ -1,0 +1,15 @@
+flowchart TD
+    A[Inicio] --> B[El sistema recibe resultados físicos del atleta]
+    B --> C[Calcula progreso según criterios definidos]
+    C --> D{¿Cumple condición de logro?}
+
+    D -->|Sí| E[Asignar puntos, insignia o nivel]
+    D -->|No| F[Mantener progreso actual]
+
+    E --> G[Actualizar perfil gamificado]
+    F --> G
+
+    G --> H[Mostrar avance en la app móvil]
+    H --> I[Atleta visualiza progreso]
+    I --> J[Incremento de motivación y participación]
+    J --> K[Fin]

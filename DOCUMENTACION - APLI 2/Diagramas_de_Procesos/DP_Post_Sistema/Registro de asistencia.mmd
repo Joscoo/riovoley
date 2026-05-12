@@ -1,0 +1,16 @@
+flowchart TD
+    A[Inicio] --> B[Entrenador ingresa al sistema web]
+    B --> C[Selecciona horario o entrenamiento]
+    C --> D[Visualiza lista de atletas]
+    D --> E[Marca asistencia de cada atleta]
+    E --> F{¿Atleta asistió?}
+
+    F -->|Sí| G[Registrar asistencia]
+    F -->|No| H[Registrar inasistencia]
+
+    G --> I[Guardar registro]
+    H --> I
+
+    I --> J[Actualizar historial de asistencia]
+    J --> K[Disponible para reportes]
+    K --> L[Fin]

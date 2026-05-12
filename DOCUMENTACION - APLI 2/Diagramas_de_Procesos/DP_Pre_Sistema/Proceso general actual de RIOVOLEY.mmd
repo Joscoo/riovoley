@@ -1,0 +1,23 @@
+flowchart TD
+    A[Inicio] --> B[Administrador o entrenador recopila información]
+    B --> C{Tipo de información}
+    C --> D[Pagos]
+    C --> E[Asistencias]
+    C --> F[Resultados físicos]
+    C --> G[Comunicados]
+    C --> R[Registro de usuarios]
+
+    D --> H[Registro en hojas de cálculo o apuntes]
+    E --> H
+    F --> H
+    R --> H
+    G --> I[Envío por WhatsApp u otro medio informal]
+
+    H --> K{¿La información está completa?}
+    I --> K
+
+    K -->|Sí| L[Se usa para control interno]
+    K -->|No| M[Se solicita nuevamente la información]
+    M --> B
+
+    L --> N[Fin]

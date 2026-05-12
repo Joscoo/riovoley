@@ -1,0 +1,14 @@
+flowchart TD
+    A[Inicio] --> B[Administrador accede al sistema web]
+    B --> C[Selecciona módulo de usuarios]
+    C --> D[Registra datos del atleta]
+    D --> E[Asigna categoría o grupo de entrenamiento]
+    E --> F[Define rol y credenciales]
+    F --> G{¿Datos completos y válidos?}
+
+    G -->|No| H[Corregir información]
+    H --> D
+
+    G -->|Sí| I[Guardar atleta en la base de datos]
+    I --> J[Atleta queda habilitado en el sistema]
+    J --> K[Fin]
