@@ -53,4 +53,24 @@ describe('createUserProvisioningService', () => {
     expect(repository.resendCredentials).toHaveBeenCalledWith(payload);
     expect(result).toEqual({ success: true, emailSent: true });
   });
+
+  it('delega sendCredentialsByWhatsApp al use case y gateway', async () => {
+    const repository = {
+      createUser: jest.fn(),
+      createStudent: jest.fn(),
+      resendCredentials: jest.fn(),
+    };
+
+    const service = createUserProvisioningService(repository, {
+      createWhatsAppBusiness: () => ({
+        sendCredentials: jest.fn().mockResolvedValue({ success: true }),
+      }),
+    });
+    const result = await service.sendCredentialsByWhatsApp({
+      userData: { telefono: '0999999999', email: 'user@riovoley.com' },
+      password: 'Temp123!',
+    });
+
+    expect(result).toEqual({ success: true });
+  });
 });

@@ -41,7 +41,8 @@ describe('createStudentDashboardService', () => {
     const result = await service.loadStudentViewData('u1');
 
     expect(repository.listPaymentsByStudentId).toHaveBeenCalledWith('s1');
-    expect(result.payments).toEqual([{ id: 'p1' }]);
+    expect(result.payments).toHaveLength(1);
+    expect(result.payments[0]).toMatchObject({ id: 'p1', statusInfo: { estado: 'activo' } });
     expect(result.physicalTests).toEqual([{ id: 't1' }]);
   });
 });

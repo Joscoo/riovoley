@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { physicalTestsService } from '../../features/physical-tests';
-import { getEcuadorDate, getEcuadorDateTime } from '../../utils/dateUtils';
 import { 
   FaEdit, FaPlus, FaClock, FaSave, FaDumbbell, FaTrash, 
   FaUsers, FaCheckCircle, FaExclamationTriangle, FaChartLine,
@@ -94,6 +93,7 @@ const styles = {
 };
 
 const TestsFisicosManager = ({ user }) => {
+  const buildDefaultFormData = () => physicalTestsService.buildInitialForm();
   const [tests, setTests] = useState([]);
   const [atletas, setAtletas] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -123,22 +123,7 @@ const TestsFisicosManager = ({ user }) => {
   const [showPendientes, setShowPendientes] = useState(false);
   const [categoriaSeleccionadaPendientes, setCategoriaSeleccionadaPendientes] = useState('todas');
 
-  const [formData, setFormData] = useState({
-    student_id: '',
-    estatura: '',
-    peso: '',
-    brazo_extend_inicial: '',
-    brazo_extend_sin_impulso: '',
-    brazo_extend_con_impulso: '',
-    fuerza_explosiva_salto_largo: '',
-    envergadura_brazos_extendidos_lateral: '',
-    fuerza_abdomen: '',
-    fuerza_brazos: '',
-    fuerza_piernas: '',
-    elevaciones_barra: '',
-    observaciones: '',
-    fecha_test: getEcuadorDate()
-  });
+  const [formData, setFormData] = useState(() => buildDefaultFormData());
 
   const [currentPage, setCurrentPage] = useState(1);
   const PAGE_SIZE = 8;
@@ -153,63 +138,14 @@ const TestsFisicosManager = ({ user }) => {
 
   useEffect(() => {
     if (atletas.length > 0) {
-      calculateStats();
+      const summary = physicalTestsService.calculateStats({ athletes: atletas, tests });
+      setStats(summary.stats);
+      setAtletasPendientes(summary.pendingAthletes);
+      setAtletasPendientesPorCategoria(summary.pendingByCategory);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [atletas, tests]);
 
-  // Función para calcular estadísticas
-  const calculateStats = () => {
-    const now = getEcuadorDateTime();
-    const firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
-    const lastDayOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
-
-    // Atletas con test este mes
-    const atletasConTestEsteMes = new Set();
-    tests.forEach(test => {
-      const testDate = new Date(test.fecha_test);
-      if (testDate >= firstDayOfMonth && testDate <= lastDayOfMonth) {
-        atletasConTestEsteMes.add(test.student_id);
-      }
-    });
-
-    // Atletas sin test este mes
-    const atletasSinTest = atletas.filter(atleta => 
-      !atletasConTestEsteMes.has(atleta.id)
-    );
-
-    // Promedio de tests por atleta
-    const testsPorAtleta = {};
-    tests.forEach(test => {
-      if (!testsPorAtleta[test.student_id]) {
-        testsPorAtleta[test.student_id] = 0;
-      }
-      testsPorAtleta[test.student_id]++;
-    });
-
-    const totalTests = Object.values(testsPorAtleta).reduce((sum, count) => sum + count, 0);
-    const promedio = atletas.length > 0 ? (totalTests / atletas.length).toFixed(1) : 0;
-
-    setStats({
-      totalAtletas: atletas.length,
-      conTestEsteMes: atletasConTestEsteMes.size,
-      sinTestEsteMes: atletasSinTest.length,
-      promedioTestsPorAtleta: promedio
-    });
-
-    setAtletasPendientes(atletasSinTest);
-
-    // Agrupar atletas pendientes por categoría
-    const porCategoria = {};
-    atletasSinTest.forEach(atleta => {
-      const categoria = atleta.categoria || 'sin_categoria';
-      if (!porCategoria[categoria]) {
-        porCategoria[categoria] = [];
-      }
-      porCategoria[categoria].push(atleta);
-    });
-    setAtletasPendientesPorCategoria(porCategoria);
-  };
 
   // Cerrar dropdown al hacer clic fuera
   useEffect(() => {
@@ -257,87 +193,13 @@ const TestsFisicosManager = ({ user }) => {
     setSaving(true);
     
     try {
-      // Validaciones básicas
-      if (!formData.student_id) {
-        alert('Error: Debe seleccionar un atleta');
-        return;
-      }
-      
-      if (!formData.fecha_test) {
-        alert('Error: La fecha del test es requerida');
-        return;
-      }
+      const validation = physicalTestsService.validateTestForm({
+        formData,
+        athletes: atletas,
+      });
 
-      // Validar fecha no futura
-      const fechaTest = new Date(formData.fecha_test);
-      const hoy = getEcuadorDateTime();
-      hoy.setHours(23, 59, 59, 999);
-      
-      if (fechaTest > hoy) {
-        alert('Error: La fecha del test no puede ser futura');
-        return;
-      }
-
-      // Validar edad mínima (5 años) usando datos cargados de `atletas`
-      const selectedAtleta = atletas.find(a => a.id === formData.student_id);
-      if (selectedAtleta) {
-        const birthStr = selectedAtleta.fecha_nacimiento || selectedAtleta.users?.fecha_nacimiento || selectedAtleta.users?.birthday;
-        if (birthStr) {
-          const birth = new Date(birthStr);
-          const age = fechaTest.getFullYear() - birth.getFullYear() - (fechaTest < new Date(fechaTest.getFullYear(), birth.getMonth(), birth.getDate()) ? 1 : 0);
-          if (age < 5) {
-            alert('Error: El atleta debe tener al menos 5 años en la fecha del test');
-            return;
-          }
-        }
-      }
-
-      // Validar que al menos un campo de medición esté completo
-      const mediciones = [
-        formData.estatura, formData.peso, formData.brazo_extend_inicial,
-        formData.brazo_extend_sin_impulso, formData.brazo_extend_con_impulso,
-        formData.fuerza_explosiva_salto_largo, formData.envergadura_brazos_extendidos_lateral
-      ];
-
-      if (!mediciones.some(medicion => medicion && String(medicion).trim() !== '')) {
-        alert('Error: Debe ingresar al menos una medición física');
-        return;
-      }
-
-      // Validaciones específicas de rangos (ajustadas para edad mínima 5 años)
-      if (formData.estatura && (Number.parseFloat(formData.estatura) < 0.8 || Number.parseFloat(formData.estatura) > 3)) {
-        alert('Error: La estatura debe estar entre 0.8m y 3.0m');
-        return;
-      }
-
-      if (formData.peso && (Number.parseFloat(formData.peso) < 15 || Number.parseFloat(formData.peso) > 300)) {
-        alert('Error: El peso debe estar entre 15kg y 300kg');
-        return;
-      }
-
-      if (formData.fuerza_explosiva_salto_largo && Number.parseFloat(formData.fuerza_explosiva_salto_largo) > 10) {
-        alert('Error: El salto largo no puede ser mayor a 10 metros');
-        return;
-      }
-
-      // Validaciones para campos de fuerza (coherentes con constraints de BD)
-      if (formData.fuerza_abdomen && (Number.parseInt(formData.fuerza_abdomen, 10) < 0 || Number.parseInt(formData.fuerza_abdomen, 10) > 400)) {
-        alert('Error: Fuerza abdomen debe estar entre 0 y 400 repeticiones');
-        return;
-      }
-
-      if (formData.fuerza_brazos && (Number.parseInt(formData.fuerza_brazos, 10) < 0 || Number.parseInt(formData.fuerza_brazos, 10) > 400)) {
-        alert('Error: Fuerza brazos debe estar entre 0 y 400 repeticiones');
-        return;
-      }
-
-      if (formData.fuerza_piernas && (Number.parseInt(formData.fuerza_piernas, 10) < 0 || Number.parseInt(formData.fuerza_piernas, 10) > 600)) {
-        alert('Error: Fuerza piernas debe estar entre 0 y 600 repeticiones');
-        return;
-      }
-
-      if (formData.elevaciones_barra && (Number.parseInt(formData.elevaciones_barra, 10) < 0 || Number.parseInt(formData.elevaciones_barra, 10) > 300)) {
-        alert('Error: Elevaciones en barra debe estar entre 0 y 300 repeticiones');
+      if (!validation.ok) {
+        alert(validation.errorMessage);
         return;
       }
       
@@ -394,22 +256,7 @@ const TestsFisicosManager = ({ user }) => {
   const openModal = (test = null) => {
     if (test) {
       setEditingTest(test);
-      setFormData({
-        student_id: test.student_id || '',
-        estatura: test.estatura || '',
-        peso: test.peso || '',
-        brazo_extend_inicial: test.brazo_extend_inicial || '',
-        brazo_extend_sin_impulso: test.brazo_extend_sin_impulso || '',
-        brazo_extend_con_impulso: test.brazo_extend_con_impulso || '',
-        fuerza_explosiva_salto_largo: test.fuerza_explosiva_salto_largo || '',
-        envergadura_brazos_extendidos_lateral: test.envergadura_brazos_extendidos_lateral || '',
-        fuerza_abdomen: test.fuerza_abdomen || '',
-        fuerza_brazos: test.fuerza_brazos || '',
-        fuerza_piernas: test.fuerza_piernas || '',
-        elevaciones_barra: test.elevaciones_barra || '',
-        observaciones: test.observaciones || '',
-        fecha_test: test.fecha_test || getEcuadorDate()
-      });
+      setFormData(physicalTestsService.buildFormFromTest({ test }));
       // Establecer el nombre del atleta en el campo de búsqueda al editar
       if (test.student_id) {
         const atleta = atletas.find(a => a.id === test.student_id);
@@ -425,22 +272,7 @@ const TestsFisicosManager = ({ user }) => {
   };
 
   const resetForm = () => {
-    setFormData({
-      student_id: '',
-      estatura: '',
-      peso: '',
-      brazo_extend_inicial: '',
-      brazo_extend_sin_impulso: '',
-      brazo_extend_con_impulso: '',
-      fuerza_explosiva_salto_largo: '',
-      envergadura_brazos_extendidos_lateral: '',
-      fuerza_abdomen: '',
-      fuerza_brazos: '',
-      fuerza_piernas: '',
-      elevaciones_barra: '',
-      observaciones: '',
-      fecha_test: getEcuadorDate()
-    });
+    setFormData(buildDefaultFormData());
     setSearchTerm('');
     setShowAtletasList(false);
   };
@@ -1272,4 +1104,5 @@ TestsFisicosManager.propTypes = {
 };
 
 export default TestsFisicosManager;
+
 

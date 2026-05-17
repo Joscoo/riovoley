@@ -1,11 +1,7 @@
 // src/components/admin/PagosManager.js
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
-import WhatsAppService from '../../services/whatsappService';
-import PagoStatusService from '../../services/pagoStatusService';
 import { paymentsService } from '../../features/payments';
-import { getEcuadorDate } from '../../utils/dateUtils';
-import { getLatestPaymentsList } from '../../utils/paymentUtils';
 import { 
   FaChartBar, 
   FaCheckCircle, 
@@ -93,6 +89,7 @@ const getPaymentStatusClass = (status) => {
 };
 
 const PagosManager = ({ user }) => {
+  const buildDefaultFormData = () => paymentsService.buildInitialPaymentForm();
   const modalTitleId = 'payment-modal-title';
   const firstPaymentFieldRef = useRef(null);
   const [pagos, setPagos] = useState([]);
@@ -113,20 +110,13 @@ const PagosManager = ({ user }) => {
     sortOrder: 'asc'
   });
 
-  // Estados para búsqueda de atleta en formulario
+  // Estados para bÃƒÂºsqueda de atleta en formulario
   const [atletaBusqueda, setAtletaBusqueda] = useState('');
   const [atletasFiltrados, setAtletasFiltrados] = useState([]);
   const [mostrarSugerencias, setMostrarSugerencias] = useState(false);
   const [formErrors, setFormErrors] = useState({});
 
-  const [formData, setFormData] = useState({
-    student_id: '',
-    fecha_inicio: getEcuadorDate(),
-    fecha_fin: '',
-    monto: '',
-    fecha_pago: '', // Vacío por defecto - solo se llena cuando realmente se paga
-    observaciones: ''
-  });
+  const [formData, setFormData] = useState(() => buildDefaultFormData());
 
   useEffect(() => {
     loadData();
@@ -168,64 +158,7 @@ const PagosManager = ({ user }) => {
     };
   }, [showModal]);
 
-  const getTodayDateString = () => getEcuadorDate();
-
-  const parseDateOnly = (value) => {
-    if (!value) {
-      return null;
-    }
-
-    const [year, month, day] = value.split('-').map(Number);
-    if (!year || !month || !day) {
-      return null;
-    }
-
-    return new Date(year, month - 1, day);
-  };
-
-  const validatePaymentForm = () => {
-    const errors = {};
-    const monto = Number.parseFloat(formData.monto);
-    const startDate = parseDateOnly(formData.fecha_inicio);
-    const endDate = parseDateOnly(formData.fecha_fin);
-    const paidDate = parseDateOnly(formData.fecha_pago);
-    const todayDate = parseDateOnly(getTodayDateString());
-
-    if (!formData.student_id) {
-      errors.student_id = 'Selecciona un atleta de la lista para continuar.';
-    }
-
-    if (!formData.fecha_inicio || !startDate) {
-      errors.fecha_inicio = 'La fecha de inicio es obligatoria.';
-    }
-
-    if (formData.fecha_fin && !endDate) {
-      errors.fecha_fin = 'La fecha fin no es valida.';
-    }
-
-    if (startDate && endDate && endDate < startDate) {
-      errors.fecha_fin = 'La fecha fin no puede ser anterior a la fecha de inicio.';
-    }
-
-    if (!Number.isFinite(monto) || monto <= 0) {
-      errors.monto = 'Ingresa un monto mayor a 0.';
-    }
-
-    if (formData.fecha_pago && !paidDate) {
-      errors.fecha_pago = 'La fecha de pago no es valida.';
-    }
-
-    if (paidDate && todayDate && paidDate > todayDate) {
-      errors.fecha_pago = 'La fecha de pago no puede estar en el futuro.';
-    }
-
-    if (formData.observaciones && formData.observaciones.length > 300) {
-      errors.observaciones = 'Las observaciones no deben superar 300 caracteres.';
-    }
-
-    setFormErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
+  const getTodayDateString = () => paymentsService.getTodayDate();
 
   const paymentStatusPreview = useMemo(() => {
     const pagoTemporal = {
@@ -235,7 +168,7 @@ const PagosManager = ({ user }) => {
       fecha_pago: formData.fecha_pago || null
     };
 
-    return PagoStatusService.getStatusInfo(pagoTemporal);
+    return paymentsService.getPaymentStatusInfo(pagoTemporal);
   }, [formData.monto, formData.fecha_inicio, formData.fecha_fin, formData.fecha_pago]);
 
   const loadData = async () => {
@@ -257,7 +190,7 @@ const PagosManager = ({ user }) => {
     }
   };
 
-  // Función para aplicar filtros localmente
+  // FunciÃƒÂ³n para aplicar filtros localmente
   const applyFilters = () => {
     const filteredData = paymentsService.filterAndSortLatestPayments({
       allPayments: allPagos,
@@ -266,11 +199,18 @@ const PagosManager = ({ user }) => {
     setPagos(filteredData);
   };
 
-  const totalPages = Math.max(1, Math.ceil(pagos.length / PAGE_SIZE));
-  const paginatedPagos = pagos.slice(
-    (currentPage - 1) * PAGE_SIZE,
-    (currentPage - 1) * PAGE_SIZE + PAGE_SIZE
+  const pagination = useMemo(
+    () =>
+      paymentsService.paginatePayments({
+        payments: pagos,
+        page: currentPage,
+        pageSize: PAGE_SIZE,
+      }),
+    [pagos, currentPage]
   );
+  const totalPages = pagination.totalPages;
+  const visiblePage = pagination.currentPage;
+  const paginatedPagos = pagination.paginated;
 
   const resetFilters = () => {
     setFilters({
@@ -287,7 +227,13 @@ const PagosManager = ({ user }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validatePaymentForm()) {
+    const validation = paymentsService.validatePaymentForm({
+      formData,
+      todayDateString: getTodayDateString(),
+    });
+    setFormErrors(validation.errors);
+
+    if (!validation.isValid) {
       return;
     }
     
@@ -331,20 +277,18 @@ const PagosManager = ({ user }) => {
 
     if (!result.whatsappSent) {
       const selectedAthlete = atletas.find((athlete) => String(athlete.id) === String(formData.student_id));
-      const phone = selectedAthlete?.users?.telefono;
-      if (phone && WhatsAppService.validarTelefono(phone)) {
-        const formattedPhone = WhatsAppService.formatearTelefono(phone);
-        const whatsappMessage = WhatsAppService.crearMensajePago({
-          id: result.createdPayment?.id,
-          estudiante_nombre: `${selectedAthlete?.users?.nombre || ''} ${selectedAthlete?.users?.apellido || ''}`.trim(),
-          monto: Number.parseFloat(formData.monto),
-          fecha_pago: formData.fecha_pago,
-          concepto: 'Mensualidad Club de Voley',
-          observaciones: formData.observaciones,
-        });
+      const manualWhatsAppPayload = paymentsService.buildManualWhatsAppPaymentMessage({
+        createdPayment: result.createdPayment,
+        formData,
+        athlete: selectedAthlete,
+      });
 
-        if (globalThis.confirm('¿Desea enviar confirmación por WhatsApp al atleta?')) {
-          WhatsAppService.sendMessage(formattedPhone, whatsappMessage);
+      if (manualWhatsAppPayload?.canSend && globalThis.confirm('¿Desea enviar confirmación por WhatsApp al atleta?')) {
+        const sendResult = paymentsService.sendManualWhatsAppPaymentMessage({
+          formattedPhone: manualWhatsAppPayload.formattedPhone,
+          message: manualWhatsAppPayload.message,
+        });
+        if (sendResult?.sent) {
           return { ...result, whatsappSent: true };
         }
       }
@@ -406,7 +350,7 @@ const PagosManager = ({ user }) => {
         observaciones: ''
       });
       
-      // Establecer el atleta en el campo de búsqueda
+      // Establecer el atleta en el campo de bÃƒÂºsqueda
       const atleta = atletas.find(a => a.id === pago.student_id);
       if (atleta) {
         const nombreCompleto = `${atleta.users?.nombre || ''} ${atleta.users?.apellido || ''}`;
@@ -425,21 +369,14 @@ const PagosManager = ({ user }) => {
   };
 
   const resetForm = () => {
-    setFormData({
-      student_id: '',
-      fecha_inicio: getEcuadorDate(),
-      fecha_fin: '',
-      monto: '',
-      fecha_pago: '', // Vacío por defecto
-      observaciones: ''
-    });
+    setFormData(buildDefaultFormData());
     setAtletaBusqueda('');
     setAtletasFiltrados([]);
     setMostrarSugerencias(false);
     setFormErrors({});
   };
 
-  // Función para manejar la búsqueda de atletas
+  // FunciÃƒÂ³n para manejar la bÃƒÂºsqueda de atletas
   const handleAtletaBusqueda = (valorBusqueda) => {
     setAtletaBusqueda(valorBusqueda);
     setFormErrors((previousErrors) => ({ ...previousErrors, student_id: undefined }));
@@ -452,16 +389,16 @@ const PagosManager = ({ user }) => {
     }
 
     // Filtrar atletas por nombre o apellido
-    const filtrados = atletas.filter(atleta => {
-      const nombreCompleto = `${atleta.users?.nombre || ''} ${atleta.users?.apellido || ''}`.toLowerCase();
-      return nombreCompleto.includes(valorBusqueda.toLowerCase());
+    const filtrados = paymentsService.filterAthletesBySearch({
+      athletes: atletas,
+      searchTerm: valorBusqueda,
     });
 
     setAtletasFiltrados(filtrados);
     setMostrarSugerencias(true);
   };
 
-  // Función para seleccionar un atleta de las sugerencias
+  // FunciÃƒÂ³n para seleccionar un atleta de las sugerencias
   const seleccionarAtleta = (atleta) => {
     const nombreCompleto = `${atleta.users?.nombre || ''} ${atleta.users?.apellido || ''}`;
     setAtletaBusqueda(nombreCompleto);
@@ -471,64 +408,21 @@ const PagosManager = ({ user }) => {
     setFormErrors((previousErrors) => ({ ...previousErrors, student_id: undefined }));
   };
 
-  // Función helper para formatear fechas sin problemas de zona horaria
-  const formatDateSafe = (dateStr) => {
-    if (!dateStr) return null;
-    try {
-      // Parsear la fecha en formato YYYY-MM-DD sin conversión de zona horaria
-      const [year, month, day] = dateStr.split('T')[0].split('-');
-      const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
-      
-      return date.toLocaleDateString('es-ES', {
-        year: 'numeric',
-        month: 'numeric',
-        day: 'numeric'
-      });
-    } catch (error) {
-      return dateStr;
-    }
-  };
+  // FunciÃƒÂ³n helper para formatear fechas sin problemas de zona horaria
+  const formatDateSafe = (dateStr) => paymentsService.formatDateSafe({ dateStr });
+  const formatPeriodo = (fechaInicio, fechaFin) =>
+    paymentsService.formatPeriodo({ fechaInicio, fechaFin });
+  const formatMonto = (monto) => paymentsService.formatMonto({ monto });
 
-  const formatPeriodo = (fecha_inicio, fecha_fin) => {
-    if (!fecha_inicio) return '--';
-    const inicio = formatDateSafe(fecha_inicio);
-    if (!fecha_fin) return `Desde: ${inicio}`;
-    const fin = formatDateSafe(fecha_fin);
-    return `${inicio} - ${fin}`;
-  };
-
-  const formatMonto = (monto) => {
-    if (!monto) return '$0';
-    return new Intl.NumberFormat('es-AR', {
-      style: 'currency',
-      currency: 'ARS'
-    }).format(monto);
-  };
-
-  const calcularEstadisticas = () => {
-    const pagosVigentes = getLatestPaymentsList(allPagos);
-    const pagosConEstado = pagosVigentes.map((pago) => ({
-      ...pago,
-      estadoCalculado: PagoStatusService.getStatusInfo(pago).estado
-    }));
-
-    const totalPagos = pagosConEstado.length;
-    const activos = pagosConEstado.filter(p => p.estadoCalculado === 'activo').length;
-    const proximosVencer = pagosConEstado.filter(p => p.estadoCalculado === 'proximo_a_vencer').length;
-    const vencidos = pagosConEstado.filter(p => p.estadoCalculado === 'vencido').length;
-    const totalRecaudado = pagosConEstado
-      .filter(p => p.estadoCalculado === 'activo')
-      .reduce((sum, p) => sum + (p.monto || 0), 0);
-
-    return { totalPagos, activos, proximosVencer, vencidos, totalRecaudado };
-  };
-
-  const stats = calcularEstadisticas();
+  const stats = useMemo(
+    () => paymentsService.calculatePaymentsStats({ allPayments: allPagos }),
+    [allPagos]
+  );
 
   const actualizarEstadosManualmente = async () => {
     try {
-      console.log('🔄 Actualizando estados manualmente...');
-      const resultados = await PagoStatusService.actualizarTodosLosEstados(supabase);
+      console.log('?? Actualizando estados manualmente...');
+      const resultados = await paymentsService.syncPaymentStatuses();
       
       if (resultados.actualizados > 0) {
         alert(`${resultados.actualizados} pagos actualizados.\nEstados sincronizados correctamente.`);
@@ -732,17 +626,17 @@ const PagosManager = ({ user }) => {
               <div className={styles.pagination}>
                 <button
                   onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                  disabled={currentPage === 1}
+                  disabled={visiblePage === 1}
                   className={styles.pageButton}
                 >
                   Anterior
                 </button>
 
-                <span className={styles.pageInfo}>Página {currentPage} de {totalPages}</span>
+                <span className={styles.pageInfo}>Página {visiblePage} de {totalPages}</span>
 
                 <button
                   onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-                  disabled={currentPage === totalPages}
+                  disabled={visiblePage === totalPages}
                   className={styles.pageButton}
                 >
                   Siguiente
@@ -763,7 +657,7 @@ const PagosManager = ({ user }) => {
                 </thead>
                 <tbody>
                   {paginatedPagos.map((pago) => {
-                    const statusInfo = PagoStatusService.getStatusInfo(pago);
+                    const statusInfo = paymentsService.getPaymentStatusInfo(pago);
                     return (
                     <tr key={pago.id} className={styles.tableRow}>
                       <td data-label="Atleta">
@@ -823,17 +717,17 @@ const PagosManager = ({ user }) => {
               <div className={styles.pagination}>
                 <button
                   onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                  disabled={currentPage === 1}
+                  disabled={visiblePage === 1}
                   className={styles.pageButton}
                 >
                   Anterior
                 </button>
 
-                <span className={styles.pageInfo}>Página {currentPage} de {totalPages}</span>
+                <span className={styles.pageInfo}>Página {visiblePage} de {totalPages}</span>
 
                 <button
                   onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-                  disabled={currentPage === totalPages}
+                  disabled={visiblePage === totalPages}
                   className={styles.pageButton}
                 >
                   Siguiente
@@ -1092,4 +986,13 @@ PagosManager.propTypes = {
 };
 
 export default PagosManager;
+
+
+
+
+
+
+
+
+
 

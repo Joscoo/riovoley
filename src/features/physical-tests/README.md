@@ -8,7 +8,8 @@ Feature clean-lite para gestion de tests fisicos.
 - Encapsular consultas Supabase en un repositorio del feature.
 
 ## Capas
-- `presentation/createPhysicalTestsService.js`: orquestacion y mapeo de datos para UI.
+- `application/useCases/createPhysicalTestsUseCases.js`: reglas de negocio y orquestacion del modulo.
+- `presentation/createPhysicalTestsService.js`: fachada consumida por UI.
 - `domain/physicalTestsError.js`: error funcional del feature.
 - `infrastructure/repositories/supabasePhysicalTestsRepository.js`: acceso a `students` y `physical_tests`.
 
@@ -18,4 +19,3 @@ Feature clean-lite para gestion de tests fisicos.
 - `physicalTestsService.createTest({ formData })`
 - `physicalTestsService.updateTest({ testId, formData })`
 - `physicalTestsService.deleteTest({ testId })`
-

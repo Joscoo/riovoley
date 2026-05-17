@@ -329,7 +329,7 @@ const AthletesTab = ({ userRole }) => {
         <Card className="h-full border-l-4 border-l-[#F9B233]">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">CategorÃ­as</h3>
+              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Categorías</h3>
               <p className="mt-1 text-3xl font-black text-white">
                 {Object.keys(stats.byCategory).filter(k => stats.byCategory[k] > 0).length}
               </p>
@@ -363,7 +363,7 @@ const AthletesTab = ({ userRole }) => {
             ? "No se encontraron atletas" 
             : "No hay atletas registrados"}
           description={filters.search || filters.categoria || filters.status !== 'all'
-            ? "Intenta ajustar los filtros de bÃºsqueda"
+            ? "Intenta ajustar los filtros de búsqueda"
             : "Agrega el primer atleta al club"}
           action={
             permissions.canCreate && !filters.search && !filters.categoria && filters.status === 'all' && (
@@ -402,7 +402,7 @@ const AthletesTab = ({ userRole }) => {
                 Anterior
               </Button>
               <span className="rounded-full border border-rv-gold/35 bg-black/35 px-4 py-2 text-sm font-semibold text-white">
-                PÃ¡gina {currentPage} de {totalPages}
+                Página {currentPage} de {totalPages}
               </span>
               <Button
                 variant="outline"
@@ -495,3 +495,5 @@ const AthletesTab = ({ userRole }) => {
 };
 
 export default AthletesTab;
+
+

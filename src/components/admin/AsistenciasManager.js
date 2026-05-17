@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { attendanceService } from '../../features/attendance';
 import { reportingService } from '../../features/reporting';
-import { getEcuadorDate, getEcuadorDateMinusDays, formatDateString } from '../../utils/dateUtils';
+import { formatDateString } from '../../utils/dateUtils';
 import { 
   FaChartBar, 
   FaCheckCircle, 
@@ -137,13 +137,14 @@ const styles = new Proxy(styleMap, {
 });
 
 const AsistenciasManager = ({ user }) => {
+  const defaultDates = attendanceService.getDefaultDates();
   const [asistencias, setAsistencias] = useState([]);
   const [atletas, setAtletas] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedDate, setSelectedDate] = useState(getEcuadorDate());
+  const [selectedDate, setSelectedDate] = useState(defaultDates.selectedDate);
   const [filters, setFilters] = useState({
-    fecha_inicio: getEcuadorDateMinusDays(7),
-    fecha_fin: getEcuadorDate(),
+    fecha_inicio: defaultDates.dateFrom,
+    fecha_fin: defaultDates.dateTo,
     categoria: '',
     atleta: ''
   });
@@ -179,83 +180,6 @@ const AsistenciasManager = ({ user }) => {
     { id: 'perfeccionamiento', nombre: 'Perfeccionamiento', icono: <FaTrophy /> },
     { id: 'master', nombre: 'Master', icono: <FaMedal /> }
   ];
-
-  const splitName = (value = '') => value.trim().split(/\s+/).filter(Boolean);
-
-  const getAthleteNameParts = (athleteUser) => {
-    const nombreOriginal = athleteUser?.nombre?.trim() || '';
-    const apellidoOriginal = athleteUser?.apellido?.trim() || '';
-
-    const nombreParts = splitName(nombreOriginal);
-    const apellidoParts = splitName(apellidoOriginal);
-
-    const primerNombre = nombreParts[0] || '';
-    const primerApellido = apellidoParts[0] || '';
-    const segundoApellido = apellidoParts.slice(1).join(' ');
-    const nombreCompleto = `${nombreOriginal} ${apellidoOriginal}`.trim();
-
-    return {
-      nombreOriginal,
-      apellidoOriginal,
-      primerNombre,
-      primerApellido,
-      segundoApellido,
-      nombreCompleto
-    };
-  };
-
-  const getHomonymKey = (athleteUser) => {
-    const { primerNombre, primerApellido } = getAthleteNameParts(athleteUser);
-    if (!primerNombre && !primerApellido) return '';
-    return `${primerNombre.toLowerCase()}|${primerApellido.toLowerCase()}`;
-  };
-
-  const getCompactDisplayName = (athleteUser, isHomonym = false) => {
-    const {
-      nombreOriginal,
-      primerNombre,
-      primerApellido,
-      segundoApellido,
-      nombreCompleto
-    } = getAthleteNameParts(athleteUser);
-
-    const nombreBase = `${primerNombre || nombreOriginal} ${primerApellido}`.trim();
-
-    if (!nombreBase) {
-      return nombreCompleto || 'Sin nombre';
-    }
-
-    if (isHomonym) {
-      if (segundoApellido) {
-        return `${nombreBase} ${segundoApellido}`.trim();
-      }
-
-      return nombreCompleto || nombreBase;
-    }
-
-    return nombreBase;
-  };
-
-  const getSearchNameBlob = (athleteUser) => {
-    const { nombreOriginal, apellidoOriginal, primerNombre, primerApellido, segundoApellido, nombreCompleto } = getAthleteNameParts(athleteUser);
-
-    return [
-      `${nombreOriginal} ${apellidoOriginal}`.trim(),
-      `${primerNombre || nombreOriginal} ${primerApellido}`.trim(),
-      `${primerNombre || nombreOriginal} ${primerApellido} ${segundoApellido}`.trim(),
-      nombreCompleto
-    ]
-      .filter(Boolean)
-      .join(' ')
-      .toLowerCase();
-  };
-
-  const getAthleteInitials = (athleteUser) => {
-    const { primerNombre, primerApellido, nombreOriginal, apellidoOriginal } = getAthleteNameParts(athleteUser);
-    const first = (primerNombre || nombreOriginal || 'A').charAt(0);
-    const last = (primerApellido || apellidoOriginal || 'A').charAt(0);
-    return `${first}${last}`.toUpperCase();
-  };
 
   useEffect(() => {
     // Cargar datos iniciales al montar el componente
@@ -402,21 +326,11 @@ const AsistenciasManager = ({ user }) => {
     }
 
     try {
-      // Buscar el ID de mensualidad
-      const mensualidad = paymentTypes.find(pt => pt.nombre === 'mensualidad');
-      
-      if (!mensualidad) {
-        alert('Error: No se encontró el método de pago "mensualidad"');
-        return;
-      }
-
-      for (const atleta of todayAttendance) {
-        const isCurrentlyPresent = atleta.attendance !== null;
-        if (!isCurrentlyPresent) {
-          // Registrar con mensualidad por defecto
-          await registerAttendanceWithPayment(atleta.id, mensualidad.id);
-        }
-      }
+      await attendanceService.markAllPresentWithMensualidad({
+        selectedDate,
+        paymentTypes,
+        todayAttendance,
+      });
       alert('Todos los atletas marcados como presentes con MENSUALIDAD');
     } catch (error) {
       console.error('Error marcando asistencias masivas:', error);
@@ -452,57 +366,13 @@ const AsistenciasManager = ({ user }) => {
   };
 
   const calculateStats = () => {
-    // En la nueva lógica, solo tenemos registros de presentes
-    const totalPresentes = asistencias.length; // Todos los registros son presencias
-    const totalAtletas = atletas.length;
-    
-    // Calcular estadísticas de manera diferente según el modo
-    let ausentes, porcentajeAsistencia;
-    
-    if (bulkMode) {
-      // Modo día actual: calcular sobre atletas totales del día
-      ausentes = totalAtletas > 0 ? totalAtletas - todayAttendance.filter(a => a.attendance !== null).length : 0;
-      const presentesHoy = todayAttendance.filter(a => a.attendance !== null).length;
-      porcentajeAsistencia = totalAtletas > 0 ? ((presentesHoy / totalAtletas) * 100).toFixed(1) : 0;
-    } else {
-      // Modo historial: calcular promedio por día del rango de fechas
-      const diasUnicos = new Set(asistencias.map(a => a.fecha)).size;
-      
-      if (diasUnicos > 0 && totalAtletas > 0) {
-        // Promedio de asistencia = asistencias totales / (días * atletas totales) * 100
-        porcentajeAsistencia = ((totalPresentes / (diasUnicos * totalAtletas)) * 100).toFixed(1);
-        // Ausentes promedio por día
-        ausentes = Math.round(totalAtletas - (totalPresentes / diasUnicos));
-      } else {
-        porcentajeAsistencia = 0;
-        ausentes = 0;
-      }
-    }
-
-    // Estadísticas por categoría
-    const categoriaStats = {};
-    categorias.forEach(cat => {
-      const atletasCategoria = atletas.filter(a => a.categoria === cat);
-      const asistenciasCategoria = asistencias.filter(a => 
-        a.students?.categoria === cat
-      );
-      const catTotal = atletasCategoria.length;
-      const catPresentes = asistenciasCategoria.length;
-      
-      categoriaStats[cat] = {
-        total: catTotal,
-        presentes: catPresentes,
-        porcentaje: catTotal > 0 ? ((catPresentes / catTotal) * 100).toFixed(1) : 0
-      };
+    return attendanceService.calculateStats({
+      attendances: asistencias,
+      athletes: atletas,
+      todayAttendance,
+      bulkMode,
+      categories: categorias,
     });
-
-    return { 
-      total: bulkMode ? totalAtletas : totalPresentes, // En bulk muestra total atletas, en histórico total asistencias
-      presentes: bulkMode ? todayAttendance.filter(a => a.attendance !== null).length : totalPresentes, 
-      ausentes, 
-      porcentajeAsistencia, 
-      categoriaStats 
-    };
   };
 
   const formatCategoria = (categoria) => {
@@ -511,96 +381,61 @@ const AsistenciasManager = ({ user }) => {
   };
 
   // Filtrar atletas según categoría seleccionada en tabs y término de búsqueda
-  const filteredAtletas = (() => {
-    let filtered = todayAttendance;
-
-    if (selectedCategory !== 'all') {
-      filtered = filtered.filter(atleta => 
-        atleta.categoria?.includes(selectedCategory)
-      );
-    }
-
-    if (searchTerm.trim()) {
-      const searchLower = searchTerm.toLowerCase().trim();
-      filtered = filtered.filter(atleta => {
-        const searchableNames = getSearchNameBlob(atleta.users);
-        return searchableNames.includes(searchLower);
-      });
-    }
-
-    return filtered;
-  })();
+  const filteredAtletas = attendanceService.filterTodayAttendance({
+    todayAttendance,
+    selectedCategory,
+    searchTerm,
+    searchPredicate: (atleta, searchLower) =>
+      attendanceService.getSearchNameBlob({ athleteUser: atleta.users }).includes(searchLower),
+  });
 
   // Filtrar atletas por categoría específica y término de búsqueda
-  const filterAtletasBySearchAndCategory = (categoria) => {
-    let filtered = todayAttendance.filter(atleta => atleta.categoria === categoria);
-    
-    // Aplicar filtro de búsqueda si existe
-    if (searchTerm.trim()) {
-      const searchLower = searchTerm.toLowerCase().trim();
-      filtered = filtered.filter(atleta => {
-        const searchableNames = getSearchNameBlob(atleta.users);
-        return searchableNames.includes(searchLower);
-      });
-    }
-    
-    return filtered;
-  };
-
-  // Obtener estadísticas de la categoría seleccionada
-  const getCategoryStats = () => {
-    const presentes = filteredAtletas.filter(a => a.attendance !== null).length;
-    const total = filteredAtletas.length;
-    const ausentes = total - presentes;
-    const porcentaje = total > 0 ? ((presentes / total) * 100).toFixed(1) : 0;
-
-    return { total, presentes, ausentes, porcentaje };
-  };
-
-  const homonymsByCompactName = (() => {
-    const counts = {};
-
-    filteredAtletas.forEach((atleta) => {
-      const key = getHomonymKey(atleta.users);
-      if (!key) return;
-      counts[key] = (counts[key] || 0) + 1;
+  const filterAtletasBySearchAndCategory = (categoria) =>
+    attendanceService.filterTodayAttendanceByCategory({
+      todayAttendance,
+      category: categoria,
+      searchTerm,
+      searchPredicate: (atleta, searchLower) =>
+        attendanceService.getSearchNameBlob({ athleteUser: atleta.users }).includes(searchLower),
     });
 
-    return counts;
-  })();
+  // Obtener estadísticas de la categoría seleccionada
+  const getCategoryStats = () => attendanceService.getCategoryStats({ filteredAthletes: filteredAtletas });
+
+  const homonymsByCompactName = attendanceService.buildHomonymsByCompactName({
+    athletes: filteredAtletas,
+  });
 
   // Renderizar atleta con botones de métodos de pago
   const renderAtletaWithPaymentMethods = (atleta) => {
     const isPresent = atleta.attendance !== null;
     const currentPaymentMethod = atleta.attendance?.metodo_pago_id;
-    const homonymCount = homonymsByCompactName[getHomonymKey(atleta.users)] || 0;
-    const displayName = getCompactDisplayName(atleta.users, homonymCount > 1);
-    const fullName = getAthleteNameParts(atleta.users).nombreCompleto || displayName;
+    const homonymKey = attendanceService.getHomonymKey({ athleteUser: atleta.users });
+    const homonymCount = homonymsByCompactName[homonymKey] || 0;
+    const displayName = attendanceService.getCompactDisplayName({
+      athleteUser: atleta.users,
+      isHomonym: homonymCount > 1,
+    });
+    const fullName = attendanceService.getAthleteNameParts({ athleteUser: atleta.users }).nombreCompleto || displayName;
     
     // Obtener nombres de métodos de pago
-    const getPaymentMethodInfo = (ptId) => {
-      const pt = paymentTypes.find(p => p.id === ptId);
-      if (!pt) return { nombre: '', icono: null };
-      
-      // Iconos según método de pago usando react-icons
-      const iconos = {
-        'pago_diario': <FaDollarSign />,
-        'mensualidad': <FaCalendarCheck />,
-        'tarjeta': <FaCreditCard />
-      };
-      
-      return {
-        nombre: pt.nombre,
-        icono: iconos[pt.nombre] || <FaDollarSign />
-      };
+    const iconos = {
+      pago_diario: <FaDollarSign />,
+      mensualidad: <FaCalendarCheck />,
+      tarjeta: <FaCreditCard />,
+      unknown: null,
     };
+    const getPaymentMethodInfo = (ptId) => attendanceService.getPaymentTypeDisplay({
+      paymentTypes,
+      metodoPagoId: ptId,
+    });
 
     return (
       <div key={atleta.id} className={styles.atletaItemNew}>
         <div className={styles.atletaNameSection}>
           <div className={styles.atletaIdentity}>
             <span className={styles.atletaInitials} aria-hidden="true">
-              {getAthleteInitials(atleta.users)}
+              {attendanceService.getAthleteInitials({ athleteUser: atleta.users })}
             </span>
             <span className={styles.atletaName} title={fullName}>
               {displayName}
@@ -608,7 +443,7 @@ const AsistenciasManager = ({ user }) => {
           </div>
           {isPresent && currentPaymentMethod && (
             <span className={styles.currentPaymentBadge}>
-              {getPaymentMethodInfo(currentPaymentMethod).icono}
+              {iconos[getPaymentMethodInfo(currentPaymentMethod).key] || <FaDollarSign />}
             </span>
           )}
         </div>
@@ -628,7 +463,7 @@ const AsistenciasManager = ({ user }) => {
                 aria-label={`Marcar asistencia con ${pt.nombre.replaceAll('_', ' ')}`}
                 title={pt.descripcion}
               >
-                {info.icono}
+                {iconos[info.key] || <FaDollarSign />}
               </button>
             );
           })}
@@ -662,30 +497,14 @@ const AsistenciasManager = ({ user }) => {
     );
   };
 
-  const getExportAttendanceData = (exportFecha) => {
-    if (asistenciasByDate[exportFecha]) {
-      return asistenciasByDate[exportFecha].map(asistencia => ({
-        ...asistencia.students,
-        attendance: {
-          metodo_pago_id: asistencia.metodo_pago_id
-        }
-      }));
-    }
+  const getExportSummary = () =>
+    attendanceService.buildExportSummary({
+      asistenciasByDate,
+      dateToExport,
+      selectedDate,
+      todayAttendance,
+    });
 
-    return todayAttendance.filter(a => a.attendance !== null);
-  };
-
-  const getExportSummary = () => {
-    const exportFecha = dateToExport || selectedDate;
-    const attendancesData = getExportAttendanceData(exportFecha);
-
-    return {
-      exportFecha,
-      formattedDate: formatDateString(exportFecha),
-      totalAttendances: attendancesData.length,
-      attendancesData
-    };
-  };
 
   const downloadPersistedRun = async (run) => {
     if (!run?.id) return;
@@ -994,11 +813,17 @@ const AsistenciasManager = ({ user }) => {
                               const isPresent = atleta.attendance !== null;
                               return (
                                 <div key={atleta.id} className={styles.atletaItem}>
-                                  <span className={styles.atletaName} title={getAthleteNameParts(atleta.users).nombreCompleto}>
-                                    {getCompactDisplayName(
-                                      atleta.users,
-                                      (homonymsByCompactName[getHomonymKey(atleta.users)] || 0) > 1
-                                    )}
+                                  <span
+                                    className={styles.atletaName}
+                                    title={attendanceService.getAthleteNameParts({ athleteUser: atleta.users }).nombreCompleto}
+                                  >
+                                    {attendanceService.getCompactDisplayName({
+                                      athleteUser: atleta.users,
+                                      isHomonym:
+                                        (homonymsByCompactName[
+                                          attendanceService.getHomonymKey({ athleteUser: atleta.users })
+                                        ] || 0) > 1,
+                                    })}
                                   </span>
                                   <button
                                     onClick={() => toggleAttendance(atleta.id, isPresent)}
@@ -1229,31 +1054,29 @@ const AsistenciasManager = ({ user }) => {
                       const isExpanded = expandedDays.includes(fecha);
                       const fechaFormateada = formatDateString(fecha);
 
-                      // Agrupar por categorías para este día
-                      const iniciacion = dayAttendances.filter(a =>
-                        a.students?.categoria === 'iniciacion_hombres' || 
-                        a.students?.categoria === 'iniciacion_mujeres'
-                      );
-                      const iniciacionHombres = iniciacion.filter(a => a.students?.categoria === 'iniciacion_hombres');
-                      const iniciacionMujeres = iniciacion.filter(a => a.students?.categoria === 'iniciacion_mujeres');
-                      
-                      const perfHombres = dayAttendances.filter(a =>
-                        a.students?.categoria === 'perfeccionamiento_hombres'
-                      );
-                      const perfMujeres = dayAttendances.filter(a =>
-                        a.students?.categoria === 'perfeccionamiento_mujeres' || 
-                        a.students?.categoria === 'master_mujeres'
-                      );
+                      const breakdown = attendanceService.buildDayAttendanceBreakdown({ dayAttendances });
+                      const {
+                        iniciacion,
+                        iniciacionHombres,
+                        iniciacionMujeres,
+                        perfHombres,
+                        perfMujeres,
+                      } = breakdown;
 
                       const getPaymentMethodName = (metodoPagoId) => {
-                        const pt = paymentTypes.find(p => p.id === metodoPagoId);
-                        if (!pt) return 'N/A';
-                        switch(pt.nombre) {
-                          case 'pago_diario': return <><FaDollarSign /> Pago Diario</>;
-                          case 'mensualidad': return <><FaCalendarCheck /> Mensualidad</>;
-                          case 'tarjeta': return <><FaCreditCard /> Tarjeta</>;
-                          default: return pt.nombre;
-                        }
+                        const display = attendanceService.getPaymentTypeDisplay({
+                          paymentTypes,
+                          metodoPagoId,
+                        });
+                        if (display.label === 'N/A') return 'N/A';
+
+                        const icons = {
+                          pago_diario: <FaDollarSign />,
+                          mensualidad: <FaCalendarCheck />,
+                          tarjeta: <FaCreditCard />,
+                        };
+
+                        return <>{icons[display.key] || <FaDollarSign />} {display.label}</>;
                       };
 
                       return (
@@ -1542,6 +1365,7 @@ AsistenciasManager.propTypes = {
 };
 
 export default AsistenciasManager;
+
 
 
 

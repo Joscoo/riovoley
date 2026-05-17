@@ -12,7 +12,6 @@ import {
   FaUserCircle
 } from 'react-icons/fa';
 import { studentDashboardService } from '../features/student-dashboard';
-import PagoStatusService from '../services/pagoStatusService';
 import { getLatestPaymentsList } from '../utils/paymentUtils';
 import PhysicalTestChart from './PhysicalTestChart';
 import Button from './ui/Button';
@@ -70,12 +69,7 @@ const StudentView = ({ user }) => {
         isStudent: true
       });
 
-      const paymentsWithStatus = (panelData.payments || []).map((payment) => ({
-        ...payment,
-        statusInfo: PagoStatusService.getStatusInfo(payment)
-      }));
-
-      setPayments(paymentsWithStatus);
+      setPayments(panelData.payments || []);
       setPhysicalTests(panelData.physicalTests || []);
       setCurrentPage(1);
     } catch (error) {

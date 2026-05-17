@@ -13,8 +13,8 @@ const unwrapResult = (result) => {
   throw result.error;
 };
 
-export const createReportingService = () => {
-  const repository = new SupabaseReportingRepository({
+export const createReportingService = (repositoryOverride = null) => {
+  const repository = repositoryOverride || new SupabaseReportingRepository({
     fileDownloadGateway: new BrowserFileDownloadGateway(),
   });
 

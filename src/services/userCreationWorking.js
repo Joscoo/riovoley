@@ -12,12 +12,21 @@ const createIsolatedAuthClient = () => {
     return null;
   }
 
+  const noopStorage = {
+    getItem: () => null,
+    setItem: () => {},
+    removeItem: () => {},
+    clear: () => {}
+  };
+
   // Cliente aislado para no modificar la sesion del usuario actual en la app.
   return createClient(supabaseUrl, supabaseAnonKey, {
     auth: {
       persistSession: false,
       autoRefreshToken: false,
       detectSessionInUrl: false,
+      storage: noopStorage,
+      storageKey: 'sb-isolated-auth-token'
     },
   });
 };

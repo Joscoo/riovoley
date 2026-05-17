@@ -34,7 +34,7 @@ const Toast = ({ message, type = 'info', duration = 4000, onClose }) => {
   return (
     <div
       className={cn(
-        'fixed right-5 top-[90px] z-[10000] flex min-w-[320px] max-w-[500px] animate-[slide-in-right_0.4s_cubic-bezier(0.34,1.56,0.64,1)] items-center gap-3 rounded-xl border-2 px-5 py-4 font-medium shadow-[0_8px_32px_rgba(0,0,0,0.3),0_4px_16px_rgba(0,0,0,0.2)] backdrop-blur-[20px]',
+        'fixed right-5 top-[90px] z-[11001] flex min-w-[320px] max-w-[500px] animate-[slide-in-right_0.4s_cubic-bezier(0.34,1.56,0.64,1)] items-center gap-3 rounded-xl border-2 px-5 py-4 font-medium shadow-[0_8px_32px_rgba(0,0,0,0.3),0_4px_16px_rgba(0,0,0,0.2)] backdrop-blur-[20px]',
         'max-[768px]:left-2.5 max-[768px]:right-2.5 max-[768px]:top-[75px] max-[768px]:min-w-0 max-[768px]:max-w-none',
         'mobile:px-4 mobile:py-3.5',
         toastTypeStyles[type] || toastTypeStyles.info

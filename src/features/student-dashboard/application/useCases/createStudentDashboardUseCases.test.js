@@ -13,7 +13,7 @@ describe('createStudentDashboardUseCases', () => {
   it('loadPaymentStatusUseCase retorna hasPaid=true cuando existe pago vigente', async () => {
     const repository = buildRepository();
     repository.listCurrentPayments.mockResolvedValue([{ id: 'p1', monto: 30 }]);
-    const useCases = createStudentDashboardUseCases(repository);
+    const useCases = createStudentDashboardUseCases(repository, buildDeps());
 
     const result = await useCases.loadPaymentStatusUseCase.execute({ studentId: 's1' });
 
@@ -27,7 +27,7 @@ describe('createStudentDashboardUseCases', () => {
     const repository = buildRepository();
     const attendances = Array.from({ length: 12 }, (_, index) => ({ id: `a${index + 1}` }));
     repository.listAttendancesFromDate.mockResolvedValue(attendances);
-    const useCases = createStudentDashboardUseCases(repository);
+    const useCases = createStudentDashboardUseCases(repository, buildDeps());
 
     const result = await useCases.loadAttendanceStatsUseCase.execute({ studentId: 's1' });
 
@@ -45,7 +45,7 @@ describe('createStudentDashboardUseCases', () => {
     repository.listCurrentPayments.mockResolvedValue([{ id: 'p1' }]);
     repository.listAttendancesFromDate.mockResolvedValue([{ id: 'a1' }]);
     repository.listPhysicalTests.mockResolvedValue([{ id: 't1' }]);
-    const useCases = createStudentDashboardUseCases(repository);
+    const useCases = createStudentDashboardUseCases(repository, buildDeps());
 
     const result = await useCases.loadStudentPanelDataUseCase.execute({ userId: 'u1' });
 
@@ -61,7 +61,8 @@ describe('createStudentDashboardUseCases', () => {
     repository.findStudentByUserId.mockResolvedValue({ id: 's1' });
     repository.listPaymentsByStudentId.mockResolvedValue([{ id: 'p1' }, { id: 'p2' }]);
     repository.listPhysicalTests.mockResolvedValue([{ id: 't1' }]);
-    const useCases = createStudentDashboardUseCases(repository);
+    const deps = buildDeps();
+    const useCases = createStudentDashboardUseCases(repository, deps);
 
     const result = await useCases.loadStudentViewDataUseCase.execute({ userId: 'u1' });
 
@@ -69,6 +70,13 @@ describe('createStudentDashboardUseCases', () => {
     expect(repository.listPaymentsByStudentId).toHaveBeenCalledWith('s1');
     expect(repository.listPhysicalTests).toHaveBeenCalledWith('s1');
     expect(result.payments).toHaveLength(2);
+    expect(deps.PagoStatusService.getStatusInfo).toHaveBeenCalledTimes(2);
+    expect(result.payments[0]).toMatchObject({ id: 'p1', statusInfo: { estado: 'activo', mensaje: 'Activo' } });
     expect(result.physicalTests).toEqual([{ id: 't1' }]);
   });
 });
+  const buildDeps = () => ({
+    PagoStatusService: {
+      getStatusInfo: jest.fn(() => ({ estado: 'activo', mensaje: 'Activo' })),
+    },
+  });

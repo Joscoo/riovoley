@@ -1,4 +1,5 @@
 import { getEcuadorDate, getEcuadorFirstDayOfMonth } from '../../../../utils/dateUtils';
+import PagoStatusService from '../../../../services/pagoStatusService';
 
 const buildMonthName = () =>
   new Date().toLocaleDateString('es-EC', {
@@ -7,7 +8,9 @@ const buildMonthName = () =>
     timeZone: 'America/Guayaquil',
   });
 
-export const createStudentDashboardUseCases = (repository) => {
+export const createStudentDashboardUseCases = (repository, deps = {}) => {
+  const statusService = deps.PagoStatusService || PagoStatusService;
+
   const loadPaymentStatusUseCase = {
     execute: async ({ studentId }) => {
       const today = getEcuadorDate();
@@ -77,9 +80,14 @@ export const createStudentDashboardUseCases = (repository) => {
         loadPhysicalTestsUseCase.execute({ studentId: student.id }),
       ]);
 
+      const paymentsWithStatus = (payments || []).map((payment) => ({
+        ...payment,
+        statusInfo: statusService.getStatusInfo(payment),
+      }));
+
       return {
         studentData: student,
-        payments,
+        payments: paymentsWithStatus,
         physicalTests,
       };
     },

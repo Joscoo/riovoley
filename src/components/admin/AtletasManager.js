@@ -13,20 +13,18 @@ import {
   FaVolleyballBall
 } from 'react-icons/fa';
 import { communicationsService } from '../../features/communications';
-import WhatsAppBusinessService from '../../services/whatsappBusinessService';
 import { athletesService } from '../../features/athletes';
 import { userProvisioningService } from '../../features/user-provisioning';
 import {
   MIN_ATHLETE_AGE,
-  calculateAgeFromDate,
-  getMaxBirthDateForAge,
-  validateAthleteBirthDate
+  getMaxBirthDateForAge
 } from '../../utils/athleteValidation';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
 import EmptyState from '../ui/EmptyState';
 import Field from '../ui/Field';
 import SectionHeader from '../ui/SectionHeader';
+import { useToast } from '../../contexts/ToastContext';
 
 const PAGE_SIZE = 9;
 
@@ -60,7 +58,6 @@ const AtletasManager = ({ user }) => {
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [editingAtleta, setEditingAtleta] = useState(null);
-  const [whatsAppBusiness] = useState(new WhatsAppBusinessService());
   const [filters, setFilters] = useState({
     categoria: '',
     search: '',
@@ -69,6 +66,9 @@ const AtletasManager = ({ user }) => {
   });
   const [currentPage, setCurrentPage] = useState(1);
   const [formData, setFormData] = useState(INITIAL_FORM);
+  const [pendingCredentials, setPendingCredentials] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const { error: showErrorToast } = useToast();
 
   const maxBirthDate = useMemo(() => getMaxBirthDateForAge(MIN_ATHLETE_AGE), []);
 
@@ -101,83 +101,28 @@ const AtletasManager = ({ user }) => {
   }, [showModal]);
 
   const filteredAtletas = useMemo(() => {
-    const normalizeText = (value = '') =>
-      value
-        .toString()
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .toLowerCase();
-
-    const getSortableValue = (atleta) => {
-      switch (filters.sortBy) {
-        case 'nombre':
-          return normalizeText(atleta.users?.nombre || atleta.full_name || '');
-        case 'categoria':
-          return normalizeText(atleta.categoria || '');
-        case 'edad': {
-          const age = calculateAgeFromDate(atleta.fecha_nacimiento);
-          return Number.isFinite(age) ? age : Number.MAX_SAFE_INTEGER;
-        }
-        case 'ingreso': {
-          const ingresoDate = atleta.users?.created_at ? new Date(atleta.users.created_at).getTime() : Number.MAX_SAFE_INTEGER;
-          return Number.isFinite(ingresoDate) ? ingresoDate : Number.MAX_SAFE_INTEGER;
-        }
-        case 'apellido':
-        default:
-          return normalizeText(atleta.users?.apellido || atleta.full_name || '');
-      }
-    };
-
-    let result = [...allAtletas];
-
-    if (filters.categoria) {
-      result = result.filter((atleta) => atleta.categoria === filters.categoria);
-    }
-
-    if (filters.search) {
-      const searchLower = normalizeText(filters.search);
-      result = result.filter((atleta) => {
-        return (
-          normalizeText(atleta.full_name).includes(searchLower) ||
-          normalizeText(atleta.users?.nombre).includes(searchLower) ||
-          normalizeText(atleta.users?.apellido).includes(searchLower) ||
-          normalizeText(atleta.categoria).includes(searchLower) ||
-          normalizeText(atleta.email).includes(searchLower)
-        );
-      });
-    }
-
-    result.sort((a, b) => {
-      const valueA = getSortableValue(a);
-      const valueB = getSortableValue(b);
-
-      if (typeof valueA === 'number' && typeof valueB === 'number') {
-        return filters.sortOrder === 'asc' ? valueA - valueB : valueB - valueA;
-      }
-
-      if (valueA < valueB) {
-        return filters.sortOrder === 'asc' ? -1 : 1;
-      }
-
-      if (valueA > valueB) {
-        return filters.sortOrder === 'asc' ? 1 : -1;
-      }
-
-      return 0;
+    return athletesService.filterAndSortAtletas({
+      athletes: allAtletas,
+      filters,
     });
-
-    return result;
   }, [allAtletas, filters]);
 
   useEffect(() => {
     setCurrentPage(1);
   }, [filters]);
 
-  const totalPages = Math.max(1, Math.ceil(filteredAtletas.length / PAGE_SIZE));
-  const paginatedAtletas = filteredAtletas.slice(
-    (currentPage - 1) * PAGE_SIZE,
-    (currentPage - 1) * PAGE_SIZE + PAGE_SIZE
+  const pagination = useMemo(
+    () =>
+      athletesService.paginateAtletas({
+        athletes: filteredAtletas,
+        page: currentPage,
+        pageSize: PAGE_SIZE,
+      }),
+    [filteredAtletas, currentPage]
   );
+  const totalPages = pagination.totalPages;
+  const visiblePage = pagination.currentPage;
+  const paginatedAtletas = pagination.paginated;
 
   const resetFilters = () => {
     setFilters({
@@ -205,40 +150,9 @@ const AtletasManager = ({ user }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!formData.nombre.trim()) {
-      alert('Error: El nombre del usuario es requerido');
-      return;
-    }
-
-    if (!formData.apellido.trim()) {
-      alert('Error: El apellido del usuario es requerido');
-      return;
-    }
-
-    if (!formData.email.trim()) {
-      alert('Error: El email es requerido para crear la cuenta de usuario');
-      return;
-    }
-
-    if (!formData.fecha_nacimiento) {
-      alert('Error: La fecha de nacimiento es requerida');
-      return;
-    }
-
-    const birthDateValidation = validateAthleteBirthDate(formData.fecha_nacimiento, MIN_ATHLETE_AGE);
-    if (!birthDateValidation.isValid) {
-      alert(`Error: ${birthDateValidation.error}`);
-      return;
-    }
-
-    if (!formData.categoria) {
-      alert('Error: La categoria deportiva es requerida para el atleta');
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      alert('Error: Por favor ingrese un email valido');
+    const validation = athletesService.validateAthleteForm({ formData });
+    if (!validation.isValid) {
+      alert(`Error: ${validation.error}`);
       return;
     }
 
@@ -252,17 +166,19 @@ const AtletasManager = ({ user }) => {
       closeModal();
       resetForm();
       loadAtletas();
+      setErrorMessage(null);
     } catch (error) {
       console.error('Error guardando atleta:', error);
 
-      let errorMessage = error.message;
+      let userFriendlyMessage = error.message;
       if (error.message.includes('duplicate key value violates unique constraint "users_email_key"')) {
-        errorMessage = `El email "${formData.email}" ya esta registrado. Usa uno diferente.`;
+        userFriendlyMessage = `El email "${formData.email}" ya esta registrado. Usa uno diferente.`;
       } else if (error.message.includes('ya esta registrado')) {
-        errorMessage = error.message;
+        userFriendlyMessage = error.message;
       }
 
-      alert(errorMessage);
+      setErrorMessage(userFriendlyMessage);
+      showErrorToast(userFriendlyMessage, 7000);
     }
   };
 
@@ -281,36 +197,58 @@ const AtletasManager = ({ user }) => {
         categoria: formData.categoria
       });
 
-      const message = `Estudiante creado exitosamente.\n\nEmail: ${result.credentials.email}\nContrasena temporal: ${result.credentials.password}\nURL de ingreso: ${result.credentials.loginUrl}\n\n${result.canLogin ? 'El usuario puede ingresar inmediatamente.' : 'Puede requerir verificacion de email.'}\n\nImportante: comparte estos datos de forma segura.\n\nDeseas enviar estas credenciales por email?`;
+      setPendingCredentials({
+        email: result.credentials.email,
+        password: result.credentials.password,
+        loginUrl: result.credentials.loginUrl,
+        canLogin: result.canLogin,
+        user: result.user,
+        message: result.message
+      });
 
+      const message = `Estudiante creado exitosamente.\n\nEmail: ${result.credentials.email}\nContrasena temporal: ${result.credentials.password}\nURL de ingreso: ${result.credentials.loginUrl}\n\n${result.canLogin ? 'El usuario puede ingresar inmediatamente.' : 'Puede requerir verificacion de email.'}\n\nImportante: comparte estos datos de forma segura.\n\nDeseas enviar estas credenciales por email ahora?`;
       const shouldSendEmail = globalThis.confirm(message);
+
       if (shouldSendEmail) {
-        try {
-          const userData = {
-            email: result.credentials.email,
-            nombre: result.user.nombre,
-            apellido: result.user.apellido,
-            full_name: `${result.user.nombre} ${result.user.apellido}`.trim(),
-            password: result.credentials.password
-          };
-
-          const emailResult = await communicationsService.sendCredentials(userData);
-
-          if (emailResult.success) {
-            alert(`Credenciales enviadas exitosamente a ${result.credentials.email}`);
-          } else {
-            alert('No se pudo enviar el email automaticamente. Las credenciales ya fueron mostradas.');
-          }
-        } catch (emailError) {
-          console.error('Error enviando email:', emailError);
-          alert(`Error enviando email: ${emailError.message}. Las credenciales ya fueron mostradas.`);
-        }
+        await handleSendCredentials();
       }
 
       return result;
     } catch (error) {
       console.error('Error creando estudiante:', error);
       throw error;
+    }
+  };
+
+  const handleSendCredentials = async () => {
+    if (!pendingCredentials) return;
+
+    const userData = {
+      email: pendingCredentials.email,
+      nombre: pendingCredentials.user?.nombre || '',
+      apellido: pendingCredentials.user?.apellido || '',
+      full_name: `${pendingCredentials.user?.nombre || ''} ${pendingCredentials.user?.apellido || ''}`.trim(),
+      password: pendingCredentials.password
+    };
+
+    try {
+      const emailResult = await communicationsService.sendCredentials(userData);
+
+      if (emailResult.success) {
+        alert(`Credenciales enviadas exitosamente a ${pendingCredentials.email}`);
+        setPendingCredentials(null);
+        setErrorMessage(null);
+      } else {
+        const errorText = `No se pudo enviar el email automaticamente: ${emailResult.error || 'Error desconocido'}. Las credenciales ya fueron mostradas.`;
+        console.error('Error enviando email:', emailResult.error || 'Desconocido');
+        setErrorMessage(errorText);
+        showErrorToast(errorText, 7000);
+      }
+    } catch (emailError) {
+      const errorText = `Error enviando email: ${emailError.message}. Las credenciales ya fueron mostradas.`;
+      console.error('Error enviando email:', emailError);
+      setErrorMessage(errorText);
+      showErrorToast(errorText, 7000);
     }
   };
 
@@ -341,6 +279,15 @@ const AtletasManager = ({ user }) => {
   };
 
   const resendCredentials = async (atleta) => {
+    if (!globalThis.confirm(`Deseas reenviar las credenciales de acceso a ${atleta.full_name}?`)) {
+      return;
+    }
+
+    if (!atleta.user_id || !atleta.users?.email) {
+      alert('Datos del atleta incompletos. No se puede reenviar credenciales.');
+      return;
+    }
+
     try {
       const result = await userProvisioningService.resendCredentials({
         user_id: atleta.user_id,
@@ -364,7 +311,10 @@ const AtletasManager = ({ user }) => {
 
       let whatsappResult = { success: false };
       if (userData.telefono) {
-        whatsappResult = await whatsAppBusiness.sendCredentials(userData, userData.password);
+        whatsappResult = await userProvisioningService.sendCredentialsByWhatsApp({
+          userData,
+          password: userData.password,
+        });
       }
 
       const canalesExitosos = [];
@@ -378,7 +328,9 @@ const AtletasManager = ({ user }) => {
       }
     } catch (error) {
       console.error('Error reenviando credenciales:', error);
-      alert(`Error: ${error.message}`);
+      const message = `Error reenviando credenciales: ${error.message}`;
+      showErrorToast(message, 7000);
+      alert(message);
     }
   };
 
@@ -423,43 +375,16 @@ const AtletasManager = ({ user }) => {
 
   const closeModal = () => {
     setShowModal(false);
+    setErrorMessage(null);
   };
 
   const resetForm = () => {
     setFormData(INITIAL_FORM);
   };
 
-  const calculateAge = (birthDate) => {
-    if (!birthDate) return '--';
-
-    try {
-      const age = calculateAgeFromDate(birthDate);
-      if (age === null || age < 0) return '--';
-      return age;
-    } catch (error) {
-      console.warn('Error calculando edad:', error);
-      return '--';
-    }
-  };
-
-  const formatIngresoDate = (atleta) => {
-    try {
-      if (atleta.users?.created_at) {
-        const date = new Date(atleta.users.created_at);
-        if (!Number.isNaN(date.getTime())) {
-          return date.toLocaleDateString();
-        }
-      }
-    } catch (error) {
-      console.warn('Error formateando fecha de ingreso:', error);
-    }
-    return 'No registrado';
-  };
-
-  const formatCategoria = (categoria) => {
-    if (!categoria) return '--';
-    return categoria.replaceAll('_', ' ').toUpperCase();
-  };
+  const calculateAge = (birthDate) => athletesService.calculateAthleteAgeDisplay({ birthDate });
+  const formatIngresoDate = (atleta) => athletesService.formatIngresoDate({ athlete: atleta });
+  const formatCategoria = (categoria) => athletesService.formatCategoria({ categoria });
 
   return (
     <div className="mx-auto w-full max-w-7xl">
@@ -478,6 +403,60 @@ const AtletasManager = ({ user }) => {
           </div>
         }
       />
+
+      {errorMessage ? (
+        <div className="fixed inset-x-0 top-4 z-[11000] mx-auto w-full max-w-3xl px-4">
+          <div className="rounded-2xl border border-red-500/60 bg-red-600/95 px-5 py-4 text-sm text-white shadow-xl shadow-red-900/20 backdrop-blur-sm">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="font-semibold">Error</p>
+                <p className="mt-1 whitespace-pre-line">{errorMessage}</p>
+              </div>
+              <button
+                type="button"
+                className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white hover:bg-white/20"
+                onClick={() => setErrorMessage(null)}
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      {pendingCredentials ? (
+        <Card className="mb-4 border-l-4 border-rv-gold/70 bg-black/20 p-4 text-slate-200">
+          <div className="mb-3">
+            <p className="font-semibold text-white">Estudiante creado exitosamente.</p>
+            <p>{pendingCredentials.message}</p>
+          </div>
+          <div className="grid gap-2 rounded-xl border border-rv-gold/20 bg-slate-950/50 p-4 text-sm text-slate-100">
+            <p>
+              <strong>Email:</strong> {pendingCredentials.email}
+            </p>
+            <p>
+              <strong>Contraseña temporal:</strong> {pendingCredentials.password}
+            </p>
+            <p>
+              <strong>URL de ingreso:</strong>{' '}
+              <a href={pendingCredentials.loginUrl} className="text-rv-gold underline" target="_blank" rel="noreferrer">
+                {pendingCredentials.loginUrl}
+              </a>
+            </p>
+            <p className="text-slate-400">
+              Importante: comparte estas credenciales de forma segura. Si deseas enviar el email ahora, haz clic en "Enviar credenciales por email".
+            </p>
+          </div>
+          <div className="mt-4 flex flex-col gap-2 mobile:flex-row mobile:justify-end">
+            <Button className="w-full mobile:w-auto" onClick={handleSendCredentials}>
+              Enviar credenciales por email
+            </Button>
+            <Button variant="secondary" className="w-full mobile:w-auto" onClick={() => setPendingCredentials(null)}>
+              Cerrar
+            </Button>
+          </div>
+        </Card>
+      ) : null}
 
       <Card className="mb-4">
         <div className="grid gap-4 desktop:grid-cols-[minmax(260px,2fr)_repeat(3,minmax(180px,1fr))_auto]">
@@ -575,17 +554,17 @@ const AtletasManager = ({ user }) => {
             <Button
               variant="outline"
               onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
-              disabled={currentPage === 1}
+              disabled={visiblePage === 1}
             >
               Anterior
             </Button>
             <span className="rounded-full border border-rv-gold/35 bg-black/35 px-4 py-2 text-sm font-semibold text-white">
-              Página {currentPage} de {totalPages}
+              Página {visiblePage} de {totalPages}
             </span>
             <Button
               variant="outline"
               onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))}
-              disabled={currentPage === totalPages}
+              disabled={visiblePage === totalPages}
             >
               Siguiente
             </Button>
@@ -667,17 +646,17 @@ const AtletasManager = ({ user }) => {
             <Button
               variant="outline"
               onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
-              disabled={currentPage === 1}
+              disabled={visiblePage === 1}
             >
               Anterior
             </Button>
             <span className="rounded-full border border-rv-gold/35 bg-black/35 px-4 py-2 text-sm font-semibold text-white">
-              Página {currentPage} de {totalPages}
+              Página {visiblePage} de {totalPages}
             </span>
             <Button
               variant="outline"
               onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))}
-              disabled={currentPage === totalPages}
+              disabled={visiblePage === totalPages}
             >
               Siguiente
             </Button>
@@ -846,3 +825,6 @@ AtletasManager.propTypes = {
 };
 
 export default AtletasManager;
+
+
+

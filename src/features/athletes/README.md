@@ -8,7 +8,8 @@ Feature clean-lite para gestion de atletas.
 - Resolver limpieza de usuarios huerfanos sin exponer `supabase` a la UI.
 
 ## Capas
-- `presentation/createAthletesService.js`: orquesta casos de uso consumidos por UI.
+- `application/useCases/createAthletesUseCases.js`: reglas de negocio y orquestacion del feature.
+- `presentation/createAthletesService.js`: fachada consumida por UI.
 - `domain/athletesError.js`: error funcional del feature.
 - `infrastructure/repositories/supabaseAthletesRepository.js`: acceso a tablas `students` y `users`.
 
@@ -16,6 +17,8 @@ Feature clean-lite para gestion de atletas.
 - `athletesService.loadAtletas()`
 - `athletesService.updateAtleta({ editingAtleta, formData })`
 - `athletesService.deleteAtletaRecords({ atleta })`
+- `athletesService.deleteAtletaCompletely({ atleta })`
 - `athletesService.listOrphanUsers()`
+- `athletesService.cleanOrphanUsers()`
 - `athletesService.deleteUserRecord({ userId })`
 

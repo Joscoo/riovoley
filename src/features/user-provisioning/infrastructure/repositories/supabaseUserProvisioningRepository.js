@@ -11,11 +11,20 @@ const createIsolatedAuthClient = () => {
     return null;
   }
 
+  const noopStorage = {
+    getItem: () => null,
+    setItem: () => {},
+    removeItem: () => {},
+    clear: () => {}
+  };
+
   return createClient(supabaseUrl, supabaseAnonKey, {
     auth: {
       persistSession: false,
       autoRefreshToken: false,
       detectSessionInUrl: false,
+      storage: noopStorage,
+      storageKey: 'sb-isolated-auth-token'
     },
   });
 };
