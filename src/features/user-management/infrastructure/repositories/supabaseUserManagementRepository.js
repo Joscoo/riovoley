@@ -1,7 +1,7 @@
 import { supabase } from '../../../../config/supabase';
 import { userProvisioningService } from '../../../user-provisioning';
 import { deleteAuthUserById } from '../../../../shared/infrastructure/auth/deleteAuthUserById';
-import WhatsAppBusinessService from '../../../../services/whatsappBusinessService';
+import { WhatsAppBusinessService } from '../../../../shared/infrastructure/communications';
 import { withEncryptedUserContactFields } from '../../../../utils/piiCrypto';
 import { getEcuadorISOString } from '../../../../utils/dateUtils';
 import { UserManagementError } from '../../domain/userManagementError';

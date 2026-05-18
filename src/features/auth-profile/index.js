@@ -1,3 +1,2 @@
-import { createAuthProfileService } from './presentation/createAuthProfileService';
-
-export const authProfileService = createAuthProfileService();
+export { authProfileService } from './authProfileService';
+export { useUserProfile } from './presentation/hooks/useUserProfile';

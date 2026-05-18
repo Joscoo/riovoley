@@ -2,12 +2,12 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { FaCalendarAlt, FaClock, FaExclamationTriangle, FaInfoCircle, FaUsers } from 'react-icons/fa';
 import { schedulesService } from '../features/schedules';
 import { cn } from '../lib/cn';
-import PageShell from './ui/PageShell';
-import Card from './ui/Card';
-import SectionHeader from './ui/SectionHeader';
-import EmptyState from './ui/EmptyState';
-import StatusBadge from './ui/StatusBadge';
-import Button from './ui/Button';
+import { PageShell } from '../shared/ui';
+import { Card } from '../shared/ui';
+import { SectionHeader } from '../shared/ui';
+import { EmptyState } from '../shared/ui';
+import { StatusBadge } from '../shared/ui';
+import { Button } from '../shared/ui';
 
 const DAYS = [
   { value: 'todos', label: 'Todos los dias' },
@@ -219,3 +219,4 @@ const Horarios = () => {
 };
 
 export default Horarios;
+

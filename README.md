@@ -26,6 +26,7 @@
 - [Quick Start](#quick-start-local)
 - [Scripts](#scripts)
 - [Estructura del Proyecto](#estructura-rapida--quick-project-map)
+- [Estado Migracion](#estado-migracion-clean-lite--clean-lite-migration-status)
 - [Seguridad](#seguridad-y-datos--security-and-data)
 - [Documentacion](#documentacion-relacionada--related-docs)
 
@@ -44,19 +45,19 @@
 ## Arquitectura y Stack | Architecture and Tech Stack
 
 ```text
-React SPA (UI por rol)
-  |-- Admin modules
-  |-- Trainer modules
-  |-- Student modules
+React SPA (Clean Lite por feature)
+  |-- src/features/<feature>/
+  |    |-- presentation/
+  |    |-- application/
+  |    |-- domain/
+  |    +-- infrastructure/
   |
-  | supabase-js
-  v
-Supabase (PostgreSQL + Auth + RLS)
-  |-- Domain schemas (core, training, billing, profiles, ...)
-  |-- Row Level Security by role
-  |-- Edge Functions (email workflows)
-  |
-  +--> External integrations (WhatsApp Business, Google Calendar)
+  +-- src/shared/ (ui, config, helpers y gateways transversales)
+
+Supabase (PostgreSQL + Auth + RLS + Edge Functions)
+  |-- esquemas por dominio
+  |-- politicas RLS por rol
+  +-- integraciones externas (WhatsApp Business, Google Calendar)
 ```
 
 | Layer | Stack | Purpose |
@@ -152,23 +153,65 @@ Aplicacion local: `http://localhost:3000`
 ```bash
 npm start            # desarrollo
 npm test             # tests unitarios/react-scripts
+npm run test:contracts # contratos edge function (reporting/auth-admin)
 npm run build        # build produccion
 npm run e2e          # E2E Playwright
+npm run e2e:smoke:roles # smoke de paneles por rol (requiere E2E_* en entorno)
+npm run e2e:smoke:roles:strict # valida E2E_* y falla si falta alguna credencial
+npm run e2e:smoke:public # smoke responsive de rutas publicas
 npm run e2e:ui       # E2E en modo UI
 npm run e2e:install  # instala browsers de Playwright
+```
+
+### E2E por roles (ultimo paso de cierre)
+
+1. Copiar `.env.e2e.example` a `.env.e2e` y completar credenciales:
+
+- `E2E_ADMIN_EMAIL`
+- `E2E_ADMIN_PASSWORD`
+- `E2E_TRAINER_EMAIL`
+- `E2E_TRAINER_PASSWORD`
+- `E2E_STUDENT_EMAIL`
+- `E2E_STUDENT_PASSWORD`
+
+2. Exportar variables al entorno de la terminal (PowerShell):
+
+```powershell
+Get-Content .env.e2e | ForEach-Object {
+  if ($_ -match '^\s*#' -or $_ -notmatch '=') { return }
+  $name, $value = $_ -split '=', 2
+  Set-Item -Path ("env:" + $name.Trim()) -Value $value.Trim()
+}
+```
+
+3. Ejecutar:
+
+```bash
+npm run e2e:smoke:roles:strict
 ```
 
 ## Estructura Rapida | Quick Project Map
 
 ```text
 src/
-  components/        UI por rol (admin/trainer/student)
-  services/          Integraciones y logica de datos
+  features/          Modulos Clean Lite por feature
+  components/        Solo vistas publicas del sitio (landing)
+  shared/            UI, helpers, config y gateways compartidos
   utils/             Utilidades (pagos, crypto, PDF, fechas)
 database/            SQL scripts y migraciones
 functions/           Supabase Edge Functions
 tests/               E2E tests (Playwright)
 ```
+
+## Estado Migracion Clean Lite | Clean Lite Migration Status
+
+- Migrado a `src/features/*`:
+  - `announcements`, `athletes`, `attendance`, `payments`, `physical-tests`, `schedules`, `trainer-management`, `user-management`
+  - dashboards: `admin-dashboard`, `trainer-dashboard`, `student-dashboard`
+  - auth/profile: `auth-session`, `auth-profile`, `account-admin (ProfileSettings/UsuariosManager)`
+  - `notifications (NotificacionesPagos)`
+- En curso:
+  - corrida E2E final por roles autenticados (admin/trainer/student) con credenciales de entorno
 
 ## Seguridad y Datos | Security and Data
 

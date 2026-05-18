@@ -1,3 +1,1 @@
-import { createUserProvisioningService } from './presentation/createUserProvisioningService';
-
-export const userProvisioningService = createUserProvisioningService();
+export { userProvisioningService } from './userProvisioningService';

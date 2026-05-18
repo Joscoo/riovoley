@@ -1,3 +1,2 @@
-import { createTrainerManagementService } from './presentation/createTrainerManagementService';
-
-export const trainerManagementService = createTrainerManagementService();
+export { trainerManagementService } from './trainerManagementService';
+export { default as EntrenadoresManager } from './presentation/components/EntrenadoresManager';

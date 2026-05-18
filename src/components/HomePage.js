@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/cn';
-import PageShell from './ui/PageShell';
-import Card from './ui/Card';
-import SectionHeader from './ui/SectionHeader';
+import { PageShell } from '../shared/ui';
+import { Card } from '../shared/ui';
+import { SectionHeader } from '../shared/ui';
 
 const FEATURES = [
   {
@@ -151,3 +151,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+

@@ -1,8 +1,8 @@
 import React from 'react';
 import { FaInstagram, FaTiktok, FaWhatsapp } from 'react-icons/fa';
-import PageShell from './ui/PageShell';
-import Card from './ui/Card';
-import SectionHeader from './ui/SectionHeader';
+import { PageShell } from '../shared/ui';
+import { Card } from '../shared/ui';
+import { SectionHeader } from '../shared/ui';
 
 const VALUES = [
   {
@@ -181,3 +181,4 @@ const AboutUs = () => {
 };
 
 export default AboutUs;
+

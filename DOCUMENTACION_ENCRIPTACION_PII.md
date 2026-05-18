@@ -54,7 +54,7 @@ En este archivo vive toda la logica criptografica:
 ## 3. Donde se aplica antes de guardar
 
 ### 3.1 Alta de usuarios/estudiantes
-- [src/services/userCreationWorking.js](src/services/userCreationWorking.js)
+- [src/features/user-provisioning/infrastructure/repositories/supabaseUserProvisioningRepository.js](src/features/user-provisioning/infrastructure/repositories/supabaseUserProvisioningRepository.js)
 
 Flujo:
 1. Se crea usuario en Supabase Auth (email/password).
@@ -66,24 +66,24 @@ Importante:
 - El cifrado actual cubre la tabla de negocio `users`.
 
 ### 3.2 Edicion de atletas
-- [src/components/admin/AtletasManager.js](src/components/admin/AtletasManager.js)
+- [src/features/athletes/presentation/components/AtletasManager.js](src/features/athletes/presentation/components/AtletasManager.js)
 
 Flujo:
 1. En `updateAtleta`, se arma `userUpdatePayload` con `withEncryptedUserContactFields(...)`.
 2. Se hace `update` en `users` con ese payload.
 
 ### 3.3 Edicion de entrenadores
-- [src/components/admin/EntrenadoresManager.js](src/components/admin/EntrenadoresManager.js)
+- [src/features/trainer-management/presentation/components/EntrenadoresManager.js](src/features/trainer-management/presentation/components/EntrenadoresManager.js)
 
 Flujo:
 1. En `handleSubmit` (edicion), `updateData` pasa por `withEncryptedUserContactFields(...)`.
 2. Se hace `update` en `users` con datos protegidos.
 
-### 3.4 Capa de servicios generica
-- [src/services/supabaseService.js](src/services/supabaseService.js)
+### 3.4 Capa de repositorios por feature
+- [src/features/user-management/infrastructure/repositories/supabaseUserManagementRepository.js](src/features/user-management/infrastructure/repositories/supabaseUserManagementRepository.js)
 
 Flujo:
-- `createUser` y `updateUser` aplican `withEncryptedUserContactFields(...)` antes de insertar/actualizar.
+- Los repositorios por feature aplican `withEncryptedUserContactFields(...)` antes de insertar/actualizar cuando corresponde.
 
 ## 4. Soporte en base de datos
 

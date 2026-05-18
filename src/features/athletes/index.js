@@ -1,3 +1,2 @@
-import { createAthletesService } from './presentation/createAthletesService';
-
-export const athletesService = createAthletesService();
+export { athletesService } from './athletesService';
+export { default as AtletasManager } from './presentation/components/AtletasManager';

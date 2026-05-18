@@ -1,7 +1,7 @@
 // src/contexts/ToastContext.js
 import React, { createContext, useContext, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import Toast from '../components/Toast';
+import { Toast } from '../shared/ui';
 
 const ToastContext = createContext();
 
@@ -58,15 +58,9 @@ export const ToastProvider = ({ children }) => {
   return (
     <ToastContext.Provider value={value}>
       {children}
-      <div style={{ 
-        position: 'fixed', 
-        top: 0, 
-        right: 0, 
-        zIndex: 11001,
-        pointerEvents: 'none'
-      }}>
-        {toasts.map(toast => (
-          <div key={toast.id} style={{ pointerEvents: 'auto' }}>
+      <div className="pointer-events-none fixed right-0 top-0 z-[11001]">
+        {toasts.map((toast) => (
+          <div key={toast.id} className="pointer-events-auto">
             <Toast
               message={toast.message}
               type={toast.type}

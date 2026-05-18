@@ -1,6 +1,6 @@
 import { createUserProvisioningUseCases } from '../application/useCases/createUserProvisioningUseCases';
 import { SupabaseUserProvisioningRepository } from '../infrastructure/repositories/supabaseUserProvisioningRepository';
-import WhatsAppBusinessService from '../../../services/whatsappBusinessService';
+import { WhatsAppBusinessService } from '../../../shared/infrastructure/communications';
 
 export const createUserProvisioningService = (
   repository = new SupabaseUserProvisioningRepository(),

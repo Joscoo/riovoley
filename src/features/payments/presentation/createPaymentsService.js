@@ -1,7 +1,6 @@
 import { communicationsService } from '../../communications';
-import WhatsAppService from '../../../services/whatsappService';
-import WhatsAppBusinessService from '../../../services/whatsappBusinessService';
-import PagoStatusService from '../../../services/pagoStatusService';
+import { WhatsAppBusinessService, WhatsAppService } from '../../../shared/infrastructure/communications';
+import { PagoStatusService } from '../../../shared/domain/payments';
 import { getEcuadorDate, getEcuadorISOString } from '../../../utils/dateUtils';
 import { getLatestPaymentsList } from '../../../utils/paymentUtils';
 import { createPaymentsUseCases } from '../application/useCases/createPaymentsUseCases';

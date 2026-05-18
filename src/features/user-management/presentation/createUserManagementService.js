@@ -1,19 +1,39 @@
 import { assertUserManagementRepository } from '../application/contracts/userManagementRepositoryContract';
+import { createUserManagementUseCases } from '../application/useCases/createUserManagementUseCases';
 import { SupabaseUserManagementRepository } from '../infrastructure/repositories/supabaseUserManagementRepository';
 
 export const createUserManagementService = (repository = new SupabaseUserManagementRepository()) => {
   assertUserManagementRepository(repository);
+  const useCases = createUserManagementUseCases(repository);
 
   return {
-    listAthletes: () => repository.listAthletes(),
-    listTrainers: () => repository.listTrainers(),
-    listAdministrators: () => repository.listAdministrators(),
-    createUser: (formData, userType) => repository.createUser(formData, userType),
-    updateUser: (userId, formData, userType) => repository.updateUser(userId, formData, userType),
-    deleteUser: (userId, userType) => repository.deleteUser(userId, userType),
-    suspendUser: (userId, reason, until) => repository.suspendUser(userId, reason, until),
-    reactivateUser: (userId) => repository.reactivateUser(userId),
-    resendCredentials: (userId, channels) => repository.resendCredentials(userId, channels),
-    changeRole: (userId, newRole) => repository.changeRole(userId, newRole),
+    listAthletes: () => useCases.listAthletesUseCase.execute(),
+    listTrainers: () => useCases.listTrainersUseCase.execute(),
+    listAdministrators: () => useCases.listAdministratorsUseCase.execute(),
+    createUser: (formData, userType) => useCases.createUserUseCase.execute({ formData, userType }),
+    updateUser: (userId, formData, userType) => useCases.updateUserUseCase.execute({ userId, formData, userType }),
+    deleteUser: (userId, userType) => useCases.deleteUserUseCase.execute({ userId, userType }),
+    suspendUser: (userId, reason, until) => useCases.suspendUserUseCase.execute({ userId, reason, until }),
+    reactivateUser: (userId) => useCases.reactivateUserUseCase.execute({ userId }),
+    resendCredentials: (userId, channels) => useCases.resendCredentialsUseCase.execute({ userId, channels }),
+    changeRole: (userId, newRole) => useCases.changeRoleUseCase.execute({ userId, newRole }),
+    performAction: ({ actionType, payload }) => useCases.performUserActionUseCase.execute({ actionType, payload }),
+    getPermissions: ({ userRole, targetUserType }) =>
+      useCases.resolvePermissionsUseCase.execute({ userRole, targetUserType }),
+    getPanelAccess: ({ userRole }) => useCases.resolvePanelAccessUseCase.execute({ userRole }),
+    getVisiblePanelTabs: ({ userRole }) => useCases.buildVisiblePanelTabsUseCase.execute({ userRole }),
+    getValidPanelActiveTab: ({ userRole, candidateTabId }) =>
+      useCases.resolvePanelActiveTabUseCase.execute({ userRole, candidateTabId }),
+    filterAthletes: ({ athletes, filters }) => useCases.filterAthletesUseCase.execute({ athletes, filters }),
+    filterTrainers: ({ trainers, filters }) => useCases.filterTrainersUseCase.execute({ trainers, filters }),
+    filterAdministrators: ({ administrators, filters }) =>
+      useCases.filterAdministratorsUseCase.execute({ administrators, filters }),
+    paginateUsers: ({ items, page, pageSize }) => useCases.paginateUsersUseCase.execute({ items, page, pageSize }),
+    buildAthletesStats: ({ filteredAthletes, categories }) =>
+      useCases.buildAthletesStatsUseCase.execute({ filteredAthletes, categories }),
+    buildTrainersStats: ({ filteredTrainers }) =>
+      useCases.buildTrainersStatsUseCase.execute({ filteredTrainers }),
+    buildAdministratorsStats: ({ filteredAdministrators }) =>
+      useCases.buildAdministratorsStatsUseCase.execute({ filteredAdministrators }),
   };
 };

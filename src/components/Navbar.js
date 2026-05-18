@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { authSessionService } from '../features/auth-session';
+import { NotificationBell } from '../features/notifications';
 import { FaUser, FaUserShield, FaChalkboardTeacher, FaBars } from 'react-icons/fa';
 import { IoIosLogOut, IoIosLogIn } from "react-icons/io";
-import NotificationBell from './NotificationBell';
 import { cn } from '../lib/cn';
 
 const getRolePanelClass = (role) => {

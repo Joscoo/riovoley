@@ -41,6 +41,17 @@ export class SupabaseReportingRepository {
     this.fileDownloadGateway = fileDownloadGateway;
   }
 
+  mapFunctionResponse(data) {
+    const payload = data?.data || {};
+    return {
+      ...(payload || {}),
+      success: data?.success,
+      code: data?.code,
+      message: data?.message,
+      details: data?.details ?? null,
+    };
+  }
+
   async listRuns({ reportCode, dateFrom, dateTo, status, limit }) {
     let query = supabase
       .from('report_runs')
@@ -87,7 +98,7 @@ export class SupabaseReportingRepository {
       throw repositoryError(data?.message || 'No se pudo generar el reporte', data);
     }
 
-    return data;
+    return this.mapFunctionResponse(data);
   }
 
   async generateScheduledReports({ targetDate } = {}) {
@@ -105,7 +116,7 @@ export class SupabaseReportingRepository {
       throw repositoryError(data?.message || 'No se pudieron generar reportes programados', data);
     }
 
-    return data;
+    return this.mapFunctionResponse(data);
   }
 
   async getDownloadUrlByRunId(runId) {
@@ -141,6 +152,6 @@ export class SupabaseReportingRepository {
       throw repositoryError(data?.message || 'No se pudo eliminar el reporte persistido', data);
     }
 
-    return data;
+    return this.mapFunctionResponse(data);
   }
 }

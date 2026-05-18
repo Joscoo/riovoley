@@ -1,7 +1,7 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 import { corsHeaders } from '../_shared/cors.ts';
 import { readJsonBody } from '../_core/http/body.ts';
-import { internalError, jsonResponse, methodNotAllowed } from '../_core/http/response.ts';
+import { internalError, jsonResponse, methodNotAllowed, successEnvelope } from '../_core/http/response.ts';
 import { AuthAdminError } from '../_core/auth-admin/domain/auth-admin-error.ts';
 import { DeleteAuthUserUseCase } from '../_core/auth-admin/application/use-cases/delete-auth-user-use-case.ts';
 import { SupabaseAuthAdminGateway } from '../_core/auth-admin/infrastructure/supabase-auth-admin-gateway.ts';
@@ -27,7 +27,17 @@ serve(async (req) => {
       userId: body?.userId || '',
     });
 
-    return jsonResponse(result, 200);
+    const { success, code, message, details, ...extra } = (result || {}) as Record<string, unknown>;
+    return jsonResponse(
+      successEnvelope({
+        success: typeof success === 'boolean' ? success : true,
+        code: typeof code === 'string' ? code : 'AUTH_USER_DELETED',
+        message: typeof message === 'string' ? message : 'Operacion completada',
+        details: details ?? null,
+        data: extra,
+      }),
+      200,
+    );
   } catch (error) {
     if (error instanceof AuthAdminError) {
       return jsonResponse(
@@ -36,6 +46,7 @@ serve(async (req) => {
           code: error.code,
           message: error.message,
           details: error.details ?? null,
+          data: null,
         },
         error.status,
       );

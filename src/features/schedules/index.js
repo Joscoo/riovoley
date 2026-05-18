@@ -1,3 +1,2 @@
-import { createSchedulesService } from './presentation/createSchedulesService';
-
-export const schedulesService = createSchedulesService();
+export { schedulesService } from './schedulesService';
+export { default as HorariosManager } from './presentation/components/HorariosManager';

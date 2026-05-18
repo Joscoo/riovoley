@@ -1,3 +1,2 @@
-import { createAttendanceService } from './presentation/createAttendanceService';
-
-export const attendanceService = createAttendanceService();
+export { attendanceService } from './attendanceService';
+export { default as AsistenciasManager } from './presentation/components/AsistenciasManager';

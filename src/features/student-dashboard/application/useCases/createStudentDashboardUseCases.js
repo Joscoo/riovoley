@@ -1,5 +1,5 @@
 import { getEcuadorDate, getEcuadorFirstDayOfMonth } from '../../../../utils/dateUtils';
-import PagoStatusService from '../../../../services/pagoStatusService';
+import { PagoStatusService } from '../../../../shared/domain/payments';
 
 const buildMonthName = () =>
   new Date().toLocaleDateString('es-EC', {

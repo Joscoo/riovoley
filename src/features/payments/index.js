@@ -1,3 +1,2 @@
-import { createPaymentsService } from './presentation/createPaymentsService';
-
-export const paymentsService = createPaymentsService();
+export { paymentsService } from './paymentsService';
+export { default as PagosManager } from './presentation/components/PagosManager';

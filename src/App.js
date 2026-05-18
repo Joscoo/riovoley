@@ -5,16 +5,15 @@ import Navbar from './components/Navbar'; // Con mayúscula
 import HomePage from './components/HomePage';
 import AboutUs from './components/AboutUs';
 import Horarios from './components/Horarios';
-import Login from './components/Login';
-import ResetPassword from './components/ResetPassword';
+import { Login, ResetPassword } from './features/auth-session';
+import { useUserProfile } from './features/auth-profile';
 import { getCurrentUser } from './config/supabase';
-import { useUserProfile } from './hooks/useUserProfile';
 import { ToastProvider } from './contexts/ToastContext';
 
 // Code splitting: Lazy load de paneles pesados
-const AdminPanel = lazy(() => import('./components/admin/AdminPanel'));
-const TrainerPanel = lazy(() => import('./components/trainer/TrainerPanel'));
-const StudentPanel = lazy(() => import('./components/student/StudentPanel'));
+const LazyAdminPanel = lazy(() => import('./features/admin-dashboard/presentation/components/AdminPanel'));
+const LazyTrainerPanel = lazy(() => import('./features/trainer-dashboard/presentation/components/TrainerPanel'));
+const StudentPanel = lazy(() => import('./features/student-dashboard/presentation/components/StudentPanel'));
 
 // Loading fallback component
 const LoadingFallback = () => (
@@ -87,8 +86,8 @@ function AppContent() {
         <Route path="/horarios" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><Horarios /></>} />
         <Route path="/login" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><Login onLoginSuccess={handleLoginSuccess} /></>} />
         <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/admin" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><AdminPanel user={user} /></>} />
-        <Route path="/entrenador" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><TrainerPanel user={user} /></>} />
+        <Route path="/admin" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><LazyAdminPanel user={user} /></>} />
+        <Route path="/entrenador" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><LazyTrainerPanel user={user} /></>} />
         <Route path="/estudiante" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><StudentPanel user={user} /></>} />
       </Routes>
     </Suspense>

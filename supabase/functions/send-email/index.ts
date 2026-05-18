@@ -1,7 +1,7 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 import { corsHeaders } from '../_shared/cors.ts';
 import { readJsonBody } from '../_core/http/body.ts';
-import { internalError, jsonResponse, methodNotAllowed } from '../_core/http/response.ts';
+import { internalError, jsonResponse, methodNotAllowed, successEnvelope } from '../_core/http/response.ts';
 import { CommunicationsCoreError } from '../_core/communications/domain/communications-error.ts';
 import { SendEmailUseCase } from '../_core/communications/application/use-cases/send-email-use-case.ts';
 import { ResendCommunicationsGateway } from '../_core/communications/infrastructure/resend-communications-gateway.ts';
@@ -27,7 +27,17 @@ serve(async (req) => {
       attachments: body?.attachments,
     });
 
-    return jsonResponse(result, 200);
+    const { success, code, message, details, ...extra } = (result || {}) as Record<string, unknown>;
+    return jsonResponse(
+      successEnvelope({
+        success: typeof success === 'boolean' ? success : true,
+        code: typeof code === 'string' ? code : 'EMAIL_SENT',
+        message: typeof message === 'string' ? message : 'Operacion completada',
+        details: details ?? null,
+        data: extra,
+      }),
+      200,
+    );
   } catch (error) {
     if (error instanceof CommunicationsCoreError) {
       return jsonResponse(
@@ -36,6 +46,7 @@ serve(async (req) => {
           code: error.code,
           message: error.message,
           details: error.details ?? null,
+          data: null,
         },
         error.status,
       );
