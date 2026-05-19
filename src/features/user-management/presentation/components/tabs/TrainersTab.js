@@ -236,7 +236,7 @@ const TrainersTab = ({ userRole }) => {
               <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Total</h3>
               <p className="mt-1 text-3xl font-black text-white">{stats.total}</p>
             </div>
-            <div className="text-3xl text-[#F9B233]">
+            <div className="text-3xl text-amber-200">
               <FaUsers />
             </div>
           </div>
@@ -248,7 +248,7 @@ const TrainersTab = ({ userRole }) => {
               <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Activos</h3>
               <p className="mt-1 text-3xl font-black text-white">{stats.activos}</p>
             </div>
-            <div className="text-3xl text-green-500">
+            <div className="text-3xl text-emerald-300">
               <FaCheckCircle />
             </div>
           </div>
@@ -260,7 +260,7 @@ const TrainersTab = ({ userRole }) => {
               <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Suspendidos</h3>
               <p className="mt-1 text-3xl font-black text-white">{stats.suspendidos}</p>
             </div>
-            <div className="text-3xl text-red-500">
+            <div className="text-3xl text-rose-300">
               <FaBan />
             </div>
           </div>

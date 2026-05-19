@@ -59,8 +59,16 @@ const AdminPanel = ({ user }) => {
     { id: 'configuracion', icon: <FaCog />, label: 'Configuración', description: 'Perfil y seguridad' },
   ];
 
+  const validSections = new Set(menuItems.map((item) => item.id));
+  const sectionAliasMap = {
+    reportes: 'asistencias',
+    atletas: 'usuarios'
+  };
+
   const handleNavigateToSection = (sectionId) => {
-    setActiveSection(sectionId);
+    const normalizedSection = sectionAliasMap[sectionId] || sectionId;
+    if (!validSections.has(normalizedSection)) return;
+    setActiveSection(normalizedSection);
   };
 
   const renderActiveSection = () => {

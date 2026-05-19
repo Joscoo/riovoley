@@ -638,7 +638,7 @@ const PagosManager = ({ user }) => {
             placeholder="Fecha inicio"
             value={queryState.filters.fecha_inicio}
             onChange={(e) => updateFilter('fecha_inicio', e.target.value)}
-            className={styles.filterInput}
+            className={`${styles.filterInput} rv-dark-date-input`}
           />
         </div>
         
@@ -650,7 +650,7 @@ const PagosManager = ({ user }) => {
             placeholder="Fecha fin"
             value={queryState.filters.fecha_fin}
             onChange={(e) => updateFilter('fecha_fin', e.target.value)}
-            className={styles.filterInput}
+            className={`${styles.filterInput} rv-dark-date-input`}
           />
         </div>
 
@@ -969,7 +969,7 @@ const PagosManager = ({ user }) => {
                       }}
                       required
                       max={getTodayDateString()}
-                      className="min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
+                      className="min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70 rv-dark-date-input"
                       aria-invalid={Boolean(formErrors.fecha_pago)}
                       aria-describedby={formErrors.fecha_pago ? 'payment-date-error' : 'payment-date-hint'}
                     />

@@ -56,7 +56,7 @@ const TrainerDashboard = ({ user, onNavigateToSection }) => {
 
   const statCards = [
     {
-      id: 'atletas',
+      id: 'usuarios',
       title: 'Atletas Registrados',
       value: stats.totalAtletas,
       icon: <FaVolleyballBall />,
@@ -97,6 +97,30 @@ const TrainerDashboard = ({ user, onNavigateToSection }) => {
         icon={<FaChartBar />}
       />
 
+      <Card className="mb-6">
+        <h3 className="mb-4 text-lg font-bold text-white">
+          <FaBolt className="mr-2 inline align-middle text-rv-gold" />
+          <span className="align-middle">Acciones Rapidas</span>
+        </h3>
+        <div className="grid gap-3 mobile:grid-cols-2">
+          <Button variant="secondary" className="justify-start" onClick={() => onNavigateToSection('usuarios')}>
+            <FaPlus className="mr-2" /> Registrar Atleta
+          </Button>
+
+          <Button variant="secondary" className="justify-start" onClick={() => onNavigateToSection('asistencias')}>
+            <FaCheckCircle className="mr-2" /> Tomar Asistencia
+          </Button>
+
+          <Button variant="secondary" className="justify-start" onClick={() => onNavigateToSection('tests-fisicos')}>
+            <FaClipboardList className="mr-2" /> Registrar Test
+          </Button>
+
+          <Button variant="secondary" className="justify-start" onClick={() => onNavigateToSection('pagos')}>
+            <FaMoneyBillWave className="mr-2" /> Registrar Pago
+          </Button>
+        </div>
+      </Card>
+
       <div className="mb-6 grid gap-4 mobile:grid-cols-2">
         {statCards.map((stat) => (
           <Card
@@ -124,30 +148,6 @@ const TrainerDashboard = ({ user, onNavigateToSection }) => {
           </Card>
         ))}
       </div>
-
-      <Card>
-        <h3 className="mb-4 text-lg font-bold text-white">
-          <FaBolt className="mr-2 inline align-middle text-rv-gold" />
-          <span className="align-middle">Acciones Rapidas</span>
-        </h3>
-        <div className="grid gap-3 mobile:grid-cols-2">
-          <Button variant="secondary" className="justify-start" onClick={() => onNavigateToSection('usuarios')}>
-            <FaPlus className="mr-2" /> Registrar Atleta
-          </Button>
-
-          <Button variant="secondary" className="justify-start" onClick={() => onNavigateToSection('asistencias')}>
-            <FaCheckCircle className="mr-2" /> Tomar Asistencia
-          </Button>
-
-          <Button variant="secondary" className="justify-start" onClick={() => onNavigateToSection('tests-fisicos')}>
-            <FaClipboardList className="mr-2" /> Registrar Test
-          </Button>
-
-          <Button variant="secondary" className="justify-start" onClick={() => onNavigateToSection('pagos')}>
-            <FaMoneyBillWave className="mr-2" /> Registrar Pago
-          </Button>
-        </div>
-      </Card>
     </div>
   );
 };

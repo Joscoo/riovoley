@@ -209,7 +209,7 @@ const UserForm = ({ userType, initialData, onSubmit, onCancel, submitLabel = 'Gu
               type="date"
               value={formData.fecha_nacimiento}
               onChange={(event) => handleChange('fecha_nacimiento', event.target.value)}
-              className={INPUT_BASE}
+              className={`${INPUT_BASE} rv-dark-date-input`}
               required
             />
             {formErrors.fecha_nacimiento && (

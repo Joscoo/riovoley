@@ -68,13 +68,13 @@ const UserCard = ({
   return (
     <Card
       variant="solid"
-      className="flex h-full flex-col border-2 border-slate-200 bg-white text-slate-900 transition-all duration-200 hover:border-rv-gold/40 hover:shadow-lg"
+      className="flex h-full min-w-0 flex-col overflow-hidden border-2 border-slate-200 bg-white text-slate-900 transition-all duration-200 hover:border-rv-gold/40 hover:shadow-lg"
       role="article"
       aria-label={`${getUserTypeLabel(userType)}: ${fullName}`}
     >
-      <div className="mb-4 flex items-start justify-between gap-3 border-b-2 border-slate-100 pb-4">
+      <div className="mb-4 flex flex-col gap-3 border-b-2 border-slate-100 pb-4 mobile-sm:flex-row mobile-sm:items-start mobile-sm:justify-between">
         <div className="min-w-0 flex-1">
-          <h3 className="truncate text-lg font-bold leading-tight text-slate-900 tablet:text-xl">
+          <h3 className="break-words text-lg font-bold leading-tight text-slate-900 tablet:text-xl">
             {fullName}
           </h3>
 
@@ -89,12 +89,12 @@ const UserCard = ({
           )}
         </div>
 
-        <div className="flex shrink-0 gap-2">
+        <div className="grid w-full grid-cols-2 gap-2 mobile-sm:flex mobile-sm:w-auto mobile-sm:shrink-0">
           {permissions.canEdit && (
             <Button
               size="icon"
               variant="secondary"
-              className="h-10 w-10 border-2 border-emerald-400/50 bg-emerald-50 text-emerald-700 transition-all duration-200 hover:bg-emerald-100 hover:shadow-md focus-visible:ring-2 focus-visible:ring-emerald-500"
+              className="h-10 w-full border-2 border-emerald-400/50 bg-emerald-50 text-emerald-700 transition-all duration-200 hover:bg-emerald-100 hover:shadow-md focus-visible:ring-2 focus-visible:ring-emerald-500 mobile-sm:w-10"
               onClick={onEdit}
               aria-label={`Editar ${fullName}`}
               title="Editar"
@@ -107,7 +107,7 @@ const UserCard = ({
             <Button
               size="icon"
               variant="danger"
-              className="h-10 w-10 transition-all duration-200 hover:shadow-md focus-visible:ring-2 focus-visible:ring-red-500"
+              className="h-10 w-full transition-all duration-200 hover:shadow-md focus-visible:ring-2 focus-visible:ring-red-500 mobile-sm:w-10"
               onClick={onDelete}
               aria-label={`Eliminar ${fullName}`}
               title="Eliminar"
@@ -121,13 +121,13 @@ const UserCard = ({
       <dl className="grid flex-1 gap-3 text-sm text-slate-700 tablet:gap-4">
         <div className="space-y-1">
           <dt className="text-xs font-bold uppercase tracking-wide text-slate-500">Email</dt>
-          <dd className="truncate font-medium text-slate-900">{user.email || 'Sin email'}</dd>
+          <dd className="break-all font-medium text-slate-900 tablet:break-normal tablet:truncate">{user.email || 'Sin email'}</dd>
         </div>
 
         {user.telefono && (
           <div className="space-y-1">
             <dt className="text-xs font-bold uppercase tracking-wide text-slate-500">Teléfono</dt>
-            <dd className="font-medium">{user.telefono}</dd>
+            <dd className="break-all font-medium">{user.telefono}</dd>
           </div>
         )}
 
@@ -183,7 +183,7 @@ const UserCard = ({
             </Button>
           )}
 
-          <div className="grid grid-cols-2 gap-2.5">
+          <div className="grid grid-cols-1 gap-2.5 mobile-sm:grid-cols-2">
             {permissions.canSuspend && !isSuspended && (
               <Button
                 size="sm"

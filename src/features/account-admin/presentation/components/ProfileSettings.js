@@ -196,7 +196,7 @@ const ProfileSettings = ({ user }) => {
                 <input type="tel" name="telefono" value={formData.telefono} onChange={handleInputChange} className={INPUT_BASE} />
               </Field>
               <Field label="Fecha de Nacimiento">
-                <input type="date" name="fecha_nacimiento" value={formData.fecha_nacimiento} onChange={handleInputChange} className={INPUT_BASE} />
+                <input type="date" name="fecha_nacimiento" value={formData.fecha_nacimiento} onChange={handleInputChange} className={`${INPUT_BASE} rv-dark-date-input`} />
               </Field>
             </div>
 

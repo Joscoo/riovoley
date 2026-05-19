@@ -729,7 +729,7 @@ const TestsFisicosManager = ({ user }) => {
                 type="date"
                 value={filters.fechaDesde}
                 onChange={(e) => updateFilter('fechaDesde', e.target.value)}
-                className={styles.filterInput}
+                className={`${styles.filterInput} rv-dark-date-input`}
               />
             </Field>
 
@@ -739,7 +739,7 @@ const TestsFisicosManager = ({ user }) => {
                 type="date"
                 value={filters.fechaHasta}
                 onChange={(e) => updateFilter('fechaHasta', e.target.value)}
-                className={styles.filterInput}
+                className={`${styles.filterInput} rv-dark-date-input`}
               />
             </Field>
 
@@ -952,6 +952,7 @@ const TestsFisicosManager = ({ user }) => {
                       type="date"
                       value={formData.fecha_test}
                       onChange={(e) => setFormData({...formData, fecha_test: e.target.value})}
+                      className="rv-dark-date-input"
                       required
                     />
                   </div>

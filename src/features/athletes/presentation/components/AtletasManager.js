@@ -468,7 +468,7 @@ const AtletasManager = ({ user }) => {
                       max={maxBirthDate}
                       aria-describedby={birthDateHintId}
                       required
-                      className={INPUT_BASE}
+                      className={`${INPUT_BASE} rv-dark-date-input`}
                     />
                   </Field>
                 </div>

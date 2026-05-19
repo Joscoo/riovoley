@@ -74,7 +74,7 @@ const SuspendUserModal = ({ user, onConfirm, onCancel }) => {
               type="date"
               value={until}
               onChange={(e) => setUntil(e.target.value)}
-              className={INPUT_BASE}
+              className={`${INPUT_BASE} rv-dark-date-input`}
               min={new Date().toISOString().split('T')[0]}
             />
           </Field>

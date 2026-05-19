@@ -12,9 +12,9 @@ const getRoleBadgeClass = (role) => {
 
 const getRoleIconClass = (role) => {
   const normalizedRole = role?.toLowerCase();
-  if (normalizedRole === 'administrador') return 'text-[#2E3192]';
-  if (normalizedRole === 'entrenador') return 'text-[#F9B233]';
-  return 'text-[#355FB3]';
+  if (normalizedRole === 'administrador') return 'text-indigo-300';
+  if (normalizedRole === 'entrenador') return 'text-amber-200';
+  return 'text-sky-300';
 };
 
 const ChangeRoleModal = ({ user, currentRole, onConfirm, onCancel }) => {

@@ -845,7 +845,7 @@ const AsistenciasManager = ({ user }) => {
                 type="date"
                 value={selectedDate}
                 onChange={(e) => setSelectedDate(e.target.value)}
-                className={styles.dateInput}
+                className={`${styles.dateInput} rv-dark-date-input`}
               />
             </div>
             
@@ -1128,7 +1128,7 @@ const AsistenciasManager = ({ user }) => {
                     type="date"
                     value={queryState.filters.fecha_inicio}
                     onChange={(e) => updateQueryFilter('fecha_inicio', e.target.value)}
-                    className={styles.filterInput}
+                    className={`${styles.filterInput} rv-dark-date-input`}
                   />
                 </Field>
 
@@ -1138,7 +1138,7 @@ const AsistenciasManager = ({ user }) => {
                     type="date"
                     value={queryState.filters.fecha_fin}
                     onChange={(e) => updateQueryFilter('fecha_fin', e.target.value)}
-                    className={styles.filterInput}
+                    className={`${styles.filterInput} rv-dark-date-input`}
                   />
                 </Field>
 

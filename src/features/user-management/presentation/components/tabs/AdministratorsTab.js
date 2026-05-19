@@ -133,7 +133,7 @@ const AdministratorsTab = ({ userRole }) => {
         <Card className="h-full border-l-4 border-l-[#2E3192]">
           <div className="flex items-start justify-between gap-3">
             <div><h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Total</h3><p className="mt-1 text-3xl font-black text-white">{stats.total}</p></div>
-            <div className="text-3xl text-[#2E3192]"><FaUsers /></div>
+            <div className="text-3xl text-indigo-300"><FaUsers /></div>
           </div>
         </Card>
       </div>

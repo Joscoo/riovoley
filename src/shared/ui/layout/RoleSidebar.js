@@ -3,6 +3,17 @@ import PropTypes from 'prop-types';
 import { cn } from '../../../lib/cn';
 import { FaBars, FaChevronLeft, FaChevronRight, FaTimes } from 'react-icons/fa';
 
+const normalizeRoleToken = (value = '') => value.toString().trim().toLowerCase();
+
+const resolveVariantFromRole = (roleValue = '') => {
+  const normalizedRole = normalizeRoleToken(roleValue);
+
+  if (['administrador', 'admin'].includes(normalizedRole)) return 'admin';
+  if (normalizedRole === 'entrenador') return 'trainer';
+  if (['estudiante', 'usuario'].includes(normalizedRole)) return 'student';
+  return null;
+};
+
 const RoleSidebar = ({
   variant = 'admin',
   title,
@@ -61,21 +72,27 @@ const RoleSidebar = ({
     admin: {
       badge: 'from-red-600 to-red-700 shadow-[0_6px_18px_rgba(220,53,69,0.35)]',
       active: 'border-red-400/60 bg-gradient-to-br from-red-600/25 to-red-500/15 text-white shadow-[0_6px_18px_rgba(220,53,69,0.28)]',
-      activeDescription: 'text-red-200/90'
+      activeDescription: 'text-red-200/90',
+      roleLabel: 'text-red-200/85'
     },
     trainer: {
       badge: 'from-orange-500 to-orange-600 shadow-[0_6px_18px_rgba(253,126,20,0.35)]',
       active: 'border-orange-400/60 bg-gradient-to-br from-orange-500/25 to-orange-400/15 text-white shadow-[0_6px_18px_rgba(253,126,20,0.28)]',
-      activeDescription: 'text-orange-100/90'
+      activeDescription: 'text-orange-100/90',
+      roleLabel: 'text-orange-100/85'
     },
     student: {
       badge: 'from-blue-600 to-blue-700 shadow-[0_6px_18px_rgba(0,123,255,0.35)]',
       active: 'border-blue-400/60 bg-gradient-to-br from-blue-600/25 to-blue-500/15 text-white shadow-[0_6px_18px_rgba(0,123,255,0.28)]',
-      activeDescription: 'text-blue-100/90'
+      activeDescription: 'text-blue-100/90',
+      roleLabel: 'text-blue-100/85'
     }
   };
 
-  const styles = variantStyles[variant] || variantStyles.admin;
+  const variantFromRole = resolveVariantFromRole(roleLabel) || resolveVariantFromRole(badgeLabel);
+  const effectiveVariant = variantFromRole || variant;
+  const styles = variantStyles[effectiveVariant] || variantStyles.admin;
+  const shouldShowBadge = normalizeRoleToken(roleLabel) !== normalizeRoleToken(badgeLabel);
 
   const handleSectionChange = (sectionId) => {
     onSectionChange(sectionId);
@@ -98,12 +115,12 @@ const RoleSidebar = ({
             <h3 className="m-0 truncate text-base font-semibold text-white desktop:truncate-none desktop:text-[1.3rem]">
               {title}
             </h3>
-            <p className="m-0 mt-0.5 text-xs uppercase tracking-[1px] text-white/70 desktop:mt-2 desktop:text-sm">
+            <p className={cn('m-0 mt-0.5 text-xs uppercase tracking-[1px] desktop:mt-2 desktop:text-sm', styles.roleLabel)}>
               {roleLabel}
             </p>
           </div>
         )}
-        {!collapsed && (
+        {!collapsed && shouldShowBadge && (
           <span className={cn('inline-flex rounded-full bg-gradient-to-br px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white', styles.badge)}>
             {badgeLabel}
           </span>

@@ -324,7 +324,7 @@ const EntrenadoresManager = ({ user }) => {
                     type="date"
                     value={formData.fecha_nacimiento}
                     onChange={(event) => setFormData((prev) => ({ ...prev, fecha_nacimiento: event.target.value }))}
-                    className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
+                    className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70 rv-dark-date-input"
                   />
                 </Field>
               </div>

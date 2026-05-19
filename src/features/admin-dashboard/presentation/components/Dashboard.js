@@ -118,6 +118,27 @@ const Dashboard = ({ user, onNavigateToSection }) => {
         icon={<FaChartBar />}
       />
 
+      <Card className="mb-6">
+        <h3 className="mb-4 text-lg font-bold text-white">
+          <FaBolt className="mr-2 inline align-middle text-rv-gold" />
+          <span className="align-middle">Acciones Rapidas</span>
+        </h3>
+        <div className="grid gap-2 mobile:grid-cols-2">
+          <Button variant="secondary" className="w-full justify-start" onClick={() => onNavigateToSection('usuarios')}>
+            <FaUserPlus className="mr-2" /> Agregar Estudiante
+          </Button>
+          <Button variant="secondary" className="w-full justify-start" onClick={() => onNavigateToSection('pagos')}>
+            <FaCreditCard className="mr-2" /> Registrar Pago
+          </Button>
+          <Button variant="secondary" className="w-full justify-start" onClick={() => onNavigateToSection('usuarios')}>
+            <FaUsersCog className="mr-2" /> Gestionar Usuarios
+          </Button>
+          <Button variant="secondary" className="w-full justify-start" onClick={() => onNavigateToSection('asistencias')}>
+            <FaChartBar className="mr-2" /> Ver Reportes
+          </Button>
+        </div>
+      </Card>
+
       <div className="mb-6 grid gap-4 mobile:grid-cols-2 desktop:grid-cols-3">
         <StatCard
           title="Total Estudiantes"
@@ -173,50 +194,27 @@ const Dashboard = ({ user, onNavigateToSection }) => {
         />
       </div>
 
-      <div className="mb-6 grid gap-4 desktop:grid-cols-[1fr_360px]">
-        <Card>
-          <h3 className="mb-4 text-lg font-bold text-white">
-            <FaClipboardList className="mr-2 inline align-middle text-rv-gold" />
-            <span className="align-middle">Actividad Reciente</span>
-          </h3>
-          <div className="space-y-3">
-            {recentActivity.length > 0 ? (
-              recentActivity.map((activity) => (
-                <div key={activity.id} className="flex items-start gap-3 rounded-lg border border-white/10 bg-white/5 px-3 py-3">
-                  <span className="mt-0.5 text-lg">{activity.icono}</span>
-                  <div className="min-w-0">
-                    <p className="text-sm text-white">{activity.descripcion}</p>
-                    <span className="text-xs text-slate-300">{activity.fecha}</span>
-                  </div>
+      <Card className="mb-6">
+        <h3 className="mb-4 text-lg font-bold text-white">
+          <FaClipboardList className="mr-2 inline align-middle text-rv-gold" />
+          <span className="align-middle">Actividad Reciente</span>
+        </h3>
+        <div className="space-y-3">
+          {recentActivity.length > 0 ? (
+            recentActivity.map((activity) => (
+              <div key={activity.id} className="flex items-start gap-3 rounded-lg border border-white/10 bg-white/5 px-3 py-3">
+                <span className="mt-0.5 text-lg">{activity.icono}</span>
+                <div className="min-w-0">
+                  <p className="text-sm text-white">{activity.descripcion}</p>
+                  <span className="text-xs text-slate-300">{activity.fecha}</span>
                 </div>
-              ))
-            ) : (
-              <p className="py-6 text-center text-sm italic text-slate-300">No hay actividad reciente</p>
-            )}
-          </div>
-        </Card>
-
-        <Card>
-          <h3 className="mb-4 text-lg font-bold text-white">
-            <FaBolt className="mr-2 inline align-middle text-rv-gold" />
-            <span className="align-middle">Acciones Rapidas</span>
-          </h3>
-          <div className="space-y-2">
-            <Button variant="secondary" className="w-full justify-start" onClick={() => onNavigateToSection('usuarios')}>
-              <FaUserPlus className="mr-2" /> Agregar Estudiante
-            </Button>
-            <Button variant="secondary" className="w-full justify-start" onClick={() => onNavigateToSection('pagos')}>
-              <FaCreditCard className="mr-2" /> Registrar Pago
-            </Button>
-            <Button variant="secondary" className="w-full justify-start" onClick={() => onNavigateToSection('usuarios')}>
-              <FaUsersCog className="mr-2" /> Gestionar Usuarios
-            </Button>
-            <Button variant="secondary" className="w-full justify-start" onClick={() => onNavigateToSection('reportes')}>
-              <FaChartBar className="mr-2" /> Ver Reportes
-            </Button>
-          </div>
-        </Card>
-      </div>
+              </div>
+            ))
+          ) : (
+            <p className="py-6 text-center text-sm italic text-slate-300">No hay actividad reciente</p>
+          )}
+        </div>
+      </Card>
 
       <Card>
         <h3 className="mb-4 text-lg font-bold text-white">

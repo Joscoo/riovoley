@@ -316,7 +316,7 @@ const AnunciosManager = ({ user }) => {
                   value={formData.expires_at}
                   onChange={handleInputChange}
                   min={new Date().toISOString().split('T')[0]}
-                  className="h-12 w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+                  className="h-12 w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 rv-dark-date-input"
                 />
               </Field>
 

@@ -33,3 +33,25 @@ svg {
 button svg {
   color: inherit;
 }
+
+/* Date inputs on dark surfaces: force a light calendar indicator for contrast */
+input[type='date'],
+input[type='datetime-local'],
+input[type='month'],
+input.rv-dark-date-input[type='date'],
+input.rv-dark-date-input[type='datetime-local'],
+input.rv-dark-date-input[type='month'] {
+  color-scheme: dark;
+}
+
+input[type='date']::-webkit-calendar-picker-indicator,
+input[type='datetime-local']::-webkit-calendar-picker-indicator,
+input[type='month']::-webkit-calendar-picker-indicator,
+input.rv-dark-date-input[type='date']::-webkit-calendar-picker-indicator,
+input.rv-dark-date-input[type='datetime-local']::-webkit-calendar-picker-indicator,
+input.rv-dark-date-input[type='month']::-webkit-calendar-picker-indicator {
+  filter: invert(1) brightness(1.25);
+  -webkit-filter: invert(1) brightness(1.25);
+  opacity: 0.95;
+  cursor: pointer;
+}
