@@ -60,6 +60,18 @@ const args = [
 const result = spawnSync(command, args, {
   stdio: 'inherit',
   env: process.env,
+  shell: isWindows,
 });
 
-process.exit(result.status ?? 1);
+if (result.error) {
+  console.error('No se pudo ejecutar Playwright en modo strict:');
+  console.error(result.error.message || result.error);
+  process.exit(1);
+}
+
+if (typeof result.status !== 'number') {
+  console.error('Playwright finalizo sin codigo de salida numerico.');
+  process.exit(1);
+}
+
+process.exit(result.status);

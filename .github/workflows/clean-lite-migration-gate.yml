@@ -1,0 +1,71 @@
+name: Clean Lite Migration Gate
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  quality-gate:
+    name: Contracts + Build + Public Smoke
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install chromium
+
+      - name: Run edge contract tests
+        run: npm run test:contracts
+
+      - name: Run public smoke tests
+        run: npm run e2e:smoke:public
+
+      - name: Build
+        run: npm run build
+
+  roles-smoke:
+    name: Roles Smoke (Optional)
+    runs-on: ubuntu-latest
+    needs: quality-gate
+    if: ${{ secrets.E2E_ADMIN_EMAIL != '' && secrets.E2E_ADMIN_PASSWORD != '' && secrets.E2E_TRAINER_EMAIL != '' && secrets.E2E_TRAINER_PASSWORD != '' && secrets.E2E_STUDENT_EMAIL != '' && secrets.E2E_STUDENT_PASSWORD != '' }}
+    env:
+      E2E_ADMIN_EMAIL: ${{ secrets.E2E_ADMIN_EMAIL }}
+      E2E_ADMIN_PASSWORD: ${{ secrets.E2E_ADMIN_PASSWORD }}
+      E2E_TRAINER_EMAIL: ${{ secrets.E2E_TRAINER_EMAIL }}
+      E2E_TRAINER_PASSWORD: ${{ secrets.E2E_TRAINER_PASSWORD }}
+      E2E_STUDENT_EMAIL: ${{ secrets.E2E_STUDENT_EMAIL }}
+      E2E_STUDENT_PASSWORD: ${{ secrets.E2E_STUDENT_PASSWORD }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install chromium
+
+      - name: Run roles smoke strict
+        run: npm run e2e:smoke:roles:strict

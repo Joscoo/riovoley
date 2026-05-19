@@ -210,8 +210,17 @@ tests/               E2E tests (Playwright)
   - dashboards: `admin-dashboard`, `trainer-dashboard`, `student-dashboard`
   - auth/profile: `auth-session`, `auth-profile`, `account-admin (ProfileSettings/UsuariosManager)`
   - `notifications (NotificacionesPagos)`
-- En curso:
-  - corrida E2E final por roles autenticados (admin/trainer/student) con credenciales de entorno
+- Cierre validado localmente:
+  - `npm run test:contracts` (OK)
+  - `npm run e2e:smoke:public` (OK)
+  - `npm run e2e:smoke:roles:strict` (OK)
+  - `npm run build` (OK)
+
+CI de soporte:
+
+- Workflow: `.github/workflows/clean-lite-migration-gate.yml`
+- Ejecuta en PR/push: `test:contracts`, `e2e:smoke:public`, `build`
+- Ejecuta smoke por roles solo si existen secrets `E2E_*` en GitHub
 
 ## Seguridad y Datos | Security and Data
 
