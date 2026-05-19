@@ -25,8 +25,9 @@ const EntrenadoresManager = ({ user }) => {
     loading,
     showModal,
     editingEntrenador,
-    searchTerm,
-    setSearchTerm,
+    filters,
+    setFilters,
+    resetFilters,
     formData,
     setFormData,
     message,
@@ -99,16 +100,62 @@ const EntrenadoresManager = ({ user }) => {
       ) : null}
 
       <Card className="mb-4">
-        <div className="grid gap-3 mobile:grid-cols-[minmax(0,1fr)_auto] mobile:items-end">
+        <div className="grid gap-3 mobile:grid-cols-2 desktop:grid-cols-5 mobile:items-end">
           <Field label="Buscar entrenadores">
             <input
+              id="trainer-management-search"
               type="text"
-              value={searchTerm}
-              onChange={(event) => setSearchTerm(event.target.value)}
+              value={filters.search}
+              onChange={(event) => setFilters((current) => ({ ...current, search: event.target.value }))}
               placeholder="Nombre, apellido o email"
               className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
             />
           </Field>
+
+          <Field label="Estado">
+            <select
+              id="trainer-management-status"
+              value={filters.status}
+              onChange={(event) => setFilters((current) => ({ ...current, status: event.target.value }))}
+              className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
+            >
+              <option value="all">Todos</option>
+              <option value="active">Activos</option>
+              <option value="suspended">Suspendidos</option>
+            </select>
+          </Field>
+
+          <Field label="Ordenar por">
+            <select
+              id="trainer-management-sort-by"
+              value={filters.sortBy}
+              onChange={(event) => setFilters((current) => ({ ...current, sortBy: event.target.value }))}
+              className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
+            >
+              <option value="apellido">Apellido</option>
+              <option value="nombre">Nombre</option>
+              <option value="email">Email</option>
+              <option value="created_at">Fecha de registro</option>
+            </select>
+          </Field>
+
+          <Field label="Direccion">
+            <select
+              id="trainer-management-sort-order"
+              value={filters.sortOrder}
+              onChange={(event) => setFilters((current) => ({ ...current, sortOrder: event.target.value }))}
+              className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
+            >
+              <option value="asc">Ascendente</option>
+              <option value="desc">Descendente</option>
+            </select>
+          </Field>
+
+          <div className="flex flex-col justify-end">
+            <Button id="trainer-management-clear-filters" type="button" variant="secondary" className="w-full" onClick={resetFilters}>
+              Limpiar filtros
+            </Button>
+          </div>
 
           <div className="inline-flex min-h-12 items-center rounded-lg border border-cyan-300/35 bg-cyan-500/15 px-4 text-sm font-semibold text-cyan-100">
             {filteredEntrenadores.length} entrenador{filteredEntrenadores.length === 1 ? '' : 'es'}
@@ -126,14 +173,14 @@ const EntrenadoresManager = ({ user }) => {
       ) : filteredEntrenadores.length === 0 ? (
         <EmptyState
           icon={<FaUsers />}
-          title={searchTerm ? 'No se encontraron entrenadores' : 'No hay entrenadores registrados'}
+          title={filters.search || filters.status !== 'all' ? 'No se encontraron entrenadores' : 'No hay entrenadores registrados'}
           description={
-            searchTerm
+            filters.search || filters.status !== 'all'
               ? 'Prueba con otro termino de busqueda para ubicar al entrenador.'
               : 'Crea el primer entrenador para empezar a gestionar el equipo.'
           }
           action={
-            !searchTerm ? (
+            !filters.search && filters.status === 'all' ? (
               <Button onClick={() => openModal()}>
                 <FaPlus className="mr-2" /> Crear Entrenador
               </Button>

@@ -8,12 +8,36 @@ const normalizeError = (error, fallback) => {
 };
 
 export class SupabaseTrainerManagementRepository {
-  async listTrainers() {
-    const { data, error } = await supabase
+  async listTrainers({ query } = {}) {
+    let request = supabase
       .from('users')
       .select('*')
-      .eq('role', 'entrenador')
-      .order('created_at', { ascending: false });
+      .eq('role', 'entrenador');
+
+    const filters = query?.filters || {};
+    const sort = query?.sort || {};
+
+    if (filters.search) {
+      const searchValue = String(filters.search).trim();
+      request = request.or(`nombre.ilike.%${searchValue}%,apellido.ilike.%${searchValue}%,email.ilike.%${searchValue}%`);
+    }
+
+    if (filters.status === 'active') {
+      request = request.eq('suspended', false);
+    } else if (filters.status === 'suspended') {
+      request = request.eq('suspended', true);
+    }
+
+    if (sort.field && sort.direction && sort.direction !== 'none') {
+      const allowedField = ['nombre', 'apellido', 'email', 'created_at'].includes(sort.field)
+        ? sort.field
+        : 'created_at';
+      request = request.order(allowedField, { ascending: sort.direction === 'asc' });
+    } else {
+      request = request.order('created_at', { ascending: false });
+    }
+
+    const { data, error } = await request;
 
     if (error) {
       throw new TrainerManagementError(normalizeError(error, 'Error cargando entrenadores'), error);

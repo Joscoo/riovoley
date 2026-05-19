@@ -7,9 +7,9 @@ export const createUserManagementService = (repository = new SupabaseUserManagem
   const useCases = createUserManagementUseCases(repository);
 
   return {
-    listAthletes: () => useCases.listAthletesUseCase.execute(),
-    listTrainers: () => useCases.listTrainersUseCase.execute(),
-    listAdministrators: () => useCases.listAdministratorsUseCase.execute(),
+    listAthletes: ({ query } = {}) => useCases.listAthletesUseCase.execute({ query }),
+    listTrainers: ({ query } = {}) => useCases.listTrainersUseCase.execute({ query }),
+    listAdministrators: ({ query } = {}) => useCases.listAdministratorsUseCase.execute({ query }),
     createUser: (formData, userType) => useCases.createUserUseCase.execute({ formData, userType }),
     updateUser: (userId, formData, userType) => useCases.updateUserUseCase.execute({ userId, formData, userType }),
     deleteUser: (userId, userType) => useCases.deleteUserUseCase.execute({ userId, userType }),

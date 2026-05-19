@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { trainerManagementService } from '../../trainerManagementService';
+import { SORT_DIRECTION, createTableQuery } from '../../../../shared/lib/tableQuery';
 
 const INITIAL_FORM = {
   nombre: '',
@@ -11,6 +12,29 @@ const INITIAL_FORM = {
 
 const EMPTY_MESSAGE = { type: '', text: '' };
 
+const DEFAULT_FILTERS = {
+  search: '',
+  status: 'all',
+  sortBy: 'apellido',
+  sortOrder: 'asc',
+};
+
+const buildTrainersQuery = ({ filters }) =>
+  createTableQuery({
+    filters: {
+      search: filters?.search || '',
+      status: filters?.status || 'all',
+    },
+    sort: {
+      field: filters?.sortBy || 'apellido',
+      direction: filters?.sortOrder === 'desc' ? SORT_DIRECTION.DESC : SORT_DIRECTION.ASC,
+    },
+    pagination: {
+      page: 1,
+      pageSize: 100,
+    },
+  });
+
 export const useEntrenadoresManager = () => {
   const timeoutRef = useRef(null);
 
@@ -18,7 +42,7 @@ export const useEntrenadoresManager = () => {
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [editingEntrenador, setEditingEntrenador] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [filters, setFilters] = useState(DEFAULT_FILTERS);
   const [formData, setFormData] = useState(INITIAL_FORM);
   const [message, setMessage] = useState(EMPTY_MESSAGE);
   const [pendingCredentials, setPendingCredentials] = useState(null);
@@ -42,10 +66,12 @@ export const useEntrenadoresManager = () => {
 
   useEffect(() => () => clearMessageTimer(), [clearMessageTimer]);
 
-  const loadEntrenadores = useCallback(async () => {
+  const loadEntrenadores = useCallback(async ({ currentFilters } = {}) => {
     setLoading(true);
     try {
-      const data = await trainerManagementService.loadEntrenadores();
+      const data = await trainerManagementService.loadEntrenadores({
+        query: buildTrainersQuery({ filters: currentFilters || filters }),
+      });
       setEntrenadores(data || []);
     } catch (error) {
       console.error('Error cargando entrenadores:', error);
@@ -53,11 +79,11 @@ export const useEntrenadoresManager = () => {
     } finally {
       setLoading(false);
     }
-  }, [showMessage]);
+  }, [filters, showMessage]);
 
   useEffect(() => {
-    loadEntrenadores();
-  }, [loadEntrenadores]);
+    loadEntrenadores({ currentFilters: filters });
+  }, [filters, loadEntrenadores]);
 
   const resetForm = useCallback(() => {
     setFormData(INITIAL_FORM);
@@ -164,16 +190,7 @@ export const useEntrenadoresManager = () => {
     }
   }, [cancelDelete, deleteDialog.trainerId, loadEntrenadores, showMessage]);
 
-  const filteredEntrenadores = useMemo(() => {
-    const search = searchTerm.trim().toLowerCase();
-    if (!search) return entrenadores;
-
-    return entrenadores.filter((entrenador) => (
-      entrenador.nombre?.toLowerCase().includes(search)
-      || entrenador.apellido?.toLowerCase().includes(search)
-      || entrenador.email?.toLowerCase().includes(search)
-    ));
-  }, [entrenadores, searchTerm]);
+  const filteredEntrenadores = useMemo(() => entrenadores, [entrenadores]);
 
   const formatDate = useCallback((dateString) => {
     if (!dateString) return 'N/A';
@@ -199,8 +216,9 @@ export const useEntrenadoresManager = () => {
     loading,
     showModal,
     editingEntrenador,
-    searchTerm,
-    setSearchTerm,
+    filters,
+    setFilters,
+    resetFilters,
     formData,
     setFormData,
     message,
@@ -222,3 +240,6 @@ export const useEntrenadoresManager = () => {
 
 export default useEntrenadoresManager;
 
+  const resetFilters = useCallback(() => {
+    setFilters(DEFAULT_FILTERS);
+  }, []);

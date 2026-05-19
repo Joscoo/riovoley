@@ -8,6 +8,7 @@ import { SectionHeader } from '../../../../../shared/ui';
 import { Card } from '../../../../../shared/ui';
 import { Button } from '../../../../../shared/ui';
 import { EmptyState } from '../../../../../shared/ui';
+import { SORT_DIRECTION, createTableQuery } from '../../../../../shared/lib/tableQuery';
 import UserCard from '../shared/UserCard';
 import UserForm from '../shared/UserForm';
 import UserFilters from '../shared/UserFilters';
@@ -15,6 +16,27 @@ import SuspendUserModal from '../shared/SuspendUserModal';
 import ResendCredentialsModal from '../shared/ResendCredentialsModal';
 import DeleteUserModal from '../shared/DeleteUserModal';
 import ChangeRoleModal from '../shared/ChangeRoleModal';
+
+const buildTrainersListQuery = ({ filters }) => {
+  const backendSortField = ['nombre', 'apellido', 'email', 'created_at'].includes(filters?.sortBy)
+    ? filters.sortBy
+    : 'apellido';
+
+  return createTableQuery({
+    filters: {
+      search: filters?.search || '',
+      status: filters?.status || 'all',
+    },
+    sort: {
+      field: backendSortField,
+      direction: filters?.sortOrder === 'desc' ? SORT_DIRECTION.DESC : SORT_DIRECTION.ASC,
+    },
+    pagination: {
+      page: 1,
+      pageSize: 300,
+    },
+  });
+};
 
 const TrainersTab = ({ userRole }) => {
   const [trainers, setTrainers] = useState([]);
@@ -40,10 +62,12 @@ const TrainersTab = ({ userRole }) => {
   const permissions = useUserPermissions({ userRole, targetUserType: 'entrenador' });
   const userActions = useUserActions();
 
-  const loadTrainers = useCallback(async () => {
+  const loadTrainers = useCallback(async ({ activeFilters } = {}) => {
     setLoading(true);
     try {
-      const data = await userManagementService.listTrainers();
+      const data = await userManagementService.listTrainers({
+        query: buildTrainersListQuery({ filters: activeFilters || filters }),
+      });
       setTrainers(data);
     } catch (error) {
       console.error('Error al cargar entrenadores:', error);
@@ -51,11 +75,11 @@ const TrainersTab = ({ userRole }) => {
     } finally {
       setLoading(false);
     }
-  }, [showMessage]);
+  }, [filters, showMessage]);
 
   useEffect(() => {
-    loadTrainers();
-  }, [loadTrainers]);
+    loadTrainers({ activeFilters: filters });
+  }, [filters, loadTrainers]);
 
   const filteredTrainers = useMemo(
     () =>
@@ -297,7 +321,7 @@ const TrainersTab = ({ userRole }) => {
                 Anterior
               </Button>
               <span className="rounded-full border border-rv-gold/35 bg-black/35 px-4 py-2 text-sm font-semibold text-white">
-                Página {visiblePage} de {totalPages}
+                P?gina {visiblePage} de {totalPages}
               </span>
               <Button variant="outline" onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))} disabled={visiblePage === totalPages}>
                 Siguiente

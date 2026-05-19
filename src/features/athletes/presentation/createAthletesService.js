@@ -3,7 +3,7 @@ import { SupabaseAthletesRepository } from '../infrastructure/repositories/supab
 
 export const createAthletesService = (repository = new SupabaseAthletesRepository()) => {
   const useCases = createAthletesUseCases(repository);
-  const loadAtletas = async () => useCases.loadAtletasUseCase.execute();
+  const loadAtletas = async ({ query } = {}) => useCases.loadAtletasUseCase.execute({ query });
   const updateAtleta = async ({ editingAtleta, formData }) =>
     useCases.updateAtletaUseCase.execute({ editingAtleta, formData });
   const validateAthleteForm = ({ formData }) =>

@@ -2,6 +2,15 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { paymentsService } from '../../paymentsService';
+import { SortableHeader } from '../../../../shared/ui';
+import {
+  SORT_DIRECTION,
+  createTableQuery,
+  withUpdatedFilter,
+  withUpdatedPage,
+  withUpdatedSort,
+  resetTableQuery,
+} from '../../../../shared/lib/tableQuery';
 import { 
   FaChartBar, 
   FaCheckCircle, 
@@ -89,6 +98,25 @@ const getPaymentStatusClass = (status) => {
 };
 
 const EMPTY_NOTICE = { type: '', text: '' };
+const PAGE_SIZE = 10;
+
+const DEFAULT_PAYMENTS_QUERY = createTableQuery({
+  filters: {
+    fecha_inicio: '',
+    fecha_fin: '',
+    estado: '',
+    atleta: '',
+    search: '',
+  },
+  sort: {
+    field: null,
+    direction: SORT_DIRECTION.NONE,
+  },
+  pagination: {
+    page: 1,
+    pageSize: PAGE_SIZE,
+  },
+});
 
 const PagosManager = ({ user }) => {
   const buildDefaultFormData = () => paymentsService.buildInitialPaymentForm();
@@ -97,22 +125,11 @@ const PagosManager = ({ user }) => {
   const noticeTimerRef = useRef(null);
   const confirmActionRef = useRef(null);
   const [pagos, setPagos] = useState([]);
-  const [allPagos, setAllPagos] = useState([]); // Almacenar todos los pagos sin filtrar
   const [atletas, setAtletas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [editingPago, setEditingPago] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const PAGE_SIZE = 10;
-  const [filters, setFilters] = useState({
-    fecha_inicio: '',
-    fecha_fin: '',
-    estado: '',
-    atleta: '',
-    search: '',
-    sortBy: 'apellido',
-    sortOrder: 'asc'
-  });
+  const [queryState, setQueryState] = useState(DEFAULT_PAYMENTS_QUERY);
 
   // Estados para bÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âºsqueda de atleta en formulario
   const [atletaBusqueda, setAtletaBusqueda] = useState('');
@@ -173,17 +190,7 @@ const PagosManager = ({ user }) => {
   useEffect(() => {
     loadData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // Aplicar filtros localmente cuando cambien los filters
-  useEffect(() => {
-    applyFilters();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filters, allPagos]);
-
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [filters, allPagos]);
+  }, [queryState]);
 
   useEffect(() => () => clearNoticeTimer(), []);
 
@@ -228,9 +235,10 @@ const PagosManager = ({ user }) => {
   const loadData = async () => {
     setLoading(true);
     try {
-      const { athletes, payments, statusUpdateSummary } = await paymentsService.listModuleData();
+      const { athletes, payments, statusUpdateSummary } = await paymentsService.listModuleData({
+        query: queryState,
+      });
       setAtletas(athletes || []);
-      setAllPagos(payments || []);
       setPagos(payments || []);
 
       if (statusUpdateSummary?.actualizados > 0) {
@@ -243,39 +251,33 @@ const PagosManager = ({ user }) => {
       setLoading(false);
     }
   };
-
-  // FunciÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³n para aplicar filtros localmente
-  const applyFilters = () => {
-    const filteredData = paymentsService.filterAndSortLatestPayments({
-      allPayments: allPagos,
-      filters,
-    });
-    setPagos(filteredData);
-  };
-
   const pagination = useMemo(
     () =>
       paymentsService.paginatePayments({
         payments: pagos,
-        page: currentPage,
-        pageSize: PAGE_SIZE,
+        page: queryState.pagination.page,
+        pageSize: queryState.pagination.pageSize,
       }),
-    [pagos, currentPage]
+    [pagos, queryState.pagination.page, queryState.pagination.pageSize]
   );
   const totalPages = pagination.totalPages;
   const visiblePage = pagination.currentPage;
   const paginatedPagos = pagination.paginated;
 
   const resetFilters = () => {
-    setFilters({
-      fecha_inicio: '',
-      fecha_fin: '',
-      estado: '',
-      atleta: '',
-      search: '',
-      sortBy: 'apellido',
-      sortOrder: 'asc'
-    });
+    setQueryState(resetTableQuery({ defaults: DEFAULT_PAYMENTS_QUERY }));
+  };
+
+  const updateFilter = (key, value) => {
+    setQueryState((current) => withUpdatedFilter({ query: current, key, value }));
+  };
+
+  const toggleSort = (field) => {
+    setQueryState((current) => withUpdatedSort({ query: current, field }));
+  };
+
+  const goToPage = (page) => {
+    setQueryState((current) => withUpdatedPage({ query: current, page }));
   };
 
   const handleSubmit = async (e) => {
@@ -465,8 +467,8 @@ const PagosManager = ({ user }) => {
   const formatMonto = (monto) => paymentsService.formatMonto({ monto });
 
   const stats = useMemo(
-    () => paymentsService.calculatePaymentsStats({ allPayments: allPagos }),
-    [allPagos]
+    () => paymentsService.calculatePaymentsStats({ allPayments: pagos }),
+    [pagos]
   );
 
   const actualizarEstadosManualmente = async () => {
@@ -569,8 +571,8 @@ const PagosManager = ({ user }) => {
             id="payments-search"
             type="text"
             placeholder="Buscar por nombre, apellido o email..."
-            value={filters.search}
-            onChange={(e) => setFilters({...filters, search: e.target.value})}
+            value={queryState.filters.search}
+            onChange={(e) => updateFilter('search', e.target.value)}
             className={styles.searchInput}
             aria-label="Buscar pagos por atleta"
           />
@@ -582,8 +584,8 @@ const PagosManager = ({ user }) => {
             id="payments-start-date"
             type="date"
             placeholder="Fecha inicio"
-            value={filters.fecha_inicio}
-            onChange={(e) => setFilters({...filters, fecha_inicio: e.target.value})}
+            value={queryState.filters.fecha_inicio}
+            onChange={(e) => updateFilter('fecha_inicio', e.target.value)}
             className={styles.filterInput}
           />
         </div>
@@ -594,8 +596,8 @@ const PagosManager = ({ user }) => {
             id="payments-end-date"
             type="date"
             placeholder="Fecha fin"
-            value={filters.fecha_fin}
-            onChange={(e) => setFilters({...filters, fecha_fin: e.target.value})}
+            value={queryState.filters.fecha_fin}
+            onChange={(e) => updateFilter('fecha_fin', e.target.value)}
             className={styles.filterInput}
           />
         </div>
@@ -604,8 +606,8 @@ const PagosManager = ({ user }) => {
           <label htmlFor="payments-status-filter" className={styles.filterLabel}>Estado</label>
           <select
             id="payments-status-filter"
-            value={filters.estado}
-            onChange={(e) => setFilters({...filters, estado: e.target.value})}
+            value={queryState.filters.estado}
+            onChange={(e) => updateFilter('estado', e.target.value)}
             className={styles.filterSelect}
             aria-label="Filtrar por estado de pago"
           >
@@ -620,8 +622,8 @@ const PagosManager = ({ user }) => {
           <label htmlFor="payments-athlete-filter" className={styles.filterLabel}>Atleta</label>
           <select
             id="payments-athlete-filter"
-            value={filters.atleta}
-            onChange={(e) => setFilters({...filters, atleta: e.target.value})}
+            value={queryState.filters.atleta}
+            onChange={(e) => updateFilter('atleta', e.target.value)}
             className={styles.filterSelect}
             aria-label="Filtrar por atleta"
           >
@@ -635,34 +637,8 @@ const PagosManager = ({ user }) => {
         </div>
 
         <div className={styles.filterGroup}>
-          <label htmlFor="payments-sort-by" className={styles.filterLabel}>Ordenar por</label>
-          <select
-            id="payments-sort-by"
-            value={filters.sortBy}
-            onChange={(e) => setFilters({...filters, sortBy: e.target.value})}
-            className={styles.filterSelect}
-            aria-label="Ordenar pagos por"
-          >
-            <option value="apellido">Apellido</option>
-            <option value="nombre">Nombre</option>
-            <option value="estado">Estado</option>
-            <option value="monto">Monto</option>
-            <option value="fecha_inicio">Fecha de inicio</option>
-          </select>
-        </div>
-
-        <div className={styles.filterGroup}>
-          <label htmlFor="payments-sort-order" className={styles.filterLabel}>Direccion</label>
-          <select
-            id="payments-sort-order"
-            value={filters.sortOrder}
-            onChange={(e) => setFilters({...filters, sortOrder: e.target.value})}
-            className={styles.filterSelect}
-            aria-label="Direccion de orden"
-          >
-            <option value="asc">Ascendente</option>
-            <option value="desc">Descendente</option>
-          </select>
+          <label className={styles.filterLabel}>Orden de columnas</label>
+          <div className={styles.filterInput}>Usa los encabezados de la tabla para ordenar</div>
         </div>
 
         <div className={styles.filterGroup}>
@@ -687,7 +663,7 @@ const PagosManager = ({ user }) => {
             <>
               <div className={styles.pagination}>
                 <button
-                  onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                  onClick={() => goToPage(Math.max(1, visiblePage - 1))}
                   disabled={visiblePage === 1}
                   className={styles.pageButton}
                 >
@@ -697,7 +673,7 @@ const PagosManager = ({ user }) => {
                 <span className={styles.pageInfo}>{'P\u00e1gina'} {visiblePage} de {totalPages}</span>
 
                 <button
-                  onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                  onClick={() => goToPage(Math.min(totalPages, visiblePage + 1))}
                   disabled={visiblePage === totalPages}
                   className={styles.pageButton}
                 >
@@ -709,11 +685,11 @@ const PagosManager = ({ user }) => {
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    <th>Atleta</th>
-                    <th>{'Per\u00edodo'}</th>
-                    <th>Monto</th>
-                    <th>Estado</th>
-                    <th>Fecha Pago</th>
+                    <SortableHeader field="atleta" label="Atleta" sort={queryState.sort} onToggleSort={toggleSort} />
+                    <SortableHeader field="periodo" label={'Per\u00edodo'} sort={queryState.sort} onToggleSort={toggleSort} />
+                    <SortableHeader field="monto" label="Monto" sort={queryState.sort} onToggleSort={toggleSort} />
+                    <SortableHeader field="estado" label="Estado" sort={queryState.sort} onToggleSort={toggleSort} />
+                    <SortableHeader field="fecha_pago" label="Fecha Pago" sort={queryState.sort} onToggleSort={toggleSort} />
                     <th>Acciones</th>
                   </tr>
                 </thead>
@@ -778,7 +754,7 @@ const PagosManager = ({ user }) => {
             </div>
               <div className={styles.pagination}>
                 <button
-                  onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                  onClick={() => goToPage(Math.max(1, visiblePage - 1))}
                   disabled={visiblePage === 1}
                   className={styles.pageButton}
                 >
@@ -788,7 +764,7 @@ const PagosManager = ({ user }) => {
                 <span className={styles.pageInfo}>{'P\u00e1gina'} {visiblePage} de {totalPages}</span>
 
                 <button
-                  onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                  onClick={() => goToPage(Math.min(totalPages, visiblePage + 1))}
                   disabled={visiblePage === totalPages}
                   className={styles.pageButton}
                 >
@@ -1076,6 +1052,9 @@ PagosManager.propTypes = {
 };
 
 export default PagosManager;
+
+
+
 
 
 

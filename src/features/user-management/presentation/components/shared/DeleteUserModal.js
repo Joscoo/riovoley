@@ -1,42 +1,40 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaTrash, FaTimes, FaExclamationTriangle } from 'react-icons/fa';
-import { Card } from '../../../../../shared/ui';
-import { Button } from '../../../../../shared/ui';
-import { Field } from '../../../../../shared/ui';
+import { Card, Button, Field, getUserTypeLabel } from '../../../../../shared/ui';
 
-const INPUT_BASE = 
+const INPUT_BASE =
   'min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70';
 
 const DeleteUserModal = ({ user, userType, onConfirm, onCancel }) => {
   const [confirmText, setConfirmText] = useState('');
   const confirmInputRef = useRef(null);
-  
+
   useEffect(() => {
     confirmInputRef.current?.focus();
   }, []);
-  
+
   const fullName = user.full_name || `${user.nombre || ''} ${user.apellido || ''}`.trim() || 'Usuario';
-  const typeLabel = userType === 'atleta' ? 'Atleta' : userType === 'entrenador' ? 'Entrenador' : 'Administrador';
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
+  const typeLabel = getUserTypeLabel(userType);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
     if (confirmText !== 'ELIMINAR') {
       alert('Debes escribir ELIMINAR para confirmar');
       return;
     }
-    
+
     onConfirm();
   };
-  
+
   return (
-    <div 
+    <div
       className="fixed inset-0 z-[90] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
       onClick={onCancel}
     >
-      <Card 
-        className="w-full max-w-md" 
-        onClick={(e) => e.stopPropagation()}
+      <Card
+        className="w-full max-w-md"
+        onClick={(event) => event.stopPropagation()}
       >
         <div className="mb-4 flex items-center justify-between border-b border-red-500/25 pb-3">
           <h3 className="text-lg font-bold text-white">
@@ -47,7 +45,7 @@ const DeleteUserModal = ({ user, userType, onConfirm, onCancel }) => {
             <FaTimes />
           </Button>
         </div>
-        
+
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="rounded-lg border border-slate-600/50 bg-slate-800/50 p-3">
             <p className="text-sm text-white">
@@ -57,7 +55,7 @@ const DeleteUserModal = ({ user, userType, onConfirm, onCancel }) => {
               <strong>Email:</strong> {user.email}
             </p>
           </div>
-          
+
           <div className="space-y-2 rounded-lg border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-200">
             <p className="flex items-start gap-2">
               <FaExclamationTriangle className="mt-0.5 flex-shrink-0 text-red-400" />
@@ -74,26 +72,26 @@ const DeleteUserModal = ({ user, userType, onConfirm, onCancel }) => {
               )}
             </ul>
           </div>
-          
+
           <Field label='Escribe "ELIMINAR" para confirmar'>
             <input
               ref={confirmInputRef}
               type="text"
               value={confirmText}
-              onChange={(e) => setConfirmText(e.target.value.toUpperCase())}
+              onChange={(event) => setConfirmText(event.target.value.toUpperCase())}
               className={INPUT_BASE}
               placeholder="ELIMINAR"
               required
             />
           </Field>
-          
+
           <div className="flex gap-3">
             <Button type="button" variant="secondary" onClick={onCancel} className="flex-1">
               Cancelar
             </Button>
-            <Button 
-              type="submit" 
-              variant="danger" 
+            <Button
+              type="submit"
+              variant="danger"
               className="flex-1"
               disabled={confirmText !== 'ELIMINAR'}
             >
@@ -107,4 +105,3 @@ const DeleteUserModal = ({ user, userType, onConfirm, onCancel }) => {
 };
 
 export default DeleteUserModal;
-

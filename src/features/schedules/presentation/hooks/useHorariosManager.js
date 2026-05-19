@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { schedulesService } from '../../schedulesService';
+import { SORT_DIRECTION, createTableQuery } from '../../../../shared/lib/tableQuery';
 
 const INITIAL_FORM = {
   dias_seleccionados: ['lunes'],
@@ -21,6 +22,8 @@ export const useHorariosManager = ({ days }) => {
   const [editingId, setEditingId] = useState(null);
   const [filterDay, setFilterDay] = useState('todos');
   const [filterCategory, setFilterCategory] = useState('todos');
+  const [sortField, setSortField] = useState('dia_semana');
+  const [sortDirection, setSortDirection] = useState(SORT_DIRECTION.ASC);
   const [formData, setFormData] = useState(INITIAL_FORM);
   const [message, setMessage] = useState(EMPTY_MESSAGE);
   const [deleteDialog, setDeleteDialog] = useState({ open: false, scheduleId: null });
@@ -64,7 +67,22 @@ export const useHorariosManager = ({ days }) => {
   const fetchHorarios = useCallback(async () => {
     try {
       setLoading(true);
-      const sorted = await schedulesService.loadHorarios();
+      const sorted = await schedulesService.loadHorarios({
+        query: createTableQuery({
+          filters: {
+            dia_semana: filterDay,
+            categoria: filterCategory,
+          },
+          sort: {
+            field: sortField,
+            direction: sortDirection,
+          },
+          pagination: {
+            page: 1,
+            pageSize: 200,
+          },
+        }),
+      });
       setHorarios(sorted);
     } catch (error) {
       console.error('Error al cargar horarios:', error);
@@ -72,7 +90,14 @@ export const useHorariosManager = ({ days }) => {
     } finally {
       setLoading(false);
     }
-  }, [showMessage]);
+  }, [filterCategory, filterDay, showMessage, sortDirection, sortField]);
+
+  const resetFilters = useCallback(() => {
+    setFilterDay('todos');
+    setFilterCategory('todos');
+    setSortField('dia_semana');
+    setSortDirection(SORT_DIRECTION.ASC);
+  }, []);
 
   useEffect(() => {
     fetchHorarios();
@@ -240,15 +265,7 @@ export const useHorariosManager = ({ days }) => {
 
   const formatTime = useCallback((time) => (time ? time.substring(0, 5) : ''), []);
 
-  const horariosFiltrados = useMemo(
-    () =>
-      horarios.filter((schedule) => {
-        const matchDay = filterDay === 'todos' || schedule.dia_semana === filterDay;
-        const matchCategory = filterCategory === 'todos' || schedule.categoria === filterCategory;
-        return matchDay && matchCategory;
-      }),
-    [filterCategory, filterDay, horarios]
-  );
+  const horariosFiltrados = useMemo(() => horarios, [horarios]);
 
   const horariosAgrupados = useMemo(
     () =>
@@ -271,6 +288,11 @@ export const useHorariosManager = ({ days }) => {
     setFilterDay,
     filterCategory,
     setFilterCategory,
+    sortField,
+    setSortField,
+    sortDirection,
+    setSortDirection,
+    resetFilters,
     formData,
     message,
     deleteDialog,

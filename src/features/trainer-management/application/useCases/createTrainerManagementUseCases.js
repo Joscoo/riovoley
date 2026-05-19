@@ -3,7 +3,7 @@ import { withEncryptedUserContactFields } from '../../../../utils/piiCrypto';
 
 export const createTrainerManagementUseCases = (repository) => {
   const loadEntrenadoresUseCase = {
-    execute: async () => repository.listTrainers(),
+    execute: async ({ query } = {}) => repository.listTrainers({ query }),
   };
 
   const updateEntrenadorUseCase = {

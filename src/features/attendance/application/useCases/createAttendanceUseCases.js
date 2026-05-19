@@ -1,5 +1,6 @@
 import { getEcuadorDate, getEcuadorDateMinusDays } from '../../../../utils/dateUtils';
 import { formatDateString } from '../../../../utils/dateUtils';
+import { SORT_DIRECTION, createTableQuery } from '../../../../shared/lib/tableQuery';
 
 const groupAttendancesByDate = (attendances) => {
   const grouped = {};
@@ -28,9 +29,112 @@ const toStudentDetails = async (repository, attendanceRows, athletes) => {
 };
 
 export const createAttendanceUseCases = (repository, deps = {}) => {
+  const DEFAULT_TABLE_QUERY = createTableQuery({
+    filters: {
+      fecha_inicio: '',
+      fecha_fin: '',
+      categoria: '',
+      atleta: '',
+      metodo_pago_id: '',
+    },
+    sort: {
+      field: 'fecha',
+      direction: SORT_DIRECTION.DESC,
+    },
+    pagination: {
+      page: 1,
+      pageSize: 20,
+    },
+  });
+
   const currentDate = deps.getEcuadorDate || getEcuadorDate;
   const dateMinusDays = deps.getEcuadorDateMinusDays || getEcuadorDateMinusDays;
   const formatDate = deps.formatDateString || formatDateString;
+
+  const normalizeText = (value = '') =>
+    value
+      .toString()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .trim();
+
+  const resolveAttendanceQuery = ({ query, filters }) => {
+    const legacyFilters = filters
+      ? {
+          ...DEFAULT_TABLE_QUERY.filters,
+          ...filters,
+        }
+      : DEFAULT_TABLE_QUERY.filters;
+
+    if (query) {
+      return createTableQuery({
+        ...DEFAULT_TABLE_QUERY,
+        ...query,
+        filters: {
+          ...DEFAULT_TABLE_QUERY.filters,
+          ...(query?.filters || {}),
+        },
+        sort: {
+          ...DEFAULT_TABLE_QUERY.sort,
+          ...(query?.sort || {}),
+        },
+        pagination: {
+          ...DEFAULT_TABLE_QUERY.pagination,
+          ...(query?.pagination || {}),
+        },
+      });
+    }
+
+    return createTableQuery({
+      ...DEFAULT_TABLE_QUERY,
+      filters: legacyFilters,
+    });
+  };
+
+  const sortAttendanceRows = ({ rows, sort }) => {
+    if (!sort?.field || sort.direction === SORT_DIRECTION.NONE) return rows;
+
+    const sorted = [...(rows || [])];
+    const directionFactor = sort.direction === SORT_DIRECTION.ASC ? 1 : -1;
+
+    sorted.sort((a, b) => {
+      const athleteA = `${a.students?.users?.apellido || ''} ${a.students?.users?.nombre || ''}`.trim();
+      const athleteB = `${b.students?.users?.apellido || ''} ${b.students?.users?.nombre || ''}`.trim();
+
+      let valueA;
+      let valueB;
+
+      switch (sort.field) {
+        case 'atleta':
+          valueA = normalizeText(athleteA);
+          valueB = normalizeText(athleteB);
+          break;
+        case 'categoria':
+          valueA = normalizeText(a.students?.categoria || '');
+          valueB = normalizeText(b.students?.categoria || '');
+          break;
+        case 'metodo_pago':
+          valueA = Number(a.metodo_pago_id || 0);
+          valueB = Number(b.metodo_pago_id || 0);
+          break;
+        case 'fecha':
+        default:
+          valueA = new Date(a.fecha || '1900-01-01').getTime();
+          valueB = new Date(b.fecha || '1900-01-01').getTime();
+      }
+
+      if (typeof valueA === 'number' && typeof valueB === 'number') {
+        return (valueA - valueB) * directionFactor;
+      }
+
+      if (valueA < valueB) return -1 * directionFactor;
+      if (valueA > valueB) return 1 * directionFactor;
+      return 0;
+    });
+
+    return sorted;
+  };
 
   const loadAthletesUseCase = {
     execute: async () => {
@@ -40,25 +144,32 @@ export const createAttendanceUseCases = (repository, deps = {}) => {
   };
 
   const loadAttendanceDataUseCase = {
-    execute: async ({ filters, athletes: currentAthletes }) => {
+    execute: async ({ query, filters, athletes: currentAthletes }) => {
+      const resolvedQuery = resolveAttendanceQuery({ query, filters });
       const athletes = currentAthletes?.length > 0 ? currentAthletes : await loadAthletesUseCase.execute();
-      const categoryAthletes = filters?.categoria
-        ? athletes.filter((athlete) => athlete.categoria === filters.categoria).map((athlete) => athlete.id)
+      const categoryAthletes = resolvedQuery.filters?.categoria
+        ? athletes.filter((athlete) => athlete.categoria === resolvedQuery.filters.categoria).map((athlete) => athlete.id)
         : undefined;
 
       const attendanceRows = await repository.listAttendances({
-        dateFrom: filters?.fecha_inicio,
-        dateTo: filters?.fecha_fin,
+        dateFrom: resolvedQuery.filters?.fecha_inicio,
+        dateTo: resolvedQuery.filters?.fecha_fin,
         studentIds: categoryAthletes,
-        studentId: filters?.atleta || undefined,
+        studentId: resolvedQuery.filters?.atleta || undefined,
+        paymentTypeId: resolvedQuery.filters?.metodo_pago_id || undefined,
+        sort: resolvedQuery.sort?.field === 'fecha' ? resolvedQuery.sort : undefined,
       });
 
       const attendancesWithDetails = await toStudentDetails(repository, attendanceRows, athletes);
-      const groupedByDate = groupAttendancesByDate(attendancesWithDetails);
+      const sortedAttendances = sortAttendanceRows({
+        rows: attendancesWithDetails,
+        sort: resolvedQuery.sort,
+      });
+      const groupedByDate = groupAttendancesByDate(sortedAttendances);
 
       return {
         athletes,
-        attendances: attendancesWithDetails,
+        attendances: sortedAttendances,
         groupedByDate,
       };
     },
@@ -185,7 +296,7 @@ export const createAttendanceUseCases = (repository, deps = {}) => {
     execute: async ({ selectedDate, paymentTypes, todayAttendance }) => {
       const mensualidad = (paymentTypes || []).find((paymentType) => paymentType.nombre === 'mensualidad');
       if (!mensualidad) {
-        throw new Error('No se encontrÃ³ el mÃ©todo de pago "mensualidad"');
+        throw new Error('No se encontró el método de pago "mensualidad"');
       }
 
       const absentAthletes = (todayAttendance || []).filter((athlete) => athlete.attendance === null);

@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { FaPlus, FaUser, FaUsers, FaCheckCircle, FaBan, FaList, FaEdit, FaTimes } from 'react-icons/fa';
+import { FaPlus, FaUsers, FaCheckCircle, FaBan, FaList, FaEdit, FaTimes } from 'react-icons/fa';
 import { userManagementService } from '../../../userManagementService';
 import { useUserPermissions } from '../hooks/useUserPermissions';
 import { useUserActions } from '../hooks/useUserActions';
 import { useTimedMessage } from '../hooks/useTimedMessage';
-import { SectionHeader } from '../../../../../shared/ui';
-import { Card } from '../../../../../shared/ui';
-import { Button } from '../../../../../shared/ui';
-import { EmptyState } from '../../../../../shared/ui';
+import { SectionHeader, Card, Button, EmptyState, iconRegistry } from '../../../../../shared/ui';
+import { SORT_DIRECTION, createTableQuery } from '../../../../../shared/lib/tableQuery';
 import UserCard from '../shared/UserCard';
 import UserForm from '../shared/UserForm';
 import UserFilters from '../shared/UserFilters';
@@ -21,10 +19,32 @@ const CATEGORIAS = [
   'iniciacion_mujeres',
   'perfeccionamiento_hombres',
   'perfeccionamiento_mujeres',
-  'master_mujeres'
+  'master_mujeres',
 ];
 
+const buildAthletesListQuery = ({ filters }) => {
+  const backendSortField = ['nombre', 'apellido', 'created_at'].includes(filters?.sortBy) ? filters.sortBy : null;
+
+  return createTableQuery({
+    filters: {
+      search: filters?.search || '',
+      categoria: filters?.categoria || '',
+      status: filters?.status || 'all',
+    },
+    sort: {
+      field: backendSortField,
+      direction: filters?.sortOrder === 'desc' ? SORT_DIRECTION.DESC : SORT_DIRECTION.ASC,
+    },
+    pagination: {
+      page: 1,
+      pageSize: 300,
+    },
+  });
+};
+
 const AthletesTab = ({ userRole }) => {
+  const StudentIcon = iconRegistry.userTypes.atleta;
+
   const [athletes, setAthletes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -34,37 +54,39 @@ const AthletesTab = ({ userRole }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(null);
   const [showChangeRoleModal, setShowChangeRoleModal] = useState(null);
   const { message, showMessage } = useTimedMessage();
-  
+
   const [filters, setFilters] = useState({
     search: '',
     categoria: '',
     status: 'all',
     sortBy: 'apellido',
-    sortOrder: 'asc'
+    sortOrder: 'asc',
   });
-  
+
   const [currentPage, setCurrentPage] = useState(1);
   const PAGE_SIZE = 9;
-  
+
   const permissions = useUserPermissions({ userRole, targetUserType: 'atleta' });
   const userActions = useUserActions();
 
-  const loadAthletes = useCallback(async () => {
+  const loadAthletes = useCallback(async ({ activeFilters } = {}) => {
     setLoading(true);
     try {
-      const loadedAthletes = await userManagementService.listAthletes();
+      const loadedAthletes = await userManagementService.listAthletes({
+        query: buildAthletesListQuery({ filters: activeFilters || filters }),
+      });
       setAthletes(loadedAthletes);
     } catch (error) {
-      console.error('Error al cargar atletas:', error);
-      showMessage('error', `Error al cargar atletas: ${error.message}`);
+      console.error('Error al cargar estudiantes:', error);
+      showMessage('error', `Error al cargar estudiantes: ${error.message}`);
     } finally {
       setLoading(false);
     }
-  }, [showMessage]);
+  }, [filters, showMessage]);
 
   useEffect(() => {
-    loadAthletes();
-  }, [loadAthletes]);
+    loadAthletes({ activeFilters: filters });
+  }, [filters, loadAthletes]);
 
   const filteredAthletes = useMemo(
     () =>
@@ -120,10 +142,10 @@ const AthletesTab = ({ userRole }) => {
     try {
       if (editingAthlete) {
         await userActions.handleEdit(editingAthlete.user_id, formData, 'atleta');
-        showMessage('success', 'Atleta actualizado correctamente');
+        showMessage('success', 'Estudiante actualizado correctamente');
       } else {
         await userActions.handleCreate(formData, 'atleta');
-        showMessage('success', 'Atleta creado exitosamente');
+        showMessage('success', 'Estudiante creado exitosamente');
       }
       closeModal();
       loadAthletes();
@@ -135,7 +157,7 @@ const AthletesTab = ({ userRole }) => {
   const confirmDelete = async () => {
     try {
       await userActions.handleDelete(showDeleteModal.user_id, 'atleta');
-      showMessage('success', 'Atleta eliminado correctamente');
+      showMessage('success', 'Estudiante eliminado correctamente');
       setShowDeleteModal(null);
       loadAthletes();
     } catch (error) {
@@ -146,7 +168,7 @@ const AthletesTab = ({ userRole }) => {
   const confirmSuspend = async ({ reason, until }) => {
     try {
       await userActions.handleSuspend(showSuspendModal.user_id, reason, until);
-      showMessage('success', 'Atleta suspendido correctamente');
+      showMessage('success', 'Estudiante suspendido correctamente');
       setShowSuspendModal(null);
       loadAthletes();
     } catch (error) {
@@ -157,7 +179,7 @@ const AthletesTab = ({ userRole }) => {
   const confirmReactivate = async (athlete) => {
     try {
       await userActions.handleReactivate(athlete.user_id);
-      showMessage('success', 'Atleta reactivado correctamente');
+      showMessage('success', 'Estudiante reactivado correctamente');
       loadAthletes();
     } catch (error) {
       showMessage('error', `Error: ${error.message}`);
@@ -191,39 +213,39 @@ const AthletesTab = ({ userRole }) => {
       categoria: '',
       status: 'all',
       sortBy: 'apellido',
-      sortOrder: 'asc'
+      sortOrder: 'asc',
     });
   };
 
   return (
     <div className="space-y-4">
       <SectionHeader
-        title="Atletas"
-        subtitle={`${stats.total} atletas encontrados - ${stats.activos} activos, ${stats.suspendidos} suspendidos`}
-        icon={<FaUser />}
+        title="Estudiantes"
+        subtitle={`${stats.total} estudiantes encontrados - ${stats.activos} activos, ${stats.suspendidos} suspendidos`}
+        icon={<StudentIcon />}
         actions={
           permissions.canCreate && (
             <Button onClick={openCreateModal}>
-              <FaPlus className="mr-2" /> Agregar Atleta
+              <FaPlus className="mr-2" /> Agregar Estudiante
             </Button>
           )
         }
       />
-      
+
       {message.text && (
-        <div className={message.type === 'success' 
+        <div className={message.type === 'success'
           ? 'rounded-xl border border-emerald-400/40 bg-emerald-500/15 px-4 py-3 text-sm font-semibold text-emerald-200'
           : 'rounded-xl border border-red-400/40 bg-red-500/15 px-4 py-3 text-sm font-semibold text-red-200'
         }>
           {message.text}
         </div>
       )}
-      
+
       <div className="grid gap-4 tablet:grid-cols-2 desktop:grid-cols-4">
         <Card className="h-full border-l-4 border-l-[#355FB3]">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Total Atletas</h3>
+              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Total Estudiantes</h3>
               <p className="mt-1 text-3xl font-black text-white">{stats.total}</p>
             </div>
             <div className="text-3xl text-[#355FB3]">
@@ -231,7 +253,7 @@ const AthletesTab = ({ userRole }) => {
             </div>
           </div>
         </Card>
-        
+
         <Card className="h-full border-l-4 border-l-emerald-500">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
@@ -243,7 +265,7 @@ const AthletesTab = ({ userRole }) => {
             </div>
           </div>
         </Card>
-        
+
         <Card className="h-full border-l-4 border-l-red-500">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
@@ -255,13 +277,13 @@ const AthletesTab = ({ userRole }) => {
             </div>
           </div>
         </Card>
-        
+
         <Card className="h-full border-l-4 border-l-[#F9B233]">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Categorías</h3>
+              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">CategorÃ­as</h3>
               <p className="mt-1 text-3xl font-black text-white">
-                {Object.keys(stats.byCategory).filter(k => stats.byCategory[k] > 0).length}
+                {Object.keys(stats.byCategory).filter((k) => stats.byCategory[k] > 0).length}
               </p>
             </div>
             <div className="text-3xl text-[#F9B233]">
@@ -270,7 +292,7 @@ const AthletesTab = ({ userRole }) => {
           </div>
         </Card>
       </div>
-      
+
       <UserFilters
         filters={filters}
         onFiltersChange={setFilters}
@@ -278,27 +300,27 @@ const AthletesTab = ({ userRole }) => {
         showCategoryFilter={true}
         onReset={handleResetFilters}
       />
-      
+
       {loading ? (
         <Card>
           <div className="flex min-h-[180px] flex-col items-center justify-center gap-3 text-slate-200">
             <div className="h-10 w-10 animate-spin rounded-full border-2 border-rv-gold/30 border-t-rv-gold" />
-            <p className="text-sm">Cargando atletas...</p>
+            <p className="text-sm">Cargando estudiantes...</p>
           </div>
         </Card>
       ) : paginatedAthletes.length === 0 ? (
         <EmptyState
-          icon={<FaUser />}
-          title={filters.search || filters.categoria || filters.status !== 'all' 
-            ? "No se encontraron atletas" 
-            : "No hay atletas registrados"}
+          icon={<StudentIcon />}
+          title={filters.search || filters.categoria || filters.status !== 'all'
+            ? 'No se encontraron estudiantes'
+            : 'No hay estudiantes registrados'}
           description={filters.search || filters.categoria || filters.status !== 'all'
-            ? "Intenta ajustar los filtros de búsqueda"
-            : "Agrega el primer atleta al club"}
+            ? 'Intenta ajustar los filtros de bÃºsqueda'
+            : 'Agrega el primer estudiante al club'}
           action={
             permissions.canCreate && !filters.search && !filters.categoria && filters.status === 'all' && (
               <Button onClick={openCreateModal}>
-                <FaPlus className="mr-2" /> Agregar Atleta
+                <FaPlus className="mr-2" /> Agregar Estudiante
               </Button>
             )
           }
@@ -306,7 +328,7 @@ const AthletesTab = ({ userRole }) => {
       ) : (
         <>
           <div className="grid gap-4 tablet:grid-cols-2 desktop:grid-cols-3">
-            {paginatedAthletes.map(athlete => (
+            {paginatedAthletes.map((athlete) => (
               <UserCard
                 key={athlete.id}
                 user={athlete}
@@ -321,22 +343,22 @@ const AthletesTab = ({ userRole }) => {
               />
             ))}
           </div>
-          
+
           {totalPages > 1 && (
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Button
                 variant="outline"
-                onClick={() => setCurrentPage(page => Math.max(1, page - 1))}
+                onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
                 disabled={visiblePage === 1}
               >
                 Anterior
               </Button>
               <span className="rounded-full border border-rv-gold/35 bg-black/35 px-4 py-2 text-sm font-semibold text-white">
-                Página {visiblePage} de {totalPages}
+                PÃ¡gina {visiblePage} de {totalPages}
               </span>
               <Button
                 variant="outline"
-                onClick={() => setCurrentPage(page => Math.min(totalPages, page + 1))}
+                onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))}
                 disabled={visiblePage === totalPages}
               >
                 Siguiente
@@ -345,10 +367,10 @@ const AthletesTab = ({ userRole }) => {
           )}
         </>
       )}
-      
+
       {showModal && (
-        <div 
-          className="fixed inset-0 z-[90] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm" 
+        <div
+          className="fixed inset-0 z-[90] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
           onClick={closeModal}
         >
           <Card
@@ -362,12 +384,12 @@ const AthletesTab = ({ userRole }) => {
                 {editingAthlete ? (
                   <>
                     <FaEdit className="mr-2 inline align-middle text-rv-gold" />
-                    <span className="align-middle">Editar Atleta</span>
+                    <span className="align-middle">Editar Estudiante</span>
                   </>
                 ) : (
                   <>
                     <FaPlus className="mr-2 inline align-middle text-rv-gold" />
-                    <span className="align-middle">Agregar Nuevo Atleta</span>
+                    <span className="align-middle">Agregar Nuevo Estudiante</span>
                   </>
                 )}
               </h3>
@@ -375,7 +397,7 @@ const AthletesTab = ({ userRole }) => {
                 <FaTimes />
               </Button>
             </div>
-            
+
             <UserForm
               userType="atleta"
               initialData={editingAthlete}
@@ -386,7 +408,7 @@ const AthletesTab = ({ userRole }) => {
           </Card>
         </div>
       )}
-      
+
       {showSuspendModal && (
         <SuspendUserModal
           user={showSuspendModal}
@@ -394,7 +416,7 @@ const AthletesTab = ({ userRole }) => {
           onCancel={() => setShowSuspendModal(null)}
         />
       )}
-      
+
       {showResendModal && (
         <ResendCredentialsModal
           user={showResendModal}
@@ -402,7 +424,7 @@ const AthletesTab = ({ userRole }) => {
           onCancel={() => setShowResendModal(null)}
         />
       )}
-      
+
       {showDeleteModal && (
         <DeleteUserModal
           user={showDeleteModal}
@@ -411,7 +433,7 @@ const AthletesTab = ({ userRole }) => {
           onCancel={() => setShowDeleteModal(null)}
         />
       )}
-      
+
       {showChangeRoleModal && (
         <ChangeRoleModal
           user={showChangeRoleModal}
@@ -425,9 +447,3 @@ const AthletesTab = ({ userRole }) => {
 };
 
 export default AthletesTab;
-
-
-
-
-
-

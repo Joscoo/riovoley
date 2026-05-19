@@ -18,8 +18,8 @@ export const createAthletesUseCases = (repository) => {
       .toLowerCase();
 
   const loadAtletasUseCase = {
-    execute: async () => {
-      const studentsData = await repository.listAthletes();
+    execute: async ({ query } = {}) => {
+      const studentsData = await repository.listAthletes({ query });
       return (studentsData || []).map(buildAthleteViewModel);
     },
   };

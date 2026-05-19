@@ -94,6 +94,15 @@ const styles = {
 
 const TestsFisicosManager = ({ user }) => {
   const buildDefaultFormData = () => physicalTestsService.buildInitialForm();
+  const defaultFilters = {
+    atletaId: '',
+    fechaDesde: '',
+    fechaHasta: '',
+    search: '',
+    onlyPending: false,
+    sortField: 'fecha_test',
+    sortDirection: 'desc',
+  };
   const [tests, setTests] = useState([]);
   const [atletas, setAtletas] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -103,13 +112,7 @@ const TestsFisicosManager = ({ user }) => {
   const [saving, setSaving] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [showAtletasList, setShowAtletasList] = useState(false);
-  const [filters, setFilters] = useState({
-    atletaId: '',
-    fechaDesde: '',
-    fechaHasta: '',
-    search: '',
-    onlyPending: false  // Nueva: mostrar solo atletas sin test este mes
-  });
+  const [filters, setFilters] = useState(defaultFilters);
 
   const [stats, setStats] = useState({
     totalAtletas: 0,
@@ -186,6 +189,10 @@ const TestsFisicosManager = ({ user }) => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const resetFilters = () => {
+    setFilters(defaultFilters);
   };
 
   const handleSubmit = async (e) => {
@@ -501,7 +508,7 @@ const TestsFisicosManager = ({ user }) => {
           </div>
           <div className={styles.statInfo}>
             <h3>{stats.totalAtletas}</h3>
-            <p>Total Atletas</p>
+            <p>Total Estudiantes</p>
           </div>
         </div>
 
@@ -531,7 +538,7 @@ const TestsFisicosManager = ({ user }) => {
           </div>
           <div className={styles.statInfo}>
             <h3>{stats.promedioTestsPorAtleta}</h3>
-            <p>Tests Promedio/Atleta</p>
+            <p>Tests Promedio/Estudiante</p>
           </div>
         </div>
       </div>
@@ -542,7 +549,7 @@ const TestsFisicosManager = ({ user }) => {
           <div className={styles.pendientesHeader}>
             <h3>
               <FaExclamationTriangle className="mr-2.5 text-amber-500" />
-              Atletas Sin Test Este Mes ({atletasPendientes.length})
+              Estudiantes Sin Test Este Mes ({atletasPendientes.length})
             </h3>
             <button 
               className={styles.toggleButton}
@@ -653,7 +660,7 @@ const TestsFisicosManager = ({ user }) => {
       {/* Filtros */}
       <div className={styles.filtersSection}>
         <div className={styles.filterGroup}>
-          <label htmlFor="search-tests"><FaSearch /> Buscar Atleta</label>
+          <label htmlFor="search-tests"><FaSearch /> Buscar Estudiante</label>
           <input
             id="search-tests"
             type="text"
@@ -666,8 +673,9 @@ const TestsFisicosManager = ({ user }) => {
         </div>
 
         <div className={styles.filterGroup}>
-          <label><FaFilter /> Filtrar por Atleta</label>
+          <label><FaFilter /> Filtrar por Estudiante</label>
           <select
+            id="physical-tests-athlete-filter"
             value={filters.atletaId}
             onChange={(e) => setFilters({...filters, atletaId: e.target.value})}
             className={styles.filterSelect}
@@ -684,6 +692,7 @@ const TestsFisicosManager = ({ user }) => {
         <div className={styles.filterGroup}>
           <label><FaCalendarAlt /> Desde</label>
           <input
+            id="physical-tests-start-date"
             type="date"
             placeholder="Fecha desde"
             value={filters.fechaDesde}
@@ -695,6 +704,7 @@ const TestsFisicosManager = ({ user }) => {
         <div className={styles.filterGroup}>
           <label><FaCalendarAlt /> Hasta</label>
           <input
+            id="physical-tests-end-date"
             type="date"
             placeholder="Fecha hasta"
             value={filters.fechaHasta}
@@ -704,8 +714,37 @@ const TestsFisicosManager = ({ user }) => {
         </div>
 
         <div className={styles.filterGroup}>
+          <label>Ordenar por</label>
+          <select
+            id="physical-tests-sort-field"
+            value={filters.sortField}
+            onChange={(e) => setFilters({ ...filters, sortField: e.target.value })}
+            className={styles.filterSelect}
+          >
+            <option value="fecha_test">Fecha test</option>
+            <option value="estatura">Estatura</option>
+            <option value="peso">Peso</option>
+            <option value="fuerza_abdomen">Fuerza abdomen</option>
+          </select>
+        </div>
+
+        <div className={styles.filterGroup}>
+          <label>Direccion</label>
+          <select
+            id="physical-tests-sort-direction"
+            value={filters.sortDirection}
+            onChange={(e) => setFilters({ ...filters, sortDirection: e.target.value })}
+            className={styles.filterSelect}
+          >
+            <option value="desc">Descendente</option>
+            <option value="asc">Ascendente</option>
+          </select>
+        </div>
+
+        <div className={styles.filterGroup}>
           <label className={styles.checkboxLabel}>
             <input
+              id="physical-tests-only-pending"
               type="checkbox"
               checked={filters.onlyPending}
               onChange={(e) => setFilters({...filters, onlyPending: e.target.checked})}
@@ -713,6 +752,18 @@ const TestsFisicosManager = ({ user }) => {
             />
             <span>Solo sin test este mes</span>
           </label>
+        </div>
+
+        <div className={styles.filterGroup}>
+          <label htmlFor="physical-tests-clear-filters">Acciones</label>
+          <button
+            id="physical-tests-clear-filters"
+            type="button"
+            className={styles.cancelButton}
+            onClick={resetFilters}
+          >
+            Limpiar filtros
+          </button>
         </div>
       </div>
 
@@ -804,7 +855,7 @@ const TestsFisicosManager = ({ user }) => {
                 <h4 className={styles.sectionTitle}><FaCalendarAlt /> Información General</h4>
                 <div className={styles.formGrid}>
                   <div className={styles.inputGroup}>
-                    <label htmlFor="student_search">Atleta *</label>
+                    <label htmlFor="student_search">Estudiante *</label>
                     <div className={styles.searchableSelect} ref={searchableSelectRef}>
                       <input
                         id="student_search"

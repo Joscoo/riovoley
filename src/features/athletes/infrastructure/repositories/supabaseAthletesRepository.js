@@ -8,8 +8,8 @@ const normalizeError = (error, fallback) => {
 };
 
 export class SupabaseAthletesRepository {
-  async listAthletes() {
-    const { data, error } = await supabase.from('students').select(`
+  async listAthletes({ query } = {}) {
+    let request = supabase.from('students').select(`
         id,
         user_id,
         categoria,
@@ -24,6 +24,21 @@ export class SupabaseAthletesRepository {
           created_at
         )
       `);
+
+    const filters = query?.filters || {};
+    const sort = query?.sort || {};
+
+    if (filters.categoria) {
+      request = request.eq('categoria', filters.categoria);
+    }
+
+    if (sort.field === 'categoria' && sort.direction && sort.direction !== 'none') {
+      request = request.order('categoria', { ascending: sort.direction === 'asc' });
+    } else if (sort.field === 'fecha_nacimiento' && sort.direction && sort.direction !== 'none') {
+      request = request.order('fecha_nacimiento', { ascending: sort.direction === 'asc' });
+    }
+
+    const { data, error } = await request;
 
     if (error) {
       throw new AthletesError(normalizeError(error, 'Error cargando atletas'), error);

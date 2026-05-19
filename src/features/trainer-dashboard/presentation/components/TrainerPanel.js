@@ -8,8 +8,6 @@ import {
   FaCog,
   FaDollarSign,
   FaDumbbell,
-  FaUserCircle,
-  FaUsers,
 } from 'react-icons/fa';
 import { useUserProfile } from '../../../auth-profile';
 import { AnunciosManager } from '../../../announcements';
@@ -19,11 +17,13 @@ import { ProfileSettings } from '../../../account-admin';
 import { TestsFisicosManager } from '../../../physical-tests';
 import { UserManagementPanel } from '../../../user-management';
 import TrainerDashboard from './TrainerDashboard';
-import { RolePanelLayout } from '../../../../shared/ui';
+import { RolePanelLayout, iconRegistry, semanticCatalog } from '../../../../shared/ui';
 
 const TrainerPanel = ({ user }) => {
   const { profile, loading } = useUserProfile(user);
   const [activeSection, setActiveSection] = useState('dashboard');
+  const UsersIcon = iconRegistry.users;
+  const TrainerIcon = iconRegistry.trainer;
 
   if (loading) {
     return (
@@ -38,7 +38,7 @@ const TrainerPanel = ({ user }) => {
   if (!isTrainer) {
     return (
       <div className="mx-auto mt-10 max-w-xl rounded-2xl border border-red-300/35 bg-white p-8 text-center shadow-xl">
-        <h2 className="inline-flex items-center gap-2 text-2xl font-black text-red-700"><FaBan /> Acceso Denegado</h2>
+        <h2 className="inline-flex items-center gap-2 text-2xl font-black text-red-700"><FaBan /> Acceso denegado</h2>
         <p className="mt-3 text-slate-700">Solo los entrenadores pueden acceder a este panel.</p>
         <p className="mt-1 text-slate-700">
           Tu rol actual: <strong>{profile?.role || 'Sin rol'}</strong>
@@ -48,13 +48,13 @@ const TrainerPanel = ({ user }) => {
   }
 
   const menuItems = [
-    { id: 'dashboard', icon: <FaChartBar />, label: 'Dashboard', description: 'Resumen general' },
-    { id: 'usuarios', icon: <FaUsers />, label: 'Gestion de Usuarios', description: 'Administrar atletas' },
+    { id: 'dashboard', icon: <FaChartBar />, label: semanticCatalog.UI_LABELS.dashboard, description: 'Resumen general' },
+    { id: 'usuarios', icon: <UsersIcon />, label: semanticCatalog.UI_LABELS.usersManagementTitle, description: 'Administrar estudiantes' },
     { id: 'asistencias', icon: <FaCalendar />, label: 'Asistencias', description: 'Registrar asistencias' },
-    { id: 'tests-fisicos', icon: <FaDumbbell />, label: 'Tests Fisicos', description: 'Evaluaciones fisicas' },
+    { id: 'tests-fisicos', icon: <FaDumbbell />, label: 'Tests Físicos', description: 'Evaluaciones físicas' },
     { id: 'pagos', icon: <FaDollarSign />, label: 'Pagos', description: 'Registrar pagos' },
     { id: 'anuncios', icon: <FaBullhorn />, label: 'Anuncios', description: 'Comunicados y notificaciones' },
-    { id: 'configuracion', icon: <FaCog />, label: 'Configuracion', description: 'Perfil y seguridad' },
+    { id: 'configuracion', icon: <FaCog />, label: 'Configuración', description: 'Perfil y seguridad' },
   ];
 
   const handleNavigateToSection = (sectionId) => {
@@ -88,14 +88,14 @@ const TrainerPanel = ({ user }) => {
       title={profile?.full_name || user?.email?.split('@')[0] || 'Entrenador'}
       roleLabel="Entrenador"
       badgeLabel="ENTRENADOR"
-      avatarIcon={<FaUserCircle />}
+      avatarIcon={<TrainerIcon />}
       menuItems={menuItems}
       activeSection={activeSection}
       onSectionChange={setActiveSection}
       topBar={(
         <div className="text-sm text-slate-200 mobile:text-base">
-          <span className="font-semibold text-white">Panel Entrenador</span>
-          <span className="mx-2 text-rv-gold/70">â€º</span>
+          <span className="font-semibold text-white">{semanticCatalog.PANEL_LABELS.trainer}</span>
+          <span className="mx-2 text-rv-gold/70">&gt;</span>
           <span>{menuItems.find((item) => item.id === activeSection)?.label}</span>
         </div>
       )}

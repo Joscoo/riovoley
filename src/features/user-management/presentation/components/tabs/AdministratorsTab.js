@@ -8,10 +8,31 @@ import { SectionHeader } from '../../../../../shared/ui';
 import { Card } from '../../../../../shared/ui';
 import { Button } from '../../../../../shared/ui';
 import { EmptyState } from '../../../../../shared/ui';
+import { SORT_DIRECTION, createTableQuery } from '../../../../../shared/lib/tableQuery';
 import UserCard from '../shared/UserCard';
 import UserForm from '../shared/UserForm';
 import UserFilters from '../shared/UserFilters';
 import ChangeRoleModal from '../shared/ChangeRoleModal';
+
+const buildAdministratorsListQuery = ({ filters }) => {
+  const backendSortField = ['nombre', 'apellido', 'email', 'created_at'].includes(filters?.sortBy)
+    ? filters.sortBy
+    : 'apellido';
+
+  return createTableQuery({
+    filters: {
+      search: filters?.search || '',
+    },
+    sort: {
+      field: backendSortField,
+      direction: filters?.sortOrder === 'desc' ? SORT_DIRECTION.DESC : SORT_DIRECTION.ASC,
+    },
+    pagination: {
+      page: 1,
+      pageSize: 300,
+    },
+  });
+};
 
 const AdministratorsTab = ({ userRole }) => {
   const [admins, setAdmins] = useState([]);
@@ -28,19 +49,21 @@ const AdministratorsTab = ({ userRole }) => {
   const permissions = useUserPermissions({ userRole, targetUserType: 'administrador' });
   const userActions = useUserActions();
 
-  const loadAdmins = useCallback(async () => {
+  const loadAdmins = useCallback(async ({ activeFilters } = {}) => {
     setLoading(true);
     try {
-      const data = await userManagementService.listAdministrators();
+      const data = await userManagementService.listAdministrators({
+        query: buildAdministratorsListQuery({ filters: activeFilters || filters }),
+      });
       setAdmins(data);
     } catch (error) {
       showMessage('error', `Error al cargar administradores: ${error.message}`);
     } finally {
       setLoading(false);
     }
-  }, [showMessage]);
+  }, [filters, showMessage]);
 
-  useEffect(() => { loadAdmins(); }, [loadAdmins]);
+  useEffect(() => { loadAdmins({ activeFilters: filters }); }, [filters, loadAdmins]);
 
   const filteredAdmins = useMemo(
     () =>
@@ -128,7 +151,7 @@ const AdministratorsTab = ({ userRole }) => {
               <UserCard key={admin.id} user={{ ...admin, full_name: `${admin.nombre || ''} ${admin.apellido || ''}`.trim() }} userType="administrador" permissions={permissions} onEdit={() => openEditModal(admin)} onDelete={() => {}} onSuspend={() => {}} onReactivate={() => {}} onResendCredentials={() => {}} onChangeRole={() => setShowChangeRoleModal(admin)} />
             ))}
           </div>
-          {totalPages > 1 && <div className="flex flex-wrap items-center justify-center gap-3"><Button variant="outline" onClick={() => setCurrentPage(p => Math.max(1, p - 1))} disabled={visiblePage === 1}>Anterior</Button><span className="rounded-full border border-rv-gold/35 bg-black/35 px-4 py-2 text-sm font-semibold text-white">Página {visiblePage} de {totalPages}</span><Button variant="outline" onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))} disabled={visiblePage === totalPages}>Siguiente</Button></div>}
+          {totalPages > 1 && <div className="flex flex-wrap items-center justify-center gap-3"><Button variant="outline" onClick={() => setCurrentPage(p => Math.max(1, p - 1))} disabled={visiblePage === 1}>Anterior</Button><span className="rounded-full border border-rv-gold/35 bg-black/35 px-4 py-2 text-sm font-semibold text-white">P?gina {visiblePage} de {totalPages}</span><Button variant="outline" onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))} disabled={visiblePage === totalPages}>Siguiente</Button></div>}
         </>
       )}
       

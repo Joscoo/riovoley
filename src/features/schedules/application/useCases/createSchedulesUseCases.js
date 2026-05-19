@@ -1,12 +1,3 @@
-const DAY_ORDER = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'];
-
-const sortSchedules = (items) =>
-  (items || []).slice().sort((a, b) => {
-    const dayDiff = DAY_ORDER.indexOf(a.dia_semana) - DAY_ORDER.indexOf(b.dia_semana);
-    if (dayDiff !== 0) return dayDiff;
-    return (a.hora_inicio || '').localeCompare(b.hora_inicio || '');
-  });
-
 const isDescripcionMissingError = (error) => {
   const message = error?.message?.toLowerCase() || '';
   return (
@@ -17,9 +8,9 @@ const isDescripcionMissingError = (error) => {
 
 export const createSchedulesUseCases = (repository) => {
   const loadHorariosUseCase = {
-    execute: async () => {
-      const schedules = await repository.listSchedules();
-      return sortSchedules(schedules);
+    execute: async ({ query } = {}) => {
+      const schedules = await repository.listSchedules({ query });
+      return schedules || [];
     },
   };
 

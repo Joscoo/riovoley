@@ -27,7 +27,12 @@ export class SupabasePhysicalTestsRepository {
     return data || [];
   }
 
-  async listTests({ atletaId, fechaDesde, fechaHasta }) {
+  async listTests({ atletaId, fechaDesde, fechaHasta, sort } = {}) {
+    const allowedSortField = ['fecha_test', 'estatura', 'peso', 'fuerza_abdomen'].includes(sort?.field)
+      ? sort.field
+      : 'fecha_test';
+    const ascending = sort?.direction === 'asc';
+
     let query = supabase
       .from('physical_tests')
       .select(`
@@ -41,7 +46,7 @@ export class SupabasePhysicalTestsRepository {
           )
         )
       `)
-      .order('fecha_test', { ascending: false });
+      .order(allowedSortField, { ascending });
 
     if (atletaId) {
       query = query.eq('student_id', atletaId);

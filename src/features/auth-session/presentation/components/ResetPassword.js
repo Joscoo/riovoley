@@ -16,10 +16,10 @@ const clearRecoveryParamsFromUrl = () => {
 
 const PASSWORD_REQUIREMENTS = [
   { key: 'minLength', label: 'Al menos 10 caracteres' },
-  { key: 'uppercase', label: 'Incluye una letra mayuscula (A-Z)' },
-  { key: 'lowercase', label: 'Incluye una letra minuscula (a-z)' },
-  { key: 'number', label: 'Incluye al menos un numero (0-9)' },
-  { key: 'special', label: 'Incluye al menos un simbolo (!@#$...)' },
+  { key: 'uppercase', label: 'Incluye una letra may?scula (A-Z)' },
+  { key: 'lowercase', label: 'Incluye una letra min?scula (a-z)' },
+  { key: 'number', label: 'Incluye al menos un n?mero (0-9)' },
+  { key: 'special', label: 'Incluye al menos un s?mbolo (!@#$...)' },
   { key: 'noSpaces', label: 'No contiene espacios' }
 ];
 
@@ -87,14 +87,14 @@ const ResetPassword = () => {
 
         setIsValidToken(hasRecoverySession);
         if (!hasRecoverySession) {
-          setMensaje('El enlace de recuperacion es invalido o ha expirado.');
+          setMensaje('El enlace de recuperaci?n es inv?lido o ha expirado.');
         }
       } catch (error) {
-        console.error('Error inicializando recuperacion:', error);
+        console.error('Error inicializando recuperaci?n:', error);
         if (!isMounted) return;
 
         setIsValidToken(false);
-        setMensaje('No se pudo validar el enlace de recuperacion. Solicita uno nuevo.');
+        setMensaje('No se pudo validar el enlace de recuperaci?n. Solicita uno nuevo.');
       } finally {
         if (isMounted) {
           setIsCheckingToken(false);
@@ -141,20 +141,20 @@ const ResetPassword = () => {
     }
 
     if (!isStrongPassword) {
-      setMensaje('La contrasena no cumple los requisitos de seguridad.');
+      setMensaje('La contrase?a no cumple los requisitos de seguridad.');
       setIsLoading(false);
       return;
     }
 
     if (!passwordsMatch) {
-      setMensaje('Las contrasenas no coinciden');
+      setMensaje('Las contrase?as no coinciden');
       setIsLoading(false);
       return;
     }
 
     try {
       await authSessionService.updatePassword(newPassword);
-      setMensaje('Contrasena actualizada correctamente. Redirigiendo...');
+      setMensaje('Contrase?a actualizada correctamente. Redirigiendo...');
       setNewPassword('');
       setConfirmPassword('');
       setTimeout(() => {
@@ -179,33 +179,33 @@ const ResetPassword = () => {
               </div>
             </div>
             <h1 className="bg-gradient-to-r from-white to-rv-gold bg-clip-text text-3xl font-black text-transparent mobile:text-4xl">
-              Restablecer Contrasena
+              Restablecer Contrase?a
             </h1>
-            <p className="mt-2 text-sm text-slate-200">Ingresa tu nueva contrasena</p>
+            <p className="mt-2 text-sm text-slate-200">Ingresa tu nueva contrase?a</p>
             <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-transparent via-rv-gold to-transparent" aria-hidden="true" />
           </div>
 
           {isCheckingToken && (
-            <EmptyState title="Validando enlace de recuperacion..." description="Estamos verificando tu sesion de recuperacion." icon={<FaKey />} />
+            <EmptyState title="Validando enlace de recuperaci?n..." description="Estamos verificando tu sesi?n de recuperaci?n." icon={<FaKey />} />
           )}
 
           {!isCheckingToken && !isValidToken && (
             <EmptyState
-              title="Enlace invalido o expirado"
-              description={mensaje || 'Solicita un nuevo enlace desde la pantalla de inicio de sesion.'}
+              title="Enlace inv?lido o expirado"
+              description={mensaje || 'Solicita un nuevo enlace desde la pantalla de inicio de sesi?n.'}
               icon={<FaExclamationTriangle />}
-              action={<Button onClick={() => navigate('/login')}>Volver al inicio de sesion</Button>}
+              action={<Button onClick={() => navigate('/login')}>Volver al inicio de sesi?n</Button>}
             />
           )}
 
           {!isCheckingToken && isValidToken && (
             <form onSubmit={handleResetPassword} className="space-y-4">
-              <Field label="Nueva contrasena" icon={<FaLock />}>
+              <Field label="Nueva contrase?a" icon={<FaLock />}>
                 <div className="relative">
                   <input
                     id="new-password"
                     type={showPassword ? 'text' : 'password'}
-                    placeholder="••••••••"
+                    placeholder="********"
                     value={newPassword}
                     onChange={(event) => setNewPassword(event.target.value)}
                     disabled={isLoading}
@@ -239,11 +239,11 @@ const ResetPassword = () => {
                 </div>
               </Field>
 
-              <Field label="Confirmar contrasena" icon={<FaLock />}>
+              <Field label="Confirmar contrase?a" icon={<FaLock />}>
                 <input
                   id="confirm-password"
                   type={showPassword ? 'text' : 'password'}
-                  placeholder="••••••••"
+                  placeholder="********"
                   value={confirmPassword}
                   onChange={(event) => setConfirmPassword(event.target.value)}
                   disabled={isLoading}
@@ -253,7 +253,7 @@ const ResetPassword = () => {
                 />
                 {confirmPassword ? (
                   <p className={cn('text-xs font-semibold', passwordsMatch ? 'text-emerald-300' : 'text-red-300')}>
-                    {passwordsMatch ? '? Las contrasenas coinciden' : 'Las contrasenas no coinciden'}
+                    {passwordsMatch ? '? Las contrase?as coinciden' : 'Las contrase?as no coinciden'}
                   </p>
                 ) : null}
               </Field>
@@ -264,14 +264,14 @@ const ResetPassword = () => {
                 className="w-full"
                 size="lg"
               >
-                {isLoading ? 'Actualizando...' : 'Actualizar Contrasena'}
+                {isLoading ? 'Actualizando...' : 'Actualizar Contrase?a'}
               </Button>
 
               {mensaje ? (
                 <div
                   className={cn(
                     'rounded-xl border px-4 py-3 text-sm font-semibold',
-                    mensaje.toLowerCase().includes('error') || mensaje.toLowerCase().includes('invalido')
+                    mensaje.toLowerCase().includes('error') || mensaje.toLowerCase().includes('inv?lido')
                       ? 'border-red-400/45 bg-red-500/15 text-red-200'
                       : 'border-emerald-400/45 bg-emerald-500/15 text-emerald-200'
                   )}

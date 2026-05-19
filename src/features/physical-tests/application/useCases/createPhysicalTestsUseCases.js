@@ -58,6 +58,10 @@ export const createPhysicalTestsUseCases = (repository, deps = {}) => {
         atletaId: filters.atletaId,
         fechaDesde: filters.fechaDesde,
         fechaHasta: filters.fechaHasta,
+        sort: {
+          field: filters.sortField || 'fecha_test',
+          direction: filters.sortDirection || 'desc',
+        },
       });
 
       const testsWithAtletaNames = (testsData || []).map((test) => ({
@@ -152,7 +156,7 @@ export const createPhysicalTestsUseCases = (repository, deps = {}) => {
         const birthStr = selectedAthlete.fecha_nacimiento || selectedAthlete.users?.fecha_nacimiento || selectedAthlete.users?.birthday;
         const athleteAge = getAthleteAgeAtDate(birthStr, testDate);
         if (athleteAge !== null && athleteAge < 5) {
-          return { ok: false, errorMessage: 'Error: El atleta debe tener al menos 5 aÃ±os en la fecha del test' };
+          return { ok: false, errorMessage: 'Error: El atleta debe tener al menos 5 años en la fecha del test' };
         }
       }
 
@@ -166,7 +170,7 @@ export const createPhysicalTestsUseCases = (repository, deps = {}) => {
         formData.envergadura_brazos_extendidos_lateral
       ];
       if (!measurements.some((measurement) => measurement && String(measurement).trim() !== '')) {
-        return { ok: false, errorMessage: 'Error: Debe ingresar al menos una mediciÃ³n fÃ­sica' };
+        return { ok: false, errorMessage: 'Error: Debe ingresar al menos una medición física' };
       }
 
       if (formData.estatura && (Number.parseFloat(formData.estatura) < 0.8 || Number.parseFloat(formData.estatura) > 3)) {

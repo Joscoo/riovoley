@@ -7,6 +7,15 @@ const normalizeError = (error, fallback) => {
   return error.message || fallback;
 };
 
+const SORTABLE_FIELDS = {
+  monto: 'monto',
+  estado: 'estado',
+  fecha_inicio: 'fecha_inicio',
+  fecha_pago: 'fecha_pago',
+};
+
+const resolveSortDirection = (direction) => (direction === 'desc' ? false : true);
+
 export class SupabasePaymentsRepository {
   async listAthletes() {
     const { data, error } = await supabase
@@ -25,8 +34,8 @@ export class SupabasePaymentsRepository {
     return data || [];
   }
 
-  async listPayments() {
-    const { data, error } = await supabase
+  async listPayments({ query } = {}) {
+    let request = supabase
       .from('payments')
       .select(`
         *,
@@ -36,8 +45,35 @@ export class SupabasePaymentsRepository {
           user:users(id, nombre, apellido, email, telefono)
         )
       `)
-      .is('deleted_at', null)
-      .order('fecha_inicio', { ascending: false });
+      .is('deleted_at', null);
+
+    const filters = query?.filters || {};
+    const sort = query?.sort || {};
+
+    if (filters.fecha_inicio) {
+      request = request.gte('fecha_inicio', filters.fecha_inicio);
+    }
+
+    if (filters.fecha_fin) {
+      request = request.lte('fecha_fin', filters.fecha_fin);
+    }
+
+    if (filters.estado) {
+      request = request.eq('estado', filters.estado);
+    }
+
+    if (filters.atleta) {
+      request = request.eq('student_id', filters.atleta);
+    }
+
+    const backendSortField = SORTABLE_FIELDS[sort.field];
+    if (backendSortField && sort.direction && sort.direction !== 'none') {
+      request = request.order(backendSortField, { ascending: resolveSortDirection(sort.direction) });
+    } else {
+      request = request.order('fecha_inicio', { ascending: false });
+    }
+
+    const { data, error } = await request;
 
     if (error) {
       throw new PaymentsError(normalizeError(error, 'Error al cargar pagos'), error);

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { athletesService } from '../../athletesService';
 import { userProvisioningService } from '../../../user-provisioning';
 import { MIN_ATHLETE_AGE, getMaxBirthDateForAge } from '../../../../utils/athleteValidation';
+import { SORT_DIRECTION, createTableQuery } from '../../../../shared/lib/tableQuery';
 import { useToast } from '../../../../contexts/ToastContext';
 import { useAthleteCredentials } from './useAthleteCredentials';
 
@@ -24,6 +25,21 @@ const toFriendlyError = (error, email) => {
 
   return error.message;
 };
+
+const buildAthletesQuery = ({ filters }) =>
+  createTableQuery({
+    filters: {
+      categoria: filters?.categoria || '',
+    },
+    sort: {
+      field: null,
+      direction: SORT_DIRECTION.NONE,
+    },
+    pagination: {
+      page: 1,
+      pageSize: PAGE_SIZE,
+    },
+  });
 
 export const useAtletasManager = ({ categories }) => {
   const initialFocusRef = useRef(null);
@@ -103,11 +119,13 @@ export const useAtletasManager = ({ categories }) => {
     [filteredAtletas, currentPage]
   );
 
-  const loadAtletas = useCallback(async () => {
+  const loadAtletas = useCallback(async ({ currentFilters } = {}) => {
     setLoading(true);
 
     try {
-      const atletasWithProfiles = await athletesService.loadAtletas();
+      const atletasWithProfiles = await athletesService.loadAtletas({
+        query: buildAthletesQuery({ filters: currentFilters || {} }),
+      });
       setAllAtletas(atletasWithProfiles);
     } catch (error) {
       const message = `Error al cargar los atletas: ${error.message}`;
@@ -119,8 +137,8 @@ export const useAtletasManager = ({ categories }) => {
   }, [showErrorToast]);
 
   useEffect(() => {
-    loadAtletas();
-  }, [loadAtletas]);
+    loadAtletas({ currentFilters: filters });
+  }, [filters.categoria, loadAtletas]);
 
   useEffect(() => {
     if (!showModal) return undefined;
@@ -235,7 +253,7 @@ export const useAtletasManager = ({ categories }) => {
           editingAtleta,
           formData,
         });
-        showSuccessToast('Atleta actualizado correctamente.', 5000);
+        showSuccessToast('Estudiante actualizado correctamente.', 5000);
       } else {
         if (!formData.email || !formData.email.trim()) {
           throw new Error('El email es requerido para crear el usuario');
@@ -285,7 +303,7 @@ export const useAtletasManager = ({ categories }) => {
 
   const requestDeleteAtleta = useCallback((atleta) => {
     openConfirmDialog({
-      title: 'Eliminar atleta',
+      title: 'Eliminar estudiante',
       message: `Estas seguro de eliminar a ${atleta.full_name}? Esta accion no se puede deshacer.`,
       confirmLabel: 'Eliminar',
       tone: 'danger',
@@ -293,14 +311,14 @@ export const useAtletasManager = ({ categories }) => {
         try {
           const result = await athletesService.deleteAtletaCompletely({ atleta });
           if (result?.userDeletionError) {
-            showWarningToast('Atleta eliminado, pero hubo un problema eliminando el usuario relacionado.', 7000);
+            showWarningToast('Estudiante eliminado, pero hubo un problema eliminando el usuario relacionado.', 7000);
           } else {
-            showSuccessToast('Atleta y usuario eliminados exitosamente.', 5000);
+            showSuccessToast('Estudiante y usuario eliminados exitosamente.', 5000);
           }
 
           await loadAtletas();
         } catch (error) {
-          const message = `Error eliminando atleta: ${error.message}`;
+          const message = `Error eliminando estudiante: ${error.message}`;
           setErrorMessage(message);
           showErrorToast(message, 7000);
         }

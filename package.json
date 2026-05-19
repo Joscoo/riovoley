@@ -33,12 +33,18 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "cross-env CI=false react-scripts build",
+    "check:copy-quality": "node scripts/copyQualityCheck.js",
     "test": "react-scripts test",
     "test:contracts": "cross-env CI=true react-scripts test src/features/reporting/infrastructure/repositories/supabaseReportingRepository.contract.test.js src/shared/infrastructure/auth/deleteAuthUserById.test.js",
     "eject": "react-scripts eject",
     "e2e": "playwright test",
     "e2e:smoke:roles": "playwright test tests/e2e/roles.panels-navigation.smoke.spec.js --project=desktop-1440",
     "e2e:smoke:roles:strict": "node scripts/e2e/runRolesSmokeStrict.js",
+    "e2e:filters-sorting": "playwright test tests/e2e/filters-sorting.tables.spec.js --project=desktop-1440",
+    "e2e:filters-sorting:users": "playwright test tests/e2e/filters-sorting.user-management.spec.js --project=desktop-1440",
+    "e2e:filters-sorting:phase2": "playwright test tests/e2e/filters-sorting.phase2-lists.spec.js --project=desktop-1440",
+    "e2e:filters-sorting:physical": "playwright test tests/e2e/filters-sorting.physical-tests.spec.js --project=desktop-1440",
+    "e2e:filters-sorting:all": "playwright test tests/e2e/filters-sorting.tables.spec.js tests/e2e/filters-sorting.user-management.spec.js tests/e2e/filters-sorting.phase2-lists.spec.js tests/e2e/filters-sorting.physical-tests.spec.js --project=desktop-1440",
     "e2e:smoke:public": "playwright test tests/e2e/responsive.smoke.spec.js --project=desktop-1440 --grep \"public route responsive guard\"",
     "e2e:ui": "playwright test --ui",
     "e2e:install": "playwright install"

@@ -8,7 +8,7 @@ describe('createSchedulesUseCases', () => {
     deleteSchedule: jest.fn(),
   });
 
-  it('loadHorariosUseCase ordena por dia y hora', async () => {
+  it('loadHorariosUseCase preserva el orden entregado por el repositorio', async () => {
     const repository = buildRepository();
     repository.listSchedules.mockResolvedValue([
       { id: 2, dia_semana: 'martes', hora_inicio: '09:00' },
@@ -16,9 +16,14 @@ describe('createSchedulesUseCases', () => {
     ]);
     const useCases = createSchedulesUseCases(repository);
 
-    const result = await useCases.loadHorariosUseCase.execute();
+    const result = await useCases.loadHorariosUseCase.execute({
+      query: { sort: { field: 'hora_inicio', direction: 'desc' } },
+    });
 
-    expect(result.map((x) => x.id)).toEqual([1, 2]);
+    expect(repository.listSchedules).toHaveBeenCalledWith({
+      query: { sort: { field: 'hora_inicio', direction: 'desc' } },
+    });
+    expect(result.map((x) => x.id)).toEqual([2, 1]);
   });
 
   it('updateHorarioUseCase aplica fallback si falta columna descripcion', async () => {

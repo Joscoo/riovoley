@@ -1,17 +1,21 @@
 import React from 'react';
-import { FaBan, FaChalkboardTeacher, FaUser, FaUserShield, FaUsers } from 'react-icons/fa';
+import { FaBan } from 'react-icons/fa';
 import { cn } from '../../../../lib/cn';
-import { Button } from '../../../../shared/ui';
-import { Card } from '../../../../shared/ui';
+import { Button, Card, iconRegistry, semanticCatalog } from '../../../../shared/ui';
 import { useUserManagementPanel } from './hooks/useUserManagementPanel';
 import AdministratorsTab from './tabs/AdministratorsTab';
 import AthletesTab from './tabs/AthletesTab';
 import TrainersTab from './tabs/TrainersTab';
 
+const StudentTabIcon = iconRegistry.userTypes.atleta;
+const TrainerTabIcon = iconRegistry.userTypes.entrenador;
+const AdminTabIcon = iconRegistry.userTypes.administrador;
+const UsersIcon = iconRegistry.users;
+
 const TAB_ICONS = {
-  athletes: <FaUser />,
-  trainers: <FaChalkboardTeacher />,
-  administrators: <FaUserShield />,
+  athletes: <StudentTabIcon />,
+  trainers: <TrainerTabIcon />,
+  administrators: <AdminTabIcon />,
 };
 
 const UserManagementPanel = ({ userRole }) => {
@@ -21,7 +25,7 @@ const UserManagementPanel = ({ userRole }) => {
     return (
       <div className="mx-auto mt-10 max-w-xl rounded-2xl border border-red-300/35 bg-white p-8 text-center shadow-xl">
         <h2 className="inline-flex items-center gap-2 text-2xl font-black text-red-700">
-          <FaBan /> Acceso Denegado
+          <FaBan /> Acceso denegado
         </h2>
         <p className="mt-3 text-slate-700">No tienes permisos para acceder a este módulo.</p>
         <p className="mt-1 text-slate-700">Tu rol actual: <strong>{userRole || 'Sin rol'}</strong></p>
@@ -33,14 +37,14 @@ const UserManagementPanel = ({ userRole }) => {
     <div className="space-y-4">
       <div className="flex items-center gap-3 border-b border-rv-gold/20 pb-4">
         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-rv-gold to-yellow-400">
-          <FaUsers className="text-2xl text-rv-dark" />
+          <UsersIcon className="text-2xl text-rv-dark" />
         </div>
         <div>
-          <h1 className="text-2xl font-black text-white">Gestión de Usuarios</h1>
+          <h1 className="text-2xl font-black text-white">{semanticCatalog.UI_LABELS.usersManagementTitle}</h1>
           <p className="text-sm text-slate-300">
             {panelAccess.isAdmin
-              ? 'Administrar atletas, entrenadores y administradores del club'
-              : 'Administrar atletas del club'}
+              ? semanticCatalog.UI_LABELS.usersManagementAdminDescription
+              : semanticCatalog.UI_LABELS.usersManagementTrainerDescription}
           </p>
         </div>
       </div>
@@ -75,6 +79,3 @@ const UserManagementPanel = ({ userRole }) => {
 };
 
 export default UserManagementPanel;
-
-
-

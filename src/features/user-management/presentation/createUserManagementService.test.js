@@ -151,7 +151,7 @@ describe('createUserManagementService', () => {
 
   it('getPanelAccess/getVisiblePanelTabs/getValidPanelActiveTab delegan al use case', () => {
     mockResolvePanelAccessExecute.mockReturnValue({ hasAccess: true });
-    mockVisibleTabsExecute.mockReturnValue([{ id: 'athletes', label: 'Atletas' }]);
+    mockVisibleTabsExecute.mockReturnValue([{ id: 'athletes', label: 'Estudiantes' }]);
     mockResolveActiveTabExecute.mockReturnValue('athletes');
     const service = createUserManagementService(buildRepository());
 
@@ -169,7 +169,7 @@ describe('createUserManagementService', () => {
       candidateTabId: 'trainers',
     });
     expect(access).toEqual({ hasAccess: true });
-    expect(tabs).toEqual([{ id: 'athletes', label: 'Atletas' }]);
+    expect(tabs).toEqual([{ id: 'athletes', label: 'Estudiantes' }]);
     expect(activeTab).toBe('athletes');
   });
 

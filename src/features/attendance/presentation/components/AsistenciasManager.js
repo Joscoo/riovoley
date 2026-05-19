@@ -3,6 +3,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { attendanceService } from '../../attendanceService';
 import { reportingService } from '../../../reporting';
+import { SortableHeader } from '../../../../shared/ui';
+import {
+  SORT_DIRECTION,
+  createTableQuery,
+  withUpdatedFilter,
+  withUpdatedSort,
+  resetTableQuery,
+} from '../../../../shared/lib/tableQuery';
 import { formatDateString } from '../../../../utils/dateUtils';
 import { 
   FaChartBar, 
@@ -137,6 +145,23 @@ const styles = new Proxy(styleMap, {
 });
 
 const EMPTY_NOTICE = { type: '', text: '' };
+const DEFAULT_ATTENDANCE_QUERY = createTableQuery({
+  filters: {
+    fecha_inicio: '',
+    fecha_fin: '',
+    categoria: '',
+    atleta: '',
+    metodo_pago_id: '',
+  },
+  sort: {
+    field: 'fecha',
+    direction: SORT_DIRECTION.DESC,
+  },
+  pagination: {
+    page: 1,
+    pageSize: 20,
+  },
+});
 
 const AsistenciasManager = ({ user }) => {
   const defaultDates = attendanceService.getDefaultDates();
@@ -144,23 +169,27 @@ const AsistenciasManager = ({ user }) => {
   const [atletas, setAtletas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedDate, setSelectedDate] = useState(defaultDates.selectedDate);
-  const [filters, setFilters] = useState({
-    fecha_inicio: defaultDates.dateFrom,
-    fecha_fin: defaultDates.dateTo,
-    categoria: '',
-    atleta: ''
-  });
+  const [queryState, setQueryState] = useState(
+    createTableQuery({
+      ...DEFAULT_ATTENDANCE_QUERY,
+      filters: {
+        ...DEFAULT_ATTENDANCE_QUERY.filters,
+        fecha_inicio: defaultDates.dateFrom,
+        fecha_fin: defaultDates.dateTo,
+      },
+    })
+  );
 
   const [todayAttendance, setTodayAttendance] = useState([]);
   const [bulkMode, setBulkMode] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState('all'); // Nueva: categorÃ­a seleccionada en tabs
-  const [paymentTypes, setPaymentTypes] = useState([]); // MÃ©todos de pago disponibles
+  const [selectedCategory, setSelectedCategory] = useState('all'); // Nueva: categoría seleccionada en tabs
+  const [paymentTypes, setPaymentTypes] = useState([]); // Métodos de pago disponibles
   const [showExportModal, setShowExportModal] = useState(false);
   const [exportObservations, setExportObservations] = useState('');
-  const [expandedDays, setExpandedDays] = useState([]); // DÃ­as expandidos en el historial
+  const [expandedDays, setExpandedDays] = useState([]); // Días expandidos en el historial
   const [asistenciasByDate, setAsistenciasByDate] = useState({}); // Asistencias agrupadas por fecha
   const [dateToExport, setDateToExport] = useState(null); // Fecha a exportar
-  const [searchTerm, setSearchTerm] = useState(''); // TÃ©rmino de bÃºsqueda de atletas
+  const [searchTerm, setSearchTerm] = useState(''); // Término de búsqueda de atletas
   const [reportRuns, setReportRuns] = useState([]);
   const [loadingReportRuns, setLoadingReportRuns] = useState(false);
   const [reportRunsError, setReportRunsError] = useState('');
@@ -185,10 +214,10 @@ const AsistenciasManager = ({ user }) => {
     'master_mujeres'
   ];
 
-  // CategorÃ­as agrupadas para los tabs
+  // Categorías agrupadas para los tabs
   const categoriasAgrupadas = [
     { id: 'all', nombre: 'Todas', icono: <FaUsers /> },
-    { id: 'iniciacion', nombre: 'IniciaciÃ³n', icono: <FaVolleyballBall /> },
+    { id: 'iniciacion', nombre: 'Iniciación', icono: <FaVolleyballBall /> },
     { id: 'perfeccionamiento', nombre: 'Perfeccionamiento', icono: <FaTrophy /> },
     { id: 'master', nombre: 'Master', icono: <FaMedal /> }
   ];
@@ -248,10 +277,10 @@ const AsistenciasManager = ({ user }) => {
     // Recargar cuando cambien los filtros (excluyendo la carga inicial)
     loadData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filters]);
+  }, [queryState]);
 
   useEffect(() => {
-    // Solo cargar asistencias del dÃ­a si ya tenemos atletas cargados
+    // Solo cargar asistencias del día si ya tenemos atletas cargados
     if (atletas.length > 0) {
       loadTodayAttendance();
     }
@@ -263,7 +292,7 @@ const AsistenciasManager = ({ user }) => {
       loadReportRuns();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [bulkMode, filters.fecha_inicio, filters.fecha_fin]);
+  }, [bulkMode, queryState.filters.fecha_inicio, queryState.filters.fecha_fin]);
 
   useEffect(() => () => clearNoticeTimer(), []);
 
@@ -271,7 +300,7 @@ const AsistenciasManager = ({ user }) => {
     setLoading(true);
     try {
       const result = await attendanceService.loadAttendanceData({
-        filters,
+        query: queryState,
         athletes: atletas,
       });
 
@@ -295,7 +324,7 @@ const AsistenciasManager = ({ user }) => {
       });
       setTodayAttendance(todayData || []);
     } catch (error) {
-      console.error('Error cargando asistencias del dÃ­a:', error);
+      console.error('Error cargando asistencias del día:', error);
     }
   };
 
@@ -303,9 +332,9 @@ const AsistenciasManager = ({ user }) => {
     try {
       const data = await attendanceService.listPaymentTypes();
       setPaymentTypes(data || []);
-      console.log('ðŸ“‹ MÃ©todos de pago cargados:', data);
+      console.log('ðŸ“‹ Métodos de pago cargados:', data);
     } catch (error) {
-      console.error('Error cargando mÃ©todos de pago:', error);
+      console.error('Error cargando métodos de pago:', error);
     }
   };
 
@@ -316,8 +345,8 @@ const AsistenciasManager = ({ user }) => {
 
       const runs = await reportingService.listRuns({
         reportCode: 'attendance_daily',
-        dateFrom: filters.fecha_inicio || null,
-        dateTo: filters.fecha_fin || null,
+        dateFrom: queryState.filters.fecha_inicio || null,
+        dateTo: queryState.filters.fecha_fin || null,
         limit: 80,
       });
 
@@ -328,6 +357,29 @@ const AsistenciasManager = ({ user }) => {
     } finally {
       setLoadingReportRuns(false);
     }
+  };
+
+  const updateQueryFilter = (key, value) => {
+    setQueryState((current) => withUpdatedFilter({ query: current, key, value }));
+  };
+
+  const toggleHistorySort = (field) => {
+    setQueryState((current) => withUpdatedSort({ query: current, field }));
+  };
+
+  const resetHistoryFilters = () => {
+    setQueryState(
+      resetTableQuery({
+        defaults: createTableQuery({
+          ...DEFAULT_ATTENDANCE_QUERY,
+          filters: {
+            ...DEFAULT_ATTENDANCE_QUERY.filters,
+            fecha_inicio: defaultDates.dateFrom,
+            fecha_fin: defaultDates.dateTo,
+          },
+        }),
+      })
+    );
   };
 
   const registerAttendanceWithPayment = async (atletaId, paymentTypeId) => {
@@ -380,7 +432,7 @@ const AsistenciasManager = ({ user }) => {
   const markAllPresent = async () => {
     openConfirmDialog({
       title: 'Marcar asistencias masivas',
-      message: 'Â¿Marcar todos los atletas como presentes con MENSUALIDAD?',
+      message: '¿Marcar todos los atletas como presentes con MENSUALIDAD?',
       confirmLabel: 'Marcar todos',
       onConfirm: async () => {
         try {
@@ -402,7 +454,7 @@ const AsistenciasManager = ({ user }) => {
   const clearAllAttendance = async () => {
     openConfirmDialog({
       title: 'Limpiar asistencias del dia',
-      message: 'Â¿Limpiar todas las asistencias del dÃ­a?',
+      message: '¿Limpiar todas las asistencias del día?',
       confirmLabel: 'Limpiar dia',
       tone: 'danger',
       onConfirm: async () => {
@@ -418,7 +470,7 @@ const AsistenciasManager = ({ user }) => {
           ]);
 
           window.dispatchEvent(new Event('riovoley:dashboard-refresh'));
-          showNotice('success', 'Asistencias del dÃ­a limpiadas correctamente');
+          showNotice('success', 'Asistencias del día limpiadas correctamente');
         } catch (error) {
           console.error('Error limpiando asistencias:', error);
           showNotice('error', 'Error: ' + error.message);
@@ -442,7 +494,7 @@ const AsistenciasManager = ({ user }) => {
     return categoria.replaceAll('_', ' ').toUpperCase();
   };
 
-  // Filtrar atletas segÃºn categorÃ­a seleccionada en tabs y tÃ©rmino de bÃºsqueda
+  // Filtrar atletas según categoría seleccionada en tabs y término de búsqueda
   const filteredAtletas = attendanceService.filterTodayAttendance({
     todayAttendance,
     selectedCategory,
@@ -451,7 +503,7 @@ const AsistenciasManager = ({ user }) => {
       attendanceService.getSearchNameBlob({ athleteUser: atleta.users }).includes(searchLower),
   });
 
-  // Filtrar atletas por categorÃ­a especÃ­fica y tÃ©rmino de bÃºsqueda
+  // Filtrar atletas por categoría específica y término de búsqueda
   const filterAtletasBySearchAndCategory = (categoria) =>
     attendanceService.filterTodayAttendanceByCategory({
       todayAttendance,
@@ -461,14 +513,14 @@ const AsistenciasManager = ({ user }) => {
         attendanceService.getSearchNameBlob({ athleteUser: atleta.users }).includes(searchLower),
     });
 
-  // Obtener estadÃ­sticas de la categorÃ­a seleccionada
+  // Obtener estadísticas de la categoría seleccionada
   const getCategoryStats = () => attendanceService.getCategoryStats({ filteredAthletes: filteredAtletas });
 
   const homonymsByCompactName = attendanceService.buildHomonymsByCompactName({
     athletes: filteredAtletas,
   });
 
-  // Renderizar atleta con botones de mÃ©todos de pago
+  // Renderizar atleta con botones de métodos de pago
   const renderAtletaWithPaymentMethods = (atleta) => {
     const isPresent = atleta.attendance !== null;
     const currentPaymentMethod = atleta.attendance?.metodo_pago_id;
@@ -480,7 +532,7 @@ const AsistenciasManager = ({ user }) => {
     });
     const fullName = attendanceService.getAthleteNameParts({ athleteUser: atleta.users }).nombreCompleto || displayName;
     
-    // Obtener nombres de mÃ©todos de pago
+    // Obtener nombres de métodos de pago
     const iconos = {
       pago_diario: <FaDollarSign />,
       mensualidad: <FaCalendarCheck />,
@@ -596,7 +648,7 @@ const AsistenciasManager = ({ user }) => {
 
     openConfirmDialog({
       title: 'Eliminar reporte persistido',
-      message: `Â¿Eliminar el reporte persistido del ${formatDateString(run.period_start)}?`,
+      message: `¿Eliminar el reporte persistido del ${formatDateString(run.period_start)}?`,
       confirmLabel: 'Eliminar',
       tone: 'danger',
       onConfirm: async () => {
@@ -648,6 +700,13 @@ const AsistenciasManager = ({ user }) => {
 
   const stats = calculateStats();
   const exportSummary = getExportSummary();
+  const historyDates = Object.keys(asistenciasByDate || {});
+  const sortedHistoryDates = [...historyDates].sort((a, b) => {
+    const direction = queryState.sort.field === 'fecha' && queryState.sort.direction === SORT_DIRECTION.ASC
+      ? 1
+      : -1;
+    return (new Date(a).getTime() - new Date(b).getTime()) * direction;
+  });
 
   return (
     <div className={styles.asistenciasManager}>
@@ -661,7 +720,7 @@ const AsistenciasManager = ({ user }) => {
             <button 
               className={styles.exportButton}
               onClick={() => exportAttendance()}
-              title="Exportar asistencias del dÃ­a"
+              title="Exportar asistencias del día"
             >
               <FaFileExport className="mr-1.5 inline align-middle" /> Exportar
             </button>
@@ -673,7 +732,7 @@ const AsistenciasManager = ({ user }) => {
             {bulkMode ? (
               <><FaChartBar className="mr-1.5 inline align-middle" /> Ver Reportes</>
             ) : (
-              <><FaCheckCircle className="mr-1.5 inline align-middle" /> Registro RÃ¡pido</>
+              <><FaCheckCircle className="mr-1.5 inline align-middle" /> Registro Rápido</>
             )}
           </button>
         </div>
@@ -724,7 +783,7 @@ const AsistenciasManager = ({ user }) => {
       </div>
 
       {bulkMode ? (
-        /* Modo de Registro por CategorÃ­as */
+        /* Modo de Registro por Categorías */
         <div className={styles.categoryAttendance}>
           <div className={styles.bulkHeader}>
             <div className={styles.dateSelector}>
@@ -751,7 +810,7 @@ const AsistenciasManager = ({ user }) => {
                 <button
                   onClick={() => setSearchTerm('')}
                   className={styles.clearSearch}
-                  title="Limpiar bÃºsqueda"
+                  title="Limpiar búsqueda"
                 >
                   <FaTimes />
                 </button>
@@ -763,14 +822,14 @@ const AsistenciasManager = ({ user }) => {
                 <FaCheckCircle className="mr-1.5 inline align-middle" /> Todos Presentes
               </button>
               <button onClick={clearAllAttendance} className={styles.clearButton}>
-                <FaTrash className="mr-1.5 inline align-middle" /> Limpiar DÃ­a
+                <FaTrash className="mr-1.5 inline align-middle" /> Limpiar Día
               </button>
             </div>
           </div>
 
-          {/* Registro por CategorÃ­as */}
+          {/* Registro por Categorías */}
           <div className={styles.categorySections}>
-            {/* Tabs de CategorÃ­as */}
+            {/* Tabs de Categorías */}
             <div className={styles.categoryTabs}>
               {categoriasAgrupadas.map(cat => {
                 const categoryStats = getCategoryStats();
@@ -820,15 +879,15 @@ const AsistenciasManager = ({ user }) => {
               })()}
             </div>
 
-            {/* Contenido de la categorÃ­a seleccionada */}
+            {/* Contenido de la categoría seleccionada */}
             <div className={styles.categoryContent}>
               {selectedCategory === 'all' ? (
-                /* Vista de todas las categorÃ­as */
+                /* Vista de todas las categorías */
                 <div className={styles.allCategoriesView}>
-                  {/* IniciaciÃ³n */}
+                  {/* Iniciación */}
                   <div className={styles.categorySection}>
                     <h3 className={styles.categoryTitle}>
-                      <FaVolleyballBall className="mr-2" /> IniciaciÃ³n
+                      <FaVolleyballBall className="mr-2" /> Iniciación
                     </h3>
                     <div className={styles.categorySubGrid}>
                       <div className={styles.subCategory}>
@@ -920,7 +979,7 @@ const AsistenciasManager = ({ user }) => {
                   </div>
                 </div>
               ) : (
-                /* Vista filtrada por categorÃ­a especÃ­fica */
+                /* Vista filtrada por categoría específica */
                 <div className={styles.filteredCategoryView}>
                   {selectedCategory === 'iniciacion' && (
                     <div className={styles.categorySubGrid}>
@@ -993,8 +1052,8 @@ const AsistenciasManager = ({ user }) => {
               <input
                 id="fecha-inicio"
                 type="date"
-                value={filters.fecha_inicio}
-                onChange={(e) => setFilters({...filters, fecha_inicio: e.target.value})}
+                value={queryState.filters.fecha_inicio}
+                onChange={(e) => updateQueryFilter('fecha_inicio', e.target.value)}
                 className={styles.filterInput}
               />
             </div>
@@ -1004,21 +1063,21 @@ const AsistenciasManager = ({ user }) => {
               <input
                 id="fecha-fin"
                 type="date"
-                value={filters.fecha_fin}
-                onChange={(e) => setFilters({...filters, fecha_fin: e.target.value})}
+                value={queryState.filters.fecha_fin}
+                onChange={(e) => updateQueryFilter('fecha_fin', e.target.value)}
                 className={styles.filterInput}
               />
             </div>
 
             <div className={styles.filterGroup}>
-              <label htmlFor="categoria-filter">CategorÃ­a:</label>
+              <label htmlFor="categoria-filter">Categoría:</label>
               <select
                 id="categoria-filter"
-                value={filters.categoria}
-                onChange={(e) => setFilters({...filters, categoria: e.target.value})}
+                value={queryState.filters.categoria}
+                onChange={(e) => updateQueryFilter('categoria', e.target.value)}
                 className={styles.filterSelect}
               >
-                <option value="">Todas las categorÃ­as</option>
+                <option value="">Todas las categorías</option>
                 {categorias.map(categoria => (
                   <option key={categoria} value={categoria}>
                     {formatCategoria(categoria)}
@@ -1031,8 +1090,8 @@ const AsistenciasManager = ({ user }) => {
               <label htmlFor="atleta-filter">Atleta:</label>
               <select
                 id="atleta-filter"
-                value={filters.atleta}
-                onChange={(e) => setFilters({...filters, atleta: e.target.value})}
+                value={queryState.filters.atleta}
+                onChange={(e) => updateQueryFilter('atleta', e.target.value)}
                 className={styles.filterSelect}
               >
                 <option value="">Todos los atletas</option>
@@ -1042,6 +1101,47 @@ const AsistenciasManager = ({ user }) => {
                   </option>
                 ))}
               </select>
+            </div>
+
+            <div className={styles.filterGroup}>
+              <label htmlFor="metodo-pago-filter">Metodo pago:</label>
+              <select
+                id="metodo-pago-filter"
+                value={queryState.filters.metodo_pago_id}
+                onChange={(e) => updateQueryFilter('metodo_pago_id', e.target.value)}
+                className={styles.filterSelect}
+              >
+                <option value="">Todos</option>
+                {paymentTypes.map((paymentType) => (
+                  <option key={paymentType.id} value={paymentType.id}>
+                    {paymentType.nombre}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className={styles.filterGroup}>
+              <label htmlFor="attendance-clear-filters">Acciones:</label>
+              <button
+                id="attendance-clear-filters"
+                type="button"
+                className={styles.clearButton}
+                onClick={resetHistoryFilters}
+              >
+                Limpiar
+              </button>
+            </div>
+
+            <div className={styles.filterGroup}>
+              <label htmlFor="attendance-sort-fecha">Orden fecha:</label>
+              <button
+                id="attendance-sort-fecha"
+                type="button"
+                className={styles.filterInput}
+                onClick={() => toggleHistorySort('fecha')}
+              >
+                {queryState.sort.field === 'fecha' ? `Fecha (${queryState.sort.direction})` : 'Ordenar por fecha'}
+              </button>
             </div>
           </div>
           <div className={styles.attendanceTable}>
@@ -1095,7 +1195,7 @@ const AsistenciasManager = ({ user }) => {
           </div>
           {/* Estadisticas por Categoria */}
           <div className={styles.categoryStats}>
-            <h3><FaChartBar className="mr-2 inline align-middle" /> EstadÃ­sticas por CategorÃ­a</h3>
+            <h3><FaChartBar className="mr-2 inline align-middle" /> Estadísticas por Categoría</h3>
             <div className={styles.categoryGrid}>
               {categorias.map(categoria => {
                 const catStats = stats.categoriaStats[categoria];
@@ -1113,21 +1213,19 @@ const AsistenciasManager = ({ user }) => {
             </div>
           </div>
 
-          {/* Lista de Asistencias Agrupadas por DÃ­a */}
+          {/* Lista de Asistencias Agrupadas por Día */}
           {loading ? (
             <div className={styles.loading}>
               <div className={styles.spinner}></div>
               <p>Cargando asistencias...</p>
             </div>
           ) : (
-            <div className={styles.attendanceTable}>
-              <h3>ðŸ“‹ Historial de Asistencias por DÃ­a</h3>
+            <div className={styles.attendanceTable} data-testid="attendance-history-table">
+              <h3>ðŸ“‹ Historial de Asistencias por Día</h3>
               
-              {Object.keys(asistenciasByDate).length > 0 ? (
+              {sortedHistoryDates.length > 0 ? (
                 <div className={styles.daysContainer}>
-                  {Object.keys(asistenciasByDate)
-                    .sort((a, b) => new Date(b) - new Date(a)) // Ordenar por fecha descendente
-                    .map(fecha => {
+                  {sortedHistoryDates.map(fecha => {
                       const dayAttendances = asistenciasByDate[fecha];
                       const isExpanded = expandedDays.includes(fecha);
                       const fechaFormateada = formatDateString(fecha);
@@ -1160,7 +1258,8 @@ const AsistenciasManager = ({ user }) => {
                       return (
                         <div key={fecha} className={styles.dayCard}>
                           {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
-                          <div 
+                          <div
+                            data-testid="attendance-day-header"
                             className={styles.dayHeader}
                             onClick={() => toggleDayExpansion(fecha)}
                           >
@@ -1180,25 +1279,25 @@ const AsistenciasManager = ({ user }) => {
                                   e.stopPropagation();
                                   exportAttendance(fecha);
                                 }}
-                                title="Exportar este dÃ­a"
+                                title="Exportar este día"
                               >
                                 <FaFileExport className="mr-1.5" />
                                 Exportar
                               </button>
                               <span className={styles.expandIcon}>
-                                {isExpanded ? 'â–¼' : 'â–¶'}
+                                {isExpanded ? '?' : '?'}
                               </span>
                             </div>
                           </div>
 
                           {isExpanded && (
                             <div className={styles.dayContent}>
-                              {/* Tabla 1: IniciaciÃ³n */}
+                              {/* Tabla 1: Iniciación */}
                               {iniciacion.length > 0 && (
                                 <div className={styles.categorySection}>
                                   <h5 className={styles.categorySectionTitle}>
                                     <FaVolleyballBall className="mr-2" />
-                                    IniciaciÃ³n
+                                    Iniciación
                                   </h5>
                                   <div className={styles.categoryTables}>
                                     {/* Hombres */}
@@ -1209,8 +1308,8 @@ const AsistenciasManager = ({ user }) => {
                                           <thead>
                                             <tr>
                                               <th>#</th>
-                                              <th>Atleta</th>
-                                              <th>MÃ©todo de Pago</th>
+                                              <SortableHeader field="atleta" label="Atleta" sort={queryState.sort} onToggleSort={toggleHistorySort} />
+                                              <SortableHeader field="metodo_pago" label="Metodo de Pago" sort={queryState.sort} onToggleSort={toggleHistorySort} />
                                             </tr>
                                           </thead>
                                           <tbody>
@@ -1219,7 +1318,7 @@ const AsistenciasManager = ({ user }) => {
                                                 <tr key={asistencia.id}>
                                                   <td data-label="#">{index + 1}</td>
                                                   <td data-label="Atleta">{asistencia.students?.users?.nombre} {asistencia.students?.users?.apellido}</td>
-                                                  <td className={styles.paymentCell} data-label="MÃ©todo de Pago">
+                                                  <td className={styles.paymentCell} data-label="Método de Pago">
                                                     {getPaymentMethodName(asistencia.metodo_pago_id)}
                                                   </td>
                                                 </tr>
@@ -1240,8 +1339,8 @@ const AsistenciasManager = ({ user }) => {
                                           <thead>
                                             <tr>
                                               <th>#</th>
-                                              <th>Atleta</th>
-                                              <th>MÃ©todo de Pago</th>
+                                              <SortableHeader field="atleta" label="Atleta" sort={queryState.sort} onToggleSort={toggleHistorySort} />
+                                              <SortableHeader field="metodo_pago" label="Metodo de Pago" sort={queryState.sort} onToggleSort={toggleHistorySort} />
                                             </tr>
                                           </thead>
                                           <tbody>
@@ -1250,7 +1349,7 @@ const AsistenciasManager = ({ user }) => {
                                                 <tr key={asistencia.id}>
                                                   <td data-label="#">{index + 1}</td>
                                                   <td data-label="Atleta">{asistencia.students?.users?.nombre} {asistencia.students?.users?.apellido}</td>
-                                                  <td className={styles.paymentCell} data-label="MÃ©todo de Pago">
+                                                  <td className={styles.paymentCell} data-label="Método de Pago">
                                                     {getPaymentMethodName(asistencia.metodo_pago_id)}
                                                   </td>
                                                 </tr>
@@ -1264,7 +1363,7 @@ const AsistenciasManager = ({ user }) => {
                                     )}
                                   </div>
                                   <div className={styles.categoryTotal}>
-                                    Total IniciaciÃ³n: {iniciacion.length}
+                                    Total Iniciación: {iniciacion.length}
                                   </div>
                                 </div>
                               )}
@@ -1280,8 +1379,8 @@ const AsistenciasManager = ({ user }) => {
                                     <thead>
                                       <tr>
                                         <th>#</th>
-                                        <th>Atleta</th>
-                                        <th>MÃ©todo de Pago</th>
+                                        <SortableHeader field="atleta" label="Atleta" sort={queryState.sort} onToggleSort={toggleHistorySort} />
+                                        <SortableHeader field="metodo_pago" label="Metodo de Pago" sort={queryState.sort} onToggleSort={toggleHistorySort} />
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -1289,7 +1388,7 @@ const AsistenciasManager = ({ user }) => {
                                         <tr key={asistencia.id}>
                                           <td data-label="#">{index + 1}</td>
                                           <td data-label="Atleta">{asistencia.students?.users?.nombre} {asistencia.students?.users?.apellido}</td>
-                                          <td className={styles.paymentCell} data-label="MÃ©todo de Pago">
+                                          <td className={styles.paymentCell} data-label="Método de Pago">
                                             {getPaymentMethodName(asistencia.metodo_pago_id)}
                                           </td>
                                         </tr>
@@ -1313,9 +1412,9 @@ const AsistenciasManager = ({ user }) => {
                                     <thead>
                                       <tr>
                                         <th>#</th>
-                                        <th>Atleta</th>
-                                        <th>CategorÃ­a</th>
-                                        <th>MÃ©todo de Pago</th>
+                                        <SortableHeader field="atleta" label="Atleta" sort={queryState.sort} onToggleSort={toggleHistorySort} />
+                                        <SortableHeader field="categoria" label="Categoria" sort={queryState.sort} onToggleSort={toggleHistorySort} />
+                                        <SortableHeader field="metodo_pago" label="Metodo de Pago" sort={queryState.sort} onToggleSort={toggleHistorySort} />
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -1323,8 +1422,8 @@ const AsistenciasManager = ({ user }) => {
                                         <tr key={asistencia.id}>
                                           <td data-label="#">{index + 1}</td>
                                           <td data-label="Atleta">{asistencia.students?.users?.nombre} {asistencia.students?.users?.apellido}</td>
-                                          <td data-label="CategorÃ­a">{asistencia.students?.categoria === 'master_mujeres' ? 'Master' : 'Perfeccionamiento'}</td>
-                                          <td className={styles.paymentCell} data-label="MÃ©todo de Pago">
+                                          <td data-label="Categoría">{asistencia.students?.categoria === 'master_mujeres' ? 'Master' : 'Perfeccionamiento'}</td>
+                                          <td className={styles.paymentCell} data-label="Método de Pago">
                                             {getPaymentMethodName(asistencia.metodo_pago_id)}
                                           </td>
                                         </tr>
@@ -1337,9 +1436,9 @@ const AsistenciasManager = ({ user }) => {
                                 </div>
                               )}
 
-                              {/* Resumen del dÃ­a */}
+                              {/* Resumen del día */}
                               <div className={styles.dayResumen}>
-                                <strong>Total del dÃ­a: {dayAttendances.length} asistencias</strong>
+                                <strong>Total del día: {dayAttendances.length} asistencias</strong>
                               </div>
                             </div>
                           )}
@@ -1358,7 +1457,7 @@ const AsistenciasManager = ({ user }) => {
         </div>
       )}
 
-      {/* Modal de ExportaciÃ³n */}
+      {/* Modal de Exportación */}
       {showExportModal && (
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
         <div 
@@ -1393,7 +1492,7 @@ const AsistenciasManager = ({ user }) => {
                 <textarea
                   id="observations"
                   className={styles.observationsTextarea}
-                  placeholder="Escribe aquÃ­ cualquier observaciÃ³n que desees incluir en el documento exportado..."
+                  placeholder="Escribe aquí cualquier observación que desees incluir en el documento exportado..."
                   rows={5}
                   value={exportObservations}
                   onChange={(e) => setExportObservations(e.target.value)}
@@ -1401,13 +1500,13 @@ const AsistenciasManager = ({ user }) => {
               </div>
 
               <div className={styles.exportPreview}>
-                <h4>ðŸ“‹ El documento incluirÃ¡:</h4>
+                <h4>ðŸ“‹ El documento incluir?:</h4>
                 <ul>
-                  <li>âœ… Tabla 1: IniciaciÃ³n (Hombres y Mujeres)</li>
-                  <li>âœ… Tabla 2: Perfeccionamiento Hombres</li>
-                  <li>âœ… Tabla 3: Perfeccionamiento Mujeres</li>
-                  <li>âœ… Resumen general de asistencias</li>
-                  {exportObservations && <li>âœ… Observaciones</li>}
+                  <li>✅ Tabla 1: Iniciación (Hombres y Mujeres)</li>
+                  <li>✅ Tabla 2: Perfeccionamiento Hombres</li>
+                  <li>✅ Tabla 3: Perfeccionamiento Mujeres</li>
+                  <li>✅ Resumen general de asistencias</li>
+                  {exportObservations && <li>✅ Observaciones</li>}
                 </ul>
               </div>
             </div>
@@ -1471,6 +1570,8 @@ AsistenciasManager.propTypes = {
 };
 
 export default AsistenciasManager;
+
+
 
 
 

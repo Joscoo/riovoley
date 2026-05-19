@@ -12,10 +12,10 @@ const normalizeError = (error, fallback) => {
   return error.message || fallback;
 };
 
-const normalizeAthletes = (studentsData, usersData) => {
+const normalizeAthletes = (studentsData, usersData, sort = {}) => {
   const usersMap = new Map((usersData || []).map((user) => [user.id, user]));
 
-  return (studentsData || [])
+  const normalized = (studentsData || [])
     .map((student) => {
       const user = usersMap.get(student.user_id) || {};
       return {
@@ -36,18 +36,35 @@ const normalizeAthletes = (studentsData, usersData) => {
         created_at: user.created_at,
         last_login: user.last_login,
       };
-    })
-    .sort((a, b) => (a.apellido || '').localeCompare(b.apellido || ''));
+    });
+
+  const directionFactor = sort?.direction === 'desc' ? -1 : 1;
+  const sortField = sort?.field || 'apellido';
+  normalized.sort((a, b) => {
+    const valueA = String(a[sortField] || a.apellido || '');
+    const valueB = String(b[sortField] || b.apellido || '');
+    if (valueA < valueB) return -1 * directionFactor;
+    if (valueA > valueB) return 1 * directionFactor;
+    return 0;
+  });
+
+  return normalized;
 };
 
 const trimNullable = (value) => value?.trim?.() || null;
 
 export class SupabaseUserManagementRepository {
-  async listAthletes() {
-    const { data: studentsData, error: studentsError } = await supabase
+  async listAthletes({ query } = {}) {
+    let studentsRequest = supabase
       .from('students')
       .select('*')
       .order('id', { ascending: true });
+
+    if (query?.filters?.categoria) {
+      studentsRequest = studentsRequest.eq('categoria', query.filters.categoria);
+    }
+
+    const { data: studentsData, error: studentsError } = await studentsRequest;
 
     if (studentsError) {
       throw new UserManagementError(normalizeError(studentsError, 'Error al cargar atletas'), studentsError);
@@ -57,29 +74,78 @@ export class SupabaseUserManagementRepository {
       return [];
     }
 
+    const filters = query?.filters || {};
+    const sort = query?.sort || {};
+
     const userIds = studentsData.map((student) => student.user_id).filter(Boolean);
     if (userIds.length === 0) {
-      return normalizeAthletes(studentsData, []);
+      return normalizeAthletes(studentsData, [], sort);
     }
 
-    const { data: usersData, error: usersError } = await supabase
+    let usersRequest = supabase
       .from('users')
       .select('*')
       .in('id', userIds);
+
+    if (filters.status === 'active') {
+      usersRequest = usersRequest.eq('suspended', false);
+    } else if (filters.status === 'suspended') {
+      usersRequest = usersRequest.eq('suspended', true);
+    }
+
+    if (filters.search) {
+      const searchValue = String(filters.search).trim();
+      usersRequest = usersRequest.or(
+        `nombre.ilike.%${searchValue}%,apellido.ilike.%${searchValue}%,email.ilike.%${searchValue}%`
+      );
+    }
+
+    const allowedSortField = ['nombre', 'apellido', 'created_at', 'fecha_nacimiento'].includes(sort.field)
+      ? sort.field
+      : 'apellido';
+    if (sort.field && sort.direction && sort.direction !== 'none') {
+      usersRequest = usersRequest.order(allowedSortField, { ascending: sort.direction === 'asc' });
+    }
+
+    const { data: usersData, error: usersError } = await usersRequest;
 
     if (usersError) {
       console.warn('No se pudieron cargar datos de usuarios para atletas:', usersError);
     }
 
-    return normalizeAthletes(studentsData, usersData || []);
+    return normalizeAthletes(studentsData, usersData || [], sort);
   }
 
-  async listTrainers() {
-    const { data, error } = await supabase
+  async listTrainers({ query } = {}) {
+    let request = supabase
       .from('users')
       .select('*')
-      .eq('role', 'entrenador')
-      .order('apellido', { ascending: true });
+      .eq('role', 'entrenador');
+
+    const filters = query?.filters || {};
+    const sort = query?.sort || {};
+
+    if (filters.status === 'active') {
+      request = request.eq('suspended', false);
+    } else if (filters.status === 'suspended') {
+      request = request.eq('suspended', true);
+    }
+
+    if (filters.search) {
+      const searchValue = String(filters.search).trim();
+      request = request.or(`nombre.ilike.%${searchValue}%,apellido.ilike.%${searchValue}%,email.ilike.%${searchValue}%`);
+    }
+
+    if (sort.field && sort.direction && sort.direction !== 'none') {
+      const allowedSortField = ['nombre', 'apellido', 'email', 'created_at'].includes(sort.field)
+        ? sort.field
+        : 'apellido';
+      request = request.order(allowedSortField, { ascending: sort.direction === 'asc' });
+    } else {
+      request = request.order('apellido', { ascending: true });
+    }
+
+    const { data, error } = await request;
 
     if (error) {
       throw new UserManagementError(normalizeError(error, 'Error al cargar entrenadores'), error);
@@ -88,12 +154,30 @@ export class SupabaseUserManagementRepository {
     return data || [];
   }
 
-  async listAdministrators() {
-    const { data, error } = await supabase
+  async listAdministrators({ query } = {}) {
+    let request = supabase
       .from('users')
       .select('*')
-      .eq('role', 'administrador')
-      .order('apellido', { ascending: true });
+      .eq('role', 'administrador');
+
+    const filters = query?.filters || {};
+    const sort = query?.sort || {};
+
+    if (filters.search) {
+      const searchValue = String(filters.search).trim();
+      request = request.or(`nombre.ilike.%${searchValue}%,apellido.ilike.%${searchValue}%,email.ilike.%${searchValue}%`);
+    }
+
+    if (sort.field && sort.direction && sort.direction !== 'none') {
+      const allowedSortField = ['nombre', 'apellido', 'email', 'created_at'].includes(sort.field)
+        ? sort.field
+        : 'apellido';
+      request = request.order(allowedSortField, { ascending: sort.direction === 'asc' });
+    } else {
+      request = request.order('apellido', { ascending: true });
+    }
+
+    const { data, error } = await request;
 
     if (error) {
       throw new UserManagementError(normalizeError(error, 'Error al cargar administradores'), error);

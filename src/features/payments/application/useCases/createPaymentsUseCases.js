@@ -1,3 +1,5 @@
+import { SORT_DIRECTION, createTableQuery } from '../../../../shared/lib/tableQuery';
+
 export const createPaymentsUseCases = (
   repository,
   {
@@ -10,6 +12,24 @@ export const createPaymentsUseCases = (
     getLatestPaymentsList,
   }
 ) => {
+  const DEFAULT_TABLE_QUERY = createTableQuery({
+    filters: {
+      fecha_inicio: '',
+      fecha_fin: '',
+      estado: '',
+      atleta: '',
+      search: '',
+    },
+    sort: {
+      field: null,
+      direction: SORT_DIRECTION.NONE,
+    },
+    pagination: {
+      page: 1,
+      pageSize: 10,
+    },
+  });
+
   const normalizeText = (value = '') => value
     .toString()
     .normalize('NFD')
@@ -25,19 +45,50 @@ export const createPaymentsUseCases = (
   };
 
   const listModuleDataUseCase = {
-    execute: async () => {
+    execute: async ({ query } = {}) => {
+      const resolvedQuery = createTableQuery({
+        ...DEFAULT_TABLE_QUERY,
+        ...query,
+        filters: {
+          ...DEFAULT_TABLE_QUERY.filters,
+          ...(query?.filters || {}),
+        },
+        sort: {
+          ...DEFAULT_TABLE_QUERY.sort,
+          ...(query?.sort || {}),
+        },
+        pagination: {
+          ...DEFAULT_TABLE_QUERY.pagination,
+          ...(query?.pagination || {}),
+        },
+      });
+
       const [athletes, payments] = await Promise.all([
         repository.listAthletes(),
-        repository.listPayments(),
+        repository.listPayments({ query: resolvedQuery }),
       ]);
 
       const updatedStatuses = await PagoStatusService.actualizarTodosLosEstados();
       if (updatedStatuses?.actualizados > 0) {
-        const refreshedPayments = await repository.listPayments();
-        return { athletes, payments: refreshedPayments, statusUpdateSummary: updatedStatuses };
+        const refreshedPayments = await repository.listPayments({ query: resolvedQuery });
+        return {
+          athletes,
+          payments: filterAndSortLatestPaymentsUseCase.execute({
+            allPayments: refreshedPayments,
+            query: resolvedQuery,
+          }),
+          statusUpdateSummary: updatedStatuses,
+        };
       }
 
-      return { athletes, payments, statusUpdateSummary: updatedStatuses };
+      return {
+        athletes,
+        payments: filterAndSortLatestPaymentsUseCase.execute({
+          allPayments: payments,
+          query: resolvedQuery,
+        }),
+        statusUpdateSummary: updatedStatuses,
+      };
     },
   };
 
@@ -156,17 +207,64 @@ export const createPaymentsUseCases = (
   };
 
   const filterAndSortLatestPaymentsUseCase = {
-    execute: ({ allPayments, filters }) => {
+    execute: ({ allPayments, query, filters }) => {
+      const legacyFilters = filters
+        ? {
+            ...DEFAULT_TABLE_QUERY.filters,
+            ...filters,
+          }
+        : null;
+
+      const resolvedQuery = query
+        ? createTableQuery({
+            ...DEFAULT_TABLE_QUERY,
+            ...query,
+            filters: {
+              ...DEFAULT_TABLE_QUERY.filters,
+              ...(query?.filters || {}),
+            },
+            sort: {
+              ...DEFAULT_TABLE_QUERY.sort,
+              ...(query?.sort || {}),
+            },
+            pagination: {
+              ...DEFAULT_TABLE_QUERY.pagination,
+              ...(query?.pagination || {}),
+            },
+          })
+        : createTableQuery({
+            ...DEFAULT_TABLE_QUERY,
+            filters: legacyFilters || DEFAULT_TABLE_QUERY.filters,
+            sort: legacyFilters
+              ? {
+                  field: legacyFilters.sortBy || 'apellido',
+                  direction: legacyFilters.sortOrder || SORT_DIRECTION.ASC,
+                }
+              : DEFAULT_TABLE_QUERY.sort,
+          });
+
+      const activeFilters = resolvedQuery.filters;
+      const activeSort = resolvedQuery.sort;
+
       const getSortableValue = (payment) => {
-        switch (filters.sortBy) {
-          case 'nombre':
-            return normalizeText(payment.student?.user?.nombre || '');
+        switch (activeSort.field) {
+          case 'atleta':
+            return normalizeText(`${payment.student?.user?.apellido || ''} ${payment.student?.user?.nombre || ''}`.trim());
+          case 'periodo': {
+            const startTs = new Date(payment.fecha_inicio || '1900-01-01').getTime();
+            const endTs = new Date(payment.fecha_fin || payment.fecha_inicio || '1900-01-01').getTime();
+            return startTs + endTs;
+          }
           case 'estado':
             return normalizeText(PagoStatusService.getStatusInfo(payment).estado || '');
           case 'monto':
             return Number(payment.monto || 0);
+          case 'fecha_pago':
+            return new Date(payment.fecha_pago || '1900-01-01').getTime();
           case 'fecha_inicio':
             return new Date(payment.fecha_inicio || '1900-01-01').getTime();
+          case 'nombre':
+            return normalizeText(payment.student?.user?.nombre || '');
           case 'apellido':
           default:
             return normalizeText(payment.student?.user?.apellido || '');
@@ -175,41 +273,49 @@ export const createPaymentsUseCases = (
 
       let filteredData = getLatestPaymentsList(allPayments);
 
-      if (filters.fecha_inicio) {
-        filteredData = filteredData.filter((payment) => payment.fecha_inicio && payment.fecha_inicio >= filters.fecha_inicio);
+      if (activeFilters.fecha_inicio) {
+        filteredData = filteredData.filter(
+          (payment) => payment.fecha_inicio && payment.fecha_inicio >= activeFilters.fecha_inicio
+        );
       }
 
-      if (filters.fecha_fin) {
-        filteredData = filteredData.filter((payment) => !payment.fecha_fin || payment.fecha_fin <= filters.fecha_fin);
+      if (activeFilters.fecha_fin) {
+        filteredData = filteredData.filter(
+          (payment) => !payment.fecha_fin || payment.fecha_fin <= activeFilters.fecha_fin
+        );
       }
 
-      if (filters.estado) {
-        filteredData = filteredData.filter((payment) => PagoStatusService.getStatusInfo(payment).estado === filters.estado);
+      if (activeFilters.estado) {
+        filteredData = filteredData.filter(
+          (payment) => PagoStatusService.getStatusInfo(payment).estado === activeFilters.estado
+        );
       }
 
-      if (filters.atleta) {
-        filteredData = filteredData.filter((payment) => payment.student_id?.toString() === filters.atleta);
+      if (activeFilters.atleta) {
+        filteredData = filteredData.filter((payment) => payment.student_id?.toString() === activeFilters.atleta);
       }
 
-      if (filters.search) {
-        const searchLower = normalizeText(filters.search);
+      if (activeFilters.search) {
+        const searchLower = normalizeText(activeFilters.search);
         filteredData = filteredData.filter((payment) =>
           normalizeText(payment.student?.user?.nombre).includes(searchLower) ||
           normalizeText(payment.student?.user?.apellido).includes(searchLower) ||
           normalizeText(payment.student?.user?.email).includes(searchLower));
       }
 
-      filteredData.sort((a, b) => {
-        const valueA = getSortableValue(a);
-        const valueB = getSortableValue(b);
+      if (activeSort.field && activeSort.direction !== SORT_DIRECTION.NONE) {
+        filteredData.sort((a, b) => {
+          const valueA = getSortableValue(a);
+          const valueB = getSortableValue(b);
 
-        if (typeof valueA === 'number' && typeof valueB === 'number') {
-          return filters.sortOrder === 'asc' ? valueA - valueB : valueB - valueA;
-        }
-        if (valueA < valueB) return filters.sortOrder === 'asc' ? -1 : 1;
-        if (valueA > valueB) return filters.sortOrder === 'asc' ? 1 : -1;
-        return 0;
-      });
+          if (typeof valueA === 'number' && typeof valueB === 'number') {
+            return activeSort.direction === SORT_DIRECTION.ASC ? valueA - valueB : valueB - valueA;
+          }
+          if (valueA < valueB) return activeSort.direction === SORT_DIRECTION.ASC ? -1 : 1;
+          if (valueA > valueB) return activeSort.direction === SORT_DIRECTION.ASC ? 1 : -1;
+          return 0;
+        });
+      }
 
       return filteredData;
     },

@@ -12,7 +12,6 @@ import {
   FaPause,
   FaPhone,
   FaPlay,
-  FaRunning,
   FaStickyNote,
   FaTrash,
   FaUser,
@@ -41,7 +40,7 @@ const INITIAL_FORM = {
 const ROLE_CONFIG = [
   { value: 'administrador', label: 'Administrador', icon: <FaCrown />, color: 'text-amber-300' },
   { value: 'entrenador', label: 'Entrenador', icon: <FaVolleyballBall />, color: 'text-indigo-300' },
-  { value: 'estudiante', label: 'Estudiante', icon: <FaRunning />, color: 'text-emerald-300' }
+  { value: 'estudiante', label: 'Estudiante', icon: <FaUser />, color: 'text-emerald-300' }
 ];
 
 const UsuariosManager = ({ user }) => {
@@ -119,7 +118,7 @@ const UsuariosManager = ({ user }) => {
         formData
       });
 
-      showMessage('success', `${editingUser.email} actualizado. Debe reiniciar sesion para ver cambios de rol.`);
+      showMessage('success', `${editingUser.email} actualizado. Debe reiniciar sesión para ver cambios de rol.`);
       closeModal();
       loadUsuarios();
     } catch (error) {
@@ -130,7 +129,7 @@ const UsuariosManager = ({ user }) => {
 
   const deleteUser = async (usuarioEntry) => {
     const confirmed = globalThis.confirm(
-      `Estas seguro de eliminar al usuario ${usuarioEntry.nombre} ${usuarioEntry.apellido}?`
+      `¿Estás seguro de eliminar al usuario ${usuarioEntry.nombre} ${usuarioEntry.apellido}?`
     );
 
     if (!confirmed) {
@@ -187,10 +186,10 @@ const UsuariosManager = ({ user }) => {
       return;
     }
 
-    const reason = globalThis.prompt('Motivo de la suspension:');
+    const reason = globalThis.prompt('Motivo de la suspensión:');
     if (!reason) return;
 
-    const until = globalThis.prompt('Fecha de finalizacion (YYYY-MM-DD) o vacio para indefinido:');
+    const until = globalThis.prompt('Fecha de finalización (YYYY-MM-DD) o vacío para indefinido:');
 
     suspendUser(usuarioEntry, {
       reason,
@@ -235,9 +234,9 @@ const UsuariosManager = ({ user }) => {
       case 'administrador':
         return 'Acceso completo al sistema';
       case 'entrenador':
-        return 'Gestion de entrenamientos y atletas';
+        return 'Gestión de entrenamientos y estudiantes';
       case 'estudiante':
-        return 'Acceso basico como atleta';
+        return 'Acceso básico como estudiante';
       default:
         return 'Usuario del sistema';
     }
@@ -246,8 +245,8 @@ const UsuariosManager = ({ user }) => {
   return (
     <div className="mx-auto w-full max-w-7xl">
       <SectionHeader
-        title="Gestion de Usuarios"
-        subtitle="Administra roles, estado de cuenta y datos basicos de todos los usuarios."
+        title="Gestión de Usuarios"
+        subtitle="Administra roles, estado de cuenta y datos básicos de todos los usuarios."
         icon={<FaUsers />}
       />
 
@@ -439,7 +438,7 @@ const UsuariosManager = ({ user }) => {
                   {usuarioEntry.telefono ? (
                     <div className="grid grid-cols-[120px_1fr] gap-2">
                       <dt className="font-semibold text-slate-300">
-                        <FaPhone className="mr-1 inline align-middle" /> Telefono
+                        <FaPhone className="mr-1 inline align-middle" /> Teléfono
                       </dt>
                       <dd className="break-words">{usuarioEntry.telefono}</dd>
                     </div>
@@ -455,7 +454,7 @@ const UsuariosManager = ({ user }) => {
                   {usuarioEntry.last_login ? (
                     <div className="grid grid-cols-[120px_1fr] gap-2">
                       <dt className="font-semibold text-slate-300">
-                        <FaClock className="mr-1 inline align-middle" /> Ultimo acceso
+                        <FaClock className="mr-1 inline align-middle" /> Último acceso
                       </dt>
                       <dd>{formatShortDate(usuarioEntry.last_login)}</dd>
                     </div>
@@ -505,7 +504,7 @@ const UsuariosManager = ({ user }) => {
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <section className="space-y-3">
-                <h4 className="text-sm font-bold uppercase tracking-[0.8px] text-rv-gold">Informacion Personal</h4>
+                <h4 className="text-sm font-bold uppercase tracking-[0.8px] text-rv-gold">Información Personal</h4>
 
                 <div className="grid gap-4 mobile:grid-cols-2">
                   <Field label="Nombre">
@@ -537,13 +536,13 @@ const UsuariosManager = ({ user }) => {
                     />
                   </Field>
 
-                  <Field label="Telefono">
+                  <Field label="Teléfono">
                     <input
                       type="tel"
                       value={formData.telefono}
                       onChange={(event) => setFormData((prev) => ({ ...prev, telefono: event.target.value }))}
                       className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
-                      placeholder="Numero de telefono"
+                      placeholder="Número de teléfono"
                     />
                   </Field>
                 </div>

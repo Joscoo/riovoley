@@ -76,22 +76,22 @@ const PERMISSION_MATRIX = {
 };
 
 const PANEL_TABS = [
-  { id: 'athletes', label: 'Atletas' },
+  { id: 'athletes', label: 'Estudiantes' },
   { id: 'trainers', label: 'Entrenadores' },
   { id: 'administrators', label: 'Administradores' },
 ];
 
 export const createUserManagementUseCases = (repository) => {
   const listAthletesUseCase = {
-    execute: async () => repository.listAthletes(),
+    execute: async ({ query } = {}) => repository.listAthletes({ query }),
   };
 
   const listTrainersUseCase = {
-    execute: async () => repository.listTrainers(),
+    execute: async ({ query } = {}) => repository.listTrainers({ query }),
   };
 
   const listAdministratorsUseCase = {
-    execute: async () => repository.listAdministrators(),
+    execute: async ({ query } = {}) => repository.listAdministrators({ query }),
   };
 
   const createUserUseCase = {

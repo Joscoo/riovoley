@@ -120,7 +120,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
 
       <div className="mb-6 grid gap-4 mobile:grid-cols-2 desktop:grid-cols-3">
         <StatCard
-          title="Total Atletas"
+          title="Total Estudiantes"
           value={stats.totalAtletas}
           icon={<FaUsers />}
           borderClass="border-l-green-400"
@@ -163,7 +163,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
         />
 
         <StatCard
-          title="Atletas Activos"
+          title="Estudiantes Activos"
           value={stats.atletasActivos}
           icon={<FaRunning />}
           borderClass="border-l-green-400"
@@ -203,7 +203,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
           </h3>
           <div className="space-y-2">
             <Button variant="secondary" className="w-full justify-start" onClick={() => onNavigateToSection('usuarios')}>
-              <FaUserPlus className="mr-2" /> Agregar Atleta
+              <FaUserPlus className="mr-2" /> Agregar Estudiante
             </Button>
             <Button variant="secondary" className="w-full justify-start" onClick={() => onNavigateToSection('pagos')}>
               <FaCreditCard className="mr-2" /> Registrar Pago

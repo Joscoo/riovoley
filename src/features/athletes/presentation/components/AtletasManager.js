@@ -83,7 +83,7 @@ const AtletasManager = ({ user }) => {
         actions={
           <div className="flex w-full flex-col gap-2 mobile:w-auto mobile:flex-row">
             <Button className="w-full mobile:w-auto" onClick={() => openModal()}>
-              <FaPlus className="mr-2" /> Agregar Atleta
+              <FaPlus className="mr-2" /> Agregar Estudiante
             </Button>
             <Button variant="outline" className="w-full mobile:w-auto" onClick={requestCleanOrphanUsers}>
               <FaBroom className="mr-2" /> Limpiar DB
@@ -216,7 +216,7 @@ const AtletasManager = ({ user }) => {
       </Card>
 
       <p className="mb-4 text-sm text-slate-200">
-        Mostrando {paginatedAtletas.length} de {filteredAtletas.length} atletas.
+        Mostrando {paginatedAtletas.length} de {filteredAtletas.length} estudiantes.
       </p>
 
       {loading ? (
@@ -229,11 +229,11 @@ const AtletasManager = ({ user }) => {
       ) : filteredAtletas.length === 0 ? (
         <EmptyState
           icon={<FaUsers />}
-          title="No hay atletas registrados"
+          title="No hay estudiantes registrados"
           description="Agrega el primer atleta al club"
           action={
             <Button onClick={() => openModal()}>
-              <FaPlus className="mr-2" /> Agregar Atleta
+              <FaPlus className="mr-2" /> Agregar Estudiante
             </Button>
           }
         />
@@ -272,7 +272,7 @@ const AtletasManager = ({ user }) => {
                       className="border-emerald-400/40 bg-emerald-500/15 text-emerald-800 hover:bg-emerald-500/25"
                       onClick={() => openModal(atleta)}
                       title="Editar"
-                      aria-label={`Editar atleta ${atleta.full_name}`}
+                      aria-label={`Editar estudiante ${atleta.full_name}`}
                     >
                       <FaEdit />
                     </Button>
@@ -291,7 +291,7 @@ const AtletasManager = ({ user }) => {
                       variant="danger"
                       onClick={() => requestDeleteAtleta(atleta)}
                       title="Eliminar"
-                      aria-label={`Eliminar atleta ${atleta.full_name}`}
+                      aria-label={`Eliminar estudiante ${atleta.full_name}`}
                     >
                       <FaTrash />
                     </Button>
@@ -367,12 +367,12 @@ const AtletasManager = ({ user }) => {
                 {editingAtleta ? (
                   <>
                     <FaEdit className="mr-2 inline align-middle text-rv-gold" />
-                    <span className="align-middle">Editar Atleta</span>
+                    <span className="align-middle">Editar Estudiante</span>
                   </>
                 ) : (
                   <>
                     <FaPlus className="mr-2 inline align-middle text-rv-gold" />
-                    <span className="align-middle">Agregar Nuevo Atleta</span>
+                    <span className="align-middle">Agregar Nuevo Estudiante</span>
                   </>
                 )}
               </h3>

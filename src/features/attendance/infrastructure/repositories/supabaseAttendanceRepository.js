@@ -25,11 +25,10 @@ export class SupabaseAttendanceRepository {
     return data || [];
   }
 
-  async listAttendances({ dateFrom, dateTo, studentIds, studentId } = {}) {
+  async listAttendances({ dateFrom, dateTo, studentIds, studentId, paymentTypeId, sort } = {}) {
     let query = supabase
       .from('attendances')
-      .select('*')
-      .order('fecha', { ascending: false });
+      .select('*');
 
     if (dateFrom && dateTo) {
       query = query.gte('fecha', dateFrom).lte('fecha', dateTo);
@@ -39,6 +38,17 @@ export class SupabaseAttendanceRepository {
     }
     if (studentId) {
       query = query.eq('student_id', studentId);
+    }
+    if (paymentTypeId) {
+      query = query.eq('metodo_pago_id', paymentTypeId);
+    }
+
+    const sortField = sort?.field;
+    const ascending = sort?.direction === 'asc';
+    if (sortField === 'metodo_pago_id') {
+      query = query.order('metodo_pago_id', { ascending });
+    } else {
+      query = query.order('fecha', { ascending });
     }
 
     const { data, error } = await query;

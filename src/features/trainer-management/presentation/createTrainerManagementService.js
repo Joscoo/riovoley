@@ -4,7 +4,7 @@ import { SupabaseTrainerManagementRepository } from '../infrastructure/repositor
 export const createTrainerManagementService = (repository = new SupabaseTrainerManagementRepository()) => {
   const useCases = createTrainerManagementUseCases(repository);
 
-  const loadEntrenadores = async () => useCases.loadEntrenadoresUseCase.execute();
+  const loadEntrenadores = async ({ query } = {}) => useCases.loadEntrenadoresUseCase.execute({ query });
   const saveEntrenador = async ({ editingEntrenador, formData }) =>
     useCases.saveEntrenadorUseCase.execute({ editingEntrenador, formData });
   const deleteEntrenador = async ({ trainerId }) => useCases.deleteEntrenadorUseCase.execute({ trainerId });

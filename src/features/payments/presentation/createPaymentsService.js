@@ -16,7 +16,7 @@ export const createPaymentsService = (repository = new SupabasePaymentsRepositor
     getEcuadorISOString,
     getLatestPaymentsList,
   });
-  const listModuleData = async () => useCases.listModuleDataUseCase.execute();
+  const listModuleData = async ({ query } = {}) => useCases.listModuleDataUseCase.execute({ query });
   const createPayment = async ({ formData }) => useCases.createPaymentUseCase.execute({ formData });
   const updatePayment = async ({ paymentId, formData }) => useCases.updatePaymentUseCase.execute({ paymentId, formData });
   const deletePayment = async ({ paymentId }) => useCases.deletePaymentUseCase.execute({ paymentId });

@@ -8,12 +8,37 @@ const normalizeError = (error, fallback) => {
 };
 
 export class SupabaseSchedulesRepository {
-  async listSchedules() {
-    const { data, error } = await supabase
+  async listSchedules({ query } = {}) {
+    let request = supabase
       .from('schedules')
-      .select('*')
-      .order('dia_semana', { ascending: true })
-      .order('hora_inicio', { ascending: true });
+      .select('*');
+
+    const filters = query?.filters || {};
+    const sort = query?.sort || {};
+
+    if (filters.dia_semana && filters.dia_semana !== 'todos') {
+      request = request.eq('dia_semana', filters.dia_semana);
+    }
+
+    if (filters.categoria && filters.categoria !== 'todos') {
+      request = request.eq('categoria', filters.categoria);
+    }
+
+    if (sort.field && sort.direction && sort.direction !== 'none') {
+      const allowedField = ['dia_semana', 'hora_inicio', 'hora_fin', 'categoria'].includes(sort.field)
+        ? sort.field
+        : 'dia_semana';
+      request = request.order(allowedField, { ascending: sort.direction === 'asc' });
+      if (allowedField !== 'hora_inicio') {
+        request = request.order('hora_inicio', { ascending: true });
+      }
+    } else {
+      request = request
+        .order('dia_semana', { ascending: true })
+        .order('hora_inicio', { ascending: true });
+    }
+
+    const { data, error } = await request;
 
     if (error) {
       throw new SchedulesError(normalizeError(error, 'Error cargando horarios'), error);

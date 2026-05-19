@@ -89,6 +89,11 @@ const HorariosManager = ({ user }) => {
     setFilterDay,
     filterCategory,
     setFilterCategory,
+    sortField,
+    setSortField,
+    sortDirection,
+    setSortDirection,
+    resetFilters,
     formData,
     message,
     deleteDialog,
@@ -304,9 +309,10 @@ const HorariosManager = ({ user }) => {
         <p className="mb-3 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-rv-gold">
           <FaFilter /> Filtrar Horarios
         </p>
-        <div className="grid gap-3 mobile:grid-cols-2">
+        <div className="grid gap-3 mobile:grid-cols-2 desktop:grid-cols-5">
           <Field label="Dia">
             <select
+              id="schedules-filter-day"
               value={filterDay}
               onChange={(event) => setFilterDay(event.target.value)}
               className="h-12 w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
@@ -320,6 +326,7 @@ const HorariosManager = ({ user }) => {
 
           <Field label="Categoria">
             <select
+              id="schedules-filter-category"
               value={filterCategory}
               onChange={(event) => setFilterCategory(event.target.value)}
               className="h-12 w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
@@ -330,6 +337,44 @@ const HorariosManager = ({ user }) => {
               ))}
             </select>
           </Field>
+
+          <Field label="Ordenar por">
+            <select
+              id="schedules-sort-field"
+              value={sortField}
+              onChange={(event) => setSortField(event.target.value)}
+              className="h-12 w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+            >
+              <option value="dia_semana">Dia</option>
+              <option value="hora_inicio">Hora inicio</option>
+              <option value="hora_fin">Hora fin</option>
+              <option value="categoria">Categoria</option>
+            </select>
+          </Field>
+
+          <Field label="Direccion">
+            <select
+              id="schedules-sort-direction"
+              value={sortDirection}
+              onChange={(event) => setSortDirection(event.target.value)}
+              className="h-12 w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+            >
+              <option value="asc">Ascendente</option>
+              <option value="desc">Descendente</option>
+            </select>
+          </Field>
+
+          <div className="flex flex-col justify-end">
+            <Button
+              id="schedules-clear-filters"
+              type="button"
+              variant="secondary"
+              className="w-full"
+              onClick={resetFilters}
+            >
+              Limpiar filtros
+            </Button>
+          </div>
         </div>
       </Card>
 
