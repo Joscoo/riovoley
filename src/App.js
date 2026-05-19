@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 
-import Navbar from './components/Navbar'; // Con mayúscula
+import Navbar from './components/Navbar';
 import HomePage from './components/HomePage';
 import AboutUs from './components/AboutUs';
 import Horarios from './components/Horarios';
@@ -9,25 +9,15 @@ import { Login, ResetPassword } from './features/auth-session';
 import { useUserProfile } from './features/auth-profile';
 import { getCurrentUser } from './config/supabase';
 import { ToastProvider } from './contexts/ToastContext';
+import { RenderProfileProvider } from './shared/ui';
 
-// Code splitting: Lazy load de paneles pesados
 const LazyAdminPanel = lazy(() => import('./features/admin-dashboard/presentation/components/AdminPanel'));
 const LazyTrainerPanel = lazy(() => import('./features/trainer-dashboard/presentation/components/TrainerPanel'));
 const StudentPanel = lazy(() => import('./features/student-dashboard/presentation/components/StudentPanel'));
 
-// Loading fallback component
 const LoadingFallback = () => (
-  <div style={{ 
-    display: 'flex', 
-    justifyContent: 'center', 
-    alignItems: 'center', 
-    height: '100vh',
-    fontSize: '18px',
-    color: '#666'
-  }}>
-    <div>
-      <div style={{ marginBottom: '10px' }}>⏳ Cargando...</div>
-    </div>
+  <div className="flex min-h-[100dvh] items-center justify-center bg-rv-dark text-base font-semibold text-slate-100">
+    Cargando...
   </div>
 );
 
@@ -65,13 +55,17 @@ function AppContent() {
     return (
       <>
         <Navbar user={null} userProfile={null} onLogout={handleLogout} />
-        <div style={{ 
-          display: 'flex', 
-          justifyContent: 'center', 
-          alignItems: 'center', 
-          minHeight: 'calc(100vh - 65px)',
-          fontSize: '18px'
-        }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            minHeight: 'calc(100vh - 65px)',
+            fontSize: '18px',
+            background: '#0a0a0a',
+            color: '#e2e8f0',
+          }}
+        >
           Cargando...
         </div>
       </>
@@ -97,9 +91,11 @@ function AppContent() {
 function App() {
   return (
     <ToastProvider>
-      <Router>
-        <AppContent />
-      </Router>
+      <RenderProfileProvider>
+        <Router>
+          <AppContent />
+        </Router>
+      </RenderProfileProvider>
     </ToastProvider>
   );
 }

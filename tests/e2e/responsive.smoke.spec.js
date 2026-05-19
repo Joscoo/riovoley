@@ -55,6 +55,22 @@ async function getSmallTouchTargets(page) {
   }, MIN_TOUCH_SIZE);
 }
 
+async function getRenderSurfaceState(page) {
+  return page.evaluate(() => {
+    const htmlStyle = window.getComputedStyle(document.documentElement);
+    const bodyStyle = window.getComputedStyle(document.body);
+    const root = document.getElementById('root');
+    const rootStyle = root ? window.getComputedStyle(root) : null;
+
+    return {
+      htmlBackground: htmlStyle.backgroundColor,
+      bodyBackground: bodyStyle.backgroundColor,
+      rootBackground: rootStyle?.backgroundColor || '',
+      renderProfile: document.documentElement.dataset.renderProfile || '',
+    };
+  });
+}
+
 for (const route of PUBLIC_ROUTES) {
   test(`public route responsive guard: ${route}`, async ({ page }) => {
     await page.goto(route, { waitUntil: 'domcontentloaded' });
@@ -71,6 +87,12 @@ for (const route of PUBLIC_ROUTES) {
       smallTargets,
       `Touch targets < ${MIN_TOUCH_SIZE}px found at ${route}: ${JSON.stringify(smallTargets, null, 2)}`
     ).toEqual([]);
+
+    const renderState = await getRenderSurfaceState(page);
+    expect(renderState.renderProfile, `Missing render profile at ${route}`).toMatch(/full|lite|ultraLite/);
+    expect(renderState.htmlBackground, `Unexpected white html background at ${route}`).not.toBe('rgb(255, 255, 255)');
+    expect(renderState.bodyBackground, `Unexpected white body background at ${route}`).not.toBe('rgb(255, 255, 255)');
+    expect(renderState.rootBackground, `Unexpected white root background at ${route}`).not.toBe('rgb(255, 255, 255)');
   });
 }
 

@@ -86,7 +86,7 @@ const Navbar = ({ user, userProfile, onLogout }) => {
   return (
     <>
       <nav
-        className="fixed left-0 right-0 top-0 z-[1200] isolate flex h-[56px] w-full max-w-full items-center justify-between overflow-visible border-b-2 border-rv-gold/20 bg-gradient-to-br from-rv-dark/95 to-rv-deepBlue/90 pl-1 pr-1 pt-[env(safe-area-inset-top)] shadow-[0_4px_30px_rgba(0,0,0,0.3),0_0_60px_rgba(255,215,0,0.1)] backdrop-blur-[20px] mobile:h-[65px] mobile:pl-3 mobile:pr-3 tablet:h-[70px] tablet:px-5 desktop:px-10"
+        className="rv-performance-nav fixed left-0 right-0 top-0 z-[1200] isolate flex h-[56px] w-full max-w-full items-center justify-between overflow-visible border-b-2 border-rv-gold/20 bg-gradient-to-br from-rv-dark/95 to-rv-deepBlue/90 pl-1 pr-1 pt-[env(safe-area-inset-top)] shadow-[0_4px_30px_rgba(0,0,0,0.3),0_0_60px_rgba(255,215,0,0.1)] backdrop-blur-[20px] mobile:h-[65px] mobile:pl-3 mobile:pr-3 tablet:h-[70px] tablet:px-5 desktop:px-10"
         ref={navRef}
       >
         <Link
@@ -96,11 +96,8 @@ const Navbar = ({ user, userProfile, onLogout }) => {
           <img
             src="/images/logoRio.png"
             alt="Logo Riovoley"
-            className="mr-0 h-9 w-auto rounded-xl object-contain transition-transform duration-200 group-hover:scale-[1.02] mobile:mr-2 mobile:h-10 tablet:mr-3 tablet:h-12 xl:h-14"
+            className="h-9 w-auto rounded-xl object-contain transition-transform duration-200 group-hover:scale-[1.02] mobile:h-10 tablet:h-12 xl:h-14"
           />
-          <h1 className="hidden max-w-[180px] truncate bg-gradient-to-br from-white to-rv-gold bg-clip-text text-[1.35rem] font-black tracking-wide text-transparent transition-all duration-300 group-hover:brightness-110 xl:block">
-            RioVoley
-          </h1>
         </Link>
 
         <div className="ml-auto hidden items-center gap-4 xl:flex">
@@ -239,7 +236,7 @@ const Navbar = ({ user, userProfile, onLogout }) => {
       <ul
         ref={mobileMenuRef}
         className={cn(
-          'fixed bottom-0 right-0 top-[calc(56px+env(safe-area-inset-top))] z-[1201] m-0 flex w-[86vw] max-w-[340px] list-none flex-col gap-2 border-l border-white/10 bg-gradient-to-br from-slate-800/98 to-slate-700/98 p-3 pb-5 shadow-[-12px_0_24px_rgba(0,0,0,0.3)] backdrop-blur-md transition-transform duration-300 mobile:top-[calc(65px+env(safe-area-inset-top))] tablet:top-[calc(70px+env(safe-area-inset-top))] xl:hidden',
+          'rv-performance-nav fixed bottom-0 right-0 top-[calc(56px+env(safe-area-inset-top))] z-[1201] m-0 flex w-[86vw] max-w-[340px] list-none flex-col gap-2 border-l border-white/10 bg-gradient-to-br from-slate-800/98 to-slate-700/98 p-3 pb-5 shadow-[-12px_0_24px_rgba(0,0,0,0.3)] backdrop-blur-md transition-transform duration-300 mobile:top-[calc(65px+env(safe-area-inset-top))] tablet:top-[calc(70px+env(safe-area-inset-top))] xl:hidden',
           isLandingRoute ? 'overflow-y-hidden' : 'overflow-y-auto',
           menuOpen ? 'translate-x-0' : 'pointer-events-none translate-x-full'
         )}

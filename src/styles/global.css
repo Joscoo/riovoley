@@ -10,6 +10,7 @@ body {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+  background-color: #0a0a0a;
 }
 
 body {
@@ -18,9 +19,14 @@ body {
   font-size: 16px;
   line-height: 1.6;
   padding-top: var(--rv-navbar-height-desktop, 60px);
-  background-color: #fff;
-  color: #000;
+  background-color: #0a0a0a;
+  color: #f8fafc;
   -webkit-tap-highlight-color: transparent;
+}
+
+#root {
+  min-height: 100dvh;
+  background-color: #0a0a0a;
 }
 
 input,
@@ -75,4 +81,31 @@ img,
 video,
 iframe {
   max-width: 100%;
+}
+
+html[data-render-profile='lite'] .rv-performance-video {
+  filter: brightness(0.52) saturate(1.15) !important;
+}
+
+html[data-render-profile='lite'] .rv-performance-card,
+html[data-render-profile='lite'] .rv-performance-nav,
+html[data-render-profile='lite'] .rv-performance-sidebar {
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+html[data-render-profile='ultraLite'] .rv-performance-video {
+  display: none !important;
+}
+
+html[data-render-profile='ultraLite'] .rv-performance-card,
+html[data-render-profile='ultraLite'] .rv-performance-nav,
+html[data-render-profile='ultraLite'] .rv-performance-sidebar {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+html[data-render-profile='ultraLite'] .rv-performance-overlay {
+  background: linear-gradient(140deg, rgba(10, 10, 10, 0.98) 0%, rgba(10, 10, 10, 0.94) 100%) !important;
 }

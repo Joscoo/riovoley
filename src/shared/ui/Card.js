@@ -4,7 +4,7 @@ import { cva } from 'class-variance-authority';
 import { cn } from '../../lib/cn';
 
 const cardVariants = cva(
-  'rounded-2xl border backdrop-blur-md transition-all duration-200',
+  'rv-performance-card rounded-2xl border backdrop-blur-md transition-all duration-200',
   {
     variants: {
       variant: {

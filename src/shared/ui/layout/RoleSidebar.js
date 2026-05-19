@@ -176,7 +176,7 @@ const RoleSidebar = ({
       <button
         type="button"
         onClick={() => setIsMobileOpen(true)}
-        className="fixed left-3 top-[62px] z-[1001] flex h-11 w-11 items-center justify-center rounded-full border border-rv-gold/40 bg-rv-dark/85 text-rv-gold shadow-[0_6px_18px_rgba(0,0,0,0.35)] backdrop-blur-md transition-all duration-200 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 mobile:top-[72px] desktop:hidden"
+        className="rv-performance-sidebar fixed left-3 top-[62px] z-[1001] flex h-11 w-11 items-center justify-center rounded-full border border-rv-gold/40 bg-rv-dark/85 text-rv-gold shadow-[0_6px_18px_rgba(0,0,0,0.35)] backdrop-blur-md transition-all duration-200 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 mobile:top-[72px] desktop:hidden"
         aria-label="Abrir menu lateral"
         aria-expanded={isMobileOpen}
       >
@@ -185,7 +185,7 @@ const RoleSidebar = ({
 
       <div
         className={cn(
-          'fixed bottom-0 left-0 right-0 top-[56px] z-[1002] bg-black/60 backdrop-blur-[2px] transition-opacity duration-200 mobile:top-[65px] desktop:hidden',
+          'rv-performance-sidebar fixed bottom-0 left-0 right-0 top-[56px] z-[1002] bg-black/60 backdrop-blur-[2px] transition-opacity duration-200 mobile:top-[65px] desktop:hidden',
           isMobileOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
         )}
         onClick={() => setIsMobileOpen(false)}
@@ -193,7 +193,7 @@ const RoleSidebar = ({
       >
         <WrapperTag
           className={cn(
-            'absolute bottom-0 left-0 top-0 h-full w-[92vw] max-w-[340px] overflow-y-auto border-r-2 border-rv-gold/20 bg-rv-dark/95 px-2 py-4 shadow-[0_16px_40px_rgba(0,0,0,0.5)] backdrop-blur-[14px] transition-transform duration-300',
+            'rv-performance-sidebar absolute bottom-0 left-0 top-0 h-full w-[92vw] max-w-[340px] overflow-y-auto border-r-2 border-rv-gold/20 bg-rv-dark/95 px-2 py-4 shadow-[0_16px_40px_rgba(0,0,0,0.5)] backdrop-blur-[14px] transition-transform duration-300',
             isMobileOpen ? 'translate-x-0' : '-translate-x-full',
             className
           )}
