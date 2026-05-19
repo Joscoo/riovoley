@@ -17,6 +17,8 @@ const createBuilder = (result) => {
     update: jest.fn(() => builder),
     delete: jest.fn(() => builder),
     eq: jest.fn(() => builder),
+    gte: jest.fn(() => builder),
+    lte: jest.fn(() => builder),
     single: jest.fn(() => Promise.resolve(result)),
   };
   return builder;
@@ -41,6 +43,21 @@ describe('SupabasePaymentsRepository', () => {
     expect(result).toHaveLength(1);
   });
 
+  it('listMembershipTypes retorna catalogo activo', async () => {
+    const builder = createBuilder({
+      data: [{ id: 1, code: 'normal', costo: 35 }],
+      error: null,
+    });
+    supabase.from.mockReturnValue(builder);
+
+    const repository = new SupabasePaymentsRepository();
+    const result = await repository.listMembershipTypes();
+
+    expect(supabase.from).toHaveBeenCalledWith('membership_types');
+    expect(builder.eq).toHaveBeenCalledWith('active', true);
+    expect(result[0].code).toBe('normal');
+  });
+
   it('listPayments lanza PaymentsError cuando hay error de supabase', async () => {
     const builder = createBuilder({
       data: null,
@@ -56,16 +73,29 @@ describe('SupabasePaymentsRepository', () => {
 
   it('createPayment retorna el pago creado', async () => {
     const builder = createBuilder({
-      data: { id: 'payment-1', monto: 20 },
+      data: { id: 'payment-1', membership_type_id: 1 },
       error: null,
     });
     supabase.from.mockReturnValue(builder);
 
     const repository = new SupabasePaymentsRepository();
-    const result = await repository.createPayment({ monto: 20 });
+    const result = await repository.createPayment({ membership_type_id: 1 });
 
-    expect(builder.insert).toHaveBeenCalledWith({ monto: 20 });
+    expect(builder.insert).toHaveBeenCalledWith({ membership_type_id: 1 });
     expect(result.id).toBe('payment-1');
+  });
+
+  it('getPaymentPeriodPreview devuelve payload base cuando se solicita preview', async () => {
+    const repository = new SupabasePaymentsRepository();
+    const result = await repository.getPaymentPeriodPreview({
+      studentId: 'student-1',
+      fechaPago: '2026-06-01',
+    });
+
+    expect(result).toEqual({
+      studentId: 'student-1',
+      fecha_pago: '2026-06-01',
+    });
   });
 
   it('getAthleteByStudentId lanza PaymentsError ante error', async () => {

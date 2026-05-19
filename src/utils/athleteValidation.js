@@ -102,7 +102,7 @@ export const validateAthleteBirthDate = (birthDateString, minAge = MIN_ATHLETE_A
   if (age < minAge) {
     return {
       isValid: false,
-      error: `El atleta debe tener al menos ${minAge} anos.`,
+      error: `El atleta debe tener al menos ${minAge} años.`,
       age,
     };
   }

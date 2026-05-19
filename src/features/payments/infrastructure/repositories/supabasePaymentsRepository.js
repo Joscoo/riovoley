@@ -12,6 +12,7 @@ const SORTABLE_FIELDS = {
   estado: 'estado',
   fecha_inicio: 'fecha_inicio',
   fecha_pago: 'fecha_pago',
+  membership_type: 'membership_type_id',
 };
 
 const resolveSortDirection = (direction) => (direction === 'desc' ? false : true);
@@ -29,6 +30,20 @@ export class SupabasePaymentsRepository {
 
     if (error) {
       throw new PaymentsError(normalizeError(error, 'Error al cargar atletas para pagos'), error);
+    }
+
+    return data || [];
+  }
+
+  async listMembershipTypes() {
+    const { data, error } = await supabase
+      .from('membership_types')
+      .select('id, code, nombre, detalle, costo, active')
+      .eq('active', true)
+      .order('costo', { ascending: false });
+
+    if (error) {
+      throw new PaymentsError(normalizeError(error, 'Error al cargar tipos de mensualidad'), error);
     }
 
     return data || [];
@@ -66,6 +81,10 @@ export class SupabasePaymentsRepository {
       request = request.eq('student_id', filters.atleta);
     }
 
+    if (filters.membership_type) {
+      request = request.eq('membership_type_id', filters.membership_type);
+    }
+
     const backendSortField = SORTABLE_FIELDS[sort.field];
     if (backendSortField && sort.direction && sort.direction !== 'none') {
       request = request.order(backendSortField, { ascending: resolveSortDirection(sort.direction) });
@@ -86,7 +105,7 @@ export class SupabasePaymentsRepository {
     const { data, error } = await supabase
       .from('payments')
       .insert(payload)
-      .select()
+      .select('*')
       .single();
 
     if (error) {
@@ -116,6 +135,14 @@ export class SupabasePaymentsRepository {
     if (error) {
       throw new PaymentsError(normalizeError(error, 'Error eliminando pago'), error);
     }
+  }
+
+  async getPaymentPeriodPreview({ studentId, fechaPago }) {
+    const safeDate = fechaPago || new Date().toISOString().slice(0, 10);
+    return {
+      studentId,
+      fecha_pago: safeDate,
+    };
   }
 
   async getAthleteByStudentId(studentId) {

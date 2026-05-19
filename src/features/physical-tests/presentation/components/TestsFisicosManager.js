@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { physicalTestsService } from '../../physicalTestsService';
+import { Button, Card, Field } from '../../../../shared/ui';
 import { 
   FaEdit, FaPlus, FaClock, FaSave, FaDumbbell, FaTrash, 
   FaUsers, FaCheckCircle, FaExclamationTriangle, FaChartLine,
@@ -10,6 +11,9 @@ import {
   FaHandPaper, FaRunning, FaFire, FaArrowsAltH,
   FaStickyNote, FaSearch
 } from 'react-icons/fa';
+
+const INPUT_BASE =
+  'min-h-12 w-full rounded-lg border-2 border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 transition-all duration-200 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/30';
 
 const styles = {
   testsFisicosManager: 'mx-auto w-full max-w-7xl space-y-4',
@@ -35,11 +39,18 @@ const styles = {
   pendienteCard: 'flex items-center justify-between gap-2 rounded-xl border border-amber-300/30 bg-black/30 p-3',
   pendienteInfo: '[&_h4]:text-sm [&_h4]:font-bold [&_h4]:text-white',
   quickAddButton: 'inline-flex min-h-[48px] min-w-[48px] items-center justify-center rounded-full border border-amber-300/45 bg-amber-500/20 text-amber-200 transition hover:bg-amber-500/35',
-  filtersSection: 'grid gap-3 rounded-2xl border border-white/15 bg-black/30 p-4 mobile:grid-cols-2 tablet:grid-cols-3 desktop:grid-cols-5',
-  filterGroup: '[&_label]:mb-1 [&_label]:inline-flex [&_label]:items-center [&_label]:gap-2 [&_label]:text-xs [&_label]:font-bold [&_label]:uppercase [&_label]:tracking-wide [&_label]:text-rv-gold/90',
-  searchInput: 'min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70',
-  filterSelect: 'min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70',
-  filterInput: 'min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70',
+  filtersCard: 'mb-4',
+  filtersSection: 'space-y-4',
+  filtersTopGrid: 'grid gap-4 tablet:grid-cols-[2fr_1fr]',
+  filtersBottomGrid: 'grid gap-4 mobile:grid-cols-2 desktop:grid-cols-4',
+  filtersActions: 'grid gap-4 mobile:grid-cols-2',
+  filterSummary: 'flex h-full items-end',
+  filterSummaryBox: 'w-full rounded-lg border border-white/15 bg-black/20 px-3 py-2 text-xs text-slate-200',
+  filterHint: 'text-[11px] text-slate-300',
+  searchInput: INPUT_BASE,
+  filterSelect: INPUT_BASE,
+  filterInput: INPUT_BASE,
+  actionButton: 'w-full',
   checkboxLabel: 'inline-flex min-h-[48px] cursor-pointer items-center gap-2 rounded-xl border border-white/15 bg-black/20 px-3 py-2 text-sm text-slate-100',
   checkbox: 'h-4 w-4 accent-rv-gold',
   loading: 'flex min-h-[40dvh] flex-col items-center justify-center gap-3 text-white',
@@ -194,6 +205,20 @@ const TestsFisicosManager = ({ user }) => {
   const resetFilters = () => {
     setFilters(defaultFilters);
   };
+
+  const updateFilter = (key, value) => {
+    setFilters((current) => ({ ...current, [key]: value }));
+  };
+
+  const activeFiltersCount = [
+    filters.search,
+    filters.atletaId,
+    filters.fechaDesde,
+    filters.fechaHasta,
+    filters.onlyPending,
+    filters.sortField !== defaultFilters.sortField,
+    filters.sortDirection !== defaultFilters.sortDirection,
+  ].filter(Boolean).length;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -658,114 +683,119 @@ const TestsFisicosManager = ({ user }) => {
       )}
 
       {/* Filtros */}
-      <div className={styles.filtersSection}>
-        <div className={styles.filterGroup}>
-          <label htmlFor="search-tests"><FaSearch /> Buscar Estudiante</label>
-          <input
-            id="search-tests"
-            type="text"
-            placeholder="Buscar por nombre de atleta..."
-            value={filters.search}
-            onChange={(e) => setFilters({...filters, search: e.target.value})}
-            className={styles.searchInput}
-            autoComplete="off"
-          />
-        </div>
+      <Card className={styles.filtersCard}>
+        <div className={styles.filtersSection} role="search" aria-label="Filtros de tests fisicos">
+          <div className={styles.filtersTopGrid}>
+            <Field label="Buscar Estudiante" icon={<FaSearch />}>
+              <input
+                id="search-tests"
+                type="text"
+                placeholder="Buscar por nombre de atleta..."
+                value={filters.search}
+                onChange={(e) => updateFilter('search', e.target.value)}
+                className={styles.searchInput}
+                autoComplete="off"
+              />
+            </Field>
 
-        <div className={styles.filterGroup}>
-          <label><FaFilter /> Filtrar por Estudiante</label>
-          <select
-            id="physical-tests-athlete-filter"
-            value={filters.atletaId}
-            onChange={(e) => setFilters({...filters, atletaId: e.target.value})}
-            className={styles.filterSelect}
-          >
-            <option value="">Todos los atletas</option>
-            {atletas.map(atleta => (
-              <option key={atleta.id} value={atleta.id}>
-                {atleta.full_name}
-              </option>
-            ))}
-          </select>
-        </div>
-        
-        <div className={styles.filterGroup}>
-          <label><FaCalendarAlt /> Desde</label>
-          <input
-            id="physical-tests-start-date"
-            type="date"
-            placeholder="Fecha desde"
-            value={filters.fechaDesde}
-            onChange={(e) => setFilters({...filters, fechaDesde: e.target.value})}
-            className={styles.filterInput}
-          />
-        </div>
+            <div className={styles.filterSummary}>
+              <div className={styles.filterSummaryBox}>
+                <p className="font-semibold text-white">Resultados: {tests.length} tests</p>
+                <p className={styles.filterHint}>Filtros activos: {activeFiltersCount}</p>
+              </div>
+            </div>
+          </div>
 
-        <div className={styles.filterGroup}>
-          <label><FaCalendarAlt /> Hasta</label>
-          <input
-            id="physical-tests-end-date"
-            type="date"
-            placeholder="Fecha hasta"
-            value={filters.fechaHasta}
-            onChange={(e) => setFilters({...filters, fechaHasta: e.target.value})}
-            className={styles.filterInput}
-          />
-        </div>
+          <div className={styles.filtersBottomGrid}>
+            <Field label="Atleta" icon={<FaFilter />}>
+              <select
+                id="physical-tests-athlete-filter"
+                value={filters.atletaId}
+                onChange={(e) => updateFilter('atletaId', e.target.value)}
+                className={styles.filterSelect}
+              >
+                <option value="">Todos los atletas</option>
+                {atletas.map((atleta) => (
+                  <option key={atleta.id} value={atleta.id}>
+                    {atleta.full_name}
+                  </option>
+                ))}
+              </select>
+            </Field>
 
-        <div className={styles.filterGroup}>
-          <label>Ordenar por</label>
-          <select
-            id="physical-tests-sort-field"
-            value={filters.sortField}
-            onChange={(e) => setFilters({ ...filters, sortField: e.target.value })}
-            className={styles.filterSelect}
-          >
-            <option value="fecha_test">Fecha test</option>
-            <option value="estatura">Estatura</option>
-            <option value="peso">Peso</option>
-            <option value="fuerza_abdomen">Fuerza abdomen</option>
-          </select>
-        </div>
+            <Field label="Desde" icon={<FaCalendarAlt />}>
+              <input
+                id="physical-tests-start-date"
+                type="date"
+                value={filters.fechaDesde}
+                onChange={(e) => updateFilter('fechaDesde', e.target.value)}
+                className={styles.filterInput}
+              />
+            </Field>
 
-        <div className={styles.filterGroup}>
-          <label>Direccion</label>
-          <select
-            id="physical-tests-sort-direction"
-            value={filters.sortDirection}
-            onChange={(e) => setFilters({ ...filters, sortDirection: e.target.value })}
-            className={styles.filterSelect}
-          >
-            <option value="desc">Descendente</option>
-            <option value="asc">Ascendente</option>
-          </select>
-        </div>
+            <Field label="Hasta" icon={<FaCalendarAlt />}>
+              <input
+                id="physical-tests-end-date"
+                type="date"
+                value={filters.fechaHasta}
+                onChange={(e) => updateFilter('fechaHasta', e.target.value)}
+                className={styles.filterInput}
+              />
+            </Field>
 
-        <div className={styles.filterGroup}>
-          <label className={styles.checkboxLabel}>
-            <input
-              id="physical-tests-only-pending"
-              type="checkbox"
-              checked={filters.onlyPending}
-              onChange={(e) => setFilters({...filters, onlyPending: e.target.checked})}
-              className={styles.checkbox}
-            />
-            <span>Solo sin test este mes</span>
-          </label>
-        </div>
+            <Field label="Ordenar por">
+              <select
+                id="physical-tests-sort-field"
+                value={filters.sortField}
+                onChange={(e) => updateFilter('sortField', e.target.value)}
+                className={styles.filterSelect}
+              >
+                <option value="fecha_test">Fecha test</option>
+                <option value="estatura">Estatura</option>
+                <option value="peso">Peso</option>
+                <option value="fuerza_abdomen">Fuerza abdomen</option>
+              </select>
+            </Field>
 
-        <div className={styles.filterGroup}>
-          <label htmlFor="physical-tests-clear-filters">Acciones</label>
-          <button
-            id="physical-tests-clear-filters"
-            type="button"
-            className={styles.cancelButton}
-            onClick={resetFilters}
-          >
-            Limpiar filtros
-          </button>
+            <Field label="Direccion">
+              <select
+                id="physical-tests-sort-direction"
+                value={filters.sortDirection}
+                onChange={(e) => updateFilter('sortDirection', e.target.value)}
+                className={styles.filterSelect}
+              >
+                <option value="desc">Descendente</option>
+                <option value="asc">Ascendente</option>
+              </select>
+            </Field>
+
+            <Field label="Estado">
+              <label className={styles.checkboxLabel}>
+                <input
+                  id="physical-tests-only-pending"
+                  type="checkbox"
+                  checked={filters.onlyPending}
+                  onChange={(e) => updateFilter('onlyPending', e.target.checked)}
+                  className={styles.checkbox}
+                />
+                <span>Solo sin test este mes</span>
+              </label>
+            </Field>
+          </div>
+
+          <div className={styles.filtersActions}>
+            <Button
+              id="physical-tests-clear-filters"
+              type="button"
+              variant="secondary"
+              className={styles.actionButton}
+              onClick={resetFilters}
+            >
+              Limpiar filtros {activeFiltersCount > 0 ? `(${activeFiltersCount})` : ''}
+            </Button>
+          </div>
         </div>
-      </div>
+      </Card>
 
       {/* Lista de Tests Físicos */}
       {loading ? (

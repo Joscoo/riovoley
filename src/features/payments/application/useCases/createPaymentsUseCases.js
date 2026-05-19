@@ -18,6 +18,7 @@ export const createPaymentsUseCases = (
       fecha_fin: '',
       estado: '',
       atleta: '',
+      membership_type: '',
       search: '',
     },
     sort: {
@@ -37,11 +38,59 @@ export const createPaymentsUseCases = (
     .toLowerCase()
     .trim();
 
+  const formatDateOnly = (value) => {
+    if (!value) return null;
+    if (typeof value === 'string') return value.split('T')[0];
+    if (value instanceof Date && !Number.isNaN(value.getTime())) {
+      const year = value.getFullYear();
+      const month = `${value.getMonth() + 1}`.padStart(2, '0');
+      const day = `${value.getDate()}`.padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+    return null;
+  };
+
+  const addOneDay = (dateString) => {
+    const parsed = parseDateOnly(dateString);
+    if (!parsed) return null;
+    parsed.setDate(parsed.getDate() + 1);
+    return formatDateOnly(parsed);
+  };
+
+  const addOneMonthMinusOneDay = (dateString) => {
+    const parsed = parseDateOnly(dateString);
+    if (!parsed) return null;
+    const year = parsed.getFullYear();
+    const month = parsed.getMonth();
+    const day = parsed.getDate();
+    const nextMonth = month + 1;
+    const targetYear = year + Math.floor(nextMonth / 12);
+    const targetMonth = nextMonth % 12;
+    const lastDayOfTargetMonth = new Date(targetYear, targetMonth + 1, 0).getDate();
+    const clampedDay = Math.min(day, lastDayOfTargetMonth);
+    const plusOneMonth = new Date(targetYear, targetMonth, clampedDay);
+    plusOneMonth.setDate(plusOneMonth.getDate() - 1);
+    return formatDateOnly(plusOneMonth);
+  };
+
+  const attachMembershipTypesToPayments = (payments = [], membershipTypes = []) => {
+    const membershipTypeMap = new Map((membershipTypes || []).map((item) => [String(item.id), item]));
+    return (payments || []).map((payment) => ({
+      ...payment,
+      membership_type: membershipTypeMap.get(String(payment.membership_type_id)) || null,
+    }));
+  };
+
   const parseDateOnly = (value) => {
     if (!value) return null;
     const [year, month, day] = value.split('-').map(Number);
     if (!year || !month || !day) return null;
     return new Date(year, month - 1, day);
+  };
+
+  const resolveMembershipTypeId = (rawValue) => {
+    const parsed = Number.parseInt(rawValue, 10);
+    return Number.isFinite(parsed) ? parsed : null;
   };
 
   const listModuleDataUseCase = {
@@ -63,18 +112,22 @@ export const createPaymentsUseCases = (
         },
       });
 
-      const [athletes, payments] = await Promise.all([
+      const [athletes, payments, membershipTypes] = await Promise.all([
         repository.listAthletes(),
         repository.listPayments({ query: resolvedQuery }),
+        repository.listMembershipTypes(),
       ]);
+      const paymentsWithMembership = attachMembershipTypesToPayments(payments, membershipTypes);
 
       const updatedStatuses = await PagoStatusService.actualizarTodosLosEstados();
       if (updatedStatuses?.actualizados > 0) {
         const refreshedPayments = await repository.listPayments({ query: resolvedQuery });
+        const refreshedWithMembership = attachMembershipTypesToPayments(refreshedPayments, membershipTypes);
         return {
           athletes,
+          membershipTypes,
           payments: filterAndSortLatestPaymentsUseCase.execute({
-            allPayments: refreshedPayments,
+            allPayments: refreshedWithMembership,
             query: resolvedQuery,
           }),
           statusUpdateSummary: updatedStatuses,
@@ -83,8 +136,9 @@ export const createPaymentsUseCases = (
 
       return {
         athletes,
+        membershipTypes,
         payments: filterAndSortLatestPaymentsUseCase.execute({
-          allPayments: payments,
+          allPayments: paymentsWithMembership,
           query: resolvedQuery,
         }),
         statusUpdateSummary: updatedStatuses,
@@ -96,17 +150,11 @@ export const createPaymentsUseCases = (
     execute: async ({ formData }) => {
       const paymentDraft = {
         student_id: formData.student_id,
-        monto: Number.parseFloat(formData.monto),
-        fecha_inicio: formData.fecha_inicio || null,
-        fecha_fin: formData.fecha_fin || null,
-        fecha_pago: formData.fecha_pago || null,
+        membership_type_id: resolveMembershipTypeId(formData.membership_type_id),
+        fecha_pago: formData.fecha_pago || getEcuadorDate(),
       };
 
-      const status = PagoStatusService.calcularEstado(paymentDraft);
-      const createdPayment = await repository.createPayment({
-        ...paymentDraft,
-        estado: status,
-      });
+      const createdPayment = await repository.createPayment(paymentDraft);
 
       let emailSent = false;
       let emailError = null;
@@ -122,10 +170,10 @@ export const createPaymentsUseCases = (
             email: athleteData.users.email,
             nombre: athleteData.users.nombre,
             apellido: athleteData.users.apellido,
-            monto: Number.parseFloat(formData.monto),
-            fecha_inicio: formData.fecha_inicio,
-            fecha_fin: formData.fecha_fin,
-            fecha_pago: formData.fecha_pago,
+            monto: createdPayment.monto,
+            fecha_inicio: createdPayment.fecha_inicio,
+            fecha_fin: createdPayment.fecha_fin,
+            fecha_pago: createdPayment.fecha_pago,
             estado: createdPayment.estado,
           });
 
@@ -142,8 +190,8 @@ export const createPaymentsUseCases = (
               {
                 id: createdPayment.id,
                 estudiante_nombre: `${athleteData.users.nombre} ${athleteData.users.apellido}`.trim(),
-                monto: Number.parseFloat(formData.monto),
-                fecha_pago: formData.fecha_pago,
+                monto: createdPayment.monto,
+                fecha_pago: createdPayment.fecha_pago,
                 concepto: 'Mensualidad Club de Voley',
               },
               athleteData.users.telefono
@@ -173,16 +221,11 @@ export const createPaymentsUseCases = (
     execute: async ({ paymentId, formData }) => {
       const paymentDraft = {
         student_id: formData.student_id,
-        monto: Number.parseFloat(formData.monto),
-        fecha_inicio: formData.fecha_inicio || null,
-        fecha_fin: formData.fecha_fin || null,
-        fecha_pago: formData.fecha_pago || null,
+        membership_type_id: resolveMembershipTypeId(formData.membership_type_id),
+        fecha_pago: formData.fecha_pago || getEcuadorDate(),
       };
-      const status = PagoStatusService.calcularEstado(paymentDraft);
-      await repository.updatePayment(paymentId, {
-        ...paymentDraft,
-        estado: status,
-      });
+
+      await repository.updatePayment(paymentId, paymentDraft);
     },
   };
 
@@ -195,14 +238,40 @@ export const createPaymentsUseCases = (
   const markPaymentAsPaidUseCase = {
     execute: async ({ payment }) => {
       const paidDate = getEcuadorDate();
-      const status = PagoStatusService.calcularEstado({
-        ...payment,
-        fecha_pago: paidDate,
-      });
       await repository.updatePayment(payment.id, {
         fecha_pago: paidDate,
-        estado: status,
       });
+    },
+  };
+
+  const getPaymentPeriodPreviewUseCase = {
+    execute: async ({ studentId, fechaPago }) => {
+      if (!studentId) {
+        return null;
+      }
+      const payments = await repository.listPayments({
+        query: createTableQuery({
+          ...DEFAULT_TABLE_QUERY,
+          filters: {
+            ...DEFAULT_TABLE_QUERY.filters,
+            atleta: studentId,
+          },
+        }),
+      });
+
+      const latestPayment = getLatestPaymentsList(payments).find(
+        (payment) => String(payment.student_id) === String(studentId)
+      );
+      const baseDate = latestPayment?.fecha_fin
+        ? addOneDay(latestPayment.fecha_fin)
+        : formatDateOnly(fechaPago || getEcuadorDate());
+      const startDate = baseDate || formatDateOnly(getEcuadorDate());
+      const endDate = addOneMonthMinusOneDay(startDate);
+
+      return {
+        fecha_inicio: startDate,
+        fecha_fin: endDate,
+      };
     },
   };
 
@@ -263,6 +332,8 @@ export const createPaymentsUseCases = (
             return new Date(payment.fecha_pago || '1900-01-01').getTime();
           case 'fecha_inicio':
             return new Date(payment.fecha_inicio || '1900-01-01').getTime();
+          case 'membership_type':
+            return normalizeText(payment.membership_type?.nombre || '');
           case 'nombre':
             return normalizeText(payment.student?.user?.nombre || '');
           case 'apellido':
@@ -295,12 +366,19 @@ export const createPaymentsUseCases = (
         filteredData = filteredData.filter((payment) => payment.student_id?.toString() === activeFilters.atleta);
       }
 
+      if (activeFilters.membership_type) {
+        filteredData = filteredData.filter(
+          (payment) => String(payment.membership_type_id || '') === String(activeFilters.membership_type)
+        );
+      }
+
       if (activeFilters.search) {
         const searchLower = normalizeText(activeFilters.search);
         filteredData = filteredData.filter((payment) =>
           normalizeText(payment.student?.user?.nombre).includes(searchLower) ||
           normalizeText(payment.student?.user?.apellido).includes(searchLower) ||
-          normalizeText(payment.student?.user?.email).includes(searchLower));
+          normalizeText(payment.student?.user?.email).includes(searchLower) ||
+          normalizeText(payment.membership_type?.nombre).includes(searchLower));
       }
 
       if (activeSort.field && activeSort.direction !== SORT_DIRECTION.NONE) {
@@ -328,34 +406,20 @@ export const createPaymentsUseCases = (
   const validatePaymentFormUseCase = {
     execute: ({ formData, todayDateString = getEcuadorDate() }) => {
       const errors = {};
-      const monto = Number.parseFloat(formData?.monto);
-      const startDate = parseDateOnly(formData?.fecha_inicio);
-      const endDate = parseDateOnly(formData?.fecha_fin);
       const paidDate = parseDateOnly(formData?.fecha_pago);
       const todayDate = parseDateOnly(todayDateString);
+      const membershipTypeId = resolveMembershipTypeId(formData?.membership_type_id);
 
       if (!formData?.student_id) {
         errors.student_id = 'Selecciona un atleta de la lista para continuar.';
       }
 
-      if (!formData?.fecha_inicio || !startDate) {
-        errors.fecha_inicio = 'La fecha de inicio es obligatoria.';
+      if (!membershipTypeId) {
+        errors.membership_type_id = 'Selecciona un tipo de mensualidad.';
       }
 
-      if (formData?.fecha_fin && !endDate) {
-        errors.fecha_fin = 'La fecha fin no es válida.';
-      }
-
-      if (startDate && endDate && endDate < startDate) {
-        errors.fecha_fin = 'La fecha fin no puede ser anterior a la fecha de inicio.';
-      }
-
-      if (!Number.isFinite(monto) || monto <= 0) {
-        errors.monto = 'Ingresa un monto mayor a 0.';
-      }
-
-      if (formData?.fecha_pago && !paidDate) {
-        errors.fecha_pago = 'La fecha de pago no es válida.';
+      if (!formData?.fecha_pago || !paidDate) {
+        errors.fecha_pago = 'La fecha de pago es obligatoria y debe ser valida.';
       }
 
       if (paidDate && todayDate && paidDate > todayDate) {
@@ -439,11 +503,9 @@ export const createPaymentsUseCases = (
   const buildInitialPaymentFormUseCase = {
     execute: () => ({
       student_id: '',
-      fecha_inicio: getEcuadorDate(),
-      fecha_fin: '',
-      monto: '',
-      fecha_pago: '',
-      observaciones: ''
+      membership_type_id: '',
+      fecha_pago: getEcuadorDate(),
+      observaciones: '',
     }),
   };
 
@@ -486,8 +548,8 @@ export const createPaymentsUseCases = (
       const message = WhatsAppService.crearMensajePago({
         id: createdPayment?.id,
         estudiante_nombre: `${athlete?.users?.nombre || ''} ${athlete?.users?.apellido || ''}`.trim(),
-        monto: Number.parseFloat(formData?.monto),
-        fecha_pago: formData?.fecha_pago,
+        monto: Number.parseFloat(createdPayment?.monto ?? formData?.monto),
+        fecha_pago: createdPayment?.fecha_pago || formData?.fecha_pago,
         concepto: 'Mensualidad Club de Voley',
         observaciones: formData?.observaciones,
       });
@@ -512,6 +574,7 @@ export const createPaymentsUseCases = (
     updatePaymentUseCase,
     deletePaymentUseCase,
     markPaymentAsPaidUseCase,
+    getPaymentPeriodPreviewUseCase,
     filterAndSortLatestPaymentsUseCase,
     getTodayDateUseCase,
     buildInitialPaymentFormUseCase,

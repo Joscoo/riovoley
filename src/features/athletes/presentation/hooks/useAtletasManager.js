@@ -270,13 +270,25 @@ export const useAtletasManager = ({ categories }) => {
 
         setPendingCredentialsFromCreation(result);
         showSuccessToast('Estudiante creado exitosamente.', 5000);
-        showInfoToast('Puedes enviar las credenciales desde la tarjeta informativa.', 5500);
+        showInfoToast('Puedes enviar las credenciales ahora o despues desde la tarjeta informativa.', 5500);
       }
 
       closeModal();
       resetForm();
       setErrorMessage(null);
       await loadAtletas();
+
+      if (!editingAtleta) {
+        openConfirmDialog({
+          title: 'Enviar credenciales',
+          message: `El estudiante fue creado correctamente. Deseas enviar las credenciales a ${formData.email.trim()} ahora?`,
+          confirmLabel: 'Enviar ahora',
+          tone: 'primary',
+          onConfirm: async () => {
+            await sendPendingCredentialsByEmail();
+          },
+        });
+      }
     } catch (error) {
       const message = toFriendlyError(error, formData.email);
       setErrorMessage(message);
@@ -287,7 +299,9 @@ export const useAtletasManager = ({ categories }) => {
     editingAtleta,
     formData,
     loadAtletas,
+    openConfirmDialog,
     resetForm,
+    sendPendingCredentialsByEmail,
     setPendingCredentialsFromCreation,
     showErrorToast,
     showInfoToast,

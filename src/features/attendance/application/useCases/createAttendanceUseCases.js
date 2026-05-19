@@ -36,6 +36,7 @@ export const createAttendanceUseCases = (repository, deps = {}) => {
       categoria: '',
       atleta: '',
       metodo_pago_id: '',
+      search: '',
     },
     sort: {
       field: 'fecha',
@@ -136,6 +137,42 @@ export const createAttendanceUseCases = (repository, deps = {}) => {
     return sorted;
   };
 
+  const filterAttendanceRows = ({ rows, filters }) => {
+    let filtered = [...(rows || [])];
+
+    if (filters?.categoria) {
+      filtered = filtered.filter((attendance) => attendance.students?.categoria === filters.categoria);
+    }
+
+    if (filters?.atleta) {
+      filtered = filtered.filter((attendance) => attendance.student_id === filters.atleta);
+    }
+
+    if (filters?.metodo_pago_id) {
+      const paymentTypeId = Number(filters.metodo_pago_id);
+      filtered = filtered.filter((attendance) => Number(attendance.metodo_pago_id) === paymentTypeId);
+    }
+
+    const normalizedSearch = normalizeText(filters?.search);
+    if (normalizedSearch) {
+      filtered = filtered.filter((attendance) => {
+        const user = attendance.students?.users || {};
+        const searchableText = normalizeText([
+          user.nombre,
+          user.apellido,
+          `${user.nombre || ''} ${user.apellido || ''}`.trim(),
+          user.email,
+          attendance.students?.categoria,
+          attendance.fecha,
+        ].join(' '));
+
+        return searchableText.includes(normalizedSearch);
+      });
+    }
+
+    return filtered;
+  };
+
   const loadAthletesUseCase = {
     execute: async () => {
       const athletes = await repository.listAthletesWithRole();
@@ -161,8 +198,12 @@ export const createAttendanceUseCases = (repository, deps = {}) => {
       });
 
       const attendancesWithDetails = await toStudentDetails(repository, attendanceRows, athletes);
-      const sortedAttendances = sortAttendanceRows({
+      const filteredAttendances = filterAttendanceRows({
         rows: attendancesWithDetails,
+        filters: resolvedQuery.filters,
+      });
+      const sortedAttendances = sortAttendanceRows({
+        rows: filteredAttendances,
         sort: resolvedQuery.sort,
       });
       const groupedByDate = groupAttendancesByDate(sortedAttendances);

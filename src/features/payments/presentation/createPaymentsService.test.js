@@ -15,6 +15,7 @@ describe('createPaymentsService', () => {
   const mockUpdateExecute = jest.fn();
   const mockDeleteExecute = jest.fn();
   const mockMarkPaidExecute = jest.fn();
+  const mockPeriodPreviewExecute = jest.fn();
   const mockFilterExecute = jest.fn();
   const mockGetTodayExecute = jest.fn();
   const mockValidateFormExecute = jest.fn();
@@ -38,6 +39,7 @@ describe('createPaymentsService', () => {
       updatePaymentUseCase: { execute: mockUpdateExecute },
       deletePaymentUseCase: { execute: mockDeleteExecute },
       markPaymentAsPaidUseCase: { execute: mockMarkPaidExecute },
+      getPaymentPeriodPreviewUseCase: { execute: mockPeriodPreviewExecute },
       filterAndSortLatestPaymentsUseCase: { execute: mockFilterExecute },
       getTodayDateUseCase: { execute: mockGetTodayExecute },
       validatePaymentFormUseCase: { execute: mockValidateFormExecute },
@@ -85,6 +87,16 @@ describe('createPaymentsService', () => {
 
     expect(mockFilterExecute).toHaveBeenCalledWith(args);
     expect(result).toEqual([{ id: 'p1' }]);
+  });
+
+  it('getPaymentPeriodPreview delega al use case', async () => {
+    mockPeriodPreviewExecute.mockResolvedValueOnce({ fecha_inicio: '2026-06-01', fecha_fin: '2026-06-30' });
+    const service = createPaymentsService({});
+
+    const result = await service.getPaymentPeriodPreview({ studentId: 's1', fechaPago: '2026-06-01' });
+
+    expect(mockPeriodPreviewExecute).toHaveBeenCalledWith({ studentId: 's1', fechaPago: '2026-06-01' });
+    expect(result).toEqual({ fecha_inicio: '2026-06-01', fecha_fin: '2026-06-30' });
   });
 
   it('getTodayDate delega al use case de fecha actual', () => {

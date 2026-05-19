@@ -23,7 +23,7 @@ import {
   FaSync, 
   FaTrash, 
   FaTimes, 
-  FaUsers, 
+  FaUsers,
   FaCreditCard
 } from 'react-icons/fa';
 
@@ -106,6 +106,7 @@ const DEFAULT_PAYMENTS_QUERY = createTableQuery({
     fecha_fin: '',
     estado: '',
     atleta: '',
+    membership_type: '',
     search: '',
   },
   sort: {
@@ -126,6 +127,7 @@ const PagosManager = ({ user }) => {
   const confirmActionRef = useRef(null);
   const [pagos, setPagos] = useState([]);
   const [atletas, setAtletas] = useState([]);
+  const [membershipTypes, setMembershipTypes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [editingPago, setEditingPago] = useState(null);
@@ -136,6 +138,8 @@ const PagosManager = ({ user }) => {
   const [atletasFiltrados, setAtletasFiltrados] = useState([]);
   const [mostrarSugerencias, setMostrarSugerencias] = useState(false);
   const [formErrors, setFormErrors] = useState({});
+  const [submitError, setSubmitError] = useState('');
+  const [paymentPeriodPreview, setPaymentPeriodPreview] = useState(null);
   const [notice, setNotice] = useState(EMPTY_NOTICE);
   const [confirmDialog, setConfirmDialog] = useState({
     open: false,
@@ -221,25 +225,31 @@ const PagosManager = ({ user }) => {
 
   const getTodayDateString = () => paymentsService.getTodayDate();
 
+  const selectedMembershipType = useMemo(
+    () => membershipTypes.find((item) => String(item.id) === String(formData.membership_type_id)) || null,
+    [membershipTypes, formData.membership_type_id]
+  );
+
   const paymentStatusPreview = useMemo(() => {
     const pagoTemporal = {
-      monto: Number.parseFloat(formData.monto || '0'),
-      fecha_inicio: formData.fecha_inicio || null,
-      fecha_fin: formData.fecha_fin || null,
+      monto: Number.parseFloat(selectedMembershipType?.costo || '0'),
+      fecha_inicio: paymentPeriodPreview?.fecha_inicio || null,
+      fecha_fin: paymentPeriodPreview?.fecha_fin || null,
       fecha_pago: formData.fecha_pago || null
     };
 
     return paymentsService.getPaymentStatusInfo(pagoTemporal);
-  }, [formData.monto, formData.fecha_inicio, formData.fecha_fin, formData.fecha_pago]);
+  }, [selectedMembershipType, paymentPeriodPreview, formData.fecha_pago]);
 
   const loadData = async () => {
     setLoading(true);
     try {
-      const { athletes, payments, statusUpdateSummary } = await paymentsService.listModuleData({
+      const { athletes, payments, membershipTypes: loadedMembershipTypes, statusUpdateSummary } = await paymentsService.listModuleData({
         query: queryState,
       });
       setAtletas(athletes || []);
       setPagos(payments || []);
+      setMembershipTypes(loadedMembershipTypes || []);
 
       if (statusUpdateSummary?.actualizados > 0) {
         console.log(`${statusUpdateSummary.actualizados} pagos actualizados automaticamente`);
@@ -251,6 +261,38 @@ const PagosManager = ({ user }) => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const loadPeriodPreview = async () => {
+      if (!showModal || !formData.student_id || !formData.fecha_pago) {
+        setPaymentPeriodPreview(null);
+        return;
+      }
+
+      try {
+        const preview = await paymentsService.getPaymentPeriodPreview({
+          studentId: formData.student_id,
+          fechaPago: formData.fecha_pago,
+        });
+
+        if (!cancelled) {
+          setPaymentPeriodPreview(preview || null);
+        }
+      } catch (error) {
+        if (!cancelled) {
+          setPaymentPeriodPreview(null);
+        }
+      }
+    };
+
+    loadPeriodPreview();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [showModal, formData.student_id, formData.fecha_pago]);
   const pagination = useMemo(
     () =>
       paymentsService.paginatePayments({
@@ -282,6 +324,7 @@ const PagosManager = ({ user }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitError('');
 
     const validation = paymentsService.validatePaymentForm({
       formData,
@@ -324,7 +367,9 @@ const PagosManager = ({ user }) => {
       loadData();
     } catch (error) {
       console.error('Error guardando pago:', error);
-      showNotice('error', 'Error: ' + error.message);
+      const resolvedMessage = error?.message || 'No se pudo guardar el pago.';
+      setSubmitError(`Error al guardar: ${resolvedMessage}`);
+      showNotice('error', 'Error: ' + resolvedMessage);
     }
   };
 
@@ -391,17 +436,20 @@ const PagosManager = ({ user }) => {
 
   const openModal = (pago = null) => {
     setFormErrors({});
+    setSubmitError('');
     if (pago) {
       setEditingPago(pago);
       setFormData({
         student_id: pago.student_id.toString(),
-        fecha_inicio: pago.fecha_inicio || '',
-        fecha_fin: pago.fecha_fin || '',
-        monto: pago.monto?.toString() || '',
+        membership_type_id: pago.membership_type_id?.toString() || '',
         fecha_pago: pago.fecha_pago || '',
         observaciones: ''
       });
-      
+      setPaymentPeriodPreview({
+        fecha_inicio: pago.fecha_inicio || null,
+        fecha_fin: pago.fecha_fin || null,
+      });
+
       // Establecer el atleta en el campo de bÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âºsqueda
       const atleta = atletas.find(a => a.id === pago.student_id);
       if (atleta) {
@@ -418,14 +466,17 @@ const PagosManager = ({ user }) => {
   const closeModal = () => {
     setShowModal(false);
     setFormErrors({});
+    setSubmitError('');
   };
 
   const resetForm = () => {
     setFormData(buildDefaultFormData());
+    setPaymentPeriodPreview(null);
     setAtletaBusqueda('');
     setAtletasFiltrados([]);
     setMostrarSugerencias(false);
     setFormErrors({});
+    setSubmitError('');
   };
 
   // FunciÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³n para manejar la bÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âºsqueda de atletas
@@ -436,7 +487,8 @@ const PagosManager = ({ user }) => {
     if (valorBusqueda.trim() === '') {
       setAtletasFiltrados([]);
       setMostrarSugerencias(false);
-      setFormData({...formData, student_id: ''});
+      setFormData((current) => ({ ...current, student_id: '' }));
+      setPaymentPeriodPreview(null);
       return;
     }
 
@@ -454,7 +506,7 @@ const PagosManager = ({ user }) => {
   const seleccionarAtleta = (atleta) => {
     const nombreCompleto = `${atleta.users?.nombre || ''} ${atleta.users?.apellido || ''}`;
     setAtletaBusqueda(nombreCompleto);
-    setFormData({...formData, student_id: atleta.id.toString()});
+    setFormData((current) => ({ ...current, student_id: atleta.id.toString() }));
     setMostrarSugerencias(false);
     setAtletasFiltrados([]);
     setFormErrors((previousErrors) => ({ ...previousErrors, student_id: undefined }));
@@ -570,7 +622,7 @@ const PagosManager = ({ user }) => {
           <input
             id="payments-search"
             type="text"
-            placeholder="Buscar por nombre, apellido o email..."
+            placeholder="Buscar por atleta, email o mensualidad..."
             value={queryState.filters.search}
             onChange={(e) => updateFilter('search', e.target.value)}
             className={styles.searchInput}
@@ -637,8 +689,21 @@ const PagosManager = ({ user }) => {
         </div>
 
         <div className={styles.filterGroup}>
-          <label className={styles.filterLabel}>Orden de columnas</label>
-          <div className={styles.filterInput}>Usa los encabezados de la tabla para ordenar</div>
+          <label htmlFor="payments-membership-filter" className={styles.filterLabel}>Mensualidad</label>
+          <select
+            id="payments-membership-filter"
+            value={queryState.filters.membership_type}
+            onChange={(e) => updateFilter('membership_type', e.target.value)}
+            className={styles.filterSelect}
+            aria-label="Filtrar por tipo de mensualidad"
+          >
+            <option value="">Todas</option>
+            {membershipTypes.map((item) => (
+              <option key={item.id} value={item.id}>
+                {item.nombre}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className={styles.filterGroup}>
@@ -686,6 +751,7 @@ const PagosManager = ({ user }) => {
                 <thead>
                   <tr>
                     <SortableHeader field="atleta" label="Atleta" sort={queryState.sort} onToggleSort={toggleSort} />
+                    <SortableHeader field="membership_type" label="Mensualidad" sort={queryState.sort} onToggleSort={toggleSort} />
                     <SortableHeader field="periodo" label={'Per\u00edodo'} sort={queryState.sort} onToggleSort={toggleSort} />
                     <SortableHeader field="monto" label="Monto" sort={queryState.sort} onToggleSort={toggleSort} />
                     <SortableHeader field="estado" label="Estado" sort={queryState.sort} onToggleSort={toggleSort} />
@@ -704,6 +770,7 @@ const PagosManager = ({ user }) => {
                           <small>{pago.student?.categoria?.replaceAll('_', ' ').toUpperCase()}</small>
                         </div>
                       </td>
+                      <td data-label="Mensualidad">{pago.membership_type?.nombre || '--'}</td>
                       <td data-label="Período">{formatPeriodo(pago.fecha_inicio, pago.fecha_fin)}</td>
                       <td className={styles.monto} data-label="Monto">{formatMonto(pago.monto)}</td>
                       <td data-label="Estado">
@@ -814,6 +881,11 @@ const PagosManager = ({ user }) => {
                   {Object.values(formErrors).filter(Boolean)[0]}
                 </div>
               )}
+              {submitError ? (
+                <div className={styles.formErrorSummary} role="alert">
+                  {submitError}
+                </div>
+              ) : null}
 
               <div className={styles.statusPreview}>
                 <span className={styles.statusPreviewLabel}>Estado estimado:</span>
@@ -886,42 +958,33 @@ const PagosManager = ({ user }) => {
                   </div>
 
 <div className={styles.inputGroup}>
-                    <label htmlFor="fecha_inicio" className="block text-sm font-semibold text-white">Fecha Inicio *</label>
+                    <label htmlFor="fecha_pago" className="block text-sm font-semibold text-white">Fecha de Pago *</label>
                     <input
-                      id="fecha_inicio"
+                      id="fecha_pago"
                       type="date"
-                      value={formData.fecha_inicio}
+                      value={formData.fecha_pago}
                       onChange={(e) => {
-                        setFormData({...formData, fecha_inicio: e.target.value});
-                        setFormErrors((previousErrors) => ({ ...previousErrors, fecha_inicio: undefined, fecha_fin: undefined }));
+                        setFormData((current) => ({ ...current, fecha_pago: e.target.value }));
+                        setFormErrors((previousErrors) => ({ ...previousErrors, fecha_pago: undefined }));
                       }}
                       required
                       max={getTodayDateString()}
                       className="min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
-                      aria-invalid={Boolean(formErrors.fecha_inicio)}
-                      aria-describedby={formErrors.fecha_inicio ? 'payment-start-error' : 'payment-start-hint'}
+                      aria-invalid={Boolean(formErrors.fecha_pago)}
+                      aria-describedby={formErrors.fecha_pago ? 'payment-date-error' : 'payment-date-hint'}
                     />
-                    <p id="payment-start-hint" className={styles.fieldHint}>Inicio del periodo a cubrir.</p>
-                    {formErrors.fecha_inicio && <p id="payment-start-error" className={styles.fieldError}>{formErrors.fecha_inicio}</p>}
+                    <p id="payment-date-hint" className={styles.fieldHint}>Obligatoria. Solo fechas hasta hoy.</p>
+                    {formErrors.fecha_pago && <p id="payment-date-error" className={styles.fieldError}>{formErrors.fecha_pago}</p>}
                   </div>
 
                   <div className={styles.inputGroup}>
-                    <label htmlFor="fecha_fin" className="block text-sm font-semibold text-white">Fecha Fin</label>
-                    <input
-                      id="fecha_fin"
-                      type="date"
-                      value={formData.fecha_fin}
-                      onChange={(e) => {
-                        setFormData({...formData, fecha_fin: e.target.value});
-                        setFormErrors((previousErrors) => ({ ...previousErrors, fecha_fin: undefined }));
-                      }}
-                      min={formData.fecha_inicio || undefined}
-                      className="min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
-                      aria-invalid={Boolean(formErrors.fecha_fin)}
-                      aria-describedby={formErrors.fecha_fin ? 'payment-end-error' : 'payment-end-hint'}
-                    />
-                    <p id="payment-end-hint" className={styles.fieldHint}>Opcional. Debe ser igual o posterior al inicio.</p>
-                    {formErrors.fecha_fin && <p id="payment-end-error" className={styles.fieldError}>{formErrors.fecha_fin}</p>}
+                    <label className="block text-sm font-semibold text-white">Periodo sugerido</label>
+                    <div className="min-h-[48px] rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white">
+                      {paymentPeriodPreview?.fecha_inicio && paymentPeriodPreview?.fecha_fin
+                        ? formatPeriodo(paymentPeriodPreview.fecha_inicio, paymentPeriodPreview.fecha_fin)
+                        : '--'}
+                    </div>
+                    <p className={styles.fieldHint}>Se calcula automaticamente segun el historial del atleta.</p>
                   </div>
                 </div>
               </div>
@@ -930,44 +993,40 @@ const PagosManager = ({ user }) => {
                 <h4 className={styles.sectionTitle}><FaDollarSign className="mr-2 inline align-middle" />Datos del Pago</h4>
                 <div className={styles.formGrid}>
 <div className={styles.inputGroup}>
-                    <label htmlFor="monto" className="block text-sm font-semibold text-white">Monto *</label>
-                    <input
-                      id="monto"
-                      type="number"
-                      step="0.01"
-                      min="0.01"
-                      value={formData.monto}
+                    <label htmlFor="membership_type_id" className="block text-sm font-semibold text-white">Tipo de Mensualidad *</label>
+                    <select
+                      id="membership_type_id"
+                      value={formData.membership_type_id}
                       onChange={(e) => {
-                        setFormData({...formData, monto: e.target.value});
-                        setFormErrors((previousErrors) => ({ ...previousErrors, monto: undefined }));
+                        setFormData((current) => ({ ...current, membership_type_id: e.target.value }));
+                        setFormErrors((previousErrors) => ({ ...previousErrors, membership_type_id: undefined }));
                       }}
                       required
-                      placeholder="0.00"
-                      className="min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
-                      aria-invalid={Boolean(formErrors.monto)}
-                      aria-describedby={formErrors.monto ? 'payment-amount-error' : 'payment-amount-hint'}
-                    />
-                    <p id="payment-amount-hint" className={styles.fieldHint}>Monto total del periodo.</p>
-                    {formErrors.monto && <p id="payment-amount-error" className={styles.fieldError}>{formErrors.monto}</p>}
+                      className="min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
+                      aria-invalid={Boolean(formErrors.membership_type_id)}
+                      aria-describedby={formErrors.membership_type_id ? 'payment-membership-type-error' : 'payment-membership-type-hint'}
+                    >
+                      <option value="">Selecciona una mensualidad</option>
+                      {membershipTypes.map((item) => (
+                        <option key={item.id} value={item.id}>
+                          {item.nombre}
+                        </option>
+                      ))}
+                    </select>
+                    <p id="payment-membership-type-hint" className={styles.fieldHint}>Normal ($35.00) o en grupo ($32.50).</p>
+                    {formErrors.membership_type_id && <p id="payment-membership-type-error" className={styles.fieldError}>{formErrors.membership_type_id}</p>}
                   </div>
 
                   <div className={styles.inputGroup}>
-                    <label htmlFor="fecha_pago" className="block text-sm font-semibold text-white">Fecha de Pago</label>
+                    <label htmlFor="monto" className="block text-sm font-semibold text-white">Monto (automatico)</label>
                     <input
-                      id="fecha_pago"
-                      type="date"
-                      value={formData.fecha_pago}
-                      onChange={(e) => {
-                        setFormData({...formData, fecha_pago: e.target.value});
-                        setFormErrors((previousErrors) => ({ ...previousErrors, fecha_pago: undefined }));
-                      }}
-                      max={getTodayDateString()}
-                      className="min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
-                      aria-invalid={Boolean(formErrors.fecha_pago)}
-                      aria-describedby={formErrors.fecha_pago ? 'payment-date-error' : 'payment-date-hint'}
+                      id="monto"
+                      type="text"
+                      value={selectedMembershipType ? formatMonto(selectedMembershipType.costo) : '--'}
+                      disabled
+                      className="min-h-[48px] w-full rounded-xl border border-white/20 bg-black/40 px-3 py-2 text-sm text-white/90"
                     />
-                    <p id="payment-date-hint" className={styles.fieldHint}>Opcional. Solo fechas hasta hoy.</p>
-                    {formErrors.fecha_pago && <p id="payment-date-error" className={styles.fieldError}>{formErrors.fecha_pago}</p>}
+                    <p className={styles.fieldHint}>El monto se define por el tipo de mensualidad seleccionado.</p>
                   </div>
 
                   <div className={styles.inputGroupFullWidth}>
@@ -976,7 +1035,7 @@ const PagosManager = ({ user }) => {
                       id="observaciones"
                       value={formData.observaciones}
                       onChange={(e) => {
-                        setFormData({...formData, observaciones: e.target.value});
+                        setFormData((current) => ({ ...current, observaciones: e.target.value }));
                         setFormErrors((previousErrors) => ({ ...previousErrors, observaciones: undefined }));
                       }}
                       maxLength={300}
@@ -1052,6 +1111,9 @@ PagosManager.propTypes = {
 };
 
 export default PagosManager;
+
+
+
 
 
 

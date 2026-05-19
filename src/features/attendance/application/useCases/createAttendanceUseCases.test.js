@@ -55,6 +55,33 @@ describe('createAttendanceUseCases', () => {
     expect(result.groupedByDate['2026-05-17']).toHaveLength(2);
   });
 
+  it('loadAttendanceDataUseCase aplica filtro dinamico de busqueda en historial', async () => {
+    const repository = buildRepository();
+    repository.listAttendances.mockResolvedValue([
+      { id: 'a1', student_id: 's1', fecha: '2026-05-17', metodo_pago_id: 1 },
+      { id: 'a2', student_id: 's2', fecha: '2026-05-17', metodo_pago_id: 2 },
+    ]);
+
+    const useCases = createAttendanceUseCases(repository, buildDeps());
+    const athletes = [
+      { id: 's1', categoria: 'iniciacion_hombres', users: { nombre: 'Ana', apellido: 'Lopez', email: 'ana@rio.test' } },
+      { id: 's2', categoria: 'master_mujeres', users: { nombre: 'Sofia', apellido: 'Perez', email: 'sofia@rio.test' } },
+    ];
+
+    const result = await useCases.loadAttendanceDataUseCase.execute({
+      filters: {
+        fecha_inicio: '2026-05-01',
+        fecha_fin: '2026-05-31',
+        categoria: '',
+        search: 'sofia perez',
+      },
+      athletes,
+    });
+
+    expect(result.attendances).toHaveLength(1);
+    expect(result.attendances[0].student_id).toBe('s2');
+  });
+
   it('registerAttendanceWithPaymentUseCase actualiza si ya existe', async () => {
     const repository = buildRepository();
     repository.findAttendanceByStudentAndDate.mockResolvedValue({ id: 'a1' });

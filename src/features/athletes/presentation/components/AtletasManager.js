@@ -74,6 +74,11 @@ const AtletasManager = ({ user }) => {
     formatCategoria,
   } = useAtletasManager({ categories: CATEGORIAS });
 
+  const handleBirthDateChange = (value) => {
+    const boundedValue = value && value > maxBirthDate ? maxBirthDate : value;
+    setFormData((prev) => ({ ...prev, fecha_nacimiento: boundedValue }));
+  };
+
   return (
     <div className="mx-auto w-full max-w-7xl">
       <SectionHeader
@@ -92,7 +97,7 @@ const AtletasManager = ({ user }) => {
         }
       />
 
-      {errorMessage ? (
+      {!showModal && errorMessage ? (
         <div className="fixed inset-x-0 top-4 z-[11000] mx-auto w-full max-w-3xl px-4">
           <div className="rounded-2xl border border-red-500/60 bg-red-600/95 px-5 py-4 text-sm text-white shadow-xl shadow-red-900/20 backdrop-blur-sm">
             <div className="flex items-start justify-between gap-4">
@@ -310,7 +315,7 @@ const AtletasManager = ({ user }) => {
 
                   <div className="flex flex-col gap-1">
                     <dt className="text-xs font-bold uppercase tracking-[0.7px] text-slate-500">Edad</dt>
-                    <dd>{calculateAge(atleta.fecha_nacimiento)} anos</dd>
+                    <dd>{calculateAge(atleta.fecha_nacimiento)} años</dd>
                   </div>
 
                   <div className="flex flex-col gap-1 mobile:col-span-2">
@@ -382,6 +387,11 @@ const AtletasManager = ({ user }) => {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
+              {errorMessage ? (
+                <div className="rounded-xl border border-red-400/35 bg-red-500/15 px-3 py-2 text-sm text-red-100" role="alert">
+                  {errorMessage}
+                </div>
+              ) : null}
               <section className="space-y-3 rounded-xl border border-rv-gold/20 bg-black/20 p-4">
                 <h4 className="text-sm font-bold uppercase tracking-[0.8px] text-rv-gold">
                   <FaUser className="mr-2 inline align-middle" /> Informacion Personal del Usuario
@@ -440,10 +450,10 @@ const AtletasManager = ({ user }) => {
                     label="Fecha de Nacimiento *"
                     hint={
                       <>
-                        <p id={birthDateHintId}>Edad minima permitida: {MIN_ATHLETE_AGE} anos.</p>
+                        <p id={birthDateHintId}>Edad mínima permitida: {MIN_ATHLETE_AGE} años.</p>
                         {formData.fecha_nacimiento ? (
                           <p className="mt-1 font-semibold text-rv-gold">
-                            Edad calculada: {calculateAge(formData.fecha_nacimiento)} anos.
+                            Edad calculada: {calculateAge(formData.fecha_nacimiento)} años.
                           </p>
                         ) : null}
                       </>
@@ -454,9 +464,7 @@ const AtletasManager = ({ user }) => {
                       id="fecha_nacimiento"
                       type="date"
                       value={formData.fecha_nacimiento}
-                      onChange={(event) =>
-                        setFormData((prev) => ({ ...prev, fecha_nacimiento: event.target.value }))
-                      }
+                      onChange={(event) => handleBirthDateChange(event.target.value)}
                       max={maxBirthDate}
                       aria-describedby={birthDateHintId}
                       required

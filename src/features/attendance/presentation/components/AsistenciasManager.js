@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { attendanceService } from '../../attendanceService';
 import { reportingService } from '../../../reporting';
-import { SortableHeader } from '../../../../shared/ui';
+import { Button, Card, Field, SortableHeader } from '../../../../shared/ui';
 import {
   SORT_DIRECTION,
   createTableQuery,
@@ -34,6 +34,9 @@ import {
   FaPrint,
   FaSearch
 } from 'react-icons/fa';
+
+const INPUT_BASE =
+  'min-h-12 w-full rounded-lg border-2 border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 transition-all duration-200 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/30';
 
 const styleMap = {
   asistenciasManager: 'mx-auto w-full max-w-7xl space-y-4',
@@ -89,10 +92,17 @@ const styleMap = {
   present: 'border-emerald-400/45 bg-emerald-500/25 text-emerald-100',
   absent: 'border-white/20 bg-white/10 text-slate-200',
   reportsMode: 'space-y-4',
-  filtersSection: 'grid gap-3 rounded-2xl border border-white/15 bg-black/30 p-4 mobile:grid-cols-2 tablet:grid-cols-4',
-  filterGroup: 'space-y-1 [&_label]:text-xs [&_label]:font-bold [&_label]:uppercase [&_label]:tracking-wide [&_label]:text-rv-gold/90',
-  filterInput: 'min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70',
-  filterSelect: 'min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70',
+  filtersCard: 'mb-4',
+  filtersSection: 'space-y-4',
+  filtersTopGrid: 'grid gap-4 tablet:grid-cols-[2fr_1fr]',
+  filtersBottomGrid: 'grid gap-4 mobile:grid-cols-2 desktop:grid-cols-4',
+  filterSummary: 'flex h-full items-end',
+  filterSummaryBox: 'w-full rounded-lg border border-white/15 bg-black/20 px-3 py-2 text-xs text-slate-200',
+  filterHint: 'text-[11px] text-slate-300',
+  filterInput: INPUT_BASE,
+  filterSelect: INPUT_BASE,
+  filterActions: 'grid gap-4 mobile:grid-cols-2',
+  filterActionButton: 'w-full',
   attendanceTable: 'rounded-2xl border border-white/15 bg-black/30 p-3',
   daysContainer: 'space-y-2',
   dayCard: 'rounded-xl border border-white/10 bg-black/20 p-3',
@@ -152,6 +162,7 @@ const DEFAULT_ATTENDANCE_QUERY = createTableQuery({
     categoria: '',
     atleta: '',
     metodo_pago_id: '',
+    search: '',
   },
   sort: {
     field: 'fecha',
@@ -360,7 +371,26 @@ const AsistenciasManager = ({ user }) => {
   };
 
   const updateQueryFilter = (key, value) => {
-    setQueryState((current) => withUpdatedFilter({ query: current, key, value }));
+    setQueryState((current) => {
+      let nextQuery = withUpdatedFilter({ query: current, key, value });
+
+      if (key === 'fecha_inicio' && value && nextQuery.filters.fecha_fin && value > nextQuery.filters.fecha_fin) {
+        nextQuery = withUpdatedFilter({ query: nextQuery, key: 'fecha_fin', value });
+      }
+
+      if (key === 'fecha_fin' && value && nextQuery.filters.fecha_inicio && value < nextQuery.filters.fecha_inicio) {
+        nextQuery = withUpdatedFilter({ query: nextQuery, key: 'fecha_inicio', value });
+      }
+
+      if (key === 'categoria' && nextQuery.filters.atleta) {
+        const selectedAthlete = atletas.find((athlete) => athlete.id === nextQuery.filters.atleta);
+        if (selectedAthlete && selectedAthlete.categoria !== value) {
+          nextQuery = withUpdatedFilter({ query: nextQuery, key: 'atleta', value: '' });
+        }
+      }
+
+      return nextQuery;
+    });
   };
 
   const toggleHistorySort = (field) => {
@@ -381,6 +411,28 @@ const AsistenciasManager = ({ user }) => {
       })
     );
   };
+
+  const normalizedHistorySearch = (queryState.filters.search || '').trim().toLowerCase();
+  const filteredAthleteOptions = atletas.filter((athlete) => {
+    const categoryMatches =
+      !queryState.filters.categoria || athlete.categoria === queryState.filters.categoria;
+
+    if (!categoryMatches) return false;
+    if (!normalizedHistorySearch) return true;
+
+    const searchBlob = attendanceService.getSearchNameBlob({ athleteUser: athlete.users });
+    const categoryText = (athlete.categoria || '').replaceAll('_', ' ').toLowerCase();
+    return `${searchBlob} ${categoryText}`.includes(normalizedHistorySearch);
+  });
+
+  const historyActiveFiltersCount = [
+    queryState.filters.search,
+    queryState.filters.categoria,
+    queryState.filters.atleta,
+    queryState.filters.metodo_pago_id,
+    queryState.filters.fecha_inicio !== defaultDates.dateFrom,
+    queryState.filters.fecha_fin !== defaultDates.dateTo,
+  ].filter(Boolean).length;
 
   const registerAttendanceWithPayment = async (atletaId, paymentTypeId) => {
     try {
@@ -1046,104 +1098,122 @@ const AsistenciasManager = ({ user }) => {
         /* Modo de Reportes */
         <div className={styles.reportsMode}>
           {/* Filtros */}
-          <div className={styles.filtersSection}>
-            <div className={styles.filterGroup}>
-              <label htmlFor="fecha-inicio">Desde:</label>
-              <input
-                id="fecha-inicio"
-                type="date"
-                value={queryState.filters.fecha_inicio}
-                onChange={(e) => updateQueryFilter('fecha_inicio', e.target.value)}
-                className={styles.filterInput}
-              />
-            </div>
-            
-            <div className={styles.filterGroup}>
-              <label htmlFor="fecha-fin">Hasta:</label>
-              <input
-                id="fecha-fin"
-                type="date"
-                value={queryState.filters.fecha_fin}
-                onChange={(e) => updateQueryFilter('fecha_fin', e.target.value)}
-                className={styles.filterInput}
-              />
-            </div>
+          <Card className={styles.filtersCard}>
+            <div className={styles.filtersSection} role="search" aria-label="Filtros de asistencias">
+              <div className={styles.filtersTopGrid}>
+                <Field label="Buscar en historial">
+                  <input
+                    id="attendance-search-filter"
+                    type="search"
+                    value={queryState.filters.search}
+                    onChange={(e) => updateQueryFilter('search', e.target.value)}
+                    className={styles.filterInput}
+                    placeholder="Nombre, apellido, email o categoria..."
+                    aria-label="Buscar asistencias por atleta o categoria"
+                  />
+                </Field>
 
-            <div className={styles.filterGroup}>
-              <label htmlFor="categoria-filter">Categoría:</label>
-              <select
-                id="categoria-filter"
-                value={queryState.filters.categoria}
-                onChange={(e) => updateQueryFilter('categoria', e.target.value)}
-                className={styles.filterSelect}
-              >
-                <option value="">Todas las categorías</option>
-                {categorias.map(categoria => (
-                  <option key={categoria} value={categoria}>
-                    {formatCategoria(categoria)}
-                  </option>
-                ))}
-              </select>
-            </div>
+                <div className={styles.filterSummary}>
+                  <div className={styles.filterSummaryBox}>
+                    <p className="font-semibold text-white">Registros mostrados: {asistencias.length}</p>
+                    <p className={styles.filterHint}>Filtros activos: {historyActiveFiltersCount}</p>
+                  </div>
+                </div>
+              </div>
 
-            <div className={styles.filterGroup}>
-              <label htmlFor="atleta-filter">Atleta:</label>
-              <select
-                id="atleta-filter"
-                value={queryState.filters.atleta}
-                onChange={(e) => updateQueryFilter('atleta', e.target.value)}
-                className={styles.filterSelect}
-              >
-                <option value="">Todos los atletas</option>
-                {atletas.map(atleta => (
-                  <option key={atleta.id} value={atleta.id}>
-                    {atleta.users?.nombre} {atleta.users?.apellido}
-                  </option>
-                ))}
-              </select>
-            </div>
+              <div className={styles.filtersBottomGrid}>
+                <Field label="Desde">
+                  <input
+                    id="fecha-inicio"
+                    type="date"
+                    value={queryState.filters.fecha_inicio}
+                    onChange={(e) => updateQueryFilter('fecha_inicio', e.target.value)}
+                    className={styles.filterInput}
+                  />
+                </Field>
 
-            <div className={styles.filterGroup}>
-              <label htmlFor="metodo-pago-filter">Metodo pago:</label>
-              <select
-                id="metodo-pago-filter"
-                value={queryState.filters.metodo_pago_id}
-                onChange={(e) => updateQueryFilter('metodo_pago_id', e.target.value)}
-                className={styles.filterSelect}
-              >
-                <option value="">Todos</option>
-                {paymentTypes.map((paymentType) => (
-                  <option key={paymentType.id} value={paymentType.id}>
-                    {paymentType.nombre}
-                  </option>
-                ))}
-              </select>
-            </div>
+                <Field label="Hasta">
+                  <input
+                    id="fecha-fin"
+                    type="date"
+                    value={queryState.filters.fecha_fin}
+                    onChange={(e) => updateQueryFilter('fecha_fin', e.target.value)}
+                    className={styles.filterInput}
+                  />
+                </Field>
 
-            <div className={styles.filterGroup}>
-              <label htmlFor="attendance-clear-filters">Acciones:</label>
-              <button
-                id="attendance-clear-filters"
-                type="button"
-                className={styles.clearButton}
-                onClick={resetHistoryFilters}
-              >
-                Limpiar
-              </button>
-            </div>
+                <Field label="Categoria">
+                  <select
+                    id="categoria-filter"
+                    value={queryState.filters.categoria}
+                    onChange={(e) => updateQueryFilter('categoria', e.target.value)}
+                    className={styles.filterSelect}
+                  >
+                    <option value="">Todas las categorias</option>
+                    {categorias.map((categoria) => (
+                      <option key={categoria} value={categoria}>
+                        {formatCategoria(categoria)}
+                      </option>
+                    ))}
+                  </select>
+                </Field>
 
-            <div className={styles.filterGroup}>
-              <label htmlFor="attendance-sort-fecha">Orden fecha:</label>
-              <button
-                id="attendance-sort-fecha"
-                type="button"
-                className={styles.filterInput}
-                onClick={() => toggleHistorySort('fecha')}
-              >
-                {queryState.sort.field === 'fecha' ? `Fecha (${queryState.sort.direction})` : 'Ordenar por fecha'}
-              </button>
+                <Field label="Atleta">
+                  <select
+                    id="atleta-filter"
+                    value={queryState.filters.atleta}
+                    onChange={(e) => updateQueryFilter('atleta', e.target.value)}
+                    className={styles.filterSelect}
+                  >
+                    <option value="">Todos los atletas</option>
+                    {filteredAthleteOptions.map((atleta) => (
+                      <option key={atleta.id} value={atleta.id}>
+                        {atleta.users?.nombre} {atleta.users?.apellido}
+                      </option>
+                    ))}
+                  </select>
+                </Field>
+
+                <Field label="Metodo de pago">
+                  <select
+                    id="metodo-pago-filter"
+                    value={queryState.filters.metodo_pago_id}
+                    onChange={(e) => updateQueryFilter('metodo_pago_id', e.target.value)}
+                    className={styles.filterSelect}
+                  >
+                    <option value="">Todos</option>
+                    {paymentTypes.map((paymentType) => (
+                      <option key={paymentType.id} value={paymentType.id}>
+                        {(paymentType.nombre || '').replaceAll('_', ' ')}
+                      </option>
+                    ))}
+                  </select>
+                </Field>
+              </div>
+
+              <div className={styles.filterActions}>
+                <Button
+                  id="attendance-clear-filters"
+                  variant="secondary"
+                  className={styles.filterActionButton}
+                  onClick={resetHistoryFilters}
+                >
+                  Limpiar {historyActiveFiltersCount > 0 ? `(${historyActiveFiltersCount})` : ''}
+                </Button>
+
+                <Button
+                  id="attendance-sort-fecha"
+                  variant="outline"
+                  className={styles.filterActionButton}
+                  onClick={() => toggleHistorySort('fecha')}
+                >
+                  {queryState.sort.field === 'fecha'
+                    ? `Fecha (${queryState.sort.direction})`
+                    : 'Ordenar por fecha'}
+                </Button>
+              </div>
             </div>
-          </div>
+          </Card>
           <div className={styles.attendanceTable}>
             <h3><FaFileExport className="mr-2 inline align-middle" /> Reportes Persistidos</h3>
 
@@ -1221,7 +1291,7 @@ const AsistenciasManager = ({ user }) => {
             </div>
           ) : (
             <div className={styles.attendanceTable} data-testid="attendance-history-table">
-              <h3>ðŸ“‹ Historial de Asistencias por Día</h3>
+              <h3><FaCalendarAlt className="mr-2 inline align-middle" /> Historial de Asistencias por Día</h3>
               
               {sortedHistoryDates.length > 0 ? (
                 <div className={styles.daysContainer}>
@@ -1570,6 +1640,7 @@ AsistenciasManager.propTypes = {
 };
 
 export default AsistenciasManager;
+
 
 
 

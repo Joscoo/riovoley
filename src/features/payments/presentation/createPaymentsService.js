@@ -21,6 +21,8 @@ export const createPaymentsService = (repository = new SupabasePaymentsRepositor
   const updatePayment = async ({ paymentId, formData }) => useCases.updatePaymentUseCase.execute({ paymentId, formData });
   const deletePayment = async ({ paymentId }) => useCases.deletePaymentUseCase.execute({ paymentId });
   const markPaymentAsPaid = async ({ payment }) => useCases.markPaymentAsPaidUseCase.execute({ payment });
+  const getPaymentPeriodPreview = async ({ studentId, fechaPago }) =>
+    useCases.getPaymentPeriodPreviewUseCase.execute({ studentId, fechaPago });
   const filterAndSortLatestPayments = ({ allPayments, filters }) =>
     useCases.filterAndSortLatestPaymentsUseCase.execute({ allPayments, filters });
   const getTodayDate = () => useCases.getTodayDateUseCase.execute();
@@ -51,6 +53,7 @@ export const createPaymentsService = (repository = new SupabasePaymentsRepositor
     updatePayment,
     deletePayment,
     markPaymentAsPaid,
+    getPaymentPeriodPreview,
     filterAndSortLatestPayments,
     getTodayDate,
     validatePaymentForm,

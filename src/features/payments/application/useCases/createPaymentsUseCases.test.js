@@ -4,6 +4,7 @@ describe('createPaymentsUseCases', () => {
   const buildRepository = () => ({
     listAthletes: jest.fn(),
     listPayments: jest.fn(),
+    listMembershipTypes: jest.fn(),
     createPayment: jest.fn(),
     getAthleteByStudentId: jest.fn(),
     updatePayment: jest.fn(),
@@ -37,6 +38,7 @@ describe('createPaymentsUseCases', () => {
   it('listModuleDataUseCase refresca pagos cuando hubo actualizaciones de estado', async () => {
     const repository = buildRepository();
     repository.listAthletes.mockResolvedValue([{ id: 's1' }]);
+    repository.listMembershipTypes.mockResolvedValue([{ id: 1, code: 'normal' }]);
     repository.listPayments
       .mockResolvedValueOnce([{ id: 'p-old' }])
       .mockResolvedValueOnce([{ id: 'p-new' }]);
@@ -49,14 +51,22 @@ describe('createPaymentsUseCases', () => {
     expect(repository.listPayments).toHaveBeenCalledTimes(2);
     expect(result).toEqual({
       athletes: [{ id: 's1' }],
-      payments: [{ id: 'p-new' }],
+      membershipTypes: [{ id: 1, code: 'normal' }],
+      payments: [{ id: 'p-new', membership_type: null }],
       statusUpdateSummary: { actualizados: 2 },
     });
   });
 
   it('createPaymentUseCase crea pago y dispara notificaciones', async () => {
     const repository = buildRepository();
-    repository.createPayment.mockResolvedValue({ id: 'p1', estado: 'activo' });
+    repository.createPayment.mockResolvedValue({
+      id: 'p1',
+      estado: 'activo',
+      monto: 35,
+      fecha_inicio: '2026-05-01',
+      fecha_fin: '2026-05-31',
+      fecha_pago: '2026-05-17',
+    });
     repository.getAthleteByStudentId.mockResolvedValue({
       users: { email: 'ana@demo.com', nombre: 'Ana', apellido: 'Perez', telefono: '099' },
     });
@@ -67,26 +77,41 @@ describe('createPaymentsUseCases', () => {
     const result = await useCases.createPaymentUseCase.execute({
       formData: {
         student_id: 's1',
-        monto: '20',
-        fecha_inicio: '2026-05-01',
-        fecha_fin: '2026-05-31',
+        membership_type_id: '1',
         fecha_pago: '2026-05-17',
       },
     });
 
     expect(repository.createPayment).toHaveBeenCalledWith({
       student_id: 's1',
-      monto: 20,
-      fecha_inicio: '2026-05-01',
-      fecha_fin: '2026-05-31',
+      membership_type_id: 1,
       fecha_pago: '2026-05-17',
-      estado: 'activo',
     });
     expect(deps.communicationsService.sendPaymentConfirmation).toHaveBeenCalled();
     expect(result).toMatchObject({
       emailSent: true,
       whatsappSent: true,
       messageId: 'msg-1',
+    });
+  });
+
+  it('getPaymentPeriodPreviewUseCase calcula preview desde el ultimo pago del atleta', async () => {
+    const repository = buildRepository();
+    repository.listPayments.mockResolvedValue([
+      { id: 'p1', student_id: 's1', fecha_inicio: '2026-04-01', fecha_fin: '2026-04-30' },
+    ]);
+    const deps = buildDeps();
+    const useCases = createPaymentsUseCases(repository, deps);
+
+    const result = await useCases.getPaymentPeriodPreviewUseCase.execute({
+      studentId: 's1',
+      fechaPago: '2026-06-01',
+    });
+
+    expect(repository.listPayments).toHaveBeenCalled();
+    expect(result).toEqual({
+      fecha_inicio: '2026-05-01',
+      fecha_fin: '2026-05-31',
     });
   });
 
@@ -114,6 +139,7 @@ describe('createPaymentsUseCases', () => {
           student_id: 's1',
           monto: 25,
           fecha_inicio: '2026-05-01',
+          membership_type: { nombre: 'Mensualidad normal' },
           student: { user: { nombre: 'Ana', apellido: 'Perez', email: 'ana@demo.com' } },
         },
         {
@@ -122,6 +148,7 @@ describe('createPaymentsUseCases', () => {
           student_id: 's2',
           monto: 20,
           fecha_inicio: '2026-05-02',
+          membership_type: { nombre: 'Mensualidad en grupo' },
           student: { user: { nombre: 'Lia', apellido: 'Torres', email: 'lia@demo.com' } },
         },
       ],
@@ -130,6 +157,7 @@ describe('createPaymentsUseCases', () => {
         fecha_fin: '',
         estado: 'activo',
         atleta: '',
+        membership_type: '',
         search: 'ana',
         sortBy: 'apellido',
         sortOrder: 'asc',
@@ -161,10 +189,8 @@ describe('createPaymentsUseCases', () => {
 
     expect(result).toEqual({
       student_id: '',
-      fecha_inicio: '2026-06-01',
-      fecha_fin: '',
-      monto: '',
-      fecha_pago: '',
+      membership_type_id: '',
+      fecha_pago: '2026-06-01',
       observaciones: '',
     });
   });
@@ -221,8 +247,8 @@ describe('createPaymentsUseCases', () => {
     const useCases = createPaymentsUseCases(repository, deps);
 
     const result = useCases.buildManualWhatsAppPaymentMessageUseCase.execute({
-      createdPayment: { id: 'p1' },
-      formData: { monto: '30', fecha_pago: '2026-05-17', observaciones: 'ok' },
+      createdPayment: { id: 'p1', monto: 30, fecha_pago: '2026-05-17' },
+      formData: { observaciones: 'ok' },
       athlete: { users: { telefono: '0999', nombre: 'Ana', apellido: 'Perez' } },
     });
 
@@ -250,21 +276,19 @@ describe('createPaymentsUseCases', () => {
     expect(result).toEqual({ sent: true });
   });
 
-  it('validatePaymentFormUseCase valida campos y fechas', () => {
+  it('validatePaymentFormUseCase valida campos requeridos y fecha', () => {
     const repository = buildRepository();
     const deps = buildDeps();
     const useCases = createPaymentsUseCases(repository, deps);
 
     const invalid = useCases.validatePaymentFormUseCase.execute({
-      formData: { student_id: '', fecha_inicio: '', monto: '0' },
+      formData: { student_id: '', membership_type_id: '', fecha_pago: '' },
       todayDateString: '2026-05-17',
     });
     const valid = useCases.validatePaymentFormUseCase.execute({
       formData: {
         student_id: 's1',
-        fecha_inicio: '2026-05-01',
-        fecha_fin: '2026-05-31',
-        monto: '20',
+        membership_type_id: '2',
         fecha_pago: '2026-05-17',
         observaciones: '',
       },
@@ -273,6 +297,8 @@ describe('createPaymentsUseCases', () => {
 
     expect(invalid.isValid).toBe(false);
     expect(invalid.errors.student_id).toBeDefined();
+    expect(invalid.errors.membership_type_id).toBeDefined();
+    expect(invalid.errors.fecha_pago).toBeDefined();
     expect(valid).toEqual({ isValid: true, errors: {} });
   });
 

@@ -43,6 +43,13 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Mejorar contraste en listas desplegables nativas del navegador */
+select option,
+select optgroup {
+  color: #0f172a !important;
+  background-color: #ffffff !important;
+}
+
 @media (max-width: 768px) {
   body {
     padding-top: calc(var(--rv-navbar-height-mobile, 65px) + env(safe-area-inset-top));

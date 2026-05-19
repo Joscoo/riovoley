@@ -33,6 +33,7 @@ Tabla por tabla (estado real):
 | audit | payments_audit | NO |
 | audit | sql_errors | NO |
 | audit | sql_executions | NO |
+| billing | membership_types | SI |
 | billing | payment_types | SI |
 | billing | payments | NO |
 | core | students | NO |
@@ -75,19 +76,39 @@ Campos relevantes verificados:
 - fecha_nacimiento (NOT NULL)
 - edad
 
-### 4.3 billing.payments
+### 4.3 billing.membership_types
+
+Campos relevantes verificados:
+
+- id (bigint, PK)
+- code (text, unique)
+- nombre
+- detalle
+- costo (numeric)
+- active (boolean)
+- created_at, updated_at
+
+### 4.4 billing.payments
 
 Campos relevantes verificados:
 
 - id (uuid, PK)
 - student_id (FK a core.students.id)
 - payment_type_id (FK a billing.payment_types.id)
+- membership_type_id (FK a billing.membership_types.id)
 - monto
 - fecha_pago, fecha_inicio, fecha_fin
 - estado
 - deleted_at
 
-### 4.4 training.physical_tests
+Reglas automáticas vigentes:
+
+- `fecha_pago` obligatoria (default `CURRENT_DATE`)
+- `monto` se deriva de `billing.membership_types.costo`
+- `fecha_inicio` y `fecha_fin` se calculan automáticamente por mensualidad corrida
+- `estado` se recalcula automáticamente según `fecha_fin`
+
+### 4.5 training.physical_tests
 
 Campos relevantes verificados:
 
@@ -107,7 +128,7 @@ Validaciones recientes aplicadas:
 	- `fuerza_piernas`: 0..600
 	- `elevaciones_barra`: 0..300
 
-### 4.5 profiles.user_profiles
+### 4.6 profiles.user_profiles
 
 Campos relevantes verificados:
 
@@ -117,7 +138,7 @@ Campos relevantes verificados:
 - organization_id
 - created_at
 
-### 4.6 public_content.announcements
+### 4.7 public_content.announcements
 
 Campos relevantes verificados:
 
@@ -128,7 +149,7 @@ Campos relevantes verificados:
 - created_at, updated_at, expires_at
 - image_url, attachment_url
 
-### 4.7 security.users_password_backup
+### 4.8 security.users_password_backup
 
 Campos relevantes verificados:
 
@@ -142,6 +163,7 @@ Estado de acceso confirmado:
 ## 5) Relaciones FK Confirmadas
 
 - billing.payments.payment_type_id -> billing.payment_types.id
+- billing.payments.membership_type_id -> billing.membership_types.id
 - billing.payments.student_id -> core.students.id
 - core.students.user_id -> core.users.id
 - training.attendances.metodo_pago_id -> billing.payment_types.id
@@ -156,6 +178,7 @@ Vistas confirmadas:
 - public.users -> core.users
 - public.students -> core.students
 - public.user_profiles -> profiles.user_profiles
+- public.membership_types -> billing.membership_types
 - public.payment_types -> billing.payment_types
 - public.payments -> billing.payments
 - public.schedules -> training.schedules
@@ -177,6 +200,7 @@ Observacion importante:
 Hay politicas activas para tablas como:
 
 - billing.payment_types
+- billing.membership_types
 - billing.payments
 - core.students
 - profiles.user_profiles
@@ -188,6 +212,7 @@ Hay politicas activas para tablas como:
 ### 7.2 Efectividad real
 
 - billing.payment_types: RLS SI -> politicas aplican.
+- billing.membership_types: RLS SI -> politicas aplican.
 - profiles.user_profiles: RLS SI -> politicas aplican.
 - training.attendances: RLS SI -> politicas aplican.
 - billing.payments, core.students, training.physical_tests, public_content.announcements, training.schedules: RLS NO -> politicas no aplican actualmente.
