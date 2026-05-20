@@ -69,7 +69,7 @@ describe('SupabaseUserProvisioningRepository', () => {
     ).rejects.toThrow('No se encontro el identificador del usuario');
   });
 
-  it('resendCredentials falla cuando no hay token de sesion', async () => {
+  it('resendCredentials falla cuando no hay token de sesión', async () => {
     supabase.auth.getSession.mockResolvedValue({
       data: { session: null },
     });
@@ -81,7 +81,7 @@ describe('SupabaseUserProvisioningRepository', () => {
         user_id: 'uuid-1',
         email: 'demo@riovoley.com',
       }),
-    ).rejects.toThrow('No se encontro un token de sesion valido');
+    ).rejects.toThrow('No se encontro un token de sesión valido');
   });
 
   it('resendCredentials traduce error funcional de edge function', async () => {
@@ -100,6 +100,6 @@ describe('SupabaseUserProvisioningRepository', () => {
         user_id: 'uuid-1',
         email: 'demo@riovoley.com',
       }),
-    ).rejects.toThrow('Tu sesion expiro o no es valida');
+    ).rejects.toThrow('Tu sesión expiro o no es valida');
   });
 });

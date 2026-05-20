@@ -1,4 +1,4 @@
-// src/features/admin-dashboard/presentation/components/Dashboard.js
+﻿// src/features/admin-dashboard/presentation/components/Dashboard.js
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -114,7 +114,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
     <div className="mx-auto w-full max-w-7xl">
       <SectionHeader
         title="Dashboard - Resumen General"
-        subtitle={`Vista general de RioVoley Club${user?.email ? ` - Sesion: ${user.email}` : ''}`}
+        subtitle={`Vista general de RioVoley Club${user?.email ? ` - Sesión: ${user.email}` : ''}`}
         icon={<FaChartBar />}
       />
 

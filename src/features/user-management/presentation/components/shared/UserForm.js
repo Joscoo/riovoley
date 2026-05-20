@@ -62,9 +62,13 @@ const UserForm = ({ userType, initialData, onSubmit, onCancel, submitLabel = 'Gu
         telefono: initialData.telefono || '',
         fecha_nacimiento: initialData.fecha_nacimiento || '',
         categoria: initialData.categoria || '',
+        send_credentials_on_create: false,
       };
     }
-    return INITIAL_FORM[userType] || INITIAL_FORM.atleta;
+    return {
+      ...(INITIAL_FORM[userType] || INITIAL_FORM.atleta),
+      send_credentials_on_create: false,
+    };
   });
 
   const [formErrors, setFormErrors] = useState({});
@@ -241,6 +245,37 @@ const UserForm = ({ userType, initialData, onSubmit, onCancel, submitLabel = 'Gu
               <p className="mt-1 text-xs text-red-400">{formErrors.categoria}</p>
             )}
           </Field>
+        </section>
+      )}
+
+      {userType === 'atleta' && !isEditing && (
+        <section className="space-y-3 rounded-xl border border-rv-gold/20 bg-black/20 p-4">
+          <h4 className="text-sm font-bold uppercase tracking-[0.8px] text-rv-gold">
+            <UserIcon className="mr-2 inline align-middle" /> Credenciales de Acceso
+          </h4>
+          <p className="text-sm text-slate-300">
+            Despues de guardar, deseas enviar automaticamente las credenciales por email?
+          </p>
+          <div className="flex flex-col gap-2 mobile:flex-row mobile:gap-5">
+            <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-white">
+              <input
+                type="radio"
+                name="send_credentials_on_create"
+                checked={Boolean(formData.send_credentials_on_create)}
+                onChange={() => handleChange('send_credentials_on_create', true)}
+              />
+              Si, enviar al guardar
+            </label>
+            <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-white">
+              <input
+                type="radio"
+                name="send_credentials_on_create"
+                checked={!formData.send_credentials_on_create}
+                onChange={() => handleChange('send_credentials_on_create', false)}
+              />
+              No, enviar despues
+            </label>
+          </div>
         </section>
       )}
 

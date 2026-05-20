@@ -1,4 +1,4 @@
-// src/features/auth-session/presentation/components/ChangePasswordModal.js
+﻿// src/features/auth-session/presentation/components/ChangePasswordModal.js
 import React, { useState } from 'react';
 import { authSessionService } from '../../authSessionService';
 import { validatePassword } from '../../../../utils/passwordUtils';
@@ -38,18 +38,18 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
     try {
       // Validaciones
       if (!formData.currentPassword) {
-        throw new Error('Debe ingresar su contraseña actual');
+        throw new Error('Debe ingresar su contraseÃ±a actual');
       }
 
       if (!formData.newPassword) {
-        throw new Error('Debe ingresar una nueva contraseña');
+        throw new Error('Debe ingresar una nueva contraseÃ±a');
       }
 
       if (formData.newPassword !== formData.confirmPassword) {
-        throw new Error('Las contraseñas no coinciden');
+        throw new Error('Las contraseÃ±as no coinciden');
       }
 
-      // Validar fortaleza de la nueva contraseña
+      // Validar fortaleza de la nueva contraseÃ±a
       const passwordValidation = validatePassword(formData.newPassword);
       if (!passwordValidation.isValid) {
         setErrors(passwordValidation.errors);
@@ -58,21 +58,23 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
 
       const session = await authSessionService.getSession();
       if (!session) {
-        throw new Error('Tu sesión expiró. Inicia sesión nuevamente para cambiar la contraseña.');
+        throw new Error('Tu sesiÃ³n expirÃ³. Inicia sesiÃ³n nuevamente para cambiar la contraseÃ±a.');
       }
 
-      // El usuario ya está autenticado; actualizamos la contraseña directamente en Auth.
+      // El usuario ya estÃ¡ autenticado; actualizamos la contraseÃ±a directamente en Auth.
       await authSessionService.updatePassword(formData.newPassword);
 
-      // Cerrar inmediatamente el modal; la sincronización en users se resuelve en paralelo.
-      onPasswordChanged();
+      // Cerrar inmediatamente el modal; la sincronizaciÃ³n en users se resuelve en paralelo.
+      if (typeof onPasswordChanged === 'function') {
+        onPasswordChanged();
+      }
 
-      authSessionService.markFirstLoginCompleted(user.id).catch((error) => {
+      void authSessionService.markFirstLoginCompleted(user.id).catch((error) => {
         console.warn('No se pudo sincronizar first_login=false desde cliente. Trigger SQL deberia cubrir este caso.', error);
       });
 
     } catch (error) {
-      console.error('Error cambiando contraseña:', error);
+      console.error('Error cambiando contraseÃ±a:', error);
       setErrors([error.message]);
     } finally {
       setLoading(false);
@@ -100,9 +102,9 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
         <div className="border-b border-amber-500/20 px-4 py-4 text-center mobile:px-8 mobile:py-8">
           <h2 id="change-password-title" className="m-0 mb-2 text-[1.1rem] font-bold text-slate-50 mobile:text-2xl">
             <FaLock className="mr-2 inline-block align-middle mobile:mr-2.5" />
-            Cambio de Contrasena Obligatorio
+            Cambio de Contraseña Obligatorio
           </h2>
-          <p className="m-0 text-sm text-slate-300 mobile:text-base">Por seguridad, debes cambiar tu contrasena temporal</p>
+          <p className="m-0 text-sm text-slate-300 mobile:text-base">Por seguridad, debes cambiar tu contraseña temporal</p>
         </div>
 
         <form onSubmit={handleSubmit} className="px-4 py-4 mobile:px-8 mobile:py-8">
@@ -120,10 +122,10 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
             </div>
           )}
 
-          {/* Contraseña Actual */}
+          {/* ContraseÃ±a Actual */}
           <div className="mb-6">
             <label htmlFor="currentPassword" className="mb-2 block text-[0.95rem] font-semibold uppercase tracking-[0.5px] text-slate-50">
-              Contrasena Actual *
+              Contraseña Actual *
             </label>
             <div className="relative flex items-center">
               <input
@@ -131,7 +133,7 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
                 type={showPasswords.current ? "text" : "password"}
                 value={formData.currentPassword}
                 onChange={(e) => handleInputChange('currentPassword', e.target.value)}
-                placeholder="Ingresa tu contraseña temporal"
+                placeholder="Ingresa tu contraseÃ±a temporal"
                 className={inputBaseClass}
                 required
               />
@@ -139,17 +141,17 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
                 type="button"
                 className="absolute right-2 z-[1] flex h-9 w-9 items-center justify-center rounded-md border-0 bg-transparent text-slate-300 transition-all duration-200 hover:bg-amber-500/20 hover:text-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300"
                 onClick={() => togglePasswordVisibility('current')}
-                aria-label={showPasswords.current ? 'Ocultar contrasena actual' : 'Mostrar contrasena actual'}
+                aria-label={showPasswords.current ? 'Ocultar contraseña actual' : 'Mostrar contraseña actual'}
               >
                 {showPasswords.current ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
           </div>
 
-          {/* Nueva Contraseña */}
+          {/* Nueva ContraseÃ±a */}
           <div className="mb-6">
             <label htmlFor="newPassword" className="mb-2 block text-[0.95rem] font-semibold uppercase tracking-[0.5px] text-slate-50">
-              Nueva Contrasena *
+              Nueva Contraseña *
             </label>
             <div className="relative flex items-center">
               <input
@@ -157,7 +159,7 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
                 type={showPasswords.new ? "text" : "password"}
                 value={formData.newPassword}
                 onChange={(e) => handleInputChange('newPassword', e.target.value)}
-                placeholder="Crea una contraseña segura"
+                placeholder="Crea una contraseÃ±a segura"
                 className={inputBaseClass}
                 required
               />
@@ -165,17 +167,17 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
                 type="button"
                 className="absolute right-2 z-[1] flex h-9 w-9 items-center justify-center rounded-md border-0 bg-transparent text-slate-300 transition-all duration-200 hover:bg-amber-500/20 hover:text-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300"
                 onClick={() => togglePasswordVisibility('new')}
-                aria-label={showPasswords.new ? 'Ocultar nueva contrasena' : 'Mostrar nueva contrasena'}
+                aria-label={showPasswords.new ? 'Ocultar nueva contraseña' : 'Mostrar nueva contraseña'}
               >
                 {showPasswords.new ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
           </div>
 
-          {/* Confirmar Contraseña */}
+          {/* Confirmar ContraseÃ±a */}
           <div className="mb-6">
             <label htmlFor="confirmPassword" className="mb-2 block text-[0.95rem] font-semibold uppercase tracking-[0.5px] text-slate-50">
-              Confirmar Nueva Contrasena *
+              Confirmar Nueva Contraseña *
             </label>
             <div className="relative flex items-center">
               <input
@@ -183,7 +185,7 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
                 type={showPasswords.confirm ? "text" : "password"}
                 value={formData.confirmPassword}
                 onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
-                placeholder="Confirma tu nueva contraseña"
+                placeholder="Confirma tu nueva contraseÃ±a"
                 className={inputBaseClass}
                 required
               />
@@ -191,18 +193,18 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
                 type="button"
                 className="absolute right-2 z-[1] flex h-9 w-9 items-center justify-center rounded-md border-0 bg-transparent text-slate-300 transition-all duration-200 hover:bg-amber-500/20 hover:text-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300"
                 onClick={() => togglePasswordVisibility('confirm')}
-                aria-label={showPasswords.confirm ? 'Ocultar confirmacion de contrasena' : 'Mostrar confirmacion de contrasena'}
+                aria-label={showPasswords.confirm ? 'Ocultar confirmacion de contraseña' : 'Mostrar confirmacion de contraseña'}
               >
                 {showPasswords.confirm ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
           </div>
 
-          {/* Requisitos de contraseña */}
+          {/* Requisitos de contraseÃ±a */}
           <div className="mb-6 rounded-xl border border-slate-400/25 bg-slate-900/60 p-4">
             <h4 className="m-0 mb-3 text-[0.95rem] font-semibold text-slate-50">
               <FaClipboardList className="mr-2 inline-block align-middle" />
-              Requisitos de la contrasena:
+              Requisitos de la contraseña:
             </h4>
             <ul className="m-0 list-disc pl-5 text-[0.85rem] text-slate-300">
               <li className="mb-1">Minimo 8 caracteres</li>
@@ -225,7 +227,7 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
                 </>
               ) : (
                 <>
-                  <FaShieldAlt className="mr-2 inline-block align-middle" /> Cambiar Contrasena
+                  <FaShieldAlt className="mr-2 inline-block align-middle" /> Cambiar Contraseña
                 </>
               )}
             </button>
@@ -234,7 +236,7 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
 
         <div className="border-t border-slate-400/20 bg-slate-900/50 px-4 py-4 mobile:px-8 mobile:pb-8">
           <p className="m-0 text-center text-xs leading-[1.4] text-slate-300 mobile:text-[0.85rem]">
-            <strong>Nota de seguridad:</strong> Tu nueva contrasena sera encriptada y almacenada de forma segura. Nunca compartas tus credenciales con terceros.
+            <strong>Nota de seguridad:</strong> Tu nueva contraseña sera encriptada y almacenada de forma segura. Nunca compartas tus credenciales con terceros.
           </p>
         </div>
       </div>

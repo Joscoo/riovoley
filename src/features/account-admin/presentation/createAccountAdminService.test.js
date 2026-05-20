@@ -49,7 +49,7 @@ describe('createAccountAdminService', () => {
     expect(result).toEqual({
       ok: false,
       code: 'INVALID_CURRENT_PASSWORD',
-      message: 'La contrasena actual es incorrecta',
+      message: 'La contraseña actual es incorrecta',
     });
     expect(repository.updatePassword).not.toHaveBeenCalled();
   });

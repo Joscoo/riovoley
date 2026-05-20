@@ -4,6 +4,7 @@ import { userManagementService } from '../../../userManagementService';
 import { useUserPermissions } from '../hooks/useUserPermissions';
 import { useUserActions } from '../hooks/useUserActions';
 import { useTimedMessage } from '../hooks/useTimedMessage';
+import { communicationsService } from '../../../../communications';
 import { SectionHeader, Card, Button, EmptyState, iconRegistry } from '../../../../../shared/ui';
 import { SORT_DIRECTION, createTableQuery } from '../../../../../shared/lib/tableQuery';
 import UserCard from '../shared/UserCard';
@@ -144,8 +145,31 @@ const AthletesTab = ({ userRole }) => {
         await userActions.handleEdit(editingAthlete.user_id, formData, 'atleta');
         showMessage('success', 'Estudiante actualizado correctamente');
       } else {
-        await userActions.handleCreate(formData, 'atleta');
-        showMessage('success', 'Estudiante creado exitosamente');
+        const shouldSendCredentials = Boolean(formData.send_credentials_on_create);
+        const createResult = await userActions.handleCreate(formData, 'atleta');
+
+        if (shouldSendCredentials) {
+          const temporaryPassword = createResult?.credentials?.password;
+          if (!temporaryPassword) {
+            showMessage('error', 'Estudiante creado, pero no se pudo preparar el envio de credenciales.');
+          } else {
+            const emailResult = await communicationsService.sendCredentials({
+              email: createResult?.credentials?.email || formData.email,
+              nombre: formData.nombre,
+              apellido: formData.apellido,
+              full_name: `${formData.nombre || ''} ${formData.apellido || ''}`.trim(),
+              password: temporaryPassword,
+            });
+
+            if (emailResult?.success) {
+              showMessage('success', 'Estudiante creado y credenciales enviadas por email.');
+            } else {
+              showMessage('error', `Estudiante creado, pero el email de credenciales fallo: ${emailResult?.error || 'Error desconocido'}`);
+            }
+          }
+        } else {
+          showMessage('success', 'Estudiante creado exitosamente');
+        }
       }
       closeModal();
       loadAthletes();

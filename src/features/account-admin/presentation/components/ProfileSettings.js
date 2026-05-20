@@ -1,4 +1,4 @@
-// src/features/account-admin/presentation/components/ProfileSettings.js
+﻿// src/features/account-admin/presentation/components/ProfileSettings.js
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaClipboardList, FaCog, FaEdit, FaExclamationTriangle, FaInfoCircle, FaKey, FaLock } from 'react-icons/fa';
@@ -100,13 +100,13 @@ const ProfileSettings = ({ user }) => {
     }
 
     if (passwordData.newPassword.length < 6) {
-      setMensaje({ tipo: 'error', texto: 'La nueva contrasena debe tener al menos 6 caracteres' });
+      setMensaje({ tipo: 'error', texto: 'La nueva Contraseña debe tener al menos 6 caracteres' });
       setLoading(false);
       return;
     }
 
     if (passwordData.newPassword !== passwordData.confirmPassword) {
-      setMensaje({ tipo: 'error', texto: 'Las contrasenas no coinciden' });
+      setMensaje({ tipo: 'error', texto: 'Las Contraseñas no coinciden' });
       setLoading(false);
       return;
     }
@@ -123,7 +123,7 @@ const ProfileSettings = ({ user }) => {
         return;
       }
 
-      setMensaje({ tipo: 'success', texto: 'Contrasena actualizada correctamente' });
+      setMensaje({ tipo: 'success', texto: 'Contraseña actualizada correctamente' });
       setPasswordData({
         currentPassword: '',
         newPassword: '',
@@ -131,8 +131,8 @@ const ProfileSettings = ({ user }) => {
       });
       setShowChangePassword(false);
     } catch (error) {
-      console.error('Error cambiando contrasena:', error);
-      setMensaje({ tipo: 'error', texto: `Error al cambiar la contrasena: ${error.message}` });
+      console.error('Error cambiando Contraseña:', error);
+      setMensaje({ tipo: 'error', texto: `Error al cambiar la Contraseña: ${error.message}` });
     } finally {
       setLoading(false);
     }
@@ -264,16 +264,16 @@ const ProfileSettings = ({ user }) => {
 
         {!showChangePassword ? (
           <Button variant="outline" onClick={() => setShowChangePassword(true)}>
-            <FaKey className="mr-2" /> Cambiar Contrasena
+            <FaKey className="mr-2" /> Cambiar Contraseña
           </Button>
         ) : (
           <form onSubmit={handleChangePassword} className="space-y-4">
             <div className="rounded-lg border border-amber-300/40 bg-amber-500/15 px-4 py-3 text-sm font-semibold text-amber-100">
               <FaExclamationTriangle className="mr-2 inline align-middle" />
-              <span className="align-middle">La contrasena debe tener al menos 6 caracteres.</span>
+              <span className="align-middle">La Contraseña debe tener al menos 6 caracteres.</span>
             </div>
 
-            <Field label="Contrasena Actual">
+            <Field label="Contraseña Actual">
               <input
                 type="password"
                 name="currentPassword"
@@ -284,7 +284,7 @@ const ProfileSettings = ({ user }) => {
               />
             </Field>
 
-            <Field label="Nueva Contrasena">
+            <Field label="Nueva Contraseña">
               <input
                 type="password"
                 name="newPassword"
@@ -296,7 +296,7 @@ const ProfileSettings = ({ user }) => {
               />
             </Field>
 
-            <Field label="Confirmar Nueva Contrasena">
+            <Field label="Confirmar Nueva Contraseña">
               <input
                 type="password"
                 name="confirmPassword"
@@ -325,7 +325,7 @@ const ProfileSettings = ({ user }) => {
                 Cancelar
               </Button>
               <Button type="submit" disabled={loading} className="w-full mobile:w-auto">
-                {loading ? 'Cambiando...' : 'Cambiar Contrasena'}
+                {loading ? 'Cambiando...' : 'Cambiar Contraseña'}
               </Button>
             </div>
           </form>

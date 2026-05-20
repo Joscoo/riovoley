@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash, FaExclamationTriangle, FaKey, FaLock } from 'react-icons/fa';
 import { authSessionService } from '../../authSessionService';
+import { deferAuthEvent } from '../utils/deferAuthEvent';
 import { cn } from '../../../../lib/cn';
 import { PageShell } from '../../../../shared/ui';
 import { Card } from '../../../../shared/ui';
@@ -104,22 +105,26 @@ const ResetPassword = () => {
 
     const {
       data: { subscription }
-    } = authSessionService.onAuthStateChange((event, session) => {
-      if (event === 'PASSWORD_RECOVERY') {
-        setIsValidToken(true);
-        setIsCheckingToken(false);
-        setMensaje('');
-        clearRecoveryParamsFromUrl();
-      } else if (event === 'SIGNED_IN' && session) {
-        setIsValidToken(true);
-        setIsCheckingToken(false);
-        setMensaje('');
-        clearRecoveryParamsFromUrl();
-      } else if (event === 'TOKEN_REFRESHED') {
-        setIsValidToken(true);
-        setIsCheckingToken(false);
-      }
-    });
+    } = authSessionService.onAuthStateChange(
+      deferAuthEvent((event, session) => {
+        if (!isMounted) return;
+
+        if (event === 'PASSWORD_RECOVERY') {
+          setIsValidToken(true);
+          setIsCheckingToken(false);
+          setMensaje('');
+          clearRecoveryParamsFromUrl();
+        } else if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session) {
+          setIsValidToken(true);
+          setIsCheckingToken(false);
+          setMensaje('');
+          clearRecoveryParamsFromUrl();
+        } else if (event === 'TOKEN_REFRESHED') {
+          setIsValidToken(true);
+          setIsCheckingToken(false);
+        }
+      })
+    );
 
     initPasswordReset();
 
@@ -141,20 +146,20 @@ const ResetPassword = () => {
     }
 
     if (!isStrongPassword) {
-      setMensaje('La contrase?a no cumple los requisitos de seguridad.');
+      setMensaje('La contraseña no cumple los requisitos de seguridad.');
       setIsLoading(false);
       return;
     }
 
     if (!passwordsMatch) {
-      setMensaje('Las contrase?as no coinciden');
+      setMensaje('Las contraseñas no coinciden');
       setIsLoading(false);
       return;
     }
 
     try {
       await authSessionService.updatePassword(newPassword);
-      setMensaje('Contrase?a actualizada correctamente. Redirigiendo...');
+      setMensaje('Contraseña actualizada correctamente. Redirigiendo...');
       setNewPassword('');
       setConfirmPassword('');
       setTimeout(() => {
@@ -179,9 +184,9 @@ const ResetPassword = () => {
               </div>
             </div>
             <h1 className="bg-gradient-to-r from-white to-rv-gold bg-clip-text text-3xl font-black text-transparent mobile:text-4xl">
-              Restablecer Contrase?a
+              Restablecer Contraseña
             </h1>
-            <p className="mt-2 text-sm text-slate-200">Ingresa tu nueva contrase?a</p>
+            <p className="mt-2 text-sm text-slate-200">Ingresa tu nueva contraseña</p>
             <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-transparent via-rv-gold to-transparent" aria-hidden="true" />
           </div>
 
@@ -200,7 +205,7 @@ const ResetPassword = () => {
 
           {!isCheckingToken && isValidToken && (
             <form onSubmit={handleResetPassword} className="space-y-4">
-              <Field label="Nueva contrase?a" icon={<FaLock />}>
+              <Field label="Nueva contraseña" icon={<FaLock />}>
                 <div className="relative">
                   <input
                     id="new-password"
@@ -239,7 +244,7 @@ const ResetPassword = () => {
                 </div>
               </Field>
 
-              <Field label="Confirmar contrase?a" icon={<FaLock />}>
+              <Field label="Confirmar contraseña" icon={<FaLock />}>
                 <input
                   id="confirm-password"
                   type={showPassword ? 'text' : 'password'}
@@ -253,7 +258,7 @@ const ResetPassword = () => {
                 />
                 {confirmPassword ? (
                   <p className={cn('text-xs font-semibold', passwordsMatch ? 'text-emerald-300' : 'text-red-300')}>
-                    {passwordsMatch ? '? Las contrase?as coinciden' : 'Las contrase?as no coinciden'}
+                    {passwordsMatch ? '? Las contraseñas coinciden' : 'Las contraseñas no coinciden'}
                   </p>
                 ) : null}
               </Field>
@@ -264,7 +269,7 @@ const ResetPassword = () => {
                 className="w-full"
                 size="lg"
               >
-                {isLoading ? 'Actualizando...' : 'Actualizar Contrase?a'}
+                {isLoading ? 'Actualizando...' : 'Actualizar Contraseña'}
               </Button>
 
               {mensaje ? (

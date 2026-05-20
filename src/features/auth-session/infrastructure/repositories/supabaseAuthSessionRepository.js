@@ -1,4 +1,4 @@
-import { supabase } from '../../../../config/supabase';
+﻿import { supabase } from '../../../../config/supabase';
 import { AuthSessionError } from '../../domain/authSessionError';
 
 const normalizeError = (error, fallback) => {
@@ -26,7 +26,7 @@ export class SupabaseAuthSessionRepository {
   async getSession() {
     const { data, error } = await supabase.auth.getSession();
     if (error) {
-      throw new AuthSessionError(normalizeError(error, 'Error obteniendo sesion'), error);
+      throw new AuthSessionError(normalizeError(error, 'Error obteniendo Sesión'), error);
     }
     return data.session || null;
   }
@@ -97,7 +97,7 @@ export class SupabaseAuthSessionRepository {
   async signInWithPassword(email, password) {
     const { data, error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) {
-      throw new AuthSessionError(normalizeError(error, 'Error iniciando sesion'), error);
+      throw new AuthSessionError(normalizeError(error, 'Error iniciando Sesión'), error);
     }
     return data;
   }
@@ -105,21 +105,21 @@ export class SupabaseAuthSessionRepository {
   async signOut() {
     const { error } = await supabase.auth.signOut();
     if (error) {
-      throw new AuthSessionError(normalizeError(error, 'Error cerrando sesion'), error);
+      throw new AuthSessionError(normalizeError(error, 'Error cerrando Sesión'), error);
     }
   }
 
   async requestPasswordReset(email, redirectTo) {
     const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo });
     if (error) {
-      throw new AuthSessionError(normalizeError(error, 'Error enviando reset de contrasena'), error);
+      throw new AuthSessionError(normalizeError(error, 'Error enviando reset de Contraseña'), error);
     }
   }
 
   async exchangeCodeForSession(code) {
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (error) {
-      throw new AuthSessionError(normalizeError(error, 'Error intercambiando code por sesion'), error);
+      throw new AuthSessionError(normalizeError(error, 'Error intercambiando code por Sesión'), error);
     }
   }
 
@@ -130,14 +130,14 @@ export class SupabaseAuthSessionRepository {
     });
 
     if (error) {
-      throw new AuthSessionError(normalizeError(error, 'Error configurando sesion de recuperacion'), error);
+      throw new AuthSessionError(normalizeError(error, 'Error configurando Sesión de recuperacion'), error);
     }
   }
 
   async updatePassword(password) {
     const { error } = await supabase.auth.updateUser({ password });
     if (error) {
-      throw new AuthSessionError(normalizeError(error, 'Error actualizando contrasena'), error);
+      throw new AuthSessionError(normalizeError(error, 'Error actualizando Contraseña'), error);
     }
   }
 

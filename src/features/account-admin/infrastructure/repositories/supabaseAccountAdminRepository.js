@@ -1,4 +1,4 @@
-import { supabase } from '../../../../config/supabase';
+﻿import { supabase } from '../../../../config/supabase';
 import { AccountAdminError } from '../../domain/accountAdminError';
 
 const normalizeError = (error, fallback) => {
@@ -147,7 +147,7 @@ export class SupabaseAccountAdminRepository {
     });
 
     if (error) {
-      throw new AccountAdminError(normalizeError(error, 'Error actualizando contrasena'), error);
+      throw new AccountAdminError(normalizeError(error, 'Error actualizando Contraseña'), error);
     }
   }
 }

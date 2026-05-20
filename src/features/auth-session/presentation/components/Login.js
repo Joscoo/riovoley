@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+﻿import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaEnvelope, FaEye, FaEyeSlash, FaKey, FaLock, FaUserShield } from 'react-icons/fa';
 import { authSessionService } from '../../authSessionService';
 import { useUserProfile } from '../../../auth-profile';
 import { APP_RESET_PASSWORD_URL } from '../../../../config/appUrls';
 import { cn } from '../../../../lib/cn';
+import { deferAuthEvent } from '../utils/deferAuthEvent';
 import ChangePasswordModal from './ChangePasswordModal';
 import { PageShell } from '../../../../shared/ui';
 import { Card } from '../../../../shared/ui';
@@ -35,6 +36,7 @@ function Login({ onLoginSuccess }) {
   const [resetMessage, setResetMessage] = useState('');
 
   const isCompletingPasswordChangeRef = useRef(false);
+  const isMountedRef = useRef(true);
   const navigate = useNavigate();
   const { profile: userProfile } = useUserProfile(user);
 
@@ -52,59 +54,98 @@ function Login({ onLoginSuccess }) {
   }, [isLoading, navigate, passwordChangeRequired, showChangePasswordModal, user, userProfile]);
 
   useEffect(() => {
+    isMountedRef.current = true;
     checkUser();
 
-    const {
-      data: { subscription }
-    } = authSessionService.onAuthStateChange(async (_event, session) => {
-      if (session?.user) {
-        if (isCompletingPasswordChangeRef.current) {
-          setUser(session.user);
-          setPasswordChangeRequired(false);
-          setShowChangePasswordModal(false);
-          setUserNeedsPasswordChange(null);
-          setIsLoggedIn(true);
-          if (onLoginSuccess) onLoginSuccess(session.user);
-          return;
-        }
+    const clearAuthState = () => {
+      if (!isMountedRef.current) return;
+      setUser(null);
+      setIsLoggedIn(false);
+      setPasswordChangeRequired(false);
+      setShowChangePasswordModal(false);
+      setUserNeedsPasswordChange(null);
+    };
 
+    const handleAuthenticatedSession = async (event, session) => {
+      if (!isMountedRef.current || !session?.user) return;
+
+      if (isCompletingPasswordChangeRef.current) {
         setUser(session.user);
+        setPasswordChangeRequired(false);
+        setShowChangePasswordModal(false);
+        setUserNeedsPasswordChange(null);
+        setIsLoggedIn(true);
+        if (onLoginSuccess) onLoginSuccess(session.user);
+        return;
+      }
 
+      setUser(session.user);
+
+      if (event === 'USER_UPDATED') {
+        setPasswordChangeRequired(false);
+        setShowChangePasswordModal(false);
+        setUserNeedsPasswordChange(null);
+        setIsLoggedIn(true);
+        if (onLoginSuccess) onLoginSuccess(session.user);
+        return;
+      }
+
+      const shouldEvaluateFirstLogin = event === 'SIGNED_IN' || event === 'INITIAL_SESSION';
+      if (shouldEvaluateFirstLogin) {
         const mustChangePassword = await checkFirstLogin(session.user.id);
+        if (!isMountedRef.current) return;
+
         if (mustChangePassword) {
           setPasswordChangeRequired(true);
           setIsLoggedIn(false);
-          setMensaje('Debes cambiar tu contrasena temporal para continuar.');
+          setMensaje('Debes cambiar tu contraseña temporal para continuar.');
         } else {
           setPasswordChangeRequired(false);
           setShowChangePasswordModal(false);
           setUserNeedsPasswordChange(null);
           setIsLoggedIn(true);
         }
-
-        if (onLoginSuccess) {
-          onLoginSuccess(session.user);
-        }
       } else {
-        setUser(null);
-        setIsLoggedIn(false);
         setPasswordChangeRequired(false);
         setShowChangePasswordModal(false);
         setUserNeedsPasswordChange(null);
+        setIsLoggedIn(true);
       }
-    });
 
-    return () => subscription.unsubscribe();
+      if (onLoginSuccess) {
+        onLoginSuccess(session.user);
+      }
+    };
+
+    const {
+      data: { subscription }
+    } = authSessionService.onAuthStateChange(
+      deferAuthEvent((event, session) => {
+        if (event === 'SIGNED_OUT' || !session?.user) {
+          clearAuthState();
+          return;
+        }
+
+        void handleAuthenticatedSession(event, session);
+      })
+    );
+
+    return () => {
+      isMountedRef.current = false;
+      subscription.unsubscribe();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onLoginSuccess]);
 
   const checkUser = async () => {
     const currentUser = await authSessionService.getCurrentUser();
-    if (!currentUser) return;
+    if (!currentUser || !isMountedRef.current) return;
 
     setUser(currentUser);
 
     const mustChangePassword = await checkFirstLogin(currentUser.id);
+    if (!isMountedRef.current) return;
+
     if (mustChangePassword) {
       setPasswordChangeRequired(true);
       setIsLoggedIn(false);
@@ -142,7 +183,7 @@ function Login({ onLoginSuccess }) {
     setUserNeedsPasswordChange(null);
     setPasswordChangeRequired(false);
     setIsLoggedIn(true);
-    setMensaje('Contrasena actualizada correctamente. Ya puedes usar la plataforma.');
+    setMensaje('Contraseña actualizada correctamente. Ya puedes usar la plataforma.');
 
     try {
       const currentUser = await authSessionService.getCurrentUser();
@@ -162,7 +203,7 @@ function Login({ onLoginSuccess }) {
         navigate('/estudiante');
       }
     } catch (error) {
-      console.error('Error finalizando flujo post-cambio de contrasena:', error);
+      console.error('Error finalizando flujo post-cambio de contraseña:', error);
     } finally {
       setTimeout(() => {
         isCompletingPasswordChangeRef.current = false;
@@ -232,7 +273,7 @@ function Login({ onLoginSuccess }) {
         if (error.message.includes('Too many requests')) {
           setMensaje('Demasiados intentos. Espera unos minutos e intentalo de nuevo.');
         } else {
-          setMensaje('Email o contrasena invalidos.');
+          setMensaje('Email o contraseña inválidos.');
         }
         return;
       }
@@ -247,7 +288,7 @@ function Login({ onLoginSuccess }) {
         setUserNeedsPasswordChange(null);
       }
 
-      setMensaje('Inicio de sesion exitoso.');
+      setMensaje('Inicio de sesión exitoso.');
       setEmail('');
       setPassword('');
     } catch (error) {
@@ -261,11 +302,11 @@ function Login({ onLoginSuccess }) {
   const handleLogout = async () => {
     try {
       await authSessionService.signOut();
-      setMensaje('Sesion cerrada exitosamente');
+      setMensaje('Sesión cerrada exitosamente');
       setEmail('');
       setPassword('');
     } catch (error) {
-      setMensaje(`Error al cerrar sesion: ${error.message}`);
+      setMensaje(`Error al cerrar sesión: ${error.message}`);
     }
   };
 
@@ -321,9 +362,9 @@ function Login({ onLoginSuccess }) {
               </div>
             </div>
             <h1 className="bg-gradient-to-r from-white to-rv-gold bg-clip-text text-3xl font-black text-transparent mobile:text-4xl">
-              {isLoggedIn ? 'Bienvenido' : 'Iniciar Sesion'}
+              {isLoggedIn ? 'Bienvenido' : 'Iniciar Sesión'}
             </h1>
-            <p className="mt-2 text-sm text-slate-200">{isLoggedIn ? 'Sesion activa' : 'Accede a tu cuenta RioVoley'}</p>
+            <p className="mt-2 text-sm text-slate-200">{isLoggedIn ? 'Sesión activa' : 'Accede a tu cuenta RioVoley'}</p>
             <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-transparent via-rv-gold to-transparent" aria-hidden="true" />
           </div>
 
@@ -367,7 +408,7 @@ function Login({ onLoginSuccess }) {
               ) : null}
 
               <Button className="w-full" size="lg" variant="secondary" onClick={handleLogout}>
-                Cerrar Sesion
+                Cerrar Sesión
               </Button>
 
               {mensaje ? <div className={cn('rounded-xl border px-4 py-3 text-sm font-semibold', messageClassName)}>{mensaje}</div> : null}
@@ -389,13 +430,13 @@ function Login({ onLoginSuccess }) {
                   />
                 </Field>
 
-                <Field label="Contrasena" icon={<FaLock />}>
+                <Field label="Contraseña" icon={<FaLock />}>
                   <div className="relative">
                     <input
                       id="password"
                       type={showPassword ? 'text' : 'password'}
-                      aria-label="Contrasena"
-                      placeholder="••••••••"
+                      aria-label="Contraseña"
+                      placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                       value={password}
                       onChange={(event) => setPassword(event.target.value)}
                       disabled={isLoading}
@@ -426,7 +467,7 @@ function Login({ onLoginSuccess }) {
                   disabled={isLoading}
                   className="mx-auto min-h-[48px]"
                 >
-                  Olvidaste tu contrasena?
+                  Olvidaste tu contraseña?
                 </Button>
               </div>
 
@@ -451,7 +492,7 @@ function Login({ onLoginSuccess }) {
           <Card className="w-full max-w-md border-rv-gold/35 bg-[linear-gradient(140deg,rgba(10,10,10,0.96)_0%,rgba(30,58,138,0.7)_100%)]" padding="lg">
             <div className="mb-4 flex items-center justify-between gap-3 border-b border-rv-gold/25 pb-3">
               <h3 className="inline-flex items-center gap-2 text-xl font-black text-white">
-                <FaKey className="text-rv-gold" /> Recuperar Contrasena
+                <FaKey className="text-rv-gold" /> Recuperar Contraseña
               </h3>
               <button
                 onClick={() => {
@@ -461,12 +502,12 @@ function Login({ onLoginSuccess }) {
                 }}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/20 text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
               >
-                ×
+                Ã—
               </button>
             </div>
 
             <p className="mb-4 text-sm leading-relaxed text-slate-200">
-              Ingresa tu email y te enviaremos un enlace para restablecer tu contrasena.
+              Ingresa tu email y te enviaremos un enlace para restablecer tu contraseña.
             </p>
 
             <form onSubmit={handleForgotPassword} className="space-y-4">

@@ -1,4 +1,4 @@
-import { UserManagementError } from '../../domain/userManagementError';
+﻿import { UserManagementError } from '../../domain/userManagementError';
 
 const requiredMethods = [
   'listAthletes',
@@ -15,7 +15,7 @@ const requiredMethods = [
 
 export const assertUserManagementRepository = (repository) => {
   if (!repository || typeof repository !== 'object') {
-    throw new UserManagementError('UserManagementRepository invalido');
+    throw new UserManagementError('UserManagementRepository inválido');
   }
 
   const missingMethods = requiredMethods.filter((method) => typeof repository[method] !== 'function');

@@ -57,6 +57,7 @@ export const useAtletasManager = ({ categories }) => {
   });
   const [currentPage, setCurrentPage] = useState(1);
   const [formData, setFormData] = useState(INITIAL_FORM);
+  const [sendCredentialsOnCreate, setSendCredentialsOnCreate] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
 
   const [confirmDialog, setConfirmDialog] = useState({
@@ -185,6 +186,7 @@ export const useAtletasManager = ({ categories }) => {
   const openModal = useCallback((atleta = null) => {
     if (atleta) {
       setEditingAtleta(atleta);
+      setSendCredentialsOnCreate(false);
       setFormData({
         user_id: atleta.user_id,
         categoria: atleta.categoria || '',
@@ -196,6 +198,7 @@ export const useAtletasManager = ({ categories }) => {
       });
     } else {
       setEditingAtleta(null);
+      setSendCredentialsOnCreate(false);
       resetForm();
     }
 
@@ -238,6 +241,7 @@ export const useAtletasManager = ({ categories }) => {
 
   const handleSubmit = useCallback(async (event) => {
     event.preventDefault();
+    let createdEmail = '';
 
     const validation = athletesService.validateAthleteForm({ formData });
     if (!validation.isValid) {
@@ -255,12 +259,13 @@ export const useAtletasManager = ({ categories }) => {
         });
         showSuccessToast('Estudiante actualizado correctamente.', 5000);
       } else {
-        if (!formData.email || !formData.email.trim()) {
+        createdEmail = formData.email?.trim() || '';
+        if (!createdEmail) {
           throw new Error('El email es requerido para crear el usuario');
         }
 
         const result = await userProvisioningService.createStudent({
-          email: formData.email.trim(),
+          email: createdEmail,
           nombre: formData.nombre.trim(),
           apellido: formData.apellido.trim(),
           fecha_nacimiento: formData.fecha_nacimiento,
@@ -270,7 +275,11 @@ export const useAtletasManager = ({ categories }) => {
 
         setPendingCredentialsFromCreation(result);
         showSuccessToast('Estudiante creado exitosamente.', 5000);
-        showInfoToast('Puedes enviar las credenciales ahora o despues desde la tarjeta informativa.', 5500);
+        if (sendCredentialsOnCreate) {
+          await sendPendingCredentialsByEmail();
+        } else {
+          showInfoToast('Puedes enviar las credenciales ahora o despues desde la tarjeta informativa.', 5500);
+        }
       }
 
       closeModal();
@@ -278,17 +287,6 @@ export const useAtletasManager = ({ categories }) => {
       setErrorMessage(null);
       await loadAtletas();
 
-      if (!editingAtleta) {
-        openConfirmDialog({
-          title: 'Enviar credenciales',
-          message: `El estudiante fue creado correctamente. Deseas enviar las credenciales a ${formData.email.trim()} ahora?`,
-          confirmLabel: 'Enviar ahora',
-          tone: 'primary',
-          onConfirm: async () => {
-            await sendPendingCredentialsByEmail();
-          },
-        });
-      }
     } catch (error) {
       const message = toFriendlyError(error, formData.email);
       setErrorMessage(message);
@@ -299,8 +297,8 @@ export const useAtletasManager = ({ categories }) => {
     editingAtleta,
     formData,
     loadAtletas,
-    openConfirmDialog,
     resetForm,
+    sendCredentialsOnCreate,
     sendPendingCredentialsByEmail,
     setPendingCredentialsFromCreation,
     showErrorToast,
@@ -414,6 +412,8 @@ export const useAtletasManager = ({ categories }) => {
     setCurrentPage,
     formData,
     setFormData,
+    sendCredentialsOnCreate,
+    setSendCredentialsOnCreate,
     maxBirthDate,
     errorMessage,
     setErrorMessage,

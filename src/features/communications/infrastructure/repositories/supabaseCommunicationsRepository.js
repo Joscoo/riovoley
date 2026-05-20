@@ -1,4 +1,4 @@
-import { supabase } from '../../../../config/supabase';
+﻿import { supabase } from '../../../../config/supabase';
 import { APP_BASE_URL, APP_LOGIN_URL, APP_RESET_PASSWORD_URL } from '../../../../config/appUrls';
 
 const showCredentialsModal = (userData) => {
@@ -40,7 +40,7 @@ const showCredentialsModal = (userData) => {
         text-align: left;
       ">
         <p><strong>Usuario:</strong> ${userData.email}</p>
-        <p><strong>Contrasena:</strong> <code style="background: #e9ecef; padding: 2px 8px; border-radius: 4px;">${userData.password}</code></p>
+        <p><strong>Contraseña:</strong> <code style="background: #e9ecef; padding: 2px 8px; border-radius: 4px;">${userData.password}</code></p>
       </div>
       <p style="font-size: 14px; color: #666; margin-bottom: 20px;">
         Por favor, comunica estas credenciales al usuario manualmente.
@@ -78,9 +78,9 @@ const generateCredentialsEmailTemplate = ({ name, email, password }) => `
         <p>Tu cuenta ha sido creada exitosamente.</p>
         <div style="background: #f1f5f9; border-left: 4px solid #f59e0b; padding: 16px; border-radius: 8px;">
           <p style="margin: 0 0 8px;"><strong>Email:</strong> ${email}</p>
-          <p style="margin: 0;"><strong>Contrasena temporal:</strong> <code>${password}</code></p>
+          <p style="margin: 0;"><strong>Contraseña temporal:</strong> <code>${password}</code></p>
         </div>
-        <p><strong>Importante:</strong> cambia tu contrasena en tu primer inicio de sesion.</p>
+        <p><strong>Importante:</strong> cambia tu Contraseña en tu primer inicio de Sesión.</p>
         <p><a href="${APP_LOGIN_URL}" style="color: #1e3a8a; font-weight: bold;">${APP_LOGIN_URL}</a></p>
       </div>
       <div style="background: #f8fafc; padding: 16px; text-align: center; font-size: 13px; color: #475569;">

@@ -11,7 +11,7 @@ const requiredMethods = [
 
 export const assertReportingRepository = (repository) => {
   if (!repository || typeof repository !== 'object') {
-    throw invalidArgumentError('ReportingRepository invalido: se esperaba un objeto');
+    throw invalidArgumentError('ReportingRepository inválido: se esperaba un objeto');
   }
 
   const missingMethods = requiredMethods.filter((method) => typeof repository[method] !== 'function');

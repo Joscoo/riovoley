@@ -1,4 +1,4 @@
-import { supabase } from '../../../config/supabase';
+﻿import { supabase } from '../../../config/supabase';
 
 const getDeleteAuthErrorMessage = (invokeError, data) => {
   const backendCode = data?.code;
@@ -7,7 +7,7 @@ const getDeleteAuthErrorMessage = (invokeError, data) => {
   const lowered = rawMessage.toLowerCase();
 
   if (backendCode === 'AUTH_REQUIRED' || lowered.includes('token') || lowered.includes('autoriz')) {
-    return 'Tu sesion expiro o no es valida. Inicia sesion nuevamente e intenta otra vez.';
+    return 'Tu sesión expiro o no es valida. Inicia sesión nuevamente e intenta otra vez.';
   }
 
   if (backendCode === 'ROLE_NOT_ALLOWED' || backendCode === 'PROFILE_NOT_FOUND' || lowered.includes('permis')) {
@@ -33,7 +33,7 @@ export const deleteAuthUserById = async (userId) => {
   const { data: { session } } = await supabase.auth.getSession();
 
   if (!session?.access_token) {
-    throw new Error('No hay sesion activa para autorizar la eliminacion en Auth.');
+    throw new Error('No hay sesión activa para autorizar la eliminacion en Auth.');
   }
 
   const { data, error } = await supabase.functions.invoke('delete-auth-user', {

@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
+﻿import { createClient } from '@supabase/supabase-js';
 import { supabase } from '../../../../config/supabase';
 import { withEncryptedUserContactFields } from '../../../../utils/piiCrypto';
 import { MIN_ATHLETE_AGE, validateAthleteBirthDate } from '../../../../utils/athleteValidation';
@@ -36,7 +36,7 @@ const getResendErrorMessage = (invokeError, data) => {
   const lowered = rawMessage.toLowerCase();
 
   if (backendCode === 'AUTH_REQUIRED' || lowered.includes('token') || lowered.includes('autoriz')) {
-    return 'Tu sesion expiro o no es valida. Inicia sesion nuevamente y vuelve a intentarlo.';
+    return 'Tu sesión expiro o no es valida. Inicia sesión nuevamente y vuelve a intentarlo.';
   }
 
   if (backendCode === 'ROLE_NOT_ALLOWED' || backendCode === 'PROFILE_NOT_FOUND' || lowered.includes('permis')) {
@@ -87,20 +87,20 @@ const buildCredentialsEmailHtml = ({ nombreCompleto, email, newPassword, loginUr
         </div>
         <div class="content">
           <p>Hola <strong>${nombreCompleto}</strong>,</p>
-          <p>Tus credenciales de acceso al sistema han sido actualizadas. A continuacion encontraras tu nueva contrasena temporal:</p>
+          <p>Tus credenciales de acceso al sistema han sido actualizadas. A continuacion encontraras tu nueva contraseña temporal:</p>
 
           <div class="credentials">
             <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Contrasena temporal:</strong> <code style="background: #f0f0f0; padding: 5px 10px; border-radius: 3px;">${newPassword}</code></p>
+            <p><strong>Contraseña temporal:</strong> <code style="background: #f0f0f0; padding: 5px 10px; border-radius: 3px;">${newPassword}</code></p>
           </div>
 
-          <p><strong>IMPORTANTE:</strong> Por favor, cambia esta contrasena temporal despues de iniciar sesion por primera vez.</p>
+          <p><strong>IMPORTANTE:</strong> Por favor, cambia esta contraseña temporal despues de iniciar sesión por primera vez.</p>
 
           <div style="text-align: center;">
-            <a href="${loginUrl}" class="button">Iniciar Sesion</a>
+            <a href="${loginUrl}" class="button">Iniciar Sesión</a>
           </div>
 
-          <p>Si tienes problemas para iniciar sesion, contacta al administrador.</p>
+          <p>Si tienes problemas para iniciar sesión, contacta al administrador.</p>
         </div>
         <div class="footer">
           <p>Este es un correo automatico, por favor no responder.</p>
@@ -216,7 +216,7 @@ export class SupabaseUserProvisioningRepository {
       temporaryPassword,
       canLogin,
       loginError: loginError?.message,
-      message: `Usuario creado exitosamente. Contrasena temporal: ${temporaryPassword}`,
+      message: `Usuario creado exitosamente. Contraseña temporal: ${temporaryPassword}`,
       credentials: {
         email: email.trim(),
         password: temporaryPassword,
@@ -297,7 +297,7 @@ export class SupabaseUserProvisioningRepository {
     }
 
     if (!email || !email.includes('@')) {
-      throw new Error('El email del usuario es invalido o esta vacio.');
+      throw new Error('El email del usuario es inválido o esta vacio.');
     }
 
     const requestId = `resend-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
@@ -306,7 +306,7 @@ export class SupabaseUserProvisioningRepository {
     const { data: { session } } = await supabase.auth.getSession();
 
     if (!session?.access_token) {
-      throw new Error('No se encontro un token de sesion valido. Vuelve a iniciar sesion.');
+      throw new Error('No se encontro un token de sesión valido. Vuelve a iniciar sesión.');
     }
 
     const { data: updateData, error: updateAuthError } = await supabase.functions.invoke(
@@ -324,7 +324,7 @@ export class SupabaseUserProvisioningRepository {
 
     if (updateAuthError || !updateData?.success) {
       const readableError = getResendErrorMessage(updateAuthError, updateData);
-      throw new Error(`Error actualizando contrasena: ${readableError}`);
+      throw new Error(`Error actualizando contraseña: ${readableError}`);
     }
 
     const { error: updateFirstLoginError } = await supabase
@@ -372,7 +372,7 @@ export class SupabaseUserProvisioningRepository {
       },
       emailSent: Boolean(emailData?.success) && !emailError,
       emailError: emailError?.message,
-      message: `Nueva contrasena temporal generada. ${!emailError ? 'Email enviado exitosamente.' : 'Email no pudo ser enviado, pero la contrasena fue actualizada.'}`,
+      message: `Nueva contraseña temporal generada. ${!emailError ? 'Email enviado exitosamente.' : 'Email no pudo ser enviado, pero la contraseña fue actualizada.'}`,
       isNewPassword: true
     };
   }

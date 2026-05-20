@@ -10,11 +10,14 @@ const NotificationBell = ({ userRole }) => {
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const normalizedRole = userRole?.toLowerCase();
+  const canViewNotifications = normalizedRole === 'administrador' || normalizedRole === 'entrenador';
 
   useEffect(() => {
+    if (!canViewNotifications) return;
     cargarNotificaciones();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userRole]);
+  }, [canViewNotifications, userRole]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -45,6 +48,7 @@ const NotificationBell = ({ userRole }) => {
   };
 
   const toggleDropdown = () => {
+    if (!canViewNotifications) return;
     setIsOpen(!isOpen);
     if (!isOpen) {
       cargarNotificaciones();
@@ -74,6 +78,10 @@ const NotificationBell = ({ userRole }) => {
     warning: 'border-l-amber-500 text-amber-500',
     info: 'border-l-cyan-500 text-cyan-600'
   };
+
+  if (!canViewNotifications) {
+    return null;
+  }
 
   return (
     <div className="relative inline-block" ref={dropdownRef}>

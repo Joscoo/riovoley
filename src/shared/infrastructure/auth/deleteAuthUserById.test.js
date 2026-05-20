@@ -64,7 +64,7 @@ describe('deleteAuthUserById Edge Function contract', () => {
     });
 
     await expect(deleteAuthUserById('user-1')).rejects.toThrow(
-      'Tu sesion expiro o no es valida. Inicia sesion nuevamente e intenta otra vez.',
+      'Tu sesión expiro o no es valida. Inicia sesión nuevamente e intenta otra vez.',
     );
   });
 });

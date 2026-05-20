@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+﻿import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { trainerManagementService } from '../../trainerManagementService';
 import { SORT_DIRECTION, createTableQuery } from '../../../../shared/lib/tableQuery';
 
@@ -151,7 +151,7 @@ export const useEntrenadoresManager = () => {
 
     const credentialsText = [
       `Email: ${pendingCredentials.email}`,
-      `Contrasena: ${pendingCredentials.password}`,
+      `Contraseña: ${pendingCredentials.password}`,
       `URL: ${pendingCredentials.loginUrl}`,
     ].join('\n');
 

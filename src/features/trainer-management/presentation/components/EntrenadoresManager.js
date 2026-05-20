@@ -1,4 +1,4 @@
-// src/features/trainer-management/presentation/components/EntrenadoresManager.js
+﻿// src/features/trainer-management/presentation/components/EntrenadoresManager.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -76,11 +76,11 @@ const EntrenadoresManager = ({ user }) => {
         <Card className="mb-4 border-l-4 border-rv-gold/70 bg-black/20 p-4 text-slate-200">
           <div className="mb-3">
             <p className="font-semibold text-white">Entrenador creado exitosamente.</p>
-            <p>{pendingCredentials.canLogin ? 'Login verificado: puede iniciar sesion de inmediato.' : 'Puede requerir confirmacion de email.'}</p>
+            <p>{pendingCredentials.canLogin ? 'Login verificado: puede iniciar Sesión de inmediato.' : 'Puede requerir confirmacion de email.'}</p>
           </div>
           <div className="grid gap-2 rounded-xl border border-rv-gold/20 bg-slate-950/50 p-4 text-sm text-slate-100">
             <p><strong>Email:</strong> {pendingCredentials.email}</p>
-            <p><strong>{'Contrasena temporal:'}</strong> {pendingCredentials.password}</p>
+            <p><strong>{'Contraseña temporal:'}</strong> {pendingCredentials.password}</p>
             <p>
               <strong>URL de ingreso:</strong>{' '}
               <a href={pendingCredentials.loginUrl} className="text-rv-gold underline" target="_blank" rel="noreferrer">
@@ -296,7 +296,7 @@ const EntrenadoresManager = ({ user }) => {
                 hint={
                   editingEntrenador
                     ? 'El email no puede ser modificado.'
-                    : 'Se generara una contrasena temporal automaticamente.'
+                    : 'Se generara una Contraseña temporal automaticamente.'
                 }
               >
                 <input

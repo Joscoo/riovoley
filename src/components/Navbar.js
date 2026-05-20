@@ -21,6 +21,7 @@ const Navbar = ({ user, userProfile, onLogout }) => {
   const location = useLocation();
 
   const role = userProfile?.role?.toLowerCase();
+  const canViewNotifications = role === 'administrador' || role === 'entrenador';
   const isLandingRoute = location.pathname === '/' || location.pathname === '/sobre' || location.pathname === '/horarios';
 
   const StudentIcon = iconRegistry.roles.estudiante;
@@ -137,7 +138,7 @@ const Navbar = ({ user, userProfile, onLogout }) => {
             )}
           </ul>
 
-          {user && role && (
+          {user && role && canViewNotifications && (
             <NotificationBell userRole={userProfile.role} />
           )}
 
@@ -208,7 +209,7 @@ const Navbar = ({ user, userProfile, onLogout }) => {
         </div>
 
         <div className="ml-auto flex shrink-0 items-center gap-0.5 xl:hidden">
-          {user && role && (
+          {user && role && canViewNotifications && (
             <NotificationBell userRole={userProfile.role} />
           )}
 

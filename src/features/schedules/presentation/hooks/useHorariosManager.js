@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+﻿import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { schedulesService } from '../../schedulesService';
 import { SORT_DIRECTION, createTableQuery } from '../../../../shared/lib/tableQuery';
 
@@ -59,7 +59,7 @@ export const useHorariosManager = ({ days }) => {
       master_mujeres:
         'Categoria especial para atletas mayores de 18 anos con experiencia previa.',
       open_gym:
-        'Sesion de juego libre para todos los niveles con enfoque recreativo y competitivo.',
+        'Sesión de juego libre para todos los niveles con enfoque recreativo y competitivo.',
     };
     return descripciones[categoria] || '';
   }, []);

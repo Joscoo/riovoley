@@ -1,10 +1,10 @@
-import { AuthProfileError } from '../../domain/authProfileError';
+﻿import { AuthProfileError } from '../../domain/authProfileError';
 
 export const createLoadUserProfileUseCase = (repository) => {
   return {
     execute: async (currentUser) => {
       if (!currentUser?.id) {
-        throw new AuthProfileError('Usuario invalido para cargar perfil');
+        throw new AuthProfileError('Usuario inválido para cargar perfil');
       }
 
       const profileFromProfiles = await repository.findUserProfile(currentUser.id);
@@ -27,7 +27,7 @@ export const createLoadUserProfileUseCase = (repository) => {
           try {
             await repository.upsertUserProfile(syncedProfile);
           } catch (_error) {
-            // Mejor esfuerzo: no interrumpir login si falla la sincronización.
+            // Mejor esfuerzo: no interrumpir login si falla la sincronizaciÃ³n.
           }
 
           return syncedProfile;

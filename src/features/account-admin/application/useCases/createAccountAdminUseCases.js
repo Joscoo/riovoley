@@ -1,4 +1,4 @@
-import { deleteAuthUserById } from '../../../../shared/infrastructure/auth/deleteAuthUserById';
+﻿import { deleteAuthUserById } from '../../../../shared/infrastructure/auth/deleteAuthUserById';
 import { getEcuadorISOString } from '../../../../utils/dateUtils';
 
 const applySearchAndStatusFilters = (users, filters) => {
@@ -153,16 +153,16 @@ export const createAccountAdminUseCases = (repository) => {
       }
 
       if (passwordData.newPassword.length < 6) {
-        return { ok: false, code: 'WEAK_PASSWORD', message: 'La nueva contrasena debe tener al menos 6 caracteres' };
+        return { ok: false, code: 'WEAK_PASSWORD', message: 'La nueva contraseña debe tener al menos 6 caracteres' };
       }
 
       if (passwordData.newPassword !== passwordData.confirmPassword) {
-        return { ok: false, code: 'PASSWORD_MISMATCH', message: 'Las contrasenas no coinciden' };
+        return { ok: false, code: 'PASSWORD_MISMATCH', message: 'Las contraseñas no coinciden' };
       }
 
       const verification = await repository.verifyCurrentPassword(user.email, passwordData.currentPassword);
       if (!verification.ok) {
-        return { ok: false, code: 'INVALID_CURRENT_PASSWORD', message: 'La contrasena actual es incorrecta' };
+        return { ok: false, code: 'INVALID_CURRENT_PASSWORD', message: 'La contraseña actual es incorrecta' };
       }
 
       await repository.updatePassword(passwordData.newPassword);

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+﻿import React, { useEffect, useMemo, useState } from 'react';
 import { FaCalendarAlt, FaClock, FaExclamationTriangle, FaInfoCircle, FaUsers } from 'react-icons/fa';
 import { schedulesService } from '../features/schedules';
 import { cn } from '../lib/cn';
@@ -61,7 +61,7 @@ const CATEGORY_DATA = {
     borderClass: 'border-l-teal-500',
     badgeClass: 'bg-teal-500/20 text-teal-300',
     description:
-      'Sesion de juego libre para practicar, compartir con otras categorias y disfrutar partidos recreativos.'
+      'Sesión de juego libre para practicar, compartir con otras categorias y disfrutar partidos recreativos.'
   }
 };
 

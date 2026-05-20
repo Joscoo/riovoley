@@ -1,4 +1,4 @@
-// src/features/athletes/presentation/components/AtletasManager.js
+﻿// src/features/athletes/presentation/components/AtletasManager.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -48,6 +48,8 @@ const AtletasManager = ({ user }) => {
     setCurrentPage,
     formData,
     setFormData,
+    sendCredentialsOnCreate,
+    setSendCredentialsOnCreate,
     maxBirthDate,
     errorMessage,
     setErrorMessage,
@@ -83,7 +85,7 @@ const AtletasManager = ({ user }) => {
     <div className="mx-auto w-full max-w-7xl">
       <SectionHeader
         title="Gestion de Atletas"
-        subtitle={`Administrar deportistas del club${user?.email ? ` - Sesion: ${user.email}` : ''}`}
+        subtitle={`Administrar deportistas del club${user?.email ? ` - Sesión: ${user.email}` : ''}`}
         icon={<FaVolleyballBall />}
         actions={
           <div className="flex w-full flex-col gap-2 mobile:w-auto mobile:flex-row">
@@ -315,7 +317,7 @@ const AtletasManager = ({ user }) => {
 
                   <div className="flex flex-col gap-1">
                     <dt className="text-xs font-bold uppercase tracking-[0.7px] text-slate-500">Edad</dt>
-                    <dd>{calculateAge(atleta.fecha_nacimiento)} años</dd>
+                    <dd>{calculateAge(atleta.fecha_nacimiento)} aÃ±os</dd>
                   </div>
 
                   <div className="flex flex-col gap-1 mobile:col-span-2">
@@ -450,10 +452,10 @@ const AtletasManager = ({ user }) => {
                     label="Fecha de Nacimiento *"
                     hint={
                       <>
-                        <p id={birthDateHintId}>Edad mínima permitida: {MIN_ATHLETE_AGE} años.</p>
+                        <p id={birthDateHintId}>Edad mÃ­nima permitida: {MIN_ATHLETE_AGE} aÃ±os.</p>
                         {formData.fecha_nacimiento ? (
                           <p className="mt-1 font-semibold text-rv-gold">
-                            Edad calculada: {calculateAge(formData.fecha_nacimiento)} años.
+                            Edad calculada: {calculateAge(formData.fecha_nacimiento)} aÃ±os.
                           </p>
                         ) : null}
                       </>
@@ -496,6 +498,37 @@ const AtletasManager = ({ user }) => {
                   </select>
                 </Field>
               </section>
+
+              {!editingAtleta ? (
+                <section className="space-y-3 rounded-xl border border-rv-gold/20 bg-black/20 p-4">
+                  <h4 className="text-sm font-bold uppercase tracking-[0.8px] text-rv-gold">
+                    <FaEnvelope className="mr-2 inline align-middle" /> Credenciales de Acceso
+                  </h4>
+                  <p className="text-sm text-slate-300">
+                    Al guardar, deseas enviar las credenciales de acceso por email?
+                  </p>
+                  <div className="flex flex-col gap-2 mobile:flex-row mobile:gap-4">
+                    <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-white">
+                      <input
+                        type="radio"
+                        name="send-credentials"
+                        checked={sendCredentialsOnCreate}
+                        onChange={() => setSendCredentialsOnCreate(true)}
+                      />
+                      Si, enviar al guardar
+                    </label>
+                    <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-white">
+                      <input
+                        type="radio"
+                        name="send-credentials"
+                        checked={!sendCredentialsOnCreate}
+                        onChange={() => setSendCredentialsOnCreate(false)}
+                      />
+                      No, enviar despues
+                    </label>
+                  </div>
+                </section>
+              ) : null}
 
               <div className="flex flex-col-reverse gap-3 border-t border-rv-gold/20 pt-4 mobile:flex-row mobile:justify-end">
                 <Button type="button" variant="secondary" onClick={closeModal} className="w-full mobile:w-auto">

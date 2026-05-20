@@ -1,4 +1,4 @@
-// src/features/trainer-dashboard/presentation/components/TrainerDashboard.js
+﻿// src/features/trainer-dashboard/presentation/components/TrainerDashboard.js
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -93,7 +93,7 @@ const TrainerDashboard = ({ user, onNavigateToSection }) => {
     <div className="mx-auto w-full max-w-7xl">
       <SectionHeader
         title="Dashboard del Entrenador"
-        subtitle={`Resumen de tus actividades y atletas${user?.email ? ` - Sesion: ${user.email}` : ''}`}
+        subtitle={`Resumen de tus actividades y atletas${user?.email ? ` - Sesión: ${user.email}` : ''}`}
         icon={<FaChartBar />}
       />
 

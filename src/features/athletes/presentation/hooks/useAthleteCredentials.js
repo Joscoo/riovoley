@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+﻿import { useCallback, useRef, useState } from 'react';
 import { communicationsService } from '../../../communications';
 import { userProvisioningService } from '../../../user-provisioning';
 
@@ -22,17 +22,17 @@ const buildCredentialUserData = (pendingCredentials) => ({
 const buildResendResultMessage = ({ channels, credentials, summaryMessage }) => {
   const channelsText = channels.length > 0 ? channels.join(', ') : 'Ninguno';
   const header = channels.length > 0
-    ? `Nueva contrasena temporal enviada via: ${channelsText}`
+    ? `Nueva Contraseña temporal enviada via: ${channelsText}`
     : 'No se pudo enviar por Email ni WhatsApp.';
 
   return [
     header,
     '',
     `Email: ${credentials.email}`,
-    `Contrasena: ${credentials.password}`,
+    `Contraseña: ${credentials.password}`,
     `URL: ${credentials.loginUrl}`,
     '',
-    'Importante: la contrasena anterior ya no funciona.',
+    'Importante: la Contraseña anterior ya no funciona.',
     '',
     summaryMessage,
     ...(channels.length === 0 ? ['', 'Comparte esta informacion manualmente.'] : []),
@@ -42,8 +42,10 @@ const buildResendResultMessage = ({ channels, credentials, summaryMessage }) => 
 export const useAthleteCredentials = ({ onError, onSuccess }) => {
   const [pendingCredentials, setPendingCredentials] = useState(null);
   const [credentialsReport, setCredentialsReport] = useState(null);
+  const pendingCredentialsRef = useRef(null);
 
   const clearPendingCredentials = useCallback(() => {
+    pendingCredentialsRef.current = null;
     setPendingCredentials(null);
   }, []);
 
@@ -53,16 +55,18 @@ export const useAthleteCredentials = ({ onError, onSuccess }) => {
 
   const setPendingCredentialsFromCreation = useCallback((result) => {
     const nextCredentials = buildPendingCredentials(result);
+    pendingCredentialsRef.current = nextCredentials;
     setPendingCredentials(nextCredentials);
     return nextCredentials;
   }, []);
 
   const sendPendingCredentialsByEmail = useCallback(async () => {
-    if (!pendingCredentials) {
+    const currentPendingCredentials = pendingCredentialsRef.current;
+    if (!currentPendingCredentials) {
       return { success: false, error: 'No hay credenciales pendientes para enviar.' };
     }
 
-    const userData = buildCredentialUserData(pendingCredentials);
+    const userData = buildCredentialUserData(currentPendingCredentials);
 
     try {
       const emailResult = await communicationsService.sendCredentials(userData);
@@ -73,7 +77,8 @@ export const useAthleteCredentials = ({ onError, onSuccess }) => {
         );
       }
 
-      onSuccess?.(`Credenciales enviadas exitosamente a ${pendingCredentials.email}`);
+      onSuccess?.(`Credenciales enviadas exitosamente a ${currentPendingCredentials.email}`);
+      pendingCredentialsRef.current = null;
       setPendingCredentials(null);
       return { success: true };
     } catch (error) {
@@ -81,7 +86,7 @@ export const useAthleteCredentials = ({ onError, onSuccess }) => {
       onError?.(errorText);
       return { success: false, error: errorText };
     }
-  }, [pendingCredentials, onError, onSuccess]);
+  }, [onError, onSuccess]);
 
   const resendCredentialsForAthlete = useCallback(async (atleta) => {
     if (!atleta.user_id || !atleta.users?.email) {

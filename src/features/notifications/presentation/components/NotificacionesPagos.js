@@ -13,10 +13,13 @@ const NotificacionesPagos = ({ userRole }) => {
   const [notificaciones, setNotificaciones] = useState([]);
   const [loading, setLoading] = useState(true);
   const [mostrarTodas, setMostrarTodas] = useState(false);
+  const normalizedRole = userRole?.toLowerCase();
+  const canViewNotifications = normalizedRole === 'administrador' || normalizedRole === 'entrenador';
 
   useEffect(() => {
+    if (!canViewNotifications) return;
     cargarNotificaciones();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [canViewNotifications]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const cargarNotificaciones = async () => {
     try {
@@ -64,6 +67,10 @@ const NotificacionesPagos = ({ userRole }) => {
   };
 
   const notificacionesAMostrar = mostrarTodas ? notificaciones : notificaciones.slice(0, 5);
+
+  if (!canViewNotifications) {
+    return null;
+  }
 
   if (loading) {
     return (
