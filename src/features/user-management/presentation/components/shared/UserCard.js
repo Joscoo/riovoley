@@ -1,23 +1,13 @@
 import React from 'react';
 import { FaEdit, FaTrash, FaEnvelope, FaBan, FaCheckCircle, FaExchangeAlt } from 'react-icons/fa';
 import { Card, Button, getRoleLabel, getRoleIcon, getUserTypeLabel } from '../../../../../shared/ui';
+import { formatCategoryLabel } from '../../../../../shared/lib/trainingCategoryFormatting';
 
 const getRoleBadgeClass = (role) => {
   const normalizedRole = role?.toLowerCase();
   if (normalizedRole === 'administrador') return 'bg-[#2E3192] text-white';
   if (normalizedRole === 'entrenador') return 'bg-[#F9B233] text-slate-900';
   return 'bg-[#355FB3] text-white';
-};
-
-const formatCategoria = (categoria) => {
-  const categorias = {
-    iniciacion_hombres: 'Iniciación Hombres',
-    iniciacion_mujeres: 'Iniciación Mujeres',
-    perfeccionamiento_hombres: 'Perfeccionamiento Hombres',
-    perfeccionamiento_mujeres: 'Perfeccionamiento Mujeres',
-    master_mujeres: 'Master Mujeres',
-  };
-  return categorias[categoria] || categoria || 'Sin categoría';
 };
 
 const calculateAge = (birthDateString) => {
@@ -126,7 +116,7 @@ const UserCard = ({
 
         {user.telefono && (
           <div className="space-y-1">
-            <dt className="text-xs font-bold uppercase tracking-wide text-slate-500">Teléfono</dt>
+            <dt className="text-xs font-bold uppercase tracking-wide text-slate-500">TelÃ©fono</dt>
             <dd className="break-all font-medium">{user.telefono}</dd>
           </div>
         )}
@@ -134,24 +124,24 @@ const UserCard = ({
         {userType === 'atleta' && (
           <>
             <div className="space-y-1">
-              <dt className="text-xs font-bold uppercase tracking-wide text-slate-500">Categoría</dt>
+              <dt className="text-xs font-bold uppercase tracking-wide text-slate-500">CategorÃ­a</dt>
               <dd>
                 <span className="inline-flex rounded-md bg-amber-100 px-2.5 py-1.5 text-xs font-bold text-amber-900">
-                  {formatCategoria(user.categoria)}
+                  {formatCategoryLabel(user.categoria)}
                 </span>
               </dd>
             </div>
 
             <div className="space-y-1">
               <dt className="text-xs font-bold uppercase tracking-wide text-slate-500">Edad</dt>
-              <dd className="font-semibold text-slate-900">{calculateAge(user.fecha_nacimiento)} años</dd>
+              <dd className="font-semibold text-slate-900">{calculateAge(user.fecha_nacimiento)} aÃ±os</dd>
             </div>
           </>
         )}
 
         {(userType === 'entrenador' || userType === 'administrador') && (
           <div className="space-y-1">
-            <dt className="text-xs font-bold uppercase tracking-wide text-slate-500">Último acceso</dt>
+            <dt className="text-xs font-bold uppercase tracking-wide text-slate-500">Ãšltimo acceso</dt>
             <dd className="text-sm">{formatDateTime(user.last_login)}</dd>
           </div>
         )}
@@ -226,9 +216,9 @@ const UserCard = ({
           <div
             className="mt-4 rounded-lg border-2 border-red-200 bg-red-50 p-3 text-xs text-red-900"
             role="status"
-            aria-label="Información de suspensión"
+            aria-label="InformaciÃ³n de suspensiÃ³n"
           >
-            <p className="font-semibold">Motivo de suspensión:</p>
+            <p className="font-semibold">Motivo de suspensiÃ³n:</p>
             <p className="mt-1">{user.suspension_reason}</p>
             {user.suspension_until && (
               <p className="mt-2 font-semibold">
@@ -243,3 +233,4 @@ const UserCard = ({
 };
 
 export default UserCard;
+

@@ -6,6 +6,7 @@ jest.mock('../infrastructure/repositories/supabaseAdminDashboardRepository', () 
     listPaymentsForExpiration: jest.fn(),
     countAttendancesByDate: jest.fn(),
     listStudentCategories: jest.fn(),
+    listTrainingCategoriesForStudents: jest.fn(),
     listRecentAttendances: jest.fn(),
     listRecentPayments: jest.fn(),
     getStudentName: jest.fn(),
@@ -23,6 +24,7 @@ describe('createAdminDashboardService', () => {
       listPaymentsForExpiration: jest.fn().mockResolvedValue([]),
       countAttendancesByDate: jest.fn().mockResolvedValue(1),
       listStudentCategories: jest.fn().mockResolvedValue([{ categoria: 'iniciacion_hombres' }]),
+      listTrainingCategoriesForStudents: jest.fn().mockResolvedValue([{ code: 'iniciacion_hombres', label: 'Iniciacion Hombres' }]),
       listRecentAttendances: jest.fn().mockResolvedValue([]),
       listRecentPayments: jest.fn().mockResolvedValue([]),
       getStudentName: jest.fn(),
@@ -33,7 +35,9 @@ describe('createAdminDashboardService', () => {
 
     expect(repository.countStudents).toHaveBeenCalledTimes(1);
     expect(result.stats.totalAtletas).toBe(2);
-    expect(result.categoriesStats.iniciacion_hombres).toBe(1);
+    expect(result.categoriesStats.items).toEqual([
+      { code: 'iniciacion_hombres', label: 'Iniciacion Hombres', total: 1 },
+    ]);
     expect(Array.isArray(result.recentActivity)).toBe(true);
   });
 });

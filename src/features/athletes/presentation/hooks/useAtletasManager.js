@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { athletesService } from '../../athletesService';
+import { trainingCategoriesService } from '../../../training-categories';
 import { userProvisioningService } from '../../../user-provisioning';
 import { MIN_ATHLETE_AGE, getMaxBirthDateForAge } from '../../../../utils/athleteValidation';
 import { SORT_DIRECTION, createTableQuery } from '../../../../shared/lib/tableQuery';
@@ -41,7 +42,7 @@ const buildAthletesQuery = ({ filters }) =>
     },
   });
 
-export const useAtletasManager = ({ categories }) => {
+export const useAtletasManager = () => {
   const initialFocusRef = useRef(null);
   const confirmActionRef = useRef(null);
 
@@ -59,6 +60,8 @@ export const useAtletasManager = ({ categories }) => {
   const [formData, setFormData] = useState(INITIAL_FORM);
   const [sendCredentialsOnCreate, setSendCredentialsOnCreate] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [categories, setCategories] = useState([]);
+  const [categoriesLoading, setCategoriesLoading] = useState(true);
 
   const [confirmDialog, setConfirmDialog] = useState({
     isOpen: false,
@@ -138,7 +141,7 @@ export const useAtletasManager = ({ categories }) => {
   }, [showErrorToast]);
 
   useEffect(() => {
-    loadAtletas({ currentFilters: filters });
+    loadAtletas({ currentFilters: { categoria: filters.categoria } });
   }, [filters.categoria, loadAtletas]);
 
   useEffect(() => {
@@ -180,8 +183,11 @@ export const useAtletasManager = ({ categories }) => {
   }, []);
 
   const resetForm = useCallback(() => {
-    setFormData(INITIAL_FORM);
-  }, []);
+    setFormData({
+      ...INITIAL_FORM,
+      categoria: categories.length > 0 ? categories[0].code : '',
+    });
+  }, [categories]);
 
   const openModal = useCallback((atleta = null) => {
     if (atleta) {
@@ -204,6 +210,34 @@ export const useAtletasManager = ({ categories }) => {
 
     setShowModal(true);
   }, [resetForm]);
+
+  const loadCategories = useCallback(async () => {
+    try {
+      setCategoriesLoading(true);
+      const loaded = await trainingCategoriesService.listStudentCategories();
+      setCategories(loaded || []);
+    } catch (error) {
+      const message = `Error al cargar categorias: ${error.message}`;
+      setErrorMessage(message);
+      showErrorToast(message, 7000);
+      setCategories([]);
+    } finally {
+      setCategoriesLoading(false);
+    }
+  }, [showErrorToast]);
+
+  useEffect(() => {
+    loadCategories();
+  }, [loadCategories]);
+
+  useEffect(() => {
+    if (showModal || editingAtleta || categories.length === 0) return;
+    setFormData((prev) => (
+      prev.categoria
+        ? prev
+        : { ...prev, categoria: categories[0].code }
+    ));
+  }, [categories, editingAtleta, showModal]);
 
   const closeModal = useCallback(() => {
     setShowModal(false);
@@ -400,6 +434,7 @@ export const useAtletasManager = ({ categories }) => {
 
   return {
     categories,
+    categoriesLoading,
     initialFocusRef,
     allAtletas,
     loading,

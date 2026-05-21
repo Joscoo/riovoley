@@ -1,4 +1,4 @@
-﻿import { deleteAuthUserById } from '../../../../shared/infrastructure/auth/deleteAuthUserById';
+import { deleteAuthUserById } from '../../../../shared/infrastructure/auth/deleteAuthUserById';
 import { getEcuadorISOString } from '../../../../utils/dateUtils';
 
 const applySearchAndStatusFilters = (users, filters) => {

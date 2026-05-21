@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {
   FaCalendarAlt,
   FaCalendarWeek,
+  FaCheckCircle,
   FaClock,
   FaEdit,
   FaFilter,
@@ -14,6 +15,7 @@ import {
   FaUsers,
 } from 'react-icons/fa';
 import { cn } from '../../../../lib/cn';
+import { formatCategoryLabel } from '../../../../shared/lib/trainingCategoryFormatting';
 import { Button } from '../../../../shared/ui';
 import { Card } from '../../../../shared/ui';
 import { EmptyState } from '../../../../shared/ui';
@@ -30,15 +32,6 @@ const DAYS = [
   { value: 'viernes', label: 'Viernes' },
   { value: 'sabado', label: 'Sabado' },
   { value: 'domingo', label: 'Domingo' },
-];
-
-const CATEGORIES = [
-  { value: 'iniciacion_hombres', label: 'Iniciacion Hombres' },
-  { value: 'iniciacion_mujeres', label: 'Iniciacion Mujeres' },
-  { value: 'perfeccionamiento_hombres', label: 'Perfeccionamiento Hombres' },
-  { value: 'perfeccionamiento_mujeres', label: 'Perfeccionamiento Mujeres' },
-  { value: 'master_mujeres', label: 'Master Mujeres' },
-  { value: 'open_gym', label: 'Open Gym' },
 ];
 
 const CATEGORY_STYLES = {
@@ -72,10 +65,7 @@ const CATEGORY_STYLES = {
   },
 };
 
-const getCategoriaLabel = (categoria) => {
-  const item = CATEGORIES.find((category) => category.value === categoria);
-  return item ? item.label : categoria;
-};
+const getCategoriaLabel = (categoria, categoriesByCode) => categoriesByCode.get(categoria) || formatCategoryLabel(categoria);
 
 const getCategoryStyle = (categoria) => CATEGORY_STYLES[categoria] || CATEGORY_STYLES.fallback;
 
@@ -83,6 +73,12 @@ const HorariosManager = ({ user }) => {
   const {
     horarios,
     loading,
+    allCategories,
+    availableCategories,
+    categoriesLoading,
+    categoryForm,
+    editingCategoryCode,
+    categorySubmitting,
     showForm,
     editingId,
     filterDay,
@@ -110,7 +106,44 @@ const HorariosManager = ({ user }) => {
     handleDiaToggle,
     handleCategoriaToggle,
     formatTime,
+    handleCategoryFormChange,
+    handleCategorySubmit,
+    handleCategoryEdit,
+    handleToggleCategoryActive,
+    resetCategoryForm,
   } = useHorariosManager({ days: DAYS });
+
+  const categoryOptions = React.useMemo(() => {
+    const map = new Map(
+      (availableCategories || []).map((category) => [
+        category.code,
+        { value: category.code, label: category.label || formatCategoryLabel(category.code) },
+      ])
+    );
+
+    (formData.categorias_seleccionadas || []).forEach((code) => {
+      if (code && !map.has(code)) {
+        map.set(code, { value: code, label: formatCategoryLabel(code) });
+      }
+    });
+
+    (horarios || []).forEach((schedule) => {
+      if (schedule?.categoria && !map.has(schedule.categoria)) {
+        map.set(schedule.categoria, { value: schedule.categoria, label: formatCategoryLabel(schedule.categoria) });
+      }
+    });
+
+    if (filterCategory && filterCategory !== 'todos' && !map.has(filterCategory)) {
+      map.set(filterCategory, { value: filterCategory, label: formatCategoryLabel(filterCategory) });
+    }
+
+    return Array.from(map.values()).sort((a, b) => a.label.localeCompare(b.label, 'es'));
+  }, [availableCategories, filterCategory, formData.categorias_seleccionadas, horarios]);
+
+  const categoryLabelMap = React.useMemo(
+    () => new Map(categoryOptions.map((option) => [option.value, option.label])),
+    [categoryOptions]
+  );
 
   if (loading) {
     return (
@@ -172,6 +205,159 @@ const HorariosManager = ({ user }) => {
         </Card>
       </div>
 
+      <Card className="mb-5" padding="lg">
+        <h3 className="mb-4 text-xl font-black text-white">Gestion de Categorias (Horarios)</h3>
+        <div className="grid gap-5 desktop:grid-cols-2">
+          <form onSubmit={handleCategorySubmit} className="space-y-3 rounded-xl border border-rv-gold/20 bg-white/5 p-4">
+            <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-rv-gold">
+              <FaUsers /> {editingCategoryCode ? 'Editar categoria' : 'Nueva categoria'}
+            </p>
+
+            <Field label="Codigo *">
+              <input
+                name="code"
+                value={categoryForm.code}
+                onChange={handleCategoryFormChange}
+                disabled={Boolean(editingCategoryCode)}
+                placeholder="ej: sub18_mixto"
+                className="h-12 w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-white placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+                required
+              />
+            </Field>
+
+            <Field label="Etiqueta *">
+              <input
+                name="label"
+                value={categoryForm.label}
+                onChange={handleCategoryFormChange}
+                placeholder="ej: Sub 18 Mixto"
+                className="h-12 w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-white placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+                required
+              />
+            </Field>
+
+            <Field label="Descripcion por defecto">
+              <textarea
+                name="default_description"
+                value={categoryForm.default_description}
+                onChange={handleCategoryFormChange}
+                rows="3"
+                placeholder="Descripcion por defecto para horarios"
+                className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2.5 text-white placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+              />
+            </Field>
+
+            <div className="grid gap-2 mobile:grid-cols-2">
+              <label className="inline-flex min-h-[48px] items-center gap-2 rounded-lg border border-rv-gold/20 bg-black/25 px-3 py-2.5 text-sm text-white">
+                <input
+                  type="checkbox"
+                  name="for_schedules"
+                  checked={categoryForm.for_schedules}
+                  onChange={handleCategoryFormChange}
+                  className="h-4 w-4 accent-yellow-400"
+                />
+                Aplica a horarios
+              </label>
+              <label className="inline-flex min-h-[48px] items-center gap-2 rounded-lg border border-rv-gold/20 bg-black/25 px-3 py-2.5 text-sm text-white">
+                <input
+                  type="checkbox"
+                  name="for_students"
+                  checked={categoryForm.for_students}
+                  onChange={handleCategoryFormChange}
+                  className="h-4 w-4 accent-yellow-400"
+                />
+                Aplica a atletas
+              </label>
+              <label className="inline-flex min-h-[48px] items-center gap-2 rounded-lg border border-rv-gold/20 bg-black/25 px-3 py-2.5 text-sm text-white mobile:col-span-2">
+                <input
+                  type="checkbox"
+                  name="is_active"
+                  checked={categoryForm.is_active}
+                  onChange={handleCategoryFormChange}
+                  className="h-4 w-4 accent-yellow-400"
+                />
+                Activa
+              </label>
+            </div>
+
+            <div className="grid gap-2 mobile:grid-cols-2">
+              <Button type="button" variant="secondary" onClick={resetCategoryForm} disabled={categorySubmitting}>
+                <FaTimes className="mr-2" /> Limpiar
+              </Button>
+              <Button type="submit" disabled={categorySubmitting || categoriesLoading}>
+                <FaSave className="mr-2" /> {editingCategoryCode ? 'Actualizar categoria' : 'Crear categoria'}
+              </Button>
+            </div>
+          </form>
+
+          <div className="space-y-3 rounded-xl border border-rv-gold/20 bg-white/5 p-4">
+            <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-rv-gold">
+              <FaUsers /> Catalogo de categorias
+            </p>
+            {categoriesLoading ? (
+              <p className="text-sm text-slate-300">Cargando catalogo...</p>
+            ) : allCategories.length === 0 ? (
+              <p className="text-sm text-slate-300">No hay categorias registradas.</p>
+            ) : (
+              <div className="space-y-2">
+                {allCategories.map((category) => (
+                  <div
+                    key={category.code}
+                    className="rounded-lg border border-white/10 bg-black/30 p-3"
+                  >
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <div>
+                        <p className="font-bold text-white">{category.label || formatCategoryLabel(category.code)}</p>
+                        <p className="text-xs text-slate-300">{category.code}</p>
+                      </div>
+                      <div className="inline-flex items-center gap-2">
+                        <span className={cn(
+                          'rounded-full px-2 py-1 text-[11px] font-bold uppercase tracking-wide',
+                          category.is_active ? 'bg-emerald-500/25 text-emerald-200' : 'bg-slate-500/25 text-slate-200'
+                        )}>
+                          {category.is_active ? 'Activa' : 'Inactiva'}
+                        </span>
+                        <button
+                          type="button"
+                          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-sky-300/35 bg-sky-500/15 text-sky-200 transition hover:bg-sky-500/30"
+                          onClick={() => handleCategoryEdit(category)}
+                          title="Editar categoria"
+                          disabled={categorySubmitting}
+                        >
+                          <FaEdit />
+                        </button>
+                        <button
+                          type="button"
+                          className={cn(
+                            'inline-flex h-10 w-10 items-center justify-center rounded-lg border transition',
+                            category.is_active
+                              ? 'border-red-300/35 bg-red-500/15 text-red-200 hover:bg-red-500/30'
+                              : 'border-emerald-300/35 bg-emerald-500/15 text-emerald-200 hover:bg-emerald-500/30'
+                          )}
+                          onClick={() => handleToggleCategoryActive(category)}
+                          title={category.is_active ? 'Desactivar categoria' : 'Activar categoria'}
+                          disabled={categorySubmitting}
+                        >
+                          <FaCheckCircle />
+                        </button>
+                      </div>
+                    </div>
+                    <div className="mt-2 flex flex-wrap gap-2 text-xs">
+                      <span className="rounded-full border border-rv-gold/20 bg-rv-gold/10 px-2 py-0.5 text-rv-gold">
+                        Horarios: {category.for_schedules ? 'Si' : 'No'}
+                      </span>
+                      <span className="rounded-full border border-rv-gold/20 bg-rv-gold/10 px-2 py-0.5 text-rv-gold">
+                        Atletas: {category.for_students ? 'Si' : 'No'}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </Card>
+
       {showForm && (
         <Card className="mb-5" padding="lg">
           <h3 className="mb-4 text-xl font-black text-white">{editingId ? 'Editar Horario' : 'Nuevo Horario'}</h3>
@@ -224,7 +410,7 @@ const HorariosManager = ({ user }) => {
               </p>
 
               <div className="grid gap-2 mobile:grid-cols-2 desktop:grid-cols-3">
-                {CATEGORIES.map((category) => {
+                {categoryOptions.map((category) => {
                   const active = formData.categorias_seleccionadas.includes(category.value);
                   return (
                     <button
@@ -243,6 +429,15 @@ const HorariosManager = ({ user }) => {
                   );
                 })}
               </div>
+
+              {categoriesLoading ? (
+                <p className="text-xs text-slate-300">Cargando categorias desde base de datos...</p>
+              ) : null}
+              {!categoriesLoading && categoryOptions.length === 0 ? (
+                <p className="text-xs text-amber-300">
+                  No hay categorias activas para horarios. Agrega categorias en la base de datos.
+                </p>
+              ) : null}
             </div>
 
             <div className="grid gap-3 mobile:grid-cols-2">
@@ -297,7 +492,11 @@ const HorariosManager = ({ user }) => {
               <Button type="button" variant="secondary" className="w-full" onClick={resetForm}>
                 <FaTimes className="mr-2" /> Cancelar
               </Button>
-              <Button type="submit" className="w-full">
+              <Button
+                type="submit"
+                className="w-full"
+                disabled={categoriesLoading || categoryOptions.length === 0}
+              >
                 <FaSave className="mr-2" /> {editingId ? 'Actualizar' : 'Guardar'}
               </Button>
             </div>
@@ -332,7 +531,7 @@ const HorariosManager = ({ user }) => {
               className="h-12 w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
             >
               <option value="todos">Todas las categorias</option>
-              {CATEGORIES.map((category) => (
+              {categoryOptions.map((category) => (
                 <option key={category.value} value={category.value}>{category.label}</option>
               ))}
             </select>
@@ -408,7 +607,7 @@ const HorariosManager = ({ user }) => {
                         getCategoryStyle(schedule.categoria).badgeClass
                       )}
                     >
-                      {getCategoriaLabel(schedule.categoria)}
+                      {getCategoriaLabel(schedule.categoria, categoryLabelMap)}
                     </span>
 
                     <div className="inline-flex items-center gap-2 rounded-lg border border-rv-gold/20 bg-white/8 px-3 py-2 text-white">

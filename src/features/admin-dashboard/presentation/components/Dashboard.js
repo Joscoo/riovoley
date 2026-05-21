@@ -1,4 +1,4 @@
-﻿// src/features/admin-dashboard/presentation/components/Dashboard.js
+// src/features/admin-dashboard/presentation/components/Dashboard.js
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -58,11 +58,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
 
   const [recentActivity, setRecentActivity] = useState([]);
   const [categoriesStats, setCategoriesStats] = useState({
-    iniciacion_hombres: 0,
-    iniciacion_mujeres: 0,
-    perfeccionamiento_mujeres: 0,
-    perfeccionamiento_hombres: 0,
-    master_mujeres: 0,
+    items: [],
     loading: true
   });
 
@@ -95,14 +91,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
         atletasActivos: 0,
         loading: false
       });
-      setCategoriesStats(dashboardData?.categoriesStats || {
-        iniciacion_hombres: 0,
-        iniciacion_mujeres: 0,
-        perfeccionamiento_mujeres: 0,
-        perfeccionamiento_hombres: 0,
-        master_mujeres: 0,
-        loading: false
-      });
+      setCategoriesStats(dashboardData?.categoriesStats || { items: [], loading: false });
       setRecentActivity(dashboardData?.recentActivity || []);
     } catch (error) {
       console.error('Error cargando dashboard:', error);
@@ -222,36 +211,18 @@ const Dashboard = ({ user, onNavigateToSection }) => {
           <span className="align-middle">Resumen por Categorias</span>
         </h3>
         <div className="grid gap-3 mobile:grid-cols-2 desktop:grid-cols-3">
-          <div className="rounded-lg border border-rv-gold/30 bg-white/5 px-4 py-4 text-center">
-            <h4 className="text-sm font-semibold text-white">Iniciacion Hombres</h4>
-            <p className="mt-1 text-xl font-black text-rv-gold">
-              {categoriesStats.loading ? 'Cargando...' : `${categoriesStats.iniciacion_hombres} atletas`}
-            </p>
-          </div>
-          <div className="rounded-lg border border-rv-gold/30 bg-white/5 px-4 py-4 text-center">
-            <h4 className="text-sm font-semibold text-white">Iniciacion Mujeres</h4>
-            <p className="mt-1 text-xl font-black text-rv-gold">
-              {categoriesStats.loading ? 'Cargando...' : `${categoriesStats.iniciacion_mujeres} atletas`}
-            </p>
-          </div>
-          <div className="rounded-lg border border-rv-gold/30 bg-white/5 px-4 py-4 text-center">
-            <h4 className="text-sm font-semibold text-white">Perfeccionamiento Mujeres</h4>
-            <p className="mt-1 text-xl font-black text-rv-gold">
-              {categoriesStats.loading ? 'Cargando...' : `${categoriesStats.perfeccionamiento_mujeres} atletas`}
-            </p>
-          </div>
-          <div className="rounded-lg border border-rv-gold/30 bg-white/5 px-4 py-4 text-center">
-            <h4 className="text-sm font-semibold text-white">Perfeccionamiento Hombres</h4>
-            <p className="mt-1 text-xl font-black text-rv-gold">
-              {categoriesStats.loading ? 'Cargando...' : `${categoriesStats.perfeccionamiento_hombres} atletas`}
-            </p>
-          </div>
-          <div className="rounded-lg border border-rv-gold/30 bg-white/5 px-4 py-4 text-center">
-            <h4 className="text-sm font-semibold text-white">Master Mujeres</h4>
-            <p className="mt-1 text-xl font-black text-rv-gold">
-              {categoriesStats.loading ? 'Cargando...' : `${categoriesStats.master_mujeres} atletas`}
-            </p>
-          </div>
+          {categoriesStats.loading ? (
+            <p className="text-sm text-slate-300">Cargando categorias...</p>
+          ) : (categoriesStats.items || []).length === 0 ? (
+            <p className="text-sm text-slate-300">No hay categorias de atletas disponibles.</p>
+          ) : (
+            categoriesStats.items.map((item) => (
+              <div key={item.code} className="rounded-lg border border-rv-gold/30 bg-white/5 px-4 py-4 text-center">
+                <h4 className="text-sm font-semibold text-white">{item.label}</h4>
+                <p className="mt-1 text-xl font-black text-rv-gold">{`${item.total} atletas`}</p>
+              </div>
+            ))
+          )}
         </div>
       </Card>
     </div>

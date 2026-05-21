@@ -1,31 +1,14 @@
 import React from 'react';
 import { Card, Field, Button } from '../../../../../shared/ui';
+import { formatCategoryLabel } from '../../../../../shared/lib/trainingCategoryFormatting';
 
 const INPUT_BASE =
   'min-h-12 w-full rounded-lg border-2 border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 transition-all duration-200 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/30';
 
-const CATEGORIAS = [
-  'iniciacion_hombres',
-  'iniciacion_mujeres',
-  'perfeccionamiento_hombres',
-  'perfeccionamiento_mujeres',
-  'master_mujeres',
-];
-
-const formatCategoria = (categoria) => {
-  const categorias = {
-    iniciacion_hombres: 'Iniciacion Hombres',
-    iniciacion_mujeres: 'Iniciacion Mujeres',
-    perfeccionamiento_hombres: 'Perfeccionamiento Hombres',
-    perfeccionamiento_mujeres: 'Perfeccionamiento Mujeres',
-    master_mujeres: 'Master Mujeres',
-  };
-  return categorias[categoria] || categoria;
-};
-
 const UserFilters = ({
   filters,
   onFiltersChange,
+  categories = [],
   userType = 'usuario',
   showCategoryFilter = false,
   onReset,
@@ -53,6 +36,18 @@ const UserFilters = ({
   const sortById = `user-filters-${filterScope}-sort-by`;
   const sortOrderId = `user-filters-${filterScope}-sort-order`;
   const resetId = `user-filters-${filterScope}-reset`;
+
+  const categoryOptions = (categories || [])
+    .map((category) => {
+      if (typeof category === 'string') {
+        return { value: category, label: formatCategoryLabel(category) };
+      }
+      return {
+        value: category.code,
+        label: category.label || formatCategoryLabel(category.code),
+      };
+    })
+    .filter((option) => option.value);
 
   return (
     <Card className="mb-6" data-testid={`user-filters-${filterScope}`}>
@@ -84,8 +79,8 @@ const UserFilters = ({
                 aria-label="Filtrar por categoria deportiva"
               >
                 <option value="">Todas las categorias</option>
-                {CATEGORIAS.map((categoria) => (
-                  <option key={categoria} value={categoria}>{formatCategoria(categoria)}</option>
+                {categoryOptions.map((categoria) => (
+                  <option key={categoria.value} value={categoria.value}>{categoria.label}</option>
                 ))}
               </select>
             </Field>

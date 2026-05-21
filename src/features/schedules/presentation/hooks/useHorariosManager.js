@@ -1,4 +1,5 @@
-﻿import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { trainingCategoriesService } from '../../../training-categories';
 import { schedulesService } from '../../schedulesService';
 import { SORT_DIRECTION, createTableQuery } from '../../../../shared/lib/tableQuery';
 
@@ -6,12 +7,27 @@ const INITIAL_FORM = {
   dias_seleccionados: ['lunes'],
   hora_inicio: '',
   hora_fin: '',
-  categorias_seleccionadas: ['iniciacion_hombres'],
+  categorias_seleccionadas: [],
   aplicar_todos_dias: false,
   descripcion: '',
 };
 
+const INITIAL_CATEGORY_FORM = {
+  code: '',
+  label: '',
+  default_description: '',
+  for_schedules: true,
+  for_students: true,
+  is_active: true,
+};
+
 const EMPTY_MESSAGE = { type: '', text: '' };
+
+const normalizeCategoryCode = (rawCode) =>
+  String(rawCode || '')
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, '_');
 
 export const useHorariosManager = ({ days }) => {
   const timeoutRef = useRef(null);
@@ -27,6 +43,16 @@ export const useHorariosManager = ({ days }) => {
   const [formData, setFormData] = useState(INITIAL_FORM);
   const [message, setMessage] = useState(EMPTY_MESSAGE);
   const [deleteDialog, setDeleteDialog] = useState({ open: false, scheduleId: null });
+  const [allCategories, setAllCategories] = useState([]);
+  const [categoriesLoading, setCategoriesLoading] = useState(true);
+  const [categoryForm, setCategoryForm] = useState(INITIAL_CATEGORY_FORM);
+  const [editingCategoryCode, setEditingCategoryCode] = useState(null);
+  const [categorySubmitting, setCategorySubmitting] = useState(false);
+
+  const availableCategories = useMemo(
+    () => (allCategories || []).filter((category) => category.for_schedules && category.is_active),
+    [allCategories]
+  );
 
   const clearMessageTimer = useCallback(() => {
     if (timeoutRef.current) {
@@ -47,22 +73,25 @@ export const useHorariosManager = ({ days }) => {
   useEffect(() => () => clearMessageTimer(), [clearMessageTimer]);
 
   const getDescripcionPorDefecto = useCallback((categoria) => {
-    const descripciones = {
-      iniciacion_hombres:
-        'Perfecto para quienes se inician en el voleibol. Aprende fundamentos basicos como recepcion, saque y posicionamiento.',
-      iniciacion_mujeres:
-        'Ideal para principiantes que quieren aprender voleibol desde cero en un ambiente motivador.',
-      perfeccionamiento_hombres:
-        'Para jugadores con experiencia que buscan mejorar tecnica y tactica de juego.',
-      perfeccionamiento_mujeres:
-        'Entrenamiento avanzado para jugadoras con bases solidas y enfoque competitivo.',
-      master_mujeres:
-        'Categoria especial para atletas mayores de 18 anos con experiencia previa.',
-      open_gym:
-        'Sesión de juego libre para todos los niveles con enfoque recreativo y competitivo.',
-    };
-    return descripciones[categoria] || '';
-  }, []);
+    return trainingCategoriesService.getDefaultDescription({
+      categories: allCategories,
+      code: categoria,
+    });
+  }, [allCategories]);
+
+  const loadCategories = useCallback(async () => {
+    try {
+      setCategoriesLoading(true);
+      const categories = await trainingCategoriesService.listCategories();
+      setAllCategories(categories || []);
+    } catch (error) {
+      console.error('Error al cargar categorias para horarios:', error);
+      showMessage('error', `No se pudieron cargar categorias: ${error.message}`);
+      setAllCategories([]);
+    } finally {
+      setCategoriesLoading(false);
+    }
+  }, [showMessage]);
 
   const fetchHorarios = useCallback(async () => {
     try {
@@ -103,11 +132,34 @@ export const useHorariosManager = ({ days }) => {
     fetchHorarios();
   }, [fetchHorarios]);
 
+  useEffect(() => {
+    loadCategories();
+  }, [loadCategories]);
+
+  useEffect(() => {
+    const allowedCodes = new Set(availableCategories.map((category) => category.code));
+    setFormData((prev) => {
+      const selected = prev.categorias_seleccionadas.filter((code) => allowedCodes.has(code));
+      if (selected.length === 0 && availableCategories.length > 0) {
+        selected.push(availableCategories[0].code);
+      }
+
+      const changed = selected.length !== prev.categorias_seleccionadas.length
+        || selected.some((code, index) => code !== prev.categorias_seleccionadas[index]);
+
+      if (!changed) return prev;
+      return { ...prev, categorias_seleccionadas: selected };
+    });
+  }, [availableCategories]);
+
   const resetForm = useCallback(() => {
-    setFormData(INITIAL_FORM);
+    setFormData({
+      ...INITIAL_FORM,
+      categorias_seleccionadas: availableCategories.length > 0 ? [availableCategories[0].code] : [],
+    });
     setEditingId(null);
     setShowForm(false);
-  }, []);
+  }, [availableCategories]);
 
   const toggleFormVisibility = useCallback(() => {
     if (showForm) {
@@ -115,9 +167,113 @@ export const useHorariosManager = ({ days }) => {
       return;
     }
     setEditingId(null);
-    setFormData(INITIAL_FORM);
+    setFormData({
+      ...INITIAL_FORM,
+      categorias_seleccionadas: availableCategories.length > 0 ? [availableCategories[0].code] : [],
+    });
     setShowForm(true);
-  }, [resetForm, showForm]);
+  }, [availableCategories, resetForm, showForm]);
+
+  const resetCategoryForm = useCallback(() => {
+    setCategoryForm(INITIAL_CATEGORY_FORM);
+    setEditingCategoryCode(null);
+  }, []);
+
+  const handleCategoryFormChange = useCallback((event) => {
+    const { name, value, type, checked } = event.target;
+    setCategoryForm((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+  }, []);
+
+  const handleCategoryEdit = useCallback((category) => {
+    if (!category) return;
+    setEditingCategoryCode(category.code);
+    setCategoryForm({
+      code: category.code || '',
+      label: category.label || '',
+      default_description: category.default_description || '',
+      for_schedules: Boolean(category.for_schedules),
+      for_students: Boolean(category.for_students),
+      is_active: Boolean(category.is_active),
+    });
+  }, []);
+
+  const validateCategoryForm = useCallback(() => {
+    const normalizedCode = normalizeCategoryCode(categoryForm.code);
+    if (!normalizedCode) {
+      return 'El codigo de categoria es requerido.';
+    }
+    if (!/^[a-z0-9_]+$/.test(normalizedCode)) {
+      return 'El codigo solo puede contener letras minúsculas, numeros y guion bajo.';
+    }
+    if (!categoryForm.label?.trim()) {
+      return 'La etiqueta (label) es requerida.';
+    }
+    if (!categoryForm.for_schedules && !categoryForm.for_students) {
+      return 'La categoria debe aplicar al menos a horarios o atletas.';
+    }
+    return null;
+  }, [categoryForm]);
+
+  const handleCategorySubmit = useCallback(async (event) => {
+    event.preventDefault();
+    const validationError = validateCategoryForm();
+    if (validationError) {
+      showMessage('error', validationError);
+      return;
+    }
+
+    const normalizedCode = normalizeCategoryCode(categoryForm.code);
+    const payload = {
+      label: categoryForm.label.trim(),
+      default_description: categoryForm.default_description?.trim() || null,
+      for_schedules: Boolean(categoryForm.for_schedules),
+      for_students: Boolean(categoryForm.for_students),
+      is_active: Boolean(categoryForm.is_active),
+    };
+
+    try {
+      setCategorySubmitting(true);
+      if (editingCategoryCode) {
+        await trainingCategoriesService.updateCategory(editingCategoryCode, payload);
+        showMessage('success', `Categoria ${editingCategoryCode} actualizada.`);
+      } else {
+        await trainingCategoriesService.createCategory({
+          code: normalizedCode,
+          ...payload,
+        });
+        showMessage('success', `Categoria ${normalizedCode} creada.`);
+      }
+
+      resetCategoryForm();
+      await loadCategories();
+    } catch (error) {
+      console.error('Error gestionando categoria:', error);
+      showMessage('error', `No se pudo guardar la categoria: ${error.message}`);
+    } finally {
+      setCategorySubmitting(false);
+    }
+  }, [categoryForm, editingCategoryCode, loadCategories, resetCategoryForm, showMessage, validateCategoryForm]);
+
+  const handleToggleCategoryActive = useCallback(async (category) => {
+    if (!category?.code) return;
+    try {
+      setCategorySubmitting(true);
+      await trainingCategoriesService.toggleCategoryActive({
+        code: category.code,
+        is_active: !category.is_active,
+      });
+      showMessage('success', `Categoria ${category.code} ${category.is_active ? 'desactivada' : 'activada'}.`);
+      await loadCategories();
+    } catch (error) {
+      console.error('Error activando/desactivando categoria:', error);
+      showMessage('error', `No se pudo actualizar la categoria: ${error.message}`);
+    } finally {
+      setCategorySubmitting(false);
+    }
+  }, [loadCategories, showMessage]);
 
   const validateFormData = useCallback(() => {
     if (!formData.hora_inicio || !formData.hora_fin) {
@@ -282,6 +438,12 @@ export const useHorariosManager = ({ days }) => {
   return {
     horarios,
     loading,
+    allCategories,
+    availableCategories,
+    categoriesLoading,
+    categoryForm,
+    editingCategoryCode,
+    categorySubmitting,
     showForm,
     editingId,
     filterDay,
@@ -310,6 +472,11 @@ export const useHorariosManager = ({ days }) => {
     handleDiaToggle,
     handleCategoriaToggle,
     formatTime,
+    handleCategoryFormChange,
+    handleCategorySubmit,
+    handleCategoryEdit,
+    handleToggleCategoryActive,
+    resetCategoryForm,
   };
 };
 

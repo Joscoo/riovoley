@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { FaCalendarAlt, FaClock, FaExclamationTriangle, FaInfoCircle, FaUsers } from 'react-icons/fa';
 import { schedulesService } from '../features/schedules';
 import { cn } from '../lib/cn';

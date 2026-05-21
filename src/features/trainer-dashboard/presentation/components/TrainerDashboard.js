@@ -1,4 +1,4 @@
-﻿// src/features/trainer-dashboard/presentation/components/TrainerDashboard.js
+// src/features/trainer-dashboard/presentation/components/TrainerDashboard.js
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {

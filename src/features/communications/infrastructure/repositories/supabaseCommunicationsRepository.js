@@ -1,4 +1,4 @@
-﻿import { supabase } from '../../../../config/supabase';
+import { supabase } from '../../../../config/supabase';
 import { APP_BASE_URL, APP_LOGIN_URL, APP_RESET_PASSWORD_URL } from '../../../../config/appUrls';
 
 const showCredentialsModal = (userData) => {

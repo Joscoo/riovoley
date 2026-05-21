@@ -1,28 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Field, Button, iconRegistry } from '../../../../../shared/ui';
+import { formatCategoryLabel } from '../../../../../shared/lib/trainingCategoryFormatting';
 import { validateAthleteBirthDate, MIN_ATHLETE_AGE } from '../../../../../utils/athleteValidation';
 
 const INPUT_BASE =
   'min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70';
-
-const CATEGORIAS = [
-  'iniciacion_hombres',
-  'iniciacion_mujeres',
-  'perfeccionamiento_hombres',
-  'perfeccionamiento_mujeres',
-  'master_mujeres',
-];
-
-const formatCategoria = (categoria) => {
-  const categorias = {
-    iniciacion_hombres: 'Iniciación Hombres',
-    iniciacion_mujeres: 'Iniciación Mujeres',
-    perfeccionamiento_hombres: 'Perfeccionamiento Hombres',
-    perfeccionamiento_mujeres: 'Perfeccionamiento Mujeres',
-    master_mujeres: 'Master Mujeres',
-  };
-  return categorias[categoria] || categoria;
-};
 
 const INITIAL_FORM = {
   atleta: {
@@ -49,7 +31,20 @@ const INITIAL_FORM = {
   },
 };
 
-const UserForm = ({ userType, initialData, onSubmit, onCancel, submitLabel = 'Guardar' }) => {
+const normalizeCategoryOptions = (categories) =>
+  (categories || [])
+    .map((category) => {
+      if (typeof category === 'string') {
+        return { value: category, label: formatCategoryLabel(category) };
+      }
+      return {
+        value: category.code,
+        label: category.label || formatCategoryLabel(category.code),
+      };
+    })
+    .filter((option) => option.value);
+
+const UserForm = ({ userType, initialData, onSubmit, onCancel, submitLabel = 'Guardar', categories = [] }) => {
   const UserIcon = iconRegistry.user;
   const SportsIcon = iconRegistry.sports;
 
@@ -73,12 +68,20 @@ const UserForm = ({ userType, initialData, onSubmit, onCancel, submitLabel = 'Gu
 
   const [formErrors, setFormErrors] = useState({});
   const initialFocusRef = useRef(null);
+  const categoryOptions = normalizeCategoryOptions(categories);
 
   useEffect(() => {
     globalThis.setTimeout(() => {
       initialFocusRef.current?.focus();
     }, 0);
   }, []);
+
+  useEffect(() => {
+    if (userType !== 'atleta') return;
+    if (formData.categoria) return;
+    if (categoryOptions.length === 0) return;
+    setFormData((prev) => ({ ...prev, categoria: categoryOptions[0].value }));
+  }, [categoryOptions, formData.categoria, userType]);
 
   const isEditing = Boolean(initialData);
 
@@ -96,7 +99,7 @@ const UserForm = ({ userType, initialData, onSubmit, onCancel, submitLabel = 'Gu
     if (!formData.email?.trim()) {
       errors.email = 'El email es requerido';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      errors.email = 'Email inválido';
+      errors.email = 'Email invalido';
     }
 
     if (!formData.fecha_nacimiento) {
@@ -105,7 +108,7 @@ const UserForm = ({ userType, initialData, onSubmit, onCancel, submitLabel = 'Gu
 
     if (userType === 'atleta') {
       if (!formData.categoria) {
-        errors.categoria = 'Selecciona una categoría';
+        errors.categoria = 'Selecciona una categoria';
       }
 
       if (formData.fecha_nacimiento) {
@@ -147,7 +150,7 @@ const UserForm = ({ userType, initialData, onSubmit, onCancel, submitLabel = 'Gu
 
       <section className="space-y-3 rounded-xl border border-rv-gold/20 bg-black/20 p-4">
         <h4 className="text-sm font-bold uppercase tracking-[0.8px] text-rv-gold">
-          <UserIcon className="mr-2 inline align-middle" /> Información Personal
+          <UserIcon className="mr-2 inline align-middle" /> Informacion Personal
         </h4>
 
         <div className="grid gap-4 mobile:grid-cols-2">
@@ -198,7 +201,7 @@ const UserForm = ({ userType, initialData, onSubmit, onCancel, submitLabel = 'Gu
             )}
           </Field>
 
-          <Field label="Teléfono">
+          <Field label="Telefono">
             <input
               type="tel"
               value={formData.telefono}
@@ -226,19 +229,19 @@ const UserForm = ({ userType, initialData, onSubmit, onCancel, submitLabel = 'Gu
       {userType === 'atleta' && (
         <section className="space-y-3 rounded-xl border border-rv-gold/20 bg-black/20 p-4">
           <h4 className="text-sm font-bold uppercase tracking-[0.8px] text-rv-gold">
-            <SportsIcon className="mr-2 inline align-middle" /> Información del Estudiante
+            <SportsIcon className="mr-2 inline align-middle" /> Informacion del Estudiante
           </h4>
 
-          <Field label="Categoría *">
+          <Field label="Categoria *">
             <select
               value={formData.categoria}
               onChange={(event) => handleChange('categoria', event.target.value)}
               className={INPUT_BASE}
               required
             >
-              <option value="">Seleccionar categoría</option>
-              {CATEGORIAS.map((cat) => (
-                <option key={cat} value={cat}>{formatCategoria(cat)}</option>
+              <option value="">Seleccionar categoria</option>
+              {categoryOptions.map((category) => (
+                <option key={category.value} value={category.value}>{category.label}</option>
               ))}
             </select>
             {formErrors.categoria && (
@@ -300,3 +303,4 @@ const UserForm = ({ userType, initialData, onSubmit, onCancel, submitLabel = 'Gu
 };
 
 export default UserForm;
+

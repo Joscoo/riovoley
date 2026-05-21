@@ -1,4 +1,4 @@
-﻿// src/features/athletes/presentation/components/AtletasManager.js
+// src/features/athletes/presentation/components/AtletasManager.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -19,16 +19,9 @@ import { Field } from '../../../../shared/ui';
 import { SectionHeader } from '../../../../shared/ui';
 import ActionConfirmModal from './shared/ActionConfirmModal';
 import ActionResultModal from './shared/ActionResultModal';
+import { formatCategoryLabel } from '../../../../shared/lib/trainingCategoryFormatting';
 import { MIN_ATHLETE_AGE } from '../../../../utils/athleteValidation';
 import { useAtletasManager } from '../hooks/useAtletasManager';
-
-const CATEGORIAS = [
-  'iniciacion_hombres',
-  'iniciacion_mujeres',
-  'perfeccionamiento_mujeres',
-  'perfeccionamiento_hombres',
-  'master_mujeres',
-];
 
 const INPUT_BASE =
   'min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70';
@@ -50,6 +43,8 @@ const AtletasManager = ({ user }) => {
     setFormData,
     sendCredentialsOnCreate,
     setSendCredentialsOnCreate,
+    categories,
+    categoriesLoading,
     maxBirthDate,
     errorMessage,
     setErrorMessage,
@@ -73,8 +68,33 @@ const AtletasManager = ({ user }) => {
     closeActionResult,
     calculateAge,
     formatIngresoDate,
-    formatCategoria,
-  } = useAtletasManager({ categories: CATEGORIAS });
+  } = useAtletasManager();
+
+  const categoryOptions = React.useMemo(() => {
+    const map = new Map(
+      (categories || []).map((category) => [
+        category.code,
+        category.label || formatCategoryLabel(category.code),
+      ])
+    );
+
+    if (formData.categoria && !map.has(formData.categoria)) {
+      map.set(formData.categoria, formatCategoryLabel(formData.categoria));
+    }
+
+    if (filters.categoria && !map.has(filters.categoria)) {
+      map.set(filters.categoria, formatCategoryLabel(filters.categoria));
+    }
+
+    return Array.from(map.entries())
+      .map(([value, label]) => ({ value, label }))
+      .sort((a, b) => a.label.localeCompare(b.label, 'es'));
+  }, [categories, filters.categoria, formData.categoria]);
+
+  const getCategoryLabel = React.useCallback((categoryCode) => {
+    const option = categoryOptions.find((category) => category.value === categoryCode);
+    return option?.label || formatCategoryLabel(categoryCode);
+  }, [categoryOptions]);
 
   const handleBirthDateChange = (value) => {
     const boundedValue = value && value > maxBirthDate ? maxBirthDate : value;
@@ -177,9 +197,9 @@ const AtletasManager = ({ user }) => {
               aria-label="Filtrar por categoria"
             >
               <option value="">Todas las categorias</option>
-              {CATEGORIAS.map((categoria) => (
-                <option key={categoria} value={categoria}>
-                  {formatCategoria(categoria)}
+              {categoryOptions.map((categoria) => (
+                <option key={categoria.value} value={categoria.value}>
+                  {categoria.label}
                 </option>
               ))}
             </select>
@@ -310,7 +330,7 @@ const AtletasManager = ({ user }) => {
                     <dt className="text-xs font-bold uppercase tracking-[0.7px] text-slate-500">Categoria</dt>
                     <dd>
                       <span className="inline-flex rounded-md bg-amber-200 px-2 py-1 text-xs font-bold text-amber-950">
-                        {formatCategoria(atleta.categoria)}
+                        {getCategoryLabel(atleta.categoria)}
                       </span>
                     </dd>
                   </div>
@@ -490,12 +510,15 @@ const AtletasManager = ({ user }) => {
                     className={INPUT_BASE}
                   >
                     <option value="">Seleccionar categoria</option>
-                    {CATEGORIAS.map((categoria) => (
-                      <option key={categoria} value={categoria}>
-                        {formatCategoria(categoria)}
+                    {categoryOptions.map((categoria) => (
+                      <option key={categoria.value} value={categoria.value}>
+                        {categoria.label}
                       </option>
                     ))}
                   </select>
+                  {categoriesLoading ? (
+                    <p className="mt-1 text-xs text-slate-400">Cargando categorias desde base de datos...</p>
+                  ) : null}
                 </Field>
               </section>
 

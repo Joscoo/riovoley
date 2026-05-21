@@ -1,14 +1,8 @@
 import { getEcuadorDate, getEcuadorFirstDayOfMonth, getEcuadorLastDayOfMonth, calcularDiferenciaDias } from '../../../../utils/dateUtils';
 import { getLatestPaymentsList } from '../../../../utils/paymentUtils';
+import { formatCategoryLabel } from '../../../../shared/lib/trainingCategoryFormatting';
 
-const EMPTY_CATEGORY_STATS = {
-  iniciacion_hombres: 0,
-  iniciacion_mujeres: 0,
-  perfeccionamiento_mujeres: 0,
-  perfeccionamiento_hombres: 0,
-  master_mujeres: 0,
-  loading: false,
-};
+const EMPTY_CATEGORY_STATS = { items: [], loading: false };
 
 export const createAdminDashboardUseCases = (repository, activityIconFactory) => {
   const loadStatsUseCase = {
@@ -52,13 +46,41 @@ export const createAdminDashboardUseCases = (repository, activityIconFactory) =>
 
   const loadCategoriesStatsUseCase = {
     execute: async () => {
-      const students = await repository.listStudentCategories();
+      const [students, categoriesCatalog] = await Promise.all([
+        repository.listStudentCategories(),
+        typeof repository.listTrainingCategoriesForStudents === 'function'
+          ? repository.listTrainingCategoriesForStudents()
+          : Promise.resolve([]),
+      ]);
+
+      const countsByCode = new Map();
+      (students || []).forEach((student) => {
+        if (!student?.categoria) return;
+        countsByCode.set(student.categoria, (countsByCode.get(student.categoria) || 0) + 1);
+      });
+
+      const labelsByCode = new Map(
+        (categoriesCatalog || []).map((category) => [
+          category.code,
+          category.label || formatCategoryLabel(category.code),
+        ])
+      );
+
+      const allCodes = new Set([
+        ...labelsByCode.keys(),
+        ...countsByCode.keys(),
+      ]);
+
+      const items = Array.from(allCodes)
+        .map((code) => ({
+          code,
+          label: labelsByCode.get(code) || formatCategoryLabel(code),
+          total: countsByCode.get(code) || 0,
+        }))
+        .sort((a, b) => a.label.localeCompare(b.label, 'es'));
+
       return {
-        iniciacion_hombres: students?.filter((s) => s.categoria === 'iniciacion_hombres')?.length || 0,
-        iniciacion_mujeres: students?.filter((s) => s.categoria === 'iniciacion_mujeres')?.length || 0,
-        perfeccionamiento_mujeres: students?.filter((s) => s.categoria === 'perfeccionamiento_mujeres')?.length || 0,
-        perfeccionamiento_hombres: students?.filter((s) => s.categoria === 'perfeccionamiento_hombres')?.length || 0,
-        master_mujeres: students?.filter((s) => s.categoria === 'master_mujeres')?.length || 0,
+        items,
         loading: false,
       };
     },

@@ -60,6 +60,18 @@ export class SupabaseAdminDashboardRepository {
     return data || [];
   }
 
+  async listTrainingCategoriesForStudents() {
+    const { data, error } = await supabase
+      .from('training_categories')
+      .select('code, label')
+      .eq('for_students', true)
+      .eq('is_active', true)
+      .order('label', { ascending: true });
+
+    if (error) throw new AdminDashboardError(normalizeError(error, 'Error consultando catalogo de categorias'), error);
+    return data || [];
+  }
+
   async listRecentAttendances() {
     const { data, error } = await supabase
       .from('attendances')

@@ -78,6 +78,9 @@ select * from training.attendances;
 create or replace view public.physical_tests as
 select * from training.physical_tests;
 
+create or replace view public.training_categories as
+select * from training.training_categories;
+
 create or replace view public.announcements as
 select * from public_content.announcements;
 
@@ -105,6 +108,7 @@ grant select, insert, update, delete on
   public.schedules,
   public.attendances,
   public.physical_tests,
+  public.training_categories,
   public.announcements,
   public.announcements_with_creator,
   public.payments_audit
@@ -135,7 +139,7 @@ commit;
 -- where table_schema = 'public'
 --   and table_name in (
 --     'users','students','user_profiles','payment_types','payments',
---     'schedules','attendances','physical_tests','announcements',
+--     'schedules','attendances','physical_tests','training_categories','announcements',
 --     'announcements_with_creator','payments_audit','users_password_backup'
 --   )
 -- order by table_name;

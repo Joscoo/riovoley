@@ -5,6 +5,7 @@ import { useUserPermissions } from '../hooks/useUserPermissions';
 import { useUserActions } from '../hooks/useUserActions';
 import { useTimedMessage } from '../hooks/useTimedMessage';
 import { communicationsService } from '../../../../communications';
+import { trainingCategoriesService } from '../../../../training-categories';
 import { SectionHeader, Card, Button, EmptyState, iconRegistry } from '../../../../../shared/ui';
 import { SORT_DIRECTION, createTableQuery } from '../../../../../shared/lib/tableQuery';
 import UserCard from '../shared/UserCard';
@@ -14,14 +15,6 @@ import SuspendUserModal from '../shared/SuspendUserModal';
 import ResendCredentialsModal from '../shared/ResendCredentialsModal';
 import DeleteUserModal from '../shared/DeleteUserModal';
 import ChangeRoleModal from '../shared/ChangeRoleModal';
-
-const CATEGORIAS = [
-  'iniciacion_hombres',
-  'iniciacion_mujeres',
-  'perfeccionamiento_hombres',
-  'perfeccionamiento_mujeres',
-  'master_mujeres',
-];
 
 const buildAthletesListQuery = ({ filters }) => {
   const backendSortField = ['nombre', 'apellido', 'created_at'].includes(filters?.sortBy) ? filters.sortBy : null;
@@ -45,6 +38,8 @@ const buildAthletesListQuery = ({ filters }) => {
 
 const AthletesTab = ({ userRole }) => {
   const StudentIcon = iconRegistry.userTypes.atleta;
+  const normalizedRole = String(userRole || '').toLowerCase();
+  const isAdmin = normalizedRole === 'administrador';
 
   const [athletes, setAthletes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -54,6 +49,7 @@ const AthletesTab = ({ userRole }) => {
   const [showResendModal, setShowResendModal] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(null);
   const [showChangeRoleModal, setShowChangeRoleModal] = useState(null);
+  const [categories, setCategories] = useState([]);
   const { message, showMessage } = useTimedMessage();
 
   const [filters, setFilters] = useState({
@@ -68,6 +64,14 @@ const AthletesTab = ({ userRole }) => {
   const PAGE_SIZE = 9;
 
   const permissions = useUserPermissions({ userRole, targetUserType: 'atleta' });
+  const scopedPermissions = useMemo(
+    () => ({
+      ...permissions,
+      canCreate: Boolean(permissions.canCreate && isAdmin),
+      canEdit: Boolean(permissions.canEdit && isAdmin),
+    }),
+    [isAdmin, permissions]
+  );
   const userActions = useUserActions();
 
   const loadAthletes = useCallback(async ({ activeFilters } = {}) => {
@@ -85,9 +89,24 @@ const AthletesTab = ({ userRole }) => {
     }
   }, [filters, showMessage]);
 
+  const loadCategories = useCallback(async () => {
+    try {
+      const loadedCategories = await trainingCategoriesService.listStudentCategories();
+      setCategories(loadedCategories || []);
+    } catch (error) {
+      console.error('Error al cargar categorias de estudiantes:', error);
+      showMessage('error', `Error al cargar categorias: ${error.message}`);
+      setCategories([]);
+    }
+  }, [showMessage]);
+
   useEffect(() => {
     loadAthletes({ activeFilters: filters });
   }, [filters, loadAthletes]);
+
+  useEffect(() => {
+    loadCategories();
+  }, [loadCategories]);
 
   const filteredAthletes = useMemo(
     () =>
@@ -115,13 +134,21 @@ const AthletesTab = ({ userRole }) => {
     setCurrentPage(1);
   }, [filters]);
 
+  const categoryCodes = useMemo(() => {
+    const set = new Set((categories || []).map((category) => category.code).filter(Boolean));
+    filteredAthletes.forEach((athlete) => {
+      if (athlete?.categoria) set.add(athlete.categoria);
+    });
+    return Array.from(set);
+  }, [categories, filteredAthletes]);
+
   const stats = useMemo(
     () =>
       userManagementService.buildAthletesStats({
         filteredAthletes,
-        categories: CATEGORIAS,
+        categories: categoryCodes,
       }),
-    [filteredAthletes]
+    [categoryCodes, filteredAthletes]
   );
 
   const openCreateModal = () => {
@@ -248,7 +275,7 @@ const AthletesTab = ({ userRole }) => {
         subtitle={`${stats.total} estudiantes encontrados - ${stats.activos} activos, ${stats.suspendidos} suspendidos`}
         icon={<StudentIcon />}
         actions={
-          permissions.canCreate && (
+          scopedPermissions.canCreate && (
             <Button onClick={openCreateModal}>
               <FaPlus className="mr-2" /> Agregar Estudiante
             </Button>
@@ -320,8 +347,9 @@ const AthletesTab = ({ userRole }) => {
       <UserFilters
         filters={filters}
         onFiltersChange={setFilters}
+        categories={categories}
         userType="atleta"
-        showCategoryFilter={true}
+        showCategoryFilter={isAdmin}
         onReset={handleResetFilters}
       />
 
@@ -342,7 +370,7 @@ const AthletesTab = ({ userRole }) => {
             ? 'Intenta ajustar los filtros de búsqueda'
             : 'Agrega el primer estudiante al club'}
           action={
-            permissions.canCreate && !filters.search && !filters.categoria && filters.status === 'all' && (
+            scopedPermissions.canCreate && !filters.search && !filters.categoria && filters.status === 'all' && (
               <Button onClick={openCreateModal}>
                 <FaPlus className="mr-2" /> Agregar Estudiante
               </Button>
@@ -357,7 +385,7 @@ const AthletesTab = ({ userRole }) => {
                 key={athlete.id}
                 user={athlete}
                 userType="atleta"
-                permissions={permissions}
+                permissions={scopedPermissions}
                 onEdit={() => openEditModal(athlete)}
                 onDelete={() => setShowDeleteModal(athlete)}
                 onSuspend={() => setShowSuspendModal(athlete)}
@@ -425,6 +453,7 @@ const AthletesTab = ({ userRole }) => {
             <UserForm
               userType="atleta"
               initialData={editingAthlete}
+              categories={categories}
               onSubmit={handleSubmit}
               onCancel={closeModal}
               submitLabel={editingAthlete ? 'Actualizar' : 'Guardar'}

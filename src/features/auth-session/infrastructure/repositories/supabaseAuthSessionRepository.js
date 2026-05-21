@@ -1,4 +1,4 @@
-﻿import { supabase } from '../../../../config/supabase';
+import { supabase } from '../../../../config/supabase';
 import { AuthSessionError } from '../../domain/authSessionError';
 
 const normalizeError = (error, fallback) => {

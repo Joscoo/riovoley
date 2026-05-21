@@ -1,4 +1,4 @@
-﻿import { UserManagementError } from '../../domain/userManagementError';
+import { UserManagementError } from '../../domain/userManagementError';
 
 const requiredMethods = [
   'listAthletes',

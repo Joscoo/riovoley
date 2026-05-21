@@ -1,4 +1,4 @@
-﻿// src/features/account-admin/presentation/components/ProfileSettings.js
+// src/features/account-admin/presentation/components/ProfileSettings.js
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaClipboardList, FaCog, FaEdit, FaExclamationTriangle, FaInfoCircle, FaKey, FaLock } from 'react-icons/fa';

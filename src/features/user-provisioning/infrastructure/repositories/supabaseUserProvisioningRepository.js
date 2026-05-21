@@ -1,4 +1,4 @@
-﻿import { createClient } from '@supabase/supabase-js';
+import { createClient } from '@supabase/supabase-js';
 import { supabase } from '../../../../config/supabase';
 import { withEncryptedUserContactFields } from '../../../../utils/piiCrypto';
 import { MIN_ATHLETE_AGE, validateAthleteBirthDate } from '../../../../utils/athleteValidation';

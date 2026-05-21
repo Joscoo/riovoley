@@ -1,4 +1,4 @@
-﻿import { supabase } from '../../../../config/supabase';
+import { supabase } from '../../../../config/supabase';
 import { AccountAdminError } from '../../domain/accountAdminError';
 
 const normalizeError = (error, fallback) => {
