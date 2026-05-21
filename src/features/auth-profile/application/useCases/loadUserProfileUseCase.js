@@ -1,4 +1,4 @@
-﻿import { AuthProfileError } from '../../domain/authProfileError';
+import { AuthProfileError } from '../../domain/authProfileError';
 
 export const createLoadUserProfileUseCase = (repository) => {
   return {
@@ -27,7 +27,7 @@ export const createLoadUserProfileUseCase = (repository) => {
           try {
             await repository.upsertUserProfile(syncedProfile);
           } catch (_error) {
-            // Mejor esfuerzo: no interrumpir login si falla la sincronizaciÃ³n.
+            // Mejor esfuerzo: no interrumpir login si falla la sincronización.
           }
 
           return syncedProfile;

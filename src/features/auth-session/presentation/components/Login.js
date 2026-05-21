@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaEnvelope, FaEye, FaEyeSlash, FaKey, FaLock, FaUserShield } from 'react-icons/fa';
 import { authSessionService } from '../../authSessionService';
@@ -416,11 +416,11 @@ function Login({ onLoginSuccess }) {
           ) : (
             <>
               <form onSubmit={handleLogin} className="space-y-4">
-                <Field label="Correo Electronico" icon={<FaEnvelope />}>
+                <Field label="Correo electrónico" icon={<FaEnvelope />}>
                   <input
                     id="email"
                     type="email"
-                    aria-label="Correo Electronico"
+                    aria-label="Correo electrónico"
                     placeholder="tu@email.com"
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
@@ -436,7 +436,7 @@ function Login({ onLoginSuccess }) {
                       id="password"
                       type={showPassword ? 'text' : 'password'}
                       aria-label="Contraseña"
-                      placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                      placeholder="••••••••"
                       value={password}
                       onChange={(event) => setPassword(event.target.value)}
                       disabled={isLoading}
@@ -467,7 +467,7 @@ function Login({ onLoginSuccess }) {
                   disabled={isLoading}
                   className="mx-auto min-h-[48px]"
                 >
-                  Olvidaste tu contraseña?
+                  ¿Olvidaste tu contraseña?
                 </Button>
               </div>
 
@@ -502,7 +502,7 @@ function Login({ onLoginSuccess }) {
                 }}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/20 text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
               >
-                Ã—
+                ×
               </button>
             </div>
 
@@ -511,7 +511,7 @@ function Login({ onLoginSuccess }) {
             </p>
 
             <form onSubmit={handleForgotPassword} className="space-y-4">
-              <Field label="Correo Electronico" icon={<FaEnvelope />}>
+              <Field label="Correo electrónico" icon={<FaEnvelope />}>
                 <input
                   id="reset-email"
                   type="email"
@@ -576,7 +576,5 @@ Login.propTypes = {
 };
 
 export default Login;
-
-
 
 

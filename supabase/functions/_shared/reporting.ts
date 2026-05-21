@@ -137,6 +137,15 @@ const createAuthClient = (authorization: string) => createClient(SUPABASE_URL, S
 
 export const isIsoDate = (value: string) => /^\d{4}-\d{2}-\d{2}$/.test(value);
 const UUID_V4_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+const INVALID_UUID_TOKENS = new Set(['undefined', 'null', 'nan']);
+
+const normalizeUuidOrNull = (value: unknown): string | null => {
+  if (typeof value !== 'string') return null;
+  const trimmed = value.trim();
+  if (!trimmed) return null;
+  if (INVALID_UUID_TOKENS.has(trimmed.toLowerCase())) return null;
+  return UUID_V4_REGEX.test(trimmed) ? trimmed : null;
+};
 
 export const addDays = (dateStr: string, days: number) => {
   const date = new Date(`${dateStr}T00:00:00.000Z`);
@@ -198,8 +207,13 @@ export const getUserRoleFromToken = async (authorization: string) => {
     throw new HttpError(403, 'ROLE_NOT_ALLOWED', 'No tienes permisos para generar o consultar reportes');
   }
 
+  const normalizedUserId = normalizeUuidOrNull(dbUser.id);
+  if (!normalizedUserId) {
+    throw new HttpError(500, 'ACTOR_USER_ID_INVALID', 'No se pudo validar el identificador del usuario autenticado');
+  }
+
   return {
-    userId: dbUser.id as string,
+    userId: normalizedUserId,
     role: String(dbUser.role || '').toLowerCase(),
   };
 };
@@ -224,8 +238,16 @@ const buildAttendanceSnapshot = async (
     throw new HttpError(500, 'ATTENDANCE_QUERY_FAILED', 'No se pudo consultar asistencias', attendanceError);
   }
 
-  const studentIds = [...new Set((attendanceRows || []).map((row) => row.student_id).filter(Boolean))];
-  const paymentTypeIds = [...new Set((attendanceRows || []).map((row) => row.metodo_pago_id).filter(Boolean))];
+  const studentIds = [...new Set(
+    (attendanceRows || [])
+      .map((row) => normalizeUuidOrNull(row.student_id))
+      .filter((value): value is string => Boolean(value)),
+  )];
+  const paymentTypeIds = [...new Set(
+    (attendanceRows || [])
+      .map((row) => Number(row.metodo_pago_id))
+      .filter((value) => Number.isInteger(value) && value > 0),
+  )];
 
   const studentsById = new Map<string, { categoria: string | null; nombre: string; apellido: string }>();
   if (studentIds.length > 0) {
@@ -289,8 +311,12 @@ const buildAttendanceSnapshot = async (
     }
   }
 
-  const rows: AttendanceRow[] = (attendanceRows || []).map((row) => {
-    const student = studentsById.get(row.student_id) || {
+  const rows: AttendanceRow[] = (attendanceRows || [])
+    .map((row) => {
+    const normalizedStudentId = normalizeUuidOrNull(row.student_id);
+    if (!normalizedStudentId) return null;
+
+    const student = studentsById.get(normalizedStudentId) || {
       categoria: null,
       nombre: '',
       apellido: '',
@@ -298,23 +324,30 @@ const buildAttendanceSnapshot = async (
 
     const fullName = `${student.nombre} ${student.apellido}`.trim() || 'Sin nombre';
     const category = student.categoria || 'sin_categoria';
-    const paymentNameRaw = row.metodo_pago_id ? paymentById.get(row.metodo_pago_id) : null;
-    const monthlyStatus = resolveMonthlyStatusForDate(paymentsByStudent.get(row.student_id) || [], row.fecha);
+    const paymentMethodId = Number(row.metodo_pago_id);
+    const paymentNameRaw = Number.isInteger(paymentMethodId) && paymentMethodId > 0
+      ? paymentById.get(paymentMethodId)
+      : null;
+    const monthlyStatus = resolveMonthlyStatusForDate(
+      paymentsByStudent.get(normalizedStudentId) || [],
+      row.fecha,
+    );
 
     return {
       attendance_id: row.id,
       date: row.fecha,
-      student_id: row.student_id,
+      student_id: normalizedStudentId,
       student_name: fullName,
       category,
       category_label: CATEGORY_LABELS[category] || category.replaceAll('_', ' '),
-      payment_method_id: row.metodo_pago_id || null,
+      payment_method_id: Number.isInteger(paymentMethodId) && paymentMethodId > 0 ? paymentMethodId : null,
       payment_method_name: paymentNameRaw ? paymentNameRaw.replaceAll('_', ' ') : 'N/A',
       monthly_payment_status: monthlyStatus,
       monthly_payment_label: MONTHLY_STATUS_LABELS[monthlyStatus],
       schedule_id: row.schedule_id || null,
     };
-  });
+  })
+    .filter((row): row is AttendanceRow => Boolean(row));
 
   rows.sort((a, b) => {
     if (a.date !== b.date) return a.date.localeCompare(b.date);
@@ -691,6 +724,131 @@ const renderAttendancePdf = async (snapshot: Snapshot, observations?: string) =>
     y -= 8;
   };
 
+  const drawObservationsSection = (rawObservations: string) => {
+    const normalizedText = rawObservations
+      .replace(/\r\n/g, '\n')
+      .replace(/\r/g, '\n')
+      .trim();
+
+    if (!normalizedText) return;
+
+    const boxPaddingX = 10;
+    const boxPaddingY = 10;
+    const lineSpacing = 12;
+    const textSize = 9;
+    const textWidth = CONTENT_WIDTH - (boxPaddingX * 2);
+    const boxHeaderHeight = 18;
+    const observationRows: Array<{ text: string; offsetX: number; isBlank: boolean }> = [];
+    const sourceLines = normalizedText.split('\n');
+    let previousWasBlank = false;
+
+    for (let sourceIndex = 0; sourceIndex < sourceLines.length; sourceIndex += 1) {
+      const line = sourceLines[sourceIndex];
+      const trimmedLine = line.trim();
+
+      if (!trimmedLine) {
+        if (previousWasBlank) continue;
+        observationRows.push({ text: '', offsetX: 0, isBlank: true });
+        previousWasBlank = true;
+        continue;
+      }
+
+      previousWasBlank = false;
+
+      const bulletMatch = trimmedLine.match(/^([-*])\s+(.+)$/);
+      const numberedMatch = trimmedLine.match(/^(\d+[.)])\s+(.+)$/);
+
+      let prefix = '';
+      let content = trimmedLine;
+
+      if (bulletMatch) {
+        prefix = '- ';
+        content = bulletMatch[2];
+      } else if (numberedMatch) {
+        prefix = `${numberedMatch[1]} `;
+        content = numberedMatch[2];
+      }
+
+      const prefixWidth = prefix ? font.widthOfTextAtSize(prefix, textSize) : 0;
+      const wrappedLines = splitTextByWidth(content, font, textSize, Math.max(24, textWidth - prefixWidth));
+
+      for (let index = 0; index < wrappedLines.length; index += 1) {
+        const wrappedLine = wrappedLines[index];
+        if (index === 0) {
+          observationRows.push({
+            text: `${prefix}${wrappedLine}`,
+            offsetX: 0,
+            isBlank: false,
+          });
+        } else {
+          observationRows.push({
+            text: wrappedLine,
+            offsetX: prefixWidth,
+            isBlank: false,
+          });
+        }
+      }
+    }
+
+    if (observationRows.length === 0) observationRows.push({ text: '-', offsetX: 0, isBlank: false });
+
+    let cursor = 0;
+    let isContinuation = false;
+
+    while (cursor < observationRows.length) {
+      ensureSpace(72);
+
+      const availableHeight = y - PAGE_MIN_Y;
+      const usableHeight = Math.max(0, availableHeight - boxHeaderHeight - (boxPaddingY * 2));
+      const maxLinesPerChunk = Math.max(1, Math.floor(usableHeight / lineSpacing));
+      const chunk = observationRows.slice(cursor, cursor + maxLinesPerChunk);
+      const boxHeight = boxHeaderHeight + (boxPaddingY * 2) + (chunk.length * lineSpacing);
+
+      page.drawRectangle({
+        x: PAGE_MARGIN_X,
+        y: y - boxHeight,
+        width: CONTENT_WIDTH,
+        height: boxHeight,
+        color: COLORS.white,
+        borderColor: COLORS.grayBorder,
+        borderWidth: 1,
+      });
+
+      page.drawRectangle({
+        x: PAGE_MARGIN_X,
+        y: y - boxHeaderHeight,
+        width: CONTENT_WIDTH,
+        height: boxHeaderHeight,
+        color: COLORS.lightBlue,
+      });
+
+      const sectionLabel = isContinuation ? 'Notas registradas (continuacion)' : 'Notas registradas';
+      page.drawText(sectionLabel, {
+        x: PAGE_MARGIN_X + boxPaddingX,
+        y: y - 12,
+        size: 8.5,
+        font: fontBold,
+        color: COLORS.navy,
+      });
+
+      for (let index = 0; index < chunk.length; index += 1) {
+        const row = chunk[index];
+        if (row.isBlank) continue;
+        page.drawText(row.text, {
+          x: PAGE_MARGIN_X + boxPaddingX + row.offsetX,
+          y: y - boxHeaderHeight - boxPaddingY - 8 - (index * lineSpacing),
+          size: textSize,
+          font,
+          color: rgb(0.12, 0.14, 0.18),
+        });
+      }
+
+      y -= boxHeight + 8;
+      cursor += chunk.length;
+      isContinuation = true;
+    }
+  };
+
   drawHeader();
   drawSummaryCards();
 
@@ -735,18 +893,7 @@ const renderAttendancePdf = async (snapshot: Snapshot, observations?: string) =>
 
   if (observations?.trim()) {
     drawSectionTitle('OBSERVACIONES');
-    const lines = splitTextByWidth(observations.trim(), font, 9, CONTENT_WIDTH - 14);
-    for (const line of lines) {
-      ensureSpace(12);
-      page.drawText(line, {
-        x: PAGE_MARGIN_X + 4,
-        y,
-        size: 9,
-        font,
-        color: COLORS.grayText,
-      });
-      y -= 11;
-    }
+    drawObservationsSection(observations);
   }
 
   const pages = pdfDoc.getPages();
@@ -862,6 +1009,8 @@ const ensurePendingRun = async (
     };
   }
 
+  const normalizedRequestedBy = normalizeUuidOrNull(input.requestedBy);
+
   const { data: inserted, error: insertError } = await serviceClient
     .from('report_runs')
     .insert({
@@ -870,7 +1019,7 @@ const ensurePendingRun = async (
       period_end: input.periodEnd,
       trigger: input.triggerType,
       status: 'pending',
-      requested_by: input.requestedBy || null,
+      requested_by: normalizedRequestedBy,
     })
     .select('id, status')
     .single();

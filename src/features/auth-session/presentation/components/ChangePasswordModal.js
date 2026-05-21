@@ -1,4 +1,4 @@
-﻿// src/features/auth-session/presentation/components/ChangePasswordModal.js
+// src/features/auth-session/presentation/components/ChangePasswordModal.js
 import React, { useState } from 'react';
 import { authSessionService } from '../../authSessionService';
 import { validatePassword } from '../../../../utils/passwordUtils';
@@ -38,18 +38,18 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
     try {
       // Validaciones
       if (!formData.currentPassword) {
-        throw new Error('Debe ingresar su contraseÃ±a actual');
+        throw new Error('Debe ingresar su contraseña actual');
       }
 
       if (!formData.newPassword) {
-        throw new Error('Debe ingresar una nueva contraseÃ±a');
+        throw new Error('Debe ingresar una nueva contraseña');
       }
 
       if (formData.newPassword !== formData.confirmPassword) {
-        throw new Error('Las contraseÃ±as no coinciden');
+        throw new Error('Las contraseñas no coinciden');
       }
 
-      // Validar fortaleza de la nueva contraseÃ±a
+      // Validar fortaleza de la nueva contraseña
       const passwordValidation = validatePassword(formData.newPassword);
       if (!passwordValidation.isValid) {
         setErrors(passwordValidation.errors);
@@ -58,13 +58,13 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
 
       const session = await authSessionService.getSession();
       if (!session) {
-        throw new Error('Tu sesiÃ³n expirÃ³. Inicia sesiÃ³n nuevamente para cambiar la contraseÃ±a.');
+        throw new Error('Tu sesión expiró. Inicia sesión nuevamente para cambiar la contraseña.');
       }
 
-      // El usuario ya estÃ¡ autenticado; actualizamos la contraseÃ±a directamente en Auth.
+      // El usuario ya está autenticado; actualizamos la contraseña directamente en Auth.
       await authSessionService.updatePassword(formData.newPassword);
 
-      // Cerrar inmediatamente el modal; la sincronizaciÃ³n en users se resuelve en paralelo.
+      // Cerrar inmediatamente el modal; la sincronización en users se resuelve en paralelo.
       if (typeof onPasswordChanged === 'function') {
         onPasswordChanged();
       }
@@ -74,7 +74,7 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
       });
 
     } catch (error) {
-      console.error('Error cambiando contraseÃ±a:', error);
+      console.error('Error cambiando contraseña:', error);
       setErrors([error.message]);
     } finally {
       setLoading(false);
@@ -122,7 +122,7 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
             </div>
           )}
 
-          {/* ContraseÃ±a Actual */}
+          {/* Contraseña Actual */}
           <div className="mb-6">
             <label htmlFor="currentPassword" className="mb-2 block text-[0.95rem] font-semibold uppercase tracking-[0.5px] text-slate-50">
               Contraseña Actual *
@@ -133,7 +133,7 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
                 type={showPasswords.current ? "text" : "password"}
                 value={formData.currentPassword}
                 onChange={(e) => handleInputChange('currentPassword', e.target.value)}
-                placeholder="Ingresa tu contraseÃ±a temporal"
+                placeholder="Ingresa tu contraseña temporal"
                 className={inputBaseClass}
                 required
               />
@@ -148,7 +148,7 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
             </div>
           </div>
 
-          {/* Nueva ContraseÃ±a */}
+          {/* Nueva Contraseña */}
           <div className="mb-6">
             <label htmlFor="newPassword" className="mb-2 block text-[0.95rem] font-semibold uppercase tracking-[0.5px] text-slate-50">
               Nueva Contraseña *
@@ -159,7 +159,7 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
                 type={showPasswords.new ? "text" : "password"}
                 value={formData.newPassword}
                 onChange={(e) => handleInputChange('newPassword', e.target.value)}
-                placeholder="Crea una contraseÃ±a segura"
+                placeholder="Crea una contraseña segura"
                 className={inputBaseClass}
                 required
               />
@@ -174,7 +174,7 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
             </div>
           </div>
 
-          {/* Confirmar ContraseÃ±a */}
+          {/* Confirmar Contraseña */}
           <div className="mb-6">
             <label htmlFor="confirmPassword" className="mb-2 block text-[0.95rem] font-semibold uppercase tracking-[0.5px] text-slate-50">
               Confirmar Nueva Contraseña *
@@ -185,7 +185,7 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
                 type={showPasswords.confirm ? "text" : "password"}
                 value={formData.confirmPassword}
                 onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
-                placeholder="Confirma tu nueva contraseÃ±a"
+                placeholder="Confirma tu nueva contraseña"
                 className={inputBaseClass}
                 required
               />
@@ -200,18 +200,18 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
             </div>
           </div>
 
-          {/* Requisitos de contraseÃ±a */}
+          {/* Requisitos de contraseña */}
           <div className="mb-6 rounded-xl border border-slate-400/25 bg-slate-900/60 p-4">
             <h4 className="m-0 mb-3 text-[0.95rem] font-semibold text-slate-50">
               <FaClipboardList className="mr-2 inline-block align-middle" />
               Requisitos de la contraseña:
             </h4>
             <ul className="m-0 list-disc pl-5 text-[0.85rem] text-slate-300">
-              <li className="mb-1">Minimo 8 caracteres</li>
-              <li className="mb-1">Al menos una letra minuscula</li>
-              <li className="mb-1">Al menos una letra mayuscula</li>
-              <li className="mb-1">Al menos un numero</li>
-              <li className="mb-0">Al menos un simbolo especial</li>
+              <li className="mb-1">Mínimo 8 caracteres</li>
+              <li className="mb-1">Al menos una letra minúscula</li>
+              <li className="mb-1">Al menos una letra mayúscula</li>
+              <li className="mb-1">Al menos un número</li>
+              <li className="mb-0">Al menos un símbolo especial</li>
             </ul>
           </div>
 
@@ -236,7 +236,7 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
 
         <div className="border-t border-slate-400/20 bg-slate-900/50 px-4 py-4 mobile:px-8 mobile:pb-8">
           <p className="m-0 text-center text-xs leading-[1.4] text-slate-300 mobile:text-[0.85rem]">
-            <strong>Nota de seguridad:</strong> Tu nueva contraseña sera encriptada y almacenada de forma segura. Nunca compartas tus credenciales con terceros.
+            <strong>Nota de seguridad:</strong> Tu nueva contraseña será encriptada y almacenada de forma segura. Nunca compartas tus credenciales con terceros.
           </p>
         </div>
       </div>

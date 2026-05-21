@@ -7,6 +7,15 @@ const normalizeErrorMessage = (error, fallback) => {
   if (typeof error === 'string') return error;
   return error.message || fallback;
 };
+const UUID_V4_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+const normalizeRunId = (value) => {
+  if (typeof value !== 'string') return null;
+  const trimmed = value.trim();
+  if (!trimmed) return null;
+  if (trimmed.toLowerCase() === 'undefined' || trimmed.toLowerCase() === 'null') return null;
+  return UUID_V4_REGEX.test(trimmed) ? trimmed : null;
+};
 
 const getArtifactsByRunIds = async (runIds) => {
   if (!Array.isArray(runIds) || runIds.length === 0) {
@@ -120,10 +129,15 @@ export class SupabaseReportingRepository {
   }
 
   async getDownloadUrlByRunId(runId) {
+    const normalizedRunId = normalizeRunId(runId);
+    if (!normalizedRunId) {
+      throw repositoryError('runId invalido para consultar artefacto de reporte', { runId });
+    }
+
     const { data: artifact, error } = await supabase
       .from('report_artifacts')
       .select('storage_bucket, storage_path')
-      .eq('run_id', runId)
+      .eq('run_id', normalizedRunId)
       .eq('format', 'pdf')
       .maybeSingle();
 

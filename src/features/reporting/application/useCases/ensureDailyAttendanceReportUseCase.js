@@ -21,7 +21,12 @@ export const createEnsureDailyAttendanceReportUseCase = (repository) => {
           observations,
         });
 
-        const signedUrl = result.artifact_url || await repository.getDownloadUrlByRunId(result.run_id);
+        const runId = typeof result?.run_id === 'string' ? result.run_id.trim() : '';
+        if (!result?.artifact_url && !runId) {
+          throw reportNotFoundError('No se recibio run_id ni URL firmada del servicio de reportes');
+        }
+
+        const signedUrl = result.artifact_url || await repository.getDownloadUrlByRunId(runId);
         if (!signedUrl) {
           throw reportNotFoundError('No existe URL de descarga disponible para el reporte generado');
         }

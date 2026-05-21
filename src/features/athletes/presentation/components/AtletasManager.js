@@ -317,7 +317,7 @@ const AtletasManager = ({ user }) => {
 
                   <div className="flex flex-col gap-1">
                     <dt className="text-xs font-bold uppercase tracking-[0.7px] text-slate-500">Edad</dt>
-                    <dd>{calculateAge(atleta.fecha_nacimiento)} aÃ±os</dd>
+                    <dd>{calculateAge(atleta.fecha_nacimiento)} años</dd>
                   </div>
 
                   <div className="flex flex-col gap-1 mobile:col-span-2">
@@ -452,10 +452,10 @@ const AtletasManager = ({ user }) => {
                     label="Fecha de Nacimiento *"
                     hint={
                       <>
-                        <p id={birthDateHintId}>Edad mÃ­nima permitida: {MIN_ATHLETE_AGE} aÃ±os.</p>
+                        <p id={birthDateHintId}>Edad mínima permitida: {MIN_ATHLETE_AGE} años.</p>
                         {formData.fecha_nacimiento ? (
                           <p className="mt-1 font-semibold text-rv-gold">
-                            Edad calculada: {calculateAge(formData.fecha_nacimiento)} aÃ±os.
+                            Edad calculada: {calculateAge(formData.fecha_nacimiento)} años.
                           </p>
                         ) : null}
                       </>
@@ -572,4 +572,3 @@ AtletasManager.propTypes = {
 };
 
 export default AtletasManager;
-

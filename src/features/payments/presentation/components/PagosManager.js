@@ -133,7 +133,7 @@ const PagosManager = ({ user }) => {
   const [editingPago, setEditingPago] = useState(null);
   const [queryState, setQueryState] = useState(DEFAULT_PAYMENTS_QUERY);
 
-  // Estados para bÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âºsqueda de atleta en formulario
+  // Estados para búsqueda de atleta en formulario
   const [atletaBusqueda, setAtletaBusqueda] = useState('');
   const [atletasFiltrados, setAtletasFiltrados] = useState([]);
   const [mostrarSugerencias, setMostrarSugerencias] = useState(false);
@@ -352,7 +352,7 @@ const PagosManager = ({ user }) => {
         }
         
         if (result?.whatsappSent && result?.messageId) {
-          mensaje += '\nWhatsApp Business enviado automÃƒÂ¡ticamente.';
+          mensaje += '\nWhatsApp Business enviado automáticamente.';
         } else if (result?.whatsappError) {
           mensaje += `\nWhatsApp Business error: ${result.whatsappError}`;
         } else if (result?.whatsappSent) {
@@ -450,7 +450,7 @@ const PagosManager = ({ user }) => {
         fecha_fin: pago.fecha_fin || null,
       });
 
-      // Establecer el atleta en el campo de bÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âºsqueda
+      // Establecer el atleta en el campo de búsqueda
       const atleta = atletas.find(a => a.id === pago.student_id);
       if (atleta) {
         const nombreCompleto = `${atleta.users?.nombre || ''} ${atleta.users?.apellido || ''}`;
@@ -479,7 +479,7 @@ const PagosManager = ({ user }) => {
     setSubmitError('');
   };
 
-  // FunciÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³n para manejar la bÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âºsqueda de atletas
+  // Función para manejar la búsqueda de atletas
   const handleAtletaBusqueda = (valorBusqueda) => {
     setAtletaBusqueda(valorBusqueda);
     setFormErrors((previousErrors) => ({ ...previousErrors, student_id: undefined }));
@@ -502,7 +502,7 @@ const PagosManager = ({ user }) => {
     setMostrarSugerencias(true);
   };
 
-  // FunciÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³n para seleccionar un atleta de las sugerencias
+  // Función para seleccionar un atleta de las sugerencias
   const seleccionarAtleta = (atleta) => {
     const nombreCompleto = `${atleta.users?.nombre || ''} ${atleta.users?.apellido || ''}`;
     setAtletaBusqueda(nombreCompleto);
@@ -512,7 +512,7 @@ const PagosManager = ({ user }) => {
     setFormErrors((previousErrors) => ({ ...previousErrors, student_id: undefined }));
   };
 
-  // FunciÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³n helper para formatear fechas sin problemas de zona horaria
+  // Función helper para formatear fechas sin problemas de zona horaria
   const formatDateSafe = (dateStr) => paymentsService.formatDateSafe({ dateStr });
   const formatPeriodo = (fechaInicio, fechaFin) =>
     paymentsService.formatPeriodo({ fechaInicio, fechaFin });
@@ -551,7 +551,7 @@ const PagosManager = ({ user }) => {
           <button 
             className={styles.updateButton}
             onClick={actualizarEstadosManualmente}
-            title="Actualizar estados automÃƒÂ¡ticamente"
+            title="Actualizar estados automáticamente"
           >
             <FaSync className="mr-2 inline align-middle" /> Actualizar Estados
           </button>
@@ -576,7 +576,7 @@ const PagosManager = ({ user }) => {
         </div>
       ) : null}
 
-      {/* EstadÃƒÂ­sticas */}
+      {/* Estadísticas */}
       <div className={styles.statsGrid}>
         <div className={styles.statCard}>
           <div className={styles.statIcon}><FaChartBar /></div>
@@ -1111,7 +1111,6 @@ PagosManager.propTypes = {
 };
 
 export default PagosManager;
-
 
 
 

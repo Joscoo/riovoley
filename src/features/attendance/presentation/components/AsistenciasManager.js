@@ -343,7 +343,7 @@ const AsistenciasManager = ({ user }) => {
     try {
       const data = await attendanceService.listPaymentTypes();
       setPaymentTypes(data || []);
-      console.log('ðŸ“‹ Métodos de pago cargados:', data);
+      console.log('Metodos de pago cargados:', data);
     } catch (error) {
       console.error('Error cargando métodos de pago:', error);
     }
@@ -1557,7 +1557,7 @@ const AsistenciasManager = ({ user }) => {
 
               <div className={styles.formGroup}>
                 <label htmlFor="observations">
-                  ðŸ“ Observaciones (opcional)
+                  Observaciones (opcional)
                 </label>
                 <textarea
                   id="observations"
@@ -1570,13 +1570,13 @@ const AsistenciasManager = ({ user }) => {
               </div>
 
               <div className={styles.exportPreview}>
-                <h4>ðŸ“‹ El documento incluir?:</h4>
+                <h4>El documento incluira:</h4>
                 <ul>
-                  <li>✅ Tabla 1: Iniciación (Hombres y Mujeres)</li>
-                  <li>✅ Tabla 2: Perfeccionamiento Hombres</li>
-                  <li>✅ Tabla 3: Perfeccionamiento Mujeres</li>
-                  <li>✅ Resumen general de asistencias</li>
-                  {exportObservations && <li>✅ Observaciones</li>}
+                  <li>Tabla 1: Iniciacion (Hombres y Mujeres)</li>
+                  <li>Tabla 2: Perfeccionamiento Hombres</li>
+                  <li>Tabla 3: Perfeccionamiento Mujeres</li>
+                  <li>Resumen general de asistencias</li>
+                  {exportObservations && <li>Observaciones</li>}
                 </ul>
               </div>
             </div>
