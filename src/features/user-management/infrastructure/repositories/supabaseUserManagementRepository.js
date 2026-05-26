@@ -5,6 +5,7 @@ import { WhatsAppBusinessService } from '../../../../shared/infrastructure/commu
 import { withEncryptedUserContactFields } from '../../../../utils/piiCrypto';
 import { getEcuadorISOString } from '../../../../utils/dateUtils';
 import { UserManagementError } from '../../domain/userManagementError';
+import { isPrimaryAdminUserId } from '../../domain/adminPrivileges';
 
 const normalizeError = (error, fallback) => {
   if (!error) return fallback;
@@ -52,6 +53,16 @@ const normalizeAthletes = (studentsData, usersData, sort = {}) => {
 };
 
 const trimNullable = (value) => value?.trim?.() || null;
+
+const getCurrentAuthenticatedUserId = async () => {
+  const { data, error } = await supabase.auth.getUser();
+  if (error) {
+    console.warn('No se pudo obtener el usuario autenticado:', error.message);
+    return null;
+  }
+
+  return data?.user?.id || null;
+};
 
 export class SupabaseUserManagementRepository {
   async listAthletes({ query } = {}) {
@@ -269,6 +280,23 @@ export class SupabaseUserManagementRepository {
   }
 
   async deleteUser(userId, userType) {
+    const { data: targetUser, error: targetUserError } = await supabase
+      .from('users')
+      .select('id, role')
+      .eq('id', userId)
+      .single();
+
+    if (targetUserError || !targetUser) {
+      throw new UserManagementError(
+        `Error al validar el usuario a eliminar: ${normalizeError(targetUserError, 'Usuario no encontrado')}`,
+        targetUserError,
+      );
+    }
+
+    if (targetUser.role === 'administrador') {
+      throw new UserManagementError('No se puede eliminar una cuenta de administrador desde este módulo.');
+    }
+
     if (userType === 'atleta') {
       const { error: studentError } = await supabase
         .from('students')
@@ -398,6 +426,30 @@ export class SupabaseUserManagementRepository {
   }
 
   async changeRole(userId, newRole) {
+    const { data: targetUser, error: targetUserError } = await supabase
+      .from('users')
+      .select('id, role')
+      .eq('id', userId)
+      .single();
+
+    if (targetUserError || !targetUser) {
+      throw new UserManagementError(
+        `Error al validar el usuario para cambio de rol: ${normalizeError(targetUserError, 'Usuario no encontrado')}`,
+        targetUserError,
+      );
+    }
+
+    if (targetUser.role === 'administrador' && newRole !== 'administrador') {
+      const currentUserId = await getCurrentAuthenticatedUserId();
+      if (currentUserId && currentUserId === userId) {
+        throw new UserManagementError('No puedes quitarte a ti mismo el rol de administrador.');
+      }
+
+      if (!isPrimaryAdminUserId(currentUserId)) {
+        throw new UserManagementError('Solo el administrador principal puede cambiar el rol de otro administrador.');
+      }
+    }
+
     const { data: updatedUser, error: userError } = await supabase
       .from('users')
       .update({ role: newRole })

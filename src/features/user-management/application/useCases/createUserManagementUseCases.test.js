@@ -138,12 +138,17 @@ describe('createUserManagementUseCases', () => {
       userRole: 'administrador',
       targetUserType: 'atleta',
     });
+    const adminAdministrator = useCases.resolvePermissionsUseCase.execute({
+      userRole: 'administrador',
+      targetUserType: 'administrador',
+    });
     const unknown = useCases.resolvePermissionsUseCase.execute({
       userRole: 'invitado',
       targetUserType: 'atleta',
     });
 
     expect(adminAthlete.canDelete).toBe(true);
+    expect(adminAdministrator.canChangeRole).toBe(true);
     expect(unknown).toEqual({
       canView: false,
       canCreate: false,

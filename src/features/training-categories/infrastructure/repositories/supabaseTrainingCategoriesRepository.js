@@ -71,4 +71,51 @@ export class SupabaseTrainingCategoriesRepository {
       throw new TrainingCategoriesError(normalizeError(error, 'Error actualizando categoria de entrenamiento'), error);
     }
   }
+
+  async deleteTrainingCategory(code) {
+    const { count: schedulesCount, error: schedulesError } = await supabase
+      .from('schedules')
+      .select('*', { count: 'exact', head: true })
+      .eq('categoria', code);
+
+    if (schedulesError) {
+      throw new TrainingCategoriesError(
+        normalizeError(schedulesError, 'Error validando uso de categoria en horarios'),
+        schedulesError
+      );
+    }
+
+    if ((schedulesCount || 0) > 0) {
+      throw new TrainingCategoriesError(
+        `No se puede eliminar la categoria ${code} porque tiene horarios asociados.`
+      );
+    }
+
+    const { count: studentsCount, error: studentsError } = await supabase
+      .from('students')
+      .select('*', { count: 'exact', head: true })
+      .eq('categoria', code);
+
+    if (studentsError) {
+      throw new TrainingCategoriesError(
+        normalizeError(studentsError, 'Error validando uso de categoria en estudiantes'),
+        studentsError
+      );
+    }
+
+    if ((studentsCount || 0) > 0) {
+      throw new TrainingCategoriesError(
+        `No se puede eliminar la categoria ${code} porque tiene estudiantes asociados.`
+      );
+    }
+
+    const { error } = await supabase
+      .from('training_categories')
+      .delete()
+      .eq('code', code);
+
+    if (error) {
+      throw new TrainingCategoriesError(normalizeError(error, 'Error eliminando categoria de entrenamiento'), error);
+    }
+  }
 }

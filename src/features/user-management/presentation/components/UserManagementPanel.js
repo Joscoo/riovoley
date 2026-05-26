@@ -18,7 +18,7 @@ const TAB_ICONS = {
   administrators: <AdminTabIcon />,
 };
 
-const UserManagementPanel = ({ userRole }) => {
+const UserManagementPanel = ({ userRole, user }) => {
   const { panelAccess, visibleTabs, activeTab, setActiveTab } = useUserManagementPanel({ userRole });
 
   if (!panelAccess.hasAccess) {
@@ -72,7 +72,9 @@ const UserManagementPanel = ({ userRole }) => {
       <div className="animate-fadeIn">
         {activeTab === 'athletes' && <AthletesTab userRole={userRole} />}
         {activeTab === 'trainers' && panelAccess.isAdmin && <TrainersTab userRole={userRole} />}
-        {activeTab === 'administrators' && panelAccess.isAdmin && <AdministratorsTab userRole={userRole} />}
+        {activeTab === 'administrators' && panelAccess.isAdmin && (
+          <AdministratorsTab userRole={userRole} currentUserId={user?.id || null} />
+        )}
       </div>
     </div>
   );

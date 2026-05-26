@@ -275,6 +275,36 @@ export const useHorariosManager = ({ days }) => {
     }
   }, [loadCategories, showMessage]);
 
+  const handleDeleteCategory = useCallback(async (category) => {
+    if (!category?.code) return;
+
+    const confirmed = globalThis.confirm(
+      `¿Eliminar la categoría ${category.code} (${category.label || category.code})? Esta acción no se puede deshacer.`
+    );
+    if (!confirmed) return;
+
+    try {
+      setCategorySubmitting(true);
+      await trainingCategoriesService.deleteCategory(category.code);
+      showMessage('success', `Categoría ${category.code} eliminada.`);
+
+      if (editingCategoryCode === category.code) {
+        resetCategoryForm();
+      }
+
+      if (filterCategory === category.code) {
+        setFilterCategory('todos');
+      }
+
+      await loadCategories();
+    } catch (error) {
+      console.error('Error eliminando categoría:', error);
+      showMessage('error', `No se pudo eliminar la categoría: ${error.message}`);
+    } finally {
+      setCategorySubmitting(false);
+    }
+  }, [editingCategoryCode, filterCategory, loadCategories, resetCategoryForm, showMessage]);
+
   const validateFormData = useCallback(() => {
     if (!formData.hora_inicio || !formData.hora_fin) {
       return 'Por favor completa todos los campos requeridos';
@@ -476,9 +506,9 @@ export const useHorariosManager = ({ days }) => {
     handleCategorySubmit,
     handleCategoryEdit,
     handleToggleCategoryActive,
+    handleDeleteCategory,
     resetCategoryForm,
   };
 };
 
 export default useHorariosManager;
-

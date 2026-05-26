@@ -321,7 +321,7 @@ const TrainersTab = ({ userRole }) => {
                 Anterior
               </Button>
               <span className="rounded-full border border-rv-gold/35 bg-black/35 px-4 py-2 text-sm font-semibold text-white">
-                P?gina {visiblePage} de {totalPages}
+                Página {visiblePage} de {totalPages}
               </span>
               <Button variant="outline" onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))} disabled={visiblePage === totalPages}>
                 Siguiente

@@ -56,6 +56,9 @@ export const createTrainingCategoriesService = (
   const toggleCategoryActive = async ({ code, is_active }) =>
     updateCategory(code, { is_active });
 
+  const deleteCategory = async (code) =>
+    repository.deleteTrainingCategory(code);
+
   return {
     listCategories,
     listScheduleCategories,
@@ -65,5 +68,6 @@ export const createTrainingCategoriesService = (
     createCategory,
     updateCategory,
     toggleCategoryActive,
+    deleteCategory,
   };
 };

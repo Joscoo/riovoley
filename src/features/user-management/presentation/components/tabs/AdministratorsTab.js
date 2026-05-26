@@ -9,6 +9,7 @@ import { Card } from '../../../../../shared/ui';
 import { Button } from '../../../../../shared/ui';
 import { EmptyState } from '../../../../../shared/ui';
 import { SORT_DIRECTION, createTableQuery } from '../../../../../shared/lib/tableQuery';
+import { isPrimaryAdminUserId } from '../../../domain/adminPrivileges';
 import UserCard from '../shared/UserCard';
 import UserForm from '../shared/UserForm';
 import UserFilters from '../shared/UserFilters';
@@ -34,7 +35,7 @@ const buildAdministratorsListQuery = ({ filters }) => {
   });
 };
 
-const AdministratorsTab = ({ userRole }) => {
+const AdministratorsTab = ({ userRole, currentUserId = null }) => {
   const [admins, setAdmins] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -47,6 +48,13 @@ const AdministratorsTab = ({ userRole }) => {
   const PAGE_SIZE = 9;
   
   const permissions = useUserPermissions({ userRole, targetUserType: 'administrador' });
+  const scopedPermissions = useMemo(
+    () => ({
+      ...permissions,
+      canChangeRole: Boolean(permissions.canChangeRole && isPrimaryAdminUserId(currentUserId)),
+    }),
+    [currentUserId, permissions]
+  );
   const userActions = useUserActions();
 
   const loadAdmins = useCallback(async ({ activeFilters } = {}) => {
@@ -148,10 +156,10 @@ const AdministratorsTab = ({ userRole }) => {
         <>
           <div className="grid gap-4 tablet:grid-cols-2 desktop:grid-cols-3">
             {paginatedAdmins.map(admin => (
-              <UserCard key={admin.id} user={{ ...admin, full_name: `${admin.nombre || ''} ${admin.apellido || ''}`.trim() }} userType="administrador" permissions={permissions} onEdit={() => openEditModal(admin)} onDelete={() => {}} onSuspend={() => {}} onReactivate={() => {}} onResendCredentials={() => {}} onChangeRole={() => setShowChangeRoleModal(admin)} />
+              <UserCard key={admin.id} user={{ ...admin, full_name: `${admin.nombre || ''} ${admin.apellido || ''}`.trim() }} userType="administrador" permissions={scopedPermissions} onEdit={() => openEditModal(admin)} onDelete={() => {}} onSuspend={() => {}} onReactivate={() => {}} onResendCredentials={() => {}} onChangeRole={() => setShowChangeRoleModal(admin)} />
             ))}
           </div>
-          {totalPages > 1 && <div className="flex flex-wrap items-center justify-center gap-3"><Button variant="outline" onClick={() => setCurrentPage(p => Math.max(1, p - 1))} disabled={visiblePage === 1}>Anterior</Button><span className="rounded-full border border-rv-gold/35 bg-black/35 px-4 py-2 text-sm font-semibold text-white">P?gina {visiblePage} de {totalPages}</span><Button variant="outline" onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))} disabled={visiblePage === totalPages}>Siguiente</Button></div>}
+          {totalPages > 1 && <div className="flex flex-wrap items-center justify-center gap-3"><Button variant="outline" onClick={() => setCurrentPage(p => Math.max(1, p - 1))} disabled={visiblePage === 1}>Anterior</Button><span className="rounded-full border border-rv-gold/35 bg-black/35 px-4 py-2 text-sm font-semibold text-white">Página {visiblePage} de {totalPages}</span><Button variant="outline" onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))} disabled={visiblePage === totalPages}>Siguiente</Button></div>}
         </>
       )}
       

@@ -110,6 +110,7 @@ const HorariosManager = ({ user }) => {
     handleCategorySubmit,
     handleCategoryEdit,
     handleToggleCategoryActive,
+    handleDeleteCategory,
     resetCategoryForm,
   } = useHorariosManager({ days: DAYS });
 
@@ -339,6 +340,15 @@ const HorariosManager = ({ user }) => {
                           disabled={categorySubmitting}
                         >
                           <FaCheckCircle />
+                        </button>
+                        <button
+                          type="button"
+                          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-red-300/35 bg-red-500/15 text-red-200 transition hover:bg-red-500/30"
+                          onClick={() => handleDeleteCategory(category)}
+                          title="Eliminar categoria"
+                          disabled={categorySubmitting}
+                        >
+                          <FaTrash />
                         </button>
                       </div>
                     </div>
