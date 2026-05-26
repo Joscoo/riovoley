@@ -3,6 +3,47 @@ import { supabase } from '../../../../config/supabase';
 import { withEncryptedUserContactFields } from '../../../../utils/piiCrypto';
 import { MIN_ATHLETE_AGE, validateAthleteBirthDate } from '../../../../utils/athleteValidation';
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const ALLOWED_ROLES = new Set(['administrador', 'entrenador', 'estudiante', 'usuario']);
+
+const sanitizeText = (value, maxLength = 120) =>
+  String(value || '')
+    .replace(/[\u0000-\u001F\u007F]/g, ' ')
+    .trim()
+    .slice(0, maxLength);
+
+const normalizeEmail = (value) => sanitizeText(value, 120).toLowerCase();
+
+const validateUserPayload = ({ email, nombre, apellido, fecha_nacimiento, role }) => {
+  const normalizedEmail = normalizeEmail(email);
+  const safeNombre = sanitizeText(nombre, 60);
+  const safeApellido = sanitizeText(apellido, 60);
+  const safeRole = sanitizeText(role || 'estudiante', 30).toLowerCase();
+
+  if (!EMAIL_REGEX.test(normalizedEmail)) {
+    throw new Error('Email invalido. Verifica el formato antes de continuar.');
+  }
+
+  if (!safeNombre || !safeApellido) {
+    throw new Error('Nombre y apellido son obligatorios.');
+  }
+
+  if (!fecha_nacimiento) {
+    throw new Error('La fecha de nacimiento es obligatoria.');
+  }
+
+  if (!ALLOWED_ROLES.has(safeRole)) {
+    throw new Error('Rol invalido para provision de usuario.');
+  }
+
+  return {
+    normalizedEmail,
+    safeNombre,
+    safeApellido,
+    safeRole,
+  };
+};
+
 const createIsolatedAuthClient = () => {
   const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || '';
   const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY || '';
@@ -52,18 +93,39 @@ const getResendErrorMessage = (invokeError, data) => {
 
 const generateTemporaryPassword = () => {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%';
-  let password = '';
+  const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const lowercase = 'abcdefghijklmnopqrstuvwxyz';
+  const digits = '0123456789';
+  const symbols = '!@#$%';
 
-  password += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'[Math.floor(Math.random() * 26)];
-  password += 'abcdefghijklmnopqrstuvwxyz'[Math.floor(Math.random() * 26)];
-  password += '0123456789'[Math.floor(Math.random() * 10)];
-  password += '!@#$%'[Math.floor(Math.random() * 5)];
+  const randomInt = (max) => {
+    if (typeof crypto !== 'undefined' && crypto.getRandomValues) {
+      const array = new Uint32Array(1);
+      crypto.getRandomValues(array);
+      return array[0] % max;
+    }
+    return Math.floor(Math.random() * max);
+  };
 
-  for (let i = 4; i < 12; i += 1) {
-    password += chars[Math.floor(Math.random() * chars.length)];
+  const pick = (pool) => pool[randomInt(pool.length)];
+
+  const passwordParts = [
+    pick(uppercase),
+    pick(lowercase),
+    pick(digits),
+    pick(symbols),
+  ];
+
+  for (let i = passwordParts.length; i < 12; i += 1) {
+    passwordParts.push(pick(chars));
   }
 
-  return password.split('').sort(() => Math.random() - 0.5).join('');
+  for (let i = passwordParts.length - 1; i > 0; i -= 1) {
+    const j = randomInt(i + 1);
+    [passwordParts[i], passwordParts[j]] = [passwordParts[j], passwordParts[i]];
+  }
+
+  return passwordParts.join('');
 };
 
 const buildCredentialsEmailHtml = ({ nombreCompleto, email, newPassword, loginUrl }) => `
@@ -122,12 +184,26 @@ export class SupabaseUserProvisioningRepository {
       role = 'estudiante'
     } = userData;
 
+    const {
+      normalizedEmail,
+      safeNombre,
+      safeApellido,
+      safeRole,
+    } = validateUserPayload({
+      email,
+      nombre,
+      apellido,
+      fecha_nacimiento,
+      role,
+    });
+    const safeTelefono = sanitizeText(telefono, 30);
+
     const isolatedAuthClient = createIsolatedAuthClient();
 
     const { data: existingUser, error: checkError } = await supabase
       .from('users')
       .select('email')
-      .eq('email', email.trim())
+      .eq('email', normalizedEmail)
       .single();
 
     if (checkError && checkError.code !== 'PGRST116') {
@@ -135,19 +211,19 @@ export class SupabaseUserProvisioningRepository {
     }
 
     if (existingUser) {
-      throw new Error(`El email "${email}" ya esta registrado.`);
+      throw new Error(`El email "${normalizedEmail}" ya esta registrado.`);
     }
 
     const temporaryPassword = generateTemporaryPassword();
     const authClient = isolatedAuthClient || supabase;
 
     const { data: authData, error: authError } = await authClient.auth.signUp({
-      email: email.trim(),
+      email: normalizedEmail,
       password: temporaryPassword,
       options: {
         data: {
-          full_name: `${nombre.trim()} ${apellido.trim()}`,
-          role
+          full_name: `${safeNombre} ${safeApellido}`,
+          role: safeRole
         }
       }
     });
@@ -166,13 +242,13 @@ export class SupabaseUserProvisioningRepository {
 
     const userInsertPayload = await withEncryptedUserContactFields({
       id: authUserId,
-      email: email.trim(),
+      email: normalizedEmail,
       first_login: true,
-      role,
-      nombre: nombre.trim(),
-      apellido: apellido.trim(),
+      role: safeRole,
+      nombre: safeNombre,
+      apellido: safeApellido,
       fecha_nacimiento,
-      telefono: telefono || null
+      telefono: safeTelefono || null
     });
 
     const { data: publicUserData, error: publicUserError } = await supabase
@@ -190,8 +266,8 @@ export class SupabaseUserProvisioningRepository {
         .from('user_profiles')
         .upsert({
           id: authUserId,
-          full_name: `${nombre.trim()} ${apellido.trim()}`,
-          role
+          full_name: `${safeNombre} ${safeApellido}`,
+          role: safeRole
         }, { onConflict: 'id' })
         .select()
         .single();
@@ -200,7 +276,7 @@ export class SupabaseUserProvisioningRepository {
     }
 
     const { data: loginTest, error: loginError } = await authClient.auth.signInWithPassword({
-      email: email.trim(),
+      email: normalizedEmail,
       password: temporaryPassword
     });
 
@@ -218,7 +294,7 @@ export class SupabaseUserProvisioningRepository {
       loginError: loginError?.message,
       message: `Usuario creado exitosamente. Contraseña temporal: ${temporaryPassword}`,
       credentials: {
-        email: email.trim(),
+        email: normalizedEmail,
         password: temporaryPassword,
         loginUrl: 'https://riovoley.com/login'
       }
@@ -296,17 +372,27 @@ export class SupabaseUserProvisioningRepository {
       throw new Error('No se encontro el identificador del usuario para reenviar credenciales.');
     }
 
-    if (!email || !email.includes('@')) {
-      throw new Error('El email del usuario es inválido o esta vacio.');
+    const safeEmail = normalizeEmail(email);
+    if (!EMAIL_REGEX.test(safeEmail)) {
+      throw new Error('El email del usuario es invalido o esta vacio.');
     }
 
-    const requestId = `resend-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+    const randomSuffix = (() => {
+      if (typeof crypto !== 'undefined' && crypto.getRandomValues) {
+        const buffer = new Uint8Array(6);
+        crypto.getRandomValues(buffer);
+        return Array.from(buffer, (item) => item.toString(16).padStart(2, '0')).join('');
+      }
+      return Math.random().toString(36).slice(2, 14);
+    })();
+
+    const requestId = `resend-${Date.now()}-${randomSuffix}`;
     const newPassword = generateTemporaryPassword();
 
     const { data: { session } } = await supabase.auth.getSession();
 
     if (!session?.access_token) {
-      throw new Error('No se encontro un token de sesión valido. Vuelve a iniciar sesión.');
+      throw new Error('No se encontro un token de sesion valido. Vuelve a iniciar sesion.');
     }
 
     const { data: updateData, error: updateAuthError } = await supabase.functions.invoke(
@@ -324,7 +410,7 @@ export class SupabaseUserProvisioningRepository {
 
     if (updateAuthError || !updateData?.success) {
       const readableError = getResendErrorMessage(updateAuthError, updateData);
-      throw new Error(`Error actualizando contraseña: ${readableError}`);
+      throw new Error(`Error actualizando contrasena: ${readableError}`);
     }
 
     const { error: updateFirstLoginError } = await supabase
@@ -336,11 +422,11 @@ export class SupabaseUserProvisioningRepository {
       console.warn('No se pudo marcar first_login=true tras reenviar credenciales:', updateFirstLoginError.message);
     }
 
-    const nombreCompleto = `${nombre} ${apellido}`.trim();
+    const nombreCompleto = `${sanitizeText(nombre, 60)} ${sanitizeText(apellido, 60)}`.trim();
     const loginUrl = 'https://riovoley.com/login';
     const emailHtml = buildCredentialsEmailHtml({
       nombreCompleto,
-      email,
+      email: safeEmail,
       newPassword,
       loginUrl
     });
@@ -349,7 +435,7 @@ export class SupabaseUserProvisioningRepository {
       'send-email',
       {
         body: {
-          to: email,
+          to: safeEmail,
           subject: 'Tus credenciales de acceso - Rio Voley',
           html: emailHtml
         }
@@ -366,13 +452,13 @@ export class SupabaseUserProvisioningRepository {
     return {
       success: true,
       credentials: {
-        email: email.trim(),
+        email: safeEmail,
         password: newPassword,
         loginUrl
       },
       emailSent: Boolean(emailData?.success) && !emailError,
       emailError: emailError?.message,
-      message: `Nueva contraseña temporal generada. ${!emailError ? 'Email enviado exitosamente.' : 'Email no pudo ser enviado, pero la contraseña fue actualizada.'}`,
+      message: `Nueva contrasena temporal generada. ${!emailError ? 'Email enviado exitosamente.' : 'Email no pudo ser enviado, pero la contrasena fue actualizada.'}`,
       isNewPassword: true
     };
   }

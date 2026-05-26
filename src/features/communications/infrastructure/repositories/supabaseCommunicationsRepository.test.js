@@ -61,7 +61,7 @@ describe('SupabaseCommunicationsRepository', () => {
     });
 
     expect(result.success).toBe(false);
-    expect(result.error).toContain('edge failed');
+    expect(result.error).toBe('No se pudo completar el envio de comunicacion.');
   });
 
   it('sendPasswordReset retorna success=false cuando supabase auth devuelve error', async () => {
@@ -75,6 +75,19 @@ describe('SupabaseCommunicationsRepository', () => {
     });
 
     expect(supabase.auth.resetPasswordForEmail).toHaveBeenCalled();
-    expect(result).toEqual({ success: false, error: 'reset failed' });
+    expect(result).toEqual({ success: false, error: 'No se pudo enviar el enlace de recuperacion.' });
+  });
+
+  it('sendCredentials falla cuando el email no es valido', async () => {
+    const repository = new SupabaseCommunicationsRepository();
+    const result = await repository.sendCredentials({
+      email: 'correo-invalido',
+      nombre: 'Demo',
+      apellido: 'User',
+      password: 'Temp1234!',
+    });
+
+    expect(result).toEqual({ success: false, error: 'El email proporcionado no es valido.' });
+    expect(supabase.functions.invoke).not.toHaveBeenCalled();
   });
 });

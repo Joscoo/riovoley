@@ -1,8 +1,8 @@
 export class AuthSessionError extends Error {
-  constructor(message, cause = null) {
+  constructor(message, cause = null, code = 'AUTH_SESSION_ERROR') {
     super(message);
     this.name = 'AuthSessionError';
-    this.code = 'AUTH_SESSION_ERROR';
+    this.code = code;
     this.cause = cause;
   }
 }

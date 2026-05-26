@@ -20,6 +20,13 @@ const getRoleBadgeClass = (role) => {
   return 'bg-[#355FB3] text-white';
 };
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MAX_EMAIL_LENGTH = 120;
+const MAX_PASSWORD_LENGTH = 128;
+
+const normalizeEmailInput = (value) => String(value || '').trim().toLowerCase();
+const hasControlChars = (value) => /[\u0000-\u001F\u007F]/.test(String(value || ''));
+
 function Login({ onLoginSuccess }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -241,22 +248,28 @@ function Login({ onLoginSuccess }) {
     event.preventDefault();
     setIsLoading(true);
     setMensaje('');
-
     if (!email || !password) {
       setMensaje('Por favor, completa todos los campos');
       setIsLoading(false);
       return;
     }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email.trim())) {
+    const normalizedEmail = normalizeEmailInput(email);
+    const normalizedPassword = String(password);
+    if (normalizedEmail.length > MAX_EMAIL_LENGTH || normalizedPassword.length > MAX_PASSWORD_LENGTH) {
+      setMensaje('Los datos ingresados exceden el tamano permitido.');
+      setIsLoading(false);
+      return;
+    }
+    if (hasControlChars(normalizedEmail) || hasControlChars(normalizedPassword)) {
+      setMensaje('Los datos ingresados contienen caracteres no permitidos.');
+      setIsLoading(false);
+      return;
+    }
+    if (!EMAIL_REGEX.test(normalizedEmail)) {
       setMensaje('Por favor, ingresa un email valido');
       setIsLoading(false);
       return;
     }
-
-    const normalizedEmail = email.trim().toLowerCase();
-
     try {
       const lockStatus = await checkLoginAllowed(normalizedEmail);
       if (lockStatus?.allowed === false) {
@@ -264,72 +277,68 @@ function Login({ onLoginSuccess }) {
         setMensaje(`Demasiados intentos fallidos. Intenta nuevamente en ${retryAfter} segundos.`);
         return;
       }
-
       let data = null;
       try {
-        data = await authSessionService.signIn(normalizedEmail, password);
+        data = await authSessionService.signIn(normalizedEmail, normalizedPassword);
       } catch (error) {
         await recordLoginAttempt(normalizedEmail, false, error?.code || error?.name || null);
-        if (error.message.includes('Too many requests')) {
+        if (error?.code === 'AUTH_RATE_LIMIT') {
           setMensaje('Demasiados intentos. Espera unos minutos e intentalo de nuevo.');
         } else {
-          setMensaje('Email o contraseña inválidos.');
+          setMensaje('Email o contrasena invalidos.');
         }
         return;
       }
-
       await recordLoginAttempt(normalizedEmail, true);
       await updateLastLogin(data?.user);
-
       const mustChangePassword = await checkFirstLogin(data?.user?.id);
       setPasswordChangeRequired(Boolean(mustChangePassword));
       if (!mustChangePassword) {
         setShowChangePasswordModal(false);
         setUserNeedsPasswordChange(null);
       }
-
-      setMensaje('Inicio de sesión exitoso.');
+      setMensaje('Inicio de sesion exitoso.');
       setEmail('');
       setPassword('');
     } catch (error) {
       console.error('Error inesperado en login:', error);
-      setMensaje(`Error inesperado: ${error.message}`);
+      setMensaje('No se pudo iniciar sesion. Intenta nuevamente.');
     } finally {
       setIsLoading(false);
     }
   };
-
   const handleLogout = async () => {
     try {
       await authSessionService.signOut();
-      setMensaje('Sesión cerrada exitosamente');
+      setMensaje('Sesion cerrada exitosamente');
       setEmail('');
       setPassword('');
     } catch (error) {
-      setMensaje(`Error al cerrar sesión: ${error.message}`);
+      setMensaje('No se pudo cerrar sesion. Intenta nuevamente.');
     }
   };
-
   const handleForgotPassword = async (event) => {
     event.preventDefault();
     setIsLoading(true);
     setResetMessage('');
-
     if (!resetEmail) {
       setResetMessage('Por favor, ingresa tu email');
       setIsLoading(false);
       return;
     }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(resetEmail.trim())) {
+    const normalizedResetEmail = normalizeEmailInput(resetEmail);
+    if (normalizedResetEmail.length > MAX_EMAIL_LENGTH || hasControlChars(normalizedResetEmail)) {
+      setResetMessage('El email ingresado no es valido.');
+      setIsLoading(false);
+      return;
+    }
+    if (!EMAIL_REGEX.test(normalizedResetEmail)) {
       setResetMessage('Por favor, ingresa un email valido');
       setIsLoading(false);
       return;
     }
-
     try {
-      await authSessionService.requestPasswordReset(resetEmail.trim(), APP_RESET_PASSWORD_URL);
+      await authSessionService.requestPasswordReset(normalizedResetEmail, APP_RESET_PASSWORD_URL);
       setResetMessage('Se ha enviado un enlace de recuperacion a tu email.');
       setResetEmail('');
       setTimeout(() => {
@@ -337,7 +346,7 @@ function Login({ onLoginSuccess }) {
         setResetMessage('');
       }, 3000);
     } catch (error) {
-      setResetMessage(`Error: ${error.message}`);
+      setResetMessage('No se pudo enviar el enlace de recuperacion.');
     } finally {
       setIsLoading(false);
     }
@@ -576,5 +585,3 @@ Login.propTypes = {
 };
 
 export default Login;
-
-

@@ -81,7 +81,7 @@ describe('SupabaseUserProvisioningRepository', () => {
         user_id: 'uuid-1',
         email: 'demo@riovoley.com',
       }),
-    ).rejects.toThrow('No se encontro un token de sesión valido');
+    ).rejects.toThrow('No se encontro un token de sesion valido');
   });
 
   it('resendCredentials traduce error funcional de edge function', async () => {
@@ -103,3 +103,4 @@ describe('SupabaseUserProvisioningRepository', () => {
     ).rejects.toThrow('Tu sesión expiro o no es valida');
   });
 });
+
