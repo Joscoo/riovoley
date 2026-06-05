@@ -22,7 +22,15 @@ const buildTestPayload = (formData) => ({
   modified_at: getEcuadorISOString(),
 });
 
-const normalizeText = (value = '') => value.toString().toLowerCase();
+const normalizeText = (value = '') => {
+  if (value == null) return '';
+  return value
+    .toString()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim();
+};
 
 const getAthleteAgeAtDate = (birthStr, testDate) => {
   if (!birthStr) return null;
