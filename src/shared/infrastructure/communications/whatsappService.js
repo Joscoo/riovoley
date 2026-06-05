@@ -1,3 +1,5 @@
+import { openWhatsAppChat } from '../../platform';
+
 // Servicio para envio de mensajes de WhatsApp
 export class WhatsAppService {
   /**
@@ -7,9 +9,7 @@ export class WhatsAppService {
    */
   static sendMessage(phoneNumber, message) {
     const cleanPhone = phoneNumber.replaceAll(/\D/g, '');
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://web.whatsapp.com/send?phone=${cleanPhone}&text=${encodedMessage}`;
-    window.open(whatsappUrl, '_blank');
+    void openWhatsAppChat({ phoneNumber: cleanPhone, message });
   }
 
   /**

@@ -4,6 +4,7 @@ import { createSqlAuditLogger } from '../shared/infrastructure/audit/sqlAuditLog
 // Obtain env vars with dev defaults
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || '';
 const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY || '';
+const sqlAuditEnabled = process.env.REACT_APP_ENABLE_SQL_AUDIT === 'true';
 
 if (process.env.NODE_ENV === 'development') {
   console.log('Supabase Config Debug:');
@@ -20,14 +21,18 @@ if (!supabaseUrl || !supabaseAnonKey) {
 
 const rawSupabase = createClient(supabaseUrl, supabaseAnonKey);
 
-const sqlAuditLogger = createSqlAuditLogger({
-  supabaseUrl,
-  supabaseAnonKey,
-  baseClient: rawSupabase,
-});
+const sqlAuditLogger = sqlAuditEnabled
+  ? createSqlAuditLogger({
+    supabaseUrl,
+    supabaseAnonKey,
+    baseClient: rawSupabase,
+  })
+  : null;
 
-// Export the audited client so app actions are logged to audit.sql_executions / audit.sql_errors
-export const supabase = sqlAuditLogger.createAuditedClient(rawSupabase);
+// The browser cannot write to audit.* unless that schema is exposed through the Data API.
+export const supabase = sqlAuditLogger
+  ? sqlAuditLogger.createAuditedClient(rawSupabase)
+  : rawSupabase;
 
 export const getCurrentUser = async () => {
   const { data: { user }, error } = await supabase.auth.getUser();

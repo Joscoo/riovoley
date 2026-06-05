@@ -1,18 +1,15 @@
-const sanitizeBaseUrl = (value) => value.replace(/\/+$/, '');
+import {
+  buildNativeUrl,
+  buildPublicUrl,
+  getPublicAppBaseUrl,
+  getRuntimeAppBaseUrl,
+  isNativePlatform,
+} from '../shared/platform';
 
-export const getAppBaseUrl = () => {
-  const configuredUrl = process.env.REACT_APP_APP_URL?.trim();
-  if (configuredUrl) {
-    return sanitizeBaseUrl(configuredUrl);
-  }
-
-  if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined' && window.location?.origin) {
-    return sanitizeBaseUrl(window.location.origin);
-  }
-
-  return 'https://riovoley.com';
-};
-
-export const APP_BASE_URL = getAppBaseUrl();
-export const APP_LOGIN_URL = `${APP_BASE_URL}/login`;
-export const APP_RESET_PASSWORD_URL = `${APP_BASE_URL}/reset-password`;
+export const APP_BASE_URL = getPublicAppBaseUrl();
+export const APP_LOGIN_URL = buildPublicUrl('/login');
+export const APP_RESET_PASSWORD_URL = buildPublicUrl('/reset-password');
+export const RUNTIME_APP_BASE_URL = getRuntimeAppBaseUrl();
+export const AUTH_RESET_PASSWORD_REDIRECT_URL = isNativePlatform()
+  ? buildNativeUrl('/reset-password')
+  : APP_RESET_PASSWORD_URL;

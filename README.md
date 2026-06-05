@@ -155,6 +155,8 @@ npm start            # desarrollo
 npm test             # tests unitarios/react-scripts
 npm run test:contracts # contratos edge function (reporting/auth-admin)
 npm run build        # build produccion
+npm run mobile:sync  # build + sync de Capacitor
+npm run mobile:android # sync + abre Android Studio
 npm run e2e          # E2E Playwright
 npm run e2e:smoke:roles # smoke de paneles por rol (requiere E2E_* en entorno)
 npm run e2e:smoke:roles:strict # valida E2E_* y falla si falta alguna credencial
@@ -189,6 +191,24 @@ Get-Content .env.e2e | ForEach-Object {
 ```bash
 npm run e2e:smoke:roles:strict
 ```
+
+## Android con Capacitor
+
+Base nativa ya incluida en `android/`.
+
+Flujo local:
+
+```bash
+npm run mobile:sync
+npm run mobile:android
+```
+
+Push Android requiere:
+
+- migracion SQL `database/mobile_push_android_phase10_2026_06_05.sql`
+- Edge Functions `send-push` y `send-payment-reminders`
+- variables `FCM_PROJECT_ID`, `FCM_CLIENT_EMAIL`, `FCM_PRIVATE_KEY`
+- configuracion de Firebase en el proyecto Android (`google-services.json`)
 
 ## Estructura Rapida | Quick Project Map
 

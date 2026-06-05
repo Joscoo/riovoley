@@ -7,7 +7,57 @@ const normalizeError = (error, fallback) => {
   return error.message || fallback;
 };
 
+const readFunctionErrorDetails = async (error) => {
+  const response = error?.context || error?.response;
+  if (!response || typeof response.clone !== 'function') {
+    return null;
+  }
+
+  try {
+    const clonedResponse = response.clone();
+    const contentType = clonedResponse.headers?.get('content-type') || '';
+
+    if (contentType.includes('application/json')) {
+      return await clonedResponse.json();
+    }
+
+    return await clonedResponse.text();
+  } catch (_readError) {
+    return null;
+  }
+};
+
 export class SupabaseAnnouncementsRepository {
+  async sendAnnouncementPush(payload) {
+    if (!payload?.is_active) return;
+
+    try {
+      const { data, error } = await supabase.functions.invoke('send-push', {
+        body: {
+          type: 'announcement',
+          title: payload.title,
+          body: payload.content,
+          audience: Array.isArray(payload.target_audience) ? payload.target_audience : ['all'],
+          data: {
+            announcement_title: payload.title,
+          },
+        },
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      if (data?.success === false) {
+        throw new Error(data?.message || 'No se pudo enviar el push del anuncio.');
+      }
+    } catch (error) {
+      const details = await readFunctionErrorDetails(error);
+      // eslint-disable-next-line no-console
+      console.error('Error enviando push de anuncio:', error, details);
+    }
+  }
+
   async listAdminAnnouncements({ priority, is_active, search }) {
     let query = supabase
       .from('announcements_with_creator')
@@ -35,24 +85,32 @@ export class SupabaseAnnouncementsRepository {
   }
 
   async createAnnouncement(payload) {
-    const { error } = await supabase
+    const { data, error } = await supabase
       .from('announcements')
-      .insert([payload]);
+      .insert([payload])
+      .select('*')
+      .single();
 
     if (error) {
       throw new AnnouncementsError(normalizeError(error, 'Error creando anuncio'), error);
     }
+
+    await this.sendAnnouncementPush(data);
   }
 
   async updateAnnouncement(announcementId, payload) {
-    const { error } = await supabase
+    const { data, error } = await supabase
       .from('announcements')
       .update(payload)
-      .eq('id', announcementId);
+      .eq('id', announcementId)
+      .select('*')
+      .single();
 
     if (error) {
       throw new AnnouncementsError(normalizeError(error, 'Error actualizando anuncio'), error);
     }
+
+    await this.sendAnnouncementPush(data);
   }
 
   async deleteAnnouncement(announcementId) {

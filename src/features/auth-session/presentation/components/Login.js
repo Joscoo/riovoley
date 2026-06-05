@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaEnvelope, FaEye, FaEyeSlash, FaKey, FaLock, FaUserShield } from 'react-icons/fa';
 import { authSessionService } from '../../authSessionService';
 import { useUserProfile } from '../../../auth-profile';
-import { APP_RESET_PASSWORD_URL } from '../../../../config/appUrls';
+import { AUTH_RESET_PASSWORD_REDIRECT_URL } from '../../../../config/appUrls';
 import { cn } from '../../../../lib/cn';
 import { deferAuthEvent } from '../utils/deferAuthEvent';
 import ChangePasswordModal from './ChangePasswordModal';
@@ -329,7 +329,7 @@ function Login({ onLoginSuccess }) {
     }
 
     try {
-      await authSessionService.requestPasswordReset(resetEmail.trim(), APP_RESET_PASSWORD_URL);
+        await authSessionService.requestPasswordReset(resetEmail.trim(), AUTH_RESET_PASSWORD_REDIRECT_URL);
       setResetMessage('Se ha enviado un enlace de recuperacion a tu email.');
       setResetEmail('');
       setTimeout(() => {
@@ -576,5 +576,4 @@ Login.propTypes = {
 };
 
 export default Login;
-
 

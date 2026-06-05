@@ -1,20 +1,12 @@
 import { downloadError } from '../../domain/reportingErrors';
+import { downloadFile } from '../../../../shared/platform';
 
 export class BrowserFileDownloadGateway {
   async downloadFromSignedUrl(url, fileName) {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw downloadError(`No se pudo descargar el archivo (${response.status})`);
+    try {
+      await downloadFile({ url, fileName });
+    } catch (error) {
+      throw downloadError(error?.message || 'No se pudo descargar el archivo');
     }
-
-    const blob = await response.blob();
-    const objectUrl = window.URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = objectUrl;
-    link.download = fileName;
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    window.URL.revokeObjectURL(objectUrl);
   }
 }

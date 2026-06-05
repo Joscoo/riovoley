@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import React, { useState, useEffect, Suspense, lazy, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
@@ -9,7 +9,13 @@ import { Login, ResetPassword } from './features/auth-session';
 import { useUserProfile } from './features/auth-profile';
 import { getCurrentUser } from './config/supabase';
 import { ToastProvider } from './contexts/ToastContext';
+import { mobileDeviceRepository } from './shared/infrastructure/mobile';
 import { RenderProfileProvider } from './shared/ui';
+import {
+  initializeMobileAppBridge,
+  subscribeToDeepLinks,
+  subscribeToPushRegistration,
+} from './shared/platform';
 
 const LazyAdminPanel = lazy(() => import('./features/admin-dashboard/presentation/components/AdminPanel'));
 const LazyTrainerPanel = lazy(() => import('./features/trainer-dashboard/presentation/components/TrainerPanel'));
@@ -24,12 +30,54 @@ const LoadingFallback = () => (
 function AppContent() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [pushToken, setPushToken] = useState(null);
   const { profile: userProfile } = useUserProfile(user);
   const navigate = useNavigate();
+  const previousUserRef = useRef(null);
 
   useEffect(() => {
     checkUser();
   }, []);
+
+  useEffect(() => {
+    void initializeMobileAppBridge();
+
+    return subscribeToDeepLinks(({ route }) => {
+      if (!route) return;
+      window.history.pushState({}, '', route);
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    });
+  }, []);
+
+  useEffect(() => subscribeToPushRegistration((token) => {
+    setPushToken(token);
+  }), []);
+
+  useEffect(() => {
+    const previousUser = previousUserRef.current;
+
+    if (!user?.id && previousUser?.id && pushToken) {
+      void mobileDeviceRepository.deactivateDeviceToken({
+        userId: previousUser.id,
+        deviceToken: pushToken,
+      }).catch((error) => {
+        // eslint-disable-next-line no-console
+        console.error('Error desactivando token push:', error);
+      });
+    }
+
+    if (user?.id && pushToken) {
+      void mobileDeviceRepository.upsertDeviceToken({
+        userId: user.id,
+        deviceToken: pushToken,
+      }).catch((error) => {
+        // eslint-disable-next-line no-console
+        console.error('Error registrando token push:', error);
+      });
+    }
+
+    previousUserRef.current = user;
+  }, [pushToken, user]);
 
   const checkUser = async () => {
     try {

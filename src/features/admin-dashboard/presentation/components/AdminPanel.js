@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
 import {
   FaBan,
   FaBullhorn,
@@ -23,15 +24,42 @@ import { RolePanelLayout, iconRegistry, semanticCatalog } from '../../../../shar
 
 const AdminPanel = ({ user }) => {
   const { profile, isAdmin, loading } = useUserProfile(user);
+  const location = useLocation();
   const [activeSection, setActiveSection] = useState('dashboard');
   const UsersIcon = iconRegistry.users;
   const AdminIcon = iconRegistry.administrator;
+
+  const menuItems = useMemo(() => [
+    { id: 'dashboard', icon: <FaChartBar />, label: semanticCatalog.UI_LABELS.dashboard, description: 'Resumen y estadisticas' },
+    { id: 'usuarios', icon: <UsersIcon />, label: semanticCatalog.UI_LABELS.usersManagementTitle, description: 'Estudiantes, entrenadores y administradores' },
+    { id: 'pagos', icon: <FaDollarSign />, label: 'Pagos', description: 'Mensualidades y facturacion' },
+    { id: 'asistencias', icon: <FaCalendar />, label: 'Asistencias', description: 'Control de entrenamientos' },
+    { id: 'horarios', icon: <FaClock />, label: 'Horarios', description: 'Gestion de horarios de entrenamientos' },
+    { id: 'tests-fisicos', icon: <FaDumbbell />, label: 'Tests Fisicos', description: 'Evaluaciones fisicas' },
+    { id: 'anuncios', icon: <FaBullhorn />, label: 'Anuncios', description: 'Comunicados y notificaciones' },
+    { id: 'configuracion', icon: <FaCog />, label: 'Configuracion', description: 'Perfil y seguridad' },
+  ], []);
+
+  const validSections = useMemo(() => new Set(menuItems.map((item) => item.id)), [menuItems]);
+  const sectionAliasMap = useMemo(() => ({
+    reportes: 'asistencias',
+    atletas: 'usuarios',
+  }), []);
+
+  useEffect(() => {
+    const requestedSection = new URLSearchParams(location.search).get('section');
+    if (!requestedSection) return;
+    const normalizedSection = sectionAliasMap[requestedSection] || requestedSection;
+    if (validSections.has(normalizedSection)) {
+      setActiveSection(normalizedSection);
+    }
+  }, [location.search, sectionAliasMap, validSections]);
 
   if (loading) {
     return (
       <div className="flex min-h-[60dvh] flex-col items-center justify-center gap-4 text-white">
         <div className="h-10 w-10 animate-spin rounded-full border-4 border-white/25 border-t-red-500" />
-        <p className="text-sm font-semibold mobile:text-base">Cargando panel de administración...</p>
+        <p className="text-sm font-semibold mobile:text-base">Cargando panel de administracion...</p>
       </div>
     );
   }
@@ -47,23 +75,6 @@ const AdminPanel = ({ user }) => {
       </div>
     );
   }
-
-  const menuItems = [
-    { id: 'dashboard', icon: <FaChartBar />, label: semanticCatalog.UI_LABELS.dashboard, description: 'Resumen y estadísticas' },
-    { id: 'usuarios', icon: <UsersIcon />, label: semanticCatalog.UI_LABELS.usersManagementTitle, description: 'Estudiantes, entrenadores y administradores' },
-    { id: 'pagos', icon: <FaDollarSign />, label: 'Pagos', description: 'Mensualidades y facturación' },
-    { id: 'asistencias', icon: <FaCalendar />, label: 'Asistencias', description: 'Control de entrenamientos' },
-    { id: 'horarios', icon: <FaClock />, label: 'Horarios', description: 'Gestión de horarios de entrenamientos' },
-    { id: 'tests-fisicos', icon: <FaDumbbell />, label: 'Tests Físicos', description: 'Evaluaciones físicas' },
-    { id: 'anuncios', icon: <FaBullhorn />, label: 'Anuncios', description: 'Comunicados y notificaciones' },
-    { id: 'configuracion', icon: <FaCog />, label: 'Configuración', description: 'Perfil y seguridad' },
-  ];
-
-  const validSections = new Set(menuItems.map((item) => item.id));
-  const sectionAliasMap = {
-    reportes: 'asistencias',
-    atletas: 'usuarios'
-  };
 
   const handleNavigateToSection = (sectionId) => {
     const normalizedSection = sectionAliasMap[sectionId] || sectionId;

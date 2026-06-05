@@ -21,6 +21,15 @@
 .env.e2e
 .env.e2e.local
 
+# Android / Capacitor local and secrets
+android/local.properties
+android/app/google-services.json
+*.jks
+*.keystore
+
+# Supabase local temp
+supabase/.temp/
+
 # OS / logs
 .DS_Store
 npm-debug.log*

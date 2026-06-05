@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
 import {
   FaBan,
   FaBullhorn,
@@ -21,9 +22,34 @@ import { RolePanelLayout, iconRegistry, semanticCatalog } from '../../../../shar
 
 const TrainerPanel = ({ user }) => {
   const { profile, loading } = useUserProfile(user);
+  const location = useLocation();
   const [activeSection, setActiveSection] = useState('dashboard');
   const UsersIcon = iconRegistry.users;
   const TrainerIcon = iconRegistry.trainer;
+
+  const menuItems = useMemo(() => [
+    { id: 'dashboard', icon: <FaChartBar />, label: semanticCatalog.UI_LABELS.dashboard, description: 'Resumen general' },
+    { id: 'usuarios', icon: <UsersIcon />, label: semanticCatalog.UI_LABELS.usersManagementTitle, description: 'Administrar estudiantes' },
+    { id: 'asistencias', icon: <FaCalendar />, label: 'Asistencias', description: 'Registrar asistencias' },
+    { id: 'tests-fisicos', icon: <FaDumbbell />, label: 'Tests Fisicos', description: 'Evaluaciones fisicas' },
+    { id: 'pagos', icon: <FaDollarSign />, label: 'Pagos', description: 'Registrar pagos' },
+    { id: 'anuncios', icon: <FaBullhorn />, label: 'Anuncios', description: 'Comunicados y notificaciones' },
+    { id: 'configuracion', icon: <FaCog />, label: 'Configuracion', description: 'Perfil y seguridad' },
+  ], []);
+
+  const validSections = useMemo(() => new Set(menuItems.map((item) => item.id)), [menuItems]);
+  const sectionAliasMap = useMemo(() => ({
+    atletas: 'usuarios',
+  }), []);
+
+  useEffect(() => {
+    const requestedSection = new URLSearchParams(location.search).get('section');
+    if (!requestedSection) return;
+    const normalizedSection = sectionAliasMap[requestedSection] || requestedSection;
+    if (validSections.has(normalizedSection)) {
+      setActiveSection(normalizedSection);
+    }
+  }, [location.search, sectionAliasMap, validSections]);
 
   if (loading) {
     return (
@@ -46,21 +72,6 @@ const TrainerPanel = ({ user }) => {
       </div>
     );
   }
-
-  const menuItems = [
-    { id: 'dashboard', icon: <FaChartBar />, label: semanticCatalog.UI_LABELS.dashboard, description: 'Resumen general' },
-    { id: 'usuarios', icon: <UsersIcon />, label: semanticCatalog.UI_LABELS.usersManagementTitle, description: 'Administrar estudiantes' },
-    { id: 'asistencias', icon: <FaCalendar />, label: 'Asistencias', description: 'Registrar asistencias' },
-    { id: 'tests-fisicos', icon: <FaDumbbell />, label: 'Tests Físicos', description: 'Evaluaciones físicas' },
-    { id: 'pagos', icon: <FaDollarSign />, label: 'Pagos', description: 'Registrar pagos' },
-    { id: 'anuncios', icon: <FaBullhorn />, label: 'Anuncios', description: 'Comunicados y notificaciones' },
-    { id: 'configuracion', icon: <FaCog />, label: 'Configuración', description: 'Perfil y seguridad' },
-  ];
-
-  const validSections = new Set(menuItems.map((item) => item.id));
-  const sectionAliasMap = {
-    atletas: 'usuarios'
-  };
 
   const handleNavigateToSection = (sectionId) => {
     const normalizedSection = sectionAliasMap[sectionId] || sectionId;

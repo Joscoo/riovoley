@@ -11,6 +11,25 @@ export const jsonResponse = (body: unknown, status = 200) => new Response(
   },
 );
 
+const getErrorMessage = (error: unknown) => {
+  if (error instanceof Error) return error.message;
+  if (typeof error === 'string') return error;
+  if (error && typeof error === 'object') {
+    const maybeMessage = Reflect.get(error, 'message');
+    if (typeof maybeMessage === 'string' && maybeMessage.trim()) {
+      return maybeMessage;
+    }
+
+    try {
+      return JSON.stringify(error);
+    } catch (_serializationError) {
+      return 'Error desconocido';
+    }
+  }
+
+  return 'Error desconocido';
+};
+
 export const methodNotAllowed = () => jsonResponse(
   {
     success: false,
@@ -26,7 +45,7 @@ export const internalError = (error: unknown) => jsonResponse(
   {
     success: false,
     code: 'INTERNAL_ERROR',
-    message: error instanceof Error ? error.message : 'Error desconocido',
+    message: getErrorMessage(error),
     details: null,
     data: null,
   },

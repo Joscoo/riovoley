@@ -1,6 +1,7 @@
 // src/features/student-dashboard/presentation/components/StudentPanel.js
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
 import {
   FaBan,
   FaBullhorn,
@@ -35,6 +36,7 @@ import { Button, Card, EmptyState, RolePanelLayout, SectionHeader, StatusBadge }
 import { cn } from '../../../../lib/cn';
 
 const StudentPanel = ({ user }) => {
+  const location = useLocation();
   const [activeSection, setActiveSection] = useState('anuncios');
   const [studentData, setStudentData] = useState(null);
   const [paymentStatus, setPaymentStatus] = useState(null);
@@ -49,6 +51,21 @@ const StudentPanel = ({ user }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, profileLoading]);
+
+  useEffect(() => {
+    const requestedSection = new URLSearchParams(location.search).get('section');
+    if (!requestedSection) return;
+
+    const sectionAliases = {
+      pagos: 'mensualidad',
+      configuracion: 'perfil',
+    };
+    const normalizedSection = sectionAliases[requestedSection] || requestedSection;
+    const allowedSections = new Set(['anuncios', 'mensualidad', 'asistencias', 'tests-fisicos', 'perfil']);
+    if (allowedSections.has(normalizedSection)) {
+      setActiveSection(normalizedSection);
+    }
+  }, [location.search]);
 
   const loadStudentData = async () => {
     setLoading(true);
