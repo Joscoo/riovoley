@@ -11,7 +11,7 @@ import {
   FaPhone,
   FaUserCircle
 } from 'react-icons/fa';
-import { PhysicalTestChart } from '../../../physical-tests';
+import { PhysicalTestChart, getPhysicalTestFieldMeta } from '../../../physical-tests';
 import { studentDashboardService } from '../../studentDashboardService';
 import { getLatestPaymentsList } from '../../../../utils/paymentUtils';
 import { Button } from '../../../../shared/ui';
@@ -47,6 +47,14 @@ const statusTextClassByPayment = (statusInfo) => {
 };
 
 const StudentView = ({ user }) => {
+  const fieldMeta = {
+    estatura: getPhysicalTestFieldMeta('estatura'),
+    peso: getPhysicalTestFieldMeta('peso'),
+    alcanceDePie: getPhysicalTestFieldMeta('brazo_extend_inicial'),
+    saltoLargo: getPhysicalTestFieldMeta('fuerza_explosiva_salto_largo'),
+    envergadura: getPhysicalTestFieldMeta('envergadura_brazos_extendidos_lateral'),
+    observaciones: getPhysicalTestFieldMeta('observaciones'),
+  };
   const [studentData, setStudentData] = useState(null);
   const [payments, setPayments] = useState([]);
   const [physicalTests, setPhysicalTests] = useState([]);
@@ -296,16 +304,16 @@ const StudentView = ({ user }) => {
                     <h4 className="text-sm font-bold text-white">Test del {formatDate(test.fecha_test)}</h4>
                     <div className="mt-2 space-y-1 text-xs text-slate-200">
                       {test.estatura != null ? <p>Estatura: {test.estatura}m</p> : null}
-                      {test.peso != null ? <p>Peso: {test.peso}kg</p> : null}
-                      {test.brazo_extend_inicial != null ? <p>Brazo extendido: {test.brazo_extend_inicial}cm</p> : null}
-                      {test.fuerza_explosiva_salto_largo != null ? <p>Salto largo: {test.fuerza_explosiva_salto_largo}m</p> : null}
+                      {test.peso != null ? <p>{fieldMeta.peso.shortLabel}: {test.peso}kg</p> : null}
+                      {test.brazo_extend_inicial != null ? <p>{fieldMeta.alcanceDePie.shortLabel}: {test.brazo_extend_inicial}cm</p> : null}
+                      {test.fuerza_explosiva_salto_largo != null ? <p>{fieldMeta.saltoLargo.shortLabel}: {test.fuerza_explosiva_salto_largo}m</p> : null}
                       {test.envergadura_brazos_extendidos_lateral != null ? (
-                        <p>Envergadura: {test.envergadura_brazos_extendidos_lateral}cm</p>
+                        <p>{fieldMeta.envergadura.shortLabel}: {test.envergadura_brazos_extendidos_lateral}cm</p>
                       ) : null}
                     </div>
                     {test.observaciones ? (
                       <p className="mt-2 rounded-lg border border-white/10 bg-black/20 p-2 text-xs text-slate-200">
-                        <strong>Observaciones:</strong> {test.observaciones}
+                        <strong>{fieldMeta.observaciones.label}:</strong> {test.observaciones}
                       </p>
                     ) : null}
                   </Card>

@@ -71,11 +71,41 @@ serve(async (req) => {
     const eligiblePayments = duePayments || [];
     const userIds = [...new Set(eligiblePayments.map((payment) => String(payment.students?.users?.id || '')))].filter(Boolean);
 
+    const { data: preferencesRows, error: preferencesError } = await adminClient
+      .from('user_notification_preferences')
+      .select('user_id, payment_reminders_enabled')
+      .in('user_id', userIds);
+
+    if (preferencesError) {
+      throw preferencesError;
+    }
+
+    const paymentPreferences = new Map(
+      (preferencesRows || []).map((preference) => [String(preference.user_id), preference.payment_reminders_enabled !== false]),
+    );
+    const enabledUserIds = userIds.filter((userId) => paymentPreferences.get(userId) !== false);
+
+    if (!enabledUserIds.length) {
+      return jsonResponse(successEnvelope({
+        code: 'PAYMENT_REMINDERS_SKIPPED',
+        message: 'No hay usuarios con recordatorios de pago habilitados.',
+        data: {
+          payments_considered: eligiblePayments.length,
+          resolved_user_ids: [],
+          resolved_user_count: 0,
+          targeted_devices: 0,
+          sent: 0,
+          failed: 0,
+          invalid_tokens: 0,
+        },
+      }));
+    }
+
     const { data: deviceTargets, error: deviceError } = await adminClient
       .from('mobile_device_registrations')
       .select('id, user_id, device_token')
       .eq('notifications_enabled', true)
-      .in('user_id', userIds);
+      .in('user_id', enabledUserIds);
 
     if (deviceError) {
       throw deviceError;
@@ -96,6 +126,7 @@ serve(async (req) => {
 
     for (const payment of eligiblePayments) {
       const userId = String(payment.students?.users?.id || '');
+      if (!enabledUserIds.includes(userId)) continue;
       const userTargets = tokensByUser.get(userId) || [];
       if (!userTargets.length) continue;
 
@@ -111,10 +142,13 @@ serve(async (req) => {
           ? `${athleteName}, tu mensualidad venció el ${payment.fecha_fin}.`
           : `${athleteName}, tu mensualidad vence el ${payment.fecha_fin}.`,
         route: '/estudiante?section=mensualidad',
+        channelId: 'payments',
+        priority: 'high',
         data: {
           payment_id: payment.id,
           fecha_fin: payment.fecha_fin,
           monto: payment.monto,
+          user_role: 'estudiante',
         },
       });
 
@@ -135,6 +169,9 @@ serve(async (req) => {
       message: 'Recordatorios de pago procesados correctamente.',
       data: {
         payments_considered: eligiblePayments.length,
+        resolved_user_ids: enabledUserIds,
+        resolved_user_count: enabledUserIds.length,
+        targeted_devices: deviceTargets?.length || 0,
         sent,
         failed,
         invalid_tokens: invalidTokenIds.length,

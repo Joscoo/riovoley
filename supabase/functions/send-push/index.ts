@@ -32,6 +32,17 @@ const normalizeAudienceRoles = (audience: string[]) => {
   )];
 };
 
+const isPreferenceEnabled = (
+  preferences: Record<string, { announcement_enabled?: boolean; payment_reminders_enabled?: boolean }>,
+  userId: string,
+  type: string,
+) => {
+  const preference = preferences[userId];
+  if (!preference) return true;
+  if (type === 'payment_reminder') return preference.payment_reminders_enabled !== false;
+  return preference.announcement_enabled !== false;
+};
+
 const serializeError = (error: unknown) => {
   if (error instanceof Error) {
     return {
@@ -164,7 +175,41 @@ serve(async (req) => {
       return jsonResponse(successEnvelope({
         code: 'NO_PUSH_TARGETS',
         message: 'No se encontraron usuarios destino para esta notificación.',
-        data: { sent: 0, failed: 0, invalid_tokens: 0 },
+        data: { resolved_user_ids: [], resolved_user_count: 0, sent: 0, failed: 0, invalid_tokens: 0 },
+      }));
+    }
+
+    const { data: preferencesRows, error: preferencesError } = await adminClient
+      .from('user_notification_preferences')
+      .select('user_id, announcement_enabled, payment_reminders_enabled')
+      .in('user_id', resolvedUserIds);
+
+    if (preferencesError) {
+      throw preferencesError;
+    }
+
+    const preferencesByUserId = (preferencesRows || []).reduce<Record<string, {
+      announcement_enabled?: boolean;
+      payment_reminders_enabled?: boolean;
+    }>>((accumulator, preference) => {
+      accumulator[String(preference.user_id)] = preference;
+      return accumulator;
+    }, {});
+
+    const enabledUserIds = resolvedUserIds.filter((userId) => isPreferenceEnabled(preferencesByUserId, userId, type));
+
+    if (!enabledUserIds.length) {
+      return jsonResponse(successEnvelope({
+        code: 'NO_PUSH_TARGETS',
+        message: 'Los usuarios destino tienen desactivadas las notificaciones para este tipo de aviso.',
+        data: {
+          resolved_user_ids: resolvedUserIds,
+          resolved_user_count: resolvedUserIds.length,
+          targeted_devices: 0,
+          sent: 0,
+          failed: 0,
+          invalid_tokens: 0,
+        },
       }));
     }
 
@@ -172,7 +217,7 @@ serve(async (req) => {
       .from('mobile_device_registrations')
       .select('id, user_id, device_token')
       .eq('notifications_enabled', true)
-      .in('user_id', resolvedUserIds);
+      .in('user_id', enabledUserIds);
 
     if (deviceError) {
       throw deviceError;
@@ -183,7 +228,8 @@ serve(async (req) => {
         code: 'NO_REGISTERED_DEVICES',
         message: 'Los usuarios destino no tienen dispositivos registrados para push.',
         data: {
-          resolved_user_ids: resolvedUserIds.length,
+          resolved_user_ids: enabledUserIds,
+          resolved_user_count: enabledUserIds.length,
           sent: 0,
           failed: 0,
           invalid_tokens: 0,
@@ -194,7 +240,7 @@ serve(async (req) => {
     const { data: profiles, error: profilesError } = await adminClient
       .from('user_profiles')
       .select('id, role')
-      .in('id', resolvedUserIds);
+      .in('id', enabledUserIds);
 
     if (profilesError) {
       throw profilesError;
@@ -216,12 +262,18 @@ serve(async (req) => {
     const invalidTokenIds: number[] = [];
 
     for (const [routeForTargets, targets] of targetsByRoute.entries()) {
+      const routeRole = roleByUserId.get(String(targets?.[0]?.user_id || '')) || '';
       const result = await gateway.sendToDevices(targets || [], {
         title,
         body: messageBody,
         route: routeForTargets,
         type,
-        data,
+        channelId: type === 'payment_reminder' ? 'payments' : 'announcements',
+        priority: type === 'payment_reminder' ? 'high' : 'normal',
+        data: {
+          ...data,
+          user_role: routeRole,
+        },
       });
       sent += result.sent;
       failed += result.failed;
@@ -241,7 +293,8 @@ serve(async (req) => {
         ? 'Push procesado correctamente.'
         : 'No se pudo entregar el push porque los dispositivos registrados tenían tokens inválidos.',
       data: {
-        resolved_user_ids: resolvedUserIds.length,
+        resolved_user_ids: enabledUserIds,
+        resolved_user_count: enabledUserIds.length,
         targeted_devices: deviceTargets.length,
         sent,
         failed,

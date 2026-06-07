@@ -51,6 +51,16 @@ export const createAttendanceUseCases = (repository, deps = {}) => {
   const currentDate = deps.getEcuadorDate || getEcuadorDate;
   const dateMinusDays = deps.getEcuadorDateMinusDays || getEcuadorDateMinusDays;
   const formatDate = deps.formatDateString || formatDateString;
+  const gamificationGateway = deps.gamificationService || null;
+
+  const syncStudentProgress = async (studentId) => {
+    if (!gamificationGateway?.refreshStudentProgress || !studentId) return;
+    try {
+      await gamificationGateway.refreshStudentProgress({ studentId });
+    } catch (error) {
+      console.warn('Gamification sync failed after attendance change:', error);
+    }
+  };
 
   const normalizeText = (value = '') =>
     value
@@ -244,6 +254,7 @@ export const createAttendanceUseCases = (repository, deps = {}) => {
       const existing = await repository.findAttendanceByStudentAndDate(athleteId, selectedDate);
       if (existing) {
         await repository.updateAttendance(existing.id, { metodo_pago_id: paymentTypeId });
+        await syncStudentProgress(athleteId);
         return;
       }
 
@@ -252,18 +263,22 @@ export const createAttendanceUseCases = (repository, deps = {}) => {
         fecha: selectedDate,
         metodo_pago_id: paymentTypeId,
       });
+      await syncStudentProgress(athleteId);
     },
   };
 
   const removeAttendanceUseCase = {
-    execute: async ({ athleteId, selectedDate }) =>
-      repository.deleteAttendanceByStudentAndDate(athleteId, selectedDate),
+    execute: async ({ athleteId, selectedDate }) => {
+      await repository.deleteAttendanceByStudentAndDate(athleteId, selectedDate);
+      await syncStudentProgress(athleteId);
+    },
   };
 
   const toggleAttendanceUseCase = {
     execute: async ({ athleteId, selectedDate, isCurrentlyPresent }) => {
       if (isCurrentlyPresent) {
         await repository.deleteAttendanceByStudentAndDate(athleteId, selectedDate);
+        await syncStudentProgress(athleteId);
         return;
       }
 
@@ -271,6 +286,7 @@ export const createAttendanceUseCases = (repository, deps = {}) => {
         student_id: athleteId,
         fecha: selectedDate,
       });
+      await syncStudentProgress(athleteId);
     },
   };
 

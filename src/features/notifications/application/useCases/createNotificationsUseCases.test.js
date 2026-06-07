@@ -16,24 +16,31 @@ describe('createNotificationsUseCases', () => {
       listStudentsByIds: jest.fn().mockResolvedValue([
         { id: 's1', categoria: 'iniciacion_hombres', users: { nombre: 'Ana', apellido: 'Perez' } },
         { id: 's2', categoria: 'master_mujeres', users: { nombre: 'Lia', apellido: 'Torres' } },
+        { id: 's4', categoria: 'perfeccionamiento_hombres', users: { nombre: 'Leo', apellido: 'Ruiz' } },
       ]),
       listRecentActiveAnnouncements: jest.fn().mockResolvedValue([
         { id: 'a1', title: 'Nuevo Horario', content: 'Se actualizo la planificacion semanal', created_at: '2026-05-09' },
+      ]),
+      listRecentGamificationAchievements: jest.fn().mockResolvedValue([
+        { student_id: 's4', achievement_slug: 'jump_up_5', earned_at: '2026-05-10', metadata: { title: 'Salto en ascenso' } },
       ]),
     };
 
     const useCases = createNotificationsUseCases(repository);
     const notifications = await useCases.loadBellNotificationsUseCase.execute();
 
-    expect(repository.listStudentsByIds).toHaveBeenCalledTimes(1);
+    expect(repository.listStudentsByIds).toHaveBeenCalledTimes(2);
     const idsRequested = repository.listStudentsByIds.mock.calls[0][0];
     expect(idsRequested).toHaveLength(3);
     expect(idsRequested).toEqual(expect.arrayContaining(['s1', 's2', 's3']));
+    expect(repository.listStudentsByIds.mock.calls[1][0]).toEqual(['s4']);
     expect(repository.listRecentActiveAnnouncements).toHaveBeenCalledWith(getEcuadorDateMinusDays(7));
-    expect(notifications).toHaveLength(3);
+    expect(notifications).toHaveLength(4);
     expect(notifications[0].mensaje).toContain('Vence HOY');
     expect(notifications[1].mensaje).toContain('Vence en 2 dias');
-    expect(notifications[2].tipo_notificacion).toBe('anuncio');
+    expect(notifications[2].tipo_notificacion).toBe('gamificacion');
+    expect(notifications[2].mensaje).toContain('desbloqueo Salto en ascenso');
+    expect(notifications[3].tipo_notificacion).toBe('anuncio');
   });
 
   it('loadPaymentNotificationsUseCase genera tarjetas de pago solo hasta 3 dias', async () => {
@@ -52,6 +59,7 @@ describe('createNotificationsUseCases', () => {
         { id: 's2', categoria: 'master_mujeres', users: { nombre: 'Lia', apellido: 'Torres' } },
       ]),
       listRecentActiveAnnouncements: jest.fn(),
+      listRecentGamificationAchievements: jest.fn().mockResolvedValue([]),
     };
 
     const useCases = createNotificationsUseCases(repository);

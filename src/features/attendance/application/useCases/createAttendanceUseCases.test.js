@@ -17,6 +17,9 @@ describe('createAttendanceUseCases', () => {
     getEcuadorDate: jest.fn(() => '2026-05-17'),
     getEcuadorDateMinusDays: jest.fn(() => '2026-05-10'),
     formatDateString: jest.fn((value) => `fmt-${value}`),
+    gamificationService: {
+      refreshStudentProgress: jest.fn(),
+    },
   });
 
   it('loadAthletesUseCase filtra solo estudiantes', async () => {
@@ -85,7 +88,8 @@ describe('createAttendanceUseCases', () => {
   it('registerAttendanceWithPaymentUseCase actualiza si ya existe', async () => {
     const repository = buildRepository();
     repository.findAttendanceByStudentAndDate.mockResolvedValue({ id: 'a1' });
-    const useCases = createAttendanceUseCases(repository, buildDeps());
+    const deps = buildDeps();
+    const useCases = createAttendanceUseCases(repository, deps);
 
     await useCases.registerAttendanceWithPaymentUseCase.execute({
       athleteId: 's1',
@@ -94,12 +98,14 @@ describe('createAttendanceUseCases', () => {
     });
 
     expect(repository.updateAttendance).toHaveBeenCalledWith('a1', { metodo_pago_id: 2 });
+    expect(deps.gamificationService.refreshStudentProgress).toHaveBeenCalledWith({ studentId: 's1' });
     expect(repository.createAttendance).not.toHaveBeenCalled();
   });
 
   it('toggleAttendanceUseCase elimina cuando ya estaba presente', async () => {
     const repository = buildRepository();
-    const useCases = createAttendanceUseCases(repository, buildDeps());
+    const deps = buildDeps();
+    const useCases = createAttendanceUseCases(repository, deps);
 
     await useCases.toggleAttendanceUseCase.execute({
       athleteId: 's1',
@@ -108,6 +114,7 @@ describe('createAttendanceUseCases', () => {
     });
 
     expect(repository.deleteAttendanceByStudentAndDate).toHaveBeenCalledWith('s1', '2026-05-17');
+    expect(deps.gamificationService.refreshStudentProgress).toHaveBeenCalledWith({ studentId: 's1' });
   });
 
   it('getDefaultDatesUseCase devuelve fechas iniciales para filtros', () => {

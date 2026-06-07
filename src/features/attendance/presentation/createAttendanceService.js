@@ -1,8 +1,8 @@
 import { createAttendanceUseCases } from '../application/useCases/createAttendanceUseCases';
 import { SupabaseAttendanceRepository } from '../infrastructure/repositories/supabaseAttendanceRepository';
 
-export const createAttendanceService = (repository = new SupabaseAttendanceRepository()) => {
-  const useCases = createAttendanceUseCases(repository);
+export const createAttendanceService = (repository = new SupabaseAttendanceRepository(), deps = {}) => {
+  const useCases = createAttendanceUseCases(repository, deps);
   const loadAthletes = async () => useCases.loadAthletesUseCase.execute();
   const loadAttendanceData = async ({ query, filters, athletes: currentAthletes }) =>
     useCases.loadAttendanceDataUseCase.execute({ query, filters, athletes: currentAthletes });

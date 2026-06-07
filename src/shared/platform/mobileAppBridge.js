@@ -1,6 +1,6 @@
 import { App as CapacitorApp } from '@capacitor/app';
 import { isNativePlatform } from './runtime';
-import { registerForPushNotifications, subscribeToPushNotificationActions } from './push';
+import { subscribeToPushNotificationActions } from './push';
 
 const deepLinkSubscribers = new Set();
 let initialized = false;
@@ -67,6 +67,4 @@ export const initializeMobileAppBridge = async () => {
       notification,
     });
   });
-
-  await registerForPushNotifications();
 };

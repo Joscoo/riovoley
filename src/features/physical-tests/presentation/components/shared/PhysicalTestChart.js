@@ -15,19 +15,20 @@ import { FaChartBar } from 'react-icons/fa';
 import { Button } from '../../../../../shared/ui';
 import { Card } from '../../../../../shared/ui';
 import { EmptyState } from '../../../../../shared/ui';
+import { getPhysicalTestFieldMeta } from '../../../domain/physicalTestFieldMetadata';
 
 const METRICS = [
   { key: 'peso', label: 'Peso', color: '#8B5CF6', unit: 'kg' },
   { key: 'estatura', label: 'Estatura', color: '#22C55E', unit: 'm' },
-  { key: 'brazo_extend_inicial', label: 'Brazo Extendido', color: '#F59E0B', unit: 'cm' },
-  { key: 'brazo_extend_sin_impulso', label: 'Brazo Sin Impulso', color: '#F97316', unit: 'cm' },
-  { key: 'brazo_extend_con_impulso', label: 'Brazo Con Impulso', color: '#0EA5E9', unit: 'cm' },
-  { key: 'fuerza_explosiva_salto_largo', label: 'Salto Largo', color: '#EC4899', unit: 'm' },
-  { key: 'envergadura_brazos_extendidos_lateral', label: 'Envergadura', color: '#06B6D4', unit: 'cm' },
-  { key: 'fuerza_abdomen', label: 'Abdominales', color: '#EF4444', unit: 'reps' },
-  { key: 'fuerza_brazos', label: 'Flexiones', color: '#14B8A6', unit: 'reps' },
-  { key: 'fuerza_piernas', label: 'Sentadillas', color: '#34D399', unit: 'reps' },
-  { key: 'elevaciones_barra', label: 'Elevaciones', color: '#FB7185', unit: 'reps' }
+  { key: 'brazo_extend_inicial', label: getPhysicalTestFieldMeta('brazo_extend_inicial').shortLabel, color: '#F59E0B', unit: 'cm' },
+  { key: 'brazo_extend_sin_impulso', label: getPhysicalTestFieldMeta('brazo_extend_sin_impulso').shortLabel, color: '#F97316', unit: 'cm' },
+  { key: 'brazo_extend_con_impulso', label: getPhysicalTestFieldMeta('brazo_extend_con_impulso').shortLabel, color: '#0EA5E9', unit: 'cm' },
+  { key: 'fuerza_explosiva_salto_largo', label: getPhysicalTestFieldMeta('fuerza_explosiva_salto_largo').shortLabel, color: '#EC4899', unit: 'm' },
+  { key: 'envergadura_brazos_extendidos_lateral', label: getPhysicalTestFieldMeta('envergadura_brazos_extendidos_lateral').shortLabel, color: '#06B6D4', unit: 'cm' },
+  { key: 'fuerza_abdomen', label: getPhysicalTestFieldMeta('fuerza_abdomen').shortLabel, color: '#EF4444', unit: 'reps' },
+  { key: 'fuerza_brazos', label: getPhysicalTestFieldMeta('fuerza_brazos').shortLabel, color: '#14B8A6', unit: 'reps' },
+  { key: 'fuerza_piernas', label: getPhysicalTestFieldMeta('fuerza_piernas').shortLabel, color: '#34D399', unit: 'reps' },
+  { key: 'elevaciones_barra', label: getPhysicalTestFieldMeta('elevaciones_barra').shortLabel, color: '#FB7185', unit: 'reps' }
 ];
 
 const CHART_VIEWS = {

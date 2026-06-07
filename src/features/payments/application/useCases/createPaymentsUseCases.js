@@ -10,6 +10,7 @@ export const createPaymentsUseCases = (
     getEcuadorDate,
     getEcuadorISOString,
     getLatestPaymentsList,
+    gamificationService = null,
   }
 ) => {
   const DEFAULT_TABLE_QUERY = createTableQuery({
@@ -91,6 +92,18 @@ export const createPaymentsUseCases = (
   const resolveMembershipTypeId = (rawValue) => {
     const parsed = Number.parseInt(rawValue, 10);
     return Number.isFinite(parsed) ? parsed : null;
+  };
+
+  const syncStudentProgress = async (studentId) => {
+    if (!studentId || typeof gamificationService?.refreshStudentProgress !== 'function') {
+      return;
+    }
+
+    try {
+      await gamificationService.refreshStudentProgress({ studentId });
+    } catch (_error) {
+      // La sincronizacion del progreso no debe bloquear el flujo de pagos.
+    }
   };
 
   const listModuleDataUseCase = {
@@ -206,6 +219,8 @@ export const createPaymentsUseCases = (
         emailError = emailError || notificationError?.message || 'Error enviando notificaciones';
       }
 
+      await syncStudentProgress(formData.student_id);
+
       return {
         createdPayment,
         emailSent,
@@ -219,6 +234,9 @@ export const createPaymentsUseCases = (
 
   const updatePaymentUseCase = {
     execute: async ({ paymentId, formData }) => {
+      const currentPayment = typeof repository.getPaymentById === 'function'
+        ? await repository.getPaymentById(paymentId)
+        : null;
       const paymentDraft = {
         student_id: formData.student_id,
         membership_type_id: resolveMembershipTypeId(formData.membership_type_id),
@@ -226,12 +244,18 @@ export const createPaymentsUseCases = (
       };
 
       await repository.updatePayment(paymentId, paymentDraft);
+      await syncStudentProgress(currentPayment?.student_id);
+      await syncStudentProgress(formData.student_id);
     },
   };
 
   const deletePaymentUseCase = {
     execute: async ({ paymentId }) => {
+      const currentPayment = typeof repository.getPaymentById === 'function'
+        ? await repository.getPaymentById(paymentId)
+        : null;
       await repository.softDeletePayment(paymentId, getEcuadorISOString());
+      await syncStudentProgress(currentPayment?.student_id);
     },
   };
 
@@ -241,6 +265,7 @@ export const createPaymentsUseCases = (
       await repository.updatePayment(payment.id, {
         fecha_pago: paidDate,
       });
+      await syncStudentProgress(payment.student_id);
     },
   };
 

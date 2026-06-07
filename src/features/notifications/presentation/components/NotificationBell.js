@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { notificationsService } from '../../notificationsService';
-import { FaBell, FaExclamationTriangle, FaBullhorn, FaInfoCircle } from 'react-icons/fa';
+import { FaBell, FaExclamationTriangle, FaBullhorn, FaInfoCircle, FaTrophy } from 'react-icons/fa';
 import { cn } from '../../../../lib/cn';
 
 const NotificationBell = ({ userRole }) => {
@@ -58,6 +58,9 @@ const NotificationBell = ({ userRole }) => {
   const getIcono = (notificacion) => {
     if (notificacion.tipo_notificacion === 'anuncio') {
       return <FaBullhorn />;
+    }
+    if (notificacion.tipo_notificacion === 'gamificacion') {
+      return <FaTrophy />;
     }
     switch (notificacion.tipo) {
       case 'danger':

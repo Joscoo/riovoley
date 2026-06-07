@@ -126,6 +126,20 @@ export class SupabasePaymentsRepository {
     }
   }
 
+  async getPaymentById(paymentId) {
+    const { data, error } = await supabase
+      .from('payments')
+      .select('*')
+      .eq('id', paymentId)
+      .maybeSingle();
+
+    if (error) {
+      throw new PaymentsError(normalizeError(error, 'Error al consultar pago'), error);
+    }
+
+    return data || null;
+  }
+
   async softDeletePayment(paymentId, deletedAt) {
     const { error } = await supabase
       .from('payments')

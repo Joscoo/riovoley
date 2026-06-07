@@ -45,7 +45,8 @@ describe('createStudentDashboardUseCases', () => {
     repository.listCurrentPayments.mockResolvedValue([{ id: 'p1' }]);
     repository.listAttendancesFromDate.mockResolvedValue([{ id: 'a1' }]);
     repository.listPhysicalTests.mockResolvedValue([{ id: 't1' }]);
-    const useCases = createStudentDashboardUseCases(repository, buildDeps());
+    const deps = buildDeps();
+    const useCases = createStudentDashboardUseCases(repository, deps);
 
     const result = await useCases.loadStudentPanelDataUseCase.execute({ userId: 'u1' });
 
@@ -54,6 +55,12 @@ describe('createStudentDashboardUseCases', () => {
     expect(result.paymentStatus.hasPaid).toBe(true);
     expect(result.attendanceStats.totalDays).toBe(1);
     expect(result.physicalTests).toEqual([{ id: 't1' }]);
+    expect(deps.gamificationService.loadStudentGamificationByStudentId).toHaveBeenCalledWith({
+      studentId: 's1',
+      studentData: { id: 's1', categoria: 'iniciacion_hombres' },
+      physicalTests: [{ id: 't1' }],
+    });
+    expect(result.gamification).toMatchObject({ profile: { totalXp: 200, currentLevel: 2 } });
   });
 
   it('loadStudentViewDataUseCase orquesta student + pagos + tests', async () => {
@@ -78,5 +85,13 @@ describe('createStudentDashboardUseCases', () => {
   const buildDeps = () => ({
     PagoStatusService: {
       getStatusInfo: jest.fn(() => ({ estado: 'activo', mensaje: 'Activo' })),
+    },
+    gamificationService: {
+      loadStudentGamificationByStudentId: jest.fn(() => Promise.resolve({
+        profile: { totalXp: 200, currentLevel: 2 },
+        achievements: [],
+        challenges: [],
+        leaderboard: [],
+      })),
     },
   });

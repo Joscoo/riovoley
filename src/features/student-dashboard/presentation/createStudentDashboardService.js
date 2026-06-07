@@ -1,8 +1,12 @@
 import { createStudentDashboardUseCases } from '../application/useCases/createStudentDashboardUseCases';
 import { SupabaseStudentDashboardRepository } from '../infrastructure/repositories/supabaseStudentDashboardRepository';
+import { gamificationService } from '../../gamification';
 
-export const createStudentDashboardService = (repository = new SupabaseStudentDashboardRepository()) => {
-  const useCases = createStudentDashboardUseCases(repository);
+export const createStudentDashboardService = (
+  repository = new SupabaseStudentDashboardRepository(),
+  deps = { gamificationService }
+) => {
+  const useCases = createStudentDashboardUseCases(repository, deps);
 
   const loadStudentPanelData = async (userId) => useCases.loadStudentPanelDataUseCase.execute({ userId });
   const loadStudentViewData = async (userId) => useCases.loadStudentViewDataUseCase.execute({ userId });

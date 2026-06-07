@@ -1,8 +1,12 @@
 import { createPhysicalTestsUseCases } from '../application/useCases/createPhysicalTestsUseCases';
 import { SupabasePhysicalTestsRepository } from '../infrastructure/repositories/supabasePhysicalTestsRepository';
+import { gamificationService } from '../../gamification';
 
-export const createPhysicalTestsService = (repository = new SupabasePhysicalTestsRepository()) => {
-  const useCases = createPhysicalTestsUseCases(repository);
+export const createPhysicalTestsService = (
+  repository = new SupabasePhysicalTestsRepository(),
+  deps = { gamificationService }
+) => {
+  const useCases = createPhysicalTestsUseCases(repository, deps);
   const loadAtletas = async () => useCases.loadAtletasUseCase.execute();
   const loadTests = async ({ filters }) => useCases.loadTestsUseCase.execute({ filters });
   const createTest = async ({ formData }) => useCases.createTestUseCase.execute({ formData });

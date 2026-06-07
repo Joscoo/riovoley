@@ -39,7 +39,11 @@ describe('createPhysicalTestsUseCases', () => {
 
   it('createTestUseCase construye payload numerico', async () => {
     const repository = buildRepository();
-    const useCases = createPhysicalTestsUseCases(repository, buildDeps());
+    repository.createTest.mockResolvedValue({ id: 't1', student_id: 's1' });
+    const gamificationService = {
+      processPhysicalTestRecorded: jest.fn().mockResolvedValue({ studentId: 's1', totalXp: 200 }),
+    };
+    const useCases = createPhysicalTestsUseCases(repository, { ...buildDeps(), gamificationService });
 
     await useCases.createTestUseCase.execute({
       formData: { student_id: 's1', estatura: '1.75', fuerza_brazos: '10', fecha_test: '2026-05-17' },
@@ -53,6 +57,10 @@ describe('createPhysicalTestsUseCases', () => {
         modified_at: expect.any(String),
       })
     );
+    expect(gamificationService.processPhysicalTestRecorded).toHaveBeenCalledWith({
+      studentId: 's1',
+      testId: 't1',
+    });
   });
 
   it('buildInitialFormUseCase retorna fecha actual en form default', () => {

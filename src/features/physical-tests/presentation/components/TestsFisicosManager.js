@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { physicalTestsService } from '../../physicalTestsService';
+import { getPhysicalTestFieldMeta } from '../../domain/physicalTestFieldMetadata';
 import { Button, Card, Field } from '../../../../shared/ui';
 import { 
   FaEdit, FaPlus, FaClock, FaSave, FaDumbbell, FaTrash, 
@@ -89,6 +90,7 @@ const styles = {
   sectionTitle: 'mb-3 inline-flex items-center gap-2 text-base font-black text-white',
   formGrid: 'grid gap-3 tablet:grid-cols-2',
   inputGroup: 'space-y-1 [&_label]:text-xs [&_label]:font-bold [&_label]:uppercase [&_label]:tracking-wide [&_label]:text-rv-gold/90 [&_input]:min-h-[48px] [&_input]:w-full [&_input]:rounded-xl [&_input]:border [&_input]:border-white/20 [&_input]:bg-black/30 [&_input]:px-3 [&_input]:py-2 [&_input]:text-sm [&_input]:text-white [&_input]:placeholder:text-slate-400 [&_input]:focus:border-rv-gold [&_input]:focus:outline-none [&_input]:focus:ring-2 [&_input]:focus:ring-rv-gold/70 [&_textarea]:w-full [&_textarea]:rounded-xl [&_textarea]:border [&_textarea]:border-white/20 [&_textarea]:bg-black/30 [&_textarea]:px-3 [&_textarea]:py-2 [&_textarea]:text-sm [&_textarea]:text-white [&_textarea]:placeholder:text-slate-400 [&_textarea]:focus:border-rv-gold [&_textarea]:focus:outline-none [&_textarea]:focus:ring-2 [&_textarea]:focus:ring-rv-gold/70',
+  inputHint: 'text-xs text-slate-300',
   searchableSelect: 'relative',
   dropdownList: 'absolute z-20 mt-1 max-h-64 w-full overflow-y-auto rounded-xl border border-white/20 bg-slate-950/95 shadow-2xl',
   dropdownItem: 'w-full border-b border-white/10 px-3 py-2 text-left transition last:border-0 hover:bg-rv-gold/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80',
@@ -104,6 +106,20 @@ const styles = {
 };
 
 const TestsFisicosManager = ({ user }) => {
+  const fieldMeta = {
+    estatura: getPhysicalTestFieldMeta('estatura'),
+    peso: getPhysicalTestFieldMeta('peso'),
+    envergadura: getPhysicalTestFieldMeta('envergadura_brazos_extendidos_lateral'),
+    alcanceDePie: getPhysicalTestFieldMeta('brazo_extend_inicial'),
+    saltoEstatico: getPhysicalTestFieldMeta('brazo_extend_sin_impulso'),
+    saltoConCarrera: getPhysicalTestFieldMeta('brazo_extend_con_impulso'),
+    saltoLargo: getPhysicalTestFieldMeta('fuerza_explosiva_salto_largo'),
+    abdominales: getPhysicalTestFieldMeta('fuerza_abdomen'),
+    flexiones: getPhysicalTestFieldMeta('fuerza_brazos'),
+    sentadillas: getPhysicalTestFieldMeta('fuerza_piernas'),
+    dominadas: getPhysicalTestFieldMeta('elevaciones_barra'),
+    observaciones: getPhysicalTestFieldMeta('observaciones'),
+  };
   const buildDefaultFormData = () => physicalTestsService.buildInitialForm();
   const defaultFilters = {
     atletaId: '',
@@ -401,7 +417,7 @@ const TestsFisicosManager = ({ user }) => {
         <div className={styles.testInfo}>
           {test.estatura != null && (
             <div className={styles.infoItem}>
-              <span className={styles.label}><FaRulerVertical /> Estatura:</span>
+              <span className={styles.label}><FaRulerVertical /> {fieldMeta.estatura.shortLabel}:</span>
               <div className={styles.valueWithChange}>
                 <span className={styles.value}>{test.estatura}m</span>
                 {hasComparison && previousTest.estatura != null && renderChangeIndicator(calculateChange(test.estatura, previousTest.estatura))}
@@ -411,7 +427,7 @@ const TestsFisicosManager = ({ user }) => {
 
           {test.peso != null && (
             <div className={styles.infoItem}>
-              <span className={styles.label}><FaWeight /> Peso:</span>
+              <span className={styles.label}><FaWeight /> {fieldMeta.peso.shortLabel}:</span>
               <div className={styles.valueWithChange}>
                 <span className={styles.value}>{test.peso}kg</span>
                 {hasComparison && previousTest.peso != null && renderChangeIndicator(calculateChange(test.peso, previousTest.peso))}
@@ -419,9 +435,19 @@ const TestsFisicosManager = ({ user }) => {
             </div>
           )}
 
+          {test.envergadura_brazos_extendidos_lateral != null && (
+            <div className={styles.infoItem}>
+              <span className={styles.label}><FaArrowsAltH /> {fieldMeta.envergadura.shortLabel}:</span>
+              <div className={styles.valueWithChange}>
+                <span className={styles.value}>{test.envergadura_brazos_extendidos_lateral}cm</span>
+                {hasComparison && previousTest.envergadura_brazos_extendidos_lateral != null && renderChangeIndicator(calculateChange(test.envergadura_brazos_extendidos_lateral, previousTest.envergadura_brazos_extendidos_lateral))}
+              </div>
+            </div>
+          )}
+
           {test.brazo_extend_inicial != null && (
             <div className={styles.infoItem}>
-              <span className={styles.label}><FaHandPaper /> Ext. brazo inicial:</span>
+              <span className={styles.label}><FaHandPaper /> {fieldMeta.alcanceDePie.shortLabel}:</span>
               <div className={styles.valueWithChange}>
                 <span className={styles.value}>{test.brazo_extend_inicial}cm</span>
                 {hasComparison && previousTest.brazo_extend_inicial != null && renderChangeIndicator(calculateChange(test.brazo_extend_inicial, previousTest.brazo_extend_inicial))}
@@ -431,7 +457,7 @@ const TestsFisicosManager = ({ user }) => {
 
           {test.brazo_extend_sin_impulso != null && (
             <div className={styles.infoItem}>
-              <span className={styles.label}><FaHandPaper /> Ext. sin impulso:</span>
+              <span className={styles.label}><FaHandPaper /> {fieldMeta.saltoEstatico.shortLabel}:</span>
               <div className={styles.valueWithChange}>
                 <span className={styles.value}>{test.brazo_extend_sin_impulso}cm</span>
                 {hasComparison && previousTest.brazo_extend_sin_impulso != null && renderChangeIndicator(calculateChange(test.brazo_extend_sin_impulso, previousTest.brazo_extend_sin_impulso))}
@@ -441,7 +467,7 @@ const TestsFisicosManager = ({ user }) => {
 
           {test.brazo_extend_con_impulso != null && (
             <div className={styles.infoItem}>
-              <span className={styles.label}><FaHandPaper /> Ext. con impulso:</span>
+              <span className={styles.label}><FaHandPaper /> {fieldMeta.saltoConCarrera.shortLabel}:</span>
               <div className={styles.valueWithChange}>
                 <span className={styles.value}>{test.brazo_extend_con_impulso}cm</span>
                 {hasComparison && previousTest.brazo_extend_con_impulso != null && renderChangeIndicator(calculateChange(test.brazo_extend_con_impulso, previousTest.brazo_extend_con_impulso))}
@@ -451,7 +477,7 @@ const TestsFisicosManager = ({ user }) => {
 
           {test.fuerza_explosiva_salto_largo != null && (
             <div className={styles.infoItem}>
-              <span className={styles.label}><FaRunning /> Salto largo:</span>
+              <span className={styles.label}><FaRunning /> {fieldMeta.saltoLargo.shortLabel}:</span>
               <div className={styles.valueWithChange}>
                 <span className={styles.value}>{test.fuerza_explosiva_salto_largo}m</span>
                 {hasComparison && previousTest.fuerza_explosiva_salto_largo != null && renderChangeIndicator(calculateChange(test.fuerza_explosiva_salto_largo, previousTest.fuerza_explosiva_salto_largo))}
@@ -461,7 +487,7 @@ const TestsFisicosManager = ({ user }) => {
 
           {test.fuerza_abdomen != null && (
             <div className={styles.infoItem}>
-              <span className={styles.label}><FaFire /> Abdominales:</span>
+              <span className={styles.label}><FaFire /> {fieldMeta.abdominales.shortLabel}:</span>
               <div className={styles.valueWithChange}>
                 <span className={styles.value}>{test.fuerza_abdomen} reps</span>
                 {hasComparison && previousTest.fuerza_abdomen != null && renderChangeIndicator(calculateChange(test.fuerza_abdomen, previousTest.fuerza_abdomen))}
@@ -471,7 +497,7 @@ const TestsFisicosManager = ({ user }) => {
 
           {test.fuerza_brazos != null && (
             <div className={styles.infoItem}>
-              <span className={styles.label}><FaDumbbell /> Flexiones:</span>
+              <span className={styles.label}><FaDumbbell /> {fieldMeta.flexiones.shortLabel}:</span>
               <div className={styles.valueWithChange}>
                 <span className={styles.value}>{test.fuerza_brazos} reps</span>
                 {hasComparison && previousTest.fuerza_brazos != null && renderChangeIndicator(calculateChange(test.fuerza_brazos, previousTest.fuerza_brazos))}
@@ -481,7 +507,7 @@ const TestsFisicosManager = ({ user }) => {
 
           {test.fuerza_piernas != null && (
             <div className={styles.infoItem}>
-              <span className={styles.label}><FaRunning /> Sentadillas:</span>
+              <span className={styles.label}><FaRunning /> {fieldMeta.sentadillas.shortLabel}:</span>
               <div className={styles.valueWithChange}>
                 <span className={styles.value}>{test.fuerza_piernas} reps</span>
                 {hasComparison && previousTest.fuerza_piernas != null && renderChangeIndicator(calculateChange(test.fuerza_piernas, previousTest.fuerza_piernas))}
@@ -491,7 +517,7 @@ const TestsFisicosManager = ({ user }) => {
 
           {test.elevaciones_barra != null && (
             <div className={styles.infoItem}>
-              <span className={styles.label}><FaArrowsAltH /> Elevaciones:</span>
+              <span className={styles.label}><FaArrowsAltH /> {fieldMeta.dominadas.shortLabel}:</span>
               <div className={styles.valueWithChange}>
                 <span className={styles.value}>{test.elevaciones_barra} reps</span>
                 {hasComparison && previousTest.elevaciones_barra != null && renderChangeIndicator(calculateChange(test.elevaciones_barra, previousTest.elevaciones_barra))}
@@ -501,7 +527,7 @@ const TestsFisicosManager = ({ user }) => {
 
           {test.observaciones && (
             <div className={styles.observacionesSection}>
-              <span className={styles.label}><FaStickyNote /> Observaciones:</span>
+              <span className={styles.label}><FaStickyNote /> {fieldMeta.observaciones.label}:</span>
               <p className={styles.observaciones}>{test.observaciones}</p>
             </div>
           )}
@@ -964,7 +990,7 @@ const TestsFisicosManager = ({ user }) => {
                 <h4 className={styles.sectionTitle}><FaRulerVertical /> Mediciones Corporales</h4>
                 <div className={styles.formGrid}>
                   <div className={styles.inputGroup}>
-                    <label htmlFor="estatura">Estatura (m)</label>
+                    <label htmlFor="estatura">{fieldMeta.estatura.unitLabel}</label>
                     <input
                       id="estatura"
                       type="number"
@@ -975,10 +1001,11 @@ const TestsFisicosManager = ({ user }) => {
                       onChange={(e) => setFormData({...formData, estatura: e.target.value})}
                       placeholder="1.75"
                     />
+                    <p className={styles.inputHint}>{fieldMeta.estatura.description}</p>
                   </div>
                   
                   <div className={styles.inputGroup}>
-                    <label htmlFor="peso">Peso (kg)</label>
+                    <label htmlFor="peso">{fieldMeta.peso.unitLabel}</label>
                     <input
                       id="peso"
                       type="number"
@@ -989,10 +1016,11 @@ const TestsFisicosManager = ({ user }) => {
                       onChange={(e) => setFormData({...formData, peso: e.target.value})}
                       placeholder="70.5"
                     />
+                    <p className={styles.inputHint}>{fieldMeta.peso.description}</p>
                   </div>
                   
                   <div className={styles.inputGroup}>
-                    <label htmlFor="envergadura">Envergadura brazos (cm)</label>
+                    <label htmlFor="envergadura">{fieldMeta.envergadura.unitLabel}</label>
                     <input
                       id="envergadura"
                       type="number"
@@ -1003,6 +1031,7 @@ const TestsFisicosManager = ({ user }) => {
                       onChange={(e) => setFormData({...formData, envergadura_brazos_extendidos_lateral: e.target.value})}
                       placeholder="180.0"
                     />
+                    <p className={styles.inputHint}>{fieldMeta.envergadura.description}</p>
                   </div>
                 </div>
               </div>
@@ -1012,7 +1041,7 @@ const TestsFisicosManager = ({ user }) => {
                 <h4 className={styles.sectionTitle}><FaDumbbell /> Tests de Fuerza y Explosividad</h4>
                 <div className={styles.formGrid}>
                   <div className={styles.inputGroup}>
-                    <label htmlFor="brazo_inicial">Extensión brazo inicial (cm)</label>
+                    <label htmlFor="brazo_inicial">{fieldMeta.alcanceDePie.unitLabel}</label>
                     <input
                       id="brazo_inicial"
                       type="number"
@@ -1023,10 +1052,11 @@ const TestsFisicosManager = ({ user }) => {
                       onChange={(e) => setFormData({...formData, brazo_extend_inicial: e.target.value})}
                       placeholder="25.0"
                     />
+                    <p className={styles.inputHint}>{fieldMeta.alcanceDePie.description}</p>
                   </div>
                   
                   <div className={styles.inputGroup}>
-                    <label htmlFor="brazo_sin_impulso">Extensión sin impulso (cm)</label>
+                    <label htmlFor="brazo_sin_impulso">{fieldMeta.saltoEstatico.unitLabel}</label>
                     <input
                       id="brazo_sin_impulso"
                       type="number"
@@ -1037,10 +1067,11 @@ const TestsFisicosManager = ({ user }) => {
                       onChange={(e) => setFormData({...formData, brazo_extend_sin_impulso: e.target.value})}
                       placeholder="30.0"
                     />
+                    <p className={styles.inputHint}>{fieldMeta.saltoEstatico.description}</p>
                   </div>
                   
                   <div className={styles.inputGroup}>
-                    <label htmlFor="brazo_con_impulso">Extensión con impulso (cm)</label>
+                    <label htmlFor="brazo_con_impulso">{fieldMeta.saltoConCarrera.unitLabel}</label>
                     <input
                       id="brazo_con_impulso"
                       type="number"
@@ -1051,10 +1082,11 @@ const TestsFisicosManager = ({ user }) => {
                       onChange={(e) => setFormData({...formData, brazo_extend_con_impulso: e.target.value})}
                       placeholder="35.0"
                     />
+                    <p className={styles.inputHint}>{fieldMeta.saltoConCarrera.description}</p>
                   </div>
                   
                   <div className={styles.inputGroup}>
-                    <label htmlFor="salto_largo">Salto largo (m)</label>
+                    <label htmlFor="salto_largo">{fieldMeta.saltoLargo.unitLabel}</label>
                     <input
                       id="salto_largo"
                       type="number"
@@ -1065,6 +1097,7 @@ const TestsFisicosManager = ({ user }) => {
                       onChange={(e) => setFormData({...formData, fuerza_explosiva_salto_largo: e.target.value})}
                       placeholder="2.50"
                     />
+                    <p className={styles.inputHint}>{fieldMeta.saltoLargo.description}</p>
                   </div>
                 </div>
               </div>
@@ -1074,7 +1107,7 @@ const TestsFisicosManager = ({ user }) => {
                 <h4 className={styles.sectionTitle}><FaFire /> Fuerza Muscular (repeticiones por minuto)</h4>
                 <div className={styles.formGrid}>
                   <div className={styles.inputGroup}>
-                    <label htmlFor="fuerza_abdomen">Abdominales (1 min)</label>
+                    <label htmlFor="fuerza_abdomen">{fieldMeta.abdominales.unitLabel}</label>
                     <input
                       id="fuerza_abdomen"
                       type="number"
@@ -1084,10 +1117,11 @@ const TestsFisicosManager = ({ user }) => {
                       onChange={(e) => setFormData({...formData, fuerza_abdomen: e.target.value})}
                       placeholder="50"
                     />
+                    <p className={styles.inputHint}>{fieldMeta.abdominales.description}</p>
                   </div>
                   
                   <div className={styles.inputGroup}>
-                    <label htmlFor="fuerza_brazos">Flexiones de brazo (1 min)</label>
+                    <label htmlFor="fuerza_brazos">{fieldMeta.flexiones.unitLabel}</label>
                     <input
                       id="fuerza_brazos"
                       type="number"
@@ -1097,10 +1131,11 @@ const TestsFisicosManager = ({ user }) => {
                       onChange={(e) => setFormData({...formData, fuerza_brazos: e.target.value})}
                       placeholder="30"
                     />
+                    <p className={styles.inputHint}>{fieldMeta.flexiones.description}</p>
                   </div>
                   
                   <div className={styles.inputGroup}>
-                    <label htmlFor="fuerza_piernas">Sentadillas (1 min)</label>
+                    <label htmlFor="fuerza_piernas">{fieldMeta.sentadillas.unitLabel}</label>
                     <input
                       id="fuerza_piernas"
                       type="number"
@@ -1110,10 +1145,11 @@ const TestsFisicosManager = ({ user }) => {
                       onChange={(e) => setFormData({...formData, fuerza_piernas: e.target.value})}
                       placeholder="40"
                     />
+                    <p className={styles.inputHint}>{fieldMeta.sentadillas.description}</p>
                   </div>
                   
                   <div className={styles.inputGroup}>
-                    <label htmlFor="elevaciones_barra">Elevaciones en barra (1 min)</label>
+                    <label htmlFor="elevaciones_barra">{fieldMeta.dominadas.unitLabel}</label>
                     <input
                       id="elevaciones_barra"
                       type="number"
@@ -1123,23 +1159,25 @@ const TestsFisicosManager = ({ user }) => {
                       onChange={(e) => setFormData({...formData, elevaciones_barra: e.target.value})}
                       placeholder="10"
                     />
+                    <p className={styles.inputHint}>{fieldMeta.dominadas.description}</p>
                   </div>
                 </div>
               </div>
 
               {/* Observaciones */}
               <div className={styles.formSection}>
-                <h4 className={styles.sectionTitle}><FaStickyNote /> Observaciones</h4>
+                <h4 className={styles.sectionTitle}><FaStickyNote /> {fieldMeta.observaciones.label}</h4>
                 <div className={styles.inputGroup}>
-                  <label htmlFor="observaciones">Comentarios adicionales</label>
+                  <label htmlFor="observaciones">{fieldMeta.observaciones.label}</label>
                   <textarea
                     id="observaciones"
                     value={formData.observaciones}
                     onChange={(e) => setFormData({...formData, observaciones: e.target.value})}
-                    placeholder="Ingrese observaciones sobre el rendimiento, técnica, recomendaciones, etc..."
+                    placeholder="Ingrese observaciones sobre el rendimiento, tecnica, recomendaciones, etc..."
                     rows={4}
                     className={styles.textarea}
                   />
+                  <p className={styles.inputHint}>{fieldMeta.observaciones.description}</p>
                 </div>
               </div>
               

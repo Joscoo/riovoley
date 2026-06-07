@@ -11,6 +11,8 @@ interface PushMessage {
   body: string;
   route?: string;
   type: string;
+  channelId?: string;
+  priority?: 'normal' | 'high';
   data?: Record<string, unknown>;
 }
 
@@ -75,9 +77,17 @@ export class FirebasePushGateway {
               title: message.title,
               body: message.body,
             },
+            android: {
+              priority: message.priority === 'high' ? 'HIGH' : 'NORMAL',
+              notification: {
+                channel_id: message.channelId || 'announcements',
+                sound: 'default',
+              },
+            },
             data: Object.entries({
               type: message.type,
               route: message.route || '/',
+              channel_id: message.channelId || 'announcements',
               ...(message.data || {}),
             }).reduce<Record<string, string>>((accumulator, [key, value]) => {
               accumulator[key] = String(value ?? '');

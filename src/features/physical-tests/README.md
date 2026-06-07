@@ -5,6 +5,7 @@ Feature clean-lite para gestion de tests fisicos.
 ## Responsabilidades
 - Cargar atletas y listado de evaluaciones fisicas con filtros.
 - Crear, actualizar y eliminar tests fisicos desde un servicio desacoplado de UI.
+- Disparar la recalculacion gamificada del estudiante despues de crear o actualizar un test.
 - Encapsular consultas Supabase en un repositorio del feature.
 
 ## Capas

@@ -16,3 +16,4 @@ Feature clean-lite para gestion de pagos.
 ## Integraciones
 - Correo via `src/features/communications`.
 - WhatsApp via `whatsappService` y `whatsappBusinessService`.
+- Gamificacion via `refreshStudentProgress` para reflejar pagos dentro del progreso del estudiante.

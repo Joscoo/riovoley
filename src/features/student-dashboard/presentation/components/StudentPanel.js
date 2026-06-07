@@ -32,6 +32,7 @@ import {
 import { studentDashboardService } from '../../studentDashboardService';
 import { ProfileSettings } from '../../../account-admin';
 import StudentPhysicalTests from './StudentPhysicalTests';
+import { StudentGamificationPanel } from '../../../gamification';
 import { Button, Card, EmptyState, RolePanelLayout, SectionHeader, StatusBadge } from '../../../../shared/ui';
 import { cn } from '../../../../lib/cn';
 
@@ -42,6 +43,7 @@ const StudentPanel = ({ user }) => {
   const [paymentStatus, setPaymentStatus] = useState(null);
   const [attendanceStats, setAttendanceStats] = useState(null);
   const [physicalTests, setPhysicalTests] = useState([]);
+  const [gamification, setGamification] = useState(null);
   const [loading, setLoading] = useState(true);
   const { profile: userProfile, loading: profileLoading } = useUserProfile(user);
 
@@ -61,20 +63,21 @@ const StudentPanel = ({ user }) => {
       configuracion: 'perfil',
     };
     const normalizedSection = sectionAliases[requestedSection] || requestedSection;
-    const allowedSections = new Set(['anuncios', 'mensualidad', 'asistencias', 'tests-fisicos', 'perfil']);
+    const allowedSections = new Set(['anuncios', 'progreso', 'mensualidad', 'asistencias', 'tests-fisicos', 'perfil']);
     if (allowedSections.has(normalizedSection)) {
       setActiveSection(normalizedSection);
     }
   }, [location.search]);
 
-  const loadStudentData = async () => {
+  const loadStudentData = async (nextUserId = user?.id) => {
     setLoading(true);
     try {
-      const panelData = await studentDashboardService.loadStudentPanelData(user.id);
+      const panelData = await studentDashboardService.loadStudentPanelData(nextUserId);
       setStudentData(panelData.studentData);
       setPaymentStatus(panelData.paymentStatus);
       setAttendanceStats(panelData.attendanceStats);
       setPhysicalTests(panelData.physicalTests || []);
+      setGamification(panelData.gamification || null);
     } catch (error) {
       console.error('Error cargando datos del estudiante:', error);
     } finally {
@@ -95,6 +98,8 @@ const StudentPanel = ({ user }) => {
     try {
       const tests = await studentDashboardService.loadPhysicalTests(studentId);
       setPhysicalTests(tests || []);
+      const panelData = await studentDashboardService.loadStudentPanelData(user.id);
+      setGamification(panelData.gamification || null);
     } catch (error) {
       console.error('Error cargando tests fisicos:', error);
     }
@@ -350,6 +355,14 @@ const StudentPanel = ({ user }) => {
     </Card>
   );
 
+  const renderGamification = () => (
+    <StudentGamificationPanel
+      gamification={gamification}
+      loading={loading}
+      onRefresh={() => studentData && loadStudentData(user.id)}
+    />
+  );
+
   if (profileLoading || loading) {
     return (
       <div className="flex min-h-[60dvh] flex-col items-center justify-center gap-4 text-white">
@@ -396,6 +409,7 @@ const StudentPanel = ({ user }) => {
 
   const menuItems = [
     { id: 'anuncios', icon: <FaBullhorn />, label: 'Anuncios' },
+    { id: 'progreso', icon: <FaStar />, label: 'Mi Progreso' },
     { id: 'mensualidad', icon: <FaMoneyBillWave />, label: 'Mensualidad' },
     { id: 'asistencias', icon: <FaChartBar />, label: 'Asistencias' },
     { id: 'tests-fisicos', icon: <FaDumbbell />, label: 'Tests Fisicos' },
@@ -423,6 +437,7 @@ const StudentPanel = ({ user }) => {
       contentClassName="space-y-4 mobile:space-y-5"
     >
       {activeSection === 'anuncios' && renderAnuncios()}
+      {activeSection === 'progreso' && renderGamification()}
       {activeSection === 'mensualidad' && renderPaymentStatus()}
       {activeSection === 'asistencias' && renderAttendance()}
       {activeSection === 'tests-fisicos' && (

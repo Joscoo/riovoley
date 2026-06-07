@@ -1,3 +1,6 @@
+process.env.REACT_APP_SUPABASE_URL = process.env.REACT_APP_SUPABASE_URL || 'https://example.supabase.co';
+process.env.REACT_APP_SUPABASE_ANON_KEY = process.env.REACT_APP_SUPABASE_ANON_KEY || 'test-anon-key';
+
 jest.mock('../infrastructure/repositories/supabaseStudentDashboardRepository', () => ({
   SupabaseStudentDashboardRepository: jest.fn().mockImplementation(() => ({
     findStudentByUserId: jest.fn(),
@@ -6,6 +9,12 @@ jest.mock('../infrastructure/repositories/supabaseStudentDashboardRepository', (
     listPaymentsByStudentId: jest.fn(),
     listAttendancesFromDate: jest.fn(),
   })),
+}));
+
+jest.mock('../../gamification', () => ({
+  gamificationService: {
+    loadStudentGamificationByStudentId: jest.fn(),
+  },
 }));
 
 const { createStudentDashboardService } = require('./createStudentDashboardService');
@@ -19,13 +28,19 @@ describe('createStudentDashboardService', () => {
       listPaymentsByStudentId: jest.fn().mockResolvedValue([]),
       listAttendancesFromDate: jest.fn().mockResolvedValue([]),
     };
+    const deps = {
+      gamificationService: {
+        loadStudentGamificationByStudentId: jest.fn().mockResolvedValue({ profile: { totalXp: 220 } }),
+      },
+    };
 
-    const service = createStudentDashboardService(repository);
+    const service = createStudentDashboardService(repository, deps);
     const result = await service.loadStudentPanelData('u1');
 
     expect(repository.findStudentByUserId).toHaveBeenCalledWith('u1');
     expect(result.studentData).toEqual({ id: 's1' });
     expect(result.physicalTests).toEqual([{ id: 't1' }]);
+    expect(result.gamification).toEqual({ profile: { totalXp: 220 } });
   });
 
   it('delega loadStudentViewData y retorna pagos/tests', async () => {
@@ -37,7 +52,11 @@ describe('createStudentDashboardService', () => {
       listAttendancesFromDate: jest.fn().mockResolvedValue([]),
     };
 
-    const service = createStudentDashboardService(repository);
+    const service = createStudentDashboardService(repository, {
+      gamificationService: {
+        loadStudentGamificationByStudentId: jest.fn(),
+      },
+    });
     const result = await service.loadStudentViewData('u1');
 
     expect(repository.listPaymentsByStudentId).toHaveBeenCalledWith('s1');

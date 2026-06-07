@@ -69,13 +69,17 @@ export class SupabasePhysicalTestsRepository {
   }
 
   async createTest(payload) {
-    const { error } = await supabase
+    const { data, error } = await supabase
       .from('physical_tests')
-      .insert(payload);
+      .insert(payload)
+      .select()
+      .single();
 
     if (error) {
       throw new PhysicalTestsError(normalizeError(error, 'Error creando test fisico'), error);
     }
+
+    return data;
   }
 
   async updateTest(testId, payload) {

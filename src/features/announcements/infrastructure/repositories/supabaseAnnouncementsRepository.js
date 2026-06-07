@@ -39,6 +39,7 @@ export class SupabaseAnnouncementsRepository {
           body: payload.content,
           audience: Array.isArray(payload.target_audience) ? payload.target_audience : ['all'],
           data: {
+            announcement_id: payload.id,
             announcement_title: payload.title,
           },
         },

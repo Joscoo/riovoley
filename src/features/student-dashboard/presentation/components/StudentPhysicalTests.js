@@ -23,6 +23,7 @@ import { Card } from '../../../../shared/ui';
 import { EmptyState } from '../../../../shared/ui';
 import { SectionHeader } from '../../../../shared/ui';
 import { cn } from '../../../../lib/cn';
+import { getPhysicalTestFieldMeta } from '../../../physical-tests';
 
 const toNumber = (value) => {
   const numericValue = Number(value);
@@ -249,6 +250,19 @@ ProgressChart.propTypes = {
 };
 
 const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
+  const fieldMeta = {
+    peso: getPhysicalTestFieldMeta('peso'),
+    estatura: getPhysicalTestFieldMeta('estatura'),
+    envergadura: getPhysicalTestFieldMeta('envergadura_brazos_extendidos_lateral'),
+    alcanceDePie: getPhysicalTestFieldMeta('brazo_extend_inicial'),
+    saltoEstatico: getPhysicalTestFieldMeta('brazo_extend_sin_impulso'),
+    saltoConCarrera: getPhysicalTestFieldMeta('brazo_extend_con_impulso'),
+    saltoLargo: getPhysicalTestFieldMeta('fuerza_explosiva_salto_largo'),
+    abdominales: getPhysicalTestFieldMeta('fuerza_abdomen'),
+    flexiones: getPhysicalTestFieldMeta('fuerza_brazos'),
+    sentadillas: getPhysicalTestFieldMeta('fuerza_piernas'),
+    dominadas: getPhysicalTestFieldMeta('elevaciones_barra'),
+  };
   const latestTest = physicalTests.length > 0 ? physicalTests[physicalTests.length - 1] : null;
   const imc = latestTest ? calculateIMC(latestTest.peso, latestTest.estatura) : null;
   const imcInfo = imc ? getIMCCategory(imc) : null;
@@ -311,7 +325,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
               </Card>
 
               <Card className="border-white/20 bg-black/35" padding="sm">
-                <p className="text-xs font-bold uppercase tracking-wide text-slate-300">Progreso de salto</p>
+                <p className="text-xs font-bold uppercase tracking-wide text-slate-300">Progreso de salto con carrera</p>
                 <p className="mt-1 text-3xl font-black text-white">
                   {jumpProgress !== null ? `${Number(jumpProgress) > 0 ? '+' : ''}${jumpProgress} cm` : 'N/A'}
                 </p>
@@ -399,7 +413,15 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
                 barClass="bg-gradient-to-br from-cyan-500 to-sky-700"
               />
               <ProgressChart
-                title="Brazo extendido inicial"
+                title={fieldMeta.envergadura.label}
+                icon={<FaRuler />}
+                tests={physicalTests}
+                metricKey="envergadura_brazos_extendidos_lateral"
+                unit="cm"
+                barClass="bg-gradient-to-br from-sky-500 to-teal-700"
+              />
+              <ProgressChart
+                title={fieldMeta.alcanceDePie.label}
                 icon={<FaDumbbell />}
                 tests={physicalTests}
                 metricKey="brazo_extend_inicial"
@@ -407,7 +429,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
                 barClass="bg-gradient-to-br from-cyan-500 to-cyan-700"
               />
               <ProgressChart
-                title="Brazo sin impulso"
+                title={fieldMeta.saltoEstatico.label}
                 icon={<FaDumbbell />}
                 tests={physicalTests}
                 metricKey="brazo_extend_sin_impulso"
@@ -415,7 +437,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
                 barClass="bg-gradient-to-br from-blue-500 to-blue-700"
               />
               <ProgressChart
-                title="Brazo con impulso"
+                title={fieldMeta.saltoConCarrera.label}
                 icon={<FaDumbbell />}
                 tests={physicalTests}
                 metricKey="brazo_extend_con_impulso"
@@ -452,26 +474,32 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
                     <div className="mt-3 grid gap-2 mobile:grid-cols-2 desktop:grid-cols-3">
                       <MetricCard icon={<FaWeight />} label="Peso" value={`${test.peso} kg`} />
                       <MetricCard icon={<FaRuler />} label="Estatura" value={`${test.estatura} m`} />
+                      {test.envergadura_brazos_extendidos_lateral != null ? (
+                        <MetricCard icon={<FaRuler />} label={fieldMeta.envergadura.shortLabel} value={`${test.envergadura_brazos_extendidos_lateral} cm`} />
+                      ) : null}
                       {test.brazo_extend_inicial != null ? (
-                        <MetricCard icon={<FaDumbbell />} label="Brazo ext. inicial" value={`${test.brazo_extend_inicial} cm`} />
+                        <MetricCard icon={<FaDumbbell />} label={fieldMeta.alcanceDePie.shortLabel} value={`${test.brazo_extend_inicial} cm`} />
                       ) : null}
                       {test.brazo_extend_sin_impulso != null ? (
-                        <MetricCard icon={<FaDumbbell />} label="Brazo sin impulso" value={`${test.brazo_extend_sin_impulso} cm`} />
+                        <MetricCard icon={<FaDumbbell />} label={fieldMeta.saltoEstatico.shortLabel} value={`${test.brazo_extend_sin_impulso} cm`} />
                       ) : null}
                       {test.brazo_extend_con_impulso != null ? (
-                        <MetricCard icon={<FaDumbbell />} label="Brazo con impulso" value={`${test.brazo_extend_con_impulso} cm`} />
+                        <MetricCard icon={<FaDumbbell />} label={fieldMeta.saltoConCarrera.shortLabel} value={`${test.brazo_extend_con_impulso} cm`} />
+                      ) : null}
+                      {test.fuerza_explosiva_salto_largo != null ? (
+                        <MetricCard icon={<FaRunning />} label={fieldMeta.saltoLargo.shortLabel} value={`${test.fuerza_explosiva_salto_largo} m`} />
                       ) : null}
                       {test.fuerza_abdomen != null ? (
-                        <MetricCard icon={<FaFire />} label="Abdominales (1 min)" value={`${test.fuerza_abdomen} reps`} />
+                        <MetricCard icon={<FaFire />} label={fieldMeta.abdominales.shortLabel} value={`${test.fuerza_abdomen} reps`} />
                       ) : null}
                       {test.fuerza_brazos != null ? (
-                        <MetricCard icon={<FaDumbbell />} label="Flexiones (1 min)" value={`${test.fuerza_brazos} reps`} />
+                        <MetricCard icon={<FaDumbbell />} label={fieldMeta.flexiones.shortLabel} value={`${test.fuerza_brazos} reps`} />
                       ) : null}
                       {test.fuerza_piernas != null ? (
-                        <MetricCard icon={<FaRunning />} label="Sentadillas (1 min)" value={`${test.fuerza_piernas} reps`} />
+                        <MetricCard icon={<FaRunning />} label={fieldMeta.sentadillas.shortLabel} value={`${test.fuerza_piernas} reps`} />
                       ) : null}
                       {test.elevaciones_barra != null ? (
-                        <MetricCard icon={<FaDumbbell />} label="Elevaciones (1 min)" value={`${test.elevaciones_barra} reps`} />
+                        <MetricCard icon={<FaDumbbell />} label={fieldMeta.dominadas.shortLabel} value={`${test.elevaciones_barra} reps`} />
                       ) : null}
                     </div>
                   </Card>

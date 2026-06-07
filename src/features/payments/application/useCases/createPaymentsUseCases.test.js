@@ -7,6 +7,7 @@ describe('createPaymentsUseCases', () => {
     listMembershipTypes: jest.fn(),
     createPayment: jest.fn(),
     getAthleteByStudentId: jest.fn(),
+    getPaymentById: jest.fn(),
     updatePayment: jest.fn(),
     softDeletePayment: jest.fn(),
   });
@@ -33,6 +34,9 @@ describe('createPaymentsUseCases', () => {
     getEcuadorDate: jest.fn(() => '2026-05-17'),
     getEcuadorISOString: jest.fn(() => '2026-05-17T10:00:00'),
     getLatestPaymentsList: jest.fn((payments) => payments),
+    gamificationService: {
+      refreshStudentProgress: jest.fn(),
+    },
   });
 
   it('listModuleDataUseCase refresca pagos cuando hubo actualizaciones de estado', async () => {
@@ -88,6 +92,7 @@ describe('createPaymentsUseCases', () => {
       fecha_pago: '2026-05-17',
     });
     expect(deps.communicationsService.sendPaymentConfirmation).toHaveBeenCalled();
+    expect(deps.gamificationService.refreshStudentProgress).toHaveBeenCalledWith({ studentId: 's1' });
     expect(result).toMatchObject({
       emailSent: true,
       whatsappSent: true,
@@ -117,12 +122,51 @@ describe('createPaymentsUseCases', () => {
 
   it('deletePaymentUseCase usa timestamp Ecuador para soft delete', async () => {
     const repository = buildRepository();
+    repository.getPaymentById.mockResolvedValue({ id: 'p1', student_id: 's1' });
     const deps = buildDeps();
     const useCases = createPaymentsUseCases(repository, deps);
 
     await useCases.deletePaymentUseCase.execute({ paymentId: 'p1' });
 
     expect(repository.softDeletePayment).toHaveBeenCalledWith('p1', '2026-05-17T10:00:00');
+    expect(deps.gamificationService.refreshStudentProgress).toHaveBeenCalledWith({ studentId: 's1' });
+  });
+
+  it('updatePaymentUseCase sincroniza progreso del estudiante anterior y actual', async () => {
+    const repository = buildRepository();
+    repository.getPaymentById.mockResolvedValue({ id: 'p1', student_id: 's0' });
+    const deps = buildDeps();
+    const useCases = createPaymentsUseCases(repository, deps);
+
+    await useCases.updatePaymentUseCase.execute({
+      paymentId: 'p1',
+      formData: {
+        student_id: 's1',
+        membership_type_id: '2',
+        fecha_pago: '2026-05-17',
+      },
+    });
+
+    expect(repository.updatePayment).toHaveBeenCalledWith('p1', {
+      student_id: 's1',
+      membership_type_id: 2,
+      fecha_pago: '2026-05-17',
+    });
+    expect(deps.gamificationService.refreshStudentProgress).toHaveBeenNthCalledWith(1, { studentId: 's0' });
+    expect(deps.gamificationService.refreshStudentProgress).toHaveBeenNthCalledWith(2, { studentId: 's1' });
+  });
+
+  it('markPaymentAsPaidUseCase sincroniza progreso del estudiante', async () => {
+    const repository = buildRepository();
+    const deps = buildDeps();
+    const useCases = createPaymentsUseCases(repository, deps);
+
+    await useCases.markPaymentAsPaidUseCase.execute({
+      payment: { id: 'p1', student_id: 's1' },
+    });
+
+    expect(repository.updatePayment).toHaveBeenCalledWith('p1', { fecha_pago: '2026-05-17' });
+    expect(deps.gamificationService.refreshStudentProgress).toHaveBeenCalledWith({ studentId: 's1' });
   });
 
   it('filterAndSortLatestPaymentsUseCase filtra por estado y busqueda', () => {

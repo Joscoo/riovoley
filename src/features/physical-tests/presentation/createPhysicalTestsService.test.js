@@ -6,6 +6,12 @@ jest.mock('../application/useCases/createPhysicalTestsUseCases', () => ({
   createPhysicalTestsUseCases: jest.fn(),
 }));
 
+jest.mock('../../gamification', () => ({
+  gamificationService: {
+    processPhysicalTestRecorded: jest.fn(),
+  },
+}));
+
 const { createPhysicalTestsUseCases } = require('../application/useCases/createPhysicalTestsUseCases');
 const { createPhysicalTestsService } = require('./createPhysicalTestsService');
 
@@ -37,7 +43,7 @@ describe('createPhysicalTestsService', () => {
 
   it('loadTests delega filtros al use case', async () => {
     mockLoadTests.mockResolvedValueOnce([{ id: 't1' }]);
-    const service = createPhysicalTestsService({});
+    const service = createPhysicalTestsService({}, { gamificationService: { processPhysicalTestRecorded: jest.fn() } });
 
     const result = await service.loadTests({ filters: { search: 'ana' } });
 
@@ -47,7 +53,7 @@ describe('createPhysicalTestsService', () => {
 
   it('buildInitialForm delega al use case', () => {
     mockBuildInitialForm.mockReturnValueOnce({ fecha_test: '2026-05-17' });
-    const service = createPhysicalTestsService({});
+    const service = createPhysicalTestsService({}, { gamificationService: { processPhysicalTestRecorded: jest.fn() } });
 
     const result = service.buildInitialForm();
 
@@ -57,7 +63,7 @@ describe('createPhysicalTestsService', () => {
 
   it('validateTestForm delega payload al use case', () => {
     mockValidateTestForm.mockReturnValueOnce({ ok: true });
-    const service = createPhysicalTestsService({});
+    const service = createPhysicalTestsService({}, { gamificationService: { processPhysicalTestRecorded: jest.fn() } });
 
     const result = service.validateTestForm({
       formData: { student_id: 's1' },

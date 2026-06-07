@@ -27,6 +27,11 @@ const generarMensajePagoCard = (diferenciaDias, nombreCompleto) => {
   return { mensaje: `El periodo de ${nombreCompleto} vence en ${diferenciaDias} dias`, tipo: 'info' };
 };
 
+const generarMensajeGamificacion = (achievement, nombreCompleto) => {
+  const achievementTitle = achievement.metadata?.title || achievement.achievement_slug || 'nuevo logro';
+  return `${nombreCompleto} desbloqueo ${achievementTitle}`;
+};
+
 export const createNotificationsUseCases = (repository) => {
   const buildPaymentsBaseUseCase = {
     execute: async () => {
@@ -79,7 +84,32 @@ export const createNotificationsUseCases = (repository) => {
         orden: 100
       }));
 
-      const todasNotificaciones = [...notificacionesPagos, ...notifAnuncios];
+      const gamificationAchievements = repository.listRecentGamificationAchievements
+        ? await repository.listRecentGamificationAchievements(fecha7DiasAtras)
+        : [];
+      const achievementStudentIds = gamificationAchievements.map((achievement) => achievement.student_id).filter(Boolean);
+      const studentsForAchievements = achievementStudentIds.length > 0
+        ? await repository.listStudentsByIds(achievementStudentIds)
+        : [];
+      const achievementStudentsMap = new Map((studentsForAchievements || []).map((student) => [student.id, student]));
+      const notifGamification = gamificationAchievements
+        .map((achievement) => {
+          const student = achievementStudentsMap.get(achievement.student_id);
+          if (!student) return null;
+          const nombreCompleto = `${student.users.nombre} ${student.users.apellido}`;
+          return {
+            id: `gamification-${achievement.student_id}-${achievement.achievement_slug}`,
+            tipo_notificacion: 'gamificacion',
+            mensaje: generarMensajeGamificacion(achievement, nombreCompleto),
+            descripcion: `Categoria: ${student.categoria || 'sin categoria'}`,
+            tipo: 'info',
+            fecha: achievement.earned_at,
+            orden: 50,
+          };
+        })
+        .filter(Boolean);
+
+      const todasNotificaciones = [...notificacionesPagos, ...notifGamification, ...notifAnuncios];
       todasNotificaciones.sort((a, b) => a.orden - b.orden);
       return todasNotificaciones;
     },

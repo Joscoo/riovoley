@@ -49,6 +49,7 @@ const getAthleteAgeAtDate = (birthStr, testDate) => {
 export const createPhysicalTestsUseCases = (repository, deps = {}) => {
   const nowDate = deps.getEcuadorDate || getEcuadorDate;
   const nowDateTime = deps.getEcuadorDateTime || getEcuadorDateTime;
+  const gamificationGateway = deps.gamificationService || null;
 
   const loadAtletasUseCase = {
     execute: async () => {
@@ -89,11 +90,42 @@ export const createPhysicalTestsUseCases = (repository, deps = {}) => {
   };
 
   const createTestUseCase = {
-    execute: async ({ formData }) => repository.createTest(buildTestPayload(formData)),
+    execute: async ({ formData }) => {
+      const createdTest = await repository.createTest(buildTestPayload(formData));
+
+      if (gamificationGateway?.processPhysicalTestRecorded && createdTest?.student_id) {
+        try {
+          await gamificationGateway.processPhysicalTestRecorded({
+            studentId: createdTest.student_id,
+            testId: createdTest.id,
+          });
+        } catch (error) {
+          console.warn('Gamification sync failed after creating physical test:', error);
+        }
+      }
+
+      return createdTest;
+    },
   };
 
   const updateTestUseCase = {
-    execute: async ({ testId, formData }) => repository.updateTest(testId, buildTestPayload(formData)),
+    execute: async ({ testId, formData }) => {
+      const updatedTests = await repository.updateTest(testId, buildTestPayload(formData));
+      const updatedTest = Array.isArray(updatedTests) ? updatedTests[0] : updatedTests;
+
+      if (gamificationGateway?.processPhysicalTestRecorded && updatedTest?.student_id) {
+        try {
+          await gamificationGateway.processPhysicalTestRecorded({
+            studentId: updatedTest.student_id,
+            testId: updatedTest.id || testId,
+          });
+        } catch (error) {
+          console.warn('Gamification sync failed after updating physical test:', error);
+        }
+      }
+
+      return updatedTests;
+    },
   };
 
   const deleteTestUseCase = {

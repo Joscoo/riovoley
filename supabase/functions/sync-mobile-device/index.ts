@@ -41,6 +41,7 @@ serve(async (req) => {
     const body = await readJsonBody<Record<string, unknown>>(req);
     const action = String(body?.action || '').trim();
     const deviceToken = String(body?.device_token || '').trim();
+    const deviceId = typeof body?.device_id === 'string' ? body.device_id.trim() : '';
 
     if (!deviceToken || !['upsert', 'remove'].includes(action)) {
       return jsonResponse({
@@ -55,7 +56,10 @@ serve(async (req) => {
     if (action === 'remove') {
       const { error } = await adminClient
         .from('mobile_device_registrations')
-        .delete()
+        .update({
+          notifications_enabled: false,
+          last_seen_at: new Date().toISOString(),
+        })
         .eq('user_id', user.id)
         .eq('device_token', deviceToken);
 
@@ -64,10 +68,26 @@ serve(async (req) => {
       }
 
       return jsonResponse(successEnvelope({
-        code: 'DEVICE_REMOVED',
-        message: 'Dispositivo desvinculado correctamente.',
+        code: 'DEVICE_DEACTIVATED',
+        message: 'Dispositivo desactivado correctamente.',
         data: { device_token: deviceToken },
       }));
+    }
+
+    if (deviceId) {
+      const { error: rotationError } = await adminClient
+        .from('mobile_device_registrations')
+        .update({
+          notifications_enabled: false,
+        })
+        .eq('user_id', user.id)
+        .eq('platform', String(body?.platform || 'android'))
+        .eq('device_id', deviceId)
+        .neq('device_token', deviceToken);
+
+      if (rotationError) {
+        throw rotationError;
+      }
     }
 
     const { error } = await adminClient
@@ -76,8 +96,16 @@ serve(async (req) => {
         user_id: user.id,
         platform: String(body?.platform || 'android'),
         device_token: deviceToken,
+        device_id: deviceId || null,
         device_name: typeof body?.device_name === 'string' ? body.device_name : null,
         app_version: typeof body?.app_version === 'string' ? body.app_version : null,
+        native_version: typeof body?.native_version === 'string' ? body.native_version : null,
+        native_build: typeof body?.native_build === 'string' ? body.native_build : null,
+        bundle_version: typeof body?.bundle_version === 'string' ? body.bundle_version : null,
+        bundle_id: typeof body?.bundle_id === 'string' ? body.bundle_id : null,
+        builtin_version: typeof body?.builtin_version === 'string' ? body.builtin_version : null,
+        ota_channel: typeof body?.ota_channel === 'string' ? body.ota_channel : null,
+        updater_plugin_version: typeof body?.updater_plugin_version === 'string' ? body.updater_plugin_version : null,
         notifications_enabled: body?.notifications_enabled !== false,
         last_seen_at: new Date().toISOString(),
       }, {
@@ -91,7 +119,7 @@ serve(async (req) => {
     return jsonResponse(successEnvelope({
       code: 'DEVICE_SYNCED',
       message: 'Dispositivo sincronizado correctamente.',
-      data: { device_token: deviceToken },
+      data: { device_token: deviceToken, device_id: deviceId || null },
     }));
   } catch (error) {
     return internalError(error);

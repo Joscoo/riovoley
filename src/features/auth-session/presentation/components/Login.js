@@ -353,13 +353,13 @@ function Login({ onLoginSuccess }) {
       <div className="mx-auto flex min-h-[calc(100dvh-80px)] w-full max-w-xl items-center justify-center">
         <Card padding="lg" className="w-full border-rv-gold/30 bg-[linear-gradient(140deg,rgba(12,12,20,0.95)_0%,rgba(30,58,138,0.66)_100%)]">
           <div className="mb-8 text-center">
-            <div className="relative mx-auto mb-4 h-20 w-20">
+            <div className="relative mx-auto mb-4 flex h-24 w-24 items-center justify-center">
               <div className="absolute inset-0 rounded-full bg-rv-gold/20 blur-xl" aria-hidden="true" />
-              <div className="relative flex h-full w-full items-center justify-center rounded-full bg-gradient-to-br from-rv-gold to-amber-400 text-rv-dark shadow-rv-gold">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-10 w-10" aria-hidden="true">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                </svg>
-              </div>
+              <img
+                src="/images/logoRio.png"
+                alt="RioVoley"
+                className="relative h-24 w-24 object-contain drop-shadow-[0_12px_24px_rgba(249,178,51,0.28)]"
+              />
             </div>
             <h1 className="bg-gradient-to-r from-white to-rv-gold bg-clip-text text-3xl font-black text-transparent mobile:text-4xl">
               {isLoggedIn ? 'Bienvenido' : 'Iniciar Sesión'}
@@ -576,4 +576,3 @@ Login.propTypes = {
 };
 
 export default Login;
-

@@ -14,6 +14,7 @@ describe('createNotificationsService', () => {
       listPaymentsForNotifications: jest.fn().mockResolvedValue([]),
       listStudentsByIds: jest.fn().mockResolvedValue([]),
       listRecentActiveAnnouncements: jest.fn().mockResolvedValue([]),
+      listRecentGamificationAchievements: jest.fn().mockResolvedValue([]),
     };
 
     const service = createNotificationsService(repository);
@@ -32,6 +33,7 @@ describe('createNotificationsService', () => {
         { id: 's1', categoria: 'iniciacion_hombres', users: { nombre: 'Ana', apellido: 'Perez' } },
       ]),
       listRecentActiveAnnouncements: jest.fn().mockResolvedValue([]),
+      listRecentGamificationAchievements: jest.fn().mockResolvedValue([]),
     };
 
     const service = createNotificationsService(repository);

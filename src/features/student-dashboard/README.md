@@ -14,7 +14,7 @@ Feature clean-lite para el panel del estudiante.
 
 ## Contrato publico
 - `studentDashboardService.loadStudentPanelData(userId)`
-  - retorna: `{ studentData, paymentStatus, attendanceStats, physicalTests }`
+  - retorna: `{ studentData, paymentStatus, attendanceStats, physicalTests, gamification }`
 - `studentDashboardService.loadStudentViewData(userId)`
   - retorna: `{ studentData, payments, physicalTests }`
 - `studentDashboardService.loadPaymentStatus(studentId)`

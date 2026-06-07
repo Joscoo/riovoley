@@ -157,6 +157,8 @@ npm run test:contracts # contratos edge function (reporting/auth-admin)
 npm run build        # build produccion
 npm run mobile:sync  # build + sync de Capacitor
 npm run mobile:android # sync + abre Android Studio
+npm run ota:upload:production # build + sube bundle web al canal production de Capgo
+npm run ota:upload:beta # build + sube bundle web al canal beta de Capgo
 npm run e2e          # E2E Playwright
 npm run e2e:smoke:roles # smoke de paneles por rol (requiere E2E_* en entorno)
 npm run e2e:smoke:roles:strict # valida E2E_* y falla si falta alguna credencial
@@ -206,9 +208,42 @@ npm run mobile:android
 Push Android requiere:
 
 - migracion SQL `database/mobile_push_android_phase10_2026_06_05.sql`
+- migracion SQL `database/mobile_push_android_phase11_2026_06_06.sql`
 - Edge Functions `send-push` y `send-payment-reminders`
 - variables `FCM_PROJECT_ID`, `FCM_CLIENT_EMAIL`, `FCM_PRIVATE_KEY`
 - configuracion de Firebase en el proyecto Android (`google-services.json`)
+
+OTA Android con Capgo:
+
+- dependencia instalada: `@capgo/capacitor-updater@8.47.9`
+- canal por defecto en la app: `production`
+- override opcional web: `REACT_APP_CAPGO_DEFAULT_CHANNEL=beta`
+- la app verifica updates OTA manualmente desde la UI flotante y no fuerza reinicios en mitad de la sesion
+
+Flujo operativo recomendado:
+
+```bash
+npm run build
+npm run ota:upload:production
+```
+
+Para beta:
+
+```bash
+npm run ota:upload:beta
+```
+
+Notas de release Android:
+
+- Cambios en `src/`, HTML/CSS/JS y assets web: pueden ir por OTA.
+- Cambios en `android/`, plugins Capacitor, permisos, Firebase nativo o cualquier codigo Java/Kotlin/XML: requieren APK/AAB nueva.
+- Despues de instalar o actualizar plugins nativos: ejecutar `npm run mobile:sync`.
+- Antes de publicar:
+  - validar login Android
+  - validar push foreground/background
+  - validar tap a anuncios y pagos
+  - validar icono/splash
+  - validar check/download/apply de OTA
 
 ## Estructura Rapida | Quick Project Map
 

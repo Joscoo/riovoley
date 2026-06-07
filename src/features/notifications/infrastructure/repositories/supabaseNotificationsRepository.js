@@ -52,4 +52,19 @@ export class SupabaseNotificationsRepository {
 
     return data || [];
   }
+
+  async listRecentGamificationAchievements(fechaDesde) {
+    const { data, error } = await supabase
+      .from('gamification_student_achievements')
+      .select('student_id, achievement_slug, earned_at, metadata')
+      .gte('earned_at', fechaDesde)
+      .order('earned_at', { ascending: false })
+      .limit(5);
+
+    if (error) {
+      throw new NotificationsError(normalizeError(error, 'Error cargando logros gamificados recientes'), error);
+    }
+
+    return data || [];
+  }
 }

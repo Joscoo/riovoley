@@ -1,4 +1,5 @@
 import { supabase } from '../../../config/supabase';
+import { getOtaDeviceMetadata } from '../../platform';
 import { getPlatform } from '../../platform';
 
 const normalizeError = (error, fallback) => {
@@ -11,13 +12,23 @@ export class SupabaseMobileDeviceRepository {
   async upsertDeviceToken({ userId, deviceToken }) {
     if (!userId || !deviceToken) return;
 
+    const otaMetadata = await getOtaDeviceMetadata().catch(() => null);
+
     const { error } = await supabase.functions.invoke('sync-mobile-device', {
       body: {
         action: 'upsert',
         platform: getPlatform(),
         device_token: deviceToken,
+        device_id: otaMetadata?.deviceId || null,
         notifications_enabled: true,
         app_version: process.env.REACT_APP_VERSION || 'web',
+        native_version: otaMetadata?.nativeVersion || null,
+        native_build: otaMetadata?.nativeBuild || null,
+        bundle_version: otaMetadata?.otaBundleVersion || null,
+        bundle_id: otaMetadata?.otaBundleId || null,
+        builtin_version: otaMetadata?.builtinVersion || null,
+        ota_channel: otaMetadata?.otaChannel || null,
+        updater_plugin_version: otaMetadata?.updaterPluginVersion || null,
       },
     });
 
@@ -33,6 +44,7 @@ export class SupabaseMobileDeviceRepository {
       body: {
         action: 'remove',
         device_token: deviceToken,
+        notifications_enabled: false,
       },
     });
 

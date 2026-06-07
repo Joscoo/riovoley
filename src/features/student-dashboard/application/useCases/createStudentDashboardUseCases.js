@@ -10,6 +10,7 @@ const buildMonthName = () =>
 
 export const createStudentDashboardUseCases = (repository, deps = {}) => {
   const statusService = deps.PagoStatusService || PagoStatusService;
+  const gamificationGateway = deps.gamificationService || null;
 
   const loadPaymentStatusUseCase = {
     execute: async ({ studentId }) => {
@@ -62,12 +63,20 @@ export const createStudentDashboardUseCases = (repository, deps = {}) => {
         loadAttendanceStatsUseCase.execute({ studentId: student.id }),
         loadPhysicalTestsUseCase.execute({ studentId: student.id }),
       ]);
+      const gamification = gamificationGateway?.loadStudentGamificationByStudentId
+        ? await gamificationGateway.loadStudentGamificationByStudentId({
+            studentId: student.id,
+            studentData: student,
+            physicalTests,
+          })
+        : null;
 
       return {
         studentData: student,
         paymentStatus,
         attendanceStats,
         physicalTests,
+        gamification,
       };
     },
   };

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Riovoley</string>
-    <string name="title_activity_main">Riovoley</string>
+    <string name="app_name">RioVoley</string>
+    <string name="title_activity_main">RioVoley</string>
     <string name="package_name">com.riovoley.app</string>
     <string name="custom_url_scheme">com.riovoley.app</string>
 </resources>

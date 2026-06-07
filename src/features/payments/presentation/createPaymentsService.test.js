@@ -78,6 +78,16 @@ describe('createPaymentsService', () => {
     expect(result).toEqual({ createdPayment: { id: 'p1' } });
   });
 
+  it('markPaymentAsPaid delega al use case', async () => {
+    mockMarkPaidExecute.mockResolvedValueOnce({ ok: true });
+    const service = createPaymentsService({});
+
+    const result = await service.markPaymentAsPaid({ payment: { id: 'p1', student_id: 's1' } });
+
+    expect(mockMarkPaidExecute).toHaveBeenCalledWith({ payment: { id: 'p1', student_id: 's1' } });
+    expect(result).toEqual({ ok: true });
+  });
+
   it('filterAndSortLatestPayments delega allPayments y filters', () => {
     mockFilterExecute.mockReturnValueOnce([{ id: 'p1' }]);
     const service = createPaymentsService({});

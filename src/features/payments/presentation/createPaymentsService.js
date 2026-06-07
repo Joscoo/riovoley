@@ -3,10 +3,11 @@ import { WhatsAppBusinessService, WhatsAppService } from '../../../shared/infras
 import { PagoStatusService } from '../../../shared/domain/payments';
 import { getEcuadorDate, getEcuadorISOString } from '../../../utils/dateUtils';
 import { getLatestPaymentsList } from '../../../utils/paymentUtils';
+import { gamificationService } from '../../gamification/gamificationService';
 import { createPaymentsUseCases } from '../application/useCases/createPaymentsUseCases';
 import { SupabasePaymentsRepository } from '../infrastructure/repositories/supabasePaymentsRepository';
 
-export const createPaymentsService = (repository = new SupabasePaymentsRepository()) => {
+export const createPaymentsService = (repository = new SupabasePaymentsRepository(), deps = {}) => {
   const useCases = createPaymentsUseCases(repository, {
     communicationsService,
     WhatsAppService,
@@ -15,6 +16,7 @@ export const createPaymentsService = (repository = new SupabasePaymentsRepositor
     getEcuadorDate,
     getEcuadorISOString,
     getLatestPaymentsList,
+    gamificationService: deps.gamificationService || gamificationService,
   });
   const listModuleData = async ({ query } = {}) => useCases.listModuleDataUseCase.execute({ query });
   const createPayment = async ({ formData }) => useCases.createPaymentUseCase.execute({ formData });
