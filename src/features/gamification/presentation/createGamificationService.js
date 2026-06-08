@@ -31,11 +31,20 @@ export const createGamificationService = (repository = new SupabaseGamificationR
   const loadXpLedger = async ({ studentId, limit }) =>
     useCases.loadXpLedgerUseCase.execute({ studentId, limit });
 
+  const loadCurrencyWallet = async ({ studentId, limit }) =>
+    useCases.loadCurrencyWalletUseCase.execute({ studentId, limit });
+
   const registerDailyLoginReward = async ({ userId }) =>
     useCases.registerDailyLoginRewardUseCase.execute({ userId });
 
-  const updateStudentIdentity = async ({ userId, nickname, selectedTitleSlug }) =>
-    useCases.updateStudentIdentityUseCase.execute({ userId, nickname, selectedTitleSlug });
+  const updateStudentIdentity = async ({ userId, nickname, selectedTitleSlug, avatarStyle }) =>
+    useCases.updateStudentIdentityUseCase.execute({ userId, nickname, selectedTitleSlug, avatarStyle });
+
+  const purchaseCosmeticItem = async ({ userId, itemSlug }) =>
+    useCases.purchaseCosmeticItemUseCase.execute({ userId, itemSlug });
+
+  const equipCosmeticItem = async ({ userId, itemSlug }) =>
+    useCases.equipCosmeticItemUseCase.execute({ userId, itemSlug });
 
   return {
     loadStudentGamification,
@@ -47,7 +56,10 @@ export const createGamificationService = (repository = new SupabaseGamificationR
     listStudentAchievements,
     listActiveChallenges,
     loadXpLedger,
+    loadCurrencyWallet,
     registerDailyLoginReward,
     updateStudentIdentity,
+    purchaseCosmeticItem,
+    equipCosmeticItem,
   };
 };

@@ -4,6 +4,8 @@ describe('createGamificationFoundationUseCases', () => {
   const buildRepository = () => ({
     findStudentByUserId: jest.fn(),
     listXpLedger: jest.fn(),
+    getCurrencyWallet: jest.fn(),
+    listCurrencyLedger: jest.fn(),
     getLoginRewardState: jest.fn(),
     upsertLoginRewardState: jest.fn(),
     appendXpLedgerEntry: jest.fn(),
@@ -92,5 +94,44 @@ describe('createGamificationFoundationUseCases', () => {
       xpDelta: 35,
       label: 'Asistencia registrada',
     })]);
+  });
+
+  it('loadCurrencyWalletUseCase formatea wallet y extracto de monedas', async () => {
+    const repository = buildRepository();
+    repository.getCurrencyWallet.mockResolvedValue({
+      student_id: 's1',
+      balance: 24,
+      total_earned: 24,
+      total_spent: 0,
+      last_synced_at: '2026-06-07T12:00:00.000Z',
+    });
+    repository.listCurrencyLedger.mockResolvedValue([{
+      id: 'c1',
+      student_id: 's1',
+      source_type: 'attendance',
+      source_ref: 'a1',
+      coins_delta: 2,
+      label: 'Asistencia registrada + monedas',
+      description: 'Tu progreso verificado tambien te entrego monedas blandas.',
+      metadata: {},
+      occurred_at: '2026-06-07T12:00:00.000Z',
+      created_at: '2026-06-07T12:00:00.000Z',
+    }]);
+
+    const useCases = createGamificationFoundationUseCases(repository, buildDeps());
+    const result = await useCases.loadCurrencyWalletUseCase.execute({ studentId: 's1', limit: 10 });
+
+    expect(repository.getCurrencyWallet).toHaveBeenCalledWith('s1');
+    expect(repository.listCurrencyLedger).toHaveBeenCalledWith('s1', 10);
+    expect(result).toMatchObject({
+      balance: 24,
+      totalEarned: 24,
+      totalSpent: 0,
+    });
+    expect(result.ledger[0]).toMatchObject({
+      studentId: 's1',
+      sourceType: 'attendance',
+      coinsDelta: 2,
+    });
   });
 });

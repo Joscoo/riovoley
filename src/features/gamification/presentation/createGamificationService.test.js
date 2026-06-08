@@ -19,8 +19,11 @@ describe('createGamificationService', () => {
   const mockAchievements = jest.fn();
   const mockChallenges = jest.fn();
   const mockXpLedger = jest.fn();
+  const mockCurrencyWallet = jest.fn();
   const mockLoginReward = jest.fn();
   const mockUpdateIdentity = jest.fn();
+  const mockPurchaseCosmetic = jest.fn();
+  const mockEquipCosmetic = jest.fn();
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -34,8 +37,11 @@ describe('createGamificationService', () => {
       listStudentAchievementsUseCase: { execute: mockAchievements },
       listActiveChallengesUseCase: { execute: mockChallenges },
       loadXpLedgerUseCase: { execute: mockXpLedger },
+      loadCurrencyWalletUseCase: { execute: mockCurrencyWallet },
       registerDailyLoginRewardUseCase: { execute: mockLoginReward },
       updateStudentIdentityUseCase: { execute: mockUpdateIdentity },
+      purchaseCosmeticItemUseCase: { execute: mockPurchaseCosmetic },
+      equipCosmeticItemUseCase: { execute: mockEquipCosmetic },
     });
   });
 
@@ -107,6 +113,16 @@ describe('createGamificationService', () => {
     expect(result).toEqual({ awarded: true, xpDelta: 8 });
   });
 
+  it('loadCurrencyWallet delega studentId y limit', async () => {
+    mockCurrencyWallet.mockResolvedValueOnce({ balance: 32, ledger: [] });
+    const service = createGamificationService({});
+
+    const result = await service.loadCurrencyWallet({ studentId: 's1', limit: 12 });
+
+    expect(mockCurrencyWallet).toHaveBeenCalledWith({ studentId: 's1', limit: 12 });
+    expect(result.balance).toBe(32);
+  });
+
   it('updateStudentIdentity delega userId, apodo y titulo', async () => {
     mockUpdateIdentity.mockResolvedValueOnce({ identity: { nickname: 'RayoLeo' } });
     const service = createGamificationService({});
@@ -115,13 +131,35 @@ describe('createGamificationService', () => {
       userId: 'u1',
       nickname: 'RayoLeo',
       selectedTitleSlug: 'primer_impulso',
+      avatarStyle: 'lorelei-neutral',
     });
 
     expect(mockUpdateIdentity).toHaveBeenCalledWith({
       userId: 'u1',
       nickname: 'RayoLeo',
       selectedTitleSlug: 'primer_impulso',
+      avatarStyle: 'lorelei-neutral',
     });
     expect(result).toEqual({ identity: { nickname: 'RayoLeo' } });
+  });
+
+  it('purchaseCosmeticItem delega compra por userId e item', async () => {
+    mockPurchaseCosmetic.mockResolvedValueOnce({ cosmetics: { inventoryCount: 2 } });
+    const service = createGamificationService({});
+
+    const result = await service.purchaseCosmeticItem({ userId: 'u1', itemSlug: 'frame_cian_ruta' });
+
+    expect(mockPurchaseCosmetic).toHaveBeenCalledWith({ userId: 'u1', itemSlug: 'frame_cian_ruta' });
+    expect(result).toEqual({ cosmetics: { inventoryCount: 2 } });
+  });
+
+  it('equipCosmeticItem delega equipamiento por userId e item', async () => {
+    mockEquipCosmetic.mockResolvedValueOnce({ cosmetics: { equipment: { frame: 'frame_cian_ruta' } } });
+    const service = createGamificationService({});
+
+    const result = await service.equipCosmeticItem({ userId: 'u1', itemSlug: 'frame_cian_ruta' });
+
+    expect(mockEquipCosmetic).toHaveBeenCalledWith({ userId: 'u1', itemSlug: 'frame_cian_ruta' });
+    expect(result).toEqual({ cosmetics: { equipment: { frame: 'frame_cian_ruta' } } });
   });
 });

@@ -166,6 +166,11 @@ const CategoryLeaderboardsPanel = ({
                     <span className="text-rv-gold">{icon}</span>
                     {board.title}
                   </p>
+                  {leader?.avatarUrl ? (
+                    <div className="mt-3 h-12 w-12 overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 p-1">
+                      <img src={leader.avatarUrl} alt={`Avatar de ${leader.publicAlias}`} className="h-full w-full rounded-xl object-cover" />
+                    </div>
+                  ) : null}
                   <p className="mt-3 text-lg font-black text-white">
                     {leader ? leader.publicAlias : 'Sin marca'}
                   </p>
@@ -251,7 +256,13 @@ const CategoryLeaderboardsPanel = ({
                       className={`rounded-2xl border px-4 py-4 ${getLeaderboardTone(row.rankPosition)}`}
                     >
                       <div className="flex flex-col gap-3 mobile:flex-row mobile:items-center mobile:justify-between">
-                        <div className="min-w-0">
+                        <div className="flex min-w-0 items-start gap-3">
+                          {row.avatarUrl ? (
+                            <div className="h-12 w-12 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 p-1">
+                              <img src={row.avatarUrl} alt={`Avatar de ${row.publicAlias}`} className="h-full w-full rounded-xl object-cover" />
+                            </div>
+                          ) : null}
+                          <div className="min-w-0">
                           <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-300">
                             Puesto #{row.rankPosition}
                           </p>
@@ -268,6 +279,7 @@ const CategoryLeaderboardsPanel = ({
                               ? `${row.publicAlias} tiene la mejor marca actual en ${activeLeaderboard.title.toLowerCase()}.`
                               : `Necesita ${formatScore((activeLeaderboard.rows?.[0]?.score || 0) - row.score, activeLeaderboard.unit)} para alcanzar al lider.`}
                           </p>
+                        </div>
                         </div>
                         <div className="shrink-0 text-left mobile:text-right">
                           <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-300">

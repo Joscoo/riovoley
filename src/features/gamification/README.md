@@ -22,8 +22,12 @@ Feature clean-lite para fases 1 a 4 de gamificacion basada internamente en Octal
 - `gamificationService.getCategoryLeaderboard({ category, ageBand, limit })`
 - `gamificationService.listCategoryLeaderboards({ category, ageBand, limit })`
 - `gamificationService.loadXpLedger({ studentId, limit })`
+- `gamificationService.loadCurrencyWallet({ studentId, limit })`
 - `gamificationService.registerDailyLoginReward({ userId })`
 - `gamificationService.updateStudentIdentity({ userId, nickname, selectedTitleSlug })`
+- `gamificationService.updateStudentIdentity({ userId, nickname, selectedTitleSlug, avatarStyle })`
+- `gamificationService.purchaseCosmeticItem({ userId, itemSlug })`
+- `gamificationService.equipCosmeticItem({ userId, itemSlug })`
 - `gamificationService.listStudentAchievements({ studentId })`
 - `gamificationService.listActiveChallenges({ studentId })`
 
@@ -37,3 +41,18 @@ Feature clean-lite para fases 1 a 4 de gamificacion basada internamente en Octal
 - Apodos editables por el propio estudiante con validacion moderada.
 - Titulos desbloqueables y equipables sin exponer reglas internas del framework.
 - Leaderboards enriquecidos con `apodo + titulo` sin alterar el ownership de los datos base.
+
+## Fase de economia base
+- Moneda blanda separada del XP con `wallet` y `ledger` propios.
+- Recompensas de monedas derivadas desde actividad verificada, logros y subidas de nivel.
+- Panel del estudiante con saldo, resumen y extracto de monedas listo para futuras compras cosmeticas.
+
+## Fase de tienda cosmetica inicial
+- Catalogo inicial de marcos, fondos, insignias y efectos.
+- Inventario propio del estudiante y equipamiento por slot.
+- Compras seguras via funciones SQL, sin abrir escritura directa del wallet al cliente.
+
+## Fase de avatar configurable
+- Avatar generado con DiceBear HTTP API usando semilla deterministica por estudiante.
+- Seleccion persistida de estilo de avatar dentro de la identidad competitiva.
+- Render del avatar en panel del estudiante y leaderboards, reutilizando apodo, estilo y cosmeticos equipados.

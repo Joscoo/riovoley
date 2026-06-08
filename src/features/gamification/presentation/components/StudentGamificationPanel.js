@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   FaBolt,
+  FaCoins,
   FaCalendarCheck,
   FaChartLine,
   FaChevronRight,
@@ -15,6 +16,7 @@ import {
   FaStar,
   FaSyncAlt,
   FaTrophy,
+  FaUserCircle,
 } from 'react-icons/fa';
 import { gamificationService } from '../../gamificationService';
 import { Button, Card, EmptyState, SectionHeader, StatusBadge } from '../../../../shared/ui';
@@ -110,18 +112,24 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
   const upcomingChallenges = gamification?.upcomingChallenges || [];
   const nudges = gamification?.nudges || [];
   const xpLedger = gamification?.xpLedger || [];
+  const currency = gamification?.currency || { balance: 0, totalEarned: 0, totalSpent: 0, ledger: [] };
+  const cosmetics = gamification?.cosmetics || { items: [], equipment: {}, inventoryCount: 0 };
   const leaderboard = gamification?.leaderboard || [];
   const leaderboards = gamification?.leaderboards || [];
   const [selectedLeaderboardType, setSelectedLeaderboardType] = useState('overall');
   const [nickname, setNickname] = useState(identity?.nickname || '');
   const [selectedTitleSlug, setSelectedTitleSlug] = useState(identity?.selectedTitleSlug || '');
+  const [selectedAvatarStyle, setSelectedAvatarStyle] = useState(identity?.avatarStyle || 'adventurer-neutral');
   const [savingIdentity, setSavingIdentity] = useState(false);
   const [identityMessage, setIdentityMessage] = useState(null);
+  const [cosmeticMessage, setCosmeticMessage] = useState(null);
+  const [cosmeticActionSlug, setCosmeticActionSlug] = useState('');
 
   useEffect(() => {
     setNickname(identity?.nickname || '');
     setSelectedTitleSlug(identity?.selectedTitleSlug || '');
-  }, [identity?.nickname, identity?.selectedTitleSlug]);
+    setSelectedAvatarStyle(identity?.avatarStyle || 'adventurer-neutral');
+  }, [identity?.nickname, identity?.selectedTitleSlug, identity?.avatarStyle]);
 
   if (!profile) {
     return (
@@ -181,6 +189,8 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
   const availableTitles = identity?.availableTitles || [];
   const unlockedTitles = availableTitles.filter((title) => title.isUnlocked);
   const currentTitle = identity?.equippedTitle || null;
+  const ownedCosmetics = (cosmetics.items || []).filter((item) => item.isOwned);
+  const storeCosmetics = cosmetics.items || [];
 
   const handleSaveIdentity = async () => {
     if (!userId) return;
@@ -191,6 +201,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
         userId,
         nickname,
         selectedTitleSlug: selectedTitleSlug || null,
+        avatarStyle: selectedAvatarStyle,
       });
       if (typeof onIdentityUpdated === 'function') {
         onIdentityUpdated(updatedGamification);
@@ -204,6 +215,42 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
       });
     } finally {
       setSavingIdentity(false);
+    }
+  };
+
+  const handlePurchaseCosmetic = async (itemSlug) => {
+    if (!userId) return;
+    setCosmeticActionSlug(itemSlug);
+    setCosmeticMessage(null);
+    try {
+      const updatedGamification = await gamificationService.purchaseCosmeticItem({ userId, itemSlug });
+      if (typeof onIdentityUpdated === 'function') {
+        onIdentityUpdated(updatedGamification);
+      }
+      setCosmeticMessage({ tone: 'success', text: 'Item comprado y agregado a tu coleccion.' });
+    } catch (error) {
+      console.error('Error comprando item cosmetico:', error);
+      setCosmeticMessage({ tone: 'warning', text: error?.message || 'No se pudo completar la compra.' });
+    } finally {
+      setCosmeticActionSlug('');
+    }
+  };
+
+  const handleEquipCosmetic = async (itemSlug) => {
+    if (!userId) return;
+    setCosmeticActionSlug(itemSlug);
+    setCosmeticMessage(null);
+    try {
+      const updatedGamification = await gamificationService.equipCosmeticItem({ userId, itemSlug });
+      if (typeof onIdentityUpdated === 'function') {
+        onIdentityUpdated(updatedGamification);
+      }
+      setCosmeticMessage({ tone: 'success', text: 'Tu equipamiento cosmetico se actualizo.' });
+    } catch (error) {
+      console.error('Error equipando item cosmetico:', error);
+      setCosmeticMessage({ tone: 'warning', text: error?.message || 'No se pudo equipar el item.' });
+    } finally {
+      setCosmeticActionSlug('');
     }
   };
 
@@ -309,6 +356,13 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
             value={hasActivePayment ? 'Activa' : 'Por revisar'}
             helper={hasActivePayment ? 'Tu cobertura vigente suma a tu progreso.' : 'Pon tu mensualidad al dia para seguir sumando.'}
             tone={hasActivePayment ? 'success' : 'warning'}
+          />
+          <HighlightStat
+            icon={<FaCoins />}
+            label="Monedas"
+            value={`${currency.balance || 0}`}
+            helper="Sirven para futuros decorativos, efectos y personalizacion."
+            tone={(currency.balance || 0) > 0 ? 'success' : 'default'}
           />
         </div>
       </div>
@@ -428,8 +482,28 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
         <div className="grid gap-4 desktop:grid-cols-[0.95fr_1.05fr]">
           <div className="rounded-3xl border border-cyan-300/20 bg-[linear-gradient(135deg,_rgba(34,211,238,0.16),_rgba(15,23,42,0.18)_55%,_rgba(245,158,11,0.12))] p-4">
             <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-100">Tu identidad competitiva</p>
-            <p className="mt-3 text-2xl font-black text-white">{identity?.displayName || 'Sin apodo todavia'}</p>
-            <p className="mt-1 text-sm text-slate-300">Nombre real: {identity?.realName || 'Estudiante'}</p>
+            <div className="mt-3 flex flex-col gap-4 mobile:flex-row mobile:items-center">
+              <div className="h-24 w-24 overflow-hidden rounded-3xl border border-white/10 bg-slate-950/80 p-1 shadow-[0_18px_40px_-28px_rgba(34,211,238,0.55)]">
+                {identity?.avatarUrl ? (
+                  <img
+                    src={identity.avatarUrl}
+                    alt={`Avatar de ${identity?.displayName || 'estudiante'}`}
+                    className="h-full w-full rounded-[20px] object-cover"
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center rounded-[20px] bg-white/5 text-slate-400">
+                    <FaUserCircle className="text-4xl" />
+                  </div>
+                )}
+              </div>
+              <div>
+                <p className="text-2xl font-black text-white">{identity?.displayName || 'Sin apodo todavia'}</p>
+                <p className="mt-1 text-sm text-slate-300">Nombre real: {identity?.realName || 'Estudiante'}</p>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-cyan-200">
+                  Estilo: {identity?.avatarStyleMeta?.name || 'Aventurero'}
+                </p>
+              </div>
+            </div>
             <div className="mt-4 flex flex-wrap items-center gap-2">
               <StatusBadge tone="info">{currentTitle?.name || 'Sin titulo equipado'}</StatusBadge>
               <StatusBadge tone="success">{unlockedTitles.length} titulos desbloqueados</StatusBadge>
@@ -472,6 +546,22 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                 <span className="text-xs text-slate-400">Solo puedes equipar titulos que ya hayas ganado.</span>
               </label>
 
+              <label className="grid gap-2">
+                <span className="text-sm font-bold text-white">Estilo del avatar</span>
+                <select
+                  value={selectedAvatarStyle}
+                  onChange={(event) => setSelectedAvatarStyle(event.target.value)}
+                  className="min-h-[46px] rounded-2xl border border-white/10 bg-slate-950/85 px-4 text-sm font-semibold text-white outline-none transition focus:border-rv-gold/45"
+                >
+                  {(identity?.avatarStyleOptions || []).map((option) => (
+                    <option key={option.slug} value={option.slug}>
+                      {option.name}
+                    </option>
+                  ))}
+                </select>
+                <span className="text-xs text-slate-400">Usa una base visual distinta sin tocar tus cosmeticos equipados.</span>
+              </label>
+
               {identityMessage ? (
                 <div className={`rounded-2xl border px-3 py-2 text-sm ${
                   identityMessage.tone === 'success'
@@ -489,6 +579,184 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                   Guardar identidad
                 </Button>
               </div>
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <Card className="mt-4 border-white/15 bg-black/25" padding="sm">
+        <h3 className="inline-flex items-center gap-2 text-base font-extrabold text-white mobile:text-lg">
+          <FaCoins className="text-rv-gold" />
+          Monedas de personalizacion
+        </h3>
+        <div className="mt-3 grid gap-3 desktop:grid-cols-[0.95fr_1.05fr]">
+          <div className="rounded-3xl border border-emerald-300/20 bg-[linear-gradient(135deg,_rgba(16,185,129,0.14),_rgba(15,23,42,0.18)_55%,_rgba(245,158,11,0.12))] p-4">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-emerald-100">Wallet activa</p>
+            <p className="mt-3 text-4xl font-black text-white">{currency.balance || 0}</p>
+            <div className="mt-4 grid gap-3 mobile:grid-cols-2">
+              <MiniInsight
+                icon={<FaCoins />}
+                label="Ganadas"
+                value={`${currency.totalEarned || 0}`}
+                helper="Todo lo que ya acumulaste."
+              />
+              <MiniInsight
+                icon={<FaShieldAlt />}
+                label="Gastadas"
+                value={`${currency.totalSpent || 0}`}
+                helper="Por ahora se mantiene en cero."
+              />
+            </div>
+            <p className="mt-4 text-sm text-slate-200">
+              Estas monedas quedaran listas para canjear cosmeticos, efectos de perfil y futuras piezas visuales del avatar.
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">Extracto de monedas</p>
+            {currency.ledger?.length > 0 ? (
+              <div className="mt-3 space-y-2">
+                {currency.ledger.slice(0, 8).map((entry) => (
+                  <div key={`${entry.id || entry.sourceRef || entry.occurredAt}-${entry.label}`} className="rounded-2xl border border-white/10 bg-slate-950/80 p-3">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <p className="text-sm font-bold text-white">{entry.label}</p>
+                        <p className="mt-1 text-xs text-slate-300">{entry.description}</p>
+                        <p className="mt-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
+                          {entry.occurredAt ? formatDate(entry.occurredAt) : 'Recompensa estructural'}
+                        </p>
+                      </div>
+                      <StatusBadge tone="success">+{entry.coinsDelta}</StatusBadge>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="mt-3 text-sm text-slate-300">Aun no tienes movimientos de monedas visibles.</p>
+            )}
+          </div>
+        </div>
+      </Card>
+
+      <Card className="mt-4 border-white/15 bg-black/25" padding="sm">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h3 className="inline-flex items-center gap-2 text-base font-extrabold text-white mobile:text-lg">
+            <FaStar className="text-rv-gold" />
+            Tienda y coleccion
+          </h3>
+          <StatusBadge tone="info">{cosmetics.inventoryCount || 0} items en tu coleccion</StatusBadge>
+        </div>
+
+        <div className="mt-3 grid gap-4 desktop:grid-cols-[0.95fr_1.05fr]">
+          <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">Equipamiento actual</p>
+            <div className="mt-3 grid gap-3 mobile:grid-cols-2">
+              <MiniInsight
+                icon={<FaShieldAlt />}
+                label="Marco"
+                value={(storeCosmetics.find((item) => item.slug === cosmetics.equipment?.frame)?.name) || 'Sin equipar'}
+                helper="Visible en tu identidad competitiva."
+              />
+              <MiniInsight
+                icon={<FaLayerGroup />}
+                label="Fondo"
+                value={(storeCosmetics.find((item) => item.slug === cosmetics.equipment?.background)?.name) || 'Sin equipar'}
+                helper="Listo para futuras tarjetas visuales."
+              />
+              <MiniInsight
+                icon={<FaMedal />}
+                label="Insignia"
+                value={(storeCosmetics.find((item) => item.slug === cosmetics.equipment?.badge)?.name) || 'Sin equipar'}
+                helper="Se mostrara junto a tu perfil."
+              />
+              <MiniInsight
+                icon={<FaBolt />}
+                label="Efecto"
+                value={(storeCosmetics.find((item) => item.slug === cosmetics.equipment?.effect)?.name) || 'Sin equipar'}
+                helper="Le dara mas personalidad a tu presencia."
+              />
+            </div>
+
+            {cosmeticMessage ? (
+              <div className={`mt-4 rounded-2xl border px-3 py-2 text-sm ${
+                cosmeticMessage.tone === 'success'
+                  ? 'border-emerald-300/35 bg-emerald-900/15 text-emerald-100'
+                  : 'border-amber-300/35 bg-amber-900/15 text-amber-100'
+              }`}>
+                {cosmeticMessage.text}
+              </div>
+            ) : null}
+
+            <div className="mt-4 space-y-2">
+              {(ownedCosmetics.length > 0 ? ownedCosmetics : storeCosmetics.filter((item) => item.priceCoins === 0)).slice(0, 6).map((item) => (
+                <div key={`owned-${item.slug}`} className="rounded-2xl border border-white/10 bg-slate-950/80 p-3">
+                  <div className="flex flex-wrap items-start justify-between gap-2">
+                    <div>
+                      <p className="text-sm font-bold text-white">{item.name}</p>
+                      <p className="mt-1 text-xs text-slate-300">{item.description}</p>
+                    </div>
+                    <StatusBadge tone={item.isEquipped ? 'success' : 'info'}>
+                      {item.isEquipped ? 'Equipado' : 'Disponible'}
+                    </StatusBadge>
+                  </div>
+                  <div className="mt-3 flex items-center justify-between gap-3">
+                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">{item.category}</p>
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      disabled={item.isEquipped || cosmeticActionSlug === item.slug}
+                      onClick={() => handleEquipCosmetic(item.slug)}
+                    >
+                      <FaSyncAlt className={`mr-2 ${cosmeticActionSlug === item.slug ? 'animate-spin' : ''}`} />
+                      Equipar
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-cyan-300/20 bg-[linear-gradient(135deg,_rgba(34,211,238,0.12),_rgba(15,23,42,0.18)_55%,_rgba(245,158,11,0.08))] p-4">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-100">Catalogo cosmetico</p>
+            <div className="mt-3 grid gap-3 mobile:grid-cols-2">
+              {storeCosmetics.map((item) => (
+                <div key={item.slug} className="rounded-2xl border border-white/10 bg-black/25 p-4">
+                  <div className="flex flex-wrap items-start justify-between gap-2">
+                    <div>
+                      <p className="text-sm font-bold text-white">{item.name}</p>
+                      <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.14em] text-rv-gold">{item.rarity}</p>
+                    </div>
+                    <StatusBadge tone={item.isOwned ? 'success' : item.canAfford ? 'info' : 'warning'}>
+                      {item.isOwned ? 'Tuyo' : `${item.priceCoins} monedas`}
+                    </StatusBadge>
+                  </div>
+                  <p className="mt-2 text-xs text-slate-200">{item.description}</p>
+                  <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">{item.category}</p>
+                  <div className="mt-3 flex items-center justify-between gap-2">
+                    {item.isOwned ? (
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        disabled={item.isEquipped || cosmeticActionSlug === item.slug}
+                        onClick={() => handleEquipCosmetic(item.slug)}
+                      >
+                        <FaSyncAlt className={`mr-2 ${cosmeticActionSlug === item.slug ? 'animate-spin' : ''}`} />
+                        {item.isEquipped ? 'Equipado' : 'Equipar'}
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        disabled={!item.canAfford || cosmeticActionSlug === item.slug}
+                        onClick={() => handlePurchaseCosmetic(item.slug)}
+                      >
+                        <FaCoins className="mr-2" />
+                        Comprar
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -705,7 +973,11 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                 className={`rounded-2xl border p-4 transition-transform duration-200 hover:-translate-y-0.5 ${entry.isCurrentStudent ? 'border-rv-gold/55 bg-rv-gold/10 shadow-[0_16px_45px_-30px_rgba(245,158,11,0.65)]' : getLeaderboardTone(entry.rankPosition)}`}
               >
                 <div className="flex items-start justify-between gap-2">
-                  <div>
+                  <div className="flex min-w-0 items-start gap-3">
+                    <div className="h-12 w-12 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 p-1">
+                      <img src={entry.avatarUrl} alt={`Avatar de ${entry.publicAlias}`} className="h-full w-full rounded-xl object-cover" />
+                    </div>
+                    <div className="min-w-0">
                     <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">
                       Puesto #{entry.rankPosition}
                     </p>
@@ -720,6 +992,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                         ? `${entry.publicAlias} lidera esta tabla con ${entry.score} ${entry.unit}.`
                         : `${entry.publicAlias} compite con ${entry.score} ${entry.unit}.`}
                     </p>
+                  </div>
                   </div>
                   {entry.isCurrentStudent ? <StatusBadge tone="success">Tu</StatusBadge> : null}
                 </div>
@@ -791,6 +1064,17 @@ StudentGamificationPanel.propTypes = {
         name: PropTypes.string,
       }),
       availableTitles: PropTypes.array,
+    }),
+    currency: PropTypes.shape({
+      balance: PropTypes.number,
+      totalEarned: PropTypes.number,
+      totalSpent: PropTypes.number,
+      ledger: PropTypes.array,
+    }),
+    cosmetics: PropTypes.shape({
+      inventoryCount: PropTypes.number,
+      equipment: PropTypes.object,
+      items: PropTypes.array,
     }),
     achievements: PropTypes.array,
     lockedAchievements: PropTypes.array,

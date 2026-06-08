@@ -117,6 +117,26 @@ create or replace view public.gamification_student_identity
 with (security_invoker = true) as
 select * from gamification.student_identity;
 
+create or replace view public.gamification_currency_wallets
+with (security_invoker = true) as
+select * from gamification.currency_wallets;
+
+create or replace view public.gamification_currency_ledger
+with (security_invoker = true) as
+select * from gamification.currency_ledger;
+
+create or replace view public.gamification_cosmetic_items_catalog
+with (security_invoker = true) as
+select * from gamification.cosmetic_items_catalog;
+
+create or replace view public.gamification_student_cosmetic_items
+with (security_invoker = true) as
+select * from gamification.student_cosmetic_items;
+
+create or replace view public.gamification_student_cosmetic_equipment
+with (security_invoker = true) as
+select * from gamification.student_cosmetic_equipment;
+
 create or replace view public.gamification_leaderboard_public
 with (security_invoker = true) as
 select
@@ -173,6 +193,11 @@ grant select, insert, update, delete on
   public.gamification_leaderboard_snapshots,
   public.gamification_titles_catalog,
   public.gamification_student_identity,
+  public.gamification_currency_wallets,
+  public.gamification_currency_ledger,
+  public.gamification_cosmetic_items_catalog,
+  public.gamification_student_cosmetic_items,
+  public.gamification_student_cosmetic_equipment,
   public.gamification_leaderboard_public,
   public.training_categories,
   public.announcements,
@@ -197,6 +222,11 @@ grant select on
   public.gamification_leaderboard_snapshots,
   public.gamification_titles_catalog,
   public.gamification_student_identity,
+  public.gamification_currency_wallets,
+  public.gamification_currency_ledger,
+  public.gamification_cosmetic_items_catalog,
+  public.gamification_student_cosmetic_items,
+  public.gamification_student_cosmetic_equipment,
   public.gamification_leaderboard_public,
   public.announcements,
   public.announcements_with_creator,
@@ -215,7 +245,12 @@ grant select on
   gamification.student_challenge_progress,
   gamification.leaderboard_snapshots,
   gamification.titles_catalog,
-  gamification.student_identity
+  gamification.student_identity,
+  gamification.currency_wallets,
+  gamification.currency_ledger,
+  gamification.cosmetic_items_catalog,
+  gamification.student_cosmetic_items,
+  gamification.student_cosmetic_equipment
 to authenticated;
 
 grant insert, update, delete on
@@ -224,14 +259,19 @@ grant insert, update, delete on
   gamification.student_achievements,
   gamification.student_challenge_progress,
   gamification.leaderboard_snapshots,
-  gamification.student_identity
+  gamification.student_identity,
+  gamification.currency_wallets,
+  gamification.currency_ledger,
+  gamification.student_cosmetic_items,
+  gamification.student_cosmetic_equipment
 to authenticated;
 
 grant select on
   gamification.achievement_catalog,
   gamification.challenges_catalog,
   gamification.leaderboard_snapshots,
-  gamification.titles_catalog
+  gamification.titles_catalog,
+  gamification.cosmetic_items_catalog
 to anon;
 
 commit;

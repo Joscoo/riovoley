@@ -48,6 +48,9 @@ Este documento deja trazabilidad de como se estan cubriendo los 8 core drivers e
   - Coleccion de logros desbloqueados y logros bloqueados.
   - Cobertura de mensualidad reflejada dentro del avance personal.
   - Identidad competitiva persistida con apodo y titulo equipado.
+  - Wallet de monedas blandas y extracto de monedas ya visibles.
+  - Tienda cosmetica inicial, inventario y equipamiento por slot ya implementados.
+  - Estilo de avatar persistido y visible en la identidad del estudiante.
   - Economia de moneda blanda, inventario, tienda y equipamiento definidos para la expansion.
 - Justificacion:
   - El estudiante siente que esta construyendo algo propio y acumulativo.
@@ -62,6 +65,7 @@ Este documento deja trazabilidad de como se estan cubriendo los 8 core drivers e
   - Multiples leaderboards por progreso general, mediciones fisicas, asistencias y mensualidades.
   - Logros y retos conectados a asistencia y constancia.
   - Apodos moderados y titulos visibles ya implementados para reforzar identidad social.
+  - Avatar visible ya implementado en panel y rankings para reforzar reconocimiento inmediato.
 - Justificacion:
   - Se incorpora comparacion social directa y permite competir desde fortalezas distintas.
 - Evidencia:
@@ -116,6 +120,10 @@ Este documento deja trazabilidad de como se estan cubriendo los 8 core drivers e
   - valida delegacion del servicio publico
 - `src/features/gamification/application/useCases/createGamificationUseCases.test.js`
   - valida actualizacion de identidad, titulos equipados y render competitivo derivado
+- `src/features/gamification/application/useCases/createGamificationFoundationUseCases.test.js`
+  - valida wallet y extracto de monedas
+- `src/features/gamification/application/useCases/createGamificationUseCases.test.js`
+  - valida compra y equipamiento cosmetico dentro del agregado
 - `src/features/attendance/application/useCases/createAttendanceUseCases.test.js`
   - valida que cambios de asistencia disparen recalculo gamificado
 - `src/features/payments/application/useCases/createPaymentsUseCases.test.js`
@@ -132,6 +140,11 @@ Este documento deja trazabilidad de como se estan cubriendo los 8 core drivers e
 - Tailwind CSS para la experiencia responsive
 - Ledger persistido `gamification_xp_ledger`
 - Guardia diaria `gamification_login_rewards`
+- Wallet persistida `gamification_currency_wallets`
+- Ledger persistido `gamification_currency_ledger`
+- Catalogo `gamification_cosmetic_items_catalog`
+- Inventario `gamification_student_cosmetic_items`
+- Equipamiento `gamification_student_cosmetic_equipment`
 
 ## Cobertura planificada para la expansion estructurada
 

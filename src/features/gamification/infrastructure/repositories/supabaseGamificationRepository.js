@@ -253,6 +253,74 @@ export class SupabaseGamificationRepository {
     return data || [];
   }
 
+  async listCosmeticCatalog() {
+    const { data, error } = await supabase
+      .from('gamification_cosmetic_items_catalog')
+      .select('*')
+      .eq('is_active', true)
+      .order('sort_order', { ascending: true });
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error cargando catalogo cosmetico'), error);
+    }
+
+    return data || [];
+  }
+
+  async listStudentCosmeticItems(studentId) {
+    const { data, error } = await supabase
+      .from('gamification_student_cosmetic_items')
+      .select('*')
+      .eq('student_id', studentId)
+      .order('acquired_at', { ascending: false });
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error cargando inventario cosmetico'), error);
+    }
+
+    return data || [];
+  }
+
+  async getStudentCosmeticEquipment(studentId) {
+    const { data, error } = await supabase
+      .from('gamification_student_cosmetic_equipment')
+      .select('*')
+      .eq('student_id', studentId)
+      .maybeSingle();
+
+    if (error && !isNoRowsError(error)) {
+      throw new GamificationError(normalizeError(error, 'Error cargando equipamiento cosmetico'), error);
+    }
+
+    return data || null;
+  }
+
+  async purchaseCosmeticItem(studentId, itemSlug) {
+    const { data, error } = await supabase.rpc('purchase_gamification_item', {
+      p_student_id: studentId,
+      p_item_slug: itemSlug,
+    });
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error comprando item cosmetico'), error);
+    }
+
+    return data;
+  }
+
+  async equipCosmeticItem(studentId, itemSlug) {
+    const { data, error } = await supabase.rpc('equip_gamification_item', {
+      p_student_id: studentId,
+      p_item_slug: itemSlug,
+    });
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error equipando item cosmetico'), error);
+    }
+
+    return data;
+  }
+
   async replaceRewardEvents(studentId, events) {
     const deleteQuery = supabase
       .from('gamification_reward_events')
@@ -312,6 +380,81 @@ export class SupabaseGamificationRepository {
     }
 
     return data;
+  }
+
+  async getCurrencyWallet(studentId) {
+    const { data, error } = await supabase
+      .from('gamification_currency_wallets')
+      .select('*')
+      .eq('student_id', studentId)
+      .maybeSingle();
+
+    if (error && !isNoRowsError(error)) {
+      throw new GamificationError(normalizeError(error, 'Error cargando wallet de monedas'), error);
+    }
+
+    return data || null;
+  }
+
+  async upsertCurrencyWallet(wallet) {
+    const { data, error } = await supabase
+      .from('gamification_currency_wallets')
+      .upsert(wallet)
+      .select()
+      .single();
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error guardando wallet de monedas'), error);
+    }
+
+    return data;
+  }
+
+  async listCurrencyLedger(studentId, limit = 25) {
+    let query = supabase
+      .from('gamification_currency_ledger')
+      .select('*')
+      .eq('student_id', studentId)
+      .order('occurred_at', { ascending: false });
+
+    if (typeof limit === 'number' && limit > 0) {
+      query = query.limit(limit);
+    }
+
+    const { data, error } = await query;
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error cargando extracto de monedas'), error);
+    }
+
+    return data || [];
+  }
+
+  async replaceCurrencyLedger(studentId, rows) {
+    const { error: deleteError } = await supabase
+      .from('gamification_currency_ledger')
+      .delete()
+      .eq('student_id', studentId)
+      .neq('source_type', 'cosmetic_purchase');
+
+    if (deleteError) {
+      throw new GamificationError(normalizeError(deleteError, 'Error limpiando extracto de monedas'), deleteError);
+    }
+
+    if (!rows || rows.length === 0) {
+      return [];
+    }
+
+    const { data, error } = await supabase
+      .from('gamification_currency_ledger')
+      .insert(rows)
+      .select();
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error guardando extracto de monedas'), error);
+    }
+
+    return data || [];
   }
 
   async replaceXpLedger(studentId, rows) {

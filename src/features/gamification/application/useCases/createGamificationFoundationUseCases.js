@@ -16,6 +16,20 @@ export const formatXpLedgerRows = (rows) =>
     createdAt: row.created_at || null,
   }));
 
+export const formatCurrencyLedgerRows = (rows) =>
+  (rows || []).map((row) => ({
+    id: row.id,
+    studentId: row.student_id,
+    sourceType: row.source_type,
+    sourceRef: row.source_ref || null,
+    coinsDelta: Number(row.coins_delta || 0),
+    label: row.label || 'Monedas',
+    description: row.description || '',
+    metadata: row.metadata || {},
+    occurredAt: row.occurred_at || null,
+    createdAt: row.created_at || null,
+  }));
+
 export const createGamificationFoundationUseCases = (repository, deps = {}) => {
   const todayProvider = deps.getEcuadorDate || getEcuadorDate;
   const isoProvider = deps.getEcuadorISOString || getEcuadorISOString;
@@ -24,6 +38,23 @@ export const createGamificationFoundationUseCases = (repository, deps = {}) => {
     execute: async ({ studentId, limit = 25 }) => {
       const rows = await repository.listXpLedger(studentId, limit);
       return formatXpLedgerRows(rows);
+    },
+  };
+
+  const loadCurrencyWalletUseCase = {
+    execute: async ({ studentId, limit = 25 }) => {
+      const [wallet, rows] = await Promise.all([
+        repository.getCurrencyWallet(studentId),
+        repository.listCurrencyLedger(studentId, limit),
+      ]);
+
+      return {
+        balance: Number(wallet?.balance || 0),
+        totalEarned: Number(wallet?.total_earned || 0),
+        totalSpent: Number(wallet?.total_spent || 0),
+        lastSyncedAt: wallet?.last_synced_at || null,
+        ledger: formatCurrencyLedgerRows(rows),
+      };
     },
   };
 
@@ -75,6 +106,7 @@ export const createGamificationFoundationUseCases = (repository, deps = {}) => {
 
   return {
     loadXpLedgerUseCase,
+    loadCurrencyWalletUseCase,
     registerDailyLoginRewardUseCase,
   };
 };

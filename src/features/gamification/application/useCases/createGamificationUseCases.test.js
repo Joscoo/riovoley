@@ -12,15 +12,20 @@ describe('createGamificationUseCases', () => {
     listPaymentsByStudentIds: jest.fn(),
     getProfile: jest.fn(),
     getIdentity: jest.fn(),
+    getCurrencyWallet: jest.fn(),
     upsertProfile: jest.fn(),
     upsertIdentity: jest.fn(),
+    upsertCurrencyWallet: jest.fn(),
     listAchievementCatalog: jest.fn(),
     listTitleCatalog: jest.fn(),
+    listCosmeticCatalog: jest.fn(),
     listStudentAchievements: jest.fn(),
     replaceRewardEvents: jest.fn(),
     listXpLedger: jest.fn(),
+    listCurrencyLedger: jest.fn(),
     appendXpLedgerEntry: jest.fn(),
     replaceXpLedger: jest.fn(),
+    replaceCurrencyLedger: jest.fn(),
     getLoginRewardState: jest.fn(),
     upsertLoginRewardState: jest.fn(),
     replaceStudentAchievements: jest.fn(),
@@ -30,6 +35,10 @@ describe('createGamificationUseCases', () => {
     listStudentsByCategory: jest.fn(),
     listProfilesByStudentIds: jest.fn(),
     listIdentitiesByStudentIds: jest.fn(),
+    listStudentCosmeticItems: jest.fn(),
+    getStudentCosmeticEquipment: jest.fn(),
+    purchaseCosmeticItem: jest.fn(),
+    equipCosmeticItem: jest.fn(),
     replaceLeaderboardSnapshots: jest.fn(),
     listCategoryLeaderboard: jest.fn(),
   });
@@ -62,19 +71,32 @@ describe('createGamificationUseCases', () => {
       { id: 'p2', fecha_inicio: '2026-06-01', fecha_pago: '2026-06-01', estado: 'activo' },
     ]);
     repository.getProfile.mockResolvedValue(null);
-    repository.getIdentity.mockResolvedValue({ student_id: 's1', nickname: 'RayoLeo', selected_title_slug: 'primer_impulso' });
+    repository.getIdentity.mockResolvedValue({ student_id: 's1', nickname: 'RayoLeo', selected_title_slug: 'primer_impulso', avatar_style: 'thumbs' });
+    repository.getCurrencyWallet.mockResolvedValue(null);
     repository.listStudentAchievements.mockResolvedValue([]);
     repository.listAchievementCatalog.mockResolvedValue([]);
     repository.listTitleCatalog.mockResolvedValue([]);
+    repository.listCosmeticCatalog.mockResolvedValue([
+      { slug: 'frame_bronce_club', name: 'Marco Bronce Club', description: 'Inicial', rarity: 'common', category: 'frame', price_coins: 0 },
+      { slug: 'frame_cian_ruta', name: 'Marco Ruta Cian', description: 'Compra', rarity: 'common', category: 'frame', price_coins: 14 },
+    ]);
     repository.listActiveChallenges.mockResolvedValue([]);
     repository.listStudentChallengeProgress.mockResolvedValue([]);
     repository.listXpLedger.mockResolvedValue([]);
+    repository.listCurrencyLedger.mockResolvedValue([]);
+    repository.listStudentCosmeticItems.mockResolvedValue([
+      { student_id: 's1', item_slug: 'frame_bronce_club', acquired_at: '2026-06-07T12:00:00.000Z' },
+    ]);
+    repository.getStudentCosmeticEquipment.mockResolvedValue({
+      student_id: 's1',
+      frame_item_slug: 'frame_bronce_club',
+    });
     repository.listCategoryLeaderboard.mockResolvedValue([
       { student_id: 's1', categoria: 'iniciacion_hombres', age_band: 'menor', score: 420, current_level: 2, rank_position: 1, snapshot_date: '2026-06-07', public_alias: 'L*** P' },
     ]);
     repository.listStudentsByCategory.mockResolvedValue([buildStudent()]);
     repository.listIdentitiesByStudentIds.mockResolvedValue([
-      { student_id: 's1', nickname: 'RayoLeo', selected_title_slug: 'primer_impulso' },
+      { student_id: 's1', nickname: 'RayoLeo', selected_title_slug: 'primer_impulso', avatar_style: 'thumbs' },
     ]);
     repository.listPhysicalTestsByStudentIds.mockResolvedValue([
       { id: 't1', student_id: 's1', fecha_test: '2026-05-01', brazo_extend_con_impulso: 40, brazo_extend_sin_impulso: 35, fuerza_abdomen: 20, elevaciones_barra: 3, fuerza_explosiva_salto_largo: 180 },
@@ -106,6 +128,16 @@ describe('createGamificationUseCases', () => {
       nickname: 'RayoLeo',
       displayName: 'RayoLeo',
       selectedTitleSlug: 'primer_impulso',
+      avatarStyle: 'thumbs',
+    });
+    expect(result.currency).toMatchObject({
+      balance: expect.any(Number),
+      totalEarned: expect.any(Number),
+      totalSpent: 0,
+    });
+    expect(result.cosmetics).toMatchObject({
+      inventoryCount: 1,
+      equipment: { frame: 'frame_bronce_club' },
     });
     expect(result.leaderboard[0].equippedTitle?.slug).toBe('primer_impulso');
     expect(result.leaderboards.some((board) => board.type === 'attendance_total')).toBe(true);
@@ -133,8 +165,14 @@ describe('createGamificationUseCases', () => {
       { id: 'p3', fecha_inicio: '2026-06-01', fecha_pago: '2026-06-01', estado: 'proximo_a_vencer' },
     ]);
     repository.listAchievementCatalog.mockResolvedValue([]);
+    repository.listTitleCatalog.mockResolvedValue([]);
+    repository.listCosmeticCatalog.mockResolvedValue([]);
     repository.listActiveChallenges.mockResolvedValue([]);
     repository.listXpLedger.mockResolvedValue([]);
+    repository.listCurrencyLedger.mockResolvedValue([]);
+    repository.getCurrencyWallet.mockResolvedValue(null);
+    repository.listStudentCosmeticItems.mockResolvedValue([]);
+    repository.getStudentCosmeticEquipment.mockResolvedValue(null);
     repository.listStudentsByCategory.mockResolvedValue([buildStudent()]);
     repository.listPhysicalTestsByStudentIds.mockResolvedValue([
       { id: 't1', student_id: 's1', fecha_test: '2026-04-01', brazo_extend_con_impulso: 40, brazo_extend_sin_impulso: 35, fuerza_abdomen: 20, elevaciones_barra: 3, fuerza_explosiva_salto_largo: 180 },
@@ -162,6 +200,11 @@ describe('createGamificationUseCases', () => {
     }));
     expect(repository.replaceRewardEvents).toHaveBeenCalledWith('s1', expect.any(Array));
     expect(repository.replaceXpLedger).toHaveBeenCalledWith('s1', expect.any(Array));
+    expect(repository.upsertCurrencyWallet).toHaveBeenCalledWith(expect.objectContaining({
+      student_id: 's1',
+      balance: expect.any(Number),
+    }));
+    expect(repository.replaceCurrencyLedger).toHaveBeenCalledWith('s1', expect.any(Array));
     expect(repository.replaceStudentAchievements).toHaveBeenCalledWith('s1', expect.any(Array));
     expect(repository.replaceChallengeProgress).toHaveBeenCalledWith('s1', expect.any(Array));
     expect(repository.replaceLeaderboardSnapshots).toHaveBeenCalledWith(expect.objectContaining({
@@ -186,6 +229,12 @@ describe('createGamificationUseCases', () => {
     repository.listActiveChallenges.mockResolvedValue([]);
     repository.listStudentChallengeProgress.mockResolvedValue([]);
     repository.listXpLedger.mockResolvedValue([]);
+    repository.listCurrencyLedger.mockResolvedValue([]);
+    repository.getCurrencyWallet.mockResolvedValue(null);
+    repository.listTitleCatalog.mockResolvedValue([]);
+    repository.listCosmeticCatalog.mockResolvedValue([]);
+    repository.listStudentCosmeticItems.mockResolvedValue([]);
+    repository.getStudentCosmeticEquipment.mockResolvedValue(null);
     repository.listCategoryLeaderboard.mockResolvedValue([]);
     repository.listStudentsByCategory.mockResolvedValue([
       buildStudent(),
@@ -237,6 +286,12 @@ describe('createGamificationUseCases', () => {
     repository.listActiveChallenges.mockResolvedValue([]);
     repository.listStudentChallengeProgress.mockResolvedValue([]);
     repository.listXpLedger.mockResolvedValue([]);
+    repository.listCurrencyLedger.mockResolvedValue([]);
+    repository.getCurrencyWallet.mockResolvedValue(null);
+    repository.listTitleCatalog.mockResolvedValue([]);
+    repository.listCosmeticCatalog.mockResolvedValue([]);
+    repository.listStudentCosmeticItems.mockResolvedValue([]);
+    repository.getStudentCosmeticEquipment.mockResolvedValue(null);
     repository.listCategoryLeaderboard.mockResolvedValue([]);
     repository.listStudentsByCategory.mockResolvedValue([buildStudent()]);
     repository.listPhysicalTestsByStudentIds.mockResolvedValue([
@@ -276,6 +331,8 @@ describe('createGamificationUseCases', () => {
       { id: 'p1', student_id: 's1', fecha_inicio: '2026-06-01', fecha_pago: '2026-06-01', estado: 'activo' },
       { id: 'p2', student_id: 's2', fecha_inicio: '2026-06-01', fecha_pago: '2026-06-02', estado: 'activo' },
     ]);
+    repository.listIdentitiesByStudentIds.mockResolvedValue([]);
+    repository.listTitleCatalog.mockResolvedValue([]);
 
     const useCases = createGamificationUseCases(repository, buildDeps());
     const result = await useCases.listCategoryLeaderboardsUseCase.execute({
@@ -326,13 +383,19 @@ describe('createGamificationUseCases', () => {
         student_id: 's1',
         nickname: 'Capi Leo',
         selected_title_slug: 'primer_impulso',
+        avatar_style: 'lorelei-neutral',
       });
     repository.listStudentAchievements.mockResolvedValue([]);
     repository.listAchievementCatalog.mockResolvedValue([]);
     repository.listTitleCatalog.mockResolvedValue([]);
+    repository.listCosmeticCatalog.mockResolvedValue([]);
     repository.listActiveChallenges.mockResolvedValue([]);
     repository.listStudentChallengeProgress.mockResolvedValue([]);
     repository.listXpLedger.mockResolvedValue([]);
+    repository.listCurrencyLedger.mockResolvedValue([]);
+    repository.getCurrencyWallet.mockResolvedValue(null);
+    repository.listStudentCosmeticItems.mockResolvedValue([]);
+    repository.getStudentCosmeticEquipment.mockResolvedValue(null);
     repository.listStudentsByCategory.mockResolvedValue([buildStudent()]);
     repository.listPhysicalTestsByStudentIds.mockResolvedValue([
       { id: 't1', student_id: 's1', fecha_test: '2026-05-01', brazo_extend_con_impulso: 40, brazo_extend_sin_impulso: 35, fuerza_abdomen: 20, elevaciones_barra: 3, fuerza_explosiva_salto_largo: 180 },
@@ -348,17 +411,103 @@ describe('createGamificationUseCases', () => {
       userId: 'u1',
       nickname: 'Capi Leo',
       selectedTitleSlug: 'primer_impulso',
+      avatarStyle: 'lorelei-neutral',
     });
 
     expect(repository.upsertIdentity).toHaveBeenCalledWith(expect.objectContaining({
       student_id: 's1',
       nickname: 'Capi Leo',
       selected_title_slug: 'primer_impulso',
+      avatar_style: 'lorelei-neutral',
     }));
     expect(result.identity).toMatchObject({
       nickname: 'Capi Leo',
       displayName: 'Capi Leo',
       selectedTitleSlug: 'primer_impulso',
+      avatarStyle: 'lorelei-neutral',
     });
+  });
+
+  it('purchaseCosmeticItemUseCase compra y recarga el agregado del estudiante', async () => {
+    const repository = buildRepository();
+    repository.findStudentByUserId.mockResolvedValue(buildStudent());
+    repository.findStudentById.mockResolvedValue(buildStudent());
+    repository.listPhysicalTests.mockResolvedValue([
+      { id: 't1', fecha_test: '2026-05-01', brazo_extend_con_impulso: 40, brazo_extend_sin_impulso: 35, fuerza_abdomen: 20, elevaciones_barra: 3, fuerza_explosiva_salto_largo: 180 },
+    ]);
+    repository.listAttendances.mockResolvedValue([]);
+    repository.listPayments.mockResolvedValue([]);
+    repository.getProfile.mockResolvedValue(null);
+    repository.getIdentity.mockResolvedValue(null);
+    repository.getCurrencyWallet
+      .mockResolvedValueOnce({ student_id: 's1', balance: 20, total_earned: 20, total_spent: 0 })
+      .mockResolvedValueOnce({ student_id: 's1', balance: 6, total_earned: 20, total_spent: 14 });
+    repository.listStudentAchievements.mockResolvedValue([]);
+    repository.listAchievementCatalog.mockResolvedValue([]);
+    repository.listTitleCatalog.mockResolvedValue([]);
+    repository.listCosmeticCatalog.mockResolvedValue([
+      { slug: 'frame_cian_ruta', name: 'Marco Ruta Cian', description: 'Compra', rarity: 'common', category: 'frame', price_coins: 14 },
+    ]);
+    repository.listActiveChallenges.mockResolvedValue([]);
+    repository.listStudentChallengeProgress.mockResolvedValue([]);
+    repository.listXpLedger.mockResolvedValue([]);
+    repository.listCurrencyLedger
+      .mockResolvedValueOnce([])
+      .mockResolvedValueOnce([{ student_id: 's1', source_type: 'cosmetic_purchase', source_ref: 'frame_cian_ruta', coins_delta: -14, label: 'Compra cosmetica', description: 'Compraste Marco Ruta Cian para tu perfil.' }]);
+    repository.listStudentsByCategory.mockResolvedValue([buildStudent()]);
+    repository.listPhysicalTestsByStudentIds.mockResolvedValue([
+      { id: 't1', student_id: 's1', fecha_test: '2026-05-01', brazo_extend_con_impulso: 40, brazo_extend_sin_impulso: 35, fuerza_abdomen: 20, elevaciones_barra: 3, fuerza_explosiva_salto_largo: 180 },
+    ]);
+    repository.listAttendancesByStudentIds.mockResolvedValue([]);
+    repository.listPaymentsByStudentIds.mockResolvedValue([]);
+    repository.listIdentitiesByStudentIds.mockResolvedValue([]);
+    repository.listStudentCosmeticItems
+      .mockResolvedValue([{ student_id: 's1', item_slug: 'frame_cian_ruta', acquired_at: '2026-06-07T12:00:00.000Z' }]);
+    repository.getStudentCosmeticEquipment.mockResolvedValue(null);
+
+    const useCases = createGamificationUseCases(repository, buildDeps());
+    const result = await useCases.purchaseCosmeticItemUseCase.execute({ userId: 'u1', itemSlug: 'frame_cian_ruta' });
+
+    expect(repository.purchaseCosmeticItem).toHaveBeenCalledWith('s1', 'frame_cian_ruta');
+    expect(result.cosmetics.items.find((item) => item.slug === 'frame_cian_ruta')?.isOwned).toBe(true);
+  });
+
+  it('equipCosmeticItemUseCase equipa un item ya adquirido', async () => {
+    const repository = buildRepository();
+    repository.findStudentByUserId.mockResolvedValue(buildStudent());
+    repository.findStudentById.mockResolvedValue(buildStudent());
+    repository.listPhysicalTests.mockResolvedValue([
+      { id: 't1', fecha_test: '2026-05-01', brazo_extend_con_impulso: 40, brazo_extend_sin_impulso: 35, fuerza_abdomen: 20, elevaciones_barra: 3, fuerza_explosiva_salto_largo: 180 },
+    ]);
+    repository.listAttendances.mockResolvedValue([]);
+    repository.listPayments.mockResolvedValue([]);
+    repository.getProfile.mockResolvedValue(null);
+    repository.getIdentity.mockResolvedValue(null);
+    repository.getCurrencyWallet.mockResolvedValue({ student_id: 's1', balance: 6, total_earned: 20, total_spent: 14 });
+    repository.listStudentAchievements.mockResolvedValue([]);
+    repository.listAchievementCatalog.mockResolvedValue([]);
+    repository.listTitleCatalog.mockResolvedValue([]);
+    repository.listCosmeticCatalog.mockResolvedValue([
+      { slug: 'frame_cian_ruta', name: 'Marco Ruta Cian', description: 'Compra', rarity: 'common', category: 'frame', price_coins: 14 },
+    ]);
+    repository.listActiveChallenges.mockResolvedValue([]);
+    repository.listStudentChallengeProgress.mockResolvedValue([]);
+    repository.listXpLedger.mockResolvedValue([]);
+    repository.listCurrencyLedger.mockResolvedValue([]);
+    repository.listStudentsByCategory.mockResolvedValue([buildStudent()]);
+    repository.listPhysicalTestsByStudentIds.mockResolvedValue([
+      { id: 't1', student_id: 's1', fecha_test: '2026-05-01', brazo_extend_con_impulso: 40, brazo_extend_sin_impulso: 35, fuerza_abdomen: 20, elevaciones_barra: 3, fuerza_explosiva_salto_largo: 180 },
+    ]);
+    repository.listAttendancesByStudentIds.mockResolvedValue([]);
+    repository.listPaymentsByStudentIds.mockResolvedValue([]);
+    repository.listIdentitiesByStudentIds.mockResolvedValue([]);
+    repository.listStudentCosmeticItems.mockResolvedValue([{ student_id: 's1', item_slug: 'frame_cian_ruta', acquired_at: '2026-06-07T12:00:00.000Z' }]);
+    repository.getStudentCosmeticEquipment.mockResolvedValue({ student_id: 's1', frame_item_slug: 'frame_cian_ruta' });
+
+    const useCases = createGamificationUseCases(repository, buildDeps());
+    const result = await useCases.equipCosmeticItemUseCase.execute({ userId: 'u1', itemSlug: 'frame_cian_ruta' });
+
+    expect(repository.equipCosmeticItem).toHaveBeenCalledWith('s1', 'frame_cian_ruta');
+    expect(result.cosmetics.equipment.frame).toBe('frame_cian_ruta');
   });
 });

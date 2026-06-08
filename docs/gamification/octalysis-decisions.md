@@ -367,3 +367,42 @@ This document records the product and technical decisions taken while applying O
 - Technical impact: Added title catalog + student identity persistence, new service/use case flow to update identity, and leaderboard formatting that enriches rows with equipped titles.
 - Dependencies: `gamification_phase14_identity_2026_06_07.sql`, identity UI in student panel, leaderboard projection formatting.
 - Status: accepted
+
+### 2026-06-08 - Implemented base soft-currency wallet and ledger
+- Phase: 5
+- Topic: Ownership economy rollout
+- Context: After identity, the next approved slice was to make progress feel ownable through a separate cosmetic economy without confusing XP with spending power.
+- Decision: Implement a soft-currency wallet plus currency ledger derived from verified activity, achievements, daily login and level milestones, keeping spending disabled for now.
+- Alternatives discarded:
+  - Reuse XP directly as purchase currency.
+  - Delay all economy work until avatar, store and inventory were ready.
+- Product impact: Students now see that their progress also builds a collectible resource for future personalization.
+- Technical impact: Added `currency_wallets`, `currency_ledger`, repository methods, projection logic and student-panel visualization.
+- Dependencies: `gamification_phase15_economy_2026_06_08.sql`, gamification projection engine, student progress UI.
+- Status: accepted
+
+### 2026-06-08 - Implemented initial cosmetic shop, inventory and equipment
+- Phase: 5
+- Topic: Cosmetic economy activation
+- Context: Once wallet and currency ledger existed, the next approved slice was to make the currency actually useful before the configurable avatar phase.
+- Decision: Add a first cosmetic catalog, student inventory, equipment slots and secure purchase/equip SQL functions, while keeping the avatar itself for the following phase.
+- Alternatives discarded:
+  - Wait for the full avatar builder before enabling any spending.
+  - Let the browser write wallet balances directly.
+- Product impact: Students can now convert their coins into visible profile customization and feel ownership immediately.
+- Technical impact: Added cosmetic catalog/inventory/equipment tables, security-definer purchase/equip functions, repository methods and store UI in the student panel.
+- Dependencies: `gamification_phase16_cosmetics_2026_06_08.sql`, economy wallet, student progress UI.
+- Status: accepted
+
+### 2026-06-08 - Implemented configurable avatar layer with DiceBear
+- Phase: 5
+- Topic: Visual identity activation
+- Context: The approved next slice after inventory and shop was to make identity feel alive using a ready-made avatar system instead of designing custom assets.
+- Decision: Use DiceBear HTTP API with deterministic seeds, persisted avatar style selection and UI rendering in both the student panel and leaderboards.
+- Alternatives discarded:
+  - Build custom avatar art from scratch.
+  - Delay avatars until a more complex inventory renderer existed.
+- Product impact: Students now have a visible face tied to their apodo, titulo y presencia competitiva.
+- Technical impact: Added avatar style selection to student identity, deterministic avatar URL generation and avatar rendering across the gamification UI.
+- Dependencies: `gamification_phase17_avatar_2026_06_08.sql`, identity layer, cosmetic equipment, official DiceBear HTTP API.
+- Status: accepted

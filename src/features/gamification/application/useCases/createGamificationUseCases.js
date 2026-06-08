@@ -1,5 +1,16 @@
 import { getEcuadorDate, getEcuadorISOString } from '../../../../utils/dateUtils';
-import { createGamificationFoundationUseCases, formatXpLedgerRows } from './createGamificationFoundationUseCases';
+import {
+  createGamificationFoundationUseCases,
+  formatCurrencyLedgerRows,
+  formatXpLedgerRows,
+} from './createGamificationFoundationUseCases';
+import {
+  AVATAR_STYLE_OPTIONS,
+  DEFAULT_AVATAR_STYLE,
+  getAvatarStyleMeta,
+  isValidAvatarStyle,
+} from '../../domain/avatarCatalog';
+import { buildAvatarUrl } from '../../domain/buildAvatarUrl';
 
 const LEVELS = [
   { level: 1, title: 'Semilla', minXp: 0 },
@@ -24,6 +35,12 @@ const BASE_TEST_XP = 100;
 const BASE_ATTENDANCE_XP = 35;
 const BASE_PAYMENT_XP = 90;
 const ACTIVE_PAYMENT_BONUS_XP = 45;
+const LEVEL_COIN_REWARDS = {
+  2: 10,
+  3: 15,
+  4: 22,
+  5: 30,
+};
 const CURRENT_MONTH_CHALLENGE_TARGETS = {
   monthly_check_in: 1,
   attendance_monthly_rhythm: 8,
@@ -409,6 +426,27 @@ const localizeCatalogEntries = (entries, defaults) => {
 const toNumber = (value) => {
   const numeric = Number(value);
   return Number.isFinite(numeric) ? numeric : null;
+};
+
+const getCoinsFromXpSource = ({ sourceType, xpDelta = 0, label = '' }) => {
+  switch (sourceType) {
+    case 'physical_test':
+      return 4;
+    case 'attendance':
+      return 2;
+    case 'payment':
+      return 6;
+    case 'payment_status':
+      return 4;
+    case 'daily_login':
+      return 1;
+    case 'achievement':
+      return Math.max(5, Math.round(Number(xpDelta || 0) / 20));
+    default:
+      return label.toLowerCase().includes('logro desbloqueado')
+        ? Math.max(5, Math.round(Number(xpDelta || 0) / 20))
+        : 0;
+  }
 };
 
 const mapRowsByKey = (rows, key) =>
@@ -881,6 +919,70 @@ const buildXpLedgerEntries = ({ studentId, rewardEvents }) =>
     };
   });
 
+const buildCurrencyLedgerEntries = ({ studentId, xpLedger, currentLevel }) => {
+  const baseEntries = (xpLedger || [])
+    .map((entry) => {
+      const coinsDelta = getCoinsFromXpSource({
+        sourceType: entry.source_type,
+        xpDelta: entry.xp_delta,
+        label: entry.label || '',
+      });
+
+      if (coinsDelta <= 0) {
+        return null;
+      }
+
+      return {
+        student_id: studentId,
+        source_type: entry.source_type,
+        source_ref: entry.source_ref || null,
+        coins_delta: coinsDelta,
+        label: `${entry.label || 'Progreso'} + monedas`,
+        description: entry.source_type === 'daily_login'
+          ? 'Tu regreso del dia tambien sumo una moneda ligera.'
+          : 'Tu progreso verificado tambien te entrego monedas blandas.',
+        metadata: entry.metadata || {},
+        occurred_at: entry.occurred_at,
+        created_at: entry.created_at,
+      };
+    })
+    .filter(Boolean);
+
+  const levelEntries = Object.entries(LEVEL_COIN_REWARDS)
+    .filter(([level]) => Number(level) <= Number(currentLevel || 0))
+    .map(([level, coins]) => ({
+      student_id: studentId,
+      source_type: 'level_reward',
+      source_ref: `level-${level}`,
+      coins_delta: Number(coins),
+      label: `Nivel ${level} alcanzado`,
+      description: 'Recompensa especial por subir de nivel en tu progreso.',
+      metadata: { level: Number(level) },
+      occurred_at: null,
+      created_at: null,
+    }));
+
+  return [...baseEntries, ...levelEntries]
+    .sort((left, right) => String(left.occurred_at || left.created_at || '').localeCompare(String(right.occurred_at || right.created_at || '')));
+};
+
+const buildCurrencyWallet = ({ studentId, currencyLedger, syncedAt }) => {
+  const totalEarned = (currencyLedger || [])
+    .filter((row) => Number(row.coins_delta || 0) > 0)
+    .reduce((sum, row) => sum + Number(row.coins_delta || 0), 0);
+  const totalSpent = Math.abs((currencyLedger || [])
+    .filter((row) => Number(row.coins_delta || 0) < 0)
+    .reduce((sum, row) => sum + Number(row.coins_delta || 0), 0));
+  return {
+    student_id: studentId,
+    balance: Math.max(totalEarned - totalSpent, 0),
+    total_earned: totalEarned,
+    total_spent: totalSpent,
+    last_synced_at: syncedAt,
+    updated_at: syncedAt,
+  };
+};
+
 const buildChallenges = ({
   catalog,
   tests,
@@ -992,6 +1094,7 @@ const buildProjection = ({
   today,
   syncedAt,
   existingXpLedger = [],
+  existingCurrencyLedger = [],
 }) => {
   const jumpDelta = buildDelta(tests, 'brazo_extend_con_impulso');
   const strengthDelta = buildStrengthDelta(tests);
@@ -1026,6 +1129,19 @@ const buildProjection = ({
     .sort((left, right) => String(left.occurred_at || '').localeCompare(String(right.occurred_at || '')));
   const totalXp = xpLedger.reduce((sum, entry) => sum + Number(entry.xp_delta || 0), 0);
   const levelInfo = getLevelInfo(totalXp);
+  const currencyLedger = buildCurrencyLedgerEntries({
+    studentId: student.id,
+    xpLedger,
+    currentLevel: levelInfo.level,
+  });
+  const preservedPurchaseEntries = (existingCurrencyLedger || []).filter((entry) => entry.source_type === 'cosmetic_purchase');
+  const combinedCurrencyLedger = [...currencyLedger, ...preservedPurchaseEntries]
+    .sort((left, right) => String(left.occurred_at || left.created_at || '').localeCompare(String(right.occurred_at || right.created_at || '')));
+  const currencyWallet = buildCurrencyWallet({
+    studentId: student.id,
+    currencyLedger: combinedCurrencyLedger,
+    syncedAt,
+  });
   const challenges = buildChallenges({
     catalog: challengeCatalog,
     tests,
@@ -1079,6 +1195,8 @@ const buildProjection = ({
     achievements,
     rewardEvents,
     xpLedger,
+    currencyLedger: combinedCurrencyLedger,
+    currencyWallet,
     challenges,
     ageBand,
   };
@@ -1571,15 +1689,64 @@ const buildUnlockedTitles = ({ titleCatalog, achievements, profile, leaderboardS
   };
 };
 
-const buildIdentityView = ({ student, identity, titlesState }) => ({
-  studentId: student.id,
-  nickname: normalizeNickname(identity?.nickname),
-  displayName: buildCompetitorName(student, identity),
-  realName: buildStudentRealName(student),
-  selectedTitleSlug: titlesState.selectedTitleSlug,
-  equippedTitle: titlesState.equippedTitle,
-  availableTitles: titlesState.availableTitles,
-});
+const buildIdentityView = ({ student, identity, titlesState, cosmetics }) => {
+  const avatarStyle = isValidAvatarStyle(identity?.avatar_style) ? identity.avatar_style : DEFAULT_AVATAR_STYLE;
+  const displayName = buildCompetitorName(student, identity);
+  return {
+    studentId: student.id,
+    nickname: normalizeNickname(identity?.nickname),
+    displayName,
+    realName: buildStudentRealName(student),
+    selectedTitleSlug: titlesState.selectedTitleSlug,
+    equippedTitle: titlesState.equippedTitle,
+    availableTitles: titlesState.availableTitles,
+    avatarStyle,
+    avatarStyleMeta: getAvatarStyleMeta(avatarStyle),
+    avatarStyleOptions: AVATAR_STYLE_OPTIONS,
+    avatarUrl: buildAvatarUrl({
+      seed: `${student.id}-${displayName}`,
+      style: avatarStyle,
+      equipment: cosmetics?.equipment || {},
+    }),
+  };
+};
+
+const buildCosmeticsView = ({ catalog, ownedItems, equipment, wallet }) => {
+  const ownedSlugs = new Set((ownedItems || []).map((item) => item.item_slug));
+  const equippedBySlot = {
+    frame: equipment?.frame_item_slug || null,
+    background: equipment?.background_item_slug || null,
+    badge: equipment?.badge_item_slug || null,
+    effect: equipment?.effect_item_slug || null,
+  };
+
+  const items = (catalog || []).map((item) => {
+    const category = item.category || 'misc';
+    const isOwned = ownedSlugs.has(item.slug);
+    return {
+      slug: item.slug,
+      name: item.name,
+      description: item.description,
+      rarity: item.rarity || 'common',
+      category,
+      priceCoins: Number(item.price_coins || 0),
+      isOwned,
+      isEquipped: equippedBySlot[category] === item.slug,
+      canAfford: Number(wallet?.balance || 0) >= Number(item.price_coins || 0),
+      metadata: item.metadata || {},
+    };
+  });
+
+  return {
+    balance: Number(wallet?.balance || 0),
+    totalEarned: Number(wallet?.totalEarned || wallet?.total_earned || 0),
+    totalSpent: Number(wallet?.totalSpent || wallet?.total_spent || 0),
+    ledger: wallet?.ledger || [],
+    items,
+    equipment: equippedBySlot,
+    inventoryCount: items.filter((item) => item.isOwned).length,
+  };
+};
 
 const groupRowsByStudentId = (rows) =>
   (rows || []).reduce((map, row) => {
@@ -1747,6 +1914,10 @@ const formatLeaderboard = ({ rows, studentId, definition, entriesByStudentId = {
       snapshotDate: row.snapshot_date,
       publicAlias: row.public_alias || 'Anonimo',
       realName: row.real_name || entry.realName || row.public_alias || 'Estudiante',
+      avatarUrl: buildAvatarUrl({
+        seed: `${row.student_id}-${row.public_alias || entry.realName || 'Estudiante'}`,
+        style: isValidAvatarStyle(entry.identity?.avatar_style) ? entry.identity.avatar_style : DEFAULT_AVATAR_STYLE,
+      }),
       equippedTitle: titlesState.equippedTitle,
       leaderboardType: row.leaderboard_type || definition?.type || 'overall',
       metricKey: row.metric_key || definition?.metricKey || 'total_xp',
@@ -1828,6 +1999,12 @@ export const createGamificationUseCases = (repository, deps = {}) => {
     }
     return repository.listTitleCatalog();
   };
+  const listCosmeticCatalog = async () => {
+    if (typeof repository.listCosmeticCatalog !== 'function') {
+      return [];
+    }
+    return repository.listCosmeticCatalog();
+  };
 
   const loadStudentGamificationByStudentIdUseCase = {
     execute: async ({ studentId, studentData = null, physicalTests = null }) => {
@@ -1838,23 +2015,33 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         payments,
         storedProfile,
         storedIdentity,
+        storedCurrencyWallet,
         storedAchievements,
         achievementCatalog,
         titleCatalog,
+        cosmeticCatalog,
         challengeCatalog,
         storedChallengeProgress,
         storedXpLedger,
+        storedCurrencyLedger,
+        ownedCosmeticItems,
+        cosmeticEquipment,
       ] = await Promise.all([
         listAttendances(studentId),
         listPayments(studentId),
         repository.getProfile(studentId),
         getIdentity(studentId),
+        typeof repository.getCurrencyWallet === 'function' ? repository.getCurrencyWallet(studentId) : Promise.resolve(null),
         repository.listStudentAchievements(studentId),
         repository.listAchievementCatalog(),
         listTitleCatalog(),
+        listCosmeticCatalog(),
         repository.listActiveChallenges(todayProvider()),
         repository.listStudentChallengeProgress(studentId),
         typeof repository.listXpLedger === 'function' ? repository.listXpLedger(studentId, null) : Promise.resolve([]),
+        typeof repository.listCurrencyLedger === 'function' ? repository.listCurrencyLedger(studentId, null) : Promise.resolve([]),
+        typeof repository.listStudentCosmeticItems === 'function' ? repository.listStudentCosmeticItems(studentId) : Promise.resolve([]),
+        typeof repository.getStudentCosmeticEquipment === 'function' ? repository.getStudentCosmeticEquipment(studentId) : Promise.resolve(null),
       ]);
 
       const derived = buildProjection({
@@ -1867,6 +2054,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         today: todayProvider(),
         syncedAt: storedProfile?.last_synced_at || isoProvider(),
         existingXpLedger: storedXpLedger,
+        existingCurrencyLedger: storedCurrencyLedger,
       });
 
       const shouldUseStoredProfile = Boolean(storedProfile) && Number(storedProfile.total_xp || 0) >= Number(derived.profile.total_xp || 0);
@@ -1973,6 +2161,21 @@ export const createGamificationUseCases = (repository, deps = {}) => {
       const xpLedger = storedXpLedger?.length > 0
         ? await foundationUseCases.loadXpLedgerUseCase.execute({ studentId: student.id, limit: 25 })
         : formatXpLedgerRows(derived.xpLedger).slice(0, 25);
+      const currency = storedCurrencyWallet || storedCurrencyLedger?.length > 0
+        ? await foundationUseCases.loadCurrencyWalletUseCase.execute({ studentId: student.id, limit: 20 })
+        : {
+            balance: Number(derived.currencyWallet.balance || 0),
+            totalEarned: Number(derived.currencyWallet.total_earned || 0),
+            totalSpent: Number(derived.currencyWallet.total_spent || 0),
+            lastSyncedAt: derived.currencyWallet.last_synced_at || null,
+            ledger: formatCurrencyLedgerRows(derived.currencyLedger).slice(0, 20),
+          };
+      const cosmetics = buildCosmeticsView({
+        catalog: cosmeticCatalog,
+        ownedItems: ownedCosmeticItems,
+        equipment: cosmeticEquipment,
+        wallet: currency,
+      });
       const identity = buildIdentityView({
         student,
         identity: storedIdentity,
@@ -1984,11 +2187,13 @@ export const createGamificationUseCases = (repository, deps = {}) => {
           identity: storedIdentity,
           studentId: student.id,
         }),
+        cosmetics,
       });
 
       return {
         profile: profileView,
         identity,
+        cosmetics,
         achievements,
         lockedAchievements,
         challenges,
@@ -1996,6 +2201,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         upcomingChallenges,
         nudges,
         xpLedger,
+        currency,
         leaderboard: overallLeaderboardSection
           ? formatLeaderboard({
               rows: overallLeaderboardSection.rows,
@@ -2031,7 +2237,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
     execute: async ({ studentId }) => {
       const today = todayProvider();
       const syncedAt = isoProvider();
-      const [student, tests, attendances, payments, achievementCatalog, challengeCatalog, existingXpLedger] = await Promise.all([
+      const [student, tests, attendances, payments, achievementCatalog, challengeCatalog, existingXpLedger, existingCurrencyLedger] = await Promise.all([
         repository.findStudentById(studentId),
         repository.listPhysicalTests(studentId),
         listAttendances(studentId),
@@ -2039,6 +2245,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         repository.listAchievementCatalog(),
         repository.listActiveChallenges(today),
         typeof repository.listXpLedger === 'function' ? repository.listXpLedger(studentId, null) : Promise.resolve([]),
+        typeof repository.listCurrencyLedger === 'function' ? repository.listCurrencyLedger(studentId, null) : Promise.resolve([]),
       ]);
 
       const projection = buildProjection({
@@ -2051,12 +2258,19 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         today,
         syncedAt,
         existingXpLedger,
+        existingCurrencyLedger,
       });
 
       await repository.upsertProfile(projection.profile);
       await repository.replaceRewardEvents(studentId, projection.rewardEvents);
       if (typeof repository.replaceXpLedger === 'function') {
         await repository.replaceXpLedger(studentId, projection.xpLedger);
+      }
+      if (typeof repository.upsertCurrencyWallet === 'function') {
+        await repository.upsertCurrencyWallet(projection.currencyWallet);
+      }
+      if (typeof repository.replaceCurrencyLedger === 'function') {
+        await repository.replaceCurrencyLedger(studentId, projection.currencyLedger);
       }
       await repository.replaceStudentAchievements(
         studentId,
@@ -2251,7 +2465,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
   };
 
   const updateStudentIdentityUseCase = {
-    execute: async ({ userId, nickname, selectedTitleSlug = null }) => {
+    execute: async ({ userId, nickname, selectedTitleSlug = null, avatarStyle = DEFAULT_AVATAR_STYLE }) => {
       const student = await repository.findStudentByUserId(userId);
       const currentProjection = await loadStudentGamificationByStudentIdUseCase.execute({
         studentId: student.id,
@@ -2273,12 +2487,17 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         throw new Error('Solo puedes equipar titulos que ya hayas desbloqueado.');
       }
 
+      if (!isValidAvatarStyle(avatarStyle)) {
+        throw new Error('El estilo de avatar seleccionado no es valido.');
+      }
+
       const existingIdentity = await getIdentity(student.id);
       const syncedAt = isoProvider();
       const payload = {
         student_id: student.id,
         nickname: normalizedNickname,
         selected_title_slug: selectedTitleSlug || null,
+        avatar_style: avatarStyle,
         updated_at: syncedAt,
         nickname_updated_at: normalizedNickname !== normalizeNickname(existingIdentity?.nickname)
           ? syncedAt
@@ -2298,6 +2517,29 @@ export const createGamificationUseCases = (repository, deps = {}) => {
     },
   };
 
+  const purchaseCosmeticItemUseCase = {
+    execute: async ({ userId, itemSlug }) => {
+      const student = await repository.findStudentByUserId(userId);
+      await repository.purchaseCosmeticItem(student.id, itemSlug);
+      await refreshStudentProgressUseCase.execute({ studentId: student.id });
+      return loadStudentGamificationByStudentIdUseCase.execute({
+        studentId: student.id,
+        studentData: student,
+      });
+    },
+  };
+
+  const equipCosmeticItemUseCase = {
+    execute: async ({ userId, itemSlug }) => {
+      const student = await repository.findStudentByUserId(userId);
+      await repository.equipCosmeticItem(student.id, itemSlug);
+      return loadStudentGamificationByStudentIdUseCase.execute({
+        studentId: student.id,
+        studentData: student,
+      });
+    },
+  };
+
   return {
     ...foundationUseCases,
     loadStudentGamificationUseCase,
@@ -2309,5 +2551,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
     listStudentAchievementsUseCase,
     listActiveChallengesUseCase,
     updateStudentIdentityUseCase,
+    purchaseCosmeticItemUseCase,
+    equipCosmeticItemUseCase,
   };
 };

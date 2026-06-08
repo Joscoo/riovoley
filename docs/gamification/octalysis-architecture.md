@@ -55,6 +55,8 @@ Este documento aterriza la estructura tecnica de la expansion de gamificacion pa
   - `gamification.titles_catalog`
   - `gamification.student_identity`
   - seleccion de titulo desbloqueado desde el panel del estudiante
+  - seleccion persistida de `avatar_style`
+  - avatar generado por URL deterministica con DiceBear
 
 ### Economy Engine
 - wallet
@@ -62,6 +64,14 @@ Este documento aterriza la estructura tecnica de la expansion de gamificacion pa
 - catalogo de cosmeticos
 - inventario
 - equipamiento
+- estado implementado actual:
+  - `gamification.currency_wallets`
+  - `gamification.currency_ledger`
+  - extracto visible de monedas en el panel del estudiante
+  - `gamification.cosmetic_items_catalog`
+  - `gamification.student_cosmetic_items`
+  - `gamification.student_cosmetic_equipment`
+  - compras/equipamiento via funciones SQL seguras
 
 ## Entidades nuevas sugeridas
 
