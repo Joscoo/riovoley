@@ -1,4 +1,5 @@
-export const createAuthSessionUseCases = (repository) => {
+export const createAuthSessionUseCases = (repository, deps = {}) => {
+  const gamificationGateway = deps.gamificationService || null;
   const onAuthStateChangeUseCase = {
     execute: (handler) => repository.onAuthStateChange(handler),
   };
@@ -48,7 +49,17 @@ export const createAuthSessionUseCases = (repository) => {
   };
 
   const signInUseCase = {
-    execute: ({ email, password }) => repository.signInWithPassword(email, password),
+    execute: async ({ email, password }) => {
+      const data = await repository.signInWithPassword(email, password);
+      if (data?.user?.id && gamificationGateway?.registerDailyLoginReward) {
+        try {
+          await gamificationGateway.registerDailyLoginReward({ userId: data.user.id });
+        } catch (rewardError) {
+          console.error('No se pudo registrar la recompensa diaria de gamificacion:', rewardError);
+        }
+      }
+      return data;
+    },
   };
 
   const signOutUseCase = {

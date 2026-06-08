@@ -60,7 +60,16 @@ describe('createStudentDashboardUseCases', () => {
       studentData: { id: 's1', categoria: 'iniciacion_hombres' },
       physicalTests: [{ id: 't1' }],
     });
-    expect(result.gamification).toMatchObject({ profile: { totalXp: 200, currentLevel: 2 } });
+    expect(result.gamification).toMatchObject({
+      profile: {
+        totalXp: 200,
+        currentLevel: 2,
+        summary: expect.objectContaining({
+          weekdayAttendanceStreak: 3,
+        }),
+      },
+      xpLedger: expect.any(Array),
+    });
   });
 
   it('loadStudentViewDataUseCase orquesta student + pagos + tests', async () => {
@@ -88,10 +97,11 @@ describe('createStudentDashboardUseCases', () => {
     },
     gamificationService: {
       loadStudentGamificationByStudentId: jest.fn(() => Promise.resolve({
-        profile: { totalXp: 200, currentLevel: 2 },
+        profile: { totalXp: 200, currentLevel: 2, summary: { weekdayAttendanceStreak: 3 } },
         achievements: [],
         challenges: [],
         leaderboard: [],
+        xpLedger: [{ label: 'Asistencia registrada', xpDelta: 35 }],
       })),
     },
   });

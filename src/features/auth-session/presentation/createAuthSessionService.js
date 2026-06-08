@@ -1,8 +1,9 @@
 import { createAuthSessionUseCases } from '../application/useCases/createAuthSessionUseCases';
 import { SupabaseAuthSessionRepository } from '../infrastructure/repositories/supabaseAuthSessionRepository';
+import { gamificationService } from '../../gamification';
 
 export const createAuthSessionService = (repository = new SupabaseAuthSessionRepository()) => {
-  const useCases = createAuthSessionUseCases(repository);
+  const useCases = createAuthSessionUseCases(repository, { gamificationService });
 
   const onAuthStateChange = (handler) => useCases.onAuthStateChangeUseCase.execute(handler);
   const getCurrentUser = () => useCases.getCurrentUserUseCase.execute();

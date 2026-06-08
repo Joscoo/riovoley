@@ -19,6 +19,12 @@ describe('createAuthSessionUseCases', () => {
     markFirstLoginCompleted: jest.fn(),
   });
 
+  const buildDeps = () => ({
+    gamificationService: {
+      registerDailyLoginReward: jest.fn(),
+    },
+  });
+
   it('checkFirstLoginUseCase retorna null cuando userId no existe', async () => {
     const repository = buildRepository();
     const useCases = createAuthSessionUseCases(repository);
@@ -73,7 +79,8 @@ describe('createAuthSessionUseCases', () => {
   it('signInUseCase delega al repositorio con email y password', async () => {
     const repository = buildRepository();
     repository.signInWithPassword.mockResolvedValue({ user: { id: 'u1' } });
-    const useCases = createAuthSessionUseCases(repository);
+    const deps = buildDeps();
+    const useCases = createAuthSessionUseCases(repository, deps);
 
     const result = await useCases.signInUseCase.execute({
       email: 'demo@riovoley.com',
@@ -81,6 +88,26 @@ describe('createAuthSessionUseCases', () => {
     });
 
     expect(repository.signInWithPassword).toHaveBeenCalledWith('demo@riovoley.com', 'secret');
+    expect(deps.gamificationService.registerDailyLoginReward).toHaveBeenCalledWith({ userId: 'u1' });
     expect(result).toEqual({ user: { id: 'u1' } });
+  });
+
+  it('signInUseCase no propaga error si falla la recompensa diaria', async () => {
+    const repository = buildRepository();
+    repository.signInWithPassword.mockResolvedValue({ user: { id: 'u1' } });
+    const deps = buildDeps();
+    deps.gamificationService.registerDailyLoginReward.mockRejectedValue(new Error('boom'));
+    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    const useCases = createAuthSessionUseCases(repository, deps);
+
+    await expect(
+      useCases.signInUseCase.execute({
+        email: 'demo@riovoley.com',
+        password: 'secret',
+      })
+    ).resolves.toEqual({ user: { id: 'u1' } });
+
+    expect(deps.gamificationService.registerDailyLoginReward).toHaveBeenCalledWith({ userId: 'u1' });
+    errorSpy.mockRestore();
   });
 });

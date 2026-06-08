@@ -40,4 +40,22 @@ export class SupabaseTrainerDashboardRepository {
     if (error) throw new TrainerDashboardError(normalizeError(error, 'Error contando pagos del mes'), error);
     return count || 0;
   }
+
+  async listStudentCategories() {
+    const { data, error } = await supabase.from('students').select('categoria');
+    if (error) throw new TrainerDashboardError(normalizeError(error, 'Error consultando categorias'), error);
+    return data || [];
+  }
+
+  async listTrainingCategoriesForStudents() {
+    const { data, error } = await supabase
+      .from('training_categories')
+      .select('code, label')
+      .eq('for_students', true)
+      .eq('is_active', true)
+      .order('label', { ascending: true });
+
+    if (error) throw new TrainerDashboardError(normalizeError(error, 'Error consultando catalogo de categorias'), error);
+    return data || [];
+  }
 }

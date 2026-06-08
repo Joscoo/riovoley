@@ -358,8 +358,10 @@ const StudentPanel = ({ user }) => {
   const renderGamification = () => (
     <StudentGamificationPanel
       gamification={gamification}
+      userId={user.id}
       loading={loading}
       onRefresh={() => studentData && loadStudentData(user.id)}
+      onIdentityUpdated={setGamification}
     />
   );
 
@@ -476,7 +478,6 @@ PaymentRow.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.node.isRequired
 };
-
 
 
 

@@ -6,6 +6,12 @@ jest.mock('../infrastructure/repositories/supabaseAuthSessionRepository', () => 
   })),
 }));
 
+jest.mock('../../gamification', () => ({
+  gamificationService: {
+    registerDailyLoginReward: jest.fn().mockResolvedValue({ awarded: true, xpDelta: 8 }),
+  },
+}));
+
 const { createAuthSessionService } = require('./createAuthSessionService');
 
 describe('createAuthSessionService', () => {

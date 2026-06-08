@@ -71,6 +71,24 @@ export class SupabaseGamificationRepository {
     return data || [];
   }
 
+  async listPhysicalTestsByStudentIds(studentIds) {
+    if (!studentIds || studentIds.length === 0) {
+      return [];
+    }
+
+    const { data, error } = await supabase
+      .from('physical_tests')
+      .select('*')
+      .in('student_id', studentIds)
+      .order('fecha_test', { ascending: true });
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error cargando tests fisicos por categoria'), error);
+    }
+
+    return data || [];
+  }
+
   async listAttendances(studentId) {
     const { data, error } = await supabase
       .from('attendances')
@@ -80,6 +98,24 @@ export class SupabaseGamificationRepository {
 
     if (error) {
       throw new GamificationError(normalizeError(error, 'Error cargando asistencias para gamificacion'), error);
+    }
+
+    return data || [];
+  }
+
+  async listAttendancesByStudentIds(studentIds) {
+    if (!studentIds || studentIds.length === 0) {
+      return [];
+    }
+
+    const { data, error } = await supabase
+      .from('attendances')
+      .select('*')
+      .in('student_id', studentIds)
+      .order('fecha', { ascending: true });
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error cargando asistencias por categoria'), error);
     }
 
     return data || [];
@@ -100,6 +136,25 @@ export class SupabaseGamificationRepository {
     return data || [];
   }
 
+  async listPaymentsByStudentIds(studentIds) {
+    if (!studentIds || studentIds.length === 0) {
+      return [];
+    }
+
+    const { data, error } = await supabase
+      .from('payments')
+      .select('*')
+      .in('student_id', studentIds)
+      .is('deleted_at', null)
+      .order('fecha_inicio', { ascending: true });
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error cargando pagos por categoria'), error);
+    }
+
+    return data || [];
+  }
+
   async getProfile(studentId) {
     const { data, error } = await supabase
       .from('gamification_profiles')
@@ -112,6 +167,34 @@ export class SupabaseGamificationRepository {
     }
 
     return data || null;
+  }
+
+  async getIdentity(studentId) {
+    const { data, error } = await supabase
+      .from('gamification_student_identity')
+      .select('*')
+      .eq('student_id', studentId)
+      .maybeSingle();
+
+    if (error && !isNoRowsError(error)) {
+      throw new GamificationError(normalizeError(error, 'Error cargando identidad del estudiante'), error);
+    }
+
+    return data || null;
+  }
+
+  async upsertIdentity(identity) {
+    const { data, error } = await supabase
+      .from('gamification_student_identity')
+      .upsert(identity)
+      .select()
+      .single();
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error guardando identidad del estudiante'), error);
+    }
+
+    return data;
   }
 
   async upsertProfile(profile) {
@@ -156,6 +239,20 @@ export class SupabaseGamificationRepository {
     return data || [];
   }
 
+  async listTitleCatalog() {
+    const { data, error } = await supabase
+      .from('gamification_titles_catalog')
+      .select('*')
+      .eq('is_active', true)
+      .order('sort_order', { ascending: true });
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error cargando catalogo de titulos'), error);
+    }
+
+    return data || [];
+  }
+
   async replaceRewardEvents(studentId, events) {
     const deleteQuery = supabase
       .from('gamification_reward_events')
@@ -181,6 +278,95 @@ export class SupabaseGamificationRepository {
     }
 
     return data || [];
+  }
+
+  async listXpLedger(studentId, limit = 25) {
+    let query = supabase
+      .from('gamification_xp_ledger')
+      .select('*')
+      .eq('student_id', studentId)
+      .order('occurred_at', { ascending: false });
+
+    if (typeof limit === 'number' && limit > 0) {
+      query = query.limit(limit);
+    }
+
+    const { data, error } = await query;
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error cargando extracto de XP'), error);
+    }
+
+    return data || [];
+  }
+
+  async appendXpLedgerEntry(entry) {
+    const { data, error } = await supabase
+      .from('gamification_xp_ledger')
+      .insert(entry)
+      .select()
+      .single();
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error guardando movimiento de XP'), error);
+    }
+
+    return data;
+  }
+
+  async replaceXpLedger(studentId, rows) {
+    const { error: deleteError } = await supabase
+      .from('gamification_xp_ledger')
+      .delete()
+      .eq('student_id', studentId)
+      .neq('source_type', 'daily_login');
+
+    if (deleteError) {
+      throw new GamificationError(normalizeError(deleteError, 'Error limpiando extracto de XP'), deleteError);
+    }
+
+    if (!rows || rows.length === 0) {
+      return [];
+    }
+
+    const { data, error } = await supabase
+      .from('gamification_xp_ledger')
+      .insert(rows)
+      .select();
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error guardando extracto de XP'), error);
+    }
+
+    return data || [];
+  }
+
+  async getLoginRewardState(userId) {
+    const { data, error } = await supabase
+      .from('gamification_login_rewards')
+      .select('*')
+      .eq('user_id', userId)
+      .maybeSingle();
+
+    if (error && !isNoRowsError(error)) {
+      throw new GamificationError(normalizeError(error, 'Error cargando recompensa diaria'), error);
+    }
+
+    return data || null;
+  }
+
+  async upsertLoginRewardState(row) {
+    const { data, error } = await supabase
+      .from('gamification_login_rewards')
+      .upsert(row)
+      .select()
+      .single();
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error guardando recompensa diaria'), error);
+    }
+
+    return data;
   }
 
   async replaceStudentAchievements(studentId, achievements) {
@@ -302,6 +488,23 @@ export class SupabaseGamificationRepository {
 
     if (error) {
       throw new GamificationError(normalizeError(error, 'Error cargando perfiles para leaderboard'), error);
+    }
+
+    return data || [];
+  }
+
+  async listIdentitiesByStudentIds(studentIds) {
+    if (!studentIds || studentIds.length === 0) {
+      return [];
+    }
+
+    const { data, error } = await supabase
+      .from('gamification_student_identity')
+      .select('*')
+      .in('student_id', studentIds);
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error cargando identidades para leaderboard'), error);
     }
 
     return data || [];

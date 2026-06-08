@@ -109,6 +109,14 @@ create or replace view public.gamification_leaderboard_snapshots
 with (security_invoker = true) as
 select * from gamification.leaderboard_snapshots;
 
+create or replace view public.gamification_titles_catalog
+with (security_invoker = true) as
+select * from gamification.titles_catalog;
+
+create or replace view public.gamification_student_identity
+with (security_invoker = true) as
+select * from gamification.student_identity;
+
 create or replace view public.gamification_leaderboard_public
 with (security_invoker = true) as
 select
@@ -163,6 +171,8 @@ grant select, insert, update, delete on
   public.gamification_challenges_catalog,
   public.gamification_student_challenge_progress,
   public.gamification_leaderboard_snapshots,
+  public.gamification_titles_catalog,
+  public.gamification_student_identity,
   public.gamification_leaderboard_public,
   public.training_categories,
   public.announcements,
@@ -185,6 +195,8 @@ grant select on
   public.gamification_challenges_catalog,
   public.gamification_student_challenge_progress,
   public.gamification_leaderboard_snapshots,
+  public.gamification_titles_catalog,
+  public.gamification_student_identity,
   public.gamification_leaderboard_public,
   public.announcements,
   public.announcements_with_creator,
@@ -201,7 +213,9 @@ grant select on
   gamification.student_achievements,
   gamification.challenges_catalog,
   gamification.student_challenge_progress,
-  gamification.leaderboard_snapshots
+  gamification.leaderboard_snapshots,
+  gamification.titles_catalog,
+  gamification.student_identity
 to authenticated;
 
 grant insert, update, delete on
@@ -209,13 +223,15 @@ grant insert, update, delete on
   gamification.reward_events,
   gamification.student_achievements,
   gamification.student_challenge_progress,
-  gamification.leaderboard_snapshots
+  gamification.leaderboard_snapshots,
+  gamification.student_identity
 to authenticated;
 
 grant select on
   gamification.achievement_catalog,
   gamification.challenges_catalog,
-  gamification.leaderboard_snapshots
+  gamification.leaderboard_snapshots,
+  gamification.titles_catalog
 to anon;
 
 commit;

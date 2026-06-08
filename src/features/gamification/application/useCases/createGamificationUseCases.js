@@ -1,4 +1,5 @@
 import { getEcuadorDate, getEcuadorISOString } from '../../../../utils/dateUtils';
+import { createGamificationFoundationUseCases, formatXpLedgerRows } from './createGamificationFoundationUseCases';
 
 const LEVELS = [
   { level: 1, title: 'Semilla', minXp: 0 },
@@ -23,6 +24,28 @@ const BASE_TEST_XP = 100;
 const BASE_ATTENDANCE_XP = 35;
 const BASE_PAYMENT_XP = 90;
 const ACTIVE_PAYMENT_BONUS_XP = 45;
+const CURRENT_MONTH_CHALLENGE_TARGETS = {
+  monthly_check_in: 1,
+  attendance_monthly_rhythm: 8,
+};
+const NEXT_MONTH_CHALLENGE_TARGETS = {
+  monthly_check_in: 2,
+  attendance_monthly_rhythm: 10,
+};
+
+const isWeekdayDate = (dateValue) => {
+  if (!dateValue) return false;
+  const day = new Date(`${dateValue}T00:00:00`).getUTCDay();
+  return day >= 1 && day <= 5;
+};
+
+const getPreviousBusinessDay = (dateValue) => {
+  const cursor = new Date(`${dateValue}T00:00:00`);
+  do {
+    cursor.setUTCDate(cursor.getUTCDate() - 1);
+  } while (cursor.getUTCDay() === 0 || cursor.getUTCDay() === 6);
+  return cursor.toISOString().slice(0, 10);
+};
 const DEFAULT_ACHIEVEMENTS = [
   {
     slug: 'first_test',
@@ -133,6 +156,87 @@ const DEFAULT_ACHIEVEMENTS = [
     visibility: 'public',
   },
   {
+    slug: 'jump_up_10',
+    title: 'Despegue serio',
+    description: 'Mejora al menos 10 cm en tu salto con carrera respecto a tu linea base.',
+    core_driver: 'Desarrollo y logro',
+    xp_reward: 180,
+    sort_order: 101,
+    visibility: 'public',
+  },
+  {
+    slug: 'long_jump_200',
+    title: 'Potencia horizontal',
+    description: 'Alcanza al menos 200 cm en salto largo desde parado.',
+    core_driver: 'Desarrollo y logro',
+    xp_reward: 170,
+    sort_order: 102,
+    visibility: 'public',
+  },
+  {
+    slug: 'pullups_8',
+    title: 'Dominio en barra',
+    description: 'Consigue 8 dominadas en barra en un minuto.',
+    core_driver: 'Propiedad y pertenencia',
+    xp_reward: 160,
+    sort_order: 103,
+    visibility: 'public',
+  },
+  {
+    slug: 'abs_40',
+    title: 'Centro firme',
+    description: 'Llega a 40 abdominales en un minuto.',
+    core_driver: 'Creatividad y retroalimentacion',
+    xp_reward: 150,
+    sort_order: 104,
+    visibility: 'public',
+  },
+  {
+    slug: 'strength_total_120',
+    title: 'Circuito completo',
+    description: 'Suma 120 repeticiones entre abdomen, brazos, piernas y dominadas.',
+    core_driver: 'Desarrollo y logro',
+    xp_reward: 200,
+    sort_order: 105,
+    visibility: 'public',
+  },
+  {
+    slug: 'attendance_month_12',
+    title: 'Mes impecable',
+    description: 'Completa 12 asistencias en el mismo mes.',
+    core_driver: 'Escasez e impaciencia',
+    xp_reward: 190,
+    sort_order: 106,
+    visibility: 'public',
+  },
+  {
+    slug: 'attendance_total_24',
+    title: 'Presencia total',
+    description: 'Acumula 24 asistencias registradas.',
+    core_driver: 'Influencia social y relacion',
+    xp_reward: 210,
+    sort_order: 107,
+    visibility: 'public',
+  },
+  {
+    slug: 'payment_streak_6',
+    title: 'Media temporada al dia',
+    description: 'Registra pagos en seis meses distintos.',
+    core_driver: 'Propiedad y pertenencia',
+    xp_reward: 210,
+    sort_order: 108,
+    visibility: 'public',
+  },
+  {
+    slug: 'monthly_combo',
+    title: 'Mes redondo',
+    description: 'En el mismo mes completa al menos 1 test, 8 asistencias y mantien tu mensualidad activa.',
+    core_driver: 'Epic Meaning & Calling',
+    xp_reward: 240,
+    sort_order: 109,
+    visibility: 'public',
+  },
+  {
     slug: 'mystery_dual_focus',
     title: 'Doble impulso',
     description: 'Combina constancia en entrenamientos con progreso fisico sostenido.',
@@ -191,7 +295,103 @@ const DEFAULT_CHALLENGES = [
   },
 ];
 
+const DEFAULT_TITLES = [
+  {
+    slug: 'primer_impulso',
+    name: 'Primer Impulso',
+    description: 'Se desbloquea al completar tu primer test fisico.',
+    rarity: 'common',
+    sort_order: 10,
+    criteria: { type: 'achievement', slug: 'first_test' },
+  },
+  {
+    slug: 'ritmo_firme',
+    name: 'Ritmo Firme',
+    description: 'Reconoce una base real de constancia en entrenamientos.',
+    rarity: 'common',
+    sort_order: 20,
+    criteria: { type: 'achievement', slug: 'attendance_total_12' },
+  },
+  {
+    slug: 'guardian_del_mes',
+    name: 'Guardian del Mes',
+    description: 'Premia mantener tu mensualidad vigente.',
+    rarity: 'common',
+    sort_order: 30,
+    criteria: { type: 'achievement', slug: 'payment_active_guard' },
+  },
+  {
+    slug: 'salto_en_ascenso',
+    name: 'Salto en Ascenso',
+    description: 'Distingue una mejora seria en salto con carrera.',
+    rarity: 'rare',
+    sort_order: 40,
+    criteria: { type: 'achievement', slug: 'jump_up_10' },
+  },
+  {
+    slug: 'presencia_total',
+    name: 'Presencia Total',
+    description: 'Premia una constancia alta en asistencias.',
+    rarity: 'rare',
+    sort_order: 50,
+    criteria: { type: 'achievement', slug: 'attendance_total_24' },
+  },
+  {
+    slug: 'motor_constante',
+    name: 'Motor Constante',
+    description: 'Se obtiene al alcanzar el nivel Constante.',
+    rarity: 'rare',
+    sort_order: 60,
+    criteria: { type: 'level', min: 3 },
+  },
+  {
+    slug: 'capitan_del_progreso',
+    name: 'Capitan del Progreso',
+    description: 'Se obtiene al entrar a un nivel claramente competitivo.',
+    rarity: 'epic',
+    sort_order: 70,
+    criteria: { type: 'level', min: 4 },
+  },
+  {
+    slug: 'rey_del_salto',
+    name: 'Rey del Salto',
+    description: 'Reconoce a quien lidera el salto con carrera.',
+    rarity: 'epic',
+    sort_order: 80,
+    criteria: { type: 'leaderboard_top', board: 'jump_approach' },
+  },
+  {
+    slug: 'muro_del_equipo',
+    name: 'Muro del Equipo',
+    description: 'Premia liderar la tabla de asistencias.',
+    rarity: 'epic',
+    sort_order: 90,
+    criteria: { type: 'leaderboard_top', board: 'attendance_total' },
+  },
+  {
+    slug: 'leyenda_riovoley',
+    name: 'Leyenda Riovoley',
+    description: 'Premia liderar el progreso general de tu categoria.',
+    rarity: 'legendary',
+    sort_order: 100,
+    criteria: { type: 'leaderboard_top', board: 'overall' },
+  },
+];
+
 const translateCoreDriver = (value) => CORE_DRIVER_LABELS[value] || value || '';
+
+const normalizeNickname = (value) => {
+  if (typeof value !== 'string') return null;
+  const normalized = value.trim().replace(/\s+/g, ' ');
+  return normalized.length > 0 ? normalized : null;
+};
+
+const isValidNickname = (value) =>
+  !value || (
+    value.length >= 3
+    && value.length <= 24
+    && /^[A-Za-z0-9ÁÉÍÓÚáéíóúÑñ _-]+$/.test(value)
+  );
 
 const localizeCatalogEntries = (entries, defaults) => {
   const defaultsMap = new Map((defaults || []).map((entry) => [entry.slug, entry]));
@@ -210,6 +410,15 @@ const toNumber = (value) => {
   const numeric = Number(value);
   return Number.isFinite(numeric) ? numeric : null;
 };
+
+const mapRowsByKey = (rows, key) =>
+  (rows || []).reduce((map, row) => {
+    const rowKey = row?.[key];
+    if (rowKey) {
+      map[rowKey] = row;
+    }
+    return map;
+  }, {});
 
 const getLevelInfo = (totalXp) => {
   let current = LEVELS[0];
@@ -317,11 +526,27 @@ const calculateAttendanceStats = (attendances, today) => {
     acc[monthKey] = (acc[monthKey] || 0) + 1;
     return acc;
   }, {});
+  const weekdayDates = [...new Set(rows.map((attendance) => attendance.fecha).filter(Boolean))]
+    .filter(isWeekdayDate)
+    .sort();
+  let weekdayAttendanceStreak = 0;
+
+  if (weekdayDates.length > 0) {
+    weekdayAttendanceStreak = 1;
+    for (let index = weekdayDates.length - 1; index > 0; index -= 1) {
+      if (getPreviousBusinessDay(weekdayDates[index]) === weekdayDates[index - 1]) {
+        weekdayAttendanceStreak += 1;
+      } else {
+        break;
+      }
+    }
+  }
 
   return {
     totalAttendances: rows.length,
     currentMonthAttendances: monthBuckets[currentMonthKey] || 0,
     bestMonthAttendances: Math.max(0, ...Object.values(monthBuckets)),
+    weekdayAttendanceStreak,
   };
 };
 
@@ -367,6 +592,11 @@ const buildStrengthDelta = (tests) => {
   }, 0);
 };
 
+const buildStrengthTotal = (test) =>
+  ['fuerza_abdomen', 'fuerza_brazos', 'fuerza_piernas', 'elevaciones_barra']
+    .map((key) => toNumber(test?.[key]) || 0)
+    .reduce((sum, value) => sum + value, 0);
+
 const deriveAgeBand = (birthDate, todayString) => {
   if (!birthDate) return 'sin-dato';
   const birth = new Date(`${birthDate}T00:00:00`);
@@ -399,6 +629,26 @@ const getChallengeCatalog = (catalog) => {
   return DEFAULT_CHALLENGES;
 };
 
+const getTitleCatalog = (catalog) => {
+  if (catalog && catalog.length > 0) {
+    const defaultsMap = new Map(DEFAULT_TITLES.map((entry) => [entry.slug, entry]));
+    return [...catalog]
+      .sort((left, right) => (left.sort_order || 0) - (right.sort_order || 0))
+      .map((entry) => {
+        const fallback = defaultsMap.get(entry.slug) || {};
+        return {
+          ...entry,
+          name: entry.name || fallback.name || entry.slug,
+          description: entry.description || fallback.description || '',
+          rarity: entry.rarity || fallback.rarity || 'common',
+          criteria: entry.criteria || fallback.criteria || {},
+        };
+      });
+  }
+
+  return DEFAULT_TITLES;
+};
+
 const evaluateAchievements = ({
   catalog,
   tests,
@@ -411,6 +661,10 @@ const evaluateAchievements = ({
 }) => {
   const effectiveCatalog = getAchievementCatalog(catalog);
   const latestTest = tests?.[tests.length - 1] || null;
+  const strengthTotal = buildStrengthTotal(latestTest);
+  const longJump = toNumber(latestTest?.fuerza_explosiva_salto_largo) || 0;
+  const pullups = toNumber(latestTest?.elevaciones_barra) || 0;
+  const absCount = toNumber(latestTest?.fuerza_abdomen) || 0;
 
   const earned = effectiveCatalog.filter((achievement) => {
     switch (achievement.slug) {
@@ -438,6 +692,27 @@ const evaluateAchievements = ({
         return paymentStats.uniquePaymentMonths >= 3;
       case 'payment_active_guard':
         return paymentStats.hasActiveCoverage;
+      case 'jump_up_10':
+        return jumpDelta != null && jumpDelta >= 10;
+      case 'long_jump_200':
+        return longJump >= 200;
+      case 'pullups_8':
+        return pullups >= 8;
+      case 'abs_40':
+        return absCount >= 40;
+      case 'strength_total_120':
+        return strengthTotal >= 120;
+      case 'attendance_month_12':
+        return attendanceStats.currentMonthAttendances >= 12;
+      case 'attendance_total_24':
+        return attendanceStats.totalAttendances >= 24;
+      case 'payment_streak_6':
+        return paymentStats.uniquePaymentMonths >= 6;
+      case 'monthly_combo':
+        return (tests?.length || 0) > 0
+          && streaks.currentMonthTests >= 1
+          && attendanceStats.currentMonthAttendances >= 8
+          && paymentStats.hasActiveCoverage;
       case 'mystery_dual_focus':
         return (tests?.length || 0) >= 3 && attendanceStats.currentMonthAttendances >= 6;
       default:
@@ -535,6 +810,77 @@ const buildRewardEvents = ({ studentId, tests, attendances, payments, paymentSta
   return [...baseEvents, ...attendanceEvents, ...paymentEvents, ...activeCoverageEvents, ...achievementEvents];
 };
 
+const buildXpLedgerEntries = ({ studentId, rewardEvents }) =>
+  (rewardEvents || []).map((event) => {
+    if (event.source_type === 'physical_test') {
+      return {
+        student_id: studentId,
+        source_type: 'physical_test',
+        source_ref: event.source_id || null,
+        xp_delta: Number(event.xp_awarded || 0),
+        label: 'Test fisico registrado',
+        description: 'Nueva evaluacion fisica validada dentro de tu progreso.',
+        metadata: event.payload || {},
+        occurred_at: event.created_at,
+        created_at: event.created_at,
+      };
+    }
+
+    if (event.source_type === 'attendance') {
+      return {
+        student_id: studentId,
+        source_type: 'attendance',
+        source_ref: event.source_id || null,
+        xp_delta: Number(event.xp_awarded || 0),
+        label: 'Asistencia registrada',
+        description: 'Entrenamiento validado dentro de tu progreso.',
+        metadata: event.payload || {},
+        occurred_at: event.created_at,
+        created_at: event.created_at,
+      };
+    }
+
+    if (event.source_type === 'payment') {
+      return {
+        student_id: studentId,
+        source_type: 'payment',
+        source_ref: event.source_id || null,
+        xp_delta: Number(event.xp_awarded || 0),
+        label: 'Mensualidad registrada',
+        description: 'Se registro un pago que suma a tu continuidad.',
+        metadata: event.payload || {},
+        occurred_at: event.created_at,
+        created_at: event.created_at,
+      };
+    }
+
+    if (event.source_type === 'payment_status') {
+      return {
+        student_id: studentId,
+        source_type: 'payment_status',
+        source_ref: event.source_id || null,
+        xp_delta: Number(event.xp_awarded || 0),
+        label: 'Cobertura activa',
+        description: 'Tu mensualidad vigente aporto un bono ligero de continuidad.',
+        metadata: event.payload || {},
+        occurred_at: event.created_at,
+        created_at: event.created_at,
+      };
+    }
+
+    return {
+      student_id: studentId,
+      source_type: event.source_type || 'achievement',
+      source_ref: event.source_id || null,
+      xp_delta: Number(event.xp_awarded || 0),
+      label: event.payload?.title ? `Logro desbloqueado: ${event.payload.title}` : 'Logro desbloqueado',
+      description: 'Completaste un logro que aporta XP adicional.',
+      metadata: event.payload || {},
+      occurred_at: event.created_at,
+      created_at: event.created_at,
+    };
+  });
+
 const buildChallenges = ({
   catalog,
   tests,
@@ -590,7 +936,63 @@ const buildChallenges = ({
   });
 };
 
-const buildProjection = ({ student, tests, attendances, payments, achievementCatalog, challengeCatalog, today, syncedAt }) => {
+const formatMonthLabel = (dateString) => {
+  const parsed = new Date(`${dateString}T00:00:00`);
+  if (Number.isNaN(parsed.getTime())) {
+    return dateString;
+  }
+  return parsed.toLocaleDateString('es-EC', {
+    timeZone: 'America/Guayaquil',
+    month: 'long',
+    year: 'numeric',
+  });
+};
+
+const getNextMonthStart = (today) => {
+  const [year, month] = today.split('-').map(Number);
+  const nextMonth = month === 12 ? 1 : month + 1;
+  const nextYear = month === 12 ? year + 1 : year;
+  return `${nextYear}-${`${nextMonth}`.padStart(2, '0')}-01`;
+};
+
+const buildUpcomingChallenges = ({ catalog, today, currentChallenges }) => {
+  const effectiveCatalog = getChallengeCatalog(catalog);
+  const nextMonthStart = getNextMonthStart(today);
+  const nextMonthLabel = formatMonthLabel(nextMonthStart);
+  const currentChallengeMap = new Map((currentChallenges || []).map((challenge) => [challenge.slug || challenge.challenge_slug, challenge]));
+
+  return effectiveCatalog
+    .filter((challenge) => ['calendar-month', 'rolling'].includes(challenge.window_type))
+    .slice(0, 4)
+    .map((challenge) => {
+      const currentProgress = currentChallengeMap.get(challenge.slug);
+      const nextTarget = NEXT_MONTH_CHALLENGE_TARGETS[challenge.slug] || Number(challenge.target_value || 0);
+      return {
+        slug: challenge.slug,
+        title: challenge.window_type === 'calendar-month' ? `${challenge.title} de ${nextMonthLabel}` : challenge.title,
+        description: challenge.window_type === 'calendar-month'
+          ? `${challenge.description} El proximo objetivo sera en ${nextMonthLabel}.`
+          : challenge.description,
+        targetValue: nextTarget,
+        currentProgressValue: Number(currentProgress?.progressValue || currentProgress?.progress_value || 0),
+        currentTargetValue: CURRENT_MONTH_CHALLENGE_TARGETS[challenge.slug] || Number(challenge.target_value || 0),
+        startsOn: nextMonthStart,
+        windowType: challenge.window_type,
+      };
+    });
+};
+
+const buildProjection = ({
+  student,
+  tests,
+  attendances,
+  payments,
+  achievementCatalog,
+  challengeCatalog,
+  today,
+  syncedAt,
+  existingXpLedger = [],
+}) => {
   const jumpDelta = buildDelta(tests, 'brazo_extend_con_impulso');
   const strengthDelta = buildStrengthDelta(tests);
   const streaks = calculateStreaks(tests, today);
@@ -615,7 +1017,14 @@ const buildProjection = ({ student, tests, attendances, payments, achievementCat
     achievements,
     syncedAt,
   });
-  const totalXp = rewardEvents.reduce((sum, event) => sum + Number(event.xp_awarded || 0), 0);
+  const projectedXpLedger = buildXpLedgerEntries({
+    studentId: student.id,
+    rewardEvents,
+  });
+  const preservedDailyLoginEntries = (existingXpLedger || []).filter((entry) => entry.source_type === 'daily_login');
+  const xpLedger = [...projectedXpLedger, ...preservedDailyLoginEntries]
+    .sort((left, right) => String(left.occurred_at || '').localeCompare(String(right.occurred_at || '')));
+  const totalXp = xpLedger.reduce((sum, entry) => sum + Number(entry.xp_delta || 0), 0);
   const levelInfo = getLevelInfo(totalXp);
   const challenges = buildChallenges({
     catalog: challengeCatalog,
@@ -629,6 +1038,7 @@ const buildProjection = ({ student, tests, attendances, payments, achievementCat
   });
   const ageBand = deriveAgeBand(student.fecha_nacimiento || student.users?.fecha_nacimiento, today);
   const latestTest = tests?.[tests.length - 1] || null;
+  const strengthTotal = buildStrengthTotal(latestTest);
 
   const profile = {
     student_id: student.id,
@@ -647,10 +1057,12 @@ const buildProjection = ({ student, tests, attendances, payments, achievementCat
       testsCount: tests?.length || 0,
       jumpDelta,
       strengthDelta,
+      strengthTotal,
       currentMonthTests: streaks.currentMonthTests,
       totalAttendances: attendanceStats.totalAttendances,
       currentMonthAttendances: attendanceStats.currentMonthAttendances,
       bestMonthAttendances: attendanceStats.bestMonthAttendances,
+      weekdayAttendanceStreak: attendanceStats.weekdayAttendanceStreak,
       totalPayments: paymentStats.totalPayments,
       currentMonthPayments: paymentStats.currentMonthPayments,
       uniquePaymentMonths: paymentStats.uniquePaymentMonths,
@@ -666,6 +1078,7 @@ const buildProjection = ({ student, tests, attendances, payments, achievementCat
     profile,
     achievements,
     rewardEvents,
+    xpLedger,
     challenges,
     ageBand,
   };
@@ -691,6 +1104,8 @@ const formatAchievementRows = ({ rows, catalog }) => {
 };
 
 const getAchievementProgress = ({ slug, tests, jumpDelta, strengthDelta, streaks, attendanceStats, paymentStats }) => {
+  const latestTest = tests?.[tests.length - 1] || null;
+  const strengthTotal = buildStrengthTotal(latestTest);
   switch (slug) {
     case 'first_test':
       return { current: Math.min((tests?.length || 0), 1), target: 1, hint: 'Completa tu primera evaluacion fisica.' };
@@ -716,6 +1131,33 @@ const getAchievementProgress = ({ slug, tests, jumpDelta, strengthDelta, streaks
       return { current: Math.min(paymentStats.uniquePaymentMonths || 0, 3), target: 3, hint: 'Mantente al dia durante varios meses.' };
     case 'payment_active_guard':
       return { current: paymentStats.hasActiveCoverage ? 1 : 0, target: 1, hint: 'Conserva una mensualidad vigente en el periodo actual.' };
+    case 'jump_up_10':
+      return { current: Math.max(jumpDelta || 0, 0), target: 10, hint: 'Empuja tu salto con carrera hasta romper la barrera de 10 cm de mejora.' };
+    case 'long_jump_200':
+      return { current: Math.max(toNumber(latestTest?.fuerza_explosiva_salto_largo) || 0, 0), target: 200, hint: 'Trabaja potencia horizontal y recepcion de salto.' };
+    case 'pullups_8':
+      return { current: Math.max(toNumber(latestTest?.elevaciones_barra) || 0, 0), target: 8, hint: 'Refuerza espalda y brazos para subir tu marca en barra.' };
+    case 'abs_40':
+      return { current: Math.max(toNumber(latestTest?.fuerza_abdomen) || 0, 0), target: 40, hint: 'La estabilidad del tronco te ayudara a sostener mas potencia.' };
+    case 'strength_total_120':
+      return { current: Math.max(strengthTotal, 0), target: 120, hint: 'Suma repeticiones en todo tu bloque de fuerza.' };
+    case 'attendance_month_12':
+      return { current: attendanceStats.currentMonthAttendances || 0, target: 12, hint: 'Mantente presente en casi todas las sesiones del mes.' };
+    case 'attendance_total_24':
+      return { current: Math.min(attendanceStats.totalAttendances || 0, 24), target: 24, hint: 'La constancia larga tambien se recompensa.' };
+    case 'payment_streak_6':
+      return { current: Math.min(paymentStats.uniquePaymentMonths || 0, 6), target: 6, hint: 'Sostener tu continuidad administrativa tambien cuenta.' };
+    case 'monthly_combo':
+      return {
+        current: Math.min(
+          (streaks.currentMonthTests >= 1 ? 1 : 0)
+          + (attendanceStats.currentMonthAttendances >= 8 ? 1 : 0)
+          + (paymentStats.hasActiveCoverage ? 1 : 0),
+          3
+        ),
+        target: 3,
+        hint: 'Completa evaluacion, constancia y cobertura vigente dentro del mismo mes.',
+      };
     case 'mystery_dual_focus':
       return { current: Math.min(((tests?.length || 0) >= 3 ? 1 : 0) + ((attendanceStats.currentMonthAttendances || 0) >= 6 ? 1 : 0), 2), target: 2, hint: 'Combina entrenamiento constante con progreso fisico.' };
     default:
@@ -819,6 +1261,84 @@ const buildNudges = ({ profile, challenges, lockedAchievements }) => {
   return nudges.slice(0, 3);
 };
 
+const buildRecommendations = ({ profile, latestTest, challenges, lockedAchievements }) => {
+  const recommendations = [];
+  const jumpGap = Math.max(
+    (toNumber(latestTest?.brazo_extend_con_impulso) || 0) - (toNumber(latestTest?.brazo_extend_sin_impulso) || 0),
+    0
+  );
+  const pullups = toNumber(latestTest?.elevaciones_barra) || 0;
+  const longJump = toNumber(latestTest?.fuerza_explosiva_salto_largo) || 0;
+  const absCount = toNumber(latestTest?.fuerza_abdomen) || 0;
+  const nextChallenge = (challenges || []).find((challenge) => !challenge.isCompleted);
+
+  if ((profile?.summary?.currentMonthTests || 0) === 0) {
+    recommendations.push({
+      id: 'schedule-test',
+      title: 'Agenda tu evaluacion del mes',
+      message: 'Todavia no registras un test este mes. Hacerlo te dara una nueva referencia y puede abrir varios logros.',
+      focus: 'Medicion',
+    });
+  }
+
+  if (jumpGap < 8) {
+    recommendations.push({
+      id: 'approach-jump',
+      title: 'Convierte mejor tu carrera en altura',
+      message: 'Tu salto con carrera todavia no se despega mucho de tu salto estatico. Trabaja la coordinacion del remate y la transferencia de velocidad.',
+      focus: 'Salto',
+    });
+  }
+
+  if (pullups < 6) {
+    recommendations.push({
+      id: 'pullups',
+      title: 'Sube tu fuerza de traccion',
+      message: 'Ganar dominadas te ayudara a mejorar control corporal, estabilidad y fuerza general.',
+      focus: 'Barra',
+    });
+  }
+
+  if (longJump > 0 && longJump < 190) {
+    recommendations.push({
+      id: 'long-jump',
+      title: 'Empuja mas tu potencia horizontal',
+      message: 'Tu salto largo aun tiene margen. Trabaja salida de cadera, recepcion y fuerza explosiva de piernas.',
+      focus: 'Potencia',
+    });
+  }
+
+  if (absCount > 0 && absCount < 35) {
+    recommendations.push({
+      id: 'core',
+      title: 'Fortalece tu zona media',
+      message: 'Mejorar el abdomen te dara mas estabilidad para saltar, aterrizar y sostener repeticiones de fuerza.',
+      focus: 'Core',
+    });
+  }
+
+  if (nextChallenge) {
+    recommendations.push({
+      id: `challenge-focus-${nextChallenge.slug}`,
+      title: `Preparate para ${nextChallenge.title}`,
+      message: `Tu reto mas cercano pide ${nextChallenge.targetValue} y ya llevas ${nextChallenge.progressValue}. Organiza tu semana para cerrarlo.`,
+      focus: 'Reto',
+    });
+  }
+
+  const comboAchievement = lockedAchievements.find((achievement) => achievement.achievementSlug === 'monthly_combo');
+  if (comboAchievement) {
+    recommendations.push({
+      id: 'combo',
+      title: 'Busca un mes redondo',
+      message: 'Si completas evaluacion, constancia y mensualidad vigente en el mismo mes, desbloqueas una de las recompensas mas fuertes.',
+      focus: 'Combo',
+    });
+  }
+
+  return recommendations.slice(0, 4);
+};
+
 const formatChallenges = ({ rows, catalog }) => {
   const catalogMap = new Map(getChallengeCatalog(catalog).map((challenge) => [challenge.slug, challenge]));
   return (rows || []).map((row) => {
@@ -838,73 +1358,426 @@ const formatChallenges = ({ rows, catalog }) => {
   });
 };
 
-const formatLeaderboard = ({ rows, studentId }) =>
-  (rows || []).map((row) => ({
-    studentId: row.student_id,
-    categoria: row.categoria,
-    ageBand: row.age_band,
-    score: Number(row.score || 0),
-    currentLevel: Number(row.current_level || 1),
-    rankPosition: Number(row.rank_position || 0),
-    snapshotDate: row.snapshot_date,
-    publicAlias: row.public_alias || 'Anonimo',
-    isCurrentStudent: row.student_id === studentId,
-  }));
+const LEADERBOARD_DEFINITIONS = [
+  {
+    type: 'overall',
+    title: 'Progreso general',
+    description: 'Ranking por experiencia total acumulada.',
+    metricKey: 'total_xp',
+    unit: 'XP',
+    scoreLabel: 'Puntaje',
+    isEligible: ({ hasAnyActivity }) => hasAnyActivity,
+    getScore: ({ profile }) => Number(profile.total_xp || 0),
+  },
+  {
+    type: 'jump_approach',
+    title: 'Salto con carrera',
+    description: 'Mayor alcance vertical con carrera de remate.',
+    metricKey: 'brazo_extend_con_impulso',
+    unit: 'cm',
+    scoreLabel: 'Marca',
+    isEligible: ({ latestTest }) => toNumber(latestTest?.brazo_extend_con_impulso) != null,
+    getScore: ({ latestTest }) => toNumber(latestTest?.brazo_extend_con_impulso),
+  },
+  {
+    type: 'standing_reach',
+    title: 'Alcance de pie',
+    description: 'Mayor alcance de pie con brazo dominante extendido.',
+    metricKey: 'brazo_extend_inicial',
+    unit: 'cm',
+    scoreLabel: 'Marca',
+    isEligible: ({ latestTest }) => toNumber(latestTest?.brazo_extend_inicial) != null,
+    getScore: ({ latestTest }) => toNumber(latestTest?.brazo_extend_inicial),
+  },
+  {
+    type: 'wingspan',
+    title: 'Envergadura',
+    description: 'Mayor envergadura registrada en brazos extendidos.',
+    metricKey: 'envergadura_brazos_extendidos_lateral',
+    unit: 'cm',
+    scoreLabel: 'Marca',
+    isEligible: ({ latestTest }) => toNumber(latestTest?.envergadura_brazos_extendidos_lateral) != null,
+    getScore: ({ latestTest }) => toNumber(latestTest?.envergadura_brazos_extendidos_lateral),
+  },
+  {
+    type: 'jump_static',
+    title: 'Salto estatico',
+    description: 'Mayor alcance vertical desde salto estatico.',
+    metricKey: 'brazo_extend_sin_impulso',
+    unit: 'cm',
+    scoreLabel: 'Marca',
+    isEligible: ({ latestTest }) => toNumber(latestTest?.brazo_extend_sin_impulso) != null,
+    getScore: ({ latestTest }) => toNumber(latestTest?.brazo_extend_sin_impulso),
+  },
+  {
+    type: 'long_jump',
+    title: 'Salto largo',
+    description: 'Mayor distancia alcanzada en salto largo desde parado.',
+    metricKey: 'fuerza_explosiva_salto_largo',
+    unit: 'cm',
+    scoreLabel: 'Marca',
+    isEligible: ({ latestTest }) => toNumber(latestTest?.fuerza_explosiva_salto_largo) != null,
+    getScore: ({ latestTest }) => toNumber(latestTest?.fuerza_explosiva_salto_largo),
+  },
+  {
+    type: 'strength_total',
+    title: 'Fuerza total',
+    description: 'Suma de tus repeticiones en abdomen, brazos, piernas y dominadas.',
+    metricKey: 'strength_total',
+    unit: 'reps',
+    scoreLabel: 'Total',
+    isEligible: ({ latestTest }) => latestTest != null,
+    getScore: ({ latestTest }) =>
+      ['fuerza_abdomen', 'fuerza_brazos', 'fuerza_piernas', 'elevaciones_barra']
+        .map((key) => toNumber(latestTest?.[key]) || 0)
+        .reduce((sum, value) => sum + value, 0),
+  },
+  {
+    type: 'abs_reps',
+    title: 'Abdominales',
+    description: 'Mayor cantidad de abdominales en un minuto.',
+    metricKey: 'fuerza_abdomen',
+    unit: 'reps',
+    scoreLabel: 'Marca',
+    isEligible: ({ latestTest }) => toNumber(latestTest?.fuerza_abdomen) != null,
+    getScore: ({ latestTest }) => toNumber(latestTest?.fuerza_abdomen),
+  },
+  {
+    type: 'pushups_reps',
+    title: 'Flexiones',
+    description: 'Mayor cantidad de flexiones de brazo en un minuto.',
+    metricKey: 'fuerza_brazos',
+    unit: 'reps',
+    scoreLabel: 'Marca',
+    isEligible: ({ latestTest }) => toNumber(latestTest?.fuerza_brazos) != null,
+    getScore: ({ latestTest }) => toNumber(latestTest?.fuerza_brazos),
+  },
+  {
+    type: 'squats_reps',
+    title: 'Sentadillas',
+    description: 'Mayor cantidad de sentadillas en un minuto.',
+    metricKey: 'fuerza_piernas',
+    unit: 'reps',
+    scoreLabel: 'Marca',
+    isEligible: ({ latestTest }) => toNumber(latestTest?.fuerza_piernas) != null,
+    getScore: ({ latestTest }) => toNumber(latestTest?.fuerza_piernas),
+  },
+  {
+    type: 'pullups_reps',
+    title: 'Dominadas',
+    description: 'Mayor cantidad de dominadas en barra en un minuto.',
+    metricKey: 'elevaciones_barra',
+    unit: 'reps',
+    scoreLabel: 'Marca',
+    isEligible: ({ latestTest }) => toNumber(latestTest?.elevaciones_barra) != null,
+    getScore: ({ latestTest }) => toNumber(latestTest?.elevaciones_barra),
+  },
+  {
+    type: 'attendance_total',
+    title: 'Asistencias totales',
+    description: 'Quien mas entrenamientos ha registrado.',
+    metricKey: 'attendance_total',
+    unit: 'asis.',
+    scoreLabel: 'Asistencias',
+    isEligible: ({ attendanceStats }) => Number(attendanceStats.totalAttendances || 0) > 0,
+    getScore: ({ attendanceStats }) => Number(attendanceStats.totalAttendances || 0),
+  },
+  {
+    type: 'attendance_month',
+    title: 'Asistencias del mes',
+    description: 'Quien mejor ritmo lleva durante el mes actual.',
+    metricKey: 'attendance_month',
+    unit: 'asis.',
+    scoreLabel: 'Este mes',
+    isEligible: ({ attendanceStats }) => Number(attendanceStats.currentMonthAttendances || 0) > 0,
+    getScore: ({ attendanceStats }) => Number(attendanceStats.currentMonthAttendances || 0),
+  },
+  {
+    type: 'payments_total',
+    title: 'Mensualidades registradas',
+    description: 'Quien mas mensualidades tiene registradas en el sistema.',
+    metricKey: 'payments_total',
+    unit: 'pagos',
+    scoreLabel: 'Registros',
+    isEligible: ({ paymentStats }) => Number(paymentStats.totalPayments || 0) > 0,
+    getScore: ({ paymentStats }) => Number(paymentStats.totalPayments || 0),
+  },
+];
 
-const buildDerivedLeaderboardRows = ({ students, profiles, currentStudent, currentProfileView, today, ageBand }) => {
-  const profileMap = new Map((profiles || []).map((profile) => [profile.student_id, profile]));
-
-  if (currentStudent?.id && currentProfileView) {
-    profileMap.set(currentStudent.id, {
-      student_id: currentStudent.id,
-      total_xp: currentProfileView.totalXp,
-      current_level: currentProfileView.currentLevel,
-    });
+const buildCompetitorName = (student, identity = null) => {
+  const nickname = normalizeNickname(identity?.nickname);
+  if (nickname) {
+    return nickname;
   }
-
-  const rows = (students || [])
-    .map((categoryStudent) => {
-      const profile = profileMap.get(categoryStudent.id);
-      if (!profile) return null;
-
-      const resolvedAgeBand = deriveAgeBand(
-        categoryStudent.fecha_nacimiento || categoryStudent.users?.fecha_nacimiento,
-        today
-      );
-
-      if (ageBand && resolvedAgeBand !== ageBand) {
-        return null;
-      }
-
-      return {
-        student_id: categoryStudent.id,
-        categoria: categoryStudent.categoria || 'sin-categoria',
-        age_band: resolvedAgeBand,
-        score: Number(profile.total_xp || 0),
-        current_level: Number(profile.current_level || 1),
-        rank_position: 0,
-        snapshot_date: today,
-        public_alias:
-          categoryStudent.public_alias ||
-          categoryStudent.users?.public_alias ||
-          `${categoryStudent.users?.nombre?.[0] || 'E'}*** ${categoryStudent.users?.apellido?.[0] || ''}`.trim(),
-      };
-    })
-    .filter(Boolean)
-    .sort((left, right) => {
-      if (right.score !== left.score) return right.score - left.score;
-      if (right.current_level !== left.current_level) return right.current_level - left.current_level;
-      return left.student_id.localeCompare(right.student_id);
-    })
-    .map((row, index) => ({
-      ...row,
-      rank_position: index + 1,
-    }));
-
-  return rows;
+  const fullName = `${student.users?.nombre || ''} ${student.users?.apellido || ''}`.trim();
+  return fullName || student.public_alias || student.users?.public_alias || 'Estudiante';
 };
 
+const buildStudentRealName = (student) => {
+  const fullName = `${student.users?.nombre || ''} ${student.users?.apellido || ''}`.trim();
+  return fullName || 'Estudiante';
+};
+
+const hasAchievementSlug = (achievements, slug) =>
+  (achievements || []).some((achievement) => achievement.achievement_slug === slug || achievement.achievementSlug === slug);
+
+const isTitleUnlocked = ({ title, achievements, profile, leaderboardSections, studentId }) => {
+  const criteria = title.criteria || {};
+
+  switch (criteria.type) {
+    case 'achievement':
+      return hasAchievementSlug(achievements, criteria.slug);
+    case 'level':
+      return Number(profile?.current_level || 0) >= Number(criteria.min || 0);
+    case 'leaderboard_top': {
+      const board = (leaderboardSections || []).find((section) => section.type === criteria.board);
+      return board?.rows?.[0]?.student_id === studentId;
+    }
+    default:
+      return false;
+  }
+};
+
+const buildUnlockedTitles = ({ titleCatalog, achievements, profile, leaderboardSections, identity, studentId }) => {
+  const catalog = getTitleCatalog(titleCatalog);
+  const selectedTitleSlug = identity?.selected_title_slug || null;
+  const unlockedTitles = catalog.map((title) => {
+    const unlocked = isTitleUnlocked({
+      title,
+      achievements,
+      profile,
+      leaderboardSections,
+      studentId,
+    });
+
+    return {
+      slug: title.slug,
+      name: title.name,
+      description: title.description,
+      rarity: title.rarity || 'common',
+      isUnlocked: unlocked,
+      isSelected: unlocked && selectedTitleSlug === title.slug,
+    };
+  });
+
+  const equippedTitle = unlockedTitles.find((title) => title.isSelected)
+    || unlockedTitles.find((title) => title.isUnlocked)
+    || null;
+
+  return {
+    selectedTitleSlug: equippedTitle?.slug || null,
+    equippedTitle,
+    availableTitles: unlockedTitles,
+  };
+};
+
+const buildIdentityView = ({ student, identity, titlesState }) => ({
+  studentId: student.id,
+  nickname: normalizeNickname(identity?.nickname),
+  displayName: buildCompetitorName(student, identity),
+  realName: buildStudentRealName(student),
+  selectedTitleSlug: titlesState.selectedTitleSlug,
+  equippedTitle: titlesState.equippedTitle,
+  availableTitles: titlesState.availableTitles,
+});
+
+const groupRowsByStudentId = (rows) =>
+  (rows || []).reduce((map, row) => {
+    const key = row.student_id;
+    if (!map[key]) {
+      map[key] = [];
+    }
+    map[key].push(row);
+    return map;
+  }, {});
+
+const buildLeaderboardStudentEntry = ({
+  student,
+  identity = null,
+  tests,
+  attendances,
+  payments,
+  today,
+  syncedAt,
+}) => {
+  const projection = buildProjection({
+    student,
+    tests,
+    attendances,
+    payments,
+    achievementCatalog: [],
+    challengeCatalog: [],
+    today,
+    syncedAt,
+  });
+  const latestTest = tests?.[tests.length - 1] || null;
+  const attendanceStats = calculateAttendanceStats(attendances, today);
+  const paymentStats = calculatePaymentStats(payments, today);
+  const hasAnyActivity = (tests?.length || 0) > 0 || (attendances?.length || 0) > 0 || (payments?.length || 0) > 0;
+
+  return {
+    student,
+    ageBand: deriveAgeBand(student.fecha_nacimiento || student.users?.fecha_nacimiento, today),
+    identity,
+    competitorName: buildCompetitorName(student, identity),
+    realName: buildStudentRealName(student),
+    profile: projection.profile,
+    achievements: projection.achievements,
+    latestTest,
+    attendanceStats,
+    paymentStats,
+    hasAnyActivity,
+  };
+};
+
+const limitLeaderboardRows = ({ rows, currentStudentId, limit }) => {
+  const ordered = rows || [];
+  if (!currentStudentId || ordered.length <= limit) {
+    return ordered.slice(0, limit);
+  }
+
+  const topRows = ordered.slice(0, limit);
+  if (topRows.some((row) => row.student_id === currentStudentId)) {
+    return topRows;
+  }
+
+  const currentRow = ordered.find((row) => row.student_id === currentStudentId);
+  return currentRow ? [...topRows.slice(0, Math.max(limit - 1, 0)), currentRow] : topRows;
+};
+
+const buildLeaderboardSections = ({
+  students,
+  identitiesByStudentId = {},
+  testsByStudentId,
+  attendancesByStudentId,
+  paymentsByStudentId,
+  today,
+  syncedAt,
+  ageBandFilter = null,
+  currentStudentId = null,
+  limit = 5,
+}) => {
+  const entries = (students || [])
+    .map((student) =>
+      buildLeaderboardStudentEntry({
+        student,
+        identity: identitiesByStudentId[student.id] || null,
+        tests: testsByStudentId[student.id] || [],
+        attendances: attendancesByStudentId[student.id] || [],
+        payments: paymentsByStudentId[student.id] || [],
+        today,
+        syncedAt,
+      })
+    )
+    .filter((entry) => (ageBandFilter ? entry.ageBand === ageBandFilter : true));
+
+  return LEADERBOARD_DEFINITIONS.map((definition) => {
+    const rankedRows = entries
+      .filter((entry) => definition.isEligible(entry))
+      .map((entry) => {
+        const score = Number(definition.getScore(entry) || 0);
+        return {
+          student_id: entry.student.id,
+          categoria: entry.student.categoria || 'sin-categoria',
+          age_band: entry.ageBand,
+          score,
+          current_level: Number(entry.profile.current_level || 1),
+          rank_position: 0,
+          snapshot_date: today,
+          public_alias: entry.competitorName,
+          leaderboard_type: definition.type,
+          metric_key: definition.metricKey,
+        };
+      })
+      .sort((left, right) => {
+        if (right.score !== left.score) return right.score - left.score;
+        if (right.current_level !== left.current_level) return right.current_level - left.current_level;
+        return left.student_id.localeCompare(right.student_id);
+      })
+      .map((row, index) => ({
+        ...row,
+        rank_position: index + 1,
+      }));
+
+    const visibleRows = limitLeaderboardRows({
+      rows: rankedRows,
+      currentStudentId,
+      limit,
+    });
+
+    return {
+      type: definition.type,
+      title: definition.title,
+      description: definition.description,
+      unit: definition.unit,
+      scoreLabel: definition.scoreLabel,
+      metricKey: definition.metricKey,
+      totalParticipants: rankedRows.length,
+      currentStudentRank: rankedRows.find((row) => row.student_id === currentStudentId)?.rank_position || null,
+      rows: visibleRows,
+    };
+  }).filter((section) => section.totalParticipants > 0);
+};
+
+const buildEntriesByStudentId = (entries) =>
+  (entries || []).reduce((map, entry) => {
+    map[entry.student.id] = entry;
+    return map;
+  }, {});
+
+const formatLeaderboard = ({ rows, studentId, definition, entriesByStudentId = {}, sections = [], titleCatalog = [] }) =>
+  (rows || []).map((row) => {
+    const entry = entriesByStudentId[row.student_id] || {};
+    const titlesState = buildUnlockedTitles({
+      titleCatalog,
+      achievements: entry.achievements || [],
+      profile: entry.profile || null,
+      leaderboardSections: sections,
+      identity: entry.identity || null,
+      studentId: row.student_id,
+    });
+
+    return {
+      studentId: row.student_id,
+      categoria: row.categoria,
+      ageBand: row.age_band,
+      score: Number(row.score || 0),
+      currentLevel: Number(row.current_level || 1),
+      rankPosition: Number(row.rank_position || 0),
+      snapshotDate: row.snapshot_date,
+      publicAlias: row.public_alias || 'Anonimo',
+      realName: row.real_name || entry.realName || row.public_alias || 'Estudiante',
+      equippedTitle: titlesState.equippedTitle,
+      leaderboardType: row.leaderboard_type || definition?.type || 'overall',
+      metricKey: row.metric_key || definition?.metricKey || 'total_xp',
+      unit: definition?.unit || 'XP',
+      scoreLabel: definition?.scoreLabel || 'Puntaje',
+      isCurrentStudent: row.student_id === studentId,
+    };
+  });
+
+const formatLeaderboardSections = ({ sections, studentId, entriesByStudentId = {}, titleCatalog = [] }) =>
+  (sections || []).map((section) => ({
+    type: section.type,
+    title: section.title,
+    description: section.description,
+    unit: section.unit,
+    scoreLabel: section.scoreLabel,
+    metricKey: section.metricKey,
+    totalParticipants: section.totalParticipants,
+    currentStudentRank: section.currentStudentRank,
+    rows: formatLeaderboard({
+      rows: section.rows,
+      studentId,
+      definition: section,
+      entriesByStudentId,
+      sections,
+      titleCatalog,
+    }),
+  }));
+
 export const createGamificationUseCases = (repository, deps = {}) => {
+  const foundationUseCases = createGamificationFoundationUseCases(repository, deps);
   const todayProvider = deps.getEcuadorDate || getEcuadorDate;
   const isoProvider = deps.getEcuadorISOString || getEcuadorISOString;
   const listAttendances = async (studentId) => {
@@ -919,19 +1792,69 @@ export const createGamificationUseCases = (repository, deps = {}) => {
     }
     return repository.listPayments(studentId);
   };
+  const listPhysicalTestsByStudentIds = async (studentIds) => {
+    if (typeof repository.listPhysicalTestsByStudentIds !== 'function') {
+      return [];
+    }
+    return repository.listPhysicalTestsByStudentIds(studentIds);
+  };
+  const listAttendancesByStudentIds = async (studentIds) => {
+    if (typeof repository.listAttendancesByStudentIds !== 'function') {
+      return [];
+    }
+    return repository.listAttendancesByStudentIds(studentIds);
+  };
+  const listPaymentsByStudentIds = async (studentIds) => {
+    if (typeof repository.listPaymentsByStudentIds !== 'function') {
+      return [];
+    }
+    return repository.listPaymentsByStudentIds(studentIds);
+  };
+  const listIdentitiesByStudentIds = async (studentIds) => {
+    if (typeof repository.listIdentitiesByStudentIds !== 'function') {
+      return [];
+    }
+    return repository.listIdentitiesByStudentIds(studentIds);
+  };
+  const getIdentity = async (studentId) => {
+    if (typeof repository.getIdentity !== 'function') {
+      return null;
+    }
+    return repository.getIdentity(studentId);
+  };
+  const listTitleCatalog = async () => {
+    if (typeof repository.listTitleCatalog !== 'function') {
+      return [];
+    }
+    return repository.listTitleCatalog();
+  };
 
   const loadStudentGamificationByStudentIdUseCase = {
     execute: async ({ studentId, studentData = null, physicalTests = null }) => {
       const student = studentData || await repository.findStudentById(studentId);
       const tests = physicalTests || await repository.listPhysicalTests(studentId);
-      const [attendances, payments, storedProfile, storedAchievements, achievementCatalog, challengeCatalog, storedChallengeProgress] = await Promise.all([
+      const [
+        attendances,
+        payments,
+        storedProfile,
+        storedIdentity,
+        storedAchievements,
+        achievementCatalog,
+        titleCatalog,
+        challengeCatalog,
+        storedChallengeProgress,
+        storedXpLedger,
+      ] = await Promise.all([
         listAttendances(studentId),
         listPayments(studentId),
         repository.getProfile(studentId),
+        getIdentity(studentId),
         repository.listStudentAchievements(studentId),
         repository.listAchievementCatalog(),
+        listTitleCatalog(),
         repository.listActiveChallenges(todayProvider()),
         repository.listStudentChallengeProgress(studentId),
+        typeof repository.listXpLedger === 'function' ? repository.listXpLedger(studentId, null) : Promise.resolve([]),
       ]);
 
       const derived = buildProjection({
@@ -943,6 +1866,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         challengeCatalog,
         today: todayProvider(),
         syncedAt: storedProfile?.last_synced_at || isoProvider(),
+        existingXpLedger: storedXpLedger,
       });
 
       const shouldUseStoredProfile = Boolean(storedProfile) && Number(storedProfile.total_xp || 0) >= Number(derived.profile.total_xp || 0);
@@ -990,24 +1914,55 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         ? formatChallenges({ rows: storedChallengeProgress, catalog: challengeCatalog })
         : formatChallenges({ rows: derived.challenges, catalog: challengeCatalog });
       const profileView = buildProfileView({ profile: effectiveProfile, levelInfo });
-      let leaderboardRows = await repository.listCategoryLeaderboard({
-        category: student.categoria,
-        ageBand: derived.ageBand,
+      const studentsInCategory = await repository.listStudentsByCategory(student.categoria);
+      const studentIds = studentsInCategory.map((categoryStudent) => categoryStudent.id);
+      const [categoryTests, categoryAttendances, categoryPayments, categoryIdentities] = await Promise.all([
+        listPhysicalTestsByStudentIds(studentIds),
+        listAttendancesByStudentIds(studentIds),
+        listPaymentsByStudentIds(studentIds),
+        listIdentitiesByStudentIds(studentIds),
+      ]);
+      const identitiesByStudentId = mapRowsByKey(categoryIdentities, 'student_id');
+      const testsByStudentId = groupRowsByStudentId(categoryTests);
+      const attendancesByStudentId = groupRowsByStudentId(categoryAttendances);
+      const paymentsByStudentId = groupRowsByStudentId(categoryPayments);
+      const leaderboardSections = buildLeaderboardSections({
+        students: studentsInCategory,
+        identitiesByStudentId,
+        testsByStudentId,
+        attendancesByStudentId,
+        paymentsByStudentId,
+        today: todayProvider(),
+        syncedAt: isoProvider(),
+        ageBandFilter: derived.ageBand,
+        currentStudentId: student.id,
         limit: 5,
       });
-
-      if (!leaderboardRows || leaderboardRows.length === 0) {
-        const studentsInCategory = await repository.listStudentsByCategory(student.categoria);
-        const profiles = await repository.listProfilesByStudentIds(studentsInCategory.map((categoryStudent) => categoryStudent.id));
-        leaderboardRows = buildDerivedLeaderboardRows({
-          students: studentsInCategory,
-          profiles,
-          currentStudent: student,
-          currentProfileView: profileView,
-          today: todayProvider(),
-          ageBand: derived.ageBand,
-        }).slice(0, 5);
-      }
+      const leaderboardEntriesByStudentId = buildEntriesByStudentId(
+        (studentsInCategory || []).map((categoryStudent) =>
+            buildLeaderboardStudentEntry({
+              student: categoryStudent,
+              identity: identitiesByStudentId[categoryStudent.id] || null,
+              tests: testsByStudentId[categoryStudent.id] || [],
+              attendances: attendancesByStudentId[categoryStudent.id] || [],
+              payments: paymentsByStudentId[categoryStudent.id] || [],
+              today: todayProvider(),
+              syncedAt: isoProvider(),
+            })
+        )
+      );
+      const overallLeaderboardSection = leaderboardSections.find((section) => section.type === 'overall') || leaderboardSections[0] || null;
+      const recommendations = buildRecommendations({
+        profile: profileView,
+        latestTest: tests?.[tests.length - 1] || null,
+        challenges,
+        lockedAchievements,
+      });
+      const upcomingChallenges = buildUpcomingChallenges({
+        catalog: challengeCatalog,
+        today: todayProvider(),
+        currentChallenges: challenges,
+      });
 
       const nudges = buildNudges({
         profile: profileView,
@@ -1015,13 +1970,48 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         lockedAchievements,
       });
 
+      const xpLedger = storedXpLedger?.length > 0
+        ? await foundationUseCases.loadXpLedgerUseCase.execute({ studentId: student.id, limit: 25 })
+        : formatXpLedgerRows(derived.xpLedger).slice(0, 25);
+      const identity = buildIdentityView({
+        student,
+        identity: storedIdentity,
+        titlesState: buildUnlockedTitles({
+          titleCatalog,
+          achievements: achievementRows,
+          profile: effectiveProfile,
+          leaderboardSections,
+          identity: storedIdentity,
+          studentId: student.id,
+        }),
+      });
+
       return {
         profile: profileView,
+        identity,
         achievements,
         lockedAchievements,
         challenges,
+        recommendations,
+        upcomingChallenges,
         nudges,
-        leaderboard: formatLeaderboard({ rows: leaderboardRows, studentId: student.id }),
+        xpLedger,
+        leaderboard: overallLeaderboardSection
+          ? formatLeaderboard({
+              rows: overallLeaderboardSection.rows,
+              studentId: student.id,
+              definition: overallLeaderboardSection,
+              entriesByStudentId: leaderboardEntriesByStudentId,
+              sections: leaderboardSections,
+              titleCatalog,
+            })
+          : [],
+        leaderboards: formatLeaderboardSections({
+          sections: leaderboardSections,
+          studentId: student.id,
+          entriesByStudentId: leaderboardEntriesByStudentId,
+          titleCatalog,
+        }),
         status: {
           hasStoredProfile: Boolean(storedProfile),
           source: shouldUseStoredProfile ? 'stored' : 'derived',
@@ -1041,13 +2031,14 @@ export const createGamificationUseCases = (repository, deps = {}) => {
     execute: async ({ studentId }) => {
       const today = todayProvider();
       const syncedAt = isoProvider();
-      const [student, tests, attendances, payments, achievementCatalog, challengeCatalog] = await Promise.all([
+      const [student, tests, attendances, payments, achievementCatalog, challengeCatalog, existingXpLedger] = await Promise.all([
         repository.findStudentById(studentId),
         repository.listPhysicalTests(studentId),
         listAttendances(studentId),
         listPayments(studentId),
         repository.listAchievementCatalog(),
         repository.listActiveChallenges(today),
+        typeof repository.listXpLedger === 'function' ? repository.listXpLedger(studentId, null) : Promise.resolve([]),
       ]);
 
       const projection = buildProjection({
@@ -1059,10 +2050,14 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         challengeCatalog,
         today,
         syncedAt,
+        existingXpLedger,
       });
 
       await repository.upsertProfile(projection.profile);
       await repository.replaceRewardEvents(studentId, projection.rewardEvents);
+      if (typeof repository.replaceXpLedger === 'function') {
+        await repository.replaceXpLedger(studentId, projection.xpLedger);
+      }
       await repository.replaceStudentAchievements(
         studentId,
         projection.achievements.map((achievement) => ({
@@ -1086,45 +2081,30 @@ export const createGamificationUseCases = (repository, deps = {}) => {
       );
 
       const studentsInCategory = await repository.listStudentsByCategory(student.categoria);
-      const profiles = await repository.listProfilesByStudentIds(studentsInCategory.map((categoryStudent) => categoryStudent.id));
-      const profileMap = new Map((profiles || []).map((profile) => [profile.student_id, profile]));
-
-      const groupedLeaderboardRows = studentsInCategory.reduce((groups, categoryStudent) => {
-        const profile = profileMap.get(categoryStudent.id);
-        if (!profile) return groups;
-
-        const ageBand = deriveAgeBand(
-          categoryStudent.fecha_nacimiento || categoryStudent.users?.fecha_nacimiento,
-          today
-        );
-        const groupKey = `${categoryStudent.categoria || 'sin-categoria'}::${ageBand}`;
-        if (!groups[groupKey]) {
-          groups[groupKey] = [];
-        }
-        groups[groupKey].push({
-          student_id: categoryStudent.id,
-          categoria: categoryStudent.categoria || 'sin-categoria',
-          age_band: ageBand,
-          score: Number(profile.total_xp || 0),
-          current_level: Number(profile.current_level || 1),
-        });
-        return groups;
-      }, {});
-
-      const leaderboardRows = Object.values(groupedLeaderboardRows).flatMap((rows) =>
-        rows
-          .sort((left, right) => {
-            if (right.score !== left.score) return right.score - left.score;
-            if (right.current_level !== left.current_level) return right.current_level - left.current_level;
-            return left.student_id.localeCompare(right.student_id);
-          })
-          .map((row, index) => ({
-            ...row,
-            rank_position: index + 1,
-            snapshot_date: today,
-            updated_at: syncedAt,
-          }))
-      );
+      const studentIds = studentsInCategory.map((categoryStudent) => categoryStudent.id);
+      const [categoryTests, categoryAttendances, categoryPayments, categoryIdentities] = await Promise.all([
+        listPhysicalTestsByStudentIds(studentIds),
+        listAttendancesByStudentIds(studentIds),
+        listPaymentsByStudentIds(studentIds),
+        listIdentitiesByStudentIds(studentIds),
+      ]);
+      const identitiesByStudentId = mapRowsByKey(categoryIdentities, 'student_id');
+      const leaderboardSections = buildLeaderboardSections({
+        students: studentsInCategory,
+        identitiesByStudentId,
+        testsByStudentId: groupRowsByStudentId(categoryTests),
+        attendancesByStudentId: groupRowsByStudentId(categoryAttendances),
+        paymentsByStudentId: groupRowsByStudentId(categoryPayments),
+        today,
+        syncedAt,
+        currentStudentId: student.id,
+        limit: 999,
+      });
+      const overallLeaderboard = leaderboardSections.find((section) => section.type === 'overall');
+      const leaderboardRows = (overallLeaderboard?.rows || []).map((row) => ({
+        ...row,
+        updated_at: syncedAt,
+      }));
 
       await repository.replaceLeaderboardSnapshots({
         category: student.categoria || 'sin-categoria',
@@ -1145,9 +2125,108 @@ export const createGamificationUseCases = (repository, deps = {}) => {
   };
 
   const getCategoryLeaderboardUseCase = {
+    execute: async ({ category, ageBand, limit = 10, leaderboardType = 'overall' }) => {
+      const studentsInCategory = await repository.listStudentsByCategory(category);
+      const studentIds = studentsInCategory.map((student) => student.id);
+      const [categoryTests, categoryAttendances, categoryPayments, categoryIdentities, titleCatalog] = await Promise.all([
+        listPhysicalTestsByStudentIds(studentIds),
+        listAttendancesByStudentIds(studentIds),
+        listPaymentsByStudentIds(studentIds),
+        listIdentitiesByStudentIds(studentIds),
+        listTitleCatalog(),
+      ]);
+      const testsByStudentId = groupRowsByStudentId(categoryTests);
+      const attendancesByStudentId = groupRowsByStudentId(categoryAttendances);
+      const paymentsByStudentId = groupRowsByStudentId(categoryPayments);
+      const identitiesByStudentId = mapRowsByKey(categoryIdentities, 'student_id');
+      const leaderboardSections = buildLeaderboardSections({
+        students: studentsInCategory,
+        identitiesByStudentId,
+        testsByStudentId,
+        attendancesByStudentId,
+        paymentsByStudentId,
+        today: todayProvider(),
+        syncedAt: isoProvider(),
+        ageBandFilter: ageBand || null,
+        currentStudentId: null,
+        limit,
+      });
+      const entriesByStudentId = buildEntriesByStudentId(
+        (studentsInCategory || []).map((student) =>
+          buildLeaderboardStudentEntry({
+            student,
+            identity: identitiesByStudentId[student.id] || null,
+            tests: testsByStudentId[student.id] || [],
+            attendances: attendancesByStudentId[student.id] || [],
+            payments: paymentsByStudentId[student.id] || [],
+            today: todayProvider(),
+            syncedAt: isoProvider(),
+          })
+        )
+      );
+      const section = leaderboardSections.find((entry) => entry.type === leaderboardType)
+        || leaderboardSections.find((entry) => entry.type === 'overall')
+        || leaderboardSections[0];
+      return section
+        ? formatLeaderboard({
+            rows: section.rows,
+            studentId: null,
+            definition: section,
+            entriesByStudentId,
+            sections: leaderboardSections,
+            titleCatalog,
+          })
+        : [];
+    },
+  };
+
+  const listCategoryLeaderboardsUseCase = {
     execute: async ({ category, ageBand, limit = 10 }) => {
-      const rows = await repository.listCategoryLeaderboard({ category, ageBand, limit });
-      return formatLeaderboard({ rows, studentId: null });
+      const studentsInCategory = await repository.listStudentsByCategory(category);
+      const studentIds = studentsInCategory.map((student) => student.id);
+      const [categoryTests, categoryAttendances, categoryPayments, categoryIdentities, titleCatalog] = await Promise.all([
+        listPhysicalTestsByStudentIds(studentIds),
+        listAttendancesByStudentIds(studentIds),
+        listPaymentsByStudentIds(studentIds),
+        listIdentitiesByStudentIds(studentIds),
+        listTitleCatalog(),
+      ]);
+      const testsByStudentId = groupRowsByStudentId(categoryTests);
+      const attendancesByStudentId = groupRowsByStudentId(categoryAttendances);
+      const paymentsByStudentId = groupRowsByStudentId(categoryPayments);
+      const identitiesByStudentId = mapRowsByKey(categoryIdentities, 'student_id');
+      const leaderboardSections = buildLeaderboardSections({
+        students: studentsInCategory,
+        identitiesByStudentId,
+        testsByStudentId,
+        attendancesByStudentId,
+        paymentsByStudentId,
+        today: todayProvider(),
+        syncedAt: isoProvider(),
+        ageBandFilter: ageBand || null,
+        currentStudentId: null,
+        limit,
+      });
+      const entriesByStudentId = buildEntriesByStudentId(
+        (studentsInCategory || []).map((student) =>
+          buildLeaderboardStudentEntry({
+            student,
+            identity: identitiesByStudentId[student.id] || null,
+            tests: testsByStudentId[student.id] || [],
+            attendances: attendancesByStudentId[student.id] || [],
+            payments: paymentsByStudentId[student.id] || [],
+            today: todayProvider(),
+            syncedAt: isoProvider(),
+          })
+        )
+      );
+
+      return formatLeaderboardSections({
+        sections: leaderboardSections,
+        studentId: null,
+        entriesByStudentId,
+        titleCatalog,
+      });
     },
   };
 
@@ -1171,13 +2250,64 @@ export const createGamificationUseCases = (repository, deps = {}) => {
     },
   };
 
+  const updateStudentIdentityUseCase = {
+    execute: async ({ userId, nickname, selectedTitleSlug = null }) => {
+      const student = await repository.findStudentByUserId(userId);
+      const currentProjection = await loadStudentGamificationByStudentIdUseCase.execute({
+        studentId: student.id,
+        studentData: student,
+      });
+      const normalizedNickname = normalizeNickname(nickname);
+
+      if (!isValidNickname(normalizedNickname)) {
+        throw new Error('El apodo debe tener entre 3 y 24 caracteres y solo usar letras, numeros, espacios, guiones o guion bajo.');
+      }
+
+      const unlockedTitleSlugs = new Set(
+        (currentProjection.identity?.availableTitles || [])
+          .filter((title) => title.isUnlocked)
+          .map((title) => title.slug)
+      );
+
+      if (selectedTitleSlug && !unlockedTitleSlugs.has(selectedTitleSlug)) {
+        throw new Error('Solo puedes equipar titulos que ya hayas desbloqueado.');
+      }
+
+      const existingIdentity = await getIdentity(student.id);
+      const syncedAt = isoProvider();
+      const payload = {
+        student_id: student.id,
+        nickname: normalizedNickname,
+        selected_title_slug: selectedTitleSlug || null,
+        updated_at: syncedAt,
+        nickname_updated_at: normalizedNickname !== normalizeNickname(existingIdentity?.nickname)
+          ? syncedAt
+          : existingIdentity?.nickname_updated_at || null,
+      };
+
+      if (existingIdentity?.created_at) {
+        payload.created_at = existingIdentity.created_at;
+      }
+
+      await repository.upsertIdentity(payload);
+
+      return loadStudentGamificationByStudentIdUseCase.execute({
+        studentId: student.id,
+        studentData: student,
+      });
+    },
+  };
+
   return {
+    ...foundationUseCases,
     loadStudentGamificationUseCase,
     loadStudentGamificationByStudentIdUseCase,
     refreshStudentProgressUseCase,
     processPhysicalTestRecordedUseCase,
     getCategoryLeaderboardUseCase,
+    listCategoryLeaderboardsUseCase,
     listStudentAchievementsUseCase,
     listActiveChallengesUseCase,
+    updateStudentIdentityUseCase,
   };
 };

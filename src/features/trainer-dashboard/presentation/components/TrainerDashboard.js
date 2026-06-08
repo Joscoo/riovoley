@@ -14,6 +14,7 @@ import {
   FaVolleyballBall
 } from 'react-icons/fa';
 import { trainerDashboardService } from '../../trainerDashboardService';
+import { CategoryLeaderboardsPanel } from '../../../gamification';
 import { Button } from '../../../../shared/ui';
 import { Card } from '../../../../shared/ui';
 import { SectionHeader } from '../../../../shared/ui';
@@ -25,6 +26,10 @@ const TrainerDashboard = ({ user, onNavigateToSection }) => {
     testsPendientes: 0,
     pagosDelMes: 0
   });
+  const [categoriesStats, setCategoriesStats] = useState({
+    items: [],
+    loading: true,
+  });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -34,10 +39,20 @@ const TrainerDashboard = ({ user, onNavigateToSection }) => {
   const loadStats = async () => {
     setLoading(true);
     try {
-      const dashboardStats = await trainerDashboardService.loadStats();
-      setStats(dashboardStats);
+      const dashboardData = await trainerDashboardService.loadDashboard();
+      setStats(dashboardData?.stats || {
+        totalAtletas: 0,
+        asistenciasHoy: 0,
+        testsPendientes: 0,
+        pagosDelMes: 0,
+      });
+      setCategoriesStats(dashboardData?.categoriesStats || {
+        items: [],
+        loading: false,
+      });
     } catch (error) {
       console.error('Error cargando estadisticas:', error);
+      setCategoriesStats({ items: [], loading: false });
     } finally {
       setLoading(false);
     }
@@ -148,6 +163,12 @@ const TrainerDashboard = ({ user, onNavigateToSection }) => {
           </Card>
         ))}
       </div>
+
+      <CategoryLeaderboardsPanel
+        categories={categoriesStats.items}
+        title="Competencia por categoria"
+        subtitle="Detecta quien lidera cada marca, asistencia o mensualidad y usa esos registros como referencia para el entrenamiento."
+      />
     </div>
   );
 };

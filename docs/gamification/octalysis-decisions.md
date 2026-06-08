@@ -198,3 +198,172 @@ This document records the product and technical decisions taken while applying O
 - Technical impact: `payments` now triggers `refreshStudentProgress`, and `gamification` reads payment history to derive XP, achievements, challenges, nudges, and UI insights.
 - Dependencies: `payments` feature, `gamification` feature, student progress panel.
 - Status: accepted
+
+### 2026-06-07 - Multi-leaderboard competition
+- Phase: 4
+- Topic: Competitive rankings by activity and measurement
+- Context: A single leaderboard by total XP is not enough to motivate different student profiles or make specific strengths visible.
+- Decision: Expose multiple category leaderboards derived from real activity, including overall progress, physical measurements, attendances, and registered monthly payments.
+- Alternatives discarded:
+  - Keep only one global ranking by XP.
+  - Show ranking rows only for students with persisted gamification profiles.
+- Product impact: More students can compete from different strengths, and any student with real activity can appear in at least one relevant table.
+- Technical impact: Leaderboards are now derived from category students plus physical tests, attendances, and payments, instead of depending only on stored snapshots.
+- Dependencies: `gamification` use cases, `student-dashboard`, `physical-tests`, `attendance`, `payments`.
+- Status: accepted
+
+### 2026-06-07 - Named competition inside category
+- Phase: 4
+- Topic: Visible competitor identity in student rankings
+- Context: The competitive goal of the product now prioritizes recognizing direct rivals and record holders, not only anonymous positions.
+- Decision: Show readable student names in category leaderboards and emphasize who leads each record table.
+- Alternatives discarded:
+  - Keep all leaderboards anonymized with aliases.
+  - Reveal names only for the top three positions.
+- Product impact: The leaderboard feels more like a real competition and makes each record holder visible to the rest of the category.
+- Technical impact: Leaderboard rows now expose readable competitor names and the UI adds record-oriented copy per table.
+- Dependencies: `gamification` leaderboard derivation, student progress panel.
+- Status: accepted
+
+### 2026-06-07 - Structured expansion for progression and identity
+- Phase: 5
+- Topic: Next-stage gamification architecture
+- Context: The current system already covers physical progress, attendance, payments and category competition, but the next iteration needs stronger retention, clearer progression traceability and a richer sense of identity.
+- Decision: Expand the feature through a structured internal architecture composed of XP, streak, achievement, challenge, competition, recommendation, identity and economy engines inside `gamification`.
+- Alternatives discarded:
+  - Keep adding rules directly inside one growing projection file.
+  - Expand only the UI without formalizing new internal responsibilities.
+- Product impact: Students get a deeper and more scalable motivational system instead of isolated new widgets.
+- Technical impact: The feature should evolve into multiple bounded subdomains and new persistence models such as XP ledger, identity and economy.
+- Dependencies: `gamification` feature, `auth-session`, `attendance`, `payments`, `physical-tests`.
+- Status: accepted
+
+### 2026-06-07 - Daily login reward boundary
+- Phase: 5
+- Topic: Login-based rewards
+- Context: Daily login can help habit formation, but if it becomes too valuable it will distort the system and encourage low-value farming.
+- Decision: Allow a minimum daily login reward at most once per day, while keeping verified sports and continuity actions as the primary progression sources.
+- Alternatives discarded:
+  - No reward at all for login activity.
+  - Meaningful XP gains for frequent logins.
+- Product impact: The system reinforces return habit without allowing login to dominate progression.
+- Technical impact: A dedicated daily login reward flow and persistence guard are required.
+- Dependencies: `auth-session`, XP ledger, daily reward storage.
+- Status: accepted
+
+### 2026-06-07 - Weekday attendance streak
+- Phase: 5
+- Topic: Attendance continuity model
+- Context: Monthly or generic streaks do not make weekday training rhythm visible enough.
+- Decision: Add a streak based on consecutive business days from Monday to Friday, allowing the chain to continue across calendar weeks.
+- Alternatives discarded:
+  - Reset the streak every Monday.
+  - Keep only month-level consistency streaks.
+- Product impact: Students can perceive continuity in day-to-day training rhythm more clearly.
+- Technical impact: The streak engine must understand business-day continuity instead of only month buckets.
+- Dependencies: `attendance`, streak engine, student progress UI.
+- Status: accepted
+
+### 2026-06-07 - Detailed XP ledger
+- Phase: 5
+- Topic: XP traceability
+- Context: Students need to understand exactly where their progress comes from if the system is going to grow in complexity.
+- Decision: Introduce a detailed XP extract with one auditable row per XP source and contextual copy.
+- Alternatives discarded:
+  - Keep only aggregate XP totals.
+  - Show grouped summaries without event traceability.
+- Product impact: The student gains clarity, trust and stronger perception of earned progress.
+- Technical impact: A new ledger table and read model are required.
+- Dependencies: XP engine, student progress UI, persistence layer.
+- Status: accepted
+
+### 2026-06-07 - Large mixed objective catalog
+- Phase: 5
+- Topic: Goal system depth
+- Context: The current catalog is useful but still too narrow to sustain long-term motivation.
+- Decision: Use a mixed objective model with a wide permanent catalog plus monthly, weekly and pre-cycle temporary objectives.
+- Alternatives discarded:
+  - Keep most goals permanent only.
+  - Rely mostly on temporary challenges with little long-term progression.
+- Product impact: Students can always see both enduring milestones and short-term urgency.
+- Technical impact: Challenge and achievement engines must support more categories, visibility states and future-cycle previews.
+- Dependencies: achievement engine, challenge engine, UI visibility rules.
+- Status: accepted
+
+### 2026-06-07 - Balanced competition and self-improvement
+- Phase: 5
+- Topic: Motivational balance in expanded objectives
+- Context: The user explicitly wants stronger competition, but not at the cost of fairness for late joiners or weaker students.
+- Decision: Balance goals evenly between self-improvement and competition, with visible competitive mechanics but enough personal progress routes to avoid dead ends.
+- Alternatives discarded:
+  - Mostly self-improvement with light competition.
+  - Mostly competitive progression.
+- Product impact: The system pushes students to compare and improve without becoming exclusionary.
+- Technical impact: Goal catalog, leaderboards and recommendations must mix rival-facing and self-facing progress routes.
+- Dependencies: competition engine, recommendation engine, achievements, challenges.
+- Status: accepted
+
+### 2026-06-07 - Preparatory pre-challenges
+- Phase: 5
+- Topic: What happens after monthly completion
+- Context: Students should not feel that progress stalls after finishing the current month.
+- Decision: When monthly goals are completed, show and enable preparatory pre-challenges for the following cycle, with limited but real reward value.
+- Alternatives discarded:
+  - Show only a preview of the next month.
+  - Leave the student with no further objective once the month is complete.
+- Product impact: Anticipation and retention stay active at end-of-cycle moments.
+- Technical impact: The challenge engine must support next-cycle generated objectives and differentiated rewards.
+- Dependencies: challenge engine, upcoming challenge UI, challenge persistence.
+- Status: accepted
+
+### 2026-06-07 - Identity layer with moderated nicknames and collectible titles
+- Phase: 5
+- Topic: Public student identity
+- Context: Competition becomes stronger when students can be recognized through self-expression, not only through legal names.
+- Decision: Add moderated free-form nicknames and collectible titles that students can unlock and choose to display.
+- Alternatives discarded:
+  - Title assignment only by automatic best-achievement logic.
+  - Nicknames limited to fixed templates.
+- Product impact: Students gain stronger identity, belonging and visible status in rankings.
+- Technical impact: Public identity projection, moderation rules and equipped title state are required.
+- Dependencies: identity engine, leaderboard UI, student profile UI.
+- Status: accepted
+
+### 2026-06-07 - Soft-currency economy and configurable illustrated avatars
+- Phase: 5
+- Topic: Personalization economy
+- Context: The user wants avatars, decoratives, clothing and visible customization, but does not want to design custom assets from scratch.
+- Decision: Introduce a soft-currency economy tied to achievements, goals and levels, plus configurable illustrated avatars built on an existing tool or library instead of bespoke asset production.
+- Alternatives discarded:
+  - No economy layer.
+  - Full custom art pipeline from day one.
+- Product impact: The system gains ownership, curiosity and retention through collectable personalization.
+- Technical impact: New wallet, currency ledger, catalog, inventory and equipped-items models are needed, plus integration with a reusable avatar solution.
+- Dependencies: economy engine, identity engine, external avatar tooling, student profile UI.
+- Status: accepted
+
+### 2026-06-07 - Implemented XP ledger, daily login reward and weekday streak
+- Phase: 5
+- Topic: First structured rollout delivered
+- Context: The approved expansion required a first vertical slice that students could feel immediately without waiting for identity or economy features.
+- Decision: Implement the first foundation slice with a visible XP extract, a once-per-day minimum login reward, and a weekday attendance streak integrated into the student panel.
+- Alternatives discarded:
+  - Wait until avatar, titles and economy were ready before shipping any structured expansion.
+  - Add login reward without persistence guard or without showing the source in the UI.
+- Product impact: Students can now understand where XP comes from and see a more specific continuity mechanic around weekday training.
+- Technical impact: Added `gamification.xp_ledger`, `gamification.login_rewards`, new repository/service methods, and student-panel support for XP extract plus weekday streak.
+- Dependencies: `gamification`, `auth-session`, student progress UI, SQL migration `gamification_phase13_foundation_2026_06_07.sql`.
+- Status: accepted
+
+### 2026-06-07 - Implemented moderated nicknames and equipable titles
+- Phase: 5
+- Topic: Competitive identity rollout
+- Context: The next approved slice after the XP foundation was to make competition more personal and visible without waiting for avatar or economy features.
+- Decision: Implement `student_identity` with moderated nicknames, title catalog, title unlocking derived from achievements/levels/leaderboard leadership, and title selection by the student.
+- Alternatives discarded:
+  - Delay identity until avatar and currency were ready.
+  - Keep legal names only and assign titles automatically with no choice.
+- Product impact: Students can now be recognized in rankings by a chosen nickname and a visible collectible title, increasing ownership and social motivation.
+- Technical impact: Added title catalog + student identity persistence, new service/use case flow to update identity, and leaderboard formatting that enriches rows with equipped titles.
+- Dependencies: `gamification_phase14_identity_2026_06_07.sql`, identity UI in student panel, leaderboard projection formatting.
+- Status: accepted

@@ -11,11 +11,13 @@ const { createTrainerDashboardService } = require('./createTrainerDashboardServi
 
 describe('createTrainerDashboardService', () => {
   const mockLoadStats = jest.fn();
+  const mockLoadDashboard = jest.fn();
 
   beforeEach(() => {
     jest.clearAllMocks();
     createTrainerDashboardUseCases.mockReturnValue({
       loadStatsUseCase: { execute: mockLoadStats },
+      loadDashboardUseCase: { execute: mockLoadDashboard },
     });
   });
 
@@ -27,5 +29,18 @@ describe('createTrainerDashboardService', () => {
 
     expect(mockLoadStats).toHaveBeenCalledTimes(1);
     expect(result).toEqual({ totalAtletas: 10 });
+  });
+
+  it('loadDashboard delega al use case consolidado', async () => {
+    mockLoadDashboard.mockResolvedValueOnce({
+      stats: { totalAtletas: 10 },
+      categoriesStats: { items: [{ code: 'iniciacion_hombres', total: 3 }], loading: false },
+    });
+    const service = createTrainerDashboardService({});
+
+    const result = await service.loadDashboard();
+
+    expect(mockLoadDashboard).toHaveBeenCalledTimes(1);
+    expect(result.categoriesStats.items[0].code).toBe('iniciacion_hombres');
   });
 });
