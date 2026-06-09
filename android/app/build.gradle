@@ -16,8 +16,19 @@ android {
             ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    signingConfigs {
+        release {
+            // Indicar el tipo PKCS12 para keystores modernos
+            storeFile file('my-release-key.keystore')
+            storeType 'PKCS12'
+            storePassword project.hasProperty('KEYSTORE_PASSWORD') ? KEYSTORE_PASSWORD : System.getenv('KEYSTORE_PASSWORD')
+            keyAlias 'my-key-alias'
+            keyPassword project.hasProperty('KEY_PASSWORD') ? KEY_PASSWORD : System.getenv('KEY_PASSWORD')
+        }
+    }
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

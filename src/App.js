@@ -198,7 +198,8 @@ function AppContent() {
 
   return (
     <Suspense fallback={<LoadingFallback />}>
-      {otaState?.supported ? (
+      {/* TEMPORARILY DISABLED: OTA update UI window (invasive, not being used yet) */}
+      {false && otaState?.supported ? (
         <div className="fixed bottom-4 right-4 z-[1200] w-[min(92vw,380px)]">
           <Card className="border-rv-gold/35 bg-[linear-gradient(145deg,rgba(8,15,33,0.95)_0%,rgba(30,58,138,0.88)_100%)] text-white shadow-2xl" padding="sm">
             <div className="space-y-3">
@@ -245,9 +246,10 @@ function AppContent() {
               ) : null}
 
               <div className="flex flex-wrap gap-2">
-                <Button size="sm" onClick={handleCheckOtaUpdate}>
+                {/* TEMPORARILY DISABLED: OTA check button causes "on_permise_app" error during permission testing */}
+                {/* <Button size="sm" onClick={handleCheckOtaUpdate}>
                   Buscar update
-                </Button>
+                </Button> */}
                 {otaState.status === 'available' ? (
                   <Button size="sm" variant="secondary" onClick={handleDownloadOtaUpdate}>
                     Descargar
