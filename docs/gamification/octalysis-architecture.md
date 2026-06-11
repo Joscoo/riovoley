@@ -57,6 +57,16 @@ Este documento aterriza la estructura tecnica de la expansion de gamificacion pa
   - seleccion de titulo desbloqueado desde el panel del estudiante
   - seleccion persistida de `avatar_style`
   - avatar generado por URL deterministica con DiceBear
+  - expansion aprobada:
+    - separar `avatar_style` de `avatar_model_slug`
+    - catalogo fijo de modelos por estilo
+    - modelos base y modelos bloqueados visibles
+    - imagen principal unificada avatar/foto
+    - portraito compartido entre panel, sidebar y leaderboards
+  - estado implementado actual:
+    - `avatar_model_slug` persistido
+    - opciones disponibles y bloqueadas proyectadas al agregado
+    - render del avatar sensible a `style + model`
 
 ### Economy Engine
 - wallet
@@ -72,6 +82,24 @@ Este documento aterriza la estructura tecnica de la expansion de gamificacion pa
   - `gamification.student_cosmetic_items`
   - `gamification.student_cosmetic_equipment`
   - compras/equipamiento via funciones SQL seguras
+  - expansion aprobada:
+    - todos los cosmeticos deben causar un cambio visible
+    - algunos cosmeticos afectan internamente el avatar cuando el modo sea `avatar`
+    - para foto de perfil los cosmeticos solo afectan la envoltura exterior
+  - estado implementado actual:
+    - renderer con fallback visual por slug para nuevos marcos, fondos, insignias y efectos
+    - catalogo ampliado por migracion para sumar variedad visible sin nuevo codigo por item
+
+### Achievement Visibility Layer
+- logros desbloqueados
+- logros bloqueados visibles
+- logros secretos con pista
+- estado objetivo:
+  - mantener sorpresa sin ocultar por completo el espacio de descubrimiento
+  - soportar progreso visible cuando aplique
+- estado implementado actual:
+  - `secretAchievements` separado del resto de bloqueados
+  - grid propia para secretos con pista y progreso parcial
 
 ## Entidades nuevas sugeridas
 

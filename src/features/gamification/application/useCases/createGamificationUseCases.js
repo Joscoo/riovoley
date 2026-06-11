@@ -7,6 +7,8 @@ import {
 import {
   AVATAR_STYLE_OPTIONS,
   DEFAULT_AVATAR_STYLE,
+  getAvatarModelMeta,
+  getAvatarModelOptions,
   getAvatarStyleMeta,
   isValidAvatarStyle,
 } from '../../domain/avatarCatalog';
@@ -396,6 +398,9 @@ const DEFAULT_TITLES = [
 ];
 
 const translateCoreDriver = (value) => CORE_DRIVER_LABELS[value] || value || '';
+const PROFILE_IMAGE_MODES = new Set(['avatar', 'photo']);
+const ALLOWED_PROFILE_PHOTO_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp']);
+const MAX_PROFILE_PHOTO_SIZE_BYTES = 4 * 1024 * 1024;
 
 const normalizeNickname = (value) => {
   if (typeof value !== 'string') return null;
@@ -409,6 +414,22 @@ const isValidNickname = (value) =>
     && value.length <= 24
     && /^[A-Za-z0-9ÁÉÍÓÚáéíóúÑñ _-]+$/.test(value)
   );
+
+const isValidProfileImageMode = (value) => PROFILE_IMAGE_MODES.has(value);
+
+const normalizeProfileImageMode = (value) => (isValidProfileImageMode(value) ? value : 'avatar');
+
+const validateProfilePhotoFile = (file) => {
+  if (!file) return;
+
+  if (!ALLOWED_PROFILE_PHOTO_TYPES.has(file.type)) {
+    throw new Error('La foto debe estar en formato JPG, PNG o WEBP.');
+  }
+
+  if (Number(file.size || 0) > MAX_PROFILE_PHOTO_SIZE_BYTES) {
+    throw new Error('La foto no puede superar los 4 MB.');
+  }
+};
 
 const localizeCatalogEntries = (entries, defaults) => {
   const defaultsMap = new Map((defaults || []).map((entry) => [entry.slug, entry]));
@@ -919,6 +940,16 @@ const buildXpLedgerEntries = ({ studentId, rewardEvents }) =>
     };
   });
 
+const DERIVED_CURRENCY_LEDGER_SOURCE_TYPES = new Set([
+  'physical_test',
+  'attendance',
+  'payment',
+  'payment_status',
+  'daily_login',
+  'achievement',
+  'level_reward',
+]);
+
 const buildCurrencyLedgerEntries = ({ studentId, xpLedger, currentLevel }) => {
   const baseEntries = (xpLedger || [])
     .map((entry) => {
@@ -1095,6 +1126,7 @@ const buildProjection = ({
   syncedAt,
   existingXpLedger = [],
   existingCurrencyLedger = [],
+  existingCurrencyWallet = null,
 }) => {
   const jumpDelta = buildDelta(tests, 'brazo_extend_con_impulso');
   const strengthDelta = buildStrengthDelta(tests);
@@ -1134,14 +1166,32 @@ const buildProjection = ({
     xpLedger,
     currentLevel: levelInfo.level,
   });
-  const preservedPurchaseEntries = (existingCurrencyLedger || []).filter((entry) => entry.source_type === 'cosmetic_purchase');
-  const combinedCurrencyLedger = [...currencyLedger, ...preservedPurchaseEntries]
+  const preservedCurrencyEntries = (existingCurrencyLedger || []).filter(
+    (entry) => !DERIVED_CURRENCY_LEDGER_SOURCE_TYPES.has(entry.source_type)
+  );
+  const combinedCurrencyLedger = [...currencyLedger, ...preservedCurrencyEntries]
     .sort((left, right) => String(left.occurred_at || left.created_at || '').localeCompare(String(right.occurred_at || right.created_at || '')));
-  const currencyWallet = buildCurrencyWallet({
+  const computedCurrencyWallet = buildCurrencyWallet({
     studentId: student.id,
     currencyLedger: combinedCurrencyLedger,
     syncedAt,
   });
+  const currencyWallet = existingCurrencyWallet
+    ? {
+      student_id: student.id,
+      balance: Math.max(Number(existingCurrencyWallet.balance || 0), Number(computedCurrencyWallet.balance || 0)),
+      total_earned: Math.max(
+        Number(existingCurrencyWallet.total_earned || existingCurrencyWallet.totalEarned || 0),
+        Number(computedCurrencyWallet.total_earned || 0)
+      ),
+      total_spent: Math.max(
+        Number(existingCurrencyWallet.total_spent || existingCurrencyWallet.totalSpent || 0),
+        Number(computedCurrencyWallet.total_spent || 0)
+      ),
+      last_synced_at: syncedAt,
+      updated_at: syncedAt,
+    }
+    : computedCurrencyWallet;
   const challenges = buildChallenges({
     catalog: challengeCatalog,
     tests,
@@ -1689,9 +1739,191 @@ const buildUnlockedTitles = ({ titleCatalog, achievements, profile, leaderboardS
   };
 };
 
-const buildIdentityView = ({ student, identity, titlesState, cosmetics }) => {
+const buildCosmeticCatalogMap = (catalog = []) =>
+  (catalog || []).reduce((map, item) => {
+    map[item.slug] = item;
+    return map;
+  }, {});
+
+const resolveProfilePhotoUrl = (repository, path) => {
+  if (!path || typeof repository?.getPublicProfilePhotoUrl !== 'function') {
+    return null;
+  }
+
+  return repository.getPublicProfilePhotoUrl(path);
+};
+
+const resolveProfileImageUrl = ({
+  profileImageMode,
+  profilePhotoUrl,
+  avatarUrl,
+}) => (profileImageMode === 'photo' && profilePhotoUrl ? profilePhotoUrl : avatarUrl);
+
+const getLeaderboardRank = (leaderboards, type) => {
+  const board = (leaderboards || []).find((entry) => entry.type === type);
+  return Number(board?.currentStudentRank || 0);
+};
+
+const isAvatarModelUnlocked = ({ model, profile, leaderboards = [], achievements = [] }) => {
+  const currentLevel = Number(profile?.currentLevel || profile?.current_level || 0);
+  const longestStreak = Number(profile?.longestStreak || profile?.longest_streak || 0);
+  const unlockedAchievements = Number(achievements?.length || 0);
+
+  switch (model.unlockType) {
+    case 'base':
+      return true;
+    case 'level':
+      return Number(model.unlockLevel || 0) > 0
+        && currentLevel >= Number(model.unlockLevel || 0);
+    case 'achievement':
+      return (
+        getLeaderboardRank(leaderboards, 'overall') > 0
+        && getLeaderboardRank(leaderboards, 'overall') <= 3
+      ) || currentLevel >= 5;
+    case 'streak':
+      return longestStreak >= 3 || unlockedAchievements >= 8;
+    default:
+      return false;
+  }
+};
+
+const buildAvatarModelOptions = ({ styleSlug, profile, leaderboards = [], achievements = [] }) => {
+  const baseOptions = getAvatarModelOptions(styleSlug);
+  const available = [...baseOptions.available];
+  const blocked = [];
+
+  baseOptions.blocked.forEach((model) => {
+    if (isAvatarModelUnlocked({
+      model,
+      profile,
+      leaderboards,
+      achievements,
+    })) {
+      available.push({
+        ...model,
+        isLocked: false,
+      });
+      return;
+    }
+
+    blocked.push(model);
+  });
+
+  return {
+    available,
+    blocked,
+  };
+};
+
+const buildAvatarModelsByStyle = ({ profile, leaderboards = [], achievements = [] }) =>
+  AVATAR_STYLE_OPTIONS.reduce((accumulator, style) => {
+    accumulator[style.slug] = buildAvatarModelOptions({
+      styleSlug: style.slug,
+      profile,
+      leaderboards,
+      achievements,
+    });
+    return accumulator;
+  }, {});
+
+const isCosmeticUnlocked = ({ item, profile, leaderboards = [], achievements = [] }) => {
+  const metadata = item?.metadata || {};
+  const unlockType = metadata.unlockType || 'purchase';
+  const currentLevel = Number(profile?.currentLevel || profile?.current_level || 0);
+  const longestStreak = Number(profile?.longestStreak || profile?.longest_streak || 0);
+  const unlockedAchievements = Number(achievements?.length || 0);
+  const unlockTarget = Number(metadata.unlockTarget || metadata.unlockLevel || 0);
+
+  switch (unlockType) {
+    case 'purchase':
+      return true;
+    case 'level':
+      return unlockTarget > 0 && currentLevel >= unlockTarget;
+    case 'achievement_count':
+      return unlockTarget > 0 && unlockedAchievements >= unlockTarget;
+    case 'leaderboard_top': {
+      const boardType = metadata.boardType || 'overall';
+      const targetRank = unlockTarget > 0 ? unlockTarget : 3;
+      const currentRank = getLeaderboardRank(leaderboards, boardType);
+      return currentRank > 0 && currentRank <= targetRank;
+    }
+    case 'streak':
+      return unlockTarget > 0 && longestStreak >= unlockTarget;
+    default:
+      return true;
+  }
+};
+
+const getCosmeticUnlockHint = (item) => {
+  const metadata = item?.metadata || {};
+  if (metadata.unlockHint) {
+    return metadata.unlockHint;
+  }
+
+  switch (metadata.unlockType || 'purchase') {
+    case 'level':
+      return `Desbloquea al llegar al nivel ${Number(metadata.unlockTarget || metadata.unlockLevel || 0)}.`;
+    case 'achievement_count':
+      return `Desbloquea al conseguir ${Number(metadata.unlockTarget || 0)} logros.`;
+    case 'leaderboard_top':
+      return `Desbloquea al entrar al top ${Number(metadata.unlockTarget || 3)} en ${metadata.boardType || 'progreso general'}.`;
+    case 'streak':
+      return `Desbloquea al mantener una racha de ${Number(metadata.unlockTarget || 0)} meses.`;
+    default:
+      return 'Disponible para comprar con monedas.';
+  }
+};
+
+const getCosmeticUnlockLabel = (item) => {
+  const metadata = item?.metadata || {};
+
+  switch (metadata.unlockType || 'purchase') {
+    case 'level':
+      return `Nivel ${Number(metadata.unlockTarget || metadata.unlockLevel || 0)}`;
+    case 'achievement_count':
+      return `${Number(metadata.unlockTarget || 0)} logros`;
+    case 'leaderboard_top':
+      return `Top ${Number(metadata.unlockTarget || 3)}`;
+    case 'streak':
+      return `Racha ${Number(metadata.unlockTarget || 0)}`;
+    default:
+      return 'Compra directa';
+  }
+};
+
+const buildIdentityView = ({
+  student,
+  identity,
+  titlesState,
+  cosmetics,
+  repository,
+  profile,
+  leaderboards = [],
+  achievements = [],
+}) => {
   const avatarStyle = isValidAvatarStyle(identity?.avatar_style) ? identity.avatar_style : DEFAULT_AVATAR_STYLE;
+  const avatarModelSlug = getAvatarModelMeta(avatarStyle, identity?.avatar_model_slug).slug;
   const displayName = buildCompetitorName(student, identity);
+  const profileImageMode = normalizeProfileImageMode(identity?.profile_image_mode);
+  const profilePhotoUrl = resolveProfilePhotoUrl(repository, identity?.profile_photo_path);
+  const avatarUrl = buildAvatarUrl({
+    seed: `${student.id}-${displayName}`,
+    style: avatarStyle,
+    modelSlug: avatarModelSlug,
+    equipment: cosmetics?.equipment || {},
+  });
+  const avatarModelsByStyle = buildAvatarModelsByStyle({
+    profile,
+    leaderboards,
+    achievements,
+  });
+  const avatarModelOptions = avatarModelsByStyle[avatarStyle] || buildAvatarModelOptions({
+    styleSlug: avatarStyle,
+    profile,
+    leaderboards,
+    achievements,
+  });
+
   return {
     studentId: student.id,
     nickname: normalizeNickname(identity?.nickname),
@@ -1703,15 +1935,23 @@ const buildIdentityView = ({ student, identity, titlesState, cosmetics }) => {
     avatarStyle,
     avatarStyleMeta: getAvatarStyleMeta(avatarStyle),
     avatarStyleOptions: AVATAR_STYLE_OPTIONS,
-    avatarUrl: buildAvatarUrl({
-      seed: `${student.id}-${displayName}`,
-      style: avatarStyle,
-      equipment: cosmetics?.equipment || {},
+    avatarModelSlug,
+    avatarModelMeta: getAvatarModelMeta(avatarStyle, avatarModelSlug),
+    avatarModelOptions,
+    avatarModelsByStyle,
+    avatarUrl,
+    profileImageMode,
+    profilePhotoUrl,
+    profileImageUrl: resolveProfileImageUrl({
+      profileImageMode,
+      profilePhotoUrl,
+      avatarUrl,
     }),
   };
 };
 
-const buildCosmeticsView = ({ catalog, ownedItems, equipment, wallet }) => {
+const buildCosmeticsView = ({ catalog, ownedItems, equipment, wallet, profile, leaderboards = [], achievements = [] }) => {
+  const catalogMap = buildCosmeticCatalogMap(catalog);
   const ownedSlugs = new Set((ownedItems || []).map((item) => item.item_slug));
   const equippedBySlot = {
     frame: equipment?.frame_item_slug || null,
@@ -1723,6 +1963,13 @@ const buildCosmeticsView = ({ catalog, ownedItems, equipment, wallet }) => {
   const items = (catalog || []).map((item) => {
     const category = item.category || 'misc';
     const isOwned = ownedSlugs.has(item.slug);
+    const isUnlocked = isCosmeticUnlocked({
+      item,
+      profile,
+      leaderboards,
+      achievements,
+    });
+
     return {
       slug: item.slug,
       name: item.name,
@@ -1731,10 +1978,27 @@ const buildCosmeticsView = ({ catalog, ownedItems, equipment, wallet }) => {
       category,
       priceCoins: Number(item.price_coins || 0),
       isOwned,
+      isUnlocked,
+      isLocked: !isOwned && !isUnlocked,
       isEquipped: equippedBySlot[category] === item.slug,
       canAfford: Number(wallet?.balance || 0) >= Number(item.price_coins || 0),
+      canPurchase: isUnlocked && Number(wallet?.balance || 0) >= Number(item.price_coins || 0),
+      unlockType: item.metadata?.unlockType || 'purchase',
+      unlockLabel: getCosmeticUnlockLabel(item),
+      unlockHint: getCosmeticUnlockHint(item),
       metadata: item.metadata || {},
     };
+  }).sort((left, right) => {
+    if (left.isOwned !== right.isOwned) {
+      return left.isOwned ? -1 : 1;
+    }
+    if (left.isLocked !== right.isLocked) {
+      return left.isLocked ? 1 : -1;
+    }
+    if (left.isEquipped !== right.isEquipped) {
+      return left.isEquipped ? -1 : 1;
+    }
+    return left.priceCoins - right.priceCoins;
   });
 
   return {
@@ -1744,6 +2008,12 @@ const buildCosmeticsView = ({ catalog, ownedItems, equipment, wallet }) => {
     ledger: wallet?.ledger || [],
     items,
     equipment: equippedBySlot,
+    equippedItems: {
+      frame: catalogMap[equippedBySlot.frame] || null,
+      background: catalogMap[equippedBySlot.background] || null,
+      badge: catalogMap[equippedBySlot.badge] || null,
+      effect: catalogMap[equippedBySlot.effect] || null,
+    },
     inventoryCount: items.filter((item) => item.isOwned).length,
   };
 };
@@ -1761,11 +2031,13 @@ const groupRowsByStudentId = (rows) =>
 const buildLeaderboardStudentEntry = ({
   student,
   identity = null,
+  cosmeticEquipment = null,
   tests,
   attendances,
   payments,
   today,
   syncedAt,
+  repository,
 }) => {
   const projection = buildProjection({
     student,
@@ -1781,13 +2053,39 @@ const buildLeaderboardStudentEntry = ({
   const attendanceStats = calculateAttendanceStats(attendances, today);
   const paymentStats = calculatePaymentStats(payments, today);
   const hasAnyActivity = (tests?.length || 0) > 0 || (attendances?.length || 0) > 0 || (payments?.length || 0) > 0;
+  const avatarStyle = isValidAvatarStyle(identity?.avatar_style) ? identity.avatar_style : DEFAULT_AVATAR_STYLE;
+  const avatarModelSlug = getAvatarModelMeta(avatarStyle, identity?.avatar_model_slug).slug;
+  const avatarUrl = buildAvatarUrl({
+    seed: `${student.id}-${buildCompetitorName(student, identity)}`,
+    style: avatarStyle,
+    modelSlug: avatarModelSlug,
+    equipment: {
+      frame: cosmeticEquipment?.frame_item_slug || null,
+      background: cosmeticEquipment?.background_item_slug || null,
+      badge: cosmeticEquipment?.badge_item_slug || null,
+      effect: cosmeticEquipment?.effect_item_slug || null,
+    },
+  });
+  const profileImageMode = normalizeProfileImageMode(identity?.profile_image_mode);
+  const profilePhotoUrl = resolveProfilePhotoUrl(repository, identity?.profile_photo_path);
 
   return {
     student,
     ageBand: deriveAgeBand(student.fecha_nacimiento || student.users?.fecha_nacimiento, today),
     identity,
+    cosmeticEquipment,
     competitorName: buildCompetitorName(student, identity),
     realName: buildStudentRealName(student),
+    avatarModelSlug,
+    avatarModelName: getAvatarModelMeta(avatarStyle, avatarModelSlug).name,
+    avatarUrl,
+    profileImageMode,
+    profilePhotoUrl,
+    profileImageUrl: resolveProfileImageUrl({
+      profileImageMode,
+      profilePhotoUrl,
+      avatarUrl,
+    }),
     profile: projection.profile,
     achievements: projection.achievements,
     latestTest,
@@ -1815,6 +2113,7 @@ const limitLeaderboardRows = ({ rows, currentStudentId, limit }) => {
 const buildLeaderboardSections = ({
   students,
   identitiesByStudentId = {},
+  cosmeticEquipmentByStudentId = {},
   testsByStudentId,
   attendancesByStudentId,
   paymentsByStudentId,
@@ -1823,17 +2122,20 @@ const buildLeaderboardSections = ({
   ageBandFilter = null,
   currentStudentId = null,
   limit = 5,
+  repository,
 }) => {
   const entries = (students || [])
     .map((student) =>
       buildLeaderboardStudentEntry({
         student,
         identity: identitiesByStudentId[student.id] || null,
+        cosmeticEquipment: cosmeticEquipmentByStudentId[student.id] || null,
         tests: testsByStudentId[student.id] || [],
         attendances: attendancesByStudentId[student.id] || [],
         payments: paymentsByStudentId[student.id] || [],
         today,
         syncedAt,
+        repository,
       })
     )
     .filter((entry) => (ageBandFilter ? entry.ageBand === ageBandFilter : true));
@@ -1914,10 +2216,24 @@ const formatLeaderboard = ({ rows, studentId, definition, entriesByStudentId = {
       snapshotDate: row.snapshot_date,
       publicAlias: row.public_alias || 'Anonimo',
       realName: row.real_name || entry.realName || row.public_alias || 'Estudiante',
-      avatarUrl: buildAvatarUrl({
+      avatarUrl: entry.avatarUrl || buildAvatarUrl({
         seed: `${row.student_id}-${row.public_alias || entry.realName || 'Estudiante'}`,
         style: isValidAvatarStyle(entry.identity?.avatar_style) ? entry.identity.avatar_style : DEFAULT_AVATAR_STYLE,
+        modelSlug: entry.avatarModelSlug || entry.identity?.avatar_model_slug || null,
       }),
+      profileImageUrl: entry.profileImageUrl || entry.avatarUrl || buildAvatarUrl({
+        seed: `${row.student_id}-${row.public_alias || entry.realName || 'Estudiante'}`,
+        style: isValidAvatarStyle(entry.identity?.avatar_style) ? entry.identity.avatar_style : DEFAULT_AVATAR_STYLE,
+        modelSlug: entry.avatarModelSlug || entry.identity?.avatar_model_slug || null,
+      }),
+      avatarModelSlug: entry.avatarModelSlug || entry.identity?.avatar_model_slug || null,
+      avatarModelName: entry.avatarModelName
+        || getAvatarModelMeta(
+          isValidAvatarStyle(entry.identity?.avatar_style) ? entry.identity.avatar_style : DEFAULT_AVATAR_STYLE,
+          entry.avatarModelSlug || entry.identity?.avatar_model_slug || null,
+        ).name,
+      profileImageMode: entry.profileImageMode || 'avatar',
+      cosmeticEquipment: entry.cosmeticEquipment || null,
       equippedTitle: titlesState.equippedTitle,
       leaderboardType: row.leaderboard_type || definition?.type || 'overall',
       metricKey: row.metric_key || definition?.metricKey || 'total_xp',
@@ -2098,25 +2414,32 @@ export const createGamificationUseCases = (repository, deps = {}) => {
           hasActiveCoverage: Boolean(derived.profile.summary?.hasActivePayment),
         },
       });
+      const secretAchievements = lockedAchievements.filter((achievement) => achievement.isHidden);
+      const visibleLockedAchievements = lockedAchievements.filter((achievement) => !achievement.isHidden);
       const challenges = shouldUseStoredChallenges
         ? formatChallenges({ rows: storedChallengeProgress, catalog: challengeCatalog })
         : formatChallenges({ rows: derived.challenges, catalog: challengeCatalog });
       const profileView = buildProfileView({ profile: effectiveProfile, levelInfo });
       const studentsInCategory = await repository.listStudentsByCategory(student.categoria);
       const studentIds = studentsInCategory.map((categoryStudent) => categoryStudent.id);
-      const [categoryTests, categoryAttendances, categoryPayments, categoryIdentities] = await Promise.all([
+      const [categoryTests, categoryAttendances, categoryPayments, categoryIdentities, categoryCosmeticEquipment] = await Promise.all([
         listPhysicalTestsByStudentIds(studentIds),
         listAttendancesByStudentIds(studentIds),
         listPaymentsByStudentIds(studentIds),
         listIdentitiesByStudentIds(studentIds),
+        typeof repository.listStudentCosmeticEquipmentByStudentIds === 'function'
+          ? repository.listStudentCosmeticEquipmentByStudentIds(studentIds)
+          : Promise.resolve([]),
       ]);
       const identitiesByStudentId = mapRowsByKey(categoryIdentities, 'student_id');
+      const cosmeticEquipmentByStudentId = mapRowsByKey(categoryCosmeticEquipment, 'student_id');
       const testsByStudentId = groupRowsByStudentId(categoryTests);
       const attendancesByStudentId = groupRowsByStudentId(categoryAttendances);
       const paymentsByStudentId = groupRowsByStudentId(categoryPayments);
       const leaderboardSections = buildLeaderboardSections({
         students: studentsInCategory,
         identitiesByStudentId,
+        cosmeticEquipmentByStudentId,
         testsByStudentId,
         attendancesByStudentId,
         paymentsByStudentId,
@@ -2125,17 +2448,20 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         ageBandFilter: derived.ageBand,
         currentStudentId: student.id,
         limit: 5,
+        repository,
       });
       const leaderboardEntriesByStudentId = buildEntriesByStudentId(
         (studentsInCategory || []).map((categoryStudent) =>
             buildLeaderboardStudentEntry({
               student: categoryStudent,
               identity: identitiesByStudentId[categoryStudent.id] || null,
+              cosmeticEquipment: cosmeticEquipmentByStudentId[categoryStudent.id] || null,
               tests: testsByStudentId[categoryStudent.id] || [],
               attendances: attendancesByStudentId[categoryStudent.id] || [],
               payments: paymentsByStudentId[categoryStudent.id] || [],
               today: todayProvider(),
               syncedAt: isoProvider(),
+              repository,
             })
         )
       );
@@ -2144,7 +2470,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         profile: profileView,
         latestTest: tests?.[tests.length - 1] || null,
         challenges,
-        lockedAchievements,
+        lockedAchievements: visibleLockedAchievements,
       });
       const upcomingChallenges = buildUpcomingChallenges({
         catalog: challengeCatalog,
@@ -2155,7 +2481,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
       const nudges = buildNudges({
         profile: profileView,
         challenges,
-        lockedAchievements,
+        lockedAchievements: visibleLockedAchievements,
       });
 
       const xpLedger = storedXpLedger?.length > 0
@@ -2175,6 +2501,9 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         ownedItems: ownedCosmeticItems,
         equipment: cosmeticEquipment,
         wallet: currency,
+        profile: profileView,
+        leaderboards: leaderboardSections,
+        achievements: achievementRows,
       });
       const identity = buildIdentityView({
         student,
@@ -2188,6 +2517,10 @@ export const createGamificationUseCases = (repository, deps = {}) => {
           studentId: student.id,
         }),
         cosmetics,
+        repository,
+        profile: effectiveProfile,
+        leaderboards: leaderboardSections,
+        achievements: achievementRows,
       });
 
       return {
@@ -2195,7 +2528,8 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         identity,
         cosmetics,
         achievements,
-        lockedAchievements,
+        lockedAchievements: visibleLockedAchievements,
+        secretAchievements,
         challenges,
         recommendations,
         upcomingChallenges,
@@ -2237,7 +2571,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
     execute: async ({ studentId }) => {
       const today = todayProvider();
       const syncedAt = isoProvider();
-      const [student, tests, attendances, payments, achievementCatalog, challengeCatalog, existingXpLedger, existingCurrencyLedger] = await Promise.all([
+      const [student, tests, attendances, payments, achievementCatalog, challengeCatalog, existingXpLedger, existingCurrencyLedger, existingCurrencyWallet] = await Promise.all([
         repository.findStudentById(studentId),
         repository.listPhysicalTests(studentId),
         listAttendances(studentId),
@@ -2246,6 +2580,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         repository.listActiveChallenges(today),
         typeof repository.listXpLedger === 'function' ? repository.listXpLedger(studentId, null) : Promise.resolve([]),
         typeof repository.listCurrencyLedger === 'function' ? repository.listCurrencyLedger(studentId, null) : Promise.resolve([]),
+        typeof repository.getCurrencyWallet === 'function' ? repository.getCurrencyWallet(studentId) : Promise.resolve(null),
       ]);
 
       const projection = buildProjection({
@@ -2259,6 +2594,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         syncedAt,
         existingXpLedger,
         existingCurrencyLedger,
+        existingCurrencyWallet,
       });
 
       await repository.upsertProfile(projection.profile);
@@ -2296,16 +2632,21 @@ export const createGamificationUseCases = (repository, deps = {}) => {
 
       const studentsInCategory = await repository.listStudentsByCategory(student.categoria);
       const studentIds = studentsInCategory.map((categoryStudent) => categoryStudent.id);
-      const [categoryTests, categoryAttendances, categoryPayments, categoryIdentities] = await Promise.all([
+      const [categoryTests, categoryAttendances, categoryPayments, categoryIdentities, categoryCosmeticEquipment] = await Promise.all([
         listPhysicalTestsByStudentIds(studentIds),
         listAttendancesByStudentIds(studentIds),
         listPaymentsByStudentIds(studentIds),
         listIdentitiesByStudentIds(studentIds),
+        typeof repository.listStudentCosmeticEquipmentByStudentIds === 'function'
+          ? repository.listStudentCosmeticEquipmentByStudentIds(studentIds)
+          : Promise.resolve([]),
       ]);
       const identitiesByStudentId = mapRowsByKey(categoryIdentities, 'student_id');
+      const cosmeticEquipmentByStudentId = mapRowsByKey(categoryCosmeticEquipment, 'student_id');
       const leaderboardSections = buildLeaderboardSections({
         students: studentsInCategory,
         identitiesByStudentId,
+        cosmeticEquipmentByStudentId,
         testsByStudentId: groupRowsByStudentId(categoryTests),
         attendancesByStudentId: groupRowsByStudentId(categoryAttendances),
         paymentsByStudentId: groupRowsByStudentId(categoryPayments),
@@ -2313,6 +2654,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         syncedAt,
         currentStudentId: student.id,
         limit: 999,
+        repository,
       });
       const overallLeaderboard = leaderboardSections.find((section) => section.type === 'overall');
       const leaderboardRows = (overallLeaderboard?.rows || []).map((row) => ({
@@ -2347,15 +2689,20 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         listAttendancesByStudentIds(studentIds),
         listPaymentsByStudentIds(studentIds),
         listIdentitiesByStudentIds(studentIds),
+        typeof repository.listStudentCosmeticEquipmentByStudentIds === 'function'
+          ? repository.listStudentCosmeticEquipmentByStudentIds(studentIds)
+          : Promise.resolve([]),
         listTitleCatalog(),
       ]);
       const testsByStudentId = groupRowsByStudentId(categoryTests);
       const attendancesByStudentId = groupRowsByStudentId(categoryAttendances);
       const paymentsByStudentId = groupRowsByStudentId(categoryPayments);
       const identitiesByStudentId = mapRowsByKey(categoryIdentities, 'student_id');
+      const cosmeticEquipmentByStudentId = mapRowsByKey(categoryCosmeticEquipment, 'student_id');
       const leaderboardSections = buildLeaderboardSections({
         students: studentsInCategory,
         identitiesByStudentId,
+        cosmeticEquipmentByStudentId,
         testsByStudentId,
         attendancesByStudentId,
         paymentsByStudentId,
@@ -2364,17 +2711,20 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         ageBandFilter: ageBand || null,
         currentStudentId: null,
         limit,
+        repository,
       });
       const entriesByStudentId = buildEntriesByStudentId(
         (studentsInCategory || []).map((student) =>
           buildLeaderboardStudentEntry({
             student,
             identity: identitiesByStudentId[student.id] || null,
+            cosmeticEquipment: cosmeticEquipmentByStudentId[student.id] || null,
             tests: testsByStudentId[student.id] || [],
             attendances: attendancesByStudentId[student.id] || [],
             payments: paymentsByStudentId[student.id] || [],
             today: todayProvider(),
             syncedAt: isoProvider(),
+            repository,
           })
         )
       );
@@ -2398,20 +2748,25 @@ export const createGamificationUseCases = (repository, deps = {}) => {
     execute: async ({ category, ageBand, limit = 10 }) => {
       const studentsInCategory = await repository.listStudentsByCategory(category);
       const studentIds = studentsInCategory.map((student) => student.id);
-      const [categoryTests, categoryAttendances, categoryPayments, categoryIdentities, titleCatalog] = await Promise.all([
+      const [categoryTests, categoryAttendances, categoryPayments, categoryIdentities, categoryCosmeticEquipment, titleCatalog] = await Promise.all([
         listPhysicalTestsByStudentIds(studentIds),
         listAttendancesByStudentIds(studentIds),
         listPaymentsByStudentIds(studentIds),
         listIdentitiesByStudentIds(studentIds),
+        typeof repository.listStudentCosmeticEquipmentByStudentIds === 'function'
+          ? repository.listStudentCosmeticEquipmentByStudentIds(studentIds)
+          : Promise.resolve([]),
         listTitleCatalog(),
       ]);
       const testsByStudentId = groupRowsByStudentId(categoryTests);
       const attendancesByStudentId = groupRowsByStudentId(categoryAttendances);
       const paymentsByStudentId = groupRowsByStudentId(categoryPayments);
       const identitiesByStudentId = mapRowsByKey(categoryIdentities, 'student_id');
+      const cosmeticEquipmentByStudentId = mapRowsByKey(categoryCosmeticEquipment, 'student_id');
       const leaderboardSections = buildLeaderboardSections({
         students: studentsInCategory,
         identitiesByStudentId,
+        cosmeticEquipmentByStudentId,
         testsByStudentId,
         attendancesByStudentId,
         paymentsByStudentId,
@@ -2420,17 +2775,20 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         ageBandFilter: ageBand || null,
         currentStudentId: null,
         limit,
+        repository,
       });
       const entriesByStudentId = buildEntriesByStudentId(
         (studentsInCategory || []).map((student) =>
           buildLeaderboardStudentEntry({
             student,
             identity: identitiesByStudentId[student.id] || null,
+            cosmeticEquipment: cosmeticEquipmentByStudentId[student.id] || null,
             tests: testsByStudentId[student.id] || [],
             attendances: attendancesByStudentId[student.id] || [],
             payments: paymentsByStudentId[student.id] || [],
             today: todayProvider(),
             syncedAt: isoProvider(),
+            repository,
           })
         )
       );
@@ -2465,7 +2823,16 @@ export const createGamificationUseCases = (repository, deps = {}) => {
   };
 
   const updateStudentIdentityUseCase = {
-    execute: async ({ userId, nickname, selectedTitleSlug = null, avatarStyle = DEFAULT_AVATAR_STYLE }) => {
+    execute: async ({
+      userId,
+      nickname,
+      selectedTitleSlug = null,
+      avatarStyle = DEFAULT_AVATAR_STYLE,
+      avatarModelSlug = null,
+      profileImageMode = 'avatar',
+      profilePhotoFile = null,
+      removeProfilePhoto = false,
+    }) => {
       const student = await repository.findStudentByUserId(userId);
       const currentProjection = await loadStudentGamificationByStudentIdUseCase.execute({
         studentId: student.id,
@@ -2491,13 +2858,55 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         throw new Error('El estilo de avatar seleccionado no es valido.');
       }
 
+      const availableAvatarModelSlugs = new Set(
+        (
+          currentProjection.identity?.avatarModelsByStyle?.[avatarStyle]
+          || buildAvatarModelOptions({
+            styleSlug: avatarStyle,
+            profile: currentProjection.profile,
+            leaderboards: currentProjection.leaderboards,
+            achievements: currentProjection.achievements,
+          })
+        ).available.map((model) => model.slug)
+      );
+      const normalizedAvatarModelSlug = getAvatarModelMeta(avatarStyle, avatarModelSlug).slug;
+
+      if (!availableAvatarModelSlugs.has(normalizedAvatarModelSlug)) {
+        throw new Error('Solo puedes equipar modelos de avatar que ya tengas disponibles.');
+      }
+
+      if (!isValidProfileImageMode(profileImageMode)) {
+        throw new Error('El modo de imagen de perfil seleccionado no es valido.');
+      }
+
+      validateProfilePhotoFile(profilePhotoFile);
+
       const existingIdentity = await getIdentity(student.id);
       const syncedAt = isoProvider();
+      let profilePhotoPath = existingIdentity?.profile_photo_path || null;
+
+      if (removeProfilePhoto && profilePhotoPath && typeof repository.deleteProfilePhoto === 'function') {
+        await repository.deleteProfilePhoto(profilePhotoPath);
+        profilePhotoPath = null;
+      }
+
+      if (profilePhotoFile && typeof repository.uploadProfilePhoto === 'function') {
+        const uploadResult = await repository.uploadProfilePhoto(student.id, profilePhotoFile);
+        profilePhotoPath = uploadResult?.path || profilePhotoPath;
+      }
+
+      if (profileImageMode === 'photo' && !profilePhotoPath) {
+        throw new Error('Debes subir una foto antes de usarla como imagen de perfil.');
+      }
+
       const payload = {
         student_id: student.id,
         nickname: normalizedNickname,
         selected_title_slug: selectedTitleSlug || null,
         avatar_style: avatarStyle,
+        avatar_model_slug: normalizedAvatarModelSlug,
+        profile_image_mode: profileImageMode,
+        profile_photo_path: profilePhotoPath,
         updated_at: syncedAt,
         nickname_updated_at: normalizedNickname !== normalizeNickname(existingIdentity?.nickname)
           ? syncedAt
@@ -2520,8 +2929,21 @@ export const createGamificationUseCases = (repository, deps = {}) => {
   const purchaseCosmeticItemUseCase = {
     execute: async ({ userId, itemSlug }) => {
       const student = await repository.findStudentByUserId(userId);
+      const currentProjection = await loadStudentGamificationByStudentIdUseCase.execute({
+        studentId: student.id,
+        studentData: student,
+      });
+      const item = (currentProjection.cosmetics?.items || []).find((entry) => entry.slug === itemSlug);
+
+      if (!item) {
+        throw new Error('Ese cosmetico ya no esta disponible en el catalogo.');
+      }
+
+      if (!item.isUnlocked) {
+        throw new Error(item.unlockHint || 'Ese cosmetico todavia esta bloqueado.');
+      }
+
       await repository.purchaseCosmeticItem(student.id, itemSlug);
-      await refreshStudentProgressUseCase.execute({ studentId: student.id });
       return loadStudentGamificationByStudentIdUseCase.execute({
         studentId: student.id,
         studentData: student,
@@ -2533,6 +2955,17 @@ export const createGamificationUseCases = (repository, deps = {}) => {
     execute: async ({ userId, itemSlug }) => {
       const student = await repository.findStudentByUserId(userId);
       await repository.equipCosmeticItem(student.id, itemSlug);
+      return loadStudentGamificationByStudentIdUseCase.execute({
+        studentId: student.id,
+        studentData: student,
+      });
+    },
+  };
+
+  const unequipCosmeticItemUseCase = {
+    execute: async ({ userId, category }) => {
+      const student = await repository.findStudentByUserId(userId);
+      await repository.unequipCosmeticItem(student.id, category);
       return loadStudentGamificationByStudentIdUseCase.execute({
         studentId: student.id,
         studentData: student,
@@ -2553,5 +2986,6 @@ export const createGamificationUseCases = (repository, deps = {}) => {
     updateStudentIdentityUseCase,
     purchaseCosmeticItemUseCase,
     equipCosmeticItemUseCase,
+    unequipCosmeticItemUseCase,
   };
 };

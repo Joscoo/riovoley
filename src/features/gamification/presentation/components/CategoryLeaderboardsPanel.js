@@ -11,14 +11,59 @@ import {
 } from 'react-icons/fa';
 import { gamificationService } from '../../gamificationService';
 import { Button, Card, EmptyState, SectionHeader } from '../../../../shared/ui';
+import IdentityPortrait from './IdentityPortrait';
 
 const FEATURED_TYPES = ['overall', 'jump_approach', 'attendance_total', 'payments_total'];
 
-const getLeaderboardTone = (position) => {
-  if (position === 1) return 'border-amber-300/40 bg-amber-500/10';
-  if (position === 2) return 'border-slate-300/30 bg-slate-400/10';
-  if (position === 3) return 'border-orange-300/30 bg-orange-500/10';
+const getLeaderboardCardTone = (position, isCurrentStudent) => {
+  if (isCurrentStudent && position === 1) {
+    return 'border-rv-gold/60 bg-[linear-gradient(135deg,_rgba(245,158,11,0.18),_rgba(120,53,15,0.18)_55%,_rgba(15,23,42,0.7))] shadow-[0_20px_50px_-26px_rgba(245,158,11,0.75)]';
+  }
+  if (isCurrentStudent) {
+    return 'border-rv-gold/55 bg-rv-gold/10 shadow-[0_16px_45px_-30px_rgba(245,158,11,0.65)]';
+  }
+  if (position === 1) {
+    return 'border-amber-300/55 bg-[linear-gradient(135deg,_rgba(245,158,11,0.18),_rgba(120,53,15,0.16)_55%,_rgba(15,23,42,0.72))] shadow-[0_18px_48px_-28px_rgba(245,158,11,0.65)]';
+  }
+  if (position === 2) {
+    return 'border-slate-200/45 bg-[linear-gradient(135deg,_rgba(226,232,240,0.12),_rgba(71,85,105,0.18)_55%,_rgba(15,23,42,0.72))] shadow-[0_18px_48px_-30px_rgba(148,163,184,0.45)]';
+  }
+  if (position === 3) {
+    return 'border-orange-300/50 bg-[linear-gradient(135deg,_rgba(251,146,60,0.16),_rgba(154,52,18,0.18)_55%,_rgba(15,23,42,0.72))] shadow-[0_18px_48px_-30px_rgba(251,146,60,0.42)]';
+  }
   return 'border-white/10 bg-black/20';
+};
+
+const getPlacementLabel = (position) => {
+  if (position === 1) return 'Lider';
+  if (position === 2) return 'Perseguidor';
+  if (position === 3) return 'Podio';
+  return `Puesto #${position}`;
+};
+
+const buildCompetitiveSummary = ({ row, leader, rival, currentStudentEntry, activeLeaderboard }) => {
+  if (!row) return '';
+  const unit = activeLeaderboard?.unit || '';
+  if (row.rankPosition === 1) {
+    const secondPlace = rival && rival.studentId !== row.studentId ? rival : null;
+    if (secondPlace) {
+      const margin = Math.max(Number(row.score || 0) - Number(secondPlace.score || 0), 0);
+      return `${row.publicAlias} sostiene ${formatScore(margin, unit)} de ventaja sobre ${secondPlace.publicAlias}.`;
+    }
+    return `${row.publicAlias} tiene la mejor marca actual en ${activeLeaderboard?.title?.toLowerCase() || 'esta tabla'}.`;
+  }
+
+  if (row.isCurrentStudent && rival && rival.studentId !== row.studentId) {
+    const gap = Math.max(Number(rival.score || 0) - Number(row.score || 0), 0);
+    return `Te faltan ${formatScore(gap, unit)} para quitarle el puesto #${rival.rankPosition} a ${rival.publicAlias}.`;
+  }
+
+  if (leader) {
+    const gapToLeader = Math.max(Number(leader.score || 0) - Number(row.score || 0), 0);
+    return `${row.publicAlias} esta a ${formatScore(gapToLeader, unit)} del lider.`;
+  }
+
+  return `${row.publicAlias} compite en ${activeLeaderboard?.title?.toLowerCase() || 'esta tabla'}.`;
 };
 
 const formatScore = (score, unit) => {
@@ -110,6 +155,13 @@ const CategoryLeaderboardsPanel = ({
   const featuredBoards = FEATURED_TYPES
     .map((type) => leaderboards.find((board) => board.type === type))
     .filter((board) => board?.rows?.length);
+  const currentStudentEntry = activeLeaderboard?.rows?.find((row) => row.isCurrentStudent) || null;
+  const rivalEntry = currentStudentEntry
+    ? activeLeaderboard?.rows?.find((row) => row.rankPosition === Math.max(currentStudentEntry.rankPosition - 1, 1))
+    : activeLeaderboard?.rows?.[1] || null;
+  const rivalGap = currentStudentEntry && rivalEntry && rivalEntry.studentId !== currentStudentEntry.studentId
+    ? Math.max(Number(rivalEntry.score || 0) - Number(currentStudentEntry.score || 0), 0)
+    : 0;
 
   return (
     <Card className="overflow-hidden border-cyan-300/20 bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.12),_transparent_26%),radial-gradient(circle_at_top_right,_rgba(245,158,11,0.12),_transparent_24%),linear-gradient(180deg,_rgba(2,6,23,0.98),_rgba(15,23,42,0.95))]" padding="lg">
@@ -166,17 +218,26 @@ const CategoryLeaderboardsPanel = ({
                     <span className="text-rv-gold">{icon}</span>
                     {board.title}
                   </p>
-                  {leader?.avatarUrl ? (
-                    <div className="mt-3 h-12 w-12 overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 p-1">
-                      <img src={leader.avatarUrl} alt={`Avatar de ${leader.publicAlias}`} className="h-full w-full rounded-xl object-cover" />
-                    </div>
-                  ) : null}
+                  <div className="mt-3">
+                    <IdentityPortrait
+                      imageUrl={leader?.profileImageUrl || leader?.avatarUrl}
+                      displayName={leader?.publicAlias}
+                      equipment={leader?.cosmeticEquipment}
+                      size="sm"
+                      showBadgeLabel
+                    />
+                  </div>
                   <p className="mt-3 text-lg font-black text-white">
                     {leader ? leader.publicAlias : 'Sin marca'}
                   </p>
                   {leader?.equippedTitle?.name ? (
                     <p className="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-rv-gold">
                       {leader.equippedTitle.name}
+                    </p>
+                  ) : null}
+                  {leader?.avatarModelName ? (
+                    <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-cyan-200">
+                      {leader.avatarModelName}
                     </p>
                   ) : null}
                   <p className="mt-1 text-sm text-rv-gold">
@@ -231,6 +292,32 @@ const CategoryLeaderboardsPanel = ({
               ))}
             </div>
 
+            <div className="mt-5 grid gap-3 desktop:grid-cols-2">
+              <div className="rounded-3xl border border-rv-gold/25 bg-[linear-gradient(135deg,_rgba(245,158,11,0.14),_rgba(15,23,42,0.3)_58%,_rgba(249,115,22,0.14))] p-4">
+                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-amber-100">Marca lider</p>
+                <p className="mt-2 text-lg font-black text-white">
+                  {activeLeaderboard?.rows?.[0]?.publicAlias || 'Sin lider todavia'}
+                </p>
+                <p className="mt-2 text-sm text-slate-200">
+                  {activeLeaderboard?.rows?.[0]
+                    ? `${formatScore(activeLeaderboard.rows[0].score, activeLeaderboard.unit)} es la referencia actual en esta tabla.`
+                    : 'Esta medicion todavia no tiene una referencia registrada.'}
+                </p>
+              </div>
+
+              <div className="rounded-3xl border border-cyan-300/25 bg-[linear-gradient(135deg,_rgba(34,211,238,0.14),_rgba(15,23,42,0.34)_58%,_rgba(14,165,233,0.1))] p-4">
+                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-100">Presion competitiva</p>
+                <p className="mt-2 text-lg font-black text-white">
+                  {rivalEntry?.publicAlias || 'Todavia sin rival directo'}
+                </p>
+                <p className="mt-2 text-sm text-slate-200">
+                  {currentStudentEntry && rivalEntry && rivalEntry.studentId !== currentStudentEntry.studentId
+                    ? `Al estudiante actual le faltan ${formatScore(rivalGap, activeLeaderboard?.unit)} para alcanzarlo.`
+                    : 'Cuando haya mas participantes, aqui se mostrara el rival inmediato a superar.'}
+                </p>
+              </div>
+            </div>
+
             <div className="mt-5">
               {loading ? (
                 <div className="flex min-h-[180px] items-center justify-center">
@@ -253,18 +340,20 @@ const CategoryLeaderboardsPanel = ({
                   {activeLeaderboard.rows.map((row) => (
                     <div
                       key={`${activeLeaderboard.type}-${row.studentId}`}
-                      className={`rounded-2xl border px-4 py-4 ${getLeaderboardTone(row.rankPosition)}`}
+                      className={`rounded-2xl border px-4 py-4 ${getLeaderboardCardTone(row.rankPosition, row.isCurrentStudent)}`}
                     >
                       <div className="flex flex-col gap-3 mobile:flex-row mobile:items-center mobile:justify-between">
                         <div className="flex min-w-0 items-start gap-3">
-                          {row.avatarUrl ? (
-                            <div className="h-12 w-12 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 p-1">
-                              <img src={row.avatarUrl} alt={`Avatar de ${row.publicAlias}`} className="h-full w-full rounded-xl object-cover" />
-                            </div>
-                          ) : null}
+                          <IdentityPortrait
+                            imageUrl={row.profileImageUrl || row.avatarUrl}
+                            displayName={row.publicAlias}
+                            equipment={row.cosmeticEquipment}
+                            size="sm"
+                            showBadgeLabel
+                          />
                           <div className="min-w-0">
                           <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-300">
-                            Puesto #{row.rankPosition}
+                            {getPlacementLabel(row.rankPosition)}
                           </p>
                           <p className="mt-1 truncate text-lg font-black text-white">
                             {row.publicAlias}
@@ -274,10 +363,19 @@ const CategoryLeaderboardsPanel = ({
                               {row.equippedTitle.name}
                             </p>
                           ) : null}
+                          {row.avatarModelName ? (
+                            <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-cyan-200">
+                              {row.avatarModelName}
+                            </p>
+                          ) : null}
                           <p className="mt-1 text-sm text-slate-300">
-                            {row.rankPosition === 1
-                              ? `${row.publicAlias} tiene la mejor marca actual en ${activeLeaderboard.title.toLowerCase()}.`
-                              : `Necesita ${formatScore((activeLeaderboard.rows?.[0]?.score || 0) - row.score, activeLeaderboard.unit)} para alcanzar al lider.`}
+                            {buildCompetitiveSummary({
+                              row,
+                              leader: activeLeaderboard.rows?.[0] || null,
+                              rival: rivalEntry,
+                              currentStudentEntry,
+                              activeLeaderboard,
+                            })}
                           </p>
                         </div>
                         </div>

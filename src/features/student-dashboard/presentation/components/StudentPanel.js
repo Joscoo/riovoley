@@ -32,7 +32,7 @@ import {
 import { studentDashboardService } from '../../studentDashboardService';
 import { ProfileSettings } from '../../../account-admin';
 import StudentPhysicalTests from './StudentPhysicalTests';
-import { StudentGamificationPanel } from '../../../gamification';
+import { IdentityPortrait, StudentGamificationPanel } from '../../../gamification';
 import { Button, Card, EmptyState, RolePanelLayout, SectionHeader, StatusBadge } from '../../../../shared/ui';
 import { cn } from '../../../../lib/cn';
 
@@ -418,6 +418,18 @@ const StudentPanel = ({ user }) => {
     { id: 'perfil', icon: <FaCog />, label: 'Mi Perfil' }
   ];
 
+  const sidebarAvatar = gamification?.identity ? (
+    <IdentityPortrait
+      imageUrl={gamification.identity.profileImageUrl || gamification.identity.avatarUrl}
+      displayName={gamification.identity.displayName}
+      equipment={gamification.cosmetics?.equipment}
+      equippedItems={gamification.cosmetics?.equippedItems}
+      size="sm"
+    />
+  ) : (
+    <FaUserCircle />
+  );
+
   return (
     <RolePanelLayout
       as="aside"
@@ -425,7 +437,7 @@ const StudentPanel = ({ user }) => {
       title={`${studentData.users?.nombre || ''} ${studentData.users?.apellido || ''}`.trim() || 'Estudiante'}
       roleLabel="Estudiante"
       badgeLabel={studentData.categoria?.replaceAll('_', ' ').toUpperCase() || 'ESTUDIANTE'}
-      avatarIcon={<FaUserCircle />}
+      avatarIcon={sidebarAvatar}
       menuItems={menuItems}
       activeSection={activeSection}
       onSectionChange={setActiveSection}
@@ -478,8 +490,6 @@ PaymentRow.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.node.isRequired
 };
-
-
 
 
 

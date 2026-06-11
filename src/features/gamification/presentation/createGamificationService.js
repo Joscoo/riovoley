@@ -37,14 +37,35 @@ export const createGamificationService = (repository = new SupabaseGamificationR
   const registerDailyLoginReward = async ({ userId }) =>
     useCases.registerDailyLoginRewardUseCase.execute({ userId });
 
-  const updateStudentIdentity = async ({ userId, nickname, selectedTitleSlug, avatarStyle }) =>
-    useCases.updateStudentIdentityUseCase.execute({ userId, nickname, selectedTitleSlug, avatarStyle });
+  const updateStudentIdentity = async ({
+    userId,
+    nickname,
+    selectedTitleSlug,
+    avatarStyle,
+    avatarModelSlug,
+    profileImageMode,
+    profilePhotoFile,
+    removeProfilePhoto,
+  }) =>
+    useCases.updateStudentIdentityUseCase.execute({
+      userId,
+      nickname,
+      selectedTitleSlug,
+      avatarStyle,
+      avatarModelSlug,
+      profileImageMode,
+      profilePhotoFile,
+      removeProfilePhoto,
+    });
 
   const purchaseCosmeticItem = async ({ userId, itemSlug }) =>
     useCases.purchaseCosmeticItemUseCase.execute({ userId, itemSlug });
 
   const equipCosmeticItem = async ({ userId, itemSlug }) =>
     useCases.equipCosmeticItemUseCase.execute({ userId, itemSlug });
+
+  const unequipCosmeticItem = async ({ userId, category }) =>
+    useCases.unequipCosmeticItemUseCase.execute({ userId, category });
 
   return {
     loadStudentGamification,
@@ -61,5 +82,6 @@ export const createGamificationService = (repository = new SupabaseGamificationR
     updateStudentIdentity,
     purchaseCosmeticItem,
     equipCosmeticItem,
+    unequipCosmeticItem,
   };
 };

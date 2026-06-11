@@ -406,3 +406,54 @@ This document records the product and technical decisions taken while applying O
 - Technical impact: Added avatar style selection to student identity, deterministic avatar URL generation and avatar rendering across the gamification UI.
 - Dependencies: `gamification_phase17_avatar_2026_06_08.sql`, identity layer, cosmetic equipment, official DiceBear HTTP API.
 - Status: accepted
+
+### 2026-06-11 - Unified avatar, profile photo and cosmetic preview as competitive identity
+- Phase: 5
+- Topic: Profile image and cosmetic presentation
+- Context: Once avatar, titles and cosmetic equipment existed, the next gap was that the selected avatar did not act as the real profile image, cosmetics were hard to understand visually, and leaderboards were not reflecting the same identity treatment clearly enough.
+- Decision: Treat the selected avatar or uploaded photo as the student's main profile image, add profile-photo upload with safe storage rules, make `frame` explicitly represent the border of that portrait, add visual preview and unequip flows for cosmetics, and reuse the same identity portrait in the student panel, sidebar and leaderboards.
+- Alternatives discarded:
+  - Keep avatar selection separate from the visible profile image.
+  - Require custom art assets before improving cosmetic preview.
+  - Restrict identity visuals to the student panel only.
+- Product impact: Students can now build a more recognizable competitive identity and immediately understand how frames, backgrounds, badges and effects will look before equipping them.
+- Technical impact: Added profile photo persistence fields, storage bucket/policies, preview rendering component, unequip RPC, richer identity payloads and leaderboard rows enriched with portrait + equipped cosmetics.
+- Dependencies: `gamification_phase18_profile_media_2026_06_11.sql`, `student_identity`, cosmetic inventory/equipment, DiceBear HTTP API, Supabase Storage bucket `profile-images`.
+- Status: accepted
+
+### 2026-06-11 - Approved structured expansion for avatar models, visible cosmetics and hidden achievements
+- Phase: 6
+- Topic: Competitive identity depth
+- Context: After unifying avatar/photo as profile image, the next product gap was that styles still felt too generic, cosmetics were too few and not always impactful enough, and the achievement layer needed a clearer split between blocked and secret progression.
+- Decision: Evolve avatar identity from `style` to `style + model`, show both available and blocked models, require every cosmetic to create a visible change on avatar or photo, expand the catalog quickly for visual variety, and explicitly support blocked achievements plus secret achievements with hints.
+- Alternatives discarded:
+  - Keep styles as the only avatar distinction.
+  - Hide blocked models and only show available ones.
+  - Keep secret achievements fully invisible.
+- Product impact: Students get a stronger sense of progression, aspiration and prestige through richer identity options, more visible customization and a clearer achievement roadmap.
+- Technical impact: Requires `avatar_model_slug`, richer avatar catalog metadata, stronger portrait rendering rules, cosmetic metadata expansion and achievement payloads that differentiate blocked vs secret with hint support.
+- Dependencies: current avatar layer, cosmetic catalog/equipment, student identity, leaderboard portrait rendering, new visual expansion spec `2026-06-11-gamification-identity-visual-expansion-design.md`.
+- Status: approved-for-planning
+
+### 2026-06-11 - Implemented first slice of visual identity expansion
+- Phase: 6
+- Topic: Avatar models, stronger portraits and secret achievement visibility
+- Context: After approving the identity visual expansion, the first implementation slice needed to make style/model selection real, strengthen portrait rendering for every cosmetic slot and expose secret achievements with hints.
+- Decision: Persist `avatar_model_slug`, project `avatarStyle + avatarModelSlug + avatarModelOptions` in the gamification aggregate, separate secret achievements from visible locked achievements, and expand the cosmetic renderer/catalog so every slot produces a visible change even for new slugs.
+- Alternatives discarded:
+  - Keep avatar variation only at the style level.
+  - Depend on manually enumerated visual cases for every future cosmetic slug.
+  - Leave hidden achievements mixed into the generic locked-achievement grid.
+- Product impact: Students can now see available and blocked avatar models, preview stronger visual differences, discover secret achievements with hints and expect more variety from the cosmetic catalog.
+- Technical impact: Added migration `gamification_phase19_avatar_models_2026_06_11.sql`, richer avatar catalog helpers, model-aware avatar URLs, gamification aggregate support for `secretAchievements`, improved `IdentityPortrait`, and catalog expansion migration `gamification_phase20_cosmetic_catalog_expansion_2026_06_11.sql`.
+- Dependencies: `student_identity`, DiceBear URL builder, cosmetic catalog/equipment, student panel and leaderboard portrait rendering.
+
+### 2026-06-11 - Added cosmetic unlock rules and prestige cosmetics
+
+- Topic: Cosmetic progression and store clarity
+- Context: After expanding visual identity, the next gap was that the cosmetic store still behaved as a flat price list, without explaining which items were direct purchases and which ones should reflect achievement, streaks or competitive prestige.
+- Decision: Project cosmetic unlock state inside the gamification aggregate, distinguish direct-purchase cosmetics from level, streak, achievement-count and leaderboard prestige cosmetics, and block purchase attempts for still-locked items before calling the SQL purchase function.
+- Product impact: Students can now understand why an item is blocked, what they need to do to unlock it, and which cosmetics are prestigious rather than simply bought.
+- Technical impact: Added aggregate-level cosmetic unlock evaluation, purchase guards in `purchaseCosmeticItemUseCase`, richer cosmetic item payloads for UI (`isUnlocked`, `isLocked`, `unlockLabel`, `unlockHint`) and catalog migration `gamification_phase21_cosmetic_unlocks_2026_06_11.sql`.
+- Dependencies: cosmetic catalog metadata, leaderboard sections, projected profile streak/level, achievement count, student cosmetic store UI.
+- Status: implemented

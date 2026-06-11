@@ -1,6 +1,8 @@
 import { supabase } from '../../../../config/supabase';
 import { GamificationError } from '../../domain/gamificationError';
 
+const PROFILE_IMAGES_BUCKET = 'profile-images';
+
 const normalizeError = (error, fallback) => {
   if (!error) return fallback;
   if (typeof error === 'string') return error;
@@ -11,6 +13,15 @@ const isNoRowsError = (error) =>
   error?.code === 'PGRST116' ||
   error?.details?.includes?.('0 rows') ||
   error?.message?.toLowerCase?.().includes?.('0 rows');
+
+const normalizeIdentity = (identity) => {
+  if (!identity) return null;
+
+  return {
+    ...identity,
+    avatar_model_slug: identity.avatar_model_slug ?? null,
+  };
+};
 
 export class SupabaseGamificationRepository {
   async findStudentByUserId(userId) {
@@ -180,21 +191,21 @@ export class SupabaseGamificationRepository {
       throw new GamificationError(normalizeError(error, 'Error cargando identidad del estudiante'), error);
     }
 
-    return data || null;
+    return normalizeIdentity(data || null);
   }
 
   async upsertIdentity(identity) {
     const { data, error } = await supabase
       .from('gamification_student_identity')
       .upsert(identity)
-      .select()
+      .select('*')
       .single();
 
     if (error) {
       throw new GamificationError(normalizeError(error, 'Error guardando identidad del estudiante'), error);
     }
 
-    return data;
+    return normalizeIdentity(data);
   }
 
   async upsertProfile(profile) {
@@ -295,6 +306,23 @@ export class SupabaseGamificationRepository {
     return data || null;
   }
 
+  async listStudentCosmeticEquipmentByStudentIds(studentIds) {
+    if (!studentIds || studentIds.length === 0) {
+      return [];
+    }
+
+    const { data, error } = await supabase
+      .from('gamification_student_cosmetic_equipment')
+      .select('*')
+      .in('student_id', studentIds);
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error cargando equipamiento cosmetico por categoria'), error);
+    }
+
+    return data || [];
+  }
+
   async purchaseCosmeticItem(studentId, itemSlug) {
     const { data, error } = await supabase.rpc('purchase_gamification_item', {
       p_student_id: studentId,
@@ -319,6 +347,67 @@ export class SupabaseGamificationRepository {
     }
 
     return data;
+  }
+
+  async unequipCosmeticItem(studentId, category) {
+    const { data, error } = await supabase.rpc('unequip_gamification_item', {
+      p_student_id: studentId,
+      p_category: category,
+    });
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error desequipando item cosmetico'), error);
+    }
+
+    return data;
+  }
+
+  getPublicProfilePhotoUrl(path) {
+    if (!path) return null;
+    const { data } = supabase
+      .storage
+      .from(PROFILE_IMAGES_BUCKET)
+      .getPublicUrl(path);
+
+    return data?.publicUrl || null;
+  }
+
+  async uploadProfilePhoto(studentId, file) {
+    const extension = String(file?.name || 'photo.jpg').split('.').pop()?.toLowerCase() || 'jpg';
+    const safeExtension = ['jpg', 'jpeg', 'png', 'webp'].includes(extension) ? extension : 'jpg';
+    const filePath = `students/${studentId}/profile.${safeExtension}`;
+
+    const { error } = await supabase
+      .storage
+      .from(PROFILE_IMAGES_BUCKET)
+      .upload(filePath, file, {
+        cacheControl: '3600',
+        upsert: true,
+      });
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error subiendo foto de perfil'), error);
+    }
+
+    return {
+      path: filePath,
+      publicUrl: this.getPublicProfilePhotoUrl(filePath),
+    };
+  }
+
+  async deleteProfilePhoto(path) {
+    if (!path) {
+      return;
+    }
+
+    const { error } = await supabase
+      .storage
+      .from(PROFILE_IMAGES_BUCKET)
+      .remove([path]);
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error eliminando foto de perfil'), error);
+    }
   }
 
   async replaceRewardEvents(studentId, events) {
@@ -650,7 +739,7 @@ export class SupabaseGamificationRepository {
       throw new GamificationError(normalizeError(error, 'Error cargando identidades para leaderboard'), error);
     }
 
-    return data || [];
+    return (data || []).map((identity) => normalizeIdentity(identity));
   }
 
   async replaceLeaderboardSnapshots({ category, snapshotDate, rows }) {

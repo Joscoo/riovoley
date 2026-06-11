@@ -24,10 +24,10 @@ Feature clean-lite para fases 1 a 4 de gamificacion basada internamente en Octal
 - `gamificationService.loadXpLedger({ studentId, limit })`
 - `gamificationService.loadCurrencyWallet({ studentId, limit })`
 - `gamificationService.registerDailyLoginReward({ userId })`
-- `gamificationService.updateStudentIdentity({ userId, nickname, selectedTitleSlug })`
-- `gamificationService.updateStudentIdentity({ userId, nickname, selectedTitleSlug, avatarStyle })`
+- `gamificationService.updateStudentIdentity({ userId, nickname, selectedTitleSlug, avatarStyle, profileImageMode, profilePhotoFile, removeProfilePhoto })`
 - `gamificationService.purchaseCosmeticItem({ userId, itemSlug })`
 - `gamificationService.equipCosmeticItem({ userId, itemSlug })`
+- `gamificationService.unequipCosmeticItem({ userId, category })`
 - `gamificationService.listStudentAchievements({ studentId })`
 - `gamificationService.listActiveChallenges({ studentId })`
 
@@ -56,3 +56,19 @@ Feature clean-lite para fases 1 a 4 de gamificacion basada internamente en Octal
 - Avatar generado con DiceBear HTTP API usando semilla deterministica por estudiante.
 - Seleccion persistida de estilo de avatar dentro de la identidad competitiva.
 - Render del avatar en panel del estudiante y leaderboards, reutilizando apodo, estilo y cosmeticos equipados.
+
+## Fase de imagen de perfil y preview cosmetico
+- El avatar seleccionado o la foto subida por el estudiante pasan a ser su imagen principal de perfil.
+- Los marcos se aplican como borde visible del portraito, y fondos, insignias y efectos se pueden previsualizar antes de equipar.
+- El mismo portraito se reutiliza en el panel del estudiante, el sidebar y los leaderboards para reforzar identidad y competencia.
+
+## Fase de modelos de avatar y variedad cosmetica
+- La identidad del avatar ya no depende solo de `avatar_style`; ahora tambien usa `avatar_model_slug`.
+- El agregado del estudiante expone `avatarModelOptions.available` y `avatarModelOptions.blocked`.
+- Los logros secretos se devuelven en `secretAchievements`, separados de `lockedAchievements`.
+- El renderer de portraito aplica cambios visibles tambien para slugs nuevos del catalogo, reduciendo la necesidad de hardcodear cada item antes de publicarlo.
+
+## Fase de cosmeticos con reglas de desbloqueo
+- El catalogo cosmetico ya distingue entre compra directa, nivel, racha, cantidad de logros y prestigio por leaderboard.
+- Cada item proyecta `isUnlocked`, `isLocked`, `unlockLabel` y `unlockHint` para explicar por que ya se puede comprar o que falta para conseguirlo.
+- La compra se valida dentro del agregado antes de llamar a la funcion SQL, evitando adquisiciones de cosmeticos todavia bloqueados.

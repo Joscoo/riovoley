@@ -50,6 +50,7 @@ Este documento deja trazabilidad de como se estan cubriendo los 8 core drivers e
   - Identidad competitiva persistida con apodo y titulo equipado.
   - Wallet de monedas blandas y extracto de monedas ya visibles.
   - Tienda cosmetica inicial, inventario y equipamiento por slot ya implementados.
+  - El catalogo cosmetico ya muestra piezas de compra directa y piezas de prestigio/progreso con reglas visibles de desbloqueo.
   - Estilo de avatar persistido y visible en la identidad del estudiante.
   - Economia de moneda blanda, inventario, tienda y equipamiento definidos para la expansion.
 - Justificacion:
@@ -145,6 +146,9 @@ Este documento deja trazabilidad de como se estan cubriendo los 8 core drivers e
 - Catalogo `gamification_cosmetic_items_catalog`
 - Inventario `gamification_student_cosmetic_items`
 - Equipamiento `gamification_student_cosmetic_equipment`
+- Bucket publico `profile-images` para foto de perfil
+- RPC `unequip_gamification_item` para desequipar slots sin exponer escrituras amplias
+- Componente visual unificado `IdentityPortrait` para panel, sidebar y leaderboards
 
 ## Cobertura planificada para la expansion estructurada
 
@@ -158,6 +162,12 @@ Este documento deja trazabilidad de como se estan cubriendo los 8 core drivers e
 - wallet de moneda blanda
 - avatar ilustrado configurable
 - tienda cosmetica y efectos de perfil
+- foto de perfil opcional como imagen principal
+- previsualizacion real de marcos, fondos, insignias y efectos
+- leaderboards enriquecidos con portraito, titulo y cosmeticos visibles
+- modelos de avatar visibles y bloqueados por estilo
+- logros secretos con pista y logros bloqueados con progreso
+- renderer de portraito que hace visibles marcos, fondos, insignias y efectos incluso para slugs nuevos del catalogo
 
 ### Evidencia documental
 - [2026-06-07-gamification-expansion-design.md](D:/Riovoley/riovoley/docs/superpowers/specs/2026-06-07-gamification-expansion-design.md:1)

@@ -1,4 +1,4 @@
-import { DEFAULT_AVATAR_STYLE } from './avatarCatalog';
+import { DEFAULT_AVATAR_STYLE, resolveAvatarModelMeta } from './avatarCatalog';
 
 const encode = (value) => encodeURIComponent(String(value || ''));
 
@@ -21,10 +21,12 @@ const getBackgroundPalette = (equipment = {}) => {
 export const buildAvatarUrl = ({
   seed,
   style = DEFAULT_AVATAR_STYLE,
+  modelSlug,
   equipment = {},
 }) => {
-  const safeSeed = seed || 'Riovoley';
+  const { resolvedStyleSlug, model } = resolveAvatarModelMeta(style, modelSlug);
+  const safeSeed = `${seed || 'Riovoley'}:${model.visualParams?.seedSuffix || model.slug}`;
   const backgroundColor = getBackgroundPalette(equipment);
 
-  return `https://api.dicebear.com/10.x/${encode(style)}/svg?seed=${encode(safeSeed)}&backgroundColor=${backgroundColor}&radius=50`;
+  return `https://api.dicebear.com/10.x/${encode(resolvedStyleSlug)}/svg?seed=${encode(safeSeed)}&backgroundColor=${backgroundColor}&radius=50`;
 };

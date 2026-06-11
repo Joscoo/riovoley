@@ -1,4 +1,11 @@
 const { createGamificationUseCases } = require('./createGamificationUseCases');
+const {
+  AVATAR_STYLE_OPTIONS,
+  getAvatarModelMeta,
+  getAvatarModelOptions,
+  resolveAvatarModelMeta,
+} = require('../../domain/avatarCatalog');
+const { buildAvatarUrl } = require('../../domain/buildAvatarUrl');
 
 describe('createGamificationUseCases', () => {
   const buildRepository = () => ({
@@ -36,9 +43,14 @@ describe('createGamificationUseCases', () => {
     listProfilesByStudentIds: jest.fn(),
     listIdentitiesByStudentIds: jest.fn(),
     listStudentCosmeticItems: jest.fn(),
+    listStudentCosmeticEquipmentByStudentIds: jest.fn(),
     getStudentCosmeticEquipment: jest.fn(),
     purchaseCosmeticItem: jest.fn(),
     equipCosmeticItem: jest.fn(),
+    unequipCosmeticItem: jest.fn(),
+    uploadProfilePhoto: jest.fn(),
+    deleteProfilePhoto: jest.fn(),
+    getPublicProfilePhotoUrl: jest.fn((path) => path ? `https://example.supabase.co/storage/v1/object/public/profile-images/${path}` : null),
     replaceLeaderboardSnapshots: jest.fn(),
     listCategoryLeaderboard: jest.fn(),
   });
@@ -166,7 +178,21 @@ describe('createGamificationUseCases', () => {
     ]);
     repository.listAchievementCatalog.mockResolvedValue([]);
     repository.listTitleCatalog.mockResolvedValue([]);
-    repository.listCosmeticCatalog.mockResolvedValue([]);
+    repository.listCosmeticCatalog.mockResolvedValue([
+      {
+        slug: 'badge_asistencia_top',
+        name: 'Insignia Asistencia Top',
+        description: 'Prestigio por constancia.',
+        rarity: 'epic',
+        category: 'badge',
+        price_coins: 32,
+        metadata: {
+          unlockType: 'streak',
+          unlockTarget: 3,
+          unlockHint: 'Desbloquea al mantener una racha mensual de 3 meses.',
+        },
+      },
+    ]);
     repository.listActiveChallenges.mockResolvedValue([]);
     repository.listXpLedger.mockResolvedValue([]);
     repository.listCurrencyLedger.mockResolvedValue([]);
@@ -232,7 +258,21 @@ describe('createGamificationUseCases', () => {
     repository.listCurrencyLedger.mockResolvedValue([]);
     repository.getCurrencyWallet.mockResolvedValue(null);
     repository.listTitleCatalog.mockResolvedValue([]);
-    repository.listCosmeticCatalog.mockResolvedValue([]);
+    repository.listCosmeticCatalog.mockResolvedValue([
+      {
+        slug: 'badge_asistencia_top',
+        name: 'Insignia Asistencia Top',
+        description: 'Prestigio por constancia.',
+        rarity: 'epic',
+        category: 'badge',
+        price_coins: 32,
+        metadata: {
+          unlockType: 'streak',
+          unlockTarget: 3,
+          unlockHint: 'Desbloquea al mantener una racha mensual de 3 meses.',
+        },
+      },
+    ]);
     repository.listStudentCosmeticItems.mockResolvedValue([]);
     repository.getStudentCosmeticEquipment.mockResolvedValue(null);
     repository.listCategoryLeaderboard.mockResolvedValue([]);
@@ -373,7 +413,9 @@ describe('createGamificationUseCases', () => {
     repository.listPhysicalTests.mockResolvedValue([
       { id: 't1', fecha_test: '2026-05-01', brazo_extend_con_impulso: 40, brazo_extend_sin_impulso: 35, fuerza_abdomen: 20, elevaciones_barra: 3, fuerza_explosiva_salto_largo: 180 },
     ]);
-    repository.listAttendances.mockResolvedValue([]);
+    repository.listAttendances.mockResolvedValue([
+      { id: 'a1', fecha: '2026-06-05' },
+    ]);
     repository.listPayments.mockResolvedValue([]);
     repository.getProfile.mockResolvedValue(null);
     repository.getIdentity
@@ -384,6 +426,7 @@ describe('createGamificationUseCases', () => {
         nickname: 'Capi Leo',
         selected_title_slug: 'primer_impulso',
         avatar_style: 'lorelei-neutral',
+        avatar_model_slug: 'lorelei-02',
       });
     repository.listStudentAchievements.mockResolvedValue([]);
     repository.listAchievementCatalog.mockResolvedValue([]);
@@ -400,10 +443,18 @@ describe('createGamificationUseCases', () => {
     repository.listPhysicalTestsByStudentIds.mockResolvedValue([
       { id: 't1', student_id: 's1', fecha_test: '2026-05-01', brazo_extend_con_impulso: 40, brazo_extend_sin_impulso: 35, fuerza_abdomen: 20, elevaciones_barra: 3, fuerza_explosiva_salto_largo: 180 },
     ]);
-    repository.listAttendancesByStudentIds.mockResolvedValue([]);
+    repository.listAttendancesByStudentIds.mockResolvedValue([
+      { id: 'a1', student_id: 's1', fecha: '2026-06-05' },
+    ]);
     repository.listPaymentsByStudentIds.mockResolvedValue([]);
     repository.listIdentitiesByStudentIds.mockResolvedValue([
-      { student_id: 's1', nickname: 'Capi Leo', selected_title_slug: 'primer_impulso' },
+      {
+        student_id: 's1',
+        nickname: 'Capi Leo',
+        selected_title_slug: 'primer_impulso',
+        avatar_style: 'lorelei-neutral',
+        avatar_model_slug: 'lorelei-02',
+      },
     ]);
 
     const useCases = createGamificationUseCases(repository, buildDeps());
@@ -412,6 +463,7 @@ describe('createGamificationUseCases', () => {
       nickname: 'Capi Leo',
       selectedTitleSlug: 'primer_impulso',
       avatarStyle: 'lorelei-neutral',
+      avatarModelSlug: 'lorelei-02',
     });
 
     expect(repository.upsertIdentity).toHaveBeenCalledWith(expect.objectContaining({
@@ -419,12 +471,14 @@ describe('createGamificationUseCases', () => {
       nickname: 'Capi Leo',
       selected_title_slug: 'primer_impulso',
       avatar_style: 'lorelei-neutral',
+      avatar_model_slug: 'lorelei-02',
     }));
     expect(result.identity).toMatchObject({
       nickname: 'Capi Leo',
       displayName: 'Capi Leo',
       selectedTitleSlug: 'primer_impulso',
       avatarStyle: 'lorelei-neutral',
+      avatarModelSlug: 'lorelei-02',
     });
   });
 
@@ -469,7 +523,67 @@ describe('createGamificationUseCases', () => {
     const result = await useCases.purchaseCosmeticItemUseCase.execute({ userId: 'u1', itemSlug: 'frame_cian_ruta' });
 
     expect(repository.purchaseCosmeticItem).toHaveBeenCalledWith('s1', 'frame_cian_ruta');
+    expect(repository.replaceLeaderboardSnapshots).not.toHaveBeenCalled();
+    expect(repository.upsertProfile).not.toHaveBeenCalled();
     expect(result.cosmetics.items.find((item) => item.slug === 'frame_cian_ruta')?.isOwned).toBe(true);
+  });
+
+  it('purchaseCosmeticItemUseCase bloquea cosmeticos de prestigio que aun no se han desbloqueado', async () => {
+    const repository = buildRepository();
+    repository.findStudentByUserId.mockResolvedValue(buildStudent());
+    repository.findStudentById.mockResolvedValue(buildStudent());
+    repository.listPhysicalTests.mockResolvedValue([]);
+    repository.listAttendances.mockResolvedValue([]);
+    repository.listPayments.mockResolvedValue([]);
+    repository.getProfile.mockResolvedValue({
+      student_id: 's1',
+      total_xp: 120,
+      current_xp: 120,
+      current_level: 2,
+      active_streak: 1,
+      longest_streak: 1,
+      summary: {},
+    });
+    repository.getIdentity.mockResolvedValue(null);
+    repository.getCurrencyWallet.mockResolvedValue({ student_id: 's1', balance: 80, total_earned: 80, total_spent: 0 });
+    repository.listStudentAchievements.mockResolvedValue([]);
+    repository.listAchievementCatalog.mockResolvedValue([]);
+    repository.listTitleCatalog.mockResolvedValue([]);
+    repository.listCosmeticCatalog.mockResolvedValue([
+      {
+        slug: 'effect_pulso_record',
+        name: 'Pulso de Record',
+        description: 'Premio competitivo.',
+        rarity: 'legendary',
+        category: 'effect',
+        price_coins: 0,
+        metadata: {
+          unlockType: 'leaderboard_top',
+          unlockTarget: 1,
+          boardType: 'jump_approach',
+          unlockHint: 'Desbloquea al liderar la tabla de salto con carrera.',
+        },
+      },
+    ]);
+    repository.listActiveChallenges.mockResolvedValue([]);
+    repository.listStudentChallengeProgress.mockResolvedValue([]);
+    repository.listXpLedger.mockResolvedValue([]);
+    repository.listCurrencyLedger.mockResolvedValue([]);
+    repository.listStudentsByCategory.mockResolvedValue([buildStudent()]);
+    repository.listPhysicalTestsByStudentIds.mockResolvedValue([]);
+    repository.listAttendancesByStudentIds.mockResolvedValue([]);
+    repository.listPaymentsByStudentIds.mockResolvedValue([]);
+    repository.listIdentitiesByStudentIds.mockResolvedValue([]);
+    repository.listStudentCosmeticItems.mockResolvedValue([]);
+    repository.getStudentCosmeticEquipment.mockResolvedValue(null);
+
+    const useCases = createGamificationUseCases(repository, buildDeps());
+
+    await expect(
+      useCases.purchaseCosmeticItemUseCase.execute({ userId: 'u1', itemSlug: 'effect_pulso_record' })
+    ).rejects.toThrow('Desbloquea al liderar la tabla de salto con carrera.');
+
+    expect(repository.purchaseCosmeticItem).not.toHaveBeenCalled();
   });
 
   it('equipCosmeticItemUseCase equipa un item ya adquirido', async () => {
@@ -509,5 +623,212 @@ describe('createGamificationUseCases', () => {
 
     expect(repository.equipCosmeticItem).toHaveBeenCalledWith('s1', 'frame_cian_ruta');
     expect(result.cosmetics.equipment.frame).toBe('frame_cian_ruta');
+  });
+
+  it('unequipCosmeticItemUseCase retira un slot equipado', async () => {
+    const repository = buildRepository();
+    repository.findStudentByUserId.mockResolvedValue(buildStudent());
+    repository.findStudentById.mockResolvedValue(buildStudent());
+    repository.listPhysicalTests.mockResolvedValue([
+      { id: 't1', fecha_test: '2026-05-01', brazo_extend_con_impulso: 40, brazo_extend_sin_impulso: 35, fuerza_abdomen: 20, elevaciones_barra: 3, fuerza_explosiva_salto_largo: 180 },
+    ]);
+    repository.listAttendances.mockResolvedValue([]);
+    repository.listPayments.mockResolvedValue([]);
+    repository.getProfile.mockResolvedValue(null);
+    repository.getIdentity.mockResolvedValue(null);
+    repository.getCurrencyWallet.mockResolvedValue({ student_id: 's1', balance: 6, total_earned: 20, total_spent: 14 });
+    repository.listStudentAchievements.mockResolvedValue([]);
+    repository.listAchievementCatalog.mockResolvedValue([]);
+    repository.listTitleCatalog.mockResolvedValue([]);
+    repository.listCosmeticCatalog.mockResolvedValue([
+      { slug: 'frame_cian_ruta', name: 'Marco Ruta Cian', description: 'Compra', rarity: 'common', category: 'frame', price_coins: 14 },
+    ]);
+    repository.listActiveChallenges.mockResolvedValue([]);
+    repository.listStudentChallengeProgress.mockResolvedValue([]);
+    repository.listXpLedger.mockResolvedValue([]);
+    repository.listCurrencyLedger.mockResolvedValue([]);
+    repository.listStudentsByCategory.mockResolvedValue([buildStudent()]);
+    repository.listPhysicalTestsByStudentIds.mockResolvedValue([
+      { id: 't1', student_id: 's1', fecha_test: '2026-05-01', brazo_extend_con_impulso: 40, brazo_extend_sin_impulso: 35, fuerza_abdomen: 20, elevaciones_barra: 3, fuerza_explosiva_salto_largo: 180 },
+    ]);
+    repository.listAttendancesByStudentIds.mockResolvedValue([]);
+    repository.listPaymentsByStudentIds.mockResolvedValue([]);
+    repository.listIdentitiesByStudentIds.mockResolvedValue([]);
+    repository.listStudentCosmeticItems.mockResolvedValue([{ student_id: 's1', item_slug: 'frame_cian_ruta', acquired_at: '2026-06-07T12:00:00.000Z' }]);
+    repository.getStudentCosmeticEquipment.mockResolvedValue({ student_id: 's1', frame_item_slug: null });
+
+    const useCases = createGamificationUseCases(repository, buildDeps());
+    const result = await useCases.unequipCosmeticItemUseCase.execute({ userId: 'u1', category: 'frame' });
+
+    expect(repository.unequipCosmeticItem).toHaveBeenCalledWith('s1', 'frame');
+    expect(result.cosmetics.equipment.frame).toBe(null);
+  });
+
+  it('avatarCatalog expone modelos fijos por estilo con opciones disponibles y bloqueadas', () => {
+    AVATAR_STYLE_OPTIONS.forEach((style) => {
+      const modelOptions = getAvatarModelOptions(style.slug);
+
+      expect(style.models.length).toBeGreaterThanOrEqual(3);
+      expect(modelOptions.available.length).toBeGreaterThan(0);
+      expect(modelOptions.blocked.length).toBeGreaterThan(0);
+      expect(modelOptions.available.every((model) => model.isLocked === false)).toBe(true);
+      expect(modelOptions.blocked.every((model) => model.isLocked === true)).toBe(true);
+    });
+
+    expect(getAvatarModelMeta('adventurer-neutral', 'adventurer-03')).toEqual(
+      expect.objectContaining({
+        slug: 'adventurer-03',
+        unlockHint: expect.any(String),
+      }),
+    );
+  });
+
+  it('buildAvatarUrl varia de forma determinista por modelSlug', () => {
+    const baseUrl = buildAvatarUrl({
+      seed: 'student-1',
+      style: 'adventurer-neutral',
+      modelSlug: 'adventurer-01',
+    });
+    const eliteUrl = buildAvatarUrl({
+      seed: 'student-1',
+      style: 'adventurer-neutral',
+      modelSlug: 'adventurer-03',
+    });
+    const repeatedUrl = buildAvatarUrl({
+      seed: 'student-1',
+      style: 'adventurer-neutral',
+      modelSlug: 'adventurer-01',
+    });
+
+    expect(baseUrl).toEqual(repeatedUrl);
+    expect(baseUrl).not.toEqual(eliteUrl);
+    expect(baseUrl).toContain('api.dicebear.com/10.x/adventurer-neutral/svg');
+
+    const fallbackUrl = buildAvatarUrl({
+      seed: 'student-1',
+      style: 'invalid-style',
+      modelSlug: 'missing-model',
+    });
+    const fallbackResolution = resolveAvatarModelMeta('invalid-style', 'missing-model');
+
+    expect(fallbackUrl).toContain(`api.dicebear.com/10.x/${fallbackResolution.resolvedStyleSlug}/svg`);
+    expect(fallbackResolution).toEqual(
+      expect.objectContaining({
+        requestedStyleSlug: 'invalid-style',
+        requestedModelSlug: 'missing-model',
+        resolvedStyleSlug: 'adventurer-neutral',
+        resolvedModelSlug: 'adventurer-01',
+        isStyleFallback: true,
+        isModelFallback: true,
+        model: expect.objectContaining({
+          slug: 'adventurer-01',
+          unlockHint: expect.any(String),
+          isBase: true,
+        }),
+      }),
+    );
+  });
+
+  it('proyecta el shape esperado para avatarModelOptions con grupos disponibles y bloqueados', async () => {
+    const repository = buildRepository();
+    repository.findStudentById.mockResolvedValue(buildStudent());
+    repository.listPhysicalTests.mockResolvedValue([]);
+    repository.listAttendances.mockResolvedValue([]);
+    repository.listPayments.mockResolvedValue([]);
+    repository.getProfile.mockResolvedValue({
+      student_id: 's1',
+      total_xp: 820,
+      current_xp: 220,
+      current_level: 5,
+      active_streak: 3,
+      longest_streak: 3,
+      summary: {},
+    });
+    repository.getIdentity.mockResolvedValue({
+      student_id: 's1',
+      nickname: 'RayoLeo',
+      selected_title_slug: 'primer_impulso',
+      avatar_style: 'adventurer-neutral',
+      avatar_model_slug: 'adventurer-01',
+    });
+    repository.getCurrencyWallet.mockResolvedValue(null);
+    repository.listStudentAchievements.mockResolvedValue([]);
+    repository.listAchievementCatalog.mockResolvedValue([]);
+    repository.listTitleCatalog.mockResolvedValue([]);
+    repository.listCosmeticCatalog.mockResolvedValue([]);
+    repository.listStudentCosmeticItems.mockResolvedValue([]);
+    repository.getStudentCosmeticEquipment.mockResolvedValue(null);
+    repository.listActiveChallenges.mockResolvedValue([]);
+    repository.listStudentChallengeProgress.mockResolvedValue([]);
+    repository.listXpLedger.mockResolvedValue([]);
+    repository.listCurrencyLedger.mockResolvedValue([]);
+    repository.listStudentsByCategory.mockResolvedValue([buildStudent()]);
+    repository.listPhysicalTestsByStudentIds.mockResolvedValue([]);
+    repository.listAttendancesByStudentIds.mockResolvedValue([]);
+    repository.listPaymentsByStudentIds.mockResolvedValue([]);
+    repository.listIdentitiesByStudentIds.mockResolvedValue([
+      {
+        student_id: 's1',
+        nickname: 'RayoLeo',
+        selected_title_slug: 'primer_impulso',
+        avatar_style: 'adventurer-neutral',
+        avatar_model_slug: 'adventurer-01',
+      },
+    ]);
+    repository.listCategoryLeaderboard.mockResolvedValue([]);
+
+    const useCases = createGamificationUseCases(repository, buildDeps());
+    const result = await useCases.loadStudentGamificationByStudentIdUseCase.execute({
+      studentId: 's1',
+    });
+    expect(result.identity).toEqual(
+      expect.objectContaining({
+        avatarStyle: 'adventurer-neutral',
+        avatarModelSlug: 'adventurer-01',
+        avatarUrl: expect.any(String),
+        avatarModelsByStyle: expect.any(Object),
+        avatarModelOptions: expect.objectContaining({
+          available: expect.any(Array),
+          blocked: expect.any(Array),
+        }),
+      }),
+    );
+    expect(result.identity.avatarModelOptions).toEqual(
+      expect.objectContaining({
+        available: expect.arrayContaining([
+          expect.objectContaining({
+            slug: 'adventurer-03',
+            unlockHint: expect.any(String),
+            isLocked: false,
+          }),
+        ]),
+        blocked: expect.any(Array),
+      }),
+    );
+    expect(result.identity.avatarModelsByStyle.thumbs.available).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          slug: 'thumbs-03',
+          isLocked: false,
+        }),
+      ]),
+    );
+    expect(result.identity.avatarModelsByStyle['pixel-art-neutral'].available).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          slug: 'pixel-art-03',
+          isLocked: false,
+        }),
+      ]),
+    );
+    expect(result.secretAchievements).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          achievementSlug: expect.any(String),
+          isHidden: true,
+          hint: expect.any(String),
+        }),
+      ]),
+    );
   });
 });

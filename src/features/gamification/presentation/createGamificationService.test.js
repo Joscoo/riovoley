@@ -24,6 +24,7 @@ describe('createGamificationService', () => {
   const mockUpdateIdentity = jest.fn();
   const mockPurchaseCosmetic = jest.fn();
   const mockEquipCosmetic = jest.fn();
+  const mockUnequipCosmetic = jest.fn();
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -42,6 +43,7 @@ describe('createGamificationService', () => {
       updateStudentIdentityUseCase: { execute: mockUpdateIdentity },
       purchaseCosmeticItemUseCase: { execute: mockPurchaseCosmetic },
       equipCosmeticItemUseCase: { execute: mockEquipCosmetic },
+      unequipCosmeticItemUseCase: { execute: mockUnequipCosmetic },
     });
   });
 
@@ -123,24 +125,33 @@ describe('createGamificationService', () => {
     expect(result.balance).toBe(32);
   });
 
-  it('updateStudentIdentity delega userId, apodo y titulo', async () => {
-    mockUpdateIdentity.mockResolvedValueOnce({ identity: { nickname: 'RayoLeo' } });
+  it('updateStudentIdentity delega avatarModelSlug junto a la identidad visual', async () => {
+    const fakeFile = { name: 'perfil.webp', type: 'image/webp', size: 1280 };
+    mockUpdateIdentity.mockResolvedValueOnce({ identity: { avatarModelSlug: 'adventurer-02' } });
     const service = createGamificationService({});
 
     const result = await service.updateStudentIdentity({
-      userId: 'u1',
-      nickname: 'RayoLeo',
+      userId: 'u-1',
+      nickname: 'Capitan Rio',
       selectedTitleSlug: 'primer_impulso',
-      avatarStyle: 'lorelei-neutral',
+      avatarStyle: 'adventurer-neutral',
+      avatarModelSlug: 'adventurer-02',
+      profileImageMode: 'photo',
+      profilePhotoFile: fakeFile,
+      removeProfilePhoto: false,
     });
 
     expect(mockUpdateIdentity).toHaveBeenCalledWith({
-      userId: 'u1',
-      nickname: 'RayoLeo',
+      userId: 'u-1',
+      nickname: 'Capitan Rio',
       selectedTitleSlug: 'primer_impulso',
-      avatarStyle: 'lorelei-neutral',
+      avatarStyle: 'adventurer-neutral',
+      avatarModelSlug: 'adventurer-02',
+      profileImageMode: 'photo',
+      profilePhotoFile: fakeFile,
+      removeProfilePhoto: false,
     });
-    expect(result).toEqual({ identity: { nickname: 'RayoLeo' } });
+    expect(result).toEqual({ identity: { avatarModelSlug: 'adventurer-02' } });
   });
 
   it('purchaseCosmeticItem delega compra por userId e item', async () => {
@@ -161,5 +172,15 @@ describe('createGamificationService', () => {
 
     expect(mockEquipCosmetic).toHaveBeenCalledWith({ userId: 'u1', itemSlug: 'frame_cian_ruta' });
     expect(result).toEqual({ cosmetics: { equipment: { frame: 'frame_cian_ruta' } } });
+  });
+
+  it('unequipCosmeticItem delega desequipado por userId y categoria', async () => {
+    mockUnequipCosmetic.mockResolvedValueOnce({ cosmetics: { equipment: { frame: null } } });
+    const service = createGamificationService({});
+
+    const result = await service.unequipCosmeticItem({ userId: 'u1', category: 'frame' });
+
+    expect(mockUnequipCosmetic).toHaveBeenCalledWith({ userId: 'u1', category: 'frame' });
+    expect(result).toEqual({ cosmetics: { equipment: { frame: null } } });
   });
 });
