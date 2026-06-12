@@ -457,3 +457,63 @@ This document records the product and technical decisions taken while applying O
 - Technical impact: Added aggregate-level cosmetic unlock evaluation, purchase guards in `purchaseCosmeticItemUseCase`, richer cosmetic item payloads for UI (`isUnlocked`, `isLocked`, `unlockLabel`, `unlockHint`) and catalog migration `gamification_phase21_cosmetic_unlocks_2026_06_11.sql`.
 - Dependencies: cosmetic catalog metadata, leaderboard sections, projected profile streak/level, achievement count, student cosmetic store UI.
 - Status: implemented
+
+### 2026-06-11 - Adopted progressive SQL rollout for structured core-driver reinforcement
+
+- Phase: 6
+- Topic: Closing Octalysis gaps with persistent narrative state
+- Context: After the visual identity, cosmetic and competitive layers became solid, the remaining gaps were concentrated in `Epic Meaning & Calling`, and partially in the clarity of `Creativity & Feedback`. The system already had strong progression data, but it still lacked a persistent narrative interpretation of that progress.
+- Decision: Introduce a progressive SQL rollout instead of a single large migration, starting with athlete stages as the first persistent reinforcement slice. The new layer adds a catalog of athlete stages, a current-stage snapshot, and an ascension-only stage history synchronized by the gamification engine.
+- Alternatives discarded:
+  - Keep athlete stages as a UI-only derived concept with no persistence.
+  - Delay all reinforcement until campaigns, seasons and surprise rewards were ready.
+  - Model regressions as stage-history events.
+- Product impact: Students gain a clearer sense of becoming something, not only accumulating XP. The panel can now explain current stage, evidence behind it, and a positive narrative history of ascensions.
+- Technical impact: Added migration `gamification_phase22_athlete_stages_2026_06_11.sql`, public compatibility views, repository support for stage catalog/current-stage/history, aggregate synchronization in `createGamificationUseCases.js`, and panel visualization in `StudentGamificationPanel.js`.
+- Dependencies: current profile projection, leaderboard sections, achievement projection, SQL compatibility layer, student panel.
+- Status: implemented
+
+### 2026-06-11 - Implemented strategic routes as the first strong Creativity & Feedback layer
+
+- Phase: 6
+- Topic: Exact route guidance instead of generic recommendations
+- Context: The system already had challenges, achievements, nudges and cosmetic unlocks, but its recommendation layer was still too generic to fully satisfy `Empowerment of Creativity & Feedback`.
+- Decision: Replace the old suggestion-only logic with `strategicRoutes`: one primary route and up to two alternatives, each showing exact action, current-vs-target progress, immediate rewards, short follow-up chain and real sports benefit.
+- Alternatives discarded:
+  - Keep generic recommendations with no measurable reward chain.
+  - Show only one recommended path and hide alternatives.
+  - Turn the feature into a rigid coach order instead of strategic options.
+- Product impact: Students now see clearer cause-effect guidance: what to do next, how much is missing, what unlocks immediately and why that route improves their real profile.
+- Technical impact: Added route derivation on top of current profile/tests/challenges/locked achievements/leaderboards, projected `strategicRoutes` in the gamification aggregate, and upgraded the goals panel to render primary vs alternative routes.
+- Dependencies: challenge projection, locked achievement progress, cosmetic unlock metadata, leaderboard sections, student goals UI.
+- Status: implemented
+
+### 2026-06-11 - Implemented persisted temporal campaigns as the first strong Scarcity layer
+
+- Phase: 6
+- Topic: Real urgency through time-bound windows
+- Context: The system already had monthly challenges and future hints, but `Scarcity & Impatience` was still relying too much on static derived challenges instead of explicit temporal windows with their own identity and persistence.
+- Decision: Add a dedicated temporal-campaign layer with a campaign catalog, per-student progress snapshot, and visible campaign cards in the goals panel. Keep the first slice narrow: weekly, monthly and flash campaigns derived from existing tests, attendances, payments and leaderboard positions.
+- Alternatives discarded:
+  - Keep urgency only inside the permanent challenge catalog.
+  - Add surprise persistence at the same time and couple both concerns too early.
+  - Delay SQL until a full admin editor existed.
+- Product impact: Students now see real windows that can expire, with reward labels, progress bars and remaining days, which makes urgency more concrete and easier to act on.
+- Technical impact: Added migration `gamification_phase23_campaigns_2026_06_11.sql`, compatibility views, repository support for active campaigns and student campaign progress, aggregate synchronization and dedicated campaign UI in `StudentGamificationPanel.js`.
+- Dependencies: current tests/attendance/payments projection, leaderboard sections, student goals UI, SQL compatibility layer.
+- Status: implemented
+
+### 2026-06-11 - Implemented persisted hidden rewards as the first strong Curiosity layer
+
+- Phase: 6
+- Topic: Controlled surprise with persistent discovery
+- Context: Secret achievements already existed, but `Unpredictability & Curiosity` was still too tied to the achievement layer. The system still lacked a persistent discovery mechanic that could live beside achievements without becoming random loot.
+- Decision: Add a hidden-reward catalog plus per-student discovery snapshot, derived from real combinations already available in the motor such as weekday streak, mixed focus, jump breakthrough and payment continuity.
+- Alternatives discarded:
+  - Treat every surprise only as a hidden achievement.
+  - Introduce random drops before proving deterministic discovery loops.
+  - Delay persistence until a more complex chain engine existed.
+- Product impact: Students now have a separate space for discoveries and hidden hints, which reinforces curiosity without making the system feel noisy or unfair.
+- Technical impact: Added migration `gamification_phase24_hidden_rewards_2026_06_11.sql`, compatibility views, repository methods for hidden rewards, aggregate synchronization and dedicated UI cards for discovered surprises and hidden hints.
+- Dependencies: tests, attendance, payment continuity, jump delta, student achievements panel, SQL compatibility layer.
+- Status: implemented

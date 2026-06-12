@@ -72,3 +72,52 @@ Feature clean-lite para fases 1 a 4 de gamificacion basada internamente en Octal
 - El catalogo cosmetico ya distingue entre compra directa, nivel, racha, cantidad de logros y prestigio por leaderboard.
 - Cada item proyecta `isUnlocked`, `isLocked`, `unlockLabel` y `unlockHint` para explicar por que ya se puede comprar o que falta para conseguirlo.
 - La compra se valida dentro del agregado antes de llamar a la funcion SQL, evitando adquisiciones de cosmeticos todavia bloqueados.
+
+## Fase de etapas del atleta
+- La gamificacion ahora interpreta el progreso tambien como una narrativa persistida del atleta, no solo como nivel y XP.
+- El agregado del estudiante expone `identity.currentStage` con `currentStageSlug`, `currentStageName`, `currentStageDescription`, `progressHint` y `metadata`.
+- El mismo agregado expone `identity.stageHistory` como historial de ascensos, sin registrar retrocesos.
+- La sincronizacion se hace dentro del motor al recalcular progreso, reutilizando perfil, logros y presencia competitiva.
+
+## Fase de rutas estrategicas
+- El agregado ahora expone `strategicRoutes` como una ruta principal y hasta dos alternativas.
+- Cada ruta muestra:
+  - accion exacta
+  - progreso actual contra objetivo
+  - recompensas inmediatas
+  - cadena corta de impacto posterior
+  - beneficio deportivo real
+- `recommendations` sigue existiendo como compatibilidad ligera, pero ahora se deriva desde `strategicRoutes`.
+
+## Fase de campañas temporales
+- El agregado ahora expone `campaigns` como ventanas temporales activas separadas de los retos permanentes.
+- Cada campaña muestra progreso actual, objetivo, recompensa visible, hint y dias restantes.
+- El progreso se sincroniza en `gamification.student_campaign_progress` durante carga y refresh, usando el catalogo activo de `gamification.campaigns_catalog`.
+
+## Fase de sorpresa persistida
+- El agregado ahora expone `discoveredHiddenRewards` y `hiddenRewardHints`.
+- `discoveredHiddenRewards` representa descubrimientos sorpresa ya activados y persistidos.
+- `hiddenRewardHints` muestra pistas y progreso parcial de recompensas ocultas que todavia no se han revelado.
+- La sincronizacion se hace en `gamification.student_hidden_rewards`, tomando combinaciones reales del estudiante y evitando azar artificial por ahora.
+
+## SQL asociado a campañas
+- `gamification_phase23_campaigns_2026_06_11.sql`
+  - crea `gamification.campaigns_catalog`
+  - crea `gamification.student_campaign_progress`
+  - siembra campañas semanales, mensuales y flash iniciales
+  - expone vistas publicas compatibles para lectura desde Supabase/PostgREST
+
+## SQL asociado a sorpresa persistida
+- `gamification_phase24_hidden_rewards_2026_06_11.sql`
+  - crea `gamification.hidden_rewards_catalog`
+  - crea `gamification.student_hidden_rewards`
+  - siembra recompensas ocultas iniciales basadas en constancia, salto y combinaciones reales
+  - expone vistas publicas compatibles para lectura desde Supabase/PostgREST
+
+## SQL asociado a etapas del atleta
+- `gamification_phase22_athlete_stages_2026_06_11.sql`
+  - crea `gamification.athlete_stages_catalog`
+  - crea `gamification.student_current_stage`
+  - crea `gamification.student_stage_history`
+  - siembra las etapas iniciales `semilla`, `en_marcha`, `constante`, `competidor`, `impacto`, `referente`
+  - expone vistas publicas compatibles para lectura desde Supabase/PostgREST

@@ -45,11 +45,15 @@ const LEVEL_COIN_REWARDS = {
 };
 const CURRENT_MONTH_CHALLENGE_TARGETS = {
   monthly_check_in: 1,
+  monthly_double_check_in: 2,
   attendance_monthly_rhythm: 8,
+  attendance_monthly_elite: 12,
 };
 const NEXT_MONTH_CHALLENGE_TARGETS = {
   monthly_check_in: 2,
+  monthly_double_check_in: 2,
   attendance_monthly_rhythm: 10,
+  attendance_monthly_elite: 12,
 };
 
 const isWeekdayDate = (dateValue) => {
@@ -286,12 +290,30 @@ const DEFAULT_CHALLENGES = [
     window_type: 'rolling',
   },
   {
+    slug: 'jump_next_level_plus',
+    title: 'Salto con ambicion',
+    description: 'Mejora 8 cm tu salto con carrera respecto a tu linea base.',
+    core_driver: 'Development & Accomplishment',
+    target_metric: 'jump_delta',
+    target_value: 8,
+    window_type: 'rolling',
+  },
+  {
     slug: 'strength_foundation',
     title: 'Activa tu fuerza',
     description: 'Mejora 5 repeticiones en alguna prueba de fuerza.',
     core_driver: 'Creatividad y retroalimentacion',
     target_metric: 'strength_delta',
     target_value: 5,
+    window_type: 'rolling',
+  },
+  {
+    slug: 'strength_foundation_plus',
+    title: 'Fuerza en serio',
+    description: 'Mejora 10 repeticiones en alguna prueba de fuerza.',
+    core_driver: 'Empowerment of Creativity & Feedback',
+    target_metric: 'strength_delta',
+    target_value: 10,
     window_type: 'rolling',
   },
   {
@@ -304,6 +326,15 @@ const DEFAULT_CHALLENGES = [
     window_type: 'calendar-month',
   },
   {
+    slug: 'monthly_double_check_in',
+    title: 'Doble medicion',
+    description: 'Registra 2 tests fisicos en el mismo mes.',
+    core_driver: 'Scarcity & Impatience',
+    target_metric: 'monthly_tests',
+    target_value: 2,
+    window_type: 'calendar-month',
+  },
+  {
     slug: 'payment_active_now',
     title: 'Mensualidad al dia',
     description: 'Mantiene tu pago activo o proximo a vencer en este momento.',
@@ -311,6 +342,78 @@ const DEFAULT_CHALLENGES = [
     target_metric: 'payment_active_now',
     target_value: 1,
     window_type: 'rolling',
+  },
+  {
+    slug: 'tests_volume_3',
+    title: 'Historial en marcha',
+    description: 'Acumula al menos 3 tests fisicos registrados.',
+    core_driver: 'Development & Accomplishment',
+    target_metric: 'tests_total',
+    target_value: 3,
+    window_type: 'rolling',
+  },
+  {
+    slug: 'attendance_weekday_chain',
+    title: 'Cadena habil',
+    description: 'Consigue 5 dias habiles seguidos de asistencia.',
+    core_driver: 'Loss & Avoidance',
+    target_metric: 'attendance_weekday_streak',
+    target_value: 5,
+    window_type: 'rolling',
+  },
+  {
+    slug: 'payment_cycle_3',
+    title: 'Tres ciclos al dia',
+    description: 'Registra pagos en al menos 3 meses distintos.',
+    core_driver: 'Ownership & Possession',
+    target_metric: 'payment_months',
+    target_value: 3,
+    window_type: 'rolling',
+  },
+  {
+    slug: 'attendance_monthly_elite',
+    title: 'Mes de elite',
+    description: 'Completa 12 asistencias en el mes actual.',
+    core_driver: 'Social Influence & Relatedness',
+    target_metric: 'monthly_attendances',
+    target_value: 12,
+    window_type: 'calendar-month',
+  },
+  {
+    slug: 'strength_circuit_ready',
+    title: 'Circuito encendido',
+    description: 'Llega a 120 repeticiones totales en tu ultimo bloque de fuerza.',
+    core_driver: 'Empowerment of Creativity & Feedback',
+    target_metric: 'strength_total',
+    target_value: 120,
+    window_type: 'rolling',
+  },
+  {
+    slug: 'attendance_total_12',
+    title: 'Presencia acumulada',
+    description: 'Acumula 12 asistencias registradas.',
+    core_driver: 'Social Influence & Relatedness',
+    target_metric: 'attendance_total',
+    target_value: 12,
+    window_type: 'rolling',
+  },
+  {
+    slug: 'payment_cycle_6',
+    title: 'Media temporada al dia',
+    description: 'Registra pagos en al menos 6 meses distintos.',
+    core_driver: 'Ownership & Possession',
+    target_metric: 'payment_months',
+    target_value: 6,
+    window_type: 'rolling',
+  },
+  {
+    slug: 'monthly_combo_ready',
+    title: 'Mes bien armado',
+    description: 'En el mismo mes combina 1 test, 8 asistencias y cobertura activa.',
+    core_driver: 'Epic Meaning & Calling',
+    target_metric: 'monthly_combo',
+    target_value: 3,
+    window_type: 'calendar-month',
   },
 ];
 
@@ -1019,8 +1122,11 @@ const buildChallenges = ({
   tests,
   jumpDelta,
   strengthDelta,
+  strengthTotal,
   currentMonthTests,
   currentMonthAttendances,
+  totalAttendances,
+  weekdayAttendanceStreak,
   paymentStats,
   syncedAt,
 }) => {
@@ -1036,14 +1142,52 @@ const buildChallenges = ({
       case 'jump_next_level':
         progressValue = Math.max(jumpDelta || 0, 0);
         break;
+      case 'jump_next_level_plus':
+        progressValue = Math.max(jumpDelta || 0, 0);
+        break;
       case 'strength_foundation':
+        progressValue = Math.max(strengthDelta || 0, 0);
+        break;
+      case 'strength_foundation_plus':
         progressValue = Math.max(strengthDelta || 0, 0);
         break;
       case 'attendance_monthly_rhythm':
         progressValue = currentMonthAttendances;
         break;
+      case 'monthly_double_check_in':
+        progressValue = currentMonthTests;
+        break;
       case 'payment_active_now':
         progressValue = paymentStats.hasActiveCoverage ? 1 : 0;
+        break;
+      case 'tests_volume_3':
+        progressValue = tests?.length || 0;
+        break;
+      case 'attendance_weekday_chain':
+        progressValue = weekdayAttendanceStreak || 0;
+        break;
+      case 'payment_cycle_3':
+        progressValue = Number(paymentStats.uniquePaymentMonths || 0);
+        break;
+      case 'attendance_monthly_elite':
+        progressValue = currentMonthAttendances;
+        break;
+      case 'strength_circuit_ready':
+        progressValue = Math.max(Number(strengthTotal || 0), 0);
+        break;
+      case 'attendance_total_12':
+        progressValue = Number(totalAttendances || 0);
+        break;
+      case 'payment_cycle_6':
+        progressValue = Number(paymentStats.uniquePaymentMonths || 0);
+        break;
+      case 'monthly_combo_ready':
+        progressValue = Math.min(
+          ((currentMonthTests || 0) >= 1 ? 1 : 0)
+            + ((currentMonthAttendances || 0) >= 8 ? 1 : 0)
+            + (paymentStats.hasActiveCoverage ? 1 : 0),
+          3
+        );
         break;
       default:
         progressValue = 0;
@@ -1096,7 +1240,7 @@ const buildUpcomingChallenges = ({ catalog, today, currentChallenges }) => {
 
   return effectiveCatalog
     .filter((challenge) => ['calendar-month', 'rolling'].includes(challenge.window_type))
-    .slice(0, 4)
+    .slice(0, 6)
     .map((challenge) => {
       const currentProgress = currentChallengeMap.get(challenge.slug);
       const nextTarget = NEXT_MONTH_CHALLENGE_TARGETS[challenge.slug] || Number(challenge.target_value || 0);
@@ -1113,6 +1257,616 @@ const buildUpcomingChallenges = ({ catalog, today, currentChallenges }) => {
         windowType: challenge.window_type,
       };
     });
+};
+
+const isDateWithinRange = (value, startDate, endDate) => {
+  if (!value) return false;
+  const normalized = String(value).slice(0, 10);
+  if (startDate && normalized < startDate) return false;
+  if (endDate && normalized > endDate) return false;
+  return true;
+};
+
+const countRowsInDateRange = (rows = [], field, startDate, endDate) =>
+  (rows || []).filter((row) => isDateWithinRange(row?.[field], startDate, endDate)).length;
+
+const hasPaymentCoverageInWindow = (payments = [], startDate, endDate) =>
+  (payments || []).some((payment) => {
+    const coverageStart = String(payment?.fecha_inicio || payment?.fecha_pago || '').slice(0, 10);
+    if (!coverageStart) return false;
+    if (endDate && coverageStart > endDate) return false;
+    return ['activo', 'proximo_a_vencer', 'vigente'].includes(String(payment?.estado || '').toLowerCase());
+  });
+
+const buildCampaignMetricValue = ({
+  campaign,
+  tests,
+  attendances,
+  payments,
+  leaderboards,
+}) => {
+  const startDate = campaign?.start_date || null;
+  const endDate = campaign?.end_date || null;
+
+  switch (campaign?.target_metric) {
+    case 'attendance_window':
+      return countRowsInDateRange(attendances, 'fecha', startDate, endDate);
+    case 'tests_window':
+      return countRowsInDateRange(tests, 'fecha_test', startDate, endDate);
+    case 'monthly_combo_window': {
+      const testsInWindow = countRowsInDateRange(tests, 'fecha_test', startDate, endDate);
+      const attendancesInWindow = countRowsInDateRange(attendances, 'fecha', startDate, endDate);
+      const hasCoverage = hasPaymentCoverageInWindow(payments, startDate, endDate);
+      return Math.min(
+        (testsInWindow >= 1 ? 1 : 0)
+        + (attendancesInWindow >= 8 ? 1 : 0)
+        + (hasCoverage ? 1 : 0),
+        3
+      );
+    }
+    case 'overall_rank_top':
+      return getLeaderboardRank(leaderboards, 'overall');
+    case 'attendance_rank_top':
+      return getLeaderboardRank(leaderboards, 'attendance_month');
+    case 'active_coverage_window':
+      return hasPaymentCoverageInWindow(payments, startDate, endDate) ? 1 : 0;
+    default:
+      return 0;
+  }
+};
+
+const buildCampaignProgressRows = ({
+  studentId,
+  campaigns,
+  tests,
+  attendances,
+  payments,
+  leaderboards,
+  syncedAt,
+}) =>
+  (campaigns || []).map((campaign) => {
+    const rawValue = buildCampaignMetricValue({
+      campaign,
+      tests,
+      attendances,
+      payments,
+      leaderboards,
+    });
+    const targetValue = Number(campaign.target_value || 0);
+    const isRankMetric = ['overall_rank_top', 'attendance_rank_top'].includes(campaign.target_metric);
+    const isCompleted = isRankMetric
+      ? Number(rawValue || 0) > 0 && Number(rawValue || 0) <= targetValue
+      : Number(rawValue || 0) >= targetValue;
+
+    return {
+      student_id: studentId,
+      campaign_slug: campaign.slug,
+      progress_value: Number(rawValue || 0),
+      is_completed: isCompleted,
+      completed_at: isCompleted ? syncedAt : null,
+      updated_at: syncedAt,
+      metadata: {
+        rewardLabel: campaign.reward_label || '',
+        focusArea: campaign.focus_area || '',
+      },
+    };
+  });
+
+const formatCampaigns = ({ rows, catalog, today }) => {
+  const catalogMap = new Map((catalog || []).map((campaign) => [campaign.slug, campaign]));
+  return (rows || []).map((row) => {
+    const definition = catalogMap.get(row.campaign_slug || row.slug) || {};
+    const targetValue = Number(definition.target_value || row.target_value || 0);
+    const progressValue = Number(row.progress_value || row.progressValue || 0);
+    const isRankMetric = ['overall_rank_top', 'attendance_rank_top'].includes(definition.target_metric);
+    const progressPct = targetValue > 0
+      ? Math.min(
+        isRankMetric
+          ? (progressValue > 0 ? (targetValue / Math.max(progressValue, targetValue)) * 100 : 0)
+          : (progressValue / targetValue) * 100,
+        100
+      )
+      : 0;
+    const daysRemaining = definition.end_date
+      ? Math.max(
+        Math.ceil((new Date(`${definition.end_date}T00:00:00`).getTime() - new Date(`${today}T00:00:00`).getTime()) / 86400000),
+        0
+      )
+      : null;
+
+    return {
+      slug: definition.slug || row.campaign_slug || row.slug,
+      title: definition.name || row.title || row.campaign_slug,
+      description: definition.description || row.description || '',
+      focusArea: definition.focus_area || '',
+      targetMetric: definition.target_metric || '',
+      targetValue,
+      progressValue,
+      isCompleted: Boolean(row.is_completed ?? row.isCompleted),
+      completedAt: row.completed_at || row.completedAt || null,
+      rewardLabel: definition.reward_label || row.metadata?.rewardLabel || '',
+      rewardPayload: definition.reward_payload || {},
+      hint: definition.hint || '',
+      isSecret: Boolean(definition.is_secret),
+      startDate: definition.start_date || null,
+      endDate: definition.end_date || null,
+      windowType: definition.window_type || 'weekly',
+      daysRemaining,
+      progressPct,
+    };
+  });
+};
+
+const buildHiddenRewardMetricValue = ({
+  reward,
+  tests,
+  jumpDelta,
+  attendanceStats,
+  paymentStats,
+}) => {
+  switch (reward?.target_metric) {
+    case 'weekday_attendance_streak':
+      return Number(attendanceStats?.weekdayAttendanceStreak || 0);
+    case 'dual_focus_combo':
+      return Math.min(
+        ((tests?.length || 0) >= 3 ? 1 : 0)
+        + ((attendanceStats?.currentMonthAttendances || 0) >= 6 ? 1 : 0),
+        2
+      );
+    case 'jump_delta':
+      return Math.max(Number(jumpDelta || 0), 0);
+    case 'payment_months':
+      return Number(paymentStats?.uniquePaymentMonths || 0);
+    default:
+      return 0;
+  }
+};
+
+const buildHiddenRewardRows = ({
+  studentId,
+  catalog,
+  tests,
+  jumpDelta,
+  attendanceStats,
+  paymentStats,
+  syncedAt,
+}) =>
+  (catalog || []).map((reward) => {
+    const progressValue = buildHiddenRewardMetricValue({
+      reward,
+      tests,
+      jumpDelta,
+      attendanceStats,
+      paymentStats,
+    });
+    const targetValue = Number(reward.target_value || 0);
+    const isDiscovered = progressValue >= targetValue && targetValue > 0;
+
+    return {
+      student_id: studentId,
+      reward_slug: reward.slug,
+      progress_value: progressValue,
+      discovered_at: isDiscovered ? syncedAt : null,
+      updated_at: syncedAt,
+      metadata: {
+        rewardLabel: reward.reward_label || '',
+      },
+    };
+  });
+
+const formatHiddenRewards = ({ rows, catalog }) => {
+  const catalogMap = new Map((catalog || []).map((reward) => [reward.slug, reward]));
+  return (rows || []).map((row) => {
+    const definition = catalogMap.get(row.reward_slug || row.slug) || {};
+    const targetValue = Number(definition.target_value || 0);
+    const progressValue = Number(row.progress_value || 0);
+    return {
+      slug: definition.slug || row.reward_slug || row.slug,
+      title: definition.name || 'Descubrimiento oculto',
+      teaser: definition.teaser || '',
+      description: definition.description || '',
+      hint: definition.hint || '',
+      targetMetric: definition.target_metric || '',
+      targetValue,
+      progressValue,
+      progressPct: targetValue > 0 ? Math.min((progressValue / targetValue) * 100, 100) : 0,
+      rewardLabel: definition.reward_label || row.metadata?.rewardLabel || '',
+      rewardPayload: definition.reward_payload || {},
+      discoveredAt: row.discovered_at || null,
+      isDiscovered: Boolean(row.discovered_at),
+    };
+  });
+};
+
+const SURPRISE_CHAIN_CONFIG = {
+  secret_weekday_guard: {
+    chainTitle: 'Cadena de disciplina semanal',
+    nextStep: 'Sostén una semana hábil sólida para revelar el cierre completo.',
+    afterReveal: 'Ahora protege esa constancia para que también empuje tus campañas temporales.',
+  },
+  secret_dual_focus: {
+    chainTitle: 'Cadena de doble enfoque',
+    nextStep: 'Combina medición real con constancia mensual para cerrar la revelación.',
+    afterReveal: 'Tu siguiente secuencia ideal es convertir esa mezcla en podio o etapa superior.',
+  },
+  secret_jump_hunter: {
+    chainTitle: 'Cadena del aire',
+    nextStep: 'Rompe una mejora clara de salto para descubrir la siguiente señal.',
+    afterReveal: 'Usa ese impulso para perseguir tablas de salto y cosméticos de prestigio.',
+  },
+  secret_payment_guard: {
+    chainTitle: 'Cadena de continuidad',
+    nextStep: 'Mantén varios ciclos cubiertos para cerrar esta secuencia oculta.',
+    afterReveal: 'La continuidad ya descubierta ahora te empuja a rutas más estables y prestigiosas.',
+  },
+};
+
+const buildSurpriseChains = ({
+  hiddenRewardHints,
+  discoveredHiddenRewards,
+  campaigns,
+  strategicRoutes,
+}) => {
+  const activeCampaign = (campaigns || []).find((campaign) => !campaign.isCompleted) || null;
+  const primaryRoute = (strategicRoutes || []).find((route) => route.priority === 'primary') || strategicRoutes?.[0] || null;
+
+  const warmingChains = (hiddenRewardHints || [])
+    .filter((reward) => Number(reward.progressValue || 0) > 0)
+    .map((reward) => {
+      const config = SURPRISE_CHAIN_CONFIG[reward.slug] || {};
+      return {
+        id: `warming-${reward.slug}`,
+        title: config.chainTitle || `Cadena de ${reward.title || 'descubrimiento'}`,
+        status: 'warming',
+        progressLabel: `${reward.progressValue}/${reward.targetValue}`,
+        teaser: reward.teaser,
+        currentStep: reward.hint,
+        nextStep: config.nextStep || 'Sigue empujando esta pista para revelar el siguiente tramo.',
+        rewardPreview: reward.rewardLabel,
+      };
+    });
+
+  const revealedChains = (discoveredHiddenRewards || []).map((reward) => {
+    const config = SURPRISE_CHAIN_CONFIG[reward.slug] || {};
+    return {
+      id: `revealed-${reward.slug}`,
+      title: config.chainTitle || reward.title,
+      status: 'revealed',
+      progressLabel: 'Revelada',
+      teaser: reward.description,
+      currentStep: `Ya descubriste ${reward.title}.`,
+      nextStep: activeCampaign
+        ? `La siguiente palanca viva es ${activeCampaign.title}.`
+        : config.afterReveal || 'Sigue atento a nuevas ventanas y rutas estratégicas.',
+      rewardPreview: activeCampaign?.rewardLabel || reward.rewardLabel,
+    };
+  });
+
+  const routeLinkedChain = primaryRoute
+    ? [{
+        id: `route-chain-${primaryRoute.id}`,
+        title: 'Cadena de oportunidad actual',
+        status: 'active',
+        progressLabel: primaryRoute.progressLabel,
+        teaser: 'Tu ruta principal puede activar o cerrar una sorpresa si la sostienes.',
+        currentStep: primaryRoute.actionLabel,
+        nextStep: activeCampaign
+          ? `Si además aprovechas ${activeCampaign.title}, elevas esta secuencia.`
+          : 'Si sostienes esta ruta, desbloqueas una capa extra de visibilidad y descubrimiento.',
+        rewardPreview: primaryRoute.immediateRewards?.[0] || 'Nueva revelación potencial',
+      }]
+    : [];
+
+  return [...warmingChains, ...revealedChains, ...routeLinkedChain].slice(0, 6);
+};
+
+const getActiveAthleteStages = (catalog = []) =>
+  [...(catalog || [])]
+    .filter((stage) => stage?.is_active !== false)
+    .sort((left, right) => Number(left.sort_order || 0) - Number(right.sort_order || 0));
+
+const buildStageEvidence = ({ profile, achievements, leaderboards }) => {
+  const summary = profile?.summary || {};
+  const hasLeaderboardPresence = (leaderboards || []).some((section) => Number(section.currentStudentRank || 0) > 0);
+  return {
+    level: Number(profile?.current_level || profile?.currentLevel || 1),
+    tests: Number(summary.testsCount || 0),
+    attendances: Number(summary.totalAttendances || 0),
+    payments: Number(summary.totalPayments || 0),
+    achievements: Number(achievements?.length || 0),
+    hasLeaderboardPresence,
+  };
+};
+
+const getStageRequirementPairs = (stage) => [
+  ['tests', Number(stage?.min_tests || 0)],
+  ['attendances', Number(stage?.min_attendances || 0)],
+  ['payments', Number(stage?.min_payments || 0)],
+  ['achievements', Number(stage?.min_achievements || 0)],
+];
+
+const getStageEvidenceScore = (stage, evidence) =>
+  getStageRequirementPairs(stage).reduce((score, [key, requirement]) => {
+    if (requirement <= 0) {
+      return score;
+    }
+    return score + (Number(evidence?.[key] || 0) >= requirement ? 1 : 0);
+  }, 0);
+
+const getStageEvidenceTargetScore = (stage) => {
+  const activeRequirements = getStageRequirementPairs(stage).filter(([, requirement]) => requirement > 0).length;
+  if (activeRequirements <= 1) return activeRequirements;
+  if (activeRequirements === 2) return 2;
+  return 3;
+};
+
+const selectAthleteStage = ({ catalog, evidence }) => {
+  const stages = getActiveAthleteStages(catalog);
+  let current = stages[0] || null;
+
+  for (const stage of stages) {
+    const levelOk = Number(evidence?.level || 0) >= Number(stage.min_level || 1);
+    const leaderboardOk = !stage.requires_leaderboard_presence || Boolean(evidence?.hasLeaderboardPresence);
+    const scoreOk = getStageEvidenceScore(stage, evidence) >= getStageEvidenceTargetScore(stage);
+
+    if (levelOk && leaderboardOk && scoreOk) {
+      current = stage;
+    }
+  }
+
+  return current;
+};
+
+const buildStageMetadata = (stage, evidence) => ({
+  level: {
+    current: Number(evidence?.level || 0),
+    required: Number(stage?.min_level || 1),
+  },
+  tests: {
+    current: Number(evidence?.tests || 0),
+    required: Number(stage?.min_tests || 0),
+  },
+  attendances: {
+    current: Number(evidence?.attendances || 0),
+    required: Number(stage?.min_attendances || 0),
+  },
+  payments: {
+    current: Number(evidence?.payments || 0),
+    required: Number(stage?.min_payments || 0),
+  },
+  achievements: {
+    current: Number(evidence?.achievements || 0),
+    required: Number(stage?.min_achievements || 0),
+  },
+  leaderboard: {
+    current: Boolean(evidence?.hasLeaderboardPresence),
+    required: Boolean(stage?.requires_leaderboard_presence),
+  },
+});
+
+const buildStageProgressHint = ({ currentStage, nextStage, evidence }) => {
+  if (!nextStage) {
+    return currentStage?.progress_hint_template || 'Sigue defendiendo tu presencia para sostener tu lugar.';
+  }
+
+  const gaps = [];
+  if (Number(evidence?.level || 0) < Number(nextStage.min_level || 1)) {
+    gaps.push(`subir al nivel ${nextStage.min_level}`);
+  }
+  if (Number(evidence?.tests || 0) < Number(nextStage.min_tests || 0)) {
+    gaps.push(`${Math.max(Number(nextStage.min_tests || 0) - Number(evidence?.tests || 0), 0)} test${Math.max(Number(nextStage.min_tests || 0) - Number(evidence?.tests || 0), 0) === 1 ? '' : 's'}`);
+  }
+  if (Number(evidence?.attendances || 0) < Number(nextStage.min_attendances || 0)) {
+    gaps.push(`${Math.max(Number(nextStage.min_attendances || 0) - Number(evidence?.attendances || 0), 0)} asistencia${Math.max(Number(nextStage.min_attendances || 0) - Number(evidence?.attendances || 0), 0) === 1 ? '' : 's'}`);
+  }
+  if (Number(evidence?.payments || 0) < Number(nextStage.min_payments || 0)) {
+    gaps.push(`${Math.max(Number(nextStage.min_payments || 0) - Number(evidence?.payments || 0), 0)} pago${Math.max(Number(nextStage.min_payments || 0) - Number(evidence?.payments || 0), 0) === 1 ? '' : 's'}`);
+  }
+  if (Number(evidence?.achievements || 0) < Number(nextStage.min_achievements || 0)) {
+    gaps.push(`${Math.max(Number(nextStage.min_achievements || 0) - Number(evidence?.achievements || 0), 0)} logro${Math.max(Number(nextStage.min_achievements || 0) - Number(evidence?.achievements || 0), 0) === 1 ? '' : 's'}`);
+  }
+  if (nextStage.requires_leaderboard_presence && !evidence?.hasLeaderboardPresence) {
+    gaps.push('presencia en ranking');
+  }
+
+  if (gaps.length === 0) {
+    return nextStage.progress_hint_template || 'Sigue consolidando tu progreso competitivo.';
+  }
+
+  return `Para llegar a ${nextStage.name}, te falta ${gaps.slice(0, 3).join(', ')}.`;
+};
+
+const syncAthleteStageState = async ({
+  repository,
+  studentId,
+  stageCatalog,
+  profile,
+  achievements,
+  leaderboardSections,
+  syncedAt,
+}) => {
+  if (typeof repository.getAthleteStageCatalog !== 'function') {
+    return {
+      currentStage: null,
+      stageHistory: [],
+    };
+  }
+
+  const effectiveCatalog = getActiveAthleteStages(stageCatalog);
+  if (effectiveCatalog.length === 0) {
+    return {
+      currentStage: null,
+      stageHistory: [],
+    };
+  }
+
+  const [storedCurrentStage, storedStageHistory] = await Promise.all([
+    typeof repository.getCurrentStage === 'function' ? repository.getCurrentStage(studentId) : Promise.resolve(null),
+    typeof repository.listStageHistory === 'function' ? repository.listStageHistory(studentId) : Promise.resolve([]),
+  ]);
+
+  const evidence = buildStageEvidence({
+    profile,
+    achievements,
+    leaderboards: leaderboardSections,
+  });
+  const selectedStage = selectAthleteStage({
+    catalog: effectiveCatalog,
+    evidence,
+  }) || effectiveCatalog[0];
+  const currentIndex = effectiveCatalog.findIndex((stage) => stage.slug === selectedStage.slug);
+  const nextStage = currentIndex >= 0 ? effectiveCatalog[currentIndex + 1] || null : null;
+  const metadata = buildStageMetadata(selectedStage, evidence);
+  const progressHint = buildStageProgressHint({
+    currentStage: selectedStage,
+    nextStage,
+    evidence,
+  });
+
+  const currentStage = {
+    studentId,
+    currentStageSlug: selectedStage.slug,
+    currentStageName: selectedStage.name,
+    currentStageDescription: selectedStage.description,
+    progressHint,
+    metadata,
+    updatedAt: syncedAt,
+  };
+
+  const hasCurrentStageChanged = !storedCurrentStage
+    || storedCurrentStage.currentStageSlug !== currentStage.currentStageSlug
+    || storedCurrentStage.progressHint !== currentStage.progressHint;
+
+  if (hasCurrentStageChanged && typeof repository.upsertCurrentStage === 'function') {
+    await repository.upsertCurrentStage(currentStage);
+  }
+
+  const normalizedHistory = (storedStageHistory || []).map((entry) => ({
+    ...entry,
+    stageName: effectiveCatalog.find((stage) => stage.slug === entry.stageSlug)?.name || entry.stageSlug,
+  }));
+  const alreadyAwarded = normalizedHistory.some((entry) => entry.stageSlug === currentStage.currentStageSlug);
+
+  if (!alreadyAwarded && typeof repository.insertStageHistory === 'function') {
+    const inserted = await repository.insertStageHistory({
+      studentId,
+      stageSlug: currentStage.currentStageSlug,
+      awardedAt: syncedAt,
+      awardedReason: `Ascenso a ${selectedStage.name}`,
+      metadata,
+    });
+    normalizedHistory.unshift({
+      ...inserted,
+      stageName: selectedStage.name,
+    });
+  }
+
+  return {
+    currentStage,
+    stageHistory: normalizedHistory,
+  };
+};
+
+const buildRankChallengeProgress = ({ rankPosition, targetRank }) => {
+  if (!rankPosition || rankPosition <= 0) {
+    return 0;
+  }
+  if (rankPosition <= targetRank) {
+    return targetRank;
+  }
+  const overflow = rankPosition - targetRank;
+  return Math.max(0, targetRank - overflow);
+};
+
+const buildCompetitiveChallenges = ({ leaderboardSections, studentId }) => {
+  const overall = (leaderboardSections || []).find((section) => section.type === 'overall') || null;
+  const attendanceMonth = (leaderboardSections || []).find((section) => section.type === 'attendance_month') || null;
+  const jumpApproach = (leaderboardSections || []).find((section) => section.type === 'jump_approach') || null;
+  const paymentsTotal = (leaderboardSections || []).find((section) => section.type === 'payments_total') || null;
+
+  const challenges = [];
+
+  if (overall?.currentStudentRank) {
+    const rank = Number(overall.currentStudentRank || 0);
+    const progressValue = buildRankChallengeProgress({ rankPosition: rank, targetRank: 3 });
+    challenges.push({
+      slug: 'competition_overall_top3',
+      title: 'Top 3 general',
+      description: rank <= 3
+        ? 'Ya estas dentro del top 3 del progreso general.'
+        : `Te faltan ${Math.max(rank - 3, 0)} puesto${rank - 3 === 1 ? '' : 's'} para entrar al top 3 general.`,
+      coreDriver: 'Influencia social y relacion',
+      targetMetric: 'overall_rank',
+      targetValue: 3,
+      progressValue,
+      isCompleted: rank <= 3,
+      completedAt: rank <= 3 ? new Date().toISOString() : null,
+      windowType: 'rolling',
+    });
+  }
+
+  if (attendanceMonth?.currentStudentRank) {
+    const rank = Number(attendanceMonth.currentStudentRank || 0);
+    const progressValue = buildRankChallengeProgress({ rankPosition: rank, targetRank: 3 });
+    challenges.push({
+      slug: 'competition_attendance_top3',
+      title: 'Podio de asistencia',
+      description: rank <= 3
+        ? 'Ya estas en el podio de asistencia mensual.'
+        : `Te faltan ${Math.max(rank - 3, 0)} puesto${rank - 3 === 1 ? '' : 's'} para entrar al top 3 de asistencia mensual.`,
+      coreDriver: 'Influencia social y relacion',
+      targetMetric: 'attendance_month_rank',
+      targetValue: 3,
+      progressValue,
+      isCompleted: rank <= 3,
+      completedAt: rank <= 3 ? new Date().toISOString() : null,
+      windowType: 'calendar-month',
+    });
+  }
+
+  if (jumpApproach?.rows?.length > 0) {
+    const leader = jumpApproach.rows[0];
+    const current = jumpApproach.rows.find((row) => row.student_id === studentId);
+    if (leader && current) {
+      challenges.push({
+        slug: 'competition_jump_leader_hunt',
+        title: 'Caza al lider del salto',
+        description: current.student_id === leader.student_id
+          ? 'Defiende tu liderato en salto con carrera.'
+          : `Te faltan ${Math.max(Number(leader.score || 0) - Number(current.score || 0), 0)} ${jumpApproach.unit} para alcanzar al lider del salto con carrera.`,
+        coreDriver: 'Desarrollo y logro',
+        targetMetric: 'jump_approach_score',
+        targetValue: Number(leader.score || 0),
+        progressValue: Number(current.score || 0),
+        isCompleted: current.student_id === leader.student_id,
+        completedAt: current.student_id === leader.student_id ? new Date().toISOString() : null,
+        windowType: 'rolling',
+      });
+    }
+  }
+
+  if (paymentsTotal?.rows?.length > 0) {
+    const leader = paymentsTotal.rows[0];
+    const current = paymentsTotal.rows.find((row) => row.student_id === studentId);
+    if (leader && current) {
+      challenges.push({
+        slug: 'competition_payments_leader_hunt',
+        title: 'Lidera pagos registrados',
+        description: current.student_id === leader.student_id
+          ? 'Ya lideras la tabla de mensualidades registradas.'
+          : `Te faltan ${Math.max(Number(leader.score || 0) - Number(current.score || 0), 0)} pagos para alcanzar al lider financiero.`,
+        coreDriver: 'Propiedad y pertenencia',
+        targetMetric: 'payments_total_score',
+        targetValue: Number(leader.score || 0),
+        progressValue: Number(current.score || 0),
+        isCompleted: current.student_id === leader.student_id,
+        completedAt: current.student_id === leader.student_id ? new Date().toISOString() : null,
+        windowType: 'rolling',
+      });
+    }
+  }
+
+  return challenges;
 };
 
 const buildProjection = ({
@@ -1192,19 +1946,22 @@ const buildProjection = ({
       updated_at: syncedAt,
     }
     : computedCurrencyWallet;
+  const latestTest = tests?.[tests.length - 1] || null;
+  const strengthTotal = buildStrengthTotal(latestTest);
   const challenges = buildChallenges({
     catalog: challengeCatalog,
     tests,
     jumpDelta,
     strengthDelta,
+    strengthTotal,
     currentMonthTests: streaks.currentMonthTests,
     currentMonthAttendances: attendanceStats.currentMonthAttendances,
+    totalAttendances: attendanceStats.totalAttendances,
+    weekdayAttendanceStreak: attendanceStats.weekdayAttendanceStreak,
     paymentStats,
     syncedAt,
   });
   const ageBand = deriveAgeBand(student.fecha_nacimiento || student.users?.fecha_nacimiento, today);
-  const latestTest = tests?.[tests.length - 1] || null;
-  const strengthTotal = buildStrengthTotal(latestTest);
 
   const profile = {
     student_id: student.id,
@@ -1429,8 +2186,87 @@ const buildNudges = ({ profile, challenges, lockedAchievements }) => {
   return nudges.slice(0, 3);
 };
 
-const buildRecommendations = ({ profile, latestTest, challenges, lockedAchievements }) => {
-  const recommendations = [];
+const pickNearestUnlockedTarget = (currentValue, targets = []) =>
+  [...targets]
+    .map((value) => Number(value || 0))
+    .filter((value) => value > Number(currentValue || 0))
+    .sort((left, right) => left - right)[0] || null;
+
+const buildRouteProgressLabel = ({ currentValue, targetValue, unit = '' }) => {
+  const formattedUnit = unit ? ` ${unit}` : '';
+  return `${currentValue}${formattedUnit} / ${targetValue}${formattedUnit}`;
+};
+
+const buildRouteRemainingLabel = ({ remaining, unit = '', singularLabel = '', pluralLabel = '' }) => {
+  const formattedUnit = unit ? ` ${unit}` : '';
+  if (singularLabel && pluralLabel) {
+    return `${remaining} ${remaining === 1 ? singularLabel : pluralLabel}`;
+  }
+  return `${remaining}${formattedUnit}`;
+};
+
+const summarizeRouteRewards = ({
+  lockedAchievements,
+  challenges,
+  cosmeticCatalog,
+  achievementSlugs = [],
+  challengeSlugs = [],
+  cosmeticMatcher = null,
+  projectedValue = 0,
+  projectedRank = null,
+}) => {
+  const pendingAchievements = (lockedAchievements || []).filter((achievement) =>
+    achievementSlugs.includes(achievement.achievementSlug)
+      && Number(projectedValue || 0) >= Number(achievement.targetValue || 0)
+  );
+  const pendingChallenges = (challenges || []).filter((challenge) =>
+    !challenge.isCompleted
+      && challengeSlugs.includes(challenge.slug)
+      && (
+        projectedRank != null
+          ? Number(projectedRank || 0) <= Number(challenge.targetValue || 0)
+          : Number(projectedValue || 0) >= Number(challenge.targetValue || 0)
+      )
+  );
+  const unlockedCosmetics = typeof cosmeticMatcher === 'function'
+    ? (cosmeticCatalog || []).filter((item) => cosmeticMatcher(item))
+    : [];
+
+  const totalXp = pendingAchievements.reduce((sum, achievement) => sum + Number(achievement.xpReward || 0), 0);
+  const immediate = [];
+
+  if (pendingChallenges.length > 0) {
+    immediate.push(`completas ${pendingChallenges.length} reto${pendingChallenges.length === 1 ? '' : 's'} activo${pendingChallenges.length === 1 ? '' : 's'}`);
+  }
+  if (pendingAchievements.length > 0) {
+    immediate.push(`desbloqueas ${pendingAchievements.length} logro${pendingAchievements.length === 1 ? '' : 's'}${totalXp > 0 ? ` (+${totalXp} XP)` : ''}`);
+  }
+  if (unlockedCosmetics.length > 0) {
+    immediate.push(`habilitas ${unlockedCosmetics.length} cosmetico${unlockedCosmetics.length === 1 ? '' : 's'} de prestigio`);
+  }
+
+  return {
+    immediate,
+    totalXp,
+    unlockedAchievementCount: pendingAchievements.length,
+    completedChallengeCount: pendingChallenges.length,
+    unlockedCosmeticCount: unlockedCosmetics.length,
+  };
+};
+
+const buildStrategicRoutes = ({
+  profile,
+  latestTest,
+  challenges,
+  lockedAchievements,
+  leaderboardSections,
+  cosmeticCatalog,
+}) => {
+  const routes = [];
+  const currentMonthTests = Number(profile?.summary?.currentMonthTests || 0);
+  const currentMonthAttendances = Number(profile?.summary?.currentMonthAttendances || 0);
+  const uniquePaymentMonths = Number(profile?.summary?.uniquePaymentMonths || 0);
+  const hasActiveCoverage = Boolean(profile?.summary?.hasActivePayment);
   const jumpGap = Math.max(
     (toNumber(latestTest?.brazo_extend_con_impulso) || 0) - (toNumber(latestTest?.brazo_extend_sin_impulso) || 0),
     0
@@ -1438,74 +2274,235 @@ const buildRecommendations = ({ profile, latestTest, challenges, lockedAchieveme
   const pullups = toNumber(latestTest?.elevaciones_barra) || 0;
   const longJump = toNumber(latestTest?.fuerza_explosiva_salto_largo) || 0;
   const absCount = toNumber(latestTest?.fuerza_abdomen) || 0;
-  const nextChallenge = (challenges || []).find((challenge) => !challenge.isCompleted);
+  const overallBoard = (leaderboardSections || []).find((section) => section.type === 'overall') || null;
+  const attendanceBoard = (leaderboardSections || []).find((section) => section.type === 'attendance_month') || null;
+  const currentOverallRank = Number(overallBoard?.currentStudentRank || 0);
+  const currentAttendanceRank = Number(attendanceBoard?.currentStudentRank || 0);
+  const nearestTestTarget = pickNearestUnlockedTarget(currentMonthTests, [1, 2]);
+  const nearestAttendanceTarget = pickNearestUnlockedTarget(currentMonthAttendances, [8, 12]);
+  const nearestJumpTarget = pickNearestUnlockedTarget(jumpGap, [5, 8, 10]);
+  const nearestPaymentTarget = !hasActiveCoverage ? 1 : pickNearestUnlockedTarget(uniquePaymentMonths, [3, 6]);
 
-  if ((profile?.summary?.currentMonthTests || 0) === 0) {
-    recommendations.push({
-      id: 'schedule-test',
-      title: 'Agenda tu evaluacion del mes',
-      message: 'Todavia no registras un test este mes. Hacerlo te dara una nueva referencia y puede abrir varios logros.',
+  if (nearestTestTarget) {
+    const routeRewards = summarizeRouteRewards({
+      lockedAchievements,
+      challenges,
+      cosmeticCatalog,
+      achievementSlugs: ['first_test', 'two_tests', 'monthly_combo'],
+      challengeSlugs: ['monthly_check_in', 'monthly_double_check_in', 'monthly_combo_ready'],
+      projectedValue: nearestTestTarget,
+    });
+    routes.push({
+      id: 'strategic-tests',
       focus: 'Medicion',
+      lane: 'tests',
+      title: nearestTestTarget === 1 ? 'Activa tu medicion del mes' : 'Cierra tu doble medicion mensual',
+      actionLabel: nearestTestTarget === 1
+        ? 'Registra 1 test fisico este mes para abrir una nueva referencia real.'
+        : `Te falta ${buildRouteRemainingLabel({ remaining: Math.max(nearestTestTarget - currentMonthTests, 0), singularLabel: 'test', pluralLabel: 'tests' })} este mes para cerrar la doble medicion.`,
+      progressLabel: buildRouteProgressLabel({ currentValue: currentMonthTests, targetValue: nearestTestTarget, unit: 'tests' }),
+      remaining: Math.max(nearestTestTarget - currentMonthTests, 0),
+      sportsBenefit: 'actualizas tu referencia fisica y abres comparaciones medibles para el resto del progreso',
+      immediateRewards: routeRewards.immediate,
+      chainedRewards: ['mejoras la precision de tus recomendaciones', 'acercas tu combo mensual de progreso'],
+      score: 76 - Math.max(nearestTestTarget - currentMonthTests, 0) * 8,
     });
   }
 
-  if (jumpGap < 8) {
-    recommendations.push({
-      id: 'approach-jump',
-      title: 'Convierte mejor tu carrera en altura',
-      message: 'Tu salto con carrera todavia no se despega mucho de tu salto estatico. Trabaja la coordinacion del remate y la transferencia de velocidad.',
+  if (nearestAttendanceTarget) {
+    const routeRewards = summarizeRouteRewards({
+      lockedAchievements,
+      challenges,
+      cosmeticCatalog,
+      achievementSlugs: ['attendance_month_8', 'attendance_total_12', 'attendance_month_12', 'monthly_combo'],
+      challengeSlugs: ['attendance_monthly_rhythm', 'attendance_monthly_elite', 'monthly_combo_ready'],
+      projectedValue: nearestAttendanceTarget,
+    });
+    routes.push({
+      id: 'strategic-attendance',
+      focus: 'Constancia',
+      lane: 'attendance',
+      title: nearestAttendanceTarget >= 12 ? 'Busca tu mes de elite' : 'Sostiene tu ritmo del mes',
+      actionLabel: `Te faltan ${buildRouteRemainingLabel({ remaining: Math.max(nearestAttendanceTarget - currentMonthAttendances, 0), singularLabel: 'asistencia', pluralLabel: 'asistencias' })} este mes para llegar a ${nearestAttendanceTarget}.`,
+      progressLabel: buildRouteProgressLabel({ currentValue: currentMonthAttendances, targetValue: nearestAttendanceTarget, unit: 'asistencias' }),
+      remaining: Math.max(nearestAttendanceTarget - currentMonthAttendances, 0),
+      sportsBenefit: 'mejoras continuidad de entrenamiento y sostienes presencia competitiva real',
+      immediateRewards: routeRewards.immediate,
+      chainedRewards: ['proteges tu ritmo mensual', 'te acercas a retos de prestigio por constancia'],
+      score: 82 - Math.max(nearestAttendanceTarget - currentMonthAttendances, 0) * 5,
+    });
+  }
+
+  if (nearestJumpTarget) {
+    const routeRewards = summarizeRouteRewards({
+      lockedAchievements,
+      challenges,
+      cosmeticCatalog,
+      achievementSlugs: ['jump_up_5', 'jump_up_10'],
+      challengeSlugs: ['jump_next_level', 'jump_next_level_plus'],
+      projectedValue: nearestJumpTarget,
+    });
+    routes.push({
+      id: 'strategic-jump',
       focus: 'Salto',
+      lane: 'jump',
+      title: nearestJumpTarget >= 10 ? 'Rompe la barrera grande de salto' : 'Empuja tu salto al siguiente corte',
+      actionLabel: `Te faltan ${buildRouteRemainingLabel({ remaining: Math.max(nearestJumpTarget - jumpGap, 0), unit: 'cm' })} de mejora frente a tu linea base para llegar a ${nearestJumpTarget} cm.`,
+      progressLabel: buildRouteProgressLabel({ currentValue: jumpGap, targetValue: nearestJumpTarget, unit: 'cm' }),
+      remaining: Math.max(nearestJumpTarget - jumpGap, 0),
+      sportsBenefit: 'convierte mejor la carrera en altura util para remate y bloqueo',
+      immediateRewards: routeRewards.immediate,
+      chainedRewards: ['mejoras tu amenaza en tablas de salto', 'abres un perfil mas competitivo'],
+      score: 88 - Math.max(nearestJumpTarget - jumpGap, 0) * 7,
+    });
+  }
+
+  if (nearestPaymentTarget) {
+    const routeRewards = summarizeRouteRewards({
+      lockedAchievements,
+      challenges,
+      cosmeticCatalog,
+      achievementSlugs: ['first_payment', 'payment_streak_3', 'payment_active_guard'],
+      challengeSlugs: ['payment_active_now', 'payment_cycle_3'],
+      projectedValue: nearestPaymentTarget,
+    });
+    routes.push({
+      id: 'strategic-payment',
+      focus: 'Cobertura',
+      lane: 'payments',
+      title: !hasActiveCoverage ? 'Reactiva tu cobertura' : 'Extiende tu continuidad administrativa',
+      actionLabel: !hasActiveCoverage
+        ? 'Activa tu mensualidad vigente para no perder traccion en retos y continuidad.'
+        : `Te falta ${buildRouteRemainingLabel({ remaining: Math.max(nearestPaymentTarget - uniquePaymentMonths, 0), singularLabel: 'mes al dia', pluralLabel: 'meses al dia' })} para llegar a ${nearestPaymentTarget} meses registrados.`,
+      progressLabel: !hasActiveCoverage
+        ? `${hasActiveCoverage ? 1 : 0} / 1 cobertura activa`
+        : buildRouteProgressLabel({ currentValue: uniquePaymentMonths, targetValue: nearestPaymentTarget, unit: 'meses' }),
+      remaining: !hasActiveCoverage ? 1 : Math.max(nearestPaymentTarget - uniquePaymentMonths, 0),
+      sportsBenefit: 'proteges continuidad y mantienes abiertas varias recompensas de ritmo sostenido',
+      immediateRewards: routeRewards.immediate,
+      chainedRewards: ['evitas enfriar tu progreso administrativo', 'refuerzas tu etapa de constancia'],
+      score: (!hasActiveCoverage ? 84 : 70) - ((!hasActiveCoverage ? 1 : Math.max(nearestPaymentTarget - uniquePaymentMonths, 0)) * 6),
+    });
+  }
+
+  if (currentOverallRank > 3) {
+    const routeRewards = summarizeRouteRewards({
+      lockedAchievements,
+      challenges,
+      cosmeticCatalog,
+      challengeSlugs: ['competition_overall_top3'],
+      projectedRank: 3,
+      cosmeticMatcher: (item) =>
+        item?.metadata?.unlockType === 'leaderboard_top'
+        && item?.metadata?.boardType === 'overall'
+        && Number(item?.metadata?.unlockTarget || 3) >= 3,
+    });
+    routes.push({
+      id: 'strategic-overall-podium',
+      focus: 'Competencia',
+      lane: 'overall_rank',
+      title: 'Métete en la pelea grande',
+      actionLabel: `Te faltan ${buildRouteRemainingLabel({ remaining: Math.max(currentOverallRank - 3, 0), singularLabel: 'puesto', pluralLabel: 'puestos' })} para entrar al top 3 general.`,
+      progressLabel: `Puesto ${currentOverallRank} / top 3`,
+      remaining: Math.max(currentOverallRank - 3, 0),
+      sportsBenefit: 'te vuelves una referencia visible dentro de tu categoria',
+      immediateRewards: routeRewards.immediate.length > 0 ? routeRewards.immediate : ['entras al top 3 general'],
+      chainedRewards: ['acercas cosmeticos y titulos de prestigio', 'refuerzas tu etapa competitiva'],
+      score: 90 - Math.max(currentOverallRank - 3, 0) * 4,
+    });
+  } else if (currentAttendanceRank > 3) {
+    const routeRewards = summarizeRouteRewards({
+      lockedAchievements,
+      challenges,
+      cosmeticCatalog,
+      challengeSlugs: ['competition_attendance_top3'],
+      projectedRank: 3,
+      cosmeticMatcher: (item) =>
+        item?.metadata?.unlockType === 'leaderboard_top'
+        && item?.metadata?.boardType === 'overall'
+        && Number(item?.metadata?.unlockTarget || 3) === 3,
+    });
+    routes.push({
+      id: 'strategic-attendance-podium',
+      focus: 'Competencia',
+      lane: 'attendance_rank',
+      title: 'Entra al podio de asistencia',
+      actionLabel: `Te faltan ${buildRouteRemainingLabel({ remaining: Math.max(currentAttendanceRank - 3, 0), singularLabel: 'puesto', pluralLabel: 'puestos' })} para meterte al top 3 mensual de asistencia.`,
+      progressLabel: `Puesto ${currentAttendanceRank} / top 3`,
+      remaining: Math.max(currentAttendanceRank - 3, 0),
+      sportsBenefit: 'haces visible tu constancia y presionas a los rivales directos',
+      immediateRewards: routeRewards.immediate.length > 0 ? routeRewards.immediate : ['entras al podio de asistencia'],
+      chainedRewards: ['mejoras tu presencia social', 'acercas recompensas de prestigio por constancia'],
+      score: 86 - Math.max(currentAttendanceRank - 3, 0) * 4,
     });
   }
 
   if (pullups < 6) {
-    recommendations.push({
-      id: 'pullups',
-      title: 'Sube tu fuerza de traccion',
-      message: 'Ganar dominadas te ayudara a mejorar control corporal, estabilidad y fuerza general.',
+    routes.push({
+      id: 'strategic-pullups',
       focus: 'Barra',
+      lane: 'pullups',
+      title: 'Refuerza tu traccion',
+      actionLabel: `Te faltan ${buildRouteRemainingLabel({ remaining: Math.max(6 - pullups, 0), unit: 'reps' })} para llegar a una base mas seria en barra.`,
+      progressLabel: buildRouteProgressLabel({ currentValue: pullups, targetValue: 6, unit: 'reps' }),
+      remaining: Math.max(6 - pullups, 0),
+      sportsBenefit: 'mejoras control corporal, estabilidad y fuerza general para otras pruebas',
+      immediateRewards: ['fortaleces una debilidad clara de tu perfil actual'],
+      chainedRewards: ['acercas logros de fuerza mas exigentes'],
+      score: 64 - Math.max(6 - pullups, 0) * 4,
     });
   }
 
   if (longJump > 0 && longJump < 190) {
-    recommendations.push({
-      id: 'long-jump',
-      title: 'Empuja mas tu potencia horizontal',
-      message: 'Tu salto largo aun tiene margen. Trabaja salida de cadera, recepcion y fuerza explosiva de piernas.',
+    routes.push({
+      id: 'strategic-long-jump',
       focus: 'Potencia',
+      lane: 'long_jump',
+      title: 'Empuja tu potencia horizontal',
+      actionLabel: `Te faltan ${buildRouteRemainingLabel({ remaining: Math.max(190 - longJump, 0), unit: 'cm' })} para llegar a un piso mas competitivo en salto largo.`,
+      progressLabel: buildRouteProgressLabel({ currentValue: longJump, targetValue: 190, unit: 'cm' }),
+      remaining: Math.max(190 - longJump, 0),
+      sportsBenefit: 'mejoras salida de cadera y transferencia de fuerza en piernas',
+      immediateRewards: ['refuerzas tu base explosiva para otras mediciones'],
+      chainedRewards: ['preparas mejor futuras mejoras de salto'],
+      score: 60 - Math.max(190 - longJump, 0) * 0.5,
     });
   }
 
   if (absCount > 0 && absCount < 35) {
-    recommendations.push({
-      id: 'core',
-      title: 'Fortalece tu zona media',
-      message: 'Mejorar el abdomen te dara mas estabilidad para saltar, aterrizar y sostener repeticiones de fuerza.',
+    routes.push({
+      id: 'strategic-core',
       focus: 'Core',
+      lane: 'core',
+      title: 'Fortalece tu zona media',
+      actionLabel: `Te faltan ${buildRouteRemainingLabel({ remaining: Math.max(35 - absCount, 0), unit: 'reps' })} para llegar a una base mejor de abdomen.`,
+      progressLabel: buildRouteProgressLabel({ currentValue: absCount, targetValue: 35, unit: 'reps' }),
+      remaining: Math.max(35 - absCount, 0),
+      sportsBenefit: 'ganas estabilidad para saltar, aterrizar y sostener fuerza',
+      immediateRewards: ['apuntas a una mejora fisica con impacto transversal'],
+      chainedRewards: ['acercas logros de fuerza y control corporal'],
+      score: 58 - Math.max(35 - absCount, 0) * 0.8,
     });
   }
 
-  if (nextChallenge) {
-    recommendations.push({
-      id: `challenge-focus-${nextChallenge.slug}`,
-      title: `Preparate para ${nextChallenge.title}`,
-      message: `Tu reto mas cercano pide ${nextChallenge.targetValue} y ya llevas ${nextChallenge.progressValue}. Organiza tu semana para cerrarlo.`,
-      focus: 'Reto',
-    });
-  }
+  const selected = [...routes]
+    .sort((left, right) => right.score - left.score)
+    .slice(0, 3)
+    .map((route, index) => ({
+      ...route,
+      priority: index === 0 ? 'primary' : 'alternative',
+    }));
 
-  const comboAchievement = lockedAchievements.find((achievement) => achievement.achievementSlug === 'monthly_combo');
-  if (comboAchievement) {
-    recommendations.push({
-      id: 'combo',
-      title: 'Busca un mes redondo',
-      message: 'Si completas evaluacion, constancia y mensualidad vigente en el mismo mes, desbloqueas una de las recompensas mas fuertes.',
-      focus: 'Combo',
-    });
-  }
-
-  return recommendations.slice(0, 4);
+  return selected;
 };
+
+const buildRecommendations = ({ strategicRoutes = [] }) =>
+  (strategicRoutes || []).map((route) => ({
+    id: route.id,
+    title: route.title,
+    message: route.actionLabel,
+    focus: route.focus,
+  }));
 
 const formatChallenges = ({ rows, catalog }) => {
   const catalogMap = new Map(getChallengeCatalog(catalog).map((challenge) => [challenge.slug, challenge]));
@@ -1891,6 +2888,48 @@ const getCosmeticUnlockLabel = (item) => {
   }
 };
 
+const getCosmeticRarityRank = (rarity) => {
+  switch (String(rarity || 'common').toLowerCase()) {
+    case 'legendary':
+      return 4;
+    case 'epic':
+      return 3;
+    case 'rare':
+      return 2;
+    default:
+      return 1;
+  }
+};
+
+const getCosmeticPhotoFocus = (item) => {
+  const metadata = item?.metadata || {};
+  if (metadata.photoFocus === 'direct' || metadata.photoFocus === 'surround') {
+    return metadata.photoFocus;
+  }
+
+  switch (item?.category) {
+    case 'frame':
+    case 'badge':
+      return 'direct';
+    case 'background':
+    case 'effect':
+      return 'surround';
+    default:
+      return 'none';
+  }
+};
+
+const getCosmeticPhotoFocusLabel = (item) => {
+  switch (getCosmeticPhotoFocus(item)) {
+    case 'direct':
+      return 'Directo en foto';
+    case 'surround':
+      return 'Entorno de foto';
+    default:
+      return 'Sin efecto en foto';
+  }
+};
+
 const buildIdentityView = ({
   student,
   identity,
@@ -1975,8 +3014,10 @@ const buildCosmeticsView = ({ catalog, ownedItems, equipment, wallet, profile, l
       name: item.name,
       description: item.description,
       rarity: item.rarity || 'common',
+      rarityRank: getCosmeticRarityRank(item.rarity),
       category,
       priceCoins: Number(item.price_coins || 0),
+      sortOrder: Number(item.sort_order || 0),
       isOwned,
       isUnlocked,
       isLocked: !isOwned && !isUnlocked,
@@ -1986,6 +3027,8 @@ const buildCosmeticsView = ({ catalog, ownedItems, equipment, wallet, profile, l
       unlockType: item.metadata?.unlockType || 'purchase',
       unlockLabel: getCosmeticUnlockLabel(item),
       unlockHint: getCosmeticUnlockHint(item),
+      photoFocus: getCosmeticPhotoFocus(item),
+      photoFocusLabel: getCosmeticPhotoFocusLabel(item),
       metadata: item.metadata || {},
     };
   }).sort((left, right) => {
@@ -1997,6 +3040,9 @@ const buildCosmeticsView = ({ catalog, ownedItems, equipment, wallet, profile, l
     }
     if (left.isEquipped !== right.isEquipped) {
       return left.isEquipped ? -1 : 1;
+    }
+    if (left.sortOrder !== right.sortOrder) {
+      return left.sortOrder - right.sortOrder;
     }
     return left.priceCoins - right.priceCoins;
   });
@@ -2321,6 +3367,24 @@ export const createGamificationUseCases = (repository, deps = {}) => {
     }
     return repository.listCosmeticCatalog();
   };
+  const getAthleteStageCatalog = async () => {
+    if (typeof repository.getAthleteStageCatalog !== 'function') {
+      return [];
+    }
+    return repository.getAthleteStageCatalog();
+  };
+  const listActiveCampaigns = async (today) => {
+    if (typeof repository.listActiveCampaigns !== 'function') {
+      return [];
+    }
+    return repository.listActiveCampaigns(today);
+  };
+  const listActiveHiddenRewards = async () => {
+    if (typeof repository.listActiveHiddenRewards !== 'function') {
+      return [];
+    }
+    return repository.listActiveHiddenRewards();
+  };
 
   const loadStudentGamificationByStudentIdUseCase = {
     execute: async ({ studentId, studentData = null, physicalTests = null }) => {
@@ -2336,8 +3400,13 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         achievementCatalog,
         titleCatalog,
         cosmeticCatalog,
+        athleteStageCatalog,
         challengeCatalog,
+        campaignCatalog,
+        hiddenRewardsCatalog,
         storedChallengeProgress,
+        storedCampaignProgress,
+        storedHiddenRewards,
         storedXpLedger,
         storedCurrencyLedger,
         ownedCosmeticItems,
@@ -2352,8 +3421,13 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         repository.listAchievementCatalog(),
         listTitleCatalog(),
         listCosmeticCatalog(),
+        getAthleteStageCatalog(),
         repository.listActiveChallenges(todayProvider()),
+        listActiveCampaigns(todayProvider()),
+        listActiveHiddenRewards(),
         repository.listStudentChallengeProgress(studentId),
+        typeof repository.listStudentCampaignProgress === 'function' ? repository.listStudentCampaignProgress(studentId) : Promise.resolve([]),
+        typeof repository.listStudentHiddenRewards === 'function' ? repository.listStudentHiddenRewards(studentId) : Promise.resolve([]),
         typeof repository.listXpLedger === 'function' ? repository.listXpLedger(studentId, null) : Promise.resolve([]),
         typeof repository.listCurrencyLedger === 'function' ? repository.listCurrencyLedger(studentId, null) : Promise.resolve([]),
         typeof repository.listStudentCosmeticItems === 'function' ? repository.listStudentCosmeticItems(studentId) : Promise.resolve([]),
@@ -2466,21 +3540,66 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         )
       );
       const overallLeaderboardSection = leaderboardSections.find((section) => section.type === 'overall') || leaderboardSections[0] || null;
-      const recommendations = buildRecommendations({
-        profile: profileView,
-        latestTest: tests?.[tests.length - 1] || null,
-        challenges,
-        lockedAchievements: visibleLockedAchievements,
+      const competitiveChallenges = buildCompetitiveChallenges({
+        leaderboardSections,
+        studentId: student.id,
       });
+      const combinedChallenges = [...challenges, ...competitiveChallenges];
+      const derivedCampaignRows = buildCampaignProgressRows({
+        studentId: student.id,
+        campaigns: campaignCatalog,
+        tests,
+        attendances,
+        payments,
+        leaderboards: leaderboardSections,
+        syncedAt: isoProvider(),
+      });
+      if (typeof repository.replaceCampaignProgress === 'function') {
+        await repository.replaceCampaignProgress(student.id, derivedCampaignRows);
+      }
+      const campaignRowsToFormat = storedCampaignProgress?.length >= derivedCampaignRows.length && derivedCampaignRows.length > 0
+        ? storedCampaignProgress
+        : derivedCampaignRows;
+      const campaigns = formatCampaigns({
+        rows: campaignRowsToFormat,
+        catalog: campaignCatalog,
+        today: todayProvider(),
+      });
+      const derivedHiddenRewardRows = buildHiddenRewardRows({
+        studentId: student.id,
+        catalog: hiddenRewardsCatalog,
+        tests,
+        jumpDelta: derived.profile.summary?.jumpDelta,
+        attendanceStats: {
+          weekdayAttendanceStreak: derived.profile.summary?.weekdayAttendanceStreak || 0,
+          currentMonthAttendances: derived.profile.summary?.currentMonthAttendances || 0,
+        },
+        paymentStats: {
+          uniquePaymentMonths: derived.profile.summary?.uniquePaymentMonths || 0,
+        },
+        syncedAt: isoProvider(),
+      });
+      if (typeof repository.replaceHiddenRewards === 'function') {
+        await repository.replaceHiddenRewards(student.id, derivedHiddenRewardRows);
+      }
+      const hiddenRewardRowsToFormat = storedHiddenRewards?.length >= derivedHiddenRewardRows.length && derivedHiddenRewardRows.length > 0
+        ? storedHiddenRewards
+        : derivedHiddenRewardRows;
+      const hiddenRewards = formatHiddenRewards({
+        rows: hiddenRewardRowsToFormat,
+        catalog: hiddenRewardsCatalog,
+      });
+      const discoveredHiddenRewards = hiddenRewards.filter((reward) => reward.isDiscovered);
+      const hiddenRewardHints = hiddenRewards.filter((reward) => !reward.isDiscovered);
       const upcomingChallenges = buildUpcomingChallenges({
         catalog: challengeCatalog,
         today: todayProvider(),
-        currentChallenges: challenges,
+        currentChallenges: combinedChallenges,
       });
 
       const nudges = buildNudges({
         profile: profileView,
-        challenges,
+        challenges: combinedChallenges,
         lockedAchievements: visibleLockedAchievements,
       });
 
@@ -2505,6 +3624,23 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         leaderboards: leaderboardSections,
         achievements: achievementRows,
       });
+      const strategicRoutes = buildStrategicRoutes({
+        profile: profileView,
+        latestTest: tests?.[tests.length - 1] || null,
+        challenges: combinedChallenges,
+        lockedAchievements: visibleLockedAchievements,
+        leaderboardSections,
+        cosmeticCatalog,
+      });
+      const surpriseChains = buildSurpriseChains({
+        hiddenRewardHints,
+        discoveredHiddenRewards,
+        campaigns,
+        strategicRoutes,
+      });
+      const recommendations = buildRecommendations({
+        strategicRoutes,
+      });
       const identity = buildIdentityView({
         student,
         identity: storedIdentity,
@@ -2522,15 +3658,33 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         leaderboards: leaderboardSections,
         achievements: achievementRows,
       });
+      const athleteStageState = await syncAthleteStageState({
+        repository,
+        studentId: student.id,
+        stageCatalog: athleteStageCatalog,
+        profile: effectiveProfile,
+        achievements: achievementRows,
+        leaderboardSections,
+        syncedAt: isoProvider(),
+      });
 
       return {
         profile: profileView,
-        identity,
+        identity: {
+          ...identity,
+          currentStage: athleteStageState.currentStage,
+          stageHistory: athleteStageState.stageHistory,
+        },
         cosmetics,
         achievements,
         lockedAchievements: visibleLockedAchievements,
         secretAchievements,
-        challenges,
+        discoveredHiddenRewards,
+        hiddenRewardHints,
+        surpriseChains,
+        challenges: combinedChallenges,
+        campaigns,
+        strategicRoutes,
         recommendations,
         upcomingChallenges,
         nudges,
@@ -2571,13 +3725,16 @@ export const createGamificationUseCases = (repository, deps = {}) => {
     execute: async ({ studentId }) => {
       const today = todayProvider();
       const syncedAt = isoProvider();
-      const [student, tests, attendances, payments, achievementCatalog, challengeCatalog, existingXpLedger, existingCurrencyLedger, existingCurrencyWallet] = await Promise.all([
+      const [student, tests, attendances, payments, achievementCatalog, challengeCatalog, campaignCatalog, hiddenRewardsCatalog, athleteStageCatalog, existingXpLedger, existingCurrencyLedger, existingCurrencyWallet] = await Promise.all([
         repository.findStudentById(studentId),
         repository.listPhysicalTests(studentId),
         listAttendances(studentId),
         listPayments(studentId),
         repository.listAchievementCatalog(),
         repository.listActiveChallenges(today),
+        listActiveCampaigns(today),
+        listActiveHiddenRewards(),
+        getAthleteStageCatalog(),
         typeof repository.listXpLedger === 'function' ? repository.listXpLedger(studentId, null) : Promise.resolve([]),
         typeof repository.listCurrencyLedger === 'function' ? repository.listCurrencyLedger(studentId, null) : Promise.resolve([]),
         typeof repository.getCurrencyWallet === 'function' ? repository.getCurrencyWallet(studentId) : Promise.resolve(null),
@@ -2667,6 +3824,48 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         snapshotDate: today,
         rows: leaderboardRows,
       });
+      await syncAthleteStageState({
+        repository,
+        studentId,
+        stageCatalog: athleteStageCatalog,
+        profile: projection.profile,
+        achievements: projection.achievements,
+        leaderboardSections,
+        syncedAt,
+      });
+      if (typeof repository.replaceCampaignProgress === 'function') {
+        await repository.replaceCampaignProgress(
+          studentId,
+          buildCampaignProgressRows({
+            studentId,
+            campaigns: campaignCatalog,
+            tests,
+            attendances,
+            payments,
+            leaderboards: leaderboardSections,
+            syncedAt,
+          })
+        );
+      }
+      if (typeof repository.replaceHiddenRewards === 'function') {
+        await repository.replaceHiddenRewards(
+          studentId,
+          buildHiddenRewardRows({
+            studentId,
+            catalog: hiddenRewardsCatalog,
+            tests,
+            jumpDelta: projection.profile.summary?.jumpDelta,
+            attendanceStats: {
+              weekdayAttendanceStreak: projection.profile.summary?.weekdayAttendanceStreak || 0,
+              currentMonthAttendances: projection.profile.summary?.currentMonthAttendances || 0,
+            },
+            paymentStats: {
+              uniquePaymentMonths: projection.profile.summary?.uniquePaymentMonths || 0,
+            },
+            syncedAt,
+          })
+        );
+      }
 
       return {
         studentId,
@@ -2943,33 +4142,21 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         throw new Error(item.unlockHint || 'Ese cosmetico todavia esta bloqueado.');
       }
 
-      await repository.purchaseCosmeticItem(student.id, itemSlug);
-      return loadStudentGamificationByStudentIdUseCase.execute({
-        studentId: student.id,
-        studentData: student,
-      });
+      return repository.purchaseCosmeticItem(student.id, itemSlug);
     },
   };
 
   const equipCosmeticItemUseCase = {
     execute: async ({ userId, itemSlug }) => {
       const student = await repository.findStudentByUserId(userId);
-      await repository.equipCosmeticItem(student.id, itemSlug);
-      return loadStudentGamificationByStudentIdUseCase.execute({
-        studentId: student.id,
-        studentData: student,
-      });
+      return repository.equipCosmeticItem(student.id, itemSlug);
     },
   };
 
   const unequipCosmeticItemUseCase = {
     execute: async ({ userId, category }) => {
       const student = await repository.findStudentByUserId(userId);
-      await repository.unequipCosmeticItem(student.id, category);
-      return loadStudentGamificationByStudentIdUseCase.execute({
-        studentId: student.id,
-        studentData: student,
-      });
+      return repository.unequipCosmeticItem(student.id, category);
     },
   };
 

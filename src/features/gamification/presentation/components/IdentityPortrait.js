@@ -57,7 +57,49 @@ const EFFECT_VARIANTS = [
   "before:absolute before:-inset-1 before:rounded-[inherit] before:bg-violet-400/18 before:blur-xl before:content-['']",
 ];
 
-const getFrameClasses = (slug) => {
+const resolveCosmeticSlug = (itemOrSlug) => (typeof itemOrSlug === 'string' ? itemOrSlug : itemOrSlug?.slug || '');
+const resolveCosmeticMetadata = (itemOrSlug) => (typeof itemOrSlug === 'string' ? {} : itemOrSlug?.metadata || {});
+
+const FRAME_ACCENT_MAP = {
+  silver: 'bg-[linear-gradient(135deg,_rgba(226,232,240,0.96),_rgba(148,163,184,0.82))] shadow-[0_0_22px_rgba(226,232,240,0.18)]',
+  fire: 'bg-[linear-gradient(135deg,_rgba(251,146,60,0.98),_rgba(190,24,93,0.88))] shadow-[0_0_30px_rgba(251,146,60,0.26)]',
+  neon: 'bg-[linear-gradient(135deg,_rgba(103,232,249,0.95),_rgba(79,70,229,0.84))] shadow-[0_0_30px_rgba(34,211,238,0.28)]',
+  steel: 'bg-[linear-gradient(135deg,_rgba(203,213,225,0.94),_rgba(71,85,105,0.92))] shadow-[0_0_22px_rgba(148,163,184,0.2)]',
+  cobalt: 'bg-[linear-gradient(135deg,_rgba(125,211,252,0.96),_rgba(30,64,175,0.9))] shadow-[0_0_28px_rgba(59,130,246,0.24)]',
+  pearl: 'bg-[linear-gradient(135deg,_rgba(255,255,255,0.98),_rgba(226,232,240,0.9))] shadow-[0_0_22px_rgba(255,255,255,0.18)]',
+  obsidian: 'bg-[linear-gradient(135deg,_rgba(51,65,85,0.98),_rgba(15,23,42,0.96))] shadow-[0_0_22px_rgba(15,23,42,0.36)]',
+  rose: 'bg-[linear-gradient(135deg,_rgba(251,207,232,0.98),_rgba(190,24,93,0.82))] shadow-[0_0_26px_rgba(244,114,182,0.26)]',
+  gold: 'bg-[linear-gradient(135deg,_rgba(253,230,138,0.98),_rgba(180,83,9,0.9))] shadow-[0_0_28px_rgba(245,158,11,0.24)]',
+};
+
+const BACKGROUND_PALETTE_MAP = {
+  storm: 'bg-[radial-gradient(circle_at_top_left,_rgba(125,211,252,0.2),_transparent_34%),linear-gradient(145deg,_rgba(15,23,42,0.96),_rgba(30,41,59,0.94)_55%,_rgba(30,64,175,0.78))]',
+  magenta: 'bg-[radial-gradient(circle_at_top_left,_rgba(244,114,182,0.24),_transparent_34%),linear-gradient(145deg,_rgba(76,5,25,0.94),_rgba(131,24,67,0.86)_55%,_rgba(30,41,59,0.88))]',
+  carbon: 'bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.1),_transparent_30%),linear-gradient(145deg,_rgba(2,6,23,0.98),_rgba(30,41,59,0.94)_55%,_rgba(15,23,42,0.98))]',
+  ocean: 'bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.22),_transparent_34%),linear-gradient(145deg,_rgba(8,47,73,0.94),_rgba(14,116,144,0.8)_55%,_rgba(15,23,42,0.92))]',
+  titanium: 'bg-[radial-gradient(circle_at_top_left,_rgba(226,232,240,0.2),_transparent_34%),linear-gradient(145deg,_rgba(15,23,42,0.96),_rgba(71,85,105,0.92)_55%,_rgba(30,41,59,0.95))]',
+  summit: 'bg-[radial-gradient(circle_at_top_left,_rgba(253,230,138,0.42),_transparent_38%),linear-gradient(145deg,_rgba(120,53,15,0.74),_rgba(245,158,11,0.34)_55%,_rgba(15,23,42,0.92))]',
+  studio: 'bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.18),_transparent_30%),linear-gradient(145deg,_rgba(71,85,105,0.84),_rgba(15,23,42,0.92)_60%,_rgba(30,41,59,0.9))]',
+  aurora: 'bg-[radial-gradient(circle_at_top_left,_rgba(103,232,249,0.24),_transparent_34%),radial-gradient(circle_at_bottom_right,_rgba(196,181,253,0.22),_transparent_32%),linear-gradient(145deg,_rgba(30,27,75,0.96),_rgba(49,46,129,0.9)_55%,_rgba(15,23,42,0.92))]',
+  blush: 'bg-[radial-gradient(circle_at_top_left,_rgba(251,207,232,0.28),_transparent_34%),linear-gradient(145deg,_rgba(76,5,25,0.84),_rgba(190,24,93,0.62)_55%,_rgba(30,41,59,0.9))]',
+};
+
+const EFFECT_GLOW_MAP = {
+  amber: "before:absolute before:-inset-1 before:rounded-[inherit] before:bg-amber-300/18 before:blur-xl before:content-['']",
+  cyan: "before:absolute before:-inset-1 before:rounded-[inherit] before:bg-cyan-300/18 before:blur-xl before:content-['']",
+  magenta: "before:absolute before:-inset-1 before:rounded-[inherit] before:bg-fuchsia-300/18 before:blur-xl before:content-['']",
+  violet: "before:absolute before:-inset-1 before:rounded-[inherit] before:bg-violet-400/18 before:blur-xl before:content-['']",
+  pearl: "before:absolute before:-inset-1 before:rounded-[inherit] before:bg-white/16 before:blur-xl before:content-['']",
+  gold: "before:absolute before:-inset-1 before:rounded-[inherit] before:bg-yellow-300/18 before:blur-xl before:content-['']",
+};
+
+const getFrameClasses = (itemOrSlug) => {
+  const slug = resolveCosmeticSlug(itemOrSlug);
+  const metadata = resolveCosmeticMetadata(itemOrSlug);
+  if (metadata.accent && FRAME_ACCENT_MAP[metadata.accent]) {
+    return FRAME_ACCENT_MAP[metadata.accent];
+  }
+
   switch (slug) {
     case 'frame_cian_ruta':
       return 'bg-[linear-gradient(135deg,_rgba(103,232,249,0.95),_rgba(8,145,178,0.8))] shadow-[0_0_28px_rgba(34,211,238,0.28)]';
@@ -68,7 +110,13 @@ const getFrameClasses = (slug) => {
   }
 };
 
-const getBackgroundClasses = (slug) => {
+const getBackgroundClasses = (itemOrSlug) => {
+  const slug = resolveCosmeticSlug(itemOrSlug);
+  const metadata = resolveCosmeticMetadata(itemOrSlug);
+  if (metadata.palette && BACKGROUND_PALETTE_MAP[metadata.palette]) {
+    return BACKGROUND_PALETTE_MAP[metadata.palette];
+  }
+
   switch (slug) {
     case 'background_cancha_dorada':
       return 'bg-[radial-gradient(circle_at_top_left,_rgba(254,240,138,0.55),_transparent_38%),linear-gradient(145deg,_rgba(120,53,15,0.78),_rgba(245,158,11,0.36)_55%,_rgba(15,23,42,0.9))]';
@@ -79,7 +127,13 @@ const getBackgroundClasses = (slug) => {
   }
 };
 
-const getEffectClasses = (slug) => {
+const getEffectClasses = (itemOrSlug) => {
+  const slug = resolveCosmeticSlug(itemOrSlug);
+  const metadata = resolveCosmeticMetadata(itemOrSlug);
+  if (metadata.glow && EFFECT_GLOW_MAP[metadata.glow]) {
+    return EFFECT_GLOW_MAP[metadata.glow];
+  }
+
   switch (slug) {
     case 'effect_aura_oro':
       return "before:absolute before:-inset-1 before:rounded-[inherit] before:bg-amber-300/18 before:blur-xl before:content-['']";
@@ -144,6 +198,9 @@ const IdentityPortrait = ({
 }) => {
   const normalizedEquipment = normalizeEquipment(equipment);
   const sizeStyles = SIZE_MAP[size] || SIZE_MAP.md;
+  const frameItem = equippedItems?.frame || (normalizedEquipment.frame ? { slug: normalizedEquipment.frame } : null);
+  const backgroundItem = equippedItems?.background || (normalizedEquipment.background ? { slug: normalizedEquipment.background } : null);
+  const effectItem = equippedItems?.effect || (normalizedEquipment.effect ? { slug: normalizedEquipment.effect } : null);
   const badgeItem = equippedItems?.badge || (normalizedEquipment.badge ? { slug: normalizedEquipment.badge } : null);
   const badgeVisual = badgeItem ? getBadgeVisual(badgeItem) : null;
 
@@ -153,11 +210,11 @@ const IdentityPortrait = ({
         className={cn(
           'relative overflow-visible',
           sizeStyles.shell,
-          getFrameClasses(normalizedEquipment.frame),
-          getEffectClasses(normalizedEquipment.effect)
+          getFrameClasses(frameItem || normalizedEquipment.frame),
+          getEffectClasses(effectItem || normalizedEquipment.effect)
         )}
       >
-        <div className={cn('relative h-full w-full overflow-hidden border border-white/10', sizeStyles.inner, getBackgroundClasses(normalizedEquipment.background))}>
+        <div className={cn('relative h-full w-full overflow-hidden border border-white/10', sizeStyles.inner, getBackgroundClasses(backgroundItem || normalizedEquipment.background))}>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.16),_transparent_28%)]" />
           {imageUrl ? (
             <img

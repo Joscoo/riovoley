@@ -23,6 +23,28 @@ const normalizeIdentity = (identity) => {
   };
 };
 
+const normalizeCurrentStage = (row) => {
+  if (!row) return null;
+
+  return {
+    studentId: row.student_id,
+    currentStageSlug: row.current_stage_slug,
+    progressHint: row.progress_hint || '',
+    metadata: row.metadata || {},
+    updatedAt: row.updated_at || null,
+  };
+};
+
+const normalizeStageHistoryRow = (row) => ({
+  id: row.id,
+  studentId: row.student_id,
+  stageSlug: row.stage_slug,
+  awardedAt: row.awarded_at || null,
+  awardedReason: row.awarded_reason || '',
+  metadata: row.metadata || {},
+  createdAt: row.created_at || null,
+});
+
 export class SupabaseGamificationRepository {
   async findStudentByUserId(userId) {
     const { data, error } = await supabase
@@ -276,6 +298,88 @@ export class SupabaseGamificationRepository {
     }
 
     return data || [];
+  }
+
+  async getAthleteStageCatalog() {
+    const { data, error } = await supabase
+      .from('gamification_athlete_stages_catalog')
+      .select('*')
+      .eq('is_active', true)
+      .order('sort_order', { ascending: true });
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error cargando catalogo de etapas del atleta'), error);
+    }
+
+    return data || [];
+  }
+
+  async getCurrentStage(studentId) {
+    const { data, error } = await supabase
+      .from('gamification_student_current_stage')
+      .select('*')
+      .eq('student_id', studentId)
+      .maybeSingle();
+
+    if (error && !isNoRowsError(error)) {
+      throw new GamificationError(normalizeError(error, 'Error cargando etapa actual del atleta'), error);
+    }
+
+    return normalizeCurrentStage(data || null);
+  }
+
+  async listStageHistory(studentId) {
+    const { data, error } = await supabase
+      .from('gamification_student_stage_history')
+      .select('*')
+      .eq('student_id', studentId)
+      .order('awarded_at', { ascending: false });
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error cargando historial de etapas del atleta'), error);
+    }
+
+    return (data || []).map(normalizeStageHistoryRow);
+  }
+
+  async upsertCurrentStage(payload) {
+    const { data, error } = await supabase
+      .from('gamification_student_current_stage')
+      .upsert({
+        student_id: payload.studentId,
+        current_stage_slug: payload.currentStageSlug,
+        progress_hint: payload.progressHint,
+        metadata: payload.metadata || {},
+        updated_at: payload.updatedAt,
+      })
+      .select('*')
+      .single();
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error guardando etapa actual del atleta'), error);
+    }
+
+    return normalizeCurrentStage(data);
+  }
+
+  async insertStageHistory(payload) {
+    const { data, error } = await supabase
+      .from('gamification_student_stage_history')
+      .insert({
+        student_id: payload.studentId,
+        stage_slug: payload.stageSlug,
+        awarded_at: payload.awardedAt,
+        awarded_reason: payload.awardedReason,
+        metadata: payload.metadata || {},
+      })
+      .select('*')
+      .single();
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error guardando historial de etapas del atleta'), error);
+    }
+
+    return normalizeStageHistoryRow(data);
   }
 
   async listStudentCosmeticItems(studentId) {
@@ -645,6 +749,103 @@ export class SupabaseGamificationRepository {
       const endsOk = !challenge.end_date || challenge.end_date >= today;
       return startsOk && endsOk;
     });
+  }
+
+  async listActiveCampaigns(today) {
+    const { data, error } = await supabase
+      .from('gamification_campaigns_catalog')
+      .select('*')
+      .eq('is_active', true)
+      .order('start_date', { ascending: true });
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error cargando campañas activas'), error);
+    }
+
+    if (!today) {
+      return data || [];
+    }
+
+    return (data || []).filter((campaign) => {
+      const startsOk = !campaign.start_date || campaign.start_date <= today;
+      const endsOk = !campaign.end_date || campaign.end_date >= today;
+      return startsOk && endsOk;
+    });
+  }
+
+  async listActiveHiddenRewards() {
+    const { data, error } = await supabase
+      .from('gamification_hidden_rewards_catalog')
+      .select('*')
+      .eq('is_active', true);
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error cargando recompensas ocultas activas'), error);
+    }
+
+    return data || [];
+  }
+
+  async listStudentHiddenRewards(studentId) {
+    const { data, error } = await supabase
+      .from('gamification_student_hidden_rewards')
+      .select('*')
+      .eq('student_id', studentId)
+      .order('updated_at', { ascending: false });
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error cargando recompensas ocultas del estudiante'), error);
+    }
+
+    return data || [];
+  }
+
+  async replaceHiddenRewards(studentId, rows) {
+    if (!rows || rows.length === 0) {
+      return [];
+    }
+
+    const { data, error } = await supabase
+      .from('gamification_student_hidden_rewards')
+      .upsert(rows, { onConflict: 'student_id,reward_slug' })
+      .select();
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error guardando recompensas ocultas del estudiante'), error);
+    }
+
+    return data || [];
+  }
+
+  async listStudentCampaignProgress(studentId) {
+    const { data, error } = await supabase
+      .from('gamification_student_campaign_progress')
+      .select('*')
+      .eq('student_id', studentId)
+      .order('updated_at', { ascending: false });
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error cargando progreso de campañas'), error);
+    }
+
+    return data || [];
+  }
+
+  async replaceCampaignProgress(studentId, rows) {
+    if (!rows || rows.length === 0) {
+      return [];
+    }
+
+    const { data, error } = await supabase
+      .from('gamification_student_campaign_progress')
+      .upsert(rows, { onConflict: 'student_id,campaign_slug' })
+      .select();
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error guardando progreso de campañas'), error);
+    }
+
+    return data || [];
   }
 
   async listStudentChallengeProgress(studentId) {

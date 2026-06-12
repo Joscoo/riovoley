@@ -112,6 +112,28 @@ const COSMETIC_SLOT_LABELS = {
   effect: 'Efecto',
 };
 
+const COSMETIC_CATEGORY_FILTERS = [
+  { id: 'all', label: 'Todo' },
+  { id: 'frame', label: 'Marcos' },
+  { id: 'background', label: 'Fondos' },
+  { id: 'badge', label: 'Insignias' },
+  { id: 'effect', label: 'Efectos' },
+];
+
+const COSMETIC_PHOTO_FILTERS = [
+  { id: 'all', label: 'Toda la foto' },
+  { id: 'direct', label: 'Sobre la foto' },
+  { id: 'surround', label: 'Alrededor de la foto' },
+];
+
+const COSMETIC_SORT_OPTIONS = [
+  { id: 'featured', label: 'Destacados' },
+  { id: 'rarity-desc', label: 'Rareza: alta a baja' },
+  { id: 'rarity-asc', label: 'Rareza: baja a alta' },
+  { id: 'price-asc', label: 'Precio: menor a mayor' },
+  { id: 'price-desc', label: 'Precio: mayor a menor' },
+];
+
 const PANEL_TABS = [
   { id: 'summary', label: 'Resumen' },
   { id: 'identity', label: 'Identidad' },
@@ -222,6 +244,65 @@ const getCosmeticPhotoNotice = (category, profileImageMode) => {
       return null;
   }
 };
+
+const getCosmeticPhotoImpactTone = (photoFocus) => {
+  if (photoFocus === 'direct') {
+    return 'success';
+  }
+  if (photoFocus === 'surround') {
+    return 'info';
+  }
+  return 'warning';
+};
+
+const compareStoreCosmetics = (left, right, sortOrder) => {
+  switch (sortOrder) {
+    case 'rarity-desc':
+      if (left.rarityRank !== right.rarityRank) return right.rarityRank - left.rarityRank;
+      if (left.priceCoins !== right.priceCoins) return right.priceCoins - left.priceCoins;
+      return left.name.localeCompare(right.name, 'es');
+    case 'rarity-asc':
+      if (left.rarityRank !== right.rarityRank) return left.rarityRank - right.rarityRank;
+      if (left.priceCoins !== right.priceCoins) return left.priceCoins - right.priceCoins;
+      return left.name.localeCompare(right.name, 'es');
+    case 'price-desc':
+      if (left.priceCoins !== right.priceCoins) return right.priceCoins - left.priceCoins;
+      if (left.rarityRank !== right.rarityRank) return right.rarityRank - left.rarityRank;
+      return left.name.localeCompare(right.name, 'es');
+    case 'price-asc':
+      if (left.priceCoins !== right.priceCoins) return left.priceCoins - right.priceCoins;
+      if (left.rarityRank !== right.rarityRank) return right.rarityRank - left.rarityRank;
+      return left.name.localeCompare(right.name, 'es');
+    default:
+      if (left.isOwned !== right.isOwned) return left.isOwned ? -1 : 1;
+      if (left.isEquipped !== right.isEquipped) return left.isEquipped ? -1 : 1;
+      if (left.isLocked !== right.isLocked) return left.isLocked ? 1 : -1;
+      if (left.sortOrder !== right.sortOrder) return left.sortOrder - right.sortOrder;
+      if (left.rarityRank !== right.rarityRank) return right.rarityRank - left.rarityRank;
+      if (left.priceCoins !== right.priceCoins) return left.priceCoins - right.priceCoins;
+      return left.name.localeCompare(right.name, 'es');
+  }
+};
+
+const recalculateStoreAffordability = (items, nextBalance) =>
+  (items || []).map((entry) => ({
+    ...entry,
+    canAfford: Number(nextBalance || 0) >= Number(entry.priceCoins || 0),
+    canPurchase: !entry.isOwned && entry.isUnlocked && Number(nextBalance || 0) >= Number(entry.priceCoins || 0),
+  }));
+
+const patchLeaderboardEquipmentRows = (rows, nextEquipment) =>
+  (rows || []).map((entry) => (
+    entry.isCurrentStudent
+      ? {
+          ...entry,
+          cosmeticEquipment: {
+            ...(entry.cosmeticEquipment || {}),
+            ...nextEquipment,
+          },
+        }
+      : entry
+  ));
 
 const normalizeGamificationError = (error) => {
   const rawMessage = error?.message || '';
@@ -337,8 +418,13 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
   const achievements = gamification?.achievements || [];
   const lockedAchievements = gamification?.lockedAchievements || [];
   const secretAchievements = gamification?.secretAchievements || [];
+  const discoveredHiddenRewards = gamification?.discoveredHiddenRewards || [];
+  const hiddenRewardHints = gamification?.hiddenRewardHints || [];
+  const surpriseChains = gamification?.surpriseChains || [];
   const challenges = gamification?.challenges || [];
+  const campaigns = gamification?.campaigns || [];
   const recommendations = gamification?.recommendations || [];
+  const strategicRoutes = gamification?.strategicRoutes || [];
   const upcomingChallenges = gamification?.upcomingChallenges || [];
   const nudges = gamification?.nudges || [];
   const xpLedger = gamification?.xpLedger || [];
@@ -351,14 +437,22 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
   const [selectedIdentityTab, setSelectedIdentityTab] = useState(() => readStoredValue(userId, 'identity-tab', 'profile'));
   const [selectedGoalsTab, setSelectedGoalsTab] = useState(() => readStoredValue(userId, 'goals-tab', 'xp'));
   const [selectedCompetitionFilter, setSelectedCompetitionFilter] = useState(() => readStoredValue(userId, 'competition-filter', 'all'));
+  const [selectedStoreCategoryFilter, setSelectedStoreCategoryFilter] = useState(() => readStoredValue(userId, 'store-category-filter', 'all'));
+  const [selectedStorePhotoFilter, setSelectedStorePhotoFilter] = useState(() => readStoredValue(userId, 'store-photo-filter', 'all'));
+  const [selectedStoreSort, setSelectedStoreSort] = useState(() => readStoredValue(userId, 'store-sort', 'featured'));
   const [showFullLeaderboard, setShowFullLeaderboard] = useState(false);
   const [sectionPages, setSectionPages] = useState({
     nudges: 1,
     xpLedger: 1,
     currencyLedger: 1,
     recommendations: 1,
+    earnedAchievements: 1,
     secretAchievements: 1,
+    discoveredHiddenRewards: 1,
+    hiddenRewardHints: 1,
+    surpriseChains: 1,
     lockedAchievements: 1,
+    campaigns: 1,
     upcomingChallenges: 1,
     ownedCosmetics: 1,
     storeCosmetics: 1,
@@ -426,8 +520,24 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
   }, [selectedCompetitionFilter, userId]);
 
   useEffect(() => {
+    writeStoredValue(userId, 'store-category-filter', selectedStoreCategoryFilter);
+  }, [selectedStoreCategoryFilter, userId]);
+
+  useEffect(() => {
+    writeStoredValue(userId, 'store-photo-filter', selectedStorePhotoFilter);
+  }, [selectedStorePhotoFilter, userId]);
+
+  useEffect(() => {
+    writeStoredValue(userId, 'store-sort', selectedStoreSort);
+  }, [selectedStoreSort, userId]);
+
+  useEffect(() => {
     writeStoredValue(userId, 'leaderboard', selectedLeaderboardType);
   }, [selectedLeaderboardType, userId]);
+
+  useEffect(() => {
+    setSectionPage('storeCosmetics', 1);
+  }, [selectedStoreCategoryFilter, selectedStorePhotoFilter, selectedStoreSort]);
 
   const setSectionPage = (section, page) => {
     setSectionPages((current) => ({
@@ -523,6 +633,8 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
   const availableTitles = identity?.availableTitles || [];
   const unlockedTitles = availableTitles.filter((title) => title.isUnlocked);
   const currentTitle = identity?.equippedTitle || null;
+  const currentStage = identity?.currentStage || null;
+  const stageHistory = identity?.stageHistory || [];
   const selectedStyleModelOptions = identity?.avatarModelsByStyle?.[selectedAvatarStyle]
     || identity?.avatarModelOptions
     || { available: [], blocked: [] };
@@ -533,15 +645,24 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
     || availableAvatarModels[0]
     || null;
   const ownedCosmetics = storeCosmetics.filter((item) => item.isOwned);
+  const filteredStoreCosmetics = storeCosmetics
+    .filter((item) => (selectedStoreCategoryFilter === 'all' ? true : item.category === selectedStoreCategoryFilter))
+    .filter((item) => (selectedStorePhotoFilter === 'all' ? true : item.photoFocus === selectedStorePhotoFilter))
+    .sort((left, right) => compareStoreCosmetics(left, right, selectedStoreSort));
   const pagedNudges = paginateItems(nudges, sectionPages.nudges);
   const pagedXpLedger = paginateItems(xpLedger, sectionPages.xpLedger);
   const pagedCurrencyLedger = paginateItems(currency.ledger || [], sectionPages.currencyLedger);
   const pagedRecommendations = paginateItems(recommendations, sectionPages.recommendations);
+  const pagedEarnedAchievements = paginateItems(achievements, sectionPages.earnedAchievements);
   const pagedSecretAchievements = paginateItems(secretAchievements, sectionPages.secretAchievements);
+  const pagedDiscoveredHiddenRewards = paginateItems(discoveredHiddenRewards, sectionPages.discoveredHiddenRewards);
+  const pagedHiddenRewardHints = paginateItems(hiddenRewardHints, sectionPages.hiddenRewardHints);
+  const pagedSurpriseChains = paginateItems(surpriseChains, sectionPages.surpriseChains);
   const pagedLockedAchievements = paginateItems(lockedAchievements, sectionPages.lockedAchievements);
+  const pagedCampaigns = paginateItems(campaigns, sectionPages.campaigns);
   const pagedUpcomingChallenges = paginateItems(upcomingChallenges, sectionPages.upcomingChallenges);
   const pagedOwnedCosmetics = paginateItems(ownedCosmetics, sectionPages.ownedCosmetics);
-  const pagedStoreCosmetics = paginateItems(storeCosmetics, sectionPages.storeCosmetics);
+  const pagedStoreCosmetics = paginateItems(filteredStoreCosmetics, sectionPages.storeCosmetics);
   const pagedExpandedLeaderboardRows = paginateItems(activeLeaderboardRows.slice(3), sectionPages.leaderboard);
   const previewItem = previewItemSlug ? storeCosmeticsBySlug[previewItemSlug] || null : null;
   const previewEquipment = previewItem
@@ -593,8 +714,8 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
       {
         icon: <FaStar />,
         label: 'Secretos visibles',
-        value: `${secretAchievementsPreview.length}`,
-        helper: secretAchievementsPreview.length > 0 ? 'Hay pistas abiertas para descubrir.' : 'Aun no hay secretos proyectados.',
+        value: `${secretAchievementsPreview.length + hiddenRewardHints.length}`,
+        helper: secretAchievementsPreview.length + hiddenRewardHints.length > 0 ? 'Hay pistas abiertas para descubrir.' : 'Aun no hay secretos proyectados.',
       },
       {
         icon: <FaLayerGroup />,
@@ -606,21 +727,33 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
         icon: <FaMedal />,
         label: 'Desbloqueados',
         value: `${achievements.length}`,
-        helper: achievements.length > 0 ? `Ultimo: ${achievements[0].title}` : 'Tus logros apareceran aqui.',
+        helper: achievements.length > 0 ? `Ya puedes revisar todos tus logros ganados.` : 'Tus logros apareceran aqui.',
+      },
+      {
+        icon: <FaFlagCheckered />,
+        label: 'Etapa actual',
+        value: `${currentStage?.currentStageName || 'Semilla'}`,
+        helper: currentStage?.progressHint || 'Tu etapa narrativa aparecera aqui.',
       },
     ],
     challenges: [
       {
         icon: <FaRunning />,
-        label: 'Recomendaciones',
-        value: `${recommendations.length}`,
-        helper: recommendations.length > 0 ? 'Ya hay enfoque sugerido para tu siguiente mejora.' : 'Esperando mas contexto de tus medidas.',
+        label: 'Rutas abiertas',
+        value: `${strategicRoutes.length || recommendations.length}`,
+        helper: strategicRoutes.length > 0 ? 'Ya tienes una principal y alternativas medibles.' : recommendations.length > 0 ? 'Ya hay enfoque sugerido para tu siguiente mejora.' : 'Esperando mas contexto de tus medidas.',
       },
       {
         icon: <FaLockOpen />,
         label: 'Siguiente ciclo',
         value: `${upcomingChallenges.length}`,
         helper: upcomingChallenges.length > 0 ? 'Ya tienes preparacion futura visible.' : 'Todavia no se abren pre-retos.',
+      },
+      {
+        icon: <FaFire />,
+        label: 'Campañas vivas',
+        value: `${campaigns.length}`,
+        helper: campaigns.length > 0 ? 'Hay ventanas activas que no conviene dejar pasar.' : 'No hay campañas activas en este momento.',
       },
       {
         icon: <FaFlagCheckered />,
@@ -732,15 +865,60 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
     setSelectedProfileImageMode('avatar');
   };
 
+  const applyGamificationPatch = (patchBuilder) => {
+    if (typeof onIdentityUpdated !== 'function') {
+      return;
+    }
+
+    onIdentityUpdated((current) => {
+      if (!current) {
+        return current;
+      }
+
+      const nextState = typeof patchBuilder === 'function' ? patchBuilder(current) : patchBuilder;
+      return nextState || current;
+    });
+  };
+
   const handlePurchaseCosmetic = async (itemSlug) => {
     if (!userId) return;
     setCosmeticActionSlug(itemSlug);
     setCosmeticMessage(null);
     try {
-      const updatedGamification = await gamificationService.purchaseCosmeticItem({ userId, itemSlug });
-      if (typeof onIdentityUpdated === 'function') {
-        onIdentityUpdated(updatedGamification);
-      }
+      const purchaseResult = await gamificationService.purchaseCosmeticItem({ userId, itemSlug });
+      applyGamificationPatch((current) => {
+        const currentItems = current?.cosmetics?.items || [];
+        const purchasedItem = currentItems.find((entry) => entry.slug === itemSlug);
+        const priceCoins = Number(purchaseResult?.priceCoins || purchasedItem?.priceCoins || 0);
+        const nextBalance = Math.max(Number(current?.currency?.balance || 0) - priceCoins, 0);
+        const nextItems = recalculateStoreAffordability(
+          currentItems.map((entry) => (
+            entry.slug === itemSlug
+              ? {
+                  ...entry,
+                  isOwned: true,
+                  isLocked: false,
+                  canPurchase: false,
+                }
+              : entry
+          )),
+          nextBalance,
+        );
+
+        return {
+          ...current,
+          currency: {
+            ...(current.currency || {}),
+            balance: nextBalance,
+            totalSpent: Number(current?.currency?.totalSpent || 0) + priceCoins,
+          },
+          cosmetics: {
+            ...(current.cosmetics || {}),
+            items: nextItems,
+            inventoryCount: nextItems.filter((entry) => entry.isOwned).length,
+          },
+        };
+      });
       setCosmeticMessage({ tone: 'success', text: 'Item comprado y agregado a tu coleccion.' });
     } catch (error) {
       console.error('Error comprando item cosmetico:', error);
@@ -759,10 +937,52 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
     setCosmeticActionSlug(itemSlug);
     setCosmeticMessage(null);
     try {
-      const updatedGamification = await gamificationService.equipCosmeticItem({ userId, itemSlug });
-      if (typeof onIdentityUpdated === 'function') {
-        onIdentityUpdated(updatedGamification);
-      }
+      const equipResult = await gamificationService.equipCosmeticItem({ userId, itemSlug });
+      applyGamificationPatch((current) => {
+        const currentItems = current?.cosmetics?.items || [];
+        const equippedItem = currentItems.find((entry) => entry.slug === itemSlug);
+        const category = equipResult?.category || equippedItem?.category;
+
+        if (!category) {
+          return current;
+        }
+
+        const nextItems = currentItems.map((entry) => (
+          entry.category === category
+            ? {
+                ...entry,
+                isEquipped: entry.slug === itemSlug,
+              }
+            : entry
+        ));
+        const nextEquipment = {
+          ...(current?.cosmetics?.equipment || {}),
+          [category]: itemSlug,
+        };
+        const nextEquippedItems = {
+          ...(current?.cosmetics?.equippedItems || {}),
+          [category]: equippedItem || null,
+        };
+
+        return {
+          ...current,
+          cosmetics: {
+            ...(current.cosmetics || {}),
+            items: nextItems,
+            equipment: nextEquipment,
+            equippedItems: nextEquippedItems,
+          },
+          leaderboards: (current.leaderboards || []).map((board) => ({
+            ...board,
+            rows: patchLeaderboardEquipmentRows(board.rows, {
+              [`${category}_item_slug`]: itemSlug,
+            }),
+          })),
+          leaderboard: patchLeaderboardEquipmentRows(current.leaderboard || [], {
+            [`${category}_item_slug`]: itemSlug,
+          }),
+        };
+      });
       setCosmeticMessage({ tone: 'success', text: 'Tu equipamiento cosmetico se actualizo.' });
     } catch (error) {
       console.error('Error equipando item cosmetico:', error);
@@ -781,10 +1001,44 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
     setCosmeticActionSlug(category);
     setCosmeticMessage(null);
     try {
-      const updatedGamification = await gamificationService.unequipCosmeticItem({ userId, category });
-      if (typeof onIdentityUpdated === 'function') {
-        onIdentityUpdated(updatedGamification);
-      }
+      await gamificationService.unequipCosmeticItem({ userId, category });
+      applyGamificationPatch((current) => {
+        const nextItems = (current?.cosmetics?.items || []).map((entry) => (
+          entry.category === category
+            ? {
+                ...entry,
+                isEquipped: false,
+              }
+            : entry
+        ));
+        const nextEquipment = {
+          ...(current?.cosmetics?.equipment || {}),
+          [category]: null,
+        };
+        const nextEquippedItems = {
+          ...(current?.cosmetics?.equippedItems || {}),
+          [category]: null,
+        };
+
+        return {
+          ...current,
+          cosmetics: {
+            ...(current.cosmetics || {}),
+            items: nextItems,
+            equipment: nextEquipment,
+            equippedItems: nextEquippedItems,
+          },
+          leaderboards: (current.leaderboards || []).map((board) => ({
+            ...board,
+            rows: patchLeaderboardEquipmentRows(board.rows, {
+              [`${category}_item_slug`]: null,
+            }),
+          })),
+          leaderboard: patchLeaderboardEquipmentRows(current.leaderboard || [], {
+            [`${category}_item_slug`]: null,
+          }),
+        };
+      });
       setPreviewItemSlug((current) => {
         const currentPreview = current ? storeCosmeticsBySlug[current] : null;
         return currentPreview?.category === category ? '' : current;
@@ -933,6 +1187,50 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
           />
         </div>
       </div>
+
+      {currentStage ? (
+        <Card className="mt-4 border-white/15 bg-black/25" padding="sm">
+          <div className="grid gap-4 desktop:grid-cols-[0.9fr_1.1fr]">
+            <div className="rounded-3xl border border-rv-gold/25 bg-[linear-gradient(135deg,_rgba(245,158,11,0.14),_rgba(15,23,42,0.2)_55%,_rgba(34,197,94,0.08))] p-4">
+              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-amber-100">Etapa del atleta</p>
+              <p className="mt-3 text-3xl font-black text-white">{currentStage.currentStageName || currentStage.currentStageSlug}</p>
+              {currentStage.currentStageDescription ? (
+                <p className="mt-2 text-sm text-slate-200">{currentStage.currentStageDescription}</p>
+              ) : null}
+              <p className="mt-3 text-sm font-semibold text-rv-gold">{currentStage.progressHint}</p>
+            </div>
+            <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
+              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">Desglose de evidencia</p>
+              <div className="mt-3 grid gap-3 mobile:grid-cols-2">
+                <MiniInsight
+                  icon={<FaChartLine />}
+                  label="Tests"
+                  value={`${currentStage.metadata?.tests?.current || 0}`}
+                  helper={`Meta: ${currentStage.metadata?.tests?.required || 0}`}
+                />
+                <MiniInsight
+                  icon={<FaCalendarCheck />}
+                  label="Asistencias"
+                  value={`${currentStage.metadata?.attendances?.current || 0}`}
+                  helper={`Meta: ${currentStage.metadata?.attendances?.required || 0}`}
+                />
+                <MiniInsight
+                  icon={<FaCoins />}
+                  label="Pagos"
+                  value={`${currentStage.metadata?.payments?.current || 0}`}
+                  helper={`Meta: ${currentStage.metadata?.payments?.required || 0}`}
+                />
+                <MiniInsight
+                  icon={<FaMedal />}
+                  label="Logros"
+                  value={`${currentStage.metadata?.achievements?.current || 0}`}
+                  helper={`Meta: ${currentStage.metadata?.achievements?.required || 0}`}
+                />
+              </div>
+            </div>
+          </div>
+        </Card>
+      ) : null}
 
       <div className="mt-4 grid gap-4 desktop:grid-cols-[0.95fr_1.05fr]">
         <Card className="border-white/15 bg-black/25" padding="sm">
@@ -1416,16 +1714,16 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
         </div>
       </Card>
 
-      <Card className={`mt-4 border-white/15 bg-black/25 ${selectedIdentityTab === 'collection' || selectedIdentityTab === 'store' ? '' : 'hidden'}`} padding="sm">
+      <Card className={`mt-4 border-white/15 bg-black/25 ${selectedIdentityTab === 'collection' ? '' : 'hidden'}`} padding="sm">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h3 className="inline-flex items-center gap-2 text-base font-extrabold text-white mobile:text-lg">
             <FaStar className="text-rv-gold" />
-            Tienda y coleccion
+            Tu coleccion
           </h3>
           <StatusBadge tone="info">{cosmetics.inventoryCount || 0} items en tu coleccion</StatusBadge>
         </div>
 
-        <div className="mt-3 grid gap-4 desktop:grid-cols-[0.95fr_1.05fr]">
+        <div className="mt-3">
           <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
             <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">Coleccion equipada</p>
             <div className="mt-3 grid gap-3 mobile:grid-cols-2">
@@ -1545,10 +1843,127 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
               />
             </div>
           </div>
+        </div>
+      </Card>
 
-          <div className="rounded-3xl border border-cyan-300/20 bg-[linear-gradient(135deg,_rgba(34,211,238,0.12),_rgba(15,23,42,0.18)_55%,_rgba(245,158,11,0.08))] p-4">
-            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-100">Catalogo cosmetico</p>
-            <div className="mt-3 grid gap-3 mobile:grid-cols-2">
+      <Card className={`mt-4 border-white/15 bg-black/25 ${selectedIdentityTab === 'store' ? '' : 'hidden'}`} padding="sm">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h3 className="inline-flex items-center gap-2 text-base font-extrabold text-white mobile:text-lg">
+            <FaCoins className="text-rv-gold" />
+            Tienda cosmetica
+          </h3>
+          <StatusBadge tone="info">{currency.balance || 0} monedas disponibles</StatusBadge>
+        </div>
+
+        <div className="mt-4 grid gap-4 desktop:grid-cols-[320px,minmax(0,1fr)] desktop:items-start">
+          <div className="space-y-4 desktop:sticky desktop:top-24">
+            <div className="rounded-3xl border border-cyan-300/20 bg-[linear-gradient(135deg,_rgba(34,211,238,0.16),_rgba(15,23,42,0.22)_55%,_rgba(245,158,11,0.08))] p-4">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-100">Preview siempre visible</p>
+                  <p className="mt-1 text-sm text-slate-300">
+                    {previewItem ? `Estas viendo ${previewItem.name} aplicado a tu perfil.` : 'Asi se vera tu perfil con lo que ya tienes equipado.'}
+                  </p>
+                </div>
+                {previewItem ? (
+                  <Button variant="secondary" size="sm" onClick={() => setPreviewItemSlug('')}>
+                    Quitar preview
+                  </Button>
+                ) : null}
+              </div>
+
+              <div className="mt-4 flex justify-center">
+                <IdentityPortrait
+                  imageUrl={previewProfileImageUrl}
+                  displayName={identity?.displayName || 'estudiante'}
+                  equipment={previewEquipment}
+                  equippedItems={previewEquippedItems}
+                  size="lg"
+                  showBadgeLabel
+                />
+              </div>
+
+              <div className="mt-4 grid gap-2">
+                <div className="rounded-2xl border border-white/10 bg-black/20 px-3 py-2">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">Modo visual</p>
+                  <p className="mt-1 text-sm font-semibold text-white">
+                    {selectedProfileImageMode === 'photo' ? 'Foto de perfil activa' : 'Avatar como imagen principal'}
+                  </p>
+                </div>
+                {previewItem ? (
+                  <div className="rounded-2xl border border-cyan-300/20 bg-cyan-950/15 px-3 py-2">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-cyan-100">Impacto del item</p>
+                    <p className="mt-1 text-sm font-semibold text-white">{previewItem.photoFocusLabel}</p>
+                    <p className="mt-1 text-xs text-slate-300">
+                      {getCosmeticPhotoNotice(previewItem.category, selectedProfileImageMode) || 'Tambien se reflejara en tu presencia competitiva y rankings.'}
+                    </p>
+                  </div>
+                ) : null}
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <div className="rounded-3xl border border-cyan-300/20 bg-[linear-gradient(135deg,_rgba(34,211,238,0.12),_rgba(15,23,42,0.18)_55%,_rgba(245,158,11,0.08))] p-4">
+              <div className="flex flex-col gap-4">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-100">Catalogo cosmetico</p>
+                    <p className="mt-1 text-sm text-slate-300">
+                      Mas piezas visuales pensadas para que tu foto de perfil se vea mejor en el panel y en rankings.
+                    </p>
+                  </div>
+                  <StatusBadge tone="info">{filteredStoreCosmetics.length} items visibles</StatusBadge>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {COSMETIC_CATEGORY_FILTERS.map((filter) => (
+                    <button
+                      key={filter.id}
+                      type="button"
+                      onClick={() => setSelectedStoreCategoryFilter(filter.id)}
+                      className={`rounded-full border px-3 py-2 text-xs font-bold uppercase tracking-[0.14em] transition ${
+                        selectedStoreCategoryFilter === filter.id
+                          ? 'border-rv-gold/60 bg-rv-gold/15 text-white shadow-[0_0_18px_rgba(245,158,11,0.14)]'
+                          : 'border-white/10 bg-white/5 text-slate-300 hover:border-white/20 hover:text-white'
+                      }`}
+                    >
+                      {filter.label}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="grid gap-3 mobile:grid-cols-2">
+                  <label className="space-y-2">
+                    <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">Impacto en foto</span>
+                    <select
+                      value={selectedStorePhotoFilter}
+                      onChange={(event) => setSelectedStorePhotoFilter(event.target.value)}
+                      className="w-full rounded-2xl border border-white/10 bg-slate-950/85 px-3 py-3 text-sm text-white outline-none transition focus:border-cyan-300/45"
+                    >
+                      {COSMETIC_PHOTO_FILTERS.map((option) => (
+                        <option key={option.id} value={option.id}>{option.label}</option>
+                      ))}
+                    </select>
+                  </label>
+
+                  <label className="space-y-2">
+                    <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">Ordenar por</span>
+                    <select
+                      value={selectedStoreSort}
+                      onChange={(event) => setSelectedStoreSort(event.target.value)}
+                      className="w-full rounded-2xl border border-white/10 bg-slate-950/85 px-3 py-3 text-sm text-white outline-none transition focus:border-cyan-300/45"
+                    >
+                      {COSMETIC_SORT_OPTIONS.map((option) => (
+                        <option key={option.id} value={option.id}>{option.label}</option>
+                      ))}
+                    </select>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid gap-3 mobile:grid-cols-2">
               {pagedStoreCosmetics.items.map((item) => (
                 <div
                   key={item.slug}
@@ -1561,20 +1976,25 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                   <div className="flex flex-wrap items-start justify-between gap-2">
                     <div>
                       <p className="text-sm font-bold text-white">{item.name}</p>
-                      <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.14em] text-rv-gold">{item.rarity}</p>
+                      <div className="mt-1 flex flex-wrap items-center gap-2">
+                        <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-rv-gold">{item.rarity}</p>
+                        <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
+                          {COSMETIC_SLOT_LABELS[item.category] || item.category}
+                        </span>
+                      </div>
                     </div>
                     <StatusBadge tone={item.isOwned ? 'success' : item.isLocked ? 'warning' : item.canAfford ? 'info' : 'warning'}>
                       {item.isOwned ? 'Tuyo' : item.isLocked ? 'Bloqueado' : `${item.priceCoins} monedas`}
                     </StatusBadge>
                   </div>
                   <p className="mt-2 text-xs text-slate-200">{item.description}</p>
-                  <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">{COSMETIC_SLOT_LABELS[item.category] || item.category}</p>
-                  <div className="mt-2 flex flex-wrap items-center gap-2">
+                  <div className="mt-3 flex flex-wrap items-center gap-2">
                     <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-cyan-100">
                       {item.unlockLabel}
                     </span>
-                    <span className="text-[11px] text-slate-300">{item.unlockHint}</span>
+                    <StatusBadge tone={getCosmeticPhotoImpactTone(item.photoFocus)}>{item.photoFocusLabel}</StatusBadge>
                   </div>
+                  <p className="mt-2 text-[11px] text-slate-300">{item.unlockHint}</p>
                   {getCosmeticPhotoNotice(item.category, selectedProfileImageMode) ? (
                     <p className="mt-2 text-[11px] font-semibold text-cyan-100">
                       {getCosmeticPhotoNotice(item.category, selectedProfileImageMode)}
@@ -1582,7 +2002,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                   ) : null}
                   <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
                     <Button variant="secondary" size="sm" onClick={() => setPreviewItemSlug((current) => current === item.slug ? '' : item.slug)}>
-                      Previsualizar
+                      {previewItemSlug === item.slug ? 'Ocultar preview' : 'Previsualizar'}
                     </Button>
                     {item.isOwned ? (
                       item.isEquipped ? (
@@ -1621,6 +2041,13 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                 </div>
               ))}
             </div>
+
+            {pagedStoreCosmetics.items.length === 0 ? (
+              <div className="rounded-2xl border border-dashed border-white/10 bg-black/15 px-4 py-5 text-sm text-slate-300">
+                No hay cosmeticos que coincidan con ese filtro. Cambia el tipo, el impacto visual o el orden para ver mas opciones.
+              </div>
+            ) : null}
+
             <PaginationControls
               page={pagedStoreCosmetics.page}
               totalPages={pagedStoreCosmetics.totalPages}
@@ -1733,10 +2160,102 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
 
       <Card className={`mt-4 border-white/15 bg-black/25 ${selectedGoalsTab === 'challenges' ? '' : 'hidden'}`} padding="sm">
         <h3 className="inline-flex items-center gap-2 text-base font-extrabold text-white mobile:text-lg">
-          <FaRunning className="text-rv-gold" />
-          Recomendaciones para tu siguiente marca
+          <FaFire className="text-rv-gold" />
+          Campañas activas
         </h3>
-        {recommendations.length > 0 ? (
+        {campaigns.length > 0 ? (
+          <div className="mt-3 grid gap-3 desktop:grid-cols-2">
+            {pagedCampaigns.items.map((campaign) => (
+              <div key={campaign.slug} className="rounded-3xl border border-orange-300/20 bg-[linear-gradient(135deg,_rgba(249,115,22,0.10),_rgba(15,23,42,0.18)_55%,_rgba(234,179,8,0.08))] p-4">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-orange-100">
+                      {campaign.focusArea} · {campaign.windowType === 'weekly' ? 'Semanal' : campaign.windowType === 'monthly' ? 'Mensual' : 'Flash'}
+                    </p>
+                    <p className="mt-1 text-lg font-black text-white">{campaign.title}</p>
+                  </div>
+                  <StatusBadge tone={campaign.isCompleted ? 'success' : 'warning'}>
+                    {campaign.isCompleted ? 'Completada' : `${campaign.daysRemaining ?? 0} dias`}
+                  </StatusBadge>
+                </div>
+                <p className="mt-2 text-sm text-slate-200">{campaign.description}</p>
+                <div className="mt-3 h-2 overflow-hidden rounded-full bg-white/10">
+                  <div className="h-full rounded-full bg-[linear-gradient(90deg,_#f59e0b,_#fb7185)]" style={{ width: `${campaign.progressPct || 0}%` }} />
+                </div>
+                <div className="mt-2 flex flex-wrap items-center justify-between gap-2 text-xs font-semibold text-slate-300">
+                  <span>{campaign.progressValue} / {campaign.targetValue}</span>
+                  <span>{campaign.rewardLabel}</span>
+                </div>
+                {campaign.hint ? (
+                  <p className="mt-3 text-sm text-orange-100">{campaign.hint}</p>
+                ) : null}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="mt-3 text-sm text-slate-300">Cuando activemos una ventana temporal, la veras aqui con su progreso y recompensa exacta.</p>
+        )}
+        <PaginationControls
+          page={pagedCampaigns.page}
+          totalPages={pagedCampaigns.totalPages}
+          onChange={(page) => setSectionPage('campaigns', page)}
+        />
+      </Card>
+
+      <Card className={`mt-4 border-white/15 bg-black/25 ${selectedGoalsTab === 'challenges' ? '' : 'hidden'}`} padding="sm">
+        <h3 className="inline-flex items-center gap-2 text-base font-extrabold text-white mobile:text-lg">
+          <FaRunning className="text-rv-gold" />
+          Rutas estrategicas para tu siguiente marca
+        </h3>
+        {strategicRoutes.length > 0 ? (
+          <div className="mt-3 space-y-3">
+            {strategicRoutes.map((route) => (
+              <div
+                key={route.id}
+                className={`rounded-3xl border p-4 ${route.priority === 'primary'
+                  ? 'border-rv-gold/35 bg-[linear-gradient(135deg,_rgba(245,158,11,0.14),_rgba(15,23,42,0.18)_55%,_rgba(34,197,94,0.08))]'
+                  : 'border-white/10 bg-black/20'}`}
+              >
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <p className={`text-[11px] font-bold uppercase tracking-[0.18em] ${route.priority === 'primary' ? 'text-amber-100' : 'text-slate-300'}`}>
+                      {route.priority === 'primary' ? 'Ruta principal' : 'Ruta alternativa'} · {route.focus}
+                    </p>
+                    <p className="mt-1 text-lg font-black text-white">{route.title}</p>
+                  </div>
+                  <StatusBadge tone={route.priority === 'primary' ? 'warning' : 'info'}>
+                    {route.progressLabel}
+                  </StatusBadge>
+                </div>
+                <p className="mt-2 text-sm text-slate-100">{route.actionLabel}</p>
+                <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">Impacto deportivo</p>
+                <p className="mt-1 text-sm text-slate-300">{route.sportsBenefit}</p>
+                {route.immediateRewards?.length > 0 ? (
+                  <div className="mt-3">
+                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-200">Ganas ahora</p>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {route.immediateRewards.map((reward) => (
+                        <StatusBadge key={`${route.id}-${reward}`} tone="success">{reward}</StatusBadge>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+                {route.chainedRewards?.length > 0 ? (
+                  <div className="mt-3">
+                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan-200">Cadena corta</p>
+                    <div className="mt-2 grid gap-2 mobile:grid-cols-2">
+                      {route.chainedRewards.map((reward) => (
+                        <div key={`${route.id}-${reward}`} className="rounded-2xl border border-white/10 bg-black/20 px-3 py-2 text-sm text-slate-200">
+                          {reward}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            ))}
+          </div>
+        ) : recommendations.length > 0 ? (
           <div className="mt-3 grid gap-3 desktop:grid-cols-2">
             {pagedRecommendations.items.map((recommendation) => (
               <div key={recommendation.id} className="rounded-2xl border border-white/10 bg-black/20 p-4">
@@ -1751,12 +2270,186 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
             ))}
           </div>
         ) : (
-          <p className="mt-3 text-sm text-slate-300">Cuando tengamos suficiente contexto de tus medidas, aqui veras recomendaciones mas finas.</p>
+          <p className="mt-3 text-sm text-slate-300">Cuando tengamos suficiente contexto de tus medidas y competencia, aqui veras rutas mas finas y medibles.</p>
+        )}
+        {strategicRoutes.length === 0 ? (
+          <PaginationControls
+            page={pagedRecommendations.page}
+            totalPages={pagedRecommendations.totalPages}
+            onChange={(page) => setSectionPage('recommendations', page)}
+          />
+        ) : null}
+      </Card>
+
+      <Card className={`mt-4 border-white/15 bg-black/25 ${selectedGoalsTab === 'achievements' ? '' : 'hidden'}`} padding="sm">
+        {stageHistory.length > 0 ? (
+          <div className="mb-4 rounded-3xl border border-cyan-300/20 bg-cyan-950/15 p-4">
+            <h3 className="inline-flex items-center gap-2 text-base font-extrabold text-white mobile:text-lg">
+              <FaTrophy className="text-rv-gold" />
+              Historial de etapas
+            </h3>
+            <div className="mt-3 grid gap-3 mobile:grid-cols-2 desktop:grid-cols-3">
+              {stageHistory.slice(0, 6).map((entry) => (
+                <div key={`${entry.stageSlug}-${entry.awardedAt}`} className="rounded-2xl border border-white/10 bg-black/20 p-3">
+                  <p className="text-sm font-black text-white">{entry.stageName || entry.stageSlug}</p>
+                  <p className="mt-1 text-xs text-slate-300">{entry.awardedReason}</p>
+                  <p className="mt-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
+                    {formatDate(entry.awardedAt)}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : null}
+        <h3 className="inline-flex items-center gap-2 text-base font-extrabold text-white mobile:text-lg">
+          <FaMedal className="text-rv-gold" />
+          Logros obtenidos
+        </h3>
+        {achievements.length > 0 ? (
+          <div className="mt-3 grid gap-3 mobile:grid-cols-2 desktop:grid-cols-3">
+            {pagedEarnedAchievements.items.map((achievement) => (
+              <div
+                key={`earned-${achievement.achievementSlug}`}
+                className="rounded-2xl border border-emerald-300/20 bg-emerald-950/10 p-4"
+              >
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-emerald-200">
+                      Desbloqueado
+                    </p>
+                    <p className="mt-1 text-lg font-black text-white">{achievement.title}</p>
+                  </div>
+                  <StatusBadge tone="success">+{achievement.xpReward} XP</StatusBadge>
+                </div>
+                <p className="mt-2 text-sm text-slate-200">{achievement.description}</p>
+                <p className="mt-3 text-xs font-semibold text-emerald-100">
+                  Ganado el {formatDate(achievement.earnedAt)}
+                </p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="mt-3 text-sm text-slate-300">Aun no has desbloqueado logros. Aqui veras tu historial completo cuando empieces a ganarlos.</p>
         )}
         <PaginationControls
-          page={pagedRecommendations.page}
-          totalPages={pagedRecommendations.totalPages}
-          onChange={(page) => setSectionPage('recommendations', page)}
+          page={pagedEarnedAchievements.page}
+          totalPages={pagedEarnedAchievements.totalPages}
+          onChange={(page) => setSectionPage('earnedAchievements', page)}
+        />
+      </Card>
+
+      <Card className={`mt-4 border-white/15 bg-black/25 ${selectedGoalsTab === 'achievements' ? '' : 'hidden'}`} padding="sm">
+        <h3 className="inline-flex items-center gap-2 text-base font-extrabold text-white mobile:text-lg">
+          <FaTrophy className="text-rv-gold" />
+          Descubrimientos sorpresa
+        </h3>
+        {discoveredHiddenRewards.length > 0 ? (
+          <div className="mt-3 grid gap-3 mobile:grid-cols-2 desktop:grid-cols-3">
+            {pagedDiscoveredHiddenRewards.items.map((reward) => (
+              <div key={reward.slug} className="rounded-2xl border border-cyan-300/20 bg-cyan-950/10 p-4">
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-200">Descubierto</p>
+                    <p className="mt-1 text-lg font-black text-white">{reward.title}</p>
+                  </div>
+                  <StatusBadge tone="success">{reward.rewardLabel}</StatusBadge>
+                </div>
+                <p className="mt-2 text-sm text-slate-200">{reward.description}</p>
+                <p className="mt-3 text-xs font-semibold text-cyan-100">Descubierto el {formatDate(reward.discoveredAt)}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="mt-3 text-sm text-slate-300">Aun no has descubierto recompensas sorpresa persistidas.</p>
+        )}
+        <PaginationControls
+          page={pagedDiscoveredHiddenRewards.page}
+          totalPages={pagedDiscoveredHiddenRewards.totalPages}
+          onChange={(page) => setSectionPage('discoveredHiddenRewards', page)}
+        />
+      </Card>
+
+      <Card className={`mt-4 border-white/15 bg-black/25 ${selectedGoalsTab === 'achievements' ? '' : 'hidden'}`} padding="sm">
+        <h3 className="inline-flex items-center gap-2 text-base font-extrabold text-white mobile:text-lg">
+          <FaRunning className="text-rv-gold" />
+          Cadenas sorpresa
+        </h3>
+        {surpriseChains.length > 0 ? (
+          <div className="mt-3 grid gap-3 desktop:grid-cols-2">
+            {pagedSurpriseChains.items.map((chain) => (
+              <div key={chain.id} className="rounded-2xl border border-violet-300/20 bg-[linear-gradient(135deg,_rgba(139,92,246,0.12),_rgba(15,23,42,0.2)_55%,_rgba(34,211,238,0.08))] p-4">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-violet-200">
+                      {chain.status === 'revealed' ? 'Revelada' : chain.status === 'active' ? 'Activa' : 'Calentando'}
+                    </p>
+                    <p className="mt-1 text-lg font-black text-white">{chain.title}</p>
+                  </div>
+                  <StatusBadge tone={chain.status === 'revealed' ? 'success' : 'info'}>
+                    {chain.progressLabel}
+                  </StatusBadge>
+                </div>
+                <p className="mt-2 text-sm text-slate-200">{chain.teaser}</p>
+                <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">Paso actual</p>
+                <p className="mt-1 text-sm text-slate-100">{chain.currentStep}</p>
+                <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-cyan-200">Siguiente giro</p>
+                <p className="mt-1 text-sm text-cyan-100">{chain.nextStep}</p>
+                <div className="mt-3 inline-flex rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs font-semibold text-slate-200">
+                  {chain.rewardPreview}
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="mt-3 text-sm text-slate-300">Todavia no hay cadenas sorpresa activas sobre tus descubrimientos actuales.</p>
+        )}
+        <PaginationControls
+          page={pagedSurpriseChains.page}
+          totalPages={pagedSurpriseChains.totalPages}
+          onChange={(page) => setSectionPage('surpriseChains', page)}
+        />
+      </Card>
+
+      <Card className={`mt-4 border-white/15 bg-black/25 ${selectedGoalsTab === 'achievements' ? '' : 'hidden'}`} padding="sm">
+        <h3 className="inline-flex items-center gap-2 text-base font-extrabold text-white mobile:text-lg">
+          <FaStar className="text-rv-gold" />
+          Pistas ocultas persistidas
+        </h3>
+        {hiddenRewardHints.length > 0 ? (
+          <div className="mt-3 grid gap-3 mobile:grid-cols-2 desktop:grid-cols-3">
+            {pagedHiddenRewardHints.items.map((reward) => (
+              <div key={reward.slug} className="rounded-2xl border border-dashed border-sky-300/30 bg-sky-500/5 p-4">
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-sky-200">Pista sorpresa</p>
+                    <p className="mt-1 text-lg font-black text-white">???</p>
+                  </div>
+                  <StatusBadge tone="warning">{reward.rewardLabel}</StatusBadge>
+                </div>
+                <p className="mt-2 text-sm text-slate-200">{reward.teaser}</p>
+                <p className="mt-3 text-xs font-semibold text-sky-100">{reward.hint}</p>
+                <div className="mt-3">
+                  <div className="mb-1 flex items-center justify-between gap-2 text-[11px] font-semibold text-slate-300">
+                    <span>Progreso oculto</span>
+                    <span>{reward.progressValue}/{reward.targetValue}</span>
+                  </div>
+                  <div className="h-2 overflow-hidden rounded-full bg-white/10">
+                    <div
+                      className="h-full rounded-full bg-gradient-to-r from-sky-400 to-cyan-500 transition-all duration-500"
+                      style={{ width: `${Math.max(8, reward.progressPct)}%` }}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="mt-3 text-sm text-slate-300">No hay pistas ocultas adicionales activas en este momento.</p>
+        )}
+        <PaginationControls
+          page={pagedHiddenRewardHints.page}
+          totalPages={pagedHiddenRewardHints.totalPages}
+          onChange={(page) => setSectionPage('hiddenRewardHints', page)}
         />
       </Card>
 
@@ -2229,6 +2922,14 @@ StudentGamificationPanel.propTypes = {
       profilePhotoUrl: PropTypes.string,
       profileImageUrl: PropTypes.string,
       avatarUrl: PropTypes.string,
+      currentStage: PropTypes.shape({
+        currentStageSlug: PropTypes.string,
+        currentStageName: PropTypes.string,
+        currentStageDescription: PropTypes.string,
+        progressHint: PropTypes.string,
+        metadata: PropTypes.object,
+      }),
+      stageHistory: PropTypes.array,
       equippedTitle: PropTypes.shape({
         slug: PropTypes.string,
         name: PropTypes.string,
@@ -2250,7 +2951,12 @@ StudentGamificationPanel.propTypes = {
     achievements: PropTypes.array,
     lockedAchievements: PropTypes.array,
     secretAchievements: PropTypes.array,
+    discoveredHiddenRewards: PropTypes.array,
+    hiddenRewardHints: PropTypes.array,
+    surpriseChains: PropTypes.array,
     challenges: PropTypes.array,
+    campaigns: PropTypes.array,
+    strategicRoutes: PropTypes.array,
     recommendations: PropTypes.array,
     upcomingChallenges: PropTypes.array,
     nudges: PropTypes.array,

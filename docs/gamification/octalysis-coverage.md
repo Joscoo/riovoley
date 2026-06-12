@@ -8,13 +8,14 @@ Este documento deja trazabilidad de como se estan cubriendo los 8 core drivers e
 - Implementacion:
   - Ruta visual de progreso del estudiante.
   - Logro `Primer paso`.
-  - Titulos llamativos y hitos narrativos previstos para la siguiente expansion.
+  - Titulos llamativos y hitos narrativos visibles.
+  - Etapa del atleta persistida con snapshot actual e historial de ascensos.
 - Justificacion:
   - Da sentido al inicio del recorrido y presenta el avance como parte de una historia deportiva.
 - Evidencia:
   - [StudentGamificationPanel.js](D:/Riovoley/riovoley/src/features/gamification/presentation/components/StudentGamificationPanel.js:1)
   - [createGamificationUseCases.js](D:/Riovoley/riovoley/src/features/gamification/application/useCases/createGamificationUseCases.js:1)
-  - [2026-06-07-gamification-expansion-design.md](D:/Riovoley/riovoley/docs/superpowers/specs/2026-06-07-gamification-expansion-design.md:1)
+  - [gamification_phase22_athlete_stages_2026_06_11.sql](D:/Riovoley/riovoley/database/gamification_phase22_athlete_stages_2026_06_11.sql:1)
 
 ### 2. Development & Accomplishment
 - Implementacion:
@@ -22,6 +23,7 @@ Este documento deja trazabilidad de como se estan cubriendo los 8 core drivers e
   - Ledger detallado de XP definido para explicar cada fuente del progreso.
   - Catalogo ampliado de logros permanentes y records por medicion.
   - Extracto de XP visible implementado dentro del panel del estudiante.
+  - Retos competitivos y etapas del atleta reforzando progresion acumulativa.
 - Justificacion:
   - El estudiante ve progreso cuantificable y metas concretas de mejora.
 - Evidencia:
@@ -35,6 +37,8 @@ Este documento deja trazabilidad de como se estan cubriendo los 8 core drivers e
   - Insights de salto, fuerza, tests y actividad del mes.
   - Recomendaciones derivadas de las medidas mas recientes del estudiante.
   - Avatar configurable, titulos elegibles y multiples rutas de progreso planteadas para la siguiente fase.
+  - Desglose persistido de evidencia para explicar la etapa narrativa actual.
+  - Rutas estrategicas con accion exacta, progreso medible, recompensa inmediata y cadena corta de impacto posterior.
 - Justificacion:
   - El sistema devuelve feedback inmediato y permite interpretar donde esta mejorando.
 - Evidencia:
@@ -67,6 +71,7 @@ Este documento deja trazabilidad de como se estan cubriendo los 8 core drivers e
   - Logros y retos conectados a asistencia y constancia.
   - Apodos moderados y titulos visibles ya implementados para reforzar identidad social.
   - Avatar visible ya implementado en panel y rankings para reforzar reconocimiento inmediato.
+  - Retos competitivos conectados a top 3 general, asistencia, salto y pagos.
 - Justificacion:
   - Se incorpora comparacion social directa y permite competir desde fortalezas distintas.
 - Evidencia:
@@ -77,9 +82,11 @@ Este documento deja trazabilidad de como se estan cubriendo los 8 core drivers e
 ### 6. Scarcity & Impatience
 - Implementacion:
   - Retos mensuales de test y asistencia.
+  - Retos mensuales ampliados como `monthly_double_check_in`, `attendance_monthly_elite` y `monthly_combo_ready`.
   - Logros por sostener pagos durante varios meses.
   - Logros de ventana temporal mensual.
   - Vista previa de retos del siguiente ciclo para preparacion anticipada.
+  - Campañas temporales persistidas con progreso propio, recompensa visible y dias restantes.
   - Pre-retos preparatorios y campañas especiales definidos para mantener urgencia futura.
 - Justificacion:
   - Empuja accion dentro de una ventana limitada sin necesidad de castigo.
@@ -90,6 +97,8 @@ Este documento deja trazabilidad de como se estan cubriendo los 8 core drivers e
 ### 7. Unpredictability & Curiosity
 - Implementacion:
   - Logro oculto `Logro misterioso` hasta que se cumpla una combinacion de asistencia y progreso fisico.
+  - Logros secretos separados visualmente de los bloqueados visibles y mostrados con pista.
+  - Recompensas ocultas persistidas con descubrimiento real y pistas separadas del sistema de logros.
   - Titulos secretos, cosmeticos raros y recompensas sorpresa definidos para la siguiente expansion.
 - Justificacion:
   - Mantiene curiosidad y exploracion sin revelar todas las reglas desde el inicio.
@@ -168,6 +177,9 @@ Este documento deja trazabilidad de como se estan cubriendo los 8 core drivers e
 - modelos de avatar visibles y bloqueados por estilo
 - logros secretos con pista y logros bloqueados con progreso
 - renderer de portraito que hace visibles marcos, fondos, insignias y efectos incluso para slugs nuevos del catalogo
+- etapas del atleta persistidas con snapshot actual e historial de ascensos
+- retos competitivos derivados desde leaderboards reales
+- reglas de desbloqueo cosmetico por nivel, racha, logros y prestigio
 
 ### Evidencia documental
 - [2026-06-07-gamification-expansion-design.md](D:/Riovoley/riovoley/docs/superpowers/specs/2026-06-07-gamification-expansion-design.md:1)

@@ -137,6 +137,34 @@ create or replace view public.gamification_student_cosmetic_equipment
 with (security_invoker = true) as
 select * from gamification.student_cosmetic_equipment;
 
+create or replace view public.gamification_athlete_stages_catalog
+with (security_invoker = true) as
+select * from gamification.athlete_stages_catalog;
+
+create or replace view public.gamification_student_current_stage
+with (security_invoker = true) as
+select * from gamification.student_current_stage;
+
+create or replace view public.gamification_student_stage_history
+with (security_invoker = true) as
+select * from gamification.student_stage_history;
+
+create or replace view public.gamification_campaigns_catalog
+with (security_invoker = true) as
+select * from gamification.campaigns_catalog;
+
+create or replace view public.gamification_student_campaign_progress
+with (security_invoker = true) as
+select * from gamification.student_campaign_progress;
+
+create or replace view public.gamification_hidden_rewards_catalog
+with (security_invoker = true) as
+select * from gamification.hidden_rewards_catalog;
+
+create or replace view public.gamification_student_hidden_rewards
+with (security_invoker = true) as
+select * from gamification.student_hidden_rewards;
+
 create or replace view public.gamification_leaderboard_public
 with (security_invoker = true) as
 select
@@ -198,6 +226,13 @@ grant select, insert, update, delete on
   public.gamification_cosmetic_items_catalog,
   public.gamification_student_cosmetic_items,
   public.gamification_student_cosmetic_equipment,
+  public.gamification_athlete_stages_catalog,
+  public.gamification_student_current_stage,
+  public.gamification_student_stage_history,
+  public.gamification_campaigns_catalog,
+  public.gamification_student_campaign_progress,
+  public.gamification_hidden_rewards_catalog,
+  public.gamification_student_hidden_rewards,
   public.gamification_leaderboard_public,
   public.training_categories,
   public.announcements,
@@ -227,6 +262,13 @@ grant select on
   public.gamification_cosmetic_items_catalog,
   public.gamification_student_cosmetic_items,
   public.gamification_student_cosmetic_equipment,
+  public.gamification_athlete_stages_catalog,
+  public.gamification_student_current_stage,
+  public.gamification_student_stage_history,
+  public.gamification_campaigns_catalog,
+  public.gamification_student_campaign_progress,
+  public.gamification_hidden_rewards_catalog,
+  public.gamification_student_hidden_rewards,
   public.gamification_leaderboard_public,
   public.announcements,
   public.announcements_with_creator,
@@ -250,7 +292,14 @@ grant select on
   gamification.currency_ledger,
   gamification.cosmetic_items_catalog,
   gamification.student_cosmetic_items,
-  gamification.student_cosmetic_equipment
+  gamification.student_cosmetic_equipment,
+  gamification.athlete_stages_catalog,
+  gamification.student_current_stage,
+  gamification.student_stage_history,
+  gamification.campaigns_catalog,
+  gamification.student_campaign_progress,
+  gamification.hidden_rewards_catalog,
+  gamification.student_hidden_rewards
 to authenticated;
 
 grant insert, update, delete on
@@ -263,7 +312,11 @@ grant insert, update, delete on
   gamification.currency_wallets,
   gamification.currency_ledger,
   gamification.student_cosmetic_items,
-  gamification.student_cosmetic_equipment
+  gamification.student_cosmetic_equipment,
+  gamification.student_current_stage,
+  gamification.student_stage_history,
+  gamification.student_campaign_progress,
+  gamification.student_hidden_rewards
 to authenticated;
 
 grant select on
@@ -271,7 +324,10 @@ grant select on
   gamification.challenges_catalog,
   gamification.leaderboard_snapshots,
   gamification.titles_catalog,
-  gamification.cosmetic_items_catalog
+  gamification.cosmetic_items_catalog,
+  gamification.athlete_stages_catalog,
+  gamification.campaigns_catalog,
+  gamification.hidden_rewards_catalog
 to anon;
 
 commit;

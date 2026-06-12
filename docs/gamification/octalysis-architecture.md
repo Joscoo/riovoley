@@ -36,6 +36,12 @@ Este documento aterriza la estructura tecnica de la expansion de gamificacion pa
 - pre-retos del siguiente ciclo
 - campañas especiales
 
+### Campaign Engine
+- ventanas semanales, mensuales y flash
+- catalogo persistido de campañas activas
+- snapshot de progreso temporal por estudiante
+- recompensas visibles por ventana limitada
+
 ### Competition Engine
 - leaderboards por categoria
 - leaderboards por medicion
@@ -46,6 +52,14 @@ Este documento aterriza la estructura tecnica de la expansion de gamificacion pa
 - recomendaciones fisicas orientativas
 - recomendaciones segun retos y competencia
 - nudges de continuidad
+- rutas estrategicas con una principal y hasta dos alternativas
+- cadena exacta de accion -> recompensa inmediata -> impacto posterior
+
+### Athlete Stage Engine
+- interpreta el progreso real como etapas narrativas del atleta
+- combina nivel minimo con evidencia de tests, asistencias, pagos y logros
+- exige presencia competitiva en etapas altas cuando aplique
+- persiste snapshot actual e historial de ascensos
 
 ### Identity Engine
 - apodos
@@ -101,6 +115,27 @@ Este documento aterriza la estructura tecnica de la expansion de gamificacion pa
   - `secretAchievements` separado del resto de bloqueados
   - grid propia para secretos con pista y progreso parcial
 
+### Surprise Engine
+- recompensas ocultas derivadas por combinacion real
+- snapshot persistido de descubrimiento por estudiante
+- pistas separadas de los logros secretos clasicos
+- sin azar artificial en esta fase
+
+### Structured Reinforcement Layer
+- cierre progresivo de core drivers aun mas debiles
+- primera fase persistida:
+  - `gamification.athlete_stages_catalog`
+  - `gamification.student_current_stage`
+  - `gamification.student_stage_history`
+- segunda fase persistida:
+  - `gamification.campaigns_catalog`
+  - `gamification.student_campaign_progress`
+- tercera fase persistida:
+  - `gamification.hidden_rewards_catalog`
+  - `gamification.student_hidden_rewards`
+- fases siguientes previstas:
+  - rutas estrategicas mas editoriales si hiciera falta
+
 ## Entidades nuevas sugeridas
 
 - `gamification_xp_ledger`
@@ -115,6 +150,13 @@ Este documento aterriza la estructura tecnica de la expansion de gamificacion pa
 - `gamification_login_rewards`
 - `gamification_seasonal_campaigns`
 - `gamification_student_streaks`
+- `gamification_athlete_stages_catalog`
+- `gamification_student_current_stage`
+- `gamification_student_stage_history`
+- `gamification_campaigns_catalog`
+- `gamification_student_campaign_progress`
+- `gamification_hidden_rewards_catalog`
+- `gamification_student_hidden_rewards`
 
 ## Reglas estructurales
 
@@ -136,5 +178,6 @@ Este documento aterriza la estructura tecnica de la expansion de gamificacion pa
 4. wallet + ledger de moneda
 5. avatar configurable + equipamiento
 6. tienda cosmetica
-7. campañas y temporadas
-8. vista operativa de entrenador/admin
+7. etapas del atleta persistidas
+8. campañas y temporadas
+9. vista operativa de entrenador/admin
