@@ -337,6 +337,58 @@ describe('createGamificationUseCases', () => {
     expect(result.studentId).toBe('s1');
   });
 
+  it('refreshStudentProgressUseCase construye currency ledger sin timestamps nulos', async () => {
+    const repository = buildRepository();
+    repository.findStudentById.mockResolvedValue(buildStudent());
+    repository.listPhysicalTests.mockResolvedValue([
+      { id: 't1', fecha_test: '2026-06-01', brazo_extend_con_impulso: 40, brazo_extend_sin_impulso: 35, fuerza_abdomen: 20, elevaciones_barra: 3, fuerza_explosiva_salto_largo: 180 },
+    ]);
+    repository.listAttendances.mockResolvedValue([
+      { id: 'a1', fecha: '2026-06-02', created_at: '2026-06-02T12:00:00.000Z' },
+    ]);
+    repository.listPayments.mockResolvedValue([
+      { id: 'p1', fecha_inicio: '2026-06-01', fecha_pago: '2026-06-01', estado: 'activo', created_at: '2026-06-01T12:00:00.000Z' },
+    ]);
+    repository.getProfile.mockResolvedValue(null);
+    repository.listStudentAchievements.mockResolvedValue([]);
+    repository.listStudentChallengeProgress.mockResolvedValue([]);
+    repository.listAchievementCatalog.mockResolvedValue([]);
+    repository.listActiveChallenges.mockResolvedValue([]);
+    repository.listActiveCampaigns.mockResolvedValue([]);
+    repository.listActiveHiddenRewards.mockResolvedValue([]);
+    repository.getAthleteStageCatalog.mockResolvedValue([]);
+    repository.listXpLedger.mockResolvedValue([]);
+    repository.listCurrencyLedger.mockResolvedValue([]);
+    repository.getCurrencyWallet.mockResolvedValue(null);
+    repository.listStudentsByCategory.mockResolvedValue([buildStudent()]);
+    repository.listPhysicalTestsByStudentIds.mockResolvedValue([
+      { id: 't1', student_id: 's1', fecha_test: '2026-06-01', brazo_extend_con_impulso: 40, brazo_extend_sin_impulso: 35, fuerza_abdomen: 20, elevaciones_barra: 3, fuerza_explosiva_salto_largo: 180 },
+    ]);
+    repository.listAttendancesByStudentIds.mockResolvedValue([
+      { id: 'a1', student_id: 's1', fecha: '2026-06-02', created_at: '2026-06-02T12:00:00.000Z' },
+    ]);
+    repository.listPaymentsByStudentIds.mockResolvedValue([
+      { id: 'p1', student_id: 's1', fecha_inicio: '2026-06-01', fecha_pago: '2026-06-01', estado: 'activo', created_at: '2026-06-01T12:00:00.000Z' },
+    ]);
+    repository.listIdentitiesByStudentIds.mockResolvedValue([]);
+    repository.listStudentCosmeticEquipmentByStudentIds.mockResolvedValue([]);
+    repository.replaceCurrencyLedger.mockResolvedValue([]);
+
+    const useCases = createGamificationUseCases(repository, buildDeps());
+    await useCases.refreshStudentProgressUseCase.execute({ studentId: 's1' });
+
+    expect(repository.replaceCurrencyLedger).toHaveBeenCalledWith(
+      's1',
+      expect.arrayContaining([
+        expect.objectContaining({
+          source_type: 'level_reward',
+          occurred_at: '2026-06-07T12:00:00.000Z',
+          created_at: '2026-06-07T12:00:00.000Z',
+        }),
+      ]),
+    );
+  });
+
   it('loadStudentGamificationByStudentIdUseCase construye ranking derivado cuando no hay snapshot publico', async () => {
     const repository = buildRepository();
     repository.findStudentById.mockResolvedValue(buildStudent());

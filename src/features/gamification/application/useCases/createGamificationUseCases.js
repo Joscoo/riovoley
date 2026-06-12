@@ -1053,7 +1053,7 @@ const DERIVED_CURRENCY_LEDGER_SOURCE_TYPES = new Set([
   'level_reward',
 ]);
 
-const buildCurrencyLedgerEntries = ({ studentId, xpLedger, currentLevel }) => {
+const buildCurrencyLedgerEntries = ({ studentId, xpLedger, currentLevel, syncedAt }) => {
   const baseEntries = (xpLedger || [])
     .map((entry) => {
       const coinsDelta = getCoinsFromXpSource({
@@ -1076,8 +1076,8 @@ const buildCurrencyLedgerEntries = ({ studentId, xpLedger, currentLevel }) => {
           ? 'Tu regreso del dia tambien sumo una moneda ligera.'
           : 'Tu progreso verificado tambien te entrego monedas blandas.',
         metadata: entry.metadata || {},
-        occurred_at: entry.occurred_at,
-        created_at: entry.created_at,
+        occurred_at: entry.occurred_at || entry.created_at || syncedAt,
+        created_at: entry.created_at || entry.occurred_at || syncedAt,
       };
     })
     .filter(Boolean);
@@ -1092,8 +1092,8 @@ const buildCurrencyLedgerEntries = ({ studentId, xpLedger, currentLevel }) => {
       label: `Nivel ${level} alcanzado`,
       description: 'Recompensa especial por subir de nivel en tu progreso.',
       metadata: { level: Number(level) },
-      occurred_at: null,
-      created_at: null,
+      occurred_at: syncedAt,
+      created_at: syncedAt,
     }));
 
   return [...baseEntries, ...levelEntries]
@@ -1915,11 +1915,12 @@ const buildProjection = ({
     .sort((left, right) => String(left.occurred_at || '').localeCompare(String(right.occurred_at || '')));
   const totalXp = xpLedger.reduce((sum, entry) => sum + Number(entry.xp_delta || 0), 0);
   const levelInfo = getLevelInfo(totalXp);
-  const currencyLedger = buildCurrencyLedgerEntries({
-    studentId: student.id,
-    xpLedger,
-    currentLevel: levelInfo.level,
-  });
+    const currencyLedger = buildCurrencyLedgerEntries({
+      studentId: student.id,
+      xpLedger,
+      currentLevel: levelInfo.level,
+      syncedAt,
+    });
   const preservedCurrencyEntries = (existingCurrencyLedger || []).filter(
     (entry) => !DERIVED_CURRENCY_LEDGER_SOURCE_TYPES.has(entry.source_type)
   );
@@ -3313,6 +3314,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
   const foundationUseCases = createGamificationFoundationUseCases(repository, deps);
   const todayProvider = deps.getEcuadorDate || getEcuadorDate;
   const isoProvider = deps.getEcuadorISOString || getEcuadorISOString;
+  const notificationGateway = deps.notificationService || null;
   const listAttendances = async (studentId) => {
     if (typeof repository.listAttendances !== 'function') {
       return [];
@@ -3384,6 +3386,59 @@ export const createGamificationUseCases = (repository, deps = {}) => {
       return [];
     }
     return repository.listActiveHiddenRewards();
+  };
+
+  const sendGamificationDiffNotifications = async ({
+    student,
+    previousProfile,
+    previousAchievements,
+    previousChallenges,
+    achievementCatalog,
+    challengeCatalog,
+    nextProfile,
+    nextAchievements,
+    nextChallenges,
+  }) => {
+    if (!notificationGateway?.sendGamificationProgressNotifications || !student?.user_id) {
+      return;
+    }
+
+    const previousLevel = Number(previousProfile?.current_level || 0);
+    const nextLevel = Number(nextProfile?.current_level || 0);
+    const previousAchievementSlugs = new Set((previousAchievements || []).map((row) => row.achievement_slug));
+    const previousCompletedChallengeSlugs = new Set(
+      (previousChallenges || [])
+        .filter((row) => row.is_completed)
+        .map((row) => row.challenge_slug),
+    );
+    const achievementCatalogBySlug = new Map((achievementCatalog || []).map((entry) => [entry.slug, entry]));
+    const challengeCatalogBySlug = new Map((challengeCatalog || []).map((entry) => [entry.slug, entry]));
+
+    const unlockedAchievements = (nextAchievements || [])
+      .filter((row) => !previousAchievementSlugs.has(row.achievement_slug))
+      .map((row) => achievementCatalogBySlug.get(row.achievement_slug))
+      .filter(Boolean)
+      .map((entry) => ({ slug: entry.slug, title: entry.title }));
+
+    const completedChallenges = (nextChallenges || [])
+      .filter((row) => row.is_completed && !previousCompletedChallengeSlugs.has(row.challenge_slug))
+      .map((row) => challengeCatalogBySlug.get(row.challenge_slug))
+      .filter(Boolean)
+      .map((entry) => ({ slug: entry.slug, title: entry.title }));
+
+    await notificationGateway.sendGamificationProgressNotifications({
+      userId: student.user_id,
+      athleteName: `${student.users?.nombre || ''} ${student.users?.apellido || ''}`.trim(),
+      levelUp: nextLevel > previousLevel
+        ? {
+            fromLevel: previousLevel,
+            toLevel: nextLevel,
+            title: getLevelInfo(nextProfile.total_xp).title,
+          }
+        : null,
+      achievements: unlockedAchievements,
+      challenges: completedChallenges,
+    });
   };
 
   const loadStudentGamificationByStudentIdUseCase = {
@@ -3725,11 +3780,30 @@ export const createGamificationUseCases = (repository, deps = {}) => {
     execute: async ({ studentId }) => {
       const today = todayProvider();
       const syncedAt = isoProvider();
-      const [student, tests, attendances, payments, achievementCatalog, challengeCatalog, campaignCatalog, hiddenRewardsCatalog, athleteStageCatalog, existingXpLedger, existingCurrencyLedger, existingCurrencyWallet] = await Promise.all([
+      const [
+        student,
+        tests,
+        attendances,
+        payments,
+        storedProfile,
+        storedAchievements,
+        storedChallengeProgress,
+        achievementCatalog,
+        challengeCatalog,
+        campaignCatalog,
+        hiddenRewardsCatalog,
+        athleteStageCatalog,
+        existingXpLedger,
+        existingCurrencyLedger,
+        existingCurrencyWallet,
+      ] = await Promise.all([
         repository.findStudentById(studentId),
         repository.listPhysicalTests(studentId),
         listAttendances(studentId),
         listPayments(studentId),
+        repository.getProfile(studentId),
+        repository.listStudentAchievements(studentId),
+        repository.listStudentChallengeProgress(studentId),
         repository.listAchievementCatalog(),
         repository.listActiveChallenges(today),
         listActiveCampaigns(today),
@@ -3866,6 +3940,18 @@ export const createGamificationUseCases = (repository, deps = {}) => {
           })
         );
       }
+
+      await sendGamificationDiffNotifications({
+        student,
+        previousProfile: storedProfile,
+        previousAchievements: storedAchievements,
+        previousChallenges: storedChallengeProgress,
+        achievementCatalog,
+        challengeCatalog,
+        nextProfile: projection.profile,
+        nextAchievements: projection.achievements,
+        nextChallenges: projection.challenges,
+      });
 
       return {
         studentId,

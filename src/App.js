@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy, useRef } from 'react';
+import React, { useState, useEffect, Suspense, lazy, useRef, startTransition } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
@@ -150,12 +150,16 @@ function AppContent() {
   };
 
   const handleLoginSuccess = (loggedInUser) => {
-    setUser(loggedInUser);
+    startTransition(() => {
+      setUser(loggedInUser);
+    });
   };
 
   const handleLogout = () => {
-    setUser(null);
-    navigate('/');
+    startTransition(() => {
+      setUser(null);
+      navigate('/');
+    });
   };
 
   const handleCheckOtaUpdate = async () => {

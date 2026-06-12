@@ -27,6 +27,16 @@ const NOTIFICATION_CHANNELS = {
     lightColor: '#355FB3',
     vibration: true,
   },
+  attendance: {
+    id: 'attendance',
+    name: 'Asistencias',
+    description: 'Confirmaciones de asistencia a entrenamientos',
+    importance: 4,
+    visibility: 1,
+    lights: true,
+    lightColor: '#10B981',
+    vibration: true,
+  },
   progress: {
     id: 'progress',
     name: 'Progreso',
@@ -80,8 +90,13 @@ const resolveChannelForNotification = (notificationData = {}) => {
     return notificationData.channel_id;
   }
 
-  if (notificationData.type === 'payment_reminder') return 'payments';
-  if (notificationData.type === 'gamification_progress' || notificationData.type === 'achievement_unlocked') return 'progress';
+  if (['payment_reminder', 'payment_registered', 'payment_due_soon', 'payment_overdue'].includes(notificationData.type)) {
+    return 'payments';
+  }
+  if (notificationData.type === 'attendance_recorded') return 'attendance';
+  if (['gamification_progress', 'achievement_unlocked', 'challenge_completed', 'level_up'].includes(notificationData.type)) {
+    return 'progress';
+  }
   return 'announcements';
 };
 
@@ -94,9 +109,16 @@ export const resolveNotificationRoute = (notificationData = {}) => {
     case 'announcement':
       return buildRoleRoute(resolvedRole, 'anuncios');
     case 'payment_reminder':
+    case 'payment_registered':
+    case 'payment_due_soon':
+    case 'payment_overdue':
       return buildRoleRoute(resolvedRole, resolvedRole === 'estudiante' ? 'mensualidad' : 'pagos');
+    case 'attendance_recorded':
+      return buildRoleRoute(resolvedRole, 'asistencias');
     case 'gamification_progress':
     case 'achievement_unlocked':
+    case 'challenge_completed':
+    case 'level_up':
       return buildRoleRoute(resolvedRole, 'progreso');
     default:
       return '/';

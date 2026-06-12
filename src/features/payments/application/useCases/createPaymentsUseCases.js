@@ -11,6 +11,7 @@ export const createPaymentsUseCases = (
     getEcuadorISOString,
     getLatestPaymentsList,
     gamificationService = null,
+    notificationService = null,
   }
 ) => {
   const DEFAULT_TABLE_QUERY = createTableQuery({
@@ -103,6 +104,22 @@ export const createPaymentsUseCases = (
       await gamificationService.refreshStudentProgress({ studentId });
     } catch (_error) {
       // La sincronizacion del progreso no debe bloquear el flujo de pagos.
+    }
+  };
+
+  const notifyPaymentRegistered = async ({ athleteData, payment }) => {
+    if (!notificationService?.sendPaymentRegisteredNotification || !athleteData?.users?.id || !payment?.id) {
+      return;
+    }
+
+    try {
+      await notificationService.sendPaymentRegisteredNotification({
+        userId: athleteData.users.id,
+        athleteName: `${athleteData.users.nombre || ''} ${athleteData.users.apellido || ''}`.trim(),
+        payment,
+      });
+    } catch (_error) {
+      // El push no debe bloquear el flujo operativo del pago.
     }
   };
 
@@ -215,6 +232,11 @@ export const createPaymentsUseCases = (
             messageId = businessResult?.messageId || null;
           }
         }
+
+        await notifyPaymentRegistered({
+          athleteData,
+          payment: createdPayment,
+        });
       } catch (notificationError) {
         emailError = emailError || notificationError?.message || 'Error enviando notificaciones';
       }

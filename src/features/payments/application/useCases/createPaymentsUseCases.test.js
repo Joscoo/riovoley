@@ -37,6 +37,9 @@ describe('createPaymentsUseCases', () => {
     gamificationService: {
       refreshStudentProgress: jest.fn(),
     },
+    notificationService: {
+      sendPaymentRegisteredNotification: jest.fn(),
+    },
   });
 
   it('listModuleDataUseCase refresca pagos cuando hubo actualizaciones de estado', async () => {
@@ -72,7 +75,7 @@ describe('createPaymentsUseCases', () => {
       fecha_pago: '2026-05-17',
     });
     repository.getAthleteByStudentId.mockResolvedValue({
-      users: { email: 'ana@demo.com', nombre: 'Ana', apellido: 'Perez', telefono: '099' },
+      users: { id: 'u1', email: 'ana@demo.com', nombre: 'Ana', apellido: 'Perez', telefono: '099' },
     });
     const deps = buildDeps();
     deps.communicationsService.sendPaymentConfirmation.mockResolvedValue({ success: true });
@@ -93,6 +96,11 @@ describe('createPaymentsUseCases', () => {
     });
     expect(deps.communicationsService.sendPaymentConfirmation).toHaveBeenCalled();
     expect(deps.gamificationService.refreshStudentProgress).toHaveBeenCalledWith({ studentId: 's1' });
+    expect(deps.notificationService.sendPaymentRegisteredNotification).toHaveBeenCalledWith({
+      userId: 'u1',
+      athleteName: 'Ana Perez',
+      payment: expect.objectContaining({ id: 'p1' }),
+    });
     expect(result).toMatchObject({
       emailSent: true,
       whatsappSent: true,

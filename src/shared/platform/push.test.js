@@ -13,6 +13,8 @@ describe('resolveNotificationRoute', () => {
 
   it('falls back to student monthly section for payment reminders', () => {
     expect(resolveNotificationRoute({ type: 'payment_reminder' })).toBe('/estudiante?section=mensualidad');
+    expect(resolveNotificationRoute({ type: 'payment_registered' })).toBe('/estudiante?section=mensualidad');
+    expect(resolveNotificationRoute({ type: 'payment_overdue' })).toBe('/estudiante?section=mensualidad');
   });
 
   it('routes payment reminders to admin and trainer payments sections when role is present', () => {
@@ -23,6 +25,13 @@ describe('resolveNotificationRoute', () => {
   it('routes gamification notifications to progress section', () => {
     expect(resolveNotificationRoute({ type: 'gamification_progress' })).toBe('/estudiante?section=progreso');
     expect(resolveNotificationRoute({ type: 'achievement_unlocked', user_role: 'entrenador' })).toBe('/entrenador?section=progreso');
+    expect(resolveNotificationRoute({ type: 'challenge_completed' })).toBe('/estudiante?section=progreso');
+    expect(resolveNotificationRoute({ type: 'level_up' })).toBe('/estudiante?section=progreso');
+  });
+
+  it('routes attendance notifications to the attendance section', () => {
+    expect(resolveNotificationRoute({ type: 'attendance_recorded' })).toBe('/estudiante?section=asistencias');
+    expect(resolveNotificationRoute({ type: 'attendance_recorded', user_role: 'administrador' })).toBe('/admin?section=asistencias');
   });
 
   it('falls back to home when no route can be resolved', () => {

@@ -1,5 +1,6 @@
 import { communicationsService } from '../../communications';
 import { WhatsAppBusinessService, WhatsAppService } from '../../../shared/infrastructure/communications';
+import { pushNotificationGateway } from '../../../shared/infrastructure/mobile';
 import { PagoStatusService } from '../../../shared/domain/payments';
 import { getEcuadorDate, getEcuadorISOString } from '../../../utils/dateUtils';
 import { getLatestPaymentsList } from '../../../utils/paymentUtils';
@@ -17,6 +18,7 @@ export const createPaymentsService = (repository = new SupabasePaymentsRepositor
     getEcuadorISOString,
     getLatestPaymentsList,
     gamificationService: deps.gamificationService || gamificationService,
+    notificationService: deps.notificationService || pushNotificationGateway,
   });
   const listModuleData = async ({ query } = {}) => useCases.listModuleDataUseCase.execute({ query });
   const createPayment = async ({ formData }) => useCases.createPaymentUseCase.execute({ formData });

@@ -21,6 +21,18 @@ if (!supabaseUrl || !supabaseAnonKey) {
 
 const rawSupabase = createClient(supabaseUrl, supabaseAnonKey);
 
+const isInvalidRefreshTokenError = (error) =>
+  typeof error?.message === 'string' &&
+  error.message.toLowerCase().includes('invalid refresh token');
+
+const clearCorruptedLocalSession = async () => {
+  try {
+    await rawSupabase.auth.signOut({ scope: 'local' });
+  } catch (_error) {
+    // Ignorar errores secundarios al limpiar una sesion local corrupta.
+  }
+};
+
 const sqlAuditLogger = sqlAuditEnabled
   ? createSqlAuditLogger({
     supabaseUrl,
@@ -37,6 +49,10 @@ export const supabase = sqlAuditLogger
 export const getCurrentUser = async () => {
   const { data: { user }, error } = await supabase.auth.getUser();
   if (error) {
+    if (isInvalidRefreshTokenError(error)) {
+      await clearCorruptedLocalSession();
+      return null;
+    }
     if (error.name !== 'AuthSessionMissingError') {
       console.error('Error al obtener el usuario:', error);
     }
@@ -50,6 +66,10 @@ export const getCurrentUserWithProfile = async () => {
     const { data: { user }, error: userError } = await supabase.auth.getUser();
 
     if (userError) {
+      if (isInvalidRefreshTokenError(userError)) {
+        await clearCorruptedLocalSession();
+        return null;
+      }
       console.error('Error al obtener el usuario:', userError);
       return null;
     }
@@ -75,7 +95,7 @@ export const getCurrentUserWithProfile = async () => {
 };
 
 export const signOut = async () => {
-  const { error } = await supabase.auth.signOut();
+  const { error } = await supabase.auth.signOut({ scope: 'local' });
   if (error) {
     console.error('Error al cerrar sesion:', error);
   }

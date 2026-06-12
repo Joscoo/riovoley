@@ -12,6 +12,7 @@ const createQueryBuilder = (result) => {
   const builder = {
     select: jest.fn(() => builder),
     eq: jest.fn(() => builder),
+    neq: jest.fn(() => builder),
     order: jest.fn(() => builder),
     in: jest.fn(() => builder),
     limit: jest.fn(() => builder),
@@ -71,6 +72,65 @@ describe('SupabaseGamificationRepository', () => {
     expect(deleteBuilder.eq).toHaveBeenCalledWith('student_id', 's1');
     expect(insertBuilder.insert).toHaveBeenCalledWith([{ student_id: 's1', source_type: 'physical_test', event_type: 'physical_test_recorded' }]);
     expect(result).toEqual([{ id: 'e1' }]);
+  });
+
+  it('replaceXpLedger no reinserta daily_login preservado ni ids generados', async () => {
+    const deleteBuilder = createQueryBuilder({ data: [], error: null });
+    const insertBuilder = createQueryBuilder({ data: [{ source_type: 'attendance' }], error: null });
+    supabase.from
+      .mockReturnValueOnce(deleteBuilder)
+      .mockReturnValueOnce(insertBuilder);
+
+    const repository = new SupabaseGamificationRepository();
+    await repository.replaceXpLedger('s1', [
+      { id: 'keep-me-out', student_id: 's1', source_type: 'daily_login', xp_delta: 8 },
+      { id: 'strip-id', student_id: 's1', source_type: 'attendance', xp_delta: 35 },
+    ]);
+
+    expect(deleteBuilder.eq).toHaveBeenCalledWith('student_id', 's1');
+    expect(deleteBuilder.neq).toHaveBeenCalledWith('source_type', 'daily_login');
+    expect(insertBuilder.insert).toHaveBeenCalledWith([
+      { student_id: 's1', source_type: 'attendance', xp_delta: 35 },
+    ]);
+  });
+
+  it('replaceLeaderboardSnapshots elimina columnas no persistidas antes de insertar', async () => {
+    const deleteBuilder = createQueryBuilder({ data: [], error: null });
+    const insertBuilder = createQueryBuilder({ data: [{ student_id: 's1' }], error: null });
+    supabase.from
+      .mockReturnValueOnce(deleteBuilder)
+      .mockReturnValueOnce(insertBuilder);
+
+    const repository = new SupabaseGamificationRepository();
+    await repository.replaceLeaderboardSnapshots({
+      category: 'iniciacion_hombres',
+      snapshotDate: '2026-06-12',
+      rows: [{
+        id: 'row-1',
+        student_id: 's1',
+        categoria: 'iniciacion_hombres',
+        age_band: 'menor',
+        score: 250,
+        current_level: 2,
+        rank_position: 1,
+        snapshot_date: '2026-06-12',
+        public_alias: 'Leo P',
+        leaderboard_type: 'overall',
+        metric_key: 'total_xp',
+        updated_at: '2026-06-12T12:00:00.000Z',
+      }],
+    });
+
+    expect(insertBuilder.insert).toHaveBeenCalledWith([{
+      student_id: 's1',
+      categoria: 'iniciacion_hombres',
+      age_band: 'menor',
+      score: 250,
+      current_level: 2,
+      rank_position: 1,
+      snapshot_date: '2026-06-12',
+      updated_at: '2026-06-12T12:00:00.000Z',
+    }]);
   });
 
   it('listCategoryLeaderboard lanza GamificationError cuando falla la consulta', async () => {

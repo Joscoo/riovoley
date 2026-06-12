@@ -6,19 +6,24 @@ export const useUserProfile = (user) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const loadedUserRef = useRef(null);
+  const requestVersionRef = useRef(0);
 
   const loadUserProfile = async (currentUser) => {
+    const requestVersion = ++requestVersionRef.current;
     setLoading(true);
     setError(null);
 
     try {
       const resolvedProfile = await authProfileService.loadUserProfile(currentUser);
+      if (requestVersion !== requestVersionRef.current) return;
       setProfile(resolvedProfile || null);
     } catch (err) {
+      if (requestVersion !== requestVersionRef.current) return;
       console.error('Error en useUserProfile.loadUserProfile:', err);
       setError(err);
       setProfile(null);
     } finally {
+      if (requestVersion !== requestVersionRef.current) return;
       setLoading(false);
     }
   };
@@ -28,8 +33,10 @@ export const useUserProfile = (user) => {
       loadedUserRef.current = user.id;
       loadUserProfile(user);
     } else if (!user) {
+      requestVersionRef.current += 1;
       loadedUserRef.current = null;
       setProfile(null);
+      setLoading(false);
       setError(null);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

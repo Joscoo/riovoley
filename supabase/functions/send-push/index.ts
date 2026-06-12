@@ -24,6 +24,10 @@ const AUDIENCE_ROLE_ALIASES: Record<string, string[]> = {
   estudiantes: ['estudiante'],
 };
 
+const PAYMENT_TYPES = new Set(['payment_reminder', 'payment_registered', 'payment_due_soon', 'payment_overdue']);
+const GAMIFICATION_TYPES = new Set(['gamification_progress', 'achievement_unlocked', 'challenge_completed', 'level_up']);
+const IN_QUERY_BATCH_SIZE = 50;
+
 const normalizeAudienceRoles = (audience: string[]) => {
   if (!audience.length) return [];
 
@@ -32,14 +36,33 @@ const normalizeAudienceRoles = (audience: string[]) => {
   )];
 };
 
+const buildBatches = <T>(values: T[], batchSize = IN_QUERY_BATCH_SIZE) => {
+  const batches: T[][] = [];
+  for (let index = 0; index < values.length; index += batchSize) {
+    batches.push(values.slice(index, index + batchSize));
+  }
+  return batches;
+};
+
 const isPreferenceEnabled = (
-  preferences: Record<string, { announcement_enabled?: boolean; payment_reminders_enabled?: boolean }>,
+  preferences: Record<string, {
+    announcement_enabled?: boolean;
+    payment_registered_enabled?: boolean;
+    payment_reminders_enabled?: boolean;
+    payment_overdue_enabled?: boolean;
+    attendance_enabled?: boolean;
+    gamification_enabled?: boolean;
+  }>,
   userId: string,
   type: string,
 ) => {
   const preference = preferences[userId];
   if (!preference) return true;
-  if (type === 'payment_reminder') return preference.payment_reminders_enabled !== false;
+  if (type === 'payment_registered') return preference.payment_registered_enabled !== false;
+  if (type === 'payment_overdue') return preference.payment_overdue_enabled !== false;
+  if (type === 'payment_reminder' || type === 'payment_due_soon') return preference.payment_reminders_enabled !== false;
+  if (type === 'attendance_recorded') return preference.attendance_enabled !== false;
+  if (GAMIFICATION_TYPES.has(type)) return preference.gamification_enabled !== false;
   return preference.announcement_enabled !== false;
 };
 
@@ -78,10 +101,16 @@ const serializeError = (error: unknown) => {
 const buildRoleRoute = (role: string, type: string, fallbackRoute?: string) => {
   if (fallbackRoute) return fallbackRoute;
 
-  if (type === 'payment_reminder') {
+  if (PAYMENT_TYPES.has(type)) {
     if (role === 'estudiante') return '/estudiante?section=mensualidad';
     if (role === 'entrenador') return '/entrenador?section=pagos';
     return '/admin?section=pagos';
+  }
+
+  if (type === 'attendance_recorded') {
+    if (role === 'estudiante') return '/estudiante?section=asistencias';
+    if (role === 'entrenador') return '/entrenador?section=asistencias';
+    return '/admin?section=asistencias';
   }
 
   if (type === 'announcement') {
@@ -90,7 +119,28 @@ const buildRoleRoute = (role: string, type: string, fallbackRoute?: string) => {
     return '/admin?section=anuncios';
   }
 
+  if (GAMIFICATION_TYPES.has(type)) {
+    if (role === 'estudiante') return '/estudiante?section=progreso';
+    if (role === 'entrenador') return '/entrenador?section=progreso';
+    return '/admin?section=progreso';
+  }
+
   return '/';
+};
+
+const updateAttemptStatus = async (
+  targetIds: number[],
+  payload: Record<string, unknown>,
+) => {
+  if (!targetIds.length) return;
+  const { error } = await adminClient
+    .from('mobile_device_registrations')
+    .update(payload)
+    .in('id', targetIds);
+
+  if (error) {
+    console.warn('No se pudo actualizar trazabilidad de entrega en mobile_device_registrations.', JSON.stringify(serializeError(error)));
+  }
 };
 
 const requireActor = async (authHeader: string) => {
@@ -138,6 +188,8 @@ serve(async (req) => {
     const messageBody = String(body?.body || '').trim();
     const route = typeof body?.route === 'string' ? body.route : '';
     const type = String(body?.type || 'announcement');
+    const channelId = typeof body?.channelId === 'string' ? body.channelId.trim() : '';
+    const priority = body?.priority === 'high' ? 'high' : 'normal';
     const userIds = Array.isArray(body?.userIds) ? body.userIds.map(String) : [];
     const audience = Array.isArray(body?.audience) ? body.audience.map(String) : [];
     const data = typeof body?.data === 'object' && body?.data ? body.data as Record<string, unknown> : {};
@@ -179,18 +231,29 @@ serve(async (req) => {
       }));
     }
 
-    const { data: preferencesRows, error: preferencesError } = await adminClient
-      .from('user_notification_preferences')
-      .select('user_id, announcement_enabled, payment_reminders_enabled')
-      .in('user_id', resolvedUserIds);
+    const preferenceBatches = await Promise.all(buildBatches(resolvedUserIds).map(async (userIdBatch) => {
+      const { data: preferencesRows, error: preferencesError } = await adminClient
+        .from('user_notification_preferences')
+        .select('user_id, announcement_enabled, payment_registered_enabled, payment_reminders_enabled, payment_overdue_enabled, attendance_enabled, gamification_enabled')
+        .in('user_id', userIdBatch);
 
-    if (preferencesError) {
-      throw preferencesError;
-    }
+      if (preferencesError) {
+        console.warn('No se pudieron cargar preferencias de notificacion, se aplicaran valores por defecto.', JSON.stringify(serializeError(preferencesError)));
+        return [];
+      }
+
+      return preferencesRows || [];
+    }));
+
+    const preferencesRows = preferenceBatches.flat();
 
     const preferencesByUserId = (preferencesRows || []).reduce<Record<string, {
       announcement_enabled?: boolean;
+      payment_registered_enabled?: boolean;
       payment_reminders_enabled?: boolean;
+      payment_overdue_enabled?: boolean;
+      attendance_enabled?: boolean;
+      gamification_enabled?: boolean;
     }>>((accumulator, preference) => {
       accumulator[String(preference.user_id)] = preference;
       return accumulator;
@@ -213,15 +276,21 @@ serve(async (req) => {
       }));
     }
 
-    const { data: deviceTargets, error: deviceError } = await adminClient
-      .from('mobile_device_registrations')
-      .select('id, user_id, device_token')
-      .eq('notifications_enabled', true)
-      .in('user_id', enabledUserIds);
+    const deviceTargetBatches = await Promise.all(buildBatches(enabledUserIds).map(async (userIdBatch) => {
+      const { data: deviceTargets, error: deviceError } = await adminClient
+        .from('mobile_device_registrations')
+        .select('id, user_id, device_token')
+        .eq('notifications_enabled', true)
+        .in('user_id', userIdBatch);
 
-    if (deviceError) {
-      throw deviceError;
-    }
+      if (deviceError) {
+        throw deviceError;
+      }
+
+      return deviceTargets || [];
+    }));
+
+    const deviceTargets = deviceTargetBatches.flat();
 
     if (!deviceTargets?.length) {
       return jsonResponse(successEnvelope({
@@ -237,14 +306,20 @@ serve(async (req) => {
       }));
     }
 
-    const { data: profiles, error: profilesError } = await adminClient
-      .from('user_profiles')
-      .select('id, role')
-      .in('id', enabledUserIds);
+    const profileBatches = await Promise.all(buildBatches(enabledUserIds).map(async (userIdBatch) => {
+      const { data: profiles, error: profilesError } = await adminClient
+        .from('user_profiles')
+        .select('id, role')
+        .in('id', userIdBatch);
 
-    if (profilesError) {
-      throw profilesError;
-    }
+      if (profilesError) {
+        throw profilesError;
+      }
+
+      return profiles || [];
+    }));
+
+    const profiles = profileBatches.flat();
 
     const roleByUserId = new Map((profiles || []).map((profile) => [String(profile.id), String(profile.role || '')]));
     const targetsByRoute = new Map<string, typeof deviceTargets>();
@@ -260,6 +335,8 @@ serve(async (req) => {
     let sent = 0;
     let failed = 0;
     const invalidTokenIds: number[] = [];
+    const failureRows: Array<{ targetId: number; status: number; response: string }> = [];
+    const attemptedAt = new Date().toISOString();
 
     for (const [routeForTargets, targets] of targetsByRoute.entries()) {
       const routeRole = roleByUserId.get(String(targets?.[0]?.user_id || '')) || '';
@@ -268,8 +345,8 @@ serve(async (req) => {
         body: messageBody,
         route: routeForTargets,
         type,
-        channelId: type === 'payment_reminder' ? 'payments' : 'announcements',
-        priority: type === 'payment_reminder' ? 'high' : 'normal',
+        channelId: channelId || (PAYMENT_TYPES.has(type) ? 'payments' : type === 'attendance_recorded' ? 'attendance' : GAMIFICATION_TYPES.has(type) ? 'progress' : 'announcements'),
+        priority,
         data: {
           ...data,
           user_role: routeRole,
@@ -278,13 +355,42 @@ serve(async (req) => {
       sent += result.sent;
       failed += result.failed;
       invalidTokenIds.push(...result.invalidTokenIds);
+      failureRows.push(...(result.failures || []));
+
+      const failedIds = new Set((result.failures || []).map((failure) => failure.targetId));
+      const sentIds = (targets || [])
+        .map((target) => Number(target.id))
+        .filter((targetId) => !failedIds.has(targetId));
+
+      await updateAttemptStatus(sentIds, {
+        last_delivery_status: 'sent',
+        last_delivery_error: null,
+        last_delivery_attempt_at: attemptedAt,
+        last_delivery_success_at: attemptedAt,
+      });
+    }
+
+    if (failureRows.length > 0) {
+      await Promise.all(failureRows.map((failure) => updateAttemptStatus([failure.targetId], {
+        last_delivery_status: 'failed',
+        last_delivery_error: failure.response,
+        last_delivery_attempt_at: attemptedAt,
+      })));
+      console.error('Push delivery failures', JSON.stringify(failureRows));
     }
 
     if (invalidTokenIds.length > 0) {
-      await adminClient
+      const { error: invalidationError } = await adminClient
         .from('mobile_device_registrations')
-        .update({ notifications_enabled: false })
+        .update({
+          notifications_enabled: false,
+          invalidated_at: attemptedAt,
+        })
         .in('id', invalidTokenIds);
+
+      if (invalidationError) {
+        console.warn('No se pudo invalidar tokens push fallidos.', JSON.stringify(serializeError(invalidationError)));
+      }
     }
 
     return jsonResponse(successEnvelope({

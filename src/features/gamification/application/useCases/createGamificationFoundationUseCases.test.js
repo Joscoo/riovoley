@@ -68,6 +68,25 @@ describe('createGamificationFoundationUseCases', () => {
     expect(repository.appendXpLedgerEntry).not.toHaveBeenCalled();
   });
 
+  it('registerDailyLoginRewardUseCase omite usuarios sin estudiante', async () => {
+    const repository = buildRepository();
+    repository.findStudentByUserId.mockResolvedValue(null);
+
+    const useCases = createGamificationFoundationUseCases(repository, buildDeps());
+    const result = await useCases.registerDailyLoginRewardUseCase.execute({ userId: 'u-admin' });
+
+    expect(result).toEqual({
+      awarded: false,
+      skipped: true,
+      xpDelta: 0,
+      rewardDate: null,
+      studentId: null,
+    });
+    expect(repository.getLoginRewardState).not.toHaveBeenCalled();
+    expect(repository.upsertLoginRewardState).not.toHaveBeenCalled();
+    expect(repository.appendXpLedgerEntry).not.toHaveBeenCalled();
+  });
+
   it('loadXpLedgerUseCase formatea el extracto en camelCase', async () => {
     const repository = buildRepository();
     repository.listXpLedger.mockResolvedValue([{

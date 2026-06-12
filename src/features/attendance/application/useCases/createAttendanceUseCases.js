@@ -52,6 +52,7 @@ export const createAttendanceUseCases = (repository, deps = {}) => {
   const dateMinusDays = deps.getEcuadorDateMinusDays || getEcuadorDateMinusDays;
   const formatDate = deps.formatDateString || formatDateString;
   const gamificationGateway = deps.gamificationService || null;
+  const notificationGateway = deps.notificationService || null;
 
   const syncStudentProgress = async (studentId) => {
     if (!gamificationGateway?.refreshStudentProgress || !studentId) return;
@@ -59,6 +60,22 @@ export const createAttendanceUseCases = (repository, deps = {}) => {
       await gamificationGateway.refreshStudentProgress({ studentId });
     } catch (error) {
       console.warn('Gamification sync failed after attendance change:', error);
+    }
+  };
+
+  const notifyAttendanceRecorded = async ({ athleteId, selectedDate, paymentTypeId = null }) => {
+    if (!notificationGateway?.sendAttendanceRecordedNotification || !athleteId || !selectedDate) return;
+
+    try {
+      const student = await repository.getStudentById(athleteId);
+      await notificationGateway.sendAttendanceRecordedNotification({
+        userId: student?.users?.id,
+        athleteName: `${student?.users?.nombre || ''} ${student?.users?.apellido || ''}`.trim(),
+        attendanceDate: selectedDate,
+        paymentTypeId,
+      });
+    } catch (_error) {
+      // El push de asistencia no debe romper el registro principal.
     }
   };
 
@@ -264,6 +281,7 @@ export const createAttendanceUseCases = (repository, deps = {}) => {
         metodo_pago_id: paymentTypeId,
       });
       await syncStudentProgress(athleteId);
+      await notifyAttendanceRecorded({ athleteId, selectedDate, paymentTypeId });
     },
   };
 
@@ -287,6 +305,7 @@ export const createAttendanceUseCases = (repository, deps = {}) => {
         fecha: selectedDate,
       });
       await syncStudentProgress(athleteId);
+      await notifyAttendanceRecorded({ athleteId, selectedDate });
     },
   };
 

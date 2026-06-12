@@ -20,6 +20,9 @@ describe('createAttendanceUseCases', () => {
     gamificationService: {
       refreshStudentProgress: jest.fn(),
     },
+    notificationService: {
+      sendAttendanceRecordedNotification: jest.fn(),
+    },
   });
 
   it('loadAthletesUseCase filtra solo estudiantes', async () => {
@@ -99,7 +102,32 @@ describe('createAttendanceUseCases', () => {
 
     expect(repository.updateAttendance).toHaveBeenCalledWith('a1', { metodo_pago_id: 2 });
     expect(deps.gamificationService.refreshStudentProgress).toHaveBeenCalledWith({ studentId: 's1' });
+    expect(deps.notificationService.sendAttendanceRecordedNotification).not.toHaveBeenCalled();
     expect(repository.createAttendance).not.toHaveBeenCalled();
+  });
+
+  it('registerAttendanceWithPaymentUseCase notifica cuando crea una asistencia nueva', async () => {
+    const repository = buildRepository();
+    repository.findAttendanceByStudentAndDate.mockResolvedValue(null);
+    repository.getStudentById.mockResolvedValue({
+      id: 's1',
+      users: { id: 'u1', nombre: 'Ana', apellido: 'Perez' },
+    });
+    const deps = buildDeps();
+    const useCases = createAttendanceUseCases(repository, deps);
+
+    await useCases.registerAttendanceWithPaymentUseCase.execute({
+      athleteId: 's1',
+      selectedDate: '2026-05-17',
+      paymentTypeId: 2,
+    });
+
+    expect(deps.notificationService.sendAttendanceRecordedNotification).toHaveBeenCalledWith({
+      userId: 'u1',
+      athleteName: 'Ana Perez',
+      attendanceDate: '2026-05-17',
+      paymentTypeId: 2,
+    });
   });
 
   it('toggleAttendanceUseCase elimina cuando ya estaba presente', async () => {
@@ -115,6 +143,29 @@ describe('createAttendanceUseCases', () => {
 
     expect(repository.deleteAttendanceByStudentAndDate).toHaveBeenCalledWith('s1', '2026-05-17');
     expect(deps.gamificationService.refreshStudentProgress).toHaveBeenCalledWith({ studentId: 's1' });
+  });
+
+  it('toggleAttendanceUseCase notifica cuando crea una asistencia', async () => {
+    const repository = buildRepository();
+    repository.getStudentById.mockResolvedValue({
+      id: 's1',
+      users: { id: 'u1', nombre: 'Ana', apellido: 'Perez' },
+    });
+    const deps = buildDeps();
+    const useCases = createAttendanceUseCases(repository, deps);
+
+    await useCases.toggleAttendanceUseCase.execute({
+      athleteId: 's1',
+      selectedDate: '2026-05-17',
+      isCurrentlyPresent: false,
+    });
+
+    expect(deps.notificationService.sendAttendanceRecordedNotification).toHaveBeenCalledWith({
+      userId: 'u1',
+      athleteName: 'Ana Perez',
+      attendanceDate: '2026-05-17',
+      paymentTypeId: null,
+    });
   });
 
   it('getDefaultDatesUseCase devuelve fechas iniciales para filtros', () => {

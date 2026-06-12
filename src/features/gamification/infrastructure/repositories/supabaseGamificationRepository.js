@@ -45,6 +45,26 @@ const normalizeStageHistoryRow = (row) => ({
   createdAt: row.created_at || null,
 });
 
+const stripGeneratedId = (row) => {
+  if (!row || typeof row !== 'object') return row;
+  const { id: _id, ...rest } = row;
+  return rest;
+};
+
+const sanitizeLeaderboardSnapshotRow = (row) => {
+  if (!row || typeof row !== 'object') return row;
+  return {
+    student_id: row.student_id,
+    categoria: row.categoria,
+    age_band: row.age_band,
+    score: row.score,
+    current_level: row.current_level,
+    rank_position: row.rank_position,
+    snapshot_date: row.snapshot_date,
+    updated_at: row.updated_at,
+  };
+};
+
 export class SupabaseGamificationRepository {
   async findStudentByUserId(userId) {
     const { data, error } = await supabase
@@ -59,13 +79,13 @@ export class SupabaseGamificationRepository {
         )
       `)
       .eq('user_id', userId)
-      .single();
+      .maybeSingle();
 
-    if (error) {
+    if (error && !isNoRowsError(error)) {
       throw new GamificationError(normalizeError(error, 'Error cargando estudiante para gamificacion'), error);
     }
 
-    return data;
+    return data || null;
   }
 
   async findStudentById(studentId) {
@@ -638,9 +658,17 @@ export class SupabaseGamificationRepository {
       return [];
     }
 
+    const insertableRows = (rows || [])
+      .filter((row) => row?.source_type !== 'cosmetic_purchase')
+      .map(stripGeneratedId);
+
+    if (insertableRows.length === 0) {
+      return [];
+    }
+
     const { data, error } = await supabase
       .from('gamification_currency_ledger')
-      .insert(rows)
+      .insert(insertableRows)
       .select();
 
     if (error) {
@@ -665,9 +693,17 @@ export class SupabaseGamificationRepository {
       return [];
     }
 
+    const insertableRows = (rows || [])
+      .filter((row) => row?.source_type !== 'daily_login')
+      .map(stripGeneratedId);
+
+    if (insertableRows.length === 0) {
+      return [];
+    }
+
     const { data, error } = await supabase
       .from('gamification_xp_ledger')
-      .insert(rows)
+      .insert(insertableRows)
       .select();
 
     if (error) {
@@ -958,9 +994,11 @@ export class SupabaseGamificationRepository {
       return [];
     }
 
+    const insertableRows = (rows || []).map(sanitizeLeaderboardSnapshotRow);
+
     const { data, error } = await supabase
       .from('gamification_leaderboard_snapshots')
-      .insert(rows)
+      .insert(insertableRows)
       .select();
 
     if (error) {

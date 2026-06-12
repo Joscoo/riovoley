@@ -7,6 +7,18 @@ const normalizeError = (error, fallback) => {
   return error.message || fallback;
 };
 
+const isInvalidRefreshTokenError = (error) =>
+  typeof error?.message === 'string' &&
+  error.message.toLowerCase().includes('invalid refresh token');
+
+const clearCorruptedLocalSession = async () => {
+  try {
+    await supabase.auth.signOut({ scope: 'local' });
+  } catch (_error) {
+    // Ignorar errores al limpiar una sesion local corrupta.
+  }
+};
+
 export class SupabaseAuthSessionRepository {
   onAuthStateChange(handler) {
     return supabase.auth.onAuthStateChange(handler);
@@ -15,6 +27,10 @@ export class SupabaseAuthSessionRepository {
   async getCurrentUser() {
     const { data: { user }, error } = await supabase.auth.getUser();
     if (error) {
+      if (isInvalidRefreshTokenError(error)) {
+        await clearCorruptedLocalSession();
+        return null;
+      }
       if (error.name !== 'AuthSessionMissingError') {
         throw new AuthSessionError(normalizeError(error, 'Error obteniendo usuario actual'), error);
       }
@@ -26,7 +42,11 @@ export class SupabaseAuthSessionRepository {
   async getSession() {
     const { data, error } = await supabase.auth.getSession();
     if (error) {
-      throw new AuthSessionError(normalizeError(error, 'Error obteniendo Sesión'), error);
+      if (isInvalidRefreshTokenError(error)) {
+        await clearCorruptedLocalSession();
+        return null;
+      }
+      throw new AuthSessionError(normalizeError(error, 'Error obteniendo sesion'), error);
     }
     return data.session || null;
   }
@@ -72,7 +92,7 @@ export class SupabaseAuthSessionRepository {
 
   async checkLoginAllowed(email) {
     const { data, error } = await supabase.rpc('check_login_allowed', {
-      p_email: email
+      p_email: email,
     });
 
     if (error) {
@@ -86,7 +106,7 @@ export class SupabaseAuthSessionRepository {
     const { error } = await supabase.rpc('record_login_attempt', {
       p_email: email,
       p_success: success,
-      p_error_code: errorCode
+      p_error_code: errorCode,
     });
 
     if (error) {
@@ -97,47 +117,47 @@ export class SupabaseAuthSessionRepository {
   async signInWithPassword(email, password) {
     const { data, error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) {
-      throw new AuthSessionError(normalizeError(error, 'Error iniciando Sesión'), error);
+      throw new AuthSessionError(normalizeError(error, 'Error iniciando sesion'), error);
     }
     return data;
   }
 
   async signOut() {
-    const { error } = await supabase.auth.signOut();
+    const { error } = await supabase.auth.signOut({ scope: 'local' });
     if (error) {
-      throw new AuthSessionError(normalizeError(error, 'Error cerrando Sesión'), error);
+      throw new AuthSessionError(normalizeError(error, 'Error cerrando sesion'), error);
     }
   }
 
   async requestPasswordReset(email, redirectTo) {
     const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo });
     if (error) {
-      throw new AuthSessionError(normalizeError(error, 'Error enviando reset de Contraseña'), error);
+      throw new AuthSessionError(normalizeError(error, 'Error enviando reset de contrasena'), error);
     }
   }
 
   async exchangeCodeForSession(code) {
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (error) {
-      throw new AuthSessionError(normalizeError(error, 'Error intercambiando code por Sesión'), error);
+      throw new AuthSessionError(normalizeError(error, 'Error intercambiando code por sesion'), error);
     }
   }
 
   async setRecoverySession(accessToken, refreshToken) {
     const { error } = await supabase.auth.setSession({
       access_token: accessToken,
-      refresh_token: refreshToken
+      refresh_token: refreshToken,
     });
 
     if (error) {
-      throw new AuthSessionError(normalizeError(error, 'Error configurando Sesión de recuperacion'), error);
+      throw new AuthSessionError(normalizeError(error, 'Error configurando sesion de recuperacion'), error);
     }
   }
 
   async updatePassword(password) {
     const { error } = await supabase.auth.updateUser({ password });
     if (error) {
-      throw new AuthSessionError(normalizeError(error, 'Error actualizando Contraseña'), error);
+      throw new AuthSessionError(normalizeError(error, 'Error actualizando contrasena'), error);
     }
   }
 

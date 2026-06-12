@@ -1,8 +1,14 @@
 import { createGamificationUseCases } from '../application/useCases/createGamificationUseCases';
 import { SupabaseGamificationRepository } from '../infrastructure/repositories/supabaseGamificationRepository';
+import { pushNotificationGateway } from '../../../shared/infrastructure/mobile';
 
-export const createGamificationService = (repository = new SupabaseGamificationRepository()) => {
-  const useCases = createGamificationUseCases(repository);
+export const createGamificationService = (
+  repository = new SupabaseGamificationRepository(),
+  deps = {},
+) => {
+  const useCases = createGamificationUseCases(repository, {
+    notificationService: deps.notificationService || pushNotificationGateway,
+  });
 
   const loadStudentGamification = async (userId) =>
     useCases.loadStudentGamificationUseCase.execute({ userId });
