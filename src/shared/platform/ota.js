@@ -3,7 +3,24 @@ import { CapacitorUpdater } from '@capgo/capacitor-updater';
 import { isAndroidPlatform, isNativePlatform } from './runtime';
 
 const otaSubscribers = new Set();
-const OTA_CHANNEL = process.env.REACT_APP_CAPGO_DEFAULT_CHANNEL || 'production';
+const OTA_CHANNEL_OVERRIDE = process.env.REACT_APP_CAPGO_DEFAULT_CHANNEL?.trim() || '';
+const OTA_CHANNEL = OTA_CHANNEL_OVERRIDE || 'production';
+
+const normalizeOtaErrorMessage = (error, fallbackMessage) => {
+  if (!error) return fallbackMessage;
+  if (typeof error === 'string') return error;
+
+  const baseMessage = error.message || error.error || fallbackMessage;
+  const errorCode = typeof error.error === 'string' ? error.error.trim() : '';
+  const statusCode = Number.isFinite(Number(error.statusCode)) ? Number(error.statusCode) : null;
+
+  const suffix = [
+    errorCode ? `codigo: ${errorCode}` : null,
+    statusCode ? `HTTP ${statusCode}` : null,
+  ].filter(Boolean).join(' | ');
+
+  return suffix ? `${baseMessage} (${suffix})` : baseMessage;
+};
 
 const defaultState = {
   supported: false,
@@ -18,10 +35,13 @@ const defaultState = {
   builtinVersion: null,
   pluginVersion: null,
   deviceId: null,
+  appId: null,
+  currentChannel: OTA_CHANNEL,
   otaChannel: OTA_CHANNEL,
   availableUpdate: null,
   downloadedBundle: null,
   lastFailure: null,
+  lastCheckResult: null,
 };
 
 let otaState = { ...defaultState };
@@ -51,13 +71,15 @@ const readCurrentBundleMetadata = async () => {
     return otaState;
   }
 
-  const [{ version, build }, currentBundle, builtinVersion, deviceId, pluginVersion, failedUpdate] = await Promise.all([
+  const [{ version, build }, currentBundle, builtinVersion, deviceId, pluginVersion, failedUpdate, appId, channelInfo] = await Promise.all([
     CapacitorApp.getInfo(),
     CapacitorUpdater.current(),
     CapacitorUpdater.getBuiltinVersion(),
     CapacitorUpdater.getDeviceId(),
     CapacitorUpdater.getPluginVersion(),
     CapacitorUpdater.getFailedUpdate(),
+    CapacitorUpdater.getAppId(),
+    CapacitorUpdater.getChannel().catch(() => null),
   ]);
 
   setOtaState({
@@ -70,6 +92,8 @@ const readCurrentBundleMetadata = async () => {
     builtinVersion: builtinVersion?.version || null,
     pluginVersion: pluginVersion?.version || null,
     deviceId: deviceId?.deviceId || null,
+    appId: appId?.appId || null,
+    currentChannel: channelInfo?.channel || OTA_CHANNEL,
     lastFailure: failedUpdate || null,
   });
 
@@ -92,13 +116,14 @@ const registerOtaListeners = async () => {
       progress: 100,
       downloadedBundle: event.bundle,
       otaBundleVersion: event.bundle?.version || otaState.otaBundleVersion,
+      error: null,
     });
   });
 
   await CapacitorUpdater.addListener('downloadFailed', (event) => {
     setOtaState({
       status: 'failed',
-      error: event?.message || 'No se pudo descargar la actualizacion.',
+      error: normalizeOtaErrorMessage(event, 'No se pudo descargar la actualizacion.'),
       lastFailure: event,
     });
   });
@@ -106,9 +131,46 @@ const registerOtaListeners = async () => {
   await CapacitorUpdater.addListener('updateFailed', (event) => {
     setOtaState({
       status: 'failed',
-      error: event?.message || 'La actualizacion descargada no se pudo aplicar.',
+      error: normalizeOtaErrorMessage(event, 'La actualizacion descargada no se pudo aplicar.'),
       lastFailure: event,
     });
+  });
+
+  await CapacitorUpdater.addListener('updateCheckResult', (event) => {
+    const normalizedKind = event?.kind || 'failed';
+    const nextState = {
+      lastCheckResult: event || null,
+      currentChannel: otaState.currentChannel || OTA_CHANNEL,
+    };
+
+    if (normalizedKind === 'up_to_date') {
+      setOtaState({
+        ...nextState,
+        status: 'idle',
+        error: null,
+        availableUpdate: null,
+      });
+      return;
+    }
+
+    if (normalizedKind === 'blocked') {
+      setOtaState({
+        ...nextState,
+        status: 'blocked',
+        error: normalizeOtaErrorMessage(event, 'La busqueda de actualizaciones OTA fue bloqueada.'),
+        availableUpdate: null,
+      });
+      return;
+    }
+
+    if (normalizedKind === 'failed') {
+      setOtaState({
+        ...nextState,
+        status: 'failed',
+        error: normalizeOtaErrorMessage(event, 'No se pudo verificar la actualizacion OTA.'),
+        availableUpdate: null,
+      });
+    }
   });
 
   otaListenersRegistered = true;
@@ -156,22 +218,50 @@ export const checkForAppUpdate = async () => {
     progress: 0,
   });
 
-  const latest = await CapacitorUpdater.getLatest({
-    channel: OTA_CHANNEL,
+  const options = {
     includeBundleSize: true,
-  });
+    ...(OTA_CHANNEL_OVERRIDE ? { channel: OTA_CHANNEL_OVERRIDE } : {}),
+  };
 
-  if (!latest?.url || latest.kind === 'up_to_date') {
+  const latest = await CapacitorUpdater.getLatest(options);
+  const kind = latest?.kind || null;
+
+  if (kind === 'failed') {
+    const normalizedError = normalizeOtaErrorMessage(latest, 'No se pudo verificar la actualizacion OTA.');
+    setOtaState({
+      status: 'failed',
+      error: normalizedError,
+      availableUpdate: null,
+      lastCheckResult: latest,
+    });
+    throw new Error(normalizedError);
+  }
+
+  if (kind === 'blocked') {
+    setOtaState({
+      status: 'blocked',
+      error: normalizeOtaErrorMessage(latest, 'La busqueda de actualizaciones OTA fue bloqueada.'),
+      availableUpdate: null,
+      lastCheckResult: latest,
+    });
+    return { available: false, blocked: true, latest };
+  }
+
+  if (!latest?.url || kind === 'up_to_date') {
     setOtaState({
       status: 'idle',
+      error: null,
       availableUpdate: null,
+      lastCheckResult: latest,
     });
     return { available: false, latest };
   }
 
   setOtaState({
     status: 'available',
+    error: null,
     availableUpdate: latest,
+    lastCheckResult: latest,
   });
 
   return { available: true, latest };
@@ -237,6 +327,8 @@ export const getOtaDeviceMetadata = async () => {
 
   return {
     deviceId: state.deviceId,
+    appId: state.appId,
+    currentChannel: state.currentChannel,
     otaChannel: state.otaChannel,
     nativeVersion: state.nativeVersion,
     nativeBuild: state.nativeBuild,

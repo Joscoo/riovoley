@@ -42,6 +42,7 @@ function AppContent() {
   const [isLoading, setIsLoading] = useState(true);
   const [pushToken, setPushToken] = useState(null);
   const [otaState, setOtaState] = useState(null);
+  const [isOtaPanelOpen, setIsOtaPanelOpen] = useState(false);
   const { profile: userProfile } = useUserProfile(user);
   const navigate = useNavigate();
   const previousUserRef = useRef(null);
@@ -53,9 +54,18 @@ function AppContent() {
   }, []);
 
   useEffect(() => {
-    void initializeMobileAppBridge();
-    void initializeOtaUpdates();
-    void notifyOtaAppReady();
+    const bootstrapMobileBridge = async () => {
+      try {
+        await initializeMobileAppBridge();
+        await initializeOtaUpdates();
+        await notifyOtaAppReady();
+      } catch (mobileInitError) {
+        // eslint-disable-next-line no-console
+        console.error('Error inicializando OTA/App Bridge:', mobileInitError);
+      }
+    };
+
+    void bootstrapMobileBridge();
 
     return subscribeToDeepLinks(({ route }) => {
       if (!route) return;
@@ -151,7 +161,7 @@ function AppContent() {
   const handleCheckOtaUpdate = async () => {
     try {
       const result = await checkForAppUpdate();
-      if (!result?.available) {
+      if (!result?.available && !result?.blocked) {
         warning('No hay una nueva version OTA disponible en este momento.', 4000);
       }
     } catch (checkError) {
@@ -198,71 +208,106 @@ function AppContent() {
 
   return (
     <Suspense fallback={<LoadingFallback />}>
-      {/* TEMPORARILY DISABLED: OTA update UI window (invasive, not being used yet) */}
-      {false && otaState?.supported ? (
-        <div className="fixed bottom-4 right-4 z-[1200] w-[min(92vw,380px)]">
-          <Card className="border-rv-gold/35 bg-[linear-gradient(145deg,rgba(8,15,33,0.95)_0%,rgba(30,58,138,0.88)_100%)] text-white shadow-2xl" padding="sm">
-            <div className="space-y-3">
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-rv-gold">Actualizaciones</p>
-                  <h2 className="text-base font-black">Estado OTA Android</h2>
-                </div>
-                <span className="rounded-full border border-white/15 bg-white/10 px-2 py-1 text-[11px] font-bold uppercase">
-                  {otaState.otaChannel}
-                </span>
-              </div>
-
-              <div className="grid grid-cols-2 gap-2 text-xs text-slate-200">
-                <div className="rounded-xl border border-white/10 bg-black/20 px-3 py-2">
-                  <p className="font-bold uppercase text-white/70">Nativa</p>
-                  <p className="mt-1 font-semibold">{otaState.nativeVersion || 'n/d'}</p>
-                </div>
-                <div className="rounded-xl border border-white/10 bg-black/20 px-3 py-2">
-                  <p className="font-bold uppercase text-white/70">Bundle</p>
-                  <p className="mt-1 font-semibold">{otaState.otaBundleVersion || otaState.builtinVersion || 'builtin'}</p>
-                </div>
-              </div>
-
-              {otaState.availableUpdate?.version ? (
-                <div className="rounded-xl border border-emerald-300/25 bg-emerald-500/10 px-3 py-2 text-sm text-emerald-100">
-                  Nueva version disponible: <strong>{otaState.availableUpdate.version}</strong>
-                </div>
-              ) : null}
-
-              {otaState.status === 'downloading' ? (
-                <div className="space-y-2">
-                  <div className="h-2 overflow-hidden rounded-full bg-white/10">
-                    <div className="h-full rounded-full bg-rv-gold transition-all" style={{ width: `${Math.max(6, otaState.progress || 0)}%` }} />
+      {otaState?.supported ? (
+        <div className="fixed bottom-4 right-4 z-[1200] flex flex-col items-end gap-3">
+          {isOtaPanelOpen ? (
+            <div className="w-[min(92vw,380px)]">
+              <Card className="border-rv-gold/35 bg-[linear-gradient(145deg,rgba(8,15,33,0.97)_0%,rgba(30,58,138,0.92)_100%)] text-white shadow-2xl" padding="sm">
+                <div className="space-y-3">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-[0.18em] text-rv-gold">Actualizaciones</p>
+                      <h2 className="text-base font-black">Estado OTA Android</h2>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="rounded-full border border-white/15 bg-white/10 px-2 py-1 text-[11px] font-bold uppercase">
+                        {otaState.currentChannel || otaState.otaChannel}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => setIsOtaPanelOpen(false)}
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/10 text-sm font-bold text-white transition hover:bg-white/20"
+                        aria-label="Cerrar panel OTA"
+                      >
+                        ×
+                      </button>
+                    </div>
                   </div>
-                  <p className="text-xs text-slate-200">Descargando actualizacion... {Math.round(otaState.progress || 0)}%</p>
-                </div>
-              ) : null}
 
-              {otaState.lastFailure?.message ? (
-                <div className="rounded-xl border border-red-300/30 bg-red-500/10 px-3 py-2 text-xs text-red-100">
-                  {otaState.lastFailure.message}
-                </div>
-              ) : null}
+                  <div className="grid grid-cols-2 gap-2 text-xs text-slate-200">
+                    <div className="rounded-xl border border-white/10 bg-black/20 px-3 py-2">
+                      <p className="font-bold uppercase text-white/70">Nativa</p>
+                      <p className="mt-1 font-semibold">{otaState.nativeVersion || 'n/d'}</p>
+                    </div>
+                    <div className="rounded-xl border border-white/10 bg-black/20 px-3 py-2">
+                      <p className="font-bold uppercase text-white/70">Bundle</p>
+                      <p className="mt-1 font-semibold">{otaState.otaBundleVersion || otaState.builtinVersion || 'builtin'}</p>
+                    </div>
+                    <div className="rounded-xl border border-white/10 bg-black/20 px-3 py-2">
+                      <p className="font-bold uppercase text-white/70">App ID</p>
+                      <p className="mt-1 break-all font-semibold">{otaState.appId || 'n/d'}</p>
+                    </div>
+                    <div className="rounded-xl border border-white/10 bg-black/20 px-3 py-2">
+                      <p className="font-bold uppercase text-white/70">Plugin</p>
+                      <p className="mt-1 font-semibold">{otaState.pluginVersion || 'n/d'}</p>
+                    </div>
+                  </div>
 
-              <div className="flex flex-wrap gap-2">
-                {/* TEMPORARILY DISABLED: OTA check button causes "on_permise_app" error during permission testing */}
-                {/* <Button size="sm" onClick={handleCheckOtaUpdate}>
-                  Buscar update
-                </Button> */}
-                {otaState.status === 'available' ? (
-                  <Button size="sm" variant="secondary" onClick={handleDownloadOtaUpdate}>
-                    Descargar
-                  </Button>
-                ) : null}
-                {otaState.status === 'ready_to_apply' ? (
-                  <Button size="sm" variant="secondary" onClick={handleApplyOtaUpdate}>
-                    Aplicar
-                  </Button>
-                ) : null}
-              </div>
+                  {otaState.availableUpdate?.version ? (
+                    <div className="rounded-xl border border-emerald-300/25 bg-emerald-500/10 px-3 py-2 text-sm text-emerald-100">
+                      Nueva version disponible: <strong>{otaState.availableUpdate.version}</strong>
+                    </div>
+                  ) : null}
+
+                  {otaState.status === 'downloading' ? (
+                    <div className="space-y-2">
+                      <div className="h-2 overflow-hidden rounded-full bg-white/10">
+                        <div className="h-full rounded-full bg-rv-gold transition-all" style={{ width: `${Math.max(6, otaState.progress || 0)}%` }} />
+                      </div>
+                      <p className="text-xs text-slate-200">Descargando actualizacion... {Math.round(otaState.progress || 0)}%</p>
+                    </div>
+                  ) : null}
+
+                  {otaState.lastCheckResult?.message ? (
+                    <div className="rounded-xl border border-white/15 bg-white/10 px-3 py-2 text-xs text-slate-100">
+                      {otaState.lastCheckResult.message}
+                    </div>
+                  ) : null}
+
+                  {otaState.error ? (
+                    <div className="rounded-xl border border-red-300/30 bg-red-500/10 px-3 py-2 text-xs text-red-100">
+                      {otaState.error}
+                    </div>
+                  ) : null}
+
+                  <div className="flex flex-wrap gap-2">
+                    <Button size="sm" onClick={handleCheckOtaUpdate} disabled={otaState.status === 'checking' || otaState.status === 'downloading' || otaState.status === 'applying'}>
+                      {otaState.status === 'checking' ? 'Buscando...' : 'Buscar update'}
+                    </Button>
+                    {otaState.status === 'available' ? (
+                      <Button size="sm" variant="secondary" onClick={handleDownloadOtaUpdate}>
+                        Descargar
+                      </Button>
+                    ) : null}
+                    {otaState.status === 'ready_to_apply' ? (
+                      <Button size="sm" variant="secondary" onClick={handleApplyOtaUpdate}>
+                        Aplicar
+                      </Button>
+                    ) : null}
+                  </div>
+                </div>
+              </Card>
             </div>
-          </Card>
+          ) : null}
+
+          <button
+            type="button"
+            onClick={() => setIsOtaPanelOpen((currentValue) => !currentValue)}
+            className="inline-flex min-h-[52px] items-center gap-2 rounded-full border border-rv-gold/40 bg-rv-dark/95 px-4 py-3 text-sm font-black uppercase tracking-[0.18em] text-rv-gold shadow-2xl transition hover:bg-rv-dark"
+          >
+            OTA
+            {otaState.status === 'available' ? <span className="rounded-full bg-emerald-400 px-2 py-0.5 text-[10px] text-slate-950">Nuevo</span> : null}
+          </button>
         </div>
       ) : null}
       <Routes>
