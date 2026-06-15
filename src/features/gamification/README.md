@@ -73,6 +73,13 @@ Feature clean-lite para fases 1 a 4 de gamificacion basada internamente en Octal
 - Cada item proyecta `isUnlocked`, `isLocked`, `unlockLabel` y `unlockHint` para explicar por que ya se puede comprar o que falta para conseguirlo.
 - La compra se valida dentro del agregado antes de llamar a la funcion SQL, evitando adquisiciones de cosmeticos todavia bloqueados.
 
+## Fase de renderer cosmetico competitivo
+- El renderer visual del portrait ya depende de metadata estructurada por categoria y rareza, en lugar de apoyarse principalmente en slugs puntuales.
+- `common` y `rare` se mantienen sobrios y se diferencian sobre todo por acabado, color y composicion.
+- `epic` y `legendary` concentran overlays, silueta, capas y presencia competitiva mas fuerte.
+- El catalogo se expande de forma pareja entre `frame`, `background`, `badge` y `effect`, para que cada slot tenga piezas realmente deseables.
+- Cada item proyecta `variantLabel` para explicar mejor su identidad visual dentro de la tienda.
+
 ## Fase de etapas del atleta
 - La gamificacion ahora interpreta el progreso tambien como una narrativa persistida del atleta, no solo como nivel y XP.
 - El agregado del estudiante expone `identity.currentStage` con `currentStageSlug`, `currentStageName`, `currentStageDescription`, `progressHint` y `metadata`.

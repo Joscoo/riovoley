@@ -573,6 +573,17 @@ const getCoinsFromXpSource = ({ sourceType, xpDelta = 0, label = '' }) => {
   }
 };
 
+const buildCosmeticVariantLabel = (item) => {
+  const metadata = item?.metadata || {};
+  const rawVariant = metadata.frameVariant
+    || metadata.backgroundVariant
+    || metadata.badgeVariant
+    || metadata.effectVariant
+    || '';
+
+  return rawVariant ? String(rawVariant).replaceAll('-', ' ') : 'base';
+};
+
 const mapRowsByKey = (rows, key) =>
   (rows || []).reduce((map, row) => {
     const rowKey = row?.[key];
@@ -2743,6 +2754,13 @@ const buildCosmeticCatalogMap = (catalog = []) =>
     return map;
   }, {});
 
+const buildEquippedCosmeticItems = ({ cosmeticEquipment = null, cosmeticCatalogMap = {} }) => ({
+  frame: cosmeticCatalogMap[cosmeticEquipment?.frame_item_slug] || null,
+  background: cosmeticCatalogMap[cosmeticEquipment?.background_item_slug] || null,
+  badge: cosmeticCatalogMap[cosmeticEquipment?.badge_item_slug] || null,
+  effect: cosmeticCatalogMap[cosmeticEquipment?.effect_item_slug] || null,
+});
+
 const resolveProfilePhotoUrl = (repository, path) => {
   if (!path || typeof repository?.getPublicProfilePhotoUrl !== 'function') {
     return null;
@@ -3031,6 +3049,7 @@ const buildCosmeticsView = ({ catalog, ownedItems, equipment, wallet, profile, l
       photoFocus: getCosmeticPhotoFocus(item),
       photoFocusLabel: getCosmeticPhotoFocusLabel(item),
       metadata: item.metadata || {},
+      variantLabel: buildCosmeticVariantLabel(item),
     };
   }).sort((left, right) => {
     if (left.isOwned !== right.isOwned) {
@@ -3079,6 +3098,7 @@ const buildLeaderboardStudentEntry = ({
   student,
   identity = null,
   cosmeticEquipment = null,
+  cosmeticCatalogMap = {},
   tests,
   attendances,
   payments,
@@ -3115,12 +3135,14 @@ const buildLeaderboardStudentEntry = ({
   });
   const profileImageMode = normalizeProfileImageMode(identity?.profile_image_mode);
   const profilePhotoUrl = resolveProfilePhotoUrl(repository, identity?.profile_photo_path);
+  const equippedCosmeticItems = buildEquippedCosmeticItems({ cosmeticEquipment, cosmeticCatalogMap });
 
   return {
     student,
     ageBand: deriveAgeBand(student.fecha_nacimiento || student.users?.fecha_nacimiento, today),
     identity,
     cosmeticEquipment,
+    equippedCosmeticItems,
     competitorName: buildCompetitorName(student, identity),
     realName: buildStudentRealName(student),
     avatarModelSlug,
@@ -3281,6 +3303,7 @@ const formatLeaderboard = ({ rows, studentId, definition, entriesByStudentId = {
         ).name,
       profileImageMode: entry.profileImageMode || 'avatar',
       cosmeticEquipment: entry.cosmeticEquipment || null,
+      equippedCosmeticItems: entry.equippedCosmeticItems || null,
       equippedTitle: titlesState.equippedTitle,
       leaderboardType: row.leaderboard_type || definition?.type || 'overall',
       metricKey: row.metric_key || definition?.metricKey || 'total_xp',
@@ -3562,6 +3585,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
       ]);
       const identitiesByStudentId = mapRowsByKey(categoryIdentities, 'student_id');
       const cosmeticEquipmentByStudentId = mapRowsByKey(categoryCosmeticEquipment, 'student_id');
+      const cosmeticCatalogMap = buildCosmeticCatalogMap(cosmeticCatalog);
       const testsByStudentId = groupRowsByStudentId(categoryTests);
       const attendancesByStudentId = groupRowsByStudentId(categoryAttendances);
       const paymentsByStudentId = groupRowsByStudentId(categoryPayments);
@@ -3574,7 +3598,6 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         paymentsByStudentId,
         today: todayProvider(),
         syncedAt: isoProvider(),
-        ageBandFilter: derived.ageBand,
         currentStudentId: student.id,
         limit: 5,
         repository,
@@ -3585,6 +3608,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
               student: categoryStudent,
               identity: identitiesByStudentId[categoryStudent.id] || null,
               cosmeticEquipment: cosmeticEquipmentByStudentId[categoryStudent.id] || null,
+              cosmeticCatalogMap,
               tests: testsByStudentId[categoryStudent.id] || [],
               attendances: attendancesByStudentId[categoryStudent.id] || [],
               payments: paymentsByStudentId[categoryStudent.id] || [],
@@ -3969,7 +3993,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
     execute: async ({ category, ageBand, limit = 10, leaderboardType = 'overall' }) => {
       const studentsInCategory = await repository.listStudentsByCategory(category);
       const studentIds = studentsInCategory.map((student) => student.id);
-      const [categoryTests, categoryAttendances, categoryPayments, categoryIdentities, titleCatalog] = await Promise.all([
+      const [categoryTests, categoryAttendances, categoryPayments, categoryIdentities, categoryCosmeticEquipment, titleCatalog, cosmeticCatalog] = await Promise.all([
         listPhysicalTestsByStudentIds(studentIds),
         listAttendancesByStudentIds(studentIds),
         listPaymentsByStudentIds(studentIds),
@@ -3978,12 +4002,14 @@ export const createGamificationUseCases = (repository, deps = {}) => {
           ? repository.listStudentCosmeticEquipmentByStudentIds(studentIds)
           : Promise.resolve([]),
         listTitleCatalog(),
+        listCosmeticCatalog(),
       ]);
       const testsByStudentId = groupRowsByStudentId(categoryTests);
       const attendancesByStudentId = groupRowsByStudentId(categoryAttendances);
       const paymentsByStudentId = groupRowsByStudentId(categoryPayments);
       const identitiesByStudentId = mapRowsByKey(categoryIdentities, 'student_id');
       const cosmeticEquipmentByStudentId = mapRowsByKey(categoryCosmeticEquipment, 'student_id');
+      const cosmeticCatalogMap = buildCosmeticCatalogMap(cosmeticCatalog);
       const leaderboardSections = buildLeaderboardSections({
         students: studentsInCategory,
         identitiesByStudentId,
@@ -3993,7 +4019,6 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         paymentsByStudentId,
         today: todayProvider(),
         syncedAt: isoProvider(),
-        ageBandFilter: ageBand || null,
         currentStudentId: null,
         limit,
         repository,
@@ -4004,6 +4029,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
             student,
             identity: identitiesByStudentId[student.id] || null,
             cosmeticEquipment: cosmeticEquipmentByStudentId[student.id] || null,
+            cosmeticCatalogMap,
             tests: testsByStudentId[student.id] || [],
             attendances: attendancesByStudentId[student.id] || [],
             payments: paymentsByStudentId[student.id] || [],
@@ -4033,7 +4059,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
     execute: async ({ category, ageBand, limit = 10 }) => {
       const studentsInCategory = await repository.listStudentsByCategory(category);
       const studentIds = studentsInCategory.map((student) => student.id);
-      const [categoryTests, categoryAttendances, categoryPayments, categoryIdentities, categoryCosmeticEquipment, titleCatalog] = await Promise.all([
+      const [categoryTests, categoryAttendances, categoryPayments, categoryIdentities, categoryCosmeticEquipment, titleCatalog, cosmeticCatalog] = await Promise.all([
         listPhysicalTestsByStudentIds(studentIds),
         listAttendancesByStudentIds(studentIds),
         listPaymentsByStudentIds(studentIds),
@@ -4042,12 +4068,14 @@ export const createGamificationUseCases = (repository, deps = {}) => {
           ? repository.listStudentCosmeticEquipmentByStudentIds(studentIds)
           : Promise.resolve([]),
         listTitleCatalog(),
+        listCosmeticCatalog(),
       ]);
       const testsByStudentId = groupRowsByStudentId(categoryTests);
       const attendancesByStudentId = groupRowsByStudentId(categoryAttendances);
       const paymentsByStudentId = groupRowsByStudentId(categoryPayments);
       const identitiesByStudentId = mapRowsByKey(categoryIdentities, 'student_id');
       const cosmeticEquipmentByStudentId = mapRowsByKey(categoryCosmeticEquipment, 'student_id');
+      const cosmeticCatalogMap = buildCosmeticCatalogMap(cosmeticCatalog);
       const leaderboardSections = buildLeaderboardSections({
         students: studentsInCategory,
         identitiesByStudentId,
@@ -4057,7 +4085,6 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         paymentsByStudentId,
         today: todayProvider(),
         syncedAt: isoProvider(),
-        ageBandFilter: ageBand || null,
         currentStudentId: null,
         limit,
         repository,
@@ -4068,6 +4095,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
             student,
             identity: identitiesByStudentId[student.id] || null,
             cosmeticEquipment: cosmeticEquipmentByStudentId[student.id] || null,
+            cosmeticCatalogMap,
             tests: testsByStudentId[student.id] || [],
             attendances: attendancesByStudentId[student.id] || [],
             payments: paymentsByStudentId[student.id] || [],

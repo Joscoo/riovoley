@@ -1994,6 +1994,9 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                     </span>
                     <StatusBadge tone={getCosmeticPhotoImpactTone(item.photoFocus)}>{item.photoFocusLabel}</StatusBadge>
                   </div>
+                  <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-100">
+                    Variante: {item.variantLabel || 'base'}
+                  </p>
                   <p className="mt-2 text-[11px] text-slate-300">{item.unlockHint}</p>
                   {getCosmeticPhotoNotice(item.category, selectedProfileImageMode) ? (
                     <p className="mt-2 text-[11px] font-semibold text-cyan-100">
@@ -2691,6 +2694,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                       imageUrl={leaderboardLeader.profileImageUrl || leaderboardLeader.avatarUrl}
                       displayName={leaderboardLeader.publicAlias}
                       equipment={leaderboardLeader.cosmeticEquipment}
+                      equippedItems={leaderboardLeader.equippedCosmeticItems}
                       size="md"
                       showBadgeLabel
                     />
@@ -2719,6 +2723,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                       imageUrl={rivalEntry.profileImageUrl || rivalEntry.avatarUrl}
                       displayName={rivalEntry.publicAlias}
                       equipment={rivalEntry.cosmeticEquipment}
+                      equippedItems={rivalEntry.equippedCosmeticItems}
                       size="md"
                       showBadgeLabel
                     />
@@ -2756,6 +2761,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                       imageUrl={entry.profileImageUrl || entry.avatarUrl}
                       displayName={entry.publicAlias}
                       equipment={entry.cosmeticEquipment}
+                      equippedItems={entry.equippedCosmeticItems}
                       size="sm"
                       showBadgeLabel
                     />
@@ -2825,6 +2831,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                         imageUrl={entry.profileImageUrl || entry.avatarUrl}
                         displayName={entry.publicAlias}
                         equipment={entry.cosmeticEquipment}
+                        equippedItems={entry.equippedCosmeticItems}
                         size="sm"
                         showBadgeLabel
                       />

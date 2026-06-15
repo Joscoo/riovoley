@@ -38,3 +38,5 @@ yarn-error.log*
 
 # Local SQL dumps
 riovoley_full_schema.sql
+
+.superpowers/

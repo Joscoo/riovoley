@@ -223,6 +223,7 @@ const CategoryLeaderboardsPanel = ({
                       imageUrl={leader?.profileImageUrl || leader?.avatarUrl}
                       displayName={leader?.publicAlias}
                       equipment={leader?.cosmeticEquipment}
+                      equippedItems={leader?.equippedCosmeticItems}
                       size="sm"
                       showBadgeLabel
                     />
@@ -348,6 +349,7 @@ const CategoryLeaderboardsPanel = ({
                             imageUrl={row.profileImageUrl || row.avatarUrl}
                             displayName={row.publicAlias}
                             equipment={row.cosmeticEquipment}
+                            equippedItems={row.equippedCosmeticItems}
                             size="sm"
                             showBadgeLabel
                           />

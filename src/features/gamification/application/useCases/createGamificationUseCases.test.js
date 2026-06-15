@@ -166,6 +166,9 @@ describe('createGamificationUseCases', () => {
       { student_id: 's1', categoria: 'iniciacion_hombres', age_band: 'menor', score: 420, current_level: 2, rank_position: 1, snapshot_date: '2026-06-07', public_alias: 'L*** P' },
     ]);
     repository.listStudentsByCategory.mockResolvedValue([buildStudent()]);
+    repository.listStudentCosmeticEquipmentByStudentIds.mockResolvedValue([
+      { student_id: 's1', frame_item_slug: 'frame_bronce_club' },
+    ]);
     repository.listIdentitiesByStudentIds.mockResolvedValue([
       { student_id: 's1', nickname: 'RayoLeo', selected_title_slug: 'primer_impulso', avatar_style: 'thumbs' },
     ]);
@@ -247,6 +250,10 @@ describe('createGamificationUseCases', () => {
       equipment: { frame: 'frame_bronce_club' },
     });
     expect(result.leaderboard[0].equippedTitle?.slug).toBe('primer_impulso');
+    expect(result.leaderboard[0].equippedCosmeticItems?.frame).toMatchObject({
+      slug: 'frame_bronce_club',
+      name: 'Marco Bronce Club',
+    });
     expect(result.leaderboards.some((board) => board.type === 'attendance_total')).toBe(true);
     expect(result.recommendations.length).toBeGreaterThan(0);
     expect(result.upcomingChallenges.length).toBeGreaterThan(0);
@@ -496,15 +503,15 @@ describe('createGamificationUseCases', () => {
     expect(result.leaderboard.some((entry) => entry.isCurrentStudent)).toBe(true);
   });
 
-  it('listCategoryLeaderboardsUseCase retorna todas las tablas formateadas de una categoria', async () => {
+  it('listCategoryLeaderboardsUseCase prioriza la categoria aunque reciba un ageBand', async () => {
     const repository = buildRepository();
     repository.listStudentsByCategory.mockResolvedValue([
       buildStudent(),
       {
         id: 's2',
         categoria: 'iniciacion_hombres',
-        fecha_nacimiento: '2011-03-11',
-        users: { nombre: 'Ian', apellido: 'Lopez', fecha_nacimiento: '2011-03-11' },
+        fecha_nacimiento: '2000-03-11',
+        users: { nombre: 'Ian', apellido: 'Lopez', fecha_nacimiento: '2000-03-11' },
       },
     ]);
     repository.listPhysicalTestsByStudentIds.mockResolvedValue([
@@ -521,7 +528,13 @@ describe('createGamificationUseCases', () => {
       { id: 'p2', student_id: 's2', fecha_inicio: '2026-06-01', fecha_pago: '2026-06-02', estado: 'activo' },
     ]);
     repository.listIdentitiesByStudentIds.mockResolvedValue([]);
+    repository.listStudentCosmeticEquipmentByStudentIds.mockResolvedValue([
+      { student_id: 's2', frame_item_slug: 'frame_cian_ruta' },
+    ]);
     repository.listTitleCatalog.mockResolvedValue([]);
+    repository.listCosmeticCatalog.mockResolvedValue([
+      { slug: 'frame_cian_ruta', name: 'Marco Ruta Cian', rarity: 'common', category: 'frame', metadata: { accent: 'cobalt', frameVariant: 'arc-double' } },
+    ]);
 
     const useCases = createGamificationUseCases(repository, buildDeps());
     const result = await useCases.listCategoryLeaderboardsUseCase.execute({
@@ -538,6 +551,10 @@ describe('createGamificationUseCases', () => {
     expect(result.find((board) => board.type === 'attendance_total')?.rows[0]).toMatchObject({
       publicAlias: 'Ian Lopez',
       score: 2,
+    });
+    expect(result.find((board) => board.type === 'overall')?.rows[0].equippedCosmeticItems?.frame).toMatchObject({
+      slug: 'frame_cian_ruta',
+      name: 'Marco Ruta Cian',
     });
   });
 
@@ -937,5 +954,59 @@ describe('createGamificationUseCases', () => {
         }),
       ]),
     );
+  });
+
+  it('preserves a readable variant label for expanded cosmetics inside the projected catalog', async () => {
+    const repository = buildRepository();
+    repository.findStudentById.mockResolvedValue(buildStudent());
+    repository.listPhysicalTests.mockResolvedValue([]);
+    repository.listAttendances.mockResolvedValue([]);
+    repository.listPayments.mockResolvedValue([]);
+    repository.getProfile.mockResolvedValue(null);
+    repository.getIdentity.mockResolvedValue(null);
+    repository.getCurrencyWallet.mockResolvedValue({ student_id: 's1', balance: 120, total_earned: 120, total_spent: 0 });
+    repository.listStudentAchievements.mockResolvedValue([]);
+    repository.listAchievementCatalog.mockResolvedValue([]);
+    repository.listTitleCatalog.mockResolvedValue([]);
+    repository.listActiveChallenges.mockResolvedValue([]);
+    repository.listActiveCampaigns.mockResolvedValue([]);
+    repository.listActiveHiddenRewards.mockResolvedValue([]);
+    repository.listStudentChallengeProgress.mockResolvedValue([]);
+    repository.listStudentCampaignProgress.mockResolvedValue([]);
+    repository.listStudentHiddenRewards.mockResolvedValue([]);
+    repository.listXpLedger.mockResolvedValue([]);
+    repository.listCurrencyLedger.mockResolvedValue([]);
+    repository.listStudentCosmeticItems.mockResolvedValue([]);
+    repository.getStudentCosmeticEquipment.mockResolvedValue(null);
+    repository.listStudentsByCategory.mockResolvedValue([buildStudent()]);
+    repository.listPhysicalTestsByStudentIds.mockResolvedValue([]);
+    repository.listAttendancesByStudentIds.mockResolvedValue([]);
+    repository.listPaymentsByStudentIds.mockResolvedValue([]);
+    repository.listIdentitiesByStudentIds.mockResolvedValue([]);
+    repository.listCosmeticCatalog.mockResolvedValue([
+      {
+        slug: 'frame_prestige_arc',
+        name: 'Marco Prestige Arc',
+        rarity: 'epic',
+        category: 'frame',
+        price_coins: 42,
+        sort_order: 10,
+        metadata: {
+          accent: 'cobalt',
+          frameVariant: 'arc-double',
+          unlockType: 'purchase',
+          unlockHint: 'Disponible para comprar con monedas.',
+        },
+      },
+    ]);
+
+    const useCases = createGamificationUseCases(repository, buildDeps());
+    const result = await useCases.loadStudentGamificationByStudentIdUseCase.execute({ studentId: 's1' });
+    const item = result.cosmetics.items.find((entry) => entry.slug === 'frame_prestige_arc');
+
+    expect(item.metadata.frameVariant).toBe('arc-double');
+    expect(item.rarity).toBe('epic');
+    expect(item.canPurchase).toBe(true);
+    expect(item.variantLabel).toBe('arc double');
   });
 });
