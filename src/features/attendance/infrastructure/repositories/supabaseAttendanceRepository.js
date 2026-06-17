@@ -148,4 +148,21 @@ export class SupabaseAttendanceRepository {
       throw new AttendanceError(normalizeError(error, 'Error limpiando asistencias'), error);
     }
   }
+
+  async getActiveMensualidades(selectedDate) {
+    const { data, error } = await supabase
+      .from('payments')
+      .select('student_id')
+      .not('membership_type_id', 'is', null)
+      .eq('estado', 'activo')
+      .lte('fecha_inicio', selectedDate)
+      .gte('fecha_fin', selectedDate)
+      .is('deleted_at', null);
+
+    if (error) {
+      throw new AttendanceError(normalizeError(error, 'Error consultando mensualidades activas'), error);
+    }
+
+    return data.map(d => d.student_id);
+  }
 }

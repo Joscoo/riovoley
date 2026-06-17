@@ -8,6 +8,8 @@ export const createAttendanceService = (repository = new SupabaseAttendanceRepos
     useCases.loadAttendanceDataUseCase.execute({ query, filters, athletes: currentAthletes });
   const loadTodayAttendance = async ({ selectedDate, athletes }) =>
     useCases.loadTodayAttendanceUseCase.execute({ selectedDate, athletes });
+  const loadActiveMensualidades = async ({ selectedDate }) =>
+    useCases.loadActiveMensualidadesUseCase.execute({ selectedDate });
   const listPaymentTypes = async () => useCases.listPaymentTypesUseCase.execute();
   const registerAttendanceWithPayment = async ({ athleteId, selectedDate, paymentTypeId }) =>
     useCases.registerAttendanceWithPaymentUseCase.execute({ athleteId, selectedDate, paymentTypeId });
@@ -51,6 +53,7 @@ export const createAttendanceService = (repository = new SupabaseAttendanceRepos
     loadAthletes,
     loadAttendanceData,
     loadTodayAttendance,
+    loadActiveMensualidades,
     listPaymentTypes,
     registerAttendanceWithPayment,
     removeAttendance,

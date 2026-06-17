@@ -1,4 +1,4 @@
-﻿// src/features/trainer-management/presentation/components/EntrenadoresManager.js
+// src/features/trainer-management/presentation/components/EntrenadoresManager.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -108,7 +108,7 @@ const EntrenadoresManager = ({ user }) => {
               value={filters.search}
               onChange={(event) => setFilters((current) => ({ ...current, search: event.target.value }))}
               placeholder="Nombre, apellido o email"
-              className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
+              className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50"
             />
           </Field>
 
@@ -117,7 +117,7 @@ const EntrenadoresManager = ({ user }) => {
               id="trainer-management-status"
               value={filters.status}
               onChange={(event) => setFilters((current) => ({ ...current, status: event.target.value }))}
-              className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
+              className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white appearance-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <option value="all">Todos</option>
               <option value="active">Activos</option>
@@ -130,7 +130,7 @@ const EntrenadoresManager = ({ user }) => {
               id="trainer-management-sort-by"
               value={filters.sortBy}
               onChange={(event) => setFilters((current) => ({ ...current, sortBy: event.target.value }))}
-              className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
+              className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white appearance-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <option value="apellido">Apellido</option>
               <option value="nombre">Nombre</option>
@@ -144,7 +144,7 @@ const EntrenadoresManager = ({ user }) => {
               id="trainer-management-sort-order"
               value={filters.sortOrder}
               onChange={(event) => setFilters((current) => ({ ...current, sortOrder: event.target.value }))}
-              className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
+              className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white appearance-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <option value="asc">Ascendente</option>
               <option value="desc">Descendente</option>
@@ -276,7 +276,7 @@ const EntrenadoresManager = ({ user }) => {
                     value={formData.nombre}
                     onChange={(event) => setFormData((prev) => ({ ...prev, nombre: event.target.value }))}
                     required
-                    className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
+                    className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50"
                   />
                 </Field>
 
@@ -286,7 +286,7 @@ const EntrenadoresManager = ({ user }) => {
                     value={formData.apellido}
                     onChange={(event) => setFormData((prev) => ({ ...prev, apellido: event.target.value }))}
                     required
-                    className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
+                    className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50"
                   />
                 </Field>
               </div>
@@ -305,7 +305,7 @@ const EntrenadoresManager = ({ user }) => {
                   onChange={(event) => setFormData((prev) => ({ ...prev, email: event.target.value }))}
                   required
                   disabled={Boolean(editingEntrenador)}
-                  className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50"
                 />
               </Field>
 
@@ -315,7 +315,7 @@ const EntrenadoresManager = ({ user }) => {
                     type="tel"
                     value={formData.telefono}
                     onChange={(event) => setFormData((prev) => ({ ...prev, telefono: event.target.value }))}
-                    className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70"
+                    className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50"
                   />
                 </Field>
 
@@ -324,7 +324,7 @@ const EntrenadoresManager = ({ user }) => {
                     type="date"
                     value={formData.fecha_nacimiento}
                     onChange={(event) => setFormData((prev) => ({ ...prev, fecha_nacimiento: event.target.value }))}
-                    className="min-h-12 w-full rounded-lg border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70 rv-dark-date-input"
+                    className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50 rv-dark-date-input"
                   />
                 </Field>
               </div>

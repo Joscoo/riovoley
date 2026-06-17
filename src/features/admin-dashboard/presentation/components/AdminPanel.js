@@ -10,6 +10,7 @@ import {
   FaCog,
   FaDollarSign,
   FaDumbbell,
+  FaTrophy,
 } from 'react-icons/fa';
 import { useUserProfile } from '../../../auth-profile';
 import { AnunciosManager } from '../../../announcements';
@@ -19,6 +20,7 @@ import { PagosManager } from '../../../payments';
 import { ProfileSettings } from '../../../account-admin';
 import { TestsFisicosManager } from '../../../physical-tests';
 import { UserManagementPanel } from '../../../user-management';
+import { GamificationAdminPanel } from '../../../gamification';
 import Dashboard from './Dashboard';
 import { RolePanelLayout, iconRegistry, semanticCatalog } from '../../../../shared/ui';
 
@@ -37,6 +39,7 @@ const AdminPanel = ({ user }) => {
     { id: 'horarios', icon: <FaClock />, label: 'Horarios', description: 'Gestion de horarios de entrenamientos' },
     { id: 'tests-fisicos', icon: <FaDumbbell />, label: 'Tests Fisicos', description: 'Evaluaciones fisicas' },
     { id: 'anuncios', icon: <FaBullhorn />, label: 'Anuncios', description: 'Comunicados y notificaciones' },
+    { id: 'gamificacion', icon: <FaTrophy />, label: 'Gamificación', description: 'Tienda, logros y metas' },
     { id: 'configuracion', icon: <FaCog />, label: 'Configuracion', description: 'Perfil y seguridad' },
   ], []);
 
@@ -98,6 +101,8 @@ const AdminPanel = ({ user }) => {
         return <TestsFisicosManager user={user} />;
       case 'anuncios':
         return <AnunciosManager user={user} />;
+      case 'gamificacion':
+        return <GamificationAdminPanel />;
       case 'configuracion':
         return <ProfileSettings user={user} />;
       default:

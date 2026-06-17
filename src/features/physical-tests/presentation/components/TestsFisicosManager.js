@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { physicalTestsService } from '../../physicalTestsService';
 import { getPhysicalTestFieldMeta } from '../../domain/physicalTestFieldMetadata';
-import { Button, Card, Field } from '../../../../shared/ui';
+import { Button, Card, EmptyState, Field, Modal, SectionHeader } from '../../../../shared/ui';
 import { 
   FaEdit, FaPlus, FaClock, FaSave, FaDumbbell, FaTrash, 
   FaUsers, FaCheckCircle, FaExclamationTriangle, FaChartLine,
@@ -14,7 +14,7 @@ import {
 } from 'react-icons/fa';
 
 const INPUT_BASE =
-  'min-h-12 w-full rounded-lg border-2 border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 transition-all duration-200 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/30';
+  'w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white placeholder-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50';
 
 const styles = {
   testsFisicosManager: 'mx-auto w-full max-w-7xl space-y-4',
@@ -89,8 +89,8 @@ const styles = {
   formSection: 'rounded-2xl border border-white/15 bg-black/25 p-4',
   sectionTitle: 'mb-3 inline-flex items-center gap-2 text-base font-black text-white',
   formGrid: 'grid gap-3 tablet:grid-cols-2',
-  inputGroup: 'space-y-1 [&_label]:text-xs [&_label]:font-bold [&_label]:uppercase [&_label]:tracking-wide [&_label]:text-rv-gold/90 [&_input]:min-h-[48px] [&_input]:w-full [&_input]:rounded-xl [&_input]:border [&_input]:border-white/20 [&_input]:bg-black/30 [&_input]:px-3 [&_input]:py-2 [&_input]:text-sm [&_input]:text-white [&_input]:placeholder:text-slate-400 [&_input]:focus:border-rv-gold [&_input]:focus:outline-none [&_input]:focus:ring-2 [&_input]:focus:ring-rv-gold/70 [&_textarea]:w-full [&_textarea]:rounded-xl [&_textarea]:border [&_textarea]:border-white/20 [&_textarea]:bg-black/30 [&_textarea]:px-3 [&_textarea]:py-2 [&_textarea]:text-sm [&_textarea]:text-white [&_textarea]:placeholder:text-slate-400 [&_textarea]:focus:border-rv-gold [&_textarea]:focus:outline-none [&_textarea]:focus:ring-2 [&_textarea]:focus:ring-rv-gold/70',
-  inputHint: 'text-xs text-slate-300',
+  inputGroup: 'space-y-1 [&_label]:text-xs [&_label]:font-bold [&_label]:uppercase [&_label]:tracking-wide [&_label]:text-slate-400 [&_input]:w-full [&_input]:rounded-lg [&_input]:border [&_input]:border-rv-gold/25 [&_input]:bg-slate-900/60 [&_input]:px-3 [&_input]:py-2 [&_input]:text-sm [&_input]:text-white [&_input]:placeholder:text-slate-500 [&_input]:transition-colors [&_input]:focus-visible:outline-none [&_input]:focus-visible:ring-2 [&_input]:focus-visible:ring-rv-gold/80 [&_textarea]:w-full [&_textarea]:rounded-lg [&_textarea]:border [&_textarea]:border-rv-gold/25 [&_textarea]:bg-slate-900/60 [&_textarea]:px-3 [&_textarea]:py-2 [&_textarea]:text-sm [&_textarea]:text-white [&_textarea]:placeholder:text-slate-500 [&_textarea]:transition-colors [&_textarea]:focus-visible:outline-none [&_textarea]:focus-visible:ring-2 [&_textarea]:focus-visible:ring-rv-gold/80',
+  inputHint: 'text-xs text-slate-500',
   searchableSelect: 'relative',
   dropdownList: 'absolute z-20 mt-1 max-h-64 w-full overflow-y-auto rounded-xl border border-white/20 bg-slate-950/95 shadow-2xl',
   dropdownItem: 'w-full border-b border-white/10 px-3 py-2 text-left transition last:border-0 hover:bg-rv-gold/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80',
@@ -538,18 +538,16 @@ const TestsFisicosManager = ({ user }) => {
 
   return (
     <div className={styles.testsFisicosManager}>
-      <div className={styles.header}>
-        <div className={styles.headerLeft}>
-          <h2><FaDumbbell className="mr-2.5 inline align-middle" /> Gestión de Tests Físicos</h2>
-          <p>Registrar y seguir el rendimiento físico de los atletas</p>
-        </div>
-        <button 
-          className={styles.addButton}
-          onClick={() => openModal()}
-        >
-          <FaPlus className="mr-2 inline align-middle" /> Nuevo Test Físico
-        </button>
-      </div>
+      <SectionHeader
+        title="Gestión de Tests Físicos"
+        description="Registrar y seguir el rendimiento físico de los atletas"
+        icon={FaDumbbell}
+        actions={
+          <Button onClick={() => openModal()} className="mobile:w-full desktop:w-auto">
+            <FaPlus className="mr-2 inline align-middle" /> Nuevo Test Físico
+          </Button>
+        }
+      />
 
       {/* Estadísticas Generales */}
       <div className={styles.statsGrid}>
@@ -876,35 +874,23 @@ const TestsFisicosManager = ({ user }) => {
               </div>
             </>
           ) : (
-            <div className={styles.noTests}>
-              <h3><FaDumbbell className="mr-2 inline align-middle" /> No hay tests físicos registrados</h3>
-              <p>Registra el primer test físico para comenzar el seguimiento</p>
-            </div>
+            <EmptyState
+              icon={<FaDumbbell />}
+              title="No hay tests físicos registrados"
+              description="Registra el primer test físico para comenzar el seguimiento"
+            />
           )}
         </div>
       )}
 
       {/* Modal para Agregar/Editar */}
       {showModal && (
-        <div className={styles.modalOverlay}>
-          <div className={styles.modal}>
-            <div className={styles.modalHeader}>
-              <h3>
-                {editingTest ? (
-                  <><FaEdit className="mr-2 inline align-middle" /> Editar Test Físico</>
-                ) : (
-                  <><FaPlus className="mr-2 inline align-middle" /> Nuevo Test Físico</>
-                )}
-              </h3>
-              <button 
-                onClick={() => setShowModal(false)}
-                className={styles.closeButton}
-              >
-                ✕
-              </button>
-            </div>
-            
-            <form onSubmit={handleSubmit} className={styles.form}>
+        <Modal
+          onClose={() => setShowModal(false)}
+          title={editingTest ? 'Editar Test Físico' : 'Nuevo Test Físico'}
+          icon={editingTest ? <FaEdit /> : <FaPlus />}
+        >
+          <form onSubmit={handleSubmit} className={styles.form}>
               
               {/* Información General */}
               <div className={styles.formSection}>
@@ -1208,8 +1194,7 @@ const TestsFisicosManager = ({ user }) => {
                 </button>
               </div>
             </form>
-          </div>
-        </div>
+        </Modal>
       )}
     </div>
   );

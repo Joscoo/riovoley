@@ -189,7 +189,8 @@ const RoleSidebar = ({
           isMobileOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
         )}
         onClick={() => setIsMobileOpen(false)}
-        aria-hidden={isMobileOpen ? 'false' : 'true'}
+        aria-hidden={!isMobileOpen ? 'true' : undefined}
+        inert={!isMobileOpen ? '' : undefined}
       >
         <WrapperTag
           className={cn(

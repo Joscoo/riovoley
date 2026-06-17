@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { FaPlus, FaUsers, FaCheckCircle, FaBan, FaList, FaEdit, FaTimes } from 'react-icons/fa';
+import { FaPlus, FaUsers, FaCheckCircle, FaBan, FaList, FaEdit } from 'react-icons/fa';
 import { userManagementService } from '../../../userManagementService';
 import { useUserPermissions } from '../hooks/useUserPermissions';
 import { useUserActions } from '../hooks/useUserActions';
 import { useTimedMessage } from '../hooks/useTimedMessage';
 import { communicationsService } from '../../../../communications';
 import { trainingCategoriesService } from '../../../../training-categories';
-import { SectionHeader, Card, Button, EmptyState, iconRegistry } from '../../../../../shared/ui';
+import { SectionHeader, Card, Button, EmptyState, Modal, iconRegistry } from '../../../../../shared/ui';
 import { SORT_DIRECTION, createTableQuery } from '../../../../../shared/lib/tableQuery';
 import UserCard from '../shared/UserCard';
 import UserForm from '../shared/UserForm';
@@ -421,34 +421,12 @@ const AthletesTab = ({ userRole }) => {
       )}
 
       {showModal && (
-        <div
-          className="fixed inset-0 z-[90] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
-          onClick={closeModal}
+        <Modal
+          title={editingAthlete ? 'Editar Estudiante' : 'Agregar Nuevo Estudiante'}
+          icon={editingAthlete ? <FaEdit /> : <FaPlus />}
+          onClose={closeModal}
+          className="max-w-4xl"
         >
-          <Card
-            className="max-h-[90vh] w-full max-w-4xl overflow-y-auto"
-            role="dialog"
-            aria-modal="true"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="mb-5 flex items-center justify-between gap-3 border-b border-rv-gold/25 pb-3">
-              <h3 className="text-lg font-bold text-white mobile:text-xl">
-                {editingAthlete ? (
-                  <>
-                    <FaEdit className="mr-2 inline align-middle text-rv-gold" />
-                    <span className="align-middle">Editar Estudiante</span>
-                  </>
-                ) : (
-                  <>
-                    <FaPlus className="mr-2 inline align-middle text-rv-gold" />
-                    <span className="align-middle">Agregar Nuevo Estudiante</span>
-                  </>
-                )}
-              </h3>
-              <Button variant="ghost" size="icon" onClick={closeModal} aria-label="Cerrar modal">
-                <FaTimes />
-              </Button>
-            </div>
 
             <UserForm
               userType="atleta"
@@ -458,8 +436,7 @@ const AthletesTab = ({ userRole }) => {
               onCancel={closeModal}
               submitLabel={editingAthlete ? 'Actualizar' : 'Guardar'}
             />
-          </Card>
-        </div>
+        </Modal>
       )}
 
       {showSuspendModal && (

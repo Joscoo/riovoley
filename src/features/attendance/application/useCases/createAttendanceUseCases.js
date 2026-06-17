@@ -599,6 +599,10 @@ export const createAttendanceUseCases = (repository, deps = {}) => {
     },
   };
 
+  const loadActiveMensualidadesUseCase = {
+    execute: async ({ selectedDate }) => repository.getActiveMensualidades(selectedDate),
+  };
+
   return {
     loadAthletesUseCase,
     loadAttendanceDataUseCase,
@@ -623,5 +627,6 @@ export const createAttendanceUseCases = (repository, deps = {}) => {
     getAthleteInitialsUseCase,
     buildHomonymsByCompactNameUseCase,
     buildDayAttendanceBreakdownUseCase,
+    loadActiveMensualidadesUseCase,
   };
 };

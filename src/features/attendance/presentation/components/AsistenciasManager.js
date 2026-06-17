@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { attendanceService } from '../../attendanceService';
 import { reportingService } from '../../../reporting';
-import { Button, Card, Field, SortableHeader } from '../../../../shared/ui';
+import { Button, Card, Field, SortableHeader, SectionHeader, EmptyState, Modal } from '../../../../shared/ui';
 import {
   SORT_DIRECTION,
   createTableQuery,
@@ -26,7 +26,6 @@ import {
   FaMedal, 
   FaTrash, 
   FaTimes, 
-  FaCheck,
   FaDollarSign,
   FaCalendarCheck,
   FaCreditCard,
@@ -78,16 +77,7 @@ const styleMap = {
   subCategory: 'rounded-xl border border-white/10 bg-black/25 p-2',
   atletasList: 'space-y-2',
   atletaItem: 'flex items-center justify-between gap-2 rounded-xl border border-white/10 bg-black/30 p-2',
-  atletaItemNew: 'flex items-center justify-between gap-2 rounded-xl border border-white/10 bg-black/30 p-2',
-  atletaNameSection: 'min-w-0',
-  atletaIdentity: 'flex items-center gap-2',
-  atletaInitials: 'inline-flex h-8 w-8 items-center justify-center rounded-full border border-rv-gold/40 bg-rv-gold/20 text-[11px] font-black text-rv-gold',
-  atletaName: 'truncate text-sm font-semibold text-white',
-  currentPaymentBadge: 'mt-1 inline-flex rounded-full border border-rv-gold/30 bg-rv-gold/15 px-2 py-0.5 text-[11px] font-bold text-rv-gold',
-  paymentButtons: 'flex flex-wrap items-center justify-end gap-1',
-  paymentMethodBtn: 'inline-flex min-h-[40px] min-w-[40px] items-center justify-center rounded-lg border border-white/20 bg-white/10 px-2 text-xs font-bold text-slate-100 transition hover:bg-white/20',
-  paymentMethodActive: 'border-emerald-400/60 bg-emerald-500/25 text-emerald-100',
-  removeAttendanceBtn: 'inline-flex min-h-[40px] min-w-[40px] items-center justify-center rounded-lg border border-red-400/35 bg-red-500/15 text-red-100 transition hover:bg-red-500/30',
+
   attendanceToggle: 'inline-flex min-h-[40px] min-w-[40px] items-center justify-center rounded-lg border px-2 text-xs font-bold transition',
   present: 'border-emerald-400/45 bg-emerald-500/25 text-emerald-100',
   absent: 'border-white/20 bg-white/10 text-slate-200',
@@ -144,7 +134,19 @@ const styleMap = {
   confirmButton: 'inline-flex min-h-[48px] items-center justify-center rounded-xl bg-rv-gold px-4 py-2 text-sm font-black text-rv-dark shadow-rv-gold transition hover:brightness-105',
   subCategoryTableCompact: '',
   tabButtonCompact: '',
-  subtotalCompact: ''
+  subtotalCompact: '',
+  atletaItemNew: 'flex flex-col tablet:flex-row items-center justify-between p-3 rounded-2xl bg-black/40 border border-white/10 hover:border-rv-gold/30 transition-all duration-300 gap-3',
+  atletaNameSection: 'flex flex-wrap items-center gap-3 w-full tablet:w-auto',
+  atletaIdentity: 'flex items-center gap-3 flex-1 min-w-[200px]',
+  atletaInitials: 'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-rv-gold/20 to-rv-gold/5 border border-rv-gold/30 text-sm font-black text-rv-gold shadow-[0_0_15px_rgba(255,215,0,0.1)]',
+  atletaName: 'text-sm font-black uppercase tracking-wide text-white drop-shadow-md truncate',
+  currentPaymentBadge: 'inline-flex h-8 w-8 items-center justify-center rounded-lg bg-rv-gold/20 border border-rv-gold/30 text-rv-gold shadow-[0_0_10px_rgba(255,215,0,0.2)] ml-2',
+  paymentButtons: 'flex flex-wrap items-center gap-2 w-full tablet:w-auto justify-end',
+  paymentMethodBtn: 'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-rv-gold/30 bg-black/40 text-rv-gold transition-all duration-200 hover:scale-105 hover:bg-rv-gold/20 active:scale-95 disabled:opacity-50',
+  paymentMethodActive: 'border-rv-gold bg-rv-gold text-black shadow-[0_0_15px_rgba(255,215,0,0.4)]',
+  presentBtn: 'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-emerald-500/30 bg-black/40 text-emerald-400 transition-all duration-200 hover:scale-105 hover:bg-emerald-500/20 active:scale-95',
+  presentActive: 'border-emerald-400 bg-emerald-500 text-white shadow-[0_0_15px_rgba(16,185,129,0.4)]',
+  removeAttendanceBtn: 'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-red-500/30 bg-red-500/10 text-red-400 transition hover:bg-red-500/20 active:scale-95 ml-1'
 };
 
 const styles = new Proxy(styleMap, {
@@ -192,6 +194,7 @@ const AsistenciasManager = ({ user }) => {
   );
 
   const [todayAttendance, setTodayAttendance] = useState([]);
+  const [activeMensualidades, setActiveMensualidades] = useState(new Set());
   const [bulkMode, setBulkMode] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('all'); // Nueva: categoría seleccionada en tabs
   const [paymentTypes, setPaymentTypes] = useState([]); // Métodos de pago disponibles
@@ -294,6 +297,7 @@ const AsistenciasManager = ({ user }) => {
     // Solo cargar asistencias del día si ya tenemos atletas cargados
     if (atletas.length > 0) {
       loadTodayAttendance();
+      loadActiveMensualidades();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedDate, atletas]);
@@ -336,6 +340,15 @@ const AsistenciasManager = ({ user }) => {
       setTodayAttendance(todayData || []);
     } catch (error) {
       console.error('Error cargando asistencias del día:', error);
+    }
+  };
+
+  const loadActiveMensualidades = async () => {
+    try {
+      const activeIds = await attendanceService.loadActiveMensualidades({ selectedDate });
+      setActiveMensualidades(new Set(activeIds));
+    } catch (err) {
+      console.error('Error cargando mensualidades activas:', err);
     }
   };
 
@@ -435,6 +448,24 @@ const AsistenciasManager = ({ user }) => {
   ].filter(Boolean).length;
 
   const registerAttendanceWithPayment = async (atletaId, paymentTypeId) => {
+    // Actualización Optimista de la UI
+    setTodayAttendance((prev) =>
+      prev.map((atleta) => {
+        if (atleta.id === atletaId) {
+          return {
+            ...atleta,
+            attendance: {
+              id: `temp-${Date.now()}`,
+              atleta_id: atletaId,
+              fecha: selectedDate,
+              metodo_pago_id: paymentTypeId,
+            },
+          };
+        }
+        return atleta;
+      })
+    );
+
     try {
       await attendanceService.registerAttendanceWithPayment({
         athleteId: atletaId,
@@ -442,42 +473,43 @@ const AsistenciasManager = ({ user }) => {
         paymentTypeId,
       });
 
-      loadTodayAttendance();
-      loadData(); // Refrescar la lista general
+      // Refrescar la lista general de historial en segundo plano
+      loadData();
     } catch (error) {
       console.error('Error registrando asistencia:', error);
       showNotice('error', 'Error: ' + error.message);
+      // Revertir si hubo error
+      loadTodayAttendance();
     }
   };
 
   const removeAttendance = async (atletaId) => {
+    // Actualización Optimista de la UI
+    setTodayAttendance((prev) =>
+      prev.map((atleta) => {
+        if (atleta.id === atletaId) {
+          return {
+            ...atleta,
+            attendance: null,
+          };
+        }
+        return atleta;
+      })
+    );
+
     try {
       await attendanceService.removeAttendance({
         athleteId: atletaId,
         selectedDate,
       });
 
-      loadTodayAttendance();
-      loadData(); // Refrescar la lista general
+      // Refrescar en segundo plano
+      loadData();
     } catch (error) {
       console.error('Error eliminando asistencia:', error);
       showNotice('error', 'Error: ' + error.message);
-    }
-  };
-
-  const toggleAttendance = async (atletaId, isCurrentlyPresent) => {
-    try {
-      await attendanceService.toggleAttendance({
-        athleteId: atletaId,
-        selectedDate,
-        isCurrentlyPresent,
-      });
-
+      // Revertir si hubo error
       loadTodayAttendance();
-      loadData(); // Refrescar la lista general
-    } catch (error) {
-      console.error('Error actualizando asistencia:', error);
-      showNotice('error', 'Error: ' + error.message);
     }
   };
 
@@ -576,6 +608,7 @@ const AsistenciasManager = ({ user }) => {
   const renderAtletaWithPaymentMethods = (atleta) => {
     const isPresent = atleta.attendance !== null;
     const currentPaymentMethod = atleta.attendance?.metodo_pago_id;
+    const hasActiveMensualidad = activeMensualidades.has(atleta.id);
     const homonymKey = attendanceService.getHomonymKey({ athleteUser: atleta.users });
     const homonymCount = homonymsByCompactName[homonymKey] || 0;
     const displayName = attendanceService.getCompactDisplayName({
@@ -607,7 +640,12 @@ const AsistenciasManager = ({ user }) => {
               {displayName}
             </span>
           </div>
-          {isPresent && currentPaymentMethod && (
+          {hasActiveMensualidad && (
+            <span className="ml-2 inline-flex items-center rounded-full bg-emerald-500/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-300 border border-emerald-400/30">
+              <FaCalendarCheck className="mr-1" /> Activa
+            </span>
+          )}
+          {isPresent && currentPaymentMethod && !hasActiveMensualidad && (
             <span className={styles.currentPaymentBadge}>
               {iconos[getPaymentMethodInfo(currentPaymentMethod).key] || <FaDollarSign />}
             </span>
@@ -615,34 +653,75 @@ const AsistenciasManager = ({ user }) => {
         </div>
         
         <div className={styles.paymentButtons}>
-          {paymentTypes.map(pt => {
-            const isSelected = currentPaymentMethod === pt.id;
-            const info = getPaymentMethodInfo(pt.id);
-            
-            return (
+          {hasActiveMensualidad ? (
+            <>
               <button
-                key={pt.id}
-                onClick={() => registerAttendanceWithPayment(atleta.id, pt.id)}
-                className={`${styles.paymentMethodBtn} ${
-                  isSelected ? styles.paymentMethodActive : ''
+                onClick={() => {
+                  if (!isPresent) {
+                    const mensualidadType = paymentTypes.find(pt => pt.nombre === 'mensualidad');
+                    if (mensualidadType) {
+                      registerAttendanceWithPayment(atleta.id, mensualidadType.id);
+                    } else {
+                      console.error('No mensualidadType found in paymentTypes:', paymentTypes);
+                      showNotice('error', 'Error: No se encontró el tipo de pago mensualidad en el sistema');
+                    }
+                  }
+                }}
+                className={`${styles.presentBtn} ${
+                  isPresent ? styles.presentActive : ''
                 }`}
-                aria-label={`Marcar asistencia con ${pt.nombre.replaceAll('_', ' ')}`}
-                title={pt.descripcion}
+                aria-label="Marcar como presente"
+                title="Presente"
               >
-                {iconos[info.key] || <FaDollarSign />}
+                <FaCheckCircle />
               </button>
-            );
-          })}
-          
-          {isPresent && (
-            <button
-              onClick={() => removeAttendance(atleta.id)}
-              className={styles.removeAttendanceBtn}
-              aria-label="Eliminar asistencia"
-              title="Eliminar asistencia"
-            >
-              <FaTimes />
-            </button>
+              <button
+                onClick={() => {
+                  if (isPresent) {
+                    removeAttendance(atleta.id);
+                  }
+                }}
+                className={`${styles.paymentMethodBtn} ${
+                  !isPresent ? 'border-red-400/40 bg-red-500/20 text-red-300 shadow-[0_0_12px_rgba(248,113,113,0.3)]' : ''
+                }`}
+                aria-label="Marcar como ausente"
+                title="Ausente"
+              >
+                <FaTimesCircle />
+              </button>
+            </>
+          ) : (
+            <>
+              {paymentTypes.map(pt => {
+                const isSelected = currentPaymentMethod === pt.id;
+                const info = getPaymentMethodInfo(pt.id);
+                
+                return (
+                  <button
+                    key={pt.id}
+                    onClick={() => registerAttendanceWithPayment(atleta.id, pt.id)}
+                    className={`${styles.paymentMethodBtn} ${
+                      isSelected ? styles.paymentMethodActive : ''
+                    }`}
+                    aria-label={`Marcar asistencia con ${pt.nombre.replaceAll('_', ' ')}`}
+                    title={pt.descripcion}
+                  >
+                    {iconos[info.key] || <FaDollarSign />}
+                  </button>
+                );
+              })}
+              
+              {isPresent && (
+                <button
+                  onClick={() => removeAttendance(atleta.id)}
+                  className={styles.removeAttendanceBtn}
+                  aria-label="Eliminar asistencia"
+                  title="Eliminar asistencia"
+                >
+                  <FaTimes />
+                </button>
+              )}
+            </>
           )}
         </div>
       </div>
@@ -762,33 +841,35 @@ const AsistenciasManager = ({ user }) => {
 
   return (
     <div className={styles.asistenciasManager}>
-      <div className={styles.header}>
-        <div className={styles.headerLeft}>
-          <h2><FaCalendarAlt className="mr-2 inline align-middle" /> Control de Asistencias</h2>
-          <p>Registro y seguimiento de entrenamientos</p>
-        </div>
-        <div className={styles.headerActions}>
-          {bulkMode && (
-            <button 
-              className={styles.exportButton}
-              onClick={() => exportAttendance()}
-              title="Exportar asistencias del día"
-            >
-              <FaFileExport className="mr-1.5 inline align-middle" /> Exportar
-            </button>
-          )}
-          <button 
-            className={styles.bulkButton}
-            onClick={() => setBulkMode(!bulkMode)}
-          >
-            {bulkMode ? (
-              <><FaChartBar className="mr-1.5 inline align-middle" /> Ver Reportes</>
-            ) : (
-              <><FaCheckCircle className="mr-1.5 inline align-middle" /> Registro Rápido</>
+      <SectionHeader
+        title="Control de Asistencias"
+        subtitle="Registro y seguimiento de entrenamientos"
+        icon={<FaCalendarAlt />}
+        actions={
+          <div className="flex flex-wrap items-center gap-2">
+            {bulkMode && (
+              <Button 
+                variant="secondary"
+                onClick={() => exportAttendance()}
+                title="Exportar asistencias del día"
+                className="w-full mobile:w-auto"
+              >
+                <FaFileExport className="mr-1.5" /> Exportar
+              </Button>
             )}
-          </button>
-        </div>
-      </div>
+            <Button 
+              onClick={() => setBulkMode(!bulkMode)}
+              className="w-full mobile:w-auto"
+            >
+              {bulkMode ? (
+                <><FaChartBar className="mr-1.5" /> Ver Reportes</>
+              ) : (
+                <><FaCheckCircle className="mr-1.5" /> Registro Rápido</>
+              )}
+            </Button>
+          </div>
+        }
+      />
 
       {notice.text ? (
         <div
@@ -802,36 +883,44 @@ const AsistenciasManager = ({ user }) => {
         </div>
       ) : null}
 
-          {/* Estadisticas por Categoria */}
-      <div className={styles.statsGrid}>
-        <div className={styles.statCard}>
-          <div className={styles.statIcon}><FaChartBar /></div>
-          <div className={styles.statInfo}>
-            <h3>{stats.total}</h3>
-            <p>Total Registros</p>
+      {/* Estadisticas por Categoria */}
+      <div className="grid gap-4 mobile:grid-cols-2 desktop:grid-cols-4">
+        <Card className="border-l-4 border-l-[#355FB3]">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Total Registros</h3>
+              <p className="mt-1 text-3xl font-black text-white">{stats.total}</p>
+            </div>
+            <div className="text-3xl text-sky-300"><FaChartBar /></div>
           </div>
-        </div>
-        <div className={styles.statCard}>
-          <div className={styles.statIcon}><FaCheckCircle /></div>
-          <div className={styles.statInfo}>
-            <h3>{stats.presentes}</h3>
-            <p>Presentes</p>
+        </Card>
+        <Card className="border-l-4 border-l-emerald-500">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Presentes</h3>
+              <p className="mt-1 text-3xl font-black text-white">{stats.presentes}</p>
+            </div>
+            <div className="text-3xl text-emerald-400"><FaCheckCircle /></div>
           </div>
-        </div>
-        <div className={styles.statCard}>
-          <div className={styles.statIcon}><FaTimesCircle /></div>
-          <div className={styles.statInfo}>
-            <h3>{stats.ausentes}</h3>
-            <p>Ausentes</p>
+        </Card>
+        <Card className="border-l-4 border-l-red-500">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Ausentes</h3>
+              <p className="mt-1 text-3xl font-black text-white">{stats.ausentes}</p>
+            </div>
+            <div className="text-3xl text-red-400"><FaTimesCircle /></div>
           </div>
-        </div>
-        <div className={styles.statCard}>
-          <div className={styles.statIcon}><FaChartLine /></div>
-          <div className={styles.statInfo}>
-            <h3>{stats.porcentajeAsistencia}%</h3>
-            <p>Asistencia Promedio</p>
+        </Card>
+        <Card className="border-l-4 border-l-rv-gold">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Asistencia Promedio</h3>
+              <p className="mt-1 text-3xl font-black text-white">{stats.porcentajeAsistencia}%</p>
+            </div>
+            <div className="text-3xl text-rv-gold"><FaChartLine /></div>
           </div>
-        </div>
+        </Card>
       </div>
 
       {bulkMode ? (
@@ -863,6 +952,7 @@ const AsistenciasManager = ({ user }) => {
                   onClick={() => setSearchTerm('')}
                   className={styles.clearSearch}
                   title="Limpiar búsqueda"
+                  aria-label="Limpiar búsqueda"
                 >
                   <FaTimes />
                 </button>
@@ -870,12 +960,12 @@ const AsistenciasManager = ({ user }) => {
             </div>
             
             <div className={styles.bulkActions}>
-              <button onClick={markAllPresent} className={styles.allPresentButton}>
-                <FaCheckCircle className="mr-1.5 inline align-middle" /> Todos Presentes
-              </button>
-              <button onClick={clearAllAttendance} className={styles.clearButton}>
-                <FaTrash className="mr-1.5 inline align-middle" /> Limpiar Día
-              </button>
+              <Button onClick={markAllPresent} className="border-emerald-400/35 bg-emerald-500/15 text-emerald-100 hover:bg-emerald-500/30">
+                <FaCheckCircle className="mr-1.5" /> Todos Presentes
+              </Button>
+              <Button onClick={clearAllAttendance} className="border-red-400/35 bg-red-500/15 text-red-100 hover:bg-red-500/30">
+                <FaTrash className="mr-1.5" /> Limpiar Día
+              </Button>
             </div>
           </div>
 
@@ -892,6 +982,7 @@ const AsistenciasManager = ({ user }) => {
                     key={cat.id}
                     onClick={() => setSelectedCategory(cat.id)}
                     className={`${styles.tabButton} ${isActive ? styles.tabActive : ''}`}
+                    aria-label={`Seleccionar categoría ${cat.nombre}`}
                   >
                     <span className={styles.tabIcon}>{cat.icono}</span>
                     <span className={styles.tabName}>{cat.nombre}</span>
@@ -998,33 +1089,8 @@ const AsistenciasManager = ({ user }) => {
                         <h4><FaVenus className="mr-1.5" /> Mujeres</h4>
                         <div className={styles.atletasList}>
                           {filterAtletasBySearchAndCategory('master_mujeres')
-                            .map(atleta => {
-                              const isPresent = atleta.attendance !== null;
-                              return (
-                                <div key={atleta.id} className={styles.atletaItem}>
-                                  <span
-                                    className={styles.atletaName}
-                                    title={attendanceService.getAthleteNameParts({ athleteUser: atleta.users }).nombreCompleto}
-                                  >
-                                    {attendanceService.getCompactDisplayName({
-                                      athleteUser: atleta.users,
-                                      isHomonym:
-                                        (homonymsByCompactName[
-                                          attendanceService.getHomonymKey({ athleteUser: atleta.users })
-                                        ] || 0) > 1,
-                                    })}
-                                  </span>
-                                  <button
-                                    onClick={() => toggleAttendance(atleta.id, isPresent)}
-                                    className={`${styles.attendanceToggle} ${
-                                      isPresent ? styles.present : styles.absent
-                                    }`}
-                                  >
-                                    {isPresent ? <FaCheck /> : <FaTimes />}
-                                  </button>
-                                </div>
-                              );
-                            })}
+                            .map(atleta => renderAtletaWithPaymentMethods(atleta)
+                            )}
                         </div>
                       </div>
                     </div>
@@ -1517,10 +1583,11 @@ const AsistenciasManager = ({ user }) => {
                     })}
                 </div>
               ) : (
-                <div className={styles.noData}>
-                  <h3><FaCalendarAlt className="mr-2 inline align-middle" /> No hay registros de asistencia</h3>
-                  <p>Selecciona un rango de fechas o ajusta los filtros</p>
-                </div>
+                <EmptyState
+                  icon={<FaCalendarAlt />}
+                  title="No hay registros de asistencia"
+                  description="Selecciona un rango de fechas o ajusta los filtros"
+                />
               )}
             </div>
           )}
@@ -1529,61 +1596,42 @@ const AsistenciasManager = ({ user }) => {
 
       {/* Modal de Exportación */}
       {showExportModal && (
-        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-        <div 
-          className={styles.modalOverlay} 
-          onClick={() => setShowExportModal(false)}
+        <Modal
+          title="Exportar Asistencias"
+          icon={<FaPrint />}
+          onClose={() => setShowExportModal(false)}
         >
-          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
-          <div 
-            className={styles.modalContent} 
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className={styles.modalHeader}>
-              <h3><FaPrint className="mr-2 inline align-middle" /> Exportar Asistencias</h3>
-              <button 
-                className={styles.modalClose}
-                onClick={() => setShowExportModal(false)}
-              >
-                <FaTimes />
-              </button>
+          <div className="space-y-4">
+            <div className={styles.exportInfo}>
+              <p><strong>Fecha:</strong> {exportSummary.formattedDate}</p>
+              <p><strong>Total asistencias:</strong> {exportSummary.totalAttendances}</p>
             </div>
 
-            <div className={styles.modalBody}>
-              <div className={styles.exportInfo}>
-                <p><strong>Fecha:</strong> {exportSummary.formattedDate}</p>
-                <p><strong>Total asistencias:</strong> {exportSummary.totalAttendances}</p>
-              </div>
+            <Field label="Observaciones (opcional)">
+              <textarea
+                id="observations"
+                className={styles.observationsTextarea}
+                placeholder="Escribe aquí cualquier observación que desees incluir en el documento exportado..."
+                rows={5}
+                value={exportObservations}
+                onChange={(e) => setExportObservations(e.target.value)}
+              />
+            </Field>
 
-              <div className={styles.formGroup}>
-                <label htmlFor="observations">
-                  Observaciones (opcional)
-                </label>
-                <textarea
-                  id="observations"
-                  className={styles.observationsTextarea}
-                  placeholder="Escribe aquí cualquier observación que desees incluir en el documento exportado..."
-                  rows={5}
-                  value={exportObservations}
-                  onChange={(e) => setExportObservations(e.target.value)}
-                />
-              </div>
-
-              <div className={styles.exportPreview}>
-                <h4>El documento incluira:</h4>
-                <ul>
-                  <li>Tabla 1: Iniciacion (Hombres y Mujeres)</li>
-                  <li>Tabla 2: Perfeccionamiento Hombres</li>
-                  <li>Tabla 3: Perfeccionamiento Mujeres</li>
-                  <li>Resumen general de asistencias</li>
-                  {exportObservations && <li>Observaciones</li>}
-                </ul>
-              </div>
+            <div className={styles.exportPreview}>
+              <h4 className="font-bold text-rv-gold">El documento incluirá:</h4>
+              <ul className="mt-2 list-inside list-disc space-y-1">
+                <li>Tabla 1: Iniciación (Hombres y Mujeres)</li>
+                <li>Tabla 2: Perfeccionamiento Hombres</li>
+                <li>Tabla 3: Perfeccionamiento Mujeres</li>
+                <li>Resumen general de asistencias</li>
+                {exportObservations && <li>Observaciones</li>}
+              </ul>
             </div>
 
-            <div className={styles.modalFooter}>
-              <button 
-                className={styles.cancelButton}
+            <div className="mt-6 flex flex-wrap justify-end gap-2">
+              <Button 
+                variant="secondary"
                 onClick={() => {
                   setShowExportModal(false);
                   setExportObservations('');
@@ -1591,45 +1639,34 @@ const AsistenciasManager = ({ user }) => {
                 }}
               >
                 Cancelar
-              </button>
-              <button 
-                className={styles.confirmButton}
-                onClick={generateExportDocument}
-              >
-                <FaFileExport className="mr-1.5 inline align-middle" /> 
-                Exportar PDF
-              </button>
+              </Button>
+              <Button onClick={generateExportDocument}>
+                <FaFileExport className="mr-1.5" /> Exportar PDF
+              </Button>
             </div>
           </div>
-        </div>
+        </Modal>
       )}
 
       {confirmDialog.open && (
-        <div className={styles.modalOverlay} onClick={closeConfirmDialog}>
-          <div
-            className="w-full max-w-md rounded-2xl border border-white/15 bg-slate-950/95 p-4 text-white shadow-2xl"
-            role="dialog"
-            aria-modal="true"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <h3 className={confirmDialog.tone === 'danger' ? 'text-lg font-bold text-red-200' : 'text-lg font-bold text-rv-gold'}>
-              {confirmDialog.title}
-            </h3>
-            <p className="mt-3 whitespace-pre-line text-sm text-slate-200">{confirmDialog.message}</p>
-            <div className="mt-6 flex flex-col-reverse gap-3 mobile:flex-row mobile:justify-end">
-              <button type="button" onClick={closeConfirmDialog} className={styles.cancelButton}>
-                Cancelar
-              </button>
-              <button
-                type="button"
-                onClick={runConfirmDialogAction}
-                className={confirmDialog.tone === 'danger' ? styles.clearButton : styles.confirmButton}
-              >
-                {confirmDialog.confirmLabel}
-              </button>
-            </div>
+        <Modal
+          title={confirmDialog.title}
+          onClose={closeConfirmDialog}
+          className="max-w-md"
+        >
+          <p className="whitespace-pre-line text-sm text-slate-200">{confirmDialog.message}</p>
+          <div className="mt-6 flex flex-col-reverse gap-3 mobile:flex-row mobile:justify-end">
+            <Button variant="secondary" onClick={closeConfirmDialog}>
+              Cancelar
+            </Button>
+            <Button
+              variant={confirmDialog.tone === 'danger' ? 'danger' : 'primary'}
+              onClick={runConfirmDialogAction}
+            >
+              {confirmDialog.confirmLabel}
+            </Button>
           </div>
-        </div>
+        </Modal>
       )}
     </div>
   );

@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { paymentsService } from '../../paymentsService';
-import { SortableHeader } from '../../../../shared/ui';
+import { SortableHeader, SectionHeader, Card, EmptyState, Button, Field, Modal } from '../../../../shared/ui';
 import {
   SORT_DIRECTION,
   createTableQuery,
@@ -22,7 +22,6 @@ import {
   FaMoneyBillWave, 
   FaSync, 
   FaTrash, 
-  FaTimes, 
   FaUsers,
   FaCreditCard
 } from 'react-icons/fa';
@@ -41,9 +40,9 @@ const styles = {
   filtersSection: 'grid gap-3 rounded-2xl border border-white/15 bg-black/30 p-4 mobile:grid-cols-2 tablet:grid-cols-3 desktop:grid-cols-7',
   filterGroup: 'space-y-1',
   filterLabel: 'text-[11px] font-bold uppercase tracking-wide text-rv-gold/90',
-  searchInput: 'min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70',
-  filterInput: 'min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70',
-  filterSelect: 'min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70',
+  searchInput: 'w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50',
+  filterInput: 'w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50',
+  filterSelect: 'w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white transition-colors appearance-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50',
   clearFiltersButton: 'min-h-[48px] w-full rounded-xl border border-rv-gold/40 bg-slate-900/50 px-3 py-2 text-sm font-semibold text-white transition hover:bg-rv-gold/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80',
   filterSummary: 'text-sm text-slate-200',
   loading: 'flex min-h-[40dvh] flex-col items-center justify-center gap-3 text-white',
@@ -75,8 +74,8 @@ const styles = {
   formSection: 'rounded-2xl border border-white/15 bg-black/25 p-4',
   sectionTitle: 'mb-3 text-base font-black text-white',
   formGrid: 'grid gap-3 tablet:grid-cols-2',
-  inputGroup: 'space-y-1',
-  inputGroupFullWidth: 'space-y-1 tablet:col-span-2',
+  inputGroup: 'space-y-1 [&_label]:text-xs [&_label]:font-bold [&_label]:uppercase [&_label]:tracking-wide [&_label]:text-slate-400 [&_input]:w-full [&_input]:rounded-lg [&_input]:border [&_input]:border-rv-gold/25 [&_input]:bg-slate-900/60 [&_input]:px-3 [&_input]:py-2 [&_input]:text-sm [&_input]:text-white [&_input]:placeholder:text-slate-500 [&_input]:transition-colors [&_input]:focus-visible:outline-none [&_input]:focus-visible:ring-2 [&_input]:focus-visible:ring-rv-gold/80 [&_textarea]:w-full [&_textarea]:rounded-lg [&_textarea]:border [&_textarea]:border-rv-gold/25 [&_textarea]:bg-slate-900/60 [&_textarea]:px-3 [&_textarea]:py-2 [&_textarea]:text-sm [&_textarea]:text-white [&_textarea]:placeholder:text-slate-500 [&_textarea]:transition-colors [&_textarea]:focus-visible:outline-none [&_textarea]:focus-visible:ring-2 [&_textarea]:focus-visible:ring-rv-gold/80 [&_select]:w-full [&_select]:rounded-lg [&_select]:border [&_select]:border-rv-gold/25 [&_select]:bg-slate-900/60 [&_select]:px-3 [&_select]:py-2 [&_select]:text-sm [&_select]:text-white [&_select]:transition-colors [&_select]:focus-visible:outline-none [&_select]:focus-visible:ring-2 [&_select]:focus-visible:ring-rv-gold/80',
+  inputGroupFullWidth: 'space-y-1 tablet:col-span-2 [&_label]:text-xs [&_label]:font-bold [&_label]:uppercase [&_label]:tracking-wide [&_label]:text-slate-400 [&_input]:w-full [&_input]:rounded-lg [&_input]:border [&_input]:border-rv-gold/25 [&_input]:bg-slate-900/60 [&_input]:px-3 [&_input]:py-2 [&_input]:text-sm [&_input]:text-white [&_input]:placeholder:text-slate-500 [&_input]:transition-colors [&_input]:focus-visible:outline-none [&_input]:focus-visible:ring-2 [&_input]:focus-visible:ring-rv-gold/80 [&_textarea]:w-full [&_textarea]:rounded-lg [&_textarea]:border [&_textarea]:border-rv-gold/25 [&_textarea]:bg-slate-900/60 [&_textarea]:px-3 [&_textarea]:py-2 [&_textarea]:text-sm [&_textarea]:text-white [&_textarea]:placeholder:text-slate-500 [&_textarea]:transition-colors [&_textarea]:focus-visible:outline-none [&_textarea]:focus-visible:ring-2 [&_textarea]:focus-visible:ring-rv-gold/80 [&_select]:w-full [&_select]:rounded-lg [&_select]:border [&_select]:border-rv-gold/25 [&_select]:bg-slate-900/60 [&_select]:px-3 [&_select]:py-2 [&_select]:text-sm [&_select]:text-white [&_select]:transition-colors [&_select]:focus-visible:outline-none [&_select]:focus-visible:ring-2 [&_select]:focus-visible:ring-rv-gold/80',
   autosuggestContainer: 'relative',
   fieldError: 'text-xs font-semibold text-red-300',
   fieldHint: 'text-xs text-slate-400',
@@ -121,7 +120,6 @@ const DEFAULT_PAYMENTS_QUERY = createTableQuery({
 
 const PagosManager = ({ user }) => {
   const buildDefaultFormData = () => paymentsService.buildInitialPaymentForm();
-  const modalTitleId = 'payment-modal-title';
   const firstPaymentFieldRef = useRef(null);
   const noticeTimerRef = useRef(null);
   const confirmActionRef = useRef(null);
@@ -542,27 +540,29 @@ const PagosManager = ({ user }) => {
 
   return (
     <div className={styles.pagosManager}>
-      <div className={styles.header}>
-        <div className={styles.headerLeft}>
-          <h2><FaMoneyBillWave className="mr-2 inline align-middle" /> {'Gesti\u00f3n de Pagos'}</h2>
-          <p>Administrar mensualidades y pagos del club</p>
-        </div>
-        <div className={styles.headerButtons}>
-          <button 
-            className={styles.updateButton}
-            onClick={actualizarEstadosManualmente}
-            title="Actualizar estados automáticamente"
-          >
-            <FaSync className="mr-2 inline align-middle" /> Actualizar Estados
-          </button>
-          <button 
-            className={styles.addButton}
-            onClick={() => openModal()}
-          >
-            <FaPlus className="mr-2 inline align-middle" /> Registrar Pago
-          </button>
-        </div>
-      </div>
+      <SectionHeader
+        title="Gestión de Pagos"
+        subtitle="Administrar mensualidades y pagos del club"
+        icon={<FaMoneyBillWave />}
+        actions={
+          <div className="flex flex-wrap items-center gap-2">
+            <Button 
+              variant="secondary"
+              onClick={actualizarEstadosManualmente}
+              title="Actualizar estados automáticamente"
+              className="w-full mobile:w-auto"
+            >
+              <FaSync className="mr-2" /> Actualizar Estados
+            </Button>
+            <Button 
+              onClick={() => openModal()}
+              className="w-full mobile:w-auto"
+            >
+              <FaPlus className="mr-2" /> Registrar Pago
+            </Button>
+          </div>
+        }
+      />
 
       {notice.text ? (
         <div
@@ -577,142 +577,147 @@ const PagosManager = ({ user }) => {
       ) : null}
 
       {/* Estadísticas */}
-      <div className={styles.statsGrid}>
-        <div className={styles.statCard}>
-          <div className={styles.statIcon}><FaChartBar /></div>
-          <div className={styles.statInfo}>
-            <h3>{stats.totalPagos}</h3>
-            <p>Total Pagos</p>
+      <div className="grid gap-4 mobile:grid-cols-2 desktop:grid-cols-5">
+        <Card className="border-l-4 border-l-[#355FB3]">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Total Pagos</h3>
+              <p className="mt-1 text-3xl font-black text-white">{stats.totalPagos}</p>
+            </div>
+            <div className="text-3xl text-sky-300"><FaChartBar /></div>
           </div>
-        </div>
-        <div className={styles.statCard}>
-          <div className={styles.statIcon}><FaCheckCircle /></div>
-          <div className={styles.statInfo}>
-            <h3>{stats.activos}</h3>
-            <p>Activos</p>
+        </Card>
+        <Card className="border-l-4 border-l-emerald-500">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Activos</h3>
+              <p className="mt-1 text-3xl font-black text-white">{stats.activos}</p>
+            </div>
+            <div className="text-3xl text-emerald-400"><FaCheckCircle /></div>
           </div>
-        </div>
-        <div className={styles.statCard}>
-          <div className={styles.statIcon}><FaHourglassHalf /></div>
-          <div className={styles.statInfo}>
-            <h3>{stats.proximosVencer}</h3>
-            <p>{'Pr\u00f3ximos a Vencer'}</p>
+        </Card>
+        <Card className="border-l-4 border-l-amber-500">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">{'Pr\u00f3ximos a Vencer'}</h3>
+              <p className="mt-1 text-3xl font-black text-white">{stats.proximosVencer}</p>
+            </div>
+            <div className="text-3xl text-amber-400"><FaHourglassHalf /></div>
           </div>
-        </div>
-        <div className={styles.statCard}>
-          <div className={styles.statIcon}><FaExclamationTriangle /></div>
-          <div className={styles.statInfo}>
-            <h3>{stats.vencidos}</h3>
-            <p>Vencidos</p>
+        </Card>
+        <Card className="border-l-4 border-l-red-500">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Vencidos</h3>
+              <p className="mt-1 text-3xl font-black text-white">{stats.vencidos}</p>
+            </div>
+            <div className="text-3xl text-red-400"><FaExclamationTriangle /></div>
           </div>
-        </div>
-        <div className={styles.statCard}>
-          <div className={styles.statIcon}><FaDollarSign /></div>
-          <div className={styles.statInfo}>
-            <h3>{formatMonto(stats.totalRecaudado)}</h3>
-            <p>Total Recaudado</p>
+        </Card>
+        <Card className="border-l-4 border-l-rv-gold">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Total Recaudado</h3>
+              <p className="mt-1 text-3xl font-black text-white">{formatMonto(stats.totalRecaudado)}</p>
+            </div>
+            <div className="text-3xl text-rv-gold"><FaDollarSign /></div>
           </div>
-        </div>
+        </Card>
       </div>
 
       {/* Filtros */}
-      <div className={styles.filtersSection}>
-        <div className={styles.filterGroup}>
-          <label htmlFor="payments-search" className={styles.filterLabel}>Busqueda</label>
-          <input
-            id="payments-search"
-            type="text"
-            placeholder="Buscar por atleta, email o mensualidad..."
-            value={queryState.filters.search}
-            onChange={(e) => updateFilter('search', e.target.value)}
-            className={styles.searchInput}
-            aria-label="Buscar pagos por atleta"
-          />
-        </div>
-        
-        <div className={styles.filterGroup}>
-          <label htmlFor="payments-start-date" className={styles.filterLabel}>Desde</label>
-          <input
-            id="payments-start-date"
-            type="date"
-            placeholder="Fecha inicio"
-            value={queryState.filters.fecha_inicio}
-            onChange={(e) => updateFilter('fecha_inicio', e.target.value)}
-            className={`${styles.filterInput} rv-dark-date-input`}
-          />
-        </div>
-        
-        <div className={styles.filterGroup}>
-          <label htmlFor="payments-end-date" className={styles.filterLabel}>Hasta</label>
-          <input
-            id="payments-end-date"
-            type="date"
-            placeholder="Fecha fin"
-            value={queryState.filters.fecha_fin}
-            onChange={(e) => updateFilter('fecha_fin', e.target.value)}
-            className={`${styles.filterInput} rv-dark-date-input`}
-          />
-        </div>
+      <Card className="mb-6">
+        <div className="grid gap-4 mobile:grid-cols-2 tablet:grid-cols-3 desktop:grid-cols-7">
+          <Field label="Búsqueda">
+            <input
+              id="payments-search"
+              type="text"
+              placeholder="Buscar por atleta, email o mensualidad..."
+              value={queryState.filters.search}
+              onChange={(e) => updateFilter('search', e.target.value)}
+              className={styles.searchInput}
+              aria-label="Buscar pagos por atleta"
+            />
+          </Field>
+          
+          <Field label="Desde">
+            <input
+              id="payments-start-date"
+              type="date"
+              placeholder="Fecha inicio"
+              value={queryState.filters.fecha_inicio}
+              onChange={(e) => updateFilter('fecha_inicio', e.target.value)}
+              className={`${styles.filterInput} rv-dark-date-input`}
+            />
+          </Field>
+          
+          <Field label="Hasta">
+            <input
+              id="payments-end-date"
+              type="date"
+              placeholder="Fecha fin"
+              value={queryState.filters.fecha_fin}
+              onChange={(e) => updateFilter('fecha_fin', e.target.value)}
+              className={`${styles.filterInput} rv-dark-date-input`}
+            />
+          </Field>
 
-        <div className={styles.filterGroup}>
-          <label htmlFor="payments-status-filter" className={styles.filterLabel}>Estado</label>
-          <select
-            id="payments-status-filter"
-            value={queryState.filters.estado}
-            onChange={(e) => updateFilter('estado', e.target.value)}
-            className={styles.filterSelect}
-            aria-label="Filtrar por estado de pago"
-          >
-            <option value="">Todos los estados</option>
-            <option value="activo">Activo</option>
-            <option value="proximo_a_vencer">Proximo a Vencer</option>
-            <option value="vencido">Vencido</option>
-          </select>
-        </div>
+          <Field label="Estado">
+            <select
+              id="payments-status-filter"
+              value={queryState.filters.estado}
+              onChange={(e) => updateFilter('estado', e.target.value)}
+              className={styles.filterSelect}
+              aria-label="Filtrar por estado de pago"
+            >
+              <option value="">Todos los estados</option>
+              <option value="activo">Activo</option>
+              <option value="proximo_a_vencer">Próximo a Vencer</option>
+              <option value="vencido">Vencido</option>
+            </select>
+          </Field>
 
-        <div className={styles.filterGroup}>
-          <label htmlFor="payments-athlete-filter" className={styles.filterLabel}>Atleta</label>
-          <select
-            id="payments-athlete-filter"
-            value={queryState.filters.atleta}
-            onChange={(e) => updateFilter('atleta', e.target.value)}
-            className={styles.filterSelect}
-            aria-label="Filtrar por atleta"
-          >
-            <option value="">Todos los atletas</option>
-            {atletas.map(atleta => (
-              <option key={atleta.id} value={atleta.id}>
-                {atleta.users?.nombre} {atleta.users?.apellido}
-              </option>
-            ))}
-          </select>
-        </div>
+          <Field label="Atleta">
+            <select
+              id="payments-athlete-filter"
+              value={queryState.filters.atleta}
+              onChange={(e) => updateFilter('atleta', e.target.value)}
+              className={styles.filterSelect}
+              aria-label="Filtrar por atleta"
+            >
+              <option value="">Todos los atletas</option>
+              {atletas.map(atleta => (
+                <option key={atleta.id} value={atleta.id}>
+                  {atleta.users?.nombre} {atleta.users?.apellido}
+                </option>
+              ))}
+            </select>
+          </Field>
 
-        <div className={styles.filterGroup}>
-          <label htmlFor="payments-membership-filter" className={styles.filterLabel}>Mensualidad</label>
-          <select
-            id="payments-membership-filter"
-            value={queryState.filters.membership_type}
-            onChange={(e) => updateFilter('membership_type', e.target.value)}
-            className={styles.filterSelect}
-            aria-label="Filtrar por tipo de mensualidad"
-          >
-            <option value="">Todas</option>
-            {membershipTypes.map((item) => (
-              <option key={item.id} value={item.id}>
-                {item.nombre}
-              </option>
-            ))}
-          </select>
-        </div>
+          <Field label="Mensualidad">
+            <select
+              id="payments-membership-filter"
+              value={queryState.filters.membership_type}
+              onChange={(e) => updateFilter('membership_type', e.target.value)}
+              className={styles.filterSelect}
+              aria-label="Filtrar por tipo de mensualidad"
+            >
+              <option value="">Todas</option>
+              {membershipTypes.map((item) => (
+                <option key={item.id} value={item.id}>
+                  {item.nombre}
+                </option>
+              ))}
+            </select>
+          </Field>
 
-        <div className={styles.filterGroup}>
-          <label className={styles.filterLabel} htmlFor="payments-clear-filters">Acciones</label>
-          <button id="payments-clear-filters" type="button" className={styles.clearFiltersButton} onClick={resetFilters}>
-            Limpiar filtros
-          </button>
+          <div className="flex flex-col justify-end">
+            <Button variant="secondary" onClick={resetFilters} className="w-full h-[40px]">
+              Limpiar
+            </Button>
+          </div>
         </div>
-      </div>
+      </Card>
 
       <p className={styles.filterSummary}>Mostrando {paginatedPagos.length} de {pagos.length} pagos.</p>
 
@@ -840,40 +845,27 @@ const PagosManager = ({ user }) => {
               </div>
             </>
           ) : (
-            <div className={styles.noPagos}>
-              <h3><FaCreditCard className="mr-2 inline align-middle" /> No hay pagos registrados</h3>
-              <p>Registra el primer pago del club</p>
-            </div>
+            <EmptyState
+              icon={FaCreditCard}
+              title="No hay pagos registrados"
+              description="Registra el primer pago del club"
+              action={
+                <Button onClick={() => openModal()}>
+                  Registrar Pago
+                </Button>
+              }
+            />
           )}
         </div>
       )}
 
       {/* Modal para Agregar/Editar */}
       {showModal && (
-        <div className={styles.modalOverlay} onClick={closeModal}>
-          <div
-            className={styles.modal}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby={modalTitleId}
-            onClick={(event) => event.stopPropagation()}
-          >
-<div className={styles.modalHeader}>
-              <h3 id={modalTitleId} className="text-xl font-bold text-white">
-                {editingPago ? (
-                  <><FaEdit className="mr-2 inline align-middle" /> Editar Pago</>
-                ) : (
-                  <><FaPlus className="mr-2 inline align-middle" /> Registrar Nuevo Pago</>
-                )}
-              </h3>
-              <button 
-                onClick={closeModal}
-                className={styles.closeButton}
-                aria-label="Cerrar modal"
-              >
-                <FaTimes />
-              </button>
-            </div>
+        <Modal
+          title={editingPago ? "Editar Pago" : "Registrar Nuevo Pago"}
+          icon={editingPago ? <FaEdit /> : <FaPlus />}
+          onClose={closeModal}
+        >
             
             <form onSubmit={handleSubmit} className={styles.form}>
               {Object.values(formErrors).filter(Boolean).length > 0 && (
@@ -1052,52 +1044,43 @@ const PagosManager = ({ user }) => {
               
 
               
-              <div className={styles.formActions}>
-                <button 
+              <div className="flex flex-wrap justify-end gap-2 pt-2">
+                <Button 
+                  variant="secondary"
                   type="button"
                   onClick={closeModal}
-                  className={styles.cancelButton}
                 >
                   Cancelar
-                </button>
-                <button 
+                </Button>
+                <Button 
                   type="submit"
-                  className={styles.saveButton}
                 >
                   {editingPago ? 'Actualizar' : 'Guardar'}
-                </button>
+                </Button>
               </div>
             </form>
-          </div>
-        </div>
+        </Modal>
       )}
 
       {confirmDialog.open && (
-        <div className={styles.modalOverlay} onClick={closeConfirmDialog}>
-          <div
-            className="w-full max-w-md rounded-2xl border border-white/15 bg-slate-950/95 p-4 text-white shadow-2xl"
-            role="dialog"
-            aria-modal="true"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <h3 className={confirmDialog.tone === 'danger' ? 'text-lg font-bold text-red-200' : 'text-lg font-bold text-rv-gold'}>
-              {confirmDialog.title}
-            </h3>
-            <p className="mt-3 whitespace-pre-line text-sm text-slate-200">{confirmDialog.message}</p>
-            <div className="mt-6 flex flex-col-reverse gap-3 mobile:flex-row mobile:justify-end">
-              <button type="button" onClick={closeConfirmDialog} className={styles.cancelButton}>
-                Cancelar
-              </button>
-              <button
-                type="button"
-                onClick={runConfirmDialogAction}
-                className={confirmDialog.tone === 'danger' ? styles.deleteButton : styles.saveButton}
-              >
-                {confirmDialog.confirmLabel}
-              </button>
-            </div>
+        <Modal
+          title={confirmDialog.title}
+          onClose={closeConfirmDialog}
+          className="max-w-md"
+        >
+          <p className="whitespace-pre-line text-sm text-slate-200">{confirmDialog.message}</p>
+          <div className="mt-6 flex flex-col-reverse gap-3 mobile:flex-row mobile:justify-end">
+            <Button variant="secondary" onClick={closeConfirmDialog}>
+              Cancelar
+            </Button>
+            <Button
+              variant={confirmDialog.tone === 'danger' ? 'danger' : 'primary'}
+              onClick={runConfirmDialogAction}
+            >
+              {confirmDialog.confirmLabel}
+            </Button>
           </div>
-        </div>
+        </Modal>
       )}
     </div>
   );

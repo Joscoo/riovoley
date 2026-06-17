@@ -1027,4 +1027,110 @@ export class SupabaseGamificationRepository {
 
     return data || [];
   }
+
+  // ── Admin catalog methods ──────────────────────────────────────────────────
+
+  async listAllCosmeticItems() {
+    const { data, error } = await supabase
+      .from('gamification_cosmetic_items_catalog')
+      .select('*')
+      .order('sort_order', { ascending: true });
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error cargando catalogo cosmetico (admin)'), error);
+    }
+
+    return data || [];
+  }
+
+  async upsertCosmeticItem(item) {
+    const { data, error } = await supabase
+      .from('gamification_cosmetic_items_catalog')
+      .upsert(item, { onConflict: 'slug' })
+      .select()
+      .single();
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error guardando item cosmetico'), error);
+    }
+
+    return data;
+  }
+
+  async listAllAchievements() {
+    const { data, error } = await supabase
+      .from('gamification_achievement_catalog')
+      .select('*')
+      .order('sort_order', { ascending: true });
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error cargando catalogo de logros (admin)'), error);
+    }
+
+    return data || [];
+  }
+
+  async upsertAchievement(achievement) {
+    const { data, error } = await supabase
+      .from('gamification_achievement_catalog')
+      .upsert(achievement, { onConflict: 'slug' })
+      .select()
+      .single();
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error guardando logro'), error);
+    }
+
+    return data;
+  }
+
+  async listAllGoals() {
+    const { data, error } = await supabase
+      .from('gamification_challenges_catalog')
+      .select('*')
+      .order('slug', { ascending: true });
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error cargando catalogo de metas (admin)'), error);
+    }
+
+    return data || [];
+  }
+
+  async upsertGoal(goal) {
+    const { data, error } = await supabase
+      .from('gamification_challenges_catalog')
+      .upsert(goal, { onConflict: 'slug' })
+      .select()
+      .single();
+
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error guardando meta'), error);
+    }
+
+    return data;
+  }
+
+  async uploadCosmeticAsset(file, slug) {
+    const ext   = file.name.split('.').pop().toLowerCase();
+    const path  = `cosmetics/${slug}.${ext}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from('gamification-assets')
+      .upload(path, file, { upsert: true, contentType: file.type });
+
+    if (uploadError) {
+      throw new GamificationError(
+        normalizeError(uploadError, 'Error subiendo imagen del cosmético'),
+        uploadError,
+      );
+    }
+
+    const { data } = supabase.storage
+      .from('gamification-assets')
+      .getPublicUrl(path);
+
+    return data?.publicUrl || null;
+  }
 }
+

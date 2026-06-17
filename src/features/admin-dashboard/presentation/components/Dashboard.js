@@ -16,8 +16,7 @@ import {
 } from 'react-icons/fa';
 import { adminDashboardService } from '../../adminDashboardService';
 import { Card } from '../../../../shared/ui';
-import { SectionHeader } from '../../../../shared/ui';
-import { Button } from '../../../../shared/ui';
+import { SectionHeader, EmptyState, Button } from '../../../../shared/ui';
 import { cn } from '../../../../lib/cn';
 
 const StatCard = React.memo(({ title, value, icon, borderClass, iconClass, subtitle, loading }) => (
@@ -200,7 +199,11 @@ const Dashboard = ({ user, onNavigateToSection }) => {
               </div>
             ))
           ) : (
-            <p className="py-6 text-center text-sm italic text-slate-300">No hay actividad reciente</p>
+            <EmptyState
+              icon={<FaClipboardList />}
+              title="No hay actividad reciente"
+              description="La actividad del club aparecera aqui"
+            />
           )}
         </div>
       </Card>
@@ -210,17 +213,23 @@ const Dashboard = ({ user, onNavigateToSection }) => {
           <FaVolleyballBall className="mr-2 inline align-middle text-rv-gold" />
           <span className="align-middle">Resumen por Categorias</span>
         </h3>
-        <div className="grid gap-3 mobile:grid-cols-2 desktop:grid-cols-3">
+        <div className={(categoriesStats.loading || (categoriesStats.items || []).length === 0) ? "flex justify-center" : "grid gap-3 mobile:grid-cols-2 desktop:grid-cols-3"}>
           {categoriesStats.loading ? (
-            <p className="text-sm text-slate-300">Cargando categorias...</p>
+            <p className="py-6 text-center text-sm text-slate-300">Cargando categorias...</p>
           ) : (categoriesStats.items || []).length === 0 ? (
-            <p className="text-sm text-slate-300">No hay categorias de atletas disponibles.</p>
+            <div className="w-full">
+              <EmptyState
+                icon={<FaVolleyballBall />}
+                title="No hay categorias de atletas"
+                description="Registra estudiantes para ver las estadisticas"
+              />
+            </div>
           ) : (
             categoriesStats.items.map((item) => (
-              <div key={item.code} className="rounded-lg border border-rv-gold/30 bg-white/5 px-4 py-4 text-center">
-                <h4 className="text-sm font-semibold text-white">{item.label}</h4>
+              <Card key={item.code} className="text-center p-4 border-rv-gold/20">
+                <h4 className="text-sm font-semibold text-slate-300">{item.label}</h4>
                 <p className="mt-1 text-xl font-black text-rv-gold">{`${item.total} atletas`}</p>
-              </div>
+              </Card>
             ))
           )}
         </div>

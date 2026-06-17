@@ -3,7 +3,7 @@ import { Card, Field, Button } from '../../../../../shared/ui';
 import { formatCategoryLabel } from '../../../../../shared/lib/trainingCategoryFormatting';
 
 const INPUT_BASE =
-  'min-h-12 w-full rounded-lg border-2 border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 transition-all duration-200 focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/30';
+  'w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50 appearance-none';
 
 const UserFilters = ({
   filters,

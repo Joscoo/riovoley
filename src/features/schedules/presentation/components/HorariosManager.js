@@ -221,7 +221,7 @@ const HorariosManager = ({ user }) => {
                 onChange={handleCategoryFormChange}
                 disabled={Boolean(editingCategoryCode)}
                 placeholder="ej: sub18_mixto"
-                className="h-12 w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-white placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+                className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50"
                 required
               />
             </Field>
@@ -232,7 +232,7 @@ const HorariosManager = ({ user }) => {
                 value={categoryForm.label}
                 onChange={handleCategoryFormChange}
                 placeholder="ej: Sub 18 Mixto"
-                className="h-12 w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-white placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+                className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50"
                 required
               />
             </Field>
@@ -244,7 +244,7 @@ const HorariosManager = ({ user }) => {
                 onChange={handleCategoryFormChange}
                 rows="3"
                 placeholder="Descripcion por defecto para horarios"
-                className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2.5 text-white placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+                className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50"
               />
             </Field>
 
@@ -457,7 +457,7 @@ const HorariosManager = ({ user }) => {
                   name="hora_inicio"
                   value={formData.hora_inicio}
                   onChange={handleChange}
-                  className="h-12 w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+                  className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50"
                   required
                 />
               </Field>
@@ -468,7 +468,7 @@ const HorariosManager = ({ user }) => {
                   name="hora_fin"
                   value={formData.hora_fin}
                   onChange={handleChange}
-                  className="h-12 w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+                  className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50"
                   required
                 />
               </Field>
@@ -481,7 +481,7 @@ const HorariosManager = ({ user }) => {
                 onChange={handleChange}
                 rows="3"
                 placeholder={`Descripcion sugerida: ${getDescripcionPorDefecto(formData.categorias_seleccionadas[0])}`}
-                className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2.5 text-white placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+                className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50"
               />
               <p className="mt-2 text-xs text-slate-300">
                 Si dejas vacio, se usara la descripcion por defecto segun la categoria.
@@ -524,7 +524,7 @@ const HorariosManager = ({ user }) => {
               id="schedules-filter-day"
               value={filterDay}
               onChange={(event) => setFilterDay(event.target.value)}
-              className="h-12 w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+              className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white appearance-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <option value="todos">Todos los dias</option>
               {DAYS.map((day) => (
@@ -538,7 +538,7 @@ const HorariosManager = ({ user }) => {
               id="schedules-filter-category"
               value={filterCategory}
               onChange={(event) => setFilterCategory(event.target.value)}
-              className="h-12 w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+              className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white appearance-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <option value="todos">Todas las categorias</option>
               {categoryOptions.map((category) => (
@@ -552,7 +552,7 @@ const HorariosManager = ({ user }) => {
               id="schedules-sort-field"
               value={sortField}
               onChange={(event) => setSortField(event.target.value)}
-              className="h-12 w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+              className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white appearance-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <option value="dia_semana">Dia</option>
               <option value="hora_inicio">Hora inicio</option>
@@ -566,7 +566,7 @@ const HorariosManager = ({ user }) => {
               id="schedules-sort-direction"
               value={sortDirection}
               onChange={(event) => setSortDirection(event.target.value)}
-              className="h-12 w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+              className="w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white appearance-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <option value="asc">Ascendente</option>
               <option value="desc">Descendente</option>

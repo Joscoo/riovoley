@@ -10,5 +10,7 @@ export { default as RolePanelLayout } from './layout/RolePanelLayout';
 export { default as RoleSidebar } from './layout/RoleSidebar';
 export { default as Toast } from './feedback/Toast';
 export { RenderProfileProvider, useRenderProfile, PERFORMANCE_MODES, RENDER_PROFILES, resolveRenderProfile } from './render-profile';
+export { default as Modal } from './Modal';
+export { Input, Select, Textarea, FormField, Label } from './FormControls';
 export { semanticCatalog, getRoleLabel, getUserTypeLabel } from './semanticCatalog';
 export { iconRegistry, getRoleIcon, getUserTypeIcon } from './iconRegistry';
