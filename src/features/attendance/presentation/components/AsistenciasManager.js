@@ -209,6 +209,7 @@ const AsistenciasManager = ({ user }) => {
   const [reportRunsError, setReportRunsError] = useState('');
   const [downloadingRunId, setDownloadingRunId] = useState(null);
   const [deletingRunId, setDeletingRunId] = useState(null);
+  const [isExporting, setIsExporting] = useState(false);
   const [notice, setNotice] = useState(EMPTY_NOTICE);
   const noticeTimerRef = useRef(null);
   const [confirmDialog, setConfirmDialog] = useState({
@@ -217,6 +218,7 @@ const AsistenciasManager = ({ user }) => {
     message: '',
     confirmLabel: 'Confirmar',
     tone: 'primary',
+    isConfirming: false,
   });
   const [confirmAction, setConfirmAction] = useState(null);
 
@@ -274,9 +276,15 @@ const AsistenciasManager = ({ user }) => {
 
   const runConfirmDialogAction = async () => {
     const action = confirmAction;
-    closeConfirmDialog();
     if (action) {
-      await action();
+      setConfirmDialog((prev) => ({ ...prev, isConfirming: true }));
+      try {
+        await action();
+      } finally {
+        closeConfirmDialog();
+      }
+    } else {
+      closeConfirmDialog();
     }
   };
 
@@ -800,10 +808,12 @@ const AsistenciasManager = ({ user }) => {
 
   const generateExportDocument = async () => {
     try {
+      setIsExporting(true);
       const { exportFecha } = getExportSummary();
 
       if (!exportFecha) {
         showNotice('error', 'Selecciona una fecha valida para exportar.');
+        setIsExporting(false);
         return;
       }
 
@@ -826,6 +836,8 @@ const AsistenciasManager = ({ user }) => {
     } catch (error) {
       console.error('Error generando reporte persistido de asistencias:', error);
       showNotice('error', `No se pudo generar el PDF: ${error.message}`);
+    } finally {
+      setIsExporting(false);
     }
   };
 
@@ -1637,10 +1649,15 @@ const AsistenciasManager = ({ user }) => {
                   setExportObservations('');
                   setDateToExport(null);
                 }}
+                disabled={isExporting}
               >
                 Cancelar
               </Button>
-              <Button onClick={generateExportDocument}>
+              <Button 
+                onClick={generateExportDocument}
+                isLoading={isExporting}
+                loadingText="Generando PDF..."
+              >
                 <FaFileExport className="mr-1.5" /> Exportar PDF
               </Button>
             </div>
@@ -1656,12 +1673,14 @@ const AsistenciasManager = ({ user }) => {
         >
           <p className="whitespace-pre-line text-sm text-slate-200">{confirmDialog.message}</p>
           <div className="mt-6 flex flex-col-reverse gap-3 mobile:flex-row mobile:justify-end">
-            <Button variant="secondary" onClick={closeConfirmDialog}>
+            <Button variant="secondary" onClick={closeConfirmDialog} disabled={confirmDialog.isConfirming}>
               Cancelar
             </Button>
             <Button
               variant={confirmDialog.tone === 'danger' ? 'danger' : 'primary'}
               onClick={runConfirmDialogAction}
+              isLoading={confirmDialog.isConfirming}
+              loadingText="Procesando..."
             >
               {confirmDialog.confirmLabel}
             </Button>

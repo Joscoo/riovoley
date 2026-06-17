@@ -44,7 +44,7 @@ const normalizeCategoryOptions = (categories) =>
     })
     .filter((option) => option.value);
 
-const UserForm = ({ userType, initialData, onSubmit, onCancel, submitLabel = 'Guardar', categories = [] }) => {
+const UserForm = ({ userType, initialData, onSubmit, onCancel, submitLabel = 'Guardar', categories = [], isSubmitting = false }) => {
   const UserIcon = iconRegistry.user;
   const SportsIcon = iconRegistry.sports;
 
@@ -288,12 +288,15 @@ const UserForm = ({ userType, initialData, onSubmit, onCancel, submitLabel = 'Gu
           variant="secondary"
           onClick={onCancel}
           className="w-full mobile:w-auto"
+          disabled={isSubmitting}
         >
           Cancelar
         </Button>
         <Button
           type="submit"
           className="w-full mobile:w-auto"
+          isLoading={isSubmitting}
+          loadingText="Guardando..."
         >
           {submitLabel}
         </Button>

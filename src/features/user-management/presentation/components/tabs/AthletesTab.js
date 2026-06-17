@@ -50,6 +50,8 @@ const AthletesTab = ({ userRole }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(null);
   const [showChangeRoleModal, setShowChangeRoleModal] = useState(null);
   const [categories, setCategories] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isConfirmingRole, setIsConfirmingRole] = useState(false);
   const { message, showMessage } = useTimedMessage();
 
   const [filters, setFilters] = useState({
@@ -168,6 +170,7 @@ const AthletesTab = ({ userRole }) => {
 
   const handleSubmit = async (formData) => {
     try {
+      setIsSubmitting(true);
       if (editingAthlete) {
         await userActions.handleEdit(editingAthlete.user_id, formData, 'atleta');
         showMessage('success', 'Estudiante actualizado correctamente');
@@ -202,6 +205,8 @@ const AthletesTab = ({ userRole }) => {
       loadAthletes();
     } catch (error) {
       showMessage('error', `Error: ${error.message}`);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -249,12 +254,15 @@ const AthletesTab = ({ userRole }) => {
 
   const confirmChangeRole = async (newRole) => {
     try {
+      setIsConfirmingRole(true);
       await userActions.handleChangeRole(showChangeRoleModal.user_id, newRole);
       showMessage('success', 'Rol cambiado correctamente');
       setShowChangeRoleModal(null);
       loadAthletes();
     } catch (error) {
       showMessage('error', `Error: ${error.message}`);
+    } finally {
+      setIsConfirmingRole(false);
     }
   };
 
@@ -427,14 +435,14 @@ const AthletesTab = ({ userRole }) => {
           onClose={closeModal}
           className="max-w-4xl"
         >
-
             <UserForm
               userType="atleta"
               initialData={editingAthlete}
               categories={categories}
               onSubmit={handleSubmit}
               onCancel={closeModal}
-              submitLabel={editingAthlete ? 'Actualizar' : 'Guardar'}
+              submitLabel={editingAthlete ? 'Actualizar' : 'Crear'}
+              isSubmitting={isSubmitting}
             />
         </Modal>
       )}
@@ -470,6 +478,7 @@ const AthletesTab = ({ userRole }) => {
           currentRole={showChangeRoleModal.role}
           onConfirm={confirmChangeRole}
           onCancel={() => setShowChangeRoleModal(null)}
+          isSubmitting={isConfirmingRole}
         />
       )}
     </div>

@@ -17,7 +17,7 @@ const getRoleIconClass = (role) => {
   return 'text-sky-300';
 };
 
-const ChangeRoleModal = ({ user, currentRole, onConfirm, onCancel }) => {
+const ChangeRoleModal = ({ user, currentRole, onConfirm, onCancel, isSubmitting = false }) => {
   const [newRole, setNewRole] = useState('');
 
   const StudentIcon = iconRegistry.roles.estudiante;
@@ -118,10 +118,10 @@ const ChangeRoleModal = ({ user, currentRole, onConfirm, onCancel }) => {
           </div>
 
           <div className="flex gap-3">
-            <Button type="button" variant="secondary" onClick={onCancel} className="flex-1">
+            <Button type="button" variant="secondary" onClick={onCancel} className="flex-1" disabled={isSubmitting}>
               Cancelar
             </Button>
-            <Button type="submit" className="flex-1" disabled={!newRole}>
+            <Button type="submit" className="flex-1" disabled={!newRole} isLoading={isSubmitting} loadingText="Cambiando...">
               Cambiar Rol
             </Button>
           </div>

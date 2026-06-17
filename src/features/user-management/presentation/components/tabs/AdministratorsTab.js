@@ -41,6 +41,8 @@ const AdministratorsTab = ({ userRole, currentUserId = null }) => {
   const [showModal, setShowModal] = useState(false);
   const [editingAdmin, setEditingAdmin] = useState(null);
   const [showChangeRoleModal, setShowChangeRoleModal] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isConfirmingRole, setIsConfirmingRole] = useState(false);
   const { message, showMessage } = useTimedMessage();
   
   const [filters, setFilters] = useState({ search: '', sortBy: 'apellido', sortOrder: 'asc' });
@@ -108,6 +110,7 @@ const AdministratorsTab = ({ userRole, currentUserId = null }) => {
 
   const handleSubmit = async (formData) => {
     try {
+      setIsSubmitting(true);
       if (editingAdmin) {
         await userActions.handleEdit(editingAdmin.id, formData, 'administrador');
         showMessage('success', 'Administrador actualizado correctamente');
@@ -118,15 +121,18 @@ const AdministratorsTab = ({ userRole, currentUserId = null }) => {
       closeModal();
       loadAdmins();
     } catch (error) { showMessage('error', `Error: ${error.message}`); }
+    finally { setIsSubmitting(false); }
   };
 
   const confirmChangeRole = async (newRole) => {
     try {
+      setIsConfirmingRole(true);
       await userActions.handleChangeRole(showChangeRoleModal.id, newRole);
       showMessage('success', 'Rol cambiado correctamente');
       setShowChangeRoleModal(null);
       loadAdmins();
     } catch (error) { showMessage('error', `Error: ${error.message}`); }
+    finally { setIsConfirmingRole(false); }
   };
 
   const handleResetFilters = () => setFilters({ search: '', sortBy: 'apellido', sortOrder: 'asc' });
@@ -176,11 +182,11 @@ const AdministratorsTab = ({ userRole, currentUserId = null }) => {
           onClose={closeModal}
           className="max-w-4xl"
         >
-            <UserForm userType="administrador" initialData={editingAdmin} onSubmit={handleSubmit} onCancel={closeModal} submitLabel={editingAdmin ? 'Actualizar' : 'Crear'} />
+            <UserForm userType="administrador" initialData={editingAdmin} onSubmit={handleSubmit} onCancel={closeModal} submitLabel={editingAdmin ? 'Actualizar' : 'Crear'} isSubmitting={isSubmitting} />
         </Modal>
       )}
       
-      {showChangeRoleModal && <ChangeRoleModal user={showChangeRoleModal} currentRole={showChangeRoleModal.role} onConfirm={confirmChangeRole} onCancel={() => setShowChangeRoleModal(null)} />}
+      {showChangeRoleModal && <ChangeRoleModal user={showChangeRoleModal} currentRole={showChangeRoleModal.role} onConfirm={confirmChangeRole} onCancel={() => setShowChangeRoleModal(null)} isSubmitting={isConfirmingRole} />}
     </div>
   );
 };

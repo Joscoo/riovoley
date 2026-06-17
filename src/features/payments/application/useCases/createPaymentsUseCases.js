@@ -184,6 +184,11 @@ export const createPaymentsUseCases = (
         fecha_pago: formData.fecha_pago || getEcuadorDate(),
       };
 
+      if (formData.useCustomPeriod) {
+        paymentDraft.fecha_inicio = formData.fecha_inicio || null;
+        paymentDraft.fecha_fin = formData.fecha_fin || null;
+      }
+
       const createdPayment = await repository.createPayment(paymentDraft);
 
       let emailSent = false;
@@ -264,6 +269,11 @@ export const createPaymentsUseCases = (
         membership_type_id: resolveMembershipTypeId(formData.membership_type_id),
         fecha_pago: formData.fecha_pago || getEcuadorDate(),
       };
+
+      if (formData.useCustomPeriod) {
+        paymentDraft.fecha_inicio = formData.fecha_inicio || null;
+        paymentDraft.fecha_fin = formData.fecha_fin || null;
+      }
 
       await repository.updatePayment(paymentId, paymentDraft);
       await syncStudentProgress(currentPayment?.student_id);
@@ -473,6 +483,22 @@ export const createPaymentsUseCases = (
         errors.fecha_pago = 'La fecha de pago no puede estar en el futuro.';
       }
 
+      if (formData?.useCustomPeriod) {
+        if (!formData.fecha_inicio) {
+          errors.fecha_inicio = 'La fecha de inicio es obligatoria si usas periodo personalizado.';
+        }
+        if (!formData.fecha_fin) {
+          errors.fecha_fin = 'La fecha de fin es obligatoria si usas periodo personalizado.';
+        }
+        if (formData.fecha_inicio && formData.fecha_fin) {
+          const start = parseDateOnly(formData.fecha_inicio);
+          const end = parseDateOnly(formData.fecha_fin);
+          if (start && end && start > end) {
+            errors.fecha_fin = 'La fecha de fin debe ser posterior a la de inicio.';
+          }
+        }
+      }
+
       if (formData?.observaciones && formData.observaciones.length > 300) {
         errors.observaciones = 'Las observaciones no deben superar 300 caracteres.';
       }
@@ -553,6 +579,9 @@ export const createPaymentsUseCases = (
       membership_type_id: '',
       fecha_pago: getEcuadorDate(),
       observaciones: '',
+      useCustomPeriod: false,
+      fecha_inicio: '',
+      fecha_fin: '',
     }),
   };
 

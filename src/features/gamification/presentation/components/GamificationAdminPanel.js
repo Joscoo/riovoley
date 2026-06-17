@@ -640,7 +640,7 @@ const CosmeticForm = ({ initial, isNew, onSave, onCancel, saving, error: formErr
 
         <div className="flex flex-col gap-2 sm:flex-row sm:justify-end">
           <Button type="button" variant="outline" onClick={onCancel} disabled={saving}><FaTimes className="mr-2" /> Cancelar</Button>
-          <Button form="cosmetic-form" type="submit" disabled={saving}><FaSave className="mr-2" /> {saving ? 'Guardando...' : 'Guardar'}</Button>
+          <Button form="cosmetic-form" type="submit" isLoading={saving} loadingText="Guardando..."><FaSave className="mr-2" /> Guardar</Button>
         </div>
       </form>
 
@@ -944,7 +944,7 @@ const AchievementForm = ({ initial, isNew, onSave, onCancel, saving, error: form
       {formError && <p className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-300">{formError}</p>}
       <div className="flex flex-col gap-2 sm:flex-row sm:justify-end">
         <Button type="button" variant="outline" onClick={onCancel} disabled={saving}><FaTimes className="mr-2" /> Cancelar</Button>
-        <Button form="achievement-form" type="submit" disabled={saving}><FaSave className="mr-2" /> {saving ? 'Guardando...' : 'Guardar'}</Button>
+        <Button form="achievement-form" type="submit" isLoading={saving} loadingText="Guardando..."><FaSave className="mr-2" /> Guardar</Button>
       </div>
     </form>
   );
@@ -1134,7 +1134,7 @@ const GoalForm = ({ initial, isNew, onSave, onCancel, saving, error: formError }
       {formError && <p className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-300">{formError}</p>}
       <div className="flex flex-col gap-2 sm:flex-row sm:justify-end">
         <Button type="button" variant="outline" onClick={onCancel} disabled={saving}><FaTimes className="mr-2" /> Cancelar</Button>
-        <Button form="goal-form" type="submit" disabled={saving}><FaSave className="mr-2" /> {saving ? 'Guardando...' : 'Guardar'}</Button>
+        <Button form="goal-form" type="submit" isLoading={saving} loadingText="Guardando..."><FaSave className="mr-2" /> Guardar</Button>
       </div>
     </form>
   );

@@ -47,6 +47,8 @@ const TrainersTab = ({ userRole }) => {
   const [showResendModal, setShowResendModal] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(null);
   const [showChangeRoleModal, setShowChangeRoleModal] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isConfirmingRole, setIsConfirmingRole] = useState(false);
   const { message, showMessage } = useTimedMessage();
   
   const [filters, setFilters] = useState({
@@ -129,6 +131,7 @@ const TrainersTab = ({ userRole }) => {
 
   const handleSubmit = async (formData) => {
     try {
+      setIsSubmitting(true);
       if (editingTrainer) {
         await userActions.handleEdit(editingTrainer.id, formData, 'entrenador');
         showMessage('success', 'Entrenador actualizado correctamente');
@@ -140,6 +143,8 @@ const TrainersTab = ({ userRole }) => {
       loadTrainers();
     } catch (error) {
       showMessage('error', `Error: ${error.message}`);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -187,12 +192,15 @@ const TrainersTab = ({ userRole }) => {
 
   const confirmChangeRole = async (newRole) => {
     try {
+      setIsConfirmingRole(true);
       await userActions.handleChangeRole(showChangeRoleModal.id, newRole);
       showMessage('success', 'Rol cambiado correctamente');
       setShowChangeRoleModal(null);
       loadTrainers();
     } catch (error) {
       showMessage('error', `Error: ${error.message}`);
+    } finally {
+      setIsConfirmingRole(false);
     }
   };
 
@@ -338,23 +346,31 @@ const TrainersTab = ({ userRole }) => {
           onClose={closeModal}
           className="max-w-4xl"
         >
-            <UserForm userType="entrenador" initialData={editingTrainer} onSubmit={handleSubmit} onCancel={closeModal} submitLabel={editingTrainer ? 'Actualizar' : 'Guardar'} />
+          <UserForm
+            userType="entrenador"
+            initialData={editingTrainer}
+            onSubmit={handleSubmit}
+            onCancel={closeModal}
+            submitLabel={editingTrainer ? 'Actualizar' : 'Crear'}
+            isSubmitting={isSubmitting}
+          />
         </Modal>
       )}
       
       {showSuspendModal && <SuspendUserModal user={showSuspendModal} onConfirm={confirmSuspend} onCancel={() => setShowSuspendModal(null)} />}
       {showResendModal && <ResendCredentialsModal user={showResendModal} onConfirm={confirmResendCredentials} onCancel={() => setShowResendModal(null)} />}
       {showDeleteModal && <DeleteUserModal user={showDeleteModal} userType="entrenador" onConfirm={confirmDelete} onCancel={() => setShowDeleteModal(null)} />}
-      {showChangeRoleModal && <ChangeRoleModal user={showChangeRoleModal} currentRole={showChangeRoleModal.role} onConfirm={confirmChangeRole} onCancel={() => setShowChangeRoleModal(null)} />}
+      {showChangeRoleModal && (
+        <ChangeRoleModal
+          user={showChangeRoleModal}
+          currentRole={showChangeRoleModal.role}
+          onConfirm={confirmChangeRole}
+          onCancel={() => setShowChangeRoleModal(null)}
+          isSubmitting={isConfirmingRole}
+        />
+      )}
     </div>
   );
 };
 
 export default TrainersTab;
-
-
-
-
-
-
-

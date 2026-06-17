@@ -137,6 +137,8 @@ const PagosManager = ({ user }) => {
   const [mostrarSugerencias, setMostrarSugerencias] = useState(false);
   const [formErrors, setFormErrors] = useState({});
   const [submitError, setSubmitError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSyncing, setIsSyncing] = useState(false);
   const [paymentPeriodPreview, setPaymentPeriodPreview] = useState(null);
   const [notice, setNotice] = useState(EMPTY_NOTICE);
   const [confirmDialog, setConfirmDialog] = useState({
@@ -145,6 +147,7 @@ const PagosManager = ({ user }) => {
     message: '',
     confirmLabel: 'Confirmar',
     tone: 'primary',
+    isConfirming: false,
   });
 
   const [formData, setFormData] = useState(() => buildDefaultFormData());
@@ -183,9 +186,15 @@ const PagosManager = ({ user }) => {
 
   const runConfirmDialogAction = async () => {
     const action = confirmActionRef.current;
-    closeConfirmDialog();
     if (action) {
-      await action();
+      setConfirmDialog((prev) => ({ ...prev, isConfirming: true }));
+      try {
+        await action();
+      } finally {
+        closeConfirmDialog();
+      }
+    } else {
+      closeConfirmDialog();
     }
   };
 
@@ -322,17 +331,21 @@ const PagosManager = ({ user }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitError('');
+    if (isSubmitting) return;
 
     const validation = paymentsService.validatePaymentForm({
       formData,
       todayDateString: getTodayDateString(),
     });
-    setFormErrors(validation.errors);
 
     if (!validation.isValid) {
+      setFormErrors(validation.errors);
       return;
     }
+
+    setFormErrors({});
+    setSubmitError('');
+    setIsSubmitting(true);
     
     try {
       if (editingPago) {
@@ -368,6 +381,8 @@ const PagosManager = ({ user }) => {
       const resolvedMessage = error?.message || 'No se pudo guardar el pago.';
       setSubmitError(`Error al guardar: ${resolvedMessage}`);
       showNotice('error', 'Error: ' + resolvedMessage);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -441,7 +456,10 @@ const PagosManager = ({ user }) => {
         student_id: pago.student_id.toString(),
         membership_type_id: pago.membership_type_id?.toString() || '',
         fecha_pago: pago.fecha_pago || '',
-        observaciones: ''
+        observaciones: '',
+        useCustomPeriod: false,
+        fecha_inicio: pago.fecha_inicio || '',
+        fecha_fin: pago.fecha_fin || '',
       });
       setPaymentPeriodPreview({
         fecha_inicio: pago.fecha_inicio || null,
@@ -522,11 +540,12 @@ const PagosManager = ({ user }) => {
   );
 
   const actualizarEstadosManualmente = async () => {
+    if (isSyncing) return;
+    setIsSyncing(true);
     try {
-      console.log('?? Actualizando estados manualmente...');
       const resultados = await paymentsService.syncPaymentStatuses();
       
-      if (resultados.actualizados > 0) {
+      if (resultados && resultados.actualizados > 0) {
         showNotice('success', `${resultados.actualizados} pagos actualizados.\nEstados sincronizados correctamente.`);
         await loadData(); // Recargar datos
       } else {
@@ -535,6 +554,8 @@ const PagosManager = ({ user }) => {
     } catch (error) {
       console.error('Error actualizando estados:', error);
       showNotice('error', 'Error al actualizar estados: ' + error.message);
+    } finally {
+      setIsSyncing(false);
     }
   };
 
@@ -551,6 +572,8 @@ const PagosManager = ({ user }) => {
               onClick={actualizarEstadosManualmente}
               title="Actualizar estados automáticamente"
               className="w-full mobile:w-auto"
+              isLoading={isSyncing}
+              loadingText="Sincronizando estados..."
             >
               <FaSync className="mr-2" /> Actualizar Estados
             </Button>
@@ -879,14 +902,7 @@ const PagosManager = ({ user }) => {
                 </div>
               ) : null}
 
-              <div className={styles.statusPreview}>
-                <span className={styles.statusPreviewLabel}>Estado estimado:</span>
-                <span
-                  className={`${styles.statusPreviewBadge} ${getPaymentStatusClass(paymentStatusPreview.estado)}`}
-                >
-                  {paymentStatusPreview.mensaje}
-                </span>
-              </div>
+
 
 <div className={styles.formSection}>
                 <h4 className={styles.sectionTitle}><FaUsers className="mr-2 inline align-middle" />Atleta y Periodo</h4>
@@ -969,15 +985,76 @@ const PagosManager = ({ user }) => {
                     {formErrors.fecha_pago && <p id="payment-date-error" className={styles.fieldError}>{formErrors.fecha_pago}</p>}
                   </div>
 
-                  <div className={styles.inputGroup}>
-                    <label className="block text-sm font-semibold text-white">Periodo sugerido</label>
-                    <div className="min-h-[48px] rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white">
-                      {paymentPeriodPreview?.fecha_inicio && paymentPeriodPreview?.fecha_fin
-                        ? formatPeriodo(paymentPeriodPreview.fecha_inicio, paymentPeriodPreview.fecha_fin)
-                        : '--'}
+                  {!formData.useCustomPeriod && (
+                    <div className={styles.inputGroup}>
+                      <label className="block text-sm font-semibold text-white">Periodo sugerido</label>
+                      <div className="min-h-[48px] rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white">
+                        {paymentPeriodPreview?.fecha_inicio && paymentPeriodPreview?.fecha_fin
+                          ? formatPeriodo(paymentPeriodPreview.fecha_inicio, paymentPeriodPreview.fecha_fin)
+                          : '--'}
+                      </div>
+                      <p className={styles.fieldHint}>Se calcula automaticamente segun el historial del atleta.</p>
                     </div>
-                    <p className={styles.fieldHint}>Se calcula automaticamente segun el historial del atleta.</p>
+                  )}
+
+                  <div className={`${styles.inputGroup} mt-2`}>
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={formData.useCustomPeriod}
+                        onChange={(e) => {
+                          const isChecked = e.target.checked;
+                          setFormData((current) => ({
+                            ...current,
+                            useCustomPeriod: isChecked,
+                            fecha_inicio: isChecked ? (paymentPeriodPreview?.fecha_inicio || '') : '',
+                            fecha_fin: isChecked ? (paymentPeriodPreview?.fecha_fin || '') : '',
+                          }));
+                          setFormErrors((prev) => ({ ...prev, fecha_inicio: undefined, fecha_fin: undefined }));
+                        }}
+                        className="h-4 w-4 rounded border-white/20 bg-black/30 text-rv-gold focus:ring-rv-gold/70"
+                      />
+                      <span className="text-sm font-semibold text-white">Personalizar periodo de pago</span>
+                    </label>
                   </div>
+
+                  {formData.useCustomPeriod && (
+                    <div className="grid gap-3 mobile:grid-cols-2">
+                      <div className={styles.inputGroup}>
+                        <label htmlFor="fecha_inicio" className="block text-sm font-semibold text-white">Fecha de Inicio *</label>
+                        <input
+                          id="fecha_inicio"
+                          type="date"
+                          value={formData.fecha_inicio}
+                          onChange={(e) => {
+                            setFormData((current) => ({ ...current, fecha_inicio: e.target.value }));
+                            setFormErrors((prev) => ({ ...prev, fecha_inicio: undefined }));
+                          }}
+                          required={formData.useCustomPeriod}
+                          className="min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70 rv-dark-date-input"
+                          aria-invalid={Boolean(formErrors.fecha_inicio)}
+                        />
+                        {formErrors.fecha_inicio && <p className={styles.fieldError}>{formErrors.fecha_inicio}</p>}
+                      </div>
+                      
+                      <div className={styles.inputGroup}>
+                        <label htmlFor="fecha_fin" className="block text-sm font-semibold text-white">Fecha de Fin *</label>
+                        <input
+                          id="fecha_fin"
+                          type="date"
+                          value={formData.fecha_fin}
+                          onChange={(e) => {
+                            setFormData((current) => ({ ...current, fecha_fin: e.target.value }));
+                            setFormErrors((prev) => ({ ...prev, fecha_fin: undefined }));
+                          }}
+                          required={formData.useCustomPeriod}
+                          className="min-h-[48px] w-full rounded-xl border border-white/20 bg-black/30 px-3 py-2 text-sm text-white focus:border-rv-gold focus:outline-none focus:ring-2 focus:ring-rv-gold/70 rv-dark-date-input"
+                          aria-invalid={Boolean(formErrors.fecha_fin)}
+                        />
+                        {formErrors.fecha_fin && <p className={styles.fieldError}>{formErrors.fecha_fin}</p>}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -1049,11 +1126,14 @@ const PagosManager = ({ user }) => {
                   variant="secondary"
                   type="button"
                   onClick={closeModal}
+                  disabled={isSubmitting}
                 >
                   Cancelar
                 </Button>
                 <Button 
                   type="submit"
+                  isLoading={isSubmitting} 
+                  loadingText="Guardando..."
                 >
                   {editingPago ? 'Actualizar' : 'Guardar'}
                 </Button>
@@ -1070,12 +1150,14 @@ const PagosManager = ({ user }) => {
         >
           <p className="whitespace-pre-line text-sm text-slate-200">{confirmDialog.message}</p>
           <div className="mt-6 flex flex-col-reverse gap-3 mobile:flex-row mobile:justify-end">
-            <Button variant="secondary" onClick={closeConfirmDialog}>
+            <Button variant="secondary" onClick={closeConfirmDialog} disabled={confirmDialog.isConfirming}>
               Cancelar
             </Button>
             <Button
               variant={confirmDialog.tone === 'danger' ? 'danger' : 'primary'}
               onClick={runConfirmDialogAction}
+              isLoading={confirmDialog.isConfirming}
+              loadingText="Procesando..."
             >
               {confirmDialog.confirmLabel}
             </Button>

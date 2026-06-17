@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { cva } from 'class-variance-authority';
+import { FaSpinner } from 'react-icons/fa';
 import { cn } from '../../lib/cn';
 
 const buttonVariants = cva(
@@ -35,10 +36,18 @@ const buttonVariants = cva(
   }
 );
 
-const Button = ({ className, variant, size, state, type = 'button', children, ...props }) => {
+const Button = ({ className, variant, size, state, type = 'button', isLoading = false, loadingText, children, disabled, ...props }) => {
   return (
-    <button type={type} className={cn(buttonVariants({ variant, size, state }), className)} {...props}>
-      {children}
+    <button 
+      type={type} 
+      className={cn(buttonVariants({ variant, size, state }), className)} 
+      disabled={disabled || isLoading}
+      {...props}
+    >
+      {isLoading && (
+        <FaSpinner className="mr-2 animate-spin" aria-hidden="true" />
+      )}
+      {isLoading && loadingText ? loadingText : children}
     </button>
   );
 };
@@ -49,6 +58,9 @@ Button.propTypes = {
   size: PropTypes.oneOf(['sm', 'md', 'lg', 'icon']),
   state: PropTypes.oneOf(['default', 'active', 'subtle']),
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  isLoading: PropTypes.bool,
+  loadingText: PropTypes.string,
+  disabled: PropTypes.bool,
   children: PropTypes.node
 };
 
