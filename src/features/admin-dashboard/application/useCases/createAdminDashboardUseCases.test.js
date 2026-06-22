@@ -13,6 +13,10 @@ describe('createAdminDashboardUseCases', () => {
     listMonthlyPayments: jest.fn(),
     listPaymentsForExpiration: jest.fn(),
     countAttendancesByDate: jest.fn(),
+    listPaymentTypes: jest.fn(),
+    listPaymentsForFinancialReview: jest.fn(),
+    listAttendancesForFinancialReview: jest.fn(),
+    listStudentsForFinancialReview: jest.fn(),
     listStudentCategories: jest.fn(),
     listTrainingCategoriesForStudents: jest.fn(),
     listRecentAttendances: jest.fn(),
@@ -44,6 +48,11 @@ describe('createAdminDashboardUseCases', () => {
       { id: 4, student_id: 's4', fecha_fin: farDate.toISOString().slice(0, 10) },
     ]);
     repository.countAttendancesByDate.mockResolvedValue(7);
+    repository.listPaymentTypes.mockResolvedValue([{ id: 1, nombre: 'pago_diario' }]);
+    repository.listAttendancesForFinancialReview.mockResolvedValue([
+      { id: 'a1', student_id: 's1', fecha: today.toISOString().slice(0, 10), metodo_pago_id: 1 },
+      { id: 'a2', student_id: 's2', fecha: today.toISOString().slice(0, 10), metodo_pago_id: 1 },
+    ]);
 
     const useCases = createAdminDashboardUseCases(repository, activityIconFactory);
     const stats = await useCases.loadStatsUseCase.execute();
@@ -59,12 +68,63 @@ describe('createAdminDashboardUseCases', () => {
     expect(stats).toMatchObject({
       totalAtletas: 10,
       atletasActivos: 2,
-      ingresosDelMes: 75,
+      ingresosDelMes: 79,
       asistenciasHoy: 7,
       loading: false,
     });
     expect(stats.pagosVencidos).toBeGreaterThanOrEqual(1);
     expect(stats.renovacionesPendientes).toBeGreaterThanOrEqual(1);
+  });
+
+  it('loadFinancialReviewUseCase consolida mensualidades vencidas y pagos diarios por asistencia', async () => {
+    const repository = buildRepository();
+    repository.listStudentsForFinancialReview.mockResolvedValue([
+      { id: 's1', categoria: 'iniciacion_hombres', users: { nombre: 'Ana', apellido: 'Perez' } },
+      { id: 's2', categoria: 'master_mujeres', users: { nombre: 'Lia', apellido: 'Soto' } },
+    ]);
+    repository.listPaymentTypes.mockResolvedValue([
+      { id: 1, nombre: 'pago_diario' },
+      { id: 2, nombre: 'mensualidad' },
+    ]);
+    repository.listPaymentsForFinancialReview.mockResolvedValue([
+      {
+        id: 'p1',
+        student_id: 's1',
+        monto: 35,
+        fecha_pago: '2026-06-01',
+        fecha_inicio: '2026-06-01',
+        fecha_fin: '2026-06-30',
+      },
+      {
+        id: 'p2',
+        student_id: 's2',
+        monto: 35,
+        fecha_pago: '2026-04-01',
+        fecha_inicio: '2026-04-01',
+        fecha_fin: '2026-04-30',
+      },
+    ]);
+    repository.listAttendancesForFinancialReview.mockResolvedValue([
+      { id: 'a1', student_id: 's1', fecha: '2026-06-10', metodo_pago_id: 1 },
+      { id: 'a2', student_id: 's2', fecha: '2026-06-11', metodo_pago_id: 1 },
+      { id: 'a3', student_id: 's2', fecha: '2026-06-13', metodo_pago_id: 1 },
+    ]);
+
+    const useCases = createAdminDashboardUseCases(repository, activityIconFactory);
+    const review = await useCases.loadFinancialReviewUseCase.execute();
+
+    expect(review.summary.monthlyMembershipRevenue).toBe(35);
+    expect(review.summary.dailyAttendanceRevenue).toBe(6);
+    expect(review.summary.totalRevenue).toBe(41);
+    expect(review.summary.overdueStudentsCount).toBe(1);
+    expect(review.summary.overdueMonthlyFeesCount).toBeGreaterThanOrEqual(1);
+    expect(review.overdueStudents[0]).toMatchObject({
+      athleteName: 'Lia Soto',
+      currentMonthAttendances: 2,
+      currentMonthDailyPayments: 2,
+      currentMonthDailyRevenue: 4,
+    });
+    expect(review.monthlyTrend).toHaveLength(6);
   });
 
   it('loadCategoriesStatsUseCase cuenta categorias correctamente', async () => {
@@ -117,6 +177,8 @@ describe('createAdminDashboardUseCases', () => {
     repository.listMonthlyPayments.mockResolvedValue([]);
     repository.listPaymentsForExpiration.mockResolvedValue([]);
     repository.countAttendancesByDate.mockResolvedValue(0);
+    repository.listPaymentTypes.mockResolvedValue([{ id: 1, nombre: 'pago_diario' }]);
+    repository.listAttendancesForFinancialReview.mockResolvedValue([]);
     repository.listStudentCategories.mockResolvedValue([]);
     repository.listTrainingCategoriesForStudents.mockResolvedValue([]);
     repository.listRecentAttendances.mockResolvedValue([{ id: 'a1', student_id: 's1', fecha: '2026-05-10' }]);

@@ -32,6 +32,7 @@ import {
 import { studentDashboardService } from '../../studentDashboardService';
 import { ProfileSettings } from '../../../account-admin';
 import StudentPhysicalTests from './StudentPhysicalTests';
+import StudentProfileIdentityCard from './StudentProfileIdentityCard';
 import { IdentityPortrait, StudentGamificationPanel } from '../../../gamification';
 import { Button, Card, EmptyState, RolePanelLayout, SectionHeader, StatusBadge } from '../../../../shared/ui';
 import { cn } from '../../../../lib/cn';
@@ -345,14 +346,15 @@ const StudentPanel = ({ user }) => {
   );
 
   const renderProfile = () => (
-    <Card className="border-rv-gold/20 bg-black/30" padding="lg">
-      <SectionHeader
-        title="Configuracion de Perfil"
-        subtitle="Actualiza tu informacion personal."
-        icon={<FaCog />}
+    <div className="space-y-4">
+      <StudentProfileIdentityCard
+        userId={user.id}
+        gamification={gamification}
+        loading={loading}
+        onIdentityUpdated={setGamification}
       />
       <ProfileSettings user={user} />
-    </Card>
+    </div>
   );
 
   const renderGamification = () => (
@@ -490,7 +492,6 @@ PaymentRow.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.node.isRequired
 };
-
 
 
 

@@ -185,20 +185,20 @@ const CategoryLeaderboardsPanel = ({
         />
       ) : (
         <div className="space-y-5">
-          <div className="flex flex-wrap gap-2">
+          <div className="grid gap-3 mobile:grid-cols-2 desktop:grid-cols-4">
             {availableCategories.map((category) => (
               <button
                 key={category.code}
                 type="button"
                 onClick={() => setSelectedCategory(category.code)}
-                className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
+                className={`rounded-3xl border px-4 py-3 text-left transition ${
                   category.code === selectedCategory
                     ? 'border-rv-gold/60 bg-rv-gold/20 text-white shadow-[0_0_18px_rgba(245,158,11,0.25)]'
                     : 'border-white/10 bg-white/5 text-slate-200 hover:border-white/25 hover:bg-white/10'
                 }`}
               >
-                {category.label}
-                <span className="ml-2 text-xs text-slate-300">{category.total}</span>
+                <span className="block text-sm font-black uppercase tracking-[0.12em]">{category.label}</span>
+                <span className="mt-1 block text-sm text-slate-300">{category.total} atletas con actividad</span>
               </button>
             ))}
           </div>
@@ -214,7 +214,7 @@ const CategoryLeaderboardsPanel = ({
 
               return (
                 <div key={board.type} className="rounded-3xl border border-white/10 bg-black/20 p-4">
-                  <p className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">
+                  <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-slate-300">
                     <span className="text-rv-gold">{icon}</span>
                     {board.title}
                   </p>
@@ -244,7 +244,7 @@ const CategoryLeaderboardsPanel = ({
                   <p className="mt-1 text-sm text-rv-gold">
                     {leader ? formatScore(leader.score, board.unit) : 'Aun sin registros'}
                   </p>
-                  <p className="mt-3 text-xs leading-5 text-slate-300">
+                  <p className="mt-3 text-sm leading-6 text-slate-300">
                     {defaultSummaryText(board)}
                   </p>
                 </div>
@@ -255,7 +255,7 @@ const CategoryLeaderboardsPanel = ({
           <div className="rounded-[28px] border border-white/10 bg-black/20 p-4 mobile:p-5">
             <div className="flex flex-col gap-3 desktop:flex-row desktop:items-start desktop:justify-between">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-200">
+                <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-200">
                   Categoria activa
                 </p>
                 <h3 className="mt-2 text-2xl font-black text-white">
@@ -282,7 +282,7 @@ const CategoryLeaderboardsPanel = ({
                   key={board.type}
                   type="button"
                   onClick={() => setSelectedBoardType(board.type)}
-                  className={`rounded-full border px-3 py-2 text-xs font-bold uppercase tracking-[0.12em] transition ${
+                  className={`rounded-full border px-4 py-2.5 text-sm font-bold uppercase tracking-[0.1em] transition ${
                     board.type === activeLeaderboard?.type
                       ? 'border-cyan-300/50 bg-cyan-400/15 text-white'
                       : 'border-white/10 bg-white/5 text-slate-300 hover:border-white/20 hover:bg-white/10'
@@ -295,7 +295,7 @@ const CategoryLeaderboardsPanel = ({
 
             <div className="mt-5 grid gap-3 desktop:grid-cols-2">
               <div className="rounded-3xl border border-rv-gold/25 bg-[linear-gradient(135deg,_rgba(245,158,11,0.14),_rgba(15,23,42,0.3)_58%,_rgba(249,115,22,0.14))] p-4">
-                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-amber-100">Marca lider</p>
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-amber-100">Marca lider</p>
                 <p className="mt-2 text-lg font-black text-white">
                   {activeLeaderboard?.rows?.[0]?.publicAlias || 'Sin lider todavia'}
                 </p>
@@ -307,7 +307,7 @@ const CategoryLeaderboardsPanel = ({
               </div>
 
               <div className="rounded-3xl border border-cyan-300/25 bg-[linear-gradient(135deg,_rgba(34,211,238,0.14),_rgba(15,23,42,0.34)_58%,_rgba(14,165,233,0.1))] p-4">
-                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-100">Presion competitiva</p>
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-100">Presion competitiva</p>
                 <p className="mt-2 text-lg font-black text-white">
                   {rivalEntry?.publicAlias || 'Todavia sin rival directo'}
                 </p>
@@ -354,7 +354,7 @@ const CategoryLeaderboardsPanel = ({
                             showBadgeLabel
                           />
                           <div className="min-w-0">
-                          <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-300">
+                          <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-300">
                             {getPlacementLabel(row.rankPosition)}
                           </p>
                           <p className="mt-1 truncate text-lg font-black text-white">
@@ -370,7 +370,7 @@ const CategoryLeaderboardsPanel = ({
                               {row.avatarModelName}
                             </p>
                           ) : null}
-                          <p className="mt-1 text-sm text-slate-300">
+                          <p className="mt-1 text-sm leading-6 text-slate-300">
                             {buildCompetitiveSummary({
                               row,
                               leader: activeLeaderboard.rows?.[0] || null,
@@ -382,7 +382,7 @@ const CategoryLeaderboardsPanel = ({
                         </div>
                         </div>
                         <div className="shrink-0 text-left mobile:text-right">
-                          <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-300">
+                          <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-300">
                             {activeLeaderboard.scoreLabel}
                           </p>
                           <p className="mt-1 text-2xl font-black text-rv-gold">

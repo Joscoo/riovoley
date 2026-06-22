@@ -57,7 +57,7 @@ interface AttendanceRow {
   schedule_id: string | null;
 }
 
-interface Snapshot {
+interface AttendanceSnapshot {
   meta: {
     report_code: string;
     source_kind: string;
@@ -73,7 +73,7 @@ interface Snapshot {
 }
 
 interface BuildSnapshotResult {
-  snapshot: Snapshot;
+  snapshot: Record<string, unknown>;
   summary: Record<string, unknown>;
 }
 
@@ -81,6 +81,97 @@ interface PaymentRow {
   student_id: string;
   fecha_inicio: string | null;
   fecha_fin: string | null;
+}
+
+interface FinancialPaymentRow extends PaymentRow {
+  monto: number | null;
+  fecha_pago: string | null;
+}
+
+interface FinancialStudentRow {
+  id: string;
+  categoria: string | null;
+  nombre: string;
+  apellido: string;
+}
+
+interface FinancialOverdueRow {
+  athlete_name: string;
+  student_id: string;
+  category: string;
+  last_payment_date: string | null;
+  coverage_end: string | null;
+  overdue_months: number;
+  estimated_debt: number;
+  current_period_attendances: number;
+  current_period_daily_payments: number;
+  current_period_daily_revenue: number;
+}
+
+interface FinancialTrendRow {
+  month_key: string;
+  month_label: string;
+  monthly_payments_total: number;
+  daily_payments_total: number;
+  combined_total: number;
+  daily_payments_count: number;
+}
+
+interface FinancialSnapshot {
+  meta: {
+    report_code: string;
+    source_kind: string;
+    period_start: string;
+    period_end: string;
+    timezone: string;
+    version: number;
+    generated_at: string;
+  };
+  summary: {
+    total_revenue: number;
+    monthly_membership_revenue: number;
+    daily_attendance_revenue: number;
+    overdue_students_count: number;
+    overdue_monthly_fees_count: number;
+    estimated_debt_total: number;
+    active_monthly_coverage_count: number;
+    attendances_count: number;
+    daily_payments_count: number;
+  };
+  monthly_trend: FinancialTrendRow[];
+  overdue_students: FinancialOverdueRow[];
+}
+
+interface StudentRosterRow {
+  student_id: string;
+  full_name: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone: string;
+  category: string;
+  category_label: string;
+  birth_date: string | null;
+  admission_date: string | null;
+  status: 'activo' | 'suspendido';
+}
+
+interface StudentRosterSnapshot {
+  meta: {
+    report_code: string;
+    source_kind: string;
+    period_start: string;
+    period_end: string;
+    timezone: string;
+    version: number;
+    generated_at: string;
+  };
+  totals: {
+    total_students: number;
+    active_students: number;
+    suspended_students: number;
+  };
+  rows: StudentRosterRow[];
 }
 
 const MONTHLY_STATUS_LABELS: Record<AttendanceRow['monthly_payment_status'], string> = {
@@ -361,7 +452,7 @@ const buildAttendanceSnapshot = async (
     perfeccionamiento_mujeres: rows.filter((item) => item.category === 'perfeccionamiento_mujeres' || item.category === 'master_mujeres').length,
   };
 
-  const snapshot: Snapshot = {
+  const snapshot: AttendanceSnapshot = {
     meta: {
       report_code: reportCode,
       source_kind: sourceKind,
@@ -388,6 +479,312 @@ const buildAttendanceSnapshot = async (
       period_end: periodEnd,
       total_rows: rows.length,
       totals,
+    },
+  };
+};
+
+const parseDateOnlyUtc = (value: string) => new Date(`${value}T00:00:00.000Z`);
+
+const formatMonthKey = (date: Date) => {
+  const year = date.getUTCFullYear();
+  const month = `${date.getUTCMonth() + 1}`.padStart(2, '0');
+  return `${year}-${month}`;
+};
+
+const buildMonthRanges = (periodStart: string, periodEnd: string) => {
+  const start = parseDateOnlyUtc(periodStart);
+  const end = parseDateOnlyUtc(periodEnd);
+  const cursor = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), 1));
+  const ranges: Array<{ key: string; label: string; firstDay: string; lastDay: string }> = [];
+
+  while (cursor <= end) {
+    const year = cursor.getUTCFullYear();
+    const month = cursor.getUTCMonth();
+    const firstDay = `${formatMonthKey(cursor)}-01`;
+    const lastDayDate = new Date(Date.UTC(year, month + 1, 0));
+    const lastDay = `${formatMonthKey(cursor)}-${`${lastDayDate.getUTCDate()}`.padStart(2, '0')}`;
+
+    ranges.push({
+      key: formatMonthKey(cursor),
+      label: cursor.toLocaleDateString('es-EC', { month: 'short', year: 'numeric', timeZone: 'UTC' }),
+      firstDay,
+      lastDay,
+    });
+
+    cursor.setUTCMonth(cursor.getUTCMonth() + 1);
+  }
+
+  return ranges;
+};
+
+const isPaymentActiveOnDate = (payment: PaymentRow, targetDate: string) => {
+  if (!payment?.fecha_inicio || payment.fecha_inicio > targetDate) return false;
+  if (!payment?.fecha_fin) return true;
+  return payment.fecha_fin >= targetDate;
+};
+
+const calculateOverdueMonths = (fechaFin: string | null, targetDate: string) => {
+  if (!fechaFin) return 0;
+  const dueDate = parseDateOnlyUtc(fechaFin);
+  const currentDate = parseDateOnlyUtc(targetDate);
+  if (dueDate >= currentDate) return 0;
+
+  const rawMonths = ((currentDate.getUTCFullYear() - dueDate.getUTCFullYear()) * 12)
+    + (currentDate.getUTCMonth() - dueDate.getUTCMonth());
+
+  return Math.max(rawMonths, 1);
+};
+
+const buildFinancialSnapshot = async (
+  serviceClient: ReturnType<typeof createServiceClient>,
+  reportCode: string,
+  sourceKind: string,
+  periodStart: string,
+  periodEnd: string,
+  timezone: string,
+): Promise<BuildSnapshotResult> => {
+  const [
+    paymentTypesResult,
+    studentsResult,
+    paymentsInRangeResult,
+    allPaymentsResult,
+    attendancesResult,
+  ] = await Promise.all([
+    serviceClient.from('payment_types').select('id, nombre'),
+    serviceClient.from('students').select('id, categoria, users(nombre, apellido)'),
+    serviceClient
+      .from('payments')
+      .select('student_id, monto, fecha_pago, fecha_inicio, fecha_fin')
+      .gte('fecha_pago', periodStart)
+      .lte('fecha_pago', periodEnd)
+      .is('deleted_at', null),
+    serviceClient
+      .from('payments')
+      .select('student_id, monto, fecha_pago, fecha_inicio, fecha_fin')
+      .is('deleted_at', null)
+      .order('fecha_inicio', { ascending: false }),
+    serviceClient
+      .from('attendances')
+      .select('student_id, fecha, metodo_pago_id')
+      .gte('fecha', periodStart)
+      .lte('fecha', periodEnd),
+  ]);
+
+  if (paymentTypesResult.error) {
+    throw new HttpError(500, 'PAYMENT_TYPES_QUERY_FAILED', 'No se pudo consultar metodos de pago', paymentTypesResult.error);
+  }
+  if (studentsResult.error) {
+    throw new HttpError(500, 'STUDENTS_QUERY_FAILED', 'No se pudo consultar estudiantes', studentsResult.error);
+  }
+  if (paymentsInRangeResult.error) {
+    throw new HttpError(500, 'PAYMENTS_RANGE_QUERY_FAILED', 'No se pudo consultar pagos del periodo', paymentsInRangeResult.error);
+  }
+  if (allPaymentsResult.error) {
+    throw new HttpError(500, 'PAYMENTS_QUERY_FAILED', 'No se pudo consultar historial de pagos', allPaymentsResult.error);
+  }
+  if (attendancesResult.error) {
+    throw new HttpError(500, 'ATTENDANCES_QUERY_FAILED', 'No se pudo consultar asistencias del periodo', attendancesResult.error);
+  }
+
+  const paymentTypes = paymentTypesResult.data || [];
+  const students = studentsResult.data || [];
+  const paymentsInRange = (paymentsInRangeResult.data || []) as FinancialPaymentRow[];
+  const allPayments = (allPaymentsResult.data || []) as FinancialPaymentRow[];
+  const attendances = attendancesResult.data || [];
+
+  const pagoDiarioType = paymentTypes.find((item) => item.nombre === 'pago_diario');
+  const pagoDiarioTypeId = pagoDiarioType?.id ?? null;
+
+  const studentById = new Map<string, FinancialStudentRow>(
+    students.map((student) => [
+      String(student.id),
+      {
+        id: String(student.id),
+        categoria: student.categoria || null,
+        nombre: student?.users?.nombre || '',
+        apellido: student?.users?.apellido || '',
+      },
+    ]),
+  );
+
+  const latestPaymentByStudent = new Map<string, FinancialPaymentRow>();
+  for (const payment of allPayments) {
+    const studentId = String(payment.student_id || '');
+    if (!studentId || latestPaymentByStudent.has(studentId)) continue;
+    latestPaymentByStudent.set(studentId, payment);
+  }
+
+  const monthlyMembershipRevenue = paymentsInRange.reduce((sum, payment) => sum + Number(payment.monto || 0), 0);
+  const currentPeriodDailyAttendances = attendances.filter(
+    (attendance) => Number(attendance.metodo_pago_id) === Number(pagoDiarioTypeId),
+  );
+  const dailyAttendanceRevenue = currentPeriodDailyAttendances.length * 2;
+
+  const monthlyTrend: FinancialTrendRow[] = buildMonthRanges(periodStart, periodEnd).map((month) => {
+    const monthlyPaymentsTotal = allPayments
+      .filter((payment) => payment.fecha_pago && payment.fecha_pago >= month.firstDay && payment.fecha_pago <= month.lastDay)
+      .reduce((sum, payment) => sum + Number(payment.monto || 0), 0);
+
+    const monthDailyAttendances = attendances.filter(
+      (attendance) => attendance.fecha >= month.firstDay
+        && attendance.fecha <= month.lastDay
+        && Number(attendance.metodo_pago_id) === Number(pagoDiarioTypeId),
+    );
+
+    const dailyPaymentsTotal = monthDailyAttendances.length * 2;
+
+    return {
+      month_key: month.key,
+      month_label: month.label,
+      monthly_payments_total: monthlyPaymentsTotal,
+      daily_payments_total: dailyPaymentsTotal,
+      combined_total: monthlyPaymentsTotal + dailyPaymentsTotal,
+      daily_payments_count: monthDailyAttendances.length,
+    };
+  });
+
+  const overdueStudents: FinancialOverdueRow[] = [];
+  let overdueMonthlyFeesCount = 0;
+  let estimatedDebtTotal = 0;
+  let activeMonthlyCoverageCount = 0;
+
+  for (const [studentId, payment] of latestPaymentByStudent.entries()) {
+    if (isPaymentActiveOnDate(payment, periodEnd)) {
+      activeMonthlyCoverageCount += 1;
+      continue;
+    }
+
+    const overdueMonths = calculateOverdueMonths(payment.fecha_fin, periodEnd);
+    if (overdueMonths <= 0) continue;
+
+    const student = studentById.get(studentId);
+    const studentAttendances = attendances.filter((attendance) => String(attendance.student_id) === studentId);
+    const studentDailyAttendances = studentAttendances.filter(
+      (attendance) => Number(attendance.metodo_pago_id) === Number(pagoDiarioTypeId),
+    );
+    const estimatedDebt = overdueMonths * Number(payment.monto || 0);
+
+    overdueMonthlyFeesCount += overdueMonths;
+    estimatedDebtTotal += estimatedDebt;
+
+    overdueStudents.push({
+      athlete_name: `${student?.nombre || ''} ${student?.apellido || ''}`.trim() || 'Atleta sin nombre',
+      student_id: studentId,
+      category: student?.categoria || '',
+      last_payment_date: payment.fecha_pago || null,
+      coverage_end: payment.fecha_fin || null,
+      overdue_months: overdueMonths,
+      estimated_debt: estimatedDebt,
+      current_period_attendances: studentAttendances.length,
+      current_period_daily_payments: studentDailyAttendances.length,
+      current_period_daily_revenue: studentDailyAttendances.length * 2,
+    });
+  }
+
+  overdueStudents.sort((a, b) => {
+    if (b.overdue_months !== a.overdue_months) return b.overdue_months - a.overdue_months;
+    if (b.estimated_debt !== a.estimated_debt) return b.estimated_debt - a.estimated_debt;
+    return a.athlete_name.localeCompare(b.athlete_name, 'es');
+  });
+
+  const snapshot: FinancialSnapshot = {
+    meta: {
+      report_code: reportCode,
+      source_kind: sourceKind,
+      period_start: periodStart,
+      period_end: periodEnd,
+      timezone,
+      version: 1,
+      generated_at: new Date().toISOString(),
+    },
+    summary: {
+      total_revenue: monthlyMembershipRevenue + dailyAttendanceRevenue,
+      monthly_membership_revenue: monthlyMembershipRevenue,
+      daily_attendance_revenue: dailyAttendanceRevenue,
+      overdue_students_count: overdueStudents.length,
+      overdue_monthly_fees_count: overdueMonthlyFeesCount,
+      estimated_debt_total: estimatedDebtTotal,
+      active_monthly_coverage_count: activeMonthlyCoverageCount,
+      attendances_count: attendances.length,
+      daily_payments_count: currentPeriodDailyAttendances.length,
+    },
+    monthly_trend: monthlyTrend,
+    overdue_students: overdueStudents,
+  };
+
+  return {
+    snapshot,
+    summary: {
+      report_code: reportCode,
+      period_start: periodStart,
+      period_end: periodEnd,
+      total_revenue: snapshot.summary.total_revenue,
+      overdue_students_count: snapshot.summary.overdue_students_count,
+      estimated_debt_total: snapshot.summary.estimated_debt_total,
+    },
+  };
+};
+
+const buildStudentRosterSnapshot = async (
+  serviceClient: ReturnType<typeof createServiceClient>,
+  reportCode: string,
+  sourceKind: string,
+  periodStart: string,
+  periodEnd: string,
+  timezone: string,
+): Promise<BuildSnapshotResult> => {
+  const { data, error } = await serviceClient
+    .from('students')
+    .select('id, categoria, fecha_ingreso, users(nombre, apellido, email, telefono, fecha_nacimiento, suspended)')
+    .order('fecha_ingreso', { ascending: false });
+
+  if (error) {
+    throw new HttpError(500, 'STUDENT_ROSTER_QUERY_FAILED', 'No se pudo consultar el padron de estudiantes', error);
+  }
+
+  const rows: StudentRosterRow[] = (data || []).map((student) => ({
+    student_id: String(student.id),
+    full_name: `${student?.users?.nombre || ''} ${student?.users?.apellido || ''}`.trim() || 'Sin nombre',
+    first_name: student?.users?.nombre || '',
+    last_name: student?.users?.apellido || '',
+    email: student?.users?.email || '',
+    phone: student?.users?.telefono || '',
+    category: student.categoria || '',
+    category_label: CATEGORY_LABELS[student.categoria || ''] || (student.categoria || ''),
+    birth_date: student?.users?.fecha_nacimiento || null,
+    admission_date: student.fecha_ingreso || null,
+    status: student?.users?.suspended ? 'suspendido' : 'activo',
+  }));
+
+  rows.sort((a, b) => a.full_name.localeCompare(b.full_name, 'es'));
+
+  const snapshot: StudentRosterSnapshot = {
+    meta: {
+      report_code: reportCode,
+      source_kind: sourceKind,
+      period_start: periodStart,
+      period_end: periodEnd,
+      timezone,
+      version: 1,
+      generated_at: new Date().toISOString(),
+    },
+    totals: {
+      total_students: rows.length,
+      active_students: rows.filter((row) => row.status === 'activo').length,
+      suspended_students: rows.filter((row) => row.status === 'suspendido').length,
+    },
+    rows,
+  };
+
+  return {
+    snapshot,
+    summary: {
+      report_code: reportCode,
+      period_start: periodStart,
+      period_end: periodEnd,
+      total_students: snapshot.totals.total_students,
+      active_students: snapshot.totals.active_students,
+      suspended_students: snapshot.totals.suspended_students,
     },
   };
 };
@@ -464,7 +861,7 @@ const splitTextByWidth = (
   return lines.length > 0 ? lines : ['-'];
 };
 
-const renderAttendancePdf = async (snapshot: Snapshot, observations?: string) => {
+const renderAttendancePdf = async (snapshot: AttendanceSnapshot, observations?: string) => {
   const pdfDoc = await PDFDocument.create();
   const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
   const fontBold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
@@ -911,6 +1308,188 @@ const renderAttendancePdf = async (snapshot: Snapshot, observations?: string) =>
   return await pdfDoc.save();
 };
 
+const renderFinancialPdf = async (snapshot: FinancialSnapshot) => {
+  const pdfDoc = await PDFDocument.create();
+  const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+  const fontBold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+  let page = pdfDoc.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
+  let y = PAGE_HEIGHT - 60;
+
+  const addPageIfNeeded = (requiredHeight: number) => {
+    if (y - requiredHeight >= PAGE_MIN_Y) return;
+    page = pdfDoc.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
+    y = PAGE_HEIGHT - 60;
+  };
+
+  const drawTitle = () => {
+    page.drawText('RIOVOLEY - REPORTE FINANCIERO', {
+      x: PAGE_MARGIN_X,
+      y,
+      size: 18,
+      font: fontBold,
+      color: COLORS.navy,
+    });
+    y -= 18;
+    page.drawText(`Periodo: ${formatDateLabel(snapshot.meta.period_start)} al ${formatDateLabel(snapshot.meta.period_end)}`, {
+      x: PAGE_MARGIN_X,
+      y,
+      size: 10,
+      font,
+      color: COLORS.grayText,
+    });
+    y -= 10;
+    page.drawText(`Generado: ${snapshot.meta.generated_at}`, {
+      x: PAGE_MARGIN_X,
+      y,
+      size: 9,
+      font,
+      color: COLORS.grayText,
+    });
+    y -= 18;
+  };
+
+  const drawSection = (title: string, lines: string[]) => {
+    addPageIfNeeded(32);
+    page.drawRectangle({
+      x: PAGE_MARGIN_X,
+      y: y - 18,
+      width: CONTENT_WIDTH,
+      height: 18,
+      color: COLORS.blue,
+    });
+    page.drawText(title, {
+      x: PAGE_MARGIN_X + 8,
+      y: y - 12,
+      size: 10,
+      font: fontBold,
+      color: COLORS.white,
+    });
+    y -= 26;
+
+    for (const line of lines) {
+      const wrapped = splitTextByWidth(line, font, 9, CONTENT_WIDTH - 8);
+      addPageIfNeeded((wrapped.length * 11) + 4);
+      for (const wrappedLine of wrapped) {
+        page.drawText(wrappedLine, {
+          x: PAGE_MARGIN_X + 4,
+          y,
+          size: 9,
+          font,
+          color: rgb(0.12, 0.14, 0.18),
+        });
+        y -= 11;
+      }
+      y -= 2;
+    }
+    y -= 8;
+  };
+
+  drawTitle();
+  drawSection('Resumen ejecutivo', [
+    `Ingreso total del periodo: ${snapshot.summary.total_revenue.toFixed(2)}`,
+    `Ingreso por mensualidades: ${snapshot.summary.monthly_membership_revenue.toFixed(2)}`,
+    `Ingreso por pago diario: ${snapshot.summary.daily_attendance_revenue.toFixed(2)}`,
+    `Atletas con deuda vencida: ${snapshot.summary.overdue_students_count}`,
+    `Mensualidades vencidas acumuladas: ${snapshot.summary.overdue_monthly_fees_count}`,
+    `Deuda estimada total: ${snapshot.summary.estimated_debt_total.toFixed(2)}`,
+    `Cobertura mensual activa: ${snapshot.summary.active_monthly_coverage_count}`,
+    `Asistencias registradas en el periodo: ${snapshot.summary.attendances_count}`,
+    `Pagos diarios registrados en el periodo: ${snapshot.summary.daily_payments_count}`,
+  ]);
+
+  drawSection(
+    'Tendencia mensual',
+    snapshot.monthly_trend.map((row) =>
+      `${row.month_label}: mensualidades ${row.monthly_payments_total.toFixed(2)}, pago diario ${row.daily_payments_total.toFixed(2)}, total ${row.combined_total.toFixed(2)}, asistencias cobradas ${row.daily_payments_count}`,
+    ),
+  );
+
+  drawSection(
+    'Cartera vencida principal',
+    (snapshot.overdue_students.length > 0
+      ? snapshot.overdue_students.slice(0, 30).map((row) =>
+        `${row.athlete_name} | categoria ${row.category || '-'} | cobertura fin ${row.coverage_end || '-'} | meses vencidos ${row.overdue_months} | deuda estimada ${row.estimated_debt.toFixed(2)} | pago diario periodo ${row.current_period_daily_revenue.toFixed(2)}`,
+      )
+      : ['Sin cartera vencida para el periodo seleccionado.']),
+  );
+
+  return await pdfDoc.save();
+};
+
+const renderStudentRosterPdf = async (snapshot: StudentRosterSnapshot) => {
+  const pdfDoc = await PDFDocument.create();
+  const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+  const fontBold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+  let page = pdfDoc.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
+  let y = PAGE_HEIGHT - 60;
+
+  const addPageIfNeeded = (requiredHeight: number) => {
+    if (y - requiredHeight >= PAGE_MIN_Y) return;
+    page = pdfDoc.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
+    y = PAGE_HEIGHT - 60;
+  };
+
+  page.drawText('RIOVOLEY - PADRON DE ESTUDIANTES', {
+    x: PAGE_MARGIN_X,
+    y,
+    size: 18,
+    font: fontBold,
+    color: COLORS.navy,
+  });
+  y -= 18;
+  page.drawText(`Snapshot: ${formatDateLabel(snapshot.meta.period_start)}`, {
+    x: PAGE_MARGIN_X,
+    y,
+    size: 10,
+    font,
+    color: COLORS.grayText,
+  });
+  y -= 10;
+  page.drawText(`Total estudiantes: ${snapshot.totals.total_students} | activos: ${snapshot.totals.active_students} | suspendidos: ${snapshot.totals.suspended_students}`, {
+    x: PAGE_MARGIN_X,
+    y,
+    size: 9,
+    font,
+    color: COLORS.grayText,
+  });
+  y -= 18;
+
+  for (const row of snapshot.rows) {
+    const lines = [
+      `${row.full_name} | categoria ${row.category_label || row.category || '-'} | estado ${row.status}`,
+      `email: ${row.email || '-'} | telefono: ${row.phone || '-'} | ingreso: ${row.admission_date || '-'} | nacimiento: ${row.birth_date || '-'}`,
+    ];
+
+    const wrapped = lines.flatMap((line) => splitTextByWidth(line, font, 9, CONTENT_WIDTH - 8));
+    addPageIfNeeded((wrapped.length * 11) + 6);
+    page.drawRectangle({
+      x: PAGE_MARGIN_X,
+      y: y - ((wrapped.length * 11) + 6),
+      width: CONTENT_WIDTH,
+      height: (wrapped.length * 11) + 6,
+      color: COLORS.white,
+      borderColor: COLORS.grayBorder,
+      borderWidth: 1,
+    });
+
+    let lineY = y - 12;
+    wrapped.forEach((wrappedLine, index) => {
+      page.drawText(wrappedLine, {
+        x: PAGE_MARGIN_X + 4,
+        y: lineY,
+        size: 9,
+        font: index === 0 ? fontBold : font,
+        color: rgb(0.12, 0.14, 0.18),
+      });
+      lineY -= 11;
+    });
+
+    y -= (wrapped.length * 11) + 12;
+  }
+
+  return await pdfDoc.save();
+};
+
 const computeSha256Hex = async (bytes: Uint8Array) => {
   const hashBuffer = await crypto.subtle.digest('SHA-256', bytes);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
@@ -1092,21 +1671,51 @@ export const generateReportRun = async (input: GenerateReportInput) => {
     .eq('id', runId);
 
   try {
-    if (definition.source_kind !== 'attendances_daily') {
+    let snapshot: Record<string, unknown>;
+    let summary: Record<string, unknown>;
+    let pdfBytes: Uint8Array;
+
+    if (definition.source_kind === 'attendances_daily') {
+      const result = await buildAttendanceSnapshot(
+        serviceClient,
+        definition.code,
+        definition.source_kind,
+        input.periodStart,
+        input.periodEnd,
+        definition.timezone || 'America/Guayaquil',
+        input.observations,
+      );
+      snapshot = result.snapshot;
+      summary = result.summary;
+      pdfBytes = await renderAttendancePdf(snapshot as AttendanceSnapshot, input.observations);
+    } else if (definition.source_kind === 'financial_monthly_summary') {
+      const result = await buildFinancialSnapshot(
+        serviceClient,
+        definition.code,
+        definition.source_kind,
+        input.periodStart,
+        input.periodEnd,
+        definition.timezone || 'America/Guayaquil',
+      );
+      snapshot = result.snapshot;
+      summary = result.summary;
+      pdfBytes = await renderFinancialPdf(snapshot as FinancialSnapshot);
+    } else if (definition.source_kind === 'student_roster_snapshot') {
+      const result = await buildStudentRosterSnapshot(
+        serviceClient,
+        definition.code,
+        definition.source_kind,
+        input.periodStart,
+        input.periodEnd,
+        definition.timezone || 'America/Guayaquil',
+      );
+      snapshot = result.snapshot;
+      summary = result.summary;
+      pdfBytes = await renderStudentRosterPdf(snapshot as StudentRosterSnapshot);
+    } else {
       throw new HttpError(400, 'SOURCE_KIND_NOT_IMPLEMENTED', `source_kind no soportado en V1: ${definition.source_kind}`);
     }
 
-    const { snapshot, summary } = await buildAttendanceSnapshot(
-      serviceClient,
-      definition.code,
-      definition.source_kind,
-      input.periodStart,
-      input.periodEnd,
-      definition.timezone || 'America/Guayaquil',
-      input.observations,
-    );
-
-    const pdfBytes = await renderAttendancePdf(snapshot, input.observations);
     const checksum = await computeSha256Hex(pdfBytes);
     const storagePath = buildStoragePath(input.reportCode, input.periodStart, input.periodEnd, runId);
 

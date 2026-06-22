@@ -135,23 +135,23 @@ const COSMETIC_SORT_OPTIONS = [
 ];
 
 const PANEL_TABS = [
-  { id: 'summary', label: 'Resumen' },
-  { id: 'identity', label: 'Identidad' },
-  { id: 'goals', label: 'Metas' },
-  { id: 'competition', label: 'Competencia' },
+  { id: 'summary', label: 'Resumen', helper: 'Nivel, racha y estado general', icon: FaChartLine },
+  { id: 'identity', label: 'Identidad', helper: 'Avatar, foto, titulos y tienda', icon: FaImage },
+  { id: 'goals', label: 'Metas', helper: 'XP, logros y rutas de mejora', icon: FaFlagCheckered },
+  { id: 'competition', label: 'Competencia', helper: 'Rankings y rivales directos', icon: FaTrophy },
 ];
 
 const IDENTITY_TABS = [
-  { id: 'profile', label: 'Perfil' },
-  { id: 'avatar', label: 'Avatar' },
-  { id: 'collection', label: 'Coleccion' },
-  { id: 'store', label: 'Tienda' },
+  { id: 'profile', label: 'Perfil', helper: 'Apodo, foto y titulo', icon: FaStar },
+  { id: 'avatar', label: 'Avatar', helper: 'Estilo base y modelo', icon: FaImage },
+  { id: 'collection', label: 'Coleccion', helper: 'Lo que ya conseguiste', icon: FaLayerGroup },
+  { id: 'store', label: 'Tienda', helper: 'Compra y equipa cosmeticos', icon: FaCoins },
 ];
 
 const GOALS_TABS = [
-  { id: 'xp', label: 'XP y ritmo' },
-  { id: 'achievements', label: 'Logros' },
-  { id: 'challenges', label: 'Retos' },
+  { id: 'xp', label: 'XP y ritmo', helper: 'Actividad reciente y progreso', icon: FaBolt },
+  { id: 'achievements', label: 'Logros', helper: 'Desbloqueados, secretos y pistas', icon: FaMedal },
+  { id: 'challenges', label: 'Retos', helper: 'Campanas, rutas y proximo ciclo', icon: FaFlagCheckered },
 ];
 
 const COMPETITION_FILTERS = [
@@ -291,6 +291,22 @@ const recalculateStoreAffordability = (items, nextBalance) =>
     canPurchase: !entry.isOwned && entry.isUnlocked && Number(nextBalance || 0) >= Number(entry.priceCoins || 0),
   }));
 
+const buildPreviewEquipmentForItem = (equipment, item) => (
+  item
+    ? {
+        ...(equipment || {}),
+        [item.category]: item.slug,
+      }
+    : (equipment || {})
+);
+
+const buildEquippedItemsFromEquipment = (itemsBySlug, equipment) => ({
+  frame: itemsBySlug[equipment?.frame] || null,
+  background: itemsBySlug[equipment?.background] || null,
+  badge: itemsBySlug[equipment?.badge] || null,
+  effect: itemsBySlug[equipment?.effect] || null,
+});
+
 const patchLeaderboardEquipmentRows = (rows, nextEquipment) =>
   (rows || []).map((entry) => (
     entry.isCurrentStudent
@@ -357,6 +373,28 @@ ProgressRing.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
+const CoinAmount = ({ value, suffix = '', className = '', tone = 'default' }) => {
+  const toneClass = tone === 'muted'
+    ? 'text-slate-300'
+    : tone === 'accent'
+      ? 'text-rv-gold'
+      : 'text-white';
+
+  return (
+    <span className={`inline-flex items-center gap-1.5 ${toneClass} ${className}`.trim()}>
+      <FaCoins className="shrink-0 text-rv-gold" aria-hidden="true" />
+      <span>{`${value}${suffix}`}</span>
+    </span>
+  );
+};
+
+CoinAmount.propTypes = {
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  suffix: PropTypes.string,
+  className: PropTypes.string,
+  tone: PropTypes.oneOf(['default', 'muted', 'accent']),
+};
+
 const HighlightStat = ({ icon, label, value, helper, tone = 'default' }) => {
   const toneClass = tone === 'success'
     ? 'border-emerald-300/35 bg-emerald-900/15'
@@ -366,12 +404,12 @@ const HighlightStat = ({ icon, label, value, helper, tone = 'default' }) => {
 
   return (
     <div className={`rounded-2xl border p-3 ${toneClass}`}>
-      <p className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-200">
+      <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-slate-200">
         <span className="text-rv-gold">{icon}</span>
         {label}
       </p>
       <p className="mt-2 text-2xl font-black text-white">{value}</p>
-      <p className="mt-1 text-xs text-slate-300">{helper}</p>
+      <p className="mt-1 text-sm text-slate-300">{helper}</p>
     </div>
   );
 };
@@ -391,7 +429,7 @@ const PaginationControls = ({ page, totalPages, onChange }) => {
 
   return (
     <div className="mt-4 flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-black/15 px-3 py-2">
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
+      <p className="text-sm font-semibold uppercase tracking-[0.12em] text-slate-400">
         Pagina {page} de {totalPages}
       </p>
       <div className="flex items-center gap-2">
@@ -665,18 +703,8 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
   const pagedStoreCosmetics = paginateItems(filteredStoreCosmetics, sectionPages.storeCosmetics);
   const pagedExpandedLeaderboardRows = paginateItems(activeLeaderboardRows.slice(3), sectionPages.leaderboard);
   const previewItem = previewItemSlug ? storeCosmeticsBySlug[previewItemSlug] || null : null;
-  const previewEquipment = previewItem
-    ? {
-        ...(cosmetics.equipment || {}),
-        [previewItem.category]: previewItem.slug,
-      }
-    : (cosmetics.equipment || {});
-  const previewEquippedItems = {
-    frame: storeCosmeticsBySlug[previewEquipment.frame] || null,
-    background: storeCosmeticsBySlug[previewEquipment.background] || null,
-    badge: storeCosmeticsBySlug[previewEquipment.badge] || null,
-    effect: storeCosmeticsBySlug[previewEquipment.effect] || null,
-  };
+  const previewEquipment = buildPreviewEquipmentForItem(cosmetics.equipment, previewItem);
+  const previewEquippedItems = buildEquippedItemsFromEquipment(storeCosmeticsBySlug, previewEquipment);
   const previewAvatarUrl = buildAvatarUrl({
     seed: `${identity?.studentId || userId || 'student'}-${identity?.displayName || 'estudiante'}`,
     style: selectedAvatarStyle || 'adventurer-neutral',
@@ -686,9 +714,21 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
   const previewProfileImageUrl = selectedProfileImageMode === 'photo' && profilePhotoPreviewUrl
     ? profilePhotoPreviewUrl
     : previewAvatarUrl;
+  const currentEquippedItems = buildEquippedItemsFromEquipment(storeCosmeticsBySlug, cosmetics.equipment || {});
+  const currentProfileImageUrl = identity?.profileImageMode === 'photo' && identity?.profilePhotoUrl
+    ? identity.profilePhotoUrl
+    : buildAvatarUrl({
+        seed: `${identity?.studentId || userId || 'student'}-${identity?.displayName || 'estudiante'}`,
+        style: identity?.avatarStyle || 'adventurer-neutral',
+        modelSlug: identity?.avatarModelSlug || identity?.avatarModelMeta?.slug || null,
+        equipment: cosmetics.equipment || {},
+      });
   const hasProfilePhoto = Boolean(profilePhotoPreviewUrl);
   const secretAchievementsPreview = secretAchievements.slice(0, 6);
   const xpMomentsCount = xpLedger.length;
+  const activePanelTabMeta = PANEL_TABS.find((tab) => tab.id === selectedPanelTab) || PANEL_TABS[0];
+  const activeIdentityTabMeta = IDENTITY_TABS.find((tab) => tab.id === selectedIdentityTab) || IDENTITY_TABS[0];
+  const activeGoalsTabMeta = GOALS_TABS.find((tab) => tab.id === selectedGoalsTab) || GOALS_TABS[0];
   const activeGoalSummaryCards = {
     xp: [
       {
@@ -1070,21 +1110,31 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
         )}
       />
 
-      <div className="mt-4 flex flex-wrap gap-2">
+      <div className="mt-4 grid gap-3 mobile:grid-cols-2 desktop:grid-cols-4">
         {PANEL_TABS.map((tab) => (
           <button
             key={tab.id}
             type="button"
             onClick={() => setSelectedPanelTab(tab.id)}
-            className={`rounded-full border px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] transition ${
+            className={`rounded-3xl border px-4 py-3 text-left transition ${
               selectedPanelTab === tab.id
                 ? 'border-rv-gold/60 bg-rv-gold/15 text-white shadow-[0_0_22px_rgba(245,158,11,0.16)]'
                 : 'border-white/10 bg-white/5 text-slate-300 hover:border-white/20 hover:text-white'
             }`}
           >
-            {tab.label}
+            <span className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.14em]">
+              <tab.icon className="text-rv-gold" />
+              {tab.label}
+            </span>
+            <span className="mt-2 block text-sm leading-5 text-slate-300">
+              {tab.helper}
+            </span>
           </button>
         ))}
+      </div>
+
+      <div className="mt-4 rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200">
+        <span className="font-black text-white">{activePanelTabMeta.label}:</span> {activePanelTabMeta.helper}.
       </div>
 
       {selectedPanelTab === 'summary' ? (
@@ -1180,9 +1230,9 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
           />
           <HighlightStat
             icon={<FaCoins />}
-            label="Monedas"
+            label="Saldo"
             value={`${currency.balance || 0}`}
-            helper="Sirven para futuros decorativos, efectos y personalizacion."
+            helper="Usalas para comprar cosmeticos, efectos y personalizacion."
             tone={(currency.balance || 0) > 0 ? 'success' : 'default'}
           />
         </div>
@@ -1347,27 +1397,36 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
 
       {selectedPanelTab === 'identity' ? (
       <>
-      <div className="mt-4 flex flex-wrap gap-2">
+      <div className="mt-4 grid gap-3 mobile:grid-cols-2 desktop:grid-cols-4">
         {IDENTITY_TABS.map((tab) => (
           <button
             key={tab.id}
             type="button"
             onClick={() => setSelectedIdentityTab(tab.id)}
-            className={`rounded-full border px-3 py-2 text-xs font-bold uppercase tracking-[0.14em] transition ${
+            className={`rounded-3xl border px-4 py-3 text-left transition ${
               selectedIdentityTab === tab.id
                 ? 'border-cyan-300/50 bg-cyan-400/15 text-white'
                 : 'border-white/10 bg-white/5 text-slate-300 hover:border-white/20 hover:text-white'
             }`}
           >
-            {tab.label}
+            <span className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.12em]">
+              <tab.icon className="text-rv-gold" />
+              {tab.label}
+            </span>
+            <span className="mt-2 block text-sm leading-5 text-slate-300">
+              {tab.helper}
+            </span>
           </button>
         ))}
+      </div>
+      <div className="mt-4 rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200">
+        <span className="font-black text-white">{activeIdentityTabMeta.label}:</span> {activeIdentityTabMeta.helper}.
       </div>
       {(selectedIdentityTab === 'collection' || selectedIdentityTab === 'store') ? (
         <div className="mt-4 rounded-2xl border border-cyan-300/20 bg-cyan-950/15 px-4 py-3 text-sm text-cyan-100">
           {selectedIdentityTab === 'collection'
-            ? 'Aqui ves tu coleccion equipada, tu preview y los cosmeticos que ya son tuyos.'
-            : 'Aqui ves tu wallet, el extracto de monedas y el catalogo disponible para comprar.'}
+            ? 'Aqui ves tu coleccion equipada, tu vista actual y los cosmeticos que ya son tuyos.'
+            : 'Aqui ves tu wallet, el extracto con iconos de monedas y el catalogo listo para comprar y equipar.'}
         </div>
       ) : null}
       <Card className="mt-4 border-white/15 bg-black/25" padding="sm">
@@ -1654,12 +1713,14 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
       <Card className={`mt-4 border-white/15 bg-black/25 ${selectedIdentityTab === 'store' ? '' : 'hidden'}`} padding="sm">
         <h3 className="inline-flex items-center gap-2 text-base font-extrabold text-white mobile:text-lg">
           <FaCoins className="text-rv-gold" />
-          Monedas de personalizacion
+          Wallet de personalizacion
         </h3>
         <div className="mt-3 grid gap-3 desktop:grid-cols-[0.95fr_1.05fr]">
           <div className="rounded-3xl border border-emerald-300/20 bg-[linear-gradient(135deg,_rgba(16,185,129,0.14),_rgba(15,23,42,0.18)_55%,_rgba(245,158,11,0.12))] p-4">
-            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-emerald-100">Wallet activa</p>
-            <p className="mt-3 text-4xl font-black text-white">{currency.balance || 0}</p>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-emerald-100">Wallet activa</p>
+            <div className="mt-3 text-4xl font-black text-white">
+              <CoinAmount value={currency.balance || 0} />
+            </div>
             <div className="mt-4 grid gap-3 mobile:grid-cols-2">
               <MiniInsight
                 icon={<FaCoins />}
@@ -1677,12 +1738,12 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
               />
             </div>
             <p className="mt-4 text-sm text-slate-200">
-              Estas monedas quedaran listas para canjear cosmeticos, efectos de perfil y futuras piezas visuales del avatar.
+              Este saldo queda listo para canjear cosmeticos, efectos de perfil y futuras piezas visuales del avatar.
             </p>
           </div>
 
           <div className="rounded-3xl border border-white/10 bg-black/20 p-4">
-            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">Extracto de monedas</p>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-300">Extracto de monedas</p>
                 {currency.ledger?.length > 0 ? (
                   <div className="mt-3 space-y-2">
                 {pagedCurrencyLedger.items.map((entry) => (
@@ -1691,12 +1752,15 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                       <div className="min-w-0">
                         <p className="text-sm font-bold text-white">{entry.label}</p>
                         <p className="mt-1 text-xs text-slate-300">{entry.description}</p>
-                        <p className="mt-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
+                        <p className="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-slate-400">
                           {entry.occurredAt ? formatDate(entry.occurredAt) : 'Recompensa estructural'}
                         </p>
                       </div>
                       <StatusBadge tone={Number(entry.coinsDelta || 0) >= 0 ? 'success' : 'warning'}>
-                        {Number(entry.coinsDelta || 0) >= 0 ? `+${entry.coinsDelta}` : `${entry.coinsDelta}`}
+                        <CoinAmount
+                          value={Number(entry.coinsDelta || 0) >= 0 ? `+${entry.coinsDelta}` : `${entry.coinsDelta}`}
+                          tone="accent"
+                        />
                       </StatusBadge>
                     </div>
                   </div>
@@ -1852,7 +1916,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
             <FaCoins className="text-rv-gold" />
             Tienda cosmetica
           </h3>
-          <StatusBadge tone="info">{currency.balance || 0} monedas disponibles</StatusBadge>
+          <StatusBadge tone="info"><CoinAmount value={currency.balance || 0} suffix=" disponibles" tone="accent" /></StatusBadge>
         </div>
 
         <div className="mt-4 grid gap-4 desktop:grid-cols-[320px,minmax(0,1fr)] desktop:items-start">
@@ -1860,9 +1924,9 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
             <div className="rounded-3xl border border-cyan-300/20 bg-[linear-gradient(135deg,_rgba(34,211,238,0.16),_rgba(15,23,42,0.22)_55%,_rgba(245,158,11,0.08))] p-4">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-100">Preview siempre visible</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-100">Vista actual siempre visible</p>
                   <p className="mt-1 text-sm text-slate-300">
-                    {previewItem ? `Estas viendo ${previewItem.name} aplicado a tu perfil.` : 'Asi se vera tu perfil con lo que ya tienes equipado.'}
+                    {previewItem ? `Estas viendo ${previewItem.name} aplicado a tu perfil.` : 'Asi se ve tu perfil ahora mismo con lo que ya tienes equipado.'}
                   </p>
                 </div>
                 {previewItem ? (
@@ -1885,14 +1949,14 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
 
               <div className="mt-4 grid gap-2">
                 <div className="rounded-2xl border border-white/10 bg-black/20 px-3 py-2">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">Modo visual</p>
+                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Modo visual</p>
                   <p className="mt-1 text-sm font-semibold text-white">
                     {selectedProfileImageMode === 'photo' ? 'Foto de perfil activa' : 'Avatar como imagen principal'}
                   </p>
                 </div>
                 {previewItem ? (
                   <div className="rounded-2xl border border-cyan-300/20 bg-cyan-950/15 px-3 py-2">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-cyan-100">Impacto del item</p>
+                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-cyan-100">Impacto del item</p>
                     <p className="mt-1 text-sm font-semibold text-white">{previewItem.photoFocusLabel}</p>
                     <p className="mt-1 text-xs text-slate-300">
                       {getCosmeticPhotoNotice(previewItem.category, selectedProfileImageMode) || 'Tambien se reflejara en tu presencia competitiva y rankings.'}
@@ -1908,9 +1972,9 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
               <div className="flex flex-col gap-4">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div>
-                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-100">Catalogo cosmetico</p>
+                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-100">Catalogo cosmetico</p>
                     <p className="mt-1 text-sm text-slate-300">
-                      Mas piezas visuales pensadas para que tu foto de perfil se vea mejor en el panel y en rankings.
+                      Cada tarjeta te muestra de inmediato como quedaria el cambio en tu perfil, sin depender del preview lateral.
                     </p>
                   </div>
                   <StatusBadge tone="info">{filteredStoreCosmetics.length} items visibles</StatusBadge>
@@ -1935,7 +1999,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
 
                 <div className="grid gap-3 mobile:grid-cols-2">
                   <label className="space-y-2">
-                    <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">Impacto en foto</span>
+                    <span className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Impacto en foto</span>
                     <select
                       value={selectedStorePhotoFilter}
                       onChange={(event) => setSelectedStorePhotoFilter(event.target.value)}
@@ -1948,7 +2012,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                   </label>
 
                   <label className="space-y-2">
-                    <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">Ordenar por</span>
+                    <span className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Ordenar por</span>
                     <select
                       value={selectedStoreSort}
                       onChange={(event) => setSelectedStoreSort(event.target.value)}
@@ -1965,83 +2029,122 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
 
             <div className="grid gap-3 mobile:grid-cols-2">
               {pagedStoreCosmetics.items.map((item) => (
-                <div
-                  key={item.slug}
-                  className={`rounded-2xl border p-4 ${
-                    item.isLocked
-                      ? 'border-fuchsia-300/25 bg-fuchsia-950/10'
-                      : 'border-white/10 bg-black/25'
-                  }`}
-                >
-                  <div className="flex flex-wrap items-start justify-between gap-2">
-                    <div>
-                      <p className="text-sm font-bold text-white">{item.name}</p>
-                      <div className="mt-1 flex flex-wrap items-center gap-2">
-                        <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-rv-gold">{item.rarity}</p>
-                        <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
-                          {COSMETIC_SLOT_LABELS[item.category] || item.category}
+                (() => {
+                  const itemPreviewEquipment = buildPreviewEquipmentForItem(cosmetics.equipment, item);
+                  const itemPreviewEquippedItems = buildEquippedItemsFromEquipment(storeCosmeticsBySlug, itemPreviewEquipment);
+                  const isItemPreviewActive = previewItemSlug === item.slug;
+
+                  return (
+                    <div
+                      key={item.slug}
+                      className={`rounded-3xl border p-4 ${
+                        item.isLocked
+                          ? 'border-fuchsia-300/25 bg-fuchsia-950/10'
+                          : 'border-white/10 bg-black/25'
+                      }`}
+                    >
+                      <div className="flex flex-wrap items-start justify-between gap-2">
+                        <div>
+                          <p className="text-base font-black text-white">{item.name}</p>
+                          <div className="mt-1 flex flex-wrap items-center gap-2">
+                            <p className="text-xs font-bold uppercase tracking-[0.14em] text-rv-gold">{item.rarity}</p>
+                            <span className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
+                              {COSMETIC_SLOT_LABELS[item.category] || item.category}
+                            </span>
+                          </div>
+                        </div>
+                        <StatusBadge tone={item.isOwned ? 'success' : item.isLocked ? 'warning' : item.canAfford ? 'info' : 'warning'}>
+                          {item.isOwned ? 'Tuyo' : item.isLocked ? 'Bloqueado' : <CoinAmount value={item.priceCoins} tone="accent" />}
+                        </StatusBadge>
+                      </div>
+                      <p className="mt-2 text-sm leading-6 text-slate-200">{item.description}</p>
+
+                      <div className="mt-4 rounded-3xl border border-white/10 bg-slate-950/75 p-3">
+                        <div className="flex items-center justify-between gap-3">
+                          <p className="text-xs font-bold uppercase tracking-[0.14em] text-cyan-100">
+                            Asi se veria en tu perfil
+                          </p>
+                          <StatusBadge tone={getCosmeticPhotoImpactTone(item.photoFocus)}>{item.photoFocusLabel}</StatusBadge>
+                        </div>
+                        <div className="mt-3 grid grid-cols-[1fr_auto_1fr] items-center gap-3">
+                          <div className="flex flex-col items-center gap-2 text-center">
+                            <IdentityPortrait
+                              imageUrl={currentProfileImageUrl}
+                              displayName={identity?.displayName || 'estudiante'}
+                              equipment={cosmetics.equipment || {}}
+                              equippedItems={currentEquippedItems}
+                              size="sm"
+                            />
+                            <p className="text-xs font-semibold text-slate-300">Ahora</p>
+                          </div>
+                          <FaChevronRight className="text-rv-gold" />
+                          <div className="flex flex-col items-center gap-2 text-center">
+                            <IdentityPortrait
+                              imageUrl={currentProfileImageUrl}
+                              displayName={identity?.displayName || 'estudiante'}
+                              equipment={itemPreviewEquipment}
+                              equippedItems={itemPreviewEquippedItems}
+                              size="sm"
+                            />
+                            <p className="text-xs font-semibold text-white">Con {item.name}</p>
+                          </div>
+                        </div>
+                        <p className="mt-3 text-sm text-slate-300">
+                          {getCosmeticPhotoNotice(item.category, selectedProfileImageMode) || 'Tambien se reflejara en tu presencia competitiva y en rankings.'}
+                        </p>
+                      </div>
+
+                      <div className="mt-3 flex flex-wrap items-center gap-2">
+                        <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-bold uppercase tracking-[0.12em] text-cyan-100">
+                          {item.unlockLabel}
+                        </span>
+                        <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-bold uppercase tracking-[0.12em] text-slate-200">
+                          Variante: {item.variantLabel || 'base'}
                         </span>
                       </div>
+                      <p className="mt-2 text-sm text-slate-300">{item.unlockHint}</p>
+
+                      <div className="mt-4 flex flex-wrap items-center justify-between gap-2">
+                        <Button variant="secondary" size="sm" onClick={() => setPreviewItemSlug((current) => current === item.slug ? '' : item.slug)}>
+                          {isItemPreviewActive ? 'Ocultar preview grande' : 'Ver en preview grande'}
+                        </Button>
+                        {item.isOwned ? (
+                          item.isEquipped ? (
+                            <Button
+                              variant="secondary"
+                              size="sm"
+                              disabled={cosmeticActionSlug === item.category}
+                              onClick={() => handleUnequipCosmetic(item.category)}
+                            >
+                              <FaSyncAlt className={`mr-2 ${cosmeticActionSlug === item.category ? 'animate-spin' : ''}`} />
+                              Desequipar
+                            </Button>
+                          ) : (
+                            <Button
+                              variant="secondary"
+                              size="sm"
+                              disabled={cosmeticActionSlug === item.slug}
+                              onClick={() => handleEquipCosmetic(item.slug)}
+                            >
+                              <FaSyncAlt className={`mr-2 ${cosmeticActionSlug === item.slug ? 'animate-spin' : ''}`} />
+                              Equipar
+                            </Button>
+                          )
+                        ) : (
+                          <Button
+                            variant="secondary"
+                            size="sm"
+                            disabled={!item.canPurchase || cosmeticActionSlug === item.slug}
+                            onClick={() => handlePurchaseCosmetic(item.slug)}
+                          >
+                            <CoinAmount value={item.priceCoins} tone="accent" className="mr-2" />
+                            {item.isLocked ? 'Aun bloqueado' : 'Comprar ahora'}
+                          </Button>
+                        )}
+                      </div>
                     </div>
-                    <StatusBadge tone={item.isOwned ? 'success' : item.isLocked ? 'warning' : item.canAfford ? 'info' : 'warning'}>
-                      {item.isOwned ? 'Tuyo' : item.isLocked ? 'Bloqueado' : `${item.priceCoins} monedas`}
-                    </StatusBadge>
-                  </div>
-                  <p className="mt-2 text-xs text-slate-200">{item.description}</p>
-                  <div className="mt-3 flex flex-wrap items-center gap-2">
-                    <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-cyan-100">
-                      {item.unlockLabel}
-                    </span>
-                    <StatusBadge tone={getCosmeticPhotoImpactTone(item.photoFocus)}>{item.photoFocusLabel}</StatusBadge>
-                  </div>
-                  <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-100">
-                    Variante: {item.variantLabel || 'base'}
-                  </p>
-                  <p className="mt-2 text-[11px] text-slate-300">{item.unlockHint}</p>
-                  {getCosmeticPhotoNotice(item.category, selectedProfileImageMode) ? (
-                    <p className="mt-2 text-[11px] font-semibold text-cyan-100">
-                      {getCosmeticPhotoNotice(item.category, selectedProfileImageMode)}
-                    </p>
-                  ) : null}
-                  <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
-                    <Button variant="secondary" size="sm" onClick={() => setPreviewItemSlug((current) => current === item.slug ? '' : item.slug)}>
-                      {previewItemSlug === item.slug ? 'Ocultar preview' : 'Previsualizar'}
-                    </Button>
-                    {item.isOwned ? (
-                      item.isEquipped ? (
-                        <Button
-                          variant="secondary"
-                          size="sm"
-                          disabled={cosmeticActionSlug === item.category}
-                          onClick={() => handleUnequipCosmetic(item.category)}
-                        >
-                          <FaSyncAlt className={`mr-2 ${cosmeticActionSlug === item.category ? 'animate-spin' : ''}`} />
-                          Desequipar
-                        </Button>
-                      ) : (
-                        <Button
-                          variant="secondary"
-                          size="sm"
-                          disabled={cosmeticActionSlug === item.slug}
-                          onClick={() => handleEquipCosmetic(item.slug)}
-                        >
-                          <FaSyncAlt className={`mr-2 ${cosmeticActionSlug === item.slug ? 'animate-spin' : ''}`} />
-                          Equipar
-                        </Button>
-                      )
-                    ) : (
-                      <Button
-                        variant="secondary"
-                        size="sm"
-                        disabled={!item.canPurchase || cosmeticActionSlug === item.slug}
-                        onClick={() => handlePurchaseCosmetic(item.slug)}
-                      >
-                        <FaCoins className="mr-2" />
-                        {item.isLocked ? 'Aun bloqueado' : 'Comprar'}
-                      </Button>
-                    )}
-                  </div>
-                </div>
+                  );
+                })()
               ))}
             </div>
 
@@ -2065,23 +2168,33 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
       {selectedPanelTab === 'goals' ? (
       <>
       <Card className="mt-4 border-white/15 bg-black/25" padding="sm">
-        <div className="flex flex-wrap gap-2">
+        <div className="grid gap-3 mobile:grid-cols-3">
           {GOALS_TABS.map((tab) => (
             <button
               key={tab.id}
               type="button"
               onClick={() => setSelectedGoalsTab(tab.id)}
-              className={`rounded-full border px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] transition ${
+              className={`rounded-3xl border px-4 py-3 text-left transition ${
                 selectedGoalsTab === tab.id
                   ? 'border-rv-gold/60 bg-rv-gold/15 text-white shadow-[0_0_18px_rgba(245,158,11,0.14)]'
                   : 'border-white/10 bg-white/5 text-slate-300 hover:border-white/20 hover:text-white'
               }`}
             >
-              {tab.label}
+              <span className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.14em]">
+                <tab.icon className="text-rv-gold" />
+                {tab.label}
+              </span>
+              <span className="mt-2 block text-sm leading-5 text-slate-300">
+                {tab.helper}
+              </span>
             </button>
           ))}
         </div>
       </Card>
+
+      <div className="mt-4 rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200">
+        <span className="font-black text-white">{activeGoalsTabMeta.label}:</span> {activeGoalsTabMeta.helper}.
+      </div>
 
       <div className="mt-4 grid gap-3 desktop:grid-cols-3">
         {(activeGoalSummaryCards[selectedGoalsTab] || []).map((card) => (
@@ -2879,12 +2992,12 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
 
 const MiniInsight = ({ icon, label, value, helper }) => (
   <div className="rounded-2xl border border-white/10 bg-black/20 p-3">
-    <p className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-slate-300">
+    <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-slate-300">
       <span className="text-rv-gold">{icon}</span>
       {label}
     </p>
     <p className="mt-2 text-xl font-black text-white">{value}</p>
-    <p className="mt-1 text-xs text-slate-400">{helper}</p>
+    <p className="mt-1 text-sm text-slate-400">{helper}</p>
   </div>
 );
 

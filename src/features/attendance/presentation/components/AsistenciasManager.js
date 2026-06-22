@@ -483,6 +483,7 @@ const AsistenciasManager = ({ user }) => {
 
       // Refrescar la lista general de historial en segundo plano
       loadData();
+      window.dispatchEvent(new Event('riovoley:dashboard-refresh'));
     } catch (error) {
       console.error('Error registrando asistencia:', error);
       showNotice('error', 'Error: ' + error.message);
@@ -513,6 +514,7 @@ const AsistenciasManager = ({ user }) => {
 
       // Refrescar en segundo plano
       loadData();
+      window.dispatchEvent(new Event('riovoley:dashboard-refresh'));
     } catch (error) {
       console.error('Error eliminando asistencia:', error);
       showNotice('error', 'Error: ' + error.message);
@@ -535,6 +537,7 @@ const AsistenciasManager = ({ user }) => {
           });
           showNotice('success', 'Todos los atletas marcados como presentes con MENSUALIDAD');
           await Promise.all([loadTodayAttendance(), loadData()]);
+          window.dispatchEvent(new Event('riovoley:dashboard-refresh'));
         } catch (error) {
           console.error('Error marcando asistencias masivas:', error);
           showNotice('error', 'Error: ' + error.message);
@@ -1696,7 +1699,6 @@ AsistenciasManager.propTypes = {
 };
 
 export default AsistenciasManager;
-
 
 
 

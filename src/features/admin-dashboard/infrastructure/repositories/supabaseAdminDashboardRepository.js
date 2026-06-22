@@ -36,7 +36,7 @@ export class SupabaseAdminDashboardRepository {
   async listPaymentsForExpiration() {
     const { data, error } = await supabase
       .from('payments')
-      .select('student_id, fecha_fin, fecha_inicio')
+      .select('student_id, fecha_fin, fecha_inicio, fecha_pago, monto')
       .is('deleted_at', null)
       .order('fecha_fin', { ascending: false });
 
@@ -52,6 +52,51 @@ export class SupabaseAdminDashboardRepository {
 
     if (error) throw new AdminDashboardError(normalizeError(error, 'Error contando asistencias'), error);
     return count || 0;
+  }
+
+  async listPaymentTypes() {
+    const { data, error } = await supabase
+      .from('payment_types')
+      .select('id, nombre, descripcion, precio')
+      .order('id', { ascending: true });
+
+    if (error) throw new AdminDashboardError(normalizeError(error, 'Error consultando metodos de pago'), error);
+    return data || [];
+  }
+
+  async listPaymentsForFinancialReview({ dateFrom } = {}) {
+    let query = supabase
+      .from('payments')
+      .select('id, student_id, monto, fecha_pago, fecha_inicio, fecha_fin, estado, membership_type_id')
+      .is('deleted_at', null)
+      .order('fecha_pago', { ascending: false });
+
+    if (dateFrom) {
+      query = query.or(`fecha_pago.gte.${dateFrom},fecha_fin.gte.${dateFrom}`);
+    }
+
+    const { data, error } = await query;
+    if (error) throw new AdminDashboardError(normalizeError(error, 'Error consultando pagos para revision financiera'), error);
+    return data || [];
+  }
+
+  async listAttendancesForFinancialReview({ dateFrom, dateTo } = {}) {
+    let query = supabase
+      .from('attendances')
+      .select('id, student_id, fecha, metodo_pago_id')
+      .order('fecha', { ascending: false });
+
+    if (dateFrom) {
+      query = query.gte('fecha', dateFrom);
+    }
+
+    if (dateTo) {
+      query = query.lte('fecha', dateTo);
+    }
+
+    const { data, error } = await query;
+    if (error) throw new AdminDashboardError(normalizeError(error, 'Error consultando asistencias para revision financiera'), error);
+    return data || [];
   }
 
   async listStudentCategories() {
@@ -107,5 +152,18 @@ export class SupabaseAdminDashboardRepository {
 
     if (error) throw new AdminDashboardError(normalizeError(error, 'Error cargando estudiante para actividad'), error);
     return data;
+  }
+
+  async listStudentsForFinancialReview() {
+    const { data, error } = await supabase
+      .from('students')
+      .select(`
+        id,
+        categoria,
+        users!inner(id, nombre, apellido)
+      `);
+
+    if (error) throw new AdminDashboardError(normalizeError(error, 'Error cargando estudiantes para revision financiera'), error);
+    return data || [];
   }
 }

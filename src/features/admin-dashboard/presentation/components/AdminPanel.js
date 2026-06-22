@@ -22,6 +22,8 @@ import { TestsFisicosManager } from '../../../physical-tests';
 import { UserManagementPanel } from '../../../user-management';
 import { GamificationAdminPanel } from '../../../gamification';
 import Dashboard from './Dashboard';
+import FinancialReview from './FinancialReview';
+import ReportsCenter from './ReportsCenter';
 import { RolePanelLayout, iconRegistry, semanticCatalog } from '../../../../shared/ui';
 
 const AdminPanel = ({ user }) => {
@@ -33,6 +35,8 @@ const AdminPanel = ({ user }) => {
 
   const menuItems = useMemo(() => [
     { id: 'dashboard', icon: <FaChartBar />, label: semanticCatalog.UI_LABELS.dashboard, description: 'Resumen y estadisticas' },
+    { id: 'reportes', icon: <FaChartBar />, label: 'Reportes', description: 'Asistencias, financieros y exportes' },
+    { id: 'revision-financiera', icon: <FaDollarSign />, label: 'Revision Financiera', description: 'Mensualidades vencidas, asistencias e ingresos' },
     { id: 'usuarios', icon: <UsersIcon />, label: semanticCatalog.UI_LABELS.usersManagementTitle, description: 'Estudiantes, entrenadores y administradores' },
     { id: 'pagos', icon: <FaDollarSign />, label: 'Pagos', description: 'Mensualidades y facturacion' },
     { id: 'asistencias', icon: <FaCalendar />, label: 'Asistencias', description: 'Control de entrenamientos' },
@@ -45,8 +49,9 @@ const AdminPanel = ({ user }) => {
 
   const validSections = useMemo(() => new Set(menuItems.map((item) => item.id)), [menuItems]);
   const sectionAliasMap = useMemo(() => ({
-    reportes: 'asistencias',
+    reportes: 'reportes',
     atletas: 'usuarios',
+    finanzas: 'revision-financiera',
   }), []);
 
   useEffect(() => {
@@ -91,6 +96,10 @@ const AdminPanel = ({ user }) => {
         return <Dashboard user={user} onNavigateToSection={handleNavigateToSection} />;
       case 'usuarios':
         return <UserManagementPanel user={user} userRole="administrador" />;
+      case 'reportes':
+        return <ReportsCenter />;
+      case 'revision-financiera':
+        return <FinancialReview />;
       case 'pagos':
         return <PagosManager user={user} />;
       case 'asistencias':

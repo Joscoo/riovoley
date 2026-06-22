@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {
   FaBolt,
   FaChartBar,
+  FaChartLine,
   FaClipboardList,
   FaCreditCard,
   FaDollarSign,
@@ -118,10 +119,13 @@ const Dashboard = ({ user, onNavigateToSection }) => {
           <Button variant="secondary" className="w-full justify-start" onClick={() => onNavigateToSection('pagos')}>
             <FaCreditCard className="mr-2" /> Registrar Pago
           </Button>
+          <Button variant="secondary" className="w-full justify-start" onClick={() => onNavigateToSection('revision-financiera')}>
+            <FaChartLine className="mr-2" /> Revision Financiera
+          </Button>
           <Button variant="secondary" className="w-full justify-start" onClick={() => onNavigateToSection('usuarios')}>
             <FaUsersCog className="mr-2" /> Gestionar Usuarios
           </Button>
-          <Button variant="secondary" className="w-full justify-start" onClick={() => onNavigateToSection('asistencias')}>
+          <Button variant="secondary" className="w-full justify-start" onClick={() => onNavigateToSection('reportes')}>
             <FaChartBar className="mr-2" /> Ver Reportes
           </Button>
         </div>

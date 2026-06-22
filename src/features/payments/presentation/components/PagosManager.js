@@ -237,17 +237,6 @@ const PagosManager = ({ user }) => {
     [membershipTypes, formData.membership_type_id]
   );
 
-  const paymentStatusPreview = useMemo(() => {
-    const pagoTemporal = {
-      monto: Number.parseFloat(selectedMembershipType?.costo || '0'),
-      fecha_inicio: paymentPeriodPreview?.fecha_inicio || null,
-      fecha_fin: paymentPeriodPreview?.fecha_fin || null,
-      fecha_pago: formData.fecha_pago || null
-    };
-
-    return paymentsService.getPaymentStatusInfo(pagoTemporal);
-  }, [selectedMembershipType, paymentPeriodPreview, formData.fecha_pago]);
-
   const loadData = async () => {
     setLoading(true);
     try {
@@ -1176,7 +1165,6 @@ PagosManager.propTypes = {
 };
 
 export default PagosManager;
-
 
 
 

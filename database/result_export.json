@@ -1,0 +1,5 @@
+[
+ {
+  "pg_get_constraintdef": "CHECK ((renderer = ANY (ARRAY['pdf'::text, 'csv'::text, 'json'::text])))"
+ }
+]

@@ -13,7 +13,12 @@ export const createAdminDashboardService = (repository = new SupabaseAdminDashbo
     return useCases.loadDashboardUseCase.execute();
   };
 
+  const loadFinancialReview = async () => {
+    return useCases.loadFinancialReviewUseCase.execute();
+  };
+
   return {
     loadDashboard,
+    loadFinancialReview,
   };
 };
