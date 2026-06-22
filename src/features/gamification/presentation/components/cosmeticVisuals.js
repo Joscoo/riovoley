@@ -68,29 +68,72 @@ const BADGE_VARIANT_MAP = {
 
 const EFFECT_VARIANT_MAP = {
   halo: {
-    shellClasses: "before:absolute before:-inset-1 before:rounded-[inherit] before:bg-white/16 before:blur-xl before:content-['']",
+    shellClasses: "before:absolute before:-inset-1.5 before:rounded-[inherit] before:opacity-90 before:blur-xl before:content-[''] after:absolute after:-inset-0.5 after:rounded-[inherit] after:border after:border-white/20 after:content-['']",
     backLayers: [],
-    frontLayers: [],
+    frontLayers: ['halo-ring'],
   },
   sparkle: {
-    shellClasses: "before:absolute before:-inset-1 before:rounded-[inherit] before:bg-cyan-300/18 before:blur-xl before:content-['']",
-    backLayers: [],
-    frontLayers: ['sparkle'],
+    shellClasses: "before:absolute before:-inset-2 before:rounded-[inherit] before:opacity-95 before:blur-2xl before:content-[''] after:absolute after:-inset-0.5 after:rounded-[inherit] after:border after:border-white/20 after:content-['']",
+    backLayers: ['aura'],
+    frontLayers: ['sparkle', 'sparkle-orbit'],
   },
   pulse: {
-    shellClasses: "before:absolute before:-inset-1 before:rounded-[inherit] before:bg-amber-300/18 before:blur-xl before:content-['']",
-    backLayers: [],
-    frontLayers: ['pulse'],
+    shellClasses: "before:absolute before:-inset-2 before:rounded-[inherit] before:opacity-95 before:blur-2xl before:content-[''] after:absolute after:-inset-0.5 after:rounded-[inherit] after:border after:border-white/20 after:content-['']",
+    backLayers: ['aura'],
+    frontLayers: ['pulse', 'pulse-orbit'],
   },
   glow: {
-    shellClasses: "before:absolute before:-inset-1 before:rounded-[inherit] before:bg-cyan-300/18 before:blur-xl before:content-['']",
-    backLayers: ['aura'],
-    frontLayers: [],
+    shellClasses: "before:absolute before:-inset-2 before:rounded-[inherit] before:opacity-100 before:blur-2xl before:content-[''] after:absolute after:-inset-1 after:rounded-[inherit] after:border after:border-white/24 after:content-['']",
+    backLayers: ['aura', 'aura-wide'],
+    frontLayers: ['halo-ring'],
   },
   'crown-burst': {
-    shellClasses: "before:absolute before:-inset-1 before:rounded-[inherit] before:bg-yellow-300/18 before:blur-xl before:content-['']",
-    backLayers: ['legendary-aura'],
-    frontLayers: ['crown-burst'],
+    shellClasses: "before:absolute before:-inset-2 before:rounded-[inherit] before:opacity-100 before:blur-2xl before:content-[''] after:absolute after:-inset-1 after:rounded-[inherit] after:border after:border-white/28 after:content-['']",
+    backLayers: ['legendary-aura', 'aura-wide'],
+    frontLayers: ['crown-burst', 'sparkle-orbit'],
+  },
+};
+
+const EFFECT_GLOW_MAP = {
+  cyan: {
+    shell: 'before:bg-cyan-300/28 after:border-cyan-200/35',
+    back: 'bg-cyan-300/18',
+    backWide: 'bg-sky-400/12',
+    front: 'via-cyan-100/90',
+    ring: 'border-cyan-200/35 shadow-[0_0_20px_rgba(34,211,238,0.28)]',
+    chip: 'border-cyan-200/35 bg-cyan-300/20 text-cyan-50',
+  },
+  gold: {
+    shell: 'before:bg-amber-300/30 after:border-amber-200/38',
+    back: 'bg-amber-300/18',
+    backWide: 'bg-yellow-300/12',
+    front: 'via-amber-100/95',
+    ring: 'border-amber-200/38 shadow-[0_0_24px_rgba(251,191,36,0.3)]',
+    chip: 'border-amber-200/38 bg-amber-300/22 text-amber-50',
+  },
+  violet: {
+    shell: 'before:bg-violet-300/28 after:border-violet-200/35',
+    back: 'bg-violet-300/18',
+    backWide: 'bg-fuchsia-300/12',
+    front: 'via-violet-100/90',
+    ring: 'border-violet-200/35 shadow-[0_0_22px_rgba(196,181,253,0.28)]',
+    chip: 'border-violet-200/35 bg-violet-300/20 text-violet-50',
+  },
+  emerald: {
+    shell: 'before:bg-emerald-300/28 after:border-emerald-200/35',
+    back: 'bg-emerald-300/18',
+    backWide: 'bg-lime-300/10',
+    front: 'via-emerald-100/90',
+    ring: 'border-emerald-200/35 shadow-[0_0_22px_rgba(110,231,183,0.28)]',
+    chip: 'border-emerald-200/35 bg-emerald-300/20 text-emerald-50',
+  },
+  crimson: {
+    shell: 'before:bg-rose-300/28 after:border-rose-200/35',
+    back: 'bg-rose-300/18',
+    backWide: 'bg-orange-300/10',
+    front: 'via-rose-100/90',
+    ring: 'border-rose-200/35 shadow-[0_0_22px_rgba(253,164,175,0.28)]',
+    chip: 'border-rose-200/35 bg-rose-300/20 text-rose-50',
   },
 };
 
@@ -103,6 +146,13 @@ export const normalizeCosmeticItem = (item = null) => ({
 
 export const resolveFrameVisual = (item) => {
   const normalized = normalizeCosmeticItem(item);
+  if (!normalized.slug) {
+    return {
+      variant: 'none',
+      intensity: 'none',
+      classes: '',
+    };
+  }
   const variant = normalized.metadata.frameVariant || 'default-frame';
 
   return {
@@ -114,6 +164,13 @@ export const resolveFrameVisual = (item) => {
 
 export const resolveBackgroundVisual = (item) => {
   const normalized = normalizeCosmeticItem(item);
+  if (!normalized.slug) {
+    return {
+      variant: 'none',
+      intensity: 'none',
+      classes: '',
+    };
+  }
   const variant = normalized.metadata.backgroundVariant || 'default-background';
 
   return {
@@ -139,16 +196,31 @@ export const resolveBadgeVisual = (item) => {
 
 export const resolveEffectVisual = (item) => {
   const normalized = normalizeCosmeticItem(item);
+  if (!normalized.slug) {
+    return {
+      variant: 'none',
+      intensity: 'none',
+      layers: {
+        back: [],
+        front: [],
+      },
+      classes: '',
+    };
+  }
   const variant = normalized.metadata.effectVariant || 'default-effect';
   const config = EFFECT_VARIANT_MAP[variant] || EFFECT_VARIANT_MAP.sparkle;
+  const glowKey = normalized.metadata.glow || (normalized.rarity === 'legendary' ? 'gold' : 'cyan');
+  const glow = EFFECT_GLOW_MAP[glowKey] || EFFECT_GLOW_MAP.cyan;
 
   return {
     variant,
     intensity: RARITY_INTENSITY[normalized.rarity] || 'sober',
+    glowKey,
+    glow,
     layers: {
       back: config.backLayers,
       front: config.frontLayers,
     },
-    classes: config.shellClasses,
+    classes: `${config.shellClasses} ${glow.shell}`,
   };
 };

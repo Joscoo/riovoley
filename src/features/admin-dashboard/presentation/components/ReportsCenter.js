@@ -18,6 +18,7 @@ import { adminDashboardService } from '../../adminDashboardService';
 import { reportingService } from '../../../reporting';
 import { userManagementService } from '../../../user-management';
 import { Button, Card, EmptyState, Input, SectionHeader, Select } from '../../../../shared/ui';
+import { cn } from '../../../../lib/cn';
 
 const RUNS_PAGE_SIZE = 8;
 const DETAIL_PAGE_SIZE = 8;
@@ -41,10 +42,20 @@ const currencyFormatter = new Intl.NumberFormat('en-US', {
 });
 
 const formatCurrency = (value) => currencyFormatter.format(Number(value || 0));
-const surfaceCardClass = 'rounded-[28px] border border-white/15 bg-black/30 p-5 backdrop-blur-md';
-const heroCardClass = 'overflow-hidden rounded-[32px] border border-white/15 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.18),transparent_28%),radial-gradient(circle_at_top_right,rgba(167,139,250,0.14),transparent_24%),linear-gradient(180deg,rgba(15,23,42,0.96),rgba(2,6,23,0.98))] p-6 shadow-[0_24px_80px_rgba(2,6,23,0.42)] backdrop-blur-md';
-const statTileClass = 'rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]';
-const actionGroupClass = 'rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.66),rgba(2,6,23,0.88))] p-4';
+const surfaceCardClass = 'rounded-[30px] border border-white/12 bg-[linear-gradient(180deg,rgba(15,23,42,0.9),rgba(2,6,23,0.94))] p-5 shadow-[0_18px_50px_rgba(2,6,23,0.24)] backdrop-blur-md';
+const heroCardClass = 'overflow-hidden rounded-[34px] border border-white/14 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.2),transparent_28%),radial-gradient(circle_at_top_right,rgba(251,191,36,0.12),transparent_22%),linear-gradient(180deg,rgba(15,23,42,0.98),rgba(2,6,23,0.985))] p-6 shadow-[0_28px_90px_rgba(2,6,23,0.48)] backdrop-blur-md';
+const statTileClass = 'rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]';
+const actionGroupClass = 'rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.52),rgba(2,6,23,0.9))] p-4';
+const sectionLeadClass = 'mb-4 rounded-2xl border border-rv-gold/15 bg-[linear-gradient(135deg,rgba(249,178,51,0.08),rgba(15,23,42,0.12)_58%,rgba(46,49,146,0.18))] px-4 py-3 text-sm text-slate-200';
+const tableWrapperClass = 'overflow-x-auto rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01))]';
+const tableHeadRowClass = 'border-b border-white/10 bg-white/[0.04] text-left text-[11px] uppercase tracking-[0.16em] text-slate-400';
+const kpiTileClass = 'rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.015))] px-4 py-3';
+const REPORTS_TABS = [
+  { id: 'operacion', label: 'Operacion', helper: 'PDF rapido, persistencia y exportes inmediatos', icon: FaDownload },
+  { id: 'finanzas', label: 'Finanzas', helper: 'Resumen, tendencia, riesgo y cartera vencida', icon: FaChartLine },
+  { id: 'padron', label: 'Padron', helper: 'Busqueda y exportacion de estudiantes', icon: FaUsers },
+  { id: 'historial', label: 'Historial', helper: 'Reportes persistidos y trazabilidad', icon: FaCalendarAlt },
+];
 
 const downloadTextFile = ({ content, fileName, mimeType = 'text/plain;charset=utf-8;' }) => {
   const blob = new Blob([content], { type: mimeType });
@@ -148,17 +159,17 @@ const PaginationControls = ({ page, totalPages, onPageChange }) => {
 };
 
 const PanelHeader = ({ title, subtitle, icon, badge }) => (
-  <div className="mb-4 flex items-start justify-between gap-3">
+  <div className="mb-5 flex items-start justify-between gap-3 border-b border-white/10 pb-4">
     <div>
       {badge ? (
-        <div className="mb-3 inline-flex w-fit items-center rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-slate-200">
+        <div className="mb-3 inline-flex w-fit items-center rounded-full border border-rv-gold/20 bg-rv-gold/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-rv-gold">
           {badge}
         </div>
       ) : null}
-      <h3 className="text-lg font-black text-white">{title}</h3>
-      <p className="mt-1 text-sm text-slate-300">{subtitle}</p>
+      <h3 className="text-xl font-black text-white">{title}</h3>
+      <p className="mt-1 max-w-2xl text-sm leading-6 text-slate-300">{subtitle}</p>
     </div>
-    <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-3 text-2xl text-slate-100">
+    <div className="rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] p-3 text-2xl text-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
       {icon}
     </div>
   </div>
@@ -170,6 +181,7 @@ const ReportsCenter = () => {
   const [persistentPeriodStart, setPersistentPeriodStart] = useState(today.slice(0, 8) + '01');
   const [persistentPeriodEnd, setPersistentPeriodEnd] = useState(today);
   const [selectedRunReportCode, setSelectedRunReportCode] = useState('attendance_daily');
+  const [selectedReportsTab, setSelectedReportsTab] = useState('operacion');
   const [loadingAttendanceReports, setLoadingAttendanceReports] = useState(true);
   const [attendanceRuns, setAttendanceRuns] = useState([]);
   const [runsPage, setRunsPage] = useState(1);
@@ -391,6 +403,7 @@ const ReportsCenter = () => {
     loadingFinancialData,
     loadingStudents,
   ]);
+  const activeReportsTab = REPORTS_TABS.find((tab) => tab.id === selectedReportsTab) || REPORTS_TABS[0];
 
   const exportFinancialSummaryCsv = () => {
     const csv = buildCsv(
@@ -792,16 +805,46 @@ const ReportsCenter = () => {
               <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-emerald-200">Generacion inmediata</p>
               <p className="mt-2 text-2xl font-black text-white">Asistencia diaria</p>
               <p className="mt-2 text-sm leading-6 text-slate-300">Produce el PDF del dia o reutiliza el artefacto persistido para bajar tiempos de operacion.</p>
+              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">Flujo corto: fecha, generar y descargar.</p>
             </div>
             <div className={actionGroupClass}>
               <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-violet-200">Control y exportes</p>
               <p className="mt-2 text-2xl font-black text-white">Finanzas + padron</p>
               <p className="mt-2 text-sm leading-6 text-slate-300">Mantiene juntos los entregables mas usados por administracion sin sacrificar lectura ejecutiva.</p>
+              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">Lectura, exporte y trazabilidad en la misma linea visual.</p>
             </div>
           </div>
         </div>
       </Card>
 
+      <div className="grid gap-3 mobile:grid-cols-2 desktop:grid-cols-4">
+        {REPORTS_TABS.map((tab) => (
+          <button
+            key={tab.id}
+            type="button"
+            onClick={() => setSelectedReportsTab(tab.id)}
+            className={cn(
+              'rounded-[26px] border px-4 py-4 text-left transition',
+              selectedReportsTab === tab.id
+                ? 'border-rv-gold/40 bg-[linear-gradient(135deg,rgba(249,178,51,0.14),rgba(46,49,146,0.12)_60%,rgba(15,23,42,0.36))] shadow-[0_18px_50px_rgba(2,6,23,0.24)]'
+                : 'border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] hover:border-rv-gold/20 hover:bg-white/[0.04]'
+            )}
+          >
+            <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] text-lg text-rv-gold">
+              <tab.icon />
+            </div>
+            <p className="mt-3 text-base font-black text-white">{tab.label}</p>
+            <p className="mt-2 text-sm leading-6 text-slate-300">{tab.helper}</p>
+          </button>
+        ))}
+      </div>
+
+      <div className="rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.035),rgba(255,255,255,0.015))] px-4 py-3 text-sm text-slate-200">
+        <span className="font-black text-white">{activeReportsTab.label}</span>
+        <span className="ml-2">{activeReportsTab.helper}.</span>
+      </div>
+
+      {selectedReportsTab === 'operacion' ? (
       <div className="grid gap-4 desktop:grid-cols-2">
         <Card className={surfaceCardClass}>
           <PanelHeader
@@ -810,6 +853,9 @@ const ReportsCenter = () => {
             icon={<FaFilePdf className="text-rv-gold" />}
             badge="Accion rapida"
           />
+          <div className={sectionLeadClass}>
+            Ideal para operacion diaria. Esta accion debe sentirse inmediata y quedar separada de los reportes historicos.
+          </div>
           <div className="grid gap-3 mobile:grid-cols-[1fr_auto]">
             <input
               type="date"
@@ -831,6 +877,9 @@ const ReportsCenter = () => {
             icon={<FaFilePdf className="text-sky-300" />}
             badge="Persistencia"
           />
+          <div className={sectionLeadClass}>
+            Usa este bloque cuando necesitas dejar evidencia trazable y no solo descargar un documento puntual.
+          </div>
           <div className="mb-3 grid gap-3 mobile:grid-cols-2 desktop:grid-cols-3">
             <input
               type="date"
@@ -894,42 +943,10 @@ const ReportsCenter = () => {
           </div>
         </Card>
 
-        <Card className={surfaceCardClass}>
-          <PanelHeader
-            title="Exportes Financieros"
-            subtitle="Descargas en PDF, CSV y Excel desde la revision financiera consolidada."
-            icon={<FaChartLine className="text-cyan-300" />}
-            badge="Finanzas"
-          />
-          <div className="grid gap-2 mobile:grid-cols-2 desktop:grid-cols-3">
-            <Button variant="secondary" className="justify-start" onClick={exportFinancialSummaryPdf} disabled={loadingFinancialData}>
-              <FaFilePdf className="mr-2" /> Resumen PDF
-            </Button>
-            <Button variant="secondary" className="justify-start" onClick={exportFinancialSummaryCsv} disabled={loadingFinancialData}>
-              <FaFileCsv className="mr-2" /> Resumen CSV
-            </Button>
-            <Button variant="secondary" className="justify-start" onClick={exportFinancialSummaryExcel} disabled={loadingFinancialData}>
-              <FaFileExcel className="mr-2" /> Resumen Excel
-            </Button>
-            <Button variant="secondary" className="justify-start" onClick={exportFinancialTrendCsv} disabled={loadingFinancialData}>
-              <FaCalendarAlt className="mr-2" /> Tendencia CSV
-            </Button>
-            <Button variant="secondary" className="justify-start" onClick={exportFinancialTrendExcel} disabled={loadingFinancialData}>
-              <FaFileExcel className="mr-2" /> Tendencia Excel
-            </Button>
-            <Button variant="secondary" className="justify-start" onClick={exportOverduePortfolioCsv} disabled={loadingFinancialData}>
-              <FaFileCsv className="mr-2" /> Cartera vencida CSV
-            </Button>
-             <Button variant="secondary" className="justify-start" onClick={exportOverduePortfolioExcel} disabled={loadingFinancialData}>
-              <FaFileExcel className="mr-2" /> Cartera Excel
-            </Button>
-            <Button variant="secondary" className="justify-start" onClick={printFinancialSummary} disabled={loadingFinancialData}>
-              <FaPrint className="mr-2" /> Version imprimible
-            </Button>
-          </div>
-        </Card>
       </div>
+      ) : null}
 
+      {selectedReportsTab === 'padron' ? (
       <Card className={surfaceCardClass}>
         <PanelHeader
           title="Exportacion de Estudiantes"
@@ -969,15 +986,15 @@ const ReportsCenter = () => {
         </div>
 
         <div className="mb-4 grid gap-3 mobile:grid-cols-3">
-          <div className="rounded-2xl border border-white/10 bg-black/20 p-3">
+          <div className={kpiTileClass}>
             <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Total estudiantes</p>
             <p className="mt-2 text-2xl font-black text-white">{loadingStudents ? '...' : students.length}</p>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-black/20 p-3">
+          <div className={kpiTileClass}>
             <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Filtrados</p>
             <p className="mt-2 text-2xl font-black text-white">{loadingStudents ? '...' : filteredStudents.length}</p>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-black/20 p-3">
+          <div className={kpiTileClass}>
             <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Categorias activas</p>
             <p className="mt-2 text-2xl font-black text-white">{studentCategoryOptions.length}</p>
           </div>
@@ -1005,10 +1022,10 @@ const ReportsCenter = () => {
               </Button>
             </div>
 
-            <div className="mt-4 overflow-x-auto rounded-[24px] border border-white/10 bg-black/20">
+            <div className={cn('mt-4', tableWrapperClass)}>
               <table className="w-full min-w-[920px] border-collapse text-sm">
                 <thead>
-                  <tr className="border-b border-white/10 bg-white/[0.03] text-left text-[11px] uppercase tracking-[0.16em] text-slate-400">
+                  <tr className={tableHeadRowClass}>
                     <th className="px-4 py-4">Nombre</th>
                     <th className="px-4 py-4">Email</th>
                     <th className="px-4 py-4">Telefono</th>
@@ -1039,8 +1056,10 @@ const ReportsCenter = () => {
           </>
         )}
       </Card>
+      ) : null}
 
-      <div className="grid gap-4 desktop:grid-cols-[1.2fr_0.8fr]">
+      {selectedReportsTab === 'historial' ? (
+      <div className="grid gap-4">
         <Card className={surfaceCardClass}>
           <PanelHeader
             title="Historial de Reportes Persistidos"
@@ -1048,6 +1067,10 @@ const ReportsCenter = () => {
             icon={<FaCalendarAlt className="text-emerald-300" />}
             badge="Trazabilidad"
           />
+
+          <div className={sectionLeadClass}>
+            El historial debe responder dos preguntas rapido: que se genero y que todavia sirve descargar o limpiar.
+          </div>
 
           <div className="mb-4">
             <Select
@@ -1071,10 +1094,10 @@ const ReportsCenter = () => {
             />
           ) : (
             <>
-              <div className="overflow-x-auto rounded-[24px] border border-white/10 bg-black/20">
+              <div className={tableWrapperClass}>
                 <table className="w-full min-w-[880px] border-collapse text-sm">
                   <thead>
-                    <tr className="border-b border-white/10 bg-white/[0.03] text-left text-[11px] uppercase tracking-[0.16em] text-slate-400">
+                    <tr className={tableHeadRowClass}>
                       <th className="px-4 py-4">Periodo</th>
                       <th className="px-4 py-4">Estado</th>
                       <th className="px-4 py-4">Trigger</th>
@@ -1127,7 +1150,12 @@ const ReportsCenter = () => {
             </>
           )}
         </Card>
+      </div>
+      ) : null}
 
+      {selectedReportsTab === 'finanzas' ? (
+      <>
+      <div className="grid gap-4 desktop:grid-cols-[1.1fr_0.9fr]">
         <Card className={surfaceCardClass}>
           <PanelHeader
             title="Resumen Financiero Disponible"
@@ -1138,29 +1166,73 @@ const ReportsCenter = () => {
           {loadingFinancialData ? (
             <p className="py-12 text-center text-sm text-slate-300">Cargando resumen financiero...</p>
           ) : (
-            <div className="space-y-3">
+            <div className="space-y-4">
+              <div className={sectionLeadClass}>
+                Aqui se concentra la lectura ejecutiva. Primero mira deuda, peso del pago diario y ticket promedio; luego baja al inventario completo de indicadores.
+              </div>
               <div className="grid gap-3 mobile:grid-cols-2">
-                <div className="rounded-2xl border border-rose-400/20 bg-rose-500/10 px-4 py-3">
+                <div className="rounded-2xl border border-rose-400/20 bg-[linear-gradient(180deg,rgba(244,63,94,0.12),rgba(127,29,29,0.18))] px-4 py-3">
                   <p className="text-xs font-bold uppercase tracking-[0.14em] text-rose-200">Deuda / ingreso del mes</p>
                   <p className="mt-2 text-xl font-black text-white">{financialHealthKpis.debtCoverageRatio.toFixed(2)}x</p>
                 </div>
-                <div className="rounded-2xl border border-emerald-400/20 bg-emerald-500/10 px-4 py-3">
+                <div className="rounded-2xl border border-emerald-400/20 bg-[linear-gradient(180deg,rgba(16,185,129,0.12),rgba(6,78,59,0.18))] px-4 py-3">
                   <p className="text-xs font-bold uppercase tracking-[0.14em] text-emerald-200">Peso del pago diario</p>
                   <p className="mt-2 text-xl font-black text-white">{financialHealthKpis.dailyRevenueShare.toFixed(1)}%</p>
                 </div>
-                <div className="rounded-2xl border border-cyan-400/20 bg-cyan-500/10 px-4 py-3">
+                <div className="rounded-2xl border border-cyan-400/20 bg-[linear-gradient(180deg,rgba(6,182,212,0.12),rgba(8,47,73,0.18))] px-4 py-3">
                   <p className="text-xs font-bold uppercase tracking-[0.14em] text-cyan-200">Ticket por asistencia</p>
                   <p className="mt-2 text-xl font-black text-white">{formatCurrency(financialHealthKpis.averageTicketPerAttendance)}</p>
                 </div>
-                <div className="rounded-2xl border border-amber-400/20 bg-amber-500/10 px-4 py-3">
+                <div className="rounded-2xl border border-amber-400/20 bg-[linear-gradient(180deg,rgba(245,158,11,0.12),rgba(120,53,15,0.18))] px-4 py-3">
                   <p className="text-xs font-bold uppercase tracking-[0.14em] text-amber-200">Deuda vs mensualidades</p>
                   <p className="mt-2 text-xl font-black text-white">{financialHealthKpis.projectedDebtVsMembership.toFixed(1)}%</p>
                 </div>
               </div>
-              {financialSummaryRows.map(([label, value]) => (
-                <div key={label} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3">
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">{label}</p>
-                  <p className="mt-2 text-xl font-black text-white">{value}</p>
+              <div className="grid gap-3 mobile:grid-cols-2">
+                {financialSummaryRows.map(([label, value]) => (
+                  <div key={label} className={kpiTileClass}>
+                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">{label}</p>
+                    <p className="mt-2 text-xl font-black text-white">{value}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </Card>
+
+        <Card className={surfaceCardClass}>
+          <PanelHeader
+            title="Riesgo por Categoria"
+            subtitle="Concentracion de deuda vencida para detectar donde intervenir primero."
+            icon={<FaExclamationTriangle className="text-rose-300" />}
+            badge="Prioridad"
+          />
+          <div className={sectionLeadClass}>
+            El foco aqui no es listar todo, sino dejar evidente donde se concentra la deuda y que categorias requieren atencion primero.
+          </div>
+
+          {loadingFinancialData ? (
+            <p className="py-12 text-center text-sm text-slate-300">Cargando concentracion de riesgo...</p>
+          ) : financialCategoryBreakdown.length === 0 ? (
+            <EmptyState
+              icon={<FaExclamationTriangle />}
+              title="Sin riesgo acumulado"
+              description="No hay cartera vencida agrupable por categoria."
+            />
+          ) : (
+            <div className="space-y-3">
+              {financialCategoryBreakdown.map((row) => (
+                <div key={row.category} className="rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] px-4 py-3">
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <p className="text-sm font-bold text-white">{CATEGORY_LABELS[row.category] || row.category.replaceAll('_', ' ')}</p>
+                      <p className="mt-1 text-xs text-slate-400">{row.studentsCount} atletas | {row.overdueMonths} meses vencidos acumulados</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-lg font-black text-rose-300">{formatCurrency(row.estimatedDebt)}</p>
+                      <p className="mt-1 text-xs text-emerald-300">Pago diario mes: {formatCurrency(row.dailyRevenue)}</p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -1176,6 +1248,9 @@ const ReportsCenter = () => {
             icon={<FaCalendarAlt className="text-cyan-300" />}
             badge="Analisis"
           />
+          <div className={sectionLeadClass}>
+            Esta tabla sirve para comparacion mes a mes. El total combinado debe leerse primero, luego el detalle por fuente.
+          </div>
 
           {loadingFinancialData ? (
             <p className="py-12 text-center text-sm text-slate-300">Cargando tendencia...</p>
@@ -1187,10 +1262,10 @@ const ReportsCenter = () => {
             />
           ) : (
             <>
-              <div className="overflow-x-auto rounded-[24px] border border-white/10 bg-black/20">
+              <div className={tableWrapperClass}>
                 <table className="w-full min-w-[760px] border-collapse text-sm">
                   <thead>
-                    <tr className="border-b border-white/10 bg-white/[0.03] text-left text-[11px] uppercase tracking-[0.16em] text-slate-400">
+                    <tr className={tableHeadRowClass}>
                       <th className="px-4 py-4">Mes</th>
                       <th className="px-4 py-4">Mensualidades</th>
                       <th className="px-4 py-4">Pago diario</th>
@@ -1222,38 +1297,40 @@ const ReportsCenter = () => {
 
         <Card className={surfaceCardClass}>
           <PanelHeader
-            title="Riesgo por Categoria"
-            subtitle="Concentracion de deuda vencida para detectar donde intervenir primero."
-            icon={<FaExclamationTriangle className="text-rose-300" />}
-            badge="Prioridad"
+            title="Exportes Financieros"
+            subtitle="Descargas en PDF, CSV y Excel desde la revision financiera consolidada."
+            icon={<FaChartLine className="text-cyan-300" />}
+            badge="Finanzas"
           />
-
-          {loadingFinancialData ? (
-            <p className="py-12 text-center text-sm text-slate-300">Cargando concentracion de riesgo...</p>
-          ) : financialCategoryBreakdown.length === 0 ? (
-            <EmptyState
-              icon={<FaExclamationTriangle />}
-              title="Sin riesgo acumulado"
-              description="No hay cartera vencida agrupable por categoria."
-            />
-          ) : (
-            <div className="space-y-3">
-              {financialCategoryBreakdown.map((row) => (
-                <div key={row.category} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3">
-                  <div className="flex items-center justify-between gap-3">
-                    <div>
-                      <p className="text-sm font-bold text-white">{CATEGORY_LABELS[row.category] || row.category.replaceAll('_', ' ')}</p>
-                      <p className="mt-1 text-xs text-slate-400">{row.studentsCount} atletas | {row.overdueMonths} meses vencidos acumulados</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-lg font-black text-rose-300">{formatCurrency(row.estimatedDebt)}</p>
-                      <p className="mt-1 text-xs text-emerald-300">Pago diario mes: {formatCurrency(row.dailyRevenue)}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+          <div className={sectionLeadClass}>
+            Los formatos estan agrupados por decision operativa: resumen, tendencia y cartera vencida.
+          </div>
+          <div className="grid gap-2 mobile:grid-cols-2">
+            <Button variant="secondary" className="justify-start" onClick={exportFinancialSummaryPdf} disabled={loadingFinancialData}>
+              <FaFilePdf className="mr-2" /> Resumen PDF
+            </Button>
+            <Button variant="secondary" className="justify-start" onClick={exportFinancialSummaryCsv} disabled={loadingFinancialData}>
+              <FaFileCsv className="mr-2" /> Resumen CSV
+            </Button>
+            <Button variant="secondary" className="justify-start" onClick={exportFinancialSummaryExcel} disabled={loadingFinancialData}>
+              <FaFileExcel className="mr-2" /> Resumen Excel
+            </Button>
+            <Button variant="secondary" className="justify-start" onClick={exportFinancialTrendCsv} disabled={loadingFinancialData}>
+              <FaCalendarAlt className="mr-2" /> Tendencia CSV
+            </Button>
+            <Button variant="secondary" className="justify-start" onClick={exportFinancialTrendExcel} disabled={loadingFinancialData}>
+              <FaFileExcel className="mr-2" /> Tendencia Excel
+            </Button>
+            <Button variant="secondary" className="justify-start" onClick={exportOverduePortfolioCsv} disabled={loadingFinancialData}>
+              <FaFileCsv className="mr-2" /> Cartera vencida CSV
+            </Button>
+            <Button variant="secondary" className="justify-start" onClick={exportOverduePortfolioExcel} disabled={loadingFinancialData}>
+              <FaFileExcel className="mr-2" /> Cartera Excel
+            </Button>
+            <Button variant="secondary" className="justify-start" onClick={printFinancialSummary} disabled={loadingFinancialData}>
+              <FaPrint className="mr-2" /> Version imprimible
+            </Button>
+          </div>
         </Card>
       </div>
 
@@ -1264,6 +1341,9 @@ const ReportsCenter = () => {
           icon={<FaChartLine className="text-amber-300" />}
           badge="Seguimiento"
         />
+        <div className={sectionLeadClass}>
+          Esta vista debe servir como cola de trabajo. La deuda y la cobertura fin tienen prioridad visual sobre el resto.
+        </div>
 
         {loadingFinancialData ? (
           <p className="py-12 text-center text-sm text-slate-300">Cargando cartera vencida...</p>
@@ -1275,10 +1355,10 @@ const ReportsCenter = () => {
           />
         ) : (
           <>
-            <div className="overflow-x-auto rounded-[24px] border border-white/10 bg-black/20">
+            <div className={tableWrapperClass}>
               <table className="w-full min-w-[980px] border-collapse text-sm">
                 <thead>
-                  <tr className="border-b border-white/10 bg-white/[0.03] text-left text-[11px] uppercase tracking-[0.16em] text-slate-400">
+                  <tr className={tableHeadRowClass}>
                     <th className="px-4 py-4">Atleta</th>
                     <th className="px-4 py-4">Categoria</th>
                     <th className="px-4 py-4">Cobertura fin</th>
@@ -1314,6 +1394,8 @@ const ReportsCenter = () => {
           </>
         )}
       </Card>
+      </>
+      ) : null}
     </div>
   );
 };

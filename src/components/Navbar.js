@@ -139,7 +139,7 @@ const Navbar = ({ user, userProfile, onLogout }) => {
           </ul>
 
           {user && role && canViewNotifications && (
-            <NotificationBell userRole={userProfile.role} />
+            <NotificationBell userRole={userProfile.role} userId={user.id} />
           )}
 
           {user ? (
@@ -210,7 +210,7 @@ const Navbar = ({ user, userProfile, onLogout }) => {
 
         <div className="ml-auto flex shrink-0 items-center gap-0.5 xl:hidden">
           {user && role && canViewNotifications && (
-            <NotificationBell userRole={userProfile.role} />
+            <NotificationBell userRole={userProfile.role} userId={user.id} />
           )}
 
           <button

@@ -107,6 +107,7 @@ const registerOtaListeners = async () => {
     setOtaState({
       status: 'downloading',
       progress: Number(info?.percent || 0),
+      lastCheckResult: null,
     });
   });
 
@@ -117,6 +118,7 @@ const registerOtaListeners = async () => {
       downloadedBundle: event.bundle,
       otaBundleVersion: event.bundle?.version || otaState.otaBundleVersion,
       error: null,
+      lastCheckResult: null,
     });
   });
 
@@ -216,6 +218,7 @@ export const checkForAppUpdate = async () => {
     status: 'checking',
     error: null,
     progress: 0,
+    lastCheckResult: null,
   });
 
   const options = {
@@ -281,6 +284,7 @@ export const downloadAppUpdate = async () => {
     status: 'downloading',
     error: null,
     progress: 0,
+    lastCheckResult: null,
   });
 
   const bundle = await CapacitorUpdater.download({
@@ -295,6 +299,7 @@ export const downloadAppUpdate = async () => {
     status: 'ready_to_apply',
     progress: 100,
     downloadedBundle: bundle,
+    lastCheckResult: null,
   });
 
   return bundle;
@@ -311,6 +316,7 @@ export const applyAppUpdate = async () => {
   setOtaState({
     status: 'applying',
     error: null,
+    lastCheckResult: null,
   });
 
   await CapacitorUpdater.set({

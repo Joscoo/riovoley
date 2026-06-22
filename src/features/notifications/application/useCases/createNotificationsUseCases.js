@@ -32,6 +32,27 @@ const generarMensajeGamificacion = (achievement, nombreCompleto) => {
   return `${nombreCompleto} desbloqueo ${achievementTitle}`;
 };
 
+const NOTIFICATION_CATEGORY = {
+  PAYMENTS: 'mensualidades',
+  ANNOUNCEMENTS: 'anuncios',
+  GAMIFICATION: 'gamificacion',
+  GENERAL: 'general',
+};
+
+const buildBellNotificationId = (prefix, suffix) => `${prefix}-${suffix}`;
+
+const normalizeBellNotification = (notification, inboxStateMap) => {
+  const state = inboxStateMap.get(notification.id);
+
+  return {
+    ...notification,
+    category: notification.category || NOTIFICATION_CATEGORY.GENERAL,
+    isRead: Boolean(state?.read_at),
+    readAt: state?.read_at || null,
+    dismissedAt: state?.dismissed_at || null,
+  };
+};
+
 export const createNotificationsUseCases = (repository) => {
   const buildPaymentsBaseUseCase = {
     execute: async () => {
@@ -45,7 +66,7 @@ export const createNotificationsUseCases = (repository) => {
   };
 
   const loadBellNotificationsUseCase = {
-    execute: async () => {
+    execute: async ({ userId } = {}) => {
       const hoy = getEcuadorDate();
       const { ultimosPagos, estudiantesMap } = await buildPaymentsBaseUseCase.execute();
       const notificacionesPagos = [];
@@ -58,8 +79,9 @@ export const createNotificationsUseCases = (repository) => {
           if (!estudiante) continue;
           const nombreCompleto = `${estudiante.users.nombre} ${estudiante.users.apellido}`;
           notificacionesPagos.push({
-            id: `pago-${pago.student_id}`,
+            id: buildBellNotificationId('pago', pago.student_id),
             tipo_notificacion: 'pago',
+            category: NOTIFICATION_CATEGORY.PAYMENTS,
             mensaje: generarMensajePagoBell(diferenciaDias, nombreCompleto),
             tipo: determinarTipoNotificacion(diferenciaDias),
             fecha: pago.fecha_fin,
@@ -75,8 +97,9 @@ export const createNotificationsUseCases = (repository) => {
 
       const anuncios = await repository.listRecentActiveAnnouncements(fecha7DiasAtras);
       const notifAnuncios = (anuncios || []).map((anuncio) => ({
-        id: `anuncio-${anuncio.id}`,
+        id: buildBellNotificationId('anuncio', anuncio.id),
         tipo_notificacion: 'anuncio',
+        category: NOTIFICATION_CATEGORY.ANNOUNCEMENTS,
         mensaje: anuncio.title,
         descripcion: anuncio.content.length > 80 ? `${anuncio.content.substring(0, 80)}...` : anuncio.content,
         tipo: 'info',
@@ -98,8 +121,9 @@ export const createNotificationsUseCases = (repository) => {
           if (!student) return null;
           const nombreCompleto = `${student.users.nombre} ${student.users.apellido}`;
           return {
-            id: `gamification-${achievement.student_id}-${achievement.achievement_slug}`,
+            id: buildBellNotificationId('gamification', `${achievement.student_id}-${achievement.achievement_slug}`),
             tipo_notificacion: 'gamificacion',
+            category: NOTIFICATION_CATEGORY.GAMIFICATION,
             mensaje: generarMensajeGamificacion(achievement, nombreCompleto),
             descripcion: `Categoria: ${student.categoria || 'sin categoria'}`,
             tipo: 'info',
@@ -110,8 +134,75 @@ export const createNotificationsUseCases = (repository) => {
         .filter(Boolean);
 
       const todasNotificaciones = [...notificacionesPagos, ...notifGamification, ...notifAnuncios];
-      todasNotificaciones.sort((a, b) => a.orden - b.orden);
-      return todasNotificaciones;
+      const inboxStates = userId && repository.listNotificationInboxState
+        ? await repository.listNotificationInboxState(userId, todasNotificaciones.map((notification) => notification.id))
+        : [];
+      const inboxStateMap = new Map((inboxStates || []).map((entry) => [entry.notification_key, entry]));
+
+      return todasNotificaciones
+        .map((notification) => normalizeBellNotification(notification, inboxStateMap))
+        .filter((notification) => !notification.dismissedAt)
+        .sort((left, right) => {
+          if (left.isRead !== right.isRead) return left.isRead ? 1 : -1;
+          if (left.orden !== right.orden) return left.orden - right.orden;
+          return new Date(right.fecha).getTime() - new Date(left.fecha).getTime();
+        });
+    },
+  };
+
+  const markBellNotificationReadUseCase = {
+    execute: async ({ userId, notificationId, category }) => {
+      if (!userId || !notificationId) {
+        throw new Error('userId y notificationId son requeridos para marcar una notificacion como leida.');
+      }
+
+      if (!repository.markNotificationAsRead) {
+        throw new Error('El repositorio no soporta marcado de notificaciones.');
+      }
+
+      return repository.markNotificationAsRead({
+        userId,
+        notificationKey: notificationId,
+        notificationCategory: category || NOTIFICATION_CATEGORY.GENERAL,
+      });
+    },
+  };
+
+  const dismissBellNotificationUseCase = {
+    execute: async ({ userId, notificationId, category }) => {
+      if (!userId || !notificationId) {
+        throw new Error('userId y notificationId son requeridos para eliminar una notificacion.');
+      }
+
+      if (!repository.dismissNotification) {
+        throw new Error('El repositorio no soporta descarte de notificaciones.');
+      }
+
+      return repository.dismissNotification({
+        userId,
+        notificationKey: notificationId,
+        notificationCategory: category || NOTIFICATION_CATEGORY.GENERAL,
+      });
+    },
+  };
+
+  const markBellNotificationsReadBulkUseCase = {
+    execute: async ({ userId, notifications }) => {
+      if (!userId || !Array.isArray(notifications) || notifications.length === 0) {
+        return [];
+      }
+
+      if (!repository.markNotificationsAsReadBulk) {
+        throw new Error('El repositorio no soporta marcado masivo de notificaciones.');
+      }
+
+      return repository.markNotificationsAsReadBulk(
+        userId,
+        notifications.map((notification) => ({
+          notificationKey: notification.id,
+          notificationCategory: notification.category || NOTIFICATION_CATEGORY.GENERAL,
+        })),
+      );
     },
   };
 
@@ -148,6 +239,9 @@ export const createNotificationsUseCases = (repository) => {
 
   return {
     loadBellNotificationsUseCase,
+    markBellNotificationReadUseCase,
+    dismissBellNotificationUseCase,
+    markBellNotificationsReadBulkUseCase,
     loadPaymentNotificationsUseCase,
   };
 };

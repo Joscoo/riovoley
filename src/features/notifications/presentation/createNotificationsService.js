@@ -4,8 +4,20 @@ import { SupabaseNotificationsRepository } from '../infrastructure/repositories/
 export const createNotificationsService = (repository = new SupabaseNotificationsRepository()) => {
   const useCases = createNotificationsUseCases(repository);
 
-  const loadBellNotifications = async () => {
-    return useCases.loadBellNotificationsUseCase.execute();
+  const loadBellNotifications = async ({ userId, userRole } = {}) => {
+    return useCases.loadBellNotificationsUseCase.execute({ userId, userRole });
+  };
+
+  const markBellNotificationRead = async ({ userId, notificationId, category }) => {
+    return useCases.markBellNotificationReadUseCase.execute({ userId, notificationId, category });
+  };
+
+  const dismissBellNotification = async ({ userId, notificationId, category }) => {
+    return useCases.dismissBellNotificationUseCase.execute({ userId, notificationId, category });
+  };
+
+  const markBellNotificationsReadBulk = async ({ userId, notifications }) => {
+    return useCases.markBellNotificationsReadBulkUseCase.execute({ userId, notifications });
   };
 
   const loadPaymentNotifications = async () => {
@@ -14,6 +26,9 @@ export const createNotificationsService = (repository = new SupabaseNotification
 
   return {
     loadBellNotifications,
+    markBellNotificationRead,
+    dismissBellNotification,
+    markBellNotificationsReadBulk,
     loadPaymentNotifications,
   };
 };

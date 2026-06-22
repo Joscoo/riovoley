@@ -24,10 +24,13 @@ describe('createNotificationsUseCases', () => {
       listRecentGamificationAchievements: jest.fn().mockResolvedValue([
         { student_id: 's4', achievement_slug: 'jump_up_5', earned_at: '2026-05-10', metadata: { title: 'Salto en ascenso' } },
       ]),
+      listNotificationInboxState: jest.fn().mockResolvedValue([
+        { notification_key: 'anuncio-a1', read_at: '2026-05-10T10:00:00.000Z', dismissed_at: null },
+      ]),
     };
 
     const useCases = createNotificationsUseCases(repository);
-    const notifications = await useCases.loadBellNotificationsUseCase.execute();
+    const notifications = await useCases.loadBellNotificationsUseCase.execute({ userId: 'u1' });
 
     expect(repository.listStudentsByIds).toHaveBeenCalledTimes(2);
     const idsRequested = repository.listStudentsByIds.mock.calls[0][0];
@@ -35,12 +38,19 @@ describe('createNotificationsUseCases', () => {
     expect(idsRequested).toEqual(expect.arrayContaining(['s1', 's2', 's3']));
     expect(repository.listStudentsByIds.mock.calls[1][0]).toEqual(['s4']);
     expect(repository.listRecentActiveAnnouncements).toHaveBeenCalledWith(getEcuadorDateMinusDays(7));
+    expect(repository.listNotificationInboxState).toHaveBeenCalledWith('u1', expect.arrayContaining([
+      'pago-s1',
+      'pago-s2',
+      'gamification-s4-jump_up_5',
+      'anuncio-a1',
+    ]));
     expect(notifications).toHaveLength(4);
     expect(notifications[0].mensaje).toContain('Vence HOY');
     expect(notifications[1].mensaje).toContain('Vence en 2 dias');
     expect(notifications[2].tipo_notificacion).toBe('gamificacion');
     expect(notifications[2].mensaje).toContain('desbloqueo Salto en ascenso');
     expect(notifications[3].tipo_notificacion).toBe('anuncio');
+    expect(notifications[3].isRead).toBe(true);
   });
 
   it('loadPaymentNotificationsUseCase genera tarjetas de pago solo hasta 3 dias', async () => {
@@ -60,6 +70,7 @@ describe('createNotificationsUseCases', () => {
       ]),
       listRecentActiveAnnouncements: jest.fn(),
       listRecentGamificationAchievements: jest.fn().mockResolvedValue([]),
+      listNotificationInboxState: jest.fn().mockResolvedValue([]),
     };
 
     const useCases = createNotificationsUseCases(repository);
@@ -78,5 +89,34 @@ describe('createNotificationsUseCases', () => {
       diasRestantes: 1,
       atleta: 'Lia Torres',
     });
+  });
+
+  it('expone casos de uso para marcar leida y eliminar notificaciones', async () => {
+    const repository = {
+      markNotificationAsRead: jest.fn().mockResolvedValue({}),
+      dismissNotification: jest.fn().mockResolvedValue({}),
+      markNotificationsAsReadBulk: jest.fn().mockResolvedValue([]),
+    };
+
+    const useCases = createNotificationsUseCases(repository);
+
+    await useCases.markBellNotificationReadUseCase.execute({
+      userId: 'u1',
+      notificationId: 'anuncio-a1',
+      category: 'anuncios',
+    });
+    await useCases.dismissBellNotificationUseCase.execute({
+      userId: 'u1',
+      notificationId: 'anuncio-a1',
+      category: 'anuncios',
+    });
+    await useCases.markBellNotificationsReadBulkUseCase.execute({
+      userId: 'u1',
+      notifications: [{ id: 'anuncio-a1', category: 'anuncios' }],
+    });
+
+    expect(repository.markNotificationAsRead).toHaveBeenCalled();
+    expect(repository.dismissNotification).toHaveBeenCalled();
+    expect(repository.markNotificationsAsReadBulk).toHaveBeenCalled();
   });
 });

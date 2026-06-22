@@ -255,6 +255,21 @@ const getCosmeticPhotoImpactTone = (photoFocus) => {
   return 'warning';
 };
 
+const getCosmeticSlotHelper = (slot) => {
+  switch (slot) {
+    case 'frame':
+      return 'Borde visible.';
+    case 'badge':
+      return 'Sello sobre tu perfil.';
+    case 'background':
+      return 'Fondo de tarjeta.';
+    case 'effect':
+      return 'Brillo y presencia.';
+    default:
+      return '';
+  }
+};
+
 const compareStoreCosmetics = (left, right, sortOrder) => {
   switch (sortOrder) {
     case 'rarity-desc':
@@ -1419,11 +1434,12 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
           </button>
         ))}
       </div>
-      <div className="mt-4 rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200">
-        <span className="font-black text-white">{activeIdentityTabMeta.label}:</span> {activeIdentityTabMeta.helper}.
+      <div className="mt-4 rounded-2xl border border-white/10 bg-black/15 px-4 py-3 text-sm text-slate-300">
+        <span className="font-black text-white">{activeIdentityTabMeta.label}</span>
+        <span className="ml-2">{activeIdentityTabMeta.helper}.</span>
       </div>
       {(selectedIdentityTab === 'collection' || selectedIdentityTab === 'store') ? (
-        <div className="mt-4 rounded-2xl border border-cyan-300/20 bg-cyan-950/15 px-4 py-3 text-sm text-cyan-100">
+        <div className="mt-4 rounded-2xl border border-cyan-300/15 bg-cyan-950/10 px-4 py-3 text-sm text-cyan-100/90">
           {selectedIdentityTab === 'collection'
             ? 'Aqui ves tu coleccion equipada, tu vista actual y los cosmeticos que ya son tuyos.'
             : 'Aqui ves tu wallet, el extracto con iconos de monedas y el catalogo listo para comprar y equipar.'}
@@ -1440,19 +1456,16 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                 equipment={previewEquipment}
                 equippedItems={previewEquippedItems}
                 size="lg"
-                showBadgeLabel
               />
               <div>
                 <p className="text-2xl font-black text-white">{identity?.displayName || 'Sin apodo todavia'}</p>
                 <p className="mt-1 text-sm text-slate-300">Nombre real: {identity?.realName || 'Estudiante'}</p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-cyan-200">
-                  Imagen principal: {selectedProfileImageMode === 'photo' ? 'Foto personal' : identity?.avatarStyleMeta?.name || 'Avatar'}
+                <p className="mt-2 text-sm text-slate-200">
+                  {selectedProfileImageMode === 'photo'
+                    ? 'Vista actual: foto personal'
+                    : `Vista actual: ${identity?.avatarStyleMeta?.name || 'Avatar'}`}
+                  {selectedProfileImageMode === 'avatar' && activeAvatarModel ? ` · Modelo ${activeAvatarModel.name}` : ''}
                 </p>
-                {selectedProfileImageMode === 'avatar' && activeAvatarModel ? (
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-amber-200">
-                    Modelo activo: {activeAvatarModel.name}
-                  </p>
-                ) : null}
                 {previewItem ? (
                   <p className="mt-2 text-sm font-semibold text-amber-100">
                     Previsualizando: {previewItem.name}
@@ -1460,9 +1473,19 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                 ) : null}
               </div>
             </div>
-            <div className="mt-4 flex flex-wrap items-center gap-2">
-              <StatusBadge tone="info">{currentTitle?.name || 'Sin titulo equipado'}</StatusBadge>
-              <StatusBadge tone="success">{unlockedTitles.length} titulos desbloqueados</StatusBadge>
+            <div className="mt-4 grid gap-3 mobile:grid-cols-2">
+              <MiniInsight
+                icon={<FaStar />}
+                label="Titulo activo"
+                value={currentTitle?.name || 'Sin titulo'}
+                helper={currentTitle?.description || 'Puedes equipar uno cuando lo desbloquees.'}
+              />
+              <MiniInsight
+                icon={<FaMedal />}
+                label="Titulos ganados"
+                value={`${unlockedTitles.length}`}
+                helper={unlockedTitles.length > 0 ? 'Listos para usar en rankings.' : 'Aun no desbloqueas titulos.'}
+              />
             </div>
             <p className="mt-3 text-sm text-slate-200">
               {currentTitle?.description || 'Tu marco rodea la foto o avatar principal, tu insignia aparece sobre la imagen y el efecto le da presencia en rankings.'}
@@ -1478,17 +1501,16 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                       selectedIdentityTab === 'collection' || selectedIdentityTab === 'profile' ? '' : 'hidden'
                     }`}
                   >
-                    <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-300">{COSMETIC_SLOT_LABELS[slot]}</p>
-                    <p className="mt-2 text-sm font-bold text-white">{equippedItem?.name || 'Sin equipar'}</p>
-                    <p className="mt-1 text-xs text-slate-400">
-                      {slot === 'frame'
-                        ? 'Se ve como el borde de tu foto o avatar.'
-                        : slot === 'badge'
-                          ? 'Aparece como sello destacado sobre tu perfil.'
-                          : slot === 'background'
-                            ? 'Define el fondo de tu tarjeta competitiva.'
-                            : 'Agrega brillo y presencia visual.'}
-                    </p>
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-300">{COSMETIC_SLOT_LABELS[slot]}</p>
+                        <p className="mt-2 text-sm font-bold text-white">{equippedItem?.name || 'Sin equipar'}</p>
+                      </div>
+                      <StatusBadge tone={equippedItem ? 'success' : 'neutral'}>
+                        {equippedItem ? 'Activo' : 'Libre'}
+                      </StatusBadge>
+                    </div>
+                    <p className="mt-1 text-xs text-slate-400">{getCosmeticSlotHelper(slot)}</p>
                     {getCosmeticPhotoNotice(slot, selectedProfileImageMode) ? (
                       <p className="mt-2 text-[11px] font-semibold text-cyan-100">
                         {getCosmeticPhotoNotice(slot, selectedProfileImageMode)}

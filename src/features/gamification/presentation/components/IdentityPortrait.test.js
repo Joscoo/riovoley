@@ -2,6 +2,21 @@ import { render, screen } from '@testing-library/react';
 import IdentityPortrait from './IdentityPortrait';
 
 describe('IdentityPortrait', () => {
+  it('stays visually neutral when no cosmetics are equipped', () => {
+    render(
+      <IdentityPortrait
+        imageUrl="https://example.com/profile.png"
+        displayName="Lia"
+        equippedItems={{}}
+        equipment={{}}
+      />
+    );
+
+    expect(screen.getByTestId('portrait-frame-shell')).toHaveAttribute('data-visual-variant', 'none');
+    expect(screen.getByTestId('portrait-effect-shell')).toHaveAttribute('data-visual-variant', 'none');
+    expect(screen.queryByTestId('legendary-effect-front')).not.toBeInTheDocument();
+  });
+
   it('renders sober common cosmetics without strong overlays', () => {
     render(
       <IdentityPortrait

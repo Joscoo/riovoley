@@ -38,6 +38,8 @@ describe('cosmeticVisuals', () => {
 
     expect(result.intensity).toBe('strong');
     expect(result.variant).toBe('crown-burst');
+    expect(result.glowKey).toBe('gold');
+    expect(result.classes).toContain('before:bg-amber-300/30');
     expect(result.layers.front.length).toBeGreaterThan(0);
   });
 

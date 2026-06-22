@@ -8,16 +8,27 @@
   },
   "plugins": {
     "PushNotifications": {
-      "presentationOptions": ["badge", "sound", "banner", "list"]
+      "presentationOptions": [
+        "badge",
+        "sound",
+        "banner",
+        "list"
+      ]
     },
     "CapacitorUpdater": {
       "appReadyTimeout": 20000,
       "autoDeleteFailed": true,
       "autoDeletePrevious": true,
-      "autoUpdate": "onlyDownload",
+      "autoUpdate": "always",
       "defaultChannel": "production",
       "keepUrlPathAfterReload": true,
-      "resetWhenUpdate": true
+      "resetWhenUpdate": true,
+      "appId": "com.riovoley.app",
+      "version": "0.0.0",
+      "autoSplashscreen": true
+    },
+    "SplashScreen": {
+      "launchAutoHide": false
     }
   }
 }

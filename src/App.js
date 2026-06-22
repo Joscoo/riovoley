@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Suspense, lazy, useRef, startTransition } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import HomePage from './components/HomePage';
@@ -45,9 +45,11 @@ function AppContent() {
   const [isOtaPanelOpen, setIsOtaPanelOpen] = useState(false);
   const { profile: userProfile } = useUserProfile(user);
   const navigate = useNavigate();
+  const location = useLocation();
   const previousUserRef = useRef(null);
   const activePushUserRef = useRef(null);
   const { info, warning, error: showError } = useToast();
+  const isLandingHomeRoute = location.pathname === '/';
 
   useEffect(() => {
     checkUser();
@@ -212,7 +214,7 @@ function AppContent() {
 
   return (
     <Suspense fallback={<LoadingFallback />}>
-      {otaState?.supported ? (
+      {otaState?.supported && isLandingHomeRoute ? (
         <div className="fixed bottom-4 right-4 z-[1200] flex flex-col items-end gap-3">
           {isOtaPanelOpen ? (
             <div className="w-[min(92vw,380px)]">

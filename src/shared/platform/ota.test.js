@@ -8,6 +8,7 @@ jest.mock('@capgo/capacitor-updater', () => ({
   CapacitorUpdater: {
     addListener: jest.fn().mockResolvedValue({ remove: jest.fn() }),
     current: jest.fn(),
+    download: jest.fn(),
     getBuiltinVersion: jest.fn(),
     getDeviceId: jest.fn(),
     getPluginVersion: jest.fn(),
@@ -15,6 +16,7 @@ jest.mock('@capgo/capacitor-updater', () => ({
     getAppId: jest.fn(),
     getChannel: jest.fn(),
     getLatest: jest.fn(),
+    set: jest.fn(),
   },
 }));
 
@@ -123,6 +125,47 @@ describe('ota platform bridge', () => {
       expect.objectContaining({
         status: 'failed',
         error: 'La app no puede consultar este endpoint OTA (codigo: on_premise_app | HTTP 400)',
+      }),
+    );
+  });
+
+  it('limpia el mensaje viejo de up_to_date cuando comienza una descarga nueva', async () => {
+    const { ota, App, CapacitorUpdater } = loadOtaModule();
+    App.getInfo.mockResolvedValue({ version: '1.0.0', build: '100' });
+    CapacitorUpdater.current.mockResolvedValue({ bundle: { version: '1.0.0', id: 'builtin' } });
+    CapacitorUpdater.getBuiltinVersion.mockResolvedValue({ version: '1.0.0' });
+    CapacitorUpdater.getDeviceId.mockResolvedValue({ deviceId: 'device-1' });
+    CapacitorUpdater.getPluginVersion.mockResolvedValue({ version: '8.47.9' });
+    CapacitorUpdater.getFailedUpdate.mockResolvedValue(null);
+    CapacitorUpdater.getAppId.mockResolvedValue({ appId: 'com.riovoley.app' });
+    CapacitorUpdater.getChannel.mockResolvedValue({ channel: 'production' });
+    CapacitorUpdater.download.mockResolvedValue({ id: 'bundle-2', version: '1.0.1' });
+
+    await ota.initializeOtaUpdates();
+
+    CapacitorUpdater.getLatest.mockResolvedValueOnce({
+      kind: 'up_to_date',
+      message: 'No new version available',
+      version: '1.0.0',
+    });
+
+    await ota.checkForAppUpdate();
+    expect(ota.getOtaState().lastCheckResult?.message).toBe('No new version available');
+
+    CapacitorUpdater.getLatest.mockResolvedValueOnce({
+      kind: 'major',
+      version: '1.0.1',
+      url: 'https://example.com/bundle.zip',
+      checksum: 'abc',
+    });
+
+    await ota.checkForAppUpdate();
+    await ota.downloadAppUpdate();
+
+    expect(ota.getOtaState()).toEqual(
+      expect.objectContaining({
+        status: 'ready_to_apply',
+        lastCheckResult: null,
       }),
     );
   });

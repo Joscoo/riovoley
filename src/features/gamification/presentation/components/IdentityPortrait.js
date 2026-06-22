@@ -49,20 +49,57 @@ const getBadgeIcon = (iconKey) => {
   }
 };
 
-const renderEffectFrontLayer = (layer, index) => {
+const renderEffectFrontLayer = (layer, index, effectVisual) => {
   switch (layer) {
     case 'sparkle':
       return (
         <div
           key={`effect-front-${index}`}
-          className="pointer-events-none absolute inset-x-2 top-1 z-[2] h-2 rounded-full bg-gradient-to-r from-transparent via-cyan-200/60 to-transparent"
+          className={cn(
+            'pointer-events-none absolute inset-x-2 top-1 z-[2] h-2 rounded-full bg-gradient-to-r from-transparent to-transparent',
+            effectVisual.glow?.front || 'via-cyan-100/90'
+          )}
         />
       );
     case 'pulse':
       return (
         <div
           key={`effect-front-${index}`}
-          className="pointer-events-none absolute inset-x-1 top-0 z-[2] h-3 rounded-full bg-gradient-to-r from-transparent via-amber-200/65 to-transparent"
+          className={cn(
+            'pointer-events-none absolute inset-x-1 top-0 z-[2] h-3 rounded-full bg-gradient-to-r from-transparent to-transparent',
+            effectVisual.glow?.front || 'via-amber-100/95'
+          )}
+        />
+      );
+    case 'halo-ring':
+      return (
+        <div
+          key={`effect-front-${index}`}
+          className={cn(
+            'pointer-events-none absolute inset-1 z-[2] rounded-[inherit] border',
+            effectVisual.glow?.ring || 'border-cyan-200/35'
+          )}
+        />
+      );
+    case 'sparkle-orbit':
+      return (
+        <div
+          key={`effect-front-${index}`}
+          className="pointer-events-none absolute inset-0 z-[2]"
+        >
+          <span className={cn('absolute left-1.5 top-1.5 h-1.5 w-1.5 rounded-full', effectVisual.glow?.back || 'bg-cyan-300/18')} />
+          <span className={cn('absolute right-1.5 top-2 h-1 w-1 rounded-full', effectVisual.glow?.backWide || 'bg-sky-400/12')} />
+          <span className={cn('absolute bottom-1.5 left-2 h-1 w-1 rounded-full', effectVisual.glow?.backWide || 'bg-sky-400/12')} />
+        </div>
+      );
+    case 'pulse-orbit':
+      return (
+        <div
+          key={`effect-front-${index}`}
+          className={cn(
+            'pointer-events-none absolute inset-0 z-[2] rounded-[inherit] border border-dashed',
+            effectVisual.glow?.ring || 'border-cyan-200/35'
+          )}
         />
       );
     case 'crown-burst':
@@ -70,7 +107,10 @@ const renderEffectFrontLayer = (layer, index) => {
         <div
           key={`effect-front-${index}`}
           data-testid="legendary-effect-front"
-          className="pointer-events-none absolute inset-x-1 top-0 z-[2] h-3 rounded-full bg-gradient-to-r from-transparent via-yellow-200/65 to-transparent"
+          className={cn(
+            'pointer-events-none absolute inset-x-1 top-0 z-[2] h-3 rounded-full bg-gradient-to-r from-transparent to-transparent',
+            effectVisual.glow?.front || 'via-amber-100/95'
+          )}
         />
       );
     default:
@@ -117,10 +157,12 @@ const IdentityPortrait = ({
           className={cn(
             'pointer-events-none absolute inset-0 rounded-[inherit]',
             layerClass === 'legendary-aura'
-              ? 'bg-yellow-300/10 blur-2xl'
-              : layerClass === 'aura'
-                ? 'bg-cyan-300/10 blur-xl'
-                : layerClass
+              ? cn(effectVisual.glow?.back || 'bg-amber-300/18', 'scale-[1.12] blur-2xl')
+              : layerClass === 'aura-wide'
+                ? cn(effectVisual.glow?.backWide || 'bg-sky-400/12', 'scale-[1.2] blur-3xl')
+                : layerClass === 'aura'
+                  ? cn(effectVisual.glow?.back || 'bg-cyan-300/18', 'scale-[1.08] blur-xl')
+                  : layerClass
           )}
           data-testid={effectItem.rarity === 'legendary' ? 'legendary-effect-back' : undefined}
         />
@@ -158,10 +200,13 @@ const IdentityPortrait = ({
             </div>
           )}
 
-          {(effectVisual.layers.front || []).map((layer, index) => renderEffectFrontLayer(layer, index))}
+          {(effectVisual.layers.front || []).map((layer, index) => renderEffectFrontLayer(layer, index, effectVisual))}
 
           {normalizedEquipment.effect ? (
-            <div className="pointer-events-none absolute right-2 top-2 z-[2] rounded-full border border-white/15 bg-black/25 p-1 text-[10px] text-white/85">
+            <div className={cn(
+              'pointer-events-none absolute right-2 top-2 z-[2] rounded-full p-1 text-[10px]',
+              effectVisual.glow?.chip || 'border-cyan-200/35 bg-cyan-300/20 text-cyan-50'
+            )}>
               <FaBolt />
             </div>
           ) : null}

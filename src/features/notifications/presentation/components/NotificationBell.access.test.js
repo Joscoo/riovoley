@@ -6,7 +6,10 @@ const mockLoadBellNotifications = jest.fn();
 
 jest.mock('../../notificationsService', () => ({
   notificationsService: {
-    loadBellNotifications: (...args) => mockLoadBellNotifications(...args)
+    loadBellNotifications: (...args) => mockLoadBellNotifications(...args),
+    markBellNotificationRead: jest.fn(),
+    dismissBellNotification: jest.fn(),
+    markBellNotificationsReadBulk: jest.fn(),
   }
 }));
 
@@ -17,7 +20,7 @@ describe('NotificationBell access by role', () => {
   });
 
   test('no renderiza para estudiantes ni carga notificaciones', async () => {
-    render(<NotificationBell userRole="estudiante" />);
+    render(<NotificationBell userRole="estudiante" userId="u1" />);
 
     expect(screen.queryByLabelText('Notificaciones')).not.toBeInTheDocument();
 
@@ -26,12 +29,12 @@ describe('NotificationBell access by role', () => {
   });
 
   test('renderiza para entrenadores y carga notificaciones', async () => {
-    render(<NotificationBell userRole="entrenador" />);
+    render(<NotificationBell userRole="entrenador" userId="u1" />);
 
     expect(screen.getByLabelText('Notificaciones')).toBeInTheDocument();
 
     await waitFor(() => {
-      expect(mockLoadBellNotifications).toHaveBeenCalledWith({ userRole: 'entrenador' });
+      expect(mockLoadBellNotifications).toHaveBeenCalledWith({ userRole: 'entrenador', userId: 'u1' });
     });
   });
 });

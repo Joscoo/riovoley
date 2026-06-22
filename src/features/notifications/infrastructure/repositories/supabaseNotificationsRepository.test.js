@@ -16,6 +16,8 @@ const createQueryBuilder = (result) => {
     in: jest.fn(() => builder),
     eq: jest.fn(() => builder),
     gte: jest.fn(() => builder),
+    upsert: jest.fn(() => builder),
+    single: jest.fn(() => Promise.resolve(result)),
     limit: jest.fn(() => Promise.resolve(result)),
     then: (resolve) => resolve(result),
   };
@@ -75,5 +77,39 @@ describe('SupabaseNotificationsRepository', () => {
 
     expect(builder.limit).toHaveBeenCalledWith(5);
     expect(result).toHaveLength(1);
+  });
+
+  it('listNotificationInboxState consulta por user y keys', async () => {
+    const builder = createQueryBuilder({
+      data: [{ notification_key: 'anuncio-a1', read_at: null, dismissed_at: null }],
+      error: null,
+    });
+    supabase.from.mockReturnValue(builder);
+
+    const repository = new SupabaseNotificationsRepository();
+    const result = await repository.listNotificationInboxState('u1', ['anuncio-a1']);
+
+    expect(supabase.from).toHaveBeenCalledWith('user_notification_inbox_state');
+    expect(builder.eq).toHaveBeenCalledWith('user_id', 'u1');
+    expect(builder.in).toHaveBeenCalledWith('notification_key', ['anuncio-a1']);
+    expect(result).toHaveLength(1);
+  });
+
+  it('markNotificationAsRead usa upsert por user y notification key', async () => {
+    const builder = createQueryBuilder({
+      data: { notification_key: 'anuncio-a1' },
+      error: null,
+    });
+    supabase.from.mockReturnValue(builder);
+
+    const repository = new SupabaseNotificationsRepository();
+    await repository.markNotificationAsRead({
+      userId: 'u1',
+      notificationKey: 'anuncio-a1',
+      notificationCategory: 'anuncios',
+    });
+
+    expect(builder.upsert).toHaveBeenCalled();
+    expect(builder.single).toHaveBeenCalled();
   });
 });
