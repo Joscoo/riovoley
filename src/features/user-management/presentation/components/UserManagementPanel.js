@@ -1,7 +1,6 @@
 import React from 'react';
 import { FaBan } from 'react-icons/fa';
-import { cn } from '../../../../lib/cn';
-import { Button, Card, iconRegistry, semanticCatalog } from '../../../../shared/ui';
+import { TabNav, iconRegistry, semanticCatalog } from '../../../../shared/ui';
 import { useUserManagementPanel } from './hooks/useUserManagementPanel';
 import AdministratorsTab from './tabs/AdministratorsTab';
 import AthletesTab from './tabs/AthletesTab';
@@ -13,9 +12,9 @@ const AdminTabIcon = iconRegistry.userTypes.administrador;
 const UsersIcon = iconRegistry.users;
 
 const TAB_ICONS = {
-  athletes: <StudentTabIcon />,
-  trainers: <TrainerTabIcon />,
-  administrators: <AdminTabIcon />,
+  athletes: StudentTabIcon,
+  trainers: TrainerTabIcon,
+  administrators: AdminTabIcon,
 };
 
 const UserManagementPanel = ({ userRole, user }) => {
@@ -49,25 +48,15 @@ const UserManagementPanel = ({ userRole, user }) => {
         </div>
       </div>
 
-      <Card padding="sm">
-        <div className="flex flex-wrap gap-2">
-          {visibleTabs.map((tab) => {
-            const isActive = activeTab === tab.id;
-            return (
-              <Button
-                key={tab.id}
-                size="sm"
-                variant={isActive ? 'primary' : 'secondary'}
-                onClick={() => setActiveTab(tab.id)}
-                className={cn('transition-all duration-200', isActive && 'shadow-lg')}
-              >
-                <span className="mr-2">{TAB_ICONS[tab.id]}</span>
-                {tab.label}
-              </Button>
-            );
-          })}
-        </div>
-      </Card>
+      <TabNav
+        items={visibleTabs.map((tab) => ({
+          id: tab.id,
+          label: tab.label,
+          icon: TAB_ICONS[tab.id],
+        }))}
+        activeId={activeTab}
+        onChange={setActiveTab}
+      />
 
       <div className="animate-fadeIn">
         {activeTab === 'athletes' && <AthletesTab userRole={userRole} />}

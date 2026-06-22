@@ -1,11 +1,16 @@
 export { default as Button } from './Button';
 export { default as Card } from './Card';
+export { default as DataTable } from './DataTable';
 export { default as EmptyState } from './EmptyState';
+export { default as ExportButtonGroup } from './ExportButtonGroup';
 export { default as Field } from './Field';
+export { default as KpiTile } from './KpiTile';
+export { default as LoadingSpinner } from './LoadingSpinner';
 export { default as PageShell } from './PageShell';
 export { default as SectionHeader } from './SectionHeader';
 export { default as StatusBadge } from './StatusBadge';
 export { default as SortableHeader } from './SortableHeader';
+export { default as TabNav } from './TabNav';
 export { default as RolePanelLayout } from './layout/RolePanelLayout';
 export { default as RoleSidebar } from './layout/RoleSidebar';
 export { default as Toast } from './feedback/Toast';
@@ -14,3 +19,4 @@ export { default as Modal } from './Modal';
 export { Input, Select, Textarea, FormField, Label } from './FormControls';
 export { semanticCatalog, getRoleLabel, getUserTypeLabel } from './semanticCatalog';
 export { iconRegistry, getRoleIcon, getUserTypeIcon } from './iconRegistry';
+

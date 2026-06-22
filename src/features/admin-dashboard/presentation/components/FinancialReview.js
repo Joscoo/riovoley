@@ -26,7 +26,18 @@ import {
   FaUsers,
 } from 'react-icons/fa';
 import { adminDashboardService } from '../../adminDashboardService';
-import { Button, Card, EmptyState, Input, SectionHeader, Select, SortableHeader } from '../../../../shared/ui';
+import {
+  Button,
+  Card,
+  DataTable,
+  EmptyState,
+  Input,
+  KpiTile,
+  LoadingSpinner,
+  SectionHeader,
+  Select,
+  SortableHeader,
+} from '../../../../shared/ui';
 import { SORT_DIRECTION } from '../../../../shared/lib/tableQuery';
 
 const TABLE_PAGE_SIZE = 8;
@@ -52,11 +63,7 @@ const compactNumberFormatter = new Intl.NumberFormat('es-EC', {
 const formatCurrency = (value) => currencyFormatter.format(Number(value || 0));
 const formatNumber = (value) => compactNumberFormatter.format(Number(value || 0));
 
-const summaryCardClass = 'rounded-[28px] border border-white/15 bg-[linear-gradient(180deg,rgba(15,23,42,0.92),rgba(2,6,23,0.98))] p-5 shadow-[0_20px_60px_rgba(2,6,23,0.35)] backdrop-blur-md';
-const filterShellClass = 'rounded-[26px] border border-white/10 bg-black/20 p-4 backdrop-blur-sm';
-const heroCardClass = 'overflow-hidden rounded-[32px] border border-white/15 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.18),transparent_28%),radial-gradient(circle_at_top_right,rgba(251,191,36,0.12),transparent_24%),linear-gradient(180deg,rgba(15,23,42,0.96),rgba(2,6,23,0.98))] p-6 shadow-[0_24px_80px_rgba(2,6,23,0.42)] backdrop-blur-md';
-const statPillClass = 'rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]';
-const detailCardClass = 'rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.66),rgba(2,6,23,0.88))] p-4';
+
 
 const DEFAULT_FILTERS = {
   search: '',
@@ -69,11 +76,12 @@ const DEFAULT_SORT = {
   direction: SORT_DIRECTION.DESC,
 };
 
+// ── Sub-components ────────────────────────────────────────────────────────
 const CustomTooltip = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null;
 
   return (
-    <div className="rounded-2xl border border-white/15 bg-slate-950/95 px-4 py-3 text-xs text-slate-100 shadow-2xl">
+    <div className="rounded-2xl border border-white/15 bg-slate-950/95 px-4 py-3 text-xs text-slate-100 shadow-2xl backdrop-blur-md">
       {label ? <p className="mb-2 text-sm font-black text-white">{label}</p> : null}
       <div className="space-y-1.5">
         {payload.map((entry) => (
@@ -88,7 +96,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 };
 
 const ChartCard = ({ title, subtitle, children, className = '' }) => (
-  <Card className={`rounded-[30px] border border-white/15 bg-black/30 p-5 backdrop-blur-md ${className}`}>
+  <Card className={className}>
     <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
       <div>
         <h3 className="text-lg font-black text-white">{title}</h3>
@@ -98,39 +106,6 @@ const ChartCard = ({ title, subtitle, children, className = '' }) => (
     {children}
   </Card>
 );
-
-const MetricSpotlight = ({ label, value, detail, icon, accentClass = 'text-cyan-300', valueClass = 'text-white' }) => (
-  <div className={`${detailCardClass} flex h-full items-start justify-between gap-4`}>
-    <div>
-      <p className={`text-[11px] font-bold uppercase tracking-[0.18em] ${accentClass}`}>{label}</p>
-      <p className={`mt-3 text-3xl font-black ${valueClass}`}>{value}</p>
-      {detail ? <p className="mt-2 text-sm leading-6 text-slate-300">{detail}</p> : null}
-    </div>
-    <span className={`inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-white/5 ${accentClass}`}>
-      {icon}
-    </span>
-  </div>
-);
-
-const PaginationControls = ({ page, totalPages, onPageChange }) => {
-  if (totalPages <= 1) return null;
-
-  return (
-    <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/10 bg-black/20 px-4 py-3">
-      <span className="text-sm text-slate-300">
-        Pagina <strong className="text-white">{page}</strong> de <strong className="text-white">{totalPages}</strong>
-      </span>
-      <div className="flex items-center gap-2">
-        <Button variant="secondary" size="sm" disabled={page <= 1} onClick={() => onPageChange(page - 1)}>
-          Anterior
-        </Button>
-        <Button variant="secondary" size="sm" disabled={page >= totalPages} onClick={() => onPageChange(page + 1)}>
-          Siguiente
-        </Button>
-      </div>
-    </div>
-  );
-};
 
 const paginateItems = (items, page, pageSize = TABLE_PAGE_SIZE) => {
   const safeItems = Array.isArray(items) ? items : [];
@@ -173,6 +148,7 @@ const resolveNextSort = ({ currentSort, field }) => {
   return { field, direction: SORT_DIRECTION.DESC };
 };
 
+// ── Main component ────────────────────────────────────────────────────────
 const FinancialReview = () => {
   const [loading, setLoading] = useState(true);
   const [tablePage, setTablePage] = useState(1);
@@ -386,6 +362,17 @@ const FinancialReview = () => {
     summary.overdueStudentsCount,
   ]);
 
+  // ── Table sortable header helper ──────────────────────────────────────
+  const makeSortableHeader = (field, label) => (
+    <SortableHeader
+      field={field}
+      label={label}
+      sort={sort}
+      onToggleSort={(f) => setSort((current) => resolveNextSort({ currentSort: current, field: f }))}
+    />
+  );
+
+  // ── Render ────────────────────────────────────────────────────────────
   return (
     <div className="mx-auto w-full max-w-7xl space-y-6">
       <SectionHeader
@@ -394,7 +381,8 @@ const FinancialReview = () => {
         icon={<FaChartLine />}
       />
 
-      <Card className={heroCardClass}>
+      {/* ── Hero Card ───────────────────────────────────────────────────── */}
+      <Card>
         <div className="grid gap-5 desktop:grid-cols-[1.2fr_0.8fr] desktop:items-end">
           <div className="space-y-4">
             <div className="inline-flex w-fit items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-100">
@@ -411,96 +399,89 @@ const FinancialReview = () => {
             </div>
             <div className="grid gap-3 mobile:grid-cols-3">
               {heroStats.map((item) => (
-                <div key={item.label} className={statPillClass}>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">{item.label}</p>
-                  <p className="mt-2 text-2xl font-black text-white">{item.value}</p>
-                  <p className="mt-1 text-xs text-slate-400">{item.detail}</p>
-                </div>
+                <KpiTile
+                  key={item.label}
+                  label={item.label}
+                  value={item.value}
+                  detail={item.detail}
+                  accent="slate"
+                />
               ))}
             </div>
           </div>
 
           <div className="grid gap-3">
-            <MetricSpotlight
+            <KpiTile
+              variant="spotlight"
               label="Ingreso total"
               value={loading ? '...' : formatCurrency(summary.totalRevenue)}
               detail="Mensualidades y cobros diarios consolidados en el corte actual."
-              icon={<FaDollarSign className="text-2xl" />}
-              accentClass="text-cyan-300"
+              icon={<FaDollarSign />}
+              accent="cyan"
             />
-            <MetricSpotlight
+            <KpiTile
+              variant="spotlight"
               label="Deuda estimada"
               value={loading ? '...' : formatCurrency(summary.estimatedDebtTotal)}
               detail="Saldo vencido acumulado sobre el que conviene intervenir primero."
-              icon={<FaExclamationTriangle className="text-2xl" />}
-              accentClass="text-rose-300"
-              valueClass="text-rose-100"
+              icon={<FaExclamationTriangle />}
+              accent="rose"
             />
           </div>
         </div>
       </Card>
 
+      {/* ── Summary KPI Cards ───────────────────────────────────────────── */}
       <div className="grid gap-4 mobile:grid-cols-2 desktop:grid-cols-4">
-        <Card className={summaryCardClass}>
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-cyan-200/90">Ingreso Total Mes</p>
-              <p className="mt-2 text-3xl font-black text-white">{loading ? '...' : formatCurrency(summary.totalRevenue)}</p>
-              <p className="mt-2 text-xs text-slate-300">Mensualidades y cobros diarios consolidados.</p>
-            </div>
-            <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-400/15 text-cyan-300">
-                <FaDollarSign className="text-2xl" />
-            </span>
-          </div>
+        <Card>
+          <KpiTile
+            label="Ingreso Total Mes"
+            value={loading ? '...' : formatCurrency(summary.totalRevenue)}
+            detail={`Mensualidades y cobros diarios consolidados.`}
+            icon={<FaDollarSign />}
+            accent="cyan"
+          />
         </Card>
 
-        <Card className={summaryCardClass}>
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-emerald-200/90">Pago Diario Mes</p>
-              <p className="mt-2 text-3xl font-black text-white">{loading ? '...' : formatCurrency(summary.dailyAttendanceRevenue)}</p>
-              <p className="mt-2 text-xs text-slate-300">{formatNumber(summary.currentMonthDailyPaymentsCount)} asistencias cobradas a $2.</p>
-            </div>
-            <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-400/15 text-emerald-300">
-              <FaCalendarAlt className="text-2xl" />
-            </span>
-          </div>
+        <Card>
+          <KpiTile
+            label="Pago Diario Mes"
+            value={loading ? '...' : formatCurrency(summary.dailyAttendanceRevenue)}
+            detail={`${formatNumber(summary.currentMonthDailyPaymentsCount)} asistencias cobradas a $2.`}
+            icon={<FaCalendarAlt />}
+            accent="emerald"
+          />
         </Card>
 
-        <Card className={summaryCardClass}>
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-rose-200/90">Deuda Estimada</p>
-              <p className="mt-2 text-3xl font-black text-white">{loading ? '...' : formatCurrency(summary.estimatedDebtTotal)}</p>
-              <p className="mt-2 text-xs text-slate-300">{formatNumber(summary.overdueStudentsCount)} atletas con saldo vencido.</p>
-            </div>
-            <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-400/15 text-rose-300">
-              <FaFileInvoiceDollar className="text-2xl" />
-            </span>
-          </div>
+        <Card>
+          <KpiTile
+            label="Deuda Estimada"
+            value={loading ? '...' : formatCurrency(summary.estimatedDebtTotal)}
+            detail={`${formatNumber(summary.overdueStudentsCount)} atletas con saldo vencido.`}
+            icon={<FaFileInvoiceDollar />}
+            accent="rose"
+          />
         </Card>
 
-        <Card className={summaryCardClass}>
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-violet-200/90">Cobertura Activa</p>
-              <p className="mt-2 text-3xl font-black text-white">{loading ? '...' : formatNumber(summary.activeMonthlyCoverageCount)}</p>
-              <p className="mt-2 text-xs text-slate-300">Atletas con mensualidad vigente hoy.</p>
-            </div>
-            <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-400/15 text-violet-300">
-              <FaUserClock className="text-2xl" />
-            </span>
-          </div>
+        <Card>
+          <KpiTile
+            label="Cobertura Activa"
+            value={loading ? '...' : formatNumber(summary.activeMonthlyCoverageCount)}
+            detail="Atletas con mensualidad vigente hoy."
+            icon={<FaUserClock />}
+            accent="violet"
+          />
         </Card>
       </div>
 
+      {/* ── Charts ──────────────────────────────────────────────────────── */}
       <div className="grid gap-4 desktop:grid-cols-[1.45fr_0.95fr]">
         <ChartCard
           title="Tendencia Financiera"
           subtitle={`Pico reciente: ${loading ? '...' : formatCurrency(trendPeak)}. Vista consolidada de los ultimos 6 meses.`}
         >
           {loading ? (
-            <p className="py-14 text-center text-sm text-slate-300">Cargando tendencia financiera...</p>
+            <LoadingSpinner message="Cargando tendencia financiera..." />
           ) : monthlyTrend.length === 0 ? (
             <EmptyState
               icon={<FaChartLine />}
@@ -553,7 +534,7 @@ const FinancialReview = () => {
           subtitle="Lectura rapida para ver si el flujo depende mas de mensualidades o de asistencia diaria."
         >
           {loading ? (
-            <p className="py-14 text-center text-sm text-slate-300">Cargando composicion...</p>
+            <LoadingSpinner message="Cargando composicion..." />
           ) : revenueSplitData.every((item) => item.value === 0) ? (
             <EmptyState
               icon={<FaDollarSign />}
@@ -583,7 +564,7 @@ const FinancialReview = () => {
               </div>
               <div className="flex flex-col justify-center gap-3">
                 {revenueSplitData.map((item) => (
-                  <div key={item.name} className="rounded-2xl border border-white/10 bg-black/20 p-3">
+                  <div key={item.name} className="rounded-2xl border border-white/10 bg-black/20 p-3 transition-colors duration-200 hover:border-white/20 hover:bg-white/[0.04]">
                     <div className="flex items-center gap-2">
                       <span className="inline-block h-3 w-3 rounded-full" style={{ backgroundColor: item.fill }} />
                       <p className="text-sm font-semibold text-white">{item.name}</p>
@@ -600,44 +581,41 @@ const FinancialReview = () => {
         </ChartCard>
       </div>
 
+      {/* ── KPIs + Ranking ──────────────────────────────────────────────── */}
       <div className="grid gap-4 desktop:grid-cols-[0.95fr_1.05fr]">
         <ChartCard
           title="KPIs de Revision"
           subtitle="Indicadores pensados para lectura administrativa rapida."
         >
           <div className="grid gap-3">
-            <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-              <div className="flex items-center gap-2 text-rv-gold">
-                <FaChartLine />
-                <p className="text-sm font-bold text-white">Ingreso promedio por asistencia</p>
-              </div>
-              <p className="mt-2 text-2xl font-black text-white">{loading ? '...' : formatCurrency(kpiInsights.avgRevenuePerAttendance)}</p>
-              <p className="mt-1 text-xs text-slate-400">Relacion entre ingresos del mes y asistencias registradas.</p>
-            </div>
-            <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-              <div className="flex items-center gap-2 text-emerald-300">
-                <FaCalendarAlt />
-                <p className="text-sm font-bold text-white">Peso del pago diario</p>
-              </div>
-              <p className="mt-2 text-2xl font-black text-white">{loading ? '...' : `${kpiInsights.dailyAttendanceShare.toFixed(1)}%`}</p>
-              <p className="mt-1 text-xs text-slate-400">Participacion del cobro por asistencia dentro del ingreso total.</p>
-            </div>
-            <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-              <div className="flex items-center gap-2 text-violet-300">
-                <FaUsers />
-                <p className="text-sm font-bold text-white">Cobertura vs atletas con asistencia</p>
-              </div>
-              <p className="mt-2 text-2xl font-black text-white">{loading ? '...' : `${kpiInsights.coverageVsAttendance.toFixed(1)}%`}</p>
-              <p className="mt-1 text-xs text-slate-400">Que porcentaje de quienes entrenan este mes ya tiene mensualidad vigente.</p>
-            </div>
-            <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-              <div className="flex items-center gap-2 text-rose-300">
-                <FaExclamationTriangle />
-                <p className="text-sm font-bold text-white">Mensualidades vencidas acumuladas</p>
-              </div>
-              <p className="mt-2 text-2xl font-black text-white">{loading ? '...' : formatNumber(summary.overdueMonthlyFeesCount)}</p>
-              <p className="mt-1 text-xs text-slate-400">Total de meses vencidos detectados en la cartera actual.</p>
-            </div>
+            <KpiTile
+              label="Ingreso promedio por asistencia"
+              value={loading ? '...' : formatCurrency(kpiInsights.avgRevenuePerAttendance)}
+              detail="Relacion entre ingresos del mes y asistencias registradas."
+              icon={<FaChartLine />}
+              accent="gold"
+            />
+            <KpiTile
+              label="Peso del pago diario"
+              value={loading ? '...' : `${kpiInsights.dailyAttendanceShare.toFixed(1)}%`}
+              detail="Participacion del cobro por asistencia dentro del ingreso total."
+              icon={<FaCalendarAlt />}
+              accent="emerald"
+            />
+            <KpiTile
+              label="Cobertura vs atletas con asistencia"
+              value={loading ? '...' : `${kpiInsights.coverageVsAttendance.toFixed(1)}%`}
+              detail="Que porcentaje de quienes entrenan este mes ya tiene mensualidad vigente."
+              icon={<FaUsers />}
+              accent="violet"
+            />
+            <KpiTile
+              label="Mensualidades vencidas acumuladas"
+              value={loading ? '...' : formatNumber(summary.overdueMonthlyFeesCount)}
+              detail="Total de meses vencidos detectados en la cartera actual."
+              icon={<FaExclamationTriangle />}
+              accent="rose"
+            />
           </div>
         </ChartCard>
 
@@ -646,7 +624,7 @@ const FinancialReview = () => {
           subtitle="Atletas con mayor deuda estimada y comparativo contra lo que han aportado por pago diario este mes."
         >
           {loading ? (
-            <p className="py-14 text-center text-sm text-slate-300">Cargando ranking de riesgo...</p>
+            <LoadingSpinner message="Cargando ranking de riesgo..." />
           ) : debtRankingData.length === 0 ? (
             <EmptyState
               icon={<FaExclamationTriangle />}
@@ -678,12 +656,13 @@ const FinancialReview = () => {
         </ChartCard>
       </div>
 
+      {/* ── Overdue students detail table ────────────────────────────────── */}
       <ChartCard
         title="Detalle de Mensualidades Vencidas"
         subtitle="Tabla paginada para revisar cartera, actividad reciente y aporte por pago diario."
       >
         {loading ? (
-          <p className="py-14 text-center text-sm text-slate-300">Cargando detalle de vencidos...</p>
+          <LoadingSpinner message="Cargando detalle de vencidos..." />
         ) : overdueStudents.length === 0 ? (
           <EmptyState
             icon={<FaExclamationTriangle />}
@@ -692,7 +671,8 @@ const FinancialReview = () => {
           />
         ) : (
           <>
-            <div className={`${filterShellClass} mb-4`}>
+            {/* Filters */}
+            <div className="rounded-[26px] border border-white/10 bg-black/20 p-4 backdrop-blur-sm mb-4">
               <div className="mb-3 flex items-center gap-2 text-rv-gold">
                 <FaFilter />
                 <p className="text-sm font-bold uppercase tracking-[0.16em] text-white">Filtros de revision</p>
@@ -748,19 +728,11 @@ const FinancialReview = () => {
               </div>
             </div>
 
+            {/* Filter summary KPIs */}
             <div className="mb-4 grid gap-3 mobile:grid-cols-3">
-              <div className="rounded-2xl border border-white/10 bg-black/20 p-3">
-                <p className="text-xs uppercase tracking-[0.16em] text-slate-400">Casos filtrados</p>
-                <p className="mt-2 text-2xl font-black text-white">{formatNumber(sortedOverdueStudents.length)}</p>
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-black/20 p-3">
-                <p className="text-xs uppercase tracking-[0.16em] text-slate-400">Deuda filtrada</p>
-                <p className="mt-2 text-2xl font-black text-white">{formatCurrency(filteredDebtTotal)}</p>
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-black/20 p-3">
-                <p className="text-xs uppercase tracking-[0.16em] text-slate-400">Pago diario filtrado</p>
-                <p className="mt-2 text-2xl font-black text-white">{formatCurrency(filteredDailyRevenueTotal)}</p>
-              </div>
+              <KpiTile label="Casos filtrados" value={formatNumber(sortedOverdueStudents.length)} accent="slate" />
+              <KpiTile label="Deuda filtrada" value={formatCurrency(filteredDebtTotal)} accent="slate" />
+              <KpiTile label="Pago diario filtrado" value={formatCurrency(filteredDailyRevenueTotal)} accent="slate" />
             </div>
 
             {sortedOverdueStudents.length === 0 ? (
@@ -770,81 +742,54 @@ const FinancialReview = () => {
                 description="Ajusta la busqueda o el nivel de deuda para volver a mostrar casos."
               />
             ) : (
-            <div className="overflow-x-auto rounded-[26px] border border-white/10 bg-black/20">
-              <table className="w-full min-w-[1060px] border-collapse text-sm">
-                <thead>
-                  <tr className="border-b border-white/10 bg-white/[0.03] text-left text-[11px] uppercase tracking-[0.16em] text-slate-400">
-                    <th className="px-4 py-4">
-                      <SortableHeader field="athleteName" label="Atleta" sort={sort} onToggleSort={(field) => setSort((current) => resolveNextSort({ currentSort: current, field }))} />
-                    </th>
-                    <th className="px-4 py-4">
-                      <SortableHeader field="category" label="Categoria" sort={sort} onToggleSort={(field) => setSort((current) => resolveNextSort({ currentSort: current, field }))} />
-                    </th>
-                    <th className="px-4 py-4">Ultimo pago</th>
-                    <th className="px-4 py-4">
-                      <SortableHeader field="coverageEnd" label="Cobertura fin" sort={sort} onToggleSort={(field) => setSort((current) => resolveNextSort({ currentSort: current, field }))} />
-                    </th>
-                    <th className="px-4 py-4">
-                      <SortableHeader field="overdueMonths" label="Meses vencidos" sort={sort} onToggleSort={(field) => setSort((current) => resolveNextSort({ currentSort: current, field }))} />
-                    </th>
-                    <th className="px-4 py-4">
-                      <SortableHeader field="estimatedDebt" label="Deuda estimada" sort={sort} onToggleSort={(field) => setSort((current) => resolveNextSort({ currentSort: current, field }))} />
-                    </th>
-                    <th className="px-4 py-4">
-                      <SortableHeader field="currentMonthAttendances" label="Asistencias mes" sort={sort} onToggleSort={(field) => setSort((current) => resolveNextSort({ currentSort: current, field }))} />
-                    </th>
-                    <th className="px-4 py-4">
-                      <SortableHeader field="currentMonthDailyPayments" label="Pagos diarios" sort={sort} onToggleSort={(field) => setSort((current) => resolveNextSort({ currentSort: current, field }))} />
-                    </th>
-                    <th className="px-4 py-4">
-                      <SortableHeader field="currentMonthDailyRevenue" label="Ingreso diario" sort={sort} onToggleSort={(field) => setSort((current) => resolveNextSort({ currentSort: current, field }))} />
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {paginatedOverdue.items.map((row, index) => (
-                    <tr
-                      key={row.studentId}
-                      className={`border-b border-white/10 text-white ${index % 2 === 0 ? 'bg-white/[0.015]' : 'bg-transparent'}`}
-                    >
-                      <td className="px-4 py-4">
-                        <div>
-                          <p className="font-semibold text-white">{row.athleteName}</p>
-                          <p className="mt-1 text-xs text-slate-400">ID: {row.studentId}</p>
-                        </div>
-                      </td>
-                      <td className="px-4 py-4 text-slate-300">{row.category ? row.category.replaceAll('_', ' ') : '--'}</td>
-                      <td className="px-4 py-4 text-slate-300">{row.lastPaymentDate || '--'}</td>
-                      <td className="px-4 py-4 text-slate-200">{row.coverageEnd || '--'}</td>
-                      <td className="px-4 py-4">
-                        <span className={`inline-flex rounded-full border px-2.5 py-1 text-xs font-bold ${
-                          resolveDebtLevel(row) === 'critica'
-                            ? 'border-rose-400/25 bg-rose-400/10 text-rose-200'
-                            : resolveDebtLevel(row) === 'alta'
-                              ? 'border-amber-400/25 bg-amber-400/10 text-amber-200'
-                              : 'border-cyan-400/25 bg-cyan-400/10 text-cyan-200'
-                        }`}>
-                          {row.overdueMonths}
-                        </span>
-                      </td>
-                      <td className="px-4 py-4 font-semibold text-rose-300">{formatCurrency(row.estimatedDebt)}</td>
-                      <td className="px-4 py-4 text-slate-200">{formatNumber(row.currentMonthAttendances)}</td>
-                      <td className="px-4 py-4 text-slate-200">{formatNumber(row.currentMonthDailyPayments)}</td>
-                      <td className="px-4 py-4 font-semibold text-emerald-300">{formatCurrency(row.currentMonthDailyRevenue)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            )}
-
-            {sortedOverdueStudents.length > 0 ? (
-              <PaginationControls
+              <DataTable
+                columns={[
+                  { key: 'athleteName', label: 'Atleta', headerContent: makeSortableHeader('athleteName', 'Atleta') },
+                  { key: 'category', label: 'Categoria', headerContent: makeSortableHeader('category', 'Categoria') },
+                  { key: 'lastPayment', label: 'Ultimo pago' },
+                  { key: 'coverageEnd', label: 'Cobertura fin', headerContent: makeSortableHeader('coverageEnd', 'Cobertura fin') },
+                  { key: 'overdueMonths', label: 'Meses vencidos', headerContent: makeSortableHeader('overdueMonths', 'Meses vencidos') },
+                  { key: 'estimatedDebt', label: 'Deuda estimada', headerContent: makeSortableHeader('estimatedDebt', 'Deuda estimada') },
+                  { key: 'attendances', label: 'Asistencias mes', headerContent: makeSortableHeader('currentMonthAttendances', 'Asistencias mes') },
+                  { key: 'dailyPayments', label: 'Pagos diarios', headerContent: makeSortableHeader('currentMonthDailyPayments', 'Pagos diarios') },
+                  { key: 'dailyRevenue', label: 'Ingreso diario', headerContent: makeSortableHeader('currentMonthDailyRevenue', 'Ingreso diario') },
+                ]}
+                rows={paginatedOverdue.items}
+                keyExtractor={(row) => row.studentId}
+                renderRow={(row) => (
+                  <>
+                    <td className="px-4 py-4">
+                      <div>
+                        <p className="font-semibold text-white">{row.athleteName}</p>
+                        <p className="mt-1 text-xs text-slate-400">ID: {row.studentId}</p>
+                      </div>
+                    </td>
+                    <td className="px-4 py-4 text-slate-300">{row.category ? row.category.replaceAll('_', ' ') : '--'}</td>
+                    <td className="px-4 py-4 text-slate-300">{row.lastPaymentDate || '--'}</td>
+                    <td className="px-4 py-4 text-slate-200">{row.coverageEnd || '--'}</td>
+                    <td className="px-4 py-4">
+                      <span className={`inline-flex rounded-full border px-2.5 py-1 text-xs font-bold ${
+                        resolveDebtLevel(row) === 'critica'
+                          ? 'border-rose-400/25 bg-rose-400/10 text-rose-200'
+                          : resolveDebtLevel(row) === 'alta'
+                            ? 'border-amber-400/25 bg-amber-400/10 text-amber-200'
+                            : 'border-cyan-400/25 bg-cyan-400/10 text-cyan-200'
+                      }`}>
+                        {row.overdueMonths}
+                      </span>
+                    </td>
+                    <td className="px-4 py-4 font-semibold text-rose-300">{formatCurrency(row.estimatedDebt)}</td>
+                    <td className="px-4 py-4 text-slate-200">{formatNumber(row.currentMonthAttendances)}</td>
+                    <td className="px-4 py-4 text-slate-200">{formatNumber(row.currentMonthDailyPayments)}</td>
+                    <td className="px-4 py-4 font-semibold text-emerald-300">{formatCurrency(row.currentMonthDailyRevenue)}</td>
+                  </>
+                )}
+                minWidth="1060px"
                 page={paginatedOverdue.page}
                 totalPages={paginatedOverdue.totalPages}
                 onPageChange={setTablePage}
               />
-            ) : null}
+            )}
           </>
         )}
       </ChartCard>

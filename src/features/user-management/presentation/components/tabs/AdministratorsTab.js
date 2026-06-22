@@ -5,9 +5,9 @@ import { useUserPermissions } from '../hooks/useUserPermissions';
 import { useUserActions } from '../hooks/useUserActions';
 import { useTimedMessage } from '../hooks/useTimedMessage';
 import { SectionHeader } from '../../../../../shared/ui';
-import { Card } from '../../../../../shared/ui';
+
 import { Button } from '../../../../../shared/ui';
-import { EmptyState, Modal } from '../../../../../shared/ui';
+import { EmptyState, Modal, KpiTile, LoadingSpinner } from '../../../../../shared/ui';
 import { SORT_DIRECTION, createTableQuery } from '../../../../../shared/lib/tableQuery';
 import { isPrimaryAdminUserId } from '../../../domain/adminPrivileges';
 import UserCard from '../shared/UserCard';
@@ -144,18 +144,15 @@ const AdministratorsTab = ({ userRole, currentUserId = null }) => {
       {message.text && <div className={message.type === 'success' ? 'rounded-xl border border-emerald-400/40 bg-emerald-500/15 px-4 py-3 text-sm font-semibold text-emerald-200' : 'rounded-xl border border-red-400/40 bg-red-500/15 px-4 py-3 text-sm font-semibold text-red-200'}>{message.text}</div>}
       
       <div className="grid gap-4 tablet:grid-cols-2 desktop:grid-cols-3">
-        <Card className="h-full border-l-4 border-l-[#2E3192]">
-          <div className="flex items-start justify-between gap-3">
-            <div><h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Total</h3><p className="mt-1 text-3xl font-black text-white">{stats.total}</p></div>
-            <div className="text-3xl text-indigo-300"><FaUsers /></div>
-          </div>
-        </Card>
+        <KpiTile label="Total" value={stats.total} icon={<FaUsers />} accent="sky" className="h-full" />
       </div>
       
       <UserFilters filters={filters} onFiltersChange={setFilters} userType="administrador" showCategoryFilter={false} onReset={handleResetFilters} />
       
       {loading ? (
-        <Card><div className="flex min-h-[180px] flex-col items-center justify-center gap-3 text-slate-200"><div className="h-10 w-10 animate-spin rounded-full border-2 border-rv-gold/30 border-t-rv-gold" /><p className="text-sm">Cargando...</p></div></Card>
+        <div className="flex min-h-[180px] items-center justify-center">
+          <LoadingSpinner message="Cargando..." />
+        </div>
       ) : paginatedAdmins.length === 0 ? (
         <EmptyState icon={<FaUserShield />} title={filters.search ? "No se encontraron" : "No hay administradores"} description={filters.search ? "Ajusta los filtros" : "Agrega el primer administrador"} action={permissions.canCreate && !filters.search && <Button onClick={openCreateModal}><FaPlus className="mr-2" /> Agregar</Button>} />
       ) : (

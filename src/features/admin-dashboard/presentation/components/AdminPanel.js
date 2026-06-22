@@ -24,7 +24,7 @@ import { GamificationAdminPanel } from '../../../gamification';
 import Dashboard from './Dashboard';
 import FinancialReview from './FinancialReview';
 import ReportsCenter from './ReportsCenter';
-import { RolePanelLayout, iconRegistry, semanticCatalog } from '../../../../shared/ui';
+import { RolePanelLayout, iconRegistry, semanticCatalog, LoadingSpinner, EmptyState } from '../../../../shared/ui';
 
 const AdminPanel = ({ user }) => {
   const { profile, isAdmin, loading } = useUserProfile(user);
@@ -65,21 +65,20 @@ const AdminPanel = ({ user }) => {
 
   if (loading) {
     return (
-      <div className="flex min-h-[60dvh] flex-col items-center justify-center gap-4 text-white">
-        <div className="h-10 w-10 animate-spin rounded-full border-4 border-white/25 border-t-red-500" />
-        <p className="text-sm font-semibold mobile:text-base">Cargando panel de administracion...</p>
+      <div className="flex min-h-[60dvh] items-center justify-center">
+        <LoadingSpinner message="Cargando panel de administración..." />
       </div>
     );
   }
 
   if (!isAdmin()) {
     return (
-      <div className="mx-auto mt-10 max-w-xl rounded-2xl border border-red-300/35 bg-white p-8 text-center shadow-xl">
-        <h2 className="inline-flex items-center gap-2 text-2xl font-black text-red-700"><FaBan /> Acceso denegado</h2>
-        <p className="mt-3 text-slate-700">Solo los administradores pueden acceder a este panel.</p>
-        <p className="mt-1 text-slate-700">
-          Tu rol actual: <strong>{profile?.role || 'Sin rol'}</strong>
-        </p>
+      <div className="flex min-h-[60dvh] items-center justify-center px-4">
+        <EmptyState
+          icon={<FaBan className="text-red-500" />}
+          title="Acceso Denegado"
+          description={`Solo los administradores pueden acceder a este panel. Tu rol actual es: ${profile?.role || 'Sin rol'}.`}
+        />
       </div>
     );
   }

@@ -3,11 +3,11 @@ import {
   FaStore, FaTrophy, FaBullseye, FaPlus, FaEdit,
   FaToggleOn, FaToggleOff, FaTimes, FaSave, FaStar,
   FaGem, FaFire, FaCoins, FaShieldAlt, FaMedal, FaLock,
-  FaUnlock, FaChevronDown, FaChevronLeft, FaChevronRight,
+  FaUnlock, FaChevronDown,
   FaUpload, FaImage, FaVolleyballBall, FaBoxOpen,
 } from 'react-icons/fa';
 import { gamificationAdminService } from '../../gamificationAdminService';
-import { SectionHeader, Button, Modal } from '../../../../shared/ui';
+import { SectionHeader, Button, Modal, DataTable, EmptyState, TabNav, StatusBadge, Input, Select, Textarea, FormField } from '../../../../shared/ui';
 import IdentityPortrait from './IdentityPortrait';
 
 // ── Octalysis Core Drivers ──────────────────────────────────────────────────
@@ -155,16 +155,6 @@ const usePagination = (items, pageSize = PAGE_SIZE) => {
 
 // ── Shared UI ───────────────────────────────────────────────────────────────
 
-const StatusBadge = ({ active }) => (
-  <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ${
-    active ? 'bg-emerald-500/20 text-emerald-300 ring-1 ring-emerald-500/30'
-           : 'bg-slate-700/60 text-slate-400 ring-1 ring-slate-600/40'
-  }`}>
-    <span className={`h-1.5 w-1.5 rounded-full ${active ? 'bg-emerald-400' : 'bg-slate-500'}`} />
-    {active ? 'Activo' : 'Inactivo'}
-  </span>
-);
-
 const ToggleButton = ({ active, onClick, loading }) => (
   <button type="button" onClick={onClick} disabled={loading} title={active ? 'Desactivar' : 'Activar'}
     className={`text-xl transition-colors disabled:opacity-40 ${
@@ -173,19 +163,6 @@ const ToggleButton = ({ active, onClick, loading }) => (
     {active ? <FaToggleOn /> : <FaToggleOff />}
   </button>
 );
-
-const FormField = ({ label, required, children, hint }) => (
-  <div className="flex flex-col gap-1.5">
-    <label className="text-xs font-bold uppercase tracking-wide text-slate-400">
-      {label}{required && <span className="ml-1 text-red-400">*</span>}
-    </label>
-    {children}
-    {hint && <p className="text-xs text-slate-500">{hint}</p>}
-  </div>
-);
-
-const inputClass = 'w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white placeholder-slate-500 focus:border-rv-gold/50 focus:outline-none focus:ring-2 focus:ring-rv-gold/80 transition-colors disabled:cursor-not-allowed disabled:opacity-50';
-const selectClass = 'w-full rounded-lg border border-rv-gold/25 bg-slate-900/60 px-3 py-2 text-sm text-white focus:border-rv-gold/50 focus:outline-none focus:ring-2 focus:ring-rv-gold/80 transition-colors appearance-none disabled:cursor-not-allowed disabled:opacity-50';
 
 const FlashMsg = ({ msg }) => msg ? (
   <div className={`rounded-lg px-4 py-3 text-sm font-semibold ${
@@ -204,53 +181,6 @@ const SectionDivider = ({ label }) => (
 );
 
 
-
-// ── Pagination component ────────────────────────────────────────────────────
-
-const Pagination = ({ page, totalPages, total, onPage }) => {
-  if (totalPages <= 1) return null;
-  return (
-    <div className="flex items-center justify-between border-t border-slate-700/40 px-4 py-3">
-      <span className="text-xs text-slate-500">
-        Página <strong className="text-slate-300">{page}</strong> de <strong className="text-slate-300">{totalPages}</strong>
-        {' '}· {total} registros
-      </span>
-      <div className="flex items-center gap-1">
-        <button
-          type="button"
-          onClick={() => onPage(page - 1)}
-          disabled={page === 1}
-          className="flex h-8 w-8 items-center justify-center rounded-lg border border-slate-700 bg-slate-800 text-slate-400 transition-colors hover:border-slate-500 hover:text-white disabled:opacity-30"
-        ><FaChevronLeft className="text-xs" /></button>
-        {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-          let p = i + 1;
-          if (totalPages > 5) {
-            const start = Math.max(1, Math.min(page - 2, totalPages - 4));
-            p = start + i;
-          }
-          return (
-            <button
-              key={p}
-              type="button"
-              onClick={() => onPage(p)}
-              className={`flex h-8 w-8 items-center justify-center rounded-lg border text-xs font-semibold transition-colors ${
-                p === page
-                  ? 'border-rv-gold/60 bg-rv-gold/15 text-rv-gold'
-                  : 'border-slate-700 bg-slate-800 text-slate-400 hover:border-slate-500 hover:text-white'
-              }`}
-            >{p}</button>
-          );
-        })}
-        <button
-          type="button"
-          onClick={() => onPage(page + 1)}
-          disabled={page === totalPages}
-          className="flex h-8 w-8 items-center justify-center rounded-lg border border-slate-700 bg-slate-800 text-slate-400 transition-colors hover:border-slate-500 hover:text-white disabled:opacity-30"
-        ><FaChevronRight className="text-xs" /></button>
-      </div>
-    </div>
-  );
-};
 
 // ── Cosmetic Preview ────────────────────────────────────────────────────────
 
@@ -461,42 +391,42 @@ const CosmeticForm = ({ initial, isNew, onSave, onCancel, saving, error: formErr
       <form id="cosmetic-form" onSubmit={(e) => { e.preventDefault(); onSave(formToItem(form)); }} className="flex flex-col gap-5">
         {isNew && (
           <FormField label="Slug" required hint="Solo letras, números y guión bajo. No se puede cambiar después.">
-            <input className={inputClass} value={form.slug} onChange={set('slug')} placeholder="frame_dorado_elite" required />
+            <Input value={form.slug} onChange={set('slug')} placeholder="frame_dorado_elite" required />
           </FormField>
         )}
 
         <div className="grid gap-4 sm:grid-cols-2">
           <FormField label="Nombre" required>
-            <input className={inputClass} value={form.name} onChange={set('name')} placeholder="Marco Dorado Elite" required />
+            <Input value={form.name} onChange={set('name')} placeholder="Marco Dorado Elite" required />
           </FormField>
           <FormField label="Categoría" required>
             <div className="relative">
-              <select className={`${selectClass} pr-8`} value={form.category} onChange={set('category')}>
+              <Select className={` pr-8`} value={form.category} onChange={set('category')}>
                 {Object.entries(CATEGORY_LABELS).map(([v, l]) => <option key={v} value={v}>{l}</option>)}
-              </select>
+              </Select>
               <FaChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs" />
             </div>
           </FormField>
         </div>
 
         <FormField label="Descripción" required>
-          <textarea className={`${inputClass} min-h-[68px] resize-y`} value={form.description} onChange={set('description')} placeholder="Descripción visible para el jugador" required />
+          <Textarea className={` min-h-[68px] resize-y`} value={form.description} onChange={set('description')} placeholder="Descripción visible para el jugador" required />
         </FormField>
 
         <div className="grid gap-4 sm:grid-cols-3">
           <FormField label="Rareza" required>
             <div className="relative">
-              <select className={`${selectClass} pr-8`} value={form.rarity} onChange={set('rarity')}>
+              <Select className={` pr-8`} value={form.rarity} onChange={set('rarity')}>
                 {Object.entries(RARITY_LABELS).map(([v, l]) => <option key={v} value={v}>{l}</option>)}
-              </select>
+              </Select>
               <FaChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs" />
             </div>
           </FormField>
           <FormField label={isRiovoley ? 'Precio (monedas canje)' : 'Precio (monedas)'} required>
-            <input className={inputClass} type="number" min={0} value={form.price_coins} onChange={setN('price_coins')} />
+            <Input type="number" min={0} value={form.price_coins} onChange={setN('price_coins')} />
           </FormField>
           <FormField label="Orden">
-            <input className={inputClass} type="number" min={0} value={form.sort_order} onChange={setN('sort_order')} />
+            <Input type="number" min={0} value={form.sort_order} onChange={setN('sort_order')} />
           </FormField>
         </div>
 
@@ -507,9 +437,9 @@ const CosmeticForm = ({ initial, isNew, onSave, onCancel, saving, error: formErr
             {form.category === 'frame' && (
               <FormField label="Variante de marco" required hint="Estilo visual del borde del avatar">
                 <div className="relative">
-                  <select className={`${selectClass} pr-8`} value={form.frameVariant} onChange={set('frameVariant')}>
+                  <Select className={` pr-8`} value={form.frameVariant} onChange={set('frameVariant')}>
                     {FRAME_VARIANTS.map(({ value, label }) => <option key={value} value={value}>{label}</option>)}
-                  </select>
+                  </Select>
                   <FaChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs" />
                 </div>
               </FormField>
@@ -517,9 +447,9 @@ const CosmeticForm = ({ initial, isNew, onSave, onCancel, saving, error: formErr
             {form.category === 'background' && (
               <FormField label="Variante de fondo" required hint="Gradiente de fondo de la tarjeta">
                 <div className="relative">
-                  <select className={`${selectClass} pr-8`} value={form.backgroundVariant} onChange={set('backgroundVariant')}>
+                  <Select className={` pr-8`} value={form.backgroundVariant} onChange={set('backgroundVariant')}>
                     {BACKGROUND_VARIANTS.map(({ value, label }) => <option key={value} value={value}>{label}</option>)}
-                  </select>
+                  </Select>
                   <FaChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs" />
                 </div>
               </FormField>
@@ -528,17 +458,17 @@ const CosmeticForm = ({ initial, isNew, onSave, onCancel, saving, error: formErr
               <div className="grid gap-4 sm:grid-cols-2">
                 <FormField label="Variante de insignia" required>
                   <div className="relative">
-                    <select className={`${selectClass} pr-8`} value={form.badgeVariant} onChange={set('badgeVariant')}>
+                    <Select className={` pr-8`} value={form.badgeVariant} onChange={set('badgeVariant')}>
                       {BADGE_VARIANTS.map(({ value, label }) => <option key={value} value={value}>{label}</option>)}
-                    </select>
+                    </Select>
                     <FaChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs" />
                   </div>
                 </FormField>
                 <FormField label="Ícono" required>
                   <div className="relative">
-                    <select className={`${selectClass} pr-8`} value={form.badgeIcon} onChange={set('badgeIcon')}>
+                    <Select className={` pr-8`} value={form.badgeIcon} onChange={set('badgeIcon')}>
                       {BADGE_ICONS.map(({ value, label }) => <option key={value} value={value}>{label}</option>)}
-                    </select>
+                    </Select>
                     <FaChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs" />
                   </div>
                 </FormField>
@@ -548,17 +478,17 @@ const CosmeticForm = ({ initial, isNew, onSave, onCancel, saving, error: formErr
               <div className="grid gap-4 sm:grid-cols-2">
                 <FormField label="Variante de efecto" required>
                   <div className="relative">
-                    <select className={`${selectClass} pr-8`} value={form.effectVariant} onChange={set('effectVariant')}>
+                    <Select className={` pr-8`} value={form.effectVariant} onChange={set('effectVariant')}>
                       {EFFECT_VARIANTS.map(({ value, label }) => <option key={value} value={value}>{label}</option>)}
-                    </select>
+                    </Select>
                     <FaChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs" />
                   </div>
                 </FormField>
                 <FormField label="Color de resplandor" required>
                   <div className="relative">
-                    <select className={`${selectClass} pr-8`} value={form.effectGlow} onChange={set('effectGlow')}>
+                    <Select className={` pr-8`} value={form.effectGlow} onChange={set('effectGlow')}>
                       {EFFECT_GLOWS.map(({ value, label }) => <option key={value} value={value}>{label}</option>)}
-                    </select>
+                    </Select>
                     <FaChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs" />
                   </div>
                 </FormField>
@@ -578,7 +508,7 @@ const CosmeticForm = ({ initial, isNew, onSave, onCancel, saving, error: formErr
             />
             {form.imageUrl && (
               <FormField label="URL de imagen (resultante)">
-                <input className={inputClass} value={form.imageUrl} readOnly />
+                <Input value={form.imageUrl} readOnly />
               </FormField>
             )}
           </>
@@ -591,18 +521,18 @@ const CosmeticForm = ({ initial, isNew, onSave, onCancel, saving, error: formErr
             <div className="grid gap-4 sm:grid-cols-2">
               <FormField label="Tipo de producto" required>
                 <div className="relative">
-                  <select className={`${selectClass} pr-8`} value={form.productType} onChange={set('productType')}>
+                  <Select className={` pr-8`} value={form.productType} onChange={set('productType')}>
                     {RIOVOLEY_PRODUCT_TYPES.map(({ value, label }) => <option key={value} value={value}>{label}</option>)}
-                  </select>
+                  </Select>
                   <FaChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs" />
                 </div>
               </FormField>
               <FormField label="Stock disponible" hint="Dejar vacío si es ilimitado">
-                <input className={inputClass} type="number" min={0} value={form.stock} onChange={set('stock')} placeholder="Ej: 20" />
+                <Input type="number" min={0} value={form.stock} onChange={set('stock')} placeholder="Ej: 20" />
               </FormField>
             </div>
             <FormField label="Instrucciones de canje" hint="Cómo el alumno puede canjear este premio">
-              <textarea className={`${inputClass} min-h-[60px] resize-y`} value={form.redemptionInstructions} onChange={set('redemptionInstructions')} placeholder="Ej: Preséntate a la recepción con tu código de canje." />
+              <Textarea className={` min-h-[60px] resize-y`} value={form.redemptionInstructions} onChange={set('redemptionInstructions')} placeholder="Ej: Preséntate a la recepción con tu código de canje." />
             </FormField>
           </>
         )}
@@ -611,9 +541,9 @@ const CosmeticForm = ({ initial, isNew, onSave, onCancel, saving, error: formErr
         <SectionDivider label="Condición de desbloqueo" />
         <FormField label="Tipo de desbloqueo" required>
           <div className="relative">
-            <select className={`${selectClass} pr-8`} value={form.unlockType} onChange={set('unlockType')}>
+            <Select className={` pr-8`} value={form.unlockType} onChange={set('unlockType')}>
               {UNLOCK_TYPES.map(({ value, label }) => <option key={value} value={value}>{label}</option>)}
-            </select>
+            </Select>
             <FaChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs" />
           </div>
         </FormField>
@@ -623,11 +553,11 @@ const CosmeticForm = ({ initial, isNew, onSave, onCancel, saving, error: formErr
             form.unlockType === 'streak' ? 'Meses de racha' :
             form.unlockType === 'achievement_count' ? 'Cantidad de logros' : 'Posición en ranking'
           } required>
-            <input className={inputClass} type="number" min={1} value={form.unlockTarget} onChange={set('unlockTarget')} placeholder="Ej: 5" required />
+            <Input type="number" min={1} value={form.unlockTarget} onChange={set('unlockTarget')} placeholder="Ej: 5" required />
           </FormField>
         )}
         <FormField label="Pista de desbloqueo">
-          <input className={inputClass} value={form.unlockHint} onChange={set('unlockHint')} placeholder="Ej: Desbloquea al llegar al nivel 5." />
+          <Input value={form.unlockHint} onChange={set('unlockHint')} placeholder="Ej: Desbloquea al llegar al nivel 5." />
         </FormField>
 
         {/* Estado */}
@@ -699,7 +629,7 @@ const CosmeticsTab = () => {
     return matchSearch && matchCat;
   });
 
-  const { pageItems, page, totalPages, setPage, total } = usePagination(filtered);
+  const { pageItems, page, totalPages, setPage } = usePagination(filtered);
 
   const handleSave = async (item) => {
     setSaving(true); setFormErr(null);
@@ -725,17 +655,17 @@ const CosmeticsTab = () => {
     <div className="space-y-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-1 gap-2">
-          <input
-            className={`${inputClass} max-w-[200px]`}
+          <Input
+            className="max-w-[200px]"
             placeholder="Buscar nombre o slug..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
           <div className="relative">
-            <select className={`${selectClass} max-w-[160px] pr-8`} value={catFilter} onChange={(e) => setCatFilter(e.target.value)}>
+            <Select className={` max-w-[160px] pr-8`} value={catFilter} onChange={(e) => setCatFilter(e.target.value)}>
               <option value="">Todas las categorías</option>
               {Object.entries(CATEGORY_LABELS).map(([v, l]) => <option key={v} value={v}>{l}</option>)}
-            </select>
+            </Select>
             <FaChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs" />
           </div>
         </div>
@@ -759,85 +689,91 @@ const CosmeticsTab = () => {
       {loading ? (
         <div className="flex min-h-[140px] items-center justify-center text-slate-500 text-sm">Cargando...</div>
       ) : filtered.length === 0 ? (
-        <div className="flex min-h-[140px] items-center justify-center text-slate-500 text-sm">
-          {search || catFilter ? 'Sin resultados para el filtro' : 'No hay cosméticos'}
-        </div>
+        <EmptyState
+          icon={<FaStore />}
+          title={search || catFilter ? "Sin resultados" : "No hay cosméticos"}
+          description={search || catFilter ? "Intenta cambiar los filtros de búsqueda" : "No hay cosméticos registrados"}
+        />
       ) : (
-        <div className="rounded-xl border border-slate-700/60 bg-slate-900 shadow-sm">
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[700px] text-sm">
-              <thead className="border-b border-slate-700/60 bg-slate-800/80">
-                <tr>
-                  {['', 'Nombre', 'Categoría', 'Variante', 'Rareza', 'Precio', 'Desbloqueo', 'Estado', ''].map((h, i) => (
-                    <th key={i} className="px-3 py-3 text-left text-xs font-bold uppercase tracking-wide text-slate-400 last:text-center">{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-700/40">
-                {pageItems.map((item) => {
-                  const m       = item.metadata || {};
-                  const variant = m.frameVariant || m.backgroundVariant || m.badgeVariant || m.effectVariant || '—';
-                  const unlock  = m.unlockType === 'purchase' ? 'Compra' : m.unlockType || '—';
-                  const isImg   = item.category === 'custom_frame' || item.category === 'riovoley';
+        <div className="rounded-xl border border-slate-700/60 bg-slate-900 shadow-sm overflow-hidden">
+          <DataTable
+            columns={[
+              { key: 'preview', label: '' },
+              { key: 'name', label: 'Nombre' },
+              { key: 'category', label: 'Categoría' },
+              { key: 'variant', label: 'Variante' },
+              { key: 'rarity', label: 'Rareza' },
+              { key: 'price', label: 'Precio' },
+              { key: 'unlock', label: 'Desbloqueo' },
+              { key: 'status', label: 'Estado' },
+              { key: 'actions', label: '' },
+            ]}
+            rows={pageItems}
+            keyExtractor={(item) => item.slug}
+            renderRow={(item) => {
+              const m       = item.metadata || {};
+              const variant = m.frameVariant || m.backgroundVariant || m.badgeVariant || m.effectVariant || '—';
+              const unlock  = m.unlockType === 'purchase' ? 'Compra' : m.unlockType || '—';
+              const isImg   = item.category === 'custom_frame' || item.category === 'riovoley';
 
-                  // Tiny preview for the table row
-                  const miniEquipped = {};
-                  if (item.category === 'frame') miniEquipped.frame = { slug: item.slug, rarity: item.rarity, metadata: m };
-                  if (item.category === 'background') miniEquipped.background = { slug: item.slug, rarity: item.rarity, metadata: m };
-                  if (item.category === 'badge') miniEquipped.badge = { slug: item.slug, name: item.name, rarity: item.rarity, metadata: m };
-                  if (item.category === 'effect') miniEquipped.effect = { slug: item.slug, rarity: item.rarity, metadata: m };
+              const miniEquipped = {};
+              if (item.category === 'frame') miniEquipped.frame = { slug: item.slug, rarity: item.rarity, metadata: m };
+              if (item.category === 'background') miniEquipped.background = { slug: item.slug, rarity: item.rarity, metadata: m };
+              if (item.category === 'badge') miniEquipped.badge = { slug: item.slug, name: item.name, rarity: item.rarity, metadata: m };
+              if (item.category === 'effect') miniEquipped.effect = { slug: item.slug, rarity: item.rarity, metadata: m };
 
-                  return (
-                    <tr key={item.slug} className="hover:bg-slate-800/40 transition-colors">
-                      <td className="px-3 py-2">
-                        {isImg ? (
-                          m.imageUrl
-                            ? <img src={m.imageUrl} alt={item.name} className="h-10 w-10 rounded-lg object-cover border border-slate-700" />
-                            : <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-700 bg-slate-800 text-slate-500"><FaImage /></div>
-                        ) : (
-                          <IdentityPortrait equippedItems={miniEquipped} size="sm" />
-                        )}
-                      </td>
-                      <td className="px-3 py-3">
-                        <div className="font-semibold text-white">{item.name}</div>
-                        <div className="text-xs text-slate-500">{item.slug}</div>
-                      </td>
-                      <td className="px-3 py-3">
-                        <span className="inline-flex rounded-md bg-slate-700 px-2 py-1 text-xs font-medium text-slate-200">
-                          {CATEGORY_LABELS[item.category] || item.category}
-                        </span>
-                      </td>
-                      <td className="px-3 py-3 text-xs text-slate-400 font-mono">{isImg ? (m.productType || '—') : variant}</td>
-                      <td className="px-3 py-3">
-                        <span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${RARITY_COLORS[item.rarity] || 'bg-slate-700 text-slate-300'}`}>
-                          {RARITY_LABELS[item.rarity] || item.rarity}
-                        </span>
-                      </td>
-                      <td className="px-3 py-3">
-                        <span className="inline-flex items-center gap-1 font-bold text-amber-400">
-                          <FaCoins className="text-amber-500/70" /> {item.price_coins}
-                        </span>
-                      </td>
-                      <td className="px-3 py-3">
-                        <span className="inline-flex items-center gap-1 text-xs text-slate-400">
-                          {m.unlockType === 'purchase' ? <FaUnlock className="text-emerald-400" /> : <FaLock className="text-slate-500" />}
-                          {unlock}
-                        </span>
-                      </td>
-                      <td className="px-3 py-3"><StatusBadge active={item.is_active} /></td>
-                      <td className="px-3 py-3">
-                        <div className="flex items-center justify-center gap-3">
-                          <button type="button" onClick={() => { setEditItem(item); setIsNew(false); setFormErr(null); }} className="text-blue-400 hover:text-white transition-colors"><FaEdit /></button>
-                          <ToggleButton active={item.is_active} onClick={() => handleToggle(item)} loading={toggling === item.slug} />
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-          <Pagination page={page} totalPages={totalPages} total={total} onPage={setPage} />
+              return (
+                <>
+                  <td className="px-4 py-3 w-16">
+                    {isImg ? (
+                      m.imageUrl
+                        ? <img src={m.imageUrl} alt={item.name} className="h-10 w-10 rounded-lg object-cover border border-slate-700" />
+                        : <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-700 bg-slate-800 text-slate-500"><FaImage /></div>
+                    ) : (
+                      <IdentityPortrait equippedItems={miniEquipped} size="sm" />
+                    )}
+                  </td>
+                  <td className="px-4 py-3">
+                    <div className="font-semibold text-white">{item.name}</div>
+                    <div className="text-xs text-slate-500">{item.slug}</div>
+                  </td>
+                  <td className="px-4 py-3">
+                    <span className="inline-flex rounded-md bg-slate-700 px-2 py-1 text-xs font-medium text-slate-200">
+                      {CATEGORY_LABELS[item.category] || item.category}
+                    </span>
+                  </td>
+                  <td className="px-4 py-3 text-xs text-slate-400 font-mono">{isImg ? (m.productType || '—') : variant}</td>
+                  <td className="px-4 py-3">
+                    <span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${RARITY_COLORS[item.rarity] || 'bg-slate-700 text-slate-300'}`}>
+                      {RARITY_LABELS[item.rarity] || item.rarity}
+                    </span>
+                  </td>
+                  <td className="px-4 py-3">
+                    <span className="inline-flex items-center gap-1 font-bold text-amber-400">
+                      <FaCoins className="text-amber-500/70" /> {item.price_coins}
+                    </span>
+                  </td>
+                  <td className="px-4 py-3">
+                    <span className="inline-flex items-center gap-1 text-xs text-slate-400">
+                      {m.unlockType === 'purchase' ? <FaUnlock className="text-emerald-400" /> : <FaLock className="text-slate-500" />}
+                      {unlock}
+                    </span>
+                  </td>
+                  <td className="px-4 py-3"><StatusBadge tone={item.is_active ? 'success' : 'neutral'}>{item.is_active ? 'Activo' : 'Inactivo'}</StatusBadge></td>
+                  <td className="px-4 py-3">
+                    <div className="flex items-center justify-end gap-3">
+                      <button type="button" onClick={() => { setEditItem(item); setIsNew(false); setFormErr(null); }} className="text-blue-400 hover:text-white transition-colors"><FaEdit /></button>
+                      <ToggleButton active={item.is_active} onClick={() => handleToggle(item)} loading={toggling === item.slug} />
+                    </div>
+                  </td>
+                </>
+              );
+            }}
+            minWidth="900px"
+            page={page}
+            totalPages={totalPages}
+            onPageChange={setPage}
+          />
         </div>
       )}
     </div>
@@ -888,54 +824,54 @@ const AchievementForm = ({ initial, isNew, onSave, onCancel, saving, error: form
     <form id="achievement-form" onSubmit={(e) => { e.preventDefault(); onSave(formToAchievement(form)); }} className="flex flex-col gap-5">
       {isNew && (
         <FormField label="Slug" required hint="Solo letras, números y guión bajo. No se puede cambiar después.">
-          <input className={inputClass} value={form.slug} onChange={set('slug')} placeholder="salto_cinco_cm" required />
+          <Input value={form.slug} onChange={set('slug')} placeholder="salto_cinco_cm" required />
         </FormField>
       )}
       <div className="grid gap-4 sm:grid-cols-2">
         <FormField label="Título" required>
-          <input className={inputClass} value={form.title} onChange={set('title')} placeholder="Primer gran salto" required />
+          <Input value={form.title} onChange={set('title')} placeholder="Primer gran salto" required />
         </FormField>
         <FormField label="Core Driver (Octalysis)" required>
           <div className="relative">
-            <select className={`${selectClass} pr-8`} value={form.core_driver} onChange={set('core_driver')}>
+            <Select className={` pr-8`} value={form.core_driver} onChange={set('core_driver')}>
               {CORE_DRIVERS.map((d) => <option key={d} value={d}>{d}</option>)}
-            </select>
+            </Select>
             <FaChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs" />
           </div>
         </FormField>
       </div>
       <FormField label="Descripción" required>
-        <textarea className={`${inputClass} min-h-[68px] resize-y`} value={form.description} onChange={set('description')} placeholder="Lo que ve el jugador sobre este logro" required />
+        <Textarea className={` min-h-[68px] resize-y`} value={form.description} onChange={set('description')} placeholder="Lo que ve el jugador sobre este logro" required />
       </FormField>
       <div className="grid gap-4 sm:grid-cols-2">
         <FormField label="Recompensa XP" required>
-          <input className={inputClass} type="number" min={0} value={form.xp_reward} onChange={setN('xp_reward')} />
+          <Input type="number" min={0} value={form.xp_reward} onChange={setN('xp_reward')} />
         </FormField>
         <FormField label="Orden">
-          <input className={inputClass} type="number" min={0} value={form.sort_order} onChange={setN('sort_order')} />
+          <Input type="number" min={0} value={form.sort_order} onChange={setN('sort_order')} />
         </FormField>
       </div>
       <SectionDivider label="Criterio de desbloqueo" />
       <FormField label="Tipo de criterio" required>
         <div className="relative">
-          <select className={`${selectClass} pr-8`} value={form.criteriaType} onChange={set('criteriaType')}>
+          <Select className={` pr-8`} value={form.criteriaType} onChange={set('criteriaType')}>
             {CRITERION_TYPES.map(({ value, label }) => <option key={value} value={value}>{label}</option>)}
-          </select>
+          </Select>
           <FaChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs" />
         </div>
       </FormField>
       {form.criteriaType === 'delta' && (
         <FormField label="Métrica de salto" required>
           <div className="relative">
-            <select className={`${selectClass} pr-8`} value={form.criteriaMetric} onChange={set('criteriaMetric')}>
+            <Select className={` pr-8`} value={form.criteriaMetric} onChange={set('criteriaMetric')}>
               {JUMP_METRICS.map(({ value, label }) => <option key={value} value={value}>{label}</option>)}
-            </select>
+            </Select>
             <FaChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs" />
           </div>
         </FormField>
       )}
       <FormField label={form.criteriaType === 'delta' ? 'Mejora mínima (cm)' : form.criteriaType === 'strength_delta' ? 'Mejora mínima (reps)' : 'Valor mínimo'} required>
-        <input className={inputClass} type="number" min={0} step="0.1" value={form.criteriaMin} onChange={setN('criteriaMin')} required />
+        <Input type="number" min={0} step="0.1" value={form.criteriaMin} onChange={setN('criteriaMin')} required />
       </FormField>
       <div className="flex items-center gap-3">
         <ToggleButton active={form.is_active} onClick={setB('is_active')} />
@@ -971,7 +907,7 @@ const AchievementsTab = () => {
   useEffect(() => { load(); }, [load]);
 
   const filtered = all.filter((i) => !search || i.title.toLowerCase().includes(search.toLowerCase()) || i.slug.includes(search.toLowerCase()));
-  const { pageItems, page, totalPages, setPage, total } = usePagination(filtered);
+  const { pageItems, page, totalPages, setPage } = usePagination(filtered);
 
   const handleSave = async (item) => {
     setSaving(true); setFormErr(null);
@@ -996,7 +932,7 @@ const AchievementsTab = () => {
   return (
     <div className="space-y-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <input className={`${inputClass} max-w-[240px]`} placeholder="Buscar logros..." value={search} onChange={(e) => setSearch(e.target.value)} />
+        <Input className="max-w-[240px]" placeholder="Buscar logros..." value={search} onChange={(e) => setSearch(e.target.value)} />
         <Button onClick={() => { setEditItem({ ...ACHIEVEMENT_EMPTY }); setIsNew(true); setFormErr(null); }} size="sm">
           <FaPlus className="mr-2" /> Nuevo logro
         </Button>
@@ -1010,56 +946,62 @@ const AchievementsTab = () => {
       {loading ? (
         <div className="flex min-h-[140px] items-center justify-center text-slate-500 text-sm">Cargando...</div>
       ) : filtered.length === 0 ? (
-        <div className="flex min-h-[140px] items-center justify-center text-slate-500 text-sm">{search ? 'Sin resultados' : 'No hay logros'}</div>
+        <EmptyState
+          icon={<FaTrophy />}
+          title={search ? "Sin resultados" : "No hay logros"}
+          description={search ? "Intenta cambiar los filtros de búsqueda" : "No hay logros registrados"}
+        />
       ) : (
-        <div className="rounded-xl border border-slate-700/60 bg-slate-900 shadow-sm">
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[600px] text-sm">
-              <thead className="border-b border-slate-700/60 bg-slate-800/80">
-                <tr>
-                  {['Título', 'Core Driver', 'Criterio', 'XP', 'Estado', ''].map((h, i) => (
-                    <th key={i} className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wide text-slate-400 last:text-center">{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-700/40">
-                {pageItems.map((item) => {
-                  const c = item.criteria || {};
-                  const criteriaLabel =
-                    c.type === 'tests_count'    ? `${c.min} test(s)` :
-                    c.type === 'delta'          ? `+${c.min} cm` :
-                    c.type === 'monthly_streak' ? `${c.min} mes(es)` :
-                    c.type === 'strength_delta' ? `+${c.min} reps` :
-                    `${c.type}: ${c.min}`;
-                  return (
-                    <tr key={item.slug} className="hover:bg-slate-800/40 transition-colors">
-                      <td className="px-4 py-3">
-                        <div className="font-semibold text-white">{item.title}</div>
-                        <div className="text-xs text-slate-500">{item.slug}</div>
-                      </td>
-                      <td className="px-4 py-3 max-w-[180px]">
-                        <span className="text-xs text-slate-400 line-clamp-2">{item.core_driver}</span>
-                      </td>
-                      <td className="px-4 py-3 text-xs text-slate-400 font-mono">{criteriaLabel}</td>
-                      <td className="px-4 py-3">
-                        <span className="inline-flex items-center gap-1 font-bold text-indigo-300">
-                          <FaStar className="text-indigo-400/70" /> {item.xp_reward}
-                        </span>
-                      </td>
-                      <td className="px-4 py-3"><StatusBadge active={item.is_active} /></td>
-                      <td className="px-4 py-3">
-                        <div className="flex items-center justify-center gap-3">
-                          <button type="button" onClick={() => { setEditItem(item); setIsNew(false); setFormErr(null); }} className="text-blue-400 hover:text-white transition-colors"><FaEdit /></button>
-                          <ToggleButton active={item.is_active} onClick={() => handleToggle(item)} loading={toggling === item.slug} />
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-          <Pagination page={page} totalPages={totalPages} total={total} onPage={setPage} />
+        <div className="rounded-xl border border-slate-700/60 bg-slate-900 shadow-sm overflow-hidden">
+          <DataTable
+            columns={[
+              { key: 'title', label: 'Título' },
+              { key: 'coreDriver', label: 'Core Driver' },
+              { key: 'criteria', label: 'Criterio' },
+              { key: 'xp', label: 'XP' },
+              { key: 'status', label: 'Estado' },
+              { key: 'actions', label: '' },
+            ]}
+            rows={pageItems}
+            keyExtractor={(item) => item.slug}
+            renderRow={(item) => {
+              const c = item.criteria || {};
+              const criteriaLabel =
+                c.type === 'tests_count'    ? `${c.min} test(s)` :
+                c.type === 'delta'          ? `+${c.min} cm` :
+                c.type === 'monthly_streak' ? `${c.min} mes(es)` :
+                c.type === 'strength_delta' ? `+${c.min} reps` :
+                `${c.type}: ${c.min}`;
+              return (
+                <>
+                  <td className="px-4 py-3">
+                    <div className="font-semibold text-white">{item.title}</div>
+                    <div className="text-xs text-slate-500">{item.slug}</div>
+                  </td>
+                  <td className="px-4 py-3 max-w-[180px]">
+                    <span className="text-xs text-slate-400 line-clamp-2">{item.core_driver}</span>
+                  </td>
+                  <td className="px-4 py-3 text-xs text-slate-400 font-mono">{criteriaLabel}</td>
+                  <td className="px-4 py-3">
+                    <span className="inline-flex items-center gap-1 font-bold text-indigo-300">
+                      <FaStar className="text-indigo-400/70" /> {item.xp_reward}
+                    </span>
+                  </td>
+                  <td className="px-4 py-3"><StatusBadge tone={item.is_active ? 'success' : 'neutral'}>{item.is_active ? 'Activo' : 'Inactivo'}</StatusBadge></td>
+                  <td className="px-4 py-3">
+                    <div className="flex items-center justify-end gap-3">
+                      <button type="button" onClick={() => { setEditItem(item); setIsNew(false); setFormErr(null); }} className="text-blue-400 hover:text-white transition-colors"><FaEdit /></button>
+                      <ToggleButton active={item.is_active} onClick={() => handleToggle(item)} loading={toggling === item.slug} />
+                    </div>
+                  </td>
+                </>
+              );
+            }}
+            minWidth="700px"
+            page={page}
+            totalPages={totalPages}
+            onPageChange={setPage}
+          />
         </div>
       )}
     </div>
@@ -1084,47 +1026,47 @@ const GoalForm = ({ initial, isNew, onSave, onCancel, saving, error: formError }
     <form id="goal-form" onSubmit={(e) => { e.preventDefault(); onSave({ ...form, start_date: form.start_date || null, end_date: form.end_date || null }); }} className="flex flex-col gap-5">
       {isNew && (
         <FormField label="Slug" required hint="Solo letras, números y guión bajo.">
-          <input className={inputClass} value={form.slug} onChange={set('slug')} placeholder="salto_mayo" required />
+          <Input value={form.slug} onChange={set('slug')} placeholder="salto_mayo" required />
         </FormField>
       )}
       <div className="grid gap-4 sm:grid-cols-2">
         <FormField label="Título" required>
-          <input className={inputClass} value={form.title} onChange={set('title')} placeholder="Meta del mes" required />
+          <Input value={form.title} onChange={set('title')} placeholder="Meta del mes" required />
         </FormField>
         <FormField label="Core Driver (Octalysis)" required>
           <div className="relative">
-            <select className={`${selectClass} pr-8`} value={form.core_driver} onChange={set('core_driver')}>
+            <Select className={` pr-8`} value={form.core_driver} onChange={set('core_driver')}>
               {CORE_DRIVERS.map((d) => <option key={d} value={d}>{d}</option>)}
-            </select>
+            </Select>
             <FaChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs" />
           </div>
         </FormField>
       </div>
       <FormField label="Descripción" required>
-        <textarea className={`${inputClass} min-h-[68px] resize-y`} value={form.description} onChange={set('description')} placeholder="Lo que ve el jugador" required />
+        <Textarea className={` min-h-[68px] resize-y`} value={form.description} onChange={set('description')} placeholder="Lo que ve el jugador" required />
       </FormField>
       <div className="grid gap-4 sm:grid-cols-3">
         <FormField label="Métrica objetivo" required hint="Ej: monthly_tests">
-          <input className={inputClass} value={form.target_metric} onChange={set('target_metric')} placeholder="monthly_tests" required />
+          <Input value={form.target_metric} onChange={set('target_metric')} placeholder="monthly_tests" required />
         </FormField>
         <FormField label="Valor objetivo" required>
-          <input className={inputClass} type="number" min={0} step="0.01" value={form.target_value} onChange={setN('target_value')} />
+          <Input type="number" min={0} step="0.01" value={form.target_value} onChange={setN('target_value')} />
         </FormField>
         <FormField label="Ventana" required>
           <div className="relative">
-            <select className={`${selectClass} pr-8`} value={form.window_type} onChange={set('window_type')}>
+            <Select className={` pr-8`} value={form.window_type} onChange={set('window_type')}>
               {Object.entries(WINDOW_LABELS).map(([v, l]) => <option key={v} value={v}>{l}</option>)}
-            </select>
+            </Select>
             <FaChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs" />
           </div>
         </FormField>
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <FormField label="Fecha inicio (opcional)">
-          <input className={inputClass} type="date" value={form.start_date || ''} onChange={set('start_date')} />
+          <Input type="date" value={form.start_date || ''} onChange={set('start_date')} />
         </FormField>
         <FormField label="Fecha fin (opcional)">
-          <input className={inputClass} type="date" value={form.end_date || ''} onChange={set('end_date')} />
+          <Input type="date" value={form.end_date || ''} onChange={set('end_date')} />
         </FormField>
       </div>
       <div className="flex items-center gap-3">
@@ -1161,7 +1103,7 @@ const GoalsTab = () => {
   useEffect(() => { load(); }, [load]);
 
   const filtered = all.filter((i) => !search || i.title.toLowerCase().includes(search.toLowerCase()) || i.slug.includes(search.toLowerCase()));
-  const { pageItems, page, totalPages, setPage, total } = usePagination(filtered);
+  const { pageItems, page, totalPages, setPage } = usePagination(filtered);
 
   const handleSave = async (item) => {
     setSaving(true); setFormErr(null);
@@ -1186,7 +1128,7 @@ const GoalsTab = () => {
   return (
     <div className="space-y-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <input className={`${inputClass} max-w-[240px]`} placeholder="Buscar metas..." value={search} onChange={(e) => setSearch(e.target.value)} />
+        <Input className="max-w-[240px]" placeholder="Buscar metas..." value={search} onChange={(e) => setSearch(e.target.value)} />
         <Button onClick={() => { setEditItem({ ...GOAL_EMPTY }); setIsNew(true); setFormErr(null); }} size="sm">
           <FaPlus className="mr-2" /> Nueva meta
         </Button>
@@ -1200,52 +1142,59 @@ const GoalsTab = () => {
       {loading ? (
         <div className="flex min-h-[140px] items-center justify-center text-slate-500 text-sm">Cargando...</div>
       ) : filtered.length === 0 ? (
-        <div className="flex min-h-[140px] items-center justify-center text-slate-500 text-sm">{search ? 'Sin resultados' : 'No hay metas'}</div>
+        <EmptyState
+          icon={<FaBullseye />}
+          title={search ? "Sin resultados" : "No hay metas"}
+          description={search ? "Intenta cambiar los filtros de búsqueda" : "No hay metas registradas"}
+        />
       ) : (
-        <div className="rounded-xl border border-slate-700/60 bg-slate-900 shadow-sm">
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[600px] text-sm">
-              <thead className="border-b border-slate-700/60 bg-slate-800/80">
-                <tr>
-                  {['Título', 'Core Driver', 'Métrica', 'Valor', 'Ventana', 'Estado', ''].map((h, i) => (
-                    <th key={i} className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wide text-slate-400 last:text-center">{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-700/40">
-                {pageItems.map((item) => (
-                  <tr key={item.slug} className="hover:bg-slate-800/40 transition-colors">
-                    <td className="px-4 py-3">
-                      <div className="font-semibold text-white">{item.title}</div>
-                      <div className="text-xs text-slate-500">{item.slug}</div>
-                    </td>
-                    <td className="px-4 py-3 max-w-[160px]">
-                      <span className="text-xs text-slate-400 line-clamp-2">{item.core_driver}</span>
-                    </td>
-                    <td className="px-4 py-3 text-xs text-slate-400 font-mono">{item.target_metric}</td>
-                    <td className="px-4 py-3">
-                      <span className="inline-flex items-center gap-1 font-bold text-orange-300">
-                        <FaFire className="text-orange-400/70" /> {item.target_value}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3">
-                      <span className="inline-flex rounded-md bg-slate-700 px-2 py-1 text-xs font-medium text-slate-200">
-                        {WINDOW_LABELS[item.window_type] || item.window_type}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3"><StatusBadge active={item.is_active} /></td>
-                    <td className="px-4 py-3">
-                      <div className="flex items-center justify-center gap-3">
-                        <button type="button" onClick={() => { setEditItem(item); setIsNew(false); setFormErr(null); }} className="text-blue-400 hover:text-white transition-colors"><FaEdit /></button>
-                        <ToggleButton active={item.is_active} onClick={() => handleToggle(item)} loading={toggling === item.slug} />
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <Pagination page={page} totalPages={totalPages} total={total} onPage={setPage} />
+        <div className="rounded-xl border border-slate-700/60 bg-slate-900 shadow-sm overflow-hidden">
+          <DataTable
+            columns={[
+              { key: 'title', label: 'Título' },
+              { key: 'coreDriver', label: 'Core Driver' },
+              { key: 'metric', label: 'Métrica' },
+              { key: 'value', label: 'Valor' },
+              { key: 'window', label: 'Ventana' },
+              { key: 'status', label: 'Estado' },
+              { key: 'actions', label: '' },
+            ]}
+            rows={pageItems}
+            keyExtractor={(item) => item.slug}
+            renderRow={(item) => (
+              <>
+                <td className="px-4 py-3">
+                  <div className="font-semibold text-white">{item.title}</div>
+                  <div className="text-xs text-slate-500">{item.slug}</div>
+                </td>
+                <td className="px-4 py-3 max-w-[160px]">
+                  <span className="text-xs text-slate-400 line-clamp-2">{item.core_driver}</span>
+                </td>
+                <td className="px-4 py-3 text-xs text-slate-400 font-mono">{item.target_metric}</td>
+                <td className="px-4 py-3">
+                  <span className="inline-flex items-center gap-1 font-bold text-orange-300">
+                    <FaFire className="text-orange-400/70" /> {item.target_value}
+                  </span>
+                </td>
+                <td className="px-4 py-3">
+                  <span className="inline-flex rounded-md bg-slate-700 px-2 py-1 text-xs font-medium text-slate-200">
+                    {WINDOW_LABELS[item.window_type] || item.window_type}
+                  </span>
+                </td>
+                <td className="px-4 py-3"><StatusBadge tone={item.is_active ? 'success' : 'neutral'}>{item.is_active ? 'Activo' : 'Inactivo'}</StatusBadge></td>
+                <td className="px-4 py-3">
+                  <div className="flex items-center justify-end gap-3">
+                    <button type="button" onClick={() => { setEditItem(item); setIsNew(false); setFormErr(null); }} className="text-blue-400 hover:text-white transition-colors"><FaEdit /></button>
+                    <ToggleButton active={item.is_active} onClick={() => handleToggle(item)} loading={toggling === item.slug} />
+                  </div>
+                </td>
+              </>
+            )}
+            minWidth="750px"
+            page={page}
+            totalPages={totalPages}
+            onPageChange={setPage}
+          />
         </div>
       )}
     </div>
@@ -1255,9 +1204,9 @@ const GoalsTab = () => {
 // ── Main Panel ──────────────────────────────────────────────────────────────
 
 const TABS = [
-  { id: 'cosmeticos', label: 'Tienda',  icon: <FaStore /> },
-  { id: 'logros',     label: 'Logros',  icon: <FaTrophy /> },
-  { id: 'metas',      label: 'Metas',   icon: <FaBullseye /> },
+  { id: 'cosmeticos', label: 'Tienda',  icon: FaStore },
+  { id: 'logros',     label: 'Logros',  icon: FaTrophy },
+  { id: 'metas',      label: 'Metas',   icon: FaBullseye },
 ];
 
 const GamificationAdminPanel = () => {
@@ -1271,23 +1220,7 @@ const GamificationAdminPanel = () => {
         icon={<FaTrophy />}
       />
 
-      <div className="flex overflow-x-auto rounded-xl border border-slate-700/60 bg-slate-800/50">
-        {TABS.map((tab) => (
-          <button
-            key={tab.id}
-            type="button"
-            onClick={() => setActiveTab(tab.id)}
-            className={`flex shrink-0 items-center gap-2 border-b-2 px-5 py-3 text-sm font-semibold transition-colors ${
-              activeTab === tab.id
-                ? 'border-amber-500 text-amber-300'
-                : 'border-transparent text-slate-400 hover:border-slate-600 hover:text-slate-200'
-            }`}
-          >
-            {tab.icon}
-            {tab.label}
-          </button>
-        ))}
-      </div>
+      <TabNav items={TABS} activeId={activeTab} onChange={setActiveTab} />
 
       <div>
         {activeTab === 'cosmeticos' && <CosmeticsTab />}

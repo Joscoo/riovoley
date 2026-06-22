@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { attendanceService } from '../../attendanceService';
 import { reportingService } from '../../../reporting';
-import { Button, Card, Field, SortableHeader, SectionHeader, EmptyState, Modal } from '../../../../shared/ui';
+import { Button, Card, Field, SortableHeader, SectionHeader, EmptyState, Modal, KpiTile, LoadingSpinner, TabNav } from '../../../../shared/ui';
 import {
   SORT_DIRECTION,
   createTableQuery,
@@ -232,10 +232,10 @@ const AsistenciasManager = ({ user }) => {
 
   // Categorías agrupadas para los tabs
   const categoriasAgrupadas = [
-    { id: 'all', nombre: 'Todas', icono: <FaUsers /> },
-    { id: 'iniciacion', nombre: 'Iniciación', icono: <FaVolleyballBall /> },
-    { id: 'perfeccionamiento', nombre: 'Perfeccionamiento', icono: <FaTrophy /> },
-    { id: 'master', nombre: 'Master', icono: <FaMedal /> }
+    { id: 'all', nombre: 'Todas', icono: FaUsers },
+    { id: 'iniciacion', nombre: 'Iniciación', icono: FaVolleyballBall },
+    { id: 'perfeccionamiento', nombre: 'Perfeccionamiento', icono: FaTrophy },
+    { id: 'master', nombre: 'Master', icono: FaMedal }
   ];
 
   const showNotice = (type, text) => {
@@ -900,42 +900,10 @@ const AsistenciasManager = ({ user }) => {
 
       {/* Estadisticas por Categoria */}
       <div className="grid gap-4 mobile:grid-cols-2 desktop:grid-cols-4">
-        <Card className="border-l-4 border-l-[#355FB3]">
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Total Registros</h3>
-              <p className="mt-1 text-3xl font-black text-white">{stats.total}</p>
-            </div>
-            <div className="text-3xl text-sky-300"><FaChartBar /></div>
-          </div>
-        </Card>
-        <Card className="border-l-4 border-l-emerald-500">
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Presentes</h3>
-              <p className="mt-1 text-3xl font-black text-white">{stats.presentes}</p>
-            </div>
-            <div className="text-3xl text-emerald-400"><FaCheckCircle /></div>
-          </div>
-        </Card>
-        <Card className="border-l-4 border-l-red-500">
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Ausentes</h3>
-              <p className="mt-1 text-3xl font-black text-white">{stats.ausentes}</p>
-            </div>
-            <div className="text-3xl text-red-400"><FaTimesCircle /></div>
-          </div>
-        </Card>
-        <Card className="border-l-4 border-l-rv-gold">
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Asistencia Promedio</h3>
-              <p className="mt-1 text-3xl font-black text-white">{stats.porcentajeAsistencia}%</p>
-            </div>
-            <div className="text-3xl text-rv-gold"><FaChartLine /></div>
-          </div>
-        </Card>
+        <KpiTile label="Total Registros" value={stats.total} icon={<FaChartBar />} accent="sky" className="h-full" />
+        <KpiTile label="Presentes" value={stats.presentes} icon={<FaCheckCircle />} accent="emerald" className="h-full" />
+        <KpiTile label="Ausentes" value={stats.ausentes} icon={<FaTimesCircle />} accent="rose" className="h-full" />
+        <KpiTile label="Asistencia Promedio" value={`${stats.porcentajeAsistencia}%`} icon={<FaChartLine />} accent="gold" className="h-full" />
       </div>
 
       {bulkMode ? (
@@ -986,30 +954,23 @@ const AsistenciasManager = ({ user }) => {
 
           {/* Registro por Categorías */}
           <div className={styles.categorySections}>
-            {/* Tabs de Categorías */}
-            <div className={styles.categoryTabs}>
-              {categoriasAgrupadas.map(cat => {
-                const categoryStats = getCategoryStats();
+            <TabNav
+              items={categoriasAgrupadas.map(cat => {
                 const isActive = selectedCategory === cat.id;
-                
-                return (
-                  <button
-                    key={cat.id}
-                    onClick={() => setSelectedCategory(cat.id)}
-                    className={`${styles.tabButton} ${isActive ? styles.tabActive : ''}`}
-                    aria-label={`Seleccionar categoría ${cat.nombre}`}
-                  >
-                    <span className={styles.tabIcon}>{cat.icono}</span>
-                    <span className={styles.tabName}>{cat.nombre}</span>
-                    {isActive && (
-                      <span className={styles.tabCount}>
-                        {categoryStats.presentes}/{categoryStats.total}
-                      </span>
-                    )}
-                  </button>
-                );
+                let label = cat.nombre;
+                if (isActive) {
+                  const categoryStats = getCategoryStats();
+                  label = `${cat.nombre} (${categoryStats.presentes}/${categoryStats.total})`;
+                }
+                return {
+                  id: cat.id,
+                  label,
+                  icon: cat.icono
+                };
               })}
-            </div>
+              activeId={selectedCategory}
+              onChange={setSelectedCategory}
+            />
           {/* Estadisticas por Categoria */}
             <div className={styles.categoryStatsBar}>
               {(() => {
@@ -1366,9 +1327,8 @@ const AsistenciasManager = ({ user }) => {
 
           {/* Lista de Asistencias Agrupadas por Día */}
           {loading ? (
-            <div className={styles.loading}>
-              <div className={styles.spinner}></div>
-              <p>Cargando asistencias...</p>
+            <div className="flex min-h-[40dvh] items-center justify-center">
+              <LoadingSpinner message="Cargando asistencias..." />
             </div>
           ) : (
             <div className={styles.attendanceTable} data-testid="attendance-history-table">

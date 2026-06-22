@@ -5,10 +5,7 @@ import {
   FaDownload,
   FaExclamationTriangle,
   FaFileAlt,
-  FaFileCsv,
   FaFilePdf,
-  FaFileExcel,
-  FaPrint,
   FaUsers,
   FaTrash,
 } from 'react-icons/fa';
@@ -17,7 +14,19 @@ import autoTable from 'jspdf-autotable';
 import { adminDashboardService } from '../../adminDashboardService';
 import { reportingService } from '../../../reporting';
 import { userManagementService } from '../../../user-management';
-import { Button, Card, EmptyState, Input, SectionHeader, Select } from '../../../../shared/ui';
+import {
+  Button,
+  Card,
+  DataTable,
+  EmptyState,
+  ExportButtonGroup,
+  Input,
+  KpiTile,
+  LoadingSpinner,
+  SectionHeader,
+  Select,
+  TabNav,
+} from '../../../../shared/ui';
 import { cn } from '../../../../lib/cn';
 
 const RUNS_PAGE_SIZE = 8;
@@ -42,14 +51,11 @@ const currencyFormatter = new Intl.NumberFormat('en-US', {
 });
 
 const formatCurrency = (value) => currencyFormatter.format(Number(value || 0));
-const surfaceCardClass = 'rounded-[30px] border border-white/12 bg-[linear-gradient(180deg,rgba(15,23,42,0.9),rgba(2,6,23,0.94))] p-5 shadow-[0_18px_50px_rgba(2,6,23,0.24)] backdrop-blur-md';
-const heroCardClass = 'overflow-hidden rounded-[34px] border border-white/14 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.2),transparent_28%),radial-gradient(circle_at_top_right,rgba(251,191,36,0.12),transparent_22%),linear-gradient(180deg,rgba(15,23,42,0.98),rgba(2,6,23,0.985))] p-6 shadow-[0_28px_90px_rgba(2,6,23,0.48)] backdrop-blur-md';
-const statTileClass = 'rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]';
+
+// ── Surface style constants ───────────────────────────────────────────────
 const actionGroupClass = 'rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.52),rgba(2,6,23,0.9))] p-4';
 const sectionLeadClass = 'mb-4 rounded-2xl border border-rv-gold/15 bg-[linear-gradient(135deg,rgba(249,178,51,0.08),rgba(15,23,42,0.12)_58%,rgba(46,49,146,0.18))] px-4 py-3 text-sm text-slate-200';
-const tableWrapperClass = 'overflow-x-auto rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01))]';
-const tableHeadRowClass = 'border-b border-white/10 bg-white/[0.04] text-left text-[11px] uppercase tracking-[0.16em] text-slate-400';
-const kpiTileClass = 'rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.015))] px-4 py-3';
+
 const REPORTS_TABS = [
   { id: 'operacion', label: 'Operacion', helper: 'PDF rapido, persistencia y exportes inmediatos', icon: FaDownload },
   { id: 'finanzas', label: 'Finanzas', helper: 'Resumen, tendencia, riesgo y cartera vencida', icon: FaChartLine },
@@ -57,6 +63,7 @@ const REPORTS_TABS = [
   { id: 'historial', label: 'Historial', helper: 'Reportes persistidos y trazabilidad', icon: FaCalendarAlt },
 ];
 
+// ── Utility helpers ───────────────────────────────────────────────────────
 const downloadTextFile = ({ content, fileName, mimeType = 'text/plain;charset=utf-8;' }) => {
   const blob = new Blob([content], { type: mimeType });
   const url = URL.createObjectURL(blob);
@@ -138,26 +145,7 @@ const paginateItems = (items, page, pageSize = RUNS_PAGE_SIZE) => {
   };
 };
 
-const PaginationControls = ({ page, totalPages, onPageChange }) => {
-  if (totalPages <= 1) return null;
-
-  return (
-    <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/10 bg-black/20 px-4 py-3">
-      <span className="text-sm text-slate-300">
-        Pagina <strong className="text-white">{page}</strong> de <strong className="text-white">{totalPages}</strong>
-      </span>
-      <div className="flex items-center gap-2">
-        <Button variant="secondary" size="sm" disabled={page <= 1} onClick={() => onPageChange(page - 1)}>
-          Anterior
-        </Button>
-        <Button variant="secondary" size="sm" disabled={page >= totalPages} onClick={() => onPageChange(page + 1)}>
-          Siguiente
-        </Button>
-      </div>
-    </div>
-  );
-};
-
+// ── Sub-components ────────────────────────────────────────────────────────
 const PanelHeader = ({ title, subtitle, icon, badge }) => (
   <div className="mb-5 flex items-start justify-between gap-3 border-b border-white/10 pb-4">
     <div>
@@ -175,6 +163,7 @@ const PanelHeader = ({ title, subtitle, icon, badge }) => (
   </div>
 );
 
+// ── Main component ────────────────────────────────────────────────────────
 const ReportsCenter = () => {
   const today = new Date().toISOString().slice(0, 10);
   const [attendanceDate, setAttendanceDate] = useState(today);
@@ -207,6 +196,7 @@ const ReportsCenter = () => {
     status: '',
   });
 
+  // ── Data loading ──────────────────────────────────────────────────────
   const loadAttendanceRuns = useCallback(async () => {
     try {
       setLoadingAttendanceReports(true);
@@ -273,6 +263,7 @@ const ReportsCenter = () => {
     setRunsPage(1);
   }, [attendanceRuns]);
 
+  // ── Memoized data ─────────────────────────────────────────────────────
   const paginatedRuns = useMemo(
     () => paginateItems(attendanceRuns, runsPage, RUNS_PAGE_SIZE),
     [attendanceRuns, runsPage]
@@ -403,8 +394,10 @@ const ReportsCenter = () => {
     loadingFinancialData,
     loadingStudents,
   ]);
+
   const activeReportsTab = REPORTS_TABS.find((tab) => tab.id === selectedReportsTab) || REPORTS_TABS[0];
 
+  // ── Export handlers ───────────────────────────────────────────────────
   const exportFinancialSummaryCsv = () => {
     const csv = buildCsv(
       ['Indicador', 'Valor'],
@@ -721,6 +714,7 @@ const ReportsCenter = () => {
     }
   };
 
+  // ── Report actions ────────────────────────────────────────────────────
   const handleGenerateAttendanceReport = async () => {
     try {
       setGeneratingAttendance(true);
@@ -766,6 +760,7 @@ const ReportsCenter = () => {
     }
   };
 
+  // ── Render ────────────────────────────────────────────────────────────
   return (
     <div className="mx-auto w-full max-w-7xl space-y-6">
       <SectionHeader
@@ -774,7 +769,8 @@ const ReportsCenter = () => {
         icon={<FaFileAlt />}
       />
 
-      <Card className={heroCardClass}>
+      {/* ── Hero Card ───────────────────────────────────────────────────── */}
+      <Card>
         <div className="grid gap-5 desktop:grid-cols-[1.15fr_0.85fr] desktop:items-end">
           <div className="space-y-4">
             <div className="inline-flex w-fit items-center gap-2 rounded-full border border-sky-400/20 bg-sky-400/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-sky-100">
@@ -791,11 +787,13 @@ const ReportsCenter = () => {
             </div>
             <div className="grid gap-3 mobile:grid-cols-3">
               {heroStats.map((item) => (
-                <div key={item.label} className={statTileClass}>
-                  <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">{item.label}</p>
-                  <p className="mt-2 text-2xl font-black text-white">{item.value}</p>
-                  <p className="mt-1 text-xs text-slate-400">{item.detail}</p>
-                </div>
+                <KpiTile
+                  key={item.label}
+                  label={item.label}
+                  value={item.value}
+                  detail={item.detail}
+                  accent="slate"
+                />
               ))}
             </div>
           </div>
@@ -817,36 +815,22 @@ const ReportsCenter = () => {
         </div>
       </Card>
 
-      <div className="grid gap-3 mobile:grid-cols-2 desktop:grid-cols-4">
-        {REPORTS_TABS.map((tab) => (
-          <button
-            key={tab.id}
-            type="button"
-            onClick={() => setSelectedReportsTab(tab.id)}
-            className={cn(
-              'rounded-[26px] border px-4 py-4 text-left transition',
-              selectedReportsTab === tab.id
-                ? 'border-rv-gold/40 bg-[linear-gradient(135deg,rgba(249,178,51,0.14),rgba(46,49,146,0.12)_60%,rgba(15,23,42,0.36))] shadow-[0_18px_50px_rgba(2,6,23,0.24)]'
-                : 'border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] hover:border-rv-gold/20 hover:bg-white/[0.04]'
-            )}
-          >
-            <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] text-lg text-rv-gold">
-              <tab.icon />
-            </div>
-            <p className="mt-3 text-base font-black text-white">{tab.label}</p>
-            <p className="mt-2 text-sm leading-6 text-slate-300">{tab.helper}</p>
-          </button>
-        ))}
-      </div>
+      {/* ── Tab Navigation ──────────────────────────────────────────────── */}
+      <TabNav
+        items={REPORTS_TABS}
+        activeId={selectedReportsTab}
+        onChange={setSelectedReportsTab}
+      />
 
       <div className="rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.035),rgba(255,255,255,0.015))] px-4 py-3 text-sm text-slate-200">
         <span className="font-black text-white">{activeReportsTab.label}</span>
         <span className="ml-2">{activeReportsTab.helper}.</span>
       </div>
 
+      {/* ── Tab: Operacion ──────────────────────────────────────────────── */}
       {selectedReportsTab === 'operacion' ? (
       <div className="grid gap-4 desktop:grid-cols-2">
-        <Card className={surfaceCardClass}>
+        <Card>
           <PanelHeader
             title="Reporte PDF de Asistencia"
             subtitle="Genera o reutiliza el PDF persistido de asistencia diaria."
@@ -870,7 +854,7 @@ const ReportsCenter = () => {
           </div>
         </Card>
 
-        <Card className={surfaceCardClass}>
+        <Card>
           <PanelHeader
             title="Reportes Persistidos del Sistema"
             subtitle="Genera snapshots PDF persistidos de asistencia, finanzas y padron de estudiantes."
@@ -946,8 +930,9 @@ const ReportsCenter = () => {
       </div>
       ) : null}
 
+      {/* ── Tab: Padron ─────────────────────────────────────────────────── */}
       {selectedReportsTab === 'padron' ? (
-      <Card className={surfaceCardClass}>
+      <Card>
         <PanelHeader
           title="Exportacion de Estudiantes"
           subtitle="Descarga listados de estudiantes para necesidades administrativas y academicas de la escuela."
@@ -986,22 +971,13 @@ const ReportsCenter = () => {
         </div>
 
         <div className="mb-4 grid gap-3 mobile:grid-cols-3">
-          <div className={kpiTileClass}>
-            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Total estudiantes</p>
-            <p className="mt-2 text-2xl font-black text-white">{loadingStudents ? '...' : students.length}</p>
-          </div>
-          <div className={kpiTileClass}>
-            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Filtrados</p>
-            <p className="mt-2 text-2xl font-black text-white">{loadingStudents ? '...' : filteredStudents.length}</p>
-          </div>
-          <div className={kpiTileClass}>
-            <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Categorias activas</p>
-            <p className="mt-2 text-2xl font-black text-white">{studentCategoryOptions.length}</p>
-          </div>
+          <KpiTile label="Total estudiantes" value={loadingStudents ? '...' : students.length} accent="slate" />
+          <KpiTile label="Filtrados" value={loadingStudents ? '...' : filteredStudents.length} accent="slate" />
+          <KpiTile label="Categorias activas" value={studentCategoryOptions.length} accent="slate" />
         </div>
 
         {loadingStudents ? (
-          <p className="py-10 text-center text-sm text-slate-300">Cargando estudiantes...</p>
+          <LoadingSpinner message="Cargando estudiantes..." />
         ) : filteredStudents.length === 0 ? (
           <EmptyState
             icon={<FaUsers />}
@@ -1010,57 +986,53 @@ const ReportsCenter = () => {
           />
         ) : (
           <>
-            <div className="grid gap-2 mobile:grid-cols-3">
-              <Button variant="secondary" className="justify-start" onClick={exportStudentsPdf} disabled={studentExporting}>
-                <FaFilePdf className="mr-2" /> Estudiantes PDF
-              </Button>
-              <Button variant="secondary" className="justify-start" onClick={exportStudentsCsv} disabled={studentExporting}>
-                <FaFileCsv className="mr-2" /> Estudiantes CSV
-              </Button>
-              <Button variant="secondary" className="justify-start" onClick={exportStudentsExcel} disabled={studentExporting}>
-                <FaFileExcel className="mr-2" /> Estudiantes Excel
-              </Button>
-            </div>
-
-            <div className={cn('mt-4', tableWrapperClass)}>
-              <table className="w-full min-w-[920px] border-collapse text-sm">
-                <thead>
-                  <tr className={tableHeadRowClass}>
-                    <th className="px-4 py-4">Nombre</th>
-                    <th className="px-4 py-4">Email</th>
-                    <th className="px-4 py-4">Telefono</th>
-                    <th className="px-4 py-4">Categoria</th>
-                    <th className="px-4 py-4">Ingreso</th>
-                    <th className="px-4 py-4">Estado</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {paginatedStudents.items.map((student, index) => (
-                    <tr key={student.id} className={`border-b border-white/10 text-white ${index % 2 === 0 ? 'bg-white/[0.015]' : ''}`}>
-                      <td className="px-4 py-4 font-semibold">{student.full_name || `${student.nombre || ''} ${student.apellido || ''}`.trim()}</td>
-                      <td className="px-4 py-4 text-slate-300">{student.email || '--'}</td>
-                      <td className="px-4 py-4 text-slate-300">{student.telefono || '--'}</td>
-                      <td className="px-4 py-4 text-slate-300">{CATEGORY_LABELS[student.categoria] || student.categoria || '--'}</td>
-                      <td className="px-4 py-4 text-slate-300">{student.fecha_ingreso || '--'}</td>
-                      <td className="px-4 py-4 text-slate-200">{student.suspended ? 'Suspendido' : 'Activo'}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <PaginationControls
-              page={paginatedStudents.page}
-              totalPages={paginatedStudents.totalPages}
-              onPageChange={setStudentPage}
+            <ExportButtonGroup
+              columns={3}
+              disabled={studentExporting}
+              items={[
+                { label: 'Estudiantes PDF', format: 'pdf', onClick: exportStudentsPdf },
+                { label: 'Estudiantes CSV', format: 'csv', onClick: exportStudentsCsv },
+                { label: 'Estudiantes Excel', format: 'excel', onClick: exportStudentsExcel },
+              ]}
             />
+
+            <div className="mt-4">
+              <DataTable
+                columns={[
+                  { key: 'nombre', label: 'Nombre' },
+                  { key: 'email', label: 'Email' },
+                  { key: 'telefono', label: 'Telefono' },
+                  { key: 'categoria', label: 'Categoria' },
+                  { key: 'ingreso', label: 'Ingreso' },
+                  { key: 'estado', label: 'Estado' },
+                ]}
+                rows={paginatedStudents.items}
+                keyExtractor={(student) => student.id}
+                renderRow={(student) => (
+                  <>
+                    <td className="px-4 py-4 font-semibold">{student.full_name || `${student.nombre || ''} ${student.apellido || ''}`.trim()}</td>
+                    <td className="px-4 py-4 text-slate-300">{student.email || '--'}</td>
+                    <td className="px-4 py-4 text-slate-300">{student.telefono || '--'}</td>
+                    <td className="px-4 py-4 text-slate-300">{CATEGORY_LABELS[student.categoria] || student.categoria || '--'}</td>
+                    <td className="px-4 py-4 text-slate-300">{student.fecha_ingreso || '--'}</td>
+                    <td className="px-4 py-4 text-slate-200">{student.suspended ? 'Suspendido' : 'Activo'}</td>
+                  </>
+                )}
+                minWidth="920px"
+                page={paginatedStudents.page}
+                totalPages={paginatedStudents.totalPages}
+                onPageChange={setStudentPage}
+              />
+            </div>
           </>
         )}
       </Card>
       ) : null}
 
+      {/* ── Tab: Historial ──────────────────────────────────────────────── */}
       {selectedReportsTab === 'historial' ? (
       <div className="grid gap-4">
-        <Card className={surfaceCardClass}>
+        <Card>
           <PanelHeader
             title="Historial de Reportes Persistidos"
             subtitle="Consulta, descarga o elimina PDFs persistidos del tipo seleccionado."
@@ -1085,7 +1057,7 @@ const ReportsCenter = () => {
           </div>
 
           {loadingAttendanceReports ? (
-            <p className="py-12 text-center text-sm text-slate-300">Cargando historial...</p>
+            <LoadingSpinner message="Cargando historial..." />
           ) : attendanceRuns.length === 0 ? (
             <EmptyState
               icon={<FaFilePdf />}
@@ -1093,70 +1065,76 @@ const ReportsCenter = () => {
               description="Cuando generes reportes del tipo seleccionado, apareceran aqui."
             />
           ) : (
-            <>
-              <div className={tableWrapperClass}>
-                <table className="w-full min-w-[880px] border-collapse text-sm">
-                  <thead>
-                    <tr className={tableHeadRowClass}>
-                      <th className="px-4 py-4">Periodo</th>
-                      <th className="px-4 py-4">Estado</th>
-                      <th className="px-4 py-4">Trigger</th>
-                      <th className="px-4 py-4">Creado</th>
-                      <th className="px-4 py-4">Acciones</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {paginatedRuns.items.map((run, index) => (
-                      <tr key={run.id} className={`border-b border-white/10 text-white ${index % 2 === 0 ? 'bg-white/[0.015]' : ''}`}>
-                        <td className="px-4 py-4">
-                          <div>
-                            <p className="font-semibold text-white">{run.period_start || '--'} {run.period_end && run.period_end !== run.period_start ? `a ${run.period_end}` : ''}</p>
-                            <p className="mt-1 text-xs text-slate-400">{run.report_code}</p>
-                          </div>
-                        </td>
-                        <td className="px-4 py-4 text-slate-200">{run.status || '--'}</td>
-                        <td className="px-4 py-4 text-slate-300">{run.trigger || '--'}</td>
-                        <td className="px-4 py-4 text-slate-300">{run.created_at ? new Date(run.created_at).toLocaleString('es-EC') : '--'}</td>
-                        <td className="px-4 py-4">
-                          <div className="flex items-center gap-2">
-                            <Button
-                              variant="secondary"
-                              size="sm"
-                              onClick={() => handleDownloadRun(run)}
-                              disabled={downloadingRunId === run.id}
-                            >
-                              <FaDownload className="mr-1" /> {downloadingRunId === run.id ? 'Descargando...' : 'Descargar'}
-                            </Button>
-                            <Button
-                              variant="secondary"
-                              size="sm"
-                              onClick={() => handleDeleteRun(run.id)}
-                              disabled={deletingRunId === run.id}
-                            >
-                              <FaTrash className="mr-1" /> {deletingRunId === run.id ? 'Eliminando...' : 'Eliminar'}
-                            </Button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <PaginationControls
-                page={paginatedRuns.page}
-                totalPages={paginatedRuns.totalPages}
-                onPageChange={setRunsPage}
-              />
-            </>
+            <DataTable
+              columns={[
+                { key: 'periodo', label: 'Periodo' },
+                { key: 'estado', label: 'Estado' },
+                { key: 'trigger', label: 'Trigger' },
+                { key: 'creado', label: 'Creado' },
+                { key: 'acciones', label: 'Acciones' },
+              ]}
+              rows={paginatedRuns.items}
+              keyExtractor={(run) => run.id}
+              renderRow={(run) => (
+                <>
+                  <td className="px-4 py-4">
+                    <div>
+                      <p className="font-semibold text-white">{run.period_start || '--'} {run.period_end && run.period_end !== run.period_start ? `a ${run.period_end}` : ''}</p>
+                      <p className="mt-1 text-xs text-slate-400">{run.report_code}</p>
+                    </div>
+                  </td>
+                  <td className="px-4 py-4">
+                    <span className={cn(
+                      'inline-flex rounded-full border px-2.5 py-1 text-[11px] font-bold uppercase',
+                      run.status === 'completed'
+                        ? 'border-emerald-400/25 bg-emerald-400/10 text-emerald-200'
+                        : run.status === 'failed'
+                          ? 'border-red-400/25 bg-red-400/10 text-red-200'
+                          : 'border-sky-400/25 bg-sky-400/10 text-sky-200'
+                    )}>
+                      {run.status || '--'}
+                    </span>
+                  </td>
+                  <td className="px-4 py-4 text-slate-300">{run.trigger || '--'}</td>
+                  <td className="px-4 py-4 text-slate-300">{run.created_at ? new Date(run.created_at).toLocaleString('es-EC') : '--'}</td>
+                  <td className="px-4 py-4">
+                    <div className="flex items-center gap-2">
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        onClick={() => handleDownloadRun(run)}
+                        disabled={downloadingRunId === run.id}
+                      >
+                        <FaDownload className="mr-1" /> {downloadingRunId === run.id ? 'Descargando...' : 'Descargar'}
+                      </Button>
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        onClick={() => handleDeleteRun(run.id)}
+                        disabled={deletingRunId === run.id}
+                        className="hover:border-red-400/30 hover:text-red-200"
+                      >
+                        <FaTrash className="mr-1" /> {deletingRunId === run.id ? 'Eliminando...' : 'Eliminar'}
+                      </Button>
+                    </div>
+                  </td>
+                </>
+              )}
+              minWidth="880px"
+              page={paginatedRuns.page}
+              totalPages={paginatedRuns.totalPages}
+              onPageChange={setRunsPage}
+            />
           )}
         </Card>
       </div>
       ) : null}
 
+      {/* ── Tab: Finanzas ───────────────────────────────────────────────── */}
       {selectedReportsTab === 'finanzas' ? (
       <>
       <div className="grid gap-4 desktop:grid-cols-[1.1fr_0.9fr]">
-        <Card className={surfaceCardClass}>
+        <Card>
           <PanelHeader
             title="Resumen Financiero Disponible"
             subtitle="Vista de control rapido sobre lo que ya puedes exportar."
@@ -1164,43 +1142,44 @@ const ReportsCenter = () => {
             badge="Snapshot"
           />
           {loadingFinancialData ? (
-            <p className="py-12 text-center text-sm text-slate-300">Cargando resumen financiero...</p>
+            <LoadingSpinner message="Cargando resumen financiero..." />
           ) : (
             <div className="space-y-4">
               <div className={sectionLeadClass}>
                 Aqui se concentra la lectura ejecutiva. Primero mira deuda, peso del pago diario y ticket promedio; luego baja al inventario completo de indicadores.
               </div>
               <div className="grid gap-3 mobile:grid-cols-2">
-                <div className="rounded-2xl border border-rose-400/20 bg-[linear-gradient(180deg,rgba(244,63,94,0.12),rgba(127,29,29,0.18))] px-4 py-3">
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-rose-200">Deuda / ingreso del mes</p>
-                  <p className="mt-2 text-xl font-black text-white">{financialHealthKpis.debtCoverageRatio.toFixed(2)}x</p>
-                </div>
-                <div className="rounded-2xl border border-emerald-400/20 bg-[linear-gradient(180deg,rgba(16,185,129,0.12),rgba(6,78,59,0.18))] px-4 py-3">
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-emerald-200">Peso del pago diario</p>
-                  <p className="mt-2 text-xl font-black text-white">{financialHealthKpis.dailyRevenueShare.toFixed(1)}%</p>
-                </div>
-                <div className="rounded-2xl border border-cyan-400/20 bg-[linear-gradient(180deg,rgba(6,182,212,0.12),rgba(8,47,73,0.18))] px-4 py-3">
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-cyan-200">Ticket por asistencia</p>
-                  <p className="mt-2 text-xl font-black text-white">{formatCurrency(financialHealthKpis.averageTicketPerAttendance)}</p>
-                </div>
-                <div className="rounded-2xl border border-amber-400/20 bg-[linear-gradient(180deg,rgba(245,158,11,0.12),rgba(120,53,15,0.18))] px-4 py-3">
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-amber-200">Deuda vs mensualidades</p>
-                  <p className="mt-2 text-xl font-black text-white">{financialHealthKpis.projectedDebtVsMembership.toFixed(1)}%</p>
-                </div>
+                <KpiTile
+                  label="Deuda / ingreso del mes"
+                  value={`${financialHealthKpis.debtCoverageRatio.toFixed(2)}x`}
+                  accent="rose"
+                />
+                <KpiTile
+                  label="Peso del pago diario"
+                  value={`${financialHealthKpis.dailyRevenueShare.toFixed(1)}%`}
+                  accent="emerald"
+                />
+                <KpiTile
+                  label="Ticket por asistencia"
+                  value={formatCurrency(financialHealthKpis.averageTicketPerAttendance)}
+                  accent="cyan"
+                />
+                <KpiTile
+                  label="Deuda vs mensualidades"
+                  value={`${financialHealthKpis.projectedDebtVsMembership.toFixed(1)}%`}
+                  accent="amber"
+                />
               </div>
               <div className="grid gap-3 mobile:grid-cols-2">
                 {financialSummaryRows.map(([label, value]) => (
-                  <div key={label} className={kpiTileClass}>
-                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">{label}</p>
-                    <p className="mt-2 text-xl font-black text-white">{value}</p>
-                  </div>
+                  <KpiTile key={label} label={label} value={value} accent="slate" />
                 ))}
               </div>
             </div>
           )}
         </Card>
 
-        <Card className={surfaceCardClass}>
+        <Card>
           <PanelHeader
             title="Riesgo por Categoria"
             subtitle="Concentracion de deuda vencida para detectar donde intervenir primero."
@@ -1212,7 +1191,7 @@ const ReportsCenter = () => {
           </div>
 
           {loadingFinancialData ? (
-            <p className="py-12 text-center text-sm text-slate-300">Cargando concentracion de riesgo...</p>
+            <LoadingSpinner message="Cargando concentracion de riesgo..." />
           ) : financialCategoryBreakdown.length === 0 ? (
             <EmptyState
               icon={<FaExclamationTriangle />}
@@ -1222,7 +1201,7 @@ const ReportsCenter = () => {
           ) : (
             <div className="space-y-3">
               {financialCategoryBreakdown.map((row) => (
-                <div key={row.category} className="rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] px-4 py-3">
+                <div key={row.category} className="rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] px-4 py-3 transition-colors duration-200 hover:border-white/20 hover:bg-white/[0.04]">
                   <div className="flex items-center justify-between gap-3">
                     <div>
                       <p className="text-sm font-bold text-white">{CATEGORY_LABELS[row.category] || row.category.replaceAll('_', ' ')}</p>
@@ -1241,7 +1220,7 @@ const ReportsCenter = () => {
       </div>
 
       <div className="grid gap-4 desktop:grid-cols-[1.05fr_0.95fr]">
-        <Card className={surfaceCardClass}>
+        <Card>
           <PanelHeader
             title="Tendencia Financiera Tabular"
             subtitle="Revision paginada del comportamiento mensual para exportes y contraste rapido."
@@ -1253,49 +1232,39 @@ const ReportsCenter = () => {
           </div>
 
           {loadingFinancialData ? (
-            <p className="py-12 text-center text-sm text-slate-300">Cargando tendencia...</p>
-          ) : paginatedTrend.items.length === 0 ? (
-            <EmptyState
-              icon={<FaCalendarAlt />}
-              title="Sin tendencia disponible"
-              description="Aun no hay meses con movimientos financieros para mostrar."
-            />
+            <LoadingSpinner message="Cargando tendencia..." />
           ) : (
-            <>
-              <div className={tableWrapperClass}>
-                <table className="w-full min-w-[760px] border-collapse text-sm">
-                  <thead>
-                    <tr className={tableHeadRowClass}>
-                      <th className="px-4 py-4">Mes</th>
-                      <th className="px-4 py-4">Mensualidades</th>
-                      <th className="px-4 py-4">Pago diario</th>
-                      <th className="px-4 py-4">Total combinado</th>
-                      <th className="px-4 py-4">Asistencias cobradas</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {paginatedTrend.items.map((row, index) => (
-                      <tr key={row.key || row.label} className={`border-b border-white/10 text-white ${index % 2 === 0 ? 'bg-white/[0.015]' : ''}`}>
-                        <td className="px-4 py-4 font-semibold">{row.label}</td>
-                        <td className="px-4 py-4 text-slate-300">{formatCurrency(row.monthlyPaymentsTotal || 0)}</td>
-                        <td className="px-4 py-4 text-slate-300">{formatCurrency(row.dailyPaymentsTotal || 0)}</td>
-                        <td className="px-4 py-4 font-semibold text-cyan-300">{formatCurrency(row.combinedTotal || 0)}</td>
-                        <td className="px-4 py-4 text-slate-200">{row.dailyPaymentsCount || 0}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <PaginationControls
-                page={paginatedTrend.page}
-                totalPages={paginatedTrend.totalPages}
-                onPageChange={setTrendPage}
-              />
-            </>
+            <DataTable
+              columns={[
+                { key: 'mes', label: 'Mes' },
+                { key: 'mensualidades', label: 'Mensualidades' },
+                { key: 'diario', label: 'Pago diario' },
+                { key: 'total', label: 'Total combinado' },
+                { key: 'asistencias', label: 'Asistencias cobradas' },
+              ]}
+              rows={paginatedTrend.items}
+              keyExtractor={(row) => row.key || row.label}
+              renderRow={(row) => (
+                <>
+                  <td className="px-4 py-4 font-semibold">{row.label}</td>
+                  <td className="px-4 py-4 text-slate-300">{formatCurrency(row.monthlyPaymentsTotal || 0)}</td>
+                  <td className="px-4 py-4 text-slate-300">{formatCurrency(row.dailyPaymentsTotal || 0)}</td>
+                  <td className="px-4 py-4 font-semibold text-cyan-300">{formatCurrency(row.combinedTotal || 0)}</td>
+                  <td className="px-4 py-4 text-slate-200">{row.dailyPaymentsCount || 0}</td>
+                </>
+              )}
+              emptyIcon={<FaCalendarAlt />}
+              emptyTitle="Sin tendencia disponible"
+              emptyDescription="Aun no hay meses con movimientos financieros para mostrar."
+              minWidth="760px"
+              page={paginatedTrend.page}
+              totalPages={paginatedTrend.totalPages}
+              onPageChange={setTrendPage}
+            />
           )}
         </Card>
 
-        <Card className={surfaceCardClass}>
+        <Card>
           <PanelHeader
             title="Exportes Financieros"
             subtitle="Descargas en PDF, CSV y Excel desde la revision financiera consolidada."
@@ -1305,36 +1274,57 @@ const ReportsCenter = () => {
           <div className={sectionLeadClass}>
             Los formatos estan agrupados por decision operativa: resumen, tendencia y cartera vencida.
           </div>
-          <div className="grid gap-2 mobile:grid-cols-2">
-            <Button variant="secondary" className="justify-start" onClick={exportFinancialSummaryPdf} disabled={loadingFinancialData}>
-              <FaFilePdf className="mr-2" /> Resumen PDF
-            </Button>
-            <Button variant="secondary" className="justify-start" onClick={exportFinancialSummaryCsv} disabled={loadingFinancialData}>
-              <FaFileCsv className="mr-2" /> Resumen CSV
-            </Button>
-            <Button variant="secondary" className="justify-start" onClick={exportFinancialSummaryExcel} disabled={loadingFinancialData}>
-              <FaFileExcel className="mr-2" /> Resumen Excel
-            </Button>
-            <Button variant="secondary" className="justify-start" onClick={exportFinancialTrendCsv} disabled={loadingFinancialData}>
-              <FaCalendarAlt className="mr-2" /> Tendencia CSV
-            </Button>
-            <Button variant="secondary" className="justify-start" onClick={exportFinancialTrendExcel} disabled={loadingFinancialData}>
-              <FaFileExcel className="mr-2" /> Tendencia Excel
-            </Button>
-            <Button variant="secondary" className="justify-start" onClick={exportOverduePortfolioCsv} disabled={loadingFinancialData}>
-              <FaFileCsv className="mr-2" /> Cartera vencida CSV
-            </Button>
-            <Button variant="secondary" className="justify-start" onClick={exportOverduePortfolioExcel} disabled={loadingFinancialData}>
-              <FaFileExcel className="mr-2" /> Cartera Excel
-            </Button>
-            <Button variant="secondary" className="justify-start" onClick={printFinancialSummary} disabled={loadingFinancialData}>
-              <FaPrint className="mr-2" /> Version imprimible
-            </Button>
+
+          <div className="space-y-4">
+            <div>
+              <p className="mb-2 text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Resumen financiero</p>
+              <ExportButtonGroup
+                columns={3}
+                disabled={loadingFinancialData}
+                items={[
+                  { label: 'Resumen PDF', format: 'pdf', onClick: exportFinancialSummaryPdf },
+                  { label: 'Resumen CSV', format: 'csv', onClick: exportFinancialSummaryCsv },
+                  { label: 'Resumen Excel', format: 'excel', onClick: exportFinancialSummaryExcel },
+                ]}
+              />
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Tendencia mensual</p>
+              <ExportButtonGroup
+                columns={2}
+                disabled={loadingFinancialData}
+                items={[
+                  { label: 'Tendencia CSV', format: 'csv', onClick: exportFinancialTrendCsv },
+                  { label: 'Tendencia Excel', format: 'excel', onClick: exportFinancialTrendExcel },
+                ]}
+              />
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Cartera vencida</p>
+              <ExportButtonGroup
+                columns={2}
+                disabled={loadingFinancialData}
+                items={[
+                  { label: 'Cartera CSV', format: 'csv', onClick: exportOverduePortfolioCsv },
+                  { label: 'Cartera Excel', format: 'excel', onClick: exportOverduePortfolioExcel },
+                ]}
+              />
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Impresion</p>
+              <ExportButtonGroup
+                columns={1}
+                disabled={loadingFinancialData}
+                items={[
+                  { label: 'Version imprimible', format: 'print', onClick: printFinancialSummary },
+                ]}
+              />
+            </div>
           </div>
         </Card>
       </div>
 
-      <Card className={surfaceCardClass}>
+      <Card>
         <PanelHeader
           title="Cartera Vencida para Revision"
           subtitle="Vista paginada de los casos con deuda para revision administrativa directa."
@@ -1346,52 +1336,42 @@ const ReportsCenter = () => {
         </div>
 
         {loadingFinancialData ? (
-          <p className="py-12 text-center text-sm text-slate-300">Cargando cartera vencida...</p>
-        ) : paginatedPortfolio.items.length === 0 ? (
-          <EmptyState
-            icon={<FaChartLine />}
-            title="Sin cartera vencida"
-            description="Actualmente no hay atletas con mensualidades vencidas en la revision consolidada."
-          />
+          <LoadingSpinner message="Cargando cartera vencida..." />
         ) : (
-          <>
-            <div className={tableWrapperClass}>
-              <table className="w-full min-w-[980px] border-collapse text-sm">
-                <thead>
-                  <tr className={tableHeadRowClass}>
-                    <th className="px-4 py-4">Atleta</th>
-                    <th className="px-4 py-4">Categoria</th>
-                    <th className="px-4 py-4">Cobertura fin</th>
-                    <th className="px-4 py-4">Meses vencidos</th>
-                    <th className="px-4 py-4">Deuda estimada</th>
-                    <th className="px-4 py-4">Asistencias mes</th>
-                    <th className="px-4 py-4">Pago diario mes</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {paginatedPortfolio.items.map((row, index) => (
-                    <tr key={row.studentId} className={`border-b border-white/10 text-white ${index % 2 === 0 ? 'bg-white/[0.015]' : ''}`}>
-                      <td className="px-4 py-4">
-                        <p className="font-semibold">{row.athleteName}</p>
-                        <p className="mt-1 text-xs text-slate-400">ID: {row.studentId}</p>
-                      </td>
-                      <td className="px-4 py-4 text-slate-300">{CATEGORY_LABELS[row.category] || row.category || '--'}</td>
-                      <td className="px-4 py-4 text-slate-300">{row.coverageEnd || '--'}</td>
-                      <td className="px-4 py-4 text-slate-200">{row.overdueMonths || 0}</td>
-                      <td className="px-4 py-4 font-semibold text-rose-300">{formatCurrency(row.estimatedDebt || 0)}</td>
-                      <td className="px-4 py-4 text-slate-200">{row.currentMonthAttendances || 0}</td>
-                      <td className="px-4 py-4 font-semibold text-emerald-300">{formatCurrency(row.currentMonthDailyRevenue || 0)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <PaginationControls
-              page={paginatedPortfolio.page}
-              totalPages={paginatedPortfolio.totalPages}
-              onPageChange={setPortfolioPage}
-            />
-          </>
+          <DataTable
+            columns={[
+              { key: 'atleta', label: 'Atleta' },
+              { key: 'categoria', label: 'Categoria' },
+              { key: 'cobertura', label: 'Cobertura fin' },
+              { key: 'meses', label: 'Meses vencidos' },
+              { key: 'deuda', label: 'Deuda estimada' },
+              { key: 'asistencias', label: 'Asistencias mes' },
+              { key: 'pagodiario', label: 'Pago diario mes' },
+            ]}
+            rows={paginatedPortfolio.items}
+            keyExtractor={(row) => row.studentId}
+            renderRow={(row) => (
+              <>
+                <td className="px-4 py-4">
+                  <p className="font-semibold">{row.athleteName}</p>
+                  <p className="mt-1 text-xs text-slate-400">ID: {row.studentId}</p>
+                </td>
+                <td className="px-4 py-4 text-slate-300">{CATEGORY_LABELS[row.category] || row.category || '--'}</td>
+                <td className="px-4 py-4 text-slate-300">{row.coverageEnd || '--'}</td>
+                <td className="px-4 py-4 text-slate-200">{row.overdueMonths || 0}</td>
+                <td className="px-4 py-4 font-semibold text-rose-300">{formatCurrency(row.estimatedDebt || 0)}</td>
+                <td className="px-4 py-4 text-slate-200">{row.currentMonthAttendances || 0}</td>
+                <td className="px-4 py-4 font-semibold text-emerald-300">{formatCurrency(row.currentMonthDailyRevenue || 0)}</td>
+              </>
+            )}
+            emptyIcon={<FaChartLine />}
+            emptyTitle="Sin cartera vencida"
+            emptyDescription="Actualmente no hay atletas con mensualidades vencidas en la revision consolidada."
+            minWidth="980px"
+            page={paginatedPortfolio.page}
+            totalPages={paginatedPortfolio.totalPages}
+            onPageChange={setPortfolioPage}
+          />
         )}
       </Card>
       </>

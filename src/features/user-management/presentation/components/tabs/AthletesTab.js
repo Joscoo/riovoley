@@ -6,7 +6,7 @@ import { useUserActions } from '../hooks/useUserActions';
 import { useTimedMessage } from '../hooks/useTimedMessage';
 import { communicationsService } from '../../../../communications';
 import { trainingCategoriesService } from '../../../../training-categories';
-import { SectionHeader, Card, Button, EmptyState, Modal, iconRegistry } from '../../../../../shared/ui';
+import { SectionHeader, Button, EmptyState, Modal, iconRegistry, KpiTile, LoadingSpinner } from '../../../../../shared/ui';
 import { SORT_DIRECTION, createTableQuery } from '../../../../../shared/lib/tableQuery';
 import UserCard from '../shared/UserCard';
 import UserForm from '../shared/UserForm';
@@ -301,55 +301,10 @@ const AthletesTab = ({ userRole }) => {
       )}
 
       <div className="grid gap-4 tablet:grid-cols-2 desktop:grid-cols-4">
-        <Card className="h-full border-l-4 border-l-[#355FB3]">
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Total Estudiantes</h3>
-              <p className="mt-1 text-3xl font-black text-white">{stats.total}</p>
-            </div>
-            <div className="text-3xl text-sky-300">
-              <FaUsers />
-            </div>
-          </div>
-        </Card>
-
-        <Card className="h-full border-l-4 border-l-emerald-500">
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Activos</h3>
-              <p className="mt-1 text-3xl font-black text-white">{stats.activos}</p>
-            </div>
-            <div className="text-3xl text-emerald-300">
-              <FaCheckCircle />
-            </div>
-          </div>
-        </Card>
-
-        <Card className="h-full border-l-4 border-l-red-500">
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Suspendidos</h3>
-              <p className="mt-1 text-3xl font-black text-white">{stats.suspendidos}</p>
-            </div>
-            <div className="text-3xl text-rose-300">
-              <FaBan />
-            </div>
-          </div>
-        </Card>
-
-        <Card className="h-full border-l-4 border-l-[#F9B233]">
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Categorías</h3>
-              <p className="mt-1 text-3xl font-black text-white">
-                {Object.keys(stats.byCategory).filter((k) => stats.byCategory[k] > 0).length}
-              </p>
-            </div>
-            <div className="text-3xl text-amber-200">
-              <FaList />
-            </div>
-          </div>
-        </Card>
+        <KpiTile label="Total Estudiantes" value={stats.total} icon={<FaUsers />} accent="sky" className="h-full" />
+        <KpiTile label="Activos" value={stats.activos} icon={<FaCheckCircle />} accent="emerald" className="h-full" />
+        <KpiTile label="Suspendidos" value={stats.suspendidos} icon={<FaBan />} accent="rose" className="h-full" />
+        <KpiTile label="Categorías" value={Object.keys(stats.byCategory).filter((k) => stats.byCategory[k] > 0).length} icon={<FaList />} accent="amber" className="h-full" />
       </div>
 
       <UserFilters
@@ -362,12 +317,9 @@ const AthletesTab = ({ userRole }) => {
       />
 
       {loading ? (
-        <Card>
-          <div className="flex min-h-[180px] flex-col items-center justify-center gap-3 text-slate-200">
-            <div className="h-10 w-10 animate-spin rounded-full border-2 border-rv-gold/30 border-t-rv-gold" />
-            <p className="text-sm">Cargando estudiantes...</p>
-          </div>
-        </Card>
+        <div className="flex min-h-[180px] items-center justify-center">
+          <LoadingSpinner message="Cargando estudiantes..." />
+        </div>
       ) : paginatedAthletes.length === 0 ? (
         <EmptyState
           icon={<StudentIcon />}

@@ -5,9 +5,9 @@ import { useUserPermissions } from '../hooks/useUserPermissions';
 import { useUserActions } from '../hooks/useUserActions';
 import { useTimedMessage } from '../hooks/useTimedMessage';
 import { SectionHeader } from '../../../../../shared/ui';
-import { Card } from '../../../../../shared/ui';
+
 import { Button } from '../../../../../shared/ui';
-import { EmptyState, Modal } from '../../../../../shared/ui';
+import { EmptyState, Modal, KpiTile, LoadingSpinner } from '../../../../../shared/ui';
 import { SORT_DIRECTION, createTableQuery } from '../../../../../shared/lib/tableQuery';
 import UserCard from '../shared/UserCard';
 import UserForm from '../shared/UserForm';
@@ -238,41 +238,9 @@ const TrainersTab = ({ userRole }) => {
       )}
       
       <div className="grid gap-4 tablet:grid-cols-3">
-        <Card className="h-full border-l-4 border-l-[#F9B233]">
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Total</h3>
-              <p className="mt-1 text-3xl font-black text-white">{stats.total}</p>
-            </div>
-            <div className="text-3xl text-amber-200">
-              <FaUsers />
-            </div>
-          </div>
-        </Card>
-        
-        <Card className="h-full border-l-4 border-l-emerald-500">
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Activos</h3>
-              <p className="mt-1 text-3xl font-black text-white">{stats.activos}</p>
-            </div>
-            <div className="text-3xl text-emerald-300">
-              <FaCheckCircle />
-            </div>
-          </div>
-        </Card>
-        
-        <Card className="h-full border-l-4 border-l-red-500">
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <h3 className="text-xs font-bold uppercase tracking-[0.8px] text-slate-300">Suspendidos</h3>
-              <p className="mt-1 text-3xl font-black text-white">{stats.suspendidos}</p>
-            </div>
-            <div className="text-3xl text-rose-300">
-              <FaBan />
-            </div>
-          </div>
-        </Card>
+        <KpiTile label="Total" value={stats.total} icon={<FaUsers />} accent="amber" className="h-full" />
+        <KpiTile label="Activos" value={stats.activos} icon={<FaCheckCircle />} accent="emerald" className="h-full" />
+        <KpiTile label="Suspendidos" value={stats.suspendidos} icon={<FaBan />} accent="rose" className="h-full" />
       </div>
       
       <UserFilters
@@ -284,12 +252,9 @@ const TrainersTab = ({ userRole }) => {
       />
       
       {loading ? (
-        <Card>
-          <div className="flex min-h-[180px] flex-col items-center justify-center gap-3 text-slate-200">
-            <div className="h-10 w-10 animate-spin rounded-full border-2 border-rv-gold/30 border-t-rv-gold" />
-            <p className="text-sm">Cargando entrenadores...</p>
-          </div>
-        </Card>
+        <div className="flex min-h-[180px] items-center justify-center">
+          <LoadingSpinner message="Cargando entrenadores..." />
+        </div>
       ) : paginatedTrainers.length === 0 ? (
         <EmptyState
           icon={<FaChalkboardTeacher />}
