@@ -1215,12 +1215,17 @@ const GamificationAdminPanel = () => {
   return (
     <div className="space-y-4">
       <SectionHeader
+        guideId="gamification-admin-header"
         title="Gamificación"
         subtitle="Gestiona la tienda, logros y metas del sistema"
         icon={<FaTrophy />}
       />
 
-      <TabNav items={TABS} activeId={activeTab} onChange={setActiveTab} />
+      <TabNav
+        items={TABS.map((tab) => ({ ...tab, guideId: `gamification-tab-${tab.id}` }))}
+        activeId={activeTab}
+        onChange={setActiveTab}
+      />
 
       <div>
         {activeTab === 'cosmeticos' && <CosmeticsTab />}

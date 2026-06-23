@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FaCalendarAlt, FaSyncAlt, FaUser } from 'react-icons/fa';
-import { Button, Card } from '../../../../../shared/ui';
+import { FaCalendarAlt, FaUser } from 'react-icons/fa';
+import { Card } from '../../../../../shared/ui';
 
-const StudentPhysicalHero = ({ hero, onRefresh }) => (
+const StudentPhysicalHero = ({ hero }) => (
   <Card className="border-white/20 bg-black/35">
     <div className="flex flex-wrap items-start justify-between gap-4">
       <div className="space-y-3">
@@ -27,11 +27,6 @@ const StudentPhysicalHero = ({ hero, onRefresh }) => (
           </span>
         </div>
       </div>
-
-      <Button variant="secondary" size="sm" onClick={onRefresh}>
-        <FaSyncAlt className="mr-2" />
-        Actualizar
-      </Button>
     </div>
 
     {hero.hallazgos?.length ? (
@@ -55,7 +50,6 @@ StudentPhysicalHero.propTypes = {
     categoryLabel: PropTypes.string.isRequired,
     hallazgos: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
-  onRefresh: PropTypes.func.isRequired,
 };
 
 export default StudentPhysicalHero;

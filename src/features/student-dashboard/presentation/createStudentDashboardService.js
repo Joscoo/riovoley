@@ -14,6 +14,8 @@ export const createStudentDashboardService = (
   const loadPaymentsHistory = async (studentId) => useCases.loadPaymentsHistoryUseCase.execute({ studentId });
   const loadAttendanceStats = async (studentId) => useCases.loadAttendanceStatsUseCase.execute({ studentId });
   const loadPhysicalTests = async (studentId) => useCases.loadPhysicalTestsUseCase.execute({ studentId });
+  const subscribeToPaymentChanges = ({ studentId, onChange }) =>
+    useCases.subscribeToPaymentChangesUseCase.execute({ studentId, onChange });
 
   return {
     loadStudentPanelData,
@@ -22,5 +24,6 @@ export const createStudentDashboardService = (
     loadPaymentsHistory,
     loadAttendanceStats,
     loadPhysicalTests,
+    subscribeToPaymentChanges,
   };
 };

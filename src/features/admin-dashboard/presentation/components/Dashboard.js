@@ -102,6 +102,7 @@ const Dashboard = ({ user, onNavigateToSection }) => {
   return (
     <div className="mx-auto w-full max-w-7xl">
       <SectionHeader
+        guideId="admin-dashboard-header"
         title="Dashboard - Resumen General"
         subtitle={`Vista general de RioVoley Club${user?.email ? ` - Sesión: ${user.email}` : ''}`}
         icon={<FaChartBar />}

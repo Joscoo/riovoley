@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { cn } from '../../lib/cn';
 
-const SectionHeader = ({ title, subtitle, icon, actions, className, centered = false }) => {
+const SectionHeader = ({ title, subtitle, icon, actions, className, centered = false, guideId, actionsGuideId }) => {
   return (
     <div
+      data-guide-id={guideId}
       className={cn(
         'mb-5 flex flex-wrap items-start justify-between gap-3 mobile:mb-6',
         centered && 'justify-center text-center',
@@ -18,7 +19,7 @@ const SectionHeader = ({ title, subtitle, icon, actions, className, centered = f
         </h2>
         {subtitle ? <p className="mt-1 text-sm text-slate-200 mobile:text-base">{subtitle}</p> : null}
       </div>
-      {actions ? <div className="shrink-0">{actions}</div> : null}
+      {actions ? <div className="shrink-0" data-guide-id={actionsGuideId}>{actions}</div> : null}
     </div>
   );
 };
@@ -29,7 +30,9 @@ SectionHeader.propTypes = {
   icon: PropTypes.node,
   actions: PropTypes.node,
   className: PropTypes.string,
-  centered: PropTypes.bool
+  centered: PropTypes.bool,
+  guideId: PropTypes.string,
+  actionsGuideId: PropTypes.string,
 };
 
 export default SectionHeader;

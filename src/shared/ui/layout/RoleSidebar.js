@@ -139,6 +139,7 @@ const RoleSidebar = ({
           return (
             <button
               key={item.id}
+              data-guide-id={item.guideId || `${effectiveVariant}-menu-${item.id}`}
               className={cn(
                 'group inline-flex w-full min-h-[48px] items-center gap-2 rounded-xl border border-transparent px-3 py-2 text-left text-sm font-medium text-white/80 transition-all duration-200',
                 'hover:border-rv-gold/35 hover:bg-rv-gold/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80',

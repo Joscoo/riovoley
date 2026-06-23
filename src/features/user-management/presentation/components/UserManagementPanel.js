@@ -34,7 +34,7 @@ const UserManagementPanel = ({ userRole, user }) => {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center gap-3 border-b border-rv-gold/20 pb-4">
+      <div className="flex items-center gap-3 border-b border-rv-gold/20 pb-4" data-guide-id="user-management-header">
         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-rv-gold to-yellow-400">
           <UsersIcon className="text-2xl text-rv-dark" />
         </div>
@@ -53,6 +53,7 @@ const UserManagementPanel = ({ userRole, user }) => {
           id: tab.id,
           label: tab.label,
           icon: TAB_ICONS[tab.id],
+          guideId: `user-management-tab-${tab.id}`,
         }))}
         activeId={activeTab}
         onChange={setActiveTab}

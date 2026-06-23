@@ -99,6 +99,15 @@ const getPaymentStatusClass = (status) => {
 const EMPTY_NOTICE = { type: '', text: '' };
 const PAGE_SIZE = 10;
 
+const emitPaymentsUpdated = (studentId) => {
+  window.dispatchEvent(new Event('riovoley:dashboard-refresh'));
+  window.dispatchEvent(
+    new CustomEvent('riovoley:payments-updated', {
+      detail: studentId ? { studentId } : {},
+    })
+  );
+};
+
 const DEFAULT_PAYMENTS_QUERY = createTableQuery({
   filters: {
     fecha_inicio: '',
@@ -364,6 +373,7 @@ const PagosManager = ({ user }) => {
       
       setShowModal(false);
       resetForm();
+      emitPaymentsUpdated(formData.student_id);
       loadData();
     } catch (error) {
       console.error('Error guardando pago:', error);
@@ -395,10 +405,17 @@ const PagosManager = ({ user }) => {
   };
 
   const updatePago = async () => {
+    const previousStudentId = editingPago?.student_id;
+
     await paymentsService.updatePayment({
       paymentId: editingPago.id,
       formData,
     });
+
+    emitPaymentsUpdated(previousStudentId);
+    if (String(previousStudentId) !== String(formData.student_id)) {
+      emitPaymentsUpdated(formData.student_id);
+    }
   };
 
   const deletePago = async (pago) => {
@@ -414,6 +431,7 @@ const PagosManager = ({ user }) => {
       onConfirm: async () => {
         try {
           await paymentsService.deletePayment({ paymentId: pago.id });
+          emitPaymentsUpdated(pago.student_id);
           await loadData();
           showNotice('success', 'Pago marcado como eliminado. Se puede recuperar durante 30 dias.');
         } catch (error) {
@@ -428,6 +446,7 @@ const PagosManager = ({ user }) => {
     try {
       await paymentsService.markPaymentAsPaid({ payment: pago });
 
+      emitPaymentsUpdated(pago.student_id);
       await loadData();
       showNotice('success', 'Fecha de pago registrada');
     } catch (error) {
@@ -536,6 +555,7 @@ const PagosManager = ({ user }) => {
       
       if (resultados && resultados.actualizados > 0) {
         showNotice('success', `${resultados.actualizados} pagos actualizados.\nEstados sincronizados correctamente.`);
+        emitPaymentsUpdated();
         await loadData(); // Recargar datos
       } else {
         showNotice('success', 'Todos los estados ya estan actualizados.');
@@ -567,6 +587,7 @@ const PagosManager = ({ user }) => {
               <FaSync className="mr-2" /> Actualizar Estados
             </Button>
             <Button 
+              data-guide-id="payments-new-button"
               onClick={() => openModal()}
               className="w-full mobile:w-auto"
             >
@@ -1165,8 +1186,6 @@ PagosManager.propTypes = {
 };
 
 export default PagosManager;
-
-
 
 
 

@@ -624,12 +624,6 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
           title="Tu ruta de progreso"
           subtitle="Aqui podras ver tu avance deportivo a medida que completes tus evaluaciones fisicas."
           icon={<FaTrophy />}
-          actions={(
-            <Button variant="secondary" size="sm" onClick={onRefresh} disabled={loading}>
-              <FaSyncAlt className="mr-2" />
-              Actualizar
-            </Button>
-          )}
         />
         <EmptyState
           icon={<FaLayerGroup />}
@@ -1117,12 +1111,6 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
         title="Tu ruta de progreso"
         subtitle="Revisa cuanto has avanzado, lo que te falta para subir de nivel y los retos que te acercan a tu siguiente meta."
         icon={<FaTrophy />}
-        actions={(
-          <Button variant="secondary" size="sm" onClick={onRefresh} disabled={loading}>
-            <FaSyncAlt className="mr-2" />
-            Actualizar
-          </Button>
-        )}
       />
 
       <div className="mt-4 grid gap-3 mobile:grid-cols-2 desktop:grid-cols-4">
@@ -1130,6 +1118,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
           <button
             key={tab.id}
             type="button"
+            data-guide-id={`student-progress-tab-${tab.id}`}
             onClick={() => setSelectedPanelTab(tab.id)}
             className={`rounded-3xl border px-4 py-3 text-left transition ${
               selectedPanelTab === tab.id
@@ -1417,6 +1406,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
           <button
             key={tab.id}
             type="button"
+            data-guide-id={`student-progress-identity-tab-${tab.id}`}
             onClick={() => setSelectedIdentityTab(tab.id)}
             className={`rounded-3xl border px-4 py-3 text-left transition ${
               selectedIdentityTab === tab.id

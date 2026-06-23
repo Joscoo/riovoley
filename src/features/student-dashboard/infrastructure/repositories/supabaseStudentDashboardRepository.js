@@ -92,4 +92,32 @@ export class SupabaseStudentDashboardRepository {
 
     return data || [];
   }
+
+  subscribeToPaymentChanges(studentId, onChange) {
+    if (!studentId || typeof onChange !== 'function') {
+      return () => {};
+    }
+
+    const channel = supabase
+      .channel(`student-dashboard-payments-${studentId}`)
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'payments',
+          filter: `student_id=eq.${studentId}`,
+        },
+        onChange
+      )
+      .subscribe();
+
+    return () => {
+      if (typeof channel?.unsubscribe === 'function') {
+        channel.unsubscribe();
+      } else if (typeof supabase.removeChannel === 'function') {
+        supabase.removeChannel(channel);
+      }
+    };
+  }
 }

@@ -8,19 +8,49 @@ describe('createStudentDashboardUseCases', () => {
     listPhysicalTests: jest.fn(),
     listPaymentsByStudentId: jest.fn(),
     listAttendancesFromDate: jest.fn(),
+    subscribeToPaymentChanges: jest.fn(),
   });
 
   it('loadPaymentStatusUseCase retorna hasPaid=true cuando existe pago vigente', async () => {
     const repository = buildRepository();
-    repository.listCurrentPayments.mockResolvedValue([{ id: 'p1', monto: 30 }]);
+    repository.listPaymentsByStudentId.mockResolvedValue([{ id: 'p1', monto: 30, fecha_inicio: '2026-06-01', fecha_fin: '2099-05-31' }]);
     const useCases = createStudentDashboardUseCases(repository, buildDeps());
 
     const result = await useCases.loadPaymentStatusUseCase.execute({ studentId: 's1' });
 
-    expect(repository.listCurrentPayments).toHaveBeenCalledWith('s1', getEcuadorDate());
+    expect(repository.listPaymentsByStudentId).toHaveBeenCalledWith('s1');
     expect(result.hasPaid).toBe(true);
-    expect(result.payment).toEqual({ id: 'p1', monto: 30 });
+    expect(result.payment).toMatchObject({
+      id: 'p1',
+      monto: 30,
+      fecha_inicio: '2026-06-01',
+      fecha_fin: '2099-05-31',
+      coverage_payment_count: 1,
+      coverage_total_amount: 30,
+    });
     expect(typeof result.monthName).toBe('string');
+  });
+
+  it('loadPaymentStatusUseCase agrupa la cobertura continua registrada en varios pagos', async () => {
+    const repository = buildRepository();
+    repository.listPaymentsByStudentId.mockResolvedValue([
+      { id: 'p1', monto: 30, fecha_pago: '2026-06-01', fecha_inicio: '2026-06-01', fecha_fin: '2026-07-14', estado: 'activo' },
+      { id: 'p2', monto: 30, fecha_pago: '2026-07-10', fecha_inicio: '2026-07-15', fecha_fin: '2099-12-31', estado: 'activo' },
+    ]);
+    const useCases = createStudentDashboardUseCases(repository, buildDeps());
+
+    const result = await useCases.loadPaymentStatusUseCase.execute({ studentId: 's1' });
+
+    expect(result.payment).toMatchObject({
+      id: 'p2',
+      fecha_inicio: '2026-06-01',
+      fecha_fin: '2099-12-31',
+      coverage_payment_count: 2,
+      coverage_total_amount: 60,
+      latest_payment_date: '2026-07-10',
+      latest_payment_status: 'activo',
+    });
+    expect(result.hasPaid).toBe(true);
   });
 
   it('loadAttendanceStatsUseCase calcula estadisticas y limita recientes a 10', async () => {
@@ -42,7 +72,7 @@ describe('createStudentDashboardUseCases', () => {
   it('loadStudentPanelDataUseCase orquesta student + pago + asistencia + tests', async () => {
     const repository = buildRepository();
     repository.findStudentByUserId.mockResolvedValue({ id: 's1', categoria: 'iniciacion_hombres' });
-    repository.listCurrentPayments.mockResolvedValue([{ id: 'p1' }]);
+    repository.listPaymentsByStudentId.mockResolvedValue([{ id: 'p1', fecha_inicio: '2026-06-01', fecha_fin: '2099-12-31' }]);
     repository.listAttendancesFromDate.mockResolvedValue([{ id: 'a1' }]);
     repository.listPhysicalTests.mockResolvedValue([{ id: 't1' }]);
     const deps = buildDeps();
@@ -89,6 +119,19 @@ describe('createStudentDashboardUseCases', () => {
     expect(deps.PagoStatusService.getStatusInfo).toHaveBeenCalledTimes(2);
     expect(result.payments[0]).toMatchObject({ id: 'p1', statusInfo: { estado: 'activo', mensaje: 'Activo' } });
     expect(result.physicalTests).toEqual([{ id: 't1' }]);
+  });
+
+  it('subscribeToPaymentChangesUseCase delega al repositorio', () => {
+    const repository = buildRepository();
+    const unsubscribe = jest.fn();
+    const onChange = jest.fn();
+    repository.subscribeToPaymentChanges.mockReturnValue(unsubscribe);
+    const useCases = createStudentDashboardUseCases(repository, buildDeps());
+
+    const result = useCases.subscribeToPaymentChangesUseCase.execute({ studentId: 's1', onChange });
+
+    expect(repository.subscribeToPaymentChanges).toHaveBeenCalledWith('s1', onChange);
+    expect(result).toBe(unsubscribe);
   });
 });
   const buildDeps = () => ({

@@ -475,7 +475,7 @@ const FinancialReview = () => {
       </div>
 
       {/* ── Charts ──────────────────────────────────────────────────────── */}
-      <div className="grid gap-4 desktop:grid-cols-[1.45fr_0.95fr]">
+      <div className="grid gap-4 desktop:grid-cols-[1.45fr_0.95fr]" data-guide-id="financial-review-filters">
         <ChartCard
           title="Tendencia Financiera"
           subtitle={`Pico reciente: ${loading ? '...' : formatCurrency(trendPeak)}. Vista consolidada de los ultimos 6 meses.`}

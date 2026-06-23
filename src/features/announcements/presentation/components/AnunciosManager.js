@@ -77,7 +77,7 @@ const AnunciosManager = ({ user }) => {
         subtitle="Crea y administra anuncios para estudiantes, entrenadores y administradores."
         icon={<FaBullhorn />}
         actions={(
-          <Button onClick={() => handleOpenModal()} className="w-full mobile:w-auto">
+          <Button data-guide-id="announcements-new-button" onClick={() => handleOpenModal()} className="w-full mobile:w-auto">
             <FaPlus className="mr-2" /> Nuevo Anuncio
           </Button>
         )}

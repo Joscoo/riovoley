@@ -152,6 +152,7 @@ const ProfileSettings = ({ user }) => {
   return (
     <div className="mx-auto w-full max-w-7xl">
       <SectionHeader
+        guideId="profile-settings-header"
         title="Configuracion de Perfil"
         subtitle="Administra tu informacion personal y seguridad"
         icon={<FaCog />}

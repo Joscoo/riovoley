@@ -1,9 +1,10 @@
 // src/features/student-dashboard/presentation/components/StudentPanel.js
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import {
   FaBan,
+  FaBookOpen,
   FaBullhorn,
   FaCalendar,
   FaChartBar,
@@ -15,7 +16,6 @@ import {
   FaExclamationTriangle,
   FaMoneyBillWave,
   FaStar,
-  FaSyncAlt,
   FaTimes,
   FaUserCircle
 } from 'react-icons/fa';
@@ -34,7 +34,19 @@ import { ProfileSettings } from '../../../account-admin';
 import StudentPhysicalTests from './StudentPhysicalTests';
 import StudentProfileIdentityCard from './StudentProfileIdentityCard';
 import { IdentityPortrait, StudentGamificationPanel } from '../../../gamification';
-import { Button, Card, EmptyState, RolePanelLayout, SectionHeader, StatusBadge } from '../../../../shared/ui';
+import {
+  Button,
+  Card,
+  EmptyState,
+  RolePanelLayout,
+  SectionHeader,
+  StatusBadge,
+  PanelUserGuide,
+  PANEL_GUIDE_STEPS,
+  shouldAutoOpenPanelGuide,
+  markPanelGuideDismissed,
+  markPanelGuideCompleted
+} from '../../../../shared/ui';
 import { cn } from '../../../../lib/cn';
 
 const StudentPanel = ({ user }) => {
@@ -46,14 +58,36 @@ const StudentPanel = ({ user }) => {
   const [physicalTests, setPhysicalTests] = useState([]);
   const [gamification, setGamification] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [guideOpen, setGuideOpen] = useState(false);
+  const [guideChecked, setGuideChecked] = useState(false);
   const { profile: userProfile, loading: profileLoading } = useUserProfile(user);
+
+  const loadStudentData = useCallback(async (nextUserId = user?.id, { silent = false } = {}) => {
+    if (!nextUserId) return;
+    if (!silent) {
+      setLoading(true);
+    }
+    try {
+      const panelData = await studentDashboardService.loadStudentPanelData(nextUserId);
+      setStudentData(panelData.studentData);
+      setPaymentStatus(panelData.paymentStatus);
+      setAttendanceStats(panelData.attendanceStats);
+      setPhysicalTests(panelData.physicalTests || []);
+      setGamification(panelData.gamification || null);
+    } catch (error) {
+      console.error('Error cargando datos del estudiante:', error);
+    } finally {
+      if (!silent) {
+        setLoading(false);
+      }
+    }
+  }, [user?.id]);
 
   useEffect(() => {
     if (user?.id && !profileLoading) {
       loadStudentData();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user, profileLoading]);
+  }, [loadStudentData, profileLoading, user?.id]);
 
   useEffect(() => {
     const requestedSection = new URLSearchParams(location.search).get('section');
@@ -70,53 +104,52 @@ const StudentPanel = ({ user }) => {
     }
   }, [location.search]);
 
-  const loadStudentData = async (nextUserId = user?.id) => {
-    setLoading(true);
-    try {
-      const panelData = await studentDashboardService.loadStudentPanelData(nextUserId);
-      setStudentData(panelData.studentData);
-      setPaymentStatus(panelData.paymentStatus);
-      setAttendanceStats(panelData.attendanceStats);
-      setPhysicalTests(panelData.physicalTests || []);
-      setGamification(panelData.gamification || null);
-    } catch (error) {
-      console.error('Error cargando datos del estudiante:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  useEffect(() => {
+    const userRole = userProfile?.role?.toLowerCase();
+    const isStudentRole = ['estudiante', 'usuario'].includes(userRole);
 
-  const loadPaymentStatus = async (studentId) => {
-    try {
-      const paymentData = await studentDashboardService.loadPaymentStatus(studentId);
-      setPaymentStatus(paymentData);
-    } catch (error) {
-      console.error('Error cargando estado de pago:', error);
+    if (profileLoading || loading || !isStudentRole || guideChecked) {
+      return;
     }
-  };
 
-  const loadPhysicalTests = async (studentId) => {
-    try {
-      const tests = await studentDashboardService.loadPhysicalTests(studentId);
-      setPhysicalTests(tests || []);
-      const panelData = await studentDashboardService.loadStudentPanelData(user.id);
-      setGamification(panelData.gamification || null);
-    } catch (error) {
-      console.error('Error cargando tests fisicos:', error);
+    setGuideChecked(true);
+    if (shouldAutoOpenPanelGuide('student')) {
+      setGuideOpen(true);
     }
-  };
+  }, [guideChecked, loading, profileLoading, userProfile?.role]);
 
-  const loadAttendanceStats = async (studentId) => {
-    try {
-      const attendanceData = await studentDashboardService.loadAttendanceStats(studentId);
-      setAttendanceStats(attendanceData);
-    } catch (error) {
-      console.error('Error cargando estadisticas de asistencia:', error);
+  useEffect(() => {
+    if (!studentData?.id || !user?.id) {
+      return undefined;
     }
-  };
+
+    const refreshStudentPanel = (event) => {
+      const refreshedStudentId = event?.detail?.studentId;
+
+      if (refreshedStudentId && String(refreshedStudentId) !== String(studentData.id)) {
+        return;
+      }
+
+      loadStudentData(user.id, { silent: true });
+    };
+
+    const unsubscribePaymentChanges = studentDashboardService.subscribeToPaymentChanges({
+      studentId: studentData.id,
+      onChange: refreshStudentPanel,
+    });
+
+    window.addEventListener('riovoley:dashboard-refresh', refreshStudentPanel);
+    window.addEventListener('riovoley:payments-updated', refreshStudentPanel);
+
+    return () => {
+      unsubscribePaymentChanges?.();
+      window.removeEventListener('riovoley:dashboard-refresh', refreshStudentPanel);
+      window.removeEventListener('riovoley:payments-updated', refreshStudentPanel);
+    };
+  }, [loadStudentData, studentData?.id, user?.id]);
 
   const renderAnuncios = () => (
-    <Card className="border-rv-gold/20 bg-black/30" padding="lg">
+    <Card className="border-rv-gold/20 bg-black/30" padding="lg" data-guide-id="student-announcements-card">
       <SectionHeader
         title="Anuncios y Comunicados"
         subtitle="Mantente informado de las novedades del club."
@@ -159,24 +192,14 @@ const StudentPanel = ({ user }) => {
   const renderPaymentStatus = () => {
     const currentPayment = paymentStatus?.payment;
     const remainingStatus = currentPayment ? getPaymentRemainingStatus(currentPayment) : null;
+    const isAggregatedCoverage = Number(currentPayment?.coverage_payment_count || 0) > 1;
 
     return (
-      <Card className="border-rv-gold/20 bg-black/30" padding="lg">
+      <Card className="border-rv-gold/20 bg-black/30" padding="lg" data-guide-id="student-payment-card">
         <SectionHeader
           title="Estado de Mensualidad"
-          subtitle="Revisa el estado de tus pagos y el tiempo restante de tu mensualidad activa."
+          subtitle="Revisa el periodo total cubierto por tus mensualidades registradas y el tiempo restante de esa cobertura."
           icon={<FaMoneyBillWave />}
-          actions={(
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={() => studentData && loadPaymentStatus(studentData.id)}
-              title="Actualizar informacion"
-            >
-              <FaSyncAlt className="mr-2" />
-              Actualizar
-            </Button>
-          )}
         />
 
         {paymentStatus ? (
@@ -220,9 +243,17 @@ const StudentPanel = ({ user }) => {
                 <div className="space-y-2 rounded-xl border border-white/15 bg-black/25 p-3 mobile:p-4">
                   <PaymentRow
                     icon={<FaCalendar />}
-                    label="Periodo de mensualidad"
+                    label={isAggregatedCoverage ? 'Periodo total cubierto' : 'Periodo de mensualidad'}
                     value={`${formatDateStringShort(currentPayment.fecha_inicio)} - ${formatDateStringShort(currentPayment.fecha_fin)}`}
                   />
+
+                  {isAggregatedCoverage ? (
+                    <PaymentRow
+                      icon={<FaClipboardList />}
+                      label="Mensualidades enlazadas"
+                      value={`${currentPayment.coverage_payment_count} periodos registrados`}
+                    />
+                  ) : null}
 
                   {remainingStatus ? (
                     <PaymentRow
@@ -239,21 +270,25 @@ const StudentPanel = ({ user }) => {
 
                   <PaymentRow
                     icon={<FaMoneyBillWave />}
-                    label="Monto"
-                    value={<span className="font-black text-white">${currentPayment.monto}</span>}
+                    label={isAggregatedCoverage ? 'Monto total registrado' : 'Monto'}
+                    value={<span className="font-black text-white">${currentPayment.coverage_total_amount || currentPayment.monto}</span>}
                   />
 
                   <PaymentRow
                     icon={<FaClipboardList />}
                     label="Estado"
-                    value={<StatusBadge tone={getPaymentStateTone(currentPayment.estado)}>{currentPayment.estado?.toUpperCase() || 'N/A'}</StatusBadge>}
+                    value={(
+                      <StatusBadge tone={getPaymentStateTone(currentPayment.latest_payment_status || currentPayment.estado)}>
+                        {(currentPayment.latest_payment_status || currentPayment.estado)?.toUpperCase() || 'N/A'}
+                      </StatusBadge>
+                    )}
                   />
 
-                  {currentPayment.fecha_pago ? (
+                  {(currentPayment.latest_payment_date || currentPayment.fecha_pago) ? (
                     <PaymentRow
                       icon={<FaCheckCircle />}
-                      label="Fecha de pago"
-                      value={formatDateStringShort(currentPayment.fecha_pago)}
+                      label={isAggregatedCoverage ? 'Ultimo pago registrado' : 'Fecha de pago'}
+                      value={formatDateStringShort(currentPayment.latest_payment_date || currentPayment.fecha_pago)}
                     />
                   ) : null}
                 </div>
@@ -270,7 +305,7 @@ const StudentPanel = ({ user }) => {
             ) : null}
           </div>
         ) : (
-          <EmptyState title="No hay informacion de pagos disponible" description="Intenta actualizar en unos segundos." />
+          <EmptyState title="No hay informacion de pagos disponible" description="La mensualidad se actualizara automaticamente cuando exista un registro." />
         )}
       </Card>
     );
@@ -282,17 +317,6 @@ const StudentPanel = ({ user }) => {
         title="Mis Asistencias"
         subtitle="Resumen mensual de asistencia a entrenamientos."
         icon={<FaChartBar />}
-        actions={(
-          <Button
-            variant="secondary"
-            size="sm"
-            onClick={() => studentData && loadAttendanceStats(studentData.id)}
-            title="Actualizar informacion"
-          >
-            <FaSyncAlt className="mr-2" />
-            Actualizar
-          </Button>
-        )}
       />
 
       {attendanceStats ? (
@@ -315,7 +339,7 @@ const StudentPanel = ({ user }) => {
             </Card>
           </div>
 
-          <Card className="border-white/15 bg-black/25" padding="sm">
+          <Card className="border-white/15 bg-black/25" padding="sm" data-guide-id="student-attendance-history">
             <h3 className="text-base font-extrabold text-white mobile:text-lg">Historial Reciente</h3>
             {attendanceStats.recentAttendances.length > 0 ? (
               <div className="mt-3 space-y-2">
@@ -340,7 +364,7 @@ const StudentPanel = ({ user }) => {
           </Card>
         </div>
       ) : (
-        <EmptyState title="No hay informacion de asistencias disponible" description="Intenta actualizar en unos segundos." />
+        <EmptyState title="No hay informacion de asistencias disponible" description="La asistencia aparecera automaticamente cuando existan registros." />
       )}
     </Card>
   );
@@ -412,12 +436,12 @@ const StudentPanel = ({ user }) => {
   }
 
   const menuItems = [
-    { id: 'anuncios', icon: <FaBullhorn />, label: 'Anuncios' },
-    { id: 'progreso', icon: <FaStar />, label: 'Mi Progreso' },
-    { id: 'mensualidad', icon: <FaMoneyBillWave />, label: 'Mensualidad' },
-    { id: 'asistencias', icon: <FaChartBar />, label: 'Asistencias' },
-    { id: 'tests-fisicos', icon: <FaDumbbell />, label: 'Tests Fisicos' },
-    { id: 'perfil', icon: <FaCog />, label: 'Mi Perfil' }
+    { id: 'anuncios', guideId: 'student-menu-anuncios', icon: <FaBullhorn />, label: 'Anuncios' },
+    { id: 'progreso', guideId: 'student-menu-progreso', icon: <FaStar />, label: 'Mi Progreso' },
+    { id: 'mensualidad', guideId: 'student-menu-mensualidad', icon: <FaMoneyBillWave />, label: 'Mensualidad' },
+    { id: 'asistencias', guideId: 'student-menu-asistencias', icon: <FaChartBar />, label: 'Asistencias' },
+    { id: 'tests-fisicos', guideId: 'student-menu-tests-fisicos', icon: <FaDumbbell />, label: 'Tests Fisicos' },
+    { id: 'perfil', guideId: 'student-menu-perfil', icon: <FaCog />, label: 'Mi Perfil' }
   ];
 
   const sidebarAvatar = gamification?.identity ? (
@@ -432,6 +456,16 @@ const StudentPanel = ({ user }) => {
     <FaUserCircle />
   );
 
+  const handleGuideSkip = () => {
+    markPanelGuideDismissed('student');
+    setGuideOpen(false);
+  };
+
+  const handleGuideComplete = () => {
+    markPanelGuideCompleted('student');
+    setGuideOpen(false);
+  };
+
   return (
     <RolePanelLayout
       as="aside"
@@ -445,9 +479,15 @@ const StudentPanel = ({ user }) => {
       onSectionChange={setActiveSection}
       showDescriptions={false}
       topBar={(
-        <div>
-          <h1 className="text-xl font-black text-white mobile:text-2xl">Panel de Estudiante</h1>
-          <p className="mt-1 text-sm text-slate-200 mobile:text-base">Bienvenido, {studentData.users?.nombre}</p>
+        <div className="flex flex-col gap-3 mobile:flex-row mobile:items-center mobile:justify-between">
+          <div>
+            <h1 className="text-xl font-black text-white mobile:text-2xl">Panel de Estudiante</h1>
+            <p className="mt-1 text-sm text-slate-200 mobile:text-base">Bienvenido, {studentData.users?.nombre}</p>
+          </div>
+          <Button variant="secondary" size="sm" onClick={() => setGuideOpen(true)}>
+            <FaBookOpen className="mr-2" />
+            Guia del panel
+          </Button>
         </div>
       )}
       contentClassName="space-y-4 mobile:space-y-5"
@@ -460,10 +500,18 @@ const StudentPanel = ({ user }) => {
         <StudentPhysicalTests
           physicalTests={physicalTests}
           studentData={studentData}
-          onRefresh={() => studentData && loadPhysicalTests(studentData.id)}
         />
       )}
       {activeSection === 'perfil' && renderProfile()}
+      <PanelUserGuide
+        open={guideOpen}
+        role="student"
+        panelLabel="Panel de Estudiante"
+        steps={PANEL_GUIDE_STEPS.student}
+        onClose={handleGuideSkip}
+        onComplete={handleGuideComplete}
+        onSectionChange={setActiveSection}
+      />
     </RolePanelLayout>
   );
 };
@@ -492,7 +540,3 @@ PaymentRow.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.node.isRequired
 };
-
-
-
-

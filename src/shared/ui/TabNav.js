@@ -17,6 +17,7 @@ const TabNav = ({ items, activeId, onChange, className }) => {
           <button
             key={tab.id}
             type="button"
+            data-guide-id={tab.guideId}
             onClick={() => onChange(tab.id)}
             className={cn(
               'group relative rounded-[26px] border px-4 py-4 text-left transition-all duration-300',
@@ -82,6 +83,7 @@ TabNav.propTypes = {
       icon: PropTypes.elementType,
       helper: PropTypes.string,
       badge: PropTypes.node,
+      guideId: PropTypes.string,
     })
   ).isRequired,
   activeId: PropTypes.string.isRequired,

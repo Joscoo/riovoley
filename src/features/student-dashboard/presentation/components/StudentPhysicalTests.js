@@ -11,7 +11,7 @@ import StudentPhysicalHistory from './physical-tests/StudentPhysicalHistory';
 
 const DEFAULT_BLOCK = 'jump';
 
-const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
+const StudentPhysicalTests = ({ physicalTests, studentData }) => {
   const profile = useMemo(
     () => buildStudentPhysicalProfile({ physicalTests, studentData }),
     [physicalTests, studentData]
@@ -34,7 +34,7 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
         />
       ) : (
         <div className="space-y-4 mobile:space-y-5">
-          <StudentPhysicalHero hero={profile.hero} onRefresh={onRefresh} />
+          <StudentPhysicalHero hero={profile.hero} />
           <StudentPhysicalTrendChart
             activeBlock={activeBlock}
             blocks={profile.chartGroups}
@@ -42,7 +42,9 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
           />
           <StudentPhysicalInsights insights={profile.insights} />
           <StudentPhysicalRecommendations recommendations={profile.recommendations} />
-          <StudentPhysicalHistory items={profile.history} />
+          <div data-guide-id="student-physical-history">
+            <StudentPhysicalHistory items={profile.history} />
+          </div>
         </div>
       )}
     </Card>
@@ -52,8 +54,6 @@ const StudentPhysicalTests = ({ physicalTests, studentData, onRefresh }) => {
 StudentPhysicalTests.propTypes = {
   physicalTests: PropTypes.array.isRequired,
   studentData: PropTypes.object,
-  onRefresh: PropTypes.func.isRequired,
 };
 
 export default StudentPhysicalTests;
-

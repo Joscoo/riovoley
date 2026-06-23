@@ -873,6 +873,7 @@ const AsistenciasManager = ({ user }) => {
               </Button>
             )}
             <Button 
+              data-guide-id="attendance-bulk-button"
               onClick={() => setBulkMode(!bulkMode)}
               className="w-full mobile:w-auto"
             >
@@ -1659,7 +1660,6 @@ AsistenciasManager.propTypes = {
 };
 
 export default AsistenciasManager;
-
 
 
 

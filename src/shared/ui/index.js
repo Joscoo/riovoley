@@ -16,7 +16,15 @@ export { default as RoleSidebar } from './layout/RoleSidebar';
 export { default as Toast } from './feedback/Toast';
 export { RenderProfileProvider, useRenderProfile, PERFORMANCE_MODES, RENDER_PROFILES, resolveRenderProfile } from './render-profile';
 export { default as Modal } from './Modal';
+export { default as PanelUserGuide } from './panel-guide/PanelUserGuide';
+export { PANEL_GUIDE_STEPS } from './panel-guide/panelGuideContent';
+export {
+  PANEL_GUIDE_VERSION,
+  readPanelGuideState,
+  shouldAutoOpenPanelGuide,
+  markPanelGuideDismissed,
+  markPanelGuideCompleted
+} from './panel-guide/panelGuideStorage';
 export { Input, Select, Textarea, FormField, Label } from './FormControls';
 export { semanticCatalog, getRoleLabel, getUserTypeLabel } from './semanticCatalog';
 export { iconRegistry, getRoleIcon, getUserTypeIcon } from './iconRegistry';
-

@@ -107,6 +107,7 @@ const TrainerDashboard = ({ user, onNavigateToSection }) => {
   return (
     <div className="mx-auto w-full max-w-7xl">
       <SectionHeader
+        guideId="trainer-dashboard-header"
         title="Dashboard del Entrenador"
         subtitle={`Resumen de tus actividades y atletas${user?.email ? ` - Sesión: ${user.email}` : ''}`}
         icon={<FaChartBar />}

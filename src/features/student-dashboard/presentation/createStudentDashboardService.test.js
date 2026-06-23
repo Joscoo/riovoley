@@ -64,4 +64,28 @@ describe('createStudentDashboardService', () => {
     expect(result.payments[0]).toMatchObject({ id: 'p1', statusInfo: { estado: 'activo' } });
     expect(result.physicalTests).toEqual([{ id: 't1' }]);
   });
+
+  it('delega subscribeToPaymentChanges al use case correspondiente', () => {
+    const unsubscribe = jest.fn();
+    const repository = {
+      findStudentByUserId: jest.fn(),
+      listCurrentPayments: jest.fn(),
+      listPhysicalTests: jest.fn(),
+      listPaymentsByStudentId: jest.fn(),
+      listAttendancesFromDate: jest.fn(),
+      subscribeToPaymentChanges: jest.fn(() => unsubscribe),
+    };
+    const onChange = jest.fn();
+
+    const service = createStudentDashboardService(repository, {
+      gamificationService: {
+        loadStudentGamificationByStudentId: jest.fn(),
+      },
+    });
+
+    const result = service.subscribeToPaymentChanges({ studentId: 's1', onChange });
+
+    expect(repository.subscribeToPaymentChanges).toHaveBeenCalledWith('s1', onChange);
+    expect(result).toBe(unsubscribe);
+  });
 });

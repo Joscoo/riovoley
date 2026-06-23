@@ -208,6 +208,7 @@ const StudentProfileIdentityCard = ({ userId, gamification, onIdentityUpdated, l
         title="Foto y Avatar"
         subtitle="Elige si tu perfil muestra foto personal o avatar competitivo."
         icon={<FaIdCard />}
+        actionsGuideId="student-profile-photo-actions"
         actions={(
           <Button
             size="sm"

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import {
   FaBan,
+  FaBookOpen,
   FaBullhorn,
   FaCalendar,
   FaChartBar,
@@ -18,23 +19,35 @@ import { ProfileSettings } from '../../../account-admin';
 import { TestsFisicosManager } from '../../../physical-tests';
 import { UserManagementPanel } from '../../../user-management';
 import TrainerDashboard from './TrainerDashboard';
-import { RolePanelLayout, iconRegistry, semanticCatalog } from '../../../../shared/ui';
+import {
+  RolePanelLayout,
+  iconRegistry,
+  semanticCatalog,
+  Button,
+  PanelUserGuide,
+  PANEL_GUIDE_STEPS,
+  shouldAutoOpenPanelGuide,
+  markPanelGuideDismissed,
+  markPanelGuideCompleted
+} from '../../../../shared/ui';
 
 const TrainerPanel = ({ user }) => {
   const { profile, loading } = useUserProfile(user);
   const location = useLocation();
   const [activeSection, setActiveSection] = useState('dashboard');
+  const [guideOpen, setGuideOpen] = useState(false);
+  const [guideChecked, setGuideChecked] = useState(false);
   const UsersIcon = iconRegistry.users;
   const TrainerIcon = iconRegistry.trainer;
 
   const menuItems = useMemo(() => [
-    { id: 'dashboard', icon: <FaChartBar />, label: semanticCatalog.UI_LABELS.dashboard, description: 'Resumen general' },
-    { id: 'usuarios', icon: <UsersIcon />, label: semanticCatalog.UI_LABELS.usersManagementTitle, description: 'Administrar estudiantes' },
-    { id: 'asistencias', icon: <FaCalendar />, label: 'Asistencias', description: 'Registrar asistencias' },
-    { id: 'tests-fisicos', icon: <FaDumbbell />, label: 'Tests Fisicos', description: 'Evaluaciones fisicas' },
-    { id: 'pagos', icon: <FaDollarSign />, label: 'Pagos', description: 'Registrar pagos' },
-    { id: 'anuncios', icon: <FaBullhorn />, label: 'Anuncios', description: 'Comunicados y notificaciones' },
-    { id: 'configuracion', icon: <FaCog />, label: 'Configuracion', description: 'Perfil y seguridad' },
+    { id: 'dashboard', guideId: 'trainer-menu-dashboard', icon: <FaChartBar />, label: semanticCatalog.UI_LABELS.dashboard, description: 'Resumen general' },
+    { id: 'usuarios', guideId: 'trainer-menu-usuarios', icon: <UsersIcon />, label: semanticCatalog.UI_LABELS.usersManagementTitle, description: 'Administrar estudiantes' },
+    { id: 'asistencias', guideId: 'trainer-menu-asistencias', icon: <FaCalendar />, label: 'Asistencias', description: 'Registrar asistencias' },
+    { id: 'tests-fisicos', guideId: 'trainer-menu-tests-fisicos', icon: <FaDumbbell />, label: 'Tests Fisicos', description: 'Evaluaciones fisicas' },
+    { id: 'pagos', guideId: 'trainer-menu-pagos', icon: <FaDollarSign />, label: 'Pagos', description: 'Registrar pagos' },
+    { id: 'anuncios', guideId: 'trainer-menu-anuncios', icon: <FaBullhorn />, label: 'Anuncios', description: 'Comunicados y notificaciones' },
+    { id: 'configuracion', guideId: 'trainer-menu-configuracion', icon: <FaCog />, label: 'Configuracion', description: 'Perfil y seguridad' },
   ], []);
 
   const validSections = useMemo(() => new Set(menuItems.map((item) => item.id)), [menuItems]);
@@ -50,6 +63,18 @@ const TrainerPanel = ({ user }) => {
       setActiveSection(normalizedSection);
     }
   }, [location.search, sectionAliasMap, validSections]);
+
+  useEffect(() => {
+    const isTrainerRole = profile?.role === 'entrenador';
+    if (loading || !isTrainerRole || guideChecked) {
+      return;
+    }
+
+    setGuideChecked(true);
+    if (shouldAutoOpenPanelGuide('trainer')) {
+      setGuideOpen(true);
+    }
+  }, [guideChecked, loading, profile?.role]);
 
   if (loading) {
     return (
@@ -77,6 +102,16 @@ const TrainerPanel = ({ user }) => {
     const normalizedSection = sectionAliasMap[sectionId] || sectionId;
     if (!validSections.has(normalizedSection)) return;
     setActiveSection(normalizedSection);
+  };
+
+  const handleGuideSkip = () => {
+    markPanelGuideDismissed('trainer');
+    setGuideOpen(false);
+  };
+
+  const handleGuideComplete = () => {
+    markPanelGuideCompleted('trainer');
+    setGuideOpen(false);
   };
 
   const renderActiveSection = () => {
@@ -111,14 +146,29 @@ const TrainerPanel = ({ user }) => {
       activeSection={activeSection}
       onSectionChange={setActiveSection}
       topBar={(
-        <div className="text-sm text-slate-200 mobile:text-base">
-          <span className="font-semibold text-white">{semanticCatalog.PANEL_LABELS.trainer}</span>
-          <span className="mx-2 text-rv-gold/70">&gt;</span>
-          <span>{menuItems.find((item) => item.id === activeSection)?.label}</span>
+        <div className="flex flex-col gap-3 mobile:flex-row mobile:items-center mobile:justify-between">
+          <div className="text-sm text-slate-200 mobile:text-base">
+            <span className="font-semibold text-white">{semanticCatalog.PANEL_LABELS.trainer}</span>
+            <span className="mx-2 text-rv-gold/70">&gt;</span>
+            <span>{menuItems.find((item) => item.id === activeSection)?.label}</span>
+          </div>
+          <Button variant="secondary" size="sm" onClick={() => setGuideOpen(true)}>
+            <FaBookOpen className="mr-2" />
+            Guia del panel
+          </Button>
         </div>
       )}
     >
       {renderActiveSection()}
+      <PanelUserGuide
+        open={guideOpen}
+        role="trainer"
+        panelLabel={semanticCatalog.PANEL_LABELS.trainer}
+        steps={PANEL_GUIDE_STEPS.trainer}
+        onClose={handleGuideSkip}
+        onComplete={handleGuideComplete}
+        onSectionChange={handleNavigateToSection}
+      />
     </RolePanelLayout>
   );
 };

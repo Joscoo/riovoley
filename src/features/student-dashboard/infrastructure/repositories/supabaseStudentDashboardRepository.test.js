@@ -1,6 +1,8 @@
 jest.mock('../../../../config/supabase', () => ({
   supabase: {
     from: jest.fn(),
+    channel: jest.fn(),
+    removeChannel: jest.fn(),
   },
 }));
 
@@ -80,5 +82,32 @@ describe('SupabaseStudentDashboardRepository', () => {
     const result = await repository.listAttendancesFromDate('st-1', '2026-05-01');
 
     expect(result).toEqual([]);
+  });
+
+  it('subscribeToPaymentChanges crea una suscripcion filtrada por estudiante', () => {
+    const unsubscribe = jest.fn();
+    const subscribe = jest.fn(() => ({ unsubscribe }));
+    const on = jest.fn(() => ({ subscribe }));
+    supabase.channel.mockReturnValue({ on });
+
+    const repository = new SupabaseStudentDashboardRepository();
+    const onChange = jest.fn();
+    const dispose = repository.subscribeToPaymentChanges('st-1', onChange);
+
+    expect(supabase.channel).toHaveBeenCalledWith('student-dashboard-payments-st-1');
+    expect(on).toHaveBeenCalledWith(
+      'postgres_changes',
+      {
+        event: '*',
+        schema: 'public',
+        table: 'payments',
+        filter: 'student_id=eq.st-1',
+      },
+      onChange
+    );
+
+    dispose();
+
+    expect(unsubscribe).toHaveBeenCalledTimes(1);
   });
 });

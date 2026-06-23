@@ -162,7 +162,7 @@ const HorariosManager = ({ user }) => {
         subtitle="Administra los horarios de entrenamientos."
         icon={<FaCalendarWeek />}
         actions={
-          <Button type="button" onClick={toggleFormVisibility} className="w-full mobile:w-auto">
+          <Button type="button" data-guide-id="schedule-new-button" onClick={toggleFormVisibility} className="w-full mobile:w-auto">
             {showForm ? <FaTimes className="mr-2" /> : <FaPlus className="mr-2" />}
             {showForm ? 'Cancelar' : 'Nuevo Horario'}
           </Button>
@@ -676,4 +676,3 @@ HorariosManager.defaultProps = {
 };
 
 export default HorariosManager;
-

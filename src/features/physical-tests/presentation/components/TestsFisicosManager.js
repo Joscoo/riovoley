@@ -543,7 +543,7 @@ const TestsFisicosManager = ({ user }) => {
         description="Registrar y seguir el rendimiento físico de los atletas"
         icon={FaDumbbell}
         actions={
-          <Button onClick={() => openModal()} className="mobile:w-full desktop:w-auto">
+          <Button data-guide-id="physical-tests-new-button" onClick={() => openModal()} className="mobile:w-full desktop:w-auto">
             <FaPlus className="mr-2 inline align-middle" /> Nuevo Test Físico
           </Button>
         }
@@ -1209,5 +1209,4 @@ TestsFisicosManager.propTypes = {
 };
 
 export default TestsFisicosManager;
-
 

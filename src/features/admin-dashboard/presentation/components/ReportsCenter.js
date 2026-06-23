@@ -57,10 +57,10 @@ const actionGroupClass = 'rounded-[24px] border border-white/10 bg-[linear-gradi
 const sectionLeadClass = 'mb-4 rounded-2xl border border-rv-gold/15 bg-[linear-gradient(135deg,rgba(249,178,51,0.08),rgba(15,23,42,0.12)_58%,rgba(46,49,146,0.18))] px-4 py-3 text-sm text-slate-200';
 
 const REPORTS_TABS = [
-  { id: 'operacion', label: 'Operacion', helper: 'PDF rapido, persistencia y exportes inmediatos', icon: FaDownload },
-  { id: 'finanzas', label: 'Finanzas', helper: 'Resumen, tendencia, riesgo y cartera vencida', icon: FaChartLine },
-  { id: 'padron', label: 'Padron', helper: 'Busqueda y exportacion de estudiantes', icon: FaUsers },
-  { id: 'historial', label: 'Historial', helper: 'Reportes persistidos y trazabilidad', icon: FaCalendarAlt },
+  { id: 'operacion', label: 'Operacion', helper: 'PDF rapido, persistencia y exportes inmediatos', icon: FaDownload, guideId: 'reports-tab-operacion' },
+  { id: 'finanzas', label: 'Finanzas', helper: 'Resumen, tendencia, riesgo y cartera vencida', icon: FaChartLine, guideId: 'reports-tab-finanzas' },
+  { id: 'padron', label: 'Padron', helper: 'Busqueda y exportacion de estudiantes', icon: FaUsers, guideId: 'reports-tab-padron' },
+  { id: 'historial', label: 'Historial', helper: 'Reportes persistidos y trazabilidad', icon: FaCalendarAlt, guideId: 'reports-tab-historial' },
 ];
 
 // ── Utility helpers ───────────────────────────────────────────────────────
@@ -1219,7 +1219,7 @@ const ReportsCenter = () => {
         </Card>
       </div>
 
-      <div className="grid gap-4 desktop:grid-cols-[1.05fr_0.95fr]">
+      <div className="grid gap-4 desktop:grid-cols-[1.05fr_0.95fr]" data-guide-id="reports-financial-exports">
         <Card>
           <PanelHeader
             title="Tendencia Financiera Tabular"
