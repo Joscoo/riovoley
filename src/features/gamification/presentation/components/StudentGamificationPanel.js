@@ -1113,14 +1113,14 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
         icon={<FaTrophy />}
       />
 
-      <div className="mt-4 grid gap-3 mobile:grid-cols-2 desktop:grid-cols-4">
+      <div className="-mx-1 mt-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 pb-1 desktop:mx-0 desktop:grid desktop:grid-cols-4 desktop:overflow-visible desktop:px-0">
         {PANEL_TABS.map((tab) => (
           <button
             key={tab.id}
             type="button"
             data-guide-id={`student-progress-tab-${tab.id}`}
             onClick={() => setSelectedPanelTab(tab.id)}
-            className={`rounded-3xl border px-4 py-3 text-left transition ${
+            className={`min-w-[220px] snap-start rounded-3xl border px-4 py-3 text-left transition desktop:min-w-0 ${
               selectedPanelTab === tab.id
                 ? 'border-rv-gold/60 bg-rv-gold/15 text-white shadow-[0_0_22px_rgba(245,158,11,0.16)]'
                 : 'border-white/10 bg-white/5 text-slate-300 hover:border-white/20 hover:text-white'
@@ -1130,14 +1130,14 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
               <tab.icon className="text-rv-gold" />
               {tab.label}
             </span>
-            <span className="mt-2 block text-sm leading-5 text-slate-300">
+            <span className="mt-2 hidden text-sm leading-5 text-slate-300 mobile:block">
               {tab.helper}
             </span>
           </button>
         ))}
       </div>
 
-      <div className="mt-4 rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200">
+      <div className="mt-4 rounded-3xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-slate-200 mobile:px-4 mobile:py-3">
         <span className="font-black text-white">{activePanelTabMeta.label}:</span> {activePanelTabMeta.helper}.
       </div>
 
@@ -1401,14 +1401,14 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
 
       {selectedPanelTab === 'identity' ? (
       <>
-      <div className="mt-4 grid gap-3 mobile:grid-cols-2 desktop:grid-cols-4">
+      <div className="-mx-1 mt-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 pb-1 desktop:mx-0 desktop:grid desktop:grid-cols-4 desktop:overflow-visible desktop:px-0">
         {IDENTITY_TABS.map((tab) => (
           <button
             key={tab.id}
             type="button"
             data-guide-id={`student-progress-identity-tab-${tab.id}`}
             onClick={() => setSelectedIdentityTab(tab.id)}
-            className={`rounded-3xl border px-4 py-3 text-left transition ${
+            className={`min-w-[220px] snap-start rounded-3xl border px-4 py-3 text-left transition desktop:min-w-0 ${
               selectedIdentityTab === tab.id
                 ? 'border-cyan-300/50 bg-cyan-400/15 text-white'
                 : 'border-white/10 bg-white/5 text-slate-300 hover:border-white/20 hover:text-white'
@@ -1418,13 +1418,13 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
               <tab.icon className="text-rv-gold" />
               {tab.label}
             </span>
-            <span className="mt-2 block text-sm leading-5 text-slate-300">
+            <span className="mt-2 hidden text-sm leading-5 text-slate-300 mobile:block">
               {tab.helper}
             </span>
           </button>
         ))}
       </div>
-      <div className="mt-4 rounded-2xl border border-white/10 bg-black/15 px-4 py-3 text-sm text-slate-300">
+      <div className="mt-4 rounded-2xl border border-white/10 bg-black/15 px-3 py-2.5 text-sm text-slate-300 mobile:px-4 mobile:py-3">
         <span className="font-black text-white">{activeIdentityTabMeta.label}</span>
         <span className="ml-2">{activeIdentityTabMeta.helper}.</span>
       </div>
@@ -2180,13 +2180,13 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
       {selectedPanelTab === 'goals' ? (
       <>
       <Card className="mt-4 border-white/15 bg-black/25" padding="sm">
-        <div className="grid gap-3 mobile:grid-cols-3">
+        <div className="-mx-1 flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 pb-1 desktop:mx-0 desktop:grid desktop:grid-cols-3 desktop:overflow-visible desktop:px-0">
           {GOALS_TABS.map((tab) => (
             <button
               key={tab.id}
               type="button"
               onClick={() => setSelectedGoalsTab(tab.id)}
-              className={`rounded-3xl border px-4 py-3 text-left transition ${
+              className={`min-w-[220px] snap-start rounded-3xl border px-4 py-3 text-left transition desktop:min-w-0 ${
                 selectedGoalsTab === tab.id
                   ? 'border-rv-gold/60 bg-rv-gold/15 text-white shadow-[0_0_18px_rgba(245,158,11,0.14)]'
                   : 'border-white/10 bg-white/5 text-slate-300 hover:border-white/20 hover:text-white'
@@ -2196,7 +2196,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                 <tab.icon className="text-rv-gold" />
                 {tab.label}
               </span>
-              <span className="mt-2 block text-sm leading-5 text-slate-300">
+              <span className="mt-2 hidden text-sm leading-5 text-slate-300 mobile:block">
                 {tab.helper}
               </span>
             </button>
@@ -2204,7 +2204,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
         </div>
       </Card>
 
-      <div className="mt-4 rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200">
+      <div className="mt-4 rounded-3xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-slate-200 mobile:px-4 mobile:py-3">
         <span className="font-black text-white">{activeGoalsTabMeta.label}:</span> {activeGoalsTabMeta.helper}.
       </div>
 

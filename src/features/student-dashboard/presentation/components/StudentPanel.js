@@ -480,11 +480,11 @@ const StudentPanel = ({ user }) => {
       showDescriptions={false}
       topBar={(
         <div className="flex flex-col gap-3 mobile:flex-row mobile:items-center mobile:justify-between">
-          <div>
+          <div className="min-w-0">
             <h1 className="text-xl font-black text-white mobile:text-2xl">Panel de Estudiante</h1>
             <p className="mt-1 text-sm text-slate-200 mobile:text-base">Bienvenido, {studentData.users?.nombre}</p>
           </div>
-          <Button variant="secondary" size="sm" onClick={() => setGuideOpen(true)}>
+          <Button variant="secondary" size="sm" onClick={() => setGuideOpen(true)} className="w-full justify-center mobile:w-auto">
             <FaBookOpen className="mr-2" />
             Guia del panel
           </Button>
@@ -526,12 +526,12 @@ StudentPanel.propTypes = {
 export default StudentPanel;
 
 const PaymentRow = ({ icon, label, value }) => (
-  <div className="flex flex-col gap-2 rounded-xl border border-white/10 bg-black/20 px-3 py-2.5 mobile:flex-row mobile:items-center mobile:justify-between">
-    <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-rv-gold">
+  <div className="flex flex-col gap-1.5 rounded-xl border border-white/10 bg-black/20 px-3 py-2.5 mobile:flex-row mobile:items-center mobile:justify-between mobile:gap-3">
+    <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wide text-rv-gold mobile:text-xs">
       {icon}
       {label}
     </span>
-    <span className="text-sm font-semibold text-white mobile:text-base">{value}</span>
+    <span className="text-sm font-semibold leading-5 text-white mobile:text-base">{value}</span>
   </div>
 );
 

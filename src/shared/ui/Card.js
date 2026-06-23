@@ -14,9 +14,9 @@ const cardVariants = cva(
       },
       padding: {
         none: '',
-        sm: 'p-4',
-        md: 'p-5 mobile:p-6',
-        lg: 'p-6 mobile:p-8'
+        sm: 'p-3 mobile:p-4',
+        md: 'p-4 mobile:p-5',
+        lg: 'p-5 mobile:p-6'
       }
     },
     defaultVariants: {

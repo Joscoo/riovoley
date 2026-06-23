@@ -36,18 +36,22 @@ const RolePanelLayout = ({
 
         <main className="flex min-w-0 flex-1 flex-col overflow-hidden">
           {topBar ? (
-            <header className="border-b border-rv-gold/20 bg-black/30 px-3 py-3 backdrop-blur-md mobile:px-4 tablet:px-5 desktop:px-8 desktop:py-5">
-              {topBar}
+            <header className="sticky top-[56px] z-20 border-b border-rv-gold/20 bg-black/55 px-3 py-3 backdrop-blur-md mobile:top-[65px] mobile:px-4 tablet:px-5 desktop:top-0 desktop:px-8 desktop:py-4">
+              <div className="mx-auto w-full max-w-[1380px]">
+                {topBar}
+              </div>
             </header>
           ) : null}
 
           <div
             className={cn(
-              'flex-1 overflow-y-auto overflow-x-hidden px-2 py-3 mobile:px-3 tablet:px-4 tablet:py-4 desktop:px-7 desktop:py-6',
+              'flex-1 overflow-y-auto overflow-x-hidden px-2 py-3 pb-[max(env(safe-area-inset-bottom),1rem)] mobile:px-3 tablet:px-4 tablet:py-4 desktop:px-7 desktop:py-6',
               contentClassName
             )}
           >
-            {children}
+            <div className="mx-auto w-full max-w-[1380px]">
+              {children}
+            </div>
           </div>
         </main>
       </div>
