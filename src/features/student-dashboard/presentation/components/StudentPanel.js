@@ -48,6 +48,7 @@ import {
   markPanelGuideCompleted
 } from '../../../../shared/ui';
 import { cn } from '../../../../lib/cn';
+import { formatCategoryLabel, formatStatusLabel } from '../../../../shared/lib/trainingCategoryFormatting';
 
 const StudentPanel = ({ user }) => {
   const location = useLocation();
@@ -279,7 +280,7 @@ const StudentPanel = ({ user }) => {
                     label="Estado"
                     value={(
                       <StatusBadge tone={getPaymentStateTone(currentPayment.latest_payment_status || currentPayment.estado)}>
-                        {(currentPayment.latest_payment_status || currentPayment.estado)?.toUpperCase() || 'N/A'}
+                        {formatStatusLabel(currentPayment.latest_payment_status || currentPayment.estado)}
                       </StatusBadge>
                     )}
                   />
@@ -472,22 +473,18 @@ const StudentPanel = ({ user }) => {
       variant="student"
       title={`${studentData.users?.nombre || ''} ${studentData.users?.apellido || ''}`.trim() || 'Estudiante'}
       roleLabel="Estudiante"
-      badgeLabel={studentData.categoria?.replaceAll('_', ' ').toUpperCase() || 'ESTUDIANTE'}
+      badgeLabel={studentData.categoria ? formatCategoryLabel(studentData.categoria) : 'Estudiante'}
       avatarIcon={sidebarAvatar}
       menuItems={menuItems}
       activeSection={activeSection}
       onSectionChange={setActiveSection}
       showDescriptions={false}
       topBar={(
-        <div className="flex flex-col gap-3 mobile:flex-row mobile:items-center mobile:justify-between">
+        <div className="min-w-0">
           <div className="min-w-0">
-            <h1 className="text-xl font-black text-white mobile:text-2xl">Panel de Estudiante</h1>
-            <p className="mt-1 text-sm text-slate-200 mobile:text-base">Bienvenido, {studentData.users?.nombre}</p>
+            <h1 className="truncate text-lg font-black leading-tight text-white mobile:text-2xl">Panel de Estudiante</h1>
+            <p className="mt-0.5 truncate text-sm leading-5 text-slate-200 mobile:text-base">Bienvenido, {studentData.users?.nombre}</p>
           </div>
-          <Button variant="secondary" size="sm" onClick={() => setGuideOpen(true)} className="w-full justify-center mobile:w-auto">
-            <FaBookOpen className="mr-2" />
-            Guia del panel
-          </Button>
         </div>
       )}
       contentClassName="space-y-4 mobile:space-y-5"
@@ -503,6 +500,16 @@ const StudentPanel = ({ user }) => {
         />
       )}
       {activeSection === 'perfil' && renderProfile()}
+      <Button
+        variant="secondary"
+        size="icon"
+        onClick={() => setGuideOpen(true)}
+        className="fixed bottom-[max(env(safe-area-inset-bottom),1rem)] right-4 z-[90] h-11 w-11 rounded-full border-rv-gold/40 bg-black/80 p-0 text-rv-gold shadow-[0_10px_24px_rgba(0,0,0,0.35)] backdrop-blur-md desktop:bottom-6 desktop:right-6"
+        aria-label="Abrir guia del panel"
+        title="Abrir guia del panel"
+      >
+        <FaBookOpen />
+      </Button>
       <PanelUserGuide
         open={guideOpen}
         role="student"

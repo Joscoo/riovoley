@@ -19,7 +19,7 @@ const RolePanelLayout = ({
   as = 'nav'
 }) => {
   return (
-    <div className="min-h-[100dvh] w-full bg-rv-panel text-white">
+    <div className="min-h-[100dvh] w-full bg-rv-panel pt-[56px] text-white mobile:pt-[65px] tablet:pt-[70px]">
       <div className="flex min-h-[100dvh] w-full">
         <RoleSidebar
           as={as}
@@ -36,7 +36,7 @@ const RolePanelLayout = ({
 
         <main className="flex min-w-0 flex-1 flex-col overflow-hidden">
           {topBar ? (
-            <header className="sticky top-[56px] z-20 border-b border-rv-gold/20 bg-black/55 px-3 py-3 backdrop-blur-md mobile:top-[65px] mobile:px-4 tablet:px-5 desktop:top-0 desktop:px-8 desktop:py-4">
+            <header className="sticky top-0 z-20 border-b border-rv-gold/20 bg-black/70 px-3 py-3 backdrop-blur-md mobile:px-4 tablet:px-5 desktop:bg-black/55 desktop:px-8 desktop:py-4">
               <div className="mx-auto w-full max-w-[1380px]">
                 {topBar}
               </div>

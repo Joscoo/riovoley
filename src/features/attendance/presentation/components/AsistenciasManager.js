@@ -12,6 +12,7 @@ import {
   resetTableQuery,
 } from '../../../../shared/lib/tableQuery';
 import { formatDateString } from '../../../../utils/dateUtils';
+import { formatCategoryLabel, formatDisplayLabel } from '../../../../shared/lib/trainingCategoryFormatting';
 import { 
   FaChartBar, 
   FaCheckCircle, 
@@ -586,7 +587,7 @@ const AsistenciasManager = ({ user }) => {
 
   const formatCategoria = (categoria) => {
     if (!categoria) return '--';
-    return categoria.replaceAll('_', ' ').toUpperCase();
+    return formatCategoryLabel(categoria);
   };
 
   // Filtrar atletas según categoría seleccionada en tabs y término de búsqueda
@@ -714,7 +715,7 @@ const AsistenciasManager = ({ user }) => {
                     className={`${styles.paymentMethodBtn} ${
                       isSelected ? styles.paymentMethodActive : ''
                     }`}
-                    aria-label={`Marcar asistencia con ${pt.nombre.replaceAll('_', ' ')}`}
+                    aria-label={`Marcar asistencia con ${formatDisplayLabel(pt.nombre)}`}
                     title={pt.descripcion}
                   >
                     {iconos[info.key] || <FaDollarSign />}
@@ -1227,7 +1228,7 @@ const AsistenciasManager = ({ user }) => {
                     <option value="">Todos</option>
                     {paymentTypes.map((paymentType) => (
                       <option key={paymentType.id} value={paymentType.id}>
-                        {(paymentType.nombre || '').replaceAll('_', ' ')}
+                        {formatDisplayLabel(paymentType.nombre)}
                       </option>
                     ))}
                   </select>
@@ -1660,8 +1661,6 @@ AsistenciasManager.propTypes = {
 };
 
 export default AsistenciasManager;
-
-
 
 
 

@@ -146,20 +146,26 @@ const TrainerPanel = ({ user }) => {
       activeSection={activeSection}
       onSectionChange={setActiveSection}
       topBar={(
-        <div className="flex flex-col gap-3 mobile:flex-row mobile:items-center mobile:justify-between">
-          <div className="text-sm text-slate-200 mobile:text-base">
+        <div className="min-w-0">
+          <div className="min-w-0 truncate text-sm leading-5 text-slate-200 mobile:text-base">
             <span className="font-semibold text-white">{semanticCatalog.PANEL_LABELS.trainer}</span>
             <span className="mx-2 text-rv-gold/70">&gt;</span>
-            <span>{menuItems.find((item) => item.id === activeSection)?.label}</span>
+            <span className="truncate">{menuItems.find((item) => item.id === activeSection)?.label}</span>
           </div>
-          <Button variant="secondary" size="sm" onClick={() => setGuideOpen(true)}>
-            <FaBookOpen className="mr-2" />
-            Guia del panel
-          </Button>
         </div>
       )}
     >
       {renderActiveSection()}
+      <Button
+        variant="secondary"
+        size="icon"
+        onClick={() => setGuideOpen(true)}
+        className="fixed bottom-[max(env(safe-area-inset-bottom),1rem)] right-4 z-[90] h-11 w-11 rounded-full border-rv-gold/40 bg-black/80 p-0 text-rv-gold shadow-[0_10px_24px_rgba(0,0,0,0.35)] backdrop-blur-md desktop:bottom-6 desktop:right-6"
+        aria-label="Abrir guia del panel"
+        title="Abrir guia del panel"
+      >
+        <FaBookOpen />
+      </Button>
       <PanelUserGuide
         open={guideOpen}
         role="trainer"

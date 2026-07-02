@@ -22,6 +22,7 @@ import { gamificationService } from '../../gamificationService';
 import { getAvatarStyleMeta } from '../../domain/avatarCatalog';
 import { buildAvatarUrl } from '../../domain/buildAvatarUrl';
 import { Button, Card, EmptyState, SectionHeader, StatusBadge } from '../../../../shared/ui';
+import { formatStatusLabel } from '../../../../shared/lib/trainingCategoryFormatting';
 import IdentityPortrait from './IdentityPortrait';
 
 const formatDate = (value) => {
@@ -648,8 +649,8 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
   const paymentsCount = Number(summary.totalPayments || 0);
   const hasActivePayment = Boolean(summary.hasActivePayment);
   const paymentStatusLabel = summary.latestPaymentStatus
-    ? summary.latestPaymentStatus.replaceAll('_', ' ')
-    : 'sin registro';
+    ? formatStatusLabel(summary.latestPaymentStatus)
+    : 'Sin registro';
   const strengthTotal = Number(summary.strengthTotal || 0);
   const activeLeaderboard = filteredLeaderboards.find((entry) => entry.type === selectedLeaderboardType)
     || filteredLeaderboards.find((entry) => entry.type === 'overall')

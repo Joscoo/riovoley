@@ -18,6 +18,7 @@ import { Button } from '../../../../shared/ui';
 import { Card } from '../../../../shared/ui';
 import { EmptyState } from '../../../../shared/ui';
 import { StatusBadge } from '../../../../shared/ui';
+import { formatCategoryLabel } from '../../../../shared/lib/trainingCategoryFormatting';
 
 const PAGE_SIZE = 8;
 
@@ -140,7 +141,7 @@ const StudentView = ({ user }) => {
                 {studentData.users?.nombre} {studentData.users?.apellido}
               </h1>
               <p className="text-xs font-semibold uppercase tracking-wide text-slate-300">
-                Categoria: {studentData.categoria?.replace(/_/g, ' ').toUpperCase()}
+                Categoria: {formatCategoryLabel(studentData.categoria)}
               </p>
               <p className="mt-1 inline-flex items-center gap-2 text-sm text-slate-200">
                 <FaEnvelope className="text-rv-gold" />
@@ -359,5 +360,4 @@ StudentView.propTypes = {
 };
 
 export default StudentView;
-
 

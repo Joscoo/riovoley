@@ -154,7 +154,7 @@ const PanelUserGuide = ({
       if (targetElement && attempts === 0) {
         targetElement.scrollIntoView({
           behavior: 'smooth',
-          block: currentStep.scrollBlock || (isMobileLayout ? 'start' : 'center'),
+          block: currentStep.scrollBlock || 'center',
           inline: 'center',
         });
       }
@@ -201,9 +201,9 @@ const PanelUserGuide = ({
   }, [currentStep, isMobileLayout, open]);
 
   const roleAccentClass = useMemo(() => {
-    if (role === 'student') return 'border-blue-300/30 bg-[linear-gradient(135deg,rgba(59,130,246,0.18),rgba(8,47,73,0.92))]';
-    if (role === 'trainer') return 'border-orange-300/30 bg-[linear-gradient(135deg,rgba(249,115,22,0.18),rgba(67,20,7,0.92))]';
-    return 'border-red-300/30 bg-[linear-gradient(135deg,rgba(239,68,68,0.18),rgba(69,10,10,0.92))]';
+    if (role === 'student') return 'border-rv-gold/35 bg-[linear-gradient(155deg,rgba(10,10,10,0.96),rgba(15,23,42,0.96)_58%,rgba(30,58,138,0.36))]';
+    if (role === 'trainer') return 'border-rv-gold/35 bg-[linear-gradient(155deg,rgba(10,10,10,0.96),rgba(15,23,42,0.96)_58%,rgba(249,115,22,0.18))]';
+    return 'border-rv-gold/35 bg-[linear-gradient(155deg,rgba(10,10,10,0.96),rgba(15,23,42,0.96)_58%,rgba(220,38,38,0.2))]';
   }, [role]);
 
   const desktopTooltipPosition = useMemo(
@@ -211,9 +211,9 @@ const PanelUserGuide = ({
     [currentStep?.placement, targetRect]
   );
 
-  const mobileCardMaxHeight = Math.max(480, Math.min(820, Math.round(viewport.height * 0.88)));
+  const mobileCardMaxHeight = Math.max(320, Math.min(540, Math.round(viewport.height * 0.64)));
   const contentMaxHeight = isMobileLayout
-    ? Math.max(320, mobileCardMaxHeight - 96)
+    ? Math.max(210, mobileCardMaxHeight - 150)
     : Math.max(420, viewport.height - 112);
 
   if (!open || !currentStep) {
@@ -222,7 +222,7 @@ const PanelUserGuide = ({
 
   return (
     <div className="pointer-events-none fixed inset-0 z-[1600]">
-      {targetRect && !isMobileLayout ? (
+      {targetRect ? (
         <>
           <div className="fixed left-0 top-0 bg-black/65" style={{ width: '100vw', height: targetRect.top }} />
           <div className="fixed left-0 bg-black/65" style={{ top: targetRect.top, width: targetRect.left, height: targetRect.height }} />
@@ -254,15 +254,15 @@ const PanelUserGuide = ({
           />
         </>
       ) : (
-        <div className="fixed inset-0 bg-black/72" />
+        <div className="fixed inset-0 bg-black/55" />
       )}
 
       <div
         className={cn(
           'pointer-events-auto fixed flex flex-col overflow-hidden border text-white shadow-[0_24px_80px_rgba(0,0,0,0.46)] backdrop-blur-xl',
           isMobileLayout
-            ? 'bottom-2 left-2 right-2 rounded-[22px]'
-            : 'w-[min(560px,calc(100vw-32px))] rounded-[28px]',
+            ? 'bottom-[max(env(safe-area-inset-bottom),0.5rem)] left-2 right-2 rounded-2xl'
+            : 'w-[min(560px,calc(100vw-32px))] rounded-2xl',
           roleAccentClass
         )}
         style={
@@ -275,19 +275,19 @@ const PanelUserGuide = ({
             }
         }
       >
-        <div className="border-b border-white/10 px-4 py-3">
+        <div className="border-b border-white/10 px-3 py-3 mobile:px-4">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <p className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.18em] text-rv-gold">
+              <p className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.14em] text-rv-gold">
                 <FaBookOpen />
                 Guia interactiva
               </p>
               <h3 className="mt-1 text-[15px] font-black leading-tight mobile:text-base">{currentStep.title}</h3>
               <p className="mt-1 text-[11px] font-semibold uppercase tracking-wide text-white/70">
-                {panelLabel} · Paso {stepIndex + 1} de {totalSteps}
+                {panelLabel} - Paso {stepIndex + 1} de {totalSteps}
               </p>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-black/20 px-2.5 py-1.5 text-right">
+            <div className="shrink-0 rounded-xl border border-white/10 bg-black/20 px-2.5 py-1.5 text-right">
               <p className="text-[10px] font-bold uppercase tracking-wide text-white/65">Progreso</p>
               <p className="text-sm font-black text-white">{progressPercent}%</p>
             </div>
@@ -301,11 +301,11 @@ const PanelUserGuide = ({
         </div>
 
         <div
-          className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-3 [touch-action:pan-y]"
+          className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 py-3 [touch-action:pan-y] mobile:px-4"
           style={{ maxHeight: `${contentMaxHeight}px`, WebkitOverflowScrolling: 'touch' }}
         >
           <div className="space-y-2.5">
-          <div className="rounded-2xl border border-rv-gold/20 bg-black/20 px-3 py-2.5 text-sm text-slate-100">
+          <div className="rounded-xl border border-rv-gold/20 bg-black/20 px-3 py-2.5 text-sm text-slate-100">
             <p className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wide text-white">
               <FaCrosshairs className="text-rv-gold" />
               Donde hacer click
@@ -314,7 +314,7 @@ const PanelUserGuide = ({
           </div>
 
           {currentStep.highlights?.length > 1 ? (
-            <div className="rounded-2xl border border-white/10 bg-black/20 px-3 py-2.5">
+            <div className="rounded-xl border border-white/10 bg-black/20 px-3 py-2.5">
               <p className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wide text-white">
                 <FaBullseye className="text-rv-gold" />
                 Puntos clave
@@ -329,7 +329,7 @@ const PanelUserGuide = ({
               </ul>
             </div>
           ) : currentStep.highlights?.length === 1 ? (
-            <div className="rounded-2xl border border-white/10 bg-black/20 px-3 py-2 text-[12px] leading-5 text-slate-200">
+            <div className="rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-[12px] leading-5 text-slate-200">
               <p className="inline-flex items-center gap-2 font-bold uppercase tracking-wide text-white">
                 <FaBullseye className="text-rv-gold" />
                 Resultado
@@ -339,14 +339,14 @@ const PanelUserGuide = ({
           ) : null}
 
           {currentStep.selector && (isMobileLayout || !targetFound) ? (
-            <div className="rounded-2xl border border-white/10 bg-black/20 px-3 py-2 text-[11px] leading-5 text-slate-300">
+            <div className="rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-[11px] leading-5 text-slate-300">
               {targetFound ? (
                 <p>
-                  En móvil la guía prioriza que todo el contenido sea visible. El paso ya cambió a la sección correcta y puedes usar esta tarjeta mientras haces scroll.
+                  En movil la guia mantiene visible el contenido principal. El paso ya cambio a la seccion correcta y puedes usar esta tarjeta mientras haces scroll.
                 </p>
               ) : (
                 <p>
-                  Buscando el elemento de esta etapa. Si tarda en aparecer, la guía ya cambió a la sección correcta y está esperando el bloque objetivo.
+                  Buscando el elemento de esta etapa. Si tarda en aparecer, la guia ya cambio a la seccion correcta y esta esperando el bloque objetivo.
                 </p>
               )}
             </div>
@@ -354,14 +354,14 @@ const PanelUserGuide = ({
           </div>
         </div>
 
-        <div className="border-t border-white/10 px-4 py-3">
+        <div className="border-t border-white/10 px-3 py-3 mobile:px-4">
           <div className="flex flex-col gap-3 mobile:flex-row mobile:items-center mobile:justify-between">
             <Button variant="ghost" size="sm" onClick={onClose} className="justify-center mobile:justify-start">
               <FaForward className="mr-2" />
               Omitir guia
             </Button>
 
-            <div className="flex flex-col gap-3 mobile:flex-row">
+            <div className="grid grid-cols-2 gap-2 mobile:flex mobile:flex-row">
               <Button
                 variant="secondary"
                 size="sm"

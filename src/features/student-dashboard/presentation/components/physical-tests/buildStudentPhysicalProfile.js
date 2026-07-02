@@ -1,4 +1,5 @@
 import { getPhysicalTestFieldMeta } from '../../../../physical-tests/domain/physicalTestFieldMetadata';
+import { formatCategoryLabel } from '../../../../../shared/lib/trainingCategoryFormatting';
 
 const BLOCK_KEYS = {
   body: 'body',
@@ -475,7 +476,7 @@ const buildHeroSummary = ({ tests, studentData, blocks, recommendations }) => {
     summary: recommendations.headline,
     confidence: recommendations.confidence,
     latestDateLabel: formatLongDate(latest?.fecha_test),
-    categoryLabel: studentData?.categoria || 'Sin categoria',
+    categoryLabel: formatCategoryLabel(studentData?.categoria),
     age,
     hallazgos,
   };
@@ -549,7 +550,7 @@ export const buildStudentPhysicalProfile = ({ physicalTests = [], studentData = 
         summary: 'Aun no hay evaluaciones para construir tu perfil.',
         confidence: 'preliminar',
         latestDateLabel: 'N/A',
-        categoryLabel: studentData?.categoria || 'Sin categoria',
+        categoryLabel: formatCategoryLabel(studentData?.categoria),
         age: calculateAge(studentData?.fecha_nacimiento),
         hallazgos: [],
       },

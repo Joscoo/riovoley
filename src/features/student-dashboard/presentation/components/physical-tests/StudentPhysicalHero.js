@@ -20,7 +20,7 @@ const StudentPhysicalHero = ({ hero }) => (
           </span>
           <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/25 px-3 py-1 capitalize">
             <FaUser className="text-rv-gold" />
-            Categoria: {hero.categoryLabel.replaceAll('_', ' ')}
+            Categoria: {hero.categoryLabel}
           </span>
           <span className="inline-flex items-center gap-2 rounded-full border border-amber-300/35 bg-amber-500/15 px-3 py-1 text-amber-100">
             Lectura {hero.confidence}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { cn } from '../../../lib/cn';
 import { FaBars, FaChevronLeft, FaChevronRight, FaTimes } from 'react-icons/fa';
@@ -30,6 +30,22 @@ const RoleSidebar = ({
   const WrapperTag = as;
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const mobileMenuButtonRef = useRef(null);
+  const mobileOverlayRef = useRef(null);
+
+  const closeMobileMenu = ({ restoreFocus = true } = {}) => {
+    if (mobileOverlayRef.current?.contains(document.activeElement)) {
+      document.activeElement?.blur();
+    }
+
+    setIsMobileOpen(false);
+
+    if (restoreFocus) {
+      window.requestAnimationFrame(() => {
+        mobileMenuButtonRef.current?.focus();
+      });
+    }
+  };
 
   useEffect(() => {
     if (!isMobileOpen) return undefined;
@@ -45,7 +61,7 @@ const RoleSidebar = ({
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
-        setIsMobileOpen(false);
+        closeMobileMenu({ restoreFocus: false });
       }
     };
 
@@ -58,7 +74,7 @@ const RoleSidebar = ({
   useEffect(() => {
     const handleEsc = (event) => {
       if (event.key === 'Escape') {
-        setIsMobileOpen(false);
+        closeMobileMenu();
       }
     };
 
@@ -96,7 +112,7 @@ const RoleSidebar = ({
 
   const handleSectionChange = (sectionId) => {
     onSectionChange(sectionId);
-    setIsMobileOpen(false);
+    closeMobileMenu({ restoreFocus: false });
   };
 
   const renderSidebarContent = (collapsed = false) => (
@@ -175,9 +191,10 @@ const RoleSidebar = ({
   return (
     <>
       <button
+        ref={mobileMenuButtonRef}
         type="button"
         onClick={() => setIsMobileOpen(true)}
-        className="rv-performance-sidebar fixed left-3 top-[62px] z-[1001] flex h-11 w-11 items-center justify-center rounded-full border border-rv-gold/40 bg-rv-dark/85 text-rv-gold shadow-[0_6px_18px_rgba(0,0,0,0.35)] backdrop-blur-md transition-all duration-200 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 mobile:top-[72px] desktop:hidden"
+        className="rv-performance-sidebar fixed bottom-[max(env(safe-area-inset-bottom),1rem)] left-4 z-[1001] flex h-11 w-11 items-center justify-center rounded-full border border-rv-gold/40 bg-rv-dark/85 text-rv-gold shadow-[0_10px_24px_rgba(0,0,0,0.35)] backdrop-blur-md transition-all duration-200 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 desktop:hidden"
         aria-label="Abrir menu lateral"
         aria-expanded={isMobileOpen}
       >
@@ -185,13 +202,14 @@ const RoleSidebar = ({
       </button>
 
       <div
+        ref={mobileOverlayRef}
         className={cn(
           'rv-performance-sidebar fixed bottom-0 left-0 right-0 top-[56px] z-[1002] bg-black/60 backdrop-blur-[2px] transition-opacity duration-200 mobile:top-[65px] desktop:hidden',
           isMobileOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
         )}
-        onClick={() => setIsMobileOpen(false)}
-        aria-hidden={!isMobileOpen ? 'true' : undefined}
-        inert={!isMobileOpen ? '' : undefined}
+        onClick={() => closeMobileMenu()}
+        aria-hidden={!isMobileOpen ? true : undefined}
+        inert={!isMobileOpen ? true : undefined}
       >
         <WrapperTag
           className={cn(
@@ -205,7 +223,7 @@ const RoleSidebar = ({
           <div className="mb-3 flex items-center justify-end px-1">
             <button
               type="button"
-              onClick={() => setIsMobileOpen(false)}
+              onClick={() => closeMobileMenu()}
               className="flex h-10 w-10 items-center justify-center rounded-lg border border-rv-gold/30 bg-rv-gold/10 text-rv-gold transition-all duration-200 hover:bg-rv-gold/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
               aria-label="Cerrar menu lateral"
             >

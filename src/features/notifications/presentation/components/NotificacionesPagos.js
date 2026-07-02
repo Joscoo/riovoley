@@ -8,6 +8,7 @@ import { Button } from '../../../../shared/ui';
 import { Card } from '../../../../shared/ui';
 import { EmptyState } from '../../../../shared/ui';
 import { SectionHeader } from '../../../../shared/ui';
+import { formatCategoryLabel } from '../../../../shared/lib/trainingCategoryFormatting';
 
 const NotificacionesPagos = ({ userRole }) => {
   const [notificaciones, setNotificaciones] = useState([]);
@@ -138,7 +139,7 @@ const NotificacionesPagos = ({ userRole }) => {
               <div className="min-w-0 flex-1">
                 <p className="text-sm font-semibold text-slate-900 mobile:text-base">{notif.mensaje}</p>
                 <span className="mt-1 block text-xs text-slate-600 mobile:text-sm">
-                  Categoria: {notif.categoria.replaceAll('_', ' ')} • Vence:{' '}
+                  Categoria: {formatCategoryLabel(notif.categoria)} - Vence:{' '}
                   {new Date(notif.fecha_fin).toLocaleDateString('es-ES')}
                 </span>
               </div>

@@ -25,6 +25,7 @@ import {
   FaUsers,
   FaCreditCard
 } from 'react-icons/fa';
+import { formatCategoryLabel } from '../../../../shared/lib/trainingCategoryFormatting';
 
 const styles = {
   pagosManager: 'mx-auto w-full max-w-7xl space-y-4',
@@ -784,7 +785,7 @@ const PagosManager = ({ user }) => {
                 </button>
               </div>
 
-              <div className={styles.tableContainer}>
+              <div className={styles.tableContainer} data-responsive-table="true">
               <table className={styles.table}>
                 <thead>
                   <tr>
@@ -805,7 +806,7 @@ const PagosManager = ({ user }) => {
                       <td data-label="Atleta">
                         <div className={styles.atletaInfo}>
                           <strong>{pago.student?.user?.nombre} {pago.student?.user?.apellido}</strong>
-                          <small>{pago.student?.categoria?.replaceAll('_', ' ').toUpperCase()}</small>
+                          <small>{pago.student?.categoria ? formatCategoryLabel(pago.student.categoria) : 'Sin categoria'}</small>
                         </div>
                       </td>
                       <td data-label="Mensualidad">{pago.membership_type?.nombre || '--'}</td>
@@ -879,7 +880,7 @@ const PagosManager = ({ user }) => {
             </>
           ) : (
             <EmptyState
-              icon={FaCreditCard}
+              icon={<FaCreditCard />}
               title="No hay pagos registrados"
               description="Registra el primer pago del club"
               action={
@@ -961,7 +962,7 @@ const PagosManager = ({ user }) => {
                                 {atleta.users?.nombre} {atleta.users?.apellido}
                               </span>
                               <span className={styles.sugerenciaCategoria}>
-                                {atleta.categoria?.replaceAll('_', ' ').toUpperCase()}
+                                {atleta.categoria ? formatCategoryLabel(atleta.categoria) : 'Sin categoria'}
                               </span>
                             </li>
                           ))}
@@ -1186,8 +1187,6 @@ PagosManager.propTypes = {
 };
 
 export default PagosManager;
-
-
 
 
 

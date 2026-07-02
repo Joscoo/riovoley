@@ -1,6 +1,7 @@
 import { withEncryptedUserContactFields } from '../../../../utils/piiCrypto';
 import { MIN_ATHLETE_AGE, calculateAgeFromDate, validateAthleteBirthDate } from '../../../../utils/athleteValidation';
 import { deleteAuthUserById } from '../../../../shared/infrastructure/auth/deleteAuthUserById';
+import { formatCategoryLabel } from '../../../../shared/lib/trainingCategoryFormatting';
 
 const buildAthleteViewModel = (student) => ({
   ...student,
@@ -195,7 +196,7 @@ export const createAthletesUseCases = (repository) => {
   const formatCategoriaUseCase = {
     execute: ({ categoria }) => {
       if (!categoria) return '--';
-      return categoria.replaceAll('_', ' ').toUpperCase();
+      return formatCategoryLabel(categoria);
     },
   };
 

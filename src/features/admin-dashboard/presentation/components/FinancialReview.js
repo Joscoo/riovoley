@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   Area,
   AreaChart,
@@ -9,7 +9,6 @@ import {
   Legend,
   Pie,
   PieChart,
-  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
@@ -39,6 +38,7 @@ import {
   SortableHeader,
 } from '../../../../shared/ui';
 import { SORT_DIRECTION } from '../../../../shared/lib/tableQuery';
+import { formatCategoryLabel } from '../../../../shared/lib/trainingCategoryFormatting';
 
 const TABLE_PAGE_SIZE = 8;
 const CHART_COLORS = {
@@ -96,7 +96,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 };
 
 const ChartCard = ({ title, subtitle, children, className = '' }) => (
-  <Card className={className}>
+  <Card className={`min-w-0 ${className}`.trim()}>
     <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
       <div>
         <h3 className="text-lg font-black text-white">{title}</h3>
@@ -106,6 +106,48 @@ const ChartCard = ({ title, subtitle, children, className = '' }) => (
     {children}
   </Card>
 );
+
+const ChartFrame = ({ className, children }) => {
+  const frameRef = useRef(null);
+  const [size, setSize] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    const element = frameRef.current;
+    if (!element) return undefined;
+
+    const syncSize = () => {
+      const rect = element.getBoundingClientRect();
+      const nextWidth = Math.floor(rect.width);
+      const nextHeight = Math.floor(rect.height);
+
+      if (nextWidth > 0 && nextHeight > 0) {
+        setSize((current) => (
+          current.width === nextWidth && current.height === nextHeight
+            ? current
+            : { width: nextWidth, height: nextHeight }
+        ));
+      }
+    };
+
+    syncSize();
+    const frame = window.requestAnimationFrame(syncSize);
+    const observer = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(syncSize) : null;
+    observer?.observe(element);
+    window.addEventListener('resize', syncSize);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      observer?.disconnect();
+      window.removeEventListener('resize', syncSize);
+    };
+  }, []);
+
+  return (
+    <div ref={frameRef} className={`min-w-0 ${className}`.trim()}>
+      {size.width > 0 && size.height > 0 ? children(size) : null}
+    </div>
+  );
+};
 
 const paginateItems = (items, page, pageSize = TABLE_PAGE_SIZE) => {
   const safeItems = Array.isArray(items) ? items : [];
@@ -369,6 +411,7 @@ const FinancialReview = () => {
       label={label}
       sort={sort}
       onToggleSort={(f) => setSort((current) => resolveNextSort({ currentSort: current, field: f }))}
+      asCell={false}
     />
   );
 
@@ -489,9 +532,9 @@ const FinancialReview = () => {
               description="Cuando existan pagos o asistencias con cobro diario, apareceran aqui."
             />
           ) : (
-            <div className="h-[340px] w-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={monthlyTrend} margin={{ top: 10, right: 12, left: -18, bottom: 0 }}>
+            <ChartFrame className="h-[280px] w-full mobile:h-[340px]">
+              {({ width, height }) => (
+                <AreaChart width={width} height={height} data={monthlyTrend} margin={{ top: 10, right: 12, left: -18, bottom: 0 }}>
                   <defs>
                     <linearGradient id="totalRevenueGradient" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="5%" stopColor={CHART_COLORS.total} stopOpacity={0.45} />
@@ -524,8 +567,8 @@ const FinancialReview = () => {
                     strokeWidth={2}
                   />
                 </AreaChart>
-              </ResponsiveContainer>
-            </div>
+              )}
+            </ChartFrame>
           )}
         </ChartCard>
 
@@ -543,9 +586,9 @@ const FinancialReview = () => {
             />
           ) : (
             <div className="grid gap-4 mobile:grid-cols-[1.1fr_0.9fr]">
-              <div className="h-[260px] w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
+              <ChartFrame className="h-[240px] w-full mobile:h-[260px]">
+                {({ width, height }) => (
+                  <PieChart width={width} height={height}>
                     <Pie
                       data={revenueSplitData}
                       dataKey="value"
@@ -560,8 +603,8 @@ const FinancialReview = () => {
                     </Pie>
                     <Tooltip content={<CustomTooltip />} />
                   </PieChart>
-                </ResponsiveContainer>
-              </div>
+                )}
+              </ChartFrame>
               <div className="flex flex-col justify-center gap-3">
                 {revenueSplitData.map((item) => (
                   <div key={item.name} className="rounded-2xl border border-white/10 bg-black/20 p-3 transition-colors duration-200 hover:border-white/20 hover:bg-white/[0.04]">
@@ -632,9 +675,9 @@ const FinancialReview = () => {
               description="Cuando existan mensualidades vencidas, se mostraran aqui."
             />
           ) : (
-            <div className="h-[340px] w-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={debtRankingData} layout="vertical" margin={{ top: 6, right: 18, left: 18, bottom: 6 }}>
+            <ChartFrame className="h-[280px] w-full mobile:h-[340px]">
+              {({ width, height }) => (
+                <BarChart width={width} height={height} data={debtRankingData} layout="vertical" margin={{ top: 6, right: 18, left: 18, bottom: 6 }}>
                   <CartesianGrid strokeDasharray="4 4" stroke="rgba(148,163,184,0.14)" />
                   <XAxis type="number" tick={{ fill: '#94a3b8', fontSize: 12 }} axisLine={false} tickLine={false} />
                   <YAxis
@@ -650,8 +693,8 @@ const FinancialReview = () => {
                   <Bar dataKey="deuda" name="Deuda estimada" fill={CHART_COLORS.debt} radius={[0, 10, 10, 0]} />
                   <Bar dataKey="pagoDiario" name="Ingreso diario mes" fill={CHART_COLORS.daily} radius={[0, 10, 10, 0]} />
                 </BarChart>
-              </ResponsiveContainer>
-            </div>
+              )}
+            </ChartFrame>
           )}
         </ChartCard>
       </div>
@@ -699,7 +742,7 @@ const FinancialReview = () => {
                   <option value="all">Todas las categorias</option>
                   {categoryOptions.map((category) => (
                     <option key={category} value={category}>
-                      {category.replaceAll('_', ' ')}
+                      {formatCategoryLabel(category)}
                     </option>
                   ))}
                 </Select>
@@ -764,7 +807,7 @@ const FinancialReview = () => {
                         <p className="mt-1 text-xs text-slate-400">ID: {row.studentId}</p>
                       </div>
                     </td>
-                    <td className="px-4 py-4 text-slate-300">{row.category ? row.category.replaceAll('_', ' ') : '--'}</td>
+                    <td className="px-4 py-4 text-slate-300">{row.category ? formatCategoryLabel(row.category) : '--'}</td>
                     <td className="px-4 py-4 text-slate-300">{row.lastPaymentDate || '--'}</td>
                     <td className="px-4 py-4 text-slate-200">{row.coverageEnd || '--'}</td>
                     <td className="px-4 py-4">

@@ -28,6 +28,7 @@ import {
   TabNav,
 } from '../../../../shared/ui';
 import { cn } from '../../../../lib/cn';
+import { formatCategoryLabel } from '../../../../shared/lib/trainingCategoryFormatting';
 
 const RUNS_PAGE_SIZE = 8;
 const DETAIL_PAGE_SIZE = 8;
@@ -43,6 +44,9 @@ const CATEGORY_LABELS = {
   perfeccionamiento_mujeres: 'Perfeccionamiento Mujeres',
   master_mujeres: 'Master Mujeres',
 };
+
+const formatReportCategoryLabel = (category) =>
+  CATEGORY_LABELS[category] || formatCategoryLabel(category);
 const currencyFormatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
@@ -466,7 +470,7 @@ const ReportsCenter = () => {
     const rows = (financialReview.overdueStudents || []).map((row) => ([
       row.athleteName,
       row.studentId,
-      row.category || '',
+      row.category ? formatReportCategoryLabel(row.category) : '',
       row.lastPaymentDate || '',
       row.coverageEnd || '',
       row.overdueMonths || 0,
@@ -492,7 +496,7 @@ const ReportsCenter = () => {
     const rows = (financialReview.overdueStudents || []).map((row) => ([
       row.athleteName,
       row.studentId,
-      CATEGORY_LABELS[row.category] || row.category || '',
+      row.category ? formatReportCategoryLabel(row.category) : '',
       row.lastPaymentDate || '',
       row.coverageEnd || '',
       row.overdueMonths || 0,
@@ -545,7 +549,7 @@ const ReportsCenter = () => {
       head: [['Atleta', 'Categoria', 'Cobertura fin', 'Meses vencidos', 'Deuda estimada']],
       body: (financialReview.overdueStudents || []).slice(0, 20).map((row) => ([
         row.athleteName,
-        CATEGORY_LABELS[row.category] || row.category || '',
+        row.category ? formatReportCategoryLabel(row.category) : '',
         row.coverageEnd || '',
         row.overdueMonths || 0,
         formatCurrency(row.estimatedDebt || 0),
@@ -577,7 +581,7 @@ const ReportsCenter = () => {
       .map((row) => `
         <tr>
           <td>${row.athleteName}</td>
-          <td>${row.category || ''}</td>
+          <td>${row.category ? formatReportCategoryLabel(row.category) : ''}</td>
           <td>${row.coverageEnd || ''}</td>
           <td>${row.overdueMonths || 0}</td>
           <td>${formatCurrency(row.estimatedDebt || 0)}</td>
@@ -643,7 +647,7 @@ const ReportsCenter = () => {
     student.apellido || '',
     student.email || '',
     student.telefono || '',
-    CATEGORY_LABELS[student.categoria] || student.categoria || '',
+    student.categoria ? formatReportCategoryLabel(student.categoria) : '',
     student.fecha_nacimiento || '',
     student.fecha_ingreso || '',
     student.suspended ? 'Suspendido' : 'Activo',
@@ -700,7 +704,7 @@ const ReportsCenter = () => {
           student.full_name || `${student.nombre || ''} ${student.apellido || ''}`.trim(),
           student.email || '',
           student.telefono || '',
-          CATEGORY_LABELS[student.categoria] || student.categoria || '',
+          student.categoria ? formatReportCategoryLabel(student.categoria) : '',
           student.fecha_ingreso || '',
           student.suspended ? 'Suspendido' : 'Activo',
         ])),
@@ -955,7 +959,7 @@ const ReportsCenter = () => {
             <option value="">Todas las categorias</option>
             {studentCategoryOptions.map((category) => (
               <option key={category} value={category}>
-                {CATEGORY_LABELS[category] || category}
+                {formatReportCategoryLabel(category)}
               </option>
             ))}
           </Select>
@@ -1013,7 +1017,7 @@ const ReportsCenter = () => {
                     <td className="px-4 py-4 font-semibold">{student.full_name || `${student.nombre || ''} ${student.apellido || ''}`.trim()}</td>
                     <td className="px-4 py-4 text-slate-300">{student.email || '--'}</td>
                     <td className="px-4 py-4 text-slate-300">{student.telefono || '--'}</td>
-                    <td className="px-4 py-4 text-slate-300">{CATEGORY_LABELS[student.categoria] || student.categoria || '--'}</td>
+                    <td className="px-4 py-4 text-slate-300">{student.categoria ? formatReportCategoryLabel(student.categoria) : '--'}</td>
                     <td className="px-4 py-4 text-slate-300">{student.fecha_ingreso || '--'}</td>
                     <td className="px-4 py-4 text-slate-200">{student.suspended ? 'Suspendido' : 'Activo'}</td>
                   </>
@@ -1204,7 +1208,7 @@ const ReportsCenter = () => {
                 <div key={row.category} className="rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] px-4 py-3 transition-colors duration-200 hover:border-white/20 hover:bg-white/[0.04]">
                   <div className="flex items-center justify-between gap-3">
                     <div>
-                      <p className="text-sm font-bold text-white">{CATEGORY_LABELS[row.category] || row.category.replaceAll('_', ' ')}</p>
+                      <p className="text-sm font-bold text-white">{formatReportCategoryLabel(row.category)}</p>
                       <p className="mt-1 text-xs text-slate-400">{row.studentsCount} atletas | {row.overdueMonths} meses vencidos acumulados</p>
                     </div>
                     <div className="text-right">
@@ -1356,7 +1360,7 @@ const ReportsCenter = () => {
                   <p className="font-semibold">{row.athleteName}</p>
                   <p className="mt-1 text-xs text-slate-400">ID: {row.studentId}</p>
                 </td>
-                <td className="px-4 py-4 text-slate-300">{CATEGORY_LABELS[row.category] || row.category || '--'}</td>
+                <td className="px-4 py-4 text-slate-300">{row.category ? formatReportCategoryLabel(row.category) : '--'}</td>
                 <td className="px-4 py-4 text-slate-300">{row.coverageEnd || '--'}</td>
                 <td className="px-4 py-4 text-slate-200">{row.overdueMonths || 0}</td>
                 <td className="px-4 py-4 font-semibold text-rose-300">{formatCurrency(row.estimatedDebt || 0)}</td>

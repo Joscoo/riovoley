@@ -17,23 +17,28 @@ const SortableHeader = ({
   onToggleSort,
   className = '',
   buttonClassName = '',
+  asCell = true,
 }) => {
   const isActive = sort?.field === field && sort?.direction !== SORT_DIRECTION.NONE;
   const ariaSort = getAriaSort({ sort, field });
   const icon = resolveIcon({ active: isActive, direction: sort?.direction });
 
-  return (
-    <th aria-sort={ariaSort} className={className}>
-      <button
-        type="button"
-        onClick={() => onToggleSort(field)}
-        className={`inline-flex min-h-[44px] items-center gap-2 text-left ${buttonClassName}`}
-      >
-        <span>{label}</span>
-        {icon}
-      </button>
-    </th>
+  const button = (
+    <button
+      type="button"
+      onClick={() => onToggleSort(field)}
+      className={`inline-flex min-h-[44px] items-center gap-2 text-left ${buttonClassName}`}
+    >
+      <span>{label}</span>
+      {icon}
+    </button>
   );
+
+  if (!asCell) {
+    return button;
+  }
+
+  return <th aria-sort={ariaSort} className={className}>{button}</th>;
 };
 
 SortableHeader.propTypes = {
@@ -46,6 +51,7 @@ SortableHeader.propTypes = {
   onToggleSort: PropTypes.func.isRequired,
   className: PropTypes.string,
   buttonClassName: PropTypes.string,
+  asCell: PropTypes.bool,
 };
 
 SortableHeader.defaultProps = {
@@ -55,7 +61,7 @@ SortableHeader.defaultProps = {
   },
   className: '',
   buttonClassName: '',
+  asCell: true,
 };
 
 export default SortableHeader;
-

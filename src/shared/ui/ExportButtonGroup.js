@@ -26,8 +26,8 @@ const FORMAT_META = {
 const ExportButtonGroup = ({ items, disabled = false, columns = 2, className }) => {
   return (
     <div
-      className={cn('grid gap-2', className)}
-      style={{ gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))` }}
+      className={cn('grid gap-2 desktop:[grid-template-columns:repeat(var(--rv-export-columns),minmax(0,1fr))]', className)}
+      style={{ '--rv-export-columns': columns }}
     >
       {items.map((item) => {
         const meta = FORMAT_META[item.format] || FORMAT_META.pdf;

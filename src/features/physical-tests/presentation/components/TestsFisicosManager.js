@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { physicalTestsService } from '../../physicalTestsService';
 import { getPhysicalTestFieldMeta } from '../../domain/physicalTestFieldMetadata';
 import { Button, Card, EmptyState, Field, Modal, SectionHeader } from '../../../../shared/ui';
+import { formatCategoryLabel } from '../../../../shared/lib/trainingCategoryFormatting';
 import { 
   FaEdit, FaPlus, FaClock, FaSave, FaDumbbell, FaTrash, 
   FaUsers, FaCheckCircle, FaExclamationTriangle, FaChartLine,
@@ -309,7 +310,7 @@ const TestsFisicosManager = ({ user }) => {
       if (test.student_id) {
         const atleta = atletas.find(a => a.id === test.student_id);
         if (atleta) {
-          setSearchTerm(`${atleta.full_name} (${atleta.categoria?.replaceAll('_', ' ').toUpperCase()})`);
+          setSearchTerm(`${atleta.full_name} (${formatCategoryLabel(atleta.categoria)})`);
         }
       }
     } else {
@@ -334,13 +335,13 @@ const TestsFisicosManager = ({ user }) => {
   // Obtener el nombre del atleta seleccionado
   const getSelectedAtletaName = () => {
     const selected = atletas.find(a => a.id === formData.student_id);
-    return selected ? `${selected.full_name} (${selected.categoria?.replaceAll('_', ' ').toUpperCase()})` : '';
+    return selected ? `${selected.full_name} (${formatCategoryLabel(selected.categoria)})` : '';
   };
 
   // Seleccionar un atleta
   const selectAtleta = (atleta) => {
     setFormData({...formData, student_id: atleta.id});
-    setSearchTerm(`${atleta.full_name} (${atleta.categoria?.replaceAll('_', ' ').toUpperCase()})`);
+    setSearchTerm(`${atleta.full_name} (${formatCategoryLabel(atleta.categoria)})`);
     setShowAtletasList(false);
   };
 
@@ -397,7 +398,7 @@ const TestsFisicosManager = ({ user }) => {
         <div className={styles.testHeader}>
           <div className={styles.testHeaderLeft}>
             <h3>{test.atleta_name}</h3>
-            <span className={styles.categoria}>{test.students?.categoria?.replaceAll('_', ' ').toUpperCase()}</span>
+            <span className={styles.categoria}>{formatCategoryLabel(test.students?.categoria)}</span>
           </div>
           <div className={styles.testActions}>
             <button onClick={() => openModal(test)} className={styles.editButton} title="Editar"><FaEdit /></button>
@@ -541,7 +542,7 @@ const TestsFisicosManager = ({ user }) => {
       <SectionHeader
         title="Gestión de Tests Físicos"
         description="Registrar y seguir el rendimiento físico de los atletas"
-        icon={FaDumbbell}
+        icon={<FaDumbbell />}
         actions={
           <Button data-guide-id="physical-tests-new-button" onClick={() => openModal()} className="mobile:w-full desktop:w-auto">
             <FaPlus className="mr-2 inline align-middle" /> Nuevo Test Físico
@@ -625,7 +626,7 @@ const TestsFisicosManager = ({ user }) => {
                     className={`${styles.categoriaFilterBtn} ${categoriaSeleccionadaPendientes === categoria ? styles.active : ''}`}
                     onClick={() => setCategoriaSeleccionadaPendientes(categoria)}
                   >
-                    {categoria.replaceAll('_', ' ').toUpperCase()}
+                    {formatCategoryLabel(categoria)}
                     <span className={styles.filterCount}>
                       ({atletasPendientesPorCategoria[categoria].length})
                     </span>
@@ -640,7 +641,7 @@ const TestsFisicosManager = ({ user }) => {
                   Object.keys(atletasPendientesPorCategoria).sort().map(categoria => (
                     <div key={categoria} className={styles.categoriaGroup}>
                       <h4 className={styles.categoriaTitulo}>
-                        {categoria.replaceAll('_', ' ').toUpperCase()}
+                        {formatCategoryLabel(categoria)}
                         <span className={styles.categoriaCount}>
                           ({atletasPendientesPorCategoria[categoria].length})
                         </span>
@@ -658,7 +659,7 @@ const TestsFisicosManager = ({ user }) => {
                                   ...formData,
                                   student_id: atleta.id
                                 });
-                                setSearchTerm(`${atleta.full_name} (${atleta.categoria?.replaceAll('_', ' ').toUpperCase()})`);
+                                setSearchTerm(`${atleta.full_name} (${formatCategoryLabel(atleta.categoria)})`);
                                 openModal();
                               }}
                               title="Agregar test físico"
@@ -687,7 +688,7 @@ const TestsFisicosManager = ({ user }) => {
                                   ...formData,
                                   student_id: atleta.id
                                 });
-                                setSearchTerm(`${atleta.full_name} (${atleta.categoria?.replaceAll('_', ' ').toUpperCase()})`);
+                                setSearchTerm(`${atleta.full_name} (${formatCategoryLabel(atleta.categoria)})`);
                                 openModal();
                               }}
                               title="Agregar test físico"
@@ -929,7 +930,7 @@ const TestsFisicosManager = ({ user }) => {
                               >
                                 <div className={styles.atletaName}>{atleta.full_name}</div>
                                 <div className={styles.atletaCategoria}>
-                                  {atleta.categoria?.replaceAll('_', ' ').toUpperCase()}
+                                  {formatCategoryLabel(atleta.categoria)}
                                 </div>
                               </button>
                             ))
@@ -1209,4 +1210,3 @@ TestsFisicosManager.propTypes = {
 };
 
 export default TestsFisicosManager;
-
