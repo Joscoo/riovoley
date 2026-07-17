@@ -8,14 +8,14 @@ import { SectionHeader } from '../shared/ui';
 const FEATURES = [
   {
     title: 'Entrenadores Profesionales',
-    description: 'Staff tecnico certificado con experiencia a nivel nacional.',
+    description: 'Staff técnico certificado con experiencia a nivel nacional.',
     icon: (
       <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     )
   },
   {
     title: 'Instalaciones Modernas',
-    description: 'Canchas de primer nivel totalmente equipadas para entrenar todo el ano.',
+    description: 'Canchas de primer nivel totalmente equipadas para entrenar todo el año.',
     icon: (
       <>
         <path d="M12 15c1.66 0 3-1.34 3-3V6c0-1.66-1.34-3-3-3S9 4.34 9 6v6c0 1.66 1.34 3 3 3z" stroke="currentColor" strokeWidth="2" />
@@ -25,7 +25,7 @@ const FEATURES = [
   },
   {
     title: 'Resultados Comprobados',
-    description: 'Multiples campeonatos y logros regionales y nacionales.',
+    description: 'Múltiples campeonatos y logros regionales y nacionales.',
     icon: (
       <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     )
@@ -59,9 +59,9 @@ const HomePage = () => {
             </h1>
           </div>
 
-          <p className="max-w-3xl text-xl font-semibold text-rv-gold mobile:text-2xl">Formando Campeones, Construyendo Suenos</p>
+          <p className="max-w-3xl text-xl font-semibold text-rv-gold mobile:text-2xl">Formando Campeones, Construyendo Sueños</p>
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-100 mobile:text-lg">
-            La escuela de voleibol mas prestigiosa de Riobamba. Desarrollamos talento deportivo con excelencia y pasion en
+            La escuela de voleibol mas prestigiosa de Riobamba. Desarrollamos talento deportivo con excelencia y pasión en
             un entorno moderno y competitivo.
           </p>
 
@@ -90,14 +90,14 @@ const HomePage = () => {
             <span className="inline-flex h-6 w-4 justify-center rounded-full border border-white/45 p-1">
               <span className="h-1.5 w-1.5 rounded-full bg-rv-gold animate-bounce" />
             </span>
-            Desliza para mas
+            Desliza para más
           </div>
         </div>
       </section>
 
       <section className="px-4 py-12 mobile:px-6 tablet:px-10">
         <div className="mx-auto w-full max-w-6xl">
-          <SectionHeader title="Por Que Elegirnos?" centered />
+          <SectionHeader title="Por Qué Elegirnos?" centered />
           <div className="mt-6 grid gap-4 tablet:grid-cols-3">
             {FEATURES.map((feature) => (
               <Card key={feature.title} className="h-full">
@@ -122,7 +122,7 @@ const HomePage = () => {
           </Card>
           <Card className="text-center">
             <p className="text-4xl font-black text-rv-gold">5+</p>
-            <p className="mt-1 text-sm text-slate-100">Anos de Experiencia</p>
+            <p className="mt-1 text-sm text-slate-100">Años de Experiencia</p>
           </Card>
         </div>
       </section>

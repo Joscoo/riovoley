@@ -22,14 +22,14 @@ const DAYS = [
 
 const CATEGORY_DATA = {
   iniciacion_hombres: {
-    label: 'Iniciacion Hombres',
+    label: 'Iniciación Hombres',
     borderClass: 'border-l-sky-500',
     badgeClass: 'bg-sky-500/20 text-sky-300',
     description:
       'Perfecto para quienes se inician en voleibol. Aprende fundamentos basicos como recepcion, saque y posicionamiento.'
   },
   iniciacion_mujeres: {
-    label: 'Iniciacion Mujeres',
+    label: 'Iniciación Mujeres',
     borderClass: 'border-l-pink-500',
     badgeClass: 'bg-pink-500/20 text-pink-300',
     description:
@@ -119,7 +119,7 @@ const Horarios = () => {
 
           <div className="mx-auto mt-6 max-w-xl rounded-2xl border border-rv-gold/25 bg-black/35 p-3 backdrop-blur-md mobile:p-4">
             <label className="mb-2 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-rv-gold/95">
-              <FaCalendarAlt /> Filtrar por dia
+              <FaCalendarAlt /> Filtrar por día
             </label>
             <select
               value={selectedDay}
@@ -200,7 +200,7 @@ const Horarios = () => {
 
                           <div className="mt-4 rounded-xl border border-white/10 bg-black/20 p-3">
                             <p className="mb-2 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-rv-gold/95">
-                              <FaInfoCircle /> Descripcion
+                              <FaInfoCircle /> Descripción
                             </p>
                             <p className="text-sm leading-relaxed text-slate-200">{schedule.descripcion || categoryInfo.description}</p>
                           </div>
