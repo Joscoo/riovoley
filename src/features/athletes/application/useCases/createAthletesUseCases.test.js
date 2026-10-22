@@ -223,7 +223,7 @@ describe('createAthletesUseCases', () => {
     });
 
     expect(typeof age === 'number' || age === '--').toBe(true);
-    expect(categoria).toBe('MASTER MUJERES');
+    expect(categoria).toBe('Master mujeres');
     expect(ingreso).not.toBe('No registrado');
   });
 });

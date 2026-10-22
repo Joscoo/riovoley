@@ -244,6 +244,9 @@ describe('createPaymentsUseCases', () => {
       membership_type_id: '',
       fecha_pago: '2026-06-01',
       observaciones: '',
+      useCustomPeriod: false,
+      fecha_inicio: '',
+      fecha_fin: '',
     });
   });
 

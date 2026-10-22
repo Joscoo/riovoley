@@ -2,6 +2,15 @@ const { createStudentDashboardUseCases } = require('./createStudentDashboardUseC
 const { getEcuadorDate, getEcuadorFirstDayOfMonth } = require('../../../../utils/dateUtils');
 
 describe('createStudentDashboardUseCases', () => {
+  beforeEach(() => {
+    jest.useFakeTimers('modern');
+    jest.setSystemTime(new Date('2026-06-15T12:00:00.000Z'));
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   const buildRepository = () => ({
     findStudentByUserId: jest.fn(),
     listCurrentPayments: jest.fn(),

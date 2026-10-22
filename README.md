@@ -106,7 +106,7 @@ Supabase (PostgreSQL + Auth + RLS + Edge Functions)
 
 ### 1) Requisitos
 
-- Node.js 18+
+- Node.js 22 o superior para la web y Capacitor 8 (Node 24 compatible; los servicios auxiliares declaran Node 22)
 - npm
 - Git
 
@@ -115,20 +115,25 @@ Supabase (PostgreSQL + Auth + RLS + Edge Functions)
 ```bash
 git clone <URL_DEL_REPOSITORIO>
 cd riovoley
-npm install
+npm ci
 ```
 
 ### 3) Configurar entorno
 
 ```bash
 # PowerShell
-Copy-Item .env.example .env.local
+if (-not (Test-Path .env.local)) { Copy-Item .env.example .env.local }
 ```
 
 Variables obligatorias para iniciar:
 
 - `REACT_APP_SUPABASE_URL`
 - `REACT_APP_SUPABASE_ANON_KEY`
+
+Para trabajar con los datos personales cifrados existentes, conserva tambien la
+`REACT_APP_PII_ENCRYPTION_KEY` original. Si restauraste un respaldo con `.env.local`,
+no reemplaces ese archivo por la plantilla. Consulta la
+[guia de restauracion en otra PC](GUIA_SETUP_OTRA_PC.md) para las comprobaciones completas.
 
 Variables opcionales (integraciones):
 
@@ -290,6 +295,7 @@ Documentacion tecnica:
 
 ## Documentacion Relacionada | Related Docs
 
+- [Revision de restauracion de PC (2026-10-22)](docs/RESTAURACION_PC_2026-10-22.md) - dependencias, verificaciones y pendientes detectados
 - [GUIA_SETUP_OTRA_PC.md](GUIA_SETUP_OTRA_PC.md) - onboarding en otra maquina
 - [GUIA_WHATSAPP_PASO_A_PASO.md](GUIA_WHATSAPP_PASO_A_PASO.md) - configuracion WhatsApp
 - [EDGE_FUNCTION_SETUP.md](EDGE_FUNCTION_SETUP.md) - setup de funciones
