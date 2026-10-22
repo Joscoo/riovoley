@@ -22,7 +22,7 @@
 - Compilación de producción, comprobación de textos y 5 pruebas públicas de Playwright aprobadas.
 - Se envió un mensaje genérico real por la función desplegada `send-email` a una dirección autorizada por el usuario; el proveedor devolvió un identificador y el destinatario confirmó recepción en la bandeja de entrada. No se cambiaron contraseñas reales.
 
-Esta prueba real corresponde al canal de credenciales Resend. No verifica el SMTP de recuperación de Supabase Auth ni permite determinar los motivos de todos los fallos históricos. Para ello hacen falta los eventos de Resend y los registros/configuración del proyecto correcto.
+Tras desplegar las funciones se repitió la entrega por Resend y se solicitó un correo real de recuperación mediante Supabase Auth. El usuario confirmó recepción de ambos mensajes. El registro de Auth confirmó `/recover` con estado HTTP 200 y sin código de error. No se cambiaron contraseñas reales. Esta comprobación no permite determinar los motivos de todos los fallos históricos; para ello hacen falta los eventos de los mensajes afectados.
 
 ## Ejecutar las comprobaciones
 
@@ -50,11 +50,29 @@ node scripts/verifyCredentialEmail.cjs --to correo-autorizado@example.com --conf
 
 El script envía un mensaje genérico, no crea cuentas ni restablece contraseñas. No lo ejecutar en CI ni usar listas de usuarios para probar entrega.
 
-## Despliegue pendiente
+## Despliegue en Supabase: completado
 
-El proyecto de RioVoley es `mayvvlkvheagkojunzzb`. La conexión de administración disponible en esta sesión no tiene acceso a ese proyecto y no se desplegaron estas correcciones. No aplicar cambios al otro proyecto que aparece en la conexión.
+El 22 de octubre de 2026 se restableció el acceso al proyecto correcto, `mayvvlkvheagkojunzzb` (Riovoley APP). Se guardaron copias locales de las funciones anteriores en `.superpowers/deployment-backups/2026-10-22/`, fuera de Git, antes del despliegue.
 
-Con una cuenta que tenga acceso al proyecto correcto, desplegar primero las funciones:
+- `update-user-password`: versión 20, estado ACTIVE.
+- `send-email`: versión 19, estado ACTIVE.
+- Ambas conservan `verify_jwt: true` y además verifican al solicitante en la aplicación.
+- No se aplicaron migraciones ni se modificaron contraseñas reales.
+
+Se aprobaron seis comprobaciones contra las funciones desplegadas:
+
+| Solicitud | Respuesta esperada y obtenida |
+| --- | --- |
+| Correo sin campos | 400 `MISSING_FIELDS` |
+| Destinatario inválido | 400 `INVALID_RECIPIENT` |
+| Contraseña débil | 400 `WEAK_PASSWORD` |
+| Restablecimiento de una cuenta administradora desde el módulo de reenvío | 403 `TARGET_NOT_ALLOWED` |
+| Método GET para actualizar contraseña | 405 `METHOD_NOT_ALLOWED` |
+| Correo sin sesión de usuario | 401 `AUTH_INVALID` |
+
+La prueba real posterior al despliegue obtuvo un identificador de Resend; el destinatario confirmó tanto ese mensaje como el de recuperación de Auth.
+
+Para futuros despliegues, usar una cuenta con acceso al proyecto correcto y publicar primero las funciones:
 
 ```powershell
 npx supabase functions deploy update-user-password --project-ref mayvvlkvheagkojunzzb
@@ -63,7 +81,7 @@ npx supabase functions deploy send-email --project-ref mayvvlkvheagkojunzzb
 
 Verificar en el proyecto las variables `RESEND_API_KEY` y `FROM_EMAIL`, el dominio remitente en Resend y, por separado, SMTP y URL Configuration de Supabase Auth. Usar las URL de recuperación web y Capacitor definidas en [appUrls.js](../src/config/appUrls.js); la configuración local no cambia la allowlist de producción.
 
-Publicar después el frontend por el flujo habitual del repositorio. No se necesitan migraciones de base de datos. Repetir una entrega controlada y una recuperación con cuenta de prueba tras el despliegue; no usar la cuenta de una persona que no haya autorizado el cambio.
+El despliegue de las funciones no publica los archivos del frontend. Las mejoras de interfaz deben publicarse por el flujo habitual de la web/Capacitor; el repositorio no define aquí un despliegue automático del sitio. No se necesitan migraciones de base de datos. Repetir una entrega controlada y una recuperación con cuenta de prueba tras futuros despliegues; no usar la cuenta de una persona que no haya autorizado el cambio.
 
 ## Límites operativos
 
