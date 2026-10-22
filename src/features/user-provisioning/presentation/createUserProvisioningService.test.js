@@ -50,8 +50,8 @@ describe('createUserProvisioningService', () => {
     const service = createUserProvisioningService(repository);
     const result = await service.resendCredentials(payload);
 
-    expect(repository.resendCredentials).toHaveBeenCalledWith(payload);
-    expect(result).toEqual({ success: true, emailSent: true });
+    expect(repository.resendCredentials).toHaveBeenCalledWith({ ...payload, channels: ['email'] });
+    expect(result).toMatchObject({ success: true, emailSent: true, deliverySuccess: true, deliveryStatus: 'sent' });
   });
 
   it('delega sendCredentialsByWhatsApp al use case y gateway', async () => {

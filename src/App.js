@@ -321,7 +321,7 @@ function AppContent() {
         <Route path="/sobre" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><AboutUs /></>} />
         <Route path="/horarios" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><Horarios /></>} />
         <Route path="/login" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><Login onLoginSuccess={handleLoginSuccess} /></>} />
-        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/reset-password" element={<ResetPassword onPasswordReset={() => setUser(null)} />} />
         <Route path="/admin" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><LazyAdminPanel user={user} /></>} />
         <Route path="/entrenador" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><LazyTrainerPanel user={user} /></>} />
         <Route path="/estudiante" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><StudentPanel user={user} /></>} />

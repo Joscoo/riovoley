@@ -49,6 +49,7 @@
     "ota:upload:beta": "npm run build && npx @capgo/cli@latest bundle upload com.riovoley.app --path ./build --channel beta",
     "check:copy-quality": "node scripts/copyQualityCheck.js",
     "test": "react-scripts test",
+    "test:auth-edge": "node functions/node_modules/tsx/dist/cli.mjs --test tests/unit/credentials-edge.test.ts",
     "test:contracts": "cross-env CI=true react-scripts test src/features/reporting/infrastructure/repositories/supabaseReportingRepository.contract.test.js src/shared/infrastructure/auth/deleteAuthUserById.test.js",
     "eject": "react-scripts eject",
     "e2e": "playwright test",

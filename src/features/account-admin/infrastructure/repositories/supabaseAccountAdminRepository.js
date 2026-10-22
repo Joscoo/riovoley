@@ -1,4 +1,5 @@
 import { supabase } from '../../../../config/supabase';
+import { createClient } from '@supabase/supabase-js';
 import { AccountAdminError } from '../../domain/accountAdminError';
 
 const normalizeError = (error, fallback) => {
@@ -133,11 +134,15 @@ export class SupabaseAccountAdminRepository {
   }
 
   async verifyCurrentPassword(email, currentPassword) {
-    const { error } = await supabase.auth.signInWithPassword({
+    const isolated = createClient(process.env.REACT_APP_SUPABASE_URL, process.env.REACT_APP_SUPABASE_ANON_KEY, {
+      auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
+    });
+    const { error } = await isolated.auth.signInWithPassword({
       email,
       password: currentPassword
     });
 
+    if (!error) await isolated.auth.signOut({ scope: 'local' });
     return { ok: !error, error };
   }
 

@@ -82,6 +82,10 @@ export const createAuthSessionUseCases = (repository, deps = {}) => {
     execute: () => repository.getSession(),
   };
 
+  const verifyRecoveryTokenUseCase = {
+    execute: ({ tokenHash }) => repository.verifyRecoveryToken(tokenHash),
+  };
+
   const updatePasswordUseCase = {
     execute: ({ password }) => repository.updatePassword(password),
   };
@@ -104,6 +108,7 @@ export const createAuthSessionUseCases = (repository, deps = {}) => {
     exchangeCodeForSessionUseCase,
     setRecoverySessionUseCase,
     getSessionUseCase,
+    verifyRecoveryTokenUseCase,
     updatePasswordUseCase,
     markFirstLoginCompletedUseCase,
   };

@@ -40,8 +40,8 @@ describe('createAccountAdminService', () => {
       user: { email: 'demo@riovoley.com' },
       passwordData: {
         currentPassword: 'wrong',
-        newPassword: '123456',
-        confirmPassword: '123456',
+        newPassword: 'Newpass123!',
+        confirmPassword: 'Newpass123!',
       },
     });
 

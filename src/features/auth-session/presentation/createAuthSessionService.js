@@ -20,6 +20,7 @@ export const createAuthSessionService = (repository = new SupabaseAuthSessionRep
   const setRecoverySession = (accessToken, refreshToken) =>
     useCases.setRecoverySessionUseCase.execute({ accessToken, refreshToken });
   const getSession = () => useCases.getSessionUseCase.execute();
+  const verifyRecoveryToken = (tokenHash) => useCases.verifyRecoveryTokenUseCase.execute({ tokenHash });
   const updatePassword = (password) => useCases.updatePasswordUseCase.execute({ password });
   const markFirstLoginCompleted = (userId) => useCases.markFirstLoginCompletedUseCase.execute({ userId });
 
@@ -37,6 +38,7 @@ export const createAuthSessionService = (repository = new SupabaseAuthSessionRep
     exchangeCodeForSession,
     setRecoverySession,
     getSession,
+    verifyRecoveryToken,
     updatePassword,
     markFirstLoginCompleted,
   };

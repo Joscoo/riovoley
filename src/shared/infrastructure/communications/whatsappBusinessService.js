@@ -101,7 +101,7 @@ class WhatsAppBusinessService {
 
   buildBodyParameters(parameters) {
     const bodyParameters = [];
-    const parameterOrder = ['nombre', 'monto', 'fecha', 'referencia', 'concepto', 'fecha_vencimiento'];
+    const parameterOrder = ['nombre', 'email', 'password', 'monto', 'fecha', 'referencia', 'concepto', 'fecha_vencimiento'];
 
     for (const key of parameterOrder) {
       if (parameters[key]) {

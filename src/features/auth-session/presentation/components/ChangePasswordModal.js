@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { authSessionService } from '../../authSessionService';
 import { validatePassword } from '../../../../utils/passwordUtils';
+import { accountAdminService } from '../../../account-admin/accountAdminService';
 import { FaLock, FaTimesCircle, FaEye, FaEyeSlash, FaClipboardList, FaSpinner, FaShieldAlt } from 'react-icons/fa';
 
 const ChangePasswordModal = ({ user, onPasswordChanged }) => {
@@ -61,8 +62,8 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
         throw new Error('Tu sesión expiró. Inicia sesión nuevamente para cambiar la contraseña.');
       }
 
-      // El usuario ya está autenticado; actualizamos la contraseña directamente en Auth.
-      await authSessionService.updatePassword(formData.newPassword);
+      const result = await accountAdminService.changePassword({ user, passwordData: formData });
+      if (!result.ok) throw new Error(result.message);
 
       // Cerrar inmediatamente el modal; la sincronización en users se resuelve en paralelo.
       if (typeof onPasswordChanged === 'function') {
@@ -74,7 +75,6 @@ const ChangePasswordModal = ({ user, onPasswordChanged }) => {
       });
 
     } catch (error) {
-      console.error('Error cambiando contraseña:', error);
       setErrors([error.message]);
     } finally {
       setLoading(false);

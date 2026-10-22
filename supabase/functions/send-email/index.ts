@@ -5,6 +5,8 @@ import { internalError, jsonResponse, methodNotAllowed, successEnvelope } from '
 import { CommunicationsCoreError } from '../_core/communications/domain/communications-error.ts';
 import { SendEmailUseCase } from '../_core/communications/application/use-cases/send-email-use-case.ts';
 import { ResendCommunicationsGateway } from '../_core/communications/infrastructure/resend-communications-gateway.ts';
+import { SupabaseAuthAdminGateway } from '../_core/auth-admin/infrastructure/supabase-auth-admin-gateway.ts';
+import { AuthAdminError } from '../_core/auth-admin/domain/auth-admin-error.ts';
 
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
@@ -17,7 +19,7 @@ serve(async (req) => {
 
   try {
     const gateway = new ResendCommunicationsGateway();
-    const useCase = new SendEmailUseCase(gateway);
+    const useCase = new SendEmailUseCase(gateway, new SupabaseAuthAdminGateway());
     const body = await readJsonBody<{ to?: string; subject?: string; html?: string; attachments?: unknown[] }>(req);
 
     const result = await useCase.execute({
@@ -25,7 +27,7 @@ serve(async (req) => {
       subject: body?.subject || '',
       html: body?.html || '',
       attachments: body?.attachments,
-    });
+    }, req.headers.get('Authorization') || '');
 
     const { success, code, message, details, ...extra } = (result || {}) as Record<string, unknown>;
     return jsonResponse(
@@ -39,7 +41,7 @@ serve(async (req) => {
       200,
     );
   } catch (error) {
-    if (error instanceof CommunicationsCoreError) {
+    if (error instanceof CommunicationsCoreError || error instanceof AuthAdminError) {
       return jsonResponse(
         {
           success: false,

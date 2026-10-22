@@ -1,66 +1,9 @@
 import { supabase } from '../../../../config/supabase';
-import { APP_BASE_URL, APP_LOGIN_URL, APP_RESET_PASSWORD_URL } from '../../../../config/appUrls';
+import { APP_BASE_URL, APP_LOGIN_URL, AUTH_RESET_PASSWORD_REDIRECT_URL } from '../../../../config/appUrls';
+import { escapeHtml } from '../../../../shared/lib/escapeHtml';
+import { readFunctionError } from '../../../../shared/infrastructure/http/functionError';
 
-const showCredentialsModal = (userData) => {
-  if (typeof document === 'undefined') {
-    return;
-  }
-
-  const modal = document.createElement('div');
-  modal.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-  `;
-
-  modal.innerHTML = `
-    <div style="
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      max-width: 500px;
-      width: 90%;
-      text-align: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    ">
-      <h3 style="color: #1e3a8a; margin-bottom: 20px;">No se pudo enviar el correo</h3>
-      <p><strong>Credenciales del usuario:</strong></p>
-      <div style="
-        background: #f8f9fa;
-        padding: 20px;
-        border-radius: 8px;
-        margin: 15px 0;
-        text-align: left;
-      ">
-        <p><strong>Usuario:</strong> ${userData.email}</p>
-        <p><strong>Contraseña:</strong> <code style="background: #e9ecef; padding: 2px 8px; border-radius: 4px;">${userData.password}</code></p>
-      </div>
-      <p style="font-size: 14px; color: #666; margin-bottom: 20px;">
-        Por favor, comunica estas credenciales al usuario manualmente.
-      </p>
-      <button onclick="this.parentElement.parentElement.remove()" style="
-        background: #1e3a8a;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: 600;
-      ">Entendido</button>
-    </div>
-  `;
-
-  document.body.appendChild(modal);
-};
-
-const generateCredentialsEmailTemplate = ({ name, email, password }) => `
+const generateCredentialsEmailTemplate = ({ name, email, password, isResend }) => `
   <!DOCTYPE html>
   <html lang="es">
   <head>
@@ -74,11 +17,11 @@ const generateCredentialsEmailTemplate = ({ name, email, password }) => `
         <h1 style="margin: 0;">Bienvenido a Riovoley</h1>
       </div>
       <div style="padding: 24px;">
-        <h2 style="margin-top: 0;">Hola ${name}</h2>
-        <p>Tu cuenta ha sido creada exitosamente.</p>
+        <h2 style="margin-top: 0;">Hola ${escapeHtml(name)}</h2>
+        <p>${isResend ? 'Se ha generado una nueva contraseña temporal. La contraseña anterior dejó de funcionar.' : 'Tu cuenta ha sido creada exitosamente.'}</p>
         <div style="background: #f1f5f9; border-left: 4px solid #f59e0b; padding: 16px; border-radius: 8px;">
-          <p style="margin: 0 0 8px;"><strong>Email:</strong> ${email}</p>
-          <p style="margin: 0;"><strong>Contraseña temporal:</strong> <code>${password}</code></p>
+          <p style="margin: 0 0 8px;"><strong>Email:</strong> ${escapeHtml(email)}</p>
+          <p style="margin: 0;"><strong>Contraseña temporal:</strong> <code>${escapeHtml(password)}</code></p>
         </div>
         <p><strong>Importante:</strong> cambia tu Contraseña en tu primer inicio de Sesión.</p>
         <p><a href="${APP_LOGIN_URL}" style="color: #1e3a8a; font-weight: bold;">${APP_LOGIN_URL}</a></p>
@@ -151,28 +94,32 @@ const invokeSendEmail = async ({ to, subject, html }) => {
 export class SupabaseCommunicationsRepository {
   async sendCredentials(userData) {
     try {
-      const { email, full_name, nombre, apellido, password } = userData;
+      const { email: rawEmail, full_name, nombre, apellido, password } = userData || {};
+      const email = rawEmail?.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email || '') || typeof password !== 'string' || !password) {
+        return { success: false, error: 'Se necesitan un email válido y la contraseña temporal para enviar credenciales.' };
+      }
       const displayName = full_name || `${nombre || ''} ${apellido || ''}`.trim() || 'Usuario';
       const html = generateCredentialsEmailTemplate({
         name: displayName,
         email,
-        password
+        password,
+        isResend: userData.isResend === true,
       });
 
       const { data, error } = await invokeSendEmail({
         to: email,
-        subject: 'Bienvenido al Club Riovoley - Credenciales de Acceso',
+        subject: userData.isResend ? 'Tus credenciales de acceso - Riovoley' : 'Bienvenido al Club Riovoley - Credenciales de Acceso',
         html
       });
 
       if (error || !data?.success) {
-        showCredentialsModal(userData);
-        return { success: false, error: error?.message || data?.error || 'Error desconocido en el envio' };
+        const failure = await readFunctionError(error, data, 'El servicio no confirmó el envío del correo.');
+        return { success: false, error: failure.message, code: failure.code };
       }
 
       return { success: true, data };
     } catch (error) {
-      showCredentialsModal(userData);
       return { success: false, error: error.message };
     }
   }
@@ -197,7 +144,8 @@ export class SupabaseCommunicationsRepository {
       });
 
       if (error || !data?.success) {
-        return { success: false, error: error?.message || data?.error || 'Error desconocido en el envio' };
+        const failure = await readFunctionError(error, data, 'El servicio no confirmó el envío del correo.');
+        return { success: false, error: failure.message, code: failure.code };
       }
 
       return { success: true, data };
@@ -208,8 +156,8 @@ export class SupabaseCommunicationsRepository {
 
   async sendPasswordReset(userData) {
     try {
-      const { error } = await supabase.auth.resetPasswordForEmail(userData.email, {
-        redirectTo: APP_RESET_PASSWORD_URL
+      const { error } = await supabase.auth.resetPasswordForEmail(userData.email.trim(), {
+        redirectTo: AUTH_RESET_PASSWORD_REDIRECT_URL
       });
 
       if (error) throw error;
