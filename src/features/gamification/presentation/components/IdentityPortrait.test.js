@@ -2,6 +2,20 @@ import { render, screen } from '@testing-library/react';
 import IdentityPortrait from './IdentityPortrait';
 
 describe('IdentityPortrait', () => {
+  it('mantiene el fondo visible alrededor de una foto opaca', () => {
+    render(<IdentityPortrait imageUrl="https://example.com/photo.jpg" equippedItems={{ background: {
+      slug: 'background_night', metadata: { backgroundVariant: 'night-carbon' },
+    } }} />);
+    expect(screen.getByTestId('portrait-background-layer')).toHaveAttribute('data-visual-variant', 'night-carbon');
+    expect(screen.getByRole('img')).toHaveClass('p-1.5');
+  });
+
+  it('renderiza el marco personalizado como una capa transparente sobre la foto', () => {
+    render(<IdentityPortrait imageUrl="https://example.com/photo.jpg" equippedItems={{ frame: {
+      slug: 'custom', category: 'custom_frame', metadata: { imageUrl: 'https://example.com/frame.png' },
+    } }} />);
+    expect(screen.getByTestId('portrait-custom-frame')).toHaveAttribute('src', 'https://example.com/frame.png');
+  });
   it('stays visually neutral when no cosmetics are equipped', () => {
     render(
       <IdentityPortrait

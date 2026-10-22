@@ -25,7 +25,9 @@ export const createGamificationAdminUseCases = (repository) => {
       if (!item.description?.trim()) throw new Error('La descripción es requerida.');
       if (!COSMETIC_RARITIES.includes(item.rarity)) throw new Error('Rareza inválida.');
       if (!COSMETIC_CATEGORIES.includes(item.category)) throw new Error('Categoría inválida.');
-      if (item.price_coins == null || Number(item.price_coins) < 0) throw new Error('El precio debe ser ≥ 0.');
+      if (item.price_coins == null || String(item.price_coins).trim() === '' || !Number.isInteger(Number(item.price_coins)) || Number(item.price_coins) < 0 || Number(item.price_coins) > 2147483647) throw new Error('El precio debe ser un entero mayor o igual a 0.');
+      if (item.category === 'riovoley' && item.is_active !== false) throw new Error('Guarda el producto como borrador: el canje de productos físicos aún no está disponible.');
+      if (item.category === 'custom_frame' && !/^https:\/\//i.test(item.metadata?.imageUrl || '')) throw new Error('Sube una imagen HTTPS para el marco personalizado.');
       if (isNew && !item.slug?.trim()) throw new Error('El slug es requerido.');
 
       const payload = {
@@ -33,7 +35,7 @@ export const createGamificationAdminUseCases = (repository) => {
         name: item.name.trim(),
         description: item.description.trim(),
         rarity: item.rarity,
-        category: item.category,
+        category: item.category === 'custom_frame' ? 'frame' : item.category,
         price_coins: Number(item.price_coins),
         sort_order: Number(item.sort_order ?? 0),
         is_active: item.is_active !== false,

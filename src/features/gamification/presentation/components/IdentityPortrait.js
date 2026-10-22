@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FaBolt, FaMedal, FaShieldAlt, FaStar, FaUserCircle } from 'react-icons/fa';
+import { FaBolt, FaFire, FaMedal, FaShieldAlt, FaStar, FaUserCircle } from 'react-icons/fa';
 import { cn } from '../../../../lib/cn';
 import {
   normalizeCosmeticItem,
@@ -44,6 +44,10 @@ const getBadgeIcon = (iconKey) => {
       return <FaShieldAlt />;
     case 'medal':
       return <FaMedal />;
+    case 'fire':
+      return <FaFire />;
+    case 'spark':
+      return <FaBolt />;
     default:
       return <FaStar />;
   }
@@ -181,18 +185,19 @@ const IdentityPortrait = ({
         <div
           className={cn(
             'relative h-full w-full overflow-hidden border border-white/10',
-            sizeStyles.inner,
-            backgroundVisual.classes
+            sizeStyles.inner
           )}
           data-testid="portrait-frame-shell"
           data-visual-variant={frameVisual.variant}
         >
+          <div data-testid="portrait-background-layer" data-visual-variant={backgroundVisual.variant}
+            className={cn('pointer-events-none absolute inset-0', backgroundVisual.classes)} />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.16),_transparent_28%)]" />
           {imageUrl ? (
             <img
               src={imageUrl}
               alt={displayName ? `Perfil de ${displayName}` : 'Imagen de perfil'}
-              className={cn('relative z-[1] h-full w-full object-cover', sizeStyles.image, imageClassName)}
+              className={cn('relative z-[1] h-full w-full object-cover', sizeStyles.image, backgroundItem.slug && 'p-1.5', imageClassName)}
             />
           ) : (
             <div className={cn('relative z-[1] flex h-full w-full items-center justify-center bg-white/5 text-slate-400', sizeStyles.image)}>
@@ -211,6 +216,11 @@ const IdentityPortrait = ({
             </div>
           ) : null}
         </div>
+
+        {frameItem.metadata.imageUrl ? (
+          <img data-testid="portrait-custom-frame" src={frameItem.metadata.imageUrl} alt="" aria-hidden="true"
+            className="pointer-events-none absolute inset-0 z-[2] h-full w-full rounded-[inherit] object-contain" />
+        ) : null}
 
         {badgeVisual ? (
           <div

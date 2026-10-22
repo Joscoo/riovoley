@@ -321,14 +321,15 @@ const COSMETIC_EMPTY = {
   productType: 'camiseta', stock: '', redemptionInstructions: '',
 };
 
-const flatToForm = (item = {}) => {
+export const flatToForm = (item = {}) => {
   const m = item.metadata || {};
   return {
     slug:                    item.slug || '',
     name:                    item.name || '',
     description:             item.description || '',
     rarity:                  item.rarity || 'common',
-    category:                item.category || 'frame',
+    category:                item.category === 'frame' && m.imageUrl ? 'custom_frame' : (item.category || 'frame'),
+    originalMetadata:        m,
     price_coins:             item.price_coins ?? 0,
     sort_order:              item.sort_order  ?? 0,
     is_active:               item.is_active   !== false,
@@ -348,8 +349,11 @@ const flatToForm = (item = {}) => {
   };
 };
 
-const formToItem = (form) => {
-  const meta = {};
+export const formToItem = (form) => {
+  const meta = { ...(form.originalMetadata || {}) };
+  // Rebuild category-specific fields; keep unrelated catalog metadata.
+  ['frameVariant', 'backgroundVariant', 'badgeVariant', 'icon', 'effectVariant', 'glow',
+    'imageUrl', 'productType', 'stock', 'redemptionInstructions', 'unlockTarget'].forEach((key) => delete meta[key]);
   if (form.category === 'frame')        meta.frameVariant      = form.frameVariant;
   if (form.category === 'background')   meta.backgroundVariant = form.backgroundVariant;
   if (form.category === 'badge')        { meta.badgeVariant = form.badgeVariant; meta.icon = form.badgeIcon; }
@@ -362,6 +366,7 @@ const formToItem = (form) => {
     if (form.stock !== '') meta.stock = Number(form.stock);
   }
   meta.unlockType = form.unlockType;
+  if (form.unlockType !== 'leaderboard_top') delete meta.boardType;
   meta.unlockHint = form.unlockHint;
   if (form.unlockType !== 'purchase' && form.unlockTarget !== '') meta.unlockTarget = Number(form.unlockTarget);
 
@@ -581,7 +586,7 @@ const CosmeticForm = ({ initial, isNew, onSave, onCancel, saving, error: formErr
           <div className="rounded-xl border border-rv-gold/20 bg-rv-gold/5 p-3 text-xs text-rv-gold">
             <FaVolleyballBall className="mb-1.5 text-lg" />
             <p className="font-bold">Merch Riovoley</p>
-            <p className="mt-1 opacity-80">Los alumnos compran con monedas y canJean en persona.</p>
+            <p className="mt-1 opacity-80">Guarda estos productos como borradores. El canje de productos físicos aún no está disponible.</p>
           </div>
         )}
         {form.category === 'custom_frame' && (
@@ -625,7 +630,7 @@ const CosmeticsTab = () => {
 
   const filtered = all.filter((i) => {
     const matchSearch = !search || i.name.toLowerCase().includes(search.toLowerCase()) || i.slug.includes(search.toLowerCase());
-    const matchCat    = !catFilter || i.category === catFilter;
+    const matchCat    = !catFilter || flatToForm(i).category === catFilter;
     return matchSearch && matchCat;
   });
 

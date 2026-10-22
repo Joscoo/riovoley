@@ -18,6 +18,9 @@ const FRAME_VARIANT_CLASSES = {
 };
 
 const BACKGROUND_VARIANT_CLASSES = {
+  'night-carbon': 'bg-[repeating-linear-gradient(135deg,_#020617_0px,_#020617_4px,_#334155_5px,_#0f172a_8px)]',
+  'blue-storm': 'bg-[radial-gradient(ellipse_at_top_right,_#818cf8,_#1e3a8a_45%,_#020617_85%)]',
+  'night-waves': 'bg-[repeating-radial-gradient(ellipse_at_bottom_left,_#0f172a_0px,_#164e63_8px,_#0f172a_16px)]',
   portrait: 'bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.18),_transparent_30%),linear-gradient(145deg,_rgba(71,85,105,0.84),_rgba(15,23,42,0.92)_60%,_rgba(30,41,59,0.9))]',
   'soft-focus': 'bg-[radial-gradient(circle_at_top_left,_rgba(251,207,232,0.28),_transparent_34%),linear-gradient(145deg,_rgba(76,5,25,0.84),_rgba(190,24,93,0.62)_55%,_rgba(30,41,59,0.9))]',
   spotlight: 'bg-[radial-gradient(circle_at_top_center,_rgba(255,255,255,0.24),_transparent_30%),linear-gradient(145deg,_rgba(2,6,23,0.98),_rgba(30,41,59,0.94)_55%,_rgba(15,23,42,0.98))]',
@@ -29,6 +32,11 @@ const BACKGROUND_VARIANT_CLASSES = {
 };
 
 const BADGE_VARIANT_MAP = {
+  club: {
+    classes: 'bg-[linear-gradient(135deg,_#064e3b,_#059669)] text-emerald-50 ring-2 ring-emerald-200/35',
+    shortLabel: 'RV',
+    iconKey: 'shield',
+  },
   'club-seal': {
     classes: 'bg-[linear-gradient(135deg,_rgba(15,23,42,0.98),_rgba(148,163,184,0.9))] text-white ring-2 ring-slate-200/35',
     shortLabel: 'CLB',
@@ -67,6 +75,11 @@ const BADGE_VARIANT_MAP = {
 };
 
 const EFFECT_VARIANT_MAP = {
+  bokeh: {
+    shellClasses: "before:absolute before:-inset-2 before:rounded-[inherit] before:blur-2xl before:content-['']",
+    backLayers: ['aura-wide'],
+    frontLayers: ['sparkle-orbit'],
+  },
   halo: {
     shellClasses: "before:absolute before:-inset-1.5 before:rounded-[inherit] before:opacity-90 before:blur-xl before:content-[''] after:absolute after:-inset-0.5 after:rounded-[inherit] after:border after:border-white/20 after:content-['']",
     backLayers: [],
@@ -158,7 +171,7 @@ export const resolveFrameVisual = (item) => {
   return {
     variant,
     intensity: RARITY_INTENSITY[normalized.rarity] || 'sober',
-    classes: FRAME_VARIANT_CLASSES[variant] || FRAME_VARIANT_CLASSES.elite,
+    classes: normalized.metadata.imageUrl ? '' : (FRAME_VARIANT_CLASSES[variant] || FRAME_VARIANT_CLASSES.satin),
   };
 };
 

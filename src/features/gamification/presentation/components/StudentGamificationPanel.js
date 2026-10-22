@@ -304,7 +304,7 @@ const recalculateStoreAffordability = (items, nextBalance) =>
   (items || []).map((entry) => ({
     ...entry,
     canAfford: Number(nextBalance || 0) >= Number(entry.priceCoins || 0),
-    canPurchase: !entry.isOwned && entry.isUnlocked && Number(nextBalance || 0) >= Number(entry.priceCoins || 0),
+    canPurchase: !entry.isOwned && ['frame', 'background', 'badge', 'effect'].includes(entry.category) && entry.isUnlocked && Number(nextBalance || 0) >= Number(entry.priceCoins || 0),
   }));
 
 const buildPreviewEquipmentForItem = (equipment, item) => (
@@ -323,7 +323,7 @@ const buildEquippedItemsFromEquipment = (itemsBySlug, equipment) => ({
   effect: itemsBySlug[equipment?.effect] || null,
 });
 
-const patchLeaderboardEquipmentRows = (rows, nextEquipment) =>
+const patchLeaderboardEquipmentRows = (rows, nextEquipment, nextItems) =>
   (rows || []).map((entry) => (
     entry.isCurrentStudent
       ? {
@@ -331,6 +331,10 @@ const patchLeaderboardEquipmentRows = (rows, nextEquipment) =>
           cosmeticEquipment: {
             ...(entry.cosmeticEquipment || {}),
             ...nextEquipment,
+          },
+          equippedCosmeticItems: {
+            ...(entry.equippedCosmeticItems || {}),
+            ...nextItems,
           },
         }
       : entry
@@ -353,7 +357,7 @@ const normalizeGamificationError = (error) => {
     case 'insufficient_coins':
       return {
         text: 'No tienes monedas suficientes para completar esa compra.',
-        shouldRefresh: false,
+        shouldRefresh: true,
       };
     case 'item_not_found':
       return {
@@ -525,6 +529,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
   const [identityMessage, setIdentityMessage] = useState(null);
   const [cosmeticMessage, setCosmeticMessage] = useState(null);
   const [cosmeticActionSlug, setCosmeticActionSlug] = useState('');
+  const cosmeticActionRef = useRef(false);
   const photoInputRef = useRef(null);
   const storeCosmetics = cosmetics.items || [];
   const storeCosmeticsBySlug = Object.fromEntries(storeCosmetics.map((item) => [item.slug, item]));
@@ -931,7 +936,8 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
   };
 
   const handlePurchaseCosmetic = async (itemSlug) => {
-    if (!userId) return;
+    if (!userId || cosmeticActionRef.current || loading) return;
+    cosmeticActionRef.current = true;
     setCosmeticActionSlug(itemSlug);
     setCosmeticMessage(null);
     try {
@@ -939,8 +945,20 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
       applyGamificationPatch((current) => {
         const currentItems = current?.cosmetics?.items || [];
         const purchasedItem = currentItems.find((entry) => entry.slug === itemSlug);
-        const priceCoins = Number(purchaseResult?.priceCoins || purchasedItem?.priceCoins || 0);
-        const nextBalance = Math.max(Number(current?.currency?.balance || 0) - priceCoins, 0);
+        const priceCoins = Number(purchaseResult?.priceCoins ?? purchasedItem?.priceCoins ?? 0);
+        const nextBalance = Number(purchaseResult?.wallet?.balance ?? Math.max(Number(current?.currency?.balance || 0) - priceCoins, 0));
+        const ledgerEntry = purchaseResult?.ledgerEntry || {
+          id: `purchase-${itemSlug}-${Date.now()}`, sourceType: 'cosmetic_purchase', sourceRef: itemSlug,
+          label: 'Compra cosmetica', description: `Compraste ${purchasedItem?.name || itemSlug} para tu perfil.`,
+          coinsDelta: -priceCoins, occurredAt: new Date().toISOString(),
+        };
+        const nextCurrency = {
+          ...(current.currency || {}),
+          balance: nextBalance,
+          totalEarned: Number(purchaseResult?.wallet?.totalEarned ?? current?.currency?.totalEarned ?? 0),
+          totalSpent: Number(purchaseResult?.wallet?.totalSpent ?? (Number(current?.currency?.totalSpent || 0) + priceCoins)),
+          ledger: [ledgerEntry, ...(current?.currency?.ledger || []).filter((entry) => entry.id !== ledgerEntry.id)],
+        };
         const nextItems = recalculateStoreAffordability(
           currentItems.map((entry) => (
             entry.slug === itemSlug
@@ -957,13 +975,10 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
 
         return {
           ...current,
-          currency: {
-            ...(current.currency || {}),
-            balance: nextBalance,
-            totalSpent: Number(current?.currency?.totalSpent || 0) + priceCoins,
-          },
+          currency: nextCurrency,
           cosmetics: {
             ...(current.cosmetics || {}),
+            ...nextCurrency,
             items: nextItems,
             inventoryCount: nextItems.filter((entry) => entry.isOwned).length,
           },
@@ -978,12 +993,14 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
       }
       setCosmeticMessage({ tone: 'warning', text: normalizedError.text });
     } finally {
+      cosmeticActionRef.current = false;
       setCosmeticActionSlug('');
     }
   };
 
   const handleEquipCosmetic = async (itemSlug) => {
-    if (!userId) return;
+    if (!userId || cosmeticActionRef.current || loading) return;
+    cosmeticActionRef.current = true;
     setCosmeticActionSlug(itemSlug);
     setCosmeticMessage(null);
     try {
@@ -1026,13 +1043,14 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
             ...board,
             rows: patchLeaderboardEquipmentRows(board.rows, {
               [`${category}_item_slug`]: itemSlug,
-            }),
+            }, { [category]: equippedItem || null }),
           })),
           leaderboard: patchLeaderboardEquipmentRows(current.leaderboard || [], {
             [`${category}_item_slug`]: itemSlug,
-          }),
+          }, { [category]: equippedItem || null }),
         };
       });
+      setPreviewItemSlug('');
       setCosmeticMessage({ tone: 'success', text: 'Tu equipamiento cosmetico se actualizo.' });
     } catch (error) {
       console.error('Error equipando item cosmetico:', error);
@@ -1042,12 +1060,14 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
       }
       setCosmeticMessage({ tone: 'warning', text: normalizedError.text });
     } finally {
+      cosmeticActionRef.current = false;
       setCosmeticActionSlug('');
     }
   };
 
   const handleUnequipCosmetic = async (category) => {
-    if (!userId) return;
+    if (!userId || cosmeticActionRef.current || loading) return;
+    cosmeticActionRef.current = true;
     setCosmeticActionSlug(category);
     setCosmeticMessage(null);
     try {
@@ -1082,11 +1102,11 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
             ...board,
             rows: patchLeaderboardEquipmentRows(board.rows, {
               [`${category}_item_slug`]: null,
-            }),
+            }, { [category]: null }),
           })),
           leaderboard: patchLeaderboardEquipmentRows(current.leaderboard || [], {
             [`${category}_item_slug`]: null,
-          }),
+          }, { [category]: null }),
         };
       });
       setPreviewItemSlug((current) => {
@@ -1102,6 +1122,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
       }
       setCosmeticMessage({ tone: 'warning', text: normalizedError.text });
     } finally {
+      cosmeticActionRef.current = false;
       setCosmeticActionSlug('');
     }
   };
@@ -1141,6 +1162,12 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
       <div className="mt-4 rounded-3xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm text-slate-200 mobile:px-4 mobile:py-3">
         <span className="font-black text-white">{activePanelTabMeta.label}:</span> {activePanelTabMeta.helper}.
       </div>
+
+      {cosmeticMessage ? (
+        <div role="status" aria-live="polite" className={`mt-4 rounded-2xl border px-4 py-3 text-sm ${cosmeticMessage.tone === 'success' ? 'border-emerald-300/35 bg-emerald-900/15 text-emerald-100' : 'border-amber-300/35 bg-amber-900/15 text-amber-100'}`}>
+          {cosmeticMessage.text}
+        </div>
+      ) : null}
 
       {selectedPanelTab === 'summary' ? (
       <>
@@ -1484,7 +1511,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
 
             <div className="mt-4 grid gap-3 mobile:grid-cols-2">
               {['frame', 'background', 'badge', 'effect'].map((slot) => {
-                const equippedItem = previewEquippedItems[slot];
+                const equippedItem = currentEquippedItems[slot];
                 return (
                   <div
                     key={slot}
@@ -1512,7 +1539,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                         variant="secondary"
                         size="sm"
                         className="mt-3"
-                        disabled={cosmeticActionSlug === slot}
+                        disabled={Boolean(cosmeticActionSlug) || loading}
                         onClick={() => handleUnequipCosmetic(slot)}
                       >
                         <FaSyncAlt className={`mr-2 ${cosmeticActionSlug === slot ? 'animate-spin' : ''}`} />
@@ -1807,38 +1834,28 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
               <MiniInsight
                 icon={<FaShieldAlt />}
                 label="Marco"
-                value={previewEquippedItems.frame?.name || 'Sin equipar'}
+                value={currentEquippedItems.frame?.name || 'Sin equipar'}
                 helper="Es el borde de tu foto o avatar."
               />
               <MiniInsight
                 icon={<FaLayerGroup />}
                 label="Fondo"
-                value={previewEquippedItems.background?.name || 'Sin equipar'}
+                value={currentEquippedItems.background?.name || 'Sin equipar'}
                 helper="Se ve detras de tu imagen."
               />
               <MiniInsight
                 icon={<FaMedal />}
                 label="Insignia"
-                value={previewEquippedItems.badge?.name || 'Sin equipar'}
+                value={currentEquippedItems.badge?.name || 'Sin equipar'}
                 helper="Destaca tu perfil sobre la imagen."
               />
               <MiniInsight
                 icon={<FaBolt />}
                 label="Efecto"
-                value={previewEquippedItems.effect?.name || 'Sin equipar'}
+                value={currentEquippedItems.effect?.name || 'Sin equipar'}
                 helper="Agrega brillo y energia visual."
               />
             </div>
-
-            {cosmeticMessage ? (
-              <div className={`mt-4 rounded-2xl border px-3 py-2 text-sm ${
-                cosmeticMessage.tone === 'success'
-                  ? 'border-emerald-300/35 bg-emerald-900/15 text-emerald-100'
-                  : 'border-amber-300/35 bg-amber-900/15 text-amber-100'
-              }`}>
-                {cosmeticMessage.text}
-              </div>
-            ) : null}
 
             <div className="mt-4 rounded-3xl border border-cyan-300/20 bg-[linear-gradient(135deg,_rgba(34,211,238,0.1),_rgba(15,23,42,0.2)_55%,_rgba(245,158,11,0.08))] p-4">
               <div className="flex flex-wrap items-center justify-between gap-3">
@@ -1888,7 +1905,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                         <Button
                           variant="secondary"
                           size="sm"
-                          disabled={cosmeticActionSlug === item.category}
+                          disabled={Boolean(cosmeticActionSlug) || loading}
                           onClick={() => handleUnequipCosmetic(item.category)}
                         >
                           <FaSyncAlt className={`mr-2 ${cosmeticActionSlug === item.category ? 'animate-spin' : ''}`} />
@@ -1898,7 +1915,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                         <Button
                           variant="secondary"
                           size="sm"
-                          disabled={cosmeticActionSlug === item.slug}
+                          disabled={Boolean(cosmeticActionSlug) || loading}
                           onClick={() => handleEquipCosmetic(item.slug)}
                         >
                           <FaSyncAlt className={`mr-2 ${cosmeticActionSlug === item.slug ? 'animate-spin' : ''}`} />
@@ -2126,7 +2143,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                             <Button
                               variant="secondary"
                               size="sm"
-                              disabled={cosmeticActionSlug === item.category}
+                              disabled={Boolean(cosmeticActionSlug) || loading}
                               onClick={() => handleUnequipCosmetic(item.category)}
                             >
                               <FaSyncAlt className={`mr-2 ${cosmeticActionSlug === item.category ? 'animate-spin' : ''}`} />
@@ -2136,7 +2153,7 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                             <Button
                               variant="secondary"
                               size="sm"
-                              disabled={cosmeticActionSlug === item.slug}
+                              disabled={Boolean(cosmeticActionSlug) || loading}
                               onClick={() => handleEquipCosmetic(item.slug)}
                             >
                               <FaSyncAlt className={`mr-2 ${cosmeticActionSlug === item.slug ? 'animate-spin' : ''}`} />
@@ -2147,11 +2164,11 @@ const StudentGamificationPanel = ({ gamification, userId, onRefresh, onIdentityU
                           <Button
                             variant="secondary"
                             size="sm"
-                            disabled={!item.canPurchase || cosmeticActionSlug === item.slug}
+                            disabled={!item.canPurchase || Boolean(cosmeticActionSlug) || loading}
                             onClick={() => handlePurchaseCosmetic(item.slug)}
                           >
                             <CoinAmount value={item.priceCoins} tone="accent" className="mr-2" />
-                            {item.isLocked ? 'Aun bloqueado' : 'Comprar ahora'}
+                            {cosmeticActionSlug === item.slug ? 'Comprando...' : item.isLocked ? 'Aun bloqueado' : !item.canAfford ? `Faltan ${Math.max(item.priceCoins - Number(currency.balance || 0), 0)} monedas` : item.priceCoins === 0 ? 'Obtener gratis' : 'Comprar ahora'}
                           </Button>
                         )}
                       </div>

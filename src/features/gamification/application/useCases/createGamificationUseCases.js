@@ -3042,7 +3042,7 @@ const buildCosmeticsView = ({ catalog, ownedItems, equipment, wallet, profile, l
       isLocked: !isOwned && !isUnlocked,
       isEquipped: equippedBySlot[category] === item.slug,
       canAfford: Number(wallet?.balance || 0) >= Number(item.price_coins || 0),
-      canPurchase: isUnlocked && Number(wallet?.balance || 0) >= Number(item.price_coins || 0),
+      canPurchase: !isOwned && ['frame', 'background', 'badge', 'effect'].includes(category) && isUnlocked && Number(wallet?.balance || 0) >= Number(item.price_coins || 0),
       unlockType: item.metadata?.unlockType || 'purchase',
       unlockLabel: getCosmeticUnlockLabel(item),
       unlockHint: getCosmeticUnlockHint(item),
