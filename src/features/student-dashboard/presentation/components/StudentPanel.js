@@ -1,5 +1,5 @@
 // src/features/student-dashboard/presentation/components/StudentPanel.js
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { Suspense, lazy, useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import {
@@ -19,9 +19,6 @@ import {
   FaTimes,
   FaUserCircle
 } from 'react-icons/fa';
-import {
-  AnunciosViewer,
-} from '../../../announcements';
 import { useUserProfile } from '../../../auth-profile';
 import {
   calcularDiferenciaDias,
@@ -30,14 +27,12 @@ import {
   getEcuadorDate
 } from '../../../../utils/dateUtils';
 import { studentDashboardService } from '../../studentDashboardService';
-import { ProfileSettings } from '../../../account-admin';
-import StudentPhysicalTests from './StudentPhysicalTests';
-import StudentProfileIdentityCard from './StudentProfileIdentityCard';
-import { IdentityPortrait, StudentGamificationPanel } from '../../../gamification';
+import IdentityPortrait from '../../../gamification/presentation/components/IdentityPortrait';
 import {
   Button,
   Card,
   EmptyState,
+  LoadingSpinner,
   RolePanelLayout,
   SectionHeader,
   StatusBadge,
@@ -49,6 +44,18 @@ import {
 } from '../../../../shared/ui';
 import { cn } from '../../../../lib/cn';
 import { formatCategoryLabel, formatStatusLabel } from '../../../../shared/lib/trainingCategoryFormatting';
+
+const AnunciosViewer = lazy(() => import('../../../announcements/presentation/components/AnunciosViewer'));
+const StudentPhysicalTests = lazy(() => import('./StudentPhysicalTests'));
+const StudentProfileIdentityCard = lazy(() => import('./StudentProfileIdentityCard'));
+const StudentGamificationPanel = lazy(() => import('../../../gamification/presentation/components/StudentGamificationPanel'));
+const ProfileSettings = lazy(() => import('../../../account-admin/presentation/components/ProfileSettings'));
+
+const SectionFallback = () => (
+  <div className="flex min-h-[45dvh] items-center justify-center">
+    <LoadingSpinner message="Cargando seccion..." />
+  </div>
+);
 
 const StudentPanel = ({ user }) => {
   const location = useLocation();
@@ -489,17 +496,19 @@ const StudentPanel = ({ user }) => {
       )}
       contentClassName="space-y-4 mobile:space-y-5"
     >
-      {activeSection === 'anuncios' && renderAnuncios()}
-      {activeSection === 'progreso' && renderGamification()}
-      {activeSection === 'mensualidad' && renderPaymentStatus()}
-      {activeSection === 'asistencias' && renderAttendance()}
-      {activeSection === 'tests-fisicos' && (
-        <StudentPhysicalTests
-          physicalTests={physicalTests}
-          studentData={studentData}
-        />
-      )}
-      {activeSection === 'perfil' && renderProfile()}
+      <Suspense fallback={<SectionFallback />}>
+        {activeSection === 'anuncios' && renderAnuncios()}
+        {activeSection === 'progreso' && renderGamification()}
+        {activeSection === 'mensualidad' && renderPaymentStatus()}
+        {activeSection === 'asistencias' && renderAttendance()}
+        {activeSection === 'tests-fisicos' && (
+          <StudentPhysicalTests
+            physicalTests={physicalTests}
+            studentData={studentData}
+          />
+        )}
+        {activeSection === 'perfil' && renderProfile()}
+      </Suspense>
       <Button
         variant="secondary"
         size="icon"

@@ -154,6 +154,22 @@ export class SupabaseAdminDashboardRepository {
     return data;
   }
 
+  async listStudentsByIdsForActivity(studentIds = []) {
+    const safeIds = Array.from(new Set((studentIds || []).filter(Boolean).map(String)));
+    if (safeIds.length === 0) return [];
+
+    const { data, error } = await supabase
+      .from('students')
+      .select(`
+        id,
+        users!inner(nombre, apellido)
+      `)
+      .in('id', safeIds);
+
+    if (error) throw new AdminDashboardError(normalizeError(error, 'Error cargando estudiantes para actividad'), error);
+    return data || [];
+  }
+
   async listStudentsForFinancialReview() {
     const { data, error } = await supabase
       .from('students')

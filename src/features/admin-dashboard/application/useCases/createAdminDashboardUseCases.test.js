@@ -1,4 +1,5 @@
 const { createAdminDashboardUseCases } = require('./createAdminDashboardUseCases');
+const { getEcuadorFirstDayOfMonth } = require('../../../../utils/dateUtils');
 
 describe('createAdminDashboardUseCases', () => {
   const activityIconFactory = {
@@ -21,6 +22,7 @@ describe('createAdminDashboardUseCases', () => {
     listTrainingCategoriesForStudents: jest.fn(),
     listRecentAttendances: jest.fn(),
     listRecentPayments: jest.fn(),
+    listStudentsByIdsForActivity: jest.fn(),
     getStudentName: jest.fn(),
   });
 
@@ -78,6 +80,12 @@ describe('createAdminDashboardUseCases', () => {
 
   it('loadFinancialReviewUseCase consolida mensualidades vencidas y pagos diarios por asistencia', async () => {
     const repository = buildRepository();
+    const currentMonthStart = getEcuadorFirstDayOfMonth();
+    const currentMonthPaymentDate = `${currentMonthStart.slice(0, 8)}10`;
+    const previousMonth = new Date(`${currentMonthStart}T00:00:00`);
+    previousMonth.setMonth(previousMonth.getMonth() - 2);
+    const overdueStart = previousMonth.toISOString().slice(0, 10);
+    const overdueEnd = `${overdueStart.slice(0, 8)}28`;
     repository.listStudentsForFinancialReview.mockResolvedValue([
       { id: 's1', categoria: 'iniciacion_hombres', users: { nombre: 'Ana', apellido: 'Perez' } },
       { id: 's2', categoria: 'master_mujeres', users: { nombre: 'Lia', apellido: 'Soto' } },
@@ -91,23 +99,23 @@ describe('createAdminDashboardUseCases', () => {
         id: 'p1',
         student_id: 's1',
         monto: 35,
-        fecha_pago: '2026-06-01',
-        fecha_inicio: '2026-06-01',
-        fecha_fin: '2026-06-30',
+        fecha_pago: currentMonthPaymentDate,
+        fecha_inicio: currentMonthStart,
+        fecha_fin: `${currentMonthStart.slice(0, 8)}28`,
       },
       {
         id: 'p2',
         student_id: 's2',
         monto: 35,
-        fecha_pago: '2026-04-01',
-        fecha_inicio: '2026-04-01',
-        fecha_fin: '2026-04-30',
+        fecha_pago: overdueStart,
+        fecha_inicio: overdueStart,
+        fecha_fin: overdueEnd,
       },
     ]);
     repository.listAttendancesForFinancialReview.mockResolvedValue([
-      { id: 'a1', student_id: 's1', fecha: '2026-06-10', metodo_pago_id: 1 },
-      { id: 'a2', student_id: 's2', fecha: '2026-06-11', metodo_pago_id: 1 },
-      { id: 'a3', student_id: 's2', fecha: '2026-06-13', metodo_pago_id: 1 },
+      { id: 'a1', student_id: 's1', fecha: `${currentMonthStart.slice(0, 8)}10`, metodo_pago_id: 1 },
+      { id: 'a2', student_id: 's2', fecha: `${currentMonthStart.slice(0, 8)}11`, metodo_pago_id: 1 },
+      { id: 'a3', student_id: 's2', fecha: `${currentMonthStart.slice(0, 8)}13`, metodo_pago_id: 1 },
     ]);
 
     const useCases = createAdminDashboardUseCases(repository, activityIconFactory);
@@ -168,6 +176,46 @@ describe('createAdminDashboardUseCases', () => {
         icono: 'empty-icon',
       },
     ]);
+  });
+
+  it('loadRecentActivityUseCase carga nombres de actividad reciente en lote', async () => {
+    const repository = buildRepository();
+    repository.listRecentAttendances.mockResolvedValue([
+      { id: 'a1', student_id: 's1', fecha: '2026-05-10' },
+      { id: 'a2', student_id: 's2', fecha: '2026-05-11' },
+    ]);
+    repository.listRecentPayments.mockResolvedValue([
+      { id: 'p1', student_id: 's1', fecha_pago: '2026-05-12', monto: 25 },
+    ]);
+    repository.listStudentsByIdsForActivity.mockResolvedValue([
+      { id: 's1', users: { nombre: 'Ana', apellido: 'Perez' } },
+      { id: 's2', users: { nombre: 'Lia', apellido: 'Soto' } },
+    ]);
+
+    const useCases = createAdminDashboardUseCases(repository, activityIconFactory);
+    const activity = await useCases.loadRecentActivityUseCase.execute();
+
+    expect(repository.listStudentsByIdsForActivity).toHaveBeenCalledWith(['s1', 's2']);
+    expect(repository.getStudentName).not.toHaveBeenCalled();
+    expect(activity).toEqual([
+      expect.objectContaining({ descripcion: 'Ana Perez asistio al entrenamiento' }),
+      expect.objectContaining({ descripcion: 'Lia Soto asistio al entrenamiento' }),
+      expect.objectContaining({ descripcion: 'Ana Perez realizo un pago de $25' }),
+    ]);
+  });
+
+  it('loadRecentActivityUseCase conserva fallback puntual si el repositorio no soporta lote', async () => {
+    const repository = buildRepository();
+    delete repository.listStudentsByIdsForActivity;
+    repository.listRecentAttendances.mockResolvedValue([{ id: 'a1', student_id: 's1', fecha: '2026-05-10' }]);
+    repository.listRecentPayments.mockResolvedValue([]);
+    repository.getStudentName.mockResolvedValue({ users: { nombre: 'Ana', apellido: 'Perez' } });
+
+    const useCases = createAdminDashboardUseCases(repository, activityIconFactory);
+    const activity = await useCases.loadRecentActivityUseCase.execute();
+
+    expect(repository.getStudentName).toHaveBeenCalledWith('s1');
+    expect(activity[0].descripcion).toBe('Ana Perez asistio al entrenamiento');
   });
 
   it('loadDashboardUseCase orquesta stats + categorias + actividad', async () => {

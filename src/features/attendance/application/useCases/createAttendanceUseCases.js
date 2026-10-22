@@ -321,6 +321,25 @@ export const createAttendanceUseCases = (repository, deps = {}) => {
     }),
   };
 
+  const getHistoryDatePresetUseCase = {
+    execute: ({ preset }) => {
+      const today = currentDate();
+
+      switch (preset) {
+        case 'today':
+          return { dateFrom: today, dateTo: today };
+        case 'last_7':
+          return { dateFrom: dateMinusDays(6), dateTo: today };
+        case 'last_30':
+          return { dateFrom: dateMinusDays(29), dateTo: today };
+        case 'month':
+          return { dateFrom: `${today.slice(0, 8)}01`, dateTo: today };
+        default:
+          return { dateFrom: dateMinusDays(7), dateTo: today };
+      }
+    },
+  };
+
   const calculateStatsUseCase = {
     execute: ({ attendances, athletes, todayAttendance, bulkMode, categories }) => {
       const totalPresentes = (attendances || []).length;
@@ -539,13 +558,84 @@ export const createAttendanceUseCases = (repository, deps = {}) => {
     },
   };
 
+  const hasActiveMonthlyMembership = ({ athleteId, activeMonthlyIds }) => {
+    if (activeMonthlyIds instanceof Set) {
+      return activeMonthlyIds.has(athleteId);
+    }
+
+    if (Array.isArray(activeMonthlyIds)) {
+      return activeMonthlyIds.includes(athleteId);
+    }
+
+    return false;
+  };
+
+  const applyQuickAttendanceFilters = ({
+    rows,
+    statusFilter = 'all',
+    paymentTypeFilter = 'all',
+    membershipFilter = 'all',
+    activeMonthlyIds = [],
+  }) => {
+    let filtered = rows || [];
+
+    if (statusFilter === 'present') {
+      filtered = filtered.filter((athlete) => athlete.attendance !== null);
+    }
+
+    if (statusFilter === 'absent') {
+      filtered = filtered.filter((athlete) => athlete.attendance === null);
+    }
+
+    if (paymentTypeFilter && paymentTypeFilter !== 'all') {
+      const selectedPaymentTypeId = Number(paymentTypeFilter);
+      filtered = filtered.filter((athlete) => (
+        athlete.attendance !== null
+        && Number(athlete.attendance?.metodo_pago_id) === selectedPaymentTypeId
+      ));
+    }
+
+    if (membershipFilter === 'active_monthly') {
+      filtered = filtered.filter((athlete) => hasActiveMonthlyMembership({
+        athleteId: athlete.id,
+        activeMonthlyIds,
+      }));
+    }
+
+    if (membershipFilter === 'needs_payment') {
+      filtered = filtered.filter((athlete) => !hasActiveMonthlyMembership({
+        athleteId: athlete.id,
+        activeMonthlyIds,
+      }));
+    }
+
+    return filtered;
+  };
+
   const filterTodayAttendanceUseCase = {
-    execute: ({ todayAttendance, selectedCategory, searchTerm, searchPredicate }) => {
+    execute: ({
+      todayAttendance,
+      selectedCategory,
+      searchTerm,
+      searchPredicate,
+      statusFilter = 'all',
+      paymentTypeFilter = 'all',
+      membershipFilter = 'all',
+      activeMonthlyIds = [],
+    }) => {
       let filtered = todayAttendance || [];
 
       if (selectedCategory && selectedCategory !== 'all') {
         filtered = filtered.filter((athlete) => athlete.categoria?.includes(selectedCategory));
       }
+
+      filtered = applyQuickAttendanceFilters({
+        rows: filtered,
+        statusFilter,
+        paymentTypeFilter,
+        membershipFilter,
+        activeMonthlyIds,
+      });
 
       if (searchTerm?.trim()) {
         const searchLower = searchTerm.toLowerCase().trim();
@@ -557,8 +647,25 @@ export const createAttendanceUseCases = (repository, deps = {}) => {
   };
 
   const filterTodayAttendanceByCategoryUseCase = {
-    execute: ({ todayAttendance, category, searchTerm, searchPredicate }) => {
+    execute: ({
+      todayAttendance,
+      category,
+      searchTerm,
+      searchPredicate,
+      statusFilter = 'all',
+      paymentTypeFilter = 'all',
+      membershipFilter = 'all',
+      activeMonthlyIds = [],
+    }) => {
       let filtered = (todayAttendance || []).filter((athlete) => athlete.categoria === category);
+
+      filtered = applyQuickAttendanceFilters({
+        rows: filtered,
+        statusFilter,
+        paymentTypeFilter,
+        membershipFilter,
+        activeMonthlyIds,
+      });
 
       if (searchTerm?.trim()) {
         const searchLower = searchTerm.toLowerCase().trim();
@@ -613,6 +720,7 @@ export const createAttendanceUseCases = (repository, deps = {}) => {
     toggleAttendanceUseCase,
     clearAttendanceForDateUseCase,
     getDefaultDatesUseCase,
+    getHistoryDatePresetUseCase,
     calculateStatsUseCase,
     markAllPresentWithMensualidadUseCase,
     filterTodayAttendanceUseCase,

@@ -32,6 +32,17 @@ export const createTableQuery = ({
   },
 });
 
+export const getPaginationRange = (pagination = {}) => {
+  const page = normalizePositiveInt(pagination.page, 1);
+  const pageSize = normalizePositiveInt(pagination.pageSize, 10);
+  const from = (page - 1) * pageSize;
+
+  return {
+    from,
+    to: from + pageSize - 1,
+  };
+};
+
 export const resolveNextSort = ({ currentSort, field }) => {
   if (!field) {
     return { field: null, direction: SORT_DIRECTION.NONE };
@@ -92,4 +103,3 @@ export const withUpdatedPage = ({ query, page }) =>
   });
 
 export const resetTableQuery = ({ defaults }) => createTableQuery(defaults);
-

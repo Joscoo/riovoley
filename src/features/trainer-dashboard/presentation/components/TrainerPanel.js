@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import {
@@ -12,24 +12,32 @@ import {
   FaDumbbell,
 } from 'react-icons/fa';
 import { useUserProfile } from '../../../auth-profile';
-import { AnunciosManager } from '../../../announcements';
-import { AsistenciasManager } from '../../../attendance';
-import { PagosManager } from '../../../payments';
-import { ProfileSettings } from '../../../account-admin';
-import { TestsFisicosManager } from '../../../physical-tests';
-import { UserManagementPanel } from '../../../user-management';
-import TrainerDashboard from './TrainerDashboard';
 import {
   RolePanelLayout,
   iconRegistry,
   semanticCatalog,
   Button,
+  LoadingSpinner,
   PanelUserGuide,
   PANEL_GUIDE_STEPS,
   shouldAutoOpenPanelGuide,
   markPanelGuideDismissed,
   markPanelGuideCompleted
 } from '../../../../shared/ui';
+
+const TrainerDashboard = lazy(() => import('./TrainerDashboard'));
+const UserManagementPanel = lazy(() => import('../../../user-management/presentation/components/UserManagementPanel'));
+const AsistenciasManager = lazy(() => import('../../../attendance/presentation/components/AsistenciasManager'));
+const TestsFisicosManager = lazy(() => import('../../../physical-tests/presentation/components/TestsFisicosManager'));
+const PagosManager = lazy(() => import('../../../payments/presentation/components/PagosManager'));
+const AnunciosManager = lazy(() => import('../../../announcements/presentation/components/AnunciosManager'));
+const ProfileSettings = lazy(() => import('../../../account-admin/presentation/components/ProfileSettings'));
+
+const SectionFallback = () => (
+  <div className="flex min-h-[45dvh] items-center justify-center">
+    <LoadingSpinner message="Cargando seccion..." />
+  </div>
+);
 
 const TrainerPanel = ({ user }) => {
   const { profile, loading } = useUserProfile(user);
@@ -155,7 +163,9 @@ const TrainerPanel = ({ user }) => {
         </div>
       )}
     >
-      {renderActiveSection()}
+      <Suspense fallback={<SectionFallback />}>
+        {renderActiveSection()}
+      </Suspense>
       <Button
         variant="secondary"
         size="icon"

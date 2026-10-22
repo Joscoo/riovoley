@@ -194,7 +194,7 @@ const RoleSidebar = ({
         ref={mobileMenuButtonRef}
         type="button"
         onClick={() => setIsMobileOpen(true)}
-        className="rv-performance-sidebar fixed bottom-[max(env(safe-area-inset-bottom),1rem)] left-4 z-[1001] flex h-11 w-11 items-center justify-center rounded-full border border-rv-gold/40 bg-rv-dark/85 text-rv-gold shadow-[0_10px_24px_rgba(0,0,0,0.35)] backdrop-blur-md transition-all duration-200 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 desktop:hidden"
+        className="rv-performance-sidebar fixed bottom-[max(env(safe-area-inset-bottom),1rem)] left-4 z-[1001] flex h-12 w-12 items-center justify-center rounded-full border border-rv-gold/40 bg-rv-dark/85 text-rv-gold shadow-[0_10px_24px_rgba(0,0,0,0.35)] backdrop-blur-md transition-all duration-200 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 desktop:hidden"
         aria-label="Abrir menu lateral"
         aria-expanded={isMobileOpen}
       >
@@ -224,7 +224,7 @@ const RoleSidebar = ({
             <button
               type="button"
               onClick={() => closeMobileMenu()}
-              className="flex h-10 w-10 items-center justify-center rounded-lg border border-rv-gold/30 bg-rv-gold/10 text-rv-gold transition-all duration-200 hover:bg-rv-gold/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
+              className="flex h-12 w-12 items-center justify-center rounded-lg border border-rv-gold/30 bg-rv-gold/10 text-rv-gold transition-all duration-200 hover:bg-rv-gold/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
               aria-label="Cerrar menu lateral"
             >
               <FaTimes />
@@ -258,7 +258,7 @@ const RoleSidebar = ({
           <button
             type="button"
             onClick={() => setIsCollapsed((prev) => !prev)}
-            className="hidden h-10 w-10 items-center justify-center rounded-lg border border-rv-gold/30 bg-rv-gold/10 text-rv-gold transition-all duration-200 hover:bg-rv-gold/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 desktop:flex"
+            className="hidden h-12 w-12 items-center justify-center rounded-lg border border-rv-gold/30 bg-rv-gold/10 text-rv-gold transition-all duration-200 hover:bg-rv-gold/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 desktop:flex"
             aria-label={isCollapsed ? 'Expandir menu lateral' : 'Colapsar menu lateral'}
           >
             {isCollapsed ? <FaChevronRight /> : <FaChevronLeft />}

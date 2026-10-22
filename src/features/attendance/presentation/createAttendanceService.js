@@ -20,14 +20,51 @@ export const createAttendanceService = (repository = new SupabaseAttendanceRepos
   const clearAttendanceForDate = async ({ selectedDate }) =>
     useCases.clearAttendanceForDateUseCase.execute({ selectedDate });
   const getDefaultDates = () => useCases.getDefaultDatesUseCase.execute();
+  const getHistoryDatePreset = ({ preset }) => useCases.getHistoryDatePresetUseCase.execute({ preset });
   const calculateStats = ({ attendances, athletes, todayAttendance, bulkMode, categories }) =>
     useCases.calculateStatsUseCase.execute({ attendances, athletes, todayAttendance, bulkMode, categories });
   const markAllPresentWithMensualidad = async ({ selectedDate, paymentTypes, todayAttendance }) =>
     useCases.markAllPresentWithMensualidadUseCase.execute({ selectedDate, paymentTypes, todayAttendance });
-  const filterTodayAttendance = ({ todayAttendance, selectedCategory, searchTerm, searchPredicate }) =>
-    useCases.filterTodayAttendanceUseCase.execute({ todayAttendance, selectedCategory, searchTerm, searchPredicate });
-  const filterTodayAttendanceByCategory = ({ todayAttendance, category, searchTerm, searchPredicate }) =>
-    useCases.filterTodayAttendanceByCategoryUseCase.execute({ todayAttendance, category, searchTerm, searchPredicate });
+  const filterTodayAttendance = ({
+    todayAttendance,
+    selectedCategory,
+    searchTerm,
+    searchPredicate,
+    statusFilter,
+    paymentTypeFilter,
+    membershipFilter,
+    activeMonthlyIds,
+  }) =>
+    useCases.filterTodayAttendanceUseCase.execute({
+      todayAttendance,
+      selectedCategory,
+      searchTerm,
+      searchPredicate,
+      statusFilter,
+      paymentTypeFilter,
+      membershipFilter,
+      activeMonthlyIds,
+    });
+  const filterTodayAttendanceByCategory = ({
+    todayAttendance,
+    category,
+    searchTerm,
+    searchPredicate,
+    statusFilter,
+    paymentTypeFilter,
+    membershipFilter,
+    activeMonthlyIds,
+  }) =>
+    useCases.filterTodayAttendanceByCategoryUseCase.execute({
+      todayAttendance,
+      category,
+      searchTerm,
+      searchPredicate,
+      statusFilter,
+      paymentTypeFilter,
+      membershipFilter,
+      activeMonthlyIds,
+    });
   const getCategoryStats = ({ filteredAthletes }) =>
     useCases.getCategoryStatsUseCase.execute({ filteredAthletes });
   const buildExportSummary = ({ asistenciasByDate, dateToExport, selectedDate, todayAttendance }) =>
@@ -60,6 +97,7 @@ export const createAttendanceService = (repository = new SupabaseAttendanceRepos
     toggleAttendance,
     clearAttendanceForDate,
     getDefaultDates,
+    getHistoryDatePreset,
     calculateStats,
     markAllPresentWithMensualidad,
     filterTodayAttendance,

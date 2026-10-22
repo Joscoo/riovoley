@@ -198,6 +198,9 @@ const AsistenciasManager = ({ user }) => {
   const [activeMensualidades, setActiveMensualidades] = useState(new Set());
   const [bulkMode, setBulkMode] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('all'); // Nueva: categoría seleccionada en tabs
+  const [attendanceStatusFilter, setAttendanceStatusFilter] = useState('all');
+  const [attendancePaymentFilter, setAttendancePaymentFilter] = useState('all');
+  const [attendanceMembershipFilter, setAttendanceMembershipFilter] = useState('all');
   const [paymentTypes, setPaymentTypes] = useState([]); // Métodos de pago disponibles
   const [showExportModal, setShowExportModal] = useState(false);
   const [exportObservations, setExportObservations] = useState('');
@@ -434,6 +437,15 @@ const AsistenciasManager = ({ user }) => {
     );
   };
 
+  const applyHistoryDatePreset = (preset) => {
+    const range = attendanceService.getHistoryDatePreset({ preset });
+    setQueryState((current) => {
+      let nextQuery = withUpdatedFilter({ query: current, key: 'fecha_inicio', value: range.dateFrom });
+      nextQuery = withUpdatedFilter({ query: nextQuery, key: 'fecha_fin', value: range.dateTo });
+      return nextQuery;
+    });
+  };
+
   const normalizedHistorySearch = (queryState.filters.search || '').trim().toLowerCase();
   const filteredAthleteOptions = atletas.filter((athlete) => {
     const categoryMatches =
@@ -524,19 +536,47 @@ const AsistenciasManager = ({ user }) => {
     }
   };
 
+  const getFilteredAttendanceSelection = () => {
+    const visibleAthletes = attendanceService.filterTodayAttendance({
+      todayAttendance,
+      selectedCategory,
+      searchTerm,
+      statusFilter: attendanceStatusFilter,
+      paymentTypeFilter: attendancePaymentFilter,
+      membershipFilter: attendanceMembershipFilter,
+      activeMonthlyIds: activeMensualidades,
+      searchPredicate: (atleta, searchLower) =>
+        attendanceService.getSearchNameBlob({ athleteUser: atleta.users }).includes(searchLower),
+    });
+    const monthlyEligibleAthletes = visibleAthletes.filter((atleta) => activeMensualidades.has(atleta.id));
+
+    return {
+      visibleAthletes,
+      monthlyEligibleAthletes,
+      visibleMonthlyAbsentCount: monthlyEligibleAthletes.filter((atleta) => atleta.attendance === null).length,
+    };
+  };
+
   const markAllPresent = async () => {
+    const { monthlyEligibleAthletes, visibleMonthlyAbsentCount } = getFilteredAttendanceSelection();
+
+    if (visibleMonthlyAbsentCount === 0) {
+      showNotice('success', 'No hay atletas con mensualidad activa pendientes en el filtro actual.');
+      return;
+    }
+
     openConfirmDialog({
       title: 'Marcar asistencias masivas',
-      message: '¿Marcar todos los atletas como presentes con MENSUALIDAD?',
-      confirmLabel: 'Marcar todos',
+      message: `Marcar ${visibleMonthlyAbsentCount} atleta(s) con mensualidad activa del filtro actual como presentes?`,
+      confirmLabel: 'Marcar visibles',
       onConfirm: async () => {
         try {
           await attendanceService.markAllPresentWithMensualidad({
             selectedDate,
             paymentTypes,
-            todayAttendance,
+            todayAttendance: monthlyEligibleAthletes,
           });
-          showNotice('success', 'Todos los atletas marcados como presentes con MENSUALIDAD');
+          showNotice('success', `${visibleMonthlyAbsentCount} atleta(s) con mensualidad activa marcados como presentes`);
           await Promise.all([loadTodayAttendance(), loadData()]);
           window.dispatchEvent(new Event('riovoley:dashboard-refresh'));
         } catch (error) {
@@ -595,6 +635,10 @@ const AsistenciasManager = ({ user }) => {
     todayAttendance,
     selectedCategory,
     searchTerm,
+    statusFilter: attendanceStatusFilter,
+    paymentTypeFilter: attendancePaymentFilter,
+    membershipFilter: attendanceMembershipFilter,
+    activeMonthlyIds: activeMensualidades,
     searchPredicate: (atleta, searchLower) =>
       attendanceService.getSearchNameBlob({ athleteUser: atleta.users }).includes(searchLower),
   });
@@ -605,12 +649,33 @@ const AsistenciasManager = ({ user }) => {
       todayAttendance,
       category: categoria,
       searchTerm,
+      statusFilter: attendanceStatusFilter,
+      paymentTypeFilter: attendancePaymentFilter,
+      membershipFilter: attendanceMembershipFilter,
+      activeMonthlyIds: activeMensualidades,
       searchPredicate: (atleta, searchLower) =>
         attendanceService.getSearchNameBlob({ athleteUser: atleta.users }).includes(searchLower),
     });
 
   // Obtener estadísticas de la categoría seleccionada
   const getCategoryStats = () => attendanceService.getCategoryStats({ filteredAthletes: filteredAtletas });
+  const quickFiltersActiveCount = [
+    searchTerm,
+    selectedCategory !== 'all',
+    attendanceStatusFilter !== 'all',
+    attendancePaymentFilter !== 'all',
+    attendanceMembershipFilter !== 'all',
+  ].filter(Boolean).length;
+  const filteredActiveMonthlyAbsentCount = filteredAtletas.filter((atleta) => (
+    atleta.attendance === null && activeMensualidades.has(atleta.id)
+  )).length;
+  const resetQuickAttendanceFilters = () => {
+    setSearchTerm('');
+    setSelectedCategory('all');
+    setAttendanceStatusFilter('all');
+    setAttendancePaymentFilter('all');
+    setAttendanceMembershipFilter('all');
+  };
 
   const homonymsByCompactName = attendanceService.buildHomonymsByCompactName({
     athletes: filteredAtletas,
@@ -943,13 +1008,69 @@ const AsistenciasManager = ({ user }) => {
                 </button>
               )}
             </div>
+
+            <div className="grid w-full gap-2 mobile:grid-cols-2 tablet:w-auto tablet:min-w-[480px] desktop:grid-cols-3">
+              <label className="space-y-1">
+                <span className="text-[11px] font-bold uppercase tracking-wide text-rv-gold/90">Estado</span>
+                <select
+                  value={attendanceStatusFilter}
+                  onChange={(event) => setAttendanceStatusFilter(event.target.value)}
+                  className={styles.dateInput}
+                  aria-label="Filtrar toma por estado"
+                >
+                  <option value="all">Todos</option>
+                  <option value="absent">Pendientes</option>
+                  <option value="present">Presentes</option>
+                </select>
+              </label>
+
+              <label className="space-y-1">
+                <span className="text-[11px] font-bold uppercase tracking-wide text-rv-gold/90">Pago</span>
+                <select
+                  value={attendancePaymentFilter}
+                  onChange={(event) => setAttendancePaymentFilter(event.target.value)}
+                  className={styles.dateInput}
+                  aria-label="Filtrar toma por metodo de pago"
+                >
+                  <option value="all">Todos</option>
+                  {paymentTypes.map((paymentType) => (
+                    <option key={paymentType.id} value={paymentType.id}>
+                      {formatDisplayLabel(paymentType.nombre)}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="space-y-1 mobile:col-span-2 desktop:col-span-1">
+                <span className="text-[11px] font-bold uppercase tracking-wide text-rv-gold/90">Mensualidad</span>
+                <select
+                  value={attendanceMembershipFilter}
+                  onChange={(event) => setAttendanceMembershipFilter(event.target.value)}
+                  className={styles.dateInput}
+                  aria-label="Filtrar toma por mensualidad"
+                >
+                  <option value="all">Todas</option>
+                  <option value="active_monthly">Activa</option>
+                  <option value="needs_payment">Necesita pago</option>
+                </select>
+              </label>
+            </div>
             
             <div className={styles.bulkActions}>
-              <Button onClick={markAllPresent} className="border-emerald-400/35 bg-emerald-500/15 text-emerald-100 hover:bg-emerald-500/30">
-                <FaCheckCircle className="mr-1.5" /> Todos Presentes
+              <Button
+                onClick={markAllPresent}
+                disabled={filteredActiveMonthlyAbsentCount === 0}
+                className="border-emerald-400/35 bg-emerald-500/15 text-emerald-100 hover:bg-emerald-500/30 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                <FaCheckCircle className="mr-1.5" /> Activas ({filteredActiveMonthlyAbsentCount})
               </Button>
+              {quickFiltersActiveCount > 0 && (
+                <Button onClick={resetQuickAttendanceFilters} variant="secondary">
+                  <FaTimes className="mr-1.5" /> Limpiar filtros ({quickFiltersActiveCount})
+                </Button>
+              )}
               <Button onClick={clearAllAttendance} className="border-red-400/35 bg-red-500/15 text-red-100 hover:bg-red-500/30">
-                <FaTrash className="mr-1.5" /> Limpiar Día
+                <FaTrash className="mr-1.5" /> Limpiar Dia
               </Button>
             </div>
           </div>
@@ -992,6 +1113,10 @@ const AsistenciasManager = ({ user }) => {
                       <span>Ausentes: {catStats.ausentes}</span>
                     </div>
                     <div className={styles.miniStat}>
+                      <FaCalendarCheck className={`${styles.miniIcon} text-emerald-400`} />
+                      <span>Activas: {filteredAtletas.filter((atleta) => activeMensualidades.has(atleta.id)).length}</span>
+                    </div>
+                    <div className={styles.miniStat}>
                       <FaChartLine className={styles.miniIcon} />
                       <span>Asistencia: {catStats.porcentaje}%</span>
                     </div>
@@ -1001,6 +1126,12 @@ const AsistenciasManager = ({ user }) => {
             </div>
 
             {/* Contenido de la categoría seleccionada */}
+            {filteredAtletas.length === 0 && (
+              <div className="mt-3 rounded-xl border border-white/15 bg-black/25 px-4 py-3 text-sm font-semibold text-slate-200">
+                No hay atletas para los filtros actuales.
+              </div>
+            )}
+
             <div className={styles.categoryContent}>
               {selectedCategory === 'all' ? (
                 /* Vista de todas las categorías */
@@ -1185,6 +1316,26 @@ const AsistenciasManager = ({ user }) => {
                     className={`${styles.filterInput} rv-dark-date-input`}
                   />
                 </Field>
+
+                <div className="mobile:col-span-2 desktop:col-span-2">
+                  <div className="flex flex-wrap gap-2 rounded-xl border border-white/10 bg-black/20 p-2">
+                    {[
+                      { id: 'today', label: 'Hoy' },
+                      { id: 'last_7', label: '7 dias' },
+                      { id: 'last_30', label: '30 dias' },
+                      { id: 'month', label: 'Mes actual' },
+                    ].map((preset) => (
+                      <button
+                        key={preset.id}
+                        type="button"
+                        onClick={() => applyHistoryDatePreset(preset.id)}
+                        className="min-h-[44px] rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-xs font-bold text-white transition hover:border-rv-gold/60 hover:bg-rv-gold/15"
+                      >
+                        {preset.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
 
                 <Field label="Categoria">
                   <select
@@ -1661,10 +1812,3 @@ AsistenciasManager.propTypes = {
 };
 
 export default AsistenciasManager;
-
-
-
-
-
-
-

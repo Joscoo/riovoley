@@ -181,6 +181,30 @@ describe('createAttendanceUseCases', () => {
     });
   });
 
+  it('getHistoryDatePresetUseCase construye rangos rapidos de historial', () => {
+    const repository = buildRepository();
+    const deps = buildDeps();
+    deps.getEcuadorDateMinusDays = jest.fn((days) => `minus-${days}`);
+    const useCases = createAttendanceUseCases(repository, deps);
+
+    expect(useCases.getHistoryDatePresetUseCase.execute({ preset: 'today' })).toEqual({
+      dateFrom: '2026-05-17',
+      dateTo: '2026-05-17',
+    });
+    expect(useCases.getHistoryDatePresetUseCase.execute({ preset: 'last_7' })).toEqual({
+      dateFrom: 'minus-6',
+      dateTo: '2026-05-17',
+    });
+    expect(useCases.getHistoryDatePresetUseCase.execute({ preset: 'last_30' })).toEqual({
+      dateFrom: 'minus-29',
+      dateTo: '2026-05-17',
+    });
+    expect(useCases.getHistoryDatePresetUseCase.execute({ preset: 'month' })).toEqual({
+      dateFrom: '2026-05-01',
+      dateTo: '2026-05-17',
+    });
+  });
+
   it('calculateStatsUseCase calcula resumen en modo bulk', () => {
     const repository = buildRepository();
     const useCases = createAttendanceUseCases(repository, buildDeps());
@@ -237,6 +261,48 @@ describe('createAttendanceUseCases', () => {
 
     expect(result).toHaveLength(1);
     expect(result[0].id).toBe('s1');
+  });
+
+  it('filterTodayAttendanceUseCase permite filtrar toma por estado y metodo de pago', () => {
+    const repository = buildRepository();
+    const useCases = createAttendanceUseCases(repository, buildDeps());
+
+    const result = useCases.filterTodayAttendanceUseCase.execute({
+      todayAttendance: [
+        { id: 's1', categoria: 'iniciacion_hombres', attendance: { id: 'a1', metodo_pago_id: 2 } },
+        { id: 's2', categoria: 'iniciacion_mujeres', attendance: { id: 'a2', metodo_pago_id: 3 } },
+        { id: 's3', categoria: 'iniciacion_hombres', attendance: null },
+      ],
+      selectedCategory: 'iniciacion',
+      searchTerm: '',
+      statusFilter: 'present',
+      paymentTypeFilter: '2',
+    });
+
+    expect(result).toEqual([
+      { id: 's1', categoria: 'iniciacion_hombres', attendance: { id: 'a1', metodo_pago_id: 2 } },
+    ]);
+  });
+
+  it('filterTodayAttendanceUseCase permite filtrar por mensualidad activa o pago manual', () => {
+    const repository = buildRepository();
+    const useCases = createAttendanceUseCases(repository, buildDeps());
+
+    const result = useCases.filterTodayAttendanceUseCase.execute({
+      todayAttendance: [
+        { id: 's1', categoria: 'iniciacion_hombres', attendance: null },
+        { id: 's2', categoria: 'iniciacion_hombres', attendance: null },
+        { id: 's3', categoria: 'master_mujeres', attendance: null },
+      ],
+      selectedCategory: 'all',
+      searchTerm: '',
+      activeMonthlyIds: new Set(['s1', 's3']),
+      membershipFilter: 'needs_payment',
+    });
+
+    expect(result).toEqual([
+      { id: 's2', categoria: 'iniciacion_hombres', attendance: null },
+    ]);
   });
 
   it('getCategoryStatsUseCase calcula presentes/ausentes', () => {

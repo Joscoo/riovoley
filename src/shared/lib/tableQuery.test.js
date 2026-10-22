@@ -7,6 +7,7 @@ const {
   withUpdatedSort,
   withUpdatedPage,
   resetTableQuery,
+  getPaginationRange,
 } = require('./tableQuery');
 
 describe('tableQuery helpers', () => {
@@ -63,5 +64,10 @@ describe('tableQuery helpers', () => {
     expect(withPage.pagination.page).toBe(2);
     expect(reset.pagination.page).toBe(1);
   });
-});
 
+  it('getPaginationRange traduce page/pageSize a limites inclusivos de Supabase', () => {
+    expect(getPaginationRange({ page: 1, pageSize: 25 })).toEqual({ from: 0, to: 24 });
+    expect(getPaginationRange({ page: 3, pageSize: 10 })).toEqual({ from: 20, to: 29 });
+    expect(getPaginationRange({ page: 0, pageSize: 0 })).toEqual({ from: 0, to: 9 });
+  });
+});

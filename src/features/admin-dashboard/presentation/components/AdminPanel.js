@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import {
@@ -14,17 +14,6 @@ import {
   FaTrophy,
 } from 'react-icons/fa';
 import { useUserProfile } from '../../../auth-profile';
-import { AnunciosManager } from '../../../announcements';
-import { AsistenciasManager } from '../../../attendance';
-import { HorariosManager } from '../../../schedules';
-import { PagosManager } from '../../../payments';
-import { ProfileSettings } from '../../../account-admin';
-import { TestsFisicosManager } from '../../../physical-tests';
-import { UserManagementPanel } from '../../../user-management';
-import { GamificationAdminPanel } from '../../../gamification';
-import Dashboard from './Dashboard';
-import FinancialReview from './FinancialReview';
-import ReportsCenter from './ReportsCenter';
 import {
   RolePanelLayout,
   iconRegistry,
@@ -38,6 +27,24 @@ import {
   markPanelGuideDismissed,
   markPanelGuideCompleted
 } from '../../../../shared/ui';
+
+const Dashboard = lazy(() => import('./Dashboard'));
+const ReportsCenter = lazy(() => import('./ReportsCenter'));
+const FinancialReview = lazy(() => import('./FinancialReview'));
+const UserManagementPanel = lazy(() => import('../../../user-management/presentation/components/UserManagementPanel'));
+const PagosManager = lazy(() => import('../../../payments/presentation/components/PagosManager'));
+const AsistenciasManager = lazy(() => import('../../../attendance/presentation/components/AsistenciasManager'));
+const HorariosManager = lazy(() => import('../../../schedules/presentation/components/HorariosManager'));
+const TestsFisicosManager = lazy(() => import('../../../physical-tests/presentation/components/TestsFisicosManager'));
+const AnunciosManager = lazy(() => import('../../../announcements/presentation/components/AnunciosManager'));
+const GamificationAdminPanel = lazy(() => import('../../../gamification/presentation/components/GamificationAdminPanel'));
+const ProfileSettings = lazy(() => import('../../../account-admin/presentation/components/ProfileSettings'));
+
+const SectionFallback = () => (
+  <div className="flex min-h-[45dvh] items-center justify-center">
+    <LoadingSpinner message="Cargando seccion..." />
+  </div>
+);
 
 const AdminPanel = ({ user }) => {
   const { profile, isAdmin, loading } = useUserProfile(user);
@@ -174,7 +181,9 @@ const AdminPanel = ({ user }) => {
         </div>
       )}
     >
-      {renderActiveSection()}
+      <Suspense fallback={<SectionFallback />}>
+        {renderActiveSection()}
+      </Suspense>
       <Button
         variant="secondary"
         size="icon"

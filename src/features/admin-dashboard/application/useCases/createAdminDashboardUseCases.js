@@ -59,6 +59,9 @@ const calculateOverdueMonths = ({ fechaFin, today }) => {
   return Math.max(rawMonths, 1);
 };
 
+const formatStudentName = (student) =>
+  `${student?.users?.nombre || ''} ${student?.users?.apellido || ''}`.trim() || 'Atleta sin nombre';
+
 export const createAdminDashboardUseCases = (repository, activityIconFactory) => {
   const loadFinancialReviewUseCase = {
     execute: async () => {
@@ -283,14 +286,35 @@ export const createAdminDashboardUseCases = (repository, activityIconFactory) =>
       ]);
 
       const activity = [];
+      const recentStudentIds = Array.from(new Set([
+        ...(attendances || []).map((attendance) => attendance?.student_id),
+        ...(payments || []).map((payment) => payment?.student_id),
+      ].filter(Boolean).map(String)));
+
+      let studentById = new Map();
+      if (recentStudentIds.length > 0 && typeof repository.listStudentsByIdsForActivity === 'function') {
+        try {
+          const students = await repository.listStudentsByIdsForActivity(recentStudentIds);
+          studentById = new Map((students || []).map((student) => [String(student.id), student]));
+        } catch (_error) {
+          studentById = new Map();
+        }
+      }
+
+      const resolveStudent = async (studentId) => {
+        const cachedStudent = studentById.get(String(studentId || ''));
+        if (cachedStudent) return cachedStudent;
+        if (typeof repository.getStudentName !== 'function') return null;
+        return repository.getStudentName(studentId);
+      };
 
       for (const [index, attendance] of (attendances || []).entries()) {
         try {
-          const student = await repository.getStudentName(attendance.student_id);
+          const student = await resolveStudent(attendance.student_id);
           activity.push({
             id: attendance.id || `asistencia-${index}`,
             tipo: 'asistencia',
-            descripcion: `${student?.users?.nombre} ${student?.users?.apellido} asistio al entrenamiento`,
+            descripcion: `${formatStudentName(student)} asistio al entrenamiento`,
             fecha: new Date(attendance.fecha).toLocaleDateString(),
             icono: activityIconFactory.attendance(),
           });
@@ -301,11 +325,11 @@ export const createAdminDashboardUseCases = (repository, activityIconFactory) =>
 
       for (const [index, payment] of (payments || []).entries()) {
         try {
-          const student = await repository.getStudentName(payment.student_id);
+          const student = await resolveStudent(payment.student_id);
           activity.push({
             id: payment.id || `pago-${index}`,
             tipo: 'pago',
-            descripcion: `${student?.users?.nombre} ${student?.users?.apellido} realizo un pago de $${payment.monto}`,
+            descripcion: `${formatStudentName(student)} realizo un pago de $${payment.monto}`,
             fecha: new Date(payment.fecha_pago).toLocaleDateString(),
             icono: activityIconFactory.payment(),
           });
