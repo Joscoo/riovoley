@@ -1,5 +1,6 @@
 import { deleteAuthUserById } from '../../../../shared/infrastructure/auth/deleteAuthUserById';
 import { getEcuadorISOString } from '../../../../utils/dateUtils';
+import { validatePassword } from '../../../../utils/passwordUtils';
 
 const applySearchAndStatusFilters = (users, filters) => {
   let filteredData = users || [];
@@ -152,8 +153,9 @@ export const createAccountAdminUseCases = (repository) => {
         return { ok: false, code: 'MISSING_FIELDS', message: 'Por favor completa todos los campos' };
       }
 
-      if (passwordData.newPassword.length < 6) {
-        return { ok: false, code: 'WEAK_PASSWORD', message: 'La nueva contraseña debe tener al menos 6 caracteres' };
+      const validation = validatePassword(passwordData.newPassword);
+      if (!validation.isValid) {
+        return { ok: false, code: 'WEAK_PASSWORD', message: validation.errors.join('. ') };
       }
 
       if (passwordData.newPassword !== passwordData.confirmPassword) {

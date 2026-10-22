@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { FaClipboardList, FaCog, FaEdit, FaExclamationTriangle, FaInfoCircle, FaKey, FaLock } from 'react-icons/fa';
 import { accountAdminService } from '../../accountAdminService';
 import { cn } from '../../../../lib/cn';
+import { validatePassword } from '../../../../utils/passwordUtils';
 import { Button } from '../../../../shared/ui';
 import { Card } from '../../../../shared/ui';
 import { Field } from '../../../../shared/ui';
@@ -99,8 +100,9 @@ const ProfileSettings = ({ user }) => {
       return;
     }
 
-    if (passwordData.newPassword.length < 6) {
-      setMensaje({ tipo: 'error', texto: 'La nueva Contraseña debe tener al menos 6 caracteres' });
+    const validation = validatePassword(passwordData.newPassword);
+    if (!validation.isValid) {
+      setMensaje({ tipo: 'error', texto: validation.errors.join('. ') });
       setLoading(false);
       return;
     }
@@ -285,14 +287,14 @@ const ProfileSettings = ({ user }) => {
               />
             </Field>
 
-            <Field label="Nueva Contraseña">
+            <Field label="Nueva Contraseña" hint="Mínimo 10 caracteres, mayúscula, minúscula, número y símbolo; sin espacios.">
               <input
                 type="password"
                 name="newPassword"
                 value={passwordData.newPassword}
                 onChange={handlePasswordChange}
                 required
-                minLength={6}
+                minLength={10}
                 className={INPUT_BASE}
               />
             </Field>
@@ -304,7 +306,7 @@ const ProfileSettings = ({ user }) => {
                 value={passwordData.confirmPassword}
                 onChange={handlePasswordChange}
                 required
-                minLength={6}
+                minLength={10}
                 className={INPUT_BASE}
               />
             </Field>

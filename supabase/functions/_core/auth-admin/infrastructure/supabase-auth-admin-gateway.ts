@@ -39,7 +39,7 @@ export class SupabaseAuthAdminGateway {
 
     let { data: userProfile, error: profileError } = await this.supabaseAdmin
       .from('users')
-      .select('role')
+      .select('role, suspended')
       .eq('id', requestingUser.id)
       .single();
 
@@ -67,6 +67,7 @@ export class SupabaseAuthAdminGateway {
     if (!allowedRoles.includes(userProfile.role)) {
       throw new AuthAdminError(403, 'ROLE_NOT_ALLOWED', `No tienes permisos. Rol actual: ${userProfile.role}`);
     }
+    if (userProfile.suspended) throw new AuthAdminError(403, 'ACCOUNT_SUSPENDED', 'La cuenta solicitante está suspendida.');
 
     return { userId: requestingUser.id, role: userProfile.role };
   }
@@ -84,5 +85,18 @@ export class SupabaseAuthAdminGateway {
       throw new AuthAdminError(500, 'PASSWORD_UPDATE_FAILED', `No se pudo actualizar la contrasena: ${error.message}`, error);
     }
     return data;
+  }
+
+  async getPasswordResetTarget(userId: string) {
+    const { data: target, error } = await this.supabaseAdmin.from('users').select('id, role').eq('id', userId).single();
+    if (error || !target) throw new AuthAdminError(404, 'TARGET_NOT_FOUND', 'No se encontró el usuario para reenviar credenciales.');
+    const { data, error: authError } = await this.supabaseAdmin.auth.admin.getUserById(userId);
+    if (authError || !data?.user?.email) throw new AuthAdminError(404, 'AUTH_USER_NOT_FOUND', 'El usuario no tiene una cuenta de acceso con email válido.');
+    return { ...target, email: data.user.email };
+  }
+
+  async markFirstLoginRequired(userId: string) {
+    const { error } = await this.supabaseAdmin.from('users').update({ first_login: true }).eq('id', userId).select('id').single();
+    if (error) throw new AuthAdminError(500, 'FIRST_LOGIN_UPDATE_FAILED', 'No se pudo activar el cambio obligatorio de contraseña.');
   }
 }

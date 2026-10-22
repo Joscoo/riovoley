@@ -4,12 +4,12 @@ import { userManagementService } from '../../../userManagementService';
 import { useUserPermissions } from '../hooks/useUserPermissions';
 import { useUserActions } from '../hooks/useUserActions';
 import { useTimedMessage } from '../hooks/useTimedMessage';
-import { communicationsService } from '../../../../communications';
 import { trainingCategoriesService } from '../../../../training-categories';
 import { SectionHeader, Button, EmptyState, Modal, iconRegistry, KpiTile, LoadingSpinner } from '../../../../../shared/ui';
 import { SORT_DIRECTION, createTableQuery } from '../../../../../shared/lib/tableQuery';
 import UserCard from '../shared/UserCard';
 import UserForm from '../shared/UserForm';
+import CreatedCredentialsModal from '../shared/CreatedCredentialsModal';
 import UserFilters from '../shared/UserFilters';
 import SuspendUserModal from '../shared/SuspendUserModal';
 import ResendCredentialsModal from '../shared/ResendCredentialsModal';
@@ -51,6 +51,7 @@ const AthletesTab = ({ userRole }) => {
   const [showChangeRoleModal, setShowChangeRoleModal] = useState(null);
   const [categories, setCategories] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [createdCredentials, setCreatedCredentials] = useState(null);
   const [isConfirmingRole, setIsConfirmingRole] = useState(false);
   const { message, showMessage } = useTimedMessage();
 
@@ -175,31 +176,9 @@ const AthletesTab = ({ userRole }) => {
         await userActions.handleEdit(editingAthlete.user_id, formData, 'atleta');
         showMessage('success', 'Estudiante actualizado correctamente');
       } else {
-        const shouldSendCredentials = Boolean(formData.send_credentials_on_create);
         const createResult = await userActions.handleCreate(formData, 'atleta');
-
-        if (shouldSendCredentials) {
-          const temporaryPassword = createResult?.credentials?.password;
-          if (!temporaryPassword) {
-            showMessage('error', 'Estudiante creado, pero no se pudo preparar el envio de credenciales.');
-          } else {
-            const emailResult = await communicationsService.sendCredentials({
-              email: createResult?.credentials?.email || formData.email,
-              nombre: formData.nombre,
-              apellido: formData.apellido,
-              full_name: `${formData.nombre || ''} ${formData.apellido || ''}`.trim(),
-              password: temporaryPassword,
-            });
-
-            if (emailResult?.success) {
-              showMessage('success', 'Estudiante creado y credenciales enviadas por email.');
-            } else {
-              showMessage('error', `Estudiante creado, pero el email de credenciales fallo: ${emailResult?.error || 'Error desconocido'}`);
-            }
-          }
-        } else {
-          showMessage('success', 'Estudiante creado exitosamente');
-        }
+        setCreatedCredentials({ result: createResult, formData });
+        showMessage('success', 'Estudiante creado exitosamente');
       }
       closeModal();
       loadAthletes();
@@ -244,11 +223,12 @@ const AthletesTab = ({ userRole }) => {
 
   const confirmResendCredentials = async (channels) => {
     try {
-      await userActions.handleResendCredentials(showResendModal.user_id, channels);
-      showMessage('success', 'Credenciales enviadas correctamente');
-      setShowResendModal(null);
+      const result = await userActions.handleResendCredentials(showResendModal.user_id, channels);
+      showMessage(result.deliverySuccess ? 'success' : 'error', result.message);
+      return result;
     } catch (error) {
       showMessage('error', `Error: ${error.message}`);
+      throw error;
     }
   };
 
@@ -424,6 +404,7 @@ const AthletesTab = ({ userRole }) => {
         />
       )}
 
+      {createdCredentials && <CreatedCredentialsModal {...createdCredentials} onClose={() => setCreatedCredentials(null)} />}
       {showChangeRoleModal && (
         <ChangeRoleModal
           user={showChangeRoleModal}

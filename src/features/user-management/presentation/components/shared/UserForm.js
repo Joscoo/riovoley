@@ -251,7 +251,7 @@ const UserForm = ({ userType, initialData, onSubmit, onCancel, submitLabel = 'Gu
         </section>
       )}
 
-      {userType === 'atleta' && !isEditing && (
+      {!isEditing && (
         <section className="space-y-3 rounded-xl border border-rv-gold/20 bg-black/20 p-4">
           <h4 className="text-sm font-bold uppercase tracking-[0.8px] text-rv-gold">
             <UserIcon className="mr-2 inline align-middle" /> Credenciales de Acceso

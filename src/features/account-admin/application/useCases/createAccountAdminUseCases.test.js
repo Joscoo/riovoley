@@ -160,6 +160,17 @@ describe('createAccountAdminUseCases', () => {
     expect(repository.verifyCurrentPassword).not.toHaveBeenCalled();
   });
 
+  it('changePasswordUseCase rechaza claves que no cumplen la politica de recuperacion', async () => {
+    const repository = buildRepository();
+    repository.verifyCurrentPassword.mockResolvedValue({ ok: true });
+    const useCases = createAccountAdminUseCases(repository);
+    const result = await useCases.changePasswordUseCase.execute({ user: { email: 'ana@demo.com' }, passwordData: {
+      currentPassword: 'Oldpass123!', newPassword: 'weak123', confirmPassword: 'weak123',
+    } });
+    expect(result.code).toBe('WEAK_PASSWORD');
+    expect(repository.verifyCurrentPassword).not.toHaveBeenCalled();
+  });
+
   it('changePasswordUseCase actualiza cuando validaciones y verificacion son correctas', async () => {
     const repository = buildRepository();
     repository.verifyCurrentPassword.mockResolvedValue({ ok: true });
@@ -169,13 +180,13 @@ describe('createAccountAdminUseCases', () => {
       user: { email: 'ana@demo.com' },
       passwordData: {
         currentPassword: 'oldpass',
-        newPassword: 'newpass1',
-        confirmPassword: 'newpass1',
+        newPassword: 'Newpass123!',
+        confirmPassword: 'Newpass123!',
       },
     });
 
     expect(repository.verifyCurrentPassword).toHaveBeenCalledWith('ana@demo.com', 'oldpass');
-    expect(repository.updatePassword).toHaveBeenCalledWith('newpass1');
+    expect(repository.updatePassword).toHaveBeenCalledWith('Newpass123!');
     expect(result).toEqual({ ok: true });
   });
 });

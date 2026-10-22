@@ -1,7 +1,6 @@
 import { supabase } from '../../../../config/supabase';
 import { userProvisioningService } from '../../../user-provisioning';
 import { deleteAuthUserById } from '../../../../shared/infrastructure/auth/deleteAuthUserById';
-import { WhatsAppBusinessService } from '../../../../shared/infrastructure/communications';
 import { withEncryptedUserContactFields } from '../../../../utils/piiCrypto';
 import { getEcuadorISOString } from '../../../../utils/dateUtils';
 import { UserManagementError } from '../../domain/userManagementError';
@@ -382,7 +381,7 @@ export class SupabaseUserManagementRepository {
   async resendCredentials(userId, channels = ['email']) {
     const { data: userData, error: userError } = await supabase
       .from('users')
-      .select('id, email, nombre, apellido')
+      .select('id, email, nombre, apellido, telefono')
       .eq('id', userId)
       .single();
 
@@ -395,32 +394,9 @@ export class SupabaseUserManagementRepository {
       email: userData.email,
       nombre: userData.nombre,
       apellido: userData.apellido,
+      telefono: userData.telefono,
+      channels,
     });
-
-    if (channels.includes('whatsapp')) {
-      const { data: userWithPhone } = await supabase
-        .from('users')
-        .select('telefono')
-        .eq('id', userId)
-        .single();
-
-      if (userWithPhone?.telefono) {
-        try {
-          const whatsappBusiness = new WhatsAppBusinessService();
-          await whatsappBusiness.sendCredentials(
-            {
-              telefono: userWithPhone.telefono,
-              nombre: userData.nombre,
-              apellido: userData.apellido,
-              email: userData.email,
-            },
-            result?.credentials?.password,
-          );
-        } catch (whatsappError) {
-          console.warn('Error enviando por WhatsApp:', whatsappError?.message || whatsappError);
-        }
-      }
-    }
 
     return result;
   }

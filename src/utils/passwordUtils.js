@@ -1,11 +1,21 @@
 // src/utils/passwordUtils.js
 
+const secureRandomIndex = (size) => {
+  const crypto = globalThis.crypto;
+  if (!crypto?.getRandomValues) throw new Error('No hay un generador seguro de contraseñas disponible.');
+  const values = new Uint32Array(1);
+  const limit = Math.floor(0x100000000 / size) * size;
+  do { crypto.getRandomValues(values); } while (values[0] >= limit);
+  return values[0] % size;
+};
+
 /**
  * Genera una contraseña aleatoria segura
  * @param {number} length - Longitud de la contraseña (por defecto 12)
  * @returns {string} - Contraseña generada
  */
 export const generateRandomPassword = (length = 12) => {
+  if (!Number.isInteger(length) || length < 10) throw new Error('La contraseña debe tener al menos 10 caracteres.');
   const lowercase = 'abcdefghijklmnopqrstuvwxyz';
   const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const numbers = '0123456789';
@@ -13,19 +23,24 @@ export const generateRandomPassword = (length = 12) => {
   
   // Asegurar que tenga al menos uno de cada tipo
   let password = '';
-  password += lowercase[Math.floor(Math.random() * lowercase.length)];
-  password += uppercase[Math.floor(Math.random() * uppercase.length)];
-  password += numbers[Math.floor(Math.random() * numbers.length)];
-  password += symbols[Math.floor(Math.random() * symbols.length)];
+  password += lowercase[secureRandomIndex(lowercase.length)];
+  password += uppercase[secureRandomIndex(uppercase.length)];
+  password += numbers[secureRandomIndex(numbers.length)];
+  password += symbols[secureRandomIndex(symbols.length)];
   
   // Completar el resto con caracteres aleatorios
   const allChars = lowercase + uppercase + numbers + symbols;
   for (let i = 4; i < length; i++) {
-    password += allChars[Math.floor(Math.random() * allChars.length)];
+    password += allChars[secureRandomIndex(allChars.length)];
   }
   
   // Mezclar los caracteres para que no sigan un patrón
-  return password.split('').sort(() => Math.random() - 0.5).join('');
+  const characters = password.split('');
+  for (let index = characters.length - 1; index > 0; index -= 1) {
+    const other = secureRandomIndex(index + 1);
+    [characters[index], characters[other]] = [characters[other], characters[index]];
+  }
+  return characters.join('');
 };
 
 /**
@@ -34,13 +49,16 @@ export const generateRandomPassword = (length = 12) => {
  * @returns {object} - Resultado de validación
  */
 export const validatePassword = (password) => {
-  const minLength = 8;
+  password = typeof password === 'string' ? password : '';
+  const minLength = 10;
   const hasLowercase = /[a-z]/.test(password);
   const hasUppercase = /[A-Z]/.test(password);
   const hasNumbers = /\d/.test(password);
-  const hasSymbols = /[!@#$%^&*()_+\-=[\]{}|;:,.<>?]/.test(password);
+  const hasSymbols = /[^A-Za-z0-9\s]/.test(password);
   
   const errors = [];
+
+  if (/\s/.test(password)) errors.push('No debe contener espacios');
   
   if (password.length < minLength) {
     errors.push(`Debe tener al menos ${minLength} caracteres`);
@@ -76,11 +94,11 @@ export const generateTemporaryPassword = () => {
   // Contraseña más amigable pero segura para el primer uso
   const adjectives = ['Fuerte', 'Rapido', 'Alto', 'Poderoso', 'Agil', 'Valiente'];
   const nouns = ['Leon', 'Tigre', 'Aguila', 'Rayo', 'Estrella', 'Viento'];
-  const numbers = Math.floor(Math.random() * 900) + 100; // 100-999
-  const symbol = '!@#$%'[Math.floor(Math.random() * 5)];
+  const numbers = secureRandomIndex(900) + 100; // 100-999
+  const symbol = '!@#$%'[secureRandomIndex(5)];
   
-  const adjective = adjectives[Math.floor(Math.random() * adjectives.length)];
-  const noun = nouns[Math.floor(Math.random() * nouns.length)];
+  const adjective = adjectives[secureRandomIndex(adjectives.length)];
+  const noun = nouns[secureRandomIndex(nouns.length)];
   
   return `${adjective}${noun}${numbers}${symbol}`;
 };

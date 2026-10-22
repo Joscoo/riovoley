@@ -11,6 +11,7 @@ import { EmptyState, Modal, KpiTile, LoadingSpinner } from '../../../../../share
 import { SORT_DIRECTION, createTableQuery } from '../../../../../shared/lib/tableQuery';
 import UserCard from '../shared/UserCard';
 import UserForm from '../shared/UserForm';
+import CreatedCredentialsModal from '../shared/CreatedCredentialsModal';
 import UserFilters from '../shared/UserFilters';
 import SuspendUserModal from '../shared/SuspendUserModal';
 import ResendCredentialsModal from '../shared/ResendCredentialsModal';
@@ -48,6 +49,7 @@ const TrainersTab = ({ userRole }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(null);
   const [showChangeRoleModal, setShowChangeRoleModal] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [createdCredentials, setCreatedCredentials] = useState(null);
   const [isConfirmingRole, setIsConfirmingRole] = useState(false);
   const { message, showMessage } = useTimedMessage();
   
@@ -136,7 +138,8 @@ const TrainersTab = ({ userRole }) => {
         await userActions.handleEdit(editingTrainer.id, formData, 'entrenador');
         showMessage('success', 'Entrenador actualizado correctamente');
       } else {
-        await userActions.handleCreate(formData, 'entrenador');
+        const result = await userActions.handleCreate(formData, 'entrenador');
+        setCreatedCredentials({ result, formData });
         showMessage('success', 'Entrenador creado exitosamente');
       }
       closeModal();
@@ -182,11 +185,12 @@ const TrainersTab = ({ userRole }) => {
 
   const confirmResendCredentials = async (channels) => {
     try {
-      await userActions.handleResendCredentials(showResendModal.id, channels);
-      showMessage('success', 'Credenciales enviadas correctamente');
-      setShowResendModal(null);
+      const result = await userActions.handleResendCredentials(showResendModal.id, channels);
+      showMessage(result.deliverySuccess ? 'success' : 'error', result.message);
+      return result;
     } catch (error) {
       showMessage('error', `Error: ${error.message}`);
+      throw error;
     }
   };
 
@@ -325,6 +329,7 @@ const TrainersTab = ({ userRole }) => {
       {showSuspendModal && <SuspendUserModal user={showSuspendModal} onConfirm={confirmSuspend} onCancel={() => setShowSuspendModal(null)} />}
       {showResendModal && <ResendCredentialsModal user={showResendModal} onConfirm={confirmResendCredentials} onCancel={() => setShowResendModal(null)} />}
       {showDeleteModal && <DeleteUserModal user={showDeleteModal} userType="entrenador" onConfirm={confirmDelete} onCancel={() => setShowDeleteModal(null)} />}
+      {createdCredentials && <CreatedCredentialsModal {...createdCredentials} onClose={() => setCreatedCredentials(null)} />}
       {showChangeRoleModal && (
         <ChangeRoleModal
           user={showChangeRoleModal}

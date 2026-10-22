@@ -101,44 +101,30 @@ export const useAthleteCredentials = ({ onError, onSuccess }) => {
         email: atleta.users.email,
         nombre: atleta.users.nombre,
         apellido: atleta.users.apellido,
+        telefono: atleta.users.telefono,
+        channels: atleta.users.telefono ? ['email', 'whatsapp'] : ['email'],
       });
 
       if (!result.success) {
         throw new Error('No se pudieron obtener las credenciales');
       }
 
-      const userData = {
-        email: result.credentials.email,
-        nombre: atleta.users.nombre,
-        apellido: atleta.users.apellido,
-        telefono: atleta.users.telefono,
-        full_name: `${atleta.users.nombre} ${atleta.users.apellido}`.trim(),
-        password: result.credentials.password,
-      };
-
-      let whatsappResult = { success: false };
-      if (userData.telefono) {
-        whatsappResult = await userProvisioningService.sendCredentialsByWhatsApp({
-          userData,
-          password: userData.password,
-        });
-      }
-
       const channels = [];
       if (result.emailSent) channels.push('Email');
-      if (whatsappResult.success) channels.push('WhatsApp');
+      if (result.whatsappSent) channels.push('WhatsApp');
 
       const report = {
         title: 'Resultado de reenvio de credenciales',
         message: buildResendResultMessage({
           channels,
           credentials: result.credentials,
-          summaryMessage: result.message,
+          summaryMessage: [result.message, result.emailError, result.whatsappError].filter(Boolean).join('\n'),
         }),
       };
 
       setCredentialsReport(report);
-      onSuccess?.('Proceso de reenvio de credenciales completado.');
+      if (result.deliverySuccess) onSuccess?.('Credenciales enviadas por los canales seleccionados.');
+      else onError?.(result.message);
       return report;
     } catch (error) {
       const errorText = `Error reenviando credenciales: ${error.message}`;

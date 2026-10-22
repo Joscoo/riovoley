@@ -159,6 +159,7 @@ Aplicacion local: `http://localhost:3000`
 npm start            # desarrollo
 npm test             # tests unitarios/react-scripts
 npm run test:contracts # contratos edge function (reporting/auth-admin)
+npm run test:auth-edge # fallos de correo, permisos y contrasenas temporales (requiere npm ci en functions/)
 npm run build        # build produccion
 npm run mobile:sync  # build + sync de Capacitor
 npm run mobile:android # sync + abre Android Studio
@@ -171,6 +172,9 @@ npm run e2e:smoke:public # smoke responsive de rutas publicas
 npm run e2e:ui       # E2E en modo UI
 npm run e2e:install  # instala browsers de Playwright
 ```
+
+Para diagnosticar envío de credenciales y recuperación de contraseñas, consulta
+[la guía de validación y despliegue](docs/CREDENCIALES_RECUPERACION_2026-10-22.md).
 
 ### E2E por roles (ultimo paso de cierre)
 

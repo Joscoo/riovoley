@@ -137,14 +137,15 @@ export class SupabaseAuthSessionRepository {
   }
 
   async exchangeCodeForSession(code) {
-    const { error } = await supabase.auth.exchangeCodeForSession(code);
+    const { data, error } = await supabase.auth.exchangeCodeForSession(code);
     if (error) {
       throw new AuthSessionError(normalizeError(error, 'Error intercambiando code por sesion'), error);
     }
+    return data?.session || null;
   }
 
   async setRecoverySession(accessToken, refreshToken) {
-    const { error } = await supabase.auth.setSession({
+    const { data, error } = await supabase.auth.setSession({
       access_token: accessToken,
       refresh_token: refreshToken,
     });
@@ -152,13 +153,21 @@ export class SupabaseAuthSessionRepository {
     if (error) {
       throw new AuthSessionError(normalizeError(error, 'Error configurando sesion de recuperacion'), error);
     }
+    return data?.session || null;
+  }
+
+  async verifyRecoveryToken(tokenHash) {
+    const { data, error } = await supabase.auth.verifyOtp({ token_hash: tokenHash, type: 'recovery' });
+    if (error) throw new AuthSessionError(normalizeError(error, 'El enlace de recuperación es inválido o expiró.'), error);
+    return data?.session || null;
   }
 
   async updatePassword(password) {
-    const { error } = await supabase.auth.updateUser({ password });
+    const { data, error } = await supabase.auth.updateUser({ password });
     if (error) {
       throw new AuthSessionError(normalizeError(error, 'Error actualizando contrasena'), error);
     }
+    return data;
   }
 
   async markFirstLoginCompleted(userId) {

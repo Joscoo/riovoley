@@ -12,6 +12,7 @@ import { SORT_DIRECTION, createTableQuery } from '../../../../../shared/lib/tabl
 import { isPrimaryAdminUserId } from '../../../domain/adminPrivileges';
 import UserCard from '../shared/UserCard';
 import UserForm from '../shared/UserForm';
+import CreatedCredentialsModal from '../shared/CreatedCredentialsModal';
 import UserFilters from '../shared/UserFilters';
 import ChangeRoleModal from '../shared/ChangeRoleModal';
 
@@ -42,6 +43,7 @@ const AdministratorsTab = ({ userRole, currentUserId = null }) => {
   const [editingAdmin, setEditingAdmin] = useState(null);
   const [showChangeRoleModal, setShowChangeRoleModal] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [createdCredentials, setCreatedCredentials] = useState(null);
   const [isConfirmingRole, setIsConfirmingRole] = useState(false);
   const { message, showMessage } = useTimedMessage();
   
@@ -115,7 +117,8 @@ const AdministratorsTab = ({ userRole, currentUserId = null }) => {
         await userActions.handleEdit(editingAdmin.id, formData, 'administrador');
         showMessage('success', 'Administrador actualizado correctamente');
       } else {
-        await userActions.handleCreate(formData, 'administrador');
+        const result = await userActions.handleCreate(formData, 'administrador');
+        setCreatedCredentials({ result, formData });
         showMessage('success', 'Administrador creado exitosamente');
       }
       closeModal();
@@ -183,6 +186,7 @@ const AdministratorsTab = ({ userRole, currentUserId = null }) => {
         </Modal>
       )}
       
+      {createdCredentials && <CreatedCredentialsModal {...createdCredentials} onClose={() => setCreatedCredentials(null)} />}
       {showChangeRoleModal && <ChangeRoleModal user={showChangeRoleModal} currentRole={showChangeRoleModal.role} onConfirm={confirmChangeRole} onCancel={() => setShowChangeRoleModal(null)} isSubmitting={isConfirmingRole} />}
     </div>
   );

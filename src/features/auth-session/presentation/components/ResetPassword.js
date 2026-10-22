@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash, FaExclamationTriangle, FaKey, FaLock } from 'react-icons/fa';
 import { authSessionService } from '../../authSessionService';
@@ -17,14 +17,14 @@ const clearRecoveryParamsFromUrl = () => {
 
 const PASSWORD_REQUIREMENTS = [
   { key: 'minLength', label: 'Al menos 10 caracteres' },
-  { key: 'uppercase', label: 'Incluye una letra may?scula (A-Z)' },
-  { key: 'lowercase', label: 'Incluye una letra min?scula (a-z)' },
-  { key: 'number', label: 'Incluye al menos un n?mero (0-9)' },
-  { key: 'special', label: 'Incluye al menos un s?mbolo (!@#$...)' },
+  { key: 'uppercase', label: 'Incluye una letra mayúscula (A-Z)' },
+  { key: 'lowercase', label: 'Incluye una letra minúscula (a-z)' },
+  { key: 'number', label: 'Incluye al menos un número (0-9)' },
+  { key: 'special', label: 'Incluye al menos un símbolo (!@#$...)' },
   { key: 'noSpaces', label: 'No contiene espacios' }
 ];
 
-const ResetPassword = () => {
+const ResetPassword = ({ onPasswordReset }) => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -33,6 +33,12 @@ const ResetPassword = () => {
   const [isValidToken, setIsValidToken] = useState(false);
   const [isCheckingToken, setIsCheckingToken] = useState(true);
   const navigate = useNavigate();
+  const initializationRef = useRef(null);
+  const recoveryFailedRef = useRef(false);
+  const recoveryUserRef = useRef(null);
+  const navigationTimerRef = useRef(null);
+  const submittingRef = useRef(false);
+  const [completed, setCompleted] = useState(false);
 
   const passwordChecks = {
     minLength: newPassword.length >= 10,
@@ -48,127 +54,123 @@ const ResetPassword = () => {
 
   useEffect(() => {
     let isMounted = true;
-
-    const initPasswordReset = async () => {
-      try {
-        let hasRecoverySession = false;
-
-        const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
-        const queryParams = new URLSearchParams(window.location.search);
-
-        const recoveryAccessToken = hashParams.get('access_token');
-        const recoveryRefreshToken = hashParams.get('refresh_token');
-        const recoveryType = hashParams.get('type');
-        const exchangeCode = queryParams.get('code');
-
-        if (exchangeCode) {
-          try {
-            await authSessionService.exchangeCodeForSession(exchangeCode);
-            hasRecoverySession = true;
-            clearRecoveryParamsFromUrl();
-          } catch (_error) {
-            hasRecoverySession = false;
-          }
-        } else if (recoveryAccessToken && recoveryRefreshToken && recoveryType === 'recovery') {
-          try {
-            await authSessionService.setRecoverySession(recoveryAccessToken, recoveryRefreshToken);
-            hasRecoverySession = true;
-            clearRecoveryParamsFromUrl();
-          } catch (_error) {
-            hasRecoverySession = false;
-          }
-        }
-
-        if (!hasRecoverySession) {
-          const session = await authSessionService.getSession();
-          hasRecoverySession = Boolean(session);
-        }
-
-        if (!isMounted) return;
-
-        setIsValidToken(hasRecoverySession);
-        if (!hasRecoverySession) {
-          setMensaje('El enlace de recuperaci?n es inv?lido o ha expirado.');
-        }
-      } catch (error) {
-        console.error('Error inicializando recuperaci?n:', error);
-        if (!isMounted) return;
-
-        setIsValidToken(false);
-        setMensaje('No se pudo validar el enlace de recuperaci?n. Solicita uno nuevo.');
-      } finally {
-        if (isMounted) {
-          setIsCheckingToken(false);
-        }
+    const validateRecovery = async () => {
+      const hash = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+      const query = new URLSearchParams(window.location.search);
+      if (['error', 'error_code', 'error_description'].some((key) => hash.has(key) || query.has(key))) {
+        throw new Error('El enlace de recuperación es inválido o ha expirado. Solicita uno nuevo.');
       }
+      let session;
+      if (query.has('token_hash')) {
+        if (query.get('type') !== 'recovery') throw new Error('El enlace no es de recuperación de contraseña.');
+        session = await authSessionService.verifyRecoveryToken(query.get('token_hash'));
+      } else if (query.has('code')) {
+        session = await authSessionService.exchangeCodeForSession(query.get('code'));
+      } else if (hash.has('access_token') || hash.has('refresh_token')) {
+        if (!hash.get('access_token') || !hash.get('refresh_token') || hash.get('type') !== 'recovery') {
+          throw new Error('El enlace de recuperación está incompleto o no es válido.');
+        }
+        session = await authSessionService.setRecoverySession(hash.get('access_token'), hash.get('refresh_token'));
+      } else {
+        // Supabase may already have consumed a valid recovery URL during startup.
+        session = await authSessionService.getSession();
+      }
+      if (!session?.user) throw new Error('El enlace de recuperación es inválido o ha expirado.');
+      recoveryUserRef.current = session.user;
+      clearRecoveryParamsFromUrl();
+      return true;
     };
-
-    const {
-      data: { subscription }
-    } = authSessionService.onAuthStateChange(
+    const { data: { subscription } } = authSessionService.onAuthStateChange(
       deferAuthEvent((event, session) => {
-        if (!isMounted) return;
-
-        if (event === 'PASSWORD_RECOVERY') {
+        if (!isMounted || recoveryFailedRef.current) return;
+        if (event === 'PASSWORD_RECOVERY' && session?.user) {
+          recoveryUserRef.current = session.user;
           setIsValidToken(true);
           setIsCheckingToken(false);
           setMensaje('');
-          clearRecoveryParamsFromUrl();
-        } else if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session) {
-          setIsValidToken(true);
-          setIsCheckingToken(false);
-          setMensaje('');
-          clearRecoveryParamsFromUrl();
-        } else if (event === 'TOKEN_REFRESHED') {
-          setIsValidToken(true);
-          setIsCheckingToken(false);
         }
       })
     );
-
-    initPasswordReset();
-
+    if (!initializationRef.current) initializationRef.current = validateRecovery();
+    initializationRef.current.then(() => {
+      if (!isMounted) return;
+      setIsValidToken(true);
+      setIsCheckingToken(false);
+    }).catch((error) => {
+      recoveryFailedRef.current = true;
+      if (!isMounted) return;
+      setIsValidToken(false);
+      setIsCheckingToken(false);
+      setMensaje(error.message || 'No se pudo validar el enlace de recuperación. Solicita uno nuevo.');
+    });
     return () => {
       isMounted = false;
       subscription.unsubscribe();
     };
   }, []);
 
+  useEffect(() => () => window.clearTimeout(navigationTimerRef.current), []);
+
   const handleResetPassword = async (event) => {
     event.preventDefault();
+    if (submittingRef.current || completed || !isValidToken) return;
+    submittingRef.current = true;
     setIsLoading(true);
     setMensaje('');
 
     if (!newPassword || !confirmPassword) {
       setMensaje('Por favor, completa todos los campos');
       setIsLoading(false);
+      submittingRef.current = false;
       return;
     }
 
     if (!isStrongPassword) {
       setMensaje('La contraseña no cumple los requisitos de seguridad.');
       setIsLoading(false);
+      submittingRef.current = false;
       return;
     }
 
     if (!passwordsMatch) {
       setMensaje('Las contraseñas no coinciden');
       setIsLoading(false);
+      submittingRef.current = false;
       return;
     }
 
     try {
+      const currentSession = await authSessionService.getSession();
+      if (!currentSession?.user || currentSession.user.id !== recoveryUserRef.current?.id) {
+        recoveryFailedRef.current = true;
+        setIsValidToken(false);
+        setMensaje('La sesión de recuperación cambió o expiró. Solicita un nuevo enlace.');
+        return;
+      }
       await authSessionService.updatePassword(newPassword);
+      setCompleted(true);
+      try {
+        await authSessionService.markFirstLoginCompleted(recoveryUserRef.current.id);
+      } catch (_error) {
+        // Metadata synchronization must not prevent closing the recovery session.
+      }
+      try {
+        await authSessionService.signOut();
+      } catch (_error) {
+        // The password was changed; do not claim failure or submit it a second time.
+      }
+      onPasswordReset?.();
       setMensaje('Contraseña actualizada correctamente. Redirigiendo...');
       setNewPassword('');
       setConfirmPassword('');
-      setTimeout(() => {
+      navigationTimerRef.current = window.setTimeout(() => {
         navigate('/login');
       }, 3000);
     } catch (error) {
       setMensaje(`Error inesperado: ${error.message}`);
     } finally {
       setIsLoading(false);
+      submittingRef.current = false;
     }
   };
 
@@ -191,15 +193,15 @@ const ResetPassword = () => {
           </div>
 
           {isCheckingToken && (
-            <EmptyState title="Validando enlace de recuperaci?n..." description="Estamos verificando tu sesi?n de recuperaci?n." icon={<FaKey />} />
+            <EmptyState title="Validando enlace de recuperación..." description="Estamos verificando tu sesión de recuperación." icon={<FaKey />} />
           )}
 
           {!isCheckingToken && !isValidToken && (
             <EmptyState
-              title="Enlace inv?lido o expirado"
-              description={mensaje || 'Solicita un nuevo enlace desde la pantalla de inicio de sesi?n.'}
+              title="Enlace inválido o expirado"
+              description={mensaje || 'Solicita un nuevo enlace desde la pantalla de inicio de sesión.'}
               icon={<FaExclamationTriangle />}
-              action={<Button onClick={() => navigate('/login')}>Volver al inicio de sesi?n</Button>}
+              action={<Button onClick={() => navigate('/login')}>Volver al inicio de sesión</Button>}
             />
           )}
 
@@ -209,19 +211,22 @@ const ResetPassword = () => {
                 <div className="relative">
                   <input
                     id="new-password"
+                    aria-label="Nueva contraseña"
+                    autoComplete="new-password"
                     type={showPassword ? 'text' : 'password'}
                     placeholder="********"
                     value={newPassword}
                     onChange={(event) => setNewPassword(event.target.value)}
-                    disabled={isLoading}
+                    disabled={isLoading || completed}
                     required
                     minLength={10}
                     className="h-12 w-full rounded-xl border border-rv-gold/35 bg-slate-900/70 px-4 pr-12 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
                   />
                   <button
                     type="button"
+                    aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
                     onClick={() => setShowPassword((prev) => !prev)}
-                    disabled={isLoading}
+                    disabled={isLoading || completed}
                     className="absolute right-1 top-1 inline-flex h-10 w-10 items-center justify-center rounded-lg text-white/85 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
                   >
                     {showPassword ? <FaEyeSlash /> : <FaEye />}
@@ -236,7 +241,7 @@ const ResetPassword = () => {
                         key={requirement.key}
                         className={cn('text-xs', passed ? 'text-emerald-300' : 'text-slate-300')}
                       >
-                        <span className="mr-1 font-bold">{passed ? '?' : '?'}</span>
+                        <span className="mr-1 font-bold">{passed ? '✓' : '•'}</span>
                         {requirement.label}
                       </p>
                     );
@@ -247,25 +252,27 @@ const ResetPassword = () => {
               <Field label="Confirmar contraseña" icon={<FaLock />}>
                 <input
                   id="confirm-password"
+                  aria-label="Confirmar contraseña"
+                  autoComplete="new-password"
                   type={showPassword ? 'text' : 'password'}
                   placeholder="********"
                   value={confirmPassword}
                   onChange={(event) => setConfirmPassword(event.target.value)}
-                  disabled={isLoading}
+                  disabled={isLoading || completed}
                   required
                   minLength={10}
                   className="h-12 w-full rounded-xl border border-rv-gold/35 bg-slate-900/70 px-4 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80"
                 />
                 {confirmPassword ? (
                   <p className={cn('text-xs font-semibold', passwordsMatch ? 'text-emerald-300' : 'text-red-300')}>
-                    {passwordsMatch ? '? Las contraseñas coinciden' : 'Las contraseñas no coinciden'}
+                    {passwordsMatch ? '✓ Las contraseñas coinciden' : 'Las contraseñas no coinciden'}
                   </p>
                 ) : null}
               </Field>
 
               <Button
                 type="submit"
-                disabled={isLoading || !newPassword || !confirmPassword || !isStrongPassword || !passwordsMatch}
+                disabled={completed || isLoading || !newPassword || !confirmPassword || !isStrongPassword || !passwordsMatch}
                 className="w-full"
                 size="lg"
               >
@@ -276,7 +283,7 @@ const ResetPassword = () => {
                 <div
                   className={cn(
                     'rounded-xl border px-4 py-3 text-sm font-semibold',
-                    mensaje.toLowerCase().includes('error') || mensaje.toLowerCase().includes('inv?lido')
+                    mensaje.toLowerCase().includes('error') || mensaje.toLowerCase().includes('inválido')
                       ? 'border-red-400/45 bg-red-500/15 text-red-200'
                       : 'border-emerald-400/45 bg-emerald-500/15 text-emerald-200'
                   )}
