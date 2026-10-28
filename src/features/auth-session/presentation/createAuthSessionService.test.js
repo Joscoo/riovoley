@@ -6,7 +6,7 @@ jest.mock('../infrastructure/repositories/supabaseAuthSessionRepository', () => 
   })),
 }));
 
-jest.mock('../../gamification', () => ({
+jest.mock('../../gamification/gamificationService', () => ({
   gamificationService: {
     registerDailyLoginReward: jest.fn().mockResolvedValue({ awarded: true, xpDelta: 8 }),
   },
@@ -39,6 +39,8 @@ describe('createAuthSessionService', () => {
 
     expect(repository.signInWithPassword).toHaveBeenCalledWith('demo@riovoley.com', 'secret');
     expect(result).toEqual({ user: { id: 'u1' } });
+    const { gamificationService } = require('../../gamification/gamificationService');
+    expect(gamificationService.registerDailyLoginReward).toHaveBeenCalledWith({ userId: 'u1' });
   });
 
   it('delega requestPasswordReset al repositorio', async () => {

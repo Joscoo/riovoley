@@ -86,22 +86,22 @@ const RoleSidebar = ({
 
   const variantStyles = {
     admin: {
-      badge: 'from-red-600 to-red-700 shadow-[0_6px_18px_rgba(220,53,69,0.35)]',
-      active: 'border-red-400/60 bg-gradient-to-br from-red-600/25 to-red-500/15 text-white shadow-[0_6px_18px_rgba(220,53,69,0.28)]',
-      activeDescription: 'text-red-200/90',
-      roleLabel: 'text-red-200/85'
+      badge: 'from-rv-deepBlue to-blue-800 shadow-lg',
+      active: 'border-rv-gold/60 bg-rv-gold/15 text-rv-gold shadow-rv-gold',
+      activeDescription: 'text-slate-100',
+      roleLabel: 'text-rv-gold'
     },
     trainer: {
-      badge: 'from-orange-500 to-orange-600 shadow-[0_6px_18px_rgba(253,126,20,0.35)]',
-      active: 'border-orange-400/60 bg-gradient-to-br from-orange-500/25 to-orange-400/15 text-white shadow-[0_6px_18px_rgba(253,126,20,0.28)]',
-      activeDescription: 'text-orange-100/90',
-      roleLabel: 'text-orange-100/85'
+      badge: 'from-rv-gold to-amber-400 text-rv-dark shadow-rv-gold',
+      active: 'border-rv-gold/60 bg-rv-gold/15 text-rv-gold shadow-rv-gold',
+      activeDescription: 'text-slate-100',
+      roleLabel: 'text-rv-gold'
     },
     student: {
       badge: 'from-blue-600 to-blue-700 shadow-[0_6px_18px_rgba(0,123,255,0.35)]',
-      active: 'border-blue-400/60 bg-gradient-to-br from-blue-600/25 to-blue-500/15 text-white shadow-[0_6px_18px_rgba(0,123,255,0.28)]',
-      activeDescription: 'text-blue-100/90',
-      roleLabel: 'text-blue-100/85'
+      active: 'border-rv-gold/60 bg-rv-gold/15 text-rv-gold shadow-rv-gold',
+      activeDescription: 'text-slate-100',
+      roleLabel: 'text-rv-gold'
     }
   };
 

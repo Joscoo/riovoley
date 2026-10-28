@@ -3,9 +3,6 @@ import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from
 
 import Navbar from './components/Navbar';
 import HomePage from './components/HomePage';
-import AboutUs from './components/AboutUs';
-import Horarios from './components/Horarios';
-import { Login, ResetPassword } from './features/auth-session';
 import { useUserProfile } from './features/auth-profile';
 import { getCurrentUser } from './config/supabase';
 import { ToastProvider } from './contexts/ToastContext';
@@ -30,11 +27,15 @@ import {
 const LazyAdminPanel = lazy(() => import('./features/admin-dashboard/presentation/components/AdminPanel'));
 const LazyTrainerPanel = lazy(() => import('./features/trainer-dashboard/presentation/components/TrainerPanel'));
 const StudentPanel = lazy(() => import('./features/student-dashboard/presentation/components/StudentPanel'));
+const AboutUs = lazy(() => import('./components/AboutUs'));
+const Horarios = lazy(() => import('./components/Horarios'));
+const Login = lazy(() => import('./features/auth-session/presentation/components/Login'));
+const ResetPassword = lazy(() => import('./features/auth-session/presentation/components/ResetPassword'));
 
 const LoadingFallback = () => (
-  <div className="flex min-h-[100dvh] items-center justify-center bg-rv-dark text-base font-semibold text-slate-100">
+  <main id="main-content" tabIndex={-1} aria-busy="true" className="flex min-h-[calc(100dvh-var(--rv-navbar-height))] items-center justify-center bg-rv-dark text-base font-semibold text-slate-100">
     Cargando...
-  </div>
+  </main>
 );
 
 function AppContent() {
@@ -195,7 +196,7 @@ function AppContent() {
     return (
       <>
         <Navbar user={null} userProfile={null} onLogout={handleLogout} />
-        <div
+        <main id="main-content" tabIndex={-1} aria-busy="true"
           style={{
             display: 'flex',
             justifyContent: 'center',
@@ -207,7 +208,7 @@ function AppContent() {
           }}
         >
           Cargando...
-        </div>
+        </main>
       </>
     );
   }
@@ -321,7 +322,7 @@ function AppContent() {
         <Route path="/sobre" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><AboutUs /></>} />
         <Route path="/horarios" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><Horarios /></>} />
         <Route path="/login" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><Login onLoginSuccess={handleLoginSuccess} /></>} />
-        <Route path="/reset-password" element={<ResetPassword onPasswordReset={() => setUser(null)} />} />
+        <Route path="/reset-password" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><ResetPassword onPasswordReset={() => setUser(null)} /></>} />
         <Route path="/admin" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><LazyAdminPanel user={user} /></>} />
         <Route path="/entrenador" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><LazyTrainerPanel user={user} /></>} />
         <Route path="/estudiante" element={<><Navbar user={user} userProfile={userProfile} onLogout={handleLogout} /><StudentPanel user={user} /></>} />

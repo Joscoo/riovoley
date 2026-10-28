@@ -15,6 +15,36 @@ input:focus-visible,
 select:focus-visible,
 textarea:focus-visible,
 [role="button"]:focus-visible {
-  outline: 3px solid #ffd700;
+  outline: 3px solid var(--rv-color-gold, #ffd700);
   outline-offset: 2px;
+}
+
+.rv-skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 2000;
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: var(--rv-color-gold);
+  color: var(--rv-color-dark);
+  font-weight: 700;
+  transform: translateY(-150%);
+}
+
+.rv-skip-link:focus {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

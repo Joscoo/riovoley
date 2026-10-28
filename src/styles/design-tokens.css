@@ -1,5 +1,9 @@
 /* Responsive design tokens shared across role-based panels */
 :root {
+  --rv-color-gold: #ffd700;
+  --rv-color-dark: #0a0a0a;
+  --rv-color-deep-blue: #1e3a8a;
+  --rv-navbar-height: 56px;
   --rv-breakpoint-mobile-sm: 390px;
   --rv-breakpoint-mobile: 480px;
   --rv-breakpoint-tablet: 768px;
@@ -18,4 +22,12 @@
 
   --rv-sidebar-width-desktop: 280px;
   --rv-sidebar-width-tablet: 240px;
+}
+
+@media (min-width: 480px) {
+  :root { --rv-navbar-height: 65px; }
+}
+
+@media (min-width: 768px) {
+  :root { --rv-navbar-height: 70px; }
 }

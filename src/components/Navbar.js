@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { IoIosLogOut, IoIosLogIn } from 'react-icons/io';
-import { authSessionService } from '../features/auth-session';
+import { authSessionService } from '../features/auth-session/authSessionService';
 import { NotificationBell } from '../features/notifications';
 import { cn } from '../lib/cn';
 import { iconRegistry, semanticCatalog, getRoleLabel } from '../shared/ui';
@@ -18,6 +18,7 @@ const Navbar = ({ user, userProfile, onLogout }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef(null);
   const mobileMenuRef = useRef(null);
+  const menuToggleRef = useRef(null);
   const location = useLocation();
 
   const role = userProfile?.role?.toLowerCase();
@@ -35,6 +36,42 @@ const Navbar = ({ user, userProfile, onLogout }) => {
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
   };
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+
+    const getControls = () => [
+      menuToggleRef.current,
+      ...mobileMenuRef.current.querySelectorAll('a[href], button:not([disabled])'),
+    ].filter(Boolean);
+
+    getControls()[1]?.focus();
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+        menuToggleRef.current?.focus();
+      } else if (event.key === 'Tab') {
+        const controls = getControls();
+        const index = controls.indexOf(document.activeElement);
+        const nextIndex = (index + (event.shiftKey ? -1 : 1) + controls.length) % controls.length;
+        event.preventDefault();
+        controls[nextIndex]?.focus();
+      }
+    };
+    const handleResize = () => {
+      if (window.innerWidth >= 1280) setMenuOpen(false);
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [menuOpen]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -86,8 +123,10 @@ const Navbar = ({ user, userProfile, onLogout }) => {
 
   return (
     <>
+      <a href="#main-content" tabIndex={0} className="rv-skip-link">Saltar al contenido</a>
       <nav
-        className="rv-performance-nav fixed left-0 right-0 top-0 z-[1200] isolate flex h-[56px] w-full max-w-full items-center justify-between overflow-visible border-b-2 border-rv-gold/20 bg-gradient-to-br from-rv-dark/95 to-rv-deepBlue/90 pl-1 pr-1 pt-[env(safe-area-inset-top)] shadow-[0_4px_30px_rgba(0,0,0,0.3),0_0_60px_rgba(255,215,0,0.1)] backdrop-blur-[20px] mobile:h-[65px] mobile:pl-3 mobile:pr-3 tablet:h-[70px] tablet:px-5 desktop:px-10"
+        aria-label="Navegación principal"
+        className="rv-performance-nav fixed left-0 right-0 top-0 z-[1200] isolate flex h-[calc(var(--rv-navbar-height)+env(safe-area-inset-top))] w-full max-w-full items-center justify-between overflow-visible border-b-2 border-rv-gold/20 bg-gradient-to-br from-rv-dark/95 to-rv-deepBlue/90 pl-1 pr-1 pt-[env(safe-area-inset-top)] shadow-[0_4px_30px_rgba(0,0,0,0.3),0_0_60px_rgba(255,215,0,0.1)] backdrop-blur-[20px] mobile:pl-3 mobile:pr-3 tablet:px-5 desktop:px-10"
         ref={navRef}
       >
         <Link
@@ -95,8 +134,11 @@ const Navbar = ({ user, userProfile, onLogout }) => {
           className="group inline-flex min-h-[48px] min-w-[48px] shrink-0 items-center justify-center rounded-xl p-1 no-underline mobile:justify-start mobile:px-2"
         >
           <img
-            src="/images/logoRio.png"
+            src="/images/logoRio-nav.webp"
             alt="Logo Riovoley"
+            width="192"
+            height="113"
+            fetchPriority="high"
             className="h-9 w-auto rounded-xl object-contain transition-transform duration-200 group-hover:scale-[1.02] mobile:h-10 tablet:h-12 xl:h-14"
           />
         </Link>
@@ -195,7 +237,7 @@ const Navbar = ({ user, userProfile, onLogout }) => {
               </button>
             </div>
           ) : (
-            <Link to="/login" className="rv-touch-target inline-flex items-center justify-center rounded-xl bg-gradient-to-br from-rv-gold to-yellow-400 px-6 py-3 text-sm font-extrabold uppercase tracking-[0.4px] text-rv-dark shadow-rv-gold transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105">
+            <Link to="/login" aria-label="Iniciar sesión" className="rv-touch-target inline-flex items-center justify-center rounded-xl bg-gradient-to-br from-rv-gold to-yellow-400 px-6 py-3 text-sm font-extrabold uppercase tracking-[0.4px] text-rv-dark shadow-rv-gold transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105">
               <IoIosLogIn
                 className="
                   text-3xl
@@ -214,10 +256,12 @@ const Navbar = ({ user, userProfile, onLogout }) => {
           )}
 
           <button
+            ref={menuToggleRef}
             className="z-[1202] inline-flex h-12 w-12 items-center justify-center rounded-lg text-2xl text-white transition-all duration-200 hover:bg-white/10 mobile:h-[50px] mobile:w-[50px]"
             onClick={toggleMenu}
             aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
             aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
             type="button"
           >
             <MenuIcon />
@@ -231,15 +275,18 @@ const Navbar = ({ user, userProfile, onLogout }) => {
           menuOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
         )}
         onClick={() => setMenuOpen(false)}
-        aria-hidden={menuOpen ? 'false' : 'true'}
+        aria-hidden="true"
       />
 
       <ul
+        id="mobile-navigation"
+        aria-label="Menú móvil"
+        aria-hidden={!menuOpen}
+        inert={!menuOpen}
         ref={mobileMenuRef}
         className={cn(
-          'rv-performance-nav fixed bottom-0 right-0 top-[calc(56px+env(safe-area-inset-top))] z-[1201] m-0 flex w-[86vw] max-w-[340px] list-none flex-col gap-2 border-l border-white/10 bg-gradient-to-br from-slate-800/98 to-slate-700/98 p-3 pb-5 shadow-[-12px_0_24px_rgba(0,0,0,0.3)] backdrop-blur-md transition-transform duration-300 mobile:top-[calc(65px+env(safe-area-inset-top))] tablet:top-[calc(70px+env(safe-area-inset-top))] xl:hidden',
-          isLandingRoute ? 'overflow-y-hidden' : 'overflow-y-auto',
-          menuOpen ? 'translate-x-0' : 'pointer-events-none translate-x-full'
+          'rv-performance-nav fixed bottom-0 right-0 top-[calc(var(--rv-navbar-height)+env(safe-area-inset-top))] z-[1201] m-0 flex w-[86vw] max-w-[340px] list-none flex-col gap-2 overflow-y-auto border-l border-rv-gold/20 bg-gradient-to-br from-rv-dark to-rv-deepBlue p-3 pb-5 shadow-[-12px_0_24px_rgba(0,0,0,0.3)] transition-transform duration-300 xl:hidden',
+          menuOpen ? 'visible translate-x-0' : 'invisible pointer-events-none translate-x-full'
         )}
       >
         <li>

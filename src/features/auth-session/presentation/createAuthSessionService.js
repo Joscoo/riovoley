@@ -1,9 +1,16 @@
 import { createAuthSessionUseCases } from '../application/useCases/createAuthSessionUseCases';
 import { SupabaseAuthSessionRepository } from '../infrastructure/repositories/supabaseAuthSessionRepository';
-import { gamificationService } from '../../gamification';
+
+// Public navigation needs Auth, but rewards are only used after a successful login.
+const gamificationGateway = {
+  registerDailyLoginReward: async (payload) => {
+    const { gamificationService } = await import('../../gamification/gamificationService');
+    return gamificationService.registerDailyLoginReward(payload);
+  },
+};
 
 export const createAuthSessionService = (repository = new SupabaseAuthSessionRepository()) => {
-  const useCases = createAuthSessionUseCases(repository, { gamificationService });
+  const useCases = createAuthSessionUseCases(repository, { gamificationService: gamificationGateway });
 
   const onAuthStateChange = (handler) => useCases.onAuthStateChangeUseCase.execute(handler);
   const getCurrentUser = () => useCases.getCurrentUserUseCase.execute();

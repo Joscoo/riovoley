@@ -47,7 +47,7 @@ const AdministratorsTab = ({ userRole, currentUserId = null }) => {
   const [isConfirmingRole, setIsConfirmingRole] = useState(false);
   const { message, showMessage } = useTimedMessage();
   
-  const [filters, setFilters] = useState({ search: '', sortBy: 'apellido', sortOrder: 'asc' });
+  const [filters, setFilters] = useState({ search: '', status: 'all', sortBy: 'apellido', sortOrder: 'asc' });
   const [currentPage, setCurrentPage] = useState(1);
   const PAGE_SIZE = 9;
   
@@ -138,7 +138,7 @@ const AdministratorsTab = ({ userRole, currentUserId = null }) => {
     finally { setIsConfirmingRole(false); }
   };
 
-  const handleResetFilters = () => setFilters({ search: '', sortBy: 'apellido', sortOrder: 'asc' });
+  const handleResetFilters = () => setFilters({ search: '', status: 'all', sortBy: 'apellido', sortOrder: 'asc' });
 
   return (
     <div className="space-y-4">

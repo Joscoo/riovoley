@@ -226,8 +226,6 @@ const PagosManager = ({ user }) => {
       }
     };
 
-    const previousBodyOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
     document.addEventListener('keydown', handleKeyDown);
 
     globalThis.setTimeout(() => {
@@ -235,7 +233,6 @@ const PagosManager = ({ user }) => {
     }, 0);
 
     return () => {
-      document.body.style.overflow = previousBodyOverflow;
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [showModal]);

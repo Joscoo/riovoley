@@ -313,6 +313,12 @@ export const createUserManagementUseCases = (repository) => {
     execute: ({ administrators, filters }) => {
       let result = [...(administrators || [])];
 
+      if (filters?.status === 'active') {
+        result = result.filter((administrator) => !administrator.suspended);
+      } else if (filters?.status === 'suspended') {
+        result = result.filter((administrator) => administrator.suspended);
+      }
+
       if (filters?.search) {
         const searchLower = normalizeText(filters.search);
         result = result.filter((administrator) => {

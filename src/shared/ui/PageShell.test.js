@@ -3,16 +3,16 @@ import PageShell from './PageShell';
 import { PERFORMANCE_MODES } from './render-profile';
 
 describe('PageShell', () => {
-  test('uses mobile video source in lite mode', () => {
+  test('uses a lightweight static background on mobile without downloading video', () => {
     const { container } = render(
       <PageShell performanceMode={PERFORMANCE_MODES.LITE}>
         <div>contenido</div>
       </PageShell>
     );
 
-    const source = container.querySelector('video source');
-    expect(source).toBeInTheDocument();
-    expect(source).toHaveAttribute('src', '/videos/bg-video-mobile.mp4');
+    expect(container.querySelector('video')).not.toBeInTheDocument();
+    expect(container.querySelector('img')).toHaveAttribute('src', '/images/court-poster.webp');
+    expect(screen.getByRole('main')).toContainElement(screen.getByText('contenido'));
   });
 
   test('does not render video in ultraLite mode', () => {

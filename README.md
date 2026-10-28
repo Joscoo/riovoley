@@ -187,7 +187,9 @@ Para diagnosticar envío de credenciales y recuperación de contraseñas, consul
 - `E2E_STUDENT_EMAIL`
 - `E2E_STUDENT_PASSWORD`
 
-2. Exportar variables al entorno de la terminal (PowerShell):
+Playwright carga `.env.e2e` automaticamente y conserva la prioridad de las variables ya exportadas.
+
+2. Opcional: exportar variables al entorno de la terminal (PowerShell):
 
 ```powershell
 Get-Content .env.e2e | ForEach-Object {

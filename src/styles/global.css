@@ -18,7 +18,7 @@ body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.6;
-  padding-top: var(--rv-navbar-height-desktop, 60px);
+  padding-top: calc(var(--rv-navbar-height, 56px) + env(safe-area-inset-top));
   background-color: #0a0a0a;
   color: #f8fafc;
   -webkit-tap-highlight-color: transparent;
@@ -57,10 +57,6 @@ select optgroup {
 }
 
 @media (max-width: 768px) {
-  body {
-    padding-top: calc(var(--rv-navbar-height-mobile, 65px) + env(safe-area-inset-top));
-  }
-
   input,
   select,
   textarea {

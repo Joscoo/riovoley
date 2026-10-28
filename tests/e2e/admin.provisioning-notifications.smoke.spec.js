@@ -1,60 +1,26 @@
 const { test, expect } = require('@playwright/test');
+const { openAdminSection, loginAsAdmin } = require('./helpers/adminNavigation');
 
 const ADMIN_EMAIL = process.env.E2E_ADMIN_EMAIL;
 const ADMIN_PASSWORD = process.env.E2E_ADMIN_PASSWORD;
-
-async function loginAsAdmin(page) {
-  await page.goto('/login', { waitUntil: 'domcontentloaded' });
-  await page.waitForLoadState('load');
-
-  await page.getByLabel('Correo Electrónico').fill(ADMIN_EMAIL);
-  await page.getByLabel('Contraseña').fill(ADMIN_PASSWORD);
-
-  const submitButton = page.locator('form button[type="submit"]').first();
-  if (await submitButton.count()) {
-    await submitButton.click();
-  } else {
-    await page
-      .getByRole('button', { name: /ingresar|iniciar sesion|iniciar sesión|iniciar sesión con supabase/i })
-      .first()
-      .click();
-  }
-
-  await page.waitForURL(/\/admin|\/login/, { timeout: 20000 });
-  await expect(page).toHaveURL(/\/admin/);
-}
-
-async function openSidebarIfNeeded(page) {
-  const openSidebarButton = page.getByRole('button', { name: /abrir menu lateral/i }).first();
-  const userManagementButton = page.getByRole('button', { name: /gestion de usuarios/i }).first();
-
-  if (!(await userManagementButton.isVisible()) && (await openSidebarButton.count())) {
-    await openSidebarButton.click();
-  }
-}
 
 test('admin smoke: provisioning + notifications entrypoints', async ({ page }) => {
   test.skip(!ADMIN_EMAIL || !ADMIN_PASSWORD, 'Missing E2E_ADMIN_EMAIL/E2E_ADMIN_PASSWORD environment variables.');
 
   await loginAsAdmin(page);
-  await openSidebarIfNeeded(page);
+  await openAdminSection(page, 'usuarios');
+  await expect(page.getByRole('main').getByRole('heading', { name: /gesti[oó]n de usuarios/i })).toBeVisible();
 
-  const userManagementButton = page.getByRole('button', { name: /gestion de usuarios/i }).first();
-  await expect(userManagementButton).toBeVisible({ timeout: 15000 });
-  await userManagementButton.click();
-
-  await expect(page.getByText(/gestion de usuarios/i).first()).toBeVisible({ timeout: 15000 });
-
-  const athletesTab = page.getByRole('button', { name: /^atletas$/i }).first();
+  const athletesTab = page.getByRole('tab', { name: /estudiantes/i }).first();
   await expect(athletesTab).toBeVisible({ timeout: 10000 });
   await athletesTab.click();
-  await expect(page.getByText(/^Atletas$/).first()).toBeVisible({ timeout: 10000 });
+  await expect(page.locator('#user-filters-atleta-search')).toBeVisible();
 
-  const addAthleteButton = page.getByRole('button', { name: /agregar atleta/i }).first();
+  const addAthleteButton = page.getByRole('button', { name: /agregar estudiante/i }).first();
   await expect(addAthleteButton).toBeVisible({ timeout: 10000 });
   await addAthleteButton.click();
 
-  await expect(page.getByText(/agregar nuevo atleta/i).first()).toBeVisible({ timeout: 10000 });
+  await expect(page.getByRole('dialog')).toContainText(/agregar nuevo estudiante/i);
   await page.getByRole('button', { name: /cerrar modal/i }).first().click();
 
   const notificationsButton = page.getByRole('button', { name: /notificaciones/i }).first();

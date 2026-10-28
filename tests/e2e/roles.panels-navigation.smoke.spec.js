@@ -1,5 +1,7 @@
 ﻿const { test, expect } = require('@playwright/test');
 
+const { dismissPanelGuide } = require('./helpers/adminNavigation');
+
 const CREDENTIALS = [
   {
     name: 'admin',
@@ -55,6 +57,7 @@ async function expectAnyVisibleText(page, pattern, timeout = 15000) {
 async function login(page, email, password) {
   await page.goto('/login', { waitUntil: 'domcontentloaded' });
   await page.waitForLoadState('load');
+  await expect(page.locator('input[type="email"]')).toBeVisible();
 
   await fillFirstVisible(page, [
     page.getByLabel(/correo electr(o|ó|Ã³)nico/i),
@@ -84,6 +87,7 @@ for (const role of CREDENTIALS) {
   test(`role panel smoke: ${role.name}`, async ({ page }) => {
     test.skip(!role.email || !role.password, `Missing credentials for ${role.name}`);
 
+    await dismissPanelGuide(page, role.name);
     await login(page, role.email, role.password);
     await page.waitForURL(new RegExp(`${role.route}|/login`), { timeout: 20000 });
     await expect(page).toHaveURL(new RegExp(role.route));
@@ -91,6 +95,10 @@ for (const role of CREDENTIALS) {
     await expectAnyVisibleText(page, role.expected, 15000);
 
     const bell = page.getByRole('button', { name: /notificaciones/i }).first();
+    if (role.name === 'student') {
+      await expect(bell).toHaveCount(0);
+      return;
+    }
     await expect(bell).toBeVisible({ timeout: 10000 });
     await bell.click();
     await expect(page.getByText(/notificaciones/i).first()).toBeVisible({ timeout: 10000 });

@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { cn } from '../lib/cn';
 import { PageShell } from '../shared/ui';
 import { Card } from '../shared/ui';
 import { SectionHeader } from '../shared/ui';
@@ -33,23 +32,10 @@ const FEATURES = [
 ];
 
 const HomePage = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 120);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
-
   return (
     <PageShell>
       <section
-        className={cn(
-          'relative flex min-h-[calc(100dvh-56px)] items-center justify-center px-4 pb-16 pt-12 transition-all duration-700 mobile:min-h-[calc(100dvh-65px)] mobile:px-6 tablet:px-10',
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
-        )}
+        className="relative flex min-h-[calc(100dvh-var(--rv-navbar-height))] items-center justify-center px-4 pb-16 pt-12 mobile:px-6 tablet:px-10"
       >
         <div className="mx-auto flex w-full max-w-5xl flex-col items-center text-center">
           <div className="relative mb-4 inline-flex items-center justify-center">

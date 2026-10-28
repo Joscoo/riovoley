@@ -1,4 +1,5 @@
 const { defineConfig, devices } = require('@playwright/test');
+require('dotenv').config({ path: '.env.e2e' });
 
 const baseURL = process.env.E2E_BASE_URL || 'http://localhost:3000';
 

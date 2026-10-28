@@ -216,6 +216,7 @@ const AsistenciasManager = ({ user }) => {
   const [isExporting, setIsExporting] = useState(false);
   const [notice, setNotice] = useState(EMPTY_NOTICE);
   const noticeTimerRef = useRef(null);
+  const loadDataRequestRef = useRef(0);
   const [confirmDialog, setConfirmDialog] = useState({
     open: false,
     title: '',
@@ -293,14 +294,13 @@ const AsistenciasManager = ({ user }) => {
   };
 
   useEffect(() => {
-    // Cargar datos iniciales al montar el componente
-    loadData();
+    // El efecto de queryState carga el historial inicial una sola vez.
     loadPaymentTypes();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    // Recargar cuando cambien los filtros (excluyendo la carga inicial)
+    // Cargar al montar y cuando cambien los filtros.
     loadData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [queryState]);
@@ -321,9 +321,13 @@ const AsistenciasManager = ({ user }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bulkMode, queryState.filters.fecha_inicio, queryState.filters.fecha_fin]);
 
-  useEffect(() => () => clearNoticeTimer(), []);
+  useEffect(() => () => {
+    clearNoticeTimer();
+    loadDataRequestRef.current += 1;
+  }, []);
 
   const loadData = async () => {
+    const requestId = ++loadDataRequestRef.current;
     setLoading(true);
     try {
       const result = await attendanceService.loadAttendanceData({
@@ -331,15 +335,17 @@ const AsistenciasManager = ({ user }) => {
         athletes: atletas,
       });
 
+      if (requestId !== loadDataRequestRef.current) return;
       setAtletas(result.athletes || []);
       setAsistencias(result.attendances || []);
       setAsistenciasByDate(result.groupedByDate || {});
 
     } catch (error) {
+      if (requestId !== loadDataRequestRef.current) return;
       console.error('Error cargando datos:', error);
       showNotice('error', 'Error al cargar los datos: ' + error.message);
     } finally {
-      setLoading(false);
+      if (requestId === loadDataRequestRef.current) setLoading(false);
     }
   };
 
@@ -1521,21 +1527,27 @@ const AsistenciasManager = ({ user }) => {
 
                       return (
                         <div key={fecha} className={styles.dayCard}>
-                          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
                           <div
                             data-testid="attendance-day-header"
                             className={styles.dayHeader}
-                            onClick={() => toggleDayExpansion(fecha)}
                           >
-                            <div className={styles.dayInfo}>
-                              <h4>
-                                <FaCalendarAlt className="mr-2" />
-                                {fechaFormateada}
-                              </h4>
-                              <span className={styles.dayCount}>
-                                {dayAttendances.length} asistencias
-                              </span>
-                            </div>
+                            <h4 className="min-w-0 flex-1">
+                              <button
+                                type="button"
+                                className={`${styles.dayInfo} min-h-[48px] w-full rounded-lg text-left`}
+                                aria-expanded={isExpanded}
+                                aria-controls={`attendance-day-${fecha}`}
+                                onClick={() => toggleDayExpansion(fecha)}
+                              >
+                                <span className="inline-flex items-center font-semibold">
+                                  <FaCalendarAlt className="mr-2" aria-hidden="true" />
+                                  {fechaFormateada}
+                                </span>
+                                <span className={styles.dayCount}>
+                                  {dayAttendances.length} asistencias
+                                </span>
+                              </button>
+                            </h4>
                             <div className={styles.dayActions}>
                               <button
                                 className={styles.exportDayButton}
@@ -1548,14 +1560,14 @@ const AsistenciasManager = ({ user }) => {
                                 <FaFileExport className="mr-1.5" />
                                 Exportar
                               </button>
-                              <span className={styles.expandIcon}>
-                                {isExpanded ? '?' : '?'}
+                              <span className={styles.expandIcon} aria-hidden="true">
+                                {isExpanded ? '−' : '+'}
                               </span>
                             </div>
                           </div>
 
                           {isExpanded && (
-                            <div className={styles.dayContent}>
+                            <div id={`attendance-day-${fecha}`} className={styles.dayContent}>
                               {/* Tabla 1: Iniciación */}
                               {iniciacion.length > 0 && (
                                 <div className={styles.categorySection}>

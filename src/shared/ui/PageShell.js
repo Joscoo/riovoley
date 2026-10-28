@@ -19,8 +19,8 @@ const PageShell = ({
     return isKnownProfile(performanceMode) ? performanceMode : globalProfile;
   }, [globalProfile, performanceMode]);
 
-  const videoSource = effectiveProfile === RENDER_PROFILES.LITE ? '/videos/bg-video-mobile.mp4' : '/videos/bg-video.mp4';
-  const shouldRenderVideo = showVideo && effectiveProfile !== RENDER_PROFILES.ULTRA_LITE;
+  const videoSource = '/videos/bg-video.mp4';
+  const shouldRenderVideo = showVideo && effectiveProfile === RENDER_PROFILES.FULL;
   const [isVideoReady, setIsVideoReady] = useState(false);
 
   useEffect(() => {
@@ -28,11 +28,23 @@ const PageShell = ({
   }, [videoSource, shouldRenderVideo]);
 
   return (
-    <div className={cn('relative min-h-[100dvh] overflow-hidden bg-rv-dark text-white', className)} data-render-profile={effectiveProfile}>
+    <main id="main-content" tabIndex={-1} className={cn('relative min-h-[calc(100dvh-var(--rv-navbar-height))] overflow-hidden bg-rv-dark text-white', className)} data-render-profile={effectiveProfile}>
       <div
         className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(circle_at_30%_15%,rgba(30,58,138,0.45),transparent_55%),linear-gradient(140deg,#070707_0%,#0a0a0a_45%,#0f234f_100%)]"
         aria-hidden="true"
       />
+
+      {showVideo && effectiveProfile !== RENDER_PROFILES.ULTRA_LITE ? (
+        <img
+          src="/images/court-poster.webp"
+          alt=""
+          width="640"
+          height="300"
+          decoding="async"
+          className="pointer-events-none fixed inset-0 z-[1] h-full w-full object-cover brightness-50"
+          aria-hidden="true"
+        />
+      ) : null}
 
       {shouldRenderVideo ? (
         <video
@@ -40,8 +52,8 @@ const PageShell = ({
           muted
           loop
           playsInline
-          preload={effectiveProfile === RENDER_PROFILES.LITE ? 'metadata' : 'auto'}
-          poster="/images/logoRio.png"
+          preload="none"
+          poster="/images/court-poster.webp"
           className={cn(
             'rv-performance-video pointer-events-none fixed inset-0 z-[1] h-full w-full object-cover saturate-125 transition-opacity duration-300',
             effectiveProfile === RENDER_PROFILES.LITE ? 'brightness-[0.5]' : 'brightness-[0.42] blur-[2px]',
@@ -65,7 +77,7 @@ const PageShell = ({
       ) : null}
 
       <div className={cn('relative z-10 w-full', contentClassName)}>{children}</div>
-    </div>
+    </main>
   );
 };
 

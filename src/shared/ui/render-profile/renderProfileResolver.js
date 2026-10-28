@@ -29,12 +29,9 @@ export const resolveRenderProfile = ({
   const mode = normalizeMode(performanceMode);
   if (mode !== PERFORMANCE_MODES.AUTO) return mode;
 
-  const isDesktop = viewportWidth >= 1024;
-  if (isDesktop) return RENDER_PROFILES.FULL;
-
   if (saveData || prefersReducedMotion || isSlowConnection(effectiveType)) {
     return RENDER_PROFILES.ULTRA_LITE;
   }
 
-  return RENDER_PROFILES.LITE;
+  return viewportWidth >= 1024 ? RENDER_PROFILES.FULL : RENDER_PROFILES.LITE;
 };

@@ -356,8 +356,10 @@ function Login({ onLoginSuccess }) {
             <div className="relative mx-auto mb-4 flex h-24 w-24 items-center justify-center">
               <div className="absolute inset-0 rounded-full bg-rv-gold/20 blur-xl" aria-hidden="true" />
               <img
-                src="/images/logoRio.png"
+                src="/images/logoRio-nav.webp"
                 alt="RioVoley"
+                width="192"
+                height="113"
                 className="relative h-24 w-24 object-contain drop-shadow-[0_12px_24px_rgba(249,178,51,0.28)]"
               />
             </div>

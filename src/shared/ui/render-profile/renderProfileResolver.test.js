@@ -20,7 +20,7 @@ describe('resolveRenderProfile', () => {
     ).toBe(RENDER_PROFILES.ULTRA_LITE);
   });
 
-  test('returns full on desktop in auto mode', () => {
+  test('honors data saving on desktop as well as mobile', () => {
     expect(
       resolveRenderProfile({
         performanceMode: PERFORMANCE_MODES.AUTO,
@@ -28,7 +28,16 @@ describe('resolveRenderProfile', () => {
         saveData: true,
         effectiveType: '2g',
       })
-    ).toBe(RENDER_PROFILES.FULL);
+    ).toBe(RENDER_PROFILES.ULTRA_LITE);
+  });
+
+  test('honors reduced motion on desktop', () => {
+    expect(resolveRenderProfile({ viewportWidth: 1440, prefersReducedMotion: true }))
+      .toBe(RENDER_PROFILES.ULTRA_LITE);
+  });
+
+  test('uses full rendering on desktop without data or motion restrictions', () => {
+    expect(resolveRenderProfile({ viewportWidth: 1440 })).toBe(RENDER_PROFILES.FULL);
   });
 
   test('returns lite on mobile with stable network', () => {

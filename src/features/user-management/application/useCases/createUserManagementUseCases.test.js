@@ -1,6 +1,16 @@
 const { createUserManagementUseCases } = require('./createUserManagementUseCases');
 
 describe('createUserManagementUseCases', () => {
+  it('filtra administradores activos y suspendidos', () => {
+    const { filterAdministratorsUseCase } = createUserManagementUseCases({});
+    const administrators = [
+      { id: 'active', nombre: 'Ana', apellido: 'A', suspended: false },
+      { id: 'suspended', nombre: 'Luis', apellido: 'B', suspended: true },
+    ];
+    expect(filterAdministratorsUseCase.execute({ administrators, filters: { status: 'active' } }).map((item) => item.id)).toEqual(['active']);
+    expect(filterAdministratorsUseCase.execute({ administrators, filters: { status: 'suspended' } }).map((item) => item.id)).toEqual(['suspended']);
+    expect(filterAdministratorsUseCase.execute({ administrators, filters: { status: 'all' } })).toHaveLength(2);
+  });
   const buildRepository = () => ({
     listAthletes: jest.fn(),
     listTrainers: jest.fn(),
