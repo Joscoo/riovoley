@@ -1,0 +1,172 @@
+[
+  {
+    "group": "pendientes-estable",
+    "file": "asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "mobile-390",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /asistencias/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /asistencias/i }).first()\u001b[22m\n",
+    "durationMs": 18631,
+    "currentStatus": "expected"
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "mobile-430",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /asistencias/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /asistencias/i }).first()\u001b[22m\n",
+    "durationMs": 18597,
+    "currentStatus": "expected"
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "mobile-480",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /asistencias/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /asistencias/i }).first()\u001b[22m\n",
+    "durationMs": 16971,
+    "currentStatus": "expected"
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "tablet-768",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /asistencias/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /asistencias/i }).first()\u001b[22m\n",
+    "durationMs": 18480,
+    "currentStatus": "expected"
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "tablet-1024",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: /control de asistencias/i })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: /control de asistencias/i })\u001b[22m\n",
+    "durationMs": 16826,
+    "currentStatus": "expected"
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "desktop-1440",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: /control de asistencias/i })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: /control de asistencias/i })\u001b[22m\n",
+    "durationMs": 17607,
+    "currentStatus": "expected"
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "desktop-1920",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: /control de asistencias/i })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: /control de asistencias/i })\u001b[22m\n",
+    "durationMs": 17948,
+    "currentStatus": "expected"
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "mobile-390",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /^monto$/i }).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /^monto$/i }).first()\u001b[22m\n",
+    "durationMs": 16818,
+    "currentStatus": "expected"
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "mobile-430",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /^monto$/i }).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /^monto$/i }).first()\u001b[22m\n",
+    "durationMs": 18147,
+    "currentStatus": "expected"
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "mobile-480",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /^monto$/i }).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /^monto$/i }).first()\u001b[22m\n",
+    "durationMs": 12662,
+    "currentStatus": "expected"
+  },
+  {
+    "group": "mutaciones-estable",
+    "file": "admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "mobile-390",
+    "status": "unexpected",
+    "error": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+    "durationMs": 60832,
+    "currentStatus": "expected"
+  },
+  {
+    "group": "mutaciones-estable",
+    "file": "admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "mobile-430",
+    "status": "unexpected",
+    "error": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+    "durationMs": 61107,
+    "currentStatus": "expected"
+  },
+  {
+    "group": "mutaciones-estable",
+    "file": "admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "mobile-480",
+    "status": "unexpected",
+    "error": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+    "durationMs": 60387,
+    "currentStatus": "expected"
+  },
+  {
+    "group": "mutaciones-estable",
+    "file": "admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "tablet-768",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n",
+    "durationMs": 19251,
+    "currentStatus": "expected"
+  },
+  {
+    "group": "mutaciones-estable",
+    "file": "admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "tablet-1024",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n",
+    "durationMs": 17284,
+    "currentStatus": "expected"
+  },
+  {
+    "group": "mutaciones-estable",
+    "file": "admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "desktop-1440",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n",
+    "durationMs": 17181,
+    "currentStatus": "expected"
+  },
+  {
+    "group": "mutaciones-estable",
+    "file": "admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "desktop-1920",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n",
+    "durationMs": 16451,
+    "currentStatus": "expected"
+  }
+]

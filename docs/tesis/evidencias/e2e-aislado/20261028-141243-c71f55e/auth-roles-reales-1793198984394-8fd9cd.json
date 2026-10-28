@@ -1,0 +1,34 @@
+{
+  "observedAt": "2026-10-28T14:49:44.391Z",
+  "executed": 3,
+  "passed": 3,
+  "results": [
+    {
+      "actor": "admin",
+      "expectedRole": "administrador",
+      "login": "passed",
+      "profile": "passed",
+      "visibleUsers": 10,
+      "visibleStudents": 8,
+      "backend": "Supabase Auth/PostgreSQL local reales"
+    },
+    {
+      "actor": "trainer",
+      "expectedRole": "entrenador",
+      "login": "passed",
+      "profile": "passed",
+      "visibleUsers": 10,
+      "visibleStudents": 8,
+      "backend": "Supabase Auth/PostgreSQL local reales"
+    },
+    {
+      "actor": "student",
+      "expectedRole": "estudiante",
+      "login": "passed",
+      "profile": "passed",
+      "visibleUsers": 1,
+      "visibleStudents": 1,
+      "backend": "Supabase Auth/PostgreSQL local reales"
+    }
+  ]
+}

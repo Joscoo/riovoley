@@ -1,0 +1,30 @@
+const fs=require('node:fs');
+const path=require('node:path');
+const cp=require('node:child_process');
+const assert=require('node:assert/strict');
+const c=require('./context.cjs');
+const {environment}=require('./environment.cjs');
+(async()=>{
+  const final=process.argv[2]==='final';
+  const {env,sdk}=environment(),base=path.join(c.work,'project/android');
+  const apk=path.join(base,'app/build/outputs/apk/debug/app-debug.apk');
+  assert.ok(fs.existsSync(apk),'No existe APK debug');
+  await c.run('android/apk-privacidad-previa','python',['scripts/audit/android/privacy.py','--apk',apk,'--report','android/privacidad-previa-'+(final?'final':'inicial')+'.json']);
+  await c.run('android/apk-badging',path.join(sdk,'build-tools/35.0.0/aapt.exe'),['dump','badging',apk],{env});
+  await c.run('android/apk-firma','cmd.exe',['/d','/c',path.join(sdk,'build-tools/35.0.0/apksigner.bat')+' verify --verbose --print-certs '+apk],{env});
+  const files=fs.readdirSync(path.join(base,'app/build/test-results/testDebugUnitTest')).filter(name=>name.endsWith('.xml'));
+  const results=files.map(name=>{
+    const text=fs.readFileSync(path.join(base,'app/build/test-results/testDebugUnitTest',name),'utf8');
+    const attributes=Object.fromEntries([...text.match(/<testsuite\s[^>]+>/)[0].matchAll(/([\w.-]+)="([^"]*)"/g)].map(m=>[m[1],m[2]]));
+    return {suite:attributes.name,tests:Number(attributes.tests),failures:Number(attributes.failures),errors:Number(attributes.errors),skipped:Number(attributes.skipped),seconds:Number(attributes.time)};
+  });
+  const unitDir=final?'unitarias-final':'unitarias';
+  for(const file of files) c.write('android/'+unitDir+'/'+file,fs.readFileSync(path.join(base,'app/build/test-results/testDebugUnitTest',file),'utf8'));
+  c.write('android/'+unitDir+'/resumen.json',{suites:results.length,results,scope:'Única prueba de plantilla addition_isCorrect (2+2=4). No comprueba funcionalidades de RIOVOLEY.'});
+  const metadata=JSON.parse(fs.readFileSync(path.join(base,'app/build/outputs/apk/debug/output-metadata.json')));
+  const output=path.join(c.base,'android/artefactos/riovoley-auditoria-debug'+(final?'-sin-credenciales':'')+'.apk');fs.mkdirSync(path.dirname(output),{recursive:true});
+  fs.copyFileSync(apk,output,fs.constants.COPYFILE_EXCL);
+  c.write('android/artefacto'+(final?'-final':'')+'.json',{file:path.relative(c.base,output).replaceAll('\\','/'),sha256:c.hash(output),bytes:fs.statSync(output).size,metadata,buildType:'debug',signature:'Certificado de depuración local; no se utiliza keystore de publicación.',distributed:false,installed:false});
+  c.write('android/integridad-fuentes'+(final?'-final':'')+'.json',JSON.parse(fs.readFileSync(path.join(c.base,'android/fuentes-iniciales.json'))).map(entry=>({file:entry.file,unchanged:c.hash(path.join(c.root,entry.file))===entry.sha256})).reduce((result,row)=>{result.checked++;if(!row.unchanged)result.changed.push(row.file);return result;},{checked:0,changed:[]}));
+  await c.run('android/java-global-conservado','java',['-version']);
+})();

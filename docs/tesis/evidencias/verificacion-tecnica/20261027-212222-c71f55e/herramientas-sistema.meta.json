@@ -1,0 +1,15 @@
+{
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-File",
+    "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261027-212222-c71f55e\\entorno.ps1"
+  ],
+  "cwd": ".",
+  "start": "2026-10-28T13:37:36.106Z",
+  "end": "2026-10-28T13:37:36.877Z",
+  "durationSeconds": 0.771,
+  "exitCode": 1,
+  "signal": null,
+  "environmentOverrides": {}
+}

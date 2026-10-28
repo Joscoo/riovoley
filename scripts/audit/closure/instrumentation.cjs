@@ -1,0 +1,20 @@
+const path=require('node:path');
+const h=require('../../e2e/local/harness.cjs');
+const c=require('../android/context.cjs');
+const {environment}=require('../android/environment.cjs');
+const mode=process.argv[2]||'red';
+(async()=>{
+  const {env,sdk}=environment();env.ANDROID_SERIAL='emulator-5580';
+  const cwd=path.join(c.work,'project/android');
+  await h.run('android/instrumentacion-compilar-'+mode,process.env.ComSpec||'C:\\Windows\\System32\\cmd.exe',['/d','/c',path.join(cwd,'gradlew.bat')+' :app:assembleDebugAndroidTest --no-daemon --console=plain --max-workers=2'],{env,cwd});
+  const adb=path.join(sdk,'platform-tools/adb.exe');
+  await h.run('android/apk-instalar-'+mode,adb,['-s','emulator-5580','install','--no-streaming','-r',path.join(cwd,'app/build/outputs/apk/debug/app-debug.apk')],{env,timeoutMs:120000});
+  await h.run('android/test-apk-instalar-'+mode,adb,['-s','emulator-5580','install','--no-streaming','-r',path.join(cwd,'app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk')],{env,timeoutMs:120000});
+  const result=await h.run('android/instrumentacion-'+mode,adb,['-s','emulator-5580','shell','am','instrument','-w','-r','com.riovoley.app.test/androidx.test.runner.AndroidJUnitRunner'],{env,allowFailure:true,timeoutMs:120000});
+  const failure=result.stdout.match(/Tests run:\s*(\d+),\s*Failures:\s*(\d+)/);
+  const passed=result.stdout.match(/OK \((\d+) test/);
+  const count=failure?Number(failure[1]):passed?Number(passed[1]):0;
+  const failed=failure?Number(failure[2]):passed?0:null;
+  h.write('android/instrumentacion-'+mode+'.json',{platform:'Emulador local API36 x86_64/WHPX',commandExitCode:result.exitCode,executed:count,failed,passed:failed===null?0:count-failed,state:passed?'APROBADO':'FALLIDO',scope:'Prueba instrumentada de plantilla: contexto/applicationId; no cubre todos los flujos de negocio Android.'});
+  process.exitCode=passed?0:1;
+})();

@@ -1,0 +1,82 @@
+[
+  {
+    "file": "scripts/audit/android/build.cjs",
+    "sha256": "fc8043d3ec4ecd56138d78aa668f92e4e71af5a6fef082683e7cb1c1035b1bff"
+  },
+  {
+    "file": "scripts/audit/android/context.cjs",
+    "sha256": "cc604b496dfa7ae7d26ca4c1672903eec704dcfdf1170bdcd49105124f5d0f1e"
+  },
+  {
+    "file": "scripts/audit/android/devices.cjs",
+    "sha256": "b72dc554ef3ad84677073ba3a6abd6c8164e262102218b620b52d51aac23e3ae"
+  },
+  {
+    "file": "scripts/audit/android/download.cjs",
+    "sha256": "51e4e5d083e013481db12b0c9d0a0537322d054bbbc494fa7e20c6a564d00d67"
+  },
+  {
+    "file": "scripts/audit/android/environment.cjs",
+    "sha256": "7be7b64a35a42973f34373eb9fd9f8667b56fd94a52653bcaa4d5f639937fd97"
+  },
+  {
+    "file": "scripts/audit/android/environment.test.cjs",
+    "sha256": "840488a4d2dd17cc3820a411b0373f33b58fb35a4c057838c01502f316a781e0"
+  },
+  {
+    "file": "scripts/audit/android/finalize.cjs",
+    "sha256": "17ab6306115bc7832d92970ad9c1891b8d801dc7bded13040fc5b292b11d2746"
+  },
+  {
+    "file": "scripts/audit/android/inspect.cjs",
+    "sha256": "edbc816261b96044611357743f2df7bc8879bf51f343cfe88254011961a7bfd3"
+  },
+  {
+    "file": "scripts/audit/android/lint-evidence.cjs",
+    "sha256": "77124ed5e5f497f11b49ea6fb4199d3444271832415df5c3896940f939270c4a"
+  },
+  {
+    "file": "scripts/audit/android/lint-summary.py",
+    "sha256": "1376caa6a449cbf6cb2a1bd3fe46c8611adcc07068a6b3d633e6b8282d69c43a"
+  },
+  {
+    "file": "scripts/audit/android/privacy-diagnose.py",
+    "sha256": "bf85f4d3b7dbce6bef65f00b2407520db365968e33ade7d84067ad433c993777"
+  },
+  {
+    "file": "scripts/audit/android/privacy.py",
+    "sha256": "bfe5c16b8fd2f18eed66831f850e7827ee2e06e72885df3325f111b28f8aaeb2"
+  },
+  {
+    "file": "scripts/audit/android/privacy_test.py",
+    "sha256": "a04f69b214a0a7661793be80ae07321332382c48cee439a72b7dcaa33b3c3dbe"
+  },
+  {
+    "file": "scripts/audit/android/README.md",
+    "sha256": "abd77b42dc34cc91c74c3f1b6f3d07a75d4fc0ba3c234592acd909366be18bd6"
+  },
+  {
+    "file": "scripts/audit/android/record-checks.cjs",
+    "sha256": "cb64dbefaa96b2c30210232e30133dd8c2f99663ca3285bb044271ba033bc451"
+  },
+  {
+    "file": "scripts/audit/android/refresh.cjs",
+    "sha256": "664c572be24bfeae65a734e815e105ee94ccc1173aeaec620b345142ddc8c17a"
+  },
+  {
+    "file": "scripts/audit/android/report.cjs",
+    "sha256": "c775693b721cdfb1d63840ac9ed8e615348b44de38b87e5b41d2c7eedcbb93c5"
+  },
+  {
+    "file": "scripts/audit/android/scan_archive.py",
+    "sha256": "fe08e7ea1515f336fc31afef4d98eb6f224589e7efeb73abe0323949cfa106cd"
+  },
+  {
+    "file": "scripts/audit/android/setup.cjs",
+    "sha256": "77502a852ba00d84cc88a2051b49a1b2cf2d0a0e1ef72e2c711ef1dde1d306d9"
+  },
+  {
+    "file": "scripts/audit/android/stage.cjs",
+    "sha256": "060d32cdd223907a94ebf405deea05278c68a83078c8ebb4787118c506d6505c"
+  }
+]

@@ -1,0 +1,23 @@
+
+> riovoley@0.1.0 test:auth-edge
+> node functions/node_modules/tsx/dist/cli.mjs --test tests/unit/credentials-edge.test.ts
+
+✔ rechaza una respuesta 200 del proveedor sin identificador de mensaje (41.7889ms)
+✔ un dominio no verificado se informa como fallo de configuracion (0.8711ms)
+✔ la peticion al proveedor tiene un limite de tiempo (0.6872ms)
+✔ un timeout no se convierte en correo enviado (0.9182ms)
+✔ no permite usar el correo de la aplicacion sin sesion autorizada (0.8091ms)
+✔ rechaza un destinatario invalido antes de contactar al proveedor (0.5703ms)
+✔ un entrenador no puede cambiar la contrasena de un administrador (1.0009ms)
+✔ una contrasena temporal debil se rechaza antes de la actualizacion (0.589ms)
+✔ marca primer ingreso despues de actualizar Auth y devuelve el email real de Auth (1.4961ms)
+✔ conserva el resultado del cambio si falla sincronizar primer ingreso (0.4558ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1048.5177
+

@@ -1,5 +1,5 @@
 // src/features/student-dashboard/presentation/components/StudentPanel.js
-import React, { Suspense, lazy, useCallback, useEffect, useState } from 'react';
+import React, { Suspense, lazy, useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import {
@@ -50,6 +50,7 @@ const StudentPhysicalTests = lazy(() => import('./StudentPhysicalTests'));
 const StudentProfileIdentityCard = lazy(() => import('./StudentProfileIdentityCard'));
 const StudentGamificationPanel = lazy(() => import('../../../gamification/presentation/components/StudentGamificationPanel'));
 const ProfileSettings = lazy(() => import('../../../account-admin/presentation/components/ProfileSettings'));
+const STUDENT_ROLES = ['estudiante', 'usuario'];
 
 const SectionFallback = () => (
   <div className="flex min-h-[45dvh] items-center justify-center">
@@ -66,17 +67,21 @@ const StudentPanel = ({ user }) => {
   const [physicalTests, setPhysicalTests] = useState([]);
   const [gamification, setGamification] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [loadedUserId, setLoadedUserId] = useState(null);
+  const loadVersionRef = useRef(0);
   const [guideOpen, setGuideOpen] = useState(false);
   const [guideChecked, setGuideChecked] = useState(false);
   const { profile: userProfile, loading: profileLoading } = useUserProfile(user);
 
   const loadStudentData = useCallback(async (nextUserId = user?.id, { silent = false } = {}) => {
     if (!nextUserId) return;
+    const version = ++loadVersionRef.current;
     if (!silent) {
       setLoading(true);
     }
     try {
       const panelData = await studentDashboardService.loadStudentPanelData(nextUserId);
+      if (version !== loadVersionRef.current) return;
       setStudentData(panelData.studentData);
       setPaymentStatus(panelData.paymentStatus);
       setAttendanceStats(panelData.attendanceStats);
@@ -85,17 +90,30 @@ const StudentPanel = ({ user }) => {
     } catch (error) {
       console.error('Error cargando datos del estudiante:', error);
     } finally {
-      if (!silent) {
+      if (version === loadVersionRef.current) {
+        setLoadedUserId(nextUserId);
+        // Una petición silenciosa puede sustituir una recarga normal en curso.
+        // La petición vigente debe liberar también ese indicador de carga.
         setLoading(false);
       }
     }
   }, [user?.id]);
 
   useEffect(() => {
-    if (user?.id && !profileLoading) {
+    if (profileLoading) return undefined;
+    if (user?.id && STUDENT_ROLES.includes(userProfile?.role?.toLowerCase())) {
       loadStudentData();
+    } else {
+      setStudentData(null);
+      setPaymentStatus(null);
+      setAttendanceStats(null);
+      setPhysicalTests([]);
+      setGamification(null);
+      setLoadedUserId(null);
+      setLoading(false);
     }
-  }, [loadStudentData, profileLoading, user?.id]);
+    return () => { loadVersionRef.current += 1; };
+  }, [loadStudentData, profileLoading, user?.id, userProfile?.role]);
 
   useEffect(() => {
     const requestedSection = new URLSearchParams(location.search).get('section');
@@ -399,7 +417,10 @@ const StudentPanel = ({ user }) => {
     />
   );
 
-  if (profileLoading || loading) {
+  const userRole = userProfile?.role?.toLowerCase();
+  const accessDenied = !user?.id || (!profileLoading && !STUDENT_ROLES.includes(userRole));
+
+  if (!accessDenied && (profileLoading || loading || loadedUserId !== user?.id)) {
     return (
       <div className="flex min-h-[60dvh] flex-col items-center justify-center gap-4 text-white">
         <div className="h-10 w-10 animate-spin rounded-full border-4 border-white/25 border-t-rv-gold" />
@@ -408,15 +429,12 @@ const StudentPanel = ({ user }) => {
     );
   }
 
-  const userRole = userProfile?.role?.toLowerCase() || studentData?.users?.role?.toLowerCase();
-  const validRoles = ['estudiante', 'usuario'];
-
-  if (userRole && !validRoles.includes(userRole)) {
+  if (accessDenied) {
     return (
       <div className="mx-auto mt-10 max-w-xl rounded-2xl border border-red-300/35 bg-white p-8 text-center shadow-xl">
         <h2 className="inline-flex items-center gap-2 text-2xl font-black text-red-700"><FaBan />Acceso Denegado</h2>
         <p className="mt-3 text-slate-700">Esta seccion es solo para estudiantes.</p>
-        <p className="mt-1 text-slate-700">Tu rol actual es: <strong>{userRole}</strong></p>
+        {userRole && <p className="mt-1 text-slate-700">Tu rol actual es: <strong>{userRole}</strong></p>}
         <button
           onClick={() => { window.location.href = '/'; }}
           className="mt-5 inline-flex min-h-[48px] items-center justify-center rounded-xl bg-rv-gold px-5 py-2.5 font-bold text-rv-dark transition-all duration-200 hover:brightness-105"

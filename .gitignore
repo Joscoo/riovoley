@@ -40,3 +40,13 @@ yarn-error.log*
 riovoley_full_schema.sql
 
 .superpowers/
+
+# Entorno E2E local: claves, fixtures y servicios descartables
+/.e2e-local/
+
+# Artefactos nativos conservados localmente; no distribuir paquetes de auditoría
+/docs/tesis/evidencias/**/android/artefactos/*.apk
+
+# Caché de las herramientas Python de auditoría
+__pycache__/
+*.pyc

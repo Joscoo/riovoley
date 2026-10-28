@@ -1,0 +1,4734 @@
+{
+  "config": {
+    "configFile": "D:\\Riovoley\\riovoley\\playwright.config.js",
+    "rootDir": "D:/Riovoley/riovoley/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {},
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Riovoley/riovoley/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "mobile-390",
+        "name": "mobile-390",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "mobile-430",
+        "name": "mobile-430",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "mobile-480",
+        "name": "mobile-480",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "tablet-768",
+        "name": "tablet-768",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "tablet-1024",
+        "name": "tablet-1024",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "desktop-1440",
+        "name": "desktop-1440",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "desktop-1920",
+        "name": "desktop-1920",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.59.1",
+    "workers": 6,
+    "webServer": {
+      "command": "npm start",
+      "port": 3000,
+      "reuseExistingServer": true,
+      "timeout": 120000
+    }
+  },
+  "suites": [
+    {
+      "title": "admin.happy-path-controlled.spec.js",
+      "file": "admin.happy-path-controlled.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-76152f78520f1dc4839c",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 44,
+          "column": 1
+        },
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-a461414e70039ab8bf7a",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 44,
+          "column": 1
+        },
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-e61d27f6cc0a031e7be5",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 44,
+          "column": 1
+        },
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-f616cd43f6e4f450ae4a",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 44,
+          "column": 1
+        },
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-b9290aa25313fc9f75cd",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 44,
+          "column": 1
+        },
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-9512e358c77c26a6a60b",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 44,
+          "column": 1
+        },
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-58d9ee2e799413d480a7",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 44,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "admin.modules-navigation.spec.js",
+      "file": "admin.modules-navigation.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "admin: every module opens without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b787178f153ca9d4ea9b-8d99252aed71bde075a2",
+          "file": "admin.modules-navigation.spec.js",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "admin: every module opens without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b787178f153ca9d4ea9b-6622c1bf3d833e4411c5",
+          "file": "admin.modules-navigation.spec.js",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "admin: every module opens without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b787178f153ca9d4ea9b-243975aadd8c46e16a6f",
+          "file": "admin.modules-navigation.spec.js",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "admin: every module opens without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b787178f153ca9d4ea9b-d2cc51f32d3ad1d96597",
+          "file": "admin.modules-navigation.spec.js",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "admin: every module opens without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b787178f153ca9d4ea9b-db78842b3077d263dbba",
+          "file": "admin.modules-navigation.spec.js",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "admin: every module opens without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b787178f153ca9d4ea9b-41c7f16a301bcb325c18",
+          "file": "admin.modules-navigation.spec.js",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "admin: every module opens without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b787178f153ca9d4ea9b-4de27b97f478ef0e5c68",
+          "file": "admin.modules-navigation.spec.js",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "admin.provisioning-notifications.smoke.spec.js",
+      "file": "admin.provisioning-notifications.smoke.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "admin smoke: provisioning + notifications entrypoints",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "14471a0b00e321a1303f-90e09ca29206671f08bc",
+          "file": "admin.provisioning-notifications.smoke.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "admin smoke: provisioning + notifications entrypoints",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "14471a0b00e321a1303f-e520282d2b9b99dc763c",
+          "file": "admin.provisioning-notifications.smoke.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "admin smoke: provisioning + notifications entrypoints",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "14471a0b00e321a1303f-92d60c2bdf3339b776c8",
+          "file": "admin.provisioning-notifications.smoke.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "admin smoke: provisioning + notifications entrypoints",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "14471a0b00e321a1303f-a7e3d8720587fdf33c5f",
+          "file": "admin.provisioning-notifications.smoke.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "admin smoke: provisioning + notifications entrypoints",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "14471a0b00e321a1303f-89992f42ddd1e3e363af",
+          "file": "admin.provisioning-notifications.smoke.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "admin smoke: provisioning + notifications entrypoints",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "14471a0b00e321a1303f-04a06f5ff4cd27b5a4ff",
+          "file": "admin.provisioning-notifications.smoke.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "admin smoke: provisioning + notifications entrypoints",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "14471a0b00e321a1303f-e48521c0fe0e5703569e",
+          "file": "admin.provisioning-notifications.smoke.spec.js",
+          "line": 7,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "asistencias.guided.review.spec.js",
+      "file": "asistencias.guided.review.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-98be0f7ef7b85756fbc9",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 61,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-3f07452467235e1edfb5",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 61,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-9b3c1c3d5e23557caa92",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 61,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-d5e9cf6c50d21c45c79b",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 61,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-47e66645d546d9347e75",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 61,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-22309d30994f46fb143e",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 61,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-319f95a421a8569a2194",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 61,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "auth.password-recovery.spec.js",
+      "file": "auth.password-recovery.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-480a85d201aeaca92266",
+          "file": "auth.password-recovery.spec.js",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "recovery: un enlace expirado no habilita el formulario",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-57152335f9d022ad2587",
+          "file": "auth.password-recovery.spec.js",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-02baaf08c12cec39f639",
+          "file": "auth.password-recovery.spec.js",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-1ca2c8c7781e9a656bbd",
+          "file": "auth.password-recovery.spec.js",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-592994c3257c95529e6e",
+          "file": "auth.password-recovery.spec.js",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "recovery: un enlace expirado no habilita el formulario",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-f8bf06db1a59042ebacf",
+          "file": "auth.password-recovery.spec.js",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-02da5fc6b8a5067778ec",
+          "file": "auth.password-recovery.spec.js",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-400827c9a6bba5dc7dbe",
+          "file": "auth.password-recovery.spec.js",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-5d1f512346be415296e3",
+          "file": "auth.password-recovery.spec.js",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "recovery: un enlace expirado no habilita el formulario",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-3cfffd9156302722ad0c",
+          "file": "auth.password-recovery.spec.js",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-e3a42a316d267995a4fc",
+          "file": "auth.password-recovery.spec.js",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-183fb004ba9bc2878d84",
+          "file": "auth.password-recovery.spec.js",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-cc8d4ebdadf48bf2e9eb",
+          "file": "auth.password-recovery.spec.js",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "recovery: un enlace expirado no habilita el formulario",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-ad7878131fb7c01d2488",
+          "file": "auth.password-recovery.spec.js",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-beb892f67e8bc7bdadfc",
+          "file": "auth.password-recovery.spec.js",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-2a8d52ec6b5aa6f20d39",
+          "file": "auth.password-recovery.spec.js",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-275f16b1b3803ff72774",
+          "file": "auth.password-recovery.spec.js",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "recovery: un enlace expirado no habilita el formulario",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-11071b4aadcd9c1a4bf8",
+          "file": "auth.password-recovery.spec.js",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-5df23951b52ed6ea865c",
+          "file": "auth.password-recovery.spec.js",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-53f44003d2de1e3ac38e",
+          "file": "auth.password-recovery.spec.js",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-a79ba4443b8987ae6bcb",
+          "file": "auth.password-recovery.spec.js",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "recovery: un enlace expirado no habilita el formulario",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-8054b58a492ce3005111",
+          "file": "auth.password-recovery.spec.js",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-09451eacb8e25d769f93",
+          "file": "auth.password-recovery.spec.js",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-0286cbc2522fc78cf344",
+          "file": "auth.password-recovery.spec.js",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-9f14184239792cd7a529",
+          "file": "auth.password-recovery.spec.js",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "recovery: un enlace expirado no habilita el formulario",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-7294da59930fa795b191",
+          "file": "auth.password-recovery.spec.js",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-16193c4512419431765f",
+          "file": "auth.password-recovery.spec.js",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "f32b352d715481f54a35-dfada6ea829b1bdc977a",
+          "file": "auth.password-recovery.spec.js",
+          "line": 47,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "filters-sorting.phase2-lists.spec.js",
+      "file": "filters-sorting.phase2-lists.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "phase2 athletes tab: filtros y orden con reset consistente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-c1a038e47404cb127c75",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "phase2 schedules: filtros y orden con limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-aee2af923510b7a8cedd",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "phase2 athletes tab: filtros y orden con reset consistente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-6e6775de5f42a49c461c",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "phase2 schedules: filtros y orden con limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-738fa94926d2e9755e50",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "phase2 athletes tab: filtros y orden con reset consistente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-444e5e19706615ca728a",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "phase2 schedules: filtros y orden con limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-d1126677020936caca9b",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "phase2 athletes tab: filtros y orden con reset consistente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-8959c260545db6a95ece",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "phase2 schedules: filtros y orden con limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-4df471110acc005539c8",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "phase2 athletes tab: filtros y orden con reset consistente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-a0ba4f4aa357bdf51f79",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "phase2 schedules: filtros y orden con limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-02f4593e4963bdd00ed9",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "phase2 athletes tab: filtros y orden con reset consistente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-e68cb555d56adcb19dd5",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "phase2 schedules: filtros y orden con limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-392653f6b7546708e3fe",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "phase2 athletes tab: filtros y orden con reset consistente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-aecb15b98561f6bf8eac",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "phase2 schedules: filtros y orden con limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-aa9a55d0d7c22bccdc4d",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 51,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "filters-sorting.physical-tests.spec.js",
+      "file": "filters-sorting.physical-tests.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "physical-tests: filtros + orden + limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a43d14426d3d747d2c92-66874923d6d179ebe6a2",
+          "file": "filters-sorting.physical-tests.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "physical-tests: filtros + orden + limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a43d14426d3d747d2c92-b3a959a1fa4b9a680a52",
+          "file": "filters-sorting.physical-tests.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "physical-tests: filtros + orden + limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a43d14426d3d747d2c92-57a66a4eb1842156dc9e",
+          "file": "filters-sorting.physical-tests.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "physical-tests: filtros + orden + limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a43d14426d3d747d2c92-a0c4d7027511cb35bb60",
+          "file": "filters-sorting.physical-tests.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "physical-tests: filtros + orden + limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a43d14426d3d747d2c92-8a47a0d8bde328bec55f",
+          "file": "filters-sorting.physical-tests.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "physical-tests: filtros + orden + limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a43d14426d3d747d2c92-3878bba692cb860a1b23",
+          "file": "filters-sorting.physical-tests.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "physical-tests: filtros + orden + limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a43d14426d3d747d2c92-475c802bb958f8b6a26c",
+          "file": "filters-sorting.physical-tests.spec.js",
+          "line": 7,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "filters-sorting.tables.spec.js",
+      "file": "filters-sorting.tables.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-cf592fc14ae4110ca7d0",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 19,
+          "column": 1
+        },
+        {
+          "title": "asistencias: filtros del historial + orden por columnas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-51bbbd823d80fa4da077",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 64,
+          "column": 1
+        },
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-2835f6996965fbd70d49",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 19,
+          "column": 1
+        },
+        {
+          "title": "asistencias: filtros del historial + orden por columnas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-769dcf4fb470ca655551",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 64,
+          "column": 1
+        },
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-783b890f5a952a45a7c7",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 19,
+          "column": 1
+        },
+        {
+          "title": "asistencias: filtros del historial + orden por columnas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-6e4432f426f27561d3ba",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 64,
+          "column": 1
+        },
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-a17e44f357f79f2e88af",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 19,
+          "column": 1
+        },
+        {
+          "title": "asistencias: filtros del historial + orden por columnas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-b1cf60a41a417d07a759",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 64,
+          "column": 1
+        },
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-be36b9b1c596321b6576",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 19,
+          "column": 1
+        },
+        {
+          "title": "asistencias: filtros del historial + orden por columnas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-74aaeeef8e058836c2ed",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 64,
+          "column": 1
+        },
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-ced2fbae3737bfb3ea83",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 19,
+          "column": 1
+        },
+        {
+          "title": "asistencias: filtros del historial + orden por columnas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-7f7978eb6a1863dea3f9",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 64,
+          "column": 1
+        },
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-1f588aae298457add24e",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 19,
+          "column": 1
+        },
+        {
+          "title": "asistencias: filtros del historial + orden por columnas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-b014be918d53f93198f9",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 64,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "filters-sorting.user-management.spec.js",
+      "file": "filters-sorting.user-management.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2fcb5e0f9d639069a751-55ce67be0fba2cb98648",
+          "file": "filters-sorting.user-management.spec.js",
+          "line": 53,
+          "column": 1
+        },
+        {
+          "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2fcb5e0f9d639069a751-24b8baac0fee347d291f",
+          "file": "filters-sorting.user-management.spec.js",
+          "line": 53,
+          "column": 1
+        },
+        {
+          "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2fcb5e0f9d639069a751-6b34526f41c3b95c5469",
+          "file": "filters-sorting.user-management.spec.js",
+          "line": 53,
+          "column": 1
+        },
+        {
+          "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2fcb5e0f9d639069a751-98bf6284265d6191d5ed",
+          "file": "filters-sorting.user-management.spec.js",
+          "line": 53,
+          "column": 1
+        },
+        {
+          "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2fcb5e0f9d639069a751-291516b76f1c2a0a554d",
+          "file": "filters-sorting.user-management.spec.js",
+          "line": 53,
+          "column": 1
+        },
+        {
+          "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2fcb5e0f9d639069a751-087f8856859042e6f0bb",
+          "file": "filters-sorting.user-management.spec.js",
+          "line": 53,
+          "column": 1
+        },
+        {
+          "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "2fcb5e0f9d639069a751-8da5312258eed189f477",
+          "file": "filters-sorting.user-management.spec.js",
+          "line": 53,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "public.navigation-accessibility.spec.js",
+      "file": "public.navigation-accessibility.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-c4e3f08ae6428c514a8c",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-499676e4e08d93a9a028",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-c8a5d3c0a4427c918c49",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-aad52c1150dce4f6962a",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-a32a31ddf08abef9ff85",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "mobile navigation closes with Escape and restores keyboard focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-afd677850d07696edba9",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "mobile menu keeps keyboard focus within its controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-7c785751535488bb53cb",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-57aac6afbd87ec48d8c8",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-c20f0d36efb820459ed3",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-3271c06a38d440307d60",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-fe13d850d16bb1321c5b",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-57e88aa183a5478e3f58",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "mobile navigation closes with Escape and restores keyboard focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-4c9d4c896a6d51e54f12",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "mobile menu keeps keyboard focus within its controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-b06dd8a255fe289aea10",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-ff15adaaeaaf53b0cfc0",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-eabb8397011585c63c14",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-2f2af846c74cc48a7ee7",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-4d687a96008e12c21a55",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-5cc5e89a6e9dd0901bbf",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "mobile navigation closes with Escape and restores keyboard focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-348c55082762286fd114",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "mobile menu keeps keyboard focus within its controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-f9749a3981dfeafb42ca",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-289e884a74a509879554",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-cbf7261f4bdc44966437",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-b754f9ca7d6340892353",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-2aa0b5a7eea9a97408fb",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-8fa1ad0db24a93bba119",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "mobile navigation closes with Escape and restores keyboard focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-5e27aa9628cd44a577f8",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "mobile menu keeps keyboard focus within its controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-81f15e8b7a0c7256cee8",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-2290e56a1d9c17f30f23",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-84b53f4a07d96cf0c446",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-fb33e761fa504fb7e6f0",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-bd8ba09ce5efd6093f83",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-12a7bc0e5462e5372752",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "mobile navigation closes with Escape and restores keyboard focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-e04f72dc429a319e2413",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "mobile menu keeps keyboard focus within its controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-7cc314898afc3aa0da53",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-9deff980791cec0b1dd4",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-60e408c16ebd9193d089",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-fa4b52bdd1440f5c9926",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-202daa52096c47001394",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-f40315fa8dd6c07441bb",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "mobile navigation closes with Escape and restores keyboard focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-0df01ca8e92104071257",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "mobile menu keeps keyboard focus within its controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-3303c0f9689283ecce92",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-59135a4ba0eb61802c70",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-364435e85fe7763ce48a",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-cea1c9107e8e1c54d824",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-8d1baacaa9c1a3b2ef32",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-37f35d91d90cfeac4098",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "mobile navigation closes with Escape and restores keyboard focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-d00c24fd17e98bc8c9a2",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "mobile menu keeps keyboard focus within its controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "1881bb7504f90f363703-013431b8b8a9bdb45a57",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 29,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "responsive.smoke.spec.js",
+      "file": "responsive.smoke.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "public route responsive guard: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-33aba05c0a76084dbbba",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-8807d74b143e283feb63",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-574001737dc391c468f3",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-d493b0435e6e64531e0c",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-e5b4f6ba7130663de5ca",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "role dashboards responsive guard (optional env credentials)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-e3f6df1482227221cef4",
+          "file": "responsive.smoke.spec.js",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "public route responsive guard: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-cfc56d08605b04e5e4a5",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-6a455801656d9b4d6fca",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-a06f052f6108bddf20ec",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-b20923b76d0c1f73d3c9",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-a852e6ab80dd6aafe6bd",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "role dashboards responsive guard (optional env credentials)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-5ba3b007852e212460ae",
+          "file": "responsive.smoke.spec.js",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "public route responsive guard: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-f56469ea88384bbe9266",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-0432ee189cbfdcc1a807",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-fa3d0eb6e4c72a1ef28a",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-97acb3716594d73b8154",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-212c8b41a9c8554a8220",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "role dashboards responsive guard (optional env credentials)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-3ea41349bfcbb8c722f0",
+          "file": "responsive.smoke.spec.js",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "public route responsive guard: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-845d232f85d51facdf92",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-fb6b0e9b632f03d9f302",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-dc5173590a8e475e474d",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-69abf617d3a5c03a15d7",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-71ae347173a442440149",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "role dashboards responsive guard (optional env credentials)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-73651f35a99756f0e072",
+          "file": "responsive.smoke.spec.js",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "public route responsive guard: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-5496795d98f9db157851",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-8287380fb44e780742e0",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-299d2745c746e1054fcc",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-17ff137362bc7516aab0",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-4dcbf27b46723d008344",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "role dashboards responsive guard (optional env credentials)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-30de89667fa9f3c620f5",
+          "file": "responsive.smoke.spec.js",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "public route responsive guard: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-51d8e99d08c504e903da",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-bcf12e2941856fd28d8f",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-9edf28677d85da837fb3",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-d562a209affdb37ef16d",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-cb0214d113dc618c1e0a",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "role dashboards responsive guard (optional env credentials)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-970947f8e2cd3fb92df9",
+          "file": "responsive.smoke.spec.js",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "public route responsive guard: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-5fab63bf4da508f33e4d",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-fd0d6c523f94caac1409",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-c9db043762575c1eb891",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-dc5d218083ed7be2ef57",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-27c26bd08e1f939d1d42",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "role dashboards responsive guard (optional env credentials)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-d6316c5b7227b82139a7",
+          "file": "responsive.smoke.spec.js",
+          "line": 99,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "roles.modules-navigation.spec.js",
+      "file": "roles.modules-navigation.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "trainer: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-5e19c59293dd63ee2a1e",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "student: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-e55c428f9b06fc0e5124",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "trainer: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-ea6b01079854659c196c",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "student: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-551965f392a64a3de18f",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "trainer: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-9fab612deebff26a2179",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "student: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-c1b88570098e61417f5f",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "trainer: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-f887b7aad195a757f413",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "student: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-9cf8a34fcf193851270e",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "trainer: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-e613fde1123b2661b553",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "student: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-bc1861b306aeefb0e2c2",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "trainer: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-0883a8e5d70b87fef543",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "student: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-aafcc205c5f44ca113eb",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "trainer: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-7a3d1d5b1dde4e830f79",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "student: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-18c626a883044fe58ef6",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        }
+      ]
+    },
+    {
+      "title": "roles.panels-navigation.smoke.spec.js",
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "role panel smoke: admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-a7ec72263f713515d38c",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: trainer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-3f4161562926ed5e67f9",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: student",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-4181eb11183bd7ee35b7",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-aef89045ea391580077e",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: trainer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-c5e3e38c552b082a62c0",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: student",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-91c4a94657dfa1e4821d",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-37353796df99fdc8f548",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: trainer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-868b8e3e15c4f05fa332",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: student",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-77a5320fefc176e4e97b",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-be405083379b7c1833f3",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: trainer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-7483aa95e60aef272066",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: student",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-d32e59e719e87dcbf52d",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-ecfcee29a191efb70db1",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: trainer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-f654d60bcfd4f653a305",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: student",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-cd5d203f778a680087e6",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-fb35db77318672162be5",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: trainer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-a6ee7c794488c35ab6c4",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: student",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-ced19f9c82b85b40aa49",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-aba95f4905d8c12b7510",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: trainer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-3884f4db6f54f6f09a00",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: student",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-c21d4ed084d604baa605",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-28T02:24:26.432Z",
+    "duration": 248.00800000000163,
+    "expected": 0,
+    "skipped": 224,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
+

@@ -1,0 +1,16 @@
+{
+  "command": [
+    "python",
+    "scripts/audit/android/privacy.py",
+    "--apk",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\project\\android\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+    "--report",
+    "android/privacidad-previa-final.json"
+  ],
+  "cwd": "",
+  "start": "2026-10-28T20:09:13.806Z",
+  "end": "2026-10-28T20:09:20.459Z",
+  "durationSeconds": 6.653,
+  "exitCode": 0,
+  "signal": null
+}

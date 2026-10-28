@@ -1,0 +1,14 @@
+{
+  "command": [
+    "docker",
+    "network",
+    "inspect",
+    "riovoley-e2e-loopback"
+  ],
+  "start": "2026-10-28T14:19:41.717Z",
+  "end": "2026-10-28T14:19:41.812Z",
+  "durationSeconds": 0.095,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

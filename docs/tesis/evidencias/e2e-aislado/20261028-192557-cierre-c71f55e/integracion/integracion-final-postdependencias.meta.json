@@ -1,0 +1,15 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "functions/node_modules/tsx/dist/cli.mjs",
+    "--test",
+    "--test-reporter=tap",
+    "tests/integration/gamification.local.test.cjs"
+  ],
+  "start": "2026-10-28T19:55:09.414Z",
+  "end": "2026-10-28T19:55:22.698Z",
+  "durationSeconds": 13.284,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

@@ -1,0 +1,19 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\Riovoley\\riovoley\\node_modules\\react-scripts\\bin\\react-scripts.js",
+    "test",
+    "--watchAll=false",
+    "--runInBand",
+    "--json",
+    "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-192557-cierre-c71f55e\\jest-payments-green.json",
+    "--runTestsByPath",
+    "src/features/payments/application/useCases/createPaymentsUseCases.test.js"
+  ],
+  "start": "2026-10-28T19:37:09.335Z",
+  "end": "2026-10-28T19:37:17.270Z",
+  "durationSeconds": 7.936,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

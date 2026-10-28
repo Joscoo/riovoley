@@ -1,0 +1,15 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "scripts/e2e/local/safety.test.cjs",
+    "scripts/e2e/local/schema.test.cjs",
+    "scripts/e2e/local/loopback.test.cjs"
+  ],
+  "start": "2026-10-28T14:37:03.143Z",
+  "end": "2026-10-28T14:37:03.508Z",
+  "durationSeconds": 0.365,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

@@ -1,0 +1,93 @@
+PASS src/features/student-dashboard/presentation/components/StudentPhysicalTests.test.js (26.935 s)
+PASS src/features/student-dashboard/presentation/components/StudentPanel.access.test.js
+PASS src/features/gamification/presentation/components/StudentGamificationPanel.test.js
+PASS src/features/payments/application/useCases/createPaymentsUseCases.test.js
+PASS src/features/user-management/presentation/components/tabs/CreationCredentials.test.js
+PASS src/features/payments/presentation/createPaymentsService.test.js
+PASS src/shared/ui/panel-guide/PanelUserGuide.test.js
+PASS src/features/gamification/application/useCases/createGamificationUseCases.test.js
+PASS src/features/auth-session/presentation/components/ResetPassword.recovery.test.js
+PASS src/features/reporting/presentation/createReportingService.test.js
+PASS src/features/auth-session/presentation/components/Login.auth-events.test.js
+PASS src/features/student-dashboard/presentation/components/StudentProfileIdentityCard.test.js
+PASS src/shared/ui/SortableHeader.test.js
+PASS src/features/admin-dashboard/presentation/createAdminDashboardService.test.js
+PASS src/features/notifications/presentation/components/NotificationBell.access.test.js
+PASS src/features/auth-session/presentation/components/ChangePasswordModal.password.test.js
+PASS src/features/user-management/presentation/components/shared/ResendCredentialsModal.test.js
+PASS src/shared/ui/PageShell.test.js
+PASS src/features/user-management/presentation/createUserManagementService.test.js
+PASS src/features/user-management/presentation/components/shared/CreatedCredentialsModal.test.js
+PASS src/features/user-management/presentation/components/shared/UserFilters.test.js
+PASS src/features/athletes/presentation/createAthletesService.test.js
+PASS src/features/user-provisioning/application/useCases/createUserProvisioningUseCases.test.js
+PASS src/features/gamification/presentation/createGamificationService.test.js
+PASS src/features/notifications/presentation/createNotificationsService.test.js
+PASS src/shared/ui/semanticCatalog.test.js
+PASS src/features/attendance/application/useCases/createAttendanceUseCases.test.js
+PASS src/features/trainer-management/presentation/createTrainerManagementService.test.js
+PASS src/features/gamification/presentation/components/GamificationAdminPanel.test.js
+PASS src/utils/passwordUtils.test.js
+PASS src/features/user-provisioning/infrastructure/repositories/supabaseUserProvisioningRepository.test.js
+PASS src/features/gamification/application/useCases/gamification.audit.integration.test.js
+PASS src/features/attendance/presentation/createAttendanceService.test.js
+PASS src/features/physical-tests/presentation/createPhysicalTestsService.test.js
+PASS src/features/account-admin/presentation/createAccountAdminService.test.js
+PASS src/features/auth-profile/application/useCases/loadUserProfileUseCase.test.js
+PASS src/features/communications/application/useCases/createCommunicationsUseCases.test.js
+PASS src/features/gamification/presentation/components/IdentityPortrait.test.js
+PASS src/features/auth-profile/presentation/createAuthProfileService.test.js
+PASS src/features/user-provisioning/presentation/createUserProvisioningService.test.js
+PASS src/shared/ui/Modal.test.js
+PASS src/features/athletes/application/useCases/createAthletesUseCases.test.js
+PASS src/features/trainer-dashboard/presentation/createTrainerDashboardService.test.js
+PASS src/features/student-dashboard/infrastructure/repositories/supabaseStudentDashboardRepository.test.js
+PASS src/features/announcements/presentation/createAnnouncementsService.test.js
+PASS src/features/communications/presentation/createCommunicationsService.test.js
+PASS src/features/communications/infrastructure/repositories/supabaseCommunicationsRepository.test.js
+PASS src/features/notifications/infrastructure/repositories/supabaseNotificationsRepository.test.js
+PASS src/features/student-dashboard/presentation/createStudentDashboardService.test.js
+PASS src/features/schedules/presentation/createSchedulesService.test.js
+PASS src/features/notifications/application/useCases/createNotificationsUseCases.test.js
+PASS src/features/student-dashboard/presentation/components/physical-tests/buildStudentPhysicalProfile.test.js
+PASS src/features/reporting/application/useCases/ensureDailyAttendanceReportUseCase.test.js
+PASS src/features/auth-session/presentation/utils/deferAuthEvent.test.js
+PASS src/features/gamification/presentation/components/cosmeticVisuals.test.js
+PASS src/features/account-admin/infrastructure/repositories/supabaseAccountAdminRepository.password.test.js
+PASS src/shared/platform/ota.test.js
+PASS src/features/attendance/infrastructure/repositories/supabaseAttendanceRepository.test.js
+PASS src/features/trainer-dashboard/application/useCases/createTrainerDashboardUseCases.test.js
+PASS src/features/gamification/infrastructure/repositories/supabaseGamificationRepository.test.js
+PASS src/features/reporting/infrastructure/repositories/supabaseReportingRepository.contract.test.js
+PASS src/features/auth-session/presentation/createAuthSessionService.test.js
+PASS src/shared/ui/copyQualityCheck.test.js
+PASS src/features/user-management/application/useCases/createUserManagementUseCases.test.js
+PASS src/features/payments/infrastructure/repositories/supabasePaymentsRepository.test.js
+PASS src/shared/platform/push.test.js
+PASS src/features/gamification/application/useCases/createGamificationFoundationUseCases.test.js
+PASS src/shared/infrastructure/auth/deleteAuthUserById.test.js
+PASS src/features/user-management/application/contracts/userManagementRepositoryContract.test.js
+PASS src/features/admin-dashboard/application/useCases/createAdminDashboardUseCases.test.js
+PASS src/shared/ui/render-profile/renderProfileResolver.test.js
+PASS src/features/physical-tests/application/useCases/createPhysicalTestsUseCases.test.js
+PASS src/features/gamification/application/useCases/createGamificationAdminUseCases.test.js
+PASS src/shared/infrastructure/communications/whatsappBusinessService.test.js
+PASS src/features/announcements/application/useCases/createAnnouncementsUseCases.test.js
+PASS src/features/training-categories/application/useCases/createTrainingCategoriesUseCases.test.js
+PASS src/shared/ui/iconRegistry.test.js
+PASS src/App.test.js
+PASS src/features/schedules/application/useCases/createSchedulesUseCases.test.js
+PASS src/features/student-dashboard/application/useCases/createStudentDashboardUseCases.test.js
+PASS src/features/trainer-management/application/useCases/createTrainerManagementUseCases.test.js
+PASS src/features/auth-session/application/useCases/createAuthSessionUseCases.test.js
+PASS src/features/account-admin/application/useCases/createAccountAdminUseCases.test.js
+PASS src/shared/lib/tableQuery.test.js
+PASS src/config/appUrls.test.js
+
+Test Suites: 85 passed, 85 total
+Tests:       404 passed, 404 total
+Snapshots:   0 total
+Time:        74.201 s
+Ran all test suites.
+Test results written to: docs\tesis\evidencias\e2e-aislado\20261028-192557-cierre-c71f55e\jest-coverage.json
+

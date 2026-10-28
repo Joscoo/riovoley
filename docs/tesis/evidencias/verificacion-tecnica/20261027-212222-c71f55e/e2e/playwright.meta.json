@@ -1,0 +1,18 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/tesis/evidencias/verificacion-tecnica/20261027-212222-c71f55e/e2e/audit.config.cjs"
+  ],
+  "cwd": ".",
+  "start": "2026-10-28T02:27:05.730Z",
+  "end": "2026-10-28T02:29:28.524Z",
+  "durationSeconds": 142.794,
+  "exitCode": 1,
+  "signal": null,
+  "environmentOverrides": {
+    "E2E_BASE_URL": "http://127.0.0.1:3100",
+    "CI": "true"
+  }
+}

@@ -1,0 +1,40 @@
+
+Running 1 test using 1 worker
+
+  ✘  1 [desktop-1440] › tests\e2e\admin.happy-path-controlled.spec.js:6:1 › admin happy path controlado: atleta + pago + asistencia (14.0s)
+
+
+  1) [desktop-1440] › tests\e2e\admin.happy-path-controlled.spec.js:6:1 › admin happy path controlado: atleta + pago + asistencia 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveValue[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator:  getByRole('dialog').locator('#monto')
+    Expected: [32m"$35[7m.[27m00"[39m
+    Received: [31m"$[7m [27m35[7m,[27m00"[39m
+    Timeout:  10000ms
+
+    Call log:
+    [2m  - Expect "toHaveValue" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('dialog').locator('#monto')[22m
+    [2m    14 × locator resolved to <input disabled id="monto" type="text" value="$ 35,00" class="min-h-[48px] w-full rounded-xl border border-white/20 bg-black/40 px-3 py-2 text-sm text-white/90"/>[22m
+    [2m       - unexpected value "$ 35,00"[22m
+
+
+      55 |   await payment.locator('#membership_type_id').selectOption({ label: 'Mensualidad normal' });
+      56 |   await expect(payment.locator('#monto')).toBeDisabled();
+    > 57 |   await expect(payment.locator('#monto')).toHaveValue('$35.00');
+         |                                           ^
+      58 |   await payment.locator('#fecha_pago').fill(today);
+      59 |   await payment.getByRole('button', { name: /^Guardar$/i }).click();
+      60 |   await expect(payment).toBeHidden({ timeout: 30000 });
+        at D:\Riovoley\riovoley\tests\e2e\admin.happy-path-controlled.spec.js:57:43
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\e2e-aislado\20261028-101418-correcciones-c71f55e\flujo-actual-desktop-filtros\artefactos\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\e2e-aislado\20261028-101418-correcciones-c71f55e\flujo-actual-desktop-filtros\artefactos\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440\error-context.md
+
+  1 failed
+    [desktop-1440] › tests\e2e\admin.happy-path-controlled.spec.js:6:1 › admin happy path controlado: atleta + pago + asistencia 
+

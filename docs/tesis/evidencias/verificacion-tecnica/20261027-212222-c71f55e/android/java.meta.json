@@ -1,0 +1,13 @@
+{
+  "command": [
+    "java",
+    "-version"
+  ],
+  "cwd": ".",
+  "start": "2026-10-28T02:23:19.693Z",
+  "end": "2026-10-28T02:23:20.226Z",
+  "durationSeconds": 0.533,
+  "exitCode": 0,
+  "signal": null,
+  "environmentOverrides": {}
+}

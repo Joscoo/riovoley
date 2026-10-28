@@ -1,0 +1,16 @@
+const fs=require('node:fs');
+const path=require('node:path');
+const cp=require('node:child_process');
+const crypto=require('node:crypto');
+const h=require('../../e2e/local/harness.cjs');
+const pointer=path.join(h.runtime,'android-audit-context.json');
+const prior=JSON.parse(fs.readFileSync(pointer));
+const stamp=new Date().toISOString().replace(/[-:]/g,'').slice(0,15).replace('T','-');
+const base=path.join(h.root,'docs/tesis/evidencias/verificacion-tecnica',stamp+'-android-actualizado-c71f55e');
+fs.mkdirSync(path.join(base,'android'),{recursive:true});
+fs.copyFileSync(pointer,path.join(h.runtime,'android-audit-context-before-'+stamp+'.json'),fs.constants.COPYFILE_EXCL);
+fs.writeFileSync(pointer,JSON.stringify({...prior,base,createdAt:new Date().toISOString()}));
+const files=cp.execFileSync('git',['ls-files','-z'],{cwd:h.root}).toString().split('\0').filter(f=>f&&fs.existsSync(path.join(h.root,f)));
+fs.writeFileSync(path.join(base,'android/fuentes-iniciales.json'),JSON.stringify(files.map(file=>({file,sha256:crypto.createHash('sha256').update(fs.readFileSync(path.join(h.root,file))).digest('hex')})),null,2)+'\n');
+h.write('android/contexto-actualizado.json',{base:path.relative(h.root,base),work:path.relative(h.root,prior.work),scope:'Nuevo expediente de build, reutilizando exclusivamente herramientas/cachés privadas. El expediente Android anterior se conserva.'});
+console.log(path.relative(h.root,base));

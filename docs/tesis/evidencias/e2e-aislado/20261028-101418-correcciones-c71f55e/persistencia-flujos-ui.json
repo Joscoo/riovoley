@@ -1,0 +1,20 @@
+{
+  "flows": [
+    {
+      "payments": 0,
+      "student_id": "d4a06dd4-9585-4da3-b7e9-424c8080c49d",
+      "attendance_dates": []
+    },
+    {
+      "payments": 0,
+      "student_id": "e5ce6cff-1ca3-47dd-8a49-ca6748fbb91c",
+      "attendance_dates": []
+    },
+    {
+      "payments": 1,
+      "student_id": "c8b97b41-8844-4611-b441-2540baf554c0",
+      "attendance_dates": []
+    }
+  ],
+  "observed_at": "2026-10-28T15:26:00.483354+00:00"
+}

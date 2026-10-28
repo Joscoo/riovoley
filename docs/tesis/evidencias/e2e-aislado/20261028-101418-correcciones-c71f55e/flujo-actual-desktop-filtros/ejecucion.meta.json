@@ -1,0 +1,17 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+    "test",
+    "tests/e2e/admin.happy-path-controlled.spec.js",
+    "--config=playwright.local.config.cjs",
+    "--project=desktop-1440",
+    "--workers=1"
+  ],
+  "start": "2026-10-28T15:23:33.212Z",
+  "end": "2026-10-28T15:23:49.941Z",
+  "durationSeconds": 16.729,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

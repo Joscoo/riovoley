@@ -1,0 +1,6 @@
+{
+  "file": "android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java",
+  "observedApplicationId": "com.riovoley.app",
+  "previousTemplateExpectation": "com.getcapacitor.app",
+  "scope": "Se corrige la expectativa del test de plantilla tras observar su fallo real en emulador; no cambia applicationId ni lógica Android."
+}

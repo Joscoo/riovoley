@@ -1,0 +1,22 @@
+NOTICE:  extension "pgcrypto" already exists, skipping
+NOTICE:  extension "uuid-ossp" already exists, skipping
+NOTICE:  schema "public" already exists, skipping
+NOTICE:  trigger "update_physical_test_modtime" for relation "training.physical_tests" does not exist, skipping
+NOTICE:  trigger "trigger_update_announcements_updated_at" for relation "public_content.announcements" does not exist, skipping
+NOTICE:  trigger "payments_audit_trigger" for relation "billing.payments" does not exist, skipping
+NOTICE:  trigger "on_auth_user_created" for relation "auth.users" does not exist, skipping
+NOTICE:  trigger "trigger_sync_last_login_from_auth" for relation "auth.users" does not exist, skipping
+NOTICE:  trigger "trigger_sync_first_login_on_password_change" for relation "auth.users" does not exist, skipping
+NOTICE:  trigger "trigger_sync_user_profile" for relation "core.users" does not exist, skipping
+NOTICE:  trigger "trg_enforce_physical_test_age" for relation "training.physical_tests" does not exist, skipping
+NOTICE:  trigger "trg_report_definitions_updated_at" for relation "reporting.report_definitions" does not exist, skipping
+NOTICE:  trigger "trg_scheduler_config_updated_at" for relation "reporting.scheduler_config" does not exist, skipping
+NOTICE:  trigger "payments_membership_rules_trigger" for relation "billing.payments" does not exist, skipping
+NOTICE:  trigger "trg_training_categories_updated_at" for relation "training.training_categories" does not exist, skipping
+NOTICE:  trigger "trg_mobile_device_registrations_updated_at" for relation "profiles.mobile_device_registrations" does not exist, skipping
+NOTICE:  trigger "trg_user_notification_preferences_updated_at" for relation "profiles.user_notification_preferences" does not exist, skipping
+NOTICE:  trigger "trg_skip_duplicate_daily_login_xp_ledger" for relation "gamification.xp_ledger" does not exist, skipping
+NOTICE:  trigger "trg_user_notification_inbox_state_updated_at" for relation "public.user_notification_inbox_state" does not exist, skipping
+NOTICE:  trigger "guard_client_user_fields" for relation "core.users" does not exist, skipping
+NOTICE:  trigger "guard_client_profile_fields" for relation "profiles.user_profiles" does not exist, skipping
+

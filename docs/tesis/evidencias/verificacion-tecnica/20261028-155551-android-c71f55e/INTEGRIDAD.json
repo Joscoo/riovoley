@@ -1,0 +1,64 @@
+{
+  "generatedAt": "2026-10-28T19:20:56.231Z",
+  "passed": 8,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "APK final coincide con archivo privado, firma verificada y metadatos",
+      "state": "APROBADO",
+      "details": {
+        "nativePlugins": 7,
+        "coreModuleExcludedFromPluginCount": true
+      }
+    },
+    {
+      "name": "Lint final sin errores y con advertencias conservadas",
+      "state": "APROBADO"
+    },
+    {
+      "name": "JUnit y guardas con denominadores independientes",
+      "state": "APROBADO"
+    },
+    {
+      "name": "Privacidad final: todo el APK y archivos públicos sin valores pendientes",
+      "state": "APROBADO",
+      "details": {
+        "checked": 792
+      }
+    },
+    {
+      "name": "Fuentes originales y cambios locales previos preservados",
+      "state": "APROBADO",
+      "details": {
+        "checked": 962,
+        "changed": 0
+      }
+    },
+    {
+      "name": "Expedientes anteriores conservados",
+      "state": "APROBADO",
+      "details": [
+        {
+          "folder": "docs/tesis/evidencias/verificacion-tecnica/20261027-212222-c71f55e",
+          "checked": 612
+        },
+        {
+          "folder": "docs/tesis/evidencias/e2e-aislado/20261028-141243-c71f55e",
+          "checked": 254
+        },
+        {
+          "folder": "docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e",
+          "checked": 723
+        }
+      ]
+    },
+    {
+      "name": "No se confunde compilación con ejecución en dispositivo",
+      "state": "APROBADO"
+    },
+    {
+      "name": "Documentos requeridos y enlaces locales existen",
+      "state": "APROBADO"
+    }
+  ]
+}

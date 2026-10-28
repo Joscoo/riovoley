@@ -1,6 +1,22 @@
 const { createPaymentsUseCases } = require('./createPaymentsUseCases');
 
 describe('createPaymentsUseCases', () => {
+  it('al cambiar mensualidad solicita al trigger recalcular el precio, sin enviar un importe arbitrario', async () => {
+    const repository = buildRepository();
+    repository.getPaymentById.mockResolvedValue({ student_id: 's1', membership_type_id: 1, monto: 35 });
+    const useCases = createPaymentsUseCases(repository, buildDeps());
+    await useCases.updatePaymentUseCase.execute({ paymentId: 'p1', formData: { student_id: 's1', membership_type_id: '2', fecha_pago: '2026-05-17' } });
+    expect(repository.updatePayment).toHaveBeenCalledWith('p1', expect.objectContaining({ membership_type_id: 2, monto: null }));
+  });
+
+  it('conserva el importe histórico si no cambia el tipo de mensualidad', async () => {
+    const repository = buildRepository();
+    repository.getPaymentById.mockResolvedValue({ student_id: 's1', membership_type_id: 1, monto: 30 });
+    const useCases = createPaymentsUseCases(repository, buildDeps());
+    await useCases.updatePaymentUseCase.execute({ paymentId: 'p1', formData: { student_id: 's1', membership_type_id: '1', fecha_pago: '2026-05-17' } });
+    expect(repository.updatePayment.mock.calls[0][1]).not.toHaveProperty('monto');
+  });
+
   const buildRepository = () => ({
     listAthletes: jest.fn(),
     listPayments: jest.fn(),

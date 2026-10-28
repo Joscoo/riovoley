@@ -1,0 +1,9 @@
+{
+  "node": "v24.18.0",
+  "npm": "11.16.0",
+  "react": "19.2.6",
+  "cra": "5.0.1",
+  "playwright": "1.59.1",
+  "supabaseJs": "2.105.4",
+  "os": "Microsoft Windows [Version 10.0.26300.9711]"
+}

@@ -1,0 +1,4 @@
+?? docs/tesis/
+?? src/features/gamification/application/useCases/gamification.audit.integration.test.js
+?? tests/e2e/audit.protected-routes.spec.js
+

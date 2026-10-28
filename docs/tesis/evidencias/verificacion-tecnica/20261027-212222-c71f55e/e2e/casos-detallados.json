@@ -1,0 +1,1808 @@
+[
+  {
+    "file": "audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /admin",
+    "project": "mobile-390",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1153,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /entrenador",
+    "project": "mobile-390",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1311,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /estudiante",
+    "project": "mobile-390",
+    "status": "unexpected",
+    "results": [
+      {
+        "status": "failed",
+        "duration": 10712,
+        "attachments": [
+          {
+            "name": "screenshot",
+            "contentType": "image/png",
+            "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261027-212222-c71f55e\\e2e\\artefactos\\audit.protected-routes-aud-b7ecf--protected-panel-estudiante-mobile-390\\test-failed-1.png"
+          },
+          {
+            "name": "error-context",
+            "contentType": "text/markdown",
+            "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261027-212222-c71f55e\\e2e\\artefactos\\audit.protected-routes-aud-b7ecf--protected-panel-estudiante-mobile-390\\error-context.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /admin",
+    "project": "mobile-430",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1100,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /entrenador",
+    "project": "mobile-430",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1197,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /estudiante",
+    "project": "mobile-430",
+    "status": "unexpected",
+    "results": [
+      {
+        "status": "failed",
+        "duration": 10628,
+        "attachments": [
+          {
+            "name": "screenshot",
+            "contentType": "image/png",
+            "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261027-212222-c71f55e\\e2e\\artefactos\\audit.protected-routes-aud-b7ecf--protected-panel-estudiante-mobile-430\\test-failed-1.png"
+          },
+          {
+            "name": "error-context",
+            "contentType": "text/markdown",
+            "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261027-212222-c71f55e\\e2e\\artefactos\\audit.protected-routes-aud-b7ecf--protected-panel-estudiante-mobile-430\\error-context.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /admin",
+    "project": "mobile-480",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1142,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /entrenador",
+    "project": "mobile-480",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1090,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /estudiante",
+    "project": "mobile-480",
+    "status": "unexpected",
+    "results": [
+      {
+        "status": "failed",
+        "duration": 10378,
+        "attachments": [
+          {
+            "name": "screenshot",
+            "contentType": "image/png",
+            "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261027-212222-c71f55e\\e2e\\artefactos\\audit.protected-routes-aud-b7ecf--protected-panel-estudiante-mobile-480\\test-failed-1.png"
+          },
+          {
+            "name": "error-context",
+            "contentType": "text/markdown",
+            "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261027-212222-c71f55e\\e2e\\artefactos\\audit.protected-routes-aud-b7ecf--protected-panel-estudiante-mobile-480\\error-context.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /admin",
+    "project": "tablet-768",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1071,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /entrenador",
+    "project": "tablet-768",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1120,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /estudiante",
+    "project": "tablet-768",
+    "status": "unexpected",
+    "results": [
+      {
+        "status": "failed",
+        "duration": 10618,
+        "attachments": [
+          {
+            "name": "screenshot",
+            "contentType": "image/png",
+            "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261027-212222-c71f55e\\e2e\\artefactos\\audit.protected-routes-aud-b7ecf--protected-panel-estudiante-tablet-768\\test-failed-1.png"
+          },
+          {
+            "name": "error-context",
+            "contentType": "text/markdown",
+            "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261027-212222-c71f55e\\e2e\\artefactos\\audit.protected-routes-aud-b7ecf--protected-panel-estudiante-tablet-768\\error-context.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /admin",
+    "project": "tablet-1024",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 832,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /entrenador",
+    "project": "tablet-1024",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 796,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /estudiante",
+    "project": "tablet-1024",
+    "status": "unexpected",
+    "results": [
+      {
+        "status": "failed",
+        "duration": 10378,
+        "attachments": [
+          {
+            "name": "screenshot",
+            "contentType": "image/png",
+            "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261027-212222-c71f55e\\e2e\\artefactos\\audit.protected-routes-aud-b7ecf--protected-panel-estudiante-tablet-1024\\test-failed-1.png"
+          },
+          {
+            "name": "error-context",
+            "contentType": "text/markdown",
+            "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261027-212222-c71f55e\\e2e\\artefactos\\audit.protected-routes-aud-b7ecf--protected-panel-estudiante-tablet-1024\\error-context.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /admin",
+    "project": "desktop-1440",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 767,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /entrenador",
+    "project": "desktop-1440",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 731,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /estudiante",
+    "project": "desktop-1440",
+    "status": "unexpected",
+    "results": [
+      {
+        "status": "failed",
+        "duration": 10304,
+        "attachments": [
+          {
+            "name": "screenshot",
+            "contentType": "image/png",
+            "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261027-212222-c71f55e\\e2e\\artefactos\\audit.protected-routes-aud-b7ecf--protected-panel-estudiante-desktop-1440\\test-failed-1.png"
+          },
+          {
+            "name": "error-context",
+            "contentType": "text/markdown",
+            "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261027-212222-c71f55e\\e2e\\artefactos\\audit.protected-routes-aud-b7ecf--protected-panel-estudiante-desktop-1440\\error-context.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /admin",
+    "project": "desktop-1920",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 861,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /entrenador",
+    "project": "desktop-1920",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 861,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /estudiante",
+    "project": "desktop-1920",
+    "status": "unexpected",
+    "results": [
+      {
+        "status": "failed",
+        "duration": 10417,
+        "attachments": [
+          {
+            "name": "screenshot",
+            "contentType": "image/png",
+            "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261027-212222-c71f55e\\e2e\\artefactos\\audit.protected-routes-aud-b7ecf--protected-panel-estudiante-desktop-1920\\test-failed-1.png"
+          },
+          {
+            "name": "error-context",
+            "contentType": "text/markdown",
+            "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261027-212222-c71f55e\\e2e\\artefactos\\audit.protected-routes-aud-b7ecf--protected-panel-estudiante-desktop-1920\\error-context.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+    "project": "mobile-390",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 2390,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: un enlace expirado no habilita el formulario",
+    "project": "mobile-390",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1541,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+    "project": "mobile-390",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 2182,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+    "project": "mobile-390",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 6055,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+    "project": "mobile-430",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1988,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: un enlace expirado no habilita el formulario",
+    "project": "mobile-430",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1901,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+    "project": "mobile-430",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 2363,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+    "project": "mobile-430",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 7364,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+    "project": "mobile-480",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 920,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: un enlace expirado no habilita el formulario",
+    "project": "mobile-480",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 761,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+    "project": "mobile-480",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 800,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+    "project": "mobile-480",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 4455,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+    "project": "tablet-768",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 2057,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: un enlace expirado no habilita el formulario",
+    "project": "tablet-768",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1543,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+    "project": "tablet-768",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 2198,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+    "project": "tablet-768",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 7029,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+    "project": "tablet-1024",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1058,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: un enlace expirado no habilita el formulario",
+    "project": "tablet-1024",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 965,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+    "project": "tablet-1024",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 935,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+    "project": "tablet-1024",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 5621,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+    "project": "desktop-1440",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1085,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: un enlace expirado no habilita el formulario",
+    "project": "desktop-1440",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1057,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+    "project": "desktop-1440",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1094,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+    "project": "desktop-1440",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 4345,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+    "project": "desktop-1920",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1396,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: un enlace expirado no habilita el formulario",
+    "project": "desktop-1920",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1324,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+    "project": "desktop-1920",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1512,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "auth.password-recovery.spec.js",
+    "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+    "project": "desktop-1920",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 5676,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /",
+    "project": "mobile-390",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1266,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /sobre",
+    "project": "mobile-390",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1609,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /horarios",
+    "project": "mobile-390",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1512,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /login",
+    "project": "mobile-390",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1704,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+    "project": "mobile-390",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1790,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "mobile navigation closes with Escape and restores keyboard focus",
+    "project": "mobile-390",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 2023,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "mobile menu keeps keyboard focus within its controls",
+    "project": "mobile-390",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1863,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /",
+    "project": "mobile-430",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1221,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /sobre",
+    "project": "mobile-430",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1596,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /horarios",
+    "project": "mobile-430",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1522,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /login",
+    "project": "mobile-430",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1858,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+    "project": "mobile-430",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1838,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "mobile navigation closes with Escape and restores keyboard focus",
+    "project": "mobile-430",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1956,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "mobile menu keeps keyboard focus within its controls",
+    "project": "mobile-430",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1788,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /",
+    "project": "mobile-480",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 507,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /sobre",
+    "project": "mobile-480",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 780,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /horarios",
+    "project": "mobile-480",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 874,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /login",
+    "project": "mobile-480",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 867,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+    "project": "mobile-480",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 781,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "mobile navigation closes with Escape and restores keyboard focus",
+    "project": "mobile-480",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 580,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "mobile menu keeps keyboard focus within its controls",
+    "project": "mobile-480",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 472,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /",
+    "project": "tablet-768",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1366,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /sobre",
+    "project": "tablet-768",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1988,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /horarios",
+    "project": "tablet-768",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1831,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /login",
+    "project": "tablet-768",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1831,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+    "project": "tablet-768",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1915,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "mobile navigation closes with Escape and restores keyboard focus",
+    "project": "tablet-768",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1355,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "mobile menu keeps keyboard focus within its controls",
+    "project": "tablet-768",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1403,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /",
+    "project": "tablet-1024",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 725,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /sobre",
+    "project": "tablet-1024",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 884,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /horarios",
+    "project": "tablet-1024",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 962,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /login",
+    "project": "tablet-1024",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1006,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+    "project": "tablet-1024",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 971,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "mobile navigation closes with Escape and restores keyboard focus",
+    "project": "tablet-1024",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 495,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "mobile menu keeps keyboard focus within its controls",
+    "project": "tablet-1024",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 494,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /",
+    "project": "desktop-1440",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 885,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /sobre",
+    "project": "desktop-1440",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1037,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /horarios",
+    "project": "desktop-1440",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1204,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /login",
+    "project": "desktop-1440",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1358,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+    "project": "desktop-1440",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1350,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "mobile navigation closes with Escape and restores keyboard focus",
+    "project": "desktop-1440",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 530,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "mobile menu keeps keyboard focus within its controls",
+    "project": "desktop-1440",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 549,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /",
+    "project": "desktop-1920",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1287,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /sobre",
+    "project": "desktop-1920",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1383,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /horarios",
+    "project": "desktop-1920",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1499,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /login",
+    "project": "desktop-1920",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1438,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+    "project": "desktop-1920",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1462,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "mobile navigation closes with Escape and restores keyboard focus",
+    "project": "desktop-1920",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 538,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "public.navigation-accessibility.spec.js",
+    "title": "mobile menu keeps keyboard focus within its controls",
+    "project": "desktop-1920",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 523,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /",
+    "project": "mobile-390",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1290,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /sobre",
+    "project": "mobile-390",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 779,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /horarios",
+    "project": "mobile-390",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 671,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /login",
+    "project": "mobile-390",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 696,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /reset-password",
+    "project": "mobile-390",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 613,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /",
+    "project": "mobile-430",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1157,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /sobre",
+    "project": "mobile-430",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 946,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /horarios",
+    "project": "mobile-430",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 750,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /login",
+    "project": "mobile-430",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 645,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /reset-password",
+    "project": "mobile-430",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 671,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /",
+    "project": "mobile-480",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 462,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /sobre",
+    "project": "mobile-480",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 314,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /horarios",
+    "project": "mobile-480",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 325,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /login",
+    "project": "mobile-480",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 351,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /reset-password",
+    "project": "mobile-480",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 290,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /",
+    "project": "tablet-768",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1300,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /sobre",
+    "project": "tablet-768",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 659,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /horarios",
+    "project": "tablet-768",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 684,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /login",
+    "project": "tablet-768",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 688,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /reset-password",
+    "project": "tablet-768",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 689,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /",
+    "project": "tablet-1024",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 760,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /sobre",
+    "project": "tablet-1024",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 357,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /horarios",
+    "project": "tablet-1024",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 328,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /login",
+    "project": "tablet-1024",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 344,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /reset-password",
+    "project": "tablet-1024",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 333,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /",
+    "project": "desktop-1440",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 967,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /sobre",
+    "project": "desktop-1440",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 431,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /horarios",
+    "project": "desktop-1440",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 372,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /login",
+    "project": "desktop-1440",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 350,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /reset-password",
+    "project": "desktop-1440",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 342,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /",
+    "project": "desktop-1920",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 1335,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /sobre",
+    "project": "desktop-1920",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 424,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /horarios",
+    "project": "desktop-1920",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 486,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /login",
+    "project": "desktop-1920",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 453,
+        "attachments": []
+      }
+    ]
+  },
+  {
+    "file": "responsive.smoke.spec.js",
+    "title": "public route responsive guard: /reset-password",
+    "project": "desktop-1920",
+    "status": "expected",
+    "results": [
+      {
+        "status": "passed",
+        "duration": 455,
+        "attachments": []
+      }
+    ]
+  }
+]

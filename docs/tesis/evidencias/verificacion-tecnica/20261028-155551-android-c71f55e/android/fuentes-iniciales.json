@@ -1,0 +1,3850 @@
+[
+  {
+    "file": ".agents/skills/accessibility-compliance/SKILL.md",
+    "sha256": "c0709d0f54643a8ab39f12c3b407723aa962ace0ea98b0900b687ce6435da08c"
+  },
+  {
+    "file": ".agents/skills/accessibility-compliance/references/aria-patterns.md",
+    "sha256": "8aae55fb9e724658a42785854b5a20f0d7369514798acda61171c345aae23c94"
+  },
+  {
+    "file": ".agents/skills/accessibility-compliance/references/mobile-accessibility.md",
+    "sha256": "045b7a487fdb7a2fd117187a817bb0669aa39d9d9b8f3e1651be385e54e7c0c9"
+  },
+  {
+    "file": ".agents/skills/accessibility-compliance/references/wcag-guidelines.md",
+    "sha256": "aa8b44e5c11b1be7c02241502398ff0b43fefe286bd88fe5060b878bc9086e23"
+  },
+  {
+    "file": ".agents/skills/accessibility/SKILL.md",
+    "sha256": "1e7594bd364e871e97683274c1e9b9768422033d7f9011861d61d5ad0650e23d"
+  },
+  {
+    "file": ".agents/skills/anti-reversing-techniques/SKILL.md",
+    "sha256": "02fd49bd75dec2e0f7a4ea99ca373426e69d6d5631dd367a91266a14aa814ef0"
+  },
+  {
+    "file": ".agents/skills/anti-reversing-techniques/references/advanced-techniques.md",
+    "sha256": "26c83acb0e254368cdc0a0396e4c138906cc3758f401440b95241cb0185c9192"
+  },
+  {
+    "file": ".agents/skills/api-design-principles/SKILL.md",
+    "sha256": "d1a488aa9b8497f271c20e6774d66b7662f661ec0ead87089e45be364b86b071"
+  },
+  {
+    "file": ".agents/skills/api-design-principles/assets/api-design-checklist.md",
+    "sha256": "9b1ef302633160bf6073f96520539d1b76a6ca4e28cfb29fa66fe57ce06aa00d"
+  },
+  {
+    "file": ".agents/skills/api-design-principles/assets/rest-api-template.py",
+    "sha256": "edf586f42cf9c568de08667fd5b3e6f2ee1ae71590ec626f7cd2087fdf1fde5f"
+  },
+  {
+    "file": ".agents/skills/api-design-principles/references/graphql-schema-design.md",
+    "sha256": "0b00d438b6247e4f487e6581842f8b6005175aeb0f16752279b57e3d25fd57f1"
+  },
+  {
+    "file": ".agents/skills/api-design-principles/references/rest-best-practices.md",
+    "sha256": "4109128164847cbb2e8d29ee426158299343bbf3cfc96358398a1e50ebab4d7b"
+  },
+  {
+    "file": ".agents/skills/architect-review/SKILL.md",
+    "sha256": "ec2c9552942b50e29d6434bb026f69746e35b93f3ee71c1c139119913ad2ee3a"
+  },
+  {
+    "file": ".agents/skills/architecture-patterns/SKILL.md",
+    "sha256": "3d2b14d3040ff2ed625965fd7385b4bbe73554510a9813a543687879c5c4d10f"
+  },
+  {
+    "file": ".agents/skills/architecture-patterns/references/advanced-patterns.md",
+    "sha256": "4dfeda6d36279c4f9905dd220b967feff39bb72eee0bdefb7a8dfb5adf649ee8"
+  },
+  {
+    "file": ".agents/skills/backend-patterns/SKILL.md",
+    "sha256": "6d3500c25874d41b4dd094c83ec10b7ce09cc43a46cea7551f2244316c349eb6"
+  },
+  {
+    "file": ".agents/skills/billing-automation/SKILL.md",
+    "sha256": "a29dfa1400cd5e554f65dd752538889c7d1f9de9de4b65a742cd50b75cc4de91"
+  },
+  {
+    "file": ".agents/skills/caveman/README.md",
+    "sha256": "95b62190565e0d5b21ced563cf36c0f549abe1ceceff540914102481c9c5849c"
+  },
+  {
+    "file": ".agents/skills/caveman/SKILL.md",
+    "sha256": "6a93e68b5d843ab6da3290dfe81cfdf26de166be7f3feca5acb52744f63db593"
+  },
+  {
+    "file": ".agents/skills/compact-guard/SKILL.md",
+    "sha256": "6ffa2e1a62bfce64968adc1dc6a5a4f67f10cb85be2f670defe552087685321a"
+  },
+  {
+    "file": ".agents/skills/context-engineering/SKILL.md",
+    "sha256": "67cb331ee158eeab1ba8b6428ccfd03bdcdc36be26fde8474b3a36e3c6062457"
+  },
+  {
+    "file": ".agents/skills/context-optimizer/SKILL.md",
+    "sha256": "4d974efb9e780e47eae08a6df69d2b5c5662c1b25b71935c953092bb034b69d8"
+  },
+  {
+    "file": ".agents/skills/cost-tracker/SKILL.md",
+    "sha256": "14c3382a580c426e546d0a06445f6fa4f5ee6f00c5380e82a166d825b3ab0ee5"
+  },
+  {
+    "file": ".agents/skills/dashboard-builder/SKILL.md",
+    "sha256": "0e668780a3168e5045071e00b737e9d754bb62e1213b8cc22c941191cd430934"
+  },
+  {
+    "file": ".agents/skills/data-engineer/SKILL.md",
+    "sha256": "a940f2ab44b2567234dc500f72b2760f2d63032a7ea9296efe217de2b4afa001"
+  },
+  {
+    "file": ".agents/skills/data-storytelling/SKILL.md",
+    "sha256": "2e91d5faf4db8bb5b6cc794dfb0ccfeef65ee905ae7989e16b406ddf6a118bdb"
+  },
+  {
+    "file": ".agents/skills/database-admin/SKILL.md",
+    "sha256": "ef2bbfbe804db3074c54d3eb60af85b4570bb2972cb0b21d2f911dc4a0625885"
+  },
+  {
+    "file": ".agents/skills/database-architect/SKILL.md",
+    "sha256": "bcb668a2da32dd06551d77eb1f14e1a131e1ad9d539acf7b9e699ec826c65e58"
+  },
+  {
+    "file": ".agents/skills/database-design/SKILL.md",
+    "sha256": "ad1918b9daa821388c6b9838bd739126f52cc9236ac7a7a1b14bcab055d38160"
+  },
+  {
+    "file": ".agents/skills/database-design/database-selection.md",
+    "sha256": "3655cdd3a38a9ca1ae8408be8057ea628b08bf9ab22460b1bc571228dd2ba6c6"
+  },
+  {
+    "file": ".agents/skills/database-design/indexing.md",
+    "sha256": "eec8ce01e7c1c8ec2aed7a96d260a52b12d90c2996288e32814a8d9cf29cc22a"
+  },
+  {
+    "file": ".agents/skills/database-design/migrations.md",
+    "sha256": "b5b9e518f18264cdd946f4914d73c2355065ba712cb61db01ba59bacb95423a2"
+  },
+  {
+    "file": ".agents/skills/database-design/optimization.md",
+    "sha256": "10a6f484fdae9973957030d8ef47bad4ffba9f7709e9c824883a97f92925a722"
+  },
+  {
+    "file": ".agents/skills/database-design/orm-selection.md",
+    "sha256": "11ece2e816949e26a7019b84004e240a9f9ab0b38c4f454bd522dd251c5dac97"
+  },
+  {
+    "file": ".agents/skills/database-design/schema-design.md",
+    "sha256": "0a83addd1e9963e3d958eb00474d7dc72881c4290a97bac03bf09553607e3f6f"
+  },
+  {
+    "file": ".agents/skills/database-design/scripts/schema_validator.py",
+    "sha256": "30002411da4b6b82471d7e33ac3906daec72e69fab0fd29dd8c201b6a5777748"
+  },
+  {
+    "file": ".agents/skills/database-migration/SKILL.md",
+    "sha256": "9a81bd5ff60b4e7a92c9a10f5997019af6d2aa8181c173b003e4b77f718a8198"
+  },
+  {
+    "file": ".agents/skills/database-migrations/SKILL.md",
+    "sha256": "645290c5763d31649bd6c071245b53198cdaf4438d9aa091b6ee6bd3ab085fea"
+  },
+  {
+    "file": ".agents/skills/database-optimizer/SKILL.md",
+    "sha256": "43ae1153dcaf3844c256ad8184dccaf953017816d6341b60c65baf30ab0fa4dd"
+  },
+  {
+    "file": ".agents/skills/database/SKILL.md",
+    "sha256": "468d69d378ad6513554c69bc1942880b42e71d3caeceaab371eec275f895f0d5"
+  },
+  {
+    "file": ".agents/skills/datadog-automation/SKILL.md",
+    "sha256": "4ff6d8d835abd6d83bd8bde0f6f2f38b1c79c76aae807db49ac324c89699fd0b"
+  },
+  {
+    "file": ".agents/skills/debugging-strategies/SKILL.md",
+    "sha256": "d14fd751d413fd9e50fb8c62af91661b624b7b309bbdb393430bc310766fbc43"
+  },
+  {
+    "file": ".agents/skills/deployment-patterns/SKILL.md",
+    "sha256": "b2d18f90ea5f5b7e6c357c3ded7353fa2d23b04464eed4b81745b0c8340e31ba"
+  },
+  {
+    "file": ".agents/skills/design-system-patterns/SKILL.md",
+    "sha256": "8b3d3f59b2fb9f097671c9635e8e1043ba8815c47708375dc6dd0183c13b4619"
+  },
+  {
+    "file": ".agents/skills/design-system-patterns/references/component-architecture.md",
+    "sha256": "b9221b5e7fbab3bf78bac5f2b24ca33bcac69a9df5d1cf6bfeda77f3adf6453b"
+  },
+  {
+    "file": ".agents/skills/design-system-patterns/references/design-tokens.md",
+    "sha256": "a59f4535e3128e011804f395fc197a710accf27b682df23e6e0963c498a2e1c3"
+  },
+  {
+    "file": ".agents/skills/design-system-patterns/references/theming-architecture.md",
+    "sha256": "61d63efce72b05612c510f5a5ba4bad0ac235b71a8c4f2db08936cc005370c16"
+  },
+  {
+    "file": ".agents/skills/design-system/SKILL.md",
+    "sha256": "48259261aa52c6f99f92c8dc9d981d5ca312d7e499b2caf67788e6d0569bb4f2"
+  },
+  {
+    "file": ".agents/skills/e2e-testing-patterns/SKILL.md",
+    "sha256": "12d1921c316a31d21538afb5d1764986463c362b05fb376870069ac42752baba"
+  },
+  {
+    "file": ".agents/skills/e2e-testing/SKILL.md",
+    "sha256": "f84ae93c159bf6ecef5a60c9735dc82d96bc5f977ef52eb71678b66722acf684"
+  },
+  {
+    "file": ".agents/skills/favicon/SKILL.md",
+    "sha256": "bc45ffa7c1dcf7966787c2b11172b9001e2187308a1c5848d34ab95126985a7e"
+  },
+  {
+    "file": ".agents/skills/git-advanced-workflows/SKILL.md",
+    "sha256": "a9bc87592eee91a0bce5c00f26a13ede99ad5f4f469f23498e5821489e3a5698"
+  },
+  {
+    "file": ".agents/skills/gitlab-ci-patterns/SKILL.md",
+    "sha256": "1d1fb5fc7b53cbfbe962e71c9db2bcda98db290abca58ad87be887d4e6cf78fb"
+  },
+  {
+    "file": ".agents/skills/graphql-architect/SKILL.md",
+    "sha256": "c72afc9b05b7d9b6c4175eecf21706b3e1483383b595f86aac9c72fee1d91251"
+  },
+  {
+    "file": ".agents/skills/graphql/SKILL.md",
+    "sha256": "84bb2bc31ae4eebce27d974c6655039e3094b8b64b782df53082482cbf458c1d"
+  },
+  {
+    "file": ".agents/skills/ios-icon-gen/SKILL.md",
+    "sha256": "e92c9d8c58fdbd413299677642bcbd8815984fa32eacf2ef02d0567be7edd609"
+  },
+  {
+    "file": ".agents/skills/ios-icon-gen/scripts/generate_icons.swift",
+    "sha256": "41efd2b2dc30a744e65252d7715b36ae951c489262262b42d96e06d42fd3ca2e"
+  },
+  {
+    "file": ".agents/skills/ios-icon-gen/scripts/iconify_gen.sh",
+    "sha256": "5a0efeece4dfd4b60d345b5e2034ab152557793a4248ef6cba2f8fa4d6533c4a"
+  },
+  {
+    "file": ".agents/skills/knowledge-ops/SKILL.md",
+    "sha256": "a1fecc085d516783759db77a9a907b2d60611cc56ba5470a2ea60e5fb57f34c2"
+  },
+  {
+    "file": ".agents/skills/memory-merger/SKILL.md",
+    "sha256": "a98f9bbd157755bfcaa8914095990d13a8d614afa18c882f3892f81e257e221c"
+  },
+  {
+    "file": ".agents/skills/mobile-android-design/SKILL.md",
+    "sha256": "986eac42756e1e7c2ac936088c5e5627ea1ce93f145b1a2e165b0a268fda0805"
+  },
+  {
+    "file": ".agents/skills/mobile-android-design/references/android-navigation.md",
+    "sha256": "191eb75142b53ee38abbcf67ef19cbd4dedb7e7591f102adae828fc2eebf8020"
+  },
+  {
+    "file": ".agents/skills/mobile-android-design/references/compose-components.md",
+    "sha256": "53a00717554ccdb579a18d82fa77d3ab6151141d389bb916aee6a1e3fe7ab7dc"
+  },
+  {
+    "file": ".agents/skills/mobile-android-design/references/material3-theming.md",
+    "sha256": "dd251a518ea133a83e5271f7e74e33b1f1461534d4a4e31fe216a46ca1a790c8"
+  },
+  {
+    "file": ".agents/skills/mobile-ios-design/SKILL.md",
+    "sha256": "a9011183cb8cc0c62d0f19a06211755da525a04764cb057b52b46187736827b1"
+  },
+  {
+    "file": ".agents/skills/mobile-ios-design/references/hig-patterns.md",
+    "sha256": "601f0f4ea09bd0e44788fff46fbd180eef90a9c3b549515e1e7fbc2816b2d771"
+  },
+  {
+    "file": ".agents/skills/mobile-ios-design/references/ios-navigation.md",
+    "sha256": "a78aab4e071c88f12ef57f263f98e9c392b285b57ec55962b0792ae060be006a"
+  },
+  {
+    "file": ".agents/skills/mobile-ios-design/references/swiftui-components.md",
+    "sha256": "0590d2d2cf7be9fa9ded2c8c0de5ab7a63cb17d864438292ebeadbc6a0ae7add"
+  },
+  {
+    "file": ".agents/skills/modern-javascript-patterns/SKILL.md",
+    "sha256": "3eb8a3904f3dff81d011742ebed208cfb6974c223cc5429fa6a08f68633b122d"
+  },
+  {
+    "file": ".agents/skills/modern-javascript-patterns/references/advanced-patterns.md",
+    "sha256": "bd44770188cfa14d453b1c3026289cfaf7beff78f0eedbe47a9c6b9f24dfe3af"
+  },
+  {
+    "file": ".agents/skills/monorepo-management/SKILL.md",
+    "sha256": "dc241defbfc3911ec958fefd3e765a438fa6684348ea5d2e6c2fa686b89275b9"
+  },
+  {
+    "file": ".agents/skills/motion-advanced/SKILL.md",
+    "sha256": "0a113074ee06ea13b581011acfe93b6950f9129bb999042cb8f19187acda97ca"
+  },
+  {
+    "file": ".agents/skills/motion-foundations/SKILL.md",
+    "sha256": "6755da297a2c0bcee7c9c83ec23153cf443e8bf44ef854c83c9acc1e9bd0b811"
+  },
+  {
+    "file": ".agents/skills/motion-patterns/SKILL.md",
+    "sha256": "d6a358e87f178466361df469fc8fce6120c50c981135341615d8af36f7867086"
+  },
+  {
+    "file": ".agents/skills/motion-ui/SKILL.md",
+    "sha256": "dcd78a3718c3f2227695033c42cd194fbc073c8decc663fd5140a2c76e68f162"
+  },
+  {
+    "file": ".agents/skills/multi-cloud-architecture/SKILL.md",
+    "sha256": "5f27083202d610030005fb00e9c81bf59d74de9ab9a965c63dc48bf15dfddf6c"
+  },
+  {
+    "file": ".agents/skills/multi-cloud-architecture/references/multi-cloud-patterns.md",
+    "sha256": "b26c861c0a3654f9b35015cedf8e7c7a14b311062f1ceb97f38f4c2af8a8778a"
+  },
+  {
+    "file": ".agents/skills/multi-cloud-architecture/references/service-comparison.md",
+    "sha256": "bfabcf38cd75684955269157b9c38f7ef1773601cf93cb4e5e5f7da788096179"
+  },
+  {
+    "file": ".agents/skills/multi-reviewer-patterns/SKILL.md",
+    "sha256": "30a8e067af085d6ddbf4f3775b212b0b24137ecc431a3e8570e3d6a09823a62a"
+  },
+  {
+    "file": ".agents/skills/multi-reviewer-patterns/references/review-dimensions.md",
+    "sha256": "88b8f4eac2cdfeea9a4686aa07eff5ddaed40ecaee0a96b48db2a495cefda45e"
+  },
+  {
+    "file": ".agents/skills/napkin/SKILL.md",
+    "sha256": "20d370bbfb5c6c7efbdfe5d86ca42f5c49ef968b7b84821abc85089a96aa6bb9"
+  },
+  {
+    "file": ".agents/skills/napkin/assets/napkin.html",
+    "sha256": "e999b729ff2823ceba755584ef6a1e8004cfbe8125861c0fb51a41305835b232"
+  },
+  {
+    "file": ".agents/skills/napkin/assets/step1-activate.svg",
+    "sha256": "c2ee632d967f526b4c5a93f109e6ea6602176bbde0966e639fba35453f43d1b1"
+  },
+  {
+    "file": ".agents/skills/napkin/assets/step2-whiteboard.svg",
+    "sha256": "1eceb9aa28d5bea75fe1c462c1b512cf3545c7d635645cb1e9af0d84e6de47cb"
+  },
+  {
+    "file": ".agents/skills/napkin/assets/step3-draw.svg",
+    "sha256": "ec4bf2b5e05f4da291f1ebc7a8346eb5d57ae4d0e488fa2333434a772faf94ec"
+  },
+  {
+    "file": ".agents/skills/napkin/assets/step4-share.svg",
+    "sha256": "72e786f1fb4261b4b5341a806013aed21b68c9ce69695d778b66935ba2c63008"
+  },
+  {
+    "file": ".agents/skills/napkin/assets/step5-response.svg",
+    "sha256": "f2019b3e778b719e0a8525ed07861dc7fa0d9fce167fdcade451e5ba60c611b4"
+  },
+  {
+    "file": ".agents/skills/nodejs-backend-patterns/SKILL.md",
+    "sha256": "417576e78a446b97f55d21f4c1fa3ad5af5ac7776c8e28e27d2d94a100a98c4c"
+  },
+  {
+    "file": ".agents/skills/nodejs-backend-patterns/references/advanced-patterns.md",
+    "sha256": "efccf6ff4d63ec2a10e71117b2df5125c24925c343c3cb823080b6ce4e969d5c"
+  },
+  {
+    "file": ".agents/skills/orchestrate/SKILL.md",
+    "sha256": "4437d7b886e8860b1e99508582b984abcac6ee01442e31bc5a4de5f97a9fa832"
+  },
+  {
+    "file": ".agents/skills/performance-engineer/SKILL.md",
+    "sha256": "b7a21ea8e73a98f5b1bf9d1e287dec224b4fe91a3915726f61852216192efc7e"
+  },
+  {
+    "file": ".agents/skills/performance-optimizer/README.md",
+    "sha256": "7cf2d6693d07d0fdaab6441642295eb9bd9734e551caff656c138a388bd565b4"
+  },
+  {
+    "file": ".agents/skills/performance-optimizer/SKILL.md",
+    "sha256": "9e73c4cabe47bee8e76d4391e899d9ff7a5c98fefed62eee18f333d3d7aaa648"
+  },
+  {
+    "file": ".agents/skills/performance-profiling/SKILL.md",
+    "sha256": "0da78d260358a60f03ae275e1e790b7a148743cc7733bf2814f3f146c58b5730"
+  },
+  {
+    "file": ".agents/skills/performance-profiling/scripts/lighthouse_audit.py",
+    "sha256": "7e3928f1ac24e472fd9b0bc390f223379d8ce3e3d9ff6136e557ac4bdad7f52c"
+  },
+  {
+    "file": ".agents/skills/performance-testing-review-ai-review/SKILL.md",
+    "sha256": "b391d2cc8954a842afa81e6c57857ee1829c89d4072fd9c309b97eacd420b67a"
+  },
+  {
+    "file": ".agents/skills/performance-testing-review-multi-agent-review/SKILL.md",
+    "sha256": "91b91709c472b58d09c1718019bebd134dad6427febfad79f60cdd764e0cd632"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/AGENTS.md",
+    "sha256": "a5226ca435fe12cf69ef8343aeaa5a9f2ae40679986b09eacb247711471e8722"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/README.md",
+    "sha256": "8ada1fb7d5fc4783d17714ee0b0c7a0453c90e62c99a803d2953bd2018eade71"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/SKILL.md",
+    "sha256": "4efb922ec694331f6687c69508716c9f2cf0a39d6fe9fec6e871e6352335d0ea"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/_contributing.md",
+    "sha256": "6fbf4930e3d1ffc02ce110a2b92ab593d1268a93ae3547c335c4e756e8cfa10d"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/_sections.md",
+    "sha256": "c9e992612b422c7122de0b7542ebc2450db283edaab08cfe86c6d657fcccccd5"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/_template.md",
+    "sha256": "6299954250f212caabe339d752c3e5313a8e07d1a182a4e4b425baee91df1bd2"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/advanced-full-text-search.md",
+    "sha256": "40c2606bbb4c4dce31308f201b24cc7f58c7df05b1d9c6856fe2b888d3b7cf28"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/advanced-jsonb-indexing.md",
+    "sha256": "24cacf6a8bc35901dd566d24502ce8e57f810a5c196b897e61d52726e521d106"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/conn-idle-timeout.md",
+    "sha256": "630588902c00fcec59a5988cc5d042f76dcf2c923a535abfd8c47dca205eaed5"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/conn-limits.md",
+    "sha256": "11b2a67a7c7679cbbc5d807bbb17e69c98484a581d0c8b929c03408f412b81b2"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/conn-pooling.md",
+    "sha256": "88cf086bf98ba865d2e9d0579974e1366b14157619d6a93e7da77be91084e4a5"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/conn-prepared-statements.md",
+    "sha256": "174e9332fe3dda5c99b2b00159fb1915ae36c00bab3a7882c14e73e4344e946e"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/data-batch-inserts.md",
+    "sha256": "531933b82d6a622d0fae29e0ea80be6fe5d78655adf2804c271ea84a1930de37"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/data-n-plus-one.md",
+    "sha256": "21a44905e5b16a42741892ec34bb1bfef124d049b140a76934a9acd0f46f5fc2"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/data-pagination.md",
+    "sha256": "73c9fa10a3d439bedea0e11b640bd25bf30dd50f0d9006cf85baf7c3151543fa"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/data-upsert.md",
+    "sha256": "2612af83b20a2701dde30ef1f8d7efd26b7e9eef84717226b8f038a2d2150ff7"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/lock-advisory.md",
+    "sha256": "c88d259dbf81c3771438f59a165f7eab8acd09999dd370bdf807521c73f35aab"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/lock-deadlock-prevention.md",
+    "sha256": "09aee46f51d7178c8e55fe056cd5a94a64ba2c122fe418e6900cd99f297b2347"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/lock-short-transactions.md",
+    "sha256": "5aa7f61095916986d39644b446cdbcd2bacca7ef698a3bb50b3f82dd60207602"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/lock-skip-locked.md",
+    "sha256": "6c45077f430f29cd9cd8f448c94d578e827e7bd023fcdaf717a756acb116fa4b"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/monitor-explain-analyze.md",
+    "sha256": "4cb67ffbf8e57f2e5b380b0beb4242528b513723ce314a2c2ffcf083bd4203d7"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/monitor-pg-stat-statements.md",
+    "sha256": "89dca99d4e894fcbdcac136be7ad9fbc03d1342904f065c1b198dc9cf495f098"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/monitor-vacuum-analyze.md",
+    "sha256": "2892272011710eb49b3f185ec12f15ce9ce4c365792c672f6e2a9c90da426a1a"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/query-composite-indexes.md",
+    "sha256": "73e42424e671f0266e74fdb220db3196790f69fb43e2b19c7b9483eb4971b554"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/query-covering-indexes.md",
+    "sha256": "daf2a7f0477fb7357b62b5fb5b185b1995a77a186347e45cb780e25e7a7589b6"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/query-index-types.md",
+    "sha256": "d46ccff68e3d6e1974da0189478cb5bfad64ce58dc12f051544a38af3cd3392f"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/query-missing-indexes.md",
+    "sha256": "91ad8b0ff4365704b4830a7f077c6f140f7140fd5d3ce5cd0b92b160cf9e25f1"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/query-partial-indexes.md",
+    "sha256": "6448982bc8558c6555284958edc331b29239c6a0130e6b4501dd6d4da607a6dd"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/schema-data-types.md",
+    "sha256": "e01b58c14c7f3f65d8ead580b9a4fcf70b83baaab0f9a5f83c569c9fd113e8c8"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/schema-foreign-key-indexes.md",
+    "sha256": "7587713d12a65a212365459b3d39e4717d8a79e4073b10bd62f1054d8192c0dd"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/schema-lowercase-identifiers.md",
+    "sha256": "4bc80f70865f2390872591f326c8a6be6456a0aeb5a7e5a2475d7cd9d43059ab"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/schema-partitioning.md",
+    "sha256": "541e13fbeaf4bb1485c9059d4c9417dbdb766cf16f4237cd63a04ada7ec45b90"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/schema-primary-keys.md",
+    "sha256": "3c8beabef82066f9a0838b926da0885117fd2d9a263aaf84cb5ca9e5f0d400e9"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/security-privileges.md",
+    "sha256": "095909274a4fb43df785d7144cf674eeb40284d2d45628f14af4108737b93663"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/security-rls-basics.md",
+    "sha256": "e04dd1a3a382aafdaaa73fe9f7976352acdde6e90c2a2470d281b94d4f44b096"
+  },
+  {
+    "file": ".agents/skills/postgres-best-practices/rules/security-rls-performance.md",
+    "sha256": "ee62c6e34468df8673d625291c1fcd7fb87041f122325eba224fc492cfe01bb3"
+  },
+  {
+    "file": ".agents/skills/postgres-patterns/SKILL.md",
+    "sha256": "2b07d5f7de1b68a93c8b25d093be2f0e9bfde11b8f488bd5433f0bac15415074"
+  },
+  {
+    "file": ".agents/skills/postgresql-optimization/SKILL.md",
+    "sha256": "7e38bae10d0df33400530075c9b0d2037f97bcbf7c8532bacc3e373a55a74e34"
+  },
+  {
+    "file": ".agents/skills/postgresql-table-design/SKILL.md",
+    "sha256": "b4b19384e3a4b377f6eb1e0e9b96589e73e18515d3714e93300f4f6b3aa8e194"
+  },
+  {
+    "file": ".agents/skills/postgresql/SKILL.md",
+    "sha256": "4908afc41b07fa0d9764f8c8f3b9439bd1c9841d8fce4ffbdb76599d3eb5d157"
+  },
+  {
+    "file": ".agents/skills/projection-patterns/SKILL.md",
+    "sha256": "fa2d89a056705bc02a88d60ada7633efc60f5bb35b115706b5e01c9c5dfebe25"
+  },
+  {
+    "file": ".agents/skills/prompt-engineering-patterns/SKILL.md",
+    "sha256": "c455dde62511e04c420824be5dd5e516ab34d07842019dd7be2c9b41ca1e46bc"
+  },
+  {
+    "file": ".agents/skills/prompt-engineering-patterns/assets/few-shot-examples.json",
+    "sha256": "8e1ade9727b0bb1fb5540a781192b67e2692fbb5908ffe9eac3ec7cc2fbc6216"
+  },
+  {
+    "file": ".agents/skills/prompt-engineering-patterns/assets/prompt-template-library.md",
+    "sha256": "c5756b6f9c5558d8ca82d845fd50492b53f1f4d6d02cf27585f411440a4723c2"
+  },
+  {
+    "file": ".agents/skills/prompt-engineering-patterns/references/chain-of-thought.md",
+    "sha256": "155af3b1d240b67970870940cc90396ba9e66580a9487bb0f7bd288ad10622f5"
+  },
+  {
+    "file": ".agents/skills/prompt-engineering-patterns/references/few-shot-learning.md",
+    "sha256": "d8784634f7beb4c60c51add45203ef2d9d0e4e3accbb81ba3295f87d893dba10"
+  },
+  {
+    "file": ".agents/skills/prompt-engineering-patterns/references/prompt-optimization.md",
+    "sha256": "5c25ad9b49045ef35c55b531bd227f04628b0018080b0d4f05cb20b01b44ee41"
+  },
+  {
+    "file": ".agents/skills/prompt-engineering-patterns/references/prompt-templates.md",
+    "sha256": "18db56a32be1639072631f0f7256b153acd678fe6092edad23b2a4a44016e3da"
+  },
+  {
+    "file": ".agents/skills/prompt-engineering-patterns/references/system-prompts.md",
+    "sha256": "88aa10639dad981b07f3bba05539c4eefcc5fba5ed255c60eab0df238778e000"
+  },
+  {
+    "file": ".agents/skills/prompt-engineering-patterns/scripts/optimize-prompt.py",
+    "sha256": "e2bd63207f0b6ed40944d8bb49311e0c97babb40d0fae974580c2dd3be99a671"
+  },
+  {
+    "file": ".agents/skills/react-modernization/SKILL.md",
+    "sha256": "ce8ebd1bf0bc8fe9875c319a1e9733f3e648ced8613e817b9425b13312242b23"
+  },
+  {
+    "file": ".agents/skills/react-native-architecture/SKILL.md",
+    "sha256": "1aa7fa4f77c51ef12def87f62ececd39793c016b142871d7e9e73e9ece9ff22e"
+  },
+  {
+    "file": ".agents/skills/react-native-design/SKILL.md",
+    "sha256": "fa3d0ce1471434f25fcc382adea035c410bbb70b90ecfd2ae8132b5817f47fe8"
+  },
+  {
+    "file": ".agents/skills/react-native-design/references/navigation-patterns.md",
+    "sha256": "40492b05323510a35f143fcc8c12d546aa6af72ced69590378035dcfe755ebd5"
+  },
+  {
+    "file": ".agents/skills/react-native-design/references/reanimated-patterns.md",
+    "sha256": "2641447f2177fc4ebc6ee640c5ad6228085ce2b8a0196ab06a3cebf56aecf49d"
+  },
+  {
+    "file": ".agents/skills/react-native-design/references/styling-patterns.md",
+    "sha256": "34f3aa61037e8e330a964eced3742f58af673bb0c7e0f7e3455fa700c8feea74"
+  },
+  {
+    "file": ".agents/skills/react-state-management/SKILL.md",
+    "sha256": "267787794aed292d8d383aaff58bbcba0aa904cac76d4fc616aa611dd1d06ea8"
+  },
+  {
+    "file": ".agents/skills/react19-test-patterns/SKILL.md",
+    "sha256": "3f0e423124fb2e7f719c5e88a0c231c35d0c95c8235ddd20e44d4d28d3699665"
+  },
+  {
+    "file": ".agents/skills/responsive-design/SKILL.md",
+    "sha256": "d0f921e02824d38376b5abf4219c4c63ff032e5359bcfb2127b3e174c4641d8a"
+  },
+  {
+    "file": ".agents/skills/responsive-design/references/breakpoint-strategies.md",
+    "sha256": "187dbb9c0539da7fdd2adfe0e5ca30da1e18213eb8de2bdeb614dd3b10715d38"
+  },
+  {
+    "file": ".agents/skills/responsive-design/references/container-queries.md",
+    "sha256": "a636c054f5202b6ed175a5fefa182303755f178727a2c77d6e430de61a775a5e"
+  },
+  {
+    "file": ".agents/skills/responsive-design/references/fluid-layouts.md",
+    "sha256": "7af797111a73717507dd9e5ba73bae0cd755811e3edd50183470ba68a8c7f67c"
+  },
+  {
+    "file": ".agents/skills/screen-reader-testing/SKILL.md",
+    "sha256": "591c7ff80f40ed866071920f723c1d22a6ceb096c0794aeec1cf9562865119d8"
+  },
+  {
+    "file": ".agents/skills/secrets-management/SKILL.md",
+    "sha256": "da14565446a404c0a3ca2cf4363f755dc06a351c4b588be453ea73680d5658d0"
+  },
+  {
+    "file": ".agents/skills/sql-code-review/SKILL.md",
+    "sha256": "2e67c2fa2875f299d5f839942a72822d30981d4e19052dfe32455a0482a9267d"
+  },
+  {
+    "file": ".agents/skills/sql-optimization-patterns/SKILL.md",
+    "sha256": "59e7e3b2ebfc7cd15fd8c5e1df751b983b11f92dba4eb27cb87515047bb38623"
+  },
+  {
+    "file": ".agents/skills/sql-optimization/SKILL.md",
+    "sha256": "d87639dea8e0208e2161b78b22f6427b0fdf59e95e693b40d48b1226a0c35ccf"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/AGENTS.md",
+    "sha256": "1a01240f530ee598781060b8428de4d6e9b626d5f69a3b9ad35f1a49b6312603"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/CLAUDE.md",
+    "sha256": "a54ff182c7e8acf56acfd6e4b9c3ff41e2c41a31c9b211b2deb9df75d9a478f9"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/README.md",
+    "sha256": "5194fb8833f9f45ff524653f902ffc7b39050febf1cfc0b0da3d69a85a08bfc7"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/SKILL.md",
+    "sha256": "6d995f160d13c818dcdb82e1768b2fb6051b719be40fbdffc525780ce3148f04"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/_contributing.md",
+    "sha256": "02804a4f97b869030cbdacb1f3c5ece77cee284fb92ff65dff4d34732a6898b1"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/_sections.md",
+    "sha256": "ad2d6f6b0938ff844f7f8971153ab6d08a03ef6511b02fb9cee9336c7b209e93"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/_template.md",
+    "sha256": "39e9fce3c6ae1af110f689e018d4417f3547ed0417a7b6198b207285e60bf9b8"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/advanced-full-text-search.md",
+    "sha256": "0682b713263c5b6b9638a31f810bad07aa179bc4f79bbb787b92ed287e00fe76"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/advanced-jsonb-indexing.md",
+    "sha256": "9bcbf7da33f6fe6fa9525680ca26d4e3412b534104cffb5f8529596d76631e4f"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/conn-idle-timeout.md",
+    "sha256": "cd4386d0b5a2bd6d0148975f0f379016b47c7cf139b9483c4f24619c6a89f5e3"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/conn-limits.md",
+    "sha256": "9ed6e5e3a45458a52f2863a60324a05d80da1d9f3e23bcb83b06f464f6a3cee7"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/conn-pooling.md",
+    "sha256": "60cd5f7942c44bdf6d8622a49a2e9f0f7fd01daf8e62bd1bd66b195cd6942975"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/conn-prepared-statements.md",
+    "sha256": "5ce48ff1e426c9b90c75c5733817fc2dd8feea9e4db3298ec9373b9cd0cf3bf8"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/data-batch-inserts.md",
+    "sha256": "98251b608bb6cfefd28828c9e5fffc705a155f1212fa0cb82904c5bc2e417572"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/data-n-plus-one.md",
+    "sha256": "f5c60f85f208161cd7567bb7cff0f559618814216a4426bb1351b51f75ec334d"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/data-pagination.md",
+    "sha256": "c0bffeb6880c1f5b961e7c2ff36fd16686ebb09e5e49ed17499654beabea3e60"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/data-upsert.md",
+    "sha256": "b366aa7da1e7929fba3011f99d949b2593967920d0c3c8572e07c0407c367054"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/lock-advisory.md",
+    "sha256": "6d6b50c5ec9f85eb7aebbb1466e642e427c1732efa558488a9cae7ef9903febd"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/lock-deadlock-prevention.md",
+    "sha256": "55f2074581d4db4996fc3ea1d3c120295209a70115f773e2c54f6b312405b293"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/lock-short-transactions.md",
+    "sha256": "2538a22231c0dfde9967812b6bd5fb347287b671f72806495f89d0d0764e5fe6"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/lock-skip-locked.md",
+    "sha256": "42c7492ba7f5d2c8ede9a5af072ea63deacf71e5695e022cae15b46b1ce4df13"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/monitor-explain-analyze.md",
+    "sha256": "94881b47194cb164b1d2a004e79f181370af44ec830b9263e990e2710bd02b76"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/monitor-pg-stat-statements.md",
+    "sha256": "812bf181876bacac5a2f914e7ffcf2a0a215b6d18dda752e65e75d926cbbcef4"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/monitor-vacuum-analyze.md",
+    "sha256": "8d35221e676f13b122865d5df947a008c41367bd180010e52fde3c429e8552a9"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/query-composite-indexes.md",
+    "sha256": "7e75d1b4d4431cb874ecc28710e95b7d2d7364511daa5d2c8e9d7de7ce1d0054"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/query-covering-indexes.md",
+    "sha256": "028770393de8c0be6dcc7b9fb017f8209761d1854ebf433f036367e602f2d04d"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/query-index-types.md",
+    "sha256": "5f054ce4f835091bb5ff89875deb5f8ade9e447e2ea62d1ca07382d104af0f2d"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/query-missing-indexes.md",
+    "sha256": "15ddf120c86020612d2713225c850e0e4f022b38021f40f45e5bbe58f245dcc3"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/query-partial-indexes.md",
+    "sha256": "106e2b88ff64115efa0a6b5f448d31788681493eeec05ad373f7c2ce6c8e0381"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/schema-constraints.md",
+    "sha256": "d6e16d565c9832b70f8b1d472f7dc86dafa1351a44e8da72c88b48d337f73d7f"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/schema-data-types.md",
+    "sha256": "df3197b3393f37b065396c2d3d2035d870d5d572ceaf6562e7c85559dcd11871"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/schema-foreign-key-indexes.md",
+    "sha256": "b49a4e74ded6dd2a2bcf82d21fd22470c403b54cc526dc387f95c001c005c5d2"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/schema-lowercase-identifiers.md",
+    "sha256": "e7e3e073df2fd787cc4e58dbfe1b7eb1f80439326042c5e73a69ae8a3b1dd734"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/schema-partitioning.md",
+    "sha256": "d940ee09551e970f97c629e816502989c37f7dcea1df94b4b52f79f6eefc9971"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/schema-primary-keys.md",
+    "sha256": "8e4350d0c4b0034fa843ef74716978729329543ff57fe9fad1d22e31a86ae0c5"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/security-privileges.md",
+    "sha256": "079b20aba6ce8dbea81678fafdd95b4f9785440e91d07eb96029104597cb9693"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/security-rls-basics.md",
+    "sha256": "e1b419ae752d06f6180a0dd61fa21cfdc2b19e34902495bd2827d3e6e350dfe3"
+  },
+  {
+    "file": ".agents/skills/supabase-postgres-best-practices/references/security-rls-performance.md",
+    "sha256": "acbccc505618d213a1d3e227bef4411444564bb4233bebb46fab4dc71e04320c"
+  },
+  {
+    "file": ".agents/skills/tailwind-design-system/SKILL.md",
+    "sha256": "8d25209a0f910b45d6f6bef88b6281adf57fa1376a5a423e316de7214985f42c"
+  },
+  {
+    "file": ".agents/skills/tailwind-design-system/references/advanced-patterns.md",
+    "sha256": "3115a12da147a0bb8924dd0ae85b01a6bb2a26a852e6f7146b131e23d5117f13"
+  },
+  {
+    "file": ".agents/skills/token-efficiency/SKILL.md",
+    "sha256": "ee0e8bb0aad469b80ed5f22cb61778dfb869fbc0826b2bf3f548d448e74541a5"
+  },
+  {
+    "file": ".agents/skills/unity-ecs-patterns/SKILL.md",
+    "sha256": "6bdd20cc5f4c9c2de5d8c06e5ae53e706eabe535d17bf08f1c6158b6345eec7a"
+  },
+  {
+    "file": ".agents/skills/visual-design-foundations/SKILL.md",
+    "sha256": "9eb0a5cb44e486b2451d0f6d7fd3196c06e8431350961c7f6ac6c0559f15a76b"
+  },
+  {
+    "file": ".agents/skills/visual-design-foundations/references/color-systems.md",
+    "sha256": "7db826a73ff31f026d4e298d0fa36a19a25769ce8521c7b114f87446db84a849"
+  },
+  {
+    "file": ".agents/skills/visual-design-foundations/references/spacing-iconography.md",
+    "sha256": "9dbdbb3f86b1152dab2a33f4cb3ff71f925b718c167c140093b140f32b3b91a3"
+  },
+  {
+    "file": ".agents/skills/visual-design-foundations/references/typography-systems.md",
+    "sha256": "3d65b8f0458fe4c06b16ed0a3043f5330fe9ff9d773c8bcd164da12d22ecf435"
+  },
+  {
+    "file": ".agents/skills/web-component-design/SKILL.md",
+    "sha256": "bc9c8a3a25389b0a5b9cfba65dbc00bd96f8453bb99a603f9899e602afca793f"
+  },
+  {
+    "file": ".agents/skills/web-component-design/references/accessibility-patterns.md",
+    "sha256": "9d72b85c42ccc8bc2b4969a5ecb672356b1425c05d3d7bea3d547b1ccdee7993"
+  },
+  {
+    "file": ".agents/skills/web-component-design/references/component-patterns.md",
+    "sha256": "3b8a3144d1deaae8e0f3b40311315ad34b32dfca50430f47e70dd0c67a5f1d4f"
+  },
+  {
+    "file": ".agents/skills/web-component-design/references/css-styling-approaches.md",
+    "sha256": "6f721362131e1f03168fa80f9818f4d56c2903b4667bdde8f18e55588b4946c8"
+  },
+  {
+    "file": ".env",
+    "sha256": "972bf4d055e6f9a30d36cafc2b4b3ddba08bc9b4772d0041a723a7fae944b923"
+  },
+  {
+    "file": ".env.e2e.example",
+    "sha256": "92cf8735f9f8c62a174e20ede5f3aeb93da1b86b8faef653887304ab44b4ff96"
+  },
+  {
+    "file": ".env.example",
+    "sha256": "54ac4b8060f68626a778b9e077071822efebaa8b527841f397c673daf8708d6d"
+  },
+  {
+    "file": ".env.local.example",
+    "sha256": "b9c8f54e9e9f72814dd4731305e5fb7f7858a3caef57f255e74f01f4d1daa8f4"
+  },
+  {
+    "file": ".eslintrc.js",
+    "sha256": "8017fa4668607f1962c68cc608ccf38a73ab98a4871b092930fd06cdbfd7a2a6"
+  },
+  {
+    "file": ".gitattributes",
+    "sha256": "9ad1f19d1c785aa7ac3b6ff438348440c5eefc75fa61dc2a059cbdceeb5e485d"
+  },
+  {
+    "file": ".gitignore",
+    "sha256": "0443ce92f110f0627574988850ffc1509b0eefb417cace65d772de09ed1883c2"
+  },
+  {
+    "file": ".superpowers/brainstorm/1150-1781241783/content/student-physical-tests-layout-options.html",
+    "sha256": "3ac801b415dc9b7f898b4ae2e8dcf83f31d63c9b176c188e1f931062d7a08be7"
+  },
+  {
+    "file": ".superpowers/brainstorm/1150-1781241783/content/waiting-1.html",
+    "sha256": "f2eb36c0be5a94a71bfe703f74aac5d59bf137bae59a03adecddc910066c83eb"
+  },
+  {
+    "file": ".superpowers/brainstorm/1150-1781241783/state/server-stopped",
+    "sha256": "c6eec8715c6f8dc95525e9cb7d888547d8e2f9055c9dba6cbbccc46c7cf790ac"
+  },
+  {
+    "file": ".superpowers/brainstorm/1150-1781241783/state/server.pid",
+    "sha256": "4af17ac1f0338a7edc5c275899123a6daa8de1288879faf955d995960629fa92"
+  },
+  {
+    "file": ".tmp-store-check.png",
+    "sha256": "cba8f7a44d1be1438ca13b627d1ad61e25a82508cc49393e303aa983bd6c7b0e"
+  },
+  {
+    "file": ".vscode/settings.json",
+    "sha256": "8eb95bcbc154530931e15fc418c8b1fe991095671409552099ea1aa596999ede"
+  },
+  {
+    "file": "AGENTS.md",
+    "sha256": "7a94162fa5a94920e53ab20511ea86edd236a46184f981720a51f710a64fe0c0"
+  },
+  {
+    "file": "DOCUMENTACION - APLI 2/Apollo - Bonilla - Alcance del proyecto.pdf",
+    "sha256": "7aa587d186b03328d89c4140c9682b20dab20eead2715251b0e14c3539489e62"
+  },
+  {
+    "file": "DOCUMENTACION - APLI 2/Arquitectura_Proyecto.pdf",
+    "sha256": "3f983ba2d6cb540f14c562cbf9630d416c26e6c4e7e684ae0564ac826b6b9394"
+  },
+  {
+    "file": "DOCUMENTACION - APLI 2/Casos de Uso.pdf",
+    "sha256": "5fc9194d3f9ac7cd6f02496593a3591cec628456a45fb404b8c5a92015b7a2ea"
+  },
+  {
+    "file": "DOCUMENTACION - APLI 2/Diagramas_de_Procesos/DP_Post_Sistema/Comunicación y notificaciones.mmd",
+    "sha256": "921a5a3fdeeee3c7ea8effbc9ed68e6521cd5892c91edc06008a3177f9e6b961"
+  },
+  {
+    "file": "DOCUMENTACION - APLI 2/Diagramas_de_Procesos/DP_Post_Sistema/Control de pagos.mmd",
+    "sha256": "efdf42da2d9ee669e9fb8406669dc6bd848549495b37a05933a4c4c8a43772ec"
+  },
+  {
+    "file": "DOCUMENTACION - APLI 2/Diagramas_de_Procesos/DP_Post_Sistema/Gamificación del progreso del atleta.mmd",
+    "sha256": "9b148fe4bf485754a22151fc27eeff009da0bd867587df6966506525060fee6b"
+  },
+  {
+    "file": "DOCUMENTACION - APLI 2/Diagramas_de_Procesos/DP_Post_Sistema/Generación de reportes.mmd",
+    "sha256": "41bf2c93ee62609f922d88466ccf5c76db123dec173f86776ed5afee7d33afbc"
+  },
+  {
+    "file": "DOCUMENTACION - APLI 2/Diagramas_de_Procesos/DP_Post_Sistema/Proceso propuesto con el sistema RIOVOLEY.mmd",
+    "sha256": "d8d9390dcd8bd328c952f18f5f97b36148383d577c95f36bdcc5ad54bdd81481"
+  },
+  {
+    "file": "DOCUMENTACION - APLI 2/Diagramas_de_Procesos/DP_Post_Sistema/Registro de asistencia.mmd",
+    "sha256": "af29b28a4b28c0eda8cc8ba44552a88af9385ba7be4798608d746917f8e855f8"
+  },
+  {
+    "file": "DOCUMENTACION - APLI 2/Diagramas_de_Procesos/DP_Post_Sistema/Registro de pruebas físicas.mmd",
+    "sha256": "7143b255752b6853fb7692f32d74f4ee735562e66ef69d5baa61549d7def9ead"
+  },
+  {
+    "file": "DOCUMENTACION - APLI 2/Diagramas_de_Procesos/DP_Post_Sistema/Registro y gestión de atletas.mmd",
+    "sha256": "f02ebca47f4244c13e276534c78b9d04d496b43b53f4a389ca234c6b7b78a0b9"
+  },
+  {
+    "file": "DOCUMENTACION - APLI 2/Diagramas_de_Procesos/DP_Pre_Sistema/DP_Registro_Asistencias.mmd",
+    "sha256": "ed5038204883c5ff7d3d803708a40d572efd85737fbd23e21db12bb36a14d61e"
+  },
+  {
+    "file": "DOCUMENTACION - APLI 2/Diagramas_de_Procesos/DP_Pre_Sistema/DP_Registro_Pagos.mmd",
+    "sha256": "e3deb1d7678eb1716a7d50ba509d058e0cafdf95a5cbc530a400bc826c3881e2"
+  },
+  {
+    "file": "DOCUMENTACION - APLI 2/Diagramas_de_Procesos/DP_Pre_Sistema/DP_Registro_Resultados_Fisicos.mmd",
+    "sha256": "dd68a0cae88b45c3fd770deb7d7d526f74f2dd438569119052fb38fcaa93906f"
+  },
+  {
+    "file": "DOCUMENTACION - APLI 2/Diagramas_de_Procesos/DP_Pre_Sistema/DP_Registro_Usuarios.mmd",
+    "sha256": "6cb56575d26d94ebd7f5ea1d7491954eb269df47cad61293daa80b0061a62f09"
+  },
+  {
+    "file": "DOCUMENTACION - APLI 2/Diagramas_de_Procesos/DP_Pre_Sistema/DP_comunicados.mmd",
+    "sha256": "542db38ac1c7839827d8cff9a6162c576d4cf0636c8198985e8e874b7eee13d6"
+  },
+  {
+    "file": "DOCUMENTACION - APLI 2/Diagramas_de_Procesos/DP_Pre_Sistema/Proceso general actual de RIOVOLEY.mmd",
+    "sha256": "ab3be3094a1355c8ab0f84d4a639027e5043f39c635a6505840baff3bc51c495"
+  },
+  {
+    "file": "DOCUMENTACION - APLI 2/Estudio de Factibilidad y riesgos del proyecto.pdf",
+    "sha256": "d6c2052976031fa4837d8c23eb46ac5c94fc8641135ef51a8f2be4943558032d"
+  },
+  {
+    "file": "DOCUMENTACION - APLI 2/Historias_Product_Backlog_Scrum_RIOVOLEY_reajustado_16_sprints.xlsx",
+    "sha256": "2fd8248233fd84fdecbe49af2f8d99d0f129dcd156c23cab1ab9119cd6c86e47"
+  },
+  {
+    "file": "DOCUMENTACION - APLI 2/Requisitos del proyecto.pdf",
+    "sha256": "c6ec8cde8f98aafeb46744131d18d3d8c1a73de813dd22f27f98c4dc0da1fb2c"
+  },
+  {
+    "file": "GUIA_SETUP_OTRA_PC.md",
+    "sha256": "60ad6f3bf48c2577a953616e21fca96d9ea08edc33fed5300e47dda03d3bed1e"
+  },
+  {
+    "file": "PROYECTO_RIOVOLEY_COMPLETO.txt",
+    "sha256": "ade4ae3f600fd6d06c4e52d352183b1dcf168c836549bd21b1f50ee1094bf46c"
+  },
+  {
+    "file": "README.md",
+    "sha256": "190e94a4a69b903079745ea8c87c23e79d45ee2c17c6676cf3bad094af70101d"
+  },
+  {
+    "file": "README_DATABASE.md",
+    "sha256": "41b97124cb6a35d446fd59f305c35c7d9b367f1d992c2811a12d7d0c1e3785cf"
+  },
+  {
+    "file": "SCHEMA_MIGRATION_AUDIT_PHASE1_2026_04_27.md",
+    "sha256": "eeba01fd959f8125b4b69a507dfa81851d3292a0521ec9b2f45e7a2532296f24"
+  },
+  {
+    "file": "SCHEMA_MIGRATION_AUDIT_PHASE2_2026_04_27.md",
+    "sha256": "6fa2aa2b5e3ee3fb95b6d2bbb79e864e7dea2d336cc572fb02aee1d3a0ba0db5"
+  },
+  {
+    "file": "SCHEMA_MIGRATION_VALIDATION_RESULTS_2026_04_27.md",
+    "sha256": "1af7719f69d029f0c1ba891e97ec9aef3a2100426e512e8d3380fc0ba3d9db63"
+  },
+  {
+    "file": "android/.gitignore",
+    "sha256": "065e4a92a240fe11a0ea230491ad9dabef143f5fd5a3e6884ad6f0395666a971"
+  },
+  {
+    "file": "android/.idea/AndroidProjectSystem.xml",
+    "sha256": "2554dcd4cf39576ef664ed9813181dc0991445ae282578655e874b3a0aa4a0a5"
+  },
+  {
+    "file": "android/.idea/migrations.xml",
+    "sha256": "918665a665f2859813cf8ed2d7a82024b04c1b65465dd84d25fddc99fe876e43"
+  },
+  {
+    "file": "android/.idea/misc.xml",
+    "sha256": "fbcf14b0d4cf838f65b923a82587dbdb95364e0c6ff3218c2c5706367e4e8722"
+  },
+  {
+    "file": "android/.idea/runConfigurations.xml",
+    "sha256": "e2320a40fad164ac31f7a7afd9765fd1608235d0b904b148ed243c573c94cb69"
+  },
+  {
+    "file": "android/app/.gitignore",
+    "sha256": "99c54e51ee601a60fbde8016b2cbf717483bc2e92773be86c9247d02a7fa6ea4"
+  },
+  {
+    "file": "android/app/build.gradle",
+    "sha256": "db0c2a2902869dcfa445f44c98e76127616165a260ae1411324d6f36d16620df"
+  },
+  {
+    "file": "android/app/capacitor.build.gradle",
+    "sha256": "fd98a1eae4bb0b68c5076e3746f61fdba0a9c840f63547be07a71505d0d1723d"
+  },
+  {
+    "file": "android/app/proguard-rules.pro",
+    "sha256": "1cf8c57e8f79c250b0af9c1a5a4edad71a5c348a79ab70243b6bae086c150ad2"
+  },
+  {
+    "file": "android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java",
+    "sha256": "ff50b4c110a7434312f9af54171f9e8523b015836f707c9b387b76d4c38a97f8"
+  },
+  {
+    "file": "android/app/src/main/AndroidManifest.xml",
+    "sha256": "0ae34f17c88ce9c29efa8ff6354aa48c3dc1a9f467b99a7e770be379b82a71d8"
+  },
+  {
+    "file": "android/app/src/main/java/com/riovoley/app/MainActivity.java",
+    "sha256": "e17c11a95836524fa2cc30936d6158b7ca4aa3dc5af564686126933bc85e4e64"
+  },
+  {
+    "file": "android/app/src/main/res/drawable-land-hdpi/splash.png",
+    "sha256": "c259477b93b3e8f635acbfecbbdf74baf835a8e8b1767d8454096caecc3134a0"
+  },
+  {
+    "file": "android/app/src/main/res/drawable-land-mdpi/splash.png",
+    "sha256": "98295f705565d25df48c9e0e0d78478c42bacacaf4a81828fc04d0b85f3bd86c"
+  },
+  {
+    "file": "android/app/src/main/res/drawable-land-xhdpi/splash.png",
+    "sha256": "c14a2db59dba78bc67a2f1863faeb43f2e6c9a577d6656f966da4aca1b07c49b"
+  },
+  {
+    "file": "android/app/src/main/res/drawable-land-xxhdpi/splash.png",
+    "sha256": "c561e69666f601a9fb6a238225ef964886f534fa092b2fcf26cb20551f4183ec"
+  },
+  {
+    "file": "android/app/src/main/res/drawable-land-xxxhdpi/splash.png",
+    "sha256": "a2765b7e021e14f713540aeda301ef5807509202283ccf38d0cc57eeb9fd5016"
+  },
+  {
+    "file": "android/app/src/main/res/drawable-port-hdpi/splash.png",
+    "sha256": "dbe7ea24b7e0b04e65af1df4a4eae4995db3febae6922a219fd708594378c296"
+  },
+  {
+    "file": "android/app/src/main/res/drawable-port-mdpi/splash.png",
+    "sha256": "40c646595286af381c8ab00ae8e93615f673b9da8145a62a4588cd1621bdd70f"
+  },
+  {
+    "file": "android/app/src/main/res/drawable-port-xhdpi/splash.png",
+    "sha256": "b7e4887d02bee0d939fa4a33244236be66dad0750f973e076b74e36c4cadc23f"
+  },
+  {
+    "file": "android/app/src/main/res/drawable-port-xxhdpi/splash.png",
+    "sha256": "e434b504e8664e26593cc7880ae55555949bcdf7e6c28122c78f8d8d79372beb"
+  },
+  {
+    "file": "android/app/src/main/res/drawable-port-xxxhdpi/splash.png",
+    "sha256": "b282e5da5a97f90ebf6ce682d09a5b7171aa5c27443429c682384620c6ede2fe"
+  },
+  {
+    "file": "android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml",
+    "sha256": "a8514094f754b099d3e55ce1d6e0b2de79db418b2eeacb0fc2a6bb0bfadef221"
+  },
+  {
+    "file": "android/app/src/main/res/drawable/ic_launcher_background.xml",
+    "sha256": "718ba51adf166bb55c3e9936bb8199a0148457f7f0191aaa2f37a94f3159d6ec"
+  },
+  {
+    "file": "android/app/src/main/res/drawable/splash.png",
+    "sha256": "c8fd54f2e5cc1c1f8540c70ce2cdb42de939b957b3822229b49afcc141c304ec"
+  },
+  {
+    "file": "android/app/src/main/res/layout/activity_main.xml",
+    "sha256": "5d770feb791313b947020cbfc57e5c733c556dac5e9e49261a1190e527073253"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+    "sha256": "9c3a7e0a6515c6e1a7ae834a9ae430311ebc3241f7b2e5e7f0460aa690709a7c"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+    "sha256": "9c3a7e0a6515c6e1a7ae834a9ae430311ebc3241f7b2e5e7f0460aa690709a7c"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-hdpi/ic_launcher.png",
+    "sha256": "b9cb8a1294ecf715741ff8d2f50823de1157e64eac6e1c2e6e32cfef4dc2c718"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png",
+    "sha256": "490d0266cb181679dc8b1e4ce05e65a55d96265a9f211f5a89dea7a894375461"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png",
+    "sha256": "b9cb8a1294ecf715741ff8d2f50823de1157e64eac6e1c2e6e32cfef4dc2c718"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-mdpi/ic_launcher.png",
+    "sha256": "0d77408ad3a5cdc522be95bb142f6a9617d7a0daaf1b1be242d7e5edf763ccd8"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png",
+    "sha256": "53f96615367d41778fbe8f8ac65ac3e81abf13f7e0005ac0548e820eb60e8b31"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png",
+    "sha256": "0d77408ad3a5cdc522be95bb142f6a9617d7a0daaf1b1be242d7e5edf763ccd8"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xhdpi/ic_launcher.png",
+    "sha256": "6186a556f28c59acc850aa703d88d2d4b9601edcc5a449990bc12f1015106282"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png",
+    "sha256": "75cffc32eeae16bfb4638dade5e571d00b3e74238c33822bacf95050d605367b"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png",
+    "sha256": "6186a556f28c59acc850aa703d88d2d4b9601edcc5a449990bc12f1015106282"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png",
+    "sha256": "ad05af8897f4fc479d128ddb994c5d47d934f495c088e16d59355c8cb9c3f205"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png",
+    "sha256": "c44c8fbd81ddbd065f47532cda372bb20307b2b74d46f8f82045009bdaf602be"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png",
+    "sha256": "ad05af8897f4fc479d128ddb994c5d47d934f495c088e16d59355c8cb9c3f205"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+    "sha256": "f715411d1ab4eba543208c189425053355904c56b2c6c95c2d31c758b927ba0e"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
+    "sha256": "cd52ba03426707b71268e389f65671679f0dc383b30a20bc04d140d9476646f2"
+  },
+  {
+    "file": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png",
+    "sha256": "f715411d1ab4eba543208c189425053355904c56b2c6c95c2d31c758b927ba0e"
+  },
+  {
+    "file": "android/app/src/main/res/values/ic_launcher_background.xml",
+    "sha256": "987d58fca6ce70188e6e9a51534b18d583205c08e4a459cec772d078531bcb54"
+  },
+  {
+    "file": "android/app/src/main/res/values/strings.xml",
+    "sha256": "4d06eafb9704da2e82b8b3031470ece6de904280ae147818ba1ee7d444d13ca4"
+  },
+  {
+    "file": "android/app/src/main/res/values/styles.xml",
+    "sha256": "18ebba36575e9461347ee67361b23caf095f158ee85dbefe1b83a4669ba5bd6c"
+  },
+  {
+    "file": "android/app/src/main/res/xml/file_paths.xml",
+    "sha256": "a46ed43ef65c90cb6778f4581decf3556e3f0055aad8f36d69dae16f9a0e99aa"
+  },
+  {
+    "file": "android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java",
+    "sha256": "d4045ae8fac1f0807e6b24eb34e68409a9a235df9d1a3f896fb8c9a49424363d"
+  },
+  {
+    "file": "android/build.gradle",
+    "sha256": "46ade7db7afeb8049ccea59fce83095dca736ceb8c9acd79cc944e988c3357d9"
+  },
+  {
+    "file": "android/capacitor.settings.gradle",
+    "sha256": "f43b4972ad0584261db6a50c5eed266b3a132cdd28dc26fb7440d95e484b1af2"
+  },
+  {
+    "file": "android/gradle.properties",
+    "sha256": "9e3ac07b5c61f46f3a012dc5b9891fffa7283c9dfce0fdbbecf516f654f09309"
+  },
+  {
+    "file": "android/gradle/wrapper/gradle-wrapper.jar",
+    "sha256": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172"
+  },
+  {
+    "file": "android/gradle/wrapper/gradle-wrapper.properties",
+    "sha256": "9a479a85aa879bb55284fc16d0de5b81a745c3854f4e2d88c42e7debaf007435"
+  },
+  {
+    "file": "android/gradlew",
+    "sha256": "b187b4c52e749f5760afdd6fadc31b2a98ad35fb249bf0dff03b72650f320409"
+  },
+  {
+    "file": "android/gradlew.bat",
+    "sha256": "94102713eb8fb22d032397924c0f38ab2da783ba60d07054339f1190a0c4e2cd"
+  },
+  {
+    "file": "android/settings.gradle",
+    "sha256": "6ce098d15ebd69b44c4ecd786bca1bdc366340d2459b2af4d7bb0ab317aa9669"
+  },
+  {
+    "file": "android/variables.gradle",
+    "sha256": "83d502c9ed8fcf1dd4791482067abeedbebae49fafe9cd14a8a1f5891deb0d88"
+  },
+  {
+    "file": "capacitor.config.json",
+    "sha256": "0071039f64909883f5a43720d7fddf7689c1dd4102c079b6f168fd9c7fbf683b"
+  },
+  {
+    "file": "database/BASELINE_SCHEMA_CANONICAL_RUNBOOK_2026_04_27.md",
+    "sha256": "0392d952bd943ebe5e27ba3b482a26ddb160200163cdffb9aa3e1dd7d45e4b81"
+  },
+  {
+    "file": "database/PHASE3_SCHEMA_MIGRATION_EXECUTION_ORDER_2026_04_27.md",
+    "sha256": "0f243f77c9c500be4cb6bff110a29b817fa135e310357891e68d15ff8fe60456"
+  },
+  {
+    "file": "database/POLICY_HARDENING_PHASE4B_RUNBOOK_2026_04_27.md",
+    "sha256": "53d07f4aa023b8553cbba182179f15e46c95b7631fcdaddf4cccbc97e6d0fc73"
+  },
+  {
+    "file": "database/RLS_REMEDIATION_2026_10_27.md",
+    "sha256": "c7afc1b3f1882f3ff2cd7873fdd7f175786b1798408fdaf2567cffdae0817c6d"
+  },
+  {
+    "file": "database/add_email_phone_encryption_fields.sql",
+    "sha256": "fb7e51b0775b5c0ebb9884fd4b40419e29c9b462c43271713e4fee84fee4e98f"
+  },
+  {
+    "file": "database/add_estudiante_to_enum.sql",
+    "sha256": "40e645a1fc5919dd741e0f0079d4d60d783c8d863cdb39e59a8be3a92ccbadc8"
+  },
+  {
+    "file": "database/add_first_login_field.sql",
+    "sha256": "dcc7f3b26e19d4c4caeef8f874d9362296100ab82a2e9c407437840073b87f57"
+  },
+  {
+    "file": "database/add_physical_test_strength_fields.sql",
+    "sha256": "b5002ad0a14801d9eb29a422e99c22872b629d32afe429a34aee4fb7e6228421"
+  },
+  {
+    "file": "database/add_physical_test_strength_fields_schema_2026_04_27.sql",
+    "sha256": "941246f4083b0ba613fa46f8d0d90992a725c5babc801ec16bc52feba3a41030"
+  },
+  {
+    "file": "database/add_schedule_descriptions.sql",
+    "sha256": "8851ae2369749a13a98f0ad5d5210ad4ba1d09f401206a3352cb36431ab7892e"
+  },
+  {
+    "file": "database/add_trainer_permissions.sql",
+    "sha256": "0913c3cfdb63ebd84bf347d73f8270a81f0bf28fb24ba8dd916a522a306c1a03"
+  },
+  {
+    "file": "database/add_training_categories_catalog_schema_2026_05_21.sql",
+    "sha256": "682dd486fb7d1a3361f95a07ecf80df6cf0de6fc87ed98d62e48290bfaa327c9"
+  },
+  {
+    "file": "database/audit_client_logging_phase7_2026_05_25.sql",
+    "sha256": "279cc053f477eb9dfa24e50e325d6541164391496e44ba7a4e8b2902e34f62fd"
+  },
+  {
+    "file": "database/audit_schema_migration_usage_phase1_2026_04_27.sql",
+    "sha256": "f83bb5a5f71dffa8683656267b271b3ed2b546137d688ff3e4df8099f2c806b2"
+  },
+  {
+    "file": "database/baseline_schema_canonical_2026_04_27.sql",
+    "sha256": "bd73544c1142226a871111511a37663d30023d5318b8307d5f3be0a63a98aef6"
+  },
+  {
+    "file": "database/check_enum_values.sql",
+    "sha256": "6fca403dffc618c4a45681fac390892db1fd18e8033e0467c48a19bb0fb11f2a"
+  },
+  {
+    "file": "database/check_my_admin_role.sql",
+    "sha256": "7e0da0113b79e7279dccde68b1e50bc9e3223afb7ae8dc6e07872072410154ce"
+  },
+  {
+    "file": "database/check_my_role.sql",
+    "sha256": "f452dd4d1af72536eea0107766a871cc33d7929cfe36248ec90ea247c30d78e1"
+  },
+  {
+    "file": "database/check_payments.sql",
+    "sha256": "b6f7b74f93ca5d0e240eda5bd49551fea6f19cd045bd0bf7e1f85112e731dfb5"
+  },
+  {
+    "file": "database/cleanup_orphan_auth_users_phase8_2026_04_16.sql",
+    "sha256": "0c0954ae96cd2b8bacdef53c93c4d9ef1be943d18d3c8d62e0e84a6738204bb6"
+  },
+  {
+    "file": "database/consolidate_policies_phase4_2026_04_16.sql",
+    "sha256": "93a064758719c5a9613625889fb4e2af29fbb4a6a27e308bb9269f11818959a8"
+  },
+  {
+    "file": "database/create_admin_in_users.sql",
+    "sha256": "c1c74495cd17e0b9bd9120b2e176961a3e7398b528843bb5d7abacc1b5ddffe5"
+  },
+  {
+    "file": "database/create_public_compatibility_views.sql",
+    "sha256": "3d5c2604986217a033ad7480bf81ae7ebcd007418239db54ae6803e87cfe5625"
+  },
+  {
+    "file": "database/create_trigger_sync_roles.sql",
+    "sha256": "398b965bd3ac40dd0a0a0bef435cf0a5cdfb99988e9bd51a9e0b857ec02b7c11"
+  },
+  {
+    "file": "database/create_update_password_function.sql",
+    "sha256": "7c0c38ccd276924c319cbd95fa30728de1f7b1e84595929fd36fd9679bb8684a"
+  },
+  {
+    "file": "database/create_user_profiles_simple.sql",
+    "sha256": "0ca4537c26936602809b5b8f6c574ed089e1657708a3f00b01c973faec92e0e6"
+  },
+  {
+    "file": "database/debug_pagos_vencidos.sql",
+    "sha256": "115ae54bfbdc26616905abed4102944badb7d02f94333c2ceb7350115d915845"
+  },
+  {
+    "file": "database/delete_orphan_users.sql",
+    "sha256": "65ca2e2501ad9b80681a7d60c0495d4fd7fef1567b615665455244d5dd33226e"
+  },
+  {
+    "file": "database/diagnose_loading_issue.sql",
+    "sha256": "7410ea94b425ae82d58ea690e591133f0b057fc66eb677024837b39a2e7f6fef"
+  },
+  {
+    "file": "database/diagnose_user_issue.sql",
+    "sha256": "fa808fc6abc5ac6bda1cf2802b52e920706e8461187c14d7d62fff100204e138"
+  },
+  {
+    "file": "database/disable_all_rls.sql",
+    "sha256": "16456e61073dab728c16a9dd2509d4fd54554141002b13a992ea7897b927f7bc"
+  },
+  {
+    "file": "database/disable_rls_users.sql",
+    "sha256": "a088276155da2d8c277c00b608a77425a79ea59b53aa2b847c487fd818d81ce5"
+  },
+  {
+    "file": "database/disable_schedules_rls.sql",
+    "sha256": "b02e1f251993d4141fb7181ec86eeca4aecbab61e17c992f3bda7dd0dbbcda99"
+  },
+  {
+    "file": "database/drop_legacy_user_push_tokens_2026_06_05.sql",
+    "sha256": "1e64e3e9cb0d1d10f014cc374d264edfbb4163432cd1d649e23e9522a20af7b9"
+  },
+  {
+    "file": "database/emergency_rebuild_payments.sql",
+    "sha256": "57db5780b59f4aa79ad57d4724799fc55933de4ce2fff5d1ba7ab41a82712acf"
+  },
+  {
+    "file": "database/enable_rls_all_tables.sql",
+    "sha256": "cab6a4add4afc9cdca81e4be05ed2dc352b457a039bf4ccf35e62fb7ec600f84"
+  },
+  {
+    "file": "database/enable_rls_all_tables_schema_2026_04_27.sql",
+    "sha256": "2df50ffd0911c0069d3fbfb0e32b6c20a208e9cb1cb95445ed33f34d836e01e6"
+  },
+  {
+    "file": "database/enable_rls_phase2_2026_04_16.sql",
+    "sha256": "85c6a9c169709ee0f4e377bb2e78bcdb6ff9dca5c0e208383c98ad737c08eff6"
+  },
+  {
+    "file": "database/enforce_student_birthdate_min_age_phase9_2026_04_20.sql",
+    "sha256": "d79e55ccb55ebc05ba3055aefbf6ae9033e05e11bee8d0334938a7da69690e2c"
+  },
+  {
+    "file": "database/explicacion_pagos_vencidos.sql",
+    "sha256": "52e1c9dc37d494accaf31be4990a0cfd7304b2c9ce4338e70cb8ba4e68e0bb53"
+  },
+  {
+    "file": "database/fix_admin_and_password.sql",
+    "sha256": "7859952eb509c5128ab3fd9f56bb027ecf0e1ae7ab2900da42019ffd29e33377"
+  },
+  {
+    "file": "database/fix_admin_insert_function.sql",
+    "sha256": "e9f430df6e7c07afacabc6f26beb322ef817b34862f358c5ba379b70373ccf93"
+  },
+  {
+    "file": "database/fix_admin_insert_users.sql",
+    "sha256": "8f862451efab5a830944a09570f813229801e24a011452bb9480d413154a4885"
+  },
+  {
+    "file": "database/fix_admin_policies.sql",
+    "sha256": "39bb22325ec396e8adf82c5863e57dc0985539031fa5bbffbd3a6a06973503e9"
+  },
+  {
+    "file": "database/fix_announcements_with_creator_view_after_schema_migration_2026_04_27.sql",
+    "sha256": "453a67cdabeccc96162bbd47330bc89dfe9f0590f00b02931bb8a085b0f0c712"
+  },
+  {
+    "file": "database/fix_attendance_dates_simple.sql",
+    "sha256": "86da95daef4d3c4cc767aee9432533769e03fcb75389682bd52ba3e68d513c15"
+  },
+  {
+    "file": "database/fix_attendance_dates_timezone.sql",
+    "sha256": "67a719967389438a5af41324cba8bb4489a6de6c060191a108ea27ed1ea38094"
+  },
+  {
+    "file": "database/fix_auth_500_after_schema_migration.sql",
+    "sha256": "aa9b578789851f549e570e71b54ac94eb8c5300e3250d47fc2cc67372478c8c6"
+  },
+  {
+    "file": "database/fix_create_admin_user.sql",
+    "sha256": "eada18d88b171b5cf8ea00fdb9d6cf408fda0e7ae82a10269906fdca99194289"
+  },
+  {
+    "file": "database/fix_gamification_avatar_style_schema_cache_2026_06_09.sql",
+    "sha256": "060350b0660435b8cef642bb1c8115d8ea8bc1cd1e8ab51b3ead8bdf5e4d1d81"
+  },
+  {
+    "file": "database/fix_incomplete_user.sql",
+    "sha256": "d942290170a8cee631581512fcb820db4e8c16a3aeda8d878ff22ef8ce042989"
+  },
+  {
+    "file": "database/fix_password_security.sql",
+    "sha256": "3dce633812ce6e4aa1fc50075d90e40f95262b08f07242eb66e75d58397bc9e0"
+  },
+  {
+    "file": "database/fix_payments_audit_type.sql",
+    "sha256": "caaa26202ed292a14817b76e4e66491b8c376afb3ccbe8ead8b9907af96b0d33"
+  },
+  {
+    "file": "database/fix_rls_recursion_final.sql",
+    "sha256": "88e90592abe6947a691d4cb31563260b6e189bd58e9bbba529d7cfab17743049"
+  },
+  {
+    "file": "database/fix_schedules_descripcion_after_schema_migration_2026_04_27.sql",
+    "sha256": "532b1ca188ac3aa14222940c0d35abe0d1277c063dabd9a12cbd21d0e98766f4"
+  },
+  {
+    "file": "database/fix_student_role_sync_phase7_2026_04_16.sql",
+    "sha256": "1bfebd8b780ed370c4e844b35d50690b9a29cc4a5472c55e2177926092e4f230"
+  },
+  {
+    "file": "database/fix_students_rls.sql",
+    "sha256": "24e255677b4776015d36d1340dda47ff42be3e4c111c2b550d5930eab8bbd1ea"
+  },
+  {
+    "file": "database/gamification_octalysis_phase12_2026_06_07.sql",
+    "sha256": "7fc0d731420f70514d7070d6041f9588ff8849d806b43f153ceac0ee12a6ee11"
+  },
+  {
+    "file": "database/gamification_permissions_hotfix_phase12b_2026_06_07.sql",
+    "sha256": "94e17490fe949be5eaad789e902e3dc4da0ab820cff0006cfb644fcde479f38d"
+  },
+  {
+    "file": "database/gamification_permissions_phase17_self_write_2026_06_09.sql",
+    "sha256": "55f345a4824f7f9e1d6bac42a4a283a7a06ba0940c36a1a7a751e28cf0abb76e"
+  },
+  {
+    "file": "database/gamification_phase13_foundation_2026_06_07.sql",
+    "sha256": "544b01fa2350ff130c675b3aa6af498954af1f638e3efb944a0a5a59618b780a"
+  },
+  {
+    "file": "database/gamification_phase14_identity_2026_06_07.sql",
+    "sha256": "4251e895a00cd337d13e8c1ae8e6df26415f749ca5edd3c6ecb7e3276044aa68"
+  },
+  {
+    "file": "database/gamification_phase15_economy_2026_06_08.sql",
+    "sha256": "071054b9ec0539840632a623a990c26e61c7b01814eeb2ff55a891cd5f5accd9"
+  },
+  {
+    "file": "database/gamification_phase16_cosmetics_2026_06_08.sql",
+    "sha256": "c8a069cfc1fb9cda7079fd375fa66a651051c3bc7a3ddf571a162e48adf86b72"
+  },
+  {
+    "file": "database/gamification_phase17_avatar_2026_06_08.sql",
+    "sha256": "934d4e3bb8f5027d7a417a79b4798788e02ca7c692917bcc08c48ed72ed856ad"
+  },
+  {
+    "file": "database/gamification_phase18_profile_media_2026_06_11.sql",
+    "sha256": "0ef5de08982e7b67437eca7eaa8a61bf88300697725f233e8c2f5952fa1e3943"
+  },
+  {
+    "file": "database/gamification_phase19_avatar_models_2026_06_11.sql",
+    "sha256": "74d7a41abe4cf301caf703236399729148ece658058a51017b1f0476cc6f4d57"
+  },
+  {
+    "file": "database/gamification_phase20_cosmetic_catalog_expansion_2026_06_11.sql",
+    "sha256": "272833d0e477db8667aca991a7579c805d17985634877c52b67c78b6ad9607dc"
+  },
+  {
+    "file": "database/gamification_phase21_cosmetic_unlocks_2026_06_11.sql",
+    "sha256": "d18146eb625a3a47a65e0e3857df6e8f7a24f9628ef29ccd1c180f373fecf893"
+  },
+  {
+    "file": "database/gamification_phase22_athlete_stages_2026_06_11.sql",
+    "sha256": "c1e6da78e8e9f017e3128325874367013ec989ac3a00fc4a38c3b0292afe00c6"
+  },
+  {
+    "file": "database/gamification_phase23_campaigns_2026_06_11.sql",
+    "sha256": "ddf1cf28d84e1570253a4087b5079579df5ed51036bc1beec706684e6726269c"
+  },
+  {
+    "file": "database/gamification_phase24_hidden_rewards_2026_06_11.sql",
+    "sha256": "31e6a836cb9518294494e7f40a634bb7371dd7ce9230e528b7e10b7420d5d0ea"
+  },
+  {
+    "file": "database/gamification_phase25_photo_store_expansion_2026_06_12.sql",
+    "sha256": "d6b39a76d5837994662b17a0c18ac7af3d36c8e6aca8fad5fa3ea32fef1f2b49"
+  },
+  {
+    "file": "database/gamification_phase26_competitive_cosmetics_renderer_2026_06_15.sql",
+    "sha256": "3c4e9bbfb0d9973683dc698cec4b1b2603e27fe50787a27ecc2263ce5697ca77"
+  },
+  {
+    "file": "database/gamification_phase29_cosmetic_metadata_backfill_2026_06_17.sql",
+    "sha256": "1c24343e33ac80813f86f59422c8c7712d11bf9c4594d10397a6eef9e0dd5709"
+  },
+  {
+    "file": "database/gamification_phase30_storage_assets_2026_06_17.sql",
+    "sha256": "5a40d8b0de721b151a228446232c546cd6bbfa4191432bc3a93779c1287c6ff5"
+  },
+  {
+    "file": "database/gamification_phase31_deduplicate_cosmetics_2026_06_17.sql",
+    "sha256": "a7c9b911a9cee5ab6a784f21e1bf887e9ef134cc79f74a5b835083ca9c432b70"
+  },
+  {
+    "file": "database/gamification_phase32_catalog_grants_2026_06_17.sql",
+    "sha256": "363ca852a2fd4dfe773de0c1f1af2e9ae22dfd83fd64435f67afae32c36faa4b"
+  },
+  {
+    "file": "database/gamification_xp_ledger_daily_login_dedupe_phase28_2026_06_12.sql",
+    "sha256": "ba7317719bae6f0c520c5574aed5818e91210e34b730524b33bf608120aa6ac1"
+  },
+  {
+    "file": "database/grant_test_gamification_coins.sql",
+    "sha256": "57ddd463a624a5540208b34b6f0b04f4f8e4f600709952d3b9ce47c3ba1218ed"
+  },
+  {
+    "file": "database/hardening_policies_phase4b_2026_04_27.sql",
+    "sha256": "ee332991f8dcf5a601a52d5bddb8bd17597c88ccffb5ce34c072143bdcedacee"
+  },
+  {
+    "file": "database/hardening_policies_phase4c_2026_04_27.sql",
+    "sha256": "9bf09fefad3a66e5720801e54b0f913e3d4f91c1947796a44f4ba941391908f0"
+  },
+  {
+    "file": "database/hardening_public_view_grants_phase1_2026_04_16.sql",
+    "sha256": "d52fade00f24dce172f0e02b1cde239827616d1a22dacc72bfff7e61fe5b2856"
+  },
+  {
+    "file": "database/login_lockout_phase6_2026_04_16.sql",
+    "sha256": "f65c2d48dc9885b2e73d825b2d04d1d11eb78117e1413ecbab12e31cfbacc464"
+  },
+  {
+    "file": "database/migracion_esquemas_2026_03_29.sql",
+    "sha256": "ef4d15a077315a230a5190095a7780ff8658fb1b9404ea2cdcadb8f40b18d710"
+  },
+  {
+    "file": "database/mobile_push_android_phase10_2026_06_05.sql",
+    "sha256": "efaffb534e097f189eeae8b861bbec9840a5ace791b7db732f052d3f10b95b55"
+  },
+  {
+    "file": "database/mobile_push_android_phase11_2026_06_06.sql",
+    "sha256": "7bb93bd95327fba4f1c801f90c6a8149fc69e14e902f6ba10c88ba624ca140c9"
+  },
+  {
+    "file": "database/mobile_push_notifications_phase26_2026_06_12.sql",
+    "sha256": "2a192c03458673913fb527c9bbca7895392293999014617e8eb7c63ec3d2d124"
+  },
+  {
+    "file": "database/mobile_push_public_views_phase27_2026_06_12.sql",
+    "sha256": "50bf2e68dba0ecaaecce27697206a5562bc7dcdbe8c3deed83c0ec0b5fe72cba"
+  },
+  {
+    "file": "database/normalize_rbac_phase3_2026_04_16.sql",
+    "sha256": "f687c2794a6d0324c531d0230e2b66a66eb83666e49e8b39ce0e74b351ac3d65"
+  },
+  {
+    "file": "database/notifications_inbox_state_phase34_2026_06_22.sql",
+    "sha256": "a00d711e773ad75515f02035693da63a9149954bd49aa6b6f91e0c6f025fd15c"
+  },
+  {
+    "file": "database/payments_fix_custom_period_trigger_2026_06_17.sql",
+    "sha256": "db904928566c87d30641d516ff6fcf1caba3f533b57138a6abec41302875208c"
+  },
+  {
+    "file": "database/physical_tests_field_descriptions_phase12c_2026_06_07.sql",
+    "sha256": "be0f5fe6d515bc3ebc107a4aae77200f50d14b681b0633f91c8784e51d4934aa"
+  },
+  {
+    "file": "database/recover_payments.sql",
+    "sha256": "8a57def10f0a4843eaefdcd233796b6d60973e7fab626defdf6757f8094fe322"
+  },
+  {
+    "file": "database/redesign_memberships_payments_2026_05_19.sql",
+    "sha256": "e11f5349bf19fa9901d6397a2427f05381dd033446ac415449f8115dbd4ce9ce"
+  },
+  {
+    "file": "database/remove_altura_peso_from_students.sql",
+    "sha256": "05027bad3a92e07edf4dbbfafafbb7137576d5eed67c2f6051e59cb11fb8d0b8"
+  },
+  {
+    "file": "database/remove_altura_peso_from_students_schema_2026_04_27.sql",
+    "sha256": "59422c887015acf4d7b4f3885b8a66abcb08e5980c207bf3a7ec585537abed18"
+  },
+  {
+    "file": "database/reporting_phase33_persistent_reports_2026_06_19.sql",
+    "sha256": "112f39d0f20c06933ced04b87ace9c170aa81fc4f6c6a0c98d64da5bad07e390"
+  },
+  {
+    "file": "database/restructure_payment_types.sql",
+    "sha256": "3f0db924dba8bb1d9612d7be2210bd97336590ec038c83b2ef2aedbca862204d"
+  },
+  {
+    "file": "database/result_export.json",
+    "sha256": "b073fecab6b745f2f560639ee425c0bc2e95d661f4a8738881e23d26846dfd5d"
+  },
+  {
+    "file": "database/setup_soft_delete_protection.sql",
+    "sha256": "9f5a47fbb4106f557cbba98e6e58582961a7bee39a141af1f7f5a48e6700ff16"
+  },
+  {
+    "file": "database/supabase_user_profiles.sql",
+    "sha256": "ebe786b010bc5572bc9baa51560f6aacf2a612d3d2a01564a6efb1093560705c"
+  },
+  {
+    "file": "database/sync_first_login_from_password_change.sql",
+    "sha256": "162965d530629e6a54ba05514ed42a256f01019f8c1024c7d7043ff81c2a72e9"
+  },
+  {
+    "file": "database/sync_last_login_from_auth.sql",
+    "sha256": "5065d506dea01a249258192c247a1071b470563e71a17c1684479edbce71e470"
+  },
+  {
+    "file": "database/sync_user_profiles_roles.sql",
+    "sha256": "72b9a13e0d5fabbf6fba7da4a2a53ce6e19b5c96c174bf3573a40059e5d872ba"
+  },
+  {
+    "file": "database/tests/gamification_shop_consistency.sql",
+    "sha256": "4bac5239193cd538abfe8d807f7336bc7ebba050e022800501b3974c2d41f7b0"
+  },
+  {
+    "file": "database/tests/rls_access_matrix.sql",
+    "sha256": "55b61f6d97fb74cdd4d963e594c188222627b9d9a0c139a5addbcd8f4321dd78"
+  },
+  {
+    "file": "database/tests/training_categories_access.sql",
+    "sha256": "030d459654a41b1652da055650d5a7ffb8d755797a9c3ca80423c06118b3c672"
+  },
+  {
+    "file": "database/update_admin_role.sql",
+    "sha256": "8cbc5218b33ea7aa77c208b5bc4239042a4aba380e3319821d8c7ffdf4ad1db7"
+  },
+  {
+    "file": "database/update_open_gym_category.sql",
+    "sha256": "c8ca995b606beec92604d04b0b1d85a402595b5e8eaef1be779fe2bc8f6ab75f"
+  },
+  {
+    "file": "database/update_open_gym_category_schema_2026_04_27.sql",
+    "sha256": "416b662c3e65bfc7cafaf351053b4c2ee254f6ab09cda587e8345f1080d94b1c"
+  },
+  {
+    "file": "database/validaciones.sql",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "database/validate_physical_tests_constraints_2026_04_28.sql",
+    "sha256": "147f88bedd8be4f449bb613211a6b52444d5e9fce22e9283e8ec5cde4e3db6cd"
+  },
+  {
+    "file": "database/verify_roles_status.sql",
+    "sha256": "315214911a1fc902a1bd1120d2e9c011b9e1104012d8b19c7d5f39fddb90e4ce"
+  },
+  {
+    "file": "database/verify_security_matrix_phase5_2026_04_16.sql",
+    "sha256": "c7809cf4474a6273570a0f38bd7cf0e84d32b9a28567543b801bc61ff4d129fb"
+  },
+  {
+    "file": "debug-estados.js",
+    "sha256": "899028cfe069fc468639e6f2e0ea10b51a1dbe20cb363b8aa366df77b27821b0"
+  },
+  {
+    "file": "debug-pagos-vencidos.js",
+    "sha256": "f5b65e9e061a397e865c3d945f9e4527850f4d24d8036b42787e7638916b1e6a"
+  },
+  {
+    "file": "docs/AUDITORIA_WEB_2026-10-27.md",
+    "sha256": "d4100cfbd731497235c0f32cb24d6b4cabc9dfdf4b56c26b488ff3e77135bab7"
+  },
+  {
+    "file": "docs/CREDENCIALES_RECUPERACION_2026-10-22.md",
+    "sha256": "34894a9e3835288cd8c335a05cec2dce0e2d94c5b1546abb7fe0f04876e4f508"
+  },
+  {
+    "file": "docs/RESTAURACION_PC_2026-10-22.md",
+    "sha256": "e2a601cc2d234eaaf9ee6fec754836851a981cd7408aa46ec0e62eab5e3eaa94"
+  },
+  {
+    "file": "docs/gamification/octalysis-architecture.md",
+    "sha256": "926348343cf4f948e5dbbb289e00e474c159606348524cd8c0303af9126f1c4e"
+  },
+  {
+    "file": "docs/gamification/octalysis-architecture.pdf",
+    "sha256": "b4ac15d28da8bc8b2d6aed81e482c718eebb6a6bb5a9616b45f00320fa40363f"
+  },
+  {
+    "file": "docs/gamification/octalysis-coverage.md",
+    "sha256": "233cbdf915eea904691f5b1c32362a58e48751102bbdfe973a1182255dd318dc"
+  },
+  {
+    "file": "docs/gamification/octalysis-coverage.pdf",
+    "sha256": "e5eb45f6e36a837f337772cd8f227d49db3ca2e4787f870593e60117551a7356"
+  },
+  {
+    "file": "docs/gamification/octalysis-decisions.md",
+    "sha256": "b14d6ff74b4e8f58c3e2e4831933f35cb9ac56fa35e61f20796d639fe4a1b470"
+  },
+  {
+    "file": "docs/superpowers/plans/2026-06-07-gamification-phase1-foundation.md",
+    "sha256": "dcc5c812e851b8aff365637c2a3c3e5ed52011ba720d6bca7f94fc78d2173055"
+  },
+  {
+    "file": "docs/superpowers/plans/2026-06-11-gamification-core-drivers-structured-reinforcement.md",
+    "sha256": "3fe474260f5e7f909216f1ec1fdbdd11a85e3dae8a99160a05055d0b2a21185c"
+  },
+  {
+    "file": "docs/superpowers/plans/2026-06-11-gamification-identity-visual-expansion.md",
+    "sha256": "72f66bb3e2b27f209f865b9f254542446ae8f5e0c3331cc0c1d05122000cf21d"
+  },
+  {
+    "file": "docs/superpowers/plans/2026-06-12-student-physical-tests-redesign.md",
+    "sha256": "120fbac784a234e1df6ce8728118519231150c01e8d3f7fb377c80db6c3eaf6c"
+  },
+  {
+    "file": "docs/superpowers/plans/2026-06-15-gamification-cosmetics-renderer-expansion.md",
+    "sha256": "268dbc627ed4091e04a3aec48d683fe4905bd55b5dbcc4fc9248c1a76fb2c210"
+  },
+  {
+    "file": "docs/superpowers/specs/2026-06-07-gamification-expansion-design.md",
+    "sha256": "b15663afe08f5ae07483f3d3745516c525db38fe520064065c2daf3948ff141b"
+  },
+  {
+    "file": "docs/superpowers/specs/2026-06-11-gamification-core-drivers-structured-reinforcement-design.md",
+    "sha256": "1dc891466e3f3a94c67a056e251a479981465a7d80a848b8df58fb8426d8ac4e"
+  },
+  {
+    "file": "docs/superpowers/specs/2026-06-11-gamification-identity-visual-expansion-design.md",
+    "sha256": "36b427e0954e379ae2e4c59196a56c960e7d8b00cdaa5f5d74baffdc2d2b0612"
+  },
+  {
+    "file": "docs/superpowers/specs/2026-06-12-student-physical-tests-design.md",
+    "sha256": "855667cd21ea07203e52ba293bc860f81b4eac70c270b4c4b64b5eb1543bd25c"
+  },
+  {
+    "file": "docs/superpowers/specs/2026-06-15-gamification-cosmetics-renderer-expansion-design.md",
+    "sha256": "029eb4177927abf36701525223f01e83ce9e14628b37b69c4e9f980235494ae2"
+  },
+  {
+    "file": "email-templates/password-recovery.html",
+    "sha256": "8dc1af0a62b84976a80786b8eb0bddfbba470fe0783b37f87fbe92a2941834f3"
+  },
+  {
+    "file": "fix-lint.js",
+    "sha256": "42fa49835a91c7c420272caf7e0052ef63d976ab8c1aada266bc647fcfb5225b"
+  },
+  {
+    "file": "functions/.eslintrc.js",
+    "sha256": "b1edc14b559b62efa0a85bf3480be6aaba79ada7591cb56ee5b00917dd09abbb"
+  },
+  {
+    "file": "functions/.gitignore",
+    "sha256": "efcf3d0efaa4287fef0d8170018c5ee5189a567d55d04098b36f82e5ed768b8e"
+  },
+  {
+    "file": "functions/package-lock.json",
+    "sha256": "d5b6f5525419385cb14ad91894a71bfe591a489a856c96efcbcfa447bb70967d"
+  },
+  {
+    "file": "functions/package.json",
+    "sha256": "eebd324eb41e75e3118a03247dfdde7fb8a2e0d7757cf707d2e52c4c5d764af1"
+  },
+  {
+    "file": "functions/src/index.ts",
+    "sha256": "d55587dc96a5bb5d5fed11b9aaaaf0247432d7ea59806696aabe78d13ba6e36e"
+  },
+  {
+    "file": "functions/tsconfig.dev.json",
+    "sha256": "d9bd21c0ba299132e8b752672aeb1fb0451eaa79b78857b24db3d1cbffe874cc"
+  },
+  {
+    "file": "functions/tsconfig.json",
+    "sha256": "c0f3ab489eda3fb5fc49b4fe510e745e06f5abb8927976f9e68fbc182b3d8e05"
+  },
+  {
+    "file": "package-lock.json",
+    "sha256": "e3917e549785df7bfe7794fb6843644a2b380723688209aa834ae05883fe341a"
+  },
+  {
+    "file": "package.json",
+    "sha256": "d9854477a952fa070267e99bf5f3f09fe1dea42c5505f8fb1d56fa2687b7d9ed"
+  },
+  {
+    "file": "playwright.config.js",
+    "sha256": "eba29c053c4d75b55258ed5e1387260b349f43f4e6103502f2dc76164e76e2b2"
+  },
+  {
+    "file": "postcss.config.js",
+    "sha256": "251ecddd4672c9cf467547e3dc535de00ad2129df26e7e7ae728fa4e5ac45fc5"
+  },
+  {
+    "file": "public/404.html",
+    "sha256": "e563e1ff4560580c7c3df289ee273261e581077bbfef8dc3a9a58d1c3952c8ab"
+  },
+  {
+    "file": "public/apple-touch-icon.png",
+    "sha256": "12f642b105c2a77c89ef3315f7b9f6d2ee14160ec78079e2a9f63f646b36c915"
+  },
+  {
+    "file": "public/favicon-48x48.png",
+    "sha256": "6a664d1b4558d49d420fe53a154890f5a24b313fbc6421cbf2b0b1f077cdfeed"
+  },
+  {
+    "file": "public/favicon-96x96.png",
+    "sha256": "b0676da3dd3f3fab7183121b1ce3f058408e7dd9aa762269dafe87c2b4612021"
+  },
+  {
+    "file": "public/favicon.ico",
+    "sha256": "3d10f7da6c603178340081668c4ac5b3ae9743ca9a262ab0fcd312fbb9f48bdd"
+  },
+  {
+    "file": "public/images/2.png",
+    "sha256": "83f833f4b66116b45e8cbd101e06664343781a4b124f736ef76fa84ef9ac2859"
+  },
+  {
+    "file": "public/images/court-poster.webp",
+    "sha256": "853a1dc737f8e4bc2142d3bed1c934b60207e212904761e9eca31be3e37fa2e4"
+  },
+  {
+    "file": "public/images/logoRio-nav.webp",
+    "sha256": "5364c6581aed273608bf0c5b02fb5b3220b525c1edfdcfc2c185a036d8dfc9a6"
+  },
+  {
+    "file": "public/images/logoRio.png",
+    "sha256": "8339b916cc6a0a7e9cc6aea7509dc608b50775589c8a3ed69c9e1a6e768cbb57"
+  },
+  {
+    "file": "public/index.html",
+    "sha256": "de50c6583d83f39825ff26d322a5190f3bf09f6130a0f007b46467a3aa162395"
+  },
+  {
+    "file": "public/logo192.png",
+    "sha256": "093ba7f5f816b8a55175b637a6be72112843bc52424374016bdf06ac0905d6ab"
+  },
+  {
+    "file": "public/logo512.png",
+    "sha256": "c466f041fff2eee3a084154de16216b32acd59a51994d67c9927139e4ace900b"
+  },
+  {
+    "file": "public/logoRio.ico",
+    "sha256": "c5a09b73634565b031b0380ed2c60a4daab140c949b1da084848475c8beed7de"
+  },
+  {
+    "file": "public/manifest.json",
+    "sha256": "fe96404cf250253191f98b621067ba7646b6d96bb20a1b8307adc3d7ca5621bb"
+  },
+  {
+    "file": "public/robots.txt",
+    "sha256": "d371fe79c32a33248d79bc4b1dc44b824fe75b7d97bddfe54856e6568749005f"
+  },
+  {
+    "file": "public/sitemap.xml",
+    "sha256": "d96568aad0f7000c1084bc1563674eb381b8ee724dbf51f64fccd098de7e4a36"
+  },
+  {
+    "file": "public/videos/bg-video-mobile.mp4",
+    "sha256": "304bb9da41585813af86f24306f4d100dc4ebe5d700f4ad7588c559c25d3ff8a"
+  },
+  {
+    "file": "public/videos/bg-video.mp4",
+    "sha256": "e39e00ae97e58e093147e1653c2338239b5354c44034e5c5476e8e61507e3b9c"
+  },
+  {
+    "file": "refactor.js",
+    "sha256": "550b664a572f2056267f04c5ac34ed8c0c821359c67938766029c67fc36a2ef6"
+  },
+  {
+    "file": "refactor2.js",
+    "sha256": "433e1c2bad62c0a1ef8a8d0461644345a909a8505575d2e8e87381e73bd272f1"
+  },
+  {
+    "file": "riovoley/.eslintrc.js",
+    "sha256": "fa0851e75bc367594aaebd09d7e10c64b90cc822425c7b4cca99e433e4256937"
+  },
+  {
+    "file": "riovoley/.gitignore",
+    "sha256": "68fdd6967014fa987e370df8cbcd8a92cb96a73644860f4a240df799f2004fc4"
+  },
+  {
+    "file": "riovoley/index.js",
+    "sha256": "c927a0b4e6c51193c2661235473cf370383694b89847b7d139d3dae31f59aecc"
+  },
+  {
+    "file": "riovoley/package-lock.json",
+    "sha256": "8b61b17b21fd0a888ebf45040ef753cec870a7ff9fbab28549ad8d7cf34e94f8"
+  },
+  {
+    "file": "riovoley/package.json",
+    "sha256": "b769731be935a66aa8e2c55736edfd1b2e6b3b05b9f2d7e103da5fcd73daf942"
+  },
+  {
+    "file": "scripts/copyQualityCheck.js",
+    "sha256": "d3db9fae782f7c9991e3a42c907af3e90a4d8af1305da3eb1167e51a1a8a3262"
+  },
+  {
+    "file": "scripts/e2e/runRolesSmokeStrict.js",
+    "sha256": "67217be6aa7dd040e27ca717276fa2579ddcc0c7cf9ceaf0c80eb7c5c6fd6111"
+  },
+  {
+    "file": "scripts/verifyCredentialEmail.cjs",
+    "sha256": "13910f49f2d34ffc2a2ca1e5eeb4281294427ad2f428520358d80dfe8e834ccc"
+  },
+  {
+    "file": "skills-lock.json",
+    "sha256": "f2c2022c102ebb03368846610382699a61d1033febb9b5fa4d15b6cd694f56ab"
+  },
+  {
+    "file": "src/App.js",
+    "sha256": "eb01dedd03f6a3851cf7b2de4f583e9f2f1a8971c8b3a2ed3c07859f18c22edb"
+  },
+  {
+    "file": "src/App.test.js",
+    "sha256": "c7851fe5fdf8c6b12066a13efd73c2da666fd6c5bfa09e01b35abea37f941231"
+  },
+  {
+    "file": "src/Login.js",
+    "sha256": "46a451d99df923605b439076a31d5bd5cad7be3231a8c0c5924c7fafedc2a823"
+  },
+  {
+    "file": "src/assets/logoRiovoley.jpg",
+    "sha256": "a7413d5231b75c8adc2ebacadd5c42accb4d32deec15f7b6ce0f4a303b76d763"
+  },
+  {
+    "file": "src/components/AboutUs.js",
+    "sha256": "bc980f7bf30611cba8be3c6fa4381af57549f7d2b77df3327afb01d3d6be113f"
+  },
+  {
+    "file": "src/components/HomePage.js",
+    "sha256": "cc858751beaf441414f1daa776e6dcdd726f4f41c017ddf9ea3a51d1f60f40ba"
+  },
+  {
+    "file": "src/components/Horarios.js",
+    "sha256": "d22a1f0d148011eebfe09fb89ea9f5176873ad15df86606ec6856868a13875b2"
+  },
+  {
+    "file": "src/components/Navbar.js",
+    "sha256": "e17caaf028d7093ae376d47715a65461fdc8bf70db81002fc867b26a35ae8755"
+  },
+  {
+    "file": "src/config/appUrls.js",
+    "sha256": "4aa05178dba9bc792d2a9ffa3d309b9016aa68c0f0d7d0ee215b6ad8b9a0b622"
+  },
+  {
+    "file": "src/config/appUrls.test.js",
+    "sha256": "e82a9eb7cb28c628053cee212a7062a66059e38773b2719771f3ec152fa2bc96"
+  },
+  {
+    "file": "src/config/googleCalendar.js",
+    "sha256": "103dab52c5f56b35ec3b43a8924c2be70d7d36cbdc23ae3c023c399c54276a76"
+  },
+  {
+    "file": "src/config/supabase.js",
+    "sha256": "859b8d8d6fc72fd40075db5bad80681756092ff4a7de6891cc5314f6ad5963bb"
+  },
+  {
+    "file": "src/contexts/ToastContext.js",
+    "sha256": "160c7b1328fd2cf3aecd97fa5a8478b88fb2a0005070b6353f1bd1f9e7fef60b"
+  },
+  {
+    "file": "src/features/README.md",
+    "sha256": "ed7b7bbe97e37692d7fe450d604e8d471a4186a7793799af20bfdfa37c2a57a7"
+  },
+  {
+    "file": "src/features/_templates/feature/README.md",
+    "sha256": "0e50970e783ea5850fa1f18af9681537947f2f9833ea452b2a1a18f0d8d13428"
+  },
+  {
+    "file": "src/features/account-admin/README.md",
+    "sha256": "b35d6520e243b00024e3dcd9a9a9b57ff0205edca4815c422753667977be761d"
+  },
+  {
+    "file": "src/features/account-admin/accountAdminService.js",
+    "sha256": "dd8c97da70eb44409ff50eae1e607b11bdcde889774978fb52a7935a97bae635"
+  },
+  {
+    "file": "src/features/account-admin/application/useCases/createAccountAdminUseCases.js",
+    "sha256": "40005e26e616f34a1213941c6b71edc11906399255297d2b679dba050c1ae11c"
+  },
+  {
+    "file": "src/features/account-admin/application/useCases/createAccountAdminUseCases.test.js",
+    "sha256": "db3471a734f2079178c1f2a27a7717d3e26be275d5a1384eda8e9ef94b6880f0"
+  },
+  {
+    "file": "src/features/account-admin/domain/accountAdminError.js",
+    "sha256": "3ef2c53cbe060b9b4b8229166b29111e4f0b2027fe8c72248b6d052f9f519f00"
+  },
+  {
+    "file": "src/features/account-admin/index.js",
+    "sha256": "7599f87f51a643d73fad70043239deac47df34572ef2e67c4b5bd756bf0531cd"
+  },
+  {
+    "file": "src/features/account-admin/infrastructure/repositories/supabaseAccountAdminRepository.js",
+    "sha256": "58e0b98636edf10d8724c219d184eb7f19def91992a741dce1f3fda4fac7d1d4"
+  },
+  {
+    "file": "src/features/account-admin/infrastructure/repositories/supabaseAccountAdminRepository.password.test.js",
+    "sha256": "0642798e763d8561e325651cf49a2f02cb93c0a786f3d85e610b908b491d0737"
+  },
+  {
+    "file": "src/features/account-admin/presentation/components/ProfileSettings.js",
+    "sha256": "1e9cc915a36616927a229026555668df9041591d55d16e119a0542e154c9cec4"
+  },
+  {
+    "file": "src/features/account-admin/presentation/components/UsuariosManager.js",
+    "sha256": "e6355aa8641a30c4c7f85a877d41b0854e6f42768c18957495e667e0a4cad5f5"
+  },
+  {
+    "file": "src/features/account-admin/presentation/createAccountAdminService.js",
+    "sha256": "46ebce2103eecbb0be9c13483c5e7e544e6b1af46a2e2910e5f30a85a7c4a0c5"
+  },
+  {
+    "file": "src/features/account-admin/presentation/createAccountAdminService.test.js",
+    "sha256": "cb769786b4e2c14b624e188d08f6dcb95997ddb720f205af612ef95455bf6c8b"
+  },
+  {
+    "file": "src/features/admin-dashboard/README.md",
+    "sha256": "373ef90a9634303cdcac9f90c0996e2c917aa588b1a01b4ff4198f93d1be680a"
+  },
+  {
+    "file": "src/features/admin-dashboard/adminDashboardService.js",
+    "sha256": "c38d2b50284d57f2c7351c9c79c1c22257ebfa5fa49f929f188d7a549d827328"
+  },
+  {
+    "file": "src/features/admin-dashboard/application/useCases/createAdminDashboardUseCases.js",
+    "sha256": "4110690ffaa29c623565cef7c48af40684348c7115991a6929f94cae6c02b394"
+  },
+  {
+    "file": "src/features/admin-dashboard/application/useCases/createAdminDashboardUseCases.test.js",
+    "sha256": "5966e63ed651d05f1fb7fe1b93d64008715f1f0b45478e607a805f137a6182ac"
+  },
+  {
+    "file": "src/features/admin-dashboard/domain/adminDashboardError.js",
+    "sha256": "dd9c04e8ac8e87c42ee5f8293d97dba0c2c41a09d9552963df86725ffad12869"
+  },
+  {
+    "file": "src/features/admin-dashboard/index.js",
+    "sha256": "be5beb0502d7aefc522341259d477445c7f7b1c1359a82b33edf6d8b01d54910"
+  },
+  {
+    "file": "src/features/admin-dashboard/infrastructure/repositories/supabaseAdminDashboardRepository.js",
+    "sha256": "d183dfc9ff7c2d775df102be875d10bb576e5bef92c9d5d40f66de7a0720003a"
+  },
+  {
+    "file": "src/features/admin-dashboard/presentation/components/AdminPanel.js",
+    "sha256": "aa64c8b82f43dfd3181f9c9bc86e85badc428266b37f5e6b88193daf124208cc"
+  },
+  {
+    "file": "src/features/admin-dashboard/presentation/components/Dashboard.js",
+    "sha256": "8b5e9ec6ad9147b97c90767cd6d4030d5662a6daa61c0d26f6fd9a4e47dc13eb"
+  },
+  {
+    "file": "src/features/admin-dashboard/presentation/components/FinancialReview.js",
+    "sha256": "c96a3b407a4973657b2865531aee78bb195563e7f72da0c2190174ab27e68778"
+  },
+  {
+    "file": "src/features/admin-dashboard/presentation/components/ReportsCenter.js",
+    "sha256": "47fd96527f36a20a9aaa42e0c3fde0e793b1fb62cb09c86f647d2d8d43c13592"
+  },
+  {
+    "file": "src/features/admin-dashboard/presentation/createAdminDashboardService.js",
+    "sha256": "5edf9e4ec5fc54b2118e390a0b3bf1846927ad08ef08707f8868b208d0538103"
+  },
+  {
+    "file": "src/features/admin-dashboard/presentation/createAdminDashboardService.test.js",
+    "sha256": "0d93712a1475b35eb2cd4c466aa8f303e6189cefb1f927813f8d918a5f9599d0"
+  },
+  {
+    "file": "src/features/announcements/README.md",
+    "sha256": "52383445880414324579e12a6261a677649553f6294dc93af5105386a27d181e"
+  },
+  {
+    "file": "src/features/announcements/announcementsService.js",
+    "sha256": "1730d0ce2d12e33418a80fb36bc8b9d0f10c3f0277c345809c1579941ea126f3"
+  },
+  {
+    "file": "src/features/announcements/application/useCases/createAnnouncementsUseCases.js",
+    "sha256": "45db0faed0c55686802d3bdc7577ffe827b5aea049192ef3f5d5fa8dc50814ae"
+  },
+  {
+    "file": "src/features/announcements/application/useCases/createAnnouncementsUseCases.test.js",
+    "sha256": "e46b7f21a86943a74fbf31adb2658e97dd752ed8688f8052ef1c75a5b40437bd"
+  },
+  {
+    "file": "src/features/announcements/domain/announcementsError.js",
+    "sha256": "5b0c443865351f5e8689d4916da0e7f37f651e4433078d7549a319555ecabc63"
+  },
+  {
+    "file": "src/features/announcements/index.js",
+    "sha256": "f42069c52fec7b5d00690edbb6c2a7138937ee1b7d4dca1d3e7c291e1a4fad07"
+  },
+  {
+    "file": "src/features/announcements/infrastructure/repositories/supabaseAnnouncementsRepository.js",
+    "sha256": "cdd4298bde8bcb187c41a083c41c41c5f838f1ba871d0d75f823e180e62bc7b6"
+  },
+  {
+    "file": "src/features/announcements/presentation/components/AnunciosManager.js",
+    "sha256": "50317a465344e3f45f3add49d9d3cd8e59aed23cd36f009dae2a88ac22ad2d3e"
+  },
+  {
+    "file": "src/features/announcements/presentation/components/AnunciosViewer.js",
+    "sha256": "3f766bdc59b014bb84c6a18fe5f5b67b74b9023f745503e4f5c1feabd05b10f9"
+  },
+  {
+    "file": "src/features/announcements/presentation/components/shared/AnnouncementDeleteConfirmModal.js",
+    "sha256": "ec251cbebc0dc42981c713d7a186882e05aaecd6319fdadafc95412ff892c767"
+  },
+  {
+    "file": "src/features/announcements/presentation/createAnnouncementsService.js",
+    "sha256": "5402ac3ed794c88eee7481f3dfddacfb56401a331b3565310c15facd95287f56"
+  },
+  {
+    "file": "src/features/announcements/presentation/createAnnouncementsService.test.js",
+    "sha256": "43b38ba028bf4812e88d68d2494915c1dea031cdc20efe796331876c2b348578"
+  },
+  {
+    "file": "src/features/announcements/presentation/hooks/useAnnouncementsManager.js",
+    "sha256": "57517d36402e4b718fb142d78ae6d26f26461ff6220bb7289894bff08fadbd5f"
+  },
+  {
+    "file": "src/features/athletes/README.md",
+    "sha256": "3e6a0063d6e829efba5d39a04d4184ceb6c63bcd3f63b8827328664eb5cf55c2"
+  },
+  {
+    "file": "src/features/athletes/application/useCases/createAthletesUseCases.js",
+    "sha256": "459dbe5435067a819a3fed866f19cbcb96932aa5389f053705b879c5affcb9d6"
+  },
+  {
+    "file": "src/features/athletes/application/useCases/createAthletesUseCases.test.js",
+    "sha256": "df07e03b1ce2f2287801eb254db856923c5ac5cd08c10691f787a0374e93d4f8"
+  },
+  {
+    "file": "src/features/athletes/athletesService.js",
+    "sha256": "6d307fbc4081db8e0bb4e3d5d01693af21e77fd5e98052582aedcf48f4dbd5e4"
+  },
+  {
+    "file": "src/features/athletes/domain/athletesError.js",
+    "sha256": "6700a1c95122de9e5c7e3589c10fc3116f86becad6082ea5790cf324a24e6dad"
+  },
+  {
+    "file": "src/features/athletes/index.js",
+    "sha256": "a445b5dace35a47d46ab89a011034a94081966846c1cede72c763c842ef2877c"
+  },
+  {
+    "file": "src/features/athletes/infrastructure/repositories/supabaseAthletesRepository.js",
+    "sha256": "e8cb33626e751c1b604101475e39b871594e844112756e3c75d93be171b8c6e4"
+  },
+  {
+    "file": "src/features/athletes/presentation/components/AtletasManager.js",
+    "sha256": "3c4eb665ed6d60ffd20857bee3aba7f69aae83e36c262c2524eee752caa70e2c"
+  },
+  {
+    "file": "src/features/athletes/presentation/components/shared/ActionConfirmModal.js",
+    "sha256": "2e22989718e46794aaa84ed0962775ddfd8cb8685617bc792b98f38c5bfa37b3"
+  },
+  {
+    "file": "src/features/athletes/presentation/components/shared/ActionResultModal.js",
+    "sha256": "970cc3ec89f2e16769b04ec858da499ff4d605bf80a2d0a5b2cda9e3dcbf16a8"
+  },
+  {
+    "file": "src/features/athletes/presentation/createAthletesService.js",
+    "sha256": "33db577427b1f03e18d750cdd9e80c734e01d0a998b93ea6d63c24390539973c"
+  },
+  {
+    "file": "src/features/athletes/presentation/createAthletesService.test.js",
+    "sha256": "70196e970072ac5b9a824ce8a4f489d4600e64eb7e2c5a3d5d8bcb99ca110176"
+  },
+  {
+    "file": "src/features/athletes/presentation/hooks/useAthleteCredentials.js",
+    "sha256": "ddbc3e7e956ba89d5845dc93187373678647ded935f6ae7d68fda779a94b5676"
+  },
+  {
+    "file": "src/features/athletes/presentation/hooks/useAtletasManager.js",
+    "sha256": "132566cb4489b133d9b31ada5febd9a06371d91f08b890e9f72865fcbc66fca0"
+  },
+  {
+    "file": "src/features/attendance/README.md",
+    "sha256": "1632b60880c26a2c947f972a8ccb4b28378444d839d12807eb8921b4af259ae1"
+  },
+  {
+    "file": "src/features/attendance/application/useCases/createAttendanceUseCases.js",
+    "sha256": "2087d4af2b0512e4480bffc758b95e9c8d9bc7d8f3fb232917c8fea075ed7384"
+  },
+  {
+    "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+    "sha256": "a074a63370e0e9708663041f14061fdd29ceaa279be6f347c8b897ae45565de4"
+  },
+  {
+    "file": "src/features/attendance/attendanceService.js",
+    "sha256": "4fddbedc9a6f65d4d74bc9128499fa49901789c0ef5ff8e7b8cbe74a40912917"
+  },
+  {
+    "file": "src/features/attendance/domain/attendanceError.js",
+    "sha256": "71a0e950afcbfdcc59602c6c0a32c14394f4cd32aecf970bc60b69050cdc23d9"
+  },
+  {
+    "file": "src/features/attendance/index.js",
+    "sha256": "4ea2e019b492901ca29dc6cc5aaf5fa2e595198d96f85e8f879bd02aeb3157e3"
+  },
+  {
+    "file": "src/features/attendance/infrastructure/repositories/supabaseAttendanceRepository.js",
+    "sha256": "c0787ac1d940bd4f34ceff54fa18c9dc2dc875c53c32e6bf355a44a4ae322a14"
+  },
+  {
+    "file": "src/features/attendance/infrastructure/repositories/supabaseAttendanceRepository.test.js",
+    "sha256": "acd00623781472c3f38838eebdb53b23574a7788f6aa6fc2b3083445496c414a"
+  },
+  {
+    "file": "src/features/attendance/presentation/components/AsistenciasManager.js",
+    "sha256": "a1e12d104b8aa6f0eb282ce6ba35ad54bc5e39d89a0655990a36906977c99722"
+  },
+  {
+    "file": "src/features/attendance/presentation/createAttendanceService.js",
+    "sha256": "2b0ec91594fb4af3381b3a1e1e1721ecae5e4eb3b426f31c39e58fa4945b3992"
+  },
+  {
+    "file": "src/features/attendance/presentation/createAttendanceService.test.js",
+    "sha256": "fd053ae2ce46e874ba7ea49addcfc4f9ae9a51f063f4c3e3a86d1102487ef05c"
+  },
+  {
+    "file": "src/features/auth-profile/README.md",
+    "sha256": "2697e4ae2c36319882003c78fb3922afed574562e05a68bd4a80e4a00567055f"
+  },
+  {
+    "file": "src/features/auth-profile/application/useCases/loadUserProfileUseCase.js",
+    "sha256": "2c75dc2d3cb1017c0ebe0c03a402bc61c36ec40264e4d6cf1a7561e163102c12"
+  },
+  {
+    "file": "src/features/auth-profile/application/useCases/loadUserProfileUseCase.test.js",
+    "sha256": "971a2091e797deb372615bc51894e9ae4832010c6b0464e63d26421f0d1064e8"
+  },
+  {
+    "file": "src/features/auth-profile/authProfileService.js",
+    "sha256": "a3c548b57d8d4c857b1af5f01a979b8a326b549afdfefa655237fd4369dc3db6"
+  },
+  {
+    "file": "src/features/auth-profile/domain/authProfileError.js",
+    "sha256": "123036436e0cc152e07461f72b666c35db164b00551e5ff7bc1f67343c2d2e66"
+  },
+  {
+    "file": "src/features/auth-profile/index.js",
+    "sha256": "5a826aa6277c5ea6ae09acaba9ac1c43e8e0f36d862ecf62e2bebf9f3708b4c8"
+  },
+  {
+    "file": "src/features/auth-profile/infrastructure/repositories/supabaseAuthProfileRepository.js",
+    "sha256": "7cb846ecdb040f4b997f927f5f36187cf1eedd87e5799de2f06eac75e1bad03d"
+  },
+  {
+    "file": "src/features/auth-profile/presentation/createAuthProfileService.js",
+    "sha256": "203bf63eb2dfc5269035a69635291a0a1e9a5437373f7319cbaaf2fe582c9e9c"
+  },
+  {
+    "file": "src/features/auth-profile/presentation/createAuthProfileService.test.js",
+    "sha256": "5a2cff9ce6bd5c681abadd117ca1d736ea5403f8ce4bdb0453b003f6e411cf97"
+  },
+  {
+    "file": "src/features/auth-profile/presentation/hooks/useUserProfile.js",
+    "sha256": "88766c3f17588ad5531de30a6c34c223ba13ea25450faf15a3bb63ec3498156d"
+  },
+  {
+    "file": "src/features/auth-session/README.md",
+    "sha256": "d2b241a99821994b395e94adb28b9ad61b1ad359534cfa98da81da5a27956f90"
+  },
+  {
+    "file": "src/features/auth-session/application/useCases/createAuthSessionUseCases.js",
+    "sha256": "341497f1ab7bbbf8dbe796cc4905b25f61c571bdaaa707c7eeddb47f89673821"
+  },
+  {
+    "file": "src/features/auth-session/application/useCases/createAuthSessionUseCases.test.js",
+    "sha256": "44eb9a3b3429f81f94883a7ab878853c2be3b051a3624f09be818f97bbd118a0"
+  },
+  {
+    "file": "src/features/auth-session/authSessionService.js",
+    "sha256": "4b718c5c93bc3e945221cb57df2a7e7f4cd8b91c82bebff297cb5d9bdd010fdc"
+  },
+  {
+    "file": "src/features/auth-session/domain/authSessionError.js",
+    "sha256": "624f788df022d1c794d1fc91c6570996ad6da3e593ffe2f86cdcc2efe740dcc0"
+  },
+  {
+    "file": "src/features/auth-session/index.js",
+    "sha256": "d0ec04aac2a3de33d7964fc5fbb9677b91dc784cb6d798264fd884cc30e6516b"
+  },
+  {
+    "file": "src/features/auth-session/infrastructure/repositories/supabaseAuthSessionRepository.js",
+    "sha256": "a6f8acfb3b4b232fd08c78ff724cfa31704c3778a5dfe747915e63ddd512bf7f"
+  },
+  {
+    "file": "src/features/auth-session/presentation/components/ChangePasswordModal.js",
+    "sha256": "576a7d8b192619979f3ea737011be94c91fb81e099c84d1d2f591802e11caf08"
+  },
+  {
+    "file": "src/features/auth-session/presentation/components/ChangePasswordModal.password.test.js",
+    "sha256": "ffd39090555e629b41d10b4e105f6f0d5aab2fc7b1a422fb6c9528dd3e445a9f"
+  },
+  {
+    "file": "src/features/auth-session/presentation/components/Login.auth-events.test.js",
+    "sha256": "4b1f4cd345546bde042adc61fb48e7b7823f8b37a93eca29492f4a2a3a8408cc"
+  },
+  {
+    "file": "src/features/auth-session/presentation/components/Login.js",
+    "sha256": "4b8f6bbf1837014520de5ec8fda6915614b9558841515820ab9985d36869cf52"
+  },
+  {
+    "file": "src/features/auth-session/presentation/components/ResetPassword.js",
+    "sha256": "ef8e24db1b13717cf90f4657c3385aa253130876490363ad295890a51c12c1a7"
+  },
+  {
+    "file": "src/features/auth-session/presentation/components/ResetPassword.recovery.test.js",
+    "sha256": "fe77ca33acf494fecddc9d68f919d8b1d549068397deeda229da2776d3efb866"
+  },
+  {
+    "file": "src/features/auth-session/presentation/createAuthSessionService.js",
+    "sha256": "3023ac00bab2a2864a6a67c38654c599653b8d50dc002d4ce7403a7e8d7680ee"
+  },
+  {
+    "file": "src/features/auth-session/presentation/createAuthSessionService.test.js",
+    "sha256": "8bf7a72425bffd7a9f64f976efbfb8a9db40d53eecac5daf208be755f309f910"
+  },
+  {
+    "file": "src/features/auth-session/presentation/utils/deferAuthEvent.js",
+    "sha256": "b31fc243dce359e73c0bbef2b0deb476143138687feb0d5dc01f127892ba6ef9"
+  },
+  {
+    "file": "src/features/auth-session/presentation/utils/deferAuthEvent.test.js",
+    "sha256": "917258b3bfc1a803d26236715928361cb461e4b27fe162891bbae77f92710f75"
+  },
+  {
+    "file": "src/features/communications/README.md",
+    "sha256": "4885c1a666bdc67e987f43001bb7e00ee16a34673a51639c093b5bc415c44e9e"
+  },
+  {
+    "file": "src/features/communications/application/useCases/createCommunicationsUseCases.js",
+    "sha256": "331797b56bde593dd8ee56ecc3b29e8f354b5fdee30e382d26968a6eb9509c69"
+  },
+  {
+    "file": "src/features/communications/application/useCases/createCommunicationsUseCases.test.js",
+    "sha256": "ccbca6e7a99c47d87646d56a367890978d7f4be76eb261c8c31effcb9b634b60"
+  },
+  {
+    "file": "src/features/communications/communicationsService.js",
+    "sha256": "720043ebdfd08ed199070f4a89f522a9b1594aceada97fe5b10b6442753fbbd3"
+  },
+  {
+    "file": "src/features/communications/domain/communicationsError.js",
+    "sha256": "4cb4d09025f53f7bc12e5ae591366806388ac365f87218227170a417cfb87af4"
+  },
+  {
+    "file": "src/features/communications/index.js",
+    "sha256": "6d23aeebf6cfd2a377f71afe7fecf947c1a40212d4063e6c605d555f7652161c"
+  },
+  {
+    "file": "src/features/communications/infrastructure/repositories/supabaseCommunicationsRepository.js",
+    "sha256": "2fe3585c456c74a444984986a8589f07f3f206837c706c35aee8daca6e37bb48"
+  },
+  {
+    "file": "src/features/communications/infrastructure/repositories/supabaseCommunicationsRepository.test.js",
+    "sha256": "980386d276eff4832e0e7ed9d9f1f4207ba68255c60936a019e0c1b9667ac050"
+  },
+  {
+    "file": "src/features/communications/presentation/createCommunicationsService.js",
+    "sha256": "a4bc573a375c5a330f5672d8bc87e5aca530c3bb3ce4ba353541b02706452206"
+  },
+  {
+    "file": "src/features/communications/presentation/createCommunicationsService.test.js",
+    "sha256": "3e07f598d5418e470c269d3d1d4be707d39c4dbf250407fc7fe1db21ae1b8b51"
+  },
+  {
+    "file": "src/features/gamification/README.md",
+    "sha256": "4b7dd62d6977436877aad8150f8cf7590c4bd10d65708b31e65f65de4de912e5"
+  },
+  {
+    "file": "src/features/gamification/application/useCases/createGamificationAdminUseCases.js",
+    "sha256": "b256869f7373a0ec588f23d2da9224f0a8668232beb2659c63a5b3b79b444c83"
+  },
+  {
+    "file": "src/features/gamification/application/useCases/createGamificationAdminUseCases.test.js",
+    "sha256": "50eeabe565adaa5651ece6704c5120ef0d9b08d262ea18133cbefb60fbe22f88"
+  },
+  {
+    "file": "src/features/gamification/application/useCases/createGamificationFoundationUseCases.js",
+    "sha256": "025f8d9b20d07da6feeab24ed54e4b667c20494f821e8974f7adaf75f263a127"
+  },
+  {
+    "file": "src/features/gamification/application/useCases/createGamificationFoundationUseCases.test.js",
+    "sha256": "5ca151f79d084b51a4af1ba5b4ba21daecc50ebde19cc64389e0520e6427da88"
+  },
+  {
+    "file": "src/features/gamification/application/useCases/createGamificationUseCases.js",
+    "sha256": "2bbe916a9874cb21e5044aea22f1b6ce0ae8a7fdc7a9b83b604b62131fe76c4d"
+  },
+  {
+    "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+    "sha256": "e830b3d98cd3b273cf73c698cf6b463f664dd7b1a5699eec966f14f3423ba841"
+  },
+  {
+    "file": "src/features/gamification/domain/avatarCatalog.js",
+    "sha256": "27090a35be5e41934aad983f85186981aec5570d0322bdac8b7c939a2dc0eca5"
+  },
+  {
+    "file": "src/features/gamification/domain/buildAvatarUrl.js",
+    "sha256": "390608acbdf2cb17cdeee6aab6154ac21baf0c31fbb8e7c2f08aa68b32c89eba"
+  },
+  {
+    "file": "src/features/gamification/domain/gamificationError.js",
+    "sha256": "5d78653e0e5d06a457c49d91e5ff334853a8b5294f8a9e2ff57d9bb41ccefb59"
+  },
+  {
+    "file": "src/features/gamification/gamificationAdminService.js",
+    "sha256": "5689d38388906f1da47496cf30cd6df142bf1d9a24e39346bf4cd2fbf899de20"
+  },
+  {
+    "file": "src/features/gamification/gamificationService.js",
+    "sha256": "c286e42449236dec7f92defa4dc18bdfc34a260342412677ef3cfa9b7be199dc"
+  },
+  {
+    "file": "src/features/gamification/index.js",
+    "sha256": "1edc66e393ff5296d3b3dbd8bf8faa7df1c80e8bc26b2e727720a114d7ec9212"
+  },
+  {
+    "file": "src/features/gamification/infrastructure/repositories/supabaseGamificationRepository.js",
+    "sha256": "fe3af018b6e7e95d53295cd589aec324a7841dc7f5c83d3846126ba96e193b43"
+  },
+  {
+    "file": "src/features/gamification/infrastructure/repositories/supabaseGamificationRepository.test.js",
+    "sha256": "4369ec344ab341cd5797f2d08a1801e89d626cde462679a2c44d3f33929ce0bb"
+  },
+  {
+    "file": "src/features/gamification/presentation/components/CategoryLeaderboardsPanel.js",
+    "sha256": "487332ead802ac3e892bd41ac925ff96de3c6d15b7f01b65bf38781a5d7cb1f9"
+  },
+  {
+    "file": "src/features/gamification/presentation/components/GamificationAdminPanel.js",
+    "sha256": "63bb8b8a4dfad299b849ca63eee5f96d9b4d022cca20452083dbb9b1490306a8"
+  },
+  {
+    "file": "src/features/gamification/presentation/components/GamificationAdminPanel.test.js",
+    "sha256": "6f9d99544ec80da0afc4e07f8b05df02538969eb4c53dd8ef3e1c260a93fc27c"
+  },
+  {
+    "file": "src/features/gamification/presentation/components/IdentityPortrait.js",
+    "sha256": "8c19838b551f2b1522f1fc7a05581d568cf1e31b6375f69732d785bc4278b991"
+  },
+  {
+    "file": "src/features/gamification/presentation/components/IdentityPortrait.test.js",
+    "sha256": "361dac9a82a27fc11f85dd47361a1bf282566affcca91c4763bade9328bfefb6"
+  },
+  {
+    "file": "src/features/gamification/presentation/components/StudentGamificationPanel.js",
+    "sha256": "c38cfa4812a3c5ce6a21b5913e99bc84f7d7a33f8b19f023189a9ffdcfd56bdc"
+  },
+  {
+    "file": "src/features/gamification/presentation/components/StudentGamificationPanel.test.js",
+    "sha256": "61d9a8df7dec9e12064684ab81cc17e46deb3f114ecfbd419f1fae1ccab83a7e"
+  },
+  {
+    "file": "src/features/gamification/presentation/components/cosmeticVisuals.js",
+    "sha256": "2290abdd3d5fc838bf82d0d7ca92a8f7056edbe60fb2ea94dbd745dcd49134f3"
+  },
+  {
+    "file": "src/features/gamification/presentation/components/cosmeticVisuals.test.js",
+    "sha256": "83e2fe3f48509fb4e0be9a23f07f8c14eb9446558c408c44e5915a902d823d4c"
+  },
+  {
+    "file": "src/features/gamification/presentation/createGamificationAdminService.js",
+    "sha256": "50d171a1c4f01421decbf543e1d6aa582fd4b27c8d879750f2f920cf586443d0"
+  },
+  {
+    "file": "src/features/gamification/presentation/createGamificationService.js",
+    "sha256": "09c5f730e31e88327fa8bdf1d1e2ac04cd06422075ad70011f2c6c9141dc92e8"
+  },
+  {
+    "file": "src/features/gamification/presentation/createGamificationService.test.js",
+    "sha256": "56215b3b37f2a8f2daa6de1fc21db80c95393437f1a22adc211a0ff92d071f52"
+  },
+  {
+    "file": "src/features/notifications/README.md",
+    "sha256": "3427ae5fcff89d656cd8f74bf54f9612977c6f36adda0056a68036b36974dfea"
+  },
+  {
+    "file": "src/features/notifications/application/useCases/createNotificationsUseCases.js",
+    "sha256": "de39f44780dcd543872023e6b5406b4abbbff758747ae1c62448cbd6fa29945f"
+  },
+  {
+    "file": "src/features/notifications/application/useCases/createNotificationsUseCases.test.js",
+    "sha256": "725c189ae7dc6aab8a0551797054bf1c773e567c41300f97c89914d9bcaafff4"
+  },
+  {
+    "file": "src/features/notifications/domain/notificationsError.js",
+    "sha256": "4fcc0f7379538f64f1130066304d52b369aff4832fc9dfcfd663b40cbd3294d4"
+  },
+  {
+    "file": "src/features/notifications/index.js",
+    "sha256": "f4e5c6ae6f966de3bd179a6985d9a935b6a304946cc040f216b6ca33ea233087"
+  },
+  {
+    "file": "src/features/notifications/infrastructure/repositories/supabaseNotificationsRepository.js",
+    "sha256": "b9bcdce337a1d4e9b660e03343aea1b27b5a9009975409f325f457bcfc7301de"
+  },
+  {
+    "file": "src/features/notifications/infrastructure/repositories/supabaseNotificationsRepository.test.js",
+    "sha256": "7ad50a61307a92089966a4bcbe6b15e9a8d6a1d4cefa461f8831bf4ea4c9da64"
+  },
+  {
+    "file": "src/features/notifications/notificationsService.js",
+    "sha256": "ea5ba108fc7a90d46255cdecf446c1ccf18cabb383fd28f330df5d0af5309423"
+  },
+  {
+    "file": "src/features/notifications/presentation/components/NotificacionesPagos.js",
+    "sha256": "08b5a43594b8d49be42675a8bc5a077e5a1371f6f2e7cc666423bf641316ed4e"
+  },
+  {
+    "file": "src/features/notifications/presentation/components/NotificationBell.access.test.js",
+    "sha256": "927dd0263b9ebe1e8d4a8b13e13a6513f8b73a08a433ddb3af8a54e187c2dc4c"
+  },
+  {
+    "file": "src/features/notifications/presentation/components/NotificationBell.js",
+    "sha256": "3b6f9cd82e09c6ca32e7530110f1c56365f8abc6c4218868ce7af8f573c01083"
+  },
+  {
+    "file": "src/features/notifications/presentation/createNotificationsService.js",
+    "sha256": "c1fb0523d1809fbd49766daa2766e67f4b62e40092472bbdac37040547c8b1bb"
+  },
+  {
+    "file": "src/features/notifications/presentation/createNotificationsService.test.js",
+    "sha256": "79870b4d0951e4f5d680c6381415ac86216d94c061fd48c04879e4cbc469a920"
+  },
+  {
+    "file": "src/features/payments/README.md",
+    "sha256": "85e5439f09bed3111adc4f05e2e44fb0763f74e832c61a95e890882a47a278c7"
+  },
+  {
+    "file": "src/features/payments/application/useCases/createPaymentsUseCases.js",
+    "sha256": "b4df1f4158dbbfeae0c904ff95b50ab39f5d2bd0ecf1a98638db5397ab05e8dc"
+  },
+  {
+    "file": "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+    "sha256": "ee8e6c052c848ab03c2bf8eca946ccafc32b4e686f99250b0ef3a9a88e71d535"
+  },
+  {
+    "file": "src/features/payments/domain/paymentsError.js",
+    "sha256": "506baddfeb1aa7f5bd73995ba0058e28b913c5b688235df33a4ca18f1f8217bd"
+  },
+  {
+    "file": "src/features/payments/index.js",
+    "sha256": "d4d6fe026f9dcecda6389d81f2d7de017252400c7d71b3c6c374d7ea99e03f8e"
+  },
+  {
+    "file": "src/features/payments/infrastructure/repositories/supabasePaymentsRepository.js",
+    "sha256": "ee6391af8cbab4d65b7b0c30e889f58317696b3f9057fab575eb0190d3e226ce"
+  },
+  {
+    "file": "src/features/payments/infrastructure/repositories/supabasePaymentsRepository.test.js",
+    "sha256": "1cfd4580cc7ae4f99bedf4c588ed01c3a5e98051b7fe38b4f8c0f972793527c1"
+  },
+  {
+    "file": "src/features/payments/paymentsService.js",
+    "sha256": "2fb624399a204197f140ec7af589aedd56ea2ee6a7afbc78d4f8fda30e392b18"
+  },
+  {
+    "file": "src/features/payments/presentation/components/PagosManager.js",
+    "sha256": "75538915e903fa03b00e9c2eec68d55ccd8d6d31db2ceb8cc68619e5e2fc2410"
+  },
+  {
+    "file": "src/features/payments/presentation/createPaymentsService.js",
+    "sha256": "187632ff7bb44615c8edbc8926be14f31f61a9f0ba8c1232fef8e0efb13f83fb"
+  },
+  {
+    "file": "src/features/payments/presentation/createPaymentsService.test.js",
+    "sha256": "62de88a86c9ad7e22bac43e92f065889e5c42e3de42974f7a0351c7003d9f9f4"
+  },
+  {
+    "file": "src/features/physical-tests/README.md",
+    "sha256": "f0fbe142d9f6897db27267a8c887fb0909e2a12b1b7e61c850a59b7a8ca2071a"
+  },
+  {
+    "file": "src/features/physical-tests/application/useCases/createPhysicalTestsUseCases.js",
+    "sha256": "9bed9f18a90dac4f16e0cde58e4a2e3e4d3f7d4c57399351c05f1ebde3d65ce7"
+  },
+  {
+    "file": "src/features/physical-tests/application/useCases/createPhysicalTestsUseCases.test.js",
+    "sha256": "9892538133fc299a62c5e59690ae883706e23b22fa2d3d536471c636d4a09c23"
+  },
+  {
+    "file": "src/features/physical-tests/domain/physicalTestFieldMetadata.js",
+    "sha256": "4f91c369371c85fa8b9d9d9df85f1f8065d08df39fb274ed6895f52cf82a1e7d"
+  },
+  {
+    "file": "src/features/physical-tests/domain/physicalTestsError.js",
+    "sha256": "019ff8ff9af8b2360d2f33796c153fd8863ca577d41dfb2b7a83cf870b87550c"
+  },
+  {
+    "file": "src/features/physical-tests/index.js",
+    "sha256": "a7fa5b7fd968096679b361283817047fc483ee307712b23efdf0f72543c63e4d"
+  },
+  {
+    "file": "src/features/physical-tests/infrastructure/repositories/supabasePhysicalTestsRepository.js",
+    "sha256": "64c6e56cbcf244d443ee9dee4bb09d58c4cf05806ecb30d999a75ec11b6284a0"
+  },
+  {
+    "file": "src/features/physical-tests/physicalTestsService.js",
+    "sha256": "97bf9d18a72015da8aa289c9684c17f1560ba1abda01028b2442504cd9fa9a1e"
+  },
+  {
+    "file": "src/features/physical-tests/presentation/components/TestsFisicosManager.js",
+    "sha256": "28ec367633d850774da5eba57f9db1c1c7d6d8425378390faf6461f6cb3ae83d"
+  },
+  {
+    "file": "src/features/physical-tests/presentation/components/shared/PhysicalTestChart.js",
+    "sha256": "735a47e4f602b4c9da283e29c66b6a5c3db1acceed03bb74f3a4ed6da3fe7e03"
+  },
+  {
+    "file": "src/features/physical-tests/presentation/createPhysicalTestsService.js",
+    "sha256": "31e4738421bc346041f9ba545cc0f33a8728775f5b8cee21592f75b60e2fd369"
+  },
+  {
+    "file": "src/features/physical-tests/presentation/createPhysicalTestsService.test.js",
+    "sha256": "77011030f2d3e24f256c80b280097d9d4b7545a69ca0e6245578ad2028fc02bf"
+  },
+  {
+    "file": "src/features/reporting/application/contracts/reportingRepositoryContract.js",
+    "sha256": "6bd35f9a905dd4903275d2020ce594fc6448a312f952e2c2e1c432c7e76a40cc"
+  },
+  {
+    "file": "src/features/reporting/application/useCases/deleteRunUseCase.js",
+    "sha256": "77b50e972bee2c8b274fcd1c19cc7ca6268d38b8c589bffc12fb34ecfff32204"
+  },
+  {
+    "file": "src/features/reporting/application/useCases/downloadFromSignedUrlUseCase.js",
+    "sha256": "e8eb2bb2d8724fb23df8af3979f5e8f0298635a3aafc23036df476a40f51c62b"
+  },
+  {
+    "file": "src/features/reporting/application/useCases/ensureDailyAttendanceReportUseCase.js",
+    "sha256": "9401e908909fb6182c17092fde317f4e5f7094e5059b34d9bf9d221ed248f9f9"
+  },
+  {
+    "file": "src/features/reporting/application/useCases/ensureDailyAttendanceReportUseCase.test.js",
+    "sha256": "c1f97910d44c4c557e6e2dc3ae730b6eaca8784ec4938d3b4fe55b4f81f81a35"
+  },
+  {
+    "file": "src/features/reporting/application/useCases/generateReportUseCase.js",
+    "sha256": "ba3233fdf277ba7dde9e2ff4ce9e5a46f639b40dafccf3151737910a75607760"
+  },
+  {
+    "file": "src/features/reporting/application/useCases/generateScheduledReportsUseCase.js",
+    "sha256": "1d67ce8a94d5119af4ddbd8e663df1b73933695eeeecca49775df9292f92123e"
+  },
+  {
+    "file": "src/features/reporting/application/useCases/getDownloadUrlByRunIdUseCase.js",
+    "sha256": "f38e0560927c994750421152f39a235a8dacf86782ecefbc32d5150810837ec9"
+  },
+  {
+    "file": "src/features/reporting/application/useCases/helpers.js",
+    "sha256": "52b3054081948368e3733079ca31af736a17216628e1a20645bb2a1f18b4889d"
+  },
+  {
+    "file": "src/features/reporting/application/useCases/listReportRunsUseCase.js",
+    "sha256": "fc60be9e0d590a028abecd8e6040400cb6bf9351a441a53d2191c1d6f2ea26a2"
+  },
+  {
+    "file": "src/features/reporting/domain/reportingErrorCodes.js",
+    "sha256": "d1948ea001f2609282ba199050dcc7723af6cbed374a51658834ae659e30f7c9"
+  },
+  {
+    "file": "src/features/reporting/domain/reportingErrors.js",
+    "sha256": "a464f9b2b9dc2c95de1027d13646752fda65a28f601bfca448c64bc9a7ef34f0"
+  },
+  {
+    "file": "src/features/reporting/domain/reportingPolicies.js",
+    "sha256": "f60e5c8b51b52ec505f867746509a543c0bff1c183ee82536c2b715097d2127f"
+  },
+  {
+    "file": "src/features/reporting/index.js",
+    "sha256": "b27a397ff61ec053784da2108ad457d946ccc0d20d5a03f6bce25da95c4ff722"
+  },
+  {
+    "file": "src/features/reporting/infrastructure/gateways/browserFileDownloadGateway.js",
+    "sha256": "895912380fee9bb38b9be925df1cc5ce0e75901e4c476a06b87bb0fe0214f751"
+  },
+  {
+    "file": "src/features/reporting/infrastructure/repositories/supabaseReportingRepository.contract.test.js",
+    "sha256": "d17613098091b229925c2c5eccec15832d4d219ac7bc9cda8d99e4d571baf632"
+  },
+  {
+    "file": "src/features/reporting/infrastructure/repositories/supabaseReportingRepository.js",
+    "sha256": "0ae942abcf604cb25633c2ab349c5ce6dc2e6389b8c58b97c2845666cbb978d6"
+  },
+  {
+    "file": "src/features/reporting/presentation/createReportingService.js",
+    "sha256": "2a92b4c1d50b4e21c1d6cf011ad820d149d365d15bde5440f81b895663f106b3"
+  },
+  {
+    "file": "src/features/reporting/presentation/createReportingService.test.js",
+    "sha256": "d9d029359451d83d23a3bb8d91799ec2efbf266fe3b4268e4513bea0ecab6aad"
+  },
+  {
+    "file": "src/features/reporting/reportingService.js",
+    "sha256": "397d79046b4267b04bfc28742a5234d22dc16ebe31ea81414e978a5f5c6b1a6b"
+  },
+  {
+    "file": "src/features/schedules/README.md",
+    "sha256": "775a1a4233d012e8cb8d6b0d49087a1dedf97e6282b8221447cd5b492d03b230"
+  },
+  {
+    "file": "src/features/schedules/application/useCases/createSchedulesUseCases.js",
+    "sha256": "e46fdc00de8bb4e790f1f1e0152800a2cf7edb529dfde95f65e7e5dd9fc02e00"
+  },
+  {
+    "file": "src/features/schedules/application/useCases/createSchedulesUseCases.test.js",
+    "sha256": "3966fd22eb7532a6a354c272d9141930a16fd2ddc432899abe9a71703f4e33be"
+  },
+  {
+    "file": "src/features/schedules/domain/schedulesError.js",
+    "sha256": "6d7666c6b7e86b64b150d4380225237ff55bc9c64cc2690b31a3617a7999cf16"
+  },
+  {
+    "file": "src/features/schedules/index.js",
+    "sha256": "eab1f7477fe2ffe0be2fa2626c2aace0db1c86c06da00e73e1861c05d46e4082"
+  },
+  {
+    "file": "src/features/schedules/infrastructure/repositories/supabaseSchedulesRepository.js",
+    "sha256": "2f04ee51637c4580f06e995298c5a19604483a96a724bd86220e19162e037c5c"
+  },
+  {
+    "file": "src/features/schedules/presentation/components/HorariosManager.js",
+    "sha256": "2a5d08c37456fbb7554087bddd73afe9fdb6492e2ee99b9a5eebdc7898fa0f65"
+  },
+  {
+    "file": "src/features/schedules/presentation/components/shared/DeleteHorarioConfirmModal.js",
+    "sha256": "cc468b55bfb2f2f363cedca8ad3f30e882d8c1e0b75c570459950cb78e226f12"
+  },
+  {
+    "file": "src/features/schedules/presentation/createSchedulesService.js",
+    "sha256": "8733665228275c0e026cc702eab4d5efce92f932d86870406bb47d6d780aafd4"
+  },
+  {
+    "file": "src/features/schedules/presentation/createSchedulesService.test.js",
+    "sha256": "d2a9a762b99a62590cd721f1c88dda78aca518ecc0317162587ab21e468536a9"
+  },
+  {
+    "file": "src/features/schedules/presentation/hooks/useHorariosManager.js",
+    "sha256": "ae00452008dcb53b81d14e56b0bf17a12251fff72cc83e123656eb7a46c8abc6"
+  },
+  {
+    "file": "src/features/schedules/schedulesService.js",
+    "sha256": "45fb9fb46f9c609196c4bab0c57e49910ba936733c3ab3b74f6f6994d56effe2"
+  },
+  {
+    "file": "src/features/student-dashboard/README.md",
+    "sha256": "17be5e82fe0917ea83a81670f32e223720448db37a291d135acfb539d9394f95"
+  },
+  {
+    "file": "src/features/student-dashboard/application/useCases/createStudentDashboardUseCases.js",
+    "sha256": "25b7fc3299d72a8ce61247b7a04de605379d31285c5f6b1f76aced3a2b4dfee1"
+  },
+  {
+    "file": "src/features/student-dashboard/application/useCases/createStudentDashboardUseCases.test.js",
+    "sha256": "e52b287f6345cf5dc2ad5231d1319dc04e31dd1c71ca6037392e4f39a1e7efc9"
+  },
+  {
+    "file": "src/features/student-dashboard/domain/studentDashboardError.js",
+    "sha256": "9095035dbb460be5e242ac322f172d885455e28c8187c4e76ef3e86da00e9b27"
+  },
+  {
+    "file": "src/features/student-dashboard/index.js",
+    "sha256": "eb977ccda2557e512826246e61e2aa88ddb18becea69f7ccfcf70442c5e679c2"
+  },
+  {
+    "file": "src/features/student-dashboard/infrastructure/repositories/supabaseStudentDashboardRepository.js",
+    "sha256": "ea16fb80ddc50432a23705768aaffcae5c5132f39e6c44d7fbcae39df5c4ebaf"
+  },
+  {
+    "file": "src/features/student-dashboard/infrastructure/repositories/supabaseStudentDashboardRepository.test.js",
+    "sha256": "e4f67c92b6c22c1c36cd88d9751a04cc2a54e25ec29bae74a3f892368584f6e2"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/StudentPanel.js",
+    "sha256": "65b70f6b50029ac190d867e9387216f9cd073803a906825126b78e3cfd8b6954"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/StudentPhysicalTests.js",
+    "sha256": "d542b6f4d5141bbf05f8386aecd518e3839fa2017f56d4b98743fe769d559b6c"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/StudentPhysicalTests.test.js",
+    "sha256": "0f8198fa97dbf9bf1303db27980db3596213c2d1a16007c86263905f1a7e7f11"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/StudentProfileIdentityCard.js",
+    "sha256": "d284077202ee43acc232ad0fcbd0e189ffdce50f6f71a0942bcef092653d86f0"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/StudentProfileIdentityCard.test.js",
+    "sha256": "dea03415e348a314e892d5e6f82a32b6dd7e3ed1b647943b7ea254bc781481b3"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/StudentView.js",
+    "sha256": "a2e46415ae7ff47674a9953433ef0d5c508685bcd848b3308cb5aa78bf39e67d"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalHero.js",
+    "sha256": "26c6222fbf1956956f957b7fe31426d80ed93c7361aa8e35028d9dfc2200d892"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalHistory.js",
+    "sha256": "de2cff5bc390a668869e849dff817a7290d3def276190be73e6e9c18934adba3"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalInsights.js",
+    "sha256": "02e004916b2d8ba3588e8aeb80256724f86978ad9f9d50e46cca0100222dae79"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalRecommendations.js",
+    "sha256": "bcbc7850b4e2c4fc37dbbf681740a843e4ab46b401c40d8fca827474653540af"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalTrendChart.js",
+    "sha256": "d926ac120a012d07cdc788d1f12c4955a8abd2f9167bc29b2a1cb18b04a081c9"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/physical-tests/buildStudentPhysicalProfile.js",
+    "sha256": "00bb7f7e05cac0f44b4bbcaec3d59ddd55e9448f7a3e5c37bebd3aefeeff1252"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/physical-tests/buildStudentPhysicalProfile.test.js",
+    "sha256": "33198c665c2e8be1431ab5e0e6ccb0ed4882abd72c4710f89a78b16702cf0c13"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/createStudentDashboardService.js",
+    "sha256": "cbc6f9c6143311cd6e845a734eb84070d83b1df65acf08bdf6bd1710adee447f"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/createStudentDashboardService.test.js",
+    "sha256": "9b1e685ae0563abfe625a792a39d7c0e0237dcc36b170d48602baddaa1d79b6a"
+  },
+  {
+    "file": "src/features/student-dashboard/studentDashboardService.js",
+    "sha256": "3452240b74ccc259549b473fcef05a7ca293e8eca28729a622ca9c037e2a4869"
+  },
+  {
+    "file": "src/features/trainer-dashboard/README.md",
+    "sha256": "de9322f579ed3369cb4c6ff8ec77b530aa7c530aebdc3db068790a72ff679de9"
+  },
+  {
+    "file": "src/features/trainer-dashboard/application/useCases/createTrainerDashboardUseCases.js",
+    "sha256": "f0c089c5e24f72ba42f14ae49933c34b4c41fb5813f1f04449366b67775863df"
+  },
+  {
+    "file": "src/features/trainer-dashboard/application/useCases/createTrainerDashboardUseCases.test.js",
+    "sha256": "a0aa36985868da6850c6c41593c4566e9d5f4c16f58b9e227a4646b7db4c13da"
+  },
+  {
+    "file": "src/features/trainer-dashboard/domain/trainerDashboardError.js",
+    "sha256": "3bd081facefb91cb3fa6dfb7b2c87a82c2514bb3ab34df90ef7c0ce99573eb4c"
+  },
+  {
+    "file": "src/features/trainer-dashboard/index.js",
+    "sha256": "7efca2821d28ab174b6a6155bfedc51e28c1108277eafb39b65ddfd0d4b6fb4d"
+  },
+  {
+    "file": "src/features/trainer-dashboard/infrastructure/repositories/supabaseTrainerDashboardRepository.js",
+    "sha256": "cbb2f4e76e01063569ea5413efd641a9b7bcd0ed4fe0e01931732bb3889a56ee"
+  },
+  {
+    "file": "src/features/trainer-dashboard/presentation/components/TrainerDashboard.js",
+    "sha256": "8f758538a31c367226d5940dc5e011762d585e5a78eef1fc5a086564cfbab5e1"
+  },
+  {
+    "file": "src/features/trainer-dashboard/presentation/components/TrainerPanel.js",
+    "sha256": "cfa18f2ebff09896a57e2e4caa9507e1d1e1bee4a5706302231186f09ed3157e"
+  },
+  {
+    "file": "src/features/trainer-dashboard/presentation/createTrainerDashboardService.js",
+    "sha256": "16fadcc363a33a966135a011b205c2c4e12f34751f5f3630eafd95b8872522e9"
+  },
+  {
+    "file": "src/features/trainer-dashboard/presentation/createTrainerDashboardService.test.js",
+    "sha256": "1781351efcda31c1f8e6da70ef458143274632e12ad4847986cdc3a4419aeb88"
+  },
+  {
+    "file": "src/features/trainer-dashboard/trainerDashboardService.js",
+    "sha256": "d9fe5158b0641c723446415c695f3ce943fb4a85ca64fb29a75fb1cfeb19428e"
+  },
+  {
+    "file": "src/features/trainer-management/README.md",
+    "sha256": "44ab9bf0a8cafa80f8699ae601ed4cb3dd9f9239ee6beba30600abc7dd7fb65e"
+  },
+  {
+    "file": "src/features/trainer-management/application/useCases/createTrainerManagementUseCases.js",
+    "sha256": "4184cc7a7bdf7849f7df30a1024037899af8483196fe11aa537ec1075d1db136"
+  },
+  {
+    "file": "src/features/trainer-management/application/useCases/createTrainerManagementUseCases.test.js",
+    "sha256": "ea37ac59a9256c8677e31e6f2459859c5c695ad3415f23e42abe8bf36addeb5e"
+  },
+  {
+    "file": "src/features/trainer-management/domain/trainerManagementError.js",
+    "sha256": "b5be301757c33206da587c1dc243b1a3adffcd88d2cbd904a73e3f4f1a798722"
+  },
+  {
+    "file": "src/features/trainer-management/index.js",
+    "sha256": "bc930543c24b43b9df52b895da2abad6cdcf240b9324c3863f27f662ad7ef4aa"
+  },
+  {
+    "file": "src/features/trainer-management/infrastructure/repositories/supabaseTrainerManagementRepository.js",
+    "sha256": "5b9bdcaf11d4c60890be4673b98bab402f96cee65f3f14427ab2665022095019"
+  },
+  {
+    "file": "src/features/trainer-management/presentation/components/EntrenadoresManager.js",
+    "sha256": "bc48fb75ff4a1921b8fedde2ab5d0dcb6e86b5c082153f8a8e3306d973489121"
+  },
+  {
+    "file": "src/features/trainer-management/presentation/components/shared/DeleteEntrenadorConfirmModal.js",
+    "sha256": "670171816ac943f908de059b174768a94c9ec416faf2be9c20b4020d9513ea95"
+  },
+  {
+    "file": "src/features/trainer-management/presentation/createTrainerManagementService.js",
+    "sha256": "141aa1a0cfe1cc534de4d3a7063ed36a4abe04c4dfb036b672d0212d50ae5950"
+  },
+  {
+    "file": "src/features/trainer-management/presentation/createTrainerManagementService.test.js",
+    "sha256": "64109640e3e608b6702521875b1d5f1efaa2853a58242a45f42ebc9d9b421bbe"
+  },
+  {
+    "file": "src/features/trainer-management/presentation/hooks/useEntrenadoresManager.js",
+    "sha256": "b805161f2a5334a4ec87194624ca81a644f09fe9073fcb13cd58f160b114cfc4"
+  },
+  {
+    "file": "src/features/trainer-management/trainerManagementService.js",
+    "sha256": "6fcbdbad6c4c338e51f1939c84bb7d5220c80777a48d4dad1f4e3907d8266a72"
+  },
+  {
+    "file": "src/features/training-categories/application/useCases/createTrainingCategoriesUseCases.js",
+    "sha256": "79864aa8690327b48680b8b5e1d1ee31a8cd3a84e6f44a217dbb1cb34bbca93a"
+  },
+  {
+    "file": "src/features/training-categories/application/useCases/createTrainingCategoriesUseCases.test.js",
+    "sha256": "2a9dc5e025eaee1d4bbe9a8c097c9ca6af298c4b0eda3467eda3e9ffa34f7563"
+  },
+  {
+    "file": "src/features/training-categories/domain/trainingCategoriesError.js",
+    "sha256": "6d52dbab668fad5790089b0c69d9f90eab1cc24ea25aa3e1b0b256eebf2a6543"
+  },
+  {
+    "file": "src/features/training-categories/index.js",
+    "sha256": "974b95b698922c75b307c5474e771a29528fd27f3d37e239bafb1f6126de70b3"
+  },
+  {
+    "file": "src/features/training-categories/infrastructure/repositories/supabaseTrainingCategoriesRepository.js",
+    "sha256": "2615522e2076e0617312f4c62123e20cbd6910dcd6e4a9fb8d4ab56dcbd7833f"
+  },
+  {
+    "file": "src/features/training-categories/presentation/createTrainingCategoriesService.js",
+    "sha256": "bd418c7aaad8e0c1d43fd8a033ca98074b0edb860737793f557643318ddf4442"
+  },
+  {
+    "file": "src/features/training-categories/trainingCategoriesService.js",
+    "sha256": "f37b1cd177d0c7706ff3f1bf1f436ece85742b453fc200d21a32807ee58fcd7b"
+  },
+  {
+    "file": "src/features/user-management/README.md",
+    "sha256": "eaa2036735bcefe6aa5001112562b378ffb67b96bf0ba473ff943b698c6f1615"
+  },
+  {
+    "file": "src/features/user-management/application/contracts/userManagementRepositoryContract.js",
+    "sha256": "4d8160f1633d39828feead3a1f31dc020e6341e205215f9e6b1bf41e207a46d2"
+  },
+  {
+    "file": "src/features/user-management/application/contracts/userManagementRepositoryContract.test.js",
+    "sha256": "d818b428f14a5ec9a1efe38662d05f4b537e32743ed108b6ee10d42ad3960b4a"
+  },
+  {
+    "file": "src/features/user-management/application/useCases/createUserManagementUseCases.js",
+    "sha256": "ce740bc8f3836929ff0ea4bcf2204fff269436c55e857b80f71d23fed833a42c"
+  },
+  {
+    "file": "src/features/user-management/application/useCases/createUserManagementUseCases.test.js",
+    "sha256": "2af951dba2cb49dca14b8c093bdc1a2ecf7575b6ac8035f6fe7b1a763535b5d1"
+  },
+  {
+    "file": "src/features/user-management/domain/adminPrivileges.js",
+    "sha256": "779023e3943591e968d0d70da4008e0e1254e5acf3e45d5b84e095790346fefb"
+  },
+  {
+    "file": "src/features/user-management/domain/userManagementError.js",
+    "sha256": "4faf8698496a2c26bd0b443b9e3c6c8790e04039e2161ffafb92952d71edc819"
+  },
+  {
+    "file": "src/features/user-management/index.js",
+    "sha256": "fa05ecab2ae6c6b142ed46577a354489603bed247dcc4f05fc07ed6d3503bca1"
+  },
+  {
+    "file": "src/features/user-management/infrastructure/repositories/supabaseUserManagementRepository.js",
+    "sha256": "2280221cb2d9b874312951cea2dcc7b2ad9c25cadbcc33ca4cda98e6a66de242"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/UserManagementPanel.js",
+    "sha256": "f2d1b18b198a7f69d873519f36f1298df763e5aa5d48c420fa6ac5d92dd63b97"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/hooks/useTimedMessage.js",
+    "sha256": "de81107398ba61c1e0d553be29ac3f2cb55df82d99a2a0be7e31fdb39ac22aa8"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/hooks/useUserActions.js",
+    "sha256": "8fed833a9a24fbb0f4e98d862bff292f65422fe771f0089cb8fe1ffb87ec17e4"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/hooks/useUserManagementPanel.js",
+    "sha256": "d11897d8a66263da282cd78a42a37a1455ac2b5c8d413246dbaa2bd938b7fdad"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/hooks/useUserPermissions.js",
+    "sha256": "503719f93a5197fd0edb07bae34c0ed23931b474bb220d7119a860255672ea43"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/ChangeRoleModal.js",
+    "sha256": "bbd6bc6ddb2de9233ff40c35e7f8b3b9a8947867e9385a5d296d19e5734a5246"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/CreatedCredentialsModal.js",
+    "sha256": "982806882a483e7b3cc661534234e7d138decf31070384071ae20d1383a5877d"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/CreatedCredentialsModal.test.js",
+    "sha256": "ec763b39b212b925eb7341d89366f0f8bfcd4e8e60e5da39b68cd0f6af1ffd14"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/DeleteUserModal.js",
+    "sha256": "5f1fb95e55cdabd131cc622aa5ce8f9280678aa486be7b766f0623626b4ef57c"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/ResendCredentialsModal.js",
+    "sha256": "5edf7c14ecef70a6d635c991fd263ceb96c183b7965e963ab86fa577f1031e05"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/ResendCredentialsModal.test.js",
+    "sha256": "acccdc79131b2daf1f03a94d649bf122656889b71f3b6b3cc97d9a9d5c226297"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/SuspendUserModal.js",
+    "sha256": "f90f8a33023cd337b12299611c174ef6f32fd1a35485aa44b27530416ea5b4ff"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/UserCard.js",
+    "sha256": "17859a884782251518b75e42e348cad84eca2bdf6b048e3844712f2f67089544"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/UserFilters.js",
+    "sha256": "ba5500be59163465f4a37e8ad8d31f2b24f4076e186927977cedeede08ec833d"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/UserFilters.test.js",
+    "sha256": "3b6237f9ec19b3b05dbc4adb74ebda06f72bed6112469f4c861f77aea454420e"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/UserForm.js",
+    "sha256": "e9c1db519784f4bf47e1df1b8a88078d57f843f0fd927f82213754ba3079d6cf"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/tabs/AdministratorsTab.js",
+    "sha256": "19ab7e616f4052b27d2e9ff707921513ed38c89296586a3bbf1a7f20058a485c"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/tabs/AthletesTab.js",
+    "sha256": "bf1f8f7dedf919cf5ef509642c7fd6fe15eeb413c17b38fd932462b0a523dc29"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/tabs/CreationCredentials.test.js",
+    "sha256": "bdab84ae35d8316d9f14e6321bcf5f7ed1eb869565d5680a98b0f7f945436bdf"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/tabs/TrainersTab.js",
+    "sha256": "d68145702809aca0952186ab615ef655ba5ccf92587da4ffb731255d1eeb9213"
+  },
+  {
+    "file": "src/features/user-management/presentation/createUserManagementService.js",
+    "sha256": "f3f8423de2f816a7dffb8f2a7c35525671a0d5d0826c1a3e9dd1a14c814b293a"
+  },
+  {
+    "file": "src/features/user-management/presentation/createUserManagementService.test.js",
+    "sha256": "7b0cdf6428a0de8938dde1c76610b95b16dbd96a64ea519fce2ed9c47e13e457"
+  },
+  {
+    "file": "src/features/user-management/userManagementService.js",
+    "sha256": "ea84bf99c719a4d13fb1af497138730071874d34c1302be9ddf6d1a6f640a3a4"
+  },
+  {
+    "file": "src/features/user-provisioning/README.md",
+    "sha256": "db5a51f7d10bf7df3a6577c32789152bd7295f6d03b6d193edcac9f3d2ad580c"
+  },
+  {
+    "file": "src/features/user-provisioning/application/useCases/createUserProvisioningUseCases.js",
+    "sha256": "485b09e4ffb417a55bbd08b45b51d17a8a021b30d8a908f4f7f0cc8780d75dbf"
+  },
+  {
+    "file": "src/features/user-provisioning/application/useCases/createUserProvisioningUseCases.test.js",
+    "sha256": "b7749f3a3a4ac9c07593d99c089184d209a637ea08fff4cff58e0c3a01161b7e"
+  },
+  {
+    "file": "src/features/user-provisioning/domain/userProvisioningError.js",
+    "sha256": "f1ada464596d5baa3ae153c2f92e99aa1d623be1068590ceb8c0bfe3cec472ca"
+  },
+  {
+    "file": "src/features/user-provisioning/index.js",
+    "sha256": "36943f9b76c4e1f071e337c4a3c7c1fc9604b01c92fa3bc15995d1f6a31093f5"
+  },
+  {
+    "file": "src/features/user-provisioning/infrastructure/repositories/supabaseUserProvisioningRepository.js",
+    "sha256": "8ce8c6020e22ac0da2f3a1601b8db8bd2477540fddfd05023b63c260048e8d44"
+  },
+  {
+    "file": "src/features/user-provisioning/infrastructure/repositories/supabaseUserProvisioningRepository.test.js",
+    "sha256": "459a69c63d5aa5feed897ad5aadcd19731cd69c999019de81be67f1acc1516d0"
+  },
+  {
+    "file": "src/features/user-provisioning/presentation/createUserProvisioningService.js",
+    "sha256": "65fc3e19d7322e8f70f005261359611b1c5dc41b078885c970bd906f41e13772"
+  },
+  {
+    "file": "src/features/user-provisioning/presentation/createUserProvisioningService.test.js",
+    "sha256": "7d8147d85fceb67bcc41476f010acc9655b38ecb78593466a86d3b1e65ab0b9b"
+  },
+  {
+    "file": "src/features/user-provisioning/userProvisioningService.js",
+    "sha256": "7cf48ce64619d5f88b3361e248d473a0d01b0d775a981611ef991d2060ee8632"
+  },
+  {
+    "file": "src/index.css",
+    "sha256": "aabaee34c316b1d6d67bcb1e69b59fb49fb2487bcb1059232d08a42cc3817d37"
+  },
+  {
+    "file": "src/index.js",
+    "sha256": "3bd84c1446caf4f7ae874bd4d5b886f84bdb61e39c338531b1bef59dc5a1603c"
+  },
+  {
+    "file": "src/lib/cn.js",
+    "sha256": "74558afb97c90e76e295f5dab37a698306bf41ba07ad4b1cfcc619bd1466390e"
+  },
+  {
+    "file": "src/reportWebVitals.js",
+    "sha256": "31f23ebe450f1c69f8db8a3cd59b732f52f1ab13962d681fe2e4391532f48336"
+  },
+  {
+    "file": "src/setupTests.js",
+    "sha256": "987767208ed67cb0835e8bdeb09573d8337735a77d98532a3ca860dedd4f88cd"
+  },
+  {
+    "file": "src/shared/README.md",
+    "sha256": "0e1d71d8e1f18f666275ea78bd6f93313d29561b6a1af5032f1ef33c36db025e"
+  },
+  {
+    "file": "src/shared/config/runtimeConfig.js",
+    "sha256": "2600f7ba3c8dba6921957b891ed5ee5aeaedb0039c7081c175e8d1b6ff1772a5"
+  },
+  {
+    "file": "src/shared/domain/payments/index.js",
+    "sha256": "9c68ff0bcc3a066eb561b5f2e371d73b15606146866848dcfc4d79571ff9d4f9"
+  },
+  {
+    "file": "src/shared/domain/payments/pagoStatusService.js",
+    "sha256": "759ce19cfe74f0a2cdcdd06d0f6b7b6fda58f8877d5c7a50963187947f617251"
+  },
+  {
+    "file": "src/shared/infrastructure/audit/sqlAuditLogger.js",
+    "sha256": "37a76c6745c9888dc400d5344ffd33844ced94bc2a4e36dfd76e512b617b44cc"
+  },
+  {
+    "file": "src/shared/infrastructure/auth/deleteAuthUserById.js",
+    "sha256": "b5a7fa457a91f71078c0c7bc920c66ac1daba6fdf9fd34933c706753bdd5ff96"
+  },
+  {
+    "file": "src/shared/infrastructure/auth/deleteAuthUserById.test.js",
+    "sha256": "a32fdd3a8de8868585767be678f71ee02b49b5a911432b2bb0f57c0d3eebc7c0"
+  },
+  {
+    "file": "src/shared/infrastructure/communications/index.js",
+    "sha256": "c0b99fa82dba11df4a6fce481f8ed566b45df6501596335e273e65bb79630d79"
+  },
+  {
+    "file": "src/shared/infrastructure/communications/whatsappBusinessService.js",
+    "sha256": "4ac6fcde24e7dfa48950a82a56fd33fbd72675158e89313303e8d75468ae321e"
+  },
+  {
+    "file": "src/shared/infrastructure/communications/whatsappBusinessService.test.js",
+    "sha256": "7bbf086125064ec0bb9f9ad4481e785c7f87a4ece0245d7a49624e157933d587"
+  },
+  {
+    "file": "src/shared/infrastructure/communications/whatsappService.js",
+    "sha256": "fe990f9a79d3125a221f83398a1bc2ca677b488c963a8ed2817a6b5ee5b48c35"
+  },
+  {
+    "file": "src/shared/infrastructure/http/functionError.js",
+    "sha256": "d9082b65f33483498398d677ad729b8e928bbdd46cd0d4f829157a976b6c89a3"
+  },
+  {
+    "file": "src/shared/infrastructure/mobile/index.js",
+    "sha256": "3169864126d05201ccd31651968766075aeba0947bfa32ed23c04ecb9ef95d5d"
+  },
+  {
+    "file": "src/shared/infrastructure/mobile/supabaseMobileDeviceRepository.js",
+    "sha256": "0ff1afa0a55bf865d4c2bb0b3729046fe9a8cc214c4b6466deedab2eafae9141"
+  },
+  {
+    "file": "src/shared/infrastructure/mobile/supabasePushNotificationGateway.js",
+    "sha256": "e74fd190903aece4909c23300ccb3d8d527b01ee2da4c1bd5d2057431455ef4e"
+  },
+  {
+    "file": "src/shared/lib/escapeHtml.js",
+    "sha256": "a5810abcd621af0b903fd7072a88dd9af7de23a9cb530afec66a84b7910ce9b7"
+  },
+  {
+    "file": "src/shared/lib/result.js",
+    "sha256": "2c6e19bac6ec0749fd9ab0303ce5d3bb23f6af12fdebf9c0d912d7d7ca874a0b"
+  },
+  {
+    "file": "src/shared/lib/tableQuery.js",
+    "sha256": "120762e6d7a4e6638c6daf65e17e822cd754ce9d7b2befe8e4af83215542e49d"
+  },
+  {
+    "file": "src/shared/lib/tableQuery.test.js",
+    "sha256": "3224fe10c0c1cd6a2a548d7ebbf8f54b18251d10cdb29cb96583386be806c16b"
+  },
+  {
+    "file": "src/shared/lib/trainingCategoryFormatting.js",
+    "sha256": "9212d4a00aabef101195ee5e518e0825e5595957537494513d670d66611b0905"
+  },
+  {
+    "file": "src/shared/platform/files.js",
+    "sha256": "ccb6eaeb69ecd1f6b8f3af4f01cf26698fda24883f15253b155a3304d44ce1af"
+  },
+  {
+    "file": "src/shared/platform/index.js",
+    "sha256": "23d9e677d4c42613776beea205a1df19827cdaf69d4ac955febc0c93927cd541"
+  },
+  {
+    "file": "src/shared/platform/links.js",
+    "sha256": "5c3223f9e5bfc9f25f698e273d82fd81d86ea2e2464d68061dd3f6b066e3557a"
+  },
+  {
+    "file": "src/shared/platform/mobileAppBridge.js",
+    "sha256": "7cd9b6f710988aaa44f0652e0eb08052367401154ee2db21437bd38aa4c6d180"
+  },
+  {
+    "file": "src/shared/platform/ota.js",
+    "sha256": "c84c9100ca8778c4ab9dae797bff6973a6e3c190a56379ea4e78c861c1aa4aec"
+  },
+  {
+    "file": "src/shared/platform/ota.test.js",
+    "sha256": "b0292f2ee8061bd0ecac13c7e9f0bb9366822ed675b9de88ee8feeb0db195a00"
+  },
+  {
+    "file": "src/shared/platform/push.js",
+    "sha256": "c84411407d6a9df75ea0ca2a103b6fd6afa4e63c19450fd80deaa56ea7c5ed68"
+  },
+  {
+    "file": "src/shared/platform/push.test.js",
+    "sha256": "b6351fbfa9aa2a64600698ac5885740c781b4f1ca65a1086df80dab717b559a4"
+  },
+  {
+    "file": "src/shared/platform/runtime.js",
+    "sha256": "9ea8ab7f99a56dba4241364599b08ce299e71a1488f426463b031c24d69b0c6c"
+  },
+  {
+    "file": "src/shared/platform/storage.js",
+    "sha256": "797d3399b97d84cbce4934d102d092db1ec471249cd81f11967d2c187b392761"
+  },
+  {
+    "file": "src/shared/ui/Button.js",
+    "sha256": "fe7cfef88c851e6279d773d58db9108bf9793d0a441e3bceb9d0c47f1bd0c63a"
+  },
+  {
+    "file": "src/shared/ui/Card.js",
+    "sha256": "59a2505a0b7d04dfd41f07922733ba7de5503ec21ce547a24c04358b2ba7e9cb"
+  },
+  {
+    "file": "src/shared/ui/DataTable.js",
+    "sha256": "1462613abb612b65fe1593f30a8d36085cc4c1e8dc537d99a1edbbce7d444b94"
+  },
+  {
+    "file": "src/shared/ui/EmptyState.js",
+    "sha256": "f251882257727a49e12cbc53bda3537e4efe9d3a0ec580f696bf93bc522179b2"
+  },
+  {
+    "file": "src/shared/ui/ExportButtonGroup.js",
+    "sha256": "9e82ed7edcd4c07cecb7d29250ce4ae2720953eadb417e98882f834626d23deb"
+  },
+  {
+    "file": "src/shared/ui/Field.js",
+    "sha256": "9ed6587251bf255f6c1aff47708171ce43cb3e1fa3d822a891576ef1b5bf0e1c"
+  },
+  {
+    "file": "src/shared/ui/FormControls.js",
+    "sha256": "f11d1007e0920e88c4667657d0555326ac3fdda96730b3721d7eb2ec7014b534"
+  },
+  {
+    "file": "src/shared/ui/KpiTile.js",
+    "sha256": "88bf5c54af6d4976087625da7321583d170895846363eb41dff6fc247bf490b8"
+  },
+  {
+    "file": "src/shared/ui/LoadingSpinner.js",
+    "sha256": "73cbfb4dcc0b474f907d5549b04bc3812c7844fa9fa2bae976024e1676bd47bb"
+  },
+  {
+    "file": "src/shared/ui/Modal.js",
+    "sha256": "38d5049fbac6685b57ceaca74c6dbffa980554a67c6478f76396331becfd3c5b"
+  },
+  {
+    "file": "src/shared/ui/Modal.test.js",
+    "sha256": "dfd6e3e353d42bb5fe7c6bef1edd745d503198a054a6ff8a9c82a58e68a420e5"
+  },
+  {
+    "file": "src/shared/ui/PageShell.js",
+    "sha256": "648c1097e073356c2ebe0b6915539532752df5d1c37641cbad467afa2084fb28"
+  },
+  {
+    "file": "src/shared/ui/PageShell.test.js",
+    "sha256": "98cab2a767e304137bdff0b71b07b7d1f8491c20b166178e4ad4be7fda60c9f9"
+  },
+  {
+    "file": "src/shared/ui/SectionHeader.js",
+    "sha256": "68b215964005135826b198cd898f339cec6c06075d77437d8478cbb9505f5734"
+  },
+  {
+    "file": "src/shared/ui/SortableHeader.js",
+    "sha256": "632b197342fa788df7f285c2078f5b752319098ab7b31dccbeeb4bc845f807b0"
+  },
+  {
+    "file": "src/shared/ui/SortableHeader.test.js",
+    "sha256": "dc962841d0a6d6a98c5fda0ed437c18e4bc24fcd7c48bc2946703bac971f5603"
+  },
+  {
+    "file": "src/shared/ui/StatusBadge.js",
+    "sha256": "5855f43ef67fa1702cd27a719bc9d7928cb59a3222a966f64a8964900e61f71b"
+  },
+  {
+    "file": "src/shared/ui/TabNav.js",
+    "sha256": "7ce876e538a866e0b9c6f7b9c172960bfeef3e76b828ef7b0926ac5075960656"
+  },
+  {
+    "file": "src/shared/ui/copyQualityCheck.test.js",
+    "sha256": "b2b581c4a6802e441e2dba10783b105662d620b3894144365da0a777d0904254"
+  },
+  {
+    "file": "src/shared/ui/feedback/Toast.js",
+    "sha256": "fb813d609455e992815918a073945c3eca3803facf808cf543d8b359e693ca5d"
+  },
+  {
+    "file": "src/shared/ui/iconRegistry.js",
+    "sha256": "4ba7abed4cfa078e7bf3688b17034555399f81442aa12cd515cbe09762d3cbf2"
+  },
+  {
+    "file": "src/shared/ui/iconRegistry.test.js",
+    "sha256": "82eff714fa0426fbd8a544dbd52cee9c3691dbff2686f5d6b56dffd81bcb1e7c"
+  },
+  {
+    "file": "src/shared/ui/index.js",
+    "sha256": "d26e006a68215b94bae60f801c26147701ed19db42912c949233cfebf511731c"
+  },
+  {
+    "file": "src/shared/ui/layout/RolePanelLayout.js",
+    "sha256": "4c83e1b445b4111b6a45aa3b7213c44324416dedf455d93420ab5adf8a48f06e"
+  },
+  {
+    "file": "src/shared/ui/layout/RoleSidebar.js",
+    "sha256": "23e0c3675aeb38355e5e58bca35b865270bb20b333870e0ad78f61c2fe55c9c5"
+  },
+  {
+    "file": "src/shared/ui/panel-guide/PanelUserGuide.js",
+    "sha256": "e7c63fe7021eeabc15a6d003f9498a47d92781cebe5426640c9e511972a73335"
+  },
+  {
+    "file": "src/shared/ui/panel-guide/PanelUserGuide.test.js",
+    "sha256": "49a7a11283d660a624b3207cbb3f8f04b4984811b08a4dce8f4f60aad8908713"
+  },
+  {
+    "file": "src/shared/ui/panel-guide/panelGuideContent.js",
+    "sha256": "af0488868dd856997108212081a21e7f5a1acf405b04df0441fe1c3b2e8873ac"
+  },
+  {
+    "file": "src/shared/ui/panel-guide/panelGuideStorage.js",
+    "sha256": "cd1aea26e93fc7471c73518d8f84d2430c80bfc3ced6ab90464490fcf990a706"
+  },
+  {
+    "file": "src/shared/ui/render-profile/RenderProfileProvider.js",
+    "sha256": "2342dd431449d2fba8082a0320eacd7220d2b4628cd45def1902660a166664fb"
+  },
+  {
+    "file": "src/shared/ui/render-profile/index.js",
+    "sha256": "cded56f876b1a90ba3e8c7a9793c2e8dea3b626d48e07036e8acc21fbae89d40"
+  },
+  {
+    "file": "src/shared/ui/render-profile/renderProfileResolver.js",
+    "sha256": "8a4d523a41381a82085b47e6b5e0684e9e99cec4e18d0c821d997b1064420d3f"
+  },
+  {
+    "file": "src/shared/ui/render-profile/renderProfileResolver.test.js",
+    "sha256": "004ec356338eda2b372648b0b00c6bf1c6097b406047d0deb1b764445e317a9e"
+  },
+  {
+    "file": "src/shared/ui/semanticCatalog.js",
+    "sha256": "474cda1c559e46c50be43bb245d02562e4b4490b2259e5955388b4673d2c7bea"
+  },
+  {
+    "file": "src/shared/ui/semanticCatalog.test.js",
+    "sha256": "7b63134df7a91284638a508ec537dd86d0b12edc918a777a4318017a01e121c4"
+  },
+  {
+    "file": "src/styles/AboutUs.module.css",
+    "sha256": "dc1ac1c34d5218a7e12bb4be486839ab47a1132300830a9057ed7c167fd0c03a"
+  },
+  {
+    "file": "src/styles/AdminPanel.module.css",
+    "sha256": "7104e63cdca6da912ee87df86ce28756bbafe6740d2bb4cf03609d653f494ebe"
+  },
+  {
+    "file": "src/styles/AnunciosManager.module.css",
+    "sha256": "4b55066db131b19556aa7c00b15acd0914cc5f8e62afab3294d62678281dd5bd"
+  },
+  {
+    "file": "src/styles/AnunciosViewer.module.css",
+    "sha256": "f93a4e067acb364e9732d36bf7321d734b625b4ac22c565eae0f3a5f46cb6857"
+  },
+  {
+    "file": "src/styles/AsistenciasManager.module.css",
+    "sha256": "15396b43a2ac142f5193060f02cdbc7aca4a4bdfddbf08e5accd3099d0e6c1d5"
+  },
+  {
+    "file": "src/styles/AtletasManager.module.css",
+    "sha256": "a9ee5ea3a727f294c40b81b96f4f0e0a6e8f1a8c9e2ed71fc9cb9eea9bf663c2"
+  },
+  {
+    "file": "src/styles/Dashboard.module.css",
+    "sha256": "f990677c2289f1d6d78bebb1ed192710f4ac4b387a433bc0032ac3f97bec887f"
+  },
+  {
+    "file": "src/styles/EntrenadoresManager.module.css",
+    "sha256": "a316dc58c4d4b1caafcf860dcfb746d5db63882869ec164b333decf2271a5747"
+  },
+  {
+    "file": "src/styles/HomePage.module.css",
+    "sha256": "ae183f24d0b1ccbfc9d45bc04e5b63c1bd4f04ccfe70cfeba1661a600c86bc49"
+  },
+  {
+    "file": "src/styles/Horarios.module.css",
+    "sha256": "289bc4b7d28ee523f7665e1aa35ce0e83753bb961d2bedf23a72779b522303e2"
+  },
+  {
+    "file": "src/styles/HorariosManager.module.css",
+    "sha256": "184812b9d834230c164d4b0a30743153b4ec079bc3a83483b39f0d66b25d931d"
+  },
+  {
+    "file": "src/styles/Icons.module.css",
+    "sha256": "fe33580c5a9f749e215de78dc9819911f77c24e1a8967709b414b77220ee09f0"
+  },
+  {
+    "file": "src/styles/Login.module.css",
+    "sha256": "71f82c05af30d8bcfe8134fe1c93382eaad1984fc1a04d609303d86fa5abc008"
+  },
+  {
+    "file": "src/styles/NotificacionesPagos.module.css",
+    "sha256": "685bb513918d5329665360caa86a12e69910cadb2feb962e4a6f65184e3ed972"
+  },
+  {
+    "file": "src/styles/PagosManager.module.css",
+    "sha256": "5928a32c78680fcdea60e552460d9c4f7f95b305da01ddb846e9585352fb84e9"
+  },
+  {
+    "file": "src/styles/PhysicalTestChart.module.css",
+    "sha256": "d6dac75f945ca3810fc3267e7c4e48efc47e3c4a02dc18adf5c319d63c45e27f"
+  },
+  {
+    "file": "src/styles/ProfileSettings.module.css",
+    "sha256": "d3d6808c292137d5decc4c53ec00a32f3792f585d80229cf2a91c6bf494ae7ba"
+  },
+  {
+    "file": "src/styles/StudentPanel.module.css",
+    "sha256": "9a3b8944bc0aa07fdd8300c511fadc525480a57a2e5f6a527d00d3fb1ad4da41"
+  },
+  {
+    "file": "src/styles/StudentView.module.css",
+    "sha256": "278e866503573e8d41c5743fd604f0ebc663c15d4a559a2fce5c58d7f1c7db13"
+  },
+  {
+    "file": "src/styles/TestsFisicosManager.module.css",
+    "sha256": "6d8c6db7690b6e12c2a9ce3704db2b76bd64061f28e24fefc65d440fd6d39d7e"
+  },
+  {
+    "file": "src/styles/TrainerDashboard.module.css",
+    "sha256": "3d8e6d1c4a372d77378d05206af2c93742a00856ab8aca82e35cbdface5c8259"
+  },
+  {
+    "file": "src/styles/TrainerPanel.module.css",
+    "sha256": "fec0736f0435374e64cdc9971c13f3835513bd362618591d139fa3b9df3f8f1b"
+  },
+  {
+    "file": "src/styles/UsuariosManager.module.css",
+    "sha256": "7765d179601ba60d727dc1ac4ff8c954702bfd05eed38a45c4dba16869d0775d"
+  },
+  {
+    "file": "src/styles/accessibility.css",
+    "sha256": "f38f5410ef88cf3cb1d81c61b099fe02ecdc76b39f7883fc450305d1e2c04dd1"
+  },
+  {
+    "file": "src/styles/design-tokens.css",
+    "sha256": "c919e79d151419339acd9918740fb880ab4f3053ba9831ba218b3316f6105822"
+  },
+  {
+    "file": "src/styles/global.css",
+    "sha256": "b165f626c2cf5fa373ccb5da61bf1edf4e15b238f411a00b70bd24bba7ee8cf1"
+  },
+  {
+    "file": "src/styles/mobile-best-practices.css",
+    "sha256": "17164115f63646b2116247e6af682a699df434e41bf412fa8dd72f07b89b4b69"
+  },
+  {
+    "file": "src/styles/tailwind.css",
+    "sha256": "eed5f6592dc7ef179bcd74319cbd9f4ea07b77c8e186bf77ea058587d8a6fd4c"
+  },
+  {
+    "file": "src/utils/athleteValidation.js",
+    "sha256": "3e77222dece0fd33cccfe19fbb25495220516bf4f23efcbc37bd1a00c711c8fd"
+  },
+  {
+    "file": "src/utils/dateUtils.js",
+    "sha256": "fb2c42ea7077c1167e2ef97df350df56113b1177dd04cc03a8108c6c0fa4f7c3"
+  },
+  {
+    "file": "src/utils/exportAttendancePdf.js",
+    "sha256": "f0bc1789a1d7bbc8df6a4b6f1b154033f70407882d7061de097700bf5748f18c"
+  },
+  {
+    "file": "src/utils/passwordUtils.js",
+    "sha256": "0e4e78c7a0c95daeb23d8fe0948ce1648261ef9965caa2403c5388b79d05486c"
+  },
+  {
+    "file": "src/utils/passwordUtils.test.js",
+    "sha256": "41791932933a57d132432cce42ce0cd90c9e99b504beda3459bda67d8d39e7eb"
+  },
+  {
+    "file": "src/utils/paymentUtils.js",
+    "sha256": "b3ca97dec28dce723ae5973e247d1d993a0fcbbad087e3653bd6acbbeb691958"
+  },
+  {
+    "file": "src/utils/piiCrypto.js",
+    "sha256": "58681f02f7995faada66a1da5f26c1f15b58451dba8ac68ce60d29ae338d316a"
+  },
+  {
+    "file": "src/utils/supabaseDebug.js",
+    "sha256": "ce4022862c3f5075851a9d05460e30ae339e99aaa7219c81e21898c485dd1252"
+  },
+  {
+    "file": "supabase/.env.example",
+    "sha256": "d0452c76aedeffc16a51c27fd65776b55c5d711c516003d9a8c9c555a20c6430"
+  },
+  {
+    "file": "supabase/.temp/gotrue-version",
+    "sha256": "f9235c988affe044f077396f6e67a4a58dd38f26f7b48f88d6b8e3368e86ae1e"
+  },
+  {
+    "file": "supabase/.temp/linked-project.json",
+    "sha256": "85deb9f5cc3e257f2afc75347685a84605b0403002a46dfff590a0b77084328f"
+  },
+  {
+    "file": "supabase/.temp/pooler-url",
+    "sha256": "2f67871127813da4ab71840a48bd62ad1b4d88bcc51cc4b6fa068d9171c4ebd6"
+  },
+  {
+    "file": "supabase/.temp/postgres-version",
+    "sha256": "64197e8ac6db67a04985e75372fcb0478dfd3a20cd5f7b62c395fb4da64e6d7e"
+  },
+  {
+    "file": "supabase/.temp/project-ref",
+    "sha256": "21bdd6799ac2b81391bd2501d753cff7b264256e748c20a3cb0888c65ff0b846"
+  },
+  {
+    "file": "supabase/.temp/rest-version",
+    "sha256": "9097d65d60ccbb8856900cf0a6c622d93b0cb045a34f350026a5818470659fca"
+  },
+  {
+    "file": "supabase/.temp/storage-migration",
+    "sha256": "5eefa09f2bf47edfbd65e0307f2ebf6eec935a663b45e36cbd9395c3f10695d0"
+  },
+  {
+    "file": "supabase/.temp/storage-version",
+    "sha256": "5d5215376258446f23fadf6ea411e38bf88e85306d114b1b0859c8ca512e5189"
+  },
+  {
+    "file": "supabase/config.toml",
+    "sha256": "f1fbe3f15e7ffe852b4d443ee63ae65be35e00336e40ca0db6a0ef57b785b1e6"
+  },
+  {
+    "file": "supabase/functions/_core/auth-admin/application/use-cases/delete-auth-user-use-case.ts",
+    "sha256": "da48649eab34f1b7f98fe0b550c74b05d8a7e5990ef57c6044df8b50844f3b8c"
+  },
+  {
+    "file": "supabase/functions/_core/auth-admin/application/use-cases/update-user-password-use-case.ts",
+    "sha256": "635afce93fdaa13f5dd16fb41a76662c5241b2da92afbc6291603ac1801e87d3"
+  },
+  {
+    "file": "supabase/functions/_core/auth-admin/domain/auth-admin-error.ts",
+    "sha256": "d45fdc41fab730b105ddbe3e2889eac203b4f0748d893951a150d9f79c0e5d5f"
+  },
+  {
+    "file": "supabase/functions/_core/auth-admin/infrastructure/supabase-auth-admin-gateway.ts",
+    "sha256": "63a0c3b27f50a3018bf5f711e42357f23feb10d5eae3fc536f296abd227f8dd3"
+  },
+  {
+    "file": "supabase/functions/_core/communications/application/use-cases/send-email-use-case.ts",
+    "sha256": "5112db1026983bc10a4094fd452303621b6321fa1471b8cb8c6c3073e3b2877a"
+  },
+  {
+    "file": "supabase/functions/_core/communications/domain/communications-error.ts",
+    "sha256": "a35c82230fbc5982d5a6003b6fd25a7e6130dcfea562a7e14d1d045924b1719e"
+  },
+  {
+    "file": "supabase/functions/_core/communications/infrastructure/resend-communications-gateway.ts",
+    "sha256": "127ca1d5ae9626428163f86b49ef8cf56f629e6876f908aecda274b5ce4c399c"
+  },
+  {
+    "file": "supabase/functions/_core/http/body.ts",
+    "sha256": "4d12d822815d94e22d2ff7003afc7f9dd030a41cc0879f741e66d1cd8e5c49cf"
+  },
+  {
+    "file": "supabase/functions/_core/http/response.ts",
+    "sha256": "7f62f3aabe8d0456bb30ef748a245623a1263944819477f93f1841654a84577e"
+  },
+  {
+    "file": "supabase/functions/_core/push/infrastructure/firebase-push-gateway.ts",
+    "sha256": "6940ac7249ec9b2f13654543ac3ed93546df9ed7db3ddedab7e8019a3a436b7a"
+  },
+  {
+    "file": "supabase/functions/_core/reporting/application/use-cases/delete-report-run-use-case.ts",
+    "sha256": "e8070102f2586dc37a0016878c3f4c3998d37f8bc4f5a22c5d299811fe3af7f7"
+  },
+  {
+    "file": "supabase/functions/_core/reporting/application/use-cases/generate-report-run-use-case.ts",
+    "sha256": "bea10104c1d5f9117f88673892f4ed7f83b4acd9c9635bfeb96807f4f24959a6"
+  },
+  {
+    "file": "supabase/functions/_core/reporting/application/use-cases/generate-scheduled-reports-use-case.ts",
+    "sha256": "5f9887fcb406bb4eef01d4fb2e266aa6a5c4562e59bdc12200116fc7d951c611"
+  },
+  {
+    "file": "supabase/functions/_core/reporting/domain/reporting-types.ts",
+    "sha256": "e7e00279bd7e0df7bdb079293ada25b48d102fbd2d1a86b93140cf9ee3fdc87c"
+  },
+  {
+    "file": "supabase/functions/_core/reporting/infrastructure/legacy-reporting-gateway.ts",
+    "sha256": "875b3db978249a668e77de9d69552cbc4f8dd08f29c31dc2fe5e850faba01865"
+  },
+  {
+    "file": "supabase/functions/_shared/cors.ts",
+    "sha256": "409589a20b7e1006bc0e9e78be41d11745fee7e480ed5133a75b19e93b5e4a10"
+  },
+  {
+    "file": "supabase/functions/_shared/reporting.ts",
+    "sha256": "b75bef88bb84ece413da93c40ee0a330021c259b434b7a7143994fe79d800fe1"
+  },
+  {
+    "file": "supabase/functions/delete-auth-user/index.ts",
+    "sha256": "92977d11b43a3fcdb5d10a549e43f0748c7dbd70805184fbc7cf5f99dff6610b"
+  },
+  {
+    "file": "supabase/functions/delete-report-run/index.ts",
+    "sha256": "9bae9f8176a9d2c702fc6cd323cf19b45c1940a12a295c0c89b48c0dc6cdb41f"
+  },
+  {
+    "file": "supabase/functions/generate-report/index.ts",
+    "sha256": "7ee235af5b21122a27681397593355deb5a21ebdeb84f2cca43054fb7a9da758"
+  },
+  {
+    "file": "supabase/functions/generate-scheduled-reports/index.ts",
+    "sha256": "1007225baa710fd6c18e890c6569237115ee2d0bc6250b32930afb1e55cba5d8"
+  },
+  {
+    "file": "supabase/functions/send-email/index.ts",
+    "sha256": "eb7ab4da498cf23add764a8b7ab8ad6519abc142fa60af781514121e05afe31e"
+  },
+  {
+    "file": "supabase/functions/send-payment-reminders/index.ts",
+    "sha256": "96c0ac39a8bf1ea5b121dc7d108d40b98ed61e878b398af8d9cc3b323869559d"
+  },
+  {
+    "file": "supabase/functions/send-push/index.ts",
+    "sha256": "267a7b6ae635ed7a4895a93549d4c8de7ef566dbf27c9da6a8d92ed664d502e8"
+  },
+  {
+    "file": "supabase/functions/sync-mobile-device/index.ts",
+    "sha256": "923cc50b991f91f55df7db9e53d365f3d9ecba919863cd9e01046e959bb14873"
+  },
+  {
+    "file": "supabase/functions/update-user-password/index.ts",
+    "sha256": "61338545403c3ceaff81c372c2fde0751e8770638750660bcee253782a1a9bcb"
+  },
+  {
+    "file": "supabase/migrations/20260617191555_fix_payment_period_trigger.sql",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "supabase/migrations/20260702200633_ui_performance_grants_indexes.sql",
+    "sha256": "a78e49f0ec6a32af39502190a207370caa3f27f79d53b951f5d28e9cc0fae4a9"
+  },
+  {
+    "file": "supabase/migrations/20261022231258_gamification_shop_purchase_consistency.sql",
+    "sha256": "f60f69d46ae66e9fdc059bdf50742afb1556c3fd269ad3ce23ac43a0b4fb0543"
+  },
+  {
+    "file": "supabase/migrations/20261028001854_remediate_rls_advisors.sql",
+    "sha256": "19a14a7701a273bbfa431fdbc6081c49d99aaa2254a1c1f3b482239040ece283"
+  },
+  {
+    "file": "supabase/migrations/20261028014018_restore_training_category_access.sql",
+    "sha256": "9330fb1bd3ae9b22a2b9c334c59d020b54d89d02af5d59c8ae092461ff3d69f1"
+  },
+  {
+    "file": "tailwind.config.js",
+    "sha256": "41269eda953ec851a53fdd4a6311dd3a8cad219dcea1cd320ee2fab02c7289eb"
+  },
+  {
+    "file": "test-attendance.mjs",
+    "sha256": "00824e813156326d722ba7a7148606091ccebb9e1527861c9e3c629371e5a623"
+  },
+  {
+    "file": "test-service.mjs",
+    "sha256": "cda005e291b1845f59e40e704f271380f6865ff6481ae0cdfed9910c8a0fbd4f"
+  },
+  {
+    "file": "test-supabase.mjs",
+    "sha256": "39e549d1672b3988e151ce9b1308153f14856f35ac2fc397a0aaf170af13ac0f"
+  },
+  {
+    "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+    "sha256": "c4ddb67d777ee4e3ca5cd2d5381323b780507da3ea2c079a8f7b72a896e93235"
+  },
+  {
+    "file": "tests/e2e/admin.modules-navigation.spec.js",
+    "sha256": "ba440faa529e8ea562ee89b1ce18e5fb4f806a3f5e5e7f34ab89b5c8b6d1d14a"
+  },
+  {
+    "file": "tests/e2e/admin.provisioning-notifications.smoke.spec.js",
+    "sha256": "7f9016d44464b72048fc94e480dbc8058c1bf50f292ff969431489c2202b723b"
+  },
+  {
+    "file": "tests/e2e/asistencias.guided.review.spec.js",
+    "sha256": "1944041fea5d208588d7db81606282e0773462ee596d7ad13a4a08559ad097c8"
+  },
+  {
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "sha256": "0cfbcd1b921cad0ee6d4f2235faa350db4ec17d6d6767e52e0765d50dd9d3190"
+  },
+  {
+    "file": "tests/e2e/filters-sorting.phase2-lists.spec.js",
+    "sha256": "2af1864d4e7ceab91c97572f08babe19e850925b5d7d0d210eb9568758751f73"
+  },
+  {
+    "file": "tests/e2e/filters-sorting.physical-tests.spec.js",
+    "sha256": "ebaa975cbfafa29de29e72a86beea96f547ebf39e4a05fd3a1fae7ce3e79e1a9"
+  },
+  {
+    "file": "tests/e2e/filters-sorting.tables.spec.js",
+    "sha256": "690af78b7246411117b31f8aafa3deab6598566b27f94fc1fbb8ffa03c7c4e1e"
+  },
+  {
+    "file": "tests/e2e/filters-sorting.user-management.spec.js",
+    "sha256": "fbb1bf27818e535a18b99daf1d716e6704c4ebf4a152656baf9db14e9c9edf64"
+  },
+  {
+    "file": "tests/e2e/helpers/adminNavigation.js",
+    "sha256": "bce7497faafed4ae973f268dfcfb9bc059b5d9862cab2127b681df720ed9a986"
+  },
+  {
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "sha256": "d05add0f518e8c763d51d96e20beeea01ebb6b7794e5cdb19b2a3cde0960e53f"
+  },
+  {
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "sha256": "f96b94c1162a3b8eb30c91cc2a2b448a305e0d602f3f7a9673d8c14c740daf0f"
+  },
+  {
+    "file": "tests/e2e/roles.modules-navigation.spec.js",
+    "sha256": "4f0786da0053ea3caae0c28ea31f75eeab4e30dded2bc261c2dbf2823158ea40"
+  },
+  {
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "sha256": "e646031489fe650719f72108b49cb929479ceb002b5916f0c03ab10249fd426c"
+  },
+  {
+    "file": "tests/unit/credentials-edge.test.ts",
+    "sha256": "9237338493b0b1fb8dbbccb2f062040e43d2cccc5cc9956244540e6087047dc2"
+  },
+  {
+    "file": "vercel.json",
+    "sha256": "b6cf91c456b651bb8e4bac4226227e2e014219c0f59cd38b50a65075fa996d4b"
+  }
+]

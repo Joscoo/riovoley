@@ -1,0 +1,10 @@
+{
+  "checked": 351,
+  "unresolved": [
+    "riovoley-auditoria-debug.apk:assets/public/static/js/589.1c1321e5.chunk.js",
+    "riovoley-auditoria-debug.apk:assets/public/static/js/616.0f49370b.chunk.js",
+    "riovoley-auditoria-debug.apk:assets/public/static/js/698.8eb1db0d.chunk.js",
+    "riovoley-auditoria-debug.apk:assets/public/static/js/main.6e664175.js"
+  ],
+  "scope": "Valores sensibles de .env* y runtime E2E, JWT; incluye archivos de texto descomprimidos del APK. No se modificó el APK firmado."
+}

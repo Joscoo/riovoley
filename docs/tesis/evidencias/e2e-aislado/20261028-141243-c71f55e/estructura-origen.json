@@ -1,0 +1,9 @@
+{
+  "capturedAt": "2026-10-28T14:10:30.932741+00:00",
+  "postgres": "17.4",
+  "tables": 47,
+  "functions": 38,
+  "views": 44,
+  "policies": 139,
+  "businessRowsCopied": 0
+}

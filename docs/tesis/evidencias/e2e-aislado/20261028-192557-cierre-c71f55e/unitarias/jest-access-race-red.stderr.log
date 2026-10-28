@@ -1,0 +1,32 @@
+FAIL src/features/student-dashboard/presentation/components/StudentPanel.access.test.js (15.07 s)
+  √ deniega al visitante anónimo sin quedar cargando ni consultar datos (122 ms)
+  √ deniega administrador sin consultar el panel de estudiante (16 ms)
+  √ deniega entrenador sin consultar el panel de estudiante (18 ms)
+  √ espera la resolución del perfil antes de consultar datos de estudiante (3 ms)
+  √ un usuario sin perfil autorizado recibe denegación explícita (10 ms)
+  √ al cerrar sesión oculta el panel aunque finalice una petición anterior (48 ms)
+  × una recarga silenciosa intercalada libera la carga normal vigente (588 ms)
+
+  ● una recarga silenciosa intercalada libera la carga normal vigente
+
+    expect(element).not.toBeInTheDocument()
+
+    expected document not to contain element, found <p class="text-sm font-semibold mobile:text-base">Cargando informacion...</p> instead
+
+      79 |   await waitFor(() => expect(studentDashboardService.loadStudentPanelData).toHaveBeenCalledTimes(3));
+      80 |   await act(async () => { resolveSilent(data); resolveNormal(data); });
+    > 81 |   expect(screen.queryByText('Cargando informacion...')).not.toBeInTheDocument();
+         |                                                             ^
+      82 |   expect(screen.getByRole('heading', { name: 'Panel de Estudiante' })).toBeInTheDocument();
+      83 | });
+      84 |
+
+      at Object.<anonymous> (src/features/student-dashboard/presentation/components/StudentPanel.access.test.js:81:61)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 6 passed, 7 total
+Snapshots:   0 total
+Time:        32.536 s
+Ran all test suites within paths "src/features/student-dashboard/presentation/components/StudentPanel.access.test.js".
+Test results written to: docs\tesis\evidencias\e2e-aislado\20261028-192557-cierre-c71f55e\jest-access-race-red.json
+

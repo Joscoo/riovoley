@@ -1,0 +1,7 @@
+{
+  "url": "https://dl.google.com/android/repository/commandlinetools-win-15859902_latest.zip",
+  "sha256": "90ae805d20434428bffcb699c290860f19bb5f66a67e6b330067e3de801fb04a",
+  "expected": "90ae805d20434428bffcb699c290860f19bb5f66a67e6b330067e3de801fb04a",
+  "bytes": 155655386,
+  "verified": true
+}

@@ -1,0 +1,15 @@
+{
+  "command": [
+    "git",
+    "status",
+    "--short",
+    "--untracked-files=normal"
+  ],
+  "cwd": ".",
+  "start": "2026-10-28T13:37:36.414Z",
+  "end": "2026-10-28T13:37:36.609Z",
+  "durationSeconds": 0.195,
+  "exitCode": 0,
+  "signal": null,
+  "environmentOverrides": {}
+}

@@ -1,0 +1,19 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\Riovoley\\riovoley\\node_modules\\react-scripts\\bin\\react-scripts.js",
+    "test",
+    "--watchAll=false",
+    "--runInBand",
+    "--json",
+    "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-192557-cierre-c71f55e\\jest-coverage.json",
+    "--coverage",
+    "--coverageDirectory=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-192557-cierre-c71f55e\\cobertura"
+  ],
+  "start": "2026-10-28T20:01:00.767Z",
+  "end": "2026-10-28T20:02:18.414Z",
+  "durationSeconds": 77.647,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

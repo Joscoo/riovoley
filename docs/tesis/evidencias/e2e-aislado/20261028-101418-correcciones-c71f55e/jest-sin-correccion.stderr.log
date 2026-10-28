@@ -1,0 +1,205 @@
+FAIL src/shared/ui/SortableHeader.test.js
+  SortableHeader
+    × expone el estado de orden fuera de una tabla: null none (69 ms)
+    × expone el estado de orden fuera de una tabla: monto asc (15 ms)
+    × expone el estado de orden fuera de una tabla: monto desc (14 ms)
+    √ renders with aria-sort none by default (12 ms)
+    √ renders ascending aria-sort when active asc (15 ms)
+    √ calls onToggleSort with field when clicked (14 ms)
+
+  ● SortableHeader › expone el estado de orden fuera de una tabla: null none
+
+    TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Ordenar por Monto: sin ordenar"
+
+    Here are the accessible roles:
+
+      button:
+
+      Name "Monto":
+      [36m<button[39m
+        [33mclass[39m=[32m"inline-flex min-h-[44px] items-center gap-2 text-left "[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"inline-flex min-h-[44px] items-center gap-2 text-left "[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<span>[39m
+            [0mMonto[0m
+          [36m</span>[39m
+          [36m<svg[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"text-slate-400"[39m
+            [33mfill[39m=[32m"currentColor"[39m
+            [33mheight[39m=[32m"1em"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-width[39m=[32m"0"[39m
+            [33mviewBox[39m=[32m"0 0 320 512"[39m
+            [33mwidth[39m=[32m"1em"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41zm255-105L177 64c-9.4-9.4-24.6-9.4-33.9 0L24 183c-15.1 15.1-4.4 41 17 41h238c21.4 0 32.1-25.9 17-41z"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+        [36m</button>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      12 |     const onToggleSort = jest.fn();
+      13 |     render(<SortableHeader field="monto" label="Monto" sort={{ field, direction }} onToggleSort={onToggleSort} asCell={false} />);
+    > 14 |     const button = screen.getByRole('button', { name: `Ordenar por Monto: ${state}` });
+         |                           ^
+      15 |     fireEvent.click(button);
+      16 |     expect(onToggleSort).toHaveBeenCalledWith('monto');
+      17 |     expect(button.closest('th')).toBeNull();
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:37:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at getByRole (node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
+      at src/shared/ui/SortableHeader.test.js:14:27
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  ● SortableHeader › expone el estado de orden fuera de una tabla: monto asc
+
+    TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Ordenar por Monto: ascendente"
+
+    Here are the accessible roles:
+
+      button:
+
+      Name "Monto":
+      [36m<button[39m
+        [33mclass[39m=[32m"inline-flex min-h-[44px] items-center gap-2 text-left "[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"inline-flex min-h-[44px] items-center gap-2 text-left "[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<span>[39m
+            [0mMonto[0m
+          [36m</span>[39m
+          [36m<svg[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"text-rv-gold"[39m
+            [33mfill[39m=[32m"currentColor"[39m
+            [33mheight[39m=[32m"1em"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-width[39m=[32m"0"[39m
+            [33mviewBox[39m=[32m"0 0 320 512"[39m
+            [33mwidth[39m=[32m"1em"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M279 224H41c-21.4 0-32.1-25.9-17-41L143 64c9.4-9.4 24.6-9.4 33.9 0l119 119c15.2 15.1 4.5 41-16.9 41z"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+        [36m</button>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      12 |     const onToggleSort = jest.fn();
+      13 |     render(<SortableHeader field="monto" label="Monto" sort={{ field, direction }} onToggleSort={onToggleSort} asCell={false} />);
+    > 14 |     const button = screen.getByRole('button', { name: `Ordenar por Monto: ${state}` });
+         |                           ^
+      15 |     fireEvent.click(button);
+      16 |     expect(onToggleSort).toHaveBeenCalledWith('monto');
+      17 |     expect(button.closest('th')).toBeNull();
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:37:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at getByRole (node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
+      at src/shared/ui/SortableHeader.test.js:14:27
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  ● SortableHeader › expone el estado de orden fuera de una tabla: monto desc
+
+    TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Ordenar por Monto: descendente"
+
+    Here are the accessible roles:
+
+      button:
+
+      Name "Monto":
+      [36m<button[39m
+        [33mclass[39m=[32m"inline-flex min-h-[44px] items-center gap-2 text-left "[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"inline-flex min-h-[44px] items-center gap-2 text-left "[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [36m<span>[39m
+            [0mMonto[0m
+          [36m</span>[39m
+          [36m<svg[39m
+            [33maria-hidden[39m=[32m"true"[39m
+            [33mclass[39m=[32m"text-rv-gold"[39m
+            [33mfill[39m=[32m"currentColor"[39m
+            [33mheight[39m=[32m"1em"[39m
+            [33mstroke[39m=[32m"currentColor"[39m
+            [33mstroke-width[39m=[32m"0"[39m
+            [33mviewBox[39m=[32m"0 0 320 512"[39m
+            [33mwidth[39m=[32m"1em"[39m
+            [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m"M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+        [36m</button>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      12 |     const onToggleSort = jest.fn();
+      13 |     render(<SortableHeader field="monto" label="Monto" sort={{ field, direction }} onToggleSort={onToggleSort} asCell={false} />);
+    > 14 |     const button = screen.getByRole('button', { name: `Ordenar por Monto: ${state}` });
+         |                           ^
+      15 |     fireEvent.click(button);
+      16 |     expect(onToggleSort).toHaveBeenCalledWith('monto');
+      17 |     expect(button.closest('th')).toBeNull();
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:37:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at getByRole (node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
+      at src/shared/ui/SortableHeader.test.js:14:27
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+Test Suites: 1 failed, 1 total
+Tests:       3 failed, 3 passed, 6 total
+Snapshots:   0 total
+Time:        2.459 s
+Ran all test suites within paths "src/shared/ui/SortableHeader.test.js".
+Test results written to: docs\tesis\evidencias\e2e-aislado\20261028-101418-correcciones-c71f55e\jest-sin-correccion.json
+

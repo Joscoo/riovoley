@@ -1,0 +1,70 @@
+{
+  "before": {
+    "info": 0,
+    "low": 0,
+    "moderate": 21,
+    "high": 15,
+    "critical": 3,
+    "total": 39
+  },
+  "after": {
+    "info": 0,
+    "low": 0,
+    "moderate": 57,
+    "high": 5,
+    "critical": 0,
+    "total": 62
+  },
+  "remaining": [
+    {
+      "name": "@genkit-ai/core",
+      "severity": "high",
+      "direct": false,
+      "range": "*",
+      "fix": {
+        "name": "genkit",
+        "version": "0.5.17",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "@opentelemetry/propagator-jaeger",
+      "severity": "high",
+      "direct": false,
+      "range": "<=2.8.0",
+      "fix": true
+    },
+    {
+      "name": "@opentelemetry/sdk-trace-node",
+      "severity": "high",
+      "direct": false,
+      "range": "<=2.7.1",
+      "fix": true
+    },
+    {
+      "name": "genkit",
+      "severity": "moderate",
+      "direct": true,
+      "range": "<=0.5.0-rc.12 || 0.6.0-dev.2 - 1.0.0-rc.19 || >=1.0.4",
+      "fix": {
+        "name": "genkit",
+        "version": "0.5.17",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "path-to-regexp",
+      "severity": "high",
+      "direct": false,
+      "range": "8.0.0 - 8.3.0",
+      "fix": true
+    },
+    {
+      "name": "zod",
+      "severity": "high",
+      "direct": false,
+      "range": "<4.6.6",
+      "fix": true
+    }
+  ]
+}

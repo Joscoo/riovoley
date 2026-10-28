@@ -1,0 +1,19 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5580",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "com.riovoley.app.test/androidx.test.runner.AndroidJUnitRunner"
+  ],
+  "start": "2026-10-28T19:45:58.929Z",
+  "end": "2026-10-28T19:46:15.692Z",
+  "durationSeconds": 16.763,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

@@ -1,0 +1,33 @@
+
+Running 1 test using 1 worker
+
+  ✘  1 [desktop-1440] › tests\e2e\admin.happy-path-controlled.spec.js:6:1 › admin happy path controlado: atleta + pago + asistencia (1.0m)
+
+
+  1) [desktop-1440] › tests\e2e\admin.happy-path-controlled.spec.js:6:1 › admin happy path controlado: atleta + pago + asistencia 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: locator.fill: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('#user-filters-athletes-search')[22m
+
+
+      45 |   await credentials.getByRole('button', { name: /^Cerrar$/i }).click();
+      46 |   await expect(form).toBeHidden();
+    > 47 |   await page.locator('#user-filters-atleta-search').fill(email);
+         |                                                       ^
+      48 |   await expect(page.getByText(email, { exact: true }).first()).toBeVisible();
+      49 |
+      50 |   await openAdminSection(page, 'pagos');
+        at D:\Riovoley\riovoley\tests\e2e\admin.happy-path-controlled.spec.js:47:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\e2e-aislado\20261028-101418-correcciones-c71f55e\flujo-actual-desktop-crear\artefactos\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\e2e-aislado\20261028-101418-correcciones-c71f55e\flujo-actual-desktop-crear\artefactos\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440\error-context.md
+
+  1 failed
+    [desktop-1440] › tests\e2e\admin.happy-path-controlled.spec.js:6:1 › admin happy path controlado: atleta + pago + asistencia 
+

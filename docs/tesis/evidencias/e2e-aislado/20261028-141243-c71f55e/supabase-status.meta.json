@@ -1,0 +1,16 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\tools\\node_modules\\@supabase\\cli-windows-x64\\bin\\supabase.exe",
+    "status",
+    "--workdir",
+    "D:\\Riovoley\\riovoley\\.e2e-local/stack",
+    "-o",
+    "json"
+  ],
+  "start": "2026-10-28T14:14:35.671Z",
+  "end": "2026-10-28T14:14:40.640Z",
+  "durationSeconds": 4.969,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

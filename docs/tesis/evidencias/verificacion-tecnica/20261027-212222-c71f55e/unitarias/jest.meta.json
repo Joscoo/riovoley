@@ -1,0 +1,26 @@
+{
+  "command": [
+    "npm.cmd",
+    "test",
+    "--",
+    "--watchAll=false",
+    "--runInBand",
+    "--coverage",
+    "--coverageDirectory=docs/tesis/evidencias/verificacion-tecnica/20261027-212222-c71f55e/unitarias/coverage",
+    "--coverageReporters=json-summary",
+    "--coverageReporters=json",
+    "--coverageReporters=lcov",
+    "--coverageReporters=text",
+    "--json",
+    "--outputFile=docs/tesis/evidencias/verificacion-tecnica/20261027-212222-c71f55e/unitarias/jest-resultados.json"
+  ],
+  "cwd": ".",
+  "start": "2026-10-28T02:23:56.179Z",
+  "end": "2026-10-28T02:25:30.636Z",
+  "durationSeconds": 94.457,
+  "exitCode": 0,
+  "signal": null,
+  "environmentOverrides": {
+    "CI": "true"
+  }
+}

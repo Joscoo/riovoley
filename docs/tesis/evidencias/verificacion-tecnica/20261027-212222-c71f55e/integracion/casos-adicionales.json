@@ -1,0 +1,27 @@
+[
+  {
+    "file": "src/features/gamification/application/useCases/gamification.audit.integration.test.js",
+    "title": "auditoria: registrar asistencia produce XP mediante el servicio y casos de uso reales",
+    "status": "passed"
+  },
+  {
+    "file": "src/features/gamification/application/useCases/gamification.audit.integration.test.js",
+    "title": "auditoria: actualizar la misma asistencia no duplica XP ni monedas",
+    "status": "passed"
+  },
+  {
+    "file": "src/features/gamification/application/useCases/gamification.audit.integration.test.js",
+    "title": "auditoria: crear y modificar un pago recalcula el ledger sin duplicar la fuente",
+    "status": "passed"
+  },
+  {
+    "file": "src/features/gamification/application/useCases/gamification.audit.integration.test.js",
+    "title": "auditoria: crear y modificar una evaluacion conserva un unico movimiento base de XP",
+    "status": "passed"
+  },
+  {
+    "file": "src/features/gamification/application/useCases/gamification.audit.integration.test.js",
+    "title": "auditoria: el servicio de recompensa diaria conserva el estado entre dos llamadas",
+    "status": "passed"
+  }
+]

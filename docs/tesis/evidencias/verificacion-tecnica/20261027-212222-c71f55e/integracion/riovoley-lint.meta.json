@@ -1,0 +1,14 @@
+{
+  "command": [
+    "npm.cmd",
+    "run",
+    "lint"
+  ],
+  "cwd": "riovoley",
+  "start": "2026-10-28T02:29:15.159Z",
+  "end": "2026-10-28T02:29:54.144Z",
+  "durationSeconds": 38.985,
+  "exitCode": 0,
+  "signal": null,
+  "environmentOverrides": {}
+}

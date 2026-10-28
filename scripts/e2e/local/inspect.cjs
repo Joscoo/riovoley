@@ -1,0 +1,11 @@
+const fs=require('node:fs');
+const path=require('node:path');
+const crypto=require('node:crypto');
+const h=require('./harness.cjs');
+const schema=fs.readFileSync(path.join(h.runtime,'schema.sql'),'utf8');
+const counts={schemaBytes:Buffer.byteLength(schema),urlLiterals:(schema.match(/https?:\/\/[^\s'"]+/g)||[]).length,emailLiterals:(schema.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi)||[]).length,jwtLiterals:(schema.match(/eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/g)||[]).length};
+if(counts.urlLiterals||counts.emailLiterals||counts.jwtLiterals) throw new Error('Revisar literales antes de publicar baseline de estructura');
+fs.mkdirSync(path.join(h.root,'database/e2e'),{recursive:true});
+fs.writeFileSync(path.join(h.root,'database/e2e/local-baseline.sql'),'-- SOLO PARA SUPABASE E2E LOCAL. Estructura sin datos institucionales.\n-- Origen: SELECT de catálogos, 2026-10-28. No aplicar a producción.\n'+schema);
+h.write('baseline-verificacion.json',{...counts,sha256:crypto.createHash('sha256').update(schema).digest('hex'),copiedInstitutionalRows:0});
+console.log(JSON.stringify(counts));

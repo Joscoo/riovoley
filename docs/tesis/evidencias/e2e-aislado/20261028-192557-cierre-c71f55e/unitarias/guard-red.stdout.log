@@ -1,0 +1,29 @@
+✖ la integración local impide que fetch siga redirecciones hacia servicios externos (117.3506ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 287.5509
+
+✖ failing tests:
+
+test at tests\unit\localTargetGuard.test.cjs:3:1
+✖ la integración local impide que fetch siga redirecciones hacia servicios externos (117.3506ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'follow' !== 'error'
+  
+      at TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\localTargetGuard.test.cjs:9:12)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'follow',
+    expected: 'error',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+

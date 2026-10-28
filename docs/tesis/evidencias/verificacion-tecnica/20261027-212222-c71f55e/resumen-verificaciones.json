@@ -1,0 +1,227 @@
+{
+  "generatedAt": "2026-10-28T13:54:12.875Z",
+  "commit": "c71f55e5bc59c528a002c4347fb1664794cb277e",
+  "baselineJest": {
+    "executed": 387,
+    "passed": 387,
+    "failed": 0,
+    "skipped": 0
+  },
+  "additionalJest": {
+    "executed": 5,
+    "passed": 5,
+    "failed": 0,
+    "skipped": 0
+  },
+  "playwright": {
+    "executed": 133,
+    "passed": 126,
+    "failed": 7,
+    "skipped": 0
+  },
+  "blockedE2E": 112,
+  "coverage": {
+    "lines": {
+      "total": 12082,
+      "covered": 4968,
+      "skipped": 0,
+      "pct": 41.11
+    },
+    "statements": {
+      "total": 13332,
+      "covered": 5300,
+      "skipped": 0,
+      "pct": 39.75
+    },
+    "functions": {
+      "total": 3468,
+      "covered": 1231,
+      "skipped": 0,
+      "pct": 35.49
+    },
+    "branches": {
+      "total": 11941,
+      "covered": 3821,
+      "skipped": 0,
+      "pct": 31.99
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "checks": [
+    {
+      "code": "U-01",
+      "verification": "Jest/Testing Library (83 suites)",
+      "executed": 387,
+      "passed": 387,
+      "failed": 0,
+      "skipped": 0,
+      "status": "APROBADO",
+      "evidence": "unitarias/jest-resultados.json"
+    },
+    {
+      "code": "U-02",
+      "verification": "Node test runner: autenticación y correo Edge",
+      "executed": 10,
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0,
+      "status": "APROBADO (mocks)",
+      "evidence": "unitarias/auth-edge.stdout.log"
+    },
+    {
+      "code": "C-01",
+      "verification": "Script de contratos: 2 suites; subconjunto de U-01",
+      "executed": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "status": "APROBADO (mocks)",
+      "evidence": "integracion/contratos-resultados.json"
+    },
+    {
+      "code": "I-01",
+      "verification": "Integración local adicional (1 suite)",
+      "executed": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "status": "APROBADO (memoria)",
+      "evidence": "integracion/adicionales-resultados.json"
+    },
+    {
+      "code": "I-02",
+      "verification": "HTTP local /health: dos servicios",
+      "executed": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "status": "APROBADO (sin backend)",
+      "evidence": "integracion/health-resultados.json"
+    },
+    {
+      "code": "E-01",
+      "verification": "Responsive público",
+      "executed": 35,
+      "passed": 35,
+      "failed": 0,
+      "skipped": 0,
+      "status": "APROBADO (red aislada)",
+      "evidence": "e2e/resultados.json"
+    },
+    {
+      "code": "E-02",
+      "verification": "Navegación pública y teclado",
+      "executed": 49,
+      "passed": 49,
+      "failed": 0,
+      "skipped": 0,
+      "status": "APROBADO (red aislada)",
+      "evidence": "e2e/resultados.json"
+    },
+    {
+      "code": "E-03",
+      "verification": "Recuperación Auth simulada",
+      "executed": 28,
+      "passed": 28,
+      "failed": 0,
+      "skipped": 0,
+      "status": "APROBADO (red aislada)",
+      "evidence": "e2e/resultados.json"
+    },
+    {
+      "code": "E-04",
+      "verification": "Denegación explícita para sesión anónima",
+      "executed": 21,
+      "passed": 14,
+      "failed": 7,
+      "skipped": 0,
+      "status": "FALLIDO",
+      "evidence": "e2e/resultados.json"
+    },
+    {
+      "code": "E-05",
+      "verification": "Roles, navegación y filtros: 112 instancias inventariadas",
+      "executed": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "status": "BLOQUEADO",
+      "evidence": "e2e/casos-bloqueados.json"
+    },
+    {
+      "code": "B-01",
+      "verification": "Compilación web (1 comando; no son casos de prueba)",
+      "executed": "—",
+      "passed": "—",
+      "failed": "—",
+      "skipped": "—",
+      "status": "APROBADO",
+      "evidence": "compilacion-web/build.meta.json"
+    },
+    {
+      "code": "AN-01",
+      "verification": "Java, Gradle --version y Capacitor doctor (diagnóstico)",
+      "executed": "—",
+      "passed": "—",
+      "failed": "—",
+      "skipped": "—",
+      "status": "APROBADO (solo diagnóstico)",
+      "evidence": "android/capacitor-doctor.stdout.log"
+    },
+    {
+      "code": "AN-02",
+      "verification": "Sincronización, APK/AAB y dispositivo",
+      "executed": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "status": "NO EJECUTADO",
+      "evidence": "android/alcance.json"
+    },
+    {
+      "code": "S-01",
+      "verification": "RLS y existencia de política en dos tablas objetivo",
+      "executed": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "status": "APROBADO (configuración)",
+      "evidence": "seguridad/catalogos-rls.json"
+    },
+    {
+      "code": "S-02",
+      "verification": "Revisión de políticas, grants, vistas y funciones",
+      "executed": "—",
+      "passed": "—",
+      "failed": "—",
+      "skipped": "—",
+      "status": "EJECUTADO CON HALLAZGOS",
+      "evidence": "seguridad/funciones-permisos.json"
+    },
+    {
+      "code": "S-03",
+      "verification": "Asesor de seguridad Supabase (1 consulta)",
+      "executed": "—",
+      "passed": "—",
+      "failed": "—",
+      "skipped": "—",
+      "status": "EJECUTADO CON HALLAZGOS",
+      "evidence": "seguridad/asesores.json"
+    },
+    {
+      "code": "S-04",
+      "verification": "npm audit en raíz, functions y riovoley (3 comandos)",
+      "executed": "—",
+      "passed": "—",
+      "failed": "—",
+      "skipped": "—",
+      "status": "FALLIDO (alertas)",
+      "evidence": "seguridad/npm-audit.json"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+BEGIN
+DO
+                             result                              
+-----------------------------------------------------------------
+ RLS access matrix passed: anon, student, trainer, administrator
+(1 row)
+
+ROLLBACK
+

@@ -1,0 +1,12 @@
+{
+  "command": [
+    "java",
+    "-version"
+  ],
+  "cwd": "",
+  "start": "2026-10-28T16:04:20.289Z",
+  "end": "2026-10-28T16:04:20.406Z",
+  "durationSeconds": 0.117,
+  "exitCode": 0,
+  "signal": null
+}

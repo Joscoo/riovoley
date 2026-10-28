@@ -1,0 +1,5 @@
+
+> riovoley@0.1.0 test:contracts
+> cross-env CI=true react-scripts test src/features/reporting/infrastructure/repositories/supabaseReportingRepository.contract.test.js src/shared/infrastructure/auth/deleteAuthUserById.test.js --watchAll=false --runInBand --json --outputFile=docs/tesis/evidencias/verificacion-tecnica/20261027-212222-c71f55e/integracion/contratos-resultados.json
+
+

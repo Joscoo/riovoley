@@ -1,0 +1,33 @@
+
+Running 1 test using 1 worker
+
+  ✘  1 [desktop-1440] › tests\e2e\admin.happy-path-controlled.spec.js:6:1 › admin happy path controlado: atleta + pago + asistencia (1.0m)
+
+
+  1) [desktop-1440] › tests\e2e\admin.happy-path-controlled.spec.js:6:1 › admin happy path controlado: atleta + pago + asistencia 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('dialog', { name: 'Agregar Nuevo Estudiante' }).getByRole('button', { name: /^Guardar$/i })[22m
+
+
+      33 |   await form.locator('select').selectOption('iniciacion_hombres');
+      34 |   await form.getByRole('radio', { name: 'No, enviar despues' }).check();
+    > 35 |   await form.getByRole('button', { name: /^Guardar$/i }).click();
+         |                                                          ^
+      36 |
+      37 |   const credentials = page.getByRole('dialog', { name: 'Credenciales de la cuenta creada' });
+      38 |   await expect(credentials).toBeVisible({ timeout: 30000 });
+        at D:\Riovoley\riovoley\tests\e2e\admin.happy-path-controlled.spec.js:35:58
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\e2e-aislado\20261028-101418-correcciones-c71f55e\flujo-actual-desktop\artefactos\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\e2e-aislado\20261028-101418-correcciones-c71f55e\flujo-actual-desktop\artefactos\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440\error-context.md
+
+  1 failed
+    [desktop-1440] › tests\e2e\admin.happy-path-controlled.spec.js:6:1 › admin happy path controlado: atleta + pago + asistencia 
+

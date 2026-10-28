@@ -1,0 +1,5 @@
+
+> riovoley@0.1.0 test
+> react-scripts test --watchAll=false --runInBand --coverage --coverageDirectory=docs/tesis/evidencias/verificacion-tecnica/20261027-212222-c71f55e/unitarias/coverage --coverageReporters=json-summary --coverageReporters=json --coverageReporters=lcov --coverageReporters=text --json --outputFile=docs/tesis/evidencias/verificacion-tecnica/20261027-212222-c71f55e/unitarias/jest-resultados.json
+
+

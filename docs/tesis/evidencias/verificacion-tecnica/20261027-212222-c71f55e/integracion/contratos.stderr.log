@@ -1,0 +1,10 @@
+PASS src/shared/infrastructure/auth/deleteAuthUserById.test.js
+PASS src/features/reporting/infrastructure/repositories/supabaseReportingRepository.contract.test.js
+
+Test Suites: 2 passed, 2 total
+Tests:       5 passed, 5 total
+Snapshots:   0 total
+Time:        12.845 s
+Ran all test suites matching /src\\features\\reporting\\infrastructure\\repositories\\supabaseReportingRepository.contract.test.js|src\\shared\\infrastructure\\auth\\deleteAuthUserById.test.js/i.
+Test results written to: docs\tesis\evidencias\verificacion-tecnica\20261027-212222-c71f55e\integracion\contratos-resultados.json
+

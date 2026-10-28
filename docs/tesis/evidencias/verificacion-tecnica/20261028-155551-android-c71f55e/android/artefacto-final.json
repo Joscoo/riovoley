@@ -1,0 +1,30 @@
+{
+  "file": "android/artefactos/riovoley-auditoria-debug-sin-credenciales.apk",
+  "sha256": "58c2aa53a2e31de4e65fa2c751bfecdd7936a75c8420086a8cca604610919269",
+  "bytes": 36793683,
+  "metadata": {
+    "version": 3,
+    "artifactType": {
+      "type": "APK",
+      "kind": "Directory"
+    },
+    "applicationId": "com.riovoley.app",
+    "variantName": "debug",
+    "elements": [
+      {
+        "type": "SINGLE",
+        "filters": [],
+        "attributes": [],
+        "versionCode": 1,
+        "versionName": "1.0",
+        "outputFile": "app-debug.apk"
+      }
+    ],
+    "elementType": "File",
+    "minSdkVersionForDexing": 24
+  },
+  "buildType": "debug",
+  "signature": "Certificado de depuración local; no se utiliza keystore de publicación.",
+  "distributed": false,
+  "installed": false
+}

@@ -1,0 +1,901 @@
+{
+  "config": {
+    "configFile": "D:\\Riovoley\\riovoley\\playwright.local.config.cjs",
+    "rootDir": "D:/Riovoley/riovoley/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 3
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/anonimos-corregidos/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "mobile-390",
+        "name": "mobile-390",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/anonimos-corregidos/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "mobile-430",
+        "name": "mobile-430",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/anonimos-corregidos/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "mobile-480",
+        "name": "mobile-480",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/anonimos-corregidos/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "tablet-768",
+        "name": "tablet-768",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/anonimos-corregidos/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "tablet-1024",
+        "name": "tablet-1024",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/anonimos-corregidos/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "desktop-1440",
+        "name": "desktop-1440",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/anonimos-corregidos/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "desktop-1920",
+        "name": "desktop-1920",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-192557-cierre-c71f55e\\anonimos-corregidos\\resultados.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-192557-cierre-c71f55e\\anonimos-corregidos\\html",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.59.1",
+    "workers": 3,
+    "webServer": {
+      "command": "node scripts/e2e/local/server.cjs",
+      "url": "http://127.0.0.1:6100",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "audit.protected-routes.spec.js",
+      "file": "audit.protected-routes.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "audit: anonymous access cannot render protected panel /admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1653,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T19:32:58.124Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-4af3e11756da3419b302",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /entrenador",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1385,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T19:33:01.310Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-ce8453da22f0bb8ead15",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /estudiante",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1385,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T19:33:02.712Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-48ee43c563c1f16b8569",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1655,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T19:32:58.127Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-832811640bb6798010f5",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /entrenador",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1450,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T19:33:01.310Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-52b9ea3128c5d51fd01d",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /estudiante",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1438,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T19:33:02.777Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-2150bd43101ae58e1663",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 1915,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T19:32:58.223Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-3fba66d0762b4aeea37b",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /entrenador",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 847,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T19:33:00.824Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-ff9babbb6f3b8fe37b92",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /estudiante",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 880,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T19:33:01.689Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-f49d8df6b34bf9e862ee",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 1438,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T19:33:04.293Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-d8a6f796074d7ec2f88b",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /entrenador",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 1303,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T19:33:05.905Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-fd2685d46d9087eb3556",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /estudiante",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 1570,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T19:33:07.226Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-789958bd7bbe2c11c2f6",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 916,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T19:33:05.896Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-db999e8d9e6c6ac5fdaf",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /entrenador",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 833,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T19:33:07.147Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-a8f16759032d5757c370",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /estudiante",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 907,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T19:33:07.996Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-c795b8065ccb84d06175",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 981,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T19:33:05.933Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-ea8571f362ac2cf0190c",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /entrenador",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 884,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T19:33:07.199Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-eb78916003d9fff67e74",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /estudiante",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 931,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T19:33:08.101Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-401c410b5178540bf525",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 870,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T19:33:10.111Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-978482fe7f345263178b",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /entrenador",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 766,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T19:33:11.159Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-ca7f3e24df95c1cde5ad",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /estudiante",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 730,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T19:33:11.938Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-c737f3c1328657b725c9",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-28T19:32:56.079Z",
+    "duration": 16928.581,
+    "expected": 21,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

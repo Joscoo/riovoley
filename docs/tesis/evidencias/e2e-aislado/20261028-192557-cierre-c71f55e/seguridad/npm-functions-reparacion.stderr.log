@@ -1,0 +1,16 @@
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: undefined,
+npm warn EBADENGINE   required: { node: '22' },
+npm warn EBADENGINE   current: { node: 'v24.18.0', npm: '11.16.0' }
+npm warn EBADENGINE }
+npm warn deprecated @opentelemetry/propagation-utils@0.30.16: The use of process spans has been removed from Messaging Semantic Conventions. It is now recommended to connect pub/sub spans via Span Links. See https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/ for details.
+npm warn deprecated @google-cloud/opentelemetry-cloud-trace-exporter@2.4.1: Google Cloud Platform now supports native OpenTelemetry Protocol (OTLP) endpoints via the Telemetry API. Please follow https://github.com/GoogleCloudPlatform/opentelemetry-operations-js/blob/main/MIGRATION.md
+npm warn deprecated @google-cloud/opentelemetry-cloud-monitoring-exporter@0.19.0: Google Cloud Platform now supports native OpenTelemetry Protocol (OTLP) endpoints via the Telemetry API. Please follow https://github.com/GoogleCloudPlatform/opentelemetry-operations-js/blob/main/MIGRATION.md
+npm warn deprecated @google-cloud/opentelemetry-resource-util@2.4.0: Google Cloud Platform now supports native OpenTelemetry Protocol (OTLP) endpoints via the Telemetry API. Please follow https://github.com/GoogleCloudPlatform/opentelemetry-operations-js/blob/main/MIGRATION.md
+npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting [CORREO_REDACTADO]
+npm warn deprecated uuid@9.0.1: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
+npm warn deprecated uuid@9.0.1: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
+npm warn deprecated uuid@9.0.1: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
+npm warn deprecated uuid@9.0.1: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
+npm warn deprecated uuid@9.0.1: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
+

@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\Riovoley\\riovoley\\node_modules\\@capacitor\\cli\\bin\\capacitor",
+    "ls",
+    "android"
+  ],
+  "cwd": ".e2e-local\\android-native\\20261028-155551\\project",
+  "start": "2026-10-28T20:04:48.053Z",
+  "end": "2026-10-28T20:04:49.289Z",
+  "durationSeconds": 1.236,
+  "exitCode": 0,
+  "signal": null
+}

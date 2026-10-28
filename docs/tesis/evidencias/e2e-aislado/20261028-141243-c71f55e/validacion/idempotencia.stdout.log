@@ -1,0 +1,5 @@
+{"label":"idempotencia/antes-1793198984661","exitCode":0,"durationSeconds":0.284,"stderrTail":""}
+{"label":"idempotencia/repeticion-1793198984945","exitCode":0,"durationSeconds":0.674,"stderrTail":""}
+{"label":"idempotencia/despues-1793198985619","exitCode":0,"durationSeconds":0.176,"stderrTail":""}
+Seed idempotente verificado
+

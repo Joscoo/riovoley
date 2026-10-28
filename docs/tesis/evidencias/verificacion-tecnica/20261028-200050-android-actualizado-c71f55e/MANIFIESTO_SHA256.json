@@ -1,0 +1,202 @@
+{
+  "generatedAt": "2026-10-28T20:30:44.348Z",
+  "algorithm": "SHA-256",
+  "selfExcluded": true,
+  "entries": [
+    {
+      "file": "android/apk-badging.meta.json",
+      "bytes": 452,
+      "sha256": "57b74ef0a9c91fc226ef36afcf685353dfe21a51664cf34ed3ed9d84f0435311"
+    },
+    {
+      "file": "android/apk-badging.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/apk-badging.stdout.log",
+      "bytes": 5076,
+      "sha256": "f3df0f44c881799dbc091c775f7bfae397b0897d084829d342d921b0292144c4"
+    },
+    {
+      "file": "android/apk-firma.meta.json",
+      "bytes": 513,
+      "sha256": "fefd45a130851cd1d0f79df96a575108f609223fa162fb9cf89ca1596b90343c"
+    },
+    {
+      "file": "android/apk-firma.stderr.log",
+      "bytes": 57,
+      "sha256": "b20e3675651676ed216fdf8b72183dd2e7f0d5354fa9fadd027b123c66be51c4"
+    },
+    {
+      "file": "android/apk-firma.stdout.log",
+      "bytes": 973,
+      "sha256": "b634ff6aac90841fbc5d7e0bc89984d619321f9ead0ca457dcc68244e871624d"
+    },
+    {
+      "file": "android/apk-privacidad-previa.meta.json",
+      "bytes": 442,
+      "sha256": "681c9dc1ff883698b1253d6884ed767eaaf3f9e186d477a616103986b185a23c"
+    },
+    {
+      "file": "android/apk-privacidad-previa.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/apk-privacidad-previa.stdout.log",
+      "bytes": 36,
+      "sha256": "067e89f67efa3eb35242c4b5f316117fe5b3badc36ccc7d69fb542e4f68bb65d"
+    },
+    {
+      "file": "android/artefacto-final.json",
+      "bytes": 798,
+      "sha256": "7d0e021c6b09f48fa9678f99f14882dff58aba7ae5d500adb27e2148400f0d46"
+    },
+    {
+      "file": "android/artefactos/riovoley-auditoria-debug-sin-credenciales.apk",
+      "bytes": 35144355,
+      "sha256": "20fc358ecd1d27c87d887898617b5595e66f03d20a83f3b8ee3c2e8ea374b704"
+    },
+    {
+      "file": "android/capacitor-plugins.meta.json",
+      "bytes": 371,
+      "sha256": "772c3a4e2c523f476070d2a39842c618e8884cd4e09e4f97b637693329b6f3db"
+    },
+    {
+      "file": "android/capacitor-plugins.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/capacitor-plugins.stdout.log",
+      "bytes": 290,
+      "sha256": "884afc911c93100d2445000df3b237e7e8aa8e57a7cc9cef453a58c5fd812d81"
+    },
+    {
+      "file": "android/capacitor-sync.meta.json",
+      "bytes": 374,
+      "sha256": "18169ae53e28d79f810714a3bceba951aed094eb2ecabab7c02154fdf9a2986f"
+    },
+    {
+      "file": "android/capacitor-sync.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/capacitor-sync.stdout.log",
+      "bytes": 583,
+      "sha256": "0fcce7247fcf0a593d13c992d4abca48949cc3f58d2f537d3f799a7c077cb612"
+    },
+    {
+      "file": "android/configuracion-final.json",
+      "bytes": 1211,
+      "sha256": "33c2dcd533781352ff3aaeccebd43e900ad099a3bac6cd244da4dc92a88b052f"
+    },
+    {
+      "file": "android/fuentes-iniciales.json",
+      "bytes": 153776,
+      "sha256": "310200eadf6a9e69c13566bfae550f1cb7e911f7addf147bc278201ebf07a413"
+    },
+    {
+      "file": "android/gradle-assemble.meta.json",
+      "bytes": 500,
+      "sha256": "58757c5108fe99446e14242f1474f1af295a56d878be7541351d74abf9041aa1"
+    },
+    {
+      "file": "android/gradle-assemble.stderr.log",
+      "bytes": 1063,
+      "sha256": "d5a2d30e5672f922b9d49a0e5519e64acd21b85c4643d3f4bf326c38f3e7491e"
+    },
+    {
+      "file": "android/gradle-assemble.stdout.log",
+      "bytes": 17698,
+      "sha256": "1835944d223f4052abf2d70678605577b0202cdbf4f59317e305dd1be5726f39"
+    },
+    {
+      "file": "android/gradle-lint.meta.json",
+      "bytes": 473,
+      "sha256": "6366e63f82dccebd162be4e2590bec7ba8bdce2ace8968aa5af6a89c9e32dcae"
+    },
+    {
+      "file": "android/gradle-lint.stderr.log",
+      "bytes": 308,
+      "sha256": "71805aa45e06527445397aaee30dd6e35e263a7d4f726a39dbb43cadaf20679a"
+    },
+    {
+      "file": "android/gradle-lint.stdout.log",
+      "bytes": 29815,
+      "sha256": "5a848fdc9f501655d3a967fe793a4db4ebd6411eb8652c114bae1d1502bbc580"
+    },
+    {
+      "file": "android/integridad-fuentes-final.json",
+      "bytes": 38,
+      "sha256": "6e70f880c16b765aee104e9e552288e5b28d09af93ccdd16dacb531217ac5bdb"
+    },
+    {
+      "file": "android/java-global-conservado.meta.json",
+      "bytes": 202,
+      "sha256": "95b3eaafc3f1e83b9b779ffb5a1ec6dd1cd7e927958dc205b43d4b3175d06bfe"
+    },
+    {
+      "file": "android/java-global-conservado.stderr.log",
+      "bytes": 204,
+      "sha256": "c997a320130154ba8cc63425783b68223995470bece684a8c9f5494c52424b87"
+    },
+    {
+      "file": "android/java-global-conservado.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/lint/lint-results-debug.html",
+      "bytes": 122702,
+      "sha256": "e299605801bc1b45674a0af4a0556fb3914707bfe9e31d2e3de1da1344cb4f80"
+    },
+    {
+      "file": "android/lint/lint-results-debug.txt",
+      "bytes": 13347,
+      "sha256": "b49af13325ea162e385fe9427815a8310edf72dfcecc6dc69de60dd81b61f3f6"
+    },
+    {
+      "file": "android/lint/lint-results-debug.xml",
+      "bytes": 30006,
+      "sha256": "229fa666e78a01004b55907eb3989dd9ab413011e810cc5ca9d093bb5fc453d2"
+    },
+    {
+      "file": "android/privacidad-previa-final.json",
+      "bytes": 245,
+      "sha256": "5215fdd7d18f6d78e832469e7a4bc3a14d6f7a283154fefa7125bbdebff5137b"
+    },
+    {
+      "file": "android/unitarias-final/resumen.json",
+      "bytes": 319,
+      "sha256": "a1c85ddbaabfcd65198b81c3aad5fa4ee1925128aeda6e63f42b193e35f52a70"
+    },
+    {
+      "file": "android/unitarias-final/TEST-com.getcapacitor.myapp.ExampleUnitTest.xml",
+      "bytes": 441,
+      "sha256": "1a96cde9b00d9ca98dfb95c1928a6cfeda6fc3de34527306ac81294b54331cf6"
+    },
+    {
+      "file": "compilacion-web/build-auditoria.meta.json",
+      "bytes": 297,
+      "sha256": "767467fe5fbdd9efa9b0217a335f2cfeda45d89e4a6707293a76c79ba6092bef"
+    },
+    {
+      "file": "compilacion-web/build-auditoria.stderr.log",
+      "bytes": 172,
+      "sha256": "1d3b1952a12be88450310d11cd71c7d52bc5c0583e18efffba53a63772a1195d"
+    },
+    {
+      "file": "compilacion-web/build-auditoria.stdout.log",
+      "bytes": 3250,
+      "sha256": "45b1fd32d200eaa76755f2cb4551750a0f50682bce791db3c69746fe73e54479"
+    },
+    {
+      "file": "PRIVACIDAD.json",
+      "bytes": 245,
+      "sha256": "dd0209bb5bf294ff4c7b1b73aff7f2133880358a73697bd72f3d03e6f77490d4"
+    }
+  ]
+}

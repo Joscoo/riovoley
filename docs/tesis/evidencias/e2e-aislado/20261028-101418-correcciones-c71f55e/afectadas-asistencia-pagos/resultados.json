@@ -1,0 +1,916 @@
+{
+  "config": {
+    "configFile": "D:\\Riovoley\\riovoley\\playwright.local.config.cjs",
+    "rootDir": "D:/Riovoley/riovoley/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 3
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/afectadas-asistencia-pagos/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "mobile-390",
+        "name": "mobile-390",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/afectadas-asistencia-pagos/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "mobile-430",
+        "name": "mobile-430",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/afectadas-asistencia-pagos/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "mobile-480",
+        "name": "mobile-480",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/afectadas-asistencia-pagos/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "tablet-768",
+        "name": "tablet-768",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/afectadas-asistencia-pagos/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "tablet-1024",
+        "name": "tablet-1024",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/afectadas-asistencia-pagos/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "desktop-1440",
+        "name": "desktop-1440",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/afectadas-asistencia-pagos/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "desktop-1920",
+        "name": "desktop-1920",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\afectadas-asistencia-pagos\\resultados.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\afectadas-asistencia-pagos\\html",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.59.1",
+    "workers": 3,
+    "webServer": {
+      "command": "node scripts/e2e/local/server.cjs",
+      "url": "http://127.0.0.1:6100",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "asistencias.guided.review.spec.js",
+      "file": "asistencias.guided.review.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 15947,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('attendance-athlete-row').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('attendance-athlete-row').first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('attendance-athlete-row').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('attendance-athlete-row').first()\u001b[22m\n\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js:59:68",
+                    "location": {
+                      "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                      "column": 68,
+                      "line": 59
+                    },
+                    "snippet": "  57 |   await ensureQuickMode(page);\n  58 |\n> 59 |   await expect(page.getByTestId('attendance-athlete-row').first()).toBeVisible();\n     |                                                                    ^\n  60 |\n  61 |   const screenshotPath = testInfo.outputPath(`asistencias-quick-${testInfo.project.name}.png`);\n  62 |   const isMobileProject = /mobile/i.test(testInfo.project.name);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                        "column": 68,
+                        "line": 59
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('attendance-athlete-row').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('attendance-athlete-row').first()\u001b[22m\n\n\n  57 |   await ensureQuickMode(page);\n  58 |\n> 59 |   await expect(page.getByTestId('attendance-athlete-row').first()).toBeVisible();\n     |                                                                    ^\n  60 |\n  61 |   const screenshotPath = testInfo.outputPath(`asistencias-quick-${testInfo.project.name}.png`);\n  62 |   const isMobileProject = /mobile/i.test(testInfo.project.name);\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js:59:68"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:19:24.715Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\afectadas-asistencia-pagos\\artefactos\\asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-390\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\afectadas-asistencia-pagos\\artefactos\\asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-390\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                    "column": 68,
+                    "line": 59
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-98be0f7ef7b85756fbc9",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 52,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "failed",
+                  "duration": 16454,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('attendance-athlete-row').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('attendance-athlete-row').first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('attendance-athlete-row').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('attendance-athlete-row').first()\u001b[22m\n\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js:59:68",
+                    "location": {
+                      "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                      "column": 68,
+                      "line": 59
+                    },
+                    "snippet": "  57 |   await ensureQuickMode(page);\n  58 |\n> 59 |   await expect(page.getByTestId('attendance-athlete-row').first()).toBeVisible();\n     |                                                                    ^\n  60 |\n  61 |   const screenshotPath = testInfo.outputPath(`asistencias-quick-${testInfo.project.name}.png`);\n  62 |   const isMobileProject = /mobile/i.test(testInfo.project.name);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                        "column": 68,
+                        "line": 59
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('attendance-athlete-row').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('attendance-athlete-row').first()\u001b[22m\n\n\n  57 |   await ensureQuickMode(page);\n  58 |\n> 59 |   await expect(page.getByTestId('attendance-athlete-row').first()).toBeVisible();\n     |                                                                    ^\n  60 |\n  61 |   const screenshotPath = testInfo.outputPath(`asistencias-quick-${testInfo.project.name}.png`);\n  62 |   const isMobileProject = /mobile/i.test(testInfo.project.name);\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js:59:68"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:19:24.715Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\afectadas-asistencia-pagos\\artefactos\\asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-430\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\afectadas-asistencia-pagos\\artefactos\\asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-430\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                    "column": 68,
+                    "line": 59
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-3f07452467235e1edfb5",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 52,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12007,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('attendance-athlete-row').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('attendance-athlete-row').first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('attendance-athlete-row').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('attendance-athlete-row').first()\u001b[22m\n\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js:59:68",
+                    "location": {
+                      "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                      "column": 68,
+                      "line": 59
+                    },
+                    "snippet": "  57 |   await ensureQuickMode(page);\n  58 |\n> 59 |   await expect(page.getByTestId('attendance-athlete-row').first()).toBeVisible();\n     |                                                                    ^\n  60 |\n  61 |   const screenshotPath = testInfo.outputPath(`asistencias-quick-${testInfo.project.name}.png`);\n  62 |   const isMobileProject = /mobile/i.test(testInfo.project.name);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                        "column": 68,
+                        "line": 59
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('attendance-athlete-row').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('attendance-athlete-row').first()\u001b[22m\n\n\n  57 |   await ensureQuickMode(page);\n  58 |\n> 59 |   await expect(page.getByTestId('attendance-athlete-row').first()).toBeVisible();\n     |                                                                    ^\n  60 |\n  61 |   const screenshotPath = testInfo.outputPath(`asistencias-quick-${testInfo.project.name}.png`);\n  62 |   const isMobileProject = /mobile/i.test(testInfo.project.name);\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js:59:68"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:19:42.090Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\afectadas-asistencia-pagos\\artefactos\\asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-480\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\afectadas-asistencia-pagos\\artefactos\\asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-480\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                    "column": 68,
+                    "line": 59
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-9b3c1c3d5e23557caa92",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 52,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 2,
+                  "status": "failed",
+                  "duration": 15737,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('attendance-athlete-row').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('attendance-athlete-row').first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('attendance-athlete-row').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('attendance-athlete-row').first()\u001b[22m\n\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js:59:68",
+                    "location": {
+                      "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                      "column": 68,
+                      "line": 59
+                    },
+                    "snippet": "  57 |   await ensureQuickMode(page);\n  58 |\n> 59 |   await expect(page.getByTestId('attendance-athlete-row').first()).toBeVisible();\n     |                                                                    ^\n  60 |\n  61 |   const screenshotPath = testInfo.outputPath(`asistencias-quick-${testInfo.project.name}.png`);\n  62 |   const isMobileProject = /mobile/i.test(testInfo.project.name);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                        "column": 68,
+                        "line": 59
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('attendance-athlete-row').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('attendance-athlete-row').first()\u001b[22m\n\n\n  57 |   await ensureQuickMode(page);\n  58 |\n> 59 |   await expect(page.getByTestId('attendance-athlete-row').first()).toBeVisible();\n     |                                                                    ^\n  60 |\n  61 |   const screenshotPath = testInfo.outputPath(`asistencias-quick-${testInfo.project.name}.png`);\n  62 |   const isMobileProject = /mobile/i.test(testInfo.project.name);\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js:59:68"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:19:48.795Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\afectadas-asistencia-pagos\\artefactos\\asistencias.guided.review--62551-ias-quick-mode-per-viewport-tablet-768\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\afectadas-asistencia-pagos\\artefactos\\asistencias.guided.review--62551-ias-quick-mode-per-viewport-tablet-768\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                    "column": 68,
+                    "line": 59
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-d5e9cf6c50d21c45c79b",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 52,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12260,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('attendance-athlete-row').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('attendance-athlete-row').first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('attendance-athlete-row').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('attendance-athlete-row').first()\u001b[22m\n\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js:59:68",
+                    "location": {
+                      "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                      "column": 68,
+                      "line": 59
+                    },
+                    "snippet": "  57 |   await ensureQuickMode(page);\n  58 |\n> 59 |   await expect(page.getByTestId('attendance-athlete-row').first()).toBeVisible();\n     |                                                                    ^\n  60 |\n  61 |   const screenshotPath = testInfo.outputPath(`asistencias-quick-${testInfo.project.name}.png`);\n  62 |   const isMobileProject = /mobile/i.test(testInfo.project.name);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                        "column": 68,
+                        "line": 59
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('attendance-athlete-row').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('attendance-athlete-row').first()\u001b[22m\n\n\n  57 |   await ensureQuickMode(page);\n  58 |\n> 59 |   await expect(page.getByTestId('attendance-athlete-row').first()).toBeVisible();\n     |                                                                    ^\n  60 |\n  61 |   const screenshotPath = testInfo.outputPath(`asistencias-quick-${testInfo.project.name}.png`);\n  62 |   const isMobileProject = /mobile/i.test(testInfo.project.name);\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js:59:68"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:19:55.758Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\afectadas-asistencia-pagos\\artefactos\\asistencias.guided.review--62551-ias-quick-mode-per-viewport-tablet-1024\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\afectadas-asistencia-pagos\\artefactos\\asistencias.guided.review--62551-ias-quick-mode-per-viewport-tablet-1024\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                    "column": 68,
+                    "line": 59
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-47e66645d546d9347e75",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 52,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 2,
+                  "status": "failed",
+                  "duration": 11797,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('attendance-athlete-row').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('attendance-athlete-row').first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('attendance-athlete-row').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('attendance-athlete-row').first()\u001b[22m\n\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js:59:68",
+                    "location": {
+                      "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                      "column": 68,
+                      "line": 59
+                    },
+                    "snippet": "  57 |   await ensureQuickMode(page);\n  58 |\n> 59 |   await expect(page.getByTestId('attendance-athlete-row').first()).toBeVisible();\n     |                                                                    ^\n  60 |\n  61 |   const screenshotPath = testInfo.outputPath(`asistencias-quick-${testInfo.project.name}.png`);\n  62 |   const isMobileProject = /mobile/i.test(testInfo.project.name);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                        "column": 68,
+                        "line": 59
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('attendance-athlete-row').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('attendance-athlete-row').first()\u001b[22m\n\n\n  57 |   await ensureQuickMode(page);\n  58 |\n> 59 |   await expect(page.getByTestId('attendance-athlete-row').first()).toBeVisible();\n     |                                                                    ^\n  60 |\n  61 |   const screenshotPath = testInfo.outputPath(`asistencias-quick-${testInfo.project.name}.png`);\n  62 |   const isMobileProject = /mobile/i.test(testInfo.project.name);\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js:59:68"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:20:05.927Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\afectadas-asistencia-pagos\\artefactos\\asistencias.guided.review--62551-ias-quick-mode-per-viewport-desktop-1440\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\afectadas-asistencia-pagos\\artefactos\\asistencias.guided.review--62551-ias-quick-mode-per-viewport-desktop-1440\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                    "column": 68,
+                    "line": 59
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-22309d30994f46fb143e",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 52,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12666,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('attendance-athlete-row').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('attendance-athlete-row').first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('attendance-athlete-row').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('attendance-athlete-row').first()\u001b[22m\n\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js:59:68",
+                    "location": {
+                      "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                      "column": 68,
+                      "line": 59
+                    },
+                    "snippet": "  57 |   await ensureQuickMode(page);\n  58 |\n> 59 |   await expect(page.getByTestId('attendance-athlete-row').first()).toBeVisible();\n     |                                                                    ^\n  60 |\n  61 |   const screenshotPath = testInfo.outputPath(`asistencias-quick-${testInfo.project.name}.png`);\n  62 |   const isMobileProject = /mobile/i.test(testInfo.project.name);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                        "column": 68,
+                        "line": 59
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('attendance-athlete-row').first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('attendance-athlete-row').first()\u001b[22m\n\n\n  57 |   await ensureQuickMode(page);\n  58 |\n> 59 |   await expect(page.getByTestId('attendance-athlete-row').first()).toBeVisible();\n     |                                                                    ^\n  60 |\n  61 |   const screenshotPath = testInfo.outputPath(`asistencias-quick-${testInfo.project.name}.png`);\n  62 |   const isMobileProject = /mobile/i.test(testInfo.project.name);\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js:59:68"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:20:09.394Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\afectadas-asistencia-pagos\\artefactos\\asistencias.guided.review--62551-ias-quick-mode-per-viewport-desktop-1920\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\afectadas-asistencia-pagos\\artefactos\\asistencias.guided.review--62551-ias-quick-mode-per-viewport-desktop-1920\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                    "column": 68,
+                    "line": 59
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-319f95a421a8569a2194",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 52,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "filters-sorting.tables.spec.js",
+      "file": "filters-sorting.tables.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 10752,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:19:24.723Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-cf592fc14ae4110ca7d0",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 19,
+          "column": 1
+        },
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 13010,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:19:36.951Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-2835f6996965fbd70d49",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 19,
+          "column": 1
+        },
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 4167,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:19:42.580Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-783b890f5a952a45a7c7",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 19,
+          "column": 1
+        },
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 10909,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:19:51.810Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-a17e44f357f79f2e88af",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 19,
+          "column": 1
+        },
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2677,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:20:03.965Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-be36b9b1c596321b6576",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 19,
+          "column": 1
+        },
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4014,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:20:08.638Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-ced2fbae3737bfb3ea83",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 19,
+          "column": 1
+        },
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3727,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:20:14.008Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-1f588aae298457add24e",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 19,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-28T15:19:23.353Z",
+    "duration": 59236.26,
+    "expected": 7,
+    "skipped": 0,
+    "unexpected": 7,
+    "flaky": 0
+  }
+}

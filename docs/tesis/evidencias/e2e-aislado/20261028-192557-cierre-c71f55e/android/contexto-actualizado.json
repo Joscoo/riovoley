@@ -1,0 +1,5 @@
+{
+  "base": "docs\\tesis\\evidencias\\verificacion-tecnica\\20261028-200050-android-actualizado-c71f55e",
+  "work": ".e2e-local\\android-native\\20261028-155551",
+  "scope": "Nuevo expediente de build, reutilizando exclusivamente herramientas/cachés privadas. El expediente Android anterior se conserva."
+}

@@ -1,0 +1,14 @@
+{
+  "command": [
+    "npm.cmd",
+    "audit",
+    "--json"
+  ],
+  "cwd": ".",
+  "start": "2026-10-28T02:23:56.183Z",
+  "end": "2026-10-28T02:24:13.888Z",
+  "durationSeconds": 17.705,
+  "exitCode": 1,
+  "signal": null,
+  "environmentOverrides": {}
+}

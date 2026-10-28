@@ -1,0 +1,4650 @@
+add @tootallnate/once 2.0.1
+add delayed-stream 1.0.0
+add combined-stream 1.0.8
+add asynckit 0.4.0
+add form-data 2.5.6
+add @types/tough-cookie 4.0.5
+add @types/caseless 0.12.5
+add @types/request 2.48.13
+add webidl-conversions 3.0.1
+add tr46 0.0.3
+add whatwg-url 5.0.0
+add @google-cloud/firestore-api 0.2.0
+add gaxios 7.1.3
+add gtoken 8.0.0
+add gcp-metadata 8.1.4
+add rimraf 5.0.10
+add proto3-json-serializer 3.0.4
+add google-logging-utils 1.1.3
+add google-auth-library 10.5.0
+add @grpc/proto-loader 0.8.1
+add google-gax 5.0.8
+add eastasianwidth 0.2.0
+add wrap-ansi-cjs 7.0.0
+add strip-ansi-cjs 6.0.1
+add string-width-cjs 4.2.3
+add @pkgjs/parseargs 0.11.0
+add @isaacs/cliui 8.0.2
+add ansi-styles 6.2.3
+add ansi-regex 6.4.0
+add emoji-regex 9.2.2
+add wrap-ansi 8.1.0
+add strip-ansi 7.2.0
+add string-width 5.1.2
+add signal-exit 4.1.0
+add path-scurry 1.11.1
+add lru-cache 10.4.3
+add package-json-from-dist 1.0.1
+add minipass 7.1.3
+add jackspeak 3.4.3
+add foreground-child 3.3.1
+add glob 10.5.0
+add brace-expansion 2.1.7
+add minimatch 9.0.9
+add emoji-regex 8.0.0
+add wrap-ansi 7.0.0
+add string-width 4.2.3
+add fn.name 1.1.0
+add fecha 4.2.3
+add @types/triple-beam 1.3.5
+add color-string 2.1.4
+add color-name 2.1.1
+add text-hex 1.0.0
+add color 5.0.3
+add color-name 2.1.1
+add color-convert 3.1.3
+add kuler 2.0.0
+add enabled 2.0.0
+add @so-ric/colorspace 1.1.6
+add triple-beam 1.4.1
+add stack-trace 0.0.10
+add safe-stable-stringify 2.5.0
+add one-time 1.0.0
+add logform 2.7.0
+add @colors/colors 1.6.0
+add is-stream 2.0.1
+add async 3.2.6
+add @dabh/diagnostics 2.0.9
+add @colors/colors 1.6.1
+add websocket-extensions 0.1.4
+add http-parser-js 0.5.10
+add http-proxy-agent 7.0.2
+add anynum 1.0.1
+add stubs 3.0.0
+add util-deprecate 1.0.2
+add string_decoder 1.3.0
+add pump 3.0.4
+add xtend 4.0.2
+add postgres-interval 1.2.0
+add postgres-date 1.0.7
+add postgres-bytea 1.0.1
+add postgres-array 2.0.0
+add pg-int8 1.0.1
+add lodash.clonedeep 4.5.0
+add buffer-equal-constant-time 1.0.1
+add jwa 2.0.1
+add @types/ms 2.1.0
+add lru-memoizer 3.0.0
+add lru-cache 11.5.3
+add limiter 1.1.5
+add jose 6.2.13
+add @types/jsonwebtoken 9.0.10
+add lodash.once 4.1.1
+add lodash.isstring 4.0.1
+add lodash.isplainobject 4.0.6
+add lodash.isnumber 3.0.3
+add lodash.isinteger 4.0.4
+add lodash.isboolean 3.0.3
+add lodash.includes 4.3.0
+add bignumber.js 9.3.1
+add cjs-module-lexer 1.4.3
+add agent-base 7.1.4
+add url-template 2.0.8
+add googleapis-common 7.2.0
+add node-fetch 2.7.0
+add uuid 9.0.1
+add gaxios 6.7.1
+add proto3-json-serializer 2.0.2
+add object-hash 3.0.0
+add @types/long 4.0.2
+add jws 4.0.1
+add gtoken 7.1.0
+add uuid 9.0.1
+add node-fetch 2.7.0
+add gaxios 6.7.1
+add ecdsa-sig-formatter 1.0.11
+add base64-js 1.5.1
+add json-bigint 1.0.0
+add google-logging-utils 0.0.2
+add https-proxy-agent 7.0.6
+add websocket-driver 0.7.5
+add xml-naming 0.3.0
+add strnum 2.5.1
+add path-expression-matcher 1.6.2
+add is-unsafe 2.0.2
+add fast-xml-builder 1.3.1
+add @nodable/entities 3.1.0
+add retry 0.13.1
+add event-target-shim 5.0.1
+add mime 3.0.0
+add gaxios 7.3.1
+add fast-xml-parser 5.11.2
+add async-retry 1.3.3
+add abort-controller 3.0.0
+add @firebase/app-types 0.9.6
+add faye-websocket 0.11.4
+add @firebase/auth-interop-types 0.2.6
+add @firebase/app-check-interop-types 0.3.5
+add @firebase/util 1.15.3
+add @firebase/logger 0.5.2
+add @firebase/database 1.1.5
+add @firebase/component 0.7.5
+add jwks-rsa 4.1.0
+add jsonwebtoken 9.0.3
+add @google-cloud/storage 8.4.0
+add google-logging-utils 2.1.0
+add gcp-metadata 9.2.2
+add gaxios 8.3.2
+add teeny-request 11.1.1
+add retry-request 9.1.0
+add google-auth-library 11.3.1
+add gaxios 8.3.2
+add @google-cloud/promisify 6.2.1
+add @google-cloud/projectify 6.2.1
+add @google-cloud/paginator 7.2.0
+add @firebase/database-types 1.0.22
+add @firebase/database-compat 2.1.7
+add @fastify/busboy 3.2.4
+add stream-shift 1.0.3
+add readable-stream 3.6.2
+add end-of-stream 1.4.5
+add is-obj 2.0.0
+add pg-types 2.2.0
+add pg-protocol 1.16.1
+add @types/tedious 4.0.14
+add @types/pg-pool 2.0.4
+add @types/pg 8.6.1
+add @opentelemetry/sql-common 0.40.1
+add @types/mysql 2.15.22
+add @types/memcached 2.2.10
+add @opentelemetry/redis-common 0.36.2
+add @types/connect 3.4.36
+add @types/bunyan 1.8.9
+add @opentelemetry/propagation-utils 0.30.16
+add @types/aws-lambda 8.10.122
+add @opentelemetry/propagator-aws-xray 1.26.2
+add @opentelemetry/resource-detector-gcp 0.29.13
+add @opentelemetry/resource-detector-container 0.4.4
+add @opentelemetry/semantic-conventions 1.28.0
+add @opentelemetry/core 1.30.1
+add @opentelemetry/resource-detector-azure 0.2.12
+add @opentelemetry/resource-detector-aws 1.12.0
+add @opentelemetry/resource-detector-alibaba-cloud 0.29.7
+add @opentelemetry/semantic-conventions 1.28.0
+add @opentelemetry/core 1.30.1
+add @opentelemetry/instrumentation-undici 0.5.0
+add @opentelemetry/instrumentation-tedious 0.13.0
+add @opentelemetry/instrumentation-socket.io 0.41.0
+add @opentelemetry/instrumentation-router 0.39.0
+add @opentelemetry/instrumentation-restify 0.40.0
+add @opentelemetry/instrumentation-redis-4 0.41.1
+add @opentelemetry/instrumentation-redis 0.41.0
+add @opentelemetry/instrumentation-pg 0.43.0
+add @opentelemetry/instrumentation-net 0.38.0
+add @opentelemetry/instrumentation-nestjs-core 0.39.0
+add @opentelemetry/instrumentation-mysql2 0.40.0
+add @opentelemetry/instrumentation-mysql 0.40.0
+add @opentelemetry/instrumentation-mongoose 0.41.0
+add @opentelemetry/instrumentation-mongodb 0.46.0
+add @opentelemetry/instrumentation-memcached 0.38.0
+add @opentelemetry/instrumentation-lru-memoizer 0.39.0
+add @opentelemetry/instrumentation-koa 0.42.0
+add @opentelemetry/instrumentation-knex 0.39.0
+add @opentelemetry/instrumentation-kafkajs 0.2.0
+add @opentelemetry/instrumentation-ioredis 0.42.0
+add @opentelemetry/instrumentation-http 0.52.1
+add @opentelemetry/semantic-conventions 1.25.1
+add @opentelemetry/instrumentation-hapi 0.40.0
+add @opentelemetry/instrumentation-grpc 0.52.1
+add @opentelemetry/semantic-conventions 1.25.1
+add @opentelemetry/instrumentation-graphql 0.42.0
+add @opentelemetry/instrumentation-generic-pool 0.38.1
+add @opentelemetry/instrumentation-fs 0.14.0
+add @opentelemetry/instrumentation-fastify 0.38.0
+add @opentelemetry/instrumentation-express 0.41.1
+add @opentelemetry/instrumentation-dns 0.38.0
+add @opentelemetry/instrumentation-dataloader 0.11.0
+add @opentelemetry/instrumentation-cucumber 0.8.0
+add @opentelemetry/instrumentation-connect 0.38.0
+add @opentelemetry/instrumentation-cassandra-driver 0.40.0
+add @opentelemetry/instrumentation-bunyan 0.40.0
+add @opentelemetry/instrumentation-aws-sdk 0.43.1
+add @opentelemetry/instrumentation-aws-lambda 0.43.0
+add @opentelemetry/instrumentation-amqplib 0.41.0
+add googleapis 137.1.0
+add @google-cloud/precise-date 4.0.0
+add teeny-request 10.1.4
+add retry-request 8.0.4
+add html-entities 2.6.0
+add duplexify 4.1.3
+add stream-events 1.0.5
+add pumpify 2.0.1
+add gcp-metadata 6.1.1
+add uuid 9.0.1
+add node-fetch 2.7.0
+add gaxios 6.7.1
+add extend 3.0.2
+add dot-prop 6.0.1
+add arrify 2.0.1
+add @google-cloud/promisify 4.0.0
+add @google-cloud/projectify 4.0.0
+add @google-cloud/paginator 5.0.2
+add @google-cloud/logging-api 0.2.0
+add gaxios 7.1.3
+add gtoken 8.0.0
+add gcp-metadata 8.1.4
+add rimraf 5.0.10
+add proto3-json-serializer 3.0.4
+add google-logging-utils 1.1.3
+add google-auth-library 10.5.0
+add @grpc/proto-loader 0.8.1
+add google-gax 5.0.8
+add @google-cloud/common 6.1.0
+add google-logging-utils 1.1.3
+add gcp-metadata 8.1.2
+add google-auth-library 10.9.1
+add winston-transport 4.9.0
+add lodash.mapvalues 4.6.0
+add @google-cloud/logging 11.4.0
+add google-logging-utils 1.1.3
+add google-auth-library 10.9.1
+add gcp-metadata 8.1.2
+add google-gax 4.6.1
+add agent-base 6.0.2
+add https-proxy-agent 5.0.1
+add http-proxy-agent 5.0.0
+add teeny-request 9.0.0
+add uuid 9.0.1
+add retry-request 7.0.2
+add node-fetch 2.7.0
+add functional-red-black-tree 1.0.1
+add google-auth-library 9.15.1
+add uuid 9.0.1
+add node-fetch 2.7.0
+add gaxios 6.7.1
+add @opentelemetry/instrumentation-winston 0.39.0
+add @opentelemetry/instrumentation-pino 0.41.0
+add @opentelemetry/auto-instrumentations-node 0.49.2
+add @google-cloud/opentelemetry-resource-util 2.4.0
+add @google-cloud/opentelemetry-cloud-trace-exporter 2.4.1
+add @google-cloud/opentelemetry-cloud-monitoring-exporter 0.19.0
+add @google-cloud/modelarmor 0.4.1
+add gaxios 7.1.3
+add gtoken 8.0.0
+add gcp-metadata 8.1.4
+add rimraf 5.0.10
+add proto3-json-serializer 3.0.4
+add google-logging-utils 1.1.3
+add google-auth-library 10.5.0
+add @grpc/proto-loader 0.8.1
+add google-gax 5.0.8
+add winston 3.19.0
+add @google-cloud/logging-winston 6.0.2
+add google-logging-utils 1.1.3
+add gcp-metadata 8.1.2
+add google-auth-library 10.9.1
+add @genkit-ai/google-cloud 1.43.0
+add ws 8.22.0
+add @google-cloud/firestore 7.11.6
+add firebase-admin 14.5.0
+add retry-request 9.1.0
+add proto3-json-serializer 4.1.0
+add @grpc/proto-loader 0.8.1
+add google-logging-utils 2.1.0
+add gcp-metadata 9.2.2
+add gaxios 8.3.2
+add google-gax 6.13.0
+add google-auth-library 11.3.1
+add @google-cloud/firestore 9.4.0
+add @genkit-ai/firebase 1.43.0
+add @cfworker/json-schema 4.1.1
+add node-fetch 3.3.2
+change zod-to-json-schema 3.24.6 => 3.25.2
+change yargs 17.7.2 => 17.7.3
+remove string-width 4.2.3
+remove emoji-regex 8.0.0
+change yaml 2.8.0 => 2.9.1
+change type-is 2.0.1 => 2.1.0
+add content-type 2.1.0
+change side-channel-list 1.0.0 => 1.0.1
+change side-channel 1.1.0 => 1.1.1
+change raw-body 3.0.0 => 3.0.2
+change qs 6.14.0 => 6.17.0
+change proxy-addr 2.0.7 => 2.0.8
+change protobufjs 7.5.3 => 7.6.6
+change picomatch 2.3.1 => 2.3.2
+change minimatch 3.1.2 => 3.1.5
+change js-yaml 4.1.0 => 4.3.2
+change import-in-the-middle 1.14.2 => 1.15.0
+remove cjs-module-lexer 1.4.3
+change iconv-lite 0.6.3 => 0.7.3
+change http-errors 2.0.0 => 2.0.1
+remove statuses 2.0.1
+change hasown 2.0.2 => 2.0.4
+change handlebars 4.7.8 => 4.7.10
+change genkit 1.15.5 => 1.43.0
+change flatted 3.3.3 => 3.4.4
+change fast-uri 3.0.6 => 3.1.9
+change dotprompt 1.1.1 => 1.1.2
+change debug 4.4.1 => 4.4.3
+change cors 2.8.5 => 2.8.6
+remove wrap-ansi 7.0.0
+remove string-width 4.2.3
+remove emoji-regex 8.0.0
+change brace-expansion 1.1.12 => 1.1.21
+change body-parser 2.2.0 => 2.4.0
+add content-type 2.1.0
+change ajv 8.17.1 => 8.20.0
+change ajv 6.12.6 => 6.15.0
+change @types/node 22.16.5 => 20.19.43
+remove @types/handlebars 4.1.0
+change @protobufjs/utf8 1.1.0 => 1.1.2
+remove @protobufjs/inquire 1.1.0
+change @protobufjs/fetch 1.1.0 => 1.1.1
+change @protobufjs/eventemitter 1.1.0 => 1.1.1
+change @protobufjs/codegen 2.0.4 => 2.0.5
+change @opentelemetry/semantic-conventions 1.25.1 => 1.43.0
+add @opentelemetry/semantic-conventions 1.25.1
+add @opentelemetry/semantic-conventions 1.25.1
+add @opentelemetry/semantic-conventions 1.25.1
+add @opentelemetry/semantic-conventions 1.25.1
+add @opentelemetry/semantic-conventions 1.25.1
+change @opentelemetry/api 1.9.0 => 1.9.1
+change @grpc/grpc-js 1.13.4 => 1.14.6
+add @grpc/proto-loader 0.8.1
+change @genkit-ai/core 1.15.5 => 1.43.0
+remove statuses 2.0.1
+change serve-static 1.16.2 => 1.16.3
+change send 0.19.0 => 0.19.2
+remove ms 2.1.3
+remove encodeurl 1.0.2
+change raw-body 2.5.2 => 2.5.3
+change qs 6.13.0 => 6.16.2
+change path-to-regexp 0.1.12 => 0.1.13
+remove ms 2.0.0
+change finalhandler 1.3.1 => 1.3.2
+change express 4.21.2 => 4.22.3
+add ms 2.0.0
+change cookie-signature 1.0.6 => 1.0.7
+change body-parser 1.20.3 => 1.20.9
+change ajv 8.17.1 => 8.20.0
+change @genkit-ai/ai 1.15.5 => 1.43.0
+remove node-fetch 3.3.2
+remove @types/node 20.19.9
+{
+  "add": [
+    {
+      "name": "@tootallnate/once",
+      "version": "2.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@tootallnate\\once"
+    },
+    {
+      "name": "delayed-stream",
+      "version": "1.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\delayed-stream"
+    },
+    {
+      "name": "combined-stream",
+      "version": "1.0.8",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\combined-stream"
+    },
+    {
+      "name": "asynckit",
+      "version": "0.4.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\asynckit"
+    },
+    {
+      "name": "form-data",
+      "version": "2.5.6",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\form-data"
+    },
+    {
+      "name": "@types/tough-cookie",
+      "version": "4.0.5",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@types\\tough-cookie"
+    },
+    {
+      "name": "@types/caseless",
+      "version": "0.12.5",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@types\\caseless"
+    },
+    {
+      "name": "@types/request",
+      "version": "2.48.13",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@types\\request"
+    },
+    {
+      "name": "webidl-conversions",
+      "version": "3.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\webidl-conversions"
+    },
+    {
+      "name": "tr46",
+      "version": "0.0.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\tr46"
+    },
+    {
+      "name": "whatwg-url",
+      "version": "5.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\whatwg-url"
+    },
+    {
+      "name": "@google-cloud/firestore-api",
+      "version": "0.2.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\firestore-api"
+    },
+    {
+      "name": "gaxios",
+      "version": "7.1.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\firestore-api\\node_modules\\gaxios"
+    },
+    {
+      "name": "gtoken",
+      "version": "8.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\firestore-api\\node_modules\\gtoken"
+    },
+    {
+      "name": "gcp-metadata",
+      "version": "8.1.4",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\firestore-api\\node_modules\\gcp-metadata"
+    },
+    {
+      "name": "rimraf",
+      "version": "5.0.10",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\firestore-api\\node_modules\\rimraf"
+    },
+    {
+      "name": "proto3-json-serializer",
+      "version": "3.0.4",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\firestore-api\\node_modules\\proto3-json-serializer"
+    },
+    {
+      "name": "google-logging-utils",
+      "version": "1.1.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\firestore-api\\node_modules\\google-logging-utils"
+    },
+    {
+      "name": "google-auth-library",
+      "version": "10.5.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\firestore-api\\node_modules\\google-auth-library"
+    },
+    {
+      "name": "@grpc/proto-loader",
+      "version": "0.8.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\firestore-api\\node_modules\\@grpc\\proto-loader"
+    },
+    {
+      "name": "google-gax",
+      "version": "5.0.8",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\firestore-api\\node_modules\\google-gax"
+    },
+    {
+      "name": "eastasianwidth",
+      "version": "0.2.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\eastasianwidth"
+    },
+    {
+      "name": "wrap-ansi-cjs",
+      "version": "7.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\wrap-ansi-cjs"
+    },
+    {
+      "name": "strip-ansi-cjs",
+      "version": "6.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\strip-ansi-cjs"
+    },
+    {
+      "name": "string-width-cjs",
+      "version": "4.2.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\string-width-cjs"
+    },
+    {
+      "name": "@pkgjs/parseargs",
+      "version": "0.11.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@pkgjs\\parseargs"
+    },
+    {
+      "name": "@isaacs/cliui",
+      "version": "8.0.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@isaacs\\cliui"
+    },
+    {
+      "name": "ansi-styles",
+      "version": "6.2.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@isaacs\\cliui\\node_modules\\ansi-styles"
+    },
+    {
+      "name": "ansi-regex",
+      "version": "6.4.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@isaacs\\cliui\\node_modules\\ansi-regex"
+    },
+    {
+      "name": "emoji-regex",
+      "version": "9.2.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@isaacs\\cliui\\node_modules\\emoji-regex"
+    },
+    {
+      "name": "wrap-ansi",
+      "version": "8.1.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@isaacs\\cliui\\node_modules\\wrap-ansi"
+    },
+    {
+      "name": "strip-ansi",
+      "version": "7.2.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@isaacs\\cliui\\node_modules\\strip-ansi"
+    },
+    {
+      "name": "string-width",
+      "version": "5.1.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@isaacs\\cliui\\node_modules\\string-width"
+    },
+    {
+      "name": "signal-exit",
+      "version": "4.1.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\signal-exit"
+    },
+    {
+      "name": "path-scurry",
+      "version": "1.11.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\path-scurry"
+    },
+    {
+      "name": "lru-cache",
+      "version": "10.4.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\path-scurry\\node_modules\\lru-cache"
+    },
+    {
+      "name": "package-json-from-dist",
+      "version": "1.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\package-json-from-dist"
+    },
+    {
+      "name": "minipass",
+      "version": "7.1.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\minipass"
+    },
+    {
+      "name": "jackspeak",
+      "version": "3.4.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\jackspeak"
+    },
+    {
+      "name": "foreground-child",
+      "version": "3.3.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\foreground-child"
+    },
+    {
+      "name": "glob",
+      "version": "10.5.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\glob"
+    },
+    {
+      "name": "brace-expansion",
+      "version": "2.1.7",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\glob\\node_modules\\brace-expansion"
+    },
+    {
+      "name": "minimatch",
+      "version": "9.0.9",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\glob\\node_modules\\minimatch"
+    },
+    {
+      "name": "emoji-regex",
+      "version": "8.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\emoji-regex"
+    },
+    {
+      "name": "wrap-ansi",
+      "version": "7.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\wrap-ansi"
+    },
+    {
+      "name": "string-width",
+      "version": "4.2.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\string-width"
+    },
+    {
+      "name": "fn.name",
+      "version": "1.1.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\fn.name"
+    },
+    {
+      "name": "fecha",
+      "version": "4.2.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\fecha"
+    },
+    {
+      "name": "@types/triple-beam",
+      "version": "1.3.5",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@types\\triple-beam"
+    },
+    {
+      "name": "color-string",
+      "version": "2.1.4",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\color-string"
+    },
+    {
+      "name": "color-name",
+      "version": "2.1.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\color-string\\node_modules\\color-name"
+    },
+    {
+      "name": "text-hex",
+      "version": "1.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\text-hex"
+    },
+    {
+      "name": "color",
+      "version": "5.0.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\color"
+    },
+    {
+      "name": "color-name",
+      "version": "2.1.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\color\\node_modules\\color-name"
+    },
+    {
+      "name": "color-convert",
+      "version": "3.1.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\color\\node_modules\\color-convert"
+    },
+    {
+      "name": "kuler",
+      "version": "2.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\kuler"
+    },
+    {
+      "name": "enabled",
+      "version": "2.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\enabled"
+    },
+    {
+      "name": "@so-ric/colorspace",
+      "version": "1.1.6",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@so-ric\\colorspace"
+    },
+    {
+      "name": "triple-beam",
+      "version": "1.4.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\triple-beam"
+    },
+    {
+      "name": "stack-trace",
+      "version": "0.0.10",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\stack-trace"
+    },
+    {
+      "name": "safe-stable-stringify",
+      "version": "2.5.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\safe-stable-stringify"
+    },
+    {
+      "name": "one-time",
+      "version": "1.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\one-time"
+    },
+    {
+      "name": "logform",
+      "version": "2.7.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\logform"
+    },
+    {
+      "name": "@colors/colors",
+      "version": "1.6.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\logform\\node_modules\\@colors\\colors"
+    },
+    {
+      "name": "is-stream",
+      "version": "2.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\is-stream"
+    },
+    {
+      "name": "async",
+      "version": "3.2.6",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\async"
+    },
+    {
+      "name": "@dabh/diagnostics",
+      "version": "2.0.9",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@dabh\\diagnostics"
+    },
+    {
+      "name": "@colors/colors",
+      "version": "1.6.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@colors\\colors"
+    },
+    {
+      "name": "websocket-extensions",
+      "version": "0.1.4",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\websocket-extensions"
+    },
+    {
+      "name": "http-parser-js",
+      "version": "0.5.10",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\http-parser-js"
+    },
+    {
+      "name": "http-proxy-agent",
+      "version": "7.0.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\http-proxy-agent"
+    },
+    {
+      "name": "anynum",
+      "version": "1.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\anynum"
+    },
+    {
+      "name": "stubs",
+      "version": "3.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\stubs"
+    },
+    {
+      "name": "util-deprecate",
+      "version": "1.0.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\util-deprecate"
+    },
+    {
+      "name": "string_decoder",
+      "version": "1.3.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\string_decoder"
+    },
+    {
+      "name": "pump",
+      "version": "3.0.4",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\pump"
+    },
+    {
+      "name": "xtend",
+      "version": "4.0.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\xtend"
+    },
+    {
+      "name": "postgres-interval",
+      "version": "1.2.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\postgres-interval"
+    },
+    {
+      "name": "postgres-date",
+      "version": "1.0.7",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\postgres-date"
+    },
+    {
+      "name": "postgres-bytea",
+      "version": "1.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\postgres-bytea"
+    },
+    {
+      "name": "postgres-array",
+      "version": "2.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\postgres-array"
+    },
+    {
+      "name": "pg-int8",
+      "version": "1.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\pg-int8"
+    },
+    {
+      "name": "lodash.clonedeep",
+      "version": "4.5.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\lodash.clonedeep"
+    },
+    {
+      "name": "buffer-equal-constant-time",
+      "version": "1.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\buffer-equal-constant-time"
+    },
+    {
+      "name": "jwa",
+      "version": "2.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\jwa"
+    },
+    {
+      "name": "@types/ms",
+      "version": "2.1.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@types\\ms"
+    },
+    {
+      "name": "lru-memoizer",
+      "version": "3.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\lru-memoizer"
+    },
+    {
+      "name": "lru-cache",
+      "version": "11.5.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\lru-cache"
+    },
+    {
+      "name": "limiter",
+      "version": "1.1.5",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\limiter"
+    },
+    {
+      "name": "jose",
+      "version": "6.2.13",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\jose"
+    },
+    {
+      "name": "@types/jsonwebtoken",
+      "version": "9.0.10",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@types\\jsonwebtoken"
+    },
+    {
+      "name": "lodash.once",
+      "version": "4.1.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\lodash.once"
+    },
+    {
+      "name": "lodash.isstring",
+      "version": "4.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\lodash.isstring"
+    },
+    {
+      "name": "lodash.isplainobject",
+      "version": "4.0.6",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\lodash.isplainobject"
+    },
+    {
+      "name": "lodash.isnumber",
+      "version": "3.0.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\lodash.isnumber"
+    },
+    {
+      "name": "lodash.isinteger",
+      "version": "4.0.4",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\lodash.isinteger"
+    },
+    {
+      "name": "lodash.isboolean",
+      "version": "3.0.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\lodash.isboolean"
+    },
+    {
+      "name": "lodash.includes",
+      "version": "4.3.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\lodash.includes"
+    },
+    {
+      "name": "bignumber.js",
+      "version": "9.3.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\bignumber.js"
+    },
+    {
+      "name": "cjs-module-lexer",
+      "version": "1.4.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\cjs-module-lexer"
+    },
+    {
+      "name": "agent-base",
+      "version": "7.1.4",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\agent-base"
+    },
+    {
+      "name": "url-template",
+      "version": "2.0.8",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\url-template"
+    },
+    {
+      "name": "googleapis-common",
+      "version": "7.2.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\googleapis-common"
+    },
+    {
+      "name": "node-fetch",
+      "version": "2.7.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\googleapis-common\\node_modules\\node-fetch"
+    },
+    {
+      "name": "uuid",
+      "version": "9.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\googleapis-common\\node_modules\\uuid"
+    },
+    {
+      "name": "gaxios",
+      "version": "6.7.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\googleapis-common\\node_modules\\gaxios"
+    },
+    {
+      "name": "proto3-json-serializer",
+      "version": "2.0.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\proto3-json-serializer"
+    },
+    {
+      "name": "object-hash",
+      "version": "3.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\object-hash"
+    },
+    {
+      "name": "@types/long",
+      "version": "4.0.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@types\\long"
+    },
+    {
+      "name": "jws",
+      "version": "4.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\jws"
+    },
+    {
+      "name": "gtoken",
+      "version": "7.1.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\gtoken"
+    },
+    {
+      "name": "uuid",
+      "version": "9.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\gtoken\\node_modules\\uuid"
+    },
+    {
+      "name": "node-fetch",
+      "version": "2.7.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\gtoken\\node_modules\\node-fetch"
+    },
+    {
+      "name": "gaxios",
+      "version": "6.7.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\gtoken\\node_modules\\gaxios"
+    },
+    {
+      "name": "ecdsa-sig-formatter",
+      "version": "1.0.11",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\ecdsa-sig-formatter"
+    },
+    {
+      "name": "base64-js",
+      "version": "1.5.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\base64-js"
+    },
+    {
+      "name": "json-bigint",
+      "version": "1.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\json-bigint"
+    },
+    {
+      "name": "google-logging-utils",
+      "version": "0.0.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\google-logging-utils"
+    },
+    {
+      "name": "https-proxy-agent",
+      "version": "7.0.6",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\https-proxy-agent"
+    },
+    {
+      "name": "websocket-driver",
+      "version": "0.7.5",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\websocket-driver"
+    },
+    {
+      "name": "xml-naming",
+      "version": "0.3.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\xml-naming"
+    },
+    {
+      "name": "strnum",
+      "version": "2.5.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\strnum"
+    },
+    {
+      "name": "path-expression-matcher",
+      "version": "1.6.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\path-expression-matcher"
+    },
+    {
+      "name": "is-unsafe",
+      "version": "2.0.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\is-unsafe"
+    },
+    {
+      "name": "fast-xml-builder",
+      "version": "1.3.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\fast-xml-builder"
+    },
+    {
+      "name": "@nodable/entities",
+      "version": "3.1.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@nodable\\entities"
+    },
+    {
+      "name": "retry",
+      "version": "0.13.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\retry"
+    },
+    {
+      "name": "event-target-shim",
+      "version": "5.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\event-target-shim"
+    },
+    {
+      "name": "mime",
+      "version": "3.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\mime"
+    },
+    {
+      "name": "gaxios",
+      "version": "7.3.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\gaxios"
+    },
+    {
+      "name": "fast-xml-parser",
+      "version": "5.11.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\fast-xml-parser"
+    },
+    {
+      "name": "async-retry",
+      "version": "1.3.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\async-retry"
+    },
+    {
+      "name": "abort-controller",
+      "version": "3.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\abort-controller"
+    },
+    {
+      "name": "@firebase/app-types",
+      "version": "0.9.6",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@firebase\\app-types"
+    },
+    {
+      "name": "faye-websocket",
+      "version": "0.11.4",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\faye-websocket"
+    },
+    {
+      "name": "@firebase/auth-interop-types",
+      "version": "0.2.6",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@firebase\\auth-interop-types"
+    },
+    {
+      "name": "@firebase/app-check-interop-types",
+      "version": "0.3.5",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@firebase\\app-check-interop-types"
+    },
+    {
+      "name": "@firebase/util",
+      "version": "1.15.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@firebase\\util"
+    },
+    {
+      "name": "@firebase/logger",
+      "version": "0.5.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@firebase\\logger"
+    },
+    {
+      "name": "@firebase/database",
+      "version": "1.1.5",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@firebase\\database"
+    },
+    {
+      "name": "@firebase/component",
+      "version": "0.7.5",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@firebase\\component"
+    },
+    {
+      "name": "jwks-rsa",
+      "version": "4.1.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\jwks-rsa"
+    },
+    {
+      "name": "jsonwebtoken",
+      "version": "9.0.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\jsonwebtoken"
+    },
+    {
+      "name": "@google-cloud/storage",
+      "version": "8.4.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\storage"
+    },
+    {
+      "name": "google-logging-utils",
+      "version": "2.1.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\storage\\node_modules\\google-logging-utils"
+    },
+    {
+      "name": "gcp-metadata",
+      "version": "9.2.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\storage\\node_modules\\gcp-metadata"
+    },
+    {
+      "name": "gaxios",
+      "version": "8.3.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\storage\\node_modules\\gcp-metadata\\node_modules\\gaxios"
+    },
+    {
+      "name": "teeny-request",
+      "version": "11.1.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\storage\\node_modules\\teeny-request"
+    },
+    {
+      "name": "retry-request",
+      "version": "9.1.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\storage\\node_modules\\retry-request"
+    },
+    {
+      "name": "google-auth-library",
+      "version": "11.3.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\storage\\node_modules\\google-auth-library"
+    },
+    {
+      "name": "gaxios",
+      "version": "8.3.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\storage\\node_modules\\google-auth-library\\node_modules\\gaxios"
+    },
+    {
+      "name": "@google-cloud/promisify",
+      "version": "6.2.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\storage\\node_modules\\@google-cloud\\promisify"
+    },
+    {
+      "name": "@google-cloud/projectify",
+      "version": "6.2.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\storage\\node_modules\\@google-cloud\\projectify"
+    },
+    {
+      "name": "@google-cloud/paginator",
+      "version": "7.2.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\storage\\node_modules\\@google-cloud\\paginator"
+    },
+    {
+      "name": "@firebase/database-types",
+      "version": "1.0.22",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@firebase\\database-types"
+    },
+    {
+      "name": "@firebase/database-compat",
+      "version": "2.1.7",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@firebase\\database-compat"
+    },
+    {
+      "name": "@fastify/busboy",
+      "version": "3.2.4",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@fastify\\busboy"
+    },
+    {
+      "name": "stream-shift",
+      "version": "1.0.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\stream-shift"
+    },
+    {
+      "name": "readable-stream",
+      "version": "3.6.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\readable-stream"
+    },
+    {
+      "name": "end-of-stream",
+      "version": "1.4.5",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\end-of-stream"
+    },
+    {
+      "name": "is-obj",
+      "version": "2.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\is-obj"
+    },
+    {
+      "name": "pg-types",
+      "version": "2.2.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\pg-types"
+    },
+    {
+      "name": "pg-protocol",
+      "version": "1.16.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\pg-protocol"
+    },
+    {
+      "name": "@types/tedious",
+      "version": "4.0.14",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@types\\tedious"
+    },
+    {
+      "name": "@types/pg-pool",
+      "version": "2.0.4",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@types\\pg-pool"
+    },
+    {
+      "name": "@types/pg",
+      "version": "8.6.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@types\\pg"
+    },
+    {
+      "name": "@opentelemetry/sql-common",
+      "version": "0.40.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\sql-common"
+    },
+    {
+      "name": "@types/mysql",
+      "version": "2.15.22",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@types\\mysql"
+    },
+    {
+      "name": "@types/memcached",
+      "version": "2.2.10",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@types\\memcached"
+    },
+    {
+      "name": "@opentelemetry/redis-common",
+      "version": "0.36.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\redis-common"
+    },
+    {
+      "name": "@types/connect",
+      "version": "3.4.36",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@types\\connect"
+    },
+    {
+      "name": "@types/bunyan",
+      "version": "1.8.9",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@types\\bunyan"
+    },
+    {
+      "name": "@opentelemetry/propagation-utils",
+      "version": "0.30.16",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\propagation-utils"
+    },
+    {
+      "name": "@types/aws-lambda",
+      "version": "8.10.122",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@types\\aws-lambda"
+    },
+    {
+      "name": "@opentelemetry/propagator-aws-xray",
+      "version": "1.26.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\propagator-aws-xray"
+    },
+    {
+      "name": "@opentelemetry/resource-detector-gcp",
+      "version": "0.29.13",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\resource-detector-gcp"
+    },
+    {
+      "name": "@opentelemetry/resource-detector-container",
+      "version": "0.4.4",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\resource-detector-container"
+    },
+    {
+      "name": "@opentelemetry/semantic-conventions",
+      "version": "1.28.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\resource-detector-container\\node_modules\\@opentelemetry\\semantic-conventions"
+    },
+    {
+      "name": "@opentelemetry/core",
+      "version": "1.30.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\resource-detector-container\\node_modules\\@opentelemetry\\core"
+    },
+    {
+      "name": "@opentelemetry/resource-detector-azure",
+      "version": "0.2.12",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\resource-detector-azure"
+    },
+    {
+      "name": "@opentelemetry/resource-detector-aws",
+      "version": "1.12.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\resource-detector-aws"
+    },
+    {
+      "name": "@opentelemetry/resource-detector-alibaba-cloud",
+      "version": "0.29.7",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\resource-detector-alibaba-cloud"
+    },
+    {
+      "name": "@opentelemetry/semantic-conventions",
+      "version": "1.28.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\resource-detector-alibaba-cloud\\node_modules\\@opentelemetry\\semantic-conventions"
+    },
+    {
+      "name": "@opentelemetry/core",
+      "version": "1.30.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\resource-detector-alibaba-cloud\\node_modules\\@opentelemetry\\core"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-undici",
+      "version": "0.5.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-undici"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-tedious",
+      "version": "0.13.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-tedious"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-socket.io",
+      "version": "0.41.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-socket.io"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-router",
+      "version": "0.39.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-router"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-restify",
+      "version": "0.40.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-restify"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-redis-4",
+      "version": "0.41.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-redis-4"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-redis",
+      "version": "0.41.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-redis"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-pg",
+      "version": "0.43.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-pg"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-net",
+      "version": "0.38.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-net"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-nestjs-core",
+      "version": "0.39.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-nestjs-core"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-mysql2",
+      "version": "0.40.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-mysql2"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-mysql",
+      "version": "0.40.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-mysql"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-mongoose",
+      "version": "0.41.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-mongoose"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-mongodb",
+      "version": "0.46.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-mongodb"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-memcached",
+      "version": "0.38.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-memcached"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-lru-memoizer",
+      "version": "0.39.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-lru-memoizer"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-koa",
+      "version": "0.42.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-koa"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-knex",
+      "version": "0.39.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-knex"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-kafkajs",
+      "version": "0.2.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-kafkajs"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-ioredis",
+      "version": "0.42.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-ioredis"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-http",
+      "version": "0.52.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-http"
+    },
+    {
+      "name": "@opentelemetry/semantic-conventions",
+      "version": "1.25.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-http\\node_modules\\@opentelemetry\\semantic-conventions"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-hapi",
+      "version": "0.40.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-hapi"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-grpc",
+      "version": "0.52.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-grpc"
+    },
+    {
+      "name": "@opentelemetry/semantic-conventions",
+      "version": "1.25.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-grpc\\node_modules\\@opentelemetry\\semantic-conventions"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-graphql",
+      "version": "0.42.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-graphql"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-generic-pool",
+      "version": "0.38.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-generic-pool"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-fs",
+      "version": "0.14.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-fs"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-fastify",
+      "version": "0.38.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-fastify"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-express",
+      "version": "0.41.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-express"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-dns",
+      "version": "0.38.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-dns"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-dataloader",
+      "version": "0.11.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-dataloader"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-cucumber",
+      "version": "0.8.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-cucumber"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-connect",
+      "version": "0.38.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-connect"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-cassandra-driver",
+      "version": "0.40.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-cassandra-driver"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-bunyan",
+      "version": "0.40.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-bunyan"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-aws-sdk",
+      "version": "0.43.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-aws-sdk"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-aws-lambda",
+      "version": "0.43.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-aws-lambda"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-amqplib",
+      "version": "0.41.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-amqplib"
+    },
+    {
+      "name": "googleapis",
+      "version": "137.1.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\googleapis"
+    },
+    {
+      "name": "@google-cloud/precise-date",
+      "version": "4.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\precise-date"
+    },
+    {
+      "name": "teeny-request",
+      "version": "10.1.4",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\teeny-request"
+    },
+    {
+      "name": "retry-request",
+      "version": "8.0.4",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\retry-request"
+    },
+    {
+      "name": "html-entities",
+      "version": "2.6.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\html-entities"
+    },
+    {
+      "name": "duplexify",
+      "version": "4.1.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\duplexify"
+    },
+    {
+      "name": "stream-events",
+      "version": "1.0.5",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\stream-events"
+    },
+    {
+      "name": "pumpify",
+      "version": "2.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\pumpify"
+    },
+    {
+      "name": "gcp-metadata",
+      "version": "6.1.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\gcp-metadata"
+    },
+    {
+      "name": "uuid",
+      "version": "9.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\gcp-metadata\\node_modules\\uuid"
+    },
+    {
+      "name": "node-fetch",
+      "version": "2.7.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\gcp-metadata\\node_modules\\node-fetch"
+    },
+    {
+      "name": "gaxios",
+      "version": "6.7.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\gcp-metadata\\node_modules\\gaxios"
+    },
+    {
+      "name": "extend",
+      "version": "3.0.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\extend"
+    },
+    {
+      "name": "dot-prop",
+      "version": "6.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\dot-prop"
+    },
+    {
+      "name": "arrify",
+      "version": "2.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\arrify"
+    },
+    {
+      "name": "@google-cloud/promisify",
+      "version": "4.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\promisify"
+    },
+    {
+      "name": "@google-cloud/projectify",
+      "version": "4.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\projectify"
+    },
+    {
+      "name": "@google-cloud/paginator",
+      "version": "5.0.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\paginator"
+    },
+    {
+      "name": "@google-cloud/logging-api",
+      "version": "0.2.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\logging-api"
+    },
+    {
+      "name": "gaxios",
+      "version": "7.1.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\logging-api\\node_modules\\gaxios"
+    },
+    {
+      "name": "gtoken",
+      "version": "8.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\logging-api\\node_modules\\gtoken"
+    },
+    {
+      "name": "gcp-metadata",
+      "version": "8.1.4",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\logging-api\\node_modules\\gcp-metadata"
+    },
+    {
+      "name": "rimraf",
+      "version": "5.0.10",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\logging-api\\node_modules\\rimraf"
+    },
+    {
+      "name": "proto3-json-serializer",
+      "version": "3.0.4",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\logging-api\\node_modules\\proto3-json-serializer"
+    },
+    {
+      "name": "google-logging-utils",
+      "version": "1.1.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\logging-api\\node_modules\\google-logging-utils"
+    },
+    {
+      "name": "google-auth-library",
+      "version": "10.5.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\logging-api\\node_modules\\google-auth-library"
+    },
+    {
+      "name": "@grpc/proto-loader",
+      "version": "0.8.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\logging-api\\node_modules\\@grpc\\proto-loader"
+    },
+    {
+      "name": "google-gax",
+      "version": "5.0.8",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\logging-api\\node_modules\\google-gax"
+    },
+    {
+      "name": "@google-cloud/common",
+      "version": "6.1.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\common"
+    },
+    {
+      "name": "google-logging-utils",
+      "version": "1.1.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\common\\node_modules\\google-logging-utils"
+    },
+    {
+      "name": "gcp-metadata",
+      "version": "8.1.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\common\\node_modules\\gcp-metadata"
+    },
+    {
+      "name": "google-auth-library",
+      "version": "10.9.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\common\\node_modules\\google-auth-library"
+    },
+    {
+      "name": "winston-transport",
+      "version": "4.9.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\winston-transport"
+    },
+    {
+      "name": "lodash.mapvalues",
+      "version": "4.6.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\lodash.mapvalues"
+    },
+    {
+      "name": "@google-cloud/logging",
+      "version": "11.4.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\logging"
+    },
+    {
+      "name": "google-logging-utils",
+      "version": "1.1.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\logging\\node_modules\\google-logging-utils"
+    },
+    {
+      "name": "google-auth-library",
+      "version": "10.9.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\logging\\node_modules\\google-auth-library"
+    },
+    {
+      "name": "gcp-metadata",
+      "version": "8.1.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\logging\\node_modules\\google-auth-library\\node_modules\\gcp-metadata"
+    },
+    {
+      "name": "google-gax",
+      "version": "4.6.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\google-gax"
+    },
+    {
+      "name": "agent-base",
+      "version": "6.0.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\google-gax\\node_modules\\agent-base"
+    },
+    {
+      "name": "https-proxy-agent",
+      "version": "5.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\google-gax\\node_modules\\https-proxy-agent"
+    },
+    {
+      "name": "http-proxy-agent",
+      "version": "5.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\google-gax\\node_modules\\http-proxy-agent"
+    },
+    {
+      "name": "teeny-request",
+      "version": "9.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\google-gax\\node_modules\\teeny-request"
+    },
+    {
+      "name": "uuid",
+      "version": "9.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\google-gax\\node_modules\\uuid"
+    },
+    {
+      "name": "retry-request",
+      "version": "7.0.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\google-gax\\node_modules\\retry-request"
+    },
+    {
+      "name": "node-fetch",
+      "version": "2.7.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\google-gax\\node_modules\\node-fetch"
+    },
+    {
+      "name": "functional-red-black-tree",
+      "version": "1.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\functional-red-black-tree"
+    },
+    {
+      "name": "google-auth-library",
+      "version": "9.15.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\google-auth-library"
+    },
+    {
+      "name": "uuid",
+      "version": "9.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\google-auth-library\\node_modules\\uuid"
+    },
+    {
+      "name": "node-fetch",
+      "version": "2.7.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\google-auth-library\\node_modules\\node-fetch"
+    },
+    {
+      "name": "gaxios",
+      "version": "6.7.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\google-auth-library\\node_modules\\gaxios"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-winston",
+      "version": "0.39.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-winston"
+    },
+    {
+      "name": "@opentelemetry/instrumentation-pino",
+      "version": "0.41.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\instrumentation-pino"
+    },
+    {
+      "name": "@opentelemetry/auto-instrumentations-node",
+      "version": "0.49.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\auto-instrumentations-node"
+    },
+    {
+      "name": "@google-cloud/opentelemetry-resource-util",
+      "version": "2.4.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\opentelemetry-resource-util"
+    },
+    {
+      "name": "@google-cloud/opentelemetry-cloud-trace-exporter",
+      "version": "2.4.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\opentelemetry-cloud-trace-exporter"
+    },
+    {
+      "name": "@google-cloud/opentelemetry-cloud-monitoring-exporter",
+      "version": "0.19.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\opentelemetry-cloud-monitoring-exporter"
+    },
+    {
+      "name": "@google-cloud/modelarmor",
+      "version": "0.4.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\modelarmor"
+    },
+    {
+      "name": "gaxios",
+      "version": "7.1.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\modelarmor\\node_modules\\gaxios"
+    },
+    {
+      "name": "gtoken",
+      "version": "8.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\modelarmor\\node_modules\\gtoken"
+    },
+    {
+      "name": "gcp-metadata",
+      "version": "8.1.4",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\modelarmor\\node_modules\\gcp-metadata"
+    },
+    {
+      "name": "rimraf",
+      "version": "5.0.10",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\modelarmor\\node_modules\\rimraf"
+    },
+    {
+      "name": "proto3-json-serializer",
+      "version": "3.0.4",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\modelarmor\\node_modules\\proto3-json-serializer"
+    },
+    {
+      "name": "google-logging-utils",
+      "version": "1.1.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\modelarmor\\node_modules\\google-logging-utils"
+    },
+    {
+      "name": "google-auth-library",
+      "version": "10.5.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\modelarmor\\node_modules\\google-auth-library"
+    },
+    {
+      "name": "@grpc/proto-loader",
+      "version": "0.8.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\modelarmor\\node_modules\\@grpc\\proto-loader"
+    },
+    {
+      "name": "google-gax",
+      "version": "5.0.8",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\modelarmor\\node_modules\\google-gax"
+    },
+    {
+      "name": "winston",
+      "version": "3.19.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\winston"
+    },
+    {
+      "name": "@google-cloud/logging-winston",
+      "version": "6.0.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\logging-winston"
+    },
+    {
+      "name": "google-logging-utils",
+      "version": "1.1.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\logging-winston\\node_modules\\google-logging-utils"
+    },
+    {
+      "name": "gcp-metadata",
+      "version": "8.1.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\logging-winston\\node_modules\\gcp-metadata"
+    },
+    {
+      "name": "google-auth-library",
+      "version": "10.9.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\logging-winston\\node_modules\\google-auth-library"
+    },
+    {
+      "name": "@genkit-ai/google-cloud",
+      "version": "1.43.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\google-cloud"
+    },
+    {
+      "name": "ws",
+      "version": "8.22.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\ws"
+    },
+    {
+      "name": "@google-cloud/firestore",
+      "version": "7.11.6",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@google-cloud\\firestore"
+    },
+    {
+      "name": "firebase-admin",
+      "version": "14.5.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\firebase-admin"
+    },
+    {
+      "name": "retry-request",
+      "version": "9.1.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\firebase-admin\\node_modules\\retry-request"
+    },
+    {
+      "name": "proto3-json-serializer",
+      "version": "4.1.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\firebase-admin\\node_modules\\proto3-json-serializer"
+    },
+    {
+      "name": "@grpc/proto-loader",
+      "version": "0.8.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\firebase-admin\\node_modules\\@grpc\\proto-loader"
+    },
+    {
+      "name": "google-logging-utils",
+      "version": "2.1.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\firebase-admin\\node_modules\\google-logging-utils"
+    },
+    {
+      "name": "gcp-metadata",
+      "version": "9.2.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\firebase-admin\\node_modules\\gcp-metadata"
+    },
+    {
+      "name": "gaxios",
+      "version": "8.3.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\firebase-admin\\node_modules\\gaxios"
+    },
+    {
+      "name": "google-gax",
+      "version": "6.13.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\firebase-admin\\node_modules\\google-gax"
+    },
+    {
+      "name": "google-auth-library",
+      "version": "11.3.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\firebase-admin\\node_modules\\google-auth-library"
+    },
+    {
+      "name": "@google-cloud/firestore",
+      "version": "9.4.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\firebase-admin\\node_modules\\@google-cloud\\firestore"
+    },
+    {
+      "name": "@genkit-ai/firebase",
+      "version": "1.43.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\firebase"
+    },
+    {
+      "name": "@cfworker/json-schema",
+      "version": "4.1.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@cfworker\\json-schema"
+    },
+    {
+      "name": "node-fetch",
+      "version": "3.3.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\node-fetch"
+    },
+    {
+      "name": "content-type",
+      "version": "2.1.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\type-is\\node_modules\\content-type"
+    },
+    {
+      "name": "content-type",
+      "version": "2.1.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\body-parser\\node_modules\\content-type"
+    },
+    {
+      "name": "@opentelemetry/semantic-conventions",
+      "version": "1.25.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\sdk-trace-base\\node_modules\\@opentelemetry\\semantic-conventions"
+    },
+    {
+      "name": "@opentelemetry/semantic-conventions",
+      "version": "1.25.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\sdk-node\\node_modules\\@opentelemetry\\semantic-conventions"
+    },
+    {
+      "name": "@opentelemetry/semantic-conventions",
+      "version": "1.25.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\resources\\node_modules\\@opentelemetry\\semantic-conventions"
+    },
+    {
+      "name": "@opentelemetry/semantic-conventions",
+      "version": "1.25.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\exporter-zipkin\\node_modules\\@opentelemetry\\semantic-conventions"
+    },
+    {
+      "name": "@opentelemetry/semantic-conventions",
+      "version": "1.25.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\core\\node_modules\\@opentelemetry\\semantic-conventions"
+    },
+    {
+      "name": "@grpc/proto-loader",
+      "version": "0.8.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@grpc\\grpc-js\\node_modules\\@grpc\\proto-loader"
+    },
+    {
+      "name": "ms",
+      "version": "2.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\debug\\node_modules\\ms"
+    }
+  ],
+  "added": 320,
+  "audited": 734,
+  "change": [
+    {
+      "from": {
+        "name": "zod-to-json-schema",
+        "version": "3.24.6",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\zod-to-json-schema"
+      },
+      "to": {
+        "name": "zod-to-json-schema",
+        "version": "3.25.2",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\zod-to-json-schema"
+      }
+    },
+    {
+      "from": {
+        "name": "yargs",
+        "version": "17.7.2",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\yargs"
+      },
+      "to": {
+        "name": "yargs",
+        "version": "17.7.3",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\yargs"
+      }
+    },
+    {
+      "from": {
+        "name": "yaml",
+        "version": "2.8.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\yaml"
+      },
+      "to": {
+        "name": "yaml",
+        "version": "2.9.1",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\yaml"
+      }
+    },
+    {
+      "from": {
+        "name": "type-is",
+        "version": "2.0.1",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\type-is"
+      },
+      "to": {
+        "name": "type-is",
+        "version": "2.1.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\type-is"
+      }
+    },
+    {
+      "from": {
+        "name": "side-channel-list",
+        "version": "1.0.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\side-channel-list"
+      },
+      "to": {
+        "name": "side-channel-list",
+        "version": "1.0.1",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\side-channel-list"
+      }
+    },
+    {
+      "from": {
+        "name": "side-channel",
+        "version": "1.1.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\side-channel"
+      },
+      "to": {
+        "name": "side-channel",
+        "version": "1.1.1",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\side-channel"
+      }
+    },
+    {
+      "from": {
+        "name": "raw-body",
+        "version": "3.0.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\raw-body"
+      },
+      "to": {
+        "name": "raw-body",
+        "version": "3.0.2",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\raw-body"
+      }
+    },
+    {
+      "from": {
+        "name": "qs",
+        "version": "6.14.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\qs"
+      },
+      "to": {
+        "name": "qs",
+        "version": "6.17.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\qs"
+      }
+    },
+    {
+      "from": {
+        "name": "proxy-addr",
+        "version": "2.0.7",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\proxy-addr"
+      },
+      "to": {
+        "name": "proxy-addr",
+        "version": "2.0.8",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\proxy-addr"
+      }
+    },
+    {
+      "from": {
+        "name": "protobufjs",
+        "version": "7.5.3",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\protobufjs"
+      },
+      "to": {
+        "name": "protobufjs",
+        "version": "7.6.6",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\protobufjs"
+      }
+    },
+    {
+      "from": {
+        "name": "picomatch",
+        "version": "2.3.1",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\picomatch"
+      },
+      "to": {
+        "name": "picomatch",
+        "version": "2.3.2",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\picomatch"
+      }
+    },
+    {
+      "from": {
+        "name": "minimatch",
+        "version": "3.1.2",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\minimatch"
+      },
+      "to": {
+        "name": "minimatch",
+        "version": "3.1.5",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\minimatch"
+      }
+    },
+    {
+      "from": {
+        "name": "js-yaml",
+        "version": "4.1.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\js-yaml"
+      },
+      "to": {
+        "name": "js-yaml",
+        "version": "4.3.2",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\js-yaml"
+      }
+    },
+    {
+      "from": {
+        "name": "import-in-the-middle",
+        "version": "1.14.2",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\import-in-the-middle"
+      },
+      "to": {
+        "name": "import-in-the-middle",
+        "version": "1.15.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\import-in-the-middle"
+      }
+    },
+    {
+      "from": {
+        "name": "iconv-lite",
+        "version": "0.6.3",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\iconv-lite"
+      },
+      "to": {
+        "name": "iconv-lite",
+        "version": "0.7.3",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\iconv-lite"
+      }
+    },
+    {
+      "from": {
+        "name": "http-errors",
+        "version": "2.0.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\http-errors"
+      },
+      "to": {
+        "name": "http-errors",
+        "version": "2.0.1",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\http-errors"
+      }
+    },
+    {
+      "from": {
+        "name": "hasown",
+        "version": "2.0.2",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\hasown"
+      },
+      "to": {
+        "name": "hasown",
+        "version": "2.0.4",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\hasown"
+      }
+    },
+    {
+      "from": {
+        "name": "handlebars",
+        "version": "4.7.8",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\handlebars"
+      },
+      "to": {
+        "name": "handlebars",
+        "version": "4.7.10",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\handlebars"
+      }
+    },
+    {
+      "from": {
+        "name": "genkit",
+        "version": "1.15.5",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\genkit"
+      },
+      "to": {
+        "name": "genkit",
+        "version": "1.43.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\genkit"
+      }
+    },
+    {
+      "from": {
+        "name": "flatted",
+        "version": "3.3.3",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\flatted"
+      },
+      "to": {
+        "name": "flatted",
+        "version": "3.4.4",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\flatted"
+      }
+    },
+    {
+      "from": {
+        "name": "fast-uri",
+        "version": "3.0.6",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\fast-uri"
+      },
+      "to": {
+        "name": "fast-uri",
+        "version": "3.1.9",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\fast-uri"
+      }
+    },
+    {
+      "from": {
+        "name": "dotprompt",
+        "version": "1.1.1",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\dotprompt"
+      },
+      "to": {
+        "name": "dotprompt",
+        "version": "1.1.2",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\dotprompt"
+      }
+    },
+    {
+      "from": {
+        "name": "debug",
+        "version": "4.4.1",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\debug"
+      },
+      "to": {
+        "name": "debug",
+        "version": "4.4.3",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\debug"
+      }
+    },
+    {
+      "from": {
+        "name": "cors",
+        "version": "2.8.5",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\cors"
+      },
+      "to": {
+        "name": "cors",
+        "version": "2.8.6",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\cors"
+      }
+    },
+    {
+      "from": {
+        "name": "brace-expansion",
+        "version": "1.1.12",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\brace-expansion"
+      },
+      "to": {
+        "name": "brace-expansion",
+        "version": "1.1.21",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\brace-expansion"
+      }
+    },
+    {
+      "from": {
+        "name": "body-parser",
+        "version": "2.2.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\body-parser"
+      },
+      "to": {
+        "name": "body-parser",
+        "version": "2.4.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\body-parser"
+      }
+    },
+    {
+      "from": {
+        "name": "ajv",
+        "version": "8.17.1",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\ajv-formats\\node_modules\\ajv"
+      },
+      "to": {
+        "name": "ajv",
+        "version": "8.20.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\ajv-formats\\node_modules\\ajv"
+      }
+    },
+    {
+      "from": {
+        "name": "ajv",
+        "version": "6.12.6",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\ajv"
+      },
+      "to": {
+        "name": "ajv",
+        "version": "6.15.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\ajv"
+      }
+    },
+    {
+      "from": {
+        "name": "@types/node",
+        "version": "22.16.5",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@types\\node"
+      },
+      "to": {
+        "name": "@types/node",
+        "version": "20.19.43",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@types\\node"
+      }
+    },
+    {
+      "from": {
+        "name": "@protobufjs/utf8",
+        "version": "1.1.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@protobufjs\\utf8"
+      },
+      "to": {
+        "name": "@protobufjs/utf8",
+        "version": "1.1.2",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@protobufjs\\utf8"
+      }
+    },
+    {
+      "from": {
+        "name": "@protobufjs/fetch",
+        "version": "1.1.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@protobufjs\\fetch"
+      },
+      "to": {
+        "name": "@protobufjs/fetch",
+        "version": "1.1.1",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@protobufjs\\fetch"
+      }
+    },
+    {
+      "from": {
+        "name": "@protobufjs/eventemitter",
+        "version": "1.1.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@protobufjs\\eventemitter"
+      },
+      "to": {
+        "name": "@protobufjs/eventemitter",
+        "version": "1.1.1",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@protobufjs\\eventemitter"
+      }
+    },
+    {
+      "from": {
+        "name": "@protobufjs/codegen",
+        "version": "2.0.4",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@protobufjs\\codegen"
+      },
+      "to": {
+        "name": "@protobufjs/codegen",
+        "version": "2.0.5",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@protobufjs\\codegen"
+      }
+    },
+    {
+      "from": {
+        "name": "@opentelemetry/semantic-conventions",
+        "version": "1.25.1",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\semantic-conventions"
+      },
+      "to": {
+        "name": "@opentelemetry/semantic-conventions",
+        "version": "1.43.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\semantic-conventions"
+      }
+    },
+    {
+      "from": {
+        "name": "@opentelemetry/api",
+        "version": "1.9.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\api"
+      },
+      "to": {
+        "name": "@opentelemetry/api",
+        "version": "1.9.1",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@opentelemetry\\api"
+      }
+    },
+    {
+      "from": {
+        "name": "@grpc/grpc-js",
+        "version": "1.13.4",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@grpc\\grpc-js"
+      },
+      "to": {
+        "name": "@grpc/grpc-js",
+        "version": "1.14.6",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@grpc\\grpc-js"
+      }
+    },
+    {
+      "from": {
+        "name": "@genkit-ai/core",
+        "version": "1.15.5",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core"
+      },
+      "to": {
+        "name": "@genkit-ai/core",
+        "version": "1.43.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core"
+      }
+    },
+    {
+      "from": {
+        "name": "serve-static",
+        "version": "1.16.2",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\serve-static"
+      },
+      "to": {
+        "name": "serve-static",
+        "version": "1.16.3",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\serve-static"
+      }
+    },
+    {
+      "from": {
+        "name": "send",
+        "version": "0.19.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\send"
+      },
+      "to": {
+        "name": "send",
+        "version": "0.19.2",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\send"
+      }
+    },
+    {
+      "from": {
+        "name": "raw-body",
+        "version": "2.5.2",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\raw-body"
+      },
+      "to": {
+        "name": "raw-body",
+        "version": "2.5.3",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\raw-body"
+      }
+    },
+    {
+      "from": {
+        "name": "qs",
+        "version": "6.13.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\qs"
+      },
+      "to": {
+        "name": "qs",
+        "version": "6.16.2",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\qs"
+      }
+    },
+    {
+      "from": {
+        "name": "path-to-regexp",
+        "version": "0.1.12",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\path-to-regexp"
+      },
+      "to": {
+        "name": "path-to-regexp",
+        "version": "0.1.13",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\path-to-regexp"
+      }
+    },
+    {
+      "from": {
+        "name": "finalhandler",
+        "version": "1.3.1",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\finalhandler"
+      },
+      "to": {
+        "name": "finalhandler",
+        "version": "1.3.2",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\finalhandler"
+      }
+    },
+    {
+      "from": {
+        "name": "express",
+        "version": "4.21.2",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\express"
+      },
+      "to": {
+        "name": "express",
+        "version": "4.22.3",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\express"
+      }
+    },
+    {
+      "from": {
+        "name": "cookie-signature",
+        "version": "1.0.6",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\cookie-signature"
+      },
+      "to": {
+        "name": "cookie-signature",
+        "version": "1.0.7",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\cookie-signature"
+      }
+    },
+    {
+      "from": {
+        "name": "body-parser",
+        "version": "1.20.3",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\body-parser"
+      },
+      "to": {
+        "name": "body-parser",
+        "version": "1.20.9",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\body-parser"
+      }
+    },
+    {
+      "from": {
+        "name": "ajv",
+        "version": "8.17.1",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\ajv"
+      },
+      "to": {
+        "name": "ajv",
+        "version": "8.20.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\ajv"
+      }
+    },
+    {
+      "from": {
+        "name": "@genkit-ai/ai",
+        "version": "1.15.5",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\ai"
+      },
+      "to": {
+        "name": "@genkit-ai/ai",
+        "version": "1.43.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\ai"
+      }
+    }
+  ],
+  "changed": 48,
+  "funding": 167,
+  "remove": [
+    {
+      "name": "string-width",
+      "version": "4.2.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\yargs\\node_modules\\string-width"
+    },
+    {
+      "name": "emoji-regex",
+      "version": "8.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\yargs\\node_modules\\emoji-regex"
+    },
+    {
+      "name": "cjs-module-lexer",
+      "version": "1.4.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\import-in-the-middle\\node_modules\\cjs-module-lexer"
+    },
+    {
+      "name": "statuses",
+      "version": "2.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\http-errors\\node_modules\\statuses"
+    },
+    {
+      "name": "wrap-ansi",
+      "version": "7.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\cliui\\node_modules\\wrap-ansi"
+    },
+    {
+      "name": "string-width",
+      "version": "4.2.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\cliui\\node_modules\\string-width"
+    },
+    {
+      "name": "emoji-regex",
+      "version": "8.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\cliui\\node_modules\\emoji-regex"
+    },
+    {
+      "name": "@types/handlebars",
+      "version": "4.1.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@types\\handlebars"
+    },
+    {
+      "name": "@protobufjs/inquire",
+      "version": "1.1.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@protobufjs\\inquire"
+    },
+    {
+      "name": "statuses",
+      "version": "2.0.1",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\statuses"
+    },
+    {
+      "name": "ms",
+      "version": "2.1.3",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\send\\node_modules\\ms"
+    },
+    {
+      "name": "encodeurl",
+      "version": "1.0.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\send\\node_modules\\encodeurl"
+    },
+    {
+      "name": "ms",
+      "version": "2.0.0",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\core\\node_modules\\ms"
+    },
+    {
+      "name": "node-fetch",
+      "version": "3.3.2",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\ai\\node_modules\\node-fetch"
+    },
+    {
+      "name": "@types/node",
+      "version": "20.19.9",
+      "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\@genkit-ai\\ai\\node_modules\\@types\\node"
+    }
+  ],
+  "removed": 15,
+  "audit": {
+    "auditReportVersion": 2,
+    "vulnerabilities": {
+      "@genkit-ai/ai": {
+        "name": "@genkit-ai/ai",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          "@genkit-ai/core",
+          "uuid"
+        ],
+        "effects": [],
+        "range": "*",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "@genkit-ai/core": {
+        "name": "@genkit-ai/core",
+        "severity": "high",
+        "isDirect": false,
+        "via": [
+          "@opentelemetry/core",
+          "@opentelemetry/sdk-metrics",
+          "@opentelemetry/sdk-node",
+          "@opentelemetry/sdk-trace-base",
+          "zod"
+        ],
+        "effects": [
+          "@genkit-ai/ai",
+          "genkit"
+        ],
+        "range": "*",
+        "nodes": [
+          "",
+          "node_modules/@genkit-ai/core"
+        ],
+        "fixAvailable": {
+          "name": "genkit",
+          "version": "0.5.17",
+          "isSemVerMajor": true
+        }
+      },
+      "@grpc/grpc-js": {
+        "name": "@grpc/grpc-js",
+        "severity": "high",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1120583,
+            "name": "@grpc/grpc-js",
+            "dependency": "@grpc/grpc-js",
+            "title": "@grpc/grpc-js: A malformed request can cause a server crash",
+            "url": "https://github.com/advisories/GHSA-5375-pq7m-f5r2",
+            "severity": "high",
+            "cwe": [
+              "CWE-248"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": ">=1.13.0 <1.13.5"
+          },
+          {
+            "source": 1120589,
+            "name": "@grpc/grpc-js",
+            "dependency": "@grpc/grpc-js",
+            "title": "@grpc/grpc-js: An incoming malformed compressed message can cause a client or server crash",
+            "url": "https://github.com/advisories/GHSA-99f4-grh7-6pcq",
+            "severity": "high",
+            "cwe": [
+              "CWE-248",
+              "CWE-400"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": ">=1.13.0 <1.13.5"
+          },
+          {
+            "source": 1240623,
+            "name": "@grpc/grpc-js",
+            "dependency": "@grpc/grpc-js",
+            "title": "@grpc/grpc-js: In certain configurations, getAuthContext can return unauthorized certificates as though they were authorized",
+            "url": "https://github.com/advisories/GHSA-m9gg-hp2v-232j",
+            "severity": "high",
+            "cwe": [
+              "CWE-295"
+            ],
+            "cvss": {
+              "score": 7.4,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+            },
+            "range": "<1.13.6"
+          },
+          {
+            "source": 1240625,
+            "name": "@grpc/grpc-js",
+            "dependency": "@grpc/grpc-js",
+            "title": "@grpc/grpc-js: The server transmits some error messages thrown by method handlers to the client in status messages",
+            "url": "https://github.com/advisories/GHSA-f596-whhp-79r4",
+            "severity": "low",
+            "cwe": [
+              "CWE-550"
+            ],
+            "cvss": {
+              "score": 3.7,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+            },
+            "range": "<1.13.6"
+          }
+        ],
+        "effects": [],
+        "range": "<=1.13.5",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "@opentelemetry/core": {
+        "name": "@opentelemetry/core",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1153174,
+            "name": "@opentelemetry/core",
+            "dependency": "@opentelemetry/core",
+            "title": "OpenTelemetry Core: Unbounded memory allocation in W3C Baggage propagation",
+            "url": "https://github.com/advisories/GHSA-8988-4f7v-96qf",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-770"
+            ],
+            "cvss": {
+              "score": 5.3,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+            },
+            "range": "<2.8.0"
+          }
+        ],
+        "effects": [
+          "@genkit-ai/core",
+          "@opentelemetry/exporter-trace-otlp-grpc",
+          "@opentelemetry/exporter-trace-otlp-http",
+          "@opentelemetry/exporter-trace-otlp-proto",
+          "@opentelemetry/exporter-zipkin",
+          "@opentelemetry/otlp-exporter-base",
+          "@opentelemetry/otlp-grpc-exporter-base",
+          "@opentelemetry/otlp-transformer",
+          "@opentelemetry/propagator-b3",
+          "@opentelemetry/propagator-jaeger",
+          "@opentelemetry/resources",
+          "@opentelemetry/sdk-logs",
+          "@opentelemetry/sdk-metrics",
+          "@opentelemetry/sdk-node",
+          "@opentelemetry/sdk-trace-base",
+          "@opentelemetry/sdk-trace-node"
+        ],
+        "range": "<2.8.0",
+        "nodes": [
+          "",
+          "node_modules/@opentelemetry/core"
+        ],
+        "fixAvailable": {
+          "name": "genkit",
+          "version": "0.5.17",
+          "isSemVerMajor": true
+        }
+      },
+      "@opentelemetry/exporter-trace-otlp-grpc": {
+        "name": "@opentelemetry/exporter-trace-otlp-grpc",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          "@opentelemetry/core",
+          "@opentelemetry/otlp-grpc-exporter-base",
+          "@opentelemetry/otlp-transformer",
+          "@opentelemetry/resources",
+          "@opentelemetry/sdk-trace-base"
+        ],
+        "effects": [
+          "@opentelemetry/sdk-node"
+        ],
+        "range": "<=0.218.0",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "@opentelemetry/exporter-trace-otlp-http": {
+        "name": "@opentelemetry/exporter-trace-otlp-http",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          "@opentelemetry/core",
+          "@opentelemetry/otlp-exporter-base",
+          "@opentelemetry/otlp-transformer",
+          "@opentelemetry/resources",
+          "@opentelemetry/sdk-trace-base"
+        ],
+        "effects": [],
+        "range": "<=0.218.0",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "@opentelemetry/exporter-trace-otlp-proto": {
+        "name": "@opentelemetry/exporter-trace-otlp-proto",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          "@opentelemetry/core",
+          "@opentelemetry/otlp-exporter-base",
+          "@opentelemetry/otlp-transformer",
+          "@opentelemetry/resources",
+          "@opentelemetry/sdk-trace-base"
+        ],
+        "effects": [],
+        "range": "<=0.218.0",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "@opentelemetry/exporter-zipkin": {
+        "name": "@opentelemetry/exporter-zipkin",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          "@opentelemetry/core",
+          "@opentelemetry/resources",
+          "@opentelemetry/sdk-trace-base"
+        ],
+        "effects": [],
+        "range": "<=2.7.1",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "@opentelemetry/otlp-exporter-base": {
+        "name": "@opentelemetry/otlp-exporter-base",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          "@opentelemetry/core",
+          "@opentelemetry/otlp-transformer"
+        ],
+        "effects": [
+          "@opentelemetry/exporter-trace-otlp-http",
+          "@opentelemetry/exporter-trace-otlp-proto"
+        ],
+        "range": "<=0.218.0",
+        "nodes": [
+          "",
+          "node_modules/@opentelemetry/otlp-exporter-base"
+        ],
+        "fixAvailable": true
+      },
+      "@opentelemetry/otlp-grpc-exporter-base": {
+        "name": "@opentelemetry/otlp-grpc-exporter-base",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          "@opentelemetry/core",
+          "@opentelemetry/otlp-exporter-base",
+          "@opentelemetry/otlp-transformer"
+        ],
+        "effects": [
+          "@opentelemetry/exporter-trace-otlp-grpc"
+        ],
+        "range": "<=0.218.0",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "@opentelemetry/otlp-transformer": {
+        "name": "@opentelemetry/otlp-transformer",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          "@opentelemetry/core",
+          "@opentelemetry/resources",
+          "@opentelemetry/sdk-logs",
+          "@opentelemetry/sdk-metrics",
+          "@opentelemetry/sdk-trace-base"
+        ],
+        "effects": [
+          "@opentelemetry/exporter-trace-otlp-grpc",
+          "@opentelemetry/exporter-trace-otlp-http",
+          "@opentelemetry/exporter-trace-otlp-proto",
+          "@opentelemetry/otlp-exporter-base",
+          "@opentelemetry/otlp-grpc-exporter-base"
+        ],
+        "range": "<=0.218.0",
+        "nodes": [
+          "",
+          "node_modules/@opentelemetry/otlp-transformer"
+        ],
+        "fixAvailable": true
+      },
+      "@opentelemetry/propagator-b3": {
+        "name": "@opentelemetry/propagator-b3",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          "@opentelemetry/core"
+        ],
+        "effects": [],
+        "range": "0.19.1-alpha.11 - 2.7.1",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "@opentelemetry/propagator-jaeger": {
+        "name": "@opentelemetry/propagator-jaeger",
+        "severity": "high",
+        "isDirect": false,
+        "via": [
+          "@opentelemetry/core",
+          {
+            "source": 1124011,
+            "name": "@opentelemetry/propagator-jaeger",
+            "dependency": "@opentelemetry/propagator-jaeger",
+            "title": "OpenTelemetry JavaScript: Denial of service in `JaegerPropagator` via unhandled exception on a malformed header",
+            "url": "https://github.com/advisories/GHSA-45rx-2jwx-cxfr",
+            "severity": "high",
+            "cwe": [
+              "CWE-248"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": "<2.9.0"
+          }
+        ],
+        "effects": [
+          "@opentelemetry/sdk-trace-node"
+        ],
+        "range": "<=2.8.0",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "@opentelemetry/resources": {
+        "name": "@opentelemetry/resources",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          "@opentelemetry/core"
+        ],
+        "effects": [
+          "@opentelemetry/exporter-zipkin"
+        ],
+        "range": "0.8.0 - 2.7.1",
+        "nodes": [
+          "",
+          "node_modules/@opentelemetry/resources"
+        ],
+        "fixAvailable": true
+      },
+      "@opentelemetry/sdk-logs": {
+        "name": "@opentelemetry/sdk-logs",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          "@opentelemetry/core",
+          "@opentelemetry/resources"
+        ],
+        "effects": [
+          "@opentelemetry/otlp-transformer",
+          "@opentelemetry/sdk-node"
+        ],
+        "range": "<=0.218.0",
+        "nodes": [
+          "",
+          "node_modules/@opentelemetry/sdk-logs"
+        ],
+        "fixAvailable": true
+      },
+      "@opentelemetry/sdk-metrics": {
+        "name": "@opentelemetry/sdk-metrics",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          "@opentelemetry/core",
+          "@opentelemetry/resources"
+        ],
+        "effects": [
+          "@opentelemetry/otlp-transformer",
+          "@opentelemetry/sdk-node"
+        ],
+        "range": "<=2.7.1",
+        "nodes": [
+          "",
+          "node_modules/@opentelemetry/sdk-metrics"
+        ],
+        "fixAvailable": true
+      },
+      "@opentelemetry/sdk-node": {
+        "name": "@opentelemetry/sdk-node",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          "@opentelemetry/core",
+          "@opentelemetry/exporter-trace-otlp-grpc",
+          "@opentelemetry/exporter-trace-otlp-http",
+          "@opentelemetry/exporter-trace-otlp-proto",
+          "@opentelemetry/exporter-zipkin",
+          "@opentelemetry/resources",
+          "@opentelemetry/sdk-logs",
+          "@opentelemetry/sdk-metrics",
+          "@opentelemetry/sdk-trace-base",
+          "@opentelemetry/sdk-trace-node"
+        ],
+        "effects": [],
+        "range": "<=0.218.0",
+        "nodes": [
+          "",
+          "node_modules/@opentelemetry/sdk-node"
+        ],
+        "fixAvailable": true
+      },
+      "@opentelemetry/sdk-trace-base": {
+        "name": "@opentelemetry/sdk-trace-base",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          "@opentelemetry/core",
+          "@opentelemetry/resources"
+        ],
+        "effects": [
+          "@opentelemetry/exporter-zipkin",
+          "@opentelemetry/sdk-node"
+        ],
+        "range": "<=2.7.1",
+        "nodes": [
+          "",
+          "node_modules/@opentelemetry/sdk-trace-base"
+        ],
+        "fixAvailable": true
+      },
+      "@opentelemetry/sdk-trace-node": {
+        "name": "@opentelemetry/sdk-trace-node",
+        "severity": "high",
+        "isDirect": false,
+        "via": [
+          "@opentelemetry/core",
+          "@opentelemetry/propagator-b3",
+          "@opentelemetry/propagator-jaeger",
+          "@opentelemetry/sdk-trace-base"
+        ],
+        "effects": [],
+        "range": "<=2.7.1",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "@protobufjs/utf8": {
+        "name": "@protobufjs/utf8",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1118933,
+            "name": "@protobufjs/utf8",
+            "dependency": "@protobufjs/utf8",
+            "title": "protobufjs has overlong UTF-8 decoding",
+            "url": "https://github.com/advisories/GHSA-q6x5-8v7m-xcrf",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-176"
+            ],
+            "cvss": {
+              "score": 5.3,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+            },
+            "range": "<=1.1.0"
+          }
+        ],
+        "effects": [],
+        "range": "<=1.1.0",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "ajv": {
+        "name": "ajv",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1113714,
+            "name": "ajv",
+            "dependency": "ajv",
+            "title": "ajv has ReDoS when using `$data` option",
+            "url": "https://github.com/advisories/GHSA-2g4f-4pwh-qvx6",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-400",
+              "CWE-1333"
+            ],
+            "cvss": {
+              "score": 0,
+              "vectorString": null
+            },
+            "range": "<6.14.0"
+          },
+          {
+            "source": 1113715,
+            "name": "ajv",
+            "dependency": "ajv",
+            "title": "ajv has ReDoS when using `$data` option",
+            "url": "https://github.com/advisories/GHSA-2g4f-4pwh-qvx6",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-400",
+              "CWE-1333"
+            ],
+            "cvss": {
+              "score": 0,
+              "vectorString": null
+            },
+            "range": ">=7.0.0-alpha.0 <8.18.0"
+          }
+        ],
+        "effects": [],
+        "range": "<6.14.0 || >=7.0.0-alpha.0 <8.18.0",
+        "nodes": [
+          "",
+          "",
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "body-parser": {
+        "name": "body-parser",
+        "severity": "high",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1110858,
+            "name": "body-parser",
+            "dependency": "body-parser",
+            "title": "body-parser is vulnerable to denial of service when url encoding is used",
+            "url": "https://github.com/advisories/GHSA-wqch-xfxh-vrr4",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-400"
+            ],
+            "cvss": {
+              "score": 5.3,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+            },
+            "range": ">=2.2.0 <2.2.1"
+          },
+          {
+            "source": 1123976,
+            "name": "body-parser",
+            "dependency": "body-parser",
+            "title": "body-parser vulnerable to denial of service when invalid limit value silently disables size enforcement",
+            "url": "https://github.com/advisories/GHSA-v422-hmwv-36x6",
+            "severity": "low",
+            "cwe": [
+              "CWE-770"
+            ],
+            "cvss": {
+              "score": 3.7,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L"
+            },
+            "range": ">=2.0.0 <2.3.0"
+          },
+          {
+            "source": 1123977,
+            "name": "body-parser",
+            "dependency": "body-parser",
+            "title": "body-parser vulnerable to denial of service when invalid limit value silently disables size enforcement",
+            "url": "https://github.com/advisories/GHSA-v422-hmwv-36x6",
+            "severity": "low",
+            "cwe": [
+              "CWE-770"
+            ],
+            "cvss": {
+              "score": 3.7,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L"
+            },
+            "range": "<1.20.6"
+          },
+          {
+            "source": 1243073,
+            "name": "body-parser",
+            "dependency": "body-parser",
+            "title": "body-parser vulnerable to Denial of Service via trailing bytes after a compressed request body",
+            "url": "https://github.com/advisories/GHSA-27r3-jxmh-p828",
+            "severity": "high",
+            "cwe": [
+              "CWE-248"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": "<1.20.9"
+          },
+          {
+            "source": 1243074,
+            "name": "body-parser",
+            "dependency": "body-parser",
+            "title": "body-parser vulnerable to Denial of Service via trailing bytes after a compressed request body",
+            "url": "https://github.com/advisories/GHSA-27r3-jxmh-p828",
+            "severity": "high",
+            "cwe": [
+              "CWE-248"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": ">=2.0.0 <2.4.0"
+          },
+          "qs"
+        ],
+        "effects": [
+          "express"
+        ],
+        "range": "<=1.20.8 || 2.0.0-beta.1 - 2.3.0",
+        "nodes": [
+          "",
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "brace-expansion": {
+        "name": "brace-expansion",
+        "severity": "high",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1115540,
+            "name": "brace-expansion",
+            "dependency": "brace-expansion",
+            "title": "brace-expansion: Zero-step sequence causes process hang and memory exhaustion",
+            "url": "https://github.com/advisories/GHSA-f886-m6hf-6m8v",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-400"
+            ],
+            "cvss": {
+              "score": 6.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+            },
+            "range": "<1.1.13"
+          },
+          {
+            "source": 1123897,
+            "name": "brace-expansion",
+            "dependency": "brace-expansion",
+            "title": "brace-expansion: DoS via exponential-time expansion of consecutive non-expanding {} groups",
+            "url": "https://github.com/advisories/GHSA-3jxr-9vmj-r5cp",
+            "severity": "high",
+            "cwe": [
+              "CWE-400",
+              "CWE-407"
+            ],
+            "cvss": {
+              "score": 5.3,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+            },
+            "range": "<1.1.16"
+          },
+          {
+            "source": 1130588,
+            "name": "brace-expansion",
+            "dependency": "brace-expansion",
+            "title": "brace-expansion: DoS via unbounded expansion length causing an out-of-memory process crash",
+            "url": "https://github.com/advisories/GHSA-mh99-v99m-4gvg",
+            "severity": "high",
+            "cwe": [
+              "CWE-400",
+              "CWE-770"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": "<1.1.17"
+          },
+          {
+            "source": 1130737,
+            "name": "brace-expansion",
+            "dependency": "brace-expansion",
+            "title": "brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation",
+            "url": "https://github.com/advisories/GHSA-rgw5-rvv9-x895",
+            "severity": "high",
+            "cwe": [
+              "CWE-400",
+              "CWE-770"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": "<1.1.18"
+          },
+          {
+            "source": 1240100,
+            "name": "brace-expansion",
+            "dependency": "brace-expansion",
+            "title": "brace-expansion: Quadratic-time expansion of the `{a},b}` rewrite causes CPU denial of service",
+            "url": "https://github.com/advisories/GHSA-q2hr-2g5m-vwhr",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-400",
+              "CWE-407"
+            ],
+            "cvss": {
+              "score": 5.3,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+            },
+            "range": "<1.1.21"
+          },
+          {
+            "source": 1240104,
+            "name": "brace-expansion",
+            "dependency": "brace-expansion",
+            "title": "brace-expansion: DoS via uncontrolled recursion on nested brace groups causing stack exhaustion",
+            "url": "https://github.com/advisories/GHSA-qhr7-859c-m2p7",
+            "severity": "high",
+            "cwe": [
+              "CWE-400",
+              "CWE-674"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": "<1.1.20"
+          },
+          {
+            "source": 1240108,
+            "name": "brace-expansion",
+            "dependency": "brace-expansion",
+            "title": "brace-expansion: DoS via uncontrolled recursion in parseCommaParts causing stack exhaustion",
+            "url": "https://github.com/advisories/GHSA-6j4f-fj2g-mc7p",
+            "severity": "high",
+            "cwe": [
+              "CWE-400",
+              "CWE-674"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": "<1.1.19"
+          }
+        ],
+        "effects": [],
+        "range": "<=1.1.20",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "express": {
+        "name": "express",
+        "severity": "high",
+        "isDirect": false,
+        "via": [
+          "body-parser",
+          "path-to-regexp",
+          "qs"
+        ],
+        "effects": [],
+        "range": "4.0.0-rc1 - 4.22.2 || 5.0.0-alpha.1 - 5.0.1",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "fast-uri": {
+        "name": "fast-uri",
+        "severity": "high",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1124064,
+            "name": "fast-uri",
+            "dependency": "fast-uri",
+            "title": "fast-uri vulnerable to host confusion via literal backslash authority delimiter",
+            "url": "https://github.com/advisories/GHSA-v2hh-gcrm-f6hx",
+            "severity": "high",
+            "cwe": [
+              "CWE-436"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+            },
+            "range": ">=3.0.0 <=3.1.3"
+          },
+          {
+            "source": 1130720,
+            "name": "fast-uri",
+            "dependency": "fast-uri",
+            "title": "fast-uri vulnerable to host confusion via backslash authority introducer",
+            "url": "https://github.com/advisories/GHSA-7p8r-x3mc-p8w7",
+            "severity": "high",
+            "cwe": [
+              "CWE-436"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+            },
+            "range": ">=3.0.0 <3.1.5"
+          },
+          {
+            "source": 1145559,
+            "name": "fast-uri",
+            "dependency": "fast-uri",
+            "title": "fast-uri vulnerable to path traversal via percent-encoded dot segments",
+            "url": "https://github.com/advisories/GHSA-q3j6-qgpj-74h6",
+            "severity": "high",
+            "cwe": [
+              "CWE-22"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+            },
+            "range": ">=3.0.0 <=3.1.0"
+          },
+          {
+            "source": 1153168,
+            "name": "fast-uri",
+            "dependency": "fast-uri",
+            "title": "fast-uri vulnerable to host confusion via percent-encoded authority delimiters",
+            "url": "https://github.com/advisories/GHSA-v39h-62p7-jpjc",
+            "severity": "high",
+            "cwe": [
+              "CWE-140",
+              "CWE-436"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+            },
+            "range": ">=3.0.0 <=3.1.1"
+          },
+          {
+            "source": 1158524,
+            "name": "fast-uri",
+            "dependency": "fast-uri",
+            "title": "fast-uri vulnerable to server-side request forgery via malformed IPv6 normalization",
+            "url": "https://github.com/advisories/GHSA-f65p-4m7j-42xc",
+            "severity": "high",
+            "cwe": [
+              "CWE-20",
+              "CWE-918"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+            },
+            "range": ">=3.0.0 <3.1.6"
+          },
+          {
+            "source": 1158530,
+            "name": "fast-uri",
+            "dependency": "fast-uri",
+            "title": "fast-uri vulnerable to host confusion via percent-encoded scheme normalization",
+            "url": "https://github.com/advisories/GHSA-jqff-g426-hqxp",
+            "severity": "high",
+            "cwe": [
+              "CWE-177"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+            },
+            "range": ">=3.0.0 <3.1.6"
+          },
+          {
+            "source": 1204921,
+            "name": "fast-uri",
+            "dependency": "fast-uri",
+            "title": "fast-uri vulnerable to host confusion via failed IDN canonicalization",
+            "url": "https://github.com/advisories/GHSA-4c8g-83qw-93j6",
+            "severity": "high",
+            "cwe": [
+              "CWE-436",
+              "CWE-551"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+            },
+            "range": ">=3.0.0 <3.1.3"
+          },
+          {
+            "source": 1239943,
+            "name": "fast-uri",
+            "dependency": "fast-uri",
+            "title": "fast-uri vulnerable to authority injection via an unvalidated port in serialize",
+            "url": "https://github.com/advisories/GHSA-qw65-cvwx-89v3",
+            "severity": "high",
+            "cwe": [
+              "CWE-116"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+            },
+            "range": ">=3.0.0 <3.1.7"
+          },
+          {
+            "source": 1240091,
+            "name": "fast-uri",
+            "dependency": "fast-uri",
+            "title": "fast-uri vulnerable to inconsistent host case normalization via percent-encoded octets",
+            "url": "https://github.com/advisories/GHSA-hrr3-gc8f-f4qj",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-178"
+            ],
+            "cvss": {
+              "score": 4.8,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N"
+            },
+            "range": ">=3.0.0 <3.1.8"
+          },
+          {
+            "source": 1243098,
+            "name": "fast-uri",
+            "dependency": "fast-uri",
+            "title": "fast-uri vulnerable to URI scheme spoofing via percent-encoded scheme decoding",
+            "url": "https://github.com/advisories/GHSA-w74x-v6f9-j3xg",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-172",
+              "CWE-180"
+            ],
+            "cvss": {
+              "score": 6.1,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+            },
+            "range": ">=3.0.0 <3.1.9"
+          },
+          {
+            "source": 1243101,
+            "name": "fast-uri",
+            "dependency": "fast-uri",
+            "title": "fast-uri vulnerable to improper path equivalence in relative reference normalization",
+            "url": "https://github.com/advisories/GHSA-xhq7-xmqj-769h",
+            "severity": "low",
+            "cwe": [
+              "CWE-41"
+            ],
+            "cvss": {
+              "score": 3.7,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+            },
+            "range": ">=3.0.0 <3.1.9"
+          },
+          {
+            "source": 1243107,
+            "name": "fast-uri",
+            "dependency": "fast-uri",
+            "title": "fast-uri vulnerable to scheme injection via an unescaped first-segment colon in suffix references",
+            "url": "https://github.com/advisories/GHSA-333x-w4r6-6crp",
+            "severity": "low",
+            "cwe": [
+              "CWE-41",
+              "CWE-116"
+            ],
+            "cvss": {
+              "score": 3.7,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+            },
+            "range": ">=3.0.0 <3.1.9"
+          }
+        ],
+        "effects": [],
+        "range": "3.0.0 - 3.1.8",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "flatted": {
+        "name": "flatted",
+        "severity": "high",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1114526,
+            "name": "flatted",
+            "dependency": "flatted",
+            "title": "flatted vulnerable to unbounded recursion DoS in parse() revive phase",
+            "url": "https://github.com/advisories/GHSA-25h7-pfq9-p65f",
+            "severity": "high",
+            "cwe": [
+              "CWE-674"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": "<3.4.0"
+          },
+          {
+            "source": 1241196,
+            "name": "flatted",
+            "dependency": "flatted",
+            "title": "Prototype Pollution via parse() in NodeJS flatted",
+            "url": "https://github.com/advisories/GHSA-rf6f-7fwh-wjgh",
+            "severity": "high",
+            "cwe": [
+              "CWE-915",
+              "CWE-1321"
+            ],
+            "cvss": {
+              "score": 0,
+              "vectorString": null
+            },
+            "range": "<=3.4.1"
+          }
+        ],
+        "effects": [],
+        "range": "<=3.4.1",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "genkit": {
+        "name": "genkit",
+        "severity": "moderate",
+        "isDirect": true,
+        "via": [
+          "@genkit-ai/ai",
+          "@genkit-ai/core",
+          "uuid"
+        ],
+        "effects": [],
+        "range": "<=0.5.0-rc.12 || 0.6.0-dev.2 - 1.0.0-rc.19 || >=1.0.4",
+        "nodes": [
+          "",
+          "node_modules/genkit"
+        ],
+        "fixAvailable": {
+          "name": "genkit",
+          "version": "0.5.17",
+          "isSemVerMajor": true
+        }
+      },
+      "handlebars": {
+        "name": "handlebars",
+        "severity": "critical",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1115538,
+            "name": "handlebars",
+            "dependency": "handlebars",
+            "title": "Handlebars.js has JavaScript Injection via AST Type Confusion by tampering @partial-block",
+            "url": "https://github.com/advisories/GHSA-3mfm-83xf-c92r",
+            "severity": "high",
+            "cwe": [
+              "CWE-94",
+              "CWE-843"
+            ],
+            "cvss": {
+              "score": 8.1,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+            },
+            "range": ">=4.0.0 <=4.7.8"
+          },
+          {
+            "source": 1115539,
+            "name": "handlebars",
+            "dependency": "handlebars",
+            "title": "Handlebars.js has JavaScript Injection via AST Type Confusion",
+            "url": "https://github.com/advisories/GHSA-2w6w-674q-4c4q",
+            "severity": "critical",
+            "cwe": [
+              "CWE-94",
+              "CWE-843"
+            ],
+            "cvss": {
+              "score": 9.8,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+            },
+            "range": ">=4.0.0 <=4.7.8"
+          },
+          {
+            "source": 1115544,
+            "name": "handlebars",
+            "dependency": "handlebars",
+            "title": "Handlebars.js has Prototype Pollution Leading to XSS through Partial Template Injection",
+            "url": "https://github.com/advisories/GHSA-2qvq-rjwj-gvw9",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-79",
+              "CWE-1321"
+            ],
+            "cvss": {
+              "score": 4.7,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N"
+            },
+            "range": ">=4.0.0 <4.7.9"
+          },
+          {
+            "source": 1115588,
+            "name": "handlebars",
+            "dependency": "handlebars",
+            "title": "Handlebars.js has a Prototype Method Access Control Gap via Missing __lookupSetter__ Blocklist Entry",
+            "url": "https://github.com/advisories/GHSA-7rx3-28cr-v5wh",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-1321"
+            ],
+            "cvss": {
+              "score": 4.8,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N"
+            },
+            "range": ">=4.6.0 <=4.7.8"
+          },
+          {
+            "source": 1115589,
+            "name": "handlebars",
+            "dependency": "handlebars",
+            "title": "Handlebars.js has a Property Access Validation Bypass in container.lookup",
+            "url": "https://github.com/advisories/GHSA-442j-39wm-28r2",
+            "severity": "low",
+            "cwe": [
+              "CWE-367"
+            ],
+            "cvss": {
+              "score": 3.7,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+            },
+            "range": ">=4.0.0 <=4.7.8"
+          },
+          {
+            "source": 1115693,
+            "name": "handlebars",
+            "dependency": "handlebars",
+            "title": "Handlebars.js has JavaScript Injection via AST Type Confusion when passing an object as dynamic partial",
+            "url": "https://github.com/advisories/GHSA-xhpv-hc6g-r9c6",
+            "severity": "high",
+            "cwe": [
+              "CWE-94",
+              "CWE-843"
+            ],
+            "cvss": {
+              "score": 8.1,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+            },
+            "range": ">=4.0.0 <=4.7.8"
+          },
+          {
+            "source": 1115694,
+            "name": "handlebars",
+            "dependency": "handlebars",
+            "title": "Handlebars.js has Denial of Service via Malformed Decorator Syntax in Template Compilation",
+            "url": "https://github.com/advisories/GHSA-9cx6-37pm-9jff",
+            "severity": "high",
+            "cwe": [
+              "CWE-754"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": ">=4.0.0 <=4.7.8"
+          },
+          {
+            "source": 1117465,
+            "name": "handlebars",
+            "dependency": "handlebars",
+            "title": "Handlebars.js has JavaScript Injection in CLI Precompiler via Unescaped Names and Options",
+            "url": "https://github.com/advisories/GHSA-xjpj-3mr7-gcpf",
+            "severity": "high",
+            "cwe": [
+              "CWE-79",
+              "CWE-94",
+              "CWE-116"
+            ],
+            "cvss": {
+              "score": 8.2,
+              "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H"
+            },
+            "range": ">=4.0.0 <=4.7.8"
+          },
+          {
+            "source": 1241676,
+            "name": "handlebars",
+            "dependency": "handlebars",
+            "title": "Handlebars: JavaScript Injection via Unsafe Inline Embedding of Precompiled Templates",
+            "url": "https://github.com/advisories/GHSA-xw65-4hp5-5hc7",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-116"
+            ],
+            "cvss": {
+              "score": 4.7,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N"
+            },
+            "range": ">=4.0.0 <=4.7.9"
+          },
+          {
+            "source": 1241677,
+            "name": "handlebars",
+            "dependency": "handlebars",
+            "title": "Handlebars: JavaScript Injection via AST Type Confusion in compile (bypass of CVE-2026-33937)",
+            "url": "https://github.com/advisories/GHSA-8r5x-fm3f-whwj",
+            "severity": "critical",
+            "cwe": [
+              "CWE-94",
+              "CWE-843"
+            ],
+            "cvss": {
+              "score": 9.8,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+            },
+            "range": ">=4.0.0 <=4.7.9"
+          },
+          {
+            "source": 1242173,
+            "name": "handlebars",
+            "dependency": "handlebars",
+            "title": "Handlebars: JavaScript Injection via Own Property Check Bypass",
+            "url": "https://github.com/advisories/GHSA-p8wg-vrv2-v86f",
+            "severity": "critical",
+            "cwe": [
+              "CWE-184",
+              "CWE-1289"
+            ],
+            "cvss": {
+              "score": 0,
+              "vectorString": null
+            },
+            "range": ">=3.0.0 <=4.7.9"
+          }
+        ],
+        "effects": [],
+        "range": "3.0.0 - 4.7.9",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "js-yaml": {
+        "name": "js-yaml",
+        "severity": "high",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1112715,
+            "name": "js-yaml",
+            "dependency": "js-yaml",
+            "title": "js-yaml has prototype pollution in merge (<<)",
+            "url": "https://github.com/advisories/GHSA-mh29-5h37-fv8m",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-1321"
+            ],
+            "cvss": {
+              "score": 5.3,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+            },
+            "range": ">=4.0.0 <4.1.1"
+          },
+          {
+            "source": 1121860,
+            "name": "js-yaml",
+            "dependency": "js-yaml",
+            "title": "JS-YAML: Quadratic-complexity DoS in merge key handling via repeated aliases",
+            "url": "https://github.com/advisories/GHSA-h67p-54hq-rp68",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-407"
+            ],
+            "cvss": {
+              "score": 5.3,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+            },
+            "range": ">=4.0.0 <=4.1.1"
+          },
+          {
+            "source": 1123911,
+            "name": "js-yaml",
+            "dependency": "js-yaml",
+            "title": "js-yaml: YAML merge-key chains can force quadratic CPU consumption",
+            "url": "https://github.com/advisories/GHSA-52cp-r559-cp3m",
+            "severity": "high",
+            "cwe": [
+              "CWE-400",
+              "CWE-407"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": ">=4.0.0 <4.3.0"
+          },
+          {
+            "source": 1138115,
+            "name": "js-yaml",
+            "dependency": "js-yaml",
+            "title": "JS-YAML: Quadratic CPU consumption in !!omap resolution (3.x and 4.x) — CVE-2026-59870 fix not backported",
+            "url": "https://github.com/advisories/GHSA-5p4m-2wfm-xmqj",
+            "severity": "high",
+            "cwe": [
+              "CWE-407"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": ">=4.0.0 <4.3.1"
+          },
+          {
+            "source": 1193727,
+            "name": "js-yaml",
+            "dependency": "js-yaml",
+            "title": "js-yaml: maxTotalMergeKeys does not limit CPU use for empty merge sources",
+            "url": "https://github.com/advisories/GHSA-2883-xcg3-v3hh",
+            "severity": "high",
+            "cwe": [
+              "CWE-400",
+              "CWE-407"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": ">=4.0.0 <4.3.2"
+          }
+        ],
+        "effects": [],
+        "range": "4.0.0 - 4.3.1",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "minimatch": {
+        "name": "minimatch",
+        "severity": "high",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1113459,
+            "name": "minimatch",
+            "dependency": "minimatch",
+            "title": "minimatch has a ReDoS via repeated wildcards with non-matching literal in pattern",
+            "url": "https://github.com/advisories/GHSA-3ppc-4f35-3m26",
+            "severity": "high",
+            "cwe": [
+              "CWE-1333"
+            ],
+            "cvss": {
+              "score": 0,
+              "vectorString": null
+            },
+            "range": "<3.1.3"
+          },
+          {
+            "source": 1113538,
+            "name": "minimatch",
+            "dependency": "minimatch",
+            "title": "minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adjacent GLOBSTAR segments",
+            "url": "https://github.com/advisories/GHSA-7r86-cg39-jmmj",
+            "severity": "high",
+            "cwe": [
+              "CWE-407"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": "<3.1.3"
+          },
+          {
+            "source": 1113546,
+            "name": "minimatch",
+            "dependency": "minimatch",
+            "title": "minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions",
+            "url": "https://github.com/advisories/GHSA-23c5-xmqv-rm74",
+            "severity": "high",
+            "cwe": [
+              "CWE-1333"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": "<3.1.4"
+          }
+        ],
+        "effects": [],
+        "range": "<=3.1.3",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "path-to-regexp": {
+        "name": "path-to-regexp",
+        "severity": "high",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1115527,
+            "name": "path-to-regexp",
+            "dependency": "path-to-regexp",
+            "title": "path-to-regexp vulnerable to Regular Expression Denial of Service via multiple route parameters",
+            "url": "https://github.com/advisories/GHSA-37ch-88jc-xwx2",
+            "severity": "high",
+            "cwe": [
+              "CWE-1333"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": "<0.1.13"
+          },
+          {
+            "source": 1115573,
+            "name": "path-to-regexp",
+            "dependency": "path-to-regexp",
+            "title": "path-to-regexp vulnerable to Denial of Service via sequential optional groups",
+            "url": "https://github.com/advisories/GHSA-j3q9-mxjg-w52f",
+            "severity": "high",
+            "cwe": [
+              "CWE-400",
+              "CWE-1333"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": ">=8.0.0 <8.4.0"
+          },
+          {
+            "source": 1115582,
+            "name": "path-to-regexp",
+            "dependency": "path-to-regexp",
+            "title": "path-to-regexp vulnerable to Regular Expression Denial of Service via multiple wildcards",
+            "url": "https://github.com/advisories/GHSA-27v5-c462-wpq7",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-1333"
+            ],
+            "cvss": {
+              "score": 5.9,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": ">=8.0.0 <8.4.0"
+          }
+        ],
+        "effects": [
+          "express"
+        ],
+        "range": "<=0.1.12 || 8.0.0 - 8.3.0",
+        "nodes": [
+          "",
+          "node_modules/path-to-regexp"
+        ],
+        "fixAvailable": true
+      },
+      "picomatch": {
+        "name": "picomatch",
+        "severity": "high",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1115549,
+            "name": "picomatch",
+            "dependency": "picomatch",
+            "title": "Picomatch: Method Injection in POSIX Character Classes causes incorrect Glob Matching",
+            "url": "https://github.com/advisories/GHSA-3v7f-55p6-f55p",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-1321"
+            ],
+            "cvss": {
+              "score": 5.3,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+            },
+            "range": "<2.3.2"
+          },
+          {
+            "source": 1115552,
+            "name": "picomatch",
+            "dependency": "picomatch",
+            "title": "Picomatch has a ReDoS vulnerability via extglob quantifiers",
+            "url": "https://github.com/advisories/GHSA-c2c7-rcm5-vvqj",
+            "severity": "high",
+            "cwe": [
+              "CWE-1333"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": "<2.3.2"
+          }
+        ],
+        "effects": [],
+        "range": "<=2.3.1",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "protobufjs": {
+        "name": "protobufjs",
+        "severity": "critical",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1117571,
+            "name": "protobufjs",
+            "dependency": "protobufjs",
+            "title": "Arbitrary code execution in protobufjs",
+            "url": "https://github.com/advisories/GHSA-xq3m-2v4x-88gg",
+            "severity": "critical",
+            "cwe": [
+              "CWE-94"
+            ],
+            "cvss": {
+              "score": 9.8,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+            },
+            "range": "<7.5.5"
+          },
+          {
+            "source": 1118641,
+            "name": "protobufjs",
+            "dependency": "protobufjs",
+            "title": "protobuf.js: Code injection through bytes field defaults in generated toObject code",
+            "url": "https://github.com/advisories/GHSA-66ff-xgx4-vchm",
+            "severity": "high",
+            "cwe": [
+              "CWE-94"
+            ],
+            "cvss": {
+              "score": 0,
+              "vectorString": null
+            },
+            "range": "<=7.5.5"
+          },
+          {
+            "source": 1118924,
+            "name": "protobufjs",
+            "dependency": "protobufjs",
+            "title": "protobuf.js: Denial of service from crafted field names in generated code",
+            "url": "https://github.com/advisories/GHSA-2pr8-phx7-x9h3",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-20"
+            ],
+            "cvss": {
+              "score": 5.3,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+            },
+            "range": "<=7.5.5"
+          },
+          {
+            "source": 1118926,
+            "name": "protobufjs",
+            "dependency": "protobufjs",
+            "title": "protobuf.js: Prototype injection in generated message constructors",
+            "url": "https://github.com/advisories/GHSA-fx83-v9x8-x52w",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-1321"
+            ],
+            "cvss": {
+              "score": 5.3,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+            },
+            "range": "<=7.5.5"
+          },
+          {
+            "source": 1118928,
+            "name": "protobufjs",
+            "dependency": "protobufjs",
+            "title": "protobuf.js: Code generation gadget after prototype pollution",
+            "url": "https://github.com/advisories/GHSA-75px-5xx7-5xc7",
+            "severity": "high",
+            "cwe": [
+              "CWE-94",
+              "CWE-1321"
+            ],
+            "cvss": {
+              "score": 8.1,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+            },
+            "range": "<=7.5.5"
+          },
+          {
+            "source": 1118930,
+            "name": "protobufjs",
+            "dependency": "protobufjs",
+            "title": "protobuf.js: Process-wide denial of service through unsafe option paths",
+            "url": "https://github.com/advisories/GHSA-jvwf-75h9-cwgg",
+            "severity": "high",
+            "cwe": [
+              "CWE-1321"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": "<=7.5.5"
+          },
+          {
+            "source": 1118932,
+            "name": "protobufjs",
+            "dependency": "protobufjs",
+            "title": "protobuf.js: Denial of service through unbounded protobuf recursion",
+            "url": "https://github.com/advisories/GHSA-685m-2w69-288q",
+            "severity": "high",
+            "cwe": [
+              "CWE-674"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": "<=7.5.5"
+          },
+          {
+            "source": 1118935,
+            "name": "protobufjs",
+            "dependency": "protobufjs",
+            "title": "protobufjs has overlong UTF-8 decoding",
+            "url": "https://github.com/advisories/GHSA-q6x5-8v7m-xcrf",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-176"
+            ],
+            "cvss": {
+              "score": 5.3,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+            },
+            "range": "<=7.5.5"
+          },
+          {
+            "source": 1119378,
+            "name": "protobufjs",
+            "dependency": "protobufjs",
+            "title": "protobufjs: Denial of Service via unbounded recursive JSON descriptor expansion",
+            "url": "https://github.com/advisories/GHSA-jggg-4jg4-v7c6",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-674"
+            ],
+            "cvss": {
+              "score": 5.3,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+            },
+            "range": "<=7.5.7"
+          },
+          {
+            "source": 1123488,
+            "name": "protobufjs",
+            "dependency": "protobufjs",
+            "title": "protobufjs: Denial of service through unbounded Any expansion during JSON conversion",
+            "url": "https://github.com/advisories/GHSA-wcpc-wj8m-hjx6",
+            "severity": "high",
+            "cwe": [
+              "CWE-674"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": "<=7.6.0"
+          },
+          {
+            "source": 1123492,
+            "name": "protobufjs",
+            "dependency": "protobufjs",
+            "title": "protobufjs : Schema-derived names can shadow runtime-significant properties",
+            "url": "https://github.com/advisories/GHSA-f38q-mgvj-vph7",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-674",
+              "CWE-754"
+            ],
+            "cvss": {
+              "score": 5.3,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+            },
+            "range": "<=7.6.2"
+          },
+          {
+            "source": 1123964,
+            "name": "protobufjs",
+            "dependency": "protobufjs",
+            "title": "protobufjs: Denial of Service via infinite loop in .proto option parsing",
+            "url": "https://github.com/advisories/GHSA-j3f2-48v5-ccww",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-835"
+            ],
+            "cvss": {
+              "score": 5.3,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+            },
+            "range": ">=7.5.0 <=7.6.4"
+          }
+        ],
+        "effects": [],
+        "range": "<=7.6.4",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "proxy-addr": {
+        "name": "proxy-addr",
+        "severity": "critical",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1241210,
+            "name": "proxy-addr",
+            "dependency": "proxy-addr",
+            "title": "proxy-addr vulnerable to IP spoofing via IPv4-mapped IPv6 trust subnet",
+            "url": "https://github.com/advisories/GHSA-jqcg-44mw-7w3h",
+            "severity": "critical",
+            "cwe": [
+              "CWE-290",
+              "CWE-348",
+              "CWE-697"
+            ],
+            "cvss": {
+              "score": 9.1,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+            },
+            "range": ">=1.1.0 <2.0.8"
+          }
+        ],
+        "effects": [],
+        "range": "1.1.0 - 2.0.7",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "qs": {
+        "name": "qs",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1113161,
+            "name": "qs",
+            "dependency": "qs",
+            "title": "qs's arrayLimit bypass in comma parsing allows denial of service",
+            "url": "https://github.com/advisories/GHSA-w7fw-mjwx-w883",
+            "severity": "low",
+            "cwe": [
+              "CWE-20"
+            ],
+            "cvss": {
+              "score": 3.7,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L"
+            },
+            "range": ">=6.7.0 <=6.14.1"
+          },
+          {
+            "source": 1113719,
+            "name": "qs",
+            "dependency": "qs",
+            "title": "qs's arrayLimit bypass in its bracket notation allows DoS via memory exhaustion",
+            "url": "https://github.com/advisories/GHSA-6rw7-vpxm-498p",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-20"
+            ],
+            "cvss": {
+              "score": 3.7,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L"
+            },
+            "range": "<6.14.1"
+          },
+          {
+            "source": 1119502,
+            "name": "qs",
+            "dependency": "qs",
+            "title": "qs has a remotely triggerable DoS: qs.stringify crashes with TypeError on null/undefined entries in comma-format arrays when encodeValuesOnly is set",
+            "url": "https://github.com/advisories/GHSA-q8mj-m7cp-5q26",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-476"
+            ],
+            "cvss": {
+              "score": 5.3,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+            },
+            "range": ">=6.11.1 <=6.15.1"
+          },
+          {
+            "source": 1158507,
+            "name": "qs",
+            "dependency": "qs",
+            "title": "qs: Denial of Service via Attacker Controlled isBuffer",
+            "url": "https://github.com/advisories/GHSA-4mjr-xmp4-gh2g",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-248",
+              "CWE-703"
+            ],
+            "cvss": {
+              "score": 5.3,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+            },
+            "range": ">=2.2.5 <6.16.0"
+          },
+          {
+            "source": 1243452,
+            "name": "qs",
+            "dependency": "qs",
+            "title": "qs : qs.stringify with arrayFormat 'comma' throws an uncaught TypeError on array elements carrying a non-callable own toString (DoS)",
+            "url": "https://github.com/advisories/GHSA-6pq8-jhm2-2vcw",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-248",
+              "CWE-704"
+            ],
+            "cvss": {
+              "score": 5.3,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+            },
+            "range": ">=6.7.0 <=6.16.0"
+          }
+        ],
+        "effects": [
+          "body-parser",
+          "express"
+        ],
+        "range": "<=6.16.0",
+        "nodes": [
+          "",
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "uuid": {
+        "name": "uuid",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1119441,
+            "name": "uuid",
+            "dependency": "uuid",
+            "title": "uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided",
+            "url": "https://github.com/advisories/GHSA-w5hq-g745-h8pq",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-787",
+              "CWE-1285"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+            },
+            "range": "<11.1.1"
+          }
+        ],
+        "effects": [
+          "@genkit-ai/ai",
+          "genkit"
+        ],
+        "range": "<11.1.1",
+        "nodes": [
+          "",
+          "node_modules/google-gax/node_modules/uuid",
+          "node_modules/googleapis-common/node_modules/uuid",
+          "node_modules/uuid"
+        ],
+        "fixAvailable": {
+          "name": "genkit",
+          "version": "0.5.17",
+          "isSemVerMajor": true
+        }
+      },
+      "yaml": {
+        "name": "yaml",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1115556,
+            "name": "yaml",
+            "dependency": "yaml",
+            "title": "yaml is vulnerable to Stack Overflow via deeply nested YAML collections",
+            "url": "https://github.com/advisories/GHSA-48c2-rrv3-qjmp",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-674"
+            ],
+            "cvss": {
+              "score": 4.3,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L"
+            },
+            "range": ">=2.0.0 <2.8.3"
+          }
+        ],
+        "effects": [],
+        "range": "2.0.0 - 2.8.2",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "zod": {
+        "name": "zod",
+        "severity": "high",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1243066,
+            "name": "zod",
+            "dependency": "zod",
+            "title": "Zod can exhaust memory while validating oversized constrained collections",
+            "url": "https://github.com/advisories/GHSA-mrhx-c7xc-m3w5",
+            "severity": "high",
+            "cwe": [
+              "CWE-770"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": "<4.6.6"
+          }
+        ],
+        "effects": [
+          "zod-to-json-schema"
+        ],
+        "range": "<4.6.6",
+        "nodes": [
+          "",
+          "node_modules/zod"
+        ],
+        "fixAvailable": true
+      },
+      "zod-to-json-schema": {
+        "name": "zod-to-json-schema",
+        "severity": "high",
+        "isDirect": false,
+        "via": [
+          "zod"
+        ],
+        "effects": [],
+        "range": "<=3.24.6",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      }
+    },
+    "metadata": {
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 21,
+        "high": 15,
+        "critical": 3,
+        "total": 39
+      },
+      "dependencies": {
+        "prod": 223,
+        "dev": 203,
+        "optional": 309,
+        "peer": 72,
+        "peerOptional": 0,
+        "total": 733
+      }
+    }
+  }
+}
+

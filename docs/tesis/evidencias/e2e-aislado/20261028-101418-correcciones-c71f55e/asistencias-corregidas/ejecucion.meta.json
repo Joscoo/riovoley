@@ -1,0 +1,27 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+    "test",
+    "tests/e2e/admin.modules-navigation.spec.js",
+    "tests/e2e/admin.provisioning-notifications.smoke.spec.js",
+    "tests/e2e/asistencias.guided.review.spec.js",
+    "tests/e2e/filters-sorting.phase2-lists.spec.js",
+    "tests/e2e/filters-sorting.physical-tests.spec.js",
+    "tests/e2e/filters-sorting.tables.spec.js",
+    "tests/e2e/filters-sorting.user-management.spec.js",
+    "tests/e2e/responsive.smoke.spec.js",
+    "tests/e2e/roles.modules-navigation.spec.js",
+    "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "--config=playwright.local.config.cjs",
+    "--grep-invert=public route responsive guard",
+    "--grep=guided review",
+    "--workers=3"
+  ],
+  "start": "2026-10-28T15:21:55.657Z",
+  "end": "2026-10-28T15:22:14.537Z",
+  "durationSeconds": 18.88,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

@@ -1,0 +1,256 @@
+{
+  "config": {
+    "configFile": "D:\\Riovoley\\riovoley\\playwright.local.config.cjs",
+    "rootDir": "D:/Riovoley/riovoley/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/antes-mutacion/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-390",
+        "name": "mobile-390",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/antes-mutacion/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-430",
+        "name": "mobile-430",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/antes-mutacion/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-480",
+        "name": "mobile-480",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/antes-mutacion/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "tablet-768",
+        "name": "tablet-768",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/antes-mutacion/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "tablet-1024",
+        "name": "tablet-1024",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/antes-mutacion/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-1440",
+        "name": "desktop-1440",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/antes-mutacion/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-1920",
+        "name": "desktop-1920",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\antes-mutacion\\resultados.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\antes-mutacion\\html",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.59.1",
+    "workers": 1,
+    "webServer": {
+      "command": "node scripts/e2e/local/server.cjs",
+      "url": "http://127.0.0.1:6100",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "admin.happy-path-controlled.spec.js",
+      "file": "admin.happy-path-controlled.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16311,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n\n    at openSection (D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:40:31)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:65:3",
+                    "location": {
+                      "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js",
+                      "column": 31,
+                      "line": 40
+                    },
+                    "snippet": "  38 |   await openSidebarIfNeeded(page);\n  39 |   const sectionButton = page.getByRole('button', { name: sectionNameRegex }).first();\n> 40 |   await expect(sectionButton).toBeVisible({ timeout: 15000 });\n     |                               ^\n  41 |   await sectionButton.click();\n  42 | }\n  43 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js",
+                        "column": 31,
+                        "line": 40
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n\n\n  38 |   await openSidebarIfNeeded(page);\n  39 |   const sectionButton = page.getByRole('button', { name: sectionNameRegex }).first();\n> 40 |   await expect(sectionButton).toBeVisible({ timeout: 15000 });\n     |                               ^\n  41 |   await sectionButton.click();\n  42 | }\n  43 |\n    at openSection (D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:40:31)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:65:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:15:13.991Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\antes-mutacion\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\antes-mutacion\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js",
+                    "column": 31,
+                    "line": 40
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-9512e358c77c26a6a60b",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 44,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-28T15:15:12.946Z",
+    "duration": 17807.692,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

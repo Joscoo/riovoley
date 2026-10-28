@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-10-28T20:28:09.379Z",
+  "installedOn": "emulator-5580",
+  "artifactSha256": "20fc358ecd1d27c87d887898617b5595e66f03d20a83f3b8ee3c2e8ea374b704",
+  "instrumentation": {
+    "platform": "Emulador local API36 x86_64/WHPX",
+    "commandExitCode": 0,
+    "executed": 1,
+    "failed": 0,
+    "passed": 1,
+    "state": "APROBADO",
+    "scope": "Prueba instrumentada de plantilla: contexto/applicationId; no cubre todos los flujos de negocio Android."
+  },
+  "webview": {
+    "state": "APROBADO",
+    "url": "https://localhost/",
+    "viewport": {
+      "width": 320,
+      "height": 592
+    },
+    "scope": "APK instalado en emulador real; MainActivity y React visibles mediante Playwright AndroidWebView, no navegador de escritorio con viewport móvil.",
+    "artifactSha256": "20fc358ecd1d27c87d887898617b5595e66f03d20a83f3b8ee3c2e8ea374b704",
+    "access": {
+      "executed": 3,
+      "passed": 3,
+      "failed": 0
+    }
+  },
+  "scope": "El campo installed:false del artefacto describe su exportación anterior a la instalación; esta evidencia registra la ejecución posterior."
+}

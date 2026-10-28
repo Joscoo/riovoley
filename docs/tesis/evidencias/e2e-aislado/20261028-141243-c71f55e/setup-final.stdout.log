@@ -1,0 +1,12 @@
+{"label":"herramientas/docker","exitCode":0,"durationSeconds":1.001,"stderrTail":""}
+{"label":"red/consultar","exitCode":0,"durationSeconds":0.096,"stderrTail":""}
+{"label":"stack/start","exitCode":0,"durationSeconds":2.55,"stderrTail":"WARN: config section [inbucket] is deprecated and will be removed in v3, use [local_smtp] instead.\nStopped services: [supabase_imgproxy_riovoley-e2e-local supabase_pg_meta_riovoley-e2e-local supabase_studio_riovoley-e2e-local supabase_edge_runtime_riovoley-e2e-local supabase_analytics_riovoley-e2e-local supabase_vector_riovoley-e2e-local supabase_pooler_riovoley-e2e-local]\n"}
+Puertos del stack E2E limitados a 127.0.0.1
+{"label":"stack/status","exitCode":0,"durationSeconds":2.094,"stderrTail":"WARN: config section [inbucket] is deprecated and will be removed in v3, use [local_smtp] instead.\nStopped services: [supabase_imgproxy_riovoley-e2e-local supabase_pg_meta_riovoley-e2e-local supabase_studio_riovoley-e2e-local supabase_analytics_riovoley-e2e-local supabase_vector_riovoley-e2e-local supabase_pooler_riovoley-e2e-local]\nWARN: INBUCKET_URL is deprecated and will be removed in v3, use MAILPIT_URL instead.\n"}
+{"label":"schema/existe","exitCode":0,"durationSeconds":0.169,"stderrTail":""}
+{"label":"seed-catalogos-1793198983326","exitCode":0,"durationSeconds":0.179,"stderrTail":""}
+{"label":"seed-negocio-1793198983506","exitCode":0,"durationSeconds":0.209,"stderrTail":""}
+Seed local listo: 10 cuentas ficticias y 8 estudiantes
+{"label":"validacion/roles","exitCode":0,"durationSeconds":0.867,"stderrTail":""}
+{"label":"validacion/idempotencia","exitCode":0,"durationSeconds":1.232,"stderrTail":""}
+

@@ -1,0 +1,686 @@
+  console.error
+    An update to StudentPanel inside a test was not wrapped in act(...).
+    
+    When testing, code that causes React state updates should be wrapped into act(...):
+    
+    act(() => {
+      /* fire events that update state */
+    });
+    /* assert on the output */
+    
+    This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      79 |       const panelData = await studentDashboardService.loadStudentPanelData(nextUserId);
+      80 |       setStudentData(panelData.studentData);
+    > 81 |       setPaymentStatus(panelData.paymentStatus);
+         |       ^
+      82 |       setAttendanceStats(panelData.attendanceStats);
+      83 |       setPhysicalTests(panelData.physicalTests || []);
+      84 |       setGamification(panelData.gamification || null);
+
+      at node_modules/react-dom/cjs/react-dom-client.development.js:18758:19
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:18757:9)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:16409:11)
+      at dispatchSetStateInternal (node_modules/react-dom/cjs/react-dom-client.development.js:9170:13)
+      at setPaymentStatus (node_modules/react-dom/cjs/react-dom-client.development.js:9127:7)
+      at src/features/student-dashboard/presentation/components/StudentPanel.js:81:7
+
+  console.error
+    An update to StudentPanel inside a test was not wrapped in act(...).
+    
+    When testing, code that causes React state updates should be wrapped into act(...):
+    
+    act(() => {
+      /* fire events that update state */
+    });
+    /* assert on the output */
+    
+    This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      80 |       setStudentData(panelData.studentData);
+      81 |       setPaymentStatus(panelData.paymentStatus);
+    > 82 |       setAttendanceStats(panelData.attendanceStats);
+         |       ^
+      83 |       setPhysicalTests(panelData.physicalTests || []);
+      84 |       setGamification(panelData.gamification || null);
+      85 |     } catch (error) {
+
+      at node_modules/react-dom/cjs/react-dom-client.development.js:18758:19
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:18757:9)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:16409:11)
+      at dispatchSetStateInternal (node_modules/react-dom/cjs/react-dom-client.development.js:9170:13)
+      at setAttendanceStats (node_modules/react-dom/cjs/react-dom-client.development.js:9127:7)
+      at src/features/student-dashboard/presentation/components/StudentPanel.js:82:7
+
+  console.error
+    An update to StudentPanel inside a test was not wrapped in act(...).
+    
+    When testing, code that causes React state updates should be wrapped into act(...):
+    
+    act(() => {
+      /* fire events that update state */
+    });
+    /* assert on the output */
+    
+    This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      81 |       setPaymentStatus(panelData.paymentStatus);
+      82 |       setAttendanceStats(panelData.attendanceStats);
+    > 83 |       setPhysicalTests(panelData.physicalTests || []);
+         |       ^
+      84 |       setGamification(panelData.gamification || null);
+      85 |     } catch (error) {
+      86 |       console.error('Error cargando datos del estudiante:', error);
+
+      at node_modules/react-dom/cjs/react-dom-client.development.js:18758:19
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:18757:9)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:16409:11)
+      at dispatchSetStateInternal (node_modules/react-dom/cjs/react-dom-client.development.js:9170:13)
+      at setPhysicalTests (node_modules/react-dom/cjs/react-dom-client.development.js:9127:7)
+      at src/features/student-dashboard/presentation/components/StudentPanel.js:83:7
+
+  console.error
+    An update to StudentPanel inside a test was not wrapped in act(...).
+    
+    When testing, code that causes React state updates should be wrapped into act(...):
+    
+    act(() => {
+      /* fire events that update state */
+    });
+    /* assert on the output */
+    
+    This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      82 |       setAttendanceStats(panelData.attendanceStats);
+      83 |       setPhysicalTests(panelData.physicalTests || []);
+    > 84 |       setGamification(panelData.gamification || null);
+         |       ^
+      85 |     } catch (error) {
+      86 |       console.error('Error cargando datos del estudiante:', error);
+      87 |     } finally {
+
+      at node_modules/react-dom/cjs/react-dom-client.development.js:18758:19
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:18757:9)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:16409:11)
+      at dispatchSetStateInternal (node_modules/react-dom/cjs/react-dom-client.development.js:9170:13)
+      at setGamification (node_modules/react-dom/cjs/react-dom-client.development.js:9127:7)
+      at src/features/student-dashboard/presentation/components/StudentPanel.js:84:7
+
+  console.error
+    An update to StudentPanel inside a test was not wrapped in act(...).
+    
+    When testing, code that causes React state updates should be wrapped into act(...):
+    
+    act(() => {
+      /* fire events that update state */
+    });
+    /* assert on the output */
+    
+    This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      87 |     } finally {
+      88 |       if (!silent) {
+    > 89 |         setLoading(false);
+         |         ^
+      90 |       }
+      91 |     }
+      92 |   }, [user?.id]);
+
+      at node_modules/react-dom/cjs/react-dom-client.development.js:18758:19
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:18757:9)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:16409:11)
+      at dispatchSetStateInternal (node_modules/react-dom/cjs/react-dom-client.development.js:9170:13)
+      at setLoading (node_modules/react-dom/cjs/react-dom-client.development.js:9127:7)
+      at src/features/student-dashboard/presentation/components/StudentPanel.js:89:9
+
+  console.error
+    An update to StudentPanel inside a test was not wrapped in act(...).
+    
+    When testing, code that causes React state updates should be wrapped into act(...):
+    
+    act(() => {
+      /* fire events that update state */
+    });
+    /* assert on the output */
+    
+    This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      79 |       const panelData = await studentDashboardService.loadStudentPanelData(nextUserId);
+      80 |       setStudentData(panelData.studentData);
+    > 81 |       setPaymentStatus(panelData.paymentStatus);
+         |       ^
+      82 |       setAttendanceStats(panelData.attendanceStats);
+      83 |       setPhysicalTests(panelData.physicalTests || []);
+      84 |       setGamification(panelData.gamification || null);
+
+      at node_modules/react-dom/cjs/react-dom-client.development.js:18758:19
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:18757:9)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:16409:11)
+      at dispatchSetStateInternal (node_modules/react-dom/cjs/react-dom-client.development.js:9170:13)
+      at setPaymentStatus (node_modules/react-dom/cjs/react-dom-client.development.js:9127:7)
+      at src/features/student-dashboard/presentation/components/StudentPanel.js:81:7
+
+  console.error
+    An update to StudentPanel inside a test was not wrapped in act(...).
+    
+    When testing, code that causes React state updates should be wrapped into act(...):
+    
+    act(() => {
+      /* fire events that update state */
+    });
+    /* assert on the output */
+    
+    This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      80 |       setStudentData(panelData.studentData);
+      81 |       setPaymentStatus(panelData.paymentStatus);
+    > 82 |       setAttendanceStats(panelData.attendanceStats);
+         |       ^
+      83 |       setPhysicalTests(panelData.physicalTests || []);
+      84 |       setGamification(panelData.gamification || null);
+      85 |     } catch (error) {
+
+      at node_modules/react-dom/cjs/react-dom-client.development.js:18758:19
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:18757:9)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:16409:11)
+      at dispatchSetStateInternal (node_modules/react-dom/cjs/react-dom-client.development.js:9170:13)
+      at setAttendanceStats (node_modules/react-dom/cjs/react-dom-client.development.js:9127:7)
+      at src/features/student-dashboard/presentation/components/StudentPanel.js:82:7
+
+  console.error
+    An update to StudentPanel inside a test was not wrapped in act(...).
+    
+    When testing, code that causes React state updates should be wrapped into act(...):
+    
+    act(() => {
+      /* fire events that update state */
+    });
+    /* assert on the output */
+    
+    This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      81 |       setPaymentStatus(panelData.paymentStatus);
+      82 |       setAttendanceStats(panelData.attendanceStats);
+    > 83 |       setPhysicalTests(panelData.physicalTests || []);
+         |       ^
+      84 |       setGamification(panelData.gamification || null);
+      85 |     } catch (error) {
+      86 |       console.error('Error cargando datos del estudiante:', error);
+
+      at node_modules/react-dom/cjs/react-dom-client.development.js:18758:19
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:18757:9)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:16409:11)
+      at dispatchSetStateInternal (node_modules/react-dom/cjs/react-dom-client.development.js:9170:13)
+      at setPhysicalTests (node_modules/react-dom/cjs/react-dom-client.development.js:9127:7)
+      at src/features/student-dashboard/presentation/components/StudentPanel.js:83:7
+
+  console.error
+    An update to StudentPanel inside a test was not wrapped in act(...).
+    
+    When testing, code that causes React state updates should be wrapped into act(...):
+    
+    act(() => {
+      /* fire events that update state */
+    });
+    /* assert on the output */
+    
+    This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      82 |       setAttendanceStats(panelData.attendanceStats);
+      83 |       setPhysicalTests(panelData.physicalTests || []);
+    > 84 |       setGamification(panelData.gamification || null);
+         |       ^
+      85 |     } catch (error) {
+      86 |       console.error('Error cargando datos del estudiante:', error);
+      87 |     } finally {
+
+      at node_modules/react-dom/cjs/react-dom-client.development.js:18758:19
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:18757:9)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:16409:11)
+      at dispatchSetStateInternal (node_modules/react-dom/cjs/react-dom-client.development.js:9170:13)
+      at setGamification (node_modules/react-dom/cjs/react-dom-client.development.js:9127:7)
+      at src/features/student-dashboard/presentation/components/StudentPanel.js:84:7
+
+  console.error
+    An update to StudentPanel inside a test was not wrapped in act(...).
+    
+    When testing, code that causes React state updates should be wrapped into act(...):
+    
+    act(() => {
+      /* fire events that update state */
+    });
+    /* assert on the output */
+    
+    This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      87 |     } finally {
+      88 |       if (!silent) {
+    > 89 |         setLoading(false);
+         |         ^
+      90 |       }
+      91 |     }
+      92 |   }, [user?.id]);
+
+      at node_modules/react-dom/cjs/react-dom-client.development.js:18758:19
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:18757:9)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:16409:11)
+      at dispatchSetStateInternal (node_modules/react-dom/cjs/react-dom-client.development.js:9170:13)
+      at setLoading (node_modules/react-dom/cjs/react-dom-client.development.js:9127:7)
+      at src/features/student-dashboard/presentation/components/StudentPanel.js:89:9
+
+  console.error
+    An update to StudentPanel inside a test was not wrapped in act(...).
+    
+    When testing, code that causes React state updates should be wrapped into act(...):
+    
+    act(() => {
+      /* fire events that update state */
+    });
+    /* assert on the output */
+    
+    This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      79 |       const panelData = await studentDashboardService.loadStudentPanelData(nextUserId);
+      80 |       setStudentData(panelData.studentData);
+    > 81 |       setPaymentStatus(panelData.paymentStatus);
+         |       ^
+      82 |       setAttendanceStats(panelData.attendanceStats);
+      83 |       setPhysicalTests(panelData.physicalTests || []);
+      84 |       setGamification(panelData.gamification || null);
+
+      at node_modules/react-dom/cjs/react-dom-client.development.js:18758:19
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:18757:9)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:16409:11)
+      at dispatchSetStateInternal (node_modules/react-dom/cjs/react-dom-client.development.js:9170:13)
+      at setPaymentStatus (node_modules/react-dom/cjs/react-dom-client.development.js:9127:7)
+      at src/features/student-dashboard/presentation/components/StudentPanel.js:81:7
+
+  console.error
+    An update to StudentPanel inside a test was not wrapped in act(...).
+    
+    When testing, code that causes React state updates should be wrapped into act(...):
+    
+    act(() => {
+      /* fire events that update state */
+    });
+    /* assert on the output */
+    
+    This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      80 |       setStudentData(panelData.studentData);
+      81 |       setPaymentStatus(panelData.paymentStatus);
+    > 82 |       setAttendanceStats(panelData.attendanceStats);
+         |       ^
+      83 |       setPhysicalTests(panelData.physicalTests || []);
+      84 |       setGamification(panelData.gamification || null);
+      85 |     } catch (error) {
+
+      at node_modules/react-dom/cjs/react-dom-client.development.js:18758:19
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:18757:9)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:16409:11)
+      at dispatchSetStateInternal (node_modules/react-dom/cjs/react-dom-client.development.js:9170:13)
+      at setAttendanceStats (node_modules/react-dom/cjs/react-dom-client.development.js:9127:7)
+      at src/features/student-dashboard/presentation/components/StudentPanel.js:82:7
+
+  console.error
+    An update to StudentPanel inside a test was not wrapped in act(...).
+    
+    When testing, code that causes React state updates should be wrapped into act(...):
+    
+    act(() => {
+      /* fire events that update state */
+    });
+    /* assert on the output */
+    
+    This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      81 |       setPaymentStatus(panelData.paymentStatus);
+      82 |       setAttendanceStats(panelData.attendanceStats);
+    > 83 |       setPhysicalTests(panelData.physicalTests || []);
+         |       ^
+      84 |       setGamification(panelData.gamification || null);
+      85 |     } catch (error) {
+      86 |       console.error('Error cargando datos del estudiante:', error);
+
+      at node_modules/react-dom/cjs/react-dom-client.development.js:18758:19
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:18757:9)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:16409:11)
+      at dispatchSetStateInternal (node_modules/react-dom/cjs/react-dom-client.development.js:9170:13)
+      at setPhysicalTests (node_modules/react-dom/cjs/react-dom-client.development.js:9127:7)
+      at src/features/student-dashboard/presentation/components/StudentPanel.js:83:7
+
+  console.error
+    An update to StudentPanel inside a test was not wrapped in act(...).
+    
+    When testing, code that causes React state updates should be wrapped into act(...):
+    
+    act(() => {
+      /* fire events that update state */
+    });
+    /* assert on the output */
+    
+    This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      82 |       setAttendanceStats(panelData.attendanceStats);
+      83 |       setPhysicalTests(panelData.physicalTests || []);
+    > 84 |       setGamification(panelData.gamification || null);
+         |       ^
+      85 |     } catch (error) {
+      86 |       console.error('Error cargando datos del estudiante:', error);
+      87 |     } finally {
+
+      at node_modules/react-dom/cjs/react-dom-client.development.js:18758:19
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:18757:9)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:16409:11)
+      at dispatchSetStateInternal (node_modules/react-dom/cjs/react-dom-client.development.js:9170:13)
+      at setGamification (node_modules/react-dom/cjs/react-dom-client.development.js:9127:7)
+      at src/features/student-dashboard/presentation/components/StudentPanel.js:84:7
+
+  console.error
+    An update to StudentPanel inside a test was not wrapped in act(...).
+    
+    When testing, code that causes React state updates should be wrapped into act(...):
+    
+    act(() => {
+      /* fire events that update state */
+    });
+    /* assert on the output */
+    
+    This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      87 |     } finally {
+      88 |       if (!silent) {
+    > 89 |         setLoading(false);
+         |         ^
+      90 |       }
+      91 |     }
+      92 |   }, [user?.id]);
+
+      at node_modules/react-dom/cjs/react-dom-client.development.js:18758:19
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:18757:9)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:16409:11)
+      at dispatchSetStateInternal (node_modules/react-dom/cjs/react-dom-client.development.js:9170:13)
+      at setLoading (node_modules/react-dom/cjs/react-dom-client.development.js:9127:7)
+      at src/features/student-dashboard/presentation/components/StudentPanel.js:89:9
+
+FAIL src/features/student-dashboard/presentation/components/StudentPanel.access.test.js
+  × deniega al visitante anónimo sin quedar cargando ni consultar datos (70 ms)
+  × deniega administrador sin consultar el panel de estudiante (50 ms)
+  × deniega entrenador sin consultar el panel de estudiante (21 ms)
+  √ espera la resolución del perfil antes de consultar datos de estudiante (7 ms)
+  × un usuario sin perfil autorizado recibe denegación explícita (18 ms)
+  × al cerrar sesión oculta el panel aunque finalice una petición anterior (15 ms)
+
+  ● deniega al visitante anónimo sin quedar cargando ni consultar datos
+
+    TestingLibraryElementError: Unable to find an accessible element with the role "heading" and name `/acceso denegado/i`
+
+    Here are the accessible roles:
+
+      paragraph:
+
+      Name "":
+      [36m<p[39m
+        [33mclass[39m=[32m"text-sm font-semibold mobile:text-base"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex min-h-[60dvh] flex-col items-center justify-center gap-4 text-white"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"h-10 w-10 animate-spin rounded-full border-4 border-white/25 border-t-rv-gold"[39m
+          [36m/>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"text-sm font-semibold mobile:text-base"[39m
+          [36m>[39m
+            [0mCargando informacion...[0m
+          [36m</p>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      20 | test('deniega al visitante anónimo sin quedar cargando ni consultar datos', () => {
+      21 |   render(view(null));
+    > 22 |   expect(screen.getByRole('heading', { name: /acceso denegado/i })).toBeInTheDocument();
+         |                 ^
+      23 |   expect(screen.queryByText('Cargando informacion...')).not.toBeInTheDocument();
+      24 |   expect(studentDashboardService.loadStudentPanelData).not.toHaveBeenCalled();
+      25 | });
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:37:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at getByRole (node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
+      at Object.<anonymous> (src/features/student-dashboard/presentation/components/StudentPanel.access.test.js:22:17)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  ● deniega administrador sin consultar el panel de estudiante
+
+    TestingLibraryElementError: Unable to find an accessible element with the role "heading" and name `/acceso denegado/i`
+
+    Here are the accessible roles:
+
+      paragraph:
+
+      Name "":
+      [36m<p[39m
+        [33mclass[39m=[32m"text-sm font-semibold mobile:text-base"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex min-h-[60dvh] flex-col items-center justify-center gap-4 text-white"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"h-10 w-10 animate-spin rounded-full border-4 border-white/25 border-t-rv-gold"[39m
+          [36m/>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"text-sm font-semibold mobile:text-base"[39m
+          [36m>[39m
+            [0mCargando informacion...[0m
+          [36m</p>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      28 |   useUserProfile.mockReturnValue({ profile: { role }, loading: false });
+      29 |   render(view({ id: 'staff-test' }));
+    > 30 |   expect(screen.getByRole('heading', { name: /acceso denegado/i })).toBeInTheDocument();
+         |                 ^
+      31 |   expect(studentDashboardService.loadStudentPanelData).not.toHaveBeenCalled();
+      32 | });
+      33 |
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:37:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at getByRole (node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
+      at src/features/student-dashboard/presentation/components/StudentPanel.access.test.js:30:17
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  ● deniega entrenador sin consultar el panel de estudiante
+
+    TestingLibraryElementError: Unable to find an accessible element with the role "heading" and name `/acceso denegado/i`
+
+    Here are the accessible roles:
+
+      paragraph:
+
+      Name "":
+      [36m<p[39m
+        [33mclass[39m=[32m"text-sm font-semibold mobile:text-base"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex min-h-[60dvh] flex-col items-center justify-center gap-4 text-white"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"h-10 w-10 animate-spin rounded-full border-4 border-white/25 border-t-rv-gold"[39m
+          [36m/>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"text-sm font-semibold mobile:text-base"[39m
+          [36m>[39m
+            [0mCargando informacion...[0m
+          [36m</p>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      28 |   useUserProfile.mockReturnValue({ profile: { role }, loading: false });
+      29 |   render(view({ id: 'staff-test' }));
+    > 30 |   expect(screen.getByRole('heading', { name: /acceso denegado/i })).toBeInTheDocument();
+         |                 ^
+      31 |   expect(studentDashboardService.loadStudentPanelData).not.toHaveBeenCalled();
+      32 | });
+      33 |
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:37:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at getByRole (node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
+      at src/features/student-dashboard/presentation/components/StudentPanel.access.test.js:30:17
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  ● un usuario sin perfil autorizado recibe denegación explícita
+
+    TestingLibraryElementError: Unable to find an accessible element with the role "heading" and name `/acceso denegado/i`
+
+    Here are the accessible roles:
+
+      paragraph:
+
+      Name "":
+      [36m<p[39m
+        [33mclass[39m=[32m"text-sm font-semibold mobile:text-base"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex min-h-[60dvh] flex-col items-center justify-center gap-4 text-white"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"h-10 w-10 animate-spin rounded-full border-4 border-white/25 border-t-rv-gold"[39m
+          [36m/>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"text-sm font-semibold mobile:text-base"[39m
+          [36m>[39m
+            [0mCargando informacion...[0m
+          [36m</p>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      41 | test('un usuario sin perfil autorizado recibe denegación explícita', () => {
+      42 |   render(view({ id: 'without-profile' }));
+    > 43 |   expect(screen.getByRole('heading', { name: /acceso denegado/i })).toBeInTheDocument();
+         |                 ^
+      44 |   expect(studentDashboardService.loadStudentPanelData).not.toHaveBeenCalled();
+      45 | });
+      46 |
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:37:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at getByRole (node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
+      at Object.<anonymous> (src/features/student-dashboard/presentation/components/StudentPanel.access.test.js:43:17)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  ● al cerrar sesión oculta el panel aunque finalice una petición anterior
+
+    TestingLibraryElementError: Unable to find an accessible element with the role "heading" and name `/acceso denegado/i`
+
+    Here are the accessible roles:
+
+      paragraph:
+
+      Name "":
+      [36m<p[39m
+        [33mclass[39m=[32m"text-sm font-semibold mobile:text-base"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"flex min-h-[60dvh] flex-col items-center justify-center gap-4 text-white"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"h-10 w-10 animate-spin rounded-full border-4 border-white/25 border-t-rv-gold"[39m
+          [36m/>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"text-sm font-semibold mobile:text-base"[39m
+          [36m>[39m
+            [0mCargando informacion...[0m
+          [36m</p>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      53 |   useUserProfile.mockReturnValue({ profile: null, loading: false });
+      54 |   rerender(view(null));
+    > 55 |   expect(screen.getByRole('heading', { name: /acceso denegado/i })).toBeInTheDocument();
+         |                 ^
+      56 |   resolveLoad({ studentData: { id: 'previous-student', users: { nombre: 'Anterior' } } });
+      57 |   await waitFor(() => expect(screen.getByRole('heading', { name: /acceso denegado/i })).toBeInTheDocument());
+      58 |   expect(screen.queryByText('Anterior')).not.toBeInTheDocument();
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:37:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at getByRole (node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
+      at Object.<anonymous> (src/features/student-dashboard/presentation/components/StudentPanel.access.test.js:55:17)
+
+Test Suites: 1 failed, 1 total
+Tests:       5 failed, 1 passed, 6 total
+Snapshots:   0 total
+Time:        4.725 s
+Ran all test suites within paths "src/features/student-dashboard/presentation/components/StudentPanel.access.test.js".
+Test results written to: docs\tesis\evidencias\e2e-aislado\20261028-192557-cierre-c71f55e\jest-access-red-preparada.json
+

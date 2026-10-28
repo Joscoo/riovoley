@@ -1,0 +1,16 @@
+PASS src/shared/ui/SortableHeader.test.js (21.801 s)
+  SortableHeader
+    √ expone el estado de orden fuera de una tabla: null none (143 ms)
+    √ expone el estado de orden fuera de una tabla: monto asc (28 ms)
+    √ expone el estado de orden fuera de una tabla: monto desc (19 ms)
+    √ renders with aria-sort none by default (48 ms)
+    √ renders ascending aria-sort when active asc (32 ms)
+    √ calls onToggleSort with field when clicked (30 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       6 passed, 6 total
+Snapshots:   0 total
+Time:        84.284 s
+Ran all test suites within paths "src/shared/ui/SortableHeader.test.js".
+Test results written to: docs\tesis\evidencias\e2e-aislado\20261028-192557-cierre-c71f55e\jest-focused.json
+

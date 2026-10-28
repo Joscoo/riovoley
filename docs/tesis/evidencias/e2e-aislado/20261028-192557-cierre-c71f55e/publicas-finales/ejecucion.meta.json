@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+    "test",
+    "tests/e2e/responsive.smoke.spec.js",
+    "tests/e2e/public.navigation-accessibility.spec.js",
+    "tests/e2e/auth.password-recovery.spec.js",
+    "tests/e2e/audit.protected-routes.spec.js",
+    "--config=playwright.local.config.cjs",
+    "--grep-invert=role dashboards responsive guard",
+    "--workers=2"
+  ],
+  "start": "2026-10-28T20:09:03.687Z",
+  "end": "2026-10-28T20:11:35.185Z",
+  "durationSeconds": 151.498,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

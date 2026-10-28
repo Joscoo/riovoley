@@ -1,0 +1,20 @@
+
+Running 7 tests using 3 workers
+
+GUIDED_REVIEW_METRICS[mobile-480]: {"rowCount":7,"nameCount":7,"actionGroupCount":7,"minRow":174,"maxRow":174,"minName":143,"maxName":148,"maxActions":148,"hasHorizontalOverflow":false,"scrollWidth":480,"viewport":480}
+  ✓  1 [mobile-480] › tests\e2e\asistencias.guided.review.spec.js:50:1 › guided review: admin asistencias quick mode per viewport (3.3s)
+GUIDED_REVIEW_METRICS[mobile-390]: {"rowCount":7,"nameCount":7,"actionGroupCount":7,"minRow":296,"maxRow":296,"minName":143,"maxName":176,"maxActions":270,"hasHorizontalOverflow":false,"scrollWidth":390,"viewport":390}
+  ✓  3 [mobile-390] › tests\e2e\asistencias.guided.review.spec.js:50:1 › guided review: admin asistencias quick mode per viewport (7.3s)
+GUIDED_REVIEW_METRICS[mobile-430]: {"rowCount":7,"nameCount":7,"actionGroupCount":7,"minRow":336,"maxRow":336,"minName":143,"maxName":168,"maxActions":310,"hasHorizontalOverflow":false,"scrollWidth":430,"viewport":430}
+  ✓  2 [mobile-430] › tests\e2e\asistencias.guided.review.spec.js:50:1 › guided review: admin asistencias quick mode per viewport (8.2s)
+GUIDED_REVIEW_METRICS[tablet-1024]: {"rowCount":7,"nameCount":7,"actionGroupCount":7,"minRow":290,"maxRow":290,"minName":143,"maxName":176,"maxActions":52,"hasHorizontalOverflow":false,"scrollWidth":1024,"viewport":1024}
+  ✓  5 [tablet-1024] › tests\e2e\asistencias.guided.review.spec.js:50:1 › guided review: admin asistencias quick mode per viewport (2.8s)
+GUIDED_REVIEW_METRICS[tablet-768]: {"rowCount":7,"nameCount":7,"actionGroupCount":7,"minRow":314,"maxRow":314,"minName":143,"maxName":176,"maxActions":64,"hasHorizontalOverflow":false,"scrollWidth":768,"viewport":768}
+GUIDED_REVIEW_METRICS[desktop-1440]: {"rowCount":7,"nameCount":7,"actionGroupCount":7,"minRow":498,"maxRow":498,"minName":143,"maxName":176,"maxActions":88,"hasHorizontalOverflow":false,"scrollWidth":1440,"viewport":1440}
+  ✓  4 [tablet-768] › tests\e2e\asistencias.guided.review.spec.js:50:1 › guided review: admin asistencias quick mode per viewport (7.4s)
+  ✓  6 [desktop-1440] › tests\e2e\asistencias.guided.review.spec.js:50:1 › guided review: admin asistencias quick mode per viewport (2.8s)
+GUIDED_REVIEW_METRICS[desktop-1920]: {"rowCount":7,"nameCount":7,"actionGroupCount":7,"minRow":586,"maxRow":586,"minName":143,"maxName":176,"maxActions":88,"hasHorizontalOverflow":false,"scrollWidth":1920,"viewport":1920}
+  ✓  7 [desktop-1920] › tests\e2e\asistencias.guided.review.spec.js:50:1 › guided review: admin asistencias quick mode per viewport (2.3s)
+
+  7 passed (17.7s)
+

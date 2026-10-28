@@ -1,0 +1,138 @@
+{
+  "generatedAt": "2026-10-28T20:30:43.252Z",
+  "passed": 8,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Expedientes previos y dos archivos adicionales preservados",
+      "status": "APROBADO",
+      "details": [
+        {
+          "folder": "verificacion-tecnica/20261027-212222-c71f55e",
+          "checked": 612
+        },
+        {
+          "folder": "e2e-aislado/20261028-141243-c71f55e",
+          "checked": 254
+        },
+        {
+          "folder": "e2e-aislado/20261028-101418-correcciones-c71f55e",
+          "checked": 723
+        },
+        {
+          "folder": "verificacion-tecnica/20261028-155551-android-c71f55e",
+          "checked": 152
+        }
+      ]
+    },
+    {
+      "name": "404 casos y85 suites; contratos e integración en memoria no duplicados",
+      "status": "APROBADO",
+      "details": {
+        "suites": 85,
+        "executed": 404,
+        "passed": 404,
+        "failed": 0,
+        "skipped": 0,
+        "seconds": 77.647
+      }
+    },
+    {
+      "name": "17 integraciones reales finales aprobadas y diez Edge separados",
+      "status": "APROBADO",
+      "details": {
+        "real": 17,
+        "edge": 10
+      }
+    },
+    {
+      "name": "249 instancias Playwright sin omisiones ni reintentos",
+      "status": "APROBADO",
+      "details": [
+        {
+          "label": "publicas-finales",
+          "startTime": "2026-10-28T20:09:12.394Z",
+          "duration": 142436.509,
+          "expected": 133,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0,
+          "exitCode": 0
+        },
+        {
+          "label": "paneles-finales",
+          "startTime": "2026-10-28T20:11:38.963Z",
+          "duration": 564078.8080000001,
+          "expected": 105,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0,
+          "exitCode": 0
+        },
+        {
+          "label": "mutaciones-finales",
+          "startTime": "2026-10-28T20:21:06.526Z",
+          "duration": 134863.699,
+          "expected": 7,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0,
+          "exitCode": 0
+        },
+        {
+          "label": "limites-finales",
+          "startTime": "2026-10-28T20:23:24.311Z",
+          "duration": 25140.689000000002,
+          "expected": 4,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0,
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "name": "APK final compilado, firmado, mismo archivo instalado y leído por WebView",
+      "status": "APROBADO",
+      "details": {
+        "sha256": "20fc358ecd1d27c87d887898617b5595e66f03d20a83f3b8ee3c2e8ea374b704",
+        "bytes": 35144355,
+        "lintErrors": 0,
+        "lintWarnings": 29
+      }
+    },
+    {
+      "name": "Privacidad de textos, HTML embebidos y cada miembro del APK",
+      "status": "APROBADO",
+      "details": {
+        "textFiles": 731,
+        "embeddedArchives": 5,
+        "nativeEntries": 682
+      }
+    },
+    {
+      "name": "Tres documentos, referencias y ocho categorías",
+      "status": "APROBADO",
+      "details": {
+        "documents": 3,
+        "categories": 8
+      }
+    },
+    {
+      "name": "Solo cambios previstos respecto a la instantánea inicial",
+      "status": "APROBADO",
+      "details": {
+        "changed": [
+          "android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java",
+          "functions/package-lock.json",
+          "package-lock.json",
+          "riovoley/package-lock.json",
+          "src/features/payments/application/useCases/createPaymentsUseCases.js",
+          "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+          "src/features/student-dashboard/presentation/components/StudentPanel.js"
+        ],
+        "nativeSnapshot": 962
+      }
+    }
+  ]
+}

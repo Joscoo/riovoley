@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "run",
+    "test:auth-edge"
+  ],
+  "start": "2026-10-28T20:05:11.577Z",
+  "end": "2026-10-28T20:05:13.400Z",
+  "durationSeconds": 1.823,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

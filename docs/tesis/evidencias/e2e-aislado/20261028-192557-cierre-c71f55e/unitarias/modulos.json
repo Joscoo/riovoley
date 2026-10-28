@@ -1,0 +1,249 @@
+[
+  {
+    "module": "account-admin",
+    "cases": 12,
+    "files": [
+      "src/features/account-admin/presentation/createAccountAdminService.test.js",
+      "src/features/account-admin/infrastructure/repositories/supabaseAccountAdminRepository.password.test.js",
+      "src/features/account-admin/application/useCases/createAccountAdminUseCases.test.js"
+    ]
+  },
+  {
+    "module": "admin-dashboard",
+    "cases": 9,
+    "files": [
+      "src/features/admin-dashboard/presentation/createAdminDashboardService.test.js",
+      "src/features/admin-dashboard/application/useCases/createAdminDashboardUseCases.test.js"
+    ]
+  },
+  {
+    "module": "announcements",
+    "cases": 7,
+    "files": [
+      "src/features/announcements/presentation/createAnnouncementsService.test.js",
+      "src/features/announcements/application/useCases/createAnnouncementsUseCases.test.js"
+    ]
+  },
+  {
+    "module": "appUrls.test.js",
+    "cases": 2,
+    "files": [
+      "src/config/appUrls.test.js"
+    ]
+  },
+  {
+    "module": "athletes",
+    "cases": 14,
+    "files": [
+      "src/features/athletes/presentation/createAthletesService.test.js",
+      "src/features/athletes/application/useCases/createAthletesUseCases.test.js"
+    ]
+  },
+  {
+    "module": "attendance",
+    "cases": 32,
+    "files": [
+      "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+      "src/features/attendance/presentation/createAttendanceService.test.js",
+      "src/features/attendance/infrastructure/repositories/supabaseAttendanceRepository.test.js"
+    ]
+  },
+  {
+    "module": "auth-profile",
+    "cases": 5,
+    "files": [
+      "src/features/auth-profile/application/useCases/loadUserProfileUseCase.test.js",
+      "src/features/auth-profile/presentation/createAuthProfileService.test.js"
+    ]
+  },
+  {
+    "module": "auth-session",
+    "cases": 19,
+    "files": [
+      "src/features/auth-session/presentation/components/ResetPassword.recovery.test.js",
+      "src/features/auth-session/presentation/components/Login.auth-events.test.js",
+      "src/features/auth-session/presentation/components/ChangePasswordModal.password.test.js",
+      "src/features/auth-session/presentation/utils/deferAuthEvent.test.js",
+      "src/features/auth-session/presentation/createAuthSessionService.test.js",
+      "src/features/auth-session/application/useCases/createAuthSessionUseCases.test.js"
+    ]
+  },
+  {
+    "module": "communications",
+    "cases": 11,
+    "files": [
+      "src/features/communications/application/useCases/createCommunicationsUseCases.test.js",
+      "src/features/communications/presentation/createCommunicationsService.test.js",
+      "src/features/communications/infrastructure/repositories/supabaseCommunicationsRepository.test.js"
+    ]
+  },
+  {
+    "module": "gamification",
+    "cases": 65,
+    "files": [
+      "src/features/gamification/presentation/components/StudentGamificationPanel.test.js",
+      "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+      "src/features/gamification/presentation/createGamificationService.test.js",
+      "src/features/gamification/presentation/components/GamificationAdminPanel.test.js",
+      "src/features/gamification/application/useCases/gamification.audit.integration.test.js",
+      "src/features/gamification/presentation/components/IdentityPortrait.test.js",
+      "src/features/gamification/presentation/components/cosmeticVisuals.test.js",
+      "src/features/gamification/infrastructure/repositories/supabaseGamificationRepository.test.js",
+      "src/features/gamification/application/useCases/createGamificationFoundationUseCases.test.js",
+      "src/features/gamification/application/useCases/createGamificationAdminUseCases.test.js"
+    ]
+  },
+  {
+    "module": "infrastructure",
+    "cases": 3,
+    "files": [
+      "src/shared/infrastructure/auth/deleteAuthUserById.test.js",
+      "src/shared/infrastructure/communications/whatsappBusinessService.test.js"
+    ]
+  },
+  {
+    "module": "lib",
+    "cases": 5,
+    "files": [
+      "src/shared/lib/tableQuery.test.js"
+    ]
+  },
+  {
+    "module": "notifications",
+    "cases": 14,
+    "files": [
+      "src/features/notifications/presentation/components/NotificationBell.access.test.js",
+      "src/features/notifications/presentation/createNotificationsService.test.js",
+      "src/features/notifications/infrastructure/repositories/supabaseNotificationsRepository.test.js",
+      "src/features/notifications/application/useCases/createNotificationsUseCases.test.js"
+    ]
+  },
+  {
+    "module": "otros",
+    "cases": 1,
+    "files": [
+      "src/App.test.js"
+    ]
+  },
+  {
+    "module": "passwordUtils.test.js",
+    "cases": 8,
+    "files": [
+      "src/utils/passwordUtils.test.js"
+    ]
+  },
+  {
+    "module": "payments",
+    "cases": 40,
+    "files": [
+      "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+      "src/features/payments/presentation/createPaymentsService.test.js",
+      "src/features/payments/infrastructure/repositories/supabasePaymentsRepository.test.js"
+    ]
+  },
+  {
+    "module": "physical-tests",
+    "cases": 9,
+    "files": [
+      "src/features/physical-tests/presentation/createPhysicalTestsService.test.js",
+      "src/features/physical-tests/application/useCases/createPhysicalTestsUseCases.test.js"
+    ]
+  },
+  {
+    "module": "platform",
+    "cases": 11,
+    "files": [
+      "src/shared/platform/ota.test.js",
+      "src/shared/platform/push.test.js"
+    ]
+  },
+  {
+    "module": "reporting",
+    "cases": 7,
+    "files": [
+      "src/features/reporting/presentation/createReportingService.test.js",
+      "src/features/reporting/application/useCases/ensureDailyAttendanceReportUseCase.test.js",
+      "src/features/reporting/infrastructure/repositories/supabaseReportingRepository.contract.test.js"
+    ]
+  },
+  {
+    "module": "schedules",
+    "cases": 4,
+    "files": [
+      "src/features/schedules/presentation/createSchedulesService.test.js",
+      "src/features/schedules/application/useCases/createSchedulesUseCases.test.js"
+    ]
+  },
+  {
+    "module": "student-dashboard",
+    "cases": 32,
+    "files": [
+      "src/features/student-dashboard/presentation/components/StudentPhysicalTests.test.js",
+      "src/features/student-dashboard/presentation/components/StudentPanel.access.test.js",
+      "src/features/student-dashboard/presentation/components/StudentProfileIdentityCard.test.js",
+      "src/features/student-dashboard/infrastructure/repositories/supabaseStudentDashboardRepository.test.js",
+      "src/features/student-dashboard/presentation/createStudentDashboardService.test.js",
+      "src/features/student-dashboard/presentation/components/physical-tests/buildStudentPhysicalProfile.test.js",
+      "src/features/student-dashboard/application/useCases/createStudentDashboardUseCases.test.js"
+    ]
+  },
+  {
+    "module": "trainer-dashboard",
+    "cases": 4,
+    "files": [
+      "src/features/trainer-dashboard/presentation/createTrainerDashboardService.test.js",
+      "src/features/trainer-dashboard/application/useCases/createTrainerDashboardUseCases.test.js"
+    ]
+  },
+  {
+    "module": "trainer-management",
+    "cases": 8,
+    "files": [
+      "src/features/trainer-management/presentation/createTrainerManagementService.test.js",
+      "src/features/trainer-management/application/useCases/createTrainerManagementUseCases.test.js"
+    ]
+  },
+  {
+    "module": "training-categories",
+    "cases": 3,
+    "files": [
+      "src/features/training-categories/application/useCases/createTrainingCategoriesUseCases.test.js"
+    ]
+  },
+  {
+    "module": "ui",
+    "cases": 29,
+    "files": [
+      "src/shared/ui/panel-guide/PanelUserGuide.test.js",
+      "src/shared/ui/SortableHeader.test.js",
+      "src/shared/ui/PageShell.test.js",
+      "src/shared/ui/semanticCatalog.test.js",
+      "src/shared/ui/Modal.test.js",
+      "src/shared/ui/copyQualityCheck.test.js",
+      "src/shared/ui/render-profile/renderProfileResolver.test.js",
+      "src/shared/ui/iconRegistry.test.js"
+    ]
+  },
+  {
+    "module": "user-management",
+    "cases": 30,
+    "files": [
+      "src/features/user-management/presentation/components/tabs/CreationCredentials.test.js",
+      "src/features/user-management/presentation/components/shared/ResendCredentialsModal.test.js",
+      "src/features/user-management/presentation/createUserManagementService.test.js",
+      "src/features/user-management/presentation/components/shared/CreatedCredentialsModal.test.js",
+      "src/features/user-management/presentation/components/shared/UserFilters.test.js",
+      "src/features/user-management/application/useCases/createUserManagementUseCases.test.js",
+      "src/features/user-management/application/contracts/userManagementRepositoryContract.test.js"
+    ]
+  },
+  {
+    "module": "user-provisioning",
+    "cases": 20,
+    "files": [
+      "src/features/user-provisioning/application/useCases/createUserProvisioningUseCases.test.js",
+      "src/features/user-provisioning/infrastructure/repositories/supabaseUserProvisioningRepository.test.js",
+      "src/features/user-provisioning/presentation/createUserProvisioningService.test.js"
+    ]
+  }
+]

@@ -1,0 +1,94 @@
+{
+  "add": [],
+  "added": 0,
+  "audited": 101,
+  "change": [
+    {
+      "from": {
+        "name": "minimatch",
+        "version": "3.1.2",
+        "path": "D:\\Riovoley\\riovoley\\riovoley\\node_modules\\minimatch"
+      },
+      "to": {
+        "name": "minimatch",
+        "version": "3.1.5",
+        "path": "D:\\Riovoley\\riovoley\\riovoley\\node_modules\\minimatch"
+      }
+    },
+    {
+      "from": {
+        "name": "js-yaml",
+        "version": "4.1.0",
+        "path": "D:\\Riovoley\\riovoley\\riovoley\\node_modules\\js-yaml"
+      },
+      "to": {
+        "name": "js-yaml",
+        "version": "4.3.2",
+        "path": "D:\\Riovoley\\riovoley\\riovoley\\node_modules\\js-yaml"
+      }
+    },
+    {
+      "from": {
+        "name": "flatted",
+        "version": "3.3.3",
+        "path": "D:\\Riovoley\\riovoley\\riovoley\\node_modules\\flatted"
+      },
+      "to": {
+        "name": "flatted",
+        "version": "3.4.4",
+        "path": "D:\\Riovoley\\riovoley\\riovoley\\node_modules\\flatted"
+      }
+    },
+    {
+      "from": {
+        "name": "brace-expansion",
+        "version": "1.1.12",
+        "path": "D:\\Riovoley\\riovoley\\riovoley\\node_modules\\brace-expansion"
+      },
+      "to": {
+        "name": "brace-expansion",
+        "version": "1.1.21",
+        "path": "D:\\Riovoley\\riovoley\\riovoley\\node_modules\\brace-expansion"
+      }
+    },
+    {
+      "from": {
+        "name": "ajv",
+        "version": "6.12.6",
+        "path": "D:\\Riovoley\\riovoley\\riovoley\\node_modules\\ajv"
+      },
+      "to": {
+        "name": "ajv",
+        "version": "6.15.0",
+        "path": "D:\\Riovoley\\riovoley\\riovoley\\node_modules\\ajv"
+      }
+    }
+  ],
+  "changed": 5,
+  "funding": 25,
+  "remove": [],
+  "removed": 0,
+  "audit": {
+    "auditReportVersion": 2,
+    "vulnerabilities": {},
+    "metadata": {
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "dependencies": {
+        "prod": 1,
+        "dev": 100,
+        "optional": 0,
+        "peer": 0,
+        "peerOptional": 0,
+        "total": 100
+      }
+    }
+  }
+}
+

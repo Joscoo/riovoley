@@ -1,134 +1,92 @@
-const { test, expect } = require('@playwright/test');
-
-const ADMIN_EMAIL = process.env.E2E_ADMIN_EMAIL;
-const ADMIN_PASSWORD = process.env.E2E_ADMIN_PASSWORD;
+﻿const { test, expect } = require('@playwright/test');
+const { randomUUID } = require('node:crypto');
+const { loginAsAdmin, openAdminSection } = require('./helpers/adminNavigation');
 const ENABLE_MUTATION_FLOW = process.env.E2E_ENABLE_MUTATION_FLOW === 'true';
 
-async function loginAsAdmin(page) {
-  await page.goto('/login', { waitUntil: 'domcontentloaded' });
-  await page.waitForLoadState('load');
-
-  await page.getByLabel(/correo/i).fill(ADMIN_EMAIL);
-  await page.getByLabel(/contrase/i).fill(ADMIN_PASSWORD);
-
-  const submitButton = page.locator('form button[type="submit"]').first();
-  if (await submitButton.count()) {
-    await submitButton.click();
-  } else {
-    await page
-      .getByRole('button', { name: /ingresar|iniciar sesion|iniciar sesi/i })
-      .first()
-      .click();
-  }
-
-  await page.waitForURL(/\/admin|\/login/, { timeout: 20000 });
-  await expect(page).toHaveURL(/\/admin/);
-}
-
-async function openSidebarIfNeeded(page) {
-  const openSidebarButton = page.getByRole('button', { name: /abrir menu lateral/i }).first();
-  const userManagementButton = page.getByRole('button', { name: /gestion de usuarios/i }).first();
-
-  if (!(await userManagementButton.isVisible()) && (await openSidebarButton.count())) {
-    await openSidebarButton.click();
-  }
-}
-
-async function openSection(page, sectionNameRegex) {
-  await openSidebarIfNeeded(page);
-  const sectionButton = page.getByRole('button', { name: sectionNameRegex }).first();
-  await expect(sectionButton).toBeVisible({ timeout: 15000 });
-  await sectionButton.click();
-}
-
-test('admin happy path controlado: atleta + pago + asistencia', async ({ page }) => {
-  test.skip(!ADMIN_EMAIL || !ADMIN_PASSWORD, 'Missing E2E_ADMIN_EMAIL/E2E_ADMIN_PASSWORD environment variables.');
+test('admin happy path controlado: atleta + pago + asistencia', async ({ page }, testInfo) => {
+  test.skip(!process.env.E2E_ADMIN_EMAIL || !process.env.E2E_ADMIN_PASSWORD, 'Missing E2E_ADMIN_EMAIL/E2E_ADMIN_PASSWORD environment variables.');
   test.skip(!ENABLE_MUTATION_FLOW, 'Set E2E_ENABLE_MUTATION_FLOW=true to run mutation flow.');
+  // Las altas se autorizan exclusivamente en el entorno descartable de este arnés.
+  expect(process.env.E2E_LOCAL_LABEL, 'Usar playwright.local.config.cjs y el arnés aislado').toBeTruthy();
+  expect(testInfo.project.use.baseURL).toBe('http://127.0.0.1:6100');
+  require('../../scripts/e2e/local/safety.cjs').readLocal();
 
-  page.on('dialog', async (dialog) => {
-    if (dialog.type() === 'confirm') {
-      await dialog.dismiss();
-      return;
-    }
-    await dialog.accept();
-  });
-
-  const uniqueSuffix = `${Date.now()}${Math.floor(Math.random() * 1000)}`.slice(-9);
-  const firstName = `E2E${uniqueSuffix}`;
-  const lastName = 'Flow';
-  const fullName = `${firstName} ${lastName}`;
-  const email = `e2e.flow.${uniqueSuffix}@example.com`;
-  const today = new Date().toISOString().slice(0, 10);
+  const suffix = randomUUID().replaceAll('-', '').slice(0, 12);
+  const firstName = `E2E${suffix}`;
+  const fullName = `${firstName} Flow`;
+  const email = `e2e.flow.${suffix}@example.test`;
+  const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Guayaquil', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
 
   await loginAsAdmin(page);
+  // Ocultar visualmente las contraseñas temporales en capturas, sin alterar su valor.
+  await page.addStyleTag({ content: '[role="dialog"] code { -webkit-text-security: disc; }' });
+  await openAdminSection(page, 'usuarios');
+  await page.getByRole('tab', { name: /Estudiantes/i }).click();
+  await page.getByRole('button', { name: /Agregar Estudiante/i }).first().click();
+  const form = page.getByRole('dialog', { name: 'Agregar Nuevo Estudiante' });
+  await expect(form).toBeVisible();
+  await form.getByPlaceholder('Ingrese el nombre', { exact: true }).fill(firstName);
+  await form.getByPlaceholder('Ingrese el apellido').fill('Flow');
+  await form.locator('input[type="email"]').fill(email);
+  await form.locator('input[type="tel"]').fill('0999999999');
+  await form.locator('input[type="date"]').fill('2010-01-01');
+  await form.locator('select').selectOption('iniciacion_hombres');
+  await form.getByRole('radio', { name: 'No, enviar despues' }).check();
+  await form.getByRole('button', { name: /^Crear$/i }).click();
 
-  await openSection(page, /gestion de usuarios/i);
-  await expect(page.getByText(/gestion de usuarios/i).first()).toBeVisible({ timeout: 15000 });
+  const credentials = page.getByRole('dialog', { name: 'Credenciales de la cuenta creada' });
+  await expect(credentials).toBeVisible({ timeout: 30000 });
+  const password = await credentials.locator('code').textContent();
+  // Solo runtime ignorado; la revisión de privacidad conoce también claves creadas por UI.
+  const fs = require('node:fs');
+  const path = require('node:path');
+  const { runtime } = require('../../scripts/e2e/local/safety.cjs');
+  fs.appendFileSync(path.join(runtime, 'observed-secrets.jsonl'), JSON.stringify({ password }) + '\n');
+  await credentials.getByRole('button', { name: /^Cerrar$/i }).click();
+  await expect(form).toBeHidden();
+  await page.locator('#user-filters-atleta-search').fill(email);
+  await expect(page.getByText(email, { exact: true }).first()).toBeVisible();
 
-  const athletesTab = page.getByRole('button', { name: /^atletas$/i }).first();
-  await expect(athletesTab).toBeVisible({ timeout: 10000 });
-  await athletesTab.click();
-
-  const addAthleteButton = page.getByRole('button', { name: /agregar atleta/i }).first();
-  await expect(addAthleteButton).toBeVisible({ timeout: 10000 });
-  await addAthleteButton.click();
-
-  const athleteModal = page.getByRole('dialog');
-  await expect(athleteModal).toBeVisible({ timeout: 10000 });
-  await athleteModal.locator('#nombre').fill(firstName);
-  await athleteModal.locator('#apellido').fill(lastName);
-  await athleteModal.locator('#email').fill(email);
-  await athleteModal.locator('#telefono').fill('0999999999');
-  await athleteModal.locator('#fecha_nacimiento').fill('2010-01-01');
-  await athleteModal.locator('#categoria').selectOption('iniciacion_hombres');
-  await athleteModal.getByRole('button', { name: /^guardar$/i }).click();
-
-  await expect(athleteModal).toBeHidden({ timeout: 60000 });
-
-  await page.locator('#athlete-search').fill(email);
-  await expect(page.getByText(email).first()).toBeVisible({ timeout: 30000 });
-
-  await openSection(page, /^pagos$/i);
-  await expect(page.getByText(/gestion de pagos/i).first()).toBeVisible({ timeout: 15000 });
-
-  const addPaymentButton = page.getByRole('button', { name: /registrar pago/i }).first();
-  await expect(addPaymentButton).toBeVisible({ timeout: 10000 });
-  await addPaymentButton.click();
-
-  const paymentModal = page.getByRole('dialog');
-  await expect(paymentModal).toBeVisible({ timeout: 10000 });
-  await paymentModal.locator('#student_id').fill(firstName);
-  await paymentModal.locator('li').filter({ hasText: fullName }).first().click();
-  await paymentModal.locator('#monto').fill('25');
-  await paymentModal.locator('#fecha_pago').fill(today);
-  await paymentModal.getByRole('button', { name: /^guardar$/i }).click();
-
-  await expect(paymentModal).toBeHidden({ timeout: 60000 });
-
+  await openAdminSection(page, 'pagos');
+  await page.getByRole('button', { name: /Registrar Pago/i }).first().click();
+  const payment = page.getByRole('dialog');
+  await payment.locator('#student_id').fill(firstName);
+  await payment.getByRole('button', { name: new RegExp(fullName, 'i') }).click();
+  await payment.locator('#membership_type_id').selectOption({ label: 'Mensualidad normal' });
+  await expect(payment.locator('#monto')).toBeDisabled();
+  await expect(payment.locator('#monto')).toHaveValue(/^\$\s*35[,.]00$/);
+  await payment.locator('#fecha_pago').fill(today);
+  await payment.getByRole('button', { name: /^Guardar$/i }).click();
+  await expect(payment).toBeHidden({ timeout: 30000 });
   await page.locator('#payments-search').fill(firstName);
-  await expect(page.getByText(fullName).first()).toBeVisible({ timeout: 30000 });
+  const paymentRow = page.locator('tbody tr').filter({ hasText: fullName });
+  await expect(paymentRow).toHaveCount(1);
+  await expect(paymentRow.locator('td[data-label="Monto"]')).toHaveText(/^\$\s*35[,.]00$/);
 
-  await openSection(page, /^asistencias$/i);
-  await expect(page.getByText(/control de asistencias/i).first()).toBeVisible({ timeout: 15000 });
+  await openAdminSection(page, 'asistencias');
+  await page.getByRole('button', { name: /Registro R.pido/i }).click();
+  await page.locator('#attendance-date').fill(today);
+  await page.getByPlaceholder('Buscar atleta por nombre...').fill(firstName);
+  const athleteRow = page.getByTestId('attendance-athlete-row').filter({ hasText: firstName });
+  await expect(athleteRow).toHaveCount(1);
+  const present = athleteRow.getByRole('button', { name: 'Marcar como presente', exact: true });
+  await expect(present).toBeVisible(); // La mensualidad debe habilitar el control correspondiente.
+  const persistedAttendance = page.waitForResponse(response =>
+    new URL(response.url()).pathname === '/rest/v1/attendances' && response.request().method() === 'POST');
+  await present.click();
+  const attendanceResponse = await persistedAttendance;
+  expect(attendanceResponse.ok(), 'El backend debe confirmar la inserción antes de recargar').toBe(true);
+  await expect(present).toHaveClass(/(?:^|\s)bg-emerald-500(?:\s|$)/);
 
-  await page.getByRole('button', { name: /registro/i }).first().click();
-  const attendanceSearch = page.getByPlaceholder(/buscar atleta por nombre/i).first();
-  await expect(attendanceSearch).toBeVisible({ timeout: 10000 });
-  await attendanceSearch.fill(firstName);
-
-  const athleteRow = page
-    .locator('div')
-    .filter({ hasText: firstName })
-    .filter({ has: page.getByRole('button', { name: /marcar asistencia con/i }).first() })
-    .first();
-  await expect(athleteRow).toBeVisible({ timeout: 30000 });
-
-  const monthlyButton = athleteRow.getByRole('button', { name: /marcar asistencia con mensualidad/i }).first();
-  if (await monthlyButton.count()) {
-    await monthlyButton.click();
-  } else {
-    await athleteRow.getByRole('button', { name: /marcar asistencia con/i }).first().click();
-  }
-
-  await expect(athleteRow.getByRole('button', { name: /eliminar asistencia/i }).first()).toBeVisible({ timeout: 15000 });
+  // Una recarga obliga a recuperar datos persistidos, sin mocks de Auth/REST.
+  await page.reload();
+  await expect(page.getByRole('button', { name: 'Abrir guia del panel' })).toBeVisible();
+  await openAdminSection(page, 'pagos');
+  await page.locator('#payments-search').fill(firstName);
+  await expect(page.locator('tbody tr').filter({ hasText: fullName }).locator('td[data-label="Monto"]')).toHaveText(/^\$\s*35[,.]00$/);
+  await openAdminSection(page, 'asistencias');
+  await page.getByRole('button', { name: /Registro R.pido/i }).click();
+  await page.locator('#attendance-date').fill(today);
+  await page.getByPlaceholder('Buscar atleta por nombre...').fill(firstName);
+  await expect(page.getByTestId('attendance-athlete-row').filter({ hasText: firstName }).getByRole('button', { name: 'Marcar como presente', exact: true })).toHaveClass(/(?:^|\s)bg-emerald-500(?:\s|$)/);
 });

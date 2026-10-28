@@ -1,0 +1,8 @@
+NOTICE:  extension "pgcrypto" already exists, skipping
+NOTICE:  extension "uuid-ossp" already exists, skipping
+NOTICE:  schema "public" already exists, skipping
+ERROR:  function calculate_age(date) does not exist
+LINE 7: "edad" integer GENERATED ALWAYS AS (calculate_age(fecha_naci...
+                                            ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+

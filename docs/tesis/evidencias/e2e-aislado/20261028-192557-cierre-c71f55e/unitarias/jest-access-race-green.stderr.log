@@ -1,0 +1,16 @@
+PASS src/features/student-dashboard/presentation/components/StudentPanel.access.test.js
+  √ deniega al visitante anónimo sin quedar cargando ni consultar datos (94 ms)
+  √ deniega administrador sin consultar el panel de estudiante (15 ms)
+  √ deniega entrenador sin consultar el panel de estudiante (15 ms)
+  √ espera la resolución del perfil antes de consultar datos de estudiante (3 ms)
+  √ un usuario sin perfil autorizado recibe denegación explícita (10 ms)
+  √ al cerrar sesión oculta el panel aunque finalice una petición anterior (48 ms)
+  √ una recarga silenciosa intercalada libera la carga normal vigente (691 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       7 passed, 7 total
+Snapshots:   0 total
+Time:        4.563 s, estimated 16 s
+Ran all test suites within paths "src/features/student-dashboard/presentation/components/StudentPanel.access.test.js".
+Test results written to: docs\tesis\evidencias\e2e-aislado\20261028-192557-cierre-c71f55e\jest-access-race-green.json
+

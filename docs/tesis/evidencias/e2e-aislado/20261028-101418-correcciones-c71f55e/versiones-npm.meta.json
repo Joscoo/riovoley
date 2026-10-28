@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "--version"
+  ],
+  "start": "2026-10-28T15:32:29.618Z",
+  "end": "2026-10-28T15:32:30.154Z",
+  "durationSeconds": 0.536,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

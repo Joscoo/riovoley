@@ -1,0 +1,49 @@
+{
+  "stage": ".e2e-local\\android-native\\20261028-155551\\project",
+  "web": "Build nuevo de las fuentes actuales; endpoint loopback y clave placeholder sin validez; PII key vacía. Su contenido se comprueba en PRIVACIDAD.json antes de la entrega.",
+  "nativeSources": "Copia de android y módulos Android instalados, sin modificar originales.",
+  "appId": "com.riovoley.app",
+  "updaterOverride": {
+    "autoUpdate": false
+  },
+  "omitted": [
+    "keystore de publicación",
+    "google-services.json",
+    "local.properties original",
+    "cachés y builds previos"
+  ],
+  "nativeModules": [
+    {
+      "name": "@capacitor/android",
+      "version": "8.4.0"
+    },
+    {
+      "name": "@capacitor/app",
+      "version": "8.1.0"
+    },
+    {
+      "name": "@capacitor/browser",
+      "version": "8.0.3"
+    },
+    {
+      "name": "@capacitor/filesystem",
+      "version": "8.1.2"
+    },
+    {
+      "name": "@capacitor/preferences",
+      "version": "8.0.1"
+    },
+    {
+      "name": "@capacitor/push-notifications",
+      "version": "8.1.1"
+    },
+    {
+      "name": "@capacitor/share",
+      "version": "8.0.1"
+    },
+    {
+      "name": "@capgo/capacitor-updater",
+      "version": "8.47.9"
+    }
+  ]
+}

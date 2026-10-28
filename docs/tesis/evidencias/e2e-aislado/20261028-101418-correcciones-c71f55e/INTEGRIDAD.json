@@ -1,0 +1,53 @@
+{
+  "observedAt": "2026-10-28T15:39:09.610Z",
+  "passed": 8,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Expedientes previos inalterados",
+      "status": "passed",
+      "details": [
+        {
+          "folder": "docs/tesis/evidencias/verificacion-tecnica/20261027-212222-c71f55e",
+          "checked": 612
+        },
+        {
+          "folder": "docs/tesis/evidencias/e2e-aislado/20261028-141243-c71f55e",
+          "checked": 254
+        }
+      ]
+    },
+    {
+      "name": "Mismos 112 casos y 17 fallos resueltos; cuatro límites adicionales",
+      "status": "passed"
+    },
+    {
+      "name": "395 casos Jest, 84 suites y cobertura verificable",
+      "status": "passed"
+    },
+    {
+      "name": "Siete cadenas persistidas, sin sumar controles SQL a E2E",
+      "status": "passed"
+    },
+    {
+      "name": "Compilación, guardas, RLS y seed verificadas",
+      "status": "passed"
+    },
+    {
+      "name": "Solo cambios previstos en fuentes existentes; lockfile intacto",
+      "status": "passed"
+    },
+    {
+      "name": "Privacidad de textos y archivos HTML embebidos",
+      "status": "passed",
+      "details": {
+        "textFilesChecked": 664,
+        "embeddedArchivesChecked": 13
+      }
+    },
+    {
+      "name": "Documentos y referencias relativas existentes",
+      "status": "passed"
+    }
+  ]
+}

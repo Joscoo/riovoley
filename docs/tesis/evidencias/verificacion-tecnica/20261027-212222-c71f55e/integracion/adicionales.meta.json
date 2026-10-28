@@ -1,0 +1,21 @@
+{
+  "command": [
+    "npm.cmd",
+    "test",
+    "--",
+    "gamification.audit.integration.test.js",
+    "--watchAll=false",
+    "--runInBand",
+    "--json",
+    "--outputFile=docs/tesis/evidencias/verificacion-tecnica/20261027-212222-c71f55e/integracion/adicionales-resultados.json"
+  ],
+  "cwd": ".",
+  "start": "2026-10-28T02:27:52.740Z",
+  "end": "2026-10-28T02:28:22.667Z",
+  "durationSeconds": 29.927,
+  "exitCode": 0,
+  "signal": null,
+  "environmentOverrides": {
+    "CI": "true"
+  }
+}

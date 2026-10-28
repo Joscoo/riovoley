@@ -1,0 +1,26 @@
+{
+  "command": [
+    "docker",
+    "--host",
+    "npipe:////./pipe/dockerDesktopLinuxEngine",
+    "exec",
+    "-i",
+    "supabase_db_riovoley-e2e-local",
+    "psql",
+    "-X",
+    "-U",
+    "postgres",
+    "-d",
+    "postgres",
+    "-v",
+    "ON_ERROR_STOP=1",
+    "-A",
+    "-t"
+  ],
+  "start": "2026-10-28T15:27:12.237Z",
+  "end": "2026-10-28T15:27:12.561Z",
+  "durationSeconds": 0.324,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

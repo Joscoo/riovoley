@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "scripts/audit/android/environment.test.cjs"
+  ],
+  "cwd": "",
+  "start": "2026-10-28T19:14:10.277Z",
+  "end": "2026-10-28T19:14:10.532Z",
+  "durationSeconds": 0.255,
+  "exitCode": 0,
+  "signal": null
+}

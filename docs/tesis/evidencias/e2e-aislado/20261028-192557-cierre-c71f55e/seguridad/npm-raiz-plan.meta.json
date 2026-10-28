@@ -1,0 +1,17 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "audit",
+    "fix",
+    "--dry-run",
+    "--ignore-scripts",
+    "--json"
+  ],
+  "start": "2026-10-28T19:40:15.328Z",
+  "end": "2026-10-28T19:44:03.436Z",
+  "durationSeconds": 228.108,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

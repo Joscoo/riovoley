@@ -1,0 +1,443 @@
+diff --git a/src/features/attendance/presentation/components/AsistenciasManager.js b/src/features/attendance/presentation/components/AsistenciasManager.js
+index aeba871..e265b65 100644
+--- a/src/features/attendance/presentation/components/AsistenciasManager.js
++++ b/src/features/attendance/presentation/components/AsistenciasManager.js
+@@ -713,13 +713,13 @@ const AsistenciasManager = ({ user }) => {
+     });
+ 
+     return (
+-      <div key={atleta.id} className={styles.atletaItemNew}>
++      <div key={atleta.id} className={styles.atletaItemNew} data-testid="attendance-athlete-row">
+         <div className={styles.atletaNameSection}>
+           <div className={styles.atletaIdentity}>
+             <span className={styles.atletaInitials} aria-hidden="true">
+               {attendanceService.getAthleteInitials({ athleteUser: atleta.users })}
+             </span>
+-            <span className={styles.atletaName} title={fullName}>
++            <span className={styles.atletaName} title={fullName} data-testid="attendance-athlete-name">
+               {displayName}
+             </span>
+           </div>
+@@ -735,7 +735,7 @@ const AsistenciasManager = ({ user }) => {
+           )}
+         </div>
+         
+-        <div className={styles.paymentButtons}>
++        <div className={styles.paymentButtons} data-testid="attendance-athlete-actions">
+           {hasActiveMensualidad ? (
+             <>
+               <button
+diff --git a/src/features/payments/presentation/components/PagosManager.js b/src/features/payments/presentation/components/PagosManager.js
+index 0020557..ac5b64d 100644
+--- a/src/features/payments/presentation/components/PagosManager.js
++++ b/src/features/payments/presentation/components/PagosManager.js
+@@ -752,6 +752,16 @@ const PagosManager = ({ user }) => {
+ 
+       <p className={styles.filterSummary}>Mostrando {paginatedPagos.length} de {pagos.length} pagos.</p>
+ 
++      {/* global.css presenta la tabla como tarjetas y oculta encabezados hasta 767px. */}
++      <div role="group" aria-label="Ordenar pagos" className="flex flex-wrap gap-3 text-sm text-white min-[768px]:hidden">
++        {[
++          ['atleta', 'Atleta'], ['membership_type', 'Mensualidad'], ['periodo', 'Período'],
++          ['monto', 'Monto'], ['estado', 'Estado'], ['fecha_pago', 'Fecha Pago'],
++        ].map(([field, label]) => (
++          <SortableHeader key={field} field={field} label={label} sort={queryState.sort} onToggleSort={toggleSort} asCell={false} />
++        ))}
++      </div>
++
+       {/* Lista de Pagos */}
+       {loading ? (
+         <div className={styles.loading}>
+diff --git a/src/shared/ui/SortableHeader.js b/src/shared/ui/SortableHeader.js
+index fb4c67c..03325d9 100644
+--- a/src/shared/ui/SortableHeader.js
++++ b/src/shared/ui/SortableHeader.js
+@@ -22,10 +22,12 @@ const SortableHeader = ({
+   const isActive = sort?.field === field && sort?.direction !== SORT_DIRECTION.NONE;
+   const ariaSort = getAriaSort({ sort, field });
+   const icon = resolveIcon({ active: isActive, direction: sort?.direction });
++  const sortDescription = { none: 'sin ordenar', ascending: 'ascendente', descending: 'descendente' }[ariaSort];
+ 
+   const button = (
+     <button
+       type="button"
++      aria-label={asCell ? undefined : `Ordenar por ${label}: ${sortDescription}`}
+       onClick={() => onToggleSort(field)}
+       className={`inline-flex min-h-[44px] items-center gap-2 text-left ${buttonClassName}`}
+     >
+diff --git a/src/shared/ui/SortableHeader.test.js b/src/shared/ui/SortableHeader.test.js
+index 746f5a3..2a87d9c 100644
+--- a/src/shared/ui/SortableHeader.test.js
++++ b/src/shared/ui/SortableHeader.test.js
+@@ -4,6 +4,19 @@ import SortableHeader from './SortableHeader';
+ import { SORT_DIRECTION } from '../lib/tableQuery';
+ 
+ describe('SortableHeader', () => {
++  test.each([
++    [null, SORT_DIRECTION.NONE, 'sin ordenar'],
++    ['monto', SORT_DIRECTION.ASC, 'ascendente'],
++    ['monto', SORT_DIRECTION.DESC, 'descendente'],
++  ])('expone el estado de orden fuera de una tabla: %s %s', (field, direction, state) => {
++    const onToggleSort = jest.fn();
++    render(<SortableHeader field="monto" label="Monto" sort={{ field, direction }} onToggleSort={onToggleSort} asCell={false} />);
++    const button = screen.getByRole('button', { name: `Ordenar por Monto: ${state}` });
++    fireEvent.click(button);
++    expect(onToggleSort).toHaveBeenCalledWith('monto');
++    expect(button.closest('th')).toBeNull();
++  });
++
+   test('renders with aria-sort none by default', () => {
+     const onToggleSort = jest.fn();
+ 
+diff --git a/tests/e2e/admin.happy-path-controlled.spec.js b/tests/e2e/admin.happy-path-controlled.spec.js
+index a5c5f3c..c455856 100644
+--- a/tests/e2e/admin.happy-path-controlled.spec.js
++++ b/tests/e2e/admin.happy-path-controlled.spec.js
+@@ -1,134 +1,92 @@
+-const { test, expect } = require('@playwright/test');
+-
+-const ADMIN_EMAIL = process.env.E2E_ADMIN_EMAIL;
+-const ADMIN_PASSWORD = process.env.E2E_ADMIN_PASSWORD;
++﻿const { test, expect } = require('@playwright/test');
++const { randomUUID } = require('node:crypto');
++const { loginAsAdmin, openAdminSection } = require('./helpers/adminNavigation');
+ const ENABLE_MUTATION_FLOW = process.env.E2E_ENABLE_MUTATION_FLOW === 'true';
+ 
+-async function loginAsAdmin(page) {
+-  await page.goto('/login', { waitUntil: 'domcontentloaded' });
+-  await page.waitForLoadState('load');
+-
+-  await page.getByLabel(/correo/i).fill(ADMIN_EMAIL);
+-  await page.getByLabel(/contrase/i).fill(ADMIN_PASSWORD);
+-
+-  const submitButton = page.locator('form button[type="submit"]').first();
+-  if (await submitButton.count()) {
+-    await submitButton.click();
+-  } else {
+-    await page
+-      .getByRole('button', { name: /ingresar|iniciar sesion|iniciar sesi/i })
+-      .first()
+-      .click();
+-  }
+-
+-  await page.waitForURL(/\/admin|\/login/, { timeout: 20000 });
+-  await expect(page).toHaveURL(/\/admin/);
+-}
+-
+-async function openSidebarIfNeeded(page) {
+-  const openSidebarButton = page.getByRole('button', { name: /abrir menu lateral/i }).first();
+-  const userManagementButton = page.getByRole('button', { name: /gestion de usuarios/i }).first();
+-
+-  if (!(await userManagementButton.isVisible()) && (await openSidebarButton.count())) {
+-    await openSidebarButton.click();
+-  }
+-}
+-
+-async function openSection(page, sectionNameRegex) {
+-  await openSidebarIfNeeded(page);
+-  const sectionButton = page.getByRole('button', { name: sectionNameRegex }).first();
+-  await expect(sectionButton).toBeVisible({ timeout: 15000 });
+-  await sectionButton.click();
+-}
+-
+-test('admin happy path controlado: atleta + pago + asistencia', async ({ page }) => {
+-  test.skip(!ADMIN_EMAIL || !ADMIN_PASSWORD, 'Missing E2E_ADMIN_EMAIL/E2E_ADMIN_PASSWORD environment variables.');
++test('admin happy path controlado: atleta + pago + asistencia', async ({ page }, testInfo) => {
++  test.skip(!process.env.E2E_ADMIN_EMAIL || !process.env.E2E_ADMIN_PASSWORD, 'Missing E2E_ADMIN_EMAIL/E2E_ADMIN_PASSWORD environment variables.');
+   test.skip(!ENABLE_MUTATION_FLOW, 'Set E2E_ENABLE_MUTATION_FLOW=true to run mutation flow.');
++  // Las altas se autorizan exclusivamente en el entorno descartable de este arnés.
++  expect(process.env.E2E_LOCAL_LABEL, 'Usar playwright.local.config.cjs y el arnés aislado').toBeTruthy();
++  expect(testInfo.project.use.baseURL).toBe('http://127.0.0.1:6100');
++  require('../../scripts/e2e/local/safety.cjs').readLocal();
+ 
+-  page.on('dialog', async (dialog) => {
+-    if (dialog.type() === 'confirm') {
+-      await dialog.dismiss();
+-      return;
+-    }
+-    await dialog.accept();
+-  });
+-
+-  const uniqueSuffix = `${Date.now()}${Math.floor(Math.random() * 1000)}`.slice(-9);
+-  const firstName = `E2E${uniqueSuffix}`;
+-  const lastName = 'Flow';
+-  const fullName = `${firstName} ${lastName}`;
+-  const email = `e2e.flow.${uniqueSuffix}@example.com`;
+-  const today = new Date().toISOString().slice(0, 10);
++  const suffix = randomUUID().replaceAll('-', '').slice(0, 12);
++  const firstName = `E2E${suffix}`;
++  const fullName = `${firstName} Flow`;
++  const email = `e2e.flow.${suffix}@example.test`;
++  const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Guayaquil', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+ 
+   await loginAsAdmin(page);
+-
+-  await openSection(page, /gestion de usuarios/i);
+-  await expect(page.getByText(/gestion de usuarios/i).first()).toBeVisible({ timeout: 15000 });
+-
+-  const athletesTab = page.getByRole('button', { name: /^atletas$/i }).first();
+-  await expect(athletesTab).toBeVisible({ timeout: 10000 });
+-  await athletesTab.click();
+-
+-  const addAthleteButton = page.getByRole('button', { name: /agregar atleta/i }).first();
+-  await expect(addAthleteButton).toBeVisible({ timeout: 10000 });
+-  await addAthleteButton.click();
+-
+-  const athleteModal = page.getByRole('dialog');
+-  await expect(athleteModal).toBeVisible({ timeout: 10000 });
+-  await athleteModal.locator('#nombre').fill(firstName);
+-  await athleteModal.locator('#apellido').fill(lastName);
+-  await athleteModal.locator('#email').fill(email);
+-  await athleteModal.locator('#telefono').fill('0999999999');
+-  await athleteModal.locator('#fecha_nacimiento').fill('2010-01-01');
+-  await athleteModal.locator('#categoria').selectOption('iniciacion_hombres');
+-  await athleteModal.getByRole('button', { name: /^guardar$/i }).click();
+-
+-  await expect(athleteModal).toBeHidden({ timeout: 60000 });
+-
+-  await page.locator('#athlete-search').fill(email);
+-  await expect(page.getByText(email).first()).toBeVisible({ timeout: 30000 });
+-
+-  await openSection(page, /^pagos$/i);
+-  await expect(page.getByText(/gestion de pagos/i).first()).toBeVisible({ timeout: 15000 });
+-
+-  const addPaymentButton = page.getByRole('button', { name: /registrar pago/i }).first();
+-  await expect(addPaymentButton).toBeVisible({ timeout: 10000 });
+-  await addPaymentButton.click();
+-
+-  const paymentModal = page.getByRole('dialog');
+-  await expect(paymentModal).toBeVisible({ timeout: 10000 });
+-  await paymentModal.locator('#student_id').fill(firstName);
+-  await paymentModal.locator('li').filter({ hasText: fullName }).first().click();
+-  await paymentModal.locator('#monto').fill('25');
+-  await paymentModal.locator('#fecha_pago').fill(today);
+-  await paymentModal.getByRole('button', { name: /^guardar$/i }).click();
+-
+-  await expect(paymentModal).toBeHidden({ timeout: 60000 });
+-
++  // Ocultar visualmente las contraseñas temporales en capturas, sin alterar su valor.
++  await page.addStyleTag({ content: '[role="dialog"] code { -webkit-text-security: disc; }' });
++  await openAdminSection(page, 'usuarios');
++  await page.getByRole('tab', { name: /Estudiantes/i }).click();
++  await page.getByRole('button', { name: /Agregar Estudiante/i }).first().click();
++  const form = page.getByRole('dialog', { name: 'Agregar Nuevo Estudiante' });
++  await expect(form).toBeVisible();
++  await form.getByPlaceholder('Ingrese el nombre', { exact: true }).fill(firstName);
++  await form.getByPlaceholder('Ingrese el apellido').fill('Flow');
++  await form.locator('input[type="email"]').fill(email);
++  await form.locator('input[type="tel"]').fill('0999999999');
++  await form.locator('input[type="date"]').fill('2010-01-01');
++  await form.locator('select').selectOption('iniciacion_hombres');
++  await form.getByRole('radio', { name: 'No, enviar despues' }).check();
++  await form.getByRole('button', { name: /^Crear$/i }).click();
++
++  const credentials = page.getByRole('dialog', { name: 'Credenciales de la cuenta creada' });
++  await expect(credentials).toBeVisible({ timeout: 30000 });
++  const password = await credentials.locator('code').textContent();
++  // Solo runtime ignorado; la revisión de privacidad conoce también claves creadas por UI.
++  const fs = require('node:fs');
++  const path = require('node:path');
++  const { runtime } = require('../../scripts/e2e/local/safety.cjs');
++  fs.appendFileSync(path.join(runtime, 'observed-secrets.jsonl'), JSON.stringify({ password }) + '\n');
++  await credentials.getByRole('button', { name: /^Cerrar$/i }).click();
++  await expect(form).toBeHidden();
++  await page.locator('#user-filters-atleta-search').fill(email);
++  await expect(page.getByText(email, { exact: true }).first()).toBeVisible();
++
++  await openAdminSection(page, 'pagos');
++  await page.getByRole('button', { name: /Registrar Pago/i }).first().click();
++  const payment = page.getByRole('dialog');
++  await payment.locator('#student_id').fill(firstName);
++  await payment.getByRole('button', { name: new RegExp(fullName, 'i') }).click();
++  await payment.locator('#membership_type_id').selectOption({ label: 'Mensualidad normal' });
++  await expect(payment.locator('#monto')).toBeDisabled();
++  await expect(payment.locator('#monto')).toHaveValue(/^\$\s*35[,.]00$/);
++  await payment.locator('#fecha_pago').fill(today);
++  await payment.getByRole('button', { name: /^Guardar$/i }).click();
++  await expect(payment).toBeHidden({ timeout: 30000 });
+   await page.locator('#payments-search').fill(firstName);
+-  await expect(page.getByText(fullName).first()).toBeVisible({ timeout: 30000 });
+-
+-  await openSection(page, /^asistencias$/i);
+-  await expect(page.getByText(/control de asistencias/i).first()).toBeVisible({ timeout: 15000 });
+-
+-  await page.getByRole('button', { name: /registro/i }).first().click();
+-  const attendanceSearch = page.getByPlaceholder(/buscar atleta por nombre/i).first();
+-  await expect(attendanceSearch).toBeVisible({ timeout: 10000 });
+-  await attendanceSearch.fill(firstName);
+-
+-  const athleteRow = page
+-    .locator('div')
+-    .filter({ hasText: firstName })
+-    .filter({ has: page.getByRole('button', { name: /marcar asistencia con/i }).first() })
+-    .first();
+-  await expect(athleteRow).toBeVisible({ timeout: 30000 });
+-
+-  const monthlyButton = athleteRow.getByRole('button', { name: /marcar asistencia con mensualidad/i }).first();
+-  if (await monthlyButton.count()) {
+-    await monthlyButton.click();
+-  } else {
+-    await athleteRow.getByRole('button', { name: /marcar asistencia con/i }).first().click();
+-  }
+-
+-  await expect(athleteRow.getByRole('button', { name: /eliminar asistencia/i }).first()).toBeVisible({ timeout: 15000 });
++  const paymentRow = page.locator('tbody tr').filter({ hasText: fullName });
++  await expect(paymentRow).toHaveCount(1);
++  await expect(paymentRow.locator('td[data-label="Monto"]')).toHaveText(/^\$\s*35[,.]00$/);
++
++  await openAdminSection(page, 'asistencias');
++  await page.getByRole('button', { name: /Registro R.pido/i }).click();
++  await page.locator('#attendance-date').fill(today);
++  await page.getByPlaceholder('Buscar atleta por nombre...').fill(firstName);
++  const athleteRow = page.getByTestId('attendance-athlete-row').filter({ hasText: firstName });
++  await expect(athleteRow).toHaveCount(1);
++  const present = athleteRow.getByRole('button', { name: 'Marcar como presente', exact: true });
++  await expect(present).toBeVisible(); // La mensualidad debe habilitar el control correspondiente.
++  const persistedAttendance = page.waitForResponse(response =>
++    new URL(response.url()).pathname === '/rest/v1/attendances' && response.request().method() === 'POST');
++  await present.click();
++  const attendanceResponse = await persistedAttendance;
++  expect(attendanceResponse.ok(), 'El backend debe confirmar la inserción antes de recargar').toBe(true);
++  await expect(present).toHaveClass(/(?:^|\s)bg-emerald-500(?:\s|$)/);
++
++  // Una recarga obliga a recuperar datos persistidos, sin mocks de Auth/REST.
++  await page.reload();
++  await expect(page.getByRole('button', { name: 'Abrir guia del panel' })).toBeVisible();
++  await openAdminSection(page, 'pagos');
++  await page.locator('#payments-search').fill(firstName);
++  await expect(page.locator('tbody tr').filter({ hasText: fullName }).locator('td[data-label="Monto"]')).toHaveText(/^\$\s*35[,.]00$/);
++  await openAdminSection(page, 'asistencias');
++  await page.getByRole('button', { name: /Registro R.pido/i }).click();
++  await page.locator('#attendance-date').fill(today);
++  await page.getByPlaceholder('Buscar atleta por nombre...').fill(firstName);
++  await expect(page.getByTestId('attendance-athlete-row').filter({ hasText: firstName }).getByRole('button', { name: 'Marcar como presente', exact: true })).toHaveClass(/(?:^|\s)bg-emerald-500(?:\s|$)/);
+ });
+diff --git a/tests/e2e/asistencias.guided.review.spec.js b/tests/e2e/asistencias.guided.review.spec.js
+index 22095b5..bc3e273 100644
+--- a/tests/e2e/asistencias.guided.review.spec.js
++++ b/tests/e2e/asistencias.guided.review.spec.js
+@@ -1,31 +1,20 @@
+-const { test, expect } = require('@playwright/test');
++﻿const { test, expect } = require('@playwright/test');
++
++const { loginAsAdmin, openAdminSection } = require('./helpers/adminNavigation');
+ 
+ const ADMIN_EMAIL = process.env.E2E_ADMIN_EMAIL;
+ const ADMIN_PASSWORD = process.env.E2E_ADMIN_PASSWORD;
+ 
+ async function ensureQuickMode(page) {
+-  const quickModeButton = page.getByRole('button', { name: /registro rapido|registro rápido/i });
+-  if (await quickModeButton.count()) {
+-    await quickModeButton.first().click();
+-  }
+-}
+-
+-async function openAsistenciasModule(page) {
+-  await page.goto('/admin', { waitUntil: 'domcontentloaded' });
+-  await page.waitForLoadState('load');
+-
+-  const asistenciasMenuButton = page.getByRole('button', { name: /asistencias/i });
+-  await expect(asistenciasMenuButton.first()).toBeVisible({ timeout: 15000 });
+-  await asistenciasMenuButton.first().click();
+-
+-  await expect(page.getByRole('heading', { name: /control de asistencias/i })).toBeVisible({ timeout: 15000 });
++  await expect(page.getByRole('heading', { name: /control de asistencias/i })).toBeVisible();
++  await page.getByRole('button', { name: /registro r.pido/i }).click();
+ }
+ 
+ async function collectAsistenciasMetrics(page) {
+   return page.evaluate(() => {
+-    const rows = Array.from(document.querySelectorAll('[class*="atletaItemNew"]'));
+-    const names = Array.from(document.querySelectorAll('[class*="atletaNameSection"] [class*="atletaName"]'));
+-    const actionGroups = Array.from(document.querySelectorAll('[class*="paymentButtons"]'));
++    const rows = Array.from(document.querySelectorAll('[data-testid="attendance-athlete-row"]'));
++    const names = Array.from(document.querySelectorAll('[data-testid="attendance-athlete-name"]'));
++    const actionGroups = Array.from(document.querySelectorAll('[data-testid="attendance-athlete-actions"]'));
+ 
+     const rowWidths = rows.map((el) => Math.round(el.getBoundingClientRect().width));
+     const nameWidths = names.map((el) => Math.round(el.getBoundingClientRect().width));
+@@ -61,25 +50,12 @@ async function collectAsistenciasMetrics(page) {
+ test('guided review: admin asistencias quick mode per viewport', async ({ page }, testInfo) => {
+   test.skip(!ADMIN_EMAIL || !ADMIN_PASSWORD, 'Missing E2E_ADMIN_EMAIL/E2E_ADMIN_PASSWORD environment variables.');
+ 
+-  await page.goto('/login', { waitUntil: 'domcontentloaded' });
+-  await page.waitForLoadState('load');
+-
+-  await page.getByLabel('Correo Electrónico').fill(ADMIN_EMAIL);
+-  await page.getByLabel('Contraseña').fill(ADMIN_PASSWORD);
+-
+-  const submitButton = page.locator('form button[type="submit"]').first();
+-  if (await submitButton.count()) {
+-    await submitButton.click();
+-  } else {
+-    await page.getByRole('button', { name: /ingresar|iniciar sesion|iniciar sesión|iniciar sesión con supabase/i }).first().click();
+-  }
+-
+-  await page.waitForURL(/\/admin|\/login/, { timeout: 20000 });
+-  await expect(page).toHaveURL(/\/admin/);
+-
+-  await openAsistenciasModule(page);
++  await loginAsAdmin(page);
++  await openAdminSection(page, 'asistencias');
+   await ensureQuickMode(page);
+ 
++  await expect(page.getByTestId('attendance-athlete-row').first()).toBeVisible();
++
+   const screenshotPath = testInfo.outputPath(`asistencias-quick-${testInfo.project.name}.png`);
+   const isMobileProject = /mobile/i.test(testInfo.project.name);
+   const pageHeight = await page.evaluate(() => {
+@@ -101,8 +77,10 @@ test('guided review: admin asistencias quick mode per viewport', async ({ page }
+   // Soft checks to avoid blocking the run while still flagging bad layouts.
+   expect.soft(metrics.hasHorizontalOverflow, `Overflow in ${testInfo.project.name}`).toBeFalsy();
+ 
+-  if (metrics.rowCount > 0) {
+-    expect.soft(metrics.minName, `Name width too small in ${testInfo.project.name}`).toBeGreaterThan(90);
+-    expect.soft(metrics.maxActions, `Actions consuming too much width in ${testInfo.project.name}`).toBeLessThanOrEqual(metrics.viewport);
+-  }
++  expect(metrics.rowCount).toBeGreaterThan(0);
++  expect(metrics.nameCount).toBe(metrics.rowCount);
++  expect(metrics.actionGroupCount).toBe(metrics.rowCount);
++  expect.soft(metrics.minName, `Name width too small in ${testInfo.project.name}`).toBeGreaterThan(90);
++  expect.soft(metrics.maxActions, `Actions consuming too much width in ${testInfo.project.name}`).toBeLessThanOrEqual(metrics.viewport);
+ });
++
+diff --git a/tests/e2e/filters-sorting.tables.spec.js b/tests/e2e/filters-sorting.tables.spec.js
+index 51dc41a..7b7bbcb 100644
+--- a/tests/e2e/filters-sorting.tables.spec.js
++++ b/tests/e2e/filters-sorting.tables.spec.js
+@@ -1,5 +1,6 @@
+ const { test, expect } = require('@playwright/test');
+ const { openAdminSection, loginAsAdmin } = require('./helpers/adminNavigation');
++const { assertPaymentAmountsSorted } = require('./helpers/paymentsSorting');
+ 
+ const ADMIN_EMAIL = process.env.E2E_ADMIN_EMAIL;
+ const ADMIN_PASSWORD = process.env.E2E_ADMIN_PASSWORD;
+@@ -49,9 +50,24 @@ test('pagos: filtros base + orden de columnas por header', async ({ page }) => {
+   await expect(statusFilter).toHaveValue('');
+   await expect(athleteFilter).toHaveValue('');
+ 
+-  const montoHeaderButton = page.getByRole('button', { name: /^monto$/i }).first();
+-  await expect(montoHeaderButton).toBeVisible();
+-  await assertThreeStateSortFromHeaderButton(montoHeaderButton);
++  const mobileSort = page.getByRole('group', { name: 'Ordenar pagos' });
++  const onCards = await mobileSort.isVisible();
++  const montoButton = onCards
++    ? mobileSort.getByRole('button', { name: /^Ordenar por Monto:/ })
++    : page.getByRole('button', { name: /^monto$/i }).first();
++  const header = montoButton.locator('xpath=ancestor::th[1]');
++  const assertSortState = async (state, description) => {
++    if (onCards) await expect(montoButton).toHaveAccessibleName(`Ordenar por Monto: ${description}`);
++    else await expect(header).toHaveAttribute('aria-sort', state);
++  };
++  await expect(montoButton).toBeVisible();
++  await assertSortState('none', 'sin ordenar');
++  await assertPaymentAmountsSorted(page, false, montoButton);
++  await assertSortState('ascending', 'ascendente');
++  await assertPaymentAmountsSorted(page, true, montoButton);
++  await assertSortState('descending', 'descendente');
++  await montoButton.click();
++  await assertSortState('none', 'sin ordenar');
+ 
+   const initialOverflow = await page.evaluate(() => document.body.style.overflow);
+   await page.getByRole('main').getByRole('button', { name: /registrar pago|agregar pago/i }).first().click();
+

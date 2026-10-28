@@ -1,0 +1,22 @@
+const fs=require('node:fs');
+const path=require('node:path');
+const assert=require('node:assert/strict');
+const c=require('./context.cjs');
+const read=file=>JSON.parse(fs.readFileSync(path.join(c.base,file),'utf8'));
+const put=(file,data)=>fs.writeFileSync(path.join(c.base,file),JSON.stringify(data,null,2)+'\n');
+const r=read('resumen-android.json');
+r.capacitorSync.plugins=read('android/configuracion-final.json').nativeModules.filter(m=>m.name!=='@capacitor/android').length;
+assert.equal(r.capacitorSync.plugins,7);put('resumen-android.json',r);
+const sync=fs.readFileSync(path.join(c.base,r.capacitorSync.metadata.replace('.meta.json','.stdout.log')),'utf8');
+assert.match(sync,/Found 7 Capacitor plugins/);
+assert.equal(c.hash(path.join(c.base,r.artifact.file)),r.artifact.sha256);
+assert.equal(c.hash(path.join(c.work,'project/android/app/build/outputs/apk/debug/app-debug.apk')),r.artifact.sha256);
+const sources=fs.readdirSync(__dirname).filter(name=>/\.(cjs|py|md)$/.test(name)).map(name=>({file:'scripts/audit/android/'+name,sha256:c.hash(path.join(__dirname,name))}));
+put('android/fuentes-arnes.json',sources);
+const integrity=read('INTEGRIDAD.json');
+assert.equal(integrity.failed,0);integrity.generatedAt=new Date().toISOString();integrity.checks[0].details={nativePlugins:7,coreModuleExcludedFromPluginCount:true};put('INTEGRIDAD.json',integrity);
+function walk(dir) {return fs.readdirSync(dir,{withFileTypes:true}).flatMap(d=>d.isDirectory()?walk(path.join(dir,d.name)):[path.join(dir,d.name)]);}
+const files=walk(c.base).filter(file=>path.basename(file)!=='MANIFIESTO_SHA256.json');
+put('MANIFIESTO_SHA256.json',{generatedAt:new Date().toISOString(),algorithm:'SHA-256',selfExcluded:true,entries:files.map(file=>({file:path.relative(c.base,file).replaceAll('\\','/'),bytes:fs.statSync(file).size,sha256:c.hash(file)}))});
+for(const item of read('MANIFIESTO_SHA256.json').entries)assert.equal(c.hash(path.join(c.base,item.file)),item.sha256);
+console.log(JSON.stringify({plugins:r.capacitorSync.plugins,integrityPassed:integrity.passed,files:files.length,mismatches:0}));

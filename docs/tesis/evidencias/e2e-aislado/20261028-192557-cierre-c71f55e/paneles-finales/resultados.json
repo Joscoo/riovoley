@@ -1,0 +1,4543 @@
+{
+  "config": {
+    "configFile": "D:\\Riovoley\\riovoley\\playwright.local.config.cjs",
+    "rootDir": "D:/Riovoley/riovoley/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/paneles-finales/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "mobile-390",
+        "name": "mobile-390",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/paneles-finales/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "mobile-430",
+        "name": "mobile-430",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/paneles-finales/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "mobile-480",
+        "name": "mobile-480",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/paneles-finales/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "tablet-768",
+        "name": "tablet-768",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/paneles-finales/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "tablet-1024",
+        "name": "tablet-1024",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/paneles-finales/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "desktop-1440",
+        "name": "desktop-1440",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/paneles-finales/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "desktop-1920",
+        "name": "desktop-1920",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-192557-cierre-c71f55e\\paneles-finales\\resultados.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-192557-cierre-c71f55e\\paneles-finales\\html",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.59.1",
+    "workers": 2,
+    "webServer": {
+      "command": "node scripts/e2e/local/server.cjs",
+      "url": "http://127.0.0.1:6100",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "admin.modules-navigation.spec.js",
+      "file": "admin.modules-navigation.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "admin: every module opens without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 58386,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "dashboard",
+                      "duration": 4313
+                    },
+                    {
+                      "title": "reportes",
+                      "duration": 4728
+                    },
+                    {
+                      "title": "revision-financiera",
+                      "duration": 4976
+                    },
+                    {
+                      "title": "usuarios",
+                      "duration": 5700
+                    },
+                    {
+                      "title": "pagos",
+                      "duration": 4664
+                    },
+                    {
+                      "title": "asistencias",
+                      "duration": 4551
+                    },
+                    {
+                      "title": "horarios",
+                      "duration": 8195
+                    },
+                    {
+                      "title": "tests-fisicos",
+                      "duration": 5004
+                    },
+                    {
+                      "title": "anuncios",
+                      "duration": 3084
+                    },
+                    {
+                      "title": "gamificacion",
+                      "duration": 3758
+                    },
+                    {
+                      "title": "configuracion",
+                      "duration": 4421
+                    }
+                  ],
+                  "startTime": "2026-10-28T20:11:42.578Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b787178f153ca9d4ea9b-8d99252aed71bde075a2",
+          "file": "admin.modules-navigation.spec.js",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "admin: every module opens without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 61531,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "dashboard",
+                      "duration": 5241
+                    },
+                    {
+                      "title": "reportes",
+                      "duration": 5626
+                    },
+                    {
+                      "title": "revision-financiera",
+                      "duration": 5521
+                    },
+                    {
+                      "title": "usuarios",
+                      "duration": 5760
+                    },
+                    {
+                      "title": "pagos",
+                      "duration": 4708
+                    },
+                    {
+                      "title": "asistencias",
+                      "duration": 5304
+                    },
+                    {
+                      "title": "horarios",
+                      "duration": 4438
+                    },
+                    {
+                      "title": "tests-fisicos",
+                      "duration": 5134
+                    },
+                    {
+                      "title": "anuncios",
+                      "duration": 3251
+                    },
+                    {
+                      "title": "gamificacion",
+                      "duration": 4308
+                    },
+                    {
+                      "title": "configuracion",
+                      "duration": 6976
+                    }
+                  ],
+                  "startTime": "2026-10-28T20:13:53.762Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b787178f153ca9d4ea9b-6622c1bf3d833e4411c5",
+          "file": "admin.modules-navigation.spec.js",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "admin: every module opens without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 14019,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "dashboard",
+                      "duration": 678
+                    },
+                    {
+                      "title": "reportes",
+                      "duration": 1136
+                    },
+                    {
+                      "title": "revision-financiera",
+                      "duration": 1167
+                    },
+                    {
+                      "title": "usuarios",
+                      "duration": 680
+                    },
+                    {
+                      "title": "pagos",
+                      "duration": 900
+                    },
+                    {
+                      "title": "asistencias",
+                      "duration": 1043
+                    },
+                    {
+                      "title": "horarios",
+                      "duration": 1173
+                    },
+                    {
+                      "title": "tests-fisicos",
+                      "duration": 1001
+                    },
+                    {
+                      "title": "anuncios",
+                      "duration": 1015
+                    },
+                    {
+                      "title": "gamificacion",
+                      "duration": 1080
+                    },
+                    {
+                      "title": "configuracion",
+                      "duration": 976
+                    }
+                  ],
+                  "startTime": "2026-10-28T20:16:39.698Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b787178f153ca9d4ea9b-243975aadd8c46e16a6f",
+          "file": "admin.modules-navigation.spec.js",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "admin: every module opens without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 48029,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "dashboard",
+                      "duration": 2851
+                    },
+                    {
+                      "title": "reportes",
+                      "duration": 4144
+                    },
+                    {
+                      "title": "revision-financiera",
+                      "duration": 3738
+                    },
+                    {
+                      "title": "usuarios",
+                      "duration": 4540
+                    },
+                    {
+                      "title": "pagos",
+                      "duration": 4287
+                    },
+                    {
+                      "title": "asistencias",
+                      "duration": 5070
+                    },
+                    {
+                      "title": "horarios",
+                      "duration": 3599
+                    },
+                    {
+                      "title": "tests-fisicos",
+                      "duration": 4280
+                    },
+                    {
+                      "title": "anuncios",
+                      "duration": 3135
+                    },
+                    {
+                      "title": "gamificacion",
+                      "duration": 2973
+                    },
+                    {
+                      "title": "configuracion",
+                      "duration": 5108
+                    }
+                  ],
+                  "startTime": "2026-10-28T20:17:26.004Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b787178f153ca9d4ea9b-d2cc51f32d3ad1d96597",
+          "file": "admin.modules-navigation.spec.js",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "admin: every module opens without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7488,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "dashboard",
+                      "duration": 181
+                    },
+                    {
+                      "title": "reportes",
+                      "duration": 573
+                    },
+                    {
+                      "title": "revision-financiera",
+                      "duration": 598
+                    },
+                    {
+                      "title": "usuarios",
+                      "duration": 148
+                    },
+                    {
+                      "title": "pagos",
+                      "duration": 608
+                    },
+                    {
+                      "title": "asistencias",
+                      "duration": 589
+                    },
+                    {
+                      "title": "horarios",
+                      "duration": 512
+                    },
+                    {
+                      "title": "tests-fisicos",
+                      "duration": 531
+                    },
+                    {
+                      "title": "anuncios",
+                      "duration": 499
+                    },
+                    {
+                      "title": "gamificacion",
+                      "duration": 512
+                    },
+                    {
+                      "title": "configuracion",
+                      "duration": 560
+                    }
+                  ],
+                  "startTime": "2026-10-28T20:19:13.141Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b787178f153ca9d4ea9b-db78842b3077d263dbba",
+          "file": "admin.modules-navigation.spec.js",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "admin: every module opens without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8151,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "dashboard",
+                      "duration": 144
+                    },
+                    {
+                      "title": "reportes",
+                      "duration": 767
+                    },
+                    {
+                      "title": "revision-financiera",
+                      "duration": 695
+                    },
+                    {
+                      "title": "usuarios",
+                      "duration": 194
+                    },
+                    {
+                      "title": "pagos",
+                      "duration": 623
+                    },
+                    {
+                      "title": "asistencias",
+                      "duration": 551
+                    },
+                    {
+                      "title": "horarios",
+                      "duration": 568
+                    },
+                    {
+                      "title": "tests-fisicos",
+                      "duration": 559
+                    },
+                    {
+                      "title": "anuncios",
+                      "duration": 651
+                    },
+                    {
+                      "title": "gamificacion",
+                      "duration": 546
+                    },
+                    {
+                      "title": "configuracion",
+                      "duration": 533
+                    }
+                  ],
+                  "startTime": "2026-10-28T20:19:52.320Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b787178f153ca9d4ea9b-41c7f16a301bcb325c18",
+          "file": "admin.modules-navigation.spec.js",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "admin: every module opens without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 8620,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "dashboard",
+                      "duration": 281
+                    },
+                    {
+                      "title": "reportes",
+                      "duration": 550
+                    },
+                    {
+                      "title": "revision-financiera",
+                      "duration": 708
+                    },
+                    {
+                      "title": "usuarios",
+                      "duration": 351
+                    },
+                    {
+                      "title": "pagos",
+                      "duration": 592
+                    },
+                    {
+                      "title": "asistencias",
+                      "duration": 700
+                    },
+                    {
+                      "title": "horarios",
+                      "duration": 538
+                    },
+                    {
+                      "title": "tests-fisicos",
+                      "duration": 526
+                    },
+                    {
+                      "title": "anuncios",
+                      "duration": 650
+                    },
+                    {
+                      "title": "gamificacion",
+                      "duration": 530
+                    },
+                    {
+                      "title": "configuracion",
+                      "duration": 536
+                    }
+                  ],
+                  "startTime": "2026-10-28T20:20:26.698Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b787178f153ca9d4ea9b-4de27b97f478ef0e5c68",
+          "file": "admin.modules-navigation.spec.js",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "admin.provisioning-notifications.smoke.spec.js",
+      "file": "admin.provisioning-notifications.smoke.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "admin smoke: provisioning + notifications entrypoints",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 15960,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:42.434Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "14471a0b00e321a1303f-90e09ca29206671f08bc",
+          "file": "admin.provisioning-notifications.smoke.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "admin smoke: provisioning + notifications entrypoints",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 17251,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:14:06.745Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "14471a0b00e321a1303f-e520282d2b9b99dc763c",
+          "file": "admin.provisioning-notifications.smoke.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "admin smoke: provisioning + notifications entrypoints",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4036,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:16:54.014Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "14471a0b00e321a1303f-92d60c2bdf3339b776c8",
+          "file": "admin.provisioning-notifications.smoke.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "admin smoke: provisioning + notifications entrypoints",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12803,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:17:31.260Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "14471a0b00e321a1303f-a7e3d8720587fdf33c5f",
+          "file": "admin.provisioning-notifications.smoke.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "admin smoke: provisioning + notifications entrypoints",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3487,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:19:21.003Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "14471a0b00e321a1303f-89992f42ddd1e3e363af",
+          "file": "admin.provisioning-notifications.smoke.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "admin smoke: provisioning + notifications entrypoints",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3908,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:19:53.172Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "14471a0b00e321a1303f-04a06f5ff4cd27b5a4ff",
+          "file": "admin.provisioning-notifications.smoke.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "admin smoke: provisioning + notifications entrypoints",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4191,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:27.312Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "14471a0b00e321a1303f-e48521c0fe0e5703569e",
+          "file": "admin.provisioning-notifications.smoke.spec.js",
+          "line": 7,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "asistencias.guided.review.spec.js",
+      "file": "asistencias.guided.review.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 11305,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "GUIDED_REVIEW_METRICS[mobile-390]: {\"rowCount\":32,\"nameCount\":32,\"actionGroupCount\":32,\"minRow\":296,\"maxRow\":296,\"minName\":136,\"maxName\":206,\"maxActions\":270,\"hasHorizontalOverflow\":false,\"scrollWidth\":390,\"viewport\":390}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:58.580Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-98be0f7ef7b85756fbc9",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 11155,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "GUIDED_REVIEW_METRICS[mobile-430]: {\"rowCount\":32,\"nameCount\":32,\"actionGroupCount\":32,\"minRow\":336,\"maxRow\":336,\"minName\":136,\"maxName\":203,\"maxActions\":310,\"hasHorizontalOverflow\":false,\"scrollWidth\":430,\"viewport\":430}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:14:24.288Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-3f07452467235e1edfb5",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3639,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "GUIDED_REVIEW_METRICS[mobile-480]: {\"rowCount\":32,\"nameCount\":32,\"actionGroupCount\":32,\"minRow\":174,\"maxRow\":174,\"minName\":136,\"maxName\":148,\"maxActions\":148,\"hasHorizontalOverflow\":false,\"scrollWidth\":480,\"viewport\":480}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:16:54.459Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-9b3c1c3d5e23557caa92",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12565,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "GUIDED_REVIEW_METRICS[tablet-768]: {\"rowCount\":32,\"nameCount\":32,\"actionGroupCount\":32,\"minRow\":314,\"maxRow\":314,\"minName\":136,\"maxName\":206,\"maxActions\":64,\"hasHorizontalOverflow\":false,\"scrollWidth\":768,\"viewport\":768}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:17:44.233Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-d5e9cf6c50d21c45c79b",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3884,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "GUIDED_REVIEW_METRICS[tablet-1024]: {\"rowCount\":32,\"nameCount\":32,\"actionGroupCount\":32,\"minRow\":290,\"maxRow\":290,\"minName\":136,\"maxName\":206,\"maxActions\":52,\"hasHorizontalOverflow\":false,\"scrollWidth\":1024,\"viewport\":1024}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:19:24.520Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-47e66645d546d9347e75",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4479,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "GUIDED_REVIEW_METRICS[desktop-1440]: {\"rowCount\":32,\"nameCount\":32,\"actionGroupCount\":32,\"minRow\":498,\"maxRow\":498,\"minName\":136,\"maxName\":206,\"maxActions\":136,\"hasHorizontalOverflow\":false,\"scrollWidth\":1440,\"viewport\":1440}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:19:57.401Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-22309d30994f46fb143e",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4835,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "GUIDED_REVIEW_METRICS[desktop-1920]: {\"rowCount\":32,\"nameCount\":32,\"actionGroupCount\":32,\"minRow\":586,\"maxRow\":586,\"minName\":136,\"maxName\":206,\"maxActions\":136,\"hasHorizontalOverflow\":false,\"scrollWidth\":1920,\"viewport\":1920}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:31.982Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-319f95a421a8569a2194",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 50,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "filters-sorting.phase2-lists.spec.js",
+      "file": "filters-sorting.phase2-lists.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "phase2 athletes tab: filtros y orden con reset consistente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 16555,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:12:09.915Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-c1a038e47404cb127c75",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "phase2 schedules: filtros y orden con limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 11196,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:12:26.492Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-aee2af923510b7a8cedd",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "phase2 athletes tab: filtros y orden con reset consistente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 11931,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:14:35.493Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-6e6775de5f42a49c461c",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "phase2 schedules: filtros y orden con limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 15107,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:14:47.452Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-738fa94926d2e9755e50",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "phase2 athletes tab: filtros y orden con reset consistente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4202,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:16:58.146Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-444e5e19706615ca728a",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "phase2 schedules: filtros y orden con limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4379,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:17:02.373Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-d1126677020936caca9b",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "phase2 athletes tab: filtros y orden con reset consistente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9518,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:17:56.827Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-8959c260545db6a95ece",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "phase2 schedules: filtros y orden con limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10180,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:18:06.366Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-4df471110acc005539c8",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "phase2 athletes tab: filtros y orden con reset consistente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3045,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:19:28.712Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-a0ba4f4aa357bdf51f79",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "phase2 schedules: filtros y orden con limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3125,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:19:32.077Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-02f4593e4963bdd00ed9",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "phase2 athletes tab: filtros y orden con reset consistente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3602,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:00.736Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-e68cb555d56adcb19dd5",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "phase2 schedules: filtros y orden con limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4171,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:04.364Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-392653f6b7546708e3fe",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "phase2 athletes tab: filtros y orden con reset consistente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3919,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:35.577Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-aecb15b98561f6bf8eac",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "phase2 schedules: filtros y orden con limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4137,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:39.516Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "16e3b5941a0dba0fb055-aa9a55d0d7c22bccdc4d",
+          "file": "filters-sorting.phase2-lists.spec.js",
+          "line": 51,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "filters-sorting.physical-tests.spec.js",
+      "file": "filters-sorting.physical-tests.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "physical-tests: filtros + orden + limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 10752,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:12:37.716Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a43d14426d3d747d2c92-66874923d6d179ebe6a2",
+          "file": "filters-sorting.physical-tests.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "physical-tests: filtros + orden + limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15552,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:14:55.557Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a43d14426d3d747d2c92-b3a959a1fa4b9a680a52",
+          "file": "filters-sorting.physical-tests.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "physical-tests: filtros + orden + limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4253,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:16:58.396Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a43d14426d3d747d2c92-57a66a4eb1842156dc9e",
+          "file": "filters-sorting.physical-tests.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "physical-tests: filtros + orden + limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 11684,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:18:14.247Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a43d14426d3d747d2c92-a0c4d7027511cb35bb60",
+          "file": "filters-sorting.physical-tests.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "physical-tests: filtros + orden + limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3783,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:19:28.426Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a43d14426d3d747d2c92-8a47a0d8bde328bec55f",
+          "file": "filters-sorting.physical-tests.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "physical-tests: filtros + orden + limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3921,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:01.916Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a43d14426d3d747d2c92-3878bba692cb860a1b23",
+          "file": "filters-sorting.physical-tests.spec.js",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "physical-tests: filtros + orden + limpiar filtros",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3902,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:36.843Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a43d14426d3d747d2c92-475c802bb958f8b6a26c",
+          "file": "filters-sorting.physical-tests.spec.js",
+          "line": 7,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "filters-sorting.tables.spec.js",
+      "file": "filters-sorting.tables.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 28113,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:12:41.163Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-cf592fc14ae4110ca7d0",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 20,
+          "column": 1
+        },
+        {
+          "title": "asistencias: filtros del historial + orden por columnas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16946,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:13:09.304Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-51bbbd823d80fa4da077",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 80,
+          "column": 1
+        },
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 35926,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:15:02.619Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-2835f6996965fbd70d49",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 20,
+          "column": 1
+        },
+        {
+          "title": "asistencias: filtros del historial + orden por columnas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 23854,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:15:38.568Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-769dcf4fb470ca655551",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 80,
+          "column": 1
+        },
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6180,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:17:02.706Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-783b890f5a952a45a7c7",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 20,
+          "column": 1
+        },
+        {
+          "title": "asistencias: filtros del historial + orden por columnas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4993,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:17:08.906Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-6e4432f426f27561d3ba",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 80,
+          "column": 1
+        },
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 24404,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:18:16.596Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-a17e44f357f79f2e88af",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 20,
+          "column": 1
+        },
+        {
+          "title": "asistencias: filtros del historial + orden por columnas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14988,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:18:41.028Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-b1cf60a41a417d07a759",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 80,
+          "column": 1
+        },
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5945,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:19:32.236Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-be36b9b1c596321b6576",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 20,
+          "column": 1
+        },
+        {
+          "title": "asistencias: filtros del historial + orden por columnas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3957,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:19:38.197Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-74aaeeef8e058836c2ed",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 80,
+          "column": 1
+        },
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 6775,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:05.877Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-ced2fbae3737bfb3ea83",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 20,
+          "column": 1
+        },
+        {
+          "title": "asistencias: filtros del historial + orden por columnas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4274,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:12.671Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-7f7978eb6a1863dea3f9",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 80,
+          "column": 1
+        },
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7761,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:40.782Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-1f588aae298457add24e",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 20,
+          "column": 1
+        },
+        {
+          "title": "asistencias: filtros del historial + orden por columnas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4844,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:48.577Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-b014be918d53f93198f9",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 80,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "filters-sorting.user-management.spec.js",
+      "file": "filters-sorting.user-management.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 19270,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:12:48.526Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fcb5e0f9d639069a751-55ce67be0fba2cb98648",
+          "file": "filters-sorting.user-management.spec.js",
+          "line": 53,
+          "column": 1
+        },
+        {
+          "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 23449,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:15:11.157Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fcb5e0f9d639069a751-24b8baac0fee347d291f",
+          "file": "filters-sorting.user-management.spec.js",
+          "line": 53,
+          "column": 1
+        },
+        {
+          "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 6123,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:17:06.785Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fcb5e0f9d639069a751-6b34526f41c3b95c5469",
+          "file": "filters-sorting.user-management.spec.js",
+          "line": 53,
+          "column": 1
+        },
+        {
+          "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 13502,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:18:25.962Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fcb5e0f9d639069a751-98bf6284265d6191d5ed",
+          "file": "filters-sorting.user-management.spec.js",
+          "line": 53,
+          "column": 1
+        },
+        {
+          "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3824,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:19:35.226Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fcb5e0f9d639069a751-291516b76f1c2a0a554d",
+          "file": "filters-sorting.user-management.spec.js",
+          "line": 53,
+          "column": 1
+        },
+        {
+          "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5027,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:08.562Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fcb5e0f9d639069a751-087f8856859042e6f0bb",
+          "file": "filters-sorting.user-management.spec.js",
+          "line": 53,
+          "column": 1
+        },
+        {
+          "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4983,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:43.677Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2fcb5e0f9d639069a751-8da5312258eed189f477",
+          "file": "filters-sorting.user-management.spec.js",
+          "line": 53,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "responsive.smoke.spec.js",
+      "file": "responsive.smoke.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "role dashboards responsive guard (optional env credentials)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 7541,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:13:07.863Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-e3f6df1482227221cef4",
+          "file": "responsive.smoke.spec.js",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "role dashboards responsive guard (optional env credentials)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8416,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:15:34.661Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-5ba3b007852e212460ae",
+          "file": "responsive.smoke.spec.js",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "role dashboards responsive guard (optional env credentials)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2728,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:17:12.958Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-3ea41349bfcbb8c722f0",
+          "file": "responsive.smoke.spec.js",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "role dashboards responsive guard (optional env credentials)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 6086,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:18:39.489Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-73651f35a99756f0e072",
+          "file": "responsive.smoke.spec.js",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "role dashboards responsive guard (optional env credentials)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2729,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:19:39.076Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-30de89667fa9f3c620f5",
+          "file": "responsive.smoke.spec.js",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "role dashboards responsive guard (optional env credentials)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2952,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:13.615Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-970947f8e2cd3fb92df9",
+          "file": "responsive.smoke.spec.js",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "role dashboards responsive guard (optional env credentials)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2869,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:48.691Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-d6316c5b7227b82139a7",
+          "file": "responsive.smoke.spec.js",
+          "line": 99,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "roles.modules-navigation.spec.js",
+      "file": "roles.modules-navigation.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "trainer: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 30606,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "usuarios",
+                      "duration": 4635
+                    },
+                    {
+                      "title": "asistencias",
+                      "duration": 4084
+                    },
+                    {
+                      "title": "tests-fisicos",
+                      "duration": 4648
+                    },
+                    {
+                      "title": "pagos",
+                      "duration": 3704
+                    },
+                    {
+                      "title": "anuncios",
+                      "duration": 5480
+                    },
+                    {
+                      "title": "configuracion",
+                      "duration": 4138
+                    }
+                  ],
+                  "startTime": "2026-10-28T20:13:15.454Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-5e19c59293dd63ee2a1e",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "student: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 17975,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "anuncios",
+                      "duration": 1852
+                    },
+                    {
+                      "title": "progreso",
+                      "duration": 1851
+                    },
+                    {
+                      "title": "mensualidad",
+                      "duration": 2649
+                    },
+                    {
+                      "title": "asistencias",
+                      "duration": 2274
+                    },
+                    {
+                      "title": "tests-fisicos",
+                      "duration": 2165
+                    },
+                    {
+                      "title": "perfil",
+                      "duration": 2463
+                    }
+                  ],
+                  "startTime": "2026-10-28T20:13:46.078Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-e55c428f9b06fc0e5124",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "trainer: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 39048,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "usuarios",
+                      "duration": 5295
+                    },
+                    {
+                      "title": "asistencias",
+                      "duration": 5267
+                    },
+                    {
+                      "title": "tests-fisicos",
+                      "duration": 7019
+                    },
+                    {
+                      "title": "pagos",
+                      "duration": 5047
+                    },
+                    {
+                      "title": "anuncios",
+                      "duration": 5767
+                    },
+                    {
+                      "title": "configuracion",
+                      "duration": 6323
+                    }
+                  ],
+                  "startTime": "2026-10-28T20:15:43.119Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-ea6b01079854659c196c",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "student: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 25068,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "anuncios",
+                      "duration": 2185
+                    },
+                    {
+                      "title": "progreso",
+                      "duration": 2308
+                    },
+                    {
+                      "title": "mensualidad",
+                      "duration": 3186
+                    },
+                    {
+                      "title": "asistencias",
+                      "duration": 2861
+                    },
+                    {
+                      "title": "tests-fisicos",
+                      "duration": 3179
+                    },
+                    {
+                      "title": "perfil",
+                      "duration": 3164
+                    }
+                  ],
+                  "startTime": "2026-10-28T20:16:22.188Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-551965f392a64a3de18f",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "trainer: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8740,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "usuarios",
+                      "duration": 1298
+                    },
+                    {
+                      "title": "asistencias",
+                      "duration": 1163
+                    },
+                    {
+                      "title": "tests-fisicos",
+                      "duration": 1039
+                    },
+                    {
+                      "title": "pagos",
+                      "duration": 1047
+                    },
+                    {
+                      "title": "anuncios",
+                      "duration": 980
+                    },
+                    {
+                      "title": "configuracion",
+                      "duration": 1144
+                    }
+                  ],
+                  "startTime": "2026-10-28T20:17:13.941Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-9fab612deebff26a2179",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "student: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6069,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "anuncios",
+                      "duration": 487
+                    },
+                    {
+                      "title": "progreso",
+                      "duration": 590
+                    },
+                    {
+                      "title": "mensualidad",
+                      "duration": 481
+                    },
+                    {
+                      "title": "asistencias",
+                      "duration": 599
+                    },
+                    {
+                      "title": "tests-fisicos",
+                      "duration": 728
+                    },
+                    {
+                      "title": "perfil",
+                      "duration": 616
+                    }
+                  ],
+                  "startTime": "2026-10-28T20:17:22.702Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-c1b88570098e61417f5f",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "trainer: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 23581,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "usuarios",
+                      "duration": 3941
+                    },
+                    {
+                      "title": "asistencias",
+                      "duration": 3098
+                    },
+                    {
+                      "title": "tests-fisicos",
+                      "duration": 3116
+                    },
+                    {
+                      "title": "pagos",
+                      "duration": 3469
+                    },
+                    {
+                      "title": "anuncios",
+                      "duration": 3626
+                    },
+                    {
+                      "title": "configuracion",
+                      "duration": 2491
+                    }
+                  ],
+                  "startTime": "2026-10-28T20:18:45.599Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-f887b7aad195a757f413",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "student: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 17340,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "anuncios",
+                      "duration": 1136
+                    },
+                    {
+                      "title": "progreso",
+                      "duration": 1785
+                    },
+                    {
+                      "title": "mensualidad",
+                      "duration": 2151
+                    },
+                    {
+                      "title": "asistencias",
+                      "duration": 2022
+                    },
+                    {
+                      "title": "tests-fisicos",
+                      "duration": 1785
+                    },
+                    {
+                      "title": "perfil",
+                      "duration": 2593
+                    }
+                  ],
+                  "startTime": "2026-10-28T20:19:09.199Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-9cf8a34fcf193851270e",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "trainer: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 5473,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "usuarios",
+                      "duration": 685
+                    },
+                    {
+                      "title": "asistencias",
+                      "duration": 509
+                    },
+                    {
+                      "title": "tests-fisicos",
+                      "duration": 512
+                    },
+                    {
+                      "title": "pagos",
+                      "duration": 551
+                    },
+                    {
+                      "title": "anuncios",
+                      "duration": 531
+                    },
+                    {
+                      "title": "configuracion",
+                      "duration": 514
+                    }
+                  ],
+                  "startTime": "2026-10-28T20:19:41.828Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-e613fde1123b2661b553",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "student: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3326,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "anuncios",
+                      "duration": 96
+                    },
+                    {
+                      "title": "progreso",
+                      "duration": 104
+                    },
+                    {
+                      "title": "mensualidad",
+                      "duration": 221
+                    },
+                    {
+                      "title": "asistencias",
+                      "duration": 134
+                    },
+                    {
+                      "title": "tests-fisicos",
+                      "duration": 134
+                    },
+                    {
+                      "title": "perfil",
+                      "duration": 113
+                    }
+                  ],
+                  "startTime": "2026-10-28T20:19:47.317Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-bc1861b306aeefb0e2c2",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "trainer: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5677,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "usuarios",
+                      "duration": 355
+                    },
+                    {
+                      "title": "asistencias",
+                      "duration": 617
+                    },
+                    {
+                      "title": "tests-fisicos",
+                      "duration": 537
+                    },
+                    {
+                      "title": "pagos",
+                      "duration": 596
+                    },
+                    {
+                      "title": "anuncios",
+                      "duration": 635
+                    },
+                    {
+                      "title": "configuracion",
+                      "duration": 575
+                    }
+                  ],
+                  "startTime": "2026-10-28T20:20:16.589Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-0883a8e5d70b87fef543",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "student: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3104,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "anuncios",
+                      "duration": 59
+                    },
+                    {
+                      "title": "progreso",
+                      "duration": 120
+                    },
+                    {
+                      "title": "mensualidad",
+                      "duration": 130
+                    },
+                    {
+                      "title": "asistencias",
+                      "duration": 138
+                    },
+                    {
+                      "title": "tests-fisicos",
+                      "duration": 159
+                    },
+                    {
+                      "title": "perfil",
+                      "duration": 125
+                    }
+                  ],
+                  "startTime": "2026-10-28T20:20:22.282Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-aafcc205c5f44ca113eb",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "trainer: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 5779,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "usuarios",
+                      "duration": 228
+                    },
+                    {
+                      "title": "asistencias",
+                      "duration": 588
+                    },
+                    {
+                      "title": "tests-fisicos",
+                      "duration": 702
+                    },
+                    {
+                      "title": "pagos",
+                      "duration": 634
+                    },
+                    {
+                      "title": "anuncios",
+                      "duration": 573
+                    },
+                    {
+                      "title": "configuracion",
+                      "duration": 497
+                    }
+                  ],
+                  "startTime": "2026-10-28T20:20:51.586Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-7a3d1d5b1dde4e830f79",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "student: every module renders without a JavaScript crash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4316,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "anuncios",
+                      "duration": 132
+                    },
+                    {
+                      "title": "progreso",
+                      "duration": 131
+                    },
+                    {
+                      "title": "mensualidad",
+                      "duration": 441
+                    },
+                    {
+                      "title": "asistencias",
+                      "duration": 252
+                    },
+                    {
+                      "title": "tests-fisicos",
+                      "duration": 203
+                    },
+                    {
+                      "title": "perfil",
+                      "duration": 119
+                    }
+                  ],
+                  "startTime": "2026-10-28T20:20:57.385Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "df99c5f2b7d82d5f5f3d-18c626a883044fe58ef6",
+          "file": "roles.modules-navigation.spec.js",
+          "line": 8,
+          "column": 3
+        }
+      ]
+    },
+    {
+      "title": "roles.panels-navigation.smoke.spec.js",
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "role panel smoke: admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5376,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:13:26.302Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-a7ec72263f713515d38c",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: trainer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5886,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:13:31.697Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-3f4161562926ed5e67f9",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: student",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5441,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:13:37.602Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-4181eb11183bd7ee35b7",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 8684,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:16:02.466Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-aef89045ea391580077e",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: trainer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 8211,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:16:11.179Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-c5e3e38c552b082a62c0",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: student",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 7706,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:16:19.410Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-91c4a94657dfa1e4821d",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2767,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:17:15.730Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-37353796df99fdc8f548",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: trainer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2560,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:17:18.517Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-868b8e3e15c4f05fa332",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: student",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2483,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:17:21.098Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-77a5320fefc176e4e97b",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5359,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:18:56.054Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-be405083379b7c1833f3",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: trainer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4609,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:19:01.450Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-7483aa95e60aef272066",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: student",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4686,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:19:06.087Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-d32e59e719e87dcbf52d",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2563,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:19:42.177Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-ecfcee29a191efb70db1",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: trainer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2609,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:19:44.759Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-f654d60bcfd4f653a305",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: student",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2659,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:19:47.386Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-cd5d203f778a680087e6",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2517,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:16.968Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-fb35db77318672162be5",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: trainer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2810,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:19.500Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-a6ee7c794488c35ab6c4",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: student",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2508,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:22.331Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-ced19f9c82b85b40aa49",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2789,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:53.442Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-aba95f4905d8c12b7510",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: trainer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2844,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:56.248Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-3884f4db6f54f6f09a00",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        },
+        {
+          "title": "role panel smoke: student",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3103,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:20:59.116Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bd2d46c01749ecb8007b-c21d4ed084d604baa605",
+          "file": "roles.panels-navigation.smoke.spec.js",
+          "line": 87,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-28T20:11:38.963Z",
+    "duration": 564078.8080000001,
+    "expected": 105,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

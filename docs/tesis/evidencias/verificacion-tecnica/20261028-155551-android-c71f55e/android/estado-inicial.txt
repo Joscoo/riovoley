@@ -1,0 +1,22 @@
+ M .gitignore
+ M package.json
+ M src/features/attendance/presentation/components/AsistenciasManager.js
+ M src/features/payments/presentation/components/PagosManager.js
+ M src/shared/ui/SortableHeader.js
+ M src/shared/ui/SortableHeader.test.js
+ M tests/e2e/admin.happy-path-controlled.spec.js
+ M tests/e2e/asistencias.guided.review.spec.js
+ M tests/e2e/filters-sorting.tables.spec.js
+?? database/e2e/
+?? docs/superpowers/plans/2026-10-28-e2e-correcciones.md
+?? docs/superpowers/plans/2026-10-28-e2e-local.md
+?? docs/superpowers/specs/2026-10-28-e2e-local-design.md
+?? docs/tesis/
+?? playwright.local.config.cjs
+?? scripts/audit/
+?? scripts/e2e/local/
+?? src/features/gamification/application/useCases/gamification.audit.integration.test.js
+?? tests/e2e/audit.protected-routes.spec.js
+?? tests/e2e/helpers/paymentsSorting.js
+?? tests/e2e/payments.responsive-boundaries.spec.js
+

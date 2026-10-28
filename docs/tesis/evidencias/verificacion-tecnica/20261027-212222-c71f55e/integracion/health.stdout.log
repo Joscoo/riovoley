@@ -1,0 +1,2 @@
+[{"file":"functions/lib/index.js","service":"functions","httpStatus":200,"body":{"status":"ok","service":"functions","provider":"supabase"},"status":"passed"},{"file":"riovoley/index.js","service":"riovoley","httpStatus":200,"body":{"status":"ok","service":"riovoley","provider":"supabase"},"status":"passed"}]
+

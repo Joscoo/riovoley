@@ -1,0 +1,166 @@
+{
+  "generatedAt": "2026-10-28T14:55:24.252Z",
+  "commit": "c71f55e5bc59c528a002c4347fb1664794cb277e",
+  "executed": 112,
+  "passed": 95,
+  "failed": 17,
+  "skipped": 0,
+  "blocked": 0,
+  "logicalCases": 16,
+  "profiles": 7,
+  "stableStats": {
+    "startTime": "2026-10-28T14:35:51.234Z",
+    "duration": 291449.923,
+    "expected": 95,
+    "skipped": 0,
+    "unexpected": 10,
+    "flaky": 0
+  },
+  "mutationStats": {
+    "startTime": "2026-10-28T14:44:15.305Z",
+    "duration": 99462.42700000001,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 7,
+    "flaky": 0
+  },
+  "initialSmoke": {
+    "startTime": "2026-10-28T14:22:44.517Z",
+    "duration": 8484.988000000001,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "scope": "Solo Supabase local y fixtures. Smoke inicial es subconjunto; pruebas del arnés y verificaciones API/SQL no se suman a E2E.",
+  "groups": [
+    {
+      "file": "admin.modules-navigation.spec.js",
+      "title": "admin: every module opens without a JavaScript crash",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "admin.provisioning-notifications.smoke.spec.js",
+      "title": "admin smoke: provisioning + notifications entrypoints",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "asistencias.guided.review.spec.js",
+      "title": "guided review: admin asistencias quick mode per viewport",
+      "total": 7,
+      "passed": 0,
+      "failed": 7,
+      "skipped": 0
+    },
+    {
+      "file": "filters-sorting.phase2-lists.spec.js",
+      "title": "phase2 athletes tab: filtros y orden con reset consistente",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "filters-sorting.phase2-lists.spec.js",
+      "title": "phase2 schedules: filtros y orden con limpiar filtros",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "filters-sorting.physical-tests.spec.js",
+      "title": "physical-tests: filtros + orden + limpiar filtros",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "pagos: filtros base + orden de columnas por header",
+      "total": 7,
+      "passed": 4,
+      "failed": 3,
+      "skipped": 0
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "asistencias: filtros del historial + orden por columnas",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "filters-sorting.user-management.spec.js",
+      "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "responsive.smoke.spec.js",
+      "title": "role dashboards responsive guard (optional env credentials)",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "roles.modules-navigation.spec.js",
+      "title": "trainer: every module renders without a JavaScript crash",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "roles.modules-navigation.spec.js",
+      "title": "student: every module renders without a JavaScript crash",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: admin",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: trainer",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: student",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "admin.happy-path-controlled.spec.js",
+      "title": "admin happy path controlado: atleta + pago + asistencia",
+      "total": 7,
+      "passed": 0,
+      "failed": 7,
+      "skipped": 0
+    }
+  ]
+}

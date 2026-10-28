@@ -1,0 +1,453 @@
+{
+  "config": {
+    "configFile": "D:\\Riovoley\\riovoley\\playwright.local.config.cjs",
+    "rootDir": "D:/Riovoley/riovoley/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 3
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/asistencias-corregidas/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "mobile-390",
+        "name": "mobile-390",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/asistencias-corregidas/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "mobile-430",
+        "name": "mobile-430",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/asistencias-corregidas/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "mobile-480",
+        "name": "mobile-480",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/asistencias-corregidas/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "tablet-768",
+        "name": "tablet-768",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/asistencias-corregidas/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "tablet-1024",
+        "name": "tablet-1024",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/asistencias-corregidas/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "desktop-1440",
+        "name": "desktop-1440",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/asistencias-corregidas/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "desktop-1920",
+        "name": "desktop-1920",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\asistencias-corregidas\\resultados.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\asistencias-corregidas\\html",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.59.1",
+    "workers": 3,
+    "webServer": {
+      "command": "node scripts/e2e/local/server.cjs",
+      "url": "http://127.0.0.1:6100",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "asistencias.guided.review.spec.js",
+      "file": "asistencias.guided.review.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7280,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "GUIDED_REVIEW_METRICS[mobile-390]: {\"rowCount\":7,\"nameCount\":7,\"actionGroupCount\":7,\"minRow\":296,\"maxRow\":296,\"minName\":143,\"maxName\":176,\"maxActions\":270,\"hasHorizontalOverflow\":false,\"scrollWidth\":390,\"viewport\":390}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:21:58.351Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-98be0f7ef7b85756fbc9",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 8218,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "GUIDED_REVIEW_METRICS[mobile-430]: {\"rowCount\":7,\"nameCount\":7,\"actionGroupCount\":7,\"minRow\":336,\"maxRow\":336,\"minName\":143,\"maxName\":168,\"maxActions\":310,\"hasHorizontalOverflow\":false,\"scrollWidth\":430,\"viewport\":430}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:21:58.286Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-3f07452467235e1edfb5",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 3343,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "GUIDED_REVIEW_METRICS[mobile-480]: {\"rowCount\":7,\"nameCount\":7,\"actionGroupCount\":7,\"minRow\":174,\"maxRow\":174,\"minName\":143,\"maxName\":148,\"maxActions\":148,\"hasHorizontalOverflow\":false,\"scrollWidth\":480,\"viewport\":480}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:21:58.269Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-9b3c1c3d5e23557caa92",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 7418,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "GUIDED_REVIEW_METRICS[tablet-768]: {\"rowCount\":7,\"nameCount\":7,\"actionGroupCount\":7,\"minRow\":314,\"maxRow\":314,\"minName\":143,\"maxName\":176,\"maxActions\":64,\"hasHorizontalOverflow\":false,\"scrollWidth\":768,\"viewport\":768}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:22:03.466Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-d5e9cf6c50d21c45c79b",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2785,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "GUIDED_REVIEW_METRICS[tablet-1024]: {\"rowCount\":7,\"nameCount\":7,\"actionGroupCount\":7,\"minRow\":290,\"maxRow\":290,\"minName\":143,\"maxName\":176,\"maxActions\":52,\"hasHorizontalOverflow\":false,\"scrollWidth\":1024,\"viewport\":1024}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:22:07.410Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-47e66645d546d9347e75",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2754,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "GUIDED_REVIEW_METRICS[desktop-1440]: {\"rowCount\":7,\"nameCount\":7,\"actionGroupCount\":7,\"minRow\":498,\"maxRow\":498,\"minName\":143,\"maxName\":176,\"maxActions\":88,\"hasHorizontalOverflow\":false,\"scrollWidth\":1440,\"viewport\":1440}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:22:08.133Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-22309d30994f46fb143e",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2343,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "GUIDED_REVIEW_METRICS[desktop-1920]: {\"rowCount\":7,\"nameCount\":7,\"actionGroupCount\":7,\"minRow\":586,\"maxRow\":586,\"minName\":143,\"maxName\":176,\"maxActions\":88,\"hasHorizontalOverflow\":false,\"scrollWidth\":1920,\"viewport\":1920}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:22:11.729Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-319f95a421a8569a2194",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 50,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-28T15:21:56.736Z",
+    "duration": 17730.867,
+    "expected": 7,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

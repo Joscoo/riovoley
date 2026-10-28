@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "tests/unit/localTargetGuard.test.cjs"
+  ],
+  "start": "2026-10-28T19:57:49.606Z",
+  "end": "2026-10-28T19:57:50.030Z",
+  "durationSeconds": 0.424,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

@@ -1,0 +1,60 @@
+{
+  "observedAt": "2026-10-28T15:00:08.339Z",
+  "checks": [
+    {
+      "name": "Los 112 casos coinciden exactamente con el inventario originalmente bloqueado",
+      "status": "passed"
+    },
+    {
+      "name": "Denominadores Playwright: 95 aprobados, 17 fallidos, ninguna omision",
+      "status": "passed"
+    },
+    {
+      "name": "Compilacion final y setup reproducible terminaron con codigo 0",
+      "status": "passed"
+    },
+    {
+      "name": "12 pruebas finales del arnes aprobadas",
+      "status": "passed"
+    },
+    {
+      "name": "Auth, perfiles y consultas por rol reales",
+      "status": "passed"
+    },
+    {
+      "name": "Matriz SQL real termino con ROLLBACK y salida 0",
+      "status": "passed"
+    },
+    {
+      "name": "Seed repetible y persistencia real de recompensa diaria",
+      "status": "passed"
+    },
+    {
+      "name": "Bindings de puertos exclusivos a loopback",
+      "status": "passed"
+    },
+    {
+      "name": "Fuentes del producto y lockfile principal sin cambios",
+      "status": "passed"
+    },
+    {
+      "name": "Expediente original conservado con todos sus hashes",
+      "status": "passed"
+    },
+    {
+      "name": "Privacidad: textos y tres archivos HTML embebidos sin coincidencias pendientes",
+      "status": "passed"
+    },
+    {
+      "name": "Texto academico mantiene cifras y no atribuye exito a mutaciones fallidas",
+      "status": "passed"
+    },
+    {
+      "name": "Los enlaces locales de los tres documentos existen",
+      "status": "passed"
+    }
+  ],
+  "passed": 13,
+  "failed": 0,
+  "note": "Controles del expediente; no se suman a E2E."
+}

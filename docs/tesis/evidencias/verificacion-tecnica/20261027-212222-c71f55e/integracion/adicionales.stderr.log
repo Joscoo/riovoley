@@ -1,0 +1,14 @@
+PASS src/features/gamification/application/useCases/gamification.audit.integration.test.js (7.552 s)
+  √ auditoria: registrar asistencia produce XP mediante el servicio y casos de uso reales (40 ms)
+  √ auditoria: actualizar la misma asistencia no duplica XP ni monedas (3 ms)
+  √ auditoria: crear y modificar un pago recalcula el ledger sin duplicar la fuente (6 ms)
+  √ auditoria: crear y modificar una evaluacion conserva un unico movimiento base de XP (5 ms)
+  √ auditoria: el servicio de recompensa diaria conserva el estado entre dos llamadas (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       5 passed, 5 total
+Snapshots:   0 total
+Time:        17.96 s
+Ran all test suites matching /gamification.audit.integration.test.js/i.
+Test results written to: docs\tesis\evidencias\verificacion-tecnica\20261027-212222-c71f55e\integracion\adicionales-resultados.json
+

@@ -1,0 +1,19 @@
+{
+  "before": {
+    "auth": 28,
+    "tests": 8,
+    "users": 28,
+    "payments": 24,
+    "students": 26,
+    "attendances": 23
+  },
+  "after": {
+    "auth": 28,
+    "tests": 8,
+    "users": 28,
+    "payments": 24,
+    "students": 26,
+    "attendances": 23
+  },
+  "result": "passed"
+}

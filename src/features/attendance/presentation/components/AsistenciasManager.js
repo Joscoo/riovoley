@@ -713,13 +713,13 @@ const AsistenciasManager = ({ user }) => {
     });
 
     return (
-      <div key={atleta.id} className={styles.atletaItemNew}>
+      <div key={atleta.id} className={styles.atletaItemNew} data-testid="attendance-athlete-row">
         <div className={styles.atletaNameSection}>
           <div className={styles.atletaIdentity}>
             <span className={styles.atletaInitials} aria-hidden="true">
               {attendanceService.getAthleteInitials({ athleteUser: atleta.users })}
             </span>
-            <span className={styles.atletaName} title={fullName}>
+            <span className={styles.atletaName} title={fullName} data-testid="attendance-athlete-name">
               {displayName}
             </span>
           </div>
@@ -735,7 +735,7 @@ const AsistenciasManager = ({ user }) => {
           )}
         </div>
         
-        <div className={styles.paymentButtons}>
+        <div className={styles.paymentButtons} data-testid="attendance-athlete-actions">
           {hasActiveMensualidad ? (
             <>
               <button

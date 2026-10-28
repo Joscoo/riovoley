@@ -1,0 +1,14 @@
+{
+  "command": [
+    "npm.cmd",
+    "run",
+    "check:copy-quality"
+  ],
+  "cwd": ".",
+  "start": "2026-10-28T02:27:16.173Z",
+  "end": "2026-10-28T02:27:16.993Z",
+  "durationSeconds": 0.82,
+  "exitCode": 0,
+  "signal": null,
+  "environmentOverrides": {}
+}

@@ -1,0 +1,13 @@
+{
+  "command": [
+    "python",
+    "--version"
+  ],
+  "cwd": ".",
+  "start": "2026-10-28T13:37:36.341Z",
+  "end": "2026-10-28T13:37:36.600Z",
+  "durationSeconds": 0.259,
+  "exitCode": 0,
+  "signal": null,
+  "environmentOverrides": {}
+}

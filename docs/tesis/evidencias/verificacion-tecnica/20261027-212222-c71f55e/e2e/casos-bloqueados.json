@@ -1,0 +1,567 @@
+{
+  "classification": "BLOQUEADO; no ejecutado ni omitido por Playwright",
+  "reason": "Backend de producción confirmado por el usuario; no se confirmó un entorno aislado con cuentas descartables. El login puede escribir actividad y recompensa diaria.",
+  "inventoryOnly": true,
+  "cases": [
+    {
+      "file": "admin.happy-path-controlled.spec.js",
+      "title": "admin happy path controlado: atleta + pago + asistencia",
+      "project": "mobile-390"
+    },
+    {
+      "file": "admin.happy-path-controlled.spec.js",
+      "title": "admin happy path controlado: atleta + pago + asistencia",
+      "project": "mobile-430"
+    },
+    {
+      "file": "admin.happy-path-controlled.spec.js",
+      "title": "admin happy path controlado: atleta + pago + asistencia",
+      "project": "mobile-480"
+    },
+    {
+      "file": "admin.happy-path-controlled.spec.js",
+      "title": "admin happy path controlado: atleta + pago + asistencia",
+      "project": "tablet-768"
+    },
+    {
+      "file": "admin.happy-path-controlled.spec.js",
+      "title": "admin happy path controlado: atleta + pago + asistencia",
+      "project": "tablet-1024"
+    },
+    {
+      "file": "admin.happy-path-controlled.spec.js",
+      "title": "admin happy path controlado: atleta + pago + asistencia",
+      "project": "desktop-1440"
+    },
+    {
+      "file": "admin.happy-path-controlled.spec.js",
+      "title": "admin happy path controlado: atleta + pago + asistencia",
+      "project": "desktop-1920"
+    },
+    {
+      "file": "admin.modules-navigation.spec.js",
+      "title": "admin: every module opens without a JavaScript crash",
+      "project": "mobile-390"
+    },
+    {
+      "file": "admin.modules-navigation.spec.js",
+      "title": "admin: every module opens without a JavaScript crash",
+      "project": "mobile-430"
+    },
+    {
+      "file": "admin.modules-navigation.spec.js",
+      "title": "admin: every module opens without a JavaScript crash",
+      "project": "mobile-480"
+    },
+    {
+      "file": "admin.modules-navigation.spec.js",
+      "title": "admin: every module opens without a JavaScript crash",
+      "project": "tablet-768"
+    },
+    {
+      "file": "admin.modules-navigation.spec.js",
+      "title": "admin: every module opens without a JavaScript crash",
+      "project": "tablet-1024"
+    },
+    {
+      "file": "admin.modules-navigation.spec.js",
+      "title": "admin: every module opens without a JavaScript crash",
+      "project": "desktop-1440"
+    },
+    {
+      "file": "admin.modules-navigation.spec.js",
+      "title": "admin: every module opens without a JavaScript crash",
+      "project": "desktop-1920"
+    },
+    {
+      "file": "admin.provisioning-notifications.smoke.spec.js",
+      "title": "admin smoke: provisioning + notifications entrypoints",
+      "project": "mobile-390"
+    },
+    {
+      "file": "admin.provisioning-notifications.smoke.spec.js",
+      "title": "admin smoke: provisioning + notifications entrypoints",
+      "project": "mobile-430"
+    },
+    {
+      "file": "admin.provisioning-notifications.smoke.spec.js",
+      "title": "admin smoke: provisioning + notifications entrypoints",
+      "project": "mobile-480"
+    },
+    {
+      "file": "admin.provisioning-notifications.smoke.spec.js",
+      "title": "admin smoke: provisioning + notifications entrypoints",
+      "project": "tablet-768"
+    },
+    {
+      "file": "admin.provisioning-notifications.smoke.spec.js",
+      "title": "admin smoke: provisioning + notifications entrypoints",
+      "project": "tablet-1024"
+    },
+    {
+      "file": "admin.provisioning-notifications.smoke.spec.js",
+      "title": "admin smoke: provisioning + notifications entrypoints",
+      "project": "desktop-1440"
+    },
+    {
+      "file": "admin.provisioning-notifications.smoke.spec.js",
+      "title": "admin smoke: provisioning + notifications entrypoints",
+      "project": "desktop-1920"
+    },
+    {
+      "file": "asistencias.guided.review.spec.js",
+      "title": "guided review: admin asistencias quick mode per viewport",
+      "project": "mobile-390"
+    },
+    {
+      "file": "asistencias.guided.review.spec.js",
+      "title": "guided review: admin asistencias quick mode per viewport",
+      "project": "mobile-430"
+    },
+    {
+      "file": "asistencias.guided.review.spec.js",
+      "title": "guided review: admin asistencias quick mode per viewport",
+      "project": "mobile-480"
+    },
+    {
+      "file": "asistencias.guided.review.spec.js",
+      "title": "guided review: admin asistencias quick mode per viewport",
+      "project": "tablet-768"
+    },
+    {
+      "file": "asistencias.guided.review.spec.js",
+      "title": "guided review: admin asistencias quick mode per viewport",
+      "project": "tablet-1024"
+    },
+    {
+      "file": "asistencias.guided.review.spec.js",
+      "title": "guided review: admin asistencias quick mode per viewport",
+      "project": "desktop-1440"
+    },
+    {
+      "file": "asistencias.guided.review.spec.js",
+      "title": "guided review: admin asistencias quick mode per viewport",
+      "project": "desktop-1920"
+    },
+    {
+      "file": "filters-sorting.phase2-lists.spec.js",
+      "title": "phase2 athletes tab: filtros y orden con reset consistente",
+      "project": "mobile-390"
+    },
+    {
+      "file": "filters-sorting.phase2-lists.spec.js",
+      "title": "phase2 schedules: filtros y orden con limpiar filtros",
+      "project": "mobile-390"
+    },
+    {
+      "file": "filters-sorting.phase2-lists.spec.js",
+      "title": "phase2 athletes tab: filtros y orden con reset consistente",
+      "project": "mobile-430"
+    },
+    {
+      "file": "filters-sorting.phase2-lists.spec.js",
+      "title": "phase2 schedules: filtros y orden con limpiar filtros",
+      "project": "mobile-430"
+    },
+    {
+      "file": "filters-sorting.phase2-lists.spec.js",
+      "title": "phase2 athletes tab: filtros y orden con reset consistente",
+      "project": "mobile-480"
+    },
+    {
+      "file": "filters-sorting.phase2-lists.spec.js",
+      "title": "phase2 schedules: filtros y orden con limpiar filtros",
+      "project": "mobile-480"
+    },
+    {
+      "file": "filters-sorting.phase2-lists.spec.js",
+      "title": "phase2 athletes tab: filtros y orden con reset consistente",
+      "project": "tablet-768"
+    },
+    {
+      "file": "filters-sorting.phase2-lists.spec.js",
+      "title": "phase2 schedules: filtros y orden con limpiar filtros",
+      "project": "tablet-768"
+    },
+    {
+      "file": "filters-sorting.phase2-lists.spec.js",
+      "title": "phase2 athletes tab: filtros y orden con reset consistente",
+      "project": "tablet-1024"
+    },
+    {
+      "file": "filters-sorting.phase2-lists.spec.js",
+      "title": "phase2 schedules: filtros y orden con limpiar filtros",
+      "project": "tablet-1024"
+    },
+    {
+      "file": "filters-sorting.phase2-lists.spec.js",
+      "title": "phase2 athletes tab: filtros y orden con reset consistente",
+      "project": "desktop-1440"
+    },
+    {
+      "file": "filters-sorting.phase2-lists.spec.js",
+      "title": "phase2 schedules: filtros y orden con limpiar filtros",
+      "project": "desktop-1440"
+    },
+    {
+      "file": "filters-sorting.phase2-lists.spec.js",
+      "title": "phase2 athletes tab: filtros y orden con reset consistente",
+      "project": "desktop-1920"
+    },
+    {
+      "file": "filters-sorting.phase2-lists.spec.js",
+      "title": "phase2 schedules: filtros y orden con limpiar filtros",
+      "project": "desktop-1920"
+    },
+    {
+      "file": "filters-sorting.physical-tests.spec.js",
+      "title": "physical-tests: filtros + orden + limpiar filtros",
+      "project": "mobile-390"
+    },
+    {
+      "file": "filters-sorting.physical-tests.spec.js",
+      "title": "physical-tests: filtros + orden + limpiar filtros",
+      "project": "mobile-430"
+    },
+    {
+      "file": "filters-sorting.physical-tests.spec.js",
+      "title": "physical-tests: filtros + orden + limpiar filtros",
+      "project": "mobile-480"
+    },
+    {
+      "file": "filters-sorting.physical-tests.spec.js",
+      "title": "physical-tests: filtros + orden + limpiar filtros",
+      "project": "tablet-768"
+    },
+    {
+      "file": "filters-sorting.physical-tests.spec.js",
+      "title": "physical-tests: filtros + orden + limpiar filtros",
+      "project": "tablet-1024"
+    },
+    {
+      "file": "filters-sorting.physical-tests.spec.js",
+      "title": "physical-tests: filtros + orden + limpiar filtros",
+      "project": "desktop-1440"
+    },
+    {
+      "file": "filters-sorting.physical-tests.spec.js",
+      "title": "physical-tests: filtros + orden + limpiar filtros",
+      "project": "desktop-1920"
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "pagos: filtros base + orden de columnas por header",
+      "project": "mobile-390"
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "asistencias: filtros del historial + orden por columnas",
+      "project": "mobile-390"
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "pagos: filtros base + orden de columnas por header",
+      "project": "mobile-430"
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "asistencias: filtros del historial + orden por columnas",
+      "project": "mobile-430"
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "pagos: filtros base + orden de columnas por header",
+      "project": "mobile-480"
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "asistencias: filtros del historial + orden por columnas",
+      "project": "mobile-480"
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "pagos: filtros base + orden de columnas por header",
+      "project": "tablet-768"
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "asistencias: filtros del historial + orden por columnas",
+      "project": "tablet-768"
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "pagos: filtros base + orden de columnas por header",
+      "project": "tablet-1024"
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "asistencias: filtros del historial + orden por columnas",
+      "project": "tablet-1024"
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "pagos: filtros base + orden de columnas por header",
+      "project": "desktop-1440"
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "asistencias: filtros del historial + orden por columnas",
+      "project": "desktop-1440"
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "pagos: filtros base + orden de columnas por header",
+      "project": "desktop-1920"
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "asistencias: filtros del historial + orden por columnas",
+      "project": "desktop-1920"
+    },
+    {
+      "file": "filters-sorting.user-management.spec.js",
+      "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+      "project": "mobile-390"
+    },
+    {
+      "file": "filters-sorting.user-management.spec.js",
+      "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+      "project": "mobile-430"
+    },
+    {
+      "file": "filters-sorting.user-management.spec.js",
+      "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+      "project": "mobile-480"
+    },
+    {
+      "file": "filters-sorting.user-management.spec.js",
+      "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+      "project": "tablet-768"
+    },
+    {
+      "file": "filters-sorting.user-management.spec.js",
+      "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+      "project": "tablet-1024"
+    },
+    {
+      "file": "filters-sorting.user-management.spec.js",
+      "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+      "project": "desktop-1440"
+    },
+    {
+      "file": "filters-sorting.user-management.spec.js",
+      "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+      "project": "desktop-1920"
+    },
+    {
+      "file": "responsive.smoke.spec.js",
+      "title": "role dashboards responsive guard (optional env credentials)",
+      "project": "mobile-390"
+    },
+    {
+      "file": "responsive.smoke.spec.js",
+      "title": "role dashboards responsive guard (optional env credentials)",
+      "project": "mobile-430"
+    },
+    {
+      "file": "responsive.smoke.spec.js",
+      "title": "role dashboards responsive guard (optional env credentials)",
+      "project": "mobile-480"
+    },
+    {
+      "file": "responsive.smoke.spec.js",
+      "title": "role dashboards responsive guard (optional env credentials)",
+      "project": "tablet-768"
+    },
+    {
+      "file": "responsive.smoke.spec.js",
+      "title": "role dashboards responsive guard (optional env credentials)",
+      "project": "tablet-1024"
+    },
+    {
+      "file": "responsive.smoke.spec.js",
+      "title": "role dashboards responsive guard (optional env credentials)",
+      "project": "desktop-1440"
+    },
+    {
+      "file": "responsive.smoke.spec.js",
+      "title": "role dashboards responsive guard (optional env credentials)",
+      "project": "desktop-1920"
+    },
+    {
+      "file": "roles.modules-navigation.spec.js",
+      "title": "trainer: every module renders without a JavaScript crash",
+      "project": "mobile-390"
+    },
+    {
+      "file": "roles.modules-navigation.spec.js",
+      "title": "student: every module renders without a JavaScript crash",
+      "project": "mobile-390"
+    },
+    {
+      "file": "roles.modules-navigation.spec.js",
+      "title": "trainer: every module renders without a JavaScript crash",
+      "project": "mobile-430"
+    },
+    {
+      "file": "roles.modules-navigation.spec.js",
+      "title": "student: every module renders without a JavaScript crash",
+      "project": "mobile-430"
+    },
+    {
+      "file": "roles.modules-navigation.spec.js",
+      "title": "trainer: every module renders without a JavaScript crash",
+      "project": "mobile-480"
+    },
+    {
+      "file": "roles.modules-navigation.spec.js",
+      "title": "student: every module renders without a JavaScript crash",
+      "project": "mobile-480"
+    },
+    {
+      "file": "roles.modules-navigation.spec.js",
+      "title": "trainer: every module renders without a JavaScript crash",
+      "project": "tablet-768"
+    },
+    {
+      "file": "roles.modules-navigation.spec.js",
+      "title": "student: every module renders without a JavaScript crash",
+      "project": "tablet-768"
+    },
+    {
+      "file": "roles.modules-navigation.spec.js",
+      "title": "trainer: every module renders without a JavaScript crash",
+      "project": "tablet-1024"
+    },
+    {
+      "file": "roles.modules-navigation.spec.js",
+      "title": "student: every module renders without a JavaScript crash",
+      "project": "tablet-1024"
+    },
+    {
+      "file": "roles.modules-navigation.spec.js",
+      "title": "trainer: every module renders without a JavaScript crash",
+      "project": "desktop-1440"
+    },
+    {
+      "file": "roles.modules-navigation.spec.js",
+      "title": "student: every module renders without a JavaScript crash",
+      "project": "desktop-1440"
+    },
+    {
+      "file": "roles.modules-navigation.spec.js",
+      "title": "trainer: every module renders without a JavaScript crash",
+      "project": "desktop-1920"
+    },
+    {
+      "file": "roles.modules-navigation.spec.js",
+      "title": "student: every module renders without a JavaScript crash",
+      "project": "desktop-1920"
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: admin",
+      "project": "mobile-390"
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: trainer",
+      "project": "mobile-390"
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: student",
+      "project": "mobile-390"
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: admin",
+      "project": "mobile-430"
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: trainer",
+      "project": "mobile-430"
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: student",
+      "project": "mobile-430"
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: admin",
+      "project": "mobile-480"
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: trainer",
+      "project": "mobile-480"
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: student",
+      "project": "mobile-480"
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: admin",
+      "project": "tablet-768"
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: trainer",
+      "project": "tablet-768"
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: student",
+      "project": "tablet-768"
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: admin",
+      "project": "tablet-1024"
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: trainer",
+      "project": "tablet-1024"
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: student",
+      "project": "tablet-1024"
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: admin",
+      "project": "desktop-1440"
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: trainer",
+      "project": "desktop-1440"
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: student",
+      "project": "desktop-1440"
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: admin",
+      "project": "desktop-1920"
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: trainer",
+      "project": "desktop-1920"
+    },
+    {
+      "file": "roles.panels-navigation.smoke.spec.js",
+      "title": "role panel smoke: student",
+      "project": "desktop-1920"
+    }
+  ]
+}

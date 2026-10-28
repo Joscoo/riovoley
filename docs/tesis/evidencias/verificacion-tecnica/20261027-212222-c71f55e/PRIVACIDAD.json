@@ -1,0 +1,15 @@
+{
+  "textFilesChecked": 591,
+  "embeddedArchivesChecked": 1,
+  "redactedEvidenceCopies": [
+    "unitarias\\coverage\\lcov-report\\src\\components\\AboutUs.js.html",
+    "unitarias\\coverage\\lcov-report\\src\\config\\googleCalendar.js.html",
+    "unitarias\\coverage\\lcov-report\\src\\features\\athletes\\presentation\\components\\AtletasManager.js.html",
+    "unitarias\\coverage\\lcov-report\\src\\features\\auth-session\\presentation\\components\\Login.js.html",
+    "unitarias\\coverage\\lcov-report\\src\\features\\user-management\\presentation\\components\\shared\\UserForm.js.html",
+    "unitarias\\coverage\\lcov-report\\src\\utils\\supabaseDebug.js.html"
+  ],
+  "unresolved": [],
+  "scope": "Coincidencia con valores sensibles locales, JWT, correos y patrones de telefono. Incluye ZIP embebido Playwright; capturas revisadas con contexto anonimo. No certifica ausencia de todo dato sensible imaginable.",
+  "productionFilesModified": false
+}

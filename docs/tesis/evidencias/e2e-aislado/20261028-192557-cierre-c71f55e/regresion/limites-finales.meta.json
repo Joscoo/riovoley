@@ -1,0 +1,15 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/e2e/local/run.cjs",
+    "boundaries",
+    "--label=limites-finales",
+    "--workers=2"
+  ],
+  "start": "2026-10-28T20:23:21.561Z",
+  "end": "2026-10-28T20:23:49.648Z",
+  "durationSeconds": 28.087,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

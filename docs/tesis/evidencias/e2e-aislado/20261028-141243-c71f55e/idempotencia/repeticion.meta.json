@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/e2e/local/seed.cjs"
+  ],
+  "start": "2026-10-28T14:27:00.416Z",
+  "end": "2026-10-28T14:27:01.312Z",
+  "durationSeconds": 0.896,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

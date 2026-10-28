@@ -1,0 +1,14 @@
+{
+  "command": [
+    "npm.cmd",
+    "audit",
+    "--json"
+  ],
+  "cwd": "riovoley",
+  "start": "2026-10-28T02:29:15.179Z",
+  "end": "2026-10-28T02:29:16.965Z",
+  "durationSeconds": 1.786,
+  "exitCode": 1,
+  "signal": null,
+  "environmentOverrides": {}
+}

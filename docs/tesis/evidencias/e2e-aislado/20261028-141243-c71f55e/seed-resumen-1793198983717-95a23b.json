@@ -1,0 +1,13 @@
+{
+  "createdAt": "2026-10-28T14:49:43.716Z",
+  "accounts": 10,
+  "students": 8,
+  "catalogStatements": 13,
+  "data": "Solo fixtures creados localmente. No se copió ninguna fila institucional.",
+  "roles": [
+    "administrador",
+    "entrenador",
+    "estudiante"
+  ],
+  "api": "http://127.0.0.1:55321"
+}

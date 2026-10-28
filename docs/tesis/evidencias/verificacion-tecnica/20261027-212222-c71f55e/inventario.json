@@ -1,0 +1,1152 @@
+{
+  "inspectedAt": "2026-10-28T02:23:48.342Z",
+  "timezone": "America/Guayaquil",
+  "os": {
+    "platform": "win32",
+    "arch": "x64",
+    "release": "10.0.26300"
+  },
+  "lockfileVersion": 3,
+  "packageVersions": {
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "react-router-dom": "7.15.0",
+    "react-scripts": "5.0.1",
+    "tailwindcss": "3.4.19",
+    "@playwright/test": "1.59.1",
+    "@supabase/supabase-js": "2.105.4",
+    "@capacitor/android": "8.4.0",
+    "@capacitor/cli": "8.4.0",
+    "@capacitor/core": "8.4.0",
+    "jest": "27.5.1",
+    "@testing-library/react": "16.3.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "cross-env CI=false react-scripts build",
+    "mobile:sync": "npm run build && npx cap sync",
+    "mobile:android": "npm run mobile:sync && npx cap open android",
+    "ota:upload:production": "npm run build && npx @capgo/cli@latest bundle upload com.riovoley.app --path ./build --channel production",
+    "ota:upload:beta": "npm run build && npx @capgo/cli@latest bundle upload com.riovoley.app --path ./build --channel beta",
+    "check:copy-quality": "node scripts/copyQualityCheck.js",
+    "test": "react-scripts test",
+    "test:auth-edge": "node functions/node_modules/tsx/dist/cli.mjs --test tests/unit/credentials-edge.test.ts",
+    "test:contracts": "cross-env CI=true react-scripts test src/features/reporting/infrastructure/repositories/supabaseReportingRepository.contract.test.js src/shared/infrastructure/auth/deleteAuthUserById.test.js",
+    "eject": "react-scripts eject",
+    "e2e": "playwright test",
+    "e2e:smoke:roles": "playwright test tests/e2e/roles.panels-navigation.smoke.spec.js --project=desktop-1440",
+    "e2e:smoke:roles:strict": "node scripts/e2e/runRolesSmokeStrict.js",
+    "e2e:filters-sorting": "playwright test tests/e2e/filters-sorting.tables.spec.js --project=desktop-1440",
+    "e2e:filters-sorting:users": "playwright test tests/e2e/filters-sorting.user-management.spec.js --project=desktop-1440",
+    "e2e:filters-sorting:phase2": "playwright test tests/e2e/filters-sorting.phase2-lists.spec.js --project=desktop-1440",
+    "e2e:filters-sorting:physical": "playwright test tests/e2e/filters-sorting.physical-tests.spec.js --project=desktop-1440",
+    "e2e:filters-sorting:all": "playwright test tests/e2e/filters-sorting.tables.spec.js tests/e2e/filters-sorting.user-management.spec.js tests/e2e/filters-sorting.phase2-lists.spec.js tests/e2e/filters-sorting.physical-tests.spec.js --project=desktop-1440",
+    "e2e:smoke:public": "playwright test tests/e2e/responsive.smoke.spec.js --project=desktop-1440 --grep \"public route responsive guard\"",
+    "e2e:ui": "playwright test --ui",
+    "e2e:install": "playwright install"
+  },
+  "fingerprints": {
+    "package.json": "2e413a30e668b15158b479a152df1cd409b626018716e006757ad1c1fcb7be26",
+    "package-lock.json": "e3917e549785df7bfe7794fb6843644a2b380723688209aa834ae05883fe341a",
+    "playwright.config.js": "eba29c053c4d75b55258ed5e1387260b349f43f4e6103502f2dc76164e76e2b2",
+    "capacitor.config.json": "0071039f64909883f5a43720d7fddf7689c1dd4102c079b6f168fd9c7fbf683b",
+    "docs/RESTAURACION_PC_2026-10-22.md": "e2a601cc2d234eaaf9ee6fec754836851a981cd7408aa46ec0e62eab5e3eaa94",
+    "src/App.test.js": "c7851fe5fdf8c6b12066a13efd73c2da666fd6c5bfa09e01b35abea37f941231",
+    "src/config/appUrls.test.js": "e82a9eb7cb28c628053cee212a7062a66059e38773b2719771f3ec152fa2bc96",
+    "src/features/account-admin/application/useCases/createAccountAdminUseCases.test.js": "db3471a734f2079178c1f2a27a7717d3e26be275d5a1384eda8e9ef94b6880f0",
+    "src/features/account-admin/infrastructure/repositories/supabaseAccountAdminRepository.password.test.js": "0642798e763d8561e325651cf49a2f02cb93c0a786f3d85e610b908b491d0737",
+    "src/features/account-admin/presentation/createAccountAdminService.test.js": "cb769786b4e2c14b624e188d08f6dcb95997ddb720f205af612ef95455bf6c8b",
+    "src/features/admin-dashboard/application/useCases/createAdminDashboardUseCases.test.js": "5966e63ed651d05f1fb7fe1b93d64008715f1f0b45478e607a805f137a6182ac",
+    "src/features/admin-dashboard/presentation/createAdminDashboardService.test.js": "0d93712a1475b35eb2cd4c466aa8f303e6189cefb1f927813f8d918a5f9599d0",
+    "src/features/announcements/application/useCases/createAnnouncementsUseCases.test.js": "e46b7f21a86943a74fbf31adb2658e97dd752ed8688f8052ef1c75a5b40437bd",
+    "src/features/announcements/presentation/createAnnouncementsService.test.js": "43b38ba028bf4812e88d68d2494915c1dea031cdc20efe796331876c2b348578",
+    "src/features/athletes/application/useCases/createAthletesUseCases.test.js": "df07e03b1ce2f2287801eb254db856923c5ac5cd08c10691f787a0374e93d4f8",
+    "src/features/athletes/presentation/createAthletesService.test.js": "70196e970072ac5b9a824ce8a4f489d4600e64eb7e2c5a3d5d8bcb99ca110176",
+    "src/features/attendance/application/useCases/createAttendanceUseCases.test.js": "a074a63370e0e9708663041f14061fdd29ceaa279be6f347c8b897ae45565de4",
+    "src/features/attendance/infrastructure/repositories/supabaseAttendanceRepository.test.js": "acd00623781472c3f38838eebdb53b23574a7788f6aa6fc2b3083445496c414a",
+    "src/features/attendance/presentation/createAttendanceService.test.js": "fd053ae2ce46e874ba7ea49addcfc4f9ae9a51f063f4c3e3a86d1102487ef05c",
+    "src/features/auth-profile/application/useCases/loadUserProfileUseCase.test.js": "971a2091e797deb372615bc51894e9ae4832010c6b0464e63d26421f0d1064e8",
+    "src/features/auth-profile/presentation/createAuthProfileService.test.js": "5a2cff9ce6bd5c681abadd117ca1d736ea5403f8ce4bdb0453b003f6e411cf97",
+    "src/features/auth-session/application/useCases/createAuthSessionUseCases.test.js": "44eb9a3b3429f81f94883a7ab878853c2be3b051a3624f09be818f97bbd118a0",
+    "src/features/auth-session/presentation/components/ChangePasswordModal.password.test.js": "ffd39090555e629b41d10b4e105f6f0d5aab2fc7b1a422fb6c9528dd3e445a9f",
+    "src/features/auth-session/presentation/components/Login.auth-events.test.js": "4b1f4cd345546bde042adc61fb48e7b7823f8b37a93eca29492f4a2a3a8408cc",
+    "src/features/auth-session/presentation/components/ResetPassword.recovery.test.js": "fe77ca33acf494fecddc9d68f919d8b1d549068397deeda229da2776d3efb866",
+    "src/features/auth-session/presentation/createAuthSessionService.test.js": "8bf7a72425bffd7a9f64f976efbfb8a9db40d53eecac5daf208be755f309f910",
+    "src/features/auth-session/presentation/utils/deferAuthEvent.test.js": "917258b3bfc1a803d26236715928361cb461e4b27fe162891bbae77f92710f75",
+    "src/features/communications/application/useCases/createCommunicationsUseCases.test.js": "ccbca6e7a99c47d87646d56a367890978d7f4be76eb261c8c31effcb9b634b60",
+    "src/features/communications/infrastructure/repositories/supabaseCommunicationsRepository.test.js": "980386d276eff4832e0e7ed9d9f1f4207ba68255c60936a019e0c1b9667ac050",
+    "src/features/communications/presentation/createCommunicationsService.test.js": "3e07f598d5418e470c269d3d1d4be707d39c4dbf250407fc7fe1db21ae1b8b51",
+    "src/features/gamification/application/useCases/createGamificationAdminUseCases.test.js": "50eeabe565adaa5651ece6704c5120ef0d9b08d262ea18133cbefb60fbe22f88",
+    "src/features/gamification/application/useCases/createGamificationFoundationUseCases.test.js": "5ca151f79d084b51a4af1ba5b4ba21daecc50ebde19cc64389e0520e6427da88",
+    "src/features/gamification/application/useCases/createGamificationUseCases.test.js": "e830b3d98cd3b273cf73c698cf6b463f664dd7b1a5699eec966f14f3423ba841",
+    "src/features/gamification/infrastructure/repositories/supabaseGamificationRepository.test.js": "4369ec344ab341cd5797f2d08a1801e89d626cde462679a2c44d3f33929ce0bb",
+    "src/features/gamification/presentation/components/cosmeticVisuals.test.js": "83e2fe3f48509fb4e0be9a23f07f8c14eb9446558c408c44e5915a902d823d4c",
+    "src/features/gamification/presentation/components/GamificationAdminPanel.test.js": "6f9d99544ec80da0afc4e07f8b05df02538969eb4c53dd8ef3e1c260a93fc27c",
+    "src/features/gamification/presentation/components/IdentityPortrait.test.js": "361dac9a82a27fc11f85dd47361a1bf282566affcca91c4763bade9328bfefb6",
+    "src/features/gamification/presentation/components/StudentGamificationPanel.test.js": "61d9a8df7dec9e12064684ab81cc17e46deb3f114ecfbd419f1fae1ccab83a7e",
+    "src/features/gamification/presentation/createGamificationService.test.js": "56215b3b37f2a8f2daa6de1fc21db80c95393437f1a22adc211a0ff92d071f52",
+    "src/features/notifications/application/useCases/createNotificationsUseCases.test.js": "725c189ae7dc6aab8a0551797054bf1c773e567c41300f97c89914d9bcaafff4",
+    "src/features/notifications/infrastructure/repositories/supabaseNotificationsRepository.test.js": "7ad50a61307a92089966a4bcbe6b15e9a8d6a1d4cefa461f8831bf4ea4c9da64",
+    "src/features/notifications/presentation/components/NotificationBell.access.test.js": "927dd0263b9ebe1e8d4a8b13e13a6513f8b73a08a433ddb3af8a54e187c2dc4c",
+    "src/features/notifications/presentation/createNotificationsService.test.js": "79870b4d0951e4f5d680c6381415ac86216d94c061fd48c04879e4cbc469a920",
+    "src/features/payments/application/useCases/createPaymentsUseCases.test.js": "ee8e6c052c848ab03c2bf8eca946ccafc32b4e686f99250b0ef3a9a88e71d535",
+    "src/features/payments/infrastructure/repositories/supabasePaymentsRepository.test.js": "1cfd4580cc7ae4f99bedf4c588ed01c3a5e98051b7fe38b4f8c0f972793527c1",
+    "src/features/payments/presentation/createPaymentsService.test.js": "62de88a86c9ad7e22bac43e92f065889e5c42e3de42974f7a0351c7003d9f9f4",
+    "src/features/physical-tests/application/useCases/createPhysicalTestsUseCases.test.js": "9892538133fc299a62c5e59690ae883706e23b22fa2d3d536471c636d4a09c23",
+    "src/features/physical-tests/presentation/createPhysicalTestsService.test.js": "77011030f2d3e24f256c80b280097d9d4b7545a69ca0e6245578ad2028fc02bf",
+    "src/features/reporting/application/useCases/ensureDailyAttendanceReportUseCase.test.js": "c1f97910d44c4c557e6e2dc3ae730b6eaca8784ec4938d3b4fe55b4f81f81a35",
+    "src/features/reporting/infrastructure/repositories/supabaseReportingRepository.contract.test.js": "d17613098091b229925c2c5eccec15832d4d219ac7bc9cda8d99e4d571baf632",
+    "src/features/reporting/presentation/createReportingService.test.js": "d9d029359451d83d23a3bb8d91799ec2efbf266fe3b4268e4513bea0ecab6aad",
+    "src/features/schedules/application/useCases/createSchedulesUseCases.test.js": "3966fd22eb7532a6a354c272d9141930a16fd2ddc432899abe9a71703f4e33be",
+    "src/features/schedules/presentation/createSchedulesService.test.js": "d2a9a762b99a62590cd721f1c88dda78aca518ecc0317162587ab21e468536a9",
+    "src/features/student-dashboard/application/useCases/createStudentDashboardUseCases.test.js": "e52b287f6345cf5dc2ad5231d1319dc04e31dd1c71ca6037392e4f39a1e7efc9",
+    "src/features/student-dashboard/infrastructure/repositories/supabaseStudentDashboardRepository.test.js": "e4f67c92b6c22c1c36cd88d9751a04cc2a54e25ec29bae74a3f892368584f6e2",
+    "src/features/student-dashboard/presentation/components/physical-tests/buildStudentPhysicalProfile.test.js": "33198c665c2e8be1431ab5e0e6ccb0ed4882abd72c4710f89a78b16702cf0c13",
+    "src/features/student-dashboard/presentation/components/StudentPhysicalTests.test.js": "0f8198fa97dbf9bf1303db27980db3596213c2d1a16007c86263905f1a7e7f11",
+    "src/features/student-dashboard/presentation/components/StudentProfileIdentityCard.test.js": "dea03415e348a314e892d5e6f82a32b6dd7e3ed1b647943b7ea254bc781481b3",
+    "src/features/student-dashboard/presentation/createStudentDashboardService.test.js": "9b1e685ae0563abfe625a792a39d7c0e0237dcc36b170d48602baddaa1d79b6a",
+    "src/features/trainer-dashboard/application/useCases/createTrainerDashboardUseCases.test.js": "a0aa36985868da6850c6c41593c4566e9d5f4c16f58b9e227a4646b7db4c13da",
+    "src/features/trainer-dashboard/presentation/createTrainerDashboardService.test.js": "1781351efcda31c1f8e6da70ef458143274632e12ad4847986cdc3a4419aeb88",
+    "src/features/trainer-management/application/useCases/createTrainerManagementUseCases.test.js": "ea37ac59a9256c8677e31e6f2459859c5c695ad3415f23e42abe8bf36addeb5e",
+    "src/features/trainer-management/presentation/createTrainerManagementService.test.js": "64109640e3e608b6702521875b1d5f1efaa2853a58242a45f42ebc9d9b421bbe",
+    "src/features/training-categories/application/useCases/createTrainingCategoriesUseCases.test.js": "2a9dc5e025eaee1d4bbe9a8c097c9ca6af298c4b0eda3467eda3e9ffa34f7563",
+    "src/features/user-management/application/contracts/userManagementRepositoryContract.test.js": "d818b428f14a5ec9a1efe38662d05f4b537e32743ed108b6ee10d42ad3960b4a",
+    "src/features/user-management/application/useCases/createUserManagementUseCases.test.js": "2af951dba2cb49dca14b8c093bdc1a2ecf7575b6ac8035f6fe7b1a763535b5d1",
+    "src/features/user-management/presentation/components/shared/CreatedCredentialsModal.test.js": "ec763b39b212b925eb7341d89366f0f8bfcd4e8e60e5da39b68cd0f6af1ffd14",
+    "src/features/user-management/presentation/components/shared/ResendCredentialsModal.test.js": "acccdc79131b2daf1f03a94d649bf122656889b71f3b6b3cc97d9a9d5c226297",
+    "src/features/user-management/presentation/components/shared/UserFilters.test.js": "3b6237f9ec19b3b05dbc4adb74ebda06f72bed6112469f4c861f77aea454420e",
+    "src/features/user-management/presentation/components/tabs/CreationCredentials.test.js": "bdab84ae35d8316d9f14e6321bcf5f7ed1eb869565d5680a98b0f7f945436bdf",
+    "src/features/user-management/presentation/createUserManagementService.test.js": "7b0cdf6428a0de8938dde1c76610b95b16dbd96a64ea519fce2ed9c47e13e457",
+    "src/features/user-provisioning/application/useCases/createUserProvisioningUseCases.test.js": "b7749f3a3a4ac9c07593d99c089184d209a637ea08fff4cff58e0c3a01161b7e",
+    "src/features/user-provisioning/infrastructure/repositories/supabaseUserProvisioningRepository.test.js": "459a69c63d5aa5feed897ad5aadcd19731cd69c999019de81be67f1acc1516d0",
+    "src/features/user-provisioning/presentation/createUserProvisioningService.test.js": "7d8147d85fceb67bcc41476f010acc9655b38ecb78593466a86d3b1e65ab0b9b",
+    "src/shared/infrastructure/auth/deleteAuthUserById.test.js": "a32fdd3a8de8868585767be678f71ee02b49b5a911432b2bb0f57c0d3eebc7c0",
+    "src/shared/infrastructure/communications/whatsappBusinessService.test.js": "7bbf086125064ec0bb9f9ad4481e785c7f87a4ece0245d7a49624e157933d587",
+    "src/shared/lib/tableQuery.test.js": "3224fe10c0c1cd6a2a548d7ebbf8f54b18251d10cdb29cb96583386be806c16b",
+    "src/shared/platform/ota.test.js": "b0292f2ee8061bd0ecac13c7e9f0bb9366822ed675b9de88ee8feeb0db195a00",
+    "src/shared/platform/push.test.js": "b6351fbfa9aa2a64600698ac5885740c781b4f1ca65a1086df80dab717b559a4",
+    "src/shared/ui/copyQualityCheck.test.js": "b2b581c4a6802e441e2dba10783b105662d620b3894144365da0a777d0904254",
+    "src/shared/ui/iconRegistry.test.js": "82eff714fa0426fbd8a544dbd52cee9c3691dbff2686f5d6b56dffd81bcb1e7c",
+    "src/shared/ui/Modal.test.js": "dfd6e3e353d42bb5fe7c6bef1edd745d503198a054a6ff8a9c82a58e68a420e5",
+    "src/shared/ui/PageShell.test.js": "98cab2a767e304137bdff0b71b07b7d1f8491c20b166178e4ad4be7fda60c9f9",
+    "src/shared/ui/panel-guide/PanelUserGuide.test.js": "49a7a11283d660a624b3207cbb3f8f04b4984811b08a4dce8f4f60aad8908713",
+    "src/shared/ui/render-profile/renderProfileResolver.test.js": "004ec356338eda2b372648b0b00c6bf1c6097b406047d0deb1b764445e317a9e",
+    "src/shared/ui/semanticCatalog.test.js": "7b63134df7a91284638a508ec537dd86d0b12edc918a777a4318017a01e121c4",
+    "src/shared/ui/SortableHeader.test.js": "825ba4f4bfb1de77c9981c9f7c45b3e668d5a50bf137a3c78ea916ee35b75c4d",
+    "src/utils/passwordUtils.test.js": "41791932933a57d132432cce42ce0cd90c9e99b504beda3459bda67d8d39e7eb"
+  },
+  "environment": {
+    ".env": {
+      "ESLINT_NO_DEV_ERRORS": "CONFIGURADA (valor no registrado)",
+      "DISABLE_ESLINT_PLUGIN": "CONFIGURADA (valor no registrado)"
+    },
+    ".env.e2e": {
+      "E2E_ADMIN_EMAIL": "CONFIGURADA (valor no registrado)",
+      "E2E_ADMIN_PASSWORD": "CONFIGURADA (valor no registrado)",
+      "E2E_TRAINER_EMAIL": "CONFIGURADA (valor no registrado)",
+      "E2E_TRAINER_PASSWORD": "CONFIGURADA (valor no registrado)",
+      "E2E_STUDENT_EMAIL": "CONFIGURADA (valor no registrado)",
+      "E2E_STUDENT_PASSWORD": "CONFIGURADA (valor no registrado)"
+    },
+    ".env.e2e.example": {
+      "E2E_ADMIN_EMAIL": "VACIA",
+      "E2E_ADMIN_PASSWORD": "VACIA",
+      "E2E_TRAINER_EMAIL": "VACIA",
+      "E2E_TRAINER_PASSWORD": "VACIA",
+      "E2E_STUDENT_EMAIL": "VACIA",
+      "E2E_STUDENT_PASSWORD": "VACIA"
+    },
+    ".env.example": {
+      "REACT_APP_SUPABASE_URL": "VACIA",
+      "REACT_APP_SUPABASE_ANON_KEY": "VACIA",
+      "REACT_APP_APP_URL": "CONFIGURADA (valor no registrado)",
+      "REACT_APP_PII_ENCRYPTION_KEY": "CONFIGURADA (valor no registrado)",
+      "REACT_APP_WHATSAPP_ACCESS_TOKEN": "CONFIGURADA (valor no registrado)",
+      "REACT_APP_WHATSAPP_PHONE_NUMBER_ID": "CONFIGURADA (valor no registrado)",
+      "REACT_APP_WHATSAPP_BUSINESS_ACCOUNT_ID": "CONFIGURADA (valor no registrado)",
+      "REACT_APP_CLUB_ADMIN_PHONE": "CONFIGURADA (valor no registrado)",
+      "REACT_APP_CLUB_COACH_PHONE": "CONFIGURADA (valor no registrado)",
+      "REACT_APP_CLUB_EMERGENCY_PHONE": "CONFIGURADA (valor no registrado)"
+    },
+    ".env.local": {
+      "REACT_APP_SUPABASE_URL": "CONFIGURADA (valor no registrado)",
+      "REACT_APP_SUPABASE_ANON_KEY": "CONFIGURADA (valor no registrado)",
+      "REACT_APP_PII_ENCRYPTION_KEY": "CONFIGURADA (valor no registrado)"
+    },
+    ".env.local.example": {
+      "REACT_APP_SUPABASE_URL": "VACIA",
+      "REACT_APP_SUPABASE_ANON_KEY": "VACIA",
+      "REACT_APP_PII_ENCRYPTION_KEY": "VACIA",
+      "REACT_APP_APP_URL": "CONFIGURADA (valor no registrado)",
+      "REACT_APP_WHATSAPP_ACCESS_TOKEN": "VACIA",
+      "REACT_APP_WHATSAPP_PHONE_NUMBER_ID": "VACIA",
+      "REACT_APP_WHATSAPP_BUSINESS_ACCOUNT_ID": "VACIA",
+      "REACT_APP_CLUB_ADMIN_PHONE": "VACIA",
+      "REACT_APP_CLUB_COACH_PHONE": "VACIA",
+      "REACT_APP_CLUB_EMERGENCY_PHONE": "VACIA"
+    },
+    ".env.production": {
+      "REACT_APP_SUPABASE_URL": "CONFIGURADA (valor no registrado)",
+      "REACT_APP_SUPABASE_ANON_KEY": "CONFIGURADA (valor no registrado)",
+      "REACT_APP_PII_ENCRYPTION_KEY": "CONFIGURADA (valor no registrado)"
+    }
+  },
+  "requiredEnvReferences": [
+    "E2E_ADMIN_EMAIL",
+    "E2E_ADMIN_PASSWORD",
+    "E2E_ENABLE_MUTATION_FLOW",
+    "E2E_STUDENT_EMAIL",
+    "E2E_STUDENT_PASSWORD",
+    "E2E_TRAINER_EMAIL",
+    "E2E_TRAINER_PASSWORD",
+    "FCM_CLIENT_EMAIL",
+    "FCM_PRIVATE_KEY",
+    "FCM_PROJECT_ID",
+    "FROM_EMAIL",
+    "NODE_ENV",
+    "REACT_APP_APP_URL",
+    "REACT_APP_CAPGO_DEFAULT_CHANNEL",
+    "REACT_APP_CLUB_ADMIN_PHONE",
+    "REACT_APP_CLUB_COACH_PHONE",
+    "REACT_APP_CLUB_EMERGENCY_PHONE",
+    "REACT_APP_ENABLE_SQL_AUDIT",
+    "REACT_APP_ENABLE_WEB_VITALS_LOG",
+    "REACT_APP_PII_ENCRYPTION_KEY",
+    "REACT_APP_SUPABASE_ANON_KEY",
+    "REACT_APP_SUPABASE_URL",
+    "REACT_APP_VERSION",
+    "REACT_APP_WHATSAPP_ACCESS_TOKEN",
+    "REACT_APP_WHATSAPP_BUSINESS_ACCOUNT_ID",
+    "REACT_APP_WHATSAPP_PHONE_NUMBER_ID",
+    "REPORTS_SCHEDULER_SECRET",
+    "RESEND_API_KEY",
+    "SUPABASE_ANON_KEY",
+    "SUPABASE_SERVICE_ROLE_KEY",
+    "SUPABASE_URL"
+  ],
+  "tests": [
+    {
+      "file": "src/App.test.js",
+      "mocks": false,
+      "titles": [
+        "app test placeholder"
+      ]
+    },
+    {
+      "file": "src/config/appUrls.test.js",
+      "mocks": true,
+      "titles": [
+        "uses public web reset url on web platform",
+        "uses native reset url on native platform"
+      ]
+    },
+    {
+      "file": "src/features/account-admin/application/useCases/createAccountAdminUseCases.test.js",
+      "mocks": true,
+      "titles": [
+        "loadUsuariosUseCase aplica filtros de busqueda y estado",
+        "updateManagedUserUseCase actualiza usuario y su profile",
+        "deleteManagedUserUseCase elimina auth y luego registro local",
+        "suspendManagedUserUseCase registra suspension con timestamp Ecuador",
+        "loadProfileDataUseCase arma fallback cuando no existe users row",
+        "updateProfileDataUseCase inserta user cuando no existe y actualiza profile name",
+        "changePasswordUseCase valida campos y no llama verify cuando faltan datos",
+        "changePasswordUseCase rechaza claves que no cumplen la politica de recuperacion",
+        "changePasswordUseCase actualiza cuando validaciones y verificacion son correctas"
+      ]
+    },
+    {
+      "file": "src/features/account-admin/infrastructure/repositories/supabaseAccountAdminRepository.password.test.js",
+      "mocks": true,
+      "titles": [
+        "verifica la contrasena actual sin reemplazar ni cerrar la sesion principal"
+      ]
+    },
+    {
+      "file": "src/features/account-admin/presentation/createAccountAdminService.test.js",
+      "mocks": true,
+      "titles": [
+        "loadUsuarios delega al flujo del use case",
+        "changePassword retorna respuesta funcional cuando password actual no valida"
+      ]
+    },
+    {
+      "file": "src/features/admin-dashboard/application/useCases/createAdminDashboardUseCases.test.js",
+      "mocks": true,
+      "titles": [
+        "loadStatsUseCase calcula metricas del dashboard",
+        "loadFinancialReviewUseCase consolida mensualidades vencidas y pagos diarios por asistencia",
+        "loadCategoriesStatsUseCase cuenta categorias correctamente",
+        "loadRecentActivityUseCase retorna fallback cuando no hay actividad",
+        "loadRecentActivityUseCase carga nombres de actividad reciente en lote",
+        "loadRecentActivityUseCase conserva fallback puntual si el repositorio no soporta lote",
+        "loadDashboardUseCase orquesta stats + categorias + actividad"
+      ]
+    },
+    {
+      "file": "src/features/admin-dashboard/presentation/createAdminDashboardService.test.js",
+      "mocks": true,
+      "titles": [
+        "loadDashboard delega en use-cases y retorna data consolidada",
+        "loadFinancialReview delega en los use-cases del feature"
+      ]
+    },
+    {
+      "file": "src/features/announcements/application/useCases/createAnnouncementsUseCases.test.js",
+      "mocks": true,
+      "titles": [
+        "loadAdminAnnouncementsUseCase delega filtros al repositorio",
+        "saveAnnouncementUseCase actualiza cuando editingAnuncio existe",
+        "saveAnnouncementUseCase crea anuncio cuando es nuevo",
+        "toggleAnnouncementActiveUseCase alterna estado activo",
+        "loadViewerAnnouncementsUseCase envia nowIso al repositorio"
+      ]
+    },
+    {
+      "file": "src/features/announcements/presentation/createAnnouncementsService.test.js",
+      "mocks": true,
+      "titles": [
+        "loadAdminAnnouncements delega al repositorio via use case",
+        "removeAnnouncement delega announcementId al repositorio"
+      ]
+    },
+    {
+      "file": "src/features/athletes/application/useCases/createAthletesUseCases.test.js",
+      "mocks": true,
+      "titles": [
+        "loadAtletasUseCase construye view model de email, telefono y full_name",
+        "updateAtletaUseCase valida edad y actualiza users + students",
+        "updateAtletaUseCase lanza error si validacion de edad falla",
+        "deleteAtletaCompletelyUseCase elimina auth y registros locales",
+        "listOrphanUsersUseCase detecta usuarios estudiante sin relacion",
+        "validateAthleteFormUseCase valida campos obligatorios y formato",
+        "filterAndSortAtletasUseCase filtra por busqueda/categoria y ordena",
+        "paginateAtletasUseCase devuelve pagina valida y total",
+        "use cases de formato devuelven edad, categoria e ingreso"
+      ]
+    },
+    {
+      "file": "src/features/athletes/presentation/createAthletesService.test.js",
+      "mocks": true,
+      "titles": [
+        "loadAtletas delega a loadAtletasUseCase",
+        "updateAtleta delega payload al use case",
+        "cleanOrphanUsers delega a cleanOrphanUsersUseCase",
+        "filterAndSortAtletas delega payload",
+        "formatCategoria delega payload"
+      ]
+    },
+    {
+      "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+      "mocks": true,
+      "titles": [
+        "loadAthletesUseCase filtra solo estudiantes",
+        "loadAttendanceDataUseCase agrupa y completa students por cache/fallback",
+        "loadAttendanceDataUseCase aplica filtro dinamico de busqueda en historial",
+        "registerAttendanceWithPaymentUseCase actualiza si ya existe",
+        "registerAttendanceWithPaymentUseCase notifica cuando crea una asistencia nueva",
+        "toggleAttendanceUseCase elimina cuando ya estaba presente",
+        "toggleAttendanceUseCase notifica cuando crea una asistencia",
+        "getDefaultDatesUseCase devuelve fechas iniciales para filtros",
+        "getHistoryDatePresetUseCase construye rangos rapidos de historial",
+        "calculateStatsUseCase calcula resumen en modo bulk",
+        "markAllPresentWithMensualidadUseCase registra solo ausentes",
+        "filterTodayAttendanceUseCase filtra por categoria y busqueda",
+        "filterTodayAttendanceUseCase permite filtrar toma por estado y metodo de pago",
+        "filterTodayAttendanceUseCase permite filtrar por mensualidad activa o pago manual",
+        "getCategoryStatsUseCase calcula presentes/ausentes",
+        "buildExportSummaryUseCase usa fecha seleccionada y formatea salida",
+        "getPaymentTypeDisplayUseCase traduce labels de metodos comunes",
+        "buildDayAttendanceBreakdownUseCase agrupa por bloques de categoria",
+        "casos de uso de nombres construyen homonimos, display e iniciales"
+      ]
+    },
+    {
+      "file": "src/features/attendance/infrastructure/repositories/supabaseAttendanceRepository.test.js",
+      "mocks": true,
+      "titles": [
+        "listAttendances aplica filtros de fecha y atleta",
+        "listAthletesWithRole lanza AttendanceError cuando falla consulta",
+        "findAttendanceByStudentAndDate retorna null cuando no existe registro",
+        "deleteAttendancesByDate lanza AttendanceError ante error de supabase"
+      ]
+    },
+    {
+      "file": "src/features/attendance/presentation/createAttendanceService.test.js",
+      "mocks": true,
+      "titles": [
+        "loadAttendanceData delega en use case",
+        "registerAttendanceWithPayment delega payload",
+        "getDefaultDates delega al use case",
+        "markAllPresentWithMensualidad delega payload",
+        "filterTodayAttendance delega payload",
+        "buildExportSummary delega payload",
+        "getPaymentTypeDisplay delega payload",
+        "getCompactDisplayName delega payload",
+        "buildHomonymsByCompactName delega payload"
+      ]
+    },
+    {
+      "file": "src/features/auth-profile/application/useCases/loadUserProfileUseCase.test.js",
+      "mocks": true,
+      "titles": [
+        "lanza AuthProfileError si currentUser no tiene id",
+        "retorna perfil directo cuando existe en user_profiles",
+        "sincroniza y retorna perfil desde users cuando user_profiles no existe",
+        "usa fallback profile cuando no hay user_profiles ni users"
+      ]
+    },
+    {
+      "file": "src/features/auth-profile/presentation/createAuthProfileService.test.js",
+      "mocks": true,
+      "titles": [
+        "loadUserProfile delega al use case con repositorio inyectado"
+      ]
+    },
+    {
+      "file": "src/features/auth-session/application/useCases/createAuthSessionUseCases.test.js",
+      "mocks": true,
+      "titles": [
+        "checkFirstLoginUseCase retorna null cuando userId no existe",
+        "updateLastLoginUseCase no llama repositorio si authUser no tiene id",
+        "checkLoginAllowedUseCase retorna allowed=true si el repositorio falla",
+        "recordLoginAttemptUseCase captura errores del repositorio sin propagar",
+        "signInUseCase delega al repositorio con email y password",
+        "signInUseCase no propaga error si falla la recompensa diaria"
+      ]
+    },
+    {
+      "file": "src/features/auth-session/presentation/components/ChangePasswordModal.password.test.js",
+      "mocks": true,
+      "titles": [
+        "no cambia la contrasena ni cierra el modal si la actual es incorrecta"
+      ]
+    },
+    {
+      "file": "src/features/auth-session/presentation/components/Login.auth-events.test.js",
+      "mocks": true,
+      "titles": [
+        "registra un callback sincrono y difiere checkFirstLogin",
+        "USER_UPDATED no reabre flujo de primer ingreso"
+      ]
+    },
+    {
+      "file": "src/features/auth-session/presentation/components/ResetPassword.recovery.test.js",
+      "mocks": true,
+      "titles": [
+        "rechaza un enlace expirado aunque el navegador conserve otra sesion",
+        "no sustituye un codigo invalido por una sesion de otro usuario",
+        "verifica token_hash de recuperacion antes de mostrar el formulario",
+        "si otra pestaña cambia de cuenta, no modifica la contraseña del nuevo usuario",
+        "cierra la sesion de recuperacion aunque falle sincronizar primer ingreso"
+      ]
+    },
+    {
+      "file": "src/features/auth-session/presentation/createAuthSessionService.test.js",
+      "mocks": true,
+      "titles": [
+        "delega signIn al repositorio",
+        "delega requestPasswordReset al repositorio",
+        "delega markFirstLoginCompleted al repositorio"
+      ]
+    },
+    {
+      "file": "src/features/auth-session/presentation/utils/deferAuthEvent.test.js",
+      "mocks": true,
+      "titles": [
+        "retorna callback sincrono y difiere ejecucion del handler",
+        "captura errores del handler sin romper el callback"
+      ]
+    },
+    {
+      "file": "src/features/communications/application/useCases/createCommunicationsUseCases.test.js",
+      "mocks": true,
+      "titles": [
+        "sendCredentialsUseCase delega al repositorio",
+        "sendPaymentConfirmationUseCase envuelve errores genericos"
+      ]
+    },
+    {
+      "file": "src/features/communications/infrastructure/repositories/supabaseCommunicationsRepository.test.js",
+      "mocks": true,
+      "titles": [
+        "escapa los datos del destinatario y la contrasena sin alterar el texto que recibe",
+        "devuelve el mensaje HTTP real y no inserta credenciales como HTML en el documento",
+        "no envia credenciales incompletas",
+        "sendCredentials retorna success=true cuando la edge function responde ok",
+        "sendPaymentConfirmation retorna success=false cuando la edge function falla",
+        "sendPasswordReset retorna success=false cuando supabase auth devuelve error"
+      ]
+    },
+    {
+      "file": "src/features/communications/presentation/createCommunicationsService.test.js",
+      "mocks": true,
+      "titles": [
+        "delega sendCredentials al repositorio",
+        "delega sendPaymentConfirmation al repositorio",
+        "delega sendPasswordReset al repositorio"
+      ]
+    },
+    {
+      "file": "src/features/gamification/application/useCases/createGamificationAdminUseCases.test.js",
+      "mocks": true,
+      "titles": [
+        "guarda un marco personalizado en el slot frame que soporta el equipamiento",
+        "impide publicar productos fisicos sin un flujo de canje implementado"
+      ]
+    },
+    {
+      "file": "src/features/gamification/application/useCases/createGamificationFoundationUseCases.test.js",
+      "mocks": true,
+      "titles": [
+        "registerDailyLoginRewardUseCase entrega XP una vez por dia",
+        "registerDailyLoginRewardUseCase no duplica la recompensa en el mismo dia",
+        "registerDailyLoginRewardUseCase omite usuarios sin estudiante",
+        "loadXpLedgerUseCase formatea el extracto en camelCase",
+        "loadCurrencyWalletUseCase formatea wallet y extracto de monedas"
+      ]
+    },
+    {
+      "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+      "mocks": true,
+      "titles": [
+        "loadStudentGamificationByStudentIdUseCase deriva progreso cuando no existe perfil persistido",
+        "processPhysicalTestRecordedUseCase persiste perfil y proyecciones derivadas",
+        "refreshStudentProgressUseCase construye currency ledger sin timestamps nulos",
+        "loadStudentGamificationByStudentIdUseCase construye ranking derivado cuando no hay snapshot publico",
+        "loadStudentGamificationByStudentIdUseCase tolera repositorio sin listAttendances",
+        "listCategoryLeaderboardsUseCase prioriza la categoria aunque reciba un ageBand",
+        "registerDailyLoginRewardUseCase queda expuesto desde createGamificationUseCases",
+        "updateStudentIdentityUseCase permite guardar apodo y titulo desbloqueado",
+        "purchaseCosmeticItemUseCase compra sin recargar el agregado completo",
+        "purchaseCosmeticItemUseCase bloquea cosmeticos de prestigio que aun no se han desbloqueado",
+        "equipCosmeticItemUseCase equipa un item ya adquirido sin recargar el agregado",
+        "unequipCosmeticItemUseCase retira un slot equipado sin recargar el agregado",
+        "avatarCatalog expone modelos fijos por estilo con opciones disponibles y bloqueadas",
+        "buildAvatarUrl varia de forma determinista por modelSlug",
+        "proyecta el shape esperado para avatarModelOptions con grupos disponibles y bloqueados",
+        "preserves a readable variant label for expanded cosmetics inside the projected catalog"
+      ]
+    },
+    {
+      "file": "src/features/gamification/infrastructure/repositories/supabaseGamificationRepository.test.js",
+      "mocks": true,
+      "titles": [
+        "findStudentByUserId retorna estudiante cuando existe",
+        "getProfile retorna null cuando no hay filas",
+        "replaceRewardEvents elimina y luego inserta eventos",
+        "replaceXpLedger no reinserta daily_login preservado ni ids generados",
+        "replaceLeaderboardSnapshots elimina columnas no persistidas antes de insertar",
+        "listCategoryLeaderboard lanza GamificationError cuando falla la consulta"
+      ]
+    },
+    {
+      "file": "src/features/gamification/presentation/components/cosmeticVisuals.test.js",
+      "mocks": false,
+      "titles": [
+        "resolves sober visuals for common and rare cosmetics from metadata",
+        "resolves strong silhouette visuals for epic and legendary cosmetics",
+        "does not collapse different badge variants into the same visual payload",
+        "resolves background variants independently from frame variants"
+      ]
+    },
+    {
+      "file": "src/features/gamification/presentation/components/GamificationAdminPanel.test.js",
+      "mocks": true,
+      "titles": [
+        "preserva metadata de prestigio al editar el cosmetico",
+        "elimina la imagen anterior al convertir un marco personalizado en uno normal"
+      ]
+    },
+    {
+      "file": "src/features/gamification/presentation/components/IdentityPortrait.test.js",
+      "mocks": false,
+      "titles": [
+        "mantiene el fondo visible alrededor de una foto opaca",
+        "renderiza el marco personalizado como una capa transparente sobre la foto",
+        "stays visually neutral when no cosmetics are equipped",
+        "renders sober common cosmetics without strong overlays",
+        "renders strong front layers for legendary effects"
+      ]
+    },
+    {
+      "file": "src/features/gamification/presentation/components/StudentGamificationPanel.test.js",
+      "mocks": true,
+      "titles": [
+        "bloquea otras compras mientras una esta pendiente y usa saldo e historial confirmados",
+        "actualiza la metadata del cosmetico en los rankings al equipar",
+        "muestra gratis y cuanto falta para comprar",
+        "mantiene las categorias sin soporte bloqueadas tras recalcular el saldo"
+      ]
+    },
+    {
+      "file": "src/features/gamification/presentation/createGamificationService.test.js",
+      "mocks": true,
+      "titles": [
+        "loadStudentGamification delega al use case",
+        "processPhysicalTestRecorded delega studentId y testId",
+        "refreshStudentProgress delega studentId",
+        "listCategoryLeaderboards delega categoria y limite",
+        "loadXpLedger delega studentId y limit",
+        "registerDailyLoginReward delega userId",
+        "loadCurrencyWallet delega studentId y limit",
+        "updateStudentIdentity delega avatarModelSlug junto a la identidad visual",
+        "purchaseCosmeticItem delega compra por userId e item",
+        "equipCosmeticItem delega equipamiento por userId e item",
+        "unequipCosmeticItem delega desequipado por userId y categoria"
+      ]
+    },
+    {
+      "file": "src/features/notifications/application/useCases/createNotificationsUseCases.test.js",
+      "mocks": true,
+      "titles": [
+        "loadBellNotificationsUseCase combina pagos y anuncios, ordenados por prioridad",
+        "loadPaymentNotificationsUseCase genera tarjetas de pago solo hasta 3 dias",
+        "expone casos de uso para marcar leida y eliminar notificaciones"
+      ]
+    },
+    {
+      "file": "src/features/notifications/infrastructure/repositories/supabaseNotificationsRepository.test.js",
+      "mocks": true,
+      "titles": [
+        "listPaymentsForNotifications retorna data cuando consulta es exitosa",
+        "listStudentsByIds retorna [] cuando no hay ids",
+        "listStudentsByIds lanza NotificationsError cuando supabase falla",
+        "listRecentActiveAnnouncements limita a 5 y retorna data",
+        "listNotificationInboxState consulta por user y keys",
+        "markNotificationAsRead usa upsert por user y notification key"
+      ]
+    },
+    {
+      "file": "src/features/notifications/presentation/components/NotificationBell.access.test.js",
+      "mocks": true,
+      "titles": [
+        "no renderiza para estudiantes ni carga notificaciones",
+        "renderiza para entrenadores y carga notificaciones"
+      ]
+    },
+    {
+      "file": "src/features/notifications/presentation/createNotificationsService.test.js",
+      "mocks": true,
+      "titles": [
+        "delega loadBellNotifications al caso de uso",
+        "delega loadPaymentNotifications al caso de uso",
+        "delega acciones de bandeja persistida al repositorio"
+      ]
+    },
+    {
+      "file": "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+      "mocks": true,
+      "titles": [
+        "listModuleDataUseCase refresca pagos cuando hubo actualizaciones de estado",
+        "createPaymentUseCase crea pago y dispara notificaciones",
+        "getPaymentPeriodPreviewUseCase calcula preview desde el ultimo pago del atleta",
+        "deletePaymentUseCase usa timestamp Ecuador para soft delete",
+        "updatePaymentUseCase sincroniza progreso del estudiante anterior y actual",
+        "markPaymentAsPaidUseCase sincroniza progreso del estudiante",
+        "filterAndSortLatestPaymentsUseCase filtra por estado y busqueda",
+        "getTodayDateUseCase retorna fecha desde dependencia",
+        "buildInitialPaymentFormUseCase arma formulario por defecto",
+        "calculatePaymentsStatsUseCase calcula contadores y recaudado",
+        "getPaymentStatusInfoUseCase delega al servicio de estados",
+        "syncPaymentStatusesUseCase delega actualizacion masiva",
+        "buildManualWhatsAppPaymentMessageUseCase construye payload cuando el telefono es valido",
+        "sendManualWhatsAppPaymentMessageUseCase envia mensaje",
+        "validatePaymentFormUseCase valida campos requeridos y fecha",
+        "filterAthletesBySearchUseCase filtra por nombre completo",
+        "paginatePaymentsUseCase devuelve pagina segura",
+        "use cases de formato de pagos devuelven strings esperados"
+      ]
+    },
+    {
+      "file": "src/features/payments/infrastructure/repositories/supabasePaymentsRepository.test.js",
+      "mocks": true,
+      "titles": [
+        "listAthletes devuelve lista cuando consulta es exitosa",
+        "listMembershipTypes retorna catalogo activo",
+        "listPayments lanza PaymentsError cuando hay error de supabase",
+        "createPayment retorna el pago creado",
+        "getPaymentPeriodPreview devuelve payload base cuando se solicita preview",
+        "getAthleteByStudentId lanza PaymentsError ante error"
+      ]
+    },
+    {
+      "file": "src/features/payments/presentation/createPaymentsService.test.js",
+      "mocks": true,
+      "titles": [
+        "listModuleData delega al use case",
+        "createPayment delega formData al use case",
+        "markPaymentAsPaid delega al use case",
+        "filterAndSortLatestPayments delega allPayments y filters",
+        "getPaymentPeriodPreview delega al use case",
+        "getTodayDate delega al use case de fecha actual",
+        "buildInitialPaymentForm delega al use case de formulario inicial",
+        "validatePaymentForm delega al use case",
+        "paginatePayments delega al use case",
+        "calculatePaymentsStats delega allPayments al use case de estadisticas",
+        "getPaymentStatusInfo delega al use case de estado",
+        "syncPaymentStatuses delega al use case de sincronizacion",
+        "buildManualWhatsAppPaymentMessage delega al use case",
+        "sendManualWhatsAppPaymentMessage delega al use case"
+      ]
+    },
+    {
+      "file": "src/features/physical-tests/application/useCases/createPhysicalTestsUseCases.test.js",
+      "mocks": true,
+      "titles": [
+        "loadAtletasUseCase agrega full_name",
+        "loadTestsUseCase filtra por search",
+        "createTestUseCase construye payload numerico",
+        "buildInitialFormUseCase retorna fecha actual en form default",
+        "validateTestFormUseCase retorna error cuando faltan mediciones",
+        "calculateStatsUseCase calcula pendientes por categoria"
+      ]
+    },
+    {
+      "file": "src/features/physical-tests/presentation/createPhysicalTestsService.test.js",
+      "mocks": true,
+      "titles": [
+        "loadTests delega filtros al use case",
+        "buildInitialForm delega al use case",
+        "validateTestForm delega payload al use case"
+      ]
+    },
+    {
+      "file": "src/features/reporting/application/useCases/ensureDailyAttendanceReportUseCase.test.js",
+      "mocks": true,
+      "titles": [
+        "retorna signedUrl y fileName cuando el reporte se genera",
+        "falla cuando date no viene informado"
+      ]
+    },
+    {
+      "file": "src/features/reporting/infrastructure/repositories/supabaseReportingRepository.contract.test.js",
+      "mocks": true,
+      "titles": [
+        "generateReport mapea envelope success/code/message/details/data",
+        "generateScheduledReports acepta respuesta parcial y conserva success=false",
+        "deleteRun lanza ReportingError cuando envelope success=false"
+      ]
+    },
+    {
+      "file": "src/features/reporting/presentation/createReportingService.test.js",
+      "mocks": true,
+      "titles": [
+        "listRuns delega parametros y hace unwrap de result ok",
+        "generateReport propaga error funcional cuando result ok=false"
+      ]
+    },
+    {
+      "file": "src/features/schedules/application/useCases/createSchedulesUseCases.test.js",
+      "mocks": true,
+      "titles": [
+        "loadHorariosUseCase preserva el orden entregado por el repositorio",
+        "updateHorarioUseCase aplica fallback si falta columna descripcion",
+        "createHorariosUseCase crea combinatoria de dias x categorias"
+      ]
+    },
+    {
+      "file": "src/features/schedules/presentation/createSchedulesService.test.js",
+      "mocks": true,
+      "titles": [
+        "createHorarios delega argumentos"
+      ]
+    },
+    {
+      "file": "src/features/student-dashboard/application/useCases/createStudentDashboardUseCases.test.js",
+      "mocks": true,
+      "titles": [
+        "loadPaymentStatusUseCase retorna hasPaid=true cuando existe pago vigente",
+        "loadPaymentStatusUseCase agrupa la cobertura continua registrada en varios pagos",
+        "loadAttendanceStatsUseCase calcula estadisticas y limita recientes a 10",
+        "loadStudentPanelDataUseCase orquesta student + pago + asistencia + tests",
+        "loadStudentViewDataUseCase orquesta student + pagos + tests",
+        "subscribeToPaymentChangesUseCase delega al repositorio"
+      ]
+    },
+    {
+      "file": "src/features/student-dashboard/infrastructure/repositories/supabaseStudentDashboardRepository.test.js",
+      "mocks": true,
+      "titles": [
+        "findStudentByUserId retorna estudiante cuando existe",
+        "listCurrentPayments filtra por fechas y retorna lista",
+        "listPaymentsByStudentId lanza StudentDashboardError cuando falla consulta",
+        "listAttendancesFromDate retorna [] cuando no hay asistencias",
+        "subscribeToPaymentChanges crea una suscripcion filtrada por estudiante"
+      ]
+    },
+    {
+      "file": "src/features/student-dashboard/presentation/components/physical-tests/buildStudentPhysicalProfile.test.js",
+      "mocks": false,
+      "titles": [
+        "returns an empty profile when there are no tests",
+        "sorts by fecha_test and computes mixed-profile output",
+        "flags weight increase plus jump regression as a mixed-profile alert",
+        "keeps force conclusions empty when force metrics are missing"
+      ]
+    },
+    {
+      "file": "src/features/student-dashboard/presentation/components/StudentPhysicalTests.test.js",
+      "mocks": true,
+      "titles": [
+        "shows the empty state when there are no tests",
+        "shows preliminary recommendations for a single test",
+        "switches chart blocks and renders narrative insights for multiple tests",
+        "shows a useful empty message when the selected block lacks enough series data",
+        "renders historical observations only when they exist"
+      ]
+    },
+    {
+      "file": "src/features/student-dashboard/presentation/components/StudentProfileIdentityCard.test.js",
+      "mocks": true,
+      "titles": [
+        "guarda foto de perfil desde mi perfil usando gamificationService",
+        "muestra error si la foto supera el limite permitido"
+      ]
+    },
+    {
+      "file": "src/features/student-dashboard/presentation/createStudentDashboardService.test.js",
+      "mocks": true,
+      "titles": [
+        "delega loadStudentPanelData y usa el repositorio inyectado",
+        "delega loadStudentViewData y retorna pagos/tests",
+        "delega subscribeToPaymentChanges al use case correspondiente"
+      ]
+    },
+    {
+      "file": "src/features/trainer-dashboard/application/useCases/createTrainerDashboardUseCases.test.js",
+      "mocks": true,
+      "titles": [
+        "loadStatsUseCase orquesta metricas y normaliza nulos a 0",
+        "loadDashboardUseCase incluye categorias para competencia por categoria"
+      ]
+    },
+    {
+      "file": "src/features/trainer-dashboard/presentation/createTrainerDashboardService.test.js",
+      "mocks": true,
+      "titles": [
+        "loadStats delega al use case",
+        "loadDashboard delega al use case consolidado"
+      ]
+    },
+    {
+      "file": "src/features/trainer-management/application/useCases/createTrainerManagementUseCases.test.js",
+      "mocks": true,
+      "titles": [
+        "loadEntrenadoresUseCase delega listTrainers",
+        "updateEntrenadorUseCase cifra payload y actualiza entrenador",
+        "saveEntrenadorUseCase actualiza cuando editingEntrenador existe",
+        "saveEntrenadorUseCase crea usuario cuando es nuevo",
+        "deleteEntrenadorUseCase delega deleteTrainer"
+      ]
+    },
+    {
+      "file": "src/features/trainer-management/presentation/createTrainerManagementService.test.js",
+      "mocks": true,
+      "titles": [
+        "loadEntrenadores delega en loadEntrenadoresUseCase",
+        "saveEntrenador delega payload al use case",
+        "deleteEntrenador delega trainerId al use case"
+      ]
+    },
+    {
+      "file": "src/features/training-categories/application/useCases/createTrainingCategoriesUseCases.test.js",
+      "mocks": true,
+      "titles": [
+        "preserves filters and propagates permission errors instead of presenting an empty catalog",
+        "finds descriptions by category code and tolerates missing categories",
+        "prefers the configured label and formats codes as a fallback"
+      ]
+    },
+    {
+      "file": "src/features/user-management/application/contracts/userManagementRepositoryContract.test.js",
+      "mocks": true,
+      "titles": [
+        "no lanza error cuando repositorio es valido",
+        "lanza UserManagementError cuando repository es invalido",
+        "lanza UserManagementError cuando faltan metodos requeridos"
+      ]
+    },
+    {
+      "file": "src/features/user-management/application/useCases/createUserManagementUseCases.test.js",
+      "mocks": true,
+      "titles": [
+        "filtra administradores activos y suspendidos",
+        "filterAthletesUseCase filtra por estado/categoria/busqueda",
+        "filterTrainersUseCase filtra y ordena",
+        "paginateUsersUseCase retorna pagina valida",
+        "buildAthletesStatsUseCase y buildTrainersStatsUseCase calculan contadores",
+        "filterAdministratorsUseCase y buildAdministratorsStatsUseCase funcionan",
+        "performUserActionUseCase enruta acciones soportadas",
+        "resolvePermissionsUseCase retorna matriz para admin->atleta y default cuando no existe",
+        "resolvePanelAccessUseCase identifica acceso admin/trainer",
+        "buildVisiblePanelTabsUseCase y resolvePanelActiveTabUseCase validan tabs"
+      ]
+    },
+    {
+      "file": "src/features/user-management/presentation/components/shared/CreatedCredentialsModal.test.js",
+      "mocks": true,
+      "titles": [
+        "envía una sola vez en StrictMode y conserva el resultado mientras el proveedor responde"
+      ]
+    },
+    {
+      "file": "src/features/user-management/presentation/components/shared/ResendCredentialsModal.test.js",
+      "mocks": true,
+      "titles": [
+        "un doble envio solo ejecuta una rotacion de contrasena y bloquea cerrar durante el envio",
+        "muestra las nuevas credenciales para entrega manual si falla el correo"
+      ]
+    },
+    {
+      "file": "src/features/user-management/presentation/components/shared/UserFilters.test.js",
+      "mocks": true,
+      "titles": [
+        "exposes stable ids by userType",
+        "reset button calls provided onReset handler"
+      ]
+    },
+    {
+      "file": "src/features/user-management/presentation/components/tabs/CreationCredentials.test.js",
+      "mocks": true,
+      "titles": [
+        "la entrega manual muestra la contraseña sin enviar correo ni generar otra"
+      ]
+    },
+    {
+      "file": "src/features/user-management/presentation/createUserManagementService.test.js",
+      "mocks": true,
+      "titles": [
+        "listAthletes delega al use case",
+        "createUser delega payload completo al use case",
+        "changeRole delega userId y newRole al use case",
+        "performAction delega actionType y payload al use case",
+        "getPermissions delega userRole y targetUserType al use case",
+        "getPanelAccess/getVisiblePanelTabs/getValidPanelActiveTab delegan al use case",
+        "filterAthletes y paginateUsers delegan payload",
+        "filterAdministrators y buildAdministratorsStats delegan payload"
+      ]
+    },
+    {
+      "file": "src/features/user-provisioning/application/useCases/createUserProvisioningUseCases.test.js",
+      "mocks": true,
+      "titles": [
+        "createUserUseCase delega payload",
+        "un doble clic simultaneo solo cambia una vez la contrasena del usuario",
+        "no cambia la contrasena si no se selecciono ningun canal",
+        "un fallo de WhatsApp conserva la nueva contrasena y el resultado parcial de email",
+        "createStudentUseCase envuelve errores genericos",
+        "sendCredentialsByWhatsAppUseCase retorna missing_phone cuando no hay telefono",
+        "sendCredentialsByWhatsAppUseCase delega al gateway cuando hay telefono"
+      ]
+    },
+    {
+      "file": "src/features/user-provisioning/infrastructure/repositories/supabaseUserProvisioningRepository.test.js",
+      "mocks": true,
+      "titles": [
+        "createStudent falla cuando la fecha no cumple validacion de edad",
+        "resendCredentials falla cuando no hay user_id",
+        "resendCredentials falla cuando no hay token de sesión",
+        "resendCredentials traduce error funcional de edge function",
+        "conserva las credenciales y comunica el fallo real cuando el proveedor rechaza el correo",
+        "no envia correo cuando solo se solicita WhatsApp",
+        "recupera el mensaje de error HTTP del backend antes de intentar enviar",
+        "envia al email de Auth confirmado por el backend y evita actualizar primer ingreso dos veces",
+        "un error de red al marcar primer ingreso no oculta una contrasena ya actualizada"
+      ]
+    },
+    {
+      "file": "src/features/user-provisioning/presentation/createUserProvisioningService.test.js",
+      "mocks": true,
+      "titles": [
+        "delega createUser al repositorio",
+        "delega createStudent al repositorio",
+        "delega resendCredentials al repositorio",
+        "delega sendCredentialsByWhatsApp al use case y gateway"
+      ]
+    },
+    {
+      "file": "src/shared/infrastructure/auth/deleteAuthUserById.test.js",
+      "mocks": true,
+      "titles": [
+        "retorna envelope exitoso cuando delete-auth-user responde success=true",
+        "traduce AUTH_REQUIRED a mensaje legible"
+      ]
+    },
+    {
+      "file": "src/shared/infrastructure/communications/whatsappBusinessService.test.js",
+      "mocks": true,
+      "titles": [
+        "incluye nombre, email y contraseña en orden en la plantilla de credenciales"
+      ]
+    },
+    {
+      "file": "src/shared/lib/tableQuery.test.js",
+      "mocks": false,
+      "titles": [
+        "createTableQuery normaliza defaults",
+        "resolveNextSort aplica ciclo none -> asc -> desc -> none",
+        "getAriaSort responde por columna",
+        "helpers reinician page cuando cambia filtro u orden",
+        "getPaginationRange traduce page/pageSize a limites inclusivos de Supabase"
+      ]
+    },
+    {
+      "file": "src/shared/platform/ota.test.js",
+      "mocks": true,
+      "titles": [
+        "no envia channel explicito cuando solo usa el canal por defecto",
+        "marca el estado como blocked cuando Capgo bloquea el check",
+        "lanza error cuando el backend responde failed",
+        "limpia el mensaje viejo de up_to_date cuando comienza una descarga nueva"
+      ]
+    },
+    {
+      "file": "src/shared/platform/push.test.js",
+      "mocks": false,
+      "titles": [
+        "prefers explicit route from payload",
+        "routes announcements to the role specific announcements section",
+        "falls back to student monthly section for payment reminders",
+        "routes payment reminders to admin and trainer payments sections when role is present",
+        "routes gamification notifications to progress section",
+        "routes attendance notifications to the attendance section",
+        "falls back to home when no route can be resolved"
+      ]
+    },
+    {
+      "file": "src/shared/ui/copyQualityCheck.test.js",
+      "mocks": false,
+      "titles": [
+        "flags mojibake text",
+        "flags role term inconsistencies in UI text"
+      ]
+    },
+    {
+      "file": "src/shared/ui/iconRegistry.test.js",
+      "mocks": false,
+      "titles": [
+        "resolves role icons for known roles",
+        "resolves user type icon for atleta as student icon",
+        "falls back to user icon for unknown values"
+      ]
+    },
+    {
+      "file": "src/shared/ui/Modal.test.js",
+      "mocks": true,
+      "titles": [
+        "labels the dialog, focuses it, traps Tab, handles Escape and restores the opener"
+      ]
+    },
+    {
+      "file": "src/shared/ui/PageShell.test.js",
+      "mocks": false,
+      "titles": [
+        "uses a lightweight static background on mobile without downloading video",
+        "does not render video in ultraLite mode",
+        "keeps overlay when enabled"
+      ]
+    },
+    {
+      "file": "src/shared/ui/panel-guide/PanelUserGuide.test.js",
+      "mocks": true,
+      "titles": [
+        "navega por pasos y cambia la seccion activa",
+        "permite omitir la guia"
+      ]
+    },
+    {
+      "file": "src/shared/ui/render-profile/renderProfileResolver.test.js",
+      "mocks": false,
+      "titles": [
+        "respects explicit full mode",
+        "respects explicit ultraLite mode",
+        "honors data saving on desktop as well as mobile",
+        "honors reduced motion on desktop",
+        "uses full rendering on desktop without data or motion restrictions",
+        "returns lite on mobile with stable network",
+        "returns ultraLite when saveData is enabled",
+        "returns ultraLite on slow effectiveType",
+        "returns ultraLite when reduced motion is requested"
+      ]
+    },
+    {
+      "file": "src/shared/ui/semanticCatalog.test.js",
+      "mocks": false,
+      "titles": [
+        "returns canonical role labels",
+        "returns canonical user type labels",
+        "exposes stable UI labels"
+      ]
+    },
+    {
+      "file": "src/shared/ui/SortableHeader.test.js",
+      "mocks": true,
+      "titles": [
+        "renders with aria-sort none by default",
+        "renders ascending aria-sort when active asc",
+        "calls onToggleSort with field when clicked"
+      ]
+    },
+    {
+      "file": "src/utils/passwordUtils.test.js",
+      "mocks": true,
+      "titles": [
+        "acepta una contrasena fuerte de diez caracteres",
+        "genera claves validas usando entropia criptografica"
+      ]
+    }
+  ],
+  "e2eFiles": [
+    "tests/e2e/admin.happy-path-controlled.spec.js",
+    "tests/e2e/admin.modules-navigation.spec.js",
+    "tests/e2e/admin.provisioning-notifications.smoke.spec.js",
+    "tests/e2e/asistencias.guided.review.spec.js",
+    "tests/e2e/auth.password-recovery.spec.js",
+    "tests/e2e/filters-sorting.phase2-lists.spec.js",
+    "tests/e2e/filters-sorting.physical-tests.spec.js",
+    "tests/e2e/filters-sorting.tables.spec.js",
+    "tests/e2e/filters-sorting.user-management.spec.js",
+    "tests/e2e/public.navigation-accessibility.spec.js",
+    "tests/e2e/responsive.smoke.spec.js",
+    "tests/e2e/roles.modules-navigation.spec.js",
+    "tests/e2e/roles.panels-navigation.smoke.spec.js"
+  ],
+  "features": [
+    "account-admin",
+    "admin-dashboard",
+    "announcements",
+    "athletes",
+    "attendance",
+    "auth-profile",
+    "auth-session",
+    "communications",
+    "gamification",
+    "notifications",
+    "payments",
+    "physical-tests",
+    "reporting",
+    "schedules",
+    "student-dashboard",
+    "trainer-dashboard",
+    "trainer-management",
+    "training-categories",
+    "user-management",
+    "user-provisioning",
+    "_templates"
+  ],
+  "workflows": [],
+  "android": {
+    "sdkConfiguredPathExists": false,
+    "defaultSdkExists": false,
+    "JAVA_HOME_present": false,
+    "ANDROID_HOME_present": false,
+    "ANDROID_SDK_ROOT_present": false,
+    "wrapper": true
+  },
+  "safeguards": {
+    "backend": "Produccion, confirmado por el usuario",
+    "remoteWrites": false,
+    "authenticationAgainstRealBackend": false
+  }
+}

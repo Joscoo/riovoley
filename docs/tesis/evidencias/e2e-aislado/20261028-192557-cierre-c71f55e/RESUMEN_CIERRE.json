@@ -1,0 +1,433 @@
+{
+  "generatedAt": "2026-10-28T20:28:09.092Z",
+  "commit": "c71f55e5bc59c528a002c4347fb1664794cb277e",
+  "workingTreeModified": true,
+  "jest": {
+    "suites": 85,
+    "executed": 404,
+    "passed": 404,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 77.647
+  },
+  "contracts": {
+    "executed": 6,
+    "subsetOfJest": true
+  },
+  "logicalIntegration": {
+    "executed": 5,
+    "subsetOfJest": true,
+    "realPersistence": false
+  },
+  "realIntegration": {
+    "executed": 17,
+    "passed": 17,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 16.504
+  },
+  "browsers": [
+    {
+      "label": "publicas-finales",
+      "startTime": "2026-10-28T20:09:12.394Z",
+      "duration": 142436.509,
+      "expected": 133,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0,
+      "exitCode": 0
+    },
+    {
+      "label": "paneles-finales",
+      "startTime": "2026-10-28T20:11:38.963Z",
+      "duration": 564078.8080000001,
+      "expected": 105,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0,
+      "exitCode": 0
+    },
+    {
+      "label": "mutaciones-finales",
+      "startTime": "2026-10-28T20:21:06.526Z",
+      "duration": 134863.699,
+      "expected": 7,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0,
+      "exitCode": 0
+    },
+    {
+      "label": "limites-finales",
+      "startTime": "2026-10-28T20:23:24.311Z",
+      "duration": 25140.689000000002,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0,
+      "exitCode": 0
+    }
+  ],
+  "coverage": {
+    "lines": {
+      "total": 12101,
+      "covered": 5143,
+      "skipped": 0,
+      "pct": 42.5
+    },
+    "statements": {
+      "total": 13354,
+      "covered": 5491,
+      "skipped": 0,
+      "pct": 41.11
+    },
+    "functions": {
+      "total": 3470,
+      "covered": 1272,
+      "skipped": 0,
+      "pct": 36.65
+    },
+    "branches": {
+      "total": 11954,
+      "covered": 3979,
+      "skipped": 0,
+      "pct": 33.28
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": "Unknown"
+    }
+  },
+  "builds": [
+    {
+      "file": "compilacion-web-build-1793215798427.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "D:\\Riovoley\\riovoley\\node_modules\\react-scripts\\scripts\\build.js"
+      ],
+      "start": "2026-10-28T19:29:58.428Z",
+      "end": "2026-10-28T19:31:31.373Z",
+      "durationSeconds": 92.945,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "compilacion-web-build-1793217928426.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "D:\\Riovoley\\riovoley\\node_modules\\react-scripts\\scripts\\build.js"
+      ],
+      "start": "2026-10-28T20:05:28.427Z",
+      "end": "2026-10-28T20:06:13.454Z",
+      "durationSeconds": 45.027,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    }
+  ],
+  "artifact": {
+    "file": "android/artefactos/riovoley-auditoria-debug-sin-credenciales.apk",
+    "sha256": "20fc358ecd1d27c87d887898617b5595e66f03d20a83f3b8ee3c2e8ea374b704",
+    "bytes": 35144355,
+    "metadata": {
+      "version": 3,
+      "artifactType": {
+        "type": "APK",
+        "kind": "Directory"
+      },
+      "applicationId": "com.riovoley.app",
+      "variantName": "debug",
+      "elements": [
+        {
+          "type": "SINGLE",
+          "filters": [],
+          "attributes": [],
+          "versionCode": 1,
+          "versionName": "1.0",
+          "outputFile": "app-debug.apk"
+        }
+      ],
+      "elementType": "File",
+      "minSdkVersionForDexing": 24
+    },
+    "buildType": "debug",
+    "signature": "Certificado de depuración local; no se utiliza keystore de publicación.",
+    "distributed": false,
+    "installed": false
+  },
+  "instrument": {
+    "platform": "Emulador local API36 x86_64/WHPX",
+    "commandExitCode": 0,
+    "executed": 1,
+    "failed": 0,
+    "passed": 1,
+    "state": "APROBADO",
+    "scope": "Prueba instrumentada de plantilla: contexto/applicationId; no cubre todos los flujos de negocio Android."
+  },
+  "webview": {
+    "state": "APROBADO",
+    "url": "https://localhost/",
+    "viewport": {
+      "width": 320,
+      "height": 592
+    },
+    "scope": "APK instalado en emulador real; MainActivity y React visibles mediante Playwright AndroidWebView, no navegador de escritorio con viewport móvil.",
+    "artifactSha256": "20fc358ecd1d27c87d887898617b5595e66f03d20a83f3b8ee3c2e8ea374b704",
+    "access": {
+      "executed": 3,
+      "passed": 3,
+      "failed": 0
+    }
+  },
+  "audits": [
+    {
+      "name": "raiz",
+      "before": {
+        "info": 0,
+        "low": 18,
+        "moderate": 11,
+        "high": 29,
+        "critical": 5,
+        "total": 63
+      },
+      "after": {
+        "info": 0,
+        "low": 16,
+        "moderate": 6,
+        "high": 13,
+        "critical": 0,
+        "total": 35
+      },
+      "remaining": [
+        {
+          "name": "@svgr/plugin-svgo",
+          "severity": "high",
+          "direct": false,
+          "range": "*",
+          "fix": {
+            "name": "react-scripts",
+            "version": "0.0.0",
+            "isSemVerMajor": true
+          }
+        },
+        {
+          "name": "bfj",
+          "severity": "high",
+          "direct": false,
+          "range": "7.1.0 - 9.1.2",
+          "fix": true
+        },
+        {
+          "name": "css-select",
+          "severity": "high",
+          "direct": false,
+          "range": "<=3.1.0",
+          "fix": {
+            "name": "react-scripts",
+            "version": "0.0.0",
+            "isSemVerMajor": true
+          }
+        },
+        {
+          "name": "jsonpath",
+          "severity": "high",
+          "direct": false,
+          "range": "*",
+          "fix": true
+        },
+        {
+          "name": "nth-check",
+          "severity": "high",
+          "direct": false,
+          "range": "<2.0.1",
+          "fix": {
+            "name": "react-scripts",
+            "version": "0.0.0",
+            "isSemVerMajor": true
+          }
+        },
+        {
+          "name": "postcss",
+          "severity": "high",
+          "direct": false,
+          "range": "<=8.5.22",
+          "fix": {
+            "name": "react-scripts",
+            "version": "0.0.0",
+            "isSemVerMajor": true
+          }
+        },
+        {
+          "name": "react-scripts",
+          "severity": "moderate",
+          "direct": true,
+          "range": ">=0.1.0",
+          "fix": {
+            "name": "react-scripts",
+            "version": "0.0.0",
+            "isSemVerMajor": true
+          }
+        },
+        {
+          "name": "rollup-plugin-terser",
+          "severity": "high",
+          "direct": false,
+          "range": "3.0.0 || >=4.0.4",
+          "fix": true
+        },
+        {
+          "name": "serialize-javascript",
+          "severity": "high",
+          "direct": false,
+          "range": "<=7.1.2",
+          "fix": {
+            "name": "react-scripts",
+            "version": "0.0.0",
+            "isSemVerMajor": true
+          }
+        },
+        {
+          "name": "svgo",
+          "severity": "high",
+          "direct": false,
+          "range": "1.0.0 - 2.8.3",
+          "fix": {
+            "name": "react-scripts",
+            "version": "0.0.0",
+            "isSemVerMajor": true
+          }
+        },
+        {
+          "name": "underscore",
+          "severity": "high",
+          "direct": false,
+          "range": "<=1.13.7",
+          "fix": true
+        },
+        {
+          "name": "webpack-dev-middleware",
+          "severity": "high",
+          "direct": false,
+          "range": "<7.4.5",
+          "fix": {
+            "name": "react-scripts",
+            "version": "0.0.0",
+            "isSemVerMajor": true
+          }
+        },
+        {
+          "name": "webpack-dev-server",
+          "severity": "high",
+          "direct": false,
+          "range": "<=5.2.7",
+          "fix": {
+            "name": "react-scripts",
+            "version": "0.0.0",
+            "isSemVerMajor": true
+          }
+        },
+        {
+          "name": "workbox-build",
+          "severity": "high",
+          "direct": false,
+          "range": ">=5.0.0-alpha.0",
+          "fix": true
+        }
+      ]
+    },
+    {
+      "name": "functions",
+      "before": {
+        "info": 0,
+        "low": 0,
+        "moderate": 21,
+        "high": 15,
+        "critical": 3,
+        "total": 39
+      },
+      "after": {
+        "info": 0,
+        "low": 0,
+        "moderate": 57,
+        "high": 5,
+        "critical": 0,
+        "total": 62
+      },
+      "remaining": [
+        {
+          "name": "@genkit-ai/core",
+          "severity": "high",
+          "direct": false,
+          "range": "*",
+          "fix": {
+            "name": "genkit",
+            "version": "0.5.17",
+            "isSemVerMajor": true
+          }
+        },
+        {
+          "name": "@opentelemetry/propagator-jaeger",
+          "severity": "high",
+          "direct": false,
+          "range": "<=2.8.0",
+          "fix": true
+        },
+        {
+          "name": "@opentelemetry/sdk-trace-node",
+          "severity": "high",
+          "direct": false,
+          "range": "<=2.7.1",
+          "fix": true
+        },
+        {
+          "name": "genkit",
+          "severity": "moderate",
+          "direct": true,
+          "range": "<=0.5.0-rc.12 || 0.6.0-dev.2 - 1.0.0-rc.19 || >=1.0.4",
+          "fix": {
+            "name": "genkit",
+            "version": "0.5.17",
+            "isSemVerMajor": true
+          }
+        },
+        {
+          "name": "path-to-regexp",
+          "severity": "high",
+          "direct": false,
+          "range": "8.0.0 - 8.3.0",
+          "fix": true
+        },
+        {
+          "name": "zod",
+          "severity": "high",
+          "direct": false,
+          "range": "<4.6.6",
+          "fix": true
+        }
+      ]
+    },
+    {
+      "name": "auxiliar",
+      "before": {
+        "info": 0,
+        "low": 0,
+        "moderate": 1,
+        "high": 4,
+        "critical": 0,
+        "total": 5
+      },
+      "after": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "remaining": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-Command",
+    "$auditProcess = Get-CimInstance Win32_Process -Filter \"ProcessId = 18772\"; if ($auditProcess -and $auditProcess.CommandLine -like \"*servidor-local.cjs*\") { Stop-Process -Id 18772; Write-Output \"Servidor local de auditoria detenido\" } else { Write-Output \"Servidor de auditoria ya no activo con ese PID; no se detuvo otro proceso\" }"
+  ],
+  "cwd": ".",
+  "start": "2026-10-28T13:38:11.184Z",
+  "end": "2026-10-28T13:38:11.802Z",
+  "durationSeconds": 0.618,
+  "exitCode": 0,
+  "signal": null,
+  "environmentOverrides": {}
+}

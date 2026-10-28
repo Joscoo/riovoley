@@ -1,0 +1,121 @@
+{
+  "generatedAt": "2026-10-28T19:18:51.663Z",
+  "commit": "c71f55e5bc59c528a002c4347fb1664794cb277e",
+  "nativeBuild": {
+    "state": "APROBADO",
+    "exitCode": 0,
+    "durationSeconds": 59.344,
+    "metadata": "android/gradle-assemble-1793214638542.meta.json"
+  },
+  "capacitorSync": {
+    "state": "APROBADO",
+    "plugins": 7,
+    "metadata": "android/capacitor-sync-1793214589565.meta.json"
+  },
+  "artifact": {
+    "file": "android/artefactos/riovoley-auditoria-debug-sin-credenciales.apk",
+    "sha256": "58c2aa53a2e31de4e65fa2c751bfecdd7936a75c8420086a8cca604610919269",
+    "bytes": 36793683,
+    "metadata": {
+      "version": 3,
+      "artifactType": {
+        "type": "APK",
+        "kind": "Directory"
+      },
+      "applicationId": "com.riovoley.app",
+      "variantName": "debug",
+      "elements": [
+        {
+          "type": "SINGLE",
+          "filters": [],
+          "attributes": [],
+          "versionCode": 1,
+          "versionName": "1.0",
+          "outputFile": "app-debug.apk"
+        }
+      ],
+      "elementType": "File",
+      "minSdkVersionForDexing": 24
+    },
+    "buildType": "debug",
+    "signature": "Certificado de depuración local; no se utiliza keystore de publicación.",
+    "distributed": false,
+    "installed": false
+  },
+  "lint": {
+    "label": "final",
+    "errors": 0,
+    "warnings": 29,
+    "issues": [
+      {
+        "id": "AndroidGradlePluginVersion",
+        "severity": "Warning",
+        "count": 1
+      },
+      {
+        "id": "GradleDependency",
+        "severity": "Warning",
+        "count": 1
+      },
+      {
+        "id": "IconDipSize",
+        "severity": "Warning",
+        "count": 1
+      },
+      {
+        "id": "IconDuplicates",
+        "severity": "Warning",
+        "count": 5
+      },
+      {
+        "id": "IconLauncherShape",
+        "severity": "Warning",
+        "count": 10
+      },
+      {
+        "id": "IconLocation",
+        "severity": "Warning",
+        "count": 1
+      },
+      {
+        "id": "MonochromeLauncherIcon",
+        "severity": "Warning",
+        "count": 2
+      },
+      {
+        "id": "ObsoleteSdkInt",
+        "severity": "Warning",
+        "count": 1
+      },
+      {
+        "id": "UnusedResources",
+        "severity": "Warning",
+        "count": 7
+      }
+    ],
+    "exitCode": 0,
+    "metadata": "android/gradle-lint-1793214711993.meta.json"
+  },
+  "junit": {
+    "suites": 1,
+    "results": [
+      {
+        "suite": "com.getcapacitor.myapp.ExampleUnitTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.007
+      }
+    ],
+    "scope": "Única prueba de plantilla addition_isCorrect (2+2=4). No comprueba funcionalidades de RIOVOLEY."
+  },
+  "devices": {
+    "observedAt": "2026-10-28T19:14:13.273Z",
+    "count": 0,
+    "devices": [],
+    "installedOnDevice": false,
+    "instrumentedExecution": "NO EJECUTADO: requiere emulador o dispositivo autorizado; no se instala ni inicia la app con esta consulta."
+  },
+  "profile": "Copia aislada, endpoint loopback, placeholder no válido, sin PII key ni google-services/keystore institucional, OTA desactivado. Compilación/empaquetado; no prueba funcional en Android."
+}

@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--version"
+  ],
+  "start": "2026-10-28T15:32:29.515Z",
+  "end": "2026-10-28T15:32:29.615Z",
+  "durationSeconds": 0.1,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

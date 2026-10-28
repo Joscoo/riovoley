@@ -1,0 +1,163 @@
+{
+  "student-dashboard": {
+    "suites": 6,
+    "executed": 25,
+    "passed": 25,
+    "failed": 0,
+    "skipped": 0
+  },
+  "shared": {
+    "suites": 13,
+    "executed": 45,
+    "passed": 45,
+    "failed": 0,
+    "skipped": 0
+  },
+  "gamification": {
+    "suites": 9,
+    "executed": 60,
+    "passed": 60,
+    "failed": 0,
+    "skipped": 0
+  },
+  "user-management": {
+    "suites": 7,
+    "executed": 30,
+    "passed": 30,
+    "failed": 0,
+    "skipped": 0
+  },
+  "auth-session": {
+    "suites": 6,
+    "executed": 19,
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0
+  },
+  "payments": {
+    "suites": 3,
+    "executed": 38,
+    "passed": 38,
+    "failed": 0,
+    "skipped": 0
+  },
+  "notifications": {
+    "suites": 4,
+    "executed": 14,
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0
+  },
+  "reporting": {
+    "suites": 3,
+    "executed": 7,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0
+  },
+  "schedules": {
+    "suites": 2,
+    "executed": 4,
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0
+  },
+  "attendance": {
+    "suites": 3,
+    "executed": 32,
+    "passed": 32,
+    "failed": 0,
+    "skipped": 0
+  },
+  "trainer-management": {
+    "suites": 2,
+    "executed": 8,
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0
+  },
+  "trainer-dashboard": {
+    "suites": 2,
+    "executed": 4,
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0
+  },
+  "athletes": {
+    "suites": 2,
+    "executed": 14,
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0
+  },
+  "account-admin": {
+    "suites": 3,
+    "executed": 12,
+    "passed": 12,
+    "failed": 0,
+    "skipped": 0
+  },
+  "announcements": {
+    "suites": 2,
+    "executed": 7,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0
+  },
+  "auth-profile": {
+    "suites": 2,
+    "executed": 5,
+    "passed": 5,
+    "failed": 0,
+    "skipped": 0
+  },
+  "user-provisioning": {
+    "suites": 3,
+    "executed": 20,
+    "passed": 20,
+    "failed": 0,
+    "skipped": 0
+  },
+  "admin-dashboard": {
+    "suites": 2,
+    "executed": 9,
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0
+  },
+  "physical-tests": {
+    "suites": 2,
+    "executed": 9,
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0
+  },
+  "communications": {
+    "suites": 3,
+    "executed": 11,
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0
+  },
+  "config/utils": {
+    "suites": 2,
+    "executed": 10,
+    "passed": 10,
+    "failed": 0,
+    "skipped": 0
+  },
+  "App (placeholder)": {
+    "suites": 1,
+    "executed": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0
+  },
+  "training-categories": {
+    "suites": 1,
+    "executed": 3,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0
+  }
+}

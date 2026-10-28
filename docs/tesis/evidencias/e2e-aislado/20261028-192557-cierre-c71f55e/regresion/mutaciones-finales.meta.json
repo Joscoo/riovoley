@@ -1,0 +1,15 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/e2e/local/run.cjs",
+    "mutations",
+    "--label=mutaciones-finales",
+    "--workers=2"
+  ],
+  "start": "2026-10-28T20:21:03.498Z",
+  "end": "2026-10-28T20:23:21.558Z",
+  "durationSeconds": 138.06,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

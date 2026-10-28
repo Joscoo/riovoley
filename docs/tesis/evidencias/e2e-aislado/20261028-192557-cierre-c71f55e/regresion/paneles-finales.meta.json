@@ -1,0 +1,15 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/e2e/local/run.cjs",
+    "pending",
+    "--label=paneles-finales",
+    "--workers=2"
+  ],
+  "start": "2026-10-28T20:11:35.232Z",
+  "end": "2026-10-28T20:21:03.494Z",
+  "durationSeconds": 568.262,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

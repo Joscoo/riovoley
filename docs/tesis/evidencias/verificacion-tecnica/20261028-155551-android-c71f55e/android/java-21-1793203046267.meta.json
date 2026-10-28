@@ -1,0 +1,12 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\jdk-21.0.12.1+1\\bin\\java.exe",
+    "-version"
+  ],
+  "cwd": "",
+  "start": "2026-10-28T15:57:26.267Z",
+  "end": "2026-10-28T15:57:26.440Z",
+  "durationSeconds": 0.173,
+  "exitCode": 0,
+  "signal": null
+}

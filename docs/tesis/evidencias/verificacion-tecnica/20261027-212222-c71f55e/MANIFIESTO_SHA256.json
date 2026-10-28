@@ -1,0 +1,3069 @@
+{
+  "observedAt": "2026-10-28T13:57:02.124Z",
+  "algorithm": "SHA-256",
+  "selfExcluded": true,
+  "evidenceFiles": [
+    {
+      "file": "android/alcance.json",
+      "bytes": 559,
+      "sha256": "3f1ee2e5e09ba72341adb3ff58ee24db8fb454b0f5aed87cad1b0858a5960d7f"
+    },
+    {
+      "file": "android/capacitor-doctor.meta.json",
+      "bytes": 312,
+      "sha256": "fb1a9ee99e5e8f32fe935a6e62273eab9765e9ab2f1b3e7418a40e5518bd8932"
+    },
+    {
+      "file": "android/capacitor-doctor.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/capacitor-doctor.stdout.log",
+      "bytes": 322,
+      "sha256": "42f166bed4bedfa180c68a84c786cf9c5a45dd3aed75f08dd5f7e88dd0b7c74c"
+    },
+    {
+      "file": "android/gradle-wrapper-version.meta.json",
+      "bytes": 281,
+      "sha256": "b290443f1d0dbb86121c9275e77d9817b5d5fa3b3ed9108d44a9d93699b32998"
+    },
+    {
+      "file": "android/gradle-wrapper-version.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/gradle-wrapper-version.stdout.log",
+      "bytes": 1182,
+      "sha256": "f589ab37038e110d4880a72872692ec578655080803cef716e0c5a4ab2ac2a47"
+    },
+    {
+      "file": "android/java.meta.json",
+      "bytes": 233,
+      "sha256": "046911a4889cbe52afd1b502b985af3b0516f087aebf66bc90823229b506dc21"
+    },
+    {
+      "file": "android/java.stderr.log",
+      "bytes": 204,
+      "sha256": "c997a320130154ba8cc63425783b68223995470bece684a8c9f5494c52424b87"
+    },
+    {
+      "file": "android/java.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/javac.meta.json",
+      "bytes": 234,
+      "sha256": "c5f8787df09c47cf1aa29646ca870f905ab9be10062f0bd0cea9f2fcfdaf1668"
+    },
+    {
+      "file": "android/javac.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/javac.stdout.log",
+      "bytes": 17,
+      "sha256": "a9074b0e943640e04f4fd8b0bde733590797a2094701f897dbd1d98d75a4c7b8"
+    },
+    {
+      "file": "auditar.cjs",
+      "bytes": 8838,
+      "sha256": "089a3e1ea2e21a631311b21ba5f88f58fffb9f3ecd178a9dd180125e27d83972"
+    },
+    {
+      "file": "cerrar.cjs",
+      "bytes": 1896,
+      "sha256": "6a1ff6816d83333d0e83d75deda319200b81c324f11735b02c4ab246aa1bbdb1"
+    },
+    {
+      "file": "comandos-ejecutados.json",
+      "bytes": 12087,
+      "sha256": "1cc1a74d76f2726fb1a857bd0aadd50aaab48128f839523b1632df0c8e96827d"
+    },
+    {
+      "file": "commit.meta.json",
+      "bytes": 244,
+      "sha256": "8594208950ddfc0ab4b18a512a81aa15f8093067680ecc48d1326ade5621951f"
+    },
+    {
+      "file": "commit.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "commit.stdout.log",
+      "bytes": 42,
+      "sha256": "b5fffedd5a8c3d00f7d0889142ea66850b93cb5d87205ffc765974bebb19ca31"
+    },
+    {
+      "file": "compilacion-web/artefactos.json",
+      "bytes": 18719,
+      "sha256": "b3355ed5fa57efb5dcdd4667e33978803c86878d7b766213505767855cb65697"
+    },
+    {
+      "file": "compilacion-web/asset-manifest.json",
+      "bytes": 6286,
+      "sha256": "6bea1b56c0fe411e0ba58dfda15c6dda852221b8818509e8adcb945ce6b87b1a"
+    },
+    {
+      "file": "compilacion-web/build.meta.json",
+      "bytes": 246,
+      "sha256": "64358e282f582047a1f52506b9632db4fc61cf5a6b5caaea66c89b06cb879d00"
+    },
+    {
+      "file": "compilacion-web/build.stderr.log",
+      "bytes": 172,
+      "sha256": "0a23e041f540a7cb6b1a43812d933850007964361351bc9f4757d1957e704541"
+    },
+    {
+      "file": "compilacion-web/build.stdout.log",
+      "bytes": 2601,
+      "sha256": "fb1995a43721e5caaa1b6d1d349fe3e488eb10b2aa0882dbfec6fba53f9afbe3"
+    },
+    {
+      "file": "e2e/artefactos/.last-run.json",
+      "bytes": 390,
+      "sha256": "e1acd299bbae26254878a3b1a23e180b5fff8438ce3b5f0da56331ffccb2e739"
+    },
+    {
+      "file": "e2e/artefactos/audit.protected-routes-aud-b7ecf--protected-panel-estudiante-desktop-1440/error-context.md",
+      "bytes": 2236,
+      "sha256": "9f0da2a5337b4ddd58e7aaeb858a0e5c1d3d4e14df76205501dbfeaff6dc16e5"
+    },
+    {
+      "file": "e2e/artefactos/audit.protected-routes-aud-b7ecf--protected-panel-estudiante-desktop-1440/test-failed-1.png",
+      "bytes": 63650,
+      "sha256": "ecf1c1f06905c2ec320aa3ca1538b79e65e9d3fd43daf8155b88c455fbbaf1af"
+    },
+    {
+      "file": "e2e/artefactos/audit.protected-routes-aud-b7ecf--protected-panel-estudiante-desktop-1920/error-context.md",
+      "bytes": 2236,
+      "sha256": "9f0da2a5337b4ddd58e7aaeb858a0e5c1d3d4e14df76205501dbfeaff6dc16e5"
+    },
+    {
+      "file": "e2e/artefactos/audit.protected-routes-aud-b7ecf--protected-panel-estudiante-desktop-1920/test-failed-1.png",
+      "bytes": 76692,
+      "sha256": "a2683cafe8de3374f796404bf8eda7ba81ed73e30da6d7219cb2254b526595e0"
+    },
+    {
+      "file": "e2e/artefactos/audit.protected-routes-aud-b7ecf--protected-panel-estudiante-mobile-390/error-context.md",
+      "bytes": 1784,
+      "sha256": "bcffc2ed0445babcc322474ea6254da669028c9b7a60e247b27adb3a2f50e581"
+    },
+    {
+      "file": "e2e/artefactos/audit.protected-routes-aud-b7ecf--protected-panel-estudiante-mobile-390/test-failed-1.png",
+      "bytes": 78337,
+      "sha256": "5b2d3578f88df9479183cbc802ed09f406813f368f1ab1990e56600ead5e4ff9"
+    },
+    {
+      "file": "e2e/artefactos/audit.protected-routes-aud-b7ecf--protected-panel-estudiante-mobile-430/error-context.md",
+      "bytes": 1784,
+      "sha256": "bcffc2ed0445babcc322474ea6254da669028c9b7a60e247b27adb3a2f50e581"
+    },
+    {
+      "file": "e2e/artefactos/audit.protected-routes-aud-b7ecf--protected-panel-estudiante-mobile-430/test-failed-1.png",
+      "bytes": 78442,
+      "sha256": "62256152f0cb28d63be3449670a20eb202ad50e480a831c7b9d9a066dcbb0393"
+    },
+    {
+      "file": "e2e/artefactos/audit.protected-routes-aud-b7ecf--protected-panel-estudiante-mobile-480/error-context.md",
+      "bytes": 1818,
+      "sha256": "fb803eb62dfe9e273204d9eb269884a9281638d4967629a0de211d36a1729659"
+    },
+    {
+      "file": "e2e/artefactos/audit.protected-routes-aud-b7ecf--protected-panel-estudiante-mobile-480/test-failed-1.png",
+      "bytes": 28209,
+      "sha256": "b6500551a34a077c5fa34d5623c5e83c49b18012eb79a3b2599799c183a551f4"
+    },
+    {
+      "file": "e2e/artefactos/audit.protected-routes-aud-b7ecf--protected-panel-estudiante-tablet-1024/error-context.md",
+      "bytes": 1818,
+      "sha256": "fb803eb62dfe9e273204d9eb269884a9281638d4967629a0de211d36a1729659"
+    },
+    {
+      "file": "e2e/artefactos/audit.protected-routes-aud-b7ecf--protected-panel-estudiante-tablet-1024/test-failed-1.png",
+      "bytes": 42349,
+      "sha256": "814aaedde988975095132649019b25a5bc7ee023532beab9262a1e4a710d91fc"
+    },
+    {
+      "file": "e2e/artefactos/audit.protected-routes-aud-b7ecf--protected-panel-estudiante-tablet-768/error-context.md",
+      "bytes": 1784,
+      "sha256": "bcffc2ed0445babcc322474ea6254da669028c9b7a60e247b27adb3a2f50e581"
+    },
+    {
+      "file": "e2e/artefactos/audit.protected-routes-aud-b7ecf--protected-panel-estudiante-tablet-768/test-failed-1.png",
+      "bytes": 68051,
+      "sha256": "e6a8cc2a158a1922a9654204683cce811049533a6a7eae24c349023ed5bda38e"
+    },
+    {
+      "file": "e2e/audit.config.cjs",
+      "bytes": 1065,
+      "sha256": "904006fe9b69e80f3449b2e695dd2e096e4226e2409e8492c8bb327bab8ffb99"
+    },
+    {
+      "file": "e2e/casos-bloqueados.json",
+      "bytes": 18782,
+      "sha256": "b8d9e4da5a260840cf7856c30bded3d7fc81b0bc6de41a618e03bd62ef36ca3c"
+    },
+    {
+      "file": "e2e/casos-detallados.json",
+      "bytes": 45366,
+      "sha256": "b5c41706133dac8ef0ffd9471c6ec76b76343ef2faa6ef267bab7fd9296b182b"
+    },
+    {
+      "file": "e2e/inventario.meta.json",
+      "bytes": 342,
+      "sha256": "ba281602cd0e4f95ea5269759e030a218cc515cff94c7be6f1b4b6c3fdbd2cbc"
+    },
+    {
+      "file": "e2e/inventario.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "e2e/inventario.stdout.log",
+      "bytes": 144686,
+      "sha256": "a923584795af7572992a37655cdfa72ceb30a214ff4919b94bd97a73ca3afc49"
+    },
+    {
+      "file": "e2e/playwright.meta.json",
+      "bytes": 475,
+      "sha256": "742419e5a00d082084ddee6ecb9d2b67d2f8e9a5c15e9c4c774ef65c874f3e5e"
+    },
+    {
+      "file": "e2e/playwright.stderr.log",
+      "bytes": 6883,
+      "sha256": "e8016f4b793686b585c8b7fe52d5982c3810140532b802fcdab92c937e69c7c8"
+    },
+    {
+      "file": "e2e/playwright.stdout.log",
+      "bytes": 34069,
+      "sha256": "b2e733072d4ca97e5df97282dbee8c0a7f5a386de75d3a7a98f68b3b170ac46a"
+    },
+    {
+      "file": "e2e/reporte-html/data/173a956a378eab7f29594f64447fa7dbd77cc316.png",
+      "bytes": 78442,
+      "sha256": "62256152f0cb28d63be3449670a20eb202ad50e480a831c7b9d9a066dcbb0393"
+    },
+    {
+      "file": "e2e/reporte-html/data/1d1f57a94f8297c84ea1fb0ac4a38e907798a662.png",
+      "bytes": 63650,
+      "sha256": "ecf1c1f06905c2ec320aa3ca1538b79e65e9d3fd43daf8155b88c455fbbaf1af"
+    },
+    {
+      "file": "e2e/reporte-html/data/3432a25ad13b27403328e237d784f1cc39bcd1d8.png",
+      "bytes": 78337,
+      "sha256": "5b2d3578f88df9479183cbc802ed09f406813f368f1ab1990e56600ead5e4ff9"
+    },
+    {
+      "file": "e2e/reporte-html/data/4e31beacebb071e92ed4e47d4156fe353755c0e7.md",
+      "bytes": 1784,
+      "sha256": "bcffc2ed0445babcc322474ea6254da669028c9b7a60e247b27adb3a2f50e581"
+    },
+    {
+      "file": "e2e/reporte-html/data/6d78a07fc05aa420063846d950ec54f52d62cace.png",
+      "bytes": 68051,
+      "sha256": "e6a8cc2a158a1922a9654204683cce811049533a6a7eae24c349023ed5bda38e"
+    },
+    {
+      "file": "e2e/reporte-html/data/7f7f53311b8089b158112616b317679c2c891832.md",
+      "bytes": 2236,
+      "sha256": "9f0da2a5337b4ddd58e7aaeb858a0e5c1d3d4e14df76205501dbfeaff6dc16e5"
+    },
+    {
+      "file": "e2e/reporte-html/data/8a3c087a6d8041c6ebc4401f2be1d1e2fe139daf.md",
+      "bytes": 1818,
+      "sha256": "fb803eb62dfe9e273204d9eb269884a9281638d4967629a0de211d36a1729659"
+    },
+    {
+      "file": "e2e/reporte-html/data/9f71dfbc2d2c9a561ef7b038eef6d3c00a359c07.png",
+      "bytes": 28209,
+      "sha256": "b6500551a34a077c5fa34d5623c5e83c49b18012eb79a3b2599799c183a551f4"
+    },
+    {
+      "file": "e2e/reporte-html/data/ec7d668f48d8c001da24ebf72ea3c99077dc28b9.png",
+      "bytes": 76692,
+      "sha256": "a2683cafe8de3374f796404bf8eda7ba81ed73e30da6d7219cb2254b526595e0"
+    },
+    {
+      "file": "e2e/reporte-html/data/f722d066232ca322fc7ac0da447c6876289a6034.png",
+      "bytes": 42349,
+      "sha256": "814aaedde988975095132649019b25a5bc7ee023532beab9262a1e4a710d91fc"
+    },
+    {
+      "file": "e2e/reporte-html/index.html",
+      "bytes": 581716,
+      "sha256": "c5294b4bf09c573faf38dde62803529e34e994beda4780451b617d209fe856a6"
+    },
+    {
+      "file": "e2e/resultados.json",
+      "bytes": 178464,
+      "sha256": "660c443cef9a3f928d7ed444ff3c6cf1e4febf5ecd2dd04f879470cc7e02244b"
+    },
+    {
+      "file": "e2e/servidor-cierre.meta.json",
+      "bytes": 608,
+      "sha256": "f60f1d1b4369ee88cff3b8e52fa8a5625631a5ad4b8a5cb5df49e1cd7a04aa2e"
+    },
+    {
+      "file": "e2e/servidor-cierre.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "e2e/servidor-cierre.stdout.log",
+      "bytes": 76,
+      "sha256": "170597a8c178fdfce0e3955967ad46a17fff3f7a9ad410930b78f7784273f24b"
+    },
+    {
+      "file": "e2e/servidor-local.cjs",
+      "bytes": 1101,
+      "sha256": "a5597e9a42b8799a73069887f0b6d353c2351a4dfcf046720942110ad6fd134c"
+    },
+    {
+      "file": "e2e/servidor.json",
+      "bytes": 139,
+      "sha256": "403b9a2e3c90aad310725f86bc99d922270270709d2111b76ef6b146203051c3"
+    },
+    {
+      "file": "entorno-inline.cjs",
+      "bytes": 786,
+      "sha256": "d0dc1f5be3077d3daaef59fa86e40018c16750f86a9a272b11d7d044de57d0a2"
+    },
+    {
+      "file": "entorno.ps1",
+      "bytes": 384,
+      "sha256": "b7b86febd2cda81b950e85466d768311891989b79646e25d8e1266b152af082a"
+    },
+    {
+      "file": "estado-final.meta.json",
+      "bytes": 277,
+      "sha256": "fc765d686fb9eb25bbecf3406615a7e449e7634d1cf399127feb97961f0c0fb9"
+    },
+    {
+      "file": "estado-final.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "estado-final.stdout.log",
+      "bytes": 149,
+      "sha256": "0bc809f7af52f2ff899635992f5c45a1b173c33e09ed2d10b28f540538f5d658"
+    },
+    {
+      "file": "estado-inicial.meta.json",
+      "bytes": 281,
+      "sha256": "6253f6382ebe1b080f88819db67892e1e62361173b9c7b6a4f4d410ece9e16c2"
+    },
+    {
+      "file": "estado-inicial.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "estado-inicial.stdout.log",
+      "bytes": 83,
+      "sha256": "cfdc5c4945a9ebe7a14a7d50e92d541f49c37355ad4b3353c02ebef4c2978d61"
+    },
+    {
+      "file": "extraer.cjs",
+      "bytes": 1490,
+      "sha256": "86c22bf2de87ebb9bbf2a58ae7d048a04c067017674120d357ff0318efc4267e"
+    },
+    {
+      "file": "generar-informe.cjs",
+      "bytes": 53116,
+      "sha256": "65bf571ac50008f80d96e050b6289dd98fcd2f1d2c2defeec95e249d8d12b914"
+    },
+    {
+      "file": "herramientas-git.meta.json",
+      "bytes": 232,
+      "sha256": "7842135c8ac2eb26ec48cf9450ae287ba5fd83d2652ce263c40c11e07ae0c8a5"
+    },
+    {
+      "file": "herramientas-git.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "herramientas-git.stdout.log",
+      "bytes": 30,
+      "sha256": "c7add795fa1aca54492b4b33caf0e728e8957d8eb7ab79294b0cfc4abc6d3c71"
+    },
+    {
+      "file": "herramientas-node.meta.json",
+      "bytes": 265,
+      "sha256": "43ff0174ed1cfc8c9c2b30bbc0e04695e1e2ecba9d59c2f1c12ef453e8e9ca7d"
+    },
+    {
+      "file": "herramientas-node.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "herramientas-node.stdout.log",
+      "bytes": 11,
+      "sha256": "4858f9aa682e7585afff535cbfb6d5ca3c4eb46b591133a232841b09b8b85d07"
+    },
+    {
+      "file": "herramientas-npm.meta.json",
+      "bytes": 237,
+      "sha256": "4b3dd0cd3e3003f166f5f7251da327edaffe5b26736912916f09162cdaaf1dee"
+    },
+    {
+      "file": "herramientas-npm.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "herramientas-npm.stdout.log",
+      "bytes": 9,
+      "sha256": "1d01c01718f2b6cb41973abc497379d9c4fe42da5a57f6fb3e0eeeae18482608"
+    },
+    {
+      "file": "herramientas-python.meta.json",
+      "bytes": 236,
+      "sha256": "a904a4c1fc464c3b173af0570f93b156ce615d9d91ef5c0b35f15b0587abf342"
+    },
+    {
+      "file": "herramientas-python.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "herramientas-python.stdout.log",
+      "bytes": 16,
+      "sha256": "eb5708a489f9a0abac645936c5fcc281224dbc1d144ed17b7c1b51677df0784d"
+    },
+    {
+      "file": "herramientas-sistema-inline.meta.json",
+      "bytes": 663,
+      "sha256": "8caacd621386d854d4510fc71068e3e22d5ccb8eff6f80fa62aaa78e751f130f"
+    },
+    {
+      "file": "herramientas-sistema-inline.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "herramientas-sistema-inline.stdout.log",
+      "bytes": 263,
+      "sha256": "0b3ab6f6b3e1848c919d391737de6e01fa3195990bbfd4db4a17733578d09c57"
+    },
+    {
+      "file": "herramientas-sistema.meta.json",
+      "bytes": 373,
+      "sha256": "d9ff96b1ad74652de4d7522a385e6239549551fc3440a508b25681997bfd0f46"
+    },
+    {
+      "file": "herramientas-sistema.stderr.log",
+      "bytes": 420,
+      "sha256": "70c2fb283f33714371913cbf6ca39e2701356e4f01e0e01aa36346e36e1e8666"
+    },
+    {
+      "file": "herramientas-sistema.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "INFORME_VERIFICACION_TECNICA.md",
+      "bytes": 38545,
+      "sha256": "b643ff963fd876fe0fbf4fc2c6eb69cf014867e50c677086953e770a58970112"
+    },
+    {
+      "file": "integracion/adicionales-resultados.json",
+      "bytes": 2090,
+      "sha256": "1faae01b54e7b92bd9feb862daf9bd272e9dd61c44d2baa6dc9d1aae7941f018"
+    },
+    {
+      "file": "integracion/adicionales.meta.json",
+      "bytes": 493,
+      "sha256": "aae74580124ec555b9f4b832dc7a5d6c2662ce46a2cccafe87c4cc13a0035167"
+    },
+    {
+      "file": "integracion/adicionales.stderr.log",
+      "bytes": 876,
+      "sha256": "be44aae10fdbf301a2e71e4157069b5a2e8b49a4766992979a16ddcdeb6f238b"
+    },
+    {
+      "file": "integracion/adicionales.stdout.log",
+      "bytes": 241,
+      "sha256": "64b800f5bf40abe8ac9bc94c60d93ee264710a53c3773c8276fb10fdc4e7ceb8"
+    },
+    {
+      "file": "integracion/casos-adicionales.json",
+      "bytes": 1147,
+      "sha256": "d0f8a5fb3e4f3007e75bb3df7a37804f8914d0884f71e02ed0b670f038eca073"
+    },
+    {
+      "file": "integracion/contratos-resultados.json",
+      "bytes": 2615,
+      "sha256": "74da1629b28b094dd694b7b7b71de125bdde5b8c16a444fc112af627447148d6"
+    },
+    {
+      "file": "integracion/contratos.meta.json",
+      "bytes": 446,
+      "sha256": "68c499d379f81accc820d021e7bd09c2bd03e510a689b0312c6b9ed2137b62ad"
+    },
+    {
+      "file": "integracion/contratos.stderr.log",
+      "bytes": 597,
+      "sha256": "04f11546d10a3988522c3b7614c88aa6360aa824d65f123df957f20578b39780"
+    },
+    {
+      "file": "integracion/contratos.stdout.log",
+      "bytes": 382,
+      "sha256": "a262c99489ece706b6b46269406eac838c0887182603a4c04f7843f67d054672"
+    },
+    {
+      "file": "integracion/functions-build.meta.json",
+      "bytes": 253,
+      "sha256": "ab136497d7111543796ae77bdd3ad0570e598c4b380987e8e5f8551c34bdcfc8"
+    },
+    {
+      "file": "integracion/functions-build.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/functions-build.stdout.log",
+      "bytes": 17,
+      "sha256": "ad87bacc4a630f66c16b66e4695b3f6e1d3976d1a8df293290c3bb7693b522af"
+    },
+    {
+      "file": "integracion/functions-lint.meta.json",
+      "bytes": 252,
+      "sha256": "147224c911ac5d11bf9e5a3b4f84231fe5ac71fbee12fd81600ab9cfdbcd4b74"
+    },
+    {
+      "file": "integracion/functions-lint.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/functions-lint.stdout.log",
+      "bytes": 35,
+      "sha256": "b6e0c56a934b8039eeee1a4609713d39621f83bb2177988d6784b0cd075f9e62"
+    },
+    {
+      "file": "integracion/health-resultados.json",
+      "bytes": 653,
+      "sha256": "5d00b7a548b12c19a592c18a8c8c0fd671981123ded78dfd426627e78ddfcaff"
+    },
+    {
+      "file": "integracion/health.cjs",
+      "bytes": 1143,
+      "sha256": "8803e21f3d0c960d87766d9cc2e97e3b3aea30f721e5992285ea69c6c2baccc9"
+    },
+    {
+      "file": "integracion/health.meta.json",
+      "bytes": 345,
+      "sha256": "24e169b9d76c518b345e3c90c5569e615e41a064b73f087a0c2fabe595a0ad80"
+    },
+    {
+      "file": "integracion/health.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/health.stdout.log",
+      "bytes": 312,
+      "sha256": "24fbaabbde1049060669d2f330020e15726ce2852f51305f193189056c6352bb"
+    },
+    {
+      "file": "integracion/riovoley-lint.meta.json",
+      "bytes": 251,
+      "sha256": "51d7e0606355ed729bb7c369a5548631307b82f9bc6b87baca6d1fa91b2ee4ce"
+    },
+    {
+      "file": "integracion/riovoley-lint.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/riovoley-lint.stdout.log",
+      "bytes": 21,
+      "sha256": "71de63fdb9f22a8c014cb1e87d1b0f88df7f2101a91f9e59013b66bd937d6fed"
+    },
+    {
+      "file": "integridad-intento1.json",
+      "bytes": 1476,
+      "sha256": "c13f32709e053d145d22301a1a177af941fa01741a4ff660c74ed200b0845068"
+    },
+    {
+      "file": "integridad-tracked.meta.json",
+      "bytes": 247,
+      "sha256": "3b735dd8c07bdacda8f88409177cdb843d42fd3b2f1bff5956fe827d7f811064"
+    },
+    {
+      "file": "integridad-tracked.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integridad-tracked.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integridad.cjs",
+      "bytes": 6263,
+      "sha256": "4518fa7f614fb85ea8ca3645f18d974481469c4198efb974ada87fa59c380334"
+    },
+    {
+      "file": "INTEGRIDAD.json",
+      "bytes": 1333,
+      "sha256": "334acafe9ddd5ecc0fc6082b339c3c5c62d09a559c7ee6848baed4a783f0c0e2"
+    },
+    {
+      "file": "inventario.json",
+      "bytes": 59020,
+      "sha256": "ebd84d6dc97a00f5245288c5c2a2ee8bb9c9efd49431a8f77978129937333f0e"
+    },
+    {
+      "file": "MATRIZ_VERIFICACIONES_TESIS.md",
+      "bytes": 13458,
+      "sha256": "f56009a7a1a4b4e463a50c863f1adc38e884713ff4e660d408c2a480a89ccabc"
+    },
+    {
+      "file": "plan-ejecucion.md",
+      "bytes": 794,
+      "sha256": "0f3c195e3165760e2f550674226f2b1ea31a53b898d882b362c5f03eb1c2ab57"
+    },
+    {
+      "file": "PRIVACIDAD.json",
+      "bytes": 967,
+      "sha256": "f0d82163a1d1427cb94c5d89ed514bb2cd58754214860a5afcf7005b85a8de8b"
+    },
+    {
+      "file": "privacidad.py",
+      "bytes": 5060,
+      "sha256": "6637b23d52a06cee1a31d201803f7e06ab3fd022e23da341ace7d44dc609030c"
+    },
+    {
+      "file": "RESULTADOS_PARA_TESIS_4_5.md",
+      "bytes": 7395,
+      "sha256": "5e707424ea8d022d81ff198044db87270ebaa0c253b8800a78c2f67e7e180002"
+    },
+    {
+      "file": "resumen-verificaciones.json",
+      "bytes": 5651,
+      "sha256": "90c3bcd8822b604a2a564dfcc2c5621c5df66f8bc0a9f2de58c2e9cd4937b4ce"
+    },
+    {
+      "file": "seguridad/asesores.json",
+      "bytes": 31136,
+      "sha256": "ce8d075a08b1714eec2e329b361991f0072c4f4795733215cd26d332b8c8f705"
+    },
+    {
+      "file": "seguridad/asesores.mcp.json",
+      "bytes": 25339,
+      "sha256": "6c411bc0c83b32f0488dabe74797e068e585265f3767d4d9b94563e98d32b044"
+    },
+    {
+      "file": "seguridad/catalogos-rls.json",
+      "bytes": 92907,
+      "sha256": "50ad801a63704870d73ba2535445adb3ce983a8b9d7fad40f1a26b437f6a056d"
+    },
+    {
+      "file": "seguridad/catalogos-rls.mcp.json",
+      "bytes": 92253,
+      "sha256": "bdfa109f718d7833b29dac99944c7fe40d859599c63dfd118674d2d6ae436fe9"
+    },
+    {
+      "file": "seguridad/catalogos-rls.sql",
+      "bytes": 2056,
+      "sha256": "7fe90a08d8abaf25d9fe83d72b0d66e15b18aa8ba7497113efa7b24c361fefce"
+    },
+    {
+      "file": "seguridad/columnas-y-triggers.mcp.json",
+      "bytes": 1656,
+      "sha256": "3bb7a59298674a632c9737207d66abbc30d3c0d49f0b4a2a1a1532ee17470524"
+    },
+    {
+      "file": "seguridad/columnas-y-triggers.sql",
+      "bytes": 892,
+      "sha256": "2b4dc30dc7afc23b98d730dd32b516c4279103c9f3e7eea8e6f8953c9524655a"
+    },
+    {
+      "file": "seguridad/funciones-permisos.json",
+      "bytes": 11747,
+      "sha256": "bada790653d090d54c7007b2d41dabdbe69ceca6515725735b9bbd3805acbce1"
+    },
+    {
+      "file": "seguridad/funciones-permisos.mcp.json",
+      "bytes": 14294,
+      "sha256": "17312c5b3b4c3745cd312ee2163d095ef64123d8b3dbd10c50ba94a11e145b2a"
+    },
+    {
+      "file": "seguridad/funciones-permisos.sql",
+      "bytes": 525,
+      "sha256": "1b52682bcdfc125908d0379b8dc69e742cb7313f05a106959f00ea4d9f066547"
+    },
+    {
+      "file": "seguridad/guardias-y-gamificacion.mcp.json",
+      "bytes": 5296,
+      "sha256": "26eb5e3a9facaecb976561a0bbb71117b95d78fb1d265984c8dbca71493de919"
+    },
+    {
+      "file": "seguridad/guardias-y-gamificacion.sql",
+      "bytes": 1154,
+      "sha256": "283c3b490e6f55afec4828681888785d1094b7f4a1cc71c7b5f7c0df4061a995"
+    },
+    {
+      "file": "seguridad/HALLAZGOS_SEGURIDAD.md",
+      "bytes": 4617,
+      "sha256": "3420730f5f9597869c3e122a7f2eae2bb80e16d0782a7b9147e378461c184d72"
+    },
+    {
+      "file": "seguridad/npm-audit-functions.json",
+      "bytes": 60703,
+      "sha256": "5632107240be1d869ae8f884e0a8e09828d2e4d98ee283cbaba2a4b77a9c3464"
+    },
+    {
+      "file": "seguridad/npm-audit-functions.meta.json",
+      "bytes": 255,
+      "sha256": "0b31e3fa4232b82b667fd360154adb3b557423ae77bd2066508bc9bcbde5da2c"
+    },
+    {
+      "file": "seguridad/npm-audit-functions.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/npm-audit-functions.stdout.log",
+      "bytes": 60671,
+      "sha256": "2e7237603e9a3bb42c23cba2f7f3b1d17ca16c05cabb50dc8301d8e120d1bca4"
+    },
+    {
+      "file": "seguridad/npm-audit-riovoley.json",
+      "bytes": 11572,
+      "sha256": "b62f2fc4af06f4154ed099ab87f955adf694bd76cd4586a7eb1097b808d3e6bd"
+    },
+    {
+      "file": "seguridad/npm-audit-riovoley.meta.json",
+      "bytes": 254,
+      "sha256": "ee82db98d9ad44f1f5f40baf57f96fcdc576dc773b518adb4eb6a0bf4bdc770e"
+    },
+    {
+      "file": "seguridad/npm-audit-riovoley.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/npm-audit-riovoley.stdout.log",
+      "bytes": 11541,
+      "sha256": "3796b1f03d63fab28c7d88ba518f869ee54f562f6a558ff06c802868478afbf4"
+    },
+    {
+      "file": "seguridad/npm-audit.json",
+      "bytes": 98140,
+      "sha256": "28965599dc9c59a5c741ae2ffbc45ab7b143858a8b8f1fd2f42bebb826839325"
+    },
+    {
+      "file": "seguridad/npm-audit.meta.json",
+      "bytes": 248,
+      "sha256": "04eaf24bcd5058d308ff222019f6b89c5252237d2201d329f545386f5bd56179"
+    },
+    {
+      "file": "seguridad/npm-audit.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/npm-audit.stdout.log",
+      "bytes": 98118,
+      "sha256": "08881d57b860df9241e64a3fe8d1082eba588733370062ccec7f3f7bfd61da04"
+    },
+    {
+      "file": "seguridad/rls-inicial.mcp.json",
+      "bytes": 9992,
+      "sha256": "b1adf406d5b1fbbc992bcbb70db5af13f004536a09861432500e1169e3293f18"
+    },
+    {
+      "file": "trazabilidad-casos.json",
+      "bytes": 49095,
+      "sha256": "a143c6eb009492fdd67641e9e807c1c93fc65583cfc17d86171650239d0be85c"
+    },
+    {
+      "file": "unitarias/auth-edge.meta.json",
+      "bytes": 253,
+      "sha256": "53b63b75535d3fd2d8e6d347c637f930e0b9811145db8155b55e5da2eb270992"
+    },
+    {
+      "file": "unitarias/auth-edge.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "unitarias/auth-edge.stdout.log",
+      "bytes": 1032,
+      "sha256": "0c10623082b099e98921a31dcef4bb1ca34505f83951c200f741015cdbf8cca3"
+    },
+    {
+      "file": "unitarias/casos-detallados.json",
+      "bytes": 115006,
+      "sha256": "05febb314d72dea04bf724dddb3b489af72ac2bee7a17328cb04bf41e9e66600"
+    },
+    {
+      "file": "unitarias/copy-quality.meta.json",
+      "bytes": 256,
+      "sha256": "03a6dc4ac15d43dad8ca560caae507aa50e2909f1515ae4176b5a93a734add20"
+    },
+    {
+      "file": "unitarias/copy-quality.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "unitarias/copy-quality.stdout.log",
+      "bytes": 101,
+      "sha256": "43f7a82a61abf260a1a493874127ba958f86de1167d140cd70b7a67dc785ab9c"
+    },
+    {
+      "file": "unitarias/coverage/coverage-final.json",
+      "bytes": 3278869,
+      "sha256": "f013c21d1c9db69a378a80eb1de8b103b627a3e4b44a7ac74a0e58d8f7d1fb29"
+    },
+    {
+      "file": "unitarias/coverage/coverage-summary.json",
+      "bytes": 89660,
+      "sha256": "83692feb7af921819af4260007d625c7c5708e47a6ddff23cc4fbaa96fea8657"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/base.css",
+      "bytes": 5394,
+      "sha256": "3f876e51f0a46864ffa7665b4b7a1f5fb5f6f37fb6a28f014e2b12d82962c852"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/block-navigation.js",
+      "bytes": 2655,
+      "sha256": "cd8db34b1fbeb973354a93f8b4133c7c7eab34cdda9429a0434be91384783b7e"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/favicon.png",
+      "bytes": 445,
+      "sha256": "5b0cfd52dc0bfbe544f4e1a9c77aa46b8629b0e0aad6c54f95eef457b86c2a89"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/index.html",
+      "bytes": 119895,
+      "sha256": "b0fb9d0339c6601042337184312b7974b1607971b353a549493e63a8b25528eb"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/prettify.css",
+      "bytes": 676,
+      "sha256": "ea3fe433f9450698ca8a230271688e7aeec12f99c8a7ef6c94379abb38f27823"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/prettify.js",
+      "bytes": 17590,
+      "sha256": "fa1b1e1b906ddcfa08b46f161c0f924f506e1a31b4f3e09b8caaa2463ef52c18"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/sort-arrow-sprite.png",
+      "bytes": 138,
+      "sha256": "42c895355f9838ede83fdfdca90127d8471aefed5ecf5342374f65ec7c3f10ab"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/sorter.js",
+      "bytes": 6731,
+      "sha256": "f8cc5d157379d844fd695ad567b6c29b3c1f0812964ddf6f95c26327e434bab5"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/App.js.html",
+      "bytes": 59841,
+      "sha256": "be918b56ae3c3d11ed9f3182b8b1655bd04dc68b65340ad6d2301eb73434e4bb"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/components/AboutUs.js.html",
+      "bytes": 30566,
+      "sha256": "55188b48740485c57c0b40dc2a31e171b1ca44b4978a78f3afc6b812c589bc2e"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/components/HomePage.js.html",
+      "bytes": 24030,
+      "sha256": "8acbd9eb61197eb26046b85e0495ab8361c248aed6d800fb31537e5a8a350db7"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/components/Horarios.js.html",
+      "bytes": 36152,
+      "sha256": "d37dd7244fc70d976a31929578007cd41325be6afd5395b5f9901d6c81bc89ae"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/components/index.html",
+      "bytes": 6331,
+      "sha256": "62b5b35df47c78933369605326f65af3f4d9bf5e928b7ad2f7d1d4d11da52dda"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/components/Navbar.js.html",
+      "bytes": 64680,
+      "sha256": "743ead8c14a304d101895e4a209976bf337bda3cf5a7a6d9f850f4a646399f91"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/config/appUrls.js.html",
+      "bytes": 4968,
+      "sha256": "a31340b95137fcc7ad9b5509f94575c0f9bb890a95b9891613163f4aed6140bb"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/config/googleCalendar.js.html",
+      "bytes": 4068,
+      "sha256": "938ca81aaae0fb5c7ebbc6645364a3192f92f6ecb41f3de8d56d8d5f8d75fcde"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/config/index.html",
+      "bytes": 5767,
+      "sha256": "980b70d01ac2ac116a9470805168e9784c2cdb113be0133d994af3d3f77591c1"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/config/supabase.js.html",
+      "bytes": 18840,
+      "sha256": "9921d9614bd87fd4df284b9cd57774e4cde2291c4391ab99ca123af3f094cbee"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/contexts/index.html",
+      "bytes": 4420,
+      "sha256": "06f6237bf7e0df59c365f4bfdfe47369f61174ca0b657429fd56716da589823d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/contexts/ToastContext.js.html",
+      "bytes": 15286,
+      "sha256": "42c1123c772910015a729da2819fe78c2fc4044c8a10cc03d5b7ca586dd507c5"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/account-admin/accountAdminService.js.html",
+      "bytes": 3687,
+      "sha256": "17f30428805113d4307bbabd201e11a48599740d1a4e46aba944b35b26659ed6"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/account-admin/application/useCases/createAccountAdminUseCases.js.html",
+      "bytes": 27307,
+      "sha256": "a7041d160237131482180a5afe282085bf8d1ee7c65f168af050a42be6af7d98"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/account-admin/application/useCases/index.html",
+      "bytes": 4682,
+      "sha256": "9cf53e2b3877afa9f2b0f1dbe28e9b0752a2e06f9668574535b15785e1e14540"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/account-admin/domain/accountAdminError.js.html",
+      "bytes": 4514,
+      "sha256": "40900601092d100d9ac15a533190523919e4e5beca921dc1a129811f0485c2a0"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/account-admin/domain/index.html",
+      "bytes": 4516,
+      "sha256": "43bdd36beff545abd116894ac5a37afe951e9ce265b57d22cce3450824736a38"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/account-admin/index.html",
+      "bytes": 5145,
+      "sha256": "a6e0a1dc9878af05cc799ca08ee6217e0a5e0fa85707ad3ccf1d0bd4272a69eb"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/account-admin/index.js.html",
+      "bytes": 3679,
+      "sha256": "c3f742fc063d6e0dc8d8479b9e6c83df64a38ca81f9381d7e9dbf76df440f57c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/account-admin/infrastructure/repositories/index.html",
+      "bytes": 4679,
+      "sha256": "6fb90ecb609be69ce2e7910947dc15b76e0fe695cd5ea324e0c9642f8d0b0538"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/account-admin/infrastructure/repositories/supabaseAccountAdminRepository.js.html",
+      "bytes": 25255,
+      "sha256": "a6bd9c451d03612c4a573b4e11c118784695a9f21af41b7e9e65be279dfbcdef"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/account-admin/presentation/components/index.html",
+      "bytes": 5250,
+      "sha256": "b739214682192da8414c6ae405f3f4838f4e7fc386c17aad1223bb0dbc54792d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/account-admin/presentation/components/ProfileSettings.js.html",
+      "bytes": 58696,
+      "sha256": "ed4798fc71b34f8f1ea1c0d78802823252c846b370ed828652ec4925b8a14489"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/account-admin/presentation/components/UsuariosManager.js.html",
+      "bytes": 96786,
+      "sha256": "3c8ef62f0a84c5e17b6b5bdb4d67c771c864746b6bb8be7a9806735502017fd7"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/account-admin/presentation/createAccountAdminService.js.html",
+      "bytes": 10183,
+      "sha256": "5bbf01bffa6998687b0357c3953cbb5769df8f9612207c82ff225bd5ccba1e5f"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/account-admin/presentation/index.html",
+      "bytes": 4623,
+      "sha256": "a093b4153f2be89d01049ccc07eac025701bf1f5d48a292d361cb3e5ef71942d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/admin-dashboard/adminDashboardService.js.html",
+      "bytes": 3703,
+      "sha256": "5f3d47abc7246ed8f3607a8f9eac50b78e35c9545318dd76161e4eccdb3e7201"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/admin-dashboard/application/useCases/createAdminDashboardUseCases.js.html",
+      "bytes": 57670,
+      "sha256": "5d36251cd8fa713ffdf110b5bb273c3599fb5cbcc29c3c9d280a88da39e2db20"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/admin-dashboard/application/useCases/index.html",
+      "bytes": 4706,
+      "sha256": "bafcd15d531cbbebccd691cda66328e83eff0024ca6ab358c1ade0c75ace8949"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/admin-dashboard/domain/adminDashboardError.js.html",
+      "bytes": 4348,
+      "sha256": "36ca0a4bbbc63b3cb918b1b4fe77361702def5560a422b6725be3229a557f099"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/admin-dashboard/domain/index.html",
+      "bytes": 4526,
+      "sha256": "668691dd4c383f5612ba100d8c253778551ba206f24e2e49d5528fac2c712152"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/admin-dashboard/index.html",
+      "bytes": 5155,
+      "sha256": "223c870b6960b40be07f3b8ed7e0ada16e8e393ea5e639911f8a90d380c09403"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/admin-dashboard/index.js.html",
+      "bytes": 3665,
+      "sha256": "874da6dba4a3c5a02783114f4df0fb8c9f7a7df7a1fb4dd20cd56658f19761b6"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/admin-dashboard/infrastructure/repositories/index.html",
+      "bytes": 4643,
+      "sha256": "2a44951265eed8c41d144742d924153ef2b45628da044c66578076a11458bcb4"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/admin-dashboard/infrastructure/repositories/supabaseAdminDashboardRepository.js.html",
+      "bytes": 32495,
+      "sha256": "1dcc57650915b7ecf21ffed88ac9d86ccfffa11f3044532083fcacfaa720d4cd"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/admin-dashboard/presentation/components/AdminPanel.js.html",
+      "bytes": 39121,
+      "sha256": "64d950d508b8b7678323dad02a2d09b8771949ab40151a3702ce522be85290fd"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/admin-dashboard/presentation/components/Dashboard.js.html",
+      "bytes": 39948,
+      "sha256": "a8665e535495147e9fc67df9735a39d4da28404c2cea02b193c56794e34f53b8"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/admin-dashboard/presentation/components/FinancialReview.js.html",
+      "bytes": 133365,
+      "sha256": "e50a5aa91b1a1dd363f73c119405b8ccf3a29abd47627c02a08aabbd6697a184"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/admin-dashboard/presentation/components/index.html",
+      "bytes": 6550,
+      "sha256": "ac4c0da249c690f690d7fa1befb3acb5d032c07a49c7f31060dd363d580faf0b"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/admin-dashboard/presentation/components/ReportsCenter.js.html",
+      "bytes": 220352,
+      "sha256": "f142762d9c722b4c7bc891232206df38f62970b30714e39845e6d3cedb13c1f7"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/admin-dashboard/presentation/createAdminDashboardService.js.html",
+      "bytes": 6696,
+      "sha256": "0e75a8e4628594ff955e61e2082aeb1951758028d6b34d8d27b7f345a89dca9e"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/admin-dashboard/presentation/index.html",
+      "bytes": 4600,
+      "sha256": "7597643421c7c8a89830e851f985ed939d51e8766bbb5971403282e7c31951f4"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/announcements/announcementsService.js.html",
+      "bytes": 3693,
+      "sha256": "b26942e39b3404fbbb917a36eea1a464b328fab72910a2cd61aa11c1cc4a6279"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/announcements/application/useCases/createAnnouncementsUseCases.js.html",
+      "bytes": 10506,
+      "sha256": "9a8c4921711fff3198a03a6617115027e5f5aa64d8c7e38a97653b9c7a928fc8"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/announcements/application/useCases/index.html",
+      "bytes": 4656,
+      "sha256": "5fc8e1aa92637130c732eb40480b8907494d64af1f8bfd82485c0b96bfcf8f28"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/announcements/domain/announcementsError.js.html",
+      "bytes": 4518,
+      "sha256": "6f8e466b495d311ebe79952f6e7e853028bd4cbc7ec8926fbbb323a6d3d51e6f"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/announcements/domain/index.html",
+      "bytes": 4519,
+      "sha256": "6ac29d882d82e7010870c38daeafd00da7fafbe39aac3a1b5d6a6b39114843c7"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/announcements/index.html",
+      "bytes": 5148,
+      "sha256": "ad9bbf2855f09aecc9a7752a4c1e05d58d6e7bac7e6b2b04c11e53799cf9b367"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/announcements/index.js.html",
+      "bytes": 3679,
+      "sha256": "d0d6f6e793a7626dc82445638ef5076b23eb6375d6f06e0ebeefdc0b23785364"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/announcements/infrastructure/repositories/index.html",
+      "bytes": 4633,
+      "sha256": "dea7f4a5de93956c9df48364b0c5d0dd6a1a28cfb0454c36c96d35db2b320799"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/announcements/infrastructure/repositories/supabaseAnnouncementsRepository.js.html",
+      "bytes": 26298,
+      "sha256": "e78d5b37b3282d293eb65c32eb8cced371af71f24571aa1363c7df2a7d4ec6ca"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/announcements/presentation/components/AnunciosManager.js.html",
+      "bytes": 56692,
+      "sha256": "6a922af5a780d5e301534ced730e59ad8372131035add933bd3e83c43e98a260"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/announcements/presentation/components/AnunciosViewer.js.html",
+      "bytes": 35826,
+      "sha256": "d4389384ba02a325af6e8c65cc2cc97f7bf67bed9c031aa3cb9c085c2c9caa1f"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/announcements/presentation/components/index.html",
+      "bytes": 5240,
+      "sha256": "22ce5284533b400ae6cd7d7c0d5654e9c9f3614fd18c99d063880ad3a70b68d7"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/announcements/presentation/components/shared/AnnouncementDeleteConfirmModal.js.html",
+      "bytes": 9122,
+      "sha256": "a0dd94066f2013e97fdcc67286671d6b4f8428abd053f8c36070bfd2259e1a56"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/announcements/presentation/components/shared/index.html",
+      "bytes": 4651,
+      "sha256": "519e4816cdf40d5d938de5b07230456934719bf0c5f9497dc66d807de86a9025"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/announcements/presentation/createAnnouncementsService.js.html",
+      "bytes": 7167,
+      "sha256": "347a42b380e4ef5f97f01d0187370e58fb629742a5cc25e09b7bbaba8b95bfa1"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/announcements/presentation/hooks/index.html",
+      "bytes": 4600,
+      "sha256": "f6a5c7dedab05938404abcc7202da7a0dc9024f1e37c1925ea79966353560c3c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/announcements/presentation/hooks/useAnnouncementsManager.js.html",
+      "bytes": 39658,
+      "sha256": "d80de27439e8dababa633ef703b13a65ed023b6d7033bae4cffe5b7cc9395760"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/announcements/presentation/index.html",
+      "bytes": 4623,
+      "sha256": "adf49cce3fbe8bdd202a4412608cf494b8c0691b01496f4536562c3e91f6f44e"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/athletes/application/useCases/createAthletesUseCases.js.html",
+      "bytes": 43723,
+      "sha256": "7421d331f79dd10d846a4b2029ed05be36aff0962e5c964c732e0578cd1c79ec"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/athletes/application/useCases/index.html",
+      "bytes": 4670,
+      "sha256": "67a10eee0738b1b630431cca272e80ee22bbb0542ae01517ec93649d40f99453"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/athletes/athletesService.js.html",
+      "bytes": 3653,
+      "sha256": "4b507152933d1210afd62369c7e5f2a21e39e36c0530e3bfa4d691df03d4de30"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/athletes/domain/athletesError.js.html",
+      "bytes": 4483,
+      "sha256": "e2e4202f4f239a7cbf1f8a4669687ea402e5eb6f92cd3c1e3c10ec897df1483b"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/athletes/domain/index.html",
+      "bytes": 4494,
+      "sha256": "827e979e3569636bc4b3ba75ba273cd7dca52e5a11f9177a4d229df701226d6b"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/athletes/index.html",
+      "bytes": 5123,
+      "sha256": "398346e38214a79e438b2dbb6fb7c13aef0ae56836f72cd5dd4e5901497b1487"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/athletes/index.js.html",
+      "bytes": 3482,
+      "sha256": "fecee1fcef9e42d499e6462250fd5d124d6e193200f9a90db9c230ee1237c0b7"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/athletes/infrastructure/repositories/index.html",
+      "bytes": 4625,
+      "sha256": "57636f8f6563deef143bc53dda41c3c323cf3b40373cff36e8274bdfb3feeafe"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/athletes/infrastructure/repositories/supabaseAthletesRepository.js.html",
+      "bytes": 20114,
+      "sha256": "28cc51c1c7f1c52c15a746ccb02412b51f391f88e55c1b746bb40e5b6b4ca19f"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/athletes/presentation/components/AtletasManager.js.html",
+      "bytes": 92484,
+      "sha256": "f8c86111aec7b3a19a7f0d6a05adbe866414c4f2b2c9b07e5d1df57ce6bc7154"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/athletes/presentation/components/index.html",
+      "bytes": 4567,
+      "sha256": "e8b069f6a6902c53f74c1edd1d028e6d72fd70863d125684a60e2b2b159b7be9"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/athletes/presentation/components/shared/ActionConfirmModal.js.html",
+      "bytes": 11263,
+      "sha256": "e5a1a114cced9bba3582fb216f78c12990f559944787881d4ca3c37889f25eeb"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/athletes/presentation/components/shared/ActionResultModal.js.html",
+      "bytes": 8541,
+      "sha256": "b6f6015715ccc876ad3cbae7efb2da229d05f5d46952e8a0396de44142468f4e"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/athletes/presentation/components/shared/index.html",
+      "bytes": 5268,
+      "sha256": "487ee9d5143da49ab7ffea890083d66ce133b406c796bfa1622ce3a103cacd01"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/athletes/presentation/createAthletesService.js.html",
+      "bytes": 10394,
+      "sha256": "909d905466abbda12b5b67f6f7aa136f08bc0de5a61718cc80c85180dd9cc27c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/athletes/presentation/hooks/index.html",
+      "bytes": 5252,
+      "sha256": "34b5fa35e5c1e13665dbfb9ba9bab35aef30e60e664dda8c63904f5351616ccc"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/athletes/presentation/hooks/useAthleteCredentials.js.html",
+      "bytes": 26276,
+      "sha256": "8c3c0334484c9c9d961ff7c33703f478cfbe260a210b42369f675b43581925b5"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/athletes/presentation/hooks/useAtletasManager.js.html",
+      "bytes": 75600,
+      "sha256": "afa2b2bb63be9fc9d32ec17373098fa4e957003d6c553c213f74b3d8511cdf91"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/athletes/presentation/index.html",
+      "bytes": 4613,
+      "sha256": "42d18c921d5702ef60a171247e98ea5dfacc0003e69f7773e8a28658390f26b6"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/attendance/application/useCases/createAttendanceUseCases.js.html",
+      "bytes": 108244,
+      "sha256": "c6287cf5a5228b74cb071162b12ffa3ceb8bba324f3818154ac0814b2eec2b9b"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/attendance/application/useCases/index.html",
+      "bytes": 4694,
+      "sha256": "e9680c177461942514ff483ff718f7c1b8b4a364ed7a4f37ccc9e708b6040c75"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/attendance/attendanceService.js.html",
+      "bytes": 4332,
+      "sha256": "a825d2ae7c1c3be3fedc8bfd2d1a6b69ed8c92edf008306b649c1fa7ae107d03"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/attendance/domain/attendanceError.js.html",
+      "bytes": 4077,
+      "sha256": "9b307ee9d30f79e707df4a652e48c041bdbb1413018d541dfe7374138704edb5"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/attendance/domain/index.html",
+      "bytes": 4544,
+      "sha256": "0fc662543cf892d371f4f6c1b1a18ee81d81742dab7e8bd2e984a92e94191e80"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/attendance/index.html",
+      "bytes": 5133,
+      "sha256": "d059ce128d6a902e557e21d536ded80abd405343dd8d9f336bfc04e8eaff8d7a"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/attendance/index.js.html",
+      "bytes": 3498,
+      "sha256": "b2f5b77cd08e886abd70fee57bdeff5e10d20fcde71c34069ebc321f9c2e48f4"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/attendance/infrastructure/repositories/index.html",
+      "bytes": 4685,
+      "sha256": "96aa5161ab13c5359feaa21599feb6926b42baea1b2e32b8754329a190de000d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/attendance/infrastructure/repositories/supabaseAttendanceRepository.js.html",
+      "bytes": 26429,
+      "sha256": "4e5ccd7b9b306f4d8f589099b31225dc42bdf5aecb98bfe5fc0965666e4c790d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/attendance/presentation/components/AsistenciasManager.js.html",
+      "bytes": 295402,
+      "sha256": "3bd73a6bae1b029cc8a915ca4920eadd409a71ad98051129f8c883de26a7f8d7"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/attendance/presentation/components/index.html",
+      "bytes": 4595,
+      "sha256": "ccd0986685d691e6de1f5ee52433a785af4713ff0157b9b5bb14f8982c4eed4d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/attendance/presentation/createAttendanceService.js.html",
+      "bytes": 20945,
+      "sha256": "badc5919d32d1631e47859a5d1b73359f5adb6f8c5e43e3982fac09d6dfb1773"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/attendance/presentation/index.html",
+      "bytes": 4628,
+      "sha256": "e68f9f5b63b376020e078e7f4a09e574d199ef7f8f7eaae39ce8eff4547de49d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-profile/application/useCases/index.html",
+      "bytes": 4643,
+      "sha256": "aa2396c8f549da7f49d99bf550f504e30ad5efbd4923e5d869e5705b7fd29060"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-profile/application/useCases/loadUserProfileUseCase.js.html",
+      "bytes": 9035,
+      "sha256": "c88cda6d880a8c77fa9d53cbc6d60517caac29c65688c54d71351b276810575f"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-profile/authProfileService.js.html",
+      "bytes": 3679,
+      "sha256": "d3b48a3ab844183ba99d97955d73410bedef7c264bcf76e38c448e94f20b9320"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-profile/domain/authProfileError.js.html",
+      "bytes": 4018,
+      "sha256": "2a9731425c87dc8465127bfe1a5703bbc68870da4d99ed7115788c44c7766aa0"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-profile/domain/index.html",
+      "bytes": 4559,
+      "sha256": "9575c04ef48ea8ecc2a715147f2c1f77b51dbcfa76c27cf0545361da1d75eb7c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-profile/index.html",
+      "bytes": 5140,
+      "sha256": "dccbb7e8575e4c5355f47cb13c5bd921cc48d9b7d376532d9fc9017189682945"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-profile/index.js.html",
+      "bytes": 3480,
+      "sha256": "fbf4562c0b10c71f45110c185d547121b3bb7fff833f50b2caecd21494569ace"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-profile/infrastructure/repositories/index.html",
+      "bytes": 4636,
+      "sha256": "4cf6a04cb53fe4ef41c6d12030e39bf72fb25026d3c8f1b3774f91d7c4bdccff"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-profile/infrastructure/repositories/supabaseAuthProfileRepository.js.html",
+      "bytes": 12642,
+      "sha256": "2a977aeaf3b0f9357767e1e1c032ee2a27df6c0032ecd893065d66303711dae8"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-profile/presentation/createAuthProfileService.js.html",
+      "bytes": 4705,
+      "sha256": "a5c7206ce63333af406147b10e8645bbcd6f522879f9eeed18af8ac3fb380fae"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-profile/presentation/hooks/index.html",
+      "bytes": 4565,
+      "sha256": "bf050e87e2f0f5c804d4ee85e1201d896587f044bd5d033b06e0da801cae5f5b"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-profile/presentation/hooks/useUserProfile.js.html",
+      "bytes": 15837,
+      "sha256": "e1a7c8cc6b89c40233cda62ef209540cf583ebb080d696cf714dff22836ab56c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-profile/presentation/index.html",
+      "bytes": 4587,
+      "sha256": "7c981a5edfe8c52808d21267bcd8d53d397458c918116a9dda6958ac20c40a8b"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-session/application/useCases/createAuthSessionUseCases.js.html",
+      "bytes": 18690,
+      "sha256": "18e5d63edd926338439d7b754b3ede18870c7714db75a32ef2863a8f0d6c9bad"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-session/application/useCases/index.html",
+      "bytes": 4664,
+      "sha256": "9da3a13117c2e1a3744ac3a91c853640571feaab033a741fe9122c543bd2d0ab"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-session/authSessionService.js.html",
+      "bytes": 3679,
+      "sha256": "74f271142eb756d2b9f07e6a50eae7f44568f504991be4e8f449e16f4947c417"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-session/domain/authSessionError.js.html",
+      "bytes": 4507,
+      "sha256": "11cc54adff192f11297f2d6912dfd7fb457696f51659a8c989c5a347c8a2c50b"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-session/domain/index.html",
+      "bytes": 4511,
+      "sha256": "8048db64a1ab73ffce5bb51195d358ee62aeb9121a6814a95facd8717c10760b"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-session/index.html",
+      "bytes": 5140,
+      "sha256": "ca54f12dd6401a0812048cde169748d319ab329f537bb266e6d163e2ca8fb9f7"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-session/index.js.html",
+      "bytes": 3836,
+      "sha256": "ffa902a8d941ca3ffa0f8a912e4ecc52f2b753e4200b23f8b3ab3d04a9bec06c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-session/infrastructure/repositories/index.html",
+      "bytes": 4628,
+      "sha256": "f0244802d7c7ea171c61ad773bb13e32b4779139ef65cc7a5adc730ba9f9fdd6"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-session/infrastructure/repositories/supabaseAuthSessionRepository.js.html",
+      "bytes": 31453,
+      "sha256": "ed19dbd2e98d8aa2b0cc60a8b3ca2c93960ba5a0d9ebdc3db71563475b0b0d0f"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-session/presentation/components/ChangePasswordModal.js.html",
+      "bytes": 40737,
+      "sha256": "4219bffc9f21ba90a9277121332cc9a7bb136a0c4f0863a3850613ce72115d03"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-session/presentation/components/index.html",
+      "bytes": 6096,
+      "sha256": "45a5bfaf54279e64d4a7350008db332e82e20106db12dc03c066306fda4bd777"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-session/presentation/components/Login.js.html",
+      "bytes": 93128,
+      "sha256": "256f409e649f4166509f5a052b2276c7977ad49b6789d628979b32587af61311"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-session/presentation/components/ResetPassword.js.html",
+      "bytes": 48642,
+      "sha256": "a2d83e6dad29ef8adda3706094a540666a03b17cd7ddf501ae94146cfa4bf5cb"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-session/presentation/createAuthSessionService.js.html",
+      "bytes": 12325,
+      "sha256": "835a286fcf6f4831b854062b7daeb281dfd2be8a28c5c0dc9ca7e885daae0030"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-session/presentation/index.html",
+      "bytes": 4617,
+      "sha256": "d9ea288423dc12106c3d6accbfbcff0607c3d7d396b776f00d81d2a75cf34391"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-session/presentation/utils/deferAuthEvent.js.html",
+      "bytes": 5218,
+      "sha256": "ed3474eaac7259e709a7f4e14383a8b7df8af965c2cb4a26a125df7472e35cb5"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/auth-session/presentation/utils/index.html",
+      "bytes": 4611,
+      "sha256": "e568de5b3c12581e444743f6a3cbc7f1a04423b50901de4dbb4eacfce6ad0cb8"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/communications/application/useCases/createCommunicationsUseCases.js.html",
+      "bytes": 8994,
+      "sha256": "6a3950db5e19ac500b7cc69c746d3da42fc1dac67aefc448f719831101754333"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/communications/application/useCases/index.html",
+      "bytes": 4665,
+      "sha256": "20743fdb4122c620c0b0b9b2fea9475c8790be6fc778e207821bc0a241a7a332"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/communications/communicationsService.js.html",
+      "bytes": 3642,
+      "sha256": "a46a805a646d076496c0e699142821732beb6c72cb1a1f83fdaed6c2b0e0c341"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/communications/domain/communicationsError.js.html",
+      "bytes": 4216,
+      "sha256": "aad55ba81597b68ab7d402dc199a4f7458ebf692fb372bc6c48f841e5b404333"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/communications/domain/index.html",
+      "bytes": 4564,
+      "sha256": "25068fa125ebe99fe4df2f10f304bed74d871c9fc0ea38698f538b4669d5689c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/communications/index.html",
+      "bytes": 5185,
+      "sha256": "3303359cc1c63c9148feaa58aee417d644e3ade97a0a45b689216735a17062d4"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/communications/index.js.html",
+      "bytes": 3331,
+      "sha256": "5b2943dca2ea41cf880e197f8cb01532a729b2b7509f7cf09b06eabf5e72ba7e"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/communications/infrastructure/repositories/index.html",
+      "bytes": 4693,
+      "sha256": "7650ba554aa696ab72c367015e89001beb1b2943c2b447db0da8ad0ad5271460"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/communications/infrastructure/repositories/supabaseCommunicationsRepository.js.html",
+      "bytes": 27655,
+      "sha256": "087bc0631e863b5eea98464647064fdba48165867eb45d12476d10c905146a65"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/communications/presentation/createCommunicationsService.js.html",
+      "bytes": 6294,
+      "sha256": "10f5a1a3a3f8ba7cc7df779e6c37ffcd80e420f0d0a7e9e031485512156e2920"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/communications/presentation/index.html",
+      "bytes": 4608,
+      "sha256": "3f98e9d5f2a332436ced417dda631862c7a3061bc1f401fc5d224b5b0f9801c5"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/application/useCases/createGamificationAdminUseCases.js.html",
+      "bytes": 23041,
+      "sha256": "b03d1b0c3cbd8dfc8ea04321c4d19bff92e735453e0814b2a44736be293a1da8"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/application/useCases/createGamificationFoundationUseCases.js.html",
+      "bytes": 19139,
+      "sha256": "c6edd39f5ec994d82ba2d94d6de52bef19a693faa04a9c508d415a4f086549c4"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/application/useCases/createGamificationUseCases.js.html",
+      "bytes": 625721,
+      "sha256": "c754a4d771e8592faf59e58d050247ef8a6aec4047f82ed966c4b4645e104cc0"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/application/useCases/index.html",
+      "bytes": 6235,
+      "sha256": "e50bc909cf54f76ac81c0d6cde1ed178c0df3f3364206ecdd3dd44066292c80d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/domain/avatarCatalog.js.html",
+      "bytes": 42214,
+      "sha256": "41811f3cb9cb2aa381c00b4e6ff627f55e765feadd442734e5343ba5656ad09d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/domain/buildAvatarUrl.js.html",
+      "bytes": 8028,
+      "sha256": "ef9e5ceea7c15315caa4c3161cc928d730c78f327bb6cbf13874dc985bfdffd0"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/domain/gamificationError.js.html",
+      "bytes": 4083,
+      "sha256": "7b55338a5660e0427895981b5731b6eaeb592e3d5fe2daaa37ef86896d735719"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/domain/index.html",
+      "bytes": 5984,
+      "sha256": "5d79c8c2bf950d425f47c23144a51c2f66628569111aebb3aa4a492c46c2f8a6"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/gamificationAdminService.js.html",
+      "bytes": 3715,
+      "sha256": "c1ba47c296c45b0f1b084aa850f5d2e26adac2e7ecf24774300a4ee1587acd27"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/gamificationService.js.html",
+      "bytes": 3626,
+      "sha256": "68e46bd57edfe969474d0763f6c7718a398a3bc169cfb210db78f233af7e8a92"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/index.html",
+      "bytes": 5869,
+      "sha256": "ed3bc411c5156069a8ae8e08149b3a3c9aecf8fb90f2b2031e60222525c821b7"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/index.js.html",
+      "bytes": 4245,
+      "sha256": "1971b28ef63a8505782384118f4a6e5d4ee97a06366da4bd0e1ba4f5c639ffff"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/infrastructure/repositories/index.html",
+      "bytes": 4700,
+      "sha256": "52de8cfff5bfc7e59aacaad480dda4c6699019d616f64f12991b34ec9f3925f4"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/infrastructure/repositories/supabaseGamificationRepository.js.html",
+      "bytes": 165956,
+      "sha256": "9b4e06b02c5b3e205c1b54f3f75a06ce4083cbd7bf2bdaba145dcc09e5e3f744"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/presentation/components/CategoryLeaderboardsPanel.js.html",
+      "bytes": 71097,
+      "sha256": "356f7c08ba992d877cc4a8db6f0da6dcba0024d51043ab19e7c691e63bcc3d2b"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/presentation/components/cosmeticVisuals.js.html",
+      "bytes": 37293,
+      "sha256": "a2767368bdcaec186fbe6c7d612be6c068ad87364329047a67fb7364904ed290"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/presentation/components/GamificationAdminPanel.js.html",
+      "bytes": 213212,
+      "sha256": "ffc4fdd3d3120b22c3f22c2f68faff57cf51897143c6471c8c9f2d186f626620"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/presentation/components/IdentityPortrait.js.html",
+      "bytes": 42563,
+      "sha256": "a5a6fd82bb2c447dcf9a1e7707c51592a6160249c477e8082a0d2aa2e5cf7bdd"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/presentation/components/index.html",
+      "bytes": 7567,
+      "sha256": "680bc044e9e9f87125775e798e86dd107940c4d31ff26967a85a15b44cce9ee0"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/presentation/components/StudentGamificationPanel.js.html",
+      "bytes": 497456,
+      "sha256": "ac96e4bebbc73b9eb18fd169b48ce507614d055b31f9ee5f330e24e036c6873c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/presentation/createGamificationAdminService.js.html",
+      "bytes": 7919,
+      "sha256": "fa869b88ee79111d92ec4f868ae7ab9be30f20558d8d5e1078e0cdb071ad85d5"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/presentation/createGamificationService.js.html",
+      "bytes": 15613,
+      "sha256": "f8935d0099cc85a60e373ffec1dfe9f616265e273aa097e6ba3f826e525f60a7"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/gamification/presentation/index.html",
+      "bytes": 5322,
+      "sha256": "51f56789c17d518887f8c829296bda50f251dddc5bfc225b8c6f5248f7181e96"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/notifications/application/useCases/createNotificationsUseCases.js.html",
+      "bytes": 39226,
+      "sha256": "3244625370f7815cc740ceca274f4a61cbcd3690cd69acf869ae79d93e82919d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/notifications/application/useCases/index.html",
+      "bytes": 4683,
+      "sha256": "cb4eaad26fcfdae518c4891e6e86c9c32071a568125cf6174688ddc166561b4c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/notifications/domain/index.html",
+      "bytes": 4559,
+      "sha256": "3ab4d230efd53afdaa9c43654e420768a9d9e0074a7ffa46db4caff82c927910"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/notifications/domain/notificationsError.js.html",
+      "bytes": 4209,
+      "sha256": "fb912ad1a82682178bec7ca70d21c56a557d30a61d295361e35a6ba699a56d19"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/notifications/index.html",
+      "bytes": 5148,
+      "sha256": "434c9cf842f4dd9068d50ec420e94f999d30bd83ec49279292b71cc1f6ef3549"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/notifications/index.js.html",
+      "bytes": 3691,
+      "sha256": "1d4e6706357bcec5aa10a480ff12bc0a92bbae22db171bb0d1d1d4e78f3387b8"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/notifications/infrastructure/repositories/index.html",
+      "bytes": 4676,
+      "sha256": "fe46201f23e2db817ab86ae0505a632877cf29469af1a154db710fd3c64c538a"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/notifications/infrastructure/repositories/supabaseNotificationsRepository.js.html",
+      "bytes": 25070,
+      "sha256": "607399180d83be18ca67d86a22fd720e8fac0708140f4855fa9d6335bdbc5c9d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/notifications/notificationsService.js.html",
+      "bytes": 3693,
+      "sha256": "3e318bd342358990964f831e11d08cab3b6f0836f4e8e4a221643a414a7b9262"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/notifications/presentation/components/index.html",
+      "bytes": 5316,
+      "sha256": "43f30e19b1ddc184e01d3678357de7efbf9acb100f42cd89efa545b6e0083185"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/notifications/presentation/components/NotificacionesPagos.js.html",
+      "bytes": 27305,
+      "sha256": "2c6911fe2a05be33fbab5273bb00247a3433a221e6c27c1c87c5ca4c25a46006"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/notifications/presentation/components/NotificationBell.js.html",
+      "bytes": 60962,
+      "sha256": "abee8e6dc63528e2c92c22768663eb25b771abb46dcdaf05c050f1d733edcd51"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/notifications/presentation/createNotificationsService.js.html",
+      "bytes": 7852,
+      "sha256": "13283a294400657b60933f6d519d9b24ff8366c98a544dd6c2a5c49b41219a87"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/notifications/presentation/index.html",
+      "bytes": 4605,
+      "sha256": "99fec7f024ab0d5ab66d570f4b36aa38f338aa25e4c2fa250a8a53d5ce7616cd"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/payments/application/useCases/createPaymentsUseCases.js.html",
+      "bytes": 97232,
+      "sha256": "f7f26cbb7d1594714005f0535db75bd8d43b925b22055fa6c71d9bfe10f6fc3c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/payments/application/useCases/index.html",
+      "bytes": 4673,
+      "sha256": "322d865bfd7d6f4031e6b090ea4e0ac600f2359e35799087f204f079edeaa783"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/payments/domain/index.html",
+      "bytes": 4534,
+      "sha256": "d95fd16503fa5e530efb06134a6e3495a832e6e9164c88ee2b9216ea70be3296"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/payments/domain/paymentsError.js.html",
+      "bytes": 4065,
+      "sha256": "c4550a3185cb62e1cfc2cbb106d282106370d649aab65c282ee932a976f633e6"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/payments/index.html",
+      "bytes": 5123,
+      "sha256": "ca2f7842bdf63e7f650f32d099a9ff03db141179d71d2fcf2a0aa751c4ab3a81"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/payments/index.js.html",
+      "bytes": 3478,
+      "sha256": "6de4842d12a0586bcdedf13431eaa54fb3a5172cae7b6994ef8773cd4028f2d3"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/payments/infrastructure/repositories/index.html",
+      "bytes": 4696,
+      "sha256": "6615948ba77fe68ed02fad23cbd5a1bb27b8a9f2258f529ed8fc75fd4d37b962"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/payments/infrastructure/repositories/supabasePaymentsRepository.js.html",
+      "bytes": 28037,
+      "sha256": "0845ad83a17e25dc8127ba96a220f1bc56ec6087c3183c194034e3f8b6efa89f"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/payments/paymentsService.js.html",
+      "bytes": 3653,
+      "sha256": "13a9419d7f6fe48ce6622e40ca1f59aa7ee77279f2dc0fc8b0cd782ebb9075d3"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/payments/presentation/components/index.html",
+      "bytes": 4573,
+      "sha256": "bcf94c21b3ae0e24ef221921d3b234a1c649cfce954d3893597910cca820cd1e"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/payments/presentation/components/PagosManager.js.html",
+      "bytes": 199999,
+      "sha256": "2807f6607c0a4c3ebfb7327bef2467170effea1c3a9e8795188cd4a6b6fc18f3"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/payments/presentation/createPaymentsService.js.html",
+      "bytes": 15174,
+      "sha256": "4872a0c9e354f1f094b4ca03b0ccd0780e45267f17760716ef6537cd2524c8b2"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/payments/presentation/index.html",
+      "bytes": 4612,
+      "sha256": "55039ab031573d0cea13f09eba9355da570f5ceee0712b366da2effd53c6c723"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/physical-tests/application/useCases/createPhysicalTestsUseCases.js.html",
+      "bytes": 48572,
+      "sha256": "d86a102084ed52ea337df40cb555fb3c59642944672a62ca1459762ee46a01ba"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/physical-tests/application/useCases/index.html",
+      "bytes": 4695,
+      "sha256": "7f3f98a1ffd97830c3cb5b04c970343fec737a9b0e3c52242544c776caef147b"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/physical-tests/domain/index.html",
+      "bytes": 5260,
+      "sha256": "24e174424871169a577b36370928d8f32c2f27c14f674852e600c8c5ce492dff"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/physical-tests/domain/physicalTestFieldMetadata.js.html",
+      "bytes": 13829,
+      "sha256": "27042a8b6208d7a2dc4503d3c9cff03a1dcb87a9ef0b5fcf7860156b3d4d54f9"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/physical-tests/domain/physicalTestsError.js.html",
+      "bytes": 4521,
+      "sha256": "08e66a1f098913f0f9d5bcde2c92c8f82df650869e2ed0304bbbdb3a887d9ce6"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/physical-tests/index.html",
+      "bytes": 5150,
+      "sha256": "b0632f8a117fef0edab72566ba758474e77a88a34166c384ab00511c7362e41c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/physical-tests/index.js.html",
+      "bytes": 3900,
+      "sha256": "d3f9d43d918702571caf46e7b20a2980769f5102137a046f36865d49d3e0a481"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/physical-tests/infrastructure/repositories/index.html",
+      "bytes": 4655,
+      "sha256": "96fee56e8e7c0ca8ed9416674f3a26ad4135ab32b1716ce329efea04646c5d0e"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/physical-tests/infrastructure/repositories/supabasePhysicalTestsRepository.js.html",
+      "bytes": 18337,
+      "sha256": "5f6c1e53abd4d407551ba5695448f5faf5d92d03bf6398bfa38bdf0a405c6c6d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/physical-tests/physicalTestsService.js.html",
+      "bytes": 3695,
+      "sha256": "9ddd493666d7b7947838086874dc3a0a569bef7b2ae739cb4d14d172d125c6c0"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/physical-tests/presentation/components/index.html",
+      "bytes": 4603,
+      "sha256": "7da4299ac8f36649c107b9e875ee1e83989c8e444960ed1e32cdbf408df458c3"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/physical-tests/presentation/components/shared/index.html",
+      "bytes": 4626,
+      "sha256": "b2016d5d7fa85b87c10fe83b9eb3d026e33efb7133989e684d0f95b8e494ab78"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/physical-tests/presentation/components/shared/PhysicalTestChart.js.html",
+      "bytes": 57070,
+      "sha256": "a70152869f250f49d8d585cce010354392ca40e89343637207e0c4c8886a74ec"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/physical-tests/presentation/components/TestsFisicosManager.js.html",
+      "bytes": 195038,
+      "sha256": "74e9643520e214b6e9eef90918892fd47e0797d3411f2a8ddf9784a51acadf51"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/physical-tests/presentation/createPhysicalTestsService.js.html",
+      "bytes": 8450,
+      "sha256": "de673d7f82c896bcb04ff7ee45aad3e30d328b62d3e8202482d8b1ca6dbe327d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/physical-tests/presentation/index.html",
+      "bytes": 4612,
+      "sha256": "babea30b9e8cf8bd99a70a68edb7363e8b9e8750f6f35889d695c92e36d33b0f"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/application/contracts/index.html",
+      "bytes": 4655,
+      "sha256": "210cd696e65d813a1c2eb79fd7c0241772bf141a4a1ad9a916df1b2271f19933"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/application/contracts/reportingRepositoryContract.js.html",
+      "bytes": 6157,
+      "sha256": "db2cfc67136e301767c9414ec43c67694b374b1266d1644700b0dc580d6ba822"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/application/useCases/deleteRunUseCase.js.html",
+      "bytes": 5723,
+      "sha256": "ebf437b1401c117771c85994e2d7ff21ad09bfe65c1bf8fa6f52e6d782b6a7f2"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/application/useCases/downloadFromSignedUrlUseCase.js.html",
+      "bytes": 5808,
+      "sha256": "402e91ce84f95350a3119dd755c12d897cd9ffb83b42a4af4244324d1fef424e"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/application/useCases/ensureDailyAttendanceReportUseCase.js.html",
+      "bytes": 8977,
+      "sha256": "5e086176fc1186b2a057fdf819dd468061d3b3cb57298e0d5cf1f2687887a1a1"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/application/useCases/generateReportUseCase.js.html",
+      "bytes": 6578,
+      "sha256": "387f8c7b68aadfdb948bd51cff8b330632662a34202fc370bfd5e25daef6447c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/application/useCases/generateScheduledReportsUseCase.js.html",
+      "bytes": 4995,
+      "sha256": "4c6b7b8d50d276d9f1981519ba3f62d3ce1c1c4e8015e4855a220aef4e21f369"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/application/useCases/getDownloadUrlByRunIdUseCase.js.html",
+      "bytes": 5775,
+      "sha256": "b4c6b80bc168207f753be4941824e25a31dcdb2b988c2946c9d77d94277a0e3e"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/application/useCases/helpers.js.html",
+      "bytes": 4998,
+      "sha256": "62cf24bbd2130d7eeac5be42d66f2b71dded20e69d0c80edb748ac575ad13014"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/application/useCases/index.html",
+      "bytes": 9658,
+      "sha256": "418aa4bf5b5fdc011cf03d44ceee66a04c20e9039d1452e40d6219553230a118"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/application/useCases/listReportRunsUseCase.js.html",
+      "bytes": 5754,
+      "sha256": "fe3f5a2069043de05b68065c3ebb1d9e01d9ea97d72c7ba6f0c6860f60d3650b"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/domain/index.html",
+      "bytes": 5976,
+      "sha256": "19b6986689fb10a972ef14329407c2352256bf30f4b41ca95467d629e667f239"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/domain/reportingErrorCodes.js.html",
+      "bytes": 3966,
+      "sha256": "a0c63d306259e2eb5cbad3da262f0aa0e2c3b552522a294255c7341234ceb6ae"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/domain/reportingErrors.js.html",
+      "bytes": 6544,
+      "sha256": "ac93363da3883912fd6e733b1bb7caf6d1115cc0d28343c47e925fbf5832d4e4"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/domain/reportingPolicies.js.html",
+      "bytes": 5238,
+      "sha256": "e195bd54f73d391534f25eeb82ac10256b2adb7f89fa866fe94b741df4ef5235"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/index.html",
+      "bytes": 5128,
+      "sha256": "19916a2408ad6a511175a10c0441f45c1d6e3547c6aebcfb769f96e4a10b968d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/index.js.html",
+      "bytes": 3311,
+      "sha256": "486f98868d710c7e3167bd2bcad670b915b52beecc5fef83c6eac88909c0ff7f"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/infrastructure/gateways/browserFileDownloadGateway.js.html",
+      "bytes": 5000,
+      "sha256": "cd03882bf4b14f7e9202f7e87b2f19a1ff29b5bf0d959da4f4a7cfa14178780f"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/infrastructure/gateways/index.html",
+      "bytes": 4593,
+      "sha256": "1bfc874d6b0c097bb27dfd3d93acff2883acf584daa06750dddbd1864498aeee"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/infrastructure/repositories/index.html",
+      "bytes": 4674,
+      "sha256": "a3c1d96aba044722bbecfc7f0a7ef836cda17adf4d4c2fdd33894cd27390612e"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/infrastructure/repositories/supabaseReportingRepository.js.html",
+      "bytes": 29480,
+      "sha256": "74ed2978255978e5211307732c3ebe57c5cc514c1a8547db871bd9948a4c4f7d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/presentation/createReportingService.js.html",
+      "bytes": 10087,
+      "sha256": "4f6d87e92aba074f954627056f8d13c9969757b70090a5a3ba7b3bb54fce3f4a"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/presentation/index.html",
+      "bytes": 4606,
+      "sha256": "80a38f1fc3079853f058f5d5b46066f07028cda404793a4323eb80b3493646e0"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/reporting/reportingService.js.html",
+      "bytes": 3661,
+      "sha256": "7e14ead89466f5c93568fb37f3b79e74fab9304b4954f2a5e1b6e3edcbd55184"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/schedules/application/useCases/createSchedulesUseCases.js.html",
+      "bytes": 13811,
+      "sha256": "8e2813e072503f05824b527cc630e024a74361feb00e969ff578bf8fc9cb40a5"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/schedules/application/useCases/index.html",
+      "bytes": 4666,
+      "sha256": "e0acb055b3ee437895b65340f277838aa76c78863f0857e15b69002c608f51df"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/schedules/domain/index.html",
+      "bytes": 4499,
+      "sha256": "3e82d7bb504474173df8a1b49e1513f684fadb61c28e3c4e81c04f3132761b4a"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/schedules/domain/schedulesError.js.html",
+      "bytes": 4490,
+      "sha256": "3ca20ae723bb5e960bbfdd34973c6d51f536e177ee1c730176303ac55a4e7ca2"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/schedules/index.html",
+      "bytes": 5128,
+      "sha256": "022b1f7f75c82ea942ba1fb509659e7e4c2e68192a937a71eb14b3e271847c1a"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/schedules/index.js.html",
+      "bytes": 3488,
+      "sha256": "361519796a5dd2d56af792ba2ce9b663489ffb04fadf52ca9e7737af6ca85495"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/schedules/infrastructure/repositories/index.html",
+      "bytes": 4633,
+      "sha256": "38f248ef918eedd6149e51f67b1a234d39f4fb2579884412e690173b94039749"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/schedules/infrastructure/repositories/supabaseSchedulesRepository.js.html",
+      "bytes": 15304,
+      "sha256": "79b7ec15f4508f905759d0faf859d9f69470109f9bbb2520e24bd0991aa3c3f8"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/schedules/presentation/components/HorariosManager.js.html",
+      "bytes": 104043,
+      "sha256": "bb0be182eb064e8a369fee430d1710d1e09efe79fb738b78bcc285a988f08347"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/schedules/presentation/components/index.html",
+      "bytes": 4572,
+      "sha256": "b857d333bc4e1647e8e72158cf0d362426448a3fde3b39c04b3f0509b7b13e60"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/schedules/presentation/components/shared/DeleteHorarioConfirmModal.js.html",
+      "bytes": 8948,
+      "sha256": "615fd0ff5c3221de09b7e006bc32831212e4297b05d2d29a028baf45c6487490"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/schedules/presentation/components/shared/index.html",
+      "bytes": 4628,
+      "sha256": "9dd788f6a69162cfbe7fa7d8712d45de3aa7f7fef375bda008460d18971f9137"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/schedules/presentation/createSchedulesService.js.html",
+      "bytes": 6524,
+      "sha256": "4ab4e2a755f952648f49277caedd6aa67810dbbf7f0952e7f99dc178482a842b"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/schedules/presentation/hooks/index.html",
+      "bytes": 4580,
+      "sha256": "a93a1d81347789f9ca5e6ad9a482a282f4ced30e2255db0da69889d691f24d19"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/schedules/presentation/hooks/useHorariosManager.js.html",
+      "bytes": 86135,
+      "sha256": "d7f339758fe34dc1844ce2d24df96569efa5b4f87180c164cf468e93f89a4ba4"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/schedules/presentation/index.html",
+      "bytes": 4586,
+      "sha256": "f0887a8d562b968cf32d79f5e60460576ade6cda17c9cb89b649f704a37a1b91"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/schedules/schedulesService.js.html",
+      "bytes": 3661,
+      "sha256": "7fec00776ecee9161eb325f050ce6301cc5b84d0ec556b7aa34b4bf7d44d1787"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/application/useCases/createStudentDashboardUseCases.js.html",
+      "bytes": 36122,
+      "sha256": "35e30b69f9e7e76ea4b1f704955424fa4c77779afb5717e9565d726026ba1942"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/application/useCases/index.html",
+      "bytes": 4708,
+      "sha256": "ff84630b056f81c054ae6d19bbe280ed1c601a6b852ebf19b4b2c5a7da99562e"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/domain/index.html",
+      "bytes": 4576,
+      "sha256": "11eb54df9af82f194ffd0788debd7a4e894c0036edf0b11f85b2fdfdab25188d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/domain/studentDashboardError.js.html",
+      "bytes": 4115,
+      "sha256": "103a3ac8cce76cb0044eca95c2a363035047cf039fa0ab6c8a177333603343c4"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/index.html",
+      "bytes": 5165,
+      "sha256": "d838489c48ffd75ddb1571796c4988ec61f943344682602498d6853e943ce966"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/index.js.html",
+      "bytes": 3681,
+      "sha256": "600c476bbe7521039e7773b0edeec72588030835f5107d067b3340e08282f9fe"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/infrastructure/repositories/index.html",
+      "bytes": 4735,
+      "sha256": "40c35310d22c92fb51f763336a5165d27d069777e1f82ce35be12ac97d1653f7"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/infrastructure/repositories/supabaseStudentDashboardRepository.js.html",
+      "bytes": 19385,
+      "sha256": "8a2d90225a5ea9917c18c0cfdb4343e5ccd5e07b6ed672cd175b077291e26512"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/presentation/components/index.html",
+      "bytes": 6739,
+      "sha256": "81736b890a123288e9d9f82b42139df2f4f694dbcba536b60ceb294d0ab6041c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/presentation/components/physical-tests/buildStudentPhysicalProfile.js.html",
+      "bytes": 81282,
+      "sha256": "ec5be17b05b386c05cf218550cb3305b96ad4c14e1fd1c11923db7f23f64d7d6"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/presentation/components/physical-tests/index.html",
+      "bytes": 8378,
+      "sha256": "5af1d5c23ca01170b7efd05222dcd4a571a3ba5e39e878f13d777fae2dd6ec26"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalHero.js.html",
+      "bytes": 10838,
+      "sha256": "8efcd942296a75eb1aeb51a0a86f096e9f48c9340c3a175d3a1901982563a85c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalHistory.js.html",
+      "bytes": 10550,
+      "sha256": "4552b7887718bd94d68b0e5f8d980209b0ae9adb3f438dcf7d2ab694bc781864"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalInsights.js.html",
+      "bytes": 11343,
+      "sha256": "64f1e0872de3608b05708f8f496b406481cc3176b3eeea437b1757e50c8000ad"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalRecommendations.js.html",
+      "bytes": 10133,
+      "sha256": "8c7f3541095a07dc21d20931e014acf598e371f8abfd335532f00f99e2407ac5"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalTrendChart.js.html",
+      "bytes": 17957,
+      "sha256": "cc0f67c8305ebbe9abd6194f974410a89a963ab991e5dc22284a64b1e991adb6"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/presentation/components/StudentPanel.js.html",
+      "bytes": 89382,
+      "sha256": "2f833f58f8f1ee47da249313cceab1374ba09fc65c9557e38cb06a38cfaf5f33"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/presentation/components/StudentPhysicalTests.js.html",
+      "bytes": 11136,
+      "sha256": "aafa085dc58e068081b9d7c8b33502f6965be5dedd1b2b9dc05c88c902dd4d92"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/presentation/components/StudentProfileIdentityCard.js.html",
+      "bytes": 73786,
+      "sha256": "237c02f20a50624a5fafc4f4633960de7a8c9e876939e3a3ea33f8b5cbaa3b9b"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/presentation/components/StudentView.js.html",
+      "bytes": 58890,
+      "sha256": "5ea4cc21851d4187b9e44eaf6d9bf0ccc38e7b8d6cae7aca972464bd10d95662"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/presentation/createStudentDashboardService.js.html",
+      "bytes": 8004,
+      "sha256": "b234fd2fd0e6b76c91908508335f6f2a84b35e3e20946c169a976c4b300b4a46"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/presentation/index.html",
+      "bytes": 4630,
+      "sha256": "f0ad505bacd97add9021929015723a2fc2b2aaa553c4df9f789fd581eae82d0b"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/student-dashboard/studentDashboardService.js.html",
+      "bytes": 3719,
+      "sha256": "0273e1f1a066d5cdd704b2f21cdcd5b2b394ff289997050e2a1d65a268dc2fa8"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-dashboard/application/useCases/createTrainerDashboardUseCases.js.html",
+      "bytes": 14802,
+      "sha256": "d66b572b9474f1bd7fb37d845fff7c90884cb7511f20f91315a9209f9da88058"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-dashboard/application/useCases/index.html",
+      "bytes": 4684,
+      "sha256": "cd07a45bb67f144afb23b31f6311870066c2ca633991fcfe02e9c01232934d22"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-dashboard/domain/index.html",
+      "bytes": 4536,
+      "sha256": "45f97dc1695c35bc07d770c20fd6c0eabc27f48d2a0cb0e5227d571fb79d74de"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-dashboard/domain/trainerDashboardError.js.html",
+      "bytes": 4360,
+      "sha256": "7881f923c3ace7a1913189ea03c961d96e5ece9f5bbd4c1f8c49029fb96b30ac"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-dashboard/index.html",
+      "bytes": 5165,
+      "sha256": "0c1e26b09dbd907b1baaa2f075f2b469d3fd759dc608fec6b360c183903fbd08"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-dashboard/index.js.html",
+      "bytes": 3691,
+      "sha256": "8ec7b956e5a6c9dda3b83b0ff1b686de0c22bb84b005748b19acb6c2005cc3cb"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-dashboard/infrastructure/repositories/index.html",
+      "bytes": 4670,
+      "sha256": "f24a363176f2a56e5e9e9260037e1442db245205792f346a70600ad935d5776f"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-dashboard/infrastructure/repositories/supabaseTrainerDashboardRepository.js.html",
+      "bytes": 13347,
+      "sha256": "d14debb494ced0b0cc3fa29263d50c7124c22eb6abc2bba792948ffc69c9ba18"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-dashboard/presentation/components/index.html",
+      "bytes": 5246,
+      "sha256": "f6482b823e528b1608a77d34f9be842be709746e1cb07b7340769d1d12bb1851"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-dashboard/presentation/components/TrainerDashboard.js.html",
+      "bytes": 28976,
+      "sha256": "5ddeeef9fcb5e38e51057f85a2551c43b14094f3172440cf77a853171438fc41"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-dashboard/presentation/components/TrainerPanel.js.html",
+      "bytes": 35404,
+      "sha256": "0749678d78a6c3a24adbf967bc34a010a5f5c10dd1875fd6f0a0484fe9294bdc"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-dashboard/presentation/createTrainerDashboardService.js.html",
+      "bytes": 4818,
+      "sha256": "2586b125ac05e23ae3ac4616e1a993f8818fc71aeb0c3a84b23f8f7af4b2b61e"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-dashboard/presentation/index.html",
+      "bytes": 4612,
+      "sha256": "f13a0389e1f94b017bc717e6f1b183312db23864c6c6c0831a9add6cb1e3151c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-dashboard/trainerDashboardService.js.html",
+      "bytes": 3719,
+      "sha256": "d37629f97d02847ed0749b7a98a8e6b655067dd6d4b6931a8a3f6fd67f15cfe0"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-management/application/useCases/createTrainerManagementUseCases.js.html",
+      "bytes": 10354,
+      "sha256": "ff008ec8178fffa47cff7553e3e082fe31eccf8f2c077391ddc15d3f309f3db6"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-management/application/useCases/index.html",
+      "bytes": 4684,
+      "sha256": "b29a9e8f63417e8089f3a94956dc8942480000c6eb66ac00d37c28adf9ec731c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-management/domain/index.html",
+      "bytes": 4541,
+      "sha256": "79aa3e219df330ac4d41f19b8576478fd7f4effc6341d86f9cb783d2377cb14c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-management/domain/trainerManagementError.js.html",
+      "bytes": 4549,
+      "sha256": "5ffc3440e32399ab410ac96543be788547b4c01ab9569466c4b094848b94c8d1"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-management/index.html",
+      "bytes": 5170,
+      "sha256": "d484250c41d4ab07795d21928770db7005f669fa7fead1d58a8d9fcbf5a684a5"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-management/index.js.html",
+      "bytes": 3530,
+      "sha256": "06a32001db7ed32294dbd8d40ea691ef51fe50b5c3896ad787a48b22908feb50"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-management/infrastructure/repositories/index.html",
+      "bytes": 4675,
+      "sha256": "30c87038bc5a12bdfdfc8f7cae77ce220f53887713eafaeb6c16a519b8ab6df1"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-management/infrastructure/repositories/supabaseTrainerManagementRepository.js.html",
+      "bytes": 13908,
+      "sha256": "a91955a50d803f3424f47f32034ce3dd33b6adbd032c3722849dcb6bcadb4bc6"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-management/presentation/components/EntrenadoresManager.js.html",
+      "bytes": 58710,
+      "sha256": "ab0b33c961e4f63554e072b97f01d4e2ad902313e2c91b52723cb40e2b9b40b6"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-management/presentation/components/index.html",
+      "bytes": 4602,
+      "sha256": "8324eb6b0ccff4ba293d3b9c5238923bc7b843232fae9f5cfaed56b49ed9816d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-management/presentation/components/shared/DeleteEntrenadorConfirmModal.js.html",
+      "bytes": 8987,
+      "sha256": "8f0855c84804f45c908c66a10031b4a714d4dd0372508b29e5c9e8104b6ca952"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-management/presentation/components/shared/index.html",
+      "bytes": 4655,
+      "sha256": "0a79f0b4d29cb151e3b22c757388339df401a33781babcd47d5a81936d85cacd"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-management/presentation/createTrainerManagementService.js.html",
+      "bytes": 5723,
+      "sha256": "2ab40d08c20ce1bb75138b502a0caa2d937c5326c85723a37cecc3633784f3f3"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-management/presentation/hooks/index.html",
+      "bytes": 4604,
+      "sha256": "6c2de06ada62b9e6dfe2a58792c0d8077dc89e320fa6e4cc18bab6331bd9b285"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-management/presentation/hooks/useEntrenadoresManager.js.html",
+      "bytes": 41130,
+      "sha256": "a039de7257ccbccabba4b28f080573759fa214ab62638579b0a6f6312b11f248"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-management/presentation/index.html",
+      "bytes": 4626,
+      "sha256": "c4382cab6058b41b21adb29c997b6d25184817ee24d6cecaec4ed21c81196064"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/trainer-management/trainerManagementService.js.html",
+      "bytes": 3727,
+      "sha256": "725e4bab031d2c5e178f7eec45d7c4a04c60573a1cdd87fd5cb2b0a48c332446"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/training-categories/application/useCases/createTrainingCategoriesUseCases.js.html",
+      "bytes": 6407,
+      "sha256": "98ccb362043a1e05219abd60818038ad00cf454ac245857aab662329eef2f77d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/training-categories/application/useCases/index.html",
+      "bytes": 4684,
+      "sha256": "f59a48b1fd94e9c449a0d37912ad7ff43ecdf2f202586aeccf8b395fed092642"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/training-categories/domain/index.html",
+      "bytes": 4546,
+      "sha256": "639f4ac589e53ca45679120fb3da1d5da4bd0444884a9be2c85bbd81d7b688dc"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/training-categories/domain/trainingCategoriesError.js.html",
+      "bytes": 4462,
+      "sha256": "a6899ac3c6218920b9fde892c600f9a88b53f519840239fb938a488191163722"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/training-categories/index.html",
+      "bytes": 5175,
+      "sha256": "f80e192f1cb9ebb57f49c47ab1e132ab6820789e404f8a734bdad2965d920723"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/training-categories/index.js.html",
+      "bytes": 3632,
+      "sha256": "44c938cf3a737b54b84e7464a3ee53d0247b0729e9efa9fd49d9ec4949ce67e6"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/training-categories/infrastructure/repositories/index.html",
+      "bytes": 4660,
+      "sha256": "29c2938173c99eb21aa14c7be4b2ea436ebc02e5739095bbc3ff4a1ee768c165"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/training-categories/infrastructure/repositories/supabaseTrainingCategoriesRepository.js.html",
+      "bytes": 21259,
+      "sha256": "0caf05f14f0a096a898d5cafd3f7f68f95e23d9f0592a09880a774fc75f2e95e"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/training-categories/presentation/createTrainingCategoriesService.js.html",
+      "bytes": 14145,
+      "sha256": "3a4f7e53f751da50864f2af5a39e9d218833367bb658fd726320f4fac45c4991"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/training-categories/presentation/index.html",
+      "bytes": 4591,
+      "sha256": "d65d964701b5161b0aa93d901a19240db859e698ec684fceebb962d69341b952"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/training-categories/trainingCategoriesService.js.html",
+      "bytes": 3831,
+      "sha256": "82422b5760221d60b87550acfe8f1d0f047556dbadb612c674c341c2c053b11c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/application/contracts/index.html",
+      "bytes": 4667,
+      "sha256": "20e04843feb49fbe5470e2100aad25579c82558428e9ab50c154da1c6464497d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/application/contracts/userManagementRepositoryContract.js.html",
+      "bytes": 6325,
+      "sha256": "ee6a588f3f58bc9e10ed85b8520dd6732a494a0ba677a552fd6bf9b579d39d88"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/application/useCases/createUserManagementUseCases.js.html",
+      "bytes": 63497,
+      "sha256": "624ea90e5e64a2da86dfbff2f40dca3c98f35fcedc6d0d28dceaf24ef286b447"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/application/useCases/index.html",
+      "bytes": 4717,
+      "sha256": "65b770522118434026b6ee73cf34de8d6e442f124375ba65ec2f25b5972dbed8"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/domain/adminPrivileges.js.html",
+      "bytes": 3902,
+      "sha256": "5aa83b3ca26c37a134671a60531dffe220b0fecefbb2a9741b96c708aed483c8"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/domain/index.html",
+      "bytes": 5272,
+      "sha256": "5d7b20ff650570692aa7cfa2d78a35c87539784bb2a27660633e93189e63843d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/domain/userManagementError.js.html",
+      "bytes": 4036,
+      "sha256": "68b5b1ce33f8bfe7eee43172ecd4218a5d89ea65a0636dab8b14020eb22f0e07"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/index.html",
+      "bytes": 5155,
+      "sha256": "84a687db75204a61bf978360deed91f7a4b5b6369609fe8ee871cdd8192000f2"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/index.js.html",
+      "bytes": 3518,
+      "sha256": "24578bbb9f51e1b3353bd34797c1df301a2b7736d1039e9d136c5b5781b42cec"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/infrastructure/repositories/index.html",
+      "bytes": 4652,
+      "sha256": "ea17169e3cbe0b2567336ad77aba7b0a3334418eb0485dc71fa1265b3098b972"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/infrastructure/repositories/supabaseUserManagementRepository.js.html",
+      "bytes": 75022,
+      "sha256": "32b17bf2429d9994ddffdbf29050a191450b07f216b3d8e2bc21df3b53e4f89f"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/components/hooks/index.html",
+      "bytes": 6742,
+      "sha256": "1c7f18a2175eb3810a65aaf7a477ddd9976bc119f7cbdc4d35ccf6c6879b6835"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/components/hooks/useTimedMessage.js.html",
+      "bytes": 8592,
+      "sha256": "1a7a6b4de0ff08e97c9b6647404d699022b9d59043f261b013148da1e8b62d8e"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/components/hooks/useUserActions.js.html",
+      "bytes": 20617,
+      "sha256": "6020b5525734a73d80b873d14151a3930f7c09e02b2d333648bcdb7cf74ed7e3"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/components/hooks/useUserManagementPanel.js.html",
+      "bytes": 10439,
+      "sha256": "904c7b1eb7036568bb1629e562f36049b866c2152019ceb3e82f7408fd82c3e3"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/components/hooks/useUserPermissions.js.html",
+      "bytes": 5956,
+      "sha256": "dae751988c14955ab17e161676886d11d2eb6135a354fc46f4ec6c018afffac1"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/components/index.html",
+      "bytes": 4593,
+      "sha256": "13068df7ccfe3c1787cf8de3c7469dd0bd4f7804c97a6776c99c2b12d272fab3"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/components/shared/ChangeRoleModal.js.html",
+      "bytes": 23533,
+      "sha256": "7466b89723e386c64930ee620228d4528cd7649c793ee1f333322cc795c3200a"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/components/shared/CreatedCredentialsModal.js.html",
+      "bytes": 12697,
+      "sha256": "6d798cd54ac1216e2f6b2473cd470a32569d4821e41c20bd5a4a1518fb0cc703"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/components/shared/DeleteUserModal.js.html",
+      "bytes": 18550,
+      "sha256": "5de8dd47e3a8f46fb1a80f09e9fe74966b69b60fa812146b5d343a81d032e8eb"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/components/shared/index.html",
+      "bytes": 9497,
+      "sha256": "d2635c55802380e7db9f18e479ce911ea7b2205772a3a8381247e4eafe042d51"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/components/shared/ResendCredentialsModal.js.html",
+      "bytes": 26097,
+      "sha256": "e8d2e564fc06016c025f916d6995d752beccca8bd0ab2d49a1637718632eb691"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/components/shared/SuspendUserModal.js.html",
+      "bytes": 17866,
+      "sha256": "fa04525ffd34bf363cf6cbb4220fd506f959f3148e04f95f485def28b3a5d618"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/components/shared/UserCard.js.html",
+      "bytes": 37180,
+      "sha256": "6eb28072a3682ce134fc98d799a9093d9fcd71024404a810a03e5d8f224de011"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/components/shared/UserFilters.js.html",
+      "bytes": 24689,
+      "sha256": "863730b139740244335b75faec053be59c00f7d7e289c6eb5f462bd90b9a87f2"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/components/shared/UserForm.js.html",
+      "bytes": 49200,
+      "sha256": "05835a2ab38b334482fc1a3c82e06fc4988b8cc878eeedd9eb9c5aab98d02ee9"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/components/tabs/AdministratorsTab.js.html",
+      "bytes": 34568,
+      "sha256": "fa634e64b8d0255306d1b65ab62e16b5e91711f97e7d4a15f37282612c8e958e"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/components/tabs/AthletesTab.js.html",
+      "bytes": 63953,
+      "sha256": "92c4a22ef09fc8d274f92095159a0f09683bf4568297692baf86f3650342d2fb"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/components/tabs/index.html",
+      "bytes": 6154,
+      "sha256": "e14fd675c049aa3bb72e7181f142655bf794b7e92f2c576f1e93d01dae857993"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/components/tabs/TrainersTab.js.html",
+      "bytes": 53980,
+      "sha256": "074714f02da0bbcdf285f10bf88cf910a4d18207122b93616907def5ac63a622"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/components/UserManagementPanel.js.html",
+      "bytes": 13866,
+      "sha256": "4aa28fcfff38cb94241950bfb619b03ee08b7cf9db313b197a5481f89136e8fc"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/createUserManagementService.js.html",
+      "bytes": 11200,
+      "sha256": "abad881167d58c47becb162740397d576b3e8329f2e9d489c3ec325748dec17c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/presentation/index.html",
+      "bytes": 4647,
+      "sha256": "46cbf5683bbc35bbaf6c69bf0fc8709a28c07c26ca4db01f11d5bbdc484cf080"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-management/userManagementService.js.html",
+      "bytes": 3703,
+      "sha256": "09fc74ccb8c64a9d3b8d938e57399dd447b16adbb6fb90f73577bc97acd6d43f"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-provisioning/application/useCases/createUserProvisioningUseCases.js.html",
+      "bytes": 18690,
+      "sha256": "02567b613eb0a1c7a9b7fc8fcb3a84a870e1d2adb58b016c6827a23100045856"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-provisioning/application/useCases/index.html",
+      "bytes": 4688,
+      "sha256": "f79b58046e7725a5cebaf25cc89678887aa1dfa1174c264d9323014b5749a23e"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-provisioning/domain/index.html",
+      "bytes": 4584,
+      "sha256": "5a5ef345e34016132ef4b098617a4253d270cd17e6ba1b983328209eff1dbdc2"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-provisioning/domain/userProvisioningError.js.html",
+      "bytes": 4166,
+      "sha256": "d5c99266f89ce60b49817289deff18e25618a41ac7e4754346809e6fb458f251"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-provisioning/index.html",
+      "bytes": 5165,
+      "sha256": "d9e85dd1ec3a3ba58b9c7dac696a3d822023f7e0cd433fd9cd39e084a9e8a59c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-provisioning/index.js.html",
+      "bytes": 3341,
+      "sha256": "c80af3b1baba42a9c7e54768faacf19a142fff0df0ccef274fb9b768f46aff1a"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-provisioning/infrastructure/repositories/index.html",
+      "bytes": 4708,
+      "sha256": "b575c447a5885e692403c8c5801f70e11fd9331c0ba361afe60130fa8f431d78"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-provisioning/infrastructure/repositories/supabaseUserProvisioningRepository.js.html",
+      "bytes": 45885,
+      "sha256": "5a30afe8069fa4a9a700a98fc06746d16107948c3c831172625f1e3326d99973"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-provisioning/presentation/createUserProvisioningService.js.html",
+      "bytes": 7962,
+      "sha256": "55d6cc8ffd95bce2d75aff1d656672fe09f055bcc931255ec05779382895d96a"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-provisioning/presentation/index.html",
+      "bytes": 4629,
+      "sha256": "9d92d06c48c4fb374acc8239f4ce2728d44da10a455c80d93ef56b5b6f789950"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/features/user-provisioning/userProvisioningService.js.html",
+      "bytes": 3719,
+      "sha256": "49759104c1a2c8f9492d1dd40e1620a277c3f8d6158e9e5b7274cd7ad5853719"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/index.html",
+      "bytes": 6287,
+      "sha256": "3045f47cfd1a480954d603bbab86c49007fa0b54279eb828719aeceba0b15654"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/index.js.html",
+      "bytes": 6115,
+      "sha256": "a3e86e7c3de6c65ec350ecdb3db308802deccde7656fe5abfd7e9795e6f4f7eb"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/lib/cn.js.html",
+      "bytes": 3789,
+      "sha256": "f3522af8055c96d1b959d40a4b623a2526e80ba3655a55d7e63766688413edf9"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/lib/index.html",
+      "bytes": 4419,
+      "sha256": "28974430748085970940f8bd2a7d6913916244d2e7a37ccc97d28698645caa7a"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/Login.js.html",
+      "bytes": 3230,
+      "sha256": "c229f4d4ad4882b4df30526b0635dc1a418997aa84e3bdb3d4b108323d4f4af0"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/reportWebVitals.js.html",
+      "bytes": 5809,
+      "sha256": "fbb1c518c4176e83ff4aefad483e559f44411a6ea9434fe82e8de61926a3cd62"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/config/index.html",
+      "bytes": 4464,
+      "sha256": "bfe29e6a8a95ffbc562c31bf83f3141de97006499db1ff975f50be263476aa43"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/config/runtimeConfig.js.html",
+      "bytes": 3809,
+      "sha256": "e95e86675f0ed7b38cca72b867a6a1408f2b58aa08575f6f50d582ed814ac698"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/domain/payments/index.html",
+      "bytes": 5212,
+      "sha256": "2ed9b687bb7182512a06fa379246e09d26614a145535b3674668acc9e098a6d5"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/domain/payments/index.js.html",
+      "bytes": 3356,
+      "sha256": "08de95b28e93e85c0469edf635050bd570c27d5662b843727659099343965a97"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/domain/payments/pagoStatusService.js.html",
+      "bytes": 29119,
+      "sha256": "3988f766ed13cd496df39a8c1c7e009bf13de46b43cf6731566a77819f52a35d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/infrastructure/audit/index.html",
+      "bytes": 4551,
+      "sha256": "cf4e869a668280aba4f0d95b7a4037985e33843e5ae37f90e30372de1c13dd4a"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/infrastructure/audit/sqlAuditLogger.js.html",
+      "bytes": 60575,
+      "sha256": "71808e20d7745c24a47b94ca2699213f921c44c16e35256bcabe8e0638b9168c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/infrastructure/auth/deleteAuthUserById.js.html",
+      "bytes": 10683,
+      "sha256": "d7949290788e766f8d6762fde04b02f5a184abcb71a90d413ea7dfae0f4723eb"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/infrastructure/auth/index.html",
+      "bytes": 4576,
+      "sha256": "e685a775a7754b385cee44f83a39d81f73059991b8679190d3914e4658beab03"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/infrastructure/communications/index.html",
+      "bytes": 5941,
+      "sha256": "de3bc9d3cf5d6008ccfdab5fb31d7b1e36b87fcf1ee70c834d204b5ab4deae0e"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/infrastructure/communications/index.js.html",
+      "bytes": 3549,
+      "sha256": "12d4e158e89d74cabd7bc2ca2a232064ec665d92b60af104537a093920cde82f"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/infrastructure/communications/whatsappBusinessService.js.html",
+      "bytes": 27290,
+      "sha256": "78c12d3b9582d187c90d59cbaa397398a6b25c07145034d22847b87a5e86f710"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/infrastructure/communications/whatsappService.js.html",
+      "bytes": 17751,
+      "sha256": "7bf1f6bd5d2ff4f8922a5244973fa72c5e9e24aa68bec9437b981ff61bb9d91f"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/infrastructure/http/functionError.js.html",
+      "bytes": 6717,
+      "sha256": "c5c89602801cd5a563dea82edfc228fad7feea6952af3ce690a39572c7084bdf"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/infrastructure/http/index.html",
+      "bytes": 4569,
+      "sha256": "96a7f3c0e5baec79c535b3a3fd81351c72693f94d6cc1c45864081717d48df4c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/infrastructure/mobile/index.html",
+      "bytes": 5955,
+      "sha256": "afa2dc4972f02ffa94074ee0d1bba2b06f778b52db8597710ae1debb94f275ed"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/infrastructure/mobile/index.js.html",
+      "bytes": 3490,
+      "sha256": "64109960c6d1224586068e90d60221ecf84b58ffd9f40491cc7266b2dec13373"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/infrastructure/mobile/supabaseMobileDeviceRepository.js.html",
+      "bytes": 11690,
+      "sha256": "9c94454797ec899de115ef20c77c30ae30a9b27d1e0e4c6403b55bbdfae413fb"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/infrastructure/mobile/supabasePushNotificationGateway.js.html",
+      "bytes": 31455,
+      "sha256": "e3321da56fa72ade9d6604f89fd0daf435d11fed234b12037dece6e475f8b310"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/lib/escapeHtml.js.html",
+      "bytes": 3726,
+      "sha256": "c89791a8d11c2cc76bd0f511a04b9affb2a0ae8e18a1e70a19bd5c668f266f2b"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/lib/index.html",
+      "bytes": 6588,
+      "sha256": "3319e46c6cd50291239df6ea1660fc295e20cf14271613480a4dd8ffcc3a51ea"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/lib/result.js.html",
+      "bytes": 3889,
+      "sha256": "0e107c59039ee556c58fd5da68fe9a40236b9eb10abcab58f5f9b4faa803049e"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/lib/tableQuery.js.html",
+      "bytes": 16375,
+      "sha256": "9b152c4f3ebac6da7328ca47c24cef8b885b2eb9738a2b4f89dcc95454407914"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/lib/trainingCategoryFormatting.js.html",
+      "bytes": 10420,
+      "sha256": "6f5c2a0f8f1ac9a091f180cc02aec890dd06bfcd354f3c3b503760c3e405069a"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/platform/files.js.html",
+      "bytes": 11504,
+      "sha256": "9cd75be51e54964760949a2f1a2e9f15dd853c42aa2353dac6e5de86848da40a"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/platform/index.html",
+      "bytes": 9148,
+      "sha256": "55f317db13d1754516aa39e5289d3147423268f340a1da7bb8ad68ff481b7aa7"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/platform/index.js.html",
+      "bytes": 3970,
+      "sha256": "137f6b2fd12d9226ee05e4cb7cd42ddb13841bdf06b0313ec0a738537a35ac59"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/platform/links.js.html",
+      "bytes": 6799,
+      "sha256": "4d9effde1536ee6c4ffe655a611cee5f12c5a103de2c292ab9a0358294638a63"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/platform/mobileAppBridge.js.html",
+      "bytes": 14096,
+      "sha256": "a6e0fbd0dc98e6632d7ceac282cb990a76dc71891231bbb10c1303eab80ece78"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/platform/ota.js.html",
+      "bytes": 49599,
+      "sha256": "f6a8ddb6c6b85013ade21a1ccd28fafa35e1e1ece67c7998655b337c45e52eff"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/platform/push.js.html",
+      "bytes": 41269,
+      "sha256": "734a714314f59c130d2fdff938b5e2791bb83c4dd0f25b16c26dc7b4f7e95c80"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/platform/runtime.js.html",
+      "bytes": 10270,
+      "sha256": "441587703192ea4c7ab54808c0256848b8d3d0bfafc6b827a11945625f171069"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/platform/storage.js.html",
+      "bytes": 7476,
+      "sha256": "706dc6ad640ac4d8a51d638e4f521711c90f529c0de882bcfe87d10d4780a6be"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/Button.js.html",
+      "bytes": 11938,
+      "sha256": "f251ebcacf3af92dda2a2d4d2d335940d8152b014ad7fe41cece1adb646b275f"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/Card.js.html",
+      "bytes": 8388,
+      "sha256": "de567996f982ea16e87da0285a2943ca8b60f36071390e8be6dfa85a5d4ee48f"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/DataTable.js.html",
+      "bytes": 24676,
+      "sha256": "43bfa94c6ba93181df6af26e2d6c9217384233052b988be078087f94dfabc7a6"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/EmptyState.js.html",
+      "bytes": 6445,
+      "sha256": "651abaa05c2b1dd72c48c685adf65896cedd6a7c9741bd214a9546f8f2acd72d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/ExportButtonGroup.js.html",
+      "bytes": 12946,
+      "sha256": "5db428befd99ea7c1f742befa09f4b7f530e5358a6b0a72a11b7bbef54823628"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/feedback/index.html",
+      "bytes": 4492,
+      "sha256": "9a5a3394f7e740fef456da7d36a310cb32bf03489cd69b9b5fd34ddd734c516b"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/feedback/Toast.js.html",
+      "bytes": 12590,
+      "sha256": "a2f6a5b60558a0d10eaaf14e72bd456a426058448f63c7d294c2b251af46ff68"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/Field.js.html",
+      "bytes": 6387,
+      "sha256": "7be264eb7e23f95cc3c079210032fa996bf5a58cd3421212ed56403e00833e54"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/FormControls.js.html",
+      "bytes": 13490,
+      "sha256": "db3307c1c14721c896acdbfd7948aff39876ba25ff0b9024d90a52e5cd49a6a1"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/iconRegistry.js.html",
+      "bytes": 9089,
+      "sha256": "b6c4e783e41a5c4544965a4747080120cea6da68277a2224309f1eba39268b7f"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/index.html",
+      "bytes": 16068,
+      "sha256": "0f65c677a7030eceab9ee037334623b4b0bc1349f1caba9f28e05a891b173f52"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/index.js.html",
+      "bytes": 7501,
+      "sha256": "07674884b2cad215b527e180634f6f9866b5499b34f2539ef2c215ae8a9ea257"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/KpiTile.js.html",
+      "bytes": 23292,
+      "sha256": "1737a728288239277694d871a3500c6e66f05cab36549a2a53999cdd79a07752"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/layout/index.html",
+      "bytes": 5197,
+      "sha256": "c84b581e17e6ef54f27b97bff736ad544ff64a11f3cd3b970a6dda33a2c62fa6"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/layout/RolePanelLayout.js.html",
+      "bytes": 13984,
+      "sha256": "5be986a62f7fb36dafd8d30c62179ceb82b8aa0f1463fd8e75d8123951c59713"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/layout/RoleSidebar.js.html",
+      "bytes": 48367,
+      "sha256": "76e9d10030795dedbc80588a9440d760efe033cca743a8f00c83c2eee3a48961"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/LoadingSpinner.js.html",
+      "bytes": 8088,
+      "sha256": "fb59a495ae9fb3ddd56137ffe6d680b04b43c8226f5e9aa32cf9503a54baefe0"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/Modal.js.html",
+      "bytes": 15151,
+      "sha256": "df2b88026b10a58da6e8778eb66b461831b3dc1f860fd5fb4a0faf8cc97b9ba2"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/PageShell.js.html",
+      "bytes": 15682,
+      "sha256": "1fc5e2e10dcb5ab5980eb86c5df16ee62decc56f529e4a1de11b249a8d49375a"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/panel-guide/index.html",
+      "bytes": 5964,
+      "sha256": "6e82dfbba14681020736f687c0e331b3317b263ee258612affbcb90560bdf459"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/panel-guide/panelGuideContent.js.html",
+      "bytes": 77048,
+      "sha256": "48d7aa3eb52a03f3089dee16fc88b56dcd2c7e8a9f9800422be7e90adff98c92"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/panel-guide/panelGuideStorage.js.html",
+      "bytes": 10706,
+      "sha256": "4d671f5927ff4a2e18dccae5835685de245f230d6158692810369fbd42d05e85"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/panel-guide/PanelUserGuide.js.html",
+      "bytes": 63820,
+      "sha256": "c27d8fa3c9845916accd188b443baab00af830edd0877229344d2f2a7258c979"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/render-profile/index.html",
+      "bytes": 5941,
+      "sha256": "bb14f5dc814b1d56b1e8043380bdc660c2fdc7ffc2ed09a28a8e80c524ef712b"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/render-profile/index.js.html",
+      "bytes": 3564,
+      "sha256": "c743dd8df2859f6d77a0a16573353183cb2633f8b62ff63a9ea977ba697a21d4"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/render-profile/RenderProfileProvider.js.html",
+      "bytes": 14727,
+      "sha256": "a3647de6247921f8ca0eb9f0188052fda92ddedfa45cf12e1a49a2ac7b8efe6e"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/render-profile/renderProfileResolver.js.html",
+      "bytes": 7903,
+      "sha256": "3cc64bed94635e0971a83e73cbf21372cadbf54e077e3bd74d021ca096b4f382"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/SectionHeader.js.html",
+      "bytes": 8440,
+      "sha256": "7060277a805ca1e0372ed2b6fbe0dbe3ba6adcc725a11e47013ab972d28ebd11"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/semanticCatalog.js.html",
+      "bytes": 9252,
+      "sha256": "f497b54af256ee42469599c541c39fa8902c89652d782e7e735ff4cf701c9590"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/SortableHeader.js.html",
+      "bytes": 11571,
+      "sha256": "2f9f17e91edd808c2e5634eec179e09ae218270afa1db1d3bcfc22ca560993df"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/StatusBadge.js.html",
+      "bytes": 7479,
+      "sha256": "6006f4d9e2b44fe358e3e81c12b84abaa4b391b6f67fa5d3238b8eca1bce02c1"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/shared/ui/TabNav.js.html",
+      "bytes": 17508,
+      "sha256": "080ec712c603439d0a398d0c6616d422f293413227ba22f84d9cf67c352f6795"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/utils/athleteValidation.js.html",
+      "bytes": 19880,
+      "sha256": "9723a05c803fff225d5e7f4fc12168b52375221a77fe1c4714f6027ca9bd9daf"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/utils/dateUtils.js.html",
+      "bytes": 30526,
+      "sha256": "dedc7ddfa23518cbcebb95caf5e5cd8d0f2fa5b1fcc432ec5fd2c757c731f8aa"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/utils/exportAttendancePdf.js.html",
+      "bytes": 29744,
+      "sha256": "03695dd0000fe4b56d1ea7a130d440586368093c15bff4654ad65d657c6a4651"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/utils/index.html",
+      "bytes": 8525,
+      "sha256": "5b01bc115e7b674a82ffde026edae8dadde8ed3d5f4cfd582773791748f26e8d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/utils/passwordUtils.js.html",
+      "bytes": 16829,
+      "sha256": "b25fe2c7dda7b150e9f6bd7450ed43064a90a90b5c6ace1499377eeb21660d8c"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/utils/paymentUtils.js.html",
+      "bytes": 10262,
+      "sha256": "b51fb94610eb0c9502d4acd83c7d8ac973d2542c3ff620f280a66a48ffc6283d"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/utils/piiCrypto.js.html",
+      "bytes": 31366,
+      "sha256": "fc75e0f90b80e3961138131741da5556ab67bfe9211740b500a0c9b9741b3c8b"
+    },
+    {
+      "file": "unitarias/coverage/lcov-report/src/utils/supabaseDebug.js.html",
+      "bytes": 26164,
+      "sha256": "c268d81c1e5541c8f676bda46026c5872e5012b30d15db6ff6bfa7d73b067487"
+    },
+    {
+      "file": "unitarias/coverage/lcov.info",
+      "bytes": 479922,
+      "sha256": "dea24c229b996383c1c340a01cde78ffb4b251f29dbe7474de4990dcd0960e91"
+    },
+    {
+      "file": "unitarias/jest-resultados.json",
+      "bytes": 3400411,
+      "sha256": "b577aa1c70f85691a21f621abd1f8ee9740bae3fc98db57e837dce56d6b89997"
+    },
+    {
+      "file": "unitarias/jest.meta.json",
+      "bytes": 705,
+      "sha256": "ead9b8c8d665079aba3c9eae1434dbb152ff3dfe73e479279e535ff71cd62af5"
+    },
+    {
+      "file": "unitarias/jest.stderr.log",
+      "bytes": 6875,
+      "sha256": "608eca98d9d738404be59de3d436c51040b254639bf8b5085a4e4fb2c5077f4c"
+    },
+    {
+      "file": "unitarias/jest.stdout.log",
+      "bytes": 418,
+      "sha256": "12a03a6edcd37d7c9ccf05f2bf81589d0fae32f39fee745c997ed56569fb1dab"
+    },
+    {
+      "file": "unitarias/resumen-modulos.json",
+      "bytes": 2630,
+      "sha256": "8c8dafb11da362b42e271e5ca4d4462e44bb02e88d4f217c557c7c26ef77963e"
+    },
+    {
+      "file": "versiones-instaladas.json",
+      "bytes": 356,
+      "sha256": "2699ffa67e9c8d70e7c1f1b6ed6e1a820ed0ad7f66af6bebfb9927b11fc71dc0"
+    }
+  ],
+  "additionalTestSources": [
+    {
+      "file": "../../../../../src/features/gamification/application/useCases/gamification.audit.integration.test.js",
+      "bytes": 7497,
+      "sha256": "08b42fca66d8bf2feb0fd2423ef754d4abb5c03088f838d4326257ea0ec4a64f"
+    },
+    {
+      "file": "../../../../../tests/e2e/audit.protected-routes.spec.js",
+      "bytes": 512,
+      "sha256": "81d4018a9a4f5c4c9763af41af70fdc847c76ea148dee5b0e07801c799af0dfd"
+    }
+  ]
+}

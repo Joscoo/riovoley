@@ -1,0 +1,13 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\android\\gradlew.bat",
+    "--version"
+  ],
+  "cwd": "android",
+  "start": "2026-10-28T02:23:20.620Z",
+  "end": "2026-10-28T02:23:48.258Z",
+  "durationSeconds": 27.638,
+  "exitCode": 0,
+  "signal": null,
+  "environmentOverrides": {}
+}

@@ -1,0 +1,133 @@
+TAP version 13
+# Subtest: G01: servicio y repositorio real persisten perfil inicial
+ok 1 - G01: servicio y repositorio real persisten perfil inicial
+  ---
+  duration_ms: 1025.6235
+  type: 'test'
+  ...
+# Subtest: G02: asistencia real acumula 35 XP y queda en PostgreSQL
+ok 2 - G02: asistencia real acumula 35 XP y queda en PostgreSQL
+  ---
+  duration_ms: 435.16
+  type: 'test'
+  ...
+# Subtest: G03: registro repetido de asistencia no duplica sus movimientos XP
+ok 3 - G03: registro repetido de asistencia no duplica sus movimientos XP
+  ---
+  duration_ms: 433.8197
+  type: 'test'
+  ...
+# Subtest: G04: pago real sincroniza historial XP de mensualidad
+ok 4 - G04: pago real sincroniza historial XP de mensualidad
+  ---
+  duration_ms: 502.5206
+  type: 'test'
+  ...
+# Subtest: G05: modificar pago mantiene un único movimiento de su fuente
+ok 5 - G05: modificar pago mantiene un único movimiento de su fuente
+  ---
+  duration_ms: 790.6458
+  type: 'test'
+  ...
+# Subtest: G06: evaluación física real incorpora su XP e incrementa nivel
+ok 6 - G06: evaluación física real incorpora su XP e incrementa nivel
+  ---
+  duration_ms: 473.685
+  type: 'test'
+  ...
+# Subtest: G07: sincronización repetida conserva suma XP, saldo e historial
+ok 7 - G07: sincronización repetida conserva suma XP, saldo e historial
+  ---
+  duration_ms: 373.6332
+  type: 'test'
+  ...
+# Subtest: G08: logros, retos y clasificación se persisten con actividad real
+ok 8 - G08: logros, retos y clasificación se persisten con actividad real
+  ---
+  duration_ms: 37.7944
+  type: 'test'
+  ...
+# Subtest: G09: recompensa de login real entrega 8 XP una sola vez al día
+ok 9 - G09: recompensa de login real entrega 8 XP una sola vez al día
+  ---
+  duration_ms: 266.4372
+  type: 'test'
+  ...
+# Subtest: G10: identidad y avatar del atleta se guardan por sesión real
+ok 10 - G10: identidad y avatar del atleta se guardan por sesión real
+  ---
+  duration_ms: 389.8116
+  type: 'test'
+  ...
+# Subtest: G11: compra RPC descuenta monedas y persiste inventario
+ok 11 - G11: compra RPC descuenta monedas y persiste inventario
+  ---
+  duration_ms: 387.5565
+  type: 'test'
+  ...
+# Subtest: G12: equipar y desequipar usan las RPC reales
+ok 12 - G12: equipar y desequipar usan las RPC reales
+  ---
+  duration_ms: 75.5104
+  type: 'test'
+  ...
+# Subtest: G13: resincronizar conserva gasto, compra e integridad del saldo real
+ok 13 - G13: resincronizar conserva gasto, compra e integridad del saldo real
+  ---
+  duration_ms: 630.7114
+  type: 'test'
+  ...
+# Subtest: G14: tres días hábiles consecutivos quedan reflejados en la racha persistida
+ok 14 - G14: tres días hábiles consecutivos quedan reflejados en la racha persistida
+  ---
+  duration_ms: 1144.9352
+  type: 'test'
+  ...
+# Subtest: G15: título desbloqueado y modelo de avatar se persisten por propietario
+ok 15 - G15: título desbloqueado y modelo de avatar se persisten por propietario
+  ---
+  duration_ms: 805.8121
+  type: 'test'
+  ...
+# Subtest: G16: campaña activa de fixture persiste progreso y finalización reales
+not ok 16 - G16: campaña activa de fixture persiste progreso y finalización reales
+  ---
+  duration_ms: 17.8481
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\gamification.local.test.cjs:126:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for table campaigns_catalog'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for table campaigns_catalog'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\gamification.local.test.cjs:127:17)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: G17: correo de recuperación se entrega en SMTP/Mailpit local sin cambiar contraseña
+ok 17 - G17: correo de recuperación se entrega en SMTP/Mailpit local sin cambiar contraseña
+  ---
+  duration_ms: 594.3888
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 16
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 18493.1047
+

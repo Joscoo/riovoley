@@ -1,0 +1,479 @@
+[
+  {
+    "file": "android/capacitor-doctor.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "node_modules/@capacitor/cli/bin/capacitor",
+      "doctor"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T02:28:29.466Z",
+    "end": "2026-10-28T02:28:39.955Z",
+    "durationSeconds": 10.489,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "android/gradle-wrapper-version.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\android\\gradlew.bat",
+      "--version"
+    ],
+    "cwd": "android",
+    "start": "2026-10-28T02:23:20.620Z",
+    "end": "2026-10-28T02:23:48.258Z",
+    "durationSeconds": 27.638,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "android/java.meta.json",
+    "command": [
+      "java",
+      "-version"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T02:23:19.693Z",
+    "end": "2026-10-28T02:23:20.226Z",
+    "durationSeconds": 0.533,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "android/javac.meta.json",
+    "command": [
+      "javac",
+      "-version"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T02:23:20.335Z",
+    "end": "2026-10-28T02:23:20.619Z",
+    "durationSeconds": 0.284,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "commit.meta.json",
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T02:23:19.240Z",
+    "end": "2026-10-28T02:23:19.310Z",
+    "durationSeconds": 0.07,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "compilacion-web/build.meta.json",
+    "command": [
+      "npm.cmd",
+      "run",
+      "build"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T02:24:55.947Z",
+    "end": "2026-10-28T02:26:41.068Z",
+    "durationSeconds": 105.121,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "e2e/inventario.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "node_modules/@playwright/test/cli.js",
+      "test",
+      "--list",
+      "--reporter=json"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T02:24:15.605Z",
+    "end": "2026-10-28T02:24:26.729Z",
+    "durationSeconds": 11.124,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "e2e/playwright.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "node_modules/@playwright/test/cli.js",
+      "test",
+      "--config=docs/tesis/evidencias/verificacion-tecnica/20261027-212222-c71f55e/e2e/audit.config.cjs"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T02:27:05.730Z",
+    "end": "2026-10-28T02:29:28.524Z",
+    "durationSeconds": 142.794,
+    "exitCode": 1,
+    "signal": null,
+    "environmentOverrides": {
+      "E2E_BASE_URL": "http://127.0.0.1:3100",
+      "CI": "true"
+    }
+  },
+  {
+    "file": "e2e/servidor-cierre.meta.json",
+    "command": [
+      "powershell.exe",
+      "-NoProfile",
+      "-Command",
+      "$auditProcess = Get-CimInstance Win32_Process -Filter \"ProcessId = 18772\"; if ($auditProcess -and $auditProcess.CommandLine -like \"*servidor-local.cjs*\") { Stop-Process -Id 18772; Write-Output \"Servidor local de auditoria detenido\" } else { Write-Output \"Servidor de auditoria ya no activo con ese PID; no se detuvo otro proceso\" }"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T13:38:11.184Z",
+    "end": "2026-10-28T13:38:11.802Z",
+    "durationSeconds": 0.618,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "estado-final.meta.json",
+    "command": [
+      "git",
+      "status",
+      "--short",
+      "--untracked-files=normal"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T13:37:36.414Z",
+    "end": "2026-10-28T13:37:36.609Z",
+    "durationSeconds": 0.195,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "estado-inicial.meta.json",
+    "command": [
+      "git",
+      "status",
+      "--porcelain=v1",
+      "--untracked-files=all"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T02:23:19.088Z",
+    "end": "2026-10-28T02:23:19.236Z",
+    "durationSeconds": 0.148,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "herramientas-git.meta.json",
+    "command": [
+      "git",
+      "--version"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T13:37:36.327Z",
+    "end": "2026-10-28T13:37:36.507Z",
+    "durationSeconds": 0.18,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "herramientas-node.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--version"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T02:23:19.312Z",
+    "end": "2026-10-28T02:23:19.361Z",
+    "durationSeconds": 0.049,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "herramientas-npm.meta.json",
+    "command": [
+      "npm.cmd",
+      "--version"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T02:23:19.363Z",
+    "end": "2026-10-28T02:23:19.691Z",
+    "durationSeconds": 0.328,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "herramientas-python.meta.json",
+    "command": [
+      "python",
+      "--version"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T13:37:36.341Z",
+    "end": "2026-10-28T13:37:36.600Z",
+    "durationSeconds": 0.259,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "herramientas-sistema-inline.meta.json",
+    "command": [
+      "powershell.exe",
+      "-NoProfile",
+      "-Command",
+      "[System.Environment]::OSVersion.VersionString\n$PSVersionTable.PSVersion.ToString()\nGet-Date -Format o\nforeach ($auditTool in 'adb','sdkmanager','emulator','gradle','supabase','deno','psql') {\n    if (Get-Command $auditTool -ErrorAction SilentlyContinue) {\n        Write-Output ($auditTool + ': disponible')\n    } else {\n        Write-Output ($auditTool + ': ausente en PATH')\n    }\n}\n"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T13:38:09.949Z",
+    "end": "2026-10-28T13:38:11.154Z",
+    "durationSeconds": 1.205,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "herramientas-sistema.meta.json",
+    "command": [
+      "powershell.exe",
+      "-NoProfile",
+      "-File",
+      "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261027-212222-c71f55e\\entorno.ps1"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T13:37:36.106Z",
+    "end": "2026-10-28T13:37:36.877Z",
+    "durationSeconds": 0.771,
+    "exitCode": 1,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "integracion/adicionales.meta.json",
+    "command": [
+      "npm.cmd",
+      "test",
+      "--",
+      "gamification.audit.integration.test.js",
+      "--watchAll=false",
+      "--runInBand",
+      "--json",
+      "--outputFile=docs/tesis/evidencias/verificacion-tecnica/20261027-212222-c71f55e/integracion/adicionales-resultados.json"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T02:27:52.740Z",
+    "end": "2026-10-28T02:28:22.667Z",
+    "durationSeconds": 29.927,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {
+      "CI": "true"
+    }
+  },
+  {
+    "file": "integracion/contratos.meta.json",
+    "command": [
+      "npm.cmd",
+      "run",
+      "test:contracts",
+      "--",
+      "--watchAll=false",
+      "--runInBand",
+      "--json",
+      "--outputFile=docs/tesis/evidencias/verificacion-tecnica/20261027-212222-c71f55e/integracion/contratos-resultados.json"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T02:24:15.664Z",
+    "end": "2026-10-28T02:24:31.145Z",
+    "durationSeconds": 15.481,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "integracion/functions-build.meta.json",
+    "command": [
+      "npm.cmd",
+      "run",
+      "build"
+    ],
+    "cwd": "functions",
+    "start": "2026-10-28T02:23:56.218Z",
+    "end": "2026-10-28T02:24:09.497Z",
+    "durationSeconds": 13.279,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "integracion/functions-lint.meta.json",
+    "command": [
+      "npm.cmd",
+      "run",
+      "lint"
+    ],
+    "cwd": "functions",
+    "start": "2026-10-28T02:29:15.140Z",
+    "end": "2026-10-28T02:30:20.141Z",
+    "durationSeconds": 65.001,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "integracion/health.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "docs/tesis/evidencias/verificacion-tecnica/20261027-212222-c71f55e/integracion/health.cjs"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T02:30:20.480Z",
+    "end": "2026-10-28T02:30:27.826Z",
+    "durationSeconds": 7.346,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "integracion/riovoley-lint.meta.json",
+    "command": [
+      "npm.cmd",
+      "run",
+      "lint"
+    ],
+    "cwd": "riovoley",
+    "start": "2026-10-28T02:29:15.159Z",
+    "end": "2026-10-28T02:29:54.144Z",
+    "durationSeconds": 38.985,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "integridad-tracked.meta.json",
+    "command": [
+      "git",
+      "diff",
+      "--exit-code"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T13:37:36.386Z",
+    "end": "2026-10-28T13:37:36.560Z",
+    "durationSeconds": 0.174,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "seguridad/npm-audit-functions.meta.json",
+    "command": [
+      "npm.cmd",
+      "audit",
+      "--json"
+    ],
+    "cwd": "functions",
+    "start": "2026-10-28T02:25:57.107Z",
+    "end": "2026-10-28T02:26:05.746Z",
+    "durationSeconds": 8.639,
+    "exitCode": 1,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "seguridad/npm-audit-riovoley.meta.json",
+    "command": [
+      "npm.cmd",
+      "audit",
+      "--json"
+    ],
+    "cwd": "riovoley",
+    "start": "2026-10-28T02:29:15.179Z",
+    "end": "2026-10-28T02:29:16.965Z",
+    "durationSeconds": 1.786,
+    "exitCode": 1,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "seguridad/npm-audit.meta.json",
+    "command": [
+      "npm.cmd",
+      "audit",
+      "--json"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T02:23:56.183Z",
+    "end": "2026-10-28T02:24:13.888Z",
+    "durationSeconds": 17.705,
+    "exitCode": 1,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "unitarias/auth-edge.meta.json",
+    "command": [
+      "npm.cmd",
+      "run",
+      "test:auth-edge"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T02:23:56.210Z",
+    "end": "2026-10-28T02:23:59.411Z",
+    "durationSeconds": 3.201,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "unitarias/copy-quality.meta.json",
+    "command": [
+      "npm.cmd",
+      "run",
+      "check:copy-quality"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T02:27:16.173Z",
+    "end": "2026-10-28T02:27:16.993Z",
+    "durationSeconds": 0.82,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {}
+  },
+  {
+    "file": "unitarias/jest.meta.json",
+    "command": [
+      "npm.cmd",
+      "test",
+      "--",
+      "--watchAll=false",
+      "--runInBand",
+      "--coverage",
+      "--coverageDirectory=docs/tesis/evidencias/verificacion-tecnica/20261027-212222-c71f55e/unitarias/coverage",
+      "--coverageReporters=json-summary",
+      "--coverageReporters=json",
+      "--coverageReporters=lcov",
+      "--coverageReporters=text",
+      "--json",
+      "--outputFile=docs/tesis/evidencias/verificacion-tecnica/20261027-212222-c71f55e/unitarias/jest-resultados.json"
+    ],
+    "cwd": ".",
+    "start": "2026-10-28T02:23:56.179Z",
+    "end": "2026-10-28T02:25:30.636Z",
+    "durationSeconds": 94.457,
+    "exitCode": 0,
+    "signal": null,
+    "environmentOverrides": {
+      "CI": "true"
+    }
+  }
+]

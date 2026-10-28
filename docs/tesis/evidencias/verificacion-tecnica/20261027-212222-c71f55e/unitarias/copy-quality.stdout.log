@@ -1,0 +1,6 @@
+
+> riovoley@0.1.0 check:copy-quality
+> node scripts/copyQualityCheck.js
+
+Copy quality check passed.
+

@@ -1,0 +1,15 @@
+{
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-Command",
+    "[System.Environment]::OSVersion.VersionString\n$PSVersionTable.PSVersion.ToString()\nGet-Date -Format o\nforeach ($auditTool in 'adb','sdkmanager','emulator','gradle','supabase','deno','psql') {\n    if (Get-Command $auditTool -ErrorAction SilentlyContinue) {\n        Write-Output ($auditTool + ': disponible')\n    } else {\n        Write-Output ($auditTool + ': ausente en PATH')\n    }\n}\n"
+  ],
+  "cwd": ".",
+  "start": "2026-10-28T13:38:09.949Z",
+  "end": "2026-10-28T13:38:11.154Z",
+  "durationSeconds": 1.205,
+  "exitCode": 0,
+  "signal": null,
+  "environmentOverrides": {}
+}

@@ -1,0 +1,18 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\tools\\node_modules\\@supabase\\cli-windows-x64\\bin\\supabase.exe",
+    "start",
+    "--workdir",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\stack",
+    "--network-id",
+    "riovoley-e2e-loopback",
+    "--exclude",
+    "studio,postgres-meta,logflare,vector,supavisor,imgproxy"
+  ],
+  "start": "2026-10-28T14:49:38.275Z",
+  "end": "2026-10-28T14:49:40.823Z",
+  "durationSeconds": 2.548,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

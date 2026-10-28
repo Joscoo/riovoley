@@ -1,0 +1,3622 @@
+{
+  "generatedAt": "2026-10-28T15:39:09.646Z",
+  "algorithm": "SHA-256",
+  "selfExcluded": true,
+  "entries": [
+    {
+      "file": "afectadas-asistencia-pagos/artefactos/.last-run.json",
+      "sha256": "a024747c061489d74d24888784ee34c543c8cc1e0ecf750d4a5f5ebe9a6361c9",
+      "bytes": 390
+    },
+    {
+      "file": "afectadas-asistencia-pagos/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-desktop-1440/error-context.md",
+      "sha256": "f4613bccf14f573e4efa52b79a1e3b43f3a2a5905f4086843cc120542494b34f",
+      "bytes": 16755
+    },
+    {
+      "file": "afectadas-asistencia-pagos/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-desktop-1440/test-failed-1.png",
+      "sha256": "82b4813567120c831811fe0b48bf47110e86d1d4f493f495edb2e5d2134df446",
+      "bytes": 500831
+    },
+    {
+      "file": "afectadas-asistencia-pagos/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-desktop-1920/error-context.md",
+      "sha256": "f4613bccf14f573e4efa52b79a1e3b43f3a2a5905f4086843cc120542494b34f",
+      "bytes": 16755
+    },
+    {
+      "file": "afectadas-asistencia-pagos/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-desktop-1920/test-failed-1.png",
+      "sha256": "24f2ade34987f29e83c3329e3dc39c598238b0cb05c85954f84d9d946ef3adeb",
+      "bytes": 773776
+    },
+    {
+      "file": "afectadas-asistencia-pagos/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-390/error-context.md",
+      "sha256": "e4ff9ef7ad475d1d168ee1bcfe3afa5a1f575d2d9b5e7d935d8ff56d66f0c29d",
+      "bytes": 14482
+    },
+    {
+      "file": "afectadas-asistencia-pagos/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-390/test-failed-1.png",
+      "sha256": "86ec66b2f3f7e47c6cd064fb803d57d2cc24169fd8caa105a0e6ef6c0b6537ab",
+      "bytes": 292581
+    },
+    {
+      "file": "afectadas-asistencia-pagos/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-430/error-context.md",
+      "sha256": "e4ff9ef7ad475d1d168ee1bcfe3afa5a1f575d2d9b5e7d935d8ff56d66f0c29d",
+      "bytes": 14482
+    },
+    {
+      "file": "afectadas-asistencia-pagos/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-430/test-failed-1.png",
+      "sha256": "af04af214468ba1ce226479a8f910328347ef07d44374a0da844e369f614df2c",
+      "bytes": 314980
+    },
+    {
+      "file": "afectadas-asistencia-pagos/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-480/error-context.md",
+      "sha256": "310cd80caa2bcd2e4519d69eeb2044457adbff3ca0578ab6652f721a65e25dc3",
+      "bytes": 14516
+    },
+    {
+      "file": "afectadas-asistencia-pagos/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-480/test-failed-1.png",
+      "sha256": "fb7a144387f6769c7afabc3bead4c93e9bffa5eeea76ca513d469d5f351a5150",
+      "bytes": 179689
+    },
+    {
+      "file": "afectadas-asistencia-pagos/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-tablet-1024/error-context.md",
+      "sha256": "f77fde425c3b697e9b7fdf70ae7801ee4c029e8bca0f1b53a3732e0daf3afd45",
+      "bytes": 16034
+    },
+    {
+      "file": "afectadas-asistencia-pagos/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-tablet-1024/test-failed-1.png",
+      "sha256": "af1b2abd5c656587274ea29f070f22d29b7c154bc4e70bd212250023f566f283",
+      "bytes": 338319
+    },
+    {
+      "file": "afectadas-asistencia-pagos/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-tablet-768/error-context.md",
+      "sha256": "e4ff9ef7ad475d1d168ee1bcfe3afa5a1f575d2d9b5e7d935d8ff56d66f0c29d",
+      "bytes": 14482
+    },
+    {
+      "file": "afectadas-asistencia-pagos/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-tablet-768/test-failed-1.png",
+      "sha256": "65ace3f76ade8fa49ef482af27452cfb473127cffada7684eb882defc168ba00",
+      "bytes": 338903
+    },
+    {
+      "file": "afectadas-asistencia-pagos/ejecucion.meta.json",
+      "sha256": "4b84f6be342272adbe2cfe54422520c12839642f3ccd8bd196269c20e935e805",
+      "bytes": 991
+    },
+    {
+      "file": "afectadas-asistencia-pagos/ejecucion.stderr.log",
+      "sha256": "58137f50afc8727f9ce973a7056ceab01375c741091f27a25a4488374c74c1de",
+      "bytes": 4589
+    },
+    {
+      "file": "afectadas-asistencia-pagos/ejecucion.stdout.log",
+      "sha256": "6da5de3596c8315d527a9a15817e32c6de5a165f83ef319af0d515b658b4bff4",
+      "bytes": 16628
+    },
+    {
+      "file": "afectadas-asistencia-pagos/html/data/17139bdaba0cbbbf385e6e12cffd438fbc62cee4.png",
+      "sha256": "fb7a144387f6769c7afabc3bead4c93e9bffa5eeea76ca513d469d5f351a5150",
+      "bytes": 179689
+    },
+    {
+      "file": "afectadas-asistencia-pagos/html/data/1831bfc18f7af9cde16f5006b870bd59ec6099f9.png",
+      "sha256": "24f2ade34987f29e83c3329e3dc39c598238b0cb05c85954f84d9d946ef3adeb",
+      "bytes": 773776
+    },
+    {
+      "file": "afectadas-asistencia-pagos/html/data/62cf8bf42800029bdbdf86ec483ec1f1ec0404c7.png",
+      "sha256": "82b4813567120c831811fe0b48bf47110e86d1d4f493f495edb2e5d2134df446",
+      "bytes": 500831
+    },
+    {
+      "file": "afectadas-asistencia-pagos/html/data/760cfe3350b4454fcd1213fec8b01ed798e05104.md",
+      "sha256": "310cd80caa2bcd2e4519d69eeb2044457adbff3ca0578ab6652f721a65e25dc3",
+      "bytes": 14516
+    },
+    {
+      "file": "afectadas-asistencia-pagos/html/data/903fd450eb33784e88c0221ba140d186dc03ff79.png",
+      "sha256": "65ace3f76ade8fa49ef482af27452cfb473127cffada7684eb882defc168ba00",
+      "bytes": 338903
+    },
+    {
+      "file": "afectadas-asistencia-pagos/html/data/9b142f57690fdf10dad1556faeec58cb69d01335.md",
+      "sha256": "f4613bccf14f573e4efa52b79a1e3b43f3a2a5905f4086843cc120542494b34f",
+      "bytes": 16755
+    },
+    {
+      "file": "afectadas-asistencia-pagos/html/data/9b3da0d433c6b6cf4a60dc9e1045efa85cc695d3.md",
+      "sha256": "e4ff9ef7ad475d1d168ee1bcfe3afa5a1f575d2d9b5e7d935d8ff56d66f0c29d",
+      "bytes": 14482
+    },
+    {
+      "file": "afectadas-asistencia-pagos/html/data/a49ce3a60c6b1809f3ee7a6054ca9a716abc8bf2.png",
+      "sha256": "af04af214468ba1ce226479a8f910328347ef07d44374a0da844e369f614df2c",
+      "bytes": 314980
+    },
+    {
+      "file": "afectadas-asistencia-pagos/html/data/dac20c6b5cdb4a61f4f298bf0d5ac2a001be28c8.png",
+      "sha256": "af1b2abd5c656587274ea29f070f22d29b7c154bc4e70bd212250023f566f283",
+      "bytes": 338319
+    },
+    {
+      "file": "afectadas-asistencia-pagos/html/data/df99c338879e011c7c474c510273580c1a4062a2.png",
+      "sha256": "86ec66b2f3f7e47c6cd064fb803d57d2cc24169fd8caa105a0e6ef6c0b6537ab",
+      "bytes": 292581
+    },
+    {
+      "file": "afectadas-asistencia-pagos/html/data/f756b3f5b14739347a2ebf66737c03442b2ffb9f.md",
+      "sha256": "f77fde425c3b697e9b7fdf70ae7801ee4c029e8bca0f1b53a3732e0daf3afd45",
+      "bytes": 16034
+    },
+    {
+      "file": "afectadas-asistencia-pagos/html/index.html",
+      "sha256": "705f462b52e77c8df05145170f4715abcf0e7d049d0fe9201908f61ea4804f75",
+      "bytes": 544572
+    },
+    {
+      "file": "afectadas-asistencia-pagos/resultados.json",
+      "sha256": "3e5811e752745839900998bb7fb0bfdce438d9f2a6827d203f28bea773817c84",
+      "bytes": 48839
+    },
+    {
+      "file": "antes-filtros-asistencia/artefactos/.last-run.json",
+      "sha256": "9c55715f78078b7ac50479ad2867a52bb5dcb08812bad9665afdd6efac0fcb83",
+      "bytes": 145
+    },
+    {
+      "file": "antes-filtros-asistencia/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-390/error-context.md",
+      "sha256": "f7698cc17604db9e7a3413bad6ed8a2dc1b3a1857cbf1d5de34ba0d56c620128",
+      "bytes": 15605
+    },
+    {
+      "file": "antes-filtros-asistencia/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-390/test-failed-1.png",
+      "sha256": "650c81dabc0873b43312d46288e21700bc4c74e9e8a60fa4a2e8ad82b88f05ec",
+      "bytes": 413804
+    },
+    {
+      "file": "antes-filtros-asistencia/artefactos/filters-sorting.tables-pag-2f969-rden-de-columnas-por-header-mobile-390/error-context.md",
+      "sha256": "53978708db355c5852e9bd75ffa56a1c9fa775df91f23f2d323dde1db6390954",
+      "bytes": 24397
+    },
+    {
+      "file": "antes-filtros-asistencia/artefactos/filters-sorting.tables-pag-2f969-rden-de-columnas-por-header-mobile-390/test-failed-1.png",
+      "sha256": "c02da65e3de60cca21aa4a354156e850c21667dd3cab3d2513e0d17cb5b72d7e",
+      "bytes": 236941
+    },
+    {
+      "file": "antes-filtros-asistencia/ejecucion.meta.json",
+      "sha256": "29265891b5ad2c7aec95234cf732c235732b3266225e51e85e539d47b23a9676",
+      "bytes": 1018
+    },
+    {
+      "file": "antes-filtros-asistencia/ejecucion.stderr.log",
+      "sha256": "1de1176f2a7ba8f88979057e7540589e6aa806441bb451f52379ad891931e593",
+      "bytes": 657
+    },
+    {
+      "file": "antes-filtros-asistencia/ejecucion.stdout.log",
+      "sha256": "4be1735b58f449defb9bd001867238fc2eda4b0c822d17a1715e4e323af90238",
+      "bytes": 4589
+    },
+    {
+      "file": "antes-filtros-asistencia/html/data/1cd7d5b0ceaaff515b7fbf437a72fca659963b03.md",
+      "sha256": "53978708db355c5852e9bd75ffa56a1c9fa775df91f23f2d323dde1db6390954",
+      "bytes": 24397
+    },
+    {
+      "file": "antes-filtros-asistencia/html/data/5bc1b902f7c112aa06d9b519fb61660c6c7a44fb.png",
+      "sha256": "650c81dabc0873b43312d46288e21700bc4c74e9e8a60fa4a2e8ad82b88f05ec",
+      "bytes": 413804
+    },
+    {
+      "file": "antes-filtros-asistencia/html/data/78f7fd7146361a2aac5691120fd91326fe182b8f.png",
+      "sha256": "c02da65e3de60cca21aa4a354156e850c21667dd3cab3d2513e0d17cb5b72d7e",
+      "bytes": 236941
+    },
+    {
+      "file": "antes-filtros-asistencia/html/data/a91f62e97b9128624fb59b819b96a571063277f0.md",
+      "sha256": "f7698cc17604db9e7a3413bad6ed8a2dc1b3a1857cbf1d5de34ba0d56c620128",
+      "bytes": 15605
+    },
+    {
+      "file": "antes-filtros-asistencia/html/index.html",
+      "sha256": "269e6424655e6b61a717bd081d3920f8881e0bbb6e8fd2dbbc7bd4acec7dd21d",
+      "bytes": 533824
+    },
+    {
+      "file": "antes-filtros-asistencia/resultados.json",
+      "sha256": "df855ca570034beb7de13457da06d6bfd5810561312df31f83001a4ac82ebb78",
+      "bytes": 16043
+    },
+    {
+      "file": "antes-mutacion/artefactos/.last-run.json",
+      "sha256": "bc648583d4331e50c671cc7e16acb3a11428791e27b83bd09302d13cd6e206f0",
+      "bytes": 96
+    },
+    {
+      "file": "antes-mutacion/artefactos/admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440/error-context.md",
+      "sha256": "950e1643cd7e322b70986fcfb382a5449ea27d26b013413ac4d3d33d2a97137a",
+      "bytes": 19183
+    },
+    {
+      "file": "antes-mutacion/artefactos/admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440/test-failed-1.png",
+      "sha256": "c2b66799e955ff7ad3845810d5b9fb1accd43305e0e65b07aaa716c92e176e1e",
+      "bytes": 436308
+    },
+    {
+      "file": "antes-mutacion/ejecucion.meta.json",
+      "sha256": "35b704c1cee1e28341cbbf81033ac3fcbb29f1ba9322000f08d81af7d553ab9b",
+      "bytes": 448
+    },
+    {
+      "file": "antes-mutacion/ejecucion.stderr.log",
+      "sha256": "e89c15547c2f16f59512dd4d595fccad5e3c67fe5100ab47257a935f0eb4b272",
+      "bytes": 329
+    },
+    {
+      "file": "antes-mutacion/ejecucion.stdout.log",
+      "sha256": "7b15c1fa54bc7bf622af678865e052c0a8c9b72bf1d9fa7bf309f8c4157bd403",
+      "bytes": 2297
+    },
+    {
+      "file": "antes-mutacion/html/data/61e331cd060b912b27a1a11b19ab543e30c65bef.md",
+      "sha256": "950e1643cd7e322b70986fcfb382a5449ea27d26b013413ac4d3d33d2a97137a",
+      "bytes": 19183
+    },
+    {
+      "file": "antes-mutacion/html/data/9e3fb3ea4de05b562b039acc226e9ad8231cb462.png",
+      "sha256": "c2b66799e955ff7ad3845810d5b9fb1accd43305e0e65b07aaa716c92e176e1e",
+      "bytes": 436308
+    },
+    {
+      "file": "antes-mutacion/html/index.html",
+      "sha256": "1dc39f14284d46f3996ac8697f3da8b7684af2b59865959a7e83252dcd08726f",
+      "bytes": 528196
+    },
+    {
+      "file": "antes-mutacion/resultados.json",
+      "sha256": "db18246e714c37f427e8d0aeb7fadd6e3db41217eaccebd7fcdea3f6c6adcfad",
+      "bytes": 10529
+    },
+    {
+      "file": "arnes-final.meta.json",
+      "sha256": "d20fa054dc1994344a0c8af51b024b5dc64559a2235e72d56f8e7d5d418f3b2b",
+      "bytes": 400
+    },
+    {
+      "file": "arnes-final.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "arnes-final.stdout.log",
+      "sha256": "ad85fde34ceb6ee5cd773194854340f8cd7a7e48404aeba69c3aa18d0f98d8a4",
+      "bytes": 1035
+    },
+    {
+      "file": "artefactos-compilacion.json",
+      "sha256": "ba39d40a056949e3f7de289f4116a5ddd7394e81cee2b7a3ce0837aa60d5d179",
+      "bytes": 18192
+    },
+    {
+      "file": "asistencias-corregidas/artefactos/.last-run.json",
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903",
+      "bytes": 45
+    },
+    {
+      "file": "asistencias-corregidas/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-desktop-1440/asistencias-quick-desktop-1440.png",
+      "sha256": "04aec22834ec5806575af32b41ab78112390fc5340d1a36876797ca57217fa75",
+      "bytes": 848461
+    },
+    {
+      "file": "asistencias-corregidas/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-desktop-1920/asistencias-quick-desktop-1920.png",
+      "sha256": "333fbb923a66f60a48c07989541b4d406a287038ca8c46699c3ba87e51f793bb",
+      "bytes": 1053916
+    },
+    {
+      "file": "asistencias-corregidas/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-390/asistencias-quick-mobile-390.png",
+      "sha256": "68d6a51852648c33078a9d88765b545b80fc203e2ecc479a5296be5933625293",
+      "bytes": 291141
+    },
+    {
+      "file": "asistencias-corregidas/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-430/asistencias-quick-mobile-430.png",
+      "sha256": "9583d091efd6d17303145195854b6def05693a72c232bf068ff18345e60df8c5",
+      "bytes": 332391
+    },
+    {
+      "file": "asistencias-corregidas/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-480/asistencias-quick-mobile-480.png",
+      "sha256": "2a6d83e5a0d260d13b0a5cb6a7a4aba97811f2564d41e31e3d7e8a2cb679fe28",
+      "bytes": 231182
+    },
+    {
+      "file": "asistencias-corregidas/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-tablet-1024/asistencias-quick-tablet-1024.png",
+      "sha256": "d53170794d336f4d0722ad0f7d0ef48693a4653869d482c7d9c762cb42f421fe",
+      "bytes": 782928
+    },
+    {
+      "file": "asistencias-corregidas/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-tablet-768/asistencias-quick-tablet-768.png",
+      "sha256": "1a4052c6fc51dd0cd41fedd9445f17fd02b0406d0e6223007fd966c1b8ea6a97",
+      "bytes": 647236
+    },
+    {
+      "file": "asistencias-corregidas/ejecucion.meta.json",
+      "sha256": "a71010a316e3db096469e6465f00c96e7c7e74eca1df285f1b6eab225504749f",
+      "bytes": 970
+    },
+    {
+      "file": "asistencias-corregidas/ejecucion.stderr.log",
+      "sha256": "b146542fee7d300d1902fe3da4cf1b55a35666b78c376a70a2d13899b62d6790",
+      "bytes": 2293
+    },
+    {
+      "file": "asistencias-corregidas/ejecucion.stdout.log",
+      "sha256": "b1ab32442d9e9e0cb1e561f06738687714a523612a91fcc50b2c0157b6b7d780",
+      "bytes": 2601
+    },
+    {
+      "file": "asistencias-corregidas/html/index.html",
+      "sha256": "349ea5a3858500a663b8a4632ae3e77b1ecebc7e70abd40cb1646a89ac1737a6",
+      "bytes": 531028
+    },
+    {
+      "file": "asistencias-corregidas/resultados.json",
+      "sha256": "4a3ed2d7b08ea36d4065f058051fc849aedae35b718b394480a2ffa0522916e6",
+      "bytes": 15322
+    },
+    {
+      "file": "auth-roles-reales.json",
+      "sha256": "0f92c9e0b632cab64db6cb6642476ee566897043ebd1ac305a6aae58d300a3d2",
+      "bytes": 814
+    },
+    {
+      "file": "bindings-locales.json",
+      "sha256": "3b21e21a4f6aa32f496ac88282b04a8420c8771d8963978acafd0e7295e0e8b7",
+      "bytes": 883
+    },
+    {
+      "file": "cambios-correciones.diff",
+      "sha256": "b5b75adaca9beb131023c0e5c6fcd21a3dd2d810e143e71845edba478f35650c",
+      "bytes": 23246
+    },
+    {
+      "file": "casos-e2e-detallados.json",
+      "sha256": "bbd9dbd07ac7990edd9d99cd041515364ef6f909a69e03d9303451984e59142d",
+      "bytes": 26940
+    },
+    {
+      "file": "casos-jest-detallados.json",
+      "sha256": "aaa8cee9935858c73ce66c6d87bbdcc96d802529bf238df4edc7e3c761973236",
+      "bytes": 87212
+    },
+    {
+      "file": "cobertura/clover.xml",
+      "sha256": "2447fce522776c5b1e70e3a0886643de4fe7092ea3b4a138a7891d281e32ab15",
+      "bytes": 775831
+    },
+    {
+      "file": "cobertura/coverage-final.json",
+      "sha256": "281652e33050714f4c2f49f51987f8187cc2dd8834515bbc6c8efcfde03b0033",
+      "bytes": 3279641
+    },
+    {
+      "file": "cobertura/lcov-report/base.css",
+      "sha256": "3f876e51f0a46864ffa7665b4b7a1f5fb5f6f37fb6a28f014e2b12d82962c852",
+      "bytes": 5394
+    },
+    {
+      "file": "cobertura/lcov-report/block-navigation.js",
+      "sha256": "cd8db34b1fbeb973354a93f8b4133c7c7eab34cdda9429a0434be91384783b7e",
+      "bytes": 2655
+    },
+    {
+      "file": "cobertura/lcov-report/favicon.png",
+      "sha256": "5b0cfd52dc0bfbe544f4e1a9c77aa46b8629b0e0aad6c54f95eef457b86c2a89",
+      "bytes": 445
+    },
+    {
+      "file": "cobertura/lcov-report/index.html",
+      "sha256": "57937a4b5066d99c39a7ade202c6e439c77561679de59793bba0e88da16898b2",
+      "bytes": 119890
+    },
+    {
+      "file": "cobertura/lcov-report/prettify.css",
+      "sha256": "ea3fe433f9450698ca8a230271688e7aeec12f99c8a7ef6c94379abb38f27823",
+      "bytes": 676
+    },
+    {
+      "file": "cobertura/lcov-report/prettify.js",
+      "sha256": "fa1b1e1b906ddcfa08b46f161c0f924f506e1a31b4f3e09b8caaa2463ef52c18",
+      "bytes": 17590
+    },
+    {
+      "file": "cobertura/lcov-report/sort-arrow-sprite.png",
+      "sha256": "42c895355f9838ede83fdfdca90127d8471aefed5ecf5342374f65ec7c3f10ab",
+      "bytes": 138
+    },
+    {
+      "file": "cobertura/lcov-report/sorter.js",
+      "sha256": "f8cc5d157379d844fd695ad567b6c29b3c1f0812964ddf6f95c26327e434bab5",
+      "bytes": 6731
+    },
+    {
+      "file": "cobertura/lcov-report/src/App.js.html",
+      "sha256": "af7d09729156722c6c1ab361519188fb7407c0f3631ca4e27a442c80197b012f",
+      "bytes": 59841
+    },
+    {
+      "file": "cobertura/lcov-report/src/components/AboutUs.js.html",
+      "sha256": "61f1f6dc1bd627f9c045c9747133f64d4d9559fe550fbe54e9208d0049d5ca48",
+      "bytes": 30543
+    },
+    {
+      "file": "cobertura/lcov-report/src/components/HomePage.js.html",
+      "sha256": "df336750a101cbd6396db7b5d9eac0e7709f976e63d3d05e75ea06e6997671aa",
+      "bytes": 24030
+    },
+    {
+      "file": "cobertura/lcov-report/src/components/Horarios.js.html",
+      "sha256": "c1303b73cc8f2ece5b6a3aff27a00293367706baf5fc398eb033b25d1cd89241",
+      "bytes": 36152
+    },
+    {
+      "file": "cobertura/lcov-report/src/components/index.html",
+      "sha256": "a257b522b20a36b010886ab1ba38d54707fd2155dedd98a0331148b16eb68603",
+      "bytes": 6331
+    },
+    {
+      "file": "cobertura/lcov-report/src/components/Navbar.js.html",
+      "sha256": "7d79f19e661935124a591da22e2b64145f1507227f537419dd6ed7c38d63feb6",
+      "bytes": 64680
+    },
+    {
+      "file": "cobertura/lcov-report/src/config/appUrls.js.html",
+      "sha256": "849b93c86caf406063606c1e27c9ee2481dd83d80e73de9eaac3ef1ba240df72",
+      "bytes": 4968
+    },
+    {
+      "file": "cobertura/lcov-report/src/config/googleCalendar.js.html",
+      "sha256": "e9a7d3d635d770ec299923b7eff8d2391365028eefa040e12106519041769955",
+      "bytes": 4068
+    },
+    {
+      "file": "cobertura/lcov-report/src/config/index.html",
+      "sha256": "c621cc3cbd36b3a8957dbd3519edcf48204fcef87407370988e4b4977116e7fe",
+      "bytes": 5767
+    },
+    {
+      "file": "cobertura/lcov-report/src/config/supabase.js.html",
+      "sha256": "99a7c6eb90bf99030d6670a918bb439d84f4371188a4612eb6b93c7424e6836c",
+      "bytes": 18840
+    },
+    {
+      "file": "cobertura/lcov-report/src/contexts/index.html",
+      "sha256": "677fbd6591bf3bcbaeffde6f5e26f26e0426f62c9b9eb467ab0b5a21e1ae9ca7",
+      "bytes": 4420
+    },
+    {
+      "file": "cobertura/lcov-report/src/contexts/ToastContext.js.html",
+      "sha256": "bc774a1dddd5d59fb09338ffae4d80557b913bec2d79cfe033b9653e34afb5dc",
+      "bytes": 15286
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/account-admin/accountAdminService.js.html",
+      "sha256": "d14e62f7fafe2ad69fe03457da89f6a2c3d5f6ee7baae86990854bb308595ef6",
+      "bytes": 3687
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/account-admin/application/useCases/createAccountAdminUseCases.js.html",
+      "sha256": "48665241a4a5e7e642322a8f2381648156e902d85ad42dde8f77aab0332a65d1",
+      "bytes": 27307
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/account-admin/application/useCases/index.html",
+      "sha256": "f64d280e5d1ce724ce3b2043f98ecd1855a55187d11fa50fcda1699addc7e0de",
+      "bytes": 4682
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/account-admin/domain/accountAdminError.js.html",
+      "sha256": "153059e23b7f3bd4dff6b19250469287ed5f260201b9a8430bbb0dab187bc77d",
+      "bytes": 4514
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/account-admin/domain/index.html",
+      "sha256": "b8f402616f20bcfe4600ecf0557581c3d3ada2819370a1dbc712d27cac6ec3ef",
+      "bytes": 4516
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/account-admin/index.html",
+      "sha256": "91e187394f84e9791a478bc7210d7329d5710e287738a5edc09a9e8fcb2f670a",
+      "bytes": 5145
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/account-admin/index.js.html",
+      "sha256": "6c38037cf35c420820a313ebd9a9e5853e6c7d3b820d6370b3c869ad59de5c0b",
+      "bytes": 3679
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/account-admin/infrastructure/repositories/index.html",
+      "sha256": "88ee36b123d6722a6d45081a76cb7f54ed5169cf0f1dbc73fa89ec942c943c99",
+      "bytes": 4679
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/account-admin/infrastructure/repositories/supabaseAccountAdminRepository.js.html",
+      "sha256": "7792c09632c0a4da316c1af63dadc0eeaec1a4aca0d1790a264db2374678239f",
+      "bytes": 25255
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/account-admin/presentation/components/index.html",
+      "sha256": "ad48c33b8b7bd97144b4f7258192248a1e277f47725f463c7dc9d71dbc6967ca",
+      "bytes": 5250
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/account-admin/presentation/components/ProfileSettings.js.html",
+      "sha256": "967d75b4e3c3a761b9e288855b6408ccb626bc7bf6efba6b7cdafbdc2ead12c9",
+      "bytes": 58696
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/account-admin/presentation/components/UsuariosManager.js.html",
+      "sha256": "b2dac8cc6f849527f8f3c71260c338828c37a1713b3c996489b14dd04761f88b",
+      "bytes": 96786
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/account-admin/presentation/createAccountAdminService.js.html",
+      "sha256": "7e3ff30ff9a8cfef43cad1172887164d7bd026150c56a3892226a1a8b81837fa",
+      "bytes": 10183
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/account-admin/presentation/index.html",
+      "sha256": "8b1a9fdc4831d263b7e6d3fc60fa6a4f944c0ef741527e9467df45cbdf4cceec",
+      "bytes": 4623
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/admin-dashboard/adminDashboardService.js.html",
+      "sha256": "3c3a09b59b28c93132151dcd3ce9225ee4022b21189a46f09ddc827f8c4d118c",
+      "bytes": 3703
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/admin-dashboard/application/useCases/createAdminDashboardUseCases.js.html",
+      "sha256": "fe585df8e3ddc885db022b90a9def376da557b85bcac5b0768c51f6e9b1413c4",
+      "bytes": 57670
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/admin-dashboard/application/useCases/index.html",
+      "sha256": "9921275b7bed9a9c3d5691065b7c7f967f79a7c31b4b7491ed779af69bfb899c",
+      "bytes": 4706
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/admin-dashboard/domain/adminDashboardError.js.html",
+      "sha256": "64acb4c95d774ffea0d57596cd236a29435f024aeb6a6bf6942248db17b87484",
+      "bytes": 4348
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/admin-dashboard/domain/index.html",
+      "sha256": "61accca211a619e8a950e9450092446d417694e28ad166656b3172eb3db2b4bd",
+      "bytes": 4526
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/admin-dashboard/index.html",
+      "sha256": "3f88beb3d828abf8f8eacbd74b905d42ef2f565c45d35ff6d239c3abf96e4ec8",
+      "bytes": 5155
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/admin-dashboard/index.js.html",
+      "sha256": "a03c949137b761b912623672009d4b75995594f1af67f4f62f61690ff4686810",
+      "bytes": 3665
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/admin-dashboard/infrastructure/repositories/index.html",
+      "sha256": "45f4ca91c9b8cc0e21461dbc5c0bdb2b6899751048cfb326e2ab355974ea9d52",
+      "bytes": 4643
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/admin-dashboard/infrastructure/repositories/supabaseAdminDashboardRepository.js.html",
+      "sha256": "f90edae8773a4f6375132c10c42c96602a3ed49349d958d7f7cc579ee318b149",
+      "bytes": 32495
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/admin-dashboard/presentation/components/AdminPanel.js.html",
+      "sha256": "5b437a520d3cec7ba8387e85e880a8d4a8e7be38113171cfaf0a1a10f4a6dab2",
+      "bytes": 39121
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/admin-dashboard/presentation/components/Dashboard.js.html",
+      "sha256": "7384426787dee7e38d4c3eab1f789a6f0a675d7c9c5860e1b693418e4939a001",
+      "bytes": 39948
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/admin-dashboard/presentation/components/FinancialReview.js.html",
+      "sha256": "1c3123b8f0831abb1aa5b9066e0fc9dbf1507b08056983ddd180e46980b5f6a3",
+      "bytes": 133365
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/admin-dashboard/presentation/components/index.html",
+      "sha256": "0eb2ff9368031d6c2a9c1275f335789c822a4b76a2ec46f0df27bbb87b1f60b2",
+      "bytes": 6550
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/admin-dashboard/presentation/components/ReportsCenter.js.html",
+      "sha256": "c52ca7f809abef0958c379ad505b8ba0636f69b0dfbf86347dacbd7141fedacf",
+      "bytes": 220352
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/admin-dashboard/presentation/createAdminDashboardService.js.html",
+      "sha256": "8ea963afed50a9907054cb4b9f5dc1efd6a2c59b62c72eb75ea5ea879c6e93d4",
+      "bytes": 6696
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/admin-dashboard/presentation/index.html",
+      "sha256": "69eaf285dc1e2f223960bee54286d437963bc463afccc17157f0e5b9dd8769a2",
+      "bytes": 4600
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/announcements/announcementsService.js.html",
+      "sha256": "6b4a96b8e9dc1f6ccbd508368fee736cd45fb1f42562e3fe592b15343c92a8bd",
+      "bytes": 3693
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/announcements/application/useCases/createAnnouncementsUseCases.js.html",
+      "sha256": "669af05173bb6934ddfa7293ed54741b5879a7d178b0da9b82a676209c6d5280",
+      "bytes": 10506
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/announcements/application/useCases/index.html",
+      "sha256": "d6d4a2a89582f1a92889adfe6097549145e0991de174872775eadb64004d2a9c",
+      "bytes": 4656
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/announcements/domain/announcementsError.js.html",
+      "sha256": "ca9ec93231df6e89e4cfb88e8ded7a3d54795f43e965a8a201320b4445c45220",
+      "bytes": 4518
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/announcements/domain/index.html",
+      "sha256": "cd3a77af0240741008387d008a69da4bf5e320997c2eb9ce8c631cda9e6f59aa",
+      "bytes": 4519
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/announcements/index.html",
+      "sha256": "c294e40c8d19aed154dd39e0429e6dd464d16cd9adea515a853f1d366b04b755",
+      "bytes": 5148
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/announcements/index.js.html",
+      "sha256": "defc2bd56c5b0fd7034e1fbb33b496daf02b4d95391dd6e97219885087aa9319",
+      "bytes": 3679
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/announcements/infrastructure/repositories/index.html",
+      "sha256": "6fea767631c62b8ae4fceafd6cdb03e611e115eeec1b8c5180b0a0d184be41af",
+      "bytes": 4633
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/announcements/infrastructure/repositories/supabaseAnnouncementsRepository.js.html",
+      "sha256": "055b512fe3e9a4d368c266c0821ca98eed1dfa2b89c715c5e8b0ece5f62b002b",
+      "bytes": 26298
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/announcements/presentation/components/AnunciosManager.js.html",
+      "sha256": "f769e535352534ef4b16db270a920117a0b4f5ecb8be295e54372c1315706490",
+      "bytes": 56692
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/announcements/presentation/components/AnunciosViewer.js.html",
+      "sha256": "5d9f5d1f60b8880422000300adb070898e66dfae7a1b975ce2b2e544497cb4c6",
+      "bytes": 35826
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/announcements/presentation/components/index.html",
+      "sha256": "ac6100d367a26c00c34ddfef584d779650515d94464d29e82d04f27adadd5e69",
+      "bytes": 5240
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/announcements/presentation/components/shared/AnnouncementDeleteConfirmModal.js.html",
+      "sha256": "b236fef218e9e7fee247b2952491c5e0f66d1e23909f670590eace88a11dffc5",
+      "bytes": 9122
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/announcements/presentation/components/shared/index.html",
+      "sha256": "3bacc2563d499b292c3e78670149369b4d6403304de6a4ced9cb74469d7d54ce",
+      "bytes": 4651
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/announcements/presentation/createAnnouncementsService.js.html",
+      "sha256": "c1e1869dca2ce6824a576367bd257ede94b2d8c3ed5edf921f424cc79024ac07",
+      "bytes": 7167
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/announcements/presentation/hooks/index.html",
+      "sha256": "5dd45debae4fa120b6edbd3b15da5fd03472e2f22823b76c57fde14487b87a9f",
+      "bytes": 4600
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/announcements/presentation/hooks/useAnnouncementsManager.js.html",
+      "sha256": "896e509f3a56816957865e207b7f465c2e8f7f101c035d6f067ff3e35c62f90e",
+      "bytes": 39658
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/announcements/presentation/index.html",
+      "sha256": "dd975f32231ba19a620e58ad0ff1a85e7ff2f0918255a4765f66c9e00855c42f",
+      "bytes": 4623
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/athletes/application/useCases/createAthletesUseCases.js.html",
+      "sha256": "7cf451e5b4ae58e019a38aead3ad4826712903debb73a0e1f1a0877f9353dc1b",
+      "bytes": 43723
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/athletes/application/useCases/index.html",
+      "sha256": "a8739f8bbe66d438923288597f3d9b2b0477d912fc27fcd1eb64b1ce41e08711",
+      "bytes": 4670
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/athletes/athletesService.js.html",
+      "sha256": "974c036545970764584b5e41bd2d7e8a2ed625e99f65d088206f4a60c5bf08fb",
+      "bytes": 3653
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/athletes/domain/athletesError.js.html",
+      "sha256": "c98cdd65373147e4601d6489dff79e2fd66166229476bd3b9f6eaead09e21b70",
+      "bytes": 4483
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/athletes/domain/index.html",
+      "sha256": "98c1523da9ebd7f60237718a396a28d8f168be0a6412b75f0bcfe4bde53a5155",
+      "bytes": 4494
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/athletes/index.html",
+      "sha256": "7e94f233e4f8ba3bb0b500c3622a4760cb0a001bb5783d66d081ed62e3b73d9b",
+      "bytes": 5123
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/athletes/index.js.html",
+      "sha256": "4fba4e47104d3c0cf71e29b28dce5d0bc7a714a75143c797eaec9da0fee860cb",
+      "bytes": 3482
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/athletes/infrastructure/repositories/index.html",
+      "sha256": "986c64af65dbb1aaf586ec13cffbb0d15cabed71b875c63b2a19b4099ca62089",
+      "bytes": 4625
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/athletes/infrastructure/repositories/supabaseAthletesRepository.js.html",
+      "sha256": "c86ed63d423853255c9df020420d9de0f4b30454eff8b8d7ffcff14c8a8470bf",
+      "bytes": 20114
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/athletes/presentation/components/AtletasManager.js.html",
+      "sha256": "a6bd7e5f11ca2c5d87a6059c571a6359b3109bc0f99e4d5c5519a65ee3e98f83",
+      "bytes": 92484
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/athletes/presentation/components/index.html",
+      "sha256": "b616843eb1715f3ebf7bc176c56c55947a76289570f75259aa978a5bdcc19abd",
+      "bytes": 4567
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/athletes/presentation/components/shared/ActionConfirmModal.js.html",
+      "sha256": "d0a558f5942d42788db65a5628dede2bbfa7cc59754f87ecfdcbec5872678770",
+      "bytes": 11263
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/athletes/presentation/components/shared/ActionResultModal.js.html",
+      "sha256": "93909bb2fbc561bd5d3112904459ef173475e7051839c5270038eea640071ab3",
+      "bytes": 8541
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/athletes/presentation/components/shared/index.html",
+      "sha256": "0deaa8a1f9212857d95de6e57035d349aa406f765f85508efa2ae43f81505065",
+      "bytes": 5268
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/athletes/presentation/createAthletesService.js.html",
+      "sha256": "b30ffc56a9fb056025dc93a6cb9d081fec3a9350df717861595e3647e60db747",
+      "bytes": 10394
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/athletes/presentation/hooks/index.html",
+      "sha256": "efc4ca628a37df85b71542d8af8a3931769f1e6e42e3109f0d9df0073a207dcb",
+      "bytes": 5252
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/athletes/presentation/hooks/useAthleteCredentials.js.html",
+      "sha256": "11cd7784fcaf4d2a7ec6638730ff1c73a94b82194ea4763ff5f6ab8bdbd1d833",
+      "bytes": 26276
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/athletes/presentation/hooks/useAtletasManager.js.html",
+      "sha256": "cfc5cef606aaa0a2f1241d104d66881615c890b2284c3391e2e7b310aed7301a",
+      "bytes": 75600
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/athletes/presentation/index.html",
+      "sha256": "8e21da679748a89cf69c7f42d32f2621a6a35ca561d4b608e502f2f7afa43c2a",
+      "bytes": 4613
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/attendance/application/useCases/createAttendanceUseCases.js.html",
+      "sha256": "d8a6746a8a970b1d0ea99fc99b3008dd1da3c3d11bad173416d17fa773ccea04",
+      "bytes": 107840
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/attendance/application/useCases/index.html",
+      "sha256": "890e1f0587d91bafef42625b2c7ed48fd6c651e932326710117c5afc6f636409",
+      "bytes": 4694
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/attendance/attendanceService.js.html",
+      "sha256": "3856899772489c67771cd2f44d4b67451e5ef48c31a6f6315bf74be9160cf998",
+      "bytes": 4332
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/attendance/domain/attendanceError.js.html",
+      "sha256": "fae0e798d470c033bf67cc55455ad4ddcae99e308d8eb67a0eac30d7d37a122b",
+      "bytes": 4077
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/attendance/domain/index.html",
+      "sha256": "b2c269a0f3c8062f7c1c7e0f7dd27cf8863d48e4474a53c4187aa3b1e778217d",
+      "bytes": 4544
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/attendance/index.html",
+      "sha256": "a5c7aede4f752c30d7d0427b4b663da16c8ac63e9637e0e28512be8eb54ea02f",
+      "bytes": 5133
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/attendance/index.js.html",
+      "sha256": "77db919d1657eb2b4e87ad281b95cf7e25659860eae37662361150712e12a8e6",
+      "bytes": 3498
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/attendance/infrastructure/repositories/index.html",
+      "sha256": "c6f3f4671b7ef0636a88ac0bd209e3dad21e176ffd8f9f017eba75b808c5d772",
+      "bytes": 4685
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/attendance/infrastructure/repositories/supabaseAttendanceRepository.js.html",
+      "sha256": "38e8510c471bf9fcee78612a28f883e8b9380da9eeb5984cf687252368c17fb2",
+      "bytes": 26429
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/attendance/presentation/components/AsistenciasManager.js.html",
+      "sha256": "a5109b953b6b8fe09a1589fb1c7c14f984da0409e2cecf4872425936bde8244b",
+      "bytes": 295518
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/attendance/presentation/components/index.html",
+      "sha256": "07c65a0b79faec970a3d89de8c583de17d336e6d5875d27d3109495e39c679d6",
+      "bytes": 4595
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/attendance/presentation/createAttendanceService.js.html",
+      "sha256": "b2fce7258f08a9e6da01817cd5aa66b82bb1a28cf956ed37dd17d35de28f2d07",
+      "bytes": 20945
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/attendance/presentation/index.html",
+      "sha256": "cc210b15efd8391888d3496fb51dda4542a004cca7c3f494e37f14da2b78d6c6",
+      "bytes": 4628
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-profile/application/useCases/index.html",
+      "sha256": "9dd1416f634dd3b97ac1517fff79e5002133c6c8dcc857c28c9e1ee82a34d635",
+      "bytes": 4643
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-profile/application/useCases/loadUserProfileUseCase.js.html",
+      "sha256": "2001d0832205feeafe08917fd4a4dbcbe02aaad893b6479617656a53d5e16d72",
+      "bytes": 9035
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-profile/authProfileService.js.html",
+      "sha256": "81776ac154dd91326b0cf10a401b0c416b81d1c87e763cb3348ec9a4c3b7149a",
+      "bytes": 3679
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-profile/domain/authProfileError.js.html",
+      "sha256": "18cacf5c570f9de386588ea31dbcb59ed533a886f7f58422298a90ce5582a74d",
+      "bytes": 4018
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-profile/domain/index.html",
+      "sha256": "5a79003efb322a893d610b385fca163761d7ac84784ebc3547037e59893db257",
+      "bytes": 4559
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-profile/index.html",
+      "sha256": "72d275b47f293763177b586e8d853270a193319f7efa1e121b9cb4f7003174f7",
+      "bytes": 5140
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-profile/index.js.html",
+      "sha256": "451aabb9c85ca001712395b30363be5b189e557dbcfc2b2720a73f777f84c5c6",
+      "bytes": 3480
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-profile/infrastructure/repositories/index.html",
+      "sha256": "2c72b2fcffa3fb73600904f55466bbaf3f17fc1f8720fc57a4a24fc0cbf7785b",
+      "bytes": 4636
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-profile/infrastructure/repositories/supabaseAuthProfileRepository.js.html",
+      "sha256": "0972e7bf5847e86284d495661d284a4b83f6074a714cbc3cedaced4f9e81247d",
+      "bytes": 12642
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-profile/presentation/createAuthProfileService.js.html",
+      "sha256": "1e594917d010d5273b7010f8202ef44ec86168c5d8d392cdad5c7cded4380671",
+      "bytes": 4705
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-profile/presentation/hooks/index.html",
+      "sha256": "63d55792e49c535f9e98fc513f25ba7792f7053354d90f8cda5129247dd54ff5",
+      "bytes": 4565
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-profile/presentation/hooks/useUserProfile.js.html",
+      "sha256": "b587079e50c7df42aa5111989b4f15d3ba60f1e15889e750a5f1a965336e7f62",
+      "bytes": 15837
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-profile/presentation/index.html",
+      "sha256": "49ccb352879d19f0adc7e6d8db97fe32c1802c79a30ae9f3059d459e7e1d3329",
+      "bytes": 4587
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-session/application/useCases/createAuthSessionUseCases.js.html",
+      "sha256": "68b87e3dd52a343cf87583eb8dd834bc0d63c55ee304f08725926cad072ce7a1",
+      "bytes": 18690
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-session/application/useCases/index.html",
+      "sha256": "badc19cce5668d6e7a4d0e993159426bdf220e3876cf78cd632fccce3f9e89f4",
+      "bytes": 4664
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-session/authSessionService.js.html",
+      "sha256": "8e69a4fb3c6b1c43a8c2ee7cec37467202f55cf46b49e0655c1ddaf47b483361",
+      "bytes": 3679
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-session/domain/authSessionError.js.html",
+      "sha256": "03f44712b1be52a0db39576ce7fc48ebe932a307ba7356962756b1250ee87598",
+      "bytes": 4507
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-session/domain/index.html",
+      "sha256": "5a0455e0b0ec768baa51dbb015d032b90b467b2a8f7658955a5343b9c93b9255",
+      "bytes": 4511
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-session/index.html",
+      "sha256": "ebf80e36c2e636f15b973da865689a47d7a28d2e558dfe92060408377505e76a",
+      "bytes": 5140
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-session/index.js.html",
+      "sha256": "db4aa75ca0770ecc6647cbb5ecc1c7af21fa029f09732cc8f116a7e168a60053",
+      "bytes": 3836
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-session/infrastructure/repositories/index.html",
+      "sha256": "0297971820435608543f4cbcbe7be2d98f6e3c638329f287b834d26be2cc0f6d",
+      "bytes": 4628
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-session/infrastructure/repositories/supabaseAuthSessionRepository.js.html",
+      "sha256": "894dc3a01fc2409a9cc2382e62d8249ba2f48659af74625d258eec78d7388992",
+      "bytes": 31453
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-session/presentation/components/ChangePasswordModal.js.html",
+      "sha256": "35f7511154ef91bb00b47399854033d0f9ecd1c2d5869cc37d24e479da98b756",
+      "bytes": 40737
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-session/presentation/components/index.html",
+      "sha256": "447fbcb40326910ed1870f567aa336039b74dc887b6e157da80d5109de82822c",
+      "bytes": 6096
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-session/presentation/components/Login.js.html",
+      "sha256": "0b15f62e59db7878ac4bc3e33b76616708aa619c4c019634f48114abe2dfd66c",
+      "bytes": 93128
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-session/presentation/components/ResetPassword.js.html",
+      "sha256": "a7589be7e2e3616a0ef59ef65e563111398904dbf8a234260ba090d9cc8397ee",
+      "bytes": 48642
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-session/presentation/createAuthSessionService.js.html",
+      "sha256": "fcf673e83e729932c4a7dac67622c878b2d5f4c56374a35fe8aa7a309b9e85c0",
+      "bytes": 12325
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-session/presentation/index.html",
+      "sha256": "f74178dfaab2a6ad19a952987ec349e83b42ccb11b5ff4500592c24b2578db1c",
+      "bytes": 4617
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-session/presentation/utils/deferAuthEvent.js.html",
+      "sha256": "af46a34401157be5507d2523aed70d7d7b02c274b02ebf7241bf23b77023360b",
+      "bytes": 5218
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/auth-session/presentation/utils/index.html",
+      "sha256": "b4c4e256f8d3706c22e27cb01ba3ed1b446cd7495d8a4e50f59864e82d7a0165",
+      "bytes": 4611
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/communications/application/useCases/createCommunicationsUseCases.js.html",
+      "sha256": "131a81f0349ee17d4bde4f67f9a4b5552c99e00bda096a8bf7320607b0b5a2cb",
+      "bytes": 8994
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/communications/application/useCases/index.html",
+      "sha256": "41512c62f0cfcbc8d472e1c20620977ffb5157244f4492d3dd416a56482c2abe",
+      "bytes": 4665
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/communications/communicationsService.js.html",
+      "sha256": "a9720f85f73c0e673d2b5cd5b4e1e6c3a420fc853108de80d3d267de888bf18b",
+      "bytes": 3642
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/communications/domain/communicationsError.js.html",
+      "sha256": "6dc96083408338d65e3a543d669f326ee2c761bb107307fd5ffd34f02dc6f0f3",
+      "bytes": 4216
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/communications/domain/index.html",
+      "sha256": "3fadc7b390676aeb73a8e50988fe101e2eb46efca9f0178183b1064180e43e85",
+      "bytes": 4564
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/communications/index.html",
+      "sha256": "afa89e01890fccc6a26cc5ffefc9f35260c62f719e3a892275d12fa700aed05b",
+      "bytes": 5185
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/communications/index.js.html",
+      "sha256": "461a3ee08761724191889a96af946d3a57652b902e4559a75a1d0e616473febf",
+      "bytes": 3331
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/communications/infrastructure/repositories/index.html",
+      "sha256": "eb0db1b01c25f98e1aced82fbd5e8c3e2a34ecff7f625670ab4974a2df1e61e8",
+      "bytes": 4693
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/communications/infrastructure/repositories/supabaseCommunicationsRepository.js.html",
+      "sha256": "181fd537f861b0324870073a3db939b0eef94a1e6e79a56a84b1e87d2e905c2b",
+      "bytes": 27655
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/communications/presentation/createCommunicationsService.js.html",
+      "sha256": "96db3f62fccb187c289b62e1e770ee11855b1ba37eedde7dd719a81a4b8ec5fd",
+      "bytes": 6294
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/communications/presentation/index.html",
+      "sha256": "36b4c4c43f7e66692a84049eef4be7bfc24c8bf605dc82541a43def0247f8d93",
+      "bytes": 4608
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/application/useCases/createGamificationAdminUseCases.js.html",
+      "sha256": "dbe79ca9f1c562971338a3fe6dd8db16c3a85d0c10697c5ebc917c2872a7f4e8",
+      "bytes": 23041
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/application/useCases/createGamificationFoundationUseCases.js.html",
+      "sha256": "8161505ca5b7dc4423018b92d41f1d048359132d37e8de88f04b2783c023534e",
+      "bytes": 19139
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/application/useCases/createGamificationUseCases.js.html",
+      "sha256": "89a96cf2b0e44f661c7dead34a09d06125eb0b3eba28284515f263209332df1d",
+      "bytes": 624099
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/application/useCases/index.html",
+      "sha256": "800435bccca1b3943ce6eeb581eb880d7d79104ce9fba98027be12786043f071",
+      "bytes": 6237
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/domain/avatarCatalog.js.html",
+      "sha256": "2a408027d88e21e77a40391d305d4c4e24169d1b325bd7655c7d063b39c4517e",
+      "bytes": 42215
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/domain/buildAvatarUrl.js.html",
+      "sha256": "517ad3cf6d1c40a31a37962cbd7f4c4a09457cba5ab0974c148fd1ad90181c7f",
+      "bytes": 8037
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/domain/gamificationError.js.html",
+      "sha256": "652553c1c59c114fff9f6da837f471e384c57405bd20c5d03087f5bcd5283cb9",
+      "bytes": 4083
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/domain/index.html",
+      "sha256": "47b65e2074145b58a37f21160a2a755ff80a81b14dccb2e6370bc83dd5cbb2ee",
+      "bytes": 5984
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/gamificationAdminService.js.html",
+      "sha256": "43a385175907ddb64b44a47b766248a26c7d5b6fb244790e1ec21d07f7315c24",
+      "bytes": 3715
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/gamificationService.js.html",
+      "sha256": "3e4cde4864ad5ac2d3a811e712bfef42c32d96f3d5586d7ff672bb109192cfe8",
+      "bytes": 3626
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/index.html",
+      "sha256": "5466d5d0d44c930405d6c73ba032340f8fb17535b3c688839cc8c0efc991d67a",
+      "bytes": 5869
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/index.js.html",
+      "sha256": "58e47888010935ecf905dc49ba4cfadc3f98f16a2813a4a7b423781dcd8b9851",
+      "bytes": 4245
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/infrastructure/repositories/index.html",
+      "sha256": "7d411470d2c4e0e8febd6d796b1da2510c9639853308a092fe6016054aafd772",
+      "bytes": 4700
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/infrastructure/repositories/supabaseGamificationRepository.js.html",
+      "sha256": "fb3299a69e2d5690099a6e18a0da74cbabb362d93e38aa93dd9f7918be22666e",
+      "bytes": 165956
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/presentation/components/CategoryLeaderboardsPanel.js.html",
+      "sha256": "b62164948f5d7f943e5b9216f5d5bbd0ff37c354a1d03ad137af3a733994ba80",
+      "bytes": 71097
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/presentation/components/cosmeticVisuals.js.html",
+      "sha256": "b43b87dcb17556e76fd66323db8f1ccd48223031cbdced4812b9e6bb6a33884f",
+      "bytes": 37293
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/presentation/components/GamificationAdminPanel.js.html",
+      "sha256": "a12913ca84246e9f19ada06792f4037983694c649e4a07b85ada2b622941186f",
+      "bytes": 213212
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/presentation/components/IdentityPortrait.js.html",
+      "sha256": "e23c0a7a602c4081dd69711ba2ff32074c539884dbfddca7c820419477ab998e",
+      "bytes": 42563
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/presentation/components/index.html",
+      "sha256": "6e5434d125237a4f2a6c6123e46d13a880362c808604838e84cdf51cedbcbcf3",
+      "bytes": 7567
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/presentation/components/StudentGamificationPanel.js.html",
+      "sha256": "49786372d220461f38863d6214f7d04a23a6ecbdd0791d60e80cc3e0729d975d",
+      "bytes": 497456
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/presentation/createGamificationAdminService.js.html",
+      "sha256": "87f149d2426f92842a7c7b87d0a04260785b745fb217588d152d1955a1e444bc",
+      "bytes": 7919
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/presentation/createGamificationService.js.html",
+      "sha256": "59ad2d9f4a845be2af50d60131a84629839c1e440a9902341b9193d548073d94",
+      "bytes": 15613
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/gamification/presentation/index.html",
+      "sha256": "b51eb5d94ea976907c29e730be4811b12a6dbdfc3870aa7821c1ea7824a5311f",
+      "bytes": 5322
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/notifications/application/useCases/createNotificationsUseCases.js.html",
+      "sha256": "883e65de79724da35811c314f7fc78b11d0fad4e03f13ca808b516f9a9b2fd29",
+      "bytes": 39226
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/notifications/application/useCases/index.html",
+      "sha256": "16c293ca23c40e8ac0256559b845b92b9439dfd4f670185ed83ee3a7b1671efa",
+      "bytes": 4683
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/notifications/domain/index.html",
+      "sha256": "5526fd8ae1a2f695e275e4017602748840baeb7f22a16fe21fa19a1aeb0974ab",
+      "bytes": 4559
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/notifications/domain/notificationsError.js.html",
+      "sha256": "5d49a1ea9c9a229f5000174db7e7f04af48d9fa360569f3a56ebf46b3380f621",
+      "bytes": 4209
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/notifications/index.html",
+      "sha256": "c84e7a54725e965ab1b56556665a6d420cb124d04b3cad0cf01fe628ffed867f",
+      "bytes": 5148
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/notifications/index.js.html",
+      "sha256": "3b72c4c51b539d8575c7687da020aa4b9f34feac963c9ee6be82d122d5890a11",
+      "bytes": 3691
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/notifications/infrastructure/repositories/index.html",
+      "sha256": "c5e86ee5f8ac87c6b6e28720072c703a3827a9878b10cf6d34ef03f9ce355f99",
+      "bytes": 4676
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/notifications/infrastructure/repositories/supabaseNotificationsRepository.js.html",
+      "sha256": "cb5bee6da29639657ffba61826eea62cd2982d7e9db57b2822158dafef598bca",
+      "bytes": 25070
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/notifications/notificationsService.js.html",
+      "sha256": "f6e2036e2ecdcfcdbf7e8f98b74fda179f66900b66c127320bd951561cc4e651",
+      "bytes": 3693
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/notifications/presentation/components/index.html",
+      "sha256": "ebf419d6a22490eabb379304ce98c7054edf2da502130f4071c8b17e75615f56",
+      "bytes": 5316
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/notifications/presentation/components/NotificacionesPagos.js.html",
+      "sha256": "8734e393f9c2cd977be0b29249b96284d99fc8d7e52ea398ea5f80753879601e",
+      "bytes": 27305
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/notifications/presentation/components/NotificationBell.js.html",
+      "sha256": "13fdd1a42664b96e6324c684bcc3f043dd6c806ecd337b6dbd9b4b7766192a6c",
+      "bytes": 60962
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/notifications/presentation/createNotificationsService.js.html",
+      "sha256": "11374ed51ad22f6e19fe1fef70c664cf83a3a2f7b6f6451b6a05495f8d6be963",
+      "bytes": 7852
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/notifications/presentation/index.html",
+      "sha256": "9b715922d925f217145cc8eb86a4cebdf9068923d7c51270036b7a7f8493cdb2",
+      "bytes": 4605
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/payments/application/useCases/createPaymentsUseCases.js.html",
+      "sha256": "5042a1cac38e3d950dc43342f06621014c56a5b7f5a5e2e71571a101301240ee",
+      "bytes": 96894
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/payments/application/useCases/index.html",
+      "sha256": "3fef905a0b11682b8f04f538c57fb09c6f13ff48d6314e6c9d63d4a99ce4b3aa",
+      "bytes": 4672
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/payments/domain/index.html",
+      "sha256": "8e13c4a30716f19fccb774cc583a2ac54d8992c0d0e261b9447c0eeb48fcd807",
+      "bytes": 4534
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/payments/domain/paymentsError.js.html",
+      "sha256": "8373fb62644bf886131a67e68144db30ac6b237cc4ffb67ab6f70c75f8569d5b",
+      "bytes": 4065
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/payments/index.html",
+      "sha256": "e51bd150ff2604fede0e72d2e7150c49b3554b9669501e8808dbd8a5a6008bbe",
+      "bytes": 5123
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/payments/index.js.html",
+      "sha256": "96e165d5243ca95f76013c8cd8626961152c46cba55f5ceb65a608927e632624",
+      "bytes": 3478
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/payments/infrastructure/repositories/index.html",
+      "sha256": "65283a103f71aa02ef7034ec411b6070744c66bd432502c569008d90ca4037bc",
+      "bytes": 4696
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/payments/infrastructure/repositories/supabasePaymentsRepository.js.html",
+      "sha256": "23319955fc671c85ad75a0f880e4d5123a5e4e7c9047d689795431477aedede9",
+      "bytes": 28037
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/payments/paymentsService.js.html",
+      "sha256": "35f988c210c98a50b781a0284e348fe81e222fa3b4b1c7ba26177a59f94b683b",
+      "bytes": 3653
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/payments/presentation/components/index.html",
+      "sha256": "ac157971c3511f599cd27e64763429ed656c8bc2b6ad49f868638c1ce6f9d9fc",
+      "bytes": 4573
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/payments/presentation/components/PagosManager.js.html",
+      "sha256": "01e651e4ec5939644367f06e413c74400777582e801717f02b1094d3f841c003",
+      "bytes": 201717
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/payments/presentation/createPaymentsService.js.html",
+      "sha256": "de708f94d0ca845c11d79e9bd8091fcdee73addfc82ec88793dd97f66c9f30cb",
+      "bytes": 15174
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/payments/presentation/index.html",
+      "sha256": "647d1477af3ee83895809236656b82a899908414ff1a392d9cf6bf81735ad9ec",
+      "bytes": 4612
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/physical-tests/application/useCases/createPhysicalTestsUseCases.js.html",
+      "sha256": "a2163ce810ad08ee28551b9c353e9e80efdf37f0d104df84f8e56c1de701fca0",
+      "bytes": 48212
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/physical-tests/application/useCases/index.html",
+      "sha256": "338bbccfe450ce002fed0be7b592c63119fc918dc1146ba0af7314b9a0920787",
+      "bytes": 4695
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/physical-tests/domain/index.html",
+      "sha256": "cd9e310fc6d4b19b1ea265faf5505f4308db39b89e8aa96818dda2148775d419",
+      "bytes": 5260
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/physical-tests/domain/physicalTestFieldMetadata.js.html",
+      "sha256": "3513edc1ce2cfc8b841dcb1ae0741f12e45dee51e7e59cce3c620aca104d333f",
+      "bytes": 13829
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/physical-tests/domain/physicalTestsError.js.html",
+      "sha256": "1c7fdd4fb3f207e17786cb06bf9162c8fe16c4935f25cf8a85a6c76a1a9c497f",
+      "bytes": 4521
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/physical-tests/index.html",
+      "sha256": "a4eba55707845ce1f50d18853efe1c5f2dffa173c690c470af5ae7dbd55fb327",
+      "bytes": 5150
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/physical-tests/index.js.html",
+      "sha256": "a9fb0424b9af16848227c2a93549607d3b0873792a4faacd9ff9ec75342eee8c",
+      "bytes": 3900
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/physical-tests/infrastructure/repositories/index.html",
+      "sha256": "efd7cfbdccdec2dd2a4555ee425680b9f79cbf83d7fecf6275acb83837d04750",
+      "bytes": 4655
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/physical-tests/infrastructure/repositories/supabasePhysicalTestsRepository.js.html",
+      "sha256": "373b14a084412a2258c81becce3b2fecd41944d9d4e237e5075c4a4813ac3f30",
+      "bytes": 18337
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/physical-tests/physicalTestsService.js.html",
+      "sha256": "6cd90a18b702a97ec1317293f092752ffd2639e96d9af8d7b8e839a5f582e59e",
+      "bytes": 3695
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/physical-tests/presentation/components/index.html",
+      "sha256": "16f51ffe0429592ba3eea84f891beb824e307bf301551d7e62011fa9164585b6",
+      "bytes": 4603
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/physical-tests/presentation/components/shared/index.html",
+      "sha256": "67a86e1138d18e20dc38e9c771f60ca8d694018ec18c672bf4cef65881e8263c",
+      "bytes": 4626
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/physical-tests/presentation/components/shared/PhysicalTestChart.js.html",
+      "sha256": "31d37f6b9ad92353b8ed07544e01bab853b2dd590f8149960e871a504483006b",
+      "bytes": 57070
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/physical-tests/presentation/components/TestsFisicosManager.js.html",
+      "sha256": "106487d9bb0317094eff2addecf1677e012a9011e6fbb17ca31e362a132c0891",
+      "bytes": 195038
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/physical-tests/presentation/createPhysicalTestsService.js.html",
+      "sha256": "e328b877ec48d1216b41e1ebe5735ece8a8ff3a6023cdb67e123e91d005f71bf",
+      "bytes": 8450
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/physical-tests/presentation/index.html",
+      "sha256": "2428083601f17aaf9e06d3d0dba0526fadb5844477aed28a971766e3940095b1",
+      "bytes": 4612
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/application/contracts/index.html",
+      "sha256": "0742c81d37865e97b795041d7296d9b424c0ce27d821d4274bcc0d4454371a46",
+      "bytes": 4655
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/application/contracts/reportingRepositoryContract.js.html",
+      "sha256": "58a1d4e84d9000e121e254185fcb8891e264411a1603f5846b6cee255a33fc89",
+      "bytes": 6157
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/application/useCases/deleteRunUseCase.js.html",
+      "sha256": "e6c883a8807b0a8ec9f17fa572cd04d0dce18f36703ad27bbbf58556f82a927a",
+      "bytes": 5723
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/application/useCases/downloadFromSignedUrlUseCase.js.html",
+      "sha256": "7827966be3a49182f8ef27635d50f1b221d2cde124f2c79abfbbcc6b7ea7f910",
+      "bytes": 5808
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/application/useCases/ensureDailyAttendanceReportUseCase.js.html",
+      "sha256": "f47865a4d7b161ef242a3b42c53a5d7a3bcbeb0eaf52fe435a170742810fc65e",
+      "bytes": 8977
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/application/useCases/generateReportUseCase.js.html",
+      "sha256": "f434fbff451a9ea1dcc6969197368e87bf20c58d1aa0a17816d3f71ee2672966",
+      "bytes": 6578
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/application/useCases/generateScheduledReportsUseCase.js.html",
+      "sha256": "01a912ffde8e12e9ab34cd55daf15354a59557d460c308e1c51a31f78d414c3f",
+      "bytes": 4995
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/application/useCases/getDownloadUrlByRunIdUseCase.js.html",
+      "sha256": "32d4965112454cabacebaa76528964166af7988803e666c787a6aad56e64d74d",
+      "bytes": 5775
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/application/useCases/helpers.js.html",
+      "sha256": "c78d41f5f29414eed9098e2fb45beca57b65ff399df0d8e06cecbc60f7f9eb0e",
+      "bytes": 4998
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/application/useCases/index.html",
+      "sha256": "d6946b01552b9c8ff9b21315bb6d364ce6a9176523976b43d3ee0821251d85c5",
+      "bytes": 9658
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/application/useCases/listReportRunsUseCase.js.html",
+      "sha256": "6f7630f2abb9f55eef0b7115d766ce6444619e1399b3e8165131a0a18af6eb59",
+      "bytes": 5754
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/domain/index.html",
+      "sha256": "b2557ae032ae68a17b8d947cec223c3a5a29c4e7c0d9fc2179403724d5c74d30",
+      "bytes": 5976
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/domain/reportingErrorCodes.js.html",
+      "sha256": "41447141efa7bbeb1b8ebcf0b69a5b797ef7d8aa1e87d323528d41428944a1e4",
+      "bytes": 3966
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/domain/reportingErrors.js.html",
+      "sha256": "7d87bf9741deeda29434d744ffa5cdbbe4abf08714658b7edd2efa7c0077a858",
+      "bytes": 6544
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/domain/reportingPolicies.js.html",
+      "sha256": "b9bd8fc86374c20bd4ecaac99c121d257b94732ffbbab9b1071f88a8f9438f92",
+      "bytes": 5238
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/index.html",
+      "sha256": "1502bc009fdf19866b3b824dd50f0d315eb2fac27ac2497edbbcdf48dda86bee",
+      "bytes": 5128
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/index.js.html",
+      "sha256": "7348006962126f4a3ce44d62485282f682f3790247fb564e12cbb5254e8d2fb5",
+      "bytes": 3311
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/infrastructure/gateways/browserFileDownloadGateway.js.html",
+      "sha256": "40cf34aceb111f4736c30653fa6323e444a7bd2c5c3d2cb6b91794ae479bb081",
+      "bytes": 5000
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/infrastructure/gateways/index.html",
+      "sha256": "58af55c15cf73461d2cb695d0fa0f7189055eb069b569a9dcfb13f18091c7dd7",
+      "bytes": 4593
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/infrastructure/repositories/index.html",
+      "sha256": "2b3b51f1754e46094e2bb13587c56496dbf337661bc3a260c53ee89efe648446",
+      "bytes": 4674
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/infrastructure/repositories/supabaseReportingRepository.js.html",
+      "sha256": "3c24581240da1eac93655bc6839c9eb43ac1bbc476efb5a989a7310439316a35",
+      "bytes": 29480
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/presentation/createReportingService.js.html",
+      "sha256": "3fb664ff88677fd0e7feb869de5606420a0ccfdcd5cc6f0614fcadd4c967b2b9",
+      "bytes": 10087
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/presentation/index.html",
+      "sha256": "3c4cb586d4226f8dc7a33ce205072b723086585dded6fdcba1457992cb560509",
+      "bytes": 4606
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/reporting/reportingService.js.html",
+      "sha256": "a9b4201ce61753191a790fe18b60100449747ea116cd4437cced7a0b6aed256b",
+      "bytes": 3661
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/schedules/application/useCases/createSchedulesUseCases.js.html",
+      "sha256": "529e9a91dfc049f8908125acd10347d142fe06faaeb6bbb57f14e98872fdfd92",
+      "bytes": 13811
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/schedules/application/useCases/index.html",
+      "sha256": "f44486fcf0f6ec27c6fdb83e50ee6b3a8610a5120ef220a73d9c51bf497bcc91",
+      "bytes": 4666
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/schedules/domain/index.html",
+      "sha256": "98dd639575d8bcf068308b14a4ca3775f94d16934b504ef6d6ca226d24bc2e33",
+      "bytes": 4499
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/schedules/domain/schedulesError.js.html",
+      "sha256": "66e8002aa7638c070684c20b717672b9002b121f81897eeb7706b7987ac2e57e",
+      "bytes": 4490
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/schedules/index.html",
+      "sha256": "e15b66003c70624db44bccc306a610932fa9d3c47140616d6cee638de3e1235e",
+      "bytes": 5128
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/schedules/index.js.html",
+      "sha256": "97ce907e5ce73dddbd1f8fa3dbdfd5d27cea434ebc462d692b67302df37e3c3f",
+      "bytes": 3488
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/schedules/infrastructure/repositories/index.html",
+      "sha256": "f99f5e5a9a774c9d44f276238c2f48b26d07813c33a19b0171528e928859f02b",
+      "bytes": 4633
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/schedules/infrastructure/repositories/supabaseSchedulesRepository.js.html",
+      "sha256": "4cb0cf8078fbdf34573410a39ff9bf3711e130232a9e1d37737d9062ce31877d",
+      "bytes": 15304
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/schedules/presentation/components/HorariosManager.js.html",
+      "sha256": "a05d772dcaba0a953fb719bddebab1bea4ba09d5088d8372b4d29fe4e3045e9c",
+      "bytes": 104043
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/schedules/presentation/components/index.html",
+      "sha256": "9dde1c5c63c0669ca08be1f5c6b79235e3e3c87ef99cfcdceb607fc59a05e089",
+      "bytes": 4572
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/schedules/presentation/components/shared/DeleteHorarioConfirmModal.js.html",
+      "sha256": "1e75e632ad42d6d1d77bf20bba88665c0ea522330aa30112f7a437cbdd7f6040",
+      "bytes": 8948
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/schedules/presentation/components/shared/index.html",
+      "sha256": "92e0c647a0b02c38d060ae49bee132781a5f365b82713ccced109b4d0dddd972",
+      "bytes": 4628
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/schedules/presentation/createSchedulesService.js.html",
+      "sha256": "d0dce9c99e4f29b9d2c266fbca8fb5c18c8bc55301e6f334a9ecc2e723a1ccee",
+      "bytes": 6524
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/schedules/presentation/hooks/index.html",
+      "sha256": "f0dce4091186774d434b4e045ddb76dc681acee6492cf1bd1c5649a3c40a07f3",
+      "bytes": 4580
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/schedules/presentation/hooks/useHorariosManager.js.html",
+      "sha256": "5338b7ccf50fb270060078b7d6fe2b0a12f0a94524ddad0b38a1cabba0af5efe",
+      "bytes": 86135
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/schedules/presentation/index.html",
+      "sha256": "9ac5e56d962b065ea8c7bfe64d7c00e0845d3c6d66e4ee87310e60df01b03f04",
+      "bytes": 4586
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/schedules/schedulesService.js.html",
+      "sha256": "31be50d58064105e3ff1259da71383f36b24430e1ea517a8ead1fb31c67e0323",
+      "bytes": 3661
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/application/useCases/createStudentDashboardUseCases.js.html",
+      "sha256": "89803ba154fb19086c893137466df818bc89bcfb2f2b9d1c910997e02938856d",
+      "bytes": 36122
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/application/useCases/index.html",
+      "sha256": "88955b44d4272d2fa290398027aea6625e3164f36cb0a7da0b8337940cd10d77",
+      "bytes": 4708
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/domain/index.html",
+      "sha256": "3ff6533ce6bc7361cb8bf40d07e6338d695724af41ac81c260fac51d3381b9ac",
+      "bytes": 4576
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/domain/studentDashboardError.js.html",
+      "sha256": "dbf9870e7fa84f81deaf98636a0700efbb2a060e7d6afe2859d2e3b6966ce42d",
+      "bytes": 4115
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/index.html",
+      "sha256": "0a178d72d17413b75f99298d2f2aaff2c9d08414ac662ab846527a3fc5304e59",
+      "bytes": 5165
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/index.js.html",
+      "sha256": "24c861005054d1cca58ffa375c001d6ac8a1883cf2428a852e432d30a4027fb3",
+      "bytes": 3681
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/infrastructure/repositories/index.html",
+      "sha256": "c27cb660f982186b822eb32a8eb32034f057a9c0797e3433007ef2e2cc45d4f8",
+      "bytes": 4735
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/infrastructure/repositories/supabaseStudentDashboardRepository.js.html",
+      "sha256": "56b7aeba00cbbb4bba8d93bdcc57bf4ed3a0e01ccece941cbf5f666acb75dd13",
+      "bytes": 19385
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/presentation/components/index.html",
+      "sha256": "71bdc33c0c2adc6def7ee7accb2db17eaa144c7695304c30d1a593ba842871f7",
+      "bytes": 6739
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/presentation/components/physical-tests/buildStudentPhysicalProfile.js.html",
+      "sha256": "b1409ce971f2fda0a87e89dd271ba5a012e6157e5a2008cb81618d4cf729b71b",
+      "bytes": 81282
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/presentation/components/physical-tests/index.html",
+      "sha256": "93a4cf6c947dda8a680aba7b6283fd3fd8511656f9c00e1a4f3c5e2c519942c4",
+      "bytes": 8378
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalHero.js.html",
+      "sha256": "e097f1654fac92951557c5b1d39af46068f1633ab688b9c984e7612880072758",
+      "bytes": 10838
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalHistory.js.html",
+      "sha256": "f885df4fb549ca9434e7cfef1efaf1b3e8e27047cf200160520a66018128c089",
+      "bytes": 10550
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalInsights.js.html",
+      "sha256": "91ab754ccdc5b0b52f3b69c15b767ad3546f0fe58dfd2c22cb6c6f5bc0074e06",
+      "bytes": 11343
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalRecommendations.js.html",
+      "sha256": "c0ecf51f86977f486a7a32aa7a5b907c18c4b756da7a86f70a8b4caf0da29509",
+      "bytes": 10133
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalTrendChart.js.html",
+      "sha256": "cc41d27d319893c324723210ff690fd8465c44f02d11964549b36fd1db0e3a6b",
+      "bytes": 17957
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/presentation/components/StudentPanel.js.html",
+      "sha256": "a4112eb6980c096a0df7c23bd6a31a2d3dddbf09b44da8cb1369147f5c928dea",
+      "bytes": 89382
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/presentation/components/StudentPhysicalTests.js.html",
+      "sha256": "d50362a64b60edcf0868493e26d812fb634d8bfb95c87434dfc2cf1ff7064c98",
+      "bytes": 11136
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/presentation/components/StudentProfileIdentityCard.js.html",
+      "sha256": "024c53c454d19e031c152842e9e4488b6d9b6ca09c9e5842c2f7e69499734775",
+      "bytes": 73786
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/presentation/components/StudentView.js.html",
+      "sha256": "85730cf91aacf8139c475148d2494ee153d7e5e14bf33d2dc1745689efe3a847",
+      "bytes": 58890
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/presentation/createStudentDashboardService.js.html",
+      "sha256": "8bfaa18c0f02f8590fc3e3ce647caff2f18b2eaaceedaf3ed76f84f4c8f08278",
+      "bytes": 8004
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/presentation/index.html",
+      "sha256": "b0f571516c76689535a7c9a70361385804d043d1e7ad39ee5f603ecd5660a0a7",
+      "bytes": 4630
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/student-dashboard/studentDashboardService.js.html",
+      "sha256": "42b36e1165e5932deadf158999d7ea75ff4f12b24b29952b8463c6e2b5570421",
+      "bytes": 3719
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-dashboard/application/useCases/createTrainerDashboardUseCases.js.html",
+      "sha256": "c27addd279893a661f922233dd06843eb0db8173f13ce2cfad4b025dd3bc0af4",
+      "bytes": 14802
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-dashboard/application/useCases/index.html",
+      "sha256": "dbaffda0d2e1d46eac403916bbdefd64581984d28c87677ffdf9d554f545ce8d",
+      "bytes": 4684
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-dashboard/domain/index.html",
+      "sha256": "42d2c68797cf048497ff68dd292412724c6a100078b860716479247b359b121f",
+      "bytes": 4536
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-dashboard/domain/trainerDashboardError.js.html",
+      "sha256": "d92b3ea0bef50db83ba9225447da5403eb9bab2c13b52eedb41d8a1b33ebe57f",
+      "bytes": 4360
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-dashboard/index.html",
+      "sha256": "de2d1aaafca808b84e2046f97fe795041fa56a07e6109be2bbeb6b875d6e408a",
+      "bytes": 5165
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-dashboard/index.js.html",
+      "sha256": "f648d2157ae3126b55a1b6f49fbb72f3f5a1b79cd0783f3008c66d2d534d83f4",
+      "bytes": 3691
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-dashboard/infrastructure/repositories/index.html",
+      "sha256": "38036f01aa2c37c2e61b7e6c1cab548f8dfb96e229cb8ad8f83077d585138109",
+      "bytes": 4670
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-dashboard/infrastructure/repositories/supabaseTrainerDashboardRepository.js.html",
+      "sha256": "0fcaabd43e389373a2cb59d55e6b4c46e593ee8c0aea7d93cd2d042d4c6d6439",
+      "bytes": 13347
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-dashboard/presentation/components/index.html",
+      "sha256": "aa76bcd576d233818abbb3aafe11a366875d64d875e4bfef9be4cb78464b3434",
+      "bytes": 5246
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-dashboard/presentation/components/TrainerDashboard.js.html",
+      "sha256": "a330caf78b633c5db8477b6aea14a5e9676d9f6075e67c18e36ecaf4e9b951f1",
+      "bytes": 28976
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-dashboard/presentation/components/TrainerPanel.js.html",
+      "sha256": "b972d88eafacf29d84c69bb73d9b2aa5f6aa53c4161bef07cc90ae37c4f112bb",
+      "bytes": 35404
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-dashboard/presentation/createTrainerDashboardService.js.html",
+      "sha256": "1f60f499d4d8a8754809ad68e421f57db8026195c3bc7243cd2495665508e7be",
+      "bytes": 4818
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-dashboard/presentation/index.html",
+      "sha256": "fe85fa6443ef97b64302cdcad28b3730c4d6b270744c7b8683dbe67f9efeb0d7",
+      "bytes": 4612
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-dashboard/trainerDashboardService.js.html",
+      "sha256": "155e078b4d4cbea5c1e3b759c3835b69fc895be86f525440c0c75dd325f1a7a6",
+      "bytes": 3719
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-management/application/useCases/createTrainerManagementUseCases.js.html",
+      "sha256": "afa406852cfff0c572863aa5516b847e5e97c3595ac036caa095e6e2be431842",
+      "bytes": 10354
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-management/application/useCases/index.html",
+      "sha256": "9fc7b4a96758564b3ec588cfe7db483f4859dc803fec2164ce2ea89ee3f4a9fc",
+      "bytes": 4684
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-management/domain/index.html",
+      "sha256": "6551a692495f0b238c9598eaa599dee7f54d4ab286604336ffbb61a3ef6652a0",
+      "bytes": 4541
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-management/domain/trainerManagementError.js.html",
+      "sha256": "61580dd2d360dced07c344e62692eb7f4d42a72b3cf5e155cd99f78c701d4b61",
+      "bytes": 4549
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-management/index.html",
+      "sha256": "e1a24eaa3dd774dbb1346588075ca16a5c4ee531f5963d4f23da1d1f02a1853d",
+      "bytes": 5170
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-management/index.js.html",
+      "sha256": "6e0401f8f9165164cb22d4fec6d33b6b984bb6fe82267886e94ed6901154c9b8",
+      "bytes": 3530
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-management/infrastructure/repositories/index.html",
+      "sha256": "45ff67267e56bc809620947ee9523105e49893c697e023a9b77d284cfe74783e",
+      "bytes": 4675
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-management/infrastructure/repositories/supabaseTrainerManagementRepository.js.html",
+      "sha256": "cf1b4fab8392e78cb505bb6b6b3b7e9b6949c2f0ff2054ce15e7090f842f0e0e",
+      "bytes": 13908
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-management/presentation/components/EntrenadoresManager.js.html",
+      "sha256": "945106a98f6d989189796a46456b85046036eeb44d5b45dc4ddf47d88628b883",
+      "bytes": 58710
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-management/presentation/components/index.html",
+      "sha256": "dbd8c985bd7caeef6a1948cfc608e568a735d01ed9fa2a3569b06084201f2e69",
+      "bytes": 4602
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-management/presentation/components/shared/DeleteEntrenadorConfirmModal.js.html",
+      "sha256": "5f55526f526a18da835e0c492a87faab37b0e12c8535a9e3f184c790c5accba8",
+      "bytes": 8987
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-management/presentation/components/shared/index.html",
+      "sha256": "1c561cde03b139848b21b17b94a42e1ee8e13e6a23829c7bc9513fa0eb10e81a",
+      "bytes": 4655
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-management/presentation/createTrainerManagementService.js.html",
+      "sha256": "09b9f6e92af0fbc0dc929278b288164bcf1d9a1864f762fcddee54cdb9ee76b9",
+      "bytes": 5723
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-management/presentation/hooks/index.html",
+      "sha256": "8e77f7e063732191c91591c43b87ee3ffe60dafcf6d9681bc4247f48c103c630",
+      "bytes": 4604
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-management/presentation/hooks/useEntrenadoresManager.js.html",
+      "sha256": "dfb4f5976aeae4f8e15fec9da800ab83f30b83a5d2cd388b897a03e3c22e7235",
+      "bytes": 41130
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-management/presentation/index.html",
+      "sha256": "9422960e4cb7a4109f31403165b20436bbb9b666a894937fae328ecedf26c7d6",
+      "bytes": 4626
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/trainer-management/trainerManagementService.js.html",
+      "sha256": "73df242932e475af537b68f3a2101624c8096afa5a23ee4a65a0b01b4d95bdfd",
+      "bytes": 3727
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/training-categories/application/useCases/createTrainingCategoriesUseCases.js.html",
+      "sha256": "b2216b4050315d1f258731ded72d32f715a1b27f8aacc94187f44240efa11546",
+      "bytes": 6407
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/training-categories/application/useCases/index.html",
+      "sha256": "b4c8d82c065f68641833f2cbdd11251361e9c66703bf606c431b7ea22ca6cf96",
+      "bytes": 4684
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/training-categories/domain/index.html",
+      "sha256": "ec4c7b207bad3ef9e5ad1e832155675ed9a6512993909f2a24485a8eac520c56",
+      "bytes": 4546
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/training-categories/domain/trainingCategoriesError.js.html",
+      "sha256": "565566b4c5a042f0627069b62b2bfc01d70a0eeefdb5a79c07828fc0682c3ae0",
+      "bytes": 4462
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/training-categories/index.html",
+      "sha256": "40bbf6a9e77f3718ef551c8de1bb8a62d3f4aa6d4e34f2b64e81dcb1e7909c0b",
+      "bytes": 5175
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/training-categories/index.js.html",
+      "sha256": "529ee3bbba66c0f7e2d5c54281b1085c897ae9a2f28feb8acfa625a5dee9f02c",
+      "bytes": 3632
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/training-categories/infrastructure/repositories/index.html",
+      "sha256": "2d173957fe1ca1bd559a5cc3d03680715e53968ce5d8658c2a8946df7585e014",
+      "bytes": 4660
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/training-categories/infrastructure/repositories/supabaseTrainingCategoriesRepository.js.html",
+      "sha256": "06b68d3823100f8ea0b09d967236746f27fb78e9c37e809eba543e82f4198a69",
+      "bytes": 21259
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/training-categories/presentation/createTrainingCategoriesService.js.html",
+      "sha256": "5f31829a1a023b6e3604ff83b2c707c207144b44c73e772435854d78854b76cc",
+      "bytes": 14145
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/training-categories/presentation/index.html",
+      "sha256": "7be696100a3de62d02f7c3aa62d6005ddb26170b13875d4024969d2f485d5b15",
+      "bytes": 4591
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/training-categories/trainingCategoriesService.js.html",
+      "sha256": "a61541cbb46211527df13e36b4fc6daaf3223e144ef56f1388960fca69edaada",
+      "bytes": 3831
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/application/contracts/index.html",
+      "sha256": "85ec1690e7225d77c1d6f2dba3fa3ac38ec9b5697d2e312d67cd56533db31684",
+      "bytes": 4667
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/application/contracts/userManagementRepositoryContract.js.html",
+      "sha256": "1645612add88ec6bb77a617ad4b52e3d714b745ce9ff5ac45fd93a125496b709",
+      "bytes": 6325
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/application/useCases/createUserManagementUseCases.js.html",
+      "sha256": "1bde3283eee089764fc3fd36ab4f33ed303e49ba1b2d0613166f33ce68928da0",
+      "bytes": 63497
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/application/useCases/index.html",
+      "sha256": "45b41234f4acdbb0b04674173a5784e0702886d652b48347b03b373a0ac2f264",
+      "bytes": 4717
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/domain/adminPrivileges.js.html",
+      "sha256": "a2bb2146a935111f6b69b275417611daf103088508d54945bfb3457993c15874",
+      "bytes": 3902
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/domain/index.html",
+      "sha256": "0f404bafd218734c0ccbf76b811deb0e8422671ac61755090c3a25d64086464c",
+      "bytes": 5272
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/domain/userManagementError.js.html",
+      "sha256": "c9a436797c6e2c59a166c9d647bb02e5744f54fa66584bef69f395d893f95a4d",
+      "bytes": 4036
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/index.html",
+      "sha256": "d5369daf44dea976671d3d14aaaa0fbe9e79f05810fadb784a1755773c2e4c19",
+      "bytes": 5155
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/index.js.html",
+      "sha256": "29c2036669354f1d3fbd63462a3111889da0521dd9763e036e53977e2a8a52c0",
+      "bytes": 3518
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/infrastructure/repositories/index.html",
+      "sha256": "0ad13005d81ea348e627eb43cc80fcc5946f8551c26cb530441c49629a54f7d1",
+      "bytes": 4652
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/infrastructure/repositories/supabaseUserManagementRepository.js.html",
+      "sha256": "f3a9f3b682569639f038df6202548e11117a5a9572de4c5e15a5425a92f51c93",
+      "bytes": 75022
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/components/hooks/index.html",
+      "sha256": "3a1ded1e55ad99e594d63a400091d223a474a14fe8cf1d861d15c1e0753d3f94",
+      "bytes": 6742
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/components/hooks/useTimedMessage.js.html",
+      "sha256": "0ff2057526096c2d5251f52c3f8a845d030d9ee0fd56ac2bc079f7fa68888d1b",
+      "bytes": 8592
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/components/hooks/useUserActions.js.html",
+      "sha256": "8b744666193e67c409da2a548fce945448483c46e76fffa77369aee4c39c88d0",
+      "bytes": 20617
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/components/hooks/useUserManagementPanel.js.html",
+      "sha256": "ffd8e7fd24e11adda643db95c45f980eaa16c90e8ed78dfc09b3810a33c2125c",
+      "bytes": 10439
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/components/hooks/useUserPermissions.js.html",
+      "sha256": "8a40b3e4fc7b752bef4b8d292625f87832a199fc3e4ee33f9a478b3c72c044b8",
+      "bytes": 5956
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/components/index.html",
+      "sha256": "60966c4a106d583719b97a1a4b5aa43b64277539b33dbf743c251dc17e3f49e8",
+      "bytes": 4593
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/components/shared/ChangeRoleModal.js.html",
+      "sha256": "fae5d24caf524d9410db868f6686b4195832c58db69b38efd9247cc9d4ef0196",
+      "bytes": 23533
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/components/shared/CreatedCredentialsModal.js.html",
+      "sha256": "c66506c5f38247a68a6a48e193d7fc13083227c39889f88f8e086cf111697129",
+      "bytes": 12697
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/components/shared/DeleteUserModal.js.html",
+      "sha256": "7556dc3cd0759c639974a457b409bf2d7b902744a6ba2df358e5f8515c5bb9fa",
+      "bytes": 18550
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/components/shared/index.html",
+      "sha256": "1348fb38dc33c8850383b236bfb91316f2d0d6a4d3a08487a8ebc34370ee9119",
+      "bytes": 9497
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/components/shared/ResendCredentialsModal.js.html",
+      "sha256": "c669a7abd30a9cbbf6f776927ce8e05b5523ff4088e5b1bdcdb4c356c3d574d4",
+      "bytes": 26097
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/components/shared/SuspendUserModal.js.html",
+      "sha256": "ddec441888e48777b2c95ecc60f77d28a55589de5283561f27aad07afd51f4ba",
+      "bytes": 17866
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/components/shared/UserCard.js.html",
+      "sha256": "6f1572d345a2b1d8f149bde52e6ce472197109d1c7f2d548b03e8888973b101a",
+      "bytes": 37180
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/components/shared/UserFilters.js.html",
+      "sha256": "2e6249753fc6ffa3dc2e33343a35ca72d0562c2b0b6473a97490cd4824d0b0fd",
+      "bytes": 24689
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/components/shared/UserForm.js.html",
+      "sha256": "8b01f3a995d22e24a6273f259ddea8f73345089ec09ed343fd132750368abe5b",
+      "bytes": 49200
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/components/tabs/AdministratorsTab.js.html",
+      "sha256": "7d7354ce84c963167fd5bfd725cd8da55e99d7954a5ad64f21bc658f1c30ee19",
+      "bytes": 34568
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/components/tabs/AthletesTab.js.html",
+      "sha256": "8c72aa5697584bc4471385a1cdc0ac146680f1a07e95a5b4154e42d4424fbae4",
+      "bytes": 63953
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/components/tabs/index.html",
+      "sha256": "6bd70f1db8c227c0deefd8ab781cf272d83f428d354abdef61d4d83124b2feeb",
+      "bytes": 6154
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/components/tabs/TrainersTab.js.html",
+      "sha256": "b925c93b06980a6210c65c08890d8f79045eff03e6af2154f22c31241cebad50",
+      "bytes": 53980
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/components/UserManagementPanel.js.html",
+      "sha256": "264f24c4770a18fb05a86e9279fc14e85368c81c05815f81e982d0ff6e15552f",
+      "bytes": 13866
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/createUserManagementService.js.html",
+      "sha256": "12e0d924bc4ad0c43de7b27b80902499604d4383c3bf19e0868e2b8cf1e18c80",
+      "bytes": 11200
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/presentation/index.html",
+      "sha256": "293f74ba5398174561a26fe6237ef5fed9db422d096546842441f7452d7d9c3d",
+      "bytes": 4647
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-management/userManagementService.js.html",
+      "sha256": "f5066d77267ef9d0e13b0c82c3aedd0023dca0becf22e1ab6d42a59b5776da63",
+      "bytes": 3703
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-provisioning/application/useCases/createUserProvisioningUseCases.js.html",
+      "sha256": "1a7bbbddab69d122ee15bd9d308ffdd59bbc723617ef29e10d1111cd6c4fe827",
+      "bytes": 18690
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-provisioning/application/useCases/index.html",
+      "sha256": "72578a3a71e51710c0ec807a257d5cf37604572e9a697d383f4da9759dd00224",
+      "bytes": 4688
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-provisioning/domain/index.html",
+      "sha256": "c2263db176a17f9e6cf9840394a76e25ac14c890feb5fa9ef7caaccda9e5f45a",
+      "bytes": 4584
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-provisioning/domain/userProvisioningError.js.html",
+      "sha256": "6931de5e69353a95969188fc51edb1b2ae1d250441ed1a512d0acb479943405e",
+      "bytes": 4166
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-provisioning/index.html",
+      "sha256": "e6ac5f0496e78ac400352275a433982ced198f54d9d1145afd1708b9be794d26",
+      "bytes": 5165
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-provisioning/index.js.html",
+      "sha256": "b3e3100b8641bdd1b402050da83c0ac773adf9ab89d6ede29334146966299be2",
+      "bytes": 3341
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-provisioning/infrastructure/repositories/index.html",
+      "sha256": "9c7cde98e6e6bf5ede2556f551d2f63ab9ec2f1e3aa69b7d258c4320fc734e2d",
+      "bytes": 4708
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-provisioning/infrastructure/repositories/supabaseUserProvisioningRepository.js.html",
+      "sha256": "1612779708cd7b4dcfa325940b7b31dab4a163d84f7ce515b8cef028b52914ac",
+      "bytes": 45885
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-provisioning/presentation/createUserProvisioningService.js.html",
+      "sha256": "0834d3709aa31f0fec30d48f144c2c80e27e18c66ed8196089feb4fcf86cb61b",
+      "bytes": 7962
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-provisioning/presentation/index.html",
+      "sha256": "4c4553368082014413b5539a64c7f1b1dee3d54d3c843d7617356821a404bc9e",
+      "bytes": 4629
+    },
+    {
+      "file": "cobertura/lcov-report/src/features/user-provisioning/userProvisioningService.js.html",
+      "sha256": "cde8167b7937172f4961675c442291c8974275e2e32ba3f258bff58947a68c88",
+      "bytes": 3719
+    },
+    {
+      "file": "cobertura/lcov-report/src/index.html",
+      "sha256": "e5a6b552cba7041892195587379f55cc3e4ce4bc2ed8e3860142eab33ab56a0c",
+      "bytes": 6287
+    },
+    {
+      "file": "cobertura/lcov-report/src/index.js.html",
+      "sha256": "9648c13273a21ad207bfa5416b2efca7d568865ac9c7140c838342e467fdad21",
+      "bytes": 6115
+    },
+    {
+      "file": "cobertura/lcov-report/src/lib/cn.js.html",
+      "sha256": "0a0ace66077afe2e53536c719220c4bc31a24113913634686b07836427418de3",
+      "bytes": 3789
+    },
+    {
+      "file": "cobertura/lcov-report/src/lib/index.html",
+      "sha256": "022565d706879b5217abc8169c87f1bcc268545dd0b67e134d7e3aacdd08a080",
+      "bytes": 4419
+    },
+    {
+      "file": "cobertura/lcov-report/src/Login.js.html",
+      "sha256": "6aee8b8395e00d01e7e74d7fc7ab1c41b160fbb18b55d5027398d77d5570f6a8",
+      "bytes": 3230
+    },
+    {
+      "file": "cobertura/lcov-report/src/reportWebVitals.js.html",
+      "sha256": "d04d5e14d77662f9e91d0876f72d4b7541903b7a3e04fa1f50e62d3ee04848ac",
+      "bytes": 5809
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/config/index.html",
+      "sha256": "389ae74262aaf1aed78e894a5d23d50c1332ee47d08ae62359094c47952452fb",
+      "bytes": 4464
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/config/runtimeConfig.js.html",
+      "sha256": "91e108f865d2d3424b00f63177907ce76fd828084cd34e381f3eaafc37f16d9f",
+      "bytes": 3809
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/domain/payments/index.html",
+      "sha256": "67656e51a45d97b99d24a95d28efa2b1fe7b2c5d2900d6a3890fa43723a11e54",
+      "bytes": 5212
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/domain/payments/index.js.html",
+      "sha256": "07d8b51244cdd6f8428198bd78704ff4d6fddf8f1711c0f1c6b45bd78d5e710f",
+      "bytes": 3356
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/domain/payments/pagoStatusService.js.html",
+      "sha256": "89881d129dec5ac5337bdbca1fbe634d5d0974c78d589cefb8a63339a68172b7",
+      "bytes": 29119
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/infrastructure/audit/index.html",
+      "sha256": "8cb8f472f9a99bd3c10e1831c19c277aad0e4ca73af63f88c9a8d4ae4e08bc53",
+      "bytes": 4551
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/infrastructure/audit/sqlAuditLogger.js.html",
+      "sha256": "2af4a95547b17db86f3e9c91b13f5b5544861b2027207be6189013938c67929c",
+      "bytes": 60575
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/infrastructure/auth/deleteAuthUserById.js.html",
+      "sha256": "55aaf52f4e7ba7b238ba4396e4c05d292e5f4c3078a070b11fdba59648600523",
+      "bytes": 10683
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/infrastructure/auth/index.html",
+      "sha256": "1c6f7e76a42f89b67f7b788b7b0e658ff76eb73ad5fe5c475bc28b0c784a0a7a",
+      "bytes": 4576
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/infrastructure/communications/index.html",
+      "sha256": "fbc6b9d7eea111c36f97d885059d0ff77694662ba985ee27420ee7800ceae1c6",
+      "bytes": 5941
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/infrastructure/communications/index.js.html",
+      "sha256": "e24c742644f5bd6e68aa349d8d0301dee4b62618dd6d9d8f603bbefca5b4e871",
+      "bytes": 3549
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/infrastructure/communications/whatsappBusinessService.js.html",
+      "sha256": "5ffe560feb1cd621db8daccc284e2841ccca66c9134b668dd3717ec9e9f46c8e",
+      "bytes": 27290
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/infrastructure/communications/whatsappService.js.html",
+      "sha256": "a501adf1d83b92adf50040d6063ef3109e4358c92f8a95e3e75b03969b29d201",
+      "bytes": 17751
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/infrastructure/http/functionError.js.html",
+      "sha256": "74d88c8deaa3d0daec34c47edcc9311fcfdc41909f12d717a0a5791181fdf12a",
+      "bytes": 6717
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/infrastructure/http/index.html",
+      "sha256": "8486013bf9b42b2a0c33eae06632142f4dc63bd1ffeebd632762b9ddfa1063af",
+      "bytes": 4569
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/infrastructure/mobile/index.html",
+      "sha256": "7ce5dc77718cfbcb0391b1faf16acbc220c7964f9e055fe16f1273dc2762d1df",
+      "bytes": 5955
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/infrastructure/mobile/index.js.html",
+      "sha256": "0deacf2cd9b1976ac861d8d8b0d990507c1457838fc13701f0a333de15c0ba62",
+      "bytes": 3490
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/infrastructure/mobile/supabaseMobileDeviceRepository.js.html",
+      "sha256": "c0bd907ae760b0bc07dfd25096423637541119d84c0b990f788a0ca9499bb425",
+      "bytes": 11690
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/infrastructure/mobile/supabasePushNotificationGateway.js.html",
+      "sha256": "6e751ddd3a76774ad31cd67201755a430f10958e571d64f7ef9c7ccbf1459455",
+      "bytes": 31455
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/lib/escapeHtml.js.html",
+      "sha256": "fb9ecbebd48c8d585d58404cb5827e6dceb0c5cc2300110e9d5f910a65c8d0f3",
+      "bytes": 3726
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/lib/index.html",
+      "sha256": "a9aa20a6b3e85664b0a1cae08d6bb48f60412b5555d020e3e65f0c01c3d6bc68",
+      "bytes": 6588
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/lib/result.js.html",
+      "sha256": "eaf20f94f8fa2fca47d98beefc7cd552cd9d86ff65447f6df9682a73d9bc7892",
+      "bytes": 3889
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/lib/tableQuery.js.html",
+      "sha256": "62c08155d9af24dd36eb1317f9f74d0c15dc5d7db685fb953be283c8d398bcb3",
+      "bytes": 16375
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/lib/trainingCategoryFormatting.js.html",
+      "sha256": "2a3489ae65445837d8903d5298be9020a35e07a7efff5e5c6cc56110dc701b84",
+      "bytes": 10420
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/platform/files.js.html",
+      "sha256": "5f9d2faef7ef559c71c26e5e5494bafc3e946e5aaf25838baa60d83df5ac1948",
+      "bytes": 11504
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/platform/index.html",
+      "sha256": "87eb7925a96ba7ccc6e6dbff9f5afee180f7b1f137d3a11082c45dd608ec219a",
+      "bytes": 9148
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/platform/index.js.html",
+      "sha256": "a46833e6458d1a84f172ec1051a408bb0fb3219e5122a689bb60c0610397dbf0",
+      "bytes": 3970
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/platform/links.js.html",
+      "sha256": "aef74e55baabcc0df971fd953bfd39e7c093d137916e71bd77ede7fe45e8fa9f",
+      "bytes": 6799
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/platform/mobileAppBridge.js.html",
+      "sha256": "04ef7e2023307f2a72244dc1f43ce40a71fc4d9635b1fef087eb947d512f836d",
+      "bytes": 14096
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/platform/ota.js.html",
+      "sha256": "cdf5b05435540a34d8702101ab7fc5b3f12379a74ee065bd573b5583b591a711",
+      "bytes": 49599
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/platform/push.js.html",
+      "sha256": "05302a732f1a3d696c0ae5688cb953f529cdfb014e0dafdebc5edadff644d0b9",
+      "bytes": 41269
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/platform/runtime.js.html",
+      "sha256": "babb25d311b12a87bb7e8a94435ac4d9b3d1b42cc0eb90415534ddfb7a3b33eb",
+      "bytes": 10270
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/platform/storage.js.html",
+      "sha256": "0453d55579bd01086fe49a43b89b8d4d80744b25bf550680de593dae2055d9ee",
+      "bytes": 7476
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/Button.js.html",
+      "sha256": "c868213e5ceffbdb6e9cdc095334b362e81bbb06d87548b0766de2779cdc98d3",
+      "bytes": 11938
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/Card.js.html",
+      "sha256": "bb65d229899510c67fab79ebc0453fc5099f353655deeb2e8cc07672b321c37b",
+      "bytes": 8388
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/DataTable.js.html",
+      "sha256": "4ffecb013f5af7bd108132ee708f369440314e3eb765978e38f041e47cb80bdf",
+      "bytes": 24676
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/EmptyState.js.html",
+      "sha256": "fcd532223612abdf16053304df11f9e406132cf09da5e7b5b3eec56e828cca5d",
+      "bytes": 6445
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/ExportButtonGroup.js.html",
+      "sha256": "ea0c0a313503676dd3662c92eb2fd8501ce22bd8c8e7034c6b4a86a68ad79887",
+      "bytes": 12946
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/feedback/index.html",
+      "sha256": "9840ab45f1fd5975a20d34aa0fd0cd592fe13c4a33ef91d8f1931e7a9255773f",
+      "bytes": 4492
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/feedback/Toast.js.html",
+      "sha256": "df3f76ad871b0ea9f9c4796188e9c39e13c26353dbb9324aff201138a8523bba",
+      "bytes": 12590
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/Field.js.html",
+      "sha256": "c6b8560827bb1c5d19a103e73342316b125fed6a943e753370b420f3b00cdf21",
+      "bytes": 6387
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/FormControls.js.html",
+      "sha256": "d0cbf8661c662bcf200d29553148f5aa1acd84e842d3647cf9f6c984f2ef0740",
+      "bytes": 13490
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/iconRegistry.js.html",
+      "sha256": "0e20a0985b3058f5d0e0ebb311d4e0dd413159289346efa331369d7ad610f386",
+      "bytes": 9089
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/index.html",
+      "sha256": "8339798cc52a44409139b38b0b7aed8a3503dcfc49558a0d35862cc093e75518",
+      "bytes": 16046
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/index.js.html",
+      "sha256": "882d40557d507f93f77ec221a85c8badc95689ffda3c1e2a52125131d27c0ed2",
+      "bytes": 7501
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/KpiTile.js.html",
+      "sha256": "0ed7464600774598901c344e29c65fdec3d50beba989b9e23dd60e2bd8777749",
+      "bytes": 23292
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/layout/index.html",
+      "sha256": "3cb0a7a7b36cf72c28bc65b981176cc96e60d99bc83e2e9d1f7409fc33c40745",
+      "bytes": 5197
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/layout/RolePanelLayout.js.html",
+      "sha256": "aec90e9519a36cb0352a2da537378f21baa8ce6bd9a30275fa40f4851e59abaf",
+      "bytes": 13984
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/layout/RoleSidebar.js.html",
+      "sha256": "52d3ef0c0dfdfb1742dda44991c7b7647462d511d05d3b425102681ba202f102",
+      "bytes": 48367
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/LoadingSpinner.js.html",
+      "sha256": "6e9ada7723f7df6d3e9491371d3d7219391e3abc12706e633e303434200ce5bf",
+      "bytes": 8088
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/Modal.js.html",
+      "sha256": "c691f85f56c7480f1bd12f16bcfb82eea95d08e8607cecabe1da394450400741",
+      "bytes": 15151
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/PageShell.js.html",
+      "sha256": "d9277d627ff3c84508c341ac0ca97a0948e72f7cb0898c86d1ee520160e45ea8",
+      "bytes": 15682
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/panel-guide/index.html",
+      "sha256": "8f285ebd053d7e68c1315fdf64efcbeb0f7897d3dd04cebbf5afa9679931d86b",
+      "bytes": 5964
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/panel-guide/panelGuideContent.js.html",
+      "sha256": "6e1201e6f20522d270fd78ed7f02d7c7bf0d6284ce6cfd79aeb19a0e32a31938",
+      "bytes": 77048
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/panel-guide/panelGuideStorage.js.html",
+      "sha256": "d8f473bee83590967101bb02b524f8fc6fead9d896f449377d5fdab18b4a3eb1",
+      "bytes": 10706
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/panel-guide/PanelUserGuide.js.html",
+      "sha256": "501947970cb53c26102650b5f1456c673254e381c0b6a94a0098671e605ed57f",
+      "bytes": 63820
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/render-profile/index.html",
+      "sha256": "d877d6ebb748813d35ce1ebe4649c5698f323ec6c3deb0da494dcc886e6190cb",
+      "bytes": 5941
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/render-profile/index.js.html",
+      "sha256": "a5a75db8d95ba59c9c60e270b20117877620ea814f9fe266b772b5942b652fe2",
+      "bytes": 3564
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/render-profile/RenderProfileProvider.js.html",
+      "sha256": "5a8d3f1fa6cb67aaa36dec03ba9cb6c0399a1757d0f977d37df3802922fb2b1a",
+      "bytes": 14727
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/render-profile/renderProfileResolver.js.html",
+      "sha256": "0a404a6b61c5f0595be825b651a5b3665e792474b7917092a00b0f38c60bb074",
+      "bytes": 7903
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/SectionHeader.js.html",
+      "sha256": "7d82059bfb005cb429bd801c2258a8dbf541779a670119139b5529f61e56f2bf",
+      "bytes": 8440
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/semanticCatalog.js.html",
+      "sha256": "9a0b5d96ee0072f75ebae0b140874aca03d6e68b58342f1cebd62c5d39c60586",
+      "bytes": 9252
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/SortableHeader.js.html",
+      "sha256": "a6d6e2b58c3f5e77d0c3a4758d792ef6c904358792ef525373183f24775b90f3",
+      "bytes": 11683
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/StatusBadge.js.html",
+      "sha256": "dff1395c75c52f04707645c4940f0e66bf69c78430c44d11c789ae0bf47b2e62",
+      "bytes": 7479
+    },
+    {
+      "file": "cobertura/lcov-report/src/shared/ui/TabNav.js.html",
+      "sha256": "32d29ee6586cbdba56524e83fa2446d86dff9cbca3a391816e0eb7ca29dccc26",
+      "bytes": 17508
+    },
+    {
+      "file": "cobertura/lcov-report/src/utils/athleteValidation.js.html",
+      "sha256": "d0d476c8449f3b915df86a2c2141a7cee3a8653eb1e58f2c3fcf69ace4169e90",
+      "bytes": 19880
+    },
+    {
+      "file": "cobertura/lcov-report/src/utils/dateUtils.js.html",
+      "sha256": "9f71613b2252c3a06777a756557ac55607df8ee1a231eee99599fd512b2f63da",
+      "bytes": 30534
+    },
+    {
+      "file": "cobertura/lcov-report/src/utils/exportAttendancePdf.js.html",
+      "sha256": "9930d65cfccd07a150c759eba45f379668ca0cbb0cfbcdc87ea5ffd72f14d02c",
+      "bytes": 29744
+    },
+    {
+      "file": "cobertura/lcov-report/src/utils/index.html",
+      "sha256": "61d8c97e53710a4ca6ae3bda7e3f4ab71fa6fd0caaaee33e8e16b1d63e64e6af",
+      "bytes": 8525
+    },
+    {
+      "file": "cobertura/lcov-report/src/utils/passwordUtils.js.html",
+      "sha256": "3a2413c853c2fd73d2749c1c84c3dea73002f50a10347b18ddf2ab42206f5a1f",
+      "bytes": 16829
+    },
+    {
+      "file": "cobertura/lcov-report/src/utils/paymentUtils.js.html",
+      "sha256": "477844f2d33db6f577650a95733499ec9ae851aa839be3e0b07be33b97308dfc",
+      "bytes": 10262
+    },
+    {
+      "file": "cobertura/lcov-report/src/utils/piiCrypto.js.html",
+      "sha256": "8d379e5c3911473a00e496ea6617ddd2af5e2cd7caaa297e7241353ba8fbefeb",
+      "bytes": 31366
+    },
+    {
+      "file": "cobertura/lcov-report/src/utils/supabaseDebug.js.html",
+      "sha256": "65e941c7b6c870a5b72186df3f0f44b976f2d9c59c4ae8950584f62d5ac0dfc1",
+      "bytes": 26164
+    },
+    {
+      "file": "cobertura/lcov.info",
+      "sha256": "99c70c721b0dfb49b23e42a53a24f53e3e81db6ea8520f7b940abe1b7a04fd90",
+      "bytes": 480155
+    },
+    {
+      "file": "cobertura-resumen.json",
+      "sha256": "55012da5c5e9f4e248e1a2cfff18d037d530c73af72b190006c421334cfb6696",
+      "bytes": 488
+    },
+    {
+      "file": "compilacion-web-build-1793200684370.meta.json",
+      "sha256": "9c99e4ce4c649e3a876a920c31defef0104954ed253db1e700fff226fd333e9b",
+      "bytes": 297
+    },
+    {
+      "file": "compilacion-web-build-1793200684370.stderr.log",
+      "sha256": "6727e2c7e881021337eb7170bf9ad7df8976bad8f29cea59fdcca5cdcecbbe38",
+      "bytes": 172
+    },
+    {
+      "file": "compilacion-web-build-1793200684370.stdout.log",
+      "sha256": "ab1bd393000a0d82547b38a16f690b7f3730cf97e1c412e0acafe3c113ee235d",
+      "bytes": 3349
+    },
+    {
+      "file": "compilacion-web-build-1793201023441.meta.json",
+      "sha256": "4c35e984954f093d385b69d4341492874a4fb8fb3a74ee90dead4cc4624d55e5",
+      "bytes": 297
+    },
+    {
+      "file": "compilacion-web-build-1793201023441.stderr.log",
+      "sha256": "0be541d857ad761d88d3173be3ef3a3802b1b8d15f6dbaefcba5585b48fd1a74",
+      "bytes": 172
+    },
+    {
+      "file": "compilacion-web-build-1793201023441.stdout.log",
+      "sha256": "4939db90de214f9a9345461db99d05534576981a538ab1acb2225c911d04aac2",
+      "bytes": 3349
+    },
+    {
+      "file": "estado-final-git.txt",
+      "sha256": "3a7e995d0606d9980cab4d47ed8707639fed6712c87a3480e03535822c0cbecf",
+      "bytes": 858
+    },
+    {
+      "file": "fallos-corregidos.json",
+      "sha256": "299089f1abd9ca0a7480e3ceeaba439d828d8f2ea517e044d30e310d32f67b97",
+      "bytes": 11481
+    },
+    {
+      "file": "flujo-actual-desktop/artefactos/.last-run.json",
+      "sha256": "bc648583d4331e50c671cc7e16acb3a11428791e27b83bd09302d13cd6e206f0",
+      "bytes": 96
+    },
+    {
+      "file": "flujo-actual-desktop/artefactos/admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440/error-context.md",
+      "sha256": "4b105837c40bced82c58dda7b8a2ff7189186a49b0168ea54de4ea82b5cf000a",
+      "bytes": 34355
+    },
+    {
+      "file": "flujo-actual-desktop/artefactos/admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440/test-failed-1.png",
+      "sha256": "9c7beb4018d00b8bb87edcea971af989c5424fdd48a3de1b3481f325bcdae70b",
+      "bytes": 151604
+    },
+    {
+      "file": "flujo-actual-desktop/ejecucion.meta.json",
+      "sha256": "d34185ba30f1ce240c0c21a17473aef2a28648d080c502cb2454abfdfd1b48a9",
+      "bytes": 448
+    },
+    {
+      "file": "flujo-actual-desktop/ejecucion.stderr.log",
+      "sha256": "aad225a137d941abd169d5ce5e4b556eb99949dba2cd7701df2cbb438a1b9b07",
+      "bytes": 329
+    },
+    {
+      "file": "flujo-actual-desktop/ejecucion.stdout.log",
+      "sha256": "ea026c4d95663220cef76af8384aeb3c6e4b62f39f2c5154c97813ff62132db1",
+      "bytes": 2223
+    },
+    {
+      "file": "flujo-actual-desktop/html/data/b25c7b63811830af0ff39f8632f802e74c4e707a.md",
+      "sha256": "4b105837c40bced82c58dda7b8a2ff7189186a49b0168ea54de4ea82b5cf000a",
+      "bytes": 34355
+    },
+    {
+      "file": "flujo-actual-desktop/html/data/cc1b51313045ba7a99d6dacaecee02f59ac14458.png",
+      "sha256": "9c7beb4018d00b8bb87edcea971af989c5424fdd48a3de1b3481f325bcdae70b",
+      "bytes": 151604
+    },
+    {
+      "file": "flujo-actual-desktop/html/index.html",
+      "sha256": "cd5d9e9f8a9f25db665295cc1366a6907869751c0b10532deda58dec55929dc4",
+      "bytes": 529360
+    },
+    {
+      "file": "flujo-actual-desktop/resultados.json",
+      "sha256": "9173ed6830909d314ada12e355fd2ac67113d5f1cefbeccfc35833c6005c765d",
+      "bytes": 8762
+    },
+    {
+      "file": "flujo-actual-desktop-crear/artefactos/.last-run.json",
+      "sha256": "bc648583d4331e50c671cc7e16acb3a11428791e27b83bd09302d13cd6e206f0",
+      "bytes": 96
+    },
+    {
+      "file": "flujo-actual-desktop-crear/artefactos/admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440/error-context.md",
+      "sha256": "e19944150938b224d40869445545b5548508ba5c4b7562e5e25c64cdbf7d4aea",
+      "bytes": 32751
+    },
+    {
+      "file": "flujo-actual-desktop-crear/artefactos/admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440/test-failed-1.png",
+      "sha256": "1a253f0e920cb78e95b230aa072399e41c4030b83aa3843137f28946ca5c797c",
+      "bytes": 502052
+    },
+    {
+      "file": "flujo-actual-desktop-crear/ejecucion.meta.json",
+      "sha256": "214f2612c1b9b4d7f76bab5b0dd0dac2e8cb6b31718150268864c7bc0509d173",
+      "bytes": 448
+    },
+    {
+      "file": "flujo-actual-desktop-crear/ejecucion.stderr.log",
+      "sha256": "a54c9add80544d3f387045391eccf3f4914a9d1afc73f238d41104bb30df31cb",
+      "bytes": 329
+    },
+    {
+      "file": "flujo-actual-desktop-crear/ejecucion.stdout.log",
+      "sha256": "f07cbb067627aae3f38331f82ee6b17036c69f0f90deff612e19dc747c80918d",
+      "bytes": 2100
+    },
+    {
+      "file": "flujo-actual-desktop-crear/html/data/0b27e7a22a6cf1430bbd0fbbb4698b14564c8cb9.png",
+      "sha256": "1a253f0e920cb78e95b230aa072399e41c4030b83aa3843137f28946ca5c797c",
+      "bytes": 502052
+    },
+    {
+      "file": "flujo-actual-desktop-crear/html/data/81d68d111c1eaa20e139d032128ae00ce0ce504d.md",
+      "sha256": "e19944150938b224d40869445545b5548508ba5c4b7562e5e25c64cdbf7d4aea",
+      "bytes": 32751
+    },
+    {
+      "file": "flujo-actual-desktop-crear/html/index.html",
+      "sha256": "9463201adbac6b040b85865a5758ccd34c9f83abf78c6487dcdafa9e91c4b6cf",
+      "bytes": 529556
+    },
+    {
+      "file": "flujo-actual-desktop-crear/resultados.json",
+      "sha256": "d5b4c208ecd06107e67cb3fcb182d8ef44bd047e7203ac29d8e0888f578cf694",
+      "bytes": 8685
+    },
+    {
+      "file": "flujo-actual-desktop-filtros/artefactos/.last-run.json",
+      "sha256": "bc648583d4331e50c671cc7e16acb3a11428791e27b83bd09302d13cd6e206f0",
+      "bytes": 96
+    },
+    {
+      "file": "flujo-actual-desktop-filtros/artefactos/admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440/error-context.md",
+      "sha256": "e939012c43a792320995021d9b59e92abe3b9bcdd92426b25fbcd0657047281f",
+      "bytes": 29005
+    },
+    {
+      "file": "flujo-actual-desktop-filtros/artefactos/admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440/test-failed-1.png",
+      "sha256": "5bbb309ffea204b7c07b93ef4e8d3e3fb8d3812c89089218c2e8e43fd524f4e4",
+      "bytes": 188991
+    },
+    {
+      "file": "flujo-actual-desktop-filtros/ejecucion.meta.json",
+      "sha256": "70be28678ba6d302f4d29202683095ebc15957aa24712d21894fe166a403a410",
+      "bytes": 448
+    },
+    {
+      "file": "flujo-actual-desktop-filtros/ejecucion.stderr.log",
+      "sha256": "e3bbceec1c3d2baf3328675a4724c38620fd1177d80d1c7730ca3e974c6c6237",
+      "bytes": 329
+    },
+    {
+      "file": "flujo-actual-desktop-filtros/ejecucion.stdout.log",
+      "sha256": "380f6fb37fb0faac8ff8200d177ab7207636d6d3df6087528034dc56e9558431",
+      "bytes": 2684
+    },
+    {
+      "file": "flujo-actual-desktop-filtros/html/data/524115145189eaaefa5dc887e70b05c222895f2f.md",
+      "sha256": "e939012c43a792320995021d9b59e92abe3b9bcdd92426b25fbcd0657047281f",
+      "bytes": 29005
+    },
+    {
+      "file": "flujo-actual-desktop-filtros/html/data/d0a18010d027b7bc06275ae3c8a1d8c43a6f25bd.png",
+      "sha256": "5bbb309ffea204b7c07b93ef4e8d3e3fb8d3812c89089218c2e8e43fd524f4e4",
+      "bytes": 188991
+    },
+    {
+      "file": "flujo-actual-desktop-filtros/html/index.html",
+      "sha256": "be41ff6555c2412bd9e896bd40228cb6b6f02e60ac78705eae7f743a3ea4e385",
+      "bytes": 530284
+    },
+    {
+      "file": "flujo-actual-desktop-filtros/resultados.json",
+      "sha256": "ca4ad7ecbfeae81886f93b8afa2b3394f37b766f6bea8fcd3977e8ffbcbdb201",
+      "bytes": 11936
+    },
+    {
+      "file": "flujo-actual-moneda/artefactos/.last-run.json",
+      "sha256": "bc648583d4331e50c671cc7e16acb3a11428791e27b83bd09302d13cd6e206f0",
+      "bytes": 96
+    },
+    {
+      "file": "flujo-actual-moneda/artefactos/admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440/error-context.md",
+      "sha256": "2e7bfa559e771458860582f49f3bcf57d47410d18c8e7d253b335f55cf245c2f",
+      "bytes": 19740
+    },
+    {
+      "file": "flujo-actual-moneda/artefactos/admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440/test-failed-1.png",
+      "sha256": "21e0bfe5a11dcc4fabff8afaa2cd25491851b74d71494090fb658e5abee994c2",
+      "bytes": 620247
+    },
+    {
+      "file": "flujo-actual-moneda/ejecucion.meta.json",
+      "sha256": "4ea2c528ab0bce748d309f85d0eaa1f69713344524d17185c73981af8170f1ea",
+      "bytes": 448
+    },
+    {
+      "file": "flujo-actual-moneda/ejecucion.stderr.log",
+      "sha256": "0e38b3c88e4dd6fbd9195a7cf8dce76f1a140e54ac9dc2164a9a43a543dbb974",
+      "bytes": 329
+    },
+    {
+      "file": "flujo-actual-moneda/ejecucion.stdout.log",
+      "sha256": "8664014555f064589c21204ae5bf0cc1fa16a8d779721152790b6894d7f81d0b",
+      "bytes": 3477
+    },
+    {
+      "file": "flujo-actual-moneda/html/data/80d626dd3cf30902cd497dc1a822996bbe412892.png",
+      "sha256": "21e0bfe5a11dcc4fabff8afaa2cd25491851b74d71494090fb658e5abee994c2",
+      "bytes": 620247
+    },
+    {
+      "file": "flujo-actual-moneda/html/data/e017152dbc6bc287d30bd87b9b36e4289b923f13.md",
+      "sha256": "2e7bfa559e771458860582f49f3bcf57d47410d18c8e7d253b335f55cf245c2f",
+      "bytes": 19740
+    },
+    {
+      "file": "flujo-actual-moneda/html/index.html",
+      "sha256": "5dffff5867fb62dd184121354c44f23accefb5c66a837ab906c1d04787765a85",
+      "bytes": 531944
+    },
+    {
+      "file": "flujo-actual-moneda/resultados.json",
+      "sha256": "7ddcfecddacad610c9d1c2f9ef0fa5aa7e5b3a09c4546bf3c8561da7c4637742",
+      "bytes": 14136
+    },
+    {
+      "file": "flujo-confirmacion-persistencia/artefactos/.last-run.json",
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903",
+      "bytes": 45
+    },
+    {
+      "file": "flujo-confirmacion-persistencia/ejecucion.meta.json",
+      "sha256": "16c0546927d0280a3bb24ba25c9f2602b1a1834140ea8e65b322d400cd2d6497",
+      "bytes": 448
+    },
+    {
+      "file": "flujo-confirmacion-persistencia/ejecucion.stderr.log",
+      "sha256": "8db06b716d808313ec03ccd13428c4eac1e38b9f5631f1211fb289277aca7a0b",
+      "bytes": 329
+    },
+    {
+      "file": "flujo-confirmacion-persistencia/ejecucion.stdout.log",
+      "sha256": "130c9a59fb86792eab79ad47ee14da9580ae08dcbf14868d02f6618c388427a5",
+      "bytes": 199
+    },
+    {
+      "file": "flujo-confirmacion-persistencia/html/index.html",
+      "sha256": "c82151228e661992bd544e273559ce2e55a4278200f01123cfa028957bf999c8",
+      "bytes": 529676
+    },
+    {
+      "file": "flujo-confirmacion-persistencia/resultados.json",
+      "sha256": "28b0719e1db199935c1042d8d53981855f736892e171059374fc83bba9797079",
+      "bytes": 6561
+    },
+    {
+      "file": "fuentes-corregidas.json",
+      "sha256": "da9b253ed7de89b3b7c12725024ba301df9243e6ab58d73317d251180c62c8a5",
+      "bytes": 6312
+    },
+    {
+      "file": "idempotencia/antes-1793201449607.meta.json",
+      "sha256": "d2bea784e40cb515a46ee19150b8ebeead4b88a2e1175b411a4e58df5b5e14f8",
+      "bytes": 439
+    },
+    {
+      "file": "idempotencia/antes-1793201449607.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "idempotencia/antes-1793201449607.stdout.log",
+      "sha256": "ef984b33fd32a5c7f36f5f8a5755779aa8661c8d39fb41b3141c9d569c7fa7ad",
+      "bytes": 90
+    },
+    {
+      "file": "idempotencia/antes.meta.json",
+      "sha256": "dd2d4f90c0034a11389e915ed9296bcff97ded1b5ca4dc0a19f393c21521ce56",
+      "bytes": 439
+    },
+    {
+      "file": "idempotencia/antes.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "idempotencia/antes.stdout.log",
+      "sha256": "1ef79e672b622f87ab24e4b9d9c0b1bc1a076b1455ef5781246aa6a661272b54",
+      "bytes": 89
+    },
+    {
+      "file": "idempotencia/despues-1793201450584.meta.json",
+      "sha256": "62d660c7822926a5ac4e9eb546496c5e2688d74d83ba11783e3ac16494dc4e66",
+      "bytes": 439
+    },
+    {
+      "file": "idempotencia/despues-1793201450584.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "idempotencia/despues-1793201450584.stdout.log",
+      "sha256": "ef984b33fd32a5c7f36f5f8a5755779aa8661c8d39fb41b3141c9d569c7fa7ad",
+      "bytes": 90
+    },
+    {
+      "file": "idempotencia/despues.meta.json",
+      "sha256": "49876c9a89d3ab0c061833128dc0c4231941403f87f1ba63794d2f80f5d3c9fc",
+      "bytes": 438
+    },
+    {
+      "file": "idempotencia/despues.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "idempotencia/despues.stdout.log",
+      "sha256": "e2b5325255d7b50b124373120b205ea73c2dead8ae82561ba709285b4a40d613",
+      "bytes": 89
+    },
+    {
+      "file": "idempotencia/repeticion-1793201449819.meta.json",
+      "sha256": "ab3e9513a2f4e928ce89b5209ab6369097f0c14a75b8ef9d16924e6cc303f4c0",
+      "bytes": 252
+    },
+    {
+      "file": "idempotencia/repeticion-1793201449819.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "idempotencia/repeticion-1793201449819.stdout.log",
+      "sha256": "d28005ece6d54a4ab77a9826f298e6aec307cfc081a7e4369966cb2e8f16b276",
+      "bytes": 242
+    },
+    {
+      "file": "idempotencia/repeticion.meta.json",
+      "sha256": "6fa6c3174b9352a4b200ce8f81c968c45010db5986f2d92028cf1f7c3ecba085",
+      "bytes": 250
+    },
+    {
+      "file": "idempotencia/repeticion.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "idempotencia/repeticion.stdout.log",
+      "sha256": "86e0fb8f847ad9b0fd5fec95ca040b71dd6edc2956fef91bc3d837b0e9197a10",
+      "bytes": 214
+    },
+    {
+      "file": "INFORME_VERIFICACION_TECNICA.md",
+      "sha256": "12daf822fb69ea746bd59bc6e62f94f828733c94129d6a9c5548ec4e3749bba8",
+      "bytes": 16074
+    },
+    {
+      "file": "integridad-preliminar.json",
+      "sha256": "62b929a0751b4742e29143d5e60e0ad9330a07cd11e340c30e3237d5e9b9cb7b",
+      "bytes": 1400
+    },
+    {
+      "file": "INTEGRIDAD.json",
+      "sha256": "2c3e61089f3f5651fc7507f9bbb40c3472fe7481cd8bed9862e6521c88864cd8",
+      "bytes": 1333
+    },
+    {
+      "file": "inventario-local.json",
+      "sha256": "fc503f9ad6ce051e3d40dcc37903d47d9da0f6d2e1db7297fe7dea2484227368",
+      "bytes": 170
+    },
+    {
+      "file": "inventario-local.meta.json",
+      "sha256": "cf7388d75fa9979ae94a76da4d94def1f1af2ff98d1ffbd0a4aa2f3b3756cdb4",
+      "bytes": 439
+    },
+    {
+      "file": "inventario-local.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "inventario-local.stdout.log",
+      "sha256": "ab9c6a6bae2e8a4b3ef73ae81b66a0ffa05e36b3f1e0a588469a0039ec9d509d",
+      "bytes": 151
+    },
+    {
+      "file": "jest-all.json",
+      "sha256": "32f8d158035270623d45192742de9b9a5b962ba9ccb2cb1107d07cbb25cff7b5",
+      "bytes": 124350
+    },
+    {
+      "file": "jest-all.meta.json",
+      "sha256": "c2f43b3e6c44001050b7af74c8722b5a286ca1d0d472e6dae23fc668f33d924c",
+      "bytes": 503
+    },
+    {
+      "file": "jest-all.stderr.log",
+      "sha256": "296e03e152bdd1020bfcde87c9e1188147772407d68f08633f53b72e6cda3522",
+      "bytes": 6953
+    },
+    {
+      "file": "jest-all.stdout.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "jest-con-correccion.json",
+      "sha256": "302565d76f5b812911952c15e5e19a5b02694ecec9cbdf66c1260eefebae7c80",
+      "bytes": 2117
+    },
+    {
+      "file": "jest-con-correccion.meta.json",
+      "sha256": "3f47c0dcde042f331f82e5864d3bf5359c20bf5d9da381a82f530ebef4774a66",
+      "bytes": 582
+    },
+    {
+      "file": "jest-con-correccion.stderr.log",
+      "sha256": "d1975e97bc0d34b9f26a2610b9035fcb0e1155edd3f68980668cbe951e952110",
+      "bytes": 763
+    },
+    {
+      "file": "jest-con-correccion.stdout.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "jest-coverage-final.json",
+      "sha256": "4e99133feab60fee57edd4cb125c017144d8f2cfe23f4e40b44c8581081c9d76",
+      "bytes": 3403453
+    },
+    {
+      "file": "jest-coverage-final.meta.json",
+      "sha256": "2745b9f8156aa2c3b4c3bb0a2f1947456bf8a317df5b217c1d00af3242bd08da",
+      "bytes": 670
+    },
+    {
+      "file": "jest-coverage-final.stderr.log",
+      "sha256": "fc6bcb6d9b59c1e0425793d4ed7049aa5816d3664d0a55b3dc37440066750158",
+      "bytes": 6963
+    },
+    {
+      "file": "jest-coverage-final.stdout.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "jest-coverage.json",
+      "sha256": "cc88657f9ed552d32ff57ffabaa65465e9b7e2ab1be946e970709c9bbbd7a30d",
+      "bytes": 2117
+    },
+    {
+      "file": "jest-coverage.meta.json",
+      "sha256": "953bb2f3a9663c1a89b2e23363da5ff669e65db78229fe709faca727143a390d",
+      "bytes": 576
+    },
+    {
+      "file": "jest-coverage.stderr.log",
+      "sha256": "da7d344aacbd5d482f3adc8be95fafcaa9b10692a8eb715f6d410384a4957628",
+      "bytes": 745
+    },
+    {
+      "file": "jest-coverage.stdout.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "jest-rojo.json",
+      "sha256": "56404ed3439cc424428d571a706fb6fe0c870828d9ac1fc81fd4928bdc8b9f37",
+      "bytes": 2117
+    },
+    {
+      "file": "jest-rojo.meta.json",
+      "sha256": "c01ae4a1aff59bbc7fa732253805ae5d412726a71287d4c756e6cf4ba02f4207",
+      "bytes": 573
+    },
+    {
+      "file": "jest-rojo.stderr.log",
+      "sha256": "7c1edc98cafa11ec2b319eba9f110c8866c9d4678ab19815974ecaacf5536c59",
+      "bytes": 750
+    },
+    {
+      "file": "jest-rojo.stdout.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "jest-sin-correccion.json",
+      "sha256": "afd5dcdfba99b1366acffcd5e6388cdb247ea0f6c9f77ecb200d006cf5dc6f82",
+      "bytes": 25644
+    },
+    {
+      "file": "jest-sin-correccion.meta.json",
+      "sha256": "9da7358ff917b4c6f14156bf47fe5b4a20537dae067af5c19ae7840710ae218e",
+      "bytes": 580
+    },
+    {
+      "file": "jest-sin-correccion.stderr.log",
+      "sha256": "3e0055ffe87fea3efe10e75cb08e6edadf19bb4911a79d675a89fcc3657866a7",
+      "bytes": 9367
+    },
+    {
+      "file": "jest-sin-correccion.stdout.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "jest-verde.json",
+      "sha256": "4ff74a1ec6fb32ef471820efb3f3625f5a330fb6b8debd6500f7ac4b5f9d4194",
+      "bytes": 2117
+    },
+    {
+      "file": "jest-verde.meta.json",
+      "sha256": "54e103d4a9f08321f38e8b00a07f7f812182a63083989a2fae72158fc5dd36cb",
+      "bytes": 574
+    },
+    {
+      "file": "jest-verde.stderr.log",
+      "sha256": "920ea6c103cf6e922917acd36f346152b028d6a48917b5c365b0acfd4063c420",
+      "bytes": 749
+    },
+    {
+      "file": "jest-verde.stdout.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "limites-finales/artefactos/.last-run.json",
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903",
+      "bytes": 45
+    },
+    {
+      "file": "limites-finales/ejecucion.meta.json",
+      "sha256": "6d0c90a2b98c332dbcf47d8242bda569b6e876c1085c3835b6ff82e50c8d78cf",
+      "bytes": 450
+    },
+    {
+      "file": "limites-finales/ejecucion.stderr.log",
+      "sha256": "eafc9262ab139dc0a358c879dd8c4b63e50464c2a6460f04d6d9cb412a418680",
+      "bytes": 329
+    },
+    {
+      "file": "limites-finales/ejecucion.stdout.log",
+      "sha256": "b4738de717b5df8779a530ea1a676f54fcc9f9a82987e564b6b8be597c1ba543",
+      "bytes": 646
+    },
+    {
+      "file": "limites-finales/html/index.html",
+      "sha256": "5483e12122555eae6c874481bbd92f05c49e48cd3c0c62a04f4810960b0e9eff",
+      "bytes": 536652
+    },
+    {
+      "file": "limites-finales/resultados.json",
+      "sha256": "5a0bbf3c157854baedbc1a66bf60ec6401af16811723da4850d965aef1bcdb57",
+      "bytes": 9680
+    },
+    {
+      "file": "MATRIZ_VERIFICACIONES_TESIS.md",
+      "sha256": "a9d57094bfe7f7b55d5474a6a03968d7f5a3846353ace74fb6f4b8623137b0e2",
+      "bytes": 9571
+    },
+    {
+      "file": "mutaciones-confirmadas/artefactos/.last-run.json",
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903",
+      "bytes": 45
+    },
+    {
+      "file": "mutaciones-confirmadas/ejecucion.meta.json",
+      "sha256": "5c95a05cc71d2adf50efa12469dfdc779514c5e83f1e6c5d252fe6dae5f96dc3",
+      "bytes": 417
+    },
+    {
+      "file": "mutaciones-confirmadas/ejecucion.stderr.log",
+      "sha256": "187a562247e467b92e2d5d32f7257abfe8d7c9a8e6e2e68a8dbdb53cea247be3",
+      "bytes": 2293
+    },
+    {
+      "file": "mutaciones-confirmadas/ejecucion.stdout.log",
+      "sha256": "9ebc987c44dedf5bc7781db7db68da87f01a3f4659ca465b577aed58c442cc6a",
+      "bytes": 1066
+    },
+    {
+      "file": "mutaciones-confirmadas/html/index.html",
+      "sha256": "52c63a0df7e7f99a97f183a4e61df19bec9ce989034555e4cd46ea8ca43eb3fd",
+      "bytes": 560152
+    },
+    {
+      "file": "mutaciones-confirmadas/resultados.json",
+      "sha256": "ea4b6fcdb6e53b1de85bf939c0f0535e64210d9ae83354e19696eb27d0149dc8",
+      "bytes": 12959
+    },
+    {
+      "file": "mutaciones-finales/artefactos/.last-run.json",
+      "sha256": "353b222c659cc543a5caea3b56296d9105a8ef821b3b54091bff53d6d3a803f3",
+      "bytes": 243
+    },
+    {
+      "file": "mutaciones-finales/artefactos/admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-mobile-390/error-context.md",
+      "sha256": "2e74260af1e85224d25b9f90187d74f3852060d915731dd135ef4edc9d14b2e8",
+      "bytes": 3221
+    },
+    {
+      "file": "mutaciones-finales/artefactos/admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-mobile-390/test-failed-1.png",
+      "sha256": "17c45db9bc342559ac4e995026fe8b82285f79d5a2e07fcab5c4dff210dc5bda",
+      "bytes": 96370
+    },
+    {
+      "file": "mutaciones-finales/artefactos/admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-mobile-430/error-context.md",
+      "sha256": "2e74260af1e85224d25b9f90187d74f3852060d915731dd135ef4edc9d14b2e8",
+      "bytes": 3221
+    },
+    {
+      "file": "mutaciones-finales/artefactos/admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-mobile-430/test-failed-1.png",
+      "sha256": "3524e4111eb77727edb24f7f2ad0c13670383940280d2cff66c468991b2859d9",
+      "bytes": 95999
+    },
+    {
+      "file": "mutaciones-finales/artefactos/admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-mobile-480/error-context.md",
+      "sha256": "3112d910e66fc4d6ddece4c9be3b650ad22ee9b7e568ab8c4515b20a1934015b",
+      "bytes": 3255
+    },
+    {
+      "file": "mutaciones-finales/artefactos/admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-mobile-480/test-failed-1.png",
+      "sha256": "4699a4742d6cea4bbd5a58156054a9ce221e52b86de707558adba2d7df829ae2",
+      "bytes": 32793
+    },
+    {
+      "file": "mutaciones-finales/artefactos/admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-tablet-768/error-context.md",
+      "sha256": "7de8f8616d9d91aa1fc44e7f060577608676c1c717001b70f2b99f008ef299c8",
+      "bytes": 11473
+    },
+    {
+      "file": "mutaciones-finales/artefactos/admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-tablet-768/test-failed-1.png",
+      "sha256": "bb3a611d6ce4412cdb9066bbd610bb93bf8670851fd29a6aa7269a7f76efbd87",
+      "bytes": 380607
+    },
+    {
+      "file": "mutaciones-finales/ejecucion.meta.json",
+      "sha256": "066c888b73962579aaca1d4f04c1e2fb021d51b2e795a634eae538f4491ab8c2",
+      "bytes": 418
+    },
+    {
+      "file": "mutaciones-finales/ejecucion.stderr.log",
+      "sha256": "64fbcdbaac01489091533282bfded44b1a282fc7485b18763992aed1f46faeb9",
+      "bytes": 2297
+    },
+    {
+      "file": "mutaciones-finales/ejecucion.stdout.log",
+      "sha256": "1f01b797dc1806f269478ba0b25e4767d124e356bc799071d23d3884903b4829",
+      "bytes": 10858
+    },
+    {
+      "file": "mutaciones-finales/html/data/41d25f3105cd120ee216451090726f86c17683b7.png",
+      "sha256": "bb3a611d6ce4412cdb9066bbd610bb93bf8670851fd29a6aa7269a7f76efbd87",
+      "bytes": 380607
+    },
+    {
+      "file": "mutaciones-finales/html/data/5919a5929fa996398fdd201b5cf417afb3ecab8c.md",
+      "sha256": "2e74260af1e85224d25b9f90187d74f3852060d915731dd135ef4edc9d14b2e8",
+      "bytes": 3221
+    },
+    {
+      "file": "mutaciones-finales/html/data/86178abda87e7f5b9e6a8eae1f171398ae8c3b08.png",
+      "sha256": "3524e4111eb77727edb24f7f2ad0c13670383940280d2cff66c468991b2859d9",
+      "bytes": 95999
+    },
+    {
+      "file": "mutaciones-finales/html/data/a9a16130f3f5a056d65d69308041b5f826c0aac7.md",
+      "sha256": "7de8f8616d9d91aa1fc44e7f060577608676c1c717001b70f2b99f008ef299c8",
+      "bytes": 11473
+    },
+    {
+      "file": "mutaciones-finales/html/data/af7012b2baf6563c2be61ef390d4865f4437bef7.png",
+      "sha256": "4699a4742d6cea4bbd5a58156054a9ce221e52b86de707558adba2d7df829ae2",
+      "bytes": 32793
+    },
+    {
+      "file": "mutaciones-finales/html/data/ea126fc592a93c1a5e42063a9184c6da57a25e48.md",
+      "sha256": "3112d910e66fc4d6ddece4c9be3b650ad22ee9b7e568ab8c4515b20a1934015b",
+      "bytes": 3255
+    },
+    {
+      "file": "mutaciones-finales/html/data/f878b258724d1d3e242efc72108906527ac43b41.png",
+      "sha256": "17c45db9bc342559ac4e995026fe8b82285f79d5a2e07fcab5c4dff210dc5bda",
+      "bytes": 96370
+    },
+    {
+      "file": "mutaciones-finales/html/index.html",
+      "sha256": "0f83a59fec81aafb1e3b6831b5bac92579361d690c7bc5f042d5e6246ae3ef33",
+      "bytes": 564272
+    },
+    {
+      "file": "mutaciones-finales/resultados.json",
+      "sha256": "a387affe956a6322bf26ba93949abe05477f0a001f2bfc58454348dbc1502a63",
+      "bytes": 29056
+    },
+    {
+      "file": "pendientes-finales/artefactos/.last-run.json",
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903",
+      "bytes": 45
+    },
+    {
+      "file": "pendientes-finales/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-desktop-1440/asistencias-quick-desktop-1440.png",
+      "sha256": "63796282382507dda53c6d98b6489b01c8cbe24555beee278ea1e2f5e4f4b755",
+      "bytes": 1456465
+    },
+    {
+      "file": "pendientes-finales/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-desktop-1920/asistencias-quick-desktop-1920.png",
+      "sha256": "123366e567ad704d16f5a77a88c0a852848e331049e9caa88a19369d309ff243",
+      "bytes": 1845507
+    },
+    {
+      "file": "pendientes-finales/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-390/asistencias-quick-mobile-390.png",
+      "sha256": "485a80c29143a0a07657f950e474262540208543d6c401c419cefed0b1057c49",
+      "bytes": 253034
+    },
+    {
+      "file": "pendientes-finales/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-430/asistencias-quick-mobile-430.png",
+      "sha256": "6d1b2e09796a11d34c05242c89f8dc717bfc3f1a0b5243cb0849e0f6fb94cfe5",
+      "bytes": 290155
+    },
+    {
+      "file": "pendientes-finales/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-480/asistencias-quick-mobile-480.png",
+      "sha256": "39e939e093fb15190a762130dfcb670b1ae155bd6f39d5d48c20b1ba5dce4d66",
+      "bytes": 209509
+    },
+    {
+      "file": "pendientes-finales/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-tablet-1024/asistencias-quick-tablet-1024.png",
+      "sha256": "3fd7562f9bc3f82525ef0a1a0d040a2e3bedd8a7a163ad1719e1e17e3793224f",
+      "bytes": 1513920
+    },
+    {
+      "file": "pendientes-finales/artefactos/asistencias.guided.review--62551-ias-quick-mode-per-viewport-tablet-768/asistencias-quick-tablet-768.png",
+      "sha256": "e9632de2e370a9b9fd4dfd893adeb41b0d35a724794d26cdbb244b73f50088e4",
+      "bytes": 1222038
+    },
+    {
+      "file": "pendientes-finales/ejecucion.meta.json",
+      "sha256": "eae08083af2ba61a8b9acb6b1c4687e9178b6617e2c2ca424990a65abfd5efb7",
+      "bytes": 944
+    },
+    {
+      "file": "pendientes-finales/ejecucion.stderr.log",
+      "sha256": "87955b6a8b5596571dccef1ada3e24f289d6ebf0b29d092dc30e78f38c276e4d",
+      "bytes": 6227
+    },
+    {
+      "file": "pendientes-finales/ejecucion.stdout.log",
+      "sha256": "96607b4e5df926a8b625c7d2a05840bcceb7cebb167db7521eabbab6ddda1c34",
+      "bytes": 16367
+    },
+    {
+      "file": "pendientes-finales/html/index.html",
+      "sha256": "251442542ee4d7a811646bdf969e99cfbb1ce82a5a9c0956909ac2446971318e",
+      "bytes": 695632
+    },
+    {
+      "file": "pendientes-finales/resultados.json",
+      "sha256": "a626c0f0685ee62aba25f74ac55c5d5b6f8eb4328aeb9a31a9dea714119d97eb",
+      "bytes": 143924
+    },
+    {
+      "file": "persistencia-flujos-ui-1793201450885.meta.json",
+      "sha256": "0b581c9455e913531ab669c4fc6053073866986275e058b2ac84a43939d2a72a",
+      "bytes": 439
+    },
+    {
+      "file": "persistencia-flujos-ui-1793201450885.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "persistencia-flujos-ui-1793201450885.stdout.log",
+      "sha256": "21f0537b6632cc3140c5d1015e19796d5e8dafd1862f33443457fdbb85948e55",
+      "bytes": 1954
+    },
+    {
+      "file": "persistencia-flujos-ui-1793201451070-7518a1.json",
+      "sha256": "567d32e9f19689ee4da0ff237a03783ff2b12d2c9082359478aff402dfab34fc",
+      "bytes": 2707
+    },
+    {
+      "file": "persistencia-flujos-ui.json",
+      "sha256": "e4227b808e4bb1e423ce1793efdac357ee041a97c9a7fda3da536b538c13b951",
+      "bytes": 442
+    },
+    {
+      "file": "persistencia-flujos-ui.meta.json",
+      "sha256": "f22f9abe0108632b288f658c570daa91ec1d4473f3514047d04503ef82bcbf15",
+      "bytes": 438
+    },
+    {
+      "file": "persistencia-flujos-ui.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "persistencia-flujos-ui.stdout.log",
+      "sha256": "9f64cf27c3684d4f782e754e91cfb96feaddc96e4ce726336d93f2ea58f5a621",
+      "bytes": 349
+    },
+    {
+      "file": "persistencia-siete-flujos.json",
+      "sha256": "4c3f1bc1d2b896917e3be70792e9ff11470b8f7ac9d68b67a69e305b199a40ae",
+      "bytes": 1436
+    },
+    {
+      "file": "persistencia-siete-flujos.meta.json",
+      "sha256": "0b742105922db797b4fa8185f99c43b0783c5abfd8565abd0f0ab30516e75440",
+      "bytes": 439
+    },
+    {
+      "file": "persistencia-siete-flujos.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "persistencia-siete-flujos.stdout.log",
+      "sha256": "a1f57eddc3d0a89612e5e4788bfe4982c8f34c737c6f6b35866b0ffcaa0ffcb7",
+      "bytes": 765
+    },
+    {
+      "file": "precondicion-importes.meta.json",
+      "sha256": "07ea08e3630a20644aaffc9c590f168824e3646ce8741139aca8eeb08063a567",
+      "bytes": 439
+    },
+    {
+      "file": "precondicion-importes.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "precondicion-importes.stdout.log",
+      "sha256": "b182162abfa9c6ff7b79b0ad7114f7a517a9f2f7a6396a13c14fe31b515f7c4b",
+      "bytes": 3
+    },
+    {
+      "file": "preparar-importes-locales.meta.json",
+      "sha256": "6a7069e8bd172b48ed7090f792443b6592179745e11b2b75677e784b0f9e7db0",
+      "bytes": 439
+    },
+    {
+      "file": "preparar-importes-locales.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "preparar-importes-locales.stdout.log",
+      "sha256": "088cec2c1867ee9089a677e952b6dbc76bc3521ce18bd5a99b86440b961931bd",
+      "bytes": 10
+    },
+    {
+      "file": "PRIVACIDAD.json",
+      "sha256": "b356981347236ae9a78243689bcc83f43c3e9dc16dade9b9d200b49bf23756d2",
+      "bytes": 2703
+    },
+    {
+      "file": "RESULTADOS_PARA_TESIS_4_5.md",
+      "sha256": "2bf63cda0415ca137c45ca330ec82abaebc1da75545762a88866d45c71a83f3e",
+      "bytes": 3499
+    },
+    {
+      "file": "resumen-correcciones.json",
+      "sha256": "98a532163725ee1823d0f5154ff289f22b66cf49dc070536b94261b00e6f8883",
+      "bytes": 3365
+    },
+    {
+      "file": "REVISION_INDEPENDIENTE.md",
+      "sha256": "23b873ae5201b010f92ae67cc71618e22b1af53bf2f8a7e5ae901595876ec4ed",
+      "bytes": 1895
+    },
+    {
+      "file": "rls-local.meta.json",
+      "sha256": "1a61cbdabb0b2957550bd26d6e722ea7d12f9e18aa215dbe96601461a28f1db7",
+      "bytes": 419
+    },
+    {
+      "file": "rls-local.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "rls-local.stdout.log",
+      "sha256": "128b109a224a02eee46a2d13c49a9c5be1ceb4556d9fb9dcf99b70c20ec3ecc1",
+      "bytes": 225
+    },
+    {
+      "file": "seed-catalogos-1793201450076.meta.json",
+      "sha256": "c1f31bb22deae5b429ba177de394e3294e17b9f96c37dd1c8f2fe07460b86d38",
+      "bytes": 438
+    },
+    {
+      "file": "seed-catalogos-1793201450076.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "seed-catalogos-1793201450076.stdout.log",
+      "sha256": "3b246c0ebd44c2a14f6ab81a46c7fe97915b8d4ca3c4ead337bd8088283e63c9",
+      "bytes": 161
+    },
+    {
+      "file": "seed-catalogos.meta.json",
+      "sha256": "0c971318da2bd0bb0a970b451248a22705488f9c33dd9b78c8640b9c9785458e",
+      "bytes": 439
+    },
+    {
+      "file": "seed-catalogos.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "seed-catalogos.stdout.log",
+      "sha256": "3b246c0ebd44c2a14f6ab81a46c7fe97915b8d4ca3c4ead337bd8088283e63c9",
+      "bytes": 161
+    },
+    {
+      "file": "seed-idempotencia.json",
+      "sha256": "1f340a3d3a00b61734f65f089e31041dac703098c3c1b67659e95f11c84ce2b3",
+      "bytes": 284
+    },
+    {
+      "file": "seed-negocio-1793201450309.meta.json",
+      "sha256": "923c628d621b49c3cbcf4608e8a387f4a79c3dcd390725e4559578f150492091",
+      "bytes": 439
+    },
+    {
+      "file": "seed-negocio-1793201450309.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "seed-negocio-1793201450309.stdout.log",
+      "sha256": "36f45fec38bfb4d2d11fb7ff16365f4c04a2fda770bd4b0def51d66c10d95394",
+      "bytes": 804
+    },
+    {
+      "file": "seed-negocio.meta.json",
+      "sha256": "a23019de975e3f32810a12c6ea419644e2ae9976a31d102f9650b4fadbec6201",
+      "bytes": 439
+    },
+    {
+      "file": "seed-negocio.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "seed-negocio.stdout.log",
+      "sha256": "36f45fec38bfb4d2d11fb7ff16365f4c04a2fda770bd4b0def51d66c10d95394",
+      "bytes": 804
+    },
+    {
+      "file": "seed-resumen-1793201450554-0529c0.json",
+      "sha256": "62abb2e690b14823947602585b4d9423ab1712160c04b7fcfb1d854447056923",
+      "bytes": 305
+    },
+    {
+      "file": "seed-resumen.json",
+      "sha256": "b6b91684135054dd12349f061ae372810f8f3d324566f41024052cbbba381aac",
+      "bytes": 305
+    },
+    {
+      "file": "versiones-herramientas.json",
+      "sha256": "658fbbf4370c0106bcce4ace4ff9a202bd1fda0d191b2eb6f44bc22d8c9e55dd",
+      "bytes": 192
+    },
+    {
+      "file": "versiones-node.meta.json",
+      "sha256": "cc9a420817453d9b2b2a979bf5f6cbb290b09183b739a01fb661fbff9d599b83",
+      "bytes": 233
+    },
+    {
+      "file": "versiones-node.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "versiones-node.stdout.log",
+      "sha256": "4858f9aa682e7585afff535cbfb6d5ca3c4eb46b591133a232841b09b8b85d07",
+      "bytes": 11
+    },
+    {
+      "file": "versiones-npm.meta.json",
+      "sha256": "8ccbd54527172c24f535fb0ada2534c9e0041bc062de8fc062c51c6529970209",
+      "bytes": 304
+    },
+    {
+      "file": "versiones-npm.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "versiones-npm.stdout.log",
+      "sha256": "1d01c01718f2b6cb41973abc497379d9c4fe42da5a57f6fb3e0eeeae18482608",
+      "bytes": 9
+    },
+    {
+      "file": "cierre-integridad.stdout.log",
+      "bytes": 38,
+      "sha256": "03ad926795df48ba8d5ffafe12046e2c2f3615b20f882b82229e9d4415948510"
+    },
+    {
+      "file": "cierre-integridad.stderr.log",
+      "bytes": 408,
+      "sha256": "7cb61b6abfa8f12102237913241007584af7af4679e5a7a2dde3e4f2575214f9"
+    },
+    {
+      "file": "cierre-integridad.meta.json",
+      "bytes": 263,
+      "sha256": "04b36ea8bcbe5d8b2e7949184a37603e3d67c74bb82bbfbf8edde8f81086f41f"
+    }
+  ]
+}

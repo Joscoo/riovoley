@@ -1,0 +1,182 @@
+[
+  {
+    "file": "src/features/attendance/presentation/components/AsistenciasManager.js",
+    "sha256": "a1e12d104b8aa6f0eb282ce6ba35ad54bc5e39d89a0655990a36906977c99722"
+  },
+  {
+    "file": "src/features/payments/presentation/components/PagosManager.js",
+    "sha256": "75538915e903fa03b00e9c2eec68d55ccd8d6d31db2ceb8cc68619e5e2fc2410"
+  },
+  {
+    "file": "src/shared/ui/SortableHeader.js",
+    "sha256": "632b197342fa788df7f285c2078f5b752319098ab7b31dccbeeb4bc845f807b0"
+  },
+  {
+    "file": "src/shared/ui/SortableHeader.test.js",
+    "sha256": "dc962841d0a6d6a98c5fda0ed437c18e4bc24fcd7c48bc2946703bac971f5603"
+  },
+  {
+    "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+    "sha256": "c4ddb67d777ee4e3ca5cd2d5381323b780507da3ea2c079a8f7b72a896e93235"
+  },
+  {
+    "file": "tests/e2e/asistencias.guided.review.spec.js",
+    "sha256": "1944041fea5d208588d7db81606282e0773462ee596d7ad13a4a08559ad097c8"
+  },
+  {
+    "file": "tests/e2e/filters-sorting.tables.spec.js",
+    "sha256": "690af78b7246411117b31f8aafa3deab6598566b27f94fc1fbb8ffa03c7c4e1e"
+  },
+  {
+    "file": "tests/e2e/helpers/paymentsSorting.js",
+    "sha256": "a57565074476363a3808d76ce7eece6804866ec85b5f4c252bd785afa05b0629"
+  },
+  {
+    "file": "tests/e2e/payments.responsive-boundaries.spec.js",
+    "sha256": "540f9e56e50470e682208f10e3561c53d192365aa8e6dd051a3774e1bce00327"
+  },
+  {
+    "file": "playwright.local.config.cjs",
+    "sha256": "f5a0b5921738db0e6898eabd4e4100cae96c79f17f263cab9a1ee17060633671"
+  },
+  {
+    "file": "scripts/e2e/local/artifacts-fixes.cjs",
+    "sha256": "26439b688bc95db3eb62936c7844a9ca5736d7b390d6c24ea16c71cec94db298"
+  },
+  {
+    "file": "scripts/e2e/local/build.cjs",
+    "sha256": "46b3299327da537a614629879ff141277d97791c1779b970d6d8787025264730"
+  },
+  {
+    "file": "scripts/e2e/local/check-environment-fixes.cjs",
+    "sha256": "c4ebc957bc16e13e32dc90ce3365911cc5ce738fc552f6a03eda385044f7ca8d"
+  },
+  {
+    "file": "scripts/e2e/local/check-fixes.cjs",
+    "sha256": "75129162a135c3341a67da0d9618d4c5a4e37078eb263ca2478772c22b2d911f"
+  },
+  {
+    "file": "scripts/e2e/local/close-fixes.cjs",
+    "sha256": "882c9ba00ecf18414a20ad61e96f9c3d3b706267a6eb02b0b76318d85bf58d6e"
+  },
+  {
+    "file": "scripts/e2e/local/config.toml",
+    "sha256": "befb8cbb9ce1fbabb49d1e7e8b401b366200b3cd871fe232ef95ba9421300fe4"
+  },
+  {
+    "file": "scripts/e2e/local/evidence.cjs",
+    "sha256": "50c06a3566a4a039d9ae89091c89ba27cdf4c913f7f290ffd656fb6146dc13ce"
+  },
+  {
+    "file": "scripts/e2e/local/evidence.test.cjs",
+    "sha256": "9f2893308e3d655f0d16143a00abe6e8ae475a58e757b3151e135a477190ec21"
+  },
+  {
+    "file": "scripts/e2e/local/functions.cjs",
+    "sha256": "da0b57e675fa1436d3924569d2eb111321de902f216462535620b4c66f8d83c3"
+  },
+  {
+    "file": "scripts/e2e/local/harness.cjs",
+    "sha256": "80aa257adb22e39c4ac56807bd8ca3a024428d2b6cdb9458e84a2e1c6f10ac0c"
+  },
+  {
+    "file": "scripts/e2e/local/idempotency.cjs",
+    "sha256": "be54514e1448a16e817b6e88812cce773084d2afb912146e2769cbbcc53b6b6f"
+  },
+  {
+    "file": "scripts/e2e/local/inspect.cjs",
+    "sha256": "188fb88620c4151c8512ebc9e5d6763c52405f0044184a7e746ee83b33eca45d"
+  },
+  {
+    "file": "scripts/e2e/local/integrity-fixes.cjs",
+    "sha256": "cace8807479bb749447dfefc1ba80968e6c678c5a0f096691f5112778c2c41ed"
+  },
+  {
+    "file": "scripts/e2e/local/integrity.cjs",
+    "sha256": "c9492b66607bd603c8fae9d342073e1dbd269e5c532ba85e0b9f32685e3d29b8"
+  },
+  {
+    "file": "scripts/e2e/local/loopback.cjs",
+    "sha256": "1b26ff102b37eda996fe0d98e2d2d1d272f23637fc7f6330bfc95eabec6e7831"
+  },
+  {
+    "file": "scripts/e2e/local/loopback.test.cjs",
+    "sha256": "86f794d4205a1d58abaf486040c01355cb1c6c3acc6fdf77db31e34c75f8cbed"
+  },
+  {
+    "file": "scripts/e2e/local/manage.cjs",
+    "sha256": "1be6e6b6bb5417b0425f30fff6bb636f5c9c40a44c18bd29cdffac204451a2bd"
+  },
+  {
+    "file": "scripts/e2e/local/persistence-fixes.cjs",
+    "sha256": "896588fe20abd4470ee3667c128c7b695b4c686840b969ef7ff6eab1ba12a4aa"
+  },
+  {
+    "file": "scripts/e2e/local/persistence.cjs",
+    "sha256": "b30cdb81d95fc7b7ae08dab84fcef3c534bff00d896b5b22cd3b2abdc485e74d"
+  },
+  {
+    "file": "scripts/e2e/local/prepare-fixes.cjs",
+    "sha256": "787a0c99e58bf4b0ed94088058d091b17a1befc2f0f8519cdfe7a0daa5a6437f"
+  },
+  {
+    "file": "scripts/e2e/local/privacy.py",
+    "sha256": "e493ae1bd509d7e621bee794edfc3b8b62e93605770692f350ce4d7902920241"
+  },
+  {
+    "file": "scripts/e2e/local/probe-fixes.cjs",
+    "sha256": "d90483b689ff715f5102e55763e0b3ecbfb7d44c0d968c3f8ad9beecd2ac0ea9"
+  },
+  {
+    "file": "scripts/e2e/local/README.md",
+    "sha256": "d5a39ce9f7faf41246cdcc53c01cd96e6836ef220755f72f2d617957adbee5ec"
+  },
+  {
+    "file": "scripts/e2e/local/rebind.cjs",
+    "sha256": "93dd97e2e18a3ccae6627fa33cb477cfb0703a43a5ed747432900b0bfa62dfdd"
+  },
+  {
+    "file": "scripts/e2e/local/report-fixes.cjs",
+    "sha256": "0bc8793bb52218a573f544cf20e39c2e091fee86009b37e38db9486ace8987fd"
+  },
+  {
+    "file": "scripts/e2e/local/report.cjs",
+    "sha256": "370fabe34fec8cff2e1183034f14ad47e6aafc9607ab223674ddd8198d59a650"
+  },
+  {
+    "file": "scripts/e2e/local/results-summary.cjs",
+    "sha256": "cb0e6735cb0a24de6510d3c18c3939a168714630a2f881750c2368085e6ac926"
+  },
+  {
+    "file": "scripts/e2e/local/run.cjs",
+    "sha256": "a9e9cf016d5368b53de2598aa515fee2bbac00d571d185cb0100390d156a6e3c"
+  },
+  {
+    "file": "scripts/e2e/local/safety.cjs",
+    "sha256": "06f1e9afa7ab7c5923dac3f353c86663ef9d9f9c9df4ee21c7f456252c8d86a4"
+  },
+  {
+    "file": "scripts/e2e/local/safety.test.cjs",
+    "sha256": "277c4402c7fed8af6f9184c30e922d6ce2e34ba61ce0f56b4fa4a67e368245e3"
+  },
+  {
+    "file": "scripts/e2e/local/schema.cjs",
+    "sha256": "e892b2ff02781d613cc0bbc4316f4343a66aabb2511b36711538b139ccab62a4"
+  },
+  {
+    "file": "scripts/e2e/local/schema.test.cjs",
+    "sha256": "94e8cc4c2d1a982b6fc72dc125e14cf15ca29b256c6488f00ba163a8e8973f5e"
+  },
+  {
+    "file": "scripts/e2e/local/seed.cjs",
+    "sha256": "83cbcdb11baa265dbaba54c5e0d34eef6049f6c269b0814923ce563a12905d15"
+  },
+  {
+    "file": "scripts/e2e/local/server.cjs",
+    "sha256": "16637c3433702cede839f248d7424371531d14927c24e723ca31e0b8032006e0"
+  },
+  {
+    "file": "scripts/e2e/local/verify.cjs",
+    "sha256": "1c39e5bff4361d52cbe85e31b8e791f9f7915cfd8745a728892cb7c42deb7a74"
+  }
+]

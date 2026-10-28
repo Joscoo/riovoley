@@ -1,0 +1,12 @@
+{
+  "command": [
+    "python",
+    "scripts/audit/android/privacy.py"
+  ],
+  "cwd": "",
+  "start": "2026-10-28T19:18:52.122Z",
+  "end": "2026-10-28T19:18:55.953Z",
+  "durationSeconds": 3.831,
+  "exitCode": 0,
+  "signal": null
+}

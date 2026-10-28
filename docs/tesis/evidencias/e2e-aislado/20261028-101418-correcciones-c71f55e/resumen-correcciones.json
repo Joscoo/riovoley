@@ -1,0 +1,151 @@
+{
+  "generatedAt": "2026-10-28T15:36:32.347Z",
+  "commit": "c71f55e5bc59c528a002c4347fb1664794cb277e",
+  "originalInstances": 112,
+  "passed": 112,
+  "failed": 0,
+  "skipped": 0,
+  "resolved": 17,
+  "boundaries": {
+    "executed": 4,
+    "passed": 4,
+    "failed": 0
+  },
+  "jest": {
+    "suites": 84,
+    "executed": 395,
+    "passed": 395,
+    "failed": 0,
+    "skipped": 0
+  },
+  "contracts": {
+    "executed": 6,
+    "passed": 6,
+    "subsetOfJest": true
+  },
+  "logicalIntegration": {
+    "executed": 5,
+    "passed": 5,
+    "subsetOfJest": true,
+    "realPersistence": false
+  },
+  "attempts": [
+    {
+      "label": "afectadas-asistencia-pagos",
+      "startTime": "2026-10-28T15:19:23.353Z",
+      "duration": 59236.26,
+      "expected": 7,
+      "skipped": 0,
+      "unexpected": 7,
+      "flaky": 0
+    },
+    {
+      "label": "antes-filtros-asistencia",
+      "startTime": "2026-10-28T15:14:19.834Z",
+      "duration": 36577.127,
+      "expected": 0,
+      "skipped": 0,
+      "unexpected": 2,
+      "flaky": 0
+    },
+    {
+      "label": "antes-mutacion",
+      "startTime": "2026-10-28T15:15:12.946Z",
+      "duration": 17807.692,
+      "expected": 0,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    {
+      "label": "asistencias-corregidas",
+      "startTime": "2026-10-28T15:21:56.736Z",
+      "duration": 17730.867,
+      "expected": 7,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    {
+      "label": "flujo-actual-desktop",
+      "startTime": "2026-10-28T15:20:44.321Z",
+      "duration": 61855.41499999999,
+      "expected": 0,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    {
+      "label": "flujo-actual-desktop-crear",
+      "startTime": "2026-10-28T15:22:24.312Z",
+      "duration": 62036.049,
+      "expected": 0,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    {
+      "label": "flujo-actual-desktop-filtros",
+      "startTime": "2026-10-28T15:23:34.233Z",
+      "duration": 15626.429,
+      "expected": 0,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    {
+      "label": "flujo-actual-moneda",
+      "startTime": "2026-10-28T15:24:49.685Z",
+      "duration": 23454.384,
+      "expected": 0,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    {
+      "label": "flujo-confirmacion-persistencia",
+      "startTime": "2026-10-28T15:26:13.576Z",
+      "duration": 13323.123,
+      "expected": 1,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    {
+      "label": "limites-finales",
+      "startTime": "2026-10-28T15:30:40.435Z",
+      "duration": 13127.561,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    {
+      "label": "mutaciones-confirmadas",
+      "startTime": "2026-10-28T15:29:10.517Z",
+      "duration": 66544.636,
+      "expected": 7,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    {
+      "label": "mutaciones-finales",
+      "startTime": "2026-10-28T15:27:00.973Z",
+      "duration": 87572.91600000001,
+      "expected": 3,
+      "skipped": 0,
+      "unexpected": 4,
+      "flaky": 0
+    },
+    {
+      "label": "pendientes-finales",
+      "startTime": "2026-10-28T15:31:35.907Z",
+      "duration": 258400.297,
+      "expected": 105,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  ]
+}

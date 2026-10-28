@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\Riovoley\\riovoley\\node_modules\\react-scripts\\scripts\\build.js"
+  ],
+  "cwd": "",
+  "start": "2026-10-28T20:01:03.778Z",
+  "end": "2026-10-28T20:04:35.564Z",
+  "durationSeconds": 211.786,
+  "exitCode": 0,
+  "signal": null
+}

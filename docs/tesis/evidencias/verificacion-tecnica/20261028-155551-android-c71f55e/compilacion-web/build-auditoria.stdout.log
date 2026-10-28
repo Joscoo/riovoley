@@ -1,0 +1,62 @@
+Creating an optimized production build...
+Compiled successfully.
+
+File sizes after gzip:
+
+  205.61 kB  build\static\js\main.6e664175.js
+  136.97 kB  build\static\js\344.1e1b0fd6.chunk.js
+  107.71 kB  build\static\js\366.5c639984.chunk.js
+  46.35 kB   build\static\js\239.b82aa4e7.chunk.js
+  43.31 kB   build\static\js\455.0950f484.chunk.js
+  28.69 kB   build\static\js\895.94891ff4.chunk.js
+  27.25 kB   build\static\js\616.0f49370b.chunk.js
+  25.06 kB   build\static\css\main.09ccfd21.css
+  22.79 kB   build\static\js\617.1177d78a.chunk.js
+  17.94 kB   build\static\js\299.9dfd7804.chunk.js
+  17.76 kB   build\static\js\940.d6970760.chunk.js
+  14.72 kB   build\static\js\128.1a2d01cf.chunk.js
+  13.76 kB   build\static\js\533.23706108.chunk.js
+  12.21 kB   build\static\js\267.5d8042d2.chunk.js
+  10.93 kB   build\static\js\558.15764553.chunk.js
+  9.35 kB    build\static\js\589.1c1321e5.chunk.js
+  9.2 kB     build\static\js\679.498c057c.chunk.js
+  9.17 kB    build\static\js\977.86279801.chunk.js
+  7.68 kB    build\static\js\521.f4ce8581.chunk.js
+  7.11 kB    build\static\js\234.589bb85d.chunk.js
+  6.43 kB    build\static\js\614.c8a75634.chunk.js
+  5.82 kB    build\static\js\698.8eb1db0d.chunk.js
+  5.8 kB     build\static\js\830.158b7d6f.chunk.js
+  4.37 kB    build\static\js\110.2e9a39d5.chunk.js
+  3.83 kB    build\static\js\970.89b64bd8.chunk.js
+  3.72 kB    build\static\js\781.763d72de.chunk.js
+  3.42 kB    build\static\js\61.b255789c.chunk.js
+  3.32 kB    build\static\js\968.032c41e5.chunk.js
+  3.31 kB    build\static\js\743.ee2797c4.chunk.js
+  3.01 kB    build\static\js\457.e660dab1.chunk.js
+  2.64 kB    build\static\js\329.5833164d.chunk.js
+  2.62 kB    build\static\js\244.0fb29373.chunk.js
+  2.52 kB    build\static\js\554.e367c69b.chunk.js
+  2.26 kB    build\static\js\749.853198dd.chunk.js
+  2.2 kB     build\static\js\926.ed760bfe.chunk.js
+  2.1 kB     build\static\js\198.dc573be4.chunk.js
+  1.76 kB    build\static\js\453.f6898a22.chunk.js
+  1.4 kB     build\static\js\120.942b3226.chunk.js
+  658 B      build\static\js\828.a755d261.chunk.js
+  479 B      build\static\js\551.0454b485.chunk.js
+  345 B      build\static\js\851.ac2af1c3.chunk.js
+  330 B      build\static\js\842.57fe5651.chunk.js
+
+The project was built assuming it is hosted at /.
+You can control this with the homepage field in your package.json.
+
+The .e2e-local\android-native\20261028-155551\project\build folder is ready to be deployed.
+You may serve it with a static server:
+
+  npm install -g serve
+  serve -s .e2e-local\android-native\20261028-155551\project\build
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+
+

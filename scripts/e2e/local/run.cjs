@@ -1,0 +1,27 @@
+const path=require('node:path');
+const fs=require('node:fs');
+const {readLocal,validatePlaywrightArgs}=require('./safety.cjs');
+const h=require('./harness.cjs');
+const {allocateRun}=require('./evidence.cjs');
+const action=process.argv[2]||'smoke';
+const input=process.argv.slice(3);
+const labelArg=input.find(x=>x.startsWith('--label='));
+const extra=validatePlaywrightArgs(input.filter(x=>!x.startsWith('--label=')));
+const labels={smoke:'roles-escritorio',desktop:'pendientes-escritorio',pending:'pendientes-siete-perfiles',mutations:'mutaciones-locales',boundaries:'pagos-limites-adaptables',anonymous:'acceso-anonimo',public:'regresion-publica'};
+if(!labels[action]) throw new Error('Usar smoke, desktop, pending, mutations o boundaries');
+const allocated=allocateRun(h.evidence,labels[action],labelArg?.slice('--label='.length));
+labels[action]=allocated.label;
+fs.writeFileSync(path.join(h.runtime,'last-run-'+action+'.json'),JSON.stringify(allocated));
+readLocal();
+const files=['admin.modules-navigation.spec.js','admin.provisioning-notifications.smoke.spec.js','asistencias.guided.review.spec.js','filters-sorting.phase2-lists.spec.js','filters-sorting.physical-tests.spec.js','filters-sorting.tables.spec.js','filters-sorting.user-management.spec.js','responsive.smoke.spec.js','roles.modules-navigation.spec.js','roles.panels-navigation.smoke.spec.js'];
+let selected=action==='smoke'?['roles.panels-navigation.smoke.spec.js']:action==='mutations'?['admin.happy-path-controlled.spec.js']:action==='boundaries'?['payments.responsive-boundaries.spec.js']:action==='anonymous'?['audit.protected-routes.spec.js']:action==='public'?['responsive.smoke.spec.js','public.navigation-accessibility.spec.js','auth.password-recovery.spec.js','audit.protected-routes.spec.js']:files;
+const args=[path.join(h.root,'node_modules/@playwright/test/cli.js'),'test',...selected.map(f=>'tests/e2e/'+f),'--config=playwright.local.config.cjs'];
+if(['smoke','desktop','boundaries'].includes(action)) args.push('--project=desktop-1440');
+if(['desktop','pending'].includes(action)) args.push('--grep-invert=public route responsive guard');
+if(action==='public') args.push('--grep-invert=role dashboards responsive guard');
+args.push(...extra);
+const env={...process.env,E2E_LOCAL_LABEL:labels[action],E2E_ENABLE_MUTATION_FLOW:action==='mutations'?'true':'false'};
+h.run(labels[action]+'/ejecucion',process.execPath,args,{env,allowFailure:true}).then(r=>{
+  console.log('Evidencia: '+path.relative(h.root,h.evidence));
+  process.exitCode=r.exitCode;
+}).catch(e=>{console.error(e.message);process.exitCode=1;});

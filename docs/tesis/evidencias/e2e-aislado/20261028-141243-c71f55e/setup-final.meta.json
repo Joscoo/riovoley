@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/e2e/local/manage.cjs",
+    "setup"
+  ],
+  "start": "2026-10-28T14:49:36.928Z",
+  "end": "2026-10-28T14:49:45.848Z",
+  "durationSeconds": 8.92,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

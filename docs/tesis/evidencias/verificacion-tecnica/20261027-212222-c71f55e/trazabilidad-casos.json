@@ -1,0 +1,943 @@
+[
+  {
+    "name": "1. Caso de uso de gamificación",
+    "type": "Unitarias de aplicación",
+    "mock": "Repositorios, dependencias de reloj y notificaciones simulados",
+    "limit": "Persistir significa llamadas a repositorios simulados; no confirma transacciones reales. Los escenarios no agotan los límites de nivel ni las combinaciones de retos.",
+    "cases": [
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "loadStudentGamificationByStudentIdUseCase deriva progreso cuando no existe perfil persistido",
+        "fullName": "createGamificationUseCases loadStudentGamificationByStudentIdUseCase deriva progreso cuando no existe perfil persistido",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "processPhysicalTestRecordedUseCase persiste perfil y proyecciones derivadas",
+        "fullName": "createGamificationUseCases processPhysicalTestRecordedUseCase persiste perfil y proyecciones derivadas",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "refreshStudentProgressUseCase construye currency ledger sin timestamps nulos",
+        "fullName": "createGamificationUseCases refreshStudentProgressUseCase construye currency ledger sin timestamps nulos",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "loadStudentGamificationByStudentIdUseCase construye ranking derivado cuando no hay snapshot publico",
+        "fullName": "createGamificationUseCases loadStudentGamificationByStudentIdUseCase construye ranking derivado cuando no hay snapshot publico",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "loadStudentGamificationByStudentIdUseCase tolera repositorio sin listAttendances",
+        "fullName": "createGamificationUseCases loadStudentGamificationByStudentIdUseCase tolera repositorio sin listAttendances",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "listCategoryLeaderboardsUseCase prioriza la categoria aunque reciba un ageBand",
+        "fullName": "createGamificationUseCases listCategoryLeaderboardsUseCase prioriza la categoria aunque reciba un ageBand",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "registerDailyLoginRewardUseCase queda expuesto desde createGamificationUseCases",
+        "fullName": "createGamificationUseCases registerDailyLoginRewardUseCase queda expuesto desde createGamificationUseCases",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "updateStudentIdentityUseCase permite guardar apodo y titulo desbloqueado",
+        "fullName": "createGamificationUseCases updateStudentIdentityUseCase permite guardar apodo y titulo desbloqueado",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "purchaseCosmeticItemUseCase compra sin recargar el agregado completo",
+        "fullName": "createGamificationUseCases purchaseCosmeticItemUseCase compra sin recargar el agregado completo",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "purchaseCosmeticItemUseCase bloquea cosmeticos de prestigio que aun no se han desbloqueado",
+        "fullName": "createGamificationUseCases purchaseCosmeticItemUseCase bloquea cosmeticos de prestigio que aun no se han desbloqueado",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "equipCosmeticItemUseCase equipa un item ya adquirido sin recargar el agregado",
+        "fullName": "createGamificationUseCases equipCosmeticItemUseCase equipa un item ya adquirido sin recargar el agregado",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "unequipCosmeticItemUseCase retira un slot equipado sin recargar el agregado",
+        "fullName": "createGamificationUseCases unequipCosmeticItemUseCase retira un slot equipado sin recargar el agregado",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "avatarCatalog expone modelos fijos por estilo con opciones disponibles y bloqueadas",
+        "fullName": "createGamificationUseCases avatarCatalog expone modelos fijos por estilo con opciones disponibles y bloqueadas",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "buildAvatarUrl varia de forma determinista por modelSlug",
+        "fullName": "createGamificationUseCases buildAvatarUrl varia de forma determinista por modelSlug",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "proyecta el shape esperado para avatarModelOptions con grupos disponibles y bloqueados",
+        "fullName": "createGamificationUseCases proyecta el shape esperado para avatarModelOptions con grupos disponibles y bloqueados",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "preserves a readable variant label for expanded cosmetics inside the projected catalog",
+        "fullName": "createGamificationUseCases preserves a readable variant label for expanded cosmetics inside the projected catalog",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationAdminUseCases.test.js",
+        "title": "rechaza precios invalidos: NaN",
+        "fullName": "rechaza precios invalidos: NaN",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationAdminUseCases.test.js",
+        "title": "rechaza precios invalidos: Infinity",
+        "fullName": "rechaza precios invalidos: Infinity",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationAdminUseCases.test.js",
+        "title": "rechaza precios invalidos: 1.5",
+        "fullName": "rechaza precios invalidos: 1.5",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationAdminUseCases.test.js",
+        "title": "rechaza precios invalidos: ",
+        "fullName": "rechaza precios invalidos: ",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationAdminUseCases.test.js",
+        "title": "rechaza precios invalidos: -1",
+        "fullName": "rechaza precios invalidos: -1",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationAdminUseCases.test.js",
+        "title": "guarda un marco personalizado en el slot frame que soporta el equipamiento",
+        "fullName": "guarda un marco personalizado en el slot frame que soporta el equipamiento",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationAdminUseCases.test.js",
+        "title": "impide publicar productos fisicos sin un flujo de canje implementado",
+        "fullName": "impide publicar productos fisicos sin un flujo de canje implementado",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationFoundationUseCases.test.js",
+        "title": "registerDailyLoginRewardUseCase entrega XP una vez por dia",
+        "fullName": "createGamificationFoundationUseCases registerDailyLoginRewardUseCase entrega XP una vez por dia",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationFoundationUseCases.test.js",
+        "title": "registerDailyLoginRewardUseCase no duplica la recompensa en el mismo dia",
+        "fullName": "createGamificationFoundationUseCases registerDailyLoginRewardUseCase no duplica la recompensa en el mismo dia",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationFoundationUseCases.test.js",
+        "title": "registerDailyLoginRewardUseCase omite usuarios sin estudiante",
+        "fullName": "createGamificationFoundationUseCases registerDailyLoginRewardUseCase omite usuarios sin estudiante",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationFoundationUseCases.test.js",
+        "title": "loadXpLedgerUseCase formatea el extracto en camelCase",
+        "fullName": "createGamificationFoundationUseCases loadXpLedgerUseCase formatea el extracto en camelCase",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationFoundationUseCases.test.js",
+        "title": "loadCurrencyWalletUseCase formatea wallet y extracto de monedas",
+        "fullName": "createGamificationFoundationUseCases loadCurrencyWalletUseCase formatea wallet y extracto de monedas",
+        "status": "passed"
+      }
+    ],
+    "files": [
+      "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+      "src/features/gamification/application/useCases/createGamificationAdminUseCases.test.js",
+      "src/features/gamification/application/useCases/createGamificationFoundationUseCases.test.js"
+    ],
+    "result": {
+      "executed": 28,
+      "passed": 28,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "name": "2. Servicio público de gamificación",
+    "type": "Unitaria de fachada JavaScript",
+    "mock": "Casos de uso sustituidos con jest.fn",
+    "limit": "Servicio público significa API exportada de la feature; no demuestra un endpoint HTTP público ni acceso anónimo al backend.",
+    "cases": [
+      {
+        "file": "src/features/gamification/presentation/createGamificationService.test.js",
+        "title": "loadStudentGamification delega al use case",
+        "fullName": "createGamificationService loadStudentGamification delega al use case",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/presentation/createGamificationService.test.js",
+        "title": "processPhysicalTestRecorded delega studentId y testId",
+        "fullName": "createGamificationService processPhysicalTestRecorded delega studentId y testId",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/presentation/createGamificationService.test.js",
+        "title": "refreshStudentProgress delega studentId",
+        "fullName": "createGamificationService refreshStudentProgress delega studentId",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/presentation/createGamificationService.test.js",
+        "title": "listCategoryLeaderboards delega categoria y limite",
+        "fullName": "createGamificationService listCategoryLeaderboards delega categoria y limite",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/presentation/createGamificationService.test.js",
+        "title": "loadXpLedger delega studentId y limit",
+        "fullName": "createGamificationService loadXpLedger delega studentId y limit",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/presentation/createGamificationService.test.js",
+        "title": "registerDailyLoginReward delega userId",
+        "fullName": "createGamificationService registerDailyLoginReward delega userId",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/presentation/createGamificationService.test.js",
+        "title": "loadCurrencyWallet delega studentId y limit",
+        "fullName": "createGamificationService loadCurrencyWallet delega studentId y limit",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/presentation/createGamificationService.test.js",
+        "title": "updateStudentIdentity delega avatarModelSlug junto a la identidad visual",
+        "fullName": "createGamificationService updateStudentIdentity delega avatarModelSlug junto a la identidad visual",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/presentation/createGamificationService.test.js",
+        "title": "purchaseCosmeticItem delega compra por userId e item",
+        "fullName": "createGamificationService purchaseCosmeticItem delega compra por userId e item",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/presentation/createGamificationService.test.js",
+        "title": "equipCosmeticItem delega equipamiento por userId e item",
+        "fullName": "createGamificationService equipCosmeticItem delega equipamiento por userId e item",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/presentation/createGamificationService.test.js",
+        "title": "unequipCosmeticItem delega desequipado por userId y categoria",
+        "fullName": "createGamificationService unequipCosmeticItem delega desequipado por userId y categoria",
+        "status": "passed"
+      }
+    ],
+    "files": [
+      "src/features/gamification/presentation/createGamificationService.test.js"
+    ],
+    "result": {
+      "executed": 11,
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "name": "3. Identidad del atleta",
+    "type": "Unitarias y componentes",
+    "mock": "Repositorios/datos de identidad y acciones simulados; DOM de jsdom",
+    "limit": "No prueba subida real a Storage, permisos del bucket ni persistencia de fotografía/título.",
+    "cases": [
+      {
+        "file": "src/features/student-dashboard/presentation/components/StudentProfileIdentityCard.test.js",
+        "title": "guarda foto de perfil desde mi perfil usando gamificationService",
+        "fullName": "StudentProfileIdentityCard guarda foto de perfil desde mi perfil usando gamificationService",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/student-dashboard/presentation/components/StudentProfileIdentityCard.test.js",
+        "title": "muestra error si la foto supera el limite permitido",
+        "fullName": "StudentProfileIdentityCard muestra error si la foto supera el limite permitido",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "updateStudentIdentityUseCase permite guardar apodo y titulo desbloqueado",
+        "fullName": "createGamificationUseCases updateStudentIdentityUseCase permite guardar apodo y titulo desbloqueado",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "avatarCatalog expone modelos fijos por estilo con opciones disponibles y bloqueadas",
+        "fullName": "createGamificationUseCases avatarCatalog expone modelos fijos por estilo con opciones disponibles y bloqueadas",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "buildAvatarUrl varia de forma determinista por modelSlug",
+        "fullName": "createGamificationUseCases buildAvatarUrl varia de forma determinista por modelSlug",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "proyecta el shape esperado para avatarModelOptions con grupos disponibles y bloqueados",
+        "fullName": "createGamificationUseCases proyecta el shape esperado para avatarModelOptions con grupos disponibles y bloqueados",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/presentation/components/IdentityPortrait.test.js",
+        "title": "mantiene el fondo visible alrededor de una foto opaca",
+        "fullName": "IdentityPortrait mantiene el fondo visible alrededor de una foto opaca",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/presentation/components/IdentityPortrait.test.js",
+        "title": "renderiza el marco personalizado como una capa transparente sobre la foto",
+        "fullName": "IdentityPortrait renderiza el marco personalizado como una capa transparente sobre la foto",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/presentation/components/IdentityPortrait.test.js",
+        "title": "stays visually neutral when no cosmetics are equipped",
+        "fullName": "IdentityPortrait stays visually neutral when no cosmetics are equipped",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/presentation/components/IdentityPortrait.test.js",
+        "title": "renders sober common cosmetics without strong overlays",
+        "fullName": "IdentityPortrait renders sober common cosmetics without strong overlays",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/presentation/components/IdentityPortrait.test.js",
+        "title": "renders strong front layers for legendary effects",
+        "fullName": "IdentityPortrait renders strong front layers for legendary effects",
+        "status": "passed"
+      }
+    ],
+    "files": [
+      "src/features/student-dashboard/presentation/components/StudentProfileIdentityCard.test.js",
+      "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+      "src/features/gamification/presentation/components/IdentityPortrait.test.js"
+    ],
+    "result": {
+      "executed": 11,
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "name": "4. Wallet y monedas",
+    "type": "Unitarias de proyección y fachada",
+    "mock": "Repositorios o casos de uso simulados",
+    "limit": "Verifica formato y proyección; saldo y transacciones reales, concurrencia y restricciones de escritura quedan pendientes.",
+    "cases": [
+      {
+        "file": "src/features/gamification/presentation/createGamificationService.test.js",
+        "title": "loadCurrencyWallet delega studentId y limit",
+        "fullName": "createGamificationService loadCurrencyWallet delega studentId y limit",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "refreshStudentProgressUseCase construye currency ledger sin timestamps nulos",
+        "fullName": "createGamificationUseCases refreshStudentProgressUseCase construye currency ledger sin timestamps nulos",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationFoundationUseCases.test.js",
+        "title": "loadCurrencyWalletUseCase formatea wallet y extracto de monedas",
+        "fullName": "createGamificationFoundationUseCases loadCurrencyWalletUseCase formatea wallet y extracto de monedas",
+        "status": "passed"
+      }
+    ],
+    "files": [
+      "src/features/gamification/presentation/createGamificationService.test.js",
+      "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+      "src/features/gamification/application/useCases/createGamificationFoundationUseCases.test.js"
+    ],
+    "result": {
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "name": "5. Tienda cosmética",
+    "type": "Unitarias de compra/equipamiento y presentación",
+    "mock": "Compra y equipamiento delegados a repositorio simulado; catálogo de fixtures",
+    "limit": "No ejecuta la RPC de compra ni prueba el descuento atómico de monedas en PostgreSQL.",
+    "cases": [
+      {
+        "file": "src/features/gamification/presentation/createGamificationService.test.js",
+        "title": "purchaseCosmeticItem delega compra por userId e item",
+        "fullName": "createGamificationService purchaseCosmeticItem delega compra por userId e item",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/presentation/createGamificationService.test.js",
+        "title": "equipCosmeticItem delega equipamiento por userId e item",
+        "fullName": "createGamificationService equipCosmeticItem delega equipamiento por userId e item",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/presentation/createGamificationService.test.js",
+        "title": "unequipCosmeticItem delega desequipado por userId y categoria",
+        "fullName": "createGamificationService unequipCosmeticItem delega desequipado por userId y categoria",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "purchaseCosmeticItemUseCase compra sin recargar el agregado completo",
+        "fullName": "createGamificationUseCases purchaseCosmeticItemUseCase compra sin recargar el agregado completo",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "purchaseCosmeticItemUseCase bloquea cosmeticos de prestigio que aun no se han desbloqueado",
+        "fullName": "createGamificationUseCases purchaseCosmeticItemUseCase bloquea cosmeticos de prestigio que aun no se han desbloqueado",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "equipCosmeticItemUseCase equipa un item ya adquirido sin recargar el agregado",
+        "fullName": "createGamificationUseCases equipCosmeticItemUseCase equipa un item ya adquirido sin recargar el agregado",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "unequipCosmeticItemUseCase retira un slot equipado sin recargar el agregado",
+        "fullName": "createGamificationUseCases unequipCosmeticItemUseCase retira un slot equipado sin recargar el agregado",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+        "title": "preserves a readable variant label for expanded cosmetics inside the projected catalog",
+        "fullName": "createGamificationUseCases preserves a readable variant label for expanded cosmetics inside the projected catalog",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/presentation/components/cosmeticVisuals.test.js",
+        "title": "resolves sober visuals for common and rare cosmetics from metadata",
+        "fullName": "cosmeticVisuals resolves sober visuals for common and rare cosmetics from metadata",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/presentation/components/cosmeticVisuals.test.js",
+        "title": "resolves strong silhouette visuals for epic and legendary cosmetics",
+        "fullName": "cosmeticVisuals resolves strong silhouette visuals for epic and legendary cosmetics",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/presentation/components/cosmeticVisuals.test.js",
+        "title": "does not collapse different badge variants into the same visual payload",
+        "fullName": "cosmeticVisuals does not collapse different badge variants into the same visual payload",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/gamification/presentation/components/cosmeticVisuals.test.js",
+        "title": "resolves background variants independently from frame variants",
+        "fullName": "cosmeticVisuals resolves background variants independently from frame variants",
+        "status": "passed"
+      }
+    ],
+    "files": [
+      "src/features/gamification/presentation/createGamificationService.test.js",
+      "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+      "src/features/gamification/presentation/components/cosmeticVisuals.test.js"
+    ],
+    "result": {
+      "executed": 12,
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "name": "6. Asistencia",
+    "type": "Unitarias de caso de uso, servicio y adaptador",
+    "mock": "Supabase/repositorios, gamificación y notificaciones simulados",
+    "limit": "La sincronización existente comprueba llamadas; la prueba adicional I-01 conecta el motor real con memoria, sin PostgreSQL.",
+    "cases": [
+      {
+        "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+        "title": "loadAthletesUseCase filtra solo estudiantes",
+        "fullName": "createAttendanceUseCases loadAthletesUseCase filtra solo estudiantes",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+        "title": "loadAttendanceDataUseCase agrupa y completa students por cache/fallback",
+        "fullName": "createAttendanceUseCases loadAttendanceDataUseCase agrupa y completa students por cache/fallback",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+        "title": "loadAttendanceDataUseCase aplica filtro dinamico de busqueda en historial",
+        "fullName": "createAttendanceUseCases loadAttendanceDataUseCase aplica filtro dinamico de busqueda en historial",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+        "title": "registerAttendanceWithPaymentUseCase actualiza si ya existe",
+        "fullName": "createAttendanceUseCases registerAttendanceWithPaymentUseCase actualiza si ya existe",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+        "title": "registerAttendanceWithPaymentUseCase notifica cuando crea una asistencia nueva",
+        "fullName": "createAttendanceUseCases registerAttendanceWithPaymentUseCase notifica cuando crea una asistencia nueva",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+        "title": "toggleAttendanceUseCase elimina cuando ya estaba presente",
+        "fullName": "createAttendanceUseCases toggleAttendanceUseCase elimina cuando ya estaba presente",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+        "title": "toggleAttendanceUseCase notifica cuando crea una asistencia",
+        "fullName": "createAttendanceUseCases toggleAttendanceUseCase notifica cuando crea una asistencia",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+        "title": "getDefaultDatesUseCase devuelve fechas iniciales para filtros",
+        "fullName": "createAttendanceUseCases getDefaultDatesUseCase devuelve fechas iniciales para filtros",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+        "title": "getHistoryDatePresetUseCase construye rangos rapidos de historial",
+        "fullName": "createAttendanceUseCases getHistoryDatePresetUseCase construye rangos rapidos de historial",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+        "title": "calculateStatsUseCase calcula resumen en modo bulk",
+        "fullName": "createAttendanceUseCases calculateStatsUseCase calcula resumen en modo bulk",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+        "title": "markAllPresentWithMensualidadUseCase registra solo ausentes",
+        "fullName": "createAttendanceUseCases markAllPresentWithMensualidadUseCase registra solo ausentes",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+        "title": "filterTodayAttendanceUseCase filtra por categoria y busqueda",
+        "fullName": "createAttendanceUseCases filterTodayAttendanceUseCase filtra por categoria y busqueda",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+        "title": "filterTodayAttendanceUseCase permite filtrar toma por estado y metodo de pago",
+        "fullName": "createAttendanceUseCases filterTodayAttendanceUseCase permite filtrar toma por estado y metodo de pago",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+        "title": "filterTodayAttendanceUseCase permite filtrar por mensualidad activa o pago manual",
+        "fullName": "createAttendanceUseCases filterTodayAttendanceUseCase permite filtrar por mensualidad activa o pago manual",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+        "title": "getCategoryStatsUseCase calcula presentes/ausentes",
+        "fullName": "createAttendanceUseCases getCategoryStatsUseCase calcula presentes/ausentes",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+        "title": "buildExportSummaryUseCase usa fecha seleccionada y formatea salida",
+        "fullName": "createAttendanceUseCases buildExportSummaryUseCase usa fecha seleccionada y formatea salida",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+        "title": "getPaymentTypeDisplayUseCase traduce labels de metodos comunes",
+        "fullName": "createAttendanceUseCases getPaymentTypeDisplayUseCase traduce labels de metodos comunes",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+        "title": "buildDayAttendanceBreakdownUseCase agrupa por bloques de categoria",
+        "fullName": "createAttendanceUseCases buildDayAttendanceBreakdownUseCase agrupa por bloques de categoria",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+        "title": "casos de uso de nombres construyen homonimos, display e iniciales",
+        "fullName": "createAttendanceUseCases casos de uso de nombres construyen homonimos, display e iniciales",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/presentation/createAttendanceService.test.js",
+        "title": "loadAttendanceData delega en use case",
+        "fullName": "createAttendanceService loadAttendanceData delega en use case",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/presentation/createAttendanceService.test.js",
+        "title": "registerAttendanceWithPayment delega payload",
+        "fullName": "createAttendanceService registerAttendanceWithPayment delega payload",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/presentation/createAttendanceService.test.js",
+        "title": "getDefaultDates delega al use case",
+        "fullName": "createAttendanceService getDefaultDates delega al use case",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/presentation/createAttendanceService.test.js",
+        "title": "markAllPresentWithMensualidad delega payload",
+        "fullName": "createAttendanceService markAllPresentWithMensualidad delega payload",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/presentation/createAttendanceService.test.js",
+        "title": "filterTodayAttendance delega payload",
+        "fullName": "createAttendanceService filterTodayAttendance delega payload",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/presentation/createAttendanceService.test.js",
+        "title": "buildExportSummary delega payload",
+        "fullName": "createAttendanceService buildExportSummary delega payload",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/presentation/createAttendanceService.test.js",
+        "title": "getPaymentTypeDisplay delega payload",
+        "fullName": "createAttendanceService getPaymentTypeDisplay delega payload",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/presentation/createAttendanceService.test.js",
+        "title": "getCompactDisplayName delega payload",
+        "fullName": "createAttendanceService getCompactDisplayName delega payload",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/presentation/createAttendanceService.test.js",
+        "title": "buildHomonymsByCompactName delega payload",
+        "fullName": "createAttendanceService buildHomonymsByCompactName delega payload",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/infrastructure/repositories/supabaseAttendanceRepository.test.js",
+        "title": "listAttendances aplica filtros de fecha y atleta",
+        "fullName": "SupabaseAttendanceRepository listAttendances aplica filtros de fecha y atleta",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/infrastructure/repositories/supabaseAttendanceRepository.test.js",
+        "title": "listAthletesWithRole lanza AttendanceError cuando falla consulta",
+        "fullName": "SupabaseAttendanceRepository listAthletesWithRole lanza AttendanceError cuando falla consulta",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/infrastructure/repositories/supabaseAttendanceRepository.test.js",
+        "title": "findAttendanceByStudentAndDate retorna null cuando no existe registro",
+        "fullName": "SupabaseAttendanceRepository findAttendanceByStudentAndDate retorna null cuando no existe registro",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/attendance/infrastructure/repositories/supabaseAttendanceRepository.test.js",
+        "title": "deleteAttendancesByDate lanza AttendanceError ante error de supabase",
+        "fullName": "SupabaseAttendanceRepository deleteAttendancesByDate lanza AttendanceError ante error de supabase",
+        "status": "passed"
+      }
+    ],
+    "files": [
+      "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+      "src/features/attendance/presentation/createAttendanceService.test.js",
+      "src/features/attendance/infrastructure/repositories/supabaseAttendanceRepository.test.js"
+    ],
+    "result": {
+      "executed": 32,
+      "passed": 32,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  {
+    "name": "7. Pagos",
+    "type": "Unitarias de caso de uso, servicio y adaptador",
+    "mock": "Supabase, notificaciones, comunicaciones y gamificación simulados",
+    "limit": "No modifica pagos institucionales, valida pasarelas de cobro ni ejecuta triggers reales. I-01 comprueba recalculado local.",
+    "cases": [
+      {
+        "file": "src/features/payments/presentation/createPaymentsService.test.js",
+        "title": "listModuleData delega al use case",
+        "fullName": "createPaymentsService listModuleData delega al use case",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/presentation/createPaymentsService.test.js",
+        "title": "createPayment delega formData al use case",
+        "fullName": "createPaymentsService createPayment delega formData al use case",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/presentation/createPaymentsService.test.js",
+        "title": "markPaymentAsPaid delega al use case",
+        "fullName": "createPaymentsService markPaymentAsPaid delega al use case",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/presentation/createPaymentsService.test.js",
+        "title": "filterAndSortLatestPayments delega allPayments y filters",
+        "fullName": "createPaymentsService filterAndSortLatestPayments delega allPayments y filters",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/presentation/createPaymentsService.test.js",
+        "title": "getPaymentPeriodPreview delega al use case",
+        "fullName": "createPaymentsService getPaymentPeriodPreview delega al use case",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/presentation/createPaymentsService.test.js",
+        "title": "getTodayDate delega al use case de fecha actual",
+        "fullName": "createPaymentsService getTodayDate delega al use case de fecha actual",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/presentation/createPaymentsService.test.js",
+        "title": "buildInitialPaymentForm delega al use case de formulario inicial",
+        "fullName": "createPaymentsService buildInitialPaymentForm delega al use case de formulario inicial",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/presentation/createPaymentsService.test.js",
+        "title": "validatePaymentForm delega al use case",
+        "fullName": "createPaymentsService validatePaymentForm delega al use case",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/presentation/createPaymentsService.test.js",
+        "title": "paginatePayments delega al use case",
+        "fullName": "createPaymentsService paginatePayments delega al use case",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/presentation/createPaymentsService.test.js",
+        "title": "calculatePaymentsStats delega allPayments al use case de estadisticas",
+        "fullName": "createPaymentsService calculatePaymentsStats delega allPayments al use case de estadisticas",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/presentation/createPaymentsService.test.js",
+        "title": "getPaymentStatusInfo delega al use case de estado",
+        "fullName": "createPaymentsService getPaymentStatusInfo delega al use case de estado",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/presentation/createPaymentsService.test.js",
+        "title": "syncPaymentStatuses delega al use case de sincronizacion",
+        "fullName": "createPaymentsService syncPaymentStatuses delega al use case de sincronizacion",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/presentation/createPaymentsService.test.js",
+        "title": "buildManualWhatsAppPaymentMessage delega al use case",
+        "fullName": "createPaymentsService buildManualWhatsAppPaymentMessage delega al use case",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/presentation/createPaymentsService.test.js",
+        "title": "sendManualWhatsAppPaymentMessage delega al use case",
+        "fullName": "createPaymentsService sendManualWhatsAppPaymentMessage delega al use case",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/infrastructure/repositories/supabasePaymentsRepository.test.js",
+        "title": "listAthletes devuelve lista cuando consulta es exitosa",
+        "fullName": "SupabasePaymentsRepository listAthletes devuelve lista cuando consulta es exitosa",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/infrastructure/repositories/supabasePaymentsRepository.test.js",
+        "title": "listMembershipTypes retorna catalogo activo",
+        "fullName": "SupabasePaymentsRepository listMembershipTypes retorna catalogo activo",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/infrastructure/repositories/supabasePaymentsRepository.test.js",
+        "title": "listPayments lanza PaymentsError cuando hay error de supabase",
+        "fullName": "SupabasePaymentsRepository listPayments lanza PaymentsError cuando hay error de supabase",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/infrastructure/repositories/supabasePaymentsRepository.test.js",
+        "title": "createPayment retorna el pago creado",
+        "fullName": "SupabasePaymentsRepository createPayment retorna el pago creado",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/infrastructure/repositories/supabasePaymentsRepository.test.js",
+        "title": "getPaymentPeriodPreview devuelve payload base cuando se solicita preview",
+        "fullName": "SupabasePaymentsRepository getPaymentPeriodPreview devuelve payload base cuando se solicita preview",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/infrastructure/repositories/supabasePaymentsRepository.test.js",
+        "title": "getAthleteByStudentId lanza PaymentsError ante error",
+        "fullName": "SupabasePaymentsRepository getAthleteByStudentId lanza PaymentsError ante error",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+        "title": "listModuleDataUseCase refresca pagos cuando hubo actualizaciones de estado",
+        "fullName": "createPaymentsUseCases listModuleDataUseCase refresca pagos cuando hubo actualizaciones de estado",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+        "title": "createPaymentUseCase crea pago y dispara notificaciones",
+        "fullName": "createPaymentsUseCases createPaymentUseCase crea pago y dispara notificaciones",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+        "title": "getPaymentPeriodPreviewUseCase calcula preview desde el ultimo pago del atleta",
+        "fullName": "createPaymentsUseCases getPaymentPeriodPreviewUseCase calcula preview desde el ultimo pago del atleta",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+        "title": "deletePaymentUseCase usa timestamp Ecuador para soft delete",
+        "fullName": "createPaymentsUseCases deletePaymentUseCase usa timestamp Ecuador para soft delete",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+        "title": "updatePaymentUseCase sincroniza progreso del estudiante anterior y actual",
+        "fullName": "createPaymentsUseCases updatePaymentUseCase sincroniza progreso del estudiante anterior y actual",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+        "title": "markPaymentAsPaidUseCase sincroniza progreso del estudiante",
+        "fullName": "createPaymentsUseCases markPaymentAsPaidUseCase sincroniza progreso del estudiante",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+        "title": "filterAndSortLatestPaymentsUseCase filtra por estado y busqueda",
+        "fullName": "createPaymentsUseCases filterAndSortLatestPaymentsUseCase filtra por estado y busqueda",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+        "title": "getTodayDateUseCase retorna fecha desde dependencia",
+        "fullName": "createPaymentsUseCases getTodayDateUseCase retorna fecha desde dependencia",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+        "title": "buildInitialPaymentFormUseCase arma formulario por defecto",
+        "fullName": "createPaymentsUseCases buildInitialPaymentFormUseCase arma formulario por defecto",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+        "title": "calculatePaymentsStatsUseCase calcula contadores y recaudado",
+        "fullName": "createPaymentsUseCases calculatePaymentsStatsUseCase calcula contadores y recaudado",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+        "title": "getPaymentStatusInfoUseCase delega al servicio de estados",
+        "fullName": "createPaymentsUseCases getPaymentStatusInfoUseCase delega al servicio de estados",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+        "title": "syncPaymentStatusesUseCase delega actualizacion masiva",
+        "fullName": "createPaymentsUseCases syncPaymentStatusesUseCase delega actualizacion masiva",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+        "title": "buildManualWhatsAppPaymentMessageUseCase construye payload cuando el telefono es valido",
+        "fullName": "createPaymentsUseCases buildManualWhatsAppPaymentMessageUseCase construye payload cuando el telefono es valido",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+        "title": "sendManualWhatsAppPaymentMessageUseCase envia mensaje",
+        "fullName": "createPaymentsUseCases sendManualWhatsAppPaymentMessageUseCase envia mensaje",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+        "title": "validatePaymentFormUseCase valida campos requeridos y fecha",
+        "fullName": "createPaymentsUseCases validatePaymentFormUseCase valida campos requeridos y fecha",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+        "title": "filterAthletesBySearchUseCase filtra por nombre completo",
+        "fullName": "createPaymentsUseCases filterAthletesBySearchUseCase filtra por nombre completo",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+        "title": "paginatePaymentsUseCase devuelve pagina segura",
+        "fullName": "createPaymentsUseCases paginatePaymentsUseCase devuelve pagina segura",
+        "status": "passed"
+      },
+      {
+        "file": "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+        "title": "use cases de formato de pagos devuelven strings esperados",
+        "fullName": "createPaymentsUseCases use cases de formato de pagos devuelven strings esperados",
+        "status": "passed"
+      }
+    ],
+    "files": [
+      "src/features/payments/presentation/createPaymentsService.test.js",
+      "src/features/payments/infrastructure/repositories/supabasePaymentsRepository.test.js",
+      "src/features/payments/application/useCases/createPaymentsUseCases.test.js"
+    ],
+    "result": {
+      "executed": 38,
+      "passed": 38,
+      "failed": 0,
+      "skipped": 0
+    }
+  }
+]

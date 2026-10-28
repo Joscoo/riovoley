@@ -1,0 +1,16 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+    "test",
+    "tests/e2e/audit.protected-routes.spec.js",
+    "--config=playwright.local.config.cjs",
+    "--workers=3"
+  ],
+  "start": "2026-10-28T19:32:41.924Z",
+  "end": "2026-10-28T19:33:13.291Z",
+  "durationSeconds": 31.367,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

@@ -1,0 +1,54 @@
+{
+  "observedAt": "2026-10-28T13:56:42.575Z",
+  "checks": [
+    {
+      "name": "Jest: cifras coinciden con aserciones originales",
+      "status": "passed"
+    },
+    {
+      "name": "Playwright: conteo original y detalle por caso",
+      "status": "passed"
+    },
+    {
+      "name": "Cobertura: numeradores y denominadores",
+      "status": "failed",
+      "error": "Expected values to be strictly equal:\n\n41.12 !== 41.11\n"
+    },
+    {
+      "name": "Contratos sin duplicar denominador de Jest",
+      "status": "passed"
+    },
+    {
+      "name": "Matriz: cada caso corresponde a una asercion ejecutada",
+      "status": "passed"
+    },
+    {
+      "name": "Compilación y endpoints: salidas reales",
+      "status": "passed"
+    },
+    {
+      "name": "RLS objetivo y auditorias npm: valores originales",
+      "status": "passed"
+    },
+    {
+      "name": "Archivos originales y package-lock no cambiados",
+      "status": "passed"
+    },
+    {
+      "name": "Enlaces locales de los tres documentos existen",
+      "status": "failed",
+      "error": "INFORME_VERIFICACION_TECNICA.md: INTEGRIDAD.json"
+    },
+    {
+      "name": "Texto académico: cantidades alineadas con evidencias",
+      "status": "passed"
+    },
+    {
+      "name": "Privacidad: revision final sin coincidencias pendientes",
+      "status": "passed"
+    }
+  ],
+  "passed": 9,
+  "failed": 2,
+  "note": "Estos son controles de integridad del expediente; no se agregan a los casos del producto."
+}

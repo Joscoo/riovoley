@@ -1,0 +1,19 @@
+{
+  "command": [
+    "npm.cmd",
+    "run",
+    "test:contracts",
+    "--",
+    "--watchAll=false",
+    "--runInBand",
+    "--json",
+    "--outputFile=docs/tesis/evidencias/verificacion-tecnica/20261027-212222-c71f55e/integracion/contratos-resultados.json"
+  ],
+  "cwd": ".",
+  "start": "2026-10-28T02:24:15.664Z",
+  "end": "2026-10-28T02:24:31.145Z",
+  "durationSeconds": 15.481,
+  "exitCode": 0,
+  "signal": null,
+  "environmentOverrides": {}
+}

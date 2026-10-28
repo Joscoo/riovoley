@@ -1,0 +1,16 @@
+{
+  "command": [
+    "docker",
+    "--host",
+    "npipe:////./pipe/dockerDesktopLinuxEngine",
+    "network",
+    "inspect",
+    "riovoley-e2e-loopback"
+  ],
+  "start": "2026-10-28T14:49:38.179Z",
+  "end": "2026-10-28T14:49:38.273Z",
+  "durationSeconds": 0.094,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

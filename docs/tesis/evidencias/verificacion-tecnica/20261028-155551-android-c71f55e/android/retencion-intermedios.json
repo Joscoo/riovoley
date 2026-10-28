@@ -1,0 +1,7 @@
+{
+  "firstArtifactSha256": "dd09b51a798244793f34742961388b911e339b35eb873abb0ea4933ddf21bc6a",
+  "firstArtifactState": "Reservado en runtime ignorado antes de la entrega; no forma parte de los APK publicados en este expediente.",
+  "reason": "La revisión detectó una clave anon institucional en el primer APK porque el filtro del arnés retiró el override CRA. Se corrigió el filtro, se repitieron build web/sync/assemble y se verificó el APK final. La descripción inicial de configuración indicaba intención de aislamiento y no acredita la privacidad del primer APK.",
+  "finalArtifact": "android/artefactos/riovoley-auditoria-debug-sin-credenciales.apk",
+  "noApplicationExecution": true
+}

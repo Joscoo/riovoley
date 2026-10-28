@@ -1,0 +1,333 @@
+{
+  "config": {
+    "configFile": "D:\\Riovoley\\riovoley\\playwright.local.config.cjs",
+    "rootDir": "D:/Riovoley/riovoley/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/antes-filtros-asistencia/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-390",
+        "name": "mobile-390",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/antes-filtros-asistencia/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-430",
+        "name": "mobile-430",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/antes-filtros-asistencia/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-480",
+        "name": "mobile-480",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/antes-filtros-asistencia/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "tablet-768",
+        "name": "tablet-768",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/antes-filtros-asistencia/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "tablet-1024",
+        "name": "tablet-1024",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/antes-filtros-asistencia/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-1440",
+        "name": "desktop-1440",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/antes-filtros-asistencia/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-1920",
+        "name": "desktop-1920",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\antes-filtros-asistencia\\resultados.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\antes-filtros-asistencia\\html",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.59.1",
+    "workers": 1,
+    "webServer": {
+      "command": "node scripts/e2e/local/server.cjs",
+      "url": "http://127.0.0.1:6100",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "asistencias.guided.review.spec.js",
+      "file": "asistencias.guided.review.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "guided review: admin asistencias quick mode per viewport",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 17925,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /asistencias/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /asistencias/i }).first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /asistencias/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /asistencias/i }).first()\u001b[22m\n\n    at openAsistenciasModule (D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js:18:47)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js:80:3",
+                    "location": {
+                      "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                      "column": 47,
+                      "line": 18
+                    },
+                    "snippet": "  16 |\n  17 |   const asistenciasMenuButton = page.getByRole('button', { name: /asistencias/i });\n> 18 |   await expect(asistenciasMenuButton.first()).toBeVisible({ timeout: 15000 });\n     |                                               ^\n  19 |   await asistenciasMenuButton.first().click();\n  20 |\n  21 |   await expect(page.getByRole('heading', { name: /control de asistencias/i })).toBeVisible({ timeout: 15000 });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                        "column": 47,
+                        "line": 18
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /asistencias/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /asistencias/i }).first()\u001b[22m\n\n\n  16 |\n  17 |   const asistenciasMenuButton = page.getByRole('button', { name: /asistencias/i });\n> 18 |   await expect(asistenciasMenuButton.first()).toBeVisible({ timeout: 15000 });\n     |                                               ^\n  19 |   await asistenciasMenuButton.first().click();\n  20 |\n  21 |   await expect(page.getByRole('heading', { name: /control de asistencias/i })).toBeVisible({ timeout: 15000 });\n    at openAsistenciasModule (D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js:18:47)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js:80:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:14:21.077Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\antes-filtros-asistencia\\artefactos\\asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-390\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\antes-filtros-asistencia\\artefactos\\asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-390\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\asistencias.guided.review.spec.js",
+                    "column": 47,
+                    "line": 18
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "1ebc988c341f74e3d597-98be0f7ef7b85756fbc9",
+          "file": "asistencias.guided.review.spec.js",
+          "line": 61,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "filters-sorting.tables.spec.js",
+      "file": "filters-sorting.tables.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "pagos: filtros base + orden de columnas por header",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 15736,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /^monto$/i }).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /^monto$/i }).first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /^monto$/i }).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /^monto$/i }).first()\u001b[22m\n\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\filters-sorting.tables.spec.js:53:35",
+                    "location": {
+                      "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\filters-sorting.tables.spec.js",
+                      "column": 35,
+                      "line": 53
+                    },
+                    "snippet": "  51 |\n  52 |   const montoHeaderButton = page.getByRole('button', { name: /^monto$/i }).first();\n> 53 |   await expect(montoHeaderButton).toBeVisible();\n     |                                   ^\n  54 |   await assertThreeStateSortFromHeaderButton(montoHeaderButton);\n  55 |\n  56 |   const initialOverflow = await page.evaluate(() => document.body.style.overflow);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\filters-sorting.tables.spec.js",
+                        "column": 35,
+                        "line": 53
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /^monto$/i }).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /^monto$/i }).first()\u001b[22m\n\n\n  51 |\n  52 |   const montoHeaderButton = page.getByRole('button', { name: /^monto$/i }).first();\n> 53 |   await expect(montoHeaderButton).toBeVisible();\n     |                                   ^\n  54 |   await assertThreeStateSortFromHeaderButton(montoHeaderButton);\n  55 |\n  56 |   const initialOverflow = await page.evaluate(() => document.body.style.overflow);\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\filters-sorting.tables.spec.js:53:35"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:14:40.262Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\antes-filtros-asistencia\\artefactos\\filters-sorting.tables-pag-2f969-rden-de-columnas-por-header-mobile-390\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\antes-filtros-asistencia\\artefactos\\filters-sorting.tables-pag-2f969-rden-de-columnas-por-header-mobile-390\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\filters-sorting.tables.spec.js",
+                    "column": 35,
+                    "line": 53
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "edb752efb663f0cd9a0c-cf592fc14ae4110ca7d0",
+          "file": "filters-sorting.tables.spec.js",
+          "line": 19,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-28T15:14:19.834Z",
+    "duration": 36577.127,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

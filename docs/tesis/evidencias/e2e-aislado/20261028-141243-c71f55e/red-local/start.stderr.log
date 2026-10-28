@@ -1,0 +1,3 @@
+WARN: config section [inbucket] is deprecated and will be removed in v3, use [local_smtp] instead.
+Starting database from backup...
+

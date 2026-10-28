@@ -1,0 +1,9 @@
+
+Running 3 tests using 1 worker
+
+  ✓  1 [desktop-1440] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: admin (2.9s)
+  ✓  2 [desktop-1440] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: trainer (1.8s)
+  ✓  3 [desktop-1440] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: student (1.6s)
+
+  3 passed (8.5s)
+

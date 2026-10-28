@@ -1,0 +1,27 @@
+
+Running 21 tests using 3 workers
+
+  ✓   3 [mobile-480] › tests\e2e\audit.protected-routes.spec.js:4:3 › audit: anonymous access cannot render protected panel /admin (1.9s)
+  ✓   1 [mobile-390] › tests\e2e\audit.protected-routes.spec.js:4:3 › audit: anonymous access cannot render protected panel /admin (1.7s)
+  ✓   2 [mobile-430] › tests\e2e\audit.protected-routes.spec.js:4:3 › audit: anonymous access cannot render protected panel /admin (1.7s)
+  ✓   4 [mobile-480] › tests\e2e\audit.protected-routes.spec.js:4:3 › audit: anonymous access cannot render protected panel /entrenador (847ms)
+  ✓   7 [mobile-480] › tests\e2e\audit.protected-routes.spec.js:4:3 › audit: anonymous access cannot render protected panel /estudiante (880ms)
+  ✓   5 [mobile-390] › tests\e2e\audit.protected-routes.spec.js:4:3 › audit: anonymous access cannot render protected panel /entrenador (1.4s)
+  ✓   6 [mobile-430] › tests\e2e\audit.protected-routes.spec.js:4:3 › audit: anonymous access cannot render protected panel /entrenador (1.4s)
+  ✓   8 [mobile-390] › tests\e2e\audit.protected-routes.spec.js:4:3 › audit: anonymous access cannot render protected panel /estudiante (1.4s)
+  ✓   9 [mobile-430] › tests\e2e\audit.protected-routes.spec.js:4:3 › audit: anonymous access cannot render protected panel /estudiante (1.4s)
+  ✓  10 [tablet-768] › tests\e2e\audit.protected-routes.spec.js:4:3 › audit: anonymous access cannot render protected panel /admin (1.4s)
+  ✓  11 [tablet-1024] › tests\e2e\audit.protected-routes.spec.js:4:3 › audit: anonymous access cannot render protected panel /admin (916ms)
+  ✓  13 [desktop-1440] › tests\e2e\audit.protected-routes.spec.js:4:3 › audit: anonymous access cannot render protected panel /admin (981ms)
+  ✓  12 [tablet-768] › tests\e2e\audit.protected-routes.spec.js:4:3 › audit: anonymous access cannot render protected panel /entrenador (1.3s)
+  ✓  14 [tablet-1024] › tests\e2e\audit.protected-routes.spec.js:4:3 › audit: anonymous access cannot render protected panel /entrenador (833ms)
+  ✓  15 [desktop-1440] › tests\e2e\audit.protected-routes.spec.js:4:3 › audit: anonymous access cannot render protected panel /entrenador (884ms)
+  ✓  16 [tablet-768] › tests\e2e\audit.protected-routes.spec.js:4:3 › audit: anonymous access cannot render protected panel /estudiante (1.6s)
+  ✓  17 [tablet-1024] › tests\e2e\audit.protected-routes.spec.js:4:3 › audit: anonymous access cannot render protected panel /estudiante (907ms)
+  ✓  18 [desktop-1440] › tests\e2e\audit.protected-routes.spec.js:4:3 › audit: anonymous access cannot render protected panel /estudiante (931ms)
+  ✓  19 [desktop-1920] › tests\e2e\audit.protected-routes.spec.js:4:3 › audit: anonymous access cannot render protected panel /admin (870ms)
+  ✓  20 [desktop-1920] › tests\e2e\audit.protected-routes.spec.js:4:3 › audit: anonymous access cannot render protected panel /entrenador (766ms)
+  ✓  21 [desktop-1920] › tests\e2e\audit.protected-routes.spec.js:4:3 › audit: anonymous access cannot render protected panel /estudiante (730ms)
+
+  21 passed (16.9s)
+

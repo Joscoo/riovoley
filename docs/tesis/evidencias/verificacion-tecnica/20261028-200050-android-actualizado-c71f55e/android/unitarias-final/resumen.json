@@ -1,0 +1,14 @@
+{
+  "suites": 1,
+  "results": [
+    {
+      "suite": "com.getcapacitor.myapp.ExampleUnitTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.006
+    }
+  ],
+  "scope": "Única prueba de plantilla addition_isCorrect (2+2=4). No comprueba funcionalidades de RIOVOLEY."
+}

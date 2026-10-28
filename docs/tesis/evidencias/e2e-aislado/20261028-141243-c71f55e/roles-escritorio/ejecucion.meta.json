@@ -1,0 +1,16 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+    "test",
+    "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "--config=playwright.local.config.cjs",
+    "--project=desktop-1440"
+  ],
+  "start": "2026-10-28T14:22:31.281Z",
+  "end": "2026-10-28T14:22:53.323Z",
+  "durationSeconds": 22.042,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

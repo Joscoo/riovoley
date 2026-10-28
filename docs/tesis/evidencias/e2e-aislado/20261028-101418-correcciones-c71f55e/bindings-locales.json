@@ -1,0 +1,50 @@
+{
+  "observedAt": "2026-10-28T15:32:31.267Z",
+  "results": [
+    {
+      "service": "db",
+      "bindings": {
+        "5432/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "55322"
+          }
+        ]
+      }
+    },
+    {
+      "service": "kong",
+      "bindings": {
+        "8000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "55321"
+          }
+        ]
+      }
+    },
+    {
+      "service": "inbucket",
+      "bindings": {
+        "1025/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "55325"
+          }
+        ],
+        "1110/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "55326"
+          }
+        ],
+        "8025/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "55324"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,31 +1,20 @@
-const { test, expect } = require('@playwright/test');
+﻿const { test, expect } = require('@playwright/test');
+
+const { loginAsAdmin, openAdminSection } = require('./helpers/adminNavigation');
 
 const ADMIN_EMAIL = process.env.E2E_ADMIN_EMAIL;
 const ADMIN_PASSWORD = process.env.E2E_ADMIN_PASSWORD;
 
 async function ensureQuickMode(page) {
-  const quickModeButton = page.getByRole('button', { name: /registro rapido|registro rápido/i });
-  if (await quickModeButton.count()) {
-    await quickModeButton.first().click();
-  }
-}
-
-async function openAsistenciasModule(page) {
-  await page.goto('/admin', { waitUntil: 'domcontentloaded' });
-  await page.waitForLoadState('load');
-
-  const asistenciasMenuButton = page.getByRole('button', { name: /asistencias/i });
-  await expect(asistenciasMenuButton.first()).toBeVisible({ timeout: 15000 });
-  await asistenciasMenuButton.first().click();
-
-  await expect(page.getByRole('heading', { name: /control de asistencias/i })).toBeVisible({ timeout: 15000 });
+  await expect(page.getByRole('heading', { name: /control de asistencias/i })).toBeVisible();
+  await page.getByRole('button', { name: /registro r.pido/i }).click();
 }
 
 async function collectAsistenciasMetrics(page) {
   return page.evaluate(() => {
-    const rows = Array.from(document.querySelectorAll('[class*="atletaItemNew"]'));
-    const names = Array.from(document.querySelectorAll('[class*="atletaNameSection"] [class*="atletaName"]'));
-    const actionGroups = Array.from(document.querySelectorAll('[class*="paymentButtons"]'));
+    const rows = Array.from(document.querySelectorAll('[data-testid="attendance-athlete-row"]'));
+    const names = Array.from(document.querySelectorAll('[data-testid="attendance-athlete-name"]'));
+    const actionGroups = Array.from(document.querySelectorAll('[data-testid="attendance-athlete-actions"]'));
 
     const rowWidths = rows.map((el) => Math.round(el.getBoundingClientRect().width));
     const nameWidths = names.map((el) => Math.round(el.getBoundingClientRect().width));
@@ -61,24 +50,11 @@ async function collectAsistenciasMetrics(page) {
 test('guided review: admin asistencias quick mode per viewport', async ({ page }, testInfo) => {
   test.skip(!ADMIN_EMAIL || !ADMIN_PASSWORD, 'Missing E2E_ADMIN_EMAIL/E2E_ADMIN_PASSWORD environment variables.');
 
-  await page.goto('/login', { waitUntil: 'domcontentloaded' });
-  await page.waitForLoadState('load');
-
-  await page.getByLabel('Correo Electrónico').fill(ADMIN_EMAIL);
-  await page.getByLabel('Contraseña').fill(ADMIN_PASSWORD);
-
-  const submitButton = page.locator('form button[type="submit"]').first();
-  if (await submitButton.count()) {
-    await submitButton.click();
-  } else {
-    await page.getByRole('button', { name: /ingresar|iniciar sesion|iniciar sesión|iniciar sesión con supabase/i }).first().click();
-  }
-
-  await page.waitForURL(/\/admin|\/login/, { timeout: 20000 });
-  await expect(page).toHaveURL(/\/admin/);
-
-  await openAsistenciasModule(page);
+  await loginAsAdmin(page);
+  await openAdminSection(page, 'asistencias');
   await ensureQuickMode(page);
+
+  await expect(page.getByTestId('attendance-athlete-row').first()).toBeVisible();
 
   const screenshotPath = testInfo.outputPath(`asistencias-quick-${testInfo.project.name}.png`);
   const isMobileProject = /mobile/i.test(testInfo.project.name);
@@ -101,8 +77,10 @@ test('guided review: admin asistencias quick mode per viewport', async ({ page }
   // Soft checks to avoid blocking the run while still flagging bad layouts.
   expect.soft(metrics.hasHorizontalOverflow, `Overflow in ${testInfo.project.name}`).toBeFalsy();
 
-  if (metrics.rowCount > 0) {
-    expect.soft(metrics.minName, `Name width too small in ${testInfo.project.name}`).toBeGreaterThan(90);
-    expect.soft(metrics.maxActions, `Actions consuming too much width in ${testInfo.project.name}`).toBeLessThanOrEqual(metrics.viewport);
-  }
+  expect(metrics.rowCount).toBeGreaterThan(0);
+  expect(metrics.nameCount).toBe(metrics.rowCount);
+  expect(metrics.actionGroupCount).toBe(metrics.rowCount);
+  expect.soft(metrics.minName, `Name width too small in ${testInfo.project.name}`).toBeGreaterThan(90);
+  expect.soft(metrics.maxActions, `Actions consuming too much width in ${testInfo.project.name}`).toBeLessThanOrEqual(metrics.viewport);
 });
+

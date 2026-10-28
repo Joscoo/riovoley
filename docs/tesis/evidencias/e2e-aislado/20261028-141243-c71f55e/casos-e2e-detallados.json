@@ -1,0 +1,1010 @@
+[
+  {
+    "group": "pendientes-estable",
+    "file": "admin.modules-navigation.spec.js",
+    "title": "admin: every module opens without a JavaScript crash",
+    "project": "mobile-390",
+    "status": "expected",
+    "error": null,
+    "durationMs": 36763
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "admin.modules-navigation.spec.js",
+    "title": "admin: every module opens without a JavaScript crash",
+    "project": "mobile-430",
+    "status": "expected",
+    "error": null,
+    "durationMs": 41067
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "admin.modules-navigation.spec.js",
+    "title": "admin: every module opens without a JavaScript crash",
+    "project": "mobile-480",
+    "status": "expected",
+    "error": null,
+    "durationMs": 10645
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "admin.modules-navigation.spec.js",
+    "title": "admin: every module opens without a JavaScript crash",
+    "project": "tablet-768",
+    "status": "expected",
+    "error": null,
+    "durationMs": 33490
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "admin.modules-navigation.spec.js",
+    "title": "admin: every module opens without a JavaScript crash",
+    "project": "tablet-1024",
+    "status": "expected",
+    "error": null,
+    "durationMs": 6440
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "admin.modules-navigation.spec.js",
+    "title": "admin: every module opens without a JavaScript crash",
+    "project": "desktop-1440",
+    "status": "expected",
+    "error": null,
+    "durationMs": 7225
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "admin.modules-navigation.spec.js",
+    "title": "admin: every module opens without a JavaScript crash",
+    "project": "desktop-1920",
+    "status": "expected",
+    "error": null,
+    "durationMs": 7453
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "admin.provisioning-notifications.smoke.spec.js",
+    "title": "admin smoke: provisioning + notifications entrypoints",
+    "project": "mobile-390",
+    "status": "expected",
+    "error": null,
+    "durationMs": 10239
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "admin.provisioning-notifications.smoke.spec.js",
+    "title": "admin smoke: provisioning + notifications entrypoints",
+    "project": "mobile-430",
+    "status": "expected",
+    "error": null,
+    "durationMs": 11928
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "admin.provisioning-notifications.smoke.spec.js",
+    "title": "admin smoke: provisioning + notifications entrypoints",
+    "project": "mobile-480",
+    "status": "expected",
+    "error": null,
+    "durationMs": 3392
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "admin.provisioning-notifications.smoke.spec.js",
+    "title": "admin smoke: provisioning + notifications entrypoints",
+    "project": "tablet-768",
+    "status": "expected",
+    "error": null,
+    "durationMs": 9211
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "admin.provisioning-notifications.smoke.spec.js",
+    "title": "admin smoke: provisioning + notifications entrypoints",
+    "project": "tablet-1024",
+    "status": "expected",
+    "error": null,
+    "durationMs": 2410
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "admin.provisioning-notifications.smoke.spec.js",
+    "title": "admin smoke: provisioning + notifications entrypoints",
+    "project": "desktop-1440",
+    "status": "expected",
+    "error": null,
+    "durationMs": 3857
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "admin.provisioning-notifications.smoke.spec.js",
+    "title": "admin smoke: provisioning + notifications entrypoints",
+    "project": "desktop-1920",
+    "status": "expected",
+    "error": null,
+    "durationMs": 3676
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "mobile-390",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /asistencias/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /asistencias/i }).first()\u001b[22m\n",
+    "durationMs": 18631
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "mobile-430",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /asistencias/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /asistencias/i }).first()\u001b[22m\n",
+    "durationMs": 18597
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "mobile-480",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /asistencias/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /asistencias/i }).first()\u001b[22m\n",
+    "durationMs": 16971
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "tablet-768",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /asistencias/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /asistencias/i }).first()\u001b[22m\n",
+    "durationMs": 18480
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "tablet-1024",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: /control de asistencias/i })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: /control de asistencias/i })\u001b[22m\n",
+    "durationMs": 16826
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "desktop-1440",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: /control de asistencias/i })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: /control de asistencias/i })\u001b[22m\n",
+    "durationMs": 17607
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "desktop-1920",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: /control de asistencias/i })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: /control de asistencias/i })\u001b[22m\n",
+    "durationMs": 17948
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 athletes tab: filtros y orden con reset consistente",
+    "project": "mobile-390",
+    "status": "expected",
+    "error": null,
+    "durationMs": 7680
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 schedules: filtros y orden con limpiar filtros",
+    "project": "mobile-390",
+    "status": "expected",
+    "error": null,
+    "durationMs": 7890
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 athletes tab: filtros y orden con reset consistente",
+    "project": "mobile-430",
+    "status": "expected",
+    "error": null,
+    "durationMs": 7744
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 schedules: filtros y orden con limpiar filtros",
+    "project": "mobile-430",
+    "status": "expected",
+    "error": null,
+    "durationMs": 7938
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 athletes tab: filtros y orden con reset consistente",
+    "project": "mobile-480",
+    "status": "expected",
+    "error": null,
+    "durationMs": 3112
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 schedules: filtros y orden con limpiar filtros",
+    "project": "mobile-480",
+    "status": "expected",
+    "error": null,
+    "durationMs": 2822
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 athletes tab: filtros y orden con reset consistente",
+    "project": "tablet-768",
+    "status": "expected",
+    "error": null,
+    "durationMs": 6971
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 schedules: filtros y orden con limpiar filtros",
+    "project": "tablet-768",
+    "status": "expected",
+    "error": null,
+    "durationMs": 7523
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 athletes tab: filtros y orden con reset consistente",
+    "project": "tablet-1024",
+    "status": "expected",
+    "error": null,
+    "durationMs": 2245
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 schedules: filtros y orden con limpiar filtros",
+    "project": "tablet-1024",
+    "status": "expected",
+    "error": null,
+    "durationMs": 2670
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 athletes tab: filtros y orden con reset consistente",
+    "project": "desktop-1440",
+    "status": "expected",
+    "error": null,
+    "durationMs": 3003
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 schedules: filtros y orden con limpiar filtros",
+    "project": "desktop-1440",
+    "status": "expected",
+    "error": null,
+    "durationMs": 2951
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 athletes tab: filtros y orden con reset consistente",
+    "project": "desktop-1920",
+    "status": "expected",
+    "error": null,
+    "durationMs": 2742
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 schedules: filtros y orden con limpiar filtros",
+    "project": "desktop-1920",
+    "status": "expected",
+    "error": null,
+    "durationMs": 3480
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.physical-tests.spec.js",
+    "title": "physical-tests: filtros + orden + limpiar filtros",
+    "project": "mobile-390",
+    "status": "expected",
+    "error": null,
+    "durationMs": 8330
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.physical-tests.spec.js",
+    "title": "physical-tests: filtros + orden + limpiar filtros",
+    "project": "mobile-430",
+    "status": "expected",
+    "error": null,
+    "durationMs": 9028
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.physical-tests.spec.js",
+    "title": "physical-tests: filtros + orden + limpiar filtros",
+    "project": "mobile-480",
+    "status": "expected",
+    "error": null,
+    "durationMs": 3077
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.physical-tests.spec.js",
+    "title": "physical-tests: filtros + orden + limpiar filtros",
+    "project": "tablet-768",
+    "status": "expected",
+    "error": null,
+    "durationMs": 8166
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.physical-tests.spec.js",
+    "title": "physical-tests: filtros + orden + limpiar filtros",
+    "project": "tablet-1024",
+    "status": "expected",
+    "error": null,
+    "durationMs": 2866
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.physical-tests.spec.js",
+    "title": "physical-tests: filtros + orden + limpiar filtros",
+    "project": "desktop-1440",
+    "status": "expected",
+    "error": null,
+    "durationMs": 3368
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.physical-tests.spec.js",
+    "title": "physical-tests: filtros + orden + limpiar filtros",
+    "project": "desktop-1920",
+    "status": "expected",
+    "error": null,
+    "durationMs": 3156
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "mobile-390",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /^monto$/i }).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /^monto$/i }).first()\u001b[22m\n",
+    "durationMs": 16818
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "mobile-390",
+    "status": "expected",
+    "error": null,
+    "durationMs": 11338
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "mobile-430",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /^monto$/i }).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /^monto$/i }).first()\u001b[22m\n",
+    "durationMs": 18147
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "mobile-430",
+    "status": "expected",
+    "error": null,
+    "durationMs": 13128
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "mobile-480",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /^monto$/i }).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /^monto$/i }).first()\u001b[22m\n",
+    "durationMs": 12662
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "mobile-480",
+    "status": "expected",
+    "error": null,
+    "durationMs": 3767
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "tablet-768",
+    "status": "expected",
+    "error": null,
+    "durationMs": 10640
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "tablet-768",
+    "status": "expected",
+    "error": null,
+    "durationMs": 10894
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "tablet-1024",
+    "status": "expected",
+    "error": null,
+    "durationMs": 3012
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "tablet-1024",
+    "status": "expected",
+    "error": null,
+    "durationMs": 2771
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "desktop-1440",
+    "status": "expected",
+    "error": null,
+    "durationMs": 4658
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "desktop-1440",
+    "status": "expected",
+    "error": null,
+    "durationMs": 3515
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "desktop-1920",
+    "status": "expected",
+    "error": null,
+    "durationMs": 4635
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "desktop-1920",
+    "status": "expected",
+    "error": null,
+    "durationMs": 4286
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.user-management.spec.js",
+    "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+    "project": "mobile-390",
+    "status": "expected",
+    "error": null,
+    "durationMs": 12550
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.user-management.spec.js",
+    "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+    "project": "mobile-430",
+    "status": "expected",
+    "error": null,
+    "durationMs": 13082
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.user-management.spec.js",
+    "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+    "project": "mobile-480",
+    "status": "expected",
+    "error": null,
+    "durationMs": 3167
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.user-management.spec.js",
+    "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+    "project": "tablet-768",
+    "status": "expected",
+    "error": null,
+    "durationMs": 11245
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.user-management.spec.js",
+    "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+    "project": "tablet-1024",
+    "status": "expected",
+    "error": null,
+    "durationMs": 3243
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.user-management.spec.js",
+    "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+    "project": "desktop-1440",
+    "status": "expected",
+    "error": null,
+    "durationMs": 3588
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "filters-sorting.user-management.spec.js",
+    "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+    "project": "desktop-1920",
+    "status": "expected",
+    "error": null,
+    "durationMs": 3576
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "responsive.smoke.spec.js",
+    "title": "role dashboards responsive guard (optional env credentials)",
+    "project": "mobile-390",
+    "status": "expected",
+    "error": null,
+    "durationMs": 5085
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "responsive.smoke.spec.js",
+    "title": "role dashboards responsive guard (optional env credentials)",
+    "project": "mobile-430",
+    "status": "expected",
+    "error": null,
+    "durationMs": 5491
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "responsive.smoke.spec.js",
+    "title": "role dashboards responsive guard (optional env credentials)",
+    "project": "mobile-480",
+    "status": "expected",
+    "error": null,
+    "durationMs": 2099
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "responsive.smoke.spec.js",
+    "title": "role dashboards responsive guard (optional env credentials)",
+    "project": "tablet-768",
+    "status": "expected",
+    "error": null,
+    "durationMs": 4813
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "responsive.smoke.spec.js",
+    "title": "role dashboards responsive guard (optional env credentials)",
+    "project": "tablet-1024",
+    "status": "expected",
+    "error": null,
+    "durationMs": 2161
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "responsive.smoke.spec.js",
+    "title": "role dashboards responsive guard (optional env credentials)",
+    "project": "desktop-1440",
+    "status": "expected",
+    "error": null,
+    "durationMs": 2460
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "responsive.smoke.spec.js",
+    "title": "role dashboards responsive guard (optional env credentials)",
+    "project": "desktop-1920",
+    "status": "expected",
+    "error": null,
+    "durationMs": 2393
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "trainer: every module renders without a JavaScript crash",
+    "project": "mobile-390",
+    "status": "expected",
+    "error": null,
+    "durationMs": 20055
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "student: every module renders without a JavaScript crash",
+    "project": "mobile-390",
+    "status": "expected",
+    "error": null,
+    "durationMs": 15384
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "trainer: every module renders without a JavaScript crash",
+    "project": "mobile-430",
+    "status": "expected",
+    "error": null,
+    "durationMs": 21941
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "student: every module renders without a JavaScript crash",
+    "project": "mobile-430",
+    "status": "expected",
+    "error": null,
+    "durationMs": 15755
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "trainer: every module renders without a JavaScript crash",
+    "project": "mobile-480",
+    "status": "expected",
+    "error": null,
+    "durationMs": 6999
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "student: every module renders without a JavaScript crash",
+    "project": "mobile-480",
+    "status": "expected",
+    "error": null,
+    "durationMs": 3660
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "trainer: every module renders without a JavaScript crash",
+    "project": "tablet-768",
+    "status": "expected",
+    "error": null,
+    "durationMs": 18944
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "student: every module renders without a JavaScript crash",
+    "project": "tablet-768",
+    "status": "expected",
+    "error": null,
+    "durationMs": 14026
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "trainer: every module renders without a JavaScript crash",
+    "project": "tablet-1024",
+    "status": "expected",
+    "error": null,
+    "durationMs": 4417
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "student: every module renders without a JavaScript crash",
+    "project": "tablet-1024",
+    "status": "expected",
+    "error": null,
+    "durationMs": 2753
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "trainer: every module renders without a JavaScript crash",
+    "project": "desktop-1440",
+    "status": "expected",
+    "error": null,
+    "durationMs": 5181
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "student: every module renders without a JavaScript crash",
+    "project": "desktop-1440",
+    "status": "expected",
+    "error": null,
+    "durationMs": 2602
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "trainer: every module renders without a JavaScript crash",
+    "project": "desktop-1920",
+    "status": "expected",
+    "error": null,
+    "durationMs": 5187
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "student: every module renders without a JavaScript crash",
+    "project": "desktop-1920",
+    "status": "expected",
+    "error": null,
+    "durationMs": 2580
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: admin",
+    "project": "mobile-390",
+    "status": "expected",
+    "error": null,
+    "durationMs": 4118
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: trainer",
+    "project": "mobile-390",
+    "status": "expected",
+    "error": null,
+    "durationMs": 3756
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: student",
+    "project": "mobile-390",
+    "status": "expected",
+    "error": null,
+    "durationMs": 4065
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: admin",
+    "project": "mobile-430",
+    "status": "expected",
+    "error": null,
+    "durationMs": 4041
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: trainer",
+    "project": "mobile-430",
+    "status": "expected",
+    "error": null,
+    "durationMs": 4135
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: student",
+    "project": "mobile-430",
+    "status": "expected",
+    "error": null,
+    "durationMs": 4171
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: admin",
+    "project": "mobile-480",
+    "status": "expected",
+    "error": null,
+    "durationMs": 1470
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: trainer",
+    "project": "mobile-480",
+    "status": "expected",
+    "error": null,
+    "durationMs": 1455
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: student",
+    "project": "mobile-480",
+    "status": "expected",
+    "error": null,
+    "durationMs": 1914
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: admin",
+    "project": "tablet-768",
+    "status": "expected",
+    "error": null,
+    "durationMs": 4035
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: trainer",
+    "project": "tablet-768",
+    "status": "expected",
+    "error": null,
+    "durationMs": 4065
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: student",
+    "project": "tablet-768",
+    "status": "expected",
+    "error": null,
+    "durationMs": 3965
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: admin",
+    "project": "tablet-1024",
+    "status": "expected",
+    "error": null,
+    "durationMs": 2130
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: trainer",
+    "project": "tablet-1024",
+    "status": "expected",
+    "error": null,
+    "durationMs": 2261
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: student",
+    "project": "tablet-1024",
+    "status": "expected",
+    "error": null,
+    "durationMs": 1984
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: admin",
+    "project": "desktop-1440",
+    "status": "expected",
+    "error": null,
+    "durationMs": 2365
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: trainer",
+    "project": "desktop-1440",
+    "status": "expected",
+    "error": null,
+    "durationMs": 1857
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: student",
+    "project": "desktop-1440",
+    "status": "expected",
+    "error": null,
+    "durationMs": 1905
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: admin",
+    "project": "desktop-1920",
+    "status": "expected",
+    "error": null,
+    "durationMs": 1749
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: trainer",
+    "project": "desktop-1920",
+    "status": "expected",
+    "error": null,
+    "durationMs": 1596
+  },
+  {
+    "group": "pendientes-estable",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: student",
+    "project": "desktop-1920",
+    "status": "expected",
+    "error": null,
+    "durationMs": 2209
+  },
+  {
+    "group": "mutaciones-estable",
+    "file": "admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "mobile-390",
+    "status": "unexpected",
+    "error": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+    "durationMs": 60832
+  },
+  {
+    "group": "mutaciones-estable",
+    "file": "admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "mobile-430",
+    "status": "unexpected",
+    "error": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+    "durationMs": 61107
+  },
+  {
+    "group": "mutaciones-estable",
+    "file": "admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "mobile-480",
+    "status": "unexpected",
+    "error": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+    "durationMs": 60387
+  },
+  {
+    "group": "mutaciones-estable",
+    "file": "admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "tablet-768",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n",
+    "durationMs": 19251
+  },
+  {
+    "group": "mutaciones-estable",
+    "file": "admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "tablet-1024",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n",
+    "durationMs": 17284
+  },
+  {
+    "group": "mutaciones-estable",
+    "file": "admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "desktop-1440",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n",
+    "durationMs": 17181
+  },
+  {
+    "group": "mutaciones-estable",
+    "file": "admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "desktop-1920",
+    "status": "unexpected",
+    "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n",
+    "durationMs": 16451
+  }
+]

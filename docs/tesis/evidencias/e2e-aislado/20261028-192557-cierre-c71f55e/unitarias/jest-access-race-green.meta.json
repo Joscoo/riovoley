@@ -1,0 +1,19 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\Riovoley\\riovoley\\node_modules\\react-scripts\\bin\\react-scripts.js",
+    "test",
+    "--watchAll=false",
+    "--runInBand",
+    "--json",
+    "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-192557-cierre-c71f55e\\jest-access-race-green.json",
+    "--runTestsByPath",
+    "src/features/student-dashboard/presentation/components/StudentPanel.access.test.js"
+  ],
+  "start": "2026-10-28T19:59:09.358Z",
+  "end": "2026-10-28T19:59:15.624Z",
+  "durationSeconds": 6.266,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

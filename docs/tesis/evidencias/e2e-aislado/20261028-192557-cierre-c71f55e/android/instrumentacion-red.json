@@ -1,0 +1,9 @@
+{
+  "platform": "Emulador local API36 x86_64/WHPX",
+  "commandExitCode": 0,
+  "executed": 1,
+  "failed": 1,
+  "passed": 0,
+  "state": "FALLIDO",
+  "scope": "Prueba instrumentada de plantilla: contexto/applicationId; no cubre todos los flujos de negocio Android."
+}

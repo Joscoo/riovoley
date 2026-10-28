@@ -1,0 +1,18 @@
+{
+  "observedAt": "2026-10-28T13:37:39.255Z",
+  "capacitorDoctorExitCode": 0,
+  "java": "25.0.4.1",
+  "gradleWrapper": "8.14.3",
+  "agp": "8.13.0",
+  "minSdk": 24,
+  "compileSdk": 36,
+  "targetSdk": 36,
+  "configuredSdkExists": false,
+  "defaultSdkExists": false,
+  "syncExecuted": false,
+  "nativeBuildExecuted": false,
+  "deviceTestsExecuted": false,
+  "reason": "SDK no localizado ni configurado; adb/emulator ausentes en PATH. JDK 25 no está en la combinación soportada con Gradle 8.14.3.",
+  "apkProducedByAudit": false,
+  "iosProjectPresent": false
+}

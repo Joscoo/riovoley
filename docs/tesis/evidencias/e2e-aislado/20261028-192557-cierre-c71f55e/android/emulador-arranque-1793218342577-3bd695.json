@@ -1,0 +1,296 @@
+{
+  "status": "APROBADO",
+  "pid": 32000,
+  "args": [
+    "-avd",
+    "riovoley-audit",
+    "-port",
+    "5580",
+    "-no-window",
+    "-no-audio",
+    "-no-boot-anim",
+    "-no-snapshot",
+    "-gpu",
+    "swiftshader",
+    "-memory",
+    "1536",
+    "-cores",
+    "2",
+    "-http-proxy",
+    "http://127.0.0.1:9"
+  ],
+  "serial": "emulator-5580",
+  "durationSeconds": 178.285,
+  "attempts": [
+    {
+      "at": "2026-10-28T20:09:24.627Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:09:27.753Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:09:30.917Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:09:34.113Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:09:37.317Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:09:40.462Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:09:43.645Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:09:46.944Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:09:50.135Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:09:53.306Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:09:56.477Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:09:59.749Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:10:02.901Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:10:06.028Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:10:09.188Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:10:12.380Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:10:15.542Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:10:18.791Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:10:22.210Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:10:25.525Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:10:28.846Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:10:32.251Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:10:35.535Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:10:38.936Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:10:42.454Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:10:45.802Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:10:49.096Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:10:52.486Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:10:55.924Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:10:59.682Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:11:02.952Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:11:06.345Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:11:09.872Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:11:13.289Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:11:16.543Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:11:19.826Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:11:23.274Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:11:26.603Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:11:30.074Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:11:33.443Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:11:36.587Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:11:39.806Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:11:43.163Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:11:46.564Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:11:50.086Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:11:53.531Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:11:57.110Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:12:00.728Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:12:04.295Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:12:07.861Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:12:11.520Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:12:14.974Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:12:19.007Z",
+      "exitCode": null,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:12:22.574Z",
+      "exitCode": 0,
+      "bootCompleted": "1"
+    }
+  ]
+}

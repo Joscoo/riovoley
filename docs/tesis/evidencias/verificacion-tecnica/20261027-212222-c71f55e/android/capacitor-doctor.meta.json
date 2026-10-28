@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@capacitor/cli/bin/capacitor",
+    "doctor"
+  ],
+  "cwd": ".",
+  "start": "2026-10-28T02:28:29.466Z",
+  "end": "2026-10-28T02:28:39.955Z",
+  "durationSeconds": 10.489,
+  "exitCode": 0,
+  "signal": null,
+  "environmentOverrides": {}
+}

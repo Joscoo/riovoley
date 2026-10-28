@@ -1,0 +1,11 @@
+{
+  "users": 10,
+  "views": 44,
+  "tables": 47,
+  "payments": 8,
+  "policies": 139,
+  "postgres": "17.11",
+  "students": 8,
+  "attendances": 8,
+  "physical_tests": 8
+}

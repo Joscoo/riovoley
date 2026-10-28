@@ -1,0 +1,96 @@
+[
+    {
+        "Name": "riovoley-e2e-loopback",
+        "Id": "1476302f7392e028f5b2661dd30328029619e221673dfd8e3231a13a2c9ba418",
+        "Created": "2026-10-28T14:19:41.912365886Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.20.0.0/16",
+                    "Gateway": "172.20.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Options": {
+            "com.docker.network.bridge.host_binding_ipv4": "127.0.0.1",
+            "com.docker.network.enable_ipv4": "true",
+            "com.docker.network.enable_ipv6": "false"
+        },
+        "Labels": {},
+        "Containers": {
+            "3680f686aabe7d9200386e76f1e11c309ed867b46e25e307bd16f35cde90c292": {
+                "Name": "supabase_realtime_riovoley-e2e-local",
+                "EndpointID": "192ef184aeea21590b343bf56968d2cecdca8daa3d389a047eca01de128bce65",
+                "MacAddress": "42:ed:18:1a:8b:0e",
+                "IPv4Address": "172.20.0.5/16",
+                "IPv6Address": ""
+            },
+            "76c303de210cc41d713add041cf74b9e7a6da9e8c6981b025cc3dfac69834a9d": {
+                "Name": "supabase_rest_riovoley-e2e-local",
+                "EndpointID": "722de32c095eda350d2e4a1b3a80284edabaf697ceed95efa77760de021ebc40",
+                "MacAddress": "ba:78:ce:f1:a4:da",
+                "IPv4Address": "172.20.0.7/16",
+                "IPv6Address": ""
+            },
+            "9f1f5ae94dd2267bb054b5f54013bcd7238446d2377cb99756caca51de45900a": {
+                "Name": "supabase_storage_riovoley-e2e-local",
+                "EndpointID": "2670fe9f5499149b36f2d91ca7392db512fa9cbed535d9dc09701310738878ff",
+                "MacAddress": "fa:76:8f:7c:54:08",
+                "IPv4Address": "172.20.0.8/16",
+                "IPv6Address": ""
+            },
+            "b12016e2d3ccb62dbf857cde6d085c0da96156f1f6bbf5e83573be93f6e5b525": {
+                "Name": "supabase_inbucket_riovoley-e2e-local",
+                "EndpointID": "35e92dfd7e4170268636b00c1da0e28714d346b26e39777ad737d5d3ef22386d",
+                "MacAddress": "32:fb:b2:d2:1c:53",
+                "IPv4Address": "172.20.0.3/16",
+                "IPv6Address": ""
+            },
+            "b3f8f65297a4c15c52fdf0dedf63c8160ae052f7c89645431c5211c7587122e5": {
+                "Name": "supabase_auth_riovoley-e2e-local",
+                "EndpointID": "efce9149c5393e424d01a02034f86a82f6ec60d8f689d5f6b8b4a72c59afc63a",
+                "MacAddress": "96:28:ca:5d:5d:f5",
+                "IPv4Address": "172.20.0.4/16",
+                "IPv6Address": ""
+            },
+            "d241226bbedc464e41721a56c5fe2fe12efacbfd146110903e62e805861e97de": {
+                "Name": "supabase_db_riovoley-e2e-local",
+                "EndpointID": "01b98e29bc87cb1ccc349c669356c25f4e28022ecf41c1ee6c76586bf79ff1ce",
+                "MacAddress": "1e:26:09:46:7c:8b",
+                "IPv4Address": "172.20.0.2/16",
+                "IPv6Address": ""
+            },
+            "e14005f54f9315635b92567fa6785fded96ac19c07a5f11e62720ca0abf77ba1": {
+                "Name": "supabase_kong_riovoley-e2e-local",
+                "EndpointID": "a7b67adde7f06be61c7bc4346b086356b413cfc4a00860d6ea5f041d13963f19",
+                "MacAddress": "56:bd:13:25:9e:6c",
+                "IPv4Address": "172.20.0.6/16",
+                "IPv6Address": ""
+            }
+        },
+        "Status": {
+            "IPAM": {
+                "Subnets": {
+                    "172.20.0.0/16": {
+                        "IPsInUse": 10,
+                        "DynamicIPsAvailable": 65526
+                    }
+                }
+            }
+        }
+    }
+]
+

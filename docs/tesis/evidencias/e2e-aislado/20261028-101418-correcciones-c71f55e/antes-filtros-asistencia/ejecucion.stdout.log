@@ -1,0 +1,70 @@
+
+Running 2 tests using 1 worker
+
+  ✘  1 [mobile-390] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport (17.9s)
+  ✘  2 [mobile-390] › tests\e2e\filters-sorting.tables.spec.js:19:1 › pagos: filtros base + orden de columnas por header (15.7s)
+
+
+  1) [mobile-390] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: /asistencias/i }).first()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByRole('button', { name: /asistencias/i }).first()[22m
+
+
+      16 |
+      17 |   const asistenciasMenuButton = page.getByRole('button', { name: /asistencias/i });
+    > 18 |   await expect(asistenciasMenuButton.first()).toBeVisible({ timeout: 15000 });
+         |                                               ^
+      19 |   await asistenciasMenuButton.first().click();
+      20 |
+      21 |   await expect(page.getByRole('heading', { name: /control de asistencias/i })).toBeVisible({ timeout: 15000 });
+        at openAsistenciasModule (D:\Riovoley\riovoley\tests\e2e\asistencias.guided.review.spec.js:18:47)
+        at D:\Riovoley\riovoley\tests\e2e\asistencias.guided.review.spec.js:80:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\e2e-aislado\20261028-101418-correcciones-c71f55e\antes-filtros-asistencia\artefactos\asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-390\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\e2e-aislado\20261028-101418-correcciones-c71f55e\antes-filtros-asistencia\artefactos\asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-390\error-context.md
+
+  2) [mobile-390] › tests\e2e\filters-sorting.tables.spec.js:19:1 › pagos: filtros base + orden de columnas por header 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: /^monto$/i }).first()
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('button', { name: /^monto$/i }).first()[22m
+
+
+      51 |
+      52 |   const montoHeaderButton = page.getByRole('button', { name: /^monto$/i }).first();
+    > 53 |   await expect(montoHeaderButton).toBeVisible();
+         |                                   ^
+      54 |   await assertThreeStateSortFromHeaderButton(montoHeaderButton);
+      55 |
+      56 |   const initialOverflow = await page.evaluate(() => document.body.style.overflow);
+        at D:\Riovoley\riovoley\tests\e2e\filters-sorting.tables.spec.js:53:35
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\e2e-aislado\20261028-101418-correcciones-c71f55e\antes-filtros-asistencia\artefactos\filters-sorting.tables-pag-2f969-rden-de-columnas-por-header-mobile-390\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\e2e-aislado\20261028-101418-correcciones-c71f55e\antes-filtros-asistencia\artefactos\filters-sorting.tables-pag-2f969-rden-de-columnas-por-header-mobile-390\error-context.md
+
+  2 failed
+    [mobile-390] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport 
+    [mobile-390] › tests\e2e\filters-sorting.tables.spec.js:19:1 › pagos: filtros base + orden de columnas por header 
+

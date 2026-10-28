@@ -1,0 +1,557 @@
+{
+  "config": {
+    "configFile": "D:\\Riovoley\\riovoley\\playwright.local.config.cjs",
+    "rootDir": "D:/Riovoley/riovoley/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 3
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/mutaciones-finales/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "mobile-390",
+        "name": "mobile-390",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/mutaciones-finales/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "mobile-430",
+        "name": "mobile-430",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/mutaciones-finales/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "mobile-480",
+        "name": "mobile-480",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/mutaciones-finales/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "tablet-768",
+        "name": "tablet-768",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/mutaciones-finales/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "tablet-1024",
+        "name": "tablet-1024",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/mutaciones-finales/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "desktop-1440",
+        "name": "desktop-1440",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-101418-correcciones-c71f55e/mutaciones-finales/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "desktop-1920",
+        "name": "desktop-1920",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\mutaciones-finales\\resultados.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\mutaciones-finales\\html",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.59.1",
+    "workers": 3,
+    "webServer": {
+      "command": "node scripts/e2e/local/server.cjs",
+      "url": "http://127.0.0.1:6100",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "admin.happy-path-controlled.spec.js",
+      "file": "admin.happy-path-controlled.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 41182,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-guide-id=\"admin-menu-pagos\"]:visible')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-guide-id=\"admin-menu-pagos\"]:visible')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-guide-id=\"admin-menu-pagos\"]:visible')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-guide-id=\"admin-menu-pagos\"]:visible')\u001b[22m\n\n    at openPanelSection (D:\\Riovoley\\riovoley\\tests\\e2e\\helpers\\adminNavigation.js:35:24)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:83:3",
+                    "location": {
+                      "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\helpers\\adminNavigation.js",
+                      "column": 24,
+                      "line": 35
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mhelpers\\adminNavigation.js:35\n\n  33 |   if (await toggle.isVisible()) await toggle.click();\n  34 |   const button = page.locator(selector);\n> 35 |   await expect(button).toBeVisible();\n     |                        ^\n  36 |   await button.click();\n  37 | }\n  38 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\helpers\\adminNavigation.js",
+                        "column": 24,
+                        "line": 35
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-guide-id=\"admin-menu-pagos\"]:visible')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-guide-id=\"admin-menu-pagos\"]:visible')\u001b[22m\n\n\n   at helpers\\adminNavigation.js:35\n\n  33 |   if (await toggle.isVisible()) await toggle.click();\n  34 |   const button = page.locator(selector);\n> 35 |   await expect(button).toBeVisible();\n     |                        ^\n  36 |   await button.click();\n  37 | }\n  38 |\n    at openPanelSection (D:\\Riovoley\\riovoley\\tests\\e2e\\helpers\\adminNavigation.js:35:24)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:83:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:27:02.238Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\mutaciones-finales\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-mobile-390\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\mutaciones-finales\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-mobile-390\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\helpers\\adminNavigation.js",
+                    "column": 24,
+                    "line": 35
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-76152f78520f1dc4839c",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 42663,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-guide-id=\"admin-menu-pagos\"]:visible')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-guide-id=\"admin-menu-pagos\"]:visible')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-guide-id=\"admin-menu-pagos\"]:visible')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-guide-id=\"admin-menu-pagos\"]:visible')\u001b[22m\n\n    at openPanelSection (D:\\Riovoley\\riovoley\\tests\\e2e\\helpers\\adminNavigation.js:35:24)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:83:3",
+                    "location": {
+                      "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\helpers\\adminNavigation.js",
+                      "column": 24,
+                      "line": 35
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mhelpers\\adminNavigation.js:35\n\n  33 |   if (await toggle.isVisible()) await toggle.click();\n  34 |   const button = page.locator(selector);\n> 35 |   await expect(button).toBeVisible();\n     |                        ^\n  36 |   await button.click();\n  37 | }\n  38 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\helpers\\adminNavigation.js",
+                        "column": 24,
+                        "line": 35
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-guide-id=\"admin-menu-pagos\"]:visible')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-guide-id=\"admin-menu-pagos\"]:visible')\u001b[22m\n\n\n   at helpers\\adminNavigation.js:35\n\n  33 |   if (await toggle.isVisible()) await toggle.click();\n  34 |   const button = page.locator(selector);\n> 35 |   await expect(button).toBeVisible();\n     |                        ^\n  36 |   await button.click();\n  37 | }\n  38 |\n    at openPanelSection (D:\\Riovoley\\riovoley\\tests\\e2e\\helpers\\adminNavigation.js:35:24)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:83:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:27:02.241Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\mutaciones-finales\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-mobile-430\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\mutaciones-finales\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-mobile-430\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\helpers\\adminNavigation.js",
+                    "column": 24,
+                    "line": 35
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-a461414e70039ab8bf7a",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "failed",
+                  "duration": 23536,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-guide-id=\"admin-menu-pagos\"]:visible')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-guide-id=\"admin-menu-pagos\"]:visible')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-guide-id=\"admin-menu-pagos\"]:visible')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-guide-id=\"admin-menu-pagos\"]:visible')\u001b[22m\n\n    at openPanelSection (D:\\Riovoley\\riovoley\\tests\\e2e\\helpers\\adminNavigation.js:35:24)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:83:3",
+                    "location": {
+                      "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\helpers\\adminNavigation.js",
+                      "column": 24,
+                      "line": 35
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mhelpers\\adminNavigation.js:35\n\n  33 |   if (await toggle.isVisible()) await toggle.click();\n  34 |   const button = page.locator(selector);\n> 35 |   await expect(button).toBeVisible();\n     |                        ^\n  36 |   await button.click();\n  37 | }\n  38 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\helpers\\adminNavigation.js",
+                        "column": 24,
+                        "line": 35
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-guide-id=\"admin-menu-pagos\"]:visible')\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-guide-id=\"admin-menu-pagos\"]:visible')\u001b[22m\n\n\n   at helpers\\adminNavigation.js:35\n\n  33 |   if (await toggle.isVisible()) await toggle.click();\n  34 |   const button = page.locator(selector);\n> 35 |   await expect(button).toBeVisible();\n     |                        ^\n  36 |   await button.click();\n  37 | }\n  38 |\n    at openPanelSection (D:\\Riovoley\\riovoley\\tests\\e2e\\helpers\\adminNavigation.js:35:24)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:83:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:27:02.238Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\mutaciones-finales\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-mobile-480\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\mutaciones-finales\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-mobile-480\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\helpers\\adminNavigation.js",
+                    "column": 24,
+                    "line": 35
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-e61d27f6cc0a031e7be5",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 2,
+                  "status": "timedOut",
+                  "duration": 60358,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\helpers\\adminNavigation.js",
+                        "column": 16,
+                        "line": 36
+                      },
+                      "message": "Error: locator.click: Test timeout of 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-guide-id=\"admin-menu-pagos\"]:visible')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" data-guide-id=\"admin-menu-pagos\" class=\"group inline-flex w-full min-h-[44px] items-center gap-2 rounded-xl border border-transparent px-3 py-2 text-left text-sm font-medium text-white/80 transition-all duration-200 hover:border-rv-gold/35 hover:bg-rv-gold/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 desktop:w-full desktop:gap-3 desktop:px-4 desktop:py-3\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - element is outside of the viewport\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - element is outside of the viewport\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    26 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - element is outside of the viewport\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\n\n   at helpers\\adminNavigation.js:36\n\n  34 |   const button = page.locator(selector);\n  35 |   await expect(button).toBeVisible();\n> 36 |   await button.click();\n     |                ^\n  37 | }\n  38 |\n  39 | module.exports = { openAdminSection, loginAsAdmin: (page) => loginAsRole(page), loginAsRole, openPanelSection, dismissPanelGuide };\n    at openPanelSection (D:\\Riovoley\\riovoley\\tests\\e2e\\helpers\\adminNavigation.js:36:16)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:83:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:27:27.666Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\mutaciones-finales\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-tablet-768\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-101418-correcciones-c71f55e\\mutaciones-finales\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-tablet-768\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-f616cd43f6e4f450ae4a",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8468,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:27:44.548Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-b9290aa25313fc9f75cd",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 8557,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:27:46.686Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-9512e358c77c26a6a60b",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13363,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T15:27:54.934Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-58d9ee2e799413d480a7",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 6,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-28T15:27:00.973Z",
+    "duration": 87572.91600000001,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

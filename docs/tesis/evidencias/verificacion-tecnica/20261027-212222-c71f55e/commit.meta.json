@@ -1,0 +1,14 @@
+{
+  "command": [
+    "git",
+    "rev-parse",
+    "HEAD"
+  ],
+  "cwd": ".",
+  "start": "2026-10-28T02:23:19.240Z",
+  "end": "2026-10-28T02:23:19.310Z",
+  "durationSeconds": 0.07,
+  "exitCode": 0,
+  "signal": null,
+  "environmentOverrides": {}
+}

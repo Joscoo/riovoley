@@ -1,0 +1,39 @@
+
+Running 1 test using 1 worker
+
+  ✘  1 [desktop-1440] › tests\e2e\admin.happy-path-controlled.spec.js:44:1 › admin happy path controlado: atleta + pago + asistencia (16.3s)
+
+
+  1) [desktop-1440] › tests\e2e\admin.happy-path-controlled.spec.js:44:1 › admin happy path controlado: atleta + pago + asistencia 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: /gestion de usuarios/i }).first()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()[22m
+
+
+      38 |   await openSidebarIfNeeded(page);
+      39 |   const sectionButton = page.getByRole('button', { name: sectionNameRegex }).first();
+    > 40 |   await expect(sectionButton).toBeVisible({ timeout: 15000 });
+         |                               ^
+      41 |   await sectionButton.click();
+      42 | }
+      43 |
+        at openSection (D:\Riovoley\riovoley\tests\e2e\admin.happy-path-controlled.spec.js:40:31)
+        at D:\Riovoley\riovoley\tests\e2e\admin.happy-path-controlled.spec.js:65:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\e2e-aislado\20261028-101418-correcciones-c71f55e\antes-mutacion\artefactos\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\e2e-aislado\20261028-101418-correcciones-c71f55e\antes-mutacion\artefactos\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440\error-context.md
+
+  1 failed
+    [desktop-1440] › tests\e2e\admin.happy-path-controlled.spec.js:44:1 › admin happy path controlado: atleta + pago + asistencia 
+

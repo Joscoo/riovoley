@@ -1,0 +1,17 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "audit",
+    "fix",
+    "--dry-run",
+    "--ignore-scripts",
+    "--json"
+  ],
+  "start": "2026-10-28T19:45:31.295Z",
+  "end": "2026-10-28T19:45:34.259Z",
+  "durationSeconds": 2.964,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "riovoley"
+}

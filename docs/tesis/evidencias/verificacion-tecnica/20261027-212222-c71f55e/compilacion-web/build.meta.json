@@ -1,0 +1,14 @@
+{
+  "command": [
+    "npm.cmd",
+    "run",
+    "build"
+  ],
+  "cwd": ".",
+  "start": "2026-10-28T02:24:55.947Z",
+  "end": "2026-10-28T02:26:41.068Z",
+  "durationSeconds": 105.121,
+  "exitCode": 0,
+  "signal": null,
+  "environmentOverrides": {}
+}

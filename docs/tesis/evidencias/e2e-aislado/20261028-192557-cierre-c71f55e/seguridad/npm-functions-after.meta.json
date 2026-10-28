@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "audit",
+    "--json"
+  ],
+  "start": "2026-10-28T19:55:25.921Z",
+  "end": "2026-10-28T19:55:29.470Z",
+  "durationSeconds": 3.549,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "functions"
+}

@@ -1,0 +1,171 @@
+{
+  "status": "APROBADO",
+  "pid": 30900,
+  "args": [
+    "-avd",
+    "riovoley-audit",
+    "-port",
+    "5580",
+    "-no-window",
+    "-no-audio",
+    "-no-boot-anim",
+    "-no-snapshot",
+    "-gpu",
+    "swiftshader",
+    "-memory",
+    "1536",
+    "-cores",
+    "2",
+    "-http-proxy",
+    "http://127.0.0.1:9"
+  ],
+  "serial": "emulator-5580",
+  "durationSeconds": 93.268,
+  "attempts": [
+    {
+      "at": "2026-10-28T20:22:24.881Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:22:28.163Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:22:31.363Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:22:34.553Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:22:37.757Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:22:41.039Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:22:44.364Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:22:47.645Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:22:50.972Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:22:54.230Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:22:57.463Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:23:00.740Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:23:04.073Z",
+      "exitCode": 1,
+      "bootCompleted": false
+    },
+    {
+      "at": "2026-10-28T20:23:07.490Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:23:10.939Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:23:14.373Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:23:17.666Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:23:21.086Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:23:24.316Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:23:27.624Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:23:30.984Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:23:34.293Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:23:37.801Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:23:41.341Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:23:44.723Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:23:48.045Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:23:51.409Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:23:54.644Z",
+      "exitCode": 0,
+      "bootCompleted": ""
+    },
+    {
+      "at": "2026-10-28T20:23:57.974Z",
+      "exitCode": 0,
+      "bootCompleted": "1"
+    }
+  ]
+}

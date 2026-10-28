@@ -1,0 +1,21 @@
+Picked up JAVA_TOOL_OPTIONS: 
+Picked up _JAVA_OPTIONS: 
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+Picked up JAVA_TOOL_OPTIONS: 
+Picked up _JAVA_OPTIONS: 
+
+Picked up JAVA_TOOL_OPTIONS: 
+Picked up _JAVA_OPTIONS: 
+
+Picked up JAVA_TOOL_OPTIONS: 
+Picked up _JAVA_OPTIONS: 
+
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+Note: D:\Riovoley\riovoley\.e2e-local\android-native\20261028-155551\project\node_modules\@capacitor\push-notifications\android\src\main\java\com\capacitorjs\plugins\pushnotifications\PushNotificationsPlugin.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: D:\Riovoley\riovoley\.e2e-local\android-native\20261028-155551\project\node_modules\@capgo\capacitor-updater\android\src\main\java\ee\forgr\capacitor_updater\CapacitorUpdaterPlugin.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Picked up JAVA_TOOL_OPTIONS: 
+Picked up _JAVA_OPTIONS: 
+

@@ -1,0 +1,5 @@
+NOTICE:  extension "pgcrypto" already exists, skipping
+NOTICE:  extension "uuid-ossp" already exists, skipping
+NOTICE:  schema "public" already exists, skipping
+ERROR:  generation expression is not immutable
+

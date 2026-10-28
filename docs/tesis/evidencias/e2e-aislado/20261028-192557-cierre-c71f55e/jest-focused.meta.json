@@ -1,0 +1,19 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\Riovoley\\riovoley\\node_modules\\react-scripts\\bin\\react-scripts.js",
+    "test",
+    "--watchAll=false",
+    "--runInBand",
+    "--json",
+    "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-192557-cierre-c71f55e\\jest-focused.json",
+    "--runTestsByPath",
+    "src/shared/ui/SortableHeader.test.js"
+  ],
+  "start": "2026-10-28T20:24:20.617Z",
+  "end": "2026-10-28T20:26:22.225Z",
+  "durationSeconds": 121.608,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

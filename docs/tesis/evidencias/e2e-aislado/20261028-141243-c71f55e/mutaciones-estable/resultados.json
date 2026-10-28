@@ -1,0 +1,646 @@
+{
+  "config": {
+    "configFile": "D:\\Riovoley\\riovoley\\playwright.local.config.cjs",
+    "rootDir": "D:/Riovoley/riovoley/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 3
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-141243-c71f55e/mutaciones-estable/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "mobile-390",
+        "name": "mobile-390",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-141243-c71f55e/mutaciones-estable/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "mobile-430",
+        "name": "mobile-430",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-141243-c71f55e/mutaciones-estable/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "mobile-480",
+        "name": "mobile-480",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-141243-c71f55e/mutaciones-estable/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "tablet-768",
+        "name": "tablet-768",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-141243-c71f55e/mutaciones-estable/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "tablet-1024",
+        "name": "tablet-1024",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-141243-c71f55e/mutaciones-estable/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "desktop-1440",
+        "name": "desktop-1440",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-141243-c71f55e/mutaciones-estable/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "desktop-1920",
+        "name": "desktop-1920",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-141243-c71f55e\\mutaciones-estable\\resultados.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-141243-c71f55e\\mutaciones-estable\\html",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.59.1",
+    "workers": 3,
+    "webServer": {
+      "command": "node scripts/e2e/local/server.cjs",
+      "url": "http://127.0.0.1:6100",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "admin.happy-path-controlled.spec.js",
+      "file": "admin.happy-path-controlled.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 60832,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js",
+                        "column": 29,
+                        "line": 33
+                      },
+                      "message": "Error: locator.click: Test timeout of 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /abrir menu lateral/i }).first()\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" aria-expanded=\"false\" aria-label=\"Abrir menu lateral\" class=\"rv-performance-sidebar fixed bottom-[max(env(safe-area-inset-bottom),1rem)] left-4 z-[1001] flex h-12 w-12 items-center justify-center rounded-full border border-rv-gold/40 bg-rv-dark/85 text-rv-gold shadow-[0_10px_24px_rgba(0,0,0,0.35)] backdrop-blur-md transition-all duration-200 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 desktop:hidden\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"grid grid-cols-2 gap-2 mobile:flex mobile:flex-row\">…</div> from <main tabindex=\"-1\" id=\"main-content\" class=\"flex min-w-0 flex-1 flex-col overflow-hidden\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"grid grid-cols-2 gap-2 mobile:flex mobile:flex-row\">…</div> from <main tabindex=\"-1\" id=\"main-content\" class=\"flex min-w-0 flex-1 flex-col overflow-hidden\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    26 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div class=\"grid grid-cols-2 gap-2 mobile:flex mobile:flex-row\">…</div> from <main tabindex=\"-1\" id=\"main-content\" class=\"flex min-w-0 flex-1 flex-col overflow-hidden\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\n\n  31 |\n  32 |   if (!(await userManagementButton.isVisible()) && (await openSidebarButton.count())) {\n> 33 |     await openSidebarButton.click();\n     |                             ^\n  34 |   }\n  35 | }\n  36 |\n    at openSidebarIfNeeded (D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:33:29)\n    at openSection (D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:38:3)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:65:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T14:44:16.849Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-141243-c71f55e\\mutaciones-estable\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-mobile-390\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-141243-c71f55e\\mutaciones-estable\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-mobile-390\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-76152f78520f1dc4839c",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 44,
+          "column": 1
+        },
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "timedOut",
+                  "duration": 61107,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js",
+                        "column": 29,
+                        "line": 33
+                      },
+                      "message": "Error: locator.click: Test timeout of 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /abrir menu lateral/i }).first()\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" aria-expanded=\"false\" aria-label=\"Abrir menu lateral\" class=\"rv-performance-sidebar fixed bottom-[max(env(safe-area-inset-bottom),1rem)] left-4 z-[1001] flex h-12 w-12 items-center justify-center rounded-full border border-rv-gold/40 bg-rv-dark/85 text-rv-gold shadow-[0_10px_24px_rgba(0,0,0,0.35)] backdrop-blur-md transition-all duration-200 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 desktop:hidden\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"grid grid-cols-2 gap-2 mobile:flex mobile:flex-row\">…</div> from <main tabindex=\"-1\" id=\"main-content\" class=\"flex min-w-0 flex-1 flex-col overflow-hidden\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"grid grid-cols-2 gap-2 mobile:flex mobile:flex-row\">…</div> from <main tabindex=\"-1\" id=\"main-content\" class=\"flex min-w-0 flex-1 flex-col overflow-hidden\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    24 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div class=\"grid grid-cols-2 gap-2 mobile:flex mobile:flex-row\">…</div> from <main tabindex=\"-1\" id=\"main-content\" class=\"flex min-w-0 flex-1 flex-col overflow-hidden\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\n\n  31 |\n  32 |   if (!(await userManagementButton.isVisible()) && (await openSidebarButton.count())) {\n> 33 |     await openSidebarButton.click();\n     |                             ^\n  34 |   }\n  35 | }\n  36 |\n    at openSidebarIfNeeded (D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:33:29)\n    at openSection (D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:38:3)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:65:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T14:44:16.848Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-141243-c71f55e\\mutaciones-estable\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-mobile-430\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-141243-c71f55e\\mutaciones-estable\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-mobile-430\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-a461414e70039ab8bf7a",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 44,
+          "column": 1
+        },
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "timedOut",
+                  "duration": 60387,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js",
+                        "column": 29,
+                        "line": 33
+                      },
+                      "message": "Error: locator.click: Test timeout of 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /abrir menu lateral/i }).first()\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" aria-expanded=\"false\" aria-label=\"Abrir menu lateral\" class=\"rv-performance-sidebar fixed bottom-[max(env(safe-area-inset-bottom),1rem)] left-4 z-[1001] flex h-12 w-12 items-center justify-center rounded-full border border-rv-gold/40 bg-rv-dark/85 text-rv-gold shadow-[0_10px_24px_rgba(0,0,0,0.35)] backdrop-blur-md transition-all duration-200 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rv-gold/80 desktop:hidden\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <svg width=\"1em\" class=\"mr-2\" height=\"1em\" stroke-width=\"0\" fill=\"currentColor\" stroke=\"currentColor\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\">…</svg> from <main tabindex=\"-1\" id=\"main-content\" class=\"flex min-w-0 flex-1 flex-col overflow-hidden\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <svg width=\"1em\" class=\"mr-2\" height=\"1em\" stroke-width=\"0\" fill=\"currentColor\" stroke=\"currentColor\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\">…</svg> from <main tabindex=\"-1\" id=\"main-content\" class=\"flex min-w-0 flex-1 flex-col overflow-hidden\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    102 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m        - element is visible, enabled and stable\u001b[22m\n\u001b[2m        - scrolling into view if needed\u001b[22m\n\u001b[2m        - done scrolling\u001b[22m\n\u001b[2m        - <svg width=\"1em\" class=\"mr-2\" height=\"1em\" stroke-width=\"0\" fill=\"currentColor\" stroke=\"currentColor\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\">…</svg> from <main tabindex=\"-1\" id=\"main-content\" class=\"flex min-w-0 flex-1 flex-col overflow-hidden\">…</main> subtree intercepts pointer events\u001b[22m\n\u001b[2m      - retrying click action\u001b[22m\n\u001b[2m        - waiting 500ms\u001b[22m\n\n\n  31 |\n  32 |   if (!(await userManagementButton.isVisible()) && (await openSidebarButton.count())) {\n> 33 |     await openSidebarButton.click();\n     |                             ^\n  34 |   }\n  35 | }\n  36 |\n    at openSidebarIfNeeded (D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:33:29)\n    at openSection (D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:38:3)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:65:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T14:44:16.853Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-141243-c71f55e\\mutaciones-estable\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-mobile-480\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-141243-c71f55e\\mutaciones-estable\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-mobile-480\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-e61d27f6cc0a031e7be5",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 44,
+          "column": 1
+        },
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 2,
+                  "status": "failed",
+                  "duration": 19251,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n\n    at openSection (D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:40:31)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:65:3",
+                    "location": {
+                      "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js",
+                      "column": 31,
+                      "line": 40
+                    },
+                    "snippet": "  38 |   await openSidebarIfNeeded(page);\n  39 |   const sectionButton = page.getByRole('button', { name: sectionNameRegex }).first();\n> 40 |   await expect(sectionButton).toBeVisible({ timeout: 15000 });\n     |                               ^\n  41 |   await sectionButton.click();\n  42 | }\n  43 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js",
+                        "column": 31,
+                        "line": 40
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n\n\n  38 |   await openSidebarIfNeeded(page);\n  39 |   const sectionButton = page.getByRole('button', { name: sectionNameRegex }).first();\n> 40 |   await expect(sectionButton).toBeVisible({ timeout: 15000 });\n     |                               ^\n  41 |   await sectionButton.click();\n  42 | }\n  43 |\n    at openSection (D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:40:31)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:65:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T14:45:18.852Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-141243-c71f55e\\mutaciones-estable\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-tablet-768\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-141243-c71f55e\\mutaciones-estable\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-tablet-768\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js",
+                    "column": 31,
+                    "line": 40
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-f616cd43f6e4f450ae4a",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 44,
+          "column": 1
+        },
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 17284,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n\n    at openSection (D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:40:31)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:65:3",
+                    "location": {
+                      "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js",
+                      "column": 31,
+                      "line": 40
+                    },
+                    "snippet": "  38 |   await openSidebarIfNeeded(page);\n  39 |   const sectionButton = page.getByRole('button', { name: sectionNameRegex }).first();\n> 40 |   await expect(sectionButton).toBeVisible({ timeout: 15000 });\n     |                               ^\n  41 |   await sectionButton.click();\n  42 | }\n  43 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js",
+                        "column": 31,
+                        "line": 40
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n\n\n  38 |   await openSidebarIfNeeded(page);\n  39 |   const sectionButton = page.getByRole('button', { name: sectionNameRegex }).first();\n> 40 |   await expect(sectionButton).toBeVisible({ timeout: 15000 });\n     |                               ^\n  41 |   await sectionButton.click();\n  42 | }\n  43 |\n    at openSection (D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:40:31)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:65:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T14:45:19.138Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-141243-c71f55e\\mutaciones-estable\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-tablet-1024\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-141243-c71f55e\\mutaciones-estable\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-tablet-1024\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js",
+                    "column": 31,
+                    "line": 40
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-b9290aa25313fc9f75cd",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 44,
+          "column": 1
+        },
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 17181,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n\n    at openSection (D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:40:31)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:65:3",
+                    "location": {
+                      "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js",
+                      "column": 31,
+                      "line": 40
+                    },
+                    "snippet": "  38 |   await openSidebarIfNeeded(page);\n  39 |   const sectionButton = page.getByRole('button', { name: sectionNameRegex }).first();\n> 40 |   await expect(sectionButton).toBeVisible({ timeout: 15000 });\n     |                               ^\n  41 |   await sectionButton.click();\n  42 | }\n  43 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js",
+                        "column": 31,
+                        "line": 40
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n\n\n  38 |   await openSidebarIfNeeded(page);\n  39 |   const sectionButton = page.getByRole('button', { name: sectionNameRegex }).first();\n> 40 |   await expect(sectionButton).toBeVisible({ timeout: 15000 });\n     |                               ^\n  41 |   await sectionButton.click();\n  42 | }\n  43 |\n    at openSection (D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:40:31)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:65:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T14:45:19.513Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-141243-c71f55e\\mutaciones-estable\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-141243-c71f55e\\mutaciones-estable\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1440\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js",
+                    "column": 31,
+                    "line": 40
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-9512e358c77c26a6a60b",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 44,
+          "column": 1
+        },
+        {
+          "title": "admin happy path controlado: atleta + pago + asistencia",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16451,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n\n    at openSection (D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:40:31)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:65:3",
+                    "location": {
+                      "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js",
+                      "column": 31,
+                      "line": 40
+                    },
+                    "snippet": "  38 |   await openSidebarIfNeeded(page);\n  39 |   const sectionButton = page.getByRole('button', { name: sectionNameRegex }).first();\n> 40 |   await expect(sectionButton).toBeVisible({ timeout: 15000 });\n     |                               ^\n  41 |   await sectionButton.click();\n  42 | }\n  43 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js",
+                        "column": 31,
+                        "line": 40
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: /gestion de usuarios/i }).first()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /gestion de usuarios/i }).first()\u001b[22m\n\n\n  38 |   await openSidebarIfNeeded(page);\n  39 |   const sectionButton = page.getByRole('button', { name: sectionNameRegex }).first();\n> 40 |   await expect(sectionButton).toBeVisible({ timeout: 15000 });\n     |                               ^\n  41 |   await sectionButton.click();\n  42 | }\n  43 |\n    at openSection (D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:40:31)\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js:65:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T14:45:37.781Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-141243-c71f55e\\mutaciones-estable\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1920\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-141243-c71f55e\\mutaciones-estable\\artefactos\\admin.happy-path-controlle-73e13-lado-atleta-pago-asistencia-desktop-1920\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\admin.happy-path-controlled.spec.js",
+                    "column": 31,
+                    "line": 40
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3b68883cdfa4aa5e46fd-58d9ee2e799413d480a7",
+          "file": "admin.happy-path-controlled.spec.js",
+          "line": 44,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-28T14:44:15.305Z",
+    "duration": 99462.42700000001,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 7,
+    "flaky": 0
+  }
+}

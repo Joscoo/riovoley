@@ -1,0 +1,24 @@
+{
+  "command": [
+    "docker",
+    "exec",
+    "-i",
+    "supabase_db_riovoley-e2e-local",
+    "psql",
+    "-X",
+    "-U",
+    "postgres",
+    "-d",
+    "postgres",
+    "-v",
+    "ON_ERROR_STOP=1",
+    "-A",
+    "-t"
+  ],
+  "start": "2026-10-28T14:27:01.314Z",
+  "end": "2026-10-28T14:27:01.532Z",
+  "durationSeconds": 0.218,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

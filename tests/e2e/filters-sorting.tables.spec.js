@@ -1,5 +1,6 @@
 const { test, expect } = require('@playwright/test');
 const { openAdminSection, loginAsAdmin } = require('./helpers/adminNavigation');
+const { assertPaymentAmountsSorted } = require('./helpers/paymentsSorting');
 
 const ADMIN_EMAIL = process.env.E2E_ADMIN_EMAIL;
 const ADMIN_PASSWORD = process.env.E2E_ADMIN_PASSWORD;
@@ -49,9 +50,24 @@ test('pagos: filtros base + orden de columnas por header', async ({ page }) => {
   await expect(statusFilter).toHaveValue('');
   await expect(athleteFilter).toHaveValue('');
 
-  const montoHeaderButton = page.getByRole('button', { name: /^monto$/i }).first();
-  await expect(montoHeaderButton).toBeVisible();
-  await assertThreeStateSortFromHeaderButton(montoHeaderButton);
+  const mobileSort = page.getByRole('group', { name: 'Ordenar pagos' });
+  const onCards = await mobileSort.isVisible();
+  const montoButton = onCards
+    ? mobileSort.getByRole('button', { name: /^Ordenar por Monto:/ })
+    : page.getByRole('button', { name: /^monto$/i }).first();
+  const header = montoButton.locator('xpath=ancestor::th[1]');
+  const assertSortState = async (state, description) => {
+    if (onCards) await expect(montoButton).toHaveAccessibleName(`Ordenar por Monto: ${description}`);
+    else await expect(header).toHaveAttribute('aria-sort', state);
+  };
+  await expect(montoButton).toBeVisible();
+  await assertSortState('none', 'sin ordenar');
+  await assertPaymentAmountsSorted(page, false, montoButton);
+  await assertSortState('ascending', 'ascendente');
+  await assertPaymentAmountsSorted(page, true, montoButton);
+  await assertSortState('descending', 'descendente');
+  await montoButton.click();
+  await assertSortState('none', 'sin ordenar');
 
   const initialOverflow = await page.evaluate(() => document.body.style.overflow);
   await page.getByRole('main').getByRole('button', { name: /registrar pago|agregar pago/i }).first().click();

@@ -33,3 +33,6 @@
 *.ttf binary
 *.eot binary
 *.pdf binary
+
+# Conservar los bytes de los registros sellados y sus manifiestos SHA-256
+docs/tesis/evidencias/** -text

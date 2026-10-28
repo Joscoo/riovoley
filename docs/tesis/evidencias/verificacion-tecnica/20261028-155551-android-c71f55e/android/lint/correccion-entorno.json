@@ -1,0 +1,6 @@
+{
+  "cause": "PropertyEscape en la propiedad sdk.dir generada por el arnés para Windows.",
+  "correction": "Escapar los dos puntos de la letra de unidad con \\:; solo local.properties de la copia aislada.",
+  "productionChanges": false,
+  "expectationsChanged": false
+}

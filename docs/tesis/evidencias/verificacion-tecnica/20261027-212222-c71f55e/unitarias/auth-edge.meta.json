@@ -1,0 +1,14 @@
+{
+  "command": [
+    "npm.cmd",
+    "run",
+    "test:auth-edge"
+  ],
+  "cwd": ".",
+  "start": "2026-10-28T02:23:56.210Z",
+  "end": "2026-10-28T02:23:59.411Z",
+  "durationSeconds": 3.201,
+  "exitCode": 0,
+  "signal": null,
+  "environmentOverrides": {}
+}

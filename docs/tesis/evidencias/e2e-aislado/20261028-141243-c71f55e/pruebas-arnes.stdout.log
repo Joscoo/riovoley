@@ -1,0 +1,18 @@
+✔ enlaza puertos publicados a loopback y conserva imagen, volumen y entorno (3.0417ms)
+✔ permite solamente el API local dedicado (1.0259ms)
+✔ rechaza producción, puertos de otros proyectos y URLs ambiguas (0.7941ms)
+✔ el frontend no hereda claves ni destinos REACT_APP institucionales (2.0519ms)
+✔ redacta tokens, claves locales y datos de login en logs (0.4551ms)
+✔ no permite cambiar config, reporteros ni servidor mediante argumentos (2.1477ms)
+✔ restaura PK antes de FK, funciones antes de policies y ordena vistas (1.5054ms)
+✔ rechaza ciclos de vistas y esquemas administrados (0.4841ms)
+✔ crea funciones de columnas generadas antes de las tablas (0.2283ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 236.0448
+

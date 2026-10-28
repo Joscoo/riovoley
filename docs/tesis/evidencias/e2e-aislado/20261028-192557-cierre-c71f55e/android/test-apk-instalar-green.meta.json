@@ -1,0 +1,16 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5580",
+    "install",
+    "-r",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\project\\android\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk"
+  ],
+  "start": "2026-10-28T19:49:25.424Z",
+  "end": "2026-10-28T19:49:27.415Z",
+  "durationSeconds": 1.991,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

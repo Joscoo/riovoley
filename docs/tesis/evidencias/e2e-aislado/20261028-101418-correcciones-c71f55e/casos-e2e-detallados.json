@@ -1,0 +1,898 @@
+[
+  {
+    "group": "pendientes-finales",
+    "file": "admin.modules-navigation.spec.js",
+    "title": "admin: every module opens without a JavaScript crash",
+    "project": "mobile-390",
+    "status": "expected",
+    "durationMs": 35118
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "admin.modules-navigation.spec.js",
+    "title": "admin: every module opens without a JavaScript crash",
+    "project": "mobile-430",
+    "status": "expected",
+    "durationMs": 43030
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "admin.modules-navigation.spec.js",
+    "title": "admin: every module opens without a JavaScript crash",
+    "project": "mobile-480",
+    "status": "expected",
+    "durationMs": 10776
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "admin.modules-navigation.spec.js",
+    "title": "admin: every module opens without a JavaScript crash",
+    "project": "tablet-768",
+    "status": "expected",
+    "durationMs": 32711
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "admin.modules-navigation.spec.js",
+    "title": "admin: every module opens without a JavaScript crash",
+    "project": "tablet-1024",
+    "status": "expected",
+    "durationMs": 6407
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "admin.modules-navigation.spec.js",
+    "title": "admin: every module opens without a JavaScript crash",
+    "project": "desktop-1440",
+    "status": "expected",
+    "durationMs": 7580
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "admin.modules-navigation.spec.js",
+    "title": "admin: every module opens without a JavaScript crash",
+    "project": "desktop-1920",
+    "status": "expected",
+    "durationMs": 7453
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "admin.provisioning-notifications.smoke.spec.js",
+    "title": "admin smoke: provisioning + notifications entrypoints",
+    "project": "mobile-390",
+    "status": "expected",
+    "durationMs": 9451
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "admin.provisioning-notifications.smoke.spec.js",
+    "title": "admin smoke: provisioning + notifications entrypoints",
+    "project": "mobile-430",
+    "status": "expected",
+    "durationMs": 11261
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "admin.provisioning-notifications.smoke.spec.js",
+    "title": "admin smoke: provisioning + notifications entrypoints",
+    "project": "mobile-480",
+    "status": "expected",
+    "durationMs": 2479
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "admin.provisioning-notifications.smoke.spec.js",
+    "title": "admin smoke: provisioning + notifications entrypoints",
+    "project": "tablet-768",
+    "status": "expected",
+    "durationMs": 9339
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "admin.provisioning-notifications.smoke.spec.js",
+    "title": "admin smoke: provisioning + notifications entrypoints",
+    "project": "tablet-1024",
+    "status": "expected",
+    "durationMs": 2622
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "admin.provisioning-notifications.smoke.spec.js",
+    "title": "admin smoke: provisioning + notifications entrypoints",
+    "project": "desktop-1440",
+    "status": "expected",
+    "durationMs": 2986
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "admin.provisioning-notifications.smoke.spec.js",
+    "title": "admin smoke: provisioning + notifications entrypoints",
+    "project": "desktop-1920",
+    "status": "expected",
+    "durationMs": 3083
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "mobile-390",
+    "status": "expected",
+    "durationMs": 6606
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "mobile-430",
+    "status": "expected",
+    "durationMs": 7891
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "mobile-480",
+    "status": "expected",
+    "durationMs": 2534
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "tablet-768",
+    "status": "expected",
+    "durationMs": 7543
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "tablet-1024",
+    "status": "expected",
+    "durationMs": 3049
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "desktop-1440",
+    "status": "expected",
+    "durationMs": 3992
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "desktop-1920",
+    "status": "expected",
+    "durationMs": 3681
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 athletes tab: filtros y orden con reset consistente",
+    "project": "mobile-390",
+    "status": "expected",
+    "durationMs": 7996
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 schedules: filtros y orden con limpiar filtros",
+    "project": "mobile-390",
+    "status": "expected",
+    "durationMs": 7692
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 athletes tab: filtros y orden con reset consistente",
+    "project": "mobile-430",
+    "status": "expected",
+    "durationMs": 8895
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 schedules: filtros y orden con limpiar filtros",
+    "project": "mobile-430",
+    "status": "expected",
+    "durationMs": 9121
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 athletes tab: filtros y orden con reset consistente",
+    "project": "mobile-480",
+    "status": "expected",
+    "durationMs": 3544
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 schedules: filtros y orden con limpiar filtros",
+    "project": "mobile-480",
+    "status": "expected",
+    "durationMs": 3036
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 athletes tab: filtros y orden con reset consistente",
+    "project": "tablet-768",
+    "status": "expected",
+    "durationMs": 6896
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 schedules: filtros y orden con limpiar filtros",
+    "project": "tablet-768",
+    "status": "expected",
+    "durationMs": 8346
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 athletes tab: filtros y orden con reset consistente",
+    "project": "tablet-1024",
+    "status": "expected",
+    "durationMs": 2266
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 schedules: filtros y orden con limpiar filtros",
+    "project": "tablet-1024",
+    "status": "expected",
+    "durationMs": 3489
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 athletes tab: filtros y orden con reset consistente",
+    "project": "desktop-1440",
+    "status": "expected",
+    "durationMs": 3328
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 schedules: filtros y orden con limpiar filtros",
+    "project": "desktop-1440",
+    "status": "expected",
+    "durationMs": 3682
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 athletes tab: filtros y orden con reset consistente",
+    "project": "desktop-1920",
+    "status": "expected",
+    "durationMs": 3602
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 schedules: filtros y orden con limpiar filtros",
+    "project": "desktop-1920",
+    "status": "expected",
+    "durationMs": 3551
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.physical-tests.spec.js",
+    "title": "physical-tests: filtros + orden + limpiar filtros",
+    "project": "mobile-390",
+    "status": "expected",
+    "durationMs": 7821
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.physical-tests.spec.js",
+    "title": "physical-tests: filtros + orden + limpiar filtros",
+    "project": "mobile-430",
+    "status": "expected",
+    "durationMs": 8808
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.physical-tests.spec.js",
+    "title": "physical-tests: filtros + orden + limpiar filtros",
+    "project": "mobile-480",
+    "status": "expected",
+    "durationMs": 3103
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.physical-tests.spec.js",
+    "title": "physical-tests: filtros + orden + limpiar filtros",
+    "project": "tablet-768",
+    "status": "expected",
+    "durationMs": 7704
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.physical-tests.spec.js",
+    "title": "physical-tests: filtros + orden + limpiar filtros",
+    "project": "tablet-1024",
+    "status": "expected",
+    "durationMs": 2645
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.physical-tests.spec.js",
+    "title": "physical-tests: filtros + orden + limpiar filtros",
+    "project": "desktop-1440",
+    "status": "expected",
+    "durationMs": 3489
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.physical-tests.spec.js",
+    "title": "physical-tests: filtros + orden + limpiar filtros",
+    "project": "desktop-1920",
+    "status": "expected",
+    "durationMs": 3798
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "mobile-390",
+    "status": "expected",
+    "durationMs": 15400
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "mobile-390",
+    "status": "expected",
+    "durationMs": 11323
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "mobile-430",
+    "status": "expected",
+    "durationMs": 18163
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "mobile-430",
+    "status": "expected",
+    "durationMs": 12283
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "mobile-480",
+    "status": "expected",
+    "durationMs": 4329
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "mobile-480",
+    "status": "expected",
+    "durationMs": 3302
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "tablet-768",
+    "status": "expected",
+    "durationMs": 14856
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "tablet-768",
+    "status": "expected",
+    "durationMs": 11260
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "tablet-1024",
+    "status": "expected",
+    "durationMs": 4540
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "tablet-1024",
+    "status": "expected",
+    "durationMs": 2763
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "desktop-1440",
+    "status": "expected",
+    "durationMs": 5433
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "desktop-1440",
+    "status": "expected",
+    "durationMs": 3886
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "desktop-1920",
+    "status": "expected",
+    "durationMs": 6143
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "desktop-1920",
+    "status": "expected",
+    "durationMs": 4104
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.user-management.spec.js",
+    "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+    "project": "mobile-390",
+    "status": "expected",
+    "durationMs": 11399
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.user-management.spec.js",
+    "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+    "project": "mobile-430",
+    "status": "expected",
+    "durationMs": 13368
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.user-management.spec.js",
+    "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+    "project": "mobile-480",
+    "status": "expected",
+    "durationMs": 3788
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.user-management.spec.js",
+    "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+    "project": "tablet-768",
+    "status": "expected",
+    "durationMs": 10989
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.user-management.spec.js",
+    "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+    "project": "tablet-1024",
+    "status": "expected",
+    "durationMs": 3495
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.user-management.spec.js",
+    "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+    "project": "desktop-1440",
+    "status": "expected",
+    "durationMs": 4439
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "filters-sorting.user-management.spec.js",
+    "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+    "project": "desktop-1920",
+    "status": "expected",
+    "durationMs": 4356
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "responsive.smoke.spec.js",
+    "title": "role dashboards responsive guard (optional env credentials)",
+    "project": "mobile-390",
+    "status": "expected",
+    "durationMs": 4820
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "responsive.smoke.spec.js",
+    "title": "role dashboards responsive guard (optional env credentials)",
+    "project": "mobile-430",
+    "status": "expected",
+    "durationMs": 5519
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "responsive.smoke.spec.js",
+    "title": "role dashboards responsive guard (optional env credentials)",
+    "project": "mobile-480",
+    "status": "expected",
+    "durationMs": 2134
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "responsive.smoke.spec.js",
+    "title": "role dashboards responsive guard (optional env credentials)",
+    "project": "tablet-768",
+    "status": "expected",
+    "durationMs": 5339
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "responsive.smoke.spec.js",
+    "title": "role dashboards responsive guard (optional env credentials)",
+    "project": "tablet-1024",
+    "status": "expected",
+    "durationMs": 2202
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "responsive.smoke.spec.js",
+    "title": "role dashboards responsive guard (optional env credentials)",
+    "project": "desktop-1440",
+    "status": "expected",
+    "durationMs": 2350
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "responsive.smoke.spec.js",
+    "title": "role dashboards responsive guard (optional env credentials)",
+    "project": "desktop-1920",
+    "status": "expected",
+    "durationMs": 2742
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "trainer: every module renders without a JavaScript crash",
+    "project": "mobile-390",
+    "status": "expected",
+    "durationMs": 21328
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "student: every module renders without a JavaScript crash",
+    "project": "mobile-390",
+    "status": "expected",
+    "durationMs": 14876
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "trainer: every module renders without a JavaScript crash",
+    "project": "mobile-430",
+    "status": "expected",
+    "durationMs": 21455
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "student: every module renders without a JavaScript crash",
+    "project": "mobile-430",
+    "status": "expected",
+    "durationMs": 17764
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "trainer: every module renders without a JavaScript crash",
+    "project": "mobile-480",
+    "status": "expected",
+    "durationMs": 7506
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "student: every module renders without a JavaScript crash",
+    "project": "mobile-480",
+    "status": "expected",
+    "durationMs": 3195
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "trainer: every module renders without a JavaScript crash",
+    "project": "tablet-768",
+    "status": "expected",
+    "durationMs": 18376
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "student: every module renders without a JavaScript crash",
+    "project": "tablet-768",
+    "status": "expected",
+    "durationMs": 14749
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "trainer: every module renders without a JavaScript crash",
+    "project": "tablet-1024",
+    "status": "expected",
+    "durationMs": 4310
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "student: every module renders without a JavaScript crash",
+    "project": "tablet-1024",
+    "status": "expected",
+    "durationMs": 2869
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "trainer: every module renders without a JavaScript crash",
+    "project": "desktop-1440",
+    "status": "expected",
+    "durationMs": 5302
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "student: every module renders without a JavaScript crash",
+    "project": "desktop-1440",
+    "status": "expected",
+    "durationMs": 3198
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "trainer: every module renders without a JavaScript crash",
+    "project": "desktop-1920",
+    "status": "expected",
+    "durationMs": 5723
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.modules-navigation.spec.js",
+    "title": "student: every module renders without a JavaScript crash",
+    "project": "desktop-1920",
+    "status": "expected",
+    "durationMs": 2750
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: admin",
+    "project": "mobile-390",
+    "status": "expected",
+    "durationMs": 4111
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: trainer",
+    "project": "mobile-390",
+    "status": "expected",
+    "durationMs": 3979
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: student",
+    "project": "mobile-390",
+    "status": "expected",
+    "durationMs": 4472
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: admin",
+    "project": "mobile-430",
+    "status": "expected",
+    "durationMs": 3736
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: trainer",
+    "project": "mobile-430",
+    "status": "expected",
+    "durationMs": 3559
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: student",
+    "project": "mobile-430",
+    "status": "expected",
+    "durationMs": 4526
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: admin",
+    "project": "mobile-480",
+    "status": "expected",
+    "durationMs": 1789
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: trainer",
+    "project": "mobile-480",
+    "status": "expected",
+    "durationMs": 1605
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: student",
+    "project": "mobile-480",
+    "status": "expected",
+    "durationMs": 2040
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: admin",
+    "project": "tablet-768",
+    "status": "expected",
+    "durationMs": 3944
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: trainer",
+    "project": "tablet-768",
+    "status": "expected",
+    "durationMs": 4144
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: student",
+    "project": "tablet-768",
+    "status": "expected",
+    "durationMs": 3942
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: admin",
+    "project": "tablet-1024",
+    "status": "expected",
+    "durationMs": 1987
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: trainer",
+    "project": "tablet-1024",
+    "status": "expected",
+    "durationMs": 2416
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: student",
+    "project": "tablet-1024",
+    "status": "expected",
+    "durationMs": 2486
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: admin",
+    "project": "desktop-1440",
+    "status": "expected",
+    "durationMs": 2271
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: trainer",
+    "project": "desktop-1440",
+    "status": "expected",
+    "durationMs": 2714
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: student",
+    "project": "desktop-1440",
+    "status": "expected",
+    "durationMs": 2470
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: admin",
+    "project": "desktop-1920",
+    "status": "expected",
+    "durationMs": 2685
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: trainer",
+    "project": "desktop-1920",
+    "status": "expected",
+    "durationMs": 1733
+  },
+  {
+    "group": "pendientes-finales",
+    "file": "roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: student",
+    "project": "desktop-1920",
+    "status": "expected",
+    "durationMs": 2129
+  },
+  {
+    "group": "mutaciones-confirmadas",
+    "file": "admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "mobile-390",
+    "status": "expected",
+    "durationMs": 39669
+  },
+  {
+    "group": "mutaciones-confirmadas",
+    "file": "admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "mobile-430",
+    "status": "expected",
+    "durationMs": 41223
+  },
+  {
+    "group": "mutaciones-confirmadas",
+    "file": "admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "mobile-480",
+    "status": "expected",
+    "durationMs": 15389
+  },
+  {
+    "group": "mutaciones-confirmadas",
+    "file": "admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "tablet-768",
+    "status": "expected",
+    "durationMs": 36102
+  },
+  {
+    "group": "mutaciones-confirmadas",
+    "file": "admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "tablet-1024",
+    "status": "expected",
+    "durationMs": 10128
+  },
+  {
+    "group": "mutaciones-confirmadas",
+    "file": "admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "desktop-1440",
+    "status": "expected",
+    "durationMs": 8305
+  },
+  {
+    "group": "mutaciones-confirmadas",
+    "file": "admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "desktop-1920",
+    "status": "expected",
+    "durationMs": 12070
+  }
+]

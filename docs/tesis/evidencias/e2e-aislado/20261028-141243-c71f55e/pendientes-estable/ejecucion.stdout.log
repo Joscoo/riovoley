@@ -1,0 +1,420 @@
+
+Running 105 tests using 3 workers
+
+  ✓    3 [mobile-390] › tests\e2e\admin.provisioning-notifications.smoke.spec.js:7:1 › admin smoke: provisioning + notifications entrypoints (10.2s)
+  ✓    4 [mobile-390] › tests\e2e\filters-sorting.phase2-lists.spec.js:7:1 › phase2 athletes tab: filtros y orden con reset consistente (7.7s)
+  ✘    2 [mobile-390] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport (18.6s)
+  ✓    5 [mobile-390] › tests\e2e\filters-sorting.phase2-lists.spec.js:51:1 › phase2 schedules: filtros y orden con limpiar filtros (7.9s)
+  ✓    6 [mobile-390] › tests\e2e\filters-sorting.physical-tests.spec.js:7:1 › physical-tests: filtros + orden + limpiar filtros (8.3s)
+  ✓    1 [mobile-390] › tests\e2e\admin.modules-navigation.spec.js:4:1 › admin: every module opens without a JavaScript crash (36.8s)
+  ✓    8 [mobile-390] › tests\e2e\filters-sorting.user-management.spec.js:53:1 › user-management tabs: filtros y orden se actualizan y resetean por tab (12.6s)
+  ✓    9 [mobile-390] › tests\e2e\responsive.smoke.spec.js:99:1 › role dashboards responsive guard (optional env credentials) (5.1s)
+  ✘    7 [mobile-390] › tests\e2e\filters-sorting.tables.spec.js:19:1 › pagos: filtros base + orden de columnas por header (16.8s)
+  ✓   11 [mobile-390] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: admin (4.1s)
+  ✓   13 [mobile-390] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: trainer (3.8s)
+  ✓   14 [mobile-390] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: student (4.1s)
+  ✓   12 [mobile-390] › tests\e2e\filters-sorting.tables.spec.js:64:1 › asistencias: filtros del historial + orden por columnas (11.3s)
+  ✓   10 [mobile-390] › tests\e2e\roles.modules-navigation.spec.js:8:3 › trainer: every module renders without a JavaScript crash (20.1s)
+  ✓   16 [mobile-430] › tests\e2e\admin.provisioning-notifications.smoke.spec.js:7:1 › admin smoke: provisioning + notifications entrypoints (11.9s)
+  ✓   17 [mobile-390] › tests\e2e\roles.modules-navigation.spec.js:8:3 › student: every module renders without a JavaScript crash (15.4s)
+  ✓   19 [mobile-430] › tests\e2e\filters-sorting.phase2-lists.spec.js:7:1 › phase2 athletes tab: filtros y orden con reset consistente (7.7s)
+  ✘   18 [mobile-430] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport (18.6s)
+  ✓   20 [mobile-430] › tests\e2e\filters-sorting.phase2-lists.spec.js:51:1 › phase2 schedules: filtros y orden con limpiar filtros (7.9s)
+  ✓   15 [mobile-430] › tests\e2e\admin.modules-navigation.spec.js:4:1 › admin: every module opens without a JavaScript crash (41.1s)
+  ✓   21 [mobile-430] › tests\e2e\filters-sorting.physical-tests.spec.js:7:1 › physical-tests: filtros + orden + limpiar filtros (9.0s)
+  ✓   24 [mobile-430] › tests\e2e\responsive.smoke.spec.js:99:1 › role dashboards responsive guard (optional env credentials) (5.5s)
+  ✓   23 [mobile-430] › tests\e2e\filters-sorting.user-management.spec.js:53:1 › user-management tabs: filtros y orden se actualizan y resetean por tab (13.1s)
+  ✘   22 [mobile-430] › tests\e2e\filters-sorting.tables.spec.js:19:1 › pagos: filtros base + orden de columnas por header (18.1s)
+  ✓   26 [mobile-430] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: admin (4.0s)
+  ✓   28 [mobile-430] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: trainer (4.1s)
+  ✓   29 [mobile-430] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: student (4.2s)
+  ✓   25 [mobile-430] › tests\e2e\roles.modules-navigation.spec.js:8:3 › trainer: every module renders without a JavaScript crash (21.9s)
+  ✓   27 [mobile-430] › tests\e2e\filters-sorting.tables.spec.js:64:1 › asistencias: filtros del historial + orden por columnas (13.1s)
+  ✓   32 [mobile-480] › tests\e2e\admin.provisioning-notifications.smoke.spec.js:7:1 › admin smoke: provisioning + notifications entrypoints (3.4s)
+  ✓   30 [mobile-480] › tests\e2e\admin.modules-navigation.spec.js:4:1 › admin: every module opens without a JavaScript crash (10.6s)
+  ✓   34 [mobile-480] › tests\e2e\filters-sorting.phase2-lists.spec.js:7:1 › phase2 athletes tab: filtros y orden con reset consistente (3.1s)
+  ✓   35 [mobile-480] › tests\e2e\filters-sorting.phase2-lists.spec.js:51:1 › phase2 schedules: filtros y orden con limpiar filtros (2.8s)
+  ✓   31 [mobile-430] › tests\e2e\roles.modules-navigation.spec.js:8:3 › student: every module renders without a JavaScript crash (15.8s)
+  ✓   36 [mobile-480] › tests\e2e\filters-sorting.physical-tests.spec.js:7:1 › physical-tests: filtros + orden + limpiar filtros (3.1s)
+  ✓   37 [mobile-480] › tests\e2e\filters-sorting.user-management.spec.js:53:1 › user-management tabs: filtros y orden se actualizan y resetean por tab (3.2s)
+  ✘   33 [mobile-480] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport (17.0s)
+  ✓   39 [mobile-480] › tests\e2e\responsive.smoke.spec.js:99:1 › role dashboards responsive guard (optional env credentials) (2.1s)
+  ✓   40 [mobile-480] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: admin (1.5s)
+  ✓   42 [mobile-480] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: trainer (1.5s)
+  ✓   43 [mobile-480] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: student (1.9s)
+  ✘   38 [mobile-480] › tests\e2e\filters-sorting.tables.spec.js:19:1 › pagos: filtros base + orden de columnas por header (12.7s)
+  ✓   41 [mobile-480] › tests\e2e\roles.modules-navigation.spec.js:8:3 › trainer: every module renders without a JavaScript crash (7.0s)
+  ✓   45 [mobile-480] › tests\e2e\roles.modules-navigation.spec.js:8:3 › student: every module renders without a JavaScript crash (3.7s)
+  ✓   46 [mobile-480] › tests\e2e\filters-sorting.tables.spec.js:64:1 › asistencias: filtros del historial + orden por columnas (3.8s)
+  ✓   47 [tablet-768] › tests\e2e\admin.provisioning-notifications.smoke.spec.js:7:1 › admin smoke: provisioning + notifications entrypoints (9.2s)
+  ✓   49 [tablet-768] › tests\e2e\filters-sorting.phase2-lists.spec.js:7:1 › phase2 athletes tab: filtros y orden con reset consistente (7.0s)
+  ✘   48 [tablet-768] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport (18.5s)
+  ✓   50 [tablet-768] › tests\e2e\filters-sorting.phase2-lists.spec.js:51:1 › phase2 schedules: filtros y orden con limpiar filtros (7.5s)
+  ✓   44 [tablet-768] › tests\e2e\admin.modules-navigation.spec.js:4:1 › admin: every module opens without a JavaScript crash (33.5s)
+  ✓   51 [tablet-768] › tests\e2e\filters-sorting.physical-tests.spec.js:7:1 › physical-tests: filtros + orden + limpiar filtros (8.2s)
+  ✓   54 [tablet-768] › tests\e2e\responsive.smoke.spec.js:99:1 › role dashboards responsive guard (optional env credentials) (4.8s)
+  ✓   52 [tablet-768] › tests\e2e\filters-sorting.tables.spec.js:19:1 › pagos: filtros base + orden de columnas por header (10.6s)
+  ✓   53 [tablet-768] › tests\e2e\filters-sorting.user-management.spec.js:53:1 › user-management tabs: filtros y orden se actualizan y resetean por tab (11.2s)
+  ✓   57 [tablet-768] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: admin (4.0s)
+  ✓   56 [tablet-768] › tests\e2e\filters-sorting.tables.spec.js:64:1 › asistencias: filtros del historial + orden por columnas (10.9s)
+  ✓   58 [tablet-768] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: trainer (4.1s)
+  ✓   59 [tablet-768] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: student (4.0s)
+  ✓   55 [tablet-768] › tests\e2e\roles.modules-navigation.spec.js:8:3 › trainer: every module renders without a JavaScript crash (18.9s)
+  ✓   60 [tablet-1024] › tests\e2e\admin.modules-navigation.spec.js:4:1 › admin: every module opens without a JavaScript crash (6.4s)
+  ✓   61 [tablet-1024] › tests\e2e\admin.provisioning-notifications.smoke.spec.js:7:1 › admin smoke: provisioning + notifications entrypoints (2.4s)
+  ✓   64 [tablet-1024] › tests\e2e\filters-sorting.phase2-lists.spec.js:7:1 › phase2 athletes tab: filtros y orden con reset consistente (2.2s)
+  ✓   65 [tablet-1024] › tests\e2e\filters-sorting.phase2-lists.spec.js:51:1 › phase2 schedules: filtros y orden con limpiar filtros (2.7s)
+  ✓   66 [tablet-1024] › tests\e2e\filters-sorting.physical-tests.spec.js:7:1 › physical-tests: filtros + orden + limpiar filtros (2.9s)
+  ✓   67 [tablet-1024] › tests\e2e\filters-sorting.tables.spec.js:19:1 › pagos: filtros base + orden de columnas por header (3.0s)
+  ✓   62 [tablet-768] › tests\e2e\roles.modules-navigation.spec.js:8:3 › student: every module renders without a JavaScript crash (14.0s)
+  ✓   68 [tablet-1024] › tests\e2e\filters-sorting.tables.spec.js:64:1 › asistencias: filtros del historial + orden por columnas (2.8s)
+  ✓   69 [tablet-1024] › tests\e2e\responsive.smoke.spec.js:99:1 › role dashboards responsive guard (optional env credentials) (2.2s)
+  ✘   63 [tablet-1024] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport (16.8s)
+  ✓   70 [tablet-1024] › tests\e2e\filters-sorting.user-management.spec.js:53:1 › user-management tabs: filtros y orden se actualizan y resetean por tab (3.2s)
+  ✓   71 [tablet-1024] › tests\e2e\roles.modules-navigation.spec.js:8:3 › trainer: every module renders without a JavaScript crash (4.4s)
+  ✓   72 [tablet-1024] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: admin (2.1s)
+  ✓   75 [tablet-1024] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: trainer (2.3s)
+  ✓   74 [tablet-1024] › tests\e2e\roles.modules-navigation.spec.js:8:3 › student: every module renders without a JavaScript crash (2.8s)
+  ✓   76 [tablet-1024] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: student (2.0s)
+  ✓   73 [desktop-1440] › tests\e2e\admin.modules-navigation.spec.js:4:1 › admin: every module opens without a JavaScript crash (7.2s)
+  ✓   77 [desktop-1440] › tests\e2e\admin.provisioning-notifications.smoke.spec.js:7:1 › admin smoke: provisioning + notifications entrypoints (3.9s)
+  ✓   79 [desktop-1440] › tests\e2e\filters-sorting.phase2-lists.spec.js:7:1 › phase2 athletes tab: filtros y orden con reset consistente (3.0s)
+  ✓   80 [desktop-1440] › tests\e2e\filters-sorting.physical-tests.spec.js:7:1 › physical-tests: filtros + orden + limpiar filtros (3.4s)
+  ✓   81 [desktop-1440] › tests\e2e\filters-sorting.phase2-lists.spec.js:51:1 › phase2 schedules: filtros y orden con limpiar filtros (3.0s)
+  ✓   83 [desktop-1440] › tests\e2e\filters-sorting.user-management.spec.js:53:1 › user-management tabs: filtros y orden se actualizan y resetean por tab (3.6s)
+  ✓   82 [desktop-1440] › tests\e2e\filters-sorting.tables.spec.js:19:1 › pagos: filtros base + orden de columnas por header (4.7s)
+  ✓   84 [desktop-1440] › tests\e2e\responsive.smoke.spec.js:99:1 › role dashboards responsive guard (optional env credentials) (2.5s)
+  ✓   85 [desktop-1440] › tests\e2e\filters-sorting.tables.spec.js:64:1 › asistencias: filtros del historial + orden por columnas (3.5s)
+  ✓   87 [desktop-1440] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: admin (2.4s)
+  ✓   86 [desktop-1440] › tests\e2e\roles.modules-navigation.spec.js:8:3 › trainer: every module renders without a JavaScript crash (5.2s)
+  ✓   88 [desktop-1440] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: trainer (1.9s)
+  ✘   78 [desktop-1440] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport (17.6s)
+  ✓   90 [desktop-1440] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: student (1.9s)
+  ✓   89 [desktop-1440] › tests\e2e\roles.modules-navigation.spec.js:8:3 › student: every module renders without a JavaScript crash (2.6s)
+  ✓   92 [desktop-1920] › tests\e2e\admin.provisioning-notifications.smoke.spec.js:7:1 › admin smoke: provisioning + notifications entrypoints (3.7s)
+  ✓   91 [desktop-1920] › tests\e2e\admin.modules-navigation.spec.js:4:1 › admin: every module opens without a JavaScript crash (7.5s)
+  ✓   94 [desktop-1920] › tests\e2e\filters-sorting.phase2-lists.spec.js:7:1 › phase2 athletes tab: filtros y orden con reset consistente (2.7s)
+  ✓   95 [desktop-1920] › tests\e2e\filters-sorting.physical-tests.spec.js:7:1 › physical-tests: filtros + orden + limpiar filtros (3.2s)
+  ✓   96 [desktop-1920] › tests\e2e\filters-sorting.phase2-lists.spec.js:51:1 › phase2 schedules: filtros y orden con limpiar filtros (3.5s)
+  ✓   98 [desktop-1920] › tests\e2e\filters-sorting.user-management.spec.js:53:1 › user-management tabs: filtros y orden se actualizan y resetean por tab (3.6s)
+  ✓   97 [desktop-1920] › tests\e2e\filters-sorting.tables.spec.js:19:1 › pagos: filtros base + orden de columnas por header (4.6s)
+  ✓   99 [desktop-1920] › tests\e2e\responsive.smoke.spec.js:99:1 › role dashboards responsive guard (optional env credentials) (2.4s)
+  ✓  100 [desktop-1920] › tests\e2e\filters-sorting.tables.spec.js:64:1 › asistencias: filtros del historial + orden por columnas (4.3s)
+  ✘   93 [desktop-1920] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport (17.9s)
+  ✓  102 [desktop-1920] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: admin (1.7s)
+  ✓  101 [desktop-1920] › tests\e2e\roles.modules-navigation.spec.js:8:3 › trainer: every module renders without a JavaScript crash (5.2s)
+  ✓  103 [desktop-1920] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: trainer (1.6s)
+  ✓  104 [desktop-1920] › tests\e2e\roles.modules-navigation.spec.js:8:3 › student: every module renders without a JavaScript crash (2.6s)
+  ✓  105 [desktop-1920] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: student (2.2s)
+
+
+  1) [mobile-390] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: /asistencias/i }).first()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByRole('button', { name: /asistencias/i }).first()[22m
+
+
+      16 |
+      17 |   const asistenciasMenuButton = page.getByRole('button', { name: /asistencias/i });
+    > 18 |   await expect(asistenciasMenuButton.first()).toBeVisible({ timeout: 15000 });
+         |                                               ^
+      19 |   await asistenciasMenuButton.first().click();
+      20 |
+      21 |   await expect(page.getByRole('heading', { name: /control de asistencias/i })).toBeVisible({ timeout: 15000 });
+        at openAsistenciasModule (D:\Riovoley\riovoley\tests\e2e\asistencias.guided.review.spec.js:18:47)
+        at D:\Riovoley\riovoley\tests\e2e\asistencias.guided.review.spec.js:80:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\e2e-aislado\20261028-141243-c71f55e\pendientes-estable\artefactos\asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-390\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\e2e-aislado\20261028-141243-c71f55e\pendientes-estable\artefactos\asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-390\error-context.md
+
+  2) [mobile-390] › tests\e2e\filters-sorting.tables.spec.js:19:1 › pagos: filtros base + orden de columnas por header 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: /^monto$/i }).first()
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('button', { name: /^monto$/i }).first()[22m
+
+
+      51 |
+      52 |   const montoHeaderButton = page.getByRole('button', { name: /^monto$/i }).first();
+    > 53 |   await expect(montoHeaderButton).toBeVisible();
+         |                                   ^
+      54 |   await assertThreeStateSortFromHeaderButton(montoHeaderButton);
+      55 |
+      56 |   const initialOverflow = await page.evaluate(() => document.body.style.overflow);
+        at D:\Riovoley\riovoley\tests\e2e\filters-sorting.tables.spec.js:53:35
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\e2e-aislado\20261028-141243-c71f55e\pendientes-estable\artefactos\filters-sorting.tables-pag-2f969-rden-de-columnas-por-header-mobile-390\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\e2e-aislado\20261028-141243-c71f55e\pendientes-estable\artefactos\filters-sorting.tables-pag-2f969-rden-de-columnas-por-header-mobile-390\error-context.md
+
+  3) [mobile-430] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: /asistencias/i }).first()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByRole('button', { name: /asistencias/i }).first()[22m
+
+
+      16 |
+      17 |   const asistenciasMenuButton = page.getByRole('button', { name: /asistencias/i });
+    > 18 |   await expect(asistenciasMenuButton.first()).toBeVisible({ timeout: 15000 });
+         |                                               ^
+      19 |   await asistenciasMenuButton.first().click();
+      20 |
+      21 |   await expect(page.getByRole('heading', { name: /control de asistencias/i })).toBeVisible({ timeout: 15000 });
+        at openAsistenciasModule (D:\Riovoley\riovoley\tests\e2e\asistencias.guided.review.spec.js:18:47)
+        at D:\Riovoley\riovoley\tests\e2e\asistencias.guided.review.spec.js:80:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\e2e-aislado\20261028-141243-c71f55e\pendientes-estable\artefactos\asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-430\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\e2e-aislado\20261028-141243-c71f55e\pendientes-estable\artefactos\asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-430\error-context.md
+
+  4) [mobile-430] › tests\e2e\filters-sorting.tables.spec.js:19:1 › pagos: filtros base + orden de columnas por header 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: /^monto$/i }).first()
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('button', { name: /^monto$/i }).first()[22m
+
+
+      51 |
+      52 |   const montoHeaderButton = page.getByRole('button', { name: /^monto$/i }).first();
+    > 53 |   await expect(montoHeaderButton).toBeVisible();
+         |                                   ^
+      54 |   await assertThreeStateSortFromHeaderButton(montoHeaderButton);
+      55 |
+      56 |   const initialOverflow = await page.evaluate(() => document.body.style.overflow);
+        at D:\Riovoley\riovoley\tests\e2e\filters-sorting.tables.spec.js:53:35
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\e2e-aislado\20261028-141243-c71f55e\pendientes-estable\artefactos\filters-sorting.tables-pag-2f969-rden-de-columnas-por-header-mobile-430\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\e2e-aislado\20261028-141243-c71f55e\pendientes-estable\artefactos\filters-sorting.tables-pag-2f969-rden-de-columnas-por-header-mobile-430\error-context.md
+
+  5) [mobile-480] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: /asistencias/i }).first()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByRole('button', { name: /asistencias/i }).first()[22m
+
+
+      16 |
+      17 |   const asistenciasMenuButton = page.getByRole('button', { name: /asistencias/i });
+    > 18 |   await expect(asistenciasMenuButton.first()).toBeVisible({ timeout: 15000 });
+         |                                               ^
+      19 |   await asistenciasMenuButton.first().click();
+      20 |
+      21 |   await expect(page.getByRole('heading', { name: /control de asistencias/i })).toBeVisible({ timeout: 15000 });
+        at openAsistenciasModule (D:\Riovoley\riovoley\tests\e2e\asistencias.guided.review.spec.js:18:47)
+        at D:\Riovoley\riovoley\tests\e2e\asistencias.guided.review.spec.js:80:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\e2e-aislado\20261028-141243-c71f55e\pendientes-estable\artefactos\asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-480\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\e2e-aislado\20261028-141243-c71f55e\pendientes-estable\artefactos\asistencias.guided.review--62551-ias-quick-mode-per-viewport-mobile-480\error-context.md
+
+  6) [mobile-480] › tests\e2e\filters-sorting.tables.spec.js:19:1 › pagos: filtros base + orden de columnas por header 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: /^monto$/i }).first()
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for getByRole('button', { name: /^monto$/i }).first()[22m
+
+
+      51 |
+      52 |   const montoHeaderButton = page.getByRole('button', { name: /^monto$/i }).first();
+    > 53 |   await expect(montoHeaderButton).toBeVisible();
+         |                                   ^
+      54 |   await assertThreeStateSortFromHeaderButton(montoHeaderButton);
+      55 |
+      56 |   const initialOverflow = await page.evaluate(() => document.body.style.overflow);
+        at D:\Riovoley\riovoley\tests\e2e\filters-sorting.tables.spec.js:53:35
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\e2e-aislado\20261028-141243-c71f55e\pendientes-estable\artefactos\filters-sorting.tables-pag-2f969-rden-de-columnas-por-header-mobile-480\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\e2e-aislado\20261028-141243-c71f55e\pendientes-estable\artefactos\filters-sorting.tables-pag-2f969-rden-de-columnas-por-header-mobile-480\error-context.md
+
+  7) [tablet-768] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: /asistencias/i }).first()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByRole('button', { name: /asistencias/i }).first()[22m
+
+
+      16 |
+      17 |   const asistenciasMenuButton = page.getByRole('button', { name: /asistencias/i });
+    > 18 |   await expect(asistenciasMenuButton.first()).toBeVisible({ timeout: 15000 });
+         |                                               ^
+      19 |   await asistenciasMenuButton.first().click();
+      20 |
+      21 |   await expect(page.getByRole('heading', { name: /control de asistencias/i })).toBeVisible({ timeout: 15000 });
+        at openAsistenciasModule (D:\Riovoley\riovoley\tests\e2e\asistencias.guided.review.spec.js:18:47)
+        at D:\Riovoley\riovoley\tests\e2e\asistencias.guided.review.spec.js:80:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\e2e-aislado\20261028-141243-c71f55e\pendientes-estable\artefactos\asistencias.guided.review--62551-ias-quick-mode-per-viewport-tablet-768\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\e2e-aislado\20261028-141243-c71f55e\pendientes-estable\artefactos\asistencias.guided.review--62551-ias-quick-mode-per-viewport-tablet-768\error-context.md
+
+  8) [tablet-1024] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: /control de asistencias/i })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByRole('heading', { name: /control de asistencias/i })[22m
+
+
+      19 |   await asistenciasMenuButton.first().click();
+      20 |
+    > 21 |   await expect(page.getByRole('heading', { name: /control de asistencias/i })).toBeVisible({ timeout: 15000 });
+         |                                                                                ^
+      22 | }
+      23 |
+      24 | async function collectAsistenciasMetrics(page) {
+        at openAsistenciasModule (D:\Riovoley\riovoley\tests\e2e\asistencias.guided.review.spec.js:21:80)
+        at D:\Riovoley\riovoley\tests\e2e\asistencias.guided.review.spec.js:80:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\e2e-aislado\20261028-141243-c71f55e\pendientes-estable\artefactos\asistencias.guided.review--62551-ias-quick-mode-per-viewport-tablet-1024\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\e2e-aislado\20261028-141243-c71f55e\pendientes-estable\artefactos\asistencias.guided.review--62551-ias-quick-mode-per-viewport-tablet-1024\error-context.md
+
+  9) [desktop-1440] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: /control de asistencias/i })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByRole('heading', { name: /control de asistencias/i })[22m
+
+
+      19 |   await asistenciasMenuButton.first().click();
+      20 |
+    > 21 |   await expect(page.getByRole('heading', { name: /control de asistencias/i })).toBeVisible({ timeout: 15000 });
+         |                                                                                ^
+      22 | }
+      23 |
+      24 | async function collectAsistenciasMetrics(page) {
+        at openAsistenciasModule (D:\Riovoley\riovoley\tests\e2e\asistencias.guided.review.spec.js:21:80)
+        at D:\Riovoley\riovoley\tests\e2e\asistencias.guided.review.spec.js:80:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\e2e-aislado\20261028-141243-c71f55e\pendientes-estable\artefactos\asistencias.guided.review--62551-ias-quick-mode-per-viewport-desktop-1440\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\e2e-aislado\20261028-141243-c71f55e\pendientes-estable\artefactos\asistencias.guided.review--62551-ias-quick-mode-per-viewport-desktop-1440\error-context.md
+
+  10) [desktop-1920] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: /control de asistencias/i })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for getByRole('heading', { name: /control de asistencias/i })[22m
+
+
+      19 |   await asistenciasMenuButton.first().click();
+      20 |
+    > 21 |   await expect(page.getByRole('heading', { name: /control de asistencias/i })).toBeVisible({ timeout: 15000 });
+         |                                                                                ^
+      22 | }
+      23 |
+      24 | async function collectAsistenciasMetrics(page) {
+        at openAsistenciasModule (D:\Riovoley\riovoley\tests\e2e\asistencias.guided.review.spec.js:21:80)
+        at D:\Riovoley\riovoley\tests\e2e\asistencias.guided.review.spec.js:80:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\e2e-aislado\20261028-141243-c71f55e\pendientes-estable\artefactos\asistencias.guided.review--62551-ias-quick-mode-per-viewport-desktop-1920\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\e2e-aislado\20261028-141243-c71f55e\pendientes-estable\artefactos\asistencias.guided.review--62551-ias-quick-mode-per-viewport-desktop-1920\error-context.md
+
+  10 failed
+    [mobile-390] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport 
+    [mobile-390] › tests\e2e\filters-sorting.tables.spec.js:19:1 › pagos: filtros base + orden de columnas por header 
+    [mobile-430] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport 
+    [mobile-430] › tests\e2e\filters-sorting.tables.spec.js:19:1 › pagos: filtros base + orden de columnas por header 
+    [mobile-480] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport 
+    [mobile-480] › tests\e2e\filters-sorting.tables.spec.js:19:1 › pagos: filtros base + orden de columnas por header 
+    [tablet-768] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport 
+    [tablet-1024] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport 
+    [desktop-1440] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport 
+    [desktop-1920] › tests\e2e\asistencias.guided.review.spec.js:61:1 › guided review: admin asistencias quick mode per viewport 
+  95 passed (4.9m)
+

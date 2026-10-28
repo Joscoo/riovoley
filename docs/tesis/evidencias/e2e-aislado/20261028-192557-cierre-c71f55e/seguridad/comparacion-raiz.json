@@ -1,0 +1,154 @@
+{
+  "before": {
+    "info": 0,
+    "low": 18,
+    "moderate": 11,
+    "high": 29,
+    "critical": 5,
+    "total": 63
+  },
+  "after": {
+    "info": 0,
+    "low": 16,
+    "moderate": 6,
+    "high": 13,
+    "critical": 0,
+    "total": 35
+  },
+  "remaining": [
+    {
+      "name": "@svgr/plugin-svgo",
+      "severity": "high",
+      "direct": false,
+      "range": "*",
+      "fix": {
+        "name": "react-scripts",
+        "version": "0.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "bfj",
+      "severity": "high",
+      "direct": false,
+      "range": "7.1.0 - 9.1.2",
+      "fix": true
+    },
+    {
+      "name": "css-select",
+      "severity": "high",
+      "direct": false,
+      "range": "<=3.1.0",
+      "fix": {
+        "name": "react-scripts",
+        "version": "0.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "jsonpath",
+      "severity": "high",
+      "direct": false,
+      "range": "*",
+      "fix": true
+    },
+    {
+      "name": "nth-check",
+      "severity": "high",
+      "direct": false,
+      "range": "<2.0.1",
+      "fix": {
+        "name": "react-scripts",
+        "version": "0.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "postcss",
+      "severity": "high",
+      "direct": false,
+      "range": "<=8.5.22",
+      "fix": {
+        "name": "react-scripts",
+        "version": "0.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "react-scripts",
+      "severity": "moderate",
+      "direct": true,
+      "range": ">=0.1.0",
+      "fix": {
+        "name": "react-scripts",
+        "version": "0.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "rollup-plugin-terser",
+      "severity": "high",
+      "direct": false,
+      "range": "3.0.0 || >=4.0.4",
+      "fix": true
+    },
+    {
+      "name": "serialize-javascript",
+      "severity": "high",
+      "direct": false,
+      "range": "<=7.1.2",
+      "fix": {
+        "name": "react-scripts",
+        "version": "0.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "svgo",
+      "severity": "high",
+      "direct": false,
+      "range": "1.0.0 - 2.8.3",
+      "fix": {
+        "name": "react-scripts",
+        "version": "0.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "underscore",
+      "severity": "high",
+      "direct": false,
+      "range": "<=1.13.7",
+      "fix": true
+    },
+    {
+      "name": "webpack-dev-middleware",
+      "severity": "high",
+      "direct": false,
+      "range": "<7.4.5",
+      "fix": {
+        "name": "react-scripts",
+        "version": "0.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "webpack-dev-server",
+      "severity": "high",
+      "direct": false,
+      "range": "<=5.2.7",
+      "fix": {
+        "name": "react-scripts",
+        "version": "0.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    {
+      "name": "workbox-build",
+      "severity": "high",
+      "direct": false,
+      "range": ">=5.0.0-alpha.0",
+      "fix": true
+    }
+  ]
+}

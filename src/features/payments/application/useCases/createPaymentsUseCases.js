@@ -270,6 +270,13 @@ export const createPaymentsUseCases = (
         fecha_pago: formData.fecha_pago || getEcuadorDate(),
       };
 
+      // El trigger existente calcula el precio del catálogo cuando monto es NULL.
+      // Recalcular solo al cambiar de tipo; una edición de fecha conserva el precio histórico.
+      if (currentPayment?.membership_type_id != null &&
+          String(currentPayment.membership_type_id) !== String(paymentDraft.membership_type_id)) {
+        paymentDraft.monto = null;
+      }
+
       if (formData.useCustomPeriod) {
         paymentDraft.fecha_inicio = formData.fecha_inicio || null;
         paymentDraft.fecha_fin = formData.fecha_fin || null;

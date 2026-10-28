@@ -1,0 +1,4733 @@
+{
+  "config": {
+    "configFile": "D:\\Riovoley\\riovoley\\playwright.local.config.cjs",
+    "rootDir": "D:/Riovoley/riovoley/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/publicas-finales/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "mobile-390",
+        "name": "mobile-390",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/publicas-finales/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "mobile-430",
+        "name": "mobile-430",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/publicas-finales/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "mobile-480",
+        "name": "mobile-480",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/publicas-finales/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "tablet-768",
+        "name": "tablet-768",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/publicas-finales/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "tablet-1024",
+        "name": "tablet-1024",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/publicas-finales/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "desktop-1440",
+        "name": "desktop-1440",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/Riovoley/riovoley/docs/tesis/evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/publicas-finales/artefactos",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "desktop-1920",
+        "name": "desktop-1920",
+        "testDir": "D:/Riovoley/riovoley/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-192557-cierre-c71f55e\\publicas-finales\\resultados.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\e2e-aislado\\20261028-192557-cierre-c71f55e\\publicas-finales\\html",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.59.1",
+    "workers": 2,
+    "webServer": {
+      "command": "node scripts/e2e/local/server.cjs",
+      "url": "http://127.0.0.1:6100",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "audit.protected-routes.spec.js",
+      "file": "audit.protected-routes.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "audit: anonymous access cannot render protected panel /admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1741,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:14.833Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-4af3e11756da3419b302",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /entrenador",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1597,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:16.801Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-ce8453da22f0bb8ead15",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /estudiante",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1651,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:18.414Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-48ee43c563c1f16b8569",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1669,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:38.697Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-832811640bb6798010f5",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /entrenador",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1594,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:40.504Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-52b9ea3128c5d51fd01d",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /estudiante",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1516,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:42.119Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-2150bd43101ae58e1663",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1185,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:06.522Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-3fba66d0762b4aeea37b",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /entrenador",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 831,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:08.303Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-ff9babbb6f3b8fe37b92",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /estudiante",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 973,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:09.153Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-f49d8df6b34bf9e862ee",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1548,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:19.491Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-d8a6f796074d7ec2f88b",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /entrenador",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1747,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:21.191Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-fd2685d46d9087eb3556",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /estudiante",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1713,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:22.961Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-789958bd7bbe2c11c2f6",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 957,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:44.228Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-db999e8d9e6c6ac5fdaf",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /entrenador",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 874,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:45.481Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-a8f16759032d5757c370",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /estudiante",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 895,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:46.375Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-c795b8065ccb84d06175",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1033,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:01.964Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-ea8571f362ac2cf0190c",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /entrenador",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 921,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:03.296Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-eb78916003d9fff67e74",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /estudiante",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 962,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:04.235Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-401c410b5178540bf525",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /admin",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1167,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:16.446Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-978482fe7f345263178b",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /entrenador",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 898,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:17.989Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-ca7f3e24df95c1cde5ad",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "audit: anonymous access cannot render protected panel /estudiante",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1015,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:18.907Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de4ebf4f76b023d0b0ab-c737f3c1328657b725c9",
+          "file": "audit.protected-routes.spec.js",
+          "line": 4,
+          "column": 3
+        }
+      ]
+    },
+    {
+      "title": "auth.password-recovery.spec.js",
+      "file": "auth.password-recovery.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3232,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:14.827Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-480a85d201aeaca92266",
+          "file": "auth.password-recovery.spec.js",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "recovery: un enlace expirado no habilita el formulario",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2534,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:18.263Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-57152335f9d022ad2587",
+          "file": "auth.password-recovery.spec.js",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2664,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:20.830Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-02baaf08c12cec39f639",
+          "file": "auth.password-recovery.spec.js",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 6836,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:23.523Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-1ca2c8c7781e9a656bbd",
+          "file": "auth.password-recovery.spec.js",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2694,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:41.167Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-592994c3257c95529e6e",
+          "file": "auth.password-recovery.spec.js",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "recovery: un enlace expirado no habilita el formulario",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3801,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:44.063Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-f8bf06db1a59042ebacf",
+          "file": "auth.password-recovery.spec.js",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3078,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:47.897Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-02da5fc6b8a5067778ec",
+          "file": "auth.password-recovery.spec.js",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8547,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:51.006Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-400827c9a6bba5dc7dbe",
+          "file": "auth.password-recovery.spec.js",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1162,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:08.224Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-5d1f512346be415296e3",
+          "file": "auth.password-recovery.spec.js",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "recovery: un enlace expirado no habilita el formulario",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1050,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:09.766Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-3cfffd9156302722ad0c",
+          "file": "auth.password-recovery.spec.js",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1014,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:10.843Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-e3a42a316d267995a4fc",
+          "file": "auth.password-recovery.spec.js",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4266,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:11.873Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-183fb004ba9bc2878d84",
+          "file": "auth.password-recovery.spec.js",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2864,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:21.602Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-cc8d4ebdadf48bf2e9eb",
+          "file": "auth.password-recovery.spec.js",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "recovery: un enlace expirado no habilita el formulario",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2798,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:24.787Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-ad7878131fb7c01d2488",
+          "file": "auth.password-recovery.spec.js",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3081,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:27.617Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-beb892f67e8bc7bdadfc",
+          "file": "auth.password-recovery.spec.js",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8648,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:30.715Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-2a8d52ec6b5aa6f20d39",
+          "file": "auth.password-recovery.spec.js",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1353,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:48.290Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-275f16b1b3803ff72774",
+          "file": "auth.password-recovery.spec.js",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "recovery: un enlace expirado no habilita el formulario",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1177,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:50.035Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-11071b4aadcd9c1a4bf8",
+          "file": "auth.password-recovery.spec.js",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1252,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:51.245Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-5df23951b52ed6ea865c",
+          "file": "auth.password-recovery.spec.js",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6824,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:52.517Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-53f44003d2de1e3ac38e",
+          "file": "auth.password-recovery.spec.js",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1458,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:03.563Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-a79ba4443b8987ae6bcb",
+          "file": "auth.password-recovery.spec.js",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "recovery: un enlace expirado no habilita el formulario",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1388,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:05.329Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-8054b58a492ce3005111",
+          "file": "auth.password-recovery.spec.js",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1512,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:06.744Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-09451eacb8e25d769f93",
+          "file": "auth.password-recovery.spec.js",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 5842,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:08.278Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-0286cbc2522fc78cf344",
+          "file": "auth.password-recovery.spec.js",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1915,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:19.376Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-9f14184239792cd7a529",
+          "file": "auth.password-recovery.spec.js",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "recovery: un enlace expirado no habilita el formulario",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1820,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:21.678Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-7294da59930fa795b191",
+          "file": "auth.password-recovery.spec.js",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1851,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:23.526Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-16193c4512419431765f",
+          "file": "auth.password-recovery.spec.js",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5282,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:25.399Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f32b352d715481f54a35-dfada6ea829b1bdc977a",
+          "file": "auth.password-recovery.spec.js",
+          "line": 47,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "public.navigation-accessibility.spec.js",
+      "file": "public.navigation-accessibility.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2200,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:20.090Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-c4e3f08ae6428c514a8c",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2455,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:22.308Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-499676e4e08d93a9a028",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2474,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:24.783Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-c8a5d3c0a4427c918c49",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2130,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:27.296Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-aad52c1150dce4f6962a",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2518,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:29.457Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-a32a31ddf08abef9ff85",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "mobile navigation closes with Escape and restores keyboard focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3064,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:32.003Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-afd677850d07696edba9",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "mobile menu keeps keyboard focus within its controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3090,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:35.089Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-7c785751535488bb53cb",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2411,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:43.668Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-57aac6afbd87ec48d8c8",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2969,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:46.098Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-c20f0d36efb820459ed3",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3016,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:49.092Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-3271c06a38d440307d60",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2870,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:52.129Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-fe13d850d16bb1321c5b",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2722,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:55.027Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-57e88aa183a5478e3f58",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "mobile navigation closes with Escape and restores keyboard focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3077,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:57.779Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-4c9d4c896a6d51e54f12",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "mobile menu keeps keyboard focus within its controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2916,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:00.883Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-b06dd8a255fe289aea10",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 831,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:10.153Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-ff15adaaeaaf53b0cfc0",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1055,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:11.003Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-eabb8397011585c63c14",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1024,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:12.076Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-2f2af846c74cc48a7ee7",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 982,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:13.117Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-4d687a96008e12c21a55",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1092,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:14.116Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-5cc5e89a6e9dd0901bbf",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "mobile navigation closes with Escape and restores keyboard focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 772,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:15.229Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-348c55082762286fd114",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "mobile menu keeps keyboard focus within its controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 816,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:16.023Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-f9749a3981dfeafb42ca",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2403,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:24.712Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-289e884a74a509879554",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2707,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:27.133Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-cbf7261f4bdc44966437",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2747,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:29.870Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-b754f9ca7d6340892353",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2513,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:32.642Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-2aa0b5a7eea9a97408fb",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2536,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:35.181Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-8fa1ad0db24a93bba119",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "mobile navigation closes with Escape and restores keyboard focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2108,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:37.741Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-5e27aa9628cd44a577f8",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "mobile menu keeps keyboard focus within its controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2115,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:39.870Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-81f15e8b7a0c7256cee8",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 932,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:47.298Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-2290e56a1d9c17f30f23",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1221,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:48.251Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-84b53f4a07d96cf0c446",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1287,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:49.498Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-fb33e761fa504fb7e6f0",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1339,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:50.851Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-bd8ba09ce5efd6093f83",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1379,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:52.207Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-12a7bc0e5462e5372752",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "mobile navigation closes with Escape and restores keyboard focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 829,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:53.605Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-e04f72dc429a319e2413",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "mobile menu keeps keyboard focus within its controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 760,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:54.454Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-7cc314898afc3aa0da53",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1225,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:05.223Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-9deff980791cec0b1dd4",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1412,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:06.467Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-60e408c16ebd9193d089",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1477,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:07.894Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-fa4b52bdd1440f5c9926",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1562,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:09.387Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-202daa52096c47001394",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1399,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:10.968Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-f40315fa8dd6c07441bb",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "mobile navigation closes with Escape and restores keyboard focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 846,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:12.386Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-0df01ca8e92104071257",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "mobile menu keeps keyboard focus within its controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 751,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:13.253Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-3303c0f9689283ecce92",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1560,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:19.950Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-59135a4ba0eb61802c70",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1929,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:21.531Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-364435e85fe7763ce48a",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1825,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:23.492Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-cea1c9107e8e1c54d824",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1911,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:25.334Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-8d1baacaa9c1a3b2ef32",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1790,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:27.266Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-37f35d91d90cfeac4098",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "mobile navigation closes with Escape and restores keyboard focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 880,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:29.072Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-d00c24fd17e98bc8c9a2",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "mobile menu keeps keyboard focus within its controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 825,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:29.971Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1881bb7504f90f363703-013431b8b8a9bdb45a57",
+          "file": "public.navigation-accessibility.spec.js",
+          "line": 29,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "responsive.smoke.spec.js",
+      "file": "responsive.smoke.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "public route responsive guard: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2170,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:30.403Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-33aba05c0a76084dbbba",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 977,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:32.614Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-8807d74b143e283feb63",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 953,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:33.632Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-574001737dc391c468f3",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1140,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:34.601Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-d493b0435e6e64531e0c",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-390",
+              "projectName": "mobile-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 890,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:35.766Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-e5b4f6ba7130663de5ca",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2074,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:09:59.648Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-cfc56d08605b04e5e4a5",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 920,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:01.773Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-6a455801656d9b4d6fca",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1003,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:02.719Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-a06f052f6108bddf20ec",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1048,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:03.741Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-b20923b76d0c1f73d3c9",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-430",
+              "projectName": "mobile-430",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 993,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:04.812Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-a852e6ab80dd6aafe6bd",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 962,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:16.169Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-f56469ea88384bbe9266",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 515,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:17.151Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-0432ee189cbfdcc1a807",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 421,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:17.686Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-fa3d0eb6e4c72a1ef28a",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 453,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:18.124Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-97acb3716594d73b8154",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-480",
+              "projectName": "mobile-480",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 433,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:18.594Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-212c8b41a9c8554a8220",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2193,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:39.422Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-845d232f85d51facdf92",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1328,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:41.645Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-fb6b0e9b632f03d9f302",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 964,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:43.005Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-dc5173590a8e475e474d",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1001,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:43.986Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-69abf617d3a5c03a15d7",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-768",
+              "projectName": "tablet-768",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 906,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:45.005Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-71ae347173a442440149",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 924,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:55.241Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-5496795d98f9db157851",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3311,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:56.182Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-8287380fb44e780742e0",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 635,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:10:59.514Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-299d2745c746e1054fcc",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 420,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:00.171Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-17ff137362bc7516aab0",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-1024",
+              "projectName": "tablet-1024",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 472,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:00.612Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-4dcbf27b46723d008344",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1171,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:14.048Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-51d8e99d08c504e903da",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 462,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:15.238Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-bcf12e2941856fd28d8f",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 451,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:15.716Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-9edf28677d85da837fb3",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 434,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:16.183Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-d562a209affdb37ef16d",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1440",
+              "projectName": "desktop-1440",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 493,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:16.631Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-cb0214d113dc618c1e0a",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1496,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:30.716Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-5fab63bf4da508f33e4d",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /sobre",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 505,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:32.247Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-fd0d6c523f94caac1409",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /horarios",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 503,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:32.772Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-c9db043762575c1eb891",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 497,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:33.303Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-dc5d218083ed7be2ef57",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        },
+        {
+          "title": "public route responsive guard: /reset-password",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-1920",
+              "projectName": "desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 466,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T20:11:33.817Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dc49008daab0f6813d05-27c26bd08e1f939d1d42",
+          "file": "responsive.smoke.spec.js",
+          "line": 75,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-28T20:09:12.394Z",
+    "duration": 142436.509,
+    "expected": 133,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,4 @@
+warning: in the working copy of 'tests/e2e/admin.happy-path-controlled.spec.js', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'tests/e2e/asistencias.guided.review.spec.js', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'tests/e2e/filters-sorting.tables.spec.js', CRLF will be replaced by LF the next time Git touches it
+

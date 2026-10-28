@@ -22,10 +22,12 @@ const SortableHeader = ({
   const isActive = sort?.field === field && sort?.direction !== SORT_DIRECTION.NONE;
   const ariaSort = getAriaSort({ sort, field });
   const icon = resolveIcon({ active: isActive, direction: sort?.direction });
+  const sortDescription = { none: 'sin ordenar', ascending: 'ascendente', descending: 'descendente' }[ariaSort];
 
   const button = (
     <button
       type="button"
+      aria-label={asCell ? undefined : `Ordenar por ${label}: ${sortDescription}`}
       onClick={() => onToggleSort(field)}
       className={`inline-flex min-h-[44px] items-center gap-2 text-left ${buttonClassName}`}
     >

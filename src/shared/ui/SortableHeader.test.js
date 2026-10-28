@@ -4,6 +4,19 @@ import SortableHeader from './SortableHeader';
 import { SORT_DIRECTION } from '../lib/tableQuery';
 
 describe('SortableHeader', () => {
+  test.each([
+    [null, SORT_DIRECTION.NONE, 'sin ordenar'],
+    ['monto', SORT_DIRECTION.ASC, 'ascendente'],
+    ['monto', SORT_DIRECTION.DESC, 'descendente'],
+  ])('expone el estado de orden fuera de una tabla: %s %s', (field, direction, state) => {
+    const onToggleSort = jest.fn();
+    render(<SortableHeader field="monto" label="Monto" sort={{ field, direction }} onToggleSort={onToggleSort} asCell={false} />);
+    const button = screen.getByRole('button', { name: `Ordenar por Monto: ${state}` });
+    fireEvent.click(button);
+    expect(onToggleSort).toHaveBeenCalledWith('monto');
+    expect(button.closest('th')).toBeNull();
+  });
+
   test('renders with aria-sort none by default', () => {
     const onToggleSort = jest.fn();
 

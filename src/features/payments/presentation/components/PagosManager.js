@@ -752,6 +752,16 @@ const PagosManager = ({ user }) => {
 
       <p className={styles.filterSummary}>Mostrando {paginatedPagos.length} de {pagos.length} pagos.</p>
 
+      {/* global.css presenta la tabla como tarjetas y oculta encabezados hasta 767px. */}
+      <div role="group" aria-label="Ordenar pagos" className="flex flex-wrap gap-3 text-sm text-white min-[768px]:hidden">
+        {[
+          ['atleta', 'Atleta'], ['membership_type', 'Mensualidad'], ['periodo', 'Período'],
+          ['monto', 'Monto'], ['estado', 'Estado'], ['fecha_pago', 'Fecha Pago'],
+        ].map(([field, label]) => (
+          <SortableHeader key={field} field={field} label={label} sort={queryState.sort} onToggleSort={toggleSort} asCell={false} />
+        ))}
+      </div>
+
       {/* Lista de Pagos */}
       {loading ? (
         <div className={styles.loading}>
