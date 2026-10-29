@@ -1,0 +1,95 @@
+TAP version 13
+# Subtest: perfil aislado no autoriza personal cuando no existe usuario canónico
+ok 1 - perfil aislado no autoriza personal cuando no existe usuario canónico
+  ---
+  duration_ms: 332.3067
+  type: 'test'
+  ...
+# Subtest: suspensión canónica bloquea autorización de personal
+ok 2 - suspensión canónica bloquea autorización de personal
+  ---
+  duration_ms: 21.2359
+  type: 'test'
+  ...
+# Subtest: personal activo mantiene autorización: administrador
+ok 3 - personal activo mantiene autorización: administrador
+  ---
+  duration_ms: 11.0826
+  type: 'test'
+  ...
+# Subtest: personal activo mantiene autorización: entrenador
+ok 4 - personal activo mantiene autorización: entrenador
+  ---
+  duration_ms: 14.7049
+  type: 'test'
+  ...
+# Subtest: rechaza una respuesta 200 del proveedor sin identificador de mensaje
+ok 5 - rechaza una respuesta 200 del proveedor sin identificador de mensaje
+  ---
+  duration_ms: 20.3869
+  type: 'test'
+  ...
+# Subtest: un dominio no verificado se informa como fallo de configuracion
+ok 6 - un dominio no verificado se informa como fallo de configuracion
+  ---
+  duration_ms: 0.5853
+  type: 'test'
+  ...
+# Subtest: la peticion al proveedor tiene un limite de tiempo
+ok 7 - la peticion al proveedor tiene un limite de tiempo
+  ---
+  duration_ms: 0.4949
+  type: 'test'
+  ...
+# Subtest: un timeout no se convierte en correo enviado
+ok 8 - un timeout no se convierte en correo enviado
+  ---
+  duration_ms: 0.3001
+  type: 'test'
+  ...
+# Subtest: no permite usar el correo de la aplicacion sin sesion autorizada
+ok 9 - no permite usar el correo de la aplicacion sin sesion autorizada
+  ---
+  duration_ms: 0.5545
+  type: 'test'
+  ...
+# Subtest: rechaza un destinatario invalido antes de contactar al proveedor
+ok 10 - rechaza un destinatario invalido antes de contactar al proveedor
+  ---
+  duration_ms: 0.5999
+  type: 'test'
+  ...
+# Subtest: un entrenador no puede cambiar la contrasena de un administrador
+ok 11 - un entrenador no puede cambiar la contrasena de un administrador
+  ---
+  duration_ms: 0.7438
+  type: 'test'
+  ...
+# Subtest: una contrasena temporal debil se rechaza antes de la actualizacion
+ok 12 - una contrasena temporal debil se rechaza antes de la actualizacion
+  ---
+  duration_ms: 0.3811
+  type: 'test'
+  ...
+# Subtest: marca primer ingreso despues de actualizar Auth y devuelve el email real de Auth
+ok 13 - marca primer ingreso despues de actualizar Auth y devuelve el email real de Auth
+  ---
+  duration_ms: 1.1457
+  type: 'test'
+  ...
+# Subtest: conserva el resultado del cambio si falla sincronizar primer ingreso
+ok 14 - conserva el resultado del cambio si falla sincronizar primer ingreso
+  ---
+  duration_ms: 0.4555
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 991.1287
+

@@ -1,0 +1,131 @@
+TAP version 13
+# Subtest: perfil aislado no autoriza personal cuando no existe usuario canónico
+ok 1 - perfil aislado no autoriza personal cuando no existe usuario canónico
+  ---
+  duration_ms: 117.6456
+  type: 'test'
+  ...
+# Subtest: suspensión canónica bloquea autorización de personal
+ok 2 - suspensión canónica bloquea autorización de personal
+  ---
+  duration_ms: 19.8005
+  type: 'test'
+  ...
+# Subtest: un atleta canónico no obtiene permisos por un perfil alternativo privilegiado
+ok 3 - un atleta canónico no obtiene permisos por un perfil alternativo privilegiado
+  ---
+  duration_ms: 18.0749
+  type: 'test'
+  ...
+# Subtest: personal activo mantiene autorización: administrador
+ok 4 - personal activo mantiene autorización: administrador
+  ---
+  duration_ms: 20.5849
+  type: 'test'
+  ...
+# Subtest: personal activo mantiene autorización: entrenador
+ok 5 - personal activo mantiene autorización: entrenador
+  ---
+  duration_ms: 18.6871
+  type: 'test'
+  ...
+# Subtest: eliminación Auth autoriza el objetivo: entrenador → administrador
+ok 6 - eliminación Auth autoriza el objetivo: entrenador → administrador
+  ---
+  duration_ms: 0.5385
+  type: 'test'
+  ...
+# Subtest: eliminación Auth autoriza el objetivo: administrador → administrador
+ok 7 - eliminación Auth autoriza el objetivo: administrador → administrador
+  ---
+  duration_ms: 0.2257
+  type: 'test'
+  ...
+# Subtest: eliminación Auth autoriza el objetivo: entrenador → entrenador
+ok 8 - eliminación Auth autoriza el objetivo: entrenador → entrenador
+  ---
+  duration_ms: 0.1716
+  type: 'test'
+  ...
+# Subtest: eliminación Auth autoriza el objetivo: administrador → entrenador
+ok 9 - eliminación Auth autoriza el objetivo: administrador → entrenador
+  ---
+  duration_ms: 0.2639
+  type: 'test'
+  ...
+# Subtest: eliminación Auth autoriza el objetivo: entrenador → estudiante
+ok 10 - eliminación Auth autoriza el objetivo: entrenador → estudiante
+  ---
+  duration_ms: 0.2369
+  type: 'test'
+  ...
+# Subtest: rechaza una respuesta 200 del proveedor sin identificador de mensaje
+ok 11 - rechaza una respuesta 200 del proveedor sin identificador de mensaje
+  ---
+  duration_ms: 29.6355
+  type: 'test'
+  ...
+# Subtest: un dominio no verificado se informa como fallo de configuracion
+ok 12 - un dominio no verificado se informa como fallo de configuracion
+  ---
+  duration_ms: 0.5708
+  type: 'test'
+  ...
+# Subtest: la peticion al proveedor tiene un limite de tiempo
+ok 13 - la peticion al proveedor tiene un limite de tiempo
+  ---
+  duration_ms: 0.6982
+  type: 'test'
+  ...
+# Subtest: un timeout no se convierte en correo enviado
+ok 14 - un timeout no se convierte en correo enviado
+  ---
+  duration_ms: 0.5568
+  type: 'test'
+  ...
+# Subtest: no permite usar el correo de la aplicacion sin sesion autorizada
+ok 15 - no permite usar el correo de la aplicacion sin sesion autorizada
+  ---
+  duration_ms: 0.7674
+  type: 'test'
+  ...
+# Subtest: rechaza un destinatario invalido antes de contactar al proveedor
+ok 16 - rechaza un destinatario invalido antes de contactar al proveedor
+  ---
+  duration_ms: 0.5652
+  type: 'test'
+  ...
+# Subtest: un entrenador no puede cambiar la contrasena de un administrador
+ok 17 - un entrenador no puede cambiar la contrasena de un administrador
+  ---
+  duration_ms: 0.8235
+  type: 'test'
+  ...
+# Subtest: una contrasena temporal debil se rechaza antes de la actualizacion
+ok 18 - una contrasena temporal debil se rechaza antes de la actualizacion
+  ---
+  duration_ms: 0.5683
+  type: 'test'
+  ...
+# Subtest: marca primer ingreso despues de actualizar Auth y devuelve el email real de Auth
+ok 19 - marca primer ingreso despues de actualizar Auth y devuelve el email real de Auth
+  ---
+  duration_ms: 1.4231
+  type: 'test'
+  ...
+# Subtest: conserva el resultado del cambio si falla sincronizar primer ingreso
+ok 20 - conserva el resultado del cambio si falla sincronizar primer ingreso
+  ---
+  duration_ms: 0.3471
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 881.8448
+

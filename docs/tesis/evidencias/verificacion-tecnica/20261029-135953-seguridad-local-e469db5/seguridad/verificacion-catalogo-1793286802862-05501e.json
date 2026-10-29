@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "rlsChecked": [
+    "gamification.xp_ledger",
+    "gamification.login_rewards",
+    "gamification.currency_wallets",
+    "gamification.currency_ledger"
+  ],
+  "policies": 272,
+  "rpcUuidInvoker": true,
+  "anonymousPaymentRpc": false,
+  "legacyWebExecute": false,
+  "localOnly": true
+}

@@ -1,6 +1,17 @@
 # Evidencias técnicas de RIOVOLEY
 
-El expediente de cierre más reciente corresponde a la ejecución del 28 de octubre de 2026, sobre el commit base `c71f55e` y los cambios locales identificados en sus inventarios de fuentes:
+La ejecución más reciente corresponde al endurecimiento local autorizado del 29 de octubre de 2026, sobre el commit base `e469db5` y los cambios identificados en el nuevo inventario de fuentes:
+
+- [Informe de seguridad y regresión local](evidencias/verificacion-tecnica/20261029-135953-seguridad-local-e469db5/INFORME_VERIFICACION_TECNICA.md).
+- [Matriz actualizada para la tesis](evidencias/verificacion-tecnica/20261029-135953-seguridad-local-e469db5/MATRIZ_VERIFICACIONES_TESIS.md).
+- [Texto académico actualizado](evidencias/verificacion-tecnica/20261029-135953-seguridad-local-e469db5/RESULTADOS_PARA_TESIS_4_5.md).
+- [Alcance y reproducción del SQL local](../../database/security/local/README.md).
+
+La etapa registró 410 casos Jest en 87 suites, 34 comprobaciones de seguridad contra el backend local, 18 integraciones funcionales, 20 contratos Edge, 12 pruebas HTTP de handlers reales y 249 instancias Playwright aprobadas. Los denominadores corresponden a herramientas y ejecuciones distintas. Se retiró Genkit sin uso de `functions` y se aplicó un parche compatible: ese árbol llegó a cero avisos npm; la raíz conserva avisos pendientes. No se aplicaron cambios institucionales ni se realizó una publicación nueva.
+
+## Expediente anterior y compilación Android
+
+El cierre del 28 de octubre de 2026, sobre el commit base `c71f55e`, permanece disponible como antecedente:
 
 - [Informe técnico de cierre](evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/INFORME_VERIFICACION_TECNICA.md).
 - [Matriz de trazabilidad](evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/MATRIZ_VERIFICACIONES_TESIS.md).
@@ -12,7 +23,7 @@ La ejecución registró 404 casos Jest en 85 suites, 17 pruebas de integración 
 
 ## Conservación y publicación
 
-Los seis expedientes originales se conservan sin reescribir. Sus manifiestos registran las huellas de los archivos existentes al cerrar cada ejecución; las fechas y el commit base no se sustituyen por el commit que posteriormente incorpora las evidencias al repositorio. Los registros conservan sus bytes mediante `.gitattributes`.
+Los seis expedientes anteriores se conservan sin reescribir. Sus manifiestos registran las huellas de los archivos existentes al cerrar cada ejecución; las fechas y el commit base no se sustituyen por el commit que posteriormente incorpora las evidencias al repositorio. Los registros conservan sus bytes mediante `.gitattributes`.
 
 Los APK de depuración permanecen exclusivamente en el equipo de auditoría. Se publican sus metadatos y SHA-256, pero los paquetes están excluidos de Git para respetar la restricción de no distribuirlos. Por tanto, una copia obtenida del repositorio no contiene esos dos archivos referenciados en los manifiestos Android; su comprobación requiere los APK locales originales. Las instantáneas de fuentes reflejan el árbol Windows de cada ejecución, incluidos archivos locales que no necesariamente forman parte de esta publicación, y pueden diferir de un checkout por la normalización de finales de línea de los archivos de código.
 
@@ -22,4 +33,4 @@ Las credenciales, claves, cuentas descartables y herramientas instaladas del ent
 
 Consultar el [arnés E2E local](../../scripts/e2e/local/README.md), las [herramientas Android](../../scripts/audit/android/README.md) y los comandos de cada informe. Para nuevas ejecuciones se debe crear un expediente distinto; no sobrescribir los registros sellados.
 
-El [endurecimiento de RLS/RPC](../../database/security/REVISION_Y_AUTORIZACION_PENDIENTE.md) sigue pendiente de autorización y validación coordinada. El SQL de esa carpeta es un borrador parcial **no aplicado y no listo para ejecutar**. Incorporarlo a Git no aplica migraciones ni cambia permisos. También se conservan avisos de dependencias y las limitaciones de proveedores externos, clasificación por categoría y pruebas nativas completas.
+El [endurecimiento de RLS/RPC](../../database/security/local/README.md) se validó únicamente en local; su aplicación institucional sigue pendiente de autorización y publicación coordinada. El borrador inicial se conserva como antecedente no ejecutable. También se conservan avisos de dependencias, las limitaciones de proveedores externos y pruebas nativas completas. La clasificación ahora comprueba posiciones y orden en una categoría de fixture; no se extrapola a todas las categorías y métricas.

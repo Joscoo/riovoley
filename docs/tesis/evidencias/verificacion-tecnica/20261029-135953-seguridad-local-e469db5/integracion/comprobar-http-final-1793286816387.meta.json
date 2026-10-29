@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/security/edge-http.cjs"
+  ],
+  "start": "2026-10-29T15:13:36.387Z",
+  "end": "2026-10-29T15:13:39.889Z",
+  "durationSeconds": 3.502,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/security/apply-local.cjs",
+    "apply"
+  ],
+  "start": "2026-10-29T15:13:22.249Z",
+  "end": "2026-10-29T15:13:22.573Z",
+  "durationSeconds": 0.324,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

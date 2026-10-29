@@ -1,0 +1,46 @@
+{
+  "add": [],
+  "added": 0,
+  "audited": 304,
+  "change": [
+    {
+      "from": {
+        "name": "path-to-regexp",
+        "version": "8.2.0",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\path-to-regexp"
+      },
+      "to": {
+        "name": "path-to-regexp",
+        "version": "8.4.2",
+        "path": "D:\\Riovoley\\riovoley\\functions\\node_modules\\path-to-regexp"
+      }
+    }
+  ],
+  "changed": 1,
+  "funding": 127,
+  "remove": [],
+  "removed": 0,
+  "audit": {
+    "auditReportVersion": 2,
+    "vulnerabilities": {},
+    "metadata": {
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "dependencies": {
+        "prod": 75,
+        "dev": 229,
+        "optional": 1,
+        "peer": 0,
+        "peerOptional": 0,
+        "total": 303
+      }
+    }
+  }
+}
+

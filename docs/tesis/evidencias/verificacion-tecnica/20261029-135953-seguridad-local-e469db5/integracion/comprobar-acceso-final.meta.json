@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/security/run.cjs",
+    "access",
+    "acceso-final"
+  ],
+  "start": "2026-10-29T15:04:53.552Z",
+  "end": "2026-10-29T15:04:57.554Z",
+  "durationSeconds": 4.002,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

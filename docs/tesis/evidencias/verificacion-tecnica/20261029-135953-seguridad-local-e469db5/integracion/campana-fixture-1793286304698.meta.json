@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/security/query-local.cjs"
+  ],
+  "start": "2026-10-29T15:05:04.698Z",
+  "end": "2026-10-29T15:05:05.036Z",
+  "durationSeconds": 0.338,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

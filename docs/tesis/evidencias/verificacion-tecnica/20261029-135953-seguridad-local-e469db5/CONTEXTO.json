@@ -1,0 +1,8 @@
+{
+  "commit": "e469db5608fb77071b6a9ee3db253c28dae734dd",
+  "createdAt": "2026-10-29T13:59:54.332Z",
+  "scope": "Cambios de RLS/RPC y pruebas exclusivamente locales autorizados por el usuario: Dale continuemos. No autoriza producción, despliegues ni push nuevos.",
+  "backend": "Supabase Docker riovoley-e2e-local en loopback",
+  "productionChanged": false,
+  "previousEvidencePreserved": true
+}

@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/security/apply-local.cjs",
+    "preflight"
+  ],
+  "start": "2026-10-29T15:13:20.932Z",
+  "end": "2026-10-29T15:13:21.313Z",
+  "durationSeconds": 0.381,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

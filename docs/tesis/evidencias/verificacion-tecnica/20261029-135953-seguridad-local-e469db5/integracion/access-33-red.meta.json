@@ -1,0 +1,15 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "functions/node_modules/tsx/dist/cli.mjs",
+    "--test",
+    "--test-reporter=tap",
+    "tests/integration/security.local.test.cjs"
+  ],
+  "start": "2026-10-29T14:43:12.452Z",
+  "end": "2026-10-29T14:43:17.333Z",
+  "durationSeconds": 4.881,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

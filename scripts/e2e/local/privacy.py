@@ -10,7 +10,8 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[3]
 RUNTIME = ROOT / '.e2e-local'
 OUT = Path((RUNTIME / 'evidence-dir.txt').read_text(encoding='utf-8').strip()).resolve()
-assert OUT.is_relative_to(ROOT / 'docs' / 'tesis' / 'evidencias' / 'e2e-aislado')
+assert any(OUT.is_relative_to(ROOT / 'docs' / 'tesis' / 'evidencias' / name) for name in ('e2e-aislado','verificacion-tecnica'))
+assert not (OUT / 'MANIFIESTO_SHA256.json').exists(), 'No modificar un expediente ya sellado'
 secrets = []
 
 def collect(value):

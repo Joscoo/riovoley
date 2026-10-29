@@ -1,0 +1,215 @@
+TAP version 13
+# Subtest: S01: anónimo no puede invocar borrado de pago
+ok 1 - S01: anónimo no puede invocar borrado de pago
+  ---
+  duration_ms: 1069.6515
+  type: 'test'
+  ...
+# Subtest: S02: atleta no puede invocar borrado de su pago
+ok 2 - S02: atleta no puede invocar borrado de su pago
+  ---
+  duration_ms: 33.2571
+  type: 'test'
+  ...
+# Subtest: S03: atleta no modifica pago propio por REST
+ok 3 - S03: atleta no modifica pago propio por REST
+  ---
+  duration_ms: 60.1609
+  type: 'test'
+  ...
+# Subtest: S04: atleta no inserta XP arbitrario propio
+ok 4 - S04: atleta no inserta XP arbitrario propio
+  ---
+  duration_ms: 22.1466
+  type: 'test'
+  ...
+# Subtest: S05: atleta no cambia saldo propio por REST
+ok 5 - S05: atleta no cambia saldo propio por REST
+  ---
+  duration_ms: 40.9076
+  type: 'test'
+  ...
+# Subtest: S06: atleta no cambia fecha/recuento de recompensa por REST
+ok 6 - S06: atleta no cambia fecha/recuento de recompensa por REST
+  ---
+  duration_ms: 28.4326
+  type: 'test'
+  ...
+# Subtest: S07: atleta tampoco inserta XP de otro atleta
+ok 7 - S07: atleta tampoco inserta XP de otro atleta
+  ---
+  duration_ms: 16.2852
+  type: 'test'
+  ...
+# Subtest: S08: recompensa diaria concurrente entrega exactamente ocho XP una vez
+ok 8 - S08: recompensa diaria concurrente entrega exactamente ocho XP una vez
+  ---
+  duration_ms: 110.1484
+  type: 'test'
+  ...
+# Subtest: S09: RPC diaria no acepta actor, fecha o XP suministrados
+ok 9 - S09: RPC diaria no acepta actor, fecha o XP suministrados
+  ---
+  duration_ms: 28.4562
+  type: 'test'
+  ...
+# Subtest: S10: atleta no se autoasigna rol administrador
+ok 10 - S10: atleta no se autoasigna rol administrador
+  ---
+  duration_ms: 32.1137
+  type: 'test'
+  ...
+# Subtest: S11: perfil alternativo tampoco permite autoasignación de rol
+ok 11 - S11: perfil alternativo tampoco permite autoasignación de rol
+  ---
+  duration_ms: 33.7452
+  type: 'test'
+  ...
+# Subtest: S12: usuario suspendido no puede quitar su suspensión
+ok 12 - S12: usuario suspendido no puede quitar su suspensión
+  ---
+  duration_ms: 45.2706
+  type: 'test'
+  ...
+# Subtest: S13: administrador borra y restaura por RPC UUID con auditoría
+ok 13 - S13: administrador borra y restaura por RPC UUID con auditoría
+  ---
+  duration_ms: 99.5855
+  type: 'test'
+  ...
+# Subtest: S14: entrenador activo conserva RPC de pagos
+ok 14 - S14: entrenador activo conserva RPC de pagos
+  ---
+  duration_ms: 74.0817
+  type: 'test'
+  ...
+# Subtest: S15: administrador suspendido no modifica pagos por REST
+ok 15 - S15: administrador suspendido no modifica pagos por REST
+  ---
+  duration_ms: 41.4244
+  type: 'test'
+  ...
+# Subtest: S16: administrador suspendido no modifica pagos por RPC
+ok 16 - S16: administrador suspendido no modifica pagos por RPC
+  ---
+  duration_ms: 16.1349
+  type: 'test'
+  ...
+# Subtest: S17: atleta no puede regalarse inventario cosmético
+ok 17 - S17: atleta no puede regalarse inventario cosmético
+  ---
+  duration_ms: 35.8276
+  type: 'test'
+  ...
+# Subtest: S18: atleta no puede regalarse logros
+ok 18 - S18: atleta no puede regalarse logros
+  ---
+  duration_ms: 29.396
+  type: 'test'
+  ...
+# Subtest: S19: anónimo no obtiene recompensa diaria
+ok 19 - S19: anónimo no obtiene recompensa diaria
+  ---
+  duration_ms: 7.9274
+  type: 'test'
+  ...
+# Subtest: S20: personal suspendido no obtiene recompensa diaria
+ok 20 - S20: personal suspendido no obtiene recompensa diaria
+  ---
+  duration_ms: 19.3002
+  type: 'test'
+  ...
+# Subtest: S21: entrenador conserva suspensión y reactivación de un atleta
+ok 21 - S21: entrenador conserva suspensión y reactivación de un atleta
+  ---
+  duration_ms: 93.166
+  type: 'test'
+  ...
+# Subtest: S22: atleta no registra asistencia propia para fabricar progreso
+ok 22 - S22: atleta no registra asistencia propia para fabricar progreso
+  ---
+  duration_ms: 27.8777
+  type: 'test'
+  ...
+# Subtest: S23: atleta no registra evaluación propia para fabricar progreso
+ok 23 - S23: atleta no registra evaluación propia para fabricar progreso
+  ---
+  duration_ms: 31.0932
+  type: 'test'
+  ...
+# Subtest: S24: sincronización con gasto obsoleto conserva el gasto ya confirmado
+ok 24 - S24: sincronización con gasto obsoleto conserva el gasto ya confirmado
+  ---
+  duration_ms: 45.6705
+  type: 'test'
+  ...
+# Subtest: S25: personal suspendido no crea un administrador mediante REST
+ok 25 - S25: personal suspendido no crea un administrador mediante REST
+  ---
+  duration_ms: 106.8912
+  type: 'test'
+  ...
+# Subtest: S26: personal suspendido no elimina otro usuario
+ok 26 - S26: personal suspendido no elimina otro usuario
+  ---
+  duration_ms: 115.1994
+  type: 'test'
+  ...
+# Subtest: S27: personal suspendido no crea un administrador mediante RPC
+ok 27 - S27: personal suspendido no crea un administrador mediante RPC
+  ---
+  duration_ms: 103.4205
+  type: 'test'
+  ...
+# Subtest: S28: atleta no duplica su identidad deportiva
+ok 28 - S28: atleta no duplica su identidad deportiva
+  ---
+  duration_ms: 9.0239
+  type: 'test'
+  ...
+# Subtest: S29: atleta no altera su categoría usada en clasificación
+ok 29 - S29: atleta no altera su categoría usada en clasificación
+  ---
+  duration_ms: 37.3081
+  type: 'test'
+  ...
+# Subtest: S30: metadata editable de Auth no concede un perfil administrador
+ok 30 - S30: metadata editable de Auth no concede un perfil administrador
+  ---
+  duration_ms: 93.7557
+  type: 'test'
+  ...
+# Subtest: S31: compra RPC rechaza cosmético bloqueado aunque exista saldo
+ok 31 - S31: compra RPC rechaza cosmético bloqueado aunque exista saldo
+  ---
+  duration_ms: 93.3701
+  type: 'test'
+  ...
+# Subtest: S32: cambiar la relación deportiva no permite otra recompensa al mismo actor
+ok 32 - S32: cambiar la relación deportiva no permite otra recompensa al mismo actor
+  ---
+  duration_ms: 92.8886
+  type: 'test'
+  ...
+# Subtest: S33: XP diario que cruza de nivel permite la compra válida sin esperar otra sincronización
+ok 33 - S33: XP diario que cruza de nivel permite la compra válida sin esperar otra sincronización
+  ---
+  duration_ms: 385.2544
+  type: 'test'
+  ...
+# Subtest: S34: entrenador conserva la secuencia de borrado de filas de atleta
+ok 34 - S34: entrenador conserva la secuencia de borrado de filas de atleta
+  ---
+  duration_ms: 222.8554
+  type: 'test'
+  ...
+1..34
+# tests 34
+# suites 0
+# pass 34
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3668.57
+

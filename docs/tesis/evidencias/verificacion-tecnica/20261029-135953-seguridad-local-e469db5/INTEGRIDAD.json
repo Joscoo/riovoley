@@ -1,0 +1,111 @@
+{
+  "generatedAt": "2026-10-29T15:23:34.358Z",
+  "passed": 9,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Seis expedientes anteriores preservados",
+      "status": "APROBADO",
+      "details": [
+        {
+          "folder": "verificacion-tecnica/20261027-212222-c71f55e",
+          "checked": 612
+        },
+        {
+          "folder": "e2e-aislado/20261028-141243-c71f55e",
+          "checked": 254
+        },
+        {
+          "folder": "e2e-aislado/20261028-101418-correcciones-c71f55e",
+          "checked": 723
+        },
+        {
+          "folder": "verificacion-tecnica/20261028-155551-android-c71f55e",
+          "checked": 152
+        },
+        {
+          "folder": "e2e-aislado/20261028-192557-cierre-c71f55e",
+          "checked": 753
+        },
+        {
+          "folder": "verificacion-tecnica/20261028-200050-android-actualizado-c71f55e",
+          "checked": 39
+        }
+      ]
+    },
+    {
+      "name": "410 casos Jest en87 suites y cobertura recalculada",
+      "status": "APROBADO",
+      "details": {
+        "suites": 87,
+        "executed": 410,
+        "passed": 410,
+        "failed": 0,
+        "skipped": 0,
+        "processSeconds": 42.049
+      }
+    },
+    {
+      "name": "Runners separados:34 seguridad,18 funcionales,20 contratos,12 HTTP y2 Express",
+      "status": "APROBADO",
+      "details": {
+        "security": 34,
+        "functional": 18,
+        "edgeContracts": 20,
+        "realHttp": 12,
+        "express": 2
+      }
+    },
+    {
+      "name": "Playwright249 instancias sin omitidos ni reintentos",
+      "status": "APROBADO",
+      "details": {
+        "executed": 249,
+        "passed": 249
+      }
+    },
+    {
+      "name": "Catálogo y SQL final local; reversión de definiciones,ACL y políticas",
+      "status": "APROBADO",
+      "details": {
+        "migrationSha256": "fca1d549e656c797f9a009b7a22ad3137bfd81af3f3e5b7eb46ba18ecb88272b",
+        "functions": 11,
+        "acls": 11,
+        "policies": 111
+      }
+    },
+    {
+      "name": "HTTP Deno con caché cerrada y permisos de red locales",
+      "status": "APROBADO",
+      "details": {
+        "cachedOnly": true,
+        "externalProviderNetworkAllowed": false
+      }
+    },
+    {
+      "name": "Compilación web y dependencia functions comprobadas",
+      "status": "APROBADO",
+      "details": {
+        "web": 0,
+        "functionsAudit": 0,
+        "rootAudit": 35
+      }
+    },
+    {
+      "name": "Documentos, enlaces y ocho categorías",
+      "status": "APROBADO",
+      "details": {
+        "documents": 3,
+        "categories": 8
+      }
+    },
+    {
+      "name": "Privacidad: textos y ZIP de reportes",
+      "status": "APROBADO",
+      "details": {
+        "textFiles": 1734,
+        "embeddedArchives": 4
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "functionsRestored": 11,
+  "functionAclsRestored": 11,
+  "policiesRestored": 111,
+  "newDailyRpcRemoved": true,
+  "scope": "Reversión de definiciones, ACL de funciones y políticas comparadas, sin restaurar datos descartables creados por pruebas ni afirmar un respaldo de producción."
+}

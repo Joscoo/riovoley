@@ -1,0 +1,36 @@
+Download https://esm.sh/@supabase/functions-js@^2.0.0?target=denonext
+Download https://esm.sh/@supabase/gotrue-js@^2.10.2?target=denonext
+Download https://esm.sh/@supabase/postgrest-js@^1.1.1?target=denonext
+Download https://esm.sh/@supabase/realtime-js@^2.4.0?target=denonext
+Download https://esm.sh/@supabase/storage-js@^2.1.0?target=denonext
+Download https://esm.sh/@supabase/supabase-js@2.7.1/denonext/supabase-js.mjs
+Download https://esm.sh/@supabase/functions-js@2.118.0?target=denonext
+Download https://esm.sh/@supabase/gotrue-js@2.118.0?target=denonext
+Download https://esm.sh/@supabase/postgrest-js@1.21.4?target=denonext
+Download https://esm.sh/@supabase/realtime-js@2.118.0?target=denonext
+Download https://esm.sh/@supabase/storage-js@2.118.0?target=denonext
+Download https://esm.sh/tslib@2.8.1/denonext/tslib.mjs
+Download https://esm.sh/@supabase/functions-js@2.118.0/denonext/functions-js.mjs
+Download https://esm.sh/@supabase/gotrue-js@2.118.0/denonext/gotrue-js.mjs
+Download https://esm.sh/@supabase/node-fetch@^2.6.14?target=denonext
+Download https://esm.sh/@supabase/postgrest-js@1.21.4/denonext/postgrest-js.mjs
+Download https://esm.sh/@supabase/phoenix@0.4.5/denonext/phoenix.mjs
+Download https://esm.sh/@supabase/realtime-js@2.118.0/denonext/realtime-js.mjs
+Download https://esm.sh/iceberg-js@^0.8.1?target=denonext
+Download https://esm.sh/@supabase/storage-js@2.118.0/denonext/storage-js.mjs
+Download https://esm.sh/@supabase/node-fetch@2.6.15?target=denonext
+Download https://esm.sh/iceberg-js@0.8.1?target=denonext
+Download https://esm.sh/whatwg-url@^5.0.0?target=denonext
+Download https://esm.sh/@supabase/node-fetch@2.6.15/denonext/node-fetch.mjs
+Download https://esm.sh/iceberg-js@0.8.1/denonext/iceberg-js.mjs
+Download https://esm.sh/whatwg-url@5.0.0?target=denonext
+Download https://esm.sh/tr46@~0.0.3?target=denonext
+Download https://esm.sh/webidl-conversions@^3.0.0?target=denonext
+Download https://esm.sh/whatwg-url@5.0.0/denonext/whatwg-url.mjs
+Download https://esm.sh/tr46@0.0.3?target=denonext
+Download https://esm.sh/webidl-conversions@3.0.1?target=denonext
+Download https://esm.sh/tr46@0.0.3/denonext/tr46.mjs
+Download https://esm.sh/webidl-conversions@3.0.1/denonext/webidl-conversions.mjs
+(node:21176) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+Listening on http://127.0.0.1:6161/
+

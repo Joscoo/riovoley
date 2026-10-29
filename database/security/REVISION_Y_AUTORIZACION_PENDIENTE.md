@@ -25,3 +25,9 @@ El cambio coordinado debe mantener lecturas por propietario y transferir las esc
 Se aplicaron actualizaciones permitidas por npm audit fix, sin --force ni scripts de instalación. Los avisos críticos quedaron en cero, pero hay avisos residuales y el árbol functions incorporó más registros moderados; se conservan conteos separados. npm propone para algunos casos react-scripts 0.0.0 o una degradación de Genkit; no son remediaciones funcionales aceptables sin un trabajo de compatibilidad independiente. No se ocultan avisos con umbrales, omisiones o cambios de expectativas.
 
 La autorización pendiente para RLS/RPC debe indicar expresamente el entorno. Preparar y validar en el backend local no autoriza aplicar cambios en producción; esa aplicación debe aprobarse sobre el SQL final y su evidencia de pruebas.
+
+## Actualización del 29 de octubre: corrección local autorizada
+
+El usuario autorizó continuar en el backend local descartable. Se implementó y probó una [migración nueva con su alcance y reproducción](local/README.md), que atiende los problemas del borrador inicial, los permisos sobre fuentes y la escalación por roles/metadatos. Se verificaron reversión y reaplicación locales. El borrador `PROPUESTA_RPC_PAGOS_NO_APLICADA.sql` se conserva como antecedente y no debe ejecutarse.
+
+La aplicación institucional sigue sin autorización y no se realizó. Los cambios web, RPC, políticas y funciones Edge requieren publicación coordinada y revisión del estado real antes de proponer una aplicación en producción. El [expediente de esta ejecución](../../docs/tesis/evidencias/verificacion-tecnica/20261029-135953-seguridad-local-e469db5/CONTEXTO.json) registra su alcance. La dependencia Genkit no utilizada se retiró posteriormente de `functions`; la auditoría actualizada de ese árbol llegó a cero avisos, sin `--force`.

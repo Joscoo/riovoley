@@ -1,0 +1,10 @@
+{
+  "success": true,
+  "mode": "preflight",
+  "onlyLocal": true,
+  "productionChanged": false,
+  "sqlFile": "database\\security\\local\\20261029141114_riovoley_security_local.sql",
+  "migrationSha256": "fca1d549e656c797f9a009b7a22ad3137bfd81af3f3e5b7eb46ba18ecb88272b",
+  "executedSqlSha256": "382b908fa64c42151f0a3ccc08aef262022c8db10fd5f02ba6870ad20a83fb53",
+  "transaction": "ROLLBACK"
+}

@@ -1,0 +1,5 @@
+Check supabase/functions/_core/auth-admin/application/require-active-staff.ts
+Check supabase/functions/_core/auth-admin/infrastructure/supabase-auth-admin-gateway.ts
+Check supabase/functions/delete-auth-user/index.ts
+Check supabase/functions/send-push/index.ts
+

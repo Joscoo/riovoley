@@ -1,0 +1,330 @@
+TAP version 13
+# Subtest: S01: anónimo no puede invocar borrado de pago
+ok 1 - S01: anónimo no puede invocar borrado de pago
+  ---
+  duration_ms: 1137.7581
+  type: 'test'
+  ...
+# Subtest: S02: atleta no puede invocar borrado de su pago
+ok 2 - S02: atleta no puede invocar borrado de su pago
+  ---
+  duration_ms: 48.0166
+  type: 'test'
+  ...
+# Subtest: S03: atleta no modifica pago propio por REST
+ok 3 - S03: atleta no modifica pago propio por REST
+  ---
+  duration_ms: 46.2201
+  type: 'test'
+  ...
+# Subtest: S04: atleta no inserta XP arbitrario propio
+ok 4 - S04: atleta no inserta XP arbitrario propio
+  ---
+  duration_ms: 30.6886
+  type: 'test'
+  ...
+# Subtest: S05: atleta no cambia saldo propio por REST
+ok 5 - S05: atleta no cambia saldo propio por REST
+  ---
+  duration_ms: 48.0324
+  type: 'test'
+  ...
+# Subtest: S06: atleta no cambia fecha/recuento de recompensa por REST
+ok 6 - S06: atleta no cambia fecha/recuento de recompensa por REST
+  ---
+  duration_ms: 24.4068
+  type: 'test'
+  ...
+# Subtest: S07: atleta tampoco inserta XP de otro atleta
+ok 7 - S07: atleta tampoco inserta XP de otro atleta
+  ---
+  duration_ms: 21.0667
+  type: 'test'
+  ...
+# Subtest: S08: recompensa diaria concurrente entrega exactamente ocho XP una vez
+ok 8 - S08: recompensa diaria concurrente entrega exactamente ocho XP una vez
+  ---
+  duration_ms: 57.2016
+  type: 'test'
+  ...
+# Subtest: S09: RPC diaria no acepta actor, fecha o XP suministrados
+ok 9 - S09: RPC diaria no acepta actor, fecha o XP suministrados
+  ---
+  duration_ms: 17.8833
+  type: 'test'
+  ...
+# Subtest: S10: atleta no se autoasigna rol administrador
+ok 10 - S10: atleta no se autoasigna rol administrador
+  ---
+  duration_ms: 28.5792
+  type: 'test'
+  ...
+# Subtest: S11: perfil alternativo tampoco permite autoasignación de rol
+ok 11 - S11: perfil alternativo tampoco permite autoasignación de rol
+  ---
+  duration_ms: 34.119
+  type: 'test'
+  ...
+# Subtest: S12: usuario suspendido no puede quitar su suspensión
+ok 12 - S12: usuario suspendido no puede quitar su suspensión
+  ---
+  duration_ms: 45.5233
+  type: 'test'
+  ...
+# Subtest: S13: administrador borra y restaura por RPC UUID con auditoría
+ok 13 - S13: administrador borra y restaura por RPC UUID con auditoría
+  ---
+  duration_ms: 106.2697
+  type: 'test'
+  ...
+# Subtest: S14: entrenador activo conserva RPC de pagos
+ok 14 - S14: entrenador activo conserva RPC de pagos
+  ---
+  duration_ms: 66.0875
+  type: 'test'
+  ...
+# Subtest: S15: administrador suspendido no modifica pagos por REST
+ok 15 - S15: administrador suspendido no modifica pagos por REST
+  ---
+  duration_ms: 42.8165
+  type: 'test'
+  ...
+# Subtest: S16: administrador suspendido no modifica pagos por RPC
+ok 16 - S16: administrador suspendido no modifica pagos por RPC
+  ---
+  duration_ms: 17.5817
+  type: 'test'
+  ...
+# Subtest: S17: atleta no puede regalarse inventario cosmético
+ok 17 - S17: atleta no puede regalarse inventario cosmético
+  ---
+  duration_ms: 44.3091
+  type: 'test'
+  ...
+# Subtest: S18: atleta no puede regalarse logros
+ok 18 - S18: atleta no puede regalarse logros
+  ---
+  duration_ms: 29.4039
+  type: 'test'
+  ...
+# Subtest: S19: anónimo no obtiene recompensa diaria
+ok 19 - S19: anónimo no obtiene recompensa diaria
+  ---
+  duration_ms: 18.2229
+  type: 'test'
+  ...
+# Subtest: S20: personal suspendido no obtiene recompensa diaria
+ok 20 - S20: personal suspendido no obtiene recompensa diaria
+  ---
+  duration_ms: 13.5323
+  type: 'test'
+  ...
+# Subtest: S21: entrenador conserva suspensión y reactivación de un atleta
+ok 21 - S21: entrenador conserva suspensión y reactivación de un atleta
+  ---
+  duration_ms: 81.0045
+  type: 'test'
+  ...
+# Subtest: S22: atleta no registra asistencia propia para fabricar progreso
+ok 22 - S22: atleta no registra asistencia propia para fabricar progreso
+  ---
+  duration_ms: 26.1857
+  type: 'test'
+  ...
+# Subtest: S23: atleta no registra evaluación propia para fabricar progreso
+ok 23 - S23: atleta no registra evaluación propia para fabricar progreso
+  ---
+  duration_ms: 16.607
+  type: 'test'
+  ...
+# Subtest: S24: sincronización con gasto obsoleto conserva el gasto ya confirmado
+ok 24 - S24: sincronización con gasto obsoleto conserva el gasto ya confirmado
+  ---
+  duration_ms: 48.4176
+  type: 'test'
+  ...
+# Subtest: S25: personal suspendido no crea un administrador mediante REST
+not ok 25 - S25: personal suspendido no crea un administrador mediante REST
+  ---
+  duration_ms: 107.702
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:103:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    La operación debe rechazarse por autorización, no por ambigüedad o fallo interno
+    + actual - expected
+    
+    + undefined
+    - '42501'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '42501'
+  operator: 'strictEqual'
+  stack: |-
+    denied (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:12:29)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:104:36)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: S26: personal suspendido no elimina otro usuario
+not ok 26 - S26: personal suspendido no elimina otro usuario
+  ---
+  duration_ms: 59.5447
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:106:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'cannot insert into column "cedula" of view "users"'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'cannot insert into column "cedula" of view "users"'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:109:3)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: S27: personal suspendido no crea un administrador mediante RPC
+not ok 27 - S27: personal suspendido no crea un administrador mediante RPC
+  ---
+  duration_ms: 114.1431
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:112:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    La operación debe rechazarse por autorización, no por ambigüedad o fallo interno
+    + actual - expected
+    
+    + undefined
+    - '42501'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '42501'
+  operator: 'strictEqual'
+  stack: |-
+    denied (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:12:29)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:113:36)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: S28: atleta no duplica su identidad deportiva
+not ok 28 - S28: atleta no duplica su identidad deportiva
+  ---
+  duration_ms: 26.0559
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:115:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    La operación debe rechazarse por autorización, no por ambigüedad o fallo interno
+    
+    '23502' !== '42501'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '42501'
+  actual: '23502'
+  operator: 'strictEqual'
+  stack: |-
+    denied (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:12:29)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:116:35)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: S29: atleta no altera su categoría usada en clasificación
+not ok 29 - S29: atleta no altera su categoría usada en clasificación
+  ---
+  duration_ms: 46.2845
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:118:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'perfeccionamiento_hombres'
+    - 'iniciacion_hombres'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'iniciacion_hombres'
+  actual: 'perfeccionamiento_hombres'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:119:120)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: S30: metadata editable de Auth no concede un perfil administrador
+not ok 30 - S30: metadata editable de Auth no concede un perfil administrador
+  ---
+  duration_ms: 94.4698
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:121:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'administrador'
+    - 'usuario'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'usuario'
+  actual: 'administrador'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:122:39)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: S31: compra RPC rechaza cosmético bloqueado aunque exista saldo
+not ok 31 - S31: compra RPC rechaza cosmético bloqueado aunque exista saldo
+  ---
+  duration_ms: 79.1911
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:124:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    La operación debe rechazarse por autorización, no por ambigüedad o fallo interno
+    + actual - expected
+    
+    + undefined
+    - '42501'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '42501'
+  operator: 'strictEqual'
+  stack: |-
+    denied (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:12:29)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:130:3)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+1..31
+# tests 31
+# suites 0
+# pass 24
+# fail 7
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2984.4961
+

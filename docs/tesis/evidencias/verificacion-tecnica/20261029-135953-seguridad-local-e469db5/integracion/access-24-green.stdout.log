@@ -1,0 +1,611 @@
+TAP version 13
+# Subtest: S01: anónimo no puede invocar borrado de pago
+not ok 1 - S01: anónimo no puede invocar borrado de pago
+  ---
+  duration_ms: 1015.2936
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:18:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S02: atleta no puede invocar borrado de su pago
+not ok 2 - S02: atleta no puede invocar borrado de su pago
+  ---
+  duration_ms: 0.5392
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:19:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S03: atleta no modifica pago propio por REST
+not ok 3 - S03: atleta no modifica pago propio por REST
+  ---
+  duration_ms: 0.353
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:20:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S04: atleta no inserta XP arbitrario propio
+not ok 4 - S04: atleta no inserta XP arbitrario propio
+  ---
+  duration_ms: 0.0695
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:23:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S05: atleta no cambia saldo propio por REST
+not ok 5 - S05: atleta no cambia saldo propio por REST
+  ---
+  duration_ms: 0.0756
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:26:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S06: atleta no cambia fecha/recuento de recompensa por REST
+not ok 6 - S06: atleta no cambia fecha/recuento de recompensa por REST
+  ---
+  duration_ms: 0.0728
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:29:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S07: atleta tampoco inserta XP de otro atleta
+not ok 7 - S07: atleta tampoco inserta XP de otro atleta
+  ---
+  duration_ms: 0.0848
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:32:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S08: recompensa diaria concurrente entrega exactamente ocho XP una vez
+not ok 8 - S08: recompensa diaria concurrente entrega exactamente ocho XP una vez
+  ---
+  duration_ms: 0.0693
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:33:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S09: RPC diaria no acepta actor, fecha o XP suministrados
+not ok 9 - S09: RPC diaria no acepta actor, fecha o XP suministrados
+  ---
+  duration_ms: 0.0896
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:39:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S10: atleta no se autoasigna rol administrador
+not ok 10 - S10: atleta no se autoasigna rol administrador
+  ---
+  duration_ms: 0.069
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:43:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S11: perfil alternativo tampoco permite autoasignación de rol
+not ok 11 - S11: perfil alternativo tampoco permite autoasignación de rol
+  ---
+  duration_ms: 0.0367
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:46:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S12: usuario suspendido no puede quitar su suspensión
+not ok 12 - S12: usuario suspendido no puede quitar su suspensión
+  ---
+  duration_ms: 0.0457
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:49:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S13: administrador borra y restaura por RPC UUID con auditoría
+not ok 13 - S13: administrador borra y restaura por RPC UUID con auditoría
+  ---
+  duration_ms: 0.0516
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:52:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S14: entrenador activo conserva RPC de pagos
+not ok 14 - S14: entrenador activo conserva RPC de pagos
+  ---
+  duration_ms: 0.0332
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:58:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S15: administrador suspendido no modifica pagos por REST
+not ok 15 - S15: administrador suspendido no modifica pagos por REST
+  ---
+  duration_ms: 0.0326
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:61:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S16: administrador suspendido no modifica pagos por RPC
+not ok 16 - S16: administrador suspendido no modifica pagos por RPC
+  ---
+  duration_ms: 0.041
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:64:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S17: atleta no puede regalarse inventario cosmético
+not ok 17 - S17: atleta no puede regalarse inventario cosmético
+  ---
+  duration_ms: 0.039
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:65:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S18: atleta no puede regalarse logros
+not ok 18 - S18: atleta no puede regalarse logros
+  ---
+  duration_ms: 0.0297
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:69:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S19: anónimo no obtiene recompensa diaria
+not ok 19 - S19: anónimo no obtiene recompensa diaria
+  ---
+  duration_ms: 0.0854
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:73:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S20: personal suspendido no obtiene recompensa diaria
+not ok 20 - S20: personal suspendido no obtiene recompensa diaria
+  ---
+  duration_ms: 0.0367
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:74:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S21: entrenador conserva suspensión y reactivación de un atleta
+not ok 21 - S21: entrenador conserva suspensión y reactivación de un atleta
+  ---
+  duration_ms: 0.0313
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:75:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S22: atleta no registra asistencia propia para fabricar progreso
+not ok 22 - S22: atleta no registra asistencia propia para fabricar progreso
+  ---
+  duration_ms: 0.0423
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:83:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S23: atleta no registra evaluación propia para fabricar progreso
+not ok 23 - S23: atleta no registra evaluación propia para fabricar progreso
+  ---
+  duration_ms: 0.0301
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:86:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: S24: sincronización con gasto obsoleto conserva el gasto ya confirmado
+not ok 24 - S24: sincronización con gasto obsoleto conserva el gasto ya confirmado
+  ---
+  duration_ms: 0.0283
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:89:1'
+  failureType: 'hookFailed'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'permission denied for function is_active_user'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'permission denied for function is_active_user'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:16:2)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 0
+# fail 24
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1419.6776
+

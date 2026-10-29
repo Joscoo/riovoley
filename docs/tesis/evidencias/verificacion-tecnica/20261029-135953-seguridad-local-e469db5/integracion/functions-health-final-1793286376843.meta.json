@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/integration/functions-health.local.test.cjs"
+  ],
+  "start": "2026-10-29T15:06:16.843Z",
+  "end": "2026-10-29T15:06:17.367Z",
+  "durationSeconds": 0.524,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

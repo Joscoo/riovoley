@@ -1,0 +1,6 @@
+{
+  "provider": "Supabase Auth → SMTP Mailpit local",
+  "delivered": true,
+  "passwordChanged": false,
+  "externalResendOrFcmValidated": false
+}

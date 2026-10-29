@@ -1,0 +1,15 @@
+const fs=require('node:fs');
+const path=require('node:path');
+const cp=require('node:child_process');
+const root=path.resolve(__dirname,'../../..'),runtime=path.join(root,'.e2e-local');
+const stamp=new Date().toISOString().replace(/[-:]/g,'').replace('T','-').slice(0,15);
+const commit=cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();
+const base=path.join(root,'docs/tesis/evidencias/verificacion-tecnica',stamp+'-seguridad-local-'+commit.slice(0,7));
+const pointer=path.join(runtime,'evidence-dir.txt');
+fs.copyFileSync(pointer,path.join(runtime,'evidence-before-security-'+stamp+'.txt'),fs.constants.COPYFILE_EXCL);
+for(const name of ['unitarias','integracion','seguridad','e2e','compilacion-web','android'])fs.mkdirSync(path.join(base,name),{recursive:true});
+fs.writeFileSync(pointer,base+'\n');
+const h=require('../../e2e/local/harness.cjs');
+h.write('CONTEXTO.json',{commit,createdAt:new Date().toISOString(),scope:'Cambios de RLS/RPC y pruebas exclusivamente locales autorizados por el usuario: Dale continuemos. No autoriza producción, despliegues ni push nuevos.',backend:'Supabase Docker riovoley-e2e-local en loopback',productionChanged:false,previousEvidencePreserved:true});
+h.write('estado-inicial.txt',cp.execFileSync('git',['status','--short'],{cwd:root,encoding:'utf8'}));
+console.log(path.relative(root,base));

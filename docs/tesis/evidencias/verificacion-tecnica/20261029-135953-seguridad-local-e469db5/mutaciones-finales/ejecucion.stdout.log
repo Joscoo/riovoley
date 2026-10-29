@@ -1,0 +1,13 @@
+
+Running 7 tests using 2 workers
+
+  ✓  1 [mobile-390] › tests\e2e\admin.happy-path-controlled.spec.js:6:1 › admin happy path controlado: atleta + pago + asistencia (33.9s)
+  ✓  2 [mobile-430] › tests\e2e\admin.happy-path-controlled.spec.js:6:1 › admin happy path controlado: atleta + pago + asistencia (36.2s)
+  ✓  3 [mobile-480] › tests\e2e\admin.happy-path-controlled.spec.js:6:1 › admin happy path controlado: atleta + pago + asistencia (15.0s)
+  ✓  5 [tablet-1024] › tests\e2e\admin.happy-path-controlled.spec.js:6:1 › admin happy path controlado: atleta + pago + asistencia (9.9s)
+  ✓  4 [tablet-768] › tests\e2e\admin.happy-path-controlled.spec.js:6:1 › admin happy path controlado: atleta + pago + asistencia (32.8s)
+  ✓  6 [desktop-1440] › tests\e2e\admin.happy-path-controlled.spec.js:6:1 › admin happy path controlado: atleta + pago + asistencia (12.6s)
+  ✓  7 [desktop-1920] › tests\e2e\admin.happy-path-controlled.spec.js:6:1 › admin happy path controlado: atleta + pago + asistencia (9.7s)
+
+  7 passed (1.4m)
+

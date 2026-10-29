@@ -1,0 +1,101 @@
+TAP version 13
+# Subtest: perfil aislado no autoriza personal cuando no existe usuario canónico
+ok 1 - perfil aislado no autoriza personal cuando no existe usuario canónico
+  ---
+  duration_ms: 102.932
+  type: 'test'
+  ...
+# Subtest: suspensión canónica bloquea autorización de personal
+ok 2 - suspensión canónica bloquea autorización de personal
+  ---
+  duration_ms: 15.1476
+  type: 'test'
+  ...
+# Subtest: un atleta canónico no obtiene permisos por un perfil alternativo privilegiado
+ok 3 - un atleta canónico no obtiene permisos por un perfil alternativo privilegiado
+  ---
+  duration_ms: 12.6485
+  type: 'test'
+  ...
+# Subtest: personal activo mantiene autorización: administrador
+ok 4 - personal activo mantiene autorización: administrador
+  ---
+  duration_ms: 9.1773
+  type: 'test'
+  ...
+# Subtest: personal activo mantiene autorización: entrenador
+ok 5 - personal activo mantiene autorización: entrenador
+  ---
+  duration_ms: 9.0704
+  type: 'test'
+  ...
+# Subtest: rechaza una respuesta 200 del proveedor sin identificador de mensaje
+ok 6 - rechaza una respuesta 200 del proveedor sin identificador de mensaje
+  ---
+  duration_ms: 25.4055
+  type: 'test'
+  ...
+# Subtest: un dominio no verificado se informa como fallo de configuracion
+ok 7 - un dominio no verificado se informa como fallo de configuracion
+  ---
+  duration_ms: 0.555
+  type: 'test'
+  ...
+# Subtest: la peticion al proveedor tiene un limite de tiempo
+ok 8 - la peticion al proveedor tiene un limite de tiempo
+  ---
+  duration_ms: 0.4565
+  type: 'test'
+  ...
+# Subtest: un timeout no se convierte en correo enviado
+ok 9 - un timeout no se convierte en correo enviado
+  ---
+  duration_ms: 0.314
+  type: 'test'
+  ...
+# Subtest: no permite usar el correo de la aplicacion sin sesion autorizada
+ok 10 - no permite usar el correo de la aplicacion sin sesion autorizada
+  ---
+  duration_ms: 0.5234
+  type: 'test'
+  ...
+# Subtest: rechaza un destinatario invalido antes de contactar al proveedor
+ok 11 - rechaza un destinatario invalido antes de contactar al proveedor
+  ---
+  duration_ms: 0.3271
+  type: 'test'
+  ...
+# Subtest: un entrenador no puede cambiar la contrasena de un administrador
+ok 12 - un entrenador no puede cambiar la contrasena de un administrador
+  ---
+  duration_ms: 0.5517
+  type: 'test'
+  ...
+# Subtest: una contrasena temporal debil se rechaza antes de la actualizacion
+ok 13 - una contrasena temporal debil se rechaza antes de la actualizacion
+  ---
+  duration_ms: 0.2848
+  type: 'test'
+  ...
+# Subtest: marca primer ingreso despues de actualizar Auth y devuelve el email real de Auth
+ok 14 - marca primer ingreso despues de actualizar Auth y devuelve el email real de Auth
+  ---
+  duration_ms: 0.9022
+  type: 'test'
+  ...
+# Subtest: conserva el resultado del cambio si falla sincronizar primer ingreso
+ok 15 - conserva el resultado del cambio si falla sincronizar primer ingreso
+  ---
+  duration_ms: 0.2509
+  type: 'test'
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 999.0394
+

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "install",
+    "--prefix",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\deno-tool",
+    "--save-exact",
+    "--ignore-scripts",
+    "--no-audit",
+    "--no-fund",
+    "deno@2.9.6"
+  ],
+  "start": "2026-10-29T14:49:23.190Z",
+  "end": "2026-10-29T14:49:25.724Z",
+  "durationSeconds": 2.534,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

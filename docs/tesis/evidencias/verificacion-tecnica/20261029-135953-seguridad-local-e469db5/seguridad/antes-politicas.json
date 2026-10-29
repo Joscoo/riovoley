@@ -1,0 +1,1112 @@
+[
+  {
+    "schemaname": "billing",
+    "tablename": "membership_types",
+    "policyname": "rls_membership_types_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "( SELECT is_admin() AS is_admin)",
+    "with_check": null
+  },
+  {
+    "schemaname": "billing",
+    "tablename": "membership_types",
+    "policyname": "rls_membership_types_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "( SELECT is_admin() AS is_admin)"
+  },
+  {
+    "schemaname": "billing",
+    "tablename": "membership_types",
+    "policyname": "rls_membership_types_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{anon,authenticated}",
+    "cmd": "SELECT",
+    "qual": "true",
+    "with_check": null
+  },
+  {
+    "schemaname": "billing",
+    "tablename": "membership_types",
+    "policyname": "rls_membership_types_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "( SELECT is_admin() AS is_admin)",
+    "with_check": "( SELECT is_admin() AS is_admin)"
+  },
+  {
+    "schemaname": "billing",
+    "tablename": "payment_types",
+    "policyname": "rls_payment_types_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "( SELECT is_admin() AS is_admin)",
+    "with_check": null
+  },
+  {
+    "schemaname": "billing",
+    "tablename": "payment_types",
+    "policyname": "rls_payment_types_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "( SELECT is_admin() AS is_admin)"
+  },
+  {
+    "schemaname": "billing",
+    "tablename": "payment_types",
+    "policyname": "rls_payment_types_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{anon,authenticated}",
+    "cmd": "SELECT",
+    "qual": "true",
+    "with_check": null
+  },
+  {
+    "schemaname": "billing",
+    "tablename": "payment_types",
+    "policyname": "rls_payment_types_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "( SELECT is_admin() AS is_admin)",
+    "with_check": "( SELECT is_admin() AS is_admin)"
+  },
+  {
+    "schemaname": "billing",
+    "tablename": "payments",
+    "policyname": "rls_payments_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "(( SELECT is_admin() AS is_admin) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = payments.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))) OR ( SELECT is_admin_or_trainer() AS is_admin_or_trainer))",
+    "with_check": null
+  },
+  {
+    "schemaname": "billing",
+    "tablename": "payments",
+    "policyname": "rls_payments_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "(( SELECT is_admin() AS is_admin) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = payments.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))) OR ( SELECT is_admin_or_trainer() AS is_admin_or_trainer))"
+  },
+  {
+    "schemaname": "billing",
+    "tablename": "payments",
+    "policyname": "rls_payments_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "(( SELECT is_admin() AS is_admin) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = payments.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))) OR ( SELECT is_admin_or_trainer() AS is_admin_or_trainer))",
+    "with_check": null
+  },
+  {
+    "schemaname": "billing",
+    "tablename": "payments",
+    "policyname": "rls_payments_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "(( SELECT is_admin() AS is_admin) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = payments.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))) OR ( SELECT is_admin_or_trainer() AS is_admin_or_trainer))",
+    "with_check": "(( SELECT is_admin() AS is_admin) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = payments.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))) OR ( SELECT is_admin_or_trainer() AS is_admin_or_trainer))"
+  },
+  {
+    "schemaname": "core",
+    "tablename": "students",
+    "policyname": "rls_students_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "(( SELECT is_admin() AS is_admin) OR ( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (( SELECT auth.uid() AS uid) = user_id))",
+    "with_check": null
+  },
+  {
+    "schemaname": "core",
+    "tablename": "students",
+    "policyname": "rls_students_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "(( SELECT is_admin() AS is_admin) OR ( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (( SELECT auth.uid() AS uid) = user_id))"
+  },
+  {
+    "schemaname": "core",
+    "tablename": "students",
+    "policyname": "rls_students_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "(( SELECT is_admin() AS is_admin) OR ( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (( SELECT auth.uid() AS uid) = user_id))",
+    "with_check": null
+  },
+  {
+    "schemaname": "core",
+    "tablename": "students",
+    "policyname": "rls_students_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "(( SELECT is_admin() AS is_admin) OR ( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (( SELECT auth.uid() AS uid) = user_id))",
+    "with_check": "(( SELECT is_admin() AS is_admin) OR ( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (( SELECT auth.uid() AS uid) = user_id))"
+  },
+  {
+    "schemaname": "core",
+    "tablename": "users",
+    "policyname": "rls_users_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "(( SELECT is_admin() AS is_admin) OR (( SELECT is_admin_or_trainer() AS is_admin_or_trainer) AND (role = 'estudiante'::text)))",
+    "with_check": null
+  },
+  {
+    "schemaname": "core",
+    "tablename": "users",
+    "policyname": "rls_users_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "(( SELECT is_admin() AS is_admin) OR (( SELECT is_admin_or_trainer() AS is_admin_or_trainer) AND (role = 'estudiante'::text)))"
+  },
+  {
+    "schemaname": "core",
+    "tablename": "users",
+    "policyname": "rls_users_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (id = ( SELECT auth.uid() AS uid)))",
+    "with_check": null
+  },
+  {
+    "schemaname": "core",
+    "tablename": "users",
+    "policyname": "rls_users_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "(( SELECT is_admin() AS is_admin) OR (id = ( SELECT auth.uid() AS uid)) OR (( SELECT is_admin_or_trainer() AS is_admin_or_trainer) AND (role = 'estudiante'::text)))",
+    "with_check": "(( SELECT is_admin() AS is_admin) OR (id = ( SELECT auth.uid() AS uid)) OR (( SELECT is_admin_or_trainer() AS is_admin_or_trainer) AND (role = 'estudiante'::text)))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "achievement_catalog",
+    "policyname": "rls_achievement_catalog_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "( SELECT is_admin() AS is_admin)",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "achievement_catalog",
+    "policyname": "rls_achievement_catalog_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "( SELECT is_admin() AS is_admin)"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "achievement_catalog",
+    "policyname": "rls_achievement_catalog_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "true",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "achievement_catalog",
+    "policyname": "rls_achievement_catalog_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "( SELECT is_admin() AS is_admin)",
+    "with_check": "( SELECT is_admin() AS is_admin)"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "athlete_stages_catalog",
+    "policyname": "rls_athlete_stages_catalog_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "( SELECT is_admin() AS is_admin)",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "athlete_stages_catalog",
+    "policyname": "rls_athlete_stages_catalog_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "( SELECT is_admin() AS is_admin)"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "athlete_stages_catalog",
+    "policyname": "rls_athlete_stages_catalog_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "true",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "athlete_stages_catalog",
+    "policyname": "rls_athlete_stages_catalog_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "( SELECT is_admin() AS is_admin)",
+    "with_check": "( SELECT is_admin() AS is_admin)"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "campaigns_catalog",
+    "policyname": "rls_campaigns_catalog_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "( SELECT is_admin() AS is_admin)",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "campaigns_catalog",
+    "policyname": "rls_campaigns_catalog_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "( SELECT is_admin() AS is_admin)"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "campaigns_catalog",
+    "policyname": "rls_campaigns_catalog_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "true",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "campaigns_catalog",
+    "policyname": "rls_campaigns_catalog_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "( SELECT is_admin() AS is_admin)",
+    "with_check": "( SELECT is_admin() AS is_admin)"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "challenges_catalog",
+    "policyname": "rls_challenges_catalog_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "( SELECT is_admin() AS is_admin)",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "challenges_catalog",
+    "policyname": "rls_challenges_catalog_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "( SELECT is_admin() AS is_admin)"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "challenges_catalog",
+    "policyname": "rls_challenges_catalog_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "true",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "challenges_catalog",
+    "policyname": "rls_challenges_catalog_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "( SELECT is_admin() AS is_admin)",
+    "with_check": "( SELECT is_admin() AS is_admin)"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "cosmetic_items_catalog",
+    "policyname": "rls_cosmetic_items_catalog_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "( SELECT is_admin() AS is_admin)",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "cosmetic_items_catalog",
+    "policyname": "rls_cosmetic_items_catalog_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "( SELECT is_admin() AS is_admin)"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "cosmetic_items_catalog",
+    "policyname": "rls_cosmetic_items_catalog_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "true",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "cosmetic_items_catalog",
+    "policyname": "rls_cosmetic_items_catalog_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "( SELECT is_admin() AS is_admin)",
+    "with_check": "( SELECT is_admin() AS is_admin)"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "currency_ledger",
+    "policyname": "rls_currency_ledger_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = currency_ledger.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "currency_ledger",
+    "policyname": "rls_currency_ledger_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = currency_ledger.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "currency_ledger",
+    "policyname": "rls_currency_ledger_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = currency_ledger.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "currency_ledger",
+    "policyname": "rls_currency_ledger_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = currency_ledger.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = currency_ledger.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "currency_wallets",
+    "policyname": "rls_currency_wallets_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = currency_wallets.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "currency_wallets",
+    "policyname": "rls_currency_wallets_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = currency_wallets.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "currency_wallets",
+    "policyname": "rls_currency_wallets_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = currency_wallets.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "currency_wallets",
+    "policyname": "rls_currency_wallets_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = currency_wallets.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = currency_wallets.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "hidden_rewards_catalog",
+    "policyname": "rls_hidden_rewards_catalog_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "( SELECT is_admin() AS is_admin)",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "hidden_rewards_catalog",
+    "policyname": "rls_hidden_rewards_catalog_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "( SELECT is_admin() AS is_admin)"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "hidden_rewards_catalog",
+    "policyname": "rls_hidden_rewards_catalog_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "true",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "hidden_rewards_catalog",
+    "policyname": "rls_hidden_rewards_catalog_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "( SELECT is_admin() AS is_admin)",
+    "with_check": "( SELECT is_admin() AS is_admin)"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "leaderboard_snapshots",
+    "policyname": "rls_leaderboard_snapshots_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = leaderboard_snapshots.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))) OR ( SELECT is_admin_or_trainer() AS is_admin_or_trainer))",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "leaderboard_snapshots",
+    "policyname": "rls_leaderboard_snapshots_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = leaderboard_snapshots.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))) OR ( SELECT is_admin_or_trainer() AS is_admin_or_trainer))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "leaderboard_snapshots",
+    "policyname": "rls_leaderboard_snapshots_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "true",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "leaderboard_snapshots",
+    "policyname": "rls_leaderboard_snapshots_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = leaderboard_snapshots.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))) OR ( SELECT is_admin_or_trainer() AS is_admin_or_trainer))",
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = leaderboard_snapshots.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))) OR ( SELECT is_admin_or_trainer() AS is_admin_or_trainer))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "login_rewards",
+    "policyname": "rls_login_rewards_owner",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "ALL",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (user_id = ( SELECT auth.uid() AS uid)))",
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (user_id = ( SELECT auth.uid() AS uid)))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "reward_events",
+    "policyname": "rls_reward_events_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = reward_events.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "reward_events",
+    "policyname": "rls_reward_events_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = reward_events.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "reward_events",
+    "policyname": "rls_reward_events_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = reward_events.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "reward_events",
+    "policyname": "rls_reward_events_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = reward_events.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = reward_events.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_achievements",
+    "policyname": "rls_student_achievements_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_achievements.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_achievements",
+    "policyname": "rls_student_achievements_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_achievements.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_achievements",
+    "policyname": "rls_student_achievements_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_achievements.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_achievements",
+    "policyname": "rls_student_achievements_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_achievements.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_achievements.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_campaign_progress",
+    "policyname": "gamification_student_campaign_progress_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_campaign_progress.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_campaign_progress",
+    "policyname": "gamification_student_campaign_progress_read",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_campaign_progress.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_campaign_progress",
+    "policyname": "gamification_student_campaign_progress_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_campaign_progress.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_campaign_progress.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_challenge_progress",
+    "policyname": "rls_student_challenge_progress_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_challenge_progress.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_challenge_progress",
+    "policyname": "rls_student_challenge_progress_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_challenge_progress.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_challenge_progress",
+    "policyname": "rls_student_challenge_progress_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_challenge_progress.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_challenge_progress",
+    "policyname": "rls_student_challenge_progress_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_challenge_progress.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_challenge_progress.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_cosmetic_equipment",
+    "policyname": "rls_student_cosmetic_equipment_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "( SELECT is_admin_or_trainer() AS is_admin_or_trainer)",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_cosmetic_equipment",
+    "policyname": "rls_student_cosmetic_equipment_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "( SELECT is_admin_or_trainer() AS is_admin_or_trainer)"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_cosmetic_equipment",
+    "policyname": "rls_student_cosmetic_equipment_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_cosmetic_equipment.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid)))))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_cosmetic_equipment",
+    "policyname": "rls_student_cosmetic_equipment_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "( SELECT is_admin_or_trainer() AS is_admin_or_trainer)",
+    "with_check": "( SELECT is_admin_or_trainer() AS is_admin_or_trainer)"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_cosmetic_items",
+    "policyname": "rls_student_cosmetic_items_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "( SELECT is_admin_or_trainer() AS is_admin_or_trainer)",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_cosmetic_items",
+    "policyname": "rls_student_cosmetic_items_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "( SELECT is_admin_or_trainer() AS is_admin_or_trainer)"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_cosmetic_items",
+    "policyname": "rls_student_cosmetic_items_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_cosmetic_items.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid)))))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_cosmetic_items",
+    "policyname": "rls_student_cosmetic_items_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "( SELECT is_admin_or_trainer() AS is_admin_or_trainer)",
+    "with_check": "( SELECT is_admin_or_trainer() AS is_admin_or_trainer)"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_current_stage",
+    "policyname": "gamification_student_current_stage_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_current_stage.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_current_stage",
+    "policyname": "gamification_student_current_stage_read",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_current_stage.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_current_stage",
+    "policyname": "gamification_student_current_stage_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_current_stage.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_current_stage.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_hidden_rewards",
+    "policyname": "gamification_student_hidden_rewards_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_hidden_rewards.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_hidden_rewards",
+    "policyname": "gamification_student_hidden_rewards_read",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_hidden_rewards.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_hidden_rewards",
+    "policyname": "gamification_student_hidden_rewards_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_hidden_rewards.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_hidden_rewards.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_identity",
+    "policyname": "gamification_student_identity_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_identity.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_identity",
+    "policyname": "gamification_student_identity_read",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_identity.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_identity",
+    "policyname": "gamification_student_identity_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_identity.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_identity.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_profiles",
+    "policyname": "rls_student_profiles_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_profiles.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_profiles",
+    "policyname": "rls_student_profiles_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_profiles.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_profiles",
+    "policyname": "rls_student_profiles_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_profiles.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_profiles",
+    "policyname": "rls_student_profiles_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_profiles.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_profiles.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_stage_history",
+    "policyname": "gamification_student_stage_history_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_stage_history.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "student_stage_history",
+    "policyname": "gamification_student_stage_history_read",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = student_stage_history.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "titles_catalog",
+    "policyname": "rls_titles_catalog_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "( SELECT is_admin() AS is_admin)",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "titles_catalog",
+    "policyname": "rls_titles_catalog_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "( SELECT is_admin() AS is_admin)"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "titles_catalog",
+    "policyname": "rls_titles_catalog_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "true",
+    "with_check": null
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "titles_catalog",
+    "policyname": "rls_titles_catalog_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "( SELECT is_admin() AS is_admin)",
+    "with_check": "( SELECT is_admin() AS is_admin)"
+  },
+  {
+    "schemaname": "gamification",
+    "tablename": "xp_ledger",
+    "policyname": "rls_xp_ledger_owner",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "ALL",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = xp_ledger.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))",
+    "with_check": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (EXISTS ( SELECT 1\n   FROM core.students s\n  WHERE ((s.id = xp_ledger.student_id) AND (s.user_id = ( SELECT auth.uid() AS uid))))))"
+  },
+  {
+    "schemaname": "profiles",
+    "tablename": "mobile_device_registrations",
+    "policyname": "mobile_device_registrations_delete_own",
+    "permissive": "PERMISSIVE",
+    "roles": "{public}",
+    "cmd": "DELETE",
+    "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+    "with_check": null
+  },
+  {
+    "schemaname": "profiles",
+    "tablename": "mobile_device_registrations",
+    "policyname": "mobile_device_registrations_insert_own",
+    "permissive": "PERMISSIVE",
+    "roles": "{public}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+  },
+  {
+    "schemaname": "profiles",
+    "tablename": "mobile_device_registrations",
+    "policyname": "mobile_device_registrations_select_own",
+    "permissive": "PERMISSIVE",
+    "roles": "{public}",
+    "cmd": "SELECT",
+    "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+    "with_check": null
+  },
+  {
+    "schemaname": "profiles",
+    "tablename": "mobile_device_registrations",
+    "policyname": "mobile_device_registrations_update_own",
+    "permissive": "PERMISSIVE",
+    "roles": "{public}",
+    "cmd": "UPDATE",
+    "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+    "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+  },
+  {
+    "schemaname": "profiles",
+    "tablename": "user_notification_preferences",
+    "policyname": "user_notification_preferences_insert_own",
+    "permissive": "PERMISSIVE",
+    "roles": "{public}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+  },
+  {
+    "schemaname": "profiles",
+    "tablename": "user_notification_preferences",
+    "policyname": "user_notification_preferences_select_own",
+    "permissive": "PERMISSIVE",
+    "roles": "{public}",
+    "cmd": "SELECT",
+    "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+    "with_check": null
+  },
+  {
+    "schemaname": "profiles",
+    "tablename": "user_notification_preferences",
+    "policyname": "user_notification_preferences_update_own",
+    "permissive": "PERMISSIVE",
+    "roles": "{public}",
+    "cmd": "UPDATE",
+    "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+    "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+  },
+  {
+    "schemaname": "profiles",
+    "tablename": "user_profiles",
+    "policyname": "rls_user_profiles_delete",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "DELETE",
+    "qual": "(( SELECT is_admin() AS is_admin) OR (id = ( SELECT auth.uid() AS uid)) OR (( SELECT is_admin_or_trainer() AS is_admin_or_trainer) AND (EXISTS ( SELECT 1\n   FROM core.users u\n  WHERE ((u.id = user_profiles.id) AND (u.role = 'estudiante'::text))))))",
+    "with_check": null
+  },
+  {
+    "schemaname": "profiles",
+    "tablename": "user_profiles",
+    "policyname": "rls_user_profiles_insert",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "INSERT",
+    "qual": null,
+    "with_check": "(( SELECT is_admin() AS is_admin) OR (id = ( SELECT auth.uid() AS uid)) OR (( SELECT is_admin_or_trainer() AS is_admin_or_trainer) AND (EXISTS ( SELECT 1\n   FROM core.users u\n  WHERE ((u.id = user_profiles.id) AND (u.role = 'estudiante'::text))))))"
+  },
+  {
+    "schemaname": "profiles",
+    "tablename": "user_profiles",
+    "policyname": "rls_user_profiles_select",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "SELECT",
+    "qual": "(( SELECT is_admin_or_trainer() AS is_admin_or_trainer) OR (id = ( SELECT auth.uid() AS uid)))",
+    "with_check": null
+  },
+  {
+    "schemaname": "profiles",
+    "tablename": "user_profiles",
+    "policyname": "rls_user_profiles_update",
+    "permissive": "PERMISSIVE",
+    "roles": "{authenticated}",
+    "cmd": "UPDATE",
+    "qual": "(( SELECT is_admin() AS is_admin) OR (id = ( SELECT auth.uid() AS uid)) OR (( SELECT is_admin_or_trainer() AS is_admin_or_trainer) AND (EXISTS ( SELECT 1\n   FROM core.users u\n  WHERE ((u.id = user_profiles.id) AND (u.role = 'estudiante'::text))))))",
+    "with_check": "(( SELECT is_admin() AS is_admin) OR (id = ( SELECT auth.uid() AS uid)) OR (( SELECT is_admin_or_trainer() AS is_admin_or_trainer) AND (EXISTS ( SELECT 1\n   FROM core.users u\n  WHERE ((u.id = user_profiles.id) AND (u.role = 'estudiante'::text))))))"
+  }
+]

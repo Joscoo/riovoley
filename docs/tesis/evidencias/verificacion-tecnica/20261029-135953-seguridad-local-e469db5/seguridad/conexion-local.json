@@ -1,0 +1,7 @@
+{
+  "host": "127.0.0.1",
+  "port": 55322,
+  "projectId": "riovoley-e2e-local",
+  "authAndDatabaseIdentityMatched": true,
+  "method": "pg8.23.1; Docker Desktop Windows API no responde; no cambia el motor ni sus permisos"
+}

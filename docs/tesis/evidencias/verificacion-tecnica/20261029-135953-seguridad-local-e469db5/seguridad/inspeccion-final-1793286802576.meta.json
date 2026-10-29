@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/security/inspect.cjs"
+  ],
+  "start": "2026-10-29T15:13:22.576Z",
+  "end": "2026-10-29T15:13:22.887Z",
+  "durationSeconds": 0.311,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

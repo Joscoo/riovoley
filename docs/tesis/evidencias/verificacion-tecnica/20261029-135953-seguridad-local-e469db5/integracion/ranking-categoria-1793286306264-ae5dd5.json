@@ -1,0 +1,10 @@
+{
+  "category": "iniciacion_hombres",
+  "participants": 59,
+  "consecutivePositions": true,
+  "descendingScores": true,
+  "tiesChecked": true,
+  "apiMatchesPersistedSnapshot": true,
+  "unknownCategoryEmpty": true,
+  "scope": "Categoría del fixture y ranking overall, sin extrapolar a todas las categorías o métricas."
+}

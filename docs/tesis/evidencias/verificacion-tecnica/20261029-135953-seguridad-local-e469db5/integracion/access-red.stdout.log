@@ -1,0 +1,423 @@
+TAP version 13
+# Subtest: S01: anónimo no puede invocar borrado de pago
+not ok 1 - S01: anónimo no puede invocar borrado de pago
+  ---
+  duration_ms: 1175.9794
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:18:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    La operación debe rechazarse por autorización, no por ambigüedad o fallo interno
+    + actual - expected
+    
+    + 'PGRST203'
+    - '42501'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '42501'
+  actual: 'PGRST203'
+  operator: 'strictEqual'
+  stack: |-
+    denied (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:8:29)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:18:64)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)
+  ...
+# Subtest: S02: atleta no puede invocar borrado de su pago
+not ok 2 - S02: atleta no puede invocar borrado de su pago
+  ---
+  duration_ms: 48.5245
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:19:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    La operación debe rechazarse por autorización, no por ambigüedad o fallo interno
+    + actual - expected
+    
+    + 'PGRST203'
+    - '42501'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '42501'
+  actual: 'PGRST203'
+  operator: 'strictEqual'
+  stack: |-
+    denied (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:8:29)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:19:70)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: S03: atleta no modifica pago propio por REST
+not ok 3 - S03: atleta no modifica pago propio por REST
+  ---
+  duration_ms: 53.8944
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:20:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + '2026-10-29T14:07:31.546+00:00'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: '2026-10-29T14:07:31.546+00:00'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:21:146)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: S04: atleta no inserta XP arbitrario propio
+not ok 4 - S04: atleta no inserta XP arbitrario propio
+  ---
+  duration_ms: 32.8964
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:23:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    La operación debe rechazarse por autorización, no por ambigüedad o fallo interno
+    + actual - expected
+    
+    + undefined
+    - '42501'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '42501'
+  operator: 'strictEqual'
+  stack: |-
+    denied (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:8:29)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:24:6)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: S05: atleta no cambia saldo propio por REST
+not ok 5 - S05: atleta no cambia saldo propio por REST
+  ---
+  duration_ms: 34.531
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:26:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    99999 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 99999
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:27:144)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: S06: atleta no cambia fecha/recuento de recompensa por REST
+not ok 6 - S06: atleta no cambia fecha/recuento de recompensa por REST
+  ---
+  duration_ms: 27.7547
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:29:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    La operación debe rechazarse por autorización, no por ambigüedad o fallo interno
+    + actual - expected
+    
+    + undefined
+    - '42501'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '42501'
+  operator: 'strictEqual'
+  stack: |-
+    denied (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:8:29)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:30:6)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: S07: atleta tampoco inserta XP de otro atleta
+ok 7 - S07: atleta tampoco inserta XP de otro atleta
+  ---
+  duration_ms: 6.883
+  type: 'test'
+  ...
+# Subtest: S08: recompensa diaria concurrente entrega exactamente ocho XP una vez
+not ok 8 - S08: recompensa diaria concurrente entrega exactamente ocho XP una vez
+  ---
+  duration_ms: 22.0989
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:33:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'Could not find the function public.claim_daily_login_reward without parameters in the schema cache'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'Could not find the function public.claim_daily_login_reward without parameters in the schema cache'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    Array.forEach (<anonymous>)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:34:117)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: S09: RPC diaria no acepta actor, fecha o XP suministrados
+ok 9 - S09: RPC diaria no acepta actor, fecha o XP suministrados
+  ---
+  duration_ms: 16.3083
+  type: 'test'
+  ...
+# Subtest: S10: atleta no se autoasigna rol administrador
+ok 10 - S10: atleta no se autoasigna rol administrador
+  ---
+  duration_ms: 33.1732
+  type: 'test'
+  ...
+# Subtest: S11: perfil alternativo tampoco permite autoasignación de rol
+ok 11 - S11: perfil alternativo tampoco permite autoasignación de rol
+  ---
+  duration_ms: 14.6178
+  type: 'test'
+  ...
+# Subtest: S12: usuario suspendido no puede quitar su suspensión
+not ok 12 - S12: usuario suspendido no puede quitar su suspensión
+  ---
+  duration_ms: 45.4571
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:49:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    La operación debe rechazarse por autorización, no por ambigüedad o fallo interno
+    + actual - expected
+    
+    + undefined
+    - '42501'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '42501'
+  operator: 'strictEqual'
+  stack: |-
+    denied (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:8:29)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:50:6)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: S13: administrador borra y restaura por RPC UUID con auditoría
+not ok 13 - S13: administrador borra y restaura por RPC UUID con auditoría
+  ---
+  duration_ms: 29.6353
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:52:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'Could not choose the best candidate function between: public.soft_delete_payment(payment_id => bigint), public.soft_delete_payment(payment_id => uuid)'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'Could not choose the best candidate function between: public.soft_delete_payment(payment_id => bigint), public.soft_delete_payment(payment_id => uuid)'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:53:15)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: S14: entrenador activo conserva RPC de pagos
+not ok 14 - S14: entrenador activo conserva RPC de pagos
+  ---
+  duration_ms: 31.7467
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:58:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'Could not choose the best candidate function between: public.soft_delete_payment(payment_id => bigint), public.soft_delete_payment(payment_id => uuid)'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'Could not choose the best candidate function between: public.soft_delete_payment(payment_id => bigint), public.soft_delete_payment(payment_id => uuid)'
+  operator: 'strictEqual'
+  stack: |-
+    ok (D:\Riovoley\riovoley\tests\integration\local-fixture.cjs:17:26)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:59:15)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: S15: administrador suspendido no modifica pagos por REST
+not ok 15 - S15: administrador suspendido no modifica pagos por REST
+  ---
+  duration_ms: 34.4369
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:61:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + '2026-10-29T14:07:31.886+00:00'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: '2026-10-29T14:07:31.886+00:00'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:62:117)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: S16: administrador suspendido no modifica pagos por RPC
+not ok 16 - S16: administrador suspendido no modifica pagos por RPC
+  ---
+  duration_ms: 8.4749
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:64:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    La operación debe rechazarse por autorización, no por ambigüedad o fallo interno
+    + actual - expected
+    
+    + 'PGRST203'
+    - '42501'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '42501'
+  actual: 'PGRST203'
+  operator: 'strictEqual'
+  stack: |-
+    denied (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:8:29)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:64:74)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: S17: atleta no puede regalarse inventario cosmético
+ok 17 - S17: atleta no puede regalarse inventario cosmético
+  ---
+  duration_ms: 46.9315
+  type: 'test'
+  ...
+# Subtest: S18: atleta no puede regalarse logros
+not ok 18 - S18: atleta no puede regalarse logros
+  ---
+  duration_ms: 21.5672
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:69:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    La operación debe rechazarse por autorización, no por ambigüedad o fallo interno
+    + actual - expected
+    
+    + undefined
+    - '42501'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '42501'
+  operator: 'strictEqual'
+  stack: |-
+    denied (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:8:29)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:71:6)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: S19: anónimo no obtiene recompensa diaria
+not ok 19 - S19: anónimo no obtiene recompensa diaria
+  ---
+  duration_ms: 8.6411
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:73:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    La operación debe rechazarse por autorización, no por ambigüedad o fallo interno
+    + actual - expected
+    
+    + 'PGRST202'
+    - '42501'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '42501'
+  actual: 'PGRST202'
+  operator: 'strictEqual'
+  stack: |-
+    denied (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:8:29)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:73:60)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: S20: personal suspendido no obtiene recompensa diaria
+not ok 20 - S20: personal suspendido no obtiene recompensa diaria
+  ---
+  duration_ms: 15.3859
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\security.local.test.cjs:74:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    La operación debe rechazarse por autorización, no por ambigüedad o fallo interno
+    + actual - expected
+    
+    + 'PGRST202'
+    - '42501'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '42501'
+  actual: 'PGRST202'
+  operator: 'strictEqual'
+  stack: |-
+    denied (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:8:29)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\security.local.test.cjs:74:72)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 5
+# fail 15
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5802.1767
+

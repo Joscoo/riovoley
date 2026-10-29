@@ -4,6 +4,8 @@ import { corsHeaders } from '../_shared/cors.ts';
 import { readJsonBody } from '../_core/http/body.ts';
 import { internalError, jsonResponse, methodNotAllowed, successEnvelope } from '../_core/http/response.ts';
 import { FirebasePushGateway } from '../_core/push/infrastructure/firebase-push-gateway.ts';
+import { requireActiveStaff } from '../_core/auth-admin/application/require-active-staff.ts';
+import { AuthAdminError } from '../_core/auth-admin/domain/auth-admin-error.ts';
 
 const supabaseUrl = Deno.env.get('SUPABASE_URL') || '';
 const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '';
@@ -144,31 +146,10 @@ const updateAttemptStatus = async (
 };
 
 const requireActor = async (authHeader: string) => {
-  const jwt = authHeader.replace(/^Bearer\s+/i, '').trim();
-  if (!jwt) {
-    throw new Error('Missing bearer token.');
-  }
-
-  const { data, error } = await adminClient.auth.getUser(jwt);
-  if (error || !data.user) {
-    throw new Error('No se pudo autenticar al actor.');
-  }
-
-  const { data: profile, error: profileError } = await adminClient
-    .from('user_profiles')
-    .select('role')
-    .eq('id', data.user.id)
-    .single();
-
-  if (profileError || !profile) {
-    throw new Error('No se pudo cargar el perfil del actor.');
-  }
-
-  if (!['administrador', 'entrenador'].includes(profile.role)) {
-    throw new Error('No autorizado para enviar push.');
-  }
-
-  return { userId: data.user.id, role: profile.role };
+  return requireActiveStaff({
+    auth: adminClient.auth,
+    loadCanonicalActor: (userId: string) => adminClient.from('users').select('role, suspended').eq('id', userId).single(),
+  }, authHeader);
 };
 
 serve(async (req) => {
@@ -410,10 +391,10 @@ serve(async (req) => {
   } catch (error) {
     return jsonResponse({
       success: false,
-      code: 'INTERNAL_ERROR',
+      code: error instanceof AuthAdminError ? error.code : 'INTERNAL_ERROR',
       message: error instanceof Error ? error.message : 'Error desconocido',
       details: serializeError(error),
       data: null,
-    }, 500);
+    }, error instanceof AuthAdminError ? error.status : 500);
   }
 });

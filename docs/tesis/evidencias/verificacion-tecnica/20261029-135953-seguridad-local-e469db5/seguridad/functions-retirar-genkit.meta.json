@@ -1,0 +1,16 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "uninstall",
+    "genkit",
+    "--ignore-scripts",
+    "--no-fund"
+  ],
+  "start": "2026-10-29T15:00:38.983Z",
+  "end": "2026-10-29T15:02:55.175Z",
+  "durationSeconds": 136.192,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "functions"
+}

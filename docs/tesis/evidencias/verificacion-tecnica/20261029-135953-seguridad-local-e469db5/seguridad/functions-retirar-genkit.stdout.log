@@ -1,0 +1,10 @@
+
+removed 430 packages, and audited 304 packages in 2m
+
+1 high severity vulnerability
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+

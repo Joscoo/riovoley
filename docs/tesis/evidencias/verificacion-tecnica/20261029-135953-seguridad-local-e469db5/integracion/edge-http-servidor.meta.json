@@ -1,0 +1,18 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\deno-tool\\node_modules\\@deno\\win32-x64\\deno.exe",
+    "run",
+    "--no-config",
+    "--import-map=D:\\Riovoley\\riovoley\\.e2e-local\\edge-http\\imports.json",
+    "--allow-net=127.0.0.1:55321,127.0.0.1:6161",
+    "--allow-env",
+    "--allow-read=D:\\Riovoley\\riovoley\\.e2e-local\\deno-cache",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\edge-http\\entry.ts"
+  ],
+  "start": "2026-10-29T14:55:59.586Z",
+  "end": "2026-10-29T14:56:07.086Z",
+  "durationSeconds": 7.5,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}
