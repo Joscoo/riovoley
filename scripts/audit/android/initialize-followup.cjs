@@ -1,0 +1,17 @@
+const fs=require('node:fs');
+const path=require('node:path');
+const cp=require('node:child_process');
+const root=path.resolve(__dirname,'../../..'),runtime=path.join(root,'.e2e-local');
+const stamp=new Date().toISOString().replace(/[-:]/g,'').replace('T','-').slice(0,15);
+const commit=cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();
+const base=path.join(root,'docs/tesis/evidencias/verificacion-tecnica',stamp+'-android-autenticado-'+commit.slice(0,7));
+const androidPointer=path.join(runtime,'android-audit-context.json');
+const prior=JSON.parse(fs.readFileSync(androidPointer,'utf8'));
+for(const name of ['unitarias','integracion','seguridad','e2e','compilacion-web','android']) fs.mkdirSync(path.join(base,name),{recursive:true});
+for(const file of ['android-audit-context.json','evidence-dir.txt']) fs.copyFileSync(path.join(runtime,file),path.join(runtime,file+'.before-'+stamp),fs.constants.COPYFILE_EXCL);
+fs.writeFileSync(androidPointer,JSON.stringify({...prior,base,createdAt:new Date().toISOString()}));
+fs.writeFileSync(path.join(runtime,'evidence-dir.txt'),base+'\n');
+const h=require('../../e2e/local/harness.cjs');
+h.write('CONTEXTO.json',{commit,createdAt:new Date().toISOString(),scope:'Continuación autorizada: APK privado contra backend descartable local y revisión de dependencias. Sin cambios institucionales, despliegues ni distribución de APK.',toolsReused:path.relative(root,prior.work),previousEvidencePreserved:true,productionChanged:false});
+h.write('estado-inicial.txt',cp.execFileSync('git',['status','--short'],{cwd:root,encoding:'utf8'}));
+console.log(path.relative(root,base));

@@ -1,0 +1,14 @@
+{
+  "command": [
+    "python",
+    "scripts/audit/android/inspect-private.py",
+    "--label",
+    "final"
+  ],
+  "start": "2026-10-29T22:37:10.892Z",
+  "end": "2026-10-29T22:37:22.662Z",
+  "durationSeconds": 11.77,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

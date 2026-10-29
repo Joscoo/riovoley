@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\WINDOWS\\system32\\cmd.exe",
+    "/d",
+    "/c",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\project\\android\\gradlew.bat :app:lintDebug --no-daemon --console=plain --stacktrace --max-workers=2 --rerun-tasks"
+  ],
+  "cwd": ".e2e-local\\android-native\\20261028-155551\\project\\android",
+  "start": "2026-10-29T22:37:10.886Z",
+  "end": "2026-10-29T22:39:30.494Z",
+  "durationSeconds": 139.608,
+  "exitCode": 0,
+  "signal": null
+}

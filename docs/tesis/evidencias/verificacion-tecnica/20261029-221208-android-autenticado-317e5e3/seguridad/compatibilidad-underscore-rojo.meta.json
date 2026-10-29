@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "tests/integration/toolchain.dependencies.test.cjs"
+  ],
+  "start": "2026-10-29T22:15:34.540Z",
+  "end": "2026-10-29T22:15:44.933Z",
+  "durationSeconds": 10.393,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

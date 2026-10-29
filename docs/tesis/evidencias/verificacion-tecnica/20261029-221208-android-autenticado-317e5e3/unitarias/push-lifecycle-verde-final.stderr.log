@@ -1,0 +1,16 @@
+PASS src/shared/platform/push.lifecycle.test.js
+  √ cerrar sesión sin registrar push no invoca el plugin nativo de Firebase (7 ms)
+  √ permiso denegado permite cerrar sesión sin unregister nativo (2 ms)
+  √ un registro completado se elimina una sola vez al cerrar sesión (1 ms)
+  √ un registro rechazado no habilita unregister (13 ms)
+  √ cerrar sesión mientras se solicita permiso impide registrar al usuario anterior (2 ms)
+  √ cerrar sesión durante register espera su resolución y elimina el registro (1 ms)
+  √ el perfil web no solicita registro ni cancelación nativos (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       7 passed, 7 total
+Snapshots:   0 total
+Time:        2.521 s
+Ran all test suites within paths "src/shared/platform/push.lifecycle.test.js".
+Test results written to: docs\tesis\evidencias\verificacion-tecnica\20261029-221208-android-autenticado-317e5e3\unitarias\push-lifecycle-verde-final.json
+

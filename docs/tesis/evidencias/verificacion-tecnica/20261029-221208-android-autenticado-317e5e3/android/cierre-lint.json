@@ -1,0 +1,13 @@
+{
+  "initial": {
+    "errors": 1,
+    "warnings": 27,
+    "exitCode": 1
+  },
+  "final": {
+    "errors": 0,
+    "warnings": 27,
+    "exitCode": 0
+  },
+  "fix": "includeSubdomains=false en regla loopback de la copia debug; no se suprimió lint ni se alteró producción"
+}

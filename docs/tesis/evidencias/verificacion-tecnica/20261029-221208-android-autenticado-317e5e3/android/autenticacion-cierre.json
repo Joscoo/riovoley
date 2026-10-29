@@ -1,0 +1,1795 @@
+{
+  "planned": 13,
+  "executed": 13,
+  "notExecuted": 0,
+  "passed": 13,
+  "failed": 0,
+  "state": "APROBADO",
+  "cases": [
+    {
+      "code": "N-artefacto",
+      "name": "El paquete instalado coincide con el APK privado compilado",
+      "state": "APROBADO",
+      "seconds": 0.275
+    },
+    {
+      "code": "N-admin-login",
+      "name": "Inicio real de sesión y panel: admin",
+      "state": "APROBADO",
+      "seconds": 6.487
+    },
+    {
+      "code": "N-admin-persistencia",
+      "name": "Sesión conservada tras recargar WebView: admin",
+      "state": "APROBADO",
+      "seconds": 1.671
+    },
+    {
+      "code": "N-admin-logout",
+      "name": "Cierre real de sesión y denegación del panel propio: admin",
+      "state": "APROBADO",
+      "seconds": 2.387
+    },
+    {
+      "code": "N-trainer-login",
+      "name": "Inicio real de sesión y panel: trainer",
+      "state": "APROBADO",
+      "seconds": 4.409
+    },
+    {
+      "code": "N-trainer-persistencia",
+      "name": "Sesión conservada tras recargar WebView: trainer",
+      "state": "APROBADO",
+      "seconds": 1.818
+    },
+    {
+      "code": "N-trainer-rol",
+      "name": "Denegación del panel administrador: trainer",
+      "state": "APROBADO",
+      "seconds": 3.487
+    },
+    {
+      "code": "N-trainer-logout",
+      "name": "Cierre real de sesión y denegación del panel propio: trainer",
+      "state": "APROBADO",
+      "seconds": 3.026
+    },
+    {
+      "code": "N-student-login",
+      "name": "Inicio real de sesión y panel: student",
+      "state": "APROBADO",
+      "seconds": 6.401
+    },
+    {
+      "code": "N-student-persistencia",
+      "name": "Sesión conservada tras recargar WebView: student",
+      "state": "APROBADO",
+      "seconds": 3.643
+    },
+    {
+      "code": "N-student-rol",
+      "name": "Denegación del panel administrador: student",
+      "state": "APROBADO",
+      "seconds": 5.122
+    },
+    {
+      "code": "N-student-logout",
+      "name": "Cierre real de sesión y denegación del panel propio: student",
+      "state": "APROBADO",
+      "seconds": 3.123
+    },
+    {
+      "code": "N-student-recompensa",
+      "name": "Segundo ingreso atleta conserva una recompensa diaria de 8 XP en PostgreSQL",
+      "state": "APROBADO",
+      "seconds": 8.799
+    }
+  ],
+  "cleanupFailures": [],
+  "backend": "Supabase Auth/REST/PostgreSQL local reales; sin mocks ni almacenamiento de tokens",
+  "before": {
+    "rows": 1,
+    "rewards": 1,
+    "ledger_rows": 1,
+    "xp": 8
+  },
+  "after": {
+    "rows": 1,
+    "rewards": 1,
+    "ledger_rows": 1,
+    "xp": 8
+  },
+  "responses": [
+    {
+      "path": "/rest/v1/rpc/check_login_allowed",
+      "status": 200,
+      "method": "POST"
+    },
+    {
+      "path": "/auth/v1/token",
+      "status": 200,
+      "method": "POST"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/rpc/claim_daily_login_reward",
+      "status": 200,
+      "method": "POST"
+    },
+    {
+      "path": "/rest/v1/rpc/record_login_attempt",
+      "status": 204,
+      "method": "POST"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 204,
+      "method": "PATCH"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "HEAD"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "HEAD"
+    },
+    {
+      "path": "/rest/v1/payment_types",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/training_categories",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/announcements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/announcements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/announcements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/announcements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "HEAD"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "HEAD"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payment_types",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/training_categories",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_achievements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_achievements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/logout",
+      "status": 204,
+      "method": "POST"
+    },
+    {
+      "path": "/rest/v1/user_notification_inbox_state",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/rpc/check_login_allowed",
+      "status": 200,
+      "method": "POST"
+    },
+    {
+      "path": "/auth/v1/token",
+      "status": 200,
+      "method": "POST"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/rpc/claim_daily_login_reward",
+      "status": 200,
+      "method": "POST"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/rpc/record_login_attempt",
+      "status": 204,
+      "method": "POST"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 204,
+      "method": "PATCH"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/announcements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/announcements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_achievements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_achievements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "HEAD"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "HEAD"
+    },
+    {
+      "path": "/rest/v1/physical_tests",
+      "status": 200,
+      "method": "HEAD"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "HEAD"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/training_categories",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_notification_inbox_state",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_notification_inbox_state",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/announcements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/announcements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_achievements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_achievements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/announcements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/announcements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "HEAD"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "HEAD"
+    },
+    {
+      "path": "/rest/v1/physical_tests",
+      "status": 200,
+      "method": "HEAD"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "HEAD"
+    },
+    {
+      "path": "/rest/v1/training_categories",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_achievements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_achievements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_notification_inbox_state",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_notification_inbox_state",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/physical_tests",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_identity",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_titles_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_cosmetic_items_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_cosmetic_equipment",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/logout",
+      "status": 204,
+      "method": "POST"
+    },
+    {
+      "path": "/rest/v1/rpc/check_login_allowed",
+      "status": 200,
+      "method": "POST"
+    },
+    {
+      "path": "/auth/v1/token",
+      "status": 200,
+      "method": "POST"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/rpc/claim_daily_login_reward",
+      "status": 200,
+      "method": "POST"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/rpc/record_login_attempt",
+      "status": 204,
+      "method": "POST"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 204,
+      "method": "PATCH"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/physical_tests",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_identity",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_currency_wallets",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_athlete_stages_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_achievements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_achievement_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_titles_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_cosmetic_items_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_campaigns_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_hidden_rewards_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_challenge_progress",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_hidden_rewards",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_campaign_progress",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_challenges_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_currency_ledger",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_xp_ledger",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_cosmetic_equipment",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_cosmetic_items",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/physical_tests",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_identity",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_cosmetic_equipment",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_xp_ledger",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_stage_history",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_current_stage",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/announcements_with_creator",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/physical_tests",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_currency_wallets",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_identity",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_achievements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_achievement_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_titles_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_cosmetic_items_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_athlete_stages_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_challenges_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_campaigns_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_challenge_progress",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_campaign_progress",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_hidden_rewards",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_hidden_rewards_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_xp_ledger",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_currency_ledger",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_cosmetic_items",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_cosmetic_equipment",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/physical_tests",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_cosmetic_equipment",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_identity",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_xp_ledger",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_current_stage",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_stage_history",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/announcements_with_creator",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/physical_tests",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_identity",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_currency_wallets",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_achievements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_achievement_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_titles_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_cosmetic_items_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_athlete_stages_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_campaigns_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_challenges_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_hidden_rewards_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_challenge_progress",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_xp_ledger",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_hidden_rewards",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_campaign_progress",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_currency_ledger",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_cosmetic_items",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_cosmetic_equipment",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/physical_tests",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_identity",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_cosmetic_equipment",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_xp_ledger",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_current_stage",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_stage_history",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/announcements_with_creator",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/logout",
+      "status": 204,
+      "method": "POST"
+    },
+    {
+      "path": "/rest/v1/rpc/check_login_allowed",
+      "status": 200,
+      "method": "POST"
+    },
+    {
+      "path": "/auth/v1/token",
+      "status": 200,
+      "method": "POST"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/rpc/claim_daily_login_reward",
+      "status": 200,
+      "method": "POST"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/rpc/record_login_attempt",
+      "status": 204,
+      "method": "POST"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 204,
+      "method": "PATCH"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/physical_tests",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_currency_wallets",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_identity",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_achievements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_cosmetic_items_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_achievement_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_titles_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_athlete_stages_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_challenges_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_challenge_progress",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_campaigns_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_hidden_rewards_catalog",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_campaign_progress",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_hidden_rewards",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_xp_ledger",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_currency_ledger",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_cosmetic_items",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_cosmetic_equipment",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/physical_tests",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_identity",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_cosmetic_equipment",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_xp_ledger",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_current_stage",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_stage_history",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/announcements_with_creator",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/logout",
+      "status": 204,
+      "method": "POST"
+    }
+  ],
+  "blockedBrowserRequests": [
+    {
+      "origin": "https://api.dicebear.com",
+      "pathname": "/10.x/adventurer-neutral/svg"
+    },
+    {
+      "origin": "https://api.dicebear.com",
+      "pathname": "/10.x/adventurer-neutral/svg"
+    },
+    {
+      "origin": "https://api.dicebear.com",
+      "pathname": "/10.x/adventurer-neutral/svg"
+    },
+    {
+      "origin": "https://api.dicebear.com",
+      "pathname": "/10.x/adventurer-neutral/svg"
+    },
+    {
+      "origin": "https://api.dicebear.com",
+      "pathname": "/10.x/adventurer-neutral/svg"
+    },
+    {
+      "origin": "https://api.dicebear.com",
+      "pathname": "/10.x/adventurer-neutral/svg"
+    },
+    {
+      "origin": "https://api.dicebear.com",
+      "pathname": "/10.x/adventurer-neutral/svg"
+    },
+    {
+      "origin": "https://api.dicebear.com",
+      "pathname": "/10.x/adventurer-neutral/svg"
+    },
+    {
+      "origin": "https://api.dicebear.com",
+      "pathname": "/10.x/adventurer-neutral/svg"
+    }
+  ],
+  "artifactSha256": "4e6c5741f411861410db71cc31e8a8880040d63de2a4868222cc1d345c9a0301",
+  "scope": "WebView real de APK debug en emulator-5580; HTTP loopback por túnel ADB. No verifica transporte TLS institucional, FCM, Resend ni OTA. Se deniega permiso de notificaciones; OTA apunta a puerto loopback cerrado.",
+  "apkDistributed": false
+}

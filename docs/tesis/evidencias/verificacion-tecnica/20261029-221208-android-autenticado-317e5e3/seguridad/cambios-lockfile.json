@@ -1,0 +1,21 @@
+{
+  "changed": [
+    {
+      "path": "node_modules/qs",
+      "before": "6.14.2",
+      "after": "6.14.3"
+    },
+    {
+      "path": "node_modules/underscore",
+      "before": "1.13.6",
+      "after": "1.13.8"
+    }
+  ],
+  "overrides": {
+    "jsonpath": {
+      "underscore": "1.13.8"
+    }
+  },
+  "forced": false,
+  "frameworkChanged": false
+}

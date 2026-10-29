@@ -1,0 +1,52 @@
+{
+  "label": "inicial",
+  "errors": 1,
+  "warnings": 27,
+  "issues": [
+    {
+      "id": "AndroidGradlePluginVersion",
+      "severity": "Warning",
+      "count": 1
+    },
+    {
+      "id": "GradleDependency",
+      "severity": "Warning",
+      "count": 1
+    },
+    {
+      "id": "IconDipSize",
+      "severity": "Warning",
+      "count": 1
+    },
+    {
+      "id": "IconDuplicates",
+      "severity": "Warning",
+      "count": 5
+    },
+    {
+      "id": "IconLauncherShape",
+      "severity": "Warning",
+      "count": 10
+    },
+    {
+      "id": "IconLocation",
+      "severity": "Warning",
+      "count": 1
+    },
+    {
+      "id": "NetworkSecurityConfig",
+      "severity": "Fatal",
+      "count": 1
+    },
+    {
+      "id": "ObsoleteSdkInt",
+      "severity": "Warning",
+      "count": 1
+    },
+    {
+      "id": "UnusedResources",
+      "severity": "Warning",
+      "count": 7
+    }
+  ]
+}

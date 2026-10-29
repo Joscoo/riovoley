@@ -1,0 +1,11 @@
+{"label":"android/autenticacion-corregida-identidad-avd","exitCode":0,"durationSeconds":0.08,"stderrTail":""}
+{"label":"android/autenticacion-corregida-apk-ruta","exitCode":0,"durationSeconds":0.115,"stderrTail":""}
+{"label":"android/autenticacion-corregida-apk-huella","exitCode":0,"durationSeconds":0.13,"stderrTail":""}
+{"label":"android/autenticacion-corregida-tunel","exitCode":0,"durationSeconds":0.08,"stderrTail":""}
+{"label":"android/autenticacion-corregida-detener","exitCode":0,"durationSeconds":0.134,"stderrTail":""}
+{"label":"android/autenticacion-corregida-notificaciones-revocar","exitCode":0,"durationSeconds":0.101,"stderrTail":""}
+{"label":"android/autenticacion-corregida-notificaciones-fijar","exitCode":0,"durationSeconds":0.131,"stderrTail":""}
+{"label":"android/autenticacion-corregida-iniciar","exitCode":0,"durationSeconds":0.293,"stderrTail":""}
+{"label":"android/autenticacion-corregida-notificaciones-restaurar","exitCode":0,"durationSeconds":0.24,"stderrTail":""}
+{"label":"android/autenticacion-corregida-tunel-retirar","exitCode":0,"durationSeconds":0.079,"stderrTail":""}
+

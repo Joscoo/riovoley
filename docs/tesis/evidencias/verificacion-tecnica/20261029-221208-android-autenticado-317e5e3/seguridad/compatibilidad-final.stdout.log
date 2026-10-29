@@ -1,0 +1,47 @@
+TAP version 13
+# Subtest: QS de Express serializa arrays comma con null y undefined sin excepción (CVE-2026-8723)
+ok 1 - QS de Express serializa arrays comma con null y undefined sin excepción (CVE-2026-8723)
+  ---
+  duration_ms: 8243.1679
+  type: 'test'
+  ...
+# Subtest: Express conserva filtros anidados y body URL-encoded con el QS actualizado
+ok 2 - Express conserva filtros anidados y body URL-encoded con el QS actualizado
+  ---
+  duration_ms: 21975.3359
+  type: 'test'
+  ...
+# Subtest: Underscore usado por JSONPath procesa arrays de 20000 niveles sin desbordar la pila (CVE-2026-27601)
+ok 3 - Underscore usado por JSONPath procesa arrays de 20000 niveles sin desbordar la pila (CVE-2026-27601)
+  ---
+  duration_ms: 14.5927
+  type: 'test'
+  ...
+# Subtest: Underscore compara objetos de 6000 niveles sin desbordar la pila
+ok 4 - Underscore compara objetos de 6000 niveles sin desbordar la pila
+  ---
+  duration_ms: 29.4104
+  type: 'test'
+  ...
+# Subtest: JSONPath mantiene filtros y selección recursiva con el parche de Underscore
+ok 5 - JSONPath mantiene filtros y selección recursiva con el parche de Underscore
+  ---
+  duration_ms: 2934.7956
+  type: 'test'
+  ...
+# Subtest: BFJ conserva la lectura y escritura JSON del informe de compilación
+ok 6 - BFJ conserva la lectura y escritura JSON del informe de compilación
+  ---
+  duration_ms: 6555.3548
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 41525.6317
+

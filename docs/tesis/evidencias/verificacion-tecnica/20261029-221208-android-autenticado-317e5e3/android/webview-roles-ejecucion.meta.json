@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/android/authenticated-webview.cjs",
+    "--label=autenticacion-final"
+  ],
+  "start": "2026-10-29T22:46:51.632Z",
+  "end": "2026-10-29T22:47:11.507Z",
+  "durationSeconds": 19.875,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

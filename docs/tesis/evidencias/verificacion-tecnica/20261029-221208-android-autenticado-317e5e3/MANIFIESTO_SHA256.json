@@ -1,0 +1,4212 @@
+{
+  "generatedAt": "2026-10-29T23:06:34.750Z",
+  "algorithm": "SHA-256",
+  "selfExcluded": true,
+  "entries": [
+    {
+      "file": "android/api-emulador.meta.json",
+      "bytes": 367,
+      "sha256": "4c05d62cf062801992f77b8618e5da1876b5079810d62d5c45eec3d305916651"
+    },
+    {
+      "file": "android/api-emulador.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/api-emulador.stdout.log",
+      "bytes": 5,
+      "sha256": "2411a048c1587396d64dded76bc4e7a8f83514ecd034bfce4deedf3ccbe2a8a6"
+    },
+    {
+      "file": "android/apk-badging-cierre.meta.json",
+      "bytes": 454,
+      "sha256": "6bc29899158d5c78cb7b8f0577f8989304e753dfb1baff5cbba24625fe40637c"
+    },
+    {
+      "file": "android/apk-badging-cierre.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/apk-badging-cierre.stdout.log",
+      "bytes": 5076,
+      "sha256": "f3df0f44c881799dbc091c775f7bfae397b0897d084829d342d921b0292144c4"
+    },
+    {
+      "file": "android/apk-badging-final.meta.json",
+      "bytes": 454,
+      "sha256": "02e1a5ab0628a82fc69c80b140c239fec216a5c73e35a519f7274fb60a5161e3"
+    },
+    {
+      "file": "android/apk-badging-final.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/apk-badging-final.stdout.log",
+      "bytes": 5076,
+      "sha256": "f3df0f44c881799dbc091c775f7bfae397b0897d084829d342d921b0292144c4"
+    },
+    {
+      "file": "android/apk-badging.meta.json",
+      "bytes": 454,
+      "sha256": "28031fe6c3c6fea8fc8067b2ed92d52e32f4703e5c81dcc9d80a3a62591107ae"
+    },
+    {
+      "file": "android/apk-badging.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/apk-badging.stdout.log",
+      "bytes": 5076,
+      "sha256": "f3df0f44c881799dbc091c775f7bfae397b0897d084829d342d921b0292144c4"
+    },
+    {
+      "file": "android/apk-firma-cierre.meta.json",
+      "bytes": 514,
+      "sha256": "80fe793d9cde5cc3c4ad10dccc0642df88c78545589b4c712d6ffbf47c1b85dd"
+    },
+    {
+      "file": "android/apk-firma-cierre.stderr.log",
+      "bytes": 57,
+      "sha256": "b20e3675651676ed216fdf8b72183dd2e7f0d5354fa9fadd027b123c66be51c4"
+    },
+    {
+      "file": "android/apk-firma-cierre.stdout.log",
+      "bytes": 973,
+      "sha256": "b634ff6aac90841fbc5d7e0bc89984d619321f9ead0ca457dcc68244e871624d"
+    },
+    {
+      "file": "android/apk-firma-final.meta.json",
+      "bytes": 514,
+      "sha256": "36f08cb971262a187a5a6b0b12d626ace9a9f3f4b5a932efcbdafafb741a8527"
+    },
+    {
+      "file": "android/apk-firma-final.stderr.log",
+      "bytes": 57,
+      "sha256": "b20e3675651676ed216fdf8b72183dd2e7f0d5354fa9fadd027b123c66be51c4"
+    },
+    {
+      "file": "android/apk-firma-final.stdout.log",
+      "bytes": 973,
+      "sha256": "b634ff6aac90841fbc5d7e0bc89984d619321f9ead0ca457dcc68244e871624d"
+    },
+    {
+      "file": "android/apk-firma.meta.json",
+      "bytes": 513,
+      "sha256": "243e9c2795f4774c6e2dce8562a1e459c1c293d9ea6e4bfa902d2a182728ad25"
+    },
+    {
+      "file": "android/apk-firma.stderr.log",
+      "bytes": 57,
+      "sha256": "b20e3675651676ed216fdf8b72183dd2e7f0d5354fa9fadd027b123c66be51c4"
+    },
+    {
+      "file": "android/apk-firma.stdout.log",
+      "bytes": 973,
+      "sha256": "b634ff6aac90841fbc5d7e0bc89984d619321f9ead0ca457dcc68244e871624d"
+    },
+    {
+      "file": "android/apk-instalar-autenticado.meta.json",
+      "bytes": 499,
+      "sha256": "1ad13c311668d97dd75f7aaff2ef1d02a2b522c2005a384cbb53581e0cc92493"
+    },
+    {
+      "file": "android/apk-instalar-autenticado.stderr.log",
+      "bytes": 187,
+      "sha256": "3ca08c1bfca3341bdbc06d4002d6fc7fecb495fe660ada0f4a41d35d715a000f"
+    },
+    {
+      "file": "android/apk-instalar-autenticado.stdout.log",
+      "bytes": 35,
+      "sha256": "b44a82dc2c11b08ed2211b2d4726dbeee75077a4926ecb97fa652ddc83375d96"
+    },
+    {
+      "file": "android/apk-instalar-cierre.meta.json",
+      "bytes": 499,
+      "sha256": "4a36d9b69e3f754f3195a727ae9648e7166dd7e7b9cb78a78cfb813d1a984d1a"
+    },
+    {
+      "file": "android/apk-instalar-cierre.stderr.log",
+      "bytes": 187,
+      "sha256": "2a15a8ba8fa09965e16f491dbe9be652019a52e36f0884af007c622c09ee10fd"
+    },
+    {
+      "file": "android/apk-instalar-cierre.stdout.log",
+      "bytes": 35,
+      "sha256": "b44a82dc2c11b08ed2211b2d4726dbeee75077a4926ecb97fa652ddc83375d96"
+    },
+    {
+      "file": "android/apk-privado-inspeccion-cierre.json",
+      "bytes": 1001,
+      "sha256": "feb634ef9c60abbea28ff39444308f73c5f80c38b9bac82e494d8c57636d5ace"
+    },
+    {
+      "file": "android/apk-privado-inspeccion-final.json",
+      "bytes": 589,
+      "sha256": "1e17bf63c08ecdfd93ea0a8f932c8e6113b6d51f69c1a36a9f0d3e1d450387e6"
+    },
+    {
+      "file": "android/apk-privado-inspeccion.json",
+      "bytes": 589,
+      "sha256": "829f490d96560baf305da4afe181c25a049233116f4a0eaf8f0c5b3a64bf6e62"
+    },
+    {
+      "file": "android/apk-privado-privacidad-cierre.meta.json",
+      "bytes": 266,
+      "sha256": "90a4bbce917142c142fd9d3c261f60e9dcd1b652327efd2e071b71379f561da6"
+    },
+    {
+      "file": "android/apk-privado-privacidad-cierre.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/apk-privado-privacidad-cierre.stdout.log",
+      "bytes": 70,
+      "sha256": "5a6f0a0457ed4577861a7db7fb28ba3532db34ef61c4da5349a44371e8d80a66"
+    },
+    {
+      "file": "android/apk-privado-privacidad-final.meta.json",
+      "bytes": 265,
+      "sha256": "0ec545566d19768c472c0df671ca68c75817b739b7c2b45e4e509921aa2fe4f2"
+    },
+    {
+      "file": "android/apk-privado-privacidad-final.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/apk-privado-privacidad-final.stdout.log",
+      "bytes": 70,
+      "sha256": "5a6f0a0457ed4577861a7db7fb28ba3532db34ef61c4da5349a44371e8d80a66"
+    },
+    {
+      "file": "android/apk-privado-privacidad.meta.json",
+      "bytes": 237,
+      "sha256": "11e606a279f4b0b88f26c6f08619861a0c62c713030848d92d14e06bb076d00b"
+    },
+    {
+      "file": "android/apk-privado-privacidad.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/apk-privado-privacidad.stdout.log",
+      "bytes": 70,
+      "sha256": "5a6f0a0457ed4577861a7db7fb28ba3532db34ef61c4da5349a44371e8d80a66"
+    },
+    {
+      "file": "android/autenticacion-cierre-admin.png",
+      "bytes": 80105,
+      "sha256": "28be283d444fcd911ae9430c727a6294542dda8871a016facb1c2d96a1f5219d"
+    },
+    {
+      "file": "android/autenticacion-cierre-apk-huella.meta.json",
+      "bytes": 436,
+      "sha256": "ae283cb658de4361feedf02f5c169f9be50dfe7656687a816f1074710f9e86c3"
+    },
+    {
+      "file": "android/autenticacion-cierre-apk-huella.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-cierre-apk-huella.stdout.log",
+      "bytes": 156,
+      "sha256": "3d36eae28d56fc5d0f3d14999d888bf10f3f84c5f771dce033736f39c802c9e4"
+    },
+    {
+      "file": "android/autenticacion-cierre-apk-ruta.meta.json",
+      "bytes": 370,
+      "sha256": "7d19aca30c2d3feec0638c475faeea6112942487a0c335f8271e988949eafaad"
+    },
+    {
+      "file": "android/autenticacion-cierre-apk-ruta.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-cierre-apk-ruta.stdout.log",
+      "bytes": 98,
+      "sha256": "50679cb3ab868fcbb942bb3e17bfc019367fcf1661ff5b5909044d5725bc96ad"
+    },
+    {
+      "file": "android/autenticacion-cierre-detener.meta.json",
+      "bytes": 376,
+      "sha256": "af1707e7e8c4d8fbb2c8ec4d7e6ec70d235625f8039f30eeab6ba7f079ace3d8"
+    },
+    {
+      "file": "android/autenticacion-cierre-detener.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-cierre-detener.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-cierre-identidad-avd.meta.json",
+      "bytes": 345,
+      "sha256": "81dba6c9c096aa0b0dcaca0c41b5fe95d23d27bef5be27e313a5eded13e5a207"
+    },
+    {
+      "file": "android/autenticacion-cierre-identidad-avd.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-cierre-identidad-avd.stdout.log",
+      "bytes": 23,
+      "sha256": "2987b75d1a5c800c86cae1b80fec462e969ca7e39b967845e199f5867a8ce840"
+    },
+    {
+      "file": "android/autenticacion-cierre-iniciar.meta.json",
+      "bytes": 394,
+      "sha256": "c8c61aa71ad05ffdddcc6b7fe2374dde6d2979568d0d520337b9ba489a11dbaa"
+    },
+    {
+      "file": "android/autenticacion-cierre-iniciar.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-cierre-iniciar.stdout.log",
+      "bytes": 58,
+      "sha256": "0990e86a2624a0019f2c561d8e11004b56e2aa43086e47d2ec7e9e85a39185f9"
+    },
+    {
+      "file": "android/autenticacion-cierre-notificaciones-fijar.meta.json",
+      "bytes": 449,
+      "sha256": "60b8f8c8a99cd7417fd4592a4e5b00638196814f19909a8a8306e4e54274949a"
+    },
+    {
+      "file": "android/autenticacion-cierre-notificaciones-fijar.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-cierre-notificaciones-fijar.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-cierre-notificaciones-restaurar.meta.json",
+      "bytes": 451,
+      "sha256": "edd765211db13f726473cfbb1c4b767eb4cab047d651fa35a7ba4cd724cc3d88"
+    },
+    {
+      "file": "android/autenticacion-cierre-notificaciones-restaurar.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-cierre-notificaciones-restaurar.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-cierre-notificaciones-revocar.meta.json",
+      "bytes": 417,
+      "sha256": "d0f0de2cd23faeea3548e56e9c5cb86a89822cf7b9ac50c46188008ed888dee5"
+    },
+    {
+      "file": "android/autenticacion-cierre-notificaciones-revocar.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-cierre-notificaciones-revocar.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-cierre-student.png",
+      "bytes": 82935,
+      "sha256": "7975bbf0ed9e845911c684e58b5317715d876cad83a7a5687d907bfb8a7c0061"
+    },
+    {
+      "file": "android/autenticacion-cierre-trainer.png",
+      "bytes": 73225,
+      "sha256": "690cf199b1126f106f52acba03cff5b12a39ffa1246f8e46b06edd2605dfd641"
+    },
+    {
+      "file": "android/autenticacion-cierre-tunel-retirar.meta.json",
+      "bytes": 359,
+      "sha256": "b9f25adf0ad6e334910bb14a175867dd513327124a41a966c47c56133e418cf1"
+    },
+    {
+      "file": "android/autenticacion-cierre-tunel-retirar.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-cierre-tunel-retirar.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-cierre-tunel.meta.json",
+      "bytes": 360,
+      "sha256": "9df4701dac7e9dd77ef620e425e841f66baea5b6efdbece3a2e6b2f6756ca4cf"
+    },
+    {
+      "file": "android/autenticacion-cierre-tunel.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-cierre-tunel.stdout.log",
+      "bytes": 8,
+      "sha256": "c8799220bef090ddadcdb73bf93730d2296ffcc4e6342ec6c1cd5be6f4706ec0"
+    },
+    {
+      "file": "android/autenticacion-cierre.json",
+      "bytes": 37043,
+      "sha256": "8122454cc05699d0a4bf7bf70096f0caf41e0e1427aba8609eac3933744c7588"
+    },
+    {
+      "file": "android/autenticacion-corregida-admin.png",
+      "bytes": 80105,
+      "sha256": "28be283d444fcd911ae9430c727a6294542dda8871a016facb1c2d96a1f5219d"
+    },
+    {
+      "file": "android/autenticacion-corregida-apk-huella.meta.json",
+      "bytes": 436,
+      "sha256": "6c350a2143f7c72964b3c607da4c849de82076a774c97b6fcc4a4f1befe0200e"
+    },
+    {
+      "file": "android/autenticacion-corregida-apk-huella.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-corregida-apk-huella.stdout.log",
+      "bytes": 156,
+      "sha256": "ad475bfcbf9fe235e94b0029bb0efba7a09184c90164d725db55d2848fbab81f"
+    },
+    {
+      "file": "android/autenticacion-corregida-apk-ruta.meta.json",
+      "bytes": 370,
+      "sha256": "e8aa24dc8a47fbe9f8f2210e101498c32e8bef87ba1f971458b899d3bba55b7e"
+    },
+    {
+      "file": "android/autenticacion-corregida-apk-ruta.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-corregida-apk-ruta.stdout.log",
+      "bytes": 98,
+      "sha256": "9c168b8b171ee2b72703c490240644fe36edd6ecf58df22552252f0eaf165eb0"
+    },
+    {
+      "file": "android/autenticacion-corregida-detener.meta.json",
+      "bytes": 376,
+      "sha256": "2d391b1011d865a09073d58f46367c724542963e73f82f5f25bed4ab7dc20d7e"
+    },
+    {
+      "file": "android/autenticacion-corregida-detener.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-corregida-detener.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-corregida-error.txt",
+      "bytes": 420,
+      "sha256": "f4a6f88e6644513f705cb4b80de72c3d19a916c2f47f77915225225f21f7248c"
+    },
+    {
+      "file": "android/autenticacion-corregida-identidad-avd.meta.json",
+      "bytes": 345,
+      "sha256": "273bdd287be5e049e7a6df80758845e616e8f5f6f950c7b56be9a5c5b6621723"
+    },
+    {
+      "file": "android/autenticacion-corregida-identidad-avd.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-corregida-identidad-avd.stdout.log",
+      "bytes": 23,
+      "sha256": "2987b75d1a5c800c86cae1b80fec462e969ca7e39b967845e199f5867a8ce840"
+    },
+    {
+      "file": "android/autenticacion-corregida-iniciar.meta.json",
+      "bytes": 394,
+      "sha256": "7018065f159dd21dc82ef649959745f8d8178eea4f92a6c6f30befd59bb041c1"
+    },
+    {
+      "file": "android/autenticacion-corregida-iniciar.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-corregida-iniciar.stdout.log",
+      "bytes": 58,
+      "sha256": "0990e86a2624a0019f2c561d8e11004b56e2aa43086e47d2ec7e9e85a39185f9"
+    },
+    {
+      "file": "android/autenticacion-corregida-notificaciones-fijar.meta.json",
+      "bytes": 449,
+      "sha256": "a0f723a42d2aa95284af7eb02a74347d5cbbb03c6e30b3b85795e7ac4e91e594"
+    },
+    {
+      "file": "android/autenticacion-corregida-notificaciones-fijar.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-corregida-notificaciones-fijar.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-corregida-notificaciones-restaurar.meta.json",
+      "bytes": 451,
+      "sha256": "1fdf7498a7be13c5398210d61086fba715c44a37c87f7fe53b6becb1b9d2ecb7"
+    },
+    {
+      "file": "android/autenticacion-corregida-notificaciones-restaurar.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-corregida-notificaciones-restaurar.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-corregida-notificaciones-revocar.meta.json",
+      "bytes": 415,
+      "sha256": "b98c667a4e6d8e6acf079fea341563e69fa383702e576bc1ac021cf0aa833caf"
+    },
+    {
+      "file": "android/autenticacion-corregida-notificaciones-revocar.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-corregida-notificaciones-revocar.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-corregida-tunel-retirar.meta.json",
+      "bytes": 359,
+      "sha256": "0085f96c41b0399a96057c6f30af9c91d292023eda897ba0a4231010a2d45dd4"
+    },
+    {
+      "file": "android/autenticacion-corregida-tunel-retirar.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-corregida-tunel-retirar.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-corregida-tunel.meta.json",
+      "bytes": 360,
+      "sha256": "abbd60b06b7fe1f1707dba00ab08407775cbd981e7ed555d65281b278384f69a"
+    },
+    {
+      "file": "android/autenticacion-corregida-tunel.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-corregida-tunel.stdout.log",
+      "bytes": 8,
+      "sha256": "c8799220bef090ddadcdb73bf93730d2296ffcc4e6342ec6c1cd5be6f4706ec0"
+    },
+    {
+      "file": "android/autenticacion-corregida.json",
+      "bytes": 7092,
+      "sha256": "3b161868a1bae01ca08cf8830c4fce6185fb4327cd2041ba7816a2a2c16379d2"
+    },
+    {
+      "file": "android/autenticacion-final-error.txt",
+      "bytes": 316,
+      "sha256": "7d8a27db883b637b3dc3fcb586db942820598aca48cd6ad916d1a3abd0c3de61"
+    },
+    {
+      "file": "android/autenticacion-final-identidad-avd.meta.json",
+      "bytes": 345,
+      "sha256": "187cfb8c3973ddc57064c96dc112238fd73a5aa4f403d9678915e37df94313ff"
+    },
+    {
+      "file": "android/autenticacion-final-identidad-avd.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-final-identidad-avd.stdout.log",
+      "bytes": 23,
+      "sha256": "2987b75d1a5c800c86cae1b80fec462e969ca7e39b967845e199f5867a8ce840"
+    },
+    {
+      "file": "android/autenticacion-final.json",
+      "bytes": 811,
+      "sha256": "9f1c0e7ff100cff9de0c1cb4e42db7979fdc777b5cd60e9910bac98e90830cb0"
+    },
+    {
+      "file": "android/backend-local-verificado.json",
+      "bytes": 220,
+      "sha256": "183c17ef5796cb352b86a238ade6257f2f56bb523ffc79e0774f3b5cf9262d27"
+    },
+    {
+      "file": "android/capacitor-plugins-1793312739750.meta.json",
+      "bytes": 371,
+      "sha256": "ba74a24648ec74d2ad2254765799b7154a71272d88092ca2cd9fe3e6257fae96"
+    },
+    {
+      "file": "android/capacitor-plugins-1793312739750.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/capacitor-plugins-1793312739750.stdout.log",
+      "bytes": 290,
+      "sha256": "884afc911c93100d2445000df3b237e7e8aa8e57a7cc9cef453a58c5fd812d81"
+    },
+    {
+      "file": "android/capacitor-plugins-1793312999782.meta.json",
+      "bytes": 371,
+      "sha256": "27a533f3190b9ab8c64f1d09a5415ba72ecb4f1f467975000d74f887e63952a1"
+    },
+    {
+      "file": "android/capacitor-plugins-1793312999782.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/capacitor-plugins-1793312999782.stdout.log",
+      "bytes": 290,
+      "sha256": "884afc911c93100d2445000df3b237e7e8aa8e57a7cc9cef453a58c5fd812d81"
+    },
+    {
+      "file": "android/capacitor-plugins-1793314568848.meta.json",
+      "bytes": 371,
+      "sha256": "9e288d520660b4acbb9895c983cbbb49711aedf25eadd75cbb7ffdd9981fe869"
+    },
+    {
+      "file": "android/capacitor-plugins-1793314568848.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/capacitor-plugins-1793314568848.stdout.log",
+      "bytes": 290,
+      "sha256": "884afc911c93100d2445000df3b237e7e8aa8e57a7cc9cef453a58c5fd812d81"
+    },
+    {
+      "file": "android/capacitor-plugins-1793314673453.meta.json",
+      "bytes": 371,
+      "sha256": "ac19dea0dbdde0116f5f136261dc6ca744f96a0dae33cabcbc16495d0145de84"
+    },
+    {
+      "file": "android/capacitor-plugins-1793314673453.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/capacitor-plugins-1793314673453.stdout.log",
+      "bytes": 290,
+      "sha256": "884afc911c93100d2445000df3b237e7e8aa8e57a7cc9cef453a58c5fd812d81"
+    },
+    {
+      "file": "android/capacitor-plugins.meta.json",
+      "bytes": 371,
+      "sha256": "9a0a9efd20a6af6e968e243a0ea0807f2a0f69b0aca8376f66ce6dc31809f2f0"
+    },
+    {
+      "file": "android/capacitor-plugins.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/capacitor-plugins.stdout.log",
+      "bytes": 290,
+      "sha256": "884afc911c93100d2445000df3b237e7e8aa8e57a7cc9cef453a58c5fd812d81"
+    },
+    {
+      "file": "android/capacitor-sync-1793312732162.meta.json",
+      "bytes": 373,
+      "sha256": "8f52e2b6eba12b13f3fb573d671412c7e3b377cf7f5d61d63aa98ab7dacc7571"
+    },
+    {
+      "file": "android/capacitor-sync-1793312732162.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/capacitor-sync-1793312732162.stdout.log",
+      "bytes": 586,
+      "sha256": "a0e2f9e7985158494f87dbbb6bb3190f689517b209dda249b65cc1ba68e66186"
+    },
+    {
+      "file": "android/capacitor-sync-1793312997749.meta.json",
+      "bytes": 373,
+      "sha256": "43e3c9e386de0d4db8a28e44ef3c6dbda6e0b870c4a81412d2e8d6cc95fb7061"
+    },
+    {
+      "file": "android/capacitor-sync-1793312997749.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/capacitor-sync-1793312997749.stdout.log",
+      "bytes": 589,
+      "sha256": "7ac51e6a3de8b3e7b8e752022e9417963a2942f08b8e586673f48bbb139b20e1"
+    },
+    {
+      "file": "android/capacitor-sync-1793314561477.meta.json",
+      "bytes": 373,
+      "sha256": "395ed7bbd4bd460c7eebcbb22d56a9aa93c572e1d827c4a61ad624950137784a"
+    },
+    {
+      "file": "android/capacitor-sync-1793314561477.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/capacitor-sync-1793314561477.stdout.log",
+      "bytes": 589,
+      "sha256": "732eb9982a6bea8ae258a41165a944712a7757fa25f33d3fe27d5663ca15c367"
+    },
+    {
+      "file": "android/capacitor-sync-1793314672413.meta.json",
+      "bytes": 373,
+      "sha256": "7c63b24efd9416cd354bc5ba1a3d9ccd5c0650c42cb8468bc15a1961bdc25b90"
+    },
+    {
+      "file": "android/capacitor-sync-1793314672413.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/capacitor-sync-1793314672413.stdout.log",
+      "bytes": 589,
+      "sha256": "c42ab5dd551b1870e93fe13e3bcaa32fa5fd8ec16fc5e3cfb20e5200ebae4121"
+    },
+    {
+      "file": "android/capacitor-sync.meta.json",
+      "bytes": 374,
+      "sha256": "212cbfde6bc1985fcb357f53dd3252a6824124793238ef508aad2efdbf4b193a"
+    },
+    {
+      "file": "android/capacitor-sync.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/capacitor-sync.stdout.log",
+      "bytes": 577,
+      "sha256": "3b794c5ab066386b23fdc2eb3f7904b7cd6c83ad46c4d09f79e9fb4174d92dd5"
+    },
+    {
+      "file": "android/cierre-lint.json",
+      "bytes": 271,
+      "sha256": "b260a1fab50dafbceed6b910bb07cff23c84a8fe33ff98deac4d2f0ad0580130"
+    },
+    {
+      "file": "android/configuracion-autenticada-1793313000341.json",
+      "bytes": 1314,
+      "sha256": "21843c84dab995de9baca29428573d9f0aa76cdb4614a3e647f7db3cb580193c"
+    },
+    {
+      "file": "android/configuracion-autenticada-1793314569544.json",
+      "bytes": 1314,
+      "sha256": "21843c84dab995de9baca29428573d9f0aa76cdb4614a3e647f7db3cb580193c"
+    },
+    {
+      "file": "android/configuracion-autenticada-1793314673965.json",
+      "bytes": 1314,
+      "sha256": "21843c84dab995de9baca29428573d9f0aa76cdb4614a3e647f7db3cb580193c"
+    },
+    {
+      "file": "android/configuracion-autenticada.json",
+      "bytes": 1314,
+      "sha256": "21843c84dab995de9baca29428573d9f0aa76cdb4614a3e647f7db3cb580193c"
+    },
+    {
+      "file": "android/correccion-lint-local.json",
+      "bytes": 307,
+      "sha256": "67b9e500dd44b873f907b882e36935c4963f596d79180a6b0ee6fbdd10b1cc43"
+    },
+    {
+      "file": "android/crash-despues-cierre.meta.json",
+      "bytes": 358,
+      "sha256": "223a999f5cbe648720f965717dcdba81ec56b99272235a5fbbfb6190509750ca"
+    },
+    {
+      "file": "android/crash-despues-cierre.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/crash-despues-cierre.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/crash-logout-inicial.meta.json",
+      "bytes": 358,
+      "sha256": "75f4692fd4a77032d7194f7b8b477c0c01e2a65fb1b48ebb7b4fd4b5f71533b0"
+    },
+    {
+      "file": "android/crash-logout-inicial.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/crash-logout-inicial.stdout.log",
+      "bytes": 2441,
+      "sha256": "46b62f7219e312952630c166a7e117123788461e5057668451221f0d9d4b534f"
+    },
+    {
+      "file": "android/dispositivos-iniciales-1793312015092.meta.json",
+      "bytes": 305,
+      "sha256": "0f488cbd128475c6738ba0e33777ae0c791a27da3575f533f8f1dff09c3d2618"
+    },
+    {
+      "file": "android/dispositivos-iniciales-1793312015092.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/dispositivos-iniciales-1793312015092.stdout.log",
+      "bytes": 76,
+      "sha256": "f89210b256b673d58e8223a7946153ff6186f100985edc34b53e910eb603ed15"
+    },
+    {
+      "file": "android/dispositivos-iniciales-1793312064917.meta.json",
+      "bytes": 305,
+      "sha256": "6c9fa29879c7b163f2b34361873fa6c401ade7901cc13a5d39e284458c838480"
+    },
+    {
+      "file": "android/dispositivos-iniciales-1793312064917.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/dispositivos-iniciales-1793312064917.stdout.log",
+      "bytes": 76,
+      "sha256": "f89210b256b673d58e8223a7946153ff6186f100985edc34b53e910eb603ed15"
+    },
+    {
+      "file": "android/dispositivos-iniciales.meta.json",
+      "bytes": 305,
+      "sha256": "c41a383ddb0ac99cc798679b975b00c894a80503ec9c14da81e979f678c1ef9f"
+    },
+    {
+      "file": "android/dispositivos-iniciales.stderr.log",
+      "bytes": 80,
+      "sha256": "4cb131e3e7b4fc58e176cbfb6a38ce90aa7df3b4f593ce3cee494df520c5b9e8"
+    },
+    {
+      "file": "android/dispositivos-iniciales.stdout.log",
+      "bytes": 29,
+      "sha256": "e2a046116e61caf94cc31b65fe488757f22e3ddd8644e6b8702f15104be37b81"
+    },
+    {
+      "file": "android/emulador-arranque-1793313699581-a230c9.json",
+      "bytes": 3541,
+      "sha256": "577b99879b0f298f63141bba421f984b2b8364dddb3aca94166af2a479df7314"
+    },
+    {
+      "file": "android/emulador-arranque-1793314765352-66cf80.json",
+      "bytes": 2735,
+      "sha256": "4fe3069d70e43af934fc0550e77f24514fabc87a46b5b8cbe8d37947320423be"
+    },
+    {
+      "file": "android/emulador-arranque.json",
+      "bytes": 7196,
+      "sha256": "02dee3f3187a802c4ec85e2fd58b8f153384d1ef69734eb0dd02e1c08218dde5"
+    },
+    {
+      "file": "android/emulador-detener-1793314373598.meta.json",
+      "bytes": 334,
+      "sha256": "0f89290803932e4c7886803333481e1d6f78e5d83387aafb083b4d3fc9734a72"
+    },
+    {
+      "file": "android/emulador-detener-1793314373598.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/emulador-detener-1793314373598.stdout.log",
+      "bytes": 38,
+      "sha256": "15279539b73b12172f33ce5b426af72e9c65bf7de3871b05cf3b041af537ea88"
+    },
+    {
+      "file": "android/emulador-detener-1793315008522.meta.json",
+      "bytes": 334,
+      "sha256": "e626e0c156c1ff087b07ee768e5392187d9f1122a8a08a84c87e1ca2793d2881"
+    },
+    {
+      "file": "android/emulador-detener-1793315008522.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/emulador-detener-1793315008522.stdout.log",
+      "bytes": 38,
+      "sha256": "15279539b73b12172f33ce5b426af72e9c65bf7de3871b05cf3b041af537ea88"
+    },
+    {
+      "file": "android/emulador-detener.meta.json",
+      "bytes": 333,
+      "sha256": "277b1c5dfd4741ec0ab5507a4f2c176416993665f102f347f30283ef2e304595"
+    },
+    {
+      "file": "android/emulador-detener.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/emulador-detener.stdout.log",
+      "bytes": 38,
+      "sha256": "15279539b73b12172f33ce5b426af72e9c65bf7de3871b05cf3b041af537ea88"
+    },
+    {
+      "file": "android/entorno-adb-final-tap.meta.json",
+      "bytes": 309,
+      "sha256": "6ee16d33ad233fff2dd44f1272f13ece099ffd84c6403c4bc9d906623d5e5792"
+    },
+    {
+      "file": "android/entorno-adb-final-tap.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/entorno-adb-final-tap.stdout.log",
+      "bytes": 557,
+      "sha256": "b9e6f2794e6a93f47b231c623ee8df840856bbcadb8fef62a896b178c0202db9"
+    },
+    {
+      "file": "android/entorno-adb-final.meta.json",
+      "bytes": 281,
+      "sha256": "3b2b350a0971598d56eb3e4fee5cbb2564c84e8c66c73144e2ae5f1b774bd343"
+    },
+    {
+      "file": "android/entorno-adb-final.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/entorno-adb-final.stdout.log",
+      "bytes": 297,
+      "sha256": "e21796a9a67be3930ee60e6241b20b1fcbbe8e38cb56f8c1638742e25601192e"
+    },
+    {
+      "file": "android/entorno-adb-rojo.meta.json",
+      "bytes": 282,
+      "sha256": "b509342bd7eea55d6da0ea046a82e4911d120c7d6e2805a15ddb31d87c6478ca"
+    },
+    {
+      "file": "android/entorno-adb-rojo.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/entorno-adb-rojo.stdout.log",
+      "bytes": 1119,
+      "sha256": "497264a8789cb59f28876d72d8a14e36172696e58f0ca1081800ef52db73f326"
+    },
+    {
+      "file": "android/entorno-adb-verde.meta.json",
+      "bytes": 282,
+      "sha256": "0cf5257a8868d2535630e74ff241ae1a3b406cbcb2ba561eb51a2bea8dc29c72"
+    },
+    {
+      "file": "android/entorno-adb-verde.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/entorno-adb-verde.stdout.log",
+      "bytes": 297,
+      "sha256": "b3d0cb9d9f379beace7dc9f06891bb46220c01de059f5c105c8e99da29a8f2a6"
+    },
+    {
+      "file": "android/estabilidad-cierre.json",
+      "bytes": 184,
+      "sha256": "ed2d982aa8ad7639ac6b8882677907b800521e55115a72fe920ac73e12e29f20"
+    },
+    {
+      "file": "android/gradle-assemble-1793313353511.meta.json",
+      "bytes": 513,
+      "sha256": "1a80d7bb294ef6a2cfb3a5ffd97aca1045066884cbb934cb8bf0a75710a0a557"
+    },
+    {
+      "file": "android/gradle-assemble-1793313353511.stderr.log",
+      "bytes": 1063,
+      "sha256": "d5a2d30e5672f922b9d49a0e5519e64acd21b85c4643d3f4bf326c38f3e7491e"
+    },
+    {
+      "file": "android/gradle-assemble-1793313353511.stdout.log",
+      "bytes": 16492,
+      "sha256": "091be3446a8a2ffff4432e3def807b68829384405b4aa99f790064378bca55fd"
+    },
+    {
+      "file": "android/gradle-assemble-1793314674214.meta.json",
+      "bytes": 499,
+      "sha256": "c2d0f2661502e3c0254b81455303f685fe638da327ec565143c19c8b97baa934"
+    },
+    {
+      "file": "android/gradle-assemble-1793314674214.stderr.log",
+      "bytes": 308,
+      "sha256": "71805aa45e06527445397aaee30dd6e35e263a7d4f726a39dbb43cadaf20679a"
+    },
+    {
+      "file": "android/gradle-assemble-1793314674214.stdout.log",
+      "bytes": 17845,
+      "sha256": "83879339d36be0c2d3315bef0c2639d54db527b584ce6760c858a254f4e3058b"
+    },
+    {
+      "file": "android/gradle-assemble.meta.json",
+      "bytes": 514,
+      "sha256": "17941c9761c9eb0addf20ef0003f2b7e61fad5595c4f6c82a26d69147f635a4e"
+    },
+    {
+      "file": "android/gradle-assemble.stderr.log",
+      "bytes": 1063,
+      "sha256": "d5a2d30e5672f922b9d49a0e5519e64acd21b85c4643d3f4bf326c38f3e7491e"
+    },
+    {
+      "file": "android/gradle-assemble.stdout.log",
+      "bytes": 16495,
+      "sha256": "5d1572a57fb4b8eaad405ca6ff65a22113a2d463dd0cdaad14ff323b3905d247"
+    },
+    {
+      "file": "android/gradle-instrumentation.meta.json",
+      "bytes": 488,
+      "sha256": "0b1ffbf9250fdf6d55a80dee84d336686df013b6ad8802782d140fb667cfc917"
+    },
+    {
+      "file": "android/gradle-instrumentation.stderr.log",
+      "bytes": 308,
+      "sha256": "71805aa45e06527445397aaee30dd6e35e263a7d4f726a39dbb43cadaf20679a"
+    },
+    {
+      "file": "android/gradle-instrumentation.stdout.log",
+      "bytes": 18702,
+      "sha256": "d06e361939ef231bd6a2dff1556e42111137d4644ac21e4c26682953d490aade"
+    },
+    {
+      "file": "android/gradle-lint-1793313430886.meta.json",
+      "bytes": 487,
+      "sha256": "43149c23bd5c8939062ebfa94615fa65a281417f69876d61331ce694114d70cb"
+    },
+    {
+      "file": "android/gradle-lint-1793313430886.stderr.log",
+      "bytes": 1007,
+      "sha256": "9a5765d0926d4fda2cca6d4b6c5f8c2db2e3fc00cd617f8e6bf040ac9b5e612c"
+    },
+    {
+      "file": "android/gradle-lint-1793313430886.stdout.log",
+      "bytes": 27270,
+      "sha256": "320e0e8a50f0d17895201c2587e8035c09f172f6671253de5a5f2f10881acaf2"
+    },
+    {
+      "file": "android/gradle-lint.meta.json",
+      "bytes": 486,
+      "sha256": "c83fb19fe49762523fb701a4d0939e5e90dc65d83b06fefc2d7a904db3aa24e9"
+    },
+    {
+      "file": "android/gradle-lint.stderr.log",
+      "bytes": 27063,
+      "sha256": "bdc1fc2fffb01f136e140741d7601bdb2e7abeb376312057ead42045015eac36"
+    },
+    {
+      "file": "android/gradle-lint.stdout.log",
+      "bytes": 28287,
+      "sha256": "4e8369d7f056d4a75dc08a17f28fa5e29bea4a5534a6a270821f47107b4d9398"
+    },
+    {
+      "file": "android/gradle-version.meta.json",
+      "bytes": 466,
+      "sha256": "7f9a0fb5db3ae5bba63a4956d89e534c453b34e2fb079b97f0e6c677e08f34f5"
+    },
+    {
+      "file": "android/gradle-version.stderr.log",
+      "bytes": 57,
+      "sha256": "b20e3675651676ed216fdf8b72183dd2e7f0d5354fa9fadd027b123c66be51c4"
+    },
+    {
+      "file": "android/gradle-version.stdout.log",
+      "bytes": 603,
+      "sha256": "63e31647519abc0779d71cd41a4b026f242334c55af3d165d0562403710ebafb"
+    },
+    {
+      "file": "android/incidencias-entorno.json",
+      "bytes": 805,
+      "sha256": "0358339087d91ed53527454c3a538ab5fc7400f84fd7ea25e0cf4b814d597d98"
+    },
+    {
+      "file": "android/instrumentacion-autenticado.json",
+      "bytes": 266,
+      "sha256": "17a76ef2f1df99d7d98c594178be26fe0638b212cbe663bcf2814b73d510e652"
+    },
+    {
+      "file": "android/instrumentacion-autenticado.meta.json",
+      "bytes": 441,
+      "sha256": "fe3f95ca331cf85dba07c903fc9f650aeb5bc5531fd1589fece57b381fceb728"
+    },
+    {
+      "file": "android/instrumentacion-autenticado.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/instrumentacion-autenticado.stdout.log",
+      "bytes": 754,
+      "sha256": "ad1f64271e79257794949098e4318ec98acb9ae0e3bcd6651a739c031b63b754"
+    },
+    {
+      "file": "android/instrumentacion-cierre.json",
+      "bytes": 266,
+      "sha256": "17a76ef2f1df99d7d98c594178be26fe0638b212cbe663bcf2814b73d510e652"
+    },
+    {
+      "file": "android/instrumentacion-cierre.meta.json",
+      "bytes": 441,
+      "sha256": "9313302ed99cff5f6f840f2bcc7d65a9d38513714df8e16f24a903d6715ea3c3"
+    },
+    {
+      "file": "android/instrumentacion-cierre.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/instrumentacion-cierre.stdout.log",
+      "bytes": 753,
+      "sha256": "c8792b72a73c3dbf001987546d691921471a3415faeec314616642858a7bf969"
+    },
+    {
+      "file": "android/instrumentacion-compilar-autenticado.meta.json",
+      "bytes": 473,
+      "sha256": "76e5c33b965187f16a578b1a51aff599b9daff38677c52bdf4d8bde4d46baffc"
+    },
+    {
+      "file": "android/instrumentacion-compilar-autenticado.stderr.log",
+      "bytes": 308,
+      "sha256": "71805aa45e06527445397aaee30dd6e35e263a7d4f726a39dbb43cadaf20679a"
+    },
+    {
+      "file": "android/instrumentacion-compilar-autenticado.stdout.log",
+      "bytes": 18699,
+      "sha256": "7c71d8477d91218c8f8eb199d77275f670735fedd8b092c2125d317ee632c4ef"
+    },
+    {
+      "file": "android/instrumentacion-compilar-cierre.meta.json",
+      "bytes": 474,
+      "sha256": "0708c67804bc2d1169577dc3433b917d437484810961aa06e1c609216737670f"
+    },
+    {
+      "file": "android/instrumentacion-compilar-cierre.stderr.log",
+      "bytes": 308,
+      "sha256": "71805aa45e06527445397aaee30dd6e35e263a7d4f726a39dbb43cadaf20679a"
+    },
+    {
+      "file": "android/instrumentacion-compilar-cierre.stdout.log",
+      "bytes": 18702,
+      "sha256": "d08f526830122c12f4404ea180078b430044a39082d661f5dd95afb8e73ecf5f"
+    },
+    {
+      "file": "android/java-version.meta.json",
+      "bytes": 298,
+      "sha256": "8aa0e1f0646647d7fb9bc6e411eef82a1e7c071e4260d66f2a988318bc53c69b"
+    },
+    {
+      "file": "android/java-version.stderr.log",
+      "bytes": 265,
+      "sha256": "15c368ba950b2ad41efb08c7eaddd4605761f1c35a6cc4112f48e7cd05af0c3c"
+    },
+    {
+      "file": "android/java-version.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/junit/resumen.json",
+      "bytes": 293,
+      "sha256": "003a283242d20f71dd3ab99ac4f850cb5543c3d6ccd8e3332e2e9dea3b2abcd2"
+    },
+    {
+      "file": "android/junit/TEST-com.getcapacitor.myapp.ExampleUnitTest.xml",
+      "bytes": 441,
+      "sha256": "c0ba10cdf9012f05107b94e3bc480c6f39643417ac9ff70c6dccb7e8961e121b"
+    },
+    {
+      "file": "android/junit-cierre/resumen.json",
+      "bytes": 292,
+      "sha256": "e891efb456e393a2d14b2af17d876cc545efaf5e32e71285de44fea545b73073"
+    },
+    {
+      "file": "android/junit-cierre/TEST-com.getcapacitor.myapp.ExampleUnitTest.xml",
+      "bytes": 439,
+      "sha256": "14fbbf9acf8d07201bf1316b8dc17b039b6cd5e63127ef51f3fae753702495fb"
+    },
+    {
+      "file": "android/junit-final/resumen.json",
+      "bytes": 292,
+      "sha256": "e891efb456e393a2d14b2af17d876cc545efaf5e32e71285de44fea545b73073"
+    },
+    {
+      "file": "android/junit-final/TEST-com.getcapacitor.myapp.ExampleUnitTest.xml",
+      "bytes": 439,
+      "sha256": "14fbbf9acf8d07201bf1316b8dc17b039b6cd5e63127ef51f3fae753702495fb"
+    },
+    {
+      "file": "android/lint/final/lint-results-debug.html",
+      "bytes": 117111,
+      "sha256": "80f9dfe594a9e0e35ff29a84ef208dfad77fb68a7c1b25fee01c42bc30fa8c06"
+    },
+    {
+      "file": "android/lint/final/lint-results-debug.txt",
+      "bytes": 12087,
+      "sha256": "3daacb2c2b1189350be135818c7e76e934d04e837ff955c2ebc6b23cba876f86"
+    },
+    {
+      "file": "android/lint/final/lint-results-debug.xml",
+      "bytes": 27552,
+      "sha256": "a6cc41464b2c98dc2429c00ed0d7376e03712a69bd3adbaf0f761cb27b4837cb"
+    },
+    {
+      "file": "android/lint/final/resumen.json",
+      "bytes": 847,
+      "sha256": "8dc85422184a0a599776e7d2c7abc22b4b75db82e8877be2391bdf7cd21054b1"
+    },
+    {
+      "file": "android/lint/inicial/lint-results-debug.html",
+      "bytes": 120382,
+      "sha256": "0917575131060541be963552f47a9aa55f66326a96782c12ac2e2882552b1081"
+    },
+    {
+      "file": "android/lint/inicial/lint-results-debug.txt",
+      "bytes": 12886,
+      "sha256": "11b560994b8e5e1c51515ac2019181880cf6a468d45700cecd91d7e201dab406"
+    },
+    {
+      "file": "android/lint/inicial/lint-results-debug.xml",
+      "bytes": 28752,
+      "sha256": "919e118260e658e4f7040af14643eec19e83af85d46a40bccf12e3ae62975ce0"
+    },
+    {
+      "file": "android/lint/inicial/resumen.json",
+      "bytes": 948,
+      "sha256": "2e2e88f0fba0289dbea76bb682f10acc06d4c8d4ef1b33c548b1c88bb5565419"
+    },
+    {
+      "file": "android/test-apk-instalar-autenticado.meta.json",
+      "bytes": 524,
+      "sha256": "f9d142efae418c05fda61321b77b64bc7b5149837522490c0513a92b32d6c783"
+    },
+    {
+      "file": "android/test-apk-instalar-autenticado.stderr.log",
+      "bytes": 208,
+      "sha256": "104b49f103714dc22da8c966d90c0f40f226bb2a970b1c5f9d131dc179e4a344"
+    },
+    {
+      "file": "android/test-apk-instalar-autenticado.stdout.log",
+      "bytes": 35,
+      "sha256": "b44a82dc2c11b08ed2211b2d4726dbeee75077a4926ecb97fa652ddc83375d96"
+    },
+    {
+      "file": "android/test-apk-instalar-cierre.meta.json",
+      "bytes": 524,
+      "sha256": "b0623397c38e256acfbdc9f7cfac10b9db3886d4ae01e06a1d77705020719248"
+    },
+    {
+      "file": "android/test-apk-instalar-cierre.stderr.log",
+      "bytes": 208,
+      "sha256": "d3762f0f873630ee5186af84c2c27ed017a24f65c6489be304da4bcc326b61c1"
+    },
+    {
+      "file": "android/test-apk-instalar-cierre.stdout.log",
+      "bytes": 35,
+      "sha256": "b44a82dc2c11b08ed2211b2d4726dbeee75077a4926ecb97fa652ddc83375d96"
+    },
+    {
+      "file": "android/vinculacion-fuentes-web-1793314633509-653b08.json",
+      "bytes": 501,
+      "sha256": "03a7a4c8c6ec5590499c0713cf089a38b3e37651a507f73666f470e228c20f10"
+    },
+    {
+      "file": "android/vinculacion-fuentes-web-1793314674114-dad754.json",
+      "bytes": 501,
+      "sha256": "caddec37dab918095aeb99b2904cf2c78eaeb55fb1efb619529773688569af87"
+    },
+    {
+      "file": "android/vinculacion-fuentes-web.json",
+      "bytes": 185,
+      "sha256": "a04fdad812ceabf99d2f40851d70c1b7975a1e15388f32bacad343bb50e369da"
+    },
+    {
+      "file": "android/webview-roles-cierre-ejecucion.meta.json",
+      "bytes": 310,
+      "sha256": "7decd09b7c1d68bba1cf2626b1ec27229250afd337037fe48d6c473d099f7583"
+    },
+    {
+      "file": "android/webview-roles-cierre-ejecucion.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/webview-roles-cierre-ejecucion.stdout.log",
+      "bytes": 1079,
+      "sha256": "dceded4eb65cfc1aee698ef1927d0c1780abce9837d548c3192cf1f9abda3ee7"
+    },
+    {
+      "file": "android/webview-roles-ejecucion-corregida.meta.json",
+      "bytes": 313,
+      "sha256": "7fdcebc71e2e8caa33c32292118556346effb4ae6cabbbe0be61cca7872da14f"
+    },
+    {
+      "file": "android/webview-roles-ejecucion-corregida.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/webview-roles-ejecucion-corregida.stdout.log",
+      "bytes": 1106,
+      "sha256": "a67c05bed72525b3eaede63885c099d188fd719d452895ef7196a158ef5f3692"
+    },
+    {
+      "file": "android/webview-roles-ejecucion.meta.json",
+      "bytes": 309,
+      "sha256": "5d0095c83c1eb25ebce486f4a2d108a330d29efd52e6e739ef125b5e6141e7e3"
+    },
+    {
+      "file": "android/webview-roles-ejecucion.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/webview-roles-ejecucion.stdout.log",
+      "bytes": 108,
+      "sha256": "6ca4e219804ee44e806b4d17d4ad79195e80363444527cd4275fd6bf8722014c"
+    },
+    {
+      "file": "android/webview-version.meta.json",
+      "bytes": 360,
+      "sha256": "5bb2ab81a363bfadcc53815c8bb247c9d75baf619a22327a0c914d9aedc2422b"
+    },
+    {
+      "file": "android/webview-version.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/webview-version.stdout.log",
+      "bytes": 872,
+      "sha256": "839cb224c86262d9e827eea5f4c46f597f2f2de7c67fb3b1fbb3f9072d4fca97"
+    },
+    {
+      "file": "compilacion-web/build-auditoria-1793312584243.meta.json",
+      "bytes": 297,
+      "sha256": "2b58be2c64c9503a2cccb54d3f4766700cef0126a6771379199df4acbf148e78"
+    },
+    {
+      "file": "compilacion-web/build-auditoria-1793312584243.stderr.log",
+      "bytes": 172,
+      "sha256": "640d056d8bcdaeecf9409a7bca801b7ad3312f1106214ee04bc9b2fbdd2f4b61"
+    },
+    {
+      "file": "compilacion-web/build-auditoria-1793312584243.stdout.log",
+      "bytes": 2799,
+      "sha256": "5eccfaeed64f2f7b25c87dcb9d69fcecb9d072eca1d7bf99f59844863ab179e8"
+    },
+    {
+      "file": "compilacion-web/build-auditoria-1793312891632.meta.json",
+      "bytes": 297,
+      "sha256": "ecc634a428521bde7f6836056a8b00b868afe4561adb76ec4dd19134150e320d"
+    },
+    {
+      "file": "compilacion-web/build-auditoria-1793312891632.stderr.log",
+      "bytes": 172,
+      "sha256": "7f5011a5d935300a0b28320fbd9e1095e13658b55763b71fdfebe848bd664125"
+    },
+    {
+      "file": "compilacion-web/build-auditoria-1793312891632.stdout.log",
+      "bytes": 2799,
+      "sha256": "5eccfaeed64f2f7b25c87dcb9d69fcecb9d072eca1d7bf99f59844863ab179e8"
+    },
+    {
+      "file": "compilacion-web/build-auditoria-1793314392905.meta.json",
+      "bytes": 297,
+      "sha256": "bb5c849e73390bf315f15bfdf021d00603486b4141279ad3ac14676b61f1aee1"
+    },
+    {
+      "file": "compilacion-web/build-auditoria-1793314392905.stderr.log",
+      "bytes": 172,
+      "sha256": "70015df9b9b76b377db8b488d8354d9f3a944bfbfd1c5b1fae66e4252f1ebc88"
+    },
+    {
+      "file": "compilacion-web/build-auditoria-1793314392905.stdout.log",
+      "bytes": 3127,
+      "sha256": "5e7bc578c6fe9780c2660e02f8f88b762990d2ecdd68cd8aae8c9553bdbe5a49"
+    },
+    {
+      "file": "compilacion-web/build-auditoria-1793314648747.meta.json",
+      "bytes": 296,
+      "sha256": "00800c1a3dbd6da7cbb8ba64071daebbb14292f0f42440fc9f507529309e4c10"
+    },
+    {
+      "file": "compilacion-web/build-auditoria-1793314648747.stderr.log",
+      "bytes": 172,
+      "sha256": "91d1e7a0691aed9db44627c2e37bbf5239660c289aa1ee59b51cd489181c8aa3"
+    },
+    {
+      "file": "compilacion-web/build-auditoria-1793314648747.stdout.log",
+      "bytes": 3086,
+      "sha256": "82f990cf10d4cc806ce1d6a7f4c5b32df3ebd0d9d6ec4d61d08238c51bc9f53e"
+    },
+    {
+      "file": "compilacion-web/build-auditoria.meta.json",
+      "bytes": 297,
+      "sha256": "4bce77da450f94700d126356792e90a5c8271a9ded80560f313cb77e28fbc932"
+    },
+    {
+      "file": "compilacion-web/build-auditoria.stderr.log",
+      "bytes": 172,
+      "sha256": "66f90fea379a0b5250280793f9980a0dc39c3ef36a8dbbee92da41bf6d37e78c"
+    },
+    {
+      "file": "compilacion-web/build-auditoria.stdout.log",
+      "bytes": 3168,
+      "sha256": "8e65ae656d9f24f050c09e6a1781096b8b2817e80b2649b197b9d0f86507a521"
+    },
+    {
+      "file": "CONTEXTO.json",
+      "bytes": 413,
+      "sha256": "cd3b7775766ad63890c34c92e1378194d751bf9cacf73307e103022b49da6749"
+    },
+    {
+      "file": "estado-final.txt",
+      "bytes": 951,
+      "sha256": "9f147b90584b43dd5cc68d075bae649fa4258d804508433ea66c940303da023b"
+    },
+    {
+      "file": "estado-inicial.txt",
+      "bytes": 141,
+      "sha256": "809f19fe984b8c88e06ac166141a0c963c779446d2ef53b98b1e22234be29b8d"
+    },
+    {
+      "file": "fuentes-finales.json",
+      "bytes": 173517,
+      "sha256": "755dbea04b890167c442b6e319baf459db39acddc5ff64c24e0c9e7fbcb97230"
+    },
+    {
+      "file": "herramientas-entorno-1793312878528-194dfb.json",
+      "bytes": 245,
+      "sha256": "b0b68e79bbdb277e38b82fe1a8d3b9b8744bed8219f52600c2955b87d843626b"
+    },
+    {
+      "file": "herramientas-entorno.json",
+      "bytes": 217,
+      "sha256": "03a4b547772aeb9998dd87b85b2ac7bb453777a0c1b9d31cbf066513e3ee49c9"
+    },
+    {
+      "file": "INFORME_VERIFICACION_TECNICA.md",
+      "bytes": 15130,
+      "sha256": "904567a769a91174c7cdcc7944f77fdcc6574e6a5f56dba03d2843a0fbba578d"
+    },
+    {
+      "file": "INTEGRIDAD.json",
+      "bytes": 3643,
+      "sha256": "9fdf58ad04eec690a599803cbc60b5335897d01c3529f01ccbb0def0145a31e2"
+    },
+    {
+      "file": "MATRIZ_VERIFICACIONES_TESIS.md",
+      "bytes": 6341,
+      "sha256": "9d6df20dc55af0a611978e5e2ef23aec06bf91e1df7104601bc7c0307d67f878"
+    },
+    {
+      "file": "privacidad-final.meta.json",
+      "bytes": 226,
+      "sha256": "75deaa26ea5e723de8f8c75ffee29ee580b85d8ea355c3cb3cebbf35c26eb140"
+    },
+    {
+      "file": "privacidad-final.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "privacidad-final.stdout.log",
+      "bytes": 66,
+      "sha256": "dff7cc4e25a1a587ec684b08981c25d8d9eb8c83add4b04d5490c4e9d6269fce"
+    },
+    {
+      "file": "PRIVACIDAD.json",
+      "bytes": 1078,
+      "sha256": "5bc651647676305298c9b3cffbac0f79c2aeea903753d9d4a3c28e03b8f5382e"
+    },
+    {
+      "file": "RESULTADOS_PARA_TESIS_4_5.md",
+      "bytes": 3973,
+      "sha256": "d9d9d550ee2bda527e94bcbe2dc24ed8b2d6d6873f9c8f33849bee7e638daa44"
+    },
+    {
+      "file": "RESUMEN_FINAL.json",
+      "bytes": 47687,
+      "sha256": "35a2b59bf76cf92b5004137cc029286083509f38fc53c12b66ac8a7aeda6d1dc"
+    },
+    {
+      "file": "seguridad/aplicar-parches-compatibles-qs.meta.json",
+      "bytes": 350,
+      "sha256": "3aa96e514fe036242df49653e42b94be4df77b55433865cb8fa6a8ccf721ddd5"
+    },
+    {
+      "file": "seguridad/aplicar-parches-compatibles-qs.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/aplicar-parches-compatibles-qs.stdout.log",
+      "bytes": 27962,
+      "sha256": "6f4ea54ccabc07e80cacedc44dedb9605cb80ff27a92ac0e338c3e6369d37e0a"
+    },
+    {
+      "file": "seguridad/aplicar-parches-compatibles.meta.json",
+      "bytes": 350,
+      "sha256": "9e9425fdeb4f2cbf93231d096fd5ba25f7ee0325d9d757cfbe2fafa4aa3ca63b"
+    },
+    {
+      "file": "seguridad/aplicar-parches-compatibles.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/aplicar-parches-compatibles.stdout.log",
+      "bytes": 30912,
+      "sha256": "9ec75da90d5d3a56f58c9304f75bb39dddefbd8c371e9303ac4db6a062d02445"
+    },
+    {
+      "file": "seguridad/arbol-parches.meta.json",
+      "bytes": 339,
+      "sha256": "c3d6141c6e2d497b193ae203dbebe17993144028e789777237a6a0936e8b252d"
+    },
+    {
+      "file": "seguridad/arbol-parches.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/arbol-parches.stdout.log",
+      "bytes": 2001,
+      "sha256": "8f18d1b5e81b0bdad3ac1b6b4abb95370fa4dfa0d946467a15c483f23ba46fe2"
+    },
+    {
+      "file": "seguridad/cambios-lockfile-qs.json",
+      "bytes": 403,
+      "sha256": "272c12b61d506b941ba567e0ca584bdc1be8ca83a6c80eab6f83a00f8b8a1c87"
+    },
+    {
+      "file": "seguridad/cambios-lockfile.json",
+      "bytes": 345,
+      "sha256": "bd4a9dc8e8f5e00d6dd9ca8046b65482e3ef1ed5babeeaee0da905ec0e1aeaba"
+    },
+    {
+      "file": "seguridad/compatibilidad-final.meta.json",
+      "bytes": 317,
+      "sha256": "3720fb4eb32512d58f92d1a84944dbb4c9a8af7a6b7820cf9fd5bc137e950cf8"
+    },
+    {
+      "file": "seguridad/compatibilidad-final.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/compatibilidad-final.stdout.log",
+      "bytes": 1489,
+      "sha256": "574898d1c03e618a1fa16c3060846a316f0149424e6462ffccf8e56b961e3d8b"
+    },
+    {
+      "file": "seguridad/compatibilidad-qs-rojo.meta.json",
+      "bytes": 289,
+      "sha256": "bf613db853c49370c104fd2e62b309d5fb79b9e538d4baacf178c4f7f3eaaaad"
+    },
+    {
+      "file": "seguridad/compatibilidad-qs-rojo.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/compatibilidad-qs-rojo.stdout.log",
+      "bytes": 2349,
+      "sha256": "0f058ef6632bee1c191e108073fe13ff194f0a084703ac02d24bdd9963bb18c7"
+    },
+    {
+      "file": "seguridad/compatibilidad-underscore-rojo.meta.json",
+      "bytes": 290,
+      "sha256": "d132a93ac888ea7fab6d8ed9c919f4513d525e46878c21b86aca6f64f0ca889d"
+    },
+    {
+      "file": "seguridad/compatibilidad-underscore-rojo.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/compatibilidad-underscore-rojo.stdout.log",
+      "bytes": 2738,
+      "sha256": "cda107a987c2dd56be55818aef731f2236c3877a7b2603c5a412220fa62e4a04"
+    },
+    {
+      "file": "seguridad/compatibilidad-underscore-verde-qs.meta.json",
+      "bytes": 289,
+      "sha256": "965cdcb7f6436de21149e9274d14ace88b77df59423091ff1b4c1b8e6520cd1a"
+    },
+    {
+      "file": "seguridad/compatibilidad-underscore-verde-qs.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/compatibilidad-underscore-verde-qs.stdout.log",
+      "bytes": 686,
+      "sha256": "9afaa28a13ffc41a152f1a424a616f73209e6df8a738771373a257bc55472be1"
+    },
+    {
+      "file": "seguridad/compatibilidad-underscore-verde.meta.json",
+      "bytes": 289,
+      "sha256": "b104c92d19b607aefdbafece06b4a92d37cf8d7a3fccb4fe5f700f344d6e4056"
+    },
+    {
+      "file": "seguridad/compatibilidad-underscore-verde.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/compatibilidad-underscore-verde.stdout.log",
+      "bytes": 492,
+      "sha256": "3c1205e2ffea6ff1f9be72bf58556a4080204596e38597a6af6a88f9503fdb3f"
+    },
+    {
+      "file": "seguridad/DEPENDENCIAS_PENDIENTES.md",
+      "bytes": 9740,
+      "sha256": "f82c85231edc01ebc5722ac979ffe2aef261688e91c84598e0ee88c20869d459"
+    },
+    {
+      "file": "seguridad/funciones-finales.json",
+      "bytes": 5838,
+      "sha256": "9a07d46d415f34d82fe390e6a61d2567867c01f8dad89a75420992c1b4f1e030"
+    },
+    {
+      "file": "seguridad/instalar-parche-underscore-qs.meta.json",
+      "bytes": 361,
+      "sha256": "e1d45a88d520a720d05ff44e1b1ad130ceb3f7c4e73e9e3e55068297e043a145"
+    },
+    {
+      "file": "seguridad/instalar-parche-underscore-qs.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/instalar-parche-underscore-qs.stdout.log",
+      "bytes": 49,
+      "sha256": "2fa7083595c72b1f25ab7ee055d0bc388e6a40874b812de6d510ad1de9705c98"
+    },
+    {
+      "file": "seguridad/instalar-parche-underscore.meta.json",
+      "bytes": 362,
+      "sha256": "e15d45ac21e0b55558737a6e234ee71d70dcd8aeec479a50a6e6b59252e35140"
+    },
+    {
+      "file": "seguridad/instalar-parche-underscore.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/instalar-parche-underscore.stdout.log",
+      "bytes": 27,
+      "sha256": "0e2c36a98c702dbe77939997c5745617b623f2352de709612f74fccdd6561bd3"
+    },
+    {
+      "file": "seguridad/npm-audit-final-qs.json",
+      "bytes": 25860,
+      "sha256": "7dfa6f9c95722aab5d50cceef9509606ceff3b06f1b1e76c48bc35c992f60968"
+    },
+    {
+      "file": "seguridad/npm-audit-final-qs.meta.json",
+      "bytes": 314,
+      "sha256": "62f735890a605a367f36565a5a4a91e8b38c75d5ac3da9dfee9e83f690eb27e3"
+    },
+    {
+      "file": "seguridad/npm-audit-final-qs.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/npm-audit-final-qs.stdout.log",
+      "bytes": 25861,
+      "sha256": "9e6193f18dc978a7d9695db914edf4e710947d7c80fcbd32ee57403c48522138"
+    },
+    {
+      "file": "seguridad/npm-audit-final.json",
+      "bytes": 28370,
+      "sha256": "1a3636371d3535913fca866d3487d1c5e9d7282f0e49bb31badd5aa4ab85c3cd"
+    },
+    {
+      "file": "seguridad/npm-audit-final.meta.json",
+      "bytes": 314,
+      "sha256": "d90dee85448d80697da1a29de0fabd14fbee5cc9405e6ef7c53acafd5be58ae6"
+    },
+    {
+      "file": "seguridad/npm-audit-final.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/npm-audit-final.stdout.log",
+      "bytes": 28371,
+      "sha256": "3b3edaa21f382aa9fb6708835493271562282f5b78ca1899f617a781efa2e173"
+    },
+    {
+      "file": "seguridad/npm-audit-inicial.meta.json",
+      "bytes": 257,
+      "sha256": "8992b4827a60d3df7444a3bcbf5cedf5fb40001561d3c3f9dc2d8e2595199118"
+    },
+    {
+      "file": "seguridad/npm-audit-inicial.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/npm-audit-inicial.stdout.log",
+      "bytes": 29794,
+      "sha256": "d24e68955908dacf19303f5597dec1f1d709d370350d9c2fb062e0a16e59874b"
+    },
+    {
+      "file": "seguridad/npm-auxiliar-after.json",
+      "bytes": 362,
+      "sha256": "1288a1c15071cc8eb08c81cbef018690a1fd037712655ea23fd4793c8c8e4cf7"
+    },
+    {
+      "file": "seguridad/npm-auxiliar-after.meta.json",
+      "bytes": 321,
+      "sha256": "cfa0b9bb9d1cc047ce6d793cb57edca3f5c797326d0d313ff107d41059723867"
+    },
+    {
+      "file": "seguridad/npm-auxiliar-after.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/npm-auxiliar-after.stdout.log",
+      "bytes": 363,
+      "sha256": "332925e31fb197b1b0b037b6b3763b6f3fa6802b6084dd448d6778b3b1bdbe96"
+    },
+    {
+      "file": "seguridad/npm-functions-after.json",
+      "bytes": 364,
+      "sha256": "8266ca32882b1ea7fb92a7c5ccfee4237ea4bacfc36a3c22efe3b18c27058ed8"
+    },
+    {
+      "file": "seguridad/npm-functions-after.meta.json",
+      "bytes": 322,
+      "sha256": "15caf98824652c8566765982b6feca49853faa86c16d87e0f6358cd17882876e"
+    },
+    {
+      "file": "seguridad/npm-functions-after.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/npm-functions-after.stdout.log",
+      "bytes": 365,
+      "sha256": "7136278ffa53b8989d84e59f641a886c834b003afdf898fd8afc860ba4f72c34"
+    },
+    {
+      "file": "seguridad/npm-parches-simulacion.meta.json",
+      "bytes": 289,
+      "sha256": "7a11f7ec44b0e9b9be3de5cfa5a59a00ff11b802fa64931ffcf6481b965d8878"
+    },
+    {
+      "file": "seguridad/npm-parches-simulacion.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/npm-parches-simulacion.stdout.log",
+      "bytes": 32471,
+      "sha256": "53c1561b1d5bb9d4db80f0b1bdde547dec6cfe398d22329444264099e9fa2f7f"
+    },
+    {
+      "file": "seguridad/npm-raiz-after.json",
+      "bytes": 25860,
+      "sha256": "2af387b036e86ce4e42e0cd89bf274ebd01d9f9fc603c994c1b22d1d31b84505"
+    },
+    {
+      "file": "seguridad/npm-raiz-after.meta.json",
+      "bytes": 314,
+      "sha256": "65197c0cc96bdf68c1dc9f93196ce70af371b8d04de8c5ffbe37e56645569cbb"
+    },
+    {
+      "file": "seguridad/npm-raiz-after.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/npm-raiz-after.stdout.log",
+      "bytes": 25861,
+      "sha256": "92b8a19649e81de7f7838469473837e3baea731fe4ce3446c8af2677e0075003"
+    },
+    {
+      "file": "seguridad/npm-version.meta.json",
+      "bytes": 304,
+      "sha256": "279a3543d3bf90f34a1c56eaf236a2753b2d8c12b1e8ea45ad840c0745dceaa6"
+    },
+    {
+      "file": "seguridad/npm-version.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/npm-version.stdout.log",
+      "bytes": 9,
+      "sha256": "1d01c01718f2b6cb41973abc497379d9c4fe42da5a57f6fb3e0eeeae18482608"
+    },
+    {
+      "file": "seguridad/politicas-finales.json",
+      "bytes": 92326,
+      "sha256": "80da3d0f4247e0d7642972482f6d53342cb4e12f015c3979b0adbae60b386d00"
+    },
+    {
+      "file": "seguridad/rls-final.json",
+      "bytes": 3072,
+      "sha256": "f21637fb00dce280105a7146fc84bdb4a34ed1da04830131fdc4d7a3dec60f67"
+    },
+    {
+      "file": "seguridad/verificacion-catalogo.json",
+      "bytes": 307,
+      "sha256": "1e3b93252eb55a91673624359565df4a48900576208a6a1c2505bf9ad3d78a29"
+    },
+    {
+      "file": "trazabilidad-detallada.json",
+      "bytes": 33506,
+      "sha256": "d0bfa59736d08fab3ddad8d4791b6c483e89a1eb5cdfad8080c0ede6c7b14dce"
+    },
+    {
+      "file": "unitarias/casos-jest.json",
+      "bytes": 92016,
+      "sha256": "9c95af22ce8438776d59ed741430f86277452b121e8fd42f7a6b541b4e4b6c50"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/clover.xml",
+      "bytes": 777352,
+      "sha256": "cc856482cc9cfbcc5970b5c650e5374bfd963f26c9045394be2d1cc963b663db"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/coverage-final.json",
+      "bytes": 3285334,
+      "sha256": "4498a0dce1d362299c6d38e536797f42011f77e9a8967cb8e99a519cd085a151"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/base.css",
+      "bytes": 5394,
+      "sha256": "3f876e51f0a46864ffa7665b4b7a1f5fb5f6f37fb6a28f014e2b12d82962c852"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/block-navigation.js",
+      "bytes": 2655,
+      "sha256": "cd8db34b1fbeb973354a93f8b4133c7c7eab34cdda9429a0434be91384783b7e"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/favicon.png",
+      "bytes": 445,
+      "sha256": "5b0cfd52dc0bfbe544f4e1a9c77aa46b8629b0e0aad6c54f95eef457b86c2a89"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/index.html",
+      "bytes": 119992,
+      "sha256": "25b9f4e98f82efb3c8ab59ae6412ec1001ecf42009c317323d383bbd19c7fe91"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/prettify.css",
+      "bytes": 676,
+      "sha256": "ea3fe433f9450698ca8a230271688e7aeec12f99c8a7ef6c94379abb38f27823"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/prettify.js",
+      "bytes": 17590,
+      "sha256": "fa1b1e1b906ddcfa08b46f161c0f924f506e1a31b4f3e09b8caaa2463ef52c18"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/sort-arrow-sprite.png",
+      "bytes": 138,
+      "sha256": "42c895355f9838ede83fdfdca90127d8471aefed5ecf5342374f65ec7c3f10ab"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/sorter.js",
+      "bytes": 6731,
+      "sha256": "f8cc5d157379d844fd695ad567b6c29b3c1f0812964ddf6f95c26327e434bab5"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/App.js.html",
+      "bytes": 59841,
+      "sha256": "59869ac17b7f6de5a60d4d6612942c2a9e08c21df28c59f202928a8d4f57ee95"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/components/AboutUs.js.html",
+      "bytes": 30543,
+      "sha256": "8f2822015ace76916bfd6974c29d55f6f2b8f6f25830f9e20cae030639f0e9ad"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/components/HomePage.js.html",
+      "bytes": 24030,
+      "sha256": "14a0e172b6e014b2e059e24899a5afab344aede002568e110fc838b16fc3b6fe"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/components/Horarios.js.html",
+      "bytes": 36152,
+      "sha256": "8bbccd5b792c2c73ca2eaaee7df361209c6f00588baa51f431589b5b0582808e"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/components/index.html",
+      "bytes": 6331,
+      "sha256": "a836f24568416d0eb81355aa74a567cac1e8f581b5ed488b77963b5ebac4fbae"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/components/Navbar.js.html",
+      "bytes": 64680,
+      "sha256": "8f9841cb37371087e0e5c524f53562450de35fb208708f3d3acbe67b9e10d347"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/config/appUrls.js.html",
+      "bytes": 4968,
+      "sha256": "b7897501556fcda76817a93a0f8343d58ff00ffa3cea6ba3dc6b5861e01d4f1b"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/config/googleCalendar.js.html",
+      "bytes": 4068,
+      "sha256": "88ba4a2bcd076c3390c5dc7bd02cdb6a9a94c53afcbb8dfb2d0700d8cdbaaebc"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/config/index.html",
+      "bytes": 5767,
+      "sha256": "366f2dfbfe8ef7d49b6402b9fab5f56aec32d1be4320300eb0ff731802a38ee6"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/config/supabase.js.html",
+      "bytes": 18840,
+      "sha256": "d7d07fe67105357aaffae64502efd7eb1a679fffeeb266916f5e02485f37db40"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/contexts/index.html",
+      "bytes": 4420,
+      "sha256": "a5ba245df635b7bb57f3fcb517cacb2b3d9b93becb01a70242e72a05f6a9f242"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/contexts/ToastContext.js.html",
+      "bytes": 15286,
+      "sha256": "1c69750de5eaaa68b83796be12041d086963f0906a0330b5a5c52ed8d77c8495"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/account-admin/accountAdminService.js.html",
+      "bytes": 3687,
+      "sha256": "8d65b2d00568552c5cbe5d626245dbc55927e23a4fab1153343125e4731d0ac9"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/account-admin/application/useCases/createAccountAdminUseCases.js.html",
+      "bytes": 27307,
+      "sha256": "8ed8fbb4615edb4ead827d4b03975aa3d6ea6c8e8629e5d34ea388bd6b9e0fbf"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/account-admin/application/useCases/index.html",
+      "bytes": 4682,
+      "sha256": "64fdfed1f50c558c991b0e1876a3621118c07185220bf8cb99f88a90e8348e79"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/account-admin/domain/accountAdminError.js.html",
+      "bytes": 4514,
+      "sha256": "7251ce9cf19500225cd95e52d6ae4e639b03cad1c149b3db4aff6c3ba702895e"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/account-admin/domain/index.html",
+      "bytes": 4516,
+      "sha256": "0921ea971892fe8a4c906f68a1cee96e0c8340dd7e63a77d5c2c9f4e278a1062"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/account-admin/index.html",
+      "bytes": 5145,
+      "sha256": "e8e0a2a97bac40be9befa93411f21eb6377c954128682dbd20e9be8e0e9110e8"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/account-admin/index.js.html",
+      "bytes": 3679,
+      "sha256": "c9355a0873584eccf8f24d308d96759dc913c452a6df00dece5eecc1b7152b3a"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/account-admin/infrastructure/repositories/index.html",
+      "bytes": 4679,
+      "sha256": "f1f069f61be8e7698251d1ac5d75334b23d1536c844e7d299fb2d12be73607a6"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/account-admin/infrastructure/repositories/supabaseAccountAdminRepository.js.html",
+      "bytes": 25255,
+      "sha256": "f7781be3d27ff2be5a8c176bef49c97276a4b2d677c114356ddaafbc17b52f34"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/account-admin/presentation/components/index.html",
+      "bytes": 5250,
+      "sha256": "d1a12bc15ba3af42945fb5fb7b9707960a0b5994ab85528e6c24a3bd41d1482f"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/account-admin/presentation/components/ProfileSettings.js.html",
+      "bytes": 58696,
+      "sha256": "2ba0e250e53353224e59d6d2e91992325cdaa2923e2e6ab6aa1d6902532f24f7"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/account-admin/presentation/components/UsuariosManager.js.html",
+      "bytes": 96786,
+      "sha256": "3ddc333194305e43c5d118e94cba40189b77a896debe2c768dbce054d45b143b"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/account-admin/presentation/createAccountAdminService.js.html",
+      "bytes": 10183,
+      "sha256": "edfeb37034d3111ba7b101300f8ff273c297055e2b121f240aa7cff0a4fbff0f"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/account-admin/presentation/index.html",
+      "bytes": 4623,
+      "sha256": "667a15658bb14d8ea1bd58fef8ed06165b47aa90611d5d7440888a7c72bed58b"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/admin-dashboard/adminDashboardService.js.html",
+      "bytes": 3703,
+      "sha256": "f05f8d15342f1ea2eb98cbfb8075e5bef6333a17007131214dc509cdfd3118cc"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/admin-dashboard/application/useCases/createAdminDashboardUseCases.js.html",
+      "bytes": 57670,
+      "sha256": "8c936dfb1cbd1c29b098d5bf561e4fe4c447328ee9232b0892871b922bd4c661"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/admin-dashboard/application/useCases/index.html",
+      "bytes": 4706,
+      "sha256": "e22b2f9a7ef0f45b2017c061496772491f0ede035eea1a7ed05c6b7e393ab431"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/admin-dashboard/domain/adminDashboardError.js.html",
+      "bytes": 4348,
+      "sha256": "849081dd451e7aa5e9c61e539c707797c65e8f86d86b233ca43bae32ea1dac1f"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/admin-dashboard/domain/index.html",
+      "bytes": 4526,
+      "sha256": "e0d421cac4af86726b10f4836257c11e9fb1393b7cb1996cfbc8a5a046e9b918"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/admin-dashboard/index.html",
+      "bytes": 5155,
+      "sha256": "f9dee192536aae1ae37871bfdc9b352c92cbfb7667c8984db30cc1741183a6a2"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/admin-dashboard/index.js.html",
+      "bytes": 3665,
+      "sha256": "69f19c8a844676f383f7b4bc5172c60768e102d6be5e509d301a40bcd6de3afd"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/admin-dashboard/infrastructure/repositories/index.html",
+      "bytes": 4643,
+      "sha256": "123f7a139bf63484a3a9595b2bfdaf4df6a2c93682355b40ef30712ba744adc6"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/admin-dashboard/infrastructure/repositories/supabaseAdminDashboardRepository.js.html",
+      "bytes": 32495,
+      "sha256": "000a324ab3cf72e9a0679c085f5cabee559822b3016c032e90089b18d79f1d66"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/admin-dashboard/presentation/components/AdminPanel.js.html",
+      "bytes": 39121,
+      "sha256": "fbfabfb2f60baabed1d78158d198451221d23b398b72d8636706cc5ad081c01b"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/admin-dashboard/presentation/components/Dashboard.js.html",
+      "bytes": 39948,
+      "sha256": "6e041a384fcf628a5a0102cd6e8bbd6bbf2862d7e5395873848f57340ba62ead"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/admin-dashboard/presentation/components/FinancialReview.js.html",
+      "bytes": 133365,
+      "sha256": "d415b403019a1f26ea54558774a4583373900d6f64e0ec61b947bc1fb3feb6d6"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/admin-dashboard/presentation/components/index.html",
+      "bytes": 6550,
+      "sha256": "ffc66e068685f94a64bbde06146873a40f50dc5ea1d959ac6aa12286bc9c96a0"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/admin-dashboard/presentation/components/ReportsCenter.js.html",
+      "bytes": 220352,
+      "sha256": "4441248c574ee51bc5327f7bbe9e87ceadb27a78bf0babf55d3ead95243de834"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/admin-dashboard/presentation/createAdminDashboardService.js.html",
+      "bytes": 6696,
+      "sha256": "21854d60a861c8114e828e603ce4974c45217079e4c2c668a6318696e3b0afb6"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/admin-dashboard/presentation/index.html",
+      "bytes": 4600,
+      "sha256": "ad3c1a532701ad0c1fe149d5f95dc2cba63e61cc12f1e1467231b07feea77130"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/announcements/announcementsService.js.html",
+      "bytes": 3693,
+      "sha256": "1f12f01a3d0a39e3d2a83b562427de44de40df64938232e59b08dc482614b8b7"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/announcements/application/useCases/createAnnouncementsUseCases.js.html",
+      "bytes": 10506,
+      "sha256": "4d9a3d6c98310ff0cae073493b1c8cfa6cd387cf3f1bfd01c6b319da5c412744"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/announcements/application/useCases/index.html",
+      "bytes": 4656,
+      "sha256": "66b11404f6f6cf904b9992bf6a97c102f0324a62bf4d4b4eca416221f07fbd49"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/announcements/domain/announcementsError.js.html",
+      "bytes": 4518,
+      "sha256": "50bfb0f2a89cbdb9e476f0580efe898a37cf66ef55720c059b8e838d71b437cd"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/announcements/domain/index.html",
+      "bytes": 4519,
+      "sha256": "24306c38c5b129ece9679b8aa091a3ff1c24dc57213cc407816b62f7a7627461"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/announcements/index.html",
+      "bytes": 5148,
+      "sha256": "e5b0add19e3e0381e92952c6a39a3af8a521ecdedfac6d46692b8df4949b465f"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/announcements/index.js.html",
+      "bytes": 3679,
+      "sha256": "ddd1f9a742c9d421b64b6a20dbf86dd6e707d1fa86fdc8e90433a483bcad5a17"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/announcements/infrastructure/repositories/index.html",
+      "bytes": 4633,
+      "sha256": "e317ae264c6d7cbbd0c022d32f09ef4163f1b8b6e27d8d9778445cfb1c06cd6a"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/announcements/infrastructure/repositories/supabaseAnnouncementsRepository.js.html",
+      "bytes": 26298,
+      "sha256": "9fd6dfa84178c354c6d979172474cffdb9133816de2f5731c1b05e3cdba5cfc8"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/announcements/presentation/components/AnunciosManager.js.html",
+      "bytes": 56692,
+      "sha256": "7eea5e054759c0de859a9b3a8d9d8e9b8702db7f106543ec7d6cf72925a9ecf8"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/announcements/presentation/components/AnunciosViewer.js.html",
+      "bytes": 35826,
+      "sha256": "cc9f3c3dbf140389888a6ae2649e38c2b16297d17382bddf7ce89c96f619ec89"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/announcements/presentation/components/index.html",
+      "bytes": 5240,
+      "sha256": "1146311bc4c4acdb31b5a09dd47d658f9c348abb3683f08d902f00ce3f4b1c17"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/announcements/presentation/components/shared/AnnouncementDeleteConfirmModal.js.html",
+      "bytes": 9122,
+      "sha256": "87092b2d4e84d08c419ae76cff1bf64331ee4b61c4f15ed2719c7f7a9d420448"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/announcements/presentation/components/shared/index.html",
+      "bytes": 4651,
+      "sha256": "afb44d4462406c78378d1f385d85185fa1833e7001f4386a9b96f0cb0005de17"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/announcements/presentation/createAnnouncementsService.js.html",
+      "bytes": 7167,
+      "sha256": "b547c2a036e3360505741361d2752b3e2f504a71b52b636a51dee0ffe8ce83b6"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/announcements/presentation/hooks/index.html",
+      "bytes": 4600,
+      "sha256": "2cd051918fdd0e341666d8a8f5f38b47a57a03c08c76b474595605a931222e85"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/announcements/presentation/hooks/useAnnouncementsManager.js.html",
+      "bytes": 39658,
+      "sha256": "87aaa79b3a5a0a88c170017e2513591a10878eb6df2d3e5cf4aecaec7b2d1c2f"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/announcements/presentation/index.html",
+      "bytes": 4623,
+      "sha256": "0c2e590d77bb2b51c40fd42e75cd723a4d9467080c838959e4e4ead0bd1fcef1"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/athletes/application/useCases/createAthletesUseCases.js.html",
+      "bytes": 43723,
+      "sha256": "100b1c9c1bb302b1786f26441d591d060044af2895608082b0ecf231f8bcd8a5"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/athletes/application/useCases/index.html",
+      "bytes": 4670,
+      "sha256": "3a243e74b99864ea6f55c4933dd43621545fe124110b1f3a072a2aaf65bc546d"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/athletes/athletesService.js.html",
+      "bytes": 3653,
+      "sha256": "085659a15c0899a5aed8abef810bbe24139b006cdb884fb27a5212cc456a9cff"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/athletes/domain/athletesError.js.html",
+      "bytes": 4483,
+      "sha256": "39ee4c6743216a806ab9334b8468818fffc66767bc7bff7a49c4c254b8abc034"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/athletes/domain/index.html",
+      "bytes": 4494,
+      "sha256": "3bc02deb61d432e085a3cad63c97f97998bc4e81e997266302ca734b9c84db76"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/athletes/index.html",
+      "bytes": 5123,
+      "sha256": "023632ed3d7becb46a6d94dc6a82ce0d29169515746ad263e966835a67d02b5b"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/athletes/index.js.html",
+      "bytes": 3482,
+      "sha256": "b93100277977fddc3db7c729751cb1dae5bb2eb08cfb659d8586144b8e4806a6"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/athletes/infrastructure/repositories/index.html",
+      "bytes": 4625,
+      "sha256": "5a9575ad7d0ea1c037a395a9131798036810fee54f6d7be656c7af8f642b47e8"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/athletes/infrastructure/repositories/supabaseAthletesRepository.js.html",
+      "bytes": 20114,
+      "sha256": "1058877f5d221b0d0356b05f00d3693b625b1b8cdbd4bd89a2d5d550fd7ad7e8"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/athletes/presentation/components/AtletasManager.js.html",
+      "bytes": 92484,
+      "sha256": "2c311a432689eaa1b4e55b57450effea981950325effaae527ab1d2b2e758935"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/athletes/presentation/components/index.html",
+      "bytes": 4567,
+      "sha256": "027b58dfe5d467cd6183a587427939156bc0035338d11a88981bbe2410a974a6"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/athletes/presentation/components/shared/ActionConfirmModal.js.html",
+      "bytes": 11263,
+      "sha256": "0029d6118d5333c2c87407daf7abd08cac495e741a068f59d816ad2fe24c9703"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/athletes/presentation/components/shared/ActionResultModal.js.html",
+      "bytes": 8541,
+      "sha256": "8acb53f62785ce870c85ddaf8eb629c9d2c78035d325b97c4903d22173909d91"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/athletes/presentation/components/shared/index.html",
+      "bytes": 5268,
+      "sha256": "771b56fa0d5d73458fee9d54868fa97166fb42c166fb612bb751393d95356f22"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/athletes/presentation/createAthletesService.js.html",
+      "bytes": 10394,
+      "sha256": "91bec3d57eb250034cb820f2e93b256bd326f36bf91ae6d42bd21e7c78dfb3d5"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/athletes/presentation/hooks/index.html",
+      "bytes": 5252,
+      "sha256": "b55db348d377a6076a799701aa9895925638c8fc97df2dbcf60e53c2e408247a"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/athletes/presentation/hooks/useAthleteCredentials.js.html",
+      "bytes": 26276,
+      "sha256": "5049ccdcee414dd4ec4bea89df40860cbebee4a7f3db6f6ce6ac1d7130966abd"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/athletes/presentation/hooks/useAtletasManager.js.html",
+      "bytes": 75600,
+      "sha256": "dbd1f0b8872be3e25780d43fc912a2c7590b32637da2f6b1109607b5da5dde93"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/athletes/presentation/index.html",
+      "bytes": 4613,
+      "sha256": "4e184b019b9e2411a201d9781da5252c82b34f1b3ed546160ee4fc92a705c3c0"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/attendance/application/useCases/createAttendanceUseCases.js.html",
+      "bytes": 107840,
+      "sha256": "88ba506f7eb8a3a48e0028874a29cb15aab58b791a53b6aad4dfb26cf4f2761a"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/attendance/application/useCases/index.html",
+      "bytes": 4694,
+      "sha256": "9f250611c56d26aa06a0fccd6ddd3f4ce69d35380910f3641326b337731f2dce"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/attendance/attendanceService.js.html",
+      "bytes": 4332,
+      "sha256": "ef0bbace4bec7efd4d157b1b0609bf96dbac73fbbf2a885390d172f70e6c0181"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/attendance/domain/attendanceError.js.html",
+      "bytes": 4077,
+      "sha256": "0e1d981ed490df40a150078a034f910aa4a9dfbbea66dfd391dcc14f2d533dfb"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/attendance/domain/index.html",
+      "bytes": 4544,
+      "sha256": "aedb34212e1160f90c07a5a7bb2e0473da61a468f1c76a00f1e58bc2646fa144"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/attendance/index.html",
+      "bytes": 5133,
+      "sha256": "31417c1956bd2f3e2cdd3060d162b5372daa07b1e718eacf9e019e7fef1a376a"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/attendance/index.js.html",
+      "bytes": 3498,
+      "sha256": "c9e1d3e22a008eaaa9b0ce37eb79a82a3892bf5f426d292e287ea0797b178424"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/attendance/infrastructure/repositories/index.html",
+      "bytes": 4685,
+      "sha256": "239d3fd05e20c14f7c3e1eec1e3564b22ed0bbbe2d2b7b53dffa3eb633dc66ff"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/attendance/infrastructure/repositories/supabaseAttendanceRepository.js.html",
+      "bytes": 26429,
+      "sha256": "0c948885d360e63599c5fe95fa06040785905a0967ebff82ec0d5708addbc2a3"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/attendance/presentation/components/AsistenciasManager.js.html",
+      "bytes": 295518,
+      "sha256": "f863cf2c736f051c1f109a267a9b2b7aa7fbc3e83b5c664e9f1a29b407f45cb3"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/attendance/presentation/components/index.html",
+      "bytes": 4595,
+      "sha256": "4f0bab6054336ef77da0aed1a40159040e7c7d519416aee4b986d1e882857823"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/attendance/presentation/createAttendanceService.js.html",
+      "bytes": 20945,
+      "sha256": "b0f3526656240d5dc34a130676262603dd2352af276e8d88618f376228d9dd1e"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/attendance/presentation/index.html",
+      "bytes": 4628,
+      "sha256": "ef06c1f77a79395a11faf92da247c2f65a6645010b5b9763c37e6fe56d01b79f"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-profile/application/useCases/index.html",
+      "bytes": 4643,
+      "sha256": "676a530ac6e57838ead92a05ab95f9f9945c4534d645337eac9323adee703303"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-profile/application/useCases/loadUserProfileUseCase.js.html",
+      "bytes": 9035,
+      "sha256": "f0d28ac5221dbef13bed4426aa99fc1e2da7e446c9f3e5d694f52a0d33754165"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-profile/authProfileService.js.html",
+      "bytes": 3679,
+      "sha256": "aa182438d02bc4627045e9da7d32895849ad805847bfe909e64722b36209dd85"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-profile/domain/authProfileError.js.html",
+      "bytes": 4018,
+      "sha256": "22078fe0c17ee1a81b8f376fd5bb225549b9276993030243b6312479765b6f91"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-profile/domain/index.html",
+      "bytes": 4559,
+      "sha256": "1b8209c5bd1ae42ae1a907e96ac5ad9cd9f813e72f1a998dac3cd75dc316da62"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-profile/index.html",
+      "bytes": 5140,
+      "sha256": "b2ff58f32ed6efc42ccdb2b9591627d8f67621f48961b5f9bd34cb49b38d2b7a"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-profile/index.js.html",
+      "bytes": 3480,
+      "sha256": "2555c7dccb18319831ee7bc8a920bbb623eeb757fed7a59f40a77f1a86bd4695"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-profile/infrastructure/repositories/index.html",
+      "bytes": 4636,
+      "sha256": "6f3d3661fd141a6224e9c9c7f1a5933de9d63d34f3d5f6e8700bc4a1df3e1f81"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-profile/infrastructure/repositories/supabaseAuthProfileRepository.js.html",
+      "bytes": 12642,
+      "sha256": "3e42ec056adeed7e74b1ba2d6664c7a442f42e42fbbad3b1de6e87ad4b4d6b0e"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-profile/presentation/createAuthProfileService.js.html",
+      "bytes": 4705,
+      "sha256": "ab8e3359b4e6c184398603927c43847b164a06bb5e744a1031c85ef523467761"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-profile/presentation/hooks/index.html",
+      "bytes": 4565,
+      "sha256": "9ad737bd3a0b9f15e3dbd97caecd9c2371c62b68af7e0572a17b3beefe1dae9a"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-profile/presentation/hooks/useUserProfile.js.html",
+      "bytes": 15837,
+      "sha256": "71743e8130447f7e228fb7e95dd1b930a88b2a997fa92a33f5caaf6c80319794"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-profile/presentation/index.html",
+      "bytes": 4587,
+      "sha256": "b244bf47d9f864d6a09b09afce33fb3d8dc4797303f7e395d6150aef99b525b0"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-session/application/useCases/createAuthSessionUseCases.js.html",
+      "bytes": 18690,
+      "sha256": "7b5eb2703530dc799964a3e906d85f1415c1cef70936ec94e4222862d19d4592"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-session/application/useCases/index.html",
+      "bytes": 4664,
+      "sha256": "70555f1ca9a06f7f5b886b5fc4ad712be8d1727c556ef868cc92f490cfdff4b6"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-session/authSessionService.js.html",
+      "bytes": 3679,
+      "sha256": "9d8c52a6c9bbfc99ca372cf57351f009e050b7d873f4b0da212943576f8f9536"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-session/domain/authSessionError.js.html",
+      "bytes": 4507,
+      "sha256": "55b6c58d7f1d7362d18851cd6611894d2350959b33f6773c369420a04e184053"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-session/domain/index.html",
+      "bytes": 4511,
+      "sha256": "eebdc7011c3cd1c193609ef6a83b569b79d48df3404c84d6170df49e453fd738"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-session/index.html",
+      "bytes": 5140,
+      "sha256": "da1567325fecaee48ff23eb8bdb826d920dda39bf050187f6cdd051630fed432"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-session/index.js.html",
+      "bytes": 3836,
+      "sha256": "52ee64c49b326a85ee941e469f5434df2e276c1789dae62ee646ce1a9d28ead5"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-session/infrastructure/repositories/index.html",
+      "bytes": 4628,
+      "sha256": "50b6c0fbe64dd3ca8f33c3105912127ff1035045762fc6206d545ca11257970d"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-session/infrastructure/repositories/supabaseAuthSessionRepository.js.html",
+      "bytes": 31453,
+      "sha256": "66b92cb0c83f781d0d7766f77ffc2893085482c9b70f60403302f9b89850005a"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-session/presentation/components/ChangePasswordModal.js.html",
+      "bytes": 40737,
+      "sha256": "a2c76ab9d58cead5d8c1c83efb823863070705eb7ea32fc8f43db4a1be4447ac"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-session/presentation/components/index.html",
+      "bytes": 6096,
+      "sha256": "b36a91afbfd0db95288d0fb91ac241e40e416abaaa83768a9d7e61607a1dbcf9"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-session/presentation/components/Login.js.html",
+      "bytes": 93128,
+      "sha256": "4e42015eccb9679983678be7f775120329a7767f4471a6bf924099fb3ced66da"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-session/presentation/components/ResetPassword.js.html",
+      "bytes": 48642,
+      "sha256": "fed653762655f3c9a7117f67f7919d7a1529a2c4016bb58ac74e4d0c7930ae73"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-session/presentation/createAuthSessionService.js.html",
+      "bytes": 12325,
+      "sha256": "be584dd3b3846732a282c471ac836eb17f4af37d43662725edd191458f8a1852"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-session/presentation/index.html",
+      "bytes": 4617,
+      "sha256": "79f18d04c02acfdb5e14933e96f5b52bfc65c05889f3aeb18bd2a9810ed1e0b8"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-session/presentation/utils/deferAuthEvent.js.html",
+      "bytes": 5218,
+      "sha256": "1922041724bbb42a1f22e7d82c33735ed2b595012b61591bf7d21c01789b4ba9"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/auth-session/presentation/utils/index.html",
+      "bytes": 4611,
+      "sha256": "d0284c728b5d3ec8a0549a61938b3b79a0e1b627e3e9ab759d38b6cc861bc5c7"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/communications/application/useCases/createCommunicationsUseCases.js.html",
+      "bytes": 8994,
+      "sha256": "5786cb3201d34a1a7d3d03f2d32382b86353dc9aeb014f514ad101fb05be3b8f"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/communications/application/useCases/index.html",
+      "bytes": 4665,
+      "sha256": "e938c7333f0ec438f9947e06595bf4d9b49c0c3bcd2d66375e8deadadb73f838"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/communications/communicationsService.js.html",
+      "bytes": 3642,
+      "sha256": "9e3431a39180ed3b0737525fab2679b324de749fc56472f95b494ad55b1b92df"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/communications/domain/communicationsError.js.html",
+      "bytes": 4216,
+      "sha256": "f5506758de4ebf686e47501320c4551510f6e2b992e4c46c0044a4eb22b03295"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/communications/domain/index.html",
+      "bytes": 4564,
+      "sha256": "6e7683e59c21afe4491557953e487fa4f6985e72cc7e05a633d08bb942b59d62"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/communications/index.html",
+      "bytes": 5185,
+      "sha256": "ed7fb803df6c7ff5f269dba66c5099f70985c332cb7585479b7d3c12758efebe"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/communications/index.js.html",
+      "bytes": 3331,
+      "sha256": "347d70374170deaaa16a0657bb307b4a91451c8a5e5175d32c22880472a0e39b"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/communications/infrastructure/repositories/index.html",
+      "bytes": 4693,
+      "sha256": "e8a8d3a8a033b5f7bf5772a89c814406a9934514e9b718aab6052f0e4ab43ae7"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/communications/infrastructure/repositories/supabaseCommunicationsRepository.js.html",
+      "bytes": 27655,
+      "sha256": "4191e52d0a6114a9d9e3181a5900f3e28c7203f6dae48aa4ba2ebe1764f3d508"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/communications/presentation/createCommunicationsService.js.html",
+      "bytes": 6294,
+      "sha256": "a58dc22b1c09a2b84aaed34f09d4954b49ce0e1c8ab85a99c91d1bdf8c53e7a2"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/communications/presentation/index.html",
+      "bytes": 4608,
+      "sha256": "333f4990e27461c752e4510284818e200b063ea98ae7e38c35dcb4b13fed4d4d"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/application/useCases/createGamificationAdminUseCases.js.html",
+      "bytes": 23041,
+      "sha256": "3f6fe8699ade941662a0e6873e2a2ee59c296a6441d1c147b318e2f03211a37a"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/application/useCases/createGamificationFoundationUseCases.js.html",
+      "bytes": 19467,
+      "sha256": "e4da9cb5ae26c06c58352a5e864fbcab329e229e1fc338a2cce5cde6b073e502"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/application/useCases/createGamificationUseCases.js.html",
+      "bytes": 623362,
+      "sha256": "fab9b72129bab0673ca0086fdbf79929ecedd6c355de5b2f3d548f714a70eb44"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/application/useCases/index.html",
+      "bytes": 6239,
+      "sha256": "ac3a8eee63a26876101522068625978d3856d8a0e89b8a34bf98a88c69d6f11b"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/domain/avatarCatalog.js.html",
+      "bytes": 42215,
+      "sha256": "1506bd388e40aa01a4a2cbb86b9d4e2ec3f6493355de7d87d6947603c87ba449"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/domain/buildAvatarUrl.js.html",
+      "bytes": 8037,
+      "sha256": "4edf1cf0207b857cb666ce7578b6901cd847611e2c6a80fad7901fe24f9cb690"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/domain/gamificationError.js.html",
+      "bytes": 4083,
+      "sha256": "a8ac48238cbc271b497bb1eedaac5cdb835852aac435225f86d6effe98be5f53"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/domain/index.html",
+      "bytes": 5984,
+      "sha256": "7008058ed42887126f381e6b20e8022b6960cd20029d7726800a79def577eb0b"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/gamificationAdminService.js.html",
+      "bytes": 3715,
+      "sha256": "642b14d9d632f03e8e5beecbe60ddd5155443ccea527657245653a746f04d7bd"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/gamificationService.js.html",
+      "bytes": 3626,
+      "sha256": "36b7a4360d33d86647da9aa87ded984c4c7dbe7f0c357fa29e4069eda0e74719"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/index.html",
+      "bytes": 5869,
+      "sha256": "65aeba068f64ec77feaf49394b22f1b7dda82b10dfb25474d74e4b07efbcbbbf"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/index.js.html",
+      "bytes": 4245,
+      "sha256": "2636ea11b3bf076fa09e6ece6766eaf118063954bd935c48ae3106c49db8e98f"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/infrastructure/repositories/index.html",
+      "bytes": 4691,
+      "sha256": "a18359fc43b9d02ae64de8ac6bddbca81f384337a0902b0f404b28fc28d1f49e"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/infrastructure/repositories/supabaseGamificationRepository.js.html",
+      "bytes": 167519,
+      "sha256": "3baa4517020235e27a6be5ae8b24a9dbb024cec1205feba080bf4133e9e5516d"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/presentation/components/CategoryLeaderboardsPanel.js.html",
+      "bytes": 71097,
+      "sha256": "a33a1fd14a272326b8412ba7c34b384e11b832c00f5ead24832a70c3d88ea224"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/presentation/components/cosmeticVisuals.js.html",
+      "bytes": 37293,
+      "sha256": "41e04807955ee5b3b84897edc5a08afcaef64ee707a3a892d36d64f47f5a9e66"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/presentation/components/GamificationAdminPanel.js.html",
+      "bytes": 213212,
+      "sha256": "5dbfcee2729052a903881bb246f585f14d8c891610a2ece278d906a3f9e92a51"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/presentation/components/IdentityPortrait.js.html",
+      "bytes": 42563,
+      "sha256": "99730f886d923a2b9b0612cc8d565df76d3fa75bb0b3cb46123a05410e0d6e32"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/presentation/components/index.html",
+      "bytes": 7567,
+      "sha256": "f413614b78fa6345bd0f2660d5d1e994d85a58e3bed8f0ea846af53bf4ce6832"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/presentation/components/StudentGamificationPanel.js.html",
+      "bytes": 497456,
+      "sha256": "4138052b746b60796e6b2b5a8476d3666d9e592edf5973657e53f03ab5c396e0"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/presentation/createGamificationAdminService.js.html",
+      "bytes": 7919,
+      "sha256": "d42b3b59005f4b0db86f54eceab8029b0e3861021032c9ec4115c9d0aeb1580e"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/presentation/createGamificationService.js.html",
+      "bytes": 15613,
+      "sha256": "8099271a322bcc8ff4951a82d14c63e5db385f3318c1e2514d8d9f5a39330451"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/gamification/presentation/index.html",
+      "bytes": 5322,
+      "sha256": "5936ba02974949733a29f111fb37db1329779434559d0efbd7ec961d35f03759"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/notifications/application/useCases/createNotificationsUseCases.js.html",
+      "bytes": 39226,
+      "sha256": "eca0c7605f14e9a1afe599bb9acdd2098a3ee01c548eba656d2e8b8a16a80834"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/notifications/application/useCases/index.html",
+      "bytes": 4683,
+      "sha256": "409724a48180940d58e66c568a611feb5b0cb05b3a0a1eb02c60633ca2b3b1f6"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/notifications/domain/index.html",
+      "bytes": 4559,
+      "sha256": "26a40134fc17e2e5ba23cbd117db84f930d324f8f5fbd6aec1fd3ec67b598e6f"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/notifications/domain/notificationsError.js.html",
+      "bytes": 4209,
+      "sha256": "cf06e697d7fc5f01e5df4304aa2fabd21ca4e29f68693f4f476986deae266950"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/notifications/index.html",
+      "bytes": 5148,
+      "sha256": "e52691943d8d1e5f8e369d9eb4f4f26c369a915a803924c11c1c8cd319cc834d"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/notifications/index.js.html",
+      "bytes": 3691,
+      "sha256": "ac54e45fb51633cf59ddf512d0f40f4edf95f17175614ea7b4cb166e085da292"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/notifications/infrastructure/repositories/index.html",
+      "bytes": 4676,
+      "sha256": "cabf2772d4346d547f244dc9e36585ede261b0c3f9fa982e3653b56347c9006a"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/notifications/infrastructure/repositories/supabaseNotificationsRepository.js.html",
+      "bytes": 25070,
+      "sha256": "40b0c045ccd84057b680fc894d33f199b4267d9cc3d4f3ef40267dbb280bd6c0"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/notifications/notificationsService.js.html",
+      "bytes": 3693,
+      "sha256": "96127fe4be65c988f5a7385b4b8c82e616d25bdbf830facbac9aa49fca098a0b"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/notifications/presentation/components/index.html",
+      "bytes": 5316,
+      "sha256": "c20ff1b0763ee9c40a1b34d316eb934bedebcd0768e884adbe40e12ac3304e26"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/notifications/presentation/components/NotificacionesPagos.js.html",
+      "bytes": 27305,
+      "sha256": "67b377318caa206afe3dc5884785b07655d1bd9b8b0f36f6d559089d4af25631"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/notifications/presentation/components/NotificationBell.js.html",
+      "bytes": 60962,
+      "sha256": "6f3cd9d0375434d8765e0a1690c87c151d75dd50a0f8d6cb674c09a87af83ac6"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/notifications/presentation/createNotificationsService.js.html",
+      "bytes": 7852,
+      "sha256": "e74d918847a83e4ca2b2587ba1796abe29ce9fa44a436e57591d67f83624a198"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/notifications/presentation/index.html",
+      "bytes": 4605,
+      "sha256": "2d2d3be20dc96748f82c2569aac0d590a12c25741ea219d0bd8a375ed295165c"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/payments/application/useCases/createPaymentsUseCases.js.html",
+      "bytes": 97942,
+      "sha256": "0bf4cc4e01887530333a278b4a84b17fcfcf0b72bce001472ca311f417cc358c"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/payments/application/useCases/index.html",
+      "bytes": 4676,
+      "sha256": "a01444198978c3822e60832bda1b05f871e8f710988c4fb495f4d11081fd377b"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/payments/domain/index.html",
+      "bytes": 4534,
+      "sha256": "44c1717ced0a385388201244faf265230cf17f2de6b6a2432758999aee83ee39"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/payments/domain/paymentsError.js.html",
+      "bytes": 4065,
+      "sha256": "820f3b469ec628e26c5924a1faee4122ba419754f7b4f8543f880d33c8b70a6d"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/payments/index.html",
+      "bytes": 5123,
+      "sha256": "2f6c8691ea79923a72f13f320facc011825ec61db99d3a48db6b2ec6560e37b5"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/payments/index.js.html",
+      "bytes": 3478,
+      "sha256": "d6a06f0745c2470f2d393eba42e38c51d7d214d06445de790059fb987e8b67e1"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/payments/infrastructure/repositories/index.html",
+      "bytes": 4696,
+      "sha256": "5594c81551c992dd48b4a284eaa873c1b82063987607e13b5a067bf6ca652b70"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/payments/infrastructure/repositories/supabasePaymentsRepository.js.html",
+      "bytes": 28037,
+      "sha256": "3747ccb0853ac4c107e43d7bbb5da132d40f838005f7937ac74075593eac93c7"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/payments/paymentsService.js.html",
+      "bytes": 3653,
+      "sha256": "3e61a7908aaf7f10cb8afee6e75baff8a225970908af75efb24b83ec6dbd3aad"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/payments/presentation/components/index.html",
+      "bytes": 4573,
+      "sha256": "92a1a2d02d12a321db36a1b7a8506695e580f2921aab5fb54c4e2a069a787cec"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/payments/presentation/components/PagosManager.js.html",
+      "bytes": 201717,
+      "sha256": "5ce808777cf5630357dde42af53a6ea4adfa988e9d66dc5ba0c63911c7ab997f"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/payments/presentation/createPaymentsService.js.html",
+      "bytes": 15174,
+      "sha256": "4ba4d6f4d5f6200bf4491e173de0e977ee958aade8695ea02662d506890edfba"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/payments/presentation/index.html",
+      "bytes": 4612,
+      "sha256": "bdef054f0ac4662f0eb9081790dcd2b9fa0f8f32181b3e73dd4c8cffa4b771ae"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/physical-tests/application/useCases/createPhysicalTestsUseCases.js.html",
+      "bytes": 48212,
+      "sha256": "bca8dd2503da2323663bf6a31e2538ec417525ffa2e91e71518936dfcbf3b351"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/physical-tests/application/useCases/index.html",
+      "bytes": 4695,
+      "sha256": "003974c5d33552eef818a471dbc35591124a3c8beac44b679b51cbf2dc61eb87"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/physical-tests/domain/index.html",
+      "bytes": 5260,
+      "sha256": "d3f2b68a47d1495831293357f3891417b244d4de88372abf3059b298accf8ceb"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/physical-tests/domain/physicalTestFieldMetadata.js.html",
+      "bytes": 13829,
+      "sha256": "be5c75c9db38ced1ffa14d63fce801e229270caa19fa9974a5d7042f6af3cb51"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/physical-tests/domain/physicalTestsError.js.html",
+      "bytes": 4521,
+      "sha256": "8a766e6dfae60403046d8112b9a3c1c0b434d3252cc4c975638323c3eb03bd20"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/physical-tests/index.html",
+      "bytes": 5150,
+      "sha256": "54bf71d4d8c3cbe5eebc56e8de6e2b97f4247a1f7058713e80ffa2843c5e2af2"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/physical-tests/index.js.html",
+      "bytes": 3900,
+      "sha256": "3f5dea16384292d4a953564eed0a5a501bf952282c6c96d990538c1dfafd864b"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/physical-tests/infrastructure/repositories/index.html",
+      "bytes": 4655,
+      "sha256": "6e3df86f5248b91b8bb27f375c48e050822a4024dffbb2302d2f64d100c2f828"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/physical-tests/infrastructure/repositories/supabasePhysicalTestsRepository.js.html",
+      "bytes": 18337,
+      "sha256": "1cb7a47d378f1d64f930be662e6cd0ec03806539a3ab9e59e9667bed19cec2bf"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/physical-tests/physicalTestsService.js.html",
+      "bytes": 3695,
+      "sha256": "29b92fd1d4941485fec83fe15389bc61ccd8e4f3d9cb7c907b4aa799c71577f6"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/physical-tests/presentation/components/index.html",
+      "bytes": 4603,
+      "sha256": "8c208d3ca58fbeb95796d63c103f65a07c9e9797af9ee6729cef7a27a99181b5"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/physical-tests/presentation/components/shared/index.html",
+      "bytes": 4626,
+      "sha256": "30ea1cab96443787d45f5546132b6360440ead92ab513be50c22736091397d8b"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/physical-tests/presentation/components/shared/PhysicalTestChart.js.html",
+      "bytes": 57070,
+      "sha256": "dfa861fa3546159883382f3208d633c2a2751d560fdc4617ee20f855bcdb9ea5"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/physical-tests/presentation/components/TestsFisicosManager.js.html",
+      "bytes": 195038,
+      "sha256": "e99e9aca3d1565482fa5cde94e8d7dbe0d2a1dfa89cc62ff618dd2fff5097193"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/physical-tests/presentation/createPhysicalTestsService.js.html",
+      "bytes": 8450,
+      "sha256": "9e9038b0562fb8c9e05df4cab8511c965fa33e24ee9cde43adaf60cfa8b9e428"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/physical-tests/presentation/index.html",
+      "bytes": 4612,
+      "sha256": "6ae1481ff44b7b79cae4df182f23d291600cb718cd74aad3760293729a75839c"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/application/contracts/index.html",
+      "bytes": 4655,
+      "sha256": "a59c86b9e653baf921aedc59bcfe6e26d01808232c9bd8053b4f7381e1c10cb5"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/application/contracts/reportingRepositoryContract.js.html",
+      "bytes": 6157,
+      "sha256": "ffd0ff34ac1322aeaf34e9f73225552ef26cc6837251e1b77e1af9525b31a27f"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/application/useCases/deleteRunUseCase.js.html",
+      "bytes": 5723,
+      "sha256": "b0f6c514487489fb8706333d52199e6de89e459d5e02de8669768417f4e01e41"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/application/useCases/downloadFromSignedUrlUseCase.js.html",
+      "bytes": 5808,
+      "sha256": "57857b478c7e928bd35b33f72099bc2078a56041b55e02f4aac691c450fcc5f9"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/application/useCases/ensureDailyAttendanceReportUseCase.js.html",
+      "bytes": 8977,
+      "sha256": "ff121cfee3930a9a93b08bb8949dfb8cc36e41a6f7a28dccfe13e81f4ae42fb0"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/application/useCases/generateReportUseCase.js.html",
+      "bytes": 6578,
+      "sha256": "ac8f6d9a77744de8b1bf1144d76ecb369c1b2bedec7e6a1f8a6ecd7cc4dad46f"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/application/useCases/generateScheduledReportsUseCase.js.html",
+      "bytes": 4995,
+      "sha256": "815d1e7925cd4d9e20935b5d28bf99bd88ab0112ccfb48c4a1a96e844c5eea0c"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/application/useCases/getDownloadUrlByRunIdUseCase.js.html",
+      "bytes": 5775,
+      "sha256": "576d2689f86e8dd3f202e12ef0a80b27f9396e3f8b3cf1a23696bb15d4dac756"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/application/useCases/helpers.js.html",
+      "bytes": 4998,
+      "sha256": "57b04f6d984392dbd22c1e7e6643cc4d8abb55c3e5545805cb3c8e163f07ff8b"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/application/useCases/index.html",
+      "bytes": 9658,
+      "sha256": "dc023fe78f5403fd07d39de92470588d7f47a4e27f0eba56d6cd57ec043ab82e"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/application/useCases/listReportRunsUseCase.js.html",
+      "bytes": 5754,
+      "sha256": "1973867c8d08dbafc09161eea7261d24e368f08421cc780d181e5703864a36c1"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/domain/index.html",
+      "bytes": 5976,
+      "sha256": "85c10b95aa0da0030dea484e66110c9c2bc4850291b193709b8e202e0c3db827"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/domain/reportingErrorCodes.js.html",
+      "bytes": 3966,
+      "sha256": "c45acf1aadf15494e2dbe9170a2bc3d596c3c82c95b09fa29395ccc3429ca848"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/domain/reportingErrors.js.html",
+      "bytes": 6544,
+      "sha256": "1b9a803b6086900d9a0fd6a9cfbb4a4128d95fbeced6eae461150cde2d86be48"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/domain/reportingPolicies.js.html",
+      "bytes": 5238,
+      "sha256": "651c8cb1c442bf2c070d5f9f1ff583d2d8ae61204a79987e3ded567ee4953b5d"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/index.html",
+      "bytes": 5128,
+      "sha256": "dc37be473601734e73ce1f57c06ea2bad4dd1aa4204ced65b208a4d5388aff28"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/index.js.html",
+      "bytes": 3311,
+      "sha256": "4b7e49c34eb5abc07a82304cbd7a5282e2beb23fc5154849f9a78ef58a7d9b62"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/infrastructure/gateways/browserFileDownloadGateway.js.html",
+      "bytes": 5000,
+      "sha256": "d191eefd09e92010a5c9c45d11f405ba54ca53f56585e76f44769f9f2a834108"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/infrastructure/gateways/index.html",
+      "bytes": 4593,
+      "sha256": "2fa6498d2ee965960f4ed35ebb6bfe4bba395009e0a9c8768bd8a614c4b83f25"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/infrastructure/repositories/index.html",
+      "bytes": 4674,
+      "sha256": "25e94b8cfa9382ce51066d4658dbcd87ab3ebf23a3f1a056c8e7049053aa3dbc"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/infrastructure/repositories/supabaseReportingRepository.js.html",
+      "bytes": 29480,
+      "sha256": "8d1872bcae2b16860f34be08448f9843a42f8abe3ed04da56b08cf04f21d42d3"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/presentation/createReportingService.js.html",
+      "bytes": 10087,
+      "sha256": "fb9aa2d9c4fd7130b66ac232a85adb2c60ee609bc5df92e1d0a31f981943f19f"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/presentation/index.html",
+      "bytes": 4606,
+      "sha256": "e15f805045dde41bac724feab9bad480937289265f73e98d8048b2be9bb64087"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/reporting/reportingService.js.html",
+      "bytes": 3661,
+      "sha256": "c5a98af3d5aafc2d7230138fec9a7d0e307b3811ce19bbea76c2c953e38135d9"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/schedules/application/useCases/createSchedulesUseCases.js.html",
+      "bytes": 13811,
+      "sha256": "aa61a98401236fba6e8d1701f0429f0354ed5d0291627e7e0903e37c43f5e25c"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/schedules/application/useCases/index.html",
+      "bytes": 4666,
+      "sha256": "b3503f22e75a346a947068d9cceb7c67a5b09337f917430b2bdc371aa0ca0cb5"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/schedules/domain/index.html",
+      "bytes": 4499,
+      "sha256": "c03214f6face059b9656c58df37c4942bd6cb428deac8ecf316902a877ab5096"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/schedules/domain/schedulesError.js.html",
+      "bytes": 4490,
+      "sha256": "c2eae67c5c7260d707d0bddde4c8154a1efa69b3f39a3e1e2f8dd544f4fb7ed6"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/schedules/index.html",
+      "bytes": 5128,
+      "sha256": "1b02d2a22392e1692cac5afa8820ff58bd070a506cda24f486552759d3495779"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/schedules/index.js.html",
+      "bytes": 3488,
+      "sha256": "2e9a6adbefd91a59f81fde27202b0b8b1d4920113fced1c417c1d10692620912"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/schedules/infrastructure/repositories/index.html",
+      "bytes": 4633,
+      "sha256": "4051a3a131ddada7a660847691dc012a6266adb7fb2e2b92f57f0fd75e48fb61"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/schedules/infrastructure/repositories/supabaseSchedulesRepository.js.html",
+      "bytes": 15304,
+      "sha256": "737a13b8e63522085e9b09d851b4cd8651a8bf85cbb0c4fff231be0b03bbb898"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/schedules/presentation/components/HorariosManager.js.html",
+      "bytes": 104043,
+      "sha256": "0e9ea95f21f28bda347b5f05f3c87a2db2b82cbbbe61ad628392afb2579df8da"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/schedules/presentation/components/index.html",
+      "bytes": 4572,
+      "sha256": "6a8257e29c27a52ee8a68a2157fd29d862978e5de306e988a729ecee02744cb2"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/schedules/presentation/components/shared/DeleteHorarioConfirmModal.js.html",
+      "bytes": 8948,
+      "sha256": "7570c4074fb36d9a95f3baf27b5ea052c7cbc3a90af995e5796931fee63a8577"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/schedules/presentation/components/shared/index.html",
+      "bytes": 4628,
+      "sha256": "bcf0ca41e127473092480f53af89931baffd7a9ee67da58e938315a6a16e5884"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/schedules/presentation/createSchedulesService.js.html",
+      "bytes": 6524,
+      "sha256": "c2b1f3dcc965dc1ffdcc6e51a692380e0efd21d916f935d88cf733ddc35bb38d"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/schedules/presentation/hooks/index.html",
+      "bytes": 4580,
+      "sha256": "34a450171fca743611b50e3de2e29be0af4ee39fc0352fa424bc9d89da61f10a"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/schedules/presentation/hooks/useHorariosManager.js.html",
+      "bytes": 86135,
+      "sha256": "d512b010dd281f1146d4398d5ba6cc753bbdc7d8126fd759107c1b63a9ad54cc"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/schedules/presentation/index.html",
+      "bytes": 4586,
+      "sha256": "9150fbcc38fabd1194e91da3b928db62794ebf740f20290cbb75d928eaf82079"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/schedules/schedulesService.js.html",
+      "bytes": 3661,
+      "sha256": "017da6d2ca4af3e775d9e106b89d8e8189cb7268d1716a558a5a4c1cb4395604"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/application/useCases/createStudentDashboardUseCases.js.html",
+      "bytes": 36122,
+      "sha256": "e511e687d7a4a2a21d37abc88e33f6a6a983396bd0186d9b90836ebde59c7687"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/application/useCases/index.html",
+      "bytes": 4708,
+      "sha256": "c9ef7969da9e2f8fa1b3353422d787b3c28a97ac3dc73d805419c2f8354aae0f"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/domain/index.html",
+      "bytes": 4576,
+      "sha256": "5cf60c8a64213f1a25be4a6f9c83e1fae222daa49f35129111eb827349b23e6f"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/domain/studentDashboardError.js.html",
+      "bytes": 4115,
+      "sha256": "e79082a23fe8981a2057ae45e77d7e81ea58facb602929ae206a932656f54e78"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/index.html",
+      "bytes": 5165,
+      "sha256": "13ddb2bf1c4cf67dff2a6d74b9933f1d6b040faec2d1461d8feac5427f76015a"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/index.js.html",
+      "bytes": 3681,
+      "sha256": "34755556c90560b29e855b686807bca1f20634826ef16ea616ffd5238e1e62fb"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/infrastructure/repositories/index.html",
+      "bytes": 4735,
+      "sha256": "996397141341cba848dc5969a7d27dc6a8a64ee9be667c1e13dcc6ea936a5207"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/infrastructure/repositories/supabaseStudentDashboardRepository.js.html",
+      "bytes": 19385,
+      "sha256": "bb221279877dc2283a240d0116683304ab7933099114388fe2bf1b7389487781"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/presentation/components/index.html",
+      "bytes": 6805,
+      "sha256": "1db6a6e812107d784a42ca7e4e5928025bd9243572c54543268b53d50e61ad92"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/presentation/components/physical-tests/buildStudentPhysicalProfile.js.html",
+      "bytes": 81282,
+      "sha256": "da73a41e6268bf22165a48c3816ac0fb15ade92da6f76975e78902ef0237fc1a"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/presentation/components/physical-tests/index.html",
+      "bytes": 8378,
+      "sha256": "e3d771881e0ee63c19c5279227191aa782077976aeead2cce5f9079812455f0a"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalHero.js.html",
+      "bytes": 10838,
+      "sha256": "5f506fa2d3f7bc375c6e50ab76441284fc24822d7e15e407b3b261543ec7e34d"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalHistory.js.html",
+      "bytes": 10550,
+      "sha256": "9ea73384f3b093e6da2cc189ec149d48fa9d9af1e4b12954530a2a60cafd2339"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalInsights.js.html",
+      "bytes": 11343,
+      "sha256": "a2488a1c028a109a8d8bf07d334188225c5482cc1f37482df9a67b962b56335b"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalRecommendations.js.html",
+      "bytes": 10133,
+      "sha256": "fdaa7ec58edd70a05114f579b1dc7ec34a67d40e269440e442b5b34f1891022a"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalTrendChart.js.html",
+      "bytes": 17957,
+      "sha256": "94a9f52939a818544caca9953f63da7dd4a25b0d4b43b5ced82e286516069624"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/presentation/components/StudentPanel.js.html",
+      "bytes": 86272,
+      "sha256": "585509023fc132dee207cb0db1d1f5ae99778d8df1694e324f37dd18725804a0"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/presentation/components/StudentPhysicalTests.js.html",
+      "bytes": 11136,
+      "sha256": "12a62ececfcb482d9556606a2dacbd3662dabd22bf81a18c28c7004ad1dea48e"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/presentation/components/StudentProfileIdentityCard.js.html",
+      "bytes": 73786,
+      "sha256": "9913589c960b4dafeaa3ae9d383abc9e458727c86fc35b390b34f2707c28732c"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/presentation/components/StudentView.js.html",
+      "bytes": 58890,
+      "sha256": "dbc9129635edfa1e877d7e2b6935db3c4b0761b21b5d815b16964b835770d2a2"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/presentation/createStudentDashboardService.js.html",
+      "bytes": 8004,
+      "sha256": "fb0d51e89145989eca9da9a56a9f242b5526b2b7b6069e99b97c5a0594bea96a"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/presentation/index.html",
+      "bytes": 4630,
+      "sha256": "e8fbcdcc25910b4ac9b648aec9bfa39fb1dfbba18cb40e55caeb71975fc6bb3e"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/student-dashboard/studentDashboardService.js.html",
+      "bytes": 3719,
+      "sha256": "824978b9ad5d0f727934c2a888d6094048e2861799f05ed64735a8f24d97cf8f"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-dashboard/application/useCases/createTrainerDashboardUseCases.js.html",
+      "bytes": 14802,
+      "sha256": "967e65dd7166d6e7e7c08020947f409609e9c30265fc69c8da81afaceec21527"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-dashboard/application/useCases/index.html",
+      "bytes": 4684,
+      "sha256": "a27dfae9a24093995cb1a26b7987a2f414ad5cd83315c9e6f65362402b7c15a5"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-dashboard/domain/index.html",
+      "bytes": 4536,
+      "sha256": "d94523b1bf3728a13187ddbe4174616be1b1d3eff47d3813cbe94c1012023afc"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-dashboard/domain/trainerDashboardError.js.html",
+      "bytes": 4360,
+      "sha256": "613eeb25d1c8d6d57cf7bbf8467e6033b931fc67a9701f4449442910c23aaf80"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-dashboard/index.html",
+      "bytes": 5165,
+      "sha256": "e657c665f27f697acdfd942ec00386230e6f4fc6b6831e61cd3194d0b6432e67"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-dashboard/index.js.html",
+      "bytes": 3691,
+      "sha256": "c1bc7825a1b6e5004be564b616d4aa3cde16b4273a3bff154ea9e1635425b38e"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-dashboard/infrastructure/repositories/index.html",
+      "bytes": 4670,
+      "sha256": "1f1366e0943619efe7434813fa4d70505a68d5551c2d8a1b3eb0819543b3be8e"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-dashboard/infrastructure/repositories/supabaseTrainerDashboardRepository.js.html",
+      "bytes": 13347,
+      "sha256": "2feeff2b83155e21c333f105cb87681319ce0d3897be23b709d072176a3069e6"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-dashboard/presentation/components/index.html",
+      "bytes": 5246,
+      "sha256": "caeeab1f784edf0eb5a553f84ddbc14818691c0a432fbb56f42097647488cb18"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-dashboard/presentation/components/TrainerDashboard.js.html",
+      "bytes": 28976,
+      "sha256": "6e2accf0a73ff167a1ece6d6f142171602b1d9632cf7627b26d38a7471d2acaa"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-dashboard/presentation/components/TrainerPanel.js.html",
+      "bytes": 35404,
+      "sha256": "43bc4300002569b4098105c795b0ab25062e11427d4f88207953f49ea5879583"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-dashboard/presentation/createTrainerDashboardService.js.html",
+      "bytes": 4818,
+      "sha256": "86c890283801419b2e5fea7f7d0632c20d8db12395cf94496af4d07e04056edb"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-dashboard/presentation/index.html",
+      "bytes": 4612,
+      "sha256": "7d54b7e5320fc2e9bcc23d6f4fcdf286fb422ba193f40cfed11e3b39e327737c"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-dashboard/trainerDashboardService.js.html",
+      "bytes": 3719,
+      "sha256": "adc7708bfbb8d4b65499b55d3f16b8c399dc27cfe71fdf76169b1d786a58e0c7"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-management/application/useCases/createTrainerManagementUseCases.js.html",
+      "bytes": 10354,
+      "sha256": "93b5f6b934005cb80281eb8be051adab7cbe503dc32744362e6d689ee81be964"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-management/application/useCases/index.html",
+      "bytes": 4684,
+      "sha256": "e469e9c21a76f841d99f9f36f29ade82b56425c41cff495e0bd235abbbb33bc7"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-management/domain/index.html",
+      "bytes": 4541,
+      "sha256": "37fd0a03aa4a241495b1b4aa7ea7103856a16926bf545b93976ec7831cef95e5"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-management/domain/trainerManagementError.js.html",
+      "bytes": 4549,
+      "sha256": "9f09806baca0719e27a1e341892da143ad5bec050be1c3ff5aef85198cc0e0c1"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-management/index.html",
+      "bytes": 5170,
+      "sha256": "3fef71b63dbf05315cc3d82cf1ba29a3d22665ce07da26051707df1689ebb535"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-management/index.js.html",
+      "bytes": 3530,
+      "sha256": "a88573abc76439ca2ed44a1d33d2da6024734dbe9f3425424036c1045c0e72d1"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-management/infrastructure/repositories/index.html",
+      "bytes": 4675,
+      "sha256": "688209881c83d15c78e34d9af6c3abc373a385e670490c3452262c6ba136c464"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-management/infrastructure/repositories/supabaseTrainerManagementRepository.js.html",
+      "bytes": 13908,
+      "sha256": "96b32b5fcc6c293611dfe5e0dfa3dc4e991d589511fabe2cce06be8e48adcfc9"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-management/presentation/components/EntrenadoresManager.js.html",
+      "bytes": 58710,
+      "sha256": "20ca6e58146c664265b7dec00b4589ce99e16b8d50c197e99a214d8ef3a78666"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-management/presentation/components/index.html",
+      "bytes": 4602,
+      "sha256": "c000636d1b95aca1ec914be0fd7d1e93d95625f469817b6f1fd0015fc0a5fb8c"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-management/presentation/components/shared/DeleteEntrenadorConfirmModal.js.html",
+      "bytes": 8987,
+      "sha256": "854d8dd0a7e449b7d5e2a5101d0c9fddeb3c1461f780d7113b8b495416d2c009"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-management/presentation/components/shared/index.html",
+      "bytes": 4655,
+      "sha256": "84047435fc8561638d24ded8ab163f4e135738856c4227207ce98cdcf74e4a0d"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-management/presentation/createTrainerManagementService.js.html",
+      "bytes": 5723,
+      "sha256": "26319508480c144099e5c7b7b44a4f9105806379bd0be80c7099c6f917692664"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-management/presentation/hooks/index.html",
+      "bytes": 4604,
+      "sha256": "ac01a116f9acf0240740a7ac6d7d8f60456c6a2bb5d860f971e403f27f5b5f2c"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-management/presentation/hooks/useEntrenadoresManager.js.html",
+      "bytes": 41130,
+      "sha256": "eb8c2fd0c4424407604b4495fa6d49f976790deddb56aa6ea95a5cb78232f143"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-management/presentation/index.html",
+      "bytes": 4626,
+      "sha256": "e9a5f7f6317ced574987f3398de196198cffe80f44cbbd63d2f82f1cb9235785"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/trainer-management/trainerManagementService.js.html",
+      "bytes": 3727,
+      "sha256": "03090e24e38098e3baf0f460a5c04cf1803d86c3b8fe2c8308a3faa4395b777b"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/training-categories/application/useCases/createTrainingCategoriesUseCases.js.html",
+      "bytes": 6407,
+      "sha256": "fe32a1532d07d7bf3a9015c65bbce701840966da9f077d0c14648573e2010db2"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/training-categories/application/useCases/index.html",
+      "bytes": 4684,
+      "sha256": "816a69f0fc9b689b769b73497895b811f7709982cd6c2a9e6a7cbe4286317eb5"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/training-categories/domain/index.html",
+      "bytes": 4546,
+      "sha256": "8f51caa6b9119c835bbd0eedd1eecd9f57310b4a46d1331cb4f72125789ccbff"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/training-categories/domain/trainingCategoriesError.js.html",
+      "bytes": 4462,
+      "sha256": "9ff3ca2462f1678a73566a84fca8704597ca8cd7abaaabc90d8875ac37eb9636"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/training-categories/index.html",
+      "bytes": 5175,
+      "sha256": "a8816c815114431beffb092ef35c32db87ccfa7e6a32f43da648c3c875e75553"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/training-categories/index.js.html",
+      "bytes": 3632,
+      "sha256": "99e77f18da399fcd0edd9100f7e76311a651750e61d78f124adc5afc68bffc72"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/training-categories/infrastructure/repositories/index.html",
+      "bytes": 4660,
+      "sha256": "b187bcc40551e34deb07fcd5d1576b7a4b7adaf982fff1deba3c6efaea160be7"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/training-categories/infrastructure/repositories/supabaseTrainingCategoriesRepository.js.html",
+      "bytes": 21259,
+      "sha256": "47d96115c1d8c5a76e0b83d31f42217fb923f9433159667c2ffaa6538bd03f40"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/training-categories/presentation/createTrainingCategoriesService.js.html",
+      "bytes": 14145,
+      "sha256": "01572bb57e49618078459e735219358e2a5aaa7bf4d04f7f23e866223866a78a"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/training-categories/presentation/index.html",
+      "bytes": 4591,
+      "sha256": "f467f565d6c85985cc32ae6b6ea1c74d6a3b5234f257972465a681faaae2b5dd"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/training-categories/trainingCategoriesService.js.html",
+      "bytes": 3831,
+      "sha256": "72f2a05977efb939c9d99bff3a190d6e82877f5d77fe079f83baf1c3a168852f"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/application/contracts/index.html",
+      "bytes": 4667,
+      "sha256": "a0a8d8401821b4baffac09b31933c2afaa613503e255618bbeb61d134a3d9d37"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/application/contracts/userManagementRepositoryContract.js.html",
+      "bytes": 6325,
+      "sha256": "69a0a97fad65aa6dc6a2198c10fbebaabfddcc3203b9296378e8ec79f3c51ef7"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/application/useCases/createUserManagementUseCases.js.html",
+      "bytes": 63497,
+      "sha256": "c67c31fa414f2b215c99e7ee01b0c5a8920b9749013aaa9a4da33917844c17a3"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/application/useCases/index.html",
+      "bytes": 4717,
+      "sha256": "06539f9a65fa1f19d595611ce618f65a212f22265d482fcb02ff5b4399b7c96b"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/domain/adminPrivileges.js.html",
+      "bytes": 3902,
+      "sha256": "9fdadfecf97490b8897f3ef2c275fcb1788be350f2987d3fe07eac4416a5cfc5"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/domain/index.html",
+      "bytes": 5272,
+      "sha256": "4d0aa55384cf15c9ab4215cbaa2097f4232c9b6d50e206f55b8a8ea1da09bd45"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/domain/userManagementError.js.html",
+      "bytes": 4036,
+      "sha256": "c74f45e42abeff12272a039a53e21b3ec16994b32c03f3ed58da4005b548feba"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/index.html",
+      "bytes": 5155,
+      "sha256": "b9a62f4e162849895f9b0325e5152171855855afaa542719b70a36176b412508"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/index.js.html",
+      "bytes": 3518,
+      "sha256": "226283f35a727a49ba926bd0ba72a01f72f2e218021187349898282f3178be69"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/infrastructure/repositories/index.html",
+      "bytes": 4694,
+      "sha256": "6a58a9999e47018e765ad45058914ff2e62c0b0010e02f88fb4bca55e265c270"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/infrastructure/repositories/supabaseUserManagementRepository.js.html",
+      "bytes": 74696,
+      "sha256": "7d6a62bacd912d42839bf259ab73a65c122afebaad2ba65545bddf420e7bf3d4"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/components/hooks/index.html",
+      "bytes": 6742,
+      "sha256": "59a08ec7501dba1c5ad6b18fe05c8c2e381ee7095b71d6bbc2c6dfd102545412"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/components/hooks/useTimedMessage.js.html",
+      "bytes": 8592,
+      "sha256": "183d846f7ccaceeba94a26ff568f0fd0d7e2760ca153274e832e4cef6d26a06f"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/components/hooks/useUserActions.js.html",
+      "bytes": 20617,
+      "sha256": "b4a2879b53e65a6351b935c0db575ff66da4b3b83fb437d168f5d22293d2fee0"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/components/hooks/useUserManagementPanel.js.html",
+      "bytes": 10439,
+      "sha256": "c7e1c10503f001c3cfd9100da3c6cb1cd0fe577bebf2f75c1c8debba46626dd3"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/components/hooks/useUserPermissions.js.html",
+      "bytes": 5956,
+      "sha256": "e131e1ef9cca66e98a5f8a96bcd87b6fb14d470eae93ce3aa5868a05df3f173c"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/components/index.html",
+      "bytes": 4593,
+      "sha256": "33be5821c333270dbc4984978e80657ecd861bcb57996c00a06cd1248e862250"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/components/shared/ChangeRoleModal.js.html",
+      "bytes": 23533,
+      "sha256": "e122e5bf42eb4261ff269e1d2b9250f192a5f1dd45d5c4f41d6431cb1bc93b06"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/components/shared/CreatedCredentialsModal.js.html",
+      "bytes": 12697,
+      "sha256": "284a9fc96fe7e652715aa220e12e396e2fd4f903809228ea52e8cea8f47c40e8"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/components/shared/DeleteUserModal.js.html",
+      "bytes": 18550,
+      "sha256": "6325cbd3a46aa914d168d6dec8cda163900610b2f0f2347415c6673a9916cf7b"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/components/shared/index.html",
+      "bytes": 9497,
+      "sha256": "815302d14f7d434a368d1df4ac719348fc71d1daac4336ba639424411e33e0b5"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/components/shared/ResendCredentialsModal.js.html",
+      "bytes": 26097,
+      "sha256": "cc4d3cef2a9441caf64bafdd8a4e166be7aeb15aa0ac8b01fb1768f968a4daa3"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/components/shared/SuspendUserModal.js.html",
+      "bytes": 17866,
+      "sha256": "0aa8db69050ddea36ff15316224ce95232e03db80f08a42bc6dab40dd9fdade0"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/components/shared/UserCard.js.html",
+      "bytes": 37180,
+      "sha256": "a5b6782944fdac64d82cd2af95004e59aac935bc84eb9fb148f8cbd477c8ea51"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/components/shared/UserFilters.js.html",
+      "bytes": 24689,
+      "sha256": "f249106bf83b673eb34452aeacf763484f698dfa35006c8c3a1c4a1f3c275dc1"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/components/shared/UserForm.js.html",
+      "bytes": 49200,
+      "sha256": "2f7ada8d0adf5fbfea95a881acc4bbb33d0d6f682a8ee411d5d8fc0eedfee7fc"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/components/tabs/AdministratorsTab.js.html",
+      "bytes": 34568,
+      "sha256": "b9fc521352712b2165071267a0599ce96c95a9e35361f6db0948d662fa405e5e"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/components/tabs/AthletesTab.js.html",
+      "bytes": 63953,
+      "sha256": "9d2a77289143193344e610a320694e9faa76ce3735a8dfa00c6cfec1ccde0e09"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/components/tabs/index.html",
+      "bytes": 6154,
+      "sha256": "f0c3bd2c492f3d4566b4fe5b86c72b487330c8384b9efaeba170ba468888b7d2"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/components/tabs/TrainersTab.js.html",
+      "bytes": 53980,
+      "sha256": "ccc212408af4a61d02fe4e5ca5dc20bf41a61ba9ea3c2e32116eba21742a23d9"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/components/UserManagementPanel.js.html",
+      "bytes": 13866,
+      "sha256": "4e1d9d71898e2aa79f0994585065608ba68bcc68ff456ceecb038399a84b087c"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/createUserManagementService.js.html",
+      "bytes": 11200,
+      "sha256": "bf04e704e0bf0bc6ff604235f96c78dd96128d5c1eb6e609b4811b46b2549d7c"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/presentation/index.html",
+      "bytes": 4647,
+      "sha256": "2bd02f43a9f8e24ccbb11988994797729965236704f46cfcb03aefb9caf74952"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-management/userManagementService.js.html",
+      "bytes": 3703,
+      "sha256": "d64cd25682fc16ffce639e9482883f5de6a441f9493c90f5b94343fe2220f757"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-provisioning/application/useCases/createUserProvisioningUseCases.js.html",
+      "bytes": 18690,
+      "sha256": "f3fc73002c2ad41381467c8821983510f728a0f8b768e13abebc6c3281689a84"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-provisioning/application/useCases/index.html",
+      "bytes": 4688,
+      "sha256": "6a0e1fb22d91bf45c29e3920cf728d0046aaf6cd2cd81be59249ae6f58fe6f3b"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-provisioning/domain/index.html",
+      "bytes": 4584,
+      "sha256": "b0c0de9a906826fe8a1b1505dd8390e3e1c898aec0c71b1691eaacff412386b0"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-provisioning/domain/userProvisioningError.js.html",
+      "bytes": 4166,
+      "sha256": "c18d22de8bad15399fd6d249b06cf1b1e03b89b6a6d7396b2c0e61f5acbd164d"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-provisioning/index.html",
+      "bytes": 5165,
+      "sha256": "081d2d900703b14bd51657f5bbb705afd4fd0bcba16215049bd2e0c26f3f57b3"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-provisioning/index.js.html",
+      "bytes": 3341,
+      "sha256": "bf5bd4b56fc780afe888c638bd50fa8c6b7783da1c6cdb22f074c6b57eebec7b"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-provisioning/infrastructure/repositories/index.html",
+      "bytes": 4708,
+      "sha256": "00a6975a895b950dacc954b78e4579d067fcf6b3e5162961ca49afb4f011075b"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-provisioning/infrastructure/repositories/supabaseUserProvisioningRepository.js.html",
+      "bytes": 45885,
+      "sha256": "5ac24410cbf25f6a339b7dd6653d4f11de1c10bbbf342c8fdfbe600dcca6b77d"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-provisioning/presentation/createUserProvisioningService.js.html",
+      "bytes": 7962,
+      "sha256": "2ee03e78a9842e2af845abafbf98d6ba633a79bc190b596b58f1d88b22c4a468"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-provisioning/presentation/index.html",
+      "bytes": 4629,
+      "sha256": "22e9ad5a74773fc1412acadb955439dbcf01a025b2489c69e27bf9d83485310d"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/features/user-provisioning/userProvisioningService.js.html",
+      "bytes": 3719,
+      "sha256": "27dd592f66270f38808f93ec127b2a91e433ea83064c0bd479983f92b12cdcd6"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/index.html",
+      "bytes": 6287,
+      "sha256": "d1e325978dd85e88216f3765131431065a64c7643a00fa9409ef814302425d1f"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/index.js.html",
+      "bytes": 6115,
+      "sha256": "317f9d024afe24d1ea4678bbfff377ed96134c157d73568d78ca8d84814b573c"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/lib/cn.js.html",
+      "bytes": 3789,
+      "sha256": "09011cb2f1e3dc9822cee80d2df51e4a1afecea46ed5bf04a5f87f77b3bb490e"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/lib/index.html",
+      "bytes": 4419,
+      "sha256": "a31bb33472ed08e49000f713b87327a695b0815321b9b704c418ee921b568b54"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/Login.js.html",
+      "bytes": 3230,
+      "sha256": "2d057474e775552ab1a6dfb6c114b073c16441d379c6bf5251171b27b6c5e4a2"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/reportWebVitals.js.html",
+      "bytes": 5809,
+      "sha256": "095c62479549af83da513af4de447d5c965bdd5f5555cc18809ef355176cfa7d"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/config/index.html",
+      "bytes": 4464,
+      "sha256": "269ce9d43a48e15373ab23660609915e89b6d227f63940a6fa77b3c668671e6e"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/config/runtimeConfig.js.html",
+      "bytes": 3809,
+      "sha256": "6d34139c175b4388ce3fcaf8c560dafc2a1d8ec5aa041d288d8a71d89c6c815c"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/domain/payments/index.html",
+      "bytes": 5212,
+      "sha256": "de68de02947a0268bea71bb42c35532f8757221c3d5ca9bf458b694c51145f31"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/domain/payments/index.js.html",
+      "bytes": 3356,
+      "sha256": "a652dffea759bd5c1719f8dba53f38bcd0fe42a51265ce1ba9f5957bad4c5944"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/domain/payments/pagoStatusService.js.html",
+      "bytes": 29119,
+      "sha256": "99409a24b6736846b57fde9bf34a8412dc4d179712847c7ef2ee895a782e8794"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/infrastructure/audit/index.html",
+      "bytes": 4551,
+      "sha256": "8a28240ad7145883fdacf767b0e2ecbc0933656bd3530b16efab315a1e7e5e54"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/infrastructure/audit/sqlAuditLogger.js.html",
+      "bytes": 60575,
+      "sha256": "0469d5d97cf604a23159bffbb5ecd46eca61be208e77f9f808f4bcb39739f7a5"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/infrastructure/auth/deleteAuthUserById.js.html",
+      "bytes": 10683,
+      "sha256": "19032ec2934e022b423824c6482a33ba6f327ebce08453afe37a6904fbd11b66"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/infrastructure/auth/index.html",
+      "bytes": 4576,
+      "sha256": "635daa1d26ca244757d2471d38a5418a10f158c12ac5d31a758c58b29dac4d72"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/infrastructure/communications/index.html",
+      "bytes": 5941,
+      "sha256": "6f3b27856e0c320a92599b97b5bb3d177c86dba1788e9fdb5722f2c8646240e2"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/infrastructure/communications/index.js.html",
+      "bytes": 3549,
+      "sha256": "e20c7dfa597f4fdcdf653fc053482c1d3d7d46171d8bbdab9b7293b4f97a516f"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/infrastructure/communications/whatsappBusinessService.js.html",
+      "bytes": 27290,
+      "sha256": "61c5832ecbb2929e7652b15988ef296f9bba75dfdd853d03a0f603a7faba8bc2"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/infrastructure/communications/whatsappService.js.html",
+      "bytes": 17751,
+      "sha256": "b709f0010724329556880bd5186c7a2539c86e9afbde86b917eb29655b0b81cb"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/infrastructure/http/functionError.js.html",
+      "bytes": 6717,
+      "sha256": "a28e7faa298bdee19219e6bca579216756588f50035ce0972cbeeb38aad98e38"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/infrastructure/http/index.html",
+      "bytes": 4569,
+      "sha256": "5d60595615350bdabe69615881a40a43e8c324a9f09e38b14cce80be55cb7b81"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/infrastructure/mobile/index.html",
+      "bytes": 5955,
+      "sha256": "24b9b47132c24398c0a279d6bc083d29668f2cc350b448f13f28086da7ea9db4"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/infrastructure/mobile/index.js.html",
+      "bytes": 3490,
+      "sha256": "e2d45cd26f97e1975dad636832d2b4c207234137c5e63fb1f7247eec0d23e01e"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/infrastructure/mobile/supabaseMobileDeviceRepository.js.html",
+      "bytes": 11690,
+      "sha256": "0a1d66b113c169b5756fcc9f92a016c10a21e6cbc152ce4c0c9f2a7ccc9b4259"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/infrastructure/mobile/supabasePushNotificationGateway.js.html",
+      "bytes": 31455,
+      "sha256": "307e4981660b93e28f9a61911f2d57c777c84880ba5e9bc77ed578585e3b2236"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/lib/escapeHtml.js.html",
+      "bytes": 3726,
+      "sha256": "d32d802ec579d070525febafd16c3157a8062c0edaed576c591e494917af22b2"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/lib/index.html",
+      "bytes": 6588,
+      "sha256": "01b2667e57a9dc3bc8fb394419876776d8c69000a5acad6367f39d2e23ef8c72"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/lib/result.js.html",
+      "bytes": 3889,
+      "sha256": "238e0aa64889308a6fd6c30d92e24ea11dd3333cd4fc0427c331da20d72c7c9d"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/lib/tableQuery.js.html",
+      "bytes": 16375,
+      "sha256": "fbfae2361da88e6c5b0810f8c7c54a75a0a82c05c9096a327bf45cf2e3e9f886"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/lib/trainingCategoryFormatting.js.html",
+      "bytes": 10420,
+      "sha256": "7edc264b217cc797549ee116b6ac43e709b440edf47f72da6b6e19539b61b7f6"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/platform/files.js.html",
+      "bytes": 11504,
+      "sha256": "4e1021f529d4228996e9dc240c260e17091e15f50e43893e8e04120d79e12d6e"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/platform/index.html",
+      "bytes": 9148,
+      "sha256": "55ae239258bdc2611b25940b88c2d22c1e6c7ae3dd1cac6ef318d5410f50af83"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/platform/index.js.html",
+      "bytes": 3970,
+      "sha256": "38dba463dda5b249afa803f790625129e7a3782fc259e7bf7bb2d37582b374c5"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/platform/links.js.html",
+      "bytes": 6799,
+      "sha256": "4585c924164b01625ba0834cb04515a9686bc8a0e1e342483b32436537cf1c68"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/platform/mobileAppBridge.js.html",
+      "bytes": 14096,
+      "sha256": "e2de541f163a6c6583935f2ec931e59d59729891dab466fc19a10d4a2f41cdbd"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/platform/ota.js.html",
+      "bytes": 49599,
+      "sha256": "4955c456ae29a1ee9b9a4cb1167d2b4a6687d15a6107d002fca53c906f838ce8"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/platform/push.js.html",
+      "bytes": 41269,
+      "sha256": "6caf064a92e28f5e765684e4acf3b5a89cd772f87a0357c928cb206cd9a03b85"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/platform/runtime.js.html",
+      "bytes": 10270,
+      "sha256": "78b96efda6ce912f79ccd42933550d89cf46700318e7407ae5ee7280fecc6723"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/platform/storage.js.html",
+      "bytes": 7476,
+      "sha256": "9263c7a057ac077c977e417bf319d10218ccb6c5a7ab7a0388797e58b713bb0e"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/Button.js.html",
+      "bytes": 11938,
+      "sha256": "13199b99f009953c19106076f70134e26b94b517a732e1333fa865f29f640a16"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/Card.js.html",
+      "bytes": 8388,
+      "sha256": "544388eb2776654941937ec1de38d91e99aa1b29a965522f3ae1a7ed44ab3ff7"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/DataTable.js.html",
+      "bytes": 24676,
+      "sha256": "88cb6f398005a74a24c3722ac39752abf6a045c266dffde4476eff74cfe902ea"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/EmptyState.js.html",
+      "bytes": 6445,
+      "sha256": "796522aca213ee44801c77e727efdd0337a13164a2416edeb23730b85d6a9184"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/ExportButtonGroup.js.html",
+      "bytes": 12946,
+      "sha256": "454a38cf9bc2c98dc9616ffaa2d352bf35af5aa710e64df94a90f449cc8f54d5"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/feedback/index.html",
+      "bytes": 4492,
+      "sha256": "9620ecced142709389248ae638bd0ac79ef9da5d6c7ec943c6cb9fcce4eaa66f"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/feedback/Toast.js.html",
+      "bytes": 12590,
+      "sha256": "421a2f78639339a9c3c6a6c5c7f744da8fcd0d2b4c694ee46e2c31c044734bb9"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/Field.js.html",
+      "bytes": 6387,
+      "sha256": "dd821ad16f736fa9ed5236425b8c8bb71fa5efdfd1bbb02b62b535ef0a8f76b6"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/FormControls.js.html",
+      "bytes": 13490,
+      "sha256": "a21d55692efe251773434961cf9a23fd8023aafc617dcc0cbbef7ae194b99aaa"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/iconRegistry.js.html",
+      "bytes": 9089,
+      "sha256": "b845ff69204b8e13e0ab85762ca92f237a684e30b428c1c6b9c0e79a3cfe38ec"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/index.html",
+      "bytes": 16046,
+      "sha256": "dae47afaf2e988d819e4324be454d11b017378f74c451208ae58a71d121ed877"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/index.js.html",
+      "bytes": 7501,
+      "sha256": "4e604318dbe759a14f2d2199b30acca30a41f620e2428877baa99c25c7d4debe"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/KpiTile.js.html",
+      "bytes": 23292,
+      "sha256": "6d7606264788cdf2b36f475077dc22d7e989e6567027861275eef2509182e296"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/layout/index.html",
+      "bytes": 5259,
+      "sha256": "b3341c085d75ddc68b43a535c28758313f674dfe13391def3449ab77d6b97d9d"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/layout/RolePanelLayout.js.html",
+      "bytes": 13926,
+      "sha256": "3517bb4d9120d2859af1d915a1ed75382372acf1f598232c5b7d67c11fcee641"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/layout/RoleSidebar.js.html",
+      "bytes": 46589,
+      "sha256": "b4247efd7c4bf5cea93a69fc0aa37d328efdd1f879db5208b99713a95ac72f06"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/LoadingSpinner.js.html",
+      "bytes": 8088,
+      "sha256": "4354251ec5b6e295b14978f318e6340be2080d4895b3cc522b1bb69d1ae55ece"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/Modal.js.html",
+      "bytes": 15151,
+      "sha256": "67054b3872c8817e7decd7993e680f11e236a311e1de335bbd1ad40efca100c7"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/PageShell.js.html",
+      "bytes": 15682,
+      "sha256": "b015b446c9dcfff951abc1d94696361466da000a05d7d66debc54bb5876f8604"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/panel-guide/index.html",
+      "bytes": 6020,
+      "sha256": "89681b5698d14c895196682520ee15a00ebecb24816480fd0f9a3f02b8fc55c9"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/panel-guide/panelGuideContent.js.html",
+      "bytes": 77048,
+      "sha256": "b805b4b89075850745b444fda8f2448676e6222ce28ac79c5dbb10e55661fc43"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/panel-guide/panelGuideStorage.js.html",
+      "bytes": 10106,
+      "sha256": "416e7e5b6bed69d5f0846a04c32eefa792371fa10e4bf97b205d72f2f374ca43"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/panel-guide/PanelUserGuide.js.html",
+      "bytes": 63064,
+      "sha256": "2c58f8f0e6067e3a285e1ad3aaebfcd7b2199fc09b029acdb197d3b3853bd0c3"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/render-profile/index.html",
+      "bytes": 5941,
+      "sha256": "b61c8b4d98a463a9e4a8435b10ebf9b13a10c083980b987a97ead25a5b62aec1"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/render-profile/index.js.html",
+      "bytes": 3564,
+      "sha256": "a2f9509a47431cdb7f388faba9854cb9633a9e27d80bab361b3e9a1b62080fdf"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/render-profile/RenderProfileProvider.js.html",
+      "bytes": 14727,
+      "sha256": "66ad4609966a5179abaa97484c9cd0a85aa7a8834dec4ece5f16fed20ede7250"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/render-profile/renderProfileResolver.js.html",
+      "bytes": 7903,
+      "sha256": "cf18bbbd6c38db1a0c8dd983ea4176b74806ed53b2f2a4532018ddf2e37d24cb"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/SectionHeader.js.html",
+      "bytes": 8440,
+      "sha256": "6625afd44c06edf24b9e24ae1b1d53ac3f2bbf7d7adec445e18ca07d92ec4792"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/semanticCatalog.js.html",
+      "bytes": 9252,
+      "sha256": "f5189ff863ca69917b4a710b7cfeb3e02b1602678e12a0381056f6891b813ca3"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/SortableHeader.js.html",
+      "bytes": 11683,
+      "sha256": "f86a1286b565fdc32d65dd8db0fb3886caa9050ba7011212bf2c78a6ecf001b8"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/StatusBadge.js.html",
+      "bytes": 7479,
+      "sha256": "fbf8816de5952766ac3c63e9ce837d508cd98320576b86023a1cfa81536027bb"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/shared/ui/TabNav.js.html",
+      "bytes": 17508,
+      "sha256": "2413f3fdec5cd7b946293ec48da370eacbcb9cca40b1aaa045bf436eb89d696c"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/utils/athleteValidation.js.html",
+      "bytes": 19880,
+      "sha256": "e44675704adb4e7458c61f34090e7d9d94af4f762e924ab511b0f964f67bb2c0"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/utils/dateUtils.js.html",
+      "bytes": 30534,
+      "sha256": "25f064e7e40216a132bce3e39f87e6e4c3d356342ae5a9486284069100991d75"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/utils/exportAttendancePdf.js.html",
+      "bytes": 29744,
+      "sha256": "abe0a19def95150c98928caf6c46001b3dd9a570d215e4de9e1235e3b26a3889"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/utils/index.html",
+      "bytes": 8525,
+      "sha256": "e724223bf23e4ccefb6afc3ea0e878bdeb478de05afebcc1d0064e0e747aeb88"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/utils/passwordUtils.js.html",
+      "bytes": 16829,
+      "sha256": "500bb6bd7ee44e20679481868f6d73abe9a8828da16e5cafc68e680a11467ad8"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/utils/paymentUtils.js.html",
+      "bytes": 10262,
+      "sha256": "6d380dc3ddf1c4d79712be866a2c1a63b9314ff13d779828b6f1259a11556f64"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/utils/piiCrypto.js.html",
+      "bytes": 31366,
+      "sha256": "cfc7115a4c9efca20604d0f60212d68e7746549c0b0de65a7ea176c69965688c"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov-report/src/utils/supabaseDebug.js.html",
+      "bytes": 26164,
+      "sha256": "108f3779cd14d80db5538e94e28538af2ca6a1fce74995ab3c0bd47a27fe93de"
+    },
+    {
+      "file": "unitarias/cobertura-jest-final/lcov.info",
+      "bytes": 481272,
+      "sha256": "9df37cdf79a47acd70bb478b0d584d8c832456ad0a486d129ad8994a9ca1f7ed"
+    },
+    {
+      "file": "unitarias/cobertura-post-parches/coverage-final.json",
+      "bytes": 3285334,
+      "sha256": "4498a0dce1d362299c6d38e536797f42011f77e9a8967cb8e99a519cd085a151"
+    },
+    {
+      "file": "unitarias/cobertura-post-parches/coverage-summary.json",
+      "bytes": 89712,
+      "sha256": "32792f1cf33b6b291ae4c8b5c3144f603f12b6a9573c6e0e7a3db4a828b1737a"
+    },
+    {
+      "file": "unitarias/cobertura-push-cierre/coverage-final.json",
+      "bytes": 3287918,
+      "sha256": "1ed138cc8801985d8ecc40c4e9b106a1831318a62894e57d0a8ee966c7edb90c"
+    },
+    {
+      "file": "unitarias/cobertura-push-cierre/coverage-summary.json",
+      "bytes": 89712,
+      "sha256": "1700b407ffd4226ac0cfe471942590d9a577417cc1d1763cfba6f6901696cc48"
+    },
+    {
+      "file": "unitarias/cobertura-push-final/coverage-final.json",
+      "bytes": 3287829,
+      "sha256": "6855cac1bff7452b2bea61c87804343b93252b3483c22b68cae99299ee4c705a"
+    },
+    {
+      "file": "unitarias/cobertura-push-final/coverage-summary.json",
+      "bytes": 89712,
+      "sha256": "7aea2573da68bb745f903f64bcd03cc2a76b05fd4f2575a0940fed99a1d42365"
+    },
+    {
+      "file": "unitarias/jest-final.json",
+      "bytes": 3413557,
+      "sha256": "4c8b1300b59021841ac66ed36e11d7a7b2e18f5fedd7c2cd844ac6aaa25284f9"
+    },
+    {
+      "file": "unitarias/jest-final.meta.json",
+      "bytes": 699,
+      "sha256": "38687a874582daade2304269820eab7247564e949f530a20c107a804044a0f00"
+    },
+    {
+      "file": "unitarias/jest-final.stderr.log",
+      "bytes": 7252,
+      "sha256": "8640d394c2ffa29b36003572224efc4e56e7201ecc82190b63ef4f9ec1967a4f"
+    },
+    {
+      "file": "unitarias/jest-final.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "unitarias/jest-post-parches.json",
+      "bytes": 3413557,
+      "sha256": "bd061f8c6a7e1714d591186e33076f76bd3c41231c8faf6b6fb6e823aba1973f"
+    },
+    {
+      "file": "unitarias/jest-post-parches.meta.json",
+      "bytes": 780,
+      "sha256": "4938489e14145e2bf416655737f19f7c7221afabfdddae0c7c377f45d1e7bd45"
+    },
+    {
+      "file": "unitarias/jest-post-parches.stderr.log",
+      "bytes": 7265,
+      "sha256": "ed310b2fa6811540fd1a74b2c8c266ac3cbc0976024ab6c184481ab4708b8fe4"
+    },
+    {
+      "file": "unitarias/jest-post-parches.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "unitarias/jest-push-cierre.json",
+      "bytes": 3418419,
+      "sha256": "febd86d09e088a2c5463b42653db61b6c342ccfc6d642c5e5fa3ffa2b04090bf"
+    },
+    {
+      "file": "unitarias/jest-push-cierre.meta.json",
+      "bytes": 778,
+      "sha256": "44ccbbed7d72f11821908c43c2a652e87694e26ffcb4bcfc4ffdfb2997f1aff1"
+    },
+    {
+      "file": "unitarias/jest-push-cierre.stderr.log",
+      "bytes": 7301,
+      "sha256": "c28885ca9c4fe71606bb51262cd52c5bf6cae8b4e30458ab61f9efcad5a3ffa4"
+    },
+    {
+      "file": "unitarias/jest-push-cierre.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "unitarias/jest-push-final.json",
+      "bytes": 3418098,
+      "sha256": "298ca6bbfb591016226d6cc38168d6f79fd2098f4a83e8fabed6ec168f84b5b9"
+    },
+    {
+      "file": "unitarias/jest-push-final.meta.json",
+      "bytes": 776,
+      "sha256": "6f94d598471b077c7dcccfa59794645f3aebd107c2f8fab1380cc9848f9ebf33"
+    },
+    {
+      "file": "unitarias/jest-push-final.stderr.log",
+      "bytes": 7295,
+      "sha256": "f498108802b89e71d326cd6b0c08a4dc2256d7172ec4bc588af29662dcc15ead"
+    },
+    {
+      "file": "unitarias/jest-push-final.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "unitarias/push-lifecycle-rojo-corregido.json",
+      "bytes": 9488,
+      "sha256": "dcb76c4c4cd62bcd046e25682f9551c35527b848622a97fdd79e2c9a03bb0075"
+    },
+    {
+      "file": "unitarias/push-lifecycle-rojo-corregido.meta.json",
+      "bytes": 598,
+      "sha256": "19123a72623ac85efc29b01b590f4f026ba83a78d84895c15206cfa4557f8df0"
+    },
+    {
+      "file": "unitarias/push-lifecycle-rojo-corregido.stderr.log",
+      "bytes": 6510,
+      "sha256": "d9e936daa526f8cd438a02c510f6de6e210d0db42d28233d7cf4e461b61bef8d"
+    },
+    {
+      "file": "unitarias/push-lifecycle-rojo-corregido.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "unitarias/push-lifecycle-rojo.meta.json",
+      "bytes": 597,
+      "sha256": "be268d8e77f8d554fe1ffdf800fb75d4fa04f6283826271043cdf1c06854e5a0"
+    },
+    {
+      "file": "unitarias/push-lifecycle-rojo.stderr.log",
+      "bytes": 2151,
+      "sha256": "57ac6a2b338ba30d8e090bb353ea58119525237807fa3c93063e8ee354246ae9"
+    },
+    {
+      "file": "unitarias/push-lifecycle-rojo.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "unitarias/push-lifecycle-verde-final.json",
+      "bytes": 2369,
+      "sha256": "f16c3166ac06bd82e8d91488aca4871cc1e95bb9dc220b3b98d0af8e50b7ec48"
+    },
+    {
+      "file": "unitarias/push-lifecycle-verde-final.meta.json",
+      "bytes": 595,
+      "sha256": "c99c1e3b55d4d8f77907f8183110f8b71caa49c5329cd6830e7331f2c1ae14d8"
+    },
+    {
+      "file": "unitarias/push-lifecycle-verde-final.stderr.log",
+      "bytes": 940,
+      "sha256": "c7f0ef862e95258ff84b860769f628afa6537c9bfba4854b8147c728d29ae463"
+    },
+    {
+      "file": "unitarias/push-lifecycle-verde-final.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "unitarias/push-lifecycle-verde.json",
+      "bytes": 3500,
+      "sha256": "ac0ad39c4ca8809cc05958a1aafa91336bc50f992e79ea5aadc2b91262e451b1"
+    },
+    {
+      "file": "unitarias/push-lifecycle-verde.meta.json",
+      "bytes": 589,
+      "sha256": "cd015dcf7a373af0ba5071f8e43a7c3ecbed58d716686d49b75b539516bb517e"
+    },
+    {
+      "file": "unitarias/push-lifecycle-verde.stderr.log",
+      "bytes": 1840,
+      "sha256": "d4f92415a5a3e6cb29d55136719f47beda2fbdede2f3771890d4f9bac72fed35"
+    },
+    {
+      "file": "unitarias/push-lifecycle-verde.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "unitarias/push-reintento-rojo.json",
+      "bytes": 3857,
+      "sha256": "885413fc7795bde2d28086c9189489c27322f38e8802ee1f2ce3bf8ac3ed1d61"
+    },
+    {
+      "file": "unitarias/push-reintento-rojo.meta.json",
+      "bytes": 588,
+      "sha256": "fc1c07e9126227ae479d2fd41b4419f57b06d6b89da7e13c477477b1dc4d8df5"
+    },
+    {
+      "file": "unitarias/push-reintento-rojo.stderr.log",
+      "bytes": 1895,
+      "sha256": "2359312108c04cf0d29f05b5efc17f874018fe05f5ed5da49b6a8485a25f67be"
+    },
+    {
+      "file": "unitarias/push-reintento-rojo.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    }
+  ]
+}

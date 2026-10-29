@@ -1,0 +1,8 @@
+{
+  "localIdentityVerified": true,
+  "endpoint": "http://127.0.0.1:55321",
+  "database": {
+    "database": "postgres",
+    "version": "PostgreSQL 17.11 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 15.2.0, 64-bit"
+  }
+}
