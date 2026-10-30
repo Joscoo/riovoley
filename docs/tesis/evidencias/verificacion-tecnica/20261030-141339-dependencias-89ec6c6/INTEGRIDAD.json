@@ -1,0 +1,116 @@
+{
+  "generatedAt": "2026-10-30T14:51:56.774Z",
+  "passed": 10,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Nueve expedientes anteriores intactos",
+      "state": "APROBADO",
+      "details": {
+        "manifests": 9,
+        "entries": 5335
+      }
+    },
+    {
+      "name": "Jest, contratos, memoria y cobertura coinciden",
+      "state": "APROBADO",
+      "details": {
+        "cases": 419,
+        "suites": 88,
+        "contractsIncluded": 12,
+        "memoryIncluded": 5,
+        "lines": {
+          "total": 12123,
+          "covered": 5209,
+          "skipped": 0,
+          "pct": 42.96
+        }
+      }
+    },
+    {
+      "name": "Ciclos rojos conservados y 22 contratos Node finales aprobados",
+      "state": "APROBADO",
+      "details": {
+        "uniqueFinalNodeCases": 22,
+        "priorReproductionFailures": 8,
+        "separateHarnessCases": 12
+      }
+    },
+    {
+      "name": "Avisos 31 a 23 a 15 sin alertas altas o críticas",
+      "state": "APROBADO",
+      "details": {
+        "remaining": 15,
+        "high": 0,
+        "critical": 0,
+        "zeroAlertsCriterionMet": false
+      }
+    },
+    {
+      "name": "249 instancias E2E únicas con denominadores y mocks explícitos",
+      "state": "APROBADO",
+      "details": {
+        "passed": 249,
+        "automaticRetries": 0,
+        "mockRecovery": 28,
+        "realLocalMutationFlows": 7
+      }
+    },
+    {
+      "name": "Integración PG READ ONLY y servidor CRA reales",
+      "state": "APROBADO",
+      "details": {
+        "sqlRows": {
+          "students": 7,
+          "payments": 7,
+          "paymentswithexpectedamount": 7,
+          "attendances": 7
+        },
+        "httpHmrControls": 3,
+        "institutionalChanges": false
+      }
+    },
+    {
+      "name": "Compilación web y nativa con APK privado nuevo",
+      "state": "APROBADO",
+      "details": {
+        "webExit": 0,
+        "nativeExit": 0,
+        "matchingApkAssets": 106,
+        "jvmTemplateTests": 1,
+        "apkDistributed": false
+      }
+    },
+    {
+      "name": "Fuentes de aplicación conservadas y overrides documentados",
+      "state": "APROBADO",
+      "details": {
+        "checked": 569,
+        "changed": [
+          "package-lock.json",
+          "package.json",
+          "scripts/audit/closure/verify-e2e-final-persistence.cjs"
+        ],
+        "framework": "CRA5.0.1",
+        "applicationUnchanged": true
+      }
+    },
+    {
+      "name": "Tres documentos y ocho categorías con referencias válidas",
+      "state": "APROBADO",
+      "details": {
+        "documents": 3,
+        "categories": 8
+      }
+    },
+    {
+      "name": "Privacidad de texto, ZIP HTML y APK",
+      "state": "APROBADO",
+      "details": {
+        "textFiles": 1113,
+        "htmlArchives": 4,
+        "windowsProfilePathsAnonymized": true
+      }
+    }
+  ]
+}

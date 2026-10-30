@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "view",
+    "serialize-javascript@7.1.4",
+    "version",
+    "type",
+    "main",
+    "exports",
+    "dependencies",
+    "engines",
+    "--json"
+  ],
+  "start": "2026-10-30T14:15:22.101Z",
+  "end": "2026-10-30T14:15:22.772Z",
+  "durationSeconds": 0.671,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

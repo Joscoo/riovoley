@@ -1,0 +1,17 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "scripts/e2e/local/safety.test.cjs",
+    "scripts/e2e/local/schema.test.cjs",
+    "scripts/e2e/local/loopback.test.cjs",
+    "scripts/e2e/local/evidence.test.cjs"
+  ],
+  "start": "2026-10-30T14:31:32.941Z",
+  "end": "2026-10-30T14:31:33.363Z",
+  "durationSeconds": 0.422,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

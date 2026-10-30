@@ -1,0 +1,10 @@
+{
+  "version": "7.1.4",
+  "dist-tags": {
+    "latest": "7.1.4"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
+

@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/integration/toolchain.security-followup.test.cjs"
+  ],
+  "start": "2026-10-30T14:17:48.144Z",
+  "end": "2026-10-30T14:17:49.705Z",
+  "durationSeconds": 1.561,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

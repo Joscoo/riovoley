@@ -1,0 +1,17 @@
+{
+  "suites": [
+    {
+      "suite": "com.getcapacitor.myapp.ExampleUnitTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.01
+    }
+  ],
+  "executed": 1,
+  "failed": 0,
+  "skipped": 0,
+  "scope": "Prueba de plantilla ejecutada en JVM; no verifica l\u00f3gica de negocio ni instrumentaci\u00f3n Android.",
+  "passed": 1
+}

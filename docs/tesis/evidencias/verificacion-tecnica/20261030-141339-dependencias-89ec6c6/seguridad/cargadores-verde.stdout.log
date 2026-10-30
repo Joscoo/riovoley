@@ -1,0 +1,145 @@
+TAP version 13
+# Subtest: QS de Express serializa arrays comma con null y undefined sin excepción (CVE-2026-8723)
+ok 1 - QS de Express serializa arrays comma con null y undefined sin excepción (CVE-2026-8723)
+  ---
+  duration_ms: 69.0489
+  type: 'test'
+  ...
+# Subtest: Express conserva filtros anidados y body URL-encoded con el QS actualizado
+ok 2 - Express conserva filtros anidados y body URL-encoded con el QS actualizado
+  ---
+  duration_ms: 281.779
+  type: 'test'
+  ...
+# Subtest: Underscore usado por JSONPath procesa arrays de 20000 niveles sin desbordar la pila (CVE-2026-27601)
+ok 3 - Underscore usado por JSONPath procesa arrays de 20000 niveles sin desbordar la pila (CVE-2026-27601)
+  ---
+  duration_ms: 5.1883
+  type: 'test'
+  ...
+# Subtest: Underscore compara objetos de 6000 niveles sin desbordar la pila
+ok 4 - Underscore compara objetos de 6000 niveles sin desbordar la pila
+  ---
+  duration_ms: 23.4587
+  type: 'test'
+  ...
+# Subtest: JSONPath mantiene filtros y selección recursiva con el parche de Underscore
+ok 5 - JSONPath mantiene filtros y selección recursiva con el parche de Underscore
+  ---
+  duration_ms: 52.9566
+  type: 'test'
+  ...
+# Subtest: BFJ conserva la lectura y escritura JSON del informe de compilación
+ok 6 - BFJ conserva la lectura y escritura JSON del informe de compilación
+  ---
+  duration_ms: 66.7862
+  type: 'test'
+  ...
+# Subtest: UUID usado por SockJS rechaza buffers insuficientes al generar v5
+ok 7 - UUID usado por SockJS rechaza buffers insuficientes al generar v5
+  ---
+  duration_ms: 30.6089
+  type: 'test'
+  ...
+# Subtest: SockJS conserva conexiones con identificadores UUID v4 válidos y distintos
+ok 8 - SockJS conserva conexiones con identificadores UUID v4 válidos y distintos
+  ---
+  duration_ms: 17.3551
+  type: 'test'
+  ...
+# Subtest: SVGO del cargador SVG elimina enlaces ejecutables con namespace y tabulador codificado
+ok 9 - SVGO del cargador SVG elimina enlaces ejecutables con namespace y tabulador codificado
+  ---
+  duration_ms: 1414.0262
+  type: 'test'
+  ...
+# Without `from` option PostCSS could generate wrong source map and will not find Browserslist config. Set it to CSS file path or to `undefined` to prevent this warning.
+# <i> [webpack-dev-middleware] wait until bundle finished
+# Subtest: SVG conserva ReactComponent, título, ref, viewBox y URL de archivo con las opciones CRA
+ok 10 - SVG conserva ReactComponent, título, ref, viewBox y URL de archivo con las opciones CRA
+  ---
+  duration_ms: 2847.1771
+  type: 'test'
+  ...
+# Subtest: PostCSS del resolvedor CSS no incorpora contenido de un mapa absoluto sin from
+ok 11 - PostCSS del resolvedor CSS no incorpora contenido de un mapa absoluto sin from
+  ---
+  duration_ms: 1430.8555
+  type: 'test'
+  ...
+# Subtest: Resolve URL Loader conserva CSS, URL de recurso y mapa con las opciones existentes
+ok 12 - Resolve URL Loader conserva CSS, URL de recurso y mapa con las opciones existentes
+  ---
+  duration_ms: 63.9718
+  type: 'test'
+  ...
+# Subtest: Middleware sirve el bundle y rechaza escapar del directorio con publicPath sin barra final
+ok 13 - Middleware sirve el bundle y rechaza escapar del directorio con publicPath sin barra final
+  ---
+  duration_ms: 351.9375
+  type: 'test'
+  ...
+# Subtest: css-minimizer-webpack-plugin: serialización escapa el cierre script al final de una función (GHSA-m5mm-p8h7-m29v)
+ok 14 - css-minimizer-webpack-plugin: serialización escapa el cierre script al final de una función (GHSA-m5mm-p8h7-m29v)
+  ---
+  duration_ms: 1.9577
+  type: 'test'
+  ...
+# Subtest: css-minimizer-webpack-plugin: conserva opciones y valores utilizados al serializar trabajo de compilación
+ok 15 - css-minimizer-webpack-plugin: conserva opciones y valores utilizados al serializar trabajo de compilación
+  ---
+  duration_ms: 4.4209
+  type: 'test'
+  ...
+# Subtest: terser-webpack-plugin: serialización escapa el cierre script al final de una función (GHSA-m5mm-p8h7-m29v)
+ok 16 - terser-webpack-plugin: serialización escapa el cierre script al final de una función (GHSA-m5mm-p8h7-m29v)
+  ---
+  duration_ms: 0.2443
+  type: 'test'
+  ...
+# Subtest: terser-webpack-plugin: conserva opciones y valores utilizados al serializar trabajo de compilación
+ok 17 - terser-webpack-plugin: conserva opciones y valores utilizados al serializar trabajo de compilación
+  ---
+  duration_ms: 3.0162
+  type: 'test'
+  ...
+# Subtest: rollup-plugin-terser: serialización escapa el cierre script al final de una función (GHSA-m5mm-p8h7-m29v)
+ok 18 - rollup-plugin-terser: serialización escapa el cierre script al final de una función (GHSA-m5mm-p8h7-m29v)
+  ---
+  duration_ms: 0.2346
+  type: 'test'
+  ...
+# Subtest: rollup-plugin-terser: conserva opciones y valores utilizados al serializar trabajo de compilación
+ok 19 - rollup-plugin-terser: conserva opciones y valores utilizados al serializar trabajo de compilación
+  ---
+  duration_ms: 2.9249
+  type: 'test'
+  ...
+# Subtest: Once del consumidor HTTP rechaza la espera abortada y retira sus listeners
+ok 20 - Once del consumidor HTTP rechaza la espera abortada y retira sus listeners
+  ---
+  duration_ms: 3.7213
+  type: 'test'
+  ...
+# Subtest: HTTP Proxy Agent mantiene una solicitud HTTP real sobre loopback con Once actualizado
+ok 21 - HTTP Proxy Agent mantiene una solicitud HTTP real sobre loopback con Once actualizado
+  ---
+  duration_ms: 52.1406
+  type: 'test'
+  ...
+# Subtest: HTTP Proxy Agent propaga el rechazo de conexión en lugar de dejar la petición pendiente
+ok 22 - HTTP Proxy Agent propaga el rechazo de conexión en lugar de dejar la petición pendiente
+  ---
+  duration_ms: 5.158
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6315.053
+

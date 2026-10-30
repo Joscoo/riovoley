@@ -1,0 +1,25 @@
+{
+  "time": "2026-10-30T14:39:35.821Z",
+  "activeBuild": "web-build-1793370427198",
+  "maps": 40,
+  "sources": 1076,
+  "packages": [
+    "@jest/core",
+    "@rollup/plugin-node-resolve",
+    "@svgr/plugin-svgo",
+    "@svgr/webpack",
+    "deepmerge",
+    "fork-ts-checker-webpack-plugin",
+    "jest",
+    "jest-cli",
+    "jest-config",
+    "jest-watch-typeahead",
+    "react-dev-utils",
+    "react-scripts",
+    "webpack-dev-server",
+    "workbox-build",
+    "workbox-webpack-plugin"
+  ],
+  "matches": [],
+  "scope": "Contraste de fuentes declaradas en sourcemaps JS del bundle concreto; ausencia de coincidencias no garantiza ausencia de todo código vulnerable ni elimina los riesgos de las herramientas Node."
+}

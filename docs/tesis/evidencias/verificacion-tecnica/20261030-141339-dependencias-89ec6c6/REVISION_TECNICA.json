@@ -1,0 +1,21 @@
+{
+  "recordedAt": "2026-10-30T14:49:57.927Z",
+  "method": "Revisión independiente de código y contraste documental, sin ejecutar pruebas ni acceder a credenciales",
+  "reviewed": [
+    "Seis overrides y subárboles del lockfile",
+    "Tests de seguridad de dependencias y cargadores",
+    "Drivers de auditoría y alcance de mocks",
+    "Informes, matriz y propuesta académica"
+  ],
+  "findings": [
+    {
+      "finding": "El texto indicaba ocho guardas, pero TAP y tabla registran doce",
+      "resolution": "Se corrigió a doce y se usa el contador dinámico en el generador"
+    },
+    {
+      "finding": "Conviene explicar la salida 1 del servidor Edge al apagarlo intencionalmente",
+      "resolution": "Añadidas explicación y referencias de cierre"
+    }
+  ],
+  "otherSubstantiveFindings": 0
+}

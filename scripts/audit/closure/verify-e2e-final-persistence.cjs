@@ -4,6 +4,8 @@ const assert=require('node:assert/strict');
 const h=require('../../e2e/local/harness.cjs');
 const {connect}=require('../security/local-db.cjs');
 const read=file=>JSON.parse(fs.readFileSync(path.join(h.evidence,file),'utf8'));
+const label=process.argv[2]||'mutaciones-reanudadas';
+assert.match(label,/^[a-z0-9-]+$/);
 const query=`WITH created AS (
  SELECT s.id FROM core.students s JOIN core.users u ON u.id=s.user_id
  WHERE u.nombre ~ '^E2E[0-9a-f]{12}$' AND u.apellido='Flow'
@@ -14,7 +16,7 @@ SELECT (SELECT count(*)::int FROM created) AS students,
  (SELECT count(*)::int FROM billing.payments WHERE student_id IN (SELECT id FROM created) AND deleted_at IS NULL AND monto=35) AS paymentsWithExpectedAmount,
  (SELECT count(*)::int FROM training.attendances WHERE student_id IN (SELECT id FROM created)) AS attendances`;
 (async()=>{
- const meta=read('mutaciones-reanudadas/ejecucion.meta.json');
+ const meta=read(label+'/ejecucion.meta.json');
  const db=await connect();
  try{
   await db.query('BEGIN READ ONLY');

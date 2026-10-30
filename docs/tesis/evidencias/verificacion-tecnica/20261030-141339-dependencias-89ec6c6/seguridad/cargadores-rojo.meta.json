@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/integration/toolchain.loaders-security.test.cjs"
+  ],
+  "start": "2026-10-30T14:23:12.303Z",
+  "end": "2026-10-30T14:24:13.229Z",
+  "durationSeconds": 60.926,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

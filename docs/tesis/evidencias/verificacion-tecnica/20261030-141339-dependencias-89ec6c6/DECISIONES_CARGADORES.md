@@ -1,0 +1,5 @@
+# Decisiones sobre cargadores
+
+SVGR se actualiza de 5.5 a 6.5.1, última línea compatible con CommonJS: su guía oficial admite webpack5 y file-loader, que usa CRA. CRA ya deshabilita svgo en el loader; la prueba adicional del optimizador opt-in no acredita sanitización de archivos subidos por usuarios. Se conservan las opciones de título, ref y viewBox mediante una compilación de fixture. Resolve URL Loader 5 acepta las mismas opciones usadas por CRA e incorpora PostCSS8. La compatibilidad incluye CSS, URL con query/fragment y sourcemaps. El middleware 7.4.6 se limita al consumidor webpack-dev-server4; se verifican su API y el arranque local. La descripción del aviso de middleware conserva una frase antigua sobre ausencia de backports, aunque lista 7.4.6 corregido: se exige además reproducción funcional. SockJS solo llama uuid.v4() sin buffer; se comprueban sus conexiones e identificadores tras actualizar a11.1.1.
+
+Los fixtures nuevos se guardan en .e2e-local para evitar rutas con nombres de usuario en registros. Cambia su ubicación, no las expectativas de seguridad.

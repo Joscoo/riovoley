@@ -1,0 +1,17 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "view",
+    "uuid@11.1.1",
+    "dependencies",
+    "engines",
+    "--json"
+  ],
+  "start": "2026-10-30T14:20:48.827Z",
+  "end": "2026-10-30T14:20:49.478Z",
+  "durationSeconds": 0.651,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

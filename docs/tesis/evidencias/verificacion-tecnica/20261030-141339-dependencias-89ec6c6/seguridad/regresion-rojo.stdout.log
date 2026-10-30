@@ -1,0 +1,140 @@
+TAP version 13
+# Subtest: css-minimizer-webpack-plugin: serialización escapa el cierre script al final de una función (GHSA-m5mm-p8h7-m29v)
+not ok 1 - css-minimizer-webpack-plugin: serialización escapa el cierre script al final de una función (GHSA-m5mm-p8h7-m29v)
+  ---
+  duration_ms: 1.962
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.security-followup.test.cjs:12:2'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input was expected to not match the regular expression /<\/script(?:$|[\t\n\f\r />])/i. Input:
+    
+    '{\n  "f": function f(){ return 1 }//</script\n}'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: |-
+    {
+      "f": function f(){ return 1 }//</script
+    }
+  operator: 'doesNotMatch'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.security-followup.test.cjs:16:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.start (node:internal/test_runner/test:1191:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17)
+  ...
+# Subtest: css-minimizer-webpack-plugin: conserva opciones y valores utilizados al serializar trabajo de compilación
+ok 2 - css-minimizer-webpack-plugin: conserva opciones y valores utilizados al serializar trabajo de compilación
+  ---
+  duration_ms: 6.5751
+  type: 'test'
+  ...
+# Subtest: terser-webpack-plugin: serialización escapa el cierre script al final de una función (GHSA-m5mm-p8h7-m29v)
+not ok 3 - terser-webpack-plugin: serialización escapa el cierre script al final de una función (GHSA-m5mm-p8h7-m29v)
+  ---
+  duration_ms: 0.6062
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.security-followup.test.cjs:12:2'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input was expected to not match the regular expression /<\/script(?:$|[\t\n\f\r />])/i. Input:
+    
+    '{\n  "f": function f(){ return 1 }//</script\n}'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: |-
+    {
+      "f": function f(){ return 1 }//</script
+    }
+  operator: 'doesNotMatch'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.security-followup.test.cjs:16:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: terser-webpack-plugin: conserva opciones y valores utilizados al serializar trabajo de compilación
+ok 4 - terser-webpack-plugin: conserva opciones y valores utilizados al serializar trabajo de compilación
+  ---
+  duration_ms: 4.339
+  type: 'test'
+  ...
+# Subtest: rollup-plugin-terser: serialización escapa el cierre script al final de una función (GHSA-m5mm-p8h7-m29v)
+not ok 5 - rollup-plugin-terser: serialización escapa el cierre script al final de una función (GHSA-m5mm-p8h7-m29v)
+  ---
+  duration_ms: 0.7771
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.security-followup.test.cjs:12:2'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input was expected to not match the regular expression /<\/script(?:$|[\t\n\f\r />])/i. Input:
+    
+    '{\n  "f": function f(){ return 1 }//</script\n}'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: |-
+    {
+      "f": function f(){ return 1 }//</script
+    }
+  operator: 'doesNotMatch'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.security-followup.test.cjs:16:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: rollup-plugin-terser: conserva opciones y valores utilizados al serializar trabajo de compilación
+ok 6 - rollup-plugin-terser: conserva opciones y valores utilizados al serializar trabajo de compilación
+  ---
+  duration_ms: 3.7119
+  type: 'test'
+  ...
+# Subtest: Once del consumidor HTTP rechaza la espera abortada y retira sus listeners
+not ok 7 - Once del consumidor HTTP rechaza la espera abortada y retira sus listeners
+  ---
+  duration_ms: 292.8245
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.security-followup.test.cjs:29:1'
+  failureType: 'testCodeFailure'
+  error: 'La espera abortada no se resolvió ni rechazó'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    Timeout.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.security-followup.test.cjs:38:57)
+    listOnTimeout (node:internal/timers:605:17)
+    process.processTimers (node:internal/timers:541:7)
+  ...
+# Subtest: HTTP Proxy Agent mantiene una solicitud HTTP real sobre loopback con Once actualizado
+ok 8 - HTTP Proxy Agent mantiene una solicitud HTTP real sobre loopback con Once actualizado
+  ---
+  duration_ms: 426.1889
+  type: 'test'
+  ...
+# Subtest: HTTP Proxy Agent propaga el rechazo de conexión en lugar de dejar la petición pendiente
+ok 9 - HTTP Proxy Agent propaga el rechazo de conexión en lugar de dejar la petición pendiente
+  ---
+  duration_ms: 4.4681
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 5
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1475.2533
+

@@ -1,6 +1,18 @@
 # Evidencias técnicas de RIOVOLEY
 
-La ejecución más reciente repite la matriz E2E sobre el commit base `2e999d1`, con una corrección documentada de sincronización en una prueba de asistencias y sin cambiar la lógica del producto:
+La ejecución más reciente continúa la corrección de dependencias sobre el commit base `89ec6c6`, sin cambiar CRA ni el código de la aplicación:
+
+- [Informe técnico de dependencias y regresión](evidencias/verificacion-tecnica/20261030-141339-dependencias-89ec6c6/INFORME_VERIFICACION_TECNICA.md).
+- [Matriz de verificaciones para la tesis](evidencias/verificacion-tecnica/20261030-141339-dependencias-89ec6c6/MATRIZ_VERIFICACIONES_TESIS.md).
+- [Texto académico propuesto](evidencias/verificacion-tecnica/20261030-141339-dependencias-89ec6c6/RESULTADOS_PARA_TESIS_4_5.md).
+
+Las actualizaciones de seis dependencias transitivas redujeron los avisos npm de **31 a 15: 13 bajos, dos moderados y cero altos o críticos**. `functions` y el árbol auxiliar registraron cero. Se conservan los ocho fallos de reproducción de dos ciclos; el conjunto final aprobó **22 casos Node** con paquetes reales y fixtures. Permanecen avisos por `deepmerge` sin parche publicado y por la compatibilidad del servidor de desarrollo de CRA; no se declara cumplido el criterio de cero alertas.
+
+La regresión nueva aprobó **419 casos Jest en 88 suites**, con 42,96 % de cobertura de líneas, y **249 instancias Playwright**, sin omisiones ni reintentos automáticos. Las 28 instancias de recuperación simulan Auth/REST; los siete flujos de escritura utilizan servicios locales reales y sus siete altas, pagos y asistencias se corroboraron en PostgreSQL READ ONLY. También aprobaron 12 guardas de aislamiento, tres controles HTTP/HMR de CRA, los builds web y la recompilación Android con `--rerun-tasks`. El APK offline permanece privado: se verificaron firma, privacidad y sus 106 archivos web; JUnit ejecutó una prueba de plantilla. Esta etapa no repitió instrumentación ni los flujos autenticados del WebView. Los denominadores se mantienen separados.
+
+## Antecedente de repetición E2E final
+
+La ejecución anterior repite la matriz E2E sobre el commit base `2e999d1`, con una corrección documentada de sincronización en una prueba de asistencias y sin cambiar la lógica del producto:
 
 - [Informe técnico de la repetición E2E](evidencias/verificacion-tecnica/20261029-231235-e2e-final-2e999d1/INFORME_VERIFICACION_TECNICA.md).
 - [Matriz complementaria para la tesis](evidencias/verificacion-tecnica/20261029-231235-e2e-final-2e999d1/MATRIZ_VERIFICACIONES_TESIS.md).
@@ -45,7 +57,7 @@ La ejecución registró 404 casos Jest en 85 suites, 17 pruebas de integración 
 
 ## Conservación y publicación
 
-Los ocho expedientes anteriores se conservan sin reescribir. Sus manifiestos registran las huellas de los archivos existentes al cerrar cada ejecución; las fechas y el commit base no se sustituyen por el commit que posteriormente incorpora las evidencias al repositorio. Los registros conservan sus bytes mediante `.gitattributes`.
+Los nueve expedientes anteriores se conservan sin reescribir. Sus manifiestos registran las huellas de los archivos existentes al cerrar cada ejecución; las fechas y el commit base no se sustituyen por el commit que posteriormente incorpora las evidencias al repositorio. Los registros conservan sus bytes mediante `.gitattributes`.
 
 Los APK de depuración permanecen exclusivamente en el equipo de auditoría. Se publican sus metadatos y SHA-256, pero los paquetes están excluidos de Git para respetar la restricción de no distribuirlos. Por tanto, una copia obtenida del repositorio no contiene esos dos archivos referenciados en los manifiestos Android; su comprobación requiere los APK locales originales. Las instantáneas de fuentes reflejan el árbol Windows de cada ejecución, incluidos archivos locales que no necesariamente forman parte de esta publicación, y pueden diferir de un checkout por la normalización de finales de línea de los archivos de código.
 
@@ -55,4 +67,4 @@ Las credenciales, claves, cuentas descartables y herramientas instaladas del ent
 
 Consultar el [arnés E2E local](../../scripts/e2e/local/README.md), las [herramientas Android](../../scripts/audit/android/README.md) y los comandos de cada informe. Para nuevas ejecuciones se debe crear un expediente distinto; no sobrescribir los registros sellados.
 
-El [endurecimiento de RLS/RPC](../../database/security/local/README.md) se validó únicamente en local; su aplicación institucional sigue pendiente de autorización y publicación coordinada. El borrador inicial se conserva como antecedente no ejecutable. Persisten 31 dependencias señaladas en la raíz, las limitaciones de proveedores externos, el dispositivo físico y una matriz nativa ampliada de negocio. La clasificación comprueba posiciones y orden en una categoría de fixture; no se extrapola a todas las categorías y métricas.
+El [endurecimiento de RLS/RPC](../../database/security/local/README.md) se validó únicamente en local; su aplicación institucional sigue pendiente de autorización y publicación coordinada. El borrador inicial se conserva como antecedente no ejecutable. Persisten 15 dependencias señaladas en la raíz, las limitaciones de proveedores externos, el dispositivo físico y una matriz nativa ampliada de negocio. La clasificación comprueba posiciones y orden en una categoría de fixture; no se extrapola a todas las categorías y métricas.

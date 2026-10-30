@@ -1,0 +1,17 @@
+{
+  "command": [
+    "docker",
+    "--host",
+    "npipe:////./pipe/dockerDesktopLinuxEngine",
+    "inspect",
+    "--format",
+    "{{json .Config.Labels}}",
+    "supabase_edge_runtime_riovoley-e2e-local"
+  ],
+  "start": "2026-10-30T14:45:24.769Z",
+  "end": "2026-10-30T14:45:24.986Z",
+  "durationSeconds": 0.217,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}
