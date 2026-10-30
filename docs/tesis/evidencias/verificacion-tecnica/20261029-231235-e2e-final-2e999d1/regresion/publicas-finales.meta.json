@@ -1,0 +1,15 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/e2e/local/run.cjs",
+    "public",
+    "--label=publicas-finales",
+    "--workers=2"
+  ],
+  "start": "2026-10-29T23:15:42.787Z",
+  "end": "2026-10-29T23:17:33.176Z",
+  "durationSeconds": 110.389,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

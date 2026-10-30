@@ -120,7 +120,24 @@ test('asistencias: filtros del historial + orden por columnas', async ({ page })
     await expect(metodoPagoFilter).not.toHaveValue('');
   }
 
+  // Wait for the request caused by resetting the filters. A visible container
+  // can belong to the previous query and disappear during the next render.
+  const resetRequestPromise = page.waitForRequest((request) => {
+    const url = new URL(request.url());
+    const dates = url.searchParams.getAll('fecha');
+    return request.method() === 'GET'
+      && url.pathname.endsWith('/rest/v1/attendances')
+      && dates.includes(`gte.${initialDateFrom}`)
+      && dates.includes(`lte.${initialDateTo}`)
+      && !url.searchParams.has('student_id')
+      && !url.searchParams.has('metodo_pago_id');
+  });
   await clearFiltersButton.click();
+  const resetResponse = await (await resetRequestPromise).response();
+  expect(resetResponse).not.toBeNull();
+  expect(resetResponse.ok()).toBe(true);
+  const resetRows = await resetResponse.json();
+  expect(Array.isArray(resetRows)).toBe(true);
   await expect(categoriaFilter).toHaveValue('');
   await expect(atletaFilter).toHaveValue('');
   await expect(metodoPagoFilter).toHaveValue('');
@@ -130,9 +147,8 @@ test('asistencias: filtros del historial + orden por columnas', async ({ page })
   const historySection = page.getByTestId('attendance-history-table').first();
   await expect(historySection).toBeVisible();
   const dayHeaders = historySection.getByTestId('attendance-day-header');
-  const dayCount = await dayHeaders.count();
-
-  if (dayCount > 0) {
+  if (resetRows.length > 0) {
+    await expect(dayHeaders.first()).toBeVisible();
     const controlledId = await dayHeaders.first().locator('button[aria-expanded]').getAttribute('aria-controls');
     const dayToggle = historySection.locator(`button[aria-controls="${controlledId}"]`);
     if (await dayToggle.getAttribute('aria-expanded') === 'false') await dayToggle.click();

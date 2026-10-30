@@ -1,6 +1,18 @@
 # Evidencias técnicas de RIOVOLEY
 
-La ejecución más reciente comprueba Android autenticado y parches de dependencias, sobre el commit base `317e5e3` y los cambios identificados en su inventario de fuentes:
+La ejecución más reciente repite la matriz E2E sobre el commit base `2e999d1`, con una corrección documentada de sincronización en una prueba de asistencias y sin cambiar la lógica del producto:
+
+- [Informe técnico de la repetición E2E](evidencias/verificacion-tecnica/20261029-231235-e2e-final-2e999d1/INFORME_VERIFICACION_TECNICA.md).
+- [Matriz complementaria para la tesis](evidencias/verificacion-tecnica/20261029-231235-e2e-final-2e999d1/MATRIZ_VERIFICACIONES_TESIS.md).
+- [Texto académico propuesto](evidencias/verificacion-tecnica/20261029-231235-e2e-final-2e999d1/RESULTADOS_PARA_TESIS_4_5.md).
+
+La matriz final contiene **249 instancias Playwright aprobadas**, sin omisiones ni reintentos automáticos: 133 públicas, 105 de paneles, siete flujos de alta/pago/asistencia y cuatro límites adaptables. Se conservan dos intentos previos de paneles: 104/105 y 98/105, por una lectura anticipada del DOM y un error de aserción HTTP introducido al corregir el test. Contando las tres ejecuciones completas de paneles se registran 459 ejecuciones de casos, 451 aprobadas y ocho fallidas; ese acumulado no representa casos únicos adicionales. Un intento interrumpido de escritura carece de resultado final y no se cuenta como aprobado.
+
+Las 28 instancias de recuperación de contraseña simulan Auth/REST; los siete flujos de escritura usan servicios reales exclusivamente locales. Una consulta PostgreSQL READ ONLY corroboró siete atletas, siete pagos de 35 y siete asistencias de esos flujos. Se ejecutaron además ocho guardas Node y una nueva compilación web, con denominadores separados. Los informes detallan el aislamiento, las incidencias y las limitaciones. Android y Jest del producto no se repitieron en esta etapa.
+
+## Antecedente Android autenticado y dependencias
+
+La ejecución anterior comprueba Android autenticado y parches de dependencias, sobre el commit base `317e5e3` y los cambios identificados en su inventario de fuentes:
 
 - [Informe técnico complementario](evidencias/verificacion-tecnica/20261029-221208-android-autenticado-317e5e3/INFORME_VERIFICACION_TECNICA.md).
 - [Matriz actualizada de verificaciones](evidencias/verificacion-tecnica/20261029-221208-android-autenticado-317e5e3/MATRIZ_VERIFICACIONES_TESIS.md).
@@ -33,7 +45,7 @@ La ejecución registró 404 casos Jest en 85 suites, 17 pruebas de integración 
 
 ## Conservación y publicación
 
-Los siete expedientes anteriores se conservan sin reescribir. Sus manifiestos registran las huellas de los archivos existentes al cerrar cada ejecución; las fechas y el commit base no se sustituyen por el commit que posteriormente incorpora las evidencias al repositorio. Los registros conservan sus bytes mediante `.gitattributes`.
+Los ocho expedientes anteriores se conservan sin reescribir. Sus manifiestos registran las huellas de los archivos existentes al cerrar cada ejecución; las fechas y el commit base no se sustituyen por el commit que posteriormente incorpora las evidencias al repositorio. Los registros conservan sus bytes mediante `.gitattributes`.
 
 Los APK de depuración permanecen exclusivamente en el equipo de auditoría. Se publican sus metadatos y SHA-256, pero los paquetes están excluidos de Git para respetar la restricción de no distribuirlos. Por tanto, una copia obtenida del repositorio no contiene esos dos archivos referenciados en los manifiestos Android; su comprobación requiere los APK locales originales. Las instantáneas de fuentes reflejan el árbol Windows de cada ejecución, incluidos archivos locales que no necesariamente forman parte de esta publicación, y pueden diferir de un checkout por la normalización de finales de línea de los archivos de código.
 

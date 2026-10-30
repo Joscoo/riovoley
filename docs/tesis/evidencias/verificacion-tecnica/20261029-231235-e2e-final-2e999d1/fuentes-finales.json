@@ -1,0 +1,1934 @@
+[
+  {
+    "file": "package-lock.json",
+    "sha256": "4960d8af74c19bddd9654a5cefee5eed070f0fb852233238e40f150637801966"
+  },
+  {
+    "file": "package.json",
+    "sha256": "5e4b402941bc709886fa7c1b1fcee766841e110f11ccefb30da49525e076d624"
+  },
+  {
+    "file": "playwright.config.js",
+    "sha256": "eba29c053c4d75b55258ed5e1387260b349f43f4e6103502f2dc76164e76e2b2"
+  },
+  {
+    "file": "playwright.local.config.cjs",
+    "sha256": "e3e43b7c72189a68f27b23dad72b0932935f0445386fb0d3b29669e8a98198bf"
+  },
+  {
+    "file": "scripts/e2e/local/README.md",
+    "sha256": "d5a39ce9f7faf41246cdcc53c01cd96e6836ef220755f72f2d617957adbee5ec"
+  },
+  {
+    "file": "scripts/e2e/local/artifacts-fixes.cjs",
+    "sha256": "26439b688bc95db3eb62936c7844a9ca5736d7b390d6c24ea16c71cec94db298"
+  },
+  {
+    "file": "scripts/e2e/local/build.cjs",
+    "sha256": "46b3299327da537a614629879ff141277d97791c1779b970d6d8787025264730"
+  },
+  {
+    "file": "scripts/e2e/local/catalog-snapshot.sql",
+    "sha256": "cf9c154a45dc9c20645e28ea6de2ade74333a8e44f4dd2fabba163b3e1381414"
+  },
+  {
+    "file": "scripts/e2e/local/check-environment-fixes.cjs",
+    "sha256": "c4ebc957bc16e13e32dc90ce3365911cc5ce738fc552f6a03eda385044f7ca8d"
+  },
+  {
+    "file": "scripts/e2e/local/check-fixes.cjs",
+    "sha256": "75129162a135c3341a67da0d9618d4c5a4e37078eb263ca2478772c22b2d911f"
+  },
+  {
+    "file": "scripts/e2e/local/close-fixes.cjs",
+    "sha256": "882c9ba00ecf18414a20ad61e96f9c3d3b706267a6eb02b0b76318d85bf58d6e"
+  },
+  {
+    "file": "scripts/e2e/local/config.toml",
+    "sha256": "befb8cbb9ce1fbabb49d1e7e8b401b366200b3cd871fe232ef95ba9421300fe4"
+  },
+  {
+    "file": "scripts/e2e/local/evidence.cjs",
+    "sha256": "50c06a3566a4a039d9ae89091c89ba27cdf4c913f7f290ffd656fb6146dc13ce"
+  },
+  {
+    "file": "scripts/e2e/local/evidence.test.cjs",
+    "sha256": "9f2893308e3d655f0d16143a00abe6e8ae475a58e757b3151e135a477190ec21"
+  },
+  {
+    "file": "scripts/e2e/local/functions.cjs",
+    "sha256": "2793561e2f8c371fbeb2d5db11f3295cdd0b0da1d56fe07d5fc4111b2e668355"
+  },
+  {
+    "file": "scripts/e2e/local/harness.cjs",
+    "sha256": "b506ff33a7550793b3139acd2726114a4d219a53323e05a894ee3e6e9f027c5c"
+  },
+  {
+    "file": "scripts/e2e/local/idempotency.cjs",
+    "sha256": "be54514e1448a16e817b6e88812cce773084d2afb912146e2769cbbcc53b6b6f"
+  },
+  {
+    "file": "scripts/e2e/local/inspect.cjs",
+    "sha256": "188fb88620c4151c8512ebc9e5d6763c52405f0044184a7e746ee83b33eca45d"
+  },
+  {
+    "file": "scripts/e2e/local/integrity-fixes.cjs",
+    "sha256": "cace8807479bb749447dfefc1ba80968e6c678c5a0f096691f5112778c2c41ed"
+  },
+  {
+    "file": "scripts/e2e/local/integrity.cjs",
+    "sha256": "c9492b66607bd603c8fae9d342073e1dbd269e5c532ba85e0b9f32685e3d29b8"
+  },
+  {
+    "file": "scripts/e2e/local/loopback.cjs",
+    "sha256": "1b26ff102b37eda996fe0d98e2d2d1d272f23637fc7f6330bfc95eabec6e7831"
+  },
+  {
+    "file": "scripts/e2e/local/loopback.test.cjs",
+    "sha256": "86f794d4205a1d58abaf486040c01355cb1c6c3acc6fdf77db31e34c75f8cbed"
+  },
+  {
+    "file": "scripts/e2e/local/manage.cjs",
+    "sha256": "1be6e6b6bb5417b0425f30fff6bb636f5c9c40a44c18bd29cdffac204451a2bd"
+  },
+  {
+    "file": "scripts/e2e/local/persistence-fixes.cjs",
+    "sha256": "896588fe20abd4470ee3667c128c7b695b4c686840b969ef7ff6eab1ba12a4aa"
+  },
+  {
+    "file": "scripts/e2e/local/persistence.cjs",
+    "sha256": "b30cdb81d95fc7b7ae08dab84fcef3c534bff00d896b5b22cd3b2abdc485e74d"
+  },
+  {
+    "file": "scripts/e2e/local/prepare-fixes.cjs",
+    "sha256": "787a0c99e58bf4b0ed94088058d091b17a1befc2f0f8519cdfe7a0daa5a6437f"
+  },
+  {
+    "file": "scripts/e2e/local/privacy.py",
+    "sha256": "358c3c6771d67105541cefc6f7f70f45f39f5b18aae6b22519aa9ed9521974fa"
+  },
+  {
+    "file": "scripts/e2e/local/probe-fixes.cjs",
+    "sha256": "d90483b689ff715f5102e55763e0b3ecbfb7d44c0d968c3f8ad9beecd2ac0ea9"
+  },
+  {
+    "file": "scripts/e2e/local/rebind.cjs",
+    "sha256": "93dd97e2e18a3ccae6627fa33cb477cfb0703a43a5ed747432900b0bfa62dfdd"
+  },
+  {
+    "file": "scripts/e2e/local/report-fixes.cjs",
+    "sha256": "0bc8793bb52218a573f544cf20e39c2e091fee86009b37e38db9486ace8987fd"
+  },
+  {
+    "file": "scripts/e2e/local/report.cjs",
+    "sha256": "370fabe34fec8cff2e1183034f14ad47e6aafc9607ab223674ddd8198d59a650"
+  },
+  {
+    "file": "scripts/e2e/local/results-summary.cjs",
+    "sha256": "cb0e6735cb0a24de6510d3c18c3939a168714630a2f881750c2368085e6ac926"
+  },
+  {
+    "file": "scripts/e2e/local/run.cjs",
+    "sha256": "aa20f4b5f3c3beb0e675fd681fe652f5e9e6bb9d60f58831695836c04cb6c883"
+  },
+  {
+    "file": "scripts/e2e/local/safety.cjs",
+    "sha256": "06f1e9afa7ab7c5923dac3f353c86663ef9d9f9c9df4ee21c7f456252c8d86a4"
+  },
+  {
+    "file": "scripts/e2e/local/safety.test.cjs",
+    "sha256": "277c4402c7fed8af6f9184c30e922d6ce2e34ba61ce0f56b4fa4a67e368245e3"
+  },
+  {
+    "file": "scripts/e2e/local/schema.cjs",
+    "sha256": "e892b2ff02781d613cc0bbc4316f4343a66aabb2511b36711538b139ccab62a4"
+  },
+  {
+    "file": "scripts/e2e/local/schema.test.cjs",
+    "sha256": "94e8cc4c2d1a982b6fc72dc125e14cf15ca29b256c6488f00ba163a8e8973f5e"
+  },
+  {
+    "file": "scripts/e2e/local/seed.cjs",
+    "sha256": "83cbcdb11baa265dbaba54c5e0d34eef6049f6c269b0814923ce563a12905d15"
+  },
+  {
+    "file": "scripts/e2e/local/server.cjs",
+    "sha256": "16637c3433702cede839f248d7424371531d14927c24e723ca31e0b8032006e0"
+  },
+  {
+    "file": "scripts/e2e/local/verify.cjs",
+    "sha256": "1c39e5bff4361d52cbe85e31b8e791f9f7915cfd8745a728892cb7c42deb7a74"
+  },
+  {
+    "file": "scripts/e2e/runRolesSmokeStrict.js",
+    "sha256": "67217be6aa7dd040e27ca717276fa2579ddcc0c7cf9ceaf0c80eb7c5c6fd6111"
+  },
+  {
+    "file": "src/App.js",
+    "sha256": "eb01dedd03f6a3851cf7b2de4f583e9f2f1a8971c8b3a2ed3c07859f18c22edb"
+  },
+  {
+    "file": "src/App.test.js",
+    "sha256": "c7851fe5fdf8c6b12066a13efd73c2da666fd6c5bfa09e01b35abea37f941231"
+  },
+  {
+    "file": "src/Login.js",
+    "sha256": "46a451d99df923605b439076a31d5bd5cad7be3231a8c0c5924c7fafedc2a823"
+  },
+  {
+    "file": "src/assets/logoRiovoley.jpg",
+    "sha256": "a7413d5231b75c8adc2ebacadd5c42accb4d32deec15f7b6ce0f4a303b76d763"
+  },
+  {
+    "file": "src/components/AboutUs.js",
+    "sha256": "bc980f7bf30611cba8be3c6fa4381af57549f7d2b77df3327afb01d3d6be113f"
+  },
+  {
+    "file": "src/components/HomePage.js",
+    "sha256": "cc858751beaf441414f1daa776e6dcdd726f4f41c017ddf9ea3a51d1f60f40ba"
+  },
+  {
+    "file": "src/components/Horarios.js",
+    "sha256": "d22a1f0d148011eebfe09fb89ea9f5176873ad15df86606ec6856868a13875b2"
+  },
+  {
+    "file": "src/components/Navbar.js",
+    "sha256": "e17caaf028d7093ae376d47715a65461fdc8bf70db81002fc867b26a35ae8755"
+  },
+  {
+    "file": "src/config/appUrls.js",
+    "sha256": "4aa05178dba9bc792d2a9ffa3d309b9016aa68c0f0d7d0ee215b6ad8b9a0b622"
+  },
+  {
+    "file": "src/config/appUrls.test.js",
+    "sha256": "e82a9eb7cb28c628053cee212a7062a66059e38773b2719771f3ec152fa2bc96"
+  },
+  {
+    "file": "src/config/googleCalendar.js",
+    "sha256": "103dab52c5f56b35ec3b43a8924c2be70d7d36cbdc23ae3c023c399c54276a76"
+  },
+  {
+    "file": "src/config/supabase.js",
+    "sha256": "859b8d8d6fc72fd40075db5bad80681756092ff4a7de6891cc5314f6ad5963bb"
+  },
+  {
+    "file": "src/contexts/ToastContext.js",
+    "sha256": "160c7b1328fd2cf3aecd97fa5a8478b88fb2a0005070b6353f1bd1f9e7fef60b"
+  },
+  {
+    "file": "src/features/README.md",
+    "sha256": "ed7b7bbe97e37692d7fe450d604e8d471a4186a7793799af20bfdfa37c2a57a7"
+  },
+  {
+    "file": "src/features/_templates/feature/README.md",
+    "sha256": "0e50970e783ea5850fa1f18af9681537947f2f9833ea452b2a1a18f0d8d13428"
+  },
+  {
+    "file": "src/features/account-admin/README.md",
+    "sha256": "b35d6520e243b00024e3dcd9a9a9b57ff0205edca4815c422753667977be761d"
+  },
+  {
+    "file": "src/features/account-admin/accountAdminService.js",
+    "sha256": "dd8c97da70eb44409ff50eae1e607b11bdcde889774978fb52a7935a97bae635"
+  },
+  {
+    "file": "src/features/account-admin/application/useCases/createAccountAdminUseCases.js",
+    "sha256": "40005e26e616f34a1213941c6b71edc11906399255297d2b679dba050c1ae11c"
+  },
+  {
+    "file": "src/features/account-admin/application/useCases/createAccountAdminUseCases.test.js",
+    "sha256": "db3471a734f2079178c1f2a27a7717d3e26be275d5a1384eda8e9ef94b6880f0"
+  },
+  {
+    "file": "src/features/account-admin/domain/accountAdminError.js",
+    "sha256": "3ef2c53cbe060b9b4b8229166b29111e4f0b2027fe8c72248b6d052f9f519f00"
+  },
+  {
+    "file": "src/features/account-admin/index.js",
+    "sha256": "7599f87f51a643d73fad70043239deac47df34572ef2e67c4b5bd756bf0531cd"
+  },
+  {
+    "file": "src/features/account-admin/infrastructure/repositories/supabaseAccountAdminRepository.js",
+    "sha256": "58e0b98636edf10d8724c219d184eb7f19def91992a741dce1f3fda4fac7d1d4"
+  },
+  {
+    "file": "src/features/account-admin/infrastructure/repositories/supabaseAccountAdminRepository.password.test.js",
+    "sha256": "0642798e763d8561e325651cf49a2f02cb93c0a786f3d85e610b908b491d0737"
+  },
+  {
+    "file": "src/features/account-admin/presentation/components/ProfileSettings.js",
+    "sha256": "1e9cc915a36616927a229026555668df9041591d55d16e119a0542e154c9cec4"
+  },
+  {
+    "file": "src/features/account-admin/presentation/components/UsuariosManager.js",
+    "sha256": "e6355aa8641a30c4c7f85a877d41b0854e6f42768c18957495e667e0a4cad5f5"
+  },
+  {
+    "file": "src/features/account-admin/presentation/createAccountAdminService.js",
+    "sha256": "46ebce2103eecbb0be9c13483c5e7e544e6b1af46a2e2910e5f30a85a7c4a0c5"
+  },
+  {
+    "file": "src/features/account-admin/presentation/createAccountAdminService.test.js",
+    "sha256": "cb769786b4e2c14b624e188d08f6dcb95997ddb720f205af612ef95455bf6c8b"
+  },
+  {
+    "file": "src/features/admin-dashboard/README.md",
+    "sha256": "373ef90a9634303cdcac9f90c0996e2c917aa588b1a01b4ff4198f93d1be680a"
+  },
+  {
+    "file": "src/features/admin-dashboard/adminDashboardService.js",
+    "sha256": "c38d2b50284d57f2c7351c9c79c1c22257ebfa5fa49f929f188d7a549d827328"
+  },
+  {
+    "file": "src/features/admin-dashboard/application/useCases/createAdminDashboardUseCases.js",
+    "sha256": "4110690ffaa29c623565cef7c48af40684348c7115991a6929f94cae6c02b394"
+  },
+  {
+    "file": "src/features/admin-dashboard/application/useCases/createAdminDashboardUseCases.test.js",
+    "sha256": "2070a5f6f16f7b90139c25f9cc0e80ae38c6648c5903c2fd90a982f266c612f2"
+  },
+  {
+    "file": "src/features/admin-dashboard/domain/adminDashboardError.js",
+    "sha256": "dd9c04e8ac8e87c42ee5f8293d97dba0c2c41a09d9552963df86725ffad12869"
+  },
+  {
+    "file": "src/features/admin-dashboard/index.js",
+    "sha256": "be5beb0502d7aefc522341259d477445c7f7b1c1359a82b33edf6d8b01d54910"
+  },
+  {
+    "file": "src/features/admin-dashboard/infrastructure/repositories/supabaseAdminDashboardRepository.js",
+    "sha256": "d183dfc9ff7c2d775df102be875d10bb576e5bef92c9d5d40f66de7a0720003a"
+  },
+  {
+    "file": "src/features/admin-dashboard/presentation/components/AdminPanel.js",
+    "sha256": "aa64c8b82f43dfd3181f9c9bc86e85badc428266b37f5e6b88193daf124208cc"
+  },
+  {
+    "file": "src/features/admin-dashboard/presentation/components/Dashboard.js",
+    "sha256": "8b5e9ec6ad9147b97c90767cd6d4030d5662a6daa61c0d26f6fd9a4e47dc13eb"
+  },
+  {
+    "file": "src/features/admin-dashboard/presentation/components/FinancialReview.js",
+    "sha256": "c96a3b407a4973657b2865531aee78bb195563e7f72da0c2190174ab27e68778"
+  },
+  {
+    "file": "src/features/admin-dashboard/presentation/components/ReportsCenter.js",
+    "sha256": "47fd96527f36a20a9aaa42e0c3fde0e793b1fb62cb09c86f647d2d8d43c13592"
+  },
+  {
+    "file": "src/features/admin-dashboard/presentation/createAdminDashboardService.js",
+    "sha256": "5edf9e4ec5fc54b2118e390a0b3bf1846927ad08ef08707f8868b208d0538103"
+  },
+  {
+    "file": "src/features/admin-dashboard/presentation/createAdminDashboardService.test.js",
+    "sha256": "0d93712a1475b35eb2cd4c466aa8f303e6189cefb1f927813f8d918a5f9599d0"
+  },
+  {
+    "file": "src/features/announcements/README.md",
+    "sha256": "52383445880414324579e12a6261a677649553f6294dc93af5105386a27d181e"
+  },
+  {
+    "file": "src/features/announcements/announcementsService.js",
+    "sha256": "1730d0ce2d12e33418a80fb36bc8b9d0f10c3f0277c345809c1579941ea126f3"
+  },
+  {
+    "file": "src/features/announcements/application/useCases/createAnnouncementsUseCases.js",
+    "sha256": "45db0faed0c55686802d3bdc7577ffe827b5aea049192ef3f5d5fa8dc50814ae"
+  },
+  {
+    "file": "src/features/announcements/application/useCases/createAnnouncementsUseCases.test.js",
+    "sha256": "e46b7f21a86943a74fbf31adb2658e97dd752ed8688f8052ef1c75a5b40437bd"
+  },
+  {
+    "file": "src/features/announcements/domain/announcementsError.js",
+    "sha256": "5b0c443865351f5e8689d4916da0e7f37f651e4433078d7549a319555ecabc63"
+  },
+  {
+    "file": "src/features/announcements/index.js",
+    "sha256": "f42069c52fec7b5d00690edbb6c2a7138937ee1b7d4dca1d3e7c291e1a4fad07"
+  },
+  {
+    "file": "src/features/announcements/infrastructure/repositories/supabaseAnnouncementsRepository.js",
+    "sha256": "cdd4298bde8bcb187c41a083c41c41c5f838f1ba871d0d75f823e180e62bc7b6"
+  },
+  {
+    "file": "src/features/announcements/presentation/components/AnunciosManager.js",
+    "sha256": "50317a465344e3f45f3add49d9d3cd8e59aed23cd36f009dae2a88ac22ad2d3e"
+  },
+  {
+    "file": "src/features/announcements/presentation/components/AnunciosViewer.js",
+    "sha256": "3f766bdc59b014bb84c6a18fe5f5b67b74b9023f745503e4f5c1feabd05b10f9"
+  },
+  {
+    "file": "src/features/announcements/presentation/components/shared/AnnouncementDeleteConfirmModal.js",
+    "sha256": "ec251cbebc0dc42981c713d7a186882e05aaecd6319fdadafc95412ff892c767"
+  },
+  {
+    "file": "src/features/announcements/presentation/createAnnouncementsService.js",
+    "sha256": "5402ac3ed794c88eee7481f3dfddacfb56401a331b3565310c15facd95287f56"
+  },
+  {
+    "file": "src/features/announcements/presentation/createAnnouncementsService.test.js",
+    "sha256": "43b38ba028bf4812e88d68d2494915c1dea031cdc20efe796331876c2b348578"
+  },
+  {
+    "file": "src/features/announcements/presentation/hooks/useAnnouncementsManager.js",
+    "sha256": "57517d36402e4b718fb142d78ae6d26f26461ff6220bb7289894bff08fadbd5f"
+  },
+  {
+    "file": "src/features/athletes/README.md",
+    "sha256": "3e6a0063d6e829efba5d39a04d4184ceb6c63bcd3f63b8827328664eb5cf55c2"
+  },
+  {
+    "file": "src/features/athletes/application/useCases/createAthletesUseCases.js",
+    "sha256": "459dbe5435067a819a3fed866f19cbcb96932aa5389f053705b879c5affcb9d6"
+  },
+  {
+    "file": "src/features/athletes/application/useCases/createAthletesUseCases.test.js",
+    "sha256": "df07e03b1ce2f2287801eb254db856923c5ac5cd08c10691f787a0374e93d4f8"
+  },
+  {
+    "file": "src/features/athletes/athletesService.js",
+    "sha256": "6d307fbc4081db8e0bb4e3d5d01693af21e77fd5e98052582aedcf48f4dbd5e4"
+  },
+  {
+    "file": "src/features/athletes/domain/athletesError.js",
+    "sha256": "6700a1c95122de9e5c7e3589c10fc3116f86becad6082ea5790cf324a24e6dad"
+  },
+  {
+    "file": "src/features/athletes/index.js",
+    "sha256": "a445b5dace35a47d46ab89a011034a94081966846c1cede72c763c842ef2877c"
+  },
+  {
+    "file": "src/features/athletes/infrastructure/repositories/supabaseAthletesRepository.js",
+    "sha256": "e8cb33626e751c1b604101475e39b871594e844112756e3c75d93be171b8c6e4"
+  },
+  {
+    "file": "src/features/athletes/presentation/components/AtletasManager.js",
+    "sha256": "3c4eb665ed6d60ffd20857bee3aba7f69aae83e36c262c2524eee752caa70e2c"
+  },
+  {
+    "file": "src/features/athletes/presentation/components/shared/ActionConfirmModal.js",
+    "sha256": "2e22989718e46794aaa84ed0962775ddfd8cb8685617bc792b98f38c5bfa37b3"
+  },
+  {
+    "file": "src/features/athletes/presentation/components/shared/ActionResultModal.js",
+    "sha256": "970cc3ec89f2e16769b04ec858da499ff4d605bf80a2d0a5b2cda9e3dcbf16a8"
+  },
+  {
+    "file": "src/features/athletes/presentation/createAthletesService.js",
+    "sha256": "33db577427b1f03e18d750cdd9e80c734e01d0a998b93ea6d63c24390539973c"
+  },
+  {
+    "file": "src/features/athletes/presentation/createAthletesService.test.js",
+    "sha256": "70196e970072ac5b9a824ce8a4f489d4600e64eb7e2c5a3d5d8bcb99ca110176"
+  },
+  {
+    "file": "src/features/athletes/presentation/hooks/useAthleteCredentials.js",
+    "sha256": "ddbc3e7e956ba89d5845dc93187373678647ded935f6ae7d68fda779a94b5676"
+  },
+  {
+    "file": "src/features/athletes/presentation/hooks/useAtletasManager.js",
+    "sha256": "132566cb4489b133d9b31ada5febd9a06371d91f08b890e9f72865fcbc66fca0"
+  },
+  {
+    "file": "src/features/attendance/README.md",
+    "sha256": "1632b60880c26a2c947f972a8ccb4b28378444d839d12807eb8921b4af259ae1"
+  },
+  {
+    "file": "src/features/attendance/application/useCases/createAttendanceUseCases.js",
+    "sha256": "2087d4af2b0512e4480bffc758b95e9c8d9bc7d8f3fb232917c8fea075ed7384"
+  },
+  {
+    "file": "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+    "sha256": "a074a63370e0e9708663041f14061fdd29ceaa279be6f347c8b897ae45565de4"
+  },
+  {
+    "file": "src/features/attendance/attendanceService.js",
+    "sha256": "4fddbedc9a6f65d4d74bc9128499fa49901789c0ef5ff8e7b8cbe74a40912917"
+  },
+  {
+    "file": "src/features/attendance/domain/attendanceError.js",
+    "sha256": "71a0e950afcbfdcc59602c6c0a32c14394f4cd32aecf970bc60b69050cdc23d9"
+  },
+  {
+    "file": "src/features/attendance/index.js",
+    "sha256": "4ea2e019b492901ca29dc6cc5aaf5fa2e595198d96f85e8f879bd02aeb3157e3"
+  },
+  {
+    "file": "src/features/attendance/infrastructure/repositories/supabaseAttendanceRepository.js",
+    "sha256": "c0787ac1d940bd4f34ceff54fa18c9dc2dc875c53c32e6bf355a44a4ae322a14"
+  },
+  {
+    "file": "src/features/attendance/infrastructure/repositories/supabaseAttendanceRepository.test.js",
+    "sha256": "acd00623781472c3f38838eebdb53b23574a7788f6aa6fc2b3083445496c414a"
+  },
+  {
+    "file": "src/features/attendance/presentation/components/AsistenciasManager.js",
+    "sha256": "a1e12d104b8aa6f0eb282ce6ba35ad54bc5e39d89a0655990a36906977c99722"
+  },
+  {
+    "file": "src/features/attendance/presentation/createAttendanceService.js",
+    "sha256": "2b0ec91594fb4af3381b3a1e1e1721ecae5e4eb3b426f31c39e58fa4945b3992"
+  },
+  {
+    "file": "src/features/attendance/presentation/createAttendanceService.test.js",
+    "sha256": "fd053ae2ce46e874ba7ea49addcfc4f9ae9a51f063f4c3e3a86d1102487ef05c"
+  },
+  {
+    "file": "src/features/auth-profile/README.md",
+    "sha256": "2697e4ae2c36319882003c78fb3922afed574562e05a68bd4a80e4a00567055f"
+  },
+  {
+    "file": "src/features/auth-profile/application/useCases/loadUserProfileUseCase.js",
+    "sha256": "2c75dc2d3cb1017c0ebe0c03a402bc61c36ec40264e4d6cf1a7561e163102c12"
+  },
+  {
+    "file": "src/features/auth-profile/application/useCases/loadUserProfileUseCase.test.js",
+    "sha256": "971a2091e797deb372615bc51894e9ae4832010c6b0464e63d26421f0d1064e8"
+  },
+  {
+    "file": "src/features/auth-profile/authProfileService.js",
+    "sha256": "a3c548b57d8d4c857b1af5f01a979b8a326b549afdfefa655237fd4369dc3db6"
+  },
+  {
+    "file": "src/features/auth-profile/domain/authProfileError.js",
+    "sha256": "123036436e0cc152e07461f72b666c35db164b00551e5ff7bc1f67343c2d2e66"
+  },
+  {
+    "file": "src/features/auth-profile/index.js",
+    "sha256": "5a826aa6277c5ea6ae09acaba9ac1c43e8e0f36d862ecf62e2bebf9f3708b4c8"
+  },
+  {
+    "file": "src/features/auth-profile/infrastructure/repositories/supabaseAuthProfileRepository.js",
+    "sha256": "7cb846ecdb040f4b997f927f5f36187cf1eedd87e5799de2f06eac75e1bad03d"
+  },
+  {
+    "file": "src/features/auth-profile/presentation/createAuthProfileService.js",
+    "sha256": "203bf63eb2dfc5269035a69635291a0a1e9a5437373f7319cbaaf2fe582c9e9c"
+  },
+  {
+    "file": "src/features/auth-profile/presentation/createAuthProfileService.test.js",
+    "sha256": "5a2cff9ce6bd5c681abadd117ca1d736ea5403f8ce4bdb0453b003f6e411cf97"
+  },
+  {
+    "file": "src/features/auth-profile/presentation/hooks/useUserProfile.js",
+    "sha256": "88766c3f17588ad5531de30a6c34c223ba13ea25450faf15a3bb63ec3498156d"
+  },
+  {
+    "file": "src/features/auth-session/README.md",
+    "sha256": "d2b241a99821994b395e94adb28b9ad61b1ad359534cfa98da81da5a27956f90"
+  },
+  {
+    "file": "src/features/auth-session/application/useCases/createAuthSessionUseCases.js",
+    "sha256": "341497f1ab7bbbf8dbe796cc4905b25f61c571bdaaa707c7eeddb47f89673821"
+  },
+  {
+    "file": "src/features/auth-session/application/useCases/createAuthSessionUseCases.test.js",
+    "sha256": "44eb9a3b3429f81f94883a7ab878853c2be3b051a3624f09be818f97bbd118a0"
+  },
+  {
+    "file": "src/features/auth-session/authSessionService.js",
+    "sha256": "4b718c5c93bc3e945221cb57df2a7e7f4cd8b91c82bebff297cb5d9bdd010fdc"
+  },
+  {
+    "file": "src/features/auth-session/domain/authSessionError.js",
+    "sha256": "624f788df022d1c794d1fc91c6570996ad6da3e593ffe2f86cdcc2efe740dcc0"
+  },
+  {
+    "file": "src/features/auth-session/index.js",
+    "sha256": "d0ec04aac2a3de33d7964fc5fbb9677b91dc784cb6d798264fd884cc30e6516b"
+  },
+  {
+    "file": "src/features/auth-session/infrastructure/repositories/supabaseAuthSessionRepository.js",
+    "sha256": "a6f8acfb3b4b232fd08c78ff724cfa31704c3778a5dfe747915e63ddd512bf7f"
+  },
+  {
+    "file": "src/features/auth-session/presentation/components/ChangePasswordModal.js",
+    "sha256": "576a7d8b192619979f3ea737011be94c91fb81e099c84d1d2f591802e11caf08"
+  },
+  {
+    "file": "src/features/auth-session/presentation/components/ChangePasswordModal.password.test.js",
+    "sha256": "ffd39090555e629b41d10b4e105f6f0d5aab2fc7b1a422fb6c9528dd3e445a9f"
+  },
+  {
+    "file": "src/features/auth-session/presentation/components/Login.auth-events.test.js",
+    "sha256": "4b1f4cd345546bde042adc61fb48e7b7823f8b37a93eca29492f4a2a3a8408cc"
+  },
+  {
+    "file": "src/features/auth-session/presentation/components/Login.js",
+    "sha256": "4b8f6bbf1837014520de5ec8fda6915614b9558841515820ab9985d36869cf52"
+  },
+  {
+    "file": "src/features/auth-session/presentation/components/ResetPassword.js",
+    "sha256": "ef8e24db1b13717cf90f4657c3385aa253130876490363ad295890a51c12c1a7"
+  },
+  {
+    "file": "src/features/auth-session/presentation/components/ResetPassword.recovery.test.js",
+    "sha256": "fe77ca33acf494fecddc9d68f919d8b1d549068397deeda229da2776d3efb866"
+  },
+  {
+    "file": "src/features/auth-session/presentation/createAuthSessionService.js",
+    "sha256": "3023ac00bab2a2864a6a67c38654c599653b8d50dc002d4ce7403a7e8d7680ee"
+  },
+  {
+    "file": "src/features/auth-session/presentation/createAuthSessionService.test.js",
+    "sha256": "8bf7a72425bffd7a9f64f976efbfb8a9db40d53eecac5daf208be755f309f910"
+  },
+  {
+    "file": "src/features/auth-session/presentation/utils/deferAuthEvent.js",
+    "sha256": "b31fc243dce359e73c0bbef2b0deb476143138687feb0d5dc01f127892ba6ef9"
+  },
+  {
+    "file": "src/features/auth-session/presentation/utils/deferAuthEvent.test.js",
+    "sha256": "917258b3bfc1a803d26236715928361cb461e4b27fe162891bbae77f92710f75"
+  },
+  {
+    "file": "src/features/communications/README.md",
+    "sha256": "4885c1a666bdc67e987f43001bb7e00ee16a34673a51639c093b5bc415c44e9e"
+  },
+  {
+    "file": "src/features/communications/application/useCases/createCommunicationsUseCases.js",
+    "sha256": "331797b56bde593dd8ee56ecc3b29e8f354b5fdee30e382d26968a6eb9509c69"
+  },
+  {
+    "file": "src/features/communications/application/useCases/createCommunicationsUseCases.test.js",
+    "sha256": "ccbca6e7a99c47d87646d56a367890978d7f4be76eb261c8c31effcb9b634b60"
+  },
+  {
+    "file": "src/features/communications/communicationsService.js",
+    "sha256": "720043ebdfd08ed199070f4a89f522a9b1594aceada97fe5b10b6442753fbbd3"
+  },
+  {
+    "file": "src/features/communications/domain/communicationsError.js",
+    "sha256": "4cb4d09025f53f7bc12e5ae591366806388ac365f87218227170a417cfb87af4"
+  },
+  {
+    "file": "src/features/communications/index.js",
+    "sha256": "6d23aeebf6cfd2a377f71afe7fecf947c1a40212d4063e6c605d555f7652161c"
+  },
+  {
+    "file": "src/features/communications/infrastructure/repositories/supabaseCommunicationsRepository.js",
+    "sha256": "2fe3585c456c74a444984986a8589f07f3f206837c706c35aee8daca6e37bb48"
+  },
+  {
+    "file": "src/features/communications/infrastructure/repositories/supabaseCommunicationsRepository.test.js",
+    "sha256": "980386d276eff4832e0e7ed9d9f1f4207ba68255c60936a019e0c1b9667ac050"
+  },
+  {
+    "file": "src/features/communications/presentation/createCommunicationsService.js",
+    "sha256": "a4bc573a375c5a330f5672d8bc87e5aca530c3bb3ce4ba353541b02706452206"
+  },
+  {
+    "file": "src/features/communications/presentation/createCommunicationsService.test.js",
+    "sha256": "3e07f598d5418e470c269d3d1d4be707d39c4dbf250407fc7fe1db21ae1b8b51"
+  },
+  {
+    "file": "src/features/gamification/README.md",
+    "sha256": "4b7dd62d6977436877aad8150f8cf7590c4bd10d65708b31e65f65de4de912e5"
+  },
+  {
+    "file": "src/features/gamification/application/useCases/createGamificationAdminUseCases.js",
+    "sha256": "b256869f7373a0ec588f23d2da9224f0a8668232beb2659c63a5b3b79b444c83"
+  },
+  {
+    "file": "src/features/gamification/application/useCases/createGamificationAdminUseCases.test.js",
+    "sha256": "50eeabe565adaa5651ece6704c5120ef0d9b08d262ea18133cbefb60fbe22f88"
+  },
+  {
+    "file": "src/features/gamification/application/useCases/createGamificationFoundationUseCases.js",
+    "sha256": "792fd6870787cff77548d9e4ef46edeadf9f3766fc3c8e5a2afb7c31b0faf871"
+  },
+  {
+    "file": "src/features/gamification/application/useCases/createGamificationFoundationUseCases.test.js",
+    "sha256": "5ca151f79d084b51a4af1ba5b4ba21daecc50ebde19cc64389e0520e6427da88"
+  },
+  {
+    "file": "src/features/gamification/application/useCases/createGamificationUseCases.js",
+    "sha256": "0184dd06409611199172e97f1c996b896982e0979929aaec3d3da1cbd1af87af"
+  },
+  {
+    "file": "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+    "sha256": "e830b3d98cd3b273cf73c698cf6b463f664dd7b1a5699eec966f14f3423ba841"
+  },
+  {
+    "file": "src/features/gamification/application/useCases/gamification.audit.integration.test.js",
+    "sha256": "08b42fca66d8bf2feb0fd2423ef754d4abb5c03088f838d4326257ea0ec4a64f"
+  },
+  {
+    "file": "src/features/gamification/domain/avatarCatalog.js",
+    "sha256": "27090a35be5e41934aad983f85186981aec5570d0322bdac8b7c939a2dc0eca5"
+  },
+  {
+    "file": "src/features/gamification/domain/buildAvatarUrl.js",
+    "sha256": "390608acbdf2cb17cdeee6aab6154ac21baf0c31fbb8e7c2f08aa68b32c89eba"
+  },
+  {
+    "file": "src/features/gamification/domain/gamificationError.js",
+    "sha256": "5d78653e0e5d06a457c49d91e5ff334853a8b5294f8a9e2ff57d9bb41ccefb59"
+  },
+  {
+    "file": "src/features/gamification/gamificationAdminService.js",
+    "sha256": "5689d38388906f1da47496cf30cd6df142bf1d9a24e39346bf4cd2fbf899de20"
+  },
+  {
+    "file": "src/features/gamification/gamificationService.js",
+    "sha256": "c286e42449236dec7f92defa4dc18bdfc34a260342412677ef3cfa9b7be199dc"
+  },
+  {
+    "file": "src/features/gamification/index.js",
+    "sha256": "1edc66e393ff5296d3b3dbd8bf8faa7df1c80e8bc26b2e727720a114d7ec9212"
+  },
+  {
+    "file": "src/features/gamification/infrastructure/repositories/security.contract.test.js",
+    "sha256": "2f52f0be2ec5036be0c7e338f53f18661d445e0b82328ad65368b2b6c6c2b914"
+  },
+  {
+    "file": "src/features/gamification/infrastructure/repositories/supabaseGamificationRepository.js",
+    "sha256": "2479ac951732209c1c30f34db08b883f8f05b3d216dbabd7d115c48c5ec6e7b3"
+  },
+  {
+    "file": "src/features/gamification/infrastructure/repositories/supabaseGamificationRepository.test.js",
+    "sha256": "4369ec344ab341cd5797f2d08a1801e89d626cde462679a2c44d3f33929ce0bb"
+  },
+  {
+    "file": "src/features/gamification/presentation/components/CategoryLeaderboardsPanel.js",
+    "sha256": "487332ead802ac3e892bd41ac925ff96de3c6d15b7f01b65bf38781a5d7cb1f9"
+  },
+  {
+    "file": "src/features/gamification/presentation/components/GamificationAdminPanel.js",
+    "sha256": "63bb8b8a4dfad299b849ca63eee5f96d9b4d022cca20452083dbb9b1490306a8"
+  },
+  {
+    "file": "src/features/gamification/presentation/components/GamificationAdminPanel.test.js",
+    "sha256": "6f9d99544ec80da0afc4e07f8b05df02538969eb4c53dd8ef3e1c260a93fc27c"
+  },
+  {
+    "file": "src/features/gamification/presentation/components/IdentityPortrait.js",
+    "sha256": "8c19838b551f2b1522f1fc7a05581d568cf1e31b6375f69732d785bc4278b991"
+  },
+  {
+    "file": "src/features/gamification/presentation/components/IdentityPortrait.test.js",
+    "sha256": "361dac9a82a27fc11f85dd47361a1bf282566affcca91c4763bade9328bfefb6"
+  },
+  {
+    "file": "src/features/gamification/presentation/components/StudentGamificationPanel.js",
+    "sha256": "c38cfa4812a3c5ce6a21b5913e99bc84f7d7a33f8b19f023189a9ffdcfd56bdc"
+  },
+  {
+    "file": "src/features/gamification/presentation/components/StudentGamificationPanel.test.js",
+    "sha256": "61d9a8df7dec9e12064684ab81cc17e46deb3f114ecfbd419f1fae1ccab83a7e"
+  },
+  {
+    "file": "src/features/gamification/presentation/components/cosmeticVisuals.js",
+    "sha256": "2290abdd3d5fc838bf82d0d7ca92a8f7056edbe60fb2ea94dbd745dcd49134f3"
+  },
+  {
+    "file": "src/features/gamification/presentation/components/cosmeticVisuals.test.js",
+    "sha256": "83e2fe3f48509fb4e0be9a23f07f8c14eb9446558c408c44e5915a902d823d4c"
+  },
+  {
+    "file": "src/features/gamification/presentation/createGamificationAdminService.js",
+    "sha256": "50d171a1c4f01421decbf543e1d6aa582fd4b27c8d879750f2f920cf586443d0"
+  },
+  {
+    "file": "src/features/gamification/presentation/createGamificationService.js",
+    "sha256": "09c5f730e31e88327fa8bdf1d1e2ac04cd06422075ad70011f2c6c9141dc92e8"
+  },
+  {
+    "file": "src/features/gamification/presentation/createGamificationService.test.js",
+    "sha256": "56215b3b37f2a8f2daa6de1fc21db80c95393437f1a22adc211a0ff92d071f52"
+  },
+  {
+    "file": "src/features/notifications/README.md",
+    "sha256": "3427ae5fcff89d656cd8f74bf54f9612977c6f36adda0056a68036b36974dfea"
+  },
+  {
+    "file": "src/features/notifications/application/useCases/createNotificationsUseCases.js",
+    "sha256": "de39f44780dcd543872023e6b5406b4abbbff758747ae1c62448cbd6fa29945f"
+  },
+  {
+    "file": "src/features/notifications/application/useCases/createNotificationsUseCases.test.js",
+    "sha256": "725c189ae7dc6aab8a0551797054bf1c773e567c41300f97c89914d9bcaafff4"
+  },
+  {
+    "file": "src/features/notifications/domain/notificationsError.js",
+    "sha256": "4fcc0f7379538f64f1130066304d52b369aff4832fc9dfcfd663b40cbd3294d4"
+  },
+  {
+    "file": "src/features/notifications/index.js",
+    "sha256": "f4e5c6ae6f966de3bd179a6985d9a935b6a304946cc040f216b6ca33ea233087"
+  },
+  {
+    "file": "src/features/notifications/infrastructure/repositories/supabaseNotificationsRepository.js",
+    "sha256": "b9bcdce337a1d4e9b660e03343aea1b27b5a9009975409f325f457bcfc7301de"
+  },
+  {
+    "file": "src/features/notifications/infrastructure/repositories/supabaseNotificationsRepository.test.js",
+    "sha256": "7ad50a61307a92089966a4bcbe6b15e9a8d6a1d4cefa461f8831bf4ea4c9da64"
+  },
+  {
+    "file": "src/features/notifications/notificationsService.js",
+    "sha256": "ea5ba108fc7a90d46255cdecf446c1ccf18cabb383fd28f330df5d0af5309423"
+  },
+  {
+    "file": "src/features/notifications/presentation/components/NotificacionesPagos.js",
+    "sha256": "08b5a43594b8d49be42675a8bc5a077e5a1371f6f2e7cc666423bf641316ed4e"
+  },
+  {
+    "file": "src/features/notifications/presentation/components/NotificationBell.access.test.js",
+    "sha256": "927dd0263b9ebe1e8d4a8b13e13a6513f8b73a08a433ddb3af8a54e187c2dc4c"
+  },
+  {
+    "file": "src/features/notifications/presentation/components/NotificationBell.js",
+    "sha256": "3b6f9cd82e09c6ca32e7530110f1c56365f8abc6c4218868ce7af8f573c01083"
+  },
+  {
+    "file": "src/features/notifications/presentation/createNotificationsService.js",
+    "sha256": "c1fb0523d1809fbd49766daa2766e67f4b62e40092472bbdac37040547c8b1bb"
+  },
+  {
+    "file": "src/features/notifications/presentation/createNotificationsService.test.js",
+    "sha256": "79870b4d0951e4f5d680c6381415ac86216d94c061fd48c04879e4cbc469a920"
+  },
+  {
+    "file": "src/features/payments/README.md",
+    "sha256": "85e5439f09bed3111adc4f05e2e44fb0763f74e832c61a95e890882a47a278c7"
+  },
+  {
+    "file": "src/features/payments/application/useCases/createPaymentsUseCases.js",
+    "sha256": "657892aaa50935138d7d4b5d1bc76b51793812adefda59c023eb220e43accfa5"
+  },
+  {
+    "file": "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+    "sha256": "961b1f17be77e5a551b76a5216d516ac7c12a103d2dc13a2aad336d5da7f7fec"
+  },
+  {
+    "file": "src/features/payments/domain/paymentsError.js",
+    "sha256": "506baddfeb1aa7f5bd73995ba0058e28b913c5b688235df33a4ca18f1f8217bd"
+  },
+  {
+    "file": "src/features/payments/index.js",
+    "sha256": "d4d6fe026f9dcecda6389d81f2d7de017252400c7d71b3c6c374d7ea99e03f8e"
+  },
+  {
+    "file": "src/features/payments/infrastructure/repositories/supabasePaymentsRepository.js",
+    "sha256": "ee6391af8cbab4d65b7b0c30e889f58317696b3f9057fab575eb0190d3e226ce"
+  },
+  {
+    "file": "src/features/payments/infrastructure/repositories/supabasePaymentsRepository.test.js",
+    "sha256": "1cfd4580cc7ae4f99bedf4c588ed01c3a5e98051b7fe38b4f8c0f972793527c1"
+  },
+  {
+    "file": "src/features/payments/paymentsService.js",
+    "sha256": "2fb624399a204197f140ec7af589aedd56ea2ee6a7afbc78d4f8fda30e392b18"
+  },
+  {
+    "file": "src/features/payments/presentation/components/PagosManager.js",
+    "sha256": "75538915e903fa03b00e9c2eec68d55ccd8d6d31db2ceb8cc68619e5e2fc2410"
+  },
+  {
+    "file": "src/features/payments/presentation/createPaymentsService.js",
+    "sha256": "187632ff7bb44615c8edbc8926be14f31f61a9f0ba8c1232fef8e0efb13f83fb"
+  },
+  {
+    "file": "src/features/payments/presentation/createPaymentsService.test.js",
+    "sha256": "62de88a86c9ad7e22bac43e92f065889e5c42e3de42974f7a0351c7003d9f9f4"
+  },
+  {
+    "file": "src/features/physical-tests/README.md",
+    "sha256": "f0fbe142d9f6897db27267a8c887fb0909e2a12b1b7e61c850a59b7a8ca2071a"
+  },
+  {
+    "file": "src/features/physical-tests/application/useCases/createPhysicalTestsUseCases.js",
+    "sha256": "9bed9f18a90dac4f16e0cde58e4a2e3e4d3f7d4c57399351c05f1ebde3d65ce7"
+  },
+  {
+    "file": "src/features/physical-tests/application/useCases/createPhysicalTestsUseCases.test.js",
+    "sha256": "9892538133fc299a62c5e59690ae883706e23b22fa2d3d536471c636d4a09c23"
+  },
+  {
+    "file": "src/features/physical-tests/domain/physicalTestFieldMetadata.js",
+    "sha256": "4f91c369371c85fa8b9d9d9df85f1f8065d08df39fb274ed6895f52cf82a1e7d"
+  },
+  {
+    "file": "src/features/physical-tests/domain/physicalTestsError.js",
+    "sha256": "019ff8ff9af8b2360d2f33796c153fd8863ca577d41dfb2b7a83cf870b87550c"
+  },
+  {
+    "file": "src/features/physical-tests/index.js",
+    "sha256": "a7fa5b7fd968096679b361283817047fc483ee307712b23efdf0f72543c63e4d"
+  },
+  {
+    "file": "src/features/physical-tests/infrastructure/repositories/supabasePhysicalTestsRepository.js",
+    "sha256": "64c6e56cbcf244d443ee9dee4bb09d58c4cf05806ecb30d999a75ec11b6284a0"
+  },
+  {
+    "file": "src/features/physical-tests/physicalTestsService.js",
+    "sha256": "97bf9d18a72015da8aa289c9684c17f1560ba1abda01028b2442504cd9fa9a1e"
+  },
+  {
+    "file": "src/features/physical-tests/presentation/components/TestsFisicosManager.js",
+    "sha256": "28ec367633d850774da5eba57f9db1c1c7d6d8425378390faf6461f6cb3ae83d"
+  },
+  {
+    "file": "src/features/physical-tests/presentation/components/shared/PhysicalTestChart.js",
+    "sha256": "735a47e4f602b4c9da283e29c66b6a5c3db1acceed03bb74f3a4ed6da3fe7e03"
+  },
+  {
+    "file": "src/features/physical-tests/presentation/createPhysicalTestsService.js",
+    "sha256": "31e4738421bc346041f9ba545cc0f33a8728775f5b8cee21592f75b60e2fd369"
+  },
+  {
+    "file": "src/features/physical-tests/presentation/createPhysicalTestsService.test.js",
+    "sha256": "77011030f2d3e24f256c80b280097d9d4b7545a69ca0e6245578ad2028fc02bf"
+  },
+  {
+    "file": "src/features/reporting/application/contracts/reportingRepositoryContract.js",
+    "sha256": "6bd35f9a905dd4903275d2020ce594fc6448a312f952e2c2e1c432c7e76a40cc"
+  },
+  {
+    "file": "src/features/reporting/application/useCases/deleteRunUseCase.js",
+    "sha256": "77b50e972bee2c8b274fcd1c19cc7ca6268d38b8c589bffc12fb34ecfff32204"
+  },
+  {
+    "file": "src/features/reporting/application/useCases/downloadFromSignedUrlUseCase.js",
+    "sha256": "e8eb2bb2d8724fb23df8af3979f5e8f0298635a3aafc23036df476a40f51c62b"
+  },
+  {
+    "file": "src/features/reporting/application/useCases/ensureDailyAttendanceReportUseCase.js",
+    "sha256": "9401e908909fb6182c17092fde317f4e5f7094e5059b34d9bf9d221ed248f9f9"
+  },
+  {
+    "file": "src/features/reporting/application/useCases/ensureDailyAttendanceReportUseCase.test.js",
+    "sha256": "c1f97910d44c4c557e6e2dc3ae730b6eaca8784ec4938d3b4fe55b4f81f81a35"
+  },
+  {
+    "file": "src/features/reporting/application/useCases/generateReportUseCase.js",
+    "sha256": "ba3233fdf277ba7dde9e2ff4ce9e5a46f639b40dafccf3151737910a75607760"
+  },
+  {
+    "file": "src/features/reporting/application/useCases/generateScheduledReportsUseCase.js",
+    "sha256": "1d67ce8a94d5119af4ddbd8e663df1b73933695eeeecca49775df9292f92123e"
+  },
+  {
+    "file": "src/features/reporting/application/useCases/getDownloadUrlByRunIdUseCase.js",
+    "sha256": "f38e0560927c994750421152f39a235a8dacf86782ecefbc32d5150810837ec9"
+  },
+  {
+    "file": "src/features/reporting/application/useCases/helpers.js",
+    "sha256": "52b3054081948368e3733079ca31af736a17216628e1a20645bb2a1f18b4889d"
+  },
+  {
+    "file": "src/features/reporting/application/useCases/listReportRunsUseCase.js",
+    "sha256": "fc60be9e0d590a028abecd8e6040400cb6bf9351a441a53d2191c1d6f2ea26a2"
+  },
+  {
+    "file": "src/features/reporting/domain/reportingErrorCodes.js",
+    "sha256": "d1948ea001f2609282ba199050dcc7723af6cbed374a51658834ae659e30f7c9"
+  },
+  {
+    "file": "src/features/reporting/domain/reportingErrors.js",
+    "sha256": "a464f9b2b9dc2c95de1027d13646752fda65a28f601bfca448c64bc9a7ef34f0"
+  },
+  {
+    "file": "src/features/reporting/domain/reportingPolicies.js",
+    "sha256": "f60e5c8b51b52ec505f867746509a543c0bff1c183ee82536c2b715097d2127f"
+  },
+  {
+    "file": "src/features/reporting/index.js",
+    "sha256": "b27a397ff61ec053784da2108ad457d946ccc0d20d5a03f6bce25da95c4ff722"
+  },
+  {
+    "file": "src/features/reporting/infrastructure/gateways/browserFileDownloadGateway.js",
+    "sha256": "895912380fee9bb38b9be925df1cc5ce0e75901e4c476a06b87bb0fe0214f751"
+  },
+  {
+    "file": "src/features/reporting/infrastructure/repositories/supabaseReportingRepository.contract.test.js",
+    "sha256": "d17613098091b229925c2c5eccec15832d4d219ac7bc9cda8d99e4d571baf632"
+  },
+  {
+    "file": "src/features/reporting/infrastructure/repositories/supabaseReportingRepository.js",
+    "sha256": "0ae942abcf604cb25633c2ab349c5ce6dc2e6389b8c58b97c2845666cbb978d6"
+  },
+  {
+    "file": "src/features/reporting/presentation/createReportingService.js",
+    "sha256": "2a92b4c1d50b4e21c1d6cf011ad820d149d365d15bde5440f81b895663f106b3"
+  },
+  {
+    "file": "src/features/reporting/presentation/createReportingService.test.js",
+    "sha256": "d9d029359451d83d23a3bb8d91799ec2efbf266fe3b4268e4513bea0ecab6aad"
+  },
+  {
+    "file": "src/features/reporting/reportingService.js",
+    "sha256": "397d79046b4267b04bfc28742a5234d22dc16ebe31ea81414e978a5f5c6b1a6b"
+  },
+  {
+    "file": "src/features/schedules/README.md",
+    "sha256": "775a1a4233d012e8cb8d6b0d49087a1dedf97e6282b8221447cd5b492d03b230"
+  },
+  {
+    "file": "src/features/schedules/application/useCases/createSchedulesUseCases.js",
+    "sha256": "e46fdc00de8bb4e790f1f1e0152800a2cf7edb529dfde95f65e7e5dd9fc02e00"
+  },
+  {
+    "file": "src/features/schedules/application/useCases/createSchedulesUseCases.test.js",
+    "sha256": "3966fd22eb7532a6a354c272d9141930a16fd2ddc432899abe9a71703f4e33be"
+  },
+  {
+    "file": "src/features/schedules/domain/schedulesError.js",
+    "sha256": "6d7666c6b7e86b64b150d4380225237ff55bc9c64cc2690b31a3617a7999cf16"
+  },
+  {
+    "file": "src/features/schedules/index.js",
+    "sha256": "eab1f7477fe2ffe0be2fa2626c2aace0db1c86c06da00e73e1861c05d46e4082"
+  },
+  {
+    "file": "src/features/schedules/infrastructure/repositories/supabaseSchedulesRepository.js",
+    "sha256": "2f04ee51637c4580f06e995298c5a19604483a96a724bd86220e19162e037c5c"
+  },
+  {
+    "file": "src/features/schedules/presentation/components/HorariosManager.js",
+    "sha256": "2a5d08c37456fbb7554087bddd73afe9fdb6492e2ee99b9a5eebdc7898fa0f65"
+  },
+  {
+    "file": "src/features/schedules/presentation/components/shared/DeleteHorarioConfirmModal.js",
+    "sha256": "cc468b55bfb2f2f363cedca8ad3f30e882d8c1e0b75c570459950cb78e226f12"
+  },
+  {
+    "file": "src/features/schedules/presentation/createSchedulesService.js",
+    "sha256": "8733665228275c0e026cc702eab4d5efce92f932d86870406bb47d6d780aafd4"
+  },
+  {
+    "file": "src/features/schedules/presentation/createSchedulesService.test.js",
+    "sha256": "d2a9a762b99a62590cd721f1c88dda78aca518ecc0317162587ab21e468536a9"
+  },
+  {
+    "file": "src/features/schedules/presentation/hooks/useHorariosManager.js",
+    "sha256": "ae00452008dcb53b81d14e56b0bf17a12251fff72cc83e123656eb7a46c8abc6"
+  },
+  {
+    "file": "src/features/schedules/schedulesService.js",
+    "sha256": "45fb9fb46f9c609196c4bab0c57e49910ba936733c3ab3b74f6f6994d56effe2"
+  },
+  {
+    "file": "src/features/student-dashboard/README.md",
+    "sha256": "17be5e82fe0917ea83a81670f32e223720448db37a291d135acfb539d9394f95"
+  },
+  {
+    "file": "src/features/student-dashboard/application/useCases/createStudentDashboardUseCases.js",
+    "sha256": "25b7fc3299d72a8ce61247b7a04de605379d31285c5f6b1f76aced3a2b4dfee1"
+  },
+  {
+    "file": "src/features/student-dashboard/application/useCases/createStudentDashboardUseCases.test.js",
+    "sha256": "e52b287f6345cf5dc2ad5231d1319dc04e31dd1c71ca6037392e4f39a1e7efc9"
+  },
+  {
+    "file": "src/features/student-dashboard/domain/studentDashboardError.js",
+    "sha256": "9095035dbb460be5e242ac322f172d885455e28c8187c4e76ef3e86da00e9b27"
+  },
+  {
+    "file": "src/features/student-dashboard/index.js",
+    "sha256": "eb977ccda2557e512826246e61e2aa88ddb18becea69f7ccfcf70442c5e679c2"
+  },
+  {
+    "file": "src/features/student-dashboard/infrastructure/repositories/supabaseStudentDashboardRepository.js",
+    "sha256": "ea16fb80ddc50432a23705768aaffcae5c5132f39e6c44d7fbcae39df5c4ebaf"
+  },
+  {
+    "file": "src/features/student-dashboard/infrastructure/repositories/supabaseStudentDashboardRepository.test.js",
+    "sha256": "e4f67c92b6c22c1c36cd88d9751a04cc2a54e25ec29bae74a3f892368584f6e2"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/StudentPanel.access.test.js",
+    "sha256": "e0e9ac1920a274674ba89bc4908bea3cb5a274bf7410a17c0e70e82302a8fed3"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/StudentPanel.js",
+    "sha256": "e4589d6a840e1d990d81e5c3cc3527703ad2b19277919ceed2eae5c67b2ec415"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/StudentPhysicalTests.js",
+    "sha256": "d542b6f4d5141bbf05f8386aecd518e3839fa2017f56d4b98743fe769d559b6c"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/StudentPhysicalTests.test.js",
+    "sha256": "0f8198fa97dbf9bf1303db27980db3596213c2d1a16007c86263905f1a7e7f11"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/StudentProfileIdentityCard.js",
+    "sha256": "d284077202ee43acc232ad0fcbd0e189ffdce50f6f71a0942bcef092653d86f0"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/StudentProfileIdentityCard.test.js",
+    "sha256": "dea03415e348a314e892d5e6f82a32b6dd7e3ed1b647943b7ea254bc781481b3"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/StudentView.js",
+    "sha256": "a2e46415ae7ff47674a9953433ef0d5c508685bcd848b3308cb5aa78bf39e67d"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalHero.js",
+    "sha256": "26c6222fbf1956956f957b7fe31426d80ed93c7361aa8e35028d9dfc2200d892"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalHistory.js",
+    "sha256": "de2cff5bc390a668869e849dff817a7290d3def276190be73e6e9c18934adba3"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalInsights.js",
+    "sha256": "02e004916b2d8ba3588e8aeb80256724f86978ad9f9d50e46cca0100222dae79"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalRecommendations.js",
+    "sha256": "bcbc7850b4e2c4fc37dbbf681740a843e4ab46b401c40d8fca827474653540af"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/physical-tests/StudentPhysicalTrendChart.js",
+    "sha256": "d926ac120a012d07cdc788d1f12c4955a8abd2f9167bc29b2a1cb18b04a081c9"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/physical-tests/buildStudentPhysicalProfile.js",
+    "sha256": "00bb7f7e05cac0f44b4bbcaec3d59ddd55e9448f7a3e5c37bebd3aefeeff1252"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/components/physical-tests/buildStudentPhysicalProfile.test.js",
+    "sha256": "33198c665c2e8be1431ab5e0e6ccb0ed4882abd72c4710f89a78b16702cf0c13"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/createStudentDashboardService.js",
+    "sha256": "cbc6f9c6143311cd6e845a734eb84070d83b1df65acf08bdf6bd1710adee447f"
+  },
+  {
+    "file": "src/features/student-dashboard/presentation/createStudentDashboardService.test.js",
+    "sha256": "9b1e685ae0563abfe625a792a39d7c0e0237dcc36b170d48602baddaa1d79b6a"
+  },
+  {
+    "file": "src/features/student-dashboard/studentDashboardService.js",
+    "sha256": "3452240b74ccc259549b473fcef05a7ca293e8eca28729a622ca9c037e2a4869"
+  },
+  {
+    "file": "src/features/trainer-dashboard/README.md",
+    "sha256": "de9322f579ed3369cb4c6ff8ec77b530aa7c530aebdc3db068790a72ff679de9"
+  },
+  {
+    "file": "src/features/trainer-dashboard/application/useCases/createTrainerDashboardUseCases.js",
+    "sha256": "f0c089c5e24f72ba42f14ae49933c34b4c41fb5813f1f04449366b67775863df"
+  },
+  {
+    "file": "src/features/trainer-dashboard/application/useCases/createTrainerDashboardUseCases.test.js",
+    "sha256": "a0aa36985868da6850c6c41593c4566e9d5f4c16f58b9e227a4646b7db4c13da"
+  },
+  {
+    "file": "src/features/trainer-dashboard/domain/trainerDashboardError.js",
+    "sha256": "3bd081facefb91cb3fa6dfb7b2c87a82c2514bb3ab34df90ef7c0ce99573eb4c"
+  },
+  {
+    "file": "src/features/trainer-dashboard/index.js",
+    "sha256": "7efca2821d28ab174b6a6155bfedc51e28c1108277eafb39b65ddfd0d4b6fb4d"
+  },
+  {
+    "file": "src/features/trainer-dashboard/infrastructure/repositories/supabaseTrainerDashboardRepository.js",
+    "sha256": "cbb2f4e76e01063569ea5413efd641a9b7bcd0ed4fe0e01931732bb3889a56ee"
+  },
+  {
+    "file": "src/features/trainer-dashboard/presentation/components/TrainerDashboard.js",
+    "sha256": "8f758538a31c367226d5940dc5e011762d585e5a78eef1fc5a086564cfbab5e1"
+  },
+  {
+    "file": "src/features/trainer-dashboard/presentation/components/TrainerPanel.js",
+    "sha256": "cfa18f2ebff09896a57e2e4caa9507e1d1e1bee4a5706302231186f09ed3157e"
+  },
+  {
+    "file": "src/features/trainer-dashboard/presentation/createTrainerDashboardService.js",
+    "sha256": "16fadcc363a33a966135a011b205c2c4e12f34751f5f3630eafd95b8872522e9"
+  },
+  {
+    "file": "src/features/trainer-dashboard/presentation/createTrainerDashboardService.test.js",
+    "sha256": "1781351efcda31c1f8e6da70ef458143274632e12ad4847986cdc3a4419aeb88"
+  },
+  {
+    "file": "src/features/trainer-dashboard/trainerDashboardService.js",
+    "sha256": "d9fe5158b0641c723446415c695f3ce943fb4a85ca64fb29a75fb1cfeb19428e"
+  },
+  {
+    "file": "src/features/trainer-management/README.md",
+    "sha256": "44ab9bf0a8cafa80f8699ae601ed4cb3dd9f9239ee6beba30600abc7dd7fb65e"
+  },
+  {
+    "file": "src/features/trainer-management/application/useCases/createTrainerManagementUseCases.js",
+    "sha256": "4184cc7a7bdf7849f7df30a1024037899af8483196fe11aa537ec1075d1db136"
+  },
+  {
+    "file": "src/features/trainer-management/application/useCases/createTrainerManagementUseCases.test.js",
+    "sha256": "ea37ac59a9256c8677e31e6f2459859c5c695ad3415f23e42abe8bf36addeb5e"
+  },
+  {
+    "file": "src/features/trainer-management/domain/trainerManagementError.js",
+    "sha256": "b5be301757c33206da587c1dc243b1a3adffcd88d2cbd904a73e3f4f1a798722"
+  },
+  {
+    "file": "src/features/trainer-management/index.js",
+    "sha256": "bc930543c24b43b9df52b895da2abad6cdcf240b9324c3863f27f662ad7ef4aa"
+  },
+  {
+    "file": "src/features/trainer-management/infrastructure/repositories/supabaseTrainerManagementRepository.js",
+    "sha256": "5b9bdcaf11d4c60890be4673b98bab402f96cee65f3f14427ab2665022095019"
+  },
+  {
+    "file": "src/features/trainer-management/presentation/components/EntrenadoresManager.js",
+    "sha256": "bc48fb75ff4a1921b8fedde2ab5d0dcb6e86b5c082153f8a8e3306d973489121"
+  },
+  {
+    "file": "src/features/trainer-management/presentation/components/shared/DeleteEntrenadorConfirmModal.js",
+    "sha256": "670171816ac943f908de059b174768a94c9ec416faf2be9c20b4020d9513ea95"
+  },
+  {
+    "file": "src/features/trainer-management/presentation/createTrainerManagementService.js",
+    "sha256": "141aa1a0cfe1cc534de4d3a7063ed36a4abe04c4dfb036b672d0212d50ae5950"
+  },
+  {
+    "file": "src/features/trainer-management/presentation/createTrainerManagementService.test.js",
+    "sha256": "64109640e3e608b6702521875b1d5f1efaa2853a58242a45f42ebc9d9b421bbe"
+  },
+  {
+    "file": "src/features/trainer-management/presentation/hooks/useEntrenadoresManager.js",
+    "sha256": "b805161f2a5334a4ec87194624ca81a644f09fe9073fcb13cd58f160b114cfc4"
+  },
+  {
+    "file": "src/features/trainer-management/trainerManagementService.js",
+    "sha256": "6fcbdbad6c4c338e51f1939c84bb7d5220c80777a48d4dad1f4e3907d8266a72"
+  },
+  {
+    "file": "src/features/training-categories/application/useCases/createTrainingCategoriesUseCases.js",
+    "sha256": "79864aa8690327b48680b8b5e1d1ee31a8cd3a84e6f44a217dbb1cb34bbca93a"
+  },
+  {
+    "file": "src/features/training-categories/application/useCases/createTrainingCategoriesUseCases.test.js",
+    "sha256": "2a9dc5e025eaee1d4bbe9a8c097c9ca6af298c4b0eda3467eda3e9ffa34f7563"
+  },
+  {
+    "file": "src/features/training-categories/domain/trainingCategoriesError.js",
+    "sha256": "6d52dbab668fad5790089b0c69d9f90eab1cc24ea25aa3e1b0b256eebf2a6543"
+  },
+  {
+    "file": "src/features/training-categories/index.js",
+    "sha256": "974b95b698922c75b307c5474e771a29528fd27f3d37e239bafb1f6126de70b3"
+  },
+  {
+    "file": "src/features/training-categories/infrastructure/repositories/supabaseTrainingCategoriesRepository.js",
+    "sha256": "2615522e2076e0617312f4c62123e20cbd6910dcd6e4a9fb8d4ab56dcbd7833f"
+  },
+  {
+    "file": "src/features/training-categories/presentation/createTrainingCategoriesService.js",
+    "sha256": "bd418c7aaad8e0c1d43fd8a033ca98074b0edb860737793f557643318ddf4442"
+  },
+  {
+    "file": "src/features/training-categories/trainingCategoriesService.js",
+    "sha256": "f37b1cd177d0c7706ff3f1bf1f436ece85742b453fc200d21a32807ee58fcd7b"
+  },
+  {
+    "file": "src/features/user-management/README.md",
+    "sha256": "eaa2036735bcefe6aa5001112562b378ffb67b96bf0ba473ff943b698c6f1615"
+  },
+  {
+    "file": "src/features/user-management/application/contracts/userManagementRepositoryContract.js",
+    "sha256": "4d8160f1633d39828feead3a1f31dc020e6341e205215f9e6b1bf41e207a46d2"
+  },
+  {
+    "file": "src/features/user-management/application/contracts/userManagementRepositoryContract.test.js",
+    "sha256": "d818b428f14a5ec9a1efe38662d05f4b537e32743ed108b6ee10d42ad3960b4a"
+  },
+  {
+    "file": "src/features/user-management/application/useCases/createUserManagementUseCases.js",
+    "sha256": "ce740bc8f3836929ff0ea4bcf2204fff269436c55e857b80f71d23fed833a42c"
+  },
+  {
+    "file": "src/features/user-management/application/useCases/createUserManagementUseCases.test.js",
+    "sha256": "2af951dba2cb49dca14b8c093bdc1a2ecf7575b6ac8035f6fe7b1a763535b5d1"
+  },
+  {
+    "file": "src/features/user-management/domain/adminPrivileges.js",
+    "sha256": "779023e3943591e968d0d70da4008e0e1254e5acf3e45d5b84e095790346fefb"
+  },
+  {
+    "file": "src/features/user-management/domain/userManagementError.js",
+    "sha256": "4faf8698496a2c26bd0b443b9e3c6c8790e04039e2161ffafb92952d71edc819"
+  },
+  {
+    "file": "src/features/user-management/index.js",
+    "sha256": "fa05ecab2ae6c6b142ed46577a354489603bed247dcc4f05fc07ed6d3503bca1"
+  },
+  {
+    "file": "src/features/user-management/infrastructure/repositories/deletion.security.test.js",
+    "sha256": "40dd7e55dd0a958277fec1019c0ed11de7cc039fd591b152c136c7c4e45b7803"
+  },
+  {
+    "file": "src/features/user-management/infrastructure/repositories/supabaseUserManagementRepository.js",
+    "sha256": "d5fdea6c8ff9fdf551093dea8c5c3570ad2ce1bb936a8c87ac74c17a60c76e86"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/UserManagementPanel.js",
+    "sha256": "f2d1b18b198a7f69d873519f36f1298df763e5aa5d48c420fa6ac5d92dd63b97"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/hooks/useTimedMessage.js",
+    "sha256": "de81107398ba61c1e0d553be29ac3f2cb55df82d99a2a0be7e31fdb39ac22aa8"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/hooks/useUserActions.js",
+    "sha256": "8fed833a9a24fbb0f4e98d862bff292f65422fe771f0089cb8fe1ffb87ec17e4"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/hooks/useUserManagementPanel.js",
+    "sha256": "d11897d8a66263da282cd78a42a37a1455ac2b5c8d413246dbaa2bd938b7fdad"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/hooks/useUserPermissions.js",
+    "sha256": "503719f93a5197fd0edb07bae34c0ed23931b474bb220d7119a860255672ea43"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/ChangeRoleModal.js",
+    "sha256": "bbd6bc6ddb2de9233ff40c35e7f8b3b9a8947867e9385a5d296d19e5734a5246"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/CreatedCredentialsModal.js",
+    "sha256": "982806882a483e7b3cc661534234e7d138decf31070384071ae20d1383a5877d"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/CreatedCredentialsModal.test.js",
+    "sha256": "ec763b39b212b925eb7341d89366f0f8bfcd4e8e60e5da39b68cd0f6af1ffd14"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/DeleteUserModal.js",
+    "sha256": "5f1fb95e55cdabd131cc622aa5ce8f9280678aa486be7b766f0623626b4ef57c"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/ResendCredentialsModal.js",
+    "sha256": "5edf7c14ecef70a6d635c991fd263ceb96c183b7965e963ab86fa577f1031e05"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/ResendCredentialsModal.test.js",
+    "sha256": "acccdc79131b2daf1f03a94d649bf122656889b71f3b6b3cc97d9a9d5c226297"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/SuspendUserModal.js",
+    "sha256": "f90f8a33023cd337b12299611c174ef6f32fd1a35485aa44b27530416ea5b4ff"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/UserCard.js",
+    "sha256": "17859a884782251518b75e42e348cad84eca2bdf6b048e3844712f2f67089544"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/UserFilters.js",
+    "sha256": "ba5500be59163465f4a37e8ad8d31f2b24f4076e186927977cedeede08ec833d"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/UserFilters.test.js",
+    "sha256": "3b6237f9ec19b3b05dbc4adb74ebda06f72bed6112469f4c861f77aea454420e"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/shared/UserForm.js",
+    "sha256": "e9c1db519784f4bf47e1df1b8a88078d57f843f0fd927f82213754ba3079d6cf"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/tabs/AdministratorsTab.js",
+    "sha256": "19ab7e616f4052b27d2e9ff707921513ed38c89296586a3bbf1a7f20058a485c"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/tabs/AthletesTab.js",
+    "sha256": "bf1f8f7dedf919cf5ef509642c7fd6fe15eeb413c17b38fd932462b0a523dc29"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/tabs/CreationCredentials.test.js",
+    "sha256": "bdab84ae35d8316d9f14e6321bcf5f7ed1eb869565d5680a98b0f7f945436bdf"
+  },
+  {
+    "file": "src/features/user-management/presentation/components/tabs/TrainersTab.js",
+    "sha256": "d68145702809aca0952186ab615ef655ba5ccf92587da4ffb731255d1eeb9213"
+  },
+  {
+    "file": "src/features/user-management/presentation/createUserManagementService.js",
+    "sha256": "f3f8423de2f816a7dffb8f2a7c35525671a0d5d0826c1a3e9dd1a14c814b293a"
+  },
+  {
+    "file": "src/features/user-management/presentation/createUserManagementService.test.js",
+    "sha256": "7b0cdf6428a0de8938dde1c76610b95b16dbd96a64ea519fce2ed9c47e13e457"
+  },
+  {
+    "file": "src/features/user-management/userManagementService.js",
+    "sha256": "ea84bf99c719a4d13fb1af497138730071874d34c1302be9ddf6d1a6f640a3a4"
+  },
+  {
+    "file": "src/features/user-provisioning/README.md",
+    "sha256": "db5a51f7d10bf7df3a6577c32789152bd7295f6d03b6d193edcac9f3d2ad580c"
+  },
+  {
+    "file": "src/features/user-provisioning/application/useCases/createUserProvisioningUseCases.js",
+    "sha256": "485b09e4ffb417a55bbd08b45b51d17a8a021b30d8a908f4f7f0cc8780d75dbf"
+  },
+  {
+    "file": "src/features/user-provisioning/application/useCases/createUserProvisioningUseCases.test.js",
+    "sha256": "b7749f3a3a4ac9c07593d99c089184d209a637ea08fff4cff58e0c3a01161b7e"
+  },
+  {
+    "file": "src/features/user-provisioning/domain/userProvisioningError.js",
+    "sha256": "f1ada464596d5baa3ae153c2f92e99aa1d623be1068590ceb8c0bfe3cec472ca"
+  },
+  {
+    "file": "src/features/user-provisioning/index.js",
+    "sha256": "36943f9b76c4e1f071e337c4a3c7c1fc9604b01c92fa3bc15995d1f6a31093f5"
+  },
+  {
+    "file": "src/features/user-provisioning/infrastructure/repositories/supabaseUserProvisioningRepository.js",
+    "sha256": "8ce8c6020e22ac0da2f3a1601b8db8bd2477540fddfd05023b63c260048e8d44"
+  },
+  {
+    "file": "src/features/user-provisioning/infrastructure/repositories/supabaseUserProvisioningRepository.test.js",
+    "sha256": "459a69c63d5aa5feed897ad5aadcd19731cd69c999019de81be67f1acc1516d0"
+  },
+  {
+    "file": "src/features/user-provisioning/presentation/createUserProvisioningService.js",
+    "sha256": "65fc3e19d7322e8f70f005261359611b1c5dc41b078885c970bd906f41e13772"
+  },
+  {
+    "file": "src/features/user-provisioning/presentation/createUserProvisioningService.test.js",
+    "sha256": "7d8147d85fceb67bcc41476f010acc9655b38ecb78593466a86d3b1e65ab0b9b"
+  },
+  {
+    "file": "src/features/user-provisioning/userProvisioningService.js",
+    "sha256": "7cf48ce64619d5f88b3361e248d473a0d01b0d775a981611ef991d2060ee8632"
+  },
+  {
+    "file": "src/index.css",
+    "sha256": "aabaee34c316b1d6d67bcb1e69b59fb49fb2487bcb1059232d08a42cc3817d37"
+  },
+  {
+    "file": "src/index.js",
+    "sha256": "3bd84c1446caf4f7ae874bd4d5b886f84bdb61e39c338531b1bef59dc5a1603c"
+  },
+  {
+    "file": "src/lib/cn.js",
+    "sha256": "74558afb97c90e76e295f5dab37a698306bf41ba07ad4b1cfcc619bd1466390e"
+  },
+  {
+    "file": "src/reportWebVitals.js",
+    "sha256": "31f23ebe450f1c69f8db8a3cd59b732f52f1ab13962d681fe2e4391532f48336"
+  },
+  {
+    "file": "src/setupTests.js",
+    "sha256": "987767208ed67cb0835e8bdeb09573d8337735a77d98532a3ca860dedd4f88cd"
+  },
+  {
+    "file": "src/shared/README.md",
+    "sha256": "0e1d71d8e1f18f666275ea78bd6f93313d29561b6a1af5032f1ef33c36db025e"
+  },
+  {
+    "file": "src/shared/config/runtimeConfig.js",
+    "sha256": "2600f7ba3c8dba6921957b891ed5ee5aeaedb0039c7081c175e8d1b6ff1772a5"
+  },
+  {
+    "file": "src/shared/domain/payments/index.js",
+    "sha256": "9c68ff0bcc3a066eb561b5f2e371d73b15606146866848dcfc4d79571ff9d4f9"
+  },
+  {
+    "file": "src/shared/domain/payments/pagoStatusService.js",
+    "sha256": "759ce19cfe74f0a2cdcdd06d0f6b7b6fda58f8877d5c7a50963187947f617251"
+  },
+  {
+    "file": "src/shared/infrastructure/audit/sqlAuditLogger.js",
+    "sha256": "37a76c6745c9888dc400d5344ffd33844ced94bc2a4e36dfd76e512b617b44cc"
+  },
+  {
+    "file": "src/shared/infrastructure/auth/deleteAuthUserById.js",
+    "sha256": "b5a7fa457a91f71078c0c7bc920c66ac1daba6fdf9fd34933c706753bdd5ff96"
+  },
+  {
+    "file": "src/shared/infrastructure/auth/deleteAuthUserById.test.js",
+    "sha256": "a32fdd3a8de8868585767be678f71ee02b49b5a911432b2bb0f57c0d3eebc7c0"
+  },
+  {
+    "file": "src/shared/infrastructure/communications/index.js",
+    "sha256": "c0b99fa82dba11df4a6fce481f8ed566b45df6501596335e273e65bb79630d79"
+  },
+  {
+    "file": "src/shared/infrastructure/communications/whatsappBusinessService.js",
+    "sha256": "4ac6fcde24e7dfa48950a82a56fd33fbd72675158e89313303e8d75468ae321e"
+  },
+  {
+    "file": "src/shared/infrastructure/communications/whatsappBusinessService.test.js",
+    "sha256": "7bbf086125064ec0bb9f9ad4481e785c7f87a4ece0245d7a49624e157933d587"
+  },
+  {
+    "file": "src/shared/infrastructure/communications/whatsappService.js",
+    "sha256": "fe990f9a79d3125a221f83398a1bc2ca677b488c963a8ed2817a6b5ee5b48c35"
+  },
+  {
+    "file": "src/shared/infrastructure/http/functionError.js",
+    "sha256": "d9082b65f33483498398d677ad729b8e928bbdd46cd0d4f829157a976b6c89a3"
+  },
+  {
+    "file": "src/shared/infrastructure/mobile/index.js",
+    "sha256": "3169864126d05201ccd31651968766075aeba0947bfa32ed23c04ecb9ef95d5d"
+  },
+  {
+    "file": "src/shared/infrastructure/mobile/supabaseMobileDeviceRepository.js",
+    "sha256": "0ff1afa0a55bf865d4c2bb0b3729046fe9a8cc214c4b6466deedab2eafae9141"
+  },
+  {
+    "file": "src/shared/infrastructure/mobile/supabasePushNotificationGateway.js",
+    "sha256": "e74fd190903aece4909c23300ccb3d8d527b01ee2da4c1bd5d2057431455ef4e"
+  },
+  {
+    "file": "src/shared/lib/escapeHtml.js",
+    "sha256": "a5810abcd621af0b903fd7072a88dd9af7de23a9cb530afec66a84b7910ce9b7"
+  },
+  {
+    "file": "src/shared/lib/result.js",
+    "sha256": "2c6e19bac6ec0749fd9ab0303ce5d3bb23f6af12fdebf9c0d912d7d7ca874a0b"
+  },
+  {
+    "file": "src/shared/lib/tableQuery.js",
+    "sha256": "120762e6d7a4e6638c6daf65e17e822cd754ce9d7b2befe8e4af83215542e49d"
+  },
+  {
+    "file": "src/shared/lib/tableQuery.test.js",
+    "sha256": "3224fe10c0c1cd6a2a548d7ebbf8f54b18251d10cdb29cb96583386be806c16b"
+  },
+  {
+    "file": "src/shared/lib/trainingCategoryFormatting.js",
+    "sha256": "9212d4a00aabef101195ee5e518e0825e5595957537494513d670d66611b0905"
+  },
+  {
+    "file": "src/shared/platform/files.js",
+    "sha256": "ccb6eaeb69ecd1f6b8f3af4f01cf26698fda24883f15253b155a3304d44ce1af"
+  },
+  {
+    "file": "src/shared/platform/index.js",
+    "sha256": "23d9e677d4c42613776beea205a1df19827cdaf69d4ac955febc0c93927cd541"
+  },
+  {
+    "file": "src/shared/platform/links.js",
+    "sha256": "5c3223f9e5bfc9f25f698e273d82fd81d86ea2e2464d68061dd3f6b066e3557a"
+  },
+  {
+    "file": "src/shared/platform/mobileAppBridge.js",
+    "sha256": "7cd9b6f710988aaa44f0652e0eb08052367401154ee2db21437bd38aa4c6d180"
+  },
+  {
+    "file": "src/shared/platform/ota.js",
+    "sha256": "c84c9100ca8778c4ab9dae797bff6973a6e3c190a56379ea4e78c861c1aa4aec"
+  },
+  {
+    "file": "src/shared/platform/ota.test.js",
+    "sha256": "b0292f2ee8061bd0ecac13c7e9f0bb9366822ed675b9de88ee8feeb0db195a00"
+  },
+  {
+    "file": "src/shared/platform/push.js",
+    "sha256": "4e88d26b00c59355f2e7a171b300c9ae674a028b320629f61e01c6e9dc44a288"
+  },
+  {
+    "file": "src/shared/platform/push.lifecycle.test.js",
+    "sha256": "7ab2bb74c2c7adc55d8d0d6c61b524f93a53fe252de5116ed03035bab8222566"
+  },
+  {
+    "file": "src/shared/platform/push.test.js",
+    "sha256": "b6351fbfa9aa2a64600698ac5885740c781b4f1ca65a1086df80dab717b559a4"
+  },
+  {
+    "file": "src/shared/platform/runtime.js",
+    "sha256": "9ea8ab7f99a56dba4241364599b08ce299e71a1488f426463b031c24d69b0c6c"
+  },
+  {
+    "file": "src/shared/platform/storage.js",
+    "sha256": "797d3399b97d84cbce4934d102d092db1ec471249cd81f11967d2c187b392761"
+  },
+  {
+    "file": "src/shared/ui/Button.js",
+    "sha256": "fe7cfef88c851e6279d773d58db9108bf9793d0a441e3bceb9d0c47f1bd0c63a"
+  },
+  {
+    "file": "src/shared/ui/Card.js",
+    "sha256": "59a2505a0b7d04dfd41f07922733ba7de5503ec21ce547a24c04358b2ba7e9cb"
+  },
+  {
+    "file": "src/shared/ui/DataTable.js",
+    "sha256": "1462613abb612b65fe1593f30a8d36085cc4c1e8dc537d99a1edbbce7d444b94"
+  },
+  {
+    "file": "src/shared/ui/EmptyState.js",
+    "sha256": "f251882257727a49e12cbc53bda3537e4efe9d3a0ec580f696bf93bc522179b2"
+  },
+  {
+    "file": "src/shared/ui/ExportButtonGroup.js",
+    "sha256": "9e82ed7edcd4c07cecb7d29250ce4ae2720953eadb417e98882f834626d23deb"
+  },
+  {
+    "file": "src/shared/ui/Field.js",
+    "sha256": "9ed6587251bf255f6c1aff47708171ce43cb3e1fa3d822a891576ef1b5bf0e1c"
+  },
+  {
+    "file": "src/shared/ui/FormControls.js",
+    "sha256": "f11d1007e0920e88c4667657d0555326ac3fdda96730b3721d7eb2ec7014b534"
+  },
+  {
+    "file": "src/shared/ui/KpiTile.js",
+    "sha256": "88bf5c54af6d4976087625da7321583d170895846363eb41dff6fc247bf490b8"
+  },
+  {
+    "file": "src/shared/ui/LoadingSpinner.js",
+    "sha256": "73cbfb4dcc0b474f907d5549b04bc3812c7844fa9fa2bae976024e1676bd47bb"
+  },
+  {
+    "file": "src/shared/ui/Modal.js",
+    "sha256": "38d5049fbac6685b57ceaca74c6dbffa980554a67c6478f76396331becfd3c5b"
+  },
+  {
+    "file": "src/shared/ui/Modal.test.js",
+    "sha256": "dfd6e3e353d42bb5fe7c6bef1edd745d503198a054a6ff8a9c82a58e68a420e5"
+  },
+  {
+    "file": "src/shared/ui/PageShell.js",
+    "sha256": "648c1097e073356c2ebe0b6915539532752df5d1c37641cbad467afa2084fb28"
+  },
+  {
+    "file": "src/shared/ui/PageShell.test.js",
+    "sha256": "98cab2a767e304137bdff0b71b07b7d1f8491c20b166178e4ad4be7fda60c9f9"
+  },
+  {
+    "file": "src/shared/ui/SectionHeader.js",
+    "sha256": "68b215964005135826b198cd898f339cec6c06075d77437d8478cbb9505f5734"
+  },
+  {
+    "file": "src/shared/ui/SortableHeader.js",
+    "sha256": "632b197342fa788df7f285c2078f5b752319098ab7b31dccbeeb4bc845f807b0"
+  },
+  {
+    "file": "src/shared/ui/SortableHeader.test.js",
+    "sha256": "dc962841d0a6d6a98c5fda0ed437c18e4bc24fcd7c48bc2946703bac971f5603"
+  },
+  {
+    "file": "src/shared/ui/StatusBadge.js",
+    "sha256": "5855f43ef67fa1702cd27a719bc9d7928cb59a3222a966f64a8964900e61f71b"
+  },
+  {
+    "file": "src/shared/ui/TabNav.js",
+    "sha256": "7ce876e538a866e0b9c6f7b9c172960bfeef3e76b828ef7b0926ac5075960656"
+  },
+  {
+    "file": "src/shared/ui/copyQualityCheck.test.js",
+    "sha256": "b2b581c4a6802e441e2dba10783b105662d620b3894144365da0a777d0904254"
+  },
+  {
+    "file": "src/shared/ui/feedback/Toast.js",
+    "sha256": "fb813d609455e992815918a073945c3eca3803facf808cf543d8b359e693ca5d"
+  },
+  {
+    "file": "src/shared/ui/iconRegistry.js",
+    "sha256": "4ba7abed4cfa078e7bf3688b17034555399f81442aa12cd515cbe09762d3cbf2"
+  },
+  {
+    "file": "src/shared/ui/iconRegistry.test.js",
+    "sha256": "82eff714fa0426fbd8a544dbd52cee9c3691dbff2686f5d6b56dffd81bcb1e7c"
+  },
+  {
+    "file": "src/shared/ui/index.js",
+    "sha256": "d26e006a68215b94bae60f801c26147701ed19db42912c949233cfebf511731c"
+  },
+  {
+    "file": "src/shared/ui/layout/RolePanelLayout.js",
+    "sha256": "4c83e1b445b4111b6a45aa3b7213c44324416dedf455d93420ab5adf8a48f06e"
+  },
+  {
+    "file": "src/shared/ui/layout/RoleSidebar.js",
+    "sha256": "23e0c3675aeb38355e5e58bca35b865270bb20b333870e0ad78f61c2fe55c9c5"
+  },
+  {
+    "file": "src/shared/ui/panel-guide/PanelUserGuide.js",
+    "sha256": "e7c63fe7021eeabc15a6d003f9498a47d92781cebe5426640c9e511972a73335"
+  },
+  {
+    "file": "src/shared/ui/panel-guide/PanelUserGuide.test.js",
+    "sha256": "49a7a11283d660a624b3207cbb3f8f04b4984811b08a4dce8f4f60aad8908713"
+  },
+  {
+    "file": "src/shared/ui/panel-guide/panelGuideContent.js",
+    "sha256": "af0488868dd856997108212081a21e7f5a1acf405b04df0441fe1c3b2e8873ac"
+  },
+  {
+    "file": "src/shared/ui/panel-guide/panelGuideStorage.js",
+    "sha256": "cd1aea26e93fc7471c73518d8f84d2430c80bfc3ced6ab90464490fcf990a706"
+  },
+  {
+    "file": "src/shared/ui/render-profile/RenderProfileProvider.js",
+    "sha256": "2342dd431449d2fba8082a0320eacd7220d2b4628cd45def1902660a166664fb"
+  },
+  {
+    "file": "src/shared/ui/render-profile/index.js",
+    "sha256": "cded56f876b1a90ba3e8c7a9793c2e8dea3b626d48e07036e8acc21fbae89d40"
+  },
+  {
+    "file": "src/shared/ui/render-profile/renderProfileResolver.js",
+    "sha256": "8a4d523a41381a82085b47e6b5e0684e9e99cec4e18d0c821d997b1064420d3f"
+  },
+  {
+    "file": "src/shared/ui/render-profile/renderProfileResolver.test.js",
+    "sha256": "004ec356338eda2b372648b0b00c6bf1c6097b406047d0deb1b764445e317a9e"
+  },
+  {
+    "file": "src/shared/ui/semanticCatalog.js",
+    "sha256": "474cda1c559e46c50be43bb245d02562e4b4490b2259e5955388b4673d2c7bea"
+  },
+  {
+    "file": "src/shared/ui/semanticCatalog.test.js",
+    "sha256": "7b63134df7a91284638a508ec537dd86d0b12edc918a777a4318017a01e121c4"
+  },
+  {
+    "file": "src/styles/AboutUs.module.css",
+    "sha256": "dc1ac1c34d5218a7e12bb4be486839ab47a1132300830a9057ed7c167fd0c03a"
+  },
+  {
+    "file": "src/styles/AdminPanel.module.css",
+    "sha256": "7104e63cdca6da912ee87df86ce28756bbafe6740d2bb4cf03609d653f494ebe"
+  },
+  {
+    "file": "src/styles/AnunciosManager.module.css",
+    "sha256": "4b55066db131b19556aa7c00b15acd0914cc5f8e62afab3294d62678281dd5bd"
+  },
+  {
+    "file": "src/styles/AnunciosViewer.module.css",
+    "sha256": "f93a4e067acb364e9732d36bf7321d734b625b4ac22c565eae0f3a5f46cb6857"
+  },
+  {
+    "file": "src/styles/AsistenciasManager.module.css",
+    "sha256": "15396b43a2ac142f5193060f02cdbc7aca4a4bdfddbf08e5accd3099d0e6c1d5"
+  },
+  {
+    "file": "src/styles/AtletasManager.module.css",
+    "sha256": "a9ee5ea3a727f294c40b81b96f4f0e0a6e8f1a8c9e2ed71fc9cb9eea9bf663c2"
+  },
+  {
+    "file": "src/styles/Dashboard.module.css",
+    "sha256": "f990677c2289f1d6d78bebb1ed192710f4ac4b387a433bc0032ac3f97bec887f"
+  },
+  {
+    "file": "src/styles/EntrenadoresManager.module.css",
+    "sha256": "a316dc58c4d4b1caafcf860dcfb746d5db63882869ec164b333decf2271a5747"
+  },
+  {
+    "file": "src/styles/HomePage.module.css",
+    "sha256": "ae183f24d0b1ccbfc9d45bc04e5b63c1bd4f04ccfe70cfeba1661a600c86bc49"
+  },
+  {
+    "file": "src/styles/Horarios.module.css",
+    "sha256": "289bc4b7d28ee523f7665e1aa35ce0e83753bb961d2bedf23a72779b522303e2"
+  },
+  {
+    "file": "src/styles/HorariosManager.module.css",
+    "sha256": "184812b9d834230c164d4b0a30743153b4ec079bc3a83483b39f0d66b25d931d"
+  },
+  {
+    "file": "src/styles/Icons.module.css",
+    "sha256": "fe33580c5a9f749e215de78dc9819911f77c24e1a8967709b414b77220ee09f0"
+  },
+  {
+    "file": "src/styles/Login.module.css",
+    "sha256": "71f82c05af30d8bcfe8134fe1c93382eaad1984fc1a04d609303d86fa5abc008"
+  },
+  {
+    "file": "src/styles/NotificacionesPagos.module.css",
+    "sha256": "685bb513918d5329665360caa86a12e69910cadb2feb962e4a6f65184e3ed972"
+  },
+  {
+    "file": "src/styles/PagosManager.module.css",
+    "sha256": "5928a32c78680fcdea60e552460d9c4f7f95b305da01ddb846e9585352fb84e9"
+  },
+  {
+    "file": "src/styles/PhysicalTestChart.module.css",
+    "sha256": "d6dac75f945ca3810fc3267e7c4e48efc47e3c4a02dc18adf5c319d63c45e27f"
+  },
+  {
+    "file": "src/styles/ProfileSettings.module.css",
+    "sha256": "d3d6808c292137d5decc4c53ec00a32f3792f585d80229cf2a91c6bf494ae7ba"
+  },
+  {
+    "file": "src/styles/StudentPanel.module.css",
+    "sha256": "9a3b8944bc0aa07fdd8300c511fadc525480a57a2e5f6a527d00d3fb1ad4da41"
+  },
+  {
+    "file": "src/styles/StudentView.module.css",
+    "sha256": "278e866503573e8d41c5743fd604f0ebc663c15d4a559a2fce5c58d7f1c7db13"
+  },
+  {
+    "file": "src/styles/TestsFisicosManager.module.css",
+    "sha256": "6d8c6db7690b6e12c2a9ce3704db2b76bd64061f28e24fefc65d440fd6d39d7e"
+  },
+  {
+    "file": "src/styles/TrainerDashboard.module.css",
+    "sha256": "3d8e6d1c4a372d77378d05206af2c93742a00856ab8aca82e35cbdface5c8259"
+  },
+  {
+    "file": "src/styles/TrainerPanel.module.css",
+    "sha256": "fec0736f0435374e64cdc9971c13f3835513bd362618591d139fa3b9df3f8f1b"
+  },
+  {
+    "file": "src/styles/UsuariosManager.module.css",
+    "sha256": "7765d179601ba60d727dc1ac4ff8c954702bfd05eed38a45c4dba16869d0775d"
+  },
+  {
+    "file": "src/styles/accessibility.css",
+    "sha256": "f38f5410ef88cf3cb1d81c61b099fe02ecdc76b39f7883fc450305d1e2c04dd1"
+  },
+  {
+    "file": "src/styles/design-tokens.css",
+    "sha256": "c919e79d151419339acd9918740fb880ab4f3053ba9831ba218b3316f6105822"
+  },
+  {
+    "file": "src/styles/global.css",
+    "sha256": "b165f626c2cf5fa373ccb5da61bf1edf4e15b238f411a00b70bd24bba7ee8cf1"
+  },
+  {
+    "file": "src/styles/mobile-best-practices.css",
+    "sha256": "17164115f63646b2116247e6af682a699df434e41bf412fa8dd72f07b89b4b69"
+  },
+  {
+    "file": "src/styles/tailwind.css",
+    "sha256": "eed5f6592dc7ef179bcd74319cbd9f4ea07b77c8e186bf77ea058587d8a6fd4c"
+  },
+  {
+    "file": "src/utils/athleteValidation.js",
+    "sha256": "3e77222dece0fd33cccfe19fbb25495220516bf4f23efcbc37bd1a00c711c8fd"
+  },
+  {
+    "file": "src/utils/dateUtils.js",
+    "sha256": "fb2c42ea7077c1167e2ef97df350df56113b1177dd04cc03a8108c6c0fa4f7c3"
+  },
+  {
+    "file": "src/utils/exportAttendancePdf.js",
+    "sha256": "f0bc1789a1d7bbc8df6a4b6f1b154033f70407882d7061de097700bf5748f18c"
+  },
+  {
+    "file": "src/utils/passwordUtils.js",
+    "sha256": "0e4e78c7a0c95daeb23d8fe0948ce1648261ef9965caa2403c5388b79d05486c"
+  },
+  {
+    "file": "src/utils/passwordUtils.test.js",
+    "sha256": "41791932933a57d132432cce42ce0cd90c9e99b504beda3459bda67d8d39e7eb"
+  },
+  {
+    "file": "src/utils/paymentUtils.js",
+    "sha256": "b3ca97dec28dce723ae5973e247d1d993a0fcbbad087e3653bd6acbbeb691958"
+  },
+  {
+    "file": "src/utils/piiCrypto.js",
+    "sha256": "58681f02f7995faada66a1da5f26c1f15b58451dba8ac68ce60d29ae338d316a"
+  },
+  {
+    "file": "src/utils/supabaseDebug.js",
+    "sha256": "ce4022862c3f5075851a9d05460e30ae339e99aaa7219c81e21898c485dd1252"
+  },
+  {
+    "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+    "sha256": "c4ddb67d777ee4e3ca5cd2d5381323b780507da3ea2c079a8f7b72a896e93235"
+  },
+  {
+    "file": "tests/e2e/admin.modules-navigation.spec.js",
+    "sha256": "ba440faa529e8ea562ee89b1ce18e5fb4f806a3f5e5e7f34ab89b5c8b6d1d14a"
+  },
+  {
+    "file": "tests/e2e/admin.provisioning-notifications.smoke.spec.js",
+    "sha256": "7f9016d44464b72048fc94e480dbc8058c1bf50f292ff969431489c2202b723b"
+  },
+  {
+    "file": "tests/e2e/asistencias.guided.review.spec.js",
+    "sha256": "1944041fea5d208588d7db81606282e0773462ee596d7ad13a4a08559ad097c8"
+  },
+  {
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "sha256": "81d4018a9a4f5c4c9763af41af70fdc847c76ea148dee5b0e07801c799af0dfd"
+  },
+  {
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "sha256": "0cfbcd1b921cad0ee6d4f2235faa350db4ec17d6d6767e52e0765d50dd9d3190"
+  },
+  {
+    "file": "tests/e2e/filters-sorting.phase2-lists.spec.js",
+    "sha256": "2af1864d4e7ceab91c97572f08babe19e850925b5d7d0d210eb9568758751f73"
+  },
+  {
+    "file": "tests/e2e/filters-sorting.physical-tests.spec.js",
+    "sha256": "ebaa975cbfafa29de29e72a86beea96f547ebf39e4a05fd3a1fae7ce3e79e1a9"
+  },
+  {
+    "file": "tests/e2e/filters-sorting.tables.spec.js",
+    "sha256": "ab1cb178d1499c3215fd7a5364bcac8c9e36be4374c69ed45db39f17c7cac52c"
+  },
+  {
+    "file": "tests/e2e/filters-sorting.user-management.spec.js",
+    "sha256": "fbb1bf27818e535a18b99daf1d716e6704c4ebf4a152656baf9db14e9c9edf64"
+  },
+  {
+    "file": "tests/e2e/helpers/adminNavigation.js",
+    "sha256": "bce7497faafed4ae973f268dfcfb9bc059b5d9862cab2127b681df720ed9a986"
+  },
+  {
+    "file": "tests/e2e/helpers/paymentsSorting.js",
+    "sha256": "a57565074476363a3808d76ce7eece6804866ec85b5f4c252bd785afa05b0629"
+  },
+  {
+    "file": "tests/e2e/payments.responsive-boundaries.spec.js",
+    "sha256": "540f9e56e50470e682208f10e3561c53d192365aa8e6dd051a3774e1bce00327"
+  },
+  {
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "sha256": "d05add0f518e8c763d51d96e20beeea01ebb6b7794e5cdb19b2a3cde0960e53f"
+  },
+  {
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "sha256": "f96b94c1162a3b8eb30c91cc2a2b448a305e0d602f3f7a9673d8c14c740daf0f"
+  },
+  {
+    "file": "tests/e2e/roles.modules-navigation.spec.js",
+    "sha256": "4f0786da0053ea3caae0c28ea31f75eeab4e30dded2bc261c2dbf2823158ea40"
+  },
+  {
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "sha256": "e646031489fe650719f72108b49cb929479ceb002b5916f0c03ab10249fd426c"
+  },
+  {
+    "file": "tests/integration/edge-http.local.test.cjs",
+    "sha256": "0e82801cbadea7521c6d786b1ca22cdf897fa221e77ef5702159648c00bf127a"
+  },
+  {
+    "file": "tests/integration/functions-health.local.test.cjs",
+    "sha256": "4920d73114c61dee8667226f2cca4f2a416394906005f1a608e8dcb7452b514e"
+  },
+  {
+    "file": "tests/integration/gamification.local.test.cjs",
+    "sha256": "c61e0b09cddfc55a72c617392cb35e3bdf4ba4e4067dedcb754badd8f81444ab"
+  },
+  {
+    "file": "tests/integration/local-fixture.cjs",
+    "sha256": "62eb41b62bed2e02fb5e8ee46596c0bf1593fb48d2ab04693de09d34095c6e73"
+  },
+  {
+    "file": "tests/integration/security.local.test.cjs",
+    "sha256": "f7cd89cf697d4df533f2a35c9be631dfadd2f123b9a73d9fe3909930eee390a7"
+  },
+  {
+    "file": "tests/integration/toolchain.dependencies.test.cjs",
+    "sha256": "1635504ab9d79fd0c517486f4a94e74fc7ea38be2b51da7132ede47daffdaa05"
+  },
+  {
+    "file": "tests/unit/authorization-edge.test.ts",
+    "sha256": "b877ccfb29b537de96de0262f6b379059b8e30e782865ba9ee39b2396f5d0758"
+  },
+  {
+    "file": "tests/unit/credentials-edge.test.ts",
+    "sha256": "9237338493b0b1fb8dbbccb2f062040e43d2cccc5cc9956244540e6087047dc2"
+  },
+  {
+    "file": "tests/unit/localTargetGuard.test.cjs",
+    "sha256": "17ffea81cc9c5ab2ef48349693f2aebb46a3237b34d576ee3485c915e941ff5c"
+  }
+]

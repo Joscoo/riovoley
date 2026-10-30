@@ -1,0 +1,2 @@
+{"supabase_network_riovoley-e2e-local":{"IPAMConfig":null,"Links":null,"Aliases":["edge_runtime"],"DriverOpts":null,"GwPriority":0,"NetworkID":"9bbdf95f8d3016089dfd38ba92f59c17ddd7c75669e4ee945e30512ea89cfeef","EndpointID":"7508c6091742818e2322eadc9002e598413e21b086ce7f91cf43f8c351493997","Gateway":"172.21.0.1","IPAddress":"172.21.0.2","MacAddress":"1e:94:40:cd:f4:32","IPPrefixLen":16,"IPv6Gateway":"","GlobalIPv6Address":"","GlobalIPv6PrefixLen":0,"DNSNames":["supabase_edge_runtime_riovoley-e2e-local","edge_runtime","08a3897d6266"]}}
+

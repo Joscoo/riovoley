@@ -1,0 +1,4 @@
+WARN: config section [inbucket] is deprecated and will be removed in v3, use [local_smtp] instead.
+Stopped services: [supabase_imgproxy_riovoley-e2e-local supabase_pg_meta_riovoley-e2e-local supabase_studio_riovoley-e2e-local supabase_edge_runtime_riovoley-e2e-local supabase_analytics_riovoley-e2e-local supabase_vector_riovoley-e2e-local supabase_pooler_riovoley-e2e-local]
+WARN: INBUCKET_URL is deprecated and will be removed in v3, use MAILPIT_URL instead.
+

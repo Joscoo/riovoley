@@ -1,0 +1,2 @@
+{"riovoley-e2e-loopback":{"IPAMConfig":null,"Links":null,"Aliases":["kong","api.supabase.internal"],"DriverOpts":null,"GwPriority":0,"NetworkID":"1476302f7392e028f5b2661dd30328029619e221673dfd8e3231a13a2c9ba418","EndpointID":"2959a6dd493c492ed7c82303d759adaaa0d4243a7adaa22b01caa5037f07c1df","Gateway":"172.20.0.1","IPAddress":"172.20.0.2","MacAddress":"5e:e9:54:13:10:a1","IPPrefixLen":16,"IPv6Gateway":"","GlobalIPv6Address":"","GlobalIPv6PrefixLen":0,"DNSNames":["supabase_kong_riovoley-e2e-local","kong","api.supabase.internal","e14005f54f93","047b8148781d"]}}
+

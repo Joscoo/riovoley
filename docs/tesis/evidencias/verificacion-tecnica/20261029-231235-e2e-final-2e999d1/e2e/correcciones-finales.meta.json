@@ -1,0 +1,15 @@
+{
+  "command": [
+    "git",
+    "diff",
+    "--",
+    "tests/e2e/filters-sorting.tables.spec.js",
+    "scripts/e2e/local/functions.cjs"
+  ],
+  "start": "2026-10-30T13:57:09.528Z",
+  "end": "2026-10-30T13:57:09.918Z",
+  "durationSeconds": 0.39,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

@@ -1,0 +1,5 @@
+{
+  "status": 503,
+  "endpoint": "loopback55321/functions/v1/send-credentials",
+  "method": "OPTIONS"
+}

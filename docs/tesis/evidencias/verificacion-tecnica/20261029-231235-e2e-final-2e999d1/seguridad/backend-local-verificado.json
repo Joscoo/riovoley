@@ -1,0 +1,6 @@
+{
+  "identityVerified": true,
+  "api": "http://127.0.0.1:55321",
+  "database": "127.0.0.1:55322",
+  "postgres": "17.11"
+}

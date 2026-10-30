@@ -1,0 +1,9 @@
+supabase_edge_runtime_riovoley-e2e-local Up 59 seconds
+supabase_inbucket_riovoley-e2e-local Up About an hour (healthy)
+supabase_kong_riovoley-e2e-local Up About an hour (healthy)
+supabase_db_riovoley-e2e-local Up About an hour (healthy)
+supabase_storage_riovoley-e2e-local Up About an hour (healthy)
+supabase_rest_riovoley-e2e-local Up About an hour
+supabase_realtime_riovoley-e2e-local Up About an hour (healthy)
+supabase_auth_riovoley-e2e-local Up About an hour (healthy)
+

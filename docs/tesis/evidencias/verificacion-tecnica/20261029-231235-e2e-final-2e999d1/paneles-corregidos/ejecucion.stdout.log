@@ -1,0 +1,260 @@
+
+Running 105 tests using 2 workers
+
+  ✓    1 [mobile-390] › tests\e2e\admin.provisioning-notifications.smoke.spec.js:7:1 › admin smoke: provisioning + notifications entrypoints (9.0s)
+GUIDED_REVIEW_METRICS[mobile-390]: {"rowCount":105,"nameCount":105,"actionGroupCount":105,"minRow":296,"maxRow":296,"minName":136,"maxName":208,"maxActions":270,"hasHorizontalOverflow":false,"scrollWidth":390,"viewport":390}
+  ✓    3 [mobile-390] › tests\e2e\asistencias.guided.review.spec.js:50:1 › guided review: admin asistencias quick mode per viewport (7.0s)
+  ✓    4 [mobile-390] › tests\e2e\filters-sorting.phase2-lists.spec.js:7:1 › phase2 athletes tab: filtros y orden con reset consistente (7.3s)
+  ✓    5 [mobile-390] › tests\e2e\filters-sorting.phase2-lists.spec.js:51:1 › phase2 schedules: filtros y orden con limpiar filtros (6.9s)
+  ✓    2 [mobile-390] › tests\e2e\admin.modules-navigation.spec.js:4:1 › admin: every module opens without a JavaScript crash (32.7s)
+  ✓    6 [mobile-390] › tests\e2e\filters-sorting.physical-tests.spec.js:7:1 › physical-tests: filtros + orden + limpiar filtros (7.3s)
+  ✓    8 [mobile-390] › tests\e2e\filters-sorting.user-management.spec.js:53:1 › user-management tabs: filtros y orden se actualizan y resetean por tab (10.0s)
+  ✓    9 [mobile-390] › tests\e2e\responsive.smoke.spec.js:99:1 › role dashboards responsive guard (optional env credentials) (4.5s)
+  ✓    7 [mobile-390] › tests\e2e\filters-sorting.tables.spec.js:20:1 › pagos: filtros base + orden de columnas por header (23.3s)
+  ✘   11 [mobile-390] › tests\e2e\filters-sorting.tables.spec.js:80:1 › asistencias: filtros del historial + orden por columnas (7.1s)
+  ✓   10 [mobile-390] › tests\e2e\roles.modules-navigation.spec.js:8:3 › trainer: every module renders without a JavaScript crash (17.4s)
+  ✓   12 [mobile-390] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: admin (3.8s)
+  ✓   14 [mobile-390] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: trainer (3.7s)
+  ✓   15 [mobile-390] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: student (3.5s)
+  ✓   13 [mobile-390] › tests\e2e\roles.modules-navigation.spec.js:8:3 › student: every module renders without a JavaScript crash (13.3s)
+  ✓   17 [mobile-430] › tests\e2e\admin.provisioning-notifications.smoke.spec.js:7:1 › admin smoke: provisioning + notifications entrypoints (10.2s)
+GUIDED_REVIEW_METRICS[mobile-430]: {"rowCount":105,"nameCount":105,"actionGroupCount":105,"minRow":336,"maxRow":336,"minName":136,"maxName":203,"maxActions":310,"hasHorizontalOverflow":false,"scrollWidth":430,"viewport":430}
+  ✓   18 [mobile-430] › tests\e2e\asistencias.guided.review.spec.js:50:1 › guided review: admin asistencias quick mode per viewport (7.8s)
+  ✓   19 [mobile-430] › tests\e2e\filters-sorting.phase2-lists.spec.js:7:1 › phase2 athletes tab: filtros y orden con reset consistente (7.8s)
+  ✓   16 [mobile-430] › tests\e2e\admin.modules-navigation.spec.js:4:1 › admin: every module opens without a JavaScript crash (36.4s)
+  ✓   20 [mobile-430] › tests\e2e\filters-sorting.phase2-lists.spec.js:51:1 › phase2 schedules: filtros y orden con limpiar filtros (8.0s)
+  ✓   21 [mobile-430] › tests\e2e\filters-sorting.physical-tests.spec.js:7:1 › physical-tests: filtros + orden + limpiar filtros (8.0s)
+  ✓   23 [mobile-430] › tests\e2e\filters-sorting.user-management.spec.js:53:1 › user-management tabs: filtros y orden se actualizan y resetean por tab (11.7s)
+  ✓   24 [mobile-430] › tests\e2e\responsive.smoke.spec.js:99:1 › role dashboards responsive guard (optional env credentials) (5.2s)
+  ✓   22 [mobile-430] › tests\e2e\filters-sorting.tables.spec.js:20:1 › pagos: filtros base + orden de columnas por header (26.8s)
+  ✘   26 [mobile-430] › tests\e2e\filters-sorting.tables.spec.js:80:1 › asistencias: filtros del historial + orden por columnas (7.6s)
+  ✓   27 [mobile-430] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: admin (3.6s)
+  ✓   25 [mobile-430] › tests\e2e\roles.modules-navigation.spec.js:8:3 › trainer: every module renders without a JavaScript crash (19.0s)
+  ✓   28 [mobile-430] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: trainer (4.0s)
+  ✓   30 [mobile-430] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: student (3.4s)
+  ✓   29 [mobile-430] › tests\e2e\roles.modules-navigation.spec.js:8:3 › student: every module renders without a JavaScript crash (13.8s)
+  ✓   32 [mobile-480] › tests\e2e\admin.provisioning-notifications.smoke.spec.js:7:1 › admin smoke: provisioning + notifications entrypoints (3.2s)
+  ✓   31 [mobile-480] › tests\e2e\admin.modules-navigation.spec.js:4:1 › admin: every module opens without a JavaScript crash (10.5s)
+GUIDED_REVIEW_METRICS[mobile-480]: {"rowCount":105,"nameCount":105,"actionGroupCount":105,"minRow":174,"maxRow":174,"minName":136,"maxName":148,"maxActions":148,"hasHorizontalOverflow":false,"scrollWidth":480,"viewport":480}
+  ✓   33 [mobile-480] › tests\e2e\asistencias.guided.review.spec.js:50:1 › guided review: admin asistencias quick mode per viewport (2.3s)
+  ✓   34 [mobile-480] › tests\e2e\filters-sorting.phase2-lists.spec.js:7:1 › phase2 athletes tab: filtros y orden con reset consistente (2.6s)
+  ✓   35 [mobile-480] › tests\e2e\filters-sorting.physical-tests.spec.js:7:1 › physical-tests: filtros + orden + limpiar filtros (3.0s)
+  ✓   36 [mobile-480] › tests\e2e\filters-sorting.phase2-lists.spec.js:51:1 › phase2 schedules: filtros y orden con limpiar filtros (2.8s)
+  ✓   38 [mobile-480] › tests\e2e\filters-sorting.user-management.spec.js:53:1 › user-management tabs: filtros y orden se actualizan y resetean por tab (3.2s)
+  ✓   37 [mobile-480] › tests\e2e\filters-sorting.tables.spec.js:20:1 › pagos: filtros base + orden de columnas por header (5.4s)
+  ✓   39 [mobile-480] › tests\e2e\responsive.smoke.spec.js:99:1 › role dashboards responsive guard (optional env credentials) (2.0s)
+  ✘   40 [mobile-480] › tests\e2e\filters-sorting.tables.spec.js:80:1 › asistencias: filtros del historial + orden por columnas (2.4s)
+  ✓   42 [mobile-480] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: admin (1.5s)
+  ✓   43 [mobile-480] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: trainer (1.3s)
+  ✓   41 [mobile-480] › tests\e2e\roles.modules-navigation.spec.js:8:3 › trainer: every module renders without a JavaScript crash (6.5s)
+  ✓   44 [mobile-480] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: student (1.5s)
+  ✓   45 [mobile-480] › tests\e2e\roles.modules-navigation.spec.js:8:3 › student: every module renders without a JavaScript crash (2.7s)
+  ✓   47 [tablet-768] › tests\e2e\admin.provisioning-notifications.smoke.spec.js:7:1 › admin smoke: provisioning + notifications entrypoints (8.3s)
+GUIDED_REVIEW_METRICS[tablet-768]: {"rowCount":105,"nameCount":105,"actionGroupCount":105,"minRow":314,"maxRow":314,"minName":136,"maxName":208,"maxActions":76,"hasHorizontalOverflow":false,"scrollWidth":768,"viewport":768}
+  ✓   48 [tablet-768] › tests\e2e\asistencias.guided.review.spec.js:50:1 › guided review: admin asistencias quick mode per viewport (9.4s)
+  ✓   49 [tablet-768] › tests\e2e\filters-sorting.phase2-lists.spec.js:7:1 › phase2 athletes tab: filtros y orden con reset consistente (5.8s)
+  ✓   46 [tablet-768] › tests\e2e\admin.modules-navigation.spec.js:4:1 › admin: every module opens without a JavaScript crash (28.8s)
+  ✓   50 [tablet-768] › tests\e2e\filters-sorting.phase2-lists.spec.js:51:1 › phase2 schedules: filtros y orden con limpiar filtros (7.3s)
+  ✓   51 [tablet-768] › tests\e2e\filters-sorting.physical-tests.spec.js:7:1 › physical-tests: filtros + orden + limpiar filtros (7.0s)
+  ✓   53 [tablet-768] › tests\e2e\filters-sorting.user-management.spec.js:53:1 › user-management tabs: filtros y orden se actualizan y resetean por tab (9.3s)
+  ✓   54 [tablet-768] › tests\e2e\responsive.smoke.spec.js:99:1 › role dashboards responsive guard (optional env credentials) (4.7s)
+  ✓   52 [tablet-768] › tests\e2e\filters-sorting.tables.spec.js:20:1 › pagos: filtros base + orden de columnas por header (22.0s)
+  ✘   56 [tablet-768] › tests\e2e\filters-sorting.tables.spec.js:80:1 › asistencias: filtros del historial + orden por columnas (7.3s)
+  ✓   55 [tablet-768] › tests\e2e\roles.modules-navigation.spec.js:8:3 › trainer: every module renders without a JavaScript crash (17.0s)
+  ✓   57 [tablet-768] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: admin (3.8s)
+  ✓   59 [tablet-768] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: trainer (3.9s)
+  ✓   60 [tablet-768] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: student (3.2s)
+  ✓   58 [tablet-768] › tests\e2e\roles.modules-navigation.spec.js:8:3 › student: every module renders without a JavaScript crash (12.7s)
+  ✓   61 [tablet-1024] › tests\e2e\admin.modules-navigation.spec.js:4:1 › admin: every module opens without a JavaScript crash (6.3s)
+  ✓   62 [tablet-1024] › tests\e2e\admin.provisioning-notifications.smoke.spec.js:7:1 › admin smoke: provisioning + notifications entrypoints (2.2s)
+  ✓   64 [tablet-1024] › tests\e2e\filters-sorting.phase2-lists.spec.js:7:1 › phase2 athletes tab: filtros y orden con reset consistente (2.0s)
+GUIDED_REVIEW_METRICS[tablet-1024]: {"rowCount":105,"nameCount":105,"actionGroupCount":105,"minRow":290,"maxRow":290,"minName":136,"maxName":208,"maxActions":52,"hasHorizontalOverflow":false,"scrollWidth":1024,"viewport":1024}
+  ✓   63 [tablet-1024] › tests\e2e\asistencias.guided.review.spec.js:50:1 › guided review: admin asistencias quick mode per viewport (4.0s)
+  ✓   65 [tablet-1024] › tests\e2e\filters-sorting.phase2-lists.spec.js:51:1 › phase2 schedules: filtros y orden con limpiar filtros (2.9s)
+  ✓   66 [tablet-1024] › tests\e2e\filters-sorting.physical-tests.spec.js:7:1 › physical-tests: filtros + orden + limpiar filtros (3.0s)
+  ✓   68 [tablet-1024] › tests\e2e\filters-sorting.user-management.spec.js:53:1 › user-management tabs: filtros y orden se actualizan y resetean por tab (3.3s)
+  ✓   67 [tablet-1024] › tests\e2e\filters-sorting.tables.spec.js:20:1 › pagos: filtros base + orden de columnas por header (5.7s)
+  ✓   69 [tablet-1024] › tests\e2e\responsive.smoke.spec.js:99:1 › role dashboards responsive guard (optional env credentials) (2.0s)
+  ✘   70 [tablet-1024] › tests\e2e\filters-sorting.tables.spec.js:80:1 › asistencias: filtros del historial + orden por columnas (2.0s)
+  ✓   71 [tablet-1024] › tests\e2e\roles.modules-navigation.spec.js:8:3 › trainer: every module renders without a JavaScript crash (4.6s)
+  ✓   72 [tablet-1024] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: admin (2.1s)
+  ✓   74 [tablet-1024] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: trainer (1.6s)
+  ✓   73 [tablet-1024] › tests\e2e\roles.modules-navigation.spec.js:8:3 › student: every module renders without a JavaScript crash (2.3s)
+  ✓   75 [tablet-1024] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: student (1.6s)
+  ✓   77 [desktop-1440] › tests\e2e\admin.provisioning-notifications.smoke.spec.js:7:1 › admin smoke: provisioning + notifications entrypoints (2.7s)
+  ✓   76 [desktop-1440] › tests\e2e\admin.modules-navigation.spec.js:4:1 › admin: every module opens without a JavaScript crash (6.7s)
+GUIDED_REVIEW_METRICS[desktop-1440]: {"rowCount":105,"nameCount":105,"actionGroupCount":105,"minRow":498,"maxRow":498,"minName":136,"maxName":208,"maxActions":136,"hasHorizontalOverflow":false,"scrollWidth":1440,"viewport":1440}
+  ✓   78 [desktop-1440] › tests\e2e\asistencias.guided.review.spec.js:50:1 › guided review: admin asistencias quick mode per viewport (4.0s)
+  ✓   79 [desktop-1440] › tests\e2e\filters-sorting.phase2-lists.spec.js:7:1 › phase2 athletes tab: filtros y orden con reset consistente (2.4s)
+  ✓   80 [desktop-1440] › tests\e2e\filters-sorting.physical-tests.spec.js:7:1 › physical-tests: filtros + orden + limpiar filtros (2.5s)
+  ✓   81 [desktop-1440] › tests\e2e\filters-sorting.phase2-lists.spec.js:51:1 › phase2 schedules: filtros y orden con limpiar filtros (3.2s)
+  ✓   83 [desktop-1440] › tests\e2e\filters-sorting.user-management.spec.js:53:1 › user-management tabs: filtros y orden se actualizan y resetean por tab (3.2s)
+  ✓   84 [desktop-1440] › tests\e2e\responsive.smoke.spec.js:99:1 › role dashboards responsive guard (optional env credentials) (2.3s)
+  ✓   82 [desktop-1440] › tests\e2e\filters-sorting.tables.spec.js:20:1 › pagos: filtros base + orden de columnas por header (7.1s)
+  ✘   86 [desktop-1440] › tests\e2e\filters-sorting.tables.spec.js:80:1 › asistencias: filtros del historial + orden por columnas (2.4s)
+  ✓   85 [desktop-1440] › tests\e2e\roles.modules-navigation.spec.js:8:3 › trainer: every module renders without a JavaScript crash (4.3s)
+  ✓   87 [desktop-1440] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: admin (2.5s)
+  ✓   88 [desktop-1440] › tests\e2e\roles.modules-navigation.spec.js:8:3 › student: every module renders without a JavaScript crash (2.7s)
+  ✓   89 [desktop-1440] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: trainer (1.7s)
+  ✓   90 [desktop-1440] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: student (1.7s)
+  ✓   92 [desktop-1920] › tests\e2e\admin.provisioning-notifications.smoke.spec.js:7:1 › admin smoke: provisioning + notifications entrypoints (2.6s)
+  ✓   91 [desktop-1920] › tests\e2e\admin.modules-navigation.spec.js:4:1 › admin: every module opens without a JavaScript crash (6.9s)
+  ✓   94 [desktop-1920] › tests\e2e\filters-sorting.phase2-lists.spec.js:7:1 › phase2 athletes tab: filtros y orden con reset consistente (2.7s)
+GUIDED_REVIEW_METRICS[desktop-1920]: {"rowCount":105,"nameCount":105,"actionGroupCount":105,"minRow":586,"maxRow":586,"minName":136,"maxName":208,"maxActions":136,"hasHorizontalOverflow":false,"scrollWidth":1920,"viewport":1920}
+  ✓   93 [desktop-1920] › tests\e2e\asistencias.guided.review.spec.js:50:1 › guided review: admin asistencias quick mode per viewport (5.1s)
+  ✓   95 [desktop-1920] › tests\e2e\filters-sorting.phase2-lists.spec.js:51:1 › phase2 schedules: filtros y orden con limpiar filtros (3.0s)
+  ✓   96 [desktop-1920] › tests\e2e\filters-sorting.physical-tests.spec.js:7:1 › physical-tests: filtros + orden + limpiar filtros (2.9s)
+  ✓   98 [desktop-1920] › tests\e2e\filters-sorting.user-management.spec.js:53:1 › user-management tabs: filtros y orden se actualizan y resetean por tab (3.9s)
+  ✓   99 [desktop-1920] › tests\e2e\responsive.smoke.spec.js:99:1 › role dashboards responsive guard (optional env credentials) (2.4s)
+  ✓   97 [desktop-1920] › tests\e2e\filters-sorting.tables.spec.js:20:1 › pagos: filtros base + orden de columnas por header (7.8s)
+  ✘  101 [desktop-1920] › tests\e2e\filters-sorting.tables.spec.js:80:1 › asistencias: filtros del historial + orden por columnas (2.6s)
+  ✓  100 [desktop-1920] › tests\e2e\roles.modules-navigation.spec.js:8:3 › trainer: every module renders without a JavaScript crash (5.3s)
+  ✓  102 [desktop-1920] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: admin (1.8s)
+  ✓  103 [desktop-1920] › tests\e2e\roles.modules-navigation.spec.js:8:3 › student: every module renders without a JavaScript crash (2.8s)
+  ✓  104 [desktop-1920] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: trainer (2.3s)
+  ✓  105 [desktop-1920] › tests\e2e\roles.panels-navigation.smoke.spec.js:87:3 › role panel smoke: student (1.9s)
+
+
+  1) [mobile-390] › tests\e2e\filters-sorting.tables.spec.js:80:1 › asistencias: filtros del historial + orden por columnas 
+
+    Error: toBeOK can be only used with APIResponse object
+
+      136 |   const resetResponse = await (await resetRequestPromise).response();
+      137 |   expect(resetResponse).not.toBeNull();
+    > 138 |   await expect(resetResponse).toBeOK();
+          |                               ^
+      139 |   const resetRows = await resetResponse.json();
+      140 |   expect(Array.isArray(resetRows)).toBe(true);
+      141 |   await expect(categoriaFilter).toHaveValue('');
+        at D:\Riovoley\riovoley\tests\e2e\filters-sorting.tables.spec.js:138:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\verificacion-tecnica\20261029-231235-e2e-final-2e999d1\paneles-corregidos\artefactos\filters-sorting.tables-asi-bcba8-istorial-orden-por-columnas-mobile-390\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\verificacion-tecnica\20261029-231235-e2e-final-2e999d1\paneles-corregidos\artefactos\filters-sorting.tables-asi-bcba8-istorial-orden-por-columnas-mobile-390\error-context.md
+
+  2) [mobile-430] › tests\e2e\filters-sorting.tables.spec.js:80:1 › asistencias: filtros del historial + orden por columnas 
+
+    Error: toBeOK can be only used with APIResponse object
+
+      136 |   const resetResponse = await (await resetRequestPromise).response();
+      137 |   expect(resetResponse).not.toBeNull();
+    > 138 |   await expect(resetResponse).toBeOK();
+          |                               ^
+      139 |   const resetRows = await resetResponse.json();
+      140 |   expect(Array.isArray(resetRows)).toBe(true);
+      141 |   await expect(categoriaFilter).toHaveValue('');
+        at D:\Riovoley\riovoley\tests\e2e\filters-sorting.tables.spec.js:138:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\verificacion-tecnica\20261029-231235-e2e-final-2e999d1\paneles-corregidos\artefactos\filters-sorting.tables-asi-bcba8-istorial-orden-por-columnas-mobile-430\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\verificacion-tecnica\20261029-231235-e2e-final-2e999d1\paneles-corregidos\artefactos\filters-sorting.tables-asi-bcba8-istorial-orden-por-columnas-mobile-430\error-context.md
+
+  3) [mobile-480] › tests\e2e\filters-sorting.tables.spec.js:80:1 › asistencias: filtros del historial + orden por columnas 
+
+    Error: toBeOK can be only used with APIResponse object
+
+      136 |   const resetResponse = await (await resetRequestPromise).response();
+      137 |   expect(resetResponse).not.toBeNull();
+    > 138 |   await expect(resetResponse).toBeOK();
+          |                               ^
+      139 |   const resetRows = await resetResponse.json();
+      140 |   expect(Array.isArray(resetRows)).toBe(true);
+      141 |   await expect(categoriaFilter).toHaveValue('');
+        at D:\Riovoley\riovoley\tests\e2e\filters-sorting.tables.spec.js:138:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\verificacion-tecnica\20261029-231235-e2e-final-2e999d1\paneles-corregidos\artefactos\filters-sorting.tables-asi-bcba8-istorial-orden-por-columnas-mobile-480\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\verificacion-tecnica\20261029-231235-e2e-final-2e999d1\paneles-corregidos\artefactos\filters-sorting.tables-asi-bcba8-istorial-orden-por-columnas-mobile-480\error-context.md
+
+  4) [tablet-768] › tests\e2e\filters-sorting.tables.spec.js:80:1 › asistencias: filtros del historial + orden por columnas 
+
+    Error: toBeOK can be only used with APIResponse object
+
+      136 |   const resetResponse = await (await resetRequestPromise).response();
+      137 |   expect(resetResponse).not.toBeNull();
+    > 138 |   await expect(resetResponse).toBeOK();
+          |                               ^
+      139 |   const resetRows = await resetResponse.json();
+      140 |   expect(Array.isArray(resetRows)).toBe(true);
+      141 |   await expect(categoriaFilter).toHaveValue('');
+        at D:\Riovoley\riovoley\tests\e2e\filters-sorting.tables.spec.js:138:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\verificacion-tecnica\20261029-231235-e2e-final-2e999d1\paneles-corregidos\artefactos\filters-sorting.tables-asi-bcba8-istorial-orden-por-columnas-tablet-768\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\verificacion-tecnica\20261029-231235-e2e-final-2e999d1\paneles-corregidos\artefactos\filters-sorting.tables-asi-bcba8-istorial-orden-por-columnas-tablet-768\error-context.md
+
+  5) [tablet-1024] › tests\e2e\filters-sorting.tables.spec.js:80:1 › asistencias: filtros del historial + orden por columnas 
+
+    Error: toBeOK can be only used with APIResponse object
+
+      136 |   const resetResponse = await (await resetRequestPromise).response();
+      137 |   expect(resetResponse).not.toBeNull();
+    > 138 |   await expect(resetResponse).toBeOK();
+          |                               ^
+      139 |   const resetRows = await resetResponse.json();
+      140 |   expect(Array.isArray(resetRows)).toBe(true);
+      141 |   await expect(categoriaFilter).toHaveValue('');
+        at D:\Riovoley\riovoley\tests\e2e\filters-sorting.tables.spec.js:138:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\verificacion-tecnica\20261029-231235-e2e-final-2e999d1\paneles-corregidos\artefactos\filters-sorting.tables-asi-bcba8-istorial-orden-por-columnas-tablet-1024\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\verificacion-tecnica\20261029-231235-e2e-final-2e999d1\paneles-corregidos\artefactos\filters-sorting.tables-asi-bcba8-istorial-orden-por-columnas-tablet-1024\error-context.md
+
+  6) [desktop-1440] › tests\e2e\filters-sorting.tables.spec.js:80:1 › asistencias: filtros del historial + orden por columnas 
+
+    Error: toBeOK can be only used with APIResponse object
+
+      136 |   const resetResponse = await (await resetRequestPromise).response();
+      137 |   expect(resetResponse).not.toBeNull();
+    > 138 |   await expect(resetResponse).toBeOK();
+          |                               ^
+      139 |   const resetRows = await resetResponse.json();
+      140 |   expect(Array.isArray(resetRows)).toBe(true);
+      141 |   await expect(categoriaFilter).toHaveValue('');
+        at D:\Riovoley\riovoley\tests\e2e\filters-sorting.tables.spec.js:138:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\verificacion-tecnica\20261029-231235-e2e-final-2e999d1\paneles-corregidos\artefactos\filters-sorting.tables-asi-bcba8-istorial-orden-por-columnas-desktop-1440\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\verificacion-tecnica\20261029-231235-e2e-final-2e999d1\paneles-corregidos\artefactos\filters-sorting.tables-asi-bcba8-istorial-orden-por-columnas-desktop-1440\error-context.md
+
+  7) [desktop-1920] › tests\e2e\filters-sorting.tables.spec.js:80:1 › asistencias: filtros del historial + orden por columnas 
+
+    Error: toBeOK can be only used with APIResponse object
+
+      136 |   const resetResponse = await (await resetRequestPromise).response();
+      137 |   expect(resetResponse).not.toBeNull();
+    > 138 |   await expect(resetResponse).toBeOK();
+          |                               ^
+      139 |   const resetRows = await resetResponse.json();
+      140 |   expect(Array.isArray(resetRows)).toBe(true);
+      141 |   await expect(categoriaFilter).toHaveValue('');
+        at D:\Riovoley\riovoley\tests\e2e\filters-sorting.tables.spec.js:138:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs\tesis\evidencias\verificacion-tecnica\20261029-231235-e2e-final-2e999d1\paneles-corregidos\artefactos\filters-sorting.tables-asi-bcba8-istorial-orden-por-columnas-desktop-1920\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs\tesis\evidencias\verificacion-tecnica\20261029-231235-e2e-final-2e999d1\paneles-corregidos\artefactos\filters-sorting.tables-asi-bcba8-istorial-orden-por-columnas-desktop-1920\error-context.md
+
+  7 failed
+    [mobile-390] › tests\e2e\filters-sorting.tables.spec.js:80:1 › asistencias: filtros del historial + orden por columnas 
+    [mobile-430] › tests\e2e\filters-sorting.tables.spec.js:80:1 › asistencias: filtros del historial + orden por columnas 
+    [mobile-480] › tests\e2e\filters-sorting.tables.spec.js:80:1 › asistencias: filtros del historial + orden por columnas 
+    [tablet-768] › tests\e2e\filters-sorting.tables.spec.js:80:1 › asistencias: filtros del historial + orden por columnas 
+    [tablet-1024] › tests\e2e\filters-sorting.tables.spec.js:80:1 › asistencias: filtros del historial + orden por columnas 
+    [desktop-1440] › tests\e2e\filters-sorting.tables.spec.js:80:1 › asistencias: filtros del historial + orden por columnas 
+    [desktop-1920] › tests\e2e\filters-sorting.tables.spec.js:80:1 › asistencias: filtros del historial + orden por columnas 
+  98 passed (6.1m)
+

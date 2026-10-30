@@ -1,0 +1,54 @@
+{
+  "observedAt": "2026-10-30T13:49:55.665Z",
+  "results": [
+    {
+      "service": "db",
+      "bindings": {
+        "5432/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "55322"
+          }
+        ]
+      },
+      "verified": true
+    },
+    {
+      "service": "kong",
+      "bindings": {
+        "8000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "55321"
+          }
+        ]
+      },
+      "verified": true
+    },
+    {
+      "service": "inbucket",
+      "bindings": {
+        "1025/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "55325"
+          }
+        ],
+        "1110/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "55326"
+          }
+        ],
+        "8025/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "55324"
+          }
+        ]
+      },
+      "verified": true
+    }
+  ],
+  "note": "Se conservaron contenedores anteriores detenidos y sus volúmenes; solo se recrearon los tres contenedores descartables de este proyecto para fijar HostIp."
+}

@@ -1,0 +1,15 @@
+{
+  "textFilesChecked": 163,
+  "embeddedArchivesChecked": 6,
+  "redactedCopies": [
+    "limites-finales\\html\\index.html",
+    "mutaciones-reanudadas\\html\\index.html",
+    "paneles-corregidos\\html\\index.html",
+    "paneles-finales\\html\\index.html",
+    "paneles-verificados\\html\\index.html"
+  ],
+  "unresolved": [],
+  "unresolvedArchiveEntries": [],
+  "images": "Solo fixtures locales. Se revisan además capturas representativas y contextos; no se pretende certificar OCR exhaustivo.",
+  "scope": "Valores de claves/contraseñas locales y variables sensibles institucionales, JWT, claves Supabase y correos; incluye ZIP base64 de los reportes HTML. Redacciones de copias, sin alterar estados ni cantidades."
+}

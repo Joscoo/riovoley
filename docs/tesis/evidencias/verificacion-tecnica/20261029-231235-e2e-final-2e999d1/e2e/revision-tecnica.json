@@ -1,0 +1,22 @@
+{
+  "scope": [
+    "tests/e2e/filters-sorting.tables.spec.js",
+    "scripts/e2e/local/functions.cjs",
+    "scripts/audit/closure/report-e2e-final.cjs",
+    "scripts/audit/closure/finalize-e2e-final.cjs"
+  ],
+  "method": "Revisión de código de solo lectura por segundo agente; no se considera caso automatizado",
+  "findings": [
+    {
+      "code": "R1",
+      "finding": "toBeOK requiere APIResponse, no Response del navegador",
+      "resolution": "Usar Response.ok() y volver a ejecutar el grupo completo"
+    },
+    {
+      "code": "R2",
+      "finding": "Conservar etiquetas y denominadores de todos los grupos completos, incluidos los fallidos",
+      "resolution": "Registrar dos intentos previos de paneles y calcular invocaciones completas con JSON reales"
+    }
+  ],
+  "otherBlockingFindings": 0
+}

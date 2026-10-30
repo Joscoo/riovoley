@@ -1,0 +1,17 @@
+{
+  "os": "Windows_NT",
+  "release": "10.0.26300",
+  "architecture": "x64",
+  "node": "v24.18.0",
+  "playwright": "1.59.1",
+  "timezone": "America/Guayaquil",
+  "baseURL": "http://127.0.0.1:6100",
+  "backend": "http://127.0.0.1:55321",
+  "config": "playwright.local.config.cjs",
+  "workers": 2,
+  "retries": 0,
+  "serviceWorkers": "block",
+  "trace": "off",
+  "video": "off",
+  "externalProxy": "loopback:9 cerrado"
+}

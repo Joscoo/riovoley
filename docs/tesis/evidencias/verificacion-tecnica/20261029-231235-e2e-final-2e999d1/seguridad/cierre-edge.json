@@ -1,0 +1,5 @@
+{
+  "time": "2026-10-30T14:05:56.129Z",
+  "reason": "Cierre intencional del servidor de funciones de la auditoría tras completar las pruebas. Solo contenedor del proyecto local verificado.",
+  "productionChanged": false
+}

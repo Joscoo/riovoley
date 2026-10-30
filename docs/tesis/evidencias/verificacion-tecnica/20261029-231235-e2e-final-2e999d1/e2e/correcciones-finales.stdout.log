@@ -1,0 +1,52 @@
+diff --git a/scripts/e2e/local/functions.cjs b/scripts/e2e/local/functions.cjs
+index 37e7b9f..bb7f3fc 100644
+--- a/scripts/e2e/local/functions.cjs
++++ b/scripts/e2e/local/functions.cjs
+@@ -6,4 +6,4 @@ const destination=path.join(h.runtime,'stack/supabase/functions');
+ fs.cpSync(path.join(h.root,'supabase/functions'),destination,{recursive:true,filter:file=>!path.basename(file).startsWith('.env')});
+ const envFile=require('./evidence.cjs').emptyEdgeEnv(h.runtime);
+ const env=Object.fromEntries(Object.entries(process.env).filter(([key])=>!/^SUPABASE_|^RESEND_|^FCM_|^WHATSAPP_/.test(key)));
+-h.run('edge-functions/serve',h.cli,['functions','serve','--workdir',path.join(h.runtime,'stack'),'--env-file',envFile],{env,privateOutput:true}).catch(e=>{console.error(e.message);process.exitCode=1;});
++h.run('edge-functions/serve',h.cli,['functions','serve','--workdir',path.join(h.runtime,'stack'),'--network-id','riovoley-e2e-loopback','--env-file',envFile],{env,privateOutput:true}).catch(e=>{console.error(e.message);process.exitCode=1;});
+diff --git a/tests/e2e/filters-sorting.tables.spec.js b/tests/e2e/filters-sorting.tables.spec.js
+index 7b7bbcb..174fb31 100644
+--- a/tests/e2e/filters-sorting.tables.spec.js
++++ b/tests/e2e/filters-sorting.tables.spec.js
+@@ -120,7 +120,24 @@ test('asistencias: filtros del historial + orden por columnas', async ({ page })
+     await expect(metodoPagoFilter).not.toHaveValue('');
+   }
+ 
++  // Wait for the request caused by resetting the filters. A visible container
++  // can belong to the previous query and disappear during the next render.
++  const resetRequestPromise = page.waitForRequest((request) => {
++    const url = new URL(request.url());
++    const dates = url.searchParams.getAll('fecha');
++    return request.method() === 'GET'
++      && url.pathname.endsWith('/rest/v1/attendances')
++      && dates.includes(`gte.${initialDateFrom}`)
++      && dates.includes(`lte.${initialDateTo}`)
++      && !url.searchParams.has('student_id')
++      && !url.searchParams.has('metodo_pago_id');
++  });
+   await clearFiltersButton.click();
++  const resetResponse = await (await resetRequestPromise).response();
++  expect(resetResponse).not.toBeNull();
++  expect(resetResponse.ok()).toBe(true);
++  const resetRows = await resetResponse.json();
++  expect(Array.isArray(resetRows)).toBe(true);
+   await expect(categoriaFilter).toHaveValue('');
+   await expect(atletaFilter).toHaveValue('');
+   await expect(metodoPagoFilter).toHaveValue('');
+@@ -130,9 +147,8 @@ test('asistencias: filtros del historial + orden por columnas', async ({ page })
+   const historySection = page.getByTestId('attendance-history-table').first();
+   await expect(historySection).toBeVisible();
+   const dayHeaders = historySection.getByTestId('attendance-day-header');
+-  const dayCount = await dayHeaders.count();
+-
+-  if (dayCount > 0) {
++  if (resetRows.length > 0) {
++    await expect(dayHeaders.first()).toBeVisible();
+     const controlledId = await dayHeaders.first().locator('button[aria-expanded]').getAttribute('aria-controls');
+     const dayToggle = historySection.locator(`button[aria-controls="${controlledId}"]`);
+     if (await dayToggle.getAttribute('aria-expanded') === 'false') await dayToggle.click();
+

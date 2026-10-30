@@ -1,0 +1,9 @@
+ M docs/tesis/README.md
+ M scripts/e2e/local/functions.cjs
+ M tests/e2e/filters-sorting.tables.spec.js
+?? docs/tesis/evidencias/verificacion-tecnica/20261029-231235-e2e-final-2e999d1/
+?? scripts/audit/closure/finalize-e2e-final.cjs
+?? scripts/audit/closure/initialize-e2e-final.cjs
+?? scripts/audit/closure/report-e2e-final.cjs
+?? scripts/audit/closure/verify-e2e-final-persistence.cjs
+

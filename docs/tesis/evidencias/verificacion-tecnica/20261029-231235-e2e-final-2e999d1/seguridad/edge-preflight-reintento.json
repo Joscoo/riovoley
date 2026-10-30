@@ -1,0 +1,6 @@
+{
+  "status": 503,
+  "method": "OPTIONS",
+  "endpoint": "loopback55321/functions/v1/send-email",
+  "body": "{\"message\":\"name resolution failed\"}"
+}

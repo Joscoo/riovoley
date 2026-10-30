@@ -1,0 +1,321 @@
+{
+  "generatedAt": "2026-10-30T14:05:22.593Z",
+  "commit": "2e999d1944e3a83f01dc6b5af9fbf2c73e91dc46",
+  "environment": {
+    "os": "Windows_NT",
+    "release": "10.0.26300",
+    "architecture": "x64",
+    "node": "v24.18.0",
+    "playwright": "1.59.1",
+    "timezone": "America/Guayaquil",
+    "baseURL": "http://127.0.0.1:6100",
+    "backend": "http://127.0.0.1:55321",
+    "config": "playwright.local.config.cjs",
+    "workers": 2,
+    "retries": 0,
+    "serviceWorkers": "block",
+    "trace": "off",
+    "video": "off",
+    "externalProxy": "loopback:9 cerrado"
+  },
+  "groups": [
+    {
+      "label": "publicas-finales",
+      "name": "Navegación pública, acceso anónimo y recuperación",
+      "startTime": "2026-10-29T23:15:46.538Z",
+      "duration": 106293.768,
+      "expected": 133,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0,
+      "meta": {
+        "command": [
+          "C:\\Program Files\\nodejs\\node.exe",
+          "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+          "test",
+          "tests/e2e/responsive.smoke.spec.js",
+          "tests/e2e/public.navigation-accessibility.spec.js",
+          "tests/e2e/auth.password-recovery.spec.js",
+          "tests/e2e/audit.protected-routes.spec.js",
+          "--config=playwright.local.config.cjs",
+          "--grep-invert=role dashboards responsive guard",
+          "--workers=2"
+        ],
+        "start": "2026-10-29T23:15:42.899Z",
+        "end": "2026-10-29T23:17:33.151Z",
+        "durationSeconds": 110.252,
+        "exitCode": 0,
+        "signal": null,
+        "cwd": "."
+      },
+      "evidence": "publicas-finales/resultados.json",
+      "html": "publicas-finales/html/index.html",
+      "cases": 133
+    },
+    {
+      "label": "paneles-verificados",
+      "name": "Paneles por rol, navegación, búsquedas, filtros y ordenación",
+      "startTime": "2026-10-30T13:58:24.519Z",
+      "duration": 378726.407,
+      "expected": 105,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0,
+      "meta": {
+        "command": [
+          "C:\\Program Files\\nodejs\\node.exe",
+          "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+          "test",
+          "tests/e2e/admin.modules-navigation.spec.js",
+          "tests/e2e/admin.provisioning-notifications.smoke.spec.js",
+          "tests/e2e/asistencias.guided.review.spec.js",
+          "tests/e2e/filters-sorting.phase2-lists.spec.js",
+          "tests/e2e/filters-sorting.physical-tests.spec.js",
+          "tests/e2e/filters-sorting.tables.spec.js",
+          "tests/e2e/filters-sorting.user-management.spec.js",
+          "tests/e2e/responsive.smoke.spec.js",
+          "tests/e2e/roles.modules-navigation.spec.js",
+          "tests/e2e/roles.panels-navigation.smoke.spec.js",
+          "--config=playwright.local.config.cjs",
+          "--grep-invert=public route responsive guard",
+          "--workers=2"
+        ],
+        "start": "2026-10-30T13:58:23.036Z",
+        "end": "2026-10-30T14:04:43.566Z",
+        "durationSeconds": 380.53,
+        "exitCode": 0,
+        "signal": null,
+        "cwd": "."
+      },
+      "evidence": "paneles-verificados/resultados.json",
+      "html": "paneles-verificados/html/index.html",
+      "cases": 105
+    },
+    {
+      "label": "mutaciones-reanudadas",
+      "name": "Alta de atleta, pago y asistencia con recarga",
+      "startTime": "2026-10-30T13:56:39.324Z",
+      "duration": 74081.644,
+      "expected": 7,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0,
+      "meta": {
+        "command": [
+          "C:\\Program Files\\nodejs\\node.exe",
+          "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+          "test",
+          "tests/e2e/admin.happy-path-controlled.spec.js",
+          "--config=playwright.local.config.cjs",
+          "--workers=2"
+        ],
+        "start": "2026-10-30T13:56:37.924Z",
+        "end": "2026-10-30T13:57:53.695Z",
+        "durationSeconds": 75.771,
+        "exitCode": 0,
+        "signal": null,
+        "cwd": "."
+      },
+      "evidence": "mutaciones-reanudadas/resultados.json",
+      "html": "mutaciones-reanudadas/html/index.html",
+      "cases": 7
+    },
+    {
+      "label": "limites-finales",
+      "name": "Límites adaptables de pagos",
+      "startTime": "2026-10-30T13:57:55.159Z",
+      "duration": 21485.41,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0,
+      "meta": {
+        "command": [
+          "C:\\Program Files\\nodejs\\node.exe",
+          "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+          "test",
+          "tests/e2e/payments.responsive-boundaries.spec.js",
+          "--config=playwright.local.config.cjs",
+          "--project=desktop-1440",
+          "--workers=2"
+        ],
+        "start": "2026-10-30T13:57:53.812Z",
+        "end": "2026-10-30T13:58:16.766Z",
+        "durationSeconds": 22.954,
+        "exitCode": 0,
+        "signal": null,
+        "cwd": "."
+      },
+      "evidence": "limites-finales/resultados.json",
+      "html": "limites-finales/html/index.html",
+      "cases": 4
+    }
+  ],
+  "total": {
+    "executed": 249,
+    "passed": 249,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "initialPanelResult": {
+    "label": "paneles-finales",
+    "executed": 105,
+    "passed": 104,
+    "failed": 1,
+    "skipped": 0,
+    "meta": {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+        "test",
+        "tests/e2e/admin.modules-navigation.spec.js",
+        "tests/e2e/admin.provisioning-notifications.smoke.spec.js",
+        "tests/e2e/asistencias.guided.review.spec.js",
+        "tests/e2e/filters-sorting.phase2-lists.spec.js",
+        "tests/e2e/filters-sorting.physical-tests.spec.js",
+        "tests/e2e/filters-sorting.tables.spec.js",
+        "tests/e2e/filters-sorting.user-management.spec.js",
+        "tests/e2e/responsive.smoke.spec.js",
+        "tests/e2e/roles.modules-navigation.spec.js",
+        "tests/e2e/roles.panels-navigation.smoke.spec.js",
+        "--config=playwright.local.config.cjs",
+        "--grep-invert=public route responsive guard",
+        "--workers=2"
+      ],
+      "start": "2026-10-29T23:17:33.272Z",
+      "end": "2026-10-29T23:24:37.725Z",
+      "durationSeconds": 424.453,
+      "exitCode": 1,
+      "signal": null,
+      "cwd": "."
+    },
+    "evidence": "paneles-finales/resultados.json"
+  },
+  "priorPanelResults": [
+    {
+      "label": "paneles-finales",
+      "executed": 105,
+      "passed": 104,
+      "failed": 1,
+      "skipped": 0,
+      "meta": {
+        "command": [
+          "C:\\Program Files\\nodejs\\node.exe",
+          "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+          "test",
+          "tests/e2e/admin.modules-navigation.spec.js",
+          "tests/e2e/admin.provisioning-notifications.smoke.spec.js",
+          "tests/e2e/asistencias.guided.review.spec.js",
+          "tests/e2e/filters-sorting.phase2-lists.spec.js",
+          "tests/e2e/filters-sorting.physical-tests.spec.js",
+          "tests/e2e/filters-sorting.tables.spec.js",
+          "tests/e2e/filters-sorting.user-management.spec.js",
+          "tests/e2e/responsive.smoke.spec.js",
+          "tests/e2e/roles.modules-navigation.spec.js",
+          "tests/e2e/roles.panels-navigation.smoke.spec.js",
+          "--config=playwright.local.config.cjs",
+          "--grep-invert=public route responsive guard",
+          "--workers=2"
+        ],
+        "start": "2026-10-29T23:17:33.272Z",
+        "end": "2026-10-29T23:24:37.725Z",
+        "durationSeconds": 424.453,
+        "exitCode": 1,
+        "signal": null,
+        "cwd": "."
+      },
+      "evidence": "paneles-finales/resultados.json"
+    },
+    {
+      "label": "paneles-corregidos",
+      "executed": 105,
+      "passed": 98,
+      "failed": 7,
+      "skipped": 0,
+      "meta": {
+        "command": [
+          "C:\\Program Files\\nodejs\\node.exe",
+          "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+          "test",
+          "tests/e2e/admin.modules-navigation.spec.js",
+          "tests/e2e/admin.provisioning-notifications.smoke.spec.js",
+          "tests/e2e/asistencias.guided.review.spec.js",
+          "tests/e2e/filters-sorting.phase2-lists.spec.js",
+          "tests/e2e/filters-sorting.physical-tests.spec.js",
+          "tests/e2e/filters-sorting.tables.spec.js",
+          "tests/e2e/filters-sorting.user-management.spec.js",
+          "tests/e2e/responsive.smoke.spec.js",
+          "tests/e2e/roles.modules-navigation.spec.js",
+          "tests/e2e/roles.panels-navigation.smoke.spec.js",
+          "--config=playwright.local.config.cjs",
+          "--grep-invert=public route responsive guard",
+          "--workers=2"
+        ],
+        "start": "2026-10-30T13:50:20.234Z",
+        "end": "2026-10-30T13:56:37.778Z",
+        "durationSeconds": 377.544,
+        "exitCode": 1,
+        "signal": null,
+        "cwd": "."
+      },
+      "evidence": "paneles-corregidos/resultados.json"
+    }
+  ],
+  "completedInvocations": {
+    "executed": 459,
+    "passed": 451,
+    "failed": 8,
+    "skipped": 0
+  },
+  "interrupted": {
+    "recordedAt": "2026-10-30T13:50:20.091Z",
+    "group": "mutaciones-finales",
+    "status": "INTERRUMPIDO SIN RESULTADO",
+    "reason": "La sesión anterior terminó antes de que Playwright emitiera JSON o metadatos; Docker se encontró detenido al reanudar. No se atribuyen casos aprobados al intento incompleto.",
+    "repeatedAs": "mutaciones-reanudadas",
+    "nextGroupNotStarted": "limites-finales"
+  },
+  "mockCases": 28,
+  "mutations": 7,
+  "guards": {
+    "executed": 8,
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0
+  },
+  "build": {
+    "file": "compilacion-web-build-1793315584461.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Riovoley\\riovoley\\node_modules\\react-scripts\\scripts\\build.js"
+    ],
+    "start": "2026-10-29T23:13:04.461Z",
+    "end": "2026-10-29T23:15:25.791Z",
+    "durationSeconds": 141.33,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  "persistence": {
+    "recordedAt": "2026-10-30T14:00:51.027Z",
+    "scope": "Consulta agregada de solo lectura sobre las altas sintéticas de la ventana exacta del flujo E2E. Control complementario; no añade casos al denominador Playwright.",
+    "readOnly": "on",
+    "window": {
+      "start": "2026-10-30T13:56:37.924Z",
+      "end": "2026-10-30T13:57:53.695Z"
+    },
+    "query": "WITH created AS (\n SELECT s.id FROM core.students s JOIN core.users u ON u.id=s.user_id\n WHERE u.nombre ~ '^E2E[0-9a-f]{12}$' AND u.apellido='Flow'\n AND u.created_at >= $1::timestamptz AND u.created_at <= $2::timestamptz\n)\nSELECT (SELECT count(*)::int FROM created) AS students,\n (SELECT count(*)::int FROM billing.payments WHERE student_id IN (SELECT id FROM created) AND deleted_at IS NULL) AS payments,\n (SELECT count(*)::int FROM billing.payments WHERE student_id IN (SELECT id FROM created) AND deleted_at IS NULL AND monto=35) AS paymentsWithExpectedAmount,\n (SELECT count(*)::int FROM training.attendances WHERE student_id IN (SELECT id FROM created)) AS attendances",
+    "counts": {
+      "students": 7,
+      "payments": 7,
+      "paymentswithexpectedamount": 7,
+      "attendances": 7
+    }
+  },
+  "state": "APROBADO",
+  "productionChanged": false,
+  "applicationChanged": false,
+  "testChange": "tests/e2e/filters-sorting.tables.spec.js: esperar la petición GET originada al limpiar filtros y decidir con sus filas reales, antes de comprobar el DOM; Response.ok() comprueba HTTP del navegador",
+  "harnessChange": "scripts/e2e/local/functions.cjs: reutilizar riovoley-e2e-loopback mediante --network-id"
+}
