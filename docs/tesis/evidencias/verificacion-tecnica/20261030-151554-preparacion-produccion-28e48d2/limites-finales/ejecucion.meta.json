@@ -1,0 +1,17 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+    "test",
+    "tests/e2e/payments.responsive-boundaries.spec.js",
+    "--config=playwright.local.config.cjs",
+    "--project=desktop-1440",
+    "--workers=2"
+  ],
+  "start": "2026-10-31T19:26:48.553Z",
+  "end": "2026-10-31T19:27:14.793Z",
+  "durationSeconds": 26.24,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

@@ -1,0 +1,7 @@
+Expected values to be strictly equal:
++ actual - expected
+
++ 'undefined'
+- 'string'
+
+

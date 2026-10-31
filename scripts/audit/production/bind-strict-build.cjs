@@ -1,0 +1,13 @@
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+const h=require('../../e2e/local/harness.cjs');
+const source=JSON.parse(fs.readFileSync(path.join(h.evidence,'compilacion-web/vercel-salida.json')));
+assert.deepEqual(source.sourceMaps,[]);
+const from=path.resolve(h.root,source.directory);assert.ok(from.startsWith(h.runtime+path.sep));
+const name='web-build-'+Date.now(),dest=path.join(h.runtime,name);assert.ok(!fs.existsSync(dest));
+fs.cpSync(from,dest,{recursive:true});
+const walk=d=>fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(d,e.name)):[path.join(d,e.name)]);
+const hash=f=>crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
+const files=walk(from).map(f=>{const rel=path.relative(from,f);assert.equal(hash(f),hash(path.join(dest,rel)));return {file:rel.replaceAll('\\','/'),sha256:hash(f)};});
+const pointer=path.join(h.runtime,'credentials.json'),local=JSON.parse(fs.readFileSync(pointer));
+const previous=local.activeBuild;local.activeBuild=name;fs.writeFileSync(pointer,JSON.stringify(local,null,2));
+h.write('compilacion-web/build-estricto-browser.json',{recordedAt:new Date().toISOString(),previousBuild:previous,strictBuild:source.directory,activeCopy:path.relative(h.root,dest),files,copiedBytesVerified:true,scope:'El smoke adicional usa una copia idéntica del build estricto final sin mapas. La regresión de 249 instancias usó el build previo con mapas, sobre las mismas fuentes src/ sin cambios; no se atribuye retroactivamente al artefacto sin mapas.'});

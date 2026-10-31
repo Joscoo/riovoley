@@ -1,0 +1,16 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "ci",
+    "--ignore-scripts",
+    "--no-audit",
+    "--no-fund"
+  ],
+  "start": "2026-10-31T19:18:18.206Z",
+  "end": "2026-10-31T19:21:50.022Z",
+  "durationSeconds": 211.816,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": ".e2e-local\\spikes\\clean-production-1793474297501"
+}

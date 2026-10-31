@@ -1,0 +1,222 @@
+TAP version 13
+# Subtest: Dev server adapta opciones antiguas y restringe host/CORS sin mutar la configuración original
+not ok 1 - Dev server adapta opciones antiguas y restringe host/CORS sin mutar la configuración original
+  ---
+  duration_ms: 2.5911
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\dev-server-config.test.cjs:6:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Cannot find module '../../scripts/toolchain/dev-server-config.cjs'
+    Require stack:
+    - D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs
+  code: 'MODULE_NOT_FOUND'
+  stack: |-
+    Module._resolveFilename (node:internal/modules/cjs/loader:1517:15)
+    wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    Module._load (node:internal/modules/cjs/loader:1294:5)
+    wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    Module.require (node:internal/modules/cjs/loader:1617:12)
+    require (node:internal/modules/helpers:153:16)
+    load (D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs:4:16)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs:8:12)
+  ...
+# Subtest: Dev server conserva TLS explícito en la opción server actual
+not ok 2 - Dev server conserva TLS explícito en la opción server actual
+  ---
+  duration_ms: 0.4749
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\dev-server-config.test.cjs:15:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Cannot find module '../../scripts/toolchain/dev-server-config.cjs'
+    Require stack:
+    - D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs
+  code: 'MODULE_NOT_FOUND'
+  stack: |-
+    Module._resolveFilename (node:internal/modules/cjs/loader:1517:15)
+    wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    Module._load (node:internal/modules/cjs/loader:1294:5)
+    wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    Module.require (node:internal/modules/cjs/loader:1617:12)
+    require (node:internal/modules/helpers:153:16)
+    load (D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs:4:16)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs:17:12)
+  ...
+# Subtest: Dev server mantiene orden before, middleware normal y after en HTTP real
+not ok 3 - Dev server mantiene orden before, middleware normal y after en HTTP real
+  ---
+  duration_ms: 2765.13
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\dev-server-config.test.cjs:21:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Cannot find module '../../scripts/toolchain/dev-server-config.cjs'
+    Require stack:
+    - D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs
+  code: 'MODULE_NOT_FOUND'
+  stack: |-
+    Module._resolveFilename (node:internal/modules/cjs/loader:1517:15)
+    wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    Module._load (node:internal/modules/cjs/loader:1294:5)
+    wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    Module.require (node:internal/modules/cjs/loader:1617:12)
+    require (node:internal/modules/helpers:153:16)
+    load (D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs:4:16)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs:23:12)
+  ...
+# Subtest: Dev server conserva una función setupMiddlewares preexistente
+not ok 4 - Dev server conserva una función setupMiddlewares preexistente
+  ---
+  duration_ms: 0.4526
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\dev-server-config.test.cjs:31:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Cannot find module '../../scripts/toolchain/dev-server-config.cjs'
+    Require stack:
+    - D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs
+  code: 'MODULE_NOT_FOUND'
+  stack: |-
+    Module._resolveFilename (node:internal/modules/cjs/loader:1517:15)
+    wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    Module._load (node:internal/modules/cjs/loader:1294:5)
+    wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    Module.require (node:internal/modules/cjs/loader:1617:12)
+    require (node:internal/modules/helpers:153:16)
+    load (D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs:4:16)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs:33:12)
+  ...
+# Subtest: Dev server convierte mapas proxy y conserva arrays ya modernos
+not ok 5 - Dev server convierte mapas proxy y conserva arrays ya modernos
+  ---
+  duration_ms: 0.3147
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\dev-server-config.test.cjs:37:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Cannot find module '../../scripts/toolchain/dev-server-config.cjs'
+    Require stack:
+    - D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs
+  code: 'MODULE_NOT_FOUND'
+  stack: |-
+    Module._resolveFilename (node:internal/modules/cjs/loader:1517:15)
+    wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    Module._load (node:internal/modules/cjs/loader:1294:5)
+    wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    Module.require (node:internal/modules/cjs/loader:1617:12)
+    require (node:internal/modules/helpers:153:16)
+    load (D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs:4:16)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs:38:14)
+  ...
+# Subtest: Dev server rechaza un host público o comodín en el perfil local
+not ok 6 - Dev server rechaza un host público o comodín en el perfil local
+  ---
+  duration_ms: 1.5466
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\dev-server-config.test.cjs:44:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /loopback/i. Input:
+    
+    "Error: Cannot find module '../../scripts/toolchain/dev-server-config.cjs'\n" +
+      'Require stack:\n' +
+      '- D:\\Riovoley\\riovoley\\tests\\unit\\dev-server-config.test.cjs'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: |-
+    Cannot find module '../../scripts/toolchain/dev-server-config.cjs'
+    Require stack:
+    - D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs
+  stack: |-
+    Module._resolveFilename (node:internal/modules/cjs/loader:1517:15)
+    wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    Module._load (node:internal/modules/cjs/loader:1294:5)
+    wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    Module.require (node:internal/modules/cjs/loader:1617:12)
+    require (node:internal/modules/helpers:153:16)
+    load (D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs:4:16)
+    D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs:45:78
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs:45:67)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: Compatibilidad CRA traduce close a stop y startCallback a start sin alterar API existentes
+not ok 7 - Compatibilidad CRA traduce close a stop y startCallback a start sin alterar API existentes
+  ---
+  duration_ms: 0.7786
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\dev-server-config.test.cjs:48:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Cannot find module '../../scripts/toolchain/dev-server-config.cjs'
+    Require stack:
+    - D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs
+  code: 'MODULE_NOT_FOUND'
+  stack: |-
+    Module._resolveFilename (node:internal/modules/cjs/loader:1517:15)
+    wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    Module._load (node:internal/modules/cjs/loader:1294:5)
+    wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    Module.require (node:internal/modules/cjs/loader:1617:12)
+    require (node:internal/modules/helpers:153:16)
+    load (D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs:4:16)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs:50:2)
+  ...
+# Subtest: Dev server preserva opciones modernas y elimina proxy ausente
+not ok 8 - Dev server preserva opciones modernas y elimina proxy ausente
+  ---
+  duration_ms: 0.373
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\dev-server-config.test.cjs:57:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Cannot find module '../../scripts/toolchain/dev-server-config.cjs'
+    Require stack:
+    - D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs
+  code: 'MODULE_NOT_FOUND'
+  stack: |-
+    Module._resolveFilename (node:internal/modules/cjs/loader:1517:15)
+    wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    Module._load (node:internal/modules/cjs/loader:1294:5)
+    wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    Module.require (node:internal/modules/cjs/loader:1617:12)
+    require (node:internal/modules/helpers:153:16)
+    load (D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs:4:16)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\dev-server-config.test.cjs:58:12)
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 0
+# fail 8
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3008.7335
+

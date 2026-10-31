@@ -2,6 +2,10 @@
   "name": "riovoley",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "24.x",
+    "npm": "11.x"
+  },
   "dependencies": {
     "@capacitor/android": "^8.4.0",
     "@capacitor/app": "^8.1.0",
@@ -31,7 +35,10 @@
     "react-scripts": "5.0.1",
     "recharts": "^3.3.0",
     "tailwind-merge": "^3.5.0",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@riovoley/minimatch-engine": "npm:minimatch@11.0.3",
+    "minimatch": "file:vendor/minimatch-compat",
+    "deepmerge": "file:vendor/deepmerge"
   },
   "devDependencies": {
     "@playwright/test": "^1.53.0",
@@ -51,17 +58,15 @@
     "http-proxy-agent": {
       "@tootallnate/once": "2.0.1"
     },
-    "sockjs": {
-      "uuid": "11.1.1"
-    },
     "@svgr/webpack": "6.5.1",
     "resolve-url-loader": "5.0.0",
-    "webpack-dev-server": {
-      "webpack-dev-middleware": "7.4.6"
-    }
+    "webpack-dev-server": "6.1.0",
+    "deepmerge": "$deepmerge",
+    "minimatch": "$minimatch",
+    "glob@>=9.0.0 <14.0.2": "14.0.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node scripts/toolchain/start.cjs",
     "build": "cross-env CI=false react-scripts build",
     "mobile:sync": "npm run build && npx cap sync",
     "mobile:android": "npm run mobile:sync && npx cap open android",
@@ -69,6 +74,8 @@
     "ota:upload:beta": "npm run build && npx @capgo/cli@latest bundle upload com.riovoley.app --path ./build --channel beta",
     "check:copy-quality": "node scripts/copyQualityCheck.js",
     "test": "react-scripts test",
+    "check:production": "node scripts/production/preflight.cjs",
+    "test:toolchain": "node --test --test-concurrency=1 tests/integration/toolchain.dependencies.test.cjs tests/integration/toolchain.security-followup.test.cjs tests/integration/toolchain.loaders-security.test.cjs tests/integration/toolchain.production-readiness.test.cjs tests/unit/dev-server-config.test.cjs tests/unit/production-preflight.test.cjs tests/integration/toolchain.patterns.test.cjs",
     "test:auth-edge": "node functions/node_modules/tsx/dist/cli.mjs --test tests/unit/credentials-edge.test.ts",
     "test:contracts": "cross-env CI=true react-scripts test src/features/reporting/infrastructure/repositories/supabaseReportingRepository.contract.test.js src/shared/infrastructure/auth/deleteAuthUserById.test.js",
     "eject": "react-scripts eject",

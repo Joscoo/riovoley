@@ -1,0 +1,4 @@
+{"label":"compilacion-web/build-auditoria","exitCode":0,"durationSeconds":383.691,"stderrTail":"(node:352) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead\n(Use `node --trace-deprecation ...` to show where the warning was created)\n"}
+{"label":"android/capacitor-sync","exitCode":0,"durationSeconds":24.828,"stderrTail":""}
+{"label":"android/capacitor-plugins","exitCode":0,"durationSeconds":0.799,"stderrTail":""}
+

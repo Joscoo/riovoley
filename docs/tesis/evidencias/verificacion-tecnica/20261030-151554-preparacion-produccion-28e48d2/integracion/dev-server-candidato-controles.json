@@ -1,0 +1,12 @@
+{
+  "checks": [
+    {
+      "name": "Control 1",
+      "state": "FALLIDO",
+      "error": "The operation was aborted due to timeout"
+    }
+  ],
+  "executed": 1,
+  "passed": 0,
+  "failed": 1
+}

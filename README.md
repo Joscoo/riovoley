@@ -106,7 +106,7 @@ Supabase (PostgreSQL + Auth + RLS + Edge Functions)
 
 ### 1) Requisitos
 
-- Node.js 22 o superior para la web y Capacitor 8 (Node 24 compatible; los servicios auxiliares declaran Node 22)
+- Node.js 24.x y npm 11.x para la web/herramientas (ver `.nvmrc`); los servicios auxiliares declaran Node 22
 - npm
 - Git
 
@@ -325,3 +325,9 @@ Este repositorio implementa la plataforma web y su base tecnica.
 ---
 
 Proximo upgrade recomendado para destacar aun mas en GitHub: agregar capturas del panel admin y un GIF corto del flujo principal (login -> dashboard -> pagos).
+
+## Preparación de producción y dependencias
+
+El comando `npm start` adapta CRA al servidor actualizado y restringe el acceso a loopback. Las dependencias locales revisadas y su alcance de auditoría se documentan en [vendor/README.md](vendor/README.md). Ejecutar `npm run test:toolchain` además de Jest: `npm audit` no analiza los dos adaptadores locales. Los lockfiles usan `install-links=true` y las instalaciones deben incluir el directorio vendor.
+
+Para preparar una publicación consultar [el runbook](docs/produccion/RUNBOOK.md) y [las variables](docs/produccion/VARIABLES.md). `npm run check:production -- --profile frontend --structure` solo valida estructura, no concede autorización ni publica. La rama de auditoría tiene los despliegues Git automáticos desactivados; producción sigue sujeta a los gates documentados. El workflow técnico preparado no despliega ni usa credenciales institucionales.

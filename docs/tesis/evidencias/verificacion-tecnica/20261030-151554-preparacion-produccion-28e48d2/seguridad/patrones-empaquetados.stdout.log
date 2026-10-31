@@ -1,0 +1,63 @@
+TAP version 13
+# Subtest: glob: minimatch conserva API callable y nombrada con motor corregido
+ok 1 - glob: minimatch conserva API callable y nombrada con motor corregido
+  ---
+  duration_ms: 33.9975
+  type: 'test'
+  ...
+# Subtest: eslint: minimatch conserva API callable y nombrada con motor corregido
+ok 2 - eslint: minimatch conserva API callable y nombrada con motor corregido
+  ---
+  duration_ms: 4.9894
+  type: 'test'
+  ...
+# Subtest: filelist: minimatch conserva API callable y nombrada con motor corregido
+ok 3 - filelist: minimatch conserva API callable y nombrada con motor corregido
+  ---
+  duration_ms: 4.0518
+  type: 'test'
+  ...
+# Subtest: glob heredado conserva callbacks y API sync con patrones del motor corregido
+not ok 4 - glob heredado conserva callbacks y API sync con patrones del motor corregido
+  ---
+  duration_ms: 590.2075
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.patterns.test.cjs:15:1'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of undefined (reading 'charAt')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    GlobSync._processReaddir (D:\Riovoley\riovoley\node_modules\glob\sync.js:148:35)
+    GlobSync._process (D:\Riovoley\riovoley\node_modules\glob\sync.js:132:10)
+    new GlobSync (D:\Riovoley\riovoley\node_modules\glob\sync.js:45:10)
+    glob.globSync [as sync] (D:\Riovoley\riovoley\node_modules\glob\sync.js:23:10)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.patterns.test.cjs:19:24)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+  ...
+# Subtest: glob de Capacitor admite API async y cancela antes de recorrer
+ok 5 - glob de Capacitor admite API async y cancela antes de recorrer
+  ---
+  duration_ms: 47.1154
+  type: 'test'
+  ...
+# Subtest: patrón de amplificación finaliza con límite externo de recursos
+ok 6 - patrón de amplificación finaliza con límite externo de recursos
+  ---
+  duration_ms: 132.6604
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 5
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 927.4314
+

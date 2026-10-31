@@ -1,0 +1,27 @@
+{
+  "recordedAt": "2026-10-31T19:22:24.468Z",
+  "frontendFile": ".env.production",
+  "valuesSaved": false,
+  "vercelSchemaUrl": "https://openapi.vercel.sh/vercel.json",
+  "usedPropertySchemasValid": true,
+  "validatedProperties": [
+    "$schema",
+    "buildCommand",
+    "headers"
+  ],
+  "fullPublishedSchemaValidated": false,
+  "productionModified": false,
+  "headersPrepared": [
+    "X-Content-Type-Options",
+    "Referrer-Policy",
+    "X-Frame-Options"
+  ],
+  "sourceMapsInVercelBuild": false,
+  "ciWarningsFailBuild": true,
+  "limitations": [
+    "Esquema publicado completo incompatible con su declaración draft-04 en campos experimentales; se comprobaron las definiciones de las tres propiedades utilizadas",
+    "No acceso demostrado a variables del proyecto Vercel objetivo",
+    "Preflight solo comprueba estructura, no autenticidad de claves ni aprobación",
+    "CSP y Permissions-Policy requieren inventario de proveedores/dispositivos y ensayo antes de activarse"
+  ]
+}

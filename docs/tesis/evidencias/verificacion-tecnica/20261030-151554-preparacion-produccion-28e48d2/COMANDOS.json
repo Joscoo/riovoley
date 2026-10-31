@@ -1,0 +1,2194 @@
+[
+  {
+    "file": "android/apk-badging-definitivo.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\build-tools\\35.0.0\\aapt.exe",
+      "dump",
+      "badging",
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\project\\android\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+    ],
+    "start": "2026-10-31T19:37:44.222Z",
+    "end": "2026-10-31T19:37:44.566Z",
+    "durationSeconds": 0.344,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/apk-firma-definitivo.meta.json",
+    "command": [
+      "C:\\WINDOWS\\system32\\cmd.exe",
+      "/d",
+      "/c",
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\build-tools\\35.0.0\\apksigner.bat verify --verbose --print-certs D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\project\\android\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+    ],
+    "start": "2026-10-31T19:37:44.570Z",
+    "end": "2026-10-31T19:37:45.077Z",
+    "durationSeconds": 0.507,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/apk-privado-privacidad-definitivo.meta.json",
+    "command": [
+      "python",
+      "scripts/audit/android/inspect-private.py",
+      "--label",
+      "definitivo"
+    ],
+    "start": "2026-10-31T19:37:30.317Z",
+    "end": "2026-10-31T19:37:37.596Z",
+    "durationSeconds": 7.279,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/apk-privado-privacidad-produccion.meta.json",
+    "command": [
+      "python",
+      "scripts/audit/android/inspect-private.py",
+      "--label",
+      "produccion"
+    ],
+    "start": "2026-10-31T19:24:57.887Z",
+    "end": "2026-10-31T19:25:15.065Z",
+    "durationSeconds": 17.178,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/capacitor-plugins.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Riovoley\\riovoley\\node_modules\\@capacitor\\cli\\bin\\capacitor",
+      "ls",
+      "android"
+    ],
+    "cwd": ".e2e-local\\android-native\\20261028-155551\\project",
+    "start": "2026-10-31T19:12:42.414Z",
+    "end": "2026-10-31T19:12:43.015Z",
+    "durationSeconds": 0.601,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "android/capacitor-sync.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Riovoley\\riovoley\\node_modules\\@capacitor\\cli\\bin\\capacitor",
+      "sync",
+      "android"
+    ],
+    "cwd": ".e2e-local\\android-native\\20261028-155551\\project",
+    "start": "2026-10-31T19:12:23.029Z",
+    "end": "2026-10-31T19:12:42.411Z",
+    "durationSeconds": 19.382,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "android/definitivo/android/capacitor-plugins.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Riovoley\\riovoley\\node_modules\\@capacitor\\cli\\bin\\capacitor",
+      "ls",
+      "android"
+    ],
+    "cwd": ".e2e-local\\android-native\\20261028-155551\\project",
+    "start": "2026-10-31T19:33:12.915Z",
+    "end": "2026-10-31T19:33:13.714Z",
+    "durationSeconds": 0.799,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "android/definitivo/android/capacitor-sync.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Riovoley\\riovoley\\node_modules\\@capacitor\\cli\\bin\\capacitor",
+      "sync",
+      "android"
+    ],
+    "cwd": ".e2e-local\\android-native\\20261028-155551\\project",
+    "start": "2026-10-31T19:32:48.084Z",
+    "end": "2026-10-31T19:33:12.912Z",
+    "durationSeconds": 24.828,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "android/definitivo/android/gradle-assemble.meta.json",
+    "command": [
+      "C:\\WINDOWS\\system32\\cmd.exe",
+      "/d",
+      "/c",
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\project\\android\\gradlew.bat :app:assembleDebug :app:testDebugUnitTest --no-daemon --console=plain --stacktrace --max-workers=2 --rerun-tasks"
+    ],
+    "cwd": ".e2e-local\\android-native\\20261028-155551\\project\\android",
+    "start": "2026-10-31T19:33:14.124Z",
+    "end": "2026-10-31T19:37:21.725Z",
+    "durationSeconds": 247.601,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "android/definitivo/android/gradle-version.meta.json",
+    "command": [
+      "C:\\WINDOWS\\system32\\cmd.exe",
+      "/d",
+      "/c",
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\project\\android\\gradlew.bat --version --no-daemon --console=plain --stacktrace --max-workers=2"
+    ],
+    "cwd": ".e2e-local\\android-native\\20261028-155551\\project\\android",
+    "start": "2026-10-31T19:37:45.152Z",
+    "end": "2026-10-31T19:37:45.884Z",
+    "durationSeconds": 0.732,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "android/definitivo/compilacion-web/build-auditoria.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Riovoley\\riovoley\\node_modules\\react-scripts\\scripts\\build.js"
+    ],
+    "cwd": "",
+    "start": "2026-10-31T19:26:24.389Z",
+    "end": "2026-10-31T19:32:48.080Z",
+    "durationSeconds": 383.691,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "android/definitivo/compilar.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/android/build.cjs",
+      "assemble",
+      "--rerun-tasks"
+    ],
+    "start": "2026-10-31T19:33:13.846Z",
+    "end": "2026-10-31T19:37:21.749Z",
+    "durationSeconds": 247.903,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/definitivo/firma.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/android/collect-private.cjs",
+      "definitivo"
+    ],
+    "start": "2026-10-31T19:37:30.223Z",
+    "end": "2026-10-31T19:37:37.626Z",
+    "durationSeconds": 7.403,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/definitivo/herramientas-offline.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/android/build.cjs",
+      "version"
+    ],
+    "start": "2026-10-31T19:37:45.079Z",
+    "end": "2026-10-31T19:37:45.898Z",
+    "durationSeconds": 0.819,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/definitivo/inspeccionar.meta.json",
+    "command": [
+      "python",
+      "scripts/audit/closure/check-dependencies-apk.py"
+    ],
+    "start": "2026-10-31T19:37:21.752Z",
+    "end": "2026-10-31T19:37:22.158Z",
+    "durationSeconds": 0.406,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/definitivo/privacidad.meta.json",
+    "command": [
+      "python",
+      "scripts/audit/android/privacy.py",
+      "--apk",
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\project\\android\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "--report",
+      "android/privacidad-apk.json"
+    ],
+    "start": "2026-10-31T19:37:22.161Z",
+    "end": "2026-10-31T19:37:30.220Z",
+    "durationSeconds": 8.059,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/definitivo/sincronizar.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/android/stage.cjs",
+      "final"
+    ],
+    "start": "2026-10-31T19:25:49.217Z",
+    "end": "2026-10-31T19:33:13.842Z",
+    "durationSeconds": 444.625,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/firma-datos.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/android/collect-private.cjs",
+      "produccion"
+    ],
+    "start": "2026-10-31T19:24:57.106Z",
+    "end": "2026-10-31T19:25:15.104Z",
+    "durationSeconds": 17.998,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/gradle-assemble.meta.json",
+    "command": [
+      "C:\\WINDOWS\\system32\\cmd.exe",
+      "/d",
+      "/c",
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\project\\android\\gradlew.bat :app:assembleDebug :app:testDebugUnitTest --no-daemon --console=plain --stacktrace --max-workers=2 --rerun-tasks"
+    ],
+    "cwd": ".e2e-local\\android-native\\20261028-155551\\project\\android",
+    "start": "2026-10-31T19:14:14.121Z",
+    "end": "2026-10-31T19:21:52.421Z",
+    "durationSeconds": 458.3,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "android/privacidad-apk-privado.meta.json",
+    "command": [
+      "python",
+      "scripts/audit/android/privacy.py",
+      "--apk",
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\project\\android\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "--report",
+      "android/privacidad-apk.json"
+    ],
+    "start": "2026-10-31T19:24:40.896Z",
+    "end": "2026-10-31T19:24:57.100Z",
+    "durationSeconds": 16.204,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/privacidad-apk.meta.json",
+    "command": [
+      "python",
+      "scripts/audit/android/privacy.py",
+      "--report",
+      "android/privacidad-apk.json"
+    ],
+    "start": "2026-10-31T19:23:16.801Z",
+    "end": "2026-10-31T19:23:18.099Z",
+    "durationSeconds": 1.298,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/verificar-apk.meta.json",
+    "command": [
+      "python",
+      "scripts/audit/closure/check-dependencies-apk.py"
+    ],
+    "start": "2026-10-31T19:23:08.397Z",
+    "end": "2026-10-31T19:23:16.797Z",
+    "durationSeconds": 8.4,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "compilacion-web/build-auditoria.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Riovoley\\riovoley\\node_modules\\react-scripts\\scripts\\build.js"
+    ],
+    "cwd": "",
+    "start": "2026-10-31T19:10:58.402Z",
+    "end": "2026-10-31T19:12:22.757Z",
+    "durationSeconds": 84.355,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "compilacion-web/dev-server-candidato.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/closure/check-dependencies-dev-server.cjs",
+      "--label=candidato"
+    ],
+    "start": "2026-10-31T19:25:59.159Z",
+    "end": "2026-10-31T19:30:43.072Z",
+    "durationSeconds": 283.913,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "compilacion-web/vercel-candidato.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "node_modules/react-scripts/scripts/build.js"
+    ],
+    "start": "2026-10-31T19:29:14.994Z",
+    "end": "2026-10-31T19:32:47.867Z",
+    "durationSeconds": 212.873,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "compilacion-web-build-1793473953846.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Riovoley\\riovoley\\node_modules\\react-scripts\\scripts\\build.js"
+    ],
+    "start": "2026-10-31T19:12:33.846Z",
+    "end": "2026-10-31T19:14:41.446Z",
+    "durationSeconds": 127.6,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "e2e/smoke-build-estricto.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/e2e/local/run.cjs",
+      "smoke",
+      "--label=smoke-build-estricto",
+      "--workers=1"
+    ],
+    "start": "2026-10-31T19:53:01.236Z",
+    "end": "2026-10-31T19:53:09.439Z",
+    "durationSeconds": 8.203,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "edge-functions/serve.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\tools\\node_modules\\@supabase\\cli-windows-x64\\bin\\supabase.exe",
+      "functions",
+      "serve",
+      "--workdir",
+      "D:\\Riovoley\\riovoley\\.e2e-local\\stack",
+      "--network-id",
+      "riovoley-e2e-loopback",
+      "--env-file",
+      "D:\\Riovoley\\riovoley\\.e2e-local\\edge-1793473968745-2a7184.env"
+    ],
+    "start": "2026-10-31T19:12:48.746Z",
+    "end": "2026-10-31T19:53:34.483Z",
+    "durationSeconds": 2445.737,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "herramientas/docker-1793473933709.meta.json",
+    "command": [
+      "docker",
+      "--host",
+      "npipe:////./pipe/dockerDesktopLinuxEngine",
+      "info",
+      "--format",
+      "{{.ServerVersion}}"
+    ],
+    "start": "2026-10-31T19:12:13.709Z",
+    "end": "2026-10-31T19:12:14.416Z",
+    "durationSeconds": 0.707,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "herramientas/docker.meta.json",
+    "command": [
+      "docker",
+      "--host",
+      "npipe:////./pipe/dockerDesktopLinuxEngine",
+      "info",
+      "--format",
+      "{{.ServerVersion}}"
+    ],
+    "start": "2026-10-31T19:11:02.609Z",
+    "end": "2026-10-31T19:11:03.940Z",
+    "durationSeconds": 1.331,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/auth-local-diagnostico.meta.json",
+    "command": [
+      "docker",
+      "--host",
+      "npipe:////./pipe/dockerDesktopLinuxEngine",
+      "logs",
+      "--since",
+      "20m",
+      "supabase_auth_riovoley-e2e-local"
+    ],
+    "start": "2026-10-31T19:38:00.628Z",
+    "end": "2026-10-31T19:38:00.996Z",
+    "durationSeconds": 0.368,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/dev-server-actualizado.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/closure/check-dependencies-dev-server.cjs",
+      "--label=actualizado"
+    ],
+    "start": "2026-10-30T15:36:26.975Z",
+    "end": "2026-10-30T15:39:03.844Z",
+    "durationSeconds": 156.869,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/dev-server-aislado.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/closure/check-dependencies-dev-server.cjs",
+      "--label=aislado"
+    ],
+    "start": "2026-10-31T19:38:59.649Z",
+    "end": "2026-10-31T19:39:20.919Z",
+    "durationSeconds": 21.27,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/dev-server-corregido.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/closure/check-dependencies-dev-server.cjs",
+      "--label=corregido"
+    ],
+    "start": "2026-10-31T19:05:18.612Z",
+    "end": "2026-10-31T19:09:20.298Z",
+    "durationSeconds": 241.686,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/dev-server-definitivo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/closure/check-dependencies-dev-server.cjs",
+      "--label=definitivo"
+    ],
+    "start": "2026-10-31T19:33:15.412Z",
+    "end": "2026-10-31T19:36:00.081Z",
+    "durationSeconds": 164.669,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/dev-server-origen-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/closure/check-dependencies-dev-server.cjs",
+      "--baseline",
+      "--label=origen-rojo"
+    ],
+    "start": "2026-10-30T15:31:10.868Z",
+    "end": "2026-10-30T15:32:50.163Z",
+    "durationSeconds": 99.295,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/dev-server-protocolo-final.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/closure/check-dependencies-dev-server.cjs",
+      "--label=protocolo-final"
+    ],
+    "start": "2026-10-31T19:09:43.127Z",
+    "end": "2026-10-31T19:10:02.362Z",
+    "durationSeconds": 19.235,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/persistencia-postgresql.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/closure/verify-e2e-final-persistence.cjs",
+      "mutaciones-finales"
+    ],
+    "start": "2026-10-31T19:27:09.196Z",
+    "end": "2026-10-31T19:27:15.676Z",
+    "durationSeconds": 6.48,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "limites-finales/ejecucion.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/payments.responsive-boundaries.spec.js",
+      "--config=playwright.local.config.cjs",
+      "--project=desktop-1440",
+      "--workers=2"
+    ],
+    "start": "2026-10-31T19:26:48.553Z",
+    "end": "2026-10-31T19:27:14.793Z",
+    "durationSeconds": 26.24,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "mutaciones-finales/ejecucion.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/admin.happy-path-controlled.spec.js",
+      "--config=playwright.local.config.cjs",
+      "--workers=2"
+    ],
+    "start": "2026-10-31T19:25:20.061Z",
+    "end": "2026-10-31T19:26:48.389Z",
+    "durationSeconds": 88.328,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "paneles-aislados/ejecucion.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/admin.modules-navigation.spec.js",
+      "tests/e2e/admin.provisioning-notifications.smoke.spec.js",
+      "tests/e2e/asistencias.guided.review.spec.js",
+      "tests/e2e/filters-sorting.phase2-lists.spec.js",
+      "tests/e2e/filters-sorting.physical-tests.spec.js",
+      "tests/e2e/filters-sorting.tables.spec.js",
+      "tests/e2e/filters-sorting.user-management.spec.js",
+      "tests/e2e/responsive.smoke.spec.js",
+      "tests/e2e/roles.modules-navigation.spec.js",
+      "tests/e2e/roles.panels-navigation.smoke.spec.js",
+      "--config=playwright.local.config.cjs",
+      "--grep-invert=public route responsive guard",
+      "--workers=1"
+    ],
+    "start": "2026-10-31T19:39:49.910Z",
+    "end": "2026-10-31T19:49:55.335Z",
+    "durationSeconds": 605.425,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "paneles-captura-corregida/ejecucion.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/admin.modules-navigation.spec.js",
+      "tests/e2e/admin.provisioning-notifications.smoke.spec.js",
+      "tests/e2e/asistencias.guided.review.spec.js",
+      "tests/e2e/filters-sorting.phase2-lists.spec.js",
+      "tests/e2e/filters-sorting.physical-tests.spec.js",
+      "tests/e2e/filters-sorting.tables.spec.js",
+      "tests/e2e/filters-sorting.user-management.spec.js",
+      "tests/e2e/responsive.smoke.spec.js",
+      "tests/e2e/roles.modules-navigation.spec.js",
+      "tests/e2e/roles.panels-navigation.smoke.spec.js",
+      "--config=playwright.local.config.cjs",
+      "--grep-invert=public route responsive guard",
+      "--workers=2"
+    ],
+    "start": "2026-10-31T19:28:05.068Z",
+    "end": "2026-10-31T19:35:21.726Z",
+    "durationSeconds": 436.658,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "paneles-finales/ejecucion.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/admin.modules-navigation.spec.js",
+      "tests/e2e/admin.provisioning-notifications.smoke.spec.js",
+      "tests/e2e/asistencias.guided.review.spec.js",
+      "tests/e2e/filters-sorting.phase2-lists.spec.js",
+      "tests/e2e/filters-sorting.physical-tests.spec.js",
+      "tests/e2e/filters-sorting.tables.spec.js",
+      "tests/e2e/filters-sorting.user-management.spec.js",
+      "tests/e2e/responsive.smoke.spec.js",
+      "tests/e2e/roles.modules-navigation.spec.js",
+      "tests/e2e/roles.panels-navigation.smoke.spec.js",
+      "--config=playwright.local.config.cjs",
+      "--grep-invert=public route responsive guard",
+      "--workers=2"
+    ],
+    "start": "2026-10-31T19:18:00.143Z",
+    "end": "2026-10-31T19:25:19.718Z",
+    "durationSeconds": 439.575,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "publicas-finales/ejecucion.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/responsive.smoke.spec.js",
+      "tests/e2e/public.navigation-accessibility.spec.js",
+      "tests/e2e/auth.password-recovery.spec.js",
+      "tests/e2e/audit.protected-routes.spec.js",
+      "--config=playwright.local.config.cjs",
+      "--grep-invert=role dashboards responsive guard",
+      "--workers=2"
+    ],
+    "start": "2026-10-31T19:15:38.803Z",
+    "end": "2026-10-31T19:18:00.000Z",
+    "durationSeconds": 141.197,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "red/consultar.meta.json",
+    "command": [
+      "docker",
+      "--host",
+      "npipe:////./pipe/dockerDesktopLinuxEngine",
+      "network",
+      "inspect",
+      "riovoley-e2e-loopback"
+    ],
+    "start": "2026-10-31T19:12:15.219Z",
+    "end": "2026-10-31T19:12:15.346Z",
+    "durationSeconds": 0.127,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "regresion/limites-finales.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/e2e/local/run.cjs",
+      "boundaries",
+      "--label=limites-finales",
+      "--workers=2"
+    ],
+    "start": "2026-10-31T19:26:48.431Z",
+    "end": "2026-10-31T19:27:14.838Z",
+    "durationSeconds": 26.407,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "regresion/mutaciones-finales.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/e2e/local/run.cjs",
+      "mutations",
+      "--label=mutaciones-finales",
+      "--workers=2"
+    ],
+    "start": "2026-10-31T19:25:19.827Z",
+    "end": "2026-10-31T19:26:48.427Z",
+    "durationSeconds": 88.6,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "regresion/paneles-aislados.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/e2e/local/run.cjs",
+      "pending",
+      "--label=paneles-aislados",
+      "--workers=1"
+    ],
+    "start": "2026-10-31T19:39:49.808Z",
+    "end": "2026-10-31T19:49:55.353Z",
+    "durationSeconds": 605.545,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "regresion/paneles-captura-corregida.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/e2e/local/run.cjs",
+      "pending",
+      "--label=paneles-captura-corregida",
+      "--workers=2"
+    ],
+    "start": "2026-10-31T19:28:04.986Z",
+    "end": "2026-10-31T19:35:21.748Z",
+    "durationSeconds": 436.762,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "regresion/paneles-finales.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/e2e/local/run.cjs",
+      "pending",
+      "--label=paneles-finales",
+      "--workers=2"
+    ],
+    "start": "2026-10-31T19:18:00.043Z",
+    "end": "2026-10-31T19:25:19.817Z",
+    "durationSeconds": 439.774,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "regresion/publicas-finales.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/e2e/local/run.cjs",
+      "public",
+      "--label=publicas-finales",
+      "--workers=2"
+    ],
+    "start": "2026-10-31T19:15:38.711Z",
+    "end": "2026-10-31T19:18:00.039Z",
+    "durationSeconds": 141.328,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/action-checkout.meta.json",
+    "command": [
+      "git",
+      "ls-remote",
+      "https://github.com/actions/checkout.git",
+      "refs/tags/v7",
+      "refs/tags/v7^{}"
+    ],
+    "start": "2026-10-31T19:49:51.512Z",
+    "end": "2026-10-31T19:49:52.445Z",
+    "durationSeconds": 0.933,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/action-setup-node.meta.json",
+    "command": [
+      "git",
+      "ls-remote",
+      "https://github.com/actions/setup-node.git",
+      "refs/tags/v7",
+      "refs/tags/v7^{}"
+    ],
+    "start": "2026-10-31T19:49:52.448Z",
+    "end": "2026-10-31T19:49:53.213Z",
+    "durationSeconds": 0.765,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/actualizar-fachada-functions.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund",
+      "--force"
+    ],
+    "start": "2026-10-31T19:19:24.933Z",
+    "end": "2026-10-31T19:19:32.557Z",
+    "durationSeconds": 7.624,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "functions"
+  },
+  {
+    "file": "seguridad/actualizar-fachada-raiz.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund",
+      "--force"
+    ],
+    "start": "2026-10-31T19:19:12.458Z",
+    "end": "2026-10-31T19:19:24.920Z",
+    "durationSeconds": 12.462,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/actualizar-fachada-riovoley.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund",
+      "--force"
+    ],
+    "start": "2026-10-31T19:19:32.561Z",
+    "end": "2026-10-31T19:19:34.109Z",
+    "durationSeconds": 1.548,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "riovoley"
+  },
+  {
+    "file": "seguridad/actualizar-patrones-functions.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:14:42.353Z",
+    "end": "2026-10-31T19:14:48.487Z",
+    "durationSeconds": 6.134,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "functions"
+  },
+  {
+    "file": "seguridad/actualizar-patrones-raiz.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:14:02.652Z",
+    "end": "2026-10-31T19:14:42.347Z",
+    "durationSeconds": 39.695,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/actualizar-patrones-riovoley.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:14:48.491Z",
+    "end": "2026-10-31T19:14:51.798Z",
+    "durationSeconds": 3.307,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "riovoley"
+  },
+  {
+    "file": "seguridad/audit-instalacion-limpia.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json"
+    ],
+    "start": "2026-10-31T19:26:15.248Z",
+    "end": "2026-10-31T19:26:17.197Z",
+    "durationSeconds": 1.949,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\clean-production-1793474557726"
+  },
+  {
+    "file": "seguridad/configuracion-final.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/check-config.cjs"
+    ],
+    "start": "2026-10-31T19:28:15.765Z",
+    "end": "2026-10-31T19:28:17.290Z",
+    "durationSeconds": 1.525,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/configuracion-propiedades.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/check-config.cjs"
+    ],
+    "start": "2026-10-31T19:22:23.674Z",
+    "end": "2026-10-31T19:22:24.504Z",
+    "durationSeconds": 0.83,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/configuracion-y-schema-final.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/check-config.cjs"
+    ],
+    "start": "2026-10-31T19:21:50.251Z",
+    "end": "2026-10-31T19:21:51.445Z",
+    "durationSeconds": 1.194,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/configuracion-y-schema.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/check-config.cjs"
+    ],
+    "start": "2026-10-31T19:20:56.092Z",
+    "end": "2026-10-31T19:21:00.371Z",
+    "durationSeconds": 4.279,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/consulta-publica.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/read-public-deployment.cjs"
+    ],
+    "start": "2026-10-30T15:34:28.012Z",
+    "end": "2026-10-30T15:34:29.250Z",
+    "durationSeconds": 1.238,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/empaquetado-raiz.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:15:09.270Z",
+    "end": "2026-10-31T19:15:11.196Z",
+    "durationSeconds": 1.926,
+    "exitCode": 4294963238,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/fachada-final-functions.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:20:52.196Z",
+    "end": "2026-10-31T19:20:53.924Z",
+    "durationSeconds": 1.728,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "functions"
+  },
+  {
+    "file": "seguridad/fachada-final-raiz.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:20:46.439Z",
+    "end": "2026-10-31T19:20:52.192Z",
+    "durationSeconds": 5.753,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/fachada-final-riovoley.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:20:53.928Z",
+    "end": "2026-10-31T19:20:55.474Z",
+    "durationSeconds": 1.546,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "riovoley"
+  },
+  {
+    "file": "seguridad/instalacion-limpia-1793474298206.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:18:18.206Z",
+    "end": "2026-10-31T19:21:50.022Z",
+    "durationSeconds": 211.816,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\clean-production-1793474297501"
+  },
+  {
+    "file": "seguridad/instalacion-limpia-1793474557878.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:22:37.878Z",
+    "end": "2026-10-31T19:25:40.428Z",
+    "durationSeconds": 182.55,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\clean-production-1793474557726"
+  },
+  {
+    "file": "seguridad/instalacion-limpia.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:10:59.940Z",
+    "end": "2026-10-31T19:11:02.044Z",
+    "durationSeconds": 2.104,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\clean-production-1793473859559"
+  },
+  {
+    "file": "seguridad/instalar-correcciones.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-30T15:33:41.762Z",
+    "end": "2026-10-30T15:33:57.199Z",
+    "durationSeconds": 15.437,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/instalar-lock-corregido-functions.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:17:54.305Z",
+    "end": "2026-10-31T19:18:04.460Z",
+    "durationSeconds": 10.155,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "functions"
+  },
+  {
+    "file": "seguridad/instalar-lock-corregido-raiz.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:17:48.397Z",
+    "end": "2026-10-31T19:17:54.300Z",
+    "durationSeconds": 5.903,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/instalar-lock-corregido-riovoley.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:18:04.464Z",
+    "end": "2026-10-31T19:18:15.009Z",
+    "durationSeconds": 10.545,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "riovoley"
+  },
+  {
+    "file": "seguridad/lock-empaquetado-functions-1793474423178.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--package-lock-only",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:20:23.178Z",
+    "end": "2026-10-31T19:20:25.106Z",
+    "durationSeconds": 1.928,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\packed-lock-1793474415832\\functions"
+  },
+  {
+    "file": "seguridad/lock-empaquetado-functions.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--package-lock-only",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:17:27.561Z",
+    "end": "2026-10-31T19:17:30.301Z",
+    "durationSeconds": 2.74,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\packed-lock-1793474244159\\functions"
+  },
+  {
+    "file": "seguridad/lock-empaquetado-raiz-1793474244185.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--package-lock-only",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:17:24.185Z",
+    "end": "2026-10-31T19:17:27.542Z",
+    "durationSeconds": 3.357,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\packed-lock-1793474244159"
+  },
+  {
+    "file": "seguridad/lock-empaquetado-raiz-1793474415911.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--package-lock-only",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:20:15.911Z",
+    "end": "2026-10-31T19:20:23.150Z",
+    "durationSeconds": 7.239,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\packed-lock-1793474415832"
+  },
+  {
+    "file": "seguridad/lock-empaquetado-raiz.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--package-lock-only",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:15:36.227Z",
+    "end": "2026-10-31T19:15:38.314Z",
+    "durationSeconds": 2.087,
+    "exitCode": 4294963238,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\packed-lock-1793474136110"
+  },
+  {
+    "file": "seguridad/lock-empaquetado-riovoley-1793474425184.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--package-lock-only",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:20:25.184Z",
+    "end": "2026-10-31T19:20:26.829Z",
+    "durationSeconds": 1.645,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\packed-lock-1793474415832\\riovoley"
+  },
+  {
+    "file": "seguridad/lock-empaquetado-riovoley.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--package-lock-only",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:17:30.311Z",
+    "end": "2026-10-31T19:17:31.936Z",
+    "durationSeconds": 1.625,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\packed-lock-1793474244159\\riovoley"
+  },
+  {
+    "file": "seguridad/merge-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/integration/toolchain.production-readiness.test.cjs"
+    ],
+    "start": "2026-10-30T15:19:40.139Z",
+    "end": "2026-10-30T15:19:40.591Z",
+    "durationSeconds": 0.452,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/npm-auxiliar-after.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json"
+    ],
+    "start": "2026-10-30T15:34:45.698Z",
+    "end": "2026-10-30T15:34:46.895Z",
+    "durationSeconds": 1.197,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "riovoley"
+  },
+  {
+    "file": "seguridad/npm-auxiliar-before.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json"
+    ],
+    "start": "2026-10-30T15:16:01.778Z",
+    "end": "2026-10-30T15:16:03.016Z",
+    "durationSeconds": 1.238,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "riovoley"
+  },
+  {
+    "file": "seguridad/npm-auxiliar-final.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json"
+    ],
+    "start": "2026-10-31T19:10:56.409Z",
+    "end": "2026-10-31T19:10:57.509Z",
+    "durationSeconds": 1.1,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "riovoley"
+  },
+  {
+    "file": "seguridad/npm-auxiliar-verificado.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json"
+    ],
+    "start": "2026-10-31T19:21:56.074Z",
+    "end": "2026-10-31T19:21:57.627Z",
+    "durationSeconds": 1.553,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "riovoley"
+  },
+  {
+    "file": "seguridad/npm-functions-after.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json"
+    ],
+    "start": "2026-10-30T15:34:44.415Z",
+    "end": "2026-10-30T15:34:45.684Z",
+    "durationSeconds": 1.269,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "functions"
+  },
+  {
+    "file": "seguridad/npm-functions-before.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json"
+    ],
+    "start": "2026-10-30T15:16:00.430Z",
+    "end": "2026-10-30T15:16:01.772Z",
+    "durationSeconds": 1.342,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "functions"
+  },
+  {
+    "file": "seguridad/npm-functions-final.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json"
+    ],
+    "start": "2026-10-31T19:10:54.234Z",
+    "end": "2026-10-31T19:10:56.405Z",
+    "durationSeconds": 2.171,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "functions"
+  },
+  {
+    "file": "seguridad/npm-functions-verificado.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json"
+    ],
+    "start": "2026-10-31T19:21:54.320Z",
+    "end": "2026-10-31T19:21:56.065Z",
+    "durationSeconds": 1.745,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "functions"
+  },
+  {
+    "file": "seguridad/npm-raiz-after.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json"
+    ],
+    "start": "2026-10-30T15:34:42.452Z",
+    "end": "2026-10-30T15:34:44.408Z",
+    "durationSeconds": 1.956,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/npm-raiz-before.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json"
+    ],
+    "start": "2026-10-30T15:15:55.731Z",
+    "end": "2026-10-30T15:16:00.422Z",
+    "durationSeconds": 4.691,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/npm-raiz-final.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json"
+    ],
+    "start": "2026-10-31T19:10:28.268Z",
+    "end": "2026-10-31T19:10:54.229Z",
+    "durationSeconds": 25.961,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/npm-raiz-verificado.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json"
+    ],
+    "start": "2026-10-31T19:21:52.145Z",
+    "end": "2026-10-31T19:21:54.308Z",
+    "durationSeconds": 2.163,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/patrones-empaquetados.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/integration/toolchain.patterns.test.cjs"
+    ],
+    "start": "2026-10-31T19:18:15.940Z",
+    "end": "2026-10-31T19:18:16.992Z",
+    "durationSeconds": 1.052,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/patrones-final.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/integration/toolchain.patterns.test.cjs"
+    ],
+    "start": "2026-10-31T19:21:15.353Z",
+    "end": "2026-10-31T19:21:16.605Z",
+    "durationSeconds": 1.252,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/patrones-primer-verde.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "tests/integration/toolchain.patterns.test.cjs"
+    ],
+    "start": "2026-10-31T19:14:54.269Z",
+    "end": "2026-10-31T19:14:54.793Z",
+    "durationSeconds": 0.524,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/patrones-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "tests/integration/toolchain.patterns.test.cjs"
+    ],
+    "start": "2026-10-31T19:13:37.347Z",
+    "end": "2026-10-31T19:13:38.328Z",
+    "durationSeconds": 0.981,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/preflight-config-local-1793474510501.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/production/preflight.cjs",
+      "--profile",
+      "frontend",
+      "--structure"
+    ],
+    "start": "2026-10-31T19:21:50.501Z",
+    "end": "2026-10-31T19:21:50.776Z",
+    "durationSeconds": 0.275,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/preflight-config-local-1793474543827.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/production/preflight.cjs",
+      "--profile",
+      "frontend",
+      "--structure"
+    ],
+    "start": "2026-10-31T19:22:23.827Z",
+    "end": "2026-10-31T19:22:23.941Z",
+    "durationSeconds": 0.114,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/preflight-config-local-1793474895924.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/production/preflight.cjs",
+      "--profile",
+      "frontend",
+      "--structure"
+    ],
+    "start": "2026-10-31T19:28:15.924Z",
+    "end": "2026-10-31T19:28:16.081Z",
+    "durationSeconds": 0.157,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/preflight-config-local.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/production/preflight.cjs",
+      "--profile",
+      "frontend",
+      "--structure"
+    ],
+    "start": "2026-10-31T19:20:56.423Z",
+    "end": "2026-10-31T19:20:56.571Z",
+    "durationSeconds": 0.148,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/registro-glob.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "view",
+      "glob",
+      "dist-tags",
+      "versions",
+      "--json"
+    ],
+    "start": "2026-10-31T19:12:31.962Z",
+    "end": "2026-10-31T19:12:32.786Z",
+    "durationSeconds": 0.824,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/registro-minimatch.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "view",
+      "minimatch",
+      "dist-tags",
+      "versions",
+      "--json"
+    ],
+    "start": "2026-10-31T19:12:31.012Z",
+    "end": "2026-10-31T19:12:31.909Z",
+    "durationSeconds": 0.897,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/servidor-candidato.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "view",
+      "webpack-dev-server@6.1.0",
+      "version",
+      "dependencies",
+      "engines",
+      "--json"
+    ],
+    "start": "2026-10-30T15:26:03.114Z",
+    "end": "2026-10-30T15:26:04.285Z",
+    "durationSeconds": 1.171,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/servidor-exportaciones.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "view",
+      "webpack-dev-server@6.1.0",
+      "main",
+      "type",
+      "exports",
+      "--json"
+    ],
+    "start": "2026-10-30T15:32:52.542Z",
+    "end": "2026-10-30T15:32:53.274Z",
+    "durationSeconds": 0.732,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/spike-direct-pattern-ci.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:16:41.007Z",
+    "end": "2026-10-31T19:16:46.567Z",
+    "durationSeconds": 5.56,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\direct-pattern-1793474177210"
+  },
+  {
+    "file": "seguridad/spike-direct-pattern-resolve.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "-e",
+      "const r=require('node:module').createRequire(require.resolve('eslint'));console.log(typeof r('minimatch'));console.log(require('glob').sync('vendor/*'));"
+    ],
+    "start": "2026-10-31T19:16:46.579Z",
+    "end": "2026-10-31T19:16:46.997Z",
+    "durationSeconds": 0.418,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\direct-pattern-1793474177210"
+  },
+  {
+    "file": "seguridad/spike-direct-pattern.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:16:18.642Z",
+    "end": "2026-10-31T19:16:41.002Z",
+    "durationSeconds": 22.36,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\direct-pattern-1793474177210"
+  },
+  {
+    "file": "seguridad/spike-file-install.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-30T15:24:53.629Z",
+    "end": "2026-10-30T15:24:57.518Z",
+    "durationSeconds": 3.889,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\merge-file-1793373893627"
+  },
+  {
+    "file": "seguridad/spike-root-ci.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:12:10.031Z",
+    "end": "2026-10-31T19:12:12.255Z",
+    "durationSeconds": 2.224,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\merge-ci-1793473918793"
+  },
+  {
+    "file": "seguridad/spike-root-file.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:11:59.031Z",
+    "end": "2026-10-31T19:12:10.026Z",
+    "durationSeconds": 10.995,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\merge-ci-1793473918793"
+  },
+  {
+    "file": "smoke-build-estricto/ejecucion.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/roles.panels-navigation.smoke.spec.js",
+      "--config=playwright.local.config.cjs",
+      "--project=desktop-1440",
+      "--workers=1"
+    ],
+    "start": "2026-10-31T19:53:01.344Z",
+    "end": "2026-10-31T19:53:09.420Z",
+    "durationSeconds": 8.076,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "stack/continuidad.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/e2e/local/manage.cjs",
+      "start"
+    ],
+    "start": "2026-10-31T19:11:02.390Z",
+    "end": "2026-10-31T19:11:04.007Z",
+    "durationSeconds": 1.617,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "stack/start.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\tools\\node_modules\\@supabase\\cli-windows-x64\\bin\\supabase.exe",
+      "start",
+      "--workdir",
+      "D:\\Riovoley\\riovoley\\.e2e-local\\stack",
+      "--network-id",
+      "riovoley-e2e-loopback",
+      "--exclude",
+      "studio,postgres-meta,logflare,vector,supavisor,imgproxy"
+    ],
+    "start": "2026-10-31T19:12:15.349Z",
+    "end": "2026-10-31T19:12:21.504Z",
+    "durationSeconds": 6.155,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "stack/status.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\tools\\node_modules\\@supabase\\cli-windows-x64\\bin\\supabase.exe",
+      "status",
+      "--workdir",
+      "D:\\Riovoley\\riovoley\\.e2e-local\\stack",
+      "-o",
+      "json"
+    ],
+    "start": "2026-10-31T19:12:21.668Z",
+    "end": "2026-10-31T19:12:23.686Z",
+    "durationSeconds": 2.018,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/adaptador-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/dev-server-config.test.cjs"
+    ],
+    "start": "2026-10-30T15:31:07.674Z",
+    "end": "2026-10-30T15:31:10.863Z",
+    "durationSeconds": 3.189,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/adaptador-verde.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/dev-server-config.test.cjs"
+    ],
+    "start": "2026-10-30T15:32:26.501Z",
+    "end": "2026-10-30T15:32:27.200Z",
+    "durationSeconds": 0.699,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/arnes-final.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "scripts/e2e/local/safety.test.cjs",
+      "scripts/e2e/local/schema.test.cjs",
+      "scripts/e2e/local/loopback.test.cjs",
+      "scripts/e2e/local/evidence.test.cjs"
+    ],
+    "start": "2026-10-31T19:12:58.862Z",
+    "end": "2026-10-31T19:12:59.226Z",
+    "durationSeconds": 0.364,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/cadena-actualizada-primer-intento.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/integration/toolchain.dependencies.test.cjs",
+      "tests/integration/toolchain.security-followup.test.cjs",
+      "tests/integration/toolchain.loaders-security.test.cjs",
+      "tests/integration/toolchain.production-readiness.test.cjs",
+      "tests/unit/dev-server-config.test.cjs",
+      "tests/unit/production-preflight.test.cjs"
+    ],
+    "start": "2026-10-30T15:34:42.427Z",
+    "end": "2026-10-30T15:34:55.591Z",
+    "durationSeconds": 13.164,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/cadena-corregida.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/integration/toolchain.dependencies.test.cjs",
+      "tests/integration/toolchain.security-followup.test.cjs",
+      "tests/integration/toolchain.loaders-security.test.cjs",
+      "tests/integration/toolchain.production-readiness.test.cjs",
+      "tests/unit/dev-server-config.test.cjs",
+      "tests/unit/production-preflight.test.cjs"
+    ],
+    "start": "2026-10-30T15:36:16.711Z",
+    "end": "2026-10-30T15:37:37.420Z",
+    "durationSeconds": 80.709,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/cadena-final.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-concurrency=1",
+      "--test-reporter=tap",
+      "tests/integration/toolchain.dependencies.test.cjs",
+      "tests/integration/toolchain.security-followup.test.cjs",
+      "tests/integration/toolchain.loaders-security.test.cjs",
+      "tests/integration/toolchain.production-readiness.test.cjs",
+      "tests/unit/dev-server-config.test.cjs",
+      "tests/unit/production-preflight.test.cjs"
+    ],
+    "start": "2026-10-31T19:05:18.612Z",
+    "end": "2026-10-31T19:06:33.629Z",
+    "durationSeconds": 75.017,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/cadena-instalacion-limpia-1793474740434.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-concurrency=1",
+      "tests/integration/toolchain.dependencies.test.cjs",
+      "tests/integration/toolchain.security-followup.test.cjs",
+      "tests/integration/toolchain.loaders-security.test.cjs",
+      "tests/integration/toolchain.production-readiness.test.cjs",
+      "tests/unit/dev-server-config.test.cjs",
+      "tests/unit/production-preflight.test.cjs",
+      "tests/integration/toolchain.patterns.test.cjs"
+    ],
+    "start": "2026-10-31T19:25:40.434Z",
+    "end": "2026-10-31T19:26:15.244Z",
+    "durationSeconds": 34.81,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\clean-production-1793474557726"
+  },
+  {
+    "file": "unitarias/cadena-instalacion-limpia.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-concurrency=1",
+      "tests/integration/toolchain.dependencies.test.cjs",
+      "tests/integration/toolchain.security-followup.test.cjs",
+      "tests/integration/toolchain.loaders-security.test.cjs",
+      "tests/integration/toolchain.production-readiness.test.cjs",
+      "tests/unit/dev-server-config.test.cjs",
+      "tests/unit/production-preflight.test.cjs",
+      "tests/integration/toolchain.patterns.test.cjs"
+    ],
+    "start": "2026-10-31T19:21:50.037Z",
+    "end": "2026-10-31T19:22:21.025Z",
+    "durationSeconds": 30.988,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\clean-production-1793474297501"
+  },
+  {
+    "file": "unitarias/cadena-regresion-final.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-concurrency=1",
+      "--test-reporter=tap",
+      "tests/integration/toolchain.dependencies.test.cjs",
+      "tests/integration/toolchain.security-followup.test.cjs",
+      "tests/integration/toolchain.loaders-security.test.cjs",
+      "tests/integration/toolchain.production-readiness.test.cjs",
+      "tests/unit/dev-server-config.test.cjs",
+      "tests/unit/production-preflight.test.cjs",
+      "tests/integration/toolchain.patterns.test.cjs"
+    ],
+    "start": "2026-10-31T19:22:47.842Z",
+    "end": "2026-10-31T19:25:07.317Z",
+    "durationSeconds": 139.475,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/cjs-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-concurrency=1",
+      "--test-reporter=tap",
+      "tests/unit/dev-server-config.test.cjs"
+    ],
+    "start": "2026-10-31T19:04:46.086Z",
+    "end": "2026-10-31T19:04:51.636Z",
+    "durationSeconds": 5.55,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/diagnostico-middleware-aislado.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--stack-trace-limit=100",
+      "--test",
+      "--test-concurrency=1",
+      "--test-name-pattern=Middleware sirve",
+      "--test-reporter=tap",
+      "tests/integration/toolchain.loaders-security.test.cjs"
+    ],
+    "start": "2026-10-31T19:02:56.940Z",
+    "end": "2026-10-31T19:04:26.513Z",
+    "durationSeconds": 89.573,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/jest-cobertura.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "node_modules/react-scripts/bin/react-scripts.js",
+      "test",
+      "--watchAll=false",
+      "--runInBand",
+      "--coverage",
+      "--coverageReporters=json-summary",
+      "--coverageReporters=lcov",
+      "--coverageDirectory=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261030-151554-preparacion-produccion-28e48d2\\unitarias\\cobertura",
+      "--json",
+      "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261030-151554-preparacion-produccion-28e48d2\\unitarias\\jest-resultados.json"
+    ],
+    "start": "2026-10-31T19:09:53.357Z",
+    "end": "2026-10-31T19:11:38.545Z",
+    "durationSeconds": 105.188,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/jest-final.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "node_modules/react-scripts/bin/react-scripts.js",
+      "test",
+      "--watchAll=false",
+      "--runInBand",
+      "--coverage",
+      "--coverageReporters=json-summary",
+      "--coverageReporters=lcov",
+      "--coverageDirectory=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261030-151554-preparacion-produccion-28e48d2\\unitarias\\cobertura-final",
+      "--json",
+      "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261030-151554-preparacion-produccion-28e48d2\\unitarias\\jest-final.json"
+    ],
+    "start": "2026-10-31T19:22:58.695Z",
+    "end": "2026-10-31T19:26:39.831Z",
+    "durationSeconds": 221.136,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/privacidad-apk.meta.json",
+    "command": [
+      "python",
+      "scripts/audit/android/privacy_test.py"
+    ],
+    "start": "2026-10-31T19:12:59.233Z",
+    "end": "2026-10-31T19:12:59.820Z",
+    "durationSeconds": 0.587,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "versiones-node.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--version"
+    ],
+    "start": "2026-10-31T19:12:59.822Z",
+    "end": "2026-10-31T19:12:59.884Z",
+    "durationSeconds": 0.062,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "versiones-npm.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "--version"
+    ],
+    "start": "2026-10-31T19:12:59.888Z",
+    "end": "2026-10-31T19:13:00.129Z",
+    "durationSeconds": 0.241,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  }
+]

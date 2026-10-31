@@ -1,0 +1,12 @@
+{
+  "command": [
+    "python",
+    "scripts/audit/closure/check-dependencies-apk.py"
+  ],
+  "start": "2026-10-31T19:37:21.752Z",
+  "end": "2026-10-31T19:37:22.158Z",
+  "durationSeconds": 0.406,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

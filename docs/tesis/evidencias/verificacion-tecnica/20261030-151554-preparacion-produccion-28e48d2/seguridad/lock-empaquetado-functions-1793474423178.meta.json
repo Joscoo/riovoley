@@ -1,0 +1,17 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "install",
+    "--package-lock-only",
+    "--ignore-scripts",
+    "--no-audit",
+    "--no-fund"
+  ],
+  "start": "2026-10-31T19:20:23.178Z",
+  "end": "2026-10-31T19:20:25.106Z",
+  "durationSeconds": 1.928,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": ".e2e-local\\spikes\\packed-lock-1793474415832\\functions"
+}

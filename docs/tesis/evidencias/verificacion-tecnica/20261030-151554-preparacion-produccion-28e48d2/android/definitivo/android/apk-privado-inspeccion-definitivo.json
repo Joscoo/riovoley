@@ -1,0 +1,22 @@
+{
+  "state": "FALLIDO",
+  "checkedMembers": 646,
+  "forbiddenMatches": [],
+  "expectedLocalAnonPresent": false,
+  "expectedLoopbackEndpointPresent": true,
+  "sourceMatchVerified": true,
+  "applicationSources": [
+    {
+      "source": "src/shared/platform/push.js",
+      "matchesCurrent": true,
+      "currentSha256": "4e88d26b00c59355f2e7a171b300c9ae674a028b320629f61e01c6e9dc44a288",
+      "bundledSha256": "4e88d26b00c59355f2e7a171b300c9ae674a028b320629f61e01c6e9dc44a288"
+    }
+  ],
+  "sha256": "92fe75484668d024013e39fa703886b93a833e1c40847d560e7ad71226d3e166",
+  "bytes": 35056311,
+  "privateArtifact": true,
+  "copiedToEvidence": false,
+  "distributed": false,
+  "scope": "Se permite únicamente anon local y clave PII local en el paquete privado. Se rechazan secretos institucionales, service_role, contraseñas y otros JWT en todos los miembros ZIP UTF8/UTF16. Se compara push.js de los mapas empaquetados con las fuentes actuales. No es un APK apto para distribuir."
+}

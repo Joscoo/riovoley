@@ -1,0 +1,16 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "install",
+    "--ignore-scripts",
+    "--no-audit",
+    "--no-fund"
+  ],
+  "start": "2026-10-31T19:18:04.464Z",
+  "end": "2026-10-31T19:18:15.009Z",
+  "durationSeconds": 10.545,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "riovoley"
+}

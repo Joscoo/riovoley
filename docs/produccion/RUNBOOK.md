@@ -1,0 +1,220 @@
+# Preparación y operación de un release de RioVoley
+
+Estado al preparar este documento, 2026-10-30: **despliegue bloqueado**. Este trabajo
+añade documentación, validaciones locales y CI técnico; no acredita backup,
+restauración, despliegue, cambios SQL, rotación de secretos ni aprobación institucional.
+
+Leer [README](../../README.md), [inventario de variables](VARIABLES.md),
+[seguridad validada solo en local](../../database/security/local/README.md) y
+[guía de credenciales](../CREDENCIALES_RECUPERACION_2026-10-22.md).
+La evidencia técnica de preparación se conserva en
+[el expediente de esta sesión](../tesis/evidencias/verificacion-tecnica/20261030-151554-preparacion-produccion-28e48d2).
+No confundir los ensayos locales con una validación del despliegue gestionado.
+
+## 1. Identificar el destino y cerrar el alcance
+
+El responsable del release debe registrar estos datos en un expediente privado de
+operación, con referencias públicas sin credenciales para su revisión:
+
+| Dato requerido | Estado inicial / criterio para desbloquear |
+| --- | --- |
+| Commit y árbol de trabajo | Fijar SHA completo del candidato y lockfiles; los cambios locales sin commit requieren su propio inventario de hashes. |
+| Proyecto frontend, cuenta y deployment actual | El usuario confirmó [riovoley.com](https://riovoley.com) y [joscoos-projects/riovoley](https://vercel.com/joscoos-projects/riovoley). El conector disponible pertenece a otra cuenta y no ofrece acceso a ese equipo. Pendientes acceso operativo, deployment activo/SHA, ajustes SPA y mecanismo de retorno; no crear otro proyecto. |
+| Supabase destino y configuración | Backend identificado por usuario/configuración: `mayvvlkvheagkojunzzb`. Confirmar catálogo actual de solo lectura por operador; un estado saludable no implica contratos compatibles. No ejecutar pruebas de login contra producción. |
+| Edge desplegado | Inventariar funciones, revisiones, imports/configuración y verificación JWT efectiva; guardar referencias a revisiones anteriores. |
+| SQL previsto | Diff revisado para el catálogo real, precondiciones, reversión concreta y orden de ejecución. Actualmente no existe migración de producción aprobada. |
+| Clientes activos | Inventariar web, APK publicados, versiones mínimas, bundles Capgo y canales; demostrar que clientes anteriores no reanudarán operaciones incompatibles. |
+| Operadores y ventana | Nombrar responsable de frontend, Edge/SQL, backup, verificación y decisión de retorno; definir ventana y comunicación operativa. |
+
+La configuración local `supabase/config.toml` no representa por sí sola los ajustes
+de Auth en Cloud. Revisar Site URL, redirects permitidos para web/Android, SMTP,
+dominios del remitente, almacenamiento, scheduler y límites en el servicio real.
+No usar `.env.e2e` para ensayo: en este entorno apunta a producción. Los únicos
+E2E de mutaciones autorizados pertenecen al backend local descartable y sintético.
+
+## 2. Preparar contratos y retirar clientes incompatibles
+
+Este es un release coordinado **cliente web + Android/Capgo + Edge + SQL**.
+No aplicar aisladamente el SQL local ni publicar un cliente que presuponga RPC o
+políticas todavía inexistentes. Si no hay una transición compatible demostrada,
+mantener la ventana cerrada hasta que los tres componentes estén verificados.
+
+La lectura institucional de **catálogos**, realizada mediante MCP el 2026-10-30,
+identificó diferencias concretas respecto al entorno local endurecido:
+
+| Observación de producción | Implicación para el release |
+| --- | --- |
+| `public.claim_daily_login_reward()` no existe. | El cliente candidato invoca `rpc('claim_daily_login_reward')`. **No desplegar ese cliente antes de crear y verificar coordinadamente el contrato SQL de producción.** La ausencia es un bloqueo de compatibilidad real, aunque el build y las pruebas locales estén verdes. |
+| `restore_payment` y `soft_delete_payment` conservan sobrecargas UUID y bigint; las cuatro son SECURITY DEFINER, sin `proconfig` y ejecutables por `anon` y `authenticated`. | El catálogo todavía difiere de la solución local SECURITY INVOKER/UUID. Revisar cuerpo, autorización interna, resolución de firmas y ACL antes de preparar el diff productivo. No asumir que el cambio local ya está aplicado. |
+| `admin_insert_user` es SECURITY DEFINER, sin `proconfig` y ejecutable por `anon` y `authenticated`. | Revisar autorización interna y contexto efectivo; no revocar ni reemplazar por recuento o nombre sin analizar los contratos administrativos. |
+| `gamification.xp_ledger` y `login_rewards` tienen RLS habilitado y una política cada una; `wallets` y `currency_ledger`, RLS habilitado y cuatro políticas cada una. | No afirmar que estas tablas carecen de RLS. Revisar los predicados y operaciones permitidas: el indicador habilitado y el número de políticas no acreditan su suficiencia. |
+
+Estos son metadatos de solo lectura. No se ejecutaron las RPC para comprobarlas
+contra producción, ni se demostró explotabilidad o ausencia de autorización
+interna por el mero grant/SECURITY DEFINER. Actualizar la lectura antes del gate:
+el catálogo puede cambiar después de esta fecha. La migración revisada deberá
+contemplar las diferencias observadas sin ejecutar ni alterar la migración local.
+
+| Contrato | Condición obligatoria de preparación y ensayo |
+| --- | --- |
+| Pagos UUID/bigint | Inventariar firmas y grants reales por esquema y tipos. El cambio local usa RPC UUID SECURITY INVOKER con personal activo y retira de ejecución web firmas bigint renombradas. Comparar llamadas y payloads de web/Android y Edge, resolver ambigüedades de PostgREST y ensayar autorización de roles activos/suspendidos. No convertir datos ni IDs por suposición. |
+| Ingreso diario | El cliente nuevo llama `public.claim_daily_login_reward()` sin actor, fecha ni XP; el contrato SQL previsto deriva usuario y fecha de Ecuador, concede ocho XP e impide duplicados. Esa función está ausente en la lectura de producción, por lo que debe crearse mediante la migración productiva revisada y verificarse antes de promover el cliente. El cliente anterior escribe la recompensa directamente. Demostrar idempotencia y ausencia de escritura desde lecturas del panel. |
+| Borrado de usuario | El cliente/Edge nuevos autorizan antes de borrar filas y Auth. Ensayar 401/403 sin escrituras, fallos intermedios y recuperación manual. Auth y PostgreSQL no forman una transacción distribuida. |
+| RLS, vistas, triggers y funciones | Comparar definiciones, propietarios, SECURITY DEFINER/INVOKER, search_path, ACL, políticas y esquema expuesto. Mantener restricciones de propiedad y la sincronización administrativa legítima. |
+| Identidad y gamificación | Revisar roles heredados, usuarios canónicos y duplicados de relación estudiante-usuario con consultas agregadas que no publiquen PII. Resolver excepciones mediante procedimiento propio revisado. |
+
+Antes de SQL, retirar o bloquear clientes antiguos: frenar nuevas instalaciones y
+OTA incompatibles, confirmar canales Capgo, web cacheada y sesiones abiertas,
+revisión mínima nativa y comportamiento de dispositivos que vuelven de estar sin
+conexión. Una actualización OTA solicitada no demuestra que todos los equipos la
+instalaron. El canal Capgo actual tiene actualización automática y borrado de
+bundles previos: conservar un bundle de retorno fuera del dispositivo y comprobar
+compatibilidad de su versión nativa. No publicar OTA en esta preparación.
+
+Si no existe una política comprobada para impedir que un cliente viejo opere,
+este punto permanece **bloqueante**. Diseñar y ensayar la transición o la ventana
+de mantenimiento con el responsable; no inventar un control de versión que el
+backend actual no implementa. Preparar los artefactos nuevos y de retorno antes
+de la ventana, sin habilitar sus flujos contra SQL incompatible.
+
+El SQL en `database/security/local/20261029141114_riovoley_security_local.sql`
+exige un marcador de alcance local y precondiciones. **No eliminar guardas, no
+falsificar el marcador en producción y no copiar ese archivo a migraciones de
+producción para ejecutarlo.** El aplicador local y `supabase db push` no son un
+procedimiento de este runbook. Una migración de producción debe escribirse y
+revisarse aparte sobre el estado real, con destino explícito, precondiciones y
+retorno ensayado. Este documento no suministra un comando de aplicación.
+
+## 3. Respaldos y ensayo de restauración por el operador
+
+Antes de aprobar cualquier mutación, el responsable de datos debe:
+
+1. Confirmar modalidad, cobertura, retención y último punto recuperable del backup
+   administrado/PITR contratado. Registrar RPO, RTO, hora UTC y referencia del backup;
+   no asumir que PITR está habilitado ni que un backup cubre Storage o proveedores.
+2. Obtener por el canal aprobado un respaldo consistente de datos y catálogo:
+   funciones con firmas/cuerpos, propietarios y ACL, políticas, triggers, vistas,
+   grants y configuraciones que necesiten retorno. Guardarlo cifrado con acceso
+   restringido y nunca dentro del repositorio ni de los artifacts del CI.
+3. Custodiar por separado configuración Edge, revisiones y secretos en el gestor
+   autorizado, configuración Auth, objetos Storage si corresponden, artefactos
+   web/Android/Capgo y la clave PII original. Un dump SQL no reemplaza esos respaldos.
+4. Restaurar en un destino aislado autorizado y demostrar los contratos afectados
+   con identidades de ensayo. Documentar tiempo real, limitaciones y evidencia
+   sin filas de atletas, tokens ni contraseñas. No usar producción como destino
+   de pruebas ni enviar mensajes o push reales durante el ensayo.
+5. Preparar reversión específica desde el catálogo original y probarla contra
+   ese ensayo. Definir tratamiento de escrituras posteriores al corte y cómo
+   conservarlas antes de restaurar. Un PITR puede retroceder datos de negocio.
+
+**Backup/PITR y restauración no ejecutados en esta preparación.** Una casilla
+marcada, el preflight o una captura del estado saludable no los certifican.
+
+## 4. Verificación técnica previa
+
+Ejecutar el CI [technical-readiness](../../.github/workflows/technical-readiness.yml)
+en el SHA candidato y revisar resultados completos. Usa Node 24, instalación
+desde lockfiles sin lifecycle scripts, suite React (línea base 419 pruebas),
+pruebas Node explícitas de toolchain/preflight, auditoría de los tres árboles npm
+y build CRA con entradas sintéticas de loopback. No despliega ni genera APK.
+
+El fork de dependencia local bajo `vendor/` debe quedar identificado por nombre,
+versión propia y origen local; los tests de toolchain verifican ese contrato.
+`npm audit` consulta advisories del registro y **no acredita ausencia de fallos en
+un fork privado**. Su revisión y pruebas de regresión son parte del expediente.
+No atribuir una versión inventada a un parche publicado en npm.
+
+El build usa CI estricto; resolver advertencias bloqueantes con cambios revisados.
+El build sintético no prueba secretos, Auth, enlaces de recuperación, correos,
+push, scheduler, rutas recargadas en hosting ni Capacitor real. El workflow nuevo
+debe verse verde en GitHub; su ejecución hospedada aún no está acreditada aquí.
+
+Ejecutar el [preflight](VARIABLES.md#preflight-sin-carga-automática-de-archivos) con
+configuración suministrada por el operador. Conservar solamente nombres/estados.
+Una salida `STRUCTURE: VALID` mantiene `AUTHORIZATION: BLOCKED`.
+Revisar alertas del servicio una por una: search_path mutable, extensión pg_net,
+SECURITY DEFINER ejecutable, protección de contraseña filtrada y actualización de
+Postgres. Los recuentos observados no prueban explotabilidad; algunos helpers son
+legítimos. Cualquier cambio de permisos, Auth, extensión o versión requiere diff,
+ensayo y aprobación propios. No aplicar remedios automáticos de un advisor.
+
+## 5. Gate final de aprobación explícita
+
+El operador presenta un paquete concreto: SHA/hash de cada artefacto, destino real
+confirmado, diff SQL de producción y retorno revisados, contratos ensayados,
+evidencia de retirada de clientes viejos, salida del CI/preflight, backup/restauración,
+responsables, ventana, criterios de fallo y plan para escrituras posteriores.
+Si falta un elemento, **no iniciar el release**.
+
+Obtener autorización explícita del titular para ese paquete y esa ventana **como
+último paso de la preparación y antes de cualquier despliegue o mutación**.
+Registrar quién, cuándo, alcance y referencia; no tratar una aprobación de trabajo
+local, una variable de entorno, una aprobación de PR o CI verde como autorización
+de producción. Esta aprobación sigue pendiente.
+
+## 6. Secuencia operativa tras la aprobación
+
+1. Reconfirmar SHA y destinos sin cambios desde el gate; abrir la ventana aprobada,
+   detener nuevas escrituras y comprobar la retirada/bloqueo de clientes viejos.
+   Si se permite alguna escritura, debe estar expresamente incluida en la
+   transición compatible ensayada y en el respaldo posterior al corte.
+2. Confirmar último backup y punto de retorno. Aplicar únicamente el cambio SQL
+   de producción ya revisado con el mecanismo aprobado por el responsable.
+   Verificar precondiciones y catálogo/ACL resultantes antes de continuar,
+   incluida la existencia de `public.claim_daily_login_reward()` con firma y
+   permisos esperados y la resolución inequívoca de pagos UUID/bigint. Si falta
+   la RPC o sus contratos no están verificados, no promover web ni Android/OTA.
+3. Instalar las revisiones Edge que usan el nuevo contrato y comprobar denegaciones
+   sin efectos, auth del scheduler, tipos de RPC y conectividad de proveedores
+   mediante el plan controlado aprobado. Mantener cerrado el acceso de usuarios.
+4. Promover el artefacto web y la versión Android/Capgo compatibles; comprobar
+   rutas directas/recarga SPA, login/recuperación con cuenta de ensayo autorizada,
+   permisos por rol, pagos UUID, ingreso diario, borrado y registro push. No usar
+   los scripts E2E locales ni credenciales de producción como smoke automático.
+5. Reabrir gradualmente solo al superar los criterios pactados. Registrar versiones
+   observadas, errores 4xx/5xx, denegaciones inesperadas, idempotencia y entregas
+   de integraciones sin publicar datos personales. Cerrar la ventana con decisión
+   del operador y conservar el paquete de retorno durante la observación acordada.
+
+El orden SQL → Edge → cliente requiere mantenimiento efectivo. Si un servicio no
+puede quedar aislado, definir primero una fase de expansión compatible con ambos
+contratos y ensayarla; no sustituir por el orden anterior con tráfico activo.
+
+## 7. Retorno coordinado
+
+Activar el retorno ante destinos distintos al aprobado, cambios inesperados en
+catálogo/roles, denegaciones legítimas, doble recompensa, errores de pago/tipos,
+fallos de autorización/borrado o pérdida de acceso. El responsable fija umbrales
+y tiempo máximo antes del gate; no improvisarlos durante el incidente.
+
+1. Cerrar escrituras y congelar promociones/OTA; registrar revisiones y hora UTC,
+   preservar evidencia sin PII y registrar escrituras desde el corte.
+2. Aislar también clientes nuevos. **Nunca revertir SQL mientras el cliente nuevo
+   o Edge nuevo siguen operando contra él.** No basta con volver el deployment web:
+   hay bundles móviles/cachés y sesiones persistentes que pueden seguir activos.
+3. Elegir el conjunto ensayado compatible de web + Edge + Android/OTA + SQL. Si un
+   cliente nuevo no puede retirarse o bloquearse, mantener mantenimiento y usar
+   una corrección compatible revisada; no degradar SQL por intuición.
+4. Con los clientes aislados, restaurar revisiones Edge/cliente y ejecutar el
+   retorno de SQL específico del catálogo respaldado en el orden ensayado, sin
+   tráfico intermedio. Si se requiere restauración de datos/PITR, proteger primero
+   las escrituras posteriores y exigir decisión del responsable sobre pérdida y
+   reconciliación. Restaurar Auth/Storage según su cobertura independiente.
+5. Verificar firmas UUID/bigint y ACL, RLS/vistas, roles activos/suspendidos, ingreso
+   diario, pagos, PII con la clave original e integraciones. Reabrir únicamente
+   cuando el conjunto completo sea compatible y el responsable lo autorice.
+
+Ni este runbook ni el preflight ejecutan esos pasos. Los bloqueos actuales incluyen
+acceso al equipo/deployment frontend sin verificar, migración de producción sin adaptar/aprobar,
+RPC `claim_daily_login_reward` ausente en producción, continuidad de clientes sin
+demostrar y backup/restauración/aprobación pendientes.
+
+## 8. Configuración frontend preparada en esta rama
+
+El dominio confirmado es https://riovoley.com. El preflight de .env.production local detectó REACT_APP_APP_URL ausente; configurar ese origen explícito en el proyecto objetivo y repetir el control sin imprimir valores. No se ha comprobado el inventario de variables de Vercel. No cambiar la clave PII de datos existentes por este motivo.
+
+ercel.json prepara nosniff, Referrer-Policy y SAMEORIGIN, conserva las reglas de caché y ejecuta CRA con CI=true y sin sourcemaps públicos. Las cabeceras no se han publicado ni observado aún en producción. CSP y Permissions-Policy quedan pendientes del inventario/ensayo de proveedores y funciones del dispositivo. La rama de auditoría tiene git.deploymentEnabled=false para evitar despliegues automáticos al subir evidencia; no altera main ni publica un release. Ver [configuración oficial](https://vercel.com/docs/project-configuration/git-configuration).
+
+El CI aparta dotenv únicamente del checkout temporal, instala/audita los árboles auxiliares con Node22 y usa Node24 para React y herramientas. Su ejecución remota sigue pendiente; un ensayo local de npm ci no la sustituye.
+
+Las acciones checkout/setup-node se fijaron a SHA de sus etiquetas v7 observadas mediante git ls-remote. Las referencias oficiales son https://github.com/actions/checkout y https://github.com/actions/setup-node. El análisis YAML comprueba estructura, runtimes y ausencia de comandos de publicación; no acredita una ejecución remota de GitHub Actions.

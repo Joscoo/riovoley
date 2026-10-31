@@ -1,0 +1,9 @@
+{
+  "time": "2026-10-30T15:24:57.551Z",
+  "state": "APROBADO",
+  "scope": "Experimento privado de empaquetado npm file: y resolución desde un consumidor real; no es el npm audit del proyecto.",
+  "consumer": "@rollup/plugin-node-resolve@11.2.1",
+  "resolvedName": "@riovoley/deepmerge-hardened",
+  "resolvedVersion": "4.3.1-riovoley.1",
+  "prototypeGuardsVerified": true
+}

@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "tests/integration/toolchain.patterns.test.cjs"
+  ],
+  "start": "2026-10-31T19:14:54.269Z",
+  "end": "2026-10-31T19:14:54.793Z",
+  "durationSeconds": 0.524,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/unit/dev-server-config.test.cjs"
+  ],
+  "start": "2026-10-30T15:32:26.501Z",
+  "end": "2026-10-30T15:32:27.200Z",
+  "durationSeconds": 0.699,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

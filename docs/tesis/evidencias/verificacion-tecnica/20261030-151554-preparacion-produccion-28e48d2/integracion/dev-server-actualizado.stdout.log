@@ -1,0 +1,14 @@
+Attempting to bind to HOST environment variable: 127.0.0.1
+If this was unintentional, check that you haven't mistakenly set it in your shell.
+Learn more here: https://cra.link/advanced-config
+
+Starting the development server...
+
+Failed to compile.
+
+Can't import the named export 'Logger' (imported as 'Logger') from default-exporting module (only default export is available)
+ERROR in ./node_modules/webpack-dev-middleware/client/utils/log.js 45:17-23
+Can't import the named export 'Logger' (imported as 'Logger') from default-exporting module (only default export is available)
+
+webpack compiled with 1 error
+

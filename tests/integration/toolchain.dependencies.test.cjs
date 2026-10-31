@@ -11,7 +11,10 @@ test('QS de Express serializa arrays comma con null y undefined sin excepción (
  for(const value of [null,undefined]) assert.doesNotThrow(()=>qs.stringify({a:[value,'b']},{arrayFormat:'comma',encodeValuesOnly:true}));
 });
 test('Express conserva filtros anidados y body URL-encoded con el QS actualizado',async()=>{
- const express=require('express'),app=express();app.use(express.urlencoded({extended:true}));
+ const express=require('express'),app=express();
+ // Express 5 defaults to a simple query parser. This fixture explicitly tests
+ // the extended QS contract; it does not assume the Express 4 default.
+ app.set('query parser','extended');app.use(express.urlencoded({extended:true}));
  app.post('/audit',(req,res)=>res.json({query:req.query,body:req.body}));
  const server=await new Promise(resolve=>{const s=app.listen(0,'127.0.0.1',()=>resolve(s));});
  try{

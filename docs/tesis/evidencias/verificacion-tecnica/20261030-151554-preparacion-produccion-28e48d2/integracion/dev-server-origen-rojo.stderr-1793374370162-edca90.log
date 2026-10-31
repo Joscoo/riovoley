@@ -1,0 +1,5 @@
+HMR debe rechazar orígenes web ajenos al host local
+
+false !== true
+
+

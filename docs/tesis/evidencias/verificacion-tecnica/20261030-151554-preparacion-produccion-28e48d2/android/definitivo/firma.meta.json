@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/android/collect-private.cjs",
+    "definitivo"
+  ],
+  "start": "2026-10-31T19:37:30.223Z",
+  "end": "2026-10-31T19:37:37.626Z",
+  "durationSeconds": 7.403,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

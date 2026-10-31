@@ -1,6 +1,19 @@
 # Evidencias técnicas de RIOVOLEY
 
-La ejecución más reciente continúa la corrección de dependencias sobre el commit base `89ec6c6`, sin cambiar CRA ni el código de la aplicación:
+## Preparación de producción: ejecución complementaria del 30?31 de octubre
+
+Se corrigieron las dependencias y se prepar? el release, sin desplegarlo. Aprobaron 419 casos Jest en 88 suites, 76 contratos Node (repetidos después de npm ci independiente), 12 guardas y 249 instancias Playwright. Se conservan tres fallos de intentos previos E2E; un smoke adicional de tres casos aprob? sobre el build estricto final sin mapas y repite casos de la matriz. El build web y Android debug aprobaron; el APK privado tiene 106 archivos web cotejados. npm audit final registra cero avisos en los tres árboles del registro, pero no analiza los dos adaptadores locales, comprobados aparte.
+
+- [Informe técnico](evidencias/verificacion-tecnica/20261030-151554-preparacion-produccion-28e48d2/INFORME_VERIFICACION_TECNICA.md).
+- [Matriz de la tesis](evidencias/verificacion-tecnica/20261030-151554-preparacion-produccion-28e48d2/MATRIZ_VERIFICACIONES_TESIS.md).
+- [Propuesta de resultados para 4.5](evidencias/verificacion-tecnica/20261030-151554-preparacion-produccion-28e48d2/RESULTADOS_PARA_TESIS_4_5.md).
+- [Estado y bloqueos de producción](evidencias/verificacion-tecnica/20261030-151554-preparacion-produccion-28e48d2/ESTADO_PRODUCCION.md).
+
+El conector Vercel devuelve 403 para joscoos-projects. La RPC de recompensa diaria sigue ausente en el backend institucional; quedan pendientes la migración coordinada, las alertas Supabase y los gates de respaldo, configuración y aprobación. Ninguna verificación local acredita funcionamiento completo de producción. Los diez expedientes anteriores se conservan.
+
+## Antecedente de dependencias
+
+La ejecución anterior continúa la corrección de dependencias sobre el commit base `89ec6c6`, sin cambiar CRA ni el código de la aplicación:
 
 - [Informe técnico de dependencias y regresión](evidencias/verificacion-tecnica/20261030-141339-dependencias-89ec6c6/INFORME_VERIFICACION_TECNICA.md).
 - [Matriz de verificaciones para la tesis](evidencias/verificacion-tecnica/20261030-141339-dependencias-89ec6c6/MATRIZ_VERIFICACIONES_TESIS.md).

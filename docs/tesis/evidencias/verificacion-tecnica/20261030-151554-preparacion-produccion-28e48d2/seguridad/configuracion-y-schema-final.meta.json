@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/check-config.cjs"
+  ],
+  "start": "2026-10-31T19:21:50.251Z",
+  "end": "2026-10-31T19:21:51.445Z",
+  "durationSeconds": 1.194,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

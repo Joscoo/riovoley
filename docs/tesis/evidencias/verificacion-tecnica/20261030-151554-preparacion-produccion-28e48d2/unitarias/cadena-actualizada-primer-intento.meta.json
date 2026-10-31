@@ -1,0 +1,19 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/integration/toolchain.dependencies.test.cjs",
+    "tests/integration/toolchain.security-followup.test.cjs",
+    "tests/integration/toolchain.loaders-security.test.cjs",
+    "tests/integration/toolchain.production-readiness.test.cjs",
+    "tests/unit/dev-server-config.test.cjs",
+    "tests/unit/production-preflight.test.cjs"
+  ],
+  "start": "2026-10-30T15:34:42.427Z",
+  "end": "2026-10-30T15:34:55.591Z",
+  "durationSeconds": 13.164,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

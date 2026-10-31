@@ -1,0 +1,21 @@
+{
+  "main": "./dist/Server.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./types/lib/Server.d.ts",
+      "import": "./lib/Server.js",
+      "default": "./lib/Server.js",
+      "require": "./dist/Server.js"
+    },
+    "./client/*": "./client/*",
+    "./package.json": "./package.json",
+    "./lib/servers/BaseServer.js": {
+      "types": "./types/lib/servers/BaseServer.d.ts",
+      "import": "./lib/servers/BaseServer.js",
+      "default": "./lib/servers/BaseServer.js",
+      "require": "./dist/servers/BaseServer.js"
+    }
+  }
+}
+

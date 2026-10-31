@@ -9,16 +9,28 @@ const scratch=()=>{
  fs.mkdirSync(dir,{recursive:true});return fs.mkdtempSync(path.join(dir,'run-'));
 };
 
-test('UUID usado por SockJS rechaza buffers insuficientes al generar v5',()=>{
- const uuid=createRequire(require.resolve('sockjs'))('uuid');
- assert.throws(()=>uuid.v5('fixture',uuid.v5.DNS,new Uint8Array(8),4),RangeError);
+// WDS 6 removed SockJS/UUID. Keep their historical results in the evidence,
+// and verify the transport actually used now instead of restoring dead code.
+async function withSocket(limit,callback){
+ const WS=createRequire(require.resolve('webpack-dev-server'))('ws');
+ const server=new WS.WebSocketServer({host:'127.0.0.1',port:0,maxPayload:limit});
+ server.on('connection',socket=>{socket.on('error',()=>{});socket.on('message',data=>socket.send(data.toString()));});
+ await new Promise((resolve,reject)=>{server.once('listening',resolve);server.once('error',reject);});
+ const client=new WS('ws://127.0.0.1:'+server.address().port);
+ try{await new Promise((resolve,reject)=>{client.once('open',resolve);client.once('error',reject);});await callback(client);}
+ finally{client.terminate();for(const socket of server.clients)socket.terminate();await new Promise(resolve=>server.close(resolve));}
+}
+
+test('WebSocket del servidor conserva intercambio real de texto y cierre normal',{timeout:5000},async()=>{
+ await withSocket(128,async client=>{
+  const message=new Promise((resolve,reject)=>{client.once('message',data=>resolve(data.toString()));client.once('error',reject);});
+  client.send('toolchain-fixture');assert.equal(await message,'toolchain-fixture');
+  const closed=new Promise(resolve=>client.once('close',resolve));client.close(1000);assert.equal(await closed,1000);
+ });
 });
 
-test('SockJS conserva conexiones con identificadores UUID v4 válidos y distintos',()=>{
- const {SockJSConnection}=require('sockjs/lib/transport');
- const ids=Array.from({length:20},()=>new SockJSConnection({prefix:'/fixture'}).id);
- assert.equal(new Set(ids).size,20);
- for(const id of ids)assert.match(id,/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/);
+test('WebSocket del servidor rechaza un mensaje que supera el límite configurado',{timeout:5000},async()=>{
+ await withSocket(8,async client=>{const closed=new Promise(resolve=>client.once('close',resolve));client.send('123456789');assert.equal(await closed,1009);});
 });
 
 test('SVGO del cargador SVG elimina enlaces ejecutables con namespace y tabulador codificado',async()=>{
@@ -80,8 +92,11 @@ test('Middleware sirve el bundle y rechaza escapar del directorio con publicPath
   const stats=await new Promise(resolve=>middleware.waitUntilValid(resolve));
   assert.equal(stats.hasErrors(),false);
   middleware.context.outputFileSystem.writeFileSync(path.join(dir,'outside.txt'),'SYNTHETIC_OUTSIDE_ONLY');
-  assert.equal(middleware.getFilenameFromUrl('/assets/main.js'),path.join(output,'main.js'));
-  assert.equal(middleware.getFilenameFromUrl('/assets../outside.txt'),undefined);
+  // Middleware 8 returns a descriptor, not the previous filename string.
+  // Comparing the complete descriptor formats a cyclic compiler/filesystem graph.
+  const resolved=await middleware.getFilenameFromUrl('/assets/main.js');
+  assert.equal(resolved.filename,path.join(output,'main.js'));
+  await assert.rejects(middleware.getFilenameFromUrl('/assets../outside.txt'),error=>error.statusCode===403);
  }finally{
   await new Promise((resolve,reject)=>middleware.close(e=>e?reject(e):resolve()));
   await new Promise((resolve,reject)=>compiler.close(e=>e?reject(e):resolve()));

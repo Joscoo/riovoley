@@ -1,0 +1,87 @@
+name: Technical readiness (no deployment)
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: technical-readiness-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      CI: 'true'
+      # Synthetic, loopback-only build inputs. No secrets context or .env files.
+      REACT_APP_SUPABASE_URL: http://127.0.0.1:55321
+      REACT_APP_SUPABASE_ANON_KEY: ci-public-placeholder-not-a-real-key
+      REACT_APP_APP_URL: http://127.0.0.1:3000
+      REACT_APP_PII_ENCRYPTION_KEY: ci-synthetic-pii-key-never-for-real-data
+      REACT_APP_WHATSAPP_ACCESS_TOKEN: ''
+      REACT_APP_WHATSAPP_PHONE_NUMBER_ID: ''
+      REACT_APP_WHATSAPP_BUSINESS_ACCOUNT_ID: ''
+      REACT_APP_CLUB_ADMIN_PHONE: ''
+      REACT_APP_CLUB_COACH_PHONE: ''
+      REACT_APP_CLUB_EMERGENCY_PHONE: ''
+      REACT_APP_CAPGO_DEFAULT_CHANNEL: beta
+      REACT_APP_ENABLE_SQL_AUDIT: 'false'
+      REACT_APP_ENABLE_WEB_VITALS_LOG: 'false'
+      GENERATE_SOURCEMAP: 'false'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            functions/package-lock.json
+            riovoley/package-lock.json
+      - name: Isolate checkout dotenv files from synthetic checks
+        shell: bash
+        run: |
+          shopt -s nullglob
+          mkdir -- "$RUNNER_TEMP/riovoley-env-isolation"
+          for file in .env .env.*; do
+            if [[ -f "$file" ]]; then
+              mv -- "$file" "$RUNNER_TEMP/riovoley-env-isolation/"
+            fi
+          done
+      - name: Install and audit auxiliary trees on their declared Node 22 runtime
+        run: |
+          npm ci --ignore-scripts --prefix functions
+          npm ci --ignore-scripts --prefix riovoley
+          npm audit --audit-level=low --prefix functions
+          npm audit --audit-level=low --prefix riovoley
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: '24'
+      - name: Install locked app dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts
+      - name: React unit tests (419-test baseline; no E2E credentials)
+        run: npm test -- --watchAll=false --runInBand
+      - name: Toolchain and production guards (explicit files; no database suite)
+        run: >-
+          node --test --test-concurrency=1
+          tests/integration/toolchain.dependencies.test.cjs
+          tests/integration/toolchain.security-followup.test.cjs
+          tests/integration/toolchain.loaders-security.test.cjs
+          tests/integration/toolchain.production-readiness.test.cjs
+          tests/unit/production-preflight.test.cjs
+          tests/unit/dev-server-config.test.cjs
+          tests/integration/toolchain.patterns.test.cjs
+      - name: Audit all locked dependency trees
+        run: |
+          npm audit --audit-level=low
+      - name: Build SPA using synthetic loopback configuration
+        # Run CRA directly: the historical npm build script sets CI=false.
+        run: node node_modules/react-scripts/scripts/build.js

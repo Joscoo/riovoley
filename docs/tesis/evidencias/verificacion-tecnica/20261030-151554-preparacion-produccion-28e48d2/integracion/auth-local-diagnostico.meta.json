@@ -1,0 +1,17 @@
+{
+  "command": [
+    "docker",
+    "--host",
+    "npipe:////./pipe/dockerDesktopLinuxEngine",
+    "logs",
+    "--since",
+    "20m",
+    "supabase_auth_riovoley-e2e-local"
+  ],
+  "start": "2026-10-31T19:38:00.628Z",
+  "end": "2026-10-31T19:38:00.996Z",
+  "durationSeconds": 0.368,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

@@ -1,0 +1,4 @@
+?? docs/superpowers/plans/2026-10-30-preparacion-produccion.md
+?? docs/tesis/evidencias/verificacion-tecnica/20261030-151554-preparacion-produccion-28e48d2/
+?? scripts/audit/closure/initialize-production.cjs
+

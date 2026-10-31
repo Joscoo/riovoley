@@ -1,0 +1,31 @@
+{
+  "checks": [
+    {
+      "name": "HTML real de CRA sobre loopback",
+      "state": "APROBADO",
+      "status": 200
+    },
+    {
+      "name": "Compilación de desarrollo sin errores",
+      "state": "APROBADO"
+    },
+    {
+      "name": "Bundle servido por el middleware actualizado",
+      "state": "APROBADO",
+      "status": 200,
+      "bytes": 5983696
+    },
+    {
+      "name": "Canal WebSocket HMR real",
+      "state": "APROBADO",
+      "messageType": "hot"
+    },
+    {
+      "name": "HMR rechaza un origen web no autorizado",
+      "state": "APROBADO"
+    }
+  ],
+  "executed": 5,
+  "passed": 5,
+  "failed": 0
+}
