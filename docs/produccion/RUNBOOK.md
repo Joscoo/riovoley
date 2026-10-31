@@ -19,7 +19,7 @@ operación, con referencias públicas sin credenciales para su revisión:
 | Dato requerido | Estado inicial / criterio para desbloquear |
 | --- | --- |
 | Commit y árbol de trabajo | Fijar SHA completo del candidato y lockfiles; los cambios locales sin commit requieren su propio inventario de hashes. |
-| Proyecto frontend, cuenta y deployment actual | El usuario confirmó [riovoley.com](https://riovoley.com) y [joscoos-projects/riovoley](https://vercel.com/joscoos-projects/riovoley). El conector disponible pertenece a otra cuenta y no ofrece acceso a ese equipo. Pendientes acceso operativo, deployment activo/SHA, ajustes SPA y mecanismo de retorno; no crear otro proyecto. |
+| Proyecto frontend, cuenta y deployment actual | Acceso de lectura resuelto por CLI privada para joscoos-projects/riovoley. Proyecto prj_gnsNVKcXC8jvN0UcassXy4lZ0ZfN; producción observada en READY, main e469db5. El candidato f9f6d4c aún no está publicado. Ver [inspección del 31 de octubre](../tesis/evidencias/verificacion-tecnica/20261031-204703-vercel-lectura-f9f6d4c/INFORME_VERIFICACION_VERCEL.md). La autorización del acceso no es aprobación del release. |
 | Supabase destino y configuración | Backend identificado por usuario/configuración: `mayvvlkvheagkojunzzb`. Confirmar catálogo actual de solo lectura por operador; un estado saludable no implica contratos compatibles. No ejecutar pruebas de login contra producción. |
 | Edge desplegado | Inventariar funciones, revisiones, imports/configuración y verificación JWT efectiva; guardar referencias a revisiones anteriores. |
 | SQL previsto | Diff revisado para el catálogo real, precondiciones, reversión concreta y orden de ejecución. Actualmente no existe migración de producción aprobada. |
@@ -204,17 +204,22 @@ y tiempo máximo antes del gate; no improvisarlos durante el incidente.
    diario, pagos, PII con la clave original e integraciones. Reabrir únicamente
    cuando el conjunto completo sea compatible y el responsable lo autorice.
 
-Ni este runbook ni el preflight ejecutan esos pasos. Los bloqueos actuales incluyen
-acceso al equipo/deployment frontend sin verificar, migración de producción sin adaptar/aprobar,
-RPC `claim_daily_login_reward` ausente en producción, continuidad de clientes sin
-demostrar y backup/restauración/aprobación pendientes.
+Ni este runbook ni el preflight ejecutan esos pasos. El acceso de lectura al equipo y deployment frontend quedó comprobado por CLI el 31 de octubre. Continúan pendientes la migración productiva adaptada/ensayada, la revalidación de los contratos SQL/Edge, la transición de clientes, el respaldo/restauración y la aprobación del release. Las diferencias de RPC y permisos documentadas anteriormente no se corrigieron mediante esta inspección de Vercel.
 
 ## 8. Configuración frontend preparada en esta rama
 
-El dominio confirmado es https://riovoley.com. El preflight de .env.production local detectó REACT_APP_APP_URL ausente; configurar ese origen explícito en el proyecto objetivo y repetir el control sin imprimir valores. No se ha comprobado el inventario de variables de Vercel. No cambiar la clave PII de datos existentes por este motivo.
+El dominio confirmado es https://riovoley.com. La inspección cloud del 31 de octubre encontró los cuatro nombres frontend requeridos para production, incluido REACT_APP_APP_URL. El bloqueo anterior de ese nombre correspondía al archivo local .env.production; no prueba una ausencia en Vercel. Los valores y su validez no se consultaron. Comprobar el origen y la continuidad de PII en el entorno privado del operador; no rotar la clave por este inventario.
 
-ercel.json prepara nosniff, Referrer-Policy y SAMEORIGIN, conserva las reglas de caché y ejecuta CRA con CI=true y sin sourcemaps públicos. Las cabeceras no se han publicado ni observado aún en producción. CSP y Permissions-Policy quedan pendientes del inventario/ensayo de proveedores y funciones del dispositivo. La rama de auditoría tiene git.deploymentEnabled=false para evitar despliegues automáticos al subir evidencia; no altera main ni publica un release. Ver [configuración oficial](https://vercel.com/docs/project-configuration/git-configuration).
+`vercel.json` prepara nosniff, Referrer-Policy y SAMEORIGIN, conserva las reglas de caché y ejecuta CRA con CI=true y sin sourcemaps públicos. Las cabeceras no se han publicado ni observado aún en producción. CSP y Permissions-Policy quedan pendientes del inventario/ensayo de proveedores y funciones del dispositivo. La rama de auditoría tiene git.deploymentEnabled=false para evitar despliegues automáticos al subir evidencia; no altera main ni publica un release. Ver [configuración oficial](https://vercel.com/docs/project-configuration/git-configuration).
 
 El CI aparta dotenv únicamente del checkout temporal, instala/audita los árboles auxiliares con Node22 y usa Node24 para React y herramientas. Su ejecución remota sigue pendiente; un ensayo local de npm ci no la sustituye.
 
 Las acciones checkout/setup-node se fijaron a SHA de sus etiquetas v7 observadas mediante git ls-remote. Las referencias oficiales son https://github.com/actions/checkout y https://github.com/actions/setup-node. El análisis YAML comprueba estructura, runtimes y ausencia de comandos de publicación; no acredita una ejecución remota de GitHub Actions.
+
+## 9. Inspección cloud del 31 de octubre
+
+[Metadatos y GET públicos](../tesis/evidencias/verificacion-tecnica/20261031-204703-vercel-lectura-f9f6d4c/INFORME_VERIFICACION_VERCEL.md), obtenidos mediante Vercel CLI 65.9.0 con scope explícito, sin cambios institucionales. El sitio sirve el commit e469db5608fb77071b6a9ee3db253c28dae734dd, creado 2026-10-28T20:49:50.217Z, y los dominios están asociados al deployment observado. Las cuatro rutas públicas devolvieron HTTP200 sin ejecutar JavaScript ni login. No se ejecutó un build ni un smoke funcional remoto.
+
+La configuración de proyecto/deployment indica Node22.x; el candidato fija engines.node=24.x. Según la [documentación de Vercel](https://vercel.com/docs/functions/runtimes/node-js/node-js-versions), engines.node sustituye el ajuste del dashboard en nuevos builds. Mantener la versión explícita y comprobar Node/npm efectivos en el siguiente build controlado; la lectura del dashboard no demuestra el runtime de un build futuro.
+
+La inspección no publica variables ni credenciales. Para reproducir requiere la CLI privada instalada y una autorización propia del operador; no copiar su archivo OAuth. El helper scripts/audit/production/inspect-vercel.cjs está limitado a GET de metadatos y del sitio público. No usar env ls --json para crear evidencias: puede devolver valores legibles.

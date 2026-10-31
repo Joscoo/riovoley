@@ -1,0 +1,22 @@
+{
+  "label": "despliegue",
+  "method": "GET",
+  "endpoint": "/v13/deployments/dpl_DCPpv18kuroRoaEpV49xhGfY1isB",
+  "command": [
+    "vercel",
+    "api",
+    "/v13/deployments/dpl_DCPpv18kuroRoaEpV49xhGfY1isB",
+    "-X",
+    "GET",
+    "--scope",
+    "joscoos-projects",
+    "--global-config",
+    "[CONFIG_PRIVADA]",
+    "--non-interactive"
+  ],
+  "start": "2026-10-31T20:47:05.620Z",
+  "end": "2026-10-31T20:47:06.897Z",
+  "durationSeconds": 1.277,
+  "exitCode": 0,
+  "rawOutputSaved": false
+}

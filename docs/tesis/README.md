@@ -1,8 +1,17 @@
 # Evidencias técnicas de RIOVOLEY
 
-## Preparación de producción: ejecución complementaria del 30?31 de octubre
+## Inspección autorizada de Vercel — 31 de octubre
 
-Se corrigieron las dependencias y se prepar? el release, sin desplegarlo. Aprobaron 419 casos Jest en 88 suites, 76 contratos Node (repetidos después de npm ci independiente), 12 guardas y 249 instancias Playwright. Se conservan tres fallos de intentos previos E2E; un smoke adicional de tres casos aprob? sobre el build estricto final sin mapas y repite casos de la matriz. El build web y Android debug aprobaron; el APK privado tiene 106 archivos web cotejados. npm audit final registra cero avisos en los tres árboles del registro, pero no analiza los dos adaptadores locales, comprobados aparte.
+El acceso de lectura quedó resuelto mediante CLI privada. Se verificaron proyecto, equipo, repositorio, dominios, deployment activo y nombres de variables. Producción sirve main e469db5; los cambios evaluados sobre f9f6d4c aún no están desplegados. Las cuatro rutas públicas devolvieron HTTP200 y los cuatro nombres frontend requeridos están configurados; no se leyeron valores ni se realizaron pruebas funcionales de escritura.
+
+- [Informe de inspección cloud](evidencias/verificacion-tecnica/20261031-204703-vercel-lectura-f9f6d4c/INFORME_VERIFICACION_VERCEL.md).
+- [Runbook actualizado](../produccion/RUNBOOK.md).
+
+Esta fase agrega metadatos y observaciones HTTP, sin aumentar los denominadores Jest/Playwright de los expedientes anteriores. Publicación, respaldo/restauración, contratos de Supabase y validación de proveedores siguen sujetos a los gates del runbook.
+
+## Preparación de producción: ejecución complementaria del 30–31 de octubre
+
+Se corrigieron las dependencias y se preparó el release, sin desplegarlo. Aprobaron 419 casos Jest en 88 suites, 76 contratos Node (repetidos después de npm ci independiente), 12 guardas y 249 instancias Playwright. Se conservan tres fallos de intentos previos E2E; un smoke adicional de tres casos aprobó sobre el build estricto final sin mapas y repite casos de la matriz. El build web y Android debug aprobaron; el APK privado tiene 106 archivos web cotejados. npm audit final registra cero avisos en los tres árboles del registro, pero no analiza los dos adaptadores locales, comprobados aparte.
 
 - [Informe técnico](evidencias/verificacion-tecnica/20261030-151554-preparacion-produccion-28e48d2/INFORME_VERIFICACION_TECNICA.md).
 - [Matriz de la tesis](evidencias/verificacion-tecnica/20261030-151554-preparacion-produccion-28e48d2/MATRIZ_VERIFICACIONES_TESIS.md).

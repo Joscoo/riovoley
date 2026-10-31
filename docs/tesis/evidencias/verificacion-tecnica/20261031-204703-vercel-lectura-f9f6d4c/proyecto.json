@@ -1,0 +1,158 @@
+{
+  "observedAt": "2026-10-31T20:47:04.545Z",
+  "id": "prj_gnsNVKcXC8jvN0UcassXy4lZ0ZfN",
+  "name": "riovoley",
+  "teamId": "team_hhFsXPWPvpQakRvHpejCGAFU",
+  "scope": "joscoos-projects",
+  "framework": "create-react-app",
+  "projectNodeSetting": "22.x",
+  "rootDirectory": null,
+  "customBuildCommandPresent": false,
+  "customInstallCommandPresent": false,
+  "git": {
+    "provider": "github",
+    "org": "Joscoo",
+    "repo": "riovoley",
+    "productionBranch": "main"
+  },
+  "protection": {
+    "deploymentType": "all_except_custom_domains"
+  },
+  "environmentVariables": [
+    {
+      "key": "POSTGRES_URL",
+      "target": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "key": "POSTGRES_PRISMA_URL",
+      "target": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "key": "POSTGRES_URL_NON_POOLING",
+      "target": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "key": "POSTGRES_USER",
+      "target": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "key": "POSTGRES_HOST",
+      "target": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "key": "POSTGRES_PASSWORD",
+      "target": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "key": "POSTGRES_DATABASE",
+      "target": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "key": "SUPABASE_ANON_KEY",
+      "target": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "key": "SUPABASE_URL",
+      "target": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "key": "SUPABASE_SERVICE_ROLE_KEY",
+      "target": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "key": "SUPABASE_JWT_SECRET",
+      "target": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "key": "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+      "target": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "key": "NEXT_PUBLIC_SUPABASE_URL",
+      "target": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "key": "REACT_APP_SUPABASE_URL",
+      "target": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "key": "REACT_APP_SUPABASE_ANON_KEY",
+      "target": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "key": "RESEND_API_KEY",
+      "target": [
+        "production",
+        "preview",
+        "development"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "key": "REACT_APP_PII_ENCRYPTION_KEY",
+      "target": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "key": "REACT_APP_APP_URL",
+      "target": [
+        "preview",
+        "production"
+      ],
+      "type": "encrypted"
+    }
+  ]
+}
