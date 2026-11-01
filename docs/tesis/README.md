@@ -1,5 +1,16 @@
 # Evidencias técnicas de RIOVOLEY
 
+## Paquete SQL de producción: preparación y ensayo local del 31 de octubre
+
+Se prepararon propuestas de avance y retorno a partir de catálogos institucionales de solo lectura. El cierre aprobó **29 casos de integración SQL local** y, por separado, **seis contratos de herramientas**. Una segunda base creada desde cero reprodujo 28 casos antes de añadir el guard del propietario. Se ejecutaron retorno y reaplicación reales; los intentos fallidos se conservan. El contexto JWT se simuló en SQL, sin login HTTP ni copia de registros institucionales.
+
+- [Informe técnico](evidencias/verificacion-tecnica/20261031-211520-ensayo-sql-7665556/INFORME_VERIFICACION_TECNICA.md).
+- [Matriz complementaria](evidencias/verificacion-tecnica/20261031-211520-ensayo-sql-7665556/MATRIZ_VERIFICACIONES_TESIS.md).
+- [Texto académico para revisión](evidencias/verificacion-tecnica/20261031-211520-ensayo-sql-7665556/RESULTADOS_PARA_TESIS_4_5.md).
+- [SQL propuesto, retorno y gates](../../database/security/production-proposal/README.md).
+
+No se repitieron Jest, Playwright ni compilaciones en esta fase. No se aplicó SQL ni se publicó un despliegue: la huella institucional permaneció igual y sus avisos siguen pendientes. La preparación no acredita funcionamiento completo en producción.
+
 ## Inspección autorizada de Vercel — 31 de octubre
 
 El acceso de lectura quedó resuelto mediante CLI privada. Se verificaron proyecto, equipo, repositorio, dominios, deployment activo y nombres de variables. Producción sirve main e469db5; los cambios evaluados sobre f9f6d4c aún no están desplegados. Las cuatro rutas públicas devolvieron HTTP200 y los cuatro nombres frontend requeridos están configurados; no se leyeron valores ni se realizaron pruebas funcionales de escritura.

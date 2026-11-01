@@ -1,0 +1,11 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const h=require('./sql-context.cjs');
+const before=h.read(),file=path.join(h.privateDir,'context.json'),saved=path.join(h.privateDir,'context-before-replay.json');
+assert.ok(!fs.existsSync(saved),'Ya existe una reproducción; no sobrescribir');
+const next='riovoley_release_'+new Date().toISOString().replace(/[-:T]/g,'').slice(0,14);
+assert.notEqual(next,before.database);fs.copyFileSync(file,saved,fs.constants.COPYFILE_EXCL);
+const context=JSON.parse(fs.readFileSync(file));context.database=next;context.previousLaboratoryDatabase=before.database;
+fs.writeFileSync(file,JSON.stringify(context,null,2)+'\n');
+h.write('integracion/reproduccion-limpia.json',{previousDatabase:before.database,newDatabase:next,previousDatabasePreserved:true,onlyLocal:true,reason:'Comprobar reconstruccion desde cero con los scripts finales y ACL completas.'});
+const result=h.run('integracion/reconstruir-final',['scripts/audit/production/sql-lab.cjs','replay']);process.exitCode=result.status??1;

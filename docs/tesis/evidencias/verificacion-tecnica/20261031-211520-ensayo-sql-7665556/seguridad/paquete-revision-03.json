@@ -1,0 +1,8 @@
+{
+  "createdAt": "2026-10-31T21:16:13.723Z",
+  "forward": "database/security/production-proposal/20261031211612_riovoley_security_production_proposal.sql",
+  "baselineFingerprint": "15b9d9e869fb5113263c485714009878",
+  "sha256": "c61f457792f684d22dd3c8ffafcd1b4280dfefafdd66da382943f44347322fb6",
+  "productionApplied": false,
+  "revision": 3
+}

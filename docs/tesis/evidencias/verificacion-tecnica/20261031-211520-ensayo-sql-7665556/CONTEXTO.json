@@ -1,0 +1,9 @@
+{
+  "commit": "76655561d6632df42237d9a0c2da5d6eddf9d1ba",
+  "createdAt": "2026-10-31T21:15:20.564Z",
+  "evidence": "docs/tesis/evidencias/verificacion-tecnica/20261031-211520-ensayo-sql-7665556",
+  "productionChanged": false,
+  "database": "riovoley_release_20261031211520",
+  "operatingSystem": "win32",
+  "node": "v24.18.0"
+}

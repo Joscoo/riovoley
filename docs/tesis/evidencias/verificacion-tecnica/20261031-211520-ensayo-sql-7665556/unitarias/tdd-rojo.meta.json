@@ -1,0 +1,12 @@
+{
+  "command": [
+    "node",
+    "--test",
+    "tests/integration/production-sql-packet.test.cjs"
+  ],
+  "start": "2026-10-31T21:15:21.112Z",
+  "end": "2026-10-31T21:15:21.312Z",
+  "durationSeconds": 0.2,
+  "exitCode": 1,
+  "signal": null
+}

@@ -1,0 +1,174 @@
+{
+  "commit": "76655561d6632df42237d9a0c2da5d6eddf9d1ba",
+  "note": "Snapshot de fuentes finales sin commit durante la ejecución; no son entradas externas inmutables del manifiesto de evidencia.",
+  "files": [
+    {
+      "file": "scripts/audit/production/bind-strict-build.cjs",
+      "sha256": "56d0bac019012f173723bfb00ce477236897f1b8c631e9ecbf81e2afb62d7818"
+    },
+    {
+      "file": "scripts/audit/production/catalog-access.sql",
+      "sha256": "188802693e95d507d3f5655d10dfc83dd9b7b2e5b1fb0d12249539268cfff442"
+    },
+    {
+      "file": "scripts/audit/production/catalog-fingerprint.sql",
+      "sha256": "e25b022cea296a7cf5a10822a08ffdb2b10178479979508ce95c3f4da8d11c66"
+    },
+    {
+      "file": "scripts/audit/production/check-config.cjs",
+      "sha256": "ce9885b9d7ae9b2d2f4928e93d9417c33a134e5d6d8e3bef3cf97a03274ae8cc"
+    },
+    {
+      "file": "scripts/audit/production/clean-install.cjs",
+      "sha256": "2046ea6541b3854245244fbe102e3cb812cb7070e85cc9a1669a542d95509331"
+    },
+    {
+      "file": "scripts/audit/production/collect-sql-results.cjs",
+      "sha256": "4130b6e038c56726ba30bf498bf644c92e996cb127b2d244120880f17027118b"
+    },
+    {
+      "file": "scripts/audit/production/compare-sql-catalog.cjs",
+      "sha256": "873f6832ea8a90fd86c0aa3d35bba91f3fd7f7e291fd5168ea263ea76c6482f4"
+    },
+    {
+      "file": "scripts/audit/production/create-merge-fork.cjs",
+      "sha256": "8e46e33b80d5b18ada6071e7e02d35a5b47bee71c88c29e56fc9c8334f8b11db"
+    },
+    {
+      "file": "scripts/audit/production/editorial-prepublication.cjs",
+      "sha256": "3e5625291e08c7061b70dbb9655024b08a71b0fe747bd76126808fbcd137316c"
+    },
+    {
+      "file": "scripts/audit/production/finalize-sql-packet.cjs",
+      "sha256": "5c7539012413f905946ae1c00fada62e32baf59d28139bf9387a2dcb85b22a7c"
+    },
+    {
+      "file": "scripts/audit/production/finalize.cjs",
+      "sha256": "276cb5c7979b4aa4ae41573083278eb4cf66cf968e3642f268d64846e9c74121"
+    },
+    {
+      "file": "scripts/audit/production/fresh-sql-replay.cjs",
+      "sha256": "0bce3c083db291f06c24c6bd485a3a3ca3d2f968e913c62b1089b450f190f06d"
+    },
+    {
+      "file": "scripts/audit/production/inspect-vercel.cjs",
+      "sha256": "1fef80b2c725d65ecc3110b1ae723596639350dfb4c7e46cc86ebca2445be8ed"
+    },
+    {
+      "file": "scripts/audit/production/inventory-env.cjs",
+      "sha256": "08e80b53591654fa8c8a265c149b83e73a399d1fed84430dd6d14197f7f8b52f"
+    },
+    {
+      "file": "scripts/audit/production/preconditions.sql",
+      "sha256": "263553ff3759e94abd11248dcced4be0671ab987d8d84b297a474ab0db9e3aa3"
+    },
+    {
+      "file": "scripts/audit/production/probe-direct-pattern.cjs",
+      "sha256": "d3f64208a351ece2a5ad363250801ecac57598d8b776f5818a48a676571e6668"
+    },
+    {
+      "file": "scripts/audit/production/probe-file-override.cjs",
+      "sha256": "06fee5eb85b10b9fbc35278cec6792a073225172cf866752bd4262c8d4aedbcc"
+    },
+    {
+      "file": "scripts/audit/production/read-public-deployment.cjs",
+      "sha256": "af23afeed6028bcb02f2cbdfdd0b7546c6ebe95b12bd0a87b48ab2ef1975483c"
+    },
+    {
+      "file": "scripts/audit/production/rebuild-android.cjs",
+      "sha256": "808b14eab89385b209d70a8a5706434523a09fa5616f8b9ad672fe29f6ad3303"
+    },
+    {
+      "file": "scripts/audit/production/refine-docs.cjs",
+      "sha256": "b90ae688aea5e0ee0c4b00b0682b5dc86689ab804c7d53a5a25164ea975235a1"
+    },
+    {
+      "file": "scripts/audit/production/refresh-sql-packet.cjs",
+      "sha256": "24cd50cb7a4d3ec0a10e22b23c282d0d58344cffdadf754922deb2dce269e94a"
+    },
+    {
+      "file": "scripts/audit/production/rehearse-sql.cjs",
+      "sha256": "33485ac7561c0d794f1182fb20cd8ee951e1137997848efd0d9ed2c7e0c16e8a"
+    },
+    {
+      "file": "scripts/audit/production/repair-file-lock.cjs",
+      "sha256": "180b86427d5001e3b0ab23fef77ac5baca09a17134ea8408707b066ba03954db"
+    },
+    {
+      "file": "scripts/audit/production/report-sql-packet.cjs",
+      "sha256": "3b322438cc92975574748256e20febeb19047f9ce97cdbf45eaf7e4412d96fa6"
+    },
+    {
+      "file": "scripts/audit/production/report.cjs",
+      "sha256": "c6ecf15eeb5199a7152c4d7c4578cc51b895af59e6d57c0d9953cae32195bc0f"
+    },
+    {
+      "file": "scripts/audit/production/sql-access.cjs",
+      "sha256": "143091ac280eda037849ca67e562c36ea8441c0c2a8caa9014ec27d217c97a50"
+    },
+    {
+      "file": "scripts/audit/production/sql-context.cjs",
+      "sha256": "4f5e4100663e284837d1be29aa658e8f69fb4c626b10888f2dfc66e9fd64ce09"
+    },
+    {
+      "file": "scripts/audit/production/sql-lab.cjs",
+      "sha256": "8b94b2ebab7241c3dbd1afd3d552087aa2db8bd09a6416fe2b97a2b26bd7fc1a"
+    },
+    {
+      "file": "scripts/audit/production/sql-packet.cjs",
+      "sha256": "938c2317c7c38fe62af1d4c8dc2912211b1cf4e64132b6d361bf7af493c1142e"
+    },
+    {
+      "file": "scripts/audit/production/update-pattern-dependencies.cjs",
+      "sha256": "fba0583ea933584a03ff88805fecbee3bf0e916a2a895e5c7a88fba95d74b660"
+    },
+    {
+      "file": "scripts/audit/production/update-vercel-docs.cjs",
+      "sha256": "f3ac10851d70b2a912cabee3bfd97ac38df1a5647c7c811fb016c0d44621a777"
+    },
+    {
+      "file": "scripts/audit/production/upgrade-sql-packet.cjs",
+      "sha256": "281db184dda0174891cd0256c9e297b5281ae89300ac07c3d9f60aa26f46cf08"
+    },
+    {
+      "file": "scripts/audit/production/verify-offline-apk.cjs",
+      "sha256": "cb845b22e003894136f74e00725b938f3845dea1d78ce33a076c13c5a3dd7e64"
+    },
+    {
+      "file": "tests/integration/production-sql-packet.test.cjs",
+      "sha256": "9dbac0bb4173169b0a0abb9a0cbc5e94590d02c20fe9efd28fb3a48d4e769042"
+    },
+    {
+      "file": "tests/integration/production-sql.local.test.cjs",
+      "sha256": "c008eb162e098d82d9f93fa8c5d90b732c48dee9697398e4cdd5044a3c275639"
+    },
+    {
+      "file": "scripts/e2e/local/schema.cjs",
+      "sha256": "e892b2ff02781d613cc0bbc4316f4343a66aabb2511b36711538b139ccab62a4"
+    },
+    {
+      "file": "scripts/e2e/local/schema.test.cjs",
+      "sha256": "94e8cc4c2d1a982b6fc72dc125e14cf15ca29b256c6488f00ba163a8e8973f5e"
+    },
+    {
+      "file": "scripts/audit/security/local-db.cjs",
+      "sha256": "337c9dca2e8c166dbf9392906dcdc76de872b646f08bfe860da6b96ac9d13f8c"
+    },
+    {
+      "file": "database/security/production-proposal/20261031211612_riovoley_security_production_proposal.sql",
+      "sha256": "c61f457792f684d22dd3c8ffafcd1b4280dfefafdd66da382943f44347322fb6"
+    },
+    {
+      "file": "database/security/production-proposal/20261031211612_riovoley_security_return_proposal.sql",
+      "sha256": "c27856e19b750e9f430c57cbb736fff3138bc23197564a7816c367664ff928b3"
+    },
+    {
+      "file": "database/security/production-proposal/README.md",
+      "sha256": "c7439162a37ae56c74694fb82df31d03349609b55a9444728385e90f980cf966"
+    },
+    {
+      "file": "docs/superpowers/plans/2026-10-31-paquete-sql-produccion.md",
+      "sha256": "ab47436dee0a9671839c930b6145545308648897377be6d0d953987e4610cafe"
+    }
+  ]
+}

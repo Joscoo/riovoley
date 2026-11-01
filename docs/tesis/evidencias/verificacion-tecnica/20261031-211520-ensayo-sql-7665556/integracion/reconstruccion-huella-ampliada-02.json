@@ -1,0 +1,6 @@
+{
+  "actualFingerprint": "15b9d9e869fb5113263c485714009878",
+  "expectedFingerprint": "15b9d9e869fb5113263c485714009878",
+  "scope": "Funciones y ACL; vistas; RLS/policies; triggers/estado; constraints; columnas; indices/validez; enum; secuencias; propietarios y ACL de relaciones/esquemas/columnas; ACL predeterminadas de funciones del propietario postgres",
+  "normalization": "Solo el CHECK legado announcements_priority_check acepta dos representaciones equivalentes de conversión varchar[] a text[], de PG17.4 y PG17.11."
+}

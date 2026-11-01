@@ -22,7 +22,7 @@ operación, con referencias públicas sin credenciales para su revisión:
 | Proyecto frontend, cuenta y deployment actual | Acceso de lectura resuelto por CLI privada para joscoos-projects/riovoley. Proyecto prj_gnsNVKcXC8jvN0UcassXy4lZ0ZfN; producción observada en READY, main e469db5. El candidato f9f6d4c aún no está publicado. Ver [inspección del 31 de octubre](../tesis/evidencias/verificacion-tecnica/20261031-204703-vercel-lectura-f9f6d4c/INFORME_VERIFICACION_VERCEL.md). La autorización del acceso no es aprobación del release. |
 | Supabase destino y configuración | Backend identificado por usuario/configuración: `mayvvlkvheagkojunzzb`. Confirmar catálogo actual de solo lectura por operador; un estado saludable no implica contratos compatibles. No ejecutar pruebas de login contra producción. |
 | Edge desplegado | Inventariar funciones, revisiones, imports/configuración y verificación JWT efectiva; guardar referencias a revisiones anteriores. |
-| SQL previsto | Diff revisado para el catálogo real, precondiciones, reversión concreta y orden de ejecución. Actualmente no existe migración de producción aprobada. |
+| SQL previsto | [Paquete propuesto de avance y retorno](../../database/security/production-proposal/README.md), preparado contra catálogos institucionales del 31 de octubre y ensayado en local. Cierre: 29/29 casos SQL y 6/6 contratos de herramientas, denominadores separados. No aplicado ni aprobado para ejecución institucional; respaldo, clientes, ventana y autorización siguen pendientes. |
 | Clientes activos | Inventariar web, APK publicados, versiones mínimas, bundles Capgo y canales; demostrar que clientes anteriores no reanudarán operaciones incompatibles. |
 | Operadores y ventana | Nombrar responsable de frontend, Edge/SQL, backup, verificación y decisión de retorno; definir ventana y comunicación operativa. |
 
@@ -204,7 +204,7 @@ y tiempo máximo antes del gate; no improvisarlos durante el incidente.
    diario, pagos, PII con la clave original e integraciones. Reabrir únicamente
    cuando el conjunto completo sea compatible y el responsable lo autorice.
 
-Ni este runbook ni el preflight ejecutan esos pasos. El acceso de lectura al equipo y deployment frontend quedó comprobado por CLI el 31 de octubre. Continúan pendientes la migración productiva adaptada/ensayada, la revalidación de los contratos SQL/Edge, la transición de clientes, el respaldo/restauración y la aprobación del release. Las diferencias de RPC y permisos documentadas anteriormente no se corrigieron mediante esta inspección de Vercel.
+Ni este runbook ni el preflight ejecutan esos pasos. El acceso de lectura al equipo y deployment frontend quedó comprobado por CLI el 31 de octubre. El paquete SQL adaptado y su retorno ya se prepararon y ensayaron en local; continúan pendientes la aplicación institucional, la revalidación gestionada de los contratos SQL/Edge, la transición de clientes, el respaldo/restauración y la aprobación del release. Las diferencias de RPC y permisos documentadas anteriormente no se corrigieron en producción mediante estas verificaciones de lectura y ensayos locales.
 
 ## 8. Configuración frontend preparada en esta rama
 

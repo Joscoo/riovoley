@@ -1,0 +1,178 @@
+TAP version 13
+# Subtest: P01: reconstrucción conserva la huella de catálogos antes del cambio
+ok 1 - P01: reconstrucción conserva la huella de catálogos antes del cambio
+  ---
+  duration_ms: 168.8513
+  type: 'test'
+  ...
+# Subtest: P02: el avance rechaza ausencia de marcadores operativos
+ok 2 - P02: el avance rechaza ausencia de marcadores operativos
+  ---
+  duration_ms: 11.0499
+  type: 'test'
+  ...
+# Subtest: P03: deriva de función impide el avance; se restaura la definición original
+ok 3 - P03: deriva de función impide el avance; se restaura la definición original
+  ---
+  duration_ms: 72.1873
+  type: 'test'
+  ...
+# Subtest: P03a: deriva de vista se rechaza aunque conserve columnas y opciones
+ok 4 - P03a: deriva de vista se rechaza aunque conserve columnas y opciones
+  ---
+  duration_ms: 65.2477
+  type: 'test'
+  ...
+# Subtest: P03b: deriva de permisos de tabla se rechaza
+ok 5 - P03b: deriva de permisos de tabla se rechaza
+  ---
+  duration_ms: 55.7232
+  type: 'test'
+  ...
+# Subtest: P03c: deshabilitar un trigger invalida la huella
+ok 6 - P03c: deshabilitar un trigger invalida la huella
+  ---
+  duration_ms: 57.1205
+  type: 'test'
+  ...
+# Subtest: P03d: cambiar literales del CHECK normalizado se rechaza
+ok 7 - P03d: cambiar literales del CHECK normalizado se rechaza
+  ---
+  duration_ms: 58.9045
+  type: 'test'
+  ...
+# Subtest: P03e: cambiar ACL predeterminadas del propietario se rechaza
+ok 8 - P03e: cambiar ACL predeterminadas del propietario se rechaza
+  ---
+  duration_ms: 64.4613
+  type: 'test'
+  ...
+# Subtest: P04: duplicados de identidad abortan sin crear la RPC
+ok 9 - P04: duplicados de identidad abortan sin crear la RPC
+  ---
+  duration_ms: 46.165
+  type: 'test'
+  ...
+# Subtest: P05: referencias diarias nulas impiden crear el índice
+ok 10 - P05: referencias diarias nulas impiden crear el índice
+  ---
+  duration_ms: 38.3982
+  type: 'test'
+  ...
+# Subtest: P06: aplicación real y generación del retorno desde ACL capturadas
+ok 11 - P06: aplicación real y generación del retorno desde ACL capturadas
+  ---
+  duration_ms: 135.4105
+  type: 'test'
+  ...
+# Subtest: P07: cero funciones de aplicación sin search_path explícito
+ok 12 - P07: cero funciones de aplicación sin search_path explícito
+  ---
+  duration_ms: 7.0499
+  type: 'test'
+  ...
+# Subtest: P08: anon no ejecuta premio, pagos ni inserción administrativa
+ok 13 - P08: anon no ejecuta premio, pagos ni inserción administrativa
+  ---
+  duration_ms: 9.3654
+  type: 'test'
+  ...
+# Subtest: P09: atleta no modifica su rol ni su XP directamente
+ok 14 - P09: atleta no modifica su rol ni su XP directamente
+  ---
+  duration_ms: 13.0385
+  type: 'test'
+  ...
+# Subtest: P10: entrenador activo borra lógicamente y restaura pago UUID con auditoría
+ok 15 - P10: entrenador activo borra lógicamente y restaura pago UUID con auditoría
+  ---
+  duration_ms: 29.8598
+  type: 'test'
+  ...
+# Subtest: P11: atleta y usuario suspendido no ejecutan pagos administrativos
+ok 16 - P11: atleta y usuario suspendido no ejecutan pagos administrativos
+  ---
+  duration_ms: 12.8052
+  type: 'test'
+  ...
+# Subtest: P12: firmas bigint renombradas sin ejecución web
+ok 17 - P12: firmas bigint renombradas sin ejecución web
+  ---
+  duration_ms: 4.7459
+  type: 'test'
+  ...
+# Subtest: P13: premio diario persiste 8 XP una vez y usa fecha de Ecuador
+ok 18 - P13: premio diario persiste 8 XP una vez y usa fecha de Ecuador
+  ---
+  duration_ms: 22.7162
+  type: 'test'
+  ...
+# Subtest: P14: seis peticiones concurrentes conceden exactamente una recompensa
+ok 19 - P14: seis peticiones concurrentes conceden exactamente una recompensa
+  ---
+  duration_ms: 63.1016
+  type: 'test'
+  ...
+# Subtest: P15: suspensión deniega recompensa y compra mediante SECURITY DEFINER
+ok 20 - P15: suspensión deniega recompensa y compra mediante SECURITY DEFINER
+  ---
+  duration_ms: 25.228
+  type: 'test'
+  ...
+# Subtest: P16: compra, equipamiento y desequipamiento legítimos persisten
+ok 21 - P16: compra, equipamiento y desequipamiento legítimos persisten
+  ---
+  duration_ms: 28.0165
+  type: 'test'
+  ...
+# Subtest: P17: cosmético bloqueado revierte saldo e historial de compra
+ok 22 - P17: cosmético bloqueado revierte saldo e historial de compra
+  ---
+  duration_ms: 18.033
+  type: 'test'
+  ...
+# Subtest: P18: atleta ajeno no compra con wallet de otro estudiante
+ok 23 - P18: atleta ajeno no compra con wallet de otro estudiante
+  ---
+  duration_ms: 6.6134
+  type: 'test'
+  ...
+# Subtest: P19: sincronización del personal conserva gasto realizado
+ok 24 - P19: sincronización del personal conserva gasto realizado
+  ---
+  duration_ms: 9.9196
+  type: 'test'
+  ...
+# Subtest: P20: entrenador puede suspender y reactivar atleta; no promoverlo
+ok 25 - P20: entrenador puede suspender y reactivar atleta; no promoverlo
+  ---
+  duration_ms: 30.9831
+  type: 'test'
+  ...
+# Subtest: P21: administrador activo conserva inserción administrativa
+ok 26 - P21: administrador activo conserva inserción administrativa
+  ---
+  duration_ms: 13.8064
+  type: 'test'
+  ...
+# Subtest: P22: retorno ejecuta DDL real y recupera huella original sin borrar XP
+ok 27 - P22: retorno ejecuta DDL real y recupera huella original sin borrar XP
+  ---
+  duration_ms: 180.3324
+  type: 'test'
+  ...
+# Subtest: P23: reaplicación tras retorno conserva idempotencia y datos generados
+ok 28 - P23: reaplicación tras retorno conserva idempotencia y datos generados
+  ---
+  duration_ms: 136.9542
+  type: 'test'
+  ...
+1..28
+# tests 28
+# suites 0
+# pass 28
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1584.4378

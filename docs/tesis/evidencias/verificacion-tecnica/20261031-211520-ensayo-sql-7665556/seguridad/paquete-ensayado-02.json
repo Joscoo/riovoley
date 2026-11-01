@@ -1,0 +1,11 @@
+{
+  "createdAt": "2026-10-31T21:16:13.723Z",
+  "forward": "database/security/production-proposal/20261031211612_riovoley_security_production_proposal.sql",
+  "baselineFingerprint": "13a4e51edf978382bb5667527ff8056c",
+  "sha256": "01f77c003146329f044910c47aeb6b0b0310c1c6e1a2a47e2ce6e10c15a92239",
+  "productionApplied": false,
+  "return": "database/security/production-proposal/20261031211612_riovoley_security_return_proposal.sql",
+  "appliedFingerprint": "a11cafe5a320e8f7845bc8c5458ef48c",
+  "forwardSha256": "01f77c003146329f044910c47aeb6b0b0310c1c6e1a2a47e2ce6e10c15a92239",
+  "returnSha256": "658d4647b44e67cab1de56f897bf6922df9dca34470111b6f93ffe25b559f0d6"
+}

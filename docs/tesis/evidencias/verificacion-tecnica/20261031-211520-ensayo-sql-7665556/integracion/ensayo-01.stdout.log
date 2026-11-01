@@ -1,0 +1,378 @@
+TAP version 13
+# Subtest: P01: reconstrucción conserva la huella de catálogos antes del cambio
+not ok 1 - P01: reconstrucción conserva la huella de catálogos antes del cambio
+  ---
+  duration_ms: 107.9153
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:26:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P02: el avance rechaza ausencia de marcadores operativos
+not ok 2 - P02: el avance rechaza ausencia de marcadores operativos
+  ---
+  duration_ms: 1.2821
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:27:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P03: deriva de función impide el avance; se restaura la definición original
+not ok 3 - P03: deriva de función impide el avance; se restaura la definición original
+  ---
+  duration_ms: 0.1816
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:28:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P04: duplicados de identidad abortan sin crear la RPC
+not ok 4 - P04: duplicados de identidad abortan sin crear la RPC
+  ---
+  duration_ms: 0.0953
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:33:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P05: referencias diarias nulas impiden crear el índice
+not ok 5 - P05: referencias diarias nulas impiden crear el índice
+  ---
+  duration_ms: 0.1773
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:38:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P06: aplicación real y generación del retorno desde ACL capturadas
+not ok 6 - P06: aplicación real y generación del retorno desde ACL capturadas
+  ---
+  duration_ms: 0.0865
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:42:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P07: cero funciones de aplicación sin search_path explícito
+not ok 7 - P07: cero funciones de aplicación sin search_path explícito
+  ---
+  duration_ms: 0.108
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:49:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P08: anon no ejecuta premio, pagos ni inserción administrativa
+not ok 8 - P08: anon no ejecuta premio, pagos ni inserción administrativa
+  ---
+  duration_ms: 0.1098
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:52:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P09: atleta no modifica su rol ni su XP directamente
+not ok 9 - P09: atleta no modifica su rol ni su XP directamente
+  ---
+  duration_ms: 0.1315
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:56:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P10: entrenador activo borra lógicamente y restaura pago UUID con auditoría
+not ok 10 - P10: entrenador activo borra lógicamente y restaura pago UUID con auditoría
+  ---
+  duration_ms: 0.2538
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:60:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P11: atleta y usuario suspendido no ejecutan pagos administrativos
+not ok 11 - P11: atleta y usuario suspendido no ejecutan pagos administrativos
+  ---
+  duration_ms: 0.1543
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:67:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P12: firmas bigint renombradas sin ejecución web
+not ok 12 - P12: firmas bigint renombradas sin ejecución web
+  ---
+  duration_ms: 0.1149
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:70:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P13: premio diario persiste 8 XP una vez y usa fecha de Ecuador
+not ok 13 - P13: premio diario persiste 8 XP una vez y usa fecha de Ecuador
+  ---
+  duration_ms: 0.0578
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:73:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P14: seis peticiones concurrentes conceden exactamente una recompensa
+not ok 14 - P14: seis peticiones concurrentes conceden exactamente una recompensa
+  ---
+  duration_ms: 0.0535
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:79:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P15: suspensión deniega recompensa y compra mediante SECURITY DEFINER
+not ok 15 - P15: suspensión deniega recompensa y compra mediante SECURITY DEFINER
+  ---
+  duration_ms: 0.0404
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:83:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P16: compra, equipamiento y desequipamiento legítimos persisten
+not ok 16 - P16: compra, equipamiento y desequipamiento legítimos persisten
+  ---
+  duration_ms: 0.0501
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:87:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P17: cosmético bloqueado revierte saldo e historial de compra
+not ok 17 - P17: cosmético bloqueado revierte saldo e historial de compra
+  ---
+  duration_ms: 0.0468
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:93:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P18: atleta ajeno no compra con wallet de otro estudiante
+not ok 18 - P18: atleta ajeno no compra con wallet de otro estudiante
+  ---
+  duration_ms: 0.0497
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:97:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P19: sincronización del personal conserva gasto realizado
+not ok 19 - P19: sincronización del personal conserva gasto realizado
+  ---
+  duration_ms: 0.0409
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:100:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P20: entrenador puede suspender y reactivar atleta; no promoverlo
+not ok 20 - P20: entrenador puede suspender y reactivar atleta; no promoverlo
+  ---
+  duration_ms: 0.0429
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:104:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P21: administrador activo conserva inserción administrativa
+not ok 21 - P21: administrador activo conserva inserción administrativa
+  ---
+  duration_ms: 0.0336
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:109:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P22: retorno ejecuta DDL real y recupera huella original sin borrar XP
+not ok 22 - P22: retorno ejecuta DDL real y recupera huella original sin borrar XP
+  ---
+  duration_ms: 0.0338
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:113:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+# Subtest: P23: reaplicación tras retorno conserva idempotencia y datos generados
+not ok 23 - P23: reaplicación tras retorno conserva idempotencia y datos generados
+  ---
+  duration_ms: 0.0327
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:118:1'
+  failureType: 'hookFailed'
+  error: 'insert or update on table "students" violates foreign key constraint "students_categoria_fkey"'
+  code: '23503'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:19:2)
+    async TestHook.run (node:internal/test_runner/test:1332:7)
+  ...
+1..23
+# tests 23
+# suites 0
+# pass 0
+# fail 23
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 350.4344

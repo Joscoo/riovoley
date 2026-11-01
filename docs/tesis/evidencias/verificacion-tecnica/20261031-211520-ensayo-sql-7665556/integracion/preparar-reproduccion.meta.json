@@ -1,0 +1,11 @@
+{
+  "command": [
+    "node",
+    "scripts/audit/production/fresh-sql-replay.cjs"
+  ],
+  "start": "2026-10-31T21:27:07.001Z",
+  "end": "2026-10-31T21:27:11.057Z",
+  "durationSeconds": 4.057,
+  "exitCode": 0,
+  "signal": null
+}

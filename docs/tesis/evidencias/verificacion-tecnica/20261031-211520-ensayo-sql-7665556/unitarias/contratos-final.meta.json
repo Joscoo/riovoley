@@ -1,0 +1,14 @@
+{
+  "command": [
+    "node",
+    "--test",
+    "--test-reporter=tap",
+    "tests/integration/production-sql-packet.test.cjs",
+    "scripts/e2e/local/schema.test.cjs"
+  ],
+  "start": "2026-10-31T21:26:25.608Z",
+  "end": "2026-10-31T21:26:25.873Z",
+  "durationSeconds": 0.265,
+  "exitCode": 0,
+  "signal": null
+}
