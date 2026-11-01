@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-11-01T02:36:28.891Z",
+  "host": "db.mayvvlkvheagkojunzzb.supabase.co",
+  "port": 5432,
+  "durationMs": 391,
+  "postgresAuthenticationAttempted": false,
+  "tlsVerified": true,
+  "protocol": "TLSv1.3",
+  "issuer": "Supabase Intermediate 2021 CA"
+}

@@ -1,0 +1,15 @@
+{
+    "checkedAt":  "2026-11-01T02:50:12.7824668Z",
+    "PowerShell":  "5.1.26100.9711",
+    "OS":  "Microsoft Windows NT 10.0.26300.0",
+    "Node":  "v24.18.0",
+    "npm":  "11.16.0",
+    "pg_dump":  "pg_dump (PostgreSQL) 17.11",
+    "pg_restore":  "pg_restore (PostgreSQL) 17.11",
+    "gpg":  "gpg (GnuPG) 2.4.9",
+    "parseErrors":  0,
+    "hiddenInputPrompts":  3,
+    "credentialsRequested":  false,
+    "institutionalConnectionAttempted":  false
+}
+

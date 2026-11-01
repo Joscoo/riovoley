@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    ".e2e-local/institutional-backup/verify-tls.cjs"
+  ],
+  "start": "2026-11-01T02:36:01.889Z",
+  "end": "2026-11-01T02:36:02.418Z",
+  "durationSeconds": 0.529,
+  "exitCode": 3221225477,
+  "signal": null,
+  "cwd": "."
+}

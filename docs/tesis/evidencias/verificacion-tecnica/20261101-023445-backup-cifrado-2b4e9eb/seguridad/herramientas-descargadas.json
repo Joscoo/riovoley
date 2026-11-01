@@ -1,0 +1,20 @@
+{
+  "postgres": {
+    "url": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1260616",
+    "finalUrl": "https://get.enterprisedb.com/postgresql/postgresql-17.11-5-windows-x64-binaries.zip",
+    "downloadedAt": "2026-11-01T02:33:03.495Z",
+    "bytes": 381531864,
+    "sha256": "80379b2c04d51c30225532e0ae04509899141e9957ed096fe749d7fd9df8f82f",
+    "source": "Windows binary link from official EDB page, linked by postgresql.org",
+    "vendorChecksumVerified": false
+  },
+  "ca": {
+    "url": "https://supabase-downloads.s3-ap-southeast-1.amazonaws.com/prod/ssl/prod-ca-2021.crt",
+    "subject": "C=US\nST=Delware\nL=New Castle\nO=Supabase Inc\nCN=Supabase Root 2021 CA",
+    "issuer": "C=US\nST=Delware\nL=New Castle\nO=Supabase Inc\nCN=Supabase Root 2021 CA",
+    "validTo": "Apr 26 10:56:53 2031 GMT",
+    "sha256": "700723581420dd1ac98fd7e9ac529f0ef210eadcaf87fc868a3ad7d114c2f3b7"
+  },
+  "serverInstalled": false,
+  "secretsConfigured": false
+}

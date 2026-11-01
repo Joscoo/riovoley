@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/test-encrypted-backup.cjs"
+  ],
+  "start": "2026-11-01T02:48:20.823Z",
+  "end": "2026-11-01T02:48:24.288Z",
+  "durationSeconds": 3.465,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}
