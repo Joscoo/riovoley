@@ -1,0 +1,15 @@
+{
+  "startedAt": "2026-11-01T22:55:47.427Z",
+  "status": "PREPARING",
+  "physicalDeviceUsed": false,
+  "loginPerformed": false,
+  "institutionalBusinessFlowsExecuted": false,
+  "artifactDistributed": false,
+  "resumedOwnedAuditAvd": true,
+  "mobileDisableExitCode": 0,
+  "activityManagerWaitStatus": "timeout",
+  "emulatorStopExitCode": 0,
+  "failedAt": "2026-11-01T22:58:22.774Z",
+  "stage": "APP_NOT_FOREGROUND",
+  "rawDiagnosticsPublished": false
+}

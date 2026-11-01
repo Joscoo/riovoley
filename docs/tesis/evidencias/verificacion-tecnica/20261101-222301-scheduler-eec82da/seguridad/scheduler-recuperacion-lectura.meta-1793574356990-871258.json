@@ -1,0 +1,15 @@
+{
+  "command": [
+    "supabase",
+    "secrets",
+    "list",
+    "--project-ref",
+    "mayvvlkvheagkojunzzb",
+    "--output",
+    "json"
+  ],
+  "startedAt": "2026-11-01T23:05:51.883Z",
+  "finishedAt": "2026-11-01T23:05:56.985Z",
+  "exitCode": 0,
+  "rawOutputSaved": false
+}

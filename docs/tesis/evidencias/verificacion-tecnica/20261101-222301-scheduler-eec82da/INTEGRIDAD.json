@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-11-01T23:07:58.152Z",
+  "priorManifests": 17,
+  "priorEntries": 8709,
+  "priorEntriesMatching": true,
+  "coreCases": 12,
+  "backupCases": 10,
+  "combinedCases": 26,
+  "combinedIncludesCore": true,
+  "writeAttempts": 1,
+  "requiredCustomNamesPresent": 6,
+  "cipherFilesChecked": 2,
+  "relativeLinksChecked": 84,
+  "brokenLinks": 0,
+  "androidOfflineCompleted": false,
+  "productSourceChanged": false,
+  "productionConfigurationChanged": true,
+  "businessRowsOrSchemaChanged": false,
+  "functionsOrClientsDeployed": false
+}

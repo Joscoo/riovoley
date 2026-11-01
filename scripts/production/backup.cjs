@@ -106,4 +106,4 @@ if(require.main===module){
  if(process.argv.length!==3||process.argv[2]!=='--create'){console.error('Usar el asistente PowerShell; no se aceptan credenciales en argumentos.');process.exitCode=2;}
  else createProductionBackup(process.env.RIOVOLEY_DATABASE_PASSWORD,process.env.RIOVOLEY_BACKUP_PASSPHRASE).then(r=>console.log(JSON.stringify({status:r.status,receipt:path.join(path.dirname(r.archive),'receipt.json'),isolatedRestorePending:true}))).catch(e=>{console.error(JSON.stringify({status:'NOT_COMPLETED',stage:e.stage||'TOOLING_ERROR',toolExitCode:e.exitCode??null,rawDiagnosticsPublished:false}));process.exitCode=1;}).finally(()=>{delete process.env.RIOVOLEY_DATABASE_PASSWORD;delete process.env.RIOVOLEY_BACKUP_PASSPHRASE;});
 }
-module.exports={validateSource,pgEnvironment,baseEnvironment,checkFingerprint,createIdentity,encryptDatabase,verifyArchive,importRecovery,tools,BackupError,createProductionBackup,gpgPath};
+module.exports={validateSource,pgEnvironment,baseEnvironment,checkFingerprint,createIdentity,encryptDatabase,verifyArchive,importRecovery,tools,BackupError,createProductionBackup,gpgPath,keyHome};

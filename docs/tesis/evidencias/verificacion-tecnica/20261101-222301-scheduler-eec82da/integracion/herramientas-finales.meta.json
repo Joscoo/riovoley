@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/collect-scheduler-tools.cjs"
+  ],
+  "start": "2026-11-01T23:01:07.221Z",
+  "end": "2026-11-01T23:01:14.573Z",
+  "durationSeconds": 7.352,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

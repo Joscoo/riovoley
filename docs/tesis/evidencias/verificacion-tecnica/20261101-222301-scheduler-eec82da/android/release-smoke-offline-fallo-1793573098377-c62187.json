@@ -1,0 +1,13 @@
+{
+  "startedAt": "2026-11-01T22:40:55.817Z",
+  "status": "PREPARING",
+  "physicalDeviceUsed": false,
+  "loginPerformed": false,
+  "institutionalBusinessFlowsExecuted": false,
+  "artifactDistributed": false,
+  "mobileDisableExitCode": 20,
+  "emulatorStopExitCode": 0,
+  "failedAt": "2026-11-01T22:44:58.374Z",
+  "stage": "ANDROID_COMMAND_FAILED",
+  "rawDiagnosticsPublished": false
+}

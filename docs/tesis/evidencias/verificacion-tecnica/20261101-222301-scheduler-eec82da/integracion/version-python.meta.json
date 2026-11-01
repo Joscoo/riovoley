@@ -1,0 +1,10 @@
+{
+  "command": [
+    "python",
+    "--version"
+  ],
+  "startedAt": "2026-11-01T23:01:07.417Z",
+  "finishedAt": "2026-11-01T23:01:11.881Z",
+  "exitCode": 0,
+  "rawOutputSaved": false
+}

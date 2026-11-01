@@ -52,7 +52,7 @@ El orden incorrecto de retorno fue rechazado por la huella y el correcto se ejec
 
 ## Configuración pendiente
 
-Los nombres consumidos son `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `FROM_EMAIL`, `FCM_PROJECT_ID`, `FCM_CLIENT_EMAIL`, `FCM_PRIVATE_KEY` y `REPORTS_SCHEDULER_SECRET`. La CLI autenticada confirmó los cinco nombres personalizados de Resend/FCM; falta `REPORTS_SCHEDULER_SECRET`. No se leyeron valores ni se verificó su validez o entrega. Las claves gestionadas reservadas no se clasifican como ausentes por este inventario. La clave privilegiada permanece exclusivamente en servidor. [Propuesta limitada para el secreto pendiente](SCHEDULER_PENDIENTE.md).
+Los nombres consumidos son `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `FROM_EMAIL`, `FCM_PROJECT_ID`, `FCM_CLIENT_EMAIL`, `FCM_PRIVATE_KEY` y `REPORTS_SCHEDULER_SECRET`. La CLI autenticada confirmó los seis nombres personalizados después de crear únicamente el secreto del scheduler con autorización acotada. Se comparó su digest en memoria y se conservaron los otros digests sin cambios. No se verificó validez o entrega Resend/FCM. Las claves gestionadas reservadas no se clasifican como ausentes por este inventario. La clave privilegiada permanece exclusivamente en servidor. [Estado y límites del scheduler](SCHEDULER_PENDIENTE.md).
 
 Faltan la verificación del bucket privado `reports` y sus políticas, credenciales y permisos IAM, remitente SMTP/Resend, emisor del scheduler y su secreto, compatibilidad del runtime gestionado y pruebas en entornos de proveedores descartables. En local se creó únicamente el bucket de ensayo necesario; no se crearon buckets institucionales ni se enviaron notificaciones reales.
 

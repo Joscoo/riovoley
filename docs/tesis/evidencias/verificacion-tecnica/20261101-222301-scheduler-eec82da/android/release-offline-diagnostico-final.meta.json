@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/smoke-signed-android-offline.cjs",
+    "--resume-owned-last"
+  ],
+  "start": "2026-11-01T22:55:47.292Z",
+  "end": "2026-11-01T22:58:26.395Z",
+  "durationSeconds": 159.103,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

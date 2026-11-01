@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-11-01T22:39:54.475Z",
+  "dpapiStoredArtifactRecovered": true,
+  "identityMatches": true,
+  "digestMatchesCurrent": true,
+  "newSecretScanFiles": 108,
+  "newSecretInPublicFiles": 0,
+  "secretOrApiDigestPublished": false,
+  "cipherFiles": [
+    {
+      "type": "pgp",
+      "bytes": 612,
+      "cipherSha256": "657c0cfdbbe023fd746df8b3b39a6b4a6999925db21a888ef39b9418fd657b9b",
+      "hashMatchesSource": true
+    },
+    {
+      "type": "dpapi",
+      "bytes": 390,
+      "cipherSha256": "d76465b9da70bc92967551b63c37df4ce698c4ed380905214d737fc87f5bf162",
+      "hashMatchesSource": true
+    }
+  ],
+  "filesCopiedOutsideRepository": true,
+  "externalDeviceVerified": false,
+  "gpgDecryptionExecuted": false,
+  "originalRecoveryKeyReusedWithoutModification": true
+}

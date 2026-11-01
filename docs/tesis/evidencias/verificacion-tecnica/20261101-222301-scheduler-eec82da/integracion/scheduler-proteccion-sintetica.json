@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-11-01T22:29:44.012Z",
+  "protected": true,
+  "dpapiRoundTripVerified": true,
+  "gpgRecipientMatchesExistingBackup": true,
+  "gpgCiphertextCreated": true,
+  "gpgRecoveryDecryptionExecuted": false,
+  "dpapiBytes": 390,
+  "gpgBytes": 615,
+  "syntheticOnly": true,
+  "productionContacted": false,
+  "privateArtifactsOnly": true
+}

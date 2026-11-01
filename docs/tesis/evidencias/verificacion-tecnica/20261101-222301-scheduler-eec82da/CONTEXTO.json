@@ -1,0 +1,8 @@
+{
+  "baseCommit": "eec82da6ceb8ab3517fea6a9db150517265ca3bc",
+  "startedAt": "2026-11-01T22:23:01.938Z",
+  "authorizationSource": "CONTINUA posterior a solicitud concreta de crear solamente REPORTS_SCHEDULER_SECRET",
+  "authorizedOperation": "create-scheduler-only",
+  "projectRef": "mayvvlkvheagkojunzzb",
+  "scope": "Un secreto, sin despliegues, SQL, jobs, mensajes o cambios de otros secretos"
+}

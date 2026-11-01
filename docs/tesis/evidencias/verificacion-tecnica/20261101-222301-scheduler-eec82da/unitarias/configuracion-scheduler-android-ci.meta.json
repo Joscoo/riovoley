@@ -1,0 +1,16 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/unit/supabase-config-summary.test.cjs",
+    "tests/unit/scheduler-secret.test.cjs",
+    "tests/unit/android-offline-state.test.cjs"
+  ],
+  "start": "2026-11-01T23:01:15.146Z",
+  "end": "2026-11-01T23:01:16.631Z",
+  "durationSeconds": 1.485,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

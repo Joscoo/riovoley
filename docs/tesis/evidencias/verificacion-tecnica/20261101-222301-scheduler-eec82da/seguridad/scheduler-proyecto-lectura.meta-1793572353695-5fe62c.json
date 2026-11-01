@@ -1,0 +1,14 @@
+{
+  "command": [
+    "supabase",
+    "projects",
+    "list",
+    "--output",
+    "json"
+  ],
+  "startedAt": "2026-11-01T22:32:31.299Z",
+  "finishedAt": "2026-11-01T22:32:33.693Z",
+  "exitCode": 0,
+  "rawOutputSaved": false,
+  "isolatedConfigOutsideRepository": true
+}
