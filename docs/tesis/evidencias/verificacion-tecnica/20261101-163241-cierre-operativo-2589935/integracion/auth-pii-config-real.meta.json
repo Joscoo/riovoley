@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/inspect-operational-auth.cjs"
+  ],
+  "start": "2026-11-01T16:37:47.004Z",
+  "end": "2026-11-01T16:38:00.494Z",
+  "durationSeconds": 13.49,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

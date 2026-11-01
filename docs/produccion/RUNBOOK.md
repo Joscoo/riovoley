@@ -1,6 +1,8 @@
 # Preparación y operación de un release de RioVoley
 
-Actualización del 1 de noviembre de 2026: la copia institucional cifrada ya se obtuvo y se ensayó su carga SQL en un contenedor sin red. Coincidieron catálogo, 94 tablas con 27159 filas y 11 estados de secuencia. También se respaldaron y recuperaron en un directorio aislado los bytes de 43 objetos Storage, con 3596269 bytes totales. [Evidencia de esta fase](../tesis/evidencias/verificacion-tecnica/20261101-030216-restore-institucional-63826e6/INFORME_VERIFICACION_TECNICA.md). No se ha acreditado restauración integral de Supabase gestionado, contraseñas/membresías globales, clave raíz Vault, proveedores, transición de clientes o autorización de la ventana. El release sigue bloqueado por esos requisitos; las observaciones fechadas de preparación que siguen son antecedentes.
+Actualización del 1 de noviembre de 2026: respaldo SQL y bytes de Storage recuperados, custodia local separada fuera de Git, continuidad de los 117 campos cifrados presentes comprobada y cuatro etapas de avance/retorno SQL ensayadas en una copia institucional aislada, con 94 tablas y 27159 filas conservadas. CI hospedado satisfactorio sobre `ef9a05a`; APK release firmado con el keystore existente y verificado, sin instalar ni distribuir. Auth confirma ocho redirects, incluido `riovoley://reset-password`, añadido por el operador. [Expediente de cierre](../tesis/evidencias/verificacion-tecnica/20261101-163241-cierre-operativo-2589935/INFORME_VERIFICACION_TECNICA.md).
+
+El release sigue cerrado: falta la RPC diaria del candidato en producción; los paquetes SQL/Edge y clientes no se han aplicado. Falta `REPORTS_SCHEDULER_SECRET` y no se comprobaron entregas de proveedores, recuperación de correo ni ejecución Android en dispositivo. Continúan las alertas de Supabase y se necesita acordar el paquete y la ventana antes de autorizar cambios institucionales. Vault tiene cero secretos y cero referencias en las funciones revisadas: no se exige recuperar una clave raíz para datos Vault inexistentes. No se atribuye a la carga SQL una recuperación integral de Supabase gestionado. Las observaciones fechadas siguientes son antecedentes y deben contrastarse con este expediente.
 
 Estado al preparar este documento, 2026-10-30: **despliegue bloqueado**. Este trabajo
 añade documentación, validaciones locales y CI técnico; no acredita backup,
@@ -129,7 +131,7 @@ No atribuir una versión inventada a un parche publicado en npm.
 El build usa CI estricto; resolver advertencias bloqueantes con cambios revisados.
 El build sintético no prueba secretos, Auth, enlaces de recuperación, correos,
 push, scheduler, rutas recargadas en hosting ni Capacitor real. El workflow nuevo
-debe verse verde en GitHub; su ejecución hospedada aún no está acreditada aquí.
+se ejecutó satisfactoriamente en GitHub sobre `ef9a05a`, run `41330927082`: 419 casos Jest, 35 contratos Edge, 32 guardas de recuperación, 10 contratos PII/APK y 76 casos de toolchain, con denominadores separados. El resultado se refiere a ese SHA; cualquier candidato posterior requiere su propia ejecución.
 
 Ejecutar el [preflight](VARIABLES.md#preflight-sin-carga-automática-de-archivos) con
 configuración suministrada por el operador. Conservar solamente nombres/estados.
@@ -206,11 +208,11 @@ y tiempo máximo antes del gate; no improvisarlos durante el incidente.
    diario, pagos, PII con la clave original e integraciones. Reabrir únicamente
    cuando el conjunto completo sea compatible y el responsable lo autorice.
 
-Ni este runbook ni el preflight ejecutan esos pasos. El acceso de lectura al equipo y deployment frontend quedó comprobado por CLI el 31 de octubre. El paquete SQL adaptado y su retorno ya se prepararon y ensayaron en local; continúan pendientes la aplicación institucional, la revalidación gestionada de los contratos SQL/Edge, la transición de clientes, el respaldo/restauración y la aprobación del release. Las diferencias de RPC y permisos documentadas anteriormente no se corrigieron en producción mediante estas verificaciones de lectura y ensayos locales.
+Ni este runbook ni el preflight ejecutan esos pasos. El acceso de lectura al equipo y deployment frontend quedó comprobado por CLI. El paquete SQL y su retorno se ensayaron también en una copia del respaldo institucional, sin alterar su contenido. Continúan pendientes la aplicación institucional, la revalidación gestionada de los contratos SQL/Edge, la transición coordinada de web/Edge y la aprobación del release. Android se usa solo para desarrollo/pruebas según el operador; no se inventaría como despliegue previo en dispositivos institucionales. Las diferencias de RPC y permisos no se corrigieron en producción mediante las lecturas y ensayos locales.
 
 ## 8. Configuración frontend preparada en esta rama
 
-El dominio confirmado es https://riovoley.com. La inspección cloud del 31 de octubre encontró los cuatro nombres frontend requeridos para production, incluido REACT_APP_APP_URL. El bloqueo anterior de ese nombre correspondía al archivo local .env.production; no prueba una ausencia en Vercel. Los valores y su validez no se consultaron. Comprobar el origen y la continuidad de PII en el entorno privado del operador; no rotar la clave por este inventario.
+El dominio confirmado es https://riovoley.com. Se leyeron solo los cuatro valores frontend actuales en memoria, comprobando origen y rol de clave pública; la clave PII coincidió con la configuración local y permitió autenticar los 60 correos y 57 teléfonos cifrados presentes en la copia restaurada, junto con sus índices HMAC. Los campos sin ciphertext y los valores efectivos del bundle web actualmente servido no fueron evaluados. No se rotó la clave ni se publicaron valores o digests.
 
 `vercel.json` prepara nosniff, Referrer-Policy y SAMEORIGIN, conserva las reglas de caché y ejecuta CRA con CI=true y sin sourcemaps públicos. Las cabeceras no se han publicado ni observado aún en producción. CSP y Permissions-Policy quedan pendientes del inventario/ensayo de proveedores y funciones del dispositivo. La rama de auditoría tiene git.deploymentEnabled=false para evitar despliegues automáticos al subir evidencia; no altera main ni publica un release. Ver [configuración oficial](https://vercel.com/docs/project-configuration/git-configuration).
 

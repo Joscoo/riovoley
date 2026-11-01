@@ -1,0 +1,18 @@
+{
+  "observedAt": "2026-11-01T16:38:00.019Z",
+  "method": "GET",
+  "route": "/auth/v1/settings",
+  "status": 200,
+  "durationSeconds": 0.143,
+  "loginPerformed": false,
+  "userDataRequested": false,
+  "rawResponseSaved": false,
+  "externalProviders": [
+    "email"
+  ],
+  "disableSignup": false,
+  "mailerAutoconfirm": true,
+  "phoneAutoconfirm": false,
+  "siteUrlNotExposedByThisCheck": true,
+  "smtpDeliveryNotChecked": true
+}

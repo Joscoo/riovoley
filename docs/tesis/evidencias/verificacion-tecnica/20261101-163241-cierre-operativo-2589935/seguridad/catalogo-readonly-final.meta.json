@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/inspect-release-catalog.cjs"
+  ],
+  "start": "2026-11-01T21:05:34.361Z",
+  "end": "2026-11-01T21:05:37.530Z",
+  "durationSeconds": 3.169,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

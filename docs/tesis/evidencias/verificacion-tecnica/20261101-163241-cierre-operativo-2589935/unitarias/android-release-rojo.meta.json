@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/unit/android-release-guards.test.cjs"
+  ],
+  "start": "2026-11-01T17:10:59.466Z",
+  "end": "2026-11-01T17:10:59.627Z",
+  "durationSeconds": 0.161,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

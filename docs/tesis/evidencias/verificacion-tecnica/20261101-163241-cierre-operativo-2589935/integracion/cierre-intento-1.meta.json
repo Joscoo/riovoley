@@ -1,0 +1,12 @@
+{
+  "observedAt": "2026-11-01T21:18:37.115Z",
+  "command": [
+    "node",
+    "scripts/audit/production/finalize-operational-packet.cjs"
+  ],
+  "exitCode": 1,
+  "stage": "PRIVACY_SCAN_FAILED",
+  "cause": "El detector reconocio su propio literal de prompt sin codigo. Se ajusto para exigir enlace con UUID o prompt seguido de codigo; no se excluyen archivos del escaneo.",
+  "actualSecretsReported": false,
+  "manifestCreated": false
+}

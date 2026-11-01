@@ -1,0 +1,28 @@
+{
+  "label": "origen-solo-lectura",
+  "command": [
+    "docker",
+    "exec",
+    "-i",
+    "--user",
+    "postgres",
+    "riovoley-restore-20261101-030216-07",
+    "psql",
+    "-X",
+    "-q",
+    "-A",
+    "-t",
+    "-h",
+    "/tmp",
+    "-d",
+    "postgres",
+    "-v",
+    "ON_ERROR_STOP=1"
+  ],
+  "startedAt": "2026-11-01T16:54:46.540Z",
+  "finishedAt": "2026-11-01T16:54:46.710Z",
+  "durationSeconds": 0.17,
+  "exitCode": 0,
+  "sqlInputPublished": false,
+  "rawOutputPublished": false
+}

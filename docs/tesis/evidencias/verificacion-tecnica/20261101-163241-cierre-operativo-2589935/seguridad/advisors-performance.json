@@ -1,0 +1,44 @@
+{
+  "observedAt": "2026-11-01T17:31:32.558Z",
+  "projectRef": "mayvvlkvheagkojunzzb",
+  "type": "performance",
+  "counts": {
+    "unindexed_foreign_keys": 20,
+    "no_primary_key": 1,
+    "unused_index": 15,
+    "duplicate_index": 1
+  },
+  "items": [
+    {
+      "name": "unindexed_foreign_keys",
+      "title": "Unindexed foreign keys",
+      "level": "INFO",
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys",
+      "count": 20
+    },
+    {
+      "name": "no_primary_key",
+      "title": "No Primary Key",
+      "level": "INFO",
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0004_no_primary_key",
+      "count": 1
+    },
+    {
+      "name": "unused_index",
+      "title": "Unused Index",
+      "level": "INFO",
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index",
+      "count": 15
+    },
+    {
+      "name": "duplicate_index",
+      "title": "Duplicate Index",
+      "level": "WARN",
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0009_duplicate_index",
+      "count": 1
+    }
+  ],
+  "productionChangedByAgent": false,
+  "rawDetailPublished": false,
+  "advisoryTypes": 4
+}

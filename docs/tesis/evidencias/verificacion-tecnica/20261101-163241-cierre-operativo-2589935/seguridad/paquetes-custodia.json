@@ -1,0 +1,24 @@
+{
+  "createdAt": "2026-11-01T16:43:35.071244+00:00",
+  "packages": [
+    {
+      "file": "datos-cifrados.zip",
+      "bytes": 5052389,
+      "sha256": "c37976162d25274e8ed5c5c6557aef5ed2ef8ac948131501eec48c5a12d1e64d",
+      "entries": 45
+    },
+    {
+      "file": "clave-recuperacion.zip",
+      "bytes": 4207,
+      "sha256": "ebafbec4973f2ae48513e5813146376b4ea5a8025dd81831f97950d73006e5e9",
+      "entries": 2
+    }
+  ],
+  "allPackageEntriesMatchSource": true,
+  "dataPackageContainsRecoveryKey": false,
+  "recoveryKeyPassphraseRecorded": false,
+  "destinationIsStillLocalRuntime": true,
+  "externalCustodyVerified": false,
+  "privatePackageDirectory": ".e2e-local/backup-custody/20261101-164334-01610401",
+  "scope": "ZIP of already encrypted artifacts and separately packaged protected recovery key. No decryption; no institutional writes."
+}

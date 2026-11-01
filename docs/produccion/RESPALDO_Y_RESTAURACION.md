@@ -28,6 +28,12 @@ Su transporte SDK admite exclusivamente GET al host institucional y endpoints St
 
 El resultado queda bajo `.e2e-local/institutional-storage/`, ignorado por Git. Conservar el manifiesto cifrado, todos los objetos cifrados y la clave/frase del respaldo PostgreSQL. Una copia de bytes recuperada en un directorio aislado no equivale a restaurar Supabase Storage API, buckets, políticas, URLs firmadas y su funcionamiento gestionado. La lectura de archivos y el snapshot SQL ocurren en momentos distintos; no se garantiza un snapshot común ni se detectan incorporaciones posteriores automáticamente. Ver el estado real y las limitaciones en [el informe de esta fase](../tesis/evidencias/verificacion-tecnica/20261101-030216-restore-institucional-63826e6/INFORME_VERIFICACION_TECNICA.md).
 
+## Cierre complementario del 1 de noviembre de 2026 UTC
+
+Se ensayó el avance principal, complemento de reportes y sus dos retornos en una base nueva clonada del respaldo institucional dentro del contenedor sin red. Coincidieron contenidos de las 94 tablas y 27159 filas en cada etapa y se recuperó la huella inicial; la base origen restaurada no cambió. La clave frontend PII se contrastó en memoria con los 60 correos y 57 teléfonos cifrados presentes y sus índices. Vault no contiene secretos ni referencias de funciones en el inventario actual. No se modificaron registros institucionales ni se ejecutaron sus flujos de negocio.
+
+Se crearon dos ZIP privados separados: datos ya cifrados, 45 entradas/5052389 bytes; clave de recuperación protegida y destinatario público, dos entradas/4207 bytes. Se copiaron a directorios distintos fuera del repositorio, elegidos con autorización del usuario, y se comprobaron sus SHA-256. La frase no se copió. Son copias locales: no se atribuye custodia en otro dispositivo o fuera del sitio. Las rutas completas quedan solo en `.e2e-local/operational-readiness/custodia-local.private.json`. [Evidencia y límites](../tesis/evidencias/verificacion-tecnica/20261101-163241-cierre-operativo-2589935/INFORME_VERIFICACION_TECNICA.md).
+
 ## Asistente local preparado el 1 de noviembre de 2026 UTC
 
 En este equipo están disponibles clientes PostgreSQL 17.11 y GnuPG 2.4.9. El [asistente PowerShell](../../scripts/production/backup-assistant.ps1) solicita la contraseña actual de PostgreSQL y una nueva frase de recuperación de al menos 20 caracteres, con entrada oculta y confirmación. Ejecutar desde la raíz del repositorio:

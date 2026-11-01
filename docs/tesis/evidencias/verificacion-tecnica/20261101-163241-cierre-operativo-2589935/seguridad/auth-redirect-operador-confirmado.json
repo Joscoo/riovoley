@@ -1,0 +1,11 @@
+{
+  "observedAt": "2026-11-01T17:02:02.989Z",
+  "source": "El usuario confirma que añadió la URL propuesta",
+  "added": "riovoley://reset-password",
+  "operatorReportedApplied": true,
+  "administrativeApiReadbackPerformed": false,
+  "existingEntriesRemovalRequested": false,
+  "recoveryEmailSent": false,
+  "automatedNativeRecoveryFlowExecuted": false,
+  "agentChangedAuthConfiguration": false
+}

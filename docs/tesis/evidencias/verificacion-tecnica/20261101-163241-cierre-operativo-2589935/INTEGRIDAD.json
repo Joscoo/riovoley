@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-11-01T21:19:44.823Z",
+  "priorManifests": 16,
+  "priorEntries": 8500,
+  "priorEntriesMatching": true,
+  "localJestCases": 419,
+  "localJestSuites": 88,
+  "coverageMatchesRawSummary": true,
+  "categoriesMatchRawAssertions": true,
+  "ciDenominators": [
+    419,
+    35,
+    32,
+    10,
+    76
+  ],
+  "localParserCases": 10,
+  "sqlStageHashesChecked": 4,
+  "sqlTables": 94,
+  "sqlRows": 27159,
+  "apkBytes": 28376554,
+  "apkHashMatches": true,
+  "custodyPackagesChecked": 2,
+  "relativeLinksChecked": 147,
+  "brokenLinks": 0,
+  "productionSqlEdgeWebApplied": false,
+  "operatorAddedNativeRedirect": true
+}

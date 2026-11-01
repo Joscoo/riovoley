@@ -1,0 +1,112 @@
+{
+  "generatedAt": "2026-11-01T21:14:52.033Z",
+  "baseCommit": "2589935a27e8c4348184e698a1e2a4f406fe1073",
+  "candidateCommit": "ef9a05ad20bba4f9303f547130c07336eeea61e7",
+  "localJest": {
+    "executed": 419,
+    "passed": 419,
+    "failed": 0,
+    "skipped": 0,
+    "suites": 88,
+    "durationSeconds": 121.011,
+    "coverage": {
+      "lines": {
+        "total": 12123,
+        "covered": 5209,
+        "skipped": 0,
+        "pct": 42.96
+      },
+      "statements": {
+        "total": 13379,
+        "covered": 5563,
+        "skipped": 0,
+        "pct": 41.58
+      },
+      "functions": {
+        "total": 3471,
+        "covered": 1282,
+        "skipped": 0,
+        "pct": 36.93
+      },
+      "branches": {
+        "total": 11975,
+        "covered": 4038,
+        "skipped": 0,
+        "pct": 33.72
+      },
+      "branchesTrue": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "memoryIntegrationIncluded": 5
+  },
+  "ci": {
+    "runId": 41330927082,
+    "jobId": 124920677615,
+    "headCommit": "ef9a05ad20bba4f9303f547130c07336eeea61e7",
+    "checkout": "Merge temporal de PR #2 sobre main e469db5 (f1c1375); no fusión de main",
+    "conclusion": "success",
+    "url": "https://github.com/Joscoo/riovoley/actions/runs/41330927082",
+    "jest": {
+      "suites": 88,
+      "passed": 419,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 13.079
+    },
+    "edge": {
+      "passed": 35,
+      "failed": 0,
+      "skipped": 0
+    },
+    "recovery": {
+      "passed": 32,
+      "failed": 0,
+      "skipped": 0
+    },
+    "piiApk": {
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0
+    },
+    "toolchain": {
+      "passed": 76,
+      "failed": 0,
+      "skipped": 0
+    },
+    "rootAudit": 0,
+    "functionsAudit": 0,
+    "auxiliaryAudit": 0,
+    "webBuildSuccessful": true,
+    "buildCommand": "node node_modules/react-scripts/scripts/build.js",
+    "ciConfiguration": "Entradas sintéticas loopback; sin dotenv ni credenciales; no despliegue",
+    "nodeApp": "24.22.1",
+    "npmApp": "11.19.1",
+    "nodeAuxiliary": "22.23.4",
+    "npmAuxiliary": "10.9.9"
+  },
+  "localConfigParser": {
+    "executed": 10,
+    "passed": 10,
+    "failed": 0,
+    "skipped": 0
+  },
+  "sqlStages": 4,
+  "comparedTables": 94,
+  "comparedRows": 27159,
+  "signedRelease": {
+    "sha256": "3305c32983cba75a1361c5b6d741836051f98acfd0c7fefe8bd42dcb81cce16c",
+    "bytes": 28376554,
+    "installed": false,
+    "published": false,
+    "nativeFunctionalCaseCount": null
+  },
+  "authReadback": "seguridad/auth-config-readback-1793567652173-5a5e9b.json",
+  "secretNames": "seguridad/edge-secretos-presencia-real-1793567649724-d442ea.json",
+  "productionSqlEdgeWebApplied": false,
+  "operatorAddedNativeRedirect": true,
+  "productionReady": false
+}

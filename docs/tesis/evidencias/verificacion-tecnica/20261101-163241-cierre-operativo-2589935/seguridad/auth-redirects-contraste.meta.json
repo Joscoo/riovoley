@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/check-auth-redirects.cjs"
+  ],
+  "start": "2026-11-01T16:49:44.235Z",
+  "end": "2026-11-01T16:49:44.706Z",
+  "durationSeconds": 0.471,
+  "exitCode": 2,
+  "signal": null,
+  "cwd": "."
+}

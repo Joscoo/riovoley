@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/collect-operational-tools.cjs"
+  ],
+  "start": "2026-11-01T21:11:13.932Z",
+  "end": "2026-11-01T21:11:20.584Z",
+  "durationSeconds": 6.652,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

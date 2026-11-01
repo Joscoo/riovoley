@@ -1,0 +1,7 @@
+{
+  "baseCommit": "2589935a27e8c4348184e698a1e2a4f406fe1073",
+  "evidence": "docs/tesis/evidencias/verificacion-tecnica/20261101-163241-cierre-operativo-2589935",
+  "startedAt": "2026-11-01T16:32:41.670Z",
+  "productionChanged": false,
+  "scope": "Lecturas de Auth/configuracion, continuidad PII, scheduler y CI de candidato; sin login institucional, envios, cambios SQL o despliegue."
+}

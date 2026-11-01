@@ -1,0 +1,25 @@
+{
+  "source": "Usuario autorizo crear el destino donde se considere apropiado",
+  "dataOutsideRepository": true,
+  "keyOutsideRepository": true,
+  "separateDirectories": true,
+  "files": [
+    {
+      "file": "datos-cifrados.zip",
+      "sha256": "c37976162d25274e8ed5c5c6557aef5ed2ef8ac948131501eec48c5a12d1e64d",
+      "bytes": 5052389,
+      "hashMatchesSource": true
+    },
+    {
+      "file": "clave-recuperacion.zip",
+      "sha256": "ebafbec4973f2ae48513e5813146376b4ea5a8025dd81831f97950d73006e5e9",
+      "bytes": 4207,
+      "hashMatchesSource": true
+    }
+  ],
+  "destinationPathsPublished": false,
+  "externalDeviceVerified": false,
+  "offsiteCustodyVerified": false,
+  "phraseCopied": false,
+  "productionChanged": false
+}

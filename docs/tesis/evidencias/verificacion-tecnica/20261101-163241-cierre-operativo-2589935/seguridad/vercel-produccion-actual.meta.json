@@ -1,0 +1,9 @@
+{
+  "method": "GET",
+  "endpoint": "/v13/deployments/dpl_DCPpv18kuroRoaEpV49xhGfY1isB",
+  "startedAt": "2026-11-01T16:37:57.585Z",
+  "finishedAt": "2026-11-01T16:37:58.692Z",
+  "durationSeconds": 1.107,
+  "exitCode": 0,
+  "rawResponseSaved": false
+}

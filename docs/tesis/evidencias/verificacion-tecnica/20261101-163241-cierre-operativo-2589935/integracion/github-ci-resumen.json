@@ -1,0 +1,45 @@
+{
+  "runId": 41330927082,
+  "jobId": 124920677615,
+  "headCommit": "ef9a05ad20bba4f9303f547130c07336eeea61e7",
+  "checkout": "Merge temporal de PR #2 sobre main e469db5 (f1c1375); no fusión de main",
+  "conclusion": "success",
+  "url": "https://github.com/Joscoo/riovoley/actions/runs/41330927082",
+  "jest": {
+    "suites": 88,
+    "passed": 419,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 13.079
+  },
+  "edge": {
+    "passed": 35,
+    "failed": 0,
+    "skipped": 0
+  },
+  "recovery": {
+    "passed": 32,
+    "failed": 0,
+    "skipped": 0
+  },
+  "piiApk": {
+    "passed": 10,
+    "failed": 0,
+    "skipped": 0
+  },
+  "toolchain": {
+    "passed": 76,
+    "failed": 0,
+    "skipped": 0
+  },
+  "rootAudit": 0,
+  "functionsAudit": 0,
+  "auxiliaryAudit": 0,
+  "webBuildSuccessful": true,
+  "buildCommand": "node node_modules/react-scripts/scripts/build.js",
+  "ciConfiguration": "Entradas sintéticas loopback; sin dotenv ni credenciales; no despliegue",
+  "nodeApp": "24.22.1",
+  "npmApp": "11.19.1",
+  "nodeAuxiliary": "22.23.4",
+  "npmAuxiliary": "10.9.9"
+}

@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/rehearse-restored-sql.cjs"
+  ],
+  "start": "2026-11-01T16:54:46.356Z",
+  "end": "2026-11-01T16:54:48.312Z",
+  "durationSeconds": 1.956,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

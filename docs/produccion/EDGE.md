@@ -1,12 +1,12 @@
 # Paquete Edge preparado, pendiente de despliegue
 
-Estado: fuentes candidatas y retorno preparados, comprobados únicamente en local. No se desplegó ninguna función ni se modificaron secretos institucionales.
+Estado actualizado el 1 de noviembre de 2026: fuentes candidatas y retorno preparados, comprobados en local y con 35 contratos satisfactorios en CI hospedado sobre `ef9a05a`. El avance y retorno SQL principal/complementario también se ensayaron en una copia institucional aislada. No se desplegó ninguna función ni se modificaron secretos institucionales. [Cierre y limitaciones actuales](../tesis/evidencias/verificacion-tecnica/20261101-163241-cierre-operativo-2589935/INFORME_VERIFICACION_TECNICA.md).
 
 - [Informe y registros](../tesis/evidencias/verificacion-tecnica/20261101-013050-edge-preparacion-27dd972/INFORME_VERIFICACION_TECNICA.md).
 - [Manifiesto final del paquete](../tesis/evidencias/verificacion-tecnica/20261101-013050-edge-preparacion-27dd972/seguridad/paquete-edge-final.json).
 - [Comparación con Cloud](../tesis/evidencias/verificacion-tecnica/20261101-013050-edge-preparacion-27dd972/seguridad/comparacion-edge.json).
 - [Secuencia SQL comprobada](../tesis/evidencias/verificacion-tecnica/20261101-013050-edge-preparacion-27dd972/seguridad/retorno-combinado.json).
-- [Respaldo y restauración pendientes](RESPALDO_Y_RESTAURACION.md).
+- [Respaldo y restauración comprobados y límites restantes](RESPALDO_Y_RESTAURACION.md).
 
 ## Artefactos revisables
 
@@ -52,11 +52,11 @@ El orden incorrecto de retorno fue rechazado por la huella y el correcto se ejec
 
 ## Configuración pendiente
 
-Los nombres consumidos son `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `FROM_EMAIL`, `FCM_PROJECT_ID`, `FCM_CLIENT_EMAIL`, `FCM_PRIVATE_KEY` y `REPORTS_SCHEDULER_SECRET`. Su presencia y validez en Cloud no se comprobaron leyendo valores. La clave privilegiada permanece exclusivamente en servidor.
+Los nombres consumidos son `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `FROM_EMAIL`, `FCM_PROJECT_ID`, `FCM_CLIENT_EMAIL`, `FCM_PRIVATE_KEY` y `REPORTS_SCHEDULER_SECRET`. La CLI autenticada confirmó los cinco nombres personalizados de Resend/FCM; falta `REPORTS_SCHEDULER_SECRET`. No se leyeron valores ni se verificó su validez o entrega. Las claves gestionadas reservadas no se clasifican como ausentes por este inventario. La clave privilegiada permanece exclusivamente en servidor. [Propuesta limitada para el secreto pendiente](SCHEDULER_PENDIENTE.md).
 
 Faltan la verificación del bucket privado `reports` y sus políticas, credenciales y permisos IAM, remitente SMTP/Resend, emisor del scheduler y su secreto, compatibilidad del runtime gestionado y pruebas en entornos de proveedores descartables. En local se creó únicamente el bucket de ensayo necesario; no se crearon buckets institucionales ni se enviaron notificaciones reales.
 
-No se puede abrir la ventana sin respaldo institucional recuperable y restauración aislada comprobada. El usuario confirmó que todavía faltan; el ensayo de backup local no satisface ese requisito.
+El respaldo institucional cifrado, su carga SQL aislada y la recuperación de bytes Storage ya se comprobaron. Los paquetes se copiaron fuera del repositorio a directorios privados separados del mismo equipo; no se acredita otro dispositivo o custodia externa. Estos resultados no sustituyen la restauración de Supabase gestionado ni las comprobaciones de proveedores pendientes.
 
 ## Reproducción local
 

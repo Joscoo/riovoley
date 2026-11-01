@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-11-01T21:11:15.246Z",
+  "os": "win32",
+  "architecture": "x64",
+  "windowsBuild": "10.0.26300",
+  "node": "v24.18.0",
+  "npm": "11.16.0",
+  "python": "Python 3.11.9",
+  "supabaseCli": "2.122.0",
+  "javaVersion": "openjdk version \"21.0.12.1\" 2026-08-18 LTS",
+  "gradleWrapperVersion": "8.14.3",
+  "androidBuildTools": "35.0.0",
+  "versionCommandsSucceeded": true,
+  "environmentValuesOrMachineUserPublished": false
+}

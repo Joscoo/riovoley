@@ -1,0 +1,28 @@
+{
+  "label": "clonar",
+  "command": [
+    "docker",
+    "exec",
+    "-i",
+    "--user",
+    "postgres",
+    "riovoley-restore-20261101-030216-07",
+    "psql",
+    "-X",
+    "-q",
+    "-A",
+    "-t",
+    "-h",
+    "/tmp",
+    "-d",
+    "template1",
+    "-v",
+    "ON_ERROR_STOP=1"
+  ],
+  "startedAt": "2026-11-01T16:54:46.713Z",
+  "finishedAt": "2026-11-01T16:54:47.132Z",
+  "durationSeconds": 0.419,
+  "exitCode": 0,
+  "sqlInputPublished": false,
+  "rawOutputPublished": false
+}

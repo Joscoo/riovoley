@@ -1,0 +1,60 @@
+{
+  "observedAt": "2026-11-01T17:31:32.529Z",
+  "projectRef": "mayvvlkvheagkojunzzb",
+  "type": "security",
+  "counts": {
+    "function_search_path_mutable": 19,
+    "extension_in_public": 1,
+    "anon_security_definer_function_executable": 17,
+    "authenticated_security_definer_function_executable": 19,
+    "auth_leaked_password_protection": 1,
+    "vulnerable_postgres_version": 1
+  },
+  "items": [
+    {
+      "name": "function_search_path_mutable",
+      "title": "Function Search Path Mutable",
+      "level": "WARN",
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0011_function_search_path_mutable",
+      "count": 19
+    },
+    {
+      "name": "extension_in_public",
+      "title": "Extension in Public",
+      "level": "WARN",
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0014_extension_in_public",
+      "count": 1
+    },
+    {
+      "name": "anon_security_definer_function_executable",
+      "title": "Public Can Execute SECURITY DEFINER Function",
+      "level": "WARN",
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable",
+      "count": 17
+    },
+    {
+      "name": "authenticated_security_definer_function_executable",
+      "title": "Signed-In Users Can Execute SECURITY DEFINER Function",
+      "level": "WARN",
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable",
+      "count": 19
+    },
+    {
+      "name": "auth_leaked_password_protection",
+      "title": "Leaked Password Protection Disabled",
+      "level": "WARN",
+      "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection",
+      "count": 1
+    },
+    {
+      "name": "vulnerable_postgres_version",
+      "title": "Current Postgres version has security patches available",
+      "level": "WARN",
+      "remediation": "https://supabase.com/docs/guides/platform/upgrading",
+      "count": 1
+    }
+  ],
+  "productionChangedByAgent": false,
+  "rawDetailPublished": false,
+  "advisoryTypes": 6
+}

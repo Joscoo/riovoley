@@ -1,0 +1,10 @@
+{
+  "url": "https://github.com/Joscoo/riovoley/pull/2",
+  "number": 2,
+  "draft": true,
+  "merged": false,
+  "base": "main",
+  "head": "fix/seguridad-local-20261029",
+  "ciCandidate": "1e5303a72755f3f17404d2207f3baa634a6417dc",
+  "deploymentsAuthorized": false
+}

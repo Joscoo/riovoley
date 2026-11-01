@@ -1,0 +1,28 @@
+{
+  "label": "principal-avance",
+  "command": [
+    "docker",
+    "exec",
+    "-i",
+    "--user",
+    "postgres",
+    "riovoley-restore-20261101-030216-07",
+    "psql",
+    "-X",
+    "-q",
+    "-A",
+    "-t",
+    "-h",
+    "/tmp",
+    "-d",
+    "riovoley_releasecopy_20261101165446",
+    "-v",
+    "ON_ERROR_STOP=1"
+  ],
+  "startedAt": "2026-11-01T16:54:47.919Z",
+  "finishedAt": "2026-11-01T16:54:48.086Z",
+  "durationSeconds": 0.167,
+  "exitCode": 3,
+  "sqlInputPublished": false,
+  "rawOutputPublished": false
+}
