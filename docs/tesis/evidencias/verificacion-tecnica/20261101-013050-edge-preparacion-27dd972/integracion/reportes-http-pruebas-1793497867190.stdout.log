@@ -1,0 +1,65 @@
+TAP version 13
+# Subtest: R01: generar reporte sin sesión devuelve401
+ok 1 - R01: generar reporte sin sesión devuelve401
+  ---
+  duration_ms: 968.8437
+  type: 'test'
+  ...
+# Subtest: R02: administrador suspendido no genera ni crea ejecuciones
+ok 2 - R02: administrador suspendido no genera ni crea ejecuciones
+  ---
+  duration_ms: 24.6316
+  type: 'test'
+  ...
+# Subtest: R03: entrenador suspendido no genera reportes
+ok 3 - R03: entrenador suspendido no genera reportes
+  ---
+  duration_ms: 27.4009
+  type: 'test'
+  ...
+# Subtest: R04: atleta no genera reportes administrativos
+ok 4 - R04: atleta no genera reportes administrativos
+  ---
+  duration_ms: 15.9454
+  type: 'test'
+  ...
+# Subtest: R05: personal suspendido no elimina ejecuciones por HTTP
+ok 5 - R05: personal suspendido no elimina ejecuciones por HTTP
+  ---
+  duration_ms: 11.5659
+  type: 'test'
+  ...
+# Subtest: R06: recordatorios sin secreto se bloquean sin contactar proveedor
+ok 6 - R06: recordatorios sin secreto se bloquean sin contactar proveedor
+  ---
+  duration_ms: 9.7366
+  type: 'test'
+  ...
+# Subtest: R07: reporte real persiste snapshot, PDF y checksum en servicios locales
+ok 7 - R07: reporte real persiste snapshot, PDF y checksum en servicios locales
+  ---
+  duration_ms: 339.3203
+  type: 'test'
+  ...
+# Subtest: R08: repetir reporte usa caché y mantiene ejecución única
+ok 8 - R08: repetir reporte usa caché y mantiene ejecución única
+  ---
+  duration_ms: 26.806
+  type: 'test'
+  ...
+# Subtest: R09: administrador elimina solo el reporte sintético y su artefacto
+ok 9 - R09: administrador elimina solo el reporte sintético y su artefacto
+  ---
+  duration_ms: 88.7139
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1881.8212
+

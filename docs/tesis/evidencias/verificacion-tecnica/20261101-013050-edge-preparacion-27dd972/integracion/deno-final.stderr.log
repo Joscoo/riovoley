@@ -1,0 +1,10 @@
+Check supabase/functions/delete-auth-user/index.ts
+Check supabase/functions/delete-report-run/index.ts
+Check supabase/functions/generate-report/index.ts
+Check supabase/functions/generate-scheduled-reports/index.ts
+Check supabase/functions/send-email/index.ts
+Check supabase/functions/send-payment-reminders/index.ts
+Check supabase/functions/send-push/index.ts
+Check supabase/functions/sync-mobile-device/index.ts
+Check supabase/functions/update-user-password/index.ts
+

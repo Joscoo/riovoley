@@ -7,6 +7,7 @@ restauración, despliegue, cambios SQL, rotación de secretos ni aprobación ins
 Leer [README](../../README.md), [inventario de variables](VARIABLES.md),
 [seguridad validada solo en local](../../database/security/local/README.md) y
 [guía de credenciales](../CREDENCIALES_RECUPERACION_2026-10-22.md).
+La preparación complementaria de [Edge y permisos de reportes](EDGE.md) incluye candidato, fuentes de retorno y secuencia SQL ensayada. El usuario confirmó que falta un respaldo institucional comprobado; seguir el [procedimiento de respaldo/restauración](RESPALDO_Y_RESTAURACION.md) antes de autorizar la ventana.
 La evidencia técnica de preparación se conserva en
 [el expediente de esta sesión](../tesis/evidencias/verificacion-tecnica/20261030-151554-preparacion-produccion-28e48d2).
 No confundir los ensayos locales con una validación del despliegue gestionado.

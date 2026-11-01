@@ -1,0 +1,44 @@
+{
+  "observedAt": "2026-11-01T02:08:47.548Z",
+  "projectId": "mayvvlkvheagkojunzzb",
+  "readOnly": true,
+  "productionCorrectionsApplied": false,
+  "findings": [
+    {
+      "name": "function_search_path_mutable",
+      "count": 19,
+      "level": "WARN",
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0011_function_search_path_mutable"
+    },
+    {
+      "name": "extension_in_public",
+      "count": 1,
+      "level": "WARN",
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0014_extension_in_public"
+    },
+    {
+      "name": "anon_security_definer_function_executable",
+      "count": 17,
+      "level": "WARN",
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable"
+    },
+    {
+      "name": "authenticated_security_definer_function_executable",
+      "count": 19,
+      "level": "WARN",
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable"
+    },
+    {
+      "name": "auth_leaked_password_protection",
+      "count": 1,
+      "level": "WARN",
+      "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection"
+    },
+    {
+      "name": "vulnerable_postgres_version",
+      "count": 1,
+      "level": "WARN",
+      "remediation": "https://supabase.com/docs/guides/platform/upgrading"
+    }
+  ]
+}

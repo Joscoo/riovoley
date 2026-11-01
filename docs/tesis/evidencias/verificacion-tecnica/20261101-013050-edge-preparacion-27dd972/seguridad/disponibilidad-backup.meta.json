@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/check-backup-connection.cjs"
+  ],
+  "start": "2026-11-01T02:02:17.186Z",
+  "end": "2026-11-01T02:02:17.359Z",
+  "durationSeconds": 0.173,
+  "exitCode": 2,
+  "signal": null,
+  "cwd": "."
+}

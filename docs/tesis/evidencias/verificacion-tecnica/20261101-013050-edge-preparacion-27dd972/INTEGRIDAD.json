@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-11-01T02:12:38.854Z",
+  "priorManifests": 13,
+  "priorEntries": 8060,
+  "candidateFilesVerified": 39,
+  "returnSourceFilesVerified": 51,
+  "returnBundlesVerified": 9,
+  "backupPrivateHashMatches": true,
+  "sqlComplementHashesMatch": true,
+  "relativeLinksChecked": 81,
+  "brokenLinks": 0,
+  "finalNodeContracts": 35,
+  "httpUsersPush": 12,
+  "httpReporting": 9,
+  "googleAuthSdkContracts": 1,
+  "institutionalBackupVerified": false,
+  "cloudDeployed": false,
+  "productionSqlApplied": false,
+  "frontendAndroidSourcesChanged": false
+}

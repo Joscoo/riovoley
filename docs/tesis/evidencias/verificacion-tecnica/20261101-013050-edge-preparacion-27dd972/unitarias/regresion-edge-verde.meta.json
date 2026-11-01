@@ -1,0 +1,17 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "functions/node_modules/tsx/dist/cli.mjs",
+    "--test",
+    "--test-reporter=tap",
+    "tests/unit/reporting-edge.test.cjs",
+    "tests/unit/payment-reminders-edge.test.cjs",
+    "tests/unit/edge-relations.test.ts"
+  ],
+  "start": "2026-11-01T01:35:27.014Z",
+  "end": "2026-11-01T01:35:28.861Z",
+  "durationSeconds": 1.847,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

@@ -2,6 +2,8 @@
 
 **Preparada y ensayada únicamente en local. No aplicada ni autorizada para producción.**
 
+Actualización complementaria: se prepararon el [avance de permisos de reportes](20261101013935_reporting_service_grants_proposal.sql) y su [retorno](20261101013935_reporting_service_return_proposal.sql), con [ensayo combinado](../../../docs/tesis/evidencias/verificacion-tecnica/20261101-013050-edge-preparacion-27dd972/seguridad/retorno-combinado.json). Aplicar primero el paquete principal y luego el complemento; retornar primero el complemento y después el principal. La preparación no autoriza su ejecución institucional. Ver [Edge y coordinación](../../../docs/produccion/EDGE.md).
+
 El paquete parte del catálogo institucional leído el 31 de octubre de 2026. Está fuera de `supabase/migrations` para impedir su aplicación automática. El nombre de avance fue generado con `supabase migration new`; el retorno es un artefacto del mismo paquete, no una migración pendiente que deba ejecutarse después del avance.
 
 - [Avance propuesto](20261031211612_riovoley_security_production_proposal.sql).

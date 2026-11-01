@@ -1,0 +1,14 @@
+{
+  "syntheticOnly": true,
+  "runId": "36d01175-9282-43b9-96b2-6de784f2e127",
+  "reportCode": "audit_roster_2caafeb1fdf480eb",
+  "status": "ready",
+  "sourceKind": "student_roster_snapshot",
+  "rowCount": 224,
+  "totalStudents": 224,
+  "expectedSyntheticNamePresent": true,
+  "pdfBytes": 19105,
+  "sha256": "e67e72dedb5cb6c491278a8384753969f5534e06ef2c3bd04468f73756827c29",
+  "storageBucket": "reports",
+  "personalFieldsRecorded": false
+}

@@ -1,0 +1,7 @@
+{
+  "functions": 9,
+  "files": 51,
+  "embeddedCredentialPatternFindings": 0,
+  "rawSourcesPublished": false,
+  "scope": "Patrones de JWT, claves Supabase secret y material PEM en fuentes recibidas; no prueba exhaustiva de ausencia de secretos."
+}

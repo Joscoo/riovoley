@@ -1,0 +1,19 @@
+{
+  "command": [
+    "docker",
+    "exec",
+    "-i",
+    "supabase_db_riovoley-e2e-local",
+    "pg_dump",
+    "-U",
+    "postgres",
+    "--format=custom",
+    "--dbname=riovoley_release_20261031212707"
+  ],
+  "start": "2026-11-01T01:55:27.437Z",
+  "end": "2026-11-01T01:55:27.748Z",
+  "durationSeconds": 0.311,
+  "exitCode": 0,
+  "stdoutBytes": 408774,
+  "rawOutputPrivate": true
+}

@@ -3,6 +3,7 @@ import { createClient } from 'npm:@supabase/supabase-js@2.50.0';
 import { corsHeaders } from '../_shared/cors.ts';
 import { internalError, jsonResponse, methodNotAllowed, successEnvelope } from '../_core/http/response.ts';
 import { FirebasePushGateway } from '../_core/push/infrastructure/firebase-push-gateway.ts';
+import { oneRelatedRow } from '../_shared/relations.ts';
 
 const supabaseUrl = Deno.env.get('SUPABASE_URL') || '';
 const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '';
@@ -57,17 +58,24 @@ serve(async (req) => {
 
   try {
     const schedulerSecret = Deno.env.get('REPORTS_SCHEDULER_SECRET') || '';
-    if (schedulerSecret) {
-      const providedSecret = req.headers.get('x-scheduler-secret') || '';
-      if (providedSecret !== schedulerSecret) {
-        return jsonResponse({
-          success: false,
-          code: 'FORBIDDEN',
-          message: 'Secret de scheduler inválido.',
-          details: null,
-          data: null,
-        }, 403);
-      }
+    if (!schedulerSecret) {
+      return jsonResponse({
+        success: false,
+        code: 'SCHEDULER_NOT_CONFIGURED',
+        message: 'Scheduler no configurado.',
+        details: null,
+        data: null,
+      }, 503);
+    }
+    const providedSecret = req.headers.get('x-scheduler-secret') || '';
+    if (providedSecret !== schedulerSecret) {
+      return jsonResponse({
+        success: false,
+        code: 'FORBIDDEN',
+        message: 'Secret de scheduler inválido.',
+        details: null,
+        data: null,
+      }, 403);
     }
 
     const today = new Date();
@@ -93,8 +101,12 @@ serve(async (req) => {
       throw paymentsError;
     }
 
-    const eligiblePayments = duePayments || [];
-    const userIds = [...new Set(eligiblePayments.map((payment) => String(payment.students?.users?.id || '')))].filter(Boolean);
+    // Resolve every recipient before any send; an ambiguous relation aborts the batch.
+    const eligiblePayments = (duePayments || []).map((payment) => ({
+      ...payment,
+      user: oneRelatedRow(oneRelatedRow(payment.students)?.users),
+    }));
+    const userIds = [...new Set(eligiblePayments.map((payment) => String(payment.user?.id || '')))].filter(Boolean);
 
     if (!userIds.length) {
       return jsonResponse(successEnvelope({
@@ -165,11 +177,11 @@ serve(async (req) => {
     const attemptedAt = new Date().toISOString();
 
     for (const payment of eligiblePayments) {
-      const userId = String(payment.students?.users?.id || '');
+      const userId = String(payment.user?.id || '');
       const userTargets = tokensByUser.get(userId) || [];
       if (!userTargets.length) continue;
 
-      const athleteName = `${payment.students?.users?.nombre || ''} ${payment.students?.users?.apellido || ''}`.trim();
+      const athleteName = `${payment.user?.nombre || ''} ${payment.user?.apellido || ''}`.trim();
       const daysRemaining = Math.ceil(
         (new Date(`${payment.fecha_fin}T00:00:00Z`).getTime() - new Date(`${todayOnly}T00:00:00Z`).getTime()) / 86400000,
       );

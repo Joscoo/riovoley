@@ -77,6 +77,7 @@
     "check:production": "node scripts/production/preflight.cjs",
     "test:toolchain": "node --test --test-concurrency=1 tests/integration/toolchain.dependencies.test.cjs tests/integration/toolchain.security-followup.test.cjs tests/integration/toolchain.loaders-security.test.cjs tests/integration/toolchain.production-readiness.test.cjs tests/unit/dev-server-config.test.cjs tests/unit/production-preflight.test.cjs tests/integration/toolchain.patterns.test.cjs",
     "test:auth-edge": "node functions/node_modules/tsx/dist/cli.mjs --test tests/unit/credentials-edge.test.ts",
+    "test:edge-contracts": "node functions/node_modules/tsx/dist/cli.mjs --test --test-reporter=tap tests/unit/credentials-edge.test.ts tests/unit/authorization-edge.test.ts tests/unit/reporting-edge.test.cjs tests/unit/payment-reminders-edge.test.cjs tests/unit/edge-relations.test.ts",
     "test:contracts": "cross-env CI=true react-scripts test src/features/reporting/infrastructure/repositories/supabaseReportingRepository.contract.test.js src/shared/infrastructure/auth/deleteAuthUserById.test.js",
     "eject": "react-scripts eject",
     "e2e": "playwright test",

@@ -1,0 +1,8 @@
+⚠️  deno bundle is experimental and subject to changes
+bundler warning: Comparison with -0 using the "===" operator will also match 0[equals-negative-zero] 
+    at file:///D:/Riovoley/riovoley/.e2e-local/deno-cache/npm/registry.npmjs.org/webidl-conversions/3.0.1/lib/index.js:52:23
+    note: Floating-point equality is defined such that 0 and -0 are equal, so "x === -0" returns true for both 0 and -0. You need to use "Object.is(x, -0)" instead to test for -0.
+Bundled 95 modules in 692ms
+  .e2e-local\edge-production\return-bundles\sync-mobile-device.mjs 829.12KB
+
+

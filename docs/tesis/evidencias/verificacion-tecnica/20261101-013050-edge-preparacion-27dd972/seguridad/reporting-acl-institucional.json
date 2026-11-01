@@ -1,0 +1,68 @@
+{
+  "observedAt": "2026-11-01T01:38:40.812Z",
+  "projectId": "mayvvlkvheagkojunzzb",
+  "readOnly": true,
+  "query": "BEGIN TRANSACTION READ ONLY; SELECT n.nspname AS schema,c.relname AS name,c.relkind,has_schema_privilege('service_role',n.oid,'USAGE') AS schema_usage,has_table_privilege('service_role',c.oid,'SELECT') AS service_select,has_table_privilege('service_role',c.oid,'INSERT') AS service_insert,has_table_privilege('service_role',c.oid,'UPDATE') AS service_update,has_table_privilege('service_role',c.oid,'DELETE') AS service_delete FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname IN ('public','reporting') AND c.relname IN ('report_definitions','report_runs','report_artifacts') ORDER BY n.nspname,c.relname; ROLLBACK;",
+  "rows": [
+    {
+      "schema": "public",
+      "name": "report_artifacts",
+      "relkind": "v",
+      "schema_usage": true,
+      "service_select": true,
+      "service_insert": true,
+      "service_update": true,
+      "service_delete": true
+    },
+    {
+      "schema": "public",
+      "name": "report_definitions",
+      "relkind": "v",
+      "schema_usage": true,
+      "service_select": true,
+      "service_insert": true,
+      "service_update": true,
+      "service_delete": true
+    },
+    {
+      "schema": "public",
+      "name": "report_runs",
+      "relkind": "v",
+      "schema_usage": true,
+      "service_select": true,
+      "service_insert": true,
+      "service_update": true,
+      "service_delete": true
+    },
+    {
+      "schema": "reporting",
+      "name": "report_artifacts",
+      "relkind": "r",
+      "schema_usage": true,
+      "service_select": false,
+      "service_insert": false,
+      "service_update": false,
+      "service_delete": false
+    },
+    {
+      "schema": "reporting",
+      "name": "report_definitions",
+      "relkind": "r",
+      "schema_usage": true,
+      "service_select": false,
+      "service_insert": false,
+      "service_update": false,
+      "service_delete": false
+    },
+    {
+      "schema": "reporting",
+      "name": "report_runs",
+      "relkind": "r",
+      "schema_usage": true,
+      "service_select": false,
+      "service_insert": false,
+      "service_update": false,
+      "service_delete": false
+    }
+  ]
+}

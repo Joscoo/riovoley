@@ -1,5 +1,16 @@
 # Evidencias técnicas de RIOVOLEY
 
+## Edge y preparación operativa: cierre UTC del 1 de noviembre
+
+La fase complementaria aprobó 35 contratos Node con dependencias simuladas, 12 pruebas HTTP de usuarios/push y nueve de reportes con servicios locales reales, además de un contrato de SDK/firma con transporte OAuth simulado. Los nueve entrypoints pasaron Deno y los nueve bundles locales de retorno compilaron; estos denominadores permanecen separados. Se corrigieron controles de suspensión/scheduler y 23 errores de tipos, se ensayó el complemento SQL de permisos de reportes y se verificó su orden de retorno con el paquete principal. La auditoría npm de Deno pasó de un aviso moderado a cero en el grafo candidato.
+
+- [Informe técnico](evidencias/verificacion-tecnica/20261101-013050-edge-preparacion-27dd972/INFORME_VERIFICACION_TECNICA.md).
+- [Matriz complementaria](evidencias/verificacion-tecnica/20261101-013050-edge-preparacion-27dd972/MATRIZ_VERIFICACIONES_TESIS.md).
+- [Texto académico propuesto](evidencias/verificacion-tecnica/20261101-013050-edge-preparacion-27dd972/RESULTADOS_PARA_TESIS_4_5.md).
+- [Paquete Edge](../produccion/EDGE.md) y [procedimiento de respaldo/restauración](../produccion/RESPALDO_Y_RESTAURACION.md).
+
+El backup/restauración ejecutado contiene únicamente datos sintéticos: se conservó el fallo del restore directo y se verificó una adaptación local en otro destino. El usuario confirmó que el respaldo institucional y el entorno de restauración aún faltan. No se aplicó SQL ni se desplegó código institucional; los fallos previos y los límites de las pruebas permanecen documentados.
+
 ## Paquete SQL de producción: preparación y ensayo local del 31 de octubre
 
 Se prepararon propuestas de avance y retorno a partir de catálogos institucionales de solo lectura. El cierre aprobó **29 casos de integración SQL local** y, por separado, **seis contratos de herramientas**. Una segunda base creada desde cero reprodujo 28 casos antes de añadir el guard del propietario. Se ejecutaron retorno y reaplicación reales; los intentos fallidos se conservan. El contexto JWT se simuló en SQL, sin login HTTP ni copia de registros institucionales.

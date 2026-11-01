@@ -69,6 +69,8 @@ jobs:
         run: npm ci --ignore-scripts
       - name: React unit tests (419-test baseline; no E2E credentials)
         run: npm test -- --watchAll=false --runInBand
+      - name: Edge authorization and reporting contracts (synthetic clients; no provider credentials)
+        run: npm run test:edge-contracts
       - name: Toolchain and production guards (explicit files; no database suite)
         run: >-
           node --test --test-concurrency=1

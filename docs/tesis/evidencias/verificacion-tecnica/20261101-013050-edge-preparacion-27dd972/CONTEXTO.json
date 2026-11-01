@@ -1,0 +1,9 @@
+{
+  "commit": "27dd9727c5c791e8a7bf380a698dfa1c771e6dbb",
+  "createdAt": "2026-11-01T01:30:50.375Z",
+  "scope": "Preparacion de artefactos Edge y retorno; lectura Cloud de codigo y pruebas HTTP exclusivamente locales. No despliegue ni invocacion institucional.",
+  "productionChanged": false,
+  "apiLocal": "http://127.0.0.1:55321",
+  "httpHandlerLocal": "http://127.0.0.1:6161",
+  "previousEvidencePreserved": true
+}
