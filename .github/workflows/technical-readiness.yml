@@ -78,6 +78,11 @@ jobs:
           tests/unit/restore-guards.test.cjs
           tests/unit/restore-data.test.cjs
           tests/unit/storage-backup.test.cjs
+      - name: PII recovery and APK environment guards (synthetic inputs only)
+        run: >-
+          node --test --test-reporter=tap
+          tests/unit/pii-continuity.test.cjs
+          tests/unit/android-release-guards.test.cjs
       - name: Toolchain and production guards (explicit files; no database suite)
         run: >-
           node --test --test-concurrency=1
