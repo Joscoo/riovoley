@@ -1,0 +1,19 @@
+{
+  "startedAt": "2026-11-01T02:58:08.951Z",
+  "finishedAt": "2026-11-01T02:58:51.738Z",
+  "bytes": 1418439,
+  "sha256": "22da6c77d9bbd3def2e6113c6c53531d76d900c0abe9c1f364c2dbb7828e54e6",
+  "status": "ENCRYPTED_LOGICAL_ARCHIVE_VERIFIED",
+  "sourceFingerprint": "15b9d9e869fb5113263c485714009878",
+  "recipientFingerprint": "3D55DEBF85C4E5C976ADC09C3F9C1274D9C822D3",
+  "recoveryKeySha256": "d866766bf794477a97019efd88a965b44a65b29d602c22487f4c78e02eeebc36",
+  "decryptExitCode": 0,
+  "pgRestoreListExitCode": 0,
+  "tocEntries": 1400,
+  "independentRecoveryKeyVerified": true,
+  "archiveHashRechecked": true,
+  "recoveryKeyHashRechecked": true,
+  "storageObjectsIncluded": false,
+  "globalRolesIncluded": false,
+  "productionChanged": false
+}

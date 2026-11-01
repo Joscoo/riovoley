@@ -1,0 +1,723 @@
+[
+  {
+    "file": "integracion/aislamiento-inspeccionar.meta.json",
+    "command": [
+      "docker",
+      "inspect",
+      "riovoley-restore-20261101-030216-02"
+    ],
+    "startedAt": "2026-11-01T03:05:06.274Z",
+    "finishedAt": "2026-11-01T03:05:06.361Z",
+    "durationSeconds": 0.087,
+    "exitCode": 0,
+    "signal": null,
+    "stdoutBytes": 7933,
+    "stderrBytes": 0,
+    "inputRecorded": false,
+    "rawOutputPublished": false
+  },
+  {
+    "file": "integracion/catalogo-destino.meta.json",
+    "command": [
+      "docker",
+      "exec",
+      "-i",
+      "--user",
+      "postgres",
+      "riovoley-restore-20261101-030216-06",
+      "psql",
+      "-X",
+      "-q",
+      "-A",
+      "-t",
+      "-v",
+      "ON_ERROR_STOP=1",
+      "-h",
+      "/tmp",
+      "-d",
+      "postgres"
+    ],
+    "startedAt": "2026-11-01T15:59:33.844Z",
+    "finishedAt": "2026-11-01T15:59:34.023Z",
+    "durationSeconds": 0.179,
+    "exitCode": 0,
+    "signal": null,
+    "stdoutBytes": 33,
+    "stderrBytes": 0,
+    "inputRecorded": false,
+    "rawOutputPublished": false
+  },
+  {
+    "file": "integracion/cluster-inicializar.meta.json",
+    "command": [
+      "docker",
+      "exec",
+      "--user",
+      "postgres",
+      "riovoley-restore-20261101-030216-02",
+      "initdb",
+      "-D",
+      "/restore/pgdata",
+      "-A",
+      "trust",
+      "--locale=C.UTF-8",
+      "--encoding=UTF8"
+    ],
+    "startedAt": "2026-11-01T03:05:06.365Z",
+    "finishedAt": "2026-11-01T03:05:07.501Z",
+    "durationSeconds": 1.136,
+    "exitCode": 0,
+    "signal": null,
+    "stdoutBytes": 824,
+    "stderrBytes": 0,
+    "inputRecorded": false,
+    "rawOutputPublished": false
+  },
+  {
+    "file": "integracion/compatibilidad-preparar.meta.json",
+    "command": [
+      "docker",
+      "exec",
+      "-i",
+      "--user",
+      "postgres",
+      "riovoley-restore-20261101-030216-02",
+      "psql",
+      "-X",
+      "-q",
+      "-A",
+      "-t",
+      "-v",
+      "ON_ERROR_STOP=1",
+      "-h",
+      "/tmp",
+      "-d",
+      "postgres"
+    ],
+    "startedAt": "2026-11-01T03:05:08.038Z",
+    "finishedAt": "2026-11-01T03:05:08.179Z",
+    "durationSeconds": 0.141,
+    "exitCode": 0,
+    "signal": null,
+    "stdoutBytes": 0,
+    "stderrBytes": 0,
+    "inputRecorded": false,
+    "rawOutputPublished": false
+  },
+  {
+    "file": "integracion/controles-destino.meta.json",
+    "command": [
+      "docker",
+      "exec",
+      "-i",
+      "--user",
+      "postgres",
+      "riovoley-restore-20261101-030216-06",
+      "psql",
+      "-X",
+      "-q",
+      "-A",
+      "-t",
+      "-v",
+      "ON_ERROR_STOP=1",
+      "-h",
+      "/tmp",
+      "-d",
+      "postgres"
+    ],
+    "startedAt": "2026-11-01T15:59:34.024Z",
+    "finishedAt": "2026-11-01T15:59:34.189Z",
+    "durationSeconds": 0.165,
+    "exitCode": 0,
+    "signal": null,
+    "stdoutBytes": 91,
+    "stderrBytes": 0,
+    "inputRecorded": false,
+    "rawOutputPublished": false
+  },
+  {
+    "file": "integracion/destino-crear.meta.json",
+    "command": [
+      "docker",
+      "run",
+      "-d",
+      "--name",
+      "riovoley-restore-20261101-030216-01",
+      "--network",
+      "none",
+      "--log-driver",
+      "none",
+      "--label",
+      "riovoley.audit.scope=institutional-restore",
+      "--tmpfs",
+      "/restore:rw,noexec,nosuid,size=1g,mode=1777",
+      "--entrypoint",
+      "/bin/tail",
+      "sha256:c141fd17ac6a76c4323e90b3aee8ff1a23d2e89e547c2b963cfadc309c079cc2",
+      "-f",
+      "/dev/null"
+    ],
+    "startedAt": "2026-11-01T03:04:43.724Z",
+    "finishedAt": "2026-11-01T03:04:44.107Z",
+    "durationSeconds": 0.383,
+    "exitCode": 127,
+    "signal": null,
+    "stdoutBytes": 65,
+    "stderrBytes": 319,
+    "inputRecorded": false,
+    "rawOutputPublished": false
+  },
+  {
+    "file": "integracion/funcion-original-recuperar.meta.json",
+    "command": [
+      "docker",
+      "exec",
+      "-i",
+      "--user",
+      "postgres",
+      "riovoley-restore-20261101-030216-06",
+      "psql",
+      "-X",
+      "-q",
+      "-A",
+      "-t",
+      "-v",
+      "ON_ERROR_STOP=1",
+      "-h",
+      "/tmp",
+      "-d",
+      "postgres"
+    ],
+    "startedAt": "2026-11-01T15:59:33.640Z",
+    "finishedAt": "2026-11-01T15:59:33.796Z",
+    "durationSeconds": 0.156,
+    "exitCode": 0,
+    "signal": null,
+    "stdoutBytes": 0,
+    "stderrBytes": 0,
+    "inputRecorded": false,
+    "rawOutputPublished": false
+  },
+  {
+    "file": "integracion/postgres-iniciar.meta.json",
+    "command": [
+      "docker",
+      "exec",
+      "-d",
+      "--user",
+      "postgres",
+      "riovoley-restore-20261101-030216-02",
+      "postgres",
+      "-D",
+      "/restore/pgdata",
+      "-c",
+      "listen_addresses=",
+      "-c",
+      "unix_socket_directories=/tmp",
+      "-c",
+      "shared_preload_libraries=pg_cron",
+      "-c",
+      "cron.launch_active_jobs=off",
+      "-c",
+      "max_worker_processes=0",
+      "-c",
+      "log_min_messages=panic",
+      "-c",
+      "log_min_error_statement=panic"
+    ],
+    "startedAt": "2026-11-01T03:05:07.502Z",
+    "finishedAt": "2026-11-01T03:05:07.643Z",
+    "durationSeconds": 0.141,
+    "exitCode": 0,
+    "signal": null,
+    "stdoutBytes": 0,
+    "stderrBytes": 0,
+    "inputRecorded": false,
+    "rawOutputPublished": false
+  },
+  {
+    "file": "integracion/restauracion-compatible.meta.json",
+    "command": [
+      "docker",
+      "exec",
+      "-i",
+      "--user",
+      "postgres",
+      "riovoley-restore-20261101-030216-04",
+      "pg_restore",
+      "--exit-on-error",
+      "--use-list=/restore/archive.list",
+      "-h",
+      "/tmp",
+      "--dbname=postgres"
+    ],
+    "startedAt": "2026-11-01T03:06:06.960Z",
+    "finishedAt": "2026-11-01T03:06:07.194Z",
+    "durationSeconds": 0.234,
+    "exitCode": 1,
+    "signal": null,
+    "stdoutBytes": 0,
+    "stderrBytes": 260,
+    "inputRecorded": false,
+    "rawOutputPublished": false
+  },
+  {
+    "file": "integracion/restore-comparacion-datos.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/compare-restored-data.cjs"
+    ],
+    "start": "2026-11-01T16:05:09.718Z",
+    "end": "2026-11-01T16:05:27.926Z",
+    "durationSeconds": 18.208,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/restore-institucional-intento-01.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/production/restore-isolated.cjs"
+    ],
+    "start": "2026-11-01T03:04:43.295Z",
+    "end": "2026-11-01T03:04:44.209Z",
+    "durationSeconds": 0.914,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/restore-institucional-intento-02.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/production/restore-isolated.cjs"
+    ],
+    "start": "2026-11-01T03:05:05.381Z",
+    "end": "2026-11-01T03:05:08.360Z",
+    "durationSeconds": 2.979,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/restore-institucional-intento-03.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/production/restore-isolated.cjs"
+    ],
+    "start": "2026-11-01T03:05:52.395Z",
+    "end": "2026-11-01T03:05:55.323Z",
+    "durationSeconds": 2.928,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/restore-institucional-intento-04.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/production/restore-isolated.cjs"
+    ],
+    "start": "2026-11-01T03:06:03.922Z",
+    "end": "2026-11-01T03:06:07.283Z",
+    "durationSeconds": 3.361,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/restore-institucional-intento-05.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/production/restore-isolated.cjs"
+    ],
+    "start": "2026-11-01T15:56:57.714Z",
+    "end": "2026-11-01T15:57:02.253Z",
+    "durationSeconds": 4.539,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/restore-institucional-intento-06.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/production/restore-isolated.cjs"
+    ],
+    "start": "2026-11-01T15:59:29.521Z",
+    "end": "2026-11-01T15:59:34.220Z",
+    "durationSeconds": 4.699,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/restore-institucional-intento-07.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/production/restore-isolated.cjs"
+    ],
+    "start": "2026-11-01T16:02:52.276Z",
+    "end": "2026-11-01T16:02:56.606Z",
+    "durationSeconds": 4.33,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/roles-destino.meta.json",
+    "command": [
+      "docker",
+      "exec",
+      "-i",
+      "--user",
+      "postgres",
+      "riovoley-restore-20261101-030216-02",
+      "psql",
+      "-X",
+      "-q",
+      "-A",
+      "-t",
+      "-v",
+      "ON_ERROR_STOP=1",
+      "-h",
+      "/tmp",
+      "-d",
+      "postgres"
+    ],
+    "startedAt": "2026-11-01T03:05:07.856Z",
+    "finishedAt": "2026-11-01T03:05:08.035Z",
+    "durationSeconds": 0.179,
+    "exitCode": 0,
+    "signal": null,
+    "stdoutBytes": 0,
+    "stderrBytes": 0,
+    "inputRecorded": false,
+    "rawOutputPublished": false
+  },
+  {
+    "file": "integracion/storage-cripto-real-fixtures.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/test-storage-crypto.cjs"
+    ],
+    "start": "2026-11-01T16:13:11.394Z",
+    "end": "2026-11-01T16:13:14.838Z",
+    "durationSeconds": 3.444,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/toc-destino.meta.json",
+    "command": [
+      "docker",
+      "exec",
+      "-i",
+      "riovoley-restore-20261101-030216-02",
+      "tee",
+      "/restore/archive.list"
+    ],
+    "startedAt": "2026-11-01T03:05:08.181Z",
+    "finishedAt": "2026-11-01T03:05:08.343Z",
+    "durationSeconds": 0.162,
+    "exitCode": 0,
+    "signal": null,
+    "stdoutBytes": 111391,
+    "stderrBytes": 0,
+    "inputRecorded": false,
+    "rawOutputPublished": false
+  },
+  {
+    "file": "unitarias/respaldo-restauracion-final.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/institutional-restore.test.cjs",
+      "tests/unit/restore-guards.test.cjs",
+      "tests/unit/restore-data.test.cjs",
+      "tests/unit/storage-backup.test.cjs"
+    ],
+    "start": "2026-11-01T16:14:39.339Z",
+    "end": "2026-11-01T16:14:39.821Z",
+    "durationSeconds": 0.482,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/restore-cierre.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/institutional-restore.test.cjs",
+      "tests/unit/restore-guards.test.cjs"
+    ],
+    "start": "2026-11-01T16:02:52.265Z",
+    "end": "2026-11-01T16:02:52.505Z",
+    "durationSeconds": 0.24,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/restore-crlf-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/institutional-restore.test.cjs"
+    ],
+    "start": "2026-11-01T16:02:51.733Z",
+    "end": "2026-11-01T16:02:51.930Z",
+    "durationSeconds": 0.197,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/restore-datos-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/restore-data.test.cjs"
+    ],
+    "start": "2026-11-01T16:05:09.034Z",
+    "end": "2026-11-01T16:05:09.302Z",
+    "durationSeconds": 0.268,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/restore-datos-verde.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/restore-data.test.cjs"
+    ],
+    "start": "2026-11-01T16:05:09.707Z",
+    "end": "2026-11-01T16:05:09.902Z",
+    "durationSeconds": 0.195,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/restore-dollar-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/institutional-restore.test.cjs"
+    ],
+    "start": "2026-11-01T03:04:37.065Z",
+    "end": "2026-11-01T03:04:37.267Z",
+    "durationSeconds": 0.202,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/restore-final.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/institutional-restore.test.cjs"
+    ],
+    "start": "2026-11-01T03:04:37.605Z",
+    "end": "2026-11-01T03:04:37.799Z",
+    "durationSeconds": 0.194,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/restore-preload-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/restore-guards.test.cjs"
+    ],
+    "start": "2026-11-01T15:56:35.373Z",
+    "end": "2026-11-01T15:56:35.875Z",
+    "durationSeconds": 0.502,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/restore-preload-verde.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/institutional-restore.test.cjs",
+      "tests/unit/restore-guards.test.cjs"
+    ],
+    "start": "2026-11-01T15:56:57.699Z",
+    "end": "2026-11-01T15:56:57.956Z",
+    "durationSeconds": 0.257,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/restore-revision-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/restore-guards.test.cjs"
+    ],
+    "start": "2026-11-01T15:52:54.432Z",
+    "end": "2026-11-01T15:52:54.696Z",
+    "durationSeconds": 0.264,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/restore-revision-verde.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/institutional-restore.test.cjs",
+      "tests/unit/restore-guards.test.cjs"
+    ],
+    "start": "2026-11-01T15:52:55.103Z",
+    "end": "2026-11-01T15:52:55.339Z",
+    "durationSeconds": 0.236,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/restore-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/institutional-restore.test.cjs"
+    ],
+    "start": "2026-11-01T03:02:49.387Z",
+    "end": "2026-11-01T03:02:49.544Z",
+    "durationSeconds": 0.157,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/restore-verde.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/institutional-restore.test.cjs"
+    ],
+    "start": "2026-11-01T03:03:56.601Z",
+    "end": "2026-11-01T03:03:56.819Z",
+    "durationSeconds": 0.218,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/storage-cierre.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/storage-backup.test.cjs"
+    ],
+    "start": "2026-11-01T16:12:09.218Z",
+    "end": "2026-11-01T16:12:09.731Z",
+    "durationSeconds": 0.514,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/storage-final.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/storage-backup.test.cjs"
+    ],
+    "start": "2026-11-01T16:13:11.383Z",
+    "end": "2026-11-01T16:13:11.834Z",
+    "durationSeconds": 0.451,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/storage-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/storage-backup.test.cjs"
+    ],
+    "start": "2026-11-01T16:11:32.503Z",
+    "end": "2026-11-01T16:11:32.676Z",
+    "durationSeconds": 0.173,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/storage-verde.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/storage-backup.test.cjs"
+    ],
+    "start": "2026-11-01T16:11:33.475Z",
+    "end": "2026-11-01T16:11:36.207Z",
+    "durationSeconds": 2.732,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/storage-vinculo-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/storage-backup.test.cjs"
+    ],
+    "start": "2026-11-01T16:14:34.321Z",
+    "end": "2026-11-01T16:14:34.673Z",
+    "durationSeconds": 0.352,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/storage-vinculo-verde.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/storage-backup.test.cjs"
+    ],
+    "start": "2026-11-01T16:14:35.058Z",
+    "end": "2026-11-01T16:14:35.392Z",
+    "durationSeconds": 0.334,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  }
+]

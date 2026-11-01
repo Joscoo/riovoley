@@ -1,0 +1,35 @@
+TAP version 13
+# Subtest: extrae COPY sin ejecutar el SQL que lo rodea
+ok 1 - extrae COPY sin ejecutar el SQL que lo rodea
+  ---
+  duration_ms: 1.9693
+  type: 'test'
+  ...
+# Subtest: rechaza COPY incompleto en vez de aceptar una comparación parcial
+ok 2 - rechaza COPY incompleto en vez de aceptar una comparación parcial
+  ---
+  duration_ms: 1.7662
+  type: 'test'
+  ...
+# Subtest: compara filas independientemente de su orden físico
+ok 3 - compara filas independientemente de su orden físico
+  ---
+  duration_ms: 0.5538
+  type: 'test'
+  ...
+# Subtest: conserva multiplicidad de filas en el control de contenido
+ok 4 - conserva multiplicidad de filas en el control de contenido
+  ---
+  duration_ms: 0.1689
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 105.9722
+

@@ -1,5 +1,7 @@
 # Preparación y operación de un release de RioVoley
 
+Actualización del 1 de noviembre de 2026: la copia institucional cifrada ya se obtuvo y se ensayó su carga SQL en un contenedor sin red. Coincidieron catálogo, 94 tablas con 27159 filas y 11 estados de secuencia. También se respaldaron y recuperaron en un directorio aislado los bytes de 43 objetos Storage, con 3596269 bytes totales. [Evidencia de esta fase](../tesis/evidencias/verificacion-tecnica/20261101-030216-restore-institucional-63826e6/INFORME_VERIFICACION_TECNICA.md). No se ha acreditado restauración integral de Supabase gestionado, contraseñas/membresías globales, clave raíz Vault, proveedores, transición de clientes o autorización de la ventana. El release sigue bloqueado por esos requisitos; las observaciones fechadas de preparación que siguen son antecedentes.
+
 Estado al preparar este documento, 2026-10-30: **despliegue bloqueado**. Este trabajo
 añade documentación, validaciones locales y CI técnico; no acredita backup,
 restauración, despliegue, cambios SQL, rotación de secretos ni aprobación institucional.
@@ -7,7 +9,7 @@ restauración, despliegue, cambios SQL, rotación de secretos ni aprobación ins
 Leer [README](../../README.md), [inventario de variables](VARIABLES.md),
 [seguridad validada solo en local](../../database/security/local/README.md) y
 [guía de credenciales](../CREDENCIALES_RECUPERACION_2026-10-22.md).
-La preparación complementaria de [Edge y permisos de reportes](EDGE.md) incluye candidato, fuentes de retorno y secuencia SQL ensayada. El usuario confirmó que falta un respaldo institucional comprobado; seguir el [procedimiento de respaldo/restauración](RESPALDO_Y_RESTAURACION.md) antes de autorizar la ventana.
+La preparación complementaria de [Edge y permisos de reportes](EDGE.md) incluye candidato, fuentes de retorno y secuencia SQL ensayada. El [procedimiento de respaldo/restauración](RESPALDO_Y_RESTAURACION.md) registra ahora el respaldo lógico real y su ensayo local; cerrar sus límites y los demás requisitos antes de autorizar la ventana.
 La evidencia técnica de preparación se conserva en
 [el expediente de esta sesión](../tesis/evidencias/verificacion-tecnica/20261030-151554-preparacion-produccion-28e48d2).
 No confundir los ensayos locales con una validación del despliegue gestionado.
@@ -108,8 +110,7 @@ Antes de aprobar cualquier mutación, el responsable de datos debe:
    ese ensayo. Definir tratamiento de escrituras posteriores al corte y cómo
    conservarlas antes de restaurar. Un PITR puede retroceder datos de negocio.
 
-**Backup/PITR y restauración no ejecutados en esta preparación.** Una casilla
-marcada, el preflight o una captura del estado saludable no los certifican.
+**Copia lógica y ensayo SQL local ejecutados en la fase del 1 de noviembre; PITR y recuperación gestionada no acreditados.** La recuperación de bytes Storage en tmpfs no sustituye Storage API. Una casilla marcada, el preflight o una captura del estado saludable tampoco certifican esos servicios.
 
 ## 4. Verificación técnica previa
 

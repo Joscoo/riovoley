@@ -1,0 +1,15 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+const h=require('../../e2e/local/harness.cjs'),safety=require('../../e2e/local/safety.cjs'),{assertIsolated}=require('../../production/restore-isolated.cjs');
+const restored=JSON.parse(fs.readFileSync(path.join(h.evidence,'integracion/restauracion-institucional.json'))),container=restored.container;
+const exec=(args,input)=>{const r=cp.spawnSync('docker',safety.dockerArgs(args),{env:safety.localDockerEnv(),input,windowsHide:true,maxBuffer:16*1024*1024});assert.equal(r.status,0,'READONLY_CATALOG_QUERY_FAILED');return r.stdout.toString('utf8');};
+assertIsolated(JSON.parse(exec(['inspect',container]))[0],container);
+const query=fs.readFileSync(path.join(__dirname,'catalog-fingerprint.sql'),'utf8').replace(/^SELECT md5\(string_agg\(item,E'\\n' ORDER BY item\)\) AS fingerprint/,'SELECT json_agg(item ORDER BY item) AS items');assert.ok(query.startsWith('SELECT json_agg'));
+const target=JSON.parse(exec(['exec','-i','--user','postgres',container,'psql','-X','-q','-A','-t','-h','/tmp','-d','postgres','-v','ON_ERROR_STOP=1'],Buffer.from('BEGIN READ ONLY;SET LOCAL search_path=public,extensions;'+query+'ROLLBACK;')).trim());
+const source=JSON.parse(fs.readFileSync(path.join(h.runtime,'production-migration/fingerprint-items-v2.json'))).map(x=>x.item);
+const a=new Set(source),b=new Set(target),md5=items=>crypto.createHash('md5').update(items.join('\n')).digest('hex');
+const sourceOnly=source.filter(x=>!b.has(x)),targetOnly=target.filter(x=>!a.has(x));
+fs.writeFileSync(path.join(h.runtime,'institutional-restore/fingerprint-diff.private.json'),JSON.stringify({sourceOnly,targetOnly},null,2)+'\n');
+const label=text=>text.split(':').slice(0,2).join(':');
+const summary={checkedAt:new Date().toISOString(),sourceSnapshotItems:source.length,sourceSnapshotFingerprint:md5(source),expectedPreflightFingerprint:restored.sourcePreflightFingerprint,targetItems:target.length,targetFingerprint:md5(target),sourceOnlyCount:sourceOnly.length,targetOnlyCount:targetOnly.length,differingObjects:[...new Set([...sourceOnly,...targetOnly].map(label))],definitionsPublished:false};
+h.write('seguridad/catalogo-diferencias.json',summary);console.log(JSON.stringify(summary));

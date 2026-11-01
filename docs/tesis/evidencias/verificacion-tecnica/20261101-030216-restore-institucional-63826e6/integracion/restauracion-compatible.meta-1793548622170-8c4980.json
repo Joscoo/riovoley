@@ -1,0 +1,25 @@
+{
+  "command": [
+    "docker",
+    "exec",
+    "-i",
+    "--user",
+    "postgres",
+    "riovoley-restore-20261101-030216-05",
+    "pg_restore",
+    "--exit-on-error",
+    "--use-list=/restore/archive.list",
+    "-h",
+    "/tmp",
+    "--dbname=postgres"
+  ],
+  "startedAt": "2026-11-01T15:57:01.097Z",
+  "finishedAt": "2026-11-01T15:57:02.168Z",
+  "durationSeconds": 1.071,
+  "exitCode": 1,
+  "signal": null,
+  "stdoutBytes": 0,
+  "stderrBytes": 274,
+  "inputRecorded": false,
+  "rawOutputPublished": false
+}

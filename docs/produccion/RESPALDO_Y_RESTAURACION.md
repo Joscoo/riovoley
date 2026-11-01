@@ -1,8 +1,32 @@
-# Respaldo institucional y restauración aislada: pendiente
+# Respaldo institucional y restauración aislada
 
-El usuario confirmó que todavía no dispone de un respaldo reciente y un entorno de restauración comprobados. No se ha exportado información institucional ni se ha creado un proyecto Cloud adicional. El cambio de producción permanece bloqueado hasta completar este procedimiento con el responsable.
+Al inicio no existía un respaldo institucional comprobado. El 1 de noviembre de 2026 el usuario ejecutó el asistente local y obtuvo una copia PostgreSQL cifrada de 1418439 bytes. Después se cargó en un contenedor nuevo sin red ni puertos: coincidieron el catálogo, las 94 entradas TABLE DATA con 27159 filas y 11 estados de secuencia. La evidencia y el estado de Storage se detallan en [el expediente de restauración](../tesis/evidencias/verificacion-tecnica/20261101-030216-restore-institucional-63826e6/INFORME_VERIFICACION_TECNICA.md). No se creó un proyecto Cloud adicional ni se aplicaron cambios institucionales. Este resultado SQL no acredita recuperación integral de Supabase ni autoriza el release.
 
-La comprobación inicial de nombres usuales de variables PostgreSQL no encontró configuración reconocida en archivos de entorno ni en el proceso. Después, el usuario confirmó que dispone de la contraseña PostgreSQL actual. Se verificó la conexión TLS 1.3 al host directo con la CA del proveedor, sin intentar autenticación PostgreSQL. La contraseña todavía debe introducirse localmente; no se recibió por chat ni se exportó información institucional.
+La comprobación inicial de variables no encontró configuración PostgreSQL reconocida. El usuario introdujo después la contraseña existente únicamente en el asistente local, con TLS verify-full y CA del proveedor. El agente no recibió esa contraseña ni la frase de recuperación por chat. La copia real y su clave exportada volvieron a comprobarse por SHA-256 antes de la restauración.
+
+## Resultado de la restauración SQL institucional
+
+El archivo cifrado original conserva SHA-256 `22da6c77d9bbd3def2e6113c6c53531d76d900c0abe9c1f364c2dbb7828e54e6`. La huella del catálogo original y restaurado es `15b9d9e869fb5113263c485714009878`. Los controles de contenido compararon todas las columnas presentes en los bloques COPY del archivo, ordenando filas para no depender del orden físico. No se comparó la copia con datos vivos de producción ni se publicaron filas.
+
+El destino usa PostgreSQL Supabase 17.11, Docker network=none, ningún puerto publicado o montaje del host, logging desactivado, PGDATA en tmpfs, escucha solo por socket Unix, cron.launch_active_jobs=off y max_worker_processes=0. No se iniciaron servicios Auth, Edge, Storage API, correo o push. Los contenedores previos fallidos se conservaron; una parada del motor elimina el contenido temporal de tmpfs, y exige otro destino nuevo. El archivo cifrado es el artefacto persistente de recuperación.
+
+La carga requirió precargar pg_cron/pg_net y preparar roles locales con atributos leídos del catálogo institucional, sin contraseñas. En el destino supabase_admin necesita SUPERUSER para recibir la propiedad de event triggers; el operador local postgres también sigue siendo superusuario para restaurar. Los roles de servicio quedan NOLOGIN. No se restauraron contraseñas globales ni membresías; no extrapolar este bootstrap a los permisos efectivos del servicio gestionado.
+
+Se aplicó en el destino vacío la adaptación de calculate_age descrita más abajo, recuperando después su definición original. La salida SQL del cliente Windows introducía CRLF en el cuerpo de esa función; la comparación aisló exactamente esa diferencia y se recuperaron los LF originales. El intento con huella diferente fue rechazado; el siguiente coincidió. No se modificó el archivo origen ni la función institucional.
+
+La columna almacenada GENERATED core.students.edad se recalcula durante COPY: se comprobó coherencia con su expresión actual, con cero discrepancias, pero sus valores almacenados originales no están en el archivo lógico. La igualdad de contenido indicada corresponde a las columnas incluidas en COPY. Persisten las comprobaciones del servicio gestionado, claves PII/Vault, proveedores, clientes y ventana aprobada.
+
+## Copia cifrada de archivos Storage
+
+El inventario institucional de solo lectura del 1 de noviembre identifica 43 objetos: 40 privados y 3 públicos en 3 buckets. Sus bytes no están incluidos en pg_dump. El [asistente Storage](../../scripts/production/storage-backup.ps1) usa una clave de servidor **existente**, introducida con entrada oculta, y la frase del respaldo anterior:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\production\storage-backup.ps1
+```
+
+Su transporte SDK admite exclusivamente GET al host institucional y endpoints Storage, sin redirecciones. Descarga únicamente los objetos inventariados en el snapshot SQL restaurado; comprueba tamaños y ETag MD5 cuando es comparable, cifra cada objeto y el manifiesto de rutas, verifica descifrado y copia los bytes recuperados a tmpfs del contenedor aislado con comprobación SHA-256. Los nombres y metadatos permanecen en el manifiesto cifrado; no se registran la clave del servidor ni la frase. Una clave pública o una contraseña PostgreSQL no sirven para esta operación.
+
+El resultado queda bajo `.e2e-local/institutional-storage/`, ignorado por Git. Conservar el manifiesto cifrado, todos los objetos cifrados y la clave/frase del respaldo PostgreSQL. Una copia de bytes recuperada en un directorio aislado no equivale a restaurar Supabase Storage API, buckets, políticas, URLs firmadas y su funcionamiento gestionado. La lectura de archivos y el snapshot SQL ocurren en momentos distintos; no se garantiza un snapshot común ni se detectan incorporaciones posteriores automáticamente. Ver el estado real y las limitaciones en [el informe de esta fase](../tesis/evidencias/verificacion-tecnica/20261101-030216-restore-institucional-63826e6/INFORME_VERIFICACION_TECNICA.md).
 
 ## Asistente local preparado el 1 de noviembre de 2026 UTC
 

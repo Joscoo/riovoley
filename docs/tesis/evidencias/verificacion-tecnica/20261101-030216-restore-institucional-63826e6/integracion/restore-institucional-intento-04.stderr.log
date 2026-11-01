@@ -1,0 +1,2 @@
+{"stage":"restauracion-compatible_NATIVE_TOOL_FAILURE","toolExitCode":1,"errorType":"Error","frames":["    at run (D:\\Riovoley\\riovoley\\scripts\\production\\restore-isolated.cjs:41:864)","    at restore (D:\\Riovoley\\riovoley\\scripts\\production\\restore-isolated.cjs:53:2)","    at Object.<anonymous> (D:\\Riovoley\\riovoley\\scripts\\production\\restore-isolated.cjs:60:26)"],"rawDiagnosticsPublished":false}
+

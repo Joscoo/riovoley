@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/compare-restored-data.cjs"
+  ],
+  "start": "2026-11-01T16:05:09.718Z",
+  "end": "2026-11-01T16:05:27.926Z",
+  "durationSeconds": 18.208,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

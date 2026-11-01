@@ -1,0 +1,8 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto'),b=require('../../production/backup.cjs'),storage=require('../../production/storage-backup.cjs'),h=require('../../e2e/local/harness.cjs');
+const folder=path.join(h.runtime,'storage-crypto-'+Date.now());fs.mkdirSync(folder);const phrase='synthetic-storage-only-recovery-123456',identity=b.createIdentity(folder,phrase);
+const fixtures=[Buffer.from([0,255,13,10,0,1]),Buffer.from('Contenido sintetico\ncon lineas\n','utf8'),crypto.randomBytes(4096)];
+for(let index=0;index<fixtures.length;index++){const cipher=storage.encryptBytes(fixtures[index],identity),file=path.join(folder,'fixture-'+index+'.pgp');fs.writeFileSync(file,cipher,{flag:'wx'});assert.deepEqual(storage.decryptBytes(file,identity,phrase),fixtures[index]);}
+const bad=fs.readFileSync(path.join(folder,'fixture-2.pgp'));bad[Math.floor(bad.length/2)]^=0x40;const corrupt=path.join(folder,'corrupt.pgp');fs.writeFileSync(corrupt,bad,{flag:'wx'});assert.throws(()=>storage.decryptBytes(corrupt,identity,phrase),e=>e.stage==='OBJECT_DECRYPTION_FAILED');
+h.write('integracion/storage-cripto-sintetico.json',{checkedAt:new Date().toISOString(),fixtures:fixtures.length,fixtureBytes:fixtures.reduce((n,x)=>n+x.length,0),allRecoveredBytesMatch:true,corruptionRejected:true,rsaBits:3072,algorithm:'GnuPG AES256',institutionalStorageContacted:false,productionKeyUsed:false});
+console.log(JSON.stringify({syntheticFixtures:fixtures.length,allRecoveredBytesMatch:true,corruptionRejected:true,institutionalStorageContacted:false}));

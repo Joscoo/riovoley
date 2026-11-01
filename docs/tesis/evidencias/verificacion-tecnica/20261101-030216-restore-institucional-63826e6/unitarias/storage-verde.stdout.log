@@ -1,0 +1,86 @@
+TAP version 13
+# Subtest: rechaza claves públicas para el respaldo privado
+ok 1 - rechaza claves públicas para el respaldo privado
+  ---
+  duration_ms: 1.7989
+  type: 'test'
+  ...
+# Subtest: rechaza JWT de otro proyecto aunque declare service_role
+ok 2 - rechaza JWT de otro proyecto aunque declare service_role
+  ---
+  duration_ms: 0.7344
+  type: 'test'
+  ...
+# Subtest: acepta formato de clave secreta sin persistir su valor
+ok 3 - acepta formato de clave secreta sin persistir su valor
+  ---
+  duration_ms: 0.1146
+  type: 'test'
+  ...
+# Subtest: bloquea escrituras incluso si se dirigen a Storage
+ok 4 - bloquea escrituras incluso si se dirigen a Storage
+  ---
+  duration_ms: 0.374
+  type: 'test'
+  ...
+# Subtest: bloquea destinos externos y endpoints Auth
+ok 5 - bloquea destinos externos y endpoints Auth
+  ---
+  duration_ms: 0.2606
+  type: 'test'
+  ...
+# Subtest: conserva bytes en descarga GET usando el SDK real y transporte simulado
+not ok 6 - conserva bytes en descarga GET usando el SDK real y transporte simulado
+  ---
+  duration_ms: 2507.0154
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\storage-backup.test.cjs:8:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + StorageUnknownError: READ_ONLY_STORAGE_REQUEST_REQUIRED
+    +     at handleError (D:\Riovoley\riovoley\node_modules\@supabase\storage-js\dist\index.cjs:320:16)
+    +     at D:\Riovoley\riovoley\node_modules\@supabase\storage-js\dist\index.cjs:369:53 {
+    +   __isStorageError: true,
+    +   namespace: 'storage',
+    +   originalError: Error: READ_ONLY_STORAGE_REQUEST_REQUIRED
+    +       at D:\Riovoley\riovoley\scripts\production\storage-backup.cjs:9:405
+    +       at D:\Riovoley\riovoley\node_modules\@supabase\supabase-js\dist\index.cjs:97:39
+    +       at D:\Riovoley\riovoley\node_modules\@supabase\supabase-js\dist\index.cjs:112:10,
+    +   status: undefined,
+    +   statusCode: undefined
+    + }
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual:
+  error: 'READ_ONLY_STORAGE_REQUEST_REQUIRED'
+  stack: |-
+    handleError (D:\Riovoley\riovoley\node_modules\@supabase\storage-js\dist\index.cjs:320:16)
+    D:\Riovoley\riovoley\node_modules\@supabase\storage-js\dist\index.cjs:369:53
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\storage-backup.test.cjs:8:597)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: rechaza rutas de objeto que cambian de directorio
+ok 7 - rechaza rutas de objeto que cambian de directorio
+  ---
+  duration_ms: 0.4777
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 6
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2626.6823
+

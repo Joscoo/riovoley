@@ -1,0 +1,29 @@
+{
+  "completedAt": "2026-11-01T16:02:56.591Z",
+  "archiveSha256": "22da6c77d9bbd3def2e6113c6c53531d76d900c0abe9c1f364c2dbb7828e54e6",
+  "container": "riovoley-restore-20261101-030216-07",
+  "restoreExitCode": 0,
+  "sourcePreflightFingerprint": "15b9d9e869fb5113263c485714009878",
+  "restoredFingerprint": "15b9d9e869fb5113263c485714009878",
+  "catalogMatchesSourcePreflight": true,
+  "compatibility": {
+    "omittedTocEntries": 1,
+    "sourceArchiveChanged": false,
+    "sourceDatabaseChanged": false,
+    "originalFunctionDefinitionRestored": true,
+    "generatedValuesRecomputed": true
+  },
+  "bootstrapRoles": {
+    "count": 10,
+    "globalRoleAttributesAndMembershipsRestored": false
+  },
+  "health": {
+    "version": "17.11",
+    "listen": "",
+    "workers": "0",
+    "cronActive": "off",
+    "tables": 96
+  },
+  "storageObjectsRestored": false,
+  "managedSupabaseRecoveryVerified": false
+}

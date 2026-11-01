@@ -1,0 +1,84 @@
+TAP version 13
+# Subtest: permite únicamente contenedor marcado sin red, puertos o bind mounts
+ok 1 - permite únicamente contenedor marcado sin red, puertos o bind mounts
+  ---
+  duration_ms: 1.06
+  type: 'test'
+  ...
+# Subtest: rechaza aislamiento insuficiente: red
+ok 2 - rechaza aislamiento insuficiente: red
+  ---
+  duration_ms: 1.033
+  type: 'test'
+  ...
+# Subtest: rechaza aislamiento insuficiente: puerto
+ok 3 - rechaza aislamiento insuficiente: puerto
+  ---
+  duration_ms: 0.24
+  type: 'test'
+  ...
+# Subtest: rechaza aislamiento insuficiente: montaje
+ok 4 - rechaza aislamiento insuficiente: montaje
+  ---
+  duration_ms: 4.0329
+  type: 'test'
+  ...
+# Subtest: rechaza aislamiento insuficiente: etiqueta
+ok 5 - rechaza aislamiento insuficiente: etiqueta
+  ---
+  duration_ms: 0.3746
+  type: 'test'
+  ...
+# Subtest: rechaza aislamiento insuficiente: logs
+ok 6 - rechaza aislamiento insuficiente: logs
+  ---
+  duration_ms: 0.2579
+  type: 'test'
+  ...
+# Subtest: la adaptación omite exclusivamente calculate_age y conserva los datos
+ok 7 - la adaptación omite exclusivamente calculate_age y conserva los datos
+  ---
+  duration_ms: 0.3113
+  type: 'test'
+  ...
+# Subtest: rechaza TOC ambiguo en lugar de saltar funciones adicionales
+ok 8 - rechaza TOC ambiguo en lugar de saltar funciones adicionales
+  ---
+  duration_ms: 0.1774
+  type: 'test'
+  ...
+# Subtest: extrae propietarios y grants sin aceptar SQL como nombre de rol
+ok 9 - extrae propietarios y grants sin aceptar SQL como nombre de rol
+  ---
+  duration_ms: 0.9407
+  type: 'test'
+  ...
+# Subtest: reconoce delimitadores dollar-quote estándar y nombrados de pg_dump
+not ok 10 - reconoce delimitadores dollar-quote estándar y nombrados de pg_dump
+  ---
+  duration_ms: 0.3271
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\institutional-restore.test.cjs:9:1'
+  failureType: 'testCodeFailure'
+  error: 'ageDefinition is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\institutional-restore.test.cjs:9:345)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 9
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 112.2068
+

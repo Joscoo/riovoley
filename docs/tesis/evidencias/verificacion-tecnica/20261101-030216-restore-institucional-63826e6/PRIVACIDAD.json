@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-11-01T16:23:33.139Z",
+  "filesChecked": 187,
+  "knownValuesCompared": 15,
+  "issues": 0,
+  "sourceRowsPublished": false,
+  "storageObjectNamesPublished": false,
+  "serverKeyReceivedByAgent": false,
+  "scope": "Archivos nuevos/modificados, valores sensibles locales conocidos y patrones de claves/JWT/conexiones. Los recibos públicos contienen totales; los manifiestos/datos privados no se publican. No acredita ausencia universal de PII."
+}

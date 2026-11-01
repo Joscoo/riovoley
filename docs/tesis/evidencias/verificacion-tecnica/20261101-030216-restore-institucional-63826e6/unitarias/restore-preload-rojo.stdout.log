@@ -1,0 +1,75 @@
+TAP version 13
+# Subtest: publica solo categoría ante excepción SQL con texto privado sin comillas
+ok 1 - publica solo categoría ante excepción SQL con texto privado sin comillas
+  ---
+  duration_ms: 1.1562
+  type: 'test'
+  ...
+# Subtest: clasifica esquema existente sin devolver su nombre
+ok 2 - clasifica esquema existente sin devolver su nombre
+  ---
+  duration_ms: 0.2527
+  type: 'test'
+  ...
+# Subtest: distingue frase de recuperación incorrecta sin publicar stderr
+ok 3 - distingue frase de recuperación incorrecta sin publicar stderr
+  ---
+  duration_ms: 0.1422
+  type: 'test'
+  ...
+# Subtest: reconoce el requisito de preload de pg_net sin publicar SQL
+not ok 4 - reconoce el requisito de preload de pg_net sin publicar SQL
+  ---
+  duration_ms: 1.0344
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\restore-guards.test.cjs:6:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'UNKNOWN_NATIVE_ERROR'
+    - 'EXTENSION_PRELOAD'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'EXTENSION_PRELOAD'
+  actual: 'UNKNOWN_NATIVE_ERROR'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\restore-guards.test.cjs:6:79)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: acepta coincidencia de huellas válidas
+ok 5 - acepta coincidencia de huellas válidas
+  ---
+  duration_ms: 0.2504
+  type: 'test'
+  ...
+# Subtest: rechaza diferencia de catálogo después de cargar filas
+ok 6 - rechaza diferencia de catálogo después de cargar filas
+  ---
+  duration_ms: 1.2144
+  type: 'test'
+  ...
+# Subtest: rechaza valores ausentes aunque ambos coincidan
+ok 7 - rechaza valores ausentes aunque ambos coincidan
+  ---
+  duration_ms: 0.1864
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 6
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 104.3263
+

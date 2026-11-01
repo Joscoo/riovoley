@@ -1,0 +1,119 @@
+TAP version 13
+# Subtest: permite únicamente contenedor marcado sin red, puertos o bind mounts
+ok 1 - permite únicamente contenedor marcado sin red, puertos o bind mounts
+  ---
+  duration_ms: 1.2016
+  type: 'test'
+  ...
+# Subtest: rechaza aislamiento insuficiente: red
+ok 2 - rechaza aislamiento insuficiente: red
+  ---
+  duration_ms: 1.0284
+  type: 'test'
+  ...
+# Subtest: rechaza aislamiento insuficiente: puerto
+ok 3 - rechaza aislamiento insuficiente: puerto
+  ---
+  duration_ms: 0.3917
+  type: 'test'
+  ...
+# Subtest: rechaza aislamiento insuficiente: montaje
+ok 4 - rechaza aislamiento insuficiente: montaje
+  ---
+  duration_ms: 4.6708
+  type: 'test'
+  ...
+# Subtest: rechaza aislamiento insuficiente: etiqueta
+ok 5 - rechaza aislamiento insuficiente: etiqueta
+  ---
+  duration_ms: 0.3376
+  type: 'test'
+  ...
+# Subtest: rechaza aislamiento insuficiente: logs
+ok 6 - rechaza aislamiento insuficiente: logs
+  ---
+  duration_ms: 0.1932
+  type: 'test'
+  ...
+# Subtest: la adaptación omite exclusivamente calculate_age y conserva los datos
+ok 7 - la adaptación omite exclusivamente calculate_age y conserva los datos
+  ---
+  duration_ms: 0.3124
+  type: 'test'
+  ...
+# Subtest: rechaza TOC ambiguo en lugar de saltar funciones adicionales
+ok 8 - rechaza TOC ambiguo en lugar de saltar funciones adicionales
+  ---
+  duration_ms: 0.1895
+  type: 'test'
+  ...
+# Subtest: extrae propietarios y grants sin aceptar SQL como nombre de rol
+ok 9 - extrae propietarios y grants sin aceptar SQL como nombre de rol
+  ---
+  duration_ms: 0.9756
+  type: 'test'
+  ...
+# Subtest: reconoce delimitadores dollar-quote estándar y nombrados de pg_dump
+ok 10 - reconoce delimitadores dollar-quote estándar y nombrados de pg_dump
+  ---
+  duration_ms: 0.767
+  type: 'test'
+  ...
+# Subtest: recupera LF de la función original desde la salida CRLF del cliente Windows
+ok 11 - recupera LF de la función original desde la salida CRLF del cliente Windows
+  ---
+  duration_ms: 0.1974
+  type: 'test'
+  ...
+# Subtest: publica solo categoría ante excepción SQL con texto privado sin comillas
+ok 12 - publica solo categoría ante excepción SQL con texto privado sin comillas
+  ---
+  duration_ms: 1.7702
+  type: 'test'
+  ...
+# Subtest: clasifica esquema existente sin devolver su nombre
+ok 13 - clasifica esquema existente sin devolver su nombre
+  ---
+  duration_ms: 0.2867
+  type: 'test'
+  ...
+# Subtest: distingue frase de recuperación incorrecta sin publicar stderr
+ok 14 - distingue frase de recuperación incorrecta sin publicar stderr
+  ---
+  duration_ms: 0.134
+  type: 'test'
+  ...
+# Subtest: reconoce el requisito de preload de pg_net sin publicar SQL
+ok 15 - reconoce el requisito de preload de pg_net sin publicar SQL
+  ---
+  duration_ms: 0.1148
+  type: 'test'
+  ...
+# Subtest: acepta coincidencia de huellas válidas
+ok 16 - acepta coincidencia de huellas válidas
+  ---
+  duration_ms: 0.2687
+  type: 'test'
+  ...
+# Subtest: rechaza diferencia de catálogo después de cargar filas
+ok 17 - rechaza diferencia de catálogo después de cargar filas
+  ---
+  duration_ms: 2.9004
+  type: 'test'
+  ...
+# Subtest: rechaza valores ausentes aunque ambos coincidan
+ok 18 - rechaza valores ausentes aunque ambos coincidan
+  ---
+  duration_ms: 0.2645
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 146.8943
+

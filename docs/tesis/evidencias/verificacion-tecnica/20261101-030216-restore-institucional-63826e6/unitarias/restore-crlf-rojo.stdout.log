@@ -1,0 +1,108 @@
+TAP version 13
+# Subtest: permite únicamente contenedor marcado sin red, puertos o bind mounts
+ok 1 - permite únicamente contenedor marcado sin red, puertos o bind mounts
+  ---
+  duration_ms: 1.0005
+  type: 'test'
+  ...
+# Subtest: rechaza aislamiento insuficiente: red
+ok 2 - rechaza aislamiento insuficiente: red
+  ---
+  duration_ms: 1.0054
+  type: 'test'
+  ...
+# Subtest: rechaza aislamiento insuficiente: puerto
+ok 3 - rechaza aislamiento insuficiente: puerto
+  ---
+  duration_ms: 0.3788
+  type: 'test'
+  ...
+# Subtest: rechaza aislamiento insuficiente: montaje
+ok 4 - rechaza aislamiento insuficiente: montaje
+  ---
+  duration_ms: 5.0742
+  type: 'test'
+  ...
+# Subtest: rechaza aislamiento insuficiente: etiqueta
+ok 5 - rechaza aislamiento insuficiente: etiqueta
+  ---
+  duration_ms: 0.3361
+  type: 'test'
+  ...
+# Subtest: rechaza aislamiento insuficiente: logs
+ok 6 - rechaza aislamiento insuficiente: logs
+  ---
+  duration_ms: 0.1898
+  type: 'test'
+  ...
+# Subtest: la adaptación omite exclusivamente calculate_age y conserva los datos
+ok 7 - la adaptación omite exclusivamente calculate_age y conserva los datos
+  ---
+  duration_ms: 0.3225
+  type: 'test'
+  ...
+# Subtest: rechaza TOC ambiguo en lugar de saltar funciones adicionales
+ok 8 - rechaza TOC ambiguo en lugar de saltar funciones adicionales
+  ---
+  duration_ms: 0.1805
+  type: 'test'
+  ...
+# Subtest: extrae propietarios y grants sin aceptar SQL como nombre de rol
+ok 9 - extrae propietarios y grants sin aceptar SQL como nombre de rol
+  ---
+  duration_ms: 0.993
+  type: 'test'
+  ...
+# Subtest: reconoce delimitadores dollar-quote estándar y nombrados de pg_dump
+ok 10 - reconoce delimitadores dollar-quote estándar y nombrados de pg_dump
+  ---
+  duration_ms: 0.3852
+  type: 'test'
+  ...
+# Subtest: recupera LF de la función original desde la salida CRLF del cliente Windows
+not ok 11 - recupera LF de la función original desde la salida CRLF del cliente Windows
+  ---
+  duration_ms: 0.7246
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\institutional-restore.test.cjs:10:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'CREATE FUNCTION public.calculate_age(birthdate date) RETURNS integer\r\n' +
+    +   ' LANGUAGE sql\r\n' +
+    - 'CREATE FUNCTION public.calculate_age(birthdate date) RETURNS integer\n' +
+    -   ' LANGUAGE sql\n' +
+        ' AS $$ SELECT 1; $$;'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: |-
+    CREATE FUNCTION public.calculate_age(birthdate date) RETURNS integer
+     LANGUAGE sql
+     AS $$ SELECT 1; $$;
+  actual: |-
+    CREATE FUNCTION public.calculate_age(birthdate date) RETURNS integer
+     LANGUAGE sql
+     AS $$ SELECT 1; $$;
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\institutional-restore.test.cjs:10:213)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 10
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 112.0688
+

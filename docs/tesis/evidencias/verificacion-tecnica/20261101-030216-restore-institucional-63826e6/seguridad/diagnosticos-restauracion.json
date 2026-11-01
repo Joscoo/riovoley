@@ -1,0 +1,14 @@
+[
+  {
+    "case": "riovoley-restore-20261101-030216-01",
+    "stage": "destino-crear.stderr.pgp",
+    "category": "UNKNOWN_NATIVE_ERROR",
+    "rowDetailsPublished": false
+  },
+  {
+    "case": "riovoley-restore-20261101-030216-04",
+    "stage": "restauracion-compatible.stderr.pgp",
+    "category": "UNKNOWN_NATIVE_ERROR",
+    "rowDetailsPublished": false
+  }
+]

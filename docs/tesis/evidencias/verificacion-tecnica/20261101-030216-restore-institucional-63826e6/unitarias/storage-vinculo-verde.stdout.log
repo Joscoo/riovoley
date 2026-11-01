@@ -1,0 +1,71 @@
+TAP version 13
+# Subtest: rechaza claves públicas para el respaldo privado
+ok 1 - rechaza claves públicas para el respaldo privado
+  ---
+  duration_ms: 1.6755
+  type: 'test'
+  ...
+# Subtest: rechaza JWT de otro proyecto aunque declare service_role
+ok 2 - rechaza JWT de otro proyecto aunque declare service_role
+  ---
+  duration_ms: 0.6526
+  type: 'test'
+  ...
+# Subtest: acepta formato de clave secreta sin persistir su valor
+ok 3 - acepta formato de clave secreta sin persistir su valor
+  ---
+  duration_ms: 0.1178
+  type: 'test'
+  ...
+# Subtest: bloquea escrituras incluso si se dirigen a Storage
+ok 4 - bloquea escrituras incluso si se dirigen a Storage
+  ---
+  duration_ms: 0.3712
+  type: 'test'
+  ...
+# Subtest: bloquea destinos externos y endpoints Auth
+ok 5 - bloquea destinos externos y endpoints Auth
+  ---
+  duration_ms: 0.2233
+  type: 'test'
+  ...
+# Subtest: conserva bytes en descarga GET usando el SDK real y transporte simulado
+ok 6 - conserva bytes en descarga GET usando el SDK real y transporte simulado
+  ---
+  duration_ms: 92.3912
+  type: 'test'
+  ...
+# Subtest: rechaza rutas de objeto que cambian de directorio
+ok 7 - rechaza rutas de objeto que cambian de directorio
+  ---
+  duration_ms: 1.5744
+  type: 'test'
+  ...
+# Subtest: permite listar buckets con GET a través del SDK real
+ok 8 - permite listar buckets con GET a través del SDK real
+  ---
+  duration_ms: 2.481
+  type: 'test'
+  ...
+# Subtest: rechaza resultado de otro respaldo aunque coincida el catálogo
+ok 9 - rechaza resultado de otro respaldo aunque coincida el catálogo
+  ---
+  duration_ms: 0.3299
+  type: 'test'
+  ...
+# Subtest: rechaza contexto de otro expediente antes de consultar Storage
+ok 10 - rechaza contexto de otro expediente antes de consultar Storage
+  ---
+  duration_ms: 0.3204
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 238.8787
+
