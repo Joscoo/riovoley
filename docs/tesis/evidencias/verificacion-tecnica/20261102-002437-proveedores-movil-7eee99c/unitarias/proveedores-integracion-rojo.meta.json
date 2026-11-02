@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/unit/provider-verification.test.cjs"
+  ],
+  "start": "2026-11-02T00:27:49.244Z",
+  "end": "2026-11-02T00:27:49.617Z",
+  "durationSeconds": 0.373,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

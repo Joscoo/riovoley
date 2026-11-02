@@ -1,0 +1,384 @@
+[
+  {
+    "file": "android/compilar-apk-local.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/build-local-android.cjs"
+    ],
+    "start": "2026-11-02T00:30:53.875Z",
+    "end": "2026-11-02T00:40:33.731Z",
+    "durationSeconds": 579.856,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/inspeccion-apk-cierre.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/inspect-local-android.cjs"
+    ],
+    "start": "2026-11-02T04:03:20.846Z",
+    "end": "2026-11-02T04:03:22.986Z",
+    "durationSeconds": 2.14,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/local-aapt.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\build-tools\\35.0.0\\aapt.exe",
+      "dump",
+      "badging",
+      "D:\\Riovoley\\riovoley\\.e2e-local\\native-local\\20261102003057\\project\\android\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+    ],
+    "cwd": "",
+    "startedAt": "2026-11-02T00:40:31.819Z",
+    "finishedAt": "2026-11-02T00:40:32.467Z",
+    "durationSeconds": 0.648,
+    "exitCode": 0,
+    "rawLogsPrivate": true,
+    "environmentValuesRecorded": false
+  },
+  {
+    "file": "android/local-capacitor-sync.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Riovoley\\riovoley\\node_modules\\@capacitor\\cli\\bin\\capacitor",
+      "sync",
+      "android"
+    ],
+    "cwd": ".e2e-local/native-local/20261102003057/project",
+    "startedAt": "2026-11-02T00:34:40.933Z",
+    "finishedAt": "2026-11-02T00:34:50.773Z",
+    "durationSeconds": 9.84,
+    "exitCode": 0,
+    "rawLogsPrivate": true,
+    "environmentValuesRecorded": false
+  },
+  {
+    "file": "android/local-gradle.meta.json",
+    "command": [
+      "C:\\WINDOWS\\system32\\cmd.exe",
+      "/d",
+      "/c",
+      "gradlew.bat :app:assembleDebug :app:testDebugUnitTest --offline --no-daemon --no-configuration-cache --console=plain --stacktrace --max-workers=2"
+    ],
+    "cwd": ".e2e-local/native-local/20261102003057/project/android",
+    "startedAt": "2026-11-02T00:34:50.775Z",
+    "finishedAt": "2026-11-02T00:40:31.773Z",
+    "durationSeconds": 340.998,
+    "exitCode": 0,
+    "rawLogsPrivate": true,
+    "environmentValuesRecorded": false
+  },
+  {
+    "file": "android/local-signature.meta.json",
+    "command": [
+      "C:\\WINDOWS\\system32\\cmd.exe",
+      "/d",
+      "/c",
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\build-tools\\35.0.0\\apksigner.bat verify --verbose D:\\Riovoley\\riovoley\\.e2e-local\\native-local\\20261102003057\\project\\android\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+    ],
+    "cwd": "",
+    "startedAt": "2026-11-02T00:40:32.471Z",
+    "finishedAt": "2026-11-02T00:40:33.658Z",
+    "durationSeconds": 1.187,
+    "exitCode": 0,
+    "rawLogsPrivate": true,
+    "environmentValuesRecorded": false
+  },
+  {
+    "file": "android/local-web-build.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--require",
+      "D:\\Riovoley\\riovoley\\scripts\\production\\cra-release-preload.cjs",
+      "D:\\Riovoley\\riovoley\\node_modules\\react-scripts\\scripts\\build.js"
+    ],
+    "cwd": "",
+    "startedAt": "2026-11-02T00:31:13.406Z",
+    "finishedAt": "2026-11-02T00:34:40.869Z",
+    "durationSeconds": 207.463,
+    "exitCode": 0,
+    "rawLogsPrivate": true,
+    "environmentValuesRecorded": false
+  },
+  {
+    "file": "seguridad/api-exposicion-cierre.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/review-api-exposure.cjs"
+    ],
+    "start": "2026-11-02T03:56:57.764Z",
+    "end": "2026-11-02T03:56:57.927Z",
+    "durationSeconds": 0.163,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/api-exposicion-corregida.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/review-api-exposure.cjs"
+    ],
+    "start": "2026-11-02T04:00:14.266Z",
+    "end": "2026-11-02T04:02:11.983Z",
+    "durationSeconds": 117.717,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/catalogo-cierre.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/inspect-release-catalog.cjs"
+    ],
+    "start": "2026-11-02T04:00:14.277Z",
+    "end": "2026-11-02T04:00:16.993Z",
+    "durationSeconds": 2.716,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/catalogo-lectura.meta.json",
+    "command": [
+      "supabase",
+      "db",
+      "query",
+      "--linked",
+      "--project-ref",
+      "mayvvlkvheagkojunzzb",
+      "--output",
+      "json",
+      "BEGIN READ ONLY;\nSELECT json_build_object(\n 'rls',(SELECT json_agg(x ORDER BY x.table_name) FROM (SELECT c.relname AS table_name,c.relrowsecurity AS enabled,c.relforcerowsecurity AS forced,(SELECT count(*) FROM pg_policy p WHERE p.polrelid=c.oid) AS policies FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='gamification' AND c.relname IN ('xp_ledger','login_rewards')) x),\n 'dailyRewardRpcPresent',to_regprocedure('public.claim_daily_login_reward()') IS NOT NULL,\n 'postgresSuperuser',(SELECT rolsuper FROM pg_roles WHERE rolname='postgres'),\n 'relationsWithoutOwnerRoleUsage',(SELECT count(*) FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname IN ('public','core','billing','training','gamification','reporting') AND c.relkind IN ('r','p','v','m','S') AND NOT pg_has_role('postgres',c.relowner,'USAGE')),\n 'functionOwnersWithoutRoleUsage',(SELECT count(*) FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname IN ('public','core','billing','training','gamification','reporting') AND NOT pg_has_role('postgres',p.proowner,'USAGE')),\n 'schemasWithoutCreate',(SELECT count(*) FROM pg_namespace n WHERE n.nspname IN ('public','security','gamification') AND NOT has_schema_privilege('postgres',n.oid,'CREATE'))\n) AS audit_summary;\nCOMMIT;"
+    ],
+    "startedAt": "2026-11-02T04:00:14.351Z",
+    "finishedAt": "2026-11-02T04:00:16.964Z",
+    "exitCode": 0,
+    "rawOutputSaved": false
+  },
+  {
+    "file": "seguridad/cloud-metadatos-cierre.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/inspect-cloud-config-names.cjs"
+    ],
+    "start": "2026-11-02T03:56:57.753Z",
+    "end": "2026-11-02T03:57:07.874Z",
+    "durationSeconds": 10.121,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/config-despliegue.meta.json",
+    "command": [
+      "vercel",
+      "api",
+      "/v13/deployments/dpl_DCPpv18kuroRoaEpV49xhGfY1isB",
+      "-X",
+      "GET",
+      "--scope",
+      "joscoos-projects",
+      "--global-config",
+      "<configuracion-privada>",
+      "--non-interactive"
+    ],
+    "startedAt": "2026-11-02T03:57:04.781Z",
+    "finishedAt": "2026-11-02T03:57:05.993Z",
+    "exitCode": 0,
+    "rawOutputSaved": false
+  },
+  {
+    "file": "seguridad/config-proyecto.meta.json",
+    "command": [
+      "vercel",
+      "api",
+      "/v9/projects/riovoley",
+      "-X",
+      "GET",
+      "--scope",
+      "joscoos-projects",
+      "--global-config",
+      "<configuracion-privada>",
+      "--non-interactive"
+    ],
+    "startedAt": "2026-11-02T03:56:57.891Z",
+    "finishedAt": "2026-11-02T03:57:04.777Z",
+    "exitCode": 0,
+    "rawOutputSaved": false
+  },
+  {
+    "file": "seguridad/config-supabase-secretos.meta.json",
+    "command": [
+      "supabase",
+      "secrets",
+      "list",
+      "--project-ref",
+      "mayvvlkvheagkojunzzb",
+      "--output",
+      "json"
+    ],
+    "startedAt": "2026-11-02T03:57:05.997Z",
+    "finishedAt": "2026-11-02T03:57:07.858Z",
+    "exitCode": 0,
+    "rawOutputSaved": false
+  },
+  {
+    "file": "seguridad/proveedores-config-lectura.meta.json",
+    "command": [
+      "supabase",
+      "secrets",
+      "list",
+      "--project-ref",
+      "mayvvlkvheagkojunzzb",
+      "--output",
+      "json"
+    ],
+    "startedAt": "2026-11-02T03:43:52.894Z",
+    "finishedAt": "2026-11-02T03:44:07.763Z",
+    "exitCode": 0,
+    "rawOutputSaved": false
+  },
+  {
+    "file": "unitarias/perfil-nativo-local-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/native-local-profile.test.cjs"
+    ],
+    "start": "2026-11-02T00:30:52.852Z",
+    "end": "2026-11-02T00:30:53.338Z",
+    "durationSeconds": 0.486,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/perfil-nativo-local-verde.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/native-local-profile.test.cjs"
+    ],
+    "start": "2026-11-02T00:30:53.677Z",
+    "end": "2026-11-02T00:30:53.871Z",
+    "durationSeconds": 0.194,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/proveedores-integracion-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/provider-verification.test.cjs"
+    ],
+    "start": "2026-11-02T00:27:49.244Z",
+    "end": "2026-11-02T00:27:49.617Z",
+    "durationSeconds": 0.373,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/proveedores-integracion-verde.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/provider-verification.test.cjs"
+    ],
+    "start": "2026-11-02T00:27:50.327Z",
+    "end": "2026-11-02T00:27:50.663Z",
+    "durationSeconds": 0.336,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/proveedores-parcial-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/provider-verification.test.cjs"
+    ],
+    "start": "2026-11-02T00:39:59.866Z",
+    "end": "2026-11-02T00:40:00.416Z",
+    "durationSeconds": 0.55,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/proveedores-parcial-verde.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/provider-verification.test.cjs"
+    ],
+    "start": "2026-11-02T00:40:47.554Z",
+    "end": "2026-11-02T00:40:47.912Z",
+    "durationSeconds": 0.358,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/proveedores-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/provider-verification.test.cjs"
+    ],
+    "start": "2026-11-02T00:24:37.471Z",
+    "end": "2026-11-02T00:24:37.701Z",
+    "durationSeconds": 0.23,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/proveedores-verde.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/provider-verification.test.cjs"
+    ],
+    "start": "2026-11-02T00:25:36.227Z",
+    "end": "2026-11-02T00:25:37.019Z",
+    "durationSeconds": 0.792,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/proveedores-y-perfil-cierre.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/provider-verification.test.cjs",
+      "tests/unit/native-local-profile.test.cjs"
+    ],
+    "start": "2026-11-02T04:00:14.286Z",
+    "end": "2026-11-02T04:00:14.661Z",
+    "durationSeconds": 0.375,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  }
+]

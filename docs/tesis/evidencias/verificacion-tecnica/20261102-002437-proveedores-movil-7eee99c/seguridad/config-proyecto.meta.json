@@ -1,0 +1,18 @@
+{
+  "command": [
+    "vercel",
+    "api",
+    "/v9/projects/riovoley",
+    "-X",
+    "GET",
+    "--scope",
+    "joscoos-projects",
+    "--global-config",
+    "<configuracion-privada>",
+    "--non-interactive"
+  ],
+  "startedAt": "2026-11-02T03:56:57.891Z",
+  "finishedAt": "2026-11-02T03:57:04.777Z",
+  "exitCode": 0,
+  "rawOutputSaved": false
+}

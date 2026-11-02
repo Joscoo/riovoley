@@ -89,6 +89,11 @@ jobs:
           tests/unit/supabase-config-summary.test.cjs
           tests/unit/scheduler-secret.test.cjs
           tests/unit/android-offline-state.test.cjs
+      - name: Provider request and local Android build guards (17 synthetic cases; no external calls)
+        run: >-
+          node --test --test-reporter=tap
+          tests/unit/provider-verification.test.cjs
+          tests/unit/native-local-profile.test.cjs
       - name: Toolchain and production guards (explicit files; no database suite)
         run: >-
           node --test --test-concurrency=1

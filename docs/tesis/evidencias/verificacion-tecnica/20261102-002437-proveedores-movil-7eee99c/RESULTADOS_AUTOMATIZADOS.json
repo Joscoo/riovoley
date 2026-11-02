@@ -1,0 +1,83 @@
+{
+  "generatedAt": "2026-11-02T04:07:18.612Z",
+  "baseCommit": "7eee99c36e4125570351d7ffaec97f0cc8cd265c",
+  "currentPhase": {
+    "node": {
+      "tests": 17,
+      "pass": 17,
+      "fail": 0,
+      "skipped": 0
+    },
+    "providerGuardCases": 14,
+    "nativeProfileCases": 3,
+    "realProviderRequests": 0,
+    "providerState": "BLOQUEADO",
+    "web": {
+      "exitCode": 0,
+      "seconds": 207.463,
+      "files": 65
+    },
+    "capacitor": {
+      "exitCode": 0,
+      "seconds": 9.84
+    },
+    "gradle": {
+      "exitCode": 0,
+      "seconds": 340.998
+    },
+    "junit": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        "addition_isCorrect"
+      ]
+    },
+    "apkSha256": "5f059b7387cc096326cdb3936eaceca535acd4a53d6af2f63cdb18a2ab18cb9d",
+    "apkBytes": 31076228,
+    "apkInstalled": false,
+    "playwrightExecuted": false,
+    "productJestRepeated": false
+  },
+  "auditReferences": {
+    "jestCases": 419,
+    "jestSuites": 88,
+    "lineCoveragePct": 42.96,
+    "playwrightUniqueFinal": 249,
+    "androidLocalWebViewCases": 13,
+    "originalDocumentsDelivered": 3,
+    "originalDocumentsRequested": 3
+  },
+  "cloud": {
+    "productionCommit": "e469db5608fb77071b6a9ee3db253c28dae734dd",
+    "productionState": "READY",
+    "requiredFrontendNames": 4,
+    "requiredSupabaseCustomNames": 6,
+    "rls": [
+      {
+        "enabled": true,
+        "forced": false,
+        "policies": 1,
+        "table_name": "login_rewards"
+      },
+      {
+        "enabled": true,
+        "forced": false,
+        "policies": 1,
+        "table_name": "xp_ledger"
+      }
+    ],
+    "dailyRewardRpcPresent": false
+  },
+  "repository": {
+    "scannedTextFiles": 9650,
+    "knownMatches": 0,
+    "privateKeyPatterns": 0,
+    "localEnvPreserved": true,
+    "clientBundledPiiDesign": true
+  },
+  "credentialValidationStoppedByUser": true,
+  "productionMutations": false,
+  "productionReady": false
+}
