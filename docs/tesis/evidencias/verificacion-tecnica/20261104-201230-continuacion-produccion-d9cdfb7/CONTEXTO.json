@@ -1,0 +1,7 @@
+{
+  "startedAt": "2026-11-04T20:12:30.124Z",
+  "baseCommit": "d9cdfb7a91ff5971e138ac4abd751dd76d7a080a",
+  "scope": "Retomar Android y comprobar deriva del paquete SQL/Edge mediante lecturas; sin claves nuevas, mutaciones institucionales ni despliegues",
+  "businessWritesAuthorized": false,
+  "credentialValidationExcluded": true
+}

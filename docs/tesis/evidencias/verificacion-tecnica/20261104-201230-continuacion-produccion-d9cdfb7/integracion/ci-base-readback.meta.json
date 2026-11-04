@@ -1,0 +1,15 @@
+{
+  "command": [
+    "gh",
+    "run",
+    "view",
+    "41386966532",
+    "--repo",
+    "Joscoo/riovoley",
+    "--json",
+    "headSha,status,conclusion,url"
+  ],
+  "startedAt": "2026-11-04T20:18:57.459Z",
+  "finishedAt": "2026-11-04T20:18:58.348Z",
+  "exitCode": 0
+}

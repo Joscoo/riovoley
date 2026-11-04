@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/inspect-cloud-config-names.cjs"
+  ],
+  "start": "2026-11-04T20:13:12.690Z",
+  "end": "2026-11-04T20:13:29.067Z",
+  "durationSeconds": 16.377,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

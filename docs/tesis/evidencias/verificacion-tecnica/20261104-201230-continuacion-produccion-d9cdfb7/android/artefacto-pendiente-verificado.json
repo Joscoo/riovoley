@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-11-04T20:17:55.391Z",
+  "reference": "../20261102-002437-proveedores-movil-7eee99c/android/apk-local-compilado.json",
+  "sha256": "5f059b7387cc096326cdb3936eaceca535acd4a53d6af2f63cdb18a2ab18cb9d",
+  "bytes": 31076228,
+  "artifactStillExists": true,
+  "hashMatchesPriorBuild": true,
+  "privateArtifactReference": ".e2e-local/native-local/20261102003057/project/android/app/build/outputs/apk/debug/app-debug.apk",
+  "installedThisPhase": false,
+  "runtimeCasesExecuted": 0,
+  "buildRepeated": false,
+  "credentialsNeededFromOperator": false
+}

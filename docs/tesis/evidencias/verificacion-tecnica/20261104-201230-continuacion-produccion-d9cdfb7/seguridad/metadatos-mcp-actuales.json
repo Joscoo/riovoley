@@ -1,0 +1,433 @@
+{
+  "checkedAt": "2026-11-04T20:13:48.566Z",
+  "project": {
+    "name": "Riovoley APP",
+    "status": "ACTIVE_HEALTHY",
+    "region": "us-east-1",
+    "databaseVersion": "17.4.1.064"
+  },
+  "fingerprint": "15b9d9e869fb5113263c485714009878",
+  "catalog": {
+    "rls": [
+      {
+        "table_name": "login_rewards",
+        "enabled": true,
+        "forced": false,
+        "policies": 1
+      },
+      {
+        "table_name": "xp_ledger",
+        "enabled": true,
+        "forced": false,
+        "policies": 1
+      }
+    ],
+    "dailyRewardRpcPresent": false,
+    "duplicate_student_user_groups": 0,
+    "duplicate_daily_login_groups": 0,
+    "daily_login_null_refs": 0,
+    "noncanonical_roles": 0,
+    "postgresSuperuser": false
+  },
+  "advisory": [
+    {
+      "name": "function_search_path_mutable",
+      "level": "WARN",
+      "count": 19,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0011_function_search_path_mutable",
+      "functions": [
+        {
+          "schema": "public",
+          "name": "soft_delete_payment"
+        },
+        {
+          "schema": "public",
+          "name": "restore_payment"
+        },
+        {
+          "schema": "public",
+          "name": "audit_payments"
+        },
+        {
+          "schema": "public",
+          "name": "soft_delete_payment"
+        },
+        {
+          "schema": "public",
+          "name": "restore_payment"
+        },
+        {
+          "schema": "public",
+          "name": "admin_insert_user"
+        },
+        {
+          "schema": "public",
+          "name": "update_announcements_updated_at"
+        },
+        {
+          "schema": "public",
+          "name": "touch_mobile_device_registration_updated_at"
+        },
+        {
+          "schema": "profiles",
+          "name": "touch_mobile_device_registration_updated_at"
+        },
+        {
+          "schema": "public",
+          "name": "get_user_role"
+        },
+        {
+          "schema": "public",
+          "name": "policy_exists"
+        },
+        {
+          "schema": "reporting",
+          "name": "touch_scheduler_config_updated_at"
+        },
+        {
+          "schema": "profiles",
+          "name": "touch_user_notification_preferences_updated_at"
+        },
+        {
+          "schema": "reporting",
+          "name": "set_updated_at"
+        },
+        {
+          "schema": "training",
+          "name": "touch_training_categories_updated_at"
+        },
+        {
+          "schema": "public",
+          "name": "calculate_membership_payment_period"
+        },
+        {
+          "schema": "public",
+          "name": "calculate_payment_state"
+        },
+        {
+          "schema": "gamification",
+          "name": "skip_duplicate_daily_login_xp_ledger"
+        },
+        {
+          "schema": "public",
+          "name": "touch_user_notification_inbox_state_updated_at"
+        }
+      ]
+    },
+    {
+      "name": "extension_in_public",
+      "level": "WARN",
+      "count": 1,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0014_extension_in_public",
+      "functions": [
+        {
+          "schema": "public",
+          "name": "pg_net"
+        }
+      ]
+    },
+    {
+      "name": "anon_security_definer_function_executable",
+      "level": "WARN",
+      "count": 17,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable",
+      "functions": [
+        {
+          "schema": "public",
+          "name": "admin_insert_user",
+          "arguments": "p_id uuid, p_email text, p_role text, p_nombre text, p_apellido text, p_fecha_nacimiento date, p_telefono text"
+        },
+        {
+          "schema": "public",
+          "name": "apply_payment_membership_rules",
+          "arguments": ""
+        },
+        {
+          "schema": "public",
+          "name": "audit_payments",
+          "arguments": ""
+        },
+        {
+          "schema": "public",
+          "name": "calculate_age",
+          "arguments": "birthdate date"
+        },
+        {
+          "schema": "public",
+          "name": "check_login_allowed",
+          "arguments": "p_email text"
+        },
+        {
+          "schema": "public",
+          "name": "get_user_role",
+          "arguments": ""
+        },
+        {
+          "schema": "public",
+          "name": "handle_new_user",
+          "arguments": ""
+        },
+        {
+          "schema": "public",
+          "name": "is_admin",
+          "arguments": ""
+        },
+        {
+          "schema": "public",
+          "name": "is_admin_or_trainer",
+          "arguments": ""
+        },
+        {
+          "schema": "public",
+          "name": "record_login_attempt",
+          "arguments": "p_email text, p_success boolean, p_error_code text"
+        },
+        {
+          "schema": "public",
+          "name": "restore_payment",
+          "arguments": "payment_id bigint"
+        },
+        {
+          "schema": "public",
+          "name": "restore_payment",
+          "arguments": "payment_id uuid"
+        },
+        {
+          "schema": "public",
+          "name": "soft_delete_payment",
+          "arguments": "payment_id bigint"
+        },
+        {
+          "schema": "public",
+          "name": "soft_delete_payment",
+          "arguments": "payment_id uuid"
+        },
+        {
+          "schema": "public",
+          "name": "sync_first_login_on_password_change",
+          "arguments": ""
+        },
+        {
+          "schema": "public",
+          "name": "sync_last_login_from_auth",
+          "arguments": ""
+        },
+        {
+          "schema": "public",
+          "name": "sync_user_profile_on_user_update",
+          "arguments": ""
+        }
+      ]
+    },
+    {
+      "name": "authenticated_security_definer_function_executable",
+      "level": "WARN",
+      "count": 19,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable",
+      "functions": [
+        {
+          "schema": "public",
+          "name": "admin_insert_user",
+          "arguments": "p_id uuid, p_email text, p_role text, p_nombre text, p_apellido text, p_fecha_nacimiento date, p_telefono text"
+        },
+        {
+          "schema": "public",
+          "name": "apply_payment_membership_rules",
+          "arguments": ""
+        },
+        {
+          "schema": "public",
+          "name": "audit_payments",
+          "arguments": ""
+        },
+        {
+          "schema": "public",
+          "name": "calculate_age",
+          "arguments": "birthdate date"
+        },
+        {
+          "schema": "public",
+          "name": "check_login_allowed",
+          "arguments": "p_email text"
+        },
+        {
+          "schema": "public",
+          "name": "equip_gamification_item",
+          "arguments": "p_student_id uuid, p_item_slug text"
+        },
+        {
+          "schema": "public",
+          "name": "handle_new_user",
+          "arguments": ""
+        },
+        {
+          "schema": "public",
+          "name": "is_admin",
+          "arguments": ""
+        },
+        {
+          "schema": "public",
+          "name": "is_admin_or_trainer",
+          "arguments": ""
+        },
+        {
+          "schema": "public",
+          "name": "purchase_gamification_item",
+          "arguments": "p_student_id uuid, p_item_slug text"
+        },
+        {
+          "schema": "public",
+          "name": "record_login_attempt",
+          "arguments": "p_email text, p_success boolean, p_error_code text"
+        },
+        {
+          "schema": "public",
+          "name": "restore_payment",
+          "arguments": "payment_id bigint"
+        },
+        {
+          "schema": "public",
+          "name": "restore_payment",
+          "arguments": "payment_id uuid"
+        },
+        {
+          "schema": "public",
+          "name": "soft_delete_payment",
+          "arguments": "payment_id bigint"
+        },
+        {
+          "schema": "public",
+          "name": "soft_delete_payment",
+          "arguments": "payment_id uuid"
+        },
+        {
+          "schema": "public",
+          "name": "sync_first_login_on_password_change",
+          "arguments": ""
+        },
+        {
+          "schema": "public",
+          "name": "sync_last_login_from_auth",
+          "arguments": ""
+        },
+        {
+          "schema": "public",
+          "name": "sync_user_profile_on_user_update",
+          "arguments": ""
+        },
+        {
+          "schema": "public",
+          "name": "unequip_gamification_item",
+          "arguments": "p_student_id uuid, p_category text"
+        }
+      ]
+    },
+    {
+      "name": "auth_leaked_password_protection",
+      "level": "WARN",
+      "count": 1,
+      "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection",
+      "functions": []
+    },
+    {
+      "name": "vulnerable_postgres_version",
+      "level": "WARN",
+      "count": 1,
+      "remediation": "https://supabase.com/docs/guides/platform/upgrading",
+      "functions": []
+    }
+  ],
+  "edge": [
+    {
+      "slug": "send-email",
+      "name": "send-email",
+      "id": "fd624273-a00a-412e-96c7-2d913a7264cd",
+      "version": 20,
+      "status": "ACTIVE",
+      "verify_jwt": true,
+      "entrypoint_path": "file:///tmp/user_fn_mayvvlkvheagkojunzzb_fd624273-a00a-412e-96c7-2d913a7264cd_19/source/supabase/functions/send-email/index.ts",
+      "updated_at": 1792709521610
+    },
+    {
+      "slug": "update-user-password",
+      "name": "update-user-password",
+      "id": "4882f25f-46bd-4348-807b-179ff8a89793",
+      "version": 21,
+      "status": "ACTIVE",
+      "verify_jwt": true,
+      "entrypoint_path": "file:///tmp/user_fn_mayvvlkvheagkojunzzb_4882f25f-46bd-4348-807b-179ff8a89793_20/source/supabase/functions/update-user-password/index.ts",
+      "updated_at": 1792709511776
+    },
+    {
+      "slug": "delete-auth-user",
+      "name": "delete-auth-user",
+      "id": "b78ebc75-8884-4413-a4ed-18fda34220e5",
+      "version": 6,
+      "status": "ACTIVE",
+      "verify_jwt": true,
+      "entrypoint_path": "file:///tmp/user_fn_mayvvlkvheagkojunzzb_b78ebc75-8884-4413-a4ed-18fda34220e5_1/source/supabase/functions/delete-auth-user/index.ts",
+      "updated_at": 1776705574578
+    },
+    {
+      "slug": "generate-report",
+      "name": "generate-report",
+      "id": "376c50c9-3e9e-4125-993a-3212c79b242c",
+      "version": 11,
+      "status": "ACTIVE",
+      "verify_jwt": true,
+      "entrypoint_path": "file:///tmp/user_fn_mayvvlkvheagkojunzzb_376c50c9-3e9e-4125-993a-3212c79b242c_6/source/supabase/functions/generate-report/index.ts",
+      "updated_at": 1779384011648
+    },
+    {
+      "slug": "generate-scheduled-reports",
+      "name": "generate-scheduled-reports",
+      "id": "22209b1e-f44c-4eca-b15d-329562c8c5dd",
+      "version": 11,
+      "status": "ACTIVE",
+      "verify_jwt": true,
+      "entrypoint_path": "file:///tmp/user_fn_mayvvlkvheagkojunzzb_22209b1e-f44c-4eca-b15d-329562c8c5dd_6/source/supabase/functions/generate-scheduled-reports/index.ts",
+      "updated_at": 1779384023711
+    },
+    {
+      "slug": "delete-report-run",
+      "name": "delete-report-run",
+      "id": "68840dff-1b8f-4cae-960a-d5dd3d965023",
+      "version": 7,
+      "status": "ACTIVE",
+      "verify_jwt": true,
+      "entrypoint_path": "file:///tmp/user_fn_mayvvlkvheagkojunzzb_68840dff-1b8f-4cae-960a-d5dd3d965023_2/source/supabase/functions/delete-report-run/index.ts",
+      "updated_at": 1779384017886
+    },
+    {
+      "slug": "sync-mobile-device",
+      "name": "sync-mobile-device",
+      "id": "b0c1ab05-24f1-46de-b6b4-99236e27057b",
+      "version": 9,
+      "status": "ACTIVE",
+      "verify_jwt": true,
+      "entrypoint_path": "file:///tmp/user_fn_mayvvlkvheagkojunzzb_b0c1ab05-24f1-46de-b6b4-99236e27057b_8/source/index.ts",
+      "updated_at": 1781275274580
+    },
+    {
+      "slug": "send-push",
+      "name": "send-push",
+      "id": "1ff69402-2756-4374-9858-06f762aa2ace",
+      "version": 15,
+      "status": "ACTIVE",
+      "verify_jwt": true,
+      "entrypoint_path": "file:///tmp/user_fn_mayvvlkvheagkojunzzb_1ff69402-2756-4374-9858-06f762aa2ace_14/source/index.ts",
+      "updated_at": 1781278749836
+    },
+    {
+      "slug": "send-payment-reminders",
+      "name": "send-payment-reminders",
+      "id": "47d3ec1c-af80-432f-a271-447cf0b053f8",
+      "version": 10,
+      "status": "ACTIVE",
+      "verify_jwt": true,
+      "entrypoint_path": "file:///tmp/user_fn_mayvvlkvheagkojunzzb_47d3ec1c-af80-432f-a271-447cf0b053f8_9/source/index.ts",
+      "updated_at": 1781278752664
+    }
+  ],
+  "productionChanged": false
+}

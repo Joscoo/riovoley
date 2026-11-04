@@ -1,0 +1,84 @@
+{
+  "observedAt": "2026-11-04T20:16:43.502Z",
+  "method": "GET HTTPS, solo HTML público; sin ejecutar JS, sesiones, credenciales o escrituras de negocio",
+  "targetConfirmedByUser": true,
+  "observations": [
+    {
+      "path": "/",
+      "finalOrigin": "https://riovoley.com",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "strict-transport-security": "max-age=63072000",
+        "content-security-policy": null,
+        "x-content-type-options": null,
+        "referrer-policy": null,
+        "x-frame-options": null,
+        "permissions-policy": null
+      },
+      "bodySha256": "dd3d08b0d721cc85faf105325ad0c3a84e708ad6d65a264bfa50c3d3ab9c8ca1",
+      "hasRootElement": true,
+      "mainScript": "/static/js/main.bf1d3ccb.js"
+    },
+    {
+      "path": "/login",
+      "finalOrigin": "https://riovoley.com",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "s-maxage=0",
+        "strict-transport-security": "max-age=63072000",
+        "content-security-policy": null,
+        "x-content-type-options": null,
+        "referrer-policy": null,
+        "x-frame-options": null,
+        "permissions-policy": null
+      },
+      "bodySha256": "dd3d08b0d721cc85faf105325ad0c3a84e708ad6d65a264bfa50c3d3ab9c8ca1",
+      "hasRootElement": true,
+      "mainScript": "/static/js/main.bf1d3ccb.js"
+    },
+    {
+      "path": "/sobre",
+      "finalOrigin": "https://riovoley.com",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "s-maxage=0",
+        "strict-transport-security": "max-age=63072000",
+        "content-security-policy": null,
+        "x-content-type-options": null,
+        "referrer-policy": null,
+        "x-frame-options": null,
+        "permissions-policy": null
+      },
+      "bodySha256": "dd3d08b0d721cc85faf105325ad0c3a84e708ad6d65a264bfa50c3d3ab9c8ca1",
+      "hasRootElement": true,
+      "mainScript": "/static/js/main.bf1d3ccb.js"
+    },
+    {
+      "path": "/horarios",
+      "finalOrigin": "https://riovoley.com",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "s-maxage=0",
+        "strict-transport-security": "max-age=63072000",
+        "content-security-policy": null,
+        "x-content-type-options": null,
+        "referrer-policy": null,
+        "x-frame-options": null,
+        "permissions-policy": null
+      },
+      "bodySha256": "dd3d08b0d721cc85faf105325ad0c3a84e708ad6d65a264bfa50c3d3ab9c8ca1",
+      "hasRootElement": true,
+      "mainScript": "/static/js/main.bf1d3ccb.js"
+    }
+  ],
+  "scope": "Disponibilidad de rutas y cabeceras; no prueba login, roles, persistencia, correo ni push."
+}

@@ -1,0 +1,39 @@
+{
+  "checkedAt": "2026-11-04T20:16:45.905Z",
+  "sourceBaseCommit": "d9cdfb7a91ff5971e138ac4abd751dd76d7a080a",
+  "files": [
+    {
+      "file": "database/security/production-proposal/20261031211612_riovoley_security_production_proposal.sql",
+      "sha256": "c61f457792f684d22dd3c8ffafcd1b4280dfefafdd66da382943f44347322fb6"
+    },
+    {
+      "file": "database/security/production-proposal/20261031211612_riovoley_security_return_proposal.sql",
+      "sha256": "c27856e19b750e9f430c57cbb736fff3138bc23197564a7816c367664ff928b3"
+    },
+    {
+      "file": "database/security/production-proposal/20261101013935_reporting_service_grants_proposal.sql",
+      "sha256": "4c6c9fb9771751b1e0f15920faab664a9400c8f8b39b7288db97e7fdf0ad0d0d"
+    },
+    {
+      "file": "database/security/production-proposal/20261101013935_reporting_service_return_proposal.sql",
+      "sha256": "5c0904bdd90d93a8d8def5ef780aef5a0a1a44570ab9ed54db78213e599bf333"
+    }
+  ],
+  "sequence": [
+    "SQL principal de avance",
+    "SQL complemento reportes de avance",
+    "Edge/clientes coordinados despues de aprobacion"
+  ],
+  "returnSequence": [
+    "Retorno de clientes/Edge coordinado con ventana cerrada",
+    "SQL retorno complemento reportes",
+    "SQL retorno principal"
+  ],
+  "businessRowsChanged": false,
+  "productionSqlApplied": false,
+  "approvalRequiredBy": "Restriccion expresa del encargo inicial: no ejecutar cambios de esquema, politicas o permisos sin autorizacion expresa; marcadores SQL no sustituyen autorizacion.",
+  "windowApproved": false,
+  "responsibleOperatorDefined": false,
+  "freshBackupForWindowNotVerified": true,
+  "providerValidationExcluded": true
+}

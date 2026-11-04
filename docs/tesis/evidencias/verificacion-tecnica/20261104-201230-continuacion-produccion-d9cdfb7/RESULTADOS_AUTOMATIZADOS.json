@@ -1,0 +1,91 @@
+{
+  "generatedAt": "2026-11-04T20:24:05.230Z",
+  "baseCommit": "d9cdfb7a91ff5971e138ac4abd751dd76d7a080a",
+  "sqlFingerprintMatches": true,
+  "sqlFilesMatching": 4,
+  "edgeBundlesMatching": 9,
+  "edgeAdministrativeRevisionsChanged": 9,
+  "advisories": [
+    {
+      "name": "function_search_path_mutable",
+      "count": 19
+    },
+    {
+      "name": "extension_in_public",
+      "count": 1
+    },
+    {
+      "name": "anon_security_definer_function_executable",
+      "count": 17
+    },
+    {
+      "name": "authenticated_security_definer_function_executable",
+      "count": 19
+    },
+    {
+      "name": "auth_leaked_password_protection",
+      "count": 1
+    },
+    {
+      "name": "vulnerable_postgres_version",
+      "count": 1
+    }
+  ],
+  "npmAudits": [
+    {
+      "tree": "raiz",
+      "exitCode": 0,
+      "dependencies": 1439,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      }
+    },
+    {
+      "tree": "functions",
+      "exitCode": 0,
+      "dependencies": 330,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      }
+    },
+    {
+      "tree": "auxiliar",
+      "exitCode": 0,
+      "dependencies": 101,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      }
+    }
+  ],
+  "publicGetRequests": 4,
+  "publicHttp200": 4,
+  "android": {
+    "state": "BLOQUEADO_PRECONDICIONES",
+    "newRuntimeCasesExecuted": 0,
+    "apkHashMatchesPriorBuild": true,
+    "memoryFreeMiB": 1597,
+    "dockerAvailable": false,
+    "newBuild": false
+  },
+  "newJestRun": false,
+  "newPlaywrightRun": false,
+  "newSqlIntegrationRun": false,
+  "productionChanged": false,
+  "credentialValidationExcluded": true,
+  "productionReady": false
+}

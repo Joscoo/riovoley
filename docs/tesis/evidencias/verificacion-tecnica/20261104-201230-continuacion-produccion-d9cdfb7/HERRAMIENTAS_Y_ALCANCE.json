@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-11-04T20:17:54.416Z",
+  "node": "v24.18.0",
+  "npm": "11.16.0",
+  "os": "win32",
+  "architecture": "x64",
+  "windowsBuild": "10.0.26300",
+  "configurationFiles": [
+    "package.json",
+    "package-lock.json",
+    "vercel.json",
+    "capacitor.config.json",
+    "android/gradle/wrapper/gradle-wrapper.properties"
+  ],
+  "credentialsRequested": false,
+  "credentialValuesPrinted": false,
+  "productionChanged": false,
+  "mcpSupabaseAvailable": true,
+  "mcpVercelAvailable": false,
+  "mcpVercelError": "LINK_ID_REQUIRED",
+  "vercelFallback": "CLI autenticada; consultas GET de metadatos; no descifrado de valores"
+}

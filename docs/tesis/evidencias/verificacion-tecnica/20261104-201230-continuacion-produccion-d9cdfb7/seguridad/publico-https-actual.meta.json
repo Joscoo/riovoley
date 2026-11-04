@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/read-public-deployment.cjs"
+  ],
+  "start": "2026-11-04T20:16:37.711Z",
+  "end": "2026-11-04T20:16:43.629Z",
+  "durationSeconds": 5.918,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

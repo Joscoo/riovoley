@@ -1,0 +1,95 @@
+{
+  "checkedAt": "2026-11-04T20:18:37.212Z",
+  "headers": [
+    {
+      "name": "X-Content-Type-Options",
+      "candidateValue": "nosniff",
+      "productionValues": [
+        {
+          "path": "/",
+          "value": null
+        },
+        {
+          "path": "/login",
+          "value": null
+        },
+        {
+          "path": "/sobre",
+          "value": null
+        },
+        {
+          "path": "/horarios",
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "X-Frame-Options",
+      "candidateValue": "SAMEORIGIN",
+      "productionValues": [
+        {
+          "path": "/",
+          "value": null
+        },
+        {
+          "path": "/login",
+          "value": null
+        },
+        {
+          "path": "/sobre",
+          "value": null
+        },
+        {
+          "path": "/horarios",
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "Referrer-Policy",
+      "candidateValue": "strict-origin-when-cross-origin",
+      "productionValues": [
+        {
+          "path": "/",
+          "value": null
+        },
+        {
+          "path": "/login",
+          "value": null
+        },
+        {
+          "path": "/sobre",
+          "value": null
+        },
+        {
+          "path": "/horarios",
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "Content-Security-Policy",
+      "candidateValue": null,
+      "productionValues": [
+        {
+          "path": "/",
+          "value": null
+        },
+        {
+          "path": "/login",
+          "value": null
+        },
+        {
+          "path": "/sobre",
+          "value": null
+        },
+        {
+          "path": "/horarios",
+          "value": null
+        }
+      ]
+    }
+  ],
+  "configurationChanged": false,
+  "scope": "CSP no esta configurada en el candidato ni observada en produccion; otras cabeceras preparadas solo en la rama no estan publicadas."
+}

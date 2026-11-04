@@ -1,0 +1,99 @@
+{
+  "checkedAt": "2026-11-04T20:15:41.870Z",
+  "functions": [
+    {
+      "slug": "send-email",
+      "version": 20,
+      "sha256": "9c097c7f94aac8f2399560ebfd184f8f017c082650375ed777a3f05fc46fe909",
+      "verifyJwt": true,
+      "previousVersion": 19,
+      "previousSha256": "9c097c7f94aac8f2399560ebfd184f8f017c082650375ed777a3f05fc46fe909",
+      "bundleHashMatches": true,
+      "revisionChanged": true
+    },
+    {
+      "slug": "update-user-password",
+      "version": 21,
+      "sha256": "34eedb50281c26d6aec8ef04d7556d3136cb909a2f9eb3f86f773415c1d64649",
+      "verifyJwt": true,
+      "previousVersion": 20,
+      "previousSha256": "34eedb50281c26d6aec8ef04d7556d3136cb909a2f9eb3f86f773415c1d64649",
+      "bundleHashMatches": true,
+      "revisionChanged": true
+    },
+    {
+      "slug": "delete-auth-user",
+      "version": 6,
+      "sha256": "a48f507f4b7ae1ccda5ac36ec939ed9dcdf047eaf5174697449fd5a1aedacc49",
+      "verifyJwt": true,
+      "previousVersion": 5,
+      "previousSha256": "a48f507f4b7ae1ccda5ac36ec939ed9dcdf047eaf5174697449fd5a1aedacc49",
+      "bundleHashMatches": true,
+      "revisionChanged": true
+    },
+    {
+      "slug": "generate-report",
+      "version": 11,
+      "sha256": "9aae62ae304649cd52f9be8aa62d9bffd9b2c42046d7da014fca8ea371dd4a9d",
+      "verifyJwt": true,
+      "previousVersion": 10,
+      "previousSha256": "9aae62ae304649cd52f9be8aa62d9bffd9b2c42046d7da014fca8ea371dd4a9d",
+      "bundleHashMatches": true,
+      "revisionChanged": true
+    },
+    {
+      "slug": "generate-scheduled-reports",
+      "version": 11,
+      "sha256": "b640a0903625eb195d26cbc6043940340615b1aa5a56414ff4c1bc1726d6f480",
+      "verifyJwt": true,
+      "previousVersion": 10,
+      "previousSha256": "b640a0903625eb195d26cbc6043940340615b1aa5a56414ff4c1bc1726d6f480",
+      "bundleHashMatches": true,
+      "revisionChanged": true
+    },
+    {
+      "slug": "delete-report-run",
+      "version": 7,
+      "sha256": "d30e4a2b5c8f3ba2cda9a15345289129ae2b94ab4432f1fe4c36c93ac87cfe40",
+      "verifyJwt": true,
+      "previousVersion": 6,
+      "previousSha256": "d30e4a2b5c8f3ba2cda9a15345289129ae2b94ab4432f1fe4c36c93ac87cfe40",
+      "bundleHashMatches": true,
+      "revisionChanged": true
+    },
+    {
+      "slug": "sync-mobile-device",
+      "version": 9,
+      "sha256": "39b175f5e2762166ae0a18c4324025c09b496302f27c86e412bc5f0d1f7cd536",
+      "verifyJwt": true,
+      "previousVersion": 8,
+      "previousSha256": "39b175f5e2762166ae0a18c4324025c09b496302f27c86e412bc5f0d1f7cd536",
+      "bundleHashMatches": true,
+      "revisionChanged": true
+    },
+    {
+      "slug": "send-push",
+      "version": 15,
+      "sha256": "4352841040d00df16572b8c0d20a22c2564f81d266760e306da2e53c16b51fbd",
+      "verifyJwt": true,
+      "previousVersion": 14,
+      "previousSha256": "4352841040d00df16572b8c0d20a22c2564f81d266760e306da2e53c16b51fbd",
+      "bundleHashMatches": true,
+      "revisionChanged": true
+    },
+    {
+      "slug": "send-payment-reminders",
+      "version": 10,
+      "sha256": "6f899b18d9ab91b767e08e9ee58dd0506359a6c8a45287160825e9283c8b8605",
+      "verifyJwt": true,
+      "previousVersion": 9,
+      "previousSha256": "6f899b18d9ab91b767e08e9ee58dd0506359a6c8a45287160825e9283c8b8605",
+      "bundleHashMatches": true,
+      "revisionChanged": true
+    }
+  ],
+  "allCloudBundleHashesMatch": true,
+  "allRevisionNumbersChanged": true,
+  "returnedSourcePacketStillMatchesObservedBundleHashes": true,
+  "scope": "Versiones administrativas distintas y hashes de bundle identicos al inventario anterior; no atribuir cambio de codigo por numero de revision ni inferir validez de configuracion."
+}
