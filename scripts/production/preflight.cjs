@@ -12,6 +12,7 @@ const publicNames = new Set([
   'REACT_APP_CLUB_ADMIN_PHONE', 'REACT_APP_CLUB_COACH_PHONE', 'REACT_APP_CLUB_EMERGENCY_PHONE',
   'REACT_APP_CAPGO_DEFAULT_CHANNEL', 'REACT_APP_VERSION',
   'REACT_APP_ENABLE_SQL_AUDIT', 'REACT_APP_ENABLE_WEB_VITALS_LOG',
+  'REACT_APP_ENABLE_OTA_DIAGNOSTICS',
 ]);
 
 function present(value) {
@@ -83,6 +84,9 @@ function assess(env, profile = 'frontend') {
     required('REACT_APP_PII_ENCRYPTION_KEY', v => nonTemplate(v));
     for (const name of ['REACT_APP_ENABLE_SQL_AUDIT', 'REACT_APP_ENABLE_WEB_VITALS_LOG']) {
       if (present(env[name])) add(name, env[name] === 'false', 'DISABLE_PRODUCTION_DEBUG_LOGGING');
+    }
+    if (present(env.REACT_APP_ENABLE_OTA_DIAGNOSTICS)) {
+      add('REACT_APP_ENABLE_OTA_DIAGNOSTICS', env.REACT_APP_ENABLE_OTA_DIAGNOSTICS === 'false', 'DISABLE_PRODUCTION_DIAGNOSTICS');
     }
   }
   if (['backend', 'all'].includes(profile)) {

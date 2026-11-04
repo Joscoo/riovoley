@@ -222,7 +222,7 @@ El dominio confirmado es https://riovoley.com. Se leyeron solo los cuatro valore
 
 `vercel.json` prepara nosniff, Referrer-Policy y SAMEORIGIN, conserva las reglas de caché y ejecuta CRA con CI=true y sin sourcemaps públicos. Las cabeceras no se han publicado ni observado aún en producción. CSP y Permissions-Policy quedan pendientes del inventario/ensayo de proveedores y funciones del dispositivo. La rama de auditoría tiene git.deploymentEnabled=false para evitar despliegues automáticos al subir evidencia; no altera main ni publica un release. Ver [configuración oficial](https://vercel.com/docs/project-configuration/git-configuration).
 
-El CI aparta dotenv únicamente del checkout temporal, instala/audita los árboles auxiliares con Node22 y usa Node24 para React y herramientas. Su ejecución remota sigue pendiente; un ensayo local de npm ci no la sustituye.
+El CI aparta dotenv únicamente del checkout temporal, instala/audita los árboles auxiliares con Node22 y usa Node24 para React y herramientas. La ejecución remota del commit 0d0d488 concluyó correctamente (run 41921731631); cada revisión posterior requiere su propio resultado, y un ensayo local de npm ci no lo sustituye.
 
 Las acciones checkout/setup-node se fijaron a SHA de sus etiquetas v7 observadas mediante git ls-remote. Las referencias oficiales son https://github.com/actions/checkout y https://github.com/actions/setup-node. El análisis YAML comprueba estructura, runtimes y ausencia de comandos de publicación; no acredita una ejecución remota de GitHub Actions.
 
@@ -233,3 +233,9 @@ Las acciones checkout/setup-node se fijaron a SHA de sus etiquetas v7 observadas
 La configuración de proyecto/deployment indica Node22.x; el candidato fija engines.node=24.x. Según la [documentación de Vercel](https://vercel.com/docs/functions/runtimes/node-js/node-js-versions), engines.node sustituye el ajuste del dashboard en nuevos builds. Mantener la versión explícita y comprobar Node/npm efectivos en el siguiente build controlado; la lectura del dashboard no demuestra el runtime de un build futuro.
 
 La inspección no publica variables ni credenciales. Para reproducir requiere la CLI privada instalada y una autorización propia del operador; no copiar su archivo OAuth. El helper scripts/audit/production/inspect-vercel.cjs está limitado a GET de metadatos y del sitio público. No usar env ls --json para crear evidencias: puede devolver valores legibles.
+
+## 10. Panel de diagnóstico OTA
+
+La portada ordinaria oculta el panel técnico OTA por defecto. La bandera de compilación `REACT_APP_ENABLE_OTA_DIAGNOSTICS=true` lo habilita únicamente en portada y con soporte nativo; usarla solo en compilaciones diagnósticas descartables. Para producción omitirla o fijarla a `false`: el preflight rechaza su activación. No es una autorización por rol y no desactiva el motor OTA.
+
+El [expediente de regresión](../tesis/evidencias/verificacion-tecnica/20261104-223055-ota-diagnostico-0d0d488/INFORME_VERIFICACION_TECNICA.md) identifica el cambio por hashes de fuentes y conserva sus ejecuciones. Los APK anteriores no contienen este cambio; antes de distribuir una nueva versión nativa se debe reconstruir y verificar ese artefacto. Esta preparación no firma, publica ni modifica configuración institucional.

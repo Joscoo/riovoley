@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-11-04T22:48:07.638Z",
+  "baseCommit": "0d0d488ae4651b4609c13abc572733cbd06999e8",
+  "productSourceChanged": [
+    "src/App.js"
+  ],
+  "newProductTests": [
+    "src/App.otaDiagnostics.test.js"
+  ],
+  "backendOrDatabaseChanged": false,
+  "protectedTestsUnchanged": true,
+  "files": [
+    {
+      "file": ".env.example",
+      "sha256": "467e1d419b8d2682b380c44b4fc3a88c2fee08e93b1b098e056100934e39ee30"
+    },
+    {
+      "file": ".github/workflows/technical-readiness.yml",
+      "sha256": "6b30d31e5496334d9c6e43c589b58836954e4160243c57f1acfad4a1413d7bd1"
+    },
+    {
+      "file": "docs/produccion/RUNBOOK.md",
+      "sha256": "b1f34c866439a12f07c72a8ff6d70a532dbf0c1dfe207544285d89862fbae6dc"
+    },
+    {
+      "file": "docs/produccion/VARIABLES.md",
+      "sha256": "a93e6d979c5e21c98b4985dbd3548dad637cb2b59bfcfc5f69e095155cf600bb"
+    },
+    {
+      "file": "scripts/production/preflight.cjs",
+      "sha256": "8f90c266306eeb458a246e70f491e7181ce509da8c57e832414469478ada412b"
+    },
+    {
+      "file": "src/App.js",
+      "sha256": "40c9fc5c6ee18248a32d2578ce47a2cffe60bc22b81ca63bc9961afa82caf15d"
+    },
+    {
+      "file": "docs/superpowers/plans/2026-11-04-ota-diagnostics-production.md",
+      "sha256": "d8fda895c0db4de32c09ca67e3bdb0a027814707f2312048ebf9020c18425952"
+    },
+    {
+      "file": "scripts/audit/production/finalize-ota-diagnostics.cjs",
+      "sha256": "23bff123e4861660fd40a45bbf52785e30599123a6e979f07340a70f4cfb34de"
+    },
+    {
+      "file": "scripts/audit/production/report-ota-diagnostics.cjs",
+      "sha256": "6b71fe401e108bb5007a1745f1f3a24818e31182ab8ff1b7f5bd25dd557f8bdc"
+    },
+    {
+      "file": "scripts/audit/production/verify-ota-web.cjs",
+      "sha256": "e4a8decbb6268e5b9805419a0aa39a3b49fbb80b27a940afe627f363d633098e"
+    },
+    {
+      "file": "src/App.otaDiagnostics.test.js",
+      "sha256": "95f7124639015efede2902bb10bc8c21036250cf358539cd68481c488bc3051b"
+    },
+    {
+      "file": "tests/unit/ota-production-preflight.test.cjs",
+      "sha256": "41e67af51c0d61298524818ac980f3d5c06061c98ecfb6339475c48b86244cf3"
+    }
+  ]
+}

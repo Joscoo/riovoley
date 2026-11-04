@@ -1,0 +1,210 @@
+[
+  {
+    "file": "compilacion-web/build-estricto-ota.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--require",
+      "./scripts/production/cra-release-preload.cjs",
+      "node_modules/react-scripts/scripts/build.js"
+    ],
+    "start": "2026-11-04T22:41:16.839Z",
+    "end": "2026-11-04T22:44:29.256Z",
+    "durationSeconds": 192.417,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/herramientas-locales.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "-e",
+      "const os=require('os'),cp=require('child_process');console.log(JSON.stringify({timestamp:new Date().toISOString(),platform:process.platform,release:os.release(),arch:process.arch,node:process.version,npm:cp.execFileSync('npm.cmd',['--version'],{shell:true,encoding:'utf8'}).trim()},null,2))"
+    ],
+    "start": "2026-11-04T22:42:10.184Z",
+    "end": "2026-11-04T22:42:10.738Z",
+    "durationSeconds": 0.554,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/jest-cierre.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--require",
+      "./scripts/production/cra-release-preload.cjs",
+      "node_modules/react-scripts/bin/react-scripts.js",
+      "test",
+      "--watchAll=false",
+      "--runInBand",
+      "--coverage",
+      "--coverageReporters=json-summary",
+      "--coverageDirectory=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261104-223055-ota-diagnostico-0d0d488\\unitarias\\cobertura-cierre",
+      "--json",
+      "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261104-223055-ota-diagnostico-0d0d488\\unitarias\\jest-cierre.json"
+    ],
+    "start": "2026-11-04T22:37:29.428Z",
+    "end": "2026-11-04T22:38:21.109Z",
+    "durationSeconds": 51.681,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/ota-preflight-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/ota-production-preflight.test.cjs"
+    ],
+    "start": "2026-11-04T22:32:53.807Z",
+    "end": "2026-11-04T22:32:54.355Z",
+    "durationSeconds": 0.548,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/ota-preflight-verde.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/ota-production-preflight.test.cjs"
+    ],
+    "start": "2026-11-04T22:36:16.013Z",
+    "end": "2026-11-04T22:36:16.727Z",
+    "durationSeconds": 0.714,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/ota-ui-rojo-configurado.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--require",
+      "./scripts/production/cra-release-preload.cjs",
+      "node_modules/react-scripts/bin/react-scripts.js",
+      "test",
+      "--watchAll=false",
+      "--runInBand",
+      "--runTestsByPath",
+      "src/App.otaDiagnostics.test.js",
+      "--json",
+      "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261104-223055-ota-diagnostico-0d0d488\\unitarias\\ota-ui-rojo-configurado.json"
+    ],
+    "start": "2026-11-04T22:34:42.815Z",
+    "end": "2026-11-04T22:34:46.012Z",
+    "durationSeconds": 3.197,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/ota-ui-rojo-nativo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--require",
+      "./scripts/production/cra-release-preload.cjs",
+      "node_modules/react-scripts/bin/react-scripts.js",
+      "test",
+      "--watchAll=false",
+      "--runInBand",
+      "--runTestsByPath",
+      "src/App.otaDiagnostics.test.js",
+      "--json",
+      "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261104-223055-ota-diagnostico-0d0d488\\unitarias\\ota-ui-rojo-nativo.json"
+    ],
+    "start": "2026-11-04T22:35:38.423Z",
+    "end": "2026-11-04T22:35:42.412Z",
+    "durationSeconds": 3.989,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/ota-ui-rojo-reproducido.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--require",
+      "./scripts/production/cra-release-preload.cjs",
+      "node_modules/react-scripts/bin/react-scripts.js",
+      "test",
+      "--watchAll=false",
+      "--runInBand",
+      "--runTestsByPath",
+      "src/App.otaDiagnostics.test.js",
+      "--json",
+      "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261104-223055-ota-diagnostico-0d0d488\\unitarias\\ota-ui-rojo-reproducido.json"
+    ],
+    "start": "2026-11-04T22:35:04.197Z",
+    "end": "2026-11-04T22:35:08.250Z",
+    "durationSeconds": 4.053,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/ota-ui-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--require",
+      "./scripts/production/cra-release-preload.cjs",
+      "node_modules/react-scripts/bin/react-scripts.js",
+      "test",
+      "--watchAll=false",
+      "--runInBand",
+      "--runTestsByPath",
+      "src/App.otaDiagnostics.test.js",
+      "--json",
+      "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261104-223055-ota-diagnostico-0d0d488\\unitarias\\ota-ui-rojo.json"
+    ],
+    "start": "2026-11-04T22:32:53.796Z",
+    "end": "2026-11-04T22:34:06.743Z",
+    "durationSeconds": 72.947,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/ota-ui-verde.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--require",
+      "./scripts/production/cra-release-preload.cjs",
+      "node_modules/react-scripts/bin/react-scripts.js",
+      "test",
+      "--watchAll=false",
+      "--runInBand",
+      "--runTestsByPath",
+      "src/App.otaDiagnostics.test.js",
+      "--json",
+      "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261104-223055-ota-diagnostico-0d0d488\\unitarias\\ota-ui-verde.json"
+    ],
+    "start": "2026-11-04T22:36:16.004Z",
+    "end": "2026-11-04T22:36:20.375Z",
+    "durationSeconds": 4.371,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/preflight-regresion-completa.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/production-preflight.test.cjs",
+      "tests/unit/ota-production-preflight.test.cjs"
+    ],
+    "start": "2026-11-04T22:37:39.605Z",
+    "end": "2026-11-04T22:37:43.872Z",
+    "durationSeconds": 4.267,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  }
+]

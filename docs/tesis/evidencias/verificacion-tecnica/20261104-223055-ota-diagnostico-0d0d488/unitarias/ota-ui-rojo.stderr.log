@@ -1,0 +1,33 @@
+FAIL src/App.otaDiagnostics.test.js
+  ● Test suite failed to run
+
+    Cannot find module 'react-router/dom' from 'node_modules/react-router-dom/dist/index.js'
+
+    Require stack:
+      node_modules/react-router-dom/dist/index.js
+      src/App.js
+      src/App.otaDiagnostics.test.js
+
+    [0m [90m 1 |[39m [36mimport[39m [33mReact[39m[33m,[39m { useState[33m,[39m useEffect[33m,[39m [33mSuspense[39m[33m,[39m lazy[33m,[39m useRef[33m,[39m startTransition } [36mfrom[39m [32m'react'[39m[33m;[39m
+    [31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m { [33mBrowserRouter[39m [36mas[39m [33mRouter[39m[33m,[39m [33mRoutes[39m[33m,[39m [33mRoute[39m[33m,[39m useLocation[33m,[39m useNavigate } [36mfrom[39m [32m'react-router-dom'[39m[33m;[39m
+     [90m   |[39m [31m[1m^[22m[39m
+     [90m 3 |[39m
+     [90m 4 |[39m [36mimport[39m [33mNavbar[39m [36mfrom[39m [32m'./components/Navbar'[39m[33m;[39m
+     [90m 5 |[39m [36mimport[39m [33mHomePage[39m [36mfrom[39m [32m'./components/HomePage'[39m[33m;[39m[0m
+
+      at Resolver.resolveModule (node_modules/jest-resolve/build/resolver.js:324:11)
+      at Object.<anonymous> (node_modules/react-router-dom/dist/index.js:38:18)
+      at Object.<anonymous> (src/App.js:2:1)
+      at Object.<anonymous> (src/App.otaDiagnostics.test.js:3:1)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+Test Suites: 1 failed, 1 total
+Tests:       0 total
+Snapshots:   0 total
+Time:        52.42 s
+Ran all test suites within paths "src/App.otaDiagnostics.test.js".
+Test results written to: docs\tesis\evidencias\verificacion-tecnica\20261104-223055-ota-diagnostico-0d0d488\unitarias\ota-ui-rojo.json
+

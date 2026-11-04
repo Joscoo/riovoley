@@ -33,6 +33,7 @@ jobs:
       REACT_APP_CAPGO_DEFAULT_CHANNEL: beta
       REACT_APP_ENABLE_SQL_AUDIT: 'false'
       REACT_APP_ENABLE_WEB_VITALS_LOG: 'false'
+      REACT_APP_ENABLE_OTA_DIAGNOSTICS: 'false'
       GENERATE_SOURCEMAP: 'false'
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -67,7 +68,7 @@ jobs:
           node-version: '24'
       - name: Install locked app dependencies without lifecycle scripts
         run: npm ci --ignore-scripts
-      - name: React unit tests (419-test baseline; no E2E credentials)
+      - name: React unit tests (no E2E credentials)
         run: npm test -- --watchAll=false --runInBand
       - name: Edge authorization and reporting contracts (synthetic clients; no provider credentials)
         run: npm run test:edge-contracts
@@ -96,6 +97,8 @@ jobs:
           tests/unit/native-local-profile.test.cjs
       - name: Android offline route guards (10 synthetic cases; no device or database)
         run: node --test --test-reporter=tap tests/unit/android-offline-routes.test.cjs
+      - name: OTA diagnostics production guards (4 synthetic cases; no providers)
+        run: node --test --test-reporter=tap tests/unit/ota-production-preflight.test.cjs
       - name: Toolchain and production guards (explicit files; no database suite)
         run: >-
           node --test --test-concurrency=1
