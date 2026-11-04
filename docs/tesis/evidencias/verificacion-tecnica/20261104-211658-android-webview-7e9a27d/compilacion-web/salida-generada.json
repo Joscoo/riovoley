@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-11-04T21:17:01.470Z",
+  "relativeOutput": ".e2e-local/native-local/20261102003057/project/build-safe",
+  "files": 65,
+  "allPackagedFilesMatch": true,
+  "commandMetadata": "../android/local-web-build.meta.json",
+  "rawLogsPrivate": true,
+  "warningMentionCounts": {
+    "deprecated": 3,
+    "warning": 2,
+    "flatDir": 0,
+    "missingGoogleServices": 0,
+    "rawLogsPrivate": true
+  },
+  "functionalCoverageImplied": false
+}

@@ -1,0 +1,7 @@
+{
+  "state": "APROBADO",
+  "sha256": "5f059b7387cc096326cdb3936eaceca535acd4a53d6af2f63cdb18a2ab18cb9d",
+  "bytes": 31076228,
+  "checkedAt": "2026-11-04T21:17:01.515Z",
+  "scope": "Hash del APK existente y ZIP/build comparados de nuevo; no compilacion nueva."
+}

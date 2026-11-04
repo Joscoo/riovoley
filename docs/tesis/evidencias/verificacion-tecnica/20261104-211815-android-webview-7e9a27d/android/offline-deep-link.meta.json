@@ -1,0 +1,22 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5582",
+    "shell",
+    "am",
+    "start",
+    "-W",
+    "-a",
+    "android.intent.action.VIEW",
+    "-d",
+    "riovoley://reset-password",
+    "com.riovoley.app"
+  ],
+  "startedAt": "2026-11-04T21:42:17.842Z",
+  "finishedAt": "2026-11-04T21:42:18.211Z",
+  "exitCode": 0,
+  "errorCode": null,
+  "signal": null,
+  "rawOutputSaved": false
+}

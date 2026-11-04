@@ -1,0 +1,331 @@
+{
+  "checkedAt": "2026-11-04T21:31:23.695Z",
+  "bootCompleted": true,
+  "durationSeconds": 166.95,
+  "attempts": [
+    {
+      "at": "2026-11-04T21:28:36.842Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:28:39.454Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:28:42.163Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:28:45.028Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:28:47.604Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:28:50.179Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:28:52.761Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:28:55.343Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:28:57.912Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:00.506Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:03.071Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:05.706Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:08.283Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:10.855Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:13.518Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:16.103Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:18.678Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:21.257Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:23.833Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:26.410Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:28.996Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:31.561Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:34.181Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:36.830Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:39.430Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:42.011Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:44.761Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:47.372Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:49.969Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:52.548Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:55.125Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:29:57.776Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:00.482Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:03.171Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:05.885Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:08.539Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:11.161Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:13.821Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:16.472Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:19.192Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:21.847Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:24.632Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:27.365Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:30.058Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:32.652Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:35.321Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:38.007Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:40.629Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:43.313Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:45.925Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:48.612Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:51.334Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:54.030Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:56.688Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:30:59.393Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:31:02.053Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:31:04.723Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:31:07.541Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:31:10.238Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:31:12.914Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:31:15.573Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:31:18.314Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:31:21.023Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-04T21:31:23.695Z",
+      "exitCode": 0,
+      "completed": true
+    }
+  ],
+  "headless": true,
+  "freshAvd": true,
+  "resumedOwnAuditOnly": false,
+  "proxyForwardsNothing": true
+}

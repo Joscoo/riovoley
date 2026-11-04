@@ -1,0 +1,14 @@
+{
+  "startedAt": "2026-11-04T21:18:15.823Z",
+  "baseCommit": "7e9a27dd2b248a626a4440ece2e7227ba5e47ae5",
+  "apkSourceCommit": null,
+  "productionContacted": false,
+  "businessDataInstitutionalChanged": false,
+  "physicalDeviceUsed": false,
+  "newBuild": false,
+  "emulatorStarted": false,
+  "emulatorStopped": false,
+  "stage": "PREPARING",
+  "scope": "Ejecucion WebView del APK debug existente; AVD nuevo, backend local real y cuentas sinteticas. Sin nuevas claves, compilacion, despliegue o cambios institucionales.",
+  "privateWork": ".e2e-local/native-validation/20261104-211815"
+}

@@ -1,0 +1,16 @@
+{
+  "reviewedAt": "2026-11-04T21:26:08.649Z",
+  "files": [
+    "candidato-actual-admin.png",
+    "candidato-actual-trainer.png",
+    "candidato-actual-student.png"
+  ],
+  "reviewMethod": "Inspeccion visual de las tres capturas con view_image",
+  "institutionalPersonalDataObserved": false,
+  "syntheticLaboratoryOnly": true,
+  "loadingStateObserved": [
+    "candidato-actual-trainer.png",
+    "candidato-actual-student.png"
+  ],
+  "limitation": "Capturas tomadas tras estar visible el shell del panel, sin espera de todos los datos; no demuestra carga estable de cada modulo ni un bloqueo persistente."
+}

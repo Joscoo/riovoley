@@ -94,6 +94,8 @@ jobs:
           node --test --test-reporter=tap
           tests/unit/provider-verification.test.cjs
           tests/unit/native-local-profile.test.cjs
+      - name: Android offline route guards (10 synthetic cases; no device or database)
+        run: node --test --test-reporter=tap tests/unit/android-offline-routes.test.cjs
       - name: Toolchain and production guards (explicit files; no database suite)
         run: >-
           node --test --test-concurrency=1

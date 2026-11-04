@@ -1,0 +1,42 @@
+{
+  "checkedAt": "2026-11-04T21:24:19.508Z",
+  "observations": [
+    {
+      "command": [
+        "adb",
+        "-s",
+        "emulator-5580",
+        "shell",
+        "getprop",
+        "ro.build.version.sdk"
+      ],
+      "exitCode": 1,
+      "result": ""
+    },
+    {
+      "command": [
+        "adb",
+        "-s",
+        "emulator-5580",
+        "shell",
+        "wm",
+        "size"
+      ],
+      "exitCode": 1,
+      "result": ""
+    },
+    {
+      "command": [
+        "adb",
+        "-s",
+        "emulator-5580",
+        "shell",
+        "wm",
+        "density"
+      ],
+      "exitCode": 1,
+      "result": ""
+    }
+  ],
+  "physicalDeviceUsed": false
+}

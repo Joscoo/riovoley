@@ -1,0 +1,12 @@
+{
+  "collectedAt": "2026-11-04T21:45:45.009Z",
+  "activityManagerWaitStatus": "timeout",
+  "nativeIntentWaitStatus": "ok",
+  "appForegroundAfterWait": true,
+  "manualScreenshotsReviewed": true,
+  "scope": "am start -W informo timeout al esperar el primer dibujo; luego se comprobo actividad en primer plano y portada visible. No es una medicion satisfactoria de tiempo de arranque. El intent posterior informo ok.",
+  "otaButtonVisible": true,
+  "otaButtonActioned": false,
+  "additionalOtaBehaviorNotTested": true,
+  "noActualPasswordReset": true
+}

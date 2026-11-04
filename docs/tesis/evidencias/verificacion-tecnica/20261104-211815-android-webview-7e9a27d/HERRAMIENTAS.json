@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-11-04T21:36:34.681Z",
+  "os": "win32",
+  "architecture": "x64",
+  "windowsBuild": "10.0.26300",
+  "node": "v24.18.0",
+  "npm": "11.16.0",
+  "python": "Python 3.11.9",
+  "supabaseCli": "2.122.0\n\nA new version of Supabase CLI is available: v3.0.0 (currently installed v2.122.0)\nWe recommend updating regularly for new features and bug fixes: https://supabase.com/docs/guides/cli/getting-started#updating-the-supabase-cli",
+  "javaVersion": "openjdk version \"21.0.12.1\" 2026-08-18 LTS",
+  "gradleWrapperVersion": "8.14.3",
+  "androidBuildTools": "35.0.0",
+  "versionCommandsSucceeded": true,
+  "environmentValuesOrMachineUserPublished": false
+}

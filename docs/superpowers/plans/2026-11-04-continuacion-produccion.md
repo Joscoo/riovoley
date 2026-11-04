@@ -9,7 +9,7 @@
 - [x] Registrar contexto, herramientas, recursos y disponibilidad del laboratorio. Docker detenido y memoria insuficiente: bloqueo conservado, sin iniciar emulador.
 - [x] Leer catálogo, precondiciones y asesores institucionales; huella coincidente y cuatro hashes SQL intactos. No se sustituyeron huellas.
 - [x] Comprobar Vercel y Edge: producción frontend anterior; nueve revisiones distintas con nueve hashes de bundle idénticos. Tres análisis npm sin avisos y cuatro respuestas públicas HTTP 200.
-- [ ] Si los recursos lo permiten, iniciar el laboratorio existente sin reiniciarlo; crear un AVD nuevo, comprobar aislamiento de red, instalar exclusivamente el APK debug verificado y ejecutar las verificaciones WebView locales. Detener solo el emulador propio.
+- [x] Con el laboratorio existente y más recursos: AVD nuevo, APK debug verificado y 13/13 verificaciones WebView locales aprobadas; emuladores propios detenidos. El release abrió portada y enlace nativo tras conservar los intentos fallidos. Las consultas ampliadas de tablas policy no acreditan aislamiento universal: límites explícitos en el nuevo expediente Android.
 - [x] Documentar resultados y paquete concreto para revisión, con permisos pendientes y límites. No se despliega ni se aplican SQL/permisos.
 - [ ] Verificar privacidad e integridad, sellar y subir los avances a la rama existente.
 
