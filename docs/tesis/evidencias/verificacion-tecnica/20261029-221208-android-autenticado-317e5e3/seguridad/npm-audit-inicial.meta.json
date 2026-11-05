@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\WINDOWS\\system32\\cmd.exe",
+    "/d",
+    "/c",
+    "npm audit --json"
+  ],
+  "start": "2026-10-29T22:12:18.705Z",
+  "end": "2026-10-29T22:12:27.919Z",
+  "durationSeconds": 9.214,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

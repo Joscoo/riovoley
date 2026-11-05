@@ -1,0 +1,209 @@
+TAP version 13
+# Subtest: perfil aislado no autoriza personal cuando no existe usuario canónico
+ok 1 - perfil aislado no autoriza personal cuando no existe usuario canónico
+  ---
+  duration_ms: 133.2239
+  type: 'test'
+  ...
+# Subtest: suspensión canónica bloquea autorización de personal
+ok 2 - suspensión canónica bloquea autorización de personal
+  ---
+  duration_ms: 20.5431
+  type: 'test'
+  ...
+# Subtest: un atleta canónico no obtiene permisos por un perfil alternativo privilegiado
+ok 3 - un atleta canónico no obtiene permisos por un perfil alternativo privilegiado
+  ---
+  duration_ms: 18.8994
+  type: 'test'
+  ...
+# Subtest: personal activo mantiene autorización: administrador
+ok 4 - personal activo mantiene autorización: administrador
+  ---
+  duration_ms: 28.8099
+  type: 'test'
+  ...
+# Subtest: personal activo mantiene autorización: entrenador
+ok 5 - personal activo mantiene autorización: entrenador
+  ---
+  duration_ms: 32.3178
+  type: 'test'
+  ...
+# Subtest: eliminación Auth autoriza el objetivo: entrenador → administrador
+ok 6 - eliminación Auth autoriza el objetivo: entrenador → administrador
+  ---
+  duration_ms: 0.3688
+  type: 'test'
+  ...
+# Subtest: eliminación Auth autoriza el objetivo: administrador → administrador
+ok 7 - eliminación Auth autoriza el objetivo: administrador → administrador
+  ---
+  duration_ms: 0.2066
+  type: 'test'
+  ...
+# Subtest: eliminación Auth autoriza el objetivo: entrenador → entrenador
+ok 8 - eliminación Auth autoriza el objetivo: entrenador → entrenador
+  ---
+  duration_ms: 0.1889
+  type: 'test'
+  ...
+# Subtest: eliminación Auth autoriza el objetivo: administrador → entrenador
+ok 9 - eliminación Auth autoriza el objetivo: administrador → entrenador
+  ---
+  duration_ms: 0.5725
+  type: 'test'
+  ...
+# Subtest: eliminación Auth autoriza el objetivo: entrenador → estudiante
+ok 10 - eliminación Auth autoriza el objetivo: entrenador → estudiante
+  ---
+  duration_ms: 0.3852
+  type: 'test'
+  ...
+# Subtest: rechaza una respuesta 200 del proveedor sin identificador de mensaje
+ok 11 - rechaza una respuesta 200 del proveedor sin identificador de mensaje
+  ---
+  duration_ms: 24.3554
+  type: 'test'
+  ...
+# Subtest: un dominio no verificado se informa como fallo de configuracion
+ok 12 - un dominio no verificado se informa como fallo de configuracion
+  ---
+  duration_ms: 0.5864
+  type: 'test'
+  ...
+# Subtest: la peticion al proveedor tiene un limite de tiempo
+ok 13 - la peticion al proveedor tiene un limite de tiempo
+  ---
+  duration_ms: 0.4944
+  type: 'test'
+  ...
+# Subtest: un timeout no se convierte en correo enviado
+ok 14 - un timeout no se convierte en correo enviado
+  ---
+  duration_ms: 0.3153
+  type: 'test'
+  ...
+# Subtest: no permite usar el correo de la aplicacion sin sesion autorizada
+ok 15 - no permite usar el correo de la aplicacion sin sesion autorizada
+  ---
+  duration_ms: 0.5905
+  type: 'test'
+  ...
+# Subtest: rechaza un destinatario invalido antes de contactar al proveedor
+ok 16 - rechaza un destinatario invalido antes de contactar al proveedor
+  ---
+  duration_ms: 0.3773
+  type: 'test'
+  ...
+# Subtest: un entrenador no puede cambiar la contrasena de un administrador
+ok 17 - un entrenador no puede cambiar la contrasena de un administrador
+  ---
+  duration_ms: 0.7168
+  type: 'test'
+  ...
+# Subtest: una contrasena temporal debil se rechaza antes de la actualizacion
+ok 18 - una contrasena temporal debil se rechaza antes de la actualizacion
+  ---
+  duration_ms: 0.6721
+  type: 'test'
+  ...
+# Subtest: marca primer ingreso despues de actualizar Auth y devuelve el email real de Auth
+ok 19 - marca primer ingreso despues de actualizar Auth y devuelve el email real de Auth
+  ---
+  duration_ms: 1.2688
+  type: 'test'
+  ...
+# Subtest: conserva el resultado del cambio si falla sincronizar primer ingreso
+ok 20 - conserva el resultado del cambio si falla sincronizar primer ingreso
+  ---
+  duration_ms: 0.2833
+  type: 'test'
+  ...
+# Subtest: relación uno a uno admite objeto y array unitario conservando identidad
+ok 21 - relación uno a uno admite objeto y array unitario conservando identidad
+  ---
+  duration_ms: 0.8542
+  type: 'test'
+  ...
+# Subtest: ausencia de relación devuelve null
+ok 22 - ausencia de relación devuelve null
+  ---
+  duration_ms: 0.136
+  type: 'test'
+  ...
+# Subtest: multiplicidad inesperada se rechaza sin seleccionar un usuario arbitrario
+ok 23 - multiplicidad inesperada se rechaza sin seleccionar un usuario arbitrario
+  ---
+  duration_ms: 0.3723
+  type: 'test'
+  ...
+# Subtest: relaciones anidadas de pago conservan usuario con objetos o arrays
+ok 24 - relaciones anidadas de pago conservan usuario con objetos o arrays
+  ---
+  duration_ms: 0.1571
+  type: 'test'
+  ...
+# Subtest: multiplicidad en cualquier nivel anidado se rechaza
+ok 25 - multiplicidad en cualquier nivel anidado se rechaza
+  ---
+  duration_ms: 0.1709
+  type: 'test'
+  ...
+# Subtest: recordatorios sin secreto configurado se bloquean antes de consultar datos
+ok 26 - recordatorios sin secreto configurado se bloquean antes de consultar datos
+  ---
+  duration_ms: 191.6631
+  type: 'test'
+  ...
+# Subtest: recordatorios con secreto incorrecto devuelven403 sin consultas
+ok 27 - recordatorios con secreto incorrecto devuelven403 sin consultas
+  ---
+  duration_ms: 58.626
+  type: 'test'
+  ...
+# Subtest: reportes rechazan personal suspendido antes de operar con service_role: administrador
+ok 28 - reportes rechazan personal suspendido antes de operar con service_role: administrador
+  ---
+  duration_ms: 354.7341
+  type: 'test'
+  ...
+# Subtest: reportes rechazan personal suspendido antes de operar con service_role: entrenador
+ok 29 - reportes rechazan personal suspendido antes de operar con service_role: entrenador
+  ---
+  duration_ms: 132.267
+  type: 'test'
+  ...
+# Subtest: reportes conservan autorización de personal activo: administrador
+ok 30 - reportes conservan autorización de personal activo: administrador
+  ---
+  duration_ms: 96.015
+  type: 'test'
+  ...
+# Subtest: reportes conservan autorización de personal activo: entrenador
+ok 31 - reportes conservan autorización de personal activo: entrenador
+  ---
+  duration_ms: 94.4006
+  type: 'test'
+  ...
+# Subtest: checksum SHA256 usa los bytes de la subvista, sin prefijo ni sufijo
+ok 32 - checksum SHA256 usa los bytes de la subvista, sin prefijo ni sufijo
+  ---
+  duration_ms: 102.9048
+  type: 'test'
+  ...
+# Subtest: checksum copia una vista compartida antes de entregarla a WebCrypto
+ok 33 - checksum copia una vista compartida antes de entregarla a WebCrypto
+  ---
+  duration_ms: 97.6194
+  type: 'test'
+  ...
+1..33
+# tests 33
+# suites 0
+# pass 33
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1804.4597
+

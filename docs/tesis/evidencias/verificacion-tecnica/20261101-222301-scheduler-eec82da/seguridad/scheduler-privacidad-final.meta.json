@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/verify-scheduler-custody.cjs"
+  ],
+  "start": "2026-11-01T23:05:51.773Z",
+  "end": "2026-11-01T23:05:59.565Z",
+  "durationSeconds": 7.792,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

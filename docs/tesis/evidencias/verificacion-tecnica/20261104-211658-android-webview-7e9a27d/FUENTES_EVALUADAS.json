@@ -1,0 +1,6 @@
+{
+  "baseCommit": "7e9a27dd2b248a626a4440ece2e7227ba5e47ae5",
+  "initialLauncherSnapshotUnavailable": true,
+  "failedCommandRecorded": "android/adb-servidor-local.meta.json",
+  "note": "No atribuir el hash del launcher corregido posterior a este primer intento."
+}

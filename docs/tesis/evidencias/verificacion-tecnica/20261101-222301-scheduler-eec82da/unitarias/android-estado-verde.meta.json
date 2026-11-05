@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/unit/android-offline-state.test.cjs"
+  ],
+  "start": "2026-11-01T23:00:06.583Z",
+  "end": "2026-11-01T23:00:06.824Z",
+  "durationSeconds": 0.241,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

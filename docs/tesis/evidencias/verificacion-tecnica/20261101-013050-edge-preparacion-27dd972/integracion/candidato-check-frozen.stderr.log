@@ -1,0 +1,10 @@
+Check .e2e-local/edge-production/packets/candidate/supabase/functions/send-email/index.ts
+Check .e2e-local/edge-production/packets/candidate/supabase/functions/update-user-password/index.ts
+Check .e2e-local/edge-production/packets/candidate/supabase/functions/delete-auth-user/index.ts
+Check .e2e-local/edge-production/packets/candidate/supabase/functions/generate-report/index.ts
+Check .e2e-local/edge-production/packets/candidate/supabase/functions/generate-scheduled-reports/index.ts
+Check .e2e-local/edge-production/packets/candidate/supabase/functions/delete-report-run/index.ts
+Check .e2e-local/edge-production/packets/candidate/supabase/functions/sync-mobile-device/index.ts
+Check .e2e-local/edge-production/packets/candidate/supabase/functions/send-push/index.ts
+Check .e2e-local/edge-production/packets/candidate/supabase/functions/send-payment-reminders/index.ts
+

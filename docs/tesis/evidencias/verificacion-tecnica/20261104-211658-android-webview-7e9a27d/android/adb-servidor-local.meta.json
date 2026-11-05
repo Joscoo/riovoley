@@ -1,0 +1,13 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+    "-L",
+    "tcp:127.0.0.1:5037",
+    "start-server"
+  ],
+  "startedAt": "2026-11-04T21:17:01.517Z",
+  "finishedAt": "2026-11-04T21:17:03.591Z",
+  "exitCode": 4294967295,
+  "errorCode": null,
+  "rawOutputPrivate": true
+}

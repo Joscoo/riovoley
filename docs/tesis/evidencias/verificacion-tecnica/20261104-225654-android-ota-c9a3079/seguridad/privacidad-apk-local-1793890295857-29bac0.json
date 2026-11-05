@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-11-05T14:51:35.854Z",
+  "archiveMembersChecked": 605,
+  "unresolved": [],
+  "publicSourceMaps": [],
+  "otaPanelLiteralInJavaScript": [
+    "assets/public/static/js/main.4a36c570.js"
+  ],
+  "expectedLocalClientInputsAllowedOnlyInPrivateApk": true,
+  "institutionalOrServerValuesPublished": false,
+  "scope": "Miembros ZIP descomprimidos: valores institucionales conocidos de dotenv, clave server y passwords locales prohibidos; patrón JWT con exclusión exacta de anon local. Entradas anon/PII locales solo se toleran en el APK privado, nunca se publican. No es garantía universal."
+}

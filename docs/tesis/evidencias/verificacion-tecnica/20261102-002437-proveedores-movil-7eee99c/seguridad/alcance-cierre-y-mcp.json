@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-11-02T03:56:57.749Z",
+  "userStoppedCredentialHandling": true,
+  "credentialRequestsCancelled": true,
+  "userAuthorizedRepositoryApiKeyReview": true,
+  "userAuthorizedSupabaseAndVercelMcp": true,
+  "mcpSupabase": {
+    "completed": false,
+    "stage": "LINK_ID_REQUIRED"
+  },
+  "mcpVercel": {
+    "completed": false,
+    "stage": "LINK_ID_REQUIRED"
+  },
+  "fallback": "CLI ya autenticadas, solo GET o consultas READ ONLY; sin descifrar valores Vercel",
+  "productionMutationsAuthorized": false
+}

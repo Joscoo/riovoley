@@ -1,0 +1,44 @@
+✖ QS de Express serializa arrays comma con null y undefined sin excepción (CVE-2026-8723) (570.7325ms)
+✔ Express conserva filtros anidados y body URL-encoded con el QS actualizado (3909.9019ms)
+✔ Underscore usado por JSONPath procesa arrays de 20000 niveles sin desbordar la pila (CVE-2026-27601) (6.5527ms)
+✔ Underscore compara objetos de 6000 niveles sin desbordar la pila (19.453ms)
+✔ JSONPath mantiene filtros y selección recursiva con el parche de Underscore (335.9085ms)
+✔ BFJ conserva la lectura y escritura JSON del informe de compilación (937.6189ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6273.3051
+
+✖ failing tests:
+
+test at tests\integration\toolchain.dependencies.test.cjs:9:1
+✖ QS de Express serializa arrays comma con null y undefined sin excepción (CVE-2026-8723) (570.7325ms)
+  AssertionError [ERR_ASSERTION]: Got unwanted exception.
+  Actual message: "Cannot read properties of null (reading 'length')"
+      at TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.dependencies.test.cjs:11:46)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: TypeError: Cannot read properties of null (reading 'length')
+        at encode (D:\Riovoley\riovoley\node_modules\qs\lib\utils.js:193:13)
+        at Object.maybeMap (D:\Riovoley\riovoley\node_modules\qs\lib\utils.js:320:37)
+        at stringify (D:\Riovoley\riovoley\node_modules\qs\lib\stringify.js:145:25)
+        at module.exports [as stringify] (D:\Riovoley\riovoley\node_modules\qs\lib\stringify.js:320:27)
+        at D:\Riovoley\riovoley\tests\integration\toolchain.dependencies.test.cjs:11:66
+        at getActual (node:assert:611:5)
+        at strict.doesNotThrow (node:assert:779:32)
+        at TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.dependencies.test.cjs:11:46)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1325:25),
+    expected: undefined,
+    operator: 'doesNotThrow',
+    diff: 'simple'
+  }
+

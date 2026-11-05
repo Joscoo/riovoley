@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-10-31T20:47:09.058Z",
+  "checks": {
+    "projectAndTeamMatched": true,
+    "productionDomainBound": true,
+    "allGetCommandsExitedZero": true,
+    "frontendNamesPresent": true,
+    "publicGetAll200": true,
+    "productionModified": false
+  },
+  "scope": "Consistencia de los metadatos de esta fase; no prueba funcional ni de seguridad completa."
+}

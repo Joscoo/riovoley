@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/android/check-local-achievements.cjs"
+  ],
+  "start": "2026-11-05T15:00:12.494Z",
+  "end": "2026-11-05T15:00:13.758Z",
+  "durationSeconds": 1.264,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

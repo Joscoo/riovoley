@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-11-02T04:08:37.231Z",
+  "priorManifests": 18,
+  "priorEntries": 8917,
+  "priorEntriesMatching": true,
+  "currentNodeCases": 17,
+  "currentNodePass": 17,
+  "currentJunitTemplateCases": 1,
+  "packagedWebFilesMatching": 65,
+  "apkHashMatches": true,
+  "relativeLinksChecked": 93,
+  "brokenLinks": 0,
+  "realProviderRequests": 0,
+  "productSourceChanged": false,
+  "localEnvPreserved": true,
+  "productionMutations": false,
+  "documents": 3,
+  "originalRequestedDocuments": 3,
+  "documentDeliveryPct": 100,
+  "productionReadinessPct": null,
+  "scope": "El porcentaje expresa solo entrega documental, sin inventar porcentaje de funcionamiento."
+}

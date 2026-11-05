@@ -1,0 +1,7 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process'),h=require('../../e2e/local/harness.cjs'),b=require('../../production/backup.cjs');
+const version=(file,args)=>{const r=cp.spawnSync(file,args,{env:b.baseEnvironment(),encoding:'utf8',windowsHide:true,timeout:10000});if(r.status!==0)throw new Error('TOOL_VERSION_FAILED');return (r.stdout+'\n'+r.stderr).trim();};
+const native=path.join(h.runtime,'android-native/20261028-155551'),wrapper=fs.readFileSync(path.join(h.runtime,'android-release/20261101172449-62804124/project/android/gradle/wrapper/gradle-wrapper.properties'),'utf8');
+const java=version(path.join(native,'jdk-21.0.12.1+1/bin/java.exe'),['-version']);
+h.write('HERRAMIENTAS.json',{checkedAt:new Date().toISOString(),os:process.platform,architecture:process.arch,windowsBuild:require('node:os').release(),node:process.version,npm:version(process.execPath,[path.join(path.dirname(process.execPath),'node_modules/npm/bin/npm-cli.js'),'--version']),python:version('python',['--version']),supabaseCli:version(path.join(h.runtime,'tools/node_modules/@supabase/cli-windows-x64/bin/supabase.exe'),['--version']),javaVersion:java.split(/\r?\n/)[0],gradleWrapperVersion:wrapper.match(/gradle-([\d.]+)-all/)[1],androidBuildTools:fs.readFileSync(path.join(native,'sdk/build-tools/35.0.0/source.properties'),'utf8').match(/Pkg.Revision\s*=\s*(.+)/)[1].trim(),versionCommandsSucceeded:true,environmentValuesOrMachineUserPublished:false});
+console.log(JSON.stringify({status:'TOOL_VERSIONS_CHECKED'}));

@@ -1,0 +1,8 @@
+{
+  "checkedAt": "2026-11-01T02:55:15.574Z",
+  "filesChecked": 67,
+  "knownValuesCompared": 15,
+  "issues": 0,
+  "valuesRecorded": false,
+  "scope": "Valores sensibles conocidos de archivos de entorno locales y credenciales del laboratorio, más patrones de claves/JWT/URLs PostgreSQL con contraseña. Revisión limitada a archivos nuevos/modificados; no acredita ausencia universal de PII."
+}

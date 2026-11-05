@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/react-scripts/bin/react-scripts.js",
+    "test",
+    "--watchAll=false",
+    "--runInBand",
+    "--coverage",
+    "--coverageReporters=json",
+    "--coverageReporters=json-summary",
+    "--coverageDirectory=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261029-221208-android-autenticado-317e5e3\\unitarias\\cobertura-post-parches",
+    "--json",
+    "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261029-221208-android-autenticado-317e5e3\\unitarias\\jest-post-parches.json"
+  ],
+  "start": "2026-10-29T22:28:17.173Z",
+  "end": "2026-10-29T22:29:17.521Z",
+  "durationSeconds": 60.348,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

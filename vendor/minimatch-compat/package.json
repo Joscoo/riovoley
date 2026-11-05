@@ -1,0 +1,9 @@
+{
+  "name": "@riovoley/minimatch-compat",
+  "version": "1.0.1",
+  "private": true,
+  "main": "index.cjs",
+  "license": "MIT",
+  "description": "Private callable/named API facade for the registry minimatch 11.0.3 engine",
+  "dependencies": { "@riovoley/minimatch-engine": "npm:minimatch@11.0.3" }
+}

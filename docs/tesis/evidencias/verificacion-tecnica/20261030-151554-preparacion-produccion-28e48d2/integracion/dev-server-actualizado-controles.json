@@ -1,0 +1,23 @@
+{
+  "checks": [
+    {
+      "name": "HTML real de CRA sobre loopback",
+      "state": "APROBADO",
+      "status": 200
+    },
+    {
+      "name": "Bundle servido por el middleware actualizado",
+      "state": "APROBADO",
+      "status": 200,
+      "bytes": 5961943
+    },
+    {
+      "name": "Control 3",
+      "state": "FALLIDO",
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'undefined'\n- 'string'\n"
+    }
+  ],
+  "executed": 3,
+  "passed": 2,
+  "failed": 1
+}

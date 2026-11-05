@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "run",
+    "test:edge-contracts"
+  ],
+  "start": "2026-11-01T02:04:38.519Z",
+  "end": "2026-11-01T02:04:41.746Z",
+  "durationSeconds": 3.227,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

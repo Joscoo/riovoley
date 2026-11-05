@@ -1,0 +1,8 @@
+{
+  "error": "NetworkSecurityConfig: Missing includeSubdomains attribute",
+  "fix": "Atributo includeSubdomains=false en la regla de loopback del perfil debug privado.",
+  "productionChanged": false,
+  "expectationsChanged": false,
+  "ruleSuppressed": false,
+  "source": "scripts/audit/android/stage.cjs"
+}

@@ -1,0 +1,21 @@
+{
+  "at": "2026-11-05T20:51:19.300Z",
+  "priorManifests": 28,
+  "priorEntries": 9735,
+  "priorEntriesMatching": true,
+  "linksChecked": 89,
+  "brokenLinks": 0,
+  "privacyIssues": 0,
+  "finalRealPostgresCases": 47,
+  "passed": 47,
+  "failed": 0,
+  "skipped": 0,
+  "phasesNotSummed": true,
+  "syntheticSnapshotsUnchanged": true,
+  "localGateRemoved": true,
+  "productionSqlHashesUnchanged": 4,
+  "originalProtectedTestsUnchanged": true,
+  "productChanged": false,
+  "productionChanged": false,
+  "newAcademicDocuments": 3
+}

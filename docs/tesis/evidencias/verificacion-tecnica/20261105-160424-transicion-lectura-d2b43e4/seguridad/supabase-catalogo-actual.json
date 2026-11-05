@@ -1,0 +1,37 @@
+{
+  "observedAt": "2026-11-05T16:00:45.998Z",
+  "project": {
+    "id": "mayvvlkvheagkojunzzb",
+    "name": "Riovoley APP",
+    "status": "ACTIVE_HEALTHY",
+    "region": "us-east-1",
+    "databaseVersion": "17.4.1.064"
+  },
+  "catalog": {
+    "rls": [
+      {
+        "forced": false,
+        "enabled": true,
+        "policies": 1,
+        "table_name": "login_rewards"
+      },
+      {
+        "forced": false,
+        "enabled": true,
+        "policies": 1,
+        "table_name": "xp_ledger"
+      }
+    ],
+    "read_only": "on",
+    "database_version": "17.4",
+    "noncanonical_roles": 0,
+    "daily_login_null_refs": 0,
+    "daily_reward_rpc_present": false,
+    "duplicate_daily_login_groups": 0,
+    "duplicate_student_user_groups": 0
+  },
+  "fingerprint": "15b9d9e869fb5113263c485714009878",
+  "fingerprintObservedAt": "2026-11-05T16:02:25.982Z",
+  "readOnly": true,
+  "productionChanged": false
+}

@@ -1,0 +1,40 @@
+{
+  "tables": [
+    {
+      "table": "public.gate_probe",
+      "rows": 1,
+      "sha256": "6303de31aee3349dd3fc1de9310b1dd4748a7baeab4e5d9701273b25802c6355"
+    },
+    {
+      "table": "gamification.gate_probe",
+      "rows": 1,
+      "sha256": "6303de31aee3349dd3fc1de9310b1dd4748a7baeab4e5d9701273b25802c6355"
+    },
+    {
+      "table": "auth.gate_probe",
+      "rows": 1,
+      "sha256": "6303de31aee3349dd3fc1de9310b1dd4748a7baeab4e5d9701273b25802c6355"
+    },
+    {
+      "table": "storage.gate_probe",
+      "rows": 1,
+      "sha256": "6303de31aee3349dd3fc1de9310b1dd4748a7baeab4e5d9701273b25802c6355"
+    },
+    {
+      "table": "public.gate_partition",
+      "rows": 2,
+      "sha256": "85523ac69b3e0f99b9257ab7584e5fb4df330f8f1eda86ba0fd3a7e8a0c89f65"
+    },
+    {
+      "table": "public.gate_partition_low",
+      "rows": 1,
+      "sha256": "6303de31aee3349dd3fc1de9310b1dd4748a7baeab4e5d9701273b25802c6355"
+    },
+    {
+      "table": "public.gate_partition_high",
+      "rows": 1,
+      "sha256": "55d4aa589bb087de32734e408f45a56308ee204fc9686da15bf044cd52c97b0d"
+    }
+  ],
+  "fixtureOnly": true
+}

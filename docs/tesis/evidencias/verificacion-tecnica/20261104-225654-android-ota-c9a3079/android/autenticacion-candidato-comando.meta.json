@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/android/authenticated-webview.cjs",
+    "--label=candidato-actual",
+    "--verify-ota-hidden"
+  ],
+  "start": "2026-11-05T14:55:47.699Z",
+  "end": "2026-11-05T14:58:24.515Z",
+  "durationSeconds": 156.816,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

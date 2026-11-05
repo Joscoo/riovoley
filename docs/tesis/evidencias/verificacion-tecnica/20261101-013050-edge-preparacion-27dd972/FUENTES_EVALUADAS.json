@@ -1,0 +1,162 @@
+{
+  "commit": "27dd9727c5c791e8a7bf380a698dfa1c771e6dbb",
+  "note": "Snapshot de cambios locales y fuentes de herramientas. No son entradas externas del manifiesto; la revisión en Git se publica después de la ejecución.",
+  "files": [
+    {
+      "file": ".github/workflows/technical-readiness.yml",
+      "sha256": "01ea1099a14d09c54b09bf73b25e375c1a299df3048dc84c7cf97cf829d591e3"
+    },
+    {
+      "file": "database/security/production-proposal/README.md",
+      "sha256": "cb9560f1e6e02b75bbd50742cd4ddaa145ae4d912d3e90f5e8f4ef7b11bc9a15"
+    },
+    {
+      "file": "docs/produccion/RUNBOOK.md",
+      "sha256": "0c2a1b301ddddbdcc31f61f76cd7d9562007587263f50ee515a8fd8fb28c2f0a"
+    },
+    {
+      "file": "docs/tesis/README.md",
+      "sha256": "308fdf43d0eef2210b9935684ad37abcd39bb1d50f5ec9ed016302111e6d22c4"
+    },
+    {
+      "file": "package.json",
+      "sha256": "84b3e34e236b29765e396ccb2d54c7c1af91aaa935f5c6c89137ace6b823ab0b"
+    },
+    {
+      "file": "supabase/functions/_core/push/infrastructure/firebase-push-gateway.ts",
+      "sha256": "1dc61617c01b525a2943e64b620edbe197c030443ad8acba8129f4624a957620"
+    },
+    {
+      "file": "supabase/functions/_shared/reporting.ts",
+      "sha256": "015644c76b16683e1e202108c1867518341d841d1a8a1bbf7246bd1177bc194d"
+    },
+    {
+      "file": "supabase/functions/send-payment-reminders/index.ts",
+      "sha256": "7ed6d261daf47f25930e3a46dc3333857fb83263b5d71c31eed31616dfc244e9"
+    },
+    {
+      "file": "database/security/production-proposal/20261101013935_reporting_service_grants_proposal.sql",
+      "sha256": "4c6c9fb9771751b1e0f15920faab664a9400c8f8b39b7288db97e7fdf0ad0d0d"
+    },
+    {
+      "file": "database/security/production-proposal/20261101013935_reporting_service_return_proposal.sql",
+      "sha256": "5c0904bdd90d93a8d8def5ef780aef5a0a1a44570ab9ed54db78213e599bf333"
+    },
+    {
+      "file": "docs/produccion/EDGE.md",
+      "sha256": "86b0281daacfa357eaaae0fd54352e1958e3b34c266d779b3cbed9fe5234dd14"
+    },
+    {
+      "file": "docs/produccion/RESPALDO_Y_RESTAURACION.md",
+      "sha256": "48662169ca370b70c33e9d057866514017ac0ef59cece28d7e2f5e45b722cdfb"
+    },
+    {
+      "file": "docs/superpowers/plans/2026-11-01-paquete-edge-produccion.md",
+      "sha256": "ff45f8e0cef162a4f5114bf0d302b6ae6c33d9c4aaa7d223d455ab952ba41869"
+    },
+    {
+      "file": "scripts/audit/production/bundle-edge-return.cjs",
+      "sha256": "d44c791f3b1bca79497a3c9f1e95c5239bfc392701331084249929d307f885c4"
+    },
+    {
+      "file": "scripts/audit/production/check-backup-connection.cjs",
+      "sha256": "d968ca49c90001ff67fb1e90de9c1f299761012de1fa03745e1b472a7407ba00"
+    },
+    {
+      "file": "scripts/audit/production/create-edge-packet.cjs",
+      "sha256": "d0b514fd343e076bc196a222206788a3c91ec906d9ed8e117a5e78c96dc159d7"
+    },
+    {
+      "file": "scripts/audit/production/edge-reporting-http.cjs",
+      "sha256": "3362bb12e5d37b74b6739d0e599019084c8169e60eb79666329cf34ecce17bc0"
+    },
+    {
+      "file": "scripts/audit/production/finalize-edge-packet.cjs",
+      "sha256": "2b6bc730176cbb630210aa3462ba743ce10fc5598d1416508cc91d58f656cfcc"
+    },
+    {
+      "file": "scripts/audit/production/initialize-edge-packet.cjs",
+      "sha256": "3aeb5828308e2272888ebd0de154426c0ea905f7a80d462ea34431fc19bcc0c9"
+    },
+    {
+      "file": "scripts/audit/production/prepare-edge-reporting-acl.cjs",
+      "sha256": "59a5c455f4b5308fda01f21f1858c9f4b6f72eaeaf4c9deaf78ddff972f15a55"
+    },
+    {
+      "file": "scripts/audit/production/rehearse-combined-sql.cjs",
+      "sha256": "a4eeebb6b7115743eebb971f4df8382aa3b82fadbec33e537cc9a29ac5015f70"
+    },
+    {
+      "file": "scripts/audit/production/rehearse-local-backup.cjs",
+      "sha256": "0f5ffaba9be86b727fcb41cd9913d3209ce321b639d70342a30e29e5688d4d71"
+    },
+    {
+      "file": "scripts/audit/production/report-edge-packet.cjs",
+      "sha256": "82d7249ed8eb6a547db277414fac46be3ee6f4dd4e638b88570529ae3eea7ce3"
+    },
+    {
+      "file": "supabase/functions/_shared/relations.ts",
+      "sha256": "a279486f00b3a0a354e412168b38f4d4003118b9d860143975afee9e94a78a88"
+    },
+    {
+      "file": "tests/integration/edge-reporting.local.test.cjs",
+      "sha256": "d27cee90e624df0af925be3ebe5a67257f7a5947bdaaae347c0c0f7b4c306ffe"
+    },
+    {
+      "file": "tests/integration/google-auth.local.test.ts",
+      "sha256": "c6f798bfaa8ceed52276c4a96dbb8f2933a3e3b15a1297cdcd4497f4246048d8"
+    },
+    {
+      "file": "tests/unit/edge-relations.test.ts",
+      "sha256": "4a0675b1ca6c6edb2c31ad9771474ba648a8b012f171b4757b2ed2fe6a778758"
+    },
+    {
+      "file": "tests/unit/payment-reminders-edge.test.cjs",
+      "sha256": "fd8ac86f8b20fdf28e93fe31a8f816e104e702af73e6eddddf21fb0af17899af"
+    },
+    {
+      "file": "tests/unit/reporting-edge.test.cjs",
+      "sha256": "5bbae1f4a543155fd78001115f19310441aac808e82abc2027e58f8aad663f74"
+    },
+    {
+      "file": "package-lock.json",
+      "sha256": "f6fee50d0c2f21f8050f04d8d73e79e4c66405ba87ed00e93ecf489f320a5ef8"
+    },
+    {
+      "file": "functions/package-lock.json",
+      "sha256": "ea26aa3e3f32e483fa77097b0e68cc955fb2098a5186e6177da45c7b0ab29d95"
+    },
+    {
+      "file": "riovoley/package-lock.json",
+      "sha256": "bf8d80686a1f9e2b724c7f64c16ebac2487b34ad1085ac50f506ff87ae15656d"
+    },
+    {
+      "file": "scripts/e2e/local/harness.cjs",
+      "sha256": "b506ff33a7550793b3139acd2726114a4d219a53323e05a894ee3e6e9f027c5c"
+    },
+    {
+      "file": "scripts/e2e/local/safety.cjs",
+      "sha256": "06f1e9afa7ab7c5923dac3f353c86663ef9d9f9c9df4ee21c7f456252c8d86a4"
+    },
+    {
+      "file": "scripts/audit/security/local-db.cjs",
+      "sha256": "337c9dca2e8c166dbf9392906dcdc76de872b646f08bfe860da6b96ac9d13f8c"
+    },
+    {
+      "file": "scripts/audit/security/edge-http.cjs",
+      "sha256": "0485233c59930d4586e531429e2c4531d3e66929acfb8fae4f32c1e00ce5b8e9"
+    },
+    {
+      "file": "tests/integration/edge-http.local.test.cjs",
+      "sha256": "0e82801cbadea7521c6d786b1ca22cdf897fa221e77ef5702159648c00bf127a"
+    },
+    {
+      "file": "tests/unit/credentials-edge.test.ts",
+      "sha256": "9237338493b0b1fb8dbbccb2f062040e43d2cccc5cc9956244540e6087047dc2"
+    },
+    {
+      "file": "tests/unit/authorization-edge.test.ts",
+      "sha256": "b877ccfb29b537de96de0262f6b379059b8e30e782865ba9ee39b2396f5d0758"
+    }
+  ]
+}

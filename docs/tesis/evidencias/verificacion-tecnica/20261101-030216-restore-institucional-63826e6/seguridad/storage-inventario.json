@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-11-01T15:47:36Z",
+  "source": "Supabase MCP execute_sql; BEGIN READ ONLY; aggregate storage.objects/buckets; ROLLBACK",
+  "bucketCount": 3,
+  "objectCount": 43,
+  "objectBytesFromMetadata": 3596269,
+  "objectNamesPublished": false,
+  "objectsDownloaded": false,
+  "productionChanged": false
+}

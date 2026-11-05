@@ -36,3 +36,6 @@
 
 # Conservar los bytes de los registros sellados y sus manifiestos SHA-256
 docs/tesis/evidencias/** -text
+
+# Paquetes SQL revisados: conservar los mismos bytes que sus evidencias SHA-256
+database/security/production-proposal/*.sql -text

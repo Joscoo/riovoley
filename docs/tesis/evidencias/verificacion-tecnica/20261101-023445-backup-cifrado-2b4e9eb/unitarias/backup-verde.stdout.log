@@ -1,0 +1,65 @@
+TAP version 13
+# Subtest: acepta únicamente el proyecto directo esperado con TLS verificado
+ok 1 - acepta únicamente el proyecto directo esperado con TLS verificado
+  ---
+  duration_ms: 1.0411
+  type: 'test'
+  ...
+# Subtest: rechaza destino o control incorrecto: host
+ok 2 - rechaza destino o control incorrecto: host
+  ---
+  duration_ms: 0.2801
+  type: 'test'
+  ...
+# Subtest: rechaza destino o control incorrecto: port
+ok 3 - rechaza destino o control incorrecto: port
+  ---
+  duration_ms: 0.1041
+  type: 'test'
+  ...
+# Subtest: rechaza destino o control incorrecto: database
+ok 4 - rechaza destino o control incorrecto: database
+  ---
+  duration_ms: 0.1055
+  type: 'test'
+  ...
+# Subtest: rechaza destino o control incorrecto: username
+ok 5 - rechaza destino o control incorrecto: username
+  ---
+  duration_ms: 0.1088
+  type: 'test'
+  ...
+# Subtest: rechaza destino o control incorrecto: sslmode
+ok 6 - rechaza destino o control incorrecto: sslmode
+  ---
+  duration_ms: 0.0892
+  type: 'test'
+  ...
+# Subtest: rechaza destino o control incorrecto: expectedFingerprint
+ok 7 - rechaza destino o control incorrecto: expectedFingerprint
+  ---
+  duration_ms: 0.1202
+  type: 'test'
+  ...
+# Subtest: rechaza credenciales persistidas dentro de la configuración
+ok 8 - rechaza credenciales persistidas dentro de la configuración
+  ---
+  duration_ms: 0.1178
+  type: 'test'
+  ...
+# Subtest: no hereda opciones, contraseñas o conexiones PostgreSQL del proceso
+ok 9 - no hereda opciones, contraseñas o conexiones PostgreSQL del proceso
+  ---
+  duration_ms: 1.0074
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 98.1209
+

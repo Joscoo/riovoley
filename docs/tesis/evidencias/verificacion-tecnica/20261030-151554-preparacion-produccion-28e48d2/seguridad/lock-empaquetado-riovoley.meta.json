@@ -1,0 +1,17 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "install",
+    "--package-lock-only",
+    "--ignore-scripts",
+    "--no-audit",
+    "--no-fund"
+  ],
+  "start": "2026-10-31T19:17:30.311Z",
+  "end": "2026-10-31T19:17:31.936Z",
+  "durationSeconds": 1.625,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": ".e2e-local\\spikes\\packed-lock-1793474244159\\riovoley"
+}

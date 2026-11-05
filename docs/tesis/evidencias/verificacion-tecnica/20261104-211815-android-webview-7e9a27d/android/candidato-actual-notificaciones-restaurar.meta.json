@@ -1,0 +1,19 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\native-validation\\20261104-211815\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5580",
+    "shell",
+    "pm",
+    "clear-permission-flags",
+    "com.riovoley.app",
+    "android.permission.POST_NOTIFICATIONS",
+    "user-fixed"
+  ],
+  "start": "2026-11-04T21:24:13.136Z",
+  "end": "2026-11-04T21:24:14.124Z",
+  "durationSeconds": 0.988,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

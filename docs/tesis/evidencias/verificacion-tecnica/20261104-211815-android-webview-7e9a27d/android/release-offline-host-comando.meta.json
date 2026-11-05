@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/smoke-signed-android-offline.cjs",
+    "--gpu-host"
+  ],
+  "start": "2026-11-04T21:28:33.216Z",
+  "end": "2026-11-04T21:31:45.288Z",
+  "durationSeconds": 192.072,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

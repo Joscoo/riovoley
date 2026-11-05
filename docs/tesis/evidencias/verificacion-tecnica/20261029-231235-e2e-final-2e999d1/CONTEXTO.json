@@ -1,0 +1,7 @@
+{
+  "commit": "2e999d1944e3a83f01dc6b5af9fbf2c73e91dc46",
+  "createdAt": "2026-10-29T23:12:35.938Z",
+  "scope": "Repetición autorizada de 249 instancias Playwright sobre el último commit, con backend local descartable. Sin producción, despliegues ni cambios de esquema.",
+  "previousEvidencePreserved": true,
+  "productionChanged": false
+}

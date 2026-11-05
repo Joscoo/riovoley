@@ -1,0 +1,158 @@
+{
+  "generatedAt": "2026-10-31T20:05:27.103Z",
+  "passed": 11,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Diez expedientes anteriores intactos",
+      "state": "APROBADO",
+      "details": {
+        "manifests": 10,
+        "entries": 6466
+      }
+    },
+    {
+      "name": "Jest, contratos, memoria, cobertura y módulos coinciden con sus registros",
+      "state": "APROBADO",
+      "details": {
+        "cases": 419,
+        "suites": 88,
+        "contractsIncluded": 12,
+        "memoryIncluded": 5,
+        "coverage": {
+          "lines": {
+            "total": 12123,
+            "covered": 5209,
+            "skipped": 0,
+            "pct": 42.96
+          },
+          "statements": {
+            "total": 13379,
+            "covered": 5563,
+            "skipped": 0,
+            "pct": 41.58
+          },
+          "functions": {
+            "total": 3471,
+            "covered": 1282,
+            "skipped": 0,
+            "pct": 36.93
+          },
+          "branches": {
+            "total": 11975,
+            "covered": 4038,
+            "skipped": 0,
+            "pct": 33.72
+          },
+          "branchesTrue": {
+            "total": 0,
+            "covered": 0,
+            "skipped": 0,
+            "pct": 100
+          }
+        }
+      }
+    },
+    {
+      "name": "76 contratos, instalación independiente y 12 guardas",
+      "state": "APROBADO",
+      "details": {
+        "uniqueNodeCases": 76,
+        "repeatedAfterCleanInstall": 76,
+        "separateGuards": 12
+      }
+    },
+    {
+      "name": "249 instancias únicas finales y tres fallos conservados en intentos previos",
+      "state": "APROBADO",
+      "details": {
+        "uniqueFinal": 249,
+        "totalInstancesAcrossAttempts": 459,
+        "passedAcrossAttempts": 456,
+        "failedAcrossAttempts": 3,
+        "mockAuthRecoveryIncluded": 28
+      }
+    },
+    {
+      "name": "HTTP/HMR reales y persistencia local READ ONLY",
+      "state": "APROBADO",
+      "details": {
+        "devChecks": 5,
+        "sqlRows": {
+          "students": 7,
+          "payments": 7,
+          "paymentswithexpectedamount": 7,
+          "attendances": 7
+        },
+        "institutionalWrites": false
+      }
+    },
+    {
+      "name": "Tres árboles del registro sin avisos; código local declarado fuera de alcance",
+      "state": "APROBADO",
+      "details": {
+        "root": 0,
+        "functions": 0,
+        "auxiliary": 0,
+        "localCodeIsNotRegistryAudited": true
+      }
+    },
+    {
+      "name": "Build estricto sin mapas y APK final coinciden con los artefactos privados",
+      "state": "APROBADO",
+      "details": {
+        "assets": 106,
+        "bytes": 35056311,
+        "private": true,
+        "jvmTemplateCases": 1
+      }
+    },
+    {
+      "name": "Fuentes de producto conservadas y cambios auditables",
+      "state": "APROBADO",
+      "details": {
+        "sources": 578,
+        "changed": [
+          "functions/package-lock.json",
+          "functions/package.json",
+          "package-lock.json",
+          "package.json",
+          "riovoley/package-lock.json",
+          "riovoley/package.json",
+          "scripts/audit/closure/check-dependencies-dev-server.cjs",
+          "tests/e2e/asistencias.guided.review.spec.js",
+          "tests/integration/toolchain.dependencies.test.cjs",
+          "tests/integration/toolchain.loaders-security.test.cjs",
+          "vercel.json"
+        ],
+        "applicationSourcesUnchanged": true
+      }
+    },
+    {
+      "name": "Producción permanece bloqueada; no se confunde configuración con aprobación",
+      "state": "APROBADO",
+      "details": {
+        "vercelAccess": 403,
+        "missingDailyRewardRpc": true,
+        "rlsEnabledInTwoObservedTables": true,
+        "finalApprovalPending": true
+      }
+    },
+    {
+      "name": "Tres documentos, matriz de ocho categorías y referencias existentes",
+      "state": "APROBADO",
+      "details": {
+        "documents": 4,
+        "categories": 8
+      }
+    },
+    {
+      "name": "Privacidad de logs, reportes HTML y APK",
+      "state": "APROBADO",
+      "details": {
+        "textFiles": 1410,
+        "embeddedArchives": 7
+      }
+    }
+  ]
+}

@@ -1,0 +1,553 @@
+TAP version 13
+# Subtest: jest-config: merge evita propiedades heredadas inyectadas con destino sin prototipo
+not ok 1 - jest-config: merge evita propiedades heredadas inyectadas con destino sin prototipo
+  ---
+  duration_ms: 6.9163
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.production-readiness.test.cjs:14:39'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected "actual" to be reference-equal to "expected":
+    + actual - expected
+    
+    + {
+    +   unexpectedInheritedFlag: true
+    + }
+    - [Object: null prototype] {}
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    unexpectedInheritedFlag: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.production-readiness.test.cjs:16:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.start (node:internal/test_runner/test:1191:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17)
+  ...
+# Subtest: jest-config: merge evita propiedades heredadas inyectadas con placeholder null
+not ok 2 - jest-config: merge evita propiedades heredadas inyectadas con placeholder null
+  ---
+  duration_ms: 1.3108
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.production-readiness.test.cjs:14:39'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected "actual" to be reference-equal to "expected":
+    + actual - expected
+    
+    + {
+    +   unexpectedInheritedFlag: true
+    + }
+    - [Object: null prototype] {}
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    unexpectedInheritedFlag: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.production-readiness.test.cjs:16:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)
+  ...
+# Subtest: jest-config: merge evita propiedades heredadas inyectadas con placeholder undefined
+not ok 3 - jest-config: merge evita propiedades heredadas inyectadas con placeholder undefined
+  ---
+  duration_ms: 0.6432
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.production-readiness.test.cjs:14:39'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected "actual" to be reference-equal to "expected":
+    + actual - expected
+    
+    + {
+    +   unexpectedInheritedFlag: true
+    + }
+    - [Object: null prototype] {}
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    unexpectedInheritedFlag: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.production-readiness.test.cjs:16:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: jest-config: merge evita propiedades heredadas inyectadas con clave propia en destino
+not ok 4 - jest-config: merge evita propiedades heredadas inyectadas con clave propia en destino
+  ---
+  duration_ms: 0.359
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.production-readiness.test.cjs:14:39'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected "actual" to be reference-equal to "expected":
+    + actual - expected
+    
+    + {
+    +   unexpectedInheritedFlag: true
+    + }
+    - [Object: null prototype] {}
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    unexpectedInheritedFlag: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.production-readiness.test.cjs:16:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: jest-config: conserva clonación, arrays, símbolos y merge.all
+ok 5 - jest-config: conserva clonación, arrays, símbolos y merge.all
+  ---
+  duration_ms: 3.4105
+  type: 'test'
+  ...
+# Subtest: jest-config: conserva customMerge, arrayMerge y clone:false
+ok 6 - jest-config: conserva customMerge, arrayMerge y clone:false
+  ---
+  duration_ms: 0.692
+  type: 'test'
+  ...
+# Subtest: @svgr/plugin-svgo: merge evita propiedades heredadas inyectadas con destino sin prototipo
+not ok 7 - @svgr/plugin-svgo: merge evita propiedades heredadas inyectadas con destino sin prototipo
+  ---
+  duration_ms: 0.6551
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.production-readiness.test.cjs:14:39'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected "actual" to be reference-equal to "expected":
+    + actual - expected
+    
+    + {
+    +   unexpectedInheritedFlag: true
+    + }
+    - [Object: null prototype] {}
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    unexpectedInheritedFlag: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.production-readiness.test.cjs:16:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: @svgr/plugin-svgo: merge evita propiedades heredadas inyectadas con placeholder null
+not ok 8 - @svgr/plugin-svgo: merge evita propiedades heredadas inyectadas con placeholder null
+  ---
+  duration_ms: 0.4182
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.production-readiness.test.cjs:14:39'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected "actual" to be reference-equal to "expected":
+    + actual - expected
+    
+    + {
+    +   unexpectedInheritedFlag: true
+    + }
+    - [Object: null prototype] {}
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    unexpectedInheritedFlag: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.production-readiness.test.cjs:16:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: @svgr/plugin-svgo: merge evita propiedades heredadas inyectadas con placeholder undefined
+not ok 9 - @svgr/plugin-svgo: merge evita propiedades heredadas inyectadas con placeholder undefined
+  ---
+  duration_ms: 0.4453
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.production-readiness.test.cjs:14:39'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected "actual" to be reference-equal to "expected":
+    + actual - expected
+    
+    + {
+    +   unexpectedInheritedFlag: true
+    + }
+    - [Object: null prototype] {}
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    unexpectedInheritedFlag: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.production-readiness.test.cjs:16:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: @svgr/plugin-svgo: merge evita propiedades heredadas inyectadas con clave propia en destino
+not ok 10 - @svgr/plugin-svgo: merge evita propiedades heredadas inyectadas con clave propia en destino
+  ---
+  duration_ms: 2.624
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.production-readiness.test.cjs:14:39'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected "actual" to be reference-equal to "expected":
+    + actual - expected
+    
+    + {
+    +   unexpectedInheritedFlag: true
+    + }
+    - [Object: null prototype] {}
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    unexpectedInheritedFlag: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.production-readiness.test.cjs:16:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: @svgr/plugin-svgo: conserva clonación, arrays, símbolos y merge.all
+ok 11 - @svgr/plugin-svgo: conserva clonación, arrays, símbolos y merge.all
+  ---
+  duration_ms: 0.5785
+  type: 'test'
+  ...
+# Subtest: @svgr/plugin-svgo: conserva customMerge, arrayMerge y clone:false
+ok 12 - @svgr/plugin-svgo: conserva customMerge, arrayMerge y clone:false
+  ---
+  duration_ms: 0.1919
+  type: 'test'
+  ...
+# Subtest: fork-ts-checker-webpack-plugin: merge evita propiedades heredadas inyectadas con destino sin prototipo
+not ok 13 - fork-ts-checker-webpack-plugin: merge evita propiedades heredadas inyectadas con destino sin prototipo
+  ---
+  duration_ms: 0.7805
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.production-readiness.test.cjs:14:39'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected "actual" to be reference-equal to "expected":
+    + actual - expected
+    
+    + {
+    +   unexpectedInheritedFlag: true
+    + }
+    - [Object: null prototype] {}
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    unexpectedInheritedFlag: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.production-readiness.test.cjs:16:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: fork-ts-checker-webpack-plugin: merge evita propiedades heredadas inyectadas con placeholder null
+not ok 14 - fork-ts-checker-webpack-plugin: merge evita propiedades heredadas inyectadas con placeholder null
+  ---
+  duration_ms: 0.6121
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.production-readiness.test.cjs:14:39'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected "actual" to be reference-equal to "expected":
+    + actual - expected
+    
+    + {
+    +   unexpectedInheritedFlag: true
+    + }
+    - [Object: null prototype] {}
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    unexpectedInheritedFlag: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.production-readiness.test.cjs:16:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: fork-ts-checker-webpack-plugin: merge evita propiedades heredadas inyectadas con placeholder undefined
+not ok 15 - fork-ts-checker-webpack-plugin: merge evita propiedades heredadas inyectadas con placeholder undefined
+  ---
+  duration_ms: 0.2359
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.production-readiness.test.cjs:14:39'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected "actual" to be reference-equal to "expected":
+    + actual - expected
+    
+    + {
+    +   unexpectedInheritedFlag: true
+    + }
+    - [Object: null prototype] {}
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    unexpectedInheritedFlag: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.production-readiness.test.cjs:16:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: fork-ts-checker-webpack-plugin: merge evita propiedades heredadas inyectadas con clave propia en destino
+not ok 16 - fork-ts-checker-webpack-plugin: merge evita propiedades heredadas inyectadas con clave propia en destino
+  ---
+  duration_ms: 0.1886
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.production-readiness.test.cjs:14:39'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected "actual" to be reference-equal to "expected":
+    + actual - expected
+    
+    + {
+    +   unexpectedInheritedFlag: true
+    + }
+    - [Object: null prototype] {}
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    unexpectedInheritedFlag: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.production-readiness.test.cjs:16:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: fork-ts-checker-webpack-plugin: conserva clonación, arrays, símbolos y merge.all
+ok 17 - fork-ts-checker-webpack-plugin: conserva clonación, arrays, símbolos y merge.all
+  ---
+  duration_ms: 0.3023
+  type: 'test'
+  ...
+# Subtest: fork-ts-checker-webpack-plugin: conserva customMerge, arrayMerge y clone:false
+ok 18 - fork-ts-checker-webpack-plugin: conserva customMerge, arrayMerge y clone:false
+  ---
+  duration_ms: 0.138
+  type: 'test'
+  ...
+# Subtest: @rollup/plugin-node-resolve: merge evita propiedades heredadas inyectadas con destino sin prototipo
+not ok 19 - @rollup/plugin-node-resolve: merge evita propiedades heredadas inyectadas con destino sin prototipo
+  ---
+  duration_ms: 0.223
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.production-readiness.test.cjs:14:39'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected "actual" to be reference-equal to "expected":
+    + actual - expected
+    
+    + {
+    +   unexpectedInheritedFlag: true
+    + }
+    - [Object: null prototype] {}
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    unexpectedInheritedFlag: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.production-readiness.test.cjs:16:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: @rollup/plugin-node-resolve: merge evita propiedades heredadas inyectadas con placeholder null
+not ok 20 - @rollup/plugin-node-resolve: merge evita propiedades heredadas inyectadas con placeholder null
+  ---
+  duration_ms: 0.2614
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.production-readiness.test.cjs:14:39'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected "actual" to be reference-equal to "expected":
+    + actual - expected
+    
+    + {
+    +   unexpectedInheritedFlag: true
+    + }
+    - [Object: null prototype] {}
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    unexpectedInheritedFlag: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.production-readiness.test.cjs:16:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: @rollup/plugin-node-resolve: merge evita propiedades heredadas inyectadas con placeholder undefined
+not ok 21 - @rollup/plugin-node-resolve: merge evita propiedades heredadas inyectadas con placeholder undefined
+  ---
+  duration_ms: 0.2391
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.production-readiness.test.cjs:14:39'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected "actual" to be reference-equal to "expected":
+    + actual - expected
+    
+    + {
+    +   unexpectedInheritedFlag: true
+    + }
+    - [Object: null prototype] {}
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    unexpectedInheritedFlag: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.production-readiness.test.cjs:16:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: @rollup/plugin-node-resolve: merge evita propiedades heredadas inyectadas con clave propia en destino
+not ok 22 - @rollup/plugin-node-resolve: merge evita propiedades heredadas inyectadas con clave propia en destino
+  ---
+  duration_ms: 0.1929
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.production-readiness.test.cjs:14:39'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected "actual" to be reference-equal to "expected":
+    + actual - expected
+    
+    + {
+    +   unexpectedInheritedFlag: true
+    + }
+    - [Object: null prototype] {}
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    unexpectedInheritedFlag: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.production-readiness.test.cjs:16:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: @rollup/plugin-node-resolve: conserva clonación, arrays, símbolos y merge.all
+ok 23 - @rollup/plugin-node-resolve: conserva clonación, arrays, símbolos y merge.all
+  ---
+  duration_ms: 0.2488
+  type: 'test'
+  ...
+# Subtest: @rollup/plugin-node-resolve: conserva customMerge, arrayMerge y clone:false
+ok 24 - @rollup/plugin-node-resolve: conserva customMerge, arrayMerge y clone:false
+  ---
+  duration_ms: 0.2706
+  type: 'test'
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 8
+# fail 16
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 347.5501
+

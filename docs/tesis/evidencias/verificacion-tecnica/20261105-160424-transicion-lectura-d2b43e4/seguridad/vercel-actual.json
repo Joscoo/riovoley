@@ -1,0 +1,38 @@
+{
+  "projectObservedAt": "2026-11-05T16:00:47.193Z",
+  "deploymentObservedAt": "2026-11-05T16:00:47.875Z",
+  "accountSelected": "Riovoley",
+  "project": {
+    "id": "prj_gnsNVKcXC8jvN0UcassXy4lZ0ZfN",
+    "name": "riovoley",
+    "framework": "create-react-app",
+    "accountId": "team_hhFsXPWPvpQakRvHpejCGAFU",
+    "nodeVersion": "22.x",
+    "live": false,
+    "latestDeployment": {
+      "id": "dpl_DCPpv18kuroRoaEpV49xhGfY1isB",
+      "url": "riovoley-dlwdj0h4r-joscoos-projects.vercel.app",
+      "readyState": "READY",
+      "target": "production",
+      "createdAt": 1793220590217
+    },
+    "domains": [
+      "riovoley.com",
+      "riovoley.vercel.app",
+      "riovoley-joscoos-projects.vercel.app",
+      "riovoley-git-main-joscoos-projects.vercel.app"
+    ]
+  },
+  "deployment": {
+    "id": "dpl_DCPpv18kuroRoaEpV49xhGfY1isB",
+    "url": "riovoley-dlwdj0h4r-joscoos-projects.vercel.app",
+    "readyState": "READY",
+    "target": "production",
+    "createdAt": 1793220590217,
+    "gitSha": "e469db5608fb77071b6a9ee3db253c28dae734dd",
+    "gitRef": "main",
+    "projectId": "prj_gnsNVKcXC8jvN0UcassXy4lZ0ZfN"
+  },
+  "environmentValuesRead": false,
+  "productionChanged": false
+}

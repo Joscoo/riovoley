@@ -1,0 +1,14 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5582",
+    "emu",
+    "avd",
+    "name"
+  ],
+  "startedAt": "2026-11-01T22:39:17.962Z",
+  "finishedAt": "2026-11-01T22:39:18.222Z",
+  "exitCode": 0,
+  "rawOutputSaved": false
+}

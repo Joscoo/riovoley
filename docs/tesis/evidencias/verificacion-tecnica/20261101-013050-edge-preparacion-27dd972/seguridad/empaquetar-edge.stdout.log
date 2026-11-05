@@ -1,0 +1,2 @@
+{"functions":9,"candidateFiles":39,"differentEntrypoints":3,"requiredEnvNames":["FCM_CLIENT_EMAIL","FCM_PRIVATE_KEY","FCM_PROJECT_ID","FROM_EMAIL","REPORTS_SCHEDULER_SECRET","RESEND_API_KEY","SUPABASE_ANON_KEY","SUPABASE_SERVICE_ROLE_KEY","SUPABASE_URL"],"productionDeployed":false}
+

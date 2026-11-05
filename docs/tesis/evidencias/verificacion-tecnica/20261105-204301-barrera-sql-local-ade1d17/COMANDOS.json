@@ -1,0 +1,82 @@
+{
+  "phases": [
+    {
+      "phase": "baseline",
+      "environment": {
+        "RIOVOLEY_GATE_PHASE": "baseline"
+      },
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--test",
+        "--test-reporter=tap",
+        "tests/integration/maintenance-gate.local.test.cjs"
+      ],
+      "start": "2026-11-05T20:43:24.699Z",
+      "end": "2026-11-05T20:43:25.143Z",
+      "durationSeconds": 0.444,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "phase": "red",
+      "environment": {
+        "RIOVOLEY_GATE_PHASE": "red"
+      },
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--test",
+        "--test-reporter=tap",
+        "tests/integration/maintenance-gate.local.test.cjs"
+      ],
+      "start": "2026-11-05T20:43:25.148Z",
+      "end": "2026-11-05T20:43:25.525Z",
+      "durationSeconds": 0.377,
+      "exitCode": 1,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "phase": "green",
+      "environment": {
+        "RIOVOLEY_GATE_PHASE": "green"
+      },
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--test",
+        "--test-reporter=tap",
+        "tests/integration/maintenance-gate.local.test.cjs"
+      ],
+      "start": "2026-11-05T20:44:12.311Z",
+      "end": "2026-11-05T20:44:13.448Z",
+      "durationSeconds": 1.137,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "phase": "green-final",
+      "environment": {
+        "RIOVOLEY_GATE_PHASE": "green"
+      },
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--test",
+        "--test-reporter=tap",
+        "tests/integration/maintenance-gate.local.test.cjs"
+      ],
+      "start": "2026-11-05T20:44:55.667Z",
+      "end": "2026-11-05T20:44:56.852Z",
+      "durationSeconds": 1.185,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    }
+  ],
+  "setupCommand": "node scripts/audit/maintenance/lab.cjs",
+  "reportCommand": "node scripts/audit/maintenance/report.cjs",
+  "sealCommand": "node scripts/audit/maintenance/finalize.cjs",
+  "setupExitCodeObserved": 0,
+  "reportExitCodeObserved": 0,
+  "scope": "Phase terminal stdout/stderr and exit codes are preserved. Setup/report codes observed in tool returns; no invented durations."
+}

@@ -1,0 +1,7 @@
+page.goto: Target page, context or browser has been closed
+Call log:
+[2m  - navigating to "https://localhost/admin", waiting until "load"[22m
+
+    at logout (D:\Riovoley\riovoley\scripts\audit\android\authenticated-webview.cjs:74:15)
+    at async verify (D:\Riovoley\riovoley\scripts\audit\android\authenticated-webview.cjs:28:65)
+    at async D:\Riovoley\riovoley\scripts\audit\android\authenticated-webview.cjs:82:4

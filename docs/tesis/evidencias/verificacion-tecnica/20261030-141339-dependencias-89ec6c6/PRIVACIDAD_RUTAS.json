@@ -1,0 +1,6 @@
+{
+  "files": [
+    "seguridad\\cargadores-rojo.stdout.log"
+  ],
+  "scope": "Nombres de perfiles Windows en rutas temporales, sin alterar estados, cantidades ni aserciones."
+}

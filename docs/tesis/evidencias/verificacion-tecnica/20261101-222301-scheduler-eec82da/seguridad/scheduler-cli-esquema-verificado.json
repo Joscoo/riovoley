@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-11-01T22:32:26.202Z",
+  "cliVersion": "2.122.0",
+  "source": "API value normalizado como digest; formato64hex; la tabla oficial de CLI lo rotula DIGEST",
+  "rows": 12,
+  "allDigestsValid": true,
+  "targetAbsent": true,
+  "digestsOrValuesPublished": false,
+  "productionChanged": false,
+  "reference": "https://github.com/supabase/cli/blob/v2.122.0/apps/cli/src/commands/secrets/secrets.format.ts"
+}

@@ -1,0 +1,16 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "install",
+    "--ignore-scripts",
+    "--no-audit",
+    "--no-fund"
+  ],
+  "start": "2026-10-31T19:11:59.031Z",
+  "end": "2026-10-31T19:12:10.026Z",
+  "durationSeconds": 10.995,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": ".e2e-local\\spikes\\merge-ci-1793473918793"
+}

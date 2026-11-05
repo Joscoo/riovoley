@@ -1,0 +1,11 @@
+{
+  "observedAt": "2026-11-01T16:37:59.874Z",
+  "method": "GET",
+  "route": "/auth/v1/health",
+  "status": 200,
+  "durationSeconds": 1.001,
+  "loginPerformed": false,
+  "userDataRequested": false,
+  "rawResponseSaved": false,
+  "version": "v2.197.0"
+}

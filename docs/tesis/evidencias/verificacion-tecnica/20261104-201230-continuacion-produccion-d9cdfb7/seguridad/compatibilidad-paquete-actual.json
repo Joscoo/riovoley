@@ -1,0 +1,104 @@
+{
+  "checkedAt": "2026-11-04T20:14:49.678Z",
+  "baselineFingerprint": "15b9d9e869fb5113263c485714009878",
+  "currentFingerprint": "15b9d9e869fb5113263c485714009878",
+  "fingerprintMatches": true,
+  "primaryForwardHashMatches": true,
+  "primaryReturnHashMatches": true,
+  "files": [
+    {
+      "file": "database/security/production-proposal/20261031211612_riovoley_security_production_proposal.sql",
+      "sha256": "c61f457792f684d22dd3c8ffafcd1b4280dfefafdd66da382943f44347322fb6"
+    },
+    {
+      "file": "database/security/production-proposal/20261031211612_riovoley_security_return_proposal.sql",
+      "sha256": "c27856e19b750e9f430c57cbb736fff3138bc23197564a7816c367664ff928b3"
+    },
+    {
+      "file": "database/security/production-proposal/20261101013935_reporting_service_grants_proposal.sql",
+      "sha256": "4c6c9fb9771751b1e0f15920faab664a9400c8f8b39b7288db97e7fdf0ad0d0d"
+    },
+    {
+      "file": "database/security/production-proposal/20261101013935_reporting_service_return_proposal.sql",
+      "sha256": "5c0904bdd90d93a8d8def5ef780aef5a0a1a44570ab9ed54db78213e599bf333"
+    }
+  ],
+  "edgeRevisionComparison": [
+    {
+      "slug": "send-email",
+      "previousVersion": 19,
+      "currentVersion": 20,
+      "versionMatches": false,
+      "jwtMatches": true,
+      "status": "ACTIVE"
+    },
+    {
+      "slug": "update-user-password",
+      "previousVersion": 20,
+      "currentVersion": 21,
+      "versionMatches": false,
+      "jwtMatches": true,
+      "status": "ACTIVE"
+    },
+    {
+      "slug": "delete-auth-user",
+      "previousVersion": 5,
+      "currentVersion": 6,
+      "versionMatches": false,
+      "jwtMatches": true,
+      "status": "ACTIVE"
+    },
+    {
+      "slug": "generate-report",
+      "previousVersion": 10,
+      "currentVersion": 11,
+      "versionMatches": false,
+      "jwtMatches": true,
+      "status": "ACTIVE"
+    },
+    {
+      "slug": "generate-scheduled-reports",
+      "previousVersion": 10,
+      "currentVersion": 11,
+      "versionMatches": false,
+      "jwtMatches": true,
+      "status": "ACTIVE"
+    },
+    {
+      "slug": "delete-report-run",
+      "previousVersion": 6,
+      "currentVersion": 7,
+      "versionMatches": false,
+      "jwtMatches": true,
+      "status": "ACTIVE"
+    },
+    {
+      "slug": "sync-mobile-device",
+      "previousVersion": 8,
+      "currentVersion": 9,
+      "versionMatches": false,
+      "jwtMatches": true,
+      "status": "ACTIVE"
+    },
+    {
+      "slug": "send-push",
+      "previousVersion": 14,
+      "currentVersion": 15,
+      "versionMatches": false,
+      "jwtMatches": true,
+      "status": "ACTIVE"
+    },
+    {
+      "slug": "send-payment-reminders",
+      "previousVersion": 9,
+      "currentVersion": 10,
+      "versionMatches": false,
+      "jwtMatches": true,
+      "status": "ACTIVE"
+    }
+  ],
+  "allEdgeRevisionsMatch": false,
+  "readOnly": true,
+  "productionApplied": false,
+  "scope": "Coincidencia de metadatos, bytes SQL y numeros de revision; no nueva descarga o equivalencia byte a byte de las fuentes Cloud."
+}

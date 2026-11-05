@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/react-scripts/bin/react-scripts.js",
+    "test",
+    "--watchAll=false",
+    "--runInBand",
+    "--coverage",
+    "--coverageReporters=json-summary",
+    "--coverageReporters=lcov",
+    "--coverageDirectory=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261030-151554-preparacion-produccion-28e48d2\\unitarias\\cobertura",
+    "--json",
+    "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261030-151554-preparacion-produccion-28e48d2\\unitarias\\jest-resultados.json"
+  ],
+  "start": "2026-10-31T19:09:53.357Z",
+  "end": "2026-10-31T19:11:38.545Z",
+  "durationSeconds": 105.188,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

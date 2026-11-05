@@ -1,0 +1,10 @@
+{
+  "at": "2026-11-05T14:52:06.257Z",
+  "pauseSpansDays": true,
+  "apkBuildPreserved": true,
+  "dockerRestartedLocally": true,
+  "localBackendIdentityVerified": true,
+  "approxAvailableMemoryMiB": 3219,
+  "userApplicationsClosedByAgent": false,
+  "physicalDeviceUsed": false
+}

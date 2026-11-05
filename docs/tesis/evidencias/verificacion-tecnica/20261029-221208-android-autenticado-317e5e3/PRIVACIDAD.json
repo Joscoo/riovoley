@@ -1,0 +1,15 @@
+{
+  "textFilesChecked": 828,
+  "embeddedArchivesChecked": 0,
+  "redactedCopies": [
+    "unitarias\\cobertura-jest-final\\lcov-report\\src\\config\\googleCalendar.js.html",
+    "unitarias\\cobertura-jest-final\\lcov-report\\src\\features\\athletes\\presentation\\components\\AtletasManager.js.html",
+    "unitarias\\cobertura-jest-final\\lcov-report\\src\\features\\auth-session\\presentation\\components\\Login.js.html",
+    "unitarias\\cobertura-jest-final\\lcov-report\\src\\features\\user-management\\presentation\\components\\shared\\UserForm.js.html",
+    "unitarias\\cobertura-jest-final\\lcov-report\\src\\utils\\supabaseDebug.js.html"
+  ],
+  "unresolved": [],
+  "unresolvedArchiveEntries": [],
+  "images": "Solo fixtures locales. Se revisan además capturas representativas y contextos; no se pretende certificar OCR exhaustivo.",
+  "scope": "Valores de claves/contraseñas locales y variables sensibles institucionales, JWT, claves Supabase y correos; incluye ZIP base64 de los reportes HTML. Redacciones de copias, sin alterar estados ni cantidades."
+}

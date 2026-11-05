@@ -1,0 +1,11 @@
+{
+  "startedAt": "2026-11-05T15:29:44.143Z",
+  "baseCommit": "e903a31788acde429bff07fe27f2b8e8a6b12135",
+  "scope": "Correccion de continuaciones de notificaciones tras logout, regresion y compilacion local.",
+  "appSourceSha256": "40c9fc5c6ee18248a32d2578ce47a2cffe60bc22b81ca63bc9961afa82caf15d",
+  "productionChanged": false,
+  "credentialsRequested": false,
+  "releaseSigningUsed": false,
+  "deployed": false,
+  "previousPointersPreserved": ".e2e-local/native-ota-contexts/20261105-152944"
+}

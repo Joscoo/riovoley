@@ -1,0 +1,12 @@
+[
+  {
+    "file": "android/release-smoke-offline-fallo.json",
+    "stage": "DEVICE_OFFLINE_NOT_PROVEN",
+    "failedAt": "2026-11-04T21:31:42.924Z"
+  },
+  {
+    "file": "android/release-smoke-offline-fallo-1793828311299-8c2978.json",
+    "stage": "ANDROID_UI_ANR_BLOCKS_VISUAL_SMOKE",
+    "failedAt": "2026-11-04T21:38:31.298Z"
+  }
+]

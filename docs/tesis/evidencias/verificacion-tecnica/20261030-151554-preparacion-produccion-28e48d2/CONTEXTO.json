@@ -1,0 +1,9 @@
+{
+  "createdAt": "2026-10-30T15:15:55.072Z",
+  "commit": "28e48d22a881704fc7c4d2197fdbec8bcedf841a",
+  "scope": "Corrección de alertas y preparación revisable de producción. Solo lecturas institucionales de metadatos; pruebas y escrituras de fixtures únicamente locales. Sin despliegue, merge, migración institucional ni cambios de secretos o permisos.",
+  "os": "Windows_NT",
+  "release": "10.0.26300",
+  "architecture": "x64",
+  "node": "v24.18.0"
+}

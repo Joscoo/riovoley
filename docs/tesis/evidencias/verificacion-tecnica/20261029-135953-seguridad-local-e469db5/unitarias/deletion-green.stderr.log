@@ -1,0 +1,11 @@
+PASS src/features/user-management/infrastructure/repositories/deletion.security.test.js
+  √ rechazo de autorización Auth deja intactas las tablas de usuario (11 ms)
+  √ objetivo autorizado se comprueba antes de eliminar filas relacionadas
+
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        2.25 s
+Ran all test suites within paths "src/features/user-management/infrastructure/repositories/deletion.security.test.js".
+Test results written to: docs\tesis\evidencias\verificacion-tecnica\20261029-135953-seguridad-local-e469db5\unitarias\deletion-green.json
+

@@ -1,0 +1,15 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/unit/production-preflight.test.cjs",
+    "tests/unit/ota-production-preflight.test.cjs"
+  ],
+  "start": "2026-11-04T22:37:39.605Z",
+  "end": "2026-11-04T22:37:43.872Z",
+  "durationSeconds": 4.267,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

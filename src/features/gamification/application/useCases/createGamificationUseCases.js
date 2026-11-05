@@ -1695,6 +1695,7 @@ const syncAthleteStageState = async ({
   achievements,
   leaderboardSections,
   syncedAt,
+  persist = true,
 }) => {
   if (typeof repository.getAthleteStageCatalog !== 'function') {
     return {
@@ -1748,7 +1749,7 @@ const syncAthleteStageState = async ({
     || storedCurrentStage.currentStageSlug !== currentStage.currentStageSlug
     || storedCurrentStage.progressHint !== currentStage.progressHint;
 
-  if (hasCurrentStageChanged && typeof repository.upsertCurrentStage === 'function') {
+  if (persist && hasCurrentStageChanged && typeof repository.upsertCurrentStage === 'function') {
     await repository.upsertCurrentStage(currentStage);
   }
 
@@ -1758,7 +1759,7 @@ const syncAthleteStageState = async ({
   }));
   const alreadyAwarded = normalizedHistory.some((entry) => entry.stageSlug === currentStage.currentStageSlug);
 
-  if (!alreadyAwarded && typeof repository.insertStageHistory === 'function') {
+  if (persist && !alreadyAwarded && typeof repository.insertStageHistory === 'function') {
     const inserted = await repository.insertStageHistory({
       studentId,
       stageSlug: currentStage.currentStageSlug,
@@ -3633,7 +3634,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         leaderboards: leaderboardSections,
         syncedAt: isoProvider(),
       });
-      if (typeof repository.replaceCampaignProgress === 'function') {
+      if (repository.canWriteDerivedState !== false && typeof repository.replaceCampaignProgress === 'function') {
         await repository.replaceCampaignProgress(student.id, derivedCampaignRows);
       }
       const campaignRowsToFormat = storedCampaignProgress?.length >= derivedCampaignRows.length && derivedCampaignRows.length > 0
@@ -3658,7 +3659,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
         },
         syncedAt: isoProvider(),
       });
-      if (typeof repository.replaceHiddenRewards === 'function') {
+      if (repository.canWriteDerivedState !== false && typeof repository.replaceHiddenRewards === 'function') {
         await repository.replaceHiddenRewards(student.id, derivedHiddenRewardRows);
       }
       const hiddenRewardRowsToFormat = storedHiddenRewards?.length >= derivedHiddenRewardRows.length && derivedHiddenRewardRows.length > 0
@@ -3739,6 +3740,7 @@ export const createGamificationUseCases = (repository, deps = {}) => {
       });
       const athleteStageState = await syncAthleteStageState({
         repository,
+        persist: repository.canWriteDerivedState !== false,
         studentId: student.id,
         stageCatalog: athleteStageCatalog,
         profile: effectiveProfile,

@@ -1,0 +1,173 @@
+{
+  "createdAt": "2026-11-05T20:51:19.325Z",
+  "algorithm": "SHA-256",
+  "baseCommit": "ade1d1748dc77f13d75da2b1248810f7b1a65386",
+  "note": "Excludes this manifest and private artifacts. Do not modify after sealing.",
+  "entries": [
+    {
+      "file": "COMANDOS.json",
+      "bytes": 2291,
+      "sha256": "dd14b05b8a4c2b7c5bb518151844fcedd18e16a2e61ae4fb74f73d68f3fa2fd8"
+    },
+    {
+      "file": "CONTEXTO.json",
+      "bytes": 901,
+      "sha256": "d08bdd4f2966f2d6d2b4c685b0feae4976cddbe203a7e26e1999999d93ba783b"
+    },
+    {
+      "file": "FUENTES_EVALUADAS.json",
+      "bytes": 1189,
+      "sha256": "ac8cbfac29d01431c25f8e63e7546757849f30dcf514488e748828c110f8cae1"
+    },
+    {
+      "file": "INFORME_VERIFICACION_TECNICA.md",
+      "bytes": 7367,
+      "sha256": "55e579712960321d616fcd02636f4964d55a4e36229b41febf8c34a882fb2697"
+    },
+    {
+      "file": "integracion/baseline.meta.json",
+      "bytes": 316,
+      "sha256": "51839830e99cd829d41530f186f7eb20797e64443631ba3341c60d4d107a9fa5"
+    },
+    {
+      "file": "integracion/baseline.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/baseline.stdout.log",
+      "bytes": 1054,
+      "sha256": "e6c4b6d2c22a25705de5f1cc026eaeb27ab294fb5bcbff8082d1a82014fb48f6"
+    },
+    {
+      "file": "integracion/estado-final-laboratorio.json",
+      "bytes": 1247,
+      "sha256": "94ddfaec43b7711afc2cad388642419127c06bd0210eaf85eeb30f1d49f5a65b"
+    },
+    {
+      "file": "integracion/fixture-antes.json",
+      "bytes": 1113,
+      "sha256": "efb64977fc90d156a834172a340569ce36c225c7b9b65b581cdc5b77bf8eb207"
+    },
+    {
+      "file": "integracion/fixture-despues-baseline.json",
+      "bytes": 1145,
+      "sha256": "16f378df1b5b20151a2935016b4bd214c395706cf4c31ae269739dc66657d0b5"
+    },
+    {
+      "file": "integracion/fixture-despues-green-1793911496805-25b115.json",
+      "bytes": 1145,
+      "sha256": "16f378df1b5b20151a2935016b4bd214c395706cf4c31ae269739dc66657d0b5"
+    },
+    {
+      "file": "integracion/fixture-despues-green.json",
+      "bytes": 1145,
+      "sha256": "16f378df1b5b20151a2935016b4bd214c395706cf4c31ae269739dc66657d0b5"
+    },
+    {
+      "file": "integracion/fixture-despues-red.json",
+      "bytes": 1145,
+      "sha256": "16f378df1b5b20151a2935016b4bd214c395706cf4c31ae269739dc66657d0b5"
+    },
+    {
+      "file": "integracion/green-final.meta.json",
+      "bytes": 316,
+      "sha256": "e3babd876880dfebe6a6b131522e5fbc545bba0e5959c7998c8a5482245f6f11"
+    },
+    {
+      "file": "integracion/green-final.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/green-final.stdout.log",
+      "bytes": 7525,
+      "sha256": "a7e32c71bb1d38c92733795127e6811bc14684a883663a8751f73eaa552bf5ea"
+    },
+    {
+      "file": "integracion/green.meta.json",
+      "bytes": 316,
+      "sha256": "ffd0e6bb631a1b1272c137c220d1d6de0152881461e94aa093910aafdff58bda"
+    },
+    {
+      "file": "integracion/green.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/green.stdout.log",
+      "bytes": 6939,
+      "sha256": "135db4a3acdc168ad191344716497eec1eabaf8c26dfef4baedf79ef97dc5c3c"
+    },
+    {
+      "file": "integracion/identidades-sql.json",
+      "bytes": 1195,
+      "sha256": "78739768a703e30e5c8c5cf621c79502b317404d0a9c54e7a36c30effcb0cd7a"
+    },
+    {
+      "file": "integracion/red.meta.json",
+      "bytes": 316,
+      "sha256": "81a25b2c928a1a791f8b09c2634891e1bf0219a4294f3e005b711a44cc36f740"
+    },
+    {
+      "file": "integracion/red.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/red.stdout.log",
+      "bytes": 877,
+      "sha256": "030f036b47542da0b9b878df28ecbadf00843713d057d25249c7655474ba4a5c"
+    },
+    {
+      "file": "INTEGRIDAD.json",
+      "bytes": 522,
+      "sha256": "3024f79416b0a73d241640b1f4773fe782866d6a5c8518d0d61dc5056f563b41"
+    },
+    {
+      "file": "MATRIZ_VERIFICACIONES_TESIS.md",
+      "bytes": 4798,
+      "sha256": "f4ada0015fcfa0128cf2957ed183f8c920a1aa6f38366d6a4e48476526046f2e"
+    },
+    {
+      "file": "PRIVACIDAD.json",
+      "bytes": 330,
+      "sha256": "71df3f79ef1bec61ed1065826b4fea3e153ab168028d922ac9fd65fdc562cad6"
+    },
+    {
+      "file": "PROPUESTA_AISLAMIENTO_SQL.md",
+      "bytes": 4287,
+      "sha256": "63b2600b4b2acdf576abed2cb029a00c86ea95a0265cb54f863921f34752de68"
+    },
+    {
+      "file": "RESULTADOS_AUTOMATIZADOS.json",
+      "bytes": 2250,
+      "sha256": "0300157a910fcea36d0737fb8b8c8a7ec289c1725f461a2dbbf8e696e263b1c4"
+    },
+    {
+      "file": "RESULTADOS_PARA_TESIS_4_5.md",
+      "bytes": 2082,
+      "sha256": "c065b310796e97687df8a88458ed21f0eed7ec59bc14b39cbd45524982bcbefc"
+    },
+    {
+      "file": "seguridad/changelog-consulta.json",
+      "bytes": 337,
+      "sha256": "28e5a1fb23e1aaee409e50f98a3a30852c21eb89386321d65d9e15340b4cb07f"
+    },
+    {
+      "file": "seguridad/documentacion-referencias.json",
+      "bytes": 481,
+      "sha256": "58bb743193fa68e333d779a2028c20df7a4b6f5ca6931e66cfb057de965e4036"
+    },
+    {
+      "file": "seguridad/propuestas-sql-sin-cambios.json",
+      "bytes": 1091,
+      "sha256": "0e75a45dd4d4e48c69a956b61bb987a40631e58991e3a3e34643f1d71ccc992b"
+    },
+    {
+      "file": "seguridad/revision-independiente.json",
+      "bytes": 522,
+      "sha256": "5d03081865e2d04fb7ba1fc9a698ac3df37be1d97178c58ec5ef96406fec7025"
+    }
+  ]
+}

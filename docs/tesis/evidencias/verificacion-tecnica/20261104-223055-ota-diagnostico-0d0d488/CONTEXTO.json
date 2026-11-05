@@ -1,0 +1,10 @@
+{
+  "startedAt": "2026-11-04T22:30:55.152Z",
+  "baseCommit": "0d0d488ae4651b4609c13abc572733cbd06999e8",
+  "scope": "Control de visibilidad de diagnostico OTA; validacion local sin llamadas reales a proveedor o cambios institucionales",
+  "productChangesPlanned": [
+    "src/App.js"
+  ],
+  "productionChanged": false,
+  "credentialsRequested": false
+}

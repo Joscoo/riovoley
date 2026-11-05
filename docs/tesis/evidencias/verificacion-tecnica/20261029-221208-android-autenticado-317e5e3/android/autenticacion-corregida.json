@@ -1,0 +1,345 @@
+{
+  "planned": 13,
+  "executed": 4,
+  "notExecuted": 9,
+  "passed": 3,
+  "failed": 1,
+  "state": "FALLIDO",
+  "cases": [
+    {
+      "code": "N-artefacto",
+      "name": "El paquete instalado coincide con el APK privado compilado",
+      "state": "APROBADO",
+      "seconds": 0.25
+    },
+    {
+      "code": "N-admin-login",
+      "name": "Inicio real de sesión y panel: admin",
+      "state": "APROBADO",
+      "seconds": 10.095
+    },
+    {
+      "code": "N-admin-persistencia",
+      "name": "Sesión conservada tras recargar WebView: admin",
+      "state": "APROBADO",
+      "seconds": 2.216
+    },
+    {
+      "code": "N-admin-logout",
+      "name": "Cierre real de sesión y denegación del panel propio: admin",
+      "state": "FALLIDO",
+      "seconds": 2.601,
+      "error": "page.goto: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - navigating to \"https://localhost/admin\", waiting until \"load\"\u001b[22m\n"
+    }
+  ],
+  "cleanupFailures": [],
+  "backend": "Supabase Auth/REST/PostgreSQL local reales; sin mocks ni almacenamiento de tokens",
+  "before": {
+    "rows": 1,
+    "rewards": 1,
+    "ledger_rows": 1,
+    "xp": 8
+  },
+  "after": {
+    "rows": 1,
+    "rewards": 1,
+    "ledger_rows": 1,
+    "xp": 8
+  },
+  "responses": [
+    {
+      "path": "/rest/v1/rpc/check_login_allowed",
+      "status": 200,
+      "method": "POST"
+    },
+    {
+      "path": "/auth/v1/token",
+      "status": 200,
+      "method": "POST"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/rpc/claim_daily_login_reward",
+      "status": 200,
+      "method": "POST"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/rpc/record_login_attempt",
+      "status": 204,
+      "method": "POST"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 204,
+      "method": "PATCH"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "HEAD"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "HEAD"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payment_types",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/training_categories",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/announcements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/announcements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "HEAD"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "HEAD"
+    },
+    {
+      "path": "/rest/v1/payment_types",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/training_categories",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/announcements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/announcements",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "path": "/auth/v1/logout",
+      "status": 204,
+      "method": "POST"
+    },
+    {
+      "path": "/rest/v1/gamification_student_achievements",
+      "status": 401,
+      "method": "GET"
+    },
+    {
+      "path": "/rest/v1/gamification_student_achievements",
+      "status": 401,
+      "method": "GET"
+    }
+  ],
+  "blockedBrowserRequests": [],
+  "artifactSha256": "c1fe951b44ac76c7b62c936f26823d230267b74f73544eac51a943e28d373a7e",
+  "scope": "WebView real de APK debug en emulator-5580; HTTP loopback por túnel ADB. No verifica transporte TLS institucional, FCM, Resend ni OTA. Se deniega permiso de notificaciones; OTA apunta a puerto loopback cerrado.",
+  "apkDistributed": false
+}

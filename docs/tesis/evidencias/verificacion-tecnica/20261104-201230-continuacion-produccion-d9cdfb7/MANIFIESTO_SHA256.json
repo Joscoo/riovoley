@@ -1,0 +1,248 @@
+{
+  "createdAt": "2026-11-04T20:25:19.119Z",
+  "algorithm": "SHA-256",
+  "baseCommit": "d9cdfb7a91ff5971e138ac4abd751dd76d7a080a",
+  "note": "Excluye este manifiesto y archivos privados; no modificar tras el sellado.",
+  "entries": [
+    {
+      "file": "android/artefacto-pendiente-verificado.json",
+      "bytes": 565,
+      "sha256": "0600e957afbd30b2178fe58b15b5e290a43ff1eef02083b8078aa75b4ba2c47d"
+    },
+    {
+      "file": "android/precondiciones-recursos-finales.json",
+      "bytes": 332,
+      "sha256": "74f7e62224fe458a1879f1e445f0296b5f51265eafd794da0dabc88643419294"
+    },
+    {
+      "file": "android/precondiciones-recursos.json",
+      "bytes": 437,
+      "sha256": "b7ca77871788168de960cd9eaf3d8142dca1fa048943bfc7bca0a7f2a84d4229"
+    },
+    {
+      "file": "COMANDOS.json",
+      "bytes": 3655,
+      "sha256": "3cfefec20de817153c9570b66e2a669baeb2cb57eaa107cc08c47ee9ff26b781"
+    },
+    {
+      "file": "CONTEXTO.json",
+      "bytes": 333,
+      "sha256": "a31a92b220bd2ce7f7522ef986c1495586feac58c1caea61116ef224bad9066d"
+    },
+    {
+      "file": "FUENTES_EVALUADAS.json",
+      "bytes": 835,
+      "sha256": "1ad39f1792823beb8c725c13ea4a1a3d5e1ed7c3198d36a29184d7365b960090"
+    },
+    {
+      "file": "HERRAMIENTAS_Y_ALCANCE.json",
+      "bytes": 636,
+      "sha256": "e2f11c72dcc2f296814b9b4fbc09ac56a2d97ad347d092e87948b4b6b655056e"
+    },
+    {
+      "file": "INFORME_VERIFICACION_TECNICA.md",
+      "bytes": 9875,
+      "sha256": "f35c2a00100ea7aab108c938d28fbe9474beff53acd802ffb4731499f94af9f3"
+    },
+    {
+      "file": "integracion/ci-base-readback.json",
+      "bytes": 246,
+      "sha256": "4535da8b11aad6b212840dabdcb99da9b20d6e859b3a3ab5586b6e2160f5d6a0"
+    },
+    {
+      "file": "integracion/ci-base-readback.meta.json",
+      "bytes": 266,
+      "sha256": "45cc5670b0fd15a45655cc0cbbd60925cd22cb7b975bb7815aeb4670fcd807ed"
+    },
+    {
+      "file": "INTEGRIDAD.json",
+      "bytes": 479,
+      "sha256": "1c236b072655a0ea8e1d63a4ae92e4f5df85a7a700b06eea36e3c4fcd9b8fa41"
+    },
+    {
+      "file": "MATRIZ_VERIFICACIONES_TESIS.md",
+      "bytes": 5916,
+      "sha256": "0b09917aa916948ae49ec77c01ab085a0274f197c66f7b1c62a7a108c00a1dc4"
+    },
+    {
+      "file": "PAQUETE_PARA_REVISION.md",
+      "bytes": 3176,
+      "sha256": "90cc8f6b1852469e39bcd2edfc0402ded6c7021618b4de396c140d84eb794665"
+    },
+    {
+      "file": "PRIVACIDAD.json",
+      "bytes": 366,
+      "sha256": "ec73f3a5bcf1fa9b71bd46d35f8cb4fd6a1cf98ed2fa1342a29865639e05200c"
+    },
+    {
+      "file": "RESULTADOS_AUTOMATIZADOS.json",
+      "bytes": 1937,
+      "sha256": "9af0b8c2fada4505dde28825ccfca48d88a2ea0a63f219e9e17ff72c1b156414"
+    },
+    {
+      "file": "RESULTADOS_PARA_TESIS_4_5.md",
+      "bytes": 2647,
+      "sha256": "fa6372f967f75a11d54608b08bc54098cf8608a0c2fa76079a632864d9be979d"
+    },
+    {
+      "file": "seguridad/cabeceras-candidato-vs-produccion.json",
+      "bytes": 1905,
+      "sha256": "0f47ad7dbe96f3af366af7691df71e76807b12f07467f95c24af370b48a2c508"
+    },
+    {
+      "file": "seguridad/cloud-configuracion-lectura.meta.json",
+      "bytes": 282,
+      "sha256": "ff780a0fec69261023b7c157f2cb15cf54d9554544e0b8cdd3325d89203ff947"
+    },
+    {
+      "file": "seguridad/cloud-configuracion-lectura.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/cloud-configuracion-lectura.stdout.log",
+      "bytes": 208,
+      "sha256": "4788a41218bee936a214c8941db147b29ea96a66afd815634d13622845e1c09d"
+    },
+    {
+      "file": "seguridad/compatibilidad-paquete-actual.json",
+      "bytes": 3042,
+      "sha256": "0cec7a2b50c50d85309b09bd72982acbdcd63e55f9b2f573868e1accd271d1e6"
+    },
+    {
+      "file": "seguridad/config-despliegue.meta.json",
+      "bytes": 374,
+      "sha256": "bcfc30ba1f25aabd88849e314b8187ab7c378a1cc049d327cb175c3179516f05"
+    },
+    {
+      "file": "seguridad/config-proyecto.meta.json",
+      "bytes": 346,
+      "sha256": "b01c74bc129d86c36bbcbb8b3c66aed75b3406d5e27903dee4eebf7bb072a9aa"
+    },
+    {
+      "file": "seguridad/config-supabase-secretos.meta.json",
+      "bytes": 273,
+      "sha256": "d0ffb0fe6e191af408edbad403166ec249bce2a117e181f5a93ae86eaa6de321"
+    },
+    {
+      "file": "seguridad/consulta-precondiciones.sql",
+      "bytes": 1263,
+      "sha256": "fc3ec336e1a507b7d1e012b9d041f7345cf6c8c3ad5764e8764ca79b7efae942"
+    },
+    {
+      "file": "seguridad/consultas-mcp.json",
+      "bytes": 794,
+      "sha256": "594f9150b2aee546e044a58df5e6e9dfdfb41f9880353ac65359de5ab90e612e"
+    },
+    {
+      "file": "seguridad/despliegue-publico.json",
+      "bytes": 2949,
+      "sha256": "9b35b066c2dc5b949e90a997eb6fda93091fa050aabc7c6b4a9ad41cbcee739d"
+    },
+    {
+      "file": "seguridad/edge-bundles-actuales.json",
+      "bytes": 3648,
+      "sha256": "8e41dd95ed971f6df7c4ba8fc36a73345cb5e103c1ed92259f5360b1a139d194"
+    },
+    {
+      "file": "seguridad/fuente-consulta-huella.sql",
+      "bytes": 8357,
+      "sha256": "5dbce361182ff1cf339efe5fbf30ee67410b4ce250f253594d63f13aaa48c208"
+    },
+    {
+      "file": "seguridad/funciones-privilegiadas-metadatos.json",
+      "bytes": 5950,
+      "sha256": "c918c872cdde803e4dcf6a2c07b1629f4a199f7ea971891e447796ac5a9d1efb"
+    },
+    {
+      "file": "seguridad/metadatos-mcp-actuales.json",
+      "bytes": 12686,
+      "sha256": "63977daa8052318478d94bc98270f6afbdce8cc85d02a8a1eaf6c3d8f14e88d7"
+    },
+    {
+      "file": "seguridad/notas-plataforma.json",
+      "bytes": 685,
+      "sha256": "2b039d5e2f5f245cc6578c92719956d25cde8ea6d94f82263e1528cffb5773af"
+    },
+    {
+      "file": "seguridad/npm-audit-actual-auxiliar.meta.json",
+      "bytes": 346,
+      "sha256": "1f5d72d43b3a754ca959868003528d2741e9d0d80f18546c3ad013bb0e40172d"
+    },
+    {
+      "file": "seguridad/npm-audit-actual-auxiliar.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/npm-audit-actual-auxiliar.stdout.log",
+      "bytes": 362,
+      "sha256": "e2cdd1f35ea01d633ce6cb248f2627d120097364ab272d8b13543dec89722f65"
+    },
+    {
+      "file": "seguridad/npm-audit-actual-functions.meta.json",
+      "bytes": 347,
+      "sha256": "1defb3f469c37f5d49e1e623dcf19999596a3ea1f81d82007f8d1bc6d7374b37"
+    },
+    {
+      "file": "seguridad/npm-audit-actual-functions.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/npm-audit-actual-functions.stdout.log",
+      "bytes": 365,
+      "sha256": "36ecb6e347afd1bfa20df891f9041ed14d23fd56172595b8639b9d66daa87268"
+    },
+    {
+      "file": "seguridad/npm-audit-actual-raiz.meta.json",
+      "bytes": 339,
+      "sha256": "6c73366cf2a1707edcc2f0b706d427af6d199be2b8929093d86d00068dabf9a2"
+    },
+    {
+      "file": "seguridad/npm-audit-actual-raiz.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/npm-audit-actual-raiz.stdout.log",
+      "bytes": 366,
+      "sha256": "ae71244005570cf2d111590643078340622e91fefc43bc61402495c2182d8114"
+    },
+    {
+      "file": "seguridad/paquete-sql-identificado.json",
+      "bytes": 1657,
+      "sha256": "3c70884b1b38b734dead3174e2a3c22f0b98bec873c53564da0845cfedaf9748"
+    },
+    {
+      "file": "seguridad/publico-https-actual.meta.json",
+      "bytes": 277,
+      "sha256": "b8e0751d956612318b35d1d1a58902aa23b66ad5482bca754a94591e27ec0917"
+    },
+    {
+      "file": "seguridad/publico-https-actual.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/publico-https-actual.stdout.log",
+      "bytes": 289,
+      "sha256": "0fda40e789f403a6d87252514f444e1b2ac0909d34402a8ffb4d8c9b214d35ca"
+    },
+    {
+      "file": "seguridad/sql-cuatro-archivos-revalidados.json",
+      "bytes": 1107,
+      "sha256": "ad8b65646fd47002c27a57625725d9a29c87791441de330729f7e8e3982f4534"
+    },
+    {
+      "file": "seguridad/supabase-configuracion-nombres.json",
+      "bytes": 928,
+      "sha256": "55907a801324535d4a59045a033fa0ed01cf1cb4c47c6c23c5ef7effe761ca39"
+    },
+    {
+      "file": "seguridad/vercel-configuracion-nombres.json",
+      "bytes": 3145,
+      "sha256": "7622d0852e3e50e1151592de64eae09a1032ccdd55ccaf73d74b15b51d8aed95"
+    }
+  ]
+}

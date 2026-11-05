@@ -1,0 +1,21 @@
+{
+  "at": "2026-11-05T15:27:53.571Z",
+  "previousManifests": 24,
+  "previousEntries": 9424,
+  "previousMatching": true,
+  "nativeCases": 14,
+  "nativePassed": 14,
+  "unitCases": 6,
+  "unitPassed": 6,
+  "classifiedErrors": 0,
+  "classification": "NO_REPRODUCIDO",
+  "apkHashMatches": true,
+  "newBuild": false,
+  "productChanged": false,
+  "emulatorStopped": true,
+  "productionChanged": false,
+  "linksChecked": 65,
+  "brokenLinks": 0,
+  "privacyIssues": 0,
+  "documents": 3
+}

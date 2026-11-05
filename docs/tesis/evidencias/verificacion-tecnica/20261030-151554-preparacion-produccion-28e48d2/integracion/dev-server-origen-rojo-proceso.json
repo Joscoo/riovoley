@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\Riovoley\\riovoley\\node_modules\\react-scripts\\scripts\\start.js"
+  ],
+  "start": "2026-10-30T15:31:11.049Z",
+  "end": "2026-10-30T15:32:50.132Z",
+  "durationSeconds": 99.083,
+  "exitCode": 1,
+  "signal": null,
+  "intentionalStop": true,
+  "origin": "http://127.0.0.1:6101",
+  "scope": "Arranque CRA real, HTTP y HMR; se descargó el bundle sin ejecutar JavaScript de la app. Entorno REACT_APP exclusivamente local; no inicio de sesión ni proveedores externos."
+}

@@ -1,0 +1,41 @@
+TAP version 13
+# Subtest: excluye contraseñas de firma, proveedores y opciones Node del build web
+ok 1 - excluye contraseñas de firma, proveedores y opciones Node del build web
+  ---
+  duration_ms: 1.0135
+  type: 'test'
+  ...
+# Subtest: rechaza un backend distinto antes de compilar
+ok 2 - rechaza un backend distinto antes de compilar
+  ---
+  duration_ms: 1.2001
+  type: 'test'
+  ...
+# Subtest: rechaza secretos de servidor en la clave pública del APK
+ok 3 - rechaza secretos de servidor en la clave pública del APK
+  ---
+  duration_ms: 0.2261
+  type: 'test'
+  ...
+# Subtest: bloquea frontend desconocido suministrado como valor
+ok 4 - bloquea frontend desconocido suministrado como valor
+  ---
+  duration_ms: 0.1885
+  type: 'test'
+  ...
+# Subtest: el proceso CRA conserva dólares literales y no carga variables de dotenv del directorio
+ok 5 - el proceso CRA conserva dólares literales y no carga variables de dotenv del directorio
+  ---
+  duration_ms: 590.8447
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 692.2531
+

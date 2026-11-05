@@ -1,0 +1,75 @@
+{
+  "functions": [
+    {
+      "slug": "send-email",
+      "entrypointMatches": true,
+      "changedCapturedFiles": [
+        "_core/auth-admin/infrastructure/supabase-auth-admin-gateway.ts"
+      ]
+    },
+    {
+      "slug": "update-user-password",
+      "entrypointMatches": true,
+      "changedCapturedFiles": [
+        "_core/auth-admin/infrastructure/supabase-auth-admin-gateway.ts"
+      ]
+    },
+    {
+      "slug": "delete-auth-user",
+      "entrypointMatches": false,
+      "changedCapturedFiles": [
+        "delete-auth-user/index.ts"
+      ]
+    },
+    {
+      "slug": "generate-report",
+      "entrypointMatches": true,
+      "changedCapturedFiles": [
+        "_core/http/response.ts",
+        "_shared/reporting.ts"
+      ]
+    },
+    {
+      "slug": "generate-scheduled-reports",
+      "entrypointMatches": true,
+      "changedCapturedFiles": [
+        "_core/http/response.ts",
+        "_shared/reporting.ts"
+      ]
+    },
+    {
+      "slug": "delete-report-run",
+      "entrypointMatches": true,
+      "changedCapturedFiles": [
+        "_core/http/response.ts",
+        "_shared/reporting.ts"
+      ]
+    },
+    {
+      "slug": "sync-mobile-device",
+      "entrypointMatches": true,
+      "changedCapturedFiles": [
+        "_shared/cors.ts"
+      ]
+    },
+    {
+      "slug": "send-push",
+      "entrypointMatches": false,
+      "changedCapturedFiles": [
+        "send-push/index.ts",
+        "_shared/cors.ts",
+        "_core/push/infrastructure/firebase-push-gateway.ts"
+      ]
+    },
+    {
+      "slug": "send-payment-reminders",
+      "entrypointMatches": false,
+      "changedCapturedFiles": [
+        "send-payment-reminders/index.ts",
+        "_shared/cors.ts",
+        "_core/push/infrastructure/firebase-push-gateway.ts"
+      ]
+    }
+  ],
+  "note": "Igualdad de entrypoint no implica igualdad del comportamiento si cambian módulos compartidos."
+}

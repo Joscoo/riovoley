@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-11-04T20:21:55.785Z",
+  "command": [
+    "powershell",
+    "Get-CimInstance Win32_OperatingSystem"
+  ],
+  "exitCode": 0,
+  "memoryFreeMiB": 2109,
+  "dockerPipeAvailable": false,
+  "emulatorStarted": false,
+  "physicalDeviceUsed": false,
+  "userProcessesTerminated": false,
+  "nativeRuntimeCasesExecuted": 0
+}

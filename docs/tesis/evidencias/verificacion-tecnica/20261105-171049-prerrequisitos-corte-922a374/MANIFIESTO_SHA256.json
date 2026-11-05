@@ -1,0 +1,143 @@
+{
+  "createdAt": "2026-11-05T17:15:23.917Z",
+  "algorithm": "SHA-256",
+  "baseCommit": "922a3744b0c74b6e8ffcb9f340c6e1bfa754425d",
+  "note": "Excludes this manifest and private artifacts. Do not modify after sealing.",
+  "entries": [
+    {
+      "file": "COMANDOS.json",
+      "bytes": 2511,
+      "sha256": "8540afc89c9f30d4efcda4fdf44d75e172677bb5776cd53b67250ea3d61a640d"
+    },
+    {
+      "file": "CONTEXTO.json",
+      "bytes": 599,
+      "sha256": "2c4784f5778870c801b194de00af63304c640ecbd44c44b40767c7b3f477f476"
+    },
+    {
+      "file": "CRITERIOS_CORTE_Y_RETORNO.md",
+      "bytes": 6598,
+      "sha256": "1847aeda0d8cf5d090e930bacd18af40712f46eb72b1eda57d50ef9f1b81c7db"
+    },
+    {
+      "file": "FUENTES_EVALUADAS.json",
+      "bytes": 940,
+      "sha256": "339d030a24763076bc7409f72587a3b2827b4c213550eaa8c8fce854e12398d5"
+    },
+    {
+      "file": "INFORME_VERIFICACION_TECNICA.md",
+      "bytes": 6467,
+      "sha256": "8a74d232af7cb757623529605bdd49d84fe52255203b530d6fd201a6f8ed8f97"
+    },
+    {
+      "file": "integracion/sintaxis-colector.meta.json",
+      "bytes": 297,
+      "sha256": "27c9ca53829648defa0edd0384e5b5e57d6db842f9c47cb0b0dd74315b64b3a7"
+    },
+    {
+      "file": "integracion/sintaxis-colector.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/sintaxis-colector.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/sintaxis-informe.meta.json",
+      "bytes": 298,
+      "sha256": "3dc4e5b610349227125f0220b6fb7c3bfe45299f903ef11a494424a69081bdb1"
+    },
+    {
+      "file": "integracion/sintaxis-informe.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/sintaxis-informe.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "INTEGRIDAD.json",
+      "bytes": 489,
+      "sha256": "d4bd40efdfb0472fac3624340b107624d43d881d00a37d25a9e9c38cadec3a91"
+    },
+    {
+      "file": "MATRIZ_VERIFICACIONES_TESIS.md",
+      "bytes": 4324,
+      "sha256": "08bbb9aa55ac360e161ce0821320d9c60b6eba4943ff02677cfc5fa9e5676ff5"
+    },
+    {
+      "file": "PRIVACIDAD.json",
+      "bytes": 332,
+      "sha256": "ccf0de2a13e583201adb6e5afea4a01594c1c911a865bc3fe2c29b81edeee243"
+    },
+    {
+      "file": "RESULTADOS_AUTOMATIZADOS.json",
+      "bytes": 781,
+      "sha256": "de6b6aa1ca535082bb14e37d7ba91525a1f3b8d59f87e812e78feda7c9f3b9d6"
+    },
+    {
+      "file": "RESULTADOS_PARA_TESIS_4_5.md",
+      "bytes": 1948,
+      "sha256": "3cefeebd15b559c7fc21338b87dc48cbd1779ef6380598d96d4de780cebc38d8"
+    },
+    {
+      "file": "seguridad/canales-cliente-revisados.json",
+      "bytes": 2206,
+      "sha256": "6b7ce2eabc14b87953404f1977a85282e67d055dc389dee52c4efa159f9d3053"
+    },
+    {
+      "file": "seguridad/cli-version.meta.json",
+      "bytes": 302,
+      "sha256": "342fac744966690713db8d34e3cd201e2db4838ba648f623e3500f049f07cd8d"
+    },
+    {
+      "file": "seguridad/cli-version.stderr.log",
+      "bytes": 226,
+      "sha256": "bf11933a058912ffce4e77ff21ca61e6e7a282645b6ee5fdb8916f268bf36268"
+    },
+    {
+      "file": "seguridad/cli-version.stdout.log",
+      "bytes": 9,
+      "sha256": "4b915872e2e5b2677352bc77e324f279c249693031652c6badd4af3c45ddf409"
+    },
+    {
+      "file": "seguridad/documentacion-consultada.json",
+      "bytes": 512,
+      "sha256": "2e15488280fa91d14a2e45b1ca473007eead9cfd407968acdda295350071205e"
+    },
+    {
+      "file": "seguridad/documentacion-mcp.meta.json",
+      "bytes": 245,
+      "sha256": "bf2792092e9b7102924912a200a2b05d5b4a9359ca6043b9e3086f418ee7dcd6"
+    },
+    {
+      "file": "seguridad/plan-organizacion-mcp.json",
+      "bytes": 391,
+      "sha256": "f380a2fadd9e91b2b77badc714eabc65b0226181c07dd6cd2cbc04254a26b48b"
+    },
+    {
+      "file": "seguridad/proyecto-organizacion-mcp.json",
+      "bytes": 293,
+      "sha256": "ca8ef4fb457786a2cffe6a6953dd37c80194c0c913b9438fff537dbf3aac5249"
+    },
+    {
+      "file": "seguridad/respaldo-logico-existente.json",
+      "bytes": 288,
+      "sha256": "df4070c8a7d9585fe20cf4919b8389f29e5f84b5225ba72bcfb0df5baf58ca71"
+    },
+    {
+      "file": "seguridad/respaldos-administrados.json",
+      "bytes": 607,
+      "sha256": "de8f6291ad1c0a2c51f3f024a7a9ad8efd7e0ca1914d9a9e02dd83cda444b9fe"
+    },
+    {
+      "file": "seguridad/respaldos-administrados.meta.json",
+      "bytes": 525,
+      "sha256": "9c2a0171e8c566368afcfdb888ae4d3a9b807a2fe511f4e72e4a3989b89ba304"
+    }
+  ]
+}

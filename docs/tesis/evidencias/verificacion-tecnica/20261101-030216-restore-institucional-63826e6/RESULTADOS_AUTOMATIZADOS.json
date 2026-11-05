@@ -1,0 +1,45 @@
+{
+  "baseCommit": "63826e6098ce1358f2e0cf727790c680dd458449",
+  "startedAt": "2026-11-01T03:02:16.474Z",
+  "reportedAt": "2026-11-01T16:20:32.002Z",
+  "node": {
+    "tests": 32,
+    "pass": 32,
+    "fail": 0,
+    "skipped": 0,
+    "files": 4,
+    "suites": 0
+  },
+  "sqlRestore": {
+    "finalFlowPassed": true,
+    "archiveBytes": 1418439,
+    "catalogMatches": true,
+    "fingerprint": "15b9d9e869fb5113263c485714009878"
+  },
+  "copiedTableChecks": {
+    "executed": 94,
+    "passed": 94,
+    "rows": 27159
+  },
+  "sequenceChecks": {
+    "executed": 11,
+    "passed": 11
+  },
+  "generatedExpressionChecks": {
+    "executed": 1,
+    "passed": 1,
+    "originalStoredValuesInArchive": false
+  },
+  "storage": {
+    "objects": 43,
+    "bytes": 3596269,
+    "etagMatches": 43,
+    "encryptedManifestVerified": true,
+    "isolatedByteRecoveryVerified": true,
+    "supabaseStorageApiRestoreVerified": false
+  },
+  "productionDatabaseChanged": false,
+  "productionStorageChanged": false,
+  "deploymentsPerformed": false,
+  "webAndroidPlaywrightExecuted": false
+}

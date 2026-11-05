@@ -60,6 +60,9 @@ export const createGamificationFoundationUseCases = (repository, deps = {}) => {
 
   const registerDailyLoginRewardUseCase = {
     execute: async ({ userId }) => {
+      if (typeof repository.claimDailyLoginReward === 'function') {
+        return repository.claimDailyLoginReward();
+      }
       const student = await repository.findStudentByUserId(userId);
       if (!student?.id) {
         return {

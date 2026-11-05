@@ -1,0 +1,28 @@
+{
+  "planned": 13,
+  "executed": 0,
+  "notExecuted": 13,
+  "passed": 0,
+  "failed": 0,
+  "state": "FALLIDO",
+  "cases": [],
+  "cleanupFailures": [],
+  "backend": "Supabase Auth/REST/PostgreSQL local reales; sin mocks ni almacenamiento de tokens",
+  "before": {
+    "rows": 1,
+    "rewards": 1,
+    "ledger_rows": 1,
+    "xp": 8
+  },
+  "after": {
+    "rows": 1,
+    "rewards": 1,
+    "ledger_rows": 1,
+    "xp": 8
+  },
+  "responses": [],
+  "blockedBrowserRequests": [],
+  "artifactSha256": "c1fe951b44ac76c7b62c936f26823d230267b74f73544eac51a943e28d373a7e",
+  "scope": "WebView real de APK debug en emulator-5580; HTTP loopback por túnel ADB. No verifica transporte TLS institucional, FCM, Resend ni OTA. Se deniega permiso de notificaciones; OTA apunta a puerto loopback cerrado.",
+  "apkDistributed": false
+}

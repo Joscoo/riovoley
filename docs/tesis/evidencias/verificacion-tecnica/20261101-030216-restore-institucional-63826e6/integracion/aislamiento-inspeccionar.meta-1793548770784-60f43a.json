@@ -1,0 +1,16 @@
+{
+  "command": [
+    "docker",
+    "inspect",
+    "riovoley-restore-20261101-030216-06"
+  ],
+  "startedAt": "2026-11-01T15:59:30.704Z",
+  "finishedAt": "2026-11-01T15:59:30.782Z",
+  "durationSeconds": 0.078,
+  "exitCode": 0,
+  "signal": null,
+  "stdoutBytes": 7933,
+  "stderrBytes": 0,
+  "inputRecorded": false,
+  "rawOutputPublished": false
+}

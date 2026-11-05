@@ -1,0 +1,170 @@
+TAP version 13
+# Subtest: P01: reconstrucción conserva la huella de catálogos antes del cambio
+ok 1 - P01: reconstrucción conserva la huella de catálogos antes del cambio
+  ---
+  duration_ms: 104.3696
+  type: 'test'
+  ...
+# Subtest: P02: el avance rechaza ausencia de marcadores operativos
+ok 2 - P02: el avance rechaza ausencia de marcadores operativos
+  ---
+  duration_ms: 7.0755
+  type: 'test'
+  ...
+# Subtest: P03: deriva de función impide el avance; se restaura la definición original
+ok 3 - P03: deriva de función impide el avance; se restaura la definición original
+  ---
+  duration_ms: 45.1178
+  type: 'test'
+  ...
+# Subtest: P04: duplicados de identidad abortan sin crear la RPC
+ok 4 - P04: duplicados de identidad abortan sin crear la RPC
+  ---
+  duration_ms: 35.2411
+  type: 'test'
+  ...
+# Subtest: P05: referencias diarias nulas impiden crear el índice
+ok 5 - P05: referencias diarias nulas impiden crear el índice
+  ---
+  duration_ms: 28.1208
+  type: 'test'
+  ...
+# Subtest: P06: aplicación real y generación del retorno desde ACL capturadas
+ok 6 - P06: aplicación real y generación del retorno desde ACL capturadas
+  ---
+  duration_ms: 121.2696
+  type: 'test'
+  ...
+# Subtest: P07: cero funciones de aplicación sin search_path explícito
+ok 7 - P07: cero funciones de aplicación sin search_path explícito
+  ---
+  duration_ms: 6.3695
+  type: 'test'
+  ...
+# Subtest: P08: anon no ejecuta premio, pagos ni inserción administrativa
+ok 8 - P08: anon no ejecuta premio, pagos ni inserción administrativa
+  ---
+  duration_ms: 17.0067
+  type: 'test'
+  ...
+# Subtest: P09: atleta no modifica su rol ni su XP directamente
+ok 9 - P09: atleta no modifica su rol ni su XP directamente
+  ---
+  duration_ms: 19.6426
+  type: 'test'
+  ...
+# Subtest: P10: entrenador activo borra lógicamente y restaura pago UUID con auditoría
+ok 10 - P10: entrenador activo borra lógicamente y restaura pago UUID con auditoría
+  ---
+  duration_ms: 29.1984
+  type: 'test'
+  ...
+# Subtest: P11: atleta y usuario suspendido no ejecutan pagos administrativos
+ok 11 - P11: atleta y usuario suspendido no ejecutan pagos administrativos
+  ---
+  duration_ms: 12.0916
+  type: 'test'
+  ...
+# Subtest: P12: firmas bigint renombradas sin ejecución web
+ok 12 - P12: firmas bigint renombradas sin ejecución web
+  ---
+  duration_ms: 3.9198
+  type: 'test'
+  ...
+# Subtest: P13: premio diario persiste 8 XP una vez y usa fecha de Ecuador
+ok 13 - P13: premio diario persiste 8 XP una vez y usa fecha de Ecuador
+  ---
+  duration_ms: 22.6394
+  type: 'test'
+  ...
+# Subtest: P14: seis peticiones concurrentes conceden exactamente una recompensa
+ok 14 - P14: seis peticiones concurrentes conceden exactamente una recompensa
+  ---
+  duration_ms: 78.9882
+  type: 'test'
+  ...
+# Subtest: P15: suspensión deniega recompensa y compra mediante SECURITY DEFINER
+ok 15 - P15: suspensión deniega recompensa y compra mediante SECURITY DEFINER
+  ---
+  duration_ms: 32.2124
+  type: 'test'
+  ...
+# Subtest: P16: compra, equipamiento y desequipamiento legítimos persisten
+ok 16 - P16: compra, equipamiento y desequipamiento legítimos persisten
+  ---
+  duration_ms: 41.4931
+  type: 'test'
+  ...
+# Subtest: P17: cosmético bloqueado revierte saldo e historial de compra
+ok 17 - P17: cosmético bloqueado revierte saldo e historial de compra
+  ---
+  duration_ms: 14.0425
+  type: 'test'
+  ...
+# Subtest: P18: atleta ajeno no compra con wallet de otro estudiante
+ok 18 - P18: atleta ajeno no compra con wallet de otro estudiante
+  ---
+  duration_ms: 6.9857
+  type: 'test'
+  ...
+# Subtest: P19: sincronización del personal conserva gasto realizado
+ok 19 - P19: sincronización del personal conserva gasto realizado
+  ---
+  duration_ms: 22.043
+  type: 'test'
+  ...
+# Subtest: P20: entrenador puede suspender y reactivar atleta; no promoverlo
+ok 20 - P20: entrenador puede suspender y reactivar atleta; no promoverlo
+  ---
+  duration_ms: 30.5234
+  type: 'test'
+  ...
+# Subtest: P21: administrador activo conserva inserción administrativa
+ok 21 - P21: administrador activo conserva inserción administrativa
+  ---
+  duration_ms: 17.3272
+  type: 'test'
+  ...
+# Subtest: P22: retorno ejecuta DDL real y recupera huella original sin borrar XP
+not ok 22 - P22: retorno ejecuta DDL real y recupera huella original sin borrar XP
+  ---
+  duration_ms: 61.8746
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:118:1'
+  failureType: 'testCodeFailure'
+  error: 'record "t" is not assigned yet'
+  code: '55000'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:119:35)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: P23: reaplicación tras retorno conserva idempotencia y datos generados
+not ok 23 - P23: reaplicación tras retorno conserva idempotencia y datos generados
+  ---
+  duration_ms: 5.7179
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\production-sql.local.test.cjs:123:1'
+  failureType: 'testCodeFailure'
+  error: 'current transaction is aborted, commands ignored until end of transaction block'
+  code: '25P02'
+  name: 'error'
+  stack: |-
+    D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\production-sql.local.test.cjs:124:2)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+1..23
+# tests 23
+# suites 0
+# pass 21
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 979.3581

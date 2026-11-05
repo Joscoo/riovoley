@@ -1,0 +1,20 @@
+{
+  "observedAt": "2026-10-30T15:11:46Z",
+  "method": "MCP de Supabase, lectura de metadatos. Sin modificación institucional.",
+  "data": {
+    "id": "mayvvlkvheagkojunzzb",
+    "ref": "mayvvlkvheagkojunzzb",
+    "organization_id": "bppskuhkigvpygktbabf",
+    "organization_slug": "bppskuhkigvpygktbabf",
+    "name": "Riovoley APP",
+    "region": "us-east-1",
+    "status": "ACTIVE_HEALTHY",
+    "database": {
+      "host": "db.mayvvlkvheagkojunzzb.supabase.co",
+      "version": "17.4.1.064",
+      "postgres_engine": "17",
+      "release_channel": "ga"
+    },
+    "created_at": "2025-07-29T02:06:49.795866Z"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/production/preflight.cjs",
+    "--profile",
+    "frontend",
+    "--structure"
+  ],
+  "start": "2026-10-31T19:20:56.423Z",
+  "end": "2026-10-31T19:20:56.571Z",
+  "durationSeconds": 0.148,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

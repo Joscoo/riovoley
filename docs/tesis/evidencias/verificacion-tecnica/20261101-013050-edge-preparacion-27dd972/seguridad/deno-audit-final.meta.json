@@ -1,0 +1,14 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\deno-tool\\node_modules\\@deno\\win32-x64\\deno.exe",
+    "audit",
+    "--lock=D:\\Riovoley\\riovoley\\.e2e-local\\edge-production\\candidate.deno.lock",
+    "--frozen-lockfile"
+  ],
+  "start": "2026-11-01T01:42:47.616Z",
+  "end": "2026-11-01T01:42:48.008Z",
+  "durationSeconds": 0.392,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

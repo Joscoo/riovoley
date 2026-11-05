@@ -1,0 +1,9 @@
+{
+  "checkedAt": "2026-11-05T20:45:55.652Z",
+  "url": "https://supabase.com/changelog.md",
+  "status": 200,
+  "bytes": 103503,
+  "sha256": "e0c7128cf15f0836b0c567e9d0c10fb03796cd25bbd5f8b54a5dcc7389de880f",
+  "scope": "Index consulted; prototype uses PostgreSQL17 SQL, not a new Supabase SDK feature.",
+  "fullContentPublished": false
+}

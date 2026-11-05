@@ -1,0 +1,470 @@
+{
+  "forced": false,
+  "changes": [
+    {
+      "file": "node_modules/@svgr/babel-plugin-add-jsx-attribute",
+      "before": "5.4.0",
+      "after": "6.5.1"
+    },
+    {
+      "file": "node_modules/@svgr/babel-plugin-remove-jsx-attribute",
+      "before": "5.4.0",
+      "after": "8.0.0"
+    },
+    {
+      "file": "node_modules/@svgr/babel-plugin-remove-jsx-empty-expression",
+      "before": "5.0.1",
+      "after": "8.0.0"
+    },
+    {
+      "file": "node_modules/@svgr/babel-plugin-replace-jsx-attribute-value",
+      "before": "5.0.1",
+      "after": "6.5.1"
+    },
+    {
+      "file": "node_modules/@svgr/babel-plugin-svg-dynamic-title",
+      "before": "5.4.0",
+      "after": "6.5.1"
+    },
+    {
+      "file": "node_modules/@svgr/babel-plugin-svg-em-dimensions",
+      "before": "5.4.0",
+      "after": "6.5.1"
+    },
+    {
+      "file": "node_modules/@svgr/babel-plugin-transform-react-native-svg",
+      "before": "5.4.0",
+      "after": "6.5.1"
+    },
+    {
+      "file": "node_modules/@svgr/babel-plugin-transform-svg-component",
+      "before": "5.5.0",
+      "after": "6.5.1"
+    },
+    {
+      "file": "node_modules/@svgr/babel-preset",
+      "before": "5.5.0",
+      "after": "6.5.1"
+    },
+    {
+      "file": "node_modules/@svgr/core",
+      "before": "5.5.0",
+      "after": "6.5.1"
+    },
+    {
+      "file": "node_modules/@svgr/hast-util-to-babel-ast",
+      "before": "5.5.0",
+      "after": "6.5.1"
+    },
+    {
+      "file": "node_modules/@svgr/plugin-jsx",
+      "before": "5.5.0",
+      "after": "6.5.1"
+    },
+    {
+      "file": "node_modules/@svgr/plugin-svgo",
+      "before": "5.5.0",
+      "after": "6.5.1"
+    },
+    {
+      "file": "node_modules/@svgr/webpack",
+      "before": "5.5.0",
+      "after": "6.5.1"
+    },
+    {
+      "file": "node_modules/@types/q",
+      "before": "1.5.8",
+      "after": null
+    },
+    {
+      "file": "node_modules/array.prototype.reduce",
+      "before": "1.0.8",
+      "after": null
+    },
+    {
+      "file": "node_modules/coa",
+      "before": "2.0.2",
+      "after": null
+    },
+    {
+      "file": "node_modules/coa/node_modules/ansi-styles",
+      "before": "3.2.1",
+      "after": null
+    },
+    {
+      "file": "node_modules/coa/node_modules/chalk",
+      "before": "2.4.2",
+      "after": null
+    },
+    {
+      "file": "node_modules/coa/node_modules/color-convert",
+      "before": "1.9.3",
+      "after": null
+    },
+    {
+      "file": "node_modules/coa/node_modules/color-name",
+      "before": "1.1.3",
+      "after": null
+    },
+    {
+      "file": "node_modules/coa/node_modules/escape-string-regexp",
+      "before": "1.0.5",
+      "after": null
+    },
+    {
+      "file": "node_modules/coa/node_modules/has-flag",
+      "before": "3.0.0",
+      "after": null
+    },
+    {
+      "file": "node_modules/coa/node_modules/supports-color",
+      "before": "5.5.0",
+      "after": null
+    },
+    {
+      "file": "node_modules/css-select-base-adapter",
+      "before": "0.1.1",
+      "after": null
+    },
+    {
+      "file": "node_modules/css-tree",
+      "before": "1.0.0-alpha.37",
+      "after": "1.1.3"
+    },
+    {
+      "file": "node_modules/csso/node_modules/css-tree",
+      "before": "1.1.3",
+      "after": null
+    },
+    {
+      "file": "node_modules/csso/node_modules/mdn-data",
+      "before": "2.0.14",
+      "after": null
+    },
+    {
+      "file": "node_modules/csso/node_modules/source-map",
+      "before": "0.6.1",
+      "after": null
+    },
+    {
+      "file": "node_modules/es-array-method-boxes-properly",
+      "before": "1.0.0",
+      "after": null
+    },
+    {
+      "file": "node_modules/mdn-data",
+      "before": "2.0.4",
+      "after": "2.0.14"
+    },
+    {
+      "file": "node_modules/mkdirp",
+      "before": "0.5.6",
+      "after": null
+    },
+    {
+      "file": "node_modules/object.getownpropertydescriptors",
+      "before": "2.1.9",
+      "after": null
+    },
+    {
+      "file": "node_modules/postcss-svgo/node_modules/commander",
+      "before": "7.2.0",
+      "after": null
+    },
+    {
+      "file": "node_modules/postcss-svgo/node_modules/css-tree",
+      "before": "1.1.3",
+      "after": null
+    },
+    {
+      "file": "node_modules/postcss-svgo/node_modules/mdn-data",
+      "before": "2.0.14",
+      "after": null
+    },
+    {
+      "file": "node_modules/postcss-svgo/node_modules/sax",
+      "before": "1.6.0",
+      "after": null
+    },
+    {
+      "file": "node_modules/postcss-svgo/node_modules/source-map",
+      "before": "0.6.1",
+      "after": null
+    },
+    {
+      "file": "node_modules/postcss-svgo/node_modules/svgo",
+      "before": "2.8.4",
+      "after": null
+    },
+    {
+      "file": "node_modules/q",
+      "before": "1.5.1",
+      "after": null
+    },
+    {
+      "file": "node_modules/resolve-url-loader",
+      "before": "4.0.0",
+      "after": "5.0.0"
+    },
+    {
+      "file": "node_modules/resolve-url-loader/node_modules/picocolors",
+      "before": "0.2.1",
+      "after": null
+    },
+    {
+      "file": "node_modules/resolve-url-loader/node_modules/postcss",
+      "before": "7.0.39",
+      "after": null
+    },
+    {
+      "file": "node_modules/sax",
+      "before": "1.2.4",
+      "after": "1.6.1"
+    },
+    {
+      "file": "node_modules/svg-parser",
+      "before": "2.0.4",
+      "after": "2.1.0"
+    },
+    {
+      "file": "node_modules/svgo",
+      "before": "1.3.2",
+      "after": "2.8.4"
+    },
+    {
+      "file": "node_modules/svgo/node_modules/ansi-styles",
+      "before": "3.2.1",
+      "after": null
+    },
+    {
+      "file": "node_modules/svgo/node_modules/chalk",
+      "before": "2.4.2",
+      "after": null
+    },
+    {
+      "file": "node_modules/svgo/node_modules/color-convert",
+      "before": "1.9.3",
+      "after": null
+    },
+    {
+      "file": "node_modules/svgo/node_modules/color-name",
+      "before": "1.1.3",
+      "after": null
+    },
+    {
+      "file": "node_modules/svgo/node_modules/css-select",
+      "before": "2.1.0",
+      "after": null
+    },
+    {
+      "file": "node_modules/svgo/node_modules/css-what",
+      "before": "3.4.2",
+      "after": null
+    },
+    {
+      "file": "node_modules/svgo/node_modules/dom-serializer",
+      "before": "0.2.2",
+      "after": null
+    },
+    {
+      "file": "node_modules/svgo/node_modules/domutils",
+      "before": "1.7.0",
+      "after": null
+    },
+    {
+      "file": "node_modules/svgo/node_modules/domutils/node_modules/domelementtype",
+      "before": "1.3.1",
+      "after": null
+    },
+    {
+      "file": "node_modules/svgo/node_modules/escape-string-regexp",
+      "before": "1.0.5",
+      "after": null
+    },
+    {
+      "file": "node_modules/svgo/node_modules/has-flag",
+      "before": "3.0.0",
+      "after": null
+    },
+    {
+      "file": "node_modules/svgo/node_modules/nth-check",
+      "before": "1.0.2",
+      "after": null
+    },
+    {
+      "file": "node_modules/svgo/node_modules/supports-color",
+      "before": "5.5.0",
+      "after": null
+    },
+    {
+      "file": "node_modules/unquote",
+      "before": "1.1.1",
+      "after": null
+    },
+    {
+      "file": "node_modules/util.promisify",
+      "before": "1.0.1",
+      "after": null
+    },
+    {
+      "file": "node_modules/uuid",
+      "before": "8.3.2",
+      "after": "11.1.1"
+    },
+    {
+      "file": "node_modules/webpack-dev-middleware",
+      "before": "5.3.4",
+      "after": "7.4.6"
+    },
+    {
+      "file": "node_modules/@jsonjoy.com/base64",
+      "before": null,
+      "after": "1.1.2"
+    },
+    {
+      "file": "node_modules/@jsonjoy.com/buffers",
+      "before": null,
+      "after": "17.67.0"
+    },
+    {
+      "file": "node_modules/@jsonjoy.com/codegen",
+      "before": null,
+      "after": "1.0.0"
+    },
+    {
+      "file": "node_modules/@jsonjoy.com/fs-core",
+      "before": null,
+      "after": "4.80.0"
+    },
+    {
+      "file": "node_modules/@jsonjoy.com/fs-fsa",
+      "before": null,
+      "after": "4.80.0"
+    },
+    {
+      "file": "node_modules/@jsonjoy.com/fs-node",
+      "before": null,
+      "after": "4.80.0"
+    },
+    {
+      "file": "node_modules/@jsonjoy.com/fs-node-builtins",
+      "before": null,
+      "after": "4.80.0"
+    },
+    {
+      "file": "node_modules/@jsonjoy.com/fs-node-to-fsa",
+      "before": null,
+      "after": "4.80.0"
+    },
+    {
+      "file": "node_modules/@jsonjoy.com/fs-node-utils",
+      "before": null,
+      "after": "4.80.0"
+    },
+    {
+      "file": "node_modules/@jsonjoy.com/fs-print",
+      "before": null,
+      "after": "4.80.0"
+    },
+    {
+      "file": "node_modules/@jsonjoy.com/fs-snapshot",
+      "before": null,
+      "after": "4.80.0"
+    },
+    {
+      "file": "node_modules/@jsonjoy.com/fs-snapshot/node_modules/@jsonjoy.com/base64",
+      "before": null,
+      "after": "17.67.0"
+    },
+    {
+      "file": "node_modules/@jsonjoy.com/fs-snapshot/node_modules/@jsonjoy.com/codegen",
+      "before": null,
+      "after": "17.67.0"
+    },
+    {
+      "file": "node_modules/@jsonjoy.com/fs-snapshot/node_modules/@jsonjoy.com/json-pack",
+      "before": null,
+      "after": "17.67.0"
+    },
+    {
+      "file": "node_modules/@jsonjoy.com/fs-snapshot/node_modules/@jsonjoy.com/json-pointer",
+      "before": null,
+      "after": "17.67.0"
+    },
+    {
+      "file": "node_modules/@jsonjoy.com/fs-snapshot/node_modules/@jsonjoy.com/util",
+      "before": null,
+      "after": "17.67.0"
+    },
+    {
+      "file": "node_modules/@jsonjoy.com/json-pack",
+      "before": null,
+      "after": "1.21.0"
+    },
+    {
+      "file": "node_modules/@jsonjoy.com/json-pack/node_modules/@jsonjoy.com/buffers",
+      "before": null,
+      "after": "1.2.1"
+    },
+    {
+      "file": "node_modules/@jsonjoy.com/json-pointer",
+      "before": null,
+      "after": "1.0.2"
+    },
+    {
+      "file": "node_modules/@jsonjoy.com/util",
+      "before": null,
+      "after": "1.9.0"
+    },
+    {
+      "file": "node_modules/@jsonjoy.com/util/node_modules/@jsonjoy.com/buffers",
+      "before": null,
+      "after": "1.2.1"
+    },
+    {
+      "file": "node_modules/@svgr/hast-util-to-babel-ast/node_modules/entities",
+      "before": null,
+      "after": "4.5.0"
+    },
+    {
+      "file": "node_modules/glob-to-regex.js",
+      "before": null,
+      "after": "1.3.1"
+    },
+    {
+      "file": "node_modules/hyperdyperid",
+      "before": null,
+      "after": "1.2.0"
+    },
+    {
+      "file": "node_modules/svgo/node_modules/commander",
+      "before": null,
+      "after": "7.2.0"
+    },
+    {
+      "file": "node_modules/thingies",
+      "before": null,
+      "after": "2.6.1"
+    },
+    {
+      "file": "node_modules/tree-dump",
+      "before": null,
+      "after": "1.1.0"
+    },
+    {
+      "file": "node_modules/webpack-dev-middleware/node_modules/memfs",
+      "before": null,
+      "after": "4.80.0"
+    },
+    {
+      "file": "node_modules/webpack-dev-middleware/node_modules/mime-db",
+      "before": null,
+      "after": "1.54.0"
+    },
+    {
+      "file": "node_modules/webpack-dev-middleware/node_modules/mime-types",
+      "before": null,
+      "after": "3.0.2"
+    }
+  ]
+}

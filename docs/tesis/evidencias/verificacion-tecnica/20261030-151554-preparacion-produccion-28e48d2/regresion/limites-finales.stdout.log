@@ -1,0 +1,3 @@
+{"label":"limites-finales/ejecucion","exitCode":0,"durationSeconds":26.269,"stderrTail":"(node:20644) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n(node:20644) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n"}
+Evidencia: docs\tesis\evidencias\verificacion-tecnica\20261030-151554-preparacion-produccion-28e48d2
+

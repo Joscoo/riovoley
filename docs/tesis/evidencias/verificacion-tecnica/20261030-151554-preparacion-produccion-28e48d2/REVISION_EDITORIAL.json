@@ -1,0 +1,24 @@
+{
+  "recordedAt": "2026-10-31T20:05:06.819Z",
+  "privateDraftPreserved": ".e2e-local\\editorial-before-publish-1793477106488",
+  "originals": [
+    {
+      "file": "INFORME_VERIFICACION_TECNICA.md",
+      "originalSha256": "b25013836bba60d4535f6ce812d175fa94938da93f39f51e93be415b36a48325"
+    },
+    {
+      "file": "MATRIZ_VERIFICACIONES_TESIS.md",
+      "originalSha256": "fb6bf4f6ed9213619d114bc0acfa9941dfc45caaabe67b14cdaa6530616b0970"
+    },
+    {
+      "file": "RESULTADOS_PARA_TESIS_4_5.md",
+      "originalSha256": "73d88426dc081b3fd10cd5affc2b14b999e7097917e58d93f892c5f4f1913534"
+    },
+    {
+      "file": "ESTADO_PRODUCCION.md",
+      "originalSha256": "2b6d0a4d49e6b484a41fc1fb17685523c6b6a45a0aaed479b906cb96585d0e61"
+    }
+  ],
+  "changes": "Solo seis tildes; resultados y diez expedientes anteriores intactos. Nuevo cierre después de revisión documental.",
+  "publishedDraft": false
+}

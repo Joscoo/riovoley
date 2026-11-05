@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-11-04T20:13:48.566Z",
+  "projectRef": "mayvvlkvheagkojunzzb",
+  "operations": [
+    {
+      "tool": "get_project",
+      "success": true
+    },
+    {
+      "tool": "get_advisors",
+      "type": "security",
+      "success": true
+    },
+    {
+      "tool": "execute_sql",
+      "transaction": "READ ONLY",
+      "source": "scripts/audit/production/catalog-fingerprint.sql",
+      "resultFingerprint": "15b9d9e869fb5113263c485714009878",
+      "success": true
+    },
+    {
+      "tool": "execute_sql",
+      "transaction": "READ ONLY",
+      "scope": "RLS y agregados de precondiciones",
+      "success": true
+    },
+    {
+      "tool": "list_edge_functions",
+      "success": true
+    }
+  ],
+  "schemaMutations": 0,
+  "businessWrites": 0,
+  "credentialValuesRead": false
+}

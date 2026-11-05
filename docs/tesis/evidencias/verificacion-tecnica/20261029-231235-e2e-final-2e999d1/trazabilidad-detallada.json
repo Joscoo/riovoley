@@ -1,0 +1,220 @@
+[
+  {
+    "category": "Pruebas del caso de uso de gamificación",
+    "cases": [],
+    "scope": "Sin casos específicos nuevos; la navegación no sustituye la prueba del dominio. Consultar el antecedente Jest.",
+    "evidence": "../20261029-221208-android-autenticado-317e5e3/MATRIZ_VERIFICACIONES_TESIS.md"
+  },
+  {
+    "category": "Pruebas del servicio público de gamificación",
+    "cases": [],
+    "scope": "Sin casos específicos nuevos; la navegación no sustituye la prueba del dominio. Consultar el antecedente Jest.",
+    "evidence": "../20261029-221208-android-autenticado-317e5e3/MATRIZ_VERIFICACIONES_TESIS.md"
+  },
+  {
+    "category": "Pruebas de identidad del atleta",
+    "cases": [],
+    "scope": "Sin casos específicos nuevos; la navegación no sustituye la prueba del dominio. Consultar el antecedente Jest.",
+    "evidence": "../20261029-221208-android-autenticado-317e5e3/MATRIZ_VERIFICACIONES_TESIS.md"
+  },
+  {
+    "category": "Pruebas de wallet y monedas",
+    "cases": [],
+    "scope": "Sin casos específicos nuevos; la navegación no sustituye la prueba del dominio. Consultar el antecedente Jest.",
+    "evidence": "../20261029-221208-android-autenticado-317e5e3/MATRIZ_VERIFICACIONES_TESIS.md"
+  },
+  {
+    "category": "Pruebas de tienda cosmética",
+    "cases": [],
+    "scope": "Sin casos específicos nuevos; la navegación no sustituye la prueba del dominio. Consultar el antecedente Jest.",
+    "evidence": "../20261029-221208-android-autenticado-317e5e3/MATRIZ_VERIFICACIONES_TESIS.md"
+  },
+  {
+    "category": "Pruebas de asistencia",
+    "cases": [
+      {
+        "group": "mutaciones-reanudadas",
+        "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+        "title": "admin happy path controlado: atleta + pago + asistencia",
+        "project": "mobile-390",
+        "expectedStatus": "passed",
+        "status": "expected",
+        "actualStatus": "passed",
+        "attempts": 1,
+        "durationMs": 32965,
+        "dependencies": "Frontend público o Auth/REST/backend local reales según el flujo"
+      },
+      {
+        "group": "mutaciones-reanudadas",
+        "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+        "title": "admin happy path controlado: atleta + pago + asistencia",
+        "project": "mobile-430",
+        "expectedStatus": "passed",
+        "status": "expected",
+        "actualStatus": "passed",
+        "attempts": 1,
+        "durationMs": 35816,
+        "dependencies": "Frontend público o Auth/REST/backend local reales según el flujo"
+      },
+      {
+        "group": "mutaciones-reanudadas",
+        "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+        "title": "admin happy path controlado: atleta + pago + asistencia",
+        "project": "mobile-480",
+        "expectedStatus": "passed",
+        "status": "expected",
+        "actualStatus": "passed",
+        "attempts": 1,
+        "durationMs": 9395,
+        "dependencies": "Frontend público o Auth/REST/backend local reales según el flujo"
+      },
+      {
+        "group": "mutaciones-reanudadas",
+        "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+        "title": "admin happy path controlado: atleta + pago + asistencia",
+        "project": "tablet-768",
+        "expectedStatus": "passed",
+        "status": "expected",
+        "actualStatus": "passed",
+        "attempts": 1,
+        "durationMs": 30414,
+        "dependencies": "Frontend público o Auth/REST/backend local reales según el flujo"
+      },
+      {
+        "group": "mutaciones-reanudadas",
+        "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+        "title": "admin happy path controlado: atleta + pago + asistencia",
+        "project": "tablet-1024",
+        "expectedStatus": "passed",
+        "status": "expected",
+        "actualStatus": "passed",
+        "attempts": 1,
+        "durationMs": 8073,
+        "dependencies": "Frontend público o Auth/REST/backend local reales según el flujo"
+      },
+      {
+        "group": "mutaciones-reanudadas",
+        "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+        "title": "admin happy path controlado: atleta + pago + asistencia",
+        "project": "desktop-1440",
+        "expectedStatus": "passed",
+        "status": "expected",
+        "actualStatus": "passed",
+        "attempts": 1,
+        "durationMs": 7559,
+        "dependencies": "Frontend público o Auth/REST/backend local reales según el flujo"
+      },
+      {
+        "group": "mutaciones-reanudadas",
+        "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+        "title": "admin happy path controlado: atleta + pago + asistencia",
+        "project": "desktop-1920",
+        "expectedStatus": "passed",
+        "status": "expected",
+        "actualStatus": "passed",
+        "attempts": 1,
+        "durationMs": 7833,
+        "dependencies": "Frontend público o Auth/REST/backend local reales según el flujo"
+      }
+    ],
+    "scope": "Flujo UI con persistencia real local; los mismos siete casos se comparten entre las dos categorías.",
+    "evidence": "mutaciones-reanudadas/resultados.json"
+  },
+  {
+    "category": "Pruebas de pagos",
+    "cases": [
+      {
+        "group": "mutaciones-reanudadas",
+        "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+        "title": "admin happy path controlado: atleta + pago + asistencia",
+        "project": "mobile-390",
+        "expectedStatus": "passed",
+        "status": "expected",
+        "actualStatus": "passed",
+        "attempts": 1,
+        "durationMs": 32965,
+        "dependencies": "Frontend público o Auth/REST/backend local reales según el flujo"
+      },
+      {
+        "group": "mutaciones-reanudadas",
+        "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+        "title": "admin happy path controlado: atleta + pago + asistencia",
+        "project": "mobile-430",
+        "expectedStatus": "passed",
+        "status": "expected",
+        "actualStatus": "passed",
+        "attempts": 1,
+        "durationMs": 35816,
+        "dependencies": "Frontend público o Auth/REST/backend local reales según el flujo"
+      },
+      {
+        "group": "mutaciones-reanudadas",
+        "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+        "title": "admin happy path controlado: atleta + pago + asistencia",
+        "project": "mobile-480",
+        "expectedStatus": "passed",
+        "status": "expected",
+        "actualStatus": "passed",
+        "attempts": 1,
+        "durationMs": 9395,
+        "dependencies": "Frontend público o Auth/REST/backend local reales según el flujo"
+      },
+      {
+        "group": "mutaciones-reanudadas",
+        "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+        "title": "admin happy path controlado: atleta + pago + asistencia",
+        "project": "tablet-768",
+        "expectedStatus": "passed",
+        "status": "expected",
+        "actualStatus": "passed",
+        "attempts": 1,
+        "durationMs": 30414,
+        "dependencies": "Frontend público o Auth/REST/backend local reales según el flujo"
+      },
+      {
+        "group": "mutaciones-reanudadas",
+        "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+        "title": "admin happy path controlado: atleta + pago + asistencia",
+        "project": "tablet-1024",
+        "expectedStatus": "passed",
+        "status": "expected",
+        "actualStatus": "passed",
+        "attempts": 1,
+        "durationMs": 8073,
+        "dependencies": "Frontend público o Auth/REST/backend local reales según el flujo"
+      },
+      {
+        "group": "mutaciones-reanudadas",
+        "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+        "title": "admin happy path controlado: atleta + pago + asistencia",
+        "project": "desktop-1440",
+        "expectedStatus": "passed",
+        "status": "expected",
+        "actualStatus": "passed",
+        "attempts": 1,
+        "durationMs": 7559,
+        "dependencies": "Frontend público o Auth/REST/backend local reales según el flujo"
+      },
+      {
+        "group": "mutaciones-reanudadas",
+        "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+        "title": "admin happy path controlado: atleta + pago + asistencia",
+        "project": "desktop-1920",
+        "expectedStatus": "passed",
+        "status": "expected",
+        "actualStatus": "passed",
+        "attempts": 1,
+        "durationMs": 7833,
+        "dependencies": "Frontend público o Auth/REST/backend local reales según el flujo"
+      }
+    ],
+    "scope": "Flujo UI con persistencia real local; los mismos siete casos se comparten entre las dos categorías.",
+    "evidence": "mutaciones-reanudadas/resultados.json"
+  },
+  {
+    "category": "Compilación del proyecto",
+    "cases": [],
+    "scope": "Compilación web real, sin denominador de casos.",
+    "evidence": "compilacion-web-build-1793315584461.meta.json"
+  }
+]

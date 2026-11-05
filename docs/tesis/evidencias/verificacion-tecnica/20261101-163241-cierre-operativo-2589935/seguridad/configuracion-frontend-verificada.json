@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-11-01T16:37:58.694Z",
+  "projectAndTeamMatch": true,
+  "backendOriginMatches": true,
+  "siteOriginMatches": true,
+  "publicKeyRoleAllowed": true,
+  "frontendNamesChecked": [
+    "REACT_APP_SUPABASE_URL",
+    "REACT_APP_SUPABASE_ANON_KEY",
+    "REACT_APP_APP_URL",
+    "REACT_APP_PII_ENCRYPTION_KEY"
+  ],
+  "valuesReadInMemoryOnly": true,
+  "keyDigestsRecorded": false,
+  "activeProductionCommit": "e469db5608fb77071b6a9ee3db253c28dae734dd",
+  "activeProductionState": "READY",
+  "productionEnvironmentValuesAreNotProofOfActiveBundleValues": true,
+  "productionChanged": false
+}

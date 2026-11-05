@@ -1,0 +1,65 @@
+TAP version 13
+# Subtest: excluye contraseñas de firma, proveedores y opciones Node del build web
+ok 1 - excluye contraseñas de firma, proveedores y opciones Node del build web
+  ---
+  duration_ms: 1.0403
+  type: 'test'
+  ...
+# Subtest: rechaza un backend distinto antes de compilar
+ok 2 - rechaza un backend distinto antes de compilar
+  ---
+  duration_ms: 1.1531
+  type: 'test'
+  ...
+# Subtest: rechaza secretos de servidor en la clave pública del APK
+ok 3 - rechaza secretos de servidor en la clave pública del APK
+  ---
+  duration_ms: 0.2838
+  type: 'test'
+  ...
+# Subtest: bloquea frontend desconocido suministrado como valor
+ok 4 - bloquea frontend desconocido suministrado como valor
+  ---
+  duration_ms: 0.2333
+  type: 'test'
+  ...
+# Subtest: descifra y valida índices generados por el módulo real del producto
+ok 5 - descifra y valida índices generados por el módulo real del producto
+  ---
+  duration_ms: 38.2053
+  type: 'test'
+  ...
+# Subtest: una clave distinta no se presenta como recuperación válida
+ok 6 - una clave distinta no se presenta como recuperación válida
+  ---
+  duration_ms: 4.9854
+  type: 'test'
+  ...
+# Subtest: un índice alterado falla aunque el cifrado siga siendo auténtico
+ok 7 - un índice alterado falla aunque el cifrado siga siendo auténtico
+  ---
+  duration_ms: 15.3668
+  type: 'test'
+  ...
+# Subtest: el contexto AAD impide intercambiar email y teléfono
+ok 8 - el contexto AAD impide intercambiar email y teléfono
+  ---
+  duration_ms: 5.2589
+  type: 'test'
+  ...
+# Subtest: un formato desconocido se distingue de un descifrado aprobado
+ok 9 - un formato desconocido se distingue de un descifrado aprobado
+  ---
+  duration_ms: 0.402
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 555.4361
+

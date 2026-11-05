@@ -1,0 +1,12 @@
+{
+  "command": [
+    "python",
+    "scripts/e2e/local/privacy.py"
+  ],
+  "start": "2026-10-31T20:05:08.023Z",
+  "end": "2026-10-31T20:05:24.694Z",
+  "durationSeconds": 16.671,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "-e",
+    "const os=require('os'),cp=require('child_process');console.log(JSON.stringify({at:new Date().toISOString(),node:process.version,npm:cp.execFileSync(process.env.ComSpec,['/d','/c','npm.cmd --version'],{encoding:'utf8',windowsHide:true}).trim(),os:os.release(),platform:process.platform,arch:process.arch}))"
+  ],
+  "start": "2026-11-05T15:51:23.634Z",
+  "end": "2026-11-05T15:51:23.764Z",
+  "durationSeconds": 0.13,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

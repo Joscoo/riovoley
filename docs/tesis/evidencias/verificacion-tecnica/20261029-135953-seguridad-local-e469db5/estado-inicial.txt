@@ -1,0 +1,4 @@
+?? docs/superpowers/plans/2026-10-29-seguridad-local.md
+?? docs/tesis/evidencias/verificacion-tecnica/20261029-135953-seguridad-local-e469db5/
+?? scripts/audit/security/
+

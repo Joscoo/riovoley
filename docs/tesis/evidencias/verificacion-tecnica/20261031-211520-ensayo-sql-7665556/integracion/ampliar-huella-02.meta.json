@@ -1,0 +1,11 @@
+{
+  "command": [
+    "node",
+    "scripts/audit/production/upgrade-sql-packet.cjs"
+  ],
+  "start": "2026-10-31T21:23:45.975Z",
+  "end": "2026-10-31T21:23:49.606Z",
+  "durationSeconds": 3.631,
+  "exitCode": 1,
+  "signal": null
+}

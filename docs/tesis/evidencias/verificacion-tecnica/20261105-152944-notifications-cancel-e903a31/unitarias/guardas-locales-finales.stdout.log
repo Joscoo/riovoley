@@ -1,0 +1,125 @@
+TAP version 13
+# Subtest: sin rutas IPv4 o IPv6 no hay salida externa
+ok 1 - sin rutas IPv4 o IPv6 no hay salida externa
+  ---
+  duration_ms: 3.8356
+  type: 'test'
+  ...
+# Subtest: acepta la ruta conectada observada en Android sin confundirla con default
+ok 2 - acepta la ruta conectada observada en Android sin confundirla con default
+  ---
+  duration_ms: 0.7249
+  type: 'test'
+  ...
+# Subtest: acepta solo loopback y enlace local IPv6 del emulador
+ok 3 - acepta solo loopback y enlace local IPv6 del emulador
+  ---
+  duration_ms: 0.4572
+  type: 'test'
+  ...
+# Subtest: rechaza default IPv4 y su representacion CIDR
+ok 4 - rechaza default IPv4 y su representacion CIDR
+  ---
+  duration_ms: 0.2153
+  type: 'test'
+  ...
+# Subtest: rechaza default IPv6 y su representacion CIDR
+ok 5 - rechaza default IPv6 y su representacion CIDR
+  ---
+  duration_ms: 0.9156
+  type: 'test'
+  ...
+# Subtest: rechaza una ruta publica especifica aunque no exista default
+ok 6 - rechaza una ruta publica especifica aunque no exista default
+  ---
+  duration_ms: 0.5272
+  type: 'test'
+  ...
+# Subtest: rechaza otras redes privadas que no son el enlace virtual autorizado
+ok 7 - rechaza otras redes privadas que no son el enlace virtual autorizado
+  ---
+  duration_ms: 0.2708
+  type: 'test'
+  ...
+# Subtest: no permite un gateway incluso con prefijo del emulador
+ok 8 - no permite un gateway incluso con prefijo del emulador
+  ---
+  duration_ms: 0.2618
+  type: 'test'
+  ...
+# Subtest: no permite tuneles o interfaces ajenas al enlace del emulador
+ok 9 - no permite tuneles o interfaces ajenas al enlace del emulador
+  ---
+  duration_ms: 0.7023
+  type: 'test'
+  ...
+# Subtest: errores, texto desconocido y entradas no textuales no acreditan aislamiento
+ok 10 - errores, texto desconocido y entradas no textuales no acreditan aislamiento
+  ---
+  duration_ms: 1.0822
+  type: 'test'
+  ...
+# Subtest: clasifica anon local sin devolver su valor
+ok 11 - clasifica anon local sin devolver su valor
+  ---
+  duration_ms: 34.9329
+  type: 'test'
+  ...
+# Subtest: conserva solo rol permitido y presencia de sub para authenticated
+ok 12 - conserva solo rol permitido y presencia de sub para authenticated
+  ---
+  duration_ms: 0.2793
+  type: 'test'
+  ...
+# Subtest: no acepta roles arbitrarios como texto de salida
+ok 13 - no acepta roles arbitrarios como texto de salida
+  ---
+  duration_ms: 0.171
+  type: 'test'
+  ...
+# Subtest: distingue ausencia de cabecera de cabecera no JWT
+ok 14 - distingue ausencia de cabecera de cabecera no JWT
+  ---
+  duration_ms: 0.1501
+  type: 'test'
+  ...
+# Subtest: maneja payload malformado sin copiar errores ni datos
+ok 15 - maneja payload malformado sin copiar errores ni datos
+  ---
+  duration_ms: 0.2073
+  type: 'test'
+  ...
+# Subtest: acepta mayusculas en nombre y esquema sin publicar credenciales
+ok 16 - acepta mayusculas en nombre y esquema sin publicar credenciales
+  ---
+  duration_ms: 0.1902
+  type: 'test'
+  ...
+# Subtest: solo acepta origen de laboratorio y nunca copia service_role al cliente
+ok 17 - solo acepta origen de laboratorio y nunca copia service_role al cliente
+  ---
+  duration_ms: 11.5464
+  type: 'test'
+  ...
+# Subtest: excluye credenciales heredadas de proveedor/firma y conserva valores locales literales
+ok 18 - excluye credenciales heredadas de proveedor/firma y conserva valores locales literales
+  ---
+  duration_ms: 0.2649
+  type: 'test'
+  ...
+# Subtest: la copia Capacitor elimina URL remota y desactiva OTA
+ok 19 - la copia Capacitor elimina URL remota y desactiva OTA
+  ---
+  duration_ms: 0.2189
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 251.1846
+

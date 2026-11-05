@@ -1,0 +1,15 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--require",
+    "D:\\Riovoley\\riovoley\\scripts\\production\\cra-release-preload.cjs",
+    "D:\\Riovoley\\riovoley\\node_modules\\react-scripts\\scripts\\build.js"
+  ],
+  "cwd": "",
+  "startedAt": "2026-11-02T00:31:13.406Z",
+  "finishedAt": "2026-11-02T00:34:40.869Z",
+  "durationSeconds": 207.463,
+  "exitCode": 0,
+  "rawLogsPrivate": true,
+  "environmentValuesRecorded": false
+}

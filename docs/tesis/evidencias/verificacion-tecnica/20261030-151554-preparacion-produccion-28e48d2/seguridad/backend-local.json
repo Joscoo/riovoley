@@ -1,0 +1,9 @@
+{
+  "recordedAt": "2026-10-31T19:43:21.376Z",
+  "projectId": "riovoley-e2e-local",
+  "apiOrigin": "http://127.0.0.1:55321",
+  "pgOrigin": "127.0.0.1:55322",
+  "identityVerified": true,
+  "method": "Guardas de origen y coincidencia de fixture admin entre Auth admin.getUserById y auth.users; sin devolver filas o PII",
+  "credentialsRecorded": false
+}

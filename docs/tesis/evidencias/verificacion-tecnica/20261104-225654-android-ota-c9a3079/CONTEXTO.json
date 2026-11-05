@@ -1,0 +1,11 @@
+{
+  "startedAt": "2026-11-04T22:56:54.843Z",
+  "baseCommit": "c9a3079cafdd97acb59ec952864e6fe976a9c223",
+  "scope": "Reconstruccion debug y verificacion WebView del candidato OTA contra laboratorio descartable existente.",
+  "appSourceSha256": "40c9fc5c6ee18248a32d2578ce47a2cffe60bc22b81ca63bc9961afa82caf15d",
+  "productionChanged": false,
+  "credentialsRequested": false,
+  "releaseSigningUsed": false,
+  "deployed": false,
+  "previousPointersPreserved": ".e2e-local/native-ota-contexts/20261104-225654"
+}

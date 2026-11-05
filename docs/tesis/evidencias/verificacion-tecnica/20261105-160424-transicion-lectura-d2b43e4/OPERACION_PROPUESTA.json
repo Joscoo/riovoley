@@ -1,0 +1,25 @@
+{
+  "responsible": "Titular de esta sesion, confirmado por el usuario",
+  "responsibleConfirmed": true,
+  "windowStartLocal": "2026-11-07T22:00:00-05:00",
+  "windowEndLocal": "2026-11-07T23:30:00-05:00",
+  "windowStartUtc": "2026-11-08T03:00:00Z",
+  "windowEndUtc": "2026-11-08T04:30:00Z",
+  "reservedMinutes": 90,
+  "selection": "Propuesta tecnica del agente por delegacion del usuario; sin medicion de baja demanda ni duracion gestionada garantizada",
+  "scope": ["SQL principal revisado", "SQL complementario de reportes", "Edge compatible", "Cliente web compatible"],
+  "androidDistributionIncluded": false,
+  "postgresUpgradeIncluded": false,
+  "authConfigurationChangesIncluded": false,
+  "credentialTasksIncluded": false,
+  "calendarAndWindowStillRequireFinalConfirmation": true,
+  "productionExecutionAuthorized": false,
+  "releaseReady": false,
+  "openRequirements": [
+    "Confirmar calendario institucional y ventana definitiva",
+    "Confirmar respaldo vigente al corte y alcance real de recuperacion",
+    "Demostrar suspension efectiva de escrituras y control de clientes anteriores; un marcador SQL o pagina de mantenimiento no lo demuestra",
+    "Fijar criterios operativos de aborto/retorno y aceptacion de integraciones no verificadas",
+    "Autorizar expresamente el paquete concreto antes de cualquier mutacion o despliegue"
+  ]
+}

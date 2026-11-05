@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--require",
+    "./scripts/production/cra-release-preload.cjs",
+    "node_modules/react-scripts/bin/react-scripts.js",
+    "test",
+    "--watchAll=false",
+    "--runInBand",
+    "--runTestsByPath",
+    "src/App.otaDiagnostics.test.js",
+    "--json",
+    "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261104-223055-ota-diagnostico-0d0d488\\unitarias\\ota-ui-rojo-configurado.json"
+  ],
+  "start": "2026-11-04T22:34:42.815Z",
+  "end": "2026-11-04T22:34:46.012Z",
+  "durationSeconds": 3.197,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

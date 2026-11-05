@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-11-01T16:23:33.143Z",
+  "priorManifests": 15,
+  "priorEntries": 8331,
+  "priorEntriesMatching": true,
+  "databaseArchiveHashMatches": true,
+  "recoveryKeyHashMatches": true,
+  "storageManifestHashMatches": true,
+  "encryptedStorageFilesVerified": 43,
+  "isolatedRecoveredObjectHashesVerified": 43,
+  "relativeLinksChecked": 73,
+  "brokenLinks": 0,
+  "nodeTests": 32,
+  "copiedTables": 94,
+  "copiedRows": 27159,
+  "sequenceStates": 11,
+  "storageBytes": 3596269,
+  "managedSupabaseRestoreVerified": false,
+  "productionChanged": false
+}

@@ -1,0 +1,400 @@
+{
+  "checkedAt": "2026-11-01T22:50:58.195Z",
+  "bootCompleted": true,
+  "durationSeconds": 214.758,
+  "attempts": [
+    {
+      "at": "2026-11-01T22:47:23.644Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:47:26.337Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:47:29.204Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:47:32.260Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:47:35.137Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:47:37.715Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:47:40.289Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:47:42.863Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:47:45.478Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:47:48.162Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:47:50.882Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:47:53.465Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:47:56.177Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:47:58.780Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:01.380Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:03.969Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:06.544Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:09.200Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:11.827Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:14.477Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:17.257Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:20.083Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:22.732Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:25.304Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:27.968Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:30.657Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:33.244Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:35.820Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:38.398Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:41.037Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:43.618Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:46.461Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:49.057Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:51.638Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:54.238Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:57.087Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:48:59.674Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:49:02.931Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:49:06.024Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:49:09.331Z",
+      "exitCode": 1,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:49:12.372Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:49:15.519Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:49:18.687Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:49:21.530Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:49:24.152Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:49:26.900Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:49:29.739Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:49:32.419Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:49:35.159Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:49:38.036Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:49:40.836Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:49:43.609Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:49:46.290Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:49:49.164Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:49:51.791Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:49:55.677Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:49:58.427Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:50:01.040Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:50:03.665Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:50:06.471Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:50:09.315Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:50:12.135Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:50:14.794Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:50:17.659Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:50:20.425Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:50:23.313Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:50:26.284Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:50:28.970Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:50:32.564Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:50:35.167Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:50:38.002Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:50:41.067Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:50:43.902Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:50:47.040Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:50:49.875Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:50:52.751Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:50:55.407Z",
+      "exitCode": 0,
+      "completed": false
+    },
+    {
+      "at": "2026-11-01T22:50:58.193Z",
+      "exitCode": 0,
+      "completed": true
+    }
+  ],
+  "headless": true,
+  "freshAvd": true,
+  "proxyForwardsNothing": true
+}

@@ -1,0 +1,15 @@
+{
+  "os": "Microsoft Windows 11 Pro",
+  "version": "10.0.26300",
+  "architecture": "64-bit",
+  "node": "v24.18.0",
+  "npm": "11.16.0",
+  "pgDriver": "8.23.1",
+  "supabaseCli": "2.122.0",
+  "localPostgreSql": "17.11",
+  "institutionalPostgreSql": "17.4",
+  "institutionalPlatformVersion": "17.4.1.064",
+  "secretValuesRecorded": false,
+  "localConnectionConfiguration": {"host":"127.0.0.1","port":55322,"user":"postgres","ssl":false},
+  "authenticationScope": "PostgreSQL roles and simulated JWT claims only; no institutional login"
+}

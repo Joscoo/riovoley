@@ -1,0 +1,8 @@
+{
+  "recordedAt": "2026-10-31T19:54:10.745Z",
+  "service": "Supabase Edge local, functions serve",
+  "intentionalStop": true,
+  "exitCode": 1,
+  "reason": "Servicio de larga duraci?n detenido despu?s de todas las pruebas, antes de sellar; no es una suite fallida",
+  "institutionalServiceAffected": false
+}

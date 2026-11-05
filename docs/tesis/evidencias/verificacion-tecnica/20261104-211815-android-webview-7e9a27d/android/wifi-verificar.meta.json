@@ -1,0 +1,16 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5580",
+    "shell",
+    "cmd",
+    "wifi",
+    "status"
+  ],
+  "startedAt": "2026-11-04T21:21:25.184Z",
+  "finishedAt": "2026-11-04T21:21:25.297Z",
+  "exitCode": 0,
+  "errorCode": null,
+  "rawOutputPrivate": true
+}

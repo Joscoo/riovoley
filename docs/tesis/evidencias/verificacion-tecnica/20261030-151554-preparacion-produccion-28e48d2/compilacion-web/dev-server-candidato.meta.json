@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/closure/check-dependencies-dev-server.cjs",
+    "--label=candidato"
+  ],
+  "start": "2026-10-31T19:25:59.159Z",
+  "end": "2026-10-31T19:30:43.072Z",
+  "durationSeconds": 283.913,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

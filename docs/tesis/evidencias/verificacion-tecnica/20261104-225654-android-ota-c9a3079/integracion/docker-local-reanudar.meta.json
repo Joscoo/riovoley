@@ -1,0 +1,16 @@
+{
+  "command": [
+    "docker",
+    "--host",
+    "npipe:////./pipe/dockerDesktopLinuxEngine",
+    "desktop",
+    "start",
+    "--detach"
+  ],
+  "start": "2026-11-05T14:46:31.340Z",
+  "end": "2026-11-05T14:46:33.732Z",
+  "durationSeconds": 2.392,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

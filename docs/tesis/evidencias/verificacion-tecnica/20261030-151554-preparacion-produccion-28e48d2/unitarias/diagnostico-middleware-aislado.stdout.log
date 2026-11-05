@@ -1,0 +1,29 @@
+TAP version 13
+# <i> [webpack-dev-middleware] wait until bundle finished
+# (node:20900) [DEP_WEBPACK_JAVASCRIPT_MODULES_PLUGIN] DeprecationWarning: webpack.JavascriptModulesPlugin has moved to webpack.javascript.JavascriptModulesPlugin
+# (Use `node --trace-deprecation ...` to show where the warning was created)
+# (node:20900) [DEP_WEBPACK_LIBRARY_TEMPLATE_PLUGIN] DeprecationWarning: webpack.LibraryTemplatePlugin is deprecated and has been replaced by compilation.outputOptions.library or compilation.addEntry + passing a library option
+# (node:20900) [DEP_WEBPACK_SINGLE_ENTRY_PLUGIN] DeprecationWarning: SingleEntryPlugin was renamed to EntryPlugin
+# (node:20900) [DEP_WEBPACK_OPTIONS_DEFAULTER] DeprecationWarning: webpack.WebpackOptionsDefaulter is deprecated and has been replaced by webpack.config.getNormalizedWebpackOptions and webpack.config.applyWebpackOptionsDefaults
+# (node:20900) [DEP_WEBPACK_AGGRESSIVE_SPLITTING_PLUGIN] DeprecationWarning: AggressiveSplittingPlugin is deprecated in favor of SplitChunksPlugin
+# Subtest: Middleware sirve el bundle y rechaza escapar del directorio con publicPath sin barra final
+not ok 1 - Middleware sirve el bundle y rechaza escapar del directorio con publicPath sin barra final
+  ---
+  duration_ms: 86925.0787
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.loaders-security.test.cjs:86:1'
+  failureType: 'testCodeFailure'
+  error: 'Array buffer allocation failed'
+  code: 'ERR_TEST_FAILURE'
+  name: 'RangeError'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 89112.5167
+

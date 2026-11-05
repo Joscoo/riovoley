@@ -1,0 +1,41 @@
+TAP version 13
+# Subtest: baseline: anon permite INSERT antes de la barrera
+ok 1 - baseline: anon permite INSERT antes de la barrera
+  ---
+  duration_ms: 103.6948
+  type: 'test'
+  ...
+# Subtest: baseline: authenticated permite INSERT antes de la barrera
+ok 2 - baseline: authenticated permite INSERT antes de la barrera
+  ---
+  duration_ms: 3.211
+  type: 'test'
+  ...
+# Subtest: baseline: service_role permite INSERT antes de la barrera
+ok 3 - baseline: service_role permite INSERT antes de la barrera
+  ---
+  duration_ms: 3.0374
+  type: 'test'
+  ...
+# Subtest: baseline: supabase_auth_admin permite INSERT antes de la barrera
+ok 4 - baseline: supabase_auth_admin permite INSERT antes de la barrera
+  ---
+  duration_ms: 2.6835
+  type: 'test'
+  ...
+# Subtest: baseline: supabase_storage_admin permite INSERT antes de la barrera
+ok 5 - baseline: supabase_storage_admin permite INSERT antes de la barrera
+  ---
+  duration_ms: 2.7522
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 351.9079
+

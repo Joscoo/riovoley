@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--require",
+    "./scripts/production/cra-release-preload.cjs",
+    "node_modules/react-scripts/scripts/build.js"
+  ],
+  "start": "2026-11-04T22:41:16.839Z",
+  "end": "2026-11-04T22:44:29.256Z",
+  "durationSeconds": 192.417,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

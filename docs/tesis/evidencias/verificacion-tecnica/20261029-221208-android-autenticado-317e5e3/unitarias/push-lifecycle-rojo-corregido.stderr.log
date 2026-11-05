@@ -1,0 +1,128 @@
+FAIL src/shared/platform/push.lifecycle.test.js
+  × cerrar sesión sin registrar push no invoca el plugin nativo de Firebase (7 ms)
+  × permiso denegado permite cerrar sesión sin unregister nativo (1 ms)
+  × un registro completado se elimina una sola vez al cerrar sesión (2 ms)
+  × un registro rechazado no habilita unregister (5 ms)
+  × cerrar sesión mientras se solicita permiso impide registrar al usuario anterior (1 ms)
+  × cerrar sesión durante register espera su resolución y elimina el registro (1 ms)
+  √ el perfil web no solicita registro ni cancelación nativos (1 ms)
+
+  ● cerrar sesión sin registrar push no invoca el plugin nativo de Firebase
+
+    expect(jest.fn()).not.toHaveBeenCalled()
+
+    Expected number of calls: 0
+    Received number of calls: 1
+
+    1: called with 0 arguments
+
+      13 |
+      14 | test('cerrar sesión sin registrar push no invoca el plugin nativo de Firebase',async()=>{
+    > 15 |  const {push,plugin}=load();await push.teardownPushForAuthenticatedUser();expect(plugin.unregister).not.toHaveBeenCalled();
+         |                                                                                                         ^
+      16 | });
+      17 | test('permiso denegado permite cerrar sesión sin unregister nativo',async()=>{
+      18 |  const {push,plugin}=load();plugin.requestPermissions.mockResolvedValue({receive:'denied'});
+
+      at Object.<anonymous> (src/shared/platform/push.lifecycle.test.js:15:105)
+
+  ● permiso denegado permite cerrar sesión sin unregister nativo
+
+    expect(jest.fn()).not.toHaveBeenCalled()
+
+    Expected number of calls: 0
+    Received number of calls: 1
+
+    1: called with 0 arguments
+
+      18 |  const {push,plugin}=load();plugin.requestPermissions.mockResolvedValue({receive:'denied'});
+      19 |  await push.initializePushForAuthenticatedUser({id:'local-user'});await push.teardownPushForAuthenticatedUser();
+    > 20 |  expect(plugin.register).not.toHaveBeenCalled();expect(plugin.unregister).not.toHaveBeenCalled();
+         |                                                                               ^
+      21 | });
+      22 | test('un registro completado se elimina una sola vez al cerrar sesión',async()=>{
+      23 |  const {push,plugin}=load();await push.initializePushForAuthenticatedUser({id:'local-user'});
+
+      at Object.<anonymous> (src/shared/platform/push.lifecycle.test.js:20:79)
+
+  ● un registro completado se elimina una sola vez al cerrar sesión
+
+    expect(jest.fn()).toHaveBeenCalledTimes(expected)
+
+    Expected number of calls: 1
+    Received number of calls: 2
+
+      23 |  const {push,plugin}=load();await push.initializePushForAuthenticatedUser({id:'local-user'});
+      24 |  await push.teardownPushForAuthenticatedUser();await push.teardownPushForAuthenticatedUser();
+    > 25 |  expect(plugin.register).toHaveBeenCalledTimes(1);expect(plugin.unregister).toHaveBeenCalledTimes(1);
+         |                                                                             ^
+      26 | });
+      27 | test('un registro rechazado no habilita unregister',async()=>{
+      28 |  const {push,plugin}=load();plugin.register.mockRejectedValue(new Error('registration unavailable'));
+
+      at Object.<anonymous> (src/shared/platform/push.lifecycle.test.js:25:77)
+
+  ● un registro rechazado no habilita unregister
+
+    expect(jest.fn()).not.toHaveBeenCalled()
+
+    Expected number of calls: 0
+    Received number of calls: 1
+
+    1: called with 0 arguments
+
+      28 |  const {push,plugin}=load();plugin.register.mockRejectedValue(new Error('registration unavailable'));
+      29 |  await expect(push.initializePushForAuthenticatedUser({id:'local-user'})).rejects.toThrow('registration unavailable');
+    > 30 |  await push.teardownPushForAuthenticatedUser();expect(plugin.unregister).not.toHaveBeenCalled();
+         |                                                                              ^
+      31 | });
+      32 | test('cerrar sesión mientras se solicita permiso impide registrar al usuario anterior',async()=>{
+      33 |  const {push,plugin}=load();let allow;plugin.requestPermissions.mockReturnValue(new Promise(resolve=>{allow=resolve;}));
+
+      at Object.<anonymous> (src/shared/platform/push.lifecycle.test.js:30:78)
+
+  ● cerrar sesión mientras se solicita permiso impide registrar al usuario anterior
+
+    expect(jest.fn()).not.toHaveBeenCalled()
+
+    Expected number of calls: 0
+    Received number of calls: 1
+
+    1: called with 0 arguments
+
+      34 |  const pending=push.initializePushForAuthenticatedUser({id:'local-user'});
+      35 |  await started(()=>allow);await push.teardownPushForAuthenticatedUser();allow({receive:'granted'});await pending;
+    > 36 |  expect(plugin.register).not.toHaveBeenCalled();expect(plugin.unregister).not.toHaveBeenCalled();
+         |                              ^
+      37 | });
+      38 | test('cerrar sesión durante register espera su resolución y elimina el registro',async()=>{
+      39 |  const {push,plugin}=load();let complete;plugin.register.mockReturnValue(new Promise(resolve=>{complete=resolve;}));
+
+      at Object.<anonymous> (src/shared/platform/push.lifecycle.test.js:36:30)
+
+  ● cerrar sesión durante register espera su resolución y elimina el registro
+
+    expect(jest.fn()).not.toHaveBeenCalled()
+
+    Expected number of calls: 0
+    Received number of calls: 1
+
+    1: called with 0 arguments
+
+      39 |  const {push,plugin}=load();let complete;plugin.register.mockReturnValue(new Promise(resolve=>{complete=resolve;}));
+      40 |  const pending=push.initializePushForAuthenticatedUser({id:'local-user'});await started(()=>complete);
+    > 41 |  const logout=push.teardownPushForAuthenticatedUser();expect(plugin.unregister).not.toHaveBeenCalled();
+         |                                                                                     ^
+      42 |  complete();await pending;await logout;expect(plugin.unregister).toHaveBeenCalledTimes(1);
+      43 | });
+      44 | test('el perfil web no solicita registro ni cancelación nativos',async()=>{
+
+      at Object.<anonymous> (src/shared/platform/push.lifecycle.test.js:41:85)
+
+Test Suites: 1 failed, 1 total
+Tests:       6 failed, 1 passed, 7 total
+Snapshots:   0 total
+Time:        2.643 s
+Ran all test suites within paths "src/shared/platform/push.lifecycle.test.js".
+Test results written to: docs\tesis\evidencias\verificacion-tecnica\20261029-221208-android-autenticado-317e5e3\unitarias\push-lifecycle-rojo-corregido.json
+

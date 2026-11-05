@@ -1,0 +1,31 @@
+{
+  "command": [
+    "docker",
+    "run",
+    "-d",
+    "--name",
+    "riovoley-restore-20261101-030216-01",
+    "--network",
+    "none",
+    "--log-driver",
+    "none",
+    "--label",
+    "riovoley.audit.scope=institutional-restore",
+    "--tmpfs",
+    "/restore:rw,noexec,nosuid,size=1g,mode=1777",
+    "--entrypoint",
+    "/bin/tail",
+    "sha256:c141fd17ac6a76c4323e90b3aee8ff1a23d2e89e547c2b963cfadc309c079cc2",
+    "-f",
+    "/dev/null"
+  ],
+  "startedAt": "2026-11-01T03:04:43.724Z",
+  "finishedAt": "2026-11-01T03:04:44.107Z",
+  "durationSeconds": 0.383,
+  "exitCode": 127,
+  "signal": null,
+  "stdoutBytes": 65,
+  "stderrBytes": 319,
+  "inputRecorded": false,
+  "rawOutputPublished": false
+}

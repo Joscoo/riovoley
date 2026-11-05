@@ -1,0 +1,33 @@
+WARN: config section [inbucket] is deprecated and will be removed in v3, use [local_smtp] instead.
+WARN: config section [inbucket] is deprecated and will be removed in v3, use [local_smtp] instead.
+Setting up Edge Functions runtime...
+2026-10-31T19:25:44.478343899Z serving the request with supabase/functions/send-email
+2026-10-31T19:25:45.320775819Z [Info] Listening on http://localhost:9999/
+2026-10-31T19:25:45.320872695Z 
+2026-10-31T19:25:45.368982483Z serving the request with supabase/functions/send-push
+2026-10-31T19:25:46.466342665Z [Info] Listening on http://localhost:9999/
+2026-10-31T19:25:46.466450284Z 
+2026-10-31T19:25:46.695415872Z serving the request with supabase/functions/send-email
+2026-10-31T19:25:46.752939928Z serving the request with supabase/functions/send-push
+2026-10-31T19:25:47.597239319Z serving the request with supabase/functions/send-push
+2026-10-31T19:25:47.874076169Z serving the request with supabase/functions/send-push
+2026-10-31T19:26:10.636858240Z serving the request with supabase/functions/send-email
+2026-10-31T19:26:10.690828813Z serving the request with supabase/functions/send-push
+2026-10-31T19:26:11.281029680Z serving the request with supabase/functions/send-push
+2026-10-31T19:26:21.974041570Z serving the request with supabase/functions/send-email
+2026-10-31T19:26:22.015152328Z serving the request with supabase/functions/send-push
+2026-10-31T19:26:22.467748953Z serving the request with supabase/functions/send-push
+2026-10-31T19:26:27.387735925Z serving the request with supabase/functions/send-email
+2026-10-31T19:26:27.428553359Z serving the request with supabase/functions/send-push
+2026-10-31T19:26:28.492952416Z serving the request with supabase/functions/send-push
+2026-10-31T19:26:31.855949380Z serving the request with supabase/functions/send-email
+2026-10-31T19:26:31.885667369Z serving the request with supabase/functions/send-push
+2026-10-31T19:26:32.399857548Z serving the request with supabase/functions/send-push
+2026-10-31T19:26:44.243852495Z serving the request with supabase/functions/send-email
+2026-10-31T19:26:44.262459274Z serving the request with supabase/functions/send-push
+2026-10-31T19:26:44.621956687Z serving the request with supabase/functions/send-push
+2026-10-31T19:29:05.252348063Z wall clock duration warning: isolate: e08d0cb6-589d-4fa0-81e3-2454377e811f
+2026-10-31T19:29:05.268249366Z early termination has been triggered: isolate: e08d0cb6-589d-4fa0-81e3-2454377e811f
+2026-10-31T19:29:06.178584476Z wall clock duration warning: isolate: 414af3b9-156e-4fd1-8dd0-08a465072bfc
+2026-10-31T19:29:06.194945440Z early termination has been triggered: isolate: 414af3b9-156e-4fd1-8dd0-08a465072bfc
+

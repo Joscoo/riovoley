@@ -1,0 +1,337 @@
+{
+  "generatedAt": "2026-10-29T15:20:23.527Z",
+  "commit": "e469db5608fb77071b6a9ee3db253c28dae734dd",
+  "branch": "fix/seguridad-local-20261029",
+  "modifiedTree": true,
+  "productionChanged": false,
+  "pushed": false,
+  "environment": {
+    "os": "Windows_NT",
+    "release": "10.0.26300",
+    "architecture": "x64",
+    "node": "v24.18.0",
+    "postgres": "17.11",
+    "driver": "pg8.23.1",
+    "backend": "127.0.0.1:55321 / PostgreSQL127.0.0.1:55322",
+    "environmentValuesPublished": false
+  },
+  "jest": {
+    "suites": 87,
+    "executed": 410,
+    "passed": 410,
+    "failed": 0,
+    "skipped": 0,
+    "processSeconds": 42.049
+  },
+  "contracts": {
+    "executed": 10,
+    "subsetOfJest": true
+  },
+  "memoryIntegration": {
+    "executed": 5,
+    "subsetOfJest": true,
+    "realPersistence": false
+  },
+  "coverage": {
+    "lines": {
+      "total": 12108,
+      "covered": 5165,
+      "skipped": 0,
+      "pct": 42.65
+    },
+    "statements": {
+      "total": 13361,
+      "covered": 5513,
+      "skipped": 0,
+      "pct": 41.26
+    },
+    "functions": {
+      "total": 3471,
+      "covered": 1274,
+      "skipped": 0,
+      "pct": 36.7
+    },
+    "branches": {
+      "total": 11965,
+      "covered": 4017,
+      "skipped": 0,
+      "pct": 33.57
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": "Unknown"
+    }
+  },
+  "access": {
+    "executed": 34,
+    "passed": 34,
+    "failed": 0,
+    "skipped": 0,
+    "file": "integracion/acceso-final-1793286802959.stdout.log"
+  },
+  "functional": {
+    "executed": 18,
+    "passed": 18,
+    "failed": 0,
+    "skipped": 0,
+    "file": "integracion/funcional-final-1793286806893.stdout.log"
+  },
+  "edge": {
+    "executed": 20,
+    "passed": 20,
+    "failed": 0,
+    "skipped": 0,
+    "file": "unitarias/edge-final-1793286815357.stdout.log"
+  },
+  "http": {
+    "executed": 12,
+    "passed": 12,
+    "failed": 0,
+    "skipped": 0,
+    "file": "integracion/edge-http-pruebas-1793286817025.stdout.log"
+  },
+  "health": {
+    "executed": 2,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "file": "integracion/functions-health-final-1793286376843.stdout.log"
+  },
+  "browsers": [
+    {
+      "label": "publicas-finales",
+      "startTime": "2026-10-29T14:51:14.605Z",
+      "duration": 95740.80300000001,
+      "expected": 133,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0,
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+        "test",
+        "tests/e2e/responsive.smoke.spec.js",
+        "tests/e2e/public.navigation-accessibility.spec.js",
+        "tests/e2e/auth.password-recovery.spec.js",
+        "tests/e2e/audit.protected-routes.spec.js",
+        "--config=playwright.local.config.cjs",
+        "--grep-invert=role dashboards responsive guard",
+        "--workers=2"
+      ],
+      "start": "2026-10-29T14:51:01.524Z",
+      "end": "2026-10-29T14:52:50.615Z",
+      "durationSeconds": 109.091,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "label": "paneles-finales",
+      "startTime": "2026-10-29T14:52:52.061Z",
+      "duration": 341284.312,
+      "expected": 105,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0,
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+        "test",
+        "tests/e2e/admin.modules-navigation.spec.js",
+        "tests/e2e/admin.provisioning-notifications.smoke.spec.js",
+        "tests/e2e/asistencias.guided.review.spec.js",
+        "tests/e2e/filters-sorting.phase2-lists.spec.js",
+        "tests/e2e/filters-sorting.physical-tests.spec.js",
+        "tests/e2e/filters-sorting.tables.spec.js",
+        "tests/e2e/filters-sorting.user-management.spec.js",
+        "tests/e2e/responsive.smoke.spec.js",
+        "tests/e2e/roles.modules-navigation.spec.js",
+        "tests/e2e/roles.panels-navigation.smoke.spec.js",
+        "--config=playwright.local.config.cjs",
+        "--grep-invert=public route responsive guard",
+        "--workers=2"
+      ],
+      "start": "2026-10-29T14:52:50.745Z",
+      "end": "2026-10-29T14:58:33.491Z",
+      "durationSeconds": 342.746,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "label": "mutaciones-finales",
+      "startTime": "2026-10-29T14:58:34.675Z",
+      "duration": 83442.57699999999,
+      "expected": 7,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0,
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+        "test",
+        "tests/e2e/admin.happy-path-controlled.spec.js",
+        "--config=playwright.local.config.cjs",
+        "--workers=2"
+      ],
+      "start": "2026-10-29T14:58:33.603Z",
+      "end": "2026-10-29T14:59:58.187Z",
+      "durationSeconds": 84.584,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "label": "limites-finales",
+      "startTime": "2026-10-29T14:59:59.467Z",
+      "duration": 18434.734,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0,
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+        "test",
+        "tests/e2e/payments.responsive-boundaries.spec.js",
+        "--config=playwright.local.config.cjs",
+        "--project=desktop-1440",
+        "--workers=2"
+      ],
+      "start": "2026-10-29T14:59:58.276Z",
+      "end": "2026-10-29T15:00:17.968Z",
+      "durationSeconds": 19.692,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    }
+  ],
+  "builds": [
+    {
+      "file": "compilacion-web-build-1793284498200.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "D:\\Riovoley\\riovoley\\node_modules\\react-scripts\\scripts\\build.js"
+      ],
+      "start": "2026-10-29T14:34:58.201Z",
+      "end": "2026-10-29T14:38:44.207Z",
+      "durationSeconds": 226.006,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "compilacion-web-build-1793285281200.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "D:\\Riovoley\\riovoley\\node_modules\\react-scripts\\scripts\\build.js"
+      ],
+      "start": "2026-10-29T14:48:01.200Z",
+      "end": "2026-10-29T14:49:27.822Z",
+      "durationSeconds": 86.622,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    }
+  ],
+  "audits": [
+    {
+      "name": "raiz",
+      "before": {
+        "info": 0,
+        "low": 16,
+        "moderate": 6,
+        "high": 13,
+        "critical": 0,
+        "total": 35
+      },
+      "after": {
+        "info": 0,
+        "low": 16,
+        "moderate": 6,
+        "high": 13,
+        "critical": 0,
+        "total": 35
+      }
+    },
+    {
+      "name": "functions",
+      "before": {
+        "info": 0,
+        "low": 0,
+        "moderate": 57,
+        "high": 5,
+        "critical": 0,
+        "total": 62
+      },
+      "after": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      }
+    },
+    {
+      "name": "auxiliar",
+      "before": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "after": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      }
+    }
+  ],
+  "rollback": {
+    "passed": true,
+    "functionsRestored": 11,
+    "functionAclsRestored": 11,
+    "policiesRestored": 111,
+    "newDailyRpcRemoved": true,
+    "scope": "Reversión de definiciones, ACL de funciones y políticas comparadas, sin restaurar datos descartables creados por pruebas ni afirmar un respaldo de producción."
+  },
+  "deno": {
+    "file": "integracion/deno-typecheck-1793285554921.meta.json",
+    "modifiedMs": 1793285558164.9248,
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\deno-tool\\node_modules\\@deno\\win32-x64\\deno.exe",
+      "check",
+      "--no-config",
+      "supabase/functions/_core/auth-admin/application/require-active-staff.ts",
+      "supabase/functions/_core/auth-admin/infrastructure/supabase-auth-admin-gateway.ts",
+      "supabase/functions/delete-auth-user/index.ts",
+      "supabase/functions/send-push/index.ts"
+    ],
+    "start": "2026-10-29T14:52:34.921Z",
+    "end": "2026-10-29T14:52:38.162Z",
+    "durationSeconds": 3.241,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  "ranking": {
+    "category": "iniciacion_hombres",
+    "participants": 61,
+    "consecutivePositions": true,
+    "descendingScores": true,
+    "tiesChecked": true,
+    "apiMatchesPersistedSnapshot": true,
+    "unknownCategoryEmpty": true,
+    "scope": "Categoría del fixture y ranking overall, sin extrapolar a todas las categorías o métricas.",
+    "evidence": "integracion/ranking-categoria-1793286815153-a27c85.json"
+  },
+  "migration": "database/security/local/20261029141114_riovoley_security_local.sql"
+}

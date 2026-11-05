@@ -1,0 +1,78 @@
+[
+  {
+    "signature": "claim_daily_login_reward()",
+    "security_definer": true,
+    "config": [
+      "search_path=\"\""
+    ],
+    "anon_execute": false,
+    "authenticated_execute": true,
+    "definition": "CREATE OR REPLACE FUNCTION public.claim_daily_login_reward()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nDECLARE actor uuid:=auth.uid(); student uuid; today date:=(now() AT TIME ZONE 'America/Guayaquil')::date; inserted integer;\nBEGIN\n IF actor IS NULL OR NOT security.is_active_user() THEN RAISE EXCEPTION 'Usuario activo requerido' USING ERRCODE='42501'; END IF;\n SELECT s.id INTO student FROM core.students s JOIN core.users u ON u.id=s.user_id WHERE s.user_id=actor AND u.role='estudiante';\n IF student IS NULL THEN RETURN jsonb_build_object('awarded',false,'skipped',true,'xpDelta',0,'rewardDate',NULL,'studentId',NULL); END IF;\n PERFORM pg_advisory_xact_lock(hashtextextended('riovoley-daily:'||actor::text,0));\n IF EXISTS(SELECT 1 FROM gamification.login_rewards r WHERE r.user_id=actor AND r.reward_date=today) THEN\n  RETURN jsonb_build_object('awarded',false,'xpDelta',0,'rewardDate',today,'studentId',student);\n END IF;\n INSERT INTO gamification.xp_ledger(student_id,source_type,source_ref,xp_delta,label,description,metadata)\n VALUES(student,'daily_login',today::text,8,'Ingreso diario','Recompensa minima por volver hoy a la aplicacion.',jsonb_build_object('rewardDate',today))\n ON CONFLICT(student_id,source_ref) WHERE source_type='daily_login' DO NOTHING;\n GET DIAGNOSTICS inserted=ROW_COUNT;\n INSERT INTO gamification.login_rewards(user_id,reward_date,reward_count,updated_at) VALUES(actor,today,1,now())\n ON CONFLICT(user_id) DO UPDATE SET reward_date=EXCLUDED.reward_date,reward_count=1,updated_at=EXCLUDED.updated_at;\n RETURN jsonb_build_object('awarded',inserted=1,'xpDelta',CASE WHEN inserted=1 THEN 8 ELSE 0 END,'rewardDate',today,'studentId',student);\nEND;\n$function$\n"
+  },
+  {
+    "signature": "handle_new_user()",
+    "security_definer": true,
+    "config": [
+      "search_path=\"\""
+    ],
+    "anon_execute": true,
+    "authenticated_execute": true,
+    "definition": "CREATE OR REPLACE FUNCTION public.handle_new_user()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nDECLARE role_value profiles.user_profiles.role%TYPE;\nBEGIN\n role_value:=COALESCE((SELECT CASE WHEN u.role='admin' THEN 'administrador' ELSE u.role END FROM core.users u WHERE u.id=NEW.id),'usuario');\n INSERT INTO profiles.user_profiles(id,full_name,role)\n VALUES(NEW.id,NEW.raw_user_meta_data->>'full_name',role_value)\n ON CONFLICT(id) DO UPDATE SET full_name=EXCLUDED.full_name,role=EXCLUDED.role;\n RETURN NEW;\nEND;\n$function$\n"
+  },
+  {
+    "signature": "is_admin()",
+    "security_definer": true,
+    "config": [
+      "search_path=\"\""
+    ],
+    "anon_execute": true,
+    "authenticated_execute": true,
+    "definition": "CREATE OR REPLACE FUNCTION public.is_admin()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$ SELECT security.is_active_admin() $function$\n"
+  },
+  {
+    "signature": "is_admin_or_trainer()",
+    "security_definer": true,
+    "config": [
+      "search_path=\"\""
+    ],
+    "anon_execute": true,
+    "authenticated_execute": true,
+    "definition": "CREATE OR REPLACE FUNCTION public.is_admin_or_trainer()\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$ SELECT security.is_active_staff() $function$\n"
+  },
+  {
+    "signature": "restore_payment(uuid)",
+    "security_definer": false,
+    "config": [
+      "search_path=\"\""
+    ],
+    "anon_execute": false,
+    "authenticated_execute": true,
+    "definition": "CREATE OR REPLACE FUNCTION public.restore_payment(payment_id uuid)\n RETURNS boolean\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\nBEGIN\n IF NOT security.is_active_staff() THEN RAISE EXCEPTION 'Personal activo requerido' USING ERRCODE='42501'; END IF;\n UPDATE billing.payments p SET deleted_at=NULL WHERE p.id=payment_id AND p.deleted_at IS NOT NULL;\n RETURN FOUND;\nEND;\n$function$\n"
+  },
+  {
+    "signature": "restore_payment_legacy_bigint(bigint)",
+    "security_definer": true,
+    "config": null,
+    "anon_execute": false,
+    "authenticated_execute": false,
+    "definition": "CREATE OR REPLACE FUNCTION public.restore_payment_legacy_bigint(payment_id bigint)\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\r\nBEGIN\r\n  UPDATE payments\r\n  SET deleted_at = NULL\r\n  WHERE id = payment_id AND deleted_at IS NOT NULL;\r\n  \r\n  RETURN FOUND;\r\nEND;\r\n$function$\n"
+  },
+  {
+    "signature": "soft_delete_payment(uuid)",
+    "security_definer": false,
+    "config": [
+      "search_path=\"\""
+    ],
+    "anon_execute": false,
+    "authenticated_execute": true,
+    "definition": "CREATE OR REPLACE FUNCTION public.soft_delete_payment(payment_id uuid)\n RETURNS boolean\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\nBEGIN\n IF NOT security.is_active_staff() THEN RAISE EXCEPTION 'Personal activo requerido' USING ERRCODE='42501'; END IF;\n UPDATE billing.payments p SET deleted_at=now() WHERE p.id=payment_id AND p.deleted_at IS NULL;\n RETURN FOUND;\nEND;\n$function$\n"
+  },
+  {
+    "signature": "soft_delete_payment_legacy_bigint(bigint)",
+    "security_definer": true,
+    "config": null,
+    "anon_execute": false,
+    "authenticated_execute": false,
+    "definition": "CREATE OR REPLACE FUNCTION public.soft_delete_payment_legacy_bigint(payment_id bigint)\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\r\nBEGIN\r\n  UPDATE payments\r\n  SET deleted_at = NOW()\r\n  WHERE id = payment_id AND deleted_at IS NULL;\r\n  \r\n  RETURN FOUND;\r\nEND;\r\n$function$\n"
+  }
+]

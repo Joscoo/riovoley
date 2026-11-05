@@ -1,0 +1,18 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\deno-tool\\node_modules\\@deno\\win32-x64\\deno.exe",
+    "bundle",
+    "--no-config",
+    "--platform=deno",
+    "--no-lock",
+    "--node-modules-dir=none",
+    "--output=D:\\Riovoley\\riovoley\\.e2e-local\\edge-production\\return-bundles\\send-payment-reminders.mjs",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\edge-production\\packets\\return\\send-payment-reminders\\supabase\\functions\\send-payment-reminders\\index.ts"
+  ],
+  "start": "2026-11-01T01:49:42.326Z",
+  "end": "2026-11-01T01:49:42.945Z",
+  "durationSeconds": 0.619,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

@@ -1,0 +1,604 @@
+{
+  "observedAt": "2026-10-31T21:29:35.288Z",
+  "database": "riovoley_release_20261031212707",
+  "version": "17.11",
+  "functions": [
+    {
+      "schema": "core",
+      "name": "guard_client_user_fields",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": false,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "gamification",
+      "name": "skip_duplicate_daily_login_xp_ledger",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": false,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "profiles",
+      "name": "guard_client_profile_fields",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": false,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "profiles",
+      "name": "touch_mobile_device_registration_updated_at",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": false,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "profiles",
+      "name": "touch_user_notification_preferences_updated_at",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": false,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "admin_insert_user",
+      "args": "p_id uuid, p_email text, p_role text, p_nombre text, p_apellido text, p_fecha_nacimiento date, p_telefono text",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": false,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "apply_payment_membership_rules",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=public, billing, pg_temp"
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "audit_payments",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "calculate_age",
+      "args": "birthdate date",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=public, pg_temp"
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "calculate_membership_payment_period",
+      "args": "p_student_id uuid, p_fecha_pago date, p_exclude_payment_id uuid",
+      "owner": "postgres",
+      "security_definer": false,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "calculate_payment_state",
+      "args": "p_fecha_fin date",
+      "owner": "postgres",
+      "security_definer": false,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "check_login_allowed",
+      "args": "p_email text",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "claim_daily_login_reward",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": false,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "equip_gamification_item",
+      "args": "p_student_id uuid, p_item_slug text",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=public, gamification, core"
+      ],
+      "anon_execute": false,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "get_user_role",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": false
+    },
+    {
+      "schema": "public",
+      "name": "handle_new_user",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "is_admin",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "is_admin_or_trainer",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "policy_exists",
+      "args": "p_table text, p_policy text",
+      "owner": "postgres",
+      "security_definer": false,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "purchase_gamification_item",
+      "args": "p_student_id uuid, p_item_slug text",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=public, gamification, core"
+      ],
+      "anon_execute": false,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "record_login_attempt",
+      "args": "p_email text, p_success boolean, p_error_code text",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "restore_payment",
+      "args": "payment_id uuid",
+      "owner": "postgres",
+      "security_definer": false,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": false,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "restore_payment_legacy_bigint",
+      "args": "payment_id bigint",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": false,
+      "authenticated_execute": false
+    },
+    {
+      "schema": "public",
+      "name": "soft_delete_payment",
+      "args": "payment_id uuid",
+      "owner": "postgres",
+      "security_definer": false,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": false,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "soft_delete_payment_legacy_bigint",
+      "args": "payment_id bigint",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": false,
+      "authenticated_execute": false
+    },
+    {
+      "schema": "public",
+      "name": "sync_first_login_on_password_change",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "sync_last_login_from_auth",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "sync_user_profile_on_user_update",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "touch_mobile_device_registration_updated_at",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": false,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "touch_user_notification_inbox_state_updated_at",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": false,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "unequip_gamification_item",
+      "args": "p_student_id uuid, p_category text",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=public, gamification, core"
+      ],
+      "anon_execute": false,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "update_announcements_updated_at",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": false,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "public",
+      "name": "update_modified_column",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": false,
+      "config": [
+        "search_path=public"
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "reporting",
+      "name": "cleanup_old_report_runs",
+      "args": "retention_months integer",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=reporting, public"
+      ],
+      "anon_execute": false,
+      "authenticated_execute": false
+    },
+    {
+      "schema": "reporting",
+      "name": "invoke_generate_scheduled_reports",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=reporting, public"
+      ],
+      "anon_execute": false,
+      "authenticated_execute": false
+    },
+    {
+      "schema": "reporting",
+      "name": "set_updated_at",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": false,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "reporting",
+      "name": "touch_scheduler_config_updated_at",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": false,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "security",
+      "name": "guard_active_gamification_actor",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": false,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": false,
+      "authenticated_execute": false
+    },
+    {
+      "schema": "security",
+      "name": "guard_cosmetic_unlock",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": false,
+      "authenticated_execute": false
+    },
+    {
+      "schema": "security",
+      "name": "guard_staff_sources",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": false,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": false,
+      "authenticated_execute": false
+    },
+    {
+      "schema": "security",
+      "name": "guard_user_privileges",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": false,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": false,
+      "authenticated_execute": false
+    },
+    {
+      "schema": "security",
+      "name": "is_active_admin",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": false,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "security",
+      "name": "is_active_staff",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": false,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "security",
+      "name": "is_active_user",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": false,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "security",
+      "name": "preserve_wallet_spending",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": false,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": false,
+      "authenticated_execute": false
+    },
+    {
+      "schema": "training",
+      "name": "enforce_physical_test_age",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": true,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    },
+    {
+      "schema": "training",
+      "name": "touch_training_categories_updated_at",
+      "args": "",
+      "owner": "postgres",
+      "security_definer": false,
+      "config": [
+        "search_path=\"\""
+      ],
+      "anon_execute": true,
+      "authenticated_execute": true
+    }
+  ],
+  "rls": [
+    {
+      "schema": "gamification",
+      "name": "currency_ledger",
+      "rls": true,
+      "forced": false,
+      "policies": 10
+    },
+    {
+      "schema": "gamification",
+      "name": "currency_wallets",
+      "rls": true,
+      "forced": false,
+      "policies": 10
+    },
+    {
+      "schema": "gamification",
+      "name": "login_rewards",
+      "rls": true,
+      "forced": false,
+      "policies": 7
+    },
+    {
+      "schema": "gamification",
+      "name": "xp_ledger",
+      "rls": true,
+      "forced": false,
+      "policies": 7
+    }
+  ],
+  "mutableSearchPaths": 0,
+  "anonSecurityDefiner": 13,
+  "authentication": "JWT SQL simulado; no Auth HTTP"
+}

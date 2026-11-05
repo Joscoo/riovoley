@@ -1,0 +1,13 @@
+pg_restore: error: could not execute query: ERROR:  generation expression is not immutable
+Command was: CREATE TABLE core.students (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    user_id uuid,
+    categoria text,
+    fecha_ingreso date DEFAULT CURRENT_DATE,
+    fecha_nacimiento date NOT NULL,
+    edad integer GENERATED ALWAYS AS (public.calculate_age(fecha_nacimiento)) STORED,
+    CONSTRAINT students_fecha_nacimiento_min_5_check CHECK (((fecha_nacimiento IS NOT NULL) AND (fecha_nacimiento <= CURRENT_DATE) AND (fecha_nacimiento <= (CURRENT_DATE - '5 years'::interval))))
+);
+
+
+

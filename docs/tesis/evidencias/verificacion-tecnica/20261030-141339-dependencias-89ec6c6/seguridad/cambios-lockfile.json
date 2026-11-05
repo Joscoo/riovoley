@@ -1,0 +1,25 @@
+{
+  "forced": false,
+  "changes": [
+    {
+      "file": "node_modules/@tootallnate/once",
+      "before": "1.1.2",
+      "after": "2.0.1"
+    },
+    {
+      "file": "node_modules/randombytes",
+      "before": "2.1.0",
+      "after": null
+    },
+    {
+      "file": "node_modules/rollup-plugin-terser/node_modules/serialize-javascript",
+      "before": "4.0.0",
+      "after": null
+    },
+    {
+      "file": "node_modules/serialize-javascript",
+      "before": "6.0.2",
+      "after": "7.1.4"
+    }
+  ]
+}

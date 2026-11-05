@@ -1,0 +1,8 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const h=require('../../e2e/local/harness.cjs'),p=JSON.parse(fs.readFileSync(path.join(h.runtime,'edge-production/packet.json')));
+(async()=>{
+ const results=[];const binary=path.join(h.runtime,'deno-tool/node_modules/@deno/win32-x64/deno.exe');
+ for(const fn of p.functions){const output=path.join(h.runtime,'edge-production/return-bundles',fn.slug+'.mjs');fs.mkdirSync(path.dirname(output),{recursive:true});const result=await h.run('integracion/retorno-bundle-'+fn.slug,binary,['bundle','--no-config','--platform=deno','--no-lock','--node-modules-dir=none','--output='+output,path.join(h.root,fn.returnDirectory,'supabase/functions',fn.slug,'index.ts')],{env:{...process.env,DENO_DIR:path.join(h.runtime,'deno-cache'),DENO_NO_PROMPT:'1'},allowFailure:true,timeoutMs:60000});const record={slug:fn.slug,exitCode:result.exitCode,originalCloudVersion:fn.cloudVersion,cloudBundleSha256:fn.cloudBundleSha256,typeCheck:false};if(result.exitCode===0){const bytes=fs.readFileSync(output);Object.assign(record,{output:path.relative(h.root,output).replaceAll('\\','/'),bytes:bytes.length,sha256:crypto.createHash('sha256').update(bytes).digest('hex')});}results.push(record);}
+ h.write('seguridad/bundles-retorno.json',{results,scope:'Compilacion JavaScript local de fuentes Cloud, sin chequeo de tipos por diseno del bundler. No reproduce el ESZIP binario original ni ensaya despliegue o retorno gestionado.'});console.log(JSON.stringify({attempted:results.length,passed:results.filter(r=>r.exitCode===0).length}));process.exitCode=results.some(r=>r.exitCode!==0)?1:0;
+})().catch(e=>{console.error(e.message);process.exitCode=1;});

@@ -1,0 +1,7 @@
+{
+  "observed": true,
+  "stage": "Primer empaquetado",
+  "result": "Detenido por referencia type-only ausente en la descarga Cloud de generate-report; no faltaba una dependencia runtime.",
+  "incompleteDirectoryPreserved": ".e2e-local/edge-production/packets-attempt-1",
+  "resolution": "Validar AST para distinguir imports solo de tipos, conservar fuentes exactas y registrar límites sin inventar archivos."
+}

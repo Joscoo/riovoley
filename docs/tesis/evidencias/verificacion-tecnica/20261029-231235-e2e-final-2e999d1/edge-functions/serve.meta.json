@@ -1,0 +1,19 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\tools\\node_modules\\@supabase\\cli-windows-x64\\bin\\supabase.exe",
+    "functions",
+    "serve",
+    "--workdir",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\stack",
+    "--network-id",
+    "riovoley-e2e-loopback",
+    "--env-file",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\edge-1793368208832-962280.env"
+  ],
+  "start": "2026-10-30T13:50:08.834Z",
+  "end": "2026-10-30T14:05:58.514Z",
+  "durationSeconds": 949.68,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

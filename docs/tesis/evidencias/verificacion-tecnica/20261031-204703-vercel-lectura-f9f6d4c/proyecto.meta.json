@@ -1,0 +1,22 @@
+{
+  "label": "proyecto",
+  "method": "GET",
+  "endpoint": "/v9/projects/riovoley",
+  "command": [
+    "vercel",
+    "api",
+    "/v9/projects/riovoley",
+    "-X",
+    "GET",
+    "--scope",
+    "joscoos-projects",
+    "--global-config",
+    "[CONFIG_PRIVADA]",
+    "--non-interactive"
+  ],
+  "start": "2026-10-31T20:47:03.230Z",
+  "end": "2026-10-31T20:47:04.542Z",
+  "durationSeconds": 1.312,
+  "exitCode": 0,
+  "rawOutputSaved": false
+}

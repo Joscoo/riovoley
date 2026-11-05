@@ -1,0 +1,16 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\native-validation\\20261105-145206\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5580",
+    "emu",
+    "avd",
+    "name"
+  ],
+  "start": "2026-11-05T14:56:20.214Z",
+  "end": "2026-11-05T14:56:20.672Z",
+  "durationSeconds": 0.458,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

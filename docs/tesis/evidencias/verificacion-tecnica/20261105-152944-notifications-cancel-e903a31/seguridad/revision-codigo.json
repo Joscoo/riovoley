@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-05T15:36:21.458Z",
+  "reviewType": "Revision independiente solo lectura del cambio de cancelacion",
+  "initialFindings": [
+    {
+      "priority": "P2",
+      "description": "Faltaba comprobar cancelacion despues del await exterior de buildPaymentsBaseUseCase"
+    }
+  ],
+  "regressionBeforeCorrection": {
+    "file": "unitarias/microtarea-rojo.json",
+    "passed": 4,
+    "failed": 1
+  },
+  "correction": "Comprobacion explicita al reanudar el consumidor exterior",
+  "followupReviewBlockingFindings": 0,
+  "additionalUiRegression": "Resolver carga obsoleta despues de vigente no cambia badge actual",
+  "reviewerExecutedTests": false,
+  "productSourceMutatedByReviewer": false
+}

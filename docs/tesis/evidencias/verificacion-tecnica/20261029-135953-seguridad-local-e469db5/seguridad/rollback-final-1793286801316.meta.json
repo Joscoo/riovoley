@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/security/apply-local.cjs",
+    "rollback"
+  ],
+  "start": "2026-10-29T15:13:21.316Z",
+  "end": "2026-10-29T15:13:21.627Z",
+  "durationSeconds": 0.311,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

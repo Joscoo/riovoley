@@ -1,0 +1,5 @@
+{
+  "actualFingerprint": "8584417dd0401c384b2a090034b4f6bc",
+  "expectedFingerprint": "15b9d9e869fb5113263c485714009878",
+  "scope": "Funciones y ACL; vistas; RLS/policies; triggers/estado; constraints; columnas; indices/validez; enum; secuencias; propietarios y ACL de relaciones/esquemas/columnas; ACL predeterminadas de funciones"
+}

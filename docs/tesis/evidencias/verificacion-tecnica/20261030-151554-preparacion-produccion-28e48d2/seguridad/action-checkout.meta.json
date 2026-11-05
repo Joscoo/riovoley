@@ -1,0 +1,15 @@
+{
+  "command": [
+    "git",
+    "ls-remote",
+    "https://github.com/actions/checkout.git",
+    "refs/tags/v7",
+    "refs/tags/v7^{}"
+  ],
+  "start": "2026-10-31T19:49:51.512Z",
+  "end": "2026-10-31T19:49:52.445Z",
+  "durationSeconds": 0.933,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

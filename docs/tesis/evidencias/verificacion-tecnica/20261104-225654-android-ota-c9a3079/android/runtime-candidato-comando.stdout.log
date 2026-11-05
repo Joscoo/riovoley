@@ -1,0 +1,7 @@
+{"label":"android/inspeccion-contenido","exitCode":0,"durationSeconds":0.83,"stderrTail":""}
+{"stage":"EMULATOR_STARTED","pid":6192}
+{"stage":"EMULATOR_BOOT_COMPLETED","seconds":171.567}
+{"stage":"RUNNING_WEBVIEW"}
+{"label":"android/autenticacion-candidato-comando","exitCode":0,"durationSeconds":156.818,"stderrTail":""}
+{"stage":"WEBVIEW_CHECKS_COMPLETED","failed":false,"cases":{"planned":14,"executed":14,"passed":14,"failed":0,"notExecuted":0,"cleanupFailures":0},"emulatorStopped":true,"evidence":"docs\\tesis\\evidencias\\verificacion-tecnica\\20261104-225654-android-ota-c9a3079"}
+

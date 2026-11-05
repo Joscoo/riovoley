@@ -1,0 +1,101 @@
+FAIL src/features/notifications/application/useCases/notifications.abort.test.js (18.753 s)
+  ● el servicio propaga una señal cancelada y no inicia lecturas
+
+    expect(received).rejects.toMatchObject()
+
+    Received promise resolved instead of rejected
+    Resolved to value: []
+
+    [0m [90m 12 |[39m test([32m'el servicio propaga una señal cancelada y no inicia lecturas'[39m[33m,[39m [36masync[39m () [33m=>[39m {
+     [90m 13 |[39m   [36mconst[39m repo [33m=[39m repository()[33m,[39m controller [33m=[39m [36mnew[39m [33mAbortController[39m()[33m;[39m controller[33m.[39mabort()[33m;[39m
+    [31m[1m>[22m[39m[90m 14 |[39m   [36mawait[39m expect(createNotificationsService(repo)[33m.[39mloadBellNotifications({ userId[33m:[39m [32m'fixture'[39m[33m,[39m signal[33m:[39m controller[33m.[39msignal }))[33m.[39mrejects[33m.[39mtoMatchObject({ name[33m:[39m [32m'AbortError'[39m })[33m;[39m
+     [90m    |[39m         [31m[1m^[22m[39m
+     [90m 15 |[39m   expect(repo[33m.[39mlistPaymentsForNotifications)[33m.[39mnot[33m.[39mtoHaveBeenCalled()[33m;[39m
+     [90m 16 |[39m })[33m;[39m
+     [90m 17 |[39m test([32m'cancelar durante pagos evita consultar estudiantes y siguientes etapas'[39m[33m,[39m [36masync[39m () [33m=>[39m {[0m
+
+      at expect (node_modules/expect/build/index.js:178:15)
+      at Object.<anonymous> (src/features/notifications/application/useCases/notifications.abort.test.js:14:9)
+
+  ● cancelar durante pagos evita consultar estudiantes y siguientes etapas
+
+    expect(received).rejects.toMatchObject()
+
+    Received promise resolved instead of rejected
+    Resolved to value: []
+
+    [0m [90m 20 |[39m   [36mconst[39m result [33m=[39m createNotificationsUseCases(repo)[33m.[39mloadBellNotificationsUseCase[33m.[39mexecute({ userId[33m:[39m [32m'fixture'[39m[33m,[39m signal[33m:[39m controller[33m.[39msignal })[33m;[39m
+     [90m 21 |[39m   controller[33m.[39mabort()[33m;[39m pending[33m.[39mresolve([])[33m;[39m
+    [31m[1m>[22m[39m[90m 22 |[39m   [36mawait[39m expect(result)[33m.[39mrejects[33m.[39mtoMatchObject({ name[33m:[39m [32m'AbortError'[39m })[33m;[39m
+     [90m    |[39m         [31m[1m^[22m[39m
+     [90m 23 |[39m   expect(repo[33m.[39mlistStudentsByIds)[33m.[39mnot[33m.[39mtoHaveBeenCalled()[33m;[39m
+     [90m 24 |[39m   expect(repo[33m.[39mlistRecentActiveAnnouncements)[33m.[39mnot[33m.[39mtoHaveBeenCalled()[33m;[39m
+     [90m 25 |[39m })[33m;[39m[0m
+
+      at expect (node_modules/expect/build/index.js:178:15)
+      at Object.<anonymous> (src/features/notifications/application/useCases/notifications.abort.test.js:22:9)
+
+  ● cancelar con anuncios pendientes evita logros e inbox posteriores
+
+    expect(received).rejects.toMatchObject()
+
+    Received promise resolved instead of rejected
+    Resolved to value: []
+
+    [0m [90m 29 |[39m   [36mconst[39m result [33m=[39m createNotificationsUseCases(repo)[33m.[39mloadBellNotificationsUseCase[33m.[39mexecute({ userId[33m:[39m [32m'fixture'[39m[33m,[39m signal[33m:[39m controller[33m.[39msignal })[33m;[39m
+     [90m 30 |[39m   [36mawait[39m reached[33m.[39mpromise[33m;[39m controller[33m.[39mabort()[33m;[39m pending[33m.[39mresolve([])[33m;[39m
+    [31m[1m>[22m[39m[90m 31 |[39m   [36mawait[39m expect(result)[33m.[39mrejects[33m.[39mtoMatchObject({ name[33m:[39m [32m'AbortError'[39m })[33m;[39m
+     [90m    |[39m         [31m[1m^[22m[39m
+     [90m 32 |[39m   expect(repo[33m.[39mlistRecentGamificationAchievements)[33m.[39mnot[33m.[39mtoHaveBeenCalled()[33m;[39m
+     [90m 33 |[39m   expect(repo[33m.[39mlistNotificationInboxState)[33m.[39mnot[33m.[39mtoHaveBeenCalled()[33m;[39m
+     [90m 34 |[39m })[33m;[39m[0m
+
+      at expect (node_modules/expect/build/index.js:178:15)
+      at Object.<anonymous> (src/features/notifications/application/useCases/notifications.abort.test.js:31:9)
+
+FAIL src/features/notifications/presentation/components/NotificationBell.cancellation.test.js
+  ● desmontar cancela la carga pendiente de la campana
+
+    expect(received).toBeInstanceOf(expected)
+
+    Expected constructor: AbortSignal
+
+    Received value has no prototype
+    Received value: undefined
+
+    [0m [90m  9 |[39m   [36mawait[39m waitFor(() [33m=>[39m expect(mockLoad)[33m.[39mtoHaveBeenCalledTimes([35m1[39m))[33m;[39m
+     [90m 10 |[39m   [36mconst[39m signal [33m=[39m mockLoad[33m.[39mmock[33m.[39mcalls[[35m0[39m][[35m0[39m][33m.[39msignal[33m;[39m
+    [31m[1m>[22m[39m[90m 11 |[39m   expect(signal)[33m.[39mtoBeInstanceOf([33mAbortSignal[39m)[33m;[39m expect(signal[33m.[39maborted)[33m.[39mtoBe([36mfalse[39m)[33m;[39m
+     [90m    |[39m                  [31m[1m^[22m[39m
+     [90m 12 |[39m   view[33m.[39munmount()[33m;[39m expect(signal[33m.[39maborted)[33m.[39mtoBe([36mtrue[39m)[33m;[39m
+     [90m 13 |[39m })[33m;[39m
+     [90m 14 |[39m test([32m'cambiar usuario cancela la carga anterior y conserva activa la nueva'[39m[33m,[39m [36masync[39m () [33m=>[39m {[0m
+
+      at Object.<anonymous> (src/features/notifications/presentation/components/NotificationBell.cancellation.test.js:11:18)
+
+  ● cambiar usuario cancela la carga anterior y conserva activa la nueva
+
+    expect(received).toBeInstanceOf(expected)
+
+    Expected constructor: AbortSignal
+
+    Received value has no prototype
+    Received value: undefined
+
+    [0m [90m 18 |[39m   view[33m.[39mrerender([33m<[39m[33mNotificationBell[39m userRole[33m=[39m[32m"entrenador"[39m userId[33m=[39m[32m"fixture-b"[39m [33m/[39m[33m>[39m)[33m;[39m
+     [90m 19 |[39m   [36mawait[39m waitFor(() [33m=>[39m expect(mockLoad)[33m.[39mtoHaveBeenCalledTimes([35m2[39m))[33m;[39m
+    [31m[1m>[22m[39m[90m 20 |[39m   expect(first)[33m.[39mtoBeInstanceOf([33mAbortSignal[39m)[33m;[39m expect(first[33m.[39maborted)[33m.[39mtoBe([36mtrue[39m)[33m;[39m
+     [90m    |[39m                 [31m[1m^[22m[39m
+     [90m 21 |[39m   expect(mockLoad[33m.[39mmock[33m.[39mcalls[[35m1[39m][[35m0[39m][33m.[39msignal[33m.[39maborted)[33m.[39mtoBe([36mfalse[39m)[33m;[39m
+     [90m 22 |[39m })[33m;[39m
+     [90m 23 |[39m[0m
+
+      at Object.<anonymous> (src/features/notifications/presentation/components/NotificationBell.cancellation.test.js:20:17)
+
+Test Suites: 2 failed, 2 total
+Tests:       5 failed, 1 passed, 6 total
+Snapshots:   0 total
+Time:        52.336 s
+Ran all test suites within paths "src/features/notifications/application/useCases/notifications.abort.test.js", "src/features/notifications/presentation/components/NotificationBell.cancellation.test.js".
+Test results written to: docs\tesis\evidencias\verificacion-tecnica\20261105-152944-notifications-cancel-e903a31\unitarias\cancelacion-rojo.json
+

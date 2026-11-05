@@ -1,0 +1,15 @@
+AssertionError [ERR_ASSERTION]: La reconstruccion debe conservar la huella institucional antes del ensayo
++ actual - expected
+
++ 'b50a96acfe75136118924e2b2635d3ef'
+- '13a4e51edf978382bb5667527ff8056c'
+
+    at setup (D:\Riovoley\riovoley\scripts\audit\production\sql-lab.cjs:30:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'b50a96acfe75136118924e2b2635d3ef',
+  expected: '13a4e51edf978382bb5667527ff8056c',
+  operator: 'strictEqual',
+  diff: 'simple'
+}

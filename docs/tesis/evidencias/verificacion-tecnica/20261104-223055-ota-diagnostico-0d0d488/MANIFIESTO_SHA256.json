@@ -1,0 +1,263 @@
+{
+  "createdAt": "2026-11-04T22:48:07.870Z",
+  "algorithm": "SHA-256",
+  "baseCommit": "0d0d488ae4651b4609c13abc572733cbd06999e8",
+  "note": "Excluye manifiesto propio y artefactos privados. No modificar tras sellado.",
+  "entries": [
+    {
+      "file": "COMANDOS.json",
+      "bytes": 6853,
+      "sha256": "c6386b34b85cf0cc21a9eb4bee83b696536dfd7c9b977bd445ea3da6126ab62b"
+    },
+    {
+      "file": "compilacion-web/artefactos.json",
+      "bytes": 10989,
+      "sha256": "daae38c81bdae79188d0a756055c93e9af9ff821bd88c2255b06115099febb2e"
+    },
+    {
+      "file": "compilacion-web/build-estricto-ota.meta.json",
+      "bytes": 340,
+      "sha256": "820af1baa343e3ebf529590183bbb6fede73087d5ce338915c693edff8087d8f"
+    },
+    {
+      "file": "compilacion-web/build-estricto-ota.stderr.log",
+      "bytes": 171,
+      "sha256": "fbaba7829c7d44db35ccfbbb37f317dc01d9c77be26c5c7860a8269a31575ceb"
+    },
+    {
+      "file": "compilacion-web/build-estricto-ota.stdout.log",
+      "bytes": 2763,
+      "sha256": "169e69eb3988dc3c75380ac67b0fa4de020506839ce89327933c07e38d775393"
+    },
+    {
+      "file": "CONTEXTO.json",
+      "bytes": 352,
+      "sha256": "d1a0f0005ea804172e29e3e3dbdf116dc74b76ac2976849aae01be428c2dfbbb"
+    },
+    {
+      "file": "FUENTES_EVALUADAS.json",
+      "bytes": 2111,
+      "sha256": "24b88e7259a5fb5cfa137b2fe583985faecf8ac1eecee3ed0b41c9c23c644699"
+    },
+    {
+      "file": "INFORME_VERIFICACION_TECNICA.md",
+      "bytes": 7335,
+      "sha256": "ca93d1c759e51665cfdaf3f07fc3b8581dfe3800c515ffb57ad82849fbbdebca"
+    },
+    {
+      "file": "INTEGRIDAD.json",
+      "bytes": 464,
+      "sha256": "9b4abe04903c4d9687279a4a927ffad26689107ca57543ad4f601cf71eaaf9a5"
+    },
+    {
+      "file": "MATRIZ_VERIFICACIONES_TESIS.md",
+      "bytes": 8109,
+      "sha256": "af1e65809d87a6cc1b0ac53e16783569dc9b7b3c2a2f5667eaac5db97d23172d"
+    },
+    {
+      "file": "PRIVACIDAD.json",
+      "bytes": 385,
+      "sha256": "c22a1311e7152dcbb748df5f7b2643da3792fc430390b05e72da4efb476fe9d4"
+    },
+    {
+      "file": "RESULTADOS_AUTOMATIZADOS.json",
+      "bytes": 61906,
+      "sha256": "5ab1eb646dc28bef2cd60aa38a884a2e27e5e8813de24deb88de33141fbd9ea6"
+    },
+    {
+      "file": "RESULTADOS_PARA_TESIS_4_5.md",
+      "bytes": 2423,
+      "sha256": "54e6a5c971d8b27a6b48f7ef8595cac1616c4db06cd4d6d96d57d01a6b7d6df4"
+    },
+    {
+      "file": "seguridad/herramientas-locales.meta.json",
+      "bytes": 526,
+      "sha256": "5de29c65882f7531e3878edf0951f35c0a87896e45f32b7b9abb89b1d37c8d7a"
+    },
+    {
+      "file": "seguridad/herramientas-locales.stderr.log",
+      "bytes": 265,
+      "sha256": "65f4086b1e0d085b84c7a32932806689c2390b7b39d644c7ed7ef675a0823051"
+    },
+    {
+      "file": "seguridad/herramientas-locales.stdout.log",
+      "bytes": 156,
+      "sha256": "4268f9ccac0c4c69684c0df0089346bd8f8bab2a2270e37a5ed61e57cd39e4a9"
+    },
+    {
+      "file": "seguridad/revision-codigo.json",
+      "bytes": 702,
+      "sha256": "aff216ead69471fe57a377122cd33e953534fa8603b3afd3fa22776c6a038f97"
+    },
+    {
+      "file": "unitarias/cobertura-cierre/coverage-summary.json",
+      "bytes": 89446,
+      "sha256": "afeb79aea222a646adb5c9a58b242a860154f589d8c4ed711e44c0419ad9a8f2"
+    },
+    {
+      "file": "unitarias/jest-cierre.json",
+      "bytes": 3393770,
+      "sha256": "0a1c275bd34b22d34ab5ce144656bd0493e0783047e546487965ee3cbbd846af"
+    },
+    {
+      "file": "unitarias/jest-cierre.meta.json",
+      "bytes": 797,
+      "sha256": "1e00e419bb7cb510c0539c8f0b9aac3bdf3238a5dad2c2f6af8a442cd2548e0d"
+    },
+    {
+      "file": "unitarias/jest-cierre.stderr.log",
+      "bytes": 7339,
+      "sha256": "5133169b8e7e81c1a3cdd4d9be2925c6145cc0c61558ea658fafa041f1c9c5f5"
+    },
+    {
+      "file": "unitarias/jest-cierre.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "unitarias/ota-preflight-rojo.meta.json",
+      "bytes": 311,
+      "sha256": "81f80f32d39e0ff6835c4ca46fe9d8ff995ee7b026d8644ceeda22bf646a6f55"
+    },
+    {
+      "file": "unitarias/ota-preflight-rojo.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "unitarias/ota-preflight-rojo.stdout.log",
+      "bytes": 6541,
+      "sha256": "32694e831c39d19597886e98d443c6841dd8286dc47a14327c01ff233bf28019"
+    },
+    {
+      "file": "unitarias/ota-preflight-verde.meta.json",
+      "bytes": 311,
+      "sha256": "ca091c45b8016a2696e1685b6016784004849bdaf20a166b409e4f7cc71a994a"
+    },
+    {
+      "file": "unitarias/ota-preflight-verde.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "unitarias/ota-preflight-verde.stdout.log",
+      "bytes": 920,
+      "sha256": "281592fd2b8bf6cbfe45e982ff39bb0bb2ce916888b4c8aa14de284aa32096ac"
+    },
+    {
+      "file": "unitarias/ota-ui-rojo-configurado.json",
+      "bytes": 7687,
+      "sha256": "18372bb89ceccddee1559e353781beb23d892584afba8863a049ed33eccadfb6"
+    },
+    {
+      "file": "unitarias/ota-ui-rojo-configurado.meta.json",
+      "bytes": 645,
+      "sha256": "4524789cd6b14674377e7b18bd635cb76da442ede1fc06392c9b978bdbfd9a2a"
+    },
+    {
+      "file": "unitarias/ota-ui-rojo-configurado.stderr.log",
+      "bytes": 6582,
+      "sha256": "a4a51be5fcb2534c2f284c33e6929972dca9ca77583f51230a26d3c140372fe4"
+    },
+    {
+      "file": "unitarias/ota-ui-rojo-configurado.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "unitarias/ota-ui-rojo-nativo.json",
+      "bytes": 11023,
+      "sha256": "d860cf08f2cb26d77cb83f0369ca452d7d027feabc722906f7793ec8588da205"
+    },
+    {
+      "file": "unitarias/ota-ui-rojo-nativo.meta.json",
+      "bytes": 640,
+      "sha256": "443db0a3d8c75dae028e8287a9ec3ec49206a2633a99bf40b9e50e856a9b2de7"
+    },
+    {
+      "file": "unitarias/ota-ui-rojo-nativo.stderr.log",
+      "bytes": 6174,
+      "sha256": "03f0dc3c23911ce33319e79a7abfa742f1e431844d10dfac65b40d7b5e70d7b1"
+    },
+    {
+      "file": "unitarias/ota-ui-rojo-nativo.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "unitarias/ota-ui-rojo-reproducido.json",
+      "bytes": 5790,
+      "sha256": "dadaa542521e456373e8846dff56c30942522fac194fd91e60caf7a8f659e92f"
+    },
+    {
+      "file": "unitarias/ota-ui-rojo-reproducido.meta.json",
+      "bytes": 645,
+      "sha256": "80c756abf8bc62e8acc0c0b27c9dcffcf23c325864ba0c688acebe52fdc570df"
+    },
+    {
+      "file": "unitarias/ota-ui-rojo-reproducido.stderr.log",
+      "bytes": 2750,
+      "sha256": "93055ed8ec9da394501fd1715f88737bb546d95f3dec234f4556e39ea266228c"
+    },
+    {
+      "file": "unitarias/ota-ui-rojo-reproducido.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "unitarias/ota-ui-rojo.json",
+      "bytes": 2856,
+      "sha256": "639154846644d7fb6a6459139de123fd13150b72235789e87de9242eeee61544"
+    },
+    {
+      "file": "unitarias/ota-ui-rojo.meta.json",
+      "bytes": 634,
+      "sha256": "c509669a397f241e17d657163feec740b47629ca70a0a16ca3253e55496d770d"
+    },
+    {
+      "file": "unitarias/ota-ui-rojo.stderr.log",
+      "bytes": 1957,
+      "sha256": "6e9ef36d0f15d73c220820fb39dc91aa56727eb8246c0d8dcf434dee47b521b5"
+    },
+    {
+      "file": "unitarias/ota-ui-rojo.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "unitarias/ota-ui-verde.json",
+      "bytes": 2395,
+      "sha256": "37bcda17c091b17d5e61693320022021cc94f3526ad44aea7196219e67e7a06d"
+    },
+    {
+      "file": "unitarias/ota-ui-verde.meta.json",
+      "bytes": 634,
+      "sha256": "7299f8165ab1d1880042731db4c236195169f621b943b920263d1c76b0a246b1"
+    },
+    {
+      "file": "unitarias/ota-ui-verde.stderr.log",
+      "bytes": 925,
+      "sha256": "b4fb2aea64193a97e72f8d11ce323986a29503af0d226e3dd43863f691e064ec"
+    },
+    {
+      "file": "unitarias/ota-ui-verde.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "unitarias/preflight-regresion-completa.meta.json",
+      "bytes": 359,
+      "sha256": "8017ca6a0971dd2f8b8015745327c86fe7b99f2259979eb00a9cd3fa4e5a7315"
+    },
+    {
+      "file": "unitarias/preflight-regresion-completa.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "unitarias/preflight-regresion-completa.stdout.log",
+      "bytes": 4203,
+      "sha256": "bb0f48119973087e1916cae8b4ef3ca47be02807ee7d871a633c5ef59f3b3e07"
+    }
+  ]
+}

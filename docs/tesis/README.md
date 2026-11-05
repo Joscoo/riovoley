@@ -1,6 +1,95 @@
 # Evidencias técnicas de RIOVOLEY
 
-El expediente de cierre más reciente corresponde a la ejecución del 28 de octubre de 2026, sobre el commit base `c71f55e` y los cambios locales identificados en sus inventarios de fuentes:
+## Edge y preparación operativa: cierre UTC del 1 de noviembre
+
+La fase complementaria aprobó 35 contratos Node con dependencias simuladas, 12 pruebas HTTP de usuarios/push y nueve de reportes con servicios locales reales, además de un contrato de SDK/firma con transporte OAuth simulado. Los nueve entrypoints pasaron Deno y los nueve bundles locales de retorno compilaron; estos denominadores permanecen separados. Se corrigieron controles de suspensión/scheduler y 23 errores de tipos, se ensayó el complemento SQL de permisos de reportes y se verificó su orden de retorno con el paquete principal. La auditoría npm de Deno pasó de un aviso moderado a cero en el grafo candidato.
+
+- [Informe técnico](evidencias/verificacion-tecnica/20261101-013050-edge-preparacion-27dd972/INFORME_VERIFICACION_TECNICA.md).
+- [Matriz complementaria](evidencias/verificacion-tecnica/20261101-013050-edge-preparacion-27dd972/MATRIZ_VERIFICACIONES_TESIS.md).
+- [Texto académico propuesto](evidencias/verificacion-tecnica/20261101-013050-edge-preparacion-27dd972/RESULTADOS_PARA_TESIS_4_5.md).
+- [Paquete Edge](../produccion/EDGE.md) y [procedimiento de respaldo/restauración](../produccion/RESPALDO_Y_RESTAURACION.md).
+
+El backup/restauración ejecutado contiene únicamente datos sintéticos: se conservó el fallo del restore directo y se verificó una adaptación local en otro destino. El usuario confirmó que el respaldo institucional y el entorno de restauración aún faltan. No se aplicó SQL ni se desplegó código institucional; los fallos previos y los límites de las pruebas permanecen documentados.
+
+## Paquete SQL de producción: preparación y ensayo local del 31 de octubre
+
+Se prepararon propuestas de avance y retorno a partir de catálogos institucionales de solo lectura. El cierre aprobó **29 casos de integración SQL local** y, por separado, **seis contratos de herramientas**. Una segunda base creada desde cero reprodujo 28 casos antes de añadir el guard del propietario. Se ejecutaron retorno y reaplicación reales; los intentos fallidos se conservan. El contexto JWT se simuló en SQL, sin login HTTP ni copia de registros institucionales.
+
+- [Informe técnico](evidencias/verificacion-tecnica/20261031-211520-ensayo-sql-7665556/INFORME_VERIFICACION_TECNICA.md).
+- [Matriz complementaria](evidencias/verificacion-tecnica/20261031-211520-ensayo-sql-7665556/MATRIZ_VERIFICACIONES_TESIS.md).
+- [Texto académico para revisión](evidencias/verificacion-tecnica/20261031-211520-ensayo-sql-7665556/RESULTADOS_PARA_TESIS_4_5.md).
+- [SQL propuesto, retorno y gates](../../database/security/production-proposal/README.md).
+
+No se repitieron Jest, Playwright ni compilaciones en esta fase. No se aplicó SQL ni se publicó un despliegue: la huella institucional permaneció igual y sus avisos siguen pendientes. La preparación no acredita funcionamiento completo en producción.
+
+## Inspección autorizada de Vercel — 31 de octubre
+
+El acceso de lectura quedó resuelto mediante CLI privada. Se verificaron proyecto, equipo, repositorio, dominios, deployment activo y nombres de variables. Producción sirve main e469db5; los cambios evaluados sobre f9f6d4c aún no están desplegados. Las cuatro rutas públicas devolvieron HTTP200 y los cuatro nombres frontend requeridos están configurados; no se leyeron valores ni se realizaron pruebas funcionales de escritura.
+
+- [Informe de inspección cloud](evidencias/verificacion-tecnica/20261031-204703-vercel-lectura-f9f6d4c/INFORME_VERIFICACION_VERCEL.md).
+- [Runbook actualizado](../produccion/RUNBOOK.md).
+
+Esta fase agrega metadatos y observaciones HTTP, sin aumentar los denominadores Jest/Playwright de los expedientes anteriores. Publicación, respaldo/restauración, contratos de Supabase y validación de proveedores siguen sujetos a los gates del runbook.
+
+## Preparación de producción: ejecución complementaria del 30–31 de octubre
+
+Se corrigieron las dependencias y se preparó el release, sin desplegarlo. Aprobaron 419 casos Jest en 88 suites, 76 contratos Node (repetidos después de npm ci independiente), 12 guardas y 249 instancias Playwright. Se conservan tres fallos de intentos previos E2E; un smoke adicional de tres casos aprobó sobre el build estricto final sin mapas y repite casos de la matriz. El build web y Android debug aprobaron; el APK privado tiene 106 archivos web cotejados. npm audit final registra cero avisos en los tres árboles del registro, pero no analiza los dos adaptadores locales, comprobados aparte.
+
+- [Informe técnico](evidencias/verificacion-tecnica/20261030-151554-preparacion-produccion-28e48d2/INFORME_VERIFICACION_TECNICA.md).
+- [Matriz de la tesis](evidencias/verificacion-tecnica/20261030-151554-preparacion-produccion-28e48d2/MATRIZ_VERIFICACIONES_TESIS.md).
+- [Propuesta de resultados para 4.5](evidencias/verificacion-tecnica/20261030-151554-preparacion-produccion-28e48d2/RESULTADOS_PARA_TESIS_4_5.md).
+- [Estado y bloqueos de producción](evidencias/verificacion-tecnica/20261030-151554-preparacion-produccion-28e48d2/ESTADO_PRODUCCION.md).
+
+El conector Vercel devuelve 403 para joscoos-projects. La RPC de recompensa diaria sigue ausente en el backend institucional; quedan pendientes la migración coordinada, las alertas Supabase y los gates de respaldo, configuración y aprobación. Ninguna verificación local acredita funcionamiento completo de producción. Los diez expedientes anteriores se conservan.
+
+## Antecedente de dependencias
+
+La ejecución anterior continúa la corrección de dependencias sobre el commit base `89ec6c6`, sin cambiar CRA ni el código de la aplicación:
+
+- [Informe técnico de dependencias y regresión](evidencias/verificacion-tecnica/20261030-141339-dependencias-89ec6c6/INFORME_VERIFICACION_TECNICA.md).
+- [Matriz de verificaciones para la tesis](evidencias/verificacion-tecnica/20261030-141339-dependencias-89ec6c6/MATRIZ_VERIFICACIONES_TESIS.md).
+- [Texto académico propuesto](evidencias/verificacion-tecnica/20261030-141339-dependencias-89ec6c6/RESULTADOS_PARA_TESIS_4_5.md).
+
+Las actualizaciones de seis dependencias transitivas redujeron los avisos npm de **31 a 15: 13 bajos, dos moderados y cero altos o críticos**. `functions` y el árbol auxiliar registraron cero. Se conservan los ocho fallos de reproducción de dos ciclos; el conjunto final aprobó **22 casos Node** con paquetes reales y fixtures. Permanecen avisos por `deepmerge` sin parche publicado y por la compatibilidad del servidor de desarrollo de CRA; no se declara cumplido el criterio de cero alertas.
+
+La regresión nueva aprobó **419 casos Jest en 88 suites**, con 42,96 % de cobertura de líneas, y **249 instancias Playwright**, sin omisiones ni reintentos automáticos. Las 28 instancias de recuperación simulan Auth/REST; los siete flujos de escritura utilizan servicios locales reales y sus siete altas, pagos y asistencias se corroboraron en PostgreSQL READ ONLY. También aprobaron 12 guardas de aislamiento, tres controles HTTP/HMR de CRA, los builds web y la recompilación Android con `--rerun-tasks`. El APK offline permanece privado: se verificaron firma, privacidad y sus 106 archivos web; JUnit ejecutó una prueba de plantilla. Esta etapa no repitió instrumentación ni los flujos autenticados del WebView. Los denominadores se mantienen separados.
+
+## Antecedente de repetición E2E final
+
+La ejecución anterior repite la matriz E2E sobre el commit base `2e999d1`, con una corrección documentada de sincronización en una prueba de asistencias y sin cambiar la lógica del producto:
+
+- [Informe técnico de la repetición E2E](evidencias/verificacion-tecnica/20261029-231235-e2e-final-2e999d1/INFORME_VERIFICACION_TECNICA.md).
+- [Matriz complementaria para la tesis](evidencias/verificacion-tecnica/20261029-231235-e2e-final-2e999d1/MATRIZ_VERIFICACIONES_TESIS.md).
+- [Texto académico propuesto](evidencias/verificacion-tecnica/20261029-231235-e2e-final-2e999d1/RESULTADOS_PARA_TESIS_4_5.md).
+
+La matriz final contiene **249 instancias Playwright aprobadas**, sin omisiones ni reintentos automáticos: 133 públicas, 105 de paneles, siete flujos de alta/pago/asistencia y cuatro límites adaptables. Se conservan dos intentos previos de paneles: 104/105 y 98/105, por una lectura anticipada del DOM y un error de aserción HTTP introducido al corregir el test. Contando las tres ejecuciones completas de paneles se registran 459 ejecuciones de casos, 451 aprobadas y ocho fallidas; ese acumulado no representa casos únicos adicionales. Un intento interrumpido de escritura carece de resultado final y no se cuenta como aprobado.
+
+Las 28 instancias de recuperación de contraseña simulan Auth/REST; los siete flujos de escritura usan servicios reales exclusivamente locales. Una consulta PostgreSQL READ ONLY corroboró siete atletas, siete pagos de 35 y siete asistencias de esos flujos. Se ejecutaron además ocho guardas Node y una nueva compilación web, con denominadores separados. Los informes detallan el aislamiento, las incidencias y las limitaciones. Android y Jest del producto no se repitieron en esta etapa.
+
+## Antecedente Android autenticado y dependencias
+
+La ejecución anterior comprueba Android autenticado y parches de dependencias, sobre el commit base `317e5e3` y los cambios identificados en su inventario de fuentes:
+
+- [Informe técnico complementario](evidencias/verificacion-tecnica/20261029-221208-android-autenticado-317e5e3/INFORME_VERIFICACION_TECNICA.md).
+- [Matriz actualizada de verificaciones](evidencias/verificacion-tecnica/20261029-221208-android-autenticado-317e5e3/MATRIZ_VERIFICACIONES_TESIS.md).
+- [Texto académico propuesto](evidencias/verificacion-tecnica/20261029-221208-android-autenticado-317e5e3/RESULTADOS_PARA_TESIS_4_5.md).
+
+Esta etapa registró **419 casos Jest aprobados en 88 suites**, seis casos de compatibilidad de dependencias, dos guardas ADB, una prueba JUnit y una instrumentada de plantilla, además de **13 verificaciones aprobadas dentro del WebView Android real** con Auth/REST/PostgreSQL local. Los denominadores se conservan separados. Se corrigió un cierre fatal de la app al salir sin registro push previo; el fallo y la repetición satisfactoria quedan documentados. Web y Android debug compilaron; lint terminó con cero errores y 27 advertencias. El APK autenticado permanece privado y no se distribuye. Los avisos npm de la raíz bajaron de 35 a 31; `functions` y el árbol auxiliar registraron cero.
+
+## Antecedente de seguridad e integración local
+
+El endurecimiento local autorizado del 29 de octubre de 2026, sobre el commit base `e469db5`, se conserva con sus resultados originales:
+
+- [Informe de seguridad y regresión local](evidencias/verificacion-tecnica/20261029-135953-seguridad-local-e469db5/INFORME_VERIFICACION_TECNICA.md).
+- [Matriz actualizada para la tesis](evidencias/verificacion-tecnica/20261029-135953-seguridad-local-e469db5/MATRIZ_VERIFICACIONES_TESIS.md).
+- [Texto académico actualizado](evidencias/verificacion-tecnica/20261029-135953-seguridad-local-e469db5/RESULTADOS_PARA_TESIS_4_5.md).
+- [Alcance y reproducción del SQL local](../../database/security/local/README.md).
+
+La etapa registró 410 casos Jest en 87 suites, 34 comprobaciones de seguridad contra el backend local, 18 integraciones funcionales, 20 contratos Edge, 12 pruebas HTTP de handlers reales y 249 instancias Playwright aprobadas. Los denominadores corresponden a herramientas y ejecuciones distintas. Se retiró Genkit sin uso de `functions` y se aplicó un parche compatible: ese árbol llegó a cero avisos npm; la raíz conserva avisos pendientes. No se aplicaron cambios institucionales ni se realizó una publicación nueva.
+
+## Expediente anterior y compilación Android
+
+El cierre del 28 de octubre de 2026, sobre el commit base `c71f55e`, permanece disponible como antecedente:
 
 - [Informe técnico de cierre](evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/INFORME_VERIFICACION_TECNICA.md).
 - [Matriz de trazabilidad](evidencias/e2e-aislado/20261028-192557-cierre-c71f55e/MATRIZ_VERIFICACIONES_TESIS.md).
@@ -12,7 +101,7 @@ La ejecución registró 404 casos Jest en 85 suites, 17 pruebas de integración 
 
 ## Conservación y publicación
 
-Los seis expedientes originales se conservan sin reescribir. Sus manifiestos registran las huellas de los archivos existentes al cerrar cada ejecución; las fechas y el commit base no se sustituyen por el commit que posteriormente incorpora las evidencias al repositorio. Los registros conservan sus bytes mediante `.gitattributes`.
+Los nueve expedientes anteriores se conservan sin reescribir. Sus manifiestos registran las huellas de los archivos existentes al cerrar cada ejecución; las fechas y el commit base no se sustituyen por el commit que posteriormente incorpora las evidencias al repositorio. Los registros conservan sus bytes mediante `.gitattributes`.
 
 Los APK de depuración permanecen exclusivamente en el equipo de auditoría. Se publican sus metadatos y SHA-256, pero los paquetes están excluidos de Git para respetar la restricción de no distribuirlos. Por tanto, una copia obtenida del repositorio no contiene esos dos archivos referenciados en los manifiestos Android; su comprobación requiere los APK locales originales. Las instantáneas de fuentes reflejan el árbol Windows de cada ejecución, incluidos archivos locales que no necesariamente forman parte de esta publicación, y pueden diferir de un checkout por la normalización de finales de línea de los archivos de código.
 
@@ -22,4 +111,4 @@ Las credenciales, claves, cuentas descartables y herramientas instaladas del ent
 
 Consultar el [arnés E2E local](../../scripts/e2e/local/README.md), las [herramientas Android](../../scripts/audit/android/README.md) y los comandos de cada informe. Para nuevas ejecuciones se debe crear un expediente distinto; no sobrescribir los registros sellados.
 
-El [endurecimiento de RLS/RPC](../../database/security/REVISION_Y_AUTORIZACION_PENDIENTE.md) sigue pendiente de autorización y validación coordinada. El SQL de esa carpeta es un borrador parcial **no aplicado y no listo para ejecutar**. Incorporarlo a Git no aplica migraciones ni cambia permisos. También se conservan avisos de dependencias y las limitaciones de proveedores externos, clasificación por categoría y pruebas nativas completas.
+El [endurecimiento de RLS/RPC](../../database/security/local/README.md) se validó únicamente en local; su aplicación institucional sigue pendiente de autorización y publicación coordinada. El borrador inicial se conserva como antecedente no ejecutable. Persisten 15 dependencias señaladas en la raíz, las limitaciones de proveedores externos, el dispositivo físico y una matriz nativa ampliada de negocio. La clasificación comprueba posiciones y orden en una categoría de fixture; no se extrapola a todas las categorías y métricas.

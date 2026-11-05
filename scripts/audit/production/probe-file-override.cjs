@@ -1,0 +1,21 @@
+const fs=require('node:fs');
+const path=require('node:path');
+const {createRequire}=require('node:module');
+const assert=require('node:assert/strict');
+const h=require('../../e2e/local/harness.cjs');
+(async()=>{
+ const dir=path.join(h.runtime,'spikes','merge-file-'+Date.now());fs.mkdirSync(dir,{recursive:true});
+ const spec='file:'+path.relative(dir,path.join(h.root,'vendor/deepmerge')).replaceAll('\\','/');
+ fs.writeFileSync(path.join(dir,'package.json'),JSON.stringify({name:'riovoley-private-override-probe',version:'1.0.0',private:true,dependencies:{'@rollup/plugin-node-resolve':'11.2.1'},overrides:{deepmerge:spec}},null,2));
+ const npm=path.join(path.dirname(process.execPath),'node_modules/npm/bin/npm-cli.js');
+ await h.run('seguridad/spike-file-install',process.execPath,[npm,'install','--ignore-scripts','--no-audit','--no-fund'],{cwd:dir});
+ const rootRequire=createRequire(path.join(dir,'package.json'));
+ const consumer=createRequire(rootRequire.resolve('@rollup/plugin-node-resolve'));
+ const merge=consumer('deepmerge'),pkg=consumer('deepmerge/package.json');
+ assert.equal(pkg.name,'@riovoley/deepmerge-hardened');assert.equal(pkg.private,true);
+ const input=JSON.parse('{"__proto__":{"unexpectedInheritedFlag":true}}');
+ const result=merge(Object.create(null),input);assert.equal(Object.getPrototypeOf(result),Object.prototype);assert.equal(result.unexpectedInheritedFlag,undefined);
+ const nested=merge({session:null},{session:input});assert.equal(nested.session.unexpectedInheritedFlag,undefined);
+ h.write('seguridad/spike-file-resultado.json',{time:new Date().toISOString(),state:'APROBADO',scope:'Experimento privado de empaquetado npm file: y resolución desde un consumidor real; no es el npm audit del proyecto.',consumer:'@rollup/plugin-node-resolve@11.2.1',resolvedName:pkg.name,resolvedVersion:pkg.version,prototypeGuardsVerified:true});
+ console.log('Override local resuelto desde el consumidor real; guardas verificadas.');
+})().catch(e=>{console.error(e.message);process.exitCode=1;});

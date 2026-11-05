@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: restaura PK antes de FK, funciones antes de policies y ordena vistas
+ok 1 - restaura PK antes de FK, funciones antes de policies y ordena vistas
+  ---
+  duration_ms: 2.8996
+  type: 'test'
+  ...
+# Subtest: rechaza ciclos de vistas y esquemas administrados
+ok 2 - rechaza ciclos de vistas y esquemas administrados
+  ---
+  duration_ms: 1.8851
+  type: 'test'
+  ...
+# Subtest: crea funciones de columnas generadas antes de las tablas
+ok 3 - crea funciones de columnas generadas antes de las tablas
+  ---
+  duration_ms: 0.5313
+  type: 'test'
+  ...
+# Subtest: avance exige autorización operativa y huella; no acepta deriva silenciosa
+ok 4 - avance exige autorización operativa y huella; no acepta deriva silenciosa
+  ---
+  duration_ms: 1.4934
+  type: 'test'
+  ...
+# Subtest: rechaza catálogos con objetos reservados para el paquete
+ok 5 - rechaza catálogos con objetos reservados para el paquete
+  ---
+  duration_ms: 1.2382
+  type: 'test'
+  ...
+# Subtest: retorno conserva opción de concesión y exige huella del estado aplicado
+ok 6 - retorno conserva opción de concesión y exige huella del estado aplicado
+  ---
+  duration_ms: 1.1137
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 221.5022

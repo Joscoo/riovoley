@@ -1,0 +1,15 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\Riovoley\\riovoley\\node_modules\\@capacitor\\cli\\bin\\capacitor",
+    "sync",
+    "android"
+  ],
+  "cwd": ".e2e-local/android-release/20261101172449-62804124/project",
+  "startedAt": "2026-11-01T17:28:28.315Z",
+  "finishedAt": "2026-11-01T17:28:39.523Z",
+  "durationSeconds": 11.208,
+  "exitCode": 0,
+  "rawLogsEncryptedPrivate": true,
+  "environmentValuesRecorded": false
+}

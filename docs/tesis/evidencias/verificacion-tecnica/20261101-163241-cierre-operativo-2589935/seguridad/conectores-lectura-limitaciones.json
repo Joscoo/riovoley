@@ -1,0 +1,17 @@
+{
+  "observedAt": "2026-11-01T21:16:08.917Z",
+  "mcpAttempt": {
+    "completed": false,
+    "stage": "OAUTH_REFRESH_FAILED"
+  },
+  "appAttempt": {
+    "completed": false,
+    "stage": "CONNECTION_LINK_ID_REQUIRED"
+  },
+  "fallback": {
+    "tool": "Supabase CLI 2.122.0 autenticada",
+    "readOnlyCatalogSucceeded": true
+  },
+  "credentialValuesPublished": false,
+  "productionChanged": false
+}

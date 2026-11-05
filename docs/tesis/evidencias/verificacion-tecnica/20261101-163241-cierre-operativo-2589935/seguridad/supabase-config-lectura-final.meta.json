@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/inspect-edge-secret-names.cjs"
+  ],
+  "start": "2026-11-01T17:54:18.092Z",
+  "end": "2026-11-01T17:54:24.094Z",
+  "durationSeconds": 6.002,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

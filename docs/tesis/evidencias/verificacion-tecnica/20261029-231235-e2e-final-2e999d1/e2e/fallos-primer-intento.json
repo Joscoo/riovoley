@@ -1,0 +1,24 @@
+[
+  {
+    "file": "filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "desktop-1920",
+    "status": "unexpected",
+    "results": [
+      {
+        "status": "failed",
+        "duration": 13356,
+        "errors": [
+          {
+            "location": {
+              "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\filters-sorting.tables.spec.js",
+              "column": 77,
+              "line": 146
+            },
+            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText(/no hay registros de asistencia/i).first()\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByText(/no hay registros de asistencia/i).first()\u001b[22m\n\n\n  144 |     }\n  145 |   } else {\n> 146 |     await expect(page.getByText(/no hay registros de asistencia/i).first()).toBeVisible();\n      |                                                                             ^\n  147 |   }\n  148 | });\n  149 |\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\filters-sorting.tables.spec.js:146:77"
+          }
+        ]
+      }
+    ]
+  }
+]

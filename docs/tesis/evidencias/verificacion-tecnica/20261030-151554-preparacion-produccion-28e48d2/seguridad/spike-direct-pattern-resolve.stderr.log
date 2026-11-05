@@ -1,0 +1,18 @@
+D:\Riovoley\riovoley\.e2e-local\spikes\direct-pattern-1793474177210\node_modules\glob\sync.js:148
+  var dotOk = this.dot || rawGlob.charAt(0) === '.'
+                                  ^
+
+TypeError: Cannot read properties of undefined (reading 'charAt')
+    at GlobSync._processReaddir (D:\Riovoley\riovoley\.e2e-local\spikes\direct-pattern-1793474177210\node_modules\glob\sync.js:148:35)
+    at GlobSync._process (D:\Riovoley\riovoley\.e2e-local\spikes\direct-pattern-1793474177210\node_modules\glob\sync.js:132:10)
+    at new GlobSync (D:\Riovoley\riovoley\.e2e-local\spikes\direct-pattern-1793474177210\node_modules\glob\sync.js:45:10)
+    at glob.globSync [as sync] (D:\Riovoley\riovoley\.e2e-local\spikes\direct-pattern-1793474177210\node_modules\glob\sync.js:23:10)
+    at [eval]:1:136
+    at runScriptInThisContext (node:internal/vm:219:10)
+    at node:internal/process/execution:451:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:449:60)
+    at evalFunction (node:internal/process/execution:283:30)
+
+Node.js v24.18.0
+

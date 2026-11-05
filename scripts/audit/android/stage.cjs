@@ -4,6 +4,8 @@ const cp=require('node:child_process');
 const c=require('./context.cjs');
 const stage=path.join(c.work,'project');
 const final=process.argv[2]==='final';
+const authenticated=process.argv[2]==='local-auth';
+if(![undefined,'final','local-auth'].includes(process.argv[2])) throw new Error('Perfil Android desconocido');
 fs.mkdirSync(stage,{recursive:true});
 const skip=new Set(['.gradle','build','local.properties','google-services.json','capacitor-cordova-android-plugins']);
 fs.cpSync(path.join(c.root,'android'),path.join(stage,'android'),{recursive:true,filter:file=>!skip.has(path.basename(file)) && !/\.(keystore|jks)$/i.test(file) && !file.includes(path.join('assets','public'))});
@@ -13,15 +15,27 @@ for(const name of dependencies) fs.cpSync(path.join(c.root,'node_modules',name),
 const config=JSON.parse(fs.readFileSync(path.join(c.root,'capacitor.config.json')));
 // Configuración de empaquetado de prueba: no actualizar desde canales externos.
 config.plugins.CapacitorUpdater.autoUpdate=false;
-if(final) config.webDir='build-safe';
+for(const key of ['updateUrl','statsUrl','channelUrl']) config.plugins.CapacitorUpdater[key]='http://127.0.0.1:9';
+if(final||authenticated) config.webDir='build-safe';
+if(authenticated) {
+  // Exclusivo de la copia privada de depuración; no se modifica android/.
+  config.android={...config.android,allowMixedContent:true};
+  config.server={...config.server,cleartext:true};
+  const debug=path.join(stage,'android/app/src/debug');
+  fs.mkdirSync(path.join(debug,'res/xml'),{recursive:true});
+  fs.writeFileSync(path.join(debug,'AndroidManifest.xml'),'<manifest xmlns:android="http://schemas.android.com/apk/res/android"><application android:networkSecurityConfig="@xml/audit_network_security" /></manifest>');
+  fs.writeFileSync(path.join(debug,'res/xml/audit_network_security.xml'),'<network-security-config><base-config cleartextTrafficPermitted="false"/><domain-config cleartextTrafficPermitted="true"><domain includeSubdomains="false">127.0.0.1</domain></domain-config></network-security-config>');
+}
 fs.writeFileSync(path.join(stage,'capacitor.config.json'),JSON.stringify(config,null,2));
 fs.writeFileSync(path.join(stage,'package.json'),fs.readFileSync(path.join(c.root,'package.json')));
 fs.writeFileSync(path.join(stage,'android/local.properties'),'sdk.dir='+path.join(c.work,'sdk').replaceAll('\\','/').replaceAll(':','\\:')+'\n');
-const env=require('../../e2e/local/safety.cjs').buildWebEnv({apiUrl:'http://127.0.0.1:55321',anonKey:'riovoley-audit-offline-placeholder',piiEncryptionKey:''});
+const safety=require('../../e2e/local/safety.cjs');
+const local=authenticated?safety.readLocal():{apiUrl:'http://127.0.0.1:55321',anonKey:'riovoley-audit-offline-placeholder',piiEncryptionKey:''};
+const env=safety.buildWebEnv(local);
 env.BUILD_PATH=path.join(stage,config.webDir);
 (async()=>{
   await c.run('compilacion-web/build-auditoria',process.execPath,[path.join(c.root,'node_modules/react-scripts/scripts/build.js')],{env});
   await c.run('android/capacitor-sync',process.execPath,[path.join(c.root,'node_modules/@capacitor/cli/bin/capacitor'),'sync','android'],{cwd:stage});
   await c.run('android/capacitor-plugins',process.execPath,[path.join(c.root,'node_modules/@capacitor/cli/bin/capacitor'),'ls','android'],{cwd:stage});
-  c.write('android/configuracion-'+(final?'final':'aislada')+'.json',{stage:path.relative(c.root,stage),web:'Build nuevo de las fuentes actuales; endpoint loopback y clave placeholder sin validez; PII key vacía. Su contenido se comprueba en PRIVACIDAD.json antes de la entrega.',nativeSources:'Copia de android y módulos Android instalados, sin modificar originales.',appId:config.appId,updaterOverride:{autoUpdate:false},omitted:['keystore de publicación','google-services.json','local.properties original','cachés y builds previos'],nativeModules:native.map(name=>({name,version:require(path.join(c.root,'node_modules',name,'package.json')).version}))});
+  c.write('android/configuracion-'+(authenticated?'autenticada-'+Date.now():final?'final':'aislada')+'.json',{stage:path.relative(c.root,stage),web:authenticated?'Build privado con clave anon y cifrado del entorno local; ninguna service_role ni credencial institucional. El APK no se copia a evidencias ni se distribuye. HTTP solo loopback mediante adb reverse, con mixed content habilitado exclusivamente en esta copia de depuración.':'Build nuevo de las fuentes actuales; endpoint loopback y clave placeholder sin validez; PII key vacía. Su contenido se comprueba en PRIVACIDAD.json antes de la entrega.',nativeSources:'Copia de android y módulos Android instalados, sin modificar originales.',appId:config.appId,updaterOverride:{autoUpdate:false},omitted:['keystore de publicación','google-services.json','local.properties original','cachés y builds previos'],nativeModules:native.map(name=>({name,version:require(path.join(c.root,'node_modules',name,'package.json')).version}))});
 })();

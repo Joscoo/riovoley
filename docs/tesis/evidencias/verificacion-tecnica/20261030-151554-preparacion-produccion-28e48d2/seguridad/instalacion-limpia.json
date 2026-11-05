@@ -1,0 +1,13 @@
+{
+  "directory": ".e2e-local\\spikes\\clean-production-1793474557726",
+  "registryAdvisories": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "localForkCoveredByRegistryAudit": false,
+  "scope": "Instalación independiente con npm ci desde lockfile y vendor; contratos Node ejecutados con resolución de sus módulos independientes. No equivale a ejecutar GitHub Actions."
+}

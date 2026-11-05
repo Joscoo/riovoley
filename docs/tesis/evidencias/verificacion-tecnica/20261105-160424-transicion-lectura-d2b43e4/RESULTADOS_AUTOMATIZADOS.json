@@ -1,0 +1,108 @@
+{
+  "reportedAt": "2026-11-05T16:26:28.408Z",
+  "baseCommit": "d2b43e466e2b727f4fa9824a72326a0d05aa5c95",
+  "functionalTestsNew": 0,
+  "sqlFilesMatching": 4,
+  "cloudEdgeMetadataHashesMatching": 9,
+  "privateCandidateFilesMatching": 39,
+  "privateReturnSourceFilesMatching": 51,
+  "rlsTablesEnabled": 2,
+  "dailyRewardRpcPresent": false,
+  "fingerprint": "15b9d9e869fb5113263c485714009878",
+  "advisories": [
+    {
+      "name": "function_search_path_mutable",
+      "level": "WARN",
+      "count": 19,
+      "findings": 19,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0011_function_search_path_mutable"
+    },
+    {
+      "name": "extension_in_public",
+      "level": "WARN",
+      "count": 1,
+      "findings": 1,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0014_extension_in_public"
+    },
+    {
+      "name": "anon_security_definer_function_executable",
+      "level": "WARN",
+      "count": 17,
+      "findings": 17,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable"
+    },
+    {
+      "name": "authenticated_security_definer_function_executable",
+      "level": "WARN",
+      "count": 19,
+      "findings": 19,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable"
+    },
+    {
+      "name": "auth_leaked_password_protection",
+      "level": "WARN",
+      "count": 1,
+      "findings": 1,
+      "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection"
+    },
+    {
+      "name": "vulnerable_postgres_version",
+      "level": "WARN",
+      "count": 1,
+      "findings": 1,
+      "remediation": "https://supabase.com/docs/guides/platform/upgrading"
+    }
+  ],
+  "publicGet200": 4,
+  "productionCommit": "e469db5608fb77071b6a9ee3db253c28dae734dd",
+  "candidateCi": {
+    "commit": "d2b43e466e2b727f4fa9824a72326a0d05aa5c95",
+    "conclusion": "success",
+    "newExecution": false
+  },
+  "android": {
+    "artifactSource": "5f605512448f0683e8ddc52e197e42fa5d909868",
+    "newBuild": false,
+    "newRuntime": false,
+    "distributionIncluded": false
+  },
+  "backup": {
+    "ciphertextHashMatches": true,
+    "createdAt": "2026-11-01T02:58:51.738Z",
+    "newRestore": false,
+    "currentCutoffFreshnessProved": false
+  },
+  "proposedWindow": {
+    "responsible": "Titular de esta sesion, confirmado por el usuario",
+    "responsibleConfirmed": true,
+    "windowStartLocal": "2026-11-07T22:00:00-05:00",
+    "windowEndLocal": "2026-11-07T23:30:00-05:00",
+    "windowStartUtc": "2026-11-08T03:00:00Z",
+    "windowEndUtc": "2026-11-08T04:30:00Z",
+    "reservedMinutes": 90,
+    "selection": "Propuesta tecnica del agente por delegacion del usuario; sin medicion de baja demanda ni duracion gestionada garantizada",
+    "scope": [
+      "SQL principal revisado",
+      "SQL complementario de reportes",
+      "Edge compatible",
+      "Cliente web compatible"
+    ],
+    "androidDistributionIncluded": false,
+    "postgresUpgradeIncluded": false,
+    "authConfigurationChangesIncluded": false,
+    "credentialTasksIncluded": false,
+    "calendarAndWindowStillRequireFinalConfirmation": true,
+    "productionExecutionAuthorized": false,
+    "releaseReady": false,
+    "openRequirements": [
+      "Confirmar calendario institucional y ventana definitiva",
+      "Confirmar respaldo vigente al corte y alcance real de recuperacion",
+      "Demostrar suspension efectiva de escrituras y control de clientes anteriores; un marcador SQL o pagina de mantenimiento no lo demuestra",
+      "Fijar criterios operativos de aborto/retorno y aceptacion de integraciones no verificadas",
+      "Autorizar expresamente el paquete concreto antes de cualquier mutacion o despliegue"
+    ]
+  },
+  "productionChanged": false,
+  "productionReady": false,
+  "decision": "NO INICIAR EJECUCION: precondiciones operativas y autorizacion pendientes"
+}

@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "startTime": "2026-10-30T13:50:33.476Z",
+    "duration": 363823.56899999996,
+    "expected": 98,
+    "skipped": 0,
+    "unexpected": 7,
+    "flaky": 0
+  },
+  "failures": [
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "asistencias: filtros del historial + orden por columnas",
+      "project": "mobile-390",
+      "status": "unexpected",
+      "errors": [
+        {
+          "location": {
+            "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\filters-sorting.tables.spec.js",
+            "column": 31,
+            "line": 138
+          },
+          "message": "Error: toBeOK can be only used with APIResponse object\n\n  136 |   const resetResponse = await (await resetRequestPromise).response();\n  137 |   expect(resetResponse).not.toBeNull();\n> 138 |   await expect(resetResponse).toBeOK();\n      |                               ^\n  139 |   const resetRows = await resetResponse.json();\n  140 |   expect(Array.isArray(resetRows)).toBe(true);\n  141 |   await expect(categoriaFilter).toHaveValue('');\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\filters-sorting.tables.spec.js:138:31"
+        }
+      ]
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "asistencias: filtros del historial + orden por columnas",
+      "project": "mobile-430",
+      "status": "unexpected",
+      "errors": [
+        {
+          "location": {
+            "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\filters-sorting.tables.spec.js",
+            "column": 31,
+            "line": 138
+          },
+          "message": "Error: toBeOK can be only used with APIResponse object\n\n  136 |   const resetResponse = await (await resetRequestPromise).response();\n  137 |   expect(resetResponse).not.toBeNull();\n> 138 |   await expect(resetResponse).toBeOK();\n      |                               ^\n  139 |   const resetRows = await resetResponse.json();\n  140 |   expect(Array.isArray(resetRows)).toBe(true);\n  141 |   await expect(categoriaFilter).toHaveValue('');\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\filters-sorting.tables.spec.js:138:31"
+        }
+      ]
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "asistencias: filtros del historial + orden por columnas",
+      "project": "mobile-480",
+      "status": "unexpected",
+      "errors": [
+        {
+          "location": {
+            "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\filters-sorting.tables.spec.js",
+            "column": 31,
+            "line": 138
+          },
+          "message": "Error: toBeOK can be only used with APIResponse object\n\n  136 |   const resetResponse = await (await resetRequestPromise).response();\n  137 |   expect(resetResponse).not.toBeNull();\n> 138 |   await expect(resetResponse).toBeOK();\n      |                               ^\n  139 |   const resetRows = await resetResponse.json();\n  140 |   expect(Array.isArray(resetRows)).toBe(true);\n  141 |   await expect(categoriaFilter).toHaveValue('');\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\filters-sorting.tables.spec.js:138:31"
+        }
+      ]
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "asistencias: filtros del historial + orden por columnas",
+      "project": "tablet-768",
+      "status": "unexpected",
+      "errors": [
+        {
+          "location": {
+            "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\filters-sorting.tables.spec.js",
+            "column": 31,
+            "line": 138
+          },
+          "message": "Error: toBeOK can be only used with APIResponse object\n\n  136 |   const resetResponse = await (await resetRequestPromise).response();\n  137 |   expect(resetResponse).not.toBeNull();\n> 138 |   await expect(resetResponse).toBeOK();\n      |                               ^\n  139 |   const resetRows = await resetResponse.json();\n  140 |   expect(Array.isArray(resetRows)).toBe(true);\n  141 |   await expect(categoriaFilter).toHaveValue('');\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\filters-sorting.tables.spec.js:138:31"
+        }
+      ]
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "asistencias: filtros del historial + orden por columnas",
+      "project": "tablet-1024",
+      "status": "unexpected",
+      "errors": [
+        {
+          "location": {
+            "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\filters-sorting.tables.spec.js",
+            "column": 31,
+            "line": 138
+          },
+          "message": "Error: toBeOK can be only used with APIResponse object\n\n  136 |   const resetResponse = await (await resetRequestPromise).response();\n  137 |   expect(resetResponse).not.toBeNull();\n> 138 |   await expect(resetResponse).toBeOK();\n      |                               ^\n  139 |   const resetRows = await resetResponse.json();\n  140 |   expect(Array.isArray(resetRows)).toBe(true);\n  141 |   await expect(categoriaFilter).toHaveValue('');\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\filters-sorting.tables.spec.js:138:31"
+        }
+      ]
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "asistencias: filtros del historial + orden por columnas",
+      "project": "desktop-1440",
+      "status": "unexpected",
+      "errors": [
+        {
+          "location": {
+            "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\filters-sorting.tables.spec.js",
+            "column": 31,
+            "line": 138
+          },
+          "message": "Error: toBeOK can be only used with APIResponse object\n\n  136 |   const resetResponse = await (await resetRequestPromise).response();\n  137 |   expect(resetResponse).not.toBeNull();\n> 138 |   await expect(resetResponse).toBeOK();\n      |                               ^\n  139 |   const resetRows = await resetResponse.json();\n  140 |   expect(Array.isArray(resetRows)).toBe(true);\n  141 |   await expect(categoriaFilter).toHaveValue('');\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\filters-sorting.tables.spec.js:138:31"
+        }
+      ]
+    },
+    {
+      "file": "filters-sorting.tables.spec.js",
+      "title": "asistencias: filtros del historial + orden por columnas",
+      "project": "desktop-1920",
+      "status": "unexpected",
+      "errors": [
+        {
+          "location": {
+            "file": "D:\\Riovoley\\riovoley\\tests\\e2e\\filters-sorting.tables.spec.js",
+            "column": 31,
+            "line": 138
+          },
+          "message": "Error: toBeOK can be only used with APIResponse object\n\n  136 |   const resetResponse = await (await resetRequestPromise).response();\n  137 |   expect(resetResponse).not.toBeNull();\n> 138 |   await expect(resetResponse).toBeOK();\n      |                               ^\n  139 |   const resetRows = await resetResponse.json();\n  140 |   expect(Array.isArray(resetRows)).toBe(true);\n  141 |   await expect(categoriaFilter).toHaveValue('');\n    at D:\\Riovoley\\riovoley\\tests\\e2e\\filters-sorting.tables.spec.js:138:31"
+        }
+      ]
+    }
+  ]
+}

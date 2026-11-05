@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/rehearse-local-backup.cjs"
+  ],
+  "start": "2026-11-01T01:55:25.948Z",
+  "end": "2026-11-01T01:55:30.672Z",
+  "durationSeconds": 4.724,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

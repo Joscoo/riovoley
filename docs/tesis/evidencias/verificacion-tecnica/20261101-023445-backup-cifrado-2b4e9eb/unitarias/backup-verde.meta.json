@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/unit/production-backup.test.cjs"
+  ],
+  "start": "2026-11-01T02:41:05.696Z",
+  "end": "2026-11-01T02:41:05.878Z",
+  "durationSeconds": 0.182,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

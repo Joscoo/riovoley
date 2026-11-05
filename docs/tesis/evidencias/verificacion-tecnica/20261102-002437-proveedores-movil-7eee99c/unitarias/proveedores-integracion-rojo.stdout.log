@@ -1,0 +1,111 @@
+TAP version 13
+# Subtest: rechaza cualquier envio de correo aunque tenga autorizacion HTTP
+ok 1 - rechaza cualquier envio de correo aunque tenga autorizacion HTTP
+  ---
+  duration_ms: 3.7476
+  type: 'test'
+  ...
+# Subtest: permite solo GET de dominios Resend sin query o body
+ok 2 - permite solo GET de dominios Resend sin query o body
+  ---
+  duration_ms: 5.6821
+  type: 'test'
+  ...
+# Subtest: FCM exige validate_only=true y topic sintetico sin tokens de atletas
+ok 3 - FCM exige validate_only=true y topic sintetico sin tokens de atletas
+  ---
+  duration_ms: 1.6505
+  type: 'test'
+  ...
+# Subtest: no consulta un proyecto Firebase distinto o dominios HTTP
+ok 4 - no consulta un proyecto Firebase distinto o dominios HTTP
+  ---
+  duration_ms: 0.3934
+  type: 'test'
+  ...
+# Subtest: firma JWT OAuth real con alcance FCM, aud fijo y caducidad limitada
+ok 5 - firma JWT OAuth real con alcance FCM, aud fijo y caducidad limitada
+  ---
+  duration_ms: 57.3297
+  type: 'test'
+  ...
+# Subtest: rechaza entradas de cabecera en remitente y PEM invalido sin devolver valores
+ok 6 - rechaza entradas de cabecera en remitente y PEM invalido sin devolver valores
+  ---
+  duration_ms: 0.8289
+  type: 'test'
+  ...
+# Subtest: acepta variante PEM con saltos escapados solo cuando coincide con digest actual
+ok 7 - acepta variante PEM con saltos escapados solo cuando coincide con digest actual
+  ---
+  duration_ms: 0.5872
+  type: 'test'
+  ...
+# Subtest: 403 de lectura Resend bloquea alcance y no se presenta como clave invalida
+ok 8 - 403 de lectura Resend bloquea alcance y no se presenta como clave invalida
+  ---
+  duration_ms: 0.2272
+  type: 'test'
+  ...
+# Subtest: dominio verificado se acredita solo para el remitente indicado
+ok 9 - dominio verificado se acredita solo para el remitente indicado
+  ---
+  duration_ms: 0.2155
+  type: 'test'
+  ...
+# Subtest: el transporte siempre niega redirecciones y corta endpoints no autorizados
+ok 10 - el transporte siempre niega redirecciones y corta endpoints no autorizados
+  ---
+  duration_ms: 22.2796
+  type: 'test'
+  ...
+# Subtest: un dominio ausente de una pagina incompleta no se declara invalido
+not ok 11 - un dominio ausente de una pagina incompleta no se declara invalido
+  ---
+  duration_ms: 0.403
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\provider-verification.test.cjs:14:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'FALLIDO'
+    - 'BLOQUEADO'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'BLOQUEADO'
+  actual: 'FALLIDO'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\provider-verification.test.cjs:14:159)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: credenciales diferentes a los digests actuales impiden toda llamada a proveedor
+ok 12 - credenciales diferentes a los digests actuales impiden toda llamada a proveedor
+  ---
+  duration_ms: 0.5314
+  type: 'test'
+  ...
+# Subtest: flujo completo con OAuth firmado real y transportes simulados nunca entrega mensajes
+ok 13 - flujo completo con OAuth firmado real y transportes simulados nunca entrega mensajes
+  ---
+  duration_ms: 73.5838
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 12
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 280.7074
+

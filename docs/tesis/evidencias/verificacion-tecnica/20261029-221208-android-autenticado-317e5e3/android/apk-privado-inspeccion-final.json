@@ -1,0 +1,13 @@
+{
+  "state": "APROBADO",
+  "checkedMembers": 646,
+  "forbiddenMatches": [],
+  "expectedLocalAnonPresent": true,
+  "expectedLoopbackEndpointPresent": true,
+  "sha256": "c1fe951b44ac76c7b62c936f26823d230267b74f73544eac51a943e28d373a7e",
+  "bytes": 35056599,
+  "privateArtifact": true,
+  "copiedToEvidence": false,
+  "distributed": false,
+  "scope": "Se permite únicamente anon local y clave PII local en el paquete privado. Se rechazan secretos institucionales, service_role, contraseñas y otros JWT en todos los miembros ZIP UTF8/UTF16. No es un APK apto para distribuir."
+}

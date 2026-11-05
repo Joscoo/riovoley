@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-11-04T21:44:52.847Z",
+  "apkSourceCommit": "7eee99c36e4125570351d7ffaec97f0cc8cd265c",
+  "currentCommit": "7e9a27dd2b248a626a4440ece2e7227ba5e47ae5",
+  "compared": [
+    "src",
+    "android",
+    "package.json",
+    "package-lock.json",
+    "capacitor.config.json"
+  ],
+  "diffExitCode": 0,
+  "productSourcesUnchanged": true
+}

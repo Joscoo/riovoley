@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-11-01T02:02:17.256Z",
+  "recognizedVariableNamesInFiles": [],
+  "recognizedProcessVariableNames": [],
+  "presenceOnly": true,
+  "valuesRecorded": false,
+  "connectionAttempted": false,
+  "institutionalBackupAttempted": false,
+  "result": "BLOCKED_NO_RECOGNIZED_DATABASE_CONFIGURATION",
+  "scope": "Solo nombres usuales de variables locales/de proceso. No descarta credenciales en gestores externos ni sustituye la verificación del operador."
+}

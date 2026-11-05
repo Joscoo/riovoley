@@ -1,0 +1,173 @@
+TAP version 13
+# Subtest: preflight rechaza el diagnostico OTA activado para produccion
+not ok 1 - preflight rechaza el diagnostico OTA activado para produccion
+  ---
+  duration_ms: 84.7344
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\ota-production-preflight.test.cjs:5:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /REACT_APP_ENABLE_OTA_DIAGNOSTICS: DISABLE_PRODUCTION_DIAGNOSTICS/. Input:
+    
+    'SOURCE: PROCESS_ENV_EXPLICIT_ONLY\n' +
+      'UNKNOWN_REACT_APP_NAME: UNREVIEWED_PUBLIC_VARIABLE\n' +
+      'REACT_APP_SUPABASE_URL: VALID\n' +
+      'REACT_APP_SUPABASE_ANON_KEY: VALID\n' +
+      'REACT_APP_APP_URL: VALID\n' +
+      'REACT_APP_PII_ENCRYPTION_KEY: VALID\n' +
+      'STRUCTURE: BLOCKED\n' +
+      'KEY_AUTHENTICITY: NOT_VERIFIED\n' +
+      'PII_CONTINUITY: OPERATOR_CHECK_REQUIRED\n' +
+      'BACKUP: OPERATOR_EVIDENCE_REQUIRED\n' +
+      'APPROVAL: EXPLICIT_FINAL_APPROVAL_REQUIRED\n' +
+      'AUTHORIZATION: BLOCKED\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: |-
+    SOURCE: PROCESS_ENV_EXPLICIT_ONLY
+    UNKNOWN_REACT_APP_NAME: UNREVIEWED_PUBLIC_VARIABLE
+    REACT_APP_SUPABASE_URL: VALID
+    REACT_APP_SUPABASE_ANON_KEY: VALID
+    REACT_APP_APP_URL: VALID
+    REACT_APP_PII_ENCRYPTION_KEY: VALID
+    STRUCTURE: BLOCKED
+    KEY_AUTHENTICITY: NOT_VERIFIED
+    PII_CONTINUITY: OPERATOR_CHECK_REQUIRED
+    BACKUP: OPERATOR_EVIDENCE_REQUIRED
+    APPROVAL: EXPLICIT_FINAL_APPROVAL_REQUIRED
+    AUTHORIZATION: BLOCKED
+    
+  operator: 'match'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\ota-production-preflight.test.cjs:5:127)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.start (node:internal/test_runner/test:1191:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17)
+  ...
+# Subtest: preflight reconoce false sin clasificarlo como variable publica desconocida
+not ok 2 - preflight reconoce false sin clasificarlo como variable publica desconocida
+  ---
+  duration_ms: 85.0112
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\ota-production-preflight.test.cjs:6:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    SOURCE: PROCESS_ENV_EXPLICIT_ONLY
+    UNKNOWN_REACT_APP_NAME: UNREVIEWED_PUBLIC_VARIABLE
+    REACT_APP_SUPABASE_URL: VALID
+    REACT_APP_SUPABASE_ANON_KEY: VALID
+    REACT_APP_APP_URL: VALID
+    REACT_APP_PII_ENCRYPTION_KEY: VALID
+    STRUCTURE: BLOCKED
+    KEY_AUTHENTICITY: NOT_VERIFIED
+    PII_CONTINUITY: OPERATOR_CHECK_REQUIRED
+    BACKUP: OPERATOR_EVIDENCE_REQUIRED
+    APPROVAL: EXPLICIT_FINAL_APPROVAL_REQUIRED
+    AUTHORIZATION: BLOCKED
+    
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\ota-production-preflight.test.cjs:6:117)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)
+  ...
+# Subtest: preflight no acepta activaciones ambiguas o valores no booleanos
+not ok 3 - preflight no acepta activaciones ambiguas o valores no booleanos
+  ---
+  duration_ms: 76.4038
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\ota-production-preflight.test.cjs:7:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /DISABLE_PRODUCTION_DIAGNOSTICS/. Input:
+    
+    'SOURCE: PROCESS_ENV_EXPLICIT_ONLY\n' +
+      'UNKNOWN_REACT_APP_NAME: UNREVIEWED_PUBLIC_VARIABLE\n' +
+      'REACT_APP_SUPABASE_URL: VALID\n' +
+      'REACT_APP_SUPABASE_ANON_KEY: VALID\n' +
+      'REACT_APP_APP_URL: VALID\n' +
+      'REACT_APP_PII_ENCRYPTION_KEY: VALID\n' +
+      'STRUCTURE: BLOCKED\n' +
+      'KEY_AUTHENTICITY: NOT_VERIFIED\n' +
+      'PII_CONTINUITY: OPERATOR_CHECK_REQUIRED\n' +
+      'BACKUP: OPERATOR_EVIDENCE_REQUIRED\n' +
+      'APPROVAL: EXPLICIT_FINAL_APPROVAL_REQUIRED\n' +
+      'AUTHORIZATION: BLOCKED\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: |-
+    SOURCE: PROCESS_ENV_EXPLICIT_ONLY
+    UNKNOWN_REACT_APP_NAME: UNREVIEWED_PUBLIC_VARIABLE
+    REACT_APP_SUPABASE_URL: VALID
+    REACT_APP_SUPABASE_ANON_KEY: VALID
+    REACT_APP_APP_URL: VALID
+    REACT_APP_PII_ENCRYPTION_KEY: VALID
+    STRUCTURE: BLOCKED
+    KEY_AUTHENTICITY: NOT_VERIFIED
+    PII_CONTINUITY: OPERATOR_CHECK_REQUIRED
+    BACKUP: OPERATOR_EVIDENCE_REQUIRED
+    APPROVAL: EXPLICIT_FINAL_APPROVAL_REQUIRED
+    AUTHORIZATION: BLOCKED
+    
+  operator: 'match'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\ota-production-preflight.test.cjs:7:176)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: el control aplica a native y all aunque falten otras entradas
+not ok 4 - el control aplica a native y all aunque falten otras entradas
+  ---
+  duration_ms: 21.9778
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\ota-production-preflight.test.cjs:8:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(r.checks.some(x=>x.name==='REACT_APP_ENABLE_OTA_DIAGNOSTICS'&&x.status==='DISABLE_PRODUCTION_DIAGNOSTICS'))
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\ota-production-preflight.test.cjs:8:231)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 0
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 384.3877
+

@@ -1,0 +1,71 @@
+TAP version 13
+# Subtest: acepta únicamente el proyecto directo esperado con TLS verificado
+ok 1 - acepta únicamente el proyecto directo esperado con TLS verificado
+  ---
+  duration_ms: 1.0724
+  type: 'test'
+  ...
+# Subtest: rechaza destino o control incorrecto: host
+ok 2 - rechaza destino o control incorrecto: host
+  ---
+  duration_ms: 0.2756
+  type: 'test'
+  ...
+# Subtest: rechaza destino o control incorrecto: port
+ok 3 - rechaza destino o control incorrecto: port
+  ---
+  duration_ms: 0.1049
+  type: 'test'
+  ...
+# Subtest: rechaza destino o control incorrecto: database
+ok 4 - rechaza destino o control incorrecto: database
+  ---
+  duration_ms: 0.1108
+  type: 'test'
+  ...
+# Subtest: rechaza destino o control incorrecto: username
+ok 5 - rechaza destino o control incorrecto: username
+  ---
+  duration_ms: 0.1049
+  type: 'test'
+  ...
+# Subtest: rechaza destino o control incorrecto: sslmode
+ok 6 - rechaza destino o control incorrecto: sslmode
+  ---
+  duration_ms: 0.0962
+  type: 'test'
+  ...
+# Subtest: rechaza destino o control incorrecto: expectedFingerprint
+ok 7 - rechaza destino o control incorrecto: expectedFingerprint
+  ---
+  duration_ms: 0.1275
+  type: 'test'
+  ...
+# Subtest: rechaza credenciales persistidas dentro de la configuración
+ok 8 - rechaza credenciales persistidas dentro de la configuración
+  ---
+  duration_ms: 0.1218
+  type: 'test'
+  ...
+# Subtest: convierte rutas Windows para el GnuPG MSYS instalado sin perder espacios
+ok 9 - convierte rutas Windows para el GnuPG MSYS instalado sin perder espacios
+  ---
+  duration_ms: 0.2511
+  type: 'test'
+  ...
+# Subtest: no hereda opciones, contraseñas o conexiones PostgreSQL del proceso
+ok 10 - no hereda opciones, contraseñas o conexiones PostgreSQL del proceso
+  ---
+  duration_ms: 2.3104
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 112.3678
+

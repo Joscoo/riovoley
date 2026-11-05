@@ -1,0 +1,9 @@
+{
+  "baselineFingerprint": "15b9d9e869fb5113263c485714009878",
+  "appliedFingerprint": "500d15ffa5fa23aeddb47e5c21cd1d13",
+  "returnExecuted": true,
+  "reapplied": true,
+  "productionChanged": false,
+  "persistence": "PostgreSQL local real",
+  "authentication": "Contexto JWT simulado mediante SET LOCAL ROLE y request.jwt.claims; sin login HTTP"
+}

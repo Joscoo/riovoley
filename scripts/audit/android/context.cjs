@@ -7,10 +7,11 @@ const privateRoot = path.join(root,'.e2e-local');
 const pointer = path.join(privateRoot,'android-audit-context.json');
 if(!fs.existsSync(pointer)) {
   const stamp=new Date().toISOString().replace(/[-:]/g,'').slice(0,15).replace('T','-');
-  const base=path.join(root,'docs/tesis/evidencias/verificacion-tecnica',stamp+'-android-c71f55e');
+  const commit=cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();
+  const base=path.join(root,'docs/tesis/evidencias/verificacion-tecnica',stamp+'-android-'+commit.slice(0,7));
   const work=path.join(privateRoot,'android-native',stamp);
   fs.mkdirSync(base,{recursive:true});fs.mkdirSync(work,{recursive:true});
-  fs.writeFileSync(pointer,JSON.stringify({root,base,work,createdAt:new Date().toISOString()}));
+  fs.writeFileSync(pointer,JSON.stringify({root,base,work,commit,createdAt:new Date().toISOString()}));
 }
 const context=JSON.parse(fs.readFileSync(pointer));
 if(context.root!==root || !context.base.startsWith(path.join(root,'docs/tesis/evidencias/verificacion-tecnica')+path.sep) || !context.work.startsWith(privateRoot+path.sep)) throw new Error('Contexto Android fuera del workspace');
@@ -18,6 +19,7 @@ function scrub(value) {
   return String(value).replace(/eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/g,'[JWT_REDACTADO]').replace(/sb_(?:secret|publishable)_[A-Za-z0-9_-]+/g,'[CLAVE_REDACTADA]').replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi,'[CORREO_REDACTADO]');
 }
 function write(name,data) {
+  if(fs.existsSync(path.join(context.base,'MANIFIESTO_SHA256.json'))) throw new Error('No modificar un expediente Android sellado');
   const target=path.join(context.base,name);if(!target.startsWith(context.base+path.sep)) throw new Error('Ruta fuera de evidencias');
   fs.mkdirSync(path.dirname(target),{recursive:true});
   if(fs.existsSync(target)) throw new Error('Evidencia existente: '+name);

@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-05T17:15:23.897Z",
+  "priorManifests": 27,
+  "priorEntries": 9708,
+  "priorEntriesMatching": true,
+  "linksChecked": 81,
+  "brokenLinks": 0,
+  "privacyIssues": 0,
+  "staticSourceHashesMatching": 7,
+  "functionalAntecedentCountsVerified": true,
+  "newFunctionalTests": 0,
+  "newBuilds": 0,
+  "productChanged": false,
+  "sqlProposalChanged": false,
+  "productionChanged": false,
+  "executionAuthorized": false,
+  "newAcademicDocuments": 3,
+  "newOperationalCriteria": 1
+}

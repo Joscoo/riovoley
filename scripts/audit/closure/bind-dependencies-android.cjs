@@ -1,0 +1,15 @@
+const fs=require('node:fs');
+const path=require('node:path');
+const assert=require('node:assert/strict');
+const h=require('../../e2e/local/harness.cjs');
+const file=path.join(h.runtime,'android-audit-context.json');
+const prior=JSON.parse(fs.readFileSync(file,'utf8'));
+assert.equal(prior.root,h.root);
+assert.ok(prior.work.startsWith(h.runtime+path.sep));
+assert.ok(!fs.existsSync(path.join(h.evidence,'MANIFIESTO_SHA256.json')));
+const backup=path.join(h.runtime,'android-context-before-dependencies-'+Date.now()+'.json');
+fs.copyFileSync(file,backup,fs.constants.COPYFILE_EXCL);
+const context=JSON.parse(fs.readFileSync(path.join(h.evidence,'CONTEXTO.json')));
+fs.writeFileSync(file,JSON.stringify({...prior,base:h.evidence,commit:context.commit,createdAt:new Date().toISOString()}));
+h.write('android/contexto.json',{time:new Date().toISOString(),work:path.relative(h.root,prior.work),profile:'final: endpoint loopback con clave placeholder, sin credenciales; APK exclusivamente privado',toolsReused:true,priorEvidencePreserved:true});
+console.log('Contexto Android enlazado al expediente de dependencias; herramientas privadas conservadas.');

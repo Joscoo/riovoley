@@ -1,0 +1,92 @@
+{
+  "baseCommit": "eec82da6ceb8ab3517fea6a9db150517265ca3bc",
+  "checkedAt": "2026-11-01T23:06:45.551Z",
+  "localChangesPresent": true,
+  "files": [
+    {
+      "file": ".github/workflows/technical-readiness.yml",
+      "sha256": "2a9d9cc15085a95480b32f78d7b9279766b4aad93d6cb89a376fa83acd0bdca3"
+    },
+    {
+      "file": "docs/produccion/EDGE.md",
+      "sha256": "92df69b9855c0bb861d490bc779b65d997d7d9dd39322a74d25c7b5f4eb04eaf"
+    },
+    {
+      "file": "docs/produccion/RUNBOOK.md",
+      "sha256": "b4455d49ab39e1eeb849f996bce118402f61cf78103d2920bf6b75f9325a0a95"
+    },
+    {
+      "file": "docs/produccion/SCHEDULER_PENDIENTE.md",
+      "sha256": "bea8c3902cfbbca43aa3ae6e7edd88670dc8a28fe3212d48a48569b1cffed83f"
+    },
+    {
+      "file": "scripts/production/backup.cjs",
+      "sha256": "233c0a269faaf48be8441cf1d297d7f5e29581c4deea702b9a3b071afcda1e55"
+    },
+    {
+      "file": "docs/superpowers/plans/2026-11-01-secreto-scheduler.md",
+      "sha256": "bb26c0a98c694f357070487c221541d1ced1f7d7ed7464f8f7e80212306a27b7"
+    },
+    {
+      "file": "scripts/audit/android/activity-state.cjs",
+      "sha256": "c20949170067b598a43acf1ef8815ad08489aa876b4ce4fa9880dae63c27ce9a"
+    },
+    {
+      "file": "scripts/audit/production/collect-android-partial.cjs",
+      "sha256": "0285b032a916fedbfc4f951a284a64a2599f24a6959ca79967dc87483fae3bf4"
+    },
+    {
+      "file": "scripts/audit/production/collect-scheduler-tools.cjs",
+      "sha256": "cd40f478f5d073dbc1b5b9cb4b26d6e3157947e688e92d9c7f3dcaf179597980"
+    },
+    {
+      "file": "scripts/audit/production/finalize-scheduler-packet.cjs",
+      "sha256": "97009398ef55d7eaa07e5baebf7c49a45972b1e6c2b017cacef532a374dde5dc"
+    },
+    {
+      "file": "scripts/audit/production/report-scheduler-packet.cjs",
+      "sha256": "2bf792f3769d8feb7a6a5aa4e280871d3c472b38515337b8e67f023f98613db6"
+    },
+    {
+      "file": "scripts/audit/production/smoke-signed-android-offline.cjs",
+      "sha256": "1ea49cba9200bb81e04d0494a8c1dd7f73f3dfe4f4c9c43b30f17329fe554e3d"
+    },
+    {
+      "file": "scripts/audit/production/test-scheduler-channel.cjs",
+      "sha256": "f82b916e6568d7ee1a0a641903cbe5190883cc6f85e93edbacfb5fa086a4265d"
+    },
+    {
+      "file": "scripts/audit/production/verify-scheduler-custody.cjs",
+      "sha256": "23d8211157c0c0b0612f88af78ccdfc8dc398c01c30813438f3ac04f16c31952"
+    },
+    {
+      "file": "scripts/production/create-scheduler-secret.cjs",
+      "sha256": "c9715b63aa44f691c916d5300203ac09915a9ff1e2d642df3cf6069926a54b71"
+    },
+    {
+      "file": "scripts/production/protect-scheduler.ps1",
+      "sha256": "da99b6e46a1df544770c749b408e8b5dd11672cb94bc2baeea7a4239cbff22ed"
+    },
+    {
+      "file": "scripts/production/scheduler-protection.cjs",
+      "sha256": "5f7f437cc483a027694cf4ad67caa58691975aed963d26fadb0460f6eb1d5e93"
+    },
+    {
+      "file": "scripts/production/scheduler-secret.cjs",
+      "sha256": "6645a5035d298614ee2a7f4123331628ddb090518a0d1c0260a6779bf5c983a2"
+    },
+    {
+      "file": "scripts/production/verify-scheduler-recovery.ps1",
+      "sha256": "1548acfe547cbf6e68a5f2d4b8d3587436f802324929cbe5664e18e295194deb"
+    },
+    {
+      "file": "tests/unit/android-offline-state.test.cjs",
+      "sha256": "2acbb084063aabc57f86e26570bcd4e2583af04310ed50d9da180eaf3f0367b0"
+    },
+    {
+      "file": "tests/unit/scheduler-secret.test.cjs",
+      "sha256": "ea377fe8b235b80b2db14332b6024fa7945aad69507c7900de49e988dfb4f92a"
+    }
+  ],
+  "productSourceChanged": false
+}

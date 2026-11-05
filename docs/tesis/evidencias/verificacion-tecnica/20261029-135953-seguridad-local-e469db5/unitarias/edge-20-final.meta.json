@@ -1,0 +1,16 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "functions/node_modules/tsx/dist/cli.mjs",
+    "--test",
+    "--test-reporter=tap",
+    "tests/unit/credentials-edge.test.ts",
+    "tests/unit/authorization-edge.test.ts"
+  ],
+  "start": "2026-10-29T14:46:37.088Z",
+  "end": "2026-10-29T14:46:38.480Z",
+  "durationSeconds": 1.392,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

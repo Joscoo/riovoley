@@ -1,0 +1,16 @@
+{
+  "name": "@riovoley/deepmerge-hardened",
+  "version": "4.3.1-riovoley.1",
+  "private": true,
+  "description": "Private downstream copy of deepmerge 4.3.1 with a tested prototype-write guard",
+  "main": "index.cjs",
+  "types": "index.d.ts",
+  "license": "MIT",
+  "files": [
+    "index.cjs",
+    "index.d.ts",
+    "LICENSE",
+    "ORIGIN.json",
+    "README.md"
+  ]
+}

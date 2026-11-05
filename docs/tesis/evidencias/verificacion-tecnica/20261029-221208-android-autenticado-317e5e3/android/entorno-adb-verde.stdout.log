@@ -1,0 +1,11 @@
+✔ fija ADB al servidor loopback 5037 y descarta destinos heredados (2.3279ms)
+✔ conserva overrides CRA para impedir que dotenv reincorpore credenciales institucionales (0.5423ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 131.4007
+

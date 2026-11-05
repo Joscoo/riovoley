@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-11-01T21:05:37.508Z",
+  "source": "Supabase CLI Management API; BEGIN READ ONLY / SELECT / COMMIT",
+  "dailyRewardRpcPresent": false,
+  "functionOwnersWithoutRoleUsage": 0,
+  "postgresSuperuser": false,
+  "relationsWithoutOwnerRoleUsage": 0,
+  "rls": [
+    {
+      "enabled": true,
+      "forced": false,
+      "policies": 1,
+      "table_name": "login_rewards"
+    },
+    {
+      "enabled": true,
+      "forced": false,
+      "policies": 1,
+      "table_name": "xp_ledger"
+    }
+  ],
+  "schemasWithoutCreate": 0,
+  "productionChanged": false,
+  "businessRowsRead": false,
+  "policiesPredicatesNotValidatedByFlag": true,
+  "managedRuntimeBusinessFlowsExecuted": false
+}

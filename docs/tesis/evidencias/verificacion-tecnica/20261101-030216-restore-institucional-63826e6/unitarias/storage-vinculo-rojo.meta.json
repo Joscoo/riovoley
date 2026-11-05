@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/unit/storage-backup.test.cjs"
+  ],
+  "start": "2026-11-01T16:14:34.321Z",
+  "end": "2026-11-01T16:14:34.673Z",
+  "durationSeconds": 0.352,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

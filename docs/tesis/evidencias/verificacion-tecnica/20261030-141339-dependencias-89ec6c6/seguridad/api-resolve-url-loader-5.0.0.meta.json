@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "view",
+    "resolve-url-loader@5.0.0",
+    "version",
+    "type",
+    "main",
+    "exports",
+    "dependencies",
+    "engines",
+    "--json"
+  ],
+  "start": "2026-10-30T14:15:25.074Z",
+  "end": "2026-10-30T14:15:25.733Z",
+  "durationSeconds": 0.659,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

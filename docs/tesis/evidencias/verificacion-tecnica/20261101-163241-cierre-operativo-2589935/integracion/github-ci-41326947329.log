@@ -1,0 +1,1208 @@
+﻿2026-11-01T16:33:38.6866375Z Current runner version: '2.338.2'
+2026-11-01T16:33:38.6885074Z ##[group]Runner Image Provisioner
+2026-11-01T16:33:38.6885653Z Hosted Compute Agent
+2026-11-01T16:33:38.6886279Z Version: 20261021.618
+2026-11-01T16:33:38.6886714Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-11-01T16:33:38.6887153Z Build Date: 2026-10-21T00:45:21Z
+2026-11-01T16:33:38.6887612Z Worker ID: {a7e06fcb-b0cb-49f0-b490-06753f1dcde5}
+2026-11-01T16:33:38.6888039Z Region: centralus
+2026-11-01T16:33:38.6888377Z Cloud: Azure
+2026-11-01T16:33:38.6888787Z ##[endgroup]
+2026-11-01T16:33:38.6889608Z ##[group]Operating System
+2026-11-01T16:33:38.6890010Z Ubuntu
+2026-11-01T16:33:38.6890379Z 24.04.5
+2026-11-01T16:33:38.6890687Z LTS
+2026-11-01T16:33:38.6891089Z ##[endgroup]
+2026-11-01T16:33:38.6891429Z ##[group]Runner Image
+2026-11-01T16:33:38.6891823Z Image: ubuntu-24.04
+2026-11-01T16:33:38.6892188Z Version: 20261025.353.1
+2026-11-01T16:33:38.6893027Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-01T16:33:38.6893922Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353
+2026-11-01T16:33:38.6894509Z ##[endgroup]
+2026-11-01T16:33:38.6895206Z ##[group]GITHUB_TOKEN Permissions
+2026-11-01T16:33:38.6896643Z Contents: read
+2026-11-01T16:33:38.6897016Z Metadata: read
+2026-11-01T16:33:38.6897362Z ##[endgroup]
+2026-11-01T16:33:38.6898740Z Secret source: Actions
+2026-11-01T16:33:38.6899350Z Cache mode: write
+2026-11-01T16:33:38.6899830Z Prepare workflow directory
+2026-11-01T16:33:38.7152651Z Prepare all required actions
+2026-11-01T16:33:38.7187047Z Getting action download info
+2026-11-01T16:33:38.9378975Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-11-01T16:33:39.2181302Z Download action repository 'actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1' (SHA:949feb2413d6458794dcd2491c4babbbce0c15c1)
+2026-11-01T16:33:39.8154578Z Complete job name: verify
+2026-11-01T16:33:39.8967932Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+2026-11-01T16:33:39.8968588Z with:
+2026-11-01T16:33:39.8968879Z   persist-credentials: false
+2026-11-01T16:33:39.8969202Z   repository: Joscoo/riovoley
+2026-11-01T16:33:39.8971458Z   token: ***
+2026-11-01T16:33:39.8971719Z   ssh-strict: true
+2026-11-01T16:33:39.8971977Z   ssh-user: git
+2026-11-01T16:33:39.8972254Z   clean: true
+2026-11-01T16:33:39.8972533Z   sparse-checkout-cone-mode: true
+2026-11-01T16:33:39.8972851Z   fetch-depth: 1
+2026-11-01T16:33:39.8973107Z   fetch-tags: false
+2026-11-01T16:33:39.8973382Z   show-progress: true
+2026-11-01T16:33:39.8973656Z   lfs: false
+2026-11-01T16:33:39.8973915Z   submodules: false
+2026-11-01T16:33:39.8974196Z   set-safe-directory: true
+2026-11-01T16:33:39.8974500Z   allow-unsafe-pr-checkout: false
+2026-11-01T16:33:39.8974880Z env:
+2026-11-01T16:33:39.8975113Z   CI: true
+2026-11-01T16:33:39.8975401Z   REACT_APP_SUPABASE_URL: http://127.0.0.1:55321
+2026-11-01T16:33:39.8976044Z   REACT_APP_SUPABASE_ANON_KEY: ci-public-placeholder-not-a-real-key
+2026-11-01T16:33:39.8976490Z   REACT_APP_APP_URL: http://127.0.0.1:3000
+2026-11-01T16:33:39.8976931Z   REACT_APP_PII_ENCRYPTION_KEY: ci-synthetic-pii-key-never-for-real-data
+2026-11-01T16:33:39.8977416Z   REACT_APP_WHATSAPP_ACCESS_TOKEN: 
+2026-11-01T16:33:39.8977762Z   REACT_APP_WHATSAPP_PHONE_NUMBER_ID: 
+2026-11-01T16:33:39.8978101Z   REACT_APP_WHATSAPP_BUSINESS_ACCOUNT_ID: 
+2026-11-01T16:33:39.8978442Z   REACT_APP_CLUB_ADMIN_PHONE: 
+2026-11-01T16:33:39.8978748Z   REACT_APP_CLUB_COACH_PHONE: 
+2026-11-01T16:33:39.8979057Z   REACT_APP_CLUB_EMERGENCY_PHONE: 
+2026-11-01T16:33:39.8979395Z   REACT_APP_CAPGO_DEFAULT_CHANNEL: beta
+2026-11-01T16:33:39.8979748Z   REACT_APP_ENABLE_SQL_AUDIT: false
+2026-11-01T16:33:39.8980074Z   REACT_APP_ENABLE_WEB_VITALS_LOG: false
+2026-11-01T16:33:39.8980408Z   GENERATE_SOURCEMAP: false
+2026-11-01T16:33:39.8980798Z ##[endgroup]
+2026-11-01T16:33:40.1082424Z Syncing repository: Joscoo/riovoley
+2026-11-01T16:33:40.1084229Z ##[group]Getting Git version info
+2026-11-01T16:33:40.1084667Z Working directory is '/home/runner/work/riovoley/riovoley'
+2026-11-01T16:33:40.1085369Z [command]/usr/bin/git version
+2026-11-01T16:33:40.1241112Z git version 2.56.0
+2026-11-01T16:33:40.1256288Z ##[endgroup]
+2026-11-01T16:33:40.1265850Z Temporarily overriding HOME='/home/runner/work/_temp/3f112b85-6cb4-4adb-b9ae-0f2f0f2dcd88' before making global git config changes
+2026-11-01T16:33:40.1267296Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-01T16:33:40.1271035Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/riovoley/riovoley
+2026-11-01T16:33:40.1801494Z Deleting the contents of '/home/runner/work/riovoley/riovoley'
+2026-11-01T16:33:40.1809959Z ##[group]Determining repository object format
+2026-11-01T16:33:40.1813056Z ##[endgroup]
+2026-11-01T16:33:40.1814201Z ##[group]Initializing the repository
+2026-11-01T16:33:40.1822312Z [command]/usr/bin/git init /home/runner/work/riovoley/riovoley
+2026-11-01T16:33:40.2504899Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-01T16:33:40.2505937Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-01T16:33:40.2506754Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-01T16:33:40.2507231Z hint: call:
+2026-11-01T16:33:40.2507586Z hint:
+2026-11-01T16:33:40.2508194Z hint: 	git config --global init.defaultBranch <name>
+2026-11-01T16:33:40.2508764Z hint:
+2026-11-01T16:33:40.2509371Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-01T16:33:40.2510382Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-01T16:33:40.2511104Z hint:
+2026-11-01T16:33:40.2511507Z hint: 	git branch -m <name>
+2026-11-01T16:33:40.2512007Z hint:
+2026-11-01T16:33:40.2512500Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-01T16:33:40.2513512Z Initialized empty Git repository in /home/runner/work/riovoley/riovoley/.git/
+2026-11-01T16:33:40.2521134Z [command]/usr/bin/git remote add origin https://github.com/Joscoo/riovoley
+2026-11-01T16:33:40.2567155Z ##[endgroup]
+2026-11-01T16:33:40.2567952Z ##[group]Disabling automatic garbage collection
+2026-11-01T16:33:40.2569612Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-01T16:33:40.2599813Z ##[endgroup]
+2026-11-01T16:33:40.2600557Z ##[group]Setting up auth
+2026-11-01T16:33:40.2601190Z Removing SSH command configuration
+2026-11-01T16:33:40.2604343Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-01T16:33:40.2635183Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-01T16:33:40.2918851Z Removing HTTP extra header
+2026-11-01T16:33:40.2923829Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-01T16:33:40.2953202Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-01T16:33:40.3144775Z Removing includeIf entries pointing to credentials config files
+2026-11-01T16:33:40.3149301Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-01T16:33:40.3180918Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-01T16:33:40.3374838Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-8678d4ed-7ae4-4ed2-a5d3-3bc7fbeb81d6.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-01T16:33:40.3409485Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/riovoley/riovoley/.git.path /home/runner/work/_temp/git-credentials-8678d4ed-7ae4-4ed2-a5d3-3bc7fbeb81d6.config
+2026-11-01T16:33:40.3437592Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/riovoley/riovoley/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-8678d4ed-7ae4-4ed2-a5d3-3bc7fbeb81d6.config
+2026-11-01T16:33:40.3465139Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-8678d4ed-7ae4-4ed2-a5d3-3bc7fbeb81d6.config
+2026-11-01T16:33:40.3562432Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-8678d4ed-7ae4-4ed2-a5d3-3bc7fbeb81d6.config
+2026-11-01T16:33:40.3565039Z ##[endgroup]
+2026-11-01T16:33:40.3565874Z ##[group]Fetching the repository
+2026-11-01T16:33:40.3566773Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +dbd1e650b0dbcd912e8ab05566eed21e365fb0da:refs/remotes/pull/2/merge
+2026-11-01T16:33:48.1026277Z From https://github.com/Joscoo/riovoley
+2026-11-01T16:33:48.1027368Z  * [new ref]         dbd1e650b0dbcd912e8ab05566eed21e365fb0da -> pull/2/merge
+2026-11-01T16:33:48.1030407Z ##[endgroup]
+2026-11-01T16:33:48.1030923Z ##[group]Determining the checkout info
+2026-11-01T16:33:48.1031413Z ##[endgroup]
+2026-11-01T16:33:48.1035386Z [command]/usr/bin/git sparse-checkout disable
+2026-11-01T16:33:48.1081598Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-01T16:33:48.1109081Z ##[group]Checking out the ref
+2026-11-01T16:33:48.1111874Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/2/merge
+2026-11-01T16:33:49.1232152Z Updating files:  77% (7586/9738)
+2026-11-01T16:33:49.1308567Z Updating files:  78% (7596/9738)
+2026-11-01T16:33:49.1358300Z Updating files:  79% (7694/9738)
+2026-11-01T16:33:49.1406309Z Updating files:  80% (7791/9738)
+2026-11-01T16:33:49.1456973Z Updating files:  81% (7888/9738)
+2026-11-01T16:33:49.1508150Z Updating files:  82% (7986/9738)
+2026-11-01T16:33:49.1573688Z Updating files:  83% (8083/9738)
+2026-11-01T16:33:49.1620976Z Updating files:  84% (8180/9738)
+2026-11-01T16:33:49.1666860Z Updating files:  85% (8278/9738)
+2026-11-01T16:33:49.1748294Z Updating files:  86% (8375/9738)
+2026-11-01T16:33:49.1786050Z Updating files:  87% (8473/9738)
+2026-11-01T16:33:49.1811123Z Updating files:  88% (8570/9738)
+2026-11-01T16:33:49.1837994Z Updating files:  89% (8667/9738)
+2026-11-01T16:33:49.1863825Z Updating files:  90% (8765/9738)
+2026-11-01T16:33:49.1887738Z Updating files:  91% (8862/9738)
+2026-11-01T16:33:49.2496368Z Updating files:  92% (8959/9738)
+2026-11-01T16:33:49.2535616Z Updating files:  93% (9057/9738)
+2026-11-01T16:33:49.2581228Z Updating files:  94% (9154/9738)
+2026-11-01T16:33:49.2656275Z Updating files:  95% (9252/9738)
+2026-11-01T16:33:49.2724369Z Updating files:  96% (9349/9738)
+2026-11-01T16:33:49.2768650Z Updating files:  97% (9446/9738)
+2026-11-01T16:33:49.2806500Z Updating files:  98% (9544/9738)
+2026-11-01T16:33:49.2848201Z Updating files:  99% (9641/9738)
+2026-11-01T16:33:49.2848699Z Updating files: 100% (9738/9738)
+2026-11-01T16:33:49.2848999Z Updating files: 100% (9738/9738), done.
+2026-11-01T16:33:49.2944908Z Note: switching to 'refs/remotes/pull/2/merge'.
+2026-11-01T16:33:49.2945546Z 
+2026-11-01T16:33:49.2946049Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-11-01T16:33:49.2946885Z changes and commit them, and you can discard any commits you make in this
+2026-11-01T16:33:49.2947352Z state without impacting any branches by switching back to a branch.
+2026-11-01T16:33:49.2947617Z 
+2026-11-01T16:33:49.2947797Z If you want to create a new branch to retain commits you create, you may
+2026-11-01T16:33:49.2948214Z do so (now or later) by using -c with the switch command. Example:
+2026-11-01T16:33:49.2948455Z 
+2026-11-01T16:33:49.2948556Z   git switch -c <new-branch-name>
+2026-11-01T16:33:49.2948715Z 
+2026-11-01T16:33:49.2948814Z Or undo this operation with:
+2026-11-01T16:33:49.2948966Z 
+2026-11-01T16:33:49.2949045Z   git switch -
+2026-11-01T16:33:49.2949503Z 
+2026-11-01T16:33:49.2949691Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-11-01T16:33:49.2949961Z 
+2026-11-01T16:33:49.2950265Z HEAD is now at dbd1e65 Merge 1e5303a72755f3f17404d2207f3baa634a6417dc into e469db5608fb77071b6a9ee3db253c28dae734dd
+2026-11-01T16:33:49.3041129Z ##[endgroup]
+2026-11-01T16:33:49.3081751Z [command]/usr/bin/git log -1 --format=%H
+2026-11-01T16:33:49.3107077Z dbd1e650b0dbcd912e8ab05566eed21e365fb0da
+2026-11-01T16:33:49.3114611Z ##[group]Removing auth
+2026-11-01T16:33:49.3114872Z Removing SSH command configuration
+2026-11-01T16:33:49.3117688Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-01T16:33:49.3146306Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-01T16:33:49.3350201Z Removing HTTP extra header
+2026-11-01T16:33:49.3353135Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-01T16:33:49.3381950Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-01T16:33:49.3582050Z Removing includeIf entries pointing to credentials config files
+2026-11-01T16:33:49.3584838Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-01T16:33:49.3612487Z includeif.gitdir:/home/runner/work/riovoley/riovoley/.git.path
+2026-11-01T16:33:49.3613122Z includeif.gitdir:/home/runner/work/riovoley/riovoley/.git/worktrees/*.path
+2026-11-01T16:33:49.3613495Z includeif.gitdir:/github/workspace/.git.path
+2026-11-01T16:33:49.3613707Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-01T16:33:49.3620367Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/riovoley/riovoley/.git.path
+2026-11-01T16:33:49.3641216Z /home/runner/work/_temp/git-credentials-8678d4ed-7ae4-4ed2-a5d3-3bc7fbeb81d6.config
+2026-11-01T16:33:49.3650148Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/riovoley/riovoley/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-8678d4ed\-7ae4\-4ed2\-a5d3\-3bc7fbeb81d6\.config
+2026-11-01T16:33:49.3680702Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/riovoley/riovoley/.git/worktrees/*.path
+2026-11-01T16:33:49.3703568Z /home/runner/work/_temp/git-credentials-8678d4ed-7ae4-4ed2-a5d3-3bc7fbeb81d6.config
+2026-11-01T16:33:49.3710613Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/riovoley/riovoley/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-8678d4ed\-7ae4\-4ed2\-a5d3\-3bc7fbeb81d6\.config
+2026-11-01T16:33:49.3864854Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-11-01T16:33:49.3886978Z /github/runner_temp/git-credentials-8678d4ed-7ae4-4ed2-a5d3-3bc7fbeb81d6.config
+2026-11-01T16:33:49.3893054Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-8678d4ed\-7ae4\-4ed2\-a5d3\-3bc7fbeb81d6\.config
+2026-11-01T16:33:49.3923987Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-01T16:33:49.3944409Z /github/runner_temp/git-credentials-8678d4ed-7ae4-4ed2-a5d3-3bc7fbeb81d6.config
+2026-11-01T16:33:49.3950453Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-8678d4ed\-7ae4\-4ed2\-a5d3\-3bc7fbeb81d6\.config
+2026-11-01T16:33:49.3982698Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-01T16:33:49.4180997Z Removing credentials config '/home/runner/work/_temp/git-credentials-8678d4ed-7ae4-4ed2-a5d3-3bc7fbeb81d6.config'
+2026-11-01T16:33:49.4189719Z ##[endgroup]
+2026-11-01T16:33:49.4399042Z ##[group]Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+2026-11-01T16:33:49.4399270Z with:
+2026-11-01T16:33:49.4399391Z   node-version: 22
+2026-11-01T16:33:49.4399506Z   cache: npm
+2026-11-01T16:33:49.4399739Z   cache-dependency-path: package-lock.json
+functions/package-lock.json
+riovoley/package-lock.json
+
+2026-11-01T16:33:49.4400005Z   check-latest: false
+2026-11-01T16:33:49.4401283Z   token: ***
+2026-11-01T16:33:49.4401419Z   package-manager-cache: true
+2026-11-01T16:33:49.4401556Z env:
+2026-11-01T16:33:49.4401662Z   CI: true
+2026-11-01T16:33:49.4401800Z   REACT_APP_SUPABASE_URL: http://127.0.0.1:55321
+2026-11-01T16:33:49.4402026Z   REACT_APP_SUPABASE_ANON_KEY: ci-public-placeholder-not-a-real-key
+2026-11-01T16:33:49.4402241Z   REACT_APP_APP_URL: http://127.0.0.1:3000
+2026-11-01T16:33:49.4402457Z   REACT_APP_PII_ENCRYPTION_KEY: ci-synthetic-pii-key-never-for-real-data
+2026-11-01T16:33:49.4402688Z   REACT_APP_WHATSAPP_ACCESS_TOKEN: 
+2026-11-01T16:33:49.4402879Z   REACT_APP_WHATSAPP_PHONE_NUMBER_ID: 
+2026-11-01T16:33:49.4403038Z   REACT_APP_WHATSAPP_BUSINESS_ACCOUNT_ID: 
+2026-11-01T16:33:49.4403199Z   REACT_APP_CLUB_ADMIN_PHONE: 
+2026-11-01T16:33:49.4403338Z   REACT_APP_CLUB_COACH_PHONE: 
+2026-11-01T16:33:49.4403479Z   REACT_APP_CLUB_EMERGENCY_PHONE: 
+2026-11-01T16:33:49.4403628Z   REACT_APP_CAPGO_DEFAULT_CHANNEL: beta
+2026-11-01T16:33:49.4403781Z   REACT_APP_ENABLE_SQL_AUDIT: false
+2026-11-01T16:33:49.4403928Z   REACT_APP_ENABLE_WEB_VITALS_LOG: false
+2026-11-01T16:33:49.4404080Z   GENERATE_SOURCEMAP: false
+2026-11-01T16:33:49.4404210Z ##[endgroup]
+2026-11-01T16:33:49.5303982Z Found in cache @ /opt/hostedtoolcache/node/22.23.4/x64
+2026-11-01T16:33:49.5908081Z ##[group]Environment details
+2026-11-01T16:33:49.8204514Z node: v22.23.4
+2026-11-01T16:33:49.8204786Z npm: 10.9.9
+2026-11-01T16:33:49.8204928Z yarn: 1.22.22
+2026-11-01T16:33:49.8205940Z ##[endgroup]
+2026-11-01T16:33:49.8216435Z [command]/opt/hostedtoolcache/node/22.23.4/x64/bin/npm config get cache
+2026-11-01T16:33:49.8986752Z /home/runner/.npm
+2026-11-01T16:33:50.0391030Z npm cache is not found
+2026-11-01T16:33:50.0511105Z ##[group]Run shopt -s nullglob
+2026-11-01T16:33:50.0511334Z [36;1mshopt -s nullglob[0m
+2026-11-01T16:33:50.0511517Z [36;1mmkdir -- "$RUNNER_TEMP/riovoley-env-isolation"[0m
+2026-11-01T16:33:50.0511707Z [36;1mfor file in .env .env.*; do[0m
+2026-11-01T16:33:50.0511854Z [36;1m  if [[ -f "$file" ]]; then[0m
+2026-11-01T16:33:50.0512033Z [36;1m    mv -- "$file" "$RUNNER_TEMP/riovoley-env-isolation/"[0m
+2026-11-01T16:33:50.0512210Z [36;1m  fi[0m
+2026-11-01T16:33:50.0512315Z [36;1mdone[0m
+2026-11-01T16:33:50.0537948Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-01T16:33:50.0538144Z env:
+2026-11-01T16:33:50.0538248Z   CI: true
+2026-11-01T16:33:50.0538390Z   REACT_APP_SUPABASE_URL: http://127.0.0.1:55321
+2026-11-01T16:33:50.0538631Z   REACT_APP_SUPABASE_ANON_KEY: ci-public-placeholder-not-a-real-key
+2026-11-01T16:33:50.0538864Z   REACT_APP_APP_URL: http://127.0.0.1:3000
+2026-11-01T16:33:50.0539103Z   REACT_APP_PII_ENCRYPTION_KEY: ci-synthetic-pii-key-never-for-real-data
+2026-11-01T16:33:50.0539321Z   REACT_APP_WHATSAPP_ACCESS_TOKEN: 
+2026-11-01T16:33:50.0539470Z   REACT_APP_WHATSAPP_PHONE_NUMBER_ID: 
+2026-11-01T16:33:50.0539622Z   REACT_APP_WHATSAPP_BUSINESS_ACCOUNT_ID: 
+2026-11-01T16:33:50.0539775Z   REACT_APP_CLUB_ADMIN_PHONE: 
+2026-11-01T16:33:50.0539913Z   REACT_APP_CLUB_COACH_PHONE: 
+2026-11-01T16:33:50.0540053Z   REACT_APP_CLUB_EMERGENCY_PHONE: 
+2026-11-01T16:33:50.0540198Z   REACT_APP_CAPGO_DEFAULT_CHANNEL: beta
+2026-11-01T16:33:50.0540348Z   REACT_APP_ENABLE_SQL_AUDIT: false
+2026-11-01T16:33:50.0540491Z   REACT_APP_ENABLE_WEB_VITALS_LOG: false
+2026-11-01T16:33:50.0540640Z   GENERATE_SOURCEMAP: false
+2026-11-01T16:33:50.0540767Z ##[endgroup]
+2026-11-01T16:33:50.0671923Z ##[group]Run npm ci --ignore-scripts --prefix functions
+2026-11-01T16:33:50.0672188Z [36;1mnpm ci --ignore-scripts --prefix functions[0m
+2026-11-01T16:33:50.0672508Z [36;1mnpm ci --ignore-scripts --prefix riovoley[0m
+2026-11-01T16:33:50.0672703Z [36;1mnpm audit --audit-level=low --prefix functions[0m
+2026-11-01T16:33:50.0672900Z [36;1mnpm audit --audit-level=low --prefix riovoley[0m
+2026-11-01T16:33:50.0688853Z shell: /usr/bin/bash -e {0}
+2026-11-01T16:33:50.0688992Z env:
+2026-11-01T16:33:50.0689098Z   CI: true
+2026-11-01T16:33:50.0689240Z   REACT_APP_SUPABASE_URL: http://127.0.0.1:55321
+2026-11-01T16:33:50.0689467Z   REACT_APP_SUPABASE_ANON_KEY: ci-public-placeholder-not-a-real-key
+2026-11-01T16:33:50.0689681Z   REACT_APP_APP_URL: http://127.0.0.1:3000
+2026-11-01T16:33:50.0689895Z   REACT_APP_PII_ENCRYPTION_KEY: ci-synthetic-pii-key-never-for-real-data
+2026-11-01T16:33:50.0690111Z   REACT_APP_WHATSAPP_ACCESS_TOKEN: 
+2026-11-01T16:33:50.0690283Z   REACT_APP_WHATSAPP_PHONE_NUMBER_ID: 
+2026-11-01T16:33:50.0690440Z   REACT_APP_WHATSAPP_BUSINESS_ACCOUNT_ID: 
+2026-11-01T16:33:50.0690617Z   REACT_APP_CLUB_ADMIN_PHONE: 
+2026-11-01T16:33:50.0690761Z   REACT_APP_CLUB_COACH_PHONE: 
+2026-11-01T16:33:50.0690903Z   REACT_APP_CLUB_EMERGENCY_PHONE: 
+2026-11-01T16:33:50.0691051Z   REACT_APP_CAPGO_DEFAULT_CHANNEL: beta
+2026-11-01T16:33:50.0691205Z   REACT_APP_ENABLE_SQL_AUDIT: false
+2026-11-01T16:33:50.0691352Z   REACT_APP_ENABLE_WEB_VITALS_LOG: false
+2026-11-01T16:33:50.0691502Z   GENERATE_SOURCEMAP: false
+2026-11-01T16:33:50.0691633Z ##[endgroup]
+2026-11-01T16:33:51.0797562Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+2026-11-01T16:33:51.2477796Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2026-11-01T16:33:51.6136321Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2026-11-01T16:33:51.6159436Z npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+2026-11-01T16:33:51.6162802Z npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
+2026-11-01T16:33:52.1335472Z npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+2026-11-01T16:33:52.3435322Z 
+2026-11-01T16:33:52.3436345Z added 304 packages, and audited 305 packages in 2s
+2026-11-01T16:33:52.3436713Z 
+2026-11-01T16:33:52.3436985Z 128 packages are looking for funding
+2026-11-01T16:33:52.3437278Z   run `npm fund` for details
+2026-11-01T16:33:52.3441769Z 
+2026-11-01T16:33:52.3442053Z found 0 vulnerabilities
+2026-11-01T16:33:52.6968099Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2026-11-01T16:33:52.7099087Z npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
+2026-11-01T16:33:52.7104440Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+2026-11-01T16:33:52.7244924Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2026-11-01T16:33:52.7328755Z npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+2026-11-01T16:33:52.8582414Z npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+2026-11-01T16:33:52.8697000Z 
+2026-11-01T16:33:52.8697815Z added 101 packages, and audited 102 packages in 452ms
+2026-11-01T16:33:52.8698091Z 
+2026-11-01T16:33:52.8698238Z 26 packages are looking for funding
+2026-11-01T16:33:52.8698500Z   run `npm fund` for details
+2026-11-01T16:33:52.8714623Z 
+2026-11-01T16:33:52.8714801Z found 0 vulnerabilities
+2026-11-01T16:33:53.2137028Z found 0 vulnerabilities
+2026-11-01T16:33:53.5006633Z found 0 vulnerabilities
+2026-11-01T16:33:53.5148630Z ##[group]Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+2026-11-01T16:33:53.5148969Z with:
+2026-11-01T16:33:53.5149083Z   node-version: 24
+2026-11-01T16:33:53.5149202Z   check-latest: false
+2026-11-01T16:33:53.5150506Z   token: ***
+2026-11-01T16:33:53.5150629Z   package-manager-cache: true
+2026-11-01T16:33:53.5150767Z env:
+2026-11-01T16:33:53.5150872Z   CI: true
+2026-11-01T16:33:53.5151007Z   REACT_APP_SUPABASE_URL: http://127.0.0.1:55321
+2026-11-01T16:33:53.5151235Z   REACT_APP_SUPABASE_ANON_KEY: ci-public-placeholder-not-a-real-key
+2026-11-01T16:33:53.5151454Z   REACT_APP_APP_URL: http://127.0.0.1:3000
+2026-11-01T16:33:53.5151671Z   REACT_APP_PII_ENCRYPTION_KEY: ci-synthetic-pii-key-never-for-real-data
+2026-11-01T16:33:53.5151893Z   REACT_APP_WHATSAPP_ACCESS_TOKEN: 
+2026-11-01T16:33:53.5152047Z   REACT_APP_WHATSAPP_PHONE_NUMBER_ID: 
+2026-11-01T16:33:53.5152206Z   REACT_APP_WHATSAPP_BUSINESS_ACCOUNT_ID: 
+2026-11-01T16:33:53.5152384Z   REACT_APP_CLUB_ADMIN_PHONE: 
+2026-11-01T16:33:53.5152527Z   REACT_APP_CLUB_COACH_PHONE: 
+2026-11-01T16:33:53.5152674Z   REACT_APP_CLUB_EMERGENCY_PHONE: 
+2026-11-01T16:33:53.5152825Z   REACT_APP_CAPGO_DEFAULT_CHANNEL: beta
+2026-11-01T16:33:53.5152981Z   REACT_APP_ENABLE_SQL_AUDIT: false
+2026-11-01T16:33:53.5153132Z   REACT_APP_ENABLE_WEB_VITALS_LOG: false
+2026-11-01T16:33:53.5153286Z   GENERATE_SOURCEMAP: false
+2026-11-01T16:33:53.5153423Z ##[endgroup]
+2026-11-01T16:33:53.6037010Z Found in cache @ /opt/hostedtoolcache/node/24.22.1/x64
+2026-11-01T16:33:54.2778507Z ##[group]Environment details
+2026-11-01T16:33:55.9590923Z node: v24.22.1
+2026-11-01T16:33:55.9591207Z npm: 11.19.1
+2026-11-01T16:33:55.9591380Z yarn: 1.22.22
+2026-11-01T16:33:55.9591824Z ##[endgroup]
+2026-11-01T16:33:55.9696525Z ##[group]Run npm ci --ignore-scripts
+2026-11-01T16:33:55.9696724Z [36;1mnpm ci --ignore-scripts[0m
+2026-11-01T16:33:55.9752787Z shell: /usr/bin/bash -e {0}
+2026-11-01T16:33:55.9752925Z env:
+2026-11-01T16:33:55.9753029Z   CI: true
+2026-11-01T16:33:55.9753166Z   REACT_APP_SUPABASE_URL: http://127.0.0.1:55321
+2026-11-01T16:33:55.9753401Z   REACT_APP_SUPABASE_ANON_KEY: ci-public-placeholder-not-a-real-key
+2026-11-01T16:33:55.9753607Z   REACT_APP_APP_URL: http://127.0.0.1:3000
+2026-11-01T16:33:55.9753819Z   REACT_APP_PII_ENCRYPTION_KEY: ci-synthetic-pii-key-never-for-real-data
+2026-11-01T16:33:55.9754029Z   REACT_APP_WHATSAPP_ACCESS_TOKEN: 
+2026-11-01T16:33:55.9754176Z   REACT_APP_WHATSAPP_PHONE_NUMBER_ID: 
+2026-11-01T16:33:55.9754330Z   REACT_APP_WHATSAPP_BUSINESS_ACCOUNT_ID: 
+2026-11-01T16:33:55.9754479Z   REACT_APP_CLUB_ADMIN_PHONE: 
+2026-11-01T16:33:55.9754613Z   REACT_APP_CLUB_COACH_PHONE: 
+2026-11-01T16:33:55.9754745Z   REACT_APP_CLUB_EMERGENCY_PHONE: 
+2026-11-01T16:33:55.9754911Z   REACT_APP_CAPGO_DEFAULT_CHANNEL: beta
+2026-11-01T16:33:55.9755056Z   REACT_APP_ENABLE_SQL_AUDIT: false
+2026-11-01T16:33:55.9755197Z   REACT_APP_ENABLE_WEB_VITALS_LOG: false
+2026-11-01T16:33:55.9755340Z   GENERATE_SOURCEMAP: false
+2026-11-01T16:33:55.9755468Z ##[endgroup]
+2026-11-01T16:33:58.8010197Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2026-11-01T16:33:58.8658848Z npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
+2026-11-01T16:33:58.8726117Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+2026-11-01T16:33:58.9199807Z npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-11-01T16:33:58.9860920Z npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+2026-11-01T16:33:59.0758954Z npm warn deprecated whatwg-encoding@1.0.5: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+2026-11-01T16:33:59.1929857Z npm warn deprecated w3c-hr-time@1.0.2: Use your platform's native performance.now() and performance.timeOrigin.
+2026-11-01T16:33:59.3045268Z npm warn deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+2026-11-01T16:33:59.4123163Z npm warn deprecated rollup-plugin-terser@7.0.2: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-terser
+2026-11-01T16:33:59.5781301Z npm warn deprecated sourcemap-codec@1.4.8: Please use @jridgewell/sourcemap-codec instead
+2026-11-01T16:33:59.7286125Z npm warn deprecated workbox-cacheable-response@6.6.0: workbox-background-sync@6.6.0
+2026-11-01T16:33:59.7391680Z npm warn deprecated workbox-google-analytics@6.6.0: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
+2026-11-01T16:34:00.2205772Z npm warn deprecated icons@1.0.0: Package no longer supported. Contact support@npmjs.com for more info.
+2026-11-01T16:34:00.6092005Z npm warn deprecated domexception@2.0.1: Use your platform's native DOMException instead
+2026-11-01T16:34:00.9577743Z npm warn deprecated abab@2.0.6: Use your platform's native atob() and btoa() methods instead
+2026-11-01T16:34:02.2718349Z npm warn deprecated @babel/plugin-proposal-optional-chaining@7.21.0: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-optional-chaining instead.
+2026-11-01T16:34:02.2795926Z npm warn deprecated @babel/plugin-proposal-private-methods@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-methods instead.
+2026-11-01T16:34:02.2875274Z npm warn deprecated @babel/plugin-proposal-nullish-coalescing-operator@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-nullish-coalescing-operator instead.
+2026-11-01T16:34:02.2898423Z npm warn deprecated @babel/plugin-proposal-numeric-separator@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-numeric-separator instead.
+2026-11-01T16:34:02.2946466Z npm warn deprecated @babel/plugin-proposal-class-properties@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-class-properties instead.
+2026-11-01T16:34:02.7541559Z npm warn deprecated @babel/plugin-proposal-private-property-in-object@7.21.11: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-property-in-object instead.
+2026-11-01T16:34:02.8136900Z npm warn deprecated source-map@0.8.0-beta.0: The work that was done in this beta branch won't be included in future versions
+2026-11-01T16:34:04.9156743Z npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+2026-11-01T16:34:06.5776762Z 
+2026-11-01T16:34:06.5777388Z added 1438 packages, and audited 1439 packages in 11s
+2026-11-01T16:34:06.5777599Z 
+2026-11-01T16:34:06.5777737Z 332 packages are looking for funding
+2026-11-01T16:34:06.5777951Z   run `npm fund` for details
+2026-11-01T16:34:06.5788088Z 
+2026-11-01T16:34:06.5788510Z found 0 vulnerabilities
+2026-11-01T16:34:06.6931352Z ##[group]Run npm test -- --watchAll=false --runInBand
+2026-11-01T16:34:06.6931600Z [36;1mnpm test -- --watchAll=false --runInBand[0m
+2026-11-01T16:34:06.6948553Z shell: /usr/bin/bash -e {0}
+2026-11-01T16:34:06.6948700Z env:
+2026-11-01T16:34:06.6948812Z   CI: true
+2026-11-01T16:34:06.6948955Z   REACT_APP_SUPABASE_URL: http://127.0.0.1:55321
+2026-11-01T16:34:06.6949336Z   REACT_APP_SUPABASE_ANON_KEY: ci-public-placeholder-not-a-real-key
+2026-11-01T16:34:06.6949556Z   REACT_APP_APP_URL: http://127.0.0.1:3000
+2026-11-01T16:34:06.6949776Z   REACT_APP_PII_ENCRYPTION_KEY: ci-synthetic-pii-key-never-for-real-data
+2026-11-01T16:34:06.6949995Z   REACT_APP_WHATSAPP_ACCESS_TOKEN: 
+2026-11-01T16:34:06.6950150Z   REACT_APP_WHATSAPP_PHONE_NUMBER_ID: 
+2026-11-01T16:34:06.6950307Z   REACT_APP_WHATSAPP_BUSINESS_ACCOUNT_ID: 
+2026-11-01T16:34:06.6950464Z   REACT_APP_CLUB_ADMIN_PHONE: 
+2026-11-01T16:34:06.6950625Z   REACT_APP_CLUB_COACH_PHONE: 
+2026-11-01T16:34:06.6950800Z   REACT_APP_CLUB_EMERGENCY_PHONE: 
+2026-11-01T16:34:06.6950954Z   REACT_APP_CAPGO_DEFAULT_CHANNEL: beta
+2026-11-01T16:34:06.6951108Z   REACT_APP_ENABLE_SQL_AUDIT: false
+2026-11-01T16:34:06.6951257Z   REACT_APP_ENABLE_WEB_VITALS_LOG: false
+2026-11-01T16:34:06.6951413Z   GENERATE_SOURCEMAP: false
+2026-11-01T16:34:06.6951548Z ##[endgroup]
+2026-11-01T16:34:06.7991473Z 
+2026-11-01T16:34:06.7991816Z > riovoley@0.1.0 test
+2026-11-01T16:34:06.7992192Z > react-scripts test --watchAll=false --runInBand
+2026-11-01T16:34:06.7992414Z 
+2026-11-01T16:34:08.1789874Z PASS src/features/gamification/application/useCases/createGamificationUseCases.test.js
+2026-11-01T16:34:08.3082360Z PASS src/features/payments/application/useCases/createPaymentsUseCases.test.js
+2026-11-01T16:34:08.4102813Z PASS src/features/attendance/application/useCases/createAttendanceUseCases.test.js
+2026-11-01T16:34:08.4978297Z PASS src/features/admin-dashboard/application/useCases/createAdminDashboardUseCases.test.js
+2026-11-01T16:34:08.8679837Z PASS src/features/payments/presentation/createPaymentsService.test.js
+2026-11-01T16:34:08.9254972Z PASS src/features/user-management/presentation/createUserManagementService.test.js
+2026-11-01T16:34:08.9864375Z PASS src/features/gamification/presentation/createGamificationService.test.js
+2026-11-01T16:34:09.0588678Z PASS src/features/attendance/presentation/createAttendanceService.test.js
+2026-11-01T16:34:09.1266871Z PASS src/features/athletes/application/useCases/createAthletesUseCases.test.js
+2026-11-01T16:34:09.1966577Z PASS src/features/user-management/application/useCases/createUserManagementUseCases.test.js
+2026-11-01T16:34:09.2587830Z PASS src/features/gamification/application/useCases/gamification.audit.integration.test.js
+2026-11-01T16:34:09.3215255Z PASS src/features/student-dashboard/application/useCases/createStudentDashboardUseCases.test.js
+2026-11-01T16:34:09.3773191Z PASS src/features/account-admin/application/useCases/createAccountAdminUseCases.test.js
+2026-11-01T16:34:09.4322021Z PASS src/shared/platform/ota.test.js
+2026-11-01T16:34:09.4966249Z PASS src/features/user-provisioning/infrastructure/repositories/supabaseUserProvisioningRepository.test.js
+2026-11-01T16:34:09.5459499Z PASS src/features/gamification/application/useCases/createGamificationFoundationUseCases.test.js
+2026-11-01T16:34:09.5931549Z PASS src/features/notifications/application/useCases/createNotificationsUseCases.test.js
+2026-11-01T16:34:09.6371869Z PASS src/features/gamification/infrastructure/repositories/supabaseGamificationRepository.test.js
+2026-11-01T16:34:10.5986281Z PASS src/features/student-dashboard/presentation/components/StudentPanel.access.test.js
+2026-11-01T16:34:10.6423636Z PASS src/shared/platform/push.lifecycle.test.js
+2026-11-01T16:34:10.6942205Z PASS src/features/user-provisioning/application/useCases/createUserProvisioningUseCases.test.js
+2026-11-01T16:34:11.8755208Z PASS src/features/gamification/presentation/components/StudentGamificationPanel.test.js
+2026-11-01T16:34:11.9174615Z PASS src/features/auth-session/application/useCases/createAuthSessionUseCases.test.js
+2026-11-01T16:34:12.1067001Z PASS src/features/auth-session/presentation/components/ResetPassword.recovery.test.js
+2026-11-01T16:34:12.1438069Z PASS src/features/notifications/presentation/createNotificationsService.test.js
+2026-11-01T16:34:12.1830682Z PASS src/features/physical-tests/application/useCases/createPhysicalTestsUseCases.test.js
+2026-11-01T16:34:12.2353133Z PASS src/features/athletes/presentation/createAthletesService.test.js
+2026-11-01T16:34:12.3340822Z PASS src/features/notifications/infrastructure/repositories/supabaseNotificationsRepository.test.js
+2026-11-01T16:34:12.3699978Z PASS src/features/trainer-management/application/useCases/createTrainerManagementUseCases.test.js
+2026-11-01T16:34:12.4031150Z PASS src/features/communications/infrastructure/repositories/supabaseCommunicationsRepository.test.js
+2026-11-01T16:34:12.4476892Z PASS src/features/announcements/application/useCases/createAnnouncementsUseCases.test.js
+2026-11-01T16:34:12.4917308Z PASS src/features/student-dashboard/infrastructure/repositories/supabaseStudentDashboardRepository.test.js
+2026-11-01T16:34:12.6511173Z PASS src/features/student-dashboard/presentation/components/StudentProfileIdentityCard.test.js
+2026-11-01T16:34:12.6939405Z PASS src/features/student-dashboard/presentation/createStudentDashboardService.test.js
+2026-11-01T16:34:12.7523011Z PASS src/features/reporting/infrastructure/repositories/supabaseReportingRepository.contract.test.js
+2026-11-01T16:34:12.7908645Z PASS src/features/auth-session/presentation/createAuthSessionService.test.js
+2026-11-01T16:34:12.8309678Z PASS src/features/payments/infrastructure/repositories/supabasePaymentsRepository.test.js
+2026-11-01T16:34:13.2823629Z PASS src/features/user-management/presentation/components/tabs/CreationCredentials.test.js
+2026-11-01T16:34:13.6160439Z PASS src/features/student-dashboard/presentation/components/StudentPhysicalTests.test.js
+2026-11-01T16:34:13.6635027Z PASS src/features/physical-tests/presentation/createPhysicalTestsService.test.js
+2026-11-01T16:34:13.7126005Z PASS src/features/admin-dashboard/presentation/createAdminDashboardService.test.js
+2026-11-01T16:34:13.7431526Z PASS src/features/attendance/infrastructure/repositories/supabaseAttendanceRepository.test.js
+2026-11-01T16:34:13.8600296Z PASS src/features/auth-session/presentation/components/Login.auth-events.test.js
+2026-11-01T16:34:13.8936293Z PASS src/features/gamification/infrastructure/repositories/security.contract.test.js
+2026-11-01T16:34:13.9559058Z PASS src/features/gamification/presentation/components/IdentityPortrait.test.js
+2026-11-01T16:34:13.9919703Z PASS src/features/user-provisioning/presentation/createUserProvisioningService.test.js
+2026-11-01T16:34:14.0286128Z PASS src/features/auth-profile/application/useCases/loadUserProfileUseCase.test.js
+2026-11-01T16:34:14.1094770Z PASS src/shared/ui/SortableHeader.test.js
+2026-11-01T16:34:14.1394849Z PASS src/shared/lib/tableQuery.test.js
+2026-11-01T16:34:14.1754506Z PASS src/features/trainer-dashboard/application/useCases/createTrainerDashboardUseCases.test.js
+2026-11-01T16:34:14.2159646Z PASS src/features/student-dashboard/presentation/components/physical-tests/buildStudentPhysicalProfile.test.js
+2026-11-01T16:34:14.2454807Z PASS src/shared/platform/push.test.js
+2026-11-01T16:34:14.2730713Z PASS src/shared/ui/render-profile/renderProfileResolver.test.js
+2026-11-01T16:34:14.3018558Z PASS src/features/gamification/presentation/components/cosmeticVisuals.test.js
+2026-11-01T16:34:14.3495281Z PASS src/features/schedules/application/useCases/createSchedulesUseCases.test.js
+2026-11-01T16:34:14.3998310Z PASS src/features/trainer-management/presentation/createTrainerManagementService.test.js
+2026-11-01T16:34:14.4347359Z PASS src/features/communications/presentation/createCommunicationsService.test.js
+2026-11-01T16:34:14.6024209Z PASS src/features/account-admin/presentation/createAccountAdminService.test.js
+2026-11-01T16:34:14.7243597Z PASS src/shared/ui/panel-guide/PanelUserGuide.test.js
+2026-11-01T16:34:14.8131285Z PASS src/features/reporting/presentation/createReportingService.test.js
+2026-11-01T16:34:14.8443552Z PASS src/shared/infrastructure/auth/deleteAuthUserById.test.js
+2026-11-01T16:34:14.9076179Z PASS src/features/trainer-dashboard/presentation/createTrainerDashboardService.test.js
+2026-11-01T16:34:14.9901223Z PASS src/features/user-management/presentation/components/shared/ResendCredentialsModal.test.js
+2026-11-01T16:34:15.0357838Z PASS src/features/announcements/presentation/createAnnouncementsService.test.js
+2026-11-01T16:34:15.0720293Z PASS src/features/training-categories/application/useCases/createTrainingCategoriesUseCases.test.js
+2026-11-01T16:34:15.1221679Z PASS src/features/user-management/infrastructure/repositories/deletion.security.test.js
+2026-11-01T16:34:15.1850136Z PASS src/features/user-management/presentation/components/shared/UserFilters.test.js
+2026-11-01T16:34:15.2650529Z PASS src/features/auth-session/presentation/components/ChangePasswordModal.password.test.js
+2026-11-01T16:34:15.3246014Z PASS src/features/schedules/presentation/createSchedulesService.test.js
+2026-11-01T16:34:15.3660297Z PASS src/features/gamification/application/useCases/createGamificationAdminUseCases.test.js
+2026-11-01T16:34:15.4388202Z PASS src/features/user-management/presentation/components/shared/CreatedCredentialsModal.test.js
+2026-11-01T16:34:15.4667029Z PASS src/features/reporting/application/useCases/ensureDailyAttendanceReportUseCase.test.js
+2026-11-01T16:34:15.4945805Z PASS src/config/appUrls.test.js
+2026-11-01T16:34:15.5750323Z PASS src/features/notifications/presentation/components/NotificationBell.access.test.js
+2026-11-01T16:34:15.6007732Z PASS src/features/communications/application/useCases/createCommunicationsUseCases.test.js
+2026-11-01T16:34:15.6299941Z PASS src/features/user-management/application/contracts/userManagementRepositoryContract.test.js
+2026-11-01T16:34:15.6862686Z PASS src/shared/ui/PageShell.test.js
+2026-11-01T16:34:15.7140832Z PASS src/features/auth-session/presentation/utils/deferAuthEvent.test.js
+2026-11-01T16:34:15.7541979Z PASS src/features/account-admin/infrastructure/repositories/supabaseAccountAdminRepository.password.test.js
+2026-11-01T16:34:15.8184253Z PASS src/shared/ui/Modal.test.js
+2026-11-01T16:34:15.9984963Z PASS src/features/gamification/presentation/components/GamificationAdminPanel.test.js
+2026-11-01T16:34:16.0422511Z PASS src/shared/ui/copyQualityCheck.test.js
+2026-11-01T16:34:16.0704613Z PASS src/shared/infrastructure/communications/whatsappBusinessService.test.js
+2026-11-01T16:34:16.1088594Z PASS src/features/auth-profile/presentation/createAuthProfileService.test.js
+2026-11-01T16:34:16.1345988Z PASS src/utils/passwordUtils.test.js
+2026-11-01T16:34:16.1730106Z PASS src/shared/ui/iconRegistry.test.js
+2026-11-01T16:34:16.2002678Z PASS src/shared/ui/semanticCatalog.test.js
+2026-11-01T16:34:16.2239492Z PASS src/App.test.js
+2026-11-01T16:34:16.2247849Z 
+2026-11-01T16:34:16.2252788Z Test Suites: 88 passed, 88 total
+2026-11-01T16:34:16.2253171Z Tests:       419 passed, 419 total
+2026-11-01T16:34:16.2253460Z Snapshots:   0 total
+2026-11-01T16:34:16.2253665Z Time:        9.13 s
+2026-11-01T16:34:16.2253869Z Ran all test suites.
+2026-11-01T16:34:16.4317015Z ##[group]Run npm run test:edge-contracts
+2026-11-01T16:34:16.4317350Z [36;1mnpm run test:edge-contracts[0m
+2026-11-01T16:34:16.4334130Z shell: /usr/bin/bash -e {0}
+2026-11-01T16:34:16.4334278Z env:
+2026-11-01T16:34:16.4334407Z   CI: true
+2026-11-01T16:34:16.4334552Z   REACT_APP_SUPABASE_URL: http://127.0.0.1:55321
+2026-11-01T16:34:16.4334781Z   REACT_APP_SUPABASE_ANON_KEY: ci-public-placeholder-not-a-real-key
+2026-11-01T16:34:16.4335009Z   REACT_APP_APP_URL: http://127.0.0.1:3000
+2026-11-01T16:34:16.4335226Z   REACT_APP_PII_ENCRYPTION_KEY: ci-synthetic-pii-key-never-for-real-data
+2026-11-01T16:34:16.4335444Z   REACT_APP_WHATSAPP_ACCESS_TOKEN: 
+2026-11-01T16:34:16.4335596Z   REACT_APP_WHATSAPP_PHONE_NUMBER_ID: 
+2026-11-01T16:34:16.4335868Z   REACT_APP_WHATSAPP_BUSINESS_ACCOUNT_ID: 
+2026-11-01T16:34:16.4336022Z   REACT_APP_CLUB_ADMIN_PHONE: 
+2026-11-01T16:34:16.4336159Z   REACT_APP_CLUB_COACH_PHONE: 
+2026-11-01T16:34:16.4336298Z   REACT_APP_CLUB_EMERGENCY_PHONE: 
+2026-11-01T16:34:16.4336484Z   REACT_APP_CAPGO_DEFAULT_CHANNEL: beta
+2026-11-01T16:34:16.4336635Z   REACT_APP_ENABLE_SQL_AUDIT: false
+2026-11-01T16:34:16.4336779Z   REACT_APP_ENABLE_WEB_VITALS_LOG: false
+2026-11-01T16:34:16.4336926Z   GENERATE_SOURCEMAP: false
+2026-11-01T16:34:16.4337195Z ##[endgroup]
+2026-11-01T16:34:16.5090124Z 
+2026-11-01T16:34:16.5091358Z > riovoley@0.1.0 test:edge-contracts
+2026-11-01T16:34:16.5112504Z > node functions/node_modules/tsx/dist/cli.mjs --test --test-reporter=tap tests/unit/credentials-edge.test.ts tests/unit/authorization-edge.test.ts tests/unit/reporting-edge.test.cjs tests/unit/payment-reminders-edge.test.cjs tests/unit/edge-relations.test.ts
+2026-11-01T16:34:16.5113592Z 
+2026-11-01T16:34:16.6107564Z TAP version 13
+2026-11-01T16:34:17.3425843Z # Subtest: perfil aislado no autoriza personal cuando no existe usuario canónico
+2026-11-01T16:34:17.3447326Z ok 1 - perfil aislado no autoriza personal cuando no existe usuario canónico
+2026-11-01T16:34:17.3466524Z   ---
+2026-11-01T16:34:17.3466752Z   duration_ms: 94.721944
+2026-11-01T16:34:17.3466908Z   type: 'test'
+2026-11-01T16:34:17.3467031Z   ...
+2026-11-01T16:34:17.3467494Z # Subtest: suspensión canónica bloquea autorización de personal
+2026-11-01T16:34:17.3467821Z ok 2 - suspensión canónica bloquea autorización de personal
+2026-11-01T16:34:17.3468030Z   ---
+2026-11-01T16:34:17.3468149Z   duration_ms: 21.618218
+2026-11-01T16:34:17.3468286Z   type: 'test'
+2026-11-01T16:34:17.3468397Z   ...
+2026-11-01T16:34:17.3468681Z # Subtest: un atleta canónico no obtiene permisos por un perfil alternativo privilegiado
+2026-11-01T16:34:17.3469096Z ok 3 - un atleta canónico no obtiene permisos por un perfil alternativo privilegiado
+2026-11-01T16:34:17.3469313Z   ---
+2026-11-01T16:34:17.3469423Z   duration_ms: 14.594644
+2026-11-01T16:34:17.3469550Z   type: 'test'
+2026-11-01T16:34:17.3469656Z   ...
+2026-11-01T16:34:17.3470141Z # Subtest: personal activo mantiene autorización: administrador
+2026-11-01T16:34:17.3470647Z ok 4 - personal activo mantiene autorización: administrador
+2026-11-01T16:34:17.3470901Z   ---
+2026-11-01T16:34:17.3471071Z   duration_ms: 10.989121
+2026-11-01T16:34:17.3471321Z   type: 'test'
+2026-11-01T16:34:17.3471493Z   ...
+2026-11-01T16:34:17.3471822Z # Subtest: personal activo mantiene autorización: entrenador
+2026-11-01T16:34:17.3472247Z ok 5 - personal activo mantiene autorización: entrenador
+2026-11-01T16:34:17.3472745Z   ---
+2026-11-01T16:34:17.3496101Z   duration_ms: 14.840031
+2026-11-01T16:34:17.3526185Z   type: 'test'
+2026-11-01T16:34:17.3536504Z   ...
+2026-11-01T16:34:17.3546938Z # Subtest: eliminación Auth autoriza el objetivo: entrenador → administrador
+2026-11-01T16:34:17.3547784Z ok 6 - eliminación Auth autoriza el objetivo: entrenador → administrador
+2026-11-01T16:34:17.3548394Z   ---
+2026-11-01T16:34:17.3566278Z   duration_ms: 0.465743
+2026-11-01T16:34:17.3566693Z   type: 'test'
+2026-11-01T16:34:17.3567006Z   ...
+2026-11-01T16:34:17.3567698Z # Subtest: eliminación Auth autoriza el objetivo: administrador → administrador
+2026-11-01T16:34:17.3568997Z ok 7 - eliminación Auth autoriza el objetivo: administrador → administrador
+2026-11-01T16:34:17.3571306Z   ---
+2026-11-01T16:34:17.3571644Z   duration_ms: 0.195095
+2026-11-01T16:34:17.3571980Z   type: 'test'
+2026-11-01T16:34:17.3572305Z   ...
+2026-11-01T16:34:17.3572873Z # Subtest: eliminación Auth autoriza el objetivo: entrenador → entrenador
+2026-11-01T16:34:17.3573542Z ok 8 - eliminación Auth autoriza el objetivo: entrenador → entrenador
+2026-11-01T16:34:17.3573979Z   ---
+2026-11-01T16:34:17.3574280Z   duration_ms: 0.114613
+2026-11-01T16:34:17.3574612Z   type: 'test'
+2026-11-01T16:34:17.3574917Z   ...
+2026-11-01T16:34:17.3575450Z # Subtest: eliminación Auth autoriza el objetivo: administrador → entrenador
+2026-11-01T16:34:17.3576358Z ok 9 - eliminación Auth autoriza el objetivo: administrador → entrenador
+2026-11-01T16:34:17.3576843Z   ---
+2026-11-01T16:34:17.3580382Z   duration_ms: 0.180993
+2026-11-01T16:34:17.3580751Z   type: 'test'
+2026-11-01T16:34:17.3581062Z   ...
+2026-11-01T16:34:17.3581652Z # Subtest: eliminación Auth autoriza el objetivo: entrenador → estudiante
+2026-11-01T16:34:17.3582325Z ok 10 - eliminación Auth autoriza el objetivo: entrenador → estudiante
+2026-11-01T16:34:17.3582852Z   ---
+2026-11-01T16:34:17.3583760Z   duration_ms: 0.174363
+2026-11-01T16:34:17.3584192Z   type: 'test'
+2026-11-01T16:34:17.3584740Z   ...
+2026-11-01T16:34:17.3947406Z # Subtest: rechaza una respuesta 200 del proveedor sin identificador de mensaje
+2026-11-01T16:34:17.3957125Z ok 11 - rechaza una respuesta 200 del proveedor sin identificador de mensaje
+2026-11-01T16:34:17.3976514Z   ---
+2026-11-01T16:34:17.3977060Z   duration_ms: 21.12465
+2026-11-01T16:34:17.3977786Z   type: 'test'
+2026-11-01T16:34:17.3978179Z   ...
+2026-11-01T16:34:17.3978871Z # Subtest: un dominio no verificado se informa como fallo de configuracion
+2026-11-01T16:34:17.3979538Z ok 12 - un dominio no verificado se informa como fallo de configuracion
+2026-11-01T16:34:17.3980019Z   ---
+2026-11-01T16:34:17.3980303Z   duration_ms: 0.661138
+2026-11-01T16:34:17.3998741Z   type: 'test'
+2026-11-01T16:34:17.3998949Z   ...
+2026-11-01T16:34:17.3999280Z # Subtest: la peticion al proveedor tiene un limite de tiempo
+2026-11-01T16:34:17.3999709Z ok 13 - la peticion al proveedor tiene un limite de tiempo
+2026-11-01T16:34:17.4000012Z   ---
+2026-11-01T16:34:17.4000190Z   duration_ms: 0.821991
+2026-11-01T16:34:17.4000389Z   type: 'test'
+2026-11-01T16:34:17.4000563Z   ...
+2026-11-01T16:34:17.4000830Z # Subtest: un timeout no se convierte en correo enviado
+2026-11-01T16:34:17.4001200Z ok 14 - un timeout no se convierte en correo enviado
+2026-11-01T16:34:17.4001476Z   ---
+2026-11-01T16:34:17.4001646Z   duration_ms: 0.358141
+2026-11-01T16:34:17.4001839Z   type: 'test'
+2026-11-01T16:34:17.4002009Z   ...
+2026-11-01T16:34:17.4002342Z # Subtest: no permite usar el correo de la aplicacion sin sesion autorizada
+2026-11-01T16:34:17.4002832Z ok 15 - no permite usar el correo de la aplicacion sin sesion autorizada
+2026-11-01T16:34:17.4003148Z   ---
+2026-11-01T16:34:17.4003327Z   duration_ms: 0.652735
+2026-11-01T16:34:17.4003524Z   type: 'test'
+2026-11-01T16:34:17.4003694Z   ...
+2026-11-01T16:34:17.4004084Z # Subtest: rechaza un destinatario invalido antes de contactar al proveedor
+2026-11-01T16:34:17.4004587Z ok 16 - rechaza un destinatario invalido antes de contactar al proveedor
+2026-11-01T16:34:17.4004902Z   ---
+2026-11-01T16:34:17.4005071Z   duration_ms: 0.376288
+2026-11-01T16:34:17.4005267Z   type: 'test'
+2026-11-01T16:34:17.4005438Z   ...
+2026-11-01T16:34:17.4005906Z # Subtest: un entrenador no puede cambiar la contrasena de un administrador
+2026-11-01T16:34:17.4006395Z ok 17 - un entrenador no puede cambiar la contrasena de un administrador
+2026-11-01T16:34:17.4006709Z   ---
+2026-11-01T16:34:17.4006890Z   duration_ms: 1.152649
+2026-11-01T16:34:17.4007083Z   type: 'test'
+2026-11-01T16:34:17.4007251Z   ...
+2026-11-01T16:34:17.4007601Z # Subtest: una contrasena temporal debil se rechaza antes de la actualizacion
+2026-11-01T16:34:17.4008478Z ok 18 - una contrasena temporal debil se rechaza antes de la actualizacion
+2026-11-01T16:34:17.4008813Z   ---
+2026-11-01T16:34:17.4008982Z   duration_ms: 0.242566
+2026-11-01T16:34:17.4009177Z   type: 'test'
+2026-11-01T16:34:17.4009349Z   ...
+2026-11-01T16:34:17.4009763Z # Subtest: marca primer ingreso despues de actualizar Auth y devuelve el email real de Auth
+2026-11-01T16:34:17.4010360Z ok 19 - marca primer ingreso despues de actualizar Auth y devuelve el email real de Auth
+2026-11-01T16:34:17.4010727Z   ---
+2026-11-01T16:34:17.4010898Z   duration_ms: 1.081335
+2026-11-01T16:34:17.4011095Z   type: 'test'
+2026-11-01T16:34:17.4011266Z   ...
+2026-11-01T16:34:17.4011628Z # Subtest: conserva el resultado del cambio si falla sincronizar primer ingreso
+2026-11-01T16:34:17.4012145Z ok 20 - conserva el resultado del cambio si falla sincronizar primer ingreso
+2026-11-01T16:34:17.4012477Z   ---
+2026-11-01T16:34:17.4012644Z   duration_ms: 0.300644
+2026-11-01T16:34:17.4012837Z   type: 'test'
+2026-11-01T16:34:17.4013007Z   ...
+2026-11-01T16:34:17.4013776Z # Subtest: relación uno a uno admite objeto y array unitario conservando identidad
+2026-11-01T16:34:17.4014388Z ok 21 - relación uno a uno admite objeto y array unitario conservando identidad
+2026-11-01T16:34:17.4014726Z   ---
+2026-11-01T16:34:17.4015088Z   duration_ms: 0.620526
+2026-11-01T16:34:17.4015290Z   type: 'test'
+2026-11-01T16:34:17.4015463Z   ...
+2026-11-01T16:34:17.4022997Z # Subtest: ausencia de relación devuelve null
+2026-11-01T16:34:17.4023523Z ok 22 - ausencia de relación devuelve null
+2026-11-01T16:34:17.4023782Z   ---
+2026-11-01T16:34:17.4023967Z   duration_ms: 0.122665
+2026-11-01T16:34:17.4024177Z   type: 'test'
+2026-11-01T16:34:17.4024359Z   ...
+2026-11-01T16:34:17.4024763Z # Subtest: multiplicidad inesperada se rechaza sin seleccionar un usuario arbitrario
+2026-11-01T16:34:17.4025380Z ok 23 - multiplicidad inesperada se rechaza sin seleccionar un usuario arbitrario
+2026-11-01T16:34:17.4025946Z   ---
+2026-11-01T16:34:17.4026121Z   duration_ms: 0.282977
+2026-11-01T16:34:17.4026322Z   type: 'test'
+2026-11-01T16:34:17.4026485Z   ...
+2026-11-01T16:34:17.4026823Z # Subtest: relaciones anidadas de pago conservan usuario con objetos o arrays
+2026-11-01T16:34:17.4027336Z ok 24 - relaciones anidadas de pago conservan usuario con objetos o arrays
+2026-11-01T16:34:17.4027660Z   ---
+2026-11-01T16:34:17.4027828Z   duration_ms: 0.104447
+2026-11-01T16:34:17.4028029Z   type: 'test'
+2026-11-01T16:34:17.4028204Z   ...
+2026-11-01T16:34:17.4028517Z # Subtest: multiplicidad en cualquier nivel anidado se rechaza
+2026-11-01T16:34:17.4028951Z ok 25 - multiplicidad en cualquier nivel anidado se rechaza
+2026-11-01T16:34:17.4029253Z   ---
+2026-11-01T16:34:17.4029436Z   duration_ms: 0.095725
+2026-11-01T16:34:17.4029645Z   type: 'test'
+2026-11-01T16:34:17.4029826Z   ...
+2026-11-01T16:34:17.7844388Z # Subtest: recordatorios sin secreto configurado se bloquean antes de consultar datos
+2026-11-01T16:34:17.7845293Z ok 26 - recordatorios sin secreto configurado se bloquean antes de consultar datos
+2026-11-01T16:34:17.7846130Z   ---
+2026-11-01T16:34:17.7846441Z   duration_ms: 191.146657
+2026-11-01T16:34:17.7846820Z   type: 'test'
+2026-11-01T16:34:17.7847134Z   ...
+2026-11-01T16:34:17.7873648Z # Subtest: recordatorios con secreto incorrecto devuelven403 sin consultas
+2026-11-01T16:34:17.7896369Z ok 27 - recordatorios con secreto incorrecto devuelven403 sin consultas
+2026-11-01T16:34:17.7896890Z   ---
+2026-11-01T16:34:17.7897255Z   duration_ms: 48.22683
+2026-11-01T16:34:17.7897579Z   type: 'test'
+2026-11-01T16:34:17.7897854Z   ...
+2026-11-01T16:34:17.7898688Z # Subtest: secreto válido conserva la respuesta legítima sin destinatarios
+2026-11-01T16:34:17.7899356Z ok 28 - secreto válido conserva la respuesta legítima sin destinatarios
+2026-11-01T16:34:17.7899772Z   ---
+2026-11-01T16:34:17.7900054Z   duration_ms: 46.933515
+2026-11-01T16:34:17.7900355Z   type: 'test'
+2026-11-01T16:34:17.7900632Z   ...
+2026-11-01T16:34:17.7901144Z # Subtest: destinatarios ambiguos abortan el lote antes de consultar dispositivos o enviar
+2026-11-01T16:34:17.7902131Z ok 29 - destinatarios ambiguos abortan el lote antes de consultar dispositivos o enviar
+2026-11-01T16:34:17.7902609Z   ---
+2026-11-01T16:34:17.7902887Z   duration_ms: 34.045729
+2026-11-01T16:34:17.7903192Z   type: 'test'
+2026-11-01T16:34:17.7903487Z   ...
+2026-11-01T16:34:18.0887341Z # Subtest: reportes rechazan personal suspendido antes de operar con service_role: administrador
+2026-11-01T16:34:18.0888638Z ok 30 - reportes rechazan personal suspendido antes de operar con service_role: administrador
+2026-11-01T16:34:18.0889332Z   ---
+2026-11-01T16:34:18.0889581Z   duration_ms: 282.302555
+2026-11-01T16:34:18.0889782Z   type: 'test'
+2026-11-01T16:34:18.0889903Z   ...
+2026-11-01T16:34:18.0890183Z # Subtest: reportes rechazan personal suspendido antes de operar con service_role: entrenador
+2026-11-01T16:34:18.0890580Z ok 31 - reportes rechazan personal suspendido antes de operar con service_role: entrenador
+2026-11-01T16:34:18.0890979Z   ---
+2026-11-01T16:34:18.0891134Z   duration_ms: 147.895689
+2026-11-01T16:34:18.0891302Z   type: 'test'
+2026-11-01T16:34:18.0891411Z   ...
+2026-11-01T16:34:18.0895145Z # Subtest: reportes conservan autorización de personal activo: administrador
+2026-11-01T16:34:18.0899291Z ok 32 - reportes conservan autorización de personal activo: administrador
+2026-11-01T16:34:18.0900246Z   ---
+2026-11-01T16:34:18.0900444Z   duration_ms: 83.526626
+2026-11-01T16:34:18.0900704Z   type: 'test'
+2026-11-01T16:34:18.0900889Z   ...
+2026-11-01T16:34:18.0901359Z # Subtest: reportes conservan autorización de personal activo: entrenador
+2026-11-01T16:34:18.0901967Z ok 33 - reportes conservan autorización de personal activo: entrenador
+2026-11-01T16:34:18.0902324Z   ---
+2026-11-01T16:34:18.0902506Z   duration_ms: 77.480354
+2026-11-01T16:34:18.0902713Z   type: 'test'
+2026-11-01T16:34:18.0902931Z   ...
+2026-11-01T16:34:18.1615388Z # Subtest: checksum SHA256 usa los bytes de la subvista, sin prefijo ni sufijo
+2026-11-01T16:34:18.1616413Z ok 34 - checksum SHA256 usa los bytes de la subvista, sin prefijo ni sufijo
+2026-11-01T16:34:18.1616908Z   ---
+2026-11-01T16:34:18.1617279Z   duration_ms: 82.61101
+2026-11-01T16:34:18.1617618Z   type: 'test'
+2026-11-01T16:34:18.1617919Z   ...
+2026-11-01T16:34:18.1638710Z # Subtest: checksum copia una vista compartida antes de entregarla a WebCrypto
+2026-11-01T16:34:18.1639678Z ok 35 - checksum copia una vista compartida antes de entregarla a WebCrypto
+2026-11-01T16:34:18.1640094Z   ---
+2026-11-01T16:34:18.1640283Z   duration_ms: 72.435878
+2026-11-01T16:34:18.1640483Z   type: 'test'
+2026-11-01T16:34:18.1640649Z   ...
+2026-11-01T16:34:18.1926109Z 1..35
+2026-11-01T16:34:18.1926380Z # tests 35
+2026-11-01T16:34:18.1926569Z # suites 0
+2026-11-01T16:34:18.1926745Z # pass 35
+2026-11-01T16:34:18.1926909Z # fail 0
+2026-11-01T16:34:18.1927079Z # cancelled 0
+2026-11-01T16:34:18.1929039Z # skipped 0
+2026-11-01T16:34:18.1929150Z # todo 0
+2026-11-01T16:34:18.1929288Z # duration_ms 1598.954697
+2026-11-01T16:34:18.2618777Z ##[group]Run node --test --test-reporter=tap tests/unit/institutional-restore.test.cjs tests/unit/restore-guards.test.cjs tests/unit/restore-data.test.cjs tests/unit/storage-backup.test.cjs
+2026-11-01T16:34:18.2620049Z [36;1mnode --test --test-reporter=tap tests/unit/institutional-restore.test.cjs tests/unit/restore-guards.test.cjs tests/unit/restore-data.test.cjs tests/unit/storage-backup.test.cjs[0m
+2026-11-01T16:34:18.2639960Z shell: /usr/bin/bash -e {0}
+2026-11-01T16:34:18.2640110Z env:
+2026-11-01T16:34:18.2640221Z   CI: true
+2026-11-01T16:34:18.2640367Z   REACT_APP_SUPABASE_URL: http://127.0.0.1:55321
+2026-11-01T16:34:18.2640601Z   REACT_APP_SUPABASE_ANON_KEY: ci-public-placeholder-not-a-real-key
+2026-11-01T16:34:18.2640819Z   REACT_APP_APP_URL: http://127.0.0.1:3000
+2026-11-01T16:34:18.2641040Z   REACT_APP_PII_ENCRYPTION_KEY: ci-synthetic-pii-key-never-for-real-data
+2026-11-01T16:34:18.2641260Z   REACT_APP_WHATSAPP_ACCESS_TOKEN: 
+2026-11-01T16:34:18.2641449Z   REACT_APP_WHATSAPP_PHONE_NUMBER_ID: 
+2026-11-01T16:34:18.2641606Z   REACT_APP_WHATSAPP_BUSINESS_ACCOUNT_ID: 
+2026-11-01T16:34:18.2641763Z   REACT_APP_CLUB_ADMIN_PHONE: 
+2026-11-01T16:34:18.2641904Z   REACT_APP_CLUB_COACH_PHONE: 
+2026-11-01T16:34:18.2642047Z   REACT_APP_CLUB_EMERGENCY_PHONE: 
+2026-11-01T16:34:18.2642197Z   REACT_APP_CAPGO_DEFAULT_CHANNEL: beta
+2026-11-01T16:34:18.2642356Z   REACT_APP_ENABLE_SQL_AUDIT: false
+2026-11-01T16:34:18.2642513Z   REACT_APP_ENABLE_WEB_VITALS_LOG: false
+2026-11-01T16:34:18.2642681Z   GENERATE_SOURCEMAP: false
+2026-11-01T16:34:18.2642812Z ##[endgroup]
+2026-11-01T16:34:18.3112920Z TAP version 13
+2026-11-01T16:34:18.3655997Z # Subtest: permite únicamente contenedor marcado sin red, puertos o bind mounts
+2026-11-01T16:34:18.3657954Z ok 1 - permite únicamente contenedor marcado sin red, puertos o bind mounts
+2026-11-01T16:34:18.3664596Z   ---
+2026-11-01T16:34:18.3665175Z   duration_ms: 1.070706
+2026-11-01T16:34:18.3665574Z   type: 'test'
+2026-11-01T16:34:18.3668436Z   ...
+2026-11-01T16:34:18.3669098Z # Subtest: rechaza aislamiento insuficiente: red
+2026-11-01T16:34:18.3670052Z ok 2 - rechaza aislamiento insuficiente: red
+2026-11-01T16:34:18.3670370Z   ---
+2026-11-01T16:34:18.3670575Z   duration_ms: 1.031437
+2026-11-01T16:34:18.3670779Z   type: 'test'
+2026-11-01T16:34:18.3670971Z   ...
+2026-11-01T16:34:18.3671701Z # Subtest: rechaza aislamiento insuficiente: puerto
+2026-11-01T16:34:18.3672081Z ok 3 - rechaza aislamiento insuficiente: puerto
+2026-11-01T16:34:18.3672356Z   ---
+2026-11-01T16:34:18.3672532Z   duration_ms: 0.262125
+2026-11-01T16:34:18.3672753Z   type: 'test'
+2026-11-01T16:34:18.3672942Z   ...
+2026-11-01T16:34:18.3673141Z # Subtest: rechaza aislamiento insuficiente: montaje
+2026-11-01T16:34:18.3677643Z ok 4 - rechaza aislamiento insuficiente: montaje
+2026-11-01T16:34:18.3693472Z   ---
+2026-11-01T16:34:18.3714896Z   duration_ms: 5.049188
+2026-11-01T16:34:18.3716598Z   type: 'test'
+2026-11-01T16:34:18.3716778Z   ...
+2026-11-01T16:34:18.3717138Z # Subtest: rechaza aislamiento insuficiente: etiqueta
+2026-11-01T16:34:18.3717498Z ok 5 - rechaza aislamiento insuficiente: etiqueta
+2026-11-01T16:34:18.3717755Z   ---
+2026-11-01T16:34:18.3717930Z   duration_ms: 0.365301
+2026-11-01T16:34:18.3718119Z   type: 'test'
+2026-11-01T16:34:18.3718288Z   ...
+2026-11-01T16:34:18.3718528Z # Subtest: rechaza aislamiento insuficiente: logs
+2026-11-01T16:34:18.3718873Z ok 6 - rechaza aislamiento insuficiente: logs
+2026-11-01T16:34:18.3719115Z   ---
+2026-11-01T16:34:18.3719288Z   duration_ms: 0.190297
+2026-11-01T16:34:18.3719476Z   type: 'test'
+2026-11-01T16:34:18.3719644Z   ...
+2026-11-01T16:34:18.3720444Z # Subtest: la adaptación omite exclusivamente calculate_age y conserva los datos
+2026-11-01T16:34:18.3721180Z ok 7 - la adaptación omite exclusivamente calculate_age y conserva los datos
+2026-11-01T16:34:18.3721625Z   ---
+2026-11-01T16:34:18.3721866Z   duration_ms: 0.339021
+2026-11-01T16:34:18.3722188Z   type: 'test'
+2026-11-01T16:34:18.3722525Z   ...
+2026-11-01T16:34:18.3723440Z # Subtest: rechaza TOC ambiguo en lugar de saltar funciones adicionales
+2026-11-01T16:34:18.3724045Z ok 8 - rechaza TOC ambiguo en lugar de saltar funciones adicionales
+2026-11-01T16:34:18.3724674Z   ---
+2026-11-01T16:34:18.3724958Z   duration_ms: 0.171549
+2026-11-01T16:34:18.3725268Z   type: 'test'
+2026-11-01T16:34:18.3725548Z   ...
+2026-11-01T16:34:18.3726269Z # Subtest: extrae propietarios y grants sin aceptar SQL como nombre de rol
+2026-11-01T16:34:18.3726869Z ok 9 - extrae propietarios y grants sin aceptar SQL como nombre de rol
+2026-11-01T16:34:18.3727291Z   ---
+2026-11-01T16:34:18.3727573Z   duration_ms: 1.512923
+2026-11-01T16:34:18.3727880Z   type: 'test'
+2026-11-01T16:34:18.3728161Z   ...
+2026-11-01T16:34:18.3728774Z # Subtest: reconoce delimitadores dollar-quote estándar y nombrados de pg_dump
+2026-11-01T16:34:18.3729462Z ok 10 - reconoce delimitadores dollar-quote estándar y nombrados de pg_dump
+2026-11-01T16:34:18.3729906Z   ---
+2026-11-01T16:34:18.3730185Z   duration_ms: 0.542328
+2026-11-01T16:34:18.3730515Z   type: 'test'
+2026-11-01T16:34:18.3730802Z   ...
+2026-11-01T16:34:18.3731352Z # Subtest: recupera LF de la función original desde la salida CRLF del cliente Windows
+2026-11-01T16:34:18.3732069Z ok 11 - recupera LF de la función original desde la salida CRLF del cliente Windows
+2026-11-01T16:34:18.3732522Z   ---
+2026-11-01T16:34:18.3732801Z   duration_ms: 0.21878
+2026-11-01T16:34:18.3733119Z   type: 'test'
+2026-11-01T16:34:18.3733404Z   ...
+2026-11-01T16:34:18.3752006Z # Subtest: extrae COPY sin ejecutar el SQL que lo rodea
+2026-11-01T16:34:18.3754747Z ok 12 - extrae COPY sin ejecutar el SQL que lo rodea
+2026-11-01T16:34:18.3755044Z   ---
+2026-11-01T16:34:18.3755249Z   duration_ms: 1.480934
+2026-11-01T16:34:18.3755448Z   type: 'test'
+2026-11-01T16:34:18.3755626Z   ...
+2026-11-01T16:34:18.3756338Z # Subtest: rechaza COPY incompleto en vez de aceptar una comparación parcial
+2026-11-01T16:34:18.3757007Z ok 13 - rechaza COPY incompleto en vez de aceptar una comparación parcial
+2026-11-01T16:34:18.3757354Z   ---
+2026-11-01T16:34:18.3757555Z   duration_ms: 1.274623
+2026-11-01T16:34:18.3757763Z   type: 'test'
+2026-11-01T16:34:18.3757944Z   ...
+2026-11-01T16:34:18.3758335Z # Subtest: compara filas independientemente de su orden físico
+2026-11-01T16:34:18.3759057Z ok 14 - compara filas independientemente de su orden físico
+2026-11-01T16:34:18.3759349Z   ---
+2026-11-01T16:34:18.3759878Z   duration_ms: 0.45084
+2026-11-01T16:34:18.3760075Z   type: 'test'
+2026-11-01T16:34:18.3760252Z   ...
+2026-11-01T16:34:18.3760608Z # Subtest: conserva multiplicidad de filas en el control de contenido
+2026-11-01T16:34:18.3761316Z ok 15 - conserva multiplicidad de filas en el control de contenido
+2026-11-01T16:34:18.3761790Z   ---
+2026-11-01T16:34:18.3761960Z   duration_ms: 0.125559
+2026-11-01T16:34:18.3762156Z   type: 'test'
+2026-11-01T16:34:18.3762325Z   ...
+2026-11-01T16:34:18.3762805Z # Subtest: publica solo categoría ante excepción SQL con texto privado sin comillas
+2026-11-01T16:34:18.3763475Z ok 16 - publica solo categoría ante excepción SQL con texto privado sin comillas
+2026-11-01T16:34:18.3763825Z   ---
+2026-11-01T16:34:18.3763987Z   duration_ms: 1.179459
+2026-11-01T16:34:18.3764142Z   type: 'test'
+2026-11-01T16:34:18.3764248Z   ...
+2026-11-01T16:34:18.3764426Z # Subtest: clasifica esquema existente sin devolver su nombre
+2026-11-01T16:34:18.3764672Z ok 17 - clasifica esquema existente sin devolver su nombre
+2026-11-01T16:34:18.3764853Z   ---
+2026-11-01T16:34:18.3764958Z   duration_ms: 0.249176
+2026-11-01T16:34:18.3765079Z   type: 'test'
+2026-11-01T16:34:18.3765183Z   ...
+2026-11-01T16:34:18.3765416Z # Subtest: distingue frase de recuperación incorrecta sin publicar stderr
+2026-11-01T16:34:18.3766639Z ok 18 - distingue frase de recuperación incorrecta sin publicar stderr
+2026-11-01T16:34:18.3766946Z   ---
+2026-11-01T16:34:18.3767110Z   duration_ms: 0.138379
+2026-11-01T16:34:18.3767300Z   type: 'test'
+2026-11-01T16:34:18.3767407Z   ...
+2026-11-01T16:34:18.3767600Z # Subtest: reconoce el requisito de preload de pg_net sin publicar SQL
+2026-11-01T16:34:18.3768078Z ok 19 - reconoce el requisito de preload de pg_net sin publicar SQL
+2026-11-01T16:34:18.3768266Z   ---
+2026-11-01T16:34:18.3768368Z   duration_ms: 0.166461
+2026-11-01T16:34:18.3768488Z   type: 'test'
+2026-11-01T16:34:18.3768597Z   ...
+2026-11-01T16:34:18.3768786Z # Subtest: acepta coincidencia de huellas válidas
+2026-11-01T16:34:18.3769022Z ok 20 - acepta coincidencia de huellas válidas
+2026-11-01T16:34:18.3769177Z   ---
+2026-11-01T16:34:18.3769280Z   duration_ms: 0.497671
+2026-11-01T16:34:18.3769399Z   type: 'test'
+2026-11-01T16:34:18.3769503Z   ...
+2026-11-01T16:34:18.3769719Z # Subtest: rechaza diferencia de catálogo después de cargar filas
+2026-11-01T16:34:18.3770008Z ok 21 - rechaza diferencia de catálogo después de cargar filas
+2026-11-01T16:34:18.3770186Z   ---
+2026-11-01T16:34:18.3770291Z   duration_ms: 1.821829
+2026-11-01T16:34:18.3770450Z   type: 'test'
+2026-11-01T16:34:18.3770617Z   ...
+2026-11-01T16:34:18.3770801Z # Subtest: rechaza valores ausentes aunque ambos coincidan
+2026-11-01T16:34:18.3771042Z ok 22 - rechaza valores ausentes aunque ambos coincidan
+2026-11-01T16:34:18.3771219Z   ---
+2026-11-01T16:34:18.3771362Z   duration_ms: 0.329227
+2026-11-01T16:34:18.3771493Z   type: 'test'
+2026-11-01T16:34:18.3771602Z   ...
+2026-11-01T16:34:18.4516078Z # Subtest: rechaza claves públicas para el respaldo privado
+2026-11-01T16:34:18.4526996Z ok 23 - rechaza claves públicas para el respaldo privado
+2026-11-01T16:34:18.4530552Z   ---
+2026-11-01T16:34:18.4530747Z   duration_ms: 1.209094
+2026-11-01T16:34:18.4530943Z   type: 'test'
+2026-11-01T16:34:18.4531153Z   ...
+2026-11-01T16:34:18.4531465Z # Subtest: rechaza JWT de otro proyecto aunque declare service_role
+2026-11-01T16:34:18.4531750Z ok 24 - rechaza JWT de otro proyecto aunque declare service_role
+2026-11-01T16:34:18.4531935Z   ---
+2026-11-01T16:34:18.4532047Z   duration_ms: 0.553605
+2026-11-01T16:34:18.4532177Z   type: 'test'
+2026-11-01T16:34:18.4532285Z   ...
+2026-11-01T16:34:18.4532503Z # Subtest: acepta formato de clave secreta sin persistir su valor
+2026-11-01T16:34:18.4532767Z ok 25 - acepta formato de clave secreta sin persistir su valor
+2026-11-01T16:34:18.4532945Z   ---
+2026-11-01T16:34:18.4533051Z   duration_ms: 0.098358
+2026-11-01T16:34:18.4533179Z   type: 'test'
+2026-11-01T16:34:18.4533287Z   ...
+2026-11-01T16:34:18.4533463Z # Subtest: bloquea escrituras incluso si se dirigen a Storage
+2026-11-01T16:34:18.4727198Z ok 26 - bloquea escrituras incluso si se dirigen a Storage
+2026-11-01T16:34:18.4727493Z   ---
+2026-11-01T16:34:18.4727684Z   duration_ms: 0.302256
+2026-11-01T16:34:18.4727889Z   type: 'test'
+2026-11-01T16:34:18.4728073Z   ...
+2026-11-01T16:34:18.4728350Z # Subtest: bloquea destinos externos y endpoints Auth
+2026-11-01T16:34:18.4728712Z ok 27 - bloquea destinos externos y endpoints Auth
+2026-11-01T16:34:18.4728973Z   ---
+2026-11-01T16:34:18.4729145Z   duration_ms: 0.15919
+2026-11-01T16:34:18.4729339Z   type: 'test'
+2026-11-01T16:34:18.4729509Z   ...
+2026-11-01T16:34:18.4729873Z # Subtest: conserva bytes en descarga GET usando el SDK real y transporte simulado
+2026-11-01T16:34:18.4730402Z ok 28 - conserva bytes en descarga GET usando el SDK real y transporte simulado
+2026-11-01T16:34:18.4730730Z   ---
+2026-11-01T16:34:18.4730897Z   duration_ms: 35.799385
+2026-11-01T16:34:18.4731096Z   type: 'test'
+2026-11-01T16:34:18.4731267Z   ...
+2026-11-01T16:34:18.4731564Z # Subtest: rechaza rutas de objeto que cambian de directorio
+2026-11-01T16:34:18.4731959Z ok 29 - rechaza rutas de objeto que cambian de directorio
+2026-11-01T16:34:18.4732228Z   ---
+2026-11-01T16:34:18.4732391Z   duration_ms: 0.4777
+2026-11-01T16:34:18.4732578Z   type: 'test'
+2026-11-01T16:34:18.4732746Z   ...
+2026-11-01T16:34:18.4733343Z # Subtest: permite listar buckets con GET a través del SDK real
+2026-11-01T16:34:18.4733818Z ok 30 - permite listar buckets con GET a través del SDK real
+2026-11-01T16:34:18.4734095Z   ---
+2026-11-01T16:34:18.4734263Z   duration_ms: 1.478651
+2026-11-01T16:34:18.4734456Z   type: 'test'
+2026-11-01T16:34:18.4734628Z   ...
+2026-11-01T16:34:18.4735192Z # Subtest: rechaza resultado de otro respaldo aunque coincida el catálogo
+2026-11-01T16:34:18.4735863Z ok 31 - rechaza resultado de otro respaldo aunque coincida el catálogo
+2026-11-01T16:34:18.4736167Z   ---
+2026-11-01T16:34:18.4736336Z   duration_ms: 0.266893
+2026-11-01T16:34:18.4736529Z   type: 'test'
+2026-11-01T16:34:18.4736705Z   ...
+2026-11-01T16:34:18.4737031Z # Subtest: rechaza contexto de otro expediente antes de consultar Storage
+2026-11-01T16:34:18.4737506Z ok 32 - rechaza contexto de otro expediente antes de consultar Storage
+2026-11-01T16:34:18.4737812Z   ---
+2026-11-01T16:34:18.4737976Z   duration_ms: 0.289066
+2026-11-01T16:34:18.4738166Z   type: 'test'
+2026-11-01T16:34:18.4738332Z   ...
+2026-11-01T16:34:18.4738550Z 1..32
+2026-11-01T16:34:18.4738712Z # tests 32
+2026-11-01T16:34:18.4738873Z # suites 0
+2026-11-01T16:34:18.4739038Z # pass 32
+2026-11-01T16:34:18.4739206Z # fail 0
+2026-11-01T16:34:18.4739368Z # cancelled 0
+2026-11-01T16:34:18.4739534Z # skipped 0
+2026-11-01T16:34:18.4739699Z # todo 0
+2026-11-01T16:34:18.4739871Z # duration_ms 164.128541
+2026-11-01T16:34:18.4997015Z ##[group]Run node --test --test-concurrency=1 tests/integration/toolchain.dependencies.test.cjs tests/integration/toolchain.security-followup.test.cjs tests/integration/toolchain.loaders-security.test.cjs tests/integration/toolchain.production-readiness.test.cjs tests/unit/production-preflight.test.cjs tests/unit/dev-server-config.test.cjs tests/integration/toolchain.patterns.test.cjs
+2026-11-01T16:34:18.4999706Z [36;1mnode --test --test-concurrency=1 tests/integration/toolchain.dependencies.test.cjs tests/integration/toolchain.security-followup.test.cjs tests/integration/toolchain.loaders-security.test.cjs tests/integration/toolchain.production-readiness.test.cjs tests/unit/production-preflight.test.cjs tests/unit/dev-server-config.test.cjs tests/integration/toolchain.patterns.test.cjs[0m
+2026-11-01T16:34:18.5021675Z shell: /usr/bin/bash -e {0}
+2026-11-01T16:34:18.5021899Z env:
+2026-11-01T16:34:18.5022059Z   CI: true
+2026-11-01T16:34:18.5022312Z   REACT_APP_SUPABASE_URL: http://127.0.0.1:55321
+2026-11-01T16:34:18.5022668Z   REACT_APP_SUPABASE_ANON_KEY: ci-public-placeholder-not-a-real-key
+2026-11-01T16:34:18.5023009Z   REACT_APP_APP_URL: http://127.0.0.1:3000
+2026-11-01T16:34:18.5023346Z   REACT_APP_PII_ENCRYPTION_KEY: ci-synthetic-pii-key-never-for-real-data
+2026-11-01T16:34:18.5023878Z   REACT_APP_WHATSAPP_ACCESS_TOKEN: 
+2026-11-01T16:34:18.5024109Z   REACT_APP_WHATSAPP_PHONE_NUMBER_ID: 
+2026-11-01T16:34:18.5024350Z   REACT_APP_WHATSAPP_BUSINESS_ACCOUNT_ID: 
+2026-11-01T16:34:18.5024595Z   REACT_APP_CLUB_ADMIN_PHONE: 
+2026-11-01T16:34:18.5024807Z   REACT_APP_CLUB_COACH_PHONE: 
+2026-11-01T16:34:18.5025020Z   REACT_APP_CLUB_EMERGENCY_PHONE: 
+2026-11-01T16:34:18.5025253Z   REACT_APP_CAPGO_DEFAULT_CHANNEL: beta
+2026-11-01T16:34:18.5025491Z   REACT_APP_ENABLE_SQL_AUDIT: false
+2026-11-01T16:34:18.5025855Z   REACT_APP_ENABLE_WEB_VITALS_LOG: false
+2026-11-01T16:34:18.5026096Z   GENERATE_SOURCEMAP: false
+2026-11-01T16:34:18.5026299Z ##[endgroup]
+2026-11-01T16:34:18.6553246Z ✔ QS de Express serializa arrays comma con null y undefined sin excepción (CVE-2026-8723) (12.530247ms)
+2026-11-01T16:34:18.7127831Z ✔ Express conserva filtros anidados y body URL-encoded con el QS actualizado (86.24287ms)
+2026-11-01T16:34:18.7131656Z ✔ Underscore usado por JSONPath procesa arrays de 20000 niveles sin desbordar la pila (CVE-2026-27601) (4.442997ms)
+2026-11-01T16:34:18.7132699Z ✔ Underscore compara objetos de 6000 niveles sin desbordar la pila (13.154949ms)
+2026-11-01T16:34:18.7133507Z ✔ JSONPath mantiene filtros y selección recursiva con el parche de Underscore (9.784479ms)
+2026-11-01T16:34:18.7217421Z ✔ BFJ conserva la lectura y escritura JSON del informe de compilación (21.859821ms)
+2026-11-01T16:34:18.7945634Z ✔ WebSocket del servidor conserva intercambio real de texto y cierre normal (26.180183ms)
+2026-11-01T16:34:19.0692157Z ✔ WebSocket del servidor rechaza un mensaje que supera el límite configurado (4.2258ms)
+2026-11-01T16:34:19.0693824Z ✔ SVGO del cargador SVG elimina enlaces ejecutables con namespace y tabulador codificado (65.120241ms)
+2026-11-01T16:34:19.4942961Z Without `from` option PostCSS could generate wrong source map and will not find Browserslist config. Set it to CSS file path or to `undefined` to prevent this warning.
+2026-11-01T16:34:19.5381937Z <i> [webpack-dev-middleware] wait until bundle finished
+2026-11-01T16:34:19.5410708Z ✔ SVG conserva ReactComponent, título, ref, viewBox y URL de archivo con las opciones CRA (625.191122ms)
+2026-11-01T16:34:19.5411588Z ✔ PostCSS del resolvedor CSS no incorpora contenido de un mapa absoluto sin from (7.365973ms)
+2026-11-01T16:34:19.5412157Z ✔ Resolve URL Loader conserva CSS, URL de recurso y mapa con las opciones existentes (12.410157ms)
+2026-11-01T16:34:19.5592376Z ✔ Middleware sirve el bundle y rechaza escapar del directorio con publicPath sin barra final (51.881545ms)
+2026-11-01T16:34:19.6318920Z ✔ glob: minimatch conserva API callable y nombrada con motor corregido (10.024621ms)
+2026-11-01T16:34:19.6320513Z ✔ eslint: minimatch conserva API callable y nombrada con motor corregido (1.374292ms)
+2026-11-01T16:34:19.6323010Z ✔ filelist: minimatch conserva API callable y nombrada con motor corregido (0.566694ms)
+2026-11-01T16:34:19.6451020Z ✔ glob heredado conserva callbacks y API sync con patrones del motor corregido (10.907252ms)
+2026-11-01T16:34:19.6787049Z ✔ glob de Capacitor admite API async y cancela antes de recorrer (18.432815ms)
+2026-11-01T16:34:19.6787845Z ✔ patrón de amplificación finaliza con límite externo de recursos (26.143993ms)
+2026-11-01T16:34:19.7257275Z ✔ jest-config: merge evita propiedades heredadas inyectadas con destino sin prototipo (0.904783ms)
+2026-11-01T16:34:19.7262216Z ✔ jest-config: merge evita propiedades heredadas inyectadas con placeholder null (0.164218ms)
+2026-11-01T16:34:19.7263093Z ✔ jest-config: merge evita propiedades heredadas inyectadas con placeholder undefined (0.080652ms)
+2026-11-01T16:34:19.7264006Z ✔ jest-config: merge evita propiedades heredadas inyectadas con clave propia en destino (0.073081ms)
+2026-11-01T16:34:19.7264838Z ✔ jest-config: conserva clonación, arrays, símbolos y merge.all (0.777592ms)
+2026-11-01T16:34:19.7265504Z ✔ jest-config: conserva customMerge, arrayMerge y clone:false (0.160222ms)
+2026-11-01T16:34:19.7266322Z ✔ @svgr/plugin-svgo: merge evita propiedades heredadas inyectadas con destino sin prototipo (0.061753ms)
+2026-11-01T16:34:19.7267562Z ✔ @svgr/plugin-svgo: merge evita propiedades heredadas inyectadas con placeholder null (0.080251ms)
+2026-11-01T16:34:19.7270900Z ✔ @svgr/plugin-svgo: merge evita propiedades heredadas inyectadas con placeholder undefined (0.06675ms)
+2026-11-01T16:34:19.7274278Z ✔ @svgr/plugin-svgo: merge evita propiedades heredadas inyectadas con clave propia en destino (0.149505ms)
+2026-11-01T16:34:19.7275076Z ✔ @svgr/plugin-svgo: conserva clonación, arrays, símbolos y merge.all (0.239441ms)
+2026-11-01T16:34:19.7277285Z ✔ @svgr/plugin-svgo: conserva customMerge, arrayMerge y clone:false (0.102344ms)
+2026-11-01T16:34:19.7278292Z ✔ fork-ts-checker-webpack-plugin: merge evita propiedades heredadas inyectadas con destino sin prototipo (0.733897ms)
+2026-11-01T16:34:19.7279698Z ✔ fork-ts-checker-webpack-plugin: merge evita propiedades heredadas inyectadas con placeholder null (0.089325ms)
+2026-11-01T16:34:19.7280926Z ✔ fork-ts-checker-webpack-plugin: merge evita propiedades heredadas inyectadas con placeholder undefined (0.043746ms)
+2026-11-01T16:34:19.7282213Z ✔ fork-ts-checker-webpack-plugin: merge evita propiedades heredadas inyectadas con clave propia en destino (0.046169ms)
+2026-11-01T16:34:19.7286557Z ✔ fork-ts-checker-webpack-plugin: conserva clonación, arrays, símbolos y merge.all (0.100822ms)
+2026-11-01T16:34:19.7299306Z ✔ fork-ts-checker-webpack-plugin: conserva customMerge, arrayMerge y clone:false (0.088714ms)
+2026-11-01T16:34:19.7300976Z ✔ @rollup/plugin-node-resolve: merge evita propiedades heredadas inyectadas con destino sin prototipo (0.074021ms)
+2026-11-01T16:34:19.7301977Z ✔ @rollup/plugin-node-resolve: merge evita propiedades heredadas inyectadas con placeholder null (0.031397ms)
+2026-11-01T16:34:19.7302886Z ✔ @rollup/plugin-node-resolve: merge evita propiedades heredadas inyectadas con placeholder undefined (0.019169ms)
+2026-11-01T16:34:19.7303622Z ✔ @rollup/plugin-node-resolve: merge evita propiedades heredadas inyectadas con clave propia en destino (0.016866ms)
+2026-11-01T16:34:19.7304249Z ✔ @rollup/plugin-node-resolve: conserva clonación, arrays, símbolos y merge.all (0.06616ms)
+2026-11-01T16:34:19.7305130Z ✔ @rollup/plugin-node-resolve: conserva customMerge, arrayMerge y clone:false (0.024707ms)
+2026-11-01T16:34:19.7306300Z ✔ Deepmerge local conserva procedencia, licencia y digest del código revisado (3.806217ms)
+2026-11-01T16:34:19.7895300Z ✔ css-minimizer-webpack-plugin: serialización escapa el cierre script al final de una función (GHSA-m5mm-p8h7-m29v) (1.12078ms)
+2026-11-01T16:34:19.7896519Z ✔ css-minimizer-webpack-plugin: conserva opciones y valores utilizados al serializar trabajo de compilación (1.637959ms)
+2026-11-01T16:34:19.7904731Z ✔ terser-webpack-plugin: serialización escapa el cierre script al final de una función (GHSA-m5mm-p8h7-m29v) (0.123236ms)
+2026-11-01T16:34:19.7906292Z ✔ terser-webpack-plugin: conserva opciones y valores utilizados al serializar trabajo de compilación (0.704632ms)
+2026-11-01T16:34:19.7907665Z ✔ rollup-plugin-terser: serialización escapa el cierre script al final de una función (GHSA-m5mm-p8h7-m29v) (0.09938ms)
+2026-11-01T16:34:19.7915010Z ✔ rollup-plugin-terser: conserva opciones y valores utilizados al serializar trabajo de compilación (0.625403ms)
+2026-11-01T16:34:19.7916213Z ✔ Once del consumidor HTTP rechaza la espera abortada y retira sus listeners (1.044544ms)
+2026-11-01T16:34:19.7970967Z ✔ HTTP Proxy Agent mantiene una solicitud HTTP real sobre loopback con Once actualizado (19.022323ms)
+2026-11-01T16:34:19.7989780Z ✔ HTTP Proxy Agent propaga el rechazo de conexión en lugar de dejar la petición pendiente (3.358553ms)
+2026-11-01T16:34:19.9117411Z ✔ Dev server adapta opciones antiguas y restringe host/CORS sin mutar la configuración original (2.504295ms)
+2026-11-01T16:34:19.9120122Z ✔ Dev server conserva TLS explícito en la opción server actual (0.169375ms)
+2026-11-01T16:34:20.0500940Z ✔ Dev server mantiene orden before, middleware normal y after en HTTP real (87.233414ms)
+2026-11-01T16:34:20.0502431Z ✔ Dev server conserva una función setupMiddlewares preexistente (0.65015ms)
+2026-11-01T16:34:20.0503199Z ✔ Dev server convierte mapas proxy y conserva arrays ya modernos (0.279171ms)
+2026-11-01T16:34:20.0503889Z ✔ Dev server rechaza un host público o comodín en el perfil local (0.37186ms)
+2026-11-01T16:34:20.0504595Z ✔ Compatibilidad CRA traduce close a stop y startCallback a start sin alterar API existentes (0.326883ms)
+2026-11-01T16:34:20.0527780Z ✔ Dev server preserva opciones modernas y elimina proxy ausente (0.211729ms)
+2026-11-01T16:34:20.1191355Z ✔ CRA conserva módulos CommonJS del cliente HMR y permite su importación nominal (193.579788ms)
+2026-11-01T16:34:21.5558273Z ✔ missing production configuration blocks and names every required frontend field (25.137482ms)
+2026-11-01T16:34:21.5558980Z ✔ valid legacy anon and publishable frontend keys pass structure without leaking values (58.199539ms)
+2026-11-01T16:34:21.5559900Z ✔ elevated, malformed, expired and user-session keys cannot be frontend keys (160.467362ms)
+2026-11-01T16:34:21.5560704Z ✔ private or unknown React build variables block even outside frontend profile (106.915813ms)
+2026-11-01T16:34:21.5561480Z ✔ production URLs reject credentials, local targets, paths, query and unencrypted origins (264.361668ms)
+2026-11-01T16:34:21.5577649Z ✔ template and empty PII configuration cannot pass production readiness (78.708079ms)
+2026-11-01T16:34:21.5578452Z ✔ an existing shorter PII key remains structurally accepted without suggesting a rotation (26.844208ms)
+2026-11-01T16:34:21.5579327Z ✔ backend checks required provider configuration and privileged key role without network (280.967862ms)
+2026-11-01T16:34:21.5580085Z ✔ debug log activation blocks a production build but explicit false is allowed (108.508254ms)
+2026-11-01T16:34:21.5580825Z ✔ native requires frontend configuration, signing inputs and explicit production channel (104.697182ms)
+2026-11-01T16:34:21.5581672Z ✔ native preserves established signing passwords rather than imposing an incompatible rotation (27.702083ms)
+2026-11-01T16:34:21.5582437Z ✔ all profile rejects backend/frontend mismatch and legacy JWT project mismatch (81.891767ms)
+2026-11-01T16:34:21.5583001Z ✔ default mode never authorizes deployment from structural success or supplied approval flags (47.785802ms)
+2026-11-01T16:34:21.5583775Z ✔ preflight does not discover dotenv files and never echoes parser exceptions (22.873865ms)
+2026-11-01T16:34:21.5654939Z ℹ tests 76
+2026-11-01T16:34:21.5655177Z ℹ suites 0
+2026-11-01T16:34:21.5655367Z ℹ pass 76
+2026-11-01T16:34:21.5655555Z ℹ fail 0
+2026-11-01T16:34:21.5655855Z ℹ cancelled 0
+2026-11-01T16:34:21.5655996Z ℹ skipped 0
+2026-11-01T16:34:21.5656118Z ℹ todo 0
+2026-11-01T16:34:21.5656358Z ℹ duration_ms 3031.126318
+2026-11-01T16:34:21.5750300Z ##[group]Run npm audit --audit-level=low
+2026-11-01T16:34:21.5750633Z [36;1mnpm audit --audit-level=low[0m
+2026-11-01T16:34:21.5773517Z shell: /usr/bin/bash -e {0}
+2026-11-01T16:34:21.5773746Z env:
+2026-11-01T16:34:21.5773913Z   CI: true
+2026-11-01T16:34:21.5774159Z   REACT_APP_SUPABASE_URL: http://127.0.0.1:55321
+2026-11-01T16:34:21.5774528Z   REACT_APP_SUPABASE_ANON_KEY: ci-public-placeholder-not-a-real-key
+2026-11-01T16:34:21.5774878Z   REACT_APP_APP_URL: http://127.0.0.1:3000
+2026-11-01T16:34:21.5775243Z   REACT_APP_PII_ENCRYPTION_KEY: ci-synthetic-pii-key-never-for-real-data
+2026-11-01T16:34:21.5775592Z   REACT_APP_WHATSAPP_ACCESS_TOKEN: 
+2026-11-01T16:34:21.5776007Z   REACT_APP_WHATSAPP_PHONE_NUMBER_ID: 
+2026-11-01T16:34:21.5776248Z   REACT_APP_WHATSAPP_BUSINESS_ACCOUNT_ID: 
+2026-11-01T16:34:21.5776492Z   REACT_APP_CLUB_ADMIN_PHONE: 
+2026-11-01T16:34:21.5776723Z   REACT_APP_CLUB_COACH_PHONE: 
+2026-11-01T16:34:21.5776958Z   REACT_APP_CLUB_EMERGENCY_PHONE: 
+2026-11-01T16:34:21.5777236Z   REACT_APP_CAPGO_DEFAULT_CHANNEL: beta
+2026-11-01T16:34:21.5777498Z   REACT_APP_ENABLE_SQL_AUDIT: false
+2026-11-01T16:34:21.5777742Z   REACT_APP_ENABLE_WEB_VITALS_LOG: false
+2026-11-01T16:34:21.5777993Z   GENERATE_SOURCEMAP: false
+2026-11-01T16:34:21.5778207Z ##[endgroup]
+2026-11-01T16:34:22.0783913Z found 0 vulnerabilities
+2026-11-01T16:34:22.0936519Z ##[group]Run node node_modules/react-scripts/scripts/build.js
+2026-11-01T16:34:22.0936785Z [36;1mnode node_modules/react-scripts/scripts/build.js[0m
+2026-11-01T16:34:22.0953194Z shell: /usr/bin/bash -e {0}
+2026-11-01T16:34:22.0953329Z env:
+2026-11-01T16:34:22.0953437Z   CI: true
+2026-11-01T16:34:22.0953581Z   REACT_APP_SUPABASE_URL: http://127.0.0.1:55321
+2026-11-01T16:34:22.0953804Z   REACT_APP_SUPABASE_ANON_KEY: ci-public-placeholder-not-a-real-key
+2026-11-01T16:34:22.0954019Z   REACT_APP_APP_URL: http://127.0.0.1:3000
+2026-11-01T16:34:22.0954235Z   REACT_APP_PII_ENCRYPTION_KEY: ci-synthetic-pii-key-never-for-real-data
+2026-11-01T16:34:22.0954454Z   REACT_APP_WHATSAPP_ACCESS_TOKEN: 
+2026-11-01T16:34:22.0954605Z   REACT_APP_WHATSAPP_PHONE_NUMBER_ID: 
+2026-11-01T16:34:22.0954760Z   REACT_APP_WHATSAPP_BUSINESS_ACCOUNT_ID: 
+2026-11-01T16:34:22.0954916Z   REACT_APP_CLUB_ADMIN_PHONE: 
+2026-11-01T16:34:22.0955056Z   REACT_APP_CLUB_COACH_PHONE: 
+2026-11-01T16:34:22.0955229Z   REACT_APP_CLUB_EMERGENCY_PHONE: 
+2026-11-01T16:34:22.0955379Z   REACT_APP_CAPGO_DEFAULT_CHANNEL: beta
+2026-11-01T16:34:22.0955529Z   REACT_APP_ENABLE_SQL_AUDIT: false
+2026-11-01T16:34:22.0955827Z   REACT_APP_ENABLE_WEB_VITALS_LOG: false
+2026-11-01T16:34:22.0956000Z   GENERATE_SOURCEMAP: false
+2026-11-01T16:34:22.0956136Z ##[endgroup]
+2026-11-01T16:34:22.5876457Z (node:3037) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+2026-11-01T16:34:22.5877187Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-01T16:34:22.5961793Z Creating an optimized production build...
+2026-11-01T16:34:42.6072290Z Compiled successfully.
+2026-11-01T16:34:42.6072526Z 
+2026-11-01T16:34:42.6072641Z File sizes after gzip:
+2026-11-01T16:34:42.6072771Z 
+2026-11-01T16:34:42.6632736Z   199.67 kB  build/static/js/main.ec43efd5.js
+2026-11-01T16:34:42.6633219Z   137.32 kB  build/static/js/291.2c352763.chunk.js
+2026-11-01T16:34:42.6633619Z   103.56 kB  build/static/js/743.989676f4.chunk.js
+2026-11-01T16:34:42.6633940Z   46.31 kB   build/static/js/52.63675f85.chunk.js
+2026-11-01T16:34:42.6634280Z   33.51 kB   build/static/js/265.19ca3487.chunk.js
+2026-11-01T16:34:42.6634610Z   27.14 kB   build/static/js/881.e66168aa.chunk.js
+2026-11-01T16:34:42.6634921Z   25.4 kB    build/static/js/681.6c66d167.chunk.js
+2026-11-01T16:34:42.6635223Z   24.92 kB   build/static/css/main.97b2e3dc.css
+2026-11-01T16:34:42.6635538Z   22.02 kB   build/static/js/806.c6f912c4.chunk.js
+2026-11-01T16:34:42.6636024Z   16.94 kB   build/static/js/175.b2a698ba.chunk.js
+2026-11-01T16:34:42.6636327Z   16.81 kB   build/static/js/51.cc0cc9d9.chunk.js
+2026-11-01T16:34:42.6636638Z   14.6 kB    build/static/js/153.dc225f9a.chunk.js
+2026-11-01T16:34:42.6636936Z   13.9 kB    build/static/js/327.0e93fae6.chunk.js
+2026-11-01T16:34:42.6637246Z   13.28 kB   build/static/js/516.8bac3147.chunk.js
+2026-11-01T16:34:42.6637547Z   11.7 kB    build/static/js/82.36c20ece.chunk.js
+2026-11-01T16:34:42.6637841Z   10.46 kB   build/static/js/963.62ddf2ba.chunk.js
+2026-11-01T16:34:42.6638148Z   9.3 kB     build/static/js/957.398978c0.chunk.js
+2026-11-01T16:34:42.6638447Z   8.75 kB    build/static/js/377.89abe680.chunk.js
+2026-11-01T16:34:42.6638750Z   8.5 kB     build/static/js/116.8df0e7ae.chunk.js
+2026-11-01T16:34:42.6639059Z   7.39 kB    build/static/js/331.1a781883.chunk.js
+2026-11-01T16:34:42.6639365Z   6.9 kB     build/static/js/798.c3cc2e77.chunk.js
+2026-11-01T16:34:42.6639653Z   5.74 kB    build/static/js/50.75319cb8.chunk.js
+2026-11-01T16:34:42.6639963Z   5.45 kB    build/static/js/982.7efc97a8.chunk.js
+2026-11-01T16:34:42.6640265Z   5.36 kB    build/static/js/145.b734dc13.chunk.js
+2026-11-01T16:34:42.6640570Z   4.14 kB    build/static/js/290.5d9df275.chunk.js
+2026-11-01T16:34:42.6640868Z   3.55 kB    build/static/js/588.d203d85c.chunk.js
+2026-11-01T16:34:42.6641153Z   3.34 kB    build/static/js/656.4627002a.chunk.js
+2026-11-01T16:34:42.6641437Z   3.14 kB    build/static/js/365.0d26a9c0.chunk.js
+2026-11-01T16:34:42.6642350Z   3.1 kB     build/static/js/601.8e665f71.chunk.js
+2026-11-01T16:34:42.6642629Z   2.94 kB    build/static/js/126.97cd30b5.chunk.js
+2026-11-01T16:34:42.6642916Z   2.59 kB    build/static/js/747.ebb1613e.chunk.js
+2026-11-01T16:34:42.6643196Z   2.35 kB    build/static/js/323.2fddc578.chunk.js
+2026-11-01T16:34:42.6643474Z   2.16 kB    build/static/js/245.901d1ce8.chunk.js
+2026-11-01T16:34:42.6643753Z   2.1 kB     build/static/js/403.be88020a.chunk.js
+2026-11-01T16:34:42.6644029Z   2.01 kB    build/static/js/275.a3b8b9c9.chunk.js
+2026-11-01T16:34:42.6644312Z   1.72 kB    build/static/js/206.5267047a.chunk.js
+2026-11-01T16:34:42.6644589Z   1.35 kB    build/static/js/133.a038b162.chunk.js
+2026-11-01T16:34:42.6644867Z   620 B      build/static/js/789.23a8067d.chunk.js
+2026-11-01T16:34:42.6645144Z   443 B      build/static/js/970.00274ca8.chunk.js
+2026-11-01T16:34:42.6645422Z   310 B      build/static/js/722.2d0be2be.chunk.js
+2026-11-01T16:34:42.6645854Z   292 B      build/static/js/127.2f3b5bc8.chunk.js
+2026-11-01T16:34:42.6646032Z 
+2026-11-01T16:34:42.6646213Z The project was built assuming it is hosted at /.
+2026-11-01T16:34:42.6646606Z You can control this with the homepage field in your package.json.
+2026-11-01T16:34:42.6646838Z 
+2026-11-01T16:34:42.6646969Z The build folder is ready to be deployed.
+2026-11-01T16:34:42.6647253Z You may serve it with a static server:
+2026-11-01T16:34:42.6647408Z 
+2026-11-01T16:34:42.6647495Z   npm install -g serve
+2026-11-01T16:34:42.6647687Z   serve -s build
+2026-11-01T16:34:42.6647789Z 
+2026-11-01T16:34:42.6647911Z Find out more about deployment here:
+2026-11-01T16:34:42.6648063Z 
+2026-11-01T16:34:42.6648158Z   https://cra.link/deployment
+2026-11-01T16:34:42.6648299Z 
+2026-11-01T16:34:42.8633322Z Post job cleanup.
+2026-11-01T16:34:42.9540394Z Post job cleanup.
+2026-11-01T16:34:43.0476427Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/riovoley/riovoley --files-from manifest.txt --use-compress-program zstdmt
+2026-11-01T16:34:44.3827105Z Sent 57737216 of 100489506 (57.5%), 55.1 MBs/sec
+2026-11-01T16:34:45.3029180Z Sent 100489506 of 100489506 (100.0%), 49.8 MBs/sec
+2026-11-01T16:34:45.4727880Z Cache saved with the key: node-cache-Linux-x64-npm-6c65d7fea22eda74b9da761e9db751b8749ccc997ec0eb2ffc68d227f254ce64
+2026-11-01T16:34:45.4870971Z Post job cleanup.
+2026-11-01T16:34:45.5424830Z [command]/usr/bin/git version
+2026-11-01T16:34:45.5455979Z git version 2.56.0
+2026-11-01T16:34:45.5475574Z Temporarily overriding HOME='/home/runner/work/_temp/3b0abfc2-1dea-4de4-84a7-abca0da0cae6' before making global git config changes
+2026-11-01T16:34:45.5476491Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-01T16:34:45.5478788Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/riovoley/riovoley
+2026-11-01T16:34:45.5504219Z Removing SSH command configuration
+2026-11-01T16:34:45.5508311Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-01T16:34:45.5534915Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-01T16:34:45.5730626Z Removing HTTP extra header
+2026-11-01T16:34:45.5734209Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-01T16:34:45.5762155Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-01T16:34:45.5952114Z Removing includeIf entries pointing to credentials config files
+2026-11-01T16:34:45.5957178Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-01T16:34:45.5984799Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-01T16:34:45.6287338Z Cleaning up orphan processes

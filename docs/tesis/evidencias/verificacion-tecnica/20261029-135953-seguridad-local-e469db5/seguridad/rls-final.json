@@ -1,0 +1,177 @@
+[
+  {
+    "schema": "billing",
+    "table": "membership_types",
+    "rls": true
+  },
+  {
+    "schema": "billing",
+    "table": "payment_types",
+    "rls": true
+  },
+  {
+    "schema": "billing",
+    "table": "payments",
+    "rls": true
+  },
+  {
+    "schema": "core",
+    "table": "students",
+    "rls": true
+  },
+  {
+    "schema": "core",
+    "table": "users",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "achievement_catalog",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "athlete_stages_catalog",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "campaigns_catalog",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "challenges_catalog",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "cosmetic_items_catalog",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "currency_ledger",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "currency_wallets",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "hidden_rewards_catalog",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "leaderboard_snapshots",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "login_rewards",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "reward_events",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "student_achievements",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "student_campaign_progress",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "student_challenge_progress",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "student_cosmetic_equipment",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "student_cosmetic_items",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "student_current_stage",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "student_hidden_rewards",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "student_identity",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "student_profiles",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "student_stage_history",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "titles_catalog",
+    "rls": true
+  },
+  {
+    "schema": "gamification",
+    "table": "xp_ledger",
+    "rls": true
+  },
+  {
+    "schema": "profiles",
+    "table": "mobile_device_registrations",
+    "rls": true
+  },
+  {
+    "schema": "profiles",
+    "table": "user_notification_preferences",
+    "rls": true
+  },
+  {
+    "schema": "profiles",
+    "table": "user_profiles",
+    "rls": true
+  },
+  {
+    "schema": "training",
+    "table": "attendances",
+    "rls": true
+  },
+  {
+    "schema": "training",
+    "table": "physical_tests",
+    "rls": true
+  },
+  {
+    "schema": "training",
+    "table": "schedules",
+    "rls": true
+  },
+  {
+    "schema": "training",
+    "table": "training_categories",
+    "rls": true
+  }
+]

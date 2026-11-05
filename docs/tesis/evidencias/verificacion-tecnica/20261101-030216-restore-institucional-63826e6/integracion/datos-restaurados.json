@@ -1,0 +1,633 @@
+{
+  "checkedAt": "2026-11-01T16:05:27.900Z",
+  "container": "riovoley-restore-20261101-030216-07",
+  "archiveSha256": "22da6c77d9bbd3def2e6113c6c53531d76d900c0abe9c1f364c2dbb7828e54e6",
+  "tableDataEntries": 94,
+  "comparedTables": 94,
+  "totalArchiveRows": 27159,
+  "totalRestoredRows": 27159,
+  "tables": [
+    {
+      "table": "audit.payments_audit",
+      "archiveRows": 334,
+      "restoredRows": 334,
+      "contentMatches": true
+    },
+    {
+      "table": "audit.sql_errors",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "audit.sql_executions",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.audit_log_entries",
+      "archiveRows": 3635,
+      "restoredRows": 3635,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.custom_oauth_providers",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.flow_state",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.identities",
+      "archiveRows": 146,
+      "restoredRows": 146,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.instances",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.mfa_amr_claims",
+      "archiveRows": 207,
+      "restoredRows": 207,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.mfa_challenges",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.mfa_factors",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.mfa_recovery_code_sets",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.mfa_recovery_codes",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.oauth_authorizations",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.oauth_client_states",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.oauth_clients",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.oauth_consents",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.one_time_tokens",
+      "archiveRows": 1,
+      "restoredRows": 1,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.refresh_tokens",
+      "archiveRows": 278,
+      "restoredRows": 278,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.saml_providers",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.saml_relay_states",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.schema_migrations",
+      "archiveRows": 82,
+      "restoredRows": 82,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.scim_tokens",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.scim_users",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.sessions",
+      "archiveRows": 207,
+      "restoredRows": 207,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.sso_domains",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.sso_providers",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.users",
+      "archiveRows": 146,
+      "restoredRows": 146,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.webauthn_challenges",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "auth.webauthn_credentials",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "billing.membership_types",
+      "archiveRows": 2,
+      "restoredRows": 2,
+      "contentMatches": true
+    },
+    {
+      "table": "billing.payment_types",
+      "archiveRows": 3,
+      "restoredRows": 3,
+      "contentMatches": true
+    },
+    {
+      "table": "billing.payments",
+      "archiveRows": 176,
+      "restoredRows": 176,
+      "contentMatches": true
+    },
+    {
+      "table": "core.students",
+      "archiveRows": 139,
+      "restoredRows": 139,
+      "contentMatches": true
+    },
+    {
+      "table": "core.users",
+      "archiveRows": 145,
+      "restoredRows": 145,
+      "contentMatches": true
+    },
+    {
+      "table": "cron.job",
+      "archiveRows": 1,
+      "restoredRows": 1,
+      "contentMatches": true
+    },
+    {
+      "table": "cron.job_run_details",
+      "archiveRows": 182,
+      "restoredRows": 182,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.achievement_catalog",
+      "archiveRows": 6,
+      "restoredRows": 6,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.athlete_stages_catalog",
+      "archiveRows": 6,
+      "restoredRows": 6,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.campaigns_catalog",
+      "archiveRows": 6,
+      "restoredRows": 6,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.challenges_catalog",
+      "archiveRows": 3,
+      "restoredRows": 3,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.cosmetic_items_catalog",
+      "archiveRows": 34,
+      "restoredRows": 34,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.currency_ledger",
+      "archiveRows": 2972,
+      "restoredRows": 2972,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.currency_wallets",
+      "archiveRows": 99,
+      "restoredRows": 99,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.hidden_rewards_catalog",
+      "archiveRows": 4,
+      "restoredRows": 4,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.leaderboard_snapshots",
+      "archiveRows": 7580,
+      "restoredRows": 7580,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.login_rewards",
+      "archiveRows": 6,
+      "restoredRows": 6,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.reward_events",
+      "archiveRows": 2750,
+      "restoredRows": 2750,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.student_achievements",
+      "archiveRows": 80,
+      "restoredRows": 80,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.student_campaign_progress",
+      "archiveRows": 258,
+      "restoredRows": 258,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.student_challenge_progress",
+      "archiveRows": 291,
+      "restoredRows": 291,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.student_cosmetic_equipment",
+      "archiveRows": 2,
+      "restoredRows": 2,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.student_cosmetic_items",
+      "archiveRows": 1,
+      "restoredRows": 1,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.student_current_stage",
+      "archiveRows": 99,
+      "restoredRows": 99,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.student_hidden_rewards",
+      "archiveRows": 396,
+      "restoredRows": 396,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.student_identity",
+      "archiveRows": 4,
+      "restoredRows": 4,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.student_profiles",
+      "archiveRows": 99,
+      "restoredRows": 99,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.student_stage_history",
+      "archiveRows": 119,
+      "restoredRows": 119,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.titles_catalog",
+      "archiveRows": 10,
+      "restoredRows": 10,
+      "contentMatches": true
+    },
+    {
+      "table": "gamification.xp_ledger",
+      "archiveRows": 2768,
+      "restoredRows": 2768,
+      "contentMatches": true
+    },
+    {
+      "table": "profiles.mobile_device_registrations",
+      "archiveRows": 10,
+      "restoredRows": 10,
+      "contentMatches": true
+    },
+    {
+      "table": "profiles.user_notification_preferences",
+      "archiveRows": 112,
+      "restoredRows": 112,
+      "contentMatches": true
+    },
+    {
+      "table": "profiles.user_profiles",
+      "archiveRows": 146,
+      "restoredRows": 146,
+      "contentMatches": true
+    },
+    {
+      "table": "public.user_notification_inbox_state",
+      "archiveRows": 128,
+      "restoredRows": 128,
+      "contentMatches": true
+    },
+    {
+      "table": "public_content.announcements",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "realtime.messages_2026_10_26",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "realtime.messages_2026_10_27",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "realtime.messages_2026_10_28",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "realtime.messages_2026_10_29",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "realtime.messages_2026_10_30",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "realtime.messages_2026_10_31",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "realtime.schema_migrations",
+      "archiveRows": 91,
+      "restoredRows": 91,
+      "contentMatches": true
+    },
+    {
+      "table": "realtime.subscription",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "reporting.report_artifacts",
+      "archiveRows": 40,
+      "restoredRows": 40,
+      "contentMatches": true
+    },
+    {
+      "table": "reporting.report_definitions",
+      "archiveRows": 3,
+      "restoredRows": 3,
+      "contentMatches": true
+    },
+    {
+      "table": "reporting.report_runs",
+      "archiveRows": 41,
+      "restoredRows": 41,
+      "contentMatches": true
+    },
+    {
+      "table": "reporting.scheduler_config",
+      "archiveRows": 1,
+      "restoredRows": 1,
+      "contentMatches": true
+    },
+    {
+      "table": "security.login_attempts",
+      "archiveRows": 505,
+      "restoredRows": 505,
+      "contentMatches": true
+    },
+    {
+      "table": "security.login_blocks",
+      "archiveRows": 3,
+      "restoredRows": 3,
+      "contentMatches": true
+    },
+    {
+      "table": "security.users_password_backup",
+      "archiveRows": 40,
+      "restoredRows": 40,
+      "contentMatches": true
+    },
+    {
+      "table": "storage.buckets",
+      "archiveRows": 3,
+      "restoredRows": 3,
+      "contentMatches": true
+    },
+    {
+      "table": "storage.buckets_analytics",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "storage.buckets_vectors",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "storage.migrations",
+      "archiveRows": 75,
+      "restoredRows": 75,
+      "contentMatches": true
+    },
+    {
+      "table": "storage.objects",
+      "archiveRows": 43,
+      "restoredRows": 43,
+      "contentMatches": true
+    },
+    {
+      "table": "storage.s3_multipart_uploads",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "storage.s3_multipart_uploads_parts",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "storage.vector_indexes",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    },
+    {
+      "table": "supabase_migrations.schema_migrations",
+      "archiveRows": 8,
+      "restoredRows": 8,
+      "contentMatches": true
+    },
+    {
+      "table": "training.attendances",
+      "archiveRows": 2519,
+      "restoredRows": 2519,
+      "contentMatches": true
+    },
+    {
+      "table": "training.physical_tests",
+      "archiveRows": 85,
+      "restoredRows": 85,
+      "contentMatches": true
+    },
+    {
+      "table": "training.schedules",
+      "archiveRows": 22,
+      "restoredRows": 22,
+      "contentMatches": true
+    },
+    {
+      "table": "training.training_categories",
+      "archiveRows": 7,
+      "restoredRows": 7,
+      "contentMatches": true
+    },
+    {
+      "table": "vault.secrets",
+      "archiveRows": 0,
+      "restoredRows": 0,
+      "contentMatches": true
+    }
+  ],
+  "sequenceStates": [
+    {
+      "sequence": "audit.payments_audit_id_seq",
+      "stateMatches": true
+    },
+    {
+      "sequence": "audit.sql_errors_id_seq",
+      "stateMatches": true
+    },
+    {
+      "sequence": "audit.sql_executions_id_seq",
+      "stateMatches": true
+    },
+    {
+      "sequence": "auth.refresh_tokens_id_seq",
+      "stateMatches": true
+    },
+    {
+      "sequence": "billing.membership_types_id_seq",
+      "stateMatches": true
+    },
+    {
+      "sequence": "billing.payment_types_id_seq",
+      "stateMatches": true
+    },
+    {
+      "sequence": "cron.jobid_seq",
+      "stateMatches": true
+    },
+    {
+      "sequence": "cron.runid_seq",
+      "stateMatches": true
+    },
+    {
+      "sequence": "profiles.mobile_device_registrations_id_seq",
+      "stateMatches": true
+    },
+    {
+      "sequence": "realtime.subscription_id_seq",
+      "stateMatches": true
+    },
+    {
+      "sequence": "training.schedules_id_seq",
+      "stateMatches": true
+    }
+  ],
+  "allCopiedColumnsMatch": true,
+  "allComparedSequencesMatch": true,
+  "storedGeneratedColumns": {
+    "column": "core.students.edad",
+    "mismatchesAgainstCurrentExpression": 0,
+    "originalStoredValuesNotInLogicalArchive": true
+  },
+  "largeObjectTocEntries": 0,
+  "plaintextDumpWritten": false,
+  "rowValuesPublished": false,
+  "storageFileObjectsRestored": false,
+  "productionReadDuringComparison": false
+}

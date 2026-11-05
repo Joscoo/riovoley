@@ -1,0 +1,49 @@
+{
+  "stage": ".e2e-local\\android-native\\20261028-155551\\project",
+  "web": "Build privado con clave anon y cifrado del entorno local; ninguna service_role ni credencial institucional. El APK no se copia a evidencias ni se distribuye. HTTP solo loopback mediante adb reverse, con mixed content habilitado exclusivamente en esta copia de depuración.",
+  "nativeSources": "Copia de android y módulos Android instalados, sin modificar originales.",
+  "appId": "com.riovoley.app",
+  "updaterOverride": {
+    "autoUpdate": false
+  },
+  "omitted": [
+    "keystore de publicación",
+    "google-services.json",
+    "local.properties original",
+    "cachés y builds previos"
+  ],
+  "nativeModules": [
+    {
+      "name": "@capacitor/android",
+      "version": "8.6.0"
+    },
+    {
+      "name": "@capacitor/app",
+      "version": "8.1.0"
+    },
+    {
+      "name": "@capacitor/browser",
+      "version": "8.0.3"
+    },
+    {
+      "name": "@capacitor/filesystem",
+      "version": "8.1.2"
+    },
+    {
+      "name": "@capacitor/preferences",
+      "version": "8.0.1"
+    },
+    {
+      "name": "@capacitor/push-notifications",
+      "version": "8.1.1"
+    },
+    {
+      "name": "@capacitor/share",
+      "version": "8.0.1"
+    },
+    {
+      "name": "@capgo/capacitor-updater",
+      "version": "8.47.9"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+running 1 test from ./tests/integration/google-auth.local.test.ts
+GoogleAuth real firma la solicitud OAuth y conserva getAccessToken; transporte simulado ... ok (224ms)
+
+ok | 1 passed | 0 failed (234ms)
+
+

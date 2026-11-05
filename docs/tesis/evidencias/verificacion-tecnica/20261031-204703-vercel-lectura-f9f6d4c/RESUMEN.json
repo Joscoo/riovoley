@@ -1,0 +1,75 @@
+{
+  "observedAt": "2026-10-31T20:47:09.056Z",
+  "evaluatedCommit": "f9f6d4c2dea4e1df52d27331fed43843e45a6be9",
+  "cliVersion": "65.9.0",
+  "localNodeVersion": "v24.18.0",
+  "projectId": "prj_gnsNVKcXC8jvN0UcassXy4lZ0ZfN",
+  "teamId": "team_hhFsXPWPvpQakRvHpejCGAFU",
+  "scope": "joscoos-projects",
+  "production": {
+    "id": "dpl_DCPpv18kuroRoaEpV49xhGfY1isB",
+    "name": "riovoley",
+    "url": "riovoley-dlwdj0h4r-joscoos-projects.vercel.app",
+    "target": "production",
+    "readyState": "READY",
+    "createdAt": "2026-10-28T20:49:50.217Z",
+    "readyAt": "2026-10-28T20:51:31.375Z",
+    "aliases": [
+      "riovoley.com",
+      "riovoley.vercel.app",
+      "riovoley-joscoos-projects.vercel.app",
+      "riovoley-git-main-joscoos-projects.vercel.app"
+    ],
+    "gitCommitSha": "e469db5608fb77071b6a9ee3db253c28dae734dd",
+    "gitBranch": "main",
+    "settings": {
+      "framework": "create-react-app",
+      "nodeVersion": "22.x",
+      "customBuildCommandPresent": false
+    }
+  },
+  "candidateDeploymentCount": 0,
+  "requiredFrontendPresence": [
+    {
+      "key": "REACT_APP_SUPABASE_URL",
+      "presentForProduction": true
+    },
+    {
+      "key": "REACT_APP_SUPABASE_ANON_KEY",
+      "presentForProduction": true
+    },
+    {
+      "key": "REACT_APP_APP_URL",
+      "presentForProduction": true
+    },
+    {
+      "key": "REACT_APP_PII_ENCRYPTION_KEY",
+      "presentForProduction": true
+    }
+  ],
+  "httpObservations": [
+    {
+      "path": "/",
+      "status": 200,
+      "hasRootElement": true
+    },
+    {
+      "path": "/login",
+      "status": 200,
+      "hasRootElement": true
+    },
+    {
+      "path": "/sobre",
+      "status": 200,
+      "hasRootElement": true
+    },
+    {
+      "path": "/horarios",
+      "status": 200,
+      "hasRootElement": true
+    }
+  ],
+  "sourceOrBusinessDataModified": false,
+  "productionConfigurationModified": false,
+  "secretValuesSaved": false
+}

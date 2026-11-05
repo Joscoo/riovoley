@@ -1,0 +1,27 @@
+ M database/security/REVISION_Y_AUTORIZACION_PENDIENTE.md
+ M docs/tesis/README.md
+ M functions/package-lock.json
+ M functions/package.json
+ M scripts/e2e/local/harness.cjs
+ M scripts/e2e/local/privacy.py
+ M src/features/admin-dashboard/application/useCases/createAdminDashboardUseCases.test.js
+ M src/features/gamification/application/useCases/createGamificationFoundationUseCases.js
+ M src/features/gamification/application/useCases/createGamificationUseCases.js
+ M src/features/gamification/infrastructure/repositories/supabaseGamificationRepository.js
+ M src/features/user-management/infrastructure/repositories/supabaseUserManagementRepository.js
+ M supabase/functions/_core/auth-admin/application/use-cases/delete-auth-user-use-case.ts
+ M supabase/functions/_core/auth-admin/infrastructure/supabase-auth-admin-gateway.ts
+ M supabase/functions/send-push/index.ts
+ M tests/integration/gamification.local.test.cjs
+?? database/security/local/
+?? docs/superpowers/plans/2026-10-29-seguridad-local.md
+?? docs/tesis/evidencias/verificacion-tecnica/20261029-135953-seguridad-local-e469db5/
+?? scripts/audit/security/
+?? src/features/gamification/infrastructure/repositories/security.contract.test.js
+?? src/features/user-management/infrastructure/repositories/deletion.security.test.js
+?? supabase/functions/_core/auth-admin/application/require-active-staff.ts
+?? tests/integration/edge-http.local.test.cjs
+?? tests/integration/functions-health.local.test.cjs
+?? tests/integration/security.local.test.cjs
+?? tests/unit/authorization-edge.test.ts
+

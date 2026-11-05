@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/android/inspect-ota-native.cjs"
+  ],
+  "start": "2026-11-05T15:44:44.782Z",
+  "end": "2026-11-05T15:44:46.190Z",
+  "durationSeconds": 1.408,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

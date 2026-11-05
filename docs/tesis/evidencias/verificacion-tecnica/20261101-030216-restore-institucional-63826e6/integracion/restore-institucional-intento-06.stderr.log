@@ -1,0 +1,2 @@
+{"stage":"CATALOG_MISMATCH","toolExitCode":null,"errorType":"AssertionError","frames":["    at Object.assertCatalog (D:\\Riovoley\\riovoley\\scripts\\production\\restore-guards.cjs:8:194)","    at restore (D:\\Riovoley\\riovoley\\scripts\\production\\restore-isolated.cjs:62:199)","    at Object.<anonymous> (D:\\Riovoley\\riovoley\\scripts\\production\\restore-isolated.cjs:64:26)"],"rawDiagnosticsPublished":false}
+

@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/android/build.cjs",
+    "assemble",
+    "--rerun-tasks"
+  ],
+  "start": "2026-10-31T19:33:13.846Z",
+  "end": "2026-10-31T19:37:21.749Z",
+  "durationSeconds": 247.903,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-11-04T22:00:37.619Z",
+  "historicalManifests": 20,
+  "historicalEntries": 9040,
+  "historicalEntriesMatching": true,
+  "initialAttemptSealedEntries": 17,
+  "nativeCases": 13,
+  "nativePassed": 13,
+  "nativeFailed": 0,
+  "routeGuardCases": 10,
+  "routeGuardPassed": 10,
+  "releaseFinalObserved": true,
+  "releasePriorFailedAttempts": 2,
+  "allPolicyRoutingCertified": false,
+  "productSourceChanged": false,
+  "artifactHashesMatching": true,
+  "relativeLinksChecked": 101,
+  "brokenLinks": 0,
+  "privacyIssues": 0,
+  "productionContacted": false
+}

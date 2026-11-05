@@ -1,0 +1,18 @@
+{
+  "at": "2026-11-05T15:26:57.565Z",
+  "files": [
+    "candidato-actual-portada-sin-ota.png",
+    "candidato-actual-admin.png",
+    "candidato-actual-trainer.png",
+    "candidato-actual-student.png"
+  ],
+  "reviewMethod": "view_image",
+  "observations": {
+    "home": "Portada sin control OTA.",
+    "admin": "Controles de gestion visibles; sin comprobar operaciones de negocio.",
+    "trainer": "Dashboard en carga en la captura; shell visible.",
+    "student": "Comunicado de prueba E2E y contenido ficticio visibles."
+  },
+  "institutionalPersonalDataObserved": false,
+  "allPanelModulesValidated": false
+}

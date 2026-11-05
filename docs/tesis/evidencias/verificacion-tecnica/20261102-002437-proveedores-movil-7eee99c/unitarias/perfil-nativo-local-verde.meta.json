@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/unit/native-local-profile.test.cjs"
+  ],
+  "start": "2026-11-02T00:30:53.677Z",
+  "end": "2026-11-02T00:30:53.871Z",
+  "durationSeconds": 0.194,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

@@ -1,0 +1,21 @@
+{
+  "source": "Contraste con runtime.js y AndroidManifest.xml del candidato",
+  "siteUrl": "https://riovoley.com",
+  "existingEntriesPreserved": true,
+  "appendOnly": [
+    "riovoley://reset-password"
+  ],
+  "proposedRedirects": [
+    "https://riovoley-joscoos-projects.vercel.app/",
+    "https://riovoley-joscoos-projects.vercel.app/**",
+    "https://riovoley-*-joscoos-projects.vercel.app",
+    "https://riovoley-*-joscoos-projects.vercel.app/**",
+    "http://localhost:3000/reset-password",
+    "https://riovoley.vercel.app/reset-password",
+    "https://riovoley.com/reset-password",
+    "riovoley://reset-password"
+  ],
+  "applied": false,
+  "requiresOperatorConfirmation": true,
+  "reason": "La URL nativa de recuperacion del candidato no aparece en la lista proporcionada."
+}

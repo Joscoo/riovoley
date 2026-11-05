@@ -1,0 +1,24 @@
+{
+  "domains": [
+    {
+      "name": "riovoley.com",
+      "verified": true,
+      "gitBranch": null,
+      "redirect": null,
+      "redirectStatusCode": null,
+      "customEnvironmentId": null
+    },
+    {
+      "name": "riovoley.vercel.app",
+      "verified": true,
+      "gitBranch": null,
+      "redirect": null,
+      "customEnvironmentId": null
+    }
+  ],
+  "pagination": {
+    "count": 2,
+    "next": null,
+    "prev": 1768656078103
+  }
+}

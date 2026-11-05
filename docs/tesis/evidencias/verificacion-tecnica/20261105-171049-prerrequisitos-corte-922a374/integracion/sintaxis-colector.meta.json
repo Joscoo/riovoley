@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--check",
+    "scripts/audit/production/check-cutover-prerequisites.cjs"
+  ],
+  "start": "2026-11-05T17:13:52.535Z",
+  "end": "2026-11-05T17:13:52.637Z",
+  "durationSeconds": 0.102,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

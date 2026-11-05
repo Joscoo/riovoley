@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-11-04T20:12:32.726Z",
+  "host": {
+    "Caption": "Microsoft Windows 11 Pro",
+    "Version": "10.0.26300",
+    "FreePhysicalMemory": 1635112,
+    "TotalVisibleMemorySize": 16700460
+  },
+  "memoryFreeMiB": 1597,
+  "dockerAvailable": false,
+  "dockerReadExitCode": 1,
+  "emulatorStarted": false,
+  "localBackendAvailable": false,
+  "preliminaryState": "BLOQUEADO_PRECONDICIONES",
+  "userProcessesTerminated": false
+}

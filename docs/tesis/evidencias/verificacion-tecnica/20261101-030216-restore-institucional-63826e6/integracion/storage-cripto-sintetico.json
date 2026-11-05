@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-11-01T16:13:14.822Z",
+  "fixtures": 3,
+  "fixtureBytes": 4133,
+  "allRecoveredBytesMatch": true,
+  "corruptionRejected": true,
+  "rsaBits": 3072,
+  "algorithm": "GnuPG AES256",
+  "institutionalStorageContacted": false,
+  "productionKeyUsed": false
+}

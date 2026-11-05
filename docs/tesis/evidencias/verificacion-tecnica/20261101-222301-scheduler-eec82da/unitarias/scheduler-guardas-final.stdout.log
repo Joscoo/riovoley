@@ -1,0 +1,77 @@
+TAP version 13
+# Subtest: la guarda exige proyecto y autorización de alcance exactos
+ok 1 - la guarda exige proyecto y autorización de alcance exactos
+  ---
+  duration_ms: 12.6167
+  type: 'test'
+  ...
+# Subtest: una lista ilegible o duplicada no acredita ausencia
+ok 2 - una lista ilegible o duplicada no acredita ausencia
+  ---
+  duration_ms: 0.6397
+  type: 'test'
+  ...
+# Subtest: sin digests no acredita que los otros secretos permanecieron iguales
+ok 3 - sin digests no acredita que los otros secretos permanecieron iguales
+  ---
+  duration_ms: 0.2485
+  type: 'test'
+  ...
+# Subtest: el generador usa 32 bytes y produce exactamente una entrada dotenv sin valores en args
+ok 4 - el generador usa 32 bytes y produce exactamente una entrada dotenv sin valores en args
+  ---
+  duration_ms: 0.5443
+  type: 'test'
+  ...
+# Subtest: si existe no se cifra, escribe o sustituye el secreto
+ok 5 - si existe no se cifra, escribe o sustituye el secreto
+  ---
+  duration_ms: 0.4892
+  type: 'test'
+  ...
+# Subtest: si aparece entre preflight y escritura se detiene sin sobrescribir
+ok 6 - si aparece entre preflight y escritura se detiene sin sobrescribir
+  ---
+  duration_ms: 0.3435
+  type: 'test'
+  ...
+# Subtest: un fallo al proteger el valor impide toda escritura remota
+ok 7 - un fallo al proteger el valor impide toda escritura remota
+  ---
+  duration_ms: 0.3082
+  type: 'test'
+  ...
+# Subtest: crea una sola entrada y verifica su digest sin devolver valor ni digest
+ok 8 - crea una sola entrada y verifica su digest sin devolver valor ni digest
+  ---
+  duration_ms: 1.5497
+  type: 'test'
+  ...
+# Subtest: detecta cambios no esperados en otro secreto sin corregirlos
+ok 9 - detecta cambios no esperados en otro secreto sin corregirlos
+  ---
+  duration_ms: 0.5553
+  type: 'test'
+  ...
+# Subtest: si el acuse falla pero el valor coincide no reintenta la escritura
+ok 10 - si el acuse falla pero el valor coincide no reintenta la escritura
+  ---
+  duration_ms: 0.5308
+  type: 'test'
+  ...
+# Subtest: un readback distinto no ocasiona una segunda escritura o limpieza
+ok 11 - un readback distinto no ocasiona una segunda escritura o limpieza
+  ---
+  duration_ms: 0.4138
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 131.7063
+

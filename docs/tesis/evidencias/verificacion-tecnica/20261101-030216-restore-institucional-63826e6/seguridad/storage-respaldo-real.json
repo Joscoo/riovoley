@@ -1,0 +1,23 @@
+{
+  "startedAt": "2026-11-01T16:14:26.787Z",
+  "status": "ENCRYPTED_STORAGE_BACKUP_AND_ISOLATED_BYTES_VERIFIED",
+  "expectedObjects": 43,
+  "completedObjects": 43,
+  "downloadedBytes": 3596269,
+  "sourceDatabaseArchiveSha256": "22da6c77d9bbd3def2e6113c6c53531d76d900c0abe9c1f364c2dbb7828e54e6",
+  "serverKeyRecorded": false,
+  "finishedAt": "2026-11-01T16:15:52.600Z",
+  "manifestSha256": "23284f5a4acc970838742b6cba151032f741976e564d3b3f27b67b784274271f",
+  "sourceEtagComparableObjects": 43,
+  "allRecoveredObjectHashesMatch": true,
+  "encryptedManifestVerified": true,
+  "isolatedSupabaseStorageApiRestored": false,
+  "sourceObjectsChanged": false,
+  "plaintextFilesOnHost": false,
+  "privateBackupReference": ".e2e-local/institutional-storage/20261101161426-b27061d3",
+  "isolatedContainer": "riovoley-restore-20261101-030216-07",
+  "objectNamesPublished": false,
+  "bucketNamesPublished": false,
+  "sourceRole": "server key; GET-only transport",
+  "sharedSnapshotAcrossDbAndFiles": false
+}

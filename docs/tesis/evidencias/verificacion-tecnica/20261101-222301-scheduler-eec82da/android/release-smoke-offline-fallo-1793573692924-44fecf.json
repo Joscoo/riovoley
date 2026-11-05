@@ -1,0 +1,12 @@
+{
+  "startedAt": "2026-11-01T22:54:52.239Z",
+  "status": "PREPARING",
+  "physicalDeviceUsed": false,
+  "loginPerformed": false,
+  "institutionalBusinessFlowsExecuted": false,
+  "artifactDistributed": false,
+  "resumedOwnedAuditAvd": true,
+  "failedAt": "2026-11-01T22:54:52.921Z",
+  "stage": "ANDROID_OFFLINE_SMOKE_FAILED",
+  "rawDiagnosticsPublished": false
+}

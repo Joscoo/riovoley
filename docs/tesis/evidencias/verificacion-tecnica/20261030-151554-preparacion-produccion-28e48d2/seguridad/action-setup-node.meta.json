@@ -1,0 +1,15 @@
+{
+  "command": [
+    "git",
+    "ls-remote",
+    "https://github.com/actions/setup-node.git",
+    "refs/tags/v7",
+    "refs/tags/v7^{}"
+  ],
+  "start": "2026-10-31T19:49:52.448Z",
+  "end": "2026-10-31T19:49:53.213Z",
+  "durationSeconds": 0.765,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

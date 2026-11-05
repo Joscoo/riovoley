@@ -1,0 +1,43 @@
+{
+  "checkedAt": "2026-11-05T20:48:47.273Z",
+  "actors": [
+    {
+      "actor": "anon",
+      "session_user": "authenticator",
+      "current_user": "anon",
+      "role": "anon",
+      "database": "riovoley_gate_20261105204301_d69b51"
+    },
+    {
+      "actor": "authenticated",
+      "session_user": "authenticator",
+      "current_user": "authenticated",
+      "role": "authenticated",
+      "database": "riovoley_gate_20261105204301_d69b51"
+    },
+    {
+      "actor": "service_role",
+      "session_user": "authenticator",
+      "current_user": "service_role",
+      "role": "service_role",
+      "database": "riovoley_gate_20261105204301_d69b51"
+    },
+    {
+      "actor": "supabase_auth_admin",
+      "session_user": "supabase_auth_admin",
+      "current_user": "supabase_auth_admin",
+      "role": "none",
+      "database": "riovoley_gate_20261105204301_d69b51"
+    },
+    {
+      "actor": "supabase_storage_admin",
+      "session_user": "supabase_storage_admin",
+      "current_user": "supabase_storage_admin",
+      "role": "none",
+      "database": "riovoley_gate_20261105204301_d69b51"
+    }
+  ],
+  "realConnections": true,
+  "httpAuthLogin": false,
+  "institutionalUsers": false
+}

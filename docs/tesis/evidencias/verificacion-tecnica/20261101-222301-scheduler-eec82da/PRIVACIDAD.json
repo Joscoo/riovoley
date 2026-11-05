@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-11-01T23:07:58.077Z",
+  "filesChecked": 227,
+  "knownPrivateValuesCompared": 20,
+  "issues": 0,
+  "newSecretComparedInsideDpapiProcess": true,
+  "newSecretScanFiles": 220,
+  "newSecretInPublicFiles": 0,
+  "secretOrApiDigestPublished": false,
+  "personalDataInReviewedScreenshots": false,
+  "scope": "Fuentes nuevas/modificadas y expediente; valores locales conocidos, patrones y comparación del secreto nuevo dentro del proceso DPAPI. No certifica ausencia universal de PII."
+}

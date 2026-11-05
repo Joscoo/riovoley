@@ -1,0 +1,28 @@
+{
+  "label": "filas-antes",
+  "command": [
+    "docker",
+    "exec",
+    "-i",
+    "--user",
+    "postgres",
+    "riovoley-restore-20261101-030216-07",
+    "psql",
+    "-X",
+    "-q",
+    "-A",
+    "-t",
+    "-h",
+    "/tmp",
+    "-d",
+    "riovoley_releasecopy_20261101165446",
+    "-v",
+    "ON_ERROR_STOP=1"
+  ],
+  "startedAt": "2026-11-01T16:54:47.498Z",
+  "finishedAt": "2026-11-01T16:54:47.917Z",
+  "durationSeconds": 0.419,
+  "exitCode": 0,
+  "sqlInputPublished": false,
+  "rawOutputPublished": false
+}

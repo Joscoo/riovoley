@@ -1,0 +1,8 @@
+{
+  "success": true,
+  "mode": "apply",
+  "onlyLocal": true,
+  "productionChanged": false,
+  "sqlFile": "database\\security\\local\\20261029141114_riovoley_security_local.sql",
+  "transaction": "COMMIT"
+}

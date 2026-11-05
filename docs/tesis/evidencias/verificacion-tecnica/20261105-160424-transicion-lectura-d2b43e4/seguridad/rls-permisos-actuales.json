@@ -1,0 +1,135 @@
+{
+  "observedAt": "2026-11-05T16:06:45.062Z",
+  "access": [
+    {
+      "role": "anon",
+      "delete": true,
+      "insert": true,
+      "schema": "public",
+      "select": true,
+      "update": true,
+      "relkind": "v",
+      "relation": "gamification_xp_ledger",
+      "schemaUsage": true,
+      "securityInvoker": true
+    },
+    {
+      "role": "authenticated",
+      "delete": true,
+      "insert": true,
+      "schema": "public",
+      "select": true,
+      "update": true,
+      "relkind": "v",
+      "relation": "gamification_xp_ledger",
+      "schemaUsage": true,
+      "securityInvoker": true
+    },
+    {
+      "role": "anon",
+      "delete": true,
+      "insert": true,
+      "schema": "public",
+      "select": true,
+      "update": true,
+      "relkind": "v",
+      "relation": "gamification_login_rewards",
+      "schemaUsage": true,
+      "securityInvoker": true
+    },
+    {
+      "role": "authenticated",
+      "delete": true,
+      "insert": true,
+      "schema": "public",
+      "select": true,
+      "update": true,
+      "relkind": "v",
+      "relation": "gamification_login_rewards",
+      "schemaUsage": true,
+      "securityInvoker": true
+    },
+    {
+      "role": "anon",
+      "delete": false,
+      "insert": false,
+      "schema": "gamification",
+      "select": false,
+      "update": false,
+      "relkind": "r",
+      "relation": "xp_ledger",
+      "schemaUsage": true,
+      "securityInvoker": false
+    },
+    {
+      "role": "authenticated",
+      "delete": true,
+      "insert": true,
+      "schema": "gamification",
+      "select": true,
+      "update": true,
+      "relkind": "r",
+      "relation": "xp_ledger",
+      "schemaUsage": true,
+      "securityInvoker": false
+    },
+    {
+      "role": "anon",
+      "delete": false,
+      "insert": false,
+      "schema": "gamification",
+      "select": false,
+      "update": false,
+      "relkind": "r",
+      "relation": "login_rewards",
+      "schemaUsage": true,
+      "securityInvoker": false
+    },
+    {
+      "role": "authenticated",
+      "delete": false,
+      "insert": true,
+      "schema": "gamification",
+      "select": true,
+      "update": true,
+      "relkind": "r",
+      "relation": "login_rewards",
+      "schemaUsage": true,
+      "securityInvoker": false
+    }
+  ],
+  "pg_net": {
+    "schema": "public",
+    "version": "0.14.0",
+    "relocatable": false
+  },
+  "policies": [
+    {
+      "name": "rls_login_rewards_owner",
+      "roles": [
+        "authenticated"
+      ],
+      "table": "login_rewards",
+      "schema": "gamification",
+      "command": "ALL",
+      "usingAlwaysTrue": false,
+      "withCheckAlwaysTrue": false,
+      "usingContainsAuthUidText": true
+    },
+    {
+      "name": "rls_xp_ledger_owner",
+      "roles": [
+        "authenticated"
+      ],
+      "table": "xp_ledger",
+      "schema": "gamification",
+      "command": "ALL",
+      "usingAlwaysTrue": false,
+      "withCheckAlwaysTrue": false,
+      "usingContainsAuthUidText": true
+    }
+  ],
+  "readOnly": true,
+  "writeAttempts": 0,
+  "note": "Grants, RLS y security_invoker son metadatos distintos; no se prueban operaciones efectivas de escritura. usingContainsAuthUidText no demuestra correccion semantica de la policy."
+}

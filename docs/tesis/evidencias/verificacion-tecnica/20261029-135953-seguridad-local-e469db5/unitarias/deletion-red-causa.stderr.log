@@ -1,0 +1,59 @@
+FAIL src/features/user-management/infrastructure/repositories/deletion.security.test.js
+  × rechazo de autorización Auth deja intactas las tablas de usuario (13 ms)
+  × objetivo autorizado se comprueba antes de eliminar filas relacionadas (1 ms)
+
+  ● rechazo de autorización Auth deja intactas las tablas de usuario
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 5
+
+    - Array []
+    + Array [
+    +   "students",
+    +   "user_profiles",
+    +   "users",
+    + ]
+
+      14 |  const deleted=[];mockDatabase(deleted);
+      15 |  await expect(new SupabaseUserManagementRepository().deleteUser('fixture-user','atleta')).rejects.toThrow('TARGET_NOT_ALLOWED');
+    > 16 |  expect(deleted).toEqual([]);
+         |                  ^
+      17 | });
+      18 | test('objetivo autorizado se comprueba antes de eliminar filas relacionadas',async()=>{
+      19 |  const steps=[];
+
+      at Object.<anonymous> (src/features/user-management/infrastructure/repositories/deletion.security.test.js:16:18)
+
+  ● objetivo autorizado se comprueba antes de eliminar filas relacionadas
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 1
+
+      Array [
+    -   "auth",
+        "students",
+        "user_profiles",
+        "users",
+    +   "auth",
+      ]
+
+      21 |  mockDatabase(steps);
+      22 |  await new SupabaseUserManagementRepository().deleteUser('fixture-user','atleta');
+    > 23 |  expect(steps).toEqual(['auth','students','user_profiles','users']);
+         |                ^
+      24 | });
+      25 |
+
+      at Object.<anonymous> (src/features/user-management/infrastructure/repositories/deletion.security.test.js:23:16)
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 2 total
+Snapshots:   0 total
+Time:        2.33 s
+Ran all test suites within paths "src/features/user-management/infrastructure/repositories/deletion.security.test.js".
+Test results written to: docs\tesis\evidencias\verificacion-tecnica\20261029-135953-seguridad-local-e469db5\unitarias\deletion-red-causa.json
+

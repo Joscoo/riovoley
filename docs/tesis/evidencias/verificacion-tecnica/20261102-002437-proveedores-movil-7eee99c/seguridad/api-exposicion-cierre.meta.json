@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/review-api-exposure.cjs"
+  ],
+  "start": "2026-11-02T03:56:57.764Z",
+  "end": "2026-11-02T03:56:57.927Z",
+  "durationSeconds": 0.163,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

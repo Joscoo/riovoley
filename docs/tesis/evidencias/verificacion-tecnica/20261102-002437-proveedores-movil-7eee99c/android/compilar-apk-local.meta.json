@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/build-local-android.cjs"
+  ],
+  "start": "2026-11-02T00:30:53.875Z",
+  "end": "2026-11-02T00:40:33.731Z",
+  "durationSeconds": 579.856,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

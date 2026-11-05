@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-11-02T00:24:37.468Z",
+  "freeMiB": 4514,
+  "totalMiB": 16309,
+  "parallelism": 12,
+  "previousFreeMiB": 337,
+  "userClosedUnrelatedApplications": true,
+  "agentKilledUserProcesses": false,
+  "restoreContainersStopped": false
+}

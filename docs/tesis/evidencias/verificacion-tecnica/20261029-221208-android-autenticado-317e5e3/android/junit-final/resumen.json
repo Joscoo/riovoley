@@ -1,0 +1,13 @@
+{
+  "results": [
+    {
+      "suite": "com.getcapacitor.myapp.ExampleUnitTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.01
+    }
+  ],
+  "scope": "Prueba de plantilla addition_isCorrect; no representa cobertura funcional de Android."
+}

@@ -1,0 +1,15 @@
+✔ QS de Express serializa arrays comma con null y undefined sin excepción (CVE-2026-8723) (51.9749ms)
+✔ Express conserva filtros anidados y body URL-encoded con el QS actualizado (305.5283ms)
+✔ Underscore usado por JSONPath procesa arrays de 20000 niveles sin desbordar la pila (CVE-2026-27601) (4.4338ms)
+✔ Underscore compara objetos de 6000 niveles sin desbordar la pila (16.8142ms)
+✔ JSONPath mantiene filtros y selección recursiva con el parche de Underscore (27.3563ms)
+✔ BFJ conserva la lectura y escritura JSON del informe de compilación (63.3537ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 573.2841
+

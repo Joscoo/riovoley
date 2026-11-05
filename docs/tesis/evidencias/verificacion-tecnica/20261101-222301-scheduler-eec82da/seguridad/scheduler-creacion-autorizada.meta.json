@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/production/create-scheduler-secret.cjs",
+    "--create-authorized"
+  ],
+  "start": "2026-11-01T22:30:39.546Z",
+  "end": "2026-11-01T22:30:45.876Z",
+  "durationSeconds": 6.33,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

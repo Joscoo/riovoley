@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\WINDOWS\\system32\\cmd.exe",
+    "/d",
+    "/c",
+    "npm audit fix --dry-run --ignore-scripts --json"
+  ],
+  "start": "2026-10-29T22:12:27.922Z",
+  "end": "2026-10-29T22:12:43.223Z",
+  "durationSeconds": 15.301,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

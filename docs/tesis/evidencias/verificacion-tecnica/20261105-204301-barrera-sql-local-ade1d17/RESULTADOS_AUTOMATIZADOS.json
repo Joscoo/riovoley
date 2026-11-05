@@ -1,0 +1,98 @@
+{
+  "reportedAt": "2026-11-05T20:47:55.928Z",
+  "baseCommit": "ade1d1748dc77f13d75da2b1248810f7b1a65386",
+  "phases": [
+    {
+      "label": "baseline",
+      "tests": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationSeconds": 0.444,
+      "exitCode": 0,
+      "start": "2026-11-05T20:43:24.699Z",
+      "end": "2026-11-05T20:43:25.143Z"
+    },
+    {
+      "label": "red",
+      "tests": 1,
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationSeconds": 0.377,
+      "exitCode": 1,
+      "start": "2026-11-05T20:43:25.148Z",
+      "end": "2026-11-05T20:43:25.525Z"
+    },
+    {
+      "label": "green",
+      "tests": 44,
+      "passed": 44,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationSeconds": 1.137,
+      "exitCode": 0,
+      "start": "2026-11-05T20:44:12.311Z",
+      "end": "2026-11-05T20:44:13.448Z"
+    },
+    {
+      "label": "green-final",
+      "tests": 47,
+      "passed": 47,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationSeconds": 1.185,
+      "exitCode": 0,
+      "start": "2026-11-05T20:44:55.667Z",
+      "end": "2026-11-05T20:44:56.852Z"
+    }
+  ],
+  "serverVersion": "17.11",
+  "syntheticRelations": 7,
+  "loginActors": [
+    {
+      "name": "anon",
+      "login": "authenticator",
+      "role": "anon"
+    },
+    {
+      "name": "authenticated",
+      "login": "authenticator",
+      "role": "authenticated"
+    },
+    {
+      "name": "service_role",
+      "login": "authenticator",
+      "role": "service_role"
+    },
+    {
+      "name": "supabase_auth_admin",
+      "login": "supabase_auth_admin",
+      "role": null
+    },
+    {
+      "name": "supabase_storage_admin",
+      "login": "supabase_storage_admin",
+      "role": null
+    }
+  ],
+  "syntheticRowsUnchanged": true,
+  "gateRemoved": true,
+  "databasePreserved": true,
+  "productionSqlFilesUnchanged": 4,
+  "newJestCases": 0,
+  "newPlaywrightCases": 0,
+  "newAndroidCases": 0,
+  "newBuilds": 0,
+  "realPostgres": true,
+  "mockedRepositories": false,
+  "httpAuthExercised": false,
+  "storageBytesExercised": false,
+  "fullMaintenanceIsolationEstablished": false,
+  "productionChanged": false,
+  "releaseReady": false
+}

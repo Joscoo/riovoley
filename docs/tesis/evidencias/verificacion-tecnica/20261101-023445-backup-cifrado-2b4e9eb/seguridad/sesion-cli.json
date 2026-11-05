@@ -1,0 +1,7 @@
+{
+  "operation": "Supabase CLI projects list (existing authentication only)",
+  "exitCode": 1,
+  "timedOut": false,
+  "projectCount": null,
+  "rawOutputPublished": false
+}

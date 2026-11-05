@@ -1,0 +1,708 @@
+[
+  {
+    "file": "android/apk-privado-privacidad-definitivo.meta.json",
+    "command": [
+      "python",
+      "scripts/audit/android/inspect-private.py",
+      "--label",
+      "definitivo"
+    ],
+    "start": "2026-10-31T19:37:30.317Z",
+    "end": "2026-10-31T19:37:37.596Z",
+    "durationSeconds": 7.279,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Consultar perfil: inspector autenticado exige anon real, no placeholder offline"
+  },
+  {
+    "file": "android/apk-privado-privacidad-produccion.meta.json",
+    "command": [
+      "python",
+      "scripts/audit/android/inspect-private.py",
+      "--label",
+      "produccion"
+    ],
+    "start": "2026-10-31T19:24:57.887Z",
+    "end": "2026-10-31T19:25:15.065Z",
+    "durationSeconds": 17.178,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Consultar perfil: inspector autenticado exige anon real, no placeholder offline"
+  },
+  {
+    "file": "android/definitivo/firma.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/android/collect-private.cjs",
+      "definitivo"
+    ],
+    "start": "2026-10-31T19:37:30.223Z",
+    "end": "2026-10-31T19:37:37.626Z",
+    "durationSeconds": 7.403,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Reproducción/compatibilidad/instalación fallida conservada; consultar stdout/stderr"
+  },
+  {
+    "file": "android/firma-datos.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/android/collect-private.cjs",
+      "produccion"
+    ],
+    "start": "2026-10-31T19:24:57.106Z",
+    "end": "2026-10-31T19:25:15.104Z",
+    "durationSeconds": 17.998,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Consultar perfil: inspector autenticado exige anon real, no placeholder offline"
+  },
+  {
+    "file": "android/privacidad-apk.meta.json",
+    "command": [
+      "python",
+      "scripts/audit/android/privacy.py",
+      "--report",
+      "android/privacidad-apk.json"
+    ],
+    "start": "2026-10-31T19:23:16.801Z",
+    "end": "2026-10-31T19:23:18.099Z",
+    "durationSeconds": 1.298,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Consultar perfil: inspector autenticado exige anon real, no placeholder offline"
+  },
+  {
+    "file": "compilacion-web/dev-server-candidato.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/closure/check-dependencies-dev-server.cjs",
+      "--label=candidato"
+    ],
+    "start": "2026-10-31T19:25:59.159Z",
+    "end": "2026-10-31T19:30:43.072Z",
+    "durationSeconds": 283.913,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "No aprobó el control HTTP/HMR; se conserva el intento"
+  },
+  {
+    "file": "edge-functions/serve.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\tools\\node_modules\\@supabase\\cli-windows-x64\\bin\\supabase.exe",
+      "functions",
+      "serve",
+      "--workdir",
+      "D:\\Riovoley\\riovoley\\.e2e-local\\stack",
+      "--network-id",
+      "riovoley-e2e-loopback",
+      "--env-file",
+      "D:\\Riovoley\\riovoley\\.e2e-local\\edge-1793473968745-2a7184.env"
+    ],
+    "start": "2026-10-31T19:12:48.746Z",
+    "end": "2026-10-31T19:53:34.483Z",
+    "durationSeconds": 2445.737,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Servicio local detenido intencionalmente; no suite fallida"
+  },
+  {
+    "file": "herramientas/docker.meta.json",
+    "command": [
+      "docker",
+      "--host",
+      "npipe:////./pipe/dockerDesktopLinuxEngine",
+      "info",
+      "--format",
+      "{{.ServerVersion}}"
+    ],
+    "start": "2026-10-31T19:11:02.609Z",
+    "end": "2026-10-31T19:11:03.940Z",
+    "durationSeconds": 1.331,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Reproducción/compatibilidad/instalación fallida conservada; consultar stdout/stderr"
+  },
+  {
+    "file": "integracion/dev-server-actualizado.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/closure/check-dependencies-dev-server.cjs",
+      "--label=actualizado"
+    ],
+    "start": "2026-10-30T15:36:26.975Z",
+    "end": "2026-10-30T15:39:03.844Z",
+    "durationSeconds": 156.869,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "No aprobó el control HTTP/HMR; se conserva el intento"
+  },
+  {
+    "file": "integracion/dev-server-corregido.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/closure/check-dependencies-dev-server.cjs",
+      "--label=corregido"
+    ],
+    "start": "2026-10-31T19:05:18.612Z",
+    "end": "2026-10-31T19:09:20.298Z",
+    "durationSeconds": 241.686,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "No aprobó el control HTTP/HMR; se conserva el intento"
+  },
+  {
+    "file": "integracion/dev-server-definitivo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/closure/check-dependencies-dev-server.cjs",
+      "--label=definitivo"
+    ],
+    "start": "2026-10-31T19:33:15.412Z",
+    "end": "2026-10-31T19:36:00.081Z",
+    "durationSeconds": 164.669,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "No aprobó el control HTTP/HMR; se conserva el intento"
+  },
+  {
+    "file": "integracion/dev-server-origen-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/closure/check-dependencies-dev-server.cjs",
+      "--baseline",
+      "--label=origen-rojo"
+    ],
+    "start": "2026-10-30T15:31:10.868Z",
+    "end": "2026-10-30T15:32:50.163Z",
+    "durationSeconds": 99.295,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "No aprobó el control HTTP/HMR; se conserva el intento"
+  },
+  {
+    "file": "paneles-captura-corregida/ejecucion.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/admin.modules-navigation.spec.js",
+      "tests/e2e/admin.provisioning-notifications.smoke.spec.js",
+      "tests/e2e/asistencias.guided.review.spec.js",
+      "tests/e2e/filters-sorting.phase2-lists.spec.js",
+      "tests/e2e/filters-sorting.physical-tests.spec.js",
+      "tests/e2e/filters-sorting.tables.spec.js",
+      "tests/e2e/filters-sorting.user-management.spec.js",
+      "tests/e2e/responsive.smoke.spec.js",
+      "tests/e2e/roles.modules-navigation.spec.js",
+      "tests/e2e/roles.panels-navigation.smoke.spec.js",
+      "--config=playwright.local.config.cjs",
+      "--grep-invert=public route responsive guard",
+      "--workers=2"
+    ],
+    "start": "2026-10-31T19:28:05.068Z",
+    "end": "2026-10-31T19:35:21.726Z",
+    "durationSeconds": 436.658,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Intento conservado; captura CSS corregida sin cambiar aserciones"
+  },
+  {
+    "file": "paneles-finales/ejecucion.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Riovoley\\riovoley\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/admin.modules-navigation.spec.js",
+      "tests/e2e/admin.provisioning-notifications.smoke.spec.js",
+      "tests/e2e/asistencias.guided.review.spec.js",
+      "tests/e2e/filters-sorting.phase2-lists.spec.js",
+      "tests/e2e/filters-sorting.physical-tests.spec.js",
+      "tests/e2e/filters-sorting.tables.spec.js",
+      "tests/e2e/filters-sorting.user-management.spec.js",
+      "tests/e2e/responsive.smoke.spec.js",
+      "tests/e2e/roles.modules-navigation.spec.js",
+      "tests/e2e/roles.panels-navigation.smoke.spec.js",
+      "--config=playwright.local.config.cjs",
+      "--grep-invert=public route responsive guard",
+      "--workers=2"
+    ],
+    "start": "2026-10-31T19:18:00.143Z",
+    "end": "2026-10-31T19:25:19.718Z",
+    "durationSeconds": 439.575,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Intento conservado; captura CSS corregida sin cambiar aserciones"
+  },
+  {
+    "file": "regresion/paneles-captura-corregida.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/e2e/local/run.cjs",
+      "pending",
+      "--label=paneles-captura-corregida",
+      "--workers=2"
+    ],
+    "start": "2026-10-31T19:28:04.986Z",
+    "end": "2026-10-31T19:35:21.748Z",
+    "durationSeconds": 436.762,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Intento conservado; captura CSS corregida sin cambiar aserciones"
+  },
+  {
+    "file": "regresion/paneles-finales.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/e2e/local/run.cjs",
+      "pending",
+      "--label=paneles-finales",
+      "--workers=2"
+    ],
+    "start": "2026-10-31T19:18:00.043Z",
+    "end": "2026-10-31T19:25:19.817Z",
+    "durationSeconds": 439.774,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Intento conservado; captura CSS corregida sin cambiar aserciones"
+  },
+  {
+    "file": "seguridad/configuracion-y-schema-final.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/check-config.cjs"
+    ],
+    "start": "2026-10-31T19:21:50.251Z",
+    "end": "2026-10-31T19:21:51.445Z",
+    "durationSeconds": 1.194,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Incompatibilidad del esquema completo publicado; validación final acotada declarada"
+  },
+  {
+    "file": "seguridad/configuracion-y-schema.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/check-config.cjs"
+    ],
+    "start": "2026-10-31T19:20:56.092Z",
+    "end": "2026-10-31T19:21:00.371Z",
+    "durationSeconds": 4.279,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Incompatibilidad del esquema completo publicado; validación final acotada declarada"
+  },
+  {
+    "file": "seguridad/empaquetado-raiz.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:15:09.270Z",
+    "end": "2026-10-31T19:15:11.196Z",
+    "durationSeconds": 1.926,
+    "exitCode": 4294963238,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Reproducción/compatibilidad/instalación fallida conservada; consultar stdout/stderr"
+  },
+  {
+    "file": "seguridad/instalacion-limpia.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:10:59.940Z",
+    "end": "2026-10-31T19:11:02.044Z",
+    "durationSeconds": 2.104,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\clean-production-1793473859559",
+    "interpretation": "Reproducción/compatibilidad/instalación fallida conservada; consultar stdout/stderr"
+  },
+  {
+    "file": "seguridad/lock-empaquetado-raiz.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "install",
+      "--package-lock-only",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "start": "2026-10-31T19:15:36.227Z",
+    "end": "2026-10-31T19:15:38.314Z",
+    "durationSeconds": 2.087,
+    "exitCode": 4294963238,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\packed-lock-1793474136110",
+    "interpretation": "Reproducción/compatibilidad/instalación fallida conservada; consultar stdout/stderr"
+  },
+  {
+    "file": "seguridad/merge-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/integration/toolchain.production-readiness.test.cjs"
+    ],
+    "start": "2026-10-30T15:19:40.139Z",
+    "end": "2026-10-30T15:19:40.591Z",
+    "durationSeconds": 0.452,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Reproducción/compatibilidad/instalación fallida conservada; consultar stdout/stderr"
+  },
+  {
+    "file": "seguridad/npm-auxiliar-final.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json"
+    ],
+    "start": "2026-10-31T19:10:56.409Z",
+    "end": "2026-10-31T19:10:57.509Z",
+    "durationSeconds": 1.1,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "riovoley",
+    "interpretation": "Consultar JSON: avisos del registro o dependencia transitiva; no caso funcional"
+  },
+  {
+    "file": "seguridad/npm-functions-final.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json"
+    ],
+    "start": "2026-10-31T19:10:54.234Z",
+    "end": "2026-10-31T19:10:56.405Z",
+    "durationSeconds": 2.171,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "functions",
+    "interpretation": "Consultar JSON: avisos del registro o dependencia transitiva; no caso funcional"
+  },
+  {
+    "file": "seguridad/npm-raiz-before.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json"
+    ],
+    "start": "2026-10-30T15:15:55.731Z",
+    "end": "2026-10-30T15:16:00.422Z",
+    "durationSeconds": 4.691,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Consultar JSON: avisos del registro o dependencia transitiva; no caso funcional"
+  },
+  {
+    "file": "seguridad/npm-raiz-final.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json"
+    ],
+    "start": "2026-10-31T19:10:28.268Z",
+    "end": "2026-10-31T19:10:54.229Z",
+    "durationSeconds": 25.961,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Consultar JSON: avisos del registro o dependencia transitiva; no caso funcional"
+  },
+  {
+    "file": "seguridad/patrones-empaquetados.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/integration/toolchain.patterns.test.cjs"
+    ],
+    "start": "2026-10-31T19:18:15.940Z",
+    "end": "2026-10-31T19:18:16.992Z",
+    "durationSeconds": 1.052,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Reproducción/compatibilidad/instalación fallida conservada; consultar stdout/stderr"
+  },
+  {
+    "file": "seguridad/patrones-primer-verde.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "tests/integration/toolchain.patterns.test.cjs"
+    ],
+    "start": "2026-10-31T19:14:54.269Z",
+    "end": "2026-10-31T19:14:54.793Z",
+    "durationSeconds": 0.524,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Reproducción/compatibilidad/instalación fallida conservada; consultar stdout/stderr"
+  },
+  {
+    "file": "seguridad/patrones-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "tests/integration/toolchain.patterns.test.cjs"
+    ],
+    "start": "2026-10-31T19:13:37.347Z",
+    "end": "2026-10-31T19:13:38.328Z",
+    "durationSeconds": 0.981,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Reproducción/compatibilidad/instalación fallida conservada; consultar stdout/stderr"
+  },
+  {
+    "file": "seguridad/preflight-config-local-1793474510501.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/production/preflight.cjs",
+      "--profile",
+      "frontend",
+      "--structure"
+    ],
+    "start": "2026-10-31T19:21:50.501Z",
+    "end": "2026-10-31T19:21:50.776Z",
+    "durationSeconds": 0.275,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Configuración incompleta: despliegue bloqueado"
+  },
+  {
+    "file": "seguridad/preflight-config-local-1793474543827.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/production/preflight.cjs",
+      "--profile",
+      "frontend",
+      "--structure"
+    ],
+    "start": "2026-10-31T19:22:23.827Z",
+    "end": "2026-10-31T19:22:23.941Z",
+    "durationSeconds": 0.114,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Configuración incompleta: despliegue bloqueado"
+  },
+  {
+    "file": "seguridad/preflight-config-local-1793474895924.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/production/preflight.cjs",
+      "--profile",
+      "frontend",
+      "--structure"
+    ],
+    "start": "2026-10-31T19:28:15.924Z",
+    "end": "2026-10-31T19:28:16.081Z",
+    "durationSeconds": 0.157,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Configuración incompleta: despliegue bloqueado"
+  },
+  {
+    "file": "seguridad/preflight-config-local.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/production/preflight.cjs",
+      "--profile",
+      "frontend",
+      "--structure"
+    ],
+    "start": "2026-10-31T19:20:56.423Z",
+    "end": "2026-10-31T19:20:56.571Z",
+    "durationSeconds": 0.148,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Configuración incompleta: despliegue bloqueado"
+  },
+  {
+    "file": "seguridad/spike-direct-pattern-resolve.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "-e",
+      "const r=require('node:module').createRequire(require.resolve('eslint'));console.log(typeof r('minimatch'));console.log(require('glob').sync('vendor/*'));"
+    ],
+    "start": "2026-10-31T19:16:46.579Z",
+    "end": "2026-10-31T19:16:46.997Z",
+    "durationSeconds": 0.418,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\direct-pattern-1793474177210",
+    "interpretation": "Reproducción/compatibilidad/instalación fallida conservada; consultar stdout/stderr"
+  },
+  {
+    "file": "stack/continuidad.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/e2e/local/manage.cjs",
+      "start"
+    ],
+    "start": "2026-10-31T19:11:02.390Z",
+    "end": "2026-10-31T19:11:04.007Z",
+    "durationSeconds": 1.617,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Reproducción/compatibilidad/instalación fallida conservada; consultar stdout/stderr"
+  },
+  {
+    "file": "unitarias/adaptador-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/dev-server-config.test.cjs"
+    ],
+    "start": "2026-10-30T15:31:07.674Z",
+    "end": "2026-10-30T15:31:10.863Z",
+    "durationSeconds": 3.189,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Reproducción/compatibilidad/instalación fallida conservada; consultar stdout/stderr"
+  },
+  {
+    "file": "unitarias/cadena-actualizada-primer-intento.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/integration/toolchain.dependencies.test.cjs",
+      "tests/integration/toolchain.security-followup.test.cjs",
+      "tests/integration/toolchain.loaders-security.test.cjs",
+      "tests/integration/toolchain.production-readiness.test.cjs",
+      "tests/unit/dev-server-config.test.cjs",
+      "tests/unit/production-preflight.test.cjs"
+    ],
+    "start": "2026-10-30T15:34:42.427Z",
+    "end": "2026-10-30T15:34:55.591Z",
+    "durationSeconds": 13.164,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Reproducción/compatibilidad/instalación fallida conservada; consultar stdout/stderr"
+  },
+  {
+    "file": "unitarias/cadena-corregida.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/integration/toolchain.dependencies.test.cjs",
+      "tests/integration/toolchain.security-followup.test.cjs",
+      "tests/integration/toolchain.loaders-security.test.cjs",
+      "tests/integration/toolchain.production-readiness.test.cjs",
+      "tests/unit/dev-server-config.test.cjs",
+      "tests/unit/production-preflight.test.cjs"
+    ],
+    "start": "2026-10-30T15:36:16.711Z",
+    "end": "2026-10-30T15:37:37.420Z",
+    "durationSeconds": 80.709,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Reproducción/compatibilidad/instalación fallida conservada; consultar stdout/stderr"
+  },
+  {
+    "file": "unitarias/cadena-instalacion-limpia.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-concurrency=1",
+      "tests/integration/toolchain.dependencies.test.cjs",
+      "tests/integration/toolchain.security-followup.test.cjs",
+      "tests/integration/toolchain.loaders-security.test.cjs",
+      "tests/integration/toolchain.production-readiness.test.cjs",
+      "tests/unit/dev-server-config.test.cjs",
+      "tests/unit/production-preflight.test.cjs",
+      "tests/integration/toolchain.patterns.test.cjs"
+    ],
+    "start": "2026-10-31T19:21:50.037Z",
+    "end": "2026-10-31T19:22:21.025Z",
+    "durationSeconds": 30.988,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".e2e-local\\spikes\\clean-production-1793474297501",
+    "interpretation": "Reproducción/compatibilidad/instalación fallida conservada; consultar stdout/stderr"
+  },
+  {
+    "file": "unitarias/cjs-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-concurrency=1",
+      "--test-reporter=tap",
+      "tests/unit/dev-server-config.test.cjs"
+    ],
+    "start": "2026-10-31T19:04:46.086Z",
+    "end": "2026-10-31T19:04:51.636Z",
+    "durationSeconds": 5.55,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Reproducción/compatibilidad/instalación fallida conservada; consultar stdout/stderr"
+  },
+  {
+    "file": "unitarias/diagnostico-middleware-aislado.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--stack-trace-limit=100",
+      "--test",
+      "--test-concurrency=1",
+      "--test-name-pattern=Middleware sirve",
+      "--test-reporter=tap",
+      "tests/integration/toolchain.loaders-security.test.cjs"
+    ],
+    "start": "2026-10-31T19:02:56.940Z",
+    "end": "2026-10-31T19:04:26.513Z",
+    "durationSeconds": 89.573,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": ".",
+    "interpretation": "Reproducción/compatibilidad/instalación fallida conservada; consultar stdout/stderr"
+  }
+]

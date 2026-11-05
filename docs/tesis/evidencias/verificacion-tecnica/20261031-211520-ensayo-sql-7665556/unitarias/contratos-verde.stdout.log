@@ -1,0 +1,11 @@
+✔ avance exige autorización operativa y huella; no acepta deriva silenciosa (1.1456ms)
+✔ rechaza catálogos con objetos reservados para el paquete (1.0793ms)
+✔ retorno conserva opción de concesión y exige huella del estado aplicado (1.0631ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 124.3678

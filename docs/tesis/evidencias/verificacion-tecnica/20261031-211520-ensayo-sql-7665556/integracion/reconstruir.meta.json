@@ -1,0 +1,11 @@
+{
+  "command": [
+    "node",
+    "scripts/audit/production/sql-lab.cjs"
+  ],
+  "start": "2026-10-31T21:16:49.863Z",
+  "end": "2026-10-31T21:16:53.428Z",
+  "durationSeconds": 3.565,
+  "exitCode": 1,
+  "signal": null
+}

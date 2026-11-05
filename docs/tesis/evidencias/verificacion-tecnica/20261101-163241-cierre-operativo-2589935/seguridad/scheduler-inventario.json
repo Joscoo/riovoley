@@ -1,0 +1,12 @@
+{
+  "observedAt": "2026-11-01T17:02:02.991Z",
+  "source": "Supabase MCP SQL READ ONLY; agregados sin comandos ni secretos",
+  "jobs": 1,
+  "activeJobs": 1,
+  "httpPostLiteralJobs": 0,
+  "paymentRemindersLiteralJobs": 0,
+  "schedulerSecretHeaderLiteralJobs": 0,
+  "vaultLiteralJobs": 0,
+  "externalSchedulersInventoried": false,
+  "jobExecuted": false
+}

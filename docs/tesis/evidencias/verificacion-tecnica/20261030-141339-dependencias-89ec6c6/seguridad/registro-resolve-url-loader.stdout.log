@@ -1,0 +1,10 @@
+{
+  "version": "5.0.0",
+  "dist-tags": {
+    "latest": "5.0.0"
+  },
+  "engines": {
+    "node": ">=12"
+  }
+}
+

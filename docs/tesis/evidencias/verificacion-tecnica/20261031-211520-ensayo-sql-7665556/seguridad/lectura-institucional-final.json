@@ -1,0 +1,11 @@
+{
+  "observedAt": "2026-10-31T21:27:56.421Z",
+  "projectId": "mayvvlkvheagkojunzzb",
+  "transaction": "BEGIN TRANSACTION READ ONLY; SELECT; ROLLBACK;",
+  "fingerprint": "15b9d9e869fb5113263c485714009878",
+  "expected": "15b9d9e869fb5113263c485714009878",
+  "matchesInstitutionalBaseline": true,
+  "productionWritesPerformed": false,
+  "exitCode": null,
+  "toolError": false
+}

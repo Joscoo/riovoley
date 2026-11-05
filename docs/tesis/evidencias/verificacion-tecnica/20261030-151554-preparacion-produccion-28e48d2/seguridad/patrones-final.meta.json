@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/integration/toolchain.patterns.test.cjs"
+  ],
+  "start": "2026-10-31T19:21:15.353Z",
+  "end": "2026-10-31T19:21:16.605Z",
+  "durationSeconds": 1.252,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

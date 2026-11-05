@@ -1,0 +1,8 @@
+{
+  "commit": "2b4e9ebf0f114d15065e689199042054ce625b1d",
+  "createdAt": "2026-11-01T02:34:45.433Z",
+  "scope": "Preparar exportacion PostgreSQL cifrada con entrada local de credenciales; validar con datos sinteticos. No modificar produccion, secretos o permisos.",
+  "productionChanged": false,
+  "institutionalPasswordAvailableToUser": true,
+  "passwordSuppliedToAgent": false
+}

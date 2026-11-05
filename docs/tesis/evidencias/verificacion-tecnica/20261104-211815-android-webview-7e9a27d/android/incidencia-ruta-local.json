@@ -1,0 +1,16 @@
+{
+  "recordedAt": "2026-11-04T21:34:46.178Z",
+  "priorFailureStage": "DEVICE_OFFLINE_NOT_PROVEN",
+  "priorRunCommand": "android/release-offline-host-comando.meta.json",
+  "observedRouteType": "10.0.2.0/24 directamente conectada a wlan0; sin default ni gateway",
+  "airplaneModeObserved": true,
+  "wifiDisabledObserved": true,
+  "ipv6DefaultAbsent": true,
+  "diagnosis": "El comprobador confundia salida no vacia con ruta predeterminada; Android devolvio el enlace local aun con el filtro default.",
+  "correction": "Parser conservador que solo admite loopback y enlaces virtuales esperados; sigue rechazando default, gateways, rutas publicas especificas, redes privadas ajenas y salida desconocida.",
+  "guardUnitTests": "../unitarias/rutas-aislamiento-verde.stdout.log",
+  "productionContacted": false,
+  "productLogicChanged": false,
+  "functionalWebviewExpectationsChanged": false,
+  "isolationGuardChanged": true
+}

@@ -1,0 +1,92 @@
+{
+  "createdAt": "2026-11-04T22:00:37.616Z",
+  "algorithm": "SHA-256",
+  "baseCommit": "7e9a27dd2b248a626a4440ece2e7227ba5e47ae5",
+  "entries": [
+    {
+      "file": "android/adb-servidor-local.meta.json",
+      "bytes": 345,
+      "sha256": "2ce8d65adab1370fec752564c02062ac88ab85b66cbcffbe7f8c1db949c4b0cd"
+    },
+    {
+      "file": "android/apk-local-compilado.json",
+      "bytes": 890,
+      "sha256": "353fd533ce0d2ffd3bbdb5112964ebcad01e3405aa9a3a0870087a43f97c8d1b"
+    },
+    {
+      "file": "android/apk-local-inspeccion-cierre.json",
+      "bytes": 1002,
+      "sha256": "7510a92e173eeeb1e17417aa19f6c06d7302f2b156ea0aa8641fe472a799db90"
+    },
+    {
+      "file": "android/apk-privado-inspeccion-cierre.json",
+      "bytes": 262,
+      "sha256": "0c966cdf31158ec94f1fe0255316524b6b7fca1afd737bb6c85030ac55c4905e"
+    },
+    {
+      "file": "android/inspeccion-contenido.meta.json",
+      "bytes": 276,
+      "sha256": "5d75f5a5acf7a1a064ee777905cb76a83a92a335d225456033f137bd40d11739"
+    },
+    {
+      "file": "android/inspeccion-contenido.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/inspeccion-contenido.stdout.log",
+      "bytes": 161,
+      "sha256": "f448c8a5214707d169254824251001764baff4e44d24c697417ce891342a2d6d"
+    },
+    {
+      "file": "android/resultado-intento.json",
+      "bytes": 694,
+      "sha256": "5d6e56d89f0f8dabd067e258fdc8c70180b7e3878f543414e7194196aed4ffdb"
+    },
+    {
+      "file": "COMANDOS.json",
+      "bytes": 782,
+      "sha256": "23095ea7bbba4a2ed1d7e022c3e50b3bbae5cc8b4bc0ed215f8e6e662e78d5f0"
+    },
+    {
+      "file": "compilacion-web/salida-generada.json",
+      "bytes": 449,
+      "sha256": "86e4a0ce178ed94be379158cc29ed2c11da5fe4279937cc52ad6d4e3148311e0"
+    },
+    {
+      "file": "CONTEXTO.json",
+      "bytes": 586,
+      "sha256": "51751a797711b0966f6235e949dd3c4dcb54542835744a3d5dc380b15fa02920"
+    },
+    {
+      "file": "FUENTES_EVALUADAS.json",
+      "bytes": 265,
+      "sha256": "cadfe3fe4925aef604ad8eb6406b817d518dcba98e6828341d31e66efc6f4176"
+    },
+    {
+      "file": "INFORME_VERIFICACION_TECNICA.md",
+      "bytes": 1347,
+      "sha256": "3fe9879e49c0f276654904b93c77098fa34b474e0d8ae8ae0d7cf4594ec1affd"
+    },
+    {
+      "file": "INTEGRIDAD.json",
+      "bytes": 223,
+      "sha256": "0fcb4d98a52076424a97eea33897aa3316f46f1dc674b61763944bfea64b7c09"
+    },
+    {
+      "file": "MATRIZ_VERIFICACIONES_TESIS.md",
+      "bytes": 509,
+      "sha256": "a48b0884a7373b59856732f8e8c17d68242bb53c95f2acaf105af06c2ce38bf4"
+    },
+    {
+      "file": "PRIVACIDAD.json",
+      "bytes": 406,
+      "sha256": "e95fa151811159dd5d0a08b5d14cb1b4285ade2b089c5d073a6e121641bb96b6"
+    },
+    {
+      "file": "RESULTADOS_PARA_TESIS_4_5.md",
+      "bytes": 587,
+      "sha256": "7627ff5d198561e76b73e70b10bc366822ece679b4104289c53d122d0fb3018c"
+    }
+  ]
+}
