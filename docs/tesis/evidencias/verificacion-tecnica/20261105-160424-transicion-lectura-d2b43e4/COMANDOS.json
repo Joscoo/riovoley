@@ -1,0 +1,66 @@
+[
+  {
+    "file": "seguridad/artefactos-cierre-comando.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/verify-transition-artifacts.cjs"
+    ],
+    "start": "2026-11-05T16:28:53.781Z",
+    "end": "2026-11-05T16:28:55.612Z",
+    "durationSeconds": 1.831,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/artefactos-comando.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/verify-transition-artifacts.cjs"
+    ],
+    "start": "2026-11-05T16:12:01.445Z",
+    "end": "2026-11-05T16:12:03.891Z",
+    "durationSeconds": 2.446,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/consulta-permisos.meta.json",
+    "tool": "Supabase MCP execute_sql",
+    "projectId": "mayvvlkvheagkojunzzb",
+    "startedAt": "2026-11-05T16:06:44.081Z",
+    "finishedAt": "2026-11-05T16:06:45.062Z",
+    "toolIsError": false,
+    "osExitCode": null,
+    "queryFile": "consulta-permisos.sql",
+    "operation": "read",
+    "credentialsRequested": false
+  },
+  {
+    "file": "seguridad/http-publico-comando.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/read-public-transition.cjs"
+    ],
+    "start": "2026-11-05T16:12:01.430Z",
+    "end": "2026-11-05T16:12:02.757Z",
+    "durationSeconds": 1.327,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/retorno-edge-comando.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/verify-transition-return.cjs"
+    ],
+    "start": "2026-11-05T16:14:19.260Z",
+    "end": "2026-11-05T16:14:20.191Z",
+    "durationSeconds": 0.931,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  }
+]

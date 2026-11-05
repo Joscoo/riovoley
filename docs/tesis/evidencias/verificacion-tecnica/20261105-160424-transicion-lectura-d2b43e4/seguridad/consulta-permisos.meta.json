@@ -1,0 +1,11 @@
+{
+  "tool": "Supabase MCP execute_sql",
+  "projectId": "mayvvlkvheagkojunzzb",
+  "startedAt": "2026-11-05T16:06:44.081Z",
+  "finishedAt": "2026-11-05T16:06:45.062Z",
+  "toolIsError": false,
+  "osExitCode": null,
+  "queryFile": "consulta-permisos.sql",
+  "operation": "read",
+  "credentialsRequested": false
+}

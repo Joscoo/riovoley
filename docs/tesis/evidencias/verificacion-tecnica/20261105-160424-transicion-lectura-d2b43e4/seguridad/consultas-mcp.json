@@ -1,0 +1,62 @@
+[
+  {
+    "label": "catalog",
+    "service": "Supabase MCP / Riovoley APP",
+    "startedAt": "2026-11-05T16:00:44.867Z",
+    "finishedAt": "2026-11-05T16:00:45.998Z",
+    "toolIsError": false,
+    "osExitCode": null,
+    "operation": "read",
+    "credentialsValuesPublished": false
+  },
+  {
+    "label": "fingerprint",
+    "service": "Supabase MCP / Riovoley APP",
+    "startedAt": "2026-11-05T16:02:24.775Z",
+    "finishedAt": "2026-11-05T16:02:25.982Z",
+    "toolIsError": false,
+    "osExitCode": null,
+    "operation": "read",
+    "credentialsValuesPublished": false
+  },
+  {
+    "label": "advisors",
+    "service": "Supabase MCP / Riovoley APP",
+    "startedAt": "2026-11-05T16:00:44.882Z",
+    "finishedAt": "2026-11-05T16:00:47.747Z",
+    "toolIsError": false,
+    "osExitCode": null,
+    "operation": "read",
+    "credentialsValuesPublished": false
+  },
+  {
+    "label": "edge",
+    "service": "Supabase MCP / Riovoley APP",
+    "startedAt": "2026-11-05T16:00:44.882Z",
+    "finishedAt": "2026-11-05T16:00:46.847Z",
+    "toolIsError": false,
+    "osExitCode": null,
+    "operation": "read",
+    "credentialsValuesPublished": false
+  },
+  {
+    "label": "vercel_project",
+    "service": "Vercel MCP / Riovoley",
+    "startedAt": "2026-11-05T16:00:44.882Z",
+    "finishedAt": "2026-11-05T16:00:47.193Z",
+    "toolIsError": false,
+    "osExitCode": null,
+    "operation": "read",
+    "credentialsValuesPublished": false
+  },
+  {
+    "label": "vercel_deployment",
+    "service": "Vercel MCP / Riovoley",
+    "startedAt": "2026-11-05T16:00:44.882Z",
+    "finishedAt": "2026-11-05T16:00:47.875Z",
+    "toolIsError": false,
+    "osExitCode": null,
+    "operation": "read",
+    "credentialsValuesPublished": false
+  }
+]

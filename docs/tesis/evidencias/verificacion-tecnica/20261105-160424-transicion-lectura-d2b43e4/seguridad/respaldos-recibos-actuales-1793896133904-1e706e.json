@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-11-05T16:28:53.903Z",
+  "sql": {
+    "createdAt": "2026-11-01T02:58:51.738Z",
+    "statusAtCreation": "ENCRYPTED_LOGICAL_ARCHIVE_VERIFIED",
+    "ciphertextBytes": 1418439,
+    "ciphertextHashMatchesReceipt": true,
+    "ageHours": 109.5
+  },
+  "storage": {
+    "createdAt": "2026-11-01T16:15:52.600Z",
+    "statusAtCreation": "ENCRYPTED_STORAGE_BACKUP_AND_ISOLATED_BYTES_VERIFIED",
+    "objectsAtCreation": 43,
+    "bytesAtCreation": 3596269,
+    "encryptedManifestWasVerified": true,
+    "isolatedBytesWereVerified": true,
+    "managedStorageApiRestoreVerified": false
+  },
+  "freshBackupPerformed": false,
+  "archiveUnlocked": false,
+  "newRestorePerformed": false,
+  "restoreEvidence": "../20261101-030216-restore-institucional-63826e6/RESULTADOS_AUTOMATIZADOS.json",
+  "scope": "Integridad actual del ciphertext SQL y lectura de recibos historicos; no prueba vigencia de datos para una ventana futura ni nuevo descifrado/restauracion."
+}

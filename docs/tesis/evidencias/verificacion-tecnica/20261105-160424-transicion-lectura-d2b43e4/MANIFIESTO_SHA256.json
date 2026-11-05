@@ -1,0 +1,233 @@
+{
+  "createdAt": "2026-11-05T16:31:20.828Z",
+  "algorithm": "SHA-256",
+  "baseCommit": "d2b43e466e2b727f4fa9824a72326a0d05aa5c95",
+  "note": "Excluye manifiesto propio y artefactos privados. No modificar tras sellado.",
+  "entries": [
+    {
+      "file": "android/apk-existente-verificado-1793896133901-0f7f83.json",
+      "bytes": 459,
+      "sha256": "51b83b4e026cbfc699210ce65cff2fd15919f7e9bc2ea1193db28fd089942acd"
+    },
+    {
+      "file": "android/apk-existente-verificado.json",
+      "bytes": 459,
+      "sha256": "0cd855aa183a584094187876d02f64588c9f3985eed8abfef512535abc49db47"
+    },
+    {
+      "file": "COMANDOS.json",
+      "bytes": 1835,
+      "sha256": "b83d604ffeaa95b1257d509e1405d8fe037dc94d013b847681e2aa7fd25d8ffa"
+    },
+    {
+      "file": "CONTEXTO.json",
+      "bytes": 628,
+      "sha256": "68df16b6f2ff1a31a9934ac626b0f4805f97b7d710b3ada0d02e388da6c7b175"
+    },
+    {
+      "file": "FUENTES_EVALUADAS.json",
+      "bytes": 1493,
+      "sha256": "85dcaa9c34fcff3a6fd57f1fdd5ae81bc90500af4384f21726a4d2ed4b3a96ba"
+    },
+    {
+      "file": "INFORME_VERIFICACION_TECNICA.md",
+      "bytes": 10600,
+      "sha256": "eb3711bbd6bf95f76c6fbd549d42b4a8c520287ac3ee747d0ea6337ca1df1c14"
+    },
+    {
+      "file": "integracion/ci-candidato-verificado-1793896135293-4023b9.json",
+      "bytes": 407,
+      "sha256": "354676627c153bab5c4eb0c730c82d01feba6632b51e96b150cc80ce280f3cbf"
+    },
+    {
+      "file": "integracion/ci-candidato-verificado.json",
+      "bytes": 407,
+      "sha256": "2e10522b17c99df6f3eb9b9230c213cb9ba61465375c7dd7d434e21c5c29dc39"
+    },
+    {
+      "file": "INTEGRIDAD.json",
+      "bytes": 671,
+      "sha256": "110590528b36b52a9cf93dadeb62a121241323e4bcf3a31f278b643c2e37860b"
+    },
+    {
+      "file": "MATRIZ_VERIFICACIONES_TESIS.md",
+      "bytes": 1862,
+      "sha256": "298e18a4bb0c4dccf34197be8856d2dd7a1dbd19fe3d1ad9dd6e0b9a0c4f7520"
+    },
+    {
+      "file": "OPERACION_PROPUESTA.json",
+      "bytes": 1351,
+      "sha256": "41d6489bdbd65196f8b89b89ec83763bd28a893f96a4ada2238ab573d2d3933e"
+    },
+    {
+      "file": "PAQUETE_TRANSICION_PROPUESTO.md",
+      "bytes": 8946,
+      "sha256": "be8da3dc64e8dbc678031c1421ae31d14d205b0e269ad2266f4f99ac43b1d5f1"
+    },
+    {
+      "file": "PRIVACIDAD.json",
+      "bytes": 424,
+      "sha256": "ce90067ff2bec7e0fc786709e413d6bc36cb5912504d2354e8acefa6b15a72cf"
+    },
+    {
+      "file": "RESULTADOS_AUTOMATIZADOS.json",
+      "bytes": 4040,
+      "sha256": "1a50ded50be2b0cb060325758e08c19be102ddd61ce57a8104e70316f8f049d0"
+    },
+    {
+      "file": "RESULTADOS_PARA_TESIS_4_5.md",
+      "bytes": 2031,
+      "sha256": "f77c057cea9d306b8cbb750c2a364aaa570bc9ffb98bde02e0e6b079a26a3aba"
+    },
+    {
+      "file": "seguridad/artefactos-cierre-comando.meta.json",
+      "bytes": 282,
+      "sha256": "504dcd82080630593270eab2adcbeac833799fcb3811b61bbfd76699601e4e1e"
+    },
+    {
+      "file": "seguridad/artefactos-cierre-comando.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/artefactos-cierre-comando.stdout.log",
+      "bytes": 167,
+      "sha256": "889305bec7c9b803e129456cd5ab0d7369bc5e1ecfda0af510ef0c4ee19b10fa"
+    },
+    {
+      "file": "seguridad/artefactos-comando.meta.json",
+      "bytes": 282,
+      "sha256": "8f5ae2a3f9b877a26b1d5159e742ffd9050f07a4c3d000819c1e72148472c319"
+    },
+    {
+      "file": "seguridad/artefactos-comando.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/artefactos-comando.stdout.log",
+      "bytes": 167,
+      "sha256": "889305bec7c9b803e129456cd5ab0d7369bc5e1ecfda0af510ef0c4ee19b10fa"
+    },
+    {
+      "file": "seguridad/artefactos-sql-edge-verificados-1793896133874-433a68.json",
+      "bytes": 12185,
+      "sha256": "2d872c996128ed3dadecaafa19cf360e4dac6a0db594a8f8b0679f7462b19b59"
+    },
+    {
+      "file": "seguridad/artefactos-sql-edge-verificados.json",
+      "bytes": 12185,
+      "sha256": "b7614c46d7a686638ed5cb1a3c2f2a189fc3b0a692916c40cf67b7a6ee68c25d"
+    },
+    {
+      "file": "seguridad/consulta-catalogo.sql",
+      "bytes": 1303,
+      "sha256": "6a55a196e1fb9929c8cb7b9eac85aca3430e5a847d2d67c89dab99e9df83bf51"
+    },
+    {
+      "file": "seguridad/consulta-huella.sql",
+      "bytes": 8471,
+      "sha256": "3c9eecfb7371bf72072bd52443e1d8238ef0e9378016c56a4abcbe972ee3f6d6"
+    },
+    {
+      "file": "seguridad/consulta-permisos.meta.json",
+      "bytes": 309,
+      "sha256": "0f51b02269a6541c39f86c14683d0c4cf7a98242f04cd835851ec63ae69b9719"
+    },
+    {
+      "file": "seguridad/consulta-permisos.sql",
+      "bytes": 1505,
+      "sha256": "5ee8deaee14fb01aed2134f263cb1dea34565ff7e4d54f6e8ab8cf7dc06e965d"
+    },
+    {
+      "file": "seguridad/consultas-mcp.json",
+      "bytes": 1720,
+      "sha256": "e8675e7479336852d41525ae380a6a3f34432a3cf8f6a2be5522d729d98afdfc"
+    },
+    {
+      "file": "seguridad/edge-hashes-metadatos-actuales.json",
+      "bytes": 2130,
+      "sha256": "4302699168fbe1ef18bc20b64d549fa4dedcc8354fd8eb8edaae6adaf657f60a"
+    },
+    {
+      "file": "seguridad/edge-revisiones-actuales.json",
+      "bytes": 1206,
+      "sha256": "d0975b6f68ff606c45968c092818d025e1ca96a39801daff2f0d3d192849727e"
+    },
+    {
+      "file": "seguridad/guardas-y-orden-sql.json",
+      "bytes": 2035,
+      "sha256": "5d98663ff9fce68edd1cc37917f5a34cc40b815bb249bed807b69429f150c5d0"
+    },
+    {
+      "file": "seguridad/http-publico-comando.meta.json",
+      "bytes": 277,
+      "sha256": "71ade6629a49266b67f84afd9911239e8cc656ac1b667fba3c768960ea484723"
+    },
+    {
+      "file": "seguridad/http-publico-comando.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/http-publico-comando.stdout.log",
+      "bytes": 71,
+      "sha256": "8cacd99b8ce64d575d45b151255ba244776042c4c185d00d8c5f785d2090e961"
+    },
+    {
+      "file": "seguridad/https-publico-actual.json",
+      "bytes": 3127,
+      "sha256": "a396819db1c1801d511713ac462ff059eca058631e6dc6520264905cb5817c95"
+    },
+    {
+      "file": "seguridad/respaldos-recibos-actuales-1793896133904-1e706e.json",
+      "bytes": 964,
+      "sha256": "0194a1a29cd7a96ca703ca63f5ed4d82c675c50c0cdb6480ceb49674f5c1c535"
+    },
+    {
+      "file": "seguridad/respaldos-recibos-actuales.json",
+      "bytes": 965,
+      "sha256": "12930e071f13ab84a14912c70ef396d9ae2ce2e22e809ae3b9cb5b4402a58260"
+    },
+    {
+      "file": "seguridad/retorno-edge-archivos-verificados.json",
+      "bytes": 11269,
+      "sha256": "0b6ea9d75b40e05aa0c911fa998fdaf2bb72867cd189c458daae6f65ac7d88f8"
+    },
+    {
+      "file": "seguridad/retorno-edge-comando.meta.json",
+      "bytes": 279,
+      "sha256": "af30c656ebba69429a4ecdd6ed4efc472f9c158aae802a1f80d8a5f2d69df190"
+    },
+    {
+      "file": "seguridad/retorno-edge-comando.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "seguridad/retorno-edge-comando.stdout.log",
+      "bytes": 73,
+      "sha256": "fa4d982d003394d93643b69cfb7bacd62610e23c92c9c6903ec4c3cef9a994f1"
+    },
+    {
+      "file": "seguridad/rls-permisos-actuales.json",
+      "bytes": 3215,
+      "sha256": "3dc0f57c0bbf8416921e1523a983a5b4c3f65b1b804ff5c79342e2031a9a04be"
+    },
+    {
+      "file": "seguridad/supabase-avisos-actuales.json",
+      "bytes": 1633,
+      "sha256": "ef889d763cb2ff86b570265f54941aa8182d2fed5ce88e37f97d11a19182f07f"
+    },
+    {
+      "file": "seguridad/supabase-catalogo-actual.json",
+      "bytes": 906,
+      "sha256": "cb310d62047b0f4c2b85bd65a576df4572a620ed67a0f1c6565df3fb2867ac7d"
+    },
+    {
+      "file": "seguridad/vercel-actual.json",
+      "bytes": 1187,
+      "sha256": "097b32f7d5b5ded4bbc7c489daccd3c12991bf588a128c350f495cd5813f9c1e"
+    }
+  ]
+}

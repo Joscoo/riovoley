@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-11-05T16:28:55.291Z",
+  "commit": "d2b43e466e2b727f4fa9824a72326a0d05aa5c95",
+  "conclusion": "success",
+  "url": "https://github.com/Joscoo/riovoley/actions/runs/42059792014",
+  "recordedJest": {
+    "passed": 434,
+    "total": 434,
+    "suites": 91
+  },
+  "recordedWebBuildSucceeded": true,
+  "newCiExecution": false,
+  "newJestExecution": false,
+  "previousNativeWasLocal": true
+}

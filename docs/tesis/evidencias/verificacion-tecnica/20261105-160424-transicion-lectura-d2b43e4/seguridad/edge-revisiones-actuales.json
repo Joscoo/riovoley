@@ -1,0 +1,61 @@
+{
+  "observedAt": "2026-11-05T16:00:46.847Z",
+  "functions": [
+    {
+      "slug": "send-email",
+      "version": 20,
+      "status": "ACTIVE",
+      "verifyJwt": true
+    },
+    {
+      "slug": "update-user-password",
+      "version": 21,
+      "status": "ACTIVE",
+      "verifyJwt": true
+    },
+    {
+      "slug": "delete-auth-user",
+      "version": 6,
+      "status": "ACTIVE",
+      "verifyJwt": true
+    },
+    {
+      "slug": "generate-report",
+      "version": 11,
+      "status": "ACTIVE",
+      "verifyJwt": true
+    },
+    {
+      "slug": "generate-scheduled-reports",
+      "version": 11,
+      "status": "ACTIVE",
+      "verifyJwt": true
+    },
+    {
+      "slug": "delete-report-run",
+      "version": 7,
+      "status": "ACTIVE",
+      "verifyJwt": true
+    },
+    {
+      "slug": "sync-mobile-device",
+      "version": 9,
+      "status": "ACTIVE",
+      "verifyJwt": true
+    },
+    {
+      "slug": "send-push",
+      "version": 15,
+      "status": "ACTIVE",
+      "verifyJwt": true
+    },
+    {
+      "slug": "send-payment-reminders",
+      "version": 10,
+      "status": "ACTIVE",
+      "verifyJwt": true
+    }
+  ],
+  "currentCloudBytesDownloaded": false,
+  "productionChanged": false
+}
