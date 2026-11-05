@@ -1,0 +1,71 @@
+[
+  {
+    "file": "docs/tesis/evidencias/verificacion-tecnica/20261105-171049-prerrequisitos-corte-922a374/integracion/sintaxis-colector.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--check",
+      "scripts/audit/production/check-cutover-prerequisites.cjs"
+    ],
+    "start": "2026-11-05T17:13:52.535Z",
+    "end": "2026-11-05T17:13:52.637Z",
+    "durationSeconds": 0.102,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "docs/tesis/evidencias/verificacion-tecnica/20261105-171049-prerrequisitos-corte-922a374/integracion/sintaxis-informe.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--check",
+      "scripts/audit/production/report-cutover-prerequisites.cjs"
+    ],
+    "start": "2026-11-05T17:13:52.640Z",
+    "end": "2026-11-05T17:13:52.764Z",
+    "durationSeconds": 0.124,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "docs/tesis/evidencias/verificacion-tecnica/20261105-171049-prerrequisitos-corte-922a374/seguridad/cli-version.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\tools\\node_modules\\@supabase\\cli-windows-x64\\bin\\supabase.exe",
+      "--version"
+    ],
+    "start": "2026-11-05T17:13:51.419Z",
+    "end": "2026-11-05T17:13:52.531Z",
+    "durationSeconds": 1.112,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "docs/tesis/evidencias/verificacion-tecnica/20261105-171049-prerrequisitos-corte-922a374/seguridad/documentacion-mcp.meta.json",
+    "tool": "supabase_search_docs",
+    "startedAt": "2026-11-05T17:08:45.498Z",
+    "finishedAt": "2026-11-05T17:08:47.957Z",
+    "toolIsError": false,
+    "source": "https://supabase.com/docs/guides/platform/backups",
+    "fullSourcePublished": false
+  },
+  {
+    "file": "docs/tesis/evidencias/verificacion-tecnica/20261105-171049-prerrequisitos-corte-922a374/seguridad/respaldos-administrados.meta.json",
+    "command": [
+      ".e2e-local/tools/node_modules/@supabase/cli-windows-x64/bin/supabase.exe",
+      "backups",
+      "list",
+      "--project-ref",
+      "mayvvlkvheagkojunzzb",
+      "--output",
+      "json"
+    ],
+    "start": "2026-11-05T17:10:50.533Z",
+    "end": "2026-11-05T17:10:52.728Z",
+    "durationSeconds": 2.198,
+    "exitCode": 0,
+    "errorCode": null,
+    "stdout": "Projected fields in respaldos-administrados.json; raw output retained privately.",
+    "stderr": "Private; no raw authentication or provider diagnostics published."
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "startedAt": "2026-11-05T17:11:00.316Z",
+  "finishedAt": "2026-11-05T17:11:00.919Z",
+  "tool": "supabase_get_organization",
+  "toolIsError": false,
+  "organizationProjectBinding": "Project organization_id checked in preceding read-only project metadata",
+  "name": "Riovoley",
+  "plan": "free",
+  "tier": "tier_free",
+  "productionChanged": false,
+  "personalAccountsPublished": false
+}
