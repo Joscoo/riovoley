@@ -1,0 +1,16 @@
+{
+  "completedAt": "2026-11-05T15:43:28.072Z",
+  "sourceCommit": "5f605512448f0683e8ddc52e197e42fa5d909868",
+  "privateWork": ".e2e-local/native-local/20261105153654",
+  "privateApk": ".e2e-local/native-local/20261105153654/project/android/app/build/outputs/apk/debug/app-debug.apk",
+  "sha256": "6d552150179f818bce9bc587a079f49413efa22a3dd990651498b9c29088303c",
+  "bytes": 31076464,
+  "debuggable": true,
+  "signatureVerified": true,
+  "backend": "Supabase local descartable; http loopback por ADB reverse",
+  "otaDisabled": true,
+  "productionGoogleServicesOmitted": true,
+  "productionKeystoreOmitted": true,
+  "productionSourceFilesChanged": false,
+  "distributed": false
+}

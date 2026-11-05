@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\WINDOWS\\system32\\cmd.exe",
+    "/d",
+    "/c",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\cmdline-tools\\latest\\bin\\avdmanager.bat create avd -n riovoley-audit -k system-images;android-36;google_apis;x86_64 -p D:\\Riovoley\\riovoley\\.e2e-local\\native-validation\\20261105-154507\\device"
+  ],
+  "startedAt": "2026-11-05T15:45:10.222Z",
+  "finishedAt": "2026-11-05T15:45:12.391Z",
+  "exitCode": 0,
+  "errorCode": null,
+  "rawOutputPrivate": true
+}

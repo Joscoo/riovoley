@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-11-05T15:44:46.167Z",
+  "sourceCommit": "5f605512448f0683e8ddc52e197e42fa5d909868",
+  "appSourceMatchesInitialContext": true,
+  "apkSha256": "6d552150179f818bce9bc587a079f49413efa22a3dd990651498b9c29088303c",
+  "bytes": 31076464,
+  "panelTextFiles": 1,
+  "sourceMaps": 0,
+  "diagnosticsFlag": "omitted",
+  "literalAbsenceIsNotAVisibilityRequirement": true,
+  "signedWithProductionIdentity": false,
+  "distributed": false,
+  "nativeBuildExecuted": true
+}

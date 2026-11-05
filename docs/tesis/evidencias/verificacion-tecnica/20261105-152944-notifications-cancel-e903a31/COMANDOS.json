@@ -1,0 +1,811 @@
+[
+  {
+    "file": "android/actividad.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "shell",
+      "dumpsys",
+      "activity",
+      "activities"
+    ],
+    "startedAt": "2026-11-05T15:48:51.926Z",
+    "finishedAt": "2026-11-05T15:48:52.376Z",
+    "exitCode": 0,
+    "errorCode": null,
+    "rawOutputPrivate": true
+  },
+  {
+    "file": "android/adb-dispositivos-previos.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+      "devices"
+    ],
+    "startedAt": "2026-11-05T15:45:10.142Z",
+    "finishedAt": "2026-11-05T15:45:10.214Z",
+    "exitCode": 0,
+    "errorCode": null,
+    "rawOutputPrivate": true
+  },
+  {
+    "file": "android/adb-listen-local.meta.json",
+    "command": [
+      "powershell.exe",
+      "-NoProfile",
+      "-Command",
+      "Get-NetTCPConnection -State Listen -LocalPort 5037 | Select-Object -ExpandProperty LocalAddress | ConvertTo-Json -Compress"
+    ],
+    "startedAt": "2026-11-05T15:45:08.763Z",
+    "finishedAt": "2026-11-05T15:45:10.139Z",
+    "exitCode": 0,
+    "errorCode": null,
+    "rawOutputPrivate": true
+  },
+  {
+    "file": "android/adb-servidor-local.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+      "start-server"
+    ],
+    "startedAt": "2026-11-05T15:45:08.583Z",
+    "finishedAt": "2026-11-05T15:45:08.761Z",
+    "exitCode": 0,
+    "errorCode": null,
+    "rawOutputPrivate": true
+  },
+  {
+    "file": "android/autenticacion-candidato-comando.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/android/authenticated-webview.cjs",
+      "--label=candidato-actual",
+      "--verify-ota-hidden",
+      "--trace-auth"
+    ],
+    "start": "2026-11-05T15:48:52.393Z",
+    "end": "2026-11-05T15:51:16.131Z",
+    "durationSeconds": 143.738,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/avd-crear.meta.json",
+    "command": [
+      "C:\\WINDOWS\\system32\\cmd.exe",
+      "/d",
+      "/c",
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\cmdline-tools\\latest\\bin\\avdmanager.bat create avd -n riovoley-audit -k system-images;android-36;google_apis;x86_64 -p D:\\Riovoley\\riovoley\\.e2e-local\\native-validation\\20261105-154507\\device"
+    ],
+    "startedAt": "2026-11-05T15:45:10.222Z",
+    "finishedAt": "2026-11-05T15:45:12.391Z",
+    "exitCode": 0,
+    "errorCode": null,
+    "rawOutputPrivate": true
+  },
+  {
+    "file": "android/avd-identidad.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "emu",
+      "avd",
+      "name"
+    ],
+    "startedAt": "2026-11-05T15:48:29.730Z",
+    "finishedAt": "2026-11-05T15:48:29.925Z",
+    "exitCode": 0,
+    "errorCode": null,
+    "rawOutputPrivate": true
+  },
+  {
+    "file": "android/avion-verificar.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "shell",
+      "settings",
+      "get",
+      "global",
+      "airplane_mode_on"
+    ],
+    "startedAt": "2026-11-05T15:48:32.860Z",
+    "finishedAt": "2026-11-05T15:48:33.019Z",
+    "exitCode": 0,
+    "errorCode": null,
+    "rawOutputPrivate": true
+  },
+  {
+    "file": "android/candidato-actual-apk-huella.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\native-validation\\20261105-154507\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "shell",
+      "sha256sum",
+      "/data/app/~~8yJI8BzjkYU82KZVRMGbCw==/com.riovoley.app-fqeTUMlakHJmuccXkAhZNg==/base.apk"
+    ],
+    "start": "2026-11-05T15:49:15.016Z",
+    "end": "2026-11-05T15:49:16.516Z",
+    "durationSeconds": 1.5,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/candidato-actual-apk-ruta.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\native-validation\\20261105-154507\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "shell",
+      "pm",
+      "path",
+      "com.riovoley.app"
+    ],
+    "start": "2026-11-05T15:49:14.531Z",
+    "end": "2026-11-05T15:49:15.013Z",
+    "durationSeconds": 0.482,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/candidato-actual-detener.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\native-validation\\20261105-154507\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "shell",
+      "am",
+      "force-stop",
+      "com.riovoley.app"
+    ],
+    "start": "2026-11-05T15:49:16.675Z",
+    "end": "2026-11-05T15:49:17.214Z",
+    "durationSeconds": 0.539,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/candidato-actual-identidad-avd.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\native-validation\\20261105-154507\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "emu",
+      "avd",
+      "name"
+    ],
+    "start": "2026-11-05T15:49:13.875Z",
+    "end": "2026-11-05T15:49:14.528Z",
+    "durationSeconds": 0.653,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/candidato-actual-iniciar.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\native-validation\\20261105-154507\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "shell",
+      "am",
+      "start",
+      "-n",
+      "com.riovoley.app/.MainActivity"
+    ],
+    "start": "2026-11-05T15:49:17.600Z",
+    "end": "2026-11-05T15:49:18.068Z",
+    "durationSeconds": 0.468,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/candidato-actual-notificaciones-fijar.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\native-validation\\20261105-154507\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "shell",
+      "pm",
+      "set-permission-flags",
+      "com.riovoley.app",
+      "android.permission.POST_NOTIFICATIONS",
+      "user-fixed"
+    ],
+    "start": "2026-11-05T15:49:17.386Z",
+    "end": "2026-11-05T15:49:17.597Z",
+    "durationSeconds": 0.211,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/candidato-actual-notificaciones-restaurar.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\native-validation\\20261105-154507\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "shell",
+      "pm",
+      "clear-permission-flags",
+      "com.riovoley.app",
+      "android.permission.POST_NOTIFICATIONS",
+      "user-fixed"
+    ],
+    "start": "2026-11-05T15:51:14.133Z",
+    "end": "2026-11-05T15:51:15.958Z",
+    "durationSeconds": 1.825,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/candidato-actual-notificaciones-revocar.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\native-validation\\20261105-154507\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "shell",
+      "pm",
+      "revoke",
+      "com.riovoley.app",
+      "android.permission.POST_NOTIFICATIONS"
+    ],
+    "start": "2026-11-05T15:49:17.218Z",
+    "end": "2026-11-05T15:49:17.384Z",
+    "durationSeconds": 0.166,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/candidato-actual-tunel-retirar.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\native-validation\\20261105-154507\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "reverse",
+      "--remove",
+      "tcp:55321"
+    ],
+    "start": "2026-11-05T15:51:15.963Z",
+    "end": "2026-11-05T15:51:16.073Z",
+    "durationSeconds": 0.11,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/candidato-actual-tunel.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\native-validation\\20261105-154507\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "reverse",
+      "tcp:55321",
+      "tcp:55321"
+    ],
+    "start": "2026-11-05T15:49:16.519Z",
+    "end": "2026-11-05T15:49:16.671Z",
+    "durationSeconds": 0.152,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/datos-deshabilitar.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "shell",
+      "svc",
+      "data",
+      "disable"
+    ],
+    "startedAt": "2026-11-05T15:48:30.944Z",
+    "finishedAt": "2026-11-05T15:48:31.350Z",
+    "exitCode": 0,
+    "errorCode": null,
+    "rawOutputPrivate": true
+  },
+  {
+    "file": "android/emulador-detener.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "emu",
+      "kill"
+    ],
+    "startedAt": "2026-11-05T15:51:16.154Z",
+    "finishedAt": "2026-11-05T15:51:16.293Z",
+    "exitCode": 0,
+    "errorCode": null,
+    "rawOutputPrivate": true
+  },
+  {
+    "file": "android/iniciar-apk.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "shell",
+      "am",
+      "start",
+      "-n",
+      "com.riovoley.app/.MainActivity"
+    ],
+    "startedAt": "2026-11-05T15:48:39.659Z",
+    "finishedAt": "2026-11-05T15:48:39.915Z",
+    "exitCode": 0,
+    "errorCode": null,
+    "rawOutputPrivate": true
+  },
+  {
+    "file": "android/inspeccion-apk-corregido.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/inspect-local-android.cjs"
+    ],
+    "start": "2026-11-05T15:44:43.941Z",
+    "end": "2026-11-05T15:44:44.779Z",
+    "durationSeconds": 0.838,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/inspeccion-contenido.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/inspect-local-android.cjs"
+    ],
+    "start": "2026-11-05T15:45:08.225Z",
+    "end": "2026-11-05T15:45:08.580Z",
+    "durationSeconds": 0.355,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/instalar-apk.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "install",
+      "D:\\Riovoley\\riovoley\\.e2e-local\\native-local\\20261105153654\\project\\android\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+    ],
+    "startedAt": "2026-11-05T15:48:33.788Z",
+    "finishedAt": "2026-11-05T15:48:39.657Z",
+    "exitCode": 0,
+    "errorCode": null,
+    "rawOutputPrivate": true
+  },
+  {
+    "file": "android/local-aapt.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\build-tools\\35.0.0\\aapt.exe",
+      "dump",
+      "badging",
+      "D:\\Riovoley\\riovoley\\.e2e-local\\native-local\\20261105153654\\project\\android\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+    ],
+    "cwd": "",
+    "startedAt": "2026-11-05T15:43:26.449Z",
+    "finishedAt": "2026-11-05T15:43:27.105Z",
+    "durationSeconds": 0.656,
+    "exitCode": 0,
+    "rawLogsPrivate": true,
+    "environmentValuesRecorded": false
+  },
+  {
+    "file": "android/local-capacitor-sync.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Riovoley\\riovoley\\node_modules\\@capacitor\\cli\\bin\\capacitor",
+      "sync",
+      "android"
+    ],
+    "cwd": ".e2e-local/native-local/20261105153654/project",
+    "startedAt": "2026-11-05T15:40:27.035Z",
+    "finishedAt": "2026-11-05T15:40:37.541Z",
+    "durationSeconds": 10.506,
+    "exitCode": 0,
+    "rawLogsPrivate": true,
+    "environmentValuesRecorded": false
+  },
+  {
+    "file": "android/local-gradle.meta.json",
+    "command": [
+      "C:\\WINDOWS\\system32\\cmd.exe",
+      "/d",
+      "/c",
+      "gradlew.bat :app:assembleDebug :app:testDebugUnitTest --offline --no-daemon --no-configuration-cache --console=plain --stacktrace --max-workers=2"
+    ],
+    "cwd": ".e2e-local/native-local/20261105153654/project/android",
+    "startedAt": "2026-11-05T15:40:37.545Z",
+    "finishedAt": "2026-11-05T15:43:26.413Z",
+    "durationSeconds": 168.868,
+    "exitCode": 0,
+    "rawLogsPrivate": true,
+    "environmentValuesRecorded": false
+  },
+  {
+    "file": "android/local-signature.meta.json",
+    "command": [
+      "C:\\WINDOWS\\system32\\cmd.exe",
+      "/d",
+      "/c",
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\build-tools\\35.0.0\\apksigner.bat verify --verbose D:\\Riovoley\\riovoley\\.e2e-local\\native-local\\20261105153654\\project\\android\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+    ],
+    "cwd": "",
+    "startedAt": "2026-11-05T15:43:27.107Z",
+    "finishedAt": "2026-11-05T15:43:28.067Z",
+    "durationSeconds": 0.96,
+    "exitCode": 0,
+    "rawLogsPrivate": true,
+    "environmentValuesRecorded": false
+  },
+  {
+    "file": "android/local-web-build.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--require",
+      "D:\\Riovoley\\riovoley\\scripts\\production\\cra-release-preload.cjs",
+      "D:\\Riovoley\\riovoley\\node_modules\\react-scripts\\scripts\\build.js"
+    ],
+    "cwd": "",
+    "startedAt": "2026-11-05T15:37:02.369Z",
+    "finishedAt": "2026-11-05T15:40:27.031Z",
+    "durationSeconds": 204.662,
+    "exitCode": 0,
+    "rawLogsPrivate": true,
+    "environmentValuesRecorded": false
+  },
+  {
+    "file": "android/modo-avion.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "shell",
+      "cmd",
+      "connectivity",
+      "airplane-mode",
+      "enable"
+    ],
+    "startedAt": "2026-11-05T15:48:30.197Z",
+    "finishedAt": "2026-11-05T15:48:30.417Z",
+    "exitCode": 0,
+    "errorCode": null,
+    "rawOutputPrivate": true
+  },
+  {
+    "file": "android/paquete-previo.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "shell",
+      "pm",
+      "list",
+      "packages",
+      "com.riovoley.app"
+    ],
+    "startedAt": "2026-11-05T15:48:33.559Z",
+    "finishedAt": "2026-11-05T15:48:33.786Z",
+    "exitCode": 0,
+    "errorCode": null,
+    "rawOutputPrivate": true
+  },
+  {
+    "file": "android/privacidad-cierre.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/android/inspect-ota-native.cjs"
+    ],
+    "start": "2026-11-05T15:44:44.782Z",
+    "end": "2026-11-05T15:44:46.190Z",
+    "durationSeconds": 1.408,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/qemu-identidad.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "shell",
+      "getprop",
+      "ro.kernel.qemu"
+    ],
+    "startedAt": "2026-11-05T15:48:29.928Z",
+    "finishedAt": "2026-11-05T15:48:30.194Z",
+    "exitCode": 0,
+    "errorCode": null,
+    "rawOutputPrivate": true
+  },
+  {
+    "file": "android/reconstruccion-corregida-comando.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/build-local-android.cjs"
+    ],
+    "start": "2026-11-05T15:36:54.474Z",
+    "end": "2026-11-05T15:43:28.176Z",
+    "durationSeconds": 393.702,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/runtime-candidato-comando.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/android/launch-local-candidate.cjs",
+      "--current-build",
+      "--trace-auth"
+    ],
+    "start": "2026-11-05T15:45:07.833Z",
+    "end": "2026-11-05T15:51:18.544Z",
+    "durationSeconds": 370.711,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "android/rutas-ipv4.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "shell",
+      "ip",
+      "route",
+      "show",
+      "table",
+      "main"
+    ],
+    "startedAt": "2026-11-05T15:48:33.217Z",
+    "finishedAt": "2026-11-05T15:48:33.426Z",
+    "exitCode": 0,
+    "errorCode": null,
+    "rawOutputPrivate": true
+  },
+  {
+    "file": "android/rutas-ipv6.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "shell",
+      "ip",
+      "-6",
+      "route",
+      "show",
+      "table",
+      "main"
+    ],
+    "startedAt": "2026-11-05T15:48:33.428Z",
+    "finishedAt": "2026-11-05T15:48:33.545Z",
+    "exitCode": 0,
+    "errorCode": null,
+    "rawOutputPrivate": true
+  },
+  {
+    "file": "android/wifi-deshabilitar.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "shell",
+      "svc",
+      "wifi",
+      "disable"
+    ],
+    "startedAt": "2026-11-05T15:48:30.419Z",
+    "finishedAt": "2026-11-05T15:48:30.942Z",
+    "exitCode": 0,
+    "errorCode": null,
+    "rawOutputPrivate": true
+  },
+  {
+    "file": "android/wifi-verificar.meta.json",
+    "command": [
+      "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5580",
+      "shell",
+      "cmd",
+      "wifi",
+      "status"
+    ],
+    "startedAt": "2026-11-05T15:48:33.021Z",
+    "finishedAt": "2026-11-05T15:48:33.214Z",
+    "exitCode": 0,
+    "errorCode": null,
+    "rawOutputPrivate": true
+  },
+  {
+    "file": "e2e/cierre-corregido-comando.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/android/reproduce-notification-signout.cjs",
+      "--expect-cancelled"
+    ],
+    "start": "2026-11-05T15:44:46.193Z",
+    "end": "2026-11-05T15:44:57.929Z",
+    "durationSeconds": 11.736,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/herramientas-actuales-corregido.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "-e",
+      "const os=require('os'),cp=require('child_process'),path=require('path');console.log(JSON.stringify({at:new Date().toISOString(),node:process.version,npm:cp.execFileSync(path.join(process.env.SystemRoot,'System32/cmd.exe'),['/d','/c','npm.cmd --version'],{encoding:'utf8',windowsHide:true}).trim(),os:os.release(),platform:process.platform,arch:process.arch}))"
+    ],
+    "start": "2026-11-05T15:51:48.327Z",
+    "end": "2026-11-05T15:51:48.910Z",
+    "durationSeconds": 0.583,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/herramientas-actuales.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "-e",
+      "const os=require('os'),cp=require('child_process');console.log(JSON.stringify({at:new Date().toISOString(),node:process.version,npm:cp.execFileSync(process.env.ComSpec,['/d','/c','npm.cmd --version'],{encoding:'utf8',windowsHide:true}).trim(),os:os.release(),platform:process.platform,arch:process.arch}))"
+    ],
+    "start": "2026-11-05T15:51:23.634Z",
+    "end": "2026-11-05T15:51:23.764Z",
+    "durationSeconds": 0.13,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/cancelacion-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--require",
+      "./scripts/production/cra-release-preload.cjs",
+      "node_modules/react-scripts/bin/react-scripts.js",
+      "test",
+      "--watchAll=false",
+      "--runInBand",
+      "--runTestsByPath",
+      "src/features/notifications/application/useCases/notifications.abort.test.js",
+      "src/features/notifications/presentation/components/NotificationBell.cancellation.test.js",
+      "--json",
+      "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261105-152944-notifications-cancel-e903a31\\unitarias\\cancelacion-rojo.json"
+    ],
+    "start": "2026-11-05T15:29:44.315Z",
+    "end": "2026-11-05T15:30:59.164Z",
+    "durationSeconds": 74.849,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/cancelacion-verde.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--require",
+      "./scripts/production/cra-release-preload.cjs",
+      "node_modules/react-scripts/bin/react-scripts.js",
+      "test",
+      "--watchAll=false",
+      "--runInBand",
+      "--testPathPattern=features/notifications/",
+      "--json",
+      "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261105-152944-notifications-cancel-e903a31\\unitarias\\cancelacion-verde.json"
+    ],
+    "start": "2026-11-05T15:32:09.787Z",
+    "end": "2026-11-05T15:32:14.660Z",
+    "durationSeconds": 4.873,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/guardas-locales-finales.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/auth-observation.test.cjs",
+      "tests/unit/native-local-profile.test.cjs",
+      "tests/unit/android-offline-routes.test.cjs"
+    ],
+    "start": "2026-11-05T15:41:37.995Z",
+    "end": "2026-11-05T15:41:38.389Z",
+    "durationSeconds": 0.394,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/jest-cierre.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--require",
+      "./scripts/production/cra-release-preload.cjs",
+      "node_modules/react-scripts/bin/react-scripts.js",
+      "test",
+      "--watchAll=false",
+      "--runInBand",
+      "--coverage",
+      "--coverageReporters=json-summary",
+      "--coverageDirectory=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261105-152944-notifications-cancel-e903a31\\unitarias\\cobertura-cierre",
+      "--json",
+      "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261105-152944-notifications-cancel-e903a31\\unitarias\\jest-cierre.json"
+    ],
+    "start": "2026-11-05T15:32:30.654Z",
+    "end": "2026-11-05T15:33:25.125Z",
+    "durationSeconds": 54.471,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/jest-definitivo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--require",
+      "./scripts/production/cra-release-preload.cjs",
+      "node_modules/react-scripts/bin/react-scripts.js",
+      "test",
+      "--watchAll=false",
+      "--runInBand",
+      "--coverage",
+      "--coverageReporters=json-summary",
+      "--coverageDirectory=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261105-152944-notifications-cancel-e903a31\\unitarias\\cobertura-jest-definitivo",
+      "--json",
+      "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261105-152944-notifications-cancel-e903a31\\unitarias\\jest-definitivo.json"
+    ],
+    "start": "2026-11-05T15:35:27.977Z",
+    "end": "2026-11-05T15:35:54.381Z",
+    "durationSeconds": 26.404,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/microtarea-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--require",
+      "./scripts/production/cra-release-preload.cjs",
+      "node_modules/react-scripts/bin/react-scripts.js",
+      "test",
+      "--watchAll=false",
+      "--runInBand",
+      "--runTestsByPath",
+      "src/features/notifications/application/useCases/notifications.abort.test.js",
+      "--json",
+      "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261105-152944-notifications-cancel-e903a31\\unitarias\\microtarea-rojo.json"
+    ],
+    "start": "2026-11-05T15:35:04.404Z",
+    "end": "2026-11-05T15:35:08.127Z",
+    "durationSeconds": 3.723,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  }
+]

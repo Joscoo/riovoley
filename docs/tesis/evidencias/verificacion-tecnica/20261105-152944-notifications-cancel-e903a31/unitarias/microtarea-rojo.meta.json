@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--require",
+    "./scripts/production/cra-release-preload.cjs",
+    "node_modules/react-scripts/bin/react-scripts.js",
+    "test",
+    "--watchAll=false",
+    "--runInBand",
+    "--runTestsByPath",
+    "src/features/notifications/application/useCases/notifications.abort.test.js",
+    "--json",
+    "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261105-152944-notifications-cancel-e903a31\\unitarias\\microtarea-rojo.json"
+  ],
+  "start": "2026-11-05T15:35:04.404Z",
+  "end": "2026-11-05T15:35:08.127Z",
+  "durationSeconds": 3.723,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

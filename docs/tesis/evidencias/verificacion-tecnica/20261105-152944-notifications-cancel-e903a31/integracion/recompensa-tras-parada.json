@@ -1,0 +1,13 @@
+{
+  "at": "2026-11-05T15:52:06.808Z",
+  "reward": {
+    "rows": 1,
+    "rewards": 1
+  },
+  "ledger": {
+    "ledger_rows": 1,
+    "xp": 8
+  },
+  "ownEmulatorPresent": false,
+  "localReadOnlyQuery": true
+}

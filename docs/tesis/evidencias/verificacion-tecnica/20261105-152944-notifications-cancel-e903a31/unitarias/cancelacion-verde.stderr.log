@@ -1,0 +1,14 @@
+PASS src/features/notifications/application/useCases/notifications.abort.test.js
+PASS src/features/notifications/presentation/components/NotificationBell.cancellation.test.js
+PASS src/features/notifications/presentation/components/NotificationBell.access.test.js
+PASS src/features/notifications/infrastructure/repositories/supabaseNotificationsRepository.test.js
+PASS src/features/notifications/application/useCases/createNotificationsUseCases.test.js
+PASS src/features/notifications/presentation/createNotificationsService.test.js
+
+Test Suites: 6 passed, 6 total
+Tests:       20 passed, 20 total
+Snapshots:   0 total
+Time:        3.599 s, estimated 25 s
+Ran all test suites matching /features\\notifications\\/i.
+Test results written to: docs\tesis\evidencias\verificacion-tecnica\20261105-152944-notifications-cancel-e903a31\unitarias\cancelacion-verde.json
+

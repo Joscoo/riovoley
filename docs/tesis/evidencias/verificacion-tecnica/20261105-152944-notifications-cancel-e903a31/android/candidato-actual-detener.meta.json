@@ -1,0 +1,17 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\native-validation\\20261105-154507\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5580",
+    "shell",
+    "am",
+    "force-stop",
+    "com.riovoley.app"
+  ],
+  "start": "2026-11-05T15:49:16.675Z",
+  "end": "2026-11-05T15:49:17.214Z",
+  "durationSeconds": 0.539,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

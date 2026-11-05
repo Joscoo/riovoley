@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-05T15:52:48.822Z",
+  "files": [
+    "candidato-actual-portada-sin-ota.png",
+    "candidato-actual-admin.png",
+    "candidato-actual-trainer.png",
+    "candidato-actual-student.png"
+  ],
+  "reviewMethod": "view_image",
+  "observations": {
+    "home": "Portada sin boton OTA.",
+    "admin": "Controles de gestion visibles; no verifica operaciones de esos botones.",
+    "trainer": "Shell visible con Cargando dashboard en captura.",
+    "student": "Shell y bloque de anuncios visibles con Cargando anuncios en captura."
+  },
+  "allModulesStableInScreenshots": false,
+  "institutionalPersonalDataObserved": false,
+  "syntheticAccountsOnly": true
+}

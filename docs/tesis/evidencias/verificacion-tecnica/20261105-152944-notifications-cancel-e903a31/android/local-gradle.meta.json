@@ -1,0 +1,15 @@
+{
+  "command": [
+    "C:\\WINDOWS\\system32\\cmd.exe",
+    "/d",
+    "/c",
+    "gradlew.bat :app:assembleDebug :app:testDebugUnitTest --offline --no-daemon --no-configuration-cache --console=plain --stacktrace --max-workers=2"
+  ],
+  "cwd": ".e2e-local/native-local/20261105153654/project/android",
+  "startedAt": "2026-11-05T15:40:37.545Z",
+  "finishedAt": "2026-11-05T15:43:26.413Z",
+  "durationSeconds": 168.868,
+  "exitCode": 0,
+  "rawLogsPrivate": true,
+  "environmentValuesRecorded": false
+}

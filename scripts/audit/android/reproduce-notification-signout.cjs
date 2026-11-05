@@ -9,6 +9,7 @@ assert.ok(!fs.existsSync(path.join(h.evidence, 'MANIFIESTO_SHA256.json')), 'NEW_
   const local = readLocal(), native = JSON.parse(fs.readFileSync(path.join(h.runtime, 'native-local-current.json')));
   const db = await require('../security/local-db.cjs').connect(); await db.end();
   const base = path.join(native.project, 'build-safe'), held = [], responses = [], pending = [], started = Date.now();
+  const expectCancelled = process.argv.includes('--expect-cancelled'), lateAchievementRequests = [];
   let browser, phase = 'setup', passed = false, release;
   const gate = new Promise(resolve => { release = resolve; });
   const types = { '.html': 'text/html', '.js': 'application/javascript', '.css': 'text/css', '.json': 'application/json', '.png': 'image/png', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.woff2': 'font/woff2' };
@@ -24,7 +25,10 @@ assert.ok(!fs.existsSync(path.join(h.evidence, 'MANIFIESTO_SHA256.json')), 'NEW_
     browser = await chromium.launch({ headless: true });
     const context = await browser.newContext({ viewport: { width: 360, height: 720 } }), page = await context.newPage();
     const starts = new WeakMap();
-    page.on('request', request => starts.set(request, { phaseAtStart: phase, startedSeconds: (Date.now() - started) / 1000 }));
+    page.on('request', request => {
+      const metadata = { phaseAtStart: phase, startedSeconds: (Date.now() - started) / 1000 }; starts.set(request, metadata);
+      if (new URL(request.url()).origin === local.apiUrl && new URL(request.url()).pathname === '/rest/v1/gamification_student_achievements' && phase === 'logged-out:admin') lateAchievementRequests.push({ ...metadata, ...classifyAuthorization(request.headers(), local.anonKey) });
+    });
     page.on('response', response => {
       const url = new URL(response.url());
       if (url.origin !== local.apiUrl) return;
@@ -59,7 +63,10 @@ assert.ok(!fs.existsSync(path.join(h.evidence, 'MANIFIESTO_SHA256.json')), 'NEW_
     await page.getByRole('button', { name: /cerrar sesi/i }).click(); assert.ok([200, 204].includes((await logout).status()));
     await expect.poll(() => page.evaluate(() => Object.keys(localStorage).filter(k => /^sb-.*-auth-token$/.test(k)).length)).toBe(0);
     phase = 'logged-out:admin'; release();
-    await expect.poll(() => responses.filter(r => r.path === '/rest/v1/gamification_student_achievements' && r.status === 401).length, { timeout: 30000 }).toBeGreaterThan(0);
+    if (expectCancelled) {
+      await page.waitForTimeout(1500);
+      assert.equal(lateAchievementRequests.length, 0, 'ACHIEVEMENT_REQUEST_AFTER_CANCEL');
+    } else await expect.poll(() => responses.filter(r => r.path === '/rest/v1/gamification_student_achievements' && r.status === 401).length, { timeout: 30000 }).toBeGreaterThan(0);
     await Promise.all(pending);
     const errors = responses.filter(r => r.path === '/rest/v1/gamification_student_achievements' && r.status === 401);
     assert.ok(errors.every(r => r.localAnonMatch && r.declaredRole === 'anon' && !r.subjectPresent && r.errorCode === '42501' && r.phaseAtStart === 'logged-out:admin'));
@@ -69,8 +76,10 @@ assert.ok(!fs.existsSync(path.join(h.evidence, 'MANIFIESTO_SHA256.json')), 'NEW_
     release(); await Promise.allSettled(pending);
     if (browser) await browser.close();
     await new Promise(resolve => server.close(resolve));
-    h.write('e2e/cierre-notificaciones-controlado.json', { at: new Date().toISOString(), tests: 1, passed: passed ? 1 : 0, failed: passed ? 0 : 1,
+    h.write(expectCancelled ? 'e2e/cierre-notificaciones-corregido.json' : 'e2e/cierre-notificaciones-controlado.json', { at: new Date().toISOString(), tests: 1, passed: passed ? 1 : 0, failed: passed ? 0 : 1,
       seconds: (Date.now() - started) / 1000, heldRealResponses: held, responses,
+      expectCancelled, lateAchievementRequests, absenceObservationWindowMs: expectCancelled ? 1500 : null,
+      compiledSourceCommit: JSON.parse(fs.readFileSync(path.join(native.work, 'receipt.json'))).sourceCommit,
       intervention: 'Se retuvo la entrega de respuestas GET announcements reales hasta completar logout y ausencia de token local. Sin modificar contenido, cabeceras de peticion ni logica del cliente.',
       browser: 'Chromium escritorio con viewport movil; no es una nueva ejecucion Android',
       backend: 'Auth/REST/PostgreSQL locales reales', newBuild: false, productionChanged: false, businessWrites: false,

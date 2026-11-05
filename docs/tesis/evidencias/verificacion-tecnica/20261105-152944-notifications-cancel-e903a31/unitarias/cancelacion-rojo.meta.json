@@ -1,0 +1,22 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--require",
+    "./scripts/production/cra-release-preload.cjs",
+    "node_modules/react-scripts/bin/react-scripts.js",
+    "test",
+    "--watchAll=false",
+    "--runInBand",
+    "--runTestsByPath",
+    "src/features/notifications/application/useCases/notifications.abort.test.js",
+    "src/features/notifications/presentation/components/NotificationBell.cancellation.test.js",
+    "--json",
+    "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261105-152944-notifications-cancel-e903a31\\unitarias\\cancelacion-rojo.json"
+  ],
+  "start": "2026-11-05T15:29:44.315Z",
+  "end": "2026-11-05T15:30:59.164Z",
+  "durationSeconds": 74.849,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}
