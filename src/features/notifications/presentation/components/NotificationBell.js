@@ -59,12 +59,14 @@ const NotificationBell = ({ userRole, userId }) => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [actionKey, setActionKey] = useState('');
   const dropdownRef = useRef(null);
+  const loadControllerRef = useRef(null);
   const normalizedRole = userRole?.toLowerCase();
   const canViewNotifications = normalizedRole === 'administrador' || normalizedRole === 'entrenador';
 
   useEffect(() => {
     if (!canViewNotifications) return;
     cargarNotificaciones();
+    return () => loadControllerRef.current?.abort();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [canViewNotifications, userId, userRole]);
 
@@ -85,15 +87,18 @@ const NotificationBell = ({ userRole, userId }) => {
   }, [isOpen]);
 
   const cargarNotificaciones = async () => {
+    loadControllerRef.current?.abort();
+    const controller = new AbortController();
+    loadControllerRef.current = controller;
     setLoading(true);
     try {
-      const todasNotificaciones = await notificationsService.loadBellNotifications({ userRole, userId });
-      setNotificaciones(todasNotificaciones);
+      const todasNotificaciones = await notificationsService.loadBellNotifications({ userRole, userId, signal: controller.signal });
+      if (!controller.signal.aborted) setNotificaciones(todasNotificaciones);
     } catch (error) {
       // eslint-disable-next-line no-console
-      console.error('Error cargando notificaciones:', error);
+      if (!controller.signal.aborted) console.error('Error cargando notificaciones:', error);
     } finally {
-      setLoading(false);
+      if (!controller.signal.aborted) setLoading(false);
     }
   };
 
