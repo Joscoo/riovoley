@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\WINDOWS\\system32\\cmd.exe",
+    "/d",
+    "/c",
+    "gradlew.bat --version --offline"
+  ],
+  "start": "2026-11-05T14:53:56.017Z",
+  "end": "2026-11-05T14:54:24.349Z",
+  "durationSeconds": 28.332,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": ".e2e-local\\native-local\\20261104225655\\project\\android"
+}

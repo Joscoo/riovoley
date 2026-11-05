@@ -1,0 +1,45 @@
+{
+  "at": "2026-11-05T15:00:13.735Z",
+  "results": [
+    {
+      "role": "anon",
+      "method": "GET",
+      "limit": 0,
+      "status": 401,
+      "returnedRows": null,
+      "errorCode": "42501"
+    },
+    {
+      "role": "admin",
+      "method": "GET",
+      "limit": 0,
+      "status": 200,
+      "returnedRows": 0,
+      "errorCode": null
+    },
+    {
+      "role": "trainer",
+      "method": "GET",
+      "limit": 0,
+      "status": 200,
+      "returnedRows": 0,
+      "errorCode": null
+    },
+    {
+      "role": "student",
+      "method": "GET",
+      "limit": 0,
+      "status": 200,
+      "returnedRows": 0,
+      "errorCode": null
+    }
+  ],
+  "requests": 4,
+  "authenticatedExpected200": 3,
+  "anonymousExpectedDenied": true,
+  "limitZeroOnly": true,
+  "businessRowsRead": 0,
+  "institutionContacted": false,
+  "observedNative401CauseAttributed": false,
+  "limitation": "Sondas actuales independientes: no capturaron el token ni la fase de las dos respuestas 401 del flujo nativo anterior; no establecen su causa."
+}

@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-05T15:00:49.986Z",
+  "files": [
+    "candidato-actual-portada-sin-ota.png",
+    "candidato-actual-admin.png",
+    "candidato-actual-trainer.png",
+    "candidato-actual-student.png"
+  ],
+  "reviewMethod": "Inspeccion visual con view_image",
+  "observations": {
+    "home": "Portada RioVoley visible, sin boton OTA ni panel tecnico.",
+    "admin": "Controles de registrar pago, revision financiera, usuarios y reportes visibles; no comprueba su operacion.",
+    "trainer": "Shell y guia presentes; dashboard todavia en estado Cargando dashboard.",
+    "student": "Shell y bloque de anuncios presentes; Cargando anuncios en el instante capturado."
+  },
+  "allModulesStableInScreenshots": false,
+  "syntheticAccountsOnly": true,
+  "institutionalPersonalDataObserved": false
+}

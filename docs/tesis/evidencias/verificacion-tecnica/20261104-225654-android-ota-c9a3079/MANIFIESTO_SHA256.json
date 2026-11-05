@@ -1,0 +1,698 @@
+{
+  "createdAt": "2026-11-05T15:03:58.149Z",
+  "algorithm": "SHA-256",
+  "baseCommit": "c9a3079cafdd97acb59ec952864e6fe976a9c223",
+  "note": "No modificar después del sellado. Excluye manifiesto propio y artefactos privados.",
+  "entries": [
+    {
+      "file": "android/actividad-comprobada.json",
+      "bytes": 97,
+      "sha256": "278c0537e27c9183067e037a2897af347e3a0fc67dec8e09eb1efbebc1697c4e"
+    },
+    {
+      "file": "android/actividad.meta.json",
+      "bytes": 373,
+      "sha256": "e53fa5d6c2d3686ca59d812562d5f014d1e0bc0496356da969e463dab906286c"
+    },
+    {
+      "file": "android/adb-dispositivos-previos.meta.json",
+      "bytes": 295,
+      "sha256": "cdc451222b64c66d1ba5db48910e604796721ccf0f9c3d5ecfa27ee54e88a429"
+    },
+    {
+      "file": "android/adb-listen-local.meta.json",
+      "bytes": 361,
+      "sha256": "a63c4bf958ba0d106ca93ba1172dbf4bf717cdb2621dac5a265d672185c0c9c7"
+    },
+    {
+      "file": "android/adb-servidor-local.meta.json",
+      "bytes": 300,
+      "sha256": "dea16ff74c0149892a0eb3b75d6d6647367f4edca0dd3bcb6267b84572df26a2"
+    },
+    {
+      "file": "android/apk-local-compilado.json",
+      "bytes": 679,
+      "sha256": "e02c578a9aca972d9a1a623650c142e4e5a47fd756cbfd7015c231d701529a21"
+    },
+    {
+      "file": "android/apk-local-inspeccion-cierre-1793890327750-50c96f.json",
+      "bytes": 1002,
+      "sha256": "6c65f7915bc31adfe7447b68cb348904a8d596a4ab1f196f1fa562ab07857d61"
+    },
+    {
+      "file": "android/apk-local-inspeccion-cierre.json",
+      "bytes": 1002,
+      "sha256": "c7e4b57e9b97622bc5313b5d496359bb1fbe5ac41d2dd4952d69af40d7998476"
+    },
+    {
+      "file": "android/apk-privado-inspeccion-cierre.json",
+      "bytes": 246,
+      "sha256": "d966ba7ff238440a0161972d111237718cb84f74e73a9b56f9724d4c547e2379"
+    },
+    {
+      "file": "android/arranque-emulador.json",
+      "bytes": 6576,
+      "sha256": "1e2354b9b8e970d7c89f1f6b9b27b93b5363ca8bcce5ec692d9b5f7c622a1439"
+    },
+    {
+      "file": "android/autenticacion-candidato-comando.meta.json",
+      "bytes": 334,
+      "sha256": "4648d494b73b28a755a413b4eeca63ee542102ffcb11c2c8edd2c2a2c60ffd7b"
+    },
+    {
+      "file": "android/autenticacion-candidato-comando.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/autenticacion-candidato-comando.stdout.log",
+      "bytes": 1039,
+      "sha256": "3128e23321e261a729653d7d620f089f6a947150b055382e99030245b09f07c3"
+    },
+    {
+      "file": "android/avd-crear.meta.json",
+      "bytes": 515,
+      "sha256": "76e66f1db95707ece43d0d91cec185f278b0011e9b34953ecafe499a7fbd3fb2"
+    },
+    {
+      "file": "android/avd-identidad.meta.json",
+      "bytes": 345,
+      "sha256": "ad89846023055cd3b5365745109fe9d69c2f1c1577ea6bda0481a0b04752412b"
+    },
+    {
+      "file": "android/avion-verificar.meta.json",
+      "bytes": 389,
+      "sha256": "cf273db90bd71a44de1c333f49465b79db1ae71797a2cc3f114d305687cba23f"
+    },
+    {
+      "file": "android/candidato-actual-admin.png",
+      "bytes": 91124,
+      "sha256": "4e379d28565f3b5c5510a2e503a6232223faa038ca06509a3f4a4a26405d3995"
+    },
+    {
+      "file": "android/candidato-actual-apk-huella.meta.json",
+      "bytes": 439,
+      "sha256": "a2f011c31feddf09df995f3af603574b7d209b82e1a49de58587632f17177424"
+    },
+    {
+      "file": "android/candidato-actual-apk-huella.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/candidato-actual-apk-huella.stdout.log",
+      "bytes": 156,
+      "sha256": "9eae3bcf0ef5c3d91cc955ba114139cd55fabbe5bb14b81723f01d7b9023051b"
+    },
+    {
+      "file": "android/candidato-actual-apk-ruta.meta.json",
+      "bytes": 373,
+      "sha256": "51cdff07997bc03f622fb3d136ce95acf1c12010f1768e31a0b4387c4f55c88c"
+    },
+    {
+      "file": "android/candidato-actual-apk-ruta.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/candidato-actual-apk-ruta.stdout.log",
+      "bytes": 98,
+      "sha256": "c55c9b06513c49dc155c342b36feaded472676fc0c440816c679b81e1a570343"
+    },
+    {
+      "file": "android/candidato-actual-detener.meta.json",
+      "bytes": 379,
+      "sha256": "71c8619d4afdce7a65917d039a3c8ab217774ba3915681475705597db6ae534e"
+    },
+    {
+      "file": "android/candidato-actual-detener.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/candidato-actual-detener.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/candidato-actual-identidad-avd.meta.json",
+      "bytes": 348,
+      "sha256": "a1b492d598fbe9396658568a610350aae0ac3d9640891090d8614ae7981e73bf"
+    },
+    {
+      "file": "android/candidato-actual-identidad-avd.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/candidato-actual-identidad-avd.stdout.log",
+      "bytes": 23,
+      "sha256": "2987b75d1a5c800c86cae1b80fec462e969ca7e39b967845e199f5867a8ce840"
+    },
+    {
+      "file": "android/candidato-actual-iniciar.meta.json",
+      "bytes": 398,
+      "sha256": "273bf8d248c76b87745e4fb70667e39efeb24d7a351d6feccc2300994fb572f9"
+    },
+    {
+      "file": "android/candidato-actual-iniciar.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/candidato-actual-iniciar.stdout.log",
+      "bytes": 58,
+      "sha256": "0990e86a2624a0019f2c561d8e11004b56e2aa43086e47d2ec7e9e85a39185f9"
+    },
+    {
+      "file": "android/candidato-actual-notificaciones-fijar.meta.json",
+      "bytes": 452,
+      "sha256": "0ea8e32ccb4e8556c58d0b9c66d06248050a2356ed8e5c33e922beb95ddcbd4b"
+    },
+    {
+      "file": "android/candidato-actual-notificaciones-fijar.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/candidato-actual-notificaciones-fijar.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/candidato-actual-notificaciones-restaurar.meta.json",
+      "bytes": 454,
+      "sha256": "01f0a65ecf4bacd6502854120dbd8e086287d20736b3ef62fc50639f2fb55fae"
+    },
+    {
+      "file": "android/candidato-actual-notificaciones-restaurar.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/candidato-actual-notificaciones-restaurar.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/candidato-actual-notificaciones-revocar.meta.json",
+      "bytes": 420,
+      "sha256": "48cbc15585123e78dd9922187acd052788d1016c1795a96f9d31af1f10edf391"
+    },
+    {
+      "file": "android/candidato-actual-notificaciones-revocar.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/candidato-actual-notificaciones-revocar.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/candidato-actual-portada-sin-ota.png",
+      "bytes": 232848,
+      "sha256": "02e7fc9c3b5e24c98ff8e4aa8f25f86fd1b390b0f225fec75f390c8da0a61ae8"
+    },
+    {
+      "file": "android/candidato-actual-student.png",
+      "bytes": 99981,
+      "sha256": "d36e7d4a0af621f9d72c2d60649f193c42b7c78292c7144200d036c5294db458"
+    },
+    {
+      "file": "android/candidato-actual-trainer.png",
+      "bytes": 81297,
+      "sha256": "df2099066909477c30e07cb707d29cdbb3187742ed7520457cf79655ced24fac"
+    },
+    {
+      "file": "android/candidato-actual-tunel-retirar.meta.json",
+      "bytes": 362,
+      "sha256": "72436b841ee7d25e9a4c97a91d4c3eea62a3cac5b3377afe9239a400d085d8f4"
+    },
+    {
+      "file": "android/candidato-actual-tunel-retirar.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/candidato-actual-tunel-retirar.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/candidato-actual-tunel.meta.json",
+      "bytes": 363,
+      "sha256": "4277e2163ba3176e4dbf6842f5b74dd479141ac32a8142c3ff93599567cb8db7"
+    },
+    {
+      "file": "android/candidato-actual-tunel.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/candidato-actual-tunel.stdout.log",
+      "bytes": 8,
+      "sha256": "c8799220bef090ddadcdb73bf93730d2296ffcc4e6342ec6c1cd5be6f4706ec0"
+    },
+    {
+      "file": "android/candidato-actual.json",
+      "bytes": 33432,
+      "sha256": "9f1f82ba0b15950a164dbcf3bae43e811d9415bdffb9e59f55b148c1eb72e294"
+    },
+    {
+      "file": "android/capacitor-sync.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/capacitor-sync.stdout.log",
+      "bytes": 586,
+      "sha256": "cd1e8eb1f0b59104019bb38d6b463b95c81b5dc8485d6972c563225dd62aa272"
+    },
+    {
+      "file": "android/capturas-revisadas.json",
+      "bytes": 791,
+      "sha256": "04a576ad4da712dc535276a296270b62ccdc7f16eef42a6171a103dce2daca48"
+    },
+    {
+      "file": "android/CONTEXTO_RUNTIME.json",
+      "bytes": 601,
+      "sha256": "0444eef62a108e7a2cca8263586bc7195d1ee126ec3395fa16d1ce7ff739cc03"
+    },
+    {
+      "file": "android/datos-deshabilitar.meta.json",
+      "bytes": 362,
+      "sha256": "a7787db0da187bd8a80356493a4916ac5ad52af2557d3a4b97def90a4cbb3881"
+    },
+    {
+      "file": "android/emulador-detener.meta.json",
+      "bytes": 334,
+      "sha256": "64fb9e8b6dd6747d6d363adc0303b14baf0edc7f6732ecba32a9b834192f13bd"
+    },
+    {
+      "file": "android/fuentes-y-artefacto.json",
+      "bytes": 477,
+      "sha256": "e31cac6a74d7079e09772a7aac5a57e498930bb01281089ab92df87b7d4410b3"
+    },
+    {
+      "file": "android/gradle.stderr.log",
+      "bytes": 945,
+      "sha256": "34837dbfdc012e6283d5452b2dba7993f4737779fed6114b3eba1304556f87f1"
+    },
+    {
+      "file": "android/gradle.stdout.log",
+      "bytes": 16482,
+      "sha256": "4f31775f7748e669a53500278ea13d843ffd77487e53d322d16126e7b9a524b4"
+    },
+    {
+      "file": "android/herramientas-host.json",
+      "bytes": 199,
+      "sha256": "0a56ead1f9c6086b49bf7955b26bba80403ca7bbe687dc1ece9c58a917cee53d"
+    },
+    {
+      "file": "android/iniciar-apk.meta.json",
+      "bytes": 395,
+      "sha256": "38fcd711ad2b96463774deb0e764cb3ebea874b9b23ac81181c4ee2afdf3501f"
+    },
+    {
+      "file": "android/inspeccion-apk-nuevo.meta.json",
+      "bytes": 276,
+      "sha256": "db54d1ba97a08adbb02bb621cd246feb4a006ac18510222b85348e38552d70ab"
+    },
+    {
+      "file": "android/inspeccion-apk-nuevo.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/inspeccion-apk-nuevo.stdout.log",
+      "bytes": 161,
+      "sha256": "f448c8a5214707d169254824251001764baff4e44d24c697417ce891342a2d6d"
+    },
+    {
+      "file": "android/inspeccion-contenido.meta.json",
+      "bytes": 276,
+      "sha256": "ca4183ffa2bfbf9c74cd52d6e4c9f74fbb283578d340c5eedb42187b296eba3e"
+    },
+    {
+      "file": "android/inspeccion-contenido.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/inspeccion-contenido.stdout.log",
+      "bytes": 161,
+      "sha256": "f448c8a5214707d169254824251001764baff4e44d24c697417ce891342a2d6d"
+    },
+    {
+      "file": "android/instalar-apk.meta.json",
+      "bytes": 464,
+      "sha256": "19c125c267764abfcced79c7ad37360226429117463e9253073a7248ca4c8d3e"
+    },
+    {
+      "file": "android/local-aapt.meta.json",
+      "bytes": 507,
+      "sha256": "5c205441177e1c0ac171446bb66f4d9b4598a4b24ef9693699a7f31328116276"
+    },
+    {
+      "file": "android/local-capacitor-sync.meta.json",
+      "bytes": 424,
+      "sha256": "f4747e3f36af45b819d1c6037f25b5f39320b9acc976f25e1f5d3fff7d0e9bf0"
+    },
+    {
+      "file": "android/local-gradle.meta.json",
+      "bytes": 498,
+      "sha256": "c505fc3c8abcd0183f05d5341f904c94a2a8087d5e212590530fb335303ed5c1"
+    },
+    {
+      "file": "android/local-signature.meta.json",
+      "bytes": 553,
+      "sha256": "9137bebd2112b6fcefd18f9f4dba8be38a8c9574bd85561f1d2269e21273ffba"
+    },
+    {
+      "file": "android/local-web-build.meta.json",
+      "bytes": 446,
+      "sha256": "36b03b198fba08b134732d4d131dbb71d3a5f85fcb88b460c54810c83070684e"
+    },
+    {
+      "file": "android/modo-avion.meta.json",
+      "bytes": 390,
+      "sha256": "3f96fb8d462b67ad5488add17d9fbbf74d2aef32c7c1ae9743ed2dda17c5d5a2"
+    },
+    {
+      "file": "android/paquete-previo.meta.json",
+      "bytes": 386,
+      "sha256": "f47611040e6604e009be25ef98aef3d38f6c36ba69f88b11aa5746fb958234bf"
+    },
+    {
+      "file": "android/perfil-ejecutado.json",
+      "bytes": 519,
+      "sha256": "a9586a9ab9a74ca4d334fc8ebadfe683213a21d0f7484bc39072c73492e1bfe7"
+    },
+    {
+      "file": "android/privacidad-cierre.meta.json",
+      "bytes": 270,
+      "sha256": "0e72f3736cdf014d311d1b53d9741efe22029bf8430538c7769903d5e575a5f9"
+    },
+    {
+      "file": "android/privacidad-cierre.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/privacidad-cierre.stdout.log",
+      "bytes": 147,
+      "sha256": "0284569a743a2bd62bfd24a3afc1d8e13c0b8fc0388426e8e04d4c7c2718e000"
+    },
+    {
+      "file": "android/privacidad-diagnostico.meta.json",
+      "bytes": 270,
+      "sha256": "4502d45b82ff2ccabe271314540faeed2fa984567c229f17601e991797d750ea"
+    },
+    {
+      "file": "android/privacidad-diagnostico.stderr.log",
+      "bytes": 844,
+      "sha256": "7a866fdb85453c7e76d29e64997321a59c00f5c5dd623eb2d37ee1e7158f4b91"
+    },
+    {
+      "file": "android/privacidad-diagnostico.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/privacidad-y-contenido.meta.json",
+      "bytes": 270,
+      "sha256": "174c9f305206aa30d6305b8916ad44dd03800348d01cf2dc7eaf6b09a48df3ed"
+    },
+    {
+      "file": "android/privacidad-y-contenido.stderr.log",
+      "bytes": 844,
+      "sha256": "7cc1a6e276d3209cb1e941ac5cb9e4b99da76492bbb3a908e60fb92edb5e4de2"
+    },
+    {
+      "file": "android/privacidad-y-contenido.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/qemu-identidad.meta.json",
+      "bytes": 361,
+      "sha256": "ce09c4cd1e1efb91354e111edb898c6cb87562912088b486299ecbff2a32c295"
+    },
+    {
+      "file": "android/reanudacion-entorno.json",
+      "bytes": 277,
+      "sha256": "2a5873562b8f835d41d6f4f6457341d0c803a5ea49547d8f50b6ccda65c01674"
+    },
+    {
+      "file": "android/reconstruccion-local-comando.meta.json",
+      "bytes": 276,
+      "sha256": "6e00adff4ab11aded040931f73bc86143402354a7c7e5f2354f904e550cf0a66"
+    },
+    {
+      "file": "android/reconstruccion-local-comando.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/reconstruccion-local-comando.stdout.log",
+      "bytes": 149,
+      "sha256": "dce34309baa3b35ca9999b5ea95bbc6de9fa5da0130334d13e10bfbeabd107e3"
+    },
+    {
+      "file": "android/resultado-intento.json",
+      "bytes": 930,
+      "sha256": "b523392a12e986ed299c3bb45a2a4612b64405283d2b6990fb7431f92509d3d9"
+    },
+    {
+      "file": "android/runtime-candidato-comando.meta.json",
+      "bytes": 299,
+      "sha256": "1b8055a54fe3151be06b04be11fe4b7c0442e36193995629b5557cceea45e85f"
+    },
+    {
+      "file": "android/runtime-candidato-comando.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/runtime-candidato-comando.stdout.log",
+      "bytes": 590,
+      "sha256": "523dbc266c19706356d1950d2a48142f2e0b3c7adc4c7e64c0fb6c1087f162d8"
+    },
+    {
+      "file": "android/rutas-ipv4.meta.json",
+      "bytes": 384,
+      "sha256": "6908f73e699adcbfe7958b53c7cca77a221fe749876a9dcae87ef141b6f16905"
+    },
+    {
+      "file": "android/rutas-ipv6.meta.json",
+      "bytes": 394,
+      "sha256": "d1b62b335087ee8b91fb6218b1d82f80a478f41f7115b6afebc2c5f5029f91bb"
+    },
+    {
+      "file": "android/rutas-principales-evaluadas.json",
+      "bytes": 158,
+      "sha256": "01849cf12a9fb91b69f3126b9f4021d1379c703257d36465af413106f952f6d7"
+    },
+    {
+      "file": "android/signature.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/signature.stdout.log",
+      "bytes": 352,
+      "sha256": "9a944d4f97f52be1b131a52fa2fbfb462695fa4ceabd1ba9da356e043c02c3c2"
+    },
+    {
+      "file": "android/version-adb.meta.json",
+      "bytes": 297,
+      "sha256": "165cbe29ed205761e28b4ef1490706df164c07f9deac4570e015d7f1714e22cc"
+    },
+    {
+      "file": "android/version-adb.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/version-adb.stdout.log",
+      "bytes": 198,
+      "sha256": "c3eef5ad170990508a99a271902e0307c960b4a62954d24b6ece7a91c075c102"
+    },
+    {
+      "file": "android/version-gradle.meta.json",
+      "bytes": 330,
+      "sha256": "b3a1abe425d34db2c6a8a2a58970e9cfaf11f59a4ab226188425519d962972a9"
+    },
+    {
+      "file": "android/version-gradle.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/version-gradle.stdout.log",
+      "bytes": 603,
+      "sha256": "63e31647519abc0779d71cd41a4b026f242334c55af3d165d0562403710ebafb"
+    },
+    {
+      "file": "android/version-java.meta.json",
+      "bytes": 299,
+      "sha256": "a0181ab04c30400487887a2c64d2c1cf94c67ad199c15ce114fd8a41f12171bb"
+    },
+    {
+      "file": "android/version-java.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "android/version-java.stdout.log",
+      "bytes": 199,
+      "sha256": "e1ab05e36c47c54ea4ffa6f6b6045fee15b691a147459a2722a3b60dedf74f5b"
+    },
+    {
+      "file": "android/wifi-deshabilitar.meta.json",
+      "bytes": 362,
+      "sha256": "c95e005401ebf3b9ab12599e7140c139917a1a98ae90707646fb00f01673969d"
+    },
+    {
+      "file": "android/wifi-verificar.meta.json",
+      "bytes": 361,
+      "sha256": "5a74489e17bc08fcd5f095ded25d775207e1461cf569bbef3edf9510c26526ce"
+    },
+    {
+      "file": "COMANDOS.json",
+      "bytes": 21281,
+      "sha256": "1bc608e7d6c76a7c6b5720aa745726cf4c0b8ff1414d7b4a6e17a3b808a09d4a"
+    },
+    {
+      "file": "compilacion-web/salida-generada-1793890327752-92c1db.json",
+      "bytes": 449,
+      "sha256": "f38254121e197adf81629ec1809afd64661f757f8af2c4a34fad0f94a43b38f7"
+    },
+    {
+      "file": "compilacion-web/salida-generada.json",
+      "bytes": 449,
+      "sha256": "a73bd4941fff28226332ecc08eaf5498d321dbaa1c41581bdedb1173469660ec"
+    },
+    {
+      "file": "compilacion-web/web-build.stderr.log",
+      "bytes": 172,
+      "sha256": "bd6f44a9189daaa5ef7347bfd6273f2c009db706b5ce4a47a89cfcd33beb8292"
+    },
+    {
+      "file": "compilacion-web/web-build.stdout.log",
+      "bytes": 2790,
+      "sha256": "63f8c293729f67517739df40645cfd88a796752c124ac696053d6561f8ad79c8"
+    },
+    {
+      "file": "CONTEXTO.json",
+      "bytes": 509,
+      "sha256": "dbd9ece3c25e489fb667f39eead8476a922bc4b7dd57d4e4b38a55dc76011d97"
+    },
+    {
+      "file": "FUENTES_EVALUADAS.json",
+      "bytes": 1796,
+      "sha256": "258b59cd3ca0184fa6dad48cb3d3525f6e9010d9f5ac801f74ac2e4491dc6451"
+    },
+    {
+      "file": "INFORME_VERIFICACION_TECNICA.md",
+      "bytes": 10397,
+      "sha256": "5abebd667b4afe75bffe53ff94458f3be9a18d27c5206a91a81673285f98cb54"
+    },
+    {
+      "file": "integracion/docker-local-reanudar.meta.json",
+      "bytes": 296,
+      "sha256": "276aa6e1a636aa009ac7d45ed89d870c856c4b40a6711f5553ec66096b6cfbe9"
+    },
+    {
+      "file": "integracion/docker-local-reanudar.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/docker-local-reanudar.stdout.log",
+      "bytes": 30,
+      "sha256": "ad27f7edaaa822ffeaf6f3d6be30ba8d6a60a0090dda13c3acb662b3ee707d03"
+    },
+    {
+      "file": "integracion/recompensa-tras-parada.json",
+      "bytes": 237,
+      "sha256": "10799041f0d3e8cc7f29b4557238d100cf4b41ee9b048b2be32b1351dfe8f30d"
+    },
+    {
+      "file": "integracion/sondas-logros-comando.meta.json",
+      "bytes": 276,
+      "sha256": "c143e5ad4445deb41d72eb314555eaa6d6fb97ac3773a9e46707ed9d7771f845"
+    },
+    {
+      "file": "integracion/sondas-logros-comando.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/sondas-logros-comando.stdout.log",
+      "bytes": 69,
+      "sha256": "c9bc6b7cc85e6b397e3078fa66053f24daa1773dddee1647865331b5f524e5e5"
+    },
+    {
+      "file": "integracion/sondas-logros-locales.json",
+      "bytes": 1030,
+      "sha256": "d739791c1cd5c471b840c3df9366abdd5514beba22f6444f5d3251f24326d838"
+    },
+    {
+      "file": "INTEGRIDAD.json",
+      "bytes": 539,
+      "sha256": "fa9af2da2fb5106c2cf5299725fc8d3edc2ba14a5841018bee471666986cc3ac"
+    },
+    {
+      "file": "MATRIZ_VERIFICACIONES_TESIS.md",
+      "bytes": 2665,
+      "sha256": "5d9b476f879b7c84c363f81afdc6c028ea74ee4f8e234ab37200d67ece8ffbba"
+    },
+    {
+      "file": "PRIVACIDAD.json",
+      "bytes": 411,
+      "sha256": "4c5268bbb970e81499effe53a5ee7c868f565bed76bdc3016f6eea6a2fd7fea7"
+    },
+    {
+      "file": "RESULTADOS_AUTOMATIZADOS.json",
+      "bytes": 1636,
+      "sha256": "2cca2bddecf6c72f215aad03037322837486cdbd6df5d48128a9035bd316f53b"
+    },
+    {
+      "file": "RESULTADOS_PARA_TESIS_4_5.md",
+      "bytes": 2577,
+      "sha256": "45f51a32a23d7ae6aa8d0a2e359ec7fc2b559c6a2ce3147dac4b941ad4b0d611"
+    },
+    {
+      "file": "seguridad/privacidad-apk-local-1793890220078-f7f2da.json",
+      "bytes": 609,
+      "sha256": "15963abfec096d5e6b49abd7219e6c6510b5462c0c84670d06dcd24abcb6fa9d"
+    },
+    {
+      "file": "seguridad/privacidad-apk-local-1793890295857-29bac0.json",
+      "bytes": 609,
+      "sha256": "2b6b088f2073c400d91ea2fc9d374a2895bd7a1b75d6fc30afa2684b23c19cd5"
+    },
+    {
+      "file": "seguridad/privacidad-apk-local.json",
+      "bytes": 609,
+      "sha256": "e293e049e479f2565094108a7c2883c354812eb6f73ad496cb74083aec476ab0"
+    },
+    {
+      "file": "unitarias/guardas-android-local.meta.json",
+      "bytes": 357,
+      "sha256": "3437f3b72e26438fc81e89cebb8b03ab9b3cfc9dbcd7ae4da899c4234ace0479"
+    },
+    {
+      "file": "unitarias/guardas-android-local.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "unitarias/guardas-android-local.stdout.log",
+      "bytes": 2596,
+      "sha256": "0d10b103baca85d6cb72a9bebbab5f62e806070064b28ff7042d057f82ed3ea6"
+    }
+  ]
+}

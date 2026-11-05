@@ -1,0 +1,30 @@
+{
+  "startedAt": "2026-11-05T14:52:06.677Z",
+  "baseCommit": "c9a3079cafdd97acb59ec952864e6fe976a9c223",
+  "apkSourceCommit": "c9a3079cafdd97acb59ec952864e6fe976a9c223",
+  "productionContacted": false,
+  "businessDataInstitutionalChanged": false,
+  "physicalDeviceUsed": false,
+  "newBuild": true,
+  "emulatorStarted": true,
+  "emulatorStopped": true,
+  "stage": "WEBVIEW_CHECKS_COMPLETED",
+  "localBackendIdentityVerified": true,
+  "apkSha256": "f10723fd77cc5a796b59a7fd530ad75a2ea45205167f2aee2fbb16a44fb55aae",
+  "externalNetworkDisabled": true,
+  "routeCheckScope": "main",
+  "allPolicyTablesCertified": false,
+  "apkInstalled": true,
+  "webviewCommandExitCode": 0,
+  "cases": {
+    "planned": 14,
+    "executed": 14,
+    "passed": 14,
+    "failed": 0,
+    "notExecuted": 0,
+    "cleanupFailures": 0
+  },
+  "blockingProxyDeniedRequests": 19,
+  "blockingProxyForwardedRequests": 0,
+  "finishedAt": "2026-11-05T14:58:24.654Z"
+}

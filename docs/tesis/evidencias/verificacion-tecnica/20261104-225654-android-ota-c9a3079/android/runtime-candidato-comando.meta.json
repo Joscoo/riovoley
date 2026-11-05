@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/android/launch-local-candidate.cjs",
+    "--current-build"
+  ],
+  "start": "2026-11-05T14:52:06.262Z",
+  "end": "2026-11-05T14:58:27.101Z",
+  "durationSeconds": 380.839,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

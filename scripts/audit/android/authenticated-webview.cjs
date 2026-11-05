@@ -11,6 +11,7 @@ const {connect}=require('../security/local-db.cjs');
 
 (async()=>{
  const label=(process.argv.find(x=>x.startsWith('--label='))||'--label=autenticacion-inicial').slice(8);
+ const verifyOtaHidden=process.argv.includes('--verify-ota-hidden'),planned=verifyOtaHidden?14:13;
  assert.match(label,/^[a-z0-9-]+$/);
  const local=readLocal(),{env,sdk}=environment(),adb=path.join(sdk,'platform-tools/adb.exe');
  const profile=JSON.parse(fs.readFileSync(path.join(h.runtime,'emulator-audit.json'),'utf8'));
@@ -55,6 +56,15 @@ const {connect}=require('../security/local-db.cjs');
   await page.goto('https://localhost/login');
   await page.evaluate(()=>{localStorage.clear();sessionStorage.clear();for(const role of ['admin','trainer','student'])localStorage.setItem('riovoley:panel-guide:'+role,JSON.stringify({version:'2026-06-22',status:'dismissed'}));});
   await page.reload();
+  if(verifyOtaHidden)await verify('N-ota-oculto','La portada nativa ordinaria no muestra controles OTA',async()=>{
+   await page.goto('https://localhost/');
+   await expect(page.locator('h1')).toBeVisible({timeout:30000});
+   assert.equal(await page.evaluate(()=>window.Capacitor?.isNativePlatform?.()),true,'NATIVE_PLATFORM_REQUIRED');
+   assert.equal(await page.evaluate(()=>window.Capacitor?.isPluginAvailable?.('CapacitorUpdater')),true,'UPDATER_PLUGIN_REQUIRED');
+   await expect(page.getByRole('button',{name:'OTA',exact:true})).toHaveCount(0);
+   await expect(page.getByRole('heading',{name:'Estado OTA Android',exact:true})).toHaveCount(0);
+   await page.screenshot({path:path.join(h.evidence,'android/'+label+'-portada-sin-ota.png')});
+  });
   async function login(role,route){
    await page.goto('https://localhost/login');
    await page.locator('input[type=email]').fill(local.accounts[role].email);
@@ -92,6 +102,6 @@ const {connect}=require('../security/local-db.cjs');
   await cleanup('cerrar-db',()=>db.end());
   if(identityVerified&&permissionFixed)await cleanup('restaurar-permisos',()=>adbRun('notificaciones-restaurar',['shell','pm','clear-permission-flags',pkg,'android.permission.POST_NOTIFICATIONS','user-fixed']));
   if(identityVerified&&tunnelCreated)await cleanup('retirar-tunel',()=>adbRun('tunel-retirar',['reverse','--remove','tcp:55321']));
-  h.write('android/'+label+'.json',{planned:13,executed:cases.length,notExecuted:13-cases.length,passed:cases.filter(x=>x.state==='APROBADO').length,failed:cases.filter(x=>x.state==='FALLIDO').length,state:process.exitCode?'FALLIDO':'APROBADO',cases,cleanupFailures,backend:'Supabase Auth/REST/PostgreSQL local reales; sin mocks ni almacenamiento de tokens',before,after,responses,blockedBrowserRequests:blocked,artifactSha256:expectedSha256,scope:'WebView real de APK debug en emulator-5580; HTTP loopback por túnel ADB. No verifica transporte TLS institucional, FCM, Resend ni OTA. Se deniega permiso de notificaciones; OTA apunta a puerto loopback cerrado.',apkDistributed:false});
+  h.write('android/'+label+'.json',{planned,executed:cases.length,notExecuted:planned-cases.length,passed:cases.filter(x=>x.state==='APROBADO').length,failed:cases.filter(x=>x.state==='FALLIDO').length,state:process.exitCode?'FALLIDO':'APROBADO',cases,cleanupFailures,backend:'Supabase Auth/REST/PostgreSQL local reales; sin mocks ni almacenamiento de tokens',before,after,responses,blockedBrowserRequests:blocked,artifactSha256:expectedSha256,otaVisibilityChecked:verifyOtaHidden,scope:'WebView real de APK debug en emulator-5580; HTTP loopback por túnel ADB. No verifica transporte TLS institucional, FCM, Resend ni descarga/instalacion OTA. Se deniega permiso de notificaciones; OTA apunta a puerto loopback cerrado.',apkDistributed:false});
  }
 })().catch(e=>{console.error(e.message);process.exitCode=1;});

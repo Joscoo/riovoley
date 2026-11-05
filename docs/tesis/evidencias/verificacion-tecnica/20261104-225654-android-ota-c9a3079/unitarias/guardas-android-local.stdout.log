@@ -1,0 +1,89 @@
+TAP version 13
+# Subtest: sin rutas IPv4 o IPv6 no hay salida externa
+ok 1 - sin rutas IPv4 o IPv6 no hay salida externa
+  ---
+  duration_ms: 4.071
+  type: 'test'
+  ...
+# Subtest: acepta la ruta conectada observada en Android sin confundirla con default
+ok 2 - acepta la ruta conectada observada en Android sin confundirla con default
+  ---
+  duration_ms: 0.4383
+  type: 'test'
+  ...
+# Subtest: acepta solo loopback y enlace local IPv6 del emulador
+ok 3 - acepta solo loopback y enlace local IPv6 del emulador
+  ---
+  duration_ms: 0.2914
+  type: 'test'
+  ...
+# Subtest: rechaza default IPv4 y su representacion CIDR
+ok 4 - rechaza default IPv4 y su representacion CIDR
+  ---
+  duration_ms: 0.2121
+  type: 'test'
+  ...
+# Subtest: rechaza default IPv6 y su representacion CIDR
+ok 5 - rechaza default IPv6 y su representacion CIDR
+  ---
+  duration_ms: 0.2767
+  type: 'test'
+  ...
+# Subtest: rechaza una ruta publica especifica aunque no exista default
+ok 6 - rechaza una ruta publica especifica aunque no exista default
+  ---
+  duration_ms: 0.5176
+  type: 'test'
+  ...
+# Subtest: rechaza otras redes privadas que no son el enlace virtual autorizado
+ok 7 - rechaza otras redes privadas que no son el enlace virtual autorizado
+  ---
+  duration_ms: 0.2067
+  type: 'test'
+  ...
+# Subtest: no permite un gateway incluso con prefijo del emulador
+ok 8 - no permite un gateway incluso con prefijo del emulador
+  ---
+  duration_ms: 0.1445
+  type: 'test'
+  ...
+# Subtest: no permite tuneles o interfaces ajenas al enlace del emulador
+ok 9 - no permite tuneles o interfaces ajenas al enlace del emulador
+  ---
+  duration_ms: 0.2956
+  type: 'test'
+  ...
+# Subtest: errores, texto desconocido y entradas no textuales no acreditan aislamiento
+ok 10 - errores, texto desconocido y entradas no textuales no acreditan aislamiento
+  ---
+  duration_ms: 0.3919
+  type: 'test'
+  ...
+# Subtest: solo acepta origen de laboratorio y nunca copia service_role al cliente
+ok 11 - solo acepta origen de laboratorio y nunca copia service_role al cliente
+  ---
+  duration_ms: 20.6161
+  type: 'test'
+  ...
+# Subtest: excluye credenciales heredadas de proveedor/firma y conserva valores locales literales
+ok 12 - excluye credenciales heredadas de proveedor/firma y conserva valores locales literales
+  ---
+  duration_ms: 0.3463
+  type: 'test'
+  ...
+# Subtest: la copia Capacitor elimina URL remota y desactiva OTA
+ok 13 - la copia Capacitor elimina URL remota y desactiva OTA
+  ---
+  duration_ms: 0.2429
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 157.1714
+

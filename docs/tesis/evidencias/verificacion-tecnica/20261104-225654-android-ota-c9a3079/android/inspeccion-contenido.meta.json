@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/inspect-local-android.cjs"
+  ],
+  "start": "2026-11-05T14:52:07.045Z",
+  "end": "2026-11-05T14:52:07.873Z",
+  "durationSeconds": 0.828,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}
