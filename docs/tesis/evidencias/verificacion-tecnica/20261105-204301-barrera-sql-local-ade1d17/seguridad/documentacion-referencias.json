@@ -1,0 +1,11 @@
+{
+  "recordedAt": "2026-11-05T20:48:45.632Z",
+  "method": "Official PostgreSQL17 documentation accessed through web open; Supabase API documentation through MCP search_docs",
+  "sources": [
+    "https://www.postgresql.org/docs/17/sql-createtrigger.html",
+    "https://www.postgresql.org/docs/17/functions-info.html",
+    "https://www.postgresql.org/docs/17/explicit-locking.html",
+    "https://supabase.com/docs/guides/api/securing-your-api"
+  ],
+  "fullContentPublished": false
+}

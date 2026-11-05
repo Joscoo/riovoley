@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/integration/maintenance-gate.local.test.cjs"
+  ],
+  "start": "2026-11-05T20:43:25.148Z",
+  "end": "2026-11-05T20:43:25.525Z",
+  "durationSeconds": 0.377,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

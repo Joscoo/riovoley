@@ -1,0 +1,15 @@
+{
+  "reviewedAt": "2026-11-05T20:45:55.066Z",
+  "reviewer": "review_sql_gate_local",
+  "type": "static_read_only",
+  "files": [
+    "scripts/audit/maintenance/lab.cjs",
+    "scripts/audit/maintenance/gate.cjs",
+    "tests/integration/maintenance-gate.local.test.cjs",
+    "docs/superpowers/plans/2026-11-05-maintenance-gate-local.md"
+  ],
+  "blockingFindings": 0,
+  "actionableFindings": 0,
+  "testsRerunByReviewer": false,
+  "scope": "Local SQL prototype only. HTTP/services/external effects and reports not reviewed."
+}

@@ -1,0 +1,35 @@
+{
+  "at": "2026-11-05T20:51:19.060Z",
+  "productChanged": false,
+  "productionSqlChanged": false,
+  "files": [
+    {
+      "file": "docs/produccion/RUNBOOK.md",
+      "sha256": "5b6dcca745e4b6528f06592b66401211a7e01bc19099981637f38e22bf1ebf59"
+    },
+    {
+      "file": "docs/superpowers/plans/2026-11-05-maintenance-gate-local.md",
+      "sha256": "8fe8251fddaa859dbf180b3d922a5c6601abbf113c9d615fbc938c18e611137d"
+    },
+    {
+      "file": "scripts/audit/maintenance/finalize.cjs",
+      "sha256": "b7c102ccca491766337c4210c7feb1f772ecc5a56efbfd1f9e2b0b58463e2a95"
+    },
+    {
+      "file": "scripts/audit/maintenance/gate.cjs",
+      "sha256": "d82cdd28a549f323affd40336530a4088245329d550be311625608c8a3b76133"
+    },
+    {
+      "file": "scripts/audit/maintenance/lab.cjs",
+      "sha256": "1a970d6d2a0920442a1dc45dde635321d00d7cc9284a3109e081de203a2d291d"
+    },
+    {
+      "file": "scripts/audit/maintenance/report.cjs",
+      "sha256": "d923e3ef21f067081dd2fc7e58980e710842da13fae0a5d95b216b604c0ca4f3"
+    },
+    {
+      "file": "tests/integration/maintenance-gate.local.test.cjs",
+      "sha256": "78763bee96dd992d11e3959400f7498cf31d5f4409d4ca456715b605e337b859"
+    }
+  ]
+}
