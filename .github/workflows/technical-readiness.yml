@@ -99,6 +99,8 @@ jobs:
         run: node --test --test-reporter=tap tests/unit/android-offline-routes.test.cjs
       - name: OTA diagnostics production guards (4 synthetic cases; no providers)
         run: node --test --test-reporter=tap tests/unit/ota-production-preflight.test.cjs
+      - name: Auth observation privacy guards (6 synthetic cases; no credentials)
+        run: node --test --test-reporter=tap tests/unit/auth-observation.test.cjs
       - name: Toolchain and production guards (explicit files; no database suite)
         run: >-
           node --test --test-concurrency=1

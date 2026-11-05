@@ -12,6 +12,9 @@ const {connect}=require('../security/local-db.cjs');
 (async()=>{
  const label=(process.argv.find(x=>x.startsWith('--label='))||'--label=autenticacion-inicial').slice(8);
  const verifyOtaHidden=process.argv.includes('--verify-ota-hidden'),planned=verifyOtaHidden?14:13;
+ const traceAuth=process.argv.includes('--trace-auth'),traceStarted=Date.now(),pendingObservations=[];
+ let phase='setup';
+ const requestMetadata=new WeakMap();
  assert.match(label,/^[a-z0-9-]+$/);
  const local=readLocal(),{env,sdk}=environment(),adb=path.join(sdk,'platform-tools/adb.exe');
  const profile=JSON.parse(fs.readFileSync(path.join(h.runtime,'emulator-audit.json'),'utf8'));
@@ -52,7 +55,8 @@ const {connect}=require('../security/local-db.cjs');
    if(u.origin==='https://localhost'||u.origin===local.apiUrl)return route.continue();
    blocked.push({origin:u.origin,pathname:u.pathname});return route.abort();
   });
-  page.on('response',r=>{const u=new URL(r.url());if(u.origin===local.apiUrl)responses.push({path:u.pathname,status:r.status(),method:r.request().method()});});
+  if(traceAuth)page.on('request',request=>{const u=new URL(request.url());if(u.origin===local.apiUrl)requestMetadata.set(request,{startedSeconds:(Date.now()-traceStarted)/1000,phaseAtStart:phase,...require('./auth-observation.cjs').classifyAuthorization(request.headers(),local.anonKey)});});
+  page.on('response',r=>{const u=new URL(r.url());if(u.origin!==local.apiUrl)return;const item={path:u.pathname,status:r.status(),method:r.request().method()};if(traceAuth)Object.assign(item,requestMetadata.get(r.request())||{requestMetadataMissing:true},{responseSeconds:(Date.now()-traceStarted)/1000,phaseAtResponse:phase});responses.push(item);if(traceAuth&&r.status()>=400)pendingObservations.push((async()=>{Object.assign(item,require('./auth-observation.cjs').classifyAuthorization(await r.request().allHeaders(),local.anonKey),{completeHeadersRead:true});const body=await r.json();if(typeof body.code==='string'&&/^[A-Z0-9_]{1,12}$/.test(body.code))item.errorCode=body.code;})().catch(()=>{item.observationIncomplete=true;}));});
   await page.goto('https://localhost/login');
   await page.evaluate(()=>{localStorage.clear();sessionStorage.clear();for(const role of ['admin','trainer','student'])localStorage.setItem('riovoley:panel-guide:'+role,JSON.stringify({version:'2026-06-22',status:'dismissed'}));});
   await page.reload();
@@ -66,6 +70,7 @@ const {connect}=require('../security/local-db.cjs');
    await page.screenshot({path:path.join(h.evidence,'android/'+label+'-portada-sin-ota.png')});
   });
   async function login(role,route){
+   phase='login:'+role;
    await page.goto('https://localhost/login');
    await page.locator('input[type=email]').fill(local.accounts[role].email);
    await page.locator('input[type=password]').fill(local.accounts[role].password);
@@ -74,13 +79,16 @@ const {connect}=require('../security/local-db.cjs');
    assert.equal((await reply).status(),200);
    await expect(page).toHaveURL(new RegExp(route+'(?:[?#]|$)'),{timeout:60000});
    await expect(page.getByRole('button',{name:'Abrir guia del panel'})).toBeVisible({timeout:60000});
+   phase='authenticated:'+role;
   }
   async function logout(route){
+   phase='logout:'+route;
    const toggle=page.getByRole('button',{name:'Abrir menú',exact:true});if(await toggle.isVisible())await toggle.click();
    const reply=page.waitForResponse(r=>r.url().startsWith(local.apiUrl+'/auth/v1/logout')&&r.request().method()==='POST');
    await page.getByRole('button',{name:/cerrar sesi/i}).click();
    assert.ok([200,204].includes((await reply).status()));
    await expect.poll(()=>page.evaluate(()=>Object.keys(localStorage).filter(k=>/^sb-.*-auth-token$/.test(k)).length),{timeout:30000}).toBe(0);
+   phase='logged-out:'+route;
    await page.goto('https://localhost'+route);
    await expect(page.getByRole('heading',{name:/acceso denegado/i})).toBeVisible({timeout:30000});
   }
@@ -95,6 +103,7 @@ const {connect}=require('../security/local-db.cjs');
   await logout('/estudiante');
  }catch(e){h.write('android/'+label+'-error.txt',c.scrub(e.stack||e.message));process.exitCode=1;
  }finally{
+  await Promise.allSettled(pendingObservations);
   const cleanupFailures=[];let after=null;
   async function cleanup(name,fn){try{return await fn();}catch(e){cleanupFailures.push({name,error:c.scrub(e.message)});process.exitCode=1;return null;}}
   after=await cleanup('consulta-recompensa-final',reward);

@@ -1,0 +1,18 @@
+{
+  "sourceCommit": "c9a3079cafdd97acb59ec952864e6fe976a9c223",
+  "currentCommit": "726602a4bd0bf4559522de8978b4309596c8978a",
+  "paths": [
+    "src",
+    "public",
+    "android",
+    "package.json",
+    "package-lock.json",
+    "capacitor.config.json",
+    "config-overrides.js",
+    "tailwind.config.js",
+    "postcss.config.js"
+  ],
+  "trackedDiffExitCode": 0,
+  "untrackedProductFiles": 0,
+  "newBuild": false
+}

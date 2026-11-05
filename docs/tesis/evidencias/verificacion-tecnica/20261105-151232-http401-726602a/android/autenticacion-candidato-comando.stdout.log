@@ -1,0 +1,11 @@
+{"label":"android/candidato-actual-identidad-avd","exitCode":0,"durationSeconds":0.185,"stderrTail":""}
+{"label":"android/candidato-actual-apk-ruta","exitCode":0,"durationSeconds":0.343,"stderrTail":""}
+{"label":"android/candidato-actual-apk-huella","exitCode":0,"durationSeconds":0.418,"stderrTail":""}
+{"label":"android/candidato-actual-tunel","exitCode":0,"durationSeconds":0.092,"stderrTail":""}
+{"label":"android/candidato-actual-detener","exitCode":0,"durationSeconds":1.098,"stderrTail":""}
+{"label":"android/candidato-actual-notificaciones-revocar","exitCode":0,"durationSeconds":0.18,"stderrTail":""}
+{"label":"android/candidato-actual-notificaciones-fijar","exitCode":0,"durationSeconds":0.276,"stderrTail":""}
+{"label":"android/candidato-actual-iniciar","exitCode":0,"durationSeconds":0.311,"stderrTail":""}
+{"label":"android/candidato-actual-notificaciones-restaurar","exitCode":0,"durationSeconds":0.645,"stderrTail":""}
+{"label":"android/candidato-actual-tunel-retirar","exitCode":0,"durationSeconds":0.173,"stderrTail":""}
+

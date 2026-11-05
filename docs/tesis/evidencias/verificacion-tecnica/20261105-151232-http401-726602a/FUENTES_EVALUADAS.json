@@ -1,0 +1,67 @@
+{
+  "at": "2026-11-05T15:27:53.433Z",
+  "baseCommit": "726602a4bd0bf4559522de8978b4309596c8978a",
+  "apkSourceCommit": "c9a3079cafdd97acb59ec952864e6fe976a9c223",
+  "productChanged": false,
+  "originalProtectedTestsUnchanged": true,
+  "files": [
+    {
+      "file": ".github/workflows/technical-readiness.yml",
+      "sha256": "384f3e149162bf19019b24ade461bebfd7eec91cf4dee621199302fc0c1b20eb"
+    },
+    {
+      "file": "docs/produccion/RUNBOOK.md",
+      "sha256": "1189766376c42eb0598706ec115ff67a4dd9800328dbbe4b42423678c2bc13f4"
+    },
+    {
+      "file": "scripts/audit/android/authenticated-webview.cjs",
+      "sha256": "2bbe4c3ccdbbe69c2bfe4678142848ffe745797ccb16ceec798a57769bde2ae5"
+    },
+    {
+      "file": "scripts/audit/android/launch-local-candidate.cjs",
+      "sha256": "bf3fffa475827bd8f08808e7820d558f9ec54d1a79cc14307fdb23fceaf2f8be"
+    },
+    {
+      "file": "docs/superpowers/plans/2026-11-05-http401-local.md",
+      "sha256": "0834cb66c701ee0891743254e885b3602a21f8ad7a4abc7789d7b37478ceba80"
+    },
+    {
+      "file": "scripts/audit/android/auth-observation.cjs",
+      "sha256": "dd18aba087fc054f62b448036b0d5f1e6f29fb1c5a22a1dbe6f6e290f61c6b93"
+    },
+    {
+      "file": "scripts/audit/android/finalize-auth401.cjs",
+      "sha256": "c073f6e49f928bc1cf7e84d18ddb6f739cff125e8169a8d2813db5aae3704058"
+    },
+    {
+      "file": "scripts/audit/android/initialize-auth401.cjs",
+      "sha256": "6c92752376b2b201e4c799544b3eb85379d942460cac890b28cc770dd1e31154"
+    },
+    {
+      "file": "scripts/audit/android/report-auth401.cjs",
+      "sha256": "99d2401ba043efc8bfde79edec221d2f7276d6e3e110c3e5a249b63743349443"
+    },
+    {
+      "file": "scripts/audit/android/reproduce-notification-signout.cjs",
+      "sha256": "8c99d10d53184da9907a3e03873f108630853e1f86f86a83d8a4cb2650a79acc"
+    },
+    {
+      "file": "tests/unit/auth-observation.test.cjs",
+      "sha256": "d4ccc41e078fa75178d49e7920dc226702e0fadb0036e1c73ec8a99c25aaa20f"
+    }
+  ],
+  "inspectedProductSources": [
+    {
+      "file": "src/features/student-dashboard/presentation/components/StudentPanel.js",
+      "sha256": "e4589d6a840e1d990d81e5c3cc3527703ad2b19277919ceed2eae5c67b2ec415"
+    },
+    {
+      "file": "src/features/gamification/application/useCases/createGamificationUseCases.js",
+      "sha256": "0184dd06409611199172e97f1c996b896982e0979929aaec3d3da1cbd1af87af"
+    },
+    {
+      "file": "src/features/gamification/infrastructure/repositories/supabaseGamificationRepository.js",
+      "sha256": "2479ac951732209c1c30f34db08b883f8f05b3d216dbabd7d115c48c5ec6e7b3"
+    }
+  ]
+}

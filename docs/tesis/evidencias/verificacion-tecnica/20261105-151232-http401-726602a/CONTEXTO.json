@@ -1,0 +1,9 @@
+{
+  "startedAt": "2026-11-05T15:12:32.900Z",
+  "baseCommit": "726602a4bd0bf4559522de8978b4309596c8978a",
+  "scope": "Diagnostico HTTP401 local con APK existente; sin nuevas claves, compilacion o cambios institucionales.",
+  "newBuild": false,
+  "apkSourceCommit": "c9a3079cafdd97acb59ec952864e6fe976a9c223",
+  "productionChanged": false,
+  "credentialsRequested": false
+}

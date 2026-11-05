@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/unit/auth-observation.test.cjs"
+  ],
+  "start": "2026-11-05T15:12:32.999Z",
+  "end": "2026-11-05T15:12:33.242Z",
+  "durationSeconds": 0.243,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

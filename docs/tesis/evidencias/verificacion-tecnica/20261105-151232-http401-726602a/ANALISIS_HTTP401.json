@@ -1,0 +1,37 @@
+{
+  "at": "2026-11-05T15:26:57.758Z",
+  "baseCommit": "726602a4bd0bf4559522de8978b4309596c8978a",
+  "apkSourceCommit": "c9a3079cafdd97acb59ec952864e6fe976a9c223",
+  "classification": "NO_REPRODUCIDO",
+  "responses": 298,
+  "httpErrors": 0,
+  "anonymousDuringSignout": 0,
+  "otherErrors": 0,
+  "errors": [],
+  "historical401RetrospectivelyAttributed": false,
+  "observationsAreNotAuthorizationDecisions": true,
+  "jwtSignaturesValidatedByClassifier": false,
+  "newBuild": false,
+  "productionChanged": false,
+  "credentialsRequested": false,
+  "native": {
+    "executed": 14,
+    "passed": 14,
+    "failed": 0,
+    "notExecuted": 0
+  },
+  "unit": {
+    "executed": 6,
+    "passed": 6,
+    "failed": 0
+  },
+  "emulatorStopped": true,
+  "controlled": {
+    "executed": 1,
+    "passed": 1,
+    "achievement401": 2,
+    "realResponseDelay": true,
+    "browser": "Chromium escritorio",
+    "mechanismReproduced": true
+  }
+}

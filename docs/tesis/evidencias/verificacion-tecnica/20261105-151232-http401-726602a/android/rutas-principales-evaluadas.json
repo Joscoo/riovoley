@@ -1,0 +1,7 @@
+{
+  "safe": true,
+  "ipv4RouteCount": 0,
+  "ipv6RouteCount": 0,
+  "rejectedRouteCount": 0,
+  "scope": "Unfiltered main table; policy routing not certified"
+}

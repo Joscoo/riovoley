@@ -1,0 +1,19 @@
+{
+  "completedAt": "2026-11-04T22:59:58.115Z",
+  "sourceCommit": "c9a3079cafdd97acb59ec952864e6fe976a9c223",
+  "privateWork": ".e2e-local/native-local/20261104225655",
+  "privateApk": ".e2e-local/native-local/20261104225655/project/android/app/build/outputs/apk/debug/app-debug.apk",
+  "sha256": "f10723fd77cc5a796b59a7fd530ad75a2ea45205167f2aee2fbb16a44fb55aae",
+  "bytes": 31076268,
+  "debuggable": true,
+  "signatureVerified": true,
+  "backend": "Supabase local descartable; http loopback por ADB reverse",
+  "otaDisabled": true,
+  "productionGoogleServicesOmitted": true,
+  "productionKeystoreOmitted": true,
+  "productionSourceFilesChanged": false,
+  "distributed": false,
+  "newBuild": false,
+  "reference": "../20261104-225654-android-ota-c9a3079/android/apk-local-compilado.json",
+  "note": "Referencia al APK privado existente, hash comprobado; no es una compilacion de esta fase."
+}

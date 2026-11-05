@@ -1,0 +1,13 @@
+{
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-Command",
+    "Get-NetTCPConnection -State Listen -LocalPort 5037 | Select-Object -ExpandProperty LocalAddress | ConvertTo-Json -Compress"
+  ],
+  "startedAt": "2026-11-05T15:13:59.369Z",
+  "finishedAt": "2026-11-05T15:14:00.712Z",
+  "exitCode": 0,
+  "errorCode": null,
+  "rawOutputPrivate": true
+}
