@@ -1,0 +1,70 @@
+[
+  {
+    "stage": "baseline",
+    "auth": {
+      "rows": [
+        {
+          "table": "users",
+          "rows": 1
+        },
+        {
+          "table": "sessions",
+          "rows": 1
+        },
+        {
+          "table": "refresh_tokens",
+          "rows": 1
+        },
+        {
+          "table": "identities",
+          "rows": 1
+        }
+      ],
+      "digest": "9b209ddfe5a752a9f1b171c9ec06b24a1a283ce07bfeef58ab90dc7b52c3784b"
+    },
+    "disk": {
+      "files": 1,
+      "digest": "7dd35a6d68f663f3793865f0907823c7616c91c816715766c50272de11a82230",
+      "entries": [
+        {
+          "file": "/mnt/stub/stub/rv-gate-20261109145120-a0e62d-a/baseline.bin/37219ff0-ac8a-43da-963d-d40c86ee1c90",
+          "sha256": "7dfbd64f640390194ed6eb6156e631cf24e3aab16e9ce5004568238acb53add6"
+        }
+      ]
+    }
+  },
+  {
+    "stage": "after-frozen-operations",
+    "auth": {
+      "rows": [
+        {
+          "table": "users",
+          "rows": 1
+        },
+        {
+          "table": "sessions",
+          "rows": 1
+        },
+        {
+          "table": "refresh_tokens",
+          "rows": 1
+        },
+        {
+          "table": "identities",
+          "rows": 1
+        }
+      ],
+      "digest": "9b209ddfe5a752a9f1b171c9ec06b24a1a283ce07bfeef58ab90dc7b52c3784b"
+    },
+    "disk": {
+      "files": 1,
+      "digest": "7dd35a6d68f663f3793865f0907823c7616c91c816715766c50272de11a82230",
+      "entries": [
+        {
+          "file": "/mnt/stub/stub/rv-gate-20261109145120-a0e62d-a/baseline.bin/37219ff0-ac8a-43da-963d-d40c86ee1c90",
+          "sha256": "7dfbd64f640390194ed6eb6156e631cf24e3aab16e9ce5004568238acb53add6"
+        }
+      ]
+    }
+  }
+]

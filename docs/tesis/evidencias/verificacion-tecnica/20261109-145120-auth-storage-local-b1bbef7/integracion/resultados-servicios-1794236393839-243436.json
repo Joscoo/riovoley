@@ -1,0 +1,165 @@
+{
+  "at": "2026-11-09T14:59:53.837Z",
+  "executed": 24,
+  "passed": 24,
+  "failed": 0,
+  "completed": true,
+  "errorCode": null,
+  "checks": [
+    {
+      "name": "creacion-fixtures-exclusivamente-locales",
+      "state": "APROBADO",
+      "durationMs": 569,
+      "detail": null
+    },
+    {
+      "name": "login-abierto-cuenta-seleccionada",
+      "state": "APROBADO",
+      "durationMs": 74,
+      "detail": null
+    },
+    {
+      "name": "login-abierto-cuenta-control",
+      "state": "APROBADO",
+      "durationMs": 73,
+      "detail": null
+    },
+    {
+      "name": "descarga-baseline-bytes-sinteticos",
+      "state": "APROBADO",
+      "durationMs": 180,
+      "detail": null
+    },
+    {
+      "name": "instalacion-cinco-disparadores-condicionales",
+      "state": "APROBADO",
+      "durationMs": 18,
+      "detail": null
+    },
+    {
+      "name": "login-seleccionado-rechazado",
+      "state": "APROBADO",
+      "durationMs": 74,
+      "detail": {
+        "status": 500
+      }
+    },
+    {
+      "name": "refresh-seleccionado-rechazado",
+      "state": "APROBADO",
+      "durationMs": 28,
+      "detail": {
+        "status": 500
+      }
+    },
+    {
+      "name": "jwt-previo-conserva-lectura-durante-cierre-de-escrituras",
+      "state": "APROBADO",
+      "durationMs": 7,
+      "detail": null
+    },
+    {
+      "name": "borrado-auth-seleccionado-rechazado",
+      "state": "APROBADO",
+      "durationMs": 25,
+      "detail": null
+    },
+    {
+      "name": "login-cuenta-control-no-afectado",
+      "state": "APROBADO",
+      "durationMs": 67,
+      "detail": null
+    },
+    {
+      "name": "subida-nueva-storage-seleccionada-rechazada",
+      "state": "APROBADO",
+      "durationMs": 10,
+      "detail": null
+    },
+    {
+      "name": "upsert-storage-seleccionado-rechazado",
+      "state": "APROBADO",
+      "durationMs": 17,
+      "detail": null
+    },
+    {
+      "name": "reasignacion-sql-no-elude-alcance-del-bucket-anterior",
+      "state": "APROBADO",
+      "durationMs": 20,
+      "detail": null
+    },
+    {
+      "name": "borrado-storage-seleccionado-rechazado",
+      "state": "APROBADO",
+      "durationMs": 26,
+      "detail": null
+    },
+    {
+      "name": "movimiento-http-entre-buckets-rechazado",
+      "state": "APROBADO",
+      "durationMs": 10,
+      "detail": null
+    },
+    {
+      "name": "subida-bucket-control-no-afectada",
+      "state": "APROBADO",
+      "durationMs": 19,
+      "detail": null
+    },
+    {
+      "name": "filas-auth-seleccionadas-sin-cambios",
+      "state": "APROBADO",
+      "durationMs": 9,
+      "detail": null
+    },
+    {
+      "name": "metadatos-storage-seleccionados-conservados",
+      "state": "APROBADO",
+      "durationMs": 17,
+      "detail": null
+    },
+    {
+      "name": "bytes-descargables-originales-conservados",
+      "state": "APROBADO",
+      "durationMs": 16,
+      "detail": null
+    },
+    {
+      "name": "inventario-fisico-owned-sin-cambios",
+      "state": "APROBADO",
+      "durationMs": 0,
+      "detail": null
+    },
+    {
+      "name": "retirada-de-barrera",
+      "state": "APROBADO",
+      "durationMs": 15,
+      "detail": null
+    },
+    {
+      "name": "login-seleccionado-restablecido",
+      "state": "APROBADO",
+      "durationMs": 84,
+      "detail": null
+    },
+    {
+      "name": "subida-storage-restablecida",
+      "state": "APROBADO",
+      "durationMs": 55,
+      "detail": null
+    },
+    {
+      "name": "movimiento-http-restablecido-y-bytes-conservados",
+      "state": "APROBADO",
+      "durationMs": 54,
+      "detail": null
+    }
+  ],
+  "cleanupPassed": true,
+  "productionChanged": false,
+  "messagesSentExternally": false,
+  "newProviderKeysGenerated": false,
+  "existingPasswordsChanged": false,
+  "discardableAccountsCreated": 2,
+  "localFixturePasswordReused": true
+}

@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/maintenance/service-probe.cjs"
+  ],
+  "start": "2026-11-09T14:58:00.739Z",
+  "end": "2026-11-09T14:58:03.218Z",
+  "durationSeconds": 2.479,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

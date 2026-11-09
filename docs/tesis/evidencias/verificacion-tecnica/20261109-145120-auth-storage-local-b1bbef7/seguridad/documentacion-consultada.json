@@ -1,0 +1,18 @@
+{
+  "recordedAt": "2026-11-09T15:05:11.996Z",
+  "sources": [
+    "https://supabase.com/docs/guides/storage/management/delete-objects",
+    "https://supabase.com/docs/guides/local-development/customizing-email-templates"
+  ],
+  "methods": [
+    "MCP search_docs"
+  ],
+  "fullSourceCopied": false,
+  "changelog": {
+    "url": "https://supabase.com/changelog.md",
+    "status": 200,
+    "bytes": 103941,
+    "sha256": "d3b1566a6a60d54095de09aeb61f50128dd0da17357fd62b646ccf560007162d"
+  },
+  "scope": "Local versions and behavior verified directly; no provider upgrade or Cloud configuration change."
+}
