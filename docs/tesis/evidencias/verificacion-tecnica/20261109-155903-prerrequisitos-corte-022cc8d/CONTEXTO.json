@@ -1,0 +1,14 @@
+{
+  "startedAt": "2026-11-09T15:59:03.300Z",
+  "baseCommit": "022cc8d559eff2ba7d25c2227ea830bcf873cb30",
+  "priorEvidence": "docs/tesis/evidencias/verificacion-tecnica/20261109-152730-edge-fence-f0b89f4",
+  "projectId": "mayvvlkvheagkojunzzb",
+  "platform": "win32",
+  "architecture": "x64",
+  "node": "v24.18.0",
+  "osRelease": "10.0.26300",
+  "initialGitStatus": "",
+  "productionChanged": false,
+  "credentialValuesRequested": false,
+  "newFunctionalTests": false
+}

@@ -1,0 +1,16 @@
+{
+  "at": "2026-11-09T16:06:51.515Z",
+  "command": [
+    "node",
+    "scripts/audit/production/refresh-cutover.cjs",
+    "seal"
+  ],
+  "actualExitCode": 1,
+  "stage": "BROKEN_LINK",
+  "target": "docs/produccion/VARIABLES.md#preflight-sin-carga-automática-de-archivos",
+  "fileExistsWithoutAnchor": true,
+  "cause": "Validator included Markdown section fragment in filesystem path.",
+  "correction": "Resolve the file path separately from its fragment, as historical audit finalizers already do.",
+  "partialSourceAndCommandManifestsPreserved": true,
+  "sealedEvidenceRewritten": false
+}

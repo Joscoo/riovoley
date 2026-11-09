@@ -1,0 +1,185 @@
+{
+  "at": "2026-11-09T16:02:23.531Z",
+  "observations": [
+    {
+      "function": "send-email",
+      "startedAt": "2026-11-09T16:02:19.981Z",
+      "finishedAt": "2026-11-09T16:02:20.604Z",
+      "status": 200,
+      "bytes": 2,
+      "bodySha256": "2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df",
+      "origin": "*",
+      "allowedHeaders": [
+        "authorization",
+        "x-client-info",
+        "apikey",
+        "content-type"
+      ],
+      "corsAllowsBrowserRequest": true,
+      "passed": true,
+      "sourceFile": "supabase/functions/send-email/index.ts",
+      "sourceSha256": "eb7ab4da498cf23add764a8b7ab8ad6519abc142fa60af781514121e05afe31e"
+    },
+    {
+      "function": "update-user-password",
+      "startedAt": "2026-11-09T16:02:20.606Z",
+      "finishedAt": "2026-11-09T16:02:20.922Z",
+      "status": 200,
+      "bytes": 2,
+      "bodySha256": "2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df",
+      "origin": "*",
+      "allowedHeaders": [
+        "authorization",
+        "x-client-info",
+        "apikey",
+        "content-type"
+      ],
+      "corsAllowsBrowserRequest": true,
+      "passed": true,
+      "sourceFile": "supabase/functions/update-user-password/index.ts",
+      "sourceSha256": "61338545403c3ceaff81c372c2fde0751e8770638750660bcee253782a1a9bcb"
+    },
+    {
+      "function": "delete-auth-user",
+      "startedAt": "2026-11-09T16:02:20.923Z",
+      "finishedAt": "2026-11-09T16:02:21.148Z",
+      "status": 204,
+      "bytes": 0,
+      "bodySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "origin": "*",
+      "allowedHeaders": [
+        "authorization",
+        "x-client-info",
+        "apikey",
+        "content-type"
+      ],
+      "corsAllowsBrowserRequest": true,
+      "passed": true,
+      "sourceFile": "supabase/functions/delete-auth-user/index.ts",
+      "sourceSha256": "92977d11b43a3fcdb5d10a549e43f0748c7dbd70805184fbc7cf5f99dff6610b"
+    },
+    {
+      "function": "generate-report",
+      "startedAt": "2026-11-09T16:02:21.149Z",
+      "finishedAt": "2026-11-09T16:02:21.503Z",
+      "status": 200,
+      "bytes": 2,
+      "bodySha256": "2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df",
+      "origin": "*",
+      "allowedHeaders": [
+        "authorization",
+        "x-client-info",
+        "apikey",
+        "content-type"
+      ],
+      "corsAllowsBrowserRequest": true,
+      "passed": true,
+      "sourceFile": "supabase/functions/generate-report/index.ts",
+      "sourceSha256": "7ee235af5b21122a27681397593355deb5a21ebdeb84f2cca43054fb7a9da758"
+    },
+    {
+      "function": "generate-scheduled-reports",
+      "startedAt": "2026-11-09T16:02:21.504Z",
+      "finishedAt": "2026-11-09T16:02:21.852Z",
+      "status": 200,
+      "bytes": 2,
+      "bodySha256": "2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df",
+      "origin": "*",
+      "allowedHeaders": [
+        "authorization",
+        "x-client-info",
+        "apikey",
+        "content-type"
+      ],
+      "corsAllowsBrowserRequest": true,
+      "passed": true,
+      "sourceFile": "supabase/functions/generate-scheduled-reports/index.ts",
+      "sourceSha256": "1007225baa710fd6c18e890c6569237115ee2d0bc6250b32930afb1e55cba5d8"
+    },
+    {
+      "function": "delete-report-run",
+      "startedAt": "2026-11-09T16:02:21.853Z",
+      "finishedAt": "2026-11-09T16:02:22.197Z",
+      "status": 200,
+      "bytes": 2,
+      "bodySha256": "2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df",
+      "origin": "*",
+      "allowedHeaders": [
+        "authorization",
+        "x-client-info",
+        "apikey",
+        "content-type"
+      ],
+      "corsAllowsBrowserRequest": true,
+      "passed": true,
+      "sourceFile": "supabase/functions/delete-report-run/index.ts",
+      "sourceSha256": "9bae9f8176a9d2c702fc6cd323cf19b45c1940a12a295c0c89b48c0dc6cdb41f"
+    },
+    {
+      "function": "sync-mobile-device",
+      "startedAt": "2026-11-09T16:02:22.202Z",
+      "finishedAt": "2026-11-09T16:02:22.608Z",
+      "status": 200,
+      "bytes": 2,
+      "bodySha256": "2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df",
+      "origin": "*",
+      "allowedHeaders": [
+        "authorization",
+        "x-client-info",
+        "apikey",
+        "content-type"
+      ],
+      "corsAllowsBrowserRequest": true,
+      "passed": true,
+      "sourceFile": "supabase/functions/sync-mobile-device/index.ts",
+      "sourceSha256": "509754a426417b4a4f90a9450aaef5fea4d856bfb94eb683ca208f5cdec654e5"
+    },
+    {
+      "function": "send-push",
+      "startedAt": "2026-11-09T16:02:22.609Z",
+      "finishedAt": "2026-11-09T16:02:23.093Z",
+      "status": 200,
+      "bytes": 2,
+      "bodySha256": "2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df",
+      "origin": "*",
+      "allowedHeaders": [
+        "authorization",
+        "x-client-info",
+        "apikey",
+        "content-type"
+      ],
+      "corsAllowsBrowserRequest": true,
+      "passed": true,
+      "sourceFile": "supabase/functions/send-push/index.ts",
+      "sourceSha256": "0ecef1c8642781138ecda6956072204a89fbb0b85bdc0a094c0331afa3ced3fc"
+    },
+    {
+      "function": "send-payment-reminders",
+      "startedAt": "2026-11-09T16:02:23.095Z",
+      "finishedAt": "2026-11-09T16:02:23.530Z",
+      "status": 200,
+      "bytes": 2,
+      "bodySha256": "2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df",
+      "origin": "*",
+      "allowedHeaders": [
+        "authorization",
+        "x-client-info",
+        "apikey",
+        "content-type"
+      ],
+      "corsAllowsBrowserRequest": true,
+      "passed": true,
+      "sourceFile": "supabase/functions/send-payment-reminders/index.ts",
+      "sourceSha256": "7ed6d261daf47f25930e3a46dc3333857fb83263b5d71c31eed31616dfc244e9"
+    }
+  ],
+  "executed": 9,
+  "passed": 9,
+  "failed": 0,
+  "method": "OPTIONS",
+  "credentialsSent": false,
+  "businessPostSent": false,
+  "businessRowsRead": false,
+  "providerDeliveryTested": false,
+  "scope": "Managed HTTPS preflight only; may be answered by gateway. Does not prove handler execution, role authorization, allowed methods or business persistence."
+}

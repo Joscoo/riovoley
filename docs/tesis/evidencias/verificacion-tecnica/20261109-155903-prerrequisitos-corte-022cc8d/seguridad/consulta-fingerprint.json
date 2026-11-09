@@ -1,0 +1,12 @@
+{
+  "tool": "mcp__codex_apps__supabase_execute_sql",
+  "queryFile": "catalog-fingerprint.sql",
+  "querySha256": "e25b022cea296a7cf5a10822a08ffdb2b10178479979508ce95c3f4da8d11c66",
+  "wrapper": "BEGIN READ ONLY; <query file> COMMIT;",
+  "result": {
+    "value": "15b9d9e869fb5113263c485714009878",
+    "toolIsError": false,
+    "at": "2026-11-09T15:59:26.249Z"
+  },
+  "rawUserRowsReturned": false
+}

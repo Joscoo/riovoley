@@ -1,0 +1,58 @@
+{
+  "checkedAt": "2026-11-09T15:59:25.139Z",
+  "references": [
+    {
+      "channel": "REST/RPC",
+      "file": "src/features/gamification/infrastructure/repositories/supabaseGamificationRepository.js",
+      "line": 73,
+      "sha256": "2479ac951732209c1c30f34db08b883f8f05b3d216dbabd7d115c48c5ec6e7b3",
+      "executed": false
+    },
+    {
+      "channel": "Auth",
+      "file": "src/features/account-admin/infrastructure/repositories/supabaseAccountAdminRepository.js",
+      "line": 150,
+      "sha256": "58e0b98636edf10d8724c219d184eb7f19def91992a741dce1f3fda4fac7d1d4",
+      "executed": false
+    },
+    {
+      "channel": "Storage",
+      "file": "src/features/reporting/infrastructure/repositories/supabaseReportingRepository.js",
+      "line": 39,
+      "sha256": "0ae942abcf604cb25633c2ab349c5ce6dc2e6389b8c58b97c2845666cbb978d6",
+      "executed": false
+    },
+    {
+      "channel": "Edge correo",
+      "file": "src/features/communications/infrastructure/repositories/supabaseCommunicationsRepository.js",
+      "line": 89,
+      "sha256": "2fe3585c456c74a444984986a8589f07f3f206837c706c35aee8daca6e37bb48",
+      "executed": false
+    },
+    {
+      "channel": "Edge dispositivos",
+      "file": "src/shared/infrastructure/mobile/supabaseMobileDeviceRepository.js",
+      "line": 17,
+      "sha256": "0ff1afa0a55bf865d4c2bb0b3729046fe9a8cc214c4b6466deedab2eafae9141",
+      "executed": false
+    },
+    {
+      "channel": "Edge push",
+      "file": "src/shared/infrastructure/mobile/supabasePushNotificationGateway.js",
+      "line": 48,
+      "sha256": "e74fd190903aece4909c23300ccb3d8d527b01ee2da4c1bd5d2057431455ef4e",
+      "executed": false
+    },
+    {
+      "channel": "Marcador de ventana",
+      "file": "scripts/audit/production/sql-lab.cjs",
+      "line": 39,
+      "sha256": "8b94b2ebab7241c3dbd1afd3d552087aa2db8bd09a6416fe2b97a2b26bd7fc1a",
+      "executed": false
+    }
+  ],
+  "scope": "Selected static source references, not exhaustive API inventory or real channel blocking test. Storage reference is a signed-URL operation, not proof of an object upload.",
+  "productionTrafficBlocked": false,
+  "globalWriteGateDemonstrated": false,
+  "productionWritesAttempted": false
+}

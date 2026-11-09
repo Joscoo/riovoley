@@ -1,0 +1,18 @@
+{
+  "command": [
+    ".e2e-local/tools/node_modules/@supabase/cli-windows-x64/bin/supabase.exe",
+    "backups",
+    "list",
+    "--project-ref",
+    "mayvvlkvheagkojunzzb",
+    "--output",
+    "json"
+  ],
+  "start": "2026-11-09T15:59:19.392Z",
+  "end": "2026-11-09T15:59:24.806Z",
+  "durationSeconds": 5.416,
+  "exitCode": 0,
+  "errorCode": null,
+  "stdout": "Projected fields in respaldos-administrados.json; raw output retained privately.",
+  "stderr": "Private; no raw authentication or provider diagnostics published."
+}
