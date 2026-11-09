@@ -1,0 +1,26 @@
+{
+  "createdAt": "2026-11-09T15:27:30.265Z",
+  "baseCommit": "f0b89f4a6136c17d881a72c36c7b484aeefb6c06",
+  "evidence": "docs/tesis/evidencias/verificacion-tecnica/20261109-152730-edge-fence-f0b89f4",
+  "privateDir": ".e2e-local/edge-fence/20261109-152730",
+  "names": [
+    "send-email",
+    "send-push",
+    "send-payment-reminders",
+    "generate-report",
+    "generate-scheduled-reports",
+    "delete-report-run",
+    "sync-mobile-device",
+    "delete-auth-user",
+    "update-user-password"
+  ],
+  "port": 6163,
+  "osRelease": "10.0.26300",
+  "node": "v24.18.0",
+  "serverVersion": "17.11",
+  "productionChanged": false,
+  "api": "http://127.0.0.1:55321",
+  "providerCredentialsUsed": false,
+  "providerConfigurationSynthetic": true,
+  "cloudRuntimeUsed": false
+}

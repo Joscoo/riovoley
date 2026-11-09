@@ -1,0 +1,1041 @@
+{
+  "at": "2026-11-09T15:29:43.337Z",
+  "phase": "green",
+  "executed": 57,
+  "passed": 57,
+  "failed": 0,
+  "completed": true,
+  "setupErrorCode": null,
+  "checks": [
+    {
+      "name": "send-email OPTIONS",
+      "state": "APROBADO",
+      "durationMs": 3,
+      "detail": null
+    },
+    {
+      "name": "send-email GET rechazado",
+      "state": "APROBADO",
+      "durationMs": 2,
+      "detail": null
+    },
+    {
+      "name": "send-push OPTIONS",
+      "state": "APROBADO",
+      "durationMs": 3,
+      "detail": null
+    },
+    {
+      "name": "send-push GET rechazado",
+      "state": "APROBADO",
+      "durationMs": 14,
+      "detail": null
+    },
+    {
+      "name": "send-payment-reminders OPTIONS",
+      "state": "APROBADO",
+      "durationMs": 15,
+      "detail": null
+    },
+    {
+      "name": "send-payment-reminders GET rechazado",
+      "state": "APROBADO",
+      "durationMs": 16,
+      "detail": null
+    },
+    {
+      "name": "generate-report OPTIONS",
+      "state": "APROBADO",
+      "durationMs": 15,
+      "detail": null
+    },
+    {
+      "name": "generate-report GET rechazado",
+      "state": "APROBADO",
+      "durationMs": 15,
+      "detail": null
+    },
+    {
+      "name": "generate-scheduled-reports OPTIONS",
+      "state": "APROBADO",
+      "durationMs": 16,
+      "detail": null
+    },
+    {
+      "name": "generate-scheduled-reports GET rechazado",
+      "state": "APROBADO",
+      "durationMs": 14,
+      "detail": null
+    },
+    {
+      "name": "delete-report-run OPTIONS",
+      "state": "APROBADO",
+      "durationMs": 15,
+      "detail": null
+    },
+    {
+      "name": "delete-report-run GET rechazado",
+      "state": "APROBADO",
+      "durationMs": 17,
+      "detail": null
+    },
+    {
+      "name": "sync-mobile-device OPTIONS",
+      "state": "APROBADO",
+      "durationMs": 16,
+      "detail": null
+    },
+    {
+      "name": "sync-mobile-device GET rechazado",
+      "state": "APROBADO",
+      "durationMs": 16,
+      "detail": null
+    },
+    {
+      "name": "delete-auth-user OPTIONS",
+      "state": "APROBADO",
+      "durationMs": 16,
+      "detail": null
+    },
+    {
+      "name": "delete-auth-user GET rechazado",
+      "state": "APROBADO",
+      "durationMs": 2,
+      "detail": null
+    },
+    {
+      "name": "update-user-password OPTIONS",
+      "state": "APROBADO",
+      "durationMs": 13,
+      "detail": null
+    },
+    {
+      "name": "update-user-password GET rechazado",
+      "state": "APROBADO",
+      "durationMs": 15,
+      "detail": null
+    },
+    {
+      "name": "send-email sin sesion",
+      "state": "APROBADO",
+      "durationMs": 22,
+      "detail": null
+    },
+    {
+      "name": "send-push sin sesion",
+      "state": "APROBADO",
+      "durationMs": 4,
+      "detail": null
+    },
+    {
+      "name": "generate-report sin sesion",
+      "state": "APROBADO",
+      "durationMs": 5,
+      "detail": null
+    },
+    {
+      "name": "generate-scheduled-reports sin sesion",
+      "state": "APROBADO",
+      "durationMs": 15,
+      "detail": null
+    },
+    {
+      "name": "delete-report-run sin sesion",
+      "state": "APROBADO",
+      "durationMs": 19,
+      "detail": null
+    },
+    {
+      "name": "sync-mobile-device sin sesion",
+      "state": "APROBADO",
+      "durationMs": 12,
+      "detail": null
+    },
+    {
+      "name": "delete-auth-user sin sesion",
+      "state": "APROBADO",
+      "durationMs": 16,
+      "detail": null
+    },
+    {
+      "name": "update-user-password sin sesion",
+      "state": "APROBADO",
+      "durationMs": 16,
+      "detail": null
+    },
+    {
+      "name": "send-email token invalido",
+      "state": "APROBADO",
+      "durationMs": 23,
+      "detail": null
+    },
+    {
+      "name": "send-push token invalido",
+      "state": "APROBADO",
+      "durationMs": 9,
+      "detail": null
+    },
+    {
+      "name": "generate-report token invalido",
+      "state": "APROBADO",
+      "durationMs": 89,
+      "detail": null
+    },
+    {
+      "name": "generate-scheduled-reports token invalido",
+      "state": "APROBADO",
+      "durationMs": 25,
+      "detail": null
+    },
+    {
+      "name": "delete-report-run token invalido",
+      "state": "APROBADO",
+      "durationMs": 24,
+      "detail": null
+    },
+    {
+      "name": "sync-mobile-device token invalido",
+      "state": "APROBADO",
+      "durationMs": 22,
+      "detail": null
+    },
+    {
+      "name": "delete-auth-user token invalido",
+      "state": "APROBADO",
+      "durationMs": 11,
+      "detail": null
+    },
+    {
+      "name": "update-user-password token invalido",
+      "state": "APROBADO",
+      "durationMs": 40,
+      "detail": null
+    },
+    {
+      "name": "send-email rol atleta",
+      "state": "APROBADO",
+      "durationMs": 189,
+      "detail": null
+    },
+    {
+      "name": "send-push rol atleta",
+      "state": "APROBADO",
+      "durationMs": 56,
+      "detail": null
+    },
+    {
+      "name": "generate-report rol atleta",
+      "state": "APROBADO",
+      "durationMs": 18,
+      "detail": null
+    },
+    {
+      "name": "generate-scheduled-reports rol atleta",
+      "state": "APROBADO",
+      "durationMs": 27,
+      "detail": null
+    },
+    {
+      "name": "delete-report-run rol atleta",
+      "state": "APROBADO",
+      "durationMs": 34,
+      "detail": null
+    },
+    {
+      "name": "sync-mobile-device rol atleta",
+      "state": "APROBADO",
+      "durationMs": 12,
+      "detail": null
+    },
+    {
+      "name": "delete-auth-user rol atleta",
+      "state": "APROBADO",
+      "durationMs": 58,
+      "detail": null
+    },
+    {
+      "name": "update-user-password rol atleta",
+      "state": "APROBADO",
+      "durationMs": 28,
+      "detail": null
+    },
+    {
+      "name": "send-email admin cuerpo vacio no escribe",
+      "state": "APROBADO",
+      "durationMs": 27,
+      "detail": null
+    },
+    {
+      "name": "send-push admin cuerpo vacio no escribe",
+      "state": "APROBADO",
+      "durationMs": 88,
+      "detail": null
+    },
+    {
+      "name": "generate-report admin cuerpo vacio no escribe",
+      "state": "APROBADO",
+      "durationMs": 288,
+      "detail": null
+    },
+    {
+      "name": "delete-report-run admin cuerpo vacio no escribe",
+      "state": "APROBADO",
+      "durationMs": 23,
+      "detail": null
+    },
+    {
+      "name": "sync-mobile-device admin cuerpo vacio no escribe",
+      "state": "APROBADO",
+      "durationMs": 19,
+      "detail": null
+    },
+    {
+      "name": "delete-auth-user admin cuerpo vacio no escribe",
+      "state": "APROBADO",
+      "durationMs": 112,
+      "detail": null
+    },
+    {
+      "name": "update-user-password admin cuerpo vacio no escribe",
+      "state": "APROBADO",
+      "durationMs": 18,
+      "detail": null
+    },
+    {
+      "name": "recordatorios sin scheduler configurado",
+      "state": "APROBADO",
+      "durationMs": 3,
+      "detail": null
+    },
+    {
+      "name": "correo autorizado con proveedor cercado no confirma entrega",
+      "state": "APROBADO",
+      "durationMs": 74,
+      "detail": null
+    },
+    {
+      "name": "Deno niega red nativa a resend",
+      "state": "APROBADO",
+      "durationMs": 4,
+      "detail": null
+    },
+    {
+      "name": "Deno niega red nativa a fcm",
+      "state": "APROBADO",
+      "durationMs": 16,
+      "detail": null
+    },
+    {
+      "name": "instrumentacion rechaza escritura local",
+      "state": "APROBADO",
+      "durationMs": 15,
+      "detail": null
+    },
+    {
+      "name": "entorno proveedor exclusivamente sintetico",
+      "state": "APROBADO",
+      "durationMs": 0,
+      "detail": null
+    },
+    {
+      "name": "handlers no intentan escrituras locales",
+      "state": "APROBADO",
+      "durationMs": 0,
+      "detail": null
+    },
+    {
+      "name": "tablas y secuencias de negocio sin cambios",
+      "state": "APROBADO",
+      "durationMs": 1,
+      "detail": null
+    }
+  ],
+  "responses": [
+    {
+      "name": "send-email",
+      "method": "OPTIONS",
+      "status": 200,
+      "code": null,
+      "durationMs": 3
+    },
+    {
+      "name": "send-email",
+      "method": "GET",
+      "status": 405,
+      "code": "METHOD_NOT_ALLOWED",
+      "durationMs": 2
+    },
+    {
+      "name": "send-push",
+      "method": "OPTIONS",
+      "status": 200,
+      "code": null,
+      "durationMs": 3
+    },
+    {
+      "name": "send-push",
+      "method": "GET",
+      "status": 405,
+      "code": "METHOD_NOT_ALLOWED",
+      "durationMs": 14
+    },
+    {
+      "name": "send-payment-reminders",
+      "method": "OPTIONS",
+      "status": 200,
+      "code": null,
+      "durationMs": 15
+    },
+    {
+      "name": "send-payment-reminders",
+      "method": "GET",
+      "status": 405,
+      "code": "METHOD_NOT_ALLOWED",
+      "durationMs": 16
+    },
+    {
+      "name": "generate-report",
+      "method": "OPTIONS",
+      "status": 200,
+      "code": null,
+      "durationMs": 15
+    },
+    {
+      "name": "generate-report",
+      "method": "GET",
+      "status": 405,
+      "code": "METHOD_NOT_ALLOWED",
+      "durationMs": 15
+    },
+    {
+      "name": "generate-scheduled-reports",
+      "method": "OPTIONS",
+      "status": 200,
+      "code": null,
+      "durationMs": 16
+    },
+    {
+      "name": "generate-scheduled-reports",
+      "method": "GET",
+      "status": 405,
+      "code": "METHOD_NOT_ALLOWED",
+      "durationMs": 14
+    },
+    {
+      "name": "delete-report-run",
+      "method": "OPTIONS",
+      "status": 200,
+      "code": null,
+      "durationMs": 15
+    },
+    {
+      "name": "delete-report-run",
+      "method": "GET",
+      "status": 405,
+      "code": "METHOD_NOT_ALLOWED",
+      "durationMs": 17
+    },
+    {
+      "name": "sync-mobile-device",
+      "method": "OPTIONS",
+      "status": 200,
+      "code": null,
+      "durationMs": 16
+    },
+    {
+      "name": "sync-mobile-device",
+      "method": "GET",
+      "status": 405,
+      "code": "METHOD_NOT_ALLOWED",
+      "durationMs": 16
+    },
+    {
+      "name": "delete-auth-user",
+      "method": "OPTIONS",
+      "status": 200,
+      "code": null,
+      "durationMs": 16
+    },
+    {
+      "name": "delete-auth-user",
+      "method": "GET",
+      "status": 405,
+      "code": "METHOD_NOT_ALLOWED",
+      "durationMs": 2
+    },
+    {
+      "name": "update-user-password",
+      "method": "OPTIONS",
+      "status": 200,
+      "code": null,
+      "durationMs": 13
+    },
+    {
+      "name": "update-user-password",
+      "method": "GET",
+      "status": 405,
+      "code": "METHOD_NOT_ALLOWED",
+      "durationMs": 15
+    },
+    {
+      "name": "send-email",
+      "method": "POST",
+      "status": 401,
+      "code": "AUTH_REQUIRED",
+      "durationMs": 22
+    },
+    {
+      "name": "send-push",
+      "method": "POST",
+      "status": 401,
+      "code": "AUTH_REQUIRED",
+      "durationMs": 4
+    },
+    {
+      "name": "generate-report",
+      "method": "POST",
+      "status": 401,
+      "code": "AUTH_REQUIRED",
+      "durationMs": 5
+    },
+    {
+      "name": "generate-scheduled-reports",
+      "method": "POST",
+      "status": 401,
+      "code": "AUTH_REQUIRED",
+      "durationMs": 15
+    },
+    {
+      "name": "delete-report-run",
+      "method": "POST",
+      "status": 401,
+      "code": "AUTH_REQUIRED",
+      "durationMs": 19
+    },
+    {
+      "name": "sync-mobile-device",
+      "method": "POST",
+      "status": 401,
+      "code": "AUTH_REQUIRED",
+      "durationMs": 12
+    },
+    {
+      "name": "delete-auth-user",
+      "method": "POST",
+      "status": 401,
+      "code": "AUTH_REQUIRED",
+      "durationMs": 16
+    },
+    {
+      "name": "update-user-password",
+      "method": "POST",
+      "status": 401,
+      "code": "AUTH_REQUIRED",
+      "durationMs": 16
+    },
+    {
+      "name": "send-email",
+      "method": "POST",
+      "status": 401,
+      "code": "AUTH_INVALID",
+      "durationMs": 22
+    },
+    {
+      "name": "send-push",
+      "method": "POST",
+      "status": 401,
+      "code": "AUTH_INVALID",
+      "durationMs": 9
+    },
+    {
+      "name": "generate-report",
+      "method": "POST",
+      "status": 401,
+      "code": "AUTH_INVALID",
+      "durationMs": 89
+    },
+    {
+      "name": "generate-scheduled-reports",
+      "method": "POST",
+      "status": 401,
+      "code": "AUTH_INVALID",
+      "durationMs": 25
+    },
+    {
+      "name": "delete-report-run",
+      "method": "POST",
+      "status": 401,
+      "code": "AUTH_INVALID",
+      "durationMs": 24
+    },
+    {
+      "name": "sync-mobile-device",
+      "method": "POST",
+      "status": 401,
+      "code": "AUTH_INVALID",
+      "durationMs": 22
+    },
+    {
+      "name": "delete-auth-user",
+      "method": "POST",
+      "status": 401,
+      "code": "AUTH_INVALID",
+      "durationMs": 11
+    },
+    {
+      "name": "update-user-password",
+      "method": "POST",
+      "status": 401,
+      "code": "AUTH_INVALID",
+      "durationMs": 40
+    },
+    {
+      "name": "send-email",
+      "method": "POST",
+      "status": 403,
+      "code": "ROLE_NOT_ALLOWED",
+      "durationMs": 189
+    },
+    {
+      "name": "send-push",
+      "method": "POST",
+      "status": 403,
+      "code": "ROLE_NOT_ALLOWED",
+      "durationMs": 56
+    },
+    {
+      "name": "generate-report",
+      "method": "POST",
+      "status": 403,
+      "code": "ROLE_NOT_ALLOWED",
+      "durationMs": 18
+    },
+    {
+      "name": "generate-scheduled-reports",
+      "method": "POST",
+      "status": 403,
+      "code": "ROLE_NOT_ALLOWED",
+      "durationMs": 27
+    },
+    {
+      "name": "delete-report-run",
+      "method": "POST",
+      "status": 403,
+      "code": "ROLE_NOT_ALLOWED",
+      "durationMs": 34
+    },
+    {
+      "name": "sync-mobile-device",
+      "method": "POST",
+      "status": 400,
+      "code": "INVALID_INPUT",
+      "durationMs": 12
+    },
+    {
+      "name": "delete-auth-user",
+      "method": "POST",
+      "status": 403,
+      "code": "ROLE_NOT_ALLOWED",
+      "durationMs": 58
+    },
+    {
+      "name": "update-user-password",
+      "method": "POST",
+      "status": 403,
+      "code": "ROLE_NOT_ALLOWED",
+      "durationMs": 28
+    },
+    {
+      "name": "send-email",
+      "method": "POST",
+      "status": 400,
+      "code": "MISSING_FIELDS",
+      "durationMs": 27
+    },
+    {
+      "name": "send-push",
+      "method": "POST",
+      "status": 400,
+      "code": "INVALID_INPUT",
+      "durationMs": 88
+    },
+    {
+      "name": "generate-report",
+      "method": "POST",
+      "status": 400,
+      "code": "INVALID_PERIOD",
+      "durationMs": 288
+    },
+    {
+      "name": "delete-report-run",
+      "method": "POST",
+      "status": 400,
+      "code": "INVALID_RUN_ID",
+      "durationMs": 23
+    },
+    {
+      "name": "sync-mobile-device",
+      "method": "POST",
+      "status": 400,
+      "code": "INVALID_INPUT",
+      "durationMs": 19
+    },
+    {
+      "name": "delete-auth-user",
+      "method": "POST",
+      "status": 400,
+      "code": "MISSING_FIELDS",
+      "durationMs": 112
+    },
+    {
+      "name": "update-user-password",
+      "method": "POST",
+      "status": 400,
+      "code": "MISSING_FIELDS",
+      "durationMs": 18
+    },
+    {
+      "name": "send-payment-reminders",
+      "method": "POST",
+      "status": 503,
+      "code": "SCHEDULER_NOT_CONFIGURED",
+      "durationMs": 3
+    },
+    {
+      "name": "send-email",
+      "method": "POST",
+      "status": 503,
+      "code": "EMAIL_PROVIDER_UNAVAILABLE",
+      "durationMs": 74
+    }
+  ],
+  "stats": {
+    "localReads": [
+      {
+        "handler": "send-email",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 403
+      },
+      {
+        "handler": "send-push",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 403
+      },
+      {
+        "handler": "generate-report",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 403
+      },
+      {
+        "handler": "generate-scheduled-reports",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 403
+      },
+      {
+        "handler": "delete-report-run",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 403
+      },
+      {
+        "handler": "sync-mobile-device",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 403
+      },
+      {
+        "handler": "delete-auth-user",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 403
+      },
+      {
+        "handler": "update-user-password",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 403
+      },
+      {
+        "handler": "send-email",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 200
+      },
+      {
+        "handler": "send-email",
+        "method": "GET",
+        "path": "/rest/v1/users",
+        "status": 200
+      },
+      {
+        "handler": "send-push",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 200
+      },
+      {
+        "handler": "send-push",
+        "method": "GET",
+        "path": "/rest/v1/users",
+        "status": 200
+      },
+      {
+        "handler": "generate-report",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 200
+      },
+      {
+        "handler": "generate-report",
+        "method": "GET",
+        "path": "/rest/v1/users",
+        "status": 200
+      },
+      {
+        "handler": "generate-scheduled-reports",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 200
+      },
+      {
+        "handler": "generate-scheduled-reports",
+        "method": "GET",
+        "path": "/rest/v1/users",
+        "status": 200
+      },
+      {
+        "handler": "delete-report-run",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 200
+      },
+      {
+        "handler": "delete-report-run",
+        "method": "GET",
+        "path": "/rest/v1/users",
+        "status": 200
+      },
+      {
+        "handler": "sync-mobile-device",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 200
+      },
+      {
+        "handler": "delete-auth-user",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 200
+      },
+      {
+        "handler": "delete-auth-user",
+        "method": "GET",
+        "path": "/rest/v1/users",
+        "status": 200
+      },
+      {
+        "handler": "update-user-password",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 200
+      },
+      {
+        "handler": "update-user-password",
+        "method": "GET",
+        "path": "/rest/v1/users",
+        "status": 200
+      },
+      {
+        "handler": "send-email",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 200
+      },
+      {
+        "handler": "send-email",
+        "method": "GET",
+        "path": "/rest/v1/users",
+        "status": 200
+      },
+      {
+        "handler": "send-push",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 200
+      },
+      {
+        "handler": "send-push",
+        "method": "GET",
+        "path": "/rest/v1/users",
+        "status": 200
+      },
+      {
+        "handler": "generate-report",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 200
+      },
+      {
+        "handler": "generate-report",
+        "method": "GET",
+        "path": "/rest/v1/users",
+        "status": 200
+      },
+      {
+        "handler": "delete-report-run",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 200
+      },
+      {
+        "handler": "delete-report-run",
+        "method": "GET",
+        "path": "/rest/v1/users",
+        "status": 200
+      },
+      {
+        "handler": "sync-mobile-device",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 200
+      },
+      {
+        "handler": "delete-auth-user",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 200
+      },
+      {
+        "handler": "delete-auth-user",
+        "method": "GET",
+        "path": "/rest/v1/users",
+        "status": 200
+      },
+      {
+        "handler": "update-user-password",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 200
+      },
+      {
+        "handler": "update-user-password",
+        "method": "GET",
+        "path": "/rest/v1/users",
+        "status": 200
+      },
+      {
+        "handler": "send-email",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 200
+      },
+      {
+        "handler": "send-email",
+        "method": "GET",
+        "path": "/rest/v1/users",
+        "status": 200
+      }
+    ],
+    "localWritesBlocked": [
+      {
+        "handler": "safety-probe",
+        "method": "POST",
+        "path": "/rest/v1/users"
+      }
+    ],
+    "externalAttempts": [
+      {
+        "handler": "send-email",
+        "method": "POST",
+        "hostname": "api.resend.com"
+      }
+    ],
+    "nativeProbes": [
+      {
+        "hostname": "api.resend.com",
+        "denied": true,
+        "errorName": "NotCapable"
+      },
+      {
+        "hostname": "fcm.googleapis.com",
+        "denied": true,
+        "errorName": "NotCapable"
+      }
+    ],
+    "providerEnvironment": {
+      "resendSynthetic": true,
+      "fcmConfigured": false,
+      "schedulerConfigured": false
+    }
+  },
+  "baseline": {
+    "tables": 47,
+    "rows": 4598,
+    "contentsSha256": "9aabe29f4370c22351bb56fe6fa3b38090459c7a0bc41e65941ce91bc3d2c760",
+    "sequences": 10,
+    "sequencesSha256": "48b7fc0a822cbfebb6dd77de79c4bc1a0b62188ed4376152bf327cb6e1f38d34"
+  },
+  "after": {
+    "tables": 47,
+    "rows": 4598,
+    "contentsSha256": "9aabe29f4370c22351bb56fe6fa3b38090459c7a0bc41e65941ce91bc3d2c760",
+    "sequences": 10,
+    "sequencesSha256": "48b7fc0a822cbfebb6dd77de79c4bc1a0b62188ed4376152bf327cb6e1f38d34"
+  },
+  "cleanupPassed": true,
+  "sources": [
+    {
+      "name": "send-email",
+      "file": "supabase/functions/send-email/index.ts",
+      "sha256": "eb7ab4da498cf23add764a8b7ab8ad6519abc142fa60af781514121e05afe31e"
+    },
+    {
+      "name": "send-push",
+      "file": "supabase/functions/send-push/index.ts",
+      "sha256": "0ecef1c8642781138ecda6956072204a89fbb0b85bdc0a094c0331afa3ced3fc"
+    },
+    {
+      "name": "send-payment-reminders",
+      "file": "supabase/functions/send-payment-reminders/index.ts",
+      "sha256": "7ed6d261daf47f25930e3a46dc3333857fb83263b5d71c31eed31616dfc244e9"
+    },
+    {
+      "name": "generate-report",
+      "file": "supabase/functions/generate-report/index.ts",
+      "sha256": "7ee235af5b21122a27681397593355deb5a21ebdeb84f2cca43054fb7a9da758"
+    },
+    {
+      "name": "generate-scheduled-reports",
+      "file": "supabase/functions/generate-scheduled-reports/index.ts",
+      "sha256": "1007225baa710fd6c18e890c6569237115ee2d0bc6250b32930afb1e55cba5d8"
+    },
+    {
+      "name": "delete-report-run",
+      "file": "supabase/functions/delete-report-run/index.ts",
+      "sha256": "9bae9f8176a9d2c702fc6cd323cf19b45c1940a12a295c0c89b48c0dc6cdb41f"
+    },
+    {
+      "name": "sync-mobile-device",
+      "file": "supabase/functions/sync-mobile-device/index.ts",
+      "sha256": "509754a426417b4a4f90a9450aaef5fea4d856bfb94eb683ca208f5cdec654e5"
+    },
+    {
+      "name": "delete-auth-user",
+      "file": "supabase/functions/delete-auth-user/index.ts",
+      "sha256": "92977d11b43a3fcdb5d10a549e43f0748c7dbd70805184fbc7cf5f99dff6610b"
+    },
+    {
+      "name": "update-user-password",
+      "file": "supabase/functions/update-user-password/index.ts",
+      "sha256": "61338545403c3ceaff81c372c2fde0751e8770638750660bcee253782a1a9bcb"
+    }
+  ],
+  "realAuthAndRest": true,
+  "providerConfigurationSynthetic": true,
+  "cloudRuntimeUsed": false,
+  "productionChanged": false
+}

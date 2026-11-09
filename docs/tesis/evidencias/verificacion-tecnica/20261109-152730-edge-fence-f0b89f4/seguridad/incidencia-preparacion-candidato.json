@@ -1,0 +1,8 @@
+{
+  "recordedAt": "2026-11-09T15:37:01.176Z",
+  "errorCode": "ENOENT",
+  "scope": "First provenance preparation stopped because generated per-function deno.json files are not repository sources.",
+  "resolution": "Read absent generated configs and frozen lock from previous private candidate, verify their recorded hashes, and preserve the partial candidate directory.",
+  "productionChanged": false,
+  "previousArtifactsDeleted": false
+}

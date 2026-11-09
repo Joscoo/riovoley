@@ -1,0 +1,118 @@
+{
+  "reportedAt": "2026-11-09T15:47:40.559Z",
+  "baseCommit": "f0b89f4a6136c17d881a72c36c7b484aeefb6c06",
+  "attempts": [
+    {
+      "recordedAt": "2026-11-09T15:29:08.365Z",
+      "phase": "red",
+      "resultFile": "integracion/casos-red.json",
+      "casesMetaFile": "integracion/edge-cases-red.meta.json",
+      "serverMetaFile": "integracion/edge-server-red.meta.json",
+      "executed": 2,
+      "passed": 0,
+      "failed": 2,
+      "exitCode": 1,
+      "durationSeconds": 1.842,
+      "cleanupPassed": true
+    },
+    {
+      "recordedAt": "2026-11-09T15:29:43.337Z",
+      "phase": "green",
+      "resultFile": "integracion/casos-green.json",
+      "casesMetaFile": "integracion/edge-cases-green.meta.json",
+      "serverMetaFile": "integracion/edge-server-green.meta.json",
+      "executed": 57,
+      "passed": 57,
+      "failed": 0,
+      "exitCode": 0,
+      "durationSeconds": 2.607,
+      "cleanupPassed": true
+    },
+    {
+      "recordedAt": "2026-11-09T15:33:12.816Z",
+      "phase": "green",
+      "resultFile": "integracion/casos-green-1794238392821-383d5a.json",
+      "casesMetaFile": "integracion/edge-cases-green-1794238390727.meta.json",
+      "serverMetaFile": "integracion/edge-server-green-1794238389962.meta.json",
+      "executed": 57,
+      "passed": 57,
+      "failed": 0,
+      "exitCode": 0,
+      "durationSeconds": 2.114,
+      "cleanupPassed": true
+    }
+  ],
+  "selectedAttempt": {
+    "recordedAt": "2026-11-09T15:33:12.816Z",
+    "phase": "green",
+    "resultFile": "integracion/casos-green-1794238392821-383d5a.json",
+    "casesMetaFile": "integracion/edge-cases-green-1794238390727.meta.json",
+    "serverMetaFile": "integracion/edge-server-green-1794238389962.meta.json",
+    "executed": 57,
+    "passed": 57,
+    "failed": 0,
+    "exitCode": 0,
+    "durationSeconds": 2.114,
+    "cleanupPassed": true
+  },
+  "finalControls": {
+    "executed": 57,
+    "passed": 57,
+    "failed": 0
+  },
+  "handlerHttpResponses": 51,
+  "responseStatuses": {
+    "200": 9,
+    "400": 8,
+    "401": 16,
+    "403": 7,
+    "405": 9,
+    "503": 2
+  },
+  "actualLocalReadResponses": 38,
+  "handlerWriteAttempts": 0,
+  "diagnosticWriteBlocks": 1,
+  "deniedNativeProbes": [
+    {
+      "hostname": "api.resend.com",
+      "denied": true,
+      "errorName": "NotCapable"
+    },
+    {
+      "hostname": "fcm.googleapis.com",
+      "denied": true,
+      "errorName": "NotCapable"
+    }
+  ],
+  "providerAttemptBlocked": [
+    {
+      "handler": "send-email",
+      "method": "POST",
+      "hostname": "api.resend.com"
+    }
+  ],
+  "businessTables": 47,
+  "syntheticBusinessRows": 4598,
+  "sequencesCompared": 10,
+  "businessSnapshotsMatch": true,
+  "contracts": {
+    "executed": 35,
+    "passed": 35,
+    "failed": 0,
+    "syntheticClients": true
+  },
+  "sourceTypecheckExitCode": 0,
+  "candidateFrozenTypecheckExitCode": 0,
+  "candidateFiles": 39,
+  "changedCandidateSources": [
+    "supabase/functions/sync-mobile-device/index.ts"
+  ],
+  "providerConfigurationSynthetic": true,
+  "actualProviderCredentialsUsed": false,
+  "newJestExecution": false,
+  "newAndroidExecution": false,
+  "newBuilds": 0,
+  "cloudRuntimeUsed": false,
+  "productionChanged": false,
+  "releaseReady": false
+}

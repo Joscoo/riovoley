@@ -1,0 +1,48 @@
+{
+  "at": "2026-11-09T15:48:50.269Z",
+  "sourceProductChange": "supabase/functions/sync-mobile-device/index.ts",
+  "frontendChanged": false,
+  "institutionalPermissionsChanged": false,
+  "files": [
+    {
+      "file": "docs/produccion/RUNBOOK.md",
+      "sha256": "bb80873a78b24cfd4685dcb6aa381a8127455d79b45d765d145e727e66f03e42"
+    },
+    {
+      "file": "supabase/functions/sync-mobile-device/index.ts",
+      "sha256": "509754a426417b4a4f90a9450aaef5fea4d856bfb94eb683ca208f5cdec654e5"
+    },
+    {
+      "file": "docs/superpowers/plans/2026-11-09-edge-readonly-fence.md",
+      "sha256": "6ba5a112075660950e52328582ce42077f2656d1033a63e61ae4f2f1ea58e75e"
+    },
+    {
+      "file": "scripts/audit/maintenance/edge-fence-cases.cjs",
+      "sha256": "aaeb3d9b1778d08d8fc0228418d2e05a2a9fd9946c74a7d8a7cc703841dc6638"
+    },
+    {
+      "file": "scripts/audit/maintenance/edge-fence-context.cjs",
+      "sha256": "025ac34c41f14d79f8ecd97cc5d1ffb837077dee58cb29bcfd75a4815500d230"
+    },
+    {
+      "file": "scripts/audit/maintenance/edge-fence-entry.ts",
+      "sha256": "a8ccb9b8ff80ede01963a2943e42bcb3c307b85597a3fe5b1b7fd01539c9627d"
+    },
+    {
+      "file": "scripts/audit/maintenance/edge-fence-finalize.cjs",
+      "sha256": "b74f12172130a13f7efcd8f3389660c3cf984ae463b927015b02fa72e4854282"
+    },
+    {
+      "file": "scripts/audit/maintenance/edge-fence-provenance.cjs",
+      "sha256": "039b6c305a5adef4212b631a9717b63b01af491172644ae84d5ad0e68b1ce805"
+    },
+    {
+      "file": "scripts/audit/maintenance/edge-fence-report.cjs",
+      "sha256": "31b1587cfc1d7fafe47c7bfbfa2a35f3d2e00d95180a1677521c894392c2ec2d"
+    },
+    {
+      "file": "scripts/audit/maintenance/edge-fence-run.cjs",
+      "sha256": "fb68a2738ccfe17b594ffb5d8c0d6bafe132c3246d1a76f3989022445037d43d"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+diff --git a/supabase/functions/sync-mobile-device/index.ts b/supabase/functions/sync-mobile-device/index.ts
+index 665dda2..7db1cc4 100644
+--- a/supabase/functions/sync-mobile-device/index.ts
++++ b/supabase/functions/sync-mobile-device/index.ts
+@@ -3,6 +3,7 @@ import { createClient } from 'npm:@supabase/supabase-js@2.50.0';
+ import { corsHeaders } from '../_shared/cors.ts';
+ import { readJsonBody } from '../_core/http/body.ts';
+ import { internalError, jsonResponse, methodNotAllowed, successEnvelope } from '../_core/http/response.ts';
++import { AuthAdminError } from '../_core/auth-admin/domain/auth-admin-error.ts';
+ 
+ const supabaseUrl = Deno.env.get('SUPABASE_URL') || '';
+ const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '';
+@@ -14,14 +15,14 @@ const adminClient = createClient(supabaseUrl, serviceRoleKey, {
+ });
+ 
+ const requireUser = async (authHeader: string) => {
+-  const jwt = authHeader.replace(/^Bearer\s+/i, '').trim();
++  const jwt = /^Bearer\s+(.+)$/i.exec(authHeader || '')?.[1]?.trim();
+   if (!jwt) {
+-    throw new Error('Missing bearer token.');
++    throw new AuthAdminError(401, 'AUTH_REQUIRED', 'Se requiere un token Bearer valido.');
+   }
+ 
+   const { data, error } = await adminClient.auth.getUser(jwt);
+   if (error || !data.user) {
+-    throw new Error('No se pudo autenticar al usuario.');
++    throw new AuthAdminError(401, 'AUTH_INVALID', 'No se pudo autenticar al usuario.');
+   }
+ 
+   return data.user;
+@@ -115,6 +116,9 @@ serve(async (req) => {
+       data: { device_token: deviceToken, device_id: deviceId || null },
+     }));
+   } catch (error) {
++    if (error instanceof AuthAdminError) {
++      return jsonResponse({ success: false, code: error.code, message: error.message, details: error.details ?? null, data: null }, error.status);
++    }
+     return internalError(error);
+   }
+ });
+

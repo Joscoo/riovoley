@@ -1,0 +1,127 @@
+{
+  "at": "2026-11-09T15:29:08.365Z",
+  "phase": "red",
+  "executed": 2,
+  "passed": 0,
+  "failed": 2,
+  "completed": true,
+  "setupErrorCode": null,
+  "checks": [
+    {
+      "name": "sync-mobile-device sin token debe responder 401",
+      "state": "FALLIDO",
+      "durationMs": 26,
+      "code": "ERR_ASSERTION",
+      "expected": 401,
+      "actual": 500
+    },
+    {
+      "name": "sync-mobile-device token invalido debe responder 401",
+      "state": "FALLIDO",
+      "durationMs": 357,
+      "code": "ERR_ASSERTION",
+      "expected": 401,
+      "actual": 500
+    }
+  ],
+  "responses": [
+    {
+      "name": "sync-mobile-device",
+      "method": "POST",
+      "status": 500,
+      "code": "INTERNAL_ERROR",
+      "durationMs": 25
+    },
+    {
+      "name": "sync-mobile-device",
+      "method": "POST",
+      "status": 500,
+      "code": "INTERNAL_ERROR",
+      "durationMs": 357
+    }
+  ],
+  "stats": {
+    "localReads": [
+      {
+        "handler": "sync-mobile-device",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 403
+      }
+    ],
+    "localWritesBlocked": [],
+    "externalAttempts": [],
+    "nativeProbes": [],
+    "providerEnvironment": {
+      "resendSynthetic": true,
+      "fcmConfigured": false,
+      "schedulerConfigured": false
+    }
+  },
+  "baseline": {
+    "tables": 47,
+    "rows": 4598,
+    "contentsSha256": "4cac545a7f0263018a6c4b3e1596324f21a84c4be6c093009dd0228eace27f4f",
+    "sequences": 10,
+    "sequencesSha256": "9748debd59f90a2df1402d4c30489ff584764df968432f9c643de78afb0e4af9"
+  },
+  "after": {
+    "tables": 47,
+    "rows": 4598,
+    "contentsSha256": "4cac545a7f0263018a6c4b3e1596324f21a84c4be6c093009dd0228eace27f4f",
+    "sequences": 10,
+    "sequencesSha256": "9748debd59f90a2df1402d4c30489ff584764df968432f9c643de78afb0e4af9"
+  },
+  "cleanupPassed": true,
+  "sources": [
+    {
+      "name": "send-email",
+      "file": "supabase/functions/send-email/index.ts",
+      "sha256": "eb7ab4da498cf23add764a8b7ab8ad6519abc142fa60af781514121e05afe31e"
+    },
+    {
+      "name": "send-push",
+      "file": "supabase/functions/send-push/index.ts",
+      "sha256": "0ecef1c8642781138ecda6956072204a89fbb0b85bdc0a094c0331afa3ced3fc"
+    },
+    {
+      "name": "send-payment-reminders",
+      "file": "supabase/functions/send-payment-reminders/index.ts",
+      "sha256": "7ed6d261daf47f25930e3a46dc3333857fb83263b5d71c31eed31616dfc244e9"
+    },
+    {
+      "name": "generate-report",
+      "file": "supabase/functions/generate-report/index.ts",
+      "sha256": "7ee235af5b21122a27681397593355deb5a21ebdeb84f2cca43054fb7a9da758"
+    },
+    {
+      "name": "generate-scheduled-reports",
+      "file": "supabase/functions/generate-scheduled-reports/index.ts",
+      "sha256": "1007225baa710fd6c18e890c6569237115ee2d0bc6250b32930afb1e55cba5d8"
+    },
+    {
+      "name": "delete-report-run",
+      "file": "supabase/functions/delete-report-run/index.ts",
+      "sha256": "9bae9f8176a9d2c702fc6cd323cf19b45c1940a12a295c0c89b48c0dc6cdb41f"
+    },
+    {
+      "name": "sync-mobile-device",
+      "file": "supabase/functions/sync-mobile-device/index.ts",
+      "sha256": "923cc50b991f91f55df7db9e53d365f3d9ecba919863cd9e01046e959bb14873"
+    },
+    {
+      "name": "delete-auth-user",
+      "file": "supabase/functions/delete-auth-user/index.ts",
+      "sha256": "92977d11b43a3fcdb5d10a549e43f0748c7dbd70805184fbc7cf5f99dff6610b"
+    },
+    {
+      "name": "update-user-password",
+      "file": "supabase/functions/update-user-password/index.ts",
+      "sha256": "61338545403c3ceaff81c372c2fde0751e8770638750660bcee253782a1a9bcb"
+    }
+  ],
+  "realAuthAndRest": true,
+  "providerConfigurationSynthetic": true,
+  "cloudRuntimeUsed": false,
+  "productionChanged": false
+}
