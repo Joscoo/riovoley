@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/unit/maintenance-packet-attempt.test.cjs"
+  ],
+  "start": "2026-11-09T14:35:33.743Z",
+  "end": "2026-11-09T14:35:34.159Z",
+  "durationSeconds": 0.416,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

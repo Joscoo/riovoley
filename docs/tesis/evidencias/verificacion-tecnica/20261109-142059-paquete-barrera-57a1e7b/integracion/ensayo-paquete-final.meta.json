@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/maintenance/packet-rehearse.cjs"
+  ],
+  "start": "2026-11-09T14:26:50.464Z",
+  "end": "2026-11-09T14:26:53.244Z",
+  "durationSeconds": 2.78,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

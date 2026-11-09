@@ -1,0 +1,117 @@
+{
+  "terminalCommands": [
+    {
+      "file": "integracion/digest-green.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "-e",
+        "const c=require('./scripts/audit/maintenance/packet-context.cjs'),g=require('./scripts/audit/maintenance/packet-gate.cjs');(async()=>{const db=await c.connect();try{console.log(JSON.stringify({digest:await g.digest(db)}))}finally{await db.end()}})().catch(e=>{console.error(JSON.stringify({code:e.code,stage:'GATE_DIGEST_PARSE'}));process.exitCode=1});"
+      ],
+      "start": "2026-11-09T14:21:52.856Z",
+      "end": "2026-11-09T14:21:53.106Z",
+      "durationSeconds": 0.25,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "integracion/digest-red.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "-e",
+        "const c=require('./scripts/audit/maintenance/packet-context.cjs'),g=require('./scripts/audit/maintenance/packet-gate.cjs');(async()=>{const db=await c.connect();try{console.log(JSON.stringify({digest:await g.digest(db)}))}finally{await db.end()}})().catch(e=>{console.error(JSON.stringify({code:e.code,stage:'GATE_DIGEST_PARSE'}));process.exitCode=1});"
+      ],
+      "start": "2026-11-09T14:21:51.288Z",
+      "end": "2026-11-09T14:21:52.305Z",
+      "durationSeconds": 1.017,
+      "exitCode": 1,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "integracion/ensayo-paquete-artefactos.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/audit/maintenance/packet-rehearse.cjs"
+      ],
+      "start": "2026-11-09T14:31:58.332Z",
+      "end": "2026-11-09T14:32:01.867Z",
+      "durationSeconds": 3.535,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "integracion/ensayo-paquete-corregido.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/audit/maintenance/packet-rehearse.cjs"
+      ],
+      "start": "2026-11-09T14:27:58.574Z",
+      "end": "2026-11-09T14:28:02.012Z",
+      "durationSeconds": 3.438,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "integracion/ensayo-paquete-final.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/audit/maintenance/packet-rehearse.cjs"
+      ],
+      "start": "2026-11-09T14:26:50.464Z",
+      "end": "2026-11-09T14:26:53.244Z",
+      "durationSeconds": 2.78,
+      "exitCode": 1,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "integracion/ensayo-paquete.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/audit/maintenance/packet-rehearse.cjs"
+      ],
+      "start": "2026-11-09T14:22:57.595Z",
+      "end": "2026-11-09T14:23:00.797Z",
+      "durationSeconds": 3.202,
+      "exitCode": 1,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "unitarias/seleccion-intentos.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--test",
+        "--test-reporter=tap",
+        "tests/unit/maintenance-packet-attempt.test.cjs"
+      ],
+      "start": "2026-11-09T14:35:33.743Z",
+      "end": "2026-11-09T14:35:34.159Z",
+      "durationSeconds": 0.416,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    }
+  ],
+  "finalAttempt": {
+    "recordedAt": "2026-11-09T14:32:01.846Z",
+    "completed": true,
+    "executed": 22,
+    "controlsFile": "integracion/controles-1794234721844-a46389.json",
+    "operationsFile": "integracion/operaciones-sql-1794234721846-ba0529.json",
+    "fingerprintFile": "integracion/huellas-con-barrera-1794234721735-8dc26d.json",
+    "variantManifestFile": "integracion/variantes-manifiesto-1794234721738-d48374.json",
+    "stateFile": "integracion/estado-final-1794234721833-c3d36d.json",
+    "resultFile": "integracion/resultado-final-1794234721835-e3a110.json",
+    "file": "integracion/intento-final.json"
+  },
+  "sqlDriverOperations": "integracion/operaciones-sql-1794234721846-ba0529.json",
+  "setup": {
+    "command": "node scripts/audit/maintenance/packet-context.cjs",
+    "exitCodeObserved": 0
+  },
+  "note": "ECONNREFUSED preflight before Docker startup and setup result recorded from tool output; no invented process durations. Final SQL artifact hashes equal executed bytes."
+}

@@ -1,0 +1,257 @@
+{
+  "recordedAt": "2026-11-09T14:25:31.726Z",
+  "onlyWithGate": [
+    {
+      "item": "function:profiles.touch_mobile_device_registration_updated_at()",
+      "sha256": "78f9d1d3db3fd84434d034c1a15bdd1cd7d10e1e6a4f996b672d90ca381d4f56"
+    },
+    {
+      "item": "function:profiles.touch_user_notification_preferences_updated_at()",
+      "sha256": "7b0f4fb562dd88e11ca5c49b94e0edba806f226e826ee08876b7c84c837fd446"
+    },
+    {
+      "item": "function:public.admin_insert_user(p_id uuid, p_email text, p_role text, p_nombre text, p_apellido te",
+      "sha256": "c94c4a1932fb8f1eb93c3112f19e511760b6a2fa30151ad6f4cd26a84ba711b8"
+    },
+    {
+      "item": "function:public.apply_payment_membership_rules()",
+      "sha256": "bb2cb2c6afd418393f57eca402db48416c1d412e31876e1f71ae97b9e3175659"
+    },
+    {
+      "item": "function:public.audit_payments()",
+      "sha256": "32f1e4db76e4d555281659336f97dd8ca1ec683d3b55df6584becc1d6195acb5"
+    },
+    {
+      "item": "function:public.calculate_membership_payment_period(p_student_id uuid, p_fecha_pago date, p_exclude_",
+      "sha256": "31e924d2aaa2714d180c765826b8a490da87e8a7a1850c2c86b1319d81ecf0b1"
+    },
+    {
+      "item": "function:public.calculate_payment_state(p_fecha_fin date)",
+      "sha256": "977ee1504dd3e179e36823a989a879ba6f65cca55154e160a9230c3842bad6f5"
+    },
+    {
+      "item": "function:public.check_login_allowed(p_email text)",
+      "sha256": "375910fd6d3d49c76fcf85d5e8c5862c3086c7311ddb89edf555c399c984e1d7"
+    },
+    {
+      "item": "function:public.equip_gamification_item(p_student_id uuid, p_item_slug text)",
+      "sha256": "9159f27a4cba4da1d3c56c7d81e3e93d3f66e8242565c1f1130dc62de2729b05"
+    },
+    {
+      "item": "function:public.handle_new_user()",
+      "sha256": "34363fdf4752603ef7c998e93b59db389764a64627fad9c4ee6fb14c663ba7e1"
+    },
+    {
+      "item": "function:public.is_admin()",
+      "sha256": "26810d6dd04e734ee548421607f391e86d0ea7eb1102e01ab87e3974ade0d188"
+    },
+    {
+      "item": "function:public.is_admin_or_trainer()",
+      "sha256": "cd9febeeb51dee8544a9792de3fb9b6a5419a811e4dc3940c27ce118ab87f11c"
+    },
+    {
+      "item": "function:public.purchase_gamification_item(p_student_id uuid, p_item_slug text)",
+      "sha256": "968af6e517fca500a1214f55144412689a30fce5548945366d77a5258902adeb"
+    },
+    {
+      "item": "function:public.record_login_attempt(p_email text, p_success boolean, p_error_code text)",
+      "sha256": "338400f73701c78dc766b6bf8d68985916071a389858839ad66c76ec78915283"
+    },
+    {
+      "item": "function:public.restore_payment(payment_id bigint)",
+      "sha256": "2a52c946b3f936dc473dc0a8a89b2899f807c6b9b7c49b334a31bdbec6a890ba"
+    },
+    {
+      "item": "function:public.restore_payment(payment_id uuid)",
+      "sha256": "d5b340a670ee5959d8ea79d5293ea37a0737d8c39de41d82e63edd6e815e96aa"
+    },
+    {
+      "item": "function:public.soft_delete_payment(payment_id bigint)",
+      "sha256": "d0513f7dfb1a45f57fe70f881ec05cf8ba0c1e362fe2c8d70bc941447f873ec4"
+    },
+    {
+      "item": "function:public.soft_delete_payment(payment_id uuid)",
+      "sha256": "1e5eadf921080dfc5239375ea8ca514343d6fdf5221806854bb7181fc5395e75"
+    },
+    {
+      "item": "function:public.sync_first_login_on_password_change()",
+      "sha256": "159e0a29d52a5a8aad182bfcf05c5a1da8b67b4b887f76aff2bf904e12e4b627"
+    },
+    {
+      "item": "function:public.sync_last_login_from_auth()",
+      "sha256": "757bb30a0777e881b3756d34e8c05093c7469e4a9ad294c363984aa5e8abf6db"
+    },
+    {
+      "item": "function:public.sync_user_profile_on_user_update()",
+      "sha256": "856db7cc364d44c6950dba561dddb86b3edd83dfad301658478dbbe55af56625"
+    },
+    {
+      "item": "function:public.touch_mobile_device_registration_updated_at()",
+      "sha256": "4426e0dff7749614d78a0a1e8895a4f9d20ebfb6a66911bf7beba871188d1819"
+    },
+    {
+      "item": "function:public.touch_user_notification_inbox_state_updated_at()",
+      "sha256": "838865ad024d25c628bb007cca8f71090eaea53b9a3b62b143da06170012a7c6"
+    },
+    {
+      "item": "function:public.unequip_gamification_item(p_student_id uuid, p_category text)",
+      "sha256": "98cfe5167bfba59c0a310ad29ec8ba10ac40ae9b260228715f48b41f5a062b6f"
+    },
+    {
+      "item": "function:public.update_announcements_updated_at()",
+      "sha256": "46748cd926c58af438ae0ec3fa1363e74131c0331507f4b676d93d04d9c1f808"
+    },
+    {
+      "item": "function:reporting.cleanup_old_report_runs(retention_months integer)",
+      "sha256": "4f100fdd5902f1e8ba4c937b528dd52b5b4bc125c8b1a7a3a0e1d9e0bc587810"
+    },
+    {
+      "item": "function:reporting.invoke_generate_scheduled_reports()",
+      "sha256": "8da989cd6cd6c48d3beba89510f4a020263a6cd3afc1a5071e1e2b37ad59b896"
+    },
+    {
+      "item": "function:reporting.set_updated_at()",
+      "sha256": "891107233d092e39c638044f1a603d7d1d0e46d8759001cb3dacc50c6ce8ff5e"
+    },
+    {
+      "item": "function:reporting.touch_scheduler_config_updated_at()",
+      "sha256": "c7ce36bedc0113ba7ebc4cb2f9859136b0ab159911f7fc80add469717d95b776"
+    },
+    {
+      "item": "function:training.enforce_physical_test_age()",
+      "sha256": "1ff872d4814099e92e19714050bd8fd650bae60d279a1a8f85a2ab0868ba042b"
+    },
+    {
+      "item": "function:training.touch_training_categories_updated_at()",
+      "sha256": "1d5aea4e452b118397e6415c9d989a8ac7f6290b2c4c44c711f66655c96e2f2b"
+    }
+  ],
+  "onlyWithoutGate": [
+    {
+      "item": "function:profiles.touch_mobile_device_registration_updated_at()",
+      "sha256": "0de7e224dc2bf5429c924de41c024412838f85f78de01a951269acd829fe8082"
+    },
+    {
+      "item": "function:profiles.touch_user_notification_preferences_updated_at()",
+      "sha256": "6193dbb042f853071972ea527d19d6531c3d913b69499057e80c9e44082294cb"
+    },
+    {
+      "item": "function:public.admin_insert_user(p_id uuid, p_email text, p_role text, p_nombre text, p_apellido te",
+      "sha256": "45e48da41915e23d09e59834701a7e4053cd4a655182e8e12aca13b7150e5e4e"
+    },
+    {
+      "item": "function:public.apply_payment_membership_rules()",
+      "sha256": "e9e7f4412af09e71858ac65e8ef068d8fb0eceddb2f3c56da190f867c9b4fc7c"
+    },
+    {
+      "item": "function:public.audit_payments()",
+      "sha256": "56a903c71add5cf1eee727bd14c6e09121b8e2d0b1e22d3d39b4e76badc1b882"
+    },
+    {
+      "item": "function:public.calculate_membership_payment_period(p_student_id uuid, p_fecha_pago date, p_exclude_",
+      "sha256": "2e24af4073d942b199fc551c5e101e71e1862d9b2ba3e64eebb3679079582deb"
+    },
+    {
+      "item": "function:public.calculate_payment_state(p_fecha_fin date)",
+      "sha256": "e34f74980a71fd871a7a944739eb58309b15106760c013c99d493b26ecf19bfe"
+    },
+    {
+      "item": "function:public.check_login_allowed(p_email text)",
+      "sha256": "94f5554b22674fdc773fc68e8da619f72f4ca5c7665aab5368edba1e88853090"
+    },
+    {
+      "item": "function:public.equip_gamification_item(p_student_id uuid, p_item_slug text)",
+      "sha256": "438ef4f31667d4873e6fc0fc1e8137aab1240d6cca54f8f245635fa94df2f818"
+    },
+    {
+      "item": "function:public.handle_new_user()",
+      "sha256": "2652a83c6bca97069b21c2c10e32db94b2a533bea047d37897f20e5a523ece46"
+    },
+    {
+      "item": "function:public.is_admin()",
+      "sha256": "e69e26647ef9c7dbad459c295722eea95e3d5e18a666f2fecdd4bafa497f8d1d"
+    },
+    {
+      "item": "function:public.is_admin_or_trainer()",
+      "sha256": "0c971a9bf736e5b66835371afc537f88cbf04ac96495da229b9b74d5919c6b7e"
+    },
+    {
+      "item": "function:public.purchase_gamification_item(p_student_id uuid, p_item_slug text)",
+      "sha256": "21f155de8ce29d65e07f191ebef1136ccc7ed408ada32b2dde6e242f1b562755"
+    },
+    {
+      "item": "function:public.record_login_attempt(p_email text, p_success boolean, p_error_code text)",
+      "sha256": "15f3d26f712b47d4d5f0c0ce6c70699cc5490cdfaf140f31986e61d06d1cbd23"
+    },
+    {
+      "item": "function:public.restore_payment(payment_id bigint)",
+      "sha256": "b40b3cec76f595261f4c51cc42238db35c0645c3a3bb8dc64814bbfd170ab71a"
+    },
+    {
+      "item": "function:public.restore_payment(payment_id uuid)",
+      "sha256": "c56623e3171189e313ca98836fccf353532466c181a3525e7dba0be3d59c28c5"
+    },
+    {
+      "item": "function:public.soft_delete_payment(payment_id bigint)",
+      "sha256": "1a497b686fbebe5d217e09edebd456f8aac9447e6a8338b1718a3cf865d4b77e"
+    },
+    {
+      "item": "function:public.soft_delete_payment(payment_id uuid)",
+      "sha256": "7ae51ca79ace65962f155f0032e9538708a6275d045c0d04fa0127ea341af82d"
+    },
+    {
+      "item": "function:public.sync_first_login_on_password_change()",
+      "sha256": "ea92af4a38003c7628325bfdbc0b4c2765bc5be239ea76882e427900857603b8"
+    },
+    {
+      "item": "function:public.sync_last_login_from_auth()",
+      "sha256": "327afe7e74586d9982415e2526ee183a10e594a17a098340f3f724cceb01d352"
+    },
+    {
+      "item": "function:public.sync_user_profile_on_user_update()",
+      "sha256": "3868b93284c3e548955cb51b23597879da5f676522822b822529b9b7a504769b"
+    },
+    {
+      "item": "function:public.touch_mobile_device_registration_updated_at()",
+      "sha256": "60b8a1e2d883663aa9e2549e38fbb1a5fed73dbb4c39fd63974cfcd81a0b2e16"
+    },
+    {
+      "item": "function:public.touch_user_notification_inbox_state_updated_at()",
+      "sha256": "be94c61493e44c74370dc3d9959883f967989d0b32cea79e2707a24c1715d93d"
+    },
+    {
+      "item": "function:public.unequip_gamification_item(p_student_id uuid, p_category text)",
+      "sha256": "a045a47e55472273ab1ae2397ed531cc40f89f05c466c935a52c553511edc5f8"
+    },
+    {
+      "item": "function:public.update_announcements_updated_at()",
+      "sha256": "b5fc126e2379e27b6b10207892e81e5c9d9f67918133c66674038091c28eb4dc"
+    },
+    {
+      "item": "function:reporting.cleanup_old_report_runs(retention_months integer)",
+      "sha256": "9df54d763dc516a97e4263f2e8cb21a0c1ac4347d3b30bf011ce1f0cd01b090b"
+    },
+    {
+      "item": "function:reporting.invoke_generate_scheduled_reports()",
+      "sha256": "7b19ecd84fa90c7e4ba4568aa030cb16771f3145d8ce7deac36bd801b62668f7"
+    },
+    {
+      "item": "function:reporting.set_updated_at()",
+      "sha256": "70c593bbb9d1dc44c7f293b3a5d2dc805776f15d7ad0533e29ba70cf1a431b04"
+    },
+    {
+      "item": "function:reporting.touch_scheduler_config_updated_at()",
+      "sha256": "7af981e2bd636c24ab66566366fa0ebedf0c6a857002cca675cb4171ee3c0fd8"
+    },
+    {
+      "item": "function:training.enforce_physical_test_age()",
+      "sha256": "d0e8e4136d5b186098682220f27a7b4c9f28153b579fc7cad85d7474165859d8"
+    },
+    {
+      "item": "function:training.touch_training_categories_updated_at()",
+      "sha256": "56690d98bc4a8717a46593351c337765c50994c5f99c1ada127b84e58a3981b8"
+    }
+  ],
+  "recoveredOpenFingerprint": "15b9d9e869fb5113263c485714009878",
+  "gateRemoved": true
+}

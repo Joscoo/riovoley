@@ -1,0 +1,102 @@
+{
+  "reportedAt": "2026-11-09T14:36:09.035Z",
+  "baseCommit": "57a1e7bc4c636f3d71b2b412544b19622dbbe84c",
+  "scope": "Synthetic catalog SQL integration only",
+  "runs": [
+    {
+      "label": "ensayo-paquete",
+      "executed": 20,
+      "passed": 19,
+      "failed": 1,
+      "exitCode": 1,
+      "durationSeconds": 3.202,
+      "start": "2026-11-09T14:22:57.595Z",
+      "end": "2026-11-09T14:23:00.797Z"
+    },
+    {
+      "label": "ensayo-paquete-final",
+      "executed": 18,
+      "passed": 17,
+      "failed": 1,
+      "exitCode": 1,
+      "durationSeconds": 2.78,
+      "start": "2026-11-09T14:26:50.464Z",
+      "end": "2026-11-09T14:26:53.244Z"
+    },
+    {
+      "label": "ensayo-paquete-corregido",
+      "executed": 22,
+      "passed": 22,
+      "failed": 0,
+      "exitCode": 0,
+      "durationSeconds": 3.438,
+      "start": "2026-11-09T14:27:58.574Z",
+      "end": "2026-11-09T14:28:02.012Z"
+    },
+    {
+      "label": "ensayo-paquete-artefactos",
+      "executed": 22,
+      "passed": 22,
+      "failed": 0,
+      "exitCode": 0,
+      "durationSeconds": 3.535,
+      "start": "2026-11-09T14:31:58.332Z",
+      "end": "2026-11-09T14:32:01.867Z"
+    }
+  ],
+  "finalControls": {
+    "executed": 22,
+    "passed": 22,
+    "failed": 0
+  },
+  "syntheticTables": 48,
+  "syntheticRows": 68,
+  "sequencesCompared": 7,
+  "sourceIntact": true,
+  "gateRemoved": true,
+  "finalFingerprint": "15b9d9e869fb5113263c485714009878",
+  "variants": [
+    {
+      "file": "integracion/variantes-locales/20261031211612_riovoley_security_production_proposal-1794234720581-7c118a.sql",
+      "source": "database/security/production-proposal/20261031211612_riovoley_security_production_proposal.sql",
+      "sha256": "775796a026d902d995119c82ff2c964355453435154a1c3a65c6b649cff1b87c",
+      "guardsRebased": 1,
+      "originalBodyPreservedBytewise": true
+    },
+    {
+      "file": "integracion/variantes-locales/20261101013935_reporting_service_grants_proposal-1794234720585-0ba8d8.sql",
+      "source": "database/security/production-proposal/20261101013935_reporting_service_grants_proposal.sql",
+      "sha256": "203671ae9e9f9a1d689c33fb749c16da078a03f72dcbbcf6e07d8f21ca976e4d",
+      "guardsRebased": 1,
+      "originalBodyPreservedBytewise": true
+    },
+    {
+      "file": "integracion/variantes-locales/20261101013935_reporting_service_return_proposal-1794234720606-0c731f.sql",
+      "source": "database/security/production-proposal/20261101013935_reporting_service_return_proposal.sql",
+      "sha256": "8ff94a194ae3ce59858e3ca7c1bcd78b68a8ddbe6d585b8045972e940ca828c1",
+      "guardsRebased": 2,
+      "originalBodyPreservedBytewise": true
+    },
+    {
+      "file": "integracion/variantes-locales/20261031211612_riovoley_security_return_proposal-1794234720612-71ecb6.sql",
+      "source": "database/security/production-proposal/20261031211612_riovoley_security_return_proposal.sql",
+      "sha256": "c96c637855e537c06779bd2380775791e8b4818351484e911cbb9f3720a7b28f",
+      "guardsRebased": 2,
+      "originalBodyPreservedBytewise": true
+    }
+  ],
+  "originalSqlFilesModified": false,
+  "newJestCases": 0,
+  "toolingUnitCases": 3,
+  "newPlaywrightCases": 0,
+  "newAndroidCases": 0,
+  "newBuilds": 0,
+  "institutionalRowsCopied": 0,
+  "newInstitutionalRestore": false,
+  "archiveUnlocked": false,
+  "managedServicesExercised": false,
+  "productionChanged": false,
+  "productionExecutionAuthorized": false,
+  "releaseReady": false,
+  "previousWindowExpired": true
+}

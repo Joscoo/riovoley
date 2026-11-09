@@ -1,0 +1,11 @@
+{
+  "recordedAt": "2026-11-09T14:32:01.846Z",
+  "completed": true,
+  "executed": 22,
+  "controlsFile": "integracion/controles-1794234721844-a46389.json",
+  "operationsFile": "integracion/operaciones-sql-1794234721846-ba0529.json",
+  "fingerprintFile": "integracion/huellas-con-barrera-1794234721735-8dc26d.json",
+  "variantManifestFile": "integracion/variantes-manifiesto-1794234721738-d48374.json",
+  "stateFile": "integracion/estado-final-1794234721833-c3d36d.json",
+  "resultFile": "integracion/resultado-final-1794234721835-e3a110.json"
+}

@@ -1,0 +1,58 @@
+{
+  "variants": [
+    {
+      "label": "principal-avance",
+      "name": "20261031211612_riovoley_security_production_proposal.sql",
+      "before": "15b9d9e869fb5113263c485714009878",
+      "after": "500d15ffa5fa23aeddb47e5c21cd1d13",
+      "file": "database/security/production-proposal/20261031211612_riovoley_security_production_proposal.sql",
+      "evidenceFile": "integracion/variantes-locales/20261031211612_riovoley_security_production_proposal-1794234720581-7c118a.sql",
+      "sourceSha256": "c61f457792f684d22dd3c8ffafcd1b4280dfefafdd66da382943f44347322fb6",
+      "variantSha256": "775796a026d902d995119c82ff2c964355453435154a1c3a65c6b649cff1b87c",
+      "guardsRebased": 1,
+      "originalBodyPreservedBytewise": true,
+      "executedPersistedBytes": true
+    },
+    {
+      "label": "reportes-avance",
+      "name": "20261101013935_reporting_service_grants_proposal.sql",
+      "before": "500d15ffa5fa23aeddb47e5c21cd1d13",
+      "after": "38434a2af96ad410967032b00a0828ac",
+      "file": "database/security/production-proposal/20261101013935_reporting_service_grants_proposal.sql",
+      "evidenceFile": "integracion/variantes-locales/20261101013935_reporting_service_grants_proposal-1794234720585-0ba8d8.sql",
+      "sourceSha256": "4c6c9fb9771751b1e0f15920faab664a9400c8f8b39b7288db97e7fdf0ad0d0d",
+      "variantSha256": "203671ae9e9f9a1d689c33fb749c16da078a03f72dcbbcf6e07d8f21ca976e4d",
+      "guardsRebased": 1,
+      "originalBodyPreservedBytewise": true,
+      "executedPersistedBytes": true
+    },
+    {
+      "label": "reportes-retorno",
+      "name": "20261101013935_reporting_service_return_proposal.sql",
+      "before": "38434a2af96ad410967032b00a0828ac",
+      "after": "500d15ffa5fa23aeddb47e5c21cd1d13",
+      "file": "database/security/production-proposal/20261101013935_reporting_service_return_proposal.sql",
+      "evidenceFile": "integracion/variantes-locales/20261101013935_reporting_service_return_proposal-1794234720606-0c731f.sql",
+      "sourceSha256": "5c0904bdd90d93a8d8def5ef780aef5a0a1a44570ab9ed54db78213e599bf333",
+      "variantSha256": "8ff94a194ae3ce59858e3ca7c1bcd78b68a8ddbe6d585b8045972e940ca828c1",
+      "guardsRebased": 2,
+      "originalBodyPreservedBytewise": true,
+      "executedPersistedBytes": true
+    },
+    {
+      "label": "principal-retorno",
+      "name": "20261031211612_riovoley_security_return_proposal.sql",
+      "before": "500d15ffa5fa23aeddb47e5c21cd1d13",
+      "after": "15b9d9e869fb5113263c485714009878",
+      "file": "database/security/production-proposal/20261031211612_riovoley_security_return_proposal.sql",
+      "evidenceFile": "integracion/variantes-locales/20261031211612_riovoley_security_return_proposal-1794234720612-71ecb6.sql",
+      "sourceSha256": "c27856e19b750e9f430c57cbb736fff3138bc23197564a7816c367664ff928b3",
+      "variantSha256": "c96c637855e537c06779bd2380775791e8b4818351484e911cbb9f3720a7b28f",
+      "guardsRebased": 2,
+      "originalBodyPreservedBytewise": true,
+      "executedPersistedBytes": true
+    }
+  ],
+  "originalFilesModified": false,
+  "localOnly": true
+}

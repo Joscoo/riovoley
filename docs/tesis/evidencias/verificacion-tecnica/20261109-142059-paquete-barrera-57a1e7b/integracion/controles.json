@@ -1,0 +1,130 @@
+{
+  "recordedAt": "2026-11-09T14:23:00.737Z",
+  "checks": [
+    {
+      "name": "normalizacion-retorno-reportes",
+      "state": "APROBADO",
+      "durationMs": 157,
+      "detail": null
+    },
+    {
+      "name": "normalizacion-retorno-principal",
+      "state": "APROBADO",
+      "durationMs": 182,
+      "detail": null
+    },
+    {
+      "name": "referencia-huella-inicial-con-barrera",
+      "state": "APROBADO",
+      "durationMs": 267,
+      "detail": null
+    },
+    {
+      "name": "referencia-principal-avance",
+      "state": "APROBADO",
+      "durationMs": 160,
+      "detail": null
+    },
+    {
+      "name": "referencia-medicion-principal-avance",
+      "state": "APROBADO",
+      "durationMs": 264,
+      "detail": null
+    },
+    {
+      "name": "referencia-reportes-avance",
+      "state": "APROBADO",
+      "durationMs": 99,
+      "detail": null
+    },
+    {
+      "name": "referencia-medicion-reportes-avance",
+      "state": "APROBADO",
+      "durationMs": 230,
+      "detail": null
+    },
+    {
+      "name": "referencia-reportes-retorno",
+      "state": "APROBADO",
+      "durationMs": 128,
+      "detail": null
+    },
+    {
+      "name": "referencia-principal-retorno",
+      "state": "APROBADO",
+      "durationMs": 159,
+      "detail": null
+    },
+    {
+      "name": "instalacion-integrada",
+      "state": "APROBADO",
+      "durationMs": 84,
+      "detail": null
+    },
+    {
+      "name": "original-rechaza-deriva-con-barrera",
+      "state": "APROBADO",
+      "durationMs": 108,
+      "detail": null
+    },
+    {
+      "name": "generacion-variantes-sin-cambios-funcionales",
+      "state": "APROBADO",
+      "durationMs": 40,
+      "detail": null
+    },
+    {
+      "name": "guarda-funcion-alterada",
+      "state": "APROBADO",
+      "durationMs": 85,
+      "detail": null
+    },
+    {
+      "name": "guarda-disparador-deshabilitado",
+      "state": "APROBADO",
+      "durationMs": 61,
+      "detail": null
+    },
+    {
+      "name": "guarda-tabla-nueva-no-inventariada",
+      "state": "APROBADO",
+      "durationMs": 46,
+      "detail": null
+    },
+    {
+      "name": "integrado-principal-avance",
+      "state": "APROBADO",
+      "durationMs": 207,
+      "detail": null
+    },
+    {
+      "name": "integrado-reportes-avance",
+      "state": "APROBADO",
+      "durationMs": 171,
+      "detail": null
+    },
+    {
+      "name": "retorno-principal-anticipado-rechazado",
+      "state": "APROBADO",
+      "durationMs": 112,
+      "detail": null
+    },
+    {
+      "name": "integrado-reportes-retorno",
+      "state": "APROBADO",
+      "durationMs": 135,
+      "detail": null
+    },
+    {
+      "name": "integrado-principal-retorno",
+      "state": "FALLIDO",
+      "durationMs": 82,
+      "errorCode": "P0001"
+    }
+  ],
+  "executed": 20,
+  "passed": 19,
+  "failed": 1,
+  "completed": false,
+  "errorCode": "P0001"
+}

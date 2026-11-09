@@ -1,0 +1,39 @@
+{
+  "at": "2026-11-09T14:38:54.355Z",
+  "productChanged": false,
+  "originalSqlChanged": false,
+  "files": [
+    {
+      "file": "docs/produccion/RUNBOOK.md",
+      "sha256": "de08a1a6e3848a9526cd8ee0bd49b01d67c6c980647ac5e26bd13d036f234a9c"
+    },
+    {
+      "file": "docs/superpowers/plans/2026-11-05-maintenance-packet-integration.md",
+      "sha256": "bc5983947d537fd584f55809b24ca7e3a6914d0f0559e5216b2fc94a8946a6e1"
+    },
+    {
+      "file": "scripts/audit/maintenance/packet-context.cjs",
+      "sha256": "2543415ea2827f0b5f1494e8982240ce18b629e7488a2f5a98da1024edfebb07"
+    },
+    {
+      "file": "scripts/audit/maintenance/packet-finalize.cjs",
+      "sha256": "afc0375b4afb35106c0a5cf4a3f4294eb52eb8a80c1855d8b65e784baefb0f8b"
+    },
+    {
+      "file": "scripts/audit/maintenance/packet-gate.cjs",
+      "sha256": "fea7d2c0220957bd58bb6d7f8c7eab0f144b5be445ff762cbf33df6122629cf8"
+    },
+    {
+      "file": "scripts/audit/maintenance/packet-rehearse.cjs",
+      "sha256": "141f1a64e00e91b36a30d7815b29ed7e52614f553f04802aa26432d48ba1e699"
+    },
+    {
+      "file": "scripts/audit/maintenance/packet-report.cjs",
+      "sha256": "285b64a89be9709e69c4dbeb7b3bed54e79904e1f35f96206e13de0ea54904bb"
+    },
+    {
+      "file": "tests/unit/maintenance-packet-attempt.test.cjs",
+      "sha256": "11d6f86e417513c9a7a255b3917446d021503adbf1efbd52978807d45a84164d"
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+[
+  {
+    "label": "preparacion-reportes-retorno",
+    "startedAt": "2026-11-09T14:26:50.746Z",
+    "finishedAt": "2026-11-09T14:26:50.814Z",
+    "durationMs": 67,
+    "sqlSha256": "5c0904bdd90d93a8d8def5ef780aef5a0a1a44570ab9ed54db78213e599bf333",
+    "sqlState": null,
+    "expectedFailure": false,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "preparacion-principal-retorno",
+    "startedAt": "2026-11-09T14:26:50.895Z",
+    "finishedAt": "2026-11-09T14:26:50.982Z",
+    "durationMs": 87,
+    "sqlSha256": "c27856e19b750e9f430c57cbb736fff3138bc23197564a7816c367664ff928b3",
+    "sqlState": null,
+    "expectedFailure": false,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "probe-authenticated",
+    "startedAt": "2026-11-09T14:26:51.169Z",
+    "finishedAt": "2026-11-09T14:26:51.172Z",
+    "durationMs": 3,
+    "sqlSha256": "92fd48e0d67c83ee329d187ebe8be8c5f5fe77eda49a040bcfc1277cea6b2456",
+    "sqlState": "55000",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "referencia-principal-avance",
+    "startedAt": "2026-11-09T14:26:51.303Z",
+    "finishedAt": "2026-11-09T14:26:51.374Z",
+    "durationMs": 71,
+    "sqlSha256": "c61f457792f684d22dd3c8ffafcd1b4280dfefafdd66da382943f44347322fb6",
+    "sqlState": null,
+    "expectedFailure": false,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "probe-authenticated",
+    "startedAt": "2026-11-09T14:26:51.560Z",
+    "finishedAt": "2026-11-09T14:26:51.562Z",
+    "durationMs": 2,
+    "sqlSha256": "92fd48e0d67c83ee329d187ebe8be8c5f5fe77eda49a040bcfc1277cea6b2456",
+    "sqlState": "55000",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "referencia-reportes-avance",
+    "startedAt": "2026-11-09T14:26:51.685Z",
+    "finishedAt": "2026-11-09T14:26:51.713Z",
+    "durationMs": 28,
+    "sqlSha256": "4c6c9fb9771751b1e0f15920faab664a9400c8f8b39b7288db97e7fdf0ad0d0d",
+    "sqlState": null,
+    "expectedFailure": false,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "probe-authenticated",
+    "startedAt": "2026-11-09T14:26:51.881Z",
+    "finishedAt": "2026-11-09T14:26:51.883Z",
+    "durationMs": 2,
+    "sqlSha256": "92fd48e0d67c83ee329d187ebe8be8c5f5fe77eda49a040bcfc1277cea6b2456",
+    "sqlState": "55000",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "referencia-reportes-retorno",
+    "startedAt": "2026-11-09T14:26:52.003Z",
+    "finishedAt": "2026-11-09T14:26:52.051Z",
+    "durationMs": 48,
+    "sqlSha256": "5c0904bdd90d93a8d8def5ef780aef5a0a1a44570ab9ed54db78213e599bf333",
+    "sqlState": null,
+    "expectedFailure": false,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "referencia-principal-retorno",
+    "startedAt": "2026-11-09T14:26:52.126Z",
+    "finishedAt": "2026-11-09T14:26:52.208Z",
+    "durationMs": 82,
+    "sqlSha256": "c27856e19b750e9f430c57cbb736fff3138bc23197564a7816c367664ff928b3",
+    "sqlState": null,
+    "expectedFailure": false,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "probe-authenticated",
+    "startedAt": "2026-11-09T14:26:52.401Z",
+    "finishedAt": "2026-11-09T14:26:52.404Z",
+    "durationMs": 3,
+    "sqlSha256": "92fd48e0d67c83ee329d187ebe8be8c5f5fe77eda49a040bcfc1277cea6b2456",
+    "sqlState": "55000",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "original-incompatible-con-barrera",
+    "startedAt": "2026-11-09T14:26:52.404Z",
+    "finishedAt": "2026-11-09T14:26:52.442Z",
+    "durationMs": 38,
+    "sqlSha256": "c61f457792f684d22dd3c8ffafcd1b4280dfefafdd66da382943f44347322fb6",
+    "sqlState": "P0001",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "funcion-alterada-rechazada",
+    "startedAt": "2026-11-09T14:26:52.678Z",
+    "finishedAt": "2026-11-09T14:26:52.684Z",
+    "durationMs": 6,
+    "sqlSha256": "1f02b353cf626781f16e252244e25a9e43daa497063ba0d3331909bb524b3d2a",
+    "sqlState": "P0001",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "disparador-deshabilitado-rechazado",
+    "startedAt": "2026-11-09T14:26:52.746Z",
+    "finishedAt": "2026-11-09T14:26:52.755Z",
+    "durationMs": 9,
+    "sqlSha256": "1f02b353cf626781f16e252244e25a9e43daa497063ba0d3331909bb524b3d2a",
+    "sqlState": "P0001",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "tabla-no-inventariada-rechazada",
+    "startedAt": "2026-11-09T14:26:52.813Z",
+    "finishedAt": "2026-11-09T14:26:52.818Z",
+    "durationMs": 5,
+    "sqlSha256": "1f02b353cf626781f16e252244e25a9e43daa497063ba0d3331909bb524b3d2a",
+    "sqlState": "P0001",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "integrado-principal-avance",
+    "startedAt": "2026-11-09T14:26:52.846Z",
+    "finishedAt": "2026-11-09T14:26:52.945Z",
+    "durationMs": 99,
+    "sqlSha256": "1f02b353cf626781f16e252244e25a9e43daa497063ba0d3331909bb524b3d2a",
+    "sqlState": null,
+    "expectedFailure": false,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "probe-authenticated",
+    "startedAt": "2026-11-09T14:26:52.998Z",
+    "finishedAt": "2026-11-09T14:26:53.002Z",
+    "durationMs": 4,
+    "sqlSha256": "92fd48e0d67c83ee329d187ebe8be8c5f5fe77eda49a040bcfc1277cea6b2456",
+    "sqlState": "55000",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "integrado-reportes-avance",
+    "startedAt": "2026-11-09T14:26:53.091Z",
+    "finishedAt": "2026-11-09T14:26:53.119Z",
+    "durationMs": 28,
+    "sqlSha256": "a58cac231281f54ce965a0c507e59d5294dd16aee990cda77e7ce123f6c3734a",
+    "sqlState": null,
+    "expectedFailure": false,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "probe-authenticated",
+    "startedAt": "2026-11-09T14:26:53.147Z",
+    "finishedAt": "2026-11-09T14:26:53.148Z",
+    "durationMs": 1,
+    "sqlSha256": "92fd48e0d67c83ee329d187ebe8be8c5f5fe77eda49a040bcfc1277cea6b2456",
+    "sqlState": "55000",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "orden-retorno-incorrecto",
+    "startedAt": "2026-11-09T14:26:53.197Z",
+    "finishedAt": "2026-11-09T14:26:53.203Z",
+    "durationMs": 6,
+    "sqlSha256": "9c516ccb772de91d099299825157939d057e0b339ebfaca4c3edc1505d64b219",
+    "sqlState": "P0001",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  }
+]

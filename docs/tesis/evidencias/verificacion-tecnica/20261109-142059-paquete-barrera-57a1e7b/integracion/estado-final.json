@@ -1,0 +1,14 @@
+{
+  "tables": 48,
+  "rows": 68,
+  "contentsSha256": "7b23c48c88a53a67233f3fcb12de5640f8c9d38c64a9c0833035a01c573dd356",
+  "sequences": 7,
+  "sequencesSha256": "678ef17c1ae0645785d63a13281911cd68c8bc71c655d13fef115f3b1dce8c5c",
+  "sourceIntact": true,
+  "finalFingerprint": "15b9d9e869fb5113263c485714009878",
+  "gateRemoved": true,
+  "databasePreserved": true,
+  "institutionalRowsCopied": 0,
+  "productionChanged": false,
+  "managedServicesExercised": false
+}

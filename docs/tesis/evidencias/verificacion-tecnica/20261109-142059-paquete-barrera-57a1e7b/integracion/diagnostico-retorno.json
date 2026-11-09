@@ -1,0 +1,10 @@
+{
+  "recordedAt": "2026-11-09T14:24:41.162Z",
+  "method": "Diagnostic execution stopped before final guard, all changes rolled back; never committed",
+  "closedFingerprint": "ae618ff054689ef727b404053690fcb5",
+  "gateDigest": "1913de36e2f47a13337d7e2e797c2f54",
+  "gateTriggers": 48,
+  "openFingerprintWithoutGate": "6cee65eea2555a0fffea6e9c812c9c33",
+  "sourceChanged": false,
+  "productionChanged": false
+}

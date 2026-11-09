@@ -1,0 +1,21 @@
+{
+  "states": [
+    {
+      "openFingerprint": "15b9d9e869fb5113263c485714009878",
+      "closedFingerprint": "62c2560019fdf8f9c07ebdebbd1a08af",
+      "gateDigest": "1913de36e2f47a13337d7e2e797c2f54"
+    },
+    {
+      "openFingerprint": "500d15ffa5fa23aeddb47e5c21cd1d13",
+      "closedFingerprint": "102a88a3750d2c9c171f1b8940eb4893",
+      "gateDigest": "1913de36e2f47a13337d7e2e797c2f54"
+    },
+    {
+      "openFingerprint": "38434a2af96ad410967032b00a0828ac",
+      "closedFingerprint": "8361d739a267eddc56ea0f6ff5f5ee4a",
+      "gateDigest": "1913de36e2f47a13337d7e2e797c2f54"
+    }
+  ],
+  "gateDigest": "1913de36e2f47a13337d7e2e797c2f54",
+  "scope": "Measured synthetic laboratory catalog states, not Cloud observations."
+}
