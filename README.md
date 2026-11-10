@@ -301,6 +301,7 @@ Documentacion tecnica:
 
 ## Documentacion Relacionada | Related Docs
 
+- [Manual técnico de RioVoley](docs/manual-tecnico/MANUAL_TECNICO_RIOVOLEY.md) - roles, funcionalidades, arquitectura y operación; incluye [estilos y guía de exportación a PDF](docs/manual-tecnico/README.md)
 - [Revision de restauracion de PC (2026-10-22)](docs/RESTAURACION_PC_2026-10-22.md) - dependencias, verificaciones y pendientes detectados
 - [GUIA_SETUP_OTRA_PC.md](GUIA_SETUP_OTRA_PC.md) - onboarding en otra maquina
 - [GUIA_WHATSAPP_PASO_A_PASO.md](GUIA_WHATSAPP_PASO_A_PASO.md) - configuracion WhatsApp
