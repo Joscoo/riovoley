@@ -1,0 +1,22 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--require",
+    "./scripts/production/cra-release-preload.cjs",
+    "node_modules/react-scripts/bin/react-scripts.js",
+    "test",
+    "--watchAll=false",
+    "--runInBand",
+    "--coverage",
+    "--coverageReporters=json-summary",
+    "--coverageDirectory=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261105-152944-notifications-cancel-e903a31\\unitarias\\cobertura-jest-definitivo",
+    "--json",
+    "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261105-152944-notifications-cancel-e903a31\\unitarias\\jest-definitivo.json"
+  ],
+  "start": "2026-11-05T15:35:27.977Z",
+  "end": "2026-11-05T15:35:54.381Z",
+  "durationSeconds": 26.404,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

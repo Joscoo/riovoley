@@ -1,0 +1,46 @@
+{
+  "checkedAt": "2026-11-05T15:03:57.746Z",
+  "baseCommit": "c9a3079cafdd97acb59ec952864e6fe976a9c223",
+  "productSourcesChanged": false,
+  "originalProtectedTestsUnchanged": true,
+  "appSourceSha256": "40c9fc5c6ee18248a32d2578ce47a2cffe60bc22b81ca63bc9961afa82caf15d",
+  "compiledApkSourceCommit": "c9a3079cafdd97acb59ec952864e6fe976a9c223",
+  "files": [
+    {
+      "file": "docs/produccion/RUNBOOK.md",
+      "sha256": "d0a0729455fb9eb1fbf37decb02737c4a25d1ea1996d96d4f601c3e1ba680fac"
+    },
+    {
+      "file": "scripts/audit/android/authenticated-webview.cjs",
+      "sha256": "d89f5b7d5e507c7162a18a1b78456ba8c9b02225ac1ff8d1af0e6ddd8e616c09"
+    },
+    {
+      "file": "scripts/audit/android/launch-local-candidate.cjs",
+      "sha256": "e4da4ae2b6cc1f2cc74607cafac7698267bb74707dbce0df0d736f4b9b25b009"
+    },
+    {
+      "file": "docs/superpowers/plans/2026-11-04-android-ota-candidate.md",
+      "sha256": "e83d384d53e06d8b413e330d848263ab50f781bf1ee127ec54b0f1ef092aa842"
+    },
+    {
+      "file": "scripts/audit/android/check-local-achievements.cjs",
+      "sha256": "155173b8891913b893d4aacb346d8ab2d009f62b38c9a0164e20f268eb949d25"
+    },
+    {
+      "file": "scripts/audit/android/finalize-ota-native.cjs",
+      "sha256": "0a4c5614aff4880cffe1b1a45bb7516a2ececabaa31c7858bbd2d734a01ee207"
+    },
+    {
+      "file": "scripts/audit/android/initialize-ota-native.cjs",
+      "sha256": "c084ca4c3e4a0418965687f33d0e4e97c2d8cc474171a179047ffa3d31705185"
+    },
+    {
+      "file": "scripts/audit/android/inspect-ota-native.cjs",
+      "sha256": "39a4eb2a0abbf6d86a091a96ef7c39c716633136a06b62c8fb0fc4a3c4d93449"
+    },
+    {
+      "file": "scripts/audit/android/report-ota-native.cjs",
+      "sha256": "e7cfab0ad8de8915fc22da77837f04f37bd38005948d8d57135c710a82dc9228"
+    }
+  ]
+}

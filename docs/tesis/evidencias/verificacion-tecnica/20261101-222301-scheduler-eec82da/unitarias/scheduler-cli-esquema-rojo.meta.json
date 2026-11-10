@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/unit/scheduler-secret.test.cjs"
+  ],
+  "start": "2026-11-01T22:31:53.285Z",
+  "end": "2026-11-01T22:31:53.533Z",
+  "durationSeconds": 0.248,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

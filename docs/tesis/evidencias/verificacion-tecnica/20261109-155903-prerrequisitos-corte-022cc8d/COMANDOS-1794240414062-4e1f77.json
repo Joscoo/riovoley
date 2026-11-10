@@ -1,0 +1,111 @@
+{
+  "commands": [
+    {
+      "file": "integracion/informe-actual.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/audit/production/refresh-cutover.cjs",
+        "report"
+      ],
+      "start": "2026-11-09T16:04:13.037Z",
+      "end": "2026-11-09T16:04:13.199Z",
+      "durationSeconds": 0.162,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "seguridad/artefactos-lectura-1794240252514.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/audit/production/refresh-cutover.cjs",
+        "artifacts"
+      ],
+      "start": "2026-11-09T16:04:12.514Z",
+      "end": "2026-11-09T16:04:13.034Z",
+      "durationSeconds": 0.52,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "seguridad/artefactos-lectura.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/audit/production/refresh-cutover.cjs",
+        "artifacts"
+      ],
+      "start": "2026-11-09T16:03:45.785Z",
+      "end": "2026-11-09T16:03:45.941Z",
+      "durationSeconds": 0.156,
+      "exitCode": 1,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "seguridad/catalogo-lectura.meta.json",
+      "command": [
+        "supabase",
+        "db",
+        "query",
+        "--linked",
+        "--project-ref",
+        "mayvvlkvheagkojunzzb",
+        "--output",
+        "json",
+        "BEGIN READ ONLY;\nSELECT json_build_object(\n 'rls',(SELECT json_agg(x ORDER BY x.table_name) FROM (SELECT c.relname AS table_name,c.relrowsecurity AS enabled,c.relforcerowsecurity AS forced,(SELECT count(*) FROM pg_policy p WHERE p.polrelid=c.oid) AS policies FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='gamification' AND c.relname IN ('xp_ledger','login_rewards')) x),\n 'dailyRewardRpcPresent',to_regprocedure('public.claim_daily_login_reward()') IS NOT NULL,\n 'postgresSuperuser',(SELECT rolsuper FROM pg_roles WHERE rolname='postgres'),\n 'relationsWithoutOwnerRoleUsage',(SELECT count(*) FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname IN ('public','core','billing','training','gamification','reporting') AND c.relkind IN ('r','p','v','m','S') AND NOT pg_has_role('postgres',c.relowner,'USAGE')),\n 'functionOwnersWithoutRoleUsage',(SELECT count(*) FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname IN ('public','core','billing','training','gamification','reporting') AND NOT pg_has_role('postgres',p.proowner,'USAGE')),\n 'schemasWithoutCreate',(SELECT count(*) FROM pg_namespace n WHERE n.nspname IN ('public','security','gamification') AND NOT has_schema_privilege('postgres',n.oid,'CREATE'))\n) AS audit_summary;\nCOMMIT;"
+      ],
+      "startedAt": "2026-11-09T15:59:19.351Z",
+      "finishedAt": "2026-11-09T15:59:24.864Z",
+      "exitCode": 0,
+      "rawOutputSaved": false
+    },
+    {
+      "file": "seguridad/preflight-cloud.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/audit/production/refresh-cutover.cjs",
+        "http"
+      ],
+      "start": "2026-11-09T16:02:19.904Z",
+      "end": "2026-11-09T16:02:23.644Z",
+      "durationSeconds": 3.74,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "seguridad/publico-lectura.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/audit/production/read-public-transition.cjs"
+      ],
+      "start": "2026-11-09T16:02:19.915Z",
+      "end": "2026-11-09T16:02:21.085Z",
+      "durationSeconds": 1.17,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "seguridad/respaldos-administrados.meta.json",
+      "command": [
+        ".e2e-local/tools/node_modules/@supabase/cli-windows-x64/bin/supabase.exe",
+        "backups",
+        "list",
+        "--project-ref",
+        "mayvvlkvheagkojunzzb",
+        "--output",
+        "json"
+      ],
+      "start": "2026-11-09T15:59:19.392Z",
+      "end": "2026-11-09T15:59:24.806Z",
+      "durationSeconds": 5.416,
+      "exitCode": 0,
+      "errorCode": null,
+      "stdout": "Projected fields in respaldos-administrados.json; raw output retained privately.",
+      "stderr": "Private; no raw authentication or provider diagnostics published."
+    }
+  ],
+  "selectedArtifactAttempt": "seguridad/artefactos-lectura-1794240252514.meta.json"
+}

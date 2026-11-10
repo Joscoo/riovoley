@@ -1,0 +1,11 @@
+{
+  "container": "riovoley-restore-20261101-030216-07",
+  "imageDigest": "sha256:c141fd17ac6a76c4323e90b3aee8ff1a23d2e89e547c2b963cfadc309c079cc2",
+  "networkMode": "none",
+  "publishedPorts": 0,
+  "hostBindMounts": 0,
+  "logDriver": "none",
+  "pgdata": "tmpfs:/restore/pgdata",
+  "supabaseServicesStarted": false,
+  "productionConnectionsConfigured": false
+}

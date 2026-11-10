@@ -1,0 +1,23 @@
+ M docs/tesis/README.md
+ M package-lock.json
+ M package.json
+ M scripts/audit/android/README.md
+ M scripts/audit/android/context.cjs
+ M scripts/audit/android/environment.cjs
+ M scripts/audit/android/environment.test.cjs
+ M scripts/audit/android/stage.cjs
+ M src/shared/platform/push.js
+?? docs/tesis/evidencias/verificacion-tecnica/20261029-221208-android-autenticado-317e5e3/
+?? scripts/audit/android/authenticated-webview.cjs
+?? scripts/audit/android/collect-private.cjs
+?? scripts/audit/android/dependencies-followup.cjs
+?? scripts/audit/android/finalize-followup.cjs
+?? scripts/audit/android/initialize-followup.cjs
+?? scripts/audit/android/inspect-private.py
+?? scripts/audit/android/preflight-followup.cjs
+?? scripts/audit/android/repair-debug-network.cjs
+?? scripts/audit/android/report-followup.cjs
+?? scripts/audit/android/source-binding.cjs
+?? src/shared/platform/push.lifecycle.test.js
+?? tests/integration/toolchain.dependencies.test.cjs
+

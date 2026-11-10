@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-11-01T16:00:55.978Z",
+  "sourceSnapshotItems": 1101,
+  "sourceSnapshotFingerprint": "15b9d9e869fb5113263c485714009878",
+  "expectedPreflightFingerprint": "15b9d9e869fb5113263c485714009878",
+  "targetItems": 1101,
+  "targetFingerprint": "dcca03a20c1882fcb46f96332fcb3cb2",
+  "sourceOnlyCount": 1,
+  "targetOnlyCount": 1,
+  "differingObjects": [
+    "function:public.calculate_age(birthdate date)"
+  ],
+  "definitionsPublished": false
+}

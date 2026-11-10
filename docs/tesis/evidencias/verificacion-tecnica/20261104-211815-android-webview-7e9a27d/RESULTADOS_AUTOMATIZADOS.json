@@ -1,0 +1,62 @@
+{
+  "generatedAt": "2026-11-04T21:57:34.724Z",
+  "baseCommit": "7e9a27dd2b248a626a4440ece2e7227ba5e47ae5",
+  "debugApkSourceCommit": "7eee99c36e4125570351d7ffaec97f0cc8cd265c",
+  "debugApkSha256": "5f059b7387cc096326cdb3936eaceca535acd4a53d6af2f63cdb18a2ab18cb9d",
+  "debugApkBytes": 31076228,
+  "nativeWebview": {
+    "planned": 13,
+    "executed": 13,
+    "passed": 13,
+    "failed": 0,
+    "notExecuted": 0,
+    "seconds": 149.014,
+    "cleanupFailures": 0
+  },
+  "routeGuards": {
+    "tests": 10,
+    "pass": 10,
+    "fail": 0,
+    "skipped": 0
+  },
+  "releaseOffline": {
+    "state": "APROBADO_OFFLINE",
+    "sourceCommit": "ef9a05ad20bba4f9303f547130c07336eeea61e7",
+    "sha256": "3305c32983cba75a1361c5b6d741836051f98acfd0c7fefe8bd42dcb81cce16c",
+    "bytes": 28376554,
+    "androidApi": "36",
+    "foreground": true,
+    "nativeDeepLinkAccepted": true,
+    "loginPerformed": false
+  },
+  "releaseFailedAttempts": [
+    {
+      "file": "android/release-smoke-offline-fallo.json",
+      "stage": "DEVICE_OFFLINE_NOT_PROVEN",
+      "failedAt": "2026-11-04T21:31:42.924Z"
+    },
+    {
+      "file": "android/release-smoke-offline-fallo-1793828311299-8c2978.json",
+      "stage": "ANDROID_UI_ANR_BLOCKS_VISUAL_SMOKE",
+      "failedAt": "2026-11-04T21:38:31.298Z"
+    }
+  ],
+  "localXpAfterEmulatorStopped": {
+    "ledger_rows": 1,
+    "xp": 8
+  },
+  "newWebOrNativeBuild": false,
+  "newProductJestCoverage": false,
+  "productionContacted": false,
+  "institutionalDataChanged": false,
+  "productLogicChanged": false,
+  "physicalDeviceUsed": false,
+  "networkScope": {
+    "originalRouteQueriesUsedDefaultFilter": true,
+    "allPolicyTablesCertified": false,
+    "dummyInterfaceDriverVerified": false,
+    "sourceUpdatedToUnfilteredMain": true,
+    "updatedAcquisitionNotExecutedWithin13Cases": true,
+    "limitationEvidence": "android/limites-enrutamiento.json"
+  }
+}

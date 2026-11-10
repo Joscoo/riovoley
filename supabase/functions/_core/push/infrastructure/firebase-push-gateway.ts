@@ -1,4 +1,4 @@
-import { GoogleAuth } from 'npm:google-auth-library@9';
+import { GoogleAuth } from 'npm:google-auth-library@10.9.1';
 
 interface PushTarget {
   id: number;

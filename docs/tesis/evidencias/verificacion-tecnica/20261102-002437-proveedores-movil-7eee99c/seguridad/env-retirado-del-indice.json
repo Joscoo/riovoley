@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-11-02T04:01:28.900Z",
+  "file": ".env",
+  "trackedBefore": true,
+  "trackedAfter": false,
+  "localFilePreserved": true,
+  "localBytesUnchanged": true,
+  "exitCode": 0,
+  "valuesPublished": false,
+  "valuesChanged": false,
+  "historyRewritten": false,
+  "scope": "Retiro del indice Git; conserva configuracion local y no elimina la historia anterior."
+}

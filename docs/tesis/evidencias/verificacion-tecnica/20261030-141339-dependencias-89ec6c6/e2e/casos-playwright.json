@@ -1,0 +1,1994 @@
+[
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /admin",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /entrenador",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /estudiante",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /admin",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /entrenador",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /estudiante",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /admin",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /entrenador",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /estudiante",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /admin",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /entrenador",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /estudiante",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /admin",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /entrenador",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /estudiante",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /admin",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /entrenador",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /estudiante",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /admin",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /entrenador",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/audit.protected-routes.spec.js",
+    "title": "audit: anonymous access cannot render protected panel /estudiante",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: un enlace expirado no habilita el formulario",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: un enlace expirado no habilita el formulario",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: un enlace expirado no habilita el formulario",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: un enlace expirado no habilita el formulario",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: un enlace expirado no habilita el formulario",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: un enlace expirado no habilita el formulario",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: un codigo PKCE valido se intercambia una sola vez al abrir el correo",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: un enlace expirado no habilita el formulario",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: un codigo rechazado no se trata como una sesion valida",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/auth.password-recovery.spec.js",
+    "title": "recovery: verifica el enlace, cambia una vez y cierra la sesion de recuperacion",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /sobre",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /horarios",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /login",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "mobile navigation closes with Escape and restores keyboard focus",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "mobile menu keeps keyboard focus within its controls",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /sobre",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /horarios",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /login",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "mobile navigation closes with Escape and restores keyboard focus",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "mobile menu keeps keyboard focus within its controls",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /sobre",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /horarios",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /login",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "mobile navigation closes with Escape and restores keyboard focus",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "mobile menu keeps keyboard focus within its controls",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /sobre",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /horarios",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /login",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "mobile navigation closes with Escape and restores keyboard focus",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "mobile menu keeps keyboard focus within its controls",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /sobre",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /horarios",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /login",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "mobile navigation closes with Escape and restores keyboard focus",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "mobile menu keeps keyboard focus within its controls",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /sobre",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /horarios",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /login",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "mobile navigation closes with Escape and restores keyboard focus",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "mobile menu keeps keyboard focus within its controls",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /sobre",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /horarios",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /login",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "public page has a main landmark and a keyboard skip link: /reset-password",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "mobile navigation closes with Escape and restores keyboard focus",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/public.navigation-accessibility.spec.js",
+    "title": "mobile menu keeps keyboard focus within its controls",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /sobre",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /horarios",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /login",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /reset-password",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /sobre",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /horarios",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /login",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /reset-password",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /sobre",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /horarios",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /login",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /reset-password",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /sobre",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /horarios",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /login",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /reset-password",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /sobre",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /horarios",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /login",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /reset-password",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /sobre",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /horarios",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /login",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /reset-password",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /sobre",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /horarios",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /login",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "publicas-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "public route responsive guard: /reset-password",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/admin.modules-navigation.spec.js",
+    "title": "admin: every module opens without a JavaScript crash",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/admin.modules-navigation.spec.js",
+    "title": "admin: every module opens without a JavaScript crash",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/admin.modules-navigation.spec.js",
+    "title": "admin: every module opens without a JavaScript crash",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/admin.modules-navigation.spec.js",
+    "title": "admin: every module opens without a JavaScript crash",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/admin.modules-navigation.spec.js",
+    "title": "admin: every module opens without a JavaScript crash",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/admin.modules-navigation.spec.js",
+    "title": "admin: every module opens without a JavaScript crash",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/admin.modules-navigation.spec.js",
+    "title": "admin: every module opens without a JavaScript crash",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/admin.provisioning-notifications.smoke.spec.js",
+    "title": "admin smoke: provisioning + notifications entrypoints",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/admin.provisioning-notifications.smoke.spec.js",
+    "title": "admin smoke: provisioning + notifications entrypoints",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/admin.provisioning-notifications.smoke.spec.js",
+    "title": "admin smoke: provisioning + notifications entrypoints",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/admin.provisioning-notifications.smoke.spec.js",
+    "title": "admin smoke: provisioning + notifications entrypoints",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/admin.provisioning-notifications.smoke.spec.js",
+    "title": "admin smoke: provisioning + notifications entrypoints",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/admin.provisioning-notifications.smoke.spec.js",
+    "title": "admin smoke: provisioning + notifications entrypoints",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/admin.provisioning-notifications.smoke.spec.js",
+    "title": "admin smoke: provisioning + notifications entrypoints",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/asistencias.guided.review.spec.js",
+    "title": "guided review: admin asistencias quick mode per viewport",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 athletes tab: filtros y orden con reset consistente",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 schedules: filtros y orden con limpiar filtros",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 athletes tab: filtros y orden con reset consistente",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 schedules: filtros y orden con limpiar filtros",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 athletes tab: filtros y orden con reset consistente",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 schedules: filtros y orden con limpiar filtros",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 athletes tab: filtros y orden con reset consistente",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 schedules: filtros y orden con limpiar filtros",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 athletes tab: filtros y orden con reset consistente",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 schedules: filtros y orden con limpiar filtros",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 athletes tab: filtros y orden con reset consistente",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 schedules: filtros y orden con limpiar filtros",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 athletes tab: filtros y orden con reset consistente",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.phase2-lists.spec.js",
+    "title": "phase2 schedules: filtros y orden con limpiar filtros",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.physical-tests.spec.js",
+    "title": "physical-tests: filtros + orden + limpiar filtros",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.physical-tests.spec.js",
+    "title": "physical-tests: filtros + orden + limpiar filtros",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.physical-tests.spec.js",
+    "title": "physical-tests: filtros + orden + limpiar filtros",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.physical-tests.spec.js",
+    "title": "physical-tests: filtros + orden + limpiar filtros",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.physical-tests.spec.js",
+    "title": "physical-tests: filtros + orden + limpiar filtros",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.physical-tests.spec.js",
+    "title": "physical-tests: filtros + orden + limpiar filtros",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.physical-tests.spec.js",
+    "title": "physical-tests: filtros + orden + limpiar filtros",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.tables.spec.js",
+    "title": "pagos: filtros base + orden de columnas por header",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.tables.spec.js",
+    "title": "asistencias: filtros del historial + orden por columnas",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.user-management.spec.js",
+    "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.user-management.spec.js",
+    "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.user-management.spec.js",
+    "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.user-management.spec.js",
+    "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.user-management.spec.js",
+    "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.user-management.spec.js",
+    "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/filters-sorting.user-management.spec.js",
+    "title": "user-management tabs: filtros y orden se actualizan y resetean por tab",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "role dashboards responsive guard (optional env credentials)",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "role dashboards responsive guard (optional env credentials)",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "role dashboards responsive guard (optional env credentials)",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "role dashboards responsive guard (optional env credentials)",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "role dashboards responsive guard (optional env credentials)",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "role dashboards responsive guard (optional env credentials)",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/responsive.smoke.spec.js",
+    "title": "role dashboards responsive guard (optional env credentials)",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.modules-navigation.spec.js",
+    "title": "trainer: every module renders without a JavaScript crash",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.modules-navigation.spec.js",
+    "title": "student: every module renders without a JavaScript crash",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.modules-navigation.spec.js",
+    "title": "trainer: every module renders without a JavaScript crash",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.modules-navigation.spec.js",
+    "title": "student: every module renders without a JavaScript crash",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.modules-navigation.spec.js",
+    "title": "trainer: every module renders without a JavaScript crash",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.modules-navigation.spec.js",
+    "title": "student: every module renders without a JavaScript crash",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.modules-navigation.spec.js",
+    "title": "trainer: every module renders without a JavaScript crash",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.modules-navigation.spec.js",
+    "title": "student: every module renders without a JavaScript crash",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.modules-navigation.spec.js",
+    "title": "trainer: every module renders without a JavaScript crash",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.modules-navigation.spec.js",
+    "title": "student: every module renders without a JavaScript crash",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.modules-navigation.spec.js",
+    "title": "trainer: every module renders without a JavaScript crash",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.modules-navigation.spec.js",
+    "title": "student: every module renders without a JavaScript crash",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.modules-navigation.spec.js",
+    "title": "trainer: every module renders without a JavaScript crash",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.modules-navigation.spec.js",
+    "title": "student: every module renders without a JavaScript crash",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: admin",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: trainer",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: student",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: admin",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: trainer",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: student",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: admin",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: trainer",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: student",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: admin",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: trainer",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: student",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: admin",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: trainer",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: student",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: admin",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: trainer",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: student",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: admin",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: trainer",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "paneles-finales",
+    "file": "tests/e2e/roles.panels-navigation.smoke.spec.js",
+    "title": "role panel smoke: student",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "mutaciones-finales",
+    "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "mobile-390",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "mutaciones-finales",
+    "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "mobile-430",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "mutaciones-finales",
+    "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "mobile-480",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "mutaciones-finales",
+    "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "tablet-768",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "mutaciones-finales",
+    "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "tablet-1024",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "mutaciones-finales",
+    "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "mutaciones-finales",
+    "file": "tests/e2e/admin.happy-path-controlled.spec.js",
+    "title": "admin happy path controlado: atleta + pago + asistencia",
+    "project": "desktop-1920",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "limites-finales",
+    "file": "tests/e2e/payments.responsive-boundaries.spec.js",
+    "title": "pagos: ordenación accesible en límite adaptable 481px",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "limites-finales",
+    "file": "tests/e2e/payments.responsive-boundaries.spec.js",
+    "title": "pagos: ordenación accesible en límite adaptable 600px",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "limites-finales",
+    "file": "tests/e2e/payments.responsive-boundaries.spec.js",
+    "title": "pagos: ordenación accesible en límite adaptable 767px",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  },
+  {
+    "group": "limites-finales",
+    "file": "tests/e2e/payments.responsive-boundaries.spec.js",
+    "title": "pagos: ordenación accesible en límite adaptable 768px",
+    "project": "desktop-1440",
+    "status": "passed",
+    "attempts": 1
+  }
+]

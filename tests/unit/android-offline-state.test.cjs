@@ -1,0 +1,6 @@
+const {test}=require('node:test'),assert=require('node:assert/strict');
+const parse=text=>require('../../scripts/audit/android/activity-state.cjs').classifyActivity(text,'com.riovoley.app');
+test('reconoce topResumedActivity de Android36 sin exigir mResumedActivity',()=>{const r=parse('topResumedActivity=ActivityRecord{abc u0 com.riovoley.app/.MainActivity t6}');assert.equal(r.foreground,true);assert.equal(r.visualUiVerified,false);});
+test('conserva el formato mResumedActivity anterior',()=>assert.equal(parse('mResumedActivity: ActivityRecord{abc u0 com.riovoley.app/.MainActivity t6}').foreground,true));
+test('una actividad histórica de RIOVOLEY no acredita primer plano',()=>assert.equal(parse('Hist #0 com.riovoley.app/.MainActivity\ntopResumedActivity=ActivityRecord{abc u0 com.android.launcher/.MainActivity t1}').foreground,false));
+test('un ANR de SystemUI bloquea la verificación visual sin atribuir crash a RIOVOLEY',()=>{const r=parse('topResumedActivity=ActivityRecord{abc u0 com.riovoley.app/.MainActivity t6}\nmFocusedWindow=Application Not Responding: com.android.systemui');assert.equal(r.foreground,true);assert.equal(r.systemUiAnr,true);assert.equal(r.appAnr,false);assert.equal(r.visualUiVerified,false);});

@@ -1,0 +1,13 @@
+{
+  "initializedAt": "2026-11-05T16:04:24.150Z",
+  "baseCommit": "d2b43e466e2b727f4fa9824a72326a0d05aa5c95",
+  "scope": "Lectura actual de Supabase/Vercel y verificacion de artefactos preparados; sin cambios institucionales ni tareas de claves.",
+  "projectId": "mayvvlkvheagkojunzzb",
+  "vercelProject": "riovoley",
+  "vercelTeam": "joscoos-projects",
+  "publicDomain": "https://riovoley.com",
+  "productionChanged": false,
+  "credentialValuesRequested": false,
+  "newFunctionalTests": false,
+  "note": "Algunas consultas MCP de este turno preceden a la asignacion del expediente; conservar sus sellos de tiempo originales."
+}

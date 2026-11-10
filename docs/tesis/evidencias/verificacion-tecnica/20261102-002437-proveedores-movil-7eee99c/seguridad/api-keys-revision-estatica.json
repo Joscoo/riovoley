@@ -1,0 +1,43 @@
+{
+  "checkedAt": "2026-11-02T04:02:11.967Z",
+  "filesChecked": 9650,
+  "trackedEnvironmentFiles": [
+    ".env"
+  ],
+  "environmentNames": [
+    {
+      "file": ".env.local",
+      "name": "REACT_APP_SUPABASE_ANON_KEY",
+      "present": true,
+      "kind": "EXPECTED_PUBLIC_ANON",
+      "tracked": false
+    },
+    {
+      "file": ".env.local",
+      "name": "REACT_APP_PII_ENCRYPTION_KEY",
+      "present": true,
+      "kind": "CLIENT_BUNDLED_PII_MATERIAL",
+      "tracked": false
+    },
+    {
+      "file": ".env.production",
+      "name": "REACT_APP_SUPABASE_ANON_KEY",
+      "present": true,
+      "kind": "EXPECTED_PUBLIC_ANON",
+      "tracked": false
+    },
+    {
+      "file": ".env.production",
+      "name": "REACT_APP_PII_ENCRYPTION_KEY",
+      "present": true,
+      "kind": "CLIENT_BUNDLED_PII_MATERIAL",
+      "tracked": false
+    }
+  ],
+  "knownValueMatches": [],
+  "privateKeyPatternMatches": [],
+  "clientPiiConfigured": true,
+  "clientPiiUsedByBrowserSource": true,
+  "valuesOrValueDigestsPublished": false,
+  "scope": "Snapshot actual y archivos nuevos/modificados; no auditoria exhaustiva de historia Git, dependencias instaladas o destinos externos. Una anon publica esperada no equivale a una clave service_role expuesta."
+}

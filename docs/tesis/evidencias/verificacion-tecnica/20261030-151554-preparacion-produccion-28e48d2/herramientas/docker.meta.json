@@ -1,0 +1,16 @@
+{
+  "command": [
+    "docker",
+    "--host",
+    "npipe:////./pipe/dockerDesktopLinuxEngine",
+    "info",
+    "--format",
+    "{{.ServerVersion}}"
+  ],
+  "start": "2026-10-31T19:11:02.609Z",
+  "end": "2026-10-31T19:11:03.940Z",
+  "durationSeconds": 1.331,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

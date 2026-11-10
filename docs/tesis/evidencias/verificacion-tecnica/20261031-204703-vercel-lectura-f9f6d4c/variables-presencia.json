@@ -1,0 +1,23 @@
+{
+  "checks": [
+    {
+      "key": "REACT_APP_SUPABASE_URL",
+      "presentForProduction": true
+    },
+    {
+      "key": "REACT_APP_SUPABASE_ANON_KEY",
+      "presentForProduction": true
+    },
+    {
+      "key": "REACT_APP_APP_URL",
+      "presentForProduction": true
+    },
+    {
+      "key": "REACT_APP_PII_ENCRYPTION_KEY",
+      "presentForProduction": true
+    }
+  ],
+  "valuesRead": false,
+  "valuesSaved": false,
+  "validityChecked": false
+}

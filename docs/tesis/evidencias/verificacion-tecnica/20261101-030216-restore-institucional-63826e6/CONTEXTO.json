@@ -1,0 +1,8 @@
+{
+  "commit": "63826e6098ce1358f2e0cf727790c680dd458449",
+  "evidence": "docs\\tesis\\evidencias\\verificacion-tecnica\\20261101-030216-restore-institucional-63826e6",
+  "createdAt": "2026-11-01T03:02:16.474Z",
+  "container": "riovoley-restore-20261101-030216",
+  "institutionalBackupSha256": "22da6c77d9bbd3def2e6113c6c53531d76d900c0abe9c1f364c2dbb7828e54e6",
+  "scope": "Verificar copia institucional cifrada y ensayar restauracion local sin red, puertos ni servicios Auth/Edge/Storage. No modificar produccion."
+}

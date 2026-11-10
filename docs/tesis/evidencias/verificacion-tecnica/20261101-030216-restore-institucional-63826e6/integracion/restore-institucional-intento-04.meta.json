@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/production/restore-isolated.cjs"
+  ],
+  "start": "2026-11-01T03:06:03.922Z",
+  "end": "2026-11-01T03:06:07.283Z",
+  "durationSeconds": 3.361,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

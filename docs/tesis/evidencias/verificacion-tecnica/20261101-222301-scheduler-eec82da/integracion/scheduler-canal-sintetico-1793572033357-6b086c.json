@@ -1,0 +1,19 @@
+{
+  "completedAt": "2026-11-01T22:27:13.355Z",
+  "cliVersion": "2.122.0",
+  "cliExitCode": 0,
+  "transport": "Tuberia Windows de una conexion; CLI real contra API HTTP exclusivamente loopback",
+  "postRequests": 1,
+  "secretNamesSubmitted": [
+    "REPORTS_SCHEDULER_SECRET"
+  ],
+  "onlyExpectedPayloadSubmitted": true,
+  "pipeConnections": 1,
+  "valueInArguments": false,
+  "valueInOutput": false,
+  "cleartextFileCreated": false,
+  "configIsolatedOutsideRepository": true,
+  "dpapiRoundTripVerified": true,
+  "productionContacted": false,
+  "synthetic": true
+}

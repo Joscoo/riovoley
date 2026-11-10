@@ -1,0 +1,22 @@
+{
+  "label": "candidato",
+  "method": "GET",
+  "endpoint": "/v6/deployments?projectId=prj_gnsNVKcXC8jvN0UcassXy4lZ0ZfN&sha=f9f6d4c2dea4e1df52d27331fed43843e45a6be9&limit=20",
+  "command": [
+    "vercel",
+    "api",
+    "/v6/deployments?projectId=prj_gnsNVKcXC8jvN0UcassXy4lZ0ZfN&sha=f9f6d4c2dea4e1df52d27331fed43843e45a6be9&limit=20",
+    "-X",
+    "GET",
+    "--scope",
+    "joscoos-projects",
+    "--global-config",
+    "[CONFIG_PRIVADA]",
+    "--non-interactive"
+  ],
+  "start": "2026-10-31T20:47:06.898Z",
+  "end": "2026-10-31T20:47:08.128Z",
+  "durationSeconds": 1.23,
+  "exitCode": 0,
+  "rawOutputSaved": false
+}

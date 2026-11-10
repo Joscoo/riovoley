@@ -1,0 +1,15 @@
+{
+  "at": "2026-11-09T16:06:54.090Z",
+  "priorManifests": 32,
+  "priorEntries": 9948,
+  "priorEntriesMatching": true,
+  "linksChecked": 79,
+  "brokenLinks": 0,
+  "privacyIssues": 0,
+  "selectedSourceManifest": "FUENTES_EVALUADAS-1794240414045-4cf6cf.json",
+  "selectedCommandManifest": "COMANDOS-1794240414062-4e1f77.json",
+  "priorClosureFailure": "seguridad/incidencia-enlace-con-ancla.json",
+  "productChanged": false,
+  "productionChanged": false,
+  "releaseReady": false
+}

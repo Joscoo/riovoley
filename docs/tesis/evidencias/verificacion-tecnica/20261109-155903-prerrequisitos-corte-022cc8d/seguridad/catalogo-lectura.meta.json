@@ -1,0 +1,17 @@
+{
+  "command": [
+    "supabase",
+    "db",
+    "query",
+    "--linked",
+    "--project-ref",
+    "mayvvlkvheagkojunzzb",
+    "--output",
+    "json",
+    "BEGIN READ ONLY;\nSELECT json_build_object(\n 'rls',(SELECT json_agg(x ORDER BY x.table_name) FROM (SELECT c.relname AS table_name,c.relrowsecurity AS enabled,c.relforcerowsecurity AS forced,(SELECT count(*) FROM pg_policy p WHERE p.polrelid=c.oid) AS policies FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='gamification' AND c.relname IN ('xp_ledger','login_rewards')) x),\n 'dailyRewardRpcPresent',to_regprocedure('public.claim_daily_login_reward()') IS NOT NULL,\n 'postgresSuperuser',(SELECT rolsuper FROM pg_roles WHERE rolname='postgres'),\n 'relationsWithoutOwnerRoleUsage',(SELECT count(*) FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname IN ('public','core','billing','training','gamification','reporting') AND c.relkind IN ('r','p','v','m','S') AND NOT pg_has_role('postgres',c.relowner,'USAGE')),\n 'functionOwnersWithoutRoleUsage',(SELECT count(*) FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname IN ('public','core','billing','training','gamification','reporting') AND NOT pg_has_role('postgres',p.proowner,'USAGE')),\n 'schemasWithoutCreate',(SELECT count(*) FROM pg_namespace n WHERE n.nspname IN ('public','security','gamification') AND NOT has_schema_privilege('postgres',n.oid,'CREATE'))\n) AS audit_summary;\nCOMMIT;"
+  ],
+  "startedAt": "2026-11-09T15:59:19.351Z",
+  "finishedAt": "2026-11-09T15:59:24.864Z",
+  "exitCode": 0,
+  "rawOutputSaved": false
+}

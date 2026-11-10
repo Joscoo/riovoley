@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-11-04T22:48:07.840Z",
+  "priorManifests": 22,
+  "priorEntries": 9235,
+  "priorEntriesMatching": true,
+  "jestCases": 426,
+  "jestSuites": 89,
+  "nodeCases": 18,
+  "focusedJestSubset": 7,
+  "focusedNodeSubset": 4,
+  "buildFilesMatching": 65,
+  "originalProtectedTestsUnchanged": true,
+  "linksChecked": 98,
+  "brokenLinks": 0,
+  "documents": 3,
+  "institutionalWrites": false,
+  "productionChanged": false,
+  "nativeArtifactRebuilt": false
+}

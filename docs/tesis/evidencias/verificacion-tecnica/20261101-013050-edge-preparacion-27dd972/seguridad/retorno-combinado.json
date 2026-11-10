@@ -1,0 +1,11 @@
+{
+  "executedAt": "2026-11-01T01:46:37.557Z",
+  "database": "riovoley_release_20261031212707",
+  "primaryAppliedFingerprint": "500d15ffa5fa23aeddb47e5c21cd1d13",
+  "combinedFingerprint": "38434a2af96ad410967032b00a0828ac",
+  "wrongReturnOrderRejected": true,
+  "complementReturnedBeforePrimary": true,
+  "primaryReturnedToOriginal": true,
+  "primaryAndComplementReapplied": true,
+  "productionChanged": false
+}

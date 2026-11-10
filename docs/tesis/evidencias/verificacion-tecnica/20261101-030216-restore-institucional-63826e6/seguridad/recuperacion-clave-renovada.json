@@ -1,0 +1,9 @@
+{
+  "checkedAt": "2026-11-01T15:54:55.285Z",
+  "archiveHashMatches": true,
+  "recoveryKeyHashMatches": true,
+  "decryptExitCode": 0,
+  "pgRestoreListExitCode": 0,
+  "phraseRecorded": false,
+  "productionContacted": false
+}

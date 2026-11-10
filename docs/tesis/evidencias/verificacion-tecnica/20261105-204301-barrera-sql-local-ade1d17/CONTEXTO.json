@@ -1,0 +1,27 @@
+{
+  "createdAt": "2026-11-05T20:43:01.489Z",
+  "baseCommit": "ade1d1748dc77f13d75da2b1248810f7b1a65386",
+  "database": "riovoley_gate_20261105204301_d69b51",
+  "evidence": "docs/tesis/evidencias/verificacion-tecnica/20261105-204301-barrera-sql-local-ade1d17",
+  "priorEvidence": "docs/tesis/evidencias/verificacion-tecnica/20261105-171049-prerrequisitos-corte-922a374",
+  "productionChanged": false,
+  "institutionalRowsCopied": 0,
+  "host": "127.0.0.1",
+  "port": 55322,
+  "osRelease": "10.0.26300",
+  "node": "v24.18.0",
+  "serverVersion": "17.11",
+  "rolesModifiedGlobally": false,
+  "fixtureRelations": [
+    "public.gate_probe",
+    "gamification.gate_probe",
+    "auth.gate_probe",
+    "storage.gate_probe",
+    "public.gate_partition",
+    "public.gate_partition_low",
+    "public.gate_partition_high"
+  ],
+  "httpAuthExercised": false,
+  "storageBytesExercised": false,
+  "mocksUsed": false
+}

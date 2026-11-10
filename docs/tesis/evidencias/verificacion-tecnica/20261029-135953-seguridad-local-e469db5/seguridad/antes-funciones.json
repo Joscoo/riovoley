@@ -1,0 +1,258 @@
+[
+  {
+    "signature": "audit_payments()",
+    "definition": "CREATE OR REPLACE FUNCTION public.audit_payments()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\r\nBEGIN\r\n  IF TG_OP = 'DELETE' THEN\r\n    INSERT INTO payments_audit (payment_id, action, old_data, changed_by)\r\n    VALUES (OLD.id, 'DELETE', to_jsonb(OLD), auth.uid());\r\n    RETURN OLD;\r\n  ELSIF TG_OP = 'UPDATE' THEN\r\n    INSERT INTO payments_audit (payment_id, action, old_data, new_data, changed_by)\r\n    VALUES (OLD.id, 'UPDATE', to_jsonb(OLD), to_jsonb(NEW), auth.uid());\r\n    RETURN NEW;\r\n  ELSIF TG_OP = 'INSERT' THEN\r\n    INSERT INTO payments_audit (payment_id, action, new_data, changed_by)\r\n    VALUES (NEW.id, 'INSERT', to_jsonb(NEW), auth.uid());\r\n    RETURN NEW;\r\n  END IF;\r\n  RETURN NULL;\r\nEND;\r\n$function$\n",
+    "prosecdef": true,
+    "proconfig": null,
+    "proacl": "{postgres=X/postgres,=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+    "owner": "postgres",
+    "acl": [
+      {
+        "role": "postgres",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "PUBLIC",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "anon",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "authenticated",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "service_role",
+        "privilege": "EXECUTE",
+        "grantable": false
+      }
+    ]
+  },
+  {
+    "signature": "equip_gamification_item(uuid,text)",
+    "definition": "CREATE OR REPLACE FUNCTION public.equip_gamification_item(p_student_id uuid, p_item_slug text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public', 'gamification', 'core'\nAS $function$\r\ndeclare\r\n  v_student_owner uuid;\r\n  v_item gamification.cosmetic_items_catalog%rowtype;\r\n  v_owned boolean;\r\n  v_now timestamptz := timezone('utc', now());\r\nbegin\r\n  if auth.uid() is null then raise exception 'not_allowed'; end if;\r\n  select s.user_id\r\n  into v_student_owner\r\n  from core.students s\r\n  where s.id = p_student_id;\r\n\r\n  if v_student_owner is null then\r\n    raise exception 'student_not_found';\r\n  end if;\r\n\r\n  if not (coalesce(public.is_admin_or_trainer(), false) or coalesce(v_student_owner = auth.uid(), false)) then\r\n    raise exception 'not_allowed';\r\n  end if;\r\n\r\n  select *\r\n  into v_item\r\n  from gamification.cosmetic_items_catalog\r\n  where slug = p_item_slug\r\n    and is_active = true;\r\n\r\n  if v_item.slug is null then\r\n    raise exception 'item_not_found';\r\n  end if;\r\n\r\n  select exists (\r\n    select 1\r\n    from gamification.student_cosmetic_items sci\r\n    where sci.student_id = p_student_id\r\n      and sci.item_slug = p_item_slug\r\n  )\r\n  into v_owned;\r\n\r\n  if not v_owned then\r\n    raise exception 'item_not_owned';\r\n  end if;\r\n\r\n  insert into gamification.student_cosmetic_equipment (\r\n    student_id,\r\n    updated_at\r\n  ) values (\r\n    p_student_id,\r\n    v_now\r\n  )\r\n  on conflict (student_id) do nothing;\r\n\r\n  if v_item.category = 'frame' then\r\n    update gamification.student_cosmetic_equipment\r\n    set frame_item_slug = v_item.slug, updated_at = v_now\r\n    where student_id = p_student_id;\r\n  elsif v_item.category = 'background' then\r\n    update gamification.student_cosmetic_equipment\r\n    set background_item_slug = v_item.slug, updated_at = v_now\r\n    where student_id = p_student_id;\r\n  elsif v_item.category = 'badge' then\r\n    update gamification.student_cosmetic_equipment\r\n    set badge_item_slug = v_item.slug, updated_at = v_now\r\n    where student_id = p_student_id;\r\n  elsif v_item.category = 'effect' then\r\n    update gamification.student_cosmetic_equipment\r\n    set effect_item_slug = v_item.slug, updated_at = v_now\r\n    where student_id = p_student_id;\r\n  else\r\n    raise exception 'unsupported_category';\r\n  end if;\r\n\r\n  return jsonb_build_object(\r\n    'ok', true,\r\n    'itemSlug', v_item.slug,\r\n    'category', v_item.category\r\n  );\r\nend;\r\n$function$\n",
+    "prosecdef": true,
+    "proconfig": [
+      "search_path=public, gamification, core"
+    ],
+    "proacl": "{postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+    "owner": "postgres",
+    "acl": [
+      {
+        "role": "postgres",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "authenticated",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "service_role",
+        "privilege": "EXECUTE",
+        "grantable": false
+      }
+    ]
+  },
+  {
+    "signature": "purchase_gamification_item(uuid,text)",
+    "definition": "CREATE OR REPLACE FUNCTION public.purchase_gamification_item(p_student_id uuid, p_item_slug text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public', 'gamification', 'core'\nAS $function$\r\ndeclare\r\n  v_owner uuid;\r\n  v_item gamification.cosmetic_items_catalog%rowtype;\r\n  v_wallet gamification.currency_wallets%rowtype;\r\n  v_entry gamification.currency_ledger%rowtype;\r\n  v_now timestamptz := now();\r\nbegin\r\n  if auth.uid() is null then raise exception 'not_allowed'; end if;\r\n  select user_id into v_owner from core.students where id = p_student_id;\r\n  if not found then raise exception 'student_not_found'; end if;\r\n  if not (coalesce(public.is_admin_or_trainer(), false) or coalesce(v_owner = auth.uid(), false)) then\r\n    raise exception 'not_allowed';\r\n  end if;\r\n\r\n  select * into v_item from gamification.cosmetic_items_catalog\r\n  where slug = p_item_slug and is_active = true for share;\r\n  if not found then raise exception 'item_not_found'; end if;\r\n  if v_item.category not in ('frame', 'background', 'badge', 'effect') then\r\n    raise exception 'unsupported_category';\r\n  end if;\r\n\r\n  perform pg_advisory_xact_lock(hashtextextended('gamification-shop:' || p_student_id::text, 0));\r\n  insert into gamification.currency_wallets(student_id, balance, total_earned, total_spent, last_synced_at, updated_at)\r\n  values (p_student_id, 0, 0, 0, v_now, v_now) on conflict (student_id) do nothing;\r\n  select * into v_wallet from gamification.currency_wallets where student_id = p_student_id for update;\r\n\r\n  if exists(select 1 from gamification.student_cosmetic_items where student_id = p_student_id and item_slug = p_item_slug) then\r\n    raise exception 'item_already_owned';\r\n  end if;\r\n  if v_wallet.balance < v_item.price_coins then raise exception 'insufficient_coins'; end if;\r\n\r\n  update gamification.currency_wallets\r\n  set balance = balance - v_item.price_coins, total_spent = total_spent + v_item.price_coins,\r\n      updated_at = v_now, last_synced_at = v_now\r\n  where student_id = p_student_id returning * into v_wallet;\r\n\r\n  insert into gamification.currency_ledger(student_id, source_type, source_ref, coins_delta, label, description, metadata, occurred_at, created_at)\r\n  values(p_student_id, 'cosmetic_purchase', p_item_slug, -v_item.price_coins, 'Compra cosmetica',\r\n    format('Compraste %s para tu perfil.', v_item.name),\r\n    jsonb_build_object('itemSlug', v_item.slug, 'category', v_item.category), v_now, v_now)\r\n  returning * into v_entry;\r\n\r\n  insert into gamification.student_cosmetic_items(student_id, item_slug, source_type, metadata, acquired_at)\r\n  values(p_student_id, p_item_slug, 'purchase', jsonb_build_object('priceCoins', v_item.price_coins), v_now);\r\n\r\n  return jsonb_build_object('ok', true, 'itemSlug', v_item.slug, 'priceCoins', v_item.price_coins,\r\n    'wallet', jsonb_build_object('balance', v_wallet.balance, 'totalEarned', v_wallet.total_earned, 'totalSpent', v_wallet.total_spent),\r\n    'ledgerEntry', jsonb_build_object('id', v_entry.id, 'sourceType', v_entry.source_type, 'sourceRef', v_entry.source_ref,\r\n      'coinsDelta', v_entry.coins_delta, 'label', v_entry.label, 'description', v_entry.description, 'occurredAt', v_entry.occurred_at));\r\nend;\r\n$function$\n",
+    "prosecdef": true,
+    "proconfig": [
+      "search_path=public, gamification, core"
+    ],
+    "proacl": "{postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+    "owner": "postgres",
+    "acl": [
+      {
+        "role": "postgres",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "authenticated",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "service_role",
+        "privilege": "EXECUTE",
+        "grantable": false
+      }
+    ]
+  },
+  {
+    "signature": "restore_payment(uuid)",
+    "definition": "CREATE OR REPLACE FUNCTION public.restore_payment(payment_id uuid)\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\r\nBEGIN\r\n  UPDATE payments\r\n  SET deleted_at = NULL\r\n  WHERE id = payment_id AND deleted_at IS NOT NULL;\r\n  \r\n  RETURN FOUND;\r\nEND;\r\n$function$\n",
+    "prosecdef": true,
+    "proconfig": null,
+    "proacl": "{postgres=X/postgres,=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+    "owner": "postgres",
+    "acl": [
+      {
+        "role": "postgres",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "PUBLIC",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "anon",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "authenticated",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "service_role",
+        "privilege": "EXECUTE",
+        "grantable": false
+      }
+    ]
+  },
+  {
+    "signature": "restore_payment(bigint)",
+    "definition": "CREATE OR REPLACE FUNCTION public.restore_payment(payment_id bigint)\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\r\nBEGIN\r\n  UPDATE payments\r\n  SET deleted_at = NULL\r\n  WHERE id = payment_id AND deleted_at IS NOT NULL;\r\n  \r\n  RETURN FOUND;\r\nEND;\r\n$function$\n",
+    "prosecdef": true,
+    "proconfig": null,
+    "proacl": "{postgres=X/postgres,=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+    "owner": "postgres",
+    "acl": [
+      {
+        "role": "postgres",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "PUBLIC",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "anon",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "authenticated",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "service_role",
+        "privilege": "EXECUTE",
+        "grantable": false
+      }
+    ]
+  },
+  {
+    "signature": "soft_delete_payment(uuid)",
+    "definition": "CREATE OR REPLACE FUNCTION public.soft_delete_payment(payment_id uuid)\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\r\nBEGIN\r\n  UPDATE payments\r\n  SET deleted_at = NOW()\r\n  WHERE id = payment_id AND deleted_at IS NULL;\r\n  \r\n  RETURN FOUND;\r\nEND;\r\n$function$\n",
+    "prosecdef": true,
+    "proconfig": null,
+    "proacl": "{postgres=X/postgres,=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+    "owner": "postgres",
+    "acl": [
+      {
+        "role": "postgres",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "PUBLIC",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "anon",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "authenticated",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "service_role",
+        "privilege": "EXECUTE",
+        "grantable": false
+      }
+    ]
+  },
+  {
+    "signature": "soft_delete_payment(bigint)",
+    "definition": "CREATE OR REPLACE FUNCTION public.soft_delete_payment(payment_id bigint)\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\r\nBEGIN\r\n  UPDATE payments\r\n  SET deleted_at = NOW()\r\n  WHERE id = payment_id AND deleted_at IS NULL;\r\n  \r\n  RETURN FOUND;\r\nEND;\r\n$function$\n",
+    "prosecdef": true,
+    "proconfig": null,
+    "proacl": "{postgres=X/postgres,=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+    "owner": "postgres",
+    "acl": [
+      {
+        "role": "postgres",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "PUBLIC",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "anon",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "authenticated",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "service_role",
+        "privilege": "EXECUTE",
+        "grantable": false
+      }
+    ]
+  },
+  {
+    "signature": "unequip_gamification_item(uuid,text)",
+    "definition": "CREATE OR REPLACE FUNCTION public.unequip_gamification_item(p_student_id uuid, p_category text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public', 'gamification', 'core'\nAS $function$\r\ndeclare\r\n  v_student_owner uuid;\r\n  v_now timestamptz := timezone('utc', now());\r\nbegin\r\n  if auth.uid() is null then raise exception 'not_allowed'; end if;\r\n  select s.user_id\r\n  into v_student_owner\r\n  from core.students s\r\n  where s.id = p_student_id;\r\n\r\n  if v_student_owner is null then\r\n    raise exception 'student_not_found';\r\n  end if;\r\n\r\n  if not (coalesce(public.is_admin_or_trainer(), false) or coalesce(v_student_owner = auth.uid(), false)) then\r\n    raise exception 'not_allowed';\r\n  end if;\r\n\r\n  insert into gamification.student_cosmetic_equipment (\r\n    student_id,\r\n    updated_at\r\n  ) values (\r\n    p_student_id,\r\n    v_now\r\n  )\r\n  on conflict (student_id) do nothing;\r\n\r\n  if p_category = 'frame' then\r\n    update gamification.student_cosmetic_equipment\r\n    set frame_item_slug = null, updated_at = v_now\r\n    where student_id = p_student_id;\r\n  elsif p_category = 'background' then\r\n    update gamification.student_cosmetic_equipment\r\n    set background_item_slug = null, updated_at = v_now\r\n    where student_id = p_student_id;\r\n  elsif p_category = 'badge' then\r\n    update gamification.student_cosmetic_equipment\r\n    set badge_item_slug = null, updated_at = v_now\r\n    where student_id = p_student_id;\r\n  elsif p_category = 'effect' then\r\n    update gamification.student_cosmetic_equipment\r\n    set effect_item_slug = null, updated_at = v_now\r\n    where student_id = p_student_id;\r\n  else\r\n    raise exception 'unsupported_category';\r\n  end if;\r\n\r\n  return jsonb_build_object(\r\n    'ok', true,\r\n    'category', p_category\r\n  );\r\nend;\r\n$function$\n",
+    "prosecdef": true,
+    "proconfig": [
+      "search_path=public, gamification, core"
+    ],
+    "proacl": "{postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+    "owner": "postgres",
+    "acl": [
+      {
+        "role": "postgres",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "authenticated",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "service_role",
+        "privilege": "EXECUTE",
+        "grantable": false
+      }
+    ]
+  }
+]

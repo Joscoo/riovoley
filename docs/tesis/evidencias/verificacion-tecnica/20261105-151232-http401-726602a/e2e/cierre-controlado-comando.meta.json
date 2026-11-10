@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/android/reproduce-notification-signout.cjs"
+  ],
+  "start": "2026-11-05T15:24:06.433Z",
+  "end": "2026-11-05T15:24:15.753Z",
+  "durationSeconds": 9.32,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

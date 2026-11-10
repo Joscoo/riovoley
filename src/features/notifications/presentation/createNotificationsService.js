@@ -4,8 +4,8 @@ import { SupabaseNotificationsRepository } from '../infrastructure/repositories/
 export const createNotificationsService = (repository = new SupabaseNotificationsRepository()) => {
   const useCases = createNotificationsUseCases(repository);
 
-  const loadBellNotifications = async ({ userId, userRole } = {}) => {
-    return useCases.loadBellNotificationsUseCase.execute({ userId, userRole });
+  const loadBellNotifications = async ({ userId, userRole, signal } = {}) => {
+    return useCases.loadBellNotificationsUseCase.execute({ userId, userRole, ...(signal ? { signal } : {}) });
   };
 
   const markBellNotificationRead = async ({ userId, notificationId, category }) => {

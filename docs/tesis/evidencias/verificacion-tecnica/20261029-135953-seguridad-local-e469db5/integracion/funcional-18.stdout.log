@@ -1,0 +1,120 @@
+TAP version 13
+# Subtest: G01: servicio y repositorio real persisten perfil inicial
+ok 1 - G01: servicio y repositorio real persisten perfil inicial
+  ---
+  duration_ms: 615.0145
+  type: 'test'
+  ...
+# Subtest: G02: asistencia real acumula 35 XP y queda en PostgreSQL
+ok 2 - G02: asistencia real acumula 35 XP y queda en PostgreSQL
+  ---
+  duration_ms: 366.4431
+  type: 'test'
+  ...
+# Subtest: G03: registro repetido de asistencia no duplica sus movimientos XP
+ok 3 - G03: registro repetido de asistencia no duplica sus movimientos XP
+  ---
+  duration_ms: 337.0666
+  type: 'test'
+  ...
+# Subtest: G04: pago real sincroniza historial XP de mensualidad
+ok 4 - G04: pago real sincroniza historial XP de mensualidad
+  ---
+  duration_ms: 386.4248
+  type: 'test'
+  ...
+# Subtest: G05: modificar pago mantiene un único movimiento de su fuente
+ok 5 - G05: modificar pago mantiene un único movimiento de su fuente
+  ---
+  duration_ms: 640.9466
+  type: 'test'
+  ...
+# Subtest: G06: evaluación física real incorpora su XP e incrementa nivel
+ok 6 - G06: evaluación física real incorpora su XP e incrementa nivel
+  ---
+  duration_ms: 380.6352
+  type: 'test'
+  ...
+# Subtest: G07: sincronización repetida conserva suma XP, saldo e historial
+ok 7 - G07: sincronización repetida conserva suma XP, saldo e historial
+  ---
+  duration_ms: 338.5605
+  type: 'test'
+  ...
+# Subtest: G08: logros, retos y clasificación se persisten con actividad real
+ok 8 - G08: logros, retos y clasificación se persisten con actividad real
+  ---
+  duration_ms: 46.5717
+  type: 'test'
+  ...
+# Subtest: G09: recompensa de login real entrega 8 XP una sola vez al día
+ok 9 - G09: recompensa de login real entrega 8 XP una sola vez al día
+  ---
+  duration_ms: 118.0809
+  type: 'test'
+  ...
+# Subtest: G10: identidad y avatar del atleta se guardan por sesión real
+ok 10 - G10: identidad y avatar del atleta se guardan por sesión real
+  ---
+  duration_ms: 273.3942
+  type: 'test'
+  ...
+# Subtest: G11: compra RPC descuenta monedas y persiste inventario
+ok 11 - G11: compra RPC descuenta monedas y persiste inventario
+  ---
+  duration_ms: 320.7986
+  type: 'test'
+  ...
+# Subtest: G12: equipar y desequipar usan las RPC reales
+ok 12 - G12: equipar y desequipar usan las RPC reales
+  ---
+  duration_ms: 90.2382
+  type: 'test'
+  ...
+# Subtest: G13: resincronizar conserva gasto, compra e integridad del saldo real
+ok 13 - G13: resincronizar conserva gasto, compra e integridad del saldo real
+  ---
+  duration_ms: 510.0465
+  type: 'test'
+  ...
+# Subtest: G14: tres días hábiles consecutivos quedan reflejados en la racha persistida
+ok 14 - G14: tres días hábiles consecutivos quedan reflejados en la racha persistida
+  ---
+  duration_ms: 1070.0063
+  type: 'test'
+  ...
+# Subtest: G15: título desbloqueado y modelo de avatar se persisten por propietario
+ok 15 - G15: título desbloqueado y modelo de avatar se persisten por propietario
+  ---
+  duration_ms: 508.009
+  type: 'test'
+  ...
+# {"label":"integracion/campana-fixture-1793284326804","exitCode":0,"durationSeconds":0.299,"stderrTail":""}
+# Subtest: G16: campaña activa de fixture persiste progreso y finalización reales
+ok 16 - G16: campaña activa de fixture persiste progreso y finalización reales
+  ---
+  duration_ms: 975.5475
+  type: 'test'
+  ...
+# Subtest: G17: correo de recuperación se entrega en SMTP/Mailpit local sin cambiar contraseña
+ok 17 - G17: correo de recuperación se entrega en SMTP/Mailpit local sin cambiar contraseña
+  ---
+  duration_ms: 31.3892
+  type: 'test'
+  ...
+# Subtest: G18: clasificación de categoría conserva posiciones, orden y filtro reales
+ok 18 - G18: clasificación de categoría conserva posiciones, orden y filtro reales
+  ---
+  duration_ms: 612.6897
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8150.0854
+

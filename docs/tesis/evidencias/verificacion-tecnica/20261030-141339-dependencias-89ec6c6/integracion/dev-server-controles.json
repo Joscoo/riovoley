@@ -1,0 +1,23 @@
+{
+  "checks": [
+    {
+      "name": "HTML real de CRA sobre loopback",
+      "state": "APROBADO",
+      "status": 200
+    },
+    {
+      "name": "Bundle servido por el middleware actualizado",
+      "state": "APROBADO",
+      "status": 200,
+      "bytes": 5927475
+    },
+    {
+      "name": "Canal WebSocket HMR real",
+      "state": "APROBADO",
+      "messageType": "hot"
+    }
+  ],
+  "executed": 3,
+  "passed": 3,
+  "failed": 0
+}

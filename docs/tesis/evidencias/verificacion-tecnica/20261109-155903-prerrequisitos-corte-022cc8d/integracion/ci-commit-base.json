@@ -1,0 +1,30 @@
+{
+  "checkedAt": "2026-11-09T15:51:56.727Z",
+  "commit": "022cc8d559eff2ba7d25c2227ea830bcf873cb30",
+  "runId": 42648647740,
+  "conclusion": "success",
+  "url": "https://github.com/Joscoo/riovoley/actions/runs/42648647740",
+  "jest": {
+    "passed": 434,
+    "total": 434,
+    "suites": 91
+  },
+  "nodeTestGroups": {
+    "Edge authorization and reporting contracts (synthetic clients; no provider credentials)": 35,
+    "Backup and restore guards (32 cases; no database or provider access)": 32,
+    "PII recovery and APK environment guards (synthetic inputs only)": 10,
+    "Configuration and offline Android guards (synthetic; no remote writes)": 26,
+    "Provider request and local Android build guards (17 synthetic cases; no external calls)": 17,
+    "Android offline route guards (10 synthetic cases; no device or database)": 10,
+    "OTA diagnostics production guards (4 synthetic cases; no providers)": 4,
+    "Auth observation privacy guards (6 synthetic cases; no credentials)": 6,
+    "Toolchain and production guards (explicit files; no database suite)": 76
+  },
+  "webBuildSucceeded": true,
+  "rootAuditTotalVulnerabilities": 0,
+  "edgeHandlersLocalProbeExecutedByCi": false,
+  "nativeAndroidBuildExecutedByCi": false,
+  "productionDeploymentPerformed": false,
+  "sealedEvidenceNotModified": true,
+  "logSha256": "674d657cc38648c72a1f4ab9dce545ae9aec0c67e446fa077e0da9f7e58df65b"
+}

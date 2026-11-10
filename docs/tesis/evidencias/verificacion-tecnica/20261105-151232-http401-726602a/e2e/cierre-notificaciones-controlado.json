@@ -1,0 +1,400 @@
+{
+  "at": "2026-11-05T15:24:15.724Z",
+  "tests": 1,
+  "passed": 1,
+  "failed": 0,
+  "seconds": 3.021,
+  "heldRealResponses": [
+    {
+      "path": "/rest/v1/announcements",
+      "realStatus": 200,
+      "heldAtSeconds": 2.225
+    },
+    {
+      "path": "/rest/v1/announcements",
+      "realStatus": 200,
+      "heldAtSeconds": 2.254
+    }
+  ],
+  "responses": [
+    {
+      "path": "/rest/v1/rpc/check_login_allowed",
+      "status": 200,
+      "method": "POST",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.872,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/auth/v1/token",
+      "status": 200,
+      "method": "POST",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.906,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.998,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.996,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/rpc/claim_daily_login_reward",
+      "status": 200,
+      "method": "POST",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.009,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.112,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/rpc/record_login_attempt",
+      "status": 204,
+      "method": "POST",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.11,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.123,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.125,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.142,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.154,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.156,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.158,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.159,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.155,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.16,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 204,
+      "method": "PATCH",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.158,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.179,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.173,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.191,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.202,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.204,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.208,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.208,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.237,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.232,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.236,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.255,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "HEAD",
+      "phaseAtStart": "logout:admin",
+      "startedSeconds": 2.584,
+      "phaseAtResponse": "logout:admin"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "logout:admin",
+      "startedSeconds": 2.586,
+      "phaseAtResponse": "logout:admin"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "logout:admin",
+      "startedSeconds": 2.587,
+      "phaseAtResponse": "logout:admin"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "logout:admin",
+      "startedSeconds": 2.589,
+      "phaseAtResponse": "logout:admin"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "HEAD",
+      "phaseAtStart": "logout:admin",
+      "startedSeconds": 2.589,
+      "phaseAtResponse": "logout:admin"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "logout:admin",
+      "startedSeconds": 2.592,
+      "phaseAtResponse": "logout:admin"
+    },
+    {
+      "path": "/rest/v1/payment_types",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "logout:admin",
+      "startedSeconds": 2.591,
+      "phaseAtResponse": "logout:admin"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "logout:admin",
+      "startedSeconds": 2.591,
+      "phaseAtResponse": "logout:admin"
+    },
+    {
+      "path": "/rest/v1/training_categories",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "logout:admin",
+      "startedSeconds": 2.593,
+      "phaseAtResponse": "logout:admin"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "logout:admin",
+      "startedSeconds": 2.594,
+      "phaseAtResponse": "logout:admin"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "logout:admin",
+      "startedSeconds": 2.595,
+      "phaseAtResponse": "logout:admin"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "logout:admin",
+      "startedSeconds": 2.623,
+      "phaseAtResponse": "logout:admin"
+    },
+    {
+      "path": "/auth/v1/logout",
+      "status": 204,
+      "method": "POST",
+      "phaseAtStart": "logout:admin",
+      "startedSeconds": 2.823,
+      "phaseAtResponse": "logout:admin"
+    },
+    {
+      "path": "/rest/v1/announcements",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.203,
+      "phaseAtResponse": "logged-out:admin"
+    },
+    {
+      "path": "/rest/v1/announcements",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 2.242,
+      "phaseAtResponse": "logged-out:admin"
+    },
+    {
+      "path": "/rest/v1/gamification_student_achievements",
+      "status": 401,
+      "method": "GET",
+      "phaseAtStart": "logged-out:admin",
+      "startedSeconds": 2.862,
+      "phaseAtResponse": "logged-out:admin",
+      "headerPresent": true,
+      "localAnonMatch": true,
+      "declaredRole": "anon",
+      "subjectPresent": false,
+      "signatureVerified": false,
+      "errorCode": "42501"
+    },
+    {
+      "path": "/rest/v1/gamification_student_achievements",
+      "status": 401,
+      "method": "GET",
+      "phaseAtStart": "logged-out:admin",
+      "startedSeconds": 2.862,
+      "phaseAtResponse": "logged-out:admin",
+      "headerPresent": true,
+      "localAnonMatch": true,
+      "declaredRole": "anon",
+      "subjectPresent": false,
+      "signatureVerified": false,
+      "errorCode": "42501"
+    }
+  ],
+  "intervention": "Se retuvo la entrega de respuestas GET announcements reales hasta completar logout y ausencia de token local. Sin modificar contenido, cabeceras de peticion ni logica del cliente.",
+  "browser": "Chromium escritorio con viewport movil; no es una nueva ejecucion Android",
+  "backend": "Auth/REST/PostgreSQL locales reales",
+  "newBuild": false,
+  "productionChanged": false,
+  "businessWrites": false,
+  "historical401DirectlyAttributed": false
+}

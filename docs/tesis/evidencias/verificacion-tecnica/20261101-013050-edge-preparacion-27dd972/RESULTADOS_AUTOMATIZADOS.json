@@ -1,0 +1,205 @@
+{
+  "generatedAt": "2026-11-01T01:58:24.225Z",
+  "unitContracts": {
+    "file": "unitarias/regresion-edge-definitiva.stdout.log",
+    "tests": 35,
+    "pass": 35,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 1721.6455,
+    "hookFailures": 0
+  },
+  "usersPushHttp": {
+    "file": "integracion/edge-http-pruebas-1793497535205.stdout.log",
+    "tests": 12,
+    "pass": 12,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 4589.021,
+    "hookFailures": 0
+  },
+  "reportingHttp": {
+    "file": "integracion/reportes-http-pruebas-1793497867190.stdout.log",
+    "tests": 9,
+    "pass": 9,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 1881.8212,
+    "hookFailures": 0
+  },
+  "googleAuthSdk": {
+    "cases": 1,
+    "pass": 1,
+    "fail": 0,
+    "transport": "OAuth simulado; SDK y firma reales"
+  },
+  "denoEntrypoints": {
+    "checked": 9,
+    "exitCode": 0
+  },
+  "returnJavaScriptBundles": {
+    "attempted": 9,
+    "passed": 9,
+    "typeCheck": false
+  },
+  "npmGraphAudit": {
+    "initialModerate": 1,
+    "finalFindings": 0,
+    "httpsModulesCovered": false
+  },
+  "attempts": [
+    {
+      "file": "integracion/edge-http-pruebas-1793496861549.stdout.log",
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "hookFailures": 0
+    },
+    {
+      "file": "integracion/edge-http-pruebas-1793497535205.stdout.log",
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "hookFailures": 0
+    },
+    {
+      "file": "integracion/edge-http-pruebas.stdout.log",
+      "tests": 12,
+      "pass": 0,
+      "fail": 12,
+      "hookFailures": 12
+    },
+    {
+      "file": "integracion/reportes-http-pruebas-1793497177572.stdout.log",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "hookFailures": 0
+    },
+    {
+      "file": "integracion/reportes-http-pruebas-1793497541744.stdout.log",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "hookFailures": 0
+    },
+    {
+      "file": "integracion/reportes-http-pruebas-1793497867190.stdout.log",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "hookFailures": 0
+    },
+    {
+      "file": "integracion/reportes-http-pruebas.stdout.log",
+      "tests": 9,
+      "pass": 0,
+      "fail": 9,
+      "hookFailures": 9
+    },
+    {
+      "file": "unitarias/contratos-edge-preparacion.stdout.log",
+      "tests": 20,
+      "pass": 20,
+      "fail": 0,
+      "hookFailures": 0
+    },
+    {
+      "file": "unitarias/regresion-edge-cierre.stdout.log",
+      "tests": 33,
+      "pass": 33,
+      "fail": 0,
+      "hookFailures": 0
+    },
+    {
+      "file": "unitarias/regresion-edge-definitiva.stdout.log",
+      "tests": 35,
+      "pass": 35,
+      "fail": 0,
+      "hookFailures": 0
+    },
+    {
+      "file": "unitarias/regresion-edge-final.stdout.log",
+      "tests": 13,
+      "pass": 13,
+      "fail": 0,
+      "hookFailures": 0
+    },
+    {
+      "file": "unitarias/regresion-edge-rojo.stdout.log",
+      "tests": 7,
+      "pass": 1,
+      "fail": 6,
+      "hookFailures": 0
+    },
+    {
+      "file": "unitarias/regresion-edge-verde.stdout.log",
+      "tests": 10,
+      "pass": 6,
+      "fail": 4,
+      "hookFailures": 0
+    }
+  ],
+  "npmAudits": [
+    {
+      "tree": "raiz",
+      "exitCode": 0,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "dependencies": {
+        "prod": 1419,
+        "dev": 5,
+        "optional": 14,
+        "peer": 2,
+        "peerOptional": 0,
+        "total": 1439
+      }
+    },
+    {
+      "tree": "functions",
+      "exitCode": 0,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "dependencies": {
+        "prod": 80,
+        "dev": 251,
+        "optional": 27,
+        "peer": 0,
+        "peerOptional": 0,
+        "total": 330
+      }
+    },
+    {
+      "tree": "riovoley",
+      "exitCode": 0,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "dependencies": {
+        "prod": 6,
+        "dev": 96,
+        "optional": 0,
+        "peer": 0,
+        "peerOptional": 0,
+        "total": 101
+      }
+    }
+  ]
+}

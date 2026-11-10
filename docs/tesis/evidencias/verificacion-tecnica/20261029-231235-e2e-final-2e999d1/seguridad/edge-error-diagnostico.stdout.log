@@ -1,0 +1,9 @@
+Serving functions on http://127.0.0.1:55321/functions/v1/<function-name>
+ - http://127.0.0.1:55321/functions/v1/delete-auth-user
+ - http://127.0.0.1:55321/functions/v1/delete-report-run
+ - http://127.0.0.1:55321/functions/v1/generate-report
+ - http://127.0.0.1:55321/functions/v1/generate-scheduled-reports
+ - http://127.0.0.1:55321/functions/v1/send-email
+... and 4 more functions
+Using supabase-edge-runtime-1.77.8 (compatible with Deno v2.1.4)
+

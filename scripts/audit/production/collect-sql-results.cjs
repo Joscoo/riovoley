@@ -1,0 +1,23 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto');
+const h=require('./sql-context.cjs'),{connectLab}=require('./sql-lab.cjs');
+const walk=(dir)=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(dir,e.name)):[path.join(dir,e.name)]);
+const sha=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+async function collect(){
+ const c=h.read(),db=await connectLab();try{
+ const functions=(await db.query("SELECT n.nspname AS schema,p.proname AS name,pg_get_function_identity_arguments(p.oid) AS args,pg_get_userbyid(p.proowner) AS owner,p.prosecdef AS security_definer,p.proconfig AS config,has_function_privilege('anon',p.oid,'EXECUTE') AS anon_execute,has_function_privilege('authenticated',p.oid,'EXECUTE') AS authenticated_execute FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname=ANY($1) AND p.prokind='f' AND NOT EXISTS(SELECT 1 FROM pg_depend d WHERE d.classid='pg_proc'::regclass AND d.objid=p.oid AND d.deptype='e') ORDER BY n.nspname,p.proname,pg_get_function_identity_arguments(p.oid)",[JSON.parse(fs.readFileSync(path.join(h.privateDir,'catalog.json'))).schemas])).rows;
+ const rls=(await db.query("SELECT n.nspname AS schema,c.relname AS name,c.relrowsecurity AS rls,c.relforcerowsecurity AS forced,(SELECT count(*)::int FROM pg_policy p WHERE p.polrelid=c.oid) AS policies FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='gamification' AND c.relname IN ('xp_ledger','login_rewards','currency_wallets','currency_ledger') ORDER BY c.relname")).rows;
+ h.write('seguridad/metadatos-locales-finales.json',{observedAt:new Date().toISOString(),database:c.database,version:(await db.query('SHOW server_version')).rows[0].server_version,functions,rls,mutableSearchPaths:functions.filter(f=>!f.config?.some(x=>x.startsWith('search_path='))).length,anonSecurityDefiner:functions.filter(f=>f.anon_execute&&f.security_definer).length,authentication:'JWT SQL simulado; no Auth HTTP'});
+ }finally{await db.end();}
+ const results=[];
+ for(const file of walk(c.evidence).filter(f=>f.endsWith('.stdout.log'))){const raw=fs.readFileSync(file,'utf8');if(!raw.startsWith('TAP version'))continue;const number=key=>{const m=raw.match(new RegExp('^# '+key+' (\\d+(?:\\.\\d+)?)$','m'));return m?Number(m[1]):null;};results.push({file:path.relative(c.evidence,file).replaceAll('\\','/'),tests:number('tests'),pass:number('pass'),fail:number('fail'),skipped:number('skipped'),cancelled:number('cancelled'),durationMs:number('duration_ms'),hookFailures:(raw.match(/failureType: 'hookFailed'/g)||[]).length});}
+ const final=results.find(r=>r.file==='integracion/ensayo-07-propietario.stdout.log'),contracts=results.find(r=>r.file==='unitarias/contratos-cierre.stdout.log');assert.equal(final.tests,29);assert.equal(final.pass,29);assert.equal(final.fail,0);assert.equal(contracts.tests,6);assert.equal(contracts.pass,6);
+ h.write('RESULTADOS_AUTOMATIZADOS.json',{generatedAt:new Date().toISOString(),finalIntegration:final,finalToolContracts:contracts,attempts:results});
+ for(const [input,out] of [['final-cloud-read.json','lectura-institucional-final.json'],['final-advisors.json','advisores-institucionales-finales.json'],['edge.json','edge-inventario.json']])h.write('seguridad/'+out,JSON.parse(fs.readFileSync(path.join(h.privateDir,input))));
+ const packet=JSON.parse(fs.readFileSync(path.join(h.privateDir,'packet.json'))),back=packet.forward.replace(/_riovoley_security_production_proposal\.sql$/,'_riovoley_security_return_proposal.sql');
+ const sources=[...fs.readdirSync(__dirname).filter(f=>/^(?:sql-|.*sql|.*sql-packet|collect-sql-results)/.test(f)&&/\.(cjs|sql)$/.test(f)).map(f=>path.join(__dirname,f)),path.join(h.root,'tests/integration/production-sql-packet.test.cjs'),path.join(h.root,'tests/integration/production-sql.local.test.cjs'),path.join(h.root,packet.forward),path.join(h.root,back)];
+ h.write('FUENTES_EVALUADAS.json',{commit:c.commit,note:'Snapshot de fuentes sin commit; el commit base no incluye los cambios de este expediente.',files:sources.map(file=>({file:path.relative(h.root,file).replaceAll('\\','/'),sha256:sha(file)}))});
+ const commands=walk(c.evidence).filter(f=>f.endsWith('.meta.json')).map(f=>({file:path.relative(c.evidence,f).replaceAll('\\','/'),...JSON.parse(fs.readFileSync(f))}));h.write('COMANDOS.json',commands);
+ console.log(JSON.stringify({finalIntegration:final.tests,passed:final.pass,toolContracts:contracts.tests,attempts:results.length}));
+}
+if(require.main===module)collect().catch(e=>{console.error(e);process.exitCode=1;});

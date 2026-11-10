@@ -1,0 +1,95 @@
+[
+  {
+    "signature": "handle_new_user()",
+    "definition": "CREATE OR REPLACE FUNCTION public.handle_new_user()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\r\ndeclare\r\n  v_role_text text;\r\n  v_role profiles.user_profiles.role%TYPE;\r\nbegin\r\n  v_role_text := lower(trim(coalesce(new.raw_user_meta_data->>'role', '')));\r\n\r\n  v_role := case\r\n    when v_role_text = 'administrador' then 'administrador'\r\n    when v_role_text = 'entrenador' then 'entrenador'\r\n    when v_role_text = 'estudiante' then 'estudiante'\r\n    when v_role_text = 'usuario' then 'usuario'\r\n    else 'usuario'\r\n  end;\r\n\r\n  insert into profiles.user_profiles (id, full_name, role)\r\n  values (\r\n    new.id,\r\n    new.raw_user_meta_data->>'full_name',\r\n    v_role\r\n  )\r\n  on conflict (id) do update\r\n    set full_name = excluded.full_name,\r\n        role = excluded.role;\r\n\r\n  return new;\r\nend;\r\n$function$\n",
+    "acl": [
+      {
+        "role": "postgres",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "PUBLIC",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "anon",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "authenticated",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "service_role",
+        "privilege": "EXECUTE",
+        "grantable": false
+      }
+    ]
+  },
+  {
+    "signature": "is_admin_or_trainer()",
+    "definition": "CREATE OR REPLACE FUNCTION public.is_admin_or_trainer()\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\r\nbegin\r\n  return exists (\r\n    select 1\r\n    from core.users u\r\n    where u.id = auth.uid()\r\n      and u.role in ('administrador', 'admin', 'entrenador')\r\n  );\r\nend;\r\n$function$\n",
+    "acl": [
+      {
+        "role": "postgres",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "PUBLIC",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "anon",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "authenticated",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "service_role",
+        "privilege": "EXECUTE",
+        "grantable": false
+      }
+    ]
+  },
+  {
+    "signature": "is_admin()",
+    "definition": "CREATE OR REPLACE FUNCTION public.is_admin()\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\r\nbegin\r\n  return exists (\r\n    select 1\r\n    from core.users u\r\n    where u.id = auth.uid()\r\n      and u.role in ('administrador', 'admin')\r\n  );\r\nend;\r\n$function$\n",
+    "acl": [
+      {
+        "role": "postgres",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "PUBLIC",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "anon",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "authenticated",
+        "privilege": "EXECUTE",
+        "grantable": false
+      },
+      {
+        "role": "service_role",
+        "privilege": "EXECUTE",
+        "grantable": false
+      }
+    ]
+  }
+]

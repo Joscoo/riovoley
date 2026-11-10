@@ -1,0 +1,57 @@
+{
+  "recordedAt": "2026-11-09T15:37:01.709Z",
+  "runs": [
+    {
+      "recordedAt": "2026-11-09T15:29:08.365Z",
+      "phase": "red",
+      "resultFile": "integracion/casos-red.json",
+      "casesMetaFile": "integracion/edge-cases-red.meta.json",
+      "serverMetaFile": "integracion/edge-server-red.meta.json",
+      "executed": 2,
+      "passed": 0,
+      "failed": 2,
+      "exitCode": 1,
+      "durationSeconds": 1.842,
+      "cleanupPassed": true
+    },
+    {
+      "recordedAt": "2026-11-09T15:29:43.337Z",
+      "phase": "green",
+      "resultFile": "integracion/casos-green.json",
+      "casesMetaFile": "integracion/edge-cases-green.meta.json",
+      "serverMetaFile": "integracion/edge-server-green.meta.json",
+      "executed": 57,
+      "passed": 57,
+      "failed": 0,
+      "exitCode": 0,
+      "durationSeconds": 2.607,
+      "cleanupPassed": true
+    },
+    {
+      "recordedAt": "2026-11-09T15:33:12.816Z",
+      "phase": "green",
+      "resultFile": "integracion/casos-green-1794238392821-383d5a.json",
+      "casesMetaFile": "integracion/edge-cases-green-1794238390727.meta.json",
+      "serverMetaFile": "integracion/edge-server-green-1794238389962.meta.json",
+      "executed": 57,
+      "passed": 57,
+      "failed": 0,
+      "exitCode": 0,
+      "durationSeconds": 2.114,
+      "cleanupPassed": true
+    }
+  ],
+  "selected": {
+    "recordedAt": "2026-11-09T15:33:12.816Z",
+    "phase": "green",
+    "resultFile": "integracion/casos-green-1794238392821-383d5a.json",
+    "casesMetaFile": "integracion/edge-cases-green-1794238390727.meta.json",
+    "serverMetaFile": "integracion/edge-server-green-1794238389962.meta.json",
+    "executed": 57,
+    "passed": 57,
+    "failed": 0,
+    "exitCode": 0,
+    "durationSeconds": 2.114,
+    "cleanupPassed": true
+  }
+}

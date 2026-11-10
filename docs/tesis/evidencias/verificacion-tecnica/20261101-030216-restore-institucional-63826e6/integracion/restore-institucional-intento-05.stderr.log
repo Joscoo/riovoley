@@ -1,0 +1,2 @@
+{"stage":"restauracion-compatible_PERMISSION_DENIED","toolExitCode":1,"errorType":"Error","frames":["    at run (D:\\Riovoley\\riovoley\\scripts\\production\\restore-isolated.cjs:42:864)","    at restore (D:\\Riovoley\\riovoley\\scripts\\production\\restore-isolated.cjs:54:2)","    at Object.<anonymous> (D:\\Riovoley\\riovoley\\scripts\\production\\restore-isolated.cjs:61:26)"],"rawDiagnosticsPublished":false}
+

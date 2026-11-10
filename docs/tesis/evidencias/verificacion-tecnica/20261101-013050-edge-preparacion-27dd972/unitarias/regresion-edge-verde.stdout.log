@@ -1,0 +1,129 @@
+TAP version 13
+# Subtest: relación uno a uno admite objeto y array unitario conservando identidad
+ok 1 - relación uno a uno admite objeto y array unitario conservando identidad
+  ---
+  duration_ms: 0.9929
+  type: 'test'
+  ...
+# Subtest: ausencia de relación devuelve null
+ok 2 - ausencia de relación devuelve null
+  ---
+  duration_ms: 0.2133
+  type: 'test'
+  ...
+# Subtest: multiplicidad inesperada se rechaza sin seleccionar un usuario arbitrario
+ok 3 - multiplicidad inesperada se rechaza sin seleccionar un usuario arbitrario
+  ---
+  duration_ms: 0.5637
+  type: 'test'
+  ...
+# Subtest: relaciones anidadas de pago conservan usuario con objetos o arrays
+ok 4 - relaciones anidadas de pago conservan usuario con objetos o arrays
+  ---
+  duration_ms: 0.202
+  type: 'test'
+  ...
+# Subtest: recordatorios sin secreto configurado se bloquean antes de consultar datos
+ok 5 - recordatorios sin secreto configurado se bloquean antes de consultar datos
+  ---
+  duration_ms: 289.7733
+  type: 'test'
+  ...
+# Subtest: recordatorios con secreto incorrecto devuelven403 sin consultas
+ok 6 - recordatorios con secreto incorrecto devuelven403 sin consultas
+  ---
+  duration_ms: 54.2781
+  type: 'test'
+  ...
+# Subtest: reportes rechazan personal suspendido antes de operar con service_role
+not ok 7 - reportes rechazan personal suspendido antes de operar con service_role
+  ---
+  duration_ms: 452.3552
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\reporting-edge.test.cjs:13:1'
+  failureType: 'testCodeFailure'
+  error: '(0 , pdf_lib_1_17_1_1.rgb) is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    evalmachine.<anonymous>:550:36
+    load (D:\Riovoley\riovoley\tests\unit\reporting-edge.test.cjs:10:172)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\reporting-edge.test.cjs:14:22)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.start (node:internal/test_runner/test:1191:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17)
+  ...
+# Subtest: reportes conservan autorización de personal activo: administrador
+not ok 8 - reportes conservan autorización de personal activo: administrador
+  ---
+  duration_ms: 144.2751
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\reporting-edge.test.cjs:17:50'
+  failureType: 'testCodeFailure'
+  error: '(0 , pdf_lib_1_17_1_1.rgb) is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    evalmachine.<anonymous>:550:36
+    load (D:\Riovoley\riovoley\tests\unit\reporting-edge.test.cjs:10:172)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\reporting-edge.test.cjs:18:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)
+  ...
+# Subtest: reportes conservan autorización de personal activo: entrenador
+not ok 9 - reportes conservan autorización de personal activo: entrenador
+  ---
+  duration_ms: 106.5379
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\reporting-edge.test.cjs:17:50'
+  failureType: 'testCodeFailure'
+  error: '(0 , pdf_lib_1_17_1_1.rgb) is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    evalmachine.<anonymous>:550:36
+    load (D:\Riovoley\riovoley\tests\unit\reporting-edge.test.cjs:10:172)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\reporting-edge.test.cjs:18:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: checksum SHA256 usa los bytes de la subvista, sin prefijo ni sufijo
+not ok 10 - checksum SHA256 usa los bytes de la subvista, sin prefijo ni sufijo
+  ---
+  duration_ms: 112.5569
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\reporting-edge.test.cjs:20:1'
+  failureType: 'testCodeFailure'
+  error: '(0 , pdf_lib_1_17_1_1.rgb) is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    evalmachine.<anonymous>:550:36
+    load (D:\Riovoley\riovoley\tests\unit\reporting-edge.test.cjs:10:172)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\reporting-edge.test.cjs:21:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 6
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1634.4871
+

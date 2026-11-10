@@ -1,0 +1,10 @@
+{
+  "origin": "Funciones auth.uid/role/jwt copiadas como DDL del Supabase local verificado; tabla auth.users mínima sin filas institucionales.",
+  "functions": [
+    "CREATE OR REPLACE FUNCTION auth.uid()",
+    "CREATE OR REPLACE FUNCTION auth.role()",
+    "CREATE OR REPLACE FUNCTION auth.jwt()"
+  ],
+  "sessionValidation": false,
+  "httpAuthExercised": false
+}

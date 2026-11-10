@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/unit/pii-continuity.test.cjs"
+  ],
+  "start": "2026-11-01T16:36:20.847Z",
+  "end": "2026-11-01T16:36:21.335Z",
+  "durationSeconds": 0.488,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

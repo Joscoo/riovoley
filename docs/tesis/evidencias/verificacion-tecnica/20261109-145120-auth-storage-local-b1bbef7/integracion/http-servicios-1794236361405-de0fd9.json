@@ -1,0 +1,224 @@
+{
+  "requests": [
+    {
+      "at": "2026-11-09T14:59:19.377Z",
+      "method": "POST",
+      "path": "/auth/v1/admin/users",
+      "status": 200,
+      "durationMs": 95
+    },
+    {
+      "at": "2026-11-09T14:59:19.467Z",
+      "method": "POST",
+      "path": "/auth/v1/admin/users",
+      "status": 200,
+      "durationMs": 86
+    },
+    {
+      "at": "2026-11-09T14:59:19.495Z",
+      "method": "POST",
+      "path": "/storage/v1/bucket",
+      "status": 200,
+      "durationMs": 25
+    },
+    {
+      "at": "2026-11-09T14:59:19.545Z",
+      "method": "POST",
+      "path": "/storage/v1/object/rv-gate-20261109145120-a0e62d-a/baseline.bin",
+      "status": 200,
+      "durationMs": 48
+    },
+    {
+      "at": "2026-11-09T14:59:19.568Z",
+      "method": "POST",
+      "path": "/storage/v1/bucket",
+      "status": 200,
+      "durationMs": 23
+    },
+    {
+      "at": "2026-11-09T14:59:19.603Z",
+      "method": "POST",
+      "path": "/storage/v1/object/rv-gate-20261109145120-a0e62d-b/baseline.bin",
+      "status": 200,
+      "durationMs": 34
+    },
+    {
+      "at": "2026-11-09T14:59:19.676Z",
+      "method": "POST",
+      "path": "/auth/v1/token",
+      "status": 200,
+      "durationMs": 72
+    },
+    {
+      "at": "2026-11-09T14:59:19.755Z",
+      "method": "POST",
+      "path": "/auth/v1/token",
+      "status": 200,
+      "durationMs": 77
+    },
+    {
+      "at": "2026-11-09T14:59:19.778Z",
+      "method": "GET",
+      "path": "/storage/v1/object/rv-gate-20261109145120-a0e62d-a/baseline.bin",
+      "status": 200,
+      "durationMs": 22
+    },
+    {
+      "at": "2026-11-09T14:59:20.190Z",
+      "method": "POST",
+      "path": "/auth/v1/token",
+      "status": 500,
+      "durationMs": 77
+    },
+    {
+      "at": "2026-11-09T14:59:20.245Z",
+      "method": "POST",
+      "path": "/auth/v1/token",
+      "status": 500,
+      "durationMs": 54
+    },
+    {
+      "at": "2026-11-09T14:59:20.253Z",
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200,
+      "durationMs": 7
+    },
+    {
+      "at": "2026-11-09T14:59:20.269Z",
+      "method": "DELETE",
+      "path": "/auth/v1/admin/users/[fixture]",
+      "status": 500,
+      "durationMs": 15
+    },
+    {
+      "at": "2026-11-09T14:59:20.346Z",
+      "method": "POST",
+      "path": "/auth/v1/token",
+      "status": 200,
+      "durationMs": 76
+    },
+    {
+      "at": "2026-11-09T14:59:20.356Z",
+      "method": "POST",
+      "path": "/storage/v1/object/rv-gate-20261109145120-a0e62d-a/new.bin",
+      "status": 500,
+      "durationMs": 10
+    },
+    {
+      "at": "2026-11-09T14:59:20.430Z",
+      "method": "POST",
+      "path": "/storage/v1/object/rv-gate-20261109145120-a0e62d-a/baseline.bin",
+      "status": 500,
+      "durationMs": 73
+    },
+    {
+      "at": "2026-11-09T14:59:20.486Z",
+      "method": "DELETE",
+      "path": "/storage/v1/object/rv-gate-20261109145120-a0e62d-a",
+      "status": 500,
+      "durationMs": 34
+    },
+    {
+      "at": "2026-11-09T14:59:20.540Z",
+      "method": "POST",
+      "path": "/storage/v1/object/rv-gate-20261109145120-a0e62d-b/new.bin",
+      "status": 200,
+      "durationMs": 53
+    },
+    {
+      "at": "2026-11-09T14:59:20.559Z",
+      "method": "POST",
+      "path": "/storage/v1/object/list/rv-gate-20261109145120-a0e62d-a",
+      "status": 200,
+      "durationMs": 11
+    },
+    {
+      "at": "2026-11-09T14:59:20.585Z",
+      "method": "GET",
+      "path": "/storage/v1/object/rv-gate-20261109145120-a0e62d-a/baseline.bin",
+      "status": 200,
+      "durationMs": 25
+    },
+    {
+      "at": "2026-11-09T14:59:20.839Z",
+      "method": "POST",
+      "path": "/auth/v1/token",
+      "status": 200,
+      "durationMs": 79
+    },
+    {
+      "at": "2026-11-09T14:59:20.882Z",
+      "method": "POST",
+      "path": "/storage/v1/object/rv-gate-20261109145120-a0e62d-a/new.bin",
+      "status": 200,
+      "durationMs": 42
+    },
+    {
+      "at": "2026-11-09T14:59:20.899Z",
+      "method": "GET",
+      "path": "/storage/v1/object/rv-gate-20261109145120-a0e62d-a/new.bin",
+      "status": 200,
+      "durationMs": 16
+    },
+    {
+      "at": "2026-11-09T14:59:20.937Z",
+      "method": "DELETE",
+      "path": "/storage/v1/object/rv-gate-20261109145120-a0e62d-a",
+      "status": 200,
+      "durationMs": 35
+    },
+    {
+      "at": "2026-11-09T14:59:20.956Z",
+      "method": "POST",
+      "path": "/storage/v1/bucket/rv-gate-20261109145120-a0e62d-a/empty",
+      "status": 200,
+      "durationMs": 18
+    },
+    {
+      "at": "2026-11-09T14:59:20.966Z",
+      "method": "DELETE",
+      "path": "/storage/v1/bucket/rv-gate-20261109145120-a0e62d-a",
+      "status": 200,
+      "durationMs": 9
+    },
+    {
+      "at": "2026-11-09T14:59:20.999Z",
+      "method": "DELETE",
+      "path": "/storage/v1/object/rv-gate-20261109145120-a0e62d-b",
+      "status": 200,
+      "durationMs": 32
+    },
+    {
+      "at": "2026-11-09T14:59:21.008Z",
+      "method": "POST",
+      "path": "/storage/v1/bucket/rv-gate-20261109145120-a0e62d-b/empty",
+      "status": 200,
+      "durationMs": 9
+    },
+    {
+      "at": "2026-11-09T14:59:21.021Z",
+      "method": "DELETE",
+      "path": "/storage/v1/bucket/rv-gate-20261109145120-a0e62d-b",
+      "status": 200,
+      "durationMs": 13
+    },
+    {
+      "at": "2026-11-09T14:59:21.038Z",
+      "method": "DELETE",
+      "path": "/auth/v1/admin/users/[fixture]",
+      "status": 200,
+      "durationMs": 17
+    },
+    {
+      "at": "2026-11-09T14:59:21.052Z",
+      "method": "DELETE",
+      "path": "/auth/v1/admin/users/[fixture]",
+      "status": 200,
+      "durationMs": 12
+    }
+  ],
+  "headersPublished": false,
+  "bodiesPublished": false,
+  "externalRequestsAllowed": false
+}

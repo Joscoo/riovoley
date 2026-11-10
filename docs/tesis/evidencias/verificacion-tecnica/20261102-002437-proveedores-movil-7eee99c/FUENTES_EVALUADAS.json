@@ -1,0 +1,71 @@
+{
+  "checkedAt": "2026-11-02T04:08:37.176Z",
+  "baseCommit": "7eee99c36e4125570351d7ffaec97f0cc8cd265c",
+  "localChangesPresent": true,
+  "productSourceChanged": false,
+  "removedFromGitButLocallyPreserved": [
+    ".env"
+  ],
+  "files": [
+    {
+      "file": ".github/workflows/technical-readiness.yml",
+      "sha256": "b24030b25be71fa5765cfdbd255286239183816cd801524c9fc2d10a19d60edb"
+    },
+    {
+      "file": "docs/produccion/RUNBOOK.md",
+      "sha256": "3b34b32748679b3a44da83e17c1ba51c425c2529b503c8f7739951e0edb0c170"
+    },
+    {
+      "file": "docs/superpowers/plans/2026-11-01-proveedores-movil.md",
+      "sha256": "cecbf2feeed01cb2a6d18568c1a59af7ea3c00e9324e5249740ca3164d6e602b"
+    },
+    {
+      "file": "scripts/audit/production/build-local-android.cjs",
+      "sha256": "e70c6757d59c512fcbc41c786e0ebfa83e85ff78222954a98a2a8e2e19c8797d"
+    },
+    {
+      "file": "scripts/audit/production/finalize-audit-close.cjs",
+      "sha256": "b442d4305f87655eb0337c51ce15555e6921eaac78cfa89b5398520bb7b53df7"
+    },
+    {
+      "file": "scripts/audit/production/inspect-cloud-config-names.cjs",
+      "sha256": "d3d92b100bbbe16a19c7eb60d1a69d5b73b1177a73074ddaaf52622bb7c006ab"
+    },
+    {
+      "file": "scripts/audit/production/inspect-local-android.cjs",
+      "sha256": "665aa3ac03b899bcce93ec0707bec3d40b5300ba1c8272eec864d28633daf05b"
+    },
+    {
+      "file": "scripts/audit/production/report-audit-close.cjs",
+      "sha256": "d8c8b7cfe8415e8ac8966e1a9d9cd80b670c94097b1b5b3ed55513ce8d039cfb"
+    },
+    {
+      "file": "scripts/audit/production/review-api-exposure.cjs",
+      "sha256": "d162e023044bf5ed5f896daf596b8bff00f7362c4a1b1d8a21472ed45e647d08"
+    },
+    {
+      "file": "scripts/production/check-providers.cjs",
+      "sha256": "e9453823375c6507c3ce5e3682407f1d19ad3a03b776623ae820aba0fec799e2"
+    },
+    {
+      "file": "scripts/production/check-providers.ps1",
+      "sha256": "168a48fb17b9b96914d25bb896ab237e7511e375529e9a0f71648458556ba506"
+    },
+    {
+      "file": "scripts/production/native-local-profile.cjs",
+      "sha256": "7f595a1a0002a42a9a27abc31f59c9f362a9c76e7febc3a0fe49c4253036e347"
+    },
+    {
+      "file": "scripts/production/provider-verification.cjs",
+      "sha256": "46c930698a5e30d2a2e5270e397da503ad3a6171adf64fd2d05a24115eaac40e"
+    },
+    {
+      "file": "tests/unit/native-local-profile.test.cjs",
+      "sha256": "e82b6916f06b52f4915c6d846d728bbbb9ceffc4ec2bbcfda96fdc3b8a0bb479"
+    },
+    {
+      "file": "tests/unit/provider-verification.test.cjs",
+      "sha256": "4bd592cc219c24895fe25a99369feb721bbf00da911e34f93b1ba4fef76bdca1"
+    }
+  ]
+}

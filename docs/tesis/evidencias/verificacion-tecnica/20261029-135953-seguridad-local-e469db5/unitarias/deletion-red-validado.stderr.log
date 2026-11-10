@@ -1,0 +1,58 @@
+FAIL src/features/user-management/infrastructure/repositories/deletion.security.test.js
+  × rechazo de autorización Auth deja intactas las tablas de usuario (23 ms)
+  × objetivo autorizado se comprueba antes de eliminar filas relacionadas
+
+  ● rechazo de autorización Auth deja intactas las tablas de usuario
+
+    expect(received).rejects.toThrow(expected)
+
+    Expected substring: "TARGET_NOT_ALLOWED"
+    Received message:   "_supabase.supabase.from(...).select is not a function"
+
+          282 |     const { data: targetUser, error: targetUserError } = await supabase
+          283 |       .from('users')
+        > 284 |       .select('id, role')
+              |        ^
+          285 |       .eq('id', userId)
+          286 |       .single();
+          287 |
+
+      at SupabaseUserManagementRepository.deleteUser (src/features/user-management/infrastructure/repositories/supabaseUserManagementRepository.js:284:8)
+      at Object.<anonymous> (src/features/user-management/infrastructure/repositories/deletion.security.test.js:12:54)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+      at Object.toThrow (node_modules/expect/build/index.js:285:22)
+      at Object.<anonymous> (src/features/user-management/infrastructure/repositories/deletion.security.test.js:12:99)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  ● objetivo autorizado se comprueba antes de eliminar filas relacionadas
+
+    TypeError: _supabase.supabase.from(...).select is not a function
+
+      282 |     const { data: targetUser, error: targetUserError } = await supabase
+      283 |       .from('users')
+    > 284 |       .select('id, role')
+          |        ^
+      285 |       .eq('id', userId)
+      286 |       .single();
+      287 |
+
+      at SupabaseUserManagementRepository.deleteUser (src/features/user-management/infrastructure/repositories/supabaseUserManagementRepository.js:284:8)
+      at Object.<anonymous> (src/features/user-management/infrastructure/repositories/deletion.security.test.js:19:47)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 2 total
+Snapshots:   0 total
+Time:        2.333 s
+Ran all test suites within paths "src/features/user-management/infrastructure/repositories/deletion.security.test.js".
+Test results written to: docs\tesis\evidencias\verificacion-tecnica\20261029-135953-seguridad-local-e469db5\unitarias\deletion-red-validado.json
+

@@ -1,0 +1,61 @@
+Creating an optimized production build...
+Compiled successfully.
+
+File sizes after gzip:
+
+  200.51 kB  build-safe\static\js\main.32b4fc8a.js
+  137.32 kB  build-safe\static\js\291.2c352763.chunk.js
+  103.56 kB  build-safe\static\js\743.989676f4.chunk.js
+  46.31 kB   build-safe\static\js\52.63675f85.chunk.js
+  33.51 kB   build-safe\static\js\265.19ca3487.chunk.js
+  27.14 kB   build-safe\static\js\881.e66168aa.chunk.js
+  25.8 kB    build-safe\static\js\681.29781cd0.chunk.js
+  24.92 kB   build-safe\static\css\main.97b2e3dc.css
+  22.02 kB   build-safe\static\js\806.c6f912c4.chunk.js
+  17.38 kB   build-safe\static\js\175.cd866987.chunk.js
+  16.81 kB   build-safe\static\js\51.cc0cc9d9.chunk.js
+  14.6 kB    build-safe\static\js\153.dc225f9a.chunk.js
+  13.9 kB    build-safe\static\js\327.0e93fae6.chunk.js
+  13.28 kB   build-safe\static\js\516.8bac3147.chunk.js
+  11.7 kB    build-safe\static\js\82.36c20ece.chunk.js
+  10.46 kB   build-safe\static\js\963.62ddf2ba.chunk.js
+  9.3 kB     build-safe\static\js\957.398978c0.chunk.js
+  8.88 kB    build-safe\static\js\377.f3c34884.chunk.js
+  8.5 kB     build-safe\static\js\116.8df0e7ae.chunk.js
+  7.39 kB    build-safe\static\js\331.1a781883.chunk.js
+  6.9 kB     build-safe\static\js\798.c3cc2e77.chunk.js
+  5.74 kB    build-safe\static\js\50.75319cb8.chunk.js
+  5.48 kB    build-safe\static\js\145.561b0767.chunk.js
+  5.45 kB    build-safe\static\js\982.7efc97a8.chunk.js
+  4.14 kB    build-safe\static\js\290.5d9df275.chunk.js
+  3.55 kB    build-safe\static\js\588.d203d85c.chunk.js
+  3.34 kB    build-safe\static\js\656.4627002a.chunk.js
+  3.14 kB    build-safe\static\js\365.0d26a9c0.chunk.js
+  3.1 kB     build-safe\static\js\601.8e665f71.chunk.js
+  2.94 kB    build-safe\static\js\126.97cd30b5.chunk.js
+  2.59 kB    build-safe\static\js\747.ebb1613e.chunk.js
+  2.35 kB    build-safe\static\js\323.2fddc578.chunk.js
+  2.16 kB    build-safe\static\js\245.901d1ce8.chunk.js
+  2.1 kB     build-safe\static\js\403.be88020a.chunk.js
+  2.01 kB    build-safe\static\js\275.a3b8b9c9.chunk.js
+  1.72 kB    build-safe\static\js\206.5267047a.chunk.js
+  1.35 kB    build-safe\static\js\133.a038b162.chunk.js
+  620 B      build-safe\static\js\789.23a8067d.chunk.js
+  443 B      build-safe\static\js\970.00274ca8.chunk.js
+  310 B      build-safe\static\js\722.2d0be2be.chunk.js
+  292 B      build-safe\static\js\127.2f3b5bc8.chunk.js
+
+The project was built assuming it is hosted at /.
+You can control this with the homepage field in your package.json.
+
+The .e2e-local\native-local\20261105153654\project\build-safe folder is ready to be deployed.
+You may serve it with a static server:
+
+  npm install -g serve
+  serve -s .e2e-local\native-local\20261105153654\project\build-safe
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+
+

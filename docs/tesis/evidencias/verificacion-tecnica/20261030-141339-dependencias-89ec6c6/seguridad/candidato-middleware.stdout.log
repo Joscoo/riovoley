@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "memfs": "^4.43.1",
+    "colorette": "^2.0.10",
+    "mime-types": "^3.0.1",
+    "on-finished": "^2.4.1",
+    "range-parser": "^1.2.1",
+    "schema-utils": "^4.0.0"
+  },
+  "engines": {
+    "node": ">= 18.12.0"
+  }
+}
+

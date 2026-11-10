@@ -1,0 +1,275 @@
+TAP version 13
+# Subtest: instalacion con escritor activo falla atomicamente y no deja disparadores parciales
+ok 1 - instalacion con escritor activo falla atomicamente y no deja disparadores parciales
+  ---
+  duration_ms: 376.9141
+  type: 'test'
+  ...
+# Subtest: instala barrera en las siete relaciones de fixture
+ok 2 - instala barrera en las siete relaciones de fixture
+  ---
+  duration_ms: 33.6961
+  type: 'test'
+  ...
+# Subtest: transaccion REPEATABLE READ anterior no elude el nuevo disparador
+ok 3 - transaccion REPEATABLE READ anterior no elude el nuevo disparador
+  ---
+  duration_ms: 8.039
+  type: 'test'
+  ...
+# Subtest: rechaza INSERT de anon
+ok 4 - rechaza INSERT de anon
+  ---
+  duration_ms: 7.359
+  type: 'test'
+  ...
+# Subtest: rechaza UPDATE de anon
+ok 5 - rechaza UPDATE de anon
+  ---
+  duration_ms: 4.5156
+  type: 'test'
+  ...
+# Subtest: rechaza DELETE de anon
+ok 6 - rechaza DELETE de anon
+  ---
+  duration_ms: 3.1695
+  type: 'test'
+  ...
+# Subtest: rechaza TRUNCATE de anon
+ok 7 - rechaza TRUNCATE de anon
+  ---
+  duration_ms: 4.1835
+  type: 'test'
+  ...
+# Subtest: permite SELECT a anon
+ok 8 - permite SELECT a anon
+  ---
+  duration_ms: 2.7936
+  type: 'test'
+  ...
+# Subtest: rechaza INSERT de authenticated
+ok 9 - rechaza INSERT de authenticated
+  ---
+  duration_ms: 7.8713
+  type: 'test'
+  ...
+# Subtest: rechaza UPDATE de authenticated
+ok 10 - rechaza UPDATE de authenticated
+  ---
+  duration_ms: 5.7734
+  type: 'test'
+  ...
+# Subtest: rechaza DELETE de authenticated
+ok 11 - rechaza DELETE de authenticated
+  ---
+  duration_ms: 5.1938
+  type: 'test'
+  ...
+# Subtest: rechaza TRUNCATE de authenticated
+ok 12 - rechaza TRUNCATE de authenticated
+  ---
+  duration_ms: 3.1242
+  type: 'test'
+  ...
+# Subtest: permite SELECT a authenticated
+ok 13 - permite SELECT a authenticated
+  ---
+  duration_ms: 1.2891
+  type: 'test'
+  ...
+# Subtest: rechaza INSERT de service_role
+ok 14 - rechaza INSERT de service_role
+  ---
+  duration_ms: 3.3085
+  type: 'test'
+  ...
+# Subtest: rechaza UPDATE de service_role
+ok 15 - rechaza UPDATE de service_role
+  ---
+  duration_ms: 2.855
+  type: 'test'
+  ...
+# Subtest: rechaza DELETE de service_role
+ok 16 - rechaza DELETE de service_role
+  ---
+  duration_ms: 3.0468
+  type: 'test'
+  ...
+# Subtest: rechaza TRUNCATE de service_role
+ok 17 - rechaza TRUNCATE de service_role
+  ---
+  duration_ms: 3.2909
+  type: 'test'
+  ...
+# Subtest: permite SELECT a service_role
+ok 18 - permite SELECT a service_role
+  ---
+  duration_ms: 1.1258
+  type: 'test'
+  ...
+# Subtest: rechaza INSERT de supabase_auth_admin
+ok 19 - rechaza INSERT de supabase_auth_admin
+  ---
+  duration_ms: 3.274
+  type: 'test'
+  ...
+# Subtest: rechaza UPDATE de supabase_auth_admin
+ok 20 - rechaza UPDATE de supabase_auth_admin
+  ---
+  duration_ms: 2.9532
+  type: 'test'
+  ...
+# Subtest: rechaza DELETE de supabase_auth_admin
+ok 21 - rechaza DELETE de supabase_auth_admin
+  ---
+  duration_ms: 3.0328
+  type: 'test'
+  ...
+# Subtest: rechaza TRUNCATE de supabase_auth_admin
+ok 22 - rechaza TRUNCATE de supabase_auth_admin
+  ---
+  duration_ms: 4.0478
+  type: 'test'
+  ...
+# Subtest: permite SELECT a supabase_auth_admin
+ok 23 - permite SELECT a supabase_auth_admin
+  ---
+  duration_ms: 1.5375
+  type: 'test'
+  ...
+# Subtest: rechaza INSERT de supabase_storage_admin
+ok 24 - rechaza INSERT de supabase_storage_admin
+  ---
+  duration_ms: 6.5238
+  type: 'test'
+  ...
+# Subtest: rechaza UPDATE de supabase_storage_admin
+ok 25 - rechaza UPDATE de supabase_storage_admin
+  ---
+  duration_ms: 4.1216
+  type: 'test'
+  ...
+# Subtest: rechaza DELETE de supabase_storage_admin
+ok 26 - rechaza DELETE de supabase_storage_admin
+  ---
+  duration_ms: 3.2685
+  type: 'test'
+  ...
+# Subtest: rechaza TRUNCATE de supabase_storage_admin
+ok 27 - rechaza TRUNCATE de supabase_storage_admin
+  ---
+  duration_ms: 3.4054
+  type: 'test'
+  ...
+# Subtest: permite SELECT a supabase_storage_admin
+ok 28 - permite SELECT a supabase_storage_admin
+  ---
+  duration_ms: 1.3545
+  type: 'test'
+  ...
+# Subtest: bloquea escritura SQL en esquema sintetico gamification
+ok 29 - bloquea escritura SQL en esquema sintetico gamification
+  ---
+  duration_ms: 2.907
+  type: 'test'
+  ...
+# Subtest: bloquea escritura SQL en esquema sintetico auth
+ok 30 - bloquea escritura SQL en esquema sintetico auth
+  ---
+  duration_ms: 2.5606
+  type: 'test'
+  ...
+# Subtest: bloquea escritura SQL en esquema sintetico storage
+ok 31 - bloquea escritura SQL en esquema sintetico storage
+  ---
+  duration_ms: 3.02
+  type: 'test'
+  ...
+# Subtest: SECURITY DEFINER no elude barrera para anon
+ok 32 - SECURITY DEFINER no elude barrera para anon
+  ---
+  duration_ms: 3.2242
+  type: 'test'
+  ...
+# Subtest: SECURITY DEFINER no elude barrera para authenticated
+ok 33 - SECURITY DEFINER no elude barrera para authenticated
+  ---
+  duration_ms: 2.9746
+  type: 'test'
+  ...
+# Subtest: SECURITY DEFINER no elude barrera para service_role
+ok 34 - SECURITY DEFINER no elude barrera para service_role
+  ---
+  duration_ms: 2.7646
+  type: 'test'
+  ...
+# Subtest: bloquea UPDATE a traves de vista security_invoker
+ok 35 - bloquea UPDATE a traves de vista security_invoker
+  ---
+  duration_ms: 2.7858
+  type: 'test'
+  ...
+# Subtest: bloquea escritura por gate_partition
+ok 36 - bloquea escritura por gate_partition
+  ---
+  duration_ms: 4.0065
+  type: 'test'
+  ...
+# Subtest: bloquea escritura por gate_partition_low
+ok 37 - bloquea escritura por gate_partition_low
+  ---
+  duration_ms: 6.8117
+  type: 'test'
+  ...
+# Subtest: bloquea UPSERT antes de modificar filas
+ok 38 - bloquea UPSERT antes de modificar filas
+  ---
+  duration_ms: 4.0803
+  type: 'test'
+  ...
+# Subtest: bloquea UPDATE aunque no encuentre filas
+ok 39 - bloquea UPDATE aunque no encuentre filas
+  ---
+  duration_ms: 3.0491
+  type: 'test'
+  ...
+# Subtest: marcador closed-to-clients no concede excepcion a authenticated
+ok 40 - marcador closed-to-clients no concede excepcion a authenticated
+  ---
+  duration_ms: 3.9173
+  type: 'test'
+  ...
+# Subtest: conexion administrativa postgres conserva capacidad de escritura explicitamente
+ok 41 - conexion administrativa postgres conserva capacidad de escritura explicitamente
+  ---
+  duration_ms: 3.584
+  type: 'test'
+  ...
+# Subtest: postgres con SET ROLE authenticated no obtiene excepcion administrativa
+ok 42 - postgres con SET ROLE authenticated no obtiene excepcion administrativa
+  ---
+  duration_ms: 3.9877
+  type: 'test'
+  ...
+# Subtest: retirada con escritor administrativo activo revierte todos los cambios parciales
+ok 43 - retirada con escritor administrativo activo revierte todos los cambios parciales
+  ---
+  duration_ms: 233.8076
+  type: 'test'
+  ...
+# Subtest: retirada devuelve escrituras a los cinco actores y conserva filas sinteticas
+ok 44 - retirada devuelve escrituras a los cinco actores y conserva filas sinteticas
+  ---
+  duration_ms: 38.7818
+  type: 'test'
+  ...
+1..44
+# tests 44
+# suites 0
+# pass 44
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1047.0692
+

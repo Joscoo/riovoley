@@ -1,0 +1,165 @@
+{
+  "checkedAt": "2026-11-02T03:57:05.995Z",
+  "projectAndTeamMatched": true,
+  "projectName": "riovoley",
+  "environmentNames": [
+    {
+      "name": "POSTGRES_URL",
+      "target": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "POSTGRES_PRISMA_URL",
+      "target": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "POSTGRES_URL_NON_POOLING",
+      "target": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "POSTGRES_USER",
+      "target": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "POSTGRES_HOST",
+      "target": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "POSTGRES_PASSWORD",
+      "target": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "POSTGRES_DATABASE",
+      "target": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "SUPABASE_ANON_KEY",
+      "target": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "SUPABASE_URL",
+      "target": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "SUPABASE_SERVICE_ROLE_KEY",
+      "target": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "SUPABASE_JWT_SECRET",
+      "target": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+      "target": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "NEXT_PUBLIC_SUPABASE_URL",
+      "target": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "REACT_APP_SUPABASE_URL",
+      "target": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "REACT_APP_SUPABASE_ANON_KEY",
+      "target": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "RESEND_API_KEY",
+      "target": [
+        "production",
+        "preview",
+        "development"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "REACT_APP_PII_ENCRYPTION_KEY",
+      "target": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "REACT_APP_APP_URL",
+      "target": [
+        "preview",
+        "production"
+      ],
+      "type": "encrypted"
+    }
+  ],
+  "requiredFrontend": [
+    {
+      "name": "REACT_APP_SUPABASE_URL",
+      "presentForProduction": true
+    },
+    {
+      "name": "REACT_APP_SUPABASE_ANON_KEY",
+      "presentForProduction": true
+    },
+    {
+      "name": "REACT_APP_APP_URL",
+      "presentForProduction": true
+    },
+    {
+      "name": "REACT_APP_PII_ENCRYPTION_KEY",
+      "presentForProduction": true
+    }
+  ],
+  "productionCommit": "e469db5608fb77071b6a9ee3db253c28dae734dd",
+  "productionState": "READY",
+  "secretValuesDecrypted": false,
+  "secretValuesPublished": false,
+  "configurationChanged": false
+}

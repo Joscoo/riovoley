@@ -1,0 +1,27 @@
+{
+  "at": "2026-11-05T17:15:23.868Z",
+  "productChanged": false,
+  "sqlProposalChanged": false,
+  "files": [
+    {
+      "file": "docs/produccion/RUNBOOK.md",
+      "sha256": "145d212b78a2e245ccae27a2489fcb51c41a208cb494a331cd627b3dba30658b"
+    },
+    {
+      "file": "docs/superpowers/plans/2026-11-05-cutover-prerequisites.md",
+      "sha256": "41fec7300c40d7a5376f241554bccd3b190efa4694e8731399d90cd4935a8f00"
+    },
+    {
+      "file": "scripts/audit/production/check-cutover-prerequisites.cjs",
+      "sha256": "23f6b69ac3f1d81eccb59f73e53b49f254aa9b1db53bc5f7317e67f0e0c5e802"
+    },
+    {
+      "file": "scripts/audit/production/finalize-cutover-prerequisites.cjs",
+      "sha256": "e1caab165e9a5248ed614dfa128164a802b65835d67b2b638c5440f5fb0063ad"
+    },
+    {
+      "file": "scripts/audit/production/report-cutover-prerequisites.cjs",
+      "sha256": "71de283675c24fb8720005df04adf239cd3a84c9ae46950c17129fcd470ae947"
+    }
+  ]
+}

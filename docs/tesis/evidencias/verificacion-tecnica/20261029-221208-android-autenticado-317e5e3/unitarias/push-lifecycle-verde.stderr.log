@@ -1,0 +1,33 @@
+FAIL src/shared/platform/push.lifecycle.test.js
+  √ cerrar sesión sin registrar push no invoca el plugin nativo de Firebase (1217 ms)
+  √ permiso denegado permite cerrar sesión sin unregister nativo (3 ms)
+  √ un registro completado se elimina una sola vez al cerrar sesión (2 ms)
+  √ un registro rechazado no habilita unregister (22 ms)
+  √ cerrar sesión mientras se solicita permiso impide registrar al usuario anterior (11 ms)
+  × cerrar sesión durante register espera su resolución y elimina el registro (10 ms)
+  √ el perfil web no solicita registro ni cancelación nativos (2 ms)
+
+  ● cerrar sesión durante register espera su resolución y elimina el registro
+
+    expect(jest.fn()).toHaveBeenCalledTimes(expected)
+
+    Expected number of calls: 1
+    Received number of calls: 0
+
+      40 |  const pending=push.initializePushForAuthenticatedUser({id:'local-user'});await started(()=>complete);
+      41 |  const logout=push.teardownPushForAuthenticatedUser();expect(plugin.unregister).not.toHaveBeenCalled();
+    > 42 |  complete();await pending;await logout;expect(plugin.unregister).toHaveBeenCalledTimes(1);
+         |                                                                  ^
+      43 | });
+      44 | test('el perfil web no solicita registro ni cancelación nativos',async()=>{
+      45 |  const {push,plugin,runtime}=load();runtime.isNativePlatform.mockReturnValue(false);
+
+      at Object.<anonymous> (src/shared/platform/push.lifecycle.test.js:42:66)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 6 passed, 7 total
+Snapshots:   0 total
+Time:        2.996 s
+Ran all test suites within paths "src/shared/platform/push.lifecycle.test.js".
+Test results written to: docs\tesis\evidencias\verificacion-tecnica\20261029-221208-android-autenticado-317e5e3\unitarias\push-lifecycle-verde.json
+

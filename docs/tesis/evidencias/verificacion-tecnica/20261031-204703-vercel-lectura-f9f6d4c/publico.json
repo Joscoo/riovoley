@@ -1,0 +1,83 @@
+{
+  "observations": [
+    {
+      "path": "/",
+      "observedAt": "2026-10-31T20:47:08.759Z",
+      "method": "GET",
+      "status": 200,
+      "durationSeconds": 0.629,
+      "hasRootElement": true,
+      "mainScript": "/static/js/main.bf1d3ccb.js",
+      "bodySha256": "dd3d08b0d721cc85faf105325ad0c3a84e708ad6d65a264bfa50c3d3ab9c8ca1",
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "strict-transport-security": "max-age=63072000",
+        "content-security-policy": null,
+        "x-content-type-options": null,
+        "referrer-policy": null,
+        "x-frame-options": null,
+        "permissions-policy": null
+      }
+    },
+    {
+      "path": "/login",
+      "observedAt": "2026-10-31T20:47:08.862Z",
+      "method": "GET",
+      "status": 200,
+      "durationSeconds": 0.102,
+      "hasRootElement": true,
+      "mainScript": "/static/js/main.bf1d3ccb.js",
+      "bodySha256": "dd3d08b0d721cc85faf105325ad0c3a84e708ad6d65a264bfa50c3d3ab9c8ca1",
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "strict-transport-security": "max-age=63072000",
+        "content-security-policy": null,
+        "x-content-type-options": null,
+        "referrer-policy": null,
+        "x-frame-options": null,
+        "permissions-policy": null
+      }
+    },
+    {
+      "path": "/sobre",
+      "observedAt": "2026-10-31T20:47:08.962Z",
+      "method": "GET",
+      "status": 200,
+      "durationSeconds": 0.1,
+      "hasRootElement": true,
+      "mainScript": "/static/js/main.bf1d3ccb.js",
+      "bodySha256": "dd3d08b0d721cc85faf105325ad0c3a84e708ad6d65a264bfa50c3d3ab9c8ca1",
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "strict-transport-security": "max-age=63072000",
+        "content-security-policy": null,
+        "x-content-type-options": null,
+        "referrer-policy": null,
+        "x-frame-options": null,
+        "permissions-policy": null
+      }
+    },
+    {
+      "path": "/horarios",
+      "observedAt": "2026-10-31T20:47:09.055Z",
+      "method": "GET",
+      "status": 200,
+      "durationSeconds": 0.093,
+      "hasRootElement": true,
+      "mainScript": "/static/js/main.bf1d3ccb.js",
+      "bodySha256": "dd3d08b0d721cc85faf105325ad0c3a84e708ad6d65a264bfa50c3d3ab9c8ca1",
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "strict-transport-security": "max-age=63072000",
+        "content-security-policy": null,
+        "x-content-type-options": null,
+        "referrer-policy": null,
+        "x-frame-options": null,
+        "permissions-policy": null
+      }
+    }
+  ],
+  "javascriptExecuted": false,
+  "loginPerformed": false,
+  "bodySaved": false
+}

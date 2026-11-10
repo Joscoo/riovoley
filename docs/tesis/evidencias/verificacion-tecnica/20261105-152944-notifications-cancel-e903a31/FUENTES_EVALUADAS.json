@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-11-05T15:54:06.008Z",
+  "baseCommit": "e903a31788acde429bff07fe27f2b8e8a6b12135",
+  "productSourcesChanged": true,
+  "originalProtectedTestsUnchanged": true,
+  "appSourceSha256": "40c9fc5c6ee18248a32d2578ce47a2cffe60bc22b81ca63bc9961afa82caf15d",
+  "compiledApkSourceCommit": "5f605512448f0683e8ddc52e197e42fa5d909868",
+  "files": [
+    {
+      "file": "docs/produccion/RUNBOOK.md",
+      "sha256": "89955e90b5df2b9db76b0b94613ac8b8a8b045b37080b8d9cde56a63d2e17b72"
+    },
+    {
+      "file": "scripts/audit/android/finalize-ota-native.cjs",
+      "sha256": "a3b402140667be36b6c399de5cdbbf7941f5b4de49fc7e745c3cf95e880ad5c5"
+    },
+    {
+      "file": "scripts/audit/android/initialize-ota-native.cjs",
+      "sha256": "a9095a9a6c8ff51694f4317f542dc1e41c8ecad087905f88aa1ec6597c7c7e91"
+    },
+    {
+      "file": "scripts/audit/android/reproduce-notification-signout.cjs",
+      "sha256": "c55aaceadc4b1766cb27570a4d0397162c93aa17964447f84e546c40b75e2ec6"
+    },
+    {
+      "file": "scripts/audit/production/run-operational-jest.cjs",
+      "sha256": "55c80b2afe8739ec8c2e6a924cf96de2d48b1c976fc9ea416cbe2ec857e92232"
+    },
+    {
+      "file": "docs/superpowers/plans/2026-11-05-notifications-cancel.md",
+      "sha256": "d7211c84d12c4f5fffb2ea2585b3755721ed70f63f0fec41b3711dc0efd71aed"
+    },
+    {
+      "file": "scripts/audit/android/report-notification-fix.cjs",
+      "sha256": "b9d698d11fa7a4cff0e8a95ba747bc956befb7eb92fe576887af8c060fd8fa29"
+    },
+    {
+      "file": "src/features/notifications/application/useCases/createNotificationsUseCases.js",
+      "sha256": "8a7023c70c26d1881f2d0cd2324ec8a8b85f4a3ffcc55b9a69955ce404daac7c"
+    },
+    {
+      "file": "src/features/notifications/application/useCases/notifications.abort.test.js",
+      "sha256": "035829e92af3bca0705cb5b4d40e761ea2dd4171e71c973a4bd46a51c5a2994a"
+    },
+    {
+      "file": "src/features/notifications/presentation/components/NotificationBell.access.test.js",
+      "sha256": "8798959e4e35f85b3ce80146ada473e073ee503a8de07e814a29ff308675de82"
+    },
+    {
+      "file": "src/features/notifications/presentation/components/NotificationBell.cancellation.test.js",
+      "sha256": "5eee98b7f7151400039a7316cf513aada2e3a30d8d04df7c210c7a7ee3560fab"
+    },
+    {
+      "file": "src/features/notifications/presentation/components/NotificationBell.js",
+      "sha256": "9fe143a48c0203c8e9b1634c568eba7ba301151351d847b1085fb2b3726ade22"
+    },
+    {
+      "file": "src/features/notifications/presentation/createNotificationsService.js",
+      "sha256": "400c1314eae7bda64f775e12fcabad4d8297e3563a5b0507c803d7dae3a50a7c"
+    }
+  ]
+}

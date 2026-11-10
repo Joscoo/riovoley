@@ -1,0 +1,29 @@
+{
+  "recordedAt": "2026-11-09T15:37:01.712Z",
+  "files": [
+    {
+      "file": "scripts/audit/maintenance/edge-fence-context.cjs",
+      "sha256": "025ac34c41f14d79f8ecd97cc5d1ffb837077dee58cb29bcfd75a4815500d230"
+    },
+    {
+      "file": "scripts/audit/maintenance/edge-fence-entry.ts",
+      "sha256": "a8ccb9b8ff80ede01963a2943e42bcb3c307b85597a3fe5b1b7fd01539c9627d"
+    },
+    {
+      "file": "scripts/audit/maintenance/edge-fence-run.cjs",
+      "sha256": "fb68a2738ccfe17b594ffb5d8c0d6bafe132c3246d1a76f3989022445037d43d"
+    },
+    {
+      "file": "scripts/audit/maintenance/edge-fence-cases.cjs",
+      "sha256": "aaeb3d9b1778d08d8fc0228418d2e05a2a9fd9946c74a7d8a7cc703841dc6638"
+    },
+    {
+      "file": "scripts/audit/maintenance/edge-fence-provenance.cjs",
+      "sha256": "81fcc5b2dfc56abaa93ab714045c9cf318deb1feab09743e3bed2a734c3e734d"
+    }
+  ],
+  "remoteDependencyDownloadsDuringRuns": false,
+  "serveSubstitutedOnlyForListener": true,
+  "localReadsReal": true,
+  "providerConfigurationSynthetic": true
+}

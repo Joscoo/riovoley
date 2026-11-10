@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-11-04T21:26:08.200Z",
+  "backend": "Supabase local real, transaccion READ ONLY",
+  "reward": {
+    "rows": 1,
+    "rewards": 1
+  },
+  "ledger": {
+    "ledger_rows": 1,
+    "xp": 8
+  },
+  "ownEmulatorPresent": false,
+  "adbExitCode": 0,
+  "personalIdentifiersPublished": false,
+  "institutionalContacted": false
+}

@@ -1,0 +1,23 @@
+--------- beginning of crash
+10-29 17:48:34.782  4177  4308 E AndroidRuntime: FATAL EXCEPTION: CapacitorPlugins
+10-29 17:48:34.782  4177  4308 E AndroidRuntime: Process: com.riovoley.app, PID: 4177
+10-29 17:48:34.782  4177  4308 E AndroidRuntime: java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+10-29 17:48:34.782  4177  4308 E AndroidRuntime: 	at com.getcapacitor.Bridge.lambda$callPluginMethod$0(Bridge.java:856)
+10-29 17:48:34.782  4177  4308 E AndroidRuntime: 	at com.getcapacitor.Bridge.$r8$lambda$FNYM7cvgeBk0k8YXQH7M96Mrf-c(Unknown Source:0)
+10-29 17:48:34.782  4177  4308 E AndroidRuntime: 	at com.getcapacitor.Bridge$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+10-29 17:48:34.782  4177  4308 E AndroidRuntime: 	at android.os.Handler.handleCallback(Handler.java:995)
+10-29 17:48:34.782  4177  4308 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:103)
+10-29 17:48:34.782  4177  4308 E AndroidRuntime: 	at android.os.Looper.loopOnce(Looper.java:248)
+10-29 17:48:34.782  4177  4308 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:338)
+10-29 17:48:34.782  4177  4308 E AndroidRuntime: 	at android.os.HandlerThread.run(HandlerThread.java:85)
+10-29 17:48:34.782  4177  4308 E AndroidRuntime: Caused by: java.lang.reflect.InvocationTargetException
+10-29 17:48:34.782  4177  4308 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+10-29 17:48:34.782  4177  4308 E AndroidRuntime: 	at com.getcapacitor.PluginHandle.invoke(PluginHandle.java:138)
+10-29 17:48:34.782  4177  4308 E AndroidRuntime: 	at com.getcapacitor.Bridge.lambda$callPluginMethod$0(Bridge.java:847)
+10-29 17:48:34.782  4177  4308 E AndroidRuntime: 	... 7 more
+10-29 17:48:34.782  4177  4308 E AndroidRuntime: Caused by: java.lang.IllegalStateException: Default FirebaseApp is not initialized in this process com.riovoley.app. Make sure to call FirebaseApp.initializeApp(Context) first.
+10-29 17:48:34.782  4177  4308 E AndroidRuntime: 	at com.google.firebase.FirebaseApp.getInstance(FirebaseApp.java:179)
+10-29 17:48:34.782  4177  4308 E AndroidRuntime: 	at com.google.firebase.messaging.FirebaseMessaging.getInstance(FirebaseMessaging.java:120)
+10-29 17:48:34.782  4177  4308 E AndroidRuntime: 	at com.capacitorjs.plugins.pushnotifications.PushNotificationsPlugin.unregister(PushNotificationsPlugin.java:118)
+10-29 17:48:34.782  4177  4308 E AndroidRuntime: 	... 10 more
+

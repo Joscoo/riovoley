@@ -1,0 +1,22 @@
+{
+  "upstream": {
+    "name": "deepmerge",
+    "version": "4.3.1",
+    "url": "https://github.com/TehShrike/deepmerge",
+    "registryTarball": "https://registry.npmjs.org/deepmerge/-/deepmerge-4.3.1.tgz",
+    "registryIntegrity": "sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==",
+    "cjsSha256": "2e5160f84a1141bd927264afe4d15766f1e6cf07daef182b37ff53fea121de7d"
+  },
+  "downstream": {
+    "name": "@riovoley/deepmerge-hardened",
+    "version": "4.3.1-riovoley.1",
+    "cjsSha256": "948ab550ed72e170c7d408dd8d596513128a5d76308085b7e45e130013b41d38",
+    "private": true
+  },
+  "changes": [
+    "Reject __proto__ keys in both target and source copy loops",
+    "Define own data properties without invoking inherited setters"
+  ],
+  "upstreamReleaseClaimed": false,
+  "registryAuditCoversLocalCode": false
+}

@@ -1,0 +1,15 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5580",
+    "shell",
+    "getprop",
+    "ro.kernel.qemu"
+  ],
+  "startedAt": "2026-11-05T14:55:26.093Z",
+  "finishedAt": "2026-11-05T14:55:26.289Z",
+  "exitCode": 0,
+  "errorCode": null,
+  "rawOutputPrivate": true
+}

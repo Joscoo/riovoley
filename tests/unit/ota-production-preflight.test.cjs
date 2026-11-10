@@ -1,0 +1,8 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),cp=require('node:child_process'),path=require('node:path');
+const script=path.resolve(__dirname,'../../scripts/production/preflight.cjs');
+const fixture=()=>({REACT_APP_SUPABASE_URL:'https://synthetic-project.supabase.co',REACT_APP_SUPABASE_ANON_KEY:'sb_publishable_synthetic_public_key_123456',REACT_APP_APP_URL:'https://app.riovoley.org',REACT_APP_PII_ENCRYPTION_KEY:'synthetic-existing-pii-never-for-real-data'});
+const run=flag=>cp.spawnSync(process.execPath,[script,'--profile','frontend','--structure'],{env:{SystemRoot:process.env.SystemRoot||'',...fixture(),REACT_APP_ENABLE_OTA_DIAGNOSTICS:flag},encoding:'utf8',timeout:10000});
+test('preflight rechaza el diagnostico OTA activado para produccion',()=>{const r=run('true');assert.equal(r.status,1);assert.match(r.stdout,/REACT_APP_ENABLE_OTA_DIAGNOSTICS: DISABLE_PRODUCTION_DIAGNOSTICS/);});
+test('preflight reconoce false sin clasificarlo como variable publica desconocida',()=>{const r=run('false');assert.equal(r.status,0,r.stdout);assert.match(r.stdout,/STRUCTURE: VALID/);assert.ok(!r.stdout.includes('UNREVIEWED_PUBLIC_VARIABLE'));});
+test('preflight no acepta activaciones ambiguas o valores no booleanos',()=>{for(const value of ['TRUE','1','yes','true ']){const r=run(value);assert.equal(r.status,1);assert.match(r.stdout,/DISABLE_PRODUCTION_DIAGNOSTICS/);}});
+test('el control aplica a native y all aunque falten otras entradas',()=>{const {assess}=require(script);for(const profile of ['native','all']){const r=assess({...fixture(),REACT_APP_ENABLE_OTA_DIAGNOSTICS:'true'},profile);assert.ok(r.checks.some(x=>x.name==='REACT_APP_ENABLE_OTA_DIAGNOSTICS'&&x.status==='DISABLE_PRODUCTION_DIAGNOSTICS'));}});

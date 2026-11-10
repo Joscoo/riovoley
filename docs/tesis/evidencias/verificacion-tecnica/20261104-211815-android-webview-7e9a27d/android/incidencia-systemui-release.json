@@ -1,0 +1,13 @@
+{
+  "recordedAt": "2026-11-04T21:40:24.357Z",
+  "source": "Diagnostico ADB real del intento release con parser de rutas corregido",
+  "observedForeground": "com.riovoley.app/.MainActivity",
+  "systemUiDialogFocused": true,
+  "focusedWindow": "Application Not Responding: com.android.systemui",
+  "appAnrObservedInActivitySnapshot": false,
+  "validationStoppedBeforeScreenshotAndDeepLink": true,
+  "emulatorStoppedAfterAttempt": true,
+  "method": "Se inspeccionaron mCurrentFocus y mFocusedWindow del dumpsys privado; el dialogo no era solo un registro historico.",
+  "rawDumpPublished": false,
+  "productCrashClaimed": false
+}

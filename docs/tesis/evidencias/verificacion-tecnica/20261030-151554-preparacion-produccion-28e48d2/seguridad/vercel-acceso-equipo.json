@@ -1,0 +1,8 @@
+{
+  "observedAt": "2026-10-31T19:42:30.204Z",
+  "method": "Conector Vercel get_project, idOrName=riovoley, slug=joscoos-projects",
+  "httpStatus": 403,
+  "reason": "Conexi?n sin autorizaci?n para el scope joscoos-projects; requiere autorizaci?n del equipo en el conector",
+  "environmentValuesRequested": false,
+  "productionModified": false
+}

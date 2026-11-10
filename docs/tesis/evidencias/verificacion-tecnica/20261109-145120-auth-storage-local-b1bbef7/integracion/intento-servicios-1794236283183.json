@@ -1,0 +1,11 @@
+{
+  "recordedAt": "2026-11-09T14:58:03.183Z",
+  "httpFile": "integracion/http-servicios-1794236283119-556f94.json",
+  "observationsFile": "integracion/observaciones-auth-storage-1794236283123-a5c949.json",
+  "cleanupFile": "integracion/limpieza-fixtures-1794236283155-7f30b6.json",
+  "resultFile": "integracion/resultados-servicios-1794236283158-e01ec3.json",
+  "completed": true,
+  "passed": 21,
+  "failed": 1,
+  "cleanupPassed": true
+}

@@ -1,0 +1,87 @@
+{
+  "at": "2026-11-09T16:04:13.169Z",
+  "baseCommit": "022cc8d559eff2ba7d25c2227ea830bcf873cb30",
+  "managedBackupReadExitCode": 0,
+  "managedRecoverablePointEstablished": false,
+  "logicalBackupAgeHours": 205.01,
+  "fingerprint": "15b9d9e869fb5113263c485714009878",
+  "rlsTables": [
+    {
+      "enabled": true,
+      "forced": false,
+      "policies": 1,
+      "table_name": "login_rewards"
+    },
+    {
+      "enabled": true,
+      "forced": false,
+      "policies": 1,
+      "table_name": "xp_ledger"
+    }
+  ],
+  "dailyRewardRpcPresent": false,
+  "edgePreflight": {
+    "executed": 9,
+    "passed": 9,
+    "failed": 0
+  },
+  "publicGet": {
+    "executed": 4,
+    "passed": 4
+  },
+  "advisorGroups": [
+    {
+      "name": "function_search_path_mutable",
+      "count": 19,
+      "level": "WARN",
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0011_function_search_path_mutable"
+    },
+    {
+      "name": "extension_in_public",
+      "count": 1,
+      "level": "WARN",
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0014_extension_in_public"
+    },
+    {
+      "name": "anon_security_definer_function_executable",
+      "count": 17,
+      "level": "WARN",
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable"
+    },
+    {
+      "name": "authenticated_security_definer_function_executable",
+      "count": 19,
+      "level": "WARN",
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable"
+    },
+    {
+      "name": "auth_leaked_password_protection",
+      "count": 1,
+      "level": "WARN",
+      "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection"
+    },
+    {
+      "name": "vulnerable_postgres_version",
+      "count": 1,
+      "level": "WARN",
+      "remediation": "https://supabase.com/docs/guides/platform/upgrading"
+    }
+  ],
+  "sqlArtifacts": 4,
+  "candidateFiles": 39,
+  "previousCi": {
+    "jest": {
+      "passed": 434,
+      "total": 434,
+      "suites": 91
+    },
+    "url": "https://github.com/Joscoo/riovoley/actions/runs/42648647740",
+    "webBuildSucceeded": true,
+    "rootAuditTotalVulnerabilities": 0
+  },
+  "newBusinessTests": 0,
+  "newBuilds": 0,
+  "productionChanged": false,
+  "releaseReady": false,
+  "productionExecutionAuthorized": false
+}

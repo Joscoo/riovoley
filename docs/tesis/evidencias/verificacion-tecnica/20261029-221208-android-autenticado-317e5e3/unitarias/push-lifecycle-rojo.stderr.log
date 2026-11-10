@@ -1,0 +1,29 @@
+D:\Riovoley\riovoley\src\shared\platform\push.js:132
+  _app.App.getState().then(({
+           ^
+
+TypeError: _app.App.getState is not a function
+    at syncAppStateListeners (D:\Riovoley\riovoley\src\shared\platform\push.js:145:16)
+    at ensurePushListeners (D:\Riovoley\riovoley\src\shared\platform\push.js:185:3)
+    at Object.initializePushForAuthenticatedUser (D:\Riovoley\riovoley\src\shared\platform\push.js:198:3)
+    at Object.<anonymous> (D:\Riovoley\riovoley\src\shared\platform\push.lifecycle.test.js:39:21)
+    at Promise.then.completed (D:\Riovoley\riovoley\node_modules\jest-circus\build\utils.js:391:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (D:\Riovoley\riovoley\node_modules\jest-circus\build\utils.js:316:10)
+    at _callCircusTest (D:\Riovoley\riovoley\node_modules\jest-circus\build\run.js:218:40)
+    at _runTest (D:\Riovoley\riovoley\node_modules\jest-circus\build\run.js:155:3)
+    at _runTestsForDescribeBlock (D:\Riovoley\riovoley\node_modules\jest-circus\build\run.js:66:9)
+    at run (D:\Riovoley\riovoley\node_modules\jest-circus\build\run.js:25:3)
+    at runAndTransformResultsToJestFormat (D:\Riovoley\riovoley\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:170:21)
+    at jestAdapter (D:\Riovoley\riovoley\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:82:19)
+    at runTestInternal (D:\Riovoley\riovoley\node_modules\jest-runner\build\runTest.js:389:16)
+    at runTest (D:\Riovoley\riovoley\node_modules\jest-runner\build\runTest.js:475:34)
+    at TestRunner.runTests (D:\Riovoley\riovoley\node_modules\jest-runner\build\index.js:101:12)
+    at TestScheduler.scheduleTests (D:\Riovoley\riovoley\node_modules\@jest\core\build\TestScheduler.js:333:13)
+    at runJest (D:\Riovoley\riovoley\node_modules\@jest\core\build\runJest.js:404:19)
+    at _run10000 (D:\Riovoley\riovoley\node_modules\@jest\core\build\cli\index.js:320:7)
+    at runCLI (D:\Riovoley\riovoley\node_modules\@jest\core\build\cli\index.js:173:3)
+    at Object.run (D:\Riovoley\riovoley\node_modules\jest-cli\build\cli\index.js:155:37)
+
+Node.js v24.18.0
+

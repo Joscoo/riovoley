@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-11-01T01:27:17.487Z",
+  "priorManifests": 12,
+  "priorEntriesChecked": 7927,
+  "brokenLinks": 0,
+  "relativeLinksChecked": 72,
+  "finalIntegration": {
+    "reported": 29,
+    "passed": 29,
+    "failed": 0,
+    "skipped": 0
+  },
+  "toolContracts": {
+    "reported": 6,
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0
+  },
+  "sqlMatchesGenerators": true,
+  "sqlMatchesRecordedHashes": true,
+  "productionCatalogMatchesBaseline": true,
+  "personalRowsCopied": 0,
+  "productOrDependencyChanges": false,
+  "productionApplied": false
+}

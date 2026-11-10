@@ -1,0 +1,73 @@
+{
+  "terminal": [
+    {
+      "file": "integracion/servicios-http-final.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/audit/maintenance/service-probe.cjs"
+      ],
+      "start": "2026-11-09T14:59:51.132Z",
+      "end": "2026-11-09T14:59:53.873Z",
+      "durationSeconds": 2.741,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "integracion/servicios-http.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/audit/maintenance/service-probe.cjs"
+      ],
+      "start": "2026-11-09T14:53:33.892Z",
+      "end": "2026-11-09T14:53:41.379Z",
+      "durationSeconds": 7.487,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "integracion/servicios-regresion-red-conexion-real.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/audit/maintenance/service-probe.cjs"
+      ],
+      "start": "2026-11-09T14:59:18.934Z",
+      "end": "2026-11-09T14:59:21.433Z",
+      "durationSeconds": 2.499,
+      "exitCode": 1,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "integracion/servicios-regresion-red.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/audit/maintenance/service-probe.cjs"
+      ],
+      "start": "2026-11-09T14:58:00.739Z",
+      "end": "2026-11-09T14:58:03.218Z",
+      "durationSeconds": 2.479,
+      "exitCode": 1,
+      "signal": null,
+      "cwd": "."
+    }
+  ],
+  "selectedAttempt": {
+    "recordedAt": "2026-11-09T14:59:53.839Z",
+    "httpFile": "integracion/http-servicios-1794236393736-19e57a.json",
+    "observationsFile": "integracion/observaciones-auth-storage-1794236393833-d0b96b.json",
+    "cleanupFile": "integracion/limpieza-fixtures-1794236393836-cf48d6.json",
+    "resultFile": "integracion/resultados-servicios-1794236393839-243436.json",
+    "completed": true,
+    "passed": 24,
+    "failed": 0,
+    "cleanupPassed": true,
+    "file": "integracion/intento-servicios-1794236393839.json"
+  },
+  "setupCommand": "node scripts/audit/maintenance/service-context.cjs",
+  "setupExitCodeObserved": 0,
+  "reportCommand": "node scripts/audit/maintenance/service-report.cjs",
+  "reportExitCodeObserved": 0,
+  "note": "Raw HTTP headers and bodies intentionally not published; codes, timings and selected fields preserved."
+}

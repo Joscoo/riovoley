@@ -1,0 +1,15 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/integration/toolchain.dependencies.test.cjs",
+    "tests/integration/toolchain.security-followup.test.cjs"
+  ],
+  "start": "2026-10-30T14:18:30.418Z",
+  "end": "2026-10-30T14:18:39.052Z",
+  "durationSeconds": 8.634,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

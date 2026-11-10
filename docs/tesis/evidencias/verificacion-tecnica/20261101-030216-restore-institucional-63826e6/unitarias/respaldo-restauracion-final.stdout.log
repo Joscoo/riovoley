@@ -1,0 +1,203 @@
+TAP version 13
+# Subtest: permite únicamente contenedor marcado sin red, puertos o bind mounts
+ok 1 - permite únicamente contenedor marcado sin red, puertos o bind mounts
+  ---
+  duration_ms: 1.4995
+  type: 'test'
+  ...
+# Subtest: rechaza aislamiento insuficiente: red
+ok 2 - rechaza aislamiento insuficiente: red
+  ---
+  duration_ms: 1.5473
+  type: 'test'
+  ...
+# Subtest: rechaza aislamiento insuficiente: puerto
+ok 3 - rechaza aislamiento insuficiente: puerto
+  ---
+  duration_ms: 0.2814
+  type: 'test'
+  ...
+# Subtest: rechaza aislamiento insuficiente: montaje
+ok 4 - rechaza aislamiento insuficiente: montaje
+  ---
+  duration_ms: 6.6539
+  type: 'test'
+  ...
+# Subtest: rechaza aislamiento insuficiente: etiqueta
+ok 5 - rechaza aislamiento insuficiente: etiqueta
+  ---
+  duration_ms: 0.4353
+  type: 'test'
+  ...
+# Subtest: rechaza aislamiento insuficiente: logs
+ok 6 - rechaza aislamiento insuficiente: logs
+  ---
+  duration_ms: 0.2391
+  type: 'test'
+  ...
+# Subtest: la adaptación omite exclusivamente calculate_age y conserva los datos
+ok 7 - la adaptación omite exclusivamente calculate_age y conserva los datos
+  ---
+  duration_ms: 0.3964
+  type: 'test'
+  ...
+# Subtest: rechaza TOC ambiguo en lugar de saltar funciones adicionales
+ok 8 - rechaza TOC ambiguo en lugar de saltar funciones adicionales
+  ---
+  duration_ms: 0.2374
+  type: 'test'
+  ...
+# Subtest: extrae propietarios y grants sin aceptar SQL como nombre de rol
+ok 9 - extrae propietarios y grants sin aceptar SQL como nombre de rol
+  ---
+  duration_ms: 1.2162
+  type: 'test'
+  ...
+# Subtest: reconoce delimitadores dollar-quote estándar y nombrados de pg_dump
+ok 10 - reconoce delimitadores dollar-quote estándar y nombrados de pg_dump
+  ---
+  duration_ms: 0.471
+  type: 'test'
+  ...
+# Subtest: recupera LF de la función original desde la salida CRLF del cliente Windows
+ok 11 - recupera LF de la función original desde la salida CRLF del cliente Windows
+  ---
+  duration_ms: 0.175
+  type: 'test'
+  ...
+# Subtest: extrae COPY sin ejecutar el SQL que lo rodea
+ok 12 - extrae COPY sin ejecutar el SQL que lo rodea
+  ---
+  duration_ms: 2.2997
+  type: 'test'
+  ...
+# Subtest: rechaza COPY incompleto en vez de aceptar una comparación parcial
+ok 13 - rechaza COPY incompleto en vez de aceptar una comparación parcial
+  ---
+  duration_ms: 1.5828
+  type: 'test'
+  ...
+# Subtest: compara filas independientemente de su orden físico
+ok 14 - compara filas independientemente de su orden físico
+  ---
+  duration_ms: 0.4989
+  type: 'test'
+  ...
+# Subtest: conserva multiplicidad de filas en el control de contenido
+ok 15 - conserva multiplicidad de filas en el control de contenido
+  ---
+  duration_ms: 0.2036
+  type: 'test'
+  ...
+# Subtest: publica solo categoría ante excepción SQL con texto privado sin comillas
+ok 16 - publica solo categoría ante excepción SQL con texto privado sin comillas
+  ---
+  duration_ms: 1.2588
+  type: 'test'
+  ...
+# Subtest: clasifica esquema existente sin devolver su nombre
+ok 17 - clasifica esquema existente sin devolver su nombre
+  ---
+  duration_ms: 0.2402
+  type: 'test'
+  ...
+# Subtest: distingue frase de recuperación incorrecta sin publicar stderr
+ok 18 - distingue frase de recuperación incorrecta sin publicar stderr
+  ---
+  duration_ms: 0.1475
+  type: 'test'
+  ...
+# Subtest: reconoce el requisito de preload de pg_net sin publicar SQL
+ok 19 - reconoce el requisito de preload de pg_net sin publicar SQL
+  ---
+  duration_ms: 0.1152
+  type: 'test'
+  ...
+# Subtest: acepta coincidencia de huellas válidas
+ok 20 - acepta coincidencia de huellas válidas
+  ---
+  duration_ms: 0.2514
+  type: 'test'
+  ...
+# Subtest: rechaza diferencia de catálogo después de cargar filas
+ok 21 - rechaza diferencia de catálogo después de cargar filas
+  ---
+  duration_ms: 1.7498
+  type: 'test'
+  ...
+# Subtest: rechaza valores ausentes aunque ambos coincidan
+ok 22 - rechaza valores ausentes aunque ambos coincidan
+  ---
+  duration_ms: 0.2011
+  type: 'test'
+  ...
+# Subtest: rechaza claves públicas para el respaldo privado
+ok 23 - rechaza claves públicas para el respaldo privado
+  ---
+  duration_ms: 1.7003
+  type: 'test'
+  ...
+# Subtest: rechaza JWT de otro proyecto aunque declare service_role
+ok 24 - rechaza JWT de otro proyecto aunque declare service_role
+  ---
+  duration_ms: 0.8142
+  type: 'test'
+  ...
+# Subtest: acepta formato de clave secreta sin persistir su valor
+ok 25 - acepta formato de clave secreta sin persistir su valor
+  ---
+  duration_ms: 0.1131
+  type: 'test'
+  ...
+# Subtest: bloquea escrituras incluso si se dirigen a Storage
+ok 26 - bloquea escrituras incluso si se dirigen a Storage
+  ---
+  duration_ms: 0.4168
+  type: 'test'
+  ...
+# Subtest: bloquea destinos externos y endpoints Auth
+ok 27 - bloquea destinos externos y endpoints Auth
+  ---
+  duration_ms: 0.2292
+  type: 'test'
+  ...
+# Subtest: conserva bytes en descarga GET usando el SDK real y transporte simulado
+ok 28 - conserva bytes en descarga GET usando el SDK real y transporte simulado
+  ---
+  duration_ms: 141.3582
+  type: 'test'
+  ...
+# Subtest: rechaza rutas de objeto que cambian de directorio
+ok 29 - rechaza rutas de objeto que cambian de directorio
+  ---
+  duration_ms: 1.1556
+  type: 'test'
+  ...
+# Subtest: permite listar buckets con GET a través del SDK real
+ok 30 - permite listar buckets con GET a través del SDK real
+  ---
+  duration_ms: 2.6143
+  type: 'test'
+  ...
+# Subtest: rechaza resultado de otro respaldo aunque coincida el catálogo
+ok 31 - rechaza resultado de otro respaldo aunque coincida el catálogo
+  ---
+  duration_ms: 0.5067
+  type: 'test'
+  ...
+# Subtest: rechaza contexto de otro expediente antes de consultar Storage
+ok 32 - rechaza contexto de otro expediente antes de consultar Storage
+  ---
+  duration_ms: 1.6019
+  type: 'test'
+  ...
+1..32
+# tests 32
+# suites 0
+# pass 32
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 389.1718
+

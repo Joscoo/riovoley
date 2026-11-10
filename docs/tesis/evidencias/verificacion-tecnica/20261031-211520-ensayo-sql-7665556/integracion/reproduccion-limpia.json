@@ -1,0 +1,7 @@
+{
+  "previousDatabase": "riovoley_release_20261031211520",
+  "newDatabase": "riovoley_release_20261031212707",
+  "previousDatabasePreserved": true,
+  "onlyLocal": true,
+  "reason": "Comprobar reconstruccion desde cero con los scripts finales y ACL completas."
+}

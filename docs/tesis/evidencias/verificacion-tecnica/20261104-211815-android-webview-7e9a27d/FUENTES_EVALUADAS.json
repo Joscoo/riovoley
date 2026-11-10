@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-11-04T22:00:37.157Z",
+  "baseCommit": "7e9a27dd2b248a626a4440ece2e7227ba5e47ae5",
+  "productSourceChanged": false,
+  "files": [
+    {
+      "file": ".github/workflows/technical-readiness.yml",
+      "sha256": "6f0cca04707ce92f9de2039dc8418f12427bef449185df0320f4b4ab46fb2ffc"
+    },
+    {
+      "file": "docs/produccion/RUNBOOK.md",
+      "sha256": "705fac97045b7edad36758283edaa7d6bd2e6379809b4c71b6a87f03c2bfca91"
+    },
+    {
+      "file": "docs/superpowers/plans/2026-11-04-continuacion-produccion.md",
+      "sha256": "c57f89b1e2689760520684974b3769a2417b798881a9dd2a65aa6b76567c33c8"
+    },
+    {
+      "file": "scripts/audit/production/smoke-signed-android-offline.cjs",
+      "sha256": "e16cff1ab28dcaedf0231536f63acc8e2e858755cb6ac88cab5f20e534b1dede"
+    },
+    {
+      "file": "scripts/audit/android/finalize-runtime.cjs",
+      "sha256": "e3b3f7f2b060df42be64a1534bfae0db018329e71cbf722f7bb6c1856f7c76a6"
+    },
+    {
+      "file": "scripts/audit/android/launch-local-candidate.cjs",
+      "sha256": "c320f4ab635a9544df9f9f797e3177e80d2c9d3b4c5f586b2c008a04e9b48c1f"
+    },
+    {
+      "file": "scripts/audit/android/offline-routes.cjs",
+      "sha256": "e71c041766f5d38f569846d5e43b092ead113e0e427a3152dc8ed66bea234e1a"
+    },
+    {
+      "file": "scripts/audit/android/report-runtime.cjs",
+      "sha256": "b74ebe03c1965fc184028027d52386769b63dbceaff707e0121c4fc035198149"
+    },
+    {
+      "file": "tests/unit/android-offline-routes.test.cjs",
+      "sha256": "5901063db149292e1a0bb9c5311efab48766ef6c5b4176482fba2748e0135505"
+    }
+  ],
+  "functionalSuite": {
+    "file": "scripts/audit/android/authenticated-webview.cjs",
+    "sha256": "ad4465a2ada9da38aa6f35597c3b0144a31336782f7def4d76af840a356b88f2",
+    "unchanged": true
+  },
+  "note": "Snapshot final del arnes y documentos. La adquisicion de rutas main se corrigio tras las ejecuciones; comandos efectivamente ejecutados se conservan en COMANDOS y los limites del resumen."
+}

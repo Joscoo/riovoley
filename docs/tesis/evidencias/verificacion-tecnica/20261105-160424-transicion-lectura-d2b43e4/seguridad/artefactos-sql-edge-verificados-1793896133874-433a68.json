@@ -1,0 +1,356 @@
+{
+  "checkedAt": "2026-11-05T16:28:53.870Z",
+  "fingerprint": "15b9d9e869fb5113263c485714009878",
+  "sql": [
+    {
+      "file": "database/security/production-proposal/20261031211612_riovoley_security_production_proposal.sql",
+      "sha256": "c61f457792f684d22dd3c8ffafcd1b4280dfefafdd66da382943f44347322fb6",
+      "matchesReviewed": true
+    },
+    {
+      "file": "database/security/production-proposal/20261031211612_riovoley_security_return_proposal.sql",
+      "sha256": "c27856e19b750e9f430c57cbb736fff3138bc23197564a7816c367664ff928b3",
+      "matchesReviewed": true
+    },
+    {
+      "file": "database/security/production-proposal/20261101013935_reporting_service_grants_proposal.sql",
+      "sha256": "4c6c9fb9771751b1e0f15920faab664a9400c8f8b39b7288db97e7fdf0ad0d0d",
+      "matchesReviewed": true
+    },
+    {
+      "file": "database/security/production-proposal/20261101013935_reporting_service_return_proposal.sql",
+      "sha256": "5c0904bdd90d93a8d8def5ef780aef5a0a1a44570ab9ed54db78213e599bf333",
+      "matchesReviewed": true
+    }
+  ],
+  "edge": [
+    {
+      "slug": "send-email",
+      "version": 20,
+      "status": "ACTIVE",
+      "verifyJwt": true,
+      "cloudBundleSha256": "9c097c7f94aac8f2399560ebfd184f8f017c082650375ed777a3f05fc46fe909",
+      "matchesPreparedReturnHash": true,
+      "currentMetadataOnly": true,
+      "returnSources": 9
+    },
+    {
+      "slug": "update-user-password",
+      "version": 21,
+      "status": "ACTIVE",
+      "verifyJwt": true,
+      "cloudBundleSha256": "34eedb50281c26d6aec8ef04d7556d3136cb909a2f9eb3f86f773415c1d64649",
+      "matchesPreparedReturnHash": true,
+      "currentMetadataOnly": true,
+      "returnSources": 7
+    },
+    {
+      "slug": "delete-auth-user",
+      "version": 6,
+      "status": "ACTIVE",
+      "verifyJwt": true,
+      "cloudBundleSha256": "a48f507f4b7ae1ccda5ac36ec939ed9dcdf047eaf5174697449fd5a1aedacc49",
+      "matchesPreparedReturnHash": true,
+      "currentMetadataOnly": true,
+      "returnSources": 1
+    },
+    {
+      "slug": "generate-report",
+      "version": 11,
+      "status": "ACTIVE",
+      "verifyJwt": true,
+      "cloudBundleSha256": "9aae62ae304649cd52f9be8aa62d9bffd9b2c42046d7da014fca8ea371dd4a9d",
+      "matchesPreparedReturnHash": true,
+      "currentMetadataOnly": true,
+      "returnSources": 7
+    },
+    {
+      "slug": "generate-scheduled-reports",
+      "version": 11,
+      "status": "ACTIVE",
+      "verifyJwt": true,
+      "cloudBundleSha256": "b640a0903625eb195d26cbc6043940340615b1aa5a56414ff4c1bc1726d6f480",
+      "matchesPreparedReturnHash": true,
+      "currentMetadataOnly": true,
+      "returnSources": 7
+    },
+    {
+      "slug": "delete-report-run",
+      "version": 7,
+      "status": "ACTIVE",
+      "verifyJwt": true,
+      "cloudBundleSha256": "d30e4a2b5c8f3ba2cda9a15345289129ae2b94ab4432f1fe4c36c93ac87cfe40",
+      "matchesPreparedReturnHash": true,
+      "currentMetadataOnly": true,
+      "returnSources": 7
+    },
+    {
+      "slug": "sync-mobile-device",
+      "version": 9,
+      "status": "ACTIVE",
+      "verifyJwt": true,
+      "cloudBundleSha256": "39b175f5e2762166ae0a18c4324025c09b496302f27c86e412bc5f0d1f7cd536",
+      "matchesPreparedReturnHash": true,
+      "currentMetadataOnly": true,
+      "returnSources": 4
+    },
+    {
+      "slug": "send-push",
+      "version": 15,
+      "status": "ACTIVE",
+      "verifyJwt": true,
+      "cloudBundleSha256": "4352841040d00df16572b8c0d20a22c2564f81d266760e306da2e53c16b51fbd",
+      "matchesPreparedReturnHash": true,
+      "currentMetadataOnly": true,
+      "returnSources": 5
+    },
+    {
+      "slug": "send-payment-reminders",
+      "version": 10,
+      "status": "ACTIVE",
+      "verifyJwt": true,
+      "cloudBundleSha256": "6f899b18d9ab91b767e08e9ee58dd0506359a6c8a45287160825e9283c8b8605",
+      "matchesPreparedReturnHash": true,
+      "currentMetadataOnly": true,
+      "returnSources": 4
+    }
+  ],
+  "candidateFiles": [
+    {
+      "file": "supabase/config.toml",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": null
+    },
+    {
+      "file": "supabase/functions/delete-auth-user/deno.json",
+      "privateHashMatches": true,
+      "repositoryFilePresent": false,
+      "sourceMatchesAfterLfNormalization": null
+    },
+    {
+      "file": "supabase/functions/delete-auth-user/index.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/delete-report-run/deno.json",
+      "privateHashMatches": true,
+      "repositoryFilePresent": false,
+      "sourceMatchesAfterLfNormalization": null
+    },
+    {
+      "file": "supabase/functions/delete-report-run/index.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/deno.lock",
+      "privateHashMatches": true,
+      "repositoryFilePresent": false,
+      "sourceMatchesAfterLfNormalization": null
+    },
+    {
+      "file": "supabase/functions/generate-report/deno.json",
+      "privateHashMatches": true,
+      "repositoryFilePresent": false,
+      "sourceMatchesAfterLfNormalization": null
+    },
+    {
+      "file": "supabase/functions/generate-report/index.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/generate-scheduled-reports/deno.json",
+      "privateHashMatches": true,
+      "repositoryFilePresent": false,
+      "sourceMatchesAfterLfNormalization": null
+    },
+    {
+      "file": "supabase/functions/generate-scheduled-reports/index.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/send-email/deno.json",
+      "privateHashMatches": true,
+      "repositoryFilePresent": false,
+      "sourceMatchesAfterLfNormalization": null
+    },
+    {
+      "file": "supabase/functions/send-email/index.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/send-payment-reminders/deno.json",
+      "privateHashMatches": true,
+      "repositoryFilePresent": false,
+      "sourceMatchesAfterLfNormalization": null
+    },
+    {
+      "file": "supabase/functions/send-payment-reminders/index.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/send-push/deno.json",
+      "privateHashMatches": true,
+      "repositoryFilePresent": false,
+      "sourceMatchesAfterLfNormalization": null
+    },
+    {
+      "file": "supabase/functions/send-push/index.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/sync-mobile-device/deno.json",
+      "privateHashMatches": true,
+      "repositoryFilePresent": false,
+      "sourceMatchesAfterLfNormalization": null
+    },
+    {
+      "file": "supabase/functions/sync-mobile-device/index.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/update-user-password/deno.json",
+      "privateHashMatches": true,
+      "repositoryFilePresent": false,
+      "sourceMatchesAfterLfNormalization": null
+    },
+    {
+      "file": "supabase/functions/update-user-password/index.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/_core/auth-admin/application/require-active-staff.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/_core/auth-admin/application/use-cases/delete-auth-user-use-case.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/_core/auth-admin/application/use-cases/update-user-password-use-case.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/_core/auth-admin/domain/auth-admin-error.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/_core/auth-admin/infrastructure/supabase-auth-admin-gateway.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/_core/communications/application/use-cases/send-email-use-case.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/_core/communications/domain/communications-error.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/_core/communications/infrastructure/resend-communications-gateway.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/_core/http/body.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/_core/http/response.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/_core/push/infrastructure/firebase-push-gateway.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/_core/reporting/application/use-cases/delete-report-run-use-case.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/_core/reporting/application/use-cases/generate-report-run-use-case.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/_core/reporting/application/use-cases/generate-scheduled-reports-use-case.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/_core/reporting/domain/reporting-types.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/_core/reporting/infrastructure/legacy-reporting-gateway.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/_shared/cors.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/_shared/relations.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    },
+    {
+      "file": "supabase/functions/_shared/reporting.ts",
+      "privateHashMatches": true,
+      "repositoryFilePresent": true,
+      "sourceMatchesAfterLfNormalization": true
+    }
+  ],
+  "rawCloudBytesDownloaded": false,
+  "scope": "Archivos privados se comparan con manifiesto previo; TS contra repositorio solo tras normalizar CRLF. Metadatos SHA Cloud contra hash de retorno preparado, sin desplegar."
+}

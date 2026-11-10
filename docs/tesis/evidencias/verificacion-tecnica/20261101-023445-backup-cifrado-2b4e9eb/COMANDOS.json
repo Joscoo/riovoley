@@ -1,0 +1,181 @@
+[
+  {
+    "file": "integracion/cifrado-backup-cierre.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/test-encrypted-backup.cjs"
+    ],
+    "start": "2026-11-01T02:49:45.356Z",
+    "end": "2026-11-01T02:49:50.268Z",
+    "durationSeconds": 4.912,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/cifrado-backup-entrega.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/test-encrypted-backup.cjs"
+    ],
+    "start": "2026-11-01T02:51:29.863Z",
+    "end": "2026-11-01T02:51:34.964Z",
+    "durationSeconds": 5.101,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/cifrado-backup-final.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/test-encrypted-backup.cjs"
+    ],
+    "start": "2026-11-01T02:49:19.239Z",
+    "end": "2026-11-01T02:49:24.122Z",
+    "durationSeconds": 4.883,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/cifrado-backup-real-herramientas-02.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/test-encrypted-backup.cjs"
+    ],
+    "start": "2026-11-01T02:43:14.924Z",
+    "end": "2026-11-01T02:43:16.594Z",
+    "durationSeconds": 1.67,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/cifrado-backup-real-herramientas-03.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/test-encrypted-backup.cjs"
+    ],
+    "start": "2026-11-01T02:45:27.994Z",
+    "end": "2026-11-01T02:45:31.067Z",
+    "durationSeconds": 3.073,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/cifrado-backup-real-herramientas-04.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/test-encrypted-backup.cjs"
+    ],
+    "start": "2026-11-01T02:48:20.823Z",
+    "end": "2026-11-01T02:48:24.288Z",
+    "durationSeconds": 3.465,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "integracion/cifrado-backup-real-herramientas.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/test-encrypted-backup.cjs"
+    ],
+    "start": "2026-11-01T02:43:09.339Z",
+    "end": "2026-11-01T02:43:09.422Z",
+    "durationSeconds": 0.083,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/herramientas-asistente.meta.json",
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "scripts/audit/production/check-backup-tools.ps1"
+    ],
+    "start": "2026-11-01T02:50:11.397Z",
+    "end": "2026-11-01T02:50:12.849Z",
+    "durationSeconds": 1.452,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/tls-sin-credenciales-corregido.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      ".e2e-local/institutional-backup/verify-tls.cjs"
+    ],
+    "start": "2026-11-01T02:36:28.433Z",
+    "end": "2026-11-01T02:36:28.907Z",
+    "durationSeconds": 0.474,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/tls-sin-credenciales.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      ".e2e-local/institutional-backup/verify-tls.cjs"
+    ],
+    "start": "2026-11-01T02:36:01.889Z",
+    "end": "2026-11-01T02:36:02.418Z",
+    "durationSeconds": 0.529,
+    "exitCode": 3221225477,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/backup-final.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/production-backup.test.cjs"
+    ],
+    "start": "2026-11-01T02:49:19.228Z",
+    "end": "2026-11-01T02:49:19.425Z",
+    "durationSeconds": 0.197,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/backup-rojo.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/production-backup.test.cjs"
+    ],
+    "start": "2026-11-01T02:39:26.297Z",
+    "end": "2026-11-01T02:39:26.469Z",
+    "durationSeconds": 0.172,
+    "exitCode": 1,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "unitarias/backup-verde.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-reporter=tap",
+      "tests/unit/production-backup.test.cjs"
+    ],
+    "start": "2026-11-01T02:41:05.696Z",
+    "end": "2026-11-01T02:41:05.878Z",
+    "durationSeconds": 0.182,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  }
+]

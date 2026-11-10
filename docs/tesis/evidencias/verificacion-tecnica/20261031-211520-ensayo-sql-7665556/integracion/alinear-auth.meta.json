@@ -1,0 +1,12 @@
+{
+  "command": [
+    "node",
+    "scripts/audit/production/sql-lab.cjs",
+    "align-auth"
+  ],
+  "start": "2026-10-31T21:17:32.121Z",
+  "end": "2026-10-31T21:17:32.395Z",
+  "durationSeconds": 0.274,
+  "exitCode": 0,
+  "signal": null
+}

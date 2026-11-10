@@ -1,0 +1,228 @@
+{
+  "at": "2026-11-09T15:08:08.255Z",
+  "algorithm": "SHA-256",
+  "baseCommit": "b1bbef7dc55d0845acc09bcd3c6ebbda959e32a8",
+  "note": "Excludes this manifest and private runtime ownership records. Do not modify after sealing.",
+  "entries": [
+    {
+      "file": "ALCANCE_SERVICIOS_LOCALES.md",
+      "bytes": 4477,
+      "sha256": "e9f7559129d2179d6f825a40f12d69bcf52562f9750ddbd39bcdd2675c890402"
+    },
+    {
+      "file": "COMANDOS.json",
+      "bytes": 2414,
+      "sha256": "bd153ad8a079c0b668803bfc19b552ae22b25a1935f3f838c324cf3d78ca0070"
+    },
+    {
+      "file": "CONTEXTO.json",
+      "bytes": 1150,
+      "sha256": "ea86119c6c563ccc9e323c7da5f13cb6fe8b4958c7697143071f4e3da3a1791f"
+    },
+    {
+      "file": "FUENTES_EVALUADAS.json",
+      "bytes": 1069,
+      "sha256": "0aa170bbc61f7cd5b43421a3192bd889f2d1a3b37e29256b637836b5b75daaeb"
+    },
+    {
+      "file": "INFORME_VERIFICACION_TECNICA.md",
+      "bytes": 6274,
+      "sha256": "3c823cd7019eb1cdfec9819937262e2cd0916c9aec55b7bcd64219daaa4ffaba"
+    },
+    {
+      "file": "integracion/http-servicios-1794236283119-556f94.json",
+      "bytes": 5662,
+      "sha256": "8f7be11a35f27d66dc4eccc577f813cdf3d1ca9d7ed7ce5cfa84e82937a63c3c"
+    },
+    {
+      "file": "integracion/http-servicios-1794236361405-de0fd9.json",
+      "bytes": 5661,
+      "sha256": "149f9181731aa9be2b2ed7f767065a38f0c7f0349926557975e7cb3bcbc318b2"
+    },
+    {
+      "file": "integracion/http-servicios-1794236393736-19e57a.json",
+      "bytes": 6185,
+      "sha256": "36d1f7cd82cb7b2f221be7a922c67f78458ca5470730e9a0fb57aabe651da971"
+    },
+    {
+      "file": "integracion/http-servicios.json",
+      "bytes": 5682,
+      "sha256": "3599f64b17cfff055aeda738b123c300aecb752227bdff7f21e3ea2290409289"
+    },
+    {
+      "file": "integracion/intento-servicios-1794236283183.json",
+      "bytes": 438,
+      "sha256": "b5355fde80932e6c9198e4cc44f8d01c2f4d7475363a85b5da2aa7a90e537987"
+    },
+    {
+      "file": "integracion/intento-servicios-1794236361412.json",
+      "bytes": 438,
+      "sha256": "0f89a01f981e011e7438348fbbda5da528d32c8296013eb544bebc5bb1fb4475"
+    },
+    {
+      "file": "integracion/intento-servicios-1794236393839.json",
+      "bytes": 438,
+      "sha256": "d9d1e48b3091f9478494531bb9b20ba01b280db1e4a851d4965ec9f132329f71"
+    },
+    {
+      "file": "integracion/limpieza-fixtures-1794236283155-7f30b6.json",
+      "bytes": 239,
+      "sha256": "406e14e93f3aae542b4effb3e4169281b6d0a64a5105f8fd5ffbe192d587d037"
+    },
+    {
+      "file": "integracion/limpieza-fixtures-1794236361410-74cd4a.json",
+      "bytes": 239,
+      "sha256": "406e14e93f3aae542b4effb3e4169281b6d0a64a5105f8fd5ffbe192d587d037"
+    },
+    {
+      "file": "integracion/limpieza-fixtures-1794236393836-cf48d6.json",
+      "bytes": 239,
+      "sha256": "406e14e93f3aae542b4effb3e4169281b6d0a64a5105f8fd5ffbe192d587d037"
+    },
+    {
+      "file": "integracion/limpieza-fixtures.json",
+      "bytes": 198,
+      "sha256": "ca21169ab5f7729a21bb8d8307739ffb82801b8baae921b43fc598e0eb7dd815"
+    },
+    {
+      "file": "integracion/observaciones-auth-storage-1794236283123-a5c949.json",
+      "bytes": 1676,
+      "sha256": "3c800001944273db6eebee8defcbbc52b951e5e09f3e872931c73ef3a6124293"
+    },
+    {
+      "file": "integracion/observaciones-auth-storage-1794236361408-68588f.json",
+      "bytes": 1676,
+      "sha256": "e2a230ba23e40af5ff39949c8d02aaa24e9687549271c41b3234e4d9d7b2b4ba"
+    },
+    {
+      "file": "integracion/observaciones-auth-storage-1794236393833-d0b96b.json",
+      "bytes": 1676,
+      "sha256": "0cc1c44874adf7663f960c69b4e7b033499b5ec56a17eedfa7c4912804bb3841"
+    },
+    {
+      "file": "integracion/observaciones-auth-storage.json",
+      "bytes": 1676,
+      "sha256": "c8b5c77e5652c7ab815b0f24742f86db6663f23eaf8c1d4bdbfb2bd6b3f4c92d"
+    },
+    {
+      "file": "integracion/resultados-servicios-1794236283158-e01ec3.json",
+      "bytes": 3545,
+      "sha256": "5da58e764adb9ddcef986c3d0c64ac93f4cd13a89c3f717814eefa75675285ce"
+    },
+    {
+      "file": "integracion/resultados-servicios-1794236361412-fca833.json",
+      "bytes": 3554,
+      "sha256": "488bba310435f40365ed625bfa22c6d3b6fffe90c9d958e0a38f592dbef11e1f"
+    },
+    {
+      "file": "integracion/resultados-servicios-1794236393839-243436.json",
+      "bytes": 3793,
+      "sha256": "524802b67126e79399c498f2b966b94a41cb459b81e80e4f748d30f46d96f3a4"
+    },
+    {
+      "file": "integracion/resultados-servicios.json",
+      "bytes": 3216,
+      "sha256": "5b732e2cfb5ecb45048ea95df0c7cc33e0d4d2ed482f03ff337cf96782ea9bac"
+    },
+    {
+      "file": "integracion/servicios-http-final.meta.json",
+      "bytes": 269,
+      "sha256": "1e8f9efa9fc1454c828b5e8b84a7c595a8a2a757f2124bacb400a3cc4e7da8da"
+    },
+    {
+      "file": "integracion/servicios-http-final.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/servicios-http-final.stdout.log",
+      "bytes": 235,
+      "sha256": "4c38abd216d66c9d7f0d640023d8f5f1d3a6e15e755f614f52a1e11b68ca2c71"
+    },
+    {
+      "file": "integracion/servicios-http.meta.json",
+      "bytes": 269,
+      "sha256": "00ce3de401e9553f0085059d5e96b4e24c93d37c2dc295141a988731f9e316d9"
+    },
+    {
+      "file": "integracion/servicios-http.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/servicios-http.stdout.log",
+      "bytes": 152,
+      "sha256": "e70dc9ccaad255e69840b563a840e90ccc0e4084327dcac380d66431b1f3ead1"
+    },
+    {
+      "file": "integracion/servicios-regresion-red-conexion-real.meta.json",
+      "bytes": 269,
+      "sha256": "e03a1dd3579a44dd9c820de5678d41ee72934246b2c4b3153852be94ab52459e"
+    },
+    {
+      "file": "integracion/servicios-regresion-red-conexion-real.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/servicios-regresion-red-conexion-real.stdout.log",
+      "bytes": 235,
+      "sha256": "fbd54382e938c80aad3ec316dbd37609121868cfd5589b2d127798a639c4c4db"
+    },
+    {
+      "file": "integracion/servicios-regresion-red.meta.json",
+      "bytes": 269,
+      "sha256": "28618ed3d80fd07bf9584bdec3f57433fc62dd0fe0b0762de73312e3581c2447"
+    },
+    {
+      "file": "integracion/servicios-regresion-red.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/servicios-regresion-red.stdout.log",
+      "bytes": 235,
+      "sha256": "9ed87450f2ce41be03d25af328585f9d7422d6b3b615899b98a4f9f6d7793e0c"
+    },
+    {
+      "file": "INTEGRIDAD.json",
+      "bytes": 651,
+      "sha256": "3a4c43bdcd5870fb864fbadba110b137526f8809083f4bf32f4ce8b8cd4f0aeb"
+    },
+    {
+      "file": "MATRIZ_VERIFICACIONES_TESIS.md",
+      "bytes": 4372,
+      "sha256": "563c3aa49291efbe4ae7b2e80f1ae1427f174c4d4b630b93956d97ad0d93c70a"
+    },
+    {
+      "file": "PRIVACIDAD.json",
+      "bytes": 499,
+      "sha256": "4d8be64c9ed5029e4c0f51207047012493498bbf9e7698804b60ecb7a37d2d68"
+    },
+    {
+      "file": "RESULTADOS_AUTOMATIZADOS.json",
+      "bytes": 2346,
+      "sha256": "a17ccd0cc9e5ce025df796ecaab2af9c39a2168eb3ca061ecb7c56d58c81b430"
+    },
+    {
+      "file": "RESULTADOS_PARA_TESIS_4_5.md",
+      "bytes": 1927,
+      "sha256": "4ee17407ec4d740354ffc2d4f520d5c8e5353bc78d4fe9ce08c800e3a889a501"
+    },
+    {
+      "file": "seguridad/configuracion-auth-local.json",
+      "bytes": 462,
+      "sha256": "a099f86af699e2b2c98d1473cfabb2356aec5e9e180c33be4aa5cb6d99f768f4"
+    },
+    {
+      "file": "seguridad/documentacion-consultada.json",
+      "bytes": 600,
+      "sha256": "fc12763d083cb1d760451084b758fe28bf0561cd7f0d42b647cf3d39cdc9e899"
+    },
+    {
+      "file": "seguridad/revision-independiente.json",
+      "bytes": 659,
+      "sha256": "da7a819a8829fd028fda55d418981b7fbc3d2bb401a1852a2446008064f56a46"
+    }
+  ]
+}

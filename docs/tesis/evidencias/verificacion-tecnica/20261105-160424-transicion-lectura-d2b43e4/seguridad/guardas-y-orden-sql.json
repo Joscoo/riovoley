@@ -1,0 +1,58 @@
+{
+  "checkedAt": "2026-11-05T16:19:10.339Z",
+  "files": [
+    {
+      "file": "database/security/production-proposal/20261031211612_riovoley_security_production_proposal.sql",
+      "guardFingerprints": [
+        "15b9d9e869fb5113263c485714009878"
+      ],
+      "startsTransaction": true,
+      "commits": true,
+      "containsApprovalGuard": true,
+      "containsClosedClientGuard": true
+    },
+    {
+      "file": "database/security/production-proposal/20261031211612_riovoley_security_return_proposal.sql",
+      "guardFingerprints": [
+        "500d15ffa5fa23aeddb47e5c21cd1d13",
+        "15b9d9e869fb5113263c485714009878"
+      ],
+      "startsTransaction": true,
+      "commits": true,
+      "containsApprovalGuard": true,
+      "containsClosedClientGuard": true
+    },
+    {
+      "file": "database/security/production-proposal/20261101013935_reporting_service_grants_proposal.sql",
+      "guardFingerprints": [
+        "500d15ffa5fa23aeddb47e5c21cd1d13"
+      ],
+      "startsTransaction": true,
+      "commits": true,
+      "containsApprovalGuard": true,
+      "containsClosedClientGuard": true
+    },
+    {
+      "file": "database/security/production-proposal/20261101013935_reporting_service_return_proposal.sql",
+      "guardFingerprints": [
+        "38434a2af96ad410967032b00a0828ac",
+        "500d15ffa5fa23aeddb47e5c21cd1d13"
+      ],
+      "startsTransaction": true,
+      "commits": true,
+      "containsApprovalGuard": true,
+      "containsClosedClientGuard": true
+    }
+  ],
+  "forwardOrder": [
+    "database/security/production-proposal/20261031211612_riovoley_security_production_proposal.sql",
+    "database/security/production-proposal/20261101013935_reporting_service_grants_proposal.sql"
+  ],
+  "returnOrder": [
+    "database/security/production-proposal/20261101013935_reporting_service_return_proposal.sql",
+    "database/security/production-proposal/20261031211612_riovoley_security_return_proposal.sql"
+  ],
+  "markersAreNotApproval": true,
+  "markersDoNotProveMaintenance": true,
+  "sqlExecuted": false
+}

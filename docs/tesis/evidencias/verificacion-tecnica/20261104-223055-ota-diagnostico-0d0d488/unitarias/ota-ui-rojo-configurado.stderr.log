@@ -1,0 +1,57 @@
+FAIL src/App.otaDiagnostics.test.js
+  ● Test suite failed to run
+
+    ReferenceError: D:\Riovoley\riovoley\src\App.otaDiagnostics.test.js: The module factory of `jest.mock()` is not allowed to reference any out-of-scope variables.
+    Invalid variable access: window
+    Allowed objects: AbortController, AbortSignal, AggregateError, Array, ArrayBuffer, AsyncDisposableStack, Atomics, BigInt, BigInt64Array, BigUint64Array, Blob, Boolean, BroadcastChannel, Buffer, ByteLengthQueuingStrategy, CloseEvent, CompressionStream, CountQueuingStrategy, Crypto, CryptoKey, CustomEvent, DOMException, DataView, Date, DecompressionStream, DisposableStack, Error, EvalError, Event, EventTarget, File, FinalizationRegistry, Float16Array, Float32Array, Float64Array, FormData, Function, Generator, GeneratorFunction, Headers, Infinity, Int16Array, Int32Array, Int8Array, InternalError, Intl, Iterator, JSON, Map, Math, MessageChannel, MessageEvent, MessagePort, NaN, Navigator, Number, Object, Performance, PerformanceEntry, PerformanceMark, PerformanceMeasure, PerformanceObserver, PerformanceObserverEntryList, PerformanceResourceTiming, Promise, Proxy, RangeError, ReadableByteStreamController, ReadableStream, ReadableStreamBYOBReader, ReadableStreamBYOBRequest, ReadableStreamDefaultController, ReadableStreamDefaultReader, ReferenceError, Reflect, RegExp, Request, Response, Set, SharedArrayBuffer, String, SubtleCrypto, SuppressedError, Symbol, SyntaxError, TextDecoder, TextDecoderStream, TextEncoder, TextEncoderStream, TransformStream, TransformStreamDefaultController, TypeError, URIError, URL, URLPattern, URLSearchParams, Uint16Array, Uint32Array, Uint8Array, Uint8ClampedArray, WeakMap, WeakRef, WeakSet, WebAssembly, WebSocket, WritableStream, WritableStreamDefaultController, WritableStreamDefaultWriter, __dirname, __filename, arguments, atob, btoa, clearImmediate, clearInterval, clearTimeout, console, crypto, decodeURI, decodeURIComponent, encodeURI, encodeURIComponent, escape, eval, expect, exports, fetch, global, globalThis, isFinite, isNaN, jest, module, navigator, parseFloat, parseInt, performance, process, queueMicrotask, require, setImmediate, setInterval, setTimeout, structuredClone, undefined, unescape.
+    Note: This is a precaution to guard against uninitialized mock variables. If it is ensured that the mock is required lazily, variable names prefixed with `mock` (case insensitive) are permitted.
+
+    [0m [90m 14 |[39m   [36mreturn[39m {
+     [90m 15 |[39m     [33mBrowserRouter[39m[33m:[39m ({ children }) [33m=>[39m [33mReact[39m[33m.[39mcreateElement([33mReact[39m[33m.[39m[33mFragment[39m[33m,[39m [36mnull[39m[33m,[39m children)[33m,[39m
+    [31m[1m>[22m[39m[90m 16 |[39m     [33mRoutes[39m[33m:[39m ({ children }) [33m=>[39m [33mReact[39m[33m.[39m[33mChildren[39m[33m.[39mtoArray(children)[33m.[39mfind(child [33m=>[39m child[33m.[39mprops[33m.[39mpath [33m===[39m window[33m.[39mlocation[33m.[39mpathname) [33m||[39m [36mnull[39m[33m,[39m
+     [90m    |[39m                                                                                                   [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+     [90m 17 |[39m     [33mRoute[39m[33m:[39m ({ element }) [33m=>[39m element[33m,[39m
+     [90m 18 |[39m     useLocation[33m:[39m () [33m=>[39m ({ pathname[33m:[39m window[33m.[39mlocation[33m.[39mpathname })[33m,[39m
+     [90m 19 |[39m     useNavigate[33m:[39m () [33m=>[39m navigate[33m,[39m[0m
+
+      at File.buildError [as buildCodeFrameError] (node_modules/@babel/core/src/transformation/file/file.ts:251:12)
+      at NodePath.buildCodeFrameError (node_modules/@babel/traverse/src/path/index.ts:161:21)
+      at call (node_modules/@babel/traverse/src/visitors.ts:299:14)
+      at NodePath.call [as _call] (node_modules/@babel/traverse/src/path/context.ts:36:20)
+      at NodePath.call (node_modules/@babel/traverse/src/path/context.ts:21:18)
+      at NodePath.visit (node_modules/@babel/traverse/src/path/context.ts:97:31)
+      at TraversalContext.visitQueue (node_modules/@babel/traverse/src/context.ts:161:16)
+      at TraversalContext.visitMultiple (node_modules/@babel/traverse/src/context.ts:109:17)
+      at TraversalContext.visit (node_modules/@babel/traverse/src/context.ts:192:19)
+      at traverseNode (node_modules/@babel/traverse/src/traverse-node.ts:208:17)
+      at NodePath.visit (node_modules/@babel/traverse/src/path/context.ts:104:33)
+      at TraversalContext.visitQueue (node_modules/@babel/traverse/src/context.ts:161:16)
+      at TraversalContext.visitSingle (node_modules/@babel/traverse/src/context.ts:119:19)
+      at TraversalContext.visit (node_modules/@babel/traverse/src/context.ts:194:19)
+      at traverseNode (node_modules/@babel/traverse/src/traverse-node.ts:208:17)
+      at traverse (node_modules/@babel/traverse/src/index.ts:84:15)
+      at transformFile (node_modules/@babel/core/src/transformation/index.ts:120:15)
+          at transformFile.next (<anonymous>)
+      at run (node_modules/@babel/core/src/transformation/index.ts:50:12)
+          at run.next (<anonymous>)
+      at transform (node_modules/@babel/core/src/transform.ts:29:20)
+          at transform.next (<anonymous>)
+      at evaluateSync (node_modules/gensync/index.js:251:28)
+      at fn (node_modules/gensync/index.js:89:14)
+      at stopHiding - secret - don't use this - v1 (node_modules/@babel/core/src/errors/rewrite-stack-trace.ts:99:14)
+      at transformSync (node_modules/@babel/core/src/transform.ts:66:52)
+      at ScriptTransformer.transformSource (node_modules/@jest/transform/build/ScriptTransformer.js:619:31)
+      at ScriptTransformer._transformAndBuildScript (node_modules/@jest/transform/build/ScriptTransformer.js:765:40)
+      at ScriptTransformer.transform (node_modules/@jest/transform/build/ScriptTransformer.js:822:19)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+Test Suites: 1 failed, 1 total
+Tests:       0 total
+Snapshots:   0 total
+Time:        2.106 s
+Ran all test suites within paths "src/App.otaDiagnostics.test.js".
+Test results written to: docs\tesis\evidencias\verificacion-tecnica\20261104-223055-ota-diagnostico-0d0d488\unitarias\ota-ui-rojo-configurado.json
+

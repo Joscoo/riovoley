@@ -1,0 +1,77 @@
+{
+  "algorithm": "SHA-256",
+  "selfExcluded": true,
+  "generatedAt": "2026-10-31T20:47:09.064Z",
+  "entries": [
+    {
+      "file": "candidato.json",
+      "bytes": 163,
+      "sha256": "db076b7ce1bfeaa761b29ba382745166f571dc434c8f8a59d3f63640e03c5e3e"
+    },
+    {
+      "file": "candidato.meta.json",
+      "bytes": 619,
+      "sha256": "0f88019dc35604bd252dddcbcb6219c878984db19d341a24d9617d5ef61af385"
+    },
+    {
+      "file": "COMANDOS.json",
+      "bytes": 2253,
+      "sha256": "b3b617ac0193860b7e275266ac6a50c888ac10379d59023545048a48bda9db0d"
+    },
+    {
+      "file": "despliegue.json",
+      "bytes": 635,
+      "sha256": "109bfc63ef0dfab1b075cd708b5cc38a549ecfe064dd3fca7232c804a4686b1b"
+    },
+    {
+      "file": "despliegue.meta.json",
+      "bytes": 495,
+      "sha256": "16f15d85fe8931df3664fceb1fd99314a000c98cff9b07c4cfdf350d97c4f1f9"
+    },
+    {
+      "file": "dominios.json",
+      "bytes": 446,
+      "sha256": "1bd8ba727caffec19cb34d0428070f012d836dbd2efe61fbc499cbd35f2e774e"
+    },
+    {
+      "file": "dominios.meta.json",
+      "bytes": 519,
+      "sha256": "711bc88d6c3d95040c62b3d31c20d5e8bb61a212c4914e8c2a1186689ad30467"
+    },
+    {
+      "file": "INFORME_VERIFICACION_VERCEL.md",
+      "bytes": 4419,
+      "sha256": "461e68c2c63a0fe881d39e43dc47996cff7ff54a61d207b0bdf55fd61a519607"
+    },
+    {
+      "file": "INTEGRIDAD.json",
+      "bytes": 372,
+      "sha256": "b7426809b2d50e2e9f204566873db644bd02e045e35adffe68b42c50d0a6b4c7"
+    },
+    {
+      "file": "proyecto.json",
+      "bytes": 2990,
+      "sha256": "509da36b0a03c67f1c700750861e5feeb417fd25d50fd0592846f36843ceb5a0"
+    },
+    {
+      "file": "proyecto.meta.json",
+      "bytes": 437,
+      "sha256": "049a55cb12c1b71eeeb33d8d1a66accd3673c67e00ac70d6ed2655bb9a088397"
+    },
+    {
+      "file": "publico.json",
+      "bytes": 2695,
+      "sha256": "b0ebb159675664d70c0c49c8ba2e23d327aa3ccb443cea496a6a3ca6704b2f7f"
+    },
+    {
+      "file": "RESUMEN.json",
+      "bytes": 1905,
+      "sha256": "411ce7def6a5622c2c480f13a87fbeb22e6d83f254bf186061449c72337fa0f1"
+    },
+    {
+      "file": "variables-presencia.json",
+      "bytes": 450,
+      "sha256": "e2909c7bf0130f5c28d18335a93ce2ab5c7bdb3ce9ace178a5e33c8b360df19a"
+    }
+  ]
+}

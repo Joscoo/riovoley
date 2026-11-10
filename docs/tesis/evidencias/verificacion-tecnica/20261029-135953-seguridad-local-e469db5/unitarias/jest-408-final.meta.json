@@ -1,0 +1,19 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/react-scripts/bin/react-scripts.js",
+    "test",
+    "--watchAll=false",
+    "--runInBand",
+    "--coverage",
+    "--coverageDirectory=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261029-135953-seguridad-local-e469db5\\unitarias\\cobertura",
+    "--json",
+    "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261029-135953-seguridad-local-e469db5\\unitarias\\jest-408-final.json"
+  ],
+  "start": "2026-10-29T14:32:06.838Z",
+  "end": "2026-10-29T14:33:24.819Z",
+  "durationSeconds": 77.981,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

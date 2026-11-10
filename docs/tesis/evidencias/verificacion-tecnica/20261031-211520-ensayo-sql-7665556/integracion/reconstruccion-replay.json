@@ -1,0 +1,10 @@
+{
+  "database": "riovoley_release_20261031212707",
+  "baselineFingerprint": "15b9d9e869fb5113263c485714009878",
+  "actualFingerprint": "15b9d9e869fb5113263c485714009878",
+  "tables": 47,
+  "functions": 38,
+  "policies": 139,
+  "views": 44,
+  "localVersion": "17.11"
+}

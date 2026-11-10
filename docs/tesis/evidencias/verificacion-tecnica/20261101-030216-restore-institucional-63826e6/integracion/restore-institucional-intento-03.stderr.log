@@ -1,0 +1,2 @@
+{"stage":"RESTORE_FAILED","toolExitCode":null,"errorType":"Error","frames":["    at Object.dockerArgs (D:\\Riovoley\\riovoley\\scripts\\e2e\\local\\safety.cjs:14:72)","    at execute (D:\\Riovoley\\riovoley\\scripts\\production\\restore-isolated.cjs:24:66)","    at run (D:\\Riovoley\\riovoley\\scripts\\production\\restore-isolated.cjs:41:60)"],"rawDiagnosticsPublished":false}
+

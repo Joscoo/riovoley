@@ -1,0 +1,28 @@
+{
+  "recordedAt": "2026-11-09T14:37:00.536Z",
+  "reviewer": "review_packet_integration",
+  "mode": "static_read_only",
+  "initialFindings": [
+    {
+      "severity": "P2",
+      "finding": "Final attempt artifacts need exact allocated links",
+      "state": "RESOLVED"
+    },
+    {
+      "severity": "P3",
+      "finding": "Execute exact persisted SQL bytes or distinguish hashes",
+      "state": "RESOLVED"
+    },
+    {
+      "severity": "P2",
+      "finding": "Reruns must not select older canonical attempt pointer",
+      "state": "RESOLVED"
+    }
+  ],
+  "resolution": "Exact attempt manifest, persisted-byte execution/hash assertions, newest validated manifest selector, 3 synthetic unit regressions and repeated22/22 SQL controls.",
+  "reviewerConfirmedNoRemainingP2": true,
+  "unresolvedFindings": 0,
+  "reviewerReranTests": false,
+  "productionTargetingBlockers": 0,
+  "scope": "Packet context/gate/rehearsal and final attempt linkage; no independent DB/service validation or full academic report review."
+}

@@ -1,0 +1,333 @@
+{
+  "at": "2026-11-09T15:48:50.430Z",
+  "algorithm": "SHA-256",
+  "baseCommit": "f0b89f4a6136c17d881a72c36c7b484aeefb6c06",
+  "note": "Excludes this manifest and private cache/candidate files; shared-source and audit-source hashes included in evidence. Immutable after sealing.",
+  "entries": [
+    {
+      "file": "ALCANCE_EDGE_Y_CAMBIO.md",
+      "bytes": 5133,
+      "sha256": "6af78996c0023b2e321bacd610961b532530d487644712360cbafe2d97adf127"
+    },
+    {
+      "file": "COMANDOS.json",
+      "bytes": 8826,
+      "sha256": "621e68d87833434ba36dd4e2c1f8f5ee6d65cd0a0424239702e297adf18d4006"
+    },
+    {
+      "file": "CONTEXTO.json",
+      "bytes": 767,
+      "sha256": "c16b9670309f60dc36aa0a102c3cb55cdb0a12c81790c30bc794196a90aa83c6"
+    },
+    {
+      "file": "FUENTES_EVALUADAS.json",
+      "bytes": 1801,
+      "sha256": "43e0316ae3b7a4a1c715e2977775688809d979bc80aa8084acea9df90a6d431f"
+    },
+    {
+      "file": "INFORME_VERIFICACION_TECNICA.md",
+      "bytes": 5811,
+      "sha256": "61fe759d794a3aa33fb715f3cc9f2af4fa6c4136b72f02c632cea1b7a0d01cb6"
+    },
+    {
+      "file": "integracion/casos-green-1794238392821-383d5a.json",
+      "bytes": 23660,
+      "sha256": "141c2499b20410c7aed07f936e3cbb1805303f14e1f8d9706780338e40c53bed"
+    },
+    {
+      "file": "integracion/casos-green.json",
+      "bytes": 23663,
+      "sha256": "730dbdc43b7773b434850c84490213cd7eebe971724b41ab8279b342d110cec9"
+    },
+    {
+      "file": "integracion/casos-red.json",
+      "bytes": 3725,
+      "sha256": "d1ea08827e485e696f6b17996ea1d84a87bf2112a9b642dc4dcef63046fbd69d"
+    },
+    {
+      "file": "integracion/contratos-edge.meta.json",
+      "bytes": 278,
+      "sha256": "5cb57283b5ac0f670116feadce684af8abb1bcb4b004ae940aa00fd0f975a731"
+    },
+    {
+      "file": "integracion/contratos-edge.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/contratos-edge.stdout.log",
+      "bytes": 7447,
+      "sha256": "3f0c77899ddc2b87652a468b143b2d41267277e13839cd90797c82ea61a53864"
+    },
+    {
+      "file": "integracion/deno-version.meta.json",
+      "bytes": 287,
+      "sha256": "7929a90bd32186c8c1c6971730629a5d9cd5dca2390ac2f53c0efea4f25e514f"
+    },
+    {
+      "file": "integracion/deno-version.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/deno-version.stdout.log",
+      "bytes": 91,
+      "sha256": "6219469dff6572038f990451e602b350565a3514fa9e0997b49b9a83d74c6184"
+    },
+    {
+      "file": "integracion/edge-cases-green-1794238390727.meta.json",
+      "bytes": 285,
+      "sha256": "35aac20b11164bdd1a1d651e5f7e82dcc1b03214b53736810af80830a740e952"
+    },
+    {
+      "file": "integracion/edge-cases-green-1794238390727.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/edge-cases-green-1794238390727.stdout.log",
+      "bytes": 116,
+      "sha256": "efc4a8995d26e177d2f61902129d9bfb6da968dee51a159707959b35362aca99"
+    },
+    {
+      "file": "integracion/edge-cases-green.meta.json",
+      "bytes": 285,
+      "sha256": "a417cae299acadb56515198738b7f0d3c38b7f6712b455cb09c23575cee292b6"
+    },
+    {
+      "file": "integracion/edge-cases-green.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/edge-cases-green.stdout.log",
+      "bytes": 116,
+      "sha256": "efc4a8995d26e177d2f61902129d9bfb6da968dee51a159707959b35362aca99"
+    },
+    {
+      "file": "integracion/edge-cases-red.meta.json",
+      "bytes": 283,
+      "sha256": "5eb4fe979c9d4b21e28d4ae4b7dc71d5e41c9b3305351d0c8ef007529ebcca2b"
+    },
+    {
+      "file": "integracion/edge-cases-red.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/edge-cases-red.stdout.log",
+      "bytes": 112,
+      "sha256": "b45613d36131aa54c29888f0c5545f35c66b7c7efdb3bd4c4d1a76cd327b500e"
+    },
+    {
+      "file": "integracion/edge-server-green-1794238389962.meta.json",
+      "bytes": 763,
+      "sha256": "5027d567f38b442d21f6a58d8b882c71cd76cbc304382ef31443be69be6448c3"
+    },
+    {
+      "file": "integracion/edge-server-green-1794238389962.stderr.log",
+      "bytes": 160,
+      "sha256": "b46929eab7ae9356e9b708b3af7df26ab3c781b3d7738919f60da5504e0a4cd9"
+    },
+    {
+      "file": "integracion/edge-server-green-1794238389962.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/edge-server-green.meta.json",
+      "bytes": 763,
+      "sha256": "b7df32c18de757b14e45ea25de9e91347ed5f1427ee1cb80f7f6e329352dda52"
+    },
+    {
+      "file": "integracion/edge-server-green.stderr.log",
+      "bytes": 160,
+      "sha256": "3cbe805641b3fb91db63df5f99a6517731e19d6b512243c16a4a223e87a586ec"
+    },
+    {
+      "file": "integracion/edge-server-green.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/edge-server-red.meta.json",
+      "bytes": 756,
+      "sha256": "c24d5ea56b15e6785587f304ba7b9b03bbef7c877db20b8672838572b16b263c"
+    },
+    {
+      "file": "integracion/edge-server-red.stderr.log",
+      "bytes": 160,
+      "sha256": "32b9275122fe3da45a939908dba5dfc8e980b594de6552036a9ab55168c3e8cf"
+    },
+    {
+      "file": "integracion/edge-server-red.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/indice-intentos-1794239258477-36085e.json",
+      "bytes": 1781,
+      "sha256": "597e89d839a5e34f2d94bcbaba5d4766ebc99ab36b717408e0e7c811ab118b50"
+    },
+    {
+      "file": "integracion/indice-intentos.json",
+      "bytes": 1781,
+      "sha256": "a0949fd55e62a89938d17d63deae32c865297c71bd35f1e5a85e3ab16d249369"
+    },
+    {
+      "file": "integracion/informe-final.meta.json",
+      "bytes": 273,
+      "sha256": "d1a33c0a78f1639a34969d79a0fea06603064e535972c72a149c1d4ae24b7c4e"
+    },
+    {
+      "file": "integracion/informe-final.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/informe-final.stdout.log",
+      "bytes": 103,
+      "sha256": "6f69e414a955ec0bf5819539c51b8001cd0c9d479151d58fa5c34abc6420984e"
+    },
+    {
+      "file": "integracion/procedencia-candidato-corregido.meta.json",
+      "bytes": 277,
+      "sha256": "278b5c58893a19e533e0c444d95c2b990896301ad64fb3c2f61b79a5e3c3a36e"
+    },
+    {
+      "file": "integracion/procedencia-candidato-corregido.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/procedencia-candidato-corregido.stdout.log",
+      "bytes": 97,
+      "sha256": "a02067f3c738b6b6692207f6aaeba57036ff2f31f55cc2bbb899a6df127789a1"
+    },
+    {
+      "file": "integracion/procedencia-candidato.meta.json",
+      "bytes": 277,
+      "sha256": "bb513bba96b87681fd9eecafce0858c5f25aabd3416ce9f87f93db498e1ba6b9"
+    },
+    {
+      "file": "integracion/procedencia-candidato.stderr.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/procedencia-candidato.stdout.log",
+      "bytes": 97,
+      "sha256": "75a2e6e3afb653fd9c30c3e394c46d2066cbfae8dc62080c121a0159f4a076fd"
+    },
+    {
+      "file": "integracion/sync-typecheck-candidato-corregido.meta.json",
+      "bytes": 732,
+      "sha256": "af0f4f55f101d36ca46a2f12ba123bdcc085f813aa58b8ed66b73c8717db8c4d"
+    },
+    {
+      "file": "integracion/sync-typecheck-candidato-corregido.stderr.log",
+      "bytes": 3009,
+      "sha256": "cfebcbe54b29d2a3a0c190d79d269e04e9af700d46c3aab677ce29a59233e0fd"
+    },
+    {
+      "file": "integracion/sync-typecheck-candidato-corregido.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/sync-typecheck-candidato-frozen.meta.json",
+      "bytes": 731,
+      "sha256": "294bf53a7f6510f1d08d7a429b608ddcd1e7304d2b0ebf75a298393931edccfd"
+    },
+    {
+      "file": "integracion/sync-typecheck-candidato-frozen.stderr.log",
+      "bytes": 116,
+      "sha256": "fd914854851e06084be1be4a81a4044c5b1e1894970a8d252405f298c1d5634a"
+    },
+    {
+      "file": "integracion/sync-typecheck-candidato-frozen.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "integracion/sync-typecheck.meta.json",
+      "bytes": 501,
+      "sha256": "4334c8fb334cdc805f26b9644ba95ae3b1e6e74637e3fec48428a15c0be1ed2e"
+    },
+    {
+      "file": "integracion/sync-typecheck.stderr.log",
+      "bytes": 54,
+      "sha256": "cb1c617fd09fe8948d6ed873383171a1e4baa2bf1b0f9657440bbb1f1d93acf5"
+    },
+    {
+      "file": "integracion/sync-typecheck.stdout.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "file": "INTEGRIDAD.json",
+      "bytes": 622,
+      "sha256": "ee3bcad1917834643d291968800ff977d0978783979d1f29a14cb59d97f5a5fc"
+    },
+    {
+      "file": "MATRIZ_VERIFICACIONES_TESIS.md",
+      "bytes": 4005,
+      "sha256": "c3f9512dff304d4507dd731176de394906ef467c164bbf44dfdf426e311f7a6a"
+    },
+    {
+      "file": "PRIVACIDAD.json",
+      "bytes": 413,
+      "sha256": "464f88d077b164f098b190cc31692bfd6e528bd162af221f1ac81e5c0f4d1ec7"
+    },
+    {
+      "file": "RESULTADOS_AUTOMATIZADOS.json",
+      "bytes": 3202,
+      "sha256": "6c7c167e4d031817300e0af00a7af30e79ab20653bfdc507d92292cf42201c95"
+    },
+    {
+      "file": "RESULTADOS_PARA_TESIS_4_5.md",
+      "bytes": 1756,
+      "sha256": "d439264759556755c9b1333c5175895c397c6fa7157f535ce8fcaf1effd5bb19"
+    },
+    {
+      "file": "seguridad/cambio-sync-mobile-device.diff",
+      "bytes": 1853,
+      "sha256": "e55001ea9673c36a75527fa155c3f75636a66f764994fb9fcbe143eecf9246d8"
+    },
+    {
+      "file": "seguridad/candidato-fuentes-actualizado.json",
+      "bytes": 15601,
+      "sha256": "e51031a3430d3816714131e22abefff2664499794ce9352cee4232a2d01a414e"
+    },
+    {
+      "file": "seguridad/candidato-fuentes-corregido.json",
+      "bytes": 15588,
+      "sha256": "6676907f803a130f59fafe50b2ec162a478b576a89685b0251a4d5566a4d74af"
+    },
+    {
+      "file": "seguridad/incidencia-config-candidato.json",
+      "bytes": 667,
+      "sha256": "c12557d709b02d6b2956c59914ad16b710235a10fa2babcb1ce2037a1f51c971"
+    },
+    {
+      "file": "seguridad/incidencia-preparacion-candidato.json",
+      "bytes": 439,
+      "sha256": "b5fd4e0553c7e742b4bc3b95dc86a8ae0a74ea409a0f147d197db98224293d17"
+    },
+    {
+      "file": "seguridad/procedencia-arnes-corregida.json",
+      "bytes": 1027,
+      "sha256": "53783ba389abbb0792d40a5217d00813a30c97fe2b8c406fc210fef67a72ba22"
+    },
+    {
+      "file": "seguridad/procedencia-arnes.json",
+      "bytes": 1027,
+      "sha256": "c1a34059e54db8219091b56418cf17c403cae70abc7698d41be715e98cd4319e"
+    },
+    {
+      "file": "seguridad/revision-independiente.json",
+      "bytes": 385,
+      "sha256": "8770e67a25ecc214baaa7f010d45082a23e3596b0f809d0d919159c570c591af"
+    }
+  ]
+}

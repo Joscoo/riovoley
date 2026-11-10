@@ -34,7 +34,7 @@ describe('NotificationBell access by role', () => {
     expect(screen.getByLabelText('Notificaciones')).toBeInTheDocument();
 
     await waitFor(() => {
-      expect(mockLoadBellNotifications).toHaveBeenCalledWith({ userRole: 'entrenador', userId: 'u1' });
+      expect(mockLoadBellNotifications).toHaveBeenCalledWith({ userRole: 'entrenador', userId: 'u1', signal: expect.any(AbortSignal) });
     });
   });
 });

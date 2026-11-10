@@ -1,0 +1,16 @@
+PASS src/App.otaDiagnostics.test.js
+  √ la portada normal no ofrece controles tecnicos OTA aunque la plataforma los soporte (76 ms)
+  √ el valor false mantiene oculto el diagnostico nativo (38 ms)
+  √ un valor distinto de true no activa controles manuales (32 ms)
+  √ una compilacion de diagnostico explicita permite abrir el panel en portada (70 ms)
+  √ la activacion explicita no agrega el panel fuera de la portada (331 ms)
+  √ una plataforma sin soporte no muestra el panel ni con activacion explicita (24 ms)
+  √ ocultar el diagnostico conserva el bootstrap y la confirmacion de app lista (38 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       7 passed, 7 total
+Snapshots:   0 total
+Time:        3.132 s
+Ran all test suites within paths "src/App.otaDiagnostics.test.js".
+Test results written to: docs\tesis\evidencias\verificacion-tecnica\20261104-223055-ota-diagnostico-0d0d488\unitarias\ota-ui-verde.json
+

@@ -1,0 +1,61 @@
+Creating an optimized production build...
+Compiled successfully.
+
+File sizes after gzip:
+
+  200.93 kB  build-web\static\js\main.b79b4907.js
+  137.32 kB  build-web\static\js\291.2c352763.chunk.js
+  103.56 kB  build-web\static\js\743.989676f4.chunk.js
+  46.31 kB   build-web\static\js\52.63675f85.chunk.js
+  33.51 kB   build-web\static\js\265.19ca3487.chunk.js
+  27.14 kB   build-web\static\js\881.e66168aa.chunk.js
+  25.63 kB   build-web\static\js\681.54e07235.chunk.js
+  24.92 kB   build-web\static\css\main.97b2e3dc.css
+  22.02 kB   build-web\static\js\806.c6f912c4.chunk.js
+  17.22 kB   build-web\static\js\175.37a541f4.chunk.js
+  16.81 kB   build-web\static\js\51.cc0cc9d9.chunk.js
+  14.6 kB    build-web\static\js\153.dc225f9a.chunk.js
+  13.9 kB    build-web\static\js\327.0e93fae6.chunk.js
+  13.28 kB   build-web\static\js\516.8bac3147.chunk.js
+  11.7 kB    build-web\static\js\82.36c20ece.chunk.js
+  10.46 kB   build-web\static\js\963.62ddf2ba.chunk.js
+  9.3 kB     build-web\static\js\957.398978c0.chunk.js
+  8.75 kB    build-web\static\js\377.245bfe2e.chunk.js
+  8.5 kB     build-web\static\js\116.8df0e7ae.chunk.js
+  7.39 kB    build-web\static\js\331.1a781883.chunk.js
+  6.9 kB     build-web\static\js\798.c3cc2e77.chunk.js
+  5.74 kB    build-web\static\js\50.75319cb8.chunk.js
+  5.45 kB    build-web\static\js\982.7efc97a8.chunk.js
+  5.36 kB    build-web\static\js\145.74b2697a.chunk.js
+  4.14 kB    build-web\static\js\290.5d9df275.chunk.js
+  3.55 kB    build-web\static\js\588.d203d85c.chunk.js
+  3.34 kB    build-web\static\js\656.4627002a.chunk.js
+  3.14 kB    build-web\static\js\365.0d26a9c0.chunk.js
+  3.1 kB     build-web\static\js\601.8e665f71.chunk.js
+  2.94 kB    build-web\static\js\126.97cd30b5.chunk.js
+  2.59 kB    build-web\static\js\747.ebb1613e.chunk.js
+  2.35 kB    build-web\static\js\323.2fddc578.chunk.js
+  2.16 kB    build-web\static\js\245.901d1ce8.chunk.js
+  2.1 kB     build-web\static\js\403.be88020a.chunk.js
+  2.01 kB    build-web\static\js\275.a3b8b9c9.chunk.js
+  1.72 kB    build-web\static\js\206.5267047a.chunk.js
+  1.35 kB    build-web\static\js\133.a038b162.chunk.js
+  620 B      build-web\static\js\789.23a8067d.chunk.js
+  443 B      build-web\static\js\970.00274ca8.chunk.js
+  310 B      build-web\static\js\722.2d0be2be.chunk.js
+  292 B      build-web\static\js\127.2f3b5bc8.chunk.js
+
+The project was built assuming it is hosted at /.
+You can control this with the homepage field in your package.json.
+
+The .e2e-local\ota-release-checks\2026-11-04T22-41-16-838Z\build-web folder is ready to be deployed.
+You may serve it with a static server:
+
+  npm install -g serve
+  serve -s .e2e-local\ota-release-checks\2026-11-04T22-41-16-838Z\build-web
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+
+

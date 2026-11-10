@@ -1,0 +1,15 @@
+ M docs/tesis/README.md
+ M package-lock.json
+ M package.json
+ M scripts/audit/closure/verify-e2e-final-persistence.cjs
+?? docs/superpowers/plans/2026-10-30-dependencias-pendientes.md
+?? docs/tesis/evidencias/verificacion-tecnica/20261030-141339-dependencias-89ec6c6/
+?? scripts/audit/closure/bind-dependencies-android.cjs
+?? scripts/audit/closure/check-dependencies-apk.py
+?? scripts/audit/closure/check-dependencies-dev-server.cjs
+?? scripts/audit/closure/finalize-dependencies.cjs
+?? scripts/audit/closure/initialize-dependencies.cjs
+?? scripts/audit/closure/report-dependencies.cjs
+?? tests/integration/toolchain.loaders-security.test.cjs
+?? tests/integration/toolchain.security-followup.test.cjs
+

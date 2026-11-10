@@ -1,0 +1,49 @@
+{
+  "baseCommit": "2b4e9ebf0f114d15065e689199042054ce625b1d",
+  "files": [
+    {
+      "file": "docs/produccion/RESPALDO_Y_RESTAURACION.md",
+      "sha256": "282a979ca2cc15e8acb6d16b0025f0725627ffb8e32778eaaf66d33499f5710c"
+    },
+    {
+      "file": "docs/superpowers/plans/2026-11-01-respaldo-cifrado.md",
+      "sha256": "de75acaf19cb50e26dcabfdccaf695bbb7d11da51f3f44bdabcd611e4f6ab5d1"
+    },
+    {
+      "file": "scripts/audit/production/check-backup-tools.ps1",
+      "sha256": "6c02e5d38e1aa2279b16688d8c47449495f6c39d45efbf9e817eff59bbd2341d"
+    },
+    {
+      "file": "scripts/audit/production/finalize-backup-packet.cjs",
+      "sha256": "9a40c62d9325cad50d5b6132a380a0d84e01709e943ecce0c1806ea07a647783"
+    },
+    {
+      "file": "scripts/audit/production/initialize-backup-packet.cjs",
+      "sha256": "e103b498a7065769526b068517cfb7b432caae282a71fd218c6796c105b7db43"
+    },
+    {
+      "file": "scripts/audit/production/report-backup-packet.cjs",
+      "sha256": "c1df4f0dfa65d946abef8886f4ed49e4ff92ddfcfcc57719a4241f3192784d68"
+    },
+    {
+      "file": "scripts/audit/production/test-encrypted-backup.cjs",
+      "sha256": "3b7bf8807e5ead209e6cc13d707614387059d8a3a21feaec9e2a3cff5e81f2c1"
+    },
+    {
+      "file": "scripts/production/backup-assistant.ps1",
+      "sha256": "1f92cddf3dfa8e9a653f0e62310874d4dc9535e80e6bf370945ce41031471055"
+    },
+    {
+      "file": "scripts/production/backup-source.json",
+      "sha256": "0d3eb83c9de4e1a97b33ae08c3da122ccf755adf5b8b67f4cd18a947c018578b"
+    },
+    {
+      "file": "scripts/production/backup.cjs",
+      "sha256": "b7da1d21dc3cf77d626bc15240e8dff29e2f7bb56b6eff63182288a90eb6a9e3"
+    },
+    {
+      "file": "tests/unit/production-backup.test.cjs",
+      "sha256": "060e429e3fd6e1bc9c6661e3f6fab164e8c1d813bc44cfc77dd8532d19d1cdd1"
+    }
+  ]
+}

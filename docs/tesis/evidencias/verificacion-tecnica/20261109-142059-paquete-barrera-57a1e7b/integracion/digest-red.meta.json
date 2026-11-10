@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "-e",
+    "const c=require('./scripts/audit/maintenance/packet-context.cjs'),g=require('./scripts/audit/maintenance/packet-gate.cjs');(async()=>{const db=await c.connect();try{console.log(JSON.stringify({digest:await g.digest(db)}))}finally{await db.end()}})().catch(e=>{console.error(JSON.stringify({code:e.code,stage:'GATE_DIGEST_PARSE'}));process.exitCode=1});"
+  ],
+  "start": "2026-11-09T14:21:51.288Z",
+  "end": "2026-11-09T14:21:52.305Z",
+  "durationSeconds": 1.017,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

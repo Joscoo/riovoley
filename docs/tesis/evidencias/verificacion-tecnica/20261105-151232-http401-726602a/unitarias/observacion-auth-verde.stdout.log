@@ -1,0 +1,47 @@
+TAP version 13
+# Subtest: clasifica anon local sin devolver su valor
+ok 1 - clasifica anon local sin devolver su valor
+  ---
+  duration_ms: 5.6077
+  type: 'test'
+  ...
+# Subtest: conserva solo rol permitido y presencia de sub para authenticated
+ok 2 - conserva solo rol permitido y presencia de sub para authenticated
+  ---
+  duration_ms: 0.3035
+  type: 'test'
+  ...
+# Subtest: no acepta roles arbitrarios como texto de salida
+ok 3 - no acepta roles arbitrarios como texto de salida
+  ---
+  duration_ms: 0.1836
+  type: 'test'
+  ...
+# Subtest: distingue ausencia de cabecera de cabecera no JWT
+ok 4 - distingue ausencia de cabecera de cabecera no JWT
+  ---
+  duration_ms: 0.1473
+  type: 'test'
+  ...
+# Subtest: maneja payload malformado sin copiar errores ni datos
+ok 5 - maneja payload malformado sin copiar errores ni datos
+  ---
+  duration_ms: 0.2059
+  type: 'test'
+  ...
+# Subtest: acepta mayusculas en nombre y esquema sin publicar credenciales
+ok 6 - acepta mayusculas en nombre y esquema sin publicar credenciales
+  ---
+  duration_ms: 0.189
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 112.7604
+

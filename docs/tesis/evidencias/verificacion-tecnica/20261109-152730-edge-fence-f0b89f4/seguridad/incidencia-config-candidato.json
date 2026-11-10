@@ -1,0 +1,15 @@
+{
+  "at": "2026-11-09T15:47:38.091Z",
+  "stage": "CANDIDATE_FINAL_INTEGRITY",
+  "actualChangedFiles": [
+    "supabase/config.toml",
+    "supabase/functions/sync-mobile-device/index.ts"
+  ],
+  "expectedChangedFiles": [
+    "supabase/functions/sync-mobile-device/index.ts"
+  ],
+  "cause": "Repository config.toml configures local services; previous candidate uses a minimal generated deployment configuration with nine verify_jwt entries.",
+  "initialCandidatePreserved": true,
+  "correction": "New candidate reuses all eleven generated configuration/lock files with exact previous hashes, plus twenty-eight current TypeScript sources.",
+  "productionChanged": false
+}

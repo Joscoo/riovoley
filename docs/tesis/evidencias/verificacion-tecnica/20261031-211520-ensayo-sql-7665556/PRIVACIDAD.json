@@ -1,0 +1,9 @@
+{
+  "checkedAt": "2026-11-01T01:22:48.374Z",
+  "candidateFiles": 153,
+  "checkedEntries": 153,
+  "knownSensitiveValueFindings": 0,
+  "genericTokenOrPrivateKeyFindings": 0,
+  "reviewedFindings": [],
+  "scope": "Archivos nuevos/modificados antes del cierre; comparación con valores secretos privados y patrones de tokens/claves, sin publicar esos valores."
+}

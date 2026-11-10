@@ -1,0 +1,9 @@
+'use strict';
+const assert=require('node:assert/strict');
+function diagnosticCategory(text){
+ const rules=[[/Bad passphrase|bad passphrase|BAD_PASSPHRASE/,'BAD_RECOVERY_PASSPHRASE'],[/No secret key|NO_SECKEY/,'RECOVERY_KEY_NOT_AVAILABLE'],[/Bad session key|decryption failed.*checksum|BADMDC|WARNING: encrypted message has been manipulated|decryption failed: Invalid packet/,'ENCRYPTED_MESSAGE_INTEGRITY'],[/No pinentry|PINENTRY_LAUNCHED|Inappropriate ioctl for device/,'LOCAL_KEY_NOT_UNLOCKED'],[/schema .*already exists/,'SCHEMA_EXISTS'],[/role .*does not exist/,'ROLE_MISSING'],[/generation expression is not immutable/,'GENERATED_VOLATILITY'],[/extension .*is not available|could not open extension control file/,'EXTENSION_UNAVAILABLE'],[/must be loaded via shared_preload_libraries/,'EXTENSION_PRELOAD'],[/unrecognized configuration parameter/,'PG_CONFIGURATION_UNSUPPORTED'],[/could not open input file|No such file or directory/,'FILE_OR_EXECUTABLE_UNAVAILABLE'],[/could not access file/,'EXTENSION_BINARY_UNAVAILABLE'],[/permission denied/,'PERMISSION_DENIED'],[/could not read from input file|input file is too short|end of file/,'ARCHIVE_INPUT_INCOMPLETE'],[/input file does not appear to be a valid archive|unsupported version/,'ARCHIVE_FORMAT_UNSUPPORTED'],[/could not find function|function .*does not exist/,'FUNCTION_MISSING'],[/cannot execute.*not seek|could not seek|input file is not seekable/,'ARCHIVE_SEEK_REQUIRED']];
+ if(/is not in shared_preload_libraries/.test(String(text)))return 'EXTENSION_PRELOAD';
+ for(const [pattern,label]of rules)if(pattern.test(String(text)))return label;return 'UNKNOWN_NATIVE_ERROR';
+}
+function assertCatalog(expected,actual){assert.match(expected||'',/^[a-f0-9]{32}$/,'INVALID_CATALOG_FINGERPRINT');assert.match(actual||'',/^[a-f0-9]{32}$/,'INVALID_CATALOG_FINGERPRINT');assert.equal(actual,expected,'CATALOG_MISMATCH');return true;}
+module.exports={diagnosticCategory,assertCatalog};

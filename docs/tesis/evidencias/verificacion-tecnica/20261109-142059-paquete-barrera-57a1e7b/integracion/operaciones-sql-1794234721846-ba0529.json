@@ -1,0 +1,232 @@
+[
+  {
+    "label": "preparacion-reportes-retorno",
+    "startedAt": "2026-11-09T14:31:58.665Z",
+    "finishedAt": "2026-11-09T14:31:58.736Z",
+    "durationMs": 70,
+    "sqlSha256": "5c0904bdd90d93a8d8def5ef780aef5a0a1a44570ab9ed54db78213e599bf333",
+    "sqlState": null,
+    "expectedFailure": false,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "preparacion-principal-retorno",
+    "startedAt": "2026-11-09T14:31:58.818Z",
+    "finishedAt": "2026-11-09T14:31:58.905Z",
+    "durationMs": 87,
+    "sqlSha256": "c27856e19b750e9f430c57cbb736fff3138bc23197564a7816c367664ff928b3",
+    "sqlState": null,
+    "expectedFailure": false,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "probe-authenticated",
+    "startedAt": "2026-11-09T14:31:59.086Z",
+    "finishedAt": "2026-11-09T14:31:59.091Z",
+    "durationMs": 5,
+    "sqlSha256": "92fd48e0d67c83ee329d187ebe8be8c5f5fe77eda49a040bcfc1277cea6b2456",
+    "sqlState": "55000",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "referencia-principal-avance",
+    "startedAt": "2026-11-09T14:31:59.220Z",
+    "finishedAt": "2026-11-09T14:31:59.296Z",
+    "durationMs": 76,
+    "sqlSha256": "c61f457792f684d22dd3c8ffafcd1b4280dfefafdd66da382943f44347322fb6",
+    "sqlState": null,
+    "expectedFailure": false,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "probe-authenticated",
+    "startedAt": "2026-11-09T14:31:59.489Z",
+    "finishedAt": "2026-11-09T14:31:59.491Z",
+    "durationMs": 2,
+    "sqlSha256": "92fd48e0d67c83ee329d187ebe8be8c5f5fe77eda49a040bcfc1277cea6b2456",
+    "sqlState": "55000",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "referencia-reportes-avance",
+    "startedAt": "2026-11-09T14:31:59.642Z",
+    "finishedAt": "2026-11-09T14:31:59.668Z",
+    "durationMs": 25,
+    "sqlSha256": "4c6c9fb9771751b1e0f15920faab664a9400c8f8b39b7288db97e7fdf0ad0d0d",
+    "sqlState": null,
+    "expectedFailure": false,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "probe-authenticated",
+    "startedAt": "2026-11-09T14:31:59.866Z",
+    "finishedAt": "2026-11-09T14:31:59.868Z",
+    "durationMs": 2,
+    "sqlSha256": "92fd48e0d67c83ee329d187ebe8be8c5f5fe77eda49a040bcfc1277cea6b2456",
+    "sqlState": "55000",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "referencia-reportes-retorno",
+    "startedAt": "2026-11-09T14:32:00.007Z",
+    "finishedAt": "2026-11-09T14:32:00.062Z",
+    "durationMs": 55,
+    "sqlSha256": "5c0904bdd90d93a8d8def5ef780aef5a0a1a44570ab9ed54db78213e599bf333",
+    "sqlState": null,
+    "expectedFailure": false,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "referencia-principal-retorno",
+    "startedAt": "2026-11-09T14:32:00.174Z",
+    "finishedAt": "2026-11-09T14:32:00.268Z",
+    "durationMs": 94,
+    "sqlSha256": "c27856e19b750e9f430c57cbb736fff3138bc23197564a7816c367664ff928b3",
+    "sqlState": null,
+    "expectedFailure": false,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "probe-authenticated",
+    "startedAt": "2026-11-09T14:32:00.477Z",
+    "finishedAt": "2026-11-09T14:32:00.480Z",
+    "durationMs": 3,
+    "sqlSha256": "92fd48e0d67c83ee329d187ebe8be8c5f5fe77eda49a040bcfc1277cea6b2456",
+    "sqlState": "55000",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "original-incompatible-con-barrera",
+    "startedAt": "2026-11-09T14:32:00.480Z",
+    "finishedAt": "2026-11-09T14:32:00.505Z",
+    "durationMs": 25,
+    "sqlSha256": "c61f457792f684d22dd3c8ffafcd1b4280dfefafdd66da382943f44347322fb6",
+    "sqlState": "P0001",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "funcion-alterada-rechazada",
+    "startedAt": "2026-11-09T14:32:00.621Z",
+    "finishedAt": "2026-11-09T14:32:00.627Z",
+    "durationMs": 6,
+    "sqlSha256": "775796a026d902d995119c82ff2c964355453435154a1c3a65c6b649cff1b87c",
+    "sqlState": "P0001",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "disparador-deshabilitado-rechazado",
+    "startedAt": "2026-11-09T14:32:00.682Z",
+    "finishedAt": "2026-11-09T14:32:00.687Z",
+    "durationMs": 5,
+    "sqlSha256": "775796a026d902d995119c82ff2c964355453435154a1c3a65c6b649cff1b87c",
+    "sqlState": "P0001",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "tabla-no-inventariada-rechazada",
+    "startedAt": "2026-11-09T14:32:00.741Z",
+    "finishedAt": "2026-11-09T14:32:00.746Z",
+    "durationMs": 5,
+    "sqlSha256": "775796a026d902d995119c82ff2c964355453435154a1c3a65c6b649cff1b87c",
+    "sqlState": "P0001",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "integrado-principal-avance",
+    "startedAt": "2026-11-09T14:32:00.774Z",
+    "finishedAt": "2026-11-09T14:32:00.844Z",
+    "durationMs": 70,
+    "sqlSha256": "775796a026d902d995119c82ff2c964355453435154a1c3a65c6b649cff1b87c",
+    "sqlState": null,
+    "expectedFailure": false,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "probe-authenticated",
+    "startedAt": "2026-11-09T14:32:00.874Z",
+    "finishedAt": "2026-11-09T14:32:00.876Z",
+    "durationMs": 2,
+    "sqlSha256": "92fd48e0d67c83ee329d187ebe8be8c5f5fe77eda49a040bcfc1277cea6b2456",
+    "sqlState": "55000",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "integrado-reportes-avance",
+    "startedAt": "2026-11-09T14:32:00.926Z",
+    "finishedAt": "2026-11-09T14:32:00.954Z",
+    "durationMs": 28,
+    "sqlSha256": "203671ae9e9f9a1d689c33fb749c16da078a03f72dcbbcf6e07d8f21ca976e4d",
+    "sqlState": null,
+    "expectedFailure": false,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "probe-authenticated",
+    "startedAt": "2026-11-09T14:32:00.980Z",
+    "finishedAt": "2026-11-09T14:32:00.981Z",
+    "durationMs": 1,
+    "sqlSha256": "92fd48e0d67c83ee329d187ebe8be8c5f5fe77eda49a040bcfc1277cea6b2456",
+    "sqlState": "55000",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "orden-retorno-incorrecto",
+    "startedAt": "2026-11-09T14:32:01.036Z",
+    "finishedAt": "2026-11-09T14:32:01.069Z",
+    "durationMs": 33,
+    "sqlSha256": "c96c637855e537c06779bd2380775791e8b4818351484e911cbb9f3720a7b28f",
+    "sqlState": "P0001",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "integrado-reportes-retorno",
+    "startedAt": "2026-11-09T14:32:01.166Z",
+    "finishedAt": "2026-11-09T14:32:01.232Z",
+    "durationMs": 66,
+    "sqlSha256": "8ff94a194ae3ce59858e3ca7c1bcd78b68a8ddbe6d585b8045972e940ca828c1",
+    "sqlState": null,
+    "expectedFailure": false,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "probe-authenticated",
+    "startedAt": "2026-11-09T14:32:01.259Z",
+    "finishedAt": "2026-11-09T14:32:01.261Z",
+    "durationMs": 2,
+    "sqlSha256": "92fd48e0d67c83ee329d187ebe8be8c5f5fe77eda49a040bcfc1277cea6b2456",
+    "sqlState": "55000",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "integrado-principal-retorno",
+    "startedAt": "2026-11-09T14:32:01.314Z",
+    "finishedAt": "2026-11-09T14:32:01.396Z",
+    "durationMs": 82,
+    "sqlSha256": "c96c637855e537c06779bd2380775791e8b4818351484e911cbb9f3720a7b28f",
+    "sqlState": null,
+    "expectedFailure": false,
+    "rawOutputPublished": false
+  },
+  {
+    "label": "probe-authenticated",
+    "startedAt": "2026-11-09T14:32:01.424Z",
+    "finishedAt": "2026-11-09T14:32:01.426Z",
+    "durationMs": 2,
+    "sqlSha256": "92fd48e0d67c83ee329d187ebe8be8c5f5fe77eda49a040bcfc1277cea6b2456",
+    "sqlState": "55000",
+    "expectedFailure": true,
+    "rawOutputPublished": false
+  }
+]

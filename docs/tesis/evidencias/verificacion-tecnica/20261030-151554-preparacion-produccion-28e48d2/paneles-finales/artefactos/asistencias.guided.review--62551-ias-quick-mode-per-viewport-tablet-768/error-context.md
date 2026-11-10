@@ -1,0 +1,1827 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: asistencias.guided.review.spec.js >> guided review: admin asistencias quick mode per viewport
+- Location: tests\e2e\asistencias.guided.review.spec.js:50:1
+
+# Error details
+
+```
+Error: page.screenshot: Cannot take screenshot larger than 32767 pixels on any dimension
+Call log:
+  - taking page screenshot
+  - waiting for fonts to load...
+  - fonts loaded
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - link "Saltar al contenido" [ref=e3]:
+    - /url: "#main-content"
+  - navigation "Navegación principal" [ref=e4]:
+    - link "Logo Riovoley" [ref=e5]:
+      - /url: /
+      - img "Logo Riovoley" [ref=e6]
+    - generic [ref=e7]:
+      - button "Notificaciones" [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+        - generic [ref=e12]: "6"
+      - button "Abrir menú" [ref=e13] [cursor=pointer]:
+        - img [ref=e14]
+  - generic [ref=e17]:
+    - button "Abrir menu lateral" [ref=e18] [cursor=pointer]:
+      - img [ref=e19]
+    - generic:
+      - navigation:
+        - generic:
+          - button:
+            - img
+        - generic:
+          - generic:
+            - img
+          - generic:
+            - heading [level=3]: Administrador Pruebas
+            - paragraph: Administrador
+        - generic:
+          - button:
+            - generic:
+              - img
+            - generic:
+              - generic: Dashboard
+          - button:
+            - generic:
+              - img
+            - generic:
+              - generic: Reportes
+          - button:
+            - generic:
+              - img
+            - generic:
+              - generic: Revision Financiera
+          - button:
+            - generic:
+              - img
+            - generic:
+              - generic: Gestión de Usuarios
+          - button:
+            - generic:
+              - img
+            - generic:
+              - generic: Pagos
+          - button:
+            - generic:
+              - img
+            - generic:
+              - generic: Asistencias
+          - button:
+            - generic:
+              - img
+            - generic:
+              - generic: Horarios
+          - button:
+            - generic:
+              - img
+            - generic:
+              - generic: Tests Fisicos
+          - button:
+            - generic:
+              - img
+            - generic:
+              - generic: Anuncios
+          - button:
+            - generic:
+              - img
+            - generic:
+              - generic: Gamificación
+          - button:
+            - generic:
+              - img
+            - generic:
+              - generic: Configuracion
+    - main [active] [ref=e21]:
+      - generic [ref=e25]: Panel de Administración>Asistencias
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - generic [ref=e29]:
+            - generic [ref=e30]:
+              - heading "Control de Asistencias" [level=2] [ref=e31]:
+                - img [ref=e33]
+                - text: Control de Asistencias
+              - paragraph [ref=e35]: Registro y seguimiento de entrenamientos
+            - generic [ref=e37]:
+              - button "Exportar" [ref=e38] [cursor=pointer]:
+                - img [ref=e39]
+                - text: Exportar
+              - button "Ver Reportes" [ref=e41] [cursor=pointer]:
+                - img [ref=e42]
+                - text: Ver Reportes
+          - generic [ref=e44]:
+            - generic [ref=e46]:
+              - generic [ref=e47]:
+                - paragraph [ref=e48]: Total Registros
+                - paragraph [ref=e49]: "120"
+              - img [ref=e51]
+            - generic [ref=e54]:
+              - generic [ref=e55]:
+                - paragraph [ref=e56]: Presentes
+                - paragraph [ref=e57]: "0"
+              - img [ref=e59]
+            - generic [ref=e62]:
+              - generic [ref=e63]:
+                - paragraph [ref=e64]: Ausentes
+                - paragraph [ref=e65]: "120"
+              - img [ref=e67]
+            - generic [ref=e70]:
+              - generic [ref=e71]:
+                - paragraph [ref=e72]: Asistencia Promedio
+                - paragraph [ref=e73]: 0.0%
+              - img [ref=e75]
+          - generic [ref=e77]:
+            - generic [ref=e78]:
+              - generic [ref=e79]:
+                - text: "Fecha de Entrenamiento:"
+                - textbox "Fecha de Entrenamiento:" [ref=e80]: 2026-10-31
+              - generic [ref=e81]:
+                - img
+                - textbox "Buscar atleta por nombre..." [ref=e82]
+              - generic [ref=e83]:
+                - generic [ref=e84]:
+                  - text: Estado
+                  - combobox "Filtrar toma por estado" [ref=e85]:
+                    - option "Todos" [selected]
+                    - option "Pendientes"
+                    - option "Presentes"
+                - generic [ref=e86]:
+                  - text: Pago
+                  - combobox "Filtrar toma por metodo de pago" [ref=e87]:
+                    - option "Todos" [selected]
+                    - option "Mensualidad"
+                    - option "Pago diario"
+                    - option "Tarjeta"
+                - generic [ref=e88]:
+                  - text: Mensualidad
+                  - combobox "Filtrar toma por mensualidad" [ref=e89]:
+                    - option "Todas" [selected]
+                    - option "Activa"
+                    - option "Necesita pago"
+              - generic [ref=e90]:
+                - button "Activas (86)" [ref=e91] [cursor=pointer]:
+                  - img [ref=e92]
+                  - text: Activas (86)
+                - button "Limpiar Dia" [ref=e94] [cursor=pointer]:
+                  - img [ref=e95]
+                  - text: Limpiar Dia
+            - generic [ref=e97]:
+              - tablist [ref=e98]:
+                - tab "Todas (0/120)" [selected] [ref=e99] [cursor=pointer]:
+                  - generic [ref=e101]:
+                    - img [ref=e103]
+                    - paragraph [ref=e107]: Todas (0/120)
+                - tab "Iniciación" [ref=e108] [cursor=pointer]:
+                  - generic [ref=e109]:
+                    - img [ref=e111]
+                    - paragraph [ref=e115]: Iniciación
+                - tab "Perfeccionamiento" [ref=e116] [cursor=pointer]:
+                  - generic [ref=e117]:
+                    - img [ref=e119]
+                    - paragraph [ref=e123]: Perfeccionamiento
+                - tab "Master" [ref=e124] [cursor=pointer]:
+                  - generic [ref=e125]:
+                    - img [ref=e127]
+                    - paragraph [ref=e131]: Master
+              - generic [ref=e132]:
+                - generic [ref=e133]:
+                  - img [ref=e134]
+                  - generic [ref=e136]: "Total: 120"
+                - generic [ref=e137]:
+                  - img [ref=e138]
+                  - generic [ref=e140]: "Presentes: 0"
+                - generic [ref=e141]:
+                  - img [ref=e142]
+                  - generic [ref=e144]: "Ausentes: 120"
+                - generic [ref=e145]:
+                  - img [ref=e146]
+                  - generic [ref=e148]: "Activas: 86"
+                - generic [ref=e149]:
+                  - img [ref=e150]
+                  - generic [ref=e152]: "Asistencia: 0.0%"
+              - generic [ref=e154]:
+                - generic [ref=e155]:
+                  - heading "Iniciación" [level=3] [ref=e156]:
+                    - img [ref=e157]
+                    - text: Iniciación
+                  - generic [ref=e159]:
+                    - generic [ref=e160]:
+                      - heading "Hombres" [level=4] [ref=e161]:
+                        - img [ref=e162]
+                        - text: Hombres
+                      - generic [ref=e164]:
+                        - generic [ref=e165]:
+                          - generic [ref=e166]:
+                            - generic [ref=e167]:
+                              - generic [ref=e168]: FA
+                              - generic "Fixture6 Auditoria" [ref=e169]
+                            - generic [ref=e170]:
+                              - img [ref=e171]
+                              - text: Activa
+                          - generic [ref=e173]:
+                            - button "Marcar como presente" [ref=e174] [cursor=pointer]:
+                              - img [ref=e175]
+                            - button "Marcar como ausente" [ref=e177] [cursor=pointer]:
+                              - img [ref=e178]
+                        - generic [ref=e180]:
+                          - generic [ref=e182]:
+                            - generic [ref=e183]: FC
+                            - generic "Fixture Cierre" [ref=e184]
+                          - generic [ref=e185]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e186] [cursor=pointer]:
+                              - img [ref=e187]
+                            - button "Marcar asistencia con Pago diario" [ref=e189] [cursor=pointer]:
+                              - img [ref=e190]
+                            - button "Marcar asistencia con Tarjeta" [ref=e192] [cursor=pointer]:
+                              - img [ref=e193]
+                        - generic [ref=e195]:
+                          - generic [ref=e196]:
+                            - generic [ref=e197]:
+                              - generic [ref=e198]: FC
+                              - generic "Fixture Cierre" [ref=e199]
+                            - generic [ref=e200]:
+                              - img [ref=e201]
+                              - text: Activa
+                          - generic [ref=e203]:
+                            - button "Marcar como presente" [ref=e204] [cursor=pointer]:
+                              - img [ref=e205]
+                            - button "Marcar como ausente" [ref=e207] [cursor=pointer]:
+                              - img [ref=e208]
+                        - generic [ref=e210]:
+                          - generic [ref=e212]:
+                            - generic [ref=e213]: FC
+                            - generic "Fixture Cierre" [ref=e214]
+                          - generic [ref=e215]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e216] [cursor=pointer]:
+                              - img [ref=e217]
+                            - button "Marcar asistencia con Pago diario" [ref=e219] [cursor=pointer]:
+                              - img [ref=e220]
+                            - button "Marcar asistencia con Tarjeta" [ref=e222] [cursor=pointer]:
+                              - img [ref=e223]
+                        - generic [ref=e225]:
+                          - generic [ref=e227]:
+                            - generic [ref=e228]: FC
+                            - generic "Fixture Cierre" [ref=e229]
+                          - generic [ref=e230]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e231] [cursor=pointer]:
+                              - img [ref=e232]
+                            - button "Marcar asistencia con Pago diario" [ref=e234] [cursor=pointer]:
+                              - img [ref=e235]
+                            - button "Marcar asistencia con Tarjeta" [ref=e237] [cursor=pointer]:
+                              - img [ref=e238]
+                        - generic [ref=e240]:
+                          - generic [ref=e241]:
+                            - generic [ref=e242]:
+                              - generic [ref=e243]: FC
+                              - generic "Fixture Cierre" [ref=e244]
+                            - generic [ref=e245]:
+                              - img [ref=e246]
+                              - text: Activa
+                          - generic [ref=e248]:
+                            - button "Marcar como presente" [ref=e249] [cursor=pointer]:
+                              - img [ref=e250]
+                            - button "Marcar como ausente" [ref=e252] [cursor=pointer]:
+                              - img [ref=e253]
+                        - generic [ref=e255]:
+                          - generic [ref=e257]:
+                            - generic [ref=e258]: FC
+                            - generic "Fixture Cierre" [ref=e259]
+                          - generic [ref=e260]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e261] [cursor=pointer]:
+                              - img [ref=e262]
+                            - button "Marcar asistencia con Pago diario" [ref=e264] [cursor=pointer]:
+                              - img [ref=e265]
+                            - button "Marcar asistencia con Tarjeta" [ref=e267] [cursor=pointer]:
+                              - img [ref=e268]
+                        - generic [ref=e270]:
+                          - generic [ref=e272]:
+                            - generic [ref=e273]: FC
+                            - generic "Fixture Cierre" [ref=e274]
+                          - generic [ref=e275]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e276] [cursor=pointer]:
+                              - img [ref=e277]
+                            - button "Marcar asistencia con Pago diario" [ref=e279] [cursor=pointer]:
+                              - img [ref=e280]
+                            - button "Marcar asistencia con Tarjeta" [ref=e282] [cursor=pointer]:
+                              - img [ref=e283]
+                        - generic [ref=e285]:
+                          - generic [ref=e287]:
+                            - generic [ref=e288]: FC
+                            - generic "Fixture Cierre" [ref=e289]
+                          - generic [ref=e290]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e291] [cursor=pointer]:
+                              - img [ref=e292]
+                            - button "Marcar asistencia con Pago diario" [ref=e294] [cursor=pointer]:
+                              - img [ref=e295]
+                            - button "Marcar asistencia con Tarjeta" [ref=e297] [cursor=pointer]:
+                              - img [ref=e298]
+                        - generic [ref=e300]:
+                          - generic [ref=e301]:
+                            - generic [ref=e302]:
+                              - generic [ref=e303]: FC
+                              - generic "Fixture Cierre" [ref=e304]
+                            - generic [ref=e305]:
+                              - img [ref=e306]
+                              - text: Activa
+                          - generic [ref=e308]:
+                            - button "Marcar como presente" [ref=e309] [cursor=pointer]:
+                              - img [ref=e310]
+                            - button "Marcar como ausente" [ref=e312] [cursor=pointer]:
+                              - img [ref=e313]
+                        - generic [ref=e315]:
+                          - generic [ref=e317]:
+                            - generic [ref=e318]: FC
+                            - generic "Fixture Cierre" [ref=e319]
+                          - generic [ref=e320]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e321] [cursor=pointer]:
+                              - img [ref=e322]
+                            - button "Marcar asistencia con Pago diario" [ref=e324] [cursor=pointer]:
+                              - img [ref=e325]
+                            - button "Marcar asistencia con Tarjeta" [ref=e327] [cursor=pointer]:
+                              - img [ref=e328]
+                        - generic [ref=e330]:
+                          - generic [ref=e331]:
+                            - generic [ref=e332]:
+                              - generic [ref=e333]: FC
+                              - generic "Fixture Cierre" [ref=e334]
+                            - generic [ref=e335]:
+                              - img [ref=e336]
+                              - text: Activa
+                          - generic [ref=e338]:
+                            - button "Marcar como presente" [ref=e339] [cursor=pointer]:
+                              - img [ref=e340]
+                            - button "Marcar como ausente" [ref=e342] [cursor=pointer]:
+                              - img [ref=e343]
+                        - generic [ref=e345]:
+                          - generic [ref=e346]:
+                            - generic [ref=e347]:
+                              - generic [ref=e348]: FC
+                              - generic "Fixture Cierre" [ref=e349]
+                            - generic [ref=e350]:
+                              - img [ref=e351]
+                              - text: Activa
+                          - generic [ref=e353]:
+                            - button "Marcar como presente" [ref=e354] [cursor=pointer]:
+                              - img [ref=e355]
+                            - button "Marcar como ausente" [ref=e357] [cursor=pointer]:
+                              - img [ref=e358]
+                        - generic [ref=e360]:
+                          - generic [ref=e362]:
+                            - generic [ref=e363]: FC
+                            - generic "Fixture Cierre" [ref=e364]
+                          - generic [ref=e365]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e366] [cursor=pointer]:
+                              - img [ref=e367]
+                            - button "Marcar asistencia con Pago diario" [ref=e369] [cursor=pointer]:
+                              - img [ref=e370]
+                            - button "Marcar asistencia con Tarjeta" [ref=e372] [cursor=pointer]:
+                              - img [ref=e373]
+                        - generic [ref=e375]:
+                          - generic [ref=e377]:
+                            - generic [ref=e378]: FC
+                            - generic "Fixture Cierre" [ref=e379]
+                          - generic [ref=e380]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e381] [cursor=pointer]:
+                              - img [ref=e382]
+                            - button "Marcar asistencia con Pago diario" [ref=e384] [cursor=pointer]:
+                              - img [ref=e385]
+                            - button "Marcar asistencia con Tarjeta" [ref=e387] [cursor=pointer]:
+                              - img [ref=e388]
+                        - generic [ref=e390]:
+                          - generic [ref=e391]:
+                            - generic [ref=e392]:
+                              - generic [ref=e393]: FC
+                              - generic "Fixture Cierre" [ref=e394]
+                            - generic [ref=e395]:
+                              - img [ref=e396]
+                              - text: Activa
+                          - generic [ref=e398]:
+                            - button "Marcar como presente" [ref=e399] [cursor=pointer]:
+                              - img [ref=e400]
+                            - button "Marcar como ausente" [ref=e402] [cursor=pointer]:
+                              - img [ref=e403]
+                        - generic [ref=e405]:
+                          - generic [ref=e407]:
+                            - generic [ref=e408]: FC
+                            - generic "Fixture Cierre" [ref=e409]
+                          - generic [ref=e410]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e411] [cursor=pointer]:
+                              - img [ref=e412]
+                            - button "Marcar asistencia con Pago diario" [ref=e414] [cursor=pointer]:
+                              - img [ref=e415]
+                            - button "Marcar asistencia con Tarjeta" [ref=e417] [cursor=pointer]:
+                              - img [ref=e418]
+                        - generic [ref=e420]:
+                          - generic [ref=e421]:
+                            - generic [ref=e422]:
+                              - generic [ref=e423]: FC
+                              - generic "Fixture Cierre" [ref=e424]
+                            - generic [ref=e425]:
+                              - img [ref=e426]
+                              - text: Activa
+                          - generic [ref=e428]:
+                            - button "Marcar como presente" [ref=e429] [cursor=pointer]:
+                              - img [ref=e430]
+                            - button "Marcar como ausente" [ref=e432] [cursor=pointer]:
+                              - img [ref=e433]
+                        - generic [ref=e435]:
+                          - generic [ref=e437]:
+                            - generic [ref=e438]: FC
+                            - generic "Fixture Cierre" [ref=e439]
+                          - generic [ref=e440]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e441] [cursor=pointer]:
+                              - img [ref=e442]
+                            - button "Marcar asistencia con Pago diario" [ref=e444] [cursor=pointer]:
+                              - img [ref=e445]
+                            - button "Marcar asistencia con Tarjeta" [ref=e447] [cursor=pointer]:
+                              - img [ref=e448]
+                        - generic [ref=e450]:
+                          - generic [ref=e452]:
+                            - generic [ref=e453]: FC
+                            - generic "Fixture Cierre" [ref=e454]
+                          - generic [ref=e455]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e456] [cursor=pointer]:
+                              - img [ref=e457]
+                            - button "Marcar asistencia con Pago diario" [ref=e459] [cursor=pointer]:
+                              - img [ref=e460]
+                            - button "Marcar asistencia con Tarjeta" [ref=e462] [cursor=pointer]:
+                              - img [ref=e463]
+                        - generic [ref=e465]:
+                          - generic [ref=e466]:
+                            - generic [ref=e467]:
+                              - generic [ref=e468]: FC
+                              - generic "Fixture Cierre" [ref=e469]
+                            - generic [ref=e470]:
+                              - img [ref=e471]
+                              - text: Activa
+                          - generic [ref=e473]:
+                            - button "Marcar como presente" [ref=e474] [cursor=pointer]:
+                              - img [ref=e475]
+                            - button "Marcar como ausente" [ref=e477] [cursor=pointer]:
+                              - img [ref=e478]
+                        - generic [ref=e480]:
+                          - generic [ref=e481]:
+                            - generic [ref=e482]:
+                              - generic [ref=e483]: FC
+                              - generic "Fixture Cierre" [ref=e484]
+                            - generic [ref=e485]:
+                              - img [ref=e486]
+                              - text: Activa
+                          - generic [ref=e488]:
+                            - button "Marcar como presente" [ref=e489] [cursor=pointer]:
+                              - img [ref=e490]
+                            - button "Marcar como ausente" [ref=e492] [cursor=pointer]:
+                              - img [ref=e493]
+                        - generic [ref=e495]:
+                          - generic [ref=e496]:
+                            - generic [ref=e497]:
+                              - generic [ref=e498]: FC
+                              - generic "Fixture Cierre" [ref=e499]
+                            - generic [ref=e500]:
+                              - img [ref=e501]
+                              - text: Activa
+                          - generic [ref=e503]:
+                            - button "Marcar como presente" [ref=e504] [cursor=pointer]:
+                              - img [ref=e505]
+                            - button "Marcar como ausente" [ref=e507] [cursor=pointer]:
+                              - img [ref=e508]
+                        - generic [ref=e510]:
+                          - generic [ref=e511]:
+                            - generic [ref=e512]:
+                              - generic [ref=e513]: FC
+                              - generic "Fixture Cierre" [ref=e514]
+                            - generic [ref=e515]:
+                              - img [ref=e516]
+                              - text: Activa
+                          - generic [ref=e518]:
+                            - button "Marcar como presente" [ref=e519] [cursor=pointer]:
+                              - img [ref=e520]
+                            - button "Marcar como ausente" [ref=e522] [cursor=pointer]:
+                              - img [ref=e523]
+                        - generic [ref=e525]:
+                          - generic [ref=e526]:
+                            - generic [ref=e527]:
+                              - generic [ref=e528]: FC
+                              - generic "Fixture Cierre" [ref=e529]
+                            - generic [ref=e530]:
+                              - img [ref=e531]
+                              - text: Activa
+                          - generic [ref=e533]:
+                            - button "Marcar como presente" [ref=e534] [cursor=pointer]:
+                              - img [ref=e535]
+                            - button "Marcar como ausente" [ref=e537] [cursor=pointer]:
+                              - img [ref=e538]
+                        - generic [ref=e540]:
+                          - generic [ref=e541]:
+                            - generic [ref=e542]:
+                              - generic [ref=e543]: FC
+                              - generic "Fixture Cierre" [ref=e544]
+                            - generic [ref=e545]:
+                              - img [ref=e546]
+                              - text: Activa
+                          - generic [ref=e548]:
+                            - button "Marcar como presente" [ref=e549] [cursor=pointer]:
+                              - img [ref=e550]
+                            - button "Marcar como ausente" [ref=e552] [cursor=pointer]:
+                              - img [ref=e553]
+                        - generic [ref=e555]:
+                          - generic [ref=e556]:
+                            - generic [ref=e557]:
+                              - generic [ref=e558]: FC
+                              - generic "Fixture Cierre" [ref=e559]
+                            - generic [ref=e560]:
+                              - img [ref=e561]
+                              - text: Activa
+                          - generic [ref=e563]:
+                            - button "Marcar como presente" [ref=e564] [cursor=pointer]:
+                              - img [ref=e565]
+                            - button "Marcar como ausente" [ref=e567] [cursor=pointer]:
+                              - img [ref=e568]
+                        - generic [ref=e570]:
+                          - generic [ref=e571]:
+                            - generic [ref=e572]:
+                              - generic [ref=e573]: FC
+                              - generic "Fixture Cierre" [ref=e574]
+                            - generic [ref=e575]:
+                              - img [ref=e576]
+                              - text: Activa
+                          - generic [ref=e578]:
+                            - button "Marcar como presente" [ref=e579] [cursor=pointer]:
+                              - img [ref=e580]
+                            - button "Marcar como ausente" [ref=e582] [cursor=pointer]:
+                              - img [ref=e583]
+                        - generic [ref=e585]:
+                          - generic [ref=e587]:
+                            - generic [ref=e588]: FC
+                            - generic "Fixture Cierre" [ref=e589]
+                          - generic [ref=e590]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e591] [cursor=pointer]:
+                              - img [ref=e592]
+                            - button "Marcar asistencia con Pago diario" [ref=e594] [cursor=pointer]:
+                              - img [ref=e595]
+                            - button "Marcar asistencia con Tarjeta" [ref=e597] [cursor=pointer]:
+                              - img [ref=e598]
+                        - generic [ref=e600]:
+                          - generic [ref=e601]:
+                            - generic [ref=e602]:
+                              - generic [ref=e603]: FC
+                              - generic "Fixture Cierre" [ref=e604]
+                            - generic [ref=e605]:
+                              - img [ref=e606]
+                              - text: Activa
+                          - generic [ref=e608]:
+                            - button "Marcar como presente" [ref=e609] [cursor=pointer]:
+                              - img [ref=e610]
+                            - button "Marcar como ausente" [ref=e612] [cursor=pointer]:
+                              - img [ref=e613]
+                        - generic [ref=e615]:
+                          - generic [ref=e616]:
+                            - generic [ref=e617]:
+                              - generic [ref=e618]: FC
+                              - generic "Fixture Cierre" [ref=e619]
+                            - generic [ref=e620]:
+                              - img [ref=e621]
+                              - text: Activa
+                          - generic [ref=e623]:
+                            - button "Marcar como presente" [ref=e624] [cursor=pointer]:
+                              - img [ref=e625]
+                            - button "Marcar como ausente" [ref=e627] [cursor=pointer]:
+                              - img [ref=e628]
+                        - generic [ref=e630]:
+                          - generic [ref=e632]:
+                            - generic [ref=e633]: FC
+                            - generic "Fixture Cierre" [ref=e634]
+                          - generic [ref=e635]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e636] [cursor=pointer]:
+                              - img [ref=e637]
+                            - button "Marcar asistencia con Pago diario" [ref=e639] [cursor=pointer]:
+                              - img [ref=e640]
+                            - button "Marcar asistencia con Tarjeta" [ref=e642] [cursor=pointer]:
+                              - img [ref=e643]
+                        - generic [ref=e645]:
+                          - generic [ref=e646]:
+                            - generic [ref=e647]:
+                              - generic [ref=e648]: FC
+                              - generic "Fixture Cierre" [ref=e649]
+                            - generic [ref=e650]:
+                              - img [ref=e651]
+                              - text: Activa
+                          - generic [ref=e653]:
+                            - button "Marcar como presente" [ref=e654] [cursor=pointer]:
+                              - img [ref=e655]
+                            - button "Marcar como ausente" [ref=e657] [cursor=pointer]:
+                              - img [ref=e658]
+                        - generic [ref=e660]:
+                          - generic [ref=e662]:
+                            - generic [ref=e663]: FC
+                            - generic "Fixture Cierre" [ref=e664]
+                          - generic [ref=e665]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e666] [cursor=pointer]:
+                              - img [ref=e667]
+                            - button "Marcar asistencia con Pago diario" [ref=e669] [cursor=pointer]:
+                              - img [ref=e670]
+                            - button "Marcar asistencia con Tarjeta" [ref=e672] [cursor=pointer]:
+                              - img [ref=e673]
+                        - generic [ref=e675]:
+                          - generic [ref=e676]:
+                            - generic [ref=e677]:
+                              - generic [ref=e678]: FC
+                              - generic "Fixture Cierre" [ref=e679]
+                            - generic [ref=e680]:
+                              - img [ref=e681]
+                              - text: Activa
+                          - generic [ref=e683]:
+                            - button "Marcar como presente" [ref=e684] [cursor=pointer]:
+                              - img [ref=e685]
+                            - button "Marcar como ausente" [ref=e687] [cursor=pointer]:
+                              - img [ref=e688]
+                        - generic [ref=e690]:
+                          - generic [ref=e692]:
+                            - generic [ref=e693]: FC
+                            - generic "Fixture Cierre" [ref=e694]
+                          - generic [ref=e695]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e696] [cursor=pointer]:
+                              - img [ref=e697]
+                            - button "Marcar asistencia con Pago diario" [ref=e699] [cursor=pointer]:
+                              - img [ref=e700]
+                            - button "Marcar asistencia con Tarjeta" [ref=e702] [cursor=pointer]:
+                              - img [ref=e703]
+                        - generic [ref=e705]:
+                          - generic [ref=e706]:
+                            - generic [ref=e707]:
+                              - generic [ref=e708]: FC
+                              - generic "Fixture Cierre" [ref=e709]
+                            - generic [ref=e710]:
+                              - img [ref=e711]
+                              - text: Activa
+                          - generic [ref=e713]:
+                            - button "Marcar como presente" [ref=e714] [cursor=pointer]:
+                              - img [ref=e715]
+                            - button "Marcar como ausente" [ref=e717] [cursor=pointer]:
+                              - img [ref=e718]
+                        - generic [ref=e720]:
+                          - generic [ref=e722]:
+                            - generic [ref=e723]: FC
+                            - generic "Fixture Cierre" [ref=e724]
+                          - generic [ref=e725]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e726] [cursor=pointer]:
+                              - img [ref=e727]
+                            - button "Marcar asistencia con Pago diario" [ref=e729] [cursor=pointer]:
+                              - img [ref=e730]
+                            - button "Marcar asistencia con Tarjeta" [ref=e732] [cursor=pointer]:
+                              - img [ref=e733]
+                        - generic [ref=e735]:
+                          - generic [ref=e736]:
+                            - generic [ref=e737]:
+                              - generic [ref=e738]: FC
+                              - generic "Fixture Cierre" [ref=e739]
+                            - generic [ref=e740]:
+                              - img [ref=e741]
+                              - text: Activa
+                          - generic [ref=e743]:
+                            - button "Marcar como presente" [ref=e744] [cursor=pointer]:
+                              - img [ref=e745]
+                            - button "Marcar como ausente" [ref=e747] [cursor=pointer]:
+                              - img [ref=e748]
+                        - generic [ref=e750]:
+                          - generic [ref=e751]:
+                            - generic [ref=e752]:
+                              - generic [ref=e753]: FC
+                              - generic "Fixture Cierre" [ref=e754]
+                            - generic [ref=e755]:
+                              - img [ref=e756]
+                              - text: Activa
+                          - generic [ref=e758]:
+                            - button "Marcar como presente" [ref=e759] [cursor=pointer]:
+                              - img [ref=e760]
+                            - button "Marcar como ausente" [ref=e762] [cursor=pointer]:
+                              - img [ref=e763]
+                        - generic [ref=e765]:
+                          - generic [ref=e767]:
+                            - generic [ref=e768]: FC
+                            - generic "Fixture Cierre" [ref=e769]
+                          - generic [ref=e770]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e771] [cursor=pointer]:
+                              - img [ref=e772]
+                            - button "Marcar asistencia con Pago diario" [ref=e774] [cursor=pointer]:
+                              - img [ref=e775]
+                            - button "Marcar asistencia con Tarjeta" [ref=e777] [cursor=pointer]:
+                              - img [ref=e778]
+                        - generic [ref=e780]:
+                          - generic [ref=e781]:
+                            - generic [ref=e782]:
+                              - generic [ref=e783]: FC
+                              - generic "Fixture Cierre" [ref=e784]
+                            - generic [ref=e785]:
+                              - img [ref=e786]
+                              - text: Activa
+                          - generic [ref=e788]:
+                            - button "Marcar como presente" [ref=e789] [cursor=pointer]:
+                              - img [ref=e790]
+                            - button "Marcar como ausente" [ref=e792] [cursor=pointer]:
+                              - img [ref=e793]
+                        - generic [ref=e795]:
+                          - generic [ref=e797]:
+                            - generic [ref=e798]: FC
+                            - generic "Fixture Cierre" [ref=e799]
+                          - generic [ref=e800]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e801] [cursor=pointer]:
+                              - img [ref=e802]
+                            - button "Marcar asistencia con Pago diario" [ref=e804] [cursor=pointer]:
+                              - img [ref=e805]
+                            - button "Marcar asistencia con Tarjeta" [ref=e807] [cursor=pointer]:
+                              - img [ref=e808]
+                        - generic [ref=e810]:
+                          - generic [ref=e811]:
+                            - generic [ref=e812]:
+                              - generic [ref=e813]: FC
+                              - generic "Fixture Cierre" [ref=e814]
+                            - generic [ref=e815]:
+                              - img [ref=e816]
+                              - text: Activa
+                          - generic [ref=e818]:
+                            - button "Marcar como presente" [ref=e819] [cursor=pointer]:
+                              - img [ref=e820]
+                            - button "Marcar como ausente" [ref=e822] [cursor=pointer]:
+                              - img [ref=e823]
+                        - generic [ref=e825]:
+                          - generic [ref=e827]:
+                            - generic [ref=e828]: FC
+                            - generic "Fixture Cierre" [ref=e829]
+                          - generic [ref=e830]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e831] [cursor=pointer]:
+                              - img [ref=e832]
+                            - button "Marcar asistencia con Pago diario" [ref=e834] [cursor=pointer]:
+                              - img [ref=e835]
+                            - button "Marcar asistencia con Tarjeta" [ref=e837] [cursor=pointer]:
+                              - img [ref=e838]
+                        - generic [ref=e840]:
+                          - generic [ref=e842]:
+                            - generic [ref=e843]: FC
+                            - generic "Fixture Cierre" [ref=e844]
+                          - generic [ref=e845]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e846] [cursor=pointer]:
+                              - img [ref=e847]
+                            - button "Marcar asistencia con Pago diario" [ref=e849] [cursor=pointer]:
+                              - img [ref=e850]
+                            - button "Marcar asistencia con Tarjeta" [ref=e852] [cursor=pointer]:
+                              - img [ref=e853]
+                        - generic [ref=e855]:
+                          - generic [ref=e856]:
+                            - generic [ref=e857]:
+                              - generic [ref=e858]: FC
+                              - generic "Fixture Cierre" [ref=e859]
+                            - generic [ref=e860]:
+                              - img [ref=e861]
+                              - text: Activa
+                          - generic [ref=e863]:
+                            - button "Marcar como presente" [ref=e864] [cursor=pointer]:
+                              - img [ref=e865]
+                            - button "Marcar como ausente" [ref=e867] [cursor=pointer]:
+                              - img [ref=e868]
+                        - generic [ref=e870]:
+                          - generic [ref=e872]:
+                            - generic [ref=e873]: FC
+                            - generic "Fixture Cierre" [ref=e874]
+                          - generic [ref=e875]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e876] [cursor=pointer]:
+                              - img [ref=e877]
+                            - button "Marcar asistencia con Pago diario" [ref=e879] [cursor=pointer]:
+                              - img [ref=e880]
+                            - button "Marcar asistencia con Tarjeta" [ref=e882] [cursor=pointer]:
+                              - img [ref=e883]
+                        - generic [ref=e885]:
+                          - generic [ref=e887]:
+                            - generic [ref=e888]: FC
+                            - generic "Fixture Cierre" [ref=e889]
+                          - generic [ref=e890]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e891] [cursor=pointer]:
+                              - img [ref=e892]
+                            - button "Marcar asistencia con Pago diario" [ref=e894] [cursor=pointer]:
+                              - img [ref=e895]
+                            - button "Marcar asistencia con Tarjeta" [ref=e897] [cursor=pointer]:
+                              - img [ref=e898]
+                        - generic [ref=e900]:
+                          - generic [ref=e901]:
+                            - generic [ref=e902]:
+                              - generic [ref=e903]: FC
+                              - generic "Fixture Cierre" [ref=e904]
+                            - generic [ref=e905]:
+                              - img [ref=e906]
+                              - text: Activa
+                          - generic [ref=e908]:
+                            - button "Marcar como presente" [ref=e909] [cursor=pointer]:
+                              - img [ref=e910]
+                            - button "Marcar como ausente" [ref=e912] [cursor=pointer]:
+                              - img [ref=e913]
+                        - generic [ref=e915]:
+                          - generic [ref=e917]:
+                            - generic [ref=e918]: FC
+                            - generic "Fixture Cierre" [ref=e919]
+                          - generic [ref=e920]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e921] [cursor=pointer]:
+                              - img [ref=e922]
+                            - button "Marcar asistencia con Pago diario" [ref=e924] [cursor=pointer]:
+                              - img [ref=e925]
+                            - button "Marcar asistencia con Tarjeta" [ref=e927] [cursor=pointer]:
+                              - img [ref=e928]
+                        - generic [ref=e930]:
+                          - generic [ref=e932]:
+                            - generic [ref=e933]: FC
+                            - generic "Fixture Cierre" [ref=e934]
+                          - generic [ref=e935]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e936] [cursor=pointer]:
+                              - img [ref=e937]
+                            - button "Marcar asistencia con Pago diario" [ref=e939] [cursor=pointer]:
+                              - img [ref=e940]
+                            - button "Marcar asistencia con Tarjeta" [ref=e942] [cursor=pointer]:
+                              - img [ref=e943]
+                        - generic [ref=e945]:
+                          - generic [ref=e947]:
+                            - generic [ref=e948]: FC
+                            - generic "Fixture Cierre" [ref=e949]
+                          - generic [ref=e950]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e951] [cursor=pointer]:
+                              - img [ref=e952]
+                            - button "Marcar asistencia con Pago diario" [ref=e954] [cursor=pointer]:
+                              - img [ref=e955]
+                            - button "Marcar asistencia con Tarjeta" [ref=e957] [cursor=pointer]:
+                              - img [ref=e958]
+                        - generic [ref=e960]:
+                          - generic [ref=e961]:
+                            - generic [ref=e962]:
+                              - generic [ref=e963]: FC
+                              - generic "Fixture Cierre" [ref=e964]
+                            - generic [ref=e965]:
+                              - img [ref=e966]
+                              - text: Activa
+                          - generic [ref=e968]:
+                            - button "Marcar como presente" [ref=e969] [cursor=pointer]:
+                              - img [ref=e970]
+                            - button "Marcar como ausente" [ref=e972] [cursor=pointer]:
+                              - img [ref=e973]
+                        - generic [ref=e975]:
+                          - generic [ref=e977]:
+                            - generic [ref=e978]: FC
+                            - generic "Fixture Cierre" [ref=e979]
+                          - generic [ref=e980]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e981] [cursor=pointer]:
+                              - img [ref=e982]
+                            - button "Marcar asistencia con Pago diario" [ref=e984] [cursor=pointer]:
+                              - img [ref=e985]
+                            - button "Marcar asistencia con Tarjeta" [ref=e987] [cursor=pointer]:
+                              - img [ref=e988]
+                        - generic [ref=e990]:
+                          - generic [ref=e992]:
+                            - generic [ref=e993]: FC
+                            - generic "Fixture Cierre" [ref=e994]
+                          - generic [ref=e995]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e996] [cursor=pointer]:
+                              - img [ref=e997]
+                            - button "Marcar asistencia con Pago diario" [ref=e999] [cursor=pointer]:
+                              - img [ref=e1000]
+                            - button "Marcar asistencia con Tarjeta" [ref=e1002] [cursor=pointer]:
+                              - img [ref=e1003]
+                        - generic [ref=e1005]:
+                          - generic [ref=e1007]:
+                            - generic [ref=e1008]: FC
+                            - generic "Fixture Cierre" [ref=e1009]
+                          - generic [ref=e1010]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e1011] [cursor=pointer]:
+                              - img [ref=e1012]
+                            - button "Marcar asistencia con Pago diario" [ref=e1014] [cursor=pointer]:
+                              - img [ref=e1015]
+                            - button "Marcar asistencia con Tarjeta" [ref=e1017] [cursor=pointer]:
+                              - img [ref=e1018]
+                        - generic [ref=e1020]:
+                          - generic [ref=e1022]:
+                            - generic [ref=e1023]: FC
+                            - generic "Fixture Cierre" [ref=e1024]
+                          - generic [ref=e1025]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e1026] [cursor=pointer]:
+                              - img [ref=e1027]
+                            - button "Marcar asistencia con Pago diario" [ref=e1029] [cursor=pointer]:
+                              - img [ref=e1030]
+                            - button "Marcar asistencia con Tarjeta" [ref=e1032] [cursor=pointer]:
+                              - img [ref=e1033]
+                        - generic [ref=e1035]:
+                          - generic [ref=e1037]:
+                            - generic [ref=e1038]: FC
+                            - generic "Fixture Cierre" [ref=e1039]
+                          - generic [ref=e1040]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e1041] [cursor=pointer]:
+                              - img [ref=e1042]
+                            - button "Marcar asistencia con Pago diario" [ref=e1044] [cursor=pointer]:
+                              - img [ref=e1045]
+                            - button "Marcar asistencia con Tarjeta" [ref=e1047] [cursor=pointer]:
+                              - img [ref=e1048]
+                        - generic [ref=e1050]:
+                          - generic [ref=e1051]:
+                            - generic [ref=e1052]:
+                              - generic [ref=e1053]: FC
+                              - generic "Fixture Cierre" [ref=e1054]
+                            - generic [ref=e1055]:
+                              - img [ref=e1056]
+                              - text: Activa
+                          - generic [ref=e1058]:
+                            - button "Marcar como presente" [ref=e1059] [cursor=pointer]:
+                              - img [ref=e1060]
+                            - button "Marcar como ausente" [ref=e1062] [cursor=pointer]:
+                              - img [ref=e1063]
+                        - generic [ref=e1065]:
+                          - generic [ref=e1066]:
+                            - generic [ref=e1067]:
+                              - generic [ref=e1068]: FC
+                              - generic "Fixture Cierre" [ref=e1069]
+                            - generic [ref=e1070]:
+                              - img [ref=e1071]
+                              - text: Activa
+                          - generic [ref=e1073]:
+                            - button "Marcar como presente" [ref=e1074] [cursor=pointer]:
+                              - img [ref=e1075]
+                            - button "Marcar como ausente" [ref=e1077] [cursor=pointer]:
+                              - img [ref=e1078]
+                        - generic [ref=e1080]:
+                          - generic [ref=e1082]:
+                            - generic [ref=e1083]: FC
+                            - generic "Fixture Cierre" [ref=e1084]
+                          - generic [ref=e1085]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e1086] [cursor=pointer]:
+                              - img [ref=e1087]
+                            - button "Marcar asistencia con Pago diario" [ref=e1089] [cursor=pointer]:
+                              - img [ref=e1090]
+                            - button "Marcar asistencia con Tarjeta" [ref=e1092] [cursor=pointer]:
+                              - img [ref=e1093]
+                        - generic [ref=e1095]:
+                          - generic [ref=e1096]:
+                            - generic [ref=e1097]:
+                              - generic [ref=e1098]: EF
+                              - generic "E2Edcbcaeca4087 Flow" [ref=e1099]
+                            - generic [ref=e1100]:
+                              - img [ref=e1101]
+                              - text: Activa
+                          - generic [ref=e1103]:
+                            - button "Marcar como presente" [ref=e1104] [cursor=pointer]:
+                              - img [ref=e1105]
+                            - button "Marcar como ausente" [ref=e1107] [cursor=pointer]:
+                              - img [ref=e1108]
+                        - generic [ref=e1110]:
+                          - generic [ref=e1112]:
+                            - generic [ref=e1113]: EF
+                            - generic "E2E8201a1c91a2b Flow" [ref=e1114]
+                          - generic [ref=e1115]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e1116] [cursor=pointer]:
+                              - img [ref=e1117]
+                            - button "Marcar asistencia con Pago diario" [ref=e1119] [cursor=pointer]:
+                              - img [ref=e1120]
+                            - button "Marcar asistencia con Tarjeta" [ref=e1122] [cursor=pointer]:
+                              - img [ref=e1123]
+                        - generic [ref=e1125]:
+                          - generic [ref=e1127]:
+                            - generic [ref=e1128]: EF
+                            - generic "E2Eed9682c4a645 Flow" [ref=e1129]
+                          - generic [ref=e1130]:
+                            - button "Marcar asistencia con Mensualidad" [ref=e1131] [cursor=pointer]:
+                              - img [ref=e1132]
+                            - button "Marcar asistencia con Pago diario" [ref=e1134] [cursor=pointer]:
+                              - img [ref=e1135]
+                            - button "Marcar asistencia con Tarjeta" [ref=e1137] [cursor=pointer]:
+                              - img [ref=e1138]
+                        - generic [ref=e1140]:
+                          - generic [ref=e1141]:
+                            - generic [ref=e1142]:
+                              - generic [ref=e1143]: EF
+                              - generic "E2E334fd6c525ce Flow" [ref=e1144]
+                            - generic [ref=e1145]:
+                              - img [ref=e1146]
+                              - text: Activa
+                          - generic [ref=e1148]:
+                            - button "Marcar como presente" [ref=e1149] [cursor=pointer]:
+                              - img [ref=e1150]
+                            - button "Marcar como ausente" [ref=e1152] [cursor=pointer]:
+                              - img [ref=e1153]
+                        - generic [ref=e1155]:
+                          - generic [ref=e1156]:
+                            - generic [ref=e1157]:
+                              - generic [ref=e1158]: EF
+                              - generic "E2Ed03076d6b4c0 Flow" [ref=e1159]
+                            - generic [ref=e1160]:
+                              - img [ref=e1161]
+                              - text: Activa
+                          - generic [ref=e1163]:
+                            - button "Marcar como presente" [ref=e1164] [cursor=pointer]:
+                              - img [ref=e1165]
+                            - button "Marcar como ausente" [ref=e1167] [cursor=pointer]:
+                              - img [ref=e1168]
+                        - generic [ref=e1170]:
+                          - generic [ref=e1171]:
+                            - generic [ref=e1172]:
+                              - generic [ref=e1173]: EF
+                              - generic "E2Ec03ee1200c00 Flow" [ref=e1174]
+                            - generic [ref=e1175]:
+                              - img [ref=e1176]
+                              - text: Activa
+                          - generic [ref=e1178]:
+                            - button "Marcar como presente" [ref=e1179] [cursor=pointer]:
+                              - img [ref=e1180]
+                            - button "Marcar como ausente" [ref=e1182] [cursor=pointer]:
+                              - img [ref=e1183]
+                        - generic [ref=e1185]:
+                          - generic [ref=e1186]:
+                            - generic [ref=e1187]:
+                              - generic [ref=e1188]: EF
+                              - generic "E2E7cfaddab275c Flow" [ref=e1189]
+                            - generic [ref=e1190]:
+                              - img [ref=e1191]
+                              - text: Activa
+                          - generic [ref=e1193]:
+                            - button "Marcar como presente" [ref=e1194] [cursor=pointer]:
+                              - img [ref=e1195]
+                            - button "Marcar como ausente" [ref=e1197] [cursor=pointer]:
+                              - img [ref=e1198]
+                        - generic [ref=e1200]:
+                          - generic [ref=e1201]:
+                            - generic [ref=e1202]:
+                              - generic [ref=e1203]: EF
+                              - generic "E2Eca50e8a14f8e Flow" [ref=e1204]
+                            - generic [ref=e1205]:
+                              - img [ref=e1206]
+                              - text: Activa
+                          - generic [ref=e1208]:
+                            - button "Marcar como presente" [ref=e1209] [cursor=pointer]:
+                              - img [ref=e1210]
+                            - button "Marcar como ausente" [ref=e1212] [cursor=pointer]:
+                              - img [ref=e1213]
+                        - generic [ref=e1215]:
+                          - generic [ref=e1216]:
+                            - generic [ref=e1217]:
+                              - generic [ref=e1218]: EF
+                              - generic "E2Eb1a9007bd4ca Flow" [ref=e1219]
+                            - generic [ref=e1220]:
+                              - img [ref=e1221]
+                              - text: Activa
+                          - generic [ref=e1223]:
+                            - button "Marcar como presente" [ref=e1224] [cursor=pointer]:
+                              - img [ref=e1225]
+                            - button "Marcar como ausente" [ref=e1227] [cursor=pointer]:
+                              - img [ref=e1228]
+                        - generic [ref=e1230]:
+                          - generic [ref=e1231]:
+                            - generic [ref=e1232]:
+                              - generic [ref=e1233]: EF
+                              - generic "E2E96e87fb9b428 Flow" [ref=e1234]
+                            - generic [ref=e1235]:
+                              - img [ref=e1236]
+                              - text: Activa
+                          - generic [ref=e1238]:
+                            - button "Marcar como presente" [ref=e1239] [cursor=pointer]:
+                              - img [ref=e1240]
+                            - button "Marcar como ausente" [ref=e1242] [cursor=pointer]:
+                              - img [ref=e1243]
+                        - generic [ref=e1245]:
+                          - generic [ref=e1246]:
+                            - generic [ref=e1247]:
+                              - generic [ref=e1248]: EF
+                              - generic "E2Ec5163bd43093 Flow" [ref=e1249]
+                            - generic [ref=e1250]:
+                              - img [ref=e1251]
+                              - text: Activa
+                          - generic [ref=e1253]:
+                            - button "Marcar como presente" [ref=e1254] [cursor=pointer]:
+                              - img [ref=e1255]
+                            - button "Marcar como ausente" [ref=e1257] [cursor=pointer]:
+                              - img [ref=e1258]
+                        - generic [ref=e1260]:
+                          - generic [ref=e1261]:
+                            - generic [ref=e1262]:
+                              - generic [ref=e1263]: EF
+                              - generic "E2E33ca3f7b1d56 Flow" [ref=e1264]
+                            - generic [ref=e1265]:
+                              - img [ref=e1266]
+                              - text: Activa
+                          - generic [ref=e1268]:
+                            - button "Marcar como presente" [ref=e1269] [cursor=pointer]:
+                              - img [ref=e1270]
+                            - button "Marcar como ausente" [ref=e1272] [cursor=pointer]:
+                              - img [ref=e1273]
+                        - generic [ref=e1275]:
+                          - generic [ref=e1276]:
+                            - generic [ref=e1277]:
+                              - generic [ref=e1278]: EF
+                              - generic "E2Ec5a70dc502e3 Flow" [ref=e1279]
+                            - generic [ref=e1280]:
+                              - img [ref=e1281]
+                              - text: Activa
+                          - generic [ref=e1283]:
+                            - button "Marcar como presente" [ref=e1284] [cursor=pointer]:
+                              - img [ref=e1285]
+                            - button "Marcar como ausente" [ref=e1287] [cursor=pointer]:
+                              - img [ref=e1288]
+                        - generic [ref=e1290]:
+                          - generic [ref=e1291]:
+                            - generic [ref=e1292]:
+                              - generic [ref=e1293]: EF
+                              - generic "E2E1efd3b3e0e2c Flow" [ref=e1294]
+                            - generic [ref=e1295]:
+                              - img [ref=e1296]
+                              - text: Activa
+                          - generic [ref=e1298]:
+                            - button "Marcar como presente" [ref=e1299] [cursor=pointer]:
+                              - img [ref=e1300]
+                            - button "Marcar como ausente" [ref=e1302] [cursor=pointer]:
+                              - img [ref=e1303]
+                        - generic [ref=e1305]:
+                          - generic [ref=e1306]:
+                            - generic [ref=e1307]:
+                              - generic [ref=e1308]: EF
+                              - generic "E2E38f40f0a1e52 Flow" [ref=e1309]
+                            - generic [ref=e1310]:
+                              - img [ref=e1311]
+                              - text: Activa
+                          - generic [ref=e1313]:
+                            - button "Marcar como presente" [ref=e1314] [cursor=pointer]:
+                              - img [ref=e1315]
+                            - button "Marcar como ausente" [ref=e1317] [cursor=pointer]:
+                              - img [ref=e1318]
+                        - generic [ref=e1320]:
+                          - generic [ref=e1321]:
+                            - generic [ref=e1322]:
+                              - generic [ref=e1323]: EF
+                              - generic "E2E830f3a41df57 Flow" [ref=e1324]
+                            - generic [ref=e1325]:
+                              - img [ref=e1326]
+                              - text: Activa
+                          - generic [ref=e1328]:
+                            - button "Marcar como presente" [ref=e1329] [cursor=pointer]:
+                              - img [ref=e1330]
+                            - button "Marcar como ausente" [ref=e1332] [cursor=pointer]:
+                              - img [ref=e1333]
+                        - generic [ref=e1335]:
+                          - generic [ref=e1336]:
+                            - generic [ref=e1337]:
+                              - generic [ref=e1338]: EF
+                              - generic "E2Ef1c26588d364 Flow" [ref=e1339]
+                            - generic [ref=e1340]:
+                              - img [ref=e1341]
+                              - text: Activa
+                          - generic [ref=e1343]:
+                            - button "Marcar como presente" [ref=e1344] [cursor=pointer]:
+                              - img [ref=e1345]
+                            - button "Marcar como ausente" [ref=e1347] [cursor=pointer]:
+                              - img [ref=e1348]
+                        - generic [ref=e1350]:
+                          - generic [ref=e1351]:
+                            - generic [ref=e1352]:
+                              - generic [ref=e1353]: EF
+                              - generic "E2E74179617a293 Flow" [ref=e1354]
+                            - generic [ref=e1355]:
+                              - img [ref=e1356]
+                              - text: Activa
+                          - generic [ref=e1358]:
+                            - button "Marcar como presente" [ref=e1359] [cursor=pointer]:
+                              - img [ref=e1360]
+                            - button "Marcar como ausente" [ref=e1362] [cursor=pointer]:
+                              - img [ref=e1363]
+                        - generic [ref=e1365]:
+                          - generic [ref=e1366]:
+                            - generic [ref=e1367]:
+                              - generic [ref=e1368]: EF
+                              - generic "E2E6bd4009a2275 Flow" [ref=e1369]
+                            - generic [ref=e1370]:
+                              - img [ref=e1371]
+                              - text: Activa
+                          - generic [ref=e1373]:
+                            - button "Marcar como presente" [ref=e1374] [cursor=pointer]:
+                              - img [ref=e1375]
+                            - button "Marcar como ausente" [ref=e1377] [cursor=pointer]:
+                              - img [ref=e1378]
+                        - generic [ref=e1380]:
+                          - generic [ref=e1381]:
+                            - generic [ref=e1382]:
+                              - generic [ref=e1383]: EF
+                              - generic "E2Ee86c72218700 Flow" [ref=e1384]
+                            - generic [ref=e1385]:
+                              - img [ref=e1386]
+                              - text: Activa
+                          - generic [ref=e1388]:
+                            - button "Marcar como presente" [ref=e1389] [cursor=pointer]:
+                              - img [ref=e1390]
+                            - button "Marcar como ausente" [ref=e1392] [cursor=pointer]:
+                              - img [ref=e1393]
+                        - generic [ref=e1395]:
+                          - generic [ref=e1396]:
+                            - generic [ref=e1397]:
+                              - generic [ref=e1398]: EF
+                              - generic "E2E0657483d13f1 Flow" [ref=e1399]
+                            - generic [ref=e1400]:
+                              - img [ref=e1401]
+                              - text: Activa
+                          - generic [ref=e1403]:
+                            - button "Marcar como presente" [ref=e1404] [cursor=pointer]:
+                              - img [ref=e1405]
+                            - button "Marcar como ausente" [ref=e1407] [cursor=pointer]:
+                              - img [ref=e1408]
+                        - generic [ref=e1410]:
+                          - generic [ref=e1411]:
+                            - generic [ref=e1412]:
+                              - generic [ref=e1413]: EF
+                              - generic "E2E0781e6ad9e04 Flow" [ref=e1414]
+                            - generic [ref=e1415]:
+                              - img [ref=e1416]
+                              - text: Activa
+                          - generic [ref=e1418]:
+                            - button "Marcar como presente" [ref=e1419] [cursor=pointer]:
+                              - img [ref=e1420]
+                            - button "Marcar como ausente" [ref=e1422] [cursor=pointer]:
+                              - img [ref=e1423]
+                        - generic [ref=e1425]:
+                          - generic [ref=e1426]:
+                            - generic [ref=e1427]:
+                              - generic [ref=e1428]: EF
+                              - generic "E2E8efff5be04d4 Flow" [ref=e1429]
+                            - generic [ref=e1430]:
+                              - img [ref=e1431]
+                              - text: Activa
+                          - generic [ref=e1433]:
+                            - button "Marcar como presente" [ref=e1434] [cursor=pointer]:
+                              - img [ref=e1435]
+                            - button "Marcar como ausente" [ref=e1437] [cursor=pointer]:
+                              - img [ref=e1438]
+                        - generic [ref=e1440]:
+                          - generic [ref=e1441]:
+                            - generic [ref=e1442]:
+                              - generic [ref=e1443]: EF
+                              - generic "E2E0b330a5cf926 Flow" [ref=e1444]
+                            - generic [ref=e1445]:
+                              - img [ref=e1446]
+                              - text: Activa
+                          - generic [ref=e1448]:
+                            - button "Marcar como presente" [ref=e1449] [cursor=pointer]:
+                              - img [ref=e1450]
+                            - button "Marcar como ausente" [ref=e1452] [cursor=pointer]:
+                              - img [ref=e1453]
+                        - generic [ref=e1455]:
+                          - generic [ref=e1456]:
+                            - generic [ref=e1457]:
+                              - generic [ref=e1458]: EF
+                              - generic "E2E0ea2ce01f579 Flow" [ref=e1459]
+                            - generic [ref=e1460]:
+                              - img [ref=e1461]
+                              - text: Activa
+                          - generic [ref=e1463]:
+                            - button "Marcar como presente" [ref=e1464] [cursor=pointer]:
+                              - img [ref=e1465]
+                            - button "Marcar como ausente" [ref=e1467] [cursor=pointer]:
+                              - img [ref=e1468]
+                        - generic [ref=e1470]:
+                          - generic [ref=e1471]:
+                            - generic [ref=e1472]:
+                              - generic [ref=e1473]: EF
+                              - generic "E2E187f6e4cff91 Flow" [ref=e1474]
+                            - generic [ref=e1475]:
+                              - img [ref=e1476]
+                              - text: Activa
+                          - generic [ref=e1478]:
+                            - button "Marcar como presente" [ref=e1479] [cursor=pointer]:
+                              - img [ref=e1480]
+                            - button "Marcar como ausente" [ref=e1482] [cursor=pointer]:
+                              - img [ref=e1483]
+                        - generic [ref=e1485]:
+                          - generic [ref=e1486]:
+                            - generic [ref=e1487]:
+                              - generic [ref=e1488]: EF
+                              - generic "E2Eb7ced1bce36d Flow" [ref=e1489]
+                            - generic [ref=e1490]:
+                              - img [ref=e1491]
+                              - text: Activa
+                          - generic [ref=e1493]:
+                            - button "Marcar como presente" [ref=e1494] [cursor=pointer]:
+                              - img [ref=e1495]
+                            - button "Marcar como ausente" [ref=e1497] [cursor=pointer]:
+                              - img [ref=e1498]
+                        - generic [ref=e1500]:
+                          - generic [ref=e1501]:
+                            - generic [ref=e1502]:
+                              - generic [ref=e1503]: EF
+                              - generic "E2Eecb6a679cfab Flow" [ref=e1504]
+                            - generic [ref=e1505]:
+                              - img [ref=e1506]
+                              - text: Activa
+                          - generic [ref=e1508]:
+                            - button "Marcar como presente" [ref=e1509] [cursor=pointer]:
+                              - img [ref=e1510]
+                            - button "Marcar como ausente" [ref=e1512] [cursor=pointer]:
+                              - img [ref=e1513]
+                        - generic [ref=e1515]:
+                          - generic [ref=e1516]:
+                            - generic [ref=e1517]:
+                              - generic [ref=e1518]: EF
+                              - generic "E2E13d48e02bf58 Flow" [ref=e1519]
+                            - generic [ref=e1520]:
+                              - img [ref=e1521]
+                              - text: Activa
+                          - generic [ref=e1523]:
+                            - button "Marcar como presente" [ref=e1524] [cursor=pointer]:
+                              - img [ref=e1525]
+                            - button "Marcar como ausente" [ref=e1527] [cursor=pointer]:
+                              - img [ref=e1528]
+                        - generic [ref=e1530]:
+                          - generic [ref=e1531]:
+                            - generic [ref=e1532]:
+                              - generic [ref=e1533]: EF
+                              - generic "E2E314f04fcecd7 Flow" [ref=e1534]
+                            - generic [ref=e1535]:
+                              - img [ref=e1536]
+                              - text: Activa
+                          - generic [ref=e1538]:
+                            - button "Marcar como presente" [ref=e1539] [cursor=pointer]:
+                              - img [ref=e1540]
+                            - button "Marcar como ausente" [ref=e1542] [cursor=pointer]:
+                              - img [ref=e1543]
+                        - generic [ref=e1545]:
+                          - generic [ref=e1546]:
+                            - generic [ref=e1547]:
+                              - generic [ref=e1548]: EF
+                              - generic "E2E17d593128749 Flow" [ref=e1549]
+                            - generic [ref=e1550]:
+                              - img [ref=e1551]
+                              - text: Activa
+                          - generic [ref=e1553]:
+                            - button "Marcar como presente" [ref=e1554] [cursor=pointer]:
+                              - img [ref=e1555]
+                            - button "Marcar como ausente" [ref=e1557] [cursor=pointer]:
+                              - img [ref=e1558]
+                        - generic [ref=e1560]:
+                          - generic [ref=e1561]:
+                            - generic [ref=e1562]:
+                              - generic [ref=e1563]: EF
+                              - generic "E2E2659726e3fd6 Flow" [ref=e1564]
+                            - generic [ref=e1565]:
+                              - img [ref=e1566]
+                              - text: Activa
+                          - generic [ref=e1568]:
+                            - button "Marcar como presente" [ref=e1569] [cursor=pointer]:
+                              - img [ref=e1570]
+                            - button "Marcar como ausente" [ref=e1572] [cursor=pointer]:
+                              - img [ref=e1573]
+                        - generic [ref=e1575]:
+                          - generic [ref=e1576]:
+                            - generic [ref=e1577]:
+                              - generic [ref=e1578]: EF
+                              - generic "E2E91175a0fb117 Flow" [ref=e1579]
+                            - generic [ref=e1580]:
+                              - img [ref=e1581]
+                              - text: Activa
+                          - generic [ref=e1583]:
+                            - button "Marcar como presente" [ref=e1584] [cursor=pointer]:
+                              - img [ref=e1585]
+                            - button "Marcar como ausente" [ref=e1587] [cursor=pointer]:
+                              - img [ref=e1588]
+                        - generic [ref=e1590]:
+                          - generic [ref=e1591]:
+                            - generic [ref=e1592]:
+                              - generic [ref=e1593]: EF
+                              - generic "E2E6acec1d8edf7 Flow" [ref=e1594]
+                            - generic [ref=e1595]:
+                              - img [ref=e1596]
+                              - text: Activa
+                          - generic [ref=e1598]:
+                            - button "Marcar como presente" [ref=e1599] [cursor=pointer]:
+                              - img [ref=e1600]
+                            - button "Marcar como ausente" [ref=e1602] [cursor=pointer]:
+                              - img [ref=e1603]
+                        - generic [ref=e1605]:
+                          - generic [ref=e1606]:
+                            - generic [ref=e1607]:
+                              - generic [ref=e1608]: EF
+                              - generic "E2E62b03a928299 Flow" [ref=e1609]
+                            - generic [ref=e1610]:
+                              - img [ref=e1611]
+                              - text: Activa
+                          - generic [ref=e1613]:
+                            - button "Marcar como presente" [ref=e1614] [cursor=pointer]:
+                              - img [ref=e1615]
+                            - button "Marcar como ausente" [ref=e1617] [cursor=pointer]:
+                              - img [ref=e1618]
+                        - generic [ref=e1620]:
+                          - generic [ref=e1621]:
+                            - generic [ref=e1622]:
+                              - generic [ref=e1623]: EF
+                              - generic "E2Ed43af4aceb85 Flow" [ref=e1624]
+                            - generic [ref=e1625]:
+                              - img [ref=e1626]
+                              - text: Activa
+                          - generic [ref=e1628]:
+                            - button "Marcar como presente" [ref=e1629] [cursor=pointer]:
+                              - img [ref=e1630]
+                            - button "Marcar como ausente" [ref=e1632] [cursor=pointer]:
+                              - img [ref=e1633]
+                        - generic [ref=e1635]:
+                          - generic [ref=e1636]:
+                            - generic [ref=e1637]:
+                              - generic [ref=e1638]: EF
+                              - generic "E2E1b296482b31e Flow" [ref=e1639]
+                            - generic [ref=e1640]:
+                              - img [ref=e1641]
+                              - text: Activa
+                          - generic [ref=e1643]:
+                            - button "Marcar como presente" [ref=e1644] [cursor=pointer]:
+                              - img [ref=e1645]
+                            - button "Marcar como ausente" [ref=e1647] [cursor=pointer]:
+                              - img [ref=e1648]
+                        - generic [ref=e1650]:
+                          - generic [ref=e1651]:
+                            - generic [ref=e1652]:
+                              - generic [ref=e1653]: EF
+                              - generic "E2E9fc7deff4e26 Flow" [ref=e1654]
+                            - generic [ref=e1655]:
+                              - img [ref=e1656]
+                              - text: Activa
+                          - generic [ref=e1658]:
+                            - button "Marcar como presente" [ref=e1659] [cursor=pointer]:
+                              - img [ref=e1660]
+                            - button "Marcar como ausente" [ref=e1662] [cursor=pointer]:
+                              - img [ref=e1663]
+                        - generic [ref=e1665]:
+                          - generic [ref=e1666]:
+                            - generic [ref=e1667]:
+                              - generic [ref=e1668]: EF
+                              - generic "E2E35288867e175 Flow" [ref=e1669]
+                            - generic [ref=e1670]:
+                              - img [ref=e1671]
+                              - text: Activa
+                          - generic [ref=e1673]:
+                            - button "Marcar como presente" [ref=e1674] [cursor=pointer]:
+                              - img [ref=e1675]
+                            - button "Marcar como ausente" [ref=e1677] [cursor=pointer]:
+                              - img [ref=e1678]
+                        - generic [ref=e1680]:
+                          - generic [ref=e1681]:
+                            - generic [ref=e1682]:
+                              - generic [ref=e1683]: EF
+                              - generic "E2E5b237535276d Flow" [ref=e1684]
+                            - generic [ref=e1685]:
+                              - img [ref=e1686]
+                              - text: Activa
+                          - generic [ref=e1688]:
+                            - button "Marcar como presente" [ref=e1689] [cursor=pointer]:
+                              - img [ref=e1690]
+                            - button "Marcar como ausente" [ref=e1692] [cursor=pointer]:
+                              - img [ref=e1693]
+                        - generic [ref=e1695]:
+                          - generic [ref=e1696]:
+                            - generic [ref=e1697]:
+                              - generic [ref=e1698]: EF
+                              - generic "E2E001d0097b7fe Flow" [ref=e1699]
+                            - generic [ref=e1700]:
+                              - img [ref=e1701]
+                              - text: Activa
+                          - generic [ref=e1703]:
+                            - button "Marcar como presente" [ref=e1704] [cursor=pointer]:
+                              - img [ref=e1705]
+                            - button "Marcar como ausente" [ref=e1707] [cursor=pointer]:
+                              - img [ref=e1708]
+                        - generic [ref=e1710]:
+                          - generic [ref=e1711]:
+                            - generic [ref=e1712]:
+                              - generic [ref=e1713]: EF
+                              - generic "E2E286f240de6c7 Flow" [ref=e1714]
+                            - generic [ref=e1715]:
+                              - img [ref=e1716]
+                              - text: Activa
+                          - generic [ref=e1718]:
+                            - button "Marcar como presente" [ref=e1719] [cursor=pointer]:
+                              - img [ref=e1720]
+                            - button "Marcar como ausente" [ref=e1722] [cursor=pointer]:
+                              - img [ref=e1723]
+                        - generic [ref=e1725]:
+                          - generic [ref=e1726]:
+                            - generic [ref=e1727]:
+                              - generic [ref=e1728]: EF
+                              - generic "E2Edf8b3c26faac Flow" [ref=e1729]
+                            - generic [ref=e1730]:
+                              - img [ref=e1731]
+                              - text: Activa
+                          - generic [ref=e1733]:
+                            - button "Marcar como presente" [ref=e1734] [cursor=pointer]:
+                              - img [ref=e1735]
+                            - button "Marcar como ausente" [ref=e1737] [cursor=pointer]:
+                              - img [ref=e1738]
+                        - generic [ref=e1740]:
+                          - generic [ref=e1741]:
+                            - generic [ref=e1742]:
+                              - generic [ref=e1743]: EF
+                              - generic "E2E206a0712c99b Flow" [ref=e1744]
+                            - generic [ref=e1745]:
+                              - img [ref=e1746]
+                              - text: Activa
+                          - generic [ref=e1748]:
+                            - button "Marcar como presente" [ref=e1749] [cursor=pointer]:
+                              - img [ref=e1750]
+                            - button "Marcar como ausente" [ref=e1752] [cursor=pointer]:
+                              - img [ref=e1753]
+                        - generic [ref=e1755]:
+                          - generic [ref=e1756]:
+                            - generic [ref=e1757]:
+                              - generic [ref=e1758]: EF
+                              - generic "E2E2a1850da4d16 Flow" [ref=e1759]
+                            - generic [ref=e1760]:
+                              - img [ref=e1761]
+                              - text: Activa
+                          - generic [ref=e1763]:
+                            - button "Marcar como presente" [ref=e1764] [cursor=pointer]:
+                              - img [ref=e1765]
+                            - button "Marcar como ausente" [ref=e1767] [cursor=pointer]:
+                              - img [ref=e1768]
+                        - generic [ref=e1770]:
+                          - generic [ref=e1771]:
+                            - generic [ref=e1772]:
+                              - generic [ref=e1773]: EF
+                              - generic "E2E7e242f27bb3f Flow" [ref=e1774]
+                            - generic [ref=e1775]:
+                              - img [ref=e1776]
+                              - text: Activa
+                          - generic [ref=e1778]:
+                            - button "Marcar como presente" [ref=e1779] [cursor=pointer]:
+                              - img [ref=e1780]
+                            - button "Marcar como ausente" [ref=e1782] [cursor=pointer]:
+                              - img [ref=e1783]
+                        - generic [ref=e1785]:
+                          - generic [ref=e1786]:
+                            - generic [ref=e1787]:
+                              - generic [ref=e1788]: EF
+                              - generic "E2Efaea8bc0d941 Flow" [ref=e1789]
+                            - generic [ref=e1790]:
+                              - img [ref=e1791]
+                              - text: Activa
+                          - generic [ref=e1793]:
+                            - button "Marcar como presente" [ref=e1794] [cursor=pointer]:
+                              - img [ref=e1795]
+                            - button "Marcar como ausente" [ref=e1797] [cursor=pointer]:
+                              - img [ref=e1798]
+                        - generic [ref=e1800]:
+                          - generic [ref=e1801]:
+                            - generic [ref=e1802]:
+                              - generic [ref=e1803]: EF
+                              - generic "E2E44284ca628f5 Flow" [ref=e1804]
+                            - generic [ref=e1805]:
+                              - img [ref=e1806]
+                              - text: Activa
+                          - generic [ref=e1808]:
+                            - button "Marcar como presente" [ref=e1809] [cursor=pointer]:
+                              - img [ref=e1810]
+                            - button "Marcar como ausente" [ref=e1812] [cursor=pointer]:
+                              - img [ref=e1813]
+                        - generic [ref=e1815]:
+                          - generic [ref=e1816]:
+                            - generic [ref=e1817]:
+                              - generic [ref=e1818]: EF
+                              - generic "E2E7c2b8abf9ddb Flow" [ref=e1819]
+                            - generic [ref=e1820]:
+                              - img [ref=e1821]
+                              - text: Activa
+                          - generic [ref=e1823]:
+                            - button "Marcar como presente" [ref=e1824] [cursor=pointer]:
+                              - img [ref=e1825]
+                            - button "Marcar como ausente" [ref=e1827] [cursor=pointer]:
+                              - img [ref=e1828]
+                        - generic [ref=e1830]:
+                          - generic [ref=e1831]:
+                            - generic [ref=e1832]:
+                              - generic [ref=e1833]: EF
+                              - generic "E2E25c23123508d Flow" [ref=e1834]
+                            - generic [ref=e1835]:
+                              - img [ref=e1836]
+                              - text: Activa
+                          - generic [ref=e1838]:
+                            - button "Marcar como presente" [ref=e1839] [cursor=pointer]:
+                              - img [ref=e1840]
+                            - button "Marcar como ausente" [ref=e1842] [cursor=pointer]:
+                              - img [ref=e1843]
+                        - generic [ref=e1845]:
+                          - generic [ref=e1846]:
+                            - generic [ref=e1847]:
+                              - generic [ref=e1848]: EF
+                              - generic "E2E24d7a5360597 Flow" [ref=e1849]
+                            - generic [ref=e1850]:
+                              - img [ref=e1851]
+                              - text: Activa
+                          - generic [ref=e1853]:
+                            - button "Marcar como presente" [ref=e1854] [cursor=pointer]:
+                              - img [ref=e1855]
+                            - button "Marcar como ausente" [ref=e1857] [cursor=pointer]:
+                              - img [ref=e1858]
+                        - generic [ref=e1860]:
+                          - generic [ref=e1861]:
+                            - generic [ref=e1862]:
+                              - generic [ref=e1863]: AP
+                              - generic "Atleta Pruebas" [ref=e1864]
+                            - generic [ref=e1865]:
+                              - img [ref=e1866]
+                              - text: Activa
+                          - generic [ref=e1868]:
+                            - button "Marcar como presente" [ref=e1869] [cursor=pointer]:
+                              - img [ref=e1870]
+                            - button "Marcar como ausente" [ref=e1872] [cursor=pointer]:
+                              - img [ref=e1873]
+                    - generic [ref=e1875]:
+                      - heading "Mujeres" [level=4] [ref=e1876]:
+                        - img [ref=e1877]
+                        - text: Mujeres
+                      - generic [ref=e1879]:
+                        - generic [ref=e1880]:
+                          - generic [ref=e1881]:
+                            - generic [ref=e1882]:
+                              - generic [ref=e1883]: FA
+                              - generic "Fixture7 Auditoria" [ref=e1884]
+                            - generic [ref=e1885]:
+                              - img [ref=e1886]
+                              - text: Activa
+                          - generic [ref=e1888]:
+                            - button "Marcar como presente" [ref=e1889] [cursor=pointer]:
+                              - img [ref=e1890]
+                            - button "Marcar como ausente" [ref=e1892] [cursor=pointer]:
+                              - img [ref=e1893]
+                        - generic [ref=e1895]:
+                          - generic [ref=e1896]:
+                            - generic [ref=e1897]:
+                              - generic [ref=e1898]: FA
+                              - generic "Fixture1 Auditoria" [ref=e1899]
+                            - generic [ref=e1900]:
+                              - img [ref=e1901]
+                              - text: Activa
+                          - generic [ref=e1903]:
+                            - button "Marcar como presente" [ref=e1904] [cursor=pointer]:
+                              - img [ref=e1905]
+                            - button "Marcar como ausente" [ref=e1907] [cursor=pointer]:
+                              - img [ref=e1908]
+                - generic [ref=e1910]:
+                  - heading "Perfeccionamiento" [level=3] [ref=e1911]:
+                    - img [ref=e1912]
+                    - text: Perfeccionamiento
+                  - generic [ref=e1914]:
+                    - generic [ref=e1915]:
+                      - heading "Hombres" [level=4] [ref=e1916]:
+                        - img [ref=e1917]
+                        - text: Hombres
+                      - generic [ref=e1920]:
+                        - generic [ref=e1921]:
+                          - generic [ref=e1922]:
+                            - generic [ref=e1923]: FA
+                            - generic "Fixture2 Auditoria" [ref=e1924]
+                          - generic [ref=e1925]:
+                            - img [ref=e1926]
+                            - text: Activa
+                        - generic [ref=e1928]:
+                          - button "Marcar como presente" [ref=e1929] [cursor=pointer]:
+                            - img [ref=e1930]
+                          - button "Marcar como ausente" [ref=e1932] [cursor=pointer]:
+                            - img [ref=e1933]
+                    - generic [ref=e1935]:
+                      - heading "Mujeres" [level=4] [ref=e1936]:
+                        - img [ref=e1937]
+                        - text: Mujeres
+                      - generic [ref=e1940]:
+                        - generic [ref=e1941]:
+                          - generic [ref=e1942]:
+                            - generic [ref=e1943]: FA
+                            - generic "Fixture3 Auditoria" [ref=e1944]
+                          - generic [ref=e1945]:
+                            - img [ref=e1946]
+                            - text: Activa
+                        - generic [ref=e1948]:
+                          - button "Marcar como presente" [ref=e1949] [cursor=pointer]:
+                            - img [ref=e1950]
+                          - button "Marcar como ausente" [ref=e1952] [cursor=pointer]:
+                            - img [ref=e1953]
+                - generic [ref=e1955]:
+                  - heading "Master" [level=3] [ref=e1956]:
+                    - img [ref=e1957]
+                    - text: Master
+                  - generic [ref=e1960]:
+                    - heading "Mujeres" [level=4] [ref=e1961]:
+                      - img [ref=e1962]
+                      - text: Mujeres
+                    - generic [ref=e1965]:
+                      - generic [ref=e1966]:
+                        - generic [ref=e1967]:
+                          - generic [ref=e1968]: FA
+                          - generic "Fixture5 Auditoria" [ref=e1969]
+                        - generic [ref=e1970]:
+                          - img [ref=e1971]
+                          - text: Activa
+                      - generic [ref=e1973]:
+                        - button "Marcar como presente" [ref=e1974] [cursor=pointer]:
+                          - img [ref=e1975]
+                        - button "Marcar como ausente" [ref=e1977] [cursor=pointer]:
+                          - img [ref=e1978]
+        - button "Abrir guia del panel" [ref=e1980] [cursor=pointer]:
+          - img [ref=e1981]
+```
+
+# Test source
+
+```ts
+  1  | ﻿const { test, expect } = require('@playwright/test');
+  2  | 
+  3  | const { loginAsAdmin, openAdminSection } = require('./helpers/adminNavigation');
+  4  | 
+  5  | const ADMIN_EMAIL = process.env.E2E_ADMIN_EMAIL;
+  6  | const ADMIN_PASSWORD = process.env.E2E_ADMIN_PASSWORD;
+  7  | 
+  8  | async function ensureQuickMode(page) {
+  9  |   await expect(page.getByRole('heading', { name: /control de asistencias/i })).toBeVisible();
+  10 |   await page.getByRole('button', { name: /registro r.pido/i }).click();
+  11 | }
+  12 | 
+  13 | async function collectAsistenciasMetrics(page) {
+  14 |   return page.evaluate(() => {
+  15 |     const rows = Array.from(document.querySelectorAll('[data-testid="attendance-athlete-row"]'));
+  16 |     const names = Array.from(document.querySelectorAll('[data-testid="attendance-athlete-name"]'));
+  17 |     const actionGroups = Array.from(document.querySelectorAll('[data-testid="attendance-athlete-actions"]'));
+  18 | 
+  19 |     const rowWidths = rows.map((el) => Math.round(el.getBoundingClientRect().width));
+  20 |     const nameWidths = names.map((el) => Math.round(el.getBoundingClientRect().width));
+  21 |     const actionWidths = actionGroups.map((el) => Math.round(el.getBoundingClientRect().width));
+  22 | 
+  23 |     const minRow = rowWidths.length ? Math.min(...rowWidths) : 0;
+  24 |     const maxRow = rowWidths.length ? Math.max(...rowWidths) : 0;
+  25 |     const minName = nameWidths.length ? Math.min(...nameWidths) : 0;
+  26 |     const maxName = nameWidths.length ? Math.max(...nameWidths) : 0;
+  27 |     const maxActions = actionWidths.length ? Math.max(...actionWidths) : 0;
+  28 | 
+  29 |     const root = document.documentElement;
+  30 |     const body = document.body;
+  31 |     const scrollWidth = Math.max(root.scrollWidth, body ? body.scrollWidth : 0);
+  32 |     const viewport = window.innerWidth;
+  33 | 
+  34 |     return {
+  35 |       rowCount: rows.length,
+  36 |       nameCount: names.length,
+  37 |       actionGroupCount: actionGroups.length,
+  38 |       minRow,
+  39 |       maxRow,
+  40 |       minName,
+  41 |       maxName,
+  42 |       maxActions,
+  43 |       hasHorizontalOverflow: scrollWidth > viewport + 1,
+  44 |       scrollWidth,
+  45 |       viewport,
+  46 |     };
+  47 |   });
+  48 | }
+  49 | 
+  50 | test('guided review: admin asistencias quick mode per viewport', async ({ page }, testInfo) => {
+  51 |   test.skip(!ADMIN_EMAIL || !ADMIN_PASSWORD, 'Missing E2E_ADMIN_EMAIL/E2E_ADMIN_PASSWORD environment variables.');
+  52 | 
+  53 |   await loginAsAdmin(page);
+  54 |   await openAdminSection(page, 'asistencias');
+  55 |   await ensureQuickMode(page);
+  56 | 
+  57 |   await expect(page.getByTestId('attendance-athlete-row').first()).toBeVisible();
+  58 | 
+  59 |   const screenshotPath = testInfo.outputPath(`asistencias-quick-${testInfo.project.name}.png`);
+  60 |   const isMobileProject = /mobile/i.test(testInfo.project.name);
+  61 |   const pageHeight = await page.evaluate(() => {
+  62 |     const root = document.documentElement;
+  63 |     const body = document.body;
+  64 |     return Math.max(root.scrollHeight, body ? body.scrollHeight : 0);
+  65 |   });
+  66 | 
+  67 |   // Chromium cannot capture full-page images above 32767px in either dimension.
+  68 |   if (isMobileProject || pageHeight >= 32000) {
+  69 |     await page.screenshot({ path: screenshotPath, fullPage: false });
+  70 |   } else {
+> 71 |     await page.screenshot({ path: screenshotPath, fullPage: true });
+     |                ^ Error: page.screenshot: Cannot take screenshot larger than 32767 pixels on any dimension
+  72 |   }
+  73 | 
+  74 |   const metrics = await collectAsistenciasMetrics(page);
+  75 |   console.log(`GUIDED_REVIEW_METRICS[${testInfo.project.name}]: ${JSON.stringify(metrics)}`);
+  76 | 
+  77 |   // Soft checks to avoid blocking the run while still flagging bad layouts.
+  78 |   expect.soft(metrics.hasHorizontalOverflow, `Overflow in ${testInfo.project.name}`).toBeFalsy();
+  79 | 
+  80 |   expect(metrics.rowCount).toBeGreaterThan(0);
+  81 |   expect(metrics.nameCount).toBe(metrics.rowCount);
+  82 |   expect(metrics.actionGroupCount).toBe(metrics.rowCount);
+  83 |   expect.soft(metrics.minName, `Name width too small in ${testInfo.project.name}`).toBeGreaterThan(90);
+  84 |   expect.soft(metrics.maxActions, `Actions consuming too much width in ${testInfo.project.name}`).toBeLessThanOrEqual(metrics.viewport);
+  85 | });
+  86 | 
+  87 | 
+```

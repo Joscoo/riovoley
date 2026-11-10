@@ -1,0 +1,359 @@
+[
+  {
+    "file": "documentacion/generar-informes.meta.json",
+    "command": [
+      "node",
+      "scripts/audit/production/report-sql-packet.cjs"
+    ],
+    "start": "2026-10-31T21:31:59.865Z",
+    "end": "2026-10-31T21:31:59.998Z",
+    "durationSeconds": 0.133,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "herramientas/npm-version-02.meta.json",
+    "command": [
+      "node",
+      "C:/Program Files/nodejs/node_modules/npm/bin/npm-cli.js",
+      "--version"
+    ],
+    "start": "2026-10-31T21:29:34.274Z",
+    "end": "2026-10-31T21:29:34.592Z",
+    "durationSeconds": 0.318,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "herramientas/npm-version.meta.json",
+    "command": [
+      "node",
+      "C:/Program",
+      "Files/nodejs/node_modules/npm/bin/npm-cli.js",
+      "--version"
+    ],
+    "start": "2026-10-31T21:29:27.874Z",
+    "end": "2026-10-31T21:29:27.984Z",
+    "durationSeconds": 0.11,
+    "exitCode": 1,
+    "signal": null
+  },
+  {
+    "file": "integracion/alinear-auth.meta.json",
+    "command": [
+      "node",
+      "scripts/audit/production/sql-lab.cjs",
+      "align-auth"
+    ],
+    "start": "2026-10-31T21:17:32.121Z",
+    "end": "2026-10-31T21:17:32.395Z",
+    "durationSeconds": 0.274,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "integracion/ampliar-huella-02.meta.json",
+    "command": [
+      "node",
+      "scripts/audit/production/upgrade-sql-packet.cjs"
+    ],
+    "start": "2026-10-31T21:23:45.975Z",
+    "end": "2026-10-31T21:23:49.606Z",
+    "durationSeconds": 3.631,
+    "exitCode": 1,
+    "signal": null
+  },
+  {
+    "file": "integracion/ampliar-huella-03.meta.json",
+    "command": [
+      "node",
+      "scripts/audit/production/upgrade-sql-packet.cjs"
+    ],
+    "start": "2026-10-31T21:24:53.926Z",
+    "end": "2026-10-31T21:24:57.245Z",
+    "durationSeconds": 3.319,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "integracion/ampliar-huella.meta.json",
+    "command": [
+      "node",
+      "scripts/audit/production/upgrade-sql-packet.cjs"
+    ],
+    "start": "2026-10-31T21:22:58.451Z",
+    "end": "2026-10-31T21:23:02.312Z",
+    "durationSeconds": 3.861,
+    "exitCode": 1,
+    "signal": null
+  },
+  {
+    "file": "integracion/ensayo-01.meta.json",
+    "command": [
+      "node",
+      "--test",
+      "--test-reporter=tap",
+      "tests/integration/production-sql.local.test.cjs"
+    ],
+    "start": "2026-10-31T21:18:45.679Z",
+    "end": "2026-10-31T21:18:46.129Z",
+    "durationSeconds": 0.45,
+    "exitCode": 1,
+    "signal": null
+  },
+  {
+    "file": "integracion/ensayo-02.meta.json",
+    "command": [
+      "node",
+      "--test",
+      "--test-reporter=tap",
+      "tests/integration/production-sql.local.test.cjs"
+    ],
+    "start": "2026-10-31T21:19:11.901Z",
+    "end": "2026-10-31T21:19:12.987Z",
+    "durationSeconds": 1.086,
+    "exitCode": 1,
+    "signal": null
+  },
+  {
+    "file": "integracion/ensayo-03.meta.json",
+    "command": [
+      "node",
+      "--test",
+      "--test-reporter=tap",
+      "tests/integration/production-sql.local.test.cjs"
+    ],
+    "start": "2026-10-31T21:19:46.243Z",
+    "end": "2026-10-31T21:19:47.697Z",
+    "durationSeconds": 1.454,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "integracion/ensayo-04-ampliado.meta.json",
+    "command": [
+      "node",
+      "--test",
+      "--test-reporter=tap",
+      "tests/integration/production-sql.local.test.cjs"
+    ],
+    "start": "2026-10-31T21:25:23.084Z",
+    "end": "2026-10-31T21:25:25.001Z",
+    "durationSeconds": 1.917,
+    "exitCode": 1,
+    "signal": null
+  },
+  {
+    "file": "integracion/ensayo-05-final.meta.json",
+    "command": [
+      "node",
+      "--test",
+      "--test-reporter=tap",
+      "tests/integration/production-sql.local.test.cjs"
+    ],
+    "start": "2026-10-31T21:25:54.205Z",
+    "end": "2026-10-31T21:25:56.137Z",
+    "durationSeconds": 1.932,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "integracion/ensayo-06-reproduccion.meta.json",
+    "command": [
+      "node",
+      "--test",
+      "--test-reporter=tap",
+      "tests/integration/production-sql.local.test.cjs"
+    ],
+    "start": "2026-10-31T21:27:18.028Z",
+    "end": "2026-10-31T21:27:19.721Z",
+    "durationSeconds": 1.693,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "integracion/ensayo-07-propietario.meta.json",
+    "command": [
+      "node",
+      "--test",
+      "--test-reporter=tap",
+      "tests/integration/production-sql.local.test.cjs"
+    ],
+    "start": "2026-10-31T21:28:49.749Z",
+    "end": "2026-10-31T21:28:51.904Z",
+    "durationSeconds": 2.155,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "integracion/fijar-propietario.meta.json",
+    "command": [
+      "node",
+      "scripts/audit/production/refresh-sql-packet.cjs"
+    ],
+    "start": "2026-10-31T21:28:48.876Z",
+    "end": "2026-10-31T21:28:49.316Z",
+    "durationSeconds": 0.44,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "integracion/preparar-reproduccion.meta.json",
+    "command": [
+      "node",
+      "scripts/audit/production/fresh-sql-replay.cjs"
+    ],
+    "start": "2026-10-31T21:27:07.001Z",
+    "end": "2026-10-31T21:27:11.057Z",
+    "durationSeconds": 4.057,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "integracion/reconstruir-final.meta.json",
+    "command": [
+      "node",
+      "scripts/audit/production/sql-lab.cjs",
+      "replay"
+    ],
+    "start": "2026-10-31T21:27:07.097Z",
+    "end": "2026-10-31T21:27:11.038Z",
+    "durationSeconds": 3.941,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "integracion/reconstruir.meta.json",
+    "command": [
+      "node",
+      "scripts/audit/production/sql-lab.cjs"
+    ],
+    "start": "2026-10-31T21:16:49.863Z",
+    "end": "2026-10-31T21:16:53.428Z",
+    "durationSeconds": 3.565,
+    "exitCode": 1,
+    "signal": null
+  },
+  {
+    "file": "integracion/retorno-ampliado.meta.json",
+    "command": [
+      "node",
+      "scripts/audit/production/rehearse-sql.cjs",
+      "integracion/estado-final-ampliado.json"
+    ],
+    "start": "2026-10-31T21:25:52.986Z",
+    "end": "2026-10-31T21:25:53.533Z",
+    "durationSeconds": 0.547,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "integracion/retorno-corregido.meta.json",
+    "command": [
+      "node",
+      "scripts/audit/production/rehearse-sql.cjs"
+    ],
+    "start": "2026-10-31T21:19:45.297Z",
+    "end": "2026-10-31T21:19:45.768Z",
+    "durationSeconds": 0.471,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "seguridad/cli-migration-new.meta.json",
+    "command": [
+      "node",
+      "D:\\Riovoley\\riovoley\\.e2e-local\\tools\\node_modules\\supabase\\dist\\supabase.js",
+      "migration",
+      "new",
+      "riovoley_security_production_proposal",
+      "--workdir",
+      "D:\\Riovoley\\riovoley\\.e2e-local\\production-migration\\cli"
+    ],
+    "start": "2026-10-31T21:16:09.169Z",
+    "end": "2026-10-31T21:16:13.719Z",
+    "durationSeconds": 4.55,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "seguridad/construir-paquete.meta.json",
+    "command": [
+      "node",
+      "scripts/audit/production/sql-packet.cjs"
+    ],
+    "start": "2026-10-31T21:16:09.077Z",
+    "end": "2026-10-31T21:16:13.750Z",
+    "durationSeconds": 4.673,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "seguridad/recopilar.meta.json",
+    "command": [
+      "node",
+      "scripts/audit/production/collect-sql-results.cjs"
+    ],
+    "start": "2026-10-31T21:29:35.056Z",
+    "end": "2026-10-31T21:29:35.371Z",
+    "durationSeconds": 0.315,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "unitarias/contratos-cierre.meta.json",
+    "command": [
+      "node",
+      "--test",
+      "--test-reporter=tap",
+      "tests/integration/production-sql-packet.test.cjs",
+      "scripts/e2e/local/schema.test.cjs"
+    ],
+    "start": "2026-10-31T21:28:52.420Z",
+    "end": "2026-10-31T21:28:52.753Z",
+    "durationSeconds": 0.333,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "unitarias/contratos-final.meta.json",
+    "command": [
+      "node",
+      "--test",
+      "--test-reporter=tap",
+      "tests/integration/production-sql-packet.test.cjs",
+      "scripts/e2e/local/schema.test.cjs"
+    ],
+    "start": "2026-10-31T21:26:25.608Z",
+    "end": "2026-10-31T21:26:25.873Z",
+    "durationSeconds": 0.265,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "unitarias/contratos-verde.meta.json",
+    "command": [
+      "node",
+      "--test",
+      "tests/integration/production-sql-packet.test.cjs"
+    ],
+    "start": "2026-10-31T21:16:08.468Z",
+    "end": "2026-10-31T21:16:08.692Z",
+    "durationSeconds": 0.224,
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "file": "unitarias/tdd-rojo.meta.json",
+    "command": [
+      "node",
+      "--test",
+      "tests/integration/production-sql-packet.test.cjs"
+    ],
+    "start": "2026-10-31T21:15:21.112Z",
+    "end": "2026-10-31T21:15:21.312Z",
+    "durationSeconds": 0.2,
+    "exitCode": 1,
+    "signal": null
+  }
+]

@@ -1,0 +1,10 @@
+const fs=require('node:fs');
+const path=require('node:path');
+const assert=require('node:assert/strict');
+const h=require('../../e2e/local/harness.cjs');
+const c=require('./context.cjs');
+const file=path.join(c.work,'project/android/app/src/debug/res/xml/audit_network_security.xml');
+const before=fs.readFileSync(file,'utf8');
+assert.match(before,/<domain>127\.0\.0\.1<\/domain>/);
+fs.writeFileSync(file,before.replace('<domain>127.0.0.1</domain>','<domain includeSubdomains="false">127.0.0.1</domain>'));
+h.write('android/correccion-lint-local.json',{error:'NetworkSecurityConfig: Missing includeSubdomains attribute',fix:'Atributo includeSubdomains=false en la regla de loopback del perfil debug privado.',productionChanged:false,expectationsChanged:false,ruleSuppressed:false,source:'scripts/audit/android/stage.cjs'});

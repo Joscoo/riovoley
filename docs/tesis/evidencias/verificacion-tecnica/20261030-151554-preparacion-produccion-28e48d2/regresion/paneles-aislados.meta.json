@@ -1,0 +1,15 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/e2e/local/run.cjs",
+    "pending",
+    "--label=paneles-aislados",
+    "--workers=1"
+  ],
+  "start": "2026-10-31T19:39:49.808Z",
+  "end": "2026-10-31T19:49:55.353Z",
+  "durationSeconds": 605.545,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

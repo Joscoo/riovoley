@@ -1,0 +1,33 @@
+FAIL src/features/notifications/application/useCases/notifications.abort.test.js
+  √ el servicio propaga una señal cancelada y no inicia lecturas (4 ms)
+  √ cancelar durante pagos evita consultar estudiantes y siguientes etapas (23 ms)
+  √ cancelar con anuncios pendientes evita logros e inbox posteriores (2 ms)
+  × cancelar entre el helper de pagos y su consumidor evita iniciar anuncios (8 ms)
+  √ una carga activa conserva anuncios y consulta logros e inbox (2 ms)
+
+  ● cancelar entre el helper de pagos y su consumidor evita iniciar anuncios
+
+    expect(jest.fn()).not.toHaveBeenCalled()
+
+    Expected number of calls: 0
+    Received number of calls: 1
+
+    1: "2026-10-29"
+
+    [0m [90m 40 |[39m   })[33m;[39m
+     [90m 41 |[39m   [36mawait[39m expect(createNotificationsUseCases(repo)[33m.[39mloadBellNotificationsUseCase[33m.[39mexecute({ userId[33m:[39m [32m'fixture'[39m[33m,[39m signal[33m:[39m controller[33m.[39msignal }))[33m.[39mrejects[33m.[39mtoMatchObject({ name[33m:[39m [32m'AbortError'[39m })[33m;[39m
+    [31m[1m>[22m[39m[90m 42 |[39m   expect(repo[33m.[39mlistRecentActiveAnnouncements)[33m.[39mnot[33m.[39mtoHaveBeenCalled()[33m;[39m
+     [90m    |[39m                                                  [31m[1m^[22m[39m
+     [90m 43 |[39m })[33m;[39m
+     [90m 44 |[39m test([32m'una carga activa conserva anuncios y consulta logros e inbox'[39m[33m,[39m [36masync[39m () [33m=>[39m {
+     [90m 45 |[39m   [36mconst[39m repo [33m=[39m repository()[33m,[39m controller [33m=[39m [36mnew[39m [33mAbortController[39m()[33m;[39m[0m
+
+      at Object.<anonymous> (src/features/notifications/application/useCases/notifications.abort.test.js:42:50)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 4 passed, 5 total
+Snapshots:   0 total
+Time:        2.448 s, estimated 3 s
+Ran all test suites within paths "src/features/notifications/application/useCases/notifications.abort.test.js".
+Test results written to: docs\tesis\evidencias\verificacion-tecnica\20261105-152944-notifications-cancel-e903a31\unitarias\microtarea-rojo.json
+

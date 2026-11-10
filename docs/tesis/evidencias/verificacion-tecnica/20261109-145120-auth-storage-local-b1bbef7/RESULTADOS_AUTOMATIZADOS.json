@@ -1,0 +1,96 @@
+{
+  "reportedAt": "2026-11-09T15:05:11.331Z",
+  "baseCommit": "b1bbef7dc55d0845acc09bcd3c6ebbda959e32a8",
+  "runs": [
+    {
+      "label": "servicios-http",
+      "executed": 21,
+      "passed": 21,
+      "failed": 0,
+      "exitCode": 0,
+      "durationSeconds": 7.487,
+      "start": "2026-11-09T14:53:33.892Z",
+      "end": "2026-11-09T14:53:41.379Z"
+    },
+    {
+      "label": "servicios-regresion-red",
+      "executed": 22,
+      "passed": 21,
+      "failed": 1,
+      "exitCode": 1,
+      "durationSeconds": 2.479,
+      "start": "2026-11-09T14:58:00.739Z",
+      "end": "2026-11-09T14:58:03.218Z"
+    },
+    {
+      "label": "servicios-regresion-red-conexion-real",
+      "executed": 22,
+      "passed": 21,
+      "failed": 1,
+      "exitCode": 1,
+      "durationSeconds": 2.499,
+      "start": "2026-11-09T14:59:18.934Z",
+      "end": "2026-11-09T14:59:21.433Z"
+    },
+    {
+      "label": "servicios-http-final",
+      "executed": 24,
+      "passed": 24,
+      "failed": 0,
+      "exitCode": 0,
+      "durationSeconds": 2.741,
+      "start": "2026-11-09T14:59:51.132Z",
+      "end": "2026-11-09T14:59:53.873Z"
+    }
+  ],
+  "selectedAttempt": "integracion/intento-servicios-1794236393839.json",
+  "finalControls": {
+    "executed": 24,
+    "passed": 24,
+    "failed": 0
+  },
+  "http": {
+    "Auth": {
+      "requests": 12,
+      "statuses": {
+        "200": 9,
+        "500": 3
+      }
+    },
+    "Storage": {
+      "requests": 22,
+      "statuses": {
+        "200": 18,
+        "500": 4
+      }
+    }
+  },
+  "ownedAccountsPerAttempt": 2,
+  "ownedBucketsPerAttempt": 2,
+  "beforeAndAfterOwnedAuthDigestsMatch": true,
+  "beforeAndAfterOwnedPhysicalDigestsMatch": true,
+  "baselinePhysicalFiles": 1,
+  "cleanup": {
+    "gateReleased": true,
+    "authUsersRemoved": true,
+    "bucketsRemoved": true,
+    "residualOwnedPhysicalFiles": 0,
+    "errors": [],
+    "coreUsersRemoved": true,
+    "catalogFingerprintRestored": true,
+    "mandatoryPostconditionsPassed": true
+  },
+  "storageBackend": "file",
+  "managedS3Tested": false,
+  "mocksUsed": false,
+  "cloudServicesTested": false,
+  "externalProvidersInvoked": false,
+  "newProviderKeysGenerated": false,
+  "existingPasswordsChanged": false,
+  "newJestCases": 0,
+  "newPlaywrightCases": 0,
+  "newAndroidCases": 0,
+  "newBuilds": 0,
+  "productionChanged": false,
+  "releaseReady": false
+}

@@ -1,0 +1,14 @@
+{
+  "reviewedAt": "2026-11-04T21:44:52.553Z",
+  "files": [
+    "apk-release-offline-inicio.png",
+    "apk-release-offline-intent.png"
+  ],
+  "method": "Inspeccion visual con view_image",
+  "homeVisible": true,
+  "resetPasswordScreenVisible": true,
+  "personalInstitutionalDataObserved": false,
+  "validRecoveryTokenUsed": false,
+  "passwordChanged": false,
+  "scope": "Pantallas visibles offline; no entrega de correo, validacion de token o funcionamiento completo del formulario. Boton OTA visible y no accionado."
+}

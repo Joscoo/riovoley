@@ -1,0 +1,319 @@
+{
+  "checkedAt": "2026-11-05T16:14:20.166Z",
+  "functions": [
+    {
+      "slug": "send-email",
+      "files": [
+        {
+          "file": "send-email/index.ts",
+          "sha256": "50c91fe8f657977aa30fded2cff9ab816fd1b62470a747ca9caf77b5a1521efd",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_shared/cors.ts",
+          "sha256": "409589a20b7e1006bc0e9e78be41d11745fee7e480ed5133a75b19e93b5e4a10",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/http/body.ts",
+          "sha256": "4d12d822815d94e22d2ff7003afc7f9dd030a41cc0879f741e66d1cd8e5c49cf",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/http/response.ts",
+          "sha256": "7f62f3aabe8d0456bb30ef748a245623a1263944819477f93f1841654a84577e",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/communications/domain/communications-error.ts",
+          "sha256": "a35c82230fbc5982d5a6003b6fd25a7e6130dcfea562a7e14d1d045924b1719e",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/communications/application/use-cases/send-email-use-case.ts",
+          "sha256": "5112db1026983bc10a4094fd452303621b6321fa1471b8cb8c6c3073e3b2877a",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/communications/infrastructure/resend-communications-gateway.ts",
+          "sha256": "127ca1d5ae9626428163f86b49ef8cf56f629e6876f908aecda274b5ce4c399c",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/auth-admin/infrastructure/supabase-auth-admin-gateway.ts",
+          "sha256": "63a0c3b27f50a3018bf5f711e42357f23feb10d5eae3fc536f296abd227f8dd3",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/auth-admin/domain/auth-admin-error.ts",
+          "sha256": "d45fdc41fab730b105ddbe3e2889eac203b4f0748d893951a150d9f79c0e5d5f",
+          "matchesPrepared": true
+        }
+      ],
+      "allMatch": true
+    },
+    {
+      "slug": "update-user-password",
+      "files": [
+        {
+          "file": "update-user-password/index.ts",
+          "sha256": "61338545403c3ceaff81c372c2fde0751e8770638750660bcee253782a1a9bcb",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_shared/cors.ts",
+          "sha256": "409589a20b7e1006bc0e9e78be41d11745fee7e480ed5133a75b19e93b5e4a10",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/http/body.ts",
+          "sha256": "4d12d822815d94e22d2ff7003afc7f9dd030a41cc0879f741e66d1cd8e5c49cf",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/http/response.ts",
+          "sha256": "7f62f3aabe8d0456bb30ef748a245623a1263944819477f93f1841654a84577e",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/auth-admin/domain/auth-admin-error.ts",
+          "sha256": "d45fdc41fab730b105ddbe3e2889eac203b4f0748d893951a150d9f79c0e5d5f",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/auth-admin/application/use-cases/update-user-password-use-case.ts",
+          "sha256": "635afce93fdaa13f5dd16fb41a76662c5241b2da92afbc6291603ac1801e87d3",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/auth-admin/infrastructure/supabase-auth-admin-gateway.ts",
+          "sha256": "63a0c3b27f50a3018bf5f711e42357f23feb10d5eae3fc536f296abd227f8dd3",
+          "matchesPrepared": true
+        }
+      ],
+      "allMatch": true
+    },
+    {
+      "slug": "delete-auth-user",
+      "files": [
+        {
+          "file": "delete-auth-user/index.ts",
+          "sha256": "e4779da9c42c82ceb53d7e468df2b54098e61a33270da86b59f50a1d5e5d2ecd",
+          "matchesPrepared": true
+        }
+      ],
+      "allMatch": true
+    },
+    {
+      "slug": "generate-report",
+      "files": [
+        {
+          "file": "generate-report/index.ts",
+          "sha256": "7ee235af5b21122a27681397593355deb5a21ebdeb84f2cca43054fb7a9da758",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_shared/cors.ts",
+          "sha256": "409589a20b7e1006bc0e9e78be41d11745fee7e480ed5133a75b19e93b5e4a10",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/http/body.ts",
+          "sha256": "4d12d822815d94e22d2ff7003afc7f9dd030a41cc0879f741e66d1cd8e5c49cf",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/http/response.ts",
+          "sha256": "5896c6f92e2cedd3f53db7bce22c21352e3a90d0a18b2601e92134455ba343a3",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/reporting/application/use-cases/generate-report-run-use-case.ts",
+          "sha256": "bea10104c1d5f9117f88673892f4ed7f83b4acd9c9635bfeb96807f4f24959a6",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/reporting/infrastructure/legacy-reporting-gateway.ts",
+          "sha256": "875b3db978249a668e77de9d69552cbc4f8dd08f29c31dc2fe5e850faba01865",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_shared/reporting.ts",
+          "sha256": "208b833887b6e79ba1ea23c17de391a50602c4d6f3d991b241ac5d3acdc990f3",
+          "matchesPrepared": true
+        }
+      ],
+      "allMatch": true
+    },
+    {
+      "slug": "generate-scheduled-reports",
+      "files": [
+        {
+          "file": "generate-scheduled-reports/index.ts",
+          "sha256": "1007225baa710fd6c18e890c6569237115ee2d0bc6250b32930afb1e55cba5d8",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_shared/cors.ts",
+          "sha256": "409589a20b7e1006bc0e9e78be41d11745fee7e480ed5133a75b19e93b5e4a10",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/http/body.ts",
+          "sha256": "4d12d822815d94e22d2ff7003afc7f9dd030a41cc0879f741e66d1cd8e5c49cf",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/http/response.ts",
+          "sha256": "5896c6f92e2cedd3f53db7bce22c21352e3a90d0a18b2601e92134455ba343a3",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/reporting/application/use-cases/generate-scheduled-reports-use-case.ts",
+          "sha256": "5f9887fcb406bb4eef01d4fb2e266aa6a5c4562e59bdc12200116fc7d951c611",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/reporting/infrastructure/legacy-reporting-gateway.ts",
+          "sha256": "875b3db978249a668e77de9d69552cbc4f8dd08f29c31dc2fe5e850faba01865",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_shared/reporting.ts",
+          "sha256": "208b833887b6e79ba1ea23c17de391a50602c4d6f3d991b241ac5d3acdc990f3",
+          "matchesPrepared": true
+        }
+      ],
+      "allMatch": true
+    },
+    {
+      "slug": "delete-report-run",
+      "files": [
+        {
+          "file": "delete-report-run/index.ts",
+          "sha256": "9bae9f8176a9d2c702fc6cd323cf19b45c1940a12a295c0c89b48c0dc6cdb41f",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_shared/cors.ts",
+          "sha256": "409589a20b7e1006bc0e9e78be41d11745fee7e480ed5133a75b19e93b5e4a10",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/http/body.ts",
+          "sha256": "4d12d822815d94e22d2ff7003afc7f9dd030a41cc0879f741e66d1cd8e5c49cf",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/http/response.ts",
+          "sha256": "5896c6f92e2cedd3f53db7bce22c21352e3a90d0a18b2601e92134455ba343a3",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/reporting/application/use-cases/delete-report-run-use-case.ts",
+          "sha256": "e8070102f2586dc37a0016878c3f4c3998d37f8bc4f5a22c5d299811fe3af7f7",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/reporting/infrastructure/legacy-reporting-gateway.ts",
+          "sha256": "875b3db978249a668e77de9d69552cbc4f8dd08f29c31dc2fe5e850faba01865",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_shared/reporting.ts",
+          "sha256": "208b833887b6e79ba1ea23c17de391a50602c4d6f3d991b241ac5d3acdc990f3",
+          "matchesPrepared": true
+        }
+      ],
+      "allMatch": true
+    },
+    {
+      "slug": "sync-mobile-device",
+      "files": [
+        {
+          "file": "sync-mobile-device/index.ts",
+          "sha256": "923cc50b991f91f55df7db9e53d365f3d9ecba919863cd9e01046e959bb14873",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_shared/cors.ts",
+          "sha256": "7a4949fde4c669a4c46912b51123b4880568f414220eb8aa9413f66a09b96794",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/http/body.ts",
+          "sha256": "69ca865ed0ebc0ef5fa10f1319388da4698b4c2ab71f7f4ad2211fb422c2b32e",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/http/response.ts",
+          "sha256": "b8fe208c9cce43d1a7e628ac0849b8399295fed5a30dcb2461464a90a0c27ea8",
+          "matchesPrepared": true
+        }
+      ],
+      "allMatch": true
+    },
+    {
+      "slug": "send-push",
+      "files": [
+        {
+          "file": "send-push/index.ts",
+          "sha256": "bac35b5d6fd313625485d0f89e3a109489b051f7b9178a0aaa38aec4b81331cb",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_shared/cors.ts",
+          "sha256": "5dc925b032d684437f03fd25350dcc3d266e9c223d5e5838abf3eb9b6e94c286",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/http/body.ts",
+          "sha256": "4d12d822815d94e22d2ff7003afc7f9dd030a41cc0879f741e66d1cd8e5c49cf",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/http/response.ts",
+          "sha256": "7f62f3aabe8d0456bb30ef748a245623a1263944819477f93f1841654a84577e",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/push/infrastructure/firebase-push-gateway.ts",
+          "sha256": "16eea0d6d4406daa1969bf274b81d7f8aed5f90152b1fa4692aa3eba63005aed",
+          "matchesPrepared": true
+        }
+      ],
+      "allMatch": true
+    },
+    {
+      "slug": "send-payment-reminders",
+      "files": [
+        {
+          "file": "send-payment-reminders/index.ts",
+          "sha256": "fb896d22520a0bb16b0943f0b21993132288918dfb54c3b22219fb4508ffdc03",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_shared/cors.ts",
+          "sha256": "5dc925b032d684437f03fd25350dcc3d266e9c223d5e5838abf3eb9b6e94c286",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/http/response.ts",
+          "sha256": "7f62f3aabe8d0456bb30ef748a245623a1263944819477f93f1841654a84577e",
+          "matchesPrepared": true
+        },
+        {
+          "file": "_core/push/infrastructure/firebase-push-gateway.ts",
+          "sha256": "16eea0d6d4406daa1969bf274b81d7f8aed5f90152b1fa4692aa3eba63005aed",
+          "matchesPrepared": true
+        }
+      ],
+      "allMatch": true
+    }
+  ],
+  "totalFiles": 51,
+  "allMatch": true,
+  "managedReturnRehearsedThisPhase": false,
+  "published": false,
+  "scope": "Integridad de fuentes privadas de retorno respecto al manifiesto ensayado; no nueva compilacion, descarga Cloud o reversion gestionada."
+}

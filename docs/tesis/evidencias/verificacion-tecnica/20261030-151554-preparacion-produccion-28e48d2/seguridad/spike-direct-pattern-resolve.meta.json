@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "-e",
+    "const r=require('node:module').createRequire(require.resolve('eslint'));console.log(typeof r('minimatch'));console.log(require('glob').sync('vendor/*'));"
+  ],
+  "start": "2026-10-31T19:16:46.579Z",
+  "end": "2026-10-31T19:16:46.997Z",
+  "durationSeconds": 0.418,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": ".e2e-local\\spikes\\direct-pattern-1793474177210"
+}

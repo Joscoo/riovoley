@@ -1,0 +1,24 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\deno-tool\\node_modules\\@deno\\win32-x64\\deno.exe",
+    "cache",
+    "--no-config",
+    "--lock=D:\\Riovoley\\riovoley\\.e2e-local\\edge-production\\deno.lock",
+    "supabase/functions/delete-auth-user/index.ts",
+    "supabase/functions/delete-report-run/index.ts",
+    "supabase/functions/generate-report/index.ts",
+    "supabase/functions/generate-scheduled-reports/index.ts",
+    "supabase/functions/send-email/index.ts",
+    "supabase/functions/send-payment-reminders/index.ts",
+    "supabase/functions/send-push/index.ts",
+    "supabase/functions/sync-mobile-device/index.ts",
+    "supabase/functions/update-user-password/index.ts",
+    "tests/integration/google-auth.local.test.ts"
+  ],
+  "start": "2026-11-01T01:42:11.259Z",
+  "end": "2026-11-01T01:42:12.190Z",
+  "durationSeconds": 0.931,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

@@ -1,0 +1,12 @@
+const {test}=require('node:test'),assert=require('node:assert/strict');
+const check=(v4='',v6='')=>require('../../scripts/audit/android/offline-routes.cjs').assessOfflineRoutes(v4,v6);
+test('sin rutas IPv4 o IPv6 no hay salida externa',()=>assert.equal(check().safe,true));
+test('acepta la ruta conectada observada en Android sin confundirla con default',()=>assert.equal(check('10.0.2.0/24 dev wlan0 proto kernel scope link src 10.0.2.16\r\n').safe,true));
+test('acepta solo loopback y enlace local IPv6 del emulador',()=>assert.equal(check('127.0.0.0/8 dev lo scope link\n','::1 dev lo proto kernel\nfe80::/64 dev wlan0 proto kernel metric 256 pref medium').safe,true));
+test('rechaza default IPv4 y su representacion CIDR',()=>{for(const route of ['default via 10.0.2.2 dev wlan0','0.0.0.0/0 via 10.0.2.2 dev eth0'])assert.equal(check(route).safe,false);});
+test('rechaza default IPv6 y su representacion CIDR',()=>{for(const route of ['default via fe80::2 dev wlan0','::/0 via fe80::2 dev wlan0'])assert.equal(check('',route).safe,false);});
+test('rechaza una ruta publica especifica aunque no exista default',()=>assert.equal(check('203.0.113.5/32 dev wlan0 scope link').safe,false));
+test('rechaza otras redes privadas que no son el enlace virtual autorizado',()=>assert.equal(check('10.10.0.0/16 dev wlan0 scope link').safe,false));
+test('no permite un gateway incluso con prefijo del emulador',()=>assert.equal(check('10.0.2.0/24 via 203.0.113.2 dev wlan0 scope link').safe,false));
+test('no permite tuneles o interfaces ajenas al enlace del emulador',()=>assert.equal(check('10.0.2.0/24 dev tun0 scope link').safe,false));
+test('errores, texto desconocido y entradas no textuales no acreditan aislamiento',()=>{for(const value of ['RTNETLINK answers: Network is unreachable','unknown output',null,undefined,{}])assert.equal(require('../../scripts/audit/android/offline-routes.cjs').assessOfflineRoutes(value,'').safe,false);});

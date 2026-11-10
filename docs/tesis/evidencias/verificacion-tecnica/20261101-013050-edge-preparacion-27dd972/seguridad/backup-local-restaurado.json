@@ -1,0 +1,62 @@
+{
+  "executedAt": "2026-11-01T01:55:30.635Z",
+  "syntheticOnly": true,
+  "institutionalBackupCreated": false,
+  "institutionalRestorePerformed": false,
+  "sourceDatabase": "riovoley_release_20261031212707",
+  "restoredDatabase": "riovoley_restore_20261101015527_compat",
+  "format": "PostgreSQL custom archive",
+  "privateArchive": ".e2e-local/production-backup/20261101015527.dump",
+  "bytes": 408774,
+  "sha256": "b66b13630424dc82535371afdde73e2e3e5c6f8c4e2d2d3d7bbb8865d6514e63",
+  "directRestoreExitCode": 1,
+  "compatibility": {
+    "reason": "calculate_age tiene volatilidad no inmutable y una columna GENERATED almacenada depende de ella.",
+    "temporaryRestoreOnly": "Precrear calculate_age IMMUTABLE en destino vacio, omitir solo su definicion en TOC, restaurar la definicion original inmediatamente despues.",
+    "sourceFunctionChanged": false,
+    "sourceDumpChanged": false,
+    "failedDatabasePreserved": "riovoley_restore_20261101015527",
+    "generatedValuesCaution": "pg_dump no conserva el valor almacenado de columnas GENERATED; se recalcula en destino. La igualdad de datos solo se verifica en estas fixtures, no en datos institucionales."
+  },
+  "sourceFingerprint": "38434a2af96ad410967032b00a0828ac",
+  "restoredFingerprint": "38434a2af96ad410967032b00a0828ac",
+  "tables": [
+    {
+      "table": "core.users",
+      "sourceRows": 12,
+      "restoredRows": 12,
+      "contentHashMatches": true
+    },
+    {
+      "table": "core.students",
+      "sourceRows": 4,
+      "restoredRows": 4,
+      "contentHashMatches": true
+    },
+    {
+      "table": "billing.payments",
+      "sourceRows": 2,
+      "restoredRows": 2,
+      "contentHashMatches": true
+    },
+    {
+      "table": "gamification.xp_ledger",
+      "sourceRows": 4,
+      "restoredRows": 4,
+      "contentHashMatches": true
+    },
+    {
+      "table": "gamification.login_rewards",
+      "sourceRows": 4,
+      "restoredRows": 4,
+      "contentHashMatches": true
+    },
+    {
+      "table": "gamification.currency_wallets",
+      "sourceRows": 2,
+      "restoredRows": 2,
+      "contentHashMatches": true
+    }
+  ],
+  "scope": "Base local de ensayo con Auth minimo, no Supabase gestionado ni objetos Storage. Ningun registro institucional copiado."
+}

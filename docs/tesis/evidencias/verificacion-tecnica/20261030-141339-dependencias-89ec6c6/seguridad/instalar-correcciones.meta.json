@@ -1,0 +1,16 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "install",
+    "--ignore-scripts",
+    "--no-audit",
+    "--no-fund"
+  ],
+  "start": "2026-10-30T14:18:20.783Z",
+  "end": "2026-10-30T14:18:24.461Z",
+  "durationSeconds": 3.678,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

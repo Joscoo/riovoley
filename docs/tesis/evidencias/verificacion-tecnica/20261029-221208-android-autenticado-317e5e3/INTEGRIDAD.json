@@ -1,0 +1,157 @@
+{
+  "generatedAt": "2026-10-29T23:06:34.394Z",
+  "passed": 8,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Siete expedientes previos intactos",
+      "state": "APROBADO",
+      "details": {
+        "manifests": 7,
+        "entries": 4287
+      }
+    },
+    {
+      "name": "Jest y cobertura coinciden con registros originales",
+      "state": "APROBADO",
+      "details": {
+        "executed": 419,
+        "passed": 419,
+        "failed": 0,
+        "skipped": 0,
+        "suites": 88,
+        "seconds": 26.125,
+        "file": "unitarias/jest-push-cierre.json"
+      }
+    },
+    {
+      "name": "Regresiones y guardas tienen denominadores separados",
+      "state": "APROBADO",
+      "details": {
+        "dependencyTests": 6,
+        "environmentTests": 2
+      }
+    },
+    {
+      "name": "Compilaciones, sync, firma y lint con resultados reales",
+      "state": "APROBADO",
+      "details": {
+        "webExit": 0,
+        "nativeExit": 0,
+        "lint": {
+          "label": "final",
+          "errors": 0,
+          "warnings": 27,
+          "issues": [
+            {
+              "id": "AndroidGradlePluginVersion",
+              "severity": "Warning",
+              "count": 1
+            },
+            {
+              "id": "GradleDependency",
+              "severity": "Warning",
+              "count": 1
+            },
+            {
+              "id": "IconDipSize",
+              "severity": "Warning",
+              "count": 1
+            },
+            {
+              "id": "IconDuplicates",
+              "severity": "Warning",
+              "count": 5
+            },
+            {
+              "id": "IconLauncherShape",
+              "severity": "Warning",
+              "count": 10
+            },
+            {
+              "id": "IconLocation",
+              "severity": "Warning",
+              "count": 1
+            },
+            {
+              "id": "ObsoleteSdkInt",
+              "severity": "Warning",
+              "count": 1
+            },
+            {
+              "id": "UnusedResources",
+              "severity": "Warning",
+              "count": 7
+            }
+          ]
+        },
+        "junit": 1,
+        "instrumented": 1
+      }
+    },
+    {
+      "name": "APK inspeccionado y ejecutado; trece verificaciones nativas",
+      "state": "APROBADO",
+      "details": {
+        "executed": 13,
+        "passed": 13,
+        "sha256": "4e6c5741f411861410db71cc31e8a8880040d63de2a4868222cc1d345c9a0301",
+        "privateApk": true
+      }
+    },
+    {
+      "name": "Seguridad actual y análisis npm, sin extrapolar a producción",
+      "state": "APROBADO",
+      "details": {
+        "before": {
+          "info": 0,
+          "low": 16,
+          "moderate": 6,
+          "high": 13,
+          "critical": 0,
+          "total": 35
+        },
+        "after": {
+          "info": 0,
+          "low": 16,
+          "moderate": 5,
+          "high": 10,
+          "critical": 0,
+          "total": 31
+        },
+        "functions": {
+          "info": 0,
+          "low": 0,
+          "moderate": 0,
+          "high": 0,
+          "critical": 0,
+          "total": 0
+        },
+        "aux": {
+          "info": 0,
+          "low": 0,
+          "moderate": 0,
+          "high": 0,
+          "critical": 0,
+          "total": 0
+        }
+      }
+    },
+    {
+      "name": "Documentos, enlaces y ocho categorías",
+      "state": "APROBADO",
+      "details": {
+        "documents": 3,
+        "categories": 8
+      }
+    },
+    {
+      "name": "Privacidad del expediente",
+      "state": "APROBADO",
+      "details": {
+        "textFiles": 828,
+        "archives": 0
+      }
+    }
+  ]
+}

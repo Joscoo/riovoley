@@ -1,0 +1,15 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/e2e/local/run.cjs",
+    "pending",
+    "--label=paneles-captura-corregida",
+    "--workers=2"
+  ],
+  "start": "2026-10-31T19:28:04.986Z",
+  "end": "2026-10-31T19:35:21.748Z",
+  "durationSeconds": 436.762,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

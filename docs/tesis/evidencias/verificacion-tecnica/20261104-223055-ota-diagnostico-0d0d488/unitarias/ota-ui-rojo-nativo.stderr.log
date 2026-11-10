@@ -1,0 +1,79 @@
+FAIL src/App.otaDiagnostics.test.js
+  × la portada normal no ofrece controles tecnicos OTA aunque la plataforma los soporte (96 ms)
+  × el valor false mantiene oculto el diagnostico nativo (35 ms)
+  × un valor distinto de true no activa controles manuales (30 ms)
+  √ una compilacion de diagnostico explicita permite abrir el panel en portada (53 ms)
+  √ la activacion explicita no agrega el panel fuera de la portada (340 ms)
+  √ una plataforma sin soporte no muestra el panel ni con activacion explicita (32 ms)
+  × ocultar el diagnostico conserva el bootstrap y la confirmacion de app lista (54 ms)
+
+  ● la portada normal no ofrece controles tecnicos OTA aunque la plataforma los soporte
+
+    expect(element).not.toBeInTheDocument()
+
+    expected document not to contain element, found <button class="inline-flex min-h-[52px] items-center gap-2 rounded-full border border-rv-gold/40 bg-rv-dark/95 px-4 py-3 text-sm font-black uppercase tracking-[0.18em] text-rv-gold shadow-2xl transition hover:bg-rv-dark" type="button">OTA</button> instead
+
+    [0m [90m 85 |[39m test([32m'la portada normal no ofrece controles tecnicos OTA aunque la plataforma los soporte'[39m[33m,[39m [36masync[39m () [33m=>[39m {
+     [90m 86 |[39m   [36mawait[39m home()[33m;[39m
+    [31m[1m>[22m[39m[90m 87 |[39m   expect(screen[33m.[39mqueryByRole([32m'button'[39m[33m,[39m { name[33m:[39m [35m/^OTA$/[39m }))[33m.[39mnot[33m.[39mtoBeInTheDocument()[33m;[39m
+     [90m    |[39m                                                               [31m[1m^[22m[39m
+     [90m 88 |[39m })[33m;[39m
+     [90m 89 |[39m test([32m'el valor false mantiene oculto el diagnostico nativo'[39m[33m,[39m [36masync[39m () [33m=>[39m {
+     [90m 90 |[39m   process[33m.[39menv[33m.[39m[33mREACT_APP_ENABLE_OTA_DIAGNOSTICS[39m [33m=[39m [32m'false'[39m[33m;[39m[0m
+
+      at Object.<anonymous> (src/App.otaDiagnostics.test.js:87:63)
+
+  ● el valor false mantiene oculto el diagnostico nativo
+
+    expect(element).not.toBeInTheDocument()
+
+    expected document not to contain element, found <button class="inline-flex min-h-[52px] items-center gap-2 rounded-full border border-rv-gold/40 bg-rv-dark/95 px-4 py-3 text-sm font-black uppercase tracking-[0.18em] text-rv-gold shadow-2xl transition hover:bg-rv-dark" type="button">OTA</button> instead
+
+    [0m [90m 90 |[39m   process[33m.[39menv[33m.[39m[33mREACT_APP_ENABLE_OTA_DIAGNOSTICS[39m [33m=[39m [32m'false'[39m[33m;[39m
+     [90m 91 |[39m   [36mawait[39m home()[33m;[39m
+    [31m[1m>[22m[39m[90m 92 |[39m   expect(screen[33m.[39mqueryByRole([32m'button'[39m[33m,[39m { name[33m:[39m [35m/^OTA$/[39m }))[33m.[39mnot[33m.[39mtoBeInTheDocument()[33m;[39m
+     [90m    |[39m                                                               [31m[1m^[22m[39m
+     [90m 93 |[39m })[33m;[39m
+     [90m 94 |[39m test([32m'un valor distinto de true no activa controles manuales'[39m[33m,[39m [36masync[39m () [33m=>[39m {
+     [90m 95 |[39m   process[33m.[39menv[33m.[39m[33mREACT_APP_ENABLE_OTA_DIAGNOSTICS[39m [33m=[39m [32m'1'[39m[33m;[39m[0m
+
+      at Object.<anonymous> (src/App.otaDiagnostics.test.js:92:63)
+
+  ● un valor distinto de true no activa controles manuales
+
+    expect(element).not.toBeInTheDocument()
+
+    expected document not to contain element, found <button class="inline-flex min-h-[52px] items-center gap-2 rounded-full border border-rv-gold/40 bg-rv-dark/95 px-4 py-3 text-sm font-black uppercase tracking-[0.18em] text-rv-gold shadow-2xl transition hover:bg-rv-dark" type="button">OTA</button> instead
+
+    [0m [90m  95 |[39m   process[33m.[39menv[33m.[39m[33mREACT_APP_ENABLE_OTA_DIAGNOSTICS[39m [33m=[39m [32m'1'[39m[33m;[39m
+     [90m  96 |[39m   [36mawait[39m home()[33m;[39m
+    [31m[1m>[22m[39m[90m  97 |[39m   expect(screen[33m.[39mqueryByRole([32m'button'[39m[33m,[39m { name[33m:[39m [35m/^OTA$/[39m }))[33m.[39mnot[33m.[39mtoBeInTheDocument()[33m;[39m
+     [90m     |[39m                                                               [31m[1m^[22m[39m
+     [90m  98 |[39m })[33m;[39m
+     [90m  99 |[39m test([32m'una compilacion de diagnostico explicita permite abrir el panel en portada'[39m[33m,[39m [36masync[39m () [33m=>[39m {
+     [90m 100 |[39m   process[33m.[39menv[33m.[39m[33mREACT_APP_ENABLE_OTA_DIAGNOSTICS[39m [33m=[39m [32m'true'[39m[33m;[39m[0m
+
+      at Object.<anonymous> (src/App.otaDiagnostics.test.js:97:63)
+
+  ● ocultar el diagnostico conserva el bootstrap y la confirmacion de app lista
+
+    expect(element).not.toBeInTheDocument()
+
+    expected document not to contain element, found <button class="inline-flex min-h-[52px] items-center gap-2 rounded-full border border-rv-gold/40 bg-rv-dark/95 px-4 py-3 text-sm font-black uppercase tracking-[0.18em] text-rv-gold shadow-2xl transition hover:bg-rv-dark" type="button">OTA<span class="rounded-full bg-emerald-400 px-2 py-0.5 text-[10px] text-slate-950">Nuevo</span></button> instead
+
+    [0m [90m 123 |[39m   [36mawait[39m waitFor(() [33m=>[39m expect(notifyOtaAppReady)[33m.[39mtoHaveBeenCalledTimes([35m1[39m))[33m;[39m
+     [90m 124 |[39m   expect(initializeOtaUpdates)[33m.[39mtoHaveBeenCalledTimes([35m1[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 125 |[39m   expect(screen[33m.[39mqueryByRole([32m'button'[39m[33m,[39m { name[33m:[39m [35m/OTA/[39m }))[33m.[39mnot[33m.[39mtoBeInTheDocument()[33m;[39m
+     [90m     |[39m                                                             [31m[1m^[22m[39m
+     [90m 126 |[39m })[33m;[39m
+     [90m 127 |[39m[0m
+
+      at Object.<anonymous> (src/App.otaDiagnostics.test.js:125:61)
+
+Test Suites: 1 failed, 1 total
+Tests:       4 failed, 3 passed, 7 total
+Snapshots:   0 total
+Time:        2.858 s, estimated 3 s
+Ran all test suites within paths "src/App.otaDiagnostics.test.js".
+Test results written to: docs\tesis\evidencias\verificacion-tecnica\20261104-223055-ota-diagnostico-0d0d488\unitarias\ota-ui-rojo-nativo.json
+

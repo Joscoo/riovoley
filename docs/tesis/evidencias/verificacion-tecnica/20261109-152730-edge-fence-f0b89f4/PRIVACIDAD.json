@@ -1,0 +1,11 @@
+{
+  "at": "2026-11-09T15:48:50.392Z",
+  "filesChecked": 73,
+  "issues": 0,
+  "credentialValuesRequested": false,
+  "actualProviderCredentialsUsed": false,
+  "providerConfigurationSynthetic": true,
+  "runtimeHeadersAndBodiesNotPublished": true,
+  "syntheticExampleTestSourceLiteralsAllowed": true,
+  "scope": "Current evidence and changed source, bounded patterns/known values; not universal privacy guarantee."
+}

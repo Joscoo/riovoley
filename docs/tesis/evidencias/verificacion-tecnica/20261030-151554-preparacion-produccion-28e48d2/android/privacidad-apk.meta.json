@@ -1,0 +1,14 @@
+{
+  "command": [
+    "python",
+    "scripts/audit/android/privacy.py",
+    "--report",
+    "android/privacidad-apk.json"
+  ],
+  "start": "2026-10-31T19:23:16.801Z",
+  "end": "2026-10-31T19:23:18.099Z",
+  "durationSeconds": 1.298,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

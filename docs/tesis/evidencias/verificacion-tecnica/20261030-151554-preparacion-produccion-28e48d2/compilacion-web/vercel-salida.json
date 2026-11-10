@@ -1,0 +1,23 @@
+{
+  "directory": ".e2e-local\\vercel-candidate-1793474954993",
+  "sourceMaps": [],
+  "files": [
+    "404.html",
+    "apple-touch-icon.png",
+    "asset-manifest.json",
+    "favicon-48x48.png",
+    "favicon-96x96.png",
+    "favicon.ico",
+    "images",
+    "index.html",
+    "logo192.png",
+    "logo512.png",
+    "logoRio.ico",
+    "manifest.json",
+    "robots.txt",
+    "sitemap.xml",
+    "static",
+    "videos"
+  ],
+  "scope": "Comando CRA estricto equivalente a buildCommand Vercel con entradas locales; no ejecución en Vercel ni despliegue."
+}

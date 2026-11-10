@@ -1,0 +1,19 @@
+{
+  "command": [
+    "docker",
+    "exec",
+    "-i",
+    "riovoley-restore-20261101-030216-02",
+    "tee",
+    "/restore/archive.list"
+  ],
+  "startedAt": "2026-11-01T03:05:08.181Z",
+  "finishedAt": "2026-11-01T03:05:08.343Z",
+  "durationSeconds": 0.162,
+  "exitCode": 0,
+  "signal": null,
+  "stdoutBytes": 111391,
+  "stderrBytes": 0,
+  "inputRecorded": false,
+  "rawOutputPublished": false
+}

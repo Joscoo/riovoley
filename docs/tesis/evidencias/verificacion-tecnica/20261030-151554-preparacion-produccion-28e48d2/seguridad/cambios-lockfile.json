@@ -1,0 +1,637 @@
+{
+  "forced": false,
+  "changes": [
+    {
+      "file": "node_modules/@types/express",
+      "before": "4.17.25",
+      "after": "5.0.6"
+    },
+    {
+      "file": "node_modules/@types/express/node_modules/@types/express-serve-static-core",
+      "before": "4.19.8",
+      "after": null
+    },
+    {
+      "file": "node_modules/@types/http-proxy",
+      "before": "1.17.17",
+      "after": null
+    },
+    {
+      "file": "node_modules/@types/mime",
+      "before": "1.3.5",
+      "after": null
+    },
+    {
+      "file": "node_modules/@types/node-forge",
+      "before": "1.3.14",
+      "after": null
+    },
+    {
+      "file": "node_modules/@types/retry",
+      "before": "0.12.0",
+      "after": null
+    },
+    {
+      "file": "node_modules/@types/serve-static",
+      "before": "1.15.10",
+      "after": "2.2.0"
+    },
+    {
+      "file": "node_modules/@types/serve-static/node_modules/@types/send",
+      "before": "0.17.6",
+      "after": null
+    },
+    {
+      "file": "node_modules/@types/sockjs",
+      "before": "0.3.36",
+      "after": null
+    },
+    {
+      "file": "node_modules/ansi-html-community",
+      "before": "0.0.8",
+      "after": null
+    },
+    {
+      "file": "node_modules/array-flatten",
+      "before": "1.1.1",
+      "after": null
+    },
+    {
+      "file": "node_modules/body-parser",
+      "before": "1.20.9",
+      "after": "2.4.0"
+    },
+    {
+      "file": "node_modules/body-parser/node_modules/debug",
+      "before": "2.6.9",
+      "after": null
+    },
+    {
+      "file": "node_modules/body-parser/node_modules/iconv-lite",
+      "before": "0.4.24",
+      "after": "0.7.3"
+    },
+    {
+      "file": "node_modules/body-parser/node_modules/ms",
+      "before": "2.0.0",
+      "after": null
+    },
+    {
+      "file": "node_modules/colorette",
+      "before": "2.0.20",
+      "after": null
+    },
+    {
+      "file": "node_modules/content-disposition",
+      "before": "0.5.4",
+      "after": "2.0.1"
+    },
+    {
+      "file": "node_modules/content-type",
+      "before": "1.0.5",
+      "after": "2.1.0"
+    },
+    {
+      "file": "node_modules/cookie-signature",
+      "before": "1.0.7",
+      "after": "1.2.2"
+    },
+    {
+      "file": "node_modules/core-util-is",
+      "before": "1.0.3",
+      "after": null
+    },
+    {
+      "file": "node_modules/deepmerge",
+      "before": "4.3.1",
+      "after": null
+    },
+    {
+      "file": "node_modules/default-gateway",
+      "before": "6.0.3",
+      "after": null
+    },
+    {
+      "file": "node_modules/detect-node",
+      "before": "2.1.0",
+      "after": null
+    },
+    {
+      "file": "node_modules/encodeurl",
+      "before": "2.0.0",
+      "after": "2.0.1"
+    },
+    {
+      "file": "node_modules/express",
+      "before": "4.22.1",
+      "after": "5.3.0"
+    },
+    {
+      "file": "node_modules/express/node_modules/debug",
+      "before": "2.6.9",
+      "after": null
+    },
+    {
+      "file": "node_modules/express/node_modules/ms",
+      "before": "2.0.0",
+      "after": null
+    },
+    {
+      "file": "node_modules/faye-websocket",
+      "before": "0.11.4",
+      "after": null
+    },
+    {
+      "file": "node_modules/finalhandler",
+      "before": "1.3.2",
+      "after": "2.1.1"
+    },
+    {
+      "file": "node_modules/finalhandler/node_modules/debug",
+      "before": "2.6.9",
+      "after": null
+    },
+    {
+      "file": "node_modules/finalhandler/node_modules/ms",
+      "before": "2.0.0",
+      "after": null
+    },
+    {
+      "file": "node_modules/follow-redirects",
+      "before": "1.16.2",
+      "after": null
+    },
+    {
+      "file": "node_modules/fresh",
+      "before": "0.5.2",
+      "after": "2.0.0"
+    },
+    {
+      "file": "node_modules/handle-thing",
+      "before": "2.0.1",
+      "after": null
+    },
+    {
+      "file": "node_modules/hpack.js",
+      "before": "2.1.6",
+      "after": null
+    },
+    {
+      "file": "node_modules/hpack.js/node_modules/isarray",
+      "before": "1.0.0",
+      "after": null
+    },
+    {
+      "file": "node_modules/hpack.js/node_modules/readable-stream",
+      "before": "2.3.8",
+      "after": null
+    },
+    {
+      "file": "node_modules/hpack.js/node_modules/safe-buffer",
+      "before": "5.1.2",
+      "after": null
+    },
+    {
+      "file": "node_modules/hpack.js/node_modules/string_decoder",
+      "before": "1.1.1",
+      "after": null
+    },
+    {
+      "file": "node_modules/http-deceiver",
+      "before": "1.2.7",
+      "after": null
+    },
+    {
+      "file": "node_modules/http-parser-js",
+      "before": "0.5.10",
+      "after": null
+    },
+    {
+      "file": "node_modules/http-proxy",
+      "before": "1.18.1",
+      "after": null
+    },
+    {
+      "file": "node_modules/http-proxy-middleware",
+      "before": "2.0.11",
+      "after": "4.2.1"
+    },
+    {
+      "file": "node_modules/http-proxy/node_modules/eventemitter3",
+      "before": "4.0.7",
+      "after": null
+    },
+    {
+      "file": "node_modules/is-plain-obj",
+      "before": "3.0.0",
+      "after": "4.1.0"
+    },
+    {
+      "file": "node_modules/media-typer",
+      "before": "0.3.0",
+      "after": "1.1.1"
+    },
+    {
+      "file": "node_modules/merge-descriptors",
+      "before": "1.0.3",
+      "after": "2.0.0"
+    },
+    {
+      "file": "node_modules/methods",
+      "before": "1.1.2",
+      "after": null
+    },
+    {
+      "file": "node_modules/mime",
+      "before": "1.6.0",
+      "after": null
+    },
+    {
+      "file": "node_modules/minimalistic-assert",
+      "before": "1.0.1",
+      "after": null
+    },
+    {
+      "file": "node_modules/node-forge",
+      "before": "1.4.2",
+      "after": null
+    },
+    {
+      "file": "node_modules/obuf",
+      "before": "1.1.2",
+      "after": null
+    },
+    {
+      "file": "node_modules/on-finished",
+      "before": "2.4.1",
+      "after": "2.4.2"
+    },
+    {
+      "file": "node_modules/p-retry",
+      "before": "4.6.2",
+      "after": "8.0.1"
+    },
+    {
+      "file": "node_modules/path-to-regexp",
+      "before": "0.1.13",
+      "after": "8.4.2"
+    },
+    {
+      "file": "node_modules/process-nextick-args",
+      "before": "2.0.1",
+      "after": null
+    },
+    {
+      "file": "node_modules/range-parser",
+      "before": "1.2.1",
+      "after": "1.3.0"
+    },
+    {
+      "file": "node_modules/raw-body",
+      "before": "2.5.3",
+      "after": "3.0.2"
+    },
+    {
+      "file": "node_modules/raw-body/node_modules/iconv-lite",
+      "before": "0.4.24",
+      "after": "0.7.3"
+    },
+    {
+      "file": "node_modules/retry",
+      "before": "0.13.1",
+      "after": null
+    },
+    {
+      "file": "node_modules/select-hose",
+      "before": "2.0.0",
+      "after": null
+    },
+    {
+      "file": "node_modules/selfsigned",
+      "before": "2.4.1",
+      "after": "5.5.0"
+    },
+    {
+      "file": "node_modules/send",
+      "before": "0.19.2",
+      "after": "1.2.1"
+    },
+    {
+      "file": "node_modules/send/node_modules/debug",
+      "before": "2.6.9",
+      "after": null
+    },
+    {
+      "file": "node_modules/send/node_modules/debug/node_modules/ms",
+      "before": "2.0.0",
+      "after": null
+    },
+    {
+      "file": "node_modules/serve-static",
+      "before": "1.16.3",
+      "after": "2.2.1"
+    },
+    {
+      "file": "node_modules/sockjs",
+      "before": "0.3.24",
+      "after": null
+    },
+    {
+      "file": "node_modules/spdy",
+      "before": "4.0.2",
+      "after": null
+    },
+    {
+      "file": "node_modules/spdy-transport",
+      "before": "3.0.0",
+      "after": null
+    },
+    {
+      "file": "node_modules/type-is",
+      "before": "1.6.18",
+      "after": "2.1.0"
+    },
+    {
+      "file": "node_modules/utils-merge",
+      "before": "1.0.1",
+      "after": null
+    },
+    {
+      "file": "node_modules/uuid",
+      "before": "11.1.1",
+      "after": null
+    },
+    {
+      "file": "node_modules/wbuf",
+      "before": "1.7.3",
+      "after": null
+    },
+    {
+      "file": "node_modules/webpack-dev-middleware",
+      "before": "7.4.6",
+      "after": "8.6.0"
+    },
+    {
+      "file": "node_modules/webpack-dev-middleware/node_modules/mime-types",
+      "before": "3.0.2",
+      "after": null
+    },
+    {
+      "file": "node_modules/webpack-dev-server",
+      "before": "4.15.2",
+      "after": "6.1.0"
+    },
+    {
+      "file": "node_modules/websocket-driver",
+      "before": "0.7.5",
+      "after": null
+    },
+    {
+      "file": "node_modules/websocket-extensions",
+      "before": "0.1.4",
+      "after": null
+    },
+    {
+      "file": "node_modules/@noble/hashes",
+      "before": null,
+      "after": "1.8.0"
+    },
+    {
+      "file": "node_modules/@peculiar/asn1-cms",
+      "before": null,
+      "after": "2.11.1"
+    },
+    {
+      "file": "node_modules/@peculiar/asn1-csr",
+      "before": null,
+      "after": "2.11.1"
+    },
+    {
+      "file": "node_modules/@peculiar/asn1-ecc",
+      "before": null,
+      "after": "2.11.1"
+    },
+    {
+      "file": "node_modules/@peculiar/asn1-pfx",
+      "before": null,
+      "after": "2.11.1"
+    },
+    {
+      "file": "node_modules/@peculiar/asn1-pkcs8",
+      "before": null,
+      "after": "2.11.1"
+    },
+    {
+      "file": "node_modules/@peculiar/asn1-pkcs9",
+      "before": null,
+      "after": "2.11.1"
+    },
+    {
+      "file": "node_modules/@peculiar/asn1-rsa",
+      "before": null,
+      "after": "2.11.1"
+    },
+    {
+      "file": "node_modules/@peculiar/asn1-schema",
+      "before": null,
+      "after": "2.11.1"
+    },
+    {
+      "file": "node_modules/@peculiar/asn1-x509",
+      "before": null,
+      "after": "2.11.1"
+    },
+    {
+      "file": "node_modules/@peculiar/asn1-x509-attr",
+      "before": null,
+      "after": "2.11.1"
+    },
+    {
+      "file": "node_modules/@peculiar/utils",
+      "before": null,
+      "after": "2.0.3"
+    },
+    {
+      "file": "node_modules/@peculiar/x509",
+      "before": null,
+      "after": "1.14.3"
+    },
+    {
+      "file": "node_modules/asn1js",
+      "before": null,
+      "after": "3.1.0"
+    },
+    {
+      "file": "node_modules/bundle-name",
+      "before": null,
+      "after": "4.1.1"
+    },
+    {
+      "file": "node_modules/bytestreamjs",
+      "before": null,
+      "after": "2.0.1"
+    },
+    {
+      "file": "node_modules/default-browser",
+      "before": null,
+      "after": "5.5.1"
+    },
+    {
+      "file": "node_modules/default-browser-id",
+      "before": null,
+      "after": "5.0.1"
+    },
+    {
+      "file": "node_modules/express/node_modules/accepts",
+      "before": null,
+      "after": "2.0.0"
+    },
+    {
+      "file": "node_modules/express/node_modules/mime-db",
+      "before": null,
+      "after": "1.54.0"
+    },
+    {
+      "file": "node_modules/express/node_modules/mime-types",
+      "before": null,
+      "after": "3.0.2"
+    },
+    {
+      "file": "node_modules/express/node_modules/negotiator",
+      "before": null,
+      "after": "1.1.0"
+    },
+    {
+      "file": "node_modules/httpxy",
+      "before": null,
+      "after": "0.5.6"
+    },
+    {
+      "file": "node_modules/is-in-ssh",
+      "before": null,
+      "after": "1.0.0"
+    },
+    {
+      "file": "node_modules/is-inside-container",
+      "before": null,
+      "after": "1.0.0"
+    },
+    {
+      "file": "node_modules/is-inside-container/node_modules/is-docker",
+      "before": null,
+      "after": "3.0.0"
+    },
+    {
+      "file": "node_modules/is-network-error",
+      "before": null,
+      "after": "1.3.2"
+    },
+    {
+      "file": "node_modules/is-promise",
+      "before": null,
+      "after": "4.0.0"
+    },
+    {
+      "file": "node_modules/pkijs",
+      "before": null,
+      "after": "3.4.3"
+    },
+    {
+      "file": "node_modules/powershell-utils",
+      "before": null,
+      "after": "0.2.1"
+    },
+    {
+      "file": "node_modules/pvtsutils",
+      "before": null,
+      "after": "1.3.6"
+    },
+    {
+      "file": "node_modules/pvutils",
+      "before": null,
+      "after": "1.2.0"
+    },
+    {
+      "file": "node_modules/reflect-metadata",
+      "before": null,
+      "after": "0.2.2"
+    },
+    {
+      "file": "node_modules/router",
+      "before": null,
+      "after": "2.2.0"
+    },
+    {
+      "file": "node_modules/run-applescript",
+      "before": null,
+      "after": "7.1.0"
+    },
+    {
+      "file": "node_modules/send/node_modules/mime-db",
+      "before": null,
+      "after": "1.54.0"
+    },
+    {
+      "file": "node_modules/send/node_modules/mime-types",
+      "before": null,
+      "after": "3.0.2"
+    },
+    {
+      "file": "node_modules/tsyringe",
+      "before": null,
+      "after": "4.10.0"
+    },
+    {
+      "file": "node_modules/tsyringe/node_modules/tslib",
+      "before": null,
+      "after": "1.14.1"
+    },
+    {
+      "file": "node_modules/type-is/node_modules/mime-db",
+      "before": null,
+      "after": "1.54.0"
+    },
+    {
+      "file": "node_modules/type-is/node_modules/mime-types",
+      "before": null,
+      "after": "3.0.2"
+    },
+    {
+      "file": "node_modules/webpack-dev-middleware/node_modules/ws",
+      "before": null,
+      "after": "8.22.0"
+    },
+    {
+      "file": "node_modules/webpack-dev-server/node_modules/chokidar",
+      "before": null,
+      "after": "5.0.0"
+    },
+    {
+      "file": "node_modules/webpack-dev-server/node_modules/define-lazy-prop",
+      "before": null,
+      "after": "3.0.0"
+    },
+    {
+      "file": "node_modules/webpack-dev-server/node_modules/open",
+      "before": null,
+      "after": "11.0.4"
+    },
+    {
+      "file": "node_modules/webpack-dev-server/node_modules/readdirp",
+      "before": null,
+      "after": "5.1.1"
+    },
+    {
+      "file": "node_modules/wsl-utils",
+      "before": null,
+      "after": "1.0.1"
+    },
+    {
+      "file": "node_modules/wsl-utils/node_modules/is-wsl",
+      "before": null,
+      "after": "3.1.1"
+    }
+  ],
+  "localDependencyOutsideRegistry": "vendor/deepmerge",
+  "frameworkUnchanged": "react-scripts 5.0.1"
+}

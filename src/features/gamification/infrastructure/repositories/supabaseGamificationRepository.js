@@ -66,6 +66,17 @@ const sanitizeLeaderboardSnapshotRow = (row) => {
 };
 
 export class SupabaseGamificationRepository {
+  // La carga del panel solo lee; el personal sincroniza mediante el caso de uso explícito.
+  canWriteDerivedState = false;
+
+  async claimDailyLoginReward() {
+    const { data, error } = await supabase.rpc('claim_daily_login_reward');
+    if (error) {
+      throw new GamificationError(normalizeError(error, 'Error registrando recompensa diaria'), error);
+    }
+    return data;
+  }
+
   async findStudentByUserId(userId) {
     const { data, error } = await supabase
       .from('students')

@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-11-01T16:49:44.679Z",
+  "configurationSource": "Lista y Site URL informados por el usuario; no lectura administrativa automatizada",
+  "siteUrl": "https://riovoley.com",
+  "reportedRedirects": [
+    "https://riovoley-joscoos-projects.vercel.app/",
+    "https://riovoley-joscoos-projects.vercel.app/**",
+    "https://riovoley-*-joscoos-projects.vercel.app",
+    "https://riovoley-*-joscoos-projects.vercel.app/**",
+    "http://localhost:3000/reset-password",
+    "https://riovoley.vercel.app/reset-password",
+    "https://riovoley.com/reset-password"
+  ],
+  "expectedWebResetUrl": "https://riovoley.com/reset-password",
+  "expectedNativeResetUrl": "riovoley://reset-password",
+  "webResetExplicitlyAllowed": true,
+  "nativeSchemeEntryPresent": false,
+  "androidManifestDeclaresScheme": true,
+  "cloudConfigurationChanged": false
+}

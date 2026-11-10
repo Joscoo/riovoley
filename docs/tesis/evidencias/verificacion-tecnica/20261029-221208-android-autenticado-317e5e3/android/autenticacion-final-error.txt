@@ -1,0 +1,9 @@
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 'riovoley-audit\r'
+- 'riovoley-audit'
+                 ^
+
+    at D:\Riovoley\riovoley\scripts\audit\android\authenticated-webview.cjs:33:71
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)

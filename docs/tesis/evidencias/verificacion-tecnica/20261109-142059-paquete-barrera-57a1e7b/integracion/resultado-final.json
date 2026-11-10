@@ -1,0 +1,143 @@
+{
+  "recordedAt": "2026-11-09T14:28:01.983Z",
+  "executed": 22,
+  "passed": 22,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "normalizacion-retorno-reportes",
+      "state": "APROBADO",
+      "durationMs": 177,
+      "detail": null
+    },
+    {
+      "name": "normalizacion-retorno-principal",
+      "state": "APROBADO",
+      "durationMs": 207,
+      "detail": null
+    },
+    {
+      "name": "referencia-huella-inicial-con-barrera",
+      "state": "APROBADO",
+      "durationMs": 262,
+      "detail": null
+    },
+    {
+      "name": "referencia-principal-avance",
+      "state": "APROBADO",
+      "durationMs": 169,
+      "detail": null
+    },
+    {
+      "name": "referencia-medicion-principal-avance",
+      "state": "APROBADO",
+      "durationMs": 252,
+      "detail": null
+    },
+    {
+      "name": "referencia-reportes-avance",
+      "state": "APROBADO",
+      "durationMs": 105,
+      "detail": null
+    },
+    {
+      "name": "referencia-medicion-reportes-avance",
+      "state": "APROBADO",
+      "durationMs": 280,
+      "detail": null
+    },
+    {
+      "name": "referencia-reportes-retorno",
+      "state": "APROBADO",
+      "durationMs": 163,
+      "detail": null
+    },
+    {
+      "name": "referencia-principal-retorno",
+      "state": "APROBADO",
+      "durationMs": 165,
+      "detail": null
+    },
+    {
+      "name": "instalacion-integrada",
+      "state": "APROBADO",
+      "durationMs": 86,
+      "detail": null
+    },
+    {
+      "name": "original-rechaza-deriva-con-barrera",
+      "state": "APROBADO",
+      "durationMs": 108,
+      "detail": null
+    },
+    {
+      "name": "generacion-variantes-sin-cambios-funcionales",
+      "state": "APROBADO",
+      "durationMs": 19,
+      "detail": null
+    },
+    {
+      "name": "guarda-funcion-alterada",
+      "state": "APROBADO",
+      "durationMs": 67,
+      "detail": null
+    },
+    {
+      "name": "guarda-disparador-deshabilitado",
+      "state": "APROBADO",
+      "durationMs": 61,
+      "detail": null
+    },
+    {
+      "name": "guarda-tabla-nueva-no-inventariada",
+      "state": "APROBADO",
+      "durationMs": 35,
+      "detail": null
+    },
+    {
+      "name": "integrado-principal-avance",
+      "state": "APROBADO",
+      "durationMs": 162,
+      "detail": null
+    },
+    {
+      "name": "integrado-reportes-avance",
+      "state": "APROBADO",
+      "durationMs": 111,
+      "detail": null
+    },
+    {
+      "name": "retorno-principal-anticipado-rechazado",
+      "state": "APROBADO",
+      "durationMs": 107,
+      "detail": null
+    },
+    {
+      "name": "integrado-reportes-retorno",
+      "state": "APROBADO",
+      "durationMs": 137,
+      "detail": null
+    },
+    {
+      "name": "integrado-principal-retorno",
+      "state": "APROBADO",
+      "durationMs": 171,
+      "detail": null
+    },
+    {
+      "name": "retirada-final-y-catalogo-original",
+      "state": "APROBADO",
+      "durationMs": 136,
+      "detail": null
+    },
+    {
+      "name": "origen-sintetico-intacto",
+      "state": "APROBADO",
+      "durationMs": 128,
+      "detail": null
+    }
+  ],
+  "completed": true,
+  "originalBodyPreservedBytewise": true,
+  "productionChanged": false
+}

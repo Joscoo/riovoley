@@ -1,0 +1,14 @@
+{
+  "startedAt": "2026-11-05T17:10:50.244Z",
+  "baseCommit": "922a3744b0c74b6e8ffcb9f340c6e1bfa754425d",
+  "priorEvidence": "docs/tesis/evidencias/verificacion-tecnica/20261105-160424-transicion-lectura-d2b43e4",
+  "projectId": "mayvvlkvheagkojunzzb",
+  "platform": "win32",
+  "architecture": "x64",
+  "node": "v24.18.0",
+  "osRelease": "10.0.26300",
+  "initialGitStatus": "?? docs/superpowers/plans/2026-11-05-cutover-prerequisites.md\n?? scripts/audit/production/check-cutover-prerequisites.cjs",
+  "productionChanged": false,
+  "credentialValuesRequested": false,
+  "newFunctionalTests": false
+}

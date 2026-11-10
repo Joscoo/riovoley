@@ -1,0 +1,15 @@
+{
+  "command": [
+    "C:\\WINDOWS\\system32\\cmd.exe",
+    "/d",
+    "/s",
+    "/c",
+    "npm run test:edge-contracts"
+  ],
+  "start": "2026-11-09T15:35:46.681Z",
+  "end": "2026-11-09T15:35:53.463Z",
+  "durationSeconds": 6.782,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

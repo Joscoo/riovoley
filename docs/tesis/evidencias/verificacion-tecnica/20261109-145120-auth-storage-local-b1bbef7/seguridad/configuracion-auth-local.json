@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-11-09T15:02:35.005Z",
+  "image": "public.ecr.aws/supabase/gotrue:v2.197.0",
+  "imageId": "sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b",
+  "running": true,
+  "smtpLocalVerified": true,
+  "allowedConfiguration": {
+    "GOTRUE_SMTP_HOST": "supabase_inbucket_riovoley-e2e-local",
+    "GOTRUE_MAILER_AUTOCONFIRM": "true",
+    "GOTRUE_EXTERNAL_EMAIL_ENABLED": "true"
+  },
+  "otherEnvironmentValuesPublished": false
+}

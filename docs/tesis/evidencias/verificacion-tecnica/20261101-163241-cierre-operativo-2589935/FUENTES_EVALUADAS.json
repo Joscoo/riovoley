@@ -1,0 +1,64 @@
+{
+  "checkedAt": "2026-11-01T21:17:45.857Z",
+  "candidateCommit": "ef9a05ad20bba4f9303f547130c07336eeea61e7",
+  "localChangesPresent": true,
+  "files": [
+    {
+      "file": "docs/produccion/EDGE.md",
+      "sha256": "6490eb6b5c43549b83b57fe83c3ce72e04baf612bb2e695be8ed5c93e792f6f8"
+    },
+    {
+      "file": "docs/produccion/RESPALDO_Y_RESTAURACION.md",
+      "sha256": "eb730f5fc4bb0e021cd11a6caa03d2120180aa7d51b4bfaa01cccb3b21c47e51"
+    },
+    {
+      "file": "docs/produccion/RUNBOOK.md",
+      "sha256": "94f84186693b5650ea3c0dba55a7bc63ad2da9ed868c1c33a71d012a09f554aa"
+    },
+    {
+      "file": "docs/produccion/SCHEDULER_PENDIENTE.md",
+      "sha256": "cf39a3b0f8d435b950474855395f6c819885c5658010e3b5fef3ad34a2228813"
+    },
+    {
+      "file": "docs/superpowers/plans/2026-11-01-cierre-operativo.md",
+      "sha256": "2f3a9e17076e1bda513434fa27da3a8a16e8d65374bafb4903ce5afac53a2b67"
+    },
+    {
+      "file": "scripts/audit/production/collect-operational-tools.cjs",
+      "sha256": "994db886287ce40220ec4421f997b5638b43e7b6fe3689a545dd5868e15324c1"
+    },
+    {
+      "file": "scripts/audit/production/finalize-operational-packet.cjs",
+      "sha256": "6cff05489d324f11c1b0c40020c70e971b1770796c6a3e8291358303c07a8f6b"
+    },
+    {
+      "file": "scripts/audit/production/inspect-edge-secret-names.cjs",
+      "sha256": "f55005ab4c5c1a9d7c6bb90ae898b933b7dfa756523dc1ed0335fb5f47dd0b92"
+    },
+    {
+      "file": "scripts/audit/production/inspect-release-catalog.cjs",
+      "sha256": "3b242ac4de93a04c2b0a38a55145e3a97a9e84071811979e0764325818ddf838"
+    },
+    {
+      "file": "scripts/audit/production/report-operational-packet.cjs",
+      "sha256": "4260a8062ea0039d1ae2268dba4768ab54229f517061e164a8920a1d4b7e2579"
+    },
+    {
+      "file": "scripts/audit/production/run-operational-jest.cjs",
+      "sha256": "88508e6b8b146d23b60667ab6688e9ec41f31ab73f5abfcb2dad5fd9ecabe7f9"
+    },
+    {
+      "file": "scripts/audit/production/summarize-supabase-config.py",
+      "sha256": "7ed3677de6e5bc801d55958f10cfaf4c1765c88b68bf08a38e99167b430216e1"
+    },
+    {
+      "file": "scripts/production/supabase-readonly.ps1",
+      "sha256": "59ec01f70536b5f3c9396560d1e3f756c482ae235e096e689825e5ba633e255f"
+    },
+    {
+      "file": "tests/unit/supabase-config-summary.test.cjs",
+      "sha256": "a02afad174d66867a3248886de9259f94cb83d76bb9fd7f16bd97f3c77c3e1f5"
+    }
+  ],
+  "productionSourceFilesChangedSinceCandidate": false
+}

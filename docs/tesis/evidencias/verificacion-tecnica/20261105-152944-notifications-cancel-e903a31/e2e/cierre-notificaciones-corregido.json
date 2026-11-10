@@ -1,0 +1,424 @@
+{
+  "at": "2026-11-05T15:44:57.901Z",
+  "tests": 1,
+  "passed": 1,
+  "failed": 0,
+  "seconds": 4.027,
+  "heldRealResponses": [
+    {
+      "path": "/rest/v1/announcements",
+      "realStatus": 200,
+      "heldAtSeconds": 1.625
+    },
+    {
+      "path": "/rest/v1/announcements",
+      "realStatus": 200,
+      "heldAtSeconds": 1.635
+    }
+  ],
+  "responses": [
+    {
+      "path": "/rest/v1/rpc/check_login_allowed",
+      "status": 200,
+      "method": "POST",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.126,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/auth/v1/token",
+      "status": 200,
+      "method": "POST",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.166,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.265,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.266,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/rpc/claim_daily_login_reward",
+      "status": 200,
+      "method": "POST",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.276,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.403,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.431,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.434,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/rpc/record_login_attempt",
+      "status": 204,
+      "method": "POST",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.433,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.46,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.462,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.461,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.485,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.497,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.509,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.508,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.518,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.517,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.519,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.513,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 204,
+      "method": "PATCH",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.518,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.537,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.549,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.559,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/auth/v1/user",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.573,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.572,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.587,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.587,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.587,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.584,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.589,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.591,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/users",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.588,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/user_profiles",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.634,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "HEAD",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.966,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.968,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.97,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.971,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/payment_types",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.976,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.977,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "HEAD",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.973,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/training_categories",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.982,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.979,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/payments",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.985,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/attendances",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.985,
+      "phaseAtResponse": "login:admin"
+    },
+    {
+      "path": "/rest/v1/students",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "logout:admin",
+      "startedSeconds": 2.021,
+      "phaseAtResponse": "logout:admin"
+    },
+    {
+      "path": "/auth/v1/logout",
+      "status": 204,
+      "method": "POST",
+      "phaseAtStart": "logout:admin",
+      "startedSeconds": 2.405,
+      "phaseAtResponse": "logout:admin"
+    },
+    {
+      "path": "/rest/v1/announcements",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.595,
+      "phaseAtResponse": "logged-out:admin"
+    },
+    {
+      "path": "/rest/v1/announcements",
+      "status": 200,
+      "method": "GET",
+      "phaseAtStart": "login:admin",
+      "startedSeconds": 1.62,
+      "phaseAtResponse": "logged-out:admin"
+    }
+  ],
+  "expectCancelled": true,
+  "lateAchievementRequests": [],
+  "absenceObservationWindowMs": 1500,
+  "compiledSourceCommit": "5f605512448f0683e8ddc52e197e42fa5d909868",
+  "intervention": "Se retuvo la entrega de respuestas GET announcements reales hasta completar logout y ausencia de token local. Sin modificar contenido, cabeceras de peticion ni logica del cliente.",
+  "browser": "Chromium escritorio con viewport movil; no es una nueva ejecucion Android",
+  "backend": "Auth/REST/PostgreSQL locales reales",
+  "newBuild": false,
+  "productionChanged": false,
+  "businessWrites": false,
+  "historical401DirectlyAttributed": false
+}

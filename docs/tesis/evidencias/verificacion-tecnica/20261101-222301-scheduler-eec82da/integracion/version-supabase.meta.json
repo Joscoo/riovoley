@@ -1,0 +1,10 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\tools\\node_modules\\@supabase\\cli-windows-x64\\bin\\supabase.exe",
+    "--version"
+  ],
+  "startedAt": "2026-11-01T23:01:07.435Z",
+  "finishedAt": "2026-11-01T23:01:12.260Z",
+  "exitCode": 0,
+  "rawOutputSaved": false
+}

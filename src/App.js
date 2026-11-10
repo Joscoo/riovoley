@@ -51,6 +51,7 @@ function AppContent() {
   const activePushUserRef = useRef(null);
   const { info, warning, error: showError } = useToast();
   const isLandingHomeRoute = location.pathname === '/';
+  const otaDiagnosticsEnabled = process.env.REACT_APP_ENABLE_OTA_DIAGNOSTICS === 'true';
 
   useEffect(() => {
     checkUser();
@@ -215,7 +216,7 @@ function AppContent() {
 
   return (
     <Suspense fallback={<LoadingFallback />}>
-      {otaState?.supported && isLandingHomeRoute ? (
+      {otaDiagnosticsEnabled && otaState?.supported && isLandingHomeRoute ? (
         <div className="fixed bottom-4 right-4 z-[1200] flex flex-col items-end gap-3">
           {isOtaPanelOpen ? (
             <div className="w-[min(92vw,380px)]">

@@ -1,0 +1,149 @@
+[
+  {
+    "file": "integracion/ci-base-readback.meta.json",
+    "command": [
+      "gh",
+      "run",
+      "view",
+      "41386966532",
+      "--repo",
+      "Joscoo/riovoley",
+      "--json",
+      "headSha,status,conclusion,url"
+    ],
+    "startedAt": "2026-11-04T20:18:57.459Z",
+    "finishedAt": "2026-11-04T20:18:58.348Z",
+    "exitCode": 0
+  },
+  {
+    "file": "seguridad/cloud-configuracion-lectura.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/inspect-cloud-config-names.cjs"
+    ],
+    "start": "2026-11-04T20:13:12.690Z",
+    "end": "2026-11-04T20:13:29.067Z",
+    "durationSeconds": 16.377,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/config-despliegue.meta.json",
+    "command": [
+      "vercel",
+      "api",
+      "/v13/deployments/dpl_DCPpv18kuroRoaEpV49xhGfY1isB",
+      "-X",
+      "GET",
+      "--scope",
+      "joscoos-projects",
+      "--global-config",
+      "<configuracion-privada>",
+      "--non-interactive"
+    ],
+    "startedAt": "2026-11-04T20:13:21.539Z",
+    "finishedAt": "2026-11-04T20:13:22.901Z",
+    "exitCode": 0,
+    "rawOutputSaved": false
+  },
+  {
+    "file": "seguridad/config-proyecto.meta.json",
+    "command": [
+      "vercel",
+      "api",
+      "/v9/projects/riovoley",
+      "-X",
+      "GET",
+      "--scope",
+      "joscoos-projects",
+      "--global-config",
+      "<configuracion-privada>",
+      "--non-interactive"
+    ],
+    "startedAt": "2026-11-04T20:13:13.202Z",
+    "finishedAt": "2026-11-04T20:13:21.535Z",
+    "exitCode": 0,
+    "rawOutputSaved": false
+  },
+  {
+    "file": "seguridad/config-supabase-secretos.meta.json",
+    "command": [
+      "supabase",
+      "secrets",
+      "list",
+      "--project-ref",
+      "mayvvlkvheagkojunzzb",
+      "--output",
+      "json"
+    ],
+    "startedAt": "2026-11-04T20:13:22.907Z",
+    "finishedAt": "2026-11-04T20:13:28.978Z",
+    "exitCode": 0,
+    "rawOutputSaved": false
+  },
+  {
+    "file": "seguridad/npm-audit-actual-auxiliar.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json",
+      "--prefix",
+      "riovoley"
+    ],
+    "start": "2026-11-04T20:16:37.749Z",
+    "end": "2026-11-04T20:16:44.694Z",
+    "durationSeconds": 6.945,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/npm-audit-actual-functions.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json",
+      "--prefix",
+      "functions"
+    ],
+    "start": "2026-11-04T20:16:37.734Z",
+    "end": "2026-11-04T20:16:44.775Z",
+    "durationSeconds": 7.041,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/npm-audit-actual-raiz.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "audit",
+      "--json",
+      "--prefix",
+      "."
+    ],
+    "start": "2026-11-04T20:16:37.723Z",
+    "end": "2026-11-04T20:16:45.500Z",
+    "durationSeconds": 7.777,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  },
+  {
+    "file": "seguridad/publico-https-actual.meta.json",
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "scripts/audit/production/read-public-deployment.cjs"
+    ],
+    "start": "2026-11-04T20:16:37.711Z",
+    "end": "2026-11-04T20:16:43.629Z",
+    "durationSeconds": 5.918,
+    "exitCode": 0,
+    "signal": null,
+    "cwd": "."
+  }
+]

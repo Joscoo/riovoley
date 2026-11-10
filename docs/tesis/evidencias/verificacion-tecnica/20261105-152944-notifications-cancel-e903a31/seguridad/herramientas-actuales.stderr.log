@@ -1,0 +1,20 @@
+node:internal/errors:542
+      throw error;
+      ^
+
+TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received undefined
+    at normalizeSpawnArguments (node:child_process:568:3)
+    at spawnSync (node:child_process:870:8)
+    at Object.execFileSync (node:child_process:954:15)
+    at [eval]:1:136
+    at runScriptInThisContext (node:internal/vm:219:10)
+    at node:internal/process/execution:451:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:449:60)
+    at evalFunction (node:internal/process/execution:283:30)
+    at evalTypeScript (node:internal/process/execution:295:3) {
+  code: 'ERR_INVALID_ARG_TYPE'
+}
+
+Node.js v24.18.0
+

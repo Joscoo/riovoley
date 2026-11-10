@@ -1,0 +1,10 @@
+{
+  "projectRef": "mayvvlkvheagkojunzzb",
+  "host": "db.mayvvlkvheagkojunzzb.supabase.co",
+  "port": 5432,
+  "database": "postgres",
+  "username": "postgres",
+  "sslmode": "verify-full",
+  "expectedFingerprint": "15b9d9e869fb5113263c485714009878",
+  "expectedServerMajor": 17
+}

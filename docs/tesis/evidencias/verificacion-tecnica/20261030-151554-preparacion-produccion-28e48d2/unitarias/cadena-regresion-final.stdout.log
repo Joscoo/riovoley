@@ -1,0 +1,469 @@
+TAP version 13
+# Subtest: QS de Express serializa arrays comma con null y undefined sin excepción (CVE-2026-8723)
+ok 1 - QS de Express serializa arrays comma con null y undefined sin excepción (CVE-2026-8723)
+  ---
+  duration_ms: 4341.2837
+  type: 'test'
+  ...
+# Subtest: Express conserva filtros anidados y body URL-encoded con el QS actualizado
+ok 2 - Express conserva filtros anidados y body URL-encoded con el QS actualizado
+  ---
+  duration_ms: 10188.0368
+  type: 'test'
+  ...
+# Subtest: Underscore usado por JSONPath procesa arrays de 20000 niveles sin desbordar la pila (CVE-2026-27601)
+ok 3 - Underscore usado por JSONPath procesa arrays de 20000 niveles sin desbordar la pila (CVE-2026-27601)
+  ---
+  duration_ms: 6.0739
+  type: 'test'
+  ...
+# Subtest: Underscore compara objetos de 6000 niveles sin desbordar la pila
+ok 4 - Underscore compara objetos de 6000 niveles sin desbordar la pila
+  ---
+  duration_ms: 33.1608
+  type: 'test'
+  ...
+# Subtest: JSONPath mantiene filtros y selección recursiva con el parche de Underscore
+ok 5 - JSONPath mantiene filtros y selección recursiva con el parche de Underscore
+  ---
+  duration_ms: 1127.3256
+  type: 'test'
+  ...
+# Subtest: BFJ conserva la lectura y escritura JSON del informe de compilación
+ok 6 - BFJ conserva la lectura y escritura JSON del informe de compilación
+  ---
+  duration_ms: 3234.6138
+  type: 'test'
+  ...
+# Subtest: WebSocket del servidor conserva intercambio real de texto y cierre normal
+ok 7 - WebSocket del servidor conserva intercambio real de texto y cierre normal
+  ---
+  duration_ms: 964.0977
+  type: 'test'
+  ...
+# Subtest: WebSocket del servidor rechaza un mensaje que supera el límite configurado
+ok 8 - WebSocket del servidor rechaza un mensaje que supera el límite configurado
+  ---
+  duration_ms: 14.7867
+  type: 'test'
+  ...
+# Subtest: SVGO del cargador SVG elimina enlaces ejecutables con namespace y tabulador codificado
+ok 9 - SVGO del cargador SVG elimina enlaces ejecutables con namespace y tabulador codificado
+  ---
+  duration_ms: 10343.2046
+  type: 'test'
+  ...
+# Without `from` option PostCSS could generate wrong source map and will not find Browserslist config. Set it to CSS file path or to `undefined` to prevent this warning.
+# <i> [webpack-dev-middleware] wait until bundle finished
+# Subtest: SVG conserva ReactComponent, título, ref, viewBox y URL de archivo con las opciones CRA
+ok 10 - SVG conserva ReactComponent, título, ref, viewBox y URL de archivo con las opciones CRA
+  ---
+  duration_ms: 79889.8666
+  type: 'test'
+  ...
+# Subtest: PostCSS del resolvedor CSS no incorpora contenido de un mapa absoluto sin from
+ok 11 - PostCSS del resolvedor CSS no incorpora contenido de un mapa absoluto sin from
+  ---
+  duration_ms: 1061.1033
+  type: 'test'
+  ...
+# Subtest: Resolve URL Loader conserva CSS, URL de recurso y mapa con las opciones existentes
+ok 12 - Resolve URL Loader conserva CSS, URL de recurso y mapa con las opciones existentes
+  ---
+  duration_ms: 3129.1431
+  type: 'test'
+  ...
+# Subtest: Middleware sirve el bundle y rechaza escapar del directorio con publicPath sin barra final
+ok 13 - Middleware sirve el bundle y rechaza escapar del directorio con publicPath sin barra final
+  ---
+  duration_ms: 7557.8343
+  type: 'test'
+  ...
+# Subtest: glob: minimatch conserva API callable y nombrada con motor corregido
+ok 14 - glob: minimatch conserva API callable y nombrada con motor corregido
+  ---
+  duration_ms: 60.4733
+  type: 'test'
+  ...
+# Subtest: eslint: minimatch conserva API callable y nombrada con motor corregido
+ok 15 - eslint: minimatch conserva API callable y nombrada con motor corregido
+  ---
+  duration_ms: 14.3647
+  type: 'test'
+  ...
+# Subtest: filelist: minimatch conserva API callable y nombrada con motor corregido
+ok 16 - filelist: minimatch conserva API callable y nombrada con motor corregido
+  ---
+  duration_ms: 6.6224
+  type: 'test'
+  ...
+# Subtest: glob heredado conserva callbacks y API sync con patrones del motor corregido
+ok 17 - glob heredado conserva callbacks y API sync con patrones del motor corregido
+  ---
+  duration_ms: 94.5494
+  type: 'test'
+  ...
+# Subtest: glob de Capacitor admite API async y cancela antes de recorrer
+ok 18 - glob de Capacitor admite API async y cancela antes de recorrer
+  ---
+  duration_ms: 46.4324
+  type: 'test'
+  ...
+# Subtest: patrón de amplificación finaliza con límite externo de recursos
+ok 19 - patrón de amplificación finaliza con límite externo de recursos
+  ---
+  duration_ms: 212.9409
+  type: 'test'
+  ...
+# Subtest: jest-config: merge evita propiedades heredadas inyectadas con destino sin prototipo
+ok 20 - jest-config: merge evita propiedades heredadas inyectadas con destino sin prototipo
+  ---
+  duration_ms: 1.7895
+  type: 'test'
+  ...
+# Subtest: jest-config: merge evita propiedades heredadas inyectadas con placeholder null
+ok 21 - jest-config: merge evita propiedades heredadas inyectadas con placeholder null
+  ---
+  duration_ms: 0.4426
+  type: 'test'
+  ...
+# Subtest: jest-config: merge evita propiedades heredadas inyectadas con placeholder undefined
+ok 22 - jest-config: merge evita propiedades heredadas inyectadas con placeholder undefined
+  ---
+  duration_ms: 0.1961
+  type: 'test'
+  ...
+# Subtest: jest-config: merge evita propiedades heredadas inyectadas con clave propia en destino
+ok 23 - jest-config: merge evita propiedades heredadas inyectadas con clave propia en destino
+  ---
+  duration_ms: 0.1742
+  type: 'test'
+  ...
+# Subtest: jest-config: conserva clonación, arrays, símbolos y merge.all
+ok 24 - jest-config: conserva clonación, arrays, símbolos y merge.all
+  ---
+  duration_ms: 1.9433
+  type: 'test'
+  ...
+# Subtest: jest-config: conserva customMerge, arrayMerge y clone:false
+ok 25 - jest-config: conserva customMerge, arrayMerge y clone:false
+  ---
+  duration_ms: 0.5927
+  type: 'test'
+  ...
+# Subtest: @svgr/plugin-svgo: merge evita propiedades heredadas inyectadas con destino sin prototipo
+ok 26 - @svgr/plugin-svgo: merge evita propiedades heredadas inyectadas con destino sin prototipo
+  ---
+  duration_ms: 0.192
+  type: 'test'
+  ...
+# Subtest: @svgr/plugin-svgo: merge evita propiedades heredadas inyectadas con placeholder null
+ok 27 - @svgr/plugin-svgo: merge evita propiedades heredadas inyectadas con placeholder null
+  ---
+  duration_ms: 0.1126
+  type: 'test'
+  ...
+# Subtest: @svgr/plugin-svgo: merge evita propiedades heredadas inyectadas con placeholder undefined
+ok 28 - @svgr/plugin-svgo: merge evita propiedades heredadas inyectadas con placeholder undefined
+  ---
+  duration_ms: 0.1804
+  type: 'test'
+  ...
+# Subtest: @svgr/plugin-svgo: merge evita propiedades heredadas inyectadas con clave propia en destino
+ok 29 - @svgr/plugin-svgo: merge evita propiedades heredadas inyectadas con clave propia en destino
+  ---
+  duration_ms: 0.2625
+  type: 'test'
+  ...
+# Subtest: @svgr/plugin-svgo: conserva clonación, arrays, símbolos y merge.all
+ok 30 - @svgr/plugin-svgo: conserva clonación, arrays, símbolos y merge.all
+  ---
+  duration_ms: 1.4487
+  type: 'test'
+  ...
+# Subtest: @svgr/plugin-svgo: conserva customMerge, arrayMerge y clone:false
+ok 31 - @svgr/plugin-svgo: conserva customMerge, arrayMerge y clone:false
+  ---
+  duration_ms: 0.1527
+  type: 'test'
+  ...
+# Subtest: fork-ts-checker-webpack-plugin: merge evita propiedades heredadas inyectadas con destino sin prototipo
+ok 32 - fork-ts-checker-webpack-plugin: merge evita propiedades heredadas inyectadas con destino sin prototipo
+  ---
+  duration_ms: 0.1156
+  type: 'test'
+  ...
+# Subtest: fork-ts-checker-webpack-plugin: merge evita propiedades heredadas inyectadas con placeholder null
+ok 33 - fork-ts-checker-webpack-plugin: merge evita propiedades heredadas inyectadas con placeholder null
+  ---
+  duration_ms: 0.0758
+  type: 'test'
+  ...
+# Subtest: fork-ts-checker-webpack-plugin: merge evita propiedades heredadas inyectadas con placeholder undefined
+ok 34 - fork-ts-checker-webpack-plugin: merge evita propiedades heredadas inyectadas con placeholder undefined
+  ---
+  duration_ms: 0.0943
+  type: 'test'
+  ...
+# Subtest: fork-ts-checker-webpack-plugin: merge evita propiedades heredadas inyectadas con clave propia en destino
+ok 35 - fork-ts-checker-webpack-plugin: merge evita propiedades heredadas inyectadas con clave propia en destino
+  ---
+  duration_ms: 0.0953
+  type: 'test'
+  ...
+# Subtest: fork-ts-checker-webpack-plugin: conserva clonación, arrays, símbolos y merge.all
+ok 36 - fork-ts-checker-webpack-plugin: conserva clonación, arrays, símbolos y merge.all
+  ---
+  duration_ms: 0.1781
+  type: 'test'
+  ...
+# Subtest: fork-ts-checker-webpack-plugin: conserva customMerge, arrayMerge y clone:false
+ok 37 - fork-ts-checker-webpack-plugin: conserva customMerge, arrayMerge y clone:false
+  ---
+  duration_ms: 0.1173
+  type: 'test'
+  ...
+# Subtest: @rollup/plugin-node-resolve: merge evita propiedades heredadas inyectadas con destino sin prototipo
+ok 38 - @rollup/plugin-node-resolve: merge evita propiedades heredadas inyectadas con destino sin prototipo
+  ---
+  duration_ms: 0.1055
+  type: 'test'
+  ...
+# Subtest: @rollup/plugin-node-resolve: merge evita propiedades heredadas inyectadas con placeholder null
+ok 39 - @rollup/plugin-node-resolve: merge evita propiedades heredadas inyectadas con placeholder null
+  ---
+  duration_ms: 0.0838
+  type: 'test'
+  ...
+# Subtest: @rollup/plugin-node-resolve: merge evita propiedades heredadas inyectadas con placeholder undefined
+ok 40 - @rollup/plugin-node-resolve: merge evita propiedades heredadas inyectadas con placeholder undefined
+  ---
+  duration_ms: 0.0563
+  type: 'test'
+  ...
+# Subtest: @rollup/plugin-node-resolve: merge evita propiedades heredadas inyectadas con clave propia en destino
+ok 41 - @rollup/plugin-node-resolve: merge evita propiedades heredadas inyectadas con clave propia en destino
+  ---
+  duration_ms: 0.0489
+  type: 'test'
+  ...
+# Subtest: @rollup/plugin-node-resolve: conserva clonación, arrays, símbolos y merge.all
+ok 42 - @rollup/plugin-node-resolve: conserva clonación, arrays, símbolos y merge.all
+  ---
+  duration_ms: 0.1433
+  type: 'test'
+  ...
+# Subtest: @rollup/plugin-node-resolve: conserva customMerge, arrayMerge y clone:false
+ok 43 - @rollup/plugin-node-resolve: conserva customMerge, arrayMerge y clone:false
+  ---
+  duration_ms: 0.1005
+  type: 'test'
+  ...
+# Subtest: Deepmerge local conserva procedencia, licencia y digest del código revisado
+ok 44 - Deepmerge local conserva procedencia, licencia y digest del código revisado
+  ---
+  duration_ms: 101.8337
+  type: 'test'
+  ...
+# Subtest: css-minimizer-webpack-plugin: serialización escapa el cierre script al final de una función (GHSA-m5mm-p8h7-m29v)
+ok 45 - css-minimizer-webpack-plugin: serialización escapa el cierre script al final de una función (GHSA-m5mm-p8h7-m29v)
+  ---
+  duration_ms: 2.4697
+  type: 'test'
+  ...
+# Subtest: css-minimizer-webpack-plugin: conserva opciones y valores utilizados al serializar trabajo de compilación
+ok 46 - css-minimizer-webpack-plugin: conserva opciones y valores utilizados al serializar trabajo de compilación
+  ---
+  duration_ms: 68.5931
+  type: 'test'
+  ...
+# Subtest: terser-webpack-plugin: serialización escapa el cierre script al final de una función (GHSA-m5mm-p8h7-m29v)
+ok 47 - terser-webpack-plugin: serialización escapa el cierre script al final de una función (GHSA-m5mm-p8h7-m29v)
+  ---
+  duration_ms: 0.3411
+  type: 'test'
+  ...
+# Subtest: terser-webpack-plugin: conserva opciones y valores utilizados al serializar trabajo de compilación
+ok 48 - terser-webpack-plugin: conserva opciones y valores utilizados al serializar trabajo de compilación
+  ---
+  duration_ms: 26.1248
+  type: 'test'
+  ...
+# Subtest: rollup-plugin-terser: serialización escapa el cierre script al final de una función (GHSA-m5mm-p8h7-m29v)
+ok 49 - rollup-plugin-terser: serialización escapa el cierre script al final de una función (GHSA-m5mm-p8h7-m29v)
+  ---
+  duration_ms: 0.424
+  type: 'test'
+  ...
+# Subtest: rollup-plugin-terser: conserva opciones y valores utilizados al serializar trabajo de compilación
+ok 50 - rollup-plugin-terser: conserva opciones y valores utilizados al serializar trabajo de compilación
+  ---
+  duration_ms: 5.269
+  type: 'test'
+  ...
+# Subtest: Once del consumidor HTTP rechaza la espera abortada y retira sus listeners
+ok 51 - Once del consumidor HTTP rechaza la espera abortada y retira sus listeners
+  ---
+  duration_ms: 18.6607
+  type: 'test'
+  ...
+# Subtest: HTTP Proxy Agent mantiene una solicitud HTTP real sobre loopback con Once actualizado
+ok 52 - HTTP Proxy Agent mantiene una solicitud HTTP real sobre loopback con Once actualizado
+  ---
+  duration_ms: 132.3366
+  type: 'test'
+  ...
+# Subtest: HTTP Proxy Agent propaga el rechazo de conexión en lugar de dejar la petición pendiente
+ok 53 - HTTP Proxy Agent propaga el rechazo de conexión en lugar de dejar la petición pendiente
+  ---
+  duration_ms: 12.2417
+  type: 'test'
+  ...
+# Subtest: Dev server adapta opciones antiguas y restringe host/CORS sin mutar la configuración original
+ok 54 - Dev server adapta opciones antiguas y restringe host/CORS sin mutar la configuración original
+  ---
+  duration_ms: 3.4262
+  type: 'test'
+  ...
+# Subtest: Dev server conserva TLS explícito en la opción server actual
+ok 55 - Dev server conserva TLS explícito en la opción server actual
+  ---
+  duration_ms: 0.4113
+  type: 'test'
+  ...
+# Subtest: Dev server mantiene orden before, middleware normal y after en HTTP real
+ok 56 - Dev server mantiene orden before, middleware normal y after en HTTP real
+  ---
+  duration_ms: 693.9224
+  type: 'test'
+  ...
+# Subtest: Dev server conserva una función setupMiddlewares preexistente
+ok 57 - Dev server conserva una función setupMiddlewares preexistente
+  ---
+  duration_ms: 1.7684
+  type: 'test'
+  ...
+# Subtest: Dev server convierte mapas proxy y conserva arrays ya modernos
+ok 58 - Dev server convierte mapas proxy y conserva arrays ya modernos
+  ---
+  duration_ms: 0.4456
+  type: 'test'
+  ...
+# Subtest: Dev server rechaza un host público o comodín en el perfil local
+ok 59 - Dev server rechaza un host público o comodín en el perfil local
+  ---
+  duration_ms: 0.8167
+  type: 'test'
+  ...
+# Subtest: Compatibilidad CRA traduce close a stop y startCallback a start sin alterar API existentes
+ok 60 - Compatibilidad CRA traduce close a stop y startCallback a start sin alterar API existentes
+  ---
+  duration_ms: 0.4461
+  type: 'test'
+  ...
+# Subtest: Dev server preserva opciones modernas y elimina proxy ausente
+ok 61 - Dev server preserva opciones modernas y elimina proxy ausente
+  ---
+  duration_ms: 0.191
+  type: 'test'
+  ...
+# Subtest: CRA conserva módulos CommonJS del cliente HMR y permite su importación nominal
+ok 62 - CRA conserva módulos CommonJS del cliente HMR y permite su importación nominal
+  ---
+  duration_ms: 1729.1358
+  type: 'test'
+  ...
+# Subtest: missing production configuration blocks and names every required frontend field
+ok 63 - missing production configuration blocks and names every required frontend field
+  ---
+  duration_ms: 228.2652
+  type: 'test'
+  ...
+# Subtest: valid legacy anon and publishable frontend keys pass structure without leaking values
+ok 64 - valid legacy anon and publishable frontend keys pass structure without leaking values
+  ---
+  duration_ms: 334.5303
+  type: 'test'
+  ...
+# Subtest: elevated, malformed, expired and user-session keys cannot be frontend keys
+ok 65 - elevated, malformed, expired and user-session keys cannot be frontend keys
+  ---
+  duration_ms: 1501.7166
+  type: 'test'
+  ...
+# Subtest: private or unknown React build variables block even outside frontend profile
+ok 66 - private or unknown React build variables block even outside frontend profile
+  ---
+  duration_ms: 1139.5618
+  type: 'test'
+  ...
+# Subtest: production URLs reject credentials, local targets, paths, query and unencrypted origins
+ok 67 - production URLs reject credentials, local targets, paths, query and unencrypted origins
+  ---
+  duration_ms: 2671.0164
+  type: 'test'
+  ...
+# Subtest: template and empty PII configuration cannot pass production readiness
+ok 68 - template and empty PII configuration cannot pass production readiness
+  ---
+  duration_ms: 636.9067
+  type: 'test'
+  ...
+# Subtest: an existing shorter PII key remains structurally accepted without suggesting a rotation
+ok 69 - an existing shorter PII key remains structurally accepted without suggesting a rotation
+  ---
+  duration_ms: 213.8884
+  type: 'test'
+  ...
+# Subtest: backend checks required provider configuration and privileged key role without network
+ok 70 - backend checks required provider configuration and privileged key role without network
+  ---
+  duration_ms: 2214.4926
+  type: 'test'
+  ...
+# Subtest: debug log activation blocks a production build but explicit false is allowed
+ok 71 - debug log activation blocks a production build but explicit false is allowed
+  ---
+  duration_ms: 586.9555
+  type: 'test'
+  ...
+# Subtest: native requires frontend configuration, signing inputs and explicit production channel
+ok 72 - native requires frontend configuration, signing inputs and explicit production channel
+  ---
+  duration_ms: 522.4304
+  type: 'test'
+  ...
+# Subtest: native preserves established signing passwords rather than imposing an incompatible rotation
+ok 73 - native preserves established signing passwords rather than imposing an incompatible rotation
+  ---
+  duration_ms: 170.8691
+  type: 'test'
+  ...
+# Subtest: all profile rejects backend/frontend mismatch and legacy JWT project mismatch
+ok 74 - all profile rejects backend/frontend mismatch and legacy JWT project mismatch
+  ---
+  duration_ms: 583.1576
+  type: 'test'
+  ...
+# Subtest: default mode never authorizes deployment from structural success or supplied approval flags
+ok 75 - default mode never authorizes deployment from structural success or supplied approval flags
+  ---
+  duration_ms: 265.2663
+  type: 'test'
+  ...
+# Subtest: preflight does not discover dotenv files and never echoes parser exceptions
+ok 76 - preflight does not discover dotenv files and never echoes parser exceptions
+  ---
+  duration_ms: 179.5257
+  type: 'test'
+  ...
+1..76
+# tests 76
+# suites 0
+# pass 76
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 139362.0622
+

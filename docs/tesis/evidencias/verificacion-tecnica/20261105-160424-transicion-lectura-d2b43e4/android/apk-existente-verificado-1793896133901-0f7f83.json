@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-11-05T16:28:53.899Z",
+  "sourceCommit": "5f605512448f0683e8ddc52e197e42fa5d909868",
+  "sha256": "6d552150179f818bce9bc587a079f49413efa22a3dd990651498b9c29088303c",
+  "bytes": 31076464,
+  "currentBytesMatchReceipt": true,
+  "debug": true,
+  "signatureWasVerifiedAtBuild": true,
+  "newBuild": false,
+  "newNativeExecution": false,
+  "referenceEvidence": "../20261105-152944-notifications-cancel-e903a31/INFORME_VERIFICACION_TECNICA.md"
+}

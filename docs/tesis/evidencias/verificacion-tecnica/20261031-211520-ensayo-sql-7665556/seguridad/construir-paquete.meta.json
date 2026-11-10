@@ -1,0 +1,11 @@
+{
+  "command": [
+    "node",
+    "scripts/audit/production/sql-packet.cjs"
+  ],
+  "start": "2026-10-31T21:16:09.077Z",
+  "end": "2026-10-31T21:16:13.750Z",
+  "durationSeconds": 4.673,
+  "exitCode": 0,
+  "signal": null
+}

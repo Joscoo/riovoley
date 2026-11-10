@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/closure/browser-regression.cjs"
+  ],
+  "start": "2026-10-30T14:31:24.170Z",
+  "end": "2026-10-30T14:41:25.793Z",
+  "durationSeconds": 601.623,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

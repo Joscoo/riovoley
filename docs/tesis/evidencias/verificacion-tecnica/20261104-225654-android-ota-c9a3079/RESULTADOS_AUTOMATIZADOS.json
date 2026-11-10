@@ -1,0 +1,63 @@
+{
+  "recordedAt": "2026-11-05T15:02:03.710Z",
+  "baseCommit": "c9a3079cafdd97acb59ec952864e6fe976a9c223",
+  "build": {
+    "exitCode": 0,
+    "durationSeconds": 182.964,
+    "webSeconds": 21.013,
+    "syncSeconds": 9.284,
+    "gradleSeconds": 144.894
+  },
+  "apk": {
+    "sha256": "f10723fd77cc5a796b59a7fd530ad75a2ea45205167f2aee2fbb16a44fb55aae",
+    "bytes": 31076268,
+    "sourceCommit": "c9a3079cafdd97acb59ec952864e6fe976a9c223",
+    "debug": true,
+    "signatureVerified": true
+  },
+  "junit": {
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "cases": [
+      "addition_isCorrect"
+    ]
+  },
+  "guards": {
+    "tests": 13,
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0
+  },
+  "native": {
+    "planned": 14,
+    "executed": 14,
+    "passed": 14,
+    "failed": 0,
+    "notExecuted": 0,
+    "cleanupFailures": 0,
+    "otaUi": "APROBADO",
+    "emulatorStopped": true
+  },
+  "responses": {
+    "total": 296,
+    "http400OrMore": 2
+  },
+  "achievementReadProbes": {
+    "executed": 4,
+    "passed": 4,
+    "native401CauseAttributed": false
+  },
+  "priorStaticChecksFailed": 2,
+  "staticCheckCorrection": "La ausencia del literal OTA no es requisito de visibilidad; CRA con bandera omitida conserva texto protegido. Se mantiene la expectativa de ausencia del botón en WebView.",
+  "networkScope": {
+    "mainTableOnly": true,
+    "allPolicyTablesCertified": false,
+    "proxyForwardsNothing": true
+  },
+  "productionChanged": false,
+  "institutionalWrites": false,
+  "releaseSignedOrPublished": false,
+  "sourcesChanged": "Solo arnes y documentación; fuentes de producto sin cambios desde c9a3079."
+}

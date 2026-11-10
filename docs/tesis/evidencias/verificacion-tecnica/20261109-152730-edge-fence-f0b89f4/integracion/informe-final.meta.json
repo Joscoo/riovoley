@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/maintenance/edge-fence-report.cjs"
+  ],
+  "start": "2026-11-09T15:47:40.482Z",
+  "end": "2026-11-09T15:47:40.578Z",
+  "durationSeconds": 0.096,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

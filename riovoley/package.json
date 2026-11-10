@@ -9,10 +9,17 @@
     "node": "22"
   },
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "@riovoley/minimatch-engine": "npm:minimatch@11.0.3",
+    "minimatch": "file:../vendor/minimatch-compat"
+  },
   "devDependencies": {
     "eslint": "^8.15.0",
     "eslint-config-google": "^0.14.0"
   },
-  "private": true
+  "private": true,
+  "overrides": {
+    "minimatch": "$minimatch",
+    "glob@>=9.0.0 <14.0.2": "14.0.3"
+  }
 }

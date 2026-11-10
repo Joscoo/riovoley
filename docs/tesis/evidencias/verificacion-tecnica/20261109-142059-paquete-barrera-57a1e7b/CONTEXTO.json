@@ -1,0 +1,29 @@
+{
+  "createdAt": "2026-11-09T14:20:59.258Z",
+  "baseCommit": "57a1e7bc4c636f3d71b2b412544b19622dbbe84c",
+  "database": "riovoley_gatepacket_20261109142059_bb0d7d",
+  "sourceDatabase": "riovoley_release_20261031212707",
+  "evidence": "docs/tesis/evidencias/verificacion-tecnica/20261109-142059-paquete-barrera-57a1e7b",
+  "priorEvidence": "docs/tesis/evidencias/verificacion-tecnica/20261105-210719-paquete-barrera-57a1e7b",
+  "productionChanged": false,
+  "institutionalRowsCopied": 0,
+  "host": "127.0.0.1",
+  "port": 55322,
+  "osRelease": "10.0.26300",
+  "node": "v24.18.0",
+  "sourceFingerprint": "38434a2af96ad410967032b00a0828ac",
+  "sourceContent": {
+    "tables": 48,
+    "rows": 68,
+    "contentsSha256": "7b23c48c88a53a67233f3fcb12de5640f8c9d38c64a9c0833035a01c573dd356",
+    "sequences": 7,
+    "sequencesSha256": "678ef17c1ae0645785d63a13281911cd68c8bc71c655d13fef115f3b1dce8c5c"
+  },
+  "serverVersion": "17.11",
+  "source": "Previously marked synthetic catalog laboratory; no institutional restore used",
+  "institutionalRestoreUsed": false,
+  "institutionalRestoreContainerStatus": "Not rechecked by this setup command",
+  "cloneSourceModified": false,
+  "newInstitutionalBackup": false,
+  "archiveUnlocked": false
+}

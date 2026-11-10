@@ -1,0 +1,154 @@
+/* Identidad: tailwind.config.js y logotipos originales de public/images/. */
+:root {
+  --rv-gold: #ffd700;
+  --rv-dark: #0a0a0a;
+  --rv-blue: #1e3a8a;
+  --rv-paper: #ffffff;
+  --rv-ink: #172033;
+  --rv-muted: #475569;
+  --rv-line: #dbe2ed;
+}
+
+@page {
+  size: A4;
+  margin: 18mm 16mm 19mm;
+  @bottom-left {
+    content: "RIOVOLEY · Manual técnico · MT-RV-001";
+    font-family: Arial, sans-serif;
+    font-size: 8pt;
+    color: #475569;
+  }
+  @bottom-right {
+    content: counter(page);
+    font-family: Arial, sans-serif;
+    font-size: 8pt;
+    color: #475569;
+  }
+}
+
+* { box-sizing: border-box; }
+html { background: #eef2f7; }
+body {
+  max-width: 210mm;
+  margin: 28px auto;
+  padding: 18mm 16mm;
+  background: var(--rv-paper);
+  color: var(--rv-ink);
+  font: 10.5pt/1.55 "Segoe UI", Arial, sans-serif;
+  overflow-wrap: break-word;
+}
+body > :first-child { margin-top: 0; }
+h1, h2, h3, h4 {
+  line-height: 1.25;
+  color: var(--rv-blue);
+  break-after: avoid-page;
+  page-break-after: avoid;
+}
+h1 { font-size: 28pt; margin-top: 0; }
+h2 {
+  font-size: 18pt;
+  margin: 1.8em 0 0.75em;
+  padding-bottom: 0.35em;
+  border-bottom: 3px solid var(--rv-gold);
+}
+h3 { font-size: 12.5pt; margin-top: 1.5em; }
+h4 { font-size: 11pt; }
+p, li { orphans: 3; widows: 3; }
+a { color: var(--rv-blue); text-decoration: underline; text-underline-offset: 2px; }
+img { max-width: 100%; height: auto; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9pt;
+  line-height: 1.4;
+  margin: 1em 0 1.4em;
+}
+th, td {
+  padding: 7px 8px;
+  border: 1px solid var(--rv-line);
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+th { color: white; background: var(--rv-blue); font-weight: 700; }
+tbody tr:nth-child(even) { background: #f3f6fb; }
+tr { break-inside: avoid; page-break-inside: avoid; }
+thead { display: table-header-group; }
+code {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.88em;
+  background: #edf2fa;
+  padding: 0.12em 0.28em;
+  border-radius: 3px;
+  overflow-wrap: anywhere;
+}
+pre {
+  background: #f3f6fb;
+  border: 1px solid var(--rv-line);
+  border-left: 4px solid var(--rv-blue);
+  padding: 12px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 9pt;
+  line-height: 1.45;
+}
+pre code { padding: 0; background: transparent; font-size: inherit; }
+blockquote {
+  margin: 1.2em 0;
+  padding: 0.65em 1em;
+  border-left: 5px solid var(--rv-gold);
+  background: #fff9dc;
+  color: var(--rv-ink);
+}
+blockquote p { margin: 0.4em 0; }
+hr { border: 0; border-top: 1px solid var(--rv-line); margin: 1.8em 0; }
+.portada {
+  min-height: 238mm;
+  padding: 22mm 12mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, var(--rv-dark), var(--rv-blue));
+  color: white;
+  border-top: 8px solid var(--rv-gold);
+  border-bottom: 8px solid var(--rv-gold);
+  break-after: page;
+  page-break-after: always;
+}
+.portada .logo {
+  width: 82mm;
+  margin-bottom: 16mm;
+  background: white;
+  border-radius: 12px;
+  padding: 12px;
+}
+.portada .tipo {
+  color: var(--rv-gold);
+  text-transform: uppercase;
+  font-size: 10pt;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+.portada .titulo { color: white; font-size: 32pt; font-weight: 800; line-height: 1.15; margin: 10px 0; }
+.portada .subtitulo { color: #e2e8f0; font-size: 12pt; max-width: 120mm; }
+.portada .version { margin-top: 20mm; font-size: 10pt; color: #e2e8f0; }
+.marca-cierre { margin-top: 24px; border-top: 3px solid var(--rv-gold); padding-top: 14px; color: var(--rv-muted); }
+.marca-cierre img { width: 80px; vertical-align: middle; margin-right: 14px; }
+
+@media screen and (max-width: 800px) {
+  body { margin: 0; padding: 20px; }
+  .portada { min-height: 85vh; padding: 36px 20px; }
+  table { font-size: 8.5pt; }
+}
+
+@media print {
+  html, body { background: white; }
+  body { margin: 0; padding: 0; max-width: none; }
+  * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  h2 { margin-top: 1.25em; }
+  pre, blockquote { break-inside: avoid; page-break-inside: avoid; }
+  a { text-decoration: none; }
+  .portada { min-height: 250mm; }
+}

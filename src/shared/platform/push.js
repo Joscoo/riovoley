@@ -54,6 +54,9 @@ let latestToken = null;
 let currentPermission = 'prompt';
 let activeUserId = null;
 let currentAppIsActive = true;
+let registrationPromise = null;
+// Aceptación de register() por el puente; no confirma token ni entrega FCM.
+let registrationAccepted = false;
 
 const notifyRegistration = (token) => {
   latestToken = token;
@@ -201,14 +204,21 @@ export const initializePushForAuthenticatedUser = async (user) => {
   const permissionStatus = await PushNotifications.requestPermissions();
   currentPermission = permissionStatus.receive;
 
-  if (permissionStatus.receive !== 'granted') {
+  if (permissionStatus.receive !== 'granted' || activeUserId !== user.id) {
     return {
       permission: permissionStatus.receive,
       token: null,
     };
   }
 
-  await PushNotifications.register();
+  const pendingRegistration = PushNotifications.register();
+  registrationPromise = pendingRegistration;
+  try {
+    await pendingRegistration;
+    registrationAccepted = true;
+  } finally {
+    if (registrationPromise === pendingRegistration) registrationPromise = null;
+  }
 
   return {
     permission: permissionStatus.receive,
@@ -219,16 +229,27 @@ export const initializePushForAuthenticatedUser = async (user) => {
 export const teardownPushForAuthenticatedUser = async () => {
   activeUserId = null;
 
-  if (!isNativePlatform()) return;
+  if (!isNativePlatform()) {
+    latestToken = null;
+    return;
+  }
+
+  if (registrationPromise) {
+    try { await registrationPromise; } catch { /* El registro fallido no se cancela en nativo. */ }
+  }
+  // Una nueva sesión puede haberse iniciado mientras terminaba el registro anterior.
+  if (activeUserId !== null) return;
+  latestToken = null;
+  if (!registrationAccepted) return;
+  registrationAccepted = false;
 
   try {
     await PushNotifications.unregister();
   } catch (error) {
+    registrationAccepted = true;
     // eslint-disable-next-line no-console
     console.error('Error unregistering push notifications:', error);
   }
-
-  latestToken = null;
 };
 
 export const subscribeToPushRegistration = (subscriber) => {

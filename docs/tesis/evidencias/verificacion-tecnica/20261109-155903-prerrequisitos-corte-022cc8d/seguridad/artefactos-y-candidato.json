@@ -1,0 +1,103 @@
+{
+  "at": "2026-11-09T16:04:12.985Z",
+  "sql": [
+    {
+      "file": "database/security/production-proposal/20261031211612_riovoley_security_production_proposal.sql",
+      "sha256": "c61f457792f684d22dd3c8ffafcd1b4280dfefafdd66da382943f44347322fb6",
+      "matchesPrior": true
+    },
+    {
+      "file": "database/security/production-proposal/20261031211612_riovoley_security_return_proposal.sql",
+      "sha256": "c27856e19b750e9f430c57cbb736fff3138bc23197564a7816c367664ff928b3",
+      "matchesPrior": true
+    },
+    {
+      "file": "database/security/production-proposal/20261101013935_reporting_service_grants_proposal.sql",
+      "sha256": "4c6c9fb9771751b1e0f15920faab664a9400c8f8b39b7288db97e7fdf0ad0d0d",
+      "matchesPrior": true
+    },
+    {
+      "file": "database/security/production-proposal/20261101013935_reporting_service_return_proposal.sql",
+      "sha256": "5c0904bdd90d93a8d8def5ef780aef5a0a1a44570ab9ed54db78213e599bf333",
+      "matchesPrior": true
+    }
+  ],
+  "candidateEvidence": "docs/tesis/evidencias/verificacion-tecnica/20261109-152730-edge-fence-f0b89f4/seguridad/candidato-fuentes-corregido.json",
+  "candidateFiles": 39,
+  "candidateAllMatch": true,
+  "repositorySourceFiles": 28,
+  "previousGeneratedConfigs": 11,
+  "changedFromPriorCandidate": [
+    "supabase/functions/sync-mobile-device/index.ts"
+  ],
+  "edgeReturnMetadataAllMatch": true,
+  "returnFilesMatching": 51,
+  "functions": [
+    {
+      "function": "send-email",
+      "cloudVersion": 20,
+      "bundleHash": "9c097c7f94aac8f2399560ebfd184f8f017c082650375ed777a3f05fc46fe909",
+      "previousBundleHash": "9c097c7f94aac8f2399560ebfd184f8f017c082650375ed777a3f05fc46fe909",
+      "privateReturnFilesMatching": 9
+    },
+    {
+      "function": "update-user-password",
+      "cloudVersion": 21,
+      "bundleHash": "34eedb50281c26d6aec8ef04d7556d3136cb909a2f9eb3f86f773415c1d64649",
+      "previousBundleHash": "34eedb50281c26d6aec8ef04d7556d3136cb909a2f9eb3f86f773415c1d64649",
+      "privateReturnFilesMatching": 7
+    },
+    {
+      "function": "delete-auth-user",
+      "cloudVersion": 6,
+      "bundleHash": "a48f507f4b7ae1ccda5ac36ec939ed9dcdf047eaf5174697449fd5a1aedacc49",
+      "previousBundleHash": "a48f507f4b7ae1ccda5ac36ec939ed9dcdf047eaf5174697449fd5a1aedacc49",
+      "privateReturnFilesMatching": 1
+    },
+    {
+      "function": "generate-report",
+      "cloudVersion": 11,
+      "bundleHash": "9aae62ae304649cd52f9be8aa62d9bffd9b2c42046d7da014fca8ea371dd4a9d",
+      "previousBundleHash": "9aae62ae304649cd52f9be8aa62d9bffd9b2c42046d7da014fca8ea371dd4a9d",
+      "privateReturnFilesMatching": 7
+    },
+    {
+      "function": "generate-scheduled-reports",
+      "cloudVersion": 11,
+      "bundleHash": "b640a0903625eb195d26cbc6043940340615b1aa5a56414ff4c1bc1726d6f480",
+      "previousBundleHash": "b640a0903625eb195d26cbc6043940340615b1aa5a56414ff4c1bc1726d6f480",
+      "privateReturnFilesMatching": 7
+    },
+    {
+      "function": "delete-report-run",
+      "cloudVersion": 7,
+      "bundleHash": "d30e4a2b5c8f3ba2cda9a15345289129ae2b94ab4432f1fe4c36c93ac87cfe40",
+      "previousBundleHash": "d30e4a2b5c8f3ba2cda9a15345289129ae2b94ab4432f1fe4c36c93ac87cfe40",
+      "privateReturnFilesMatching": 7
+    },
+    {
+      "function": "sync-mobile-device",
+      "cloudVersion": 9,
+      "bundleHash": "39b175f5e2762166ae0a18c4324025c09b496302f27c86e412bc5f0d1f7cd536",
+      "previousBundleHash": "39b175f5e2762166ae0a18c4324025c09b496302f27c86e412bc5f0d1f7cd536",
+      "privateReturnFilesMatching": 4
+    },
+    {
+      "function": "send-push",
+      "cloudVersion": 15,
+      "bundleHash": "4352841040d00df16572b8c0d20a22c2564f81d266760e306da2e53c16b51fbd",
+      "previousBundleHash": "4352841040d00df16572b8c0d20a22c2564f81d266760e306da2e53c16b51fbd",
+      "privateReturnFilesMatching": 5
+    },
+    {
+      "function": "send-payment-reminders",
+      "cloudVersion": 10,
+      "bundleHash": "6f899b18d9ab91b767e08e9ee58dd0506359a6c8a45287160825e9283c8b8605",
+      "previousBundleHash": "6f899b18d9ab91b767e08e9ee58dd0506359a6c8a45287160825e9283c8b8605",
+      "privateReturnFilesMatching": 4
+    }
+  ],
+  "cloudBytesDownloadedAgain": false,
+  "cloudReturnExecuted": false,
+  "productionChanged": false
+}

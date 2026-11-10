@@ -1,0 +1,19 @@
+{
+  "command": [
+    "docker",
+    "exec",
+    "-i",
+    "supabase_db_riovoley-e2e-local",
+    "pg_restore",
+    "-U",
+    "postgres",
+    "--exit-on-error",
+    "--dbname=riovoley_restore_20261101015527"
+  ],
+  "start": "2026-11-01T01:55:27.951Z",
+  "end": "2026-11-01T01:55:28.479Z",
+  "durationSeconds": 0.528,
+  "exitCode": 1,
+  "stdoutBytes": 0,
+  "rawOutputPrivate": true
+}

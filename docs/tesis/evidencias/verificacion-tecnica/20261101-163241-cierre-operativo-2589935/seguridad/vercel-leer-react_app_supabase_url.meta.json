@@ -1,0 +1,9 @@
+{
+  "method": "GET",
+  "endpoint": "/v1/projects/prj_gnsNVKcXC8jvN0UcassXy4lZ0ZfN/env/yXfFdx12f5ohMlSd",
+  "startedAt": "2026-11-01T16:37:53.686Z",
+  "finishedAt": "2026-11-01T16:37:54.749Z",
+  "durationSeconds": 1.063,
+  "exitCode": 0,
+  "rawResponseSaved": false
+}

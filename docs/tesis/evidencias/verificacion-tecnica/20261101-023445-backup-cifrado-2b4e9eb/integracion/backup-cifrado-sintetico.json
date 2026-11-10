@@ -1,0 +1,18 @@
+{
+  "onlySynthetic": true,
+  "sourceDatabase": "riovoley_release_20261031212707",
+  "archiveBytes": 53183,
+  "sha256": "a0e131c6969b766b9e0d72926ee06f86940566a1bdc1c5212a83ceacd4982f75",
+  "recipientFingerprint": "B3854A718A82C6449D7494686EEF3EF22ECD8A9C",
+  "dumpExitCode": 0,
+  "encryptionExitCode": 0,
+  "originalArchiveVerified": true,
+  "exportedRecoveryKeyVerified": true,
+  "corruptionRejected": true,
+  "tocEntries": 877,
+  "tocSha256": "7e62b8febdbd7ba94d8fc986c8b2c557d07d70b3da938239c8bc2a3428655fff",
+  "recoveryKeySha256": "d45650f5af32b0d85151e43ad84c06620e0599b5e42084972dda50c668b1dd81",
+  "rawDumpWritten": false,
+  "plaintextRowDataPublished": false,
+  "institutionalBackupPerformed": false
+}

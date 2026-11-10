@@ -1,0 +1,16 @@
+{
+  "startedAt": "2026-11-04T21:34:35.529Z",
+  "status": "PREPARING",
+  "physicalDeviceUsed": false,
+  "loginPerformed": false,
+  "institutionalBusinessFlowsExecuted": false,
+  "artifactDistributed": false,
+  "resumedOwnedAuditAvd": false,
+  "hostGpuProfile": true,
+  "mobileDisableExitCode": 20,
+  "activityManagerWaitStatus": "ok",
+  "emulatorStopExitCode": 0,
+  "failedAt": "2026-11-04T21:38:31.298Z",
+  "stage": "ANDROID_UI_ANR_BLOCKS_VISUAL_SMOKE",
+  "rawDiagnosticsPublished": false
+}

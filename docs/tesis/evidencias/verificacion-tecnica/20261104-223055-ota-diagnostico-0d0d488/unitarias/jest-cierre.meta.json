@@ -1,0 +1,22 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--require",
+    "./scripts/production/cra-release-preload.cjs",
+    "node_modules/react-scripts/bin/react-scripts.js",
+    "test",
+    "--watchAll=false",
+    "--runInBand",
+    "--coverage",
+    "--coverageReporters=json-summary",
+    "--coverageDirectory=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261104-223055-ota-diagnostico-0d0d488\\unitarias\\cobertura-cierre",
+    "--json",
+    "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261104-223055-ota-diagnostico-0d0d488\\unitarias\\jest-cierre.json"
+  ],
+  "start": "2026-11-04T22:37:29.428Z",
+  "end": "2026-11-04T22:38:21.109Z",
+  "durationSeconds": 51.681,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

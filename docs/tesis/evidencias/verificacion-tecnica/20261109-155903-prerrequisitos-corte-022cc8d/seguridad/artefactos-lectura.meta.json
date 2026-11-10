@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/refresh-cutover.cjs",
+    "artifacts"
+  ],
+  "start": "2026-11-09T16:03:45.785Z",
+  "end": "2026-11-09T16:03:45.941Z",
+  "durationSeconds": 0.156,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

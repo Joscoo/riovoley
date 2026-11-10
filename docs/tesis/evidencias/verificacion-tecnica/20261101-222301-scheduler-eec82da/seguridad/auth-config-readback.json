@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-11-01T22:30:15.557Z",
+  "source": "CLI config pull --dry-run; solo valores remotos explicitos, sin escritura local/remota",
+  "authConfigReadbackAvailable": true,
+  "siteUrlMatchesOfficial": true,
+  "webResetAllowed": true,
+  "nativeRedirectAllowed": true,
+  "reportedRedirectCount": 8,
+  "loginOrSmtpFlowExecuted": false,
+  "localConfigUnchanged": true,
+  "credentialsOrServerDetailsPublished": false
+}

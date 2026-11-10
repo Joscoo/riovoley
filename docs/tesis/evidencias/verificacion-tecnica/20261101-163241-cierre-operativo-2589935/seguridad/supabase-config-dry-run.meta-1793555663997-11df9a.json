@@ -1,0 +1,19 @@
+{
+  "command": [
+    "supabase",
+    "config",
+    "pull",
+    "--project-ref",
+    "mayvvlkvheagkojunzzb",
+    "--remote-label",
+    "riovoley_audit_readonly",
+    "--dry-run",
+    "--output-format",
+    "json"
+  ],
+  "startedAt": "2026-11-01T17:54:22.066Z",
+  "finishedAt": "2026-11-01T17:54:23.995Z",
+  "exitCode": 0,
+  "rawOutputSaved": false,
+  "secretValuesOrDigestsPublished": false
+}

@@ -1,0 +1,13 @@
+{
+  "command": [
+    "node",
+    "--test",
+    "--test-reporter=tap",
+    "tests/integration/production-sql.local.test.cjs"
+  ],
+  "start": "2026-10-31T21:25:23.084Z",
+  "end": "2026-10-31T21:25:25.001Z",
+  "durationSeconds": 1.917,
+  "exitCode": 1,
+  "signal": null
+}

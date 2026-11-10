@@ -41,6 +41,13 @@ const NOTIFICATION_CATEGORY = {
 
 const buildBellNotificationId = (prefix, suffix) => `${prefix}-${suffix}`;
 
+const ensureNotificationLoadActive = (signal) => {
+  if (!signal?.aborted) return;
+  const error = new Error('Carga de notificaciones cancelada');
+  error.name = 'AbortError';
+  throw error;
+};
+
 const normalizeBellNotification = (notification, inboxStateMap) => {
   const state = inboxStateMap.get(notification.id);
 
@@ -55,20 +62,25 @@ const normalizeBellNotification = (notification, inboxStateMap) => {
 
 export const createNotificationsUseCases = (repository) => {
   const buildPaymentsBaseUseCase = {
-    execute: async () => {
+    execute: async ({ signal } = {}) => {
+      ensureNotificationLoadActive(signal);
       const pagos = await repository.listPaymentsForNotifications();
+      ensureNotificationLoadActive(signal);
       const ultimosPagos = getLatestPaymentsList(pagos || []);
       const studentIds = ultimosPagos.map((pago) => pago.student_id).filter(Boolean);
       const estudiantes = await repository.listStudentsByIds(studentIds);
+      ensureNotificationLoadActive(signal);
       const estudiantesMap = new Map((estudiantes || []).map((est) => [est.id, est]));
       return { ultimosPagos, estudiantesMap };
     },
   };
 
   const loadBellNotificationsUseCase = {
-    execute: async ({ userId } = {}) => {
+    execute: async ({ userId, signal } = {}) => {
+      ensureNotificationLoadActive(signal);
       const hoy = getEcuadorDate();
-      const { ultimosPagos, estudiantesMap } = await buildPaymentsBaseUseCase.execute();
+      const { ultimosPagos, estudiantesMap } = await buildPaymentsBaseUseCase.execute({ signal });
+      ensureNotificationLoadActive(signal);
       const notificacionesPagos = [];
 
       for (const pago of ultimosPagos) {
@@ -96,6 +108,7 @@ export const createNotificationsUseCases = (repository) => {
       const fecha7DiasAtras = hace7Dias.toISOString().split('T')[0];
 
       const anuncios = await repository.listRecentActiveAnnouncements(fecha7DiasAtras);
+      ensureNotificationLoadActive(signal);
       const notifAnuncios = (anuncios || []).map((anuncio) => ({
         id: buildBellNotificationId('anuncio', anuncio.id),
         tipo_notificacion: 'anuncio',
@@ -110,10 +123,12 @@ export const createNotificationsUseCases = (repository) => {
       const gamificationAchievements = repository.listRecentGamificationAchievements
         ? await repository.listRecentGamificationAchievements(fecha7DiasAtras)
         : [];
+      ensureNotificationLoadActive(signal);
       const achievementStudentIds = gamificationAchievements.map((achievement) => achievement.student_id).filter(Boolean);
       const studentsForAchievements = achievementStudentIds.length > 0
         ? await repository.listStudentsByIds(achievementStudentIds)
         : [];
+      ensureNotificationLoadActive(signal);
       const achievementStudentsMap = new Map((studentsForAchievements || []).map((student) => [student.id, student]));
       const notifGamification = gamificationAchievements
         .map((achievement) => {
@@ -137,6 +152,7 @@ export const createNotificationsUseCases = (repository) => {
       const inboxStates = userId && repository.listNotificationInboxState
         ? await repository.listNotificationInboxState(userId, todasNotificaciones.map((notification) => notification.id))
         : [];
+      ensureNotificationLoadActive(signal);
       const inboxStateMap = new Map((inboxStates || []).map((entry) => [entry.notification_key, entry]));
 
       return todasNotificaciones

@@ -1,0 +1,153 @@
+TAP version 13
+# node:internal/modules/cjs/loader:1517
+#   const err = new Error(message);
+#               ^
+# Error: Cannot find module '../../supabase/functions/_shared/relations.ts'
+# Require stack:
+# - D:\\Riovoley\\riovoley\\tests\\unit\\edge-relations.test.ts
+#     at node:internal/modules/cjs/loader:1517:15
+#     at nextResolveSimple (D:\\Riovoley\\riovoley\\functions\\node_modules\\tsx\\dist\\register-D46fvsV_.cjs:4:1004)
+#     at D:\\Riovoley\\riovoley\\functions\\node_modules\\tsx\\dist\\register-D46fvsV_.cjs:3:2630
+#     at D:\\Riovoley\\riovoley\\functions\\node_modules\\tsx\\dist\\register-D46fvsV_.cjs:3:1542
+#     at resolveTsPaths (D:\\Riovoley\\riovoley\\functions\\node_modules\\tsx\\dist\\register-D46fvsV_.cjs:4:760)
+#     at D:\\Riovoley\\riovoley\\functions\\node_modules\\tsx\\dist\\register-D46fvsV_.cjs:4:1102
+#     at m._resolveFilename (file:///D:/Riovoley/riovoley/functions/node_modules/tsx/dist/register-B7jrtLTO.mjs:1:789)
+#     at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+#     at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+#     at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12) {
+#   code: 'MODULE_NOT_FOUND',
+#   requireStack: [ 'D:\\\\Riovoley\\\\riovoley\\\\tests\\\\unit\\\\edge-relations.test.ts' ]
+# }
+# Node.js v24.18.0
+# Subtest: tests\\unit\\edge-relations.test.ts
+not ok 1 - tests\\unit\\edge-relations.test.ts
+  ---
+  duration_ms: 978.2548
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\edge-relations.test.ts:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: recordatorios sin secreto configurado se bloquean antes de consultar datos
+not ok 2 - recordatorios sin secreto configurado se bloquean antes de consultar datos
+  ---
+  duration_ms: 278.0672
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\payment-reminders-edge.test.cjs:11:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    500 !== 503
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 503
+  actual: 500
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\payment-reminders-edge.test.cjs:12:99)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)
+  ...
+# Subtest: recordatorios con secreto incorrecto devuelven403 sin consultas
+ok 3 - recordatorios con secreto incorrecto devuelven403 sin consultas
+  ---
+  duration_ms: 38.249
+  type: 'test'
+  ...
+# Subtest: reportes rechazan personal suspendido antes de operar con service_role
+not ok 4 - reportes rechazan personal suspendido antes de operar con service_role
+  ---
+  duration_ms: 295.4248
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\reporting-edge.test.cjs:13:1'
+  failureType: 'testCodeFailure'
+  error: '(0 , pdf_lib_1_17_1_1.rgb) is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    evalmachine.<anonymous>:542:36
+    load (D:\Riovoley\riovoley\tests\unit\reporting-edge.test.cjs:10:172)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\reporting-edge.test.cjs:14:22)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.start (node:internal/test_runner/test:1191:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17)
+  ...
+# Subtest: reportes conservan autorización de personal activo: administrador
+not ok 5 - reportes conservan autorización de personal activo: administrador
+  ---
+  duration_ms: 238.1716
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\reporting-edge.test.cjs:17:50'
+  failureType: 'testCodeFailure'
+  error: '(0 , pdf_lib_1_17_1_1.rgb) is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    evalmachine.<anonymous>:542:36
+    load (D:\Riovoley\riovoley\tests\unit\reporting-edge.test.cjs:10:172)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\reporting-edge.test.cjs:18:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)
+  ...
+# Subtest: reportes conservan autorización de personal activo: entrenador
+not ok 6 - reportes conservan autorización de personal activo: entrenador
+  ---
+  duration_ms: 113.4929
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\reporting-edge.test.cjs:17:50'
+  failureType: 'testCodeFailure'
+  error: '(0 , pdf_lib_1_17_1_1.rgb) is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    evalmachine.<anonymous>:542:36
+    load (D:\Riovoley\riovoley\tests\unit\reporting-edge.test.cjs:10:172)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\reporting-edge.test.cjs:18:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: checksum SHA256 usa los bytes de la subvista, sin prefijo ni sufijo
+not ok 7 - checksum SHA256 usa los bytes de la subvista, sin prefijo ni sufijo
+  ---
+  duration_ms: 89.0749
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\reporting-edge.test.cjs:20:1'
+  failureType: 'testCodeFailure'
+  error: '(0 , pdf_lib_1_17_1_1.rgb) is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    evalmachine.<anonymous>:542:36
+    load (D:\Riovoley\riovoley\tests\unit\reporting-edge.test.cjs:10:172)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\reporting-edge.test.cjs:21:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 1
+# fail 6
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2079.3925
+

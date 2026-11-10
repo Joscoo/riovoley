@@ -147,3 +147,17 @@ test('G17: correo de recuperación se entrega en SMTP/Mailpit local sin cambiar 
   assert.equal(found,true,'El correo debe existir en el sumidero SMTP local');
   h.write('integracion/correo-local.json',{provider:'Supabase Auth → SMTP Mailpit local',delivered:true,passwordChanged:false,externalResendOrFcmValidated:false});
 });
+
+test('G18: clasificación de categoría conserva posiciones, orden y filtro reales',async()=>{
+  await sign(local.accounts.admin);await game.refreshStudentProgress({studentId:f.student.id});
+  const snapshots=ok(await admin.from('gamification_leaderboard_snapshots').select('*').eq('categoria',f.student.categoria).eq('snapshot_date',today).order('rank_position'));
+  const board=await game.getCategoryLeaderboard({category:f.student.categoria,limit:999,leaderboardType:'overall'});
+  assert.ok(snapshots.length>=2);assert.equal(snapshots.length,board.length);assert.ok(snapshots.some(r=>r.student_id===f.student.id));
+  for(let i=0;i<snapshots.length;i++){
+    const row=snapshots[i];assert.equal(row.categoria,f.student.categoria);assert.equal(row.rank_position,i+1);
+    assert.equal(board[i].studentId,row.student_id);assert.equal(board[i].score,row.score);assert.equal(board[i].rankPosition,row.rank_position);
+    if(i){const prev=snapshots[i-1];assert.ok(prev.score>=row.score);if(prev.score===row.score){assert.ok(prev.current_level>=row.current_level);if(prev.current_level===row.current_level)assert.ok(prev.student_id.localeCompare(row.student_id)<0);}}
+  }
+  assert.deepEqual(await game.getCategoryLeaderboard({category:'categoria_inexistente_seguridad',limit:999}),[]);
+  h.write('integracion/ranking-categoria.json',{category:f.student.categoria,participants:snapshots.length,consecutivePositions:true,descendingScores:true,tiesChecked:true,apiMatchesPersistedSnapshot:true,unknownCategoryEmpty:true,scope:'Categoría del fixture y ranking overall, sin extrapolar a todas las categorías o métricas.'});
+});

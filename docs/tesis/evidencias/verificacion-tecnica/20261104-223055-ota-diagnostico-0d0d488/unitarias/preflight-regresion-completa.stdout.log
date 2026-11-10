@@ -1,0 +1,119 @@
+TAP version 13
+# Subtest: preflight rechaza el diagnostico OTA activado para produccion
+ok 1 - preflight rechaza el diagnostico OTA activado para produccion
+  ---
+  duration_ms: 118.9831
+  type: 'test'
+  ...
+# Subtest: preflight reconoce false sin clasificarlo como variable publica desconocida
+ok 2 - preflight reconoce false sin clasificarlo como variable publica desconocida
+  ---
+  duration_ms: 83.2243
+  type: 'test'
+  ...
+# Subtest: preflight no acepta activaciones ambiguas o valores no booleanos
+ok 3 - preflight no acepta activaciones ambiguas o valores no booleanos
+  ---
+  duration_ms: 325.0415
+  type: 'test'
+  ...
+# Subtest: el control aplica a native y all aunque falten otras entradas
+ok 4 - el control aplica a native y all aunque falten otras entradas
+  ---
+  duration_ms: 9.6989
+  type: 'test'
+  ...
+# Subtest: missing production configuration blocks and names every required frontend field
+ok 5 - missing production configuration blocks and names every required frontend field
+  ---
+  duration_ms: 107.2268
+  type: 'test'
+  ...
+# Subtest: valid legacy anon and publishable frontend keys pass structure without leaking values
+ok 6 - valid legacy anon and publishable frontend keys pass structure without leaking values
+  ---
+  duration_ms: 152.9107
+  type: 'test'
+  ...
+# Subtest: elevated, malformed, expired and user-session keys cannot be frontend keys
+ok 7 - elevated, malformed, expired and user-session keys cannot be frontend keys
+  ---
+  duration_ms: 457.905
+  type: 'test'
+  ...
+# Subtest: private or unknown React build variables block even outside frontend profile
+ok 8 - private or unknown React build variables block even outside frontend profile
+  ---
+  duration_ms: 282.4311
+  type: 'test'
+  ...
+# Subtest: production URLs reject credentials, local targets, paths, query and unencrypted origins
+ok 9 - production URLs reject credentials, local targets, paths, query and unencrypted origins
+  ---
+  duration_ms: 719.753
+  type: 'test'
+  ...
+# Subtest: template and empty PII configuration cannot pass production readiness
+ok 10 - template and empty PII configuration cannot pass production readiness
+  ---
+  duration_ms: 231.2381
+  type: 'test'
+  ...
+# Subtest: an existing shorter PII key remains structurally accepted without suggesting a rotation
+ok 11 - an existing shorter PII key remains structurally accepted without suggesting a rotation
+  ---
+  duration_ms: 87.4685
+  type: 'test'
+  ...
+# Subtest: backend checks required provider configuration and privileged key role without network
+ok 12 - backend checks required provider configuration and privileged key role without network
+  ---
+  duration_ms: 801.8192
+  type: 'test'
+  ...
+# Subtest: debug log activation blocks a production build but explicit false is allowed
+ok 13 - debug log activation blocks a production build but explicit false is allowed
+  ---
+  duration_ms: 295.1807
+  type: 'test'
+  ...
+# Subtest: native requires frontend configuration, signing inputs and explicit production channel
+ok 14 - native requires frontend configuration, signing inputs and explicit production channel
+  ---
+  duration_ms: 310.0609
+  type: 'test'
+  ...
+# Subtest: native preserves established signing passwords rather than imposing an incompatible rotation
+ok 15 - native preserves established signing passwords rather than imposing an incompatible rotation
+  ---
+  duration_ms: 72.5636
+  type: 'test'
+  ...
+# Subtest: all profile rejects backend/frontend mismatch and legacy JWT project mismatch
+ok 16 - all profile rejects backend/frontend mismatch and legacy JWT project mismatch
+  ---
+  duration_ms: 221.8634
+  type: 'test'
+  ...
+# Subtest: default mode never authorizes deployment from structural success or supplied approval flags
+ok 17 - default mode never authorizes deployment from structural success or supplied approval flags
+  ---
+  duration_ms: 143.1966
+  type: 'test'
+  ...
+# Subtest: preflight does not discover dotenv files and never echoes parser exceptions
+ok 18 - preflight does not discover dotenv files and never echoes parser exceptions
+  ---
+  duration_ms: 91.8639
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4179.0302
+

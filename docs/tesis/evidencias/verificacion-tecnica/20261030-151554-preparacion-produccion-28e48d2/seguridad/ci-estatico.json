@@ -1,0 +1,19 @@
+{
+  "parsed": true,
+  "permissions": {
+    "contents": "read"
+  },
+  "runtimes": [
+    "22",
+    "24"
+  ],
+  "dotenvQuarantined": true,
+  "credentialContextReferenced": false,
+  "deploymentCommandsPresent": false,
+  "actionsPinnedToObservedV7Sha": true,
+  "remoteCiExecuted": false,
+  "sources": [
+    "https://github.com/actions/checkout",
+    "https://github.com/actions/setup-node"
+  ]
+}

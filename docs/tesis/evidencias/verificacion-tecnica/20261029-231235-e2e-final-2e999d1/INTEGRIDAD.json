@@ -1,0 +1,107 @@
+{
+  "generatedAt": "2026-10-30T14:08:25.392Z",
+  "passed": 10,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Ocho expedientes anteriores intactos",
+      "state": "APROBADO",
+      "details": {
+        "manifests": 8,
+        "entries": 5128
+      }
+    },
+    {
+      "name": "Matriz final de 249 instancias únicas, sin fallos ni reintentos automáticos",
+      "state": "APROBADO",
+      "details": {
+        "executed": 249,
+        "passed": 249,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "name": "Fallo original y repetición manual diferenciados",
+      "state": "APROBADO",
+      "details": {
+        "originalPanelCases": 105,
+        "originalFailures": 1,
+        "manualPanelRepetitions": 2,
+        "repeatedPanelCases": 210,
+        "completedInvocations": 459,
+        "passed": 451,
+        "failed": 8,
+        "interruptedAttemptWithoutFinalResult": true
+      }
+    },
+    {
+      "name": "Mocks identificados y denominadores separados",
+      "state": "APROBADO",
+      "details": {
+        "mockRecovery": 28,
+        "realLocalMutationFlows": 7,
+        "harnessNodeTests": 8
+      }
+    },
+    {
+      "name": "Persistencia corroborada mediante PostgreSQL READ ONLY",
+      "state": "APROBADO",
+      "details": {
+        "readOnly": true,
+        "counts": {
+          "students": 7,
+          "payments": 7,
+          "paymentswithexpectedamount": 7,
+          "attendances": 7
+        },
+        "additionalPlaywrightCases": 0
+      }
+    },
+    {
+      "name": "Fuentes de aplicación del commit evaluado sin cambios",
+      "state": "APROBADO",
+      "details": {
+        "checked": 483,
+        "applicationAndLockfilesUnchanged": true,
+        "documentedHarnessAndTestChanges": [
+          "scripts/e2e/local/functions.cjs",
+          "tests/e2e/filters-sorting.tables.spec.js"
+        ]
+      }
+    },
+    {
+      "name": "Bundle nuevo local con la corrección push actual",
+      "state": "APROBADO",
+      "details": {
+        "buildName": "web-build-1793315584461",
+        "matchingPushSourceMaps": 1
+      }
+    },
+    {
+      "name": "Entorno real local verificado y sin cambios institucionales",
+      "state": "APROBADO",
+      "details": {
+        "localOnly": true,
+        "edgePreflight": 200
+      }
+    },
+    {
+      "name": "Documentos y ocho categorías con enlaces válidos",
+      "state": "APROBADO",
+      "details": {
+        "documents": 3,
+        "categories": 8
+      }
+    },
+    {
+      "name": "Privacidad del texto y archivos ZIP internos de HTML",
+      "state": "APROBADO",
+      "details": {
+        "textFiles": 163,
+        "archives": 6
+      }
+    }
+  ]
+}

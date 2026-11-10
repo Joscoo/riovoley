@@ -1,0 +1,43 @@
+{
+  "baseCommit": "2b4e9ebf0f114d15065e689199042054ce625b1d",
+  "createdAt": "2026-11-01T02:34:45.433Z",
+  "unit": {
+    "tests": 10,
+    "pass": 10,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 112.3678
+  },
+  "syntheticEncryptedFlow": {
+    "executed": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "checks": 8,
+    "rsaBits": 3072,
+    "archiveBytes": 53308,
+    "tocEntries": 877
+  },
+  "tls": {
+    "executed": 1,
+    "passed": 1,
+    "authenticated": false
+  },
+  "assistantStaticCheck": {
+    "executed": 1,
+    "passed": 1,
+    "hiddenInputs": 3
+  },
+  "institutionalBackup": {
+    "status": "BLOQUEADO",
+    "reason": "Entrada local pendiente de contraseña actual y nueva frase de recuperación; no enviarlas por chat"
+  },
+  "isolatedInstitutionalRestore": {
+    "status": "NO EJECUTADO",
+    "reason": "Todavía no existe copia institucional exportada"
+  },
+  "productionChanged": false,
+  "webBuildExecuted": false,
+  "androidBuildExecuted": false,
+  "playwrightExecuted": false
+}

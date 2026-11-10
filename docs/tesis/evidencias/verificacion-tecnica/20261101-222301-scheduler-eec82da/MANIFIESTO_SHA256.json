@@ -1,0 +1,1048 @@
+{
+  "createdAt": "2026-11-01T23:07:58.688Z",
+  "algorithm": "SHA-256",
+  "baseCommit": "eec82da6ceb8ab3517fea6a9db150517265ca3bc",
+  "note": "Archivos de este expediente; excluye manifiesto propio, secretos y artefactos privados.",
+  "entries": [
+    {
+      "file": "android/intentos-offline.json",
+      "sha256": "3596f4bf874ded993710be1496958cb09e3fb8d82711f1e6a723f7d454a9a1af",
+      "bytes": 2891
+    },
+    {
+      "file": "android/observaciones-parciales-verificadas.meta.json",
+      "sha256": "bb472ea3c315053f91df938e3788674f9e6fc066cab93e88f91c1ed5b338e015",
+      "bytes": 278
+    },
+    {
+      "file": "android/observaciones-parciales-verificadas.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "android/observaciones-parciales-verificadas.stdout.log",
+      "sha256": "81896cc20c2fc444ed3b43261da56f0a0365f71d8081583d677d769077348949",
+      "bytes": 113
+    },
+    {
+      "file": "android/offline-actividad-visible.meta.json",
+      "sha256": "55e854c327a6b329ce6785e06cd5a0426a3eca4916cd2ab3cf5f64931b6efbc6",
+      "bytes": 390
+    },
+    {
+      "file": "android/offline-arranque-emulador-1793573061504-c7c36f.json",
+      "sha256": "55fd4f6a5cb11fb2628fad12fb34f9aa5a1e9b4cc506746893e73371f555dcf4",
+      "bytes": 7518
+    },
+    {
+      "file": "android/offline-arranque-emulador-1793573458328-373582.json",
+      "sha256": "50ec6602db148839837906ca591e026fef6f3d009d6a159898546c67331bd57d",
+      "bytes": 7914
+    },
+    {
+      "file": "android/offline-arranque-emulador-1793573840056-3001a6.json",
+      "sha256": "5c61b1e116dfae960387e4a776068c23884fa7df8146f412613ca102ddd218b1",
+      "bytes": 3588
+    },
+    {
+      "file": "android/offline-arranque-emulador.json",
+      "sha256": "75e6afbe0c83d5eb48e4022dba4e10402d8a4fdf2013f749f15525cfffc79b30",
+      "bytes": 7320
+    },
+    {
+      "file": "android/offline-avd-crear.meta-1793572861008-deb8f6.json",
+      "sha256": "c7d75b5da02bc0e305b006bf9e1d2670e1813c9ad4c3d7be36b9cb59463a284c",
+      "bytes": 512
+    },
+    {
+      "file": "android/offline-avd-crear.meta-1793573243396-96f667.json",
+      "sha256": "c7b1f991534b52cd407c467a05dfc6f8ccd1bd2e3349dec2e19d98dfff4ebd22",
+      "bytes": 551
+    },
+    {
+      "file": "android/offline-avd-crear.meta.json",
+      "sha256": "ecd68e323818f5077e6fcc064582b359c3b18b78feebd67a45d24a19ea9f8882",
+      "bytes": 512
+    },
+    {
+      "file": "android/offline-datos-deshabilitar.meta-1793573063525-ae89cb.json",
+      "sha256": "715951374247f5927a5ce246fd7f644b20cd0ccd98f86fc6b9a8040d91d7d0e5",
+      "bytes": 341
+    },
+    {
+      "file": "android/offline-datos-deshabilitar.meta-1793573475471-97ddf7.json",
+      "sha256": "735f29c9505993a0902966afae625e9c667b5a3535e395023fbfb96d765783b3",
+      "bytes": 380
+    },
+    {
+      "file": "android/offline-datos-deshabilitar.meta-1793573860421-a8cd32.json",
+      "sha256": "eb2e0ea0f3e99ad765cd2b4f5eb6e81ab553b05ffcb2812c5339f42d2b6d6b3e",
+      "bytes": 379
+    },
+    {
+      "file": "android/offline-datos-deshabilitar.meta.json",
+      "sha256": "8a1ec3de74414908f937d29bf15d6a2e31725121921cba54248e93776f5f02f0",
+      "bytes": 341
+    },
+    {
+      "file": "android/offline-dispositivos-previos.meta-1793572856369-945127.json",
+      "sha256": "3e2038465b5f7616dab3fb2512415dd41902f197c38596bcca7c3630d6ed2b86",
+      "bytes": 273
+    },
+    {
+      "file": "android/offline-dispositivos-previos.meta-1793573239193-8a0816.json",
+      "sha256": "0fcfa3497e545f165bedaa3842efa7382f40764d8f204532bd28c159a3144022",
+      "bytes": 312
+    },
+    {
+      "file": "android/offline-dispositivos-previos.meta-1793573692879-f2d561.json",
+      "sha256": "f8adaa35e3ba7dfa01c5034531e6d2495781509dddc59468349d971b350c15a1",
+      "bytes": 312
+    },
+    {
+      "file": "android/offline-dispositivos-previos.meta-1793573720265-b41c06.json",
+      "sha256": "b5e251e738502ec31e301acbaf7309fd8c404296bcb9bc57b0bfa725c35845d5",
+      "bytes": 312
+    },
+    {
+      "file": "android/offline-dispositivos-previos.meta-1793573747530-ad70e3.json",
+      "sha256": "4c9279a796cd9dd65398ffd714f9e75bb932b74e01cd6079485e70dcaaa0a580",
+      "bytes": 312
+    },
+    {
+      "file": "android/offline-dispositivos-previos.meta.json",
+      "sha256": "19a3c4aee0c8acd20e7e58ba47a0cb113420fdda8f608f3b0e26efc56d3978e3",
+      "bytes": 273
+    },
+    {
+      "file": "android/offline-identidad-avd.meta-1793573062344-0f3a6a.json",
+      "sha256": "818dbffc5c2279403f1cb394fa67730cde26b064239784063c4152a45dfd444d",
+      "bytes": 323
+    },
+    {
+      "file": "android/offline-identidad-avd.meta-1793573458994-b31a7a.json",
+      "sha256": "e2b18b8d97236121ea37844695169311c335018e280c41161846df4e5c5b9d79",
+      "bytes": 362
+    },
+    {
+      "file": "android/offline-identidad-avd.meta-1793573840580-29103f.json",
+      "sha256": "cbb68e10fceeac3f637207cb4a4c1f273710dfe00d67360d61d6837f4142fd75",
+      "bytes": 362
+    },
+    {
+      "file": "android/offline-identidad-avd.meta.json",
+      "sha256": "7ea344b88f1973da9f4cdbba28db1ca399a7b8d220fedc650f1a8a510596c850",
+      "bytes": 323
+    },
+    {
+      "file": "android/offline-identidad-qemu.meta-1793573062084-c4a9c0.json",
+      "sha256": "5a1e1025f55e331b02248b484968d00ef81e223d67df1524a9d9624e53d2938c",
+      "bytes": 339
+    },
+    {
+      "file": "android/offline-identidad-qemu.meta-1793573458646-ab5ed0.json",
+      "sha256": "48aa360deb3181ae408410aa5a5c81a2ee1d5334155f5ba5c6ac0e0d8b4f07be",
+      "bytes": 378
+    },
+    {
+      "file": "android/offline-identidad-qemu.meta-1793573840397-dfcf1d.json",
+      "sha256": "053a9cf6ba304ae9df477f7edf29f059eb218e1bf34e4eea2333b84bff6e979d",
+      "bytes": 378
+    },
+    {
+      "file": "android/offline-identidad-qemu.meta.json",
+      "sha256": "cd956f918880cc3b43b4bae288d900d71ded97a2127a4340c2da7b54c7ff8d46",
+      "bytes": 339
+    },
+    {
+      "file": "android/offline-instalar-apk.meta-1793573505619-af43d0.json",
+      "sha256": "18e6eb40005b50486f1a6cff76662cd1f6983905f8869762fc9c6602d02d0230",
+      "bytes": 497
+    },
+    {
+      "file": "android/offline-instalar-apk.meta.json",
+      "sha256": "ebca755e5e1745593ba44f4fcc1504821cb78ce173317e938a03fd364a262d17",
+      "bytes": 461
+    },
+    {
+      "file": "android/offline-lanzar-apk.meta-1793573881810-f420bd.json",
+      "sha256": "fd8e1faf2cd86c9f1f39513caf95e889fa968656aa4aa4a920acf2ceb6bd20b0",
+      "bytes": 422
+    },
+    {
+      "file": "android/offline-lanzar-apk.meta.json",
+      "sha256": "c0c54cc4b892afb5d695dd7c8305e71e01fa97289cd3c0ffb7f32ff1c7379911",
+      "bytes": 422
+    },
+    {
+      "file": "android/offline-modo-avion-verificar.meta-1793573477308-a277a5.json",
+      "sha256": "529001b4efd26f2d8640fd20367f9134c5049a5d16bb62af7090f60478000142",
+      "bytes": 406
+    },
+    {
+      "file": "android/offline-modo-avion-verificar.meta-1793573862377-61f951.json",
+      "sha256": "c8005995c93d576fd18a0fc6887264bff450a64a05750c68407accc70baaa91e",
+      "bytes": 406
+    },
+    {
+      "file": "android/offline-modo-avion-verificar.meta.json",
+      "sha256": "60b9ed4f8c0a8e09c7c522e13b7bd33c0f6135f3a9bfdce69baf40c3464216c9",
+      "bytes": 367
+    },
+    {
+      "file": "android/offline-modo-avion.meta-1793573062630-07c9f0.json",
+      "sha256": "1beea18d275525f437896c646cfdbab75262f0b954211c51e8c592721ec326d6",
+      "bytes": 368
+    },
+    {
+      "file": "android/offline-modo-avion.meta-1793573475010-03a61a.json",
+      "sha256": "49a97d107ed14a8509abfd564769457cb081108a702bbf970197b355ad1b89e2",
+      "bytes": 407
+    },
+    {
+      "file": "android/offline-modo-avion.meta-1793573857006-4f59c7.json",
+      "sha256": "5fa972249b18a2c8eaed6d8e3ce18d3c0a983f6a04d9c465271f481502f4ff91",
+      "bytes": 407
+    },
+    {
+      "file": "android/offline-modo-avion.meta.json",
+      "sha256": "fcc97749d03de9b64f592a6dc1ce052a3b05903facb63bd38638102e5be580c9",
+      "bytes": 368
+    },
+    {
+      "file": "android/offline-paquete-ausente.meta-1793573478657-ca78f7.json",
+      "sha256": "4f94cf3155b40900e74623f9945e79cf4e49d469db05d69555d000232f13fb87",
+      "bytes": 403
+    },
+    {
+      "file": "android/offline-paquete-ausente.meta.json",
+      "sha256": "eb1bffc8539448b45b5e6d8e4d11e1795c906ab79781a873531485e0409fe60f",
+      "bytes": 364
+    },
+    {
+      "file": "android/offline-paquete-hash.meta.json",
+      "sha256": "773fda93ff426a05a82f7661c286859e51edd28c185158d8a973448e06c2ab84",
+      "bytes": 453
+    },
+    {
+      "file": "android/offline-paquete-reanudar.meta.json",
+      "sha256": "c46404a9ddd6a5be2ed8067c8bb7c7108f574498235588071c02d6883efe8cff",
+      "bytes": 387
+    },
+    {
+      "file": "android/offline-rutas-ipv6-verificar.meta-1793573477813-9bd2c1.json",
+      "sha256": "cd6b5f31e95d85735794d43fccc95992cbea63e47b2b9fb7502d38a2e031e59a",
+      "bytes": 401
+    },
+    {
+      "file": "android/offline-rutas-ipv6-verificar.meta-1793573862721-8e47f0.json",
+      "sha256": "9f307b906183a2e9c88ea7ac7067e82b6c67a958b6d4c90122e1b958c746f880",
+      "bytes": 401
+    },
+    {
+      "file": "android/offline-rutas-ipv6-verificar.meta.json",
+      "sha256": "c016aed08843799362af2c471b2b47c8b9c4bc117d49b74ed2b3353831bcb53e",
+      "bytes": 362
+    },
+    {
+      "file": "android/offline-rutas-verificar.meta-1793573477570-7c1068.json",
+      "sha256": "f347ebded2a4c176a2f4bf3076cda1128ab45bd1a9aeb5d372aa814cc3b4294c",
+      "bytes": 391
+    },
+    {
+      "file": "android/offline-rutas-verificar.meta-1793573862559-73f3d2.json",
+      "sha256": "b870aba73f3ca9c48fae7d7eb88cddfb603a2dda01b4514ae6d00307071adfb8",
+      "bytes": 391
+    },
+    {
+      "file": "android/offline-rutas-verificar.meta.json",
+      "sha256": "125a0f381420db28efd10d89e400cf9653bca12ecbc66bf4f26a0e78161894ca",
+      "bytes": 352
+    },
+    {
+      "file": "android/offline-servicio-activity.meta-1793573856551-f5adea.json",
+      "sha256": "ab5cb47234babe5cd0cae2634ccd0fc4c6369554d1150295dca1d1be392464aa",
+      "bytes": 385
+    },
+    {
+      "file": "android/offline-servicio-activity.meta.json",
+      "sha256": "ac7e1eadc24f72d1ef848f4ff6f64e15b8ec61168b5104a834b9e3f439a547cb",
+      "bytes": 385
+    },
+    {
+      "file": "android/offline-servicio-package.meta-1793573856283-b21868.json",
+      "sha256": "0c6845eecca0c09fc85505fc70b2a2d730a36c17f857816b1df13b0dddc5a3f0",
+      "bytes": 384
+    },
+    {
+      "file": "android/offline-servicio-package.meta.json",
+      "sha256": "9554c0ceb28b7de83d61de1eee2b8ff66560f860b494c8ae88e45e3574722e6c",
+      "bytes": 384
+    },
+    {
+      "file": "android/offline-wifi-deshabilitar.meta-1793573063165-c8a3a8.json",
+      "sha256": "9f82cab7b222bdd4e5c953d912da4f06a7f5efb0fd76dde193e3261a40537db4",
+      "bytes": 340
+    },
+    {
+      "file": "android/offline-wifi-deshabilitar.meta-1793573475318-e9ed9a.json",
+      "sha256": "00d29596f34091e27c9c2953abb6dde0b73aeb61aaa2865c22c686345f45291a",
+      "bytes": 379
+    },
+    {
+      "file": "android/offline-wifi-deshabilitar.meta-1793573859325-016c62.json",
+      "sha256": "b9f5f9b707a5e642e0ac93a5f6e5100529aef49fe5e17aa7ebca31d23d4a1a7d",
+      "bytes": 379
+    },
+    {
+      "file": "android/offline-wifi-deshabilitar.meta.json",
+      "sha256": "44831ec589bfef37631473391ef2f31a2802f1f4aa4a55c6f3dd4cca8dc16f4b",
+      "bytes": 340
+    },
+    {
+      "file": "android/offline-wifi-verificar.meta-1793573478111-4f909c.json",
+      "sha256": "b779b40063fa30042871c7684354df92c0d09bd9f161a3e3e87f659dc70037a3",
+      "bytes": 378
+    },
+    {
+      "file": "android/offline-wifi-verificar.meta-1793573863027-eb0491.json",
+      "sha256": "a7e20d26480cfa20f92a2e3039a0990ac495257927b11e4f96016d630fae7302",
+      "bytes": 378
+    },
+    {
+      "file": "android/offline-wifi-verificar.meta.json",
+      "sha256": "d0173035b16c6868fe5fd22b8c6d86aed8213cdc141fb10e4ba24f5b5d08504a",
+      "bytes": 339
+    },
+    {
+      "file": "android/release-observaciones-parciales.json",
+      "sha256": "a3e5d4ddb5d41dba5a6990f7bf12b14dc7700ccd0ebb1697053c3a5a01b0559d",
+      "bytes": 1039
+    },
+    {
+      "file": "android/release-offline-diagnostico-contexto.meta.json",
+      "sha256": "1802d9dfc88601b892d568f727c73c26f0d4327a4807e81b2832a4d938bcfa79",
+      "bytes": 310
+    },
+    {
+      "file": "android/release-offline-diagnostico-contexto.stderr.log",
+      "sha256": "86a7996ffcbeb0685df12f55e21ca053e240399c482714d14dab99d4f09f637b",
+      "bytes": 74
+    },
+    {
+      "file": "android/release-offline-diagnostico-contexto.stdout.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "android/release-offline-diagnostico-final.meta.json",
+      "sha256": "1d76dd3b239b5577ffdf5db6178f8d40f8977f3ff62e6f2296453c7628998a24",
+      "bytes": 312
+    },
+    {
+      "file": "android/release-offline-diagnostico-final.stderr.log",
+      "sha256": "c82843db19931d4d42a0ad3d93fa899d0ddd667073fbc5747690d19dbcb30ad2",
+      "bytes": 64
+    },
+    {
+      "file": "android/release-offline-diagnostico-final.stdout.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "android/release-offline-diagnostico-owned.meta.json",
+      "sha256": "f1b8a80e68202d63911a3bf03db5dd58dcaea9b13d32c01d2acba98f846ea9d2",
+      "bytes": 309
+    },
+    {
+      "file": "android/release-offline-diagnostico-owned.stderr.log",
+      "sha256": "86a7996ffcbeb0685df12f55e21ca053e240399c482714d14dab99d4f09f637b",
+      "bytes": 74
+    },
+    {
+      "file": "android/release-offline-diagnostico-owned.stdout.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "android/release-offline-smoke-cierre.meta.json",
+      "sha256": "a5898052272d4ee15b9ac9cc954a650a5494c56f5b09bdada712cbab265e0ce2",
+      "bytes": 285
+    },
+    {
+      "file": "android/release-offline-smoke-cierre.stderr.log",
+      "sha256": "16bc318d3bb665f337c5cf7ccc75a89bef6f150ab73c9151b8e503550d6b7320",
+      "bytes": 63
+    },
+    {
+      "file": "android/release-offline-smoke-cierre.stdout.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "android/release-offline-smoke-final.meta.json",
+      "sha256": "32571e66247fb22b59e9ca499c215123be66845da3f5b1af51cb867073874d21",
+      "bytes": 283
+    },
+    {
+      "file": "android/release-offline-smoke-final.stderr.log",
+      "sha256": "00c7376b18242f45acc93d48e95bcd71c096c790e142dca35896c80c35e6ad2a",
+      "bytes": 68
+    },
+    {
+      "file": "android/release-offline-smoke-final.stdout.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "android/release-offline-smoke.meta.json",
+      "sha256": "e1b1b13eb1d4fb13abe6342f68c253100b18b153f615ca1382c88e8f5b1777df",
+      "bytes": 285
+    },
+    {
+      "file": "android/release-offline-smoke.stderr.log",
+      "sha256": "00c7376b18242f45acc93d48e95bcd71c096c790e142dca35896c80c35e6ad2a",
+      "bytes": 68
+    },
+    {
+      "file": "android/release-offline-smoke.stdout.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "android/release-smoke-offline-fallo-1793573098377-c62187.json",
+      "sha256": "c646804844770452da38f1acfb370fac19f1ff44bb907c60fcb78fd73bfff042",
+      "bytes": 383
+    },
+    {
+      "file": "android/release-smoke-offline-fallo-1793573518765-2aad24.json",
+      "sha256": "e32f6aae89be0a6cdec7f770bcd13b204464ba6554768a22e385401fbae88a90",
+      "bytes": 378
+    },
+    {
+      "file": "android/release-smoke-offline-fallo-1793573692924-44fecf.json",
+      "sha256": "8f79d00b16bd38e700786df030512da8ebe39cf6cb6064f61d99d1d619376407",
+      "bytes": 361
+    },
+    {
+      "file": "android/release-smoke-offline-fallo-1793573720313-16b9ce.json",
+      "sha256": "30c0c8f9a9f8abde0e9318d8ea74c5725e408014ee9b03b4cffa2d1fcf609c03",
+      "bytes": 361
+    },
+    {
+      "file": "android/release-smoke-offline-fallo-1793573902776-b0a4b3.json",
+      "sha256": "22b8ab227814c8d3760b5e527ff34281e58a08641f0c41038b51fa7e1638fee7",
+      "bytes": 452
+    },
+    {
+      "file": "android/release-smoke-offline-fallo.json",
+      "sha256": "a4f8df4fdd15ec199d1a10f7f7b3d9705231fac5dae46bcb93e1583ef879b431",
+      "bytes": 352
+    },
+    {
+      "file": "COMANDOS.json",
+      "sha256": "132877ff3de8d31cbffd5aafa4242dd528aec37dff87198dbc33a78f3c2e88ea",
+      "bytes": 46061
+    },
+    {
+      "file": "CONTEXTO.json",
+      "sha256": "648793f15e99fd5c33d93e93d73ef83025db7cb1a5c3f10723daf1ce80c35ae7",
+      "bytes": 399
+    },
+    {
+      "file": "FUENTES_EVALUADAS.json",
+      "sha256": "61d30e59c67a6b8f436c3333f35747d3bd95316af752e3d373eee4553bf833bd",
+      "bytes": 3496
+    },
+    {
+      "file": "HERRAMIENTAS.json",
+      "sha256": "aa35421adb577d2f8d71b648c2dac62ce76ade57ccbb0a7afeae4b51109fd02d",
+      "bytes": 832
+    },
+    {
+      "file": "INFORME_VERIFICACION_TECNICA.md",
+      "sha256": "cafaafed046a93efeb8b691b0415763dd88f051885484202d2624b46d930ddd8",
+      "bytes": 15106
+    },
+    {
+      "file": "integracion/herramientas-finales.meta.json",
+      "sha256": "a685ff7eb5faa8cec137931f91f09123757cbfee5eaa58bfb93c990d9dcec49c",
+      "bytes": 278
+    },
+    {
+      "file": "integracion/herramientas-finales.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "integracion/herramientas-finales.stdout.log",
+      "sha256": "84dbbc1cfdac9bfbe0523116eb455067ada627e7a6364ae60727ff8c3c3b723d",
+      "bytes": 46
+    },
+    {
+      "file": "integracion/scheduler-canal-cierre.meta.json",
+      "sha256": "612b10a0776d21f52a222f26b9ab13eb756e0ee9dcaf54c08230591c2d590711",
+      "bytes": 277
+    },
+    {
+      "file": "integracion/scheduler-canal-cierre.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "integracion/scheduler-canal-cierre.stdout.log",
+      "sha256": "a9bc57d3cd4a4721f4d9156fb0e58a6f25eb17cc5e53b6c1c7e111d753efafd4",
+      "bytes": 117
+    },
+    {
+      "file": "integracion/scheduler-canal-diagnostico-cli.meta.json",
+      "sha256": "03c697af3c4c7b69012d43645dc7a781b8b04909db6256a7f401aa5483476673",
+      "bytes": 277
+    },
+    {
+      "file": "integracion/scheduler-canal-diagnostico-cli.stderr.log",
+      "sha256": "1840ea4d20f963b29524773964a425aa85978142fc9562a968eb339bec8e33cb",
+      "bytes": 63
+    },
+    {
+      "file": "integracion/scheduler-canal-diagnostico-cli.stdout.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "integracion/scheduler-canal-diagnostico.meta.json",
+      "sha256": "acb3d6dd1db078d70be1fe4d55e507b07784a9aef2aa8f7b49d8c12e41db8366",
+      "bytes": 277
+    },
+    {
+      "file": "integracion/scheduler-canal-diagnostico.stderr.log",
+      "sha256": "1840ea4d20f963b29524773964a425aa85978142fc9562a968eb339bec8e33cb",
+      "bytes": 63
+    },
+    {
+      "file": "integracion/scheduler-canal-diagnostico.stdout.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "integracion/scheduler-canal-final.meta.json",
+      "sha256": "71c4f895fbf0701384a353da3cccac6395e279e7737d6bf34f8778465418437b",
+      "bytes": 277
+    },
+    {
+      "file": "integracion/scheduler-canal-final.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "integracion/scheduler-canal-final.stdout.log",
+      "sha256": "a9bc57d3cd4a4721f4d9156fb0e58a6f25eb17cc5e53b6c1c7e111d753efafd4",
+      "bytes": 117
+    },
+    {
+      "file": "integracion/scheduler-canal-perfil-completo.meta.json",
+      "sha256": "bdfc0bda66702f3079e8eecb141545464a0942507ece22cb547c7121ce556ff8",
+      "bytes": 277
+    },
+    {
+      "file": "integracion/scheduler-canal-perfil-completo.stderr.log",
+      "sha256": "29ef11038bc02127cecb4aac8154c303bbac7a853f403bc9d2aca618cb1d979b",
+      "bytes": 63
+    },
+    {
+      "file": "integracion/scheduler-canal-perfil-completo.stdout.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "integracion/scheduler-canal-real-cli.meta.json",
+      "sha256": "001848d414f8cb30f58736a6a7c16904a5dd5df479951a1e511f37e05466dd5d",
+      "bytes": 277
+    },
+    {
+      "file": "integracion/scheduler-canal-real-cli.stderr.log",
+      "sha256": "1ca60a2fd2fa5896f6c5a654ed719d69d411233e70a8d3ddf6032869e869da8e",
+      "bytes": 65
+    },
+    {
+      "file": "integracion/scheduler-canal-real-cli.stdout.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "integracion/scheduler-canal-sintetico-1793572033357-6b086c.json",
+      "sha256": "de0b1ae0dc3b3ad298d46a412c98a5096f339327a36ff0184dcd9c493e9eeb9b",
+      "bytes": 562
+    },
+    {
+      "file": "integracion/scheduler-canal-sintetico-1793572156609-133590.json",
+      "sha256": "37e7b0e421455249134e1487e4b42725f4ebf988dbf760cd75259c141338f0ea",
+      "bytes": 562
+    },
+    {
+      "file": "integracion/scheduler-canal-sintetico-1793572182694-d1a614.json",
+      "sha256": "13fae65838367e44cfffebe4ffca7e0d843e34a71049db6284b0d9cef868dbdb",
+      "bytes": 562
+    },
+    {
+      "file": "integracion/scheduler-canal-sintetico.json",
+      "sha256": "bfd9c6217bb2044702191fa828b9aab8ea2a9984ca9a0683e2e6aa44f8f09b23",
+      "bytes": 562
+    },
+    {
+      "file": "integracion/scheduler-proteccion-rojo.meta.json",
+      "sha256": "250ecde7e12cd961b8812a2388b5ecf4e17489404eb888cdc98ccba92e82c6be",
+      "bytes": 277
+    },
+    {
+      "file": "integracion/scheduler-proteccion-rojo.stderr.log",
+      "sha256": "1ca60a2fd2fa5896f6c5a654ed719d69d411233e70a8d3ddf6032869e869da8e",
+      "bytes": 65
+    },
+    {
+      "file": "integracion/scheduler-proteccion-rojo.stdout.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "integracion/scheduler-proteccion-sintetica.json",
+      "sha256": "1a1fe36cec354060bcd24244749458a0c72d00310dd05acf0e7ff2e2be60d900",
+      "bytes": 349
+    },
+    {
+      "file": "integracion/scheduler-proteccion-verde.meta.json",
+      "sha256": "c3baadc116c05e5de4f25853e3dc5f849c823809c2124a8dda1ebe4b38bd2f3d",
+      "bytes": 277
+    },
+    {
+      "file": "integracion/scheduler-proteccion-verde.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "integracion/scheduler-proteccion-verde.stdout.log",
+      "sha256": "a9bc57d3cd4a4721f4d9156fb0e58a6f25eb17cc5e53b6c1c7e111d753efafd4",
+      "bytes": 117
+    },
+    {
+      "file": "integracion/sondeo-versiones-inicial.meta.json",
+      "sha256": "4684765486702e6f84ec32b4be3cccc83f849fcec8e16a3b548f795d58949469",
+      "bytes": 228
+    },
+    {
+      "file": "integracion/version-emulator.meta.json",
+      "sha256": "f38ba02673c55dcc13b5f9e38ea9a1b0d674771bde966f016e3d12d56d66e37f",
+      "bytes": 273
+    },
+    {
+      "file": "integracion/version-gpg.meta.json",
+      "sha256": "70f50d88cd92fcb396d8026cb409302953e2ff964595f4c7d0cd8c42cb4e862d",
+      "bytes": 214
+    },
+    {
+      "file": "integracion/version-java.meta.json",
+      "sha256": "674b77d57bd4c34e7a24368a724dd0b3bddfdaba43a9d52d49426f690c182293",
+      "bytes": 276
+    },
+    {
+      "file": "integracion/version-npm.meta.json",
+      "sha256": "c3486a99d62394d70eeafce101686801c5ca9f84c9b1100d6be7878bc4135275",
+      "bytes": 282
+    },
+    {
+      "file": "integracion/version-python.meta.json",
+      "sha256": "debc05f7d4e7b82f106f8cf21523997a647fdf228dd35a15d2eb5f40293983d4",
+      "bytes": 184
+    },
+    {
+      "file": "integracion/version-supabase.meta.json",
+      "sha256": "eb0ae7f42a9d1582b8923129922e3542b9c049aa0055fe4bea0b4dc8f82021ec",
+      "bytes": 280
+    },
+    {
+      "file": "INTEGRIDAD.json",
+      "sha256": "8253816fda0100d982fc5bc81b7bb8604f20e55bbedaaf5e8c0a96bb88c50500",
+      "bytes": 545
+    },
+    {
+      "file": "MATRIZ_VERIFICACIONES_TESIS.md",
+      "sha256": "22eada23407ac65c41a2db37d2357d6e2fa3076c8371db1bc6e1c9d0fb72a88c",
+      "bytes": 5515
+    },
+    {
+      "file": "PRIVACIDAD.json",
+      "sha256": "629372224727616aade459dbb8aa62b99e0be82d45cb97a98bd3110a0551134c",
+      "bytes": 502
+    },
+    {
+      "file": "RESULTADOS_AUTOMATIZADOS.json",
+      "sha256": "a0e604f4f2e65b896965dfbd7608208dd009f24bfc73ad8ca7057cca2eb71605",
+      "bytes": 4652
+    },
+    {
+      "file": "RESULTADOS_PARA_TESIS_4_5.md",
+      "sha256": "312e1844e3e0391786aaea6c5271c302038b83e95f7d1c97d2bffe38000ffe97",
+      "bytes": 2941
+    },
+    {
+      "file": "seguridad/auth-config-readback.json",
+      "sha256": "7341cd5d1c1a5e2a5f5141dc8b6fd95350eba326841cd9070d23e7571c0dcd85",
+      "bytes": 427
+    },
+    {
+      "file": "seguridad/edge-secretos-presencia-real.json",
+      "sha256": "fe59bde41b19d31fa0a9c2f5264bcd5ad49549ac8902238f256a1fa77602fdf2",
+      "bytes": 752
+    },
+    {
+      "file": "seguridad/proveedores-disponibilidad-local.json",
+      "sha256": "97d51dcedbec3987fc35f255ce36a7e9bde3f84b13a7dfc8e81807d4017826a6",
+      "bytes": 1764
+    },
+    {
+      "file": "seguridad/REVISION_INDEPENDIENTE.md",
+      "sha256": "4a8004dfbc86874364e1f529a2d9a9db16ff36652afed1606d495399c843cc8e",
+      "bytes": 867
+    },
+    {
+      "file": "seguridad/scheduler-cli-esquema-verificado.json",
+      "sha256": "e64f6aad31c40125056ebc1043d7c9e172646cff84c4f2135379a3e77c70be8e",
+      "bytes": 422
+    },
+    {
+      "file": "seguridad/scheduler-creacion-autorizada.meta.json",
+      "sha256": "a4874b1a8b81189c6f19d14446cdf580b8b3a9a3a2b7be3ed988e788c660636c",
+      "bytes": 298
+    },
+    {
+      "file": "seguridad/scheduler-creacion-autorizada.stderr.log",
+      "sha256": "0f55867443e633c6131817e38021b6c64f81f5f0aa851703e1288f301a256a76",
+      "bytes": 60
+    },
+    {
+      "file": "seguridad/scheduler-creacion-autorizada.stdout.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "seguridad/scheduler-creacion-verificada.meta.json",
+      "sha256": "2aff1316de2b2ec72854142191cf0676adff32a2f53526bbd1ec724c57172bf4",
+      "bytes": 300
+    },
+    {
+      "file": "seguridad/scheduler-creacion-verificada.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "seguridad/scheduler-creacion-verificada.stdout.log",
+      "sha256": "b1ab44384a3c052dfef73b3c7f33d55a4d15c23d266f207acb16eb748786d0cd",
+      "bytes": 196
+    },
+    {
+      "file": "seguridad/scheduler-custodia-recuperacion.meta.json",
+      "sha256": "50431958ba622470d317bf8e70064bf73b880fbd27c2c3fab2946e5fbcc1d469",
+      "bytes": 280
+    },
+    {
+      "file": "seguridad/scheduler-custodia-recuperacion.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "seguridad/scheduler-custodia-recuperacion.stdout.log",
+      "sha256": "68c0765c92474422e11003661752aa56c7a7380c313a8e196a5f6f5f6891d408",
+      "bytes": 165
+    },
+    {
+      "file": "seguridad/scheduler-preflight-remoto.meta.json",
+      "sha256": "820c6c962ec27469d097f71115084ffecd6a0e878b1331a231bea754d74e0e43",
+      "bytes": 281
+    },
+    {
+      "file": "seguridad/scheduler-preflight-remoto.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "seguridad/scheduler-preflight-remoto.stdout.log",
+      "sha256": "c11bb013e4e33ddc503a141794c2d375513617784ef3be4838e573a5293cfe28",
+      "bytes": 198
+    },
+    {
+      "file": "seguridad/scheduler-privacidad-final.meta.json",
+      "sha256": "bf6f074aae555f93f2664cc52e3a3b280cab8d61c719f220d57be085736ddeec",
+      "bytes": 279
+    },
+    {
+      "file": "seguridad/scheduler-privacidad-final.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "seguridad/scheduler-privacidad-final.stdout.log",
+      "sha256": "68c0765c92474422e11003661752aa56c7a7380c313a8e196a5f6f5f6891d408",
+      "bytes": 165
+    },
+    {
+      "file": "seguridad/scheduler-privacidad-ultima.json",
+      "sha256": "dca46790eab7f2a9054996efc09f921c871422fe5a2e760ae802a721968b36e9",
+      "bytes": 877
+    },
+    {
+      "file": "seguridad/scheduler-proyecto-lectura.meta-1793572353695-5fe62c.json",
+      "sha256": "772d75292f51c2361a6c1abab14764ac1ebf46cb8fac69d891df13a7ac5d0688",
+      "bytes": 268
+    },
+    {
+      "file": "seguridad/scheduler-proyecto-lectura.meta.json",
+      "sha256": "33f5f5c20bafb1c500466fa68cf2bd84cba16c00dd25fd71a9213f86816d95dd",
+      "bytes": 268
+    },
+    {
+      "file": "seguridad/scheduler-recuperacion-custodia-1793574359539-30dd54.json",
+      "sha256": "228a7a948acc327b026f192ef31e35c7958825a497284c9c38d0b290c3cdf47d",
+      "bytes": 786
+    },
+    {
+      "file": "seguridad/scheduler-recuperacion-custodia.json",
+      "sha256": "8999173508387fd3cadd908e4f5d9d8f900baa465a6a817f19716203f13bd9e8",
+      "bytes": 786
+    },
+    {
+      "file": "seguridad/scheduler-recuperacion-lectura.meta-1793574356990-871258.json",
+      "sha256": "2c5298d72adac3a793ba23e27b1374be7071c0144b33fed00dd1ab0fcd578dfe",
+      "bytes": 273
+    },
+    {
+      "file": "seguridad/scheduler-recuperacion-lectura.meta.json",
+      "sha256": "d8b0485d1a11380b915f006b87d5c99e57cdd3915df971be879cbfe57a2f73d4",
+      "bytes": 273
+    },
+    {
+      "file": "seguridad/scheduler-secreto-creado.json",
+      "sha256": "7cdc4db3c1f3aa5ea4c2ba5adf6a3e231650a3d4ac185ae7b4d3cc0a9e011199",
+      "bytes": 1326
+    },
+    {
+      "file": "seguridad/scheduler-secreto-escritura.meta.json",
+      "sha256": "2204df506abeec000500e19970c1ffe17482dde2826bdc72d9fc010118d48755",
+      "bytes": 426
+    },
+    {
+      "file": "seguridad/scheduler-secretos-lectura-1.meta-1793572355501-b979d0.json",
+      "sha256": "61791810b3d15e918310d222a6e3a5fb43ce5eb0c083b6a3ac9ea6df1d94c271",
+      "bytes": 316
+    },
+    {
+      "file": "seguridad/scheduler-secretos-lectura-1.meta.json",
+      "sha256": "ae959d11845225a311d24727de2c90f25c8648614407e235bf46fb99dc532ba9",
+      "bytes": 316
+    },
+    {
+      "file": "seguridad/scheduler-secretos-lectura-2.meta.json",
+      "sha256": "ca46e22be881b4bc3f16ad183ed530dd12a3cc761f0f0895567308651e92b973",
+      "bytes": 316
+    },
+    {
+      "file": "seguridad/scheduler-secretos-lectura-3.meta.json",
+      "sha256": "570f536ee979303484b9ad78b53ce0121572a9e9b0626073e1f1f4efa3fc2967",
+      "bytes": 316
+    },
+    {
+      "file": "seguridad/supabase-config-dry-run.meta.json",
+      "sha256": "16c9b53480243592c20e1303521b9c567f5123903c913abf20d295429b479708",
+      "bytes": 392
+    },
+    {
+      "file": "seguridad/supabase-proyectos-lectura.meta.json",
+      "sha256": "d07aa3faa99c6907bc7b79c83d622577464f123b40bcefe02b4743d95c3e5115",
+      "bytes": 268
+    },
+    {
+      "file": "seguridad/supabase-secretos-nombres.meta.json",
+      "sha256": "3ce021e3ab01544b0880b550533c8b7f0a3250b0923dfbf0314e497c6c810693",
+      "bytes": 316
+    },
+    {
+      "file": "unitarias/android-estado-rojo.meta.json",
+      "sha256": "799071173c955066dd4470302193af9c9351a5f349d49985ca321951c975ef98",
+      "bytes": 308
+    },
+    {
+      "file": "unitarias/android-estado-rojo.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "unitarias/android-estado-rojo.stdout.log",
+      "sha256": "2adc7ce8fb86d20c9f6aff6e18f71489f218dbb2e6969f7c6ce8aaf859902f6f",
+      "bytes": 5032
+    },
+    {
+      "file": "unitarias/android-estado-verde.meta.json",
+      "sha256": "c7de583f6abf103bc188f2534202564a0df203f0ed6e892b4513820514c39935",
+      "bytes": 308
+    },
+    {
+      "file": "unitarias/android-estado-verde.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "unitarias/android-estado-verde.stdout.log",
+      "sha256": "5c10ea469e39081e179bdce898dbddeacc3e6076b8d6d0aaee58b32ad755ede9",
+      "bytes": 902
+    },
+    {
+      "file": "unitarias/configuracion-scheduler-android-ci.meta.json",
+      "sha256": "98504d4c36153cc3d4c8da123a3ed7fd6dda23ffe9f0690e26ec7aed7bf7cce7",
+      "bytes": 403
+    },
+    {
+      "file": "unitarias/configuracion-scheduler-android-ci.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "unitarias/configuracion-scheduler-android-ci.stdout.log",
+      "sha256": "6596fa01d5ac50ec548ff53feaf1962f904e4c602eb5bfce345254e78f41532d",
+      "bytes": 5178
+    },
+    {
+      "file": "unitarias/configuracion-scheduler-ci.meta.json",
+      "sha256": "8e0442cc95cea5974a581248518a52638de6f2bedd89b5f1756c8ab2959b11b1",
+      "bytes": 354
+    },
+    {
+      "file": "unitarias/configuracion-scheduler-ci.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "unitarias/configuracion-scheduler-ci.stdout.log",
+      "sha256": "bbf8d53a909ca5c5dcb4e2933d25ffc2a180d2cd6efbc4f3f007af061b79af84",
+      "bytes": 4396
+    },
+    {
+      "file": "unitarias/scheduler-cli-esquema-rojo.meta.json",
+      "sha256": "056367e34d86e9f1b25688cd74544c9a1d66a1b2bf1e947e11b889fbaf9399d3",
+      "bytes": 303
+    },
+    {
+      "file": "unitarias/scheduler-cli-esquema-rojo.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "unitarias/scheduler-cli-esquema-rojo.stdout.log",
+      "sha256": "2f1ff60517510bc4ac82e97fccd4f173dfe64a02bdd5ab357338fa48691e239d",
+      "bytes": 3181
+    },
+    {
+      "file": "unitarias/scheduler-cli-esquema-verde.meta.json",
+      "sha256": "d40e087d86e1b59b8d0ef868e985bf5a504a3f802b2f5cf1313fd3adf58dc317",
+      "bytes": 303
+    },
+    {
+      "file": "unitarias/scheduler-cli-esquema-verde.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "unitarias/scheduler-cli-esquema-verde.stdout.log",
+      "sha256": "35b9925804def6ae0802b4e3957edb9fbd1183250faed1a6245250b3bf39ba23",
+      "bytes": 2497
+    },
+    {
+      "file": "unitarias/scheduler-digest-rojo.meta.json",
+      "sha256": "b6adad7166fc6cb499ad78a260c210bbde9c568cfdbb266c8da8ee1659354518",
+      "bytes": 303
+    },
+    {
+      "file": "unitarias/scheduler-digest-rojo.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "unitarias/scheduler-digest-rojo.stdout.log",
+      "sha256": "5969cab849d89f35d03b3d253462da8a77c3f102de598fcbf540ac94a2875001",
+      "bytes": 2998
+    },
+    {
+      "file": "unitarias/scheduler-guardas-cierre.meta.json",
+      "sha256": "9438fc86530ae955401be8d7e0ab6667ecfc4d59ea96b96b339674d7d2ebf84d",
+      "bytes": 303
+    },
+    {
+      "file": "unitarias/scheduler-guardas-cierre.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "unitarias/scheduler-guardas-cierre.stdout.log",
+      "sha256": "5b303298082feff6d1203561aa022540e9a8e818965542094c1d56fde9e3da11",
+      "bytes": 2286
+    },
+    {
+      "file": "unitarias/scheduler-guardas-final.meta.json",
+      "sha256": "fcce20e335d2802de85f1190c50fc50b5d2b8b6a9ca53ff74e13dda12b6e1eb4",
+      "bytes": 303
+    },
+    {
+      "file": "unitarias/scheduler-guardas-final.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "unitarias/scheduler-guardas-final.stdout.log",
+      "sha256": "d55ef32f97ccd26a772596608f3e26bb560b1622806e0290fca7d9d849a74aaf",
+      "bytes": 2289
+    },
+    {
+      "file": "unitarias/scheduler-guardas-rojo.meta.json",
+      "sha256": "2c8b90bc1006f30e3ab4f076d5181c9d13d4ac7610327e287e3f6990eb8d28fc",
+      "bytes": 303
+    },
+    {
+      "file": "unitarias/scheduler-guardas-rojo.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "unitarias/scheduler-guardas-rojo.stdout.log",
+      "sha256": "6409a77be7cb1ae6f8169f2ac8272b7c7b9fba3c228b203f81ef1b2f7add0d62",
+      "bytes": 12182
+    },
+    {
+      "file": "unitarias/scheduler-guardas-verde.meta.json",
+      "sha256": "f32aa241243839597e5af133c28127a9925a443a16a1eb09b58f77119374e00f",
+      "bytes": 303
+    },
+    {
+      "file": "unitarias/scheduler-guardas-verde.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "unitarias/scheduler-guardas-verde.stdout.log",
+      "sha256": "801b0e2d5b1a4b8ade3ff13b8dda5eb5a7063f3d93da5c008125b0232931708c",
+      "bytes": 2082
+    },
+    {
+      "file": "unitarias/scheduler-respaldo-regresion.meta.json",
+      "sha256": "50d402e314ad6f2cc8bbbcf43f01039a87e2aba4e484896f58a89abb0c7ad197",
+      "bytes": 304
+    },
+    {
+      "file": "unitarias/scheduler-respaldo-regresion.stderr.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "unitarias/scheduler-respaldo-regresion.stdout.log",
+      "sha256": "b91b678618ac6d903f1043ea26833fbf7d4723deca30652b8d28249c633bbcb8",
+      "bytes": 1900
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "reportedAt": "2026-11-05T17:13:25.110Z",
+  "baseCommit": "922a3744b0c74b6e8ffcb9f340c6e1bfa754425d",
+  "managedBackupRead": {
+    "exitCode": 0,
+    "recognized": true,
+    "backupsReturnedNull": true,
+    "listedBackupCount": null,
+    "physicalRecoveryMetadataEmpty": true,
+    "pitrEnabled": false
+  },
+  "organizationPlan": "free",
+  "ciphertextMatchesReceipt": true,
+  "sourceReferencesMatched": 7,
+  "newFunctionalTests": 0,
+  "newBuilds": 0,
+  "freshBackupPerformed": false,
+  "newRestorePerformed": false,
+  "effectiveWriteIsolationDemonstrated": false,
+  "productionChanged": false,
+  "productionExecutionAuthorized": false,
+  "releaseReady": false,
+  "decision": "NO INICIAR: respaldo vigente al corte, aislamiento efectivo, calendario y autorizacion pendientes."
+}

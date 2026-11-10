@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-11-05T15:13:59.274Z",
+  "apkHashMatchesReceipt": true,
+  "webFiles": 65,
+  "matchingWebFiles": 65,
+  "remoteServerUrlPackaged": false,
+  "otaAutoUpdate": false,
+  "junit": {
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "cases": [
+      "addition_isCorrect"
+    ]
+  },
+  "warningMentionCounts": {
+    "web-build": {
+      "deprecated": 3,
+      "warning": 2,
+      "flatDir": 0,
+      "missingGoogleServices": 0,
+      "rawLogsPrivate": true
+    },
+    "capacitor-sync": {
+      "deprecated": 0,
+      "warning": 0,
+      "flatDir": 0,
+      "missingGoogleServices": 0,
+      "rawLogsPrivate": true
+    },
+    "gradle": {
+      "deprecated": 7,
+      "warning": 6,
+      "flatDir": 2,
+      "missingGoogleServices": 0,
+      "rawLogsPrivate": true
+    }
+  },
+  "installedThisPhase": false,
+  "emulatorStartedThisPhase": false,
+  "distributed": false,
+  "scope": "Comparacion ZIP/build y JUnit de plantilla; no prueba WebView o procesos de negocio."
+}

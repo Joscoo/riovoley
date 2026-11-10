@@ -1,0 +1,22 @@
+{
+  "label": "dominios",
+  "method": "GET",
+  "endpoint": "/v9/projects/prj_gnsNVKcXC8jvN0UcassXy4lZ0ZfN/domains?limit=30",
+  "command": [
+    "vercel",
+    "api",
+    "/v9/projects/prj_gnsNVKcXC8jvN0UcassXy4lZ0ZfN/domains?limit=30",
+    "-X",
+    "GET",
+    "--scope",
+    "joscoos-projects",
+    "--global-config",
+    "[CONFIG_PRIVADA]",
+    "--non-interactive"
+  ],
+  "start": "2026-10-31T20:47:04.546Z",
+  "end": "2026-10-31T20:47:05.619Z",
+  "durationSeconds": 1.073,
+  "exitCode": 0,
+  "rawOutputSaved": false
+}

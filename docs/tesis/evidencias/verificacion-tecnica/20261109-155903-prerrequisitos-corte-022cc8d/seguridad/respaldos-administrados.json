@@ -1,0 +1,18 @@
+{
+  "projectId": "mayvvlkvheagkojunzzb",
+  "startedAt": "2026-11-09T15:59:19.392Z",
+  "finishedAt": "2026-11-09T15:59:24.806Z",
+  "exitCode": 0,
+  "errorCode": null,
+  "responseRecognized": true,
+  "backupsReturnedNull": true,
+  "listedBackupCount": null,
+  "physicalRecoveryMetadataEmpty": true,
+  "pitrEnabled": false,
+  "walgEnabled": true,
+  "recoverablePointEstablished": false,
+  "restoreAttempted": false,
+  "newBackupCreated": false,
+  "state": "CONSULTA_APROBADA",
+  "note": "Null is not an empty backup array. WAL-G enabled does not establish a usable recovery point; no restore was attempted."
+}

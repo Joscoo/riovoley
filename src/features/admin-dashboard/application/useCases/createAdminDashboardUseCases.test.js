@@ -1,5 +1,5 @@
 const { createAdminDashboardUseCases } = require('./createAdminDashboardUseCases');
-const { getEcuadorFirstDayOfMonth } = require('../../../../utils/dateUtils');
+const { getEcuadorFirstDayOfMonth, getEcuadorLastDayOfMonth } = require('../../../../utils/dateUtils');
 
 describe('createAdminDashboardUseCases', () => {
   const activityIconFactory = {
@@ -101,7 +101,7 @@ describe('createAdminDashboardUseCases', () => {
         monto: 35,
         fecha_pago: currentMonthPaymentDate,
         fecha_inicio: currentMonthStart,
-        fecha_fin: `${currentMonthStart.slice(0, 8)}28`,
+        fecha_fin: getEcuadorLastDayOfMonth(),
       },
       {
         id: 'p2',

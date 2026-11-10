@@ -1,0 +1,15 @@
+{
+  "command": [
+    "C:\\WINDOWS\\system32\\cmd.exe",
+    "/d",
+    "/c",
+    "gradlew.bat :app:assembleRelease :app:testReleaseUnitTest --offline --no-daemon --no-configuration-cache --console=plain --stacktrace --max-workers=2"
+  ],
+  "cwd": ".e2e-local/android-release/20261101172449-62804124/project/android",
+  "startedAt": "2026-11-01T17:29:42.278Z",
+  "finishedAt": "2026-11-01T17:32:02.370Z",
+  "durationSeconds": 140.092,
+  "exitCode": 0,
+  "rawLogsEncryptedPrivate": true,
+  "environmentValuesRecorded": false
+}

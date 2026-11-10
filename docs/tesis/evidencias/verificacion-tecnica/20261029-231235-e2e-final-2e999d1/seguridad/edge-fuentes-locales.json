@@ -1,0 +1,9 @@
+{
+  "matches": false,
+  "differences": [
+    "send-push\\index.ts",
+    "_core\\auth-admin\\application\\require-active-staff.ts",
+    "_core\\auth-admin\\application\\use-cases\\delete-auth-user-use-case.ts",
+    "_core\\auth-admin\\infrastructure\\supabase-auth-admin-gateway.ts"
+  ]
+}

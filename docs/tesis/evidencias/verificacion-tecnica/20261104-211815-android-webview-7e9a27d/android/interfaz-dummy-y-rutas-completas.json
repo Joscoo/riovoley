@@ -1,0 +1,57 @@
+{
+  "startedAt": "2026-11-04T21:52:44.599Z",
+  "appCasesRepeated": false,
+  "probes": [
+    {
+      "command": [
+        "adb",
+        "-s",
+        "emulator-5582",
+        "shell",
+        "ip",
+        "-d",
+        "link",
+        "show",
+        "dummy0"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "request send failed: Permission denied\r\n"
+    },
+    {
+      "command": [
+        "adb",
+        "-s",
+        "emulator-5582",
+        "shell",
+        "ip",
+        "route",
+        "show",
+        "table",
+        "all"
+      ],
+      "exitCode": 0,
+      "stdout": "default dev dummy0 table 1002 proto static scope link \r\nlocal 127.0.0.0/8 dev lo table local proto kernel scope host src 127.0.0.1 \r\nlocal 127.0.0.1 dev lo table local proto kernel scope host src 127.0.0.1 \r\nbroadcast 127.255.255.255 dev lo table local proto kernel scope link src 127.0.0.1 \r\nfe80::/64 dev dummy0 table 1002 proto kernel metric 256 pref medium\r\ndefault dev dummy0 table 1002 proto static metric 1024 pref medium\r\nlocal ::1 dev lo table local proto kernel metric 0 pref medium\r\nlocal fe80::e025:42ff:fed9:7c93 dev dummy0 table local proto kernel metric 0 pref medium\r\nmulticast ff00::/8 dev dummy0 table local proto kernel metric 256 pref medium\r\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "adb",
+        "-s",
+        "emulator-5582",
+        "shell",
+        "ip",
+        "-6",
+        "route",
+        "show",
+        "table",
+        "all"
+      ],
+      "exitCode": 0,
+      "stdout": "fe80::/64 dev dummy0 table 1002 proto kernel metric 256 pref medium\r\ndefault dev dummy0 table 1002 proto static metric 1024 pref medium\r\nlocal ::1 dev lo table local proto kernel metric 0 pref medium\r\nlocal fe80::e025:42ff:fed9:7c93 dev dummy0 table local proto kernel metric 0 pref medium\r\nmulticast ff00::/8 dev dummy0 table local proto kernel metric 256 pref medium\r\n",
+      "stderr": ""
+    }
+  ],
+  "checkedAt": "2026-11-04T21:53:42.420Z",
+  "scope": "Datos del emulador propio, sin login ni cambios del producto."
+}

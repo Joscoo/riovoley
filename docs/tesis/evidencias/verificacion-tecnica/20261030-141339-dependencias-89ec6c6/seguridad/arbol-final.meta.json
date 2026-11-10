@@ -1,0 +1,23 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "ls",
+    "@svgr/webpack",
+    "resolve-url-loader",
+    "webpack-dev-middleware",
+    "sockjs",
+    "uuid",
+    "serialize-javascript",
+    "@tootallnate/once",
+    "deepmerge",
+    "--all",
+    "--json"
+  ],
+  "start": "2026-10-30T14:39:03.982Z",
+  "end": "2026-10-30T14:39:13.299Z",
+  "durationSeconds": 9.317,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

@@ -1,0 +1,88 @@
+{
+  "names": [
+    {
+      "file": ".env",
+      "name": "ESLINT_NO_DEV_ERRORS",
+      "present": true
+    },
+    {
+      "file": ".env",
+      "name": "DISABLE_ESLINT_PLUGIN",
+      "present": true
+    },
+    {
+      "file": ".env.e2e",
+      "name": "E2E_ADMIN_EMAIL",
+      "present": true
+    },
+    {
+      "file": ".env.e2e",
+      "name": "E2E_ADMIN_PASSWORD",
+      "present": true
+    },
+    {
+      "file": ".env.e2e",
+      "name": "E2E_TRAINER_EMAIL",
+      "present": true
+    },
+    {
+      "file": ".env.e2e",
+      "name": "E2E_TRAINER_PASSWORD",
+      "present": true
+    },
+    {
+      "file": ".env.e2e",
+      "name": "E2E_STUDENT_EMAIL",
+      "present": true
+    },
+    {
+      "file": ".env.e2e",
+      "name": "E2E_STUDENT_PASSWORD",
+      "present": true
+    },
+    {
+      "file": ".env.local",
+      "name": "REACT_APP_SUPABASE_URL",
+      "present": true
+    },
+    {
+      "file": ".env.local",
+      "name": "REACT_APP_SUPABASE_ANON_KEY",
+      "present": true
+    },
+    {
+      "file": ".env.local",
+      "name": "REACT_APP_PII_ENCRYPTION_KEY",
+      "present": true
+    },
+    {
+      "file": ".env.production",
+      "name": "REACT_APP_SUPABASE_URL",
+      "present": true
+    },
+    {
+      "file": ".env.production",
+      "name": "REACT_APP_SUPABASE_ANON_KEY",
+      "present": true
+    },
+    {
+      "file": ".env.production",
+      "name": "REACT_APP_PII_ENCRYPTION_KEY",
+      "present": true
+    }
+  ],
+  "publicOrigins": [
+    {
+      "file": ".env.local",
+      "name": "REACT_APP_SUPABASE_URL",
+      "origin": "https://mayvvlkvheagkojunzzb.supabase.co"
+    },
+    {
+      "file": ".env.production",
+      "name": "REACT_APP_SUPABASE_URL",
+      "origin": "https://mayvvlkvheagkojunzzb.supabase.co"
+    }
+  ],
+  "valuesRecorded": false,
+  "scope": "Solo nombres, presencia y orígenes públicos sin credenciales, rutas o querystrings."
+}

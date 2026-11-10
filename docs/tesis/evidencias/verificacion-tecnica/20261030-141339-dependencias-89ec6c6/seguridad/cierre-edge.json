@@ -1,0 +1,5 @@
+{
+  "time": "2026-10-30T14:45:25.408Z",
+  "reason": "Apagado intencional del servidor Edge al terminar las pruebas. El código final del proceso serve no es un caso funcional.",
+  "productionChanged": false
+}

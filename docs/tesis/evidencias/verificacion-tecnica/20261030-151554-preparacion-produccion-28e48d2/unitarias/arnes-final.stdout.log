@@ -1,0 +1,21 @@
+✔ dos ejecuciones normales no comparten ni limpian evidencias (6.7051ms)
+✔ logs repetidos se preservan y el entorno Edge siempre se genera vacío (6.6911ms)
+✔ enlaza puertos publicados a loopback y conserva imagen, volumen y entorno (3.0037ms)
+✔ permite solamente el API local dedicado (1.3888ms)
+✔ rechaza producción, puertos de otros proyectos y URLs ambiguas (0.907ms)
+✔ el frontend no hereda claves ni destinos REACT_APP institucionales (2.7995ms)
+✔ redacta tokens, claves locales y datos de login en logs (0.7275ms)
+✔ no permite cambiar config, reporteros ni servidor mediante argumentos (2.2122ms)
+✔ Docker y CLI no heredan un motor remoto ni TLS/contexto externos (0.7296ms)
+✔ restaura PK antes de FK, funciones antes de policies y ordena vistas (1.549ms)
+✔ rechaza ciclos de vistas y esquemas administrados (0.6408ms)
+✔ crea funciones de columnas generadas antes de las tablas (0.2389ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 264.8793
+

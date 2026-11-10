@@ -1,0 +1,15 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "functions/node_modules/tsx/dist/cli.mjs",
+    "--test",
+    "--test-reporter=tap",
+    "tests/integration/edge-http.local.test.cjs"
+  ],
+  "start": "2026-11-01T01:32:10.217Z",
+  "end": "2026-11-01T01:32:15.713Z",
+  "durationSeconds": 5.496,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

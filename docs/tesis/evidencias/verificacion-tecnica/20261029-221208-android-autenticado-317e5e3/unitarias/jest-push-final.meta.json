@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/react-scripts/bin/react-scripts.js",
+    "test",
+    "--watchAll=false",
+    "--runInBand",
+    "--coverage",
+    "--coverageReporters=json",
+    "--coverageReporters=json-summary",
+    "--coverageDirectory=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261029-221208-android-autenticado-317e5e3\\unitarias\\cobertura-push-final",
+    "--json",
+    "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261029-221208-android-autenticado-317e5e3\\unitarias\\jest-push-final.json"
+  ],
+  "start": "2026-10-29T22:53:14.175Z",
+  "end": "2026-10-29T22:54:16.752Z",
+  "durationSeconds": 62.577,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

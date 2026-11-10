@@ -1,0 +1,23 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "D:\\Riovoley\\riovoley\\node_modules\\react-scripts\\bin\\react-scripts.js",
+    "test",
+    "--watchAll=false",
+    "--runInBand",
+    "--coverage",
+    "--coverageDirectory=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261030-141339-dependencias-89ec6c6\\unitarias\\cobertura",
+    "--coverageReporters=json-summary",
+    "--coverageReporters=lcov",
+    "--coverageReporters=html",
+    "--coverageReporters=text",
+    "--json",
+    "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261030-141339-dependencias-89ec6c6\\unitarias\\jest-resultados.json"
+  ],
+  "start": "2026-10-30T14:27:07.199Z",
+  "end": "2026-10-30T14:29:21.048Z",
+  "durationSeconds": 133.849,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

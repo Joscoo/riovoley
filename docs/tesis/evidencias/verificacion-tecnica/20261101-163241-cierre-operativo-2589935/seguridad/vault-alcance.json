@@ -1,0 +1,10 @@
+{
+  "observedAt": "2026-11-01T16:31:23Z",
+  "source": "Supabase MCP SELECT READ ONLY; sin secretos o comandos de jobs",
+  "vaultSecretCount": 0,
+  "scheduledJobCount": 1,
+  "applicationFunctionVaultReferences": 0,
+  "rootKeyRecoveryProven": false,
+  "currentVaultDataRequiresDecryption": false,
+  "productionChanged": false
+}

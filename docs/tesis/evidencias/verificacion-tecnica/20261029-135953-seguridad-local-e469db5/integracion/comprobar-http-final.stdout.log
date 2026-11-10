@@ -1,0 +1,3 @@
+{"label":"integracion/edge-http-pruebas-1793286308885","exitCode":0,"durationSeconds":2.769,"stderrTail":""}
+{"label":"integracion/edge-http-servidor-1793286307786","exitCode":0,"durationSeconds":4.012,"stderrTail":"(node:28848) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\nListening on http://127.0.0.1:6161/\n"}
+

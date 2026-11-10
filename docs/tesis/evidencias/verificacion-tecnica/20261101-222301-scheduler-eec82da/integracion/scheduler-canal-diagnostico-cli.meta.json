@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/test-scheduler-channel.cjs"
+  ],
+  "start": "2026-11-01T22:25:21.928Z",
+  "end": "2026-11-01T22:25:24.996Z",
+  "durationSeconds": 3.068,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

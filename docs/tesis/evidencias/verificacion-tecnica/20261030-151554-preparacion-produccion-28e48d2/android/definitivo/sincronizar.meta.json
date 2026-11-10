@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/android/stage.cjs",
+    "final"
+  ],
+  "start": "2026-10-31T19:25:49.217Z",
+  "end": "2026-10-31T19:33:13.842Z",
+  "durationSeconds": 444.625,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

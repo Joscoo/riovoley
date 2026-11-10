@@ -1,0 +1,2 @@
+Revisión de código de vendor, adaptadores, preflight, CI y runbook: identificó dotenv institucional cargable por CRA en CI y engines22 frente a Node24 en árboles auxiliares. Se corrigieron aislando dotenv en el checkout CI y usando Node22 en esos pasos. La revisión no ejecutó despliegues ni verificó producción funcionalmente. No identificó otros fallos concretos en su alcance. Los resultados automáticos se registran por separado.
+

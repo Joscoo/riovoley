@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/unit/institutional-restore.test.cjs"
+  ],
+  "start": "2026-11-01T03:02:49.387Z",
+  "end": "2026-11-01T03:02:49.544Z",
+  "durationSeconds": 0.157,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

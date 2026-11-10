@@ -1,0 +1,24 @@
+{
+  "changed": [
+    {
+      "path": "node_modules/body-parser/node_modules/qs",
+      "before": "6.16.2",
+      "after": null
+    },
+    {
+      "path": "node_modules/qs",
+      "before": "6.14.3",
+      "after": "6.16.2"
+    }
+  ],
+  "overrides": {
+    "express": {
+      "qs": "6.16.2"
+    },
+    "jsonpath": {
+      "underscore": "1.13.8"
+    }
+  },
+  "forced": false,
+  "frameworkChanged": false
+}

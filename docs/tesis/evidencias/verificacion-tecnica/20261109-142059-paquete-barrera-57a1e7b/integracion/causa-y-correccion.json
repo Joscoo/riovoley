@@ -1,0 +1,11 @@
+{
+  "recordedAt": "2026-11-09T14:26:50.083Z",
+  "cause": "CRLF normalized to LF inside dollar-quoted function definitions; PostgreSQL preserves these bytes in function source and fingerprint.",
+  "differingFunctionItems": 31,
+  "sourceCrlfLines": 668,
+  "failedVariantCrlfLines": 0,
+  "fix": "Preserve original source bytes except guarded fingerprint literals; inject prefix using original EOL.",
+  "originalSourceFileChanged": false,
+  "firstFailedRunPreserved": true,
+  "productionChanged": false
+}

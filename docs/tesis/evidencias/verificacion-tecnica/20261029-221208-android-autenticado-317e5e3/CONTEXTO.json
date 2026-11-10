@@ -1,0 +1,8 @@
+{
+  "commit": "317e5e3a223b426f0fa30052c65cf697c8076ba3",
+  "createdAt": "2026-10-29T22:12:08.883Z",
+  "scope": "Continuación autorizada: APK privado contra backend descartable local y revisión de dependencias. Sin cambios institucionales, despliegues ni distribución de APK.",
+  "toolsReused": ".e2e-local\\android-native\\20261028-155551",
+  "previousEvidencePreserved": true,
+  "productionChanged": false
+}

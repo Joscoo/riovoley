@@ -1,0 +1,531 @@
+{
+  "createdAt": "2026-11-01T01:45:04.788Z",
+  "baseCommit": "27dd9727c5c791e8a7bf380a698dfa1c771e6dbb",
+  "cloudObservedAt": "2026-11-01T01:30:01.834Z",
+  "projectId": "mayvvlkvheagkojunzzb",
+  "productionDeployed": false,
+  "functions": [
+    {
+      "slug": "send-email",
+      "cloudVersion": 19,
+      "verifyJwt": true,
+      "cloudBundleSha256": "9c097c7f94aac8f2399560ebfd184f8f017c082650375ed777a3f05fc46fe909",
+      "cloudEntrypointSourceSha256": "50c91fe8f657977aa30fded2cff9ab816fd1b62470a747ca9caf77b5a1521efd",
+      "candidateEntrypointSourceSha256": "eb7ab4da498cf23add764a8b7ab8ad6519abc142fa60af781514121e05afe31e",
+      "sameEntrypointAfterLfNormalization": true,
+      "returnSourceFiles": [
+        {
+          "file": "send-email/index.ts",
+          "sha256": "50c91fe8f657977aa30fded2cff9ab816fd1b62470a747ca9caf77b5a1521efd"
+        },
+        {
+          "file": "_shared/cors.ts",
+          "sha256": "409589a20b7e1006bc0e9e78be41d11745fee7e480ed5133a75b19e93b5e4a10"
+        },
+        {
+          "file": "_core/http/body.ts",
+          "sha256": "4d12d822815d94e22d2ff7003afc7f9dd030a41cc0879f741e66d1cd8e5c49cf"
+        },
+        {
+          "file": "_core/http/response.ts",
+          "sha256": "7f62f3aabe8d0456bb30ef748a245623a1263944819477f93f1841654a84577e"
+        },
+        {
+          "file": "_core/communications/domain/communications-error.ts",
+          "sha256": "a35c82230fbc5982d5a6003b6fd25a7e6130dcfea562a7e14d1d045924b1719e"
+        },
+        {
+          "file": "_core/communications/application/use-cases/send-email-use-case.ts",
+          "sha256": "5112db1026983bc10a4094fd452303621b6321fa1471b8cb8c6c3073e3b2877a"
+        },
+        {
+          "file": "_core/communications/infrastructure/resend-communications-gateway.ts",
+          "sha256": "127ca1d5ae9626428163f86b49ef8cf56f629e6876f908aecda274b5ce4c399c"
+        },
+        {
+          "file": "_core/auth-admin/infrastructure/supabase-auth-admin-gateway.ts",
+          "sha256": "63a0c3b27f50a3018bf5f711e42357f23feb10d5eae3fc536f296abd227f8dd3"
+        },
+        {
+          "file": "_core/auth-admin/domain/auth-admin-error.ts",
+          "sha256": "d45fdc41fab730b105ddbe3e2889eac203b4f0748d893951a150d9f79c0e5d5f"
+        }
+      ],
+      "relativeImportsVerified": 14,
+      "omittedTypeImports": [],
+      "returnDirectory": ".e2e-local/edge-production/packets/return/send-email"
+    },
+    {
+      "slug": "update-user-password",
+      "cloudVersion": 20,
+      "verifyJwt": true,
+      "cloudBundleSha256": "34eedb50281c26d6aec8ef04d7556d3136cb909a2f9eb3f86f773415c1d64649",
+      "cloudEntrypointSourceSha256": "61338545403c3ceaff81c372c2fde0751e8770638750660bcee253782a1a9bcb",
+      "candidateEntrypointSourceSha256": "61338545403c3ceaff81c372c2fde0751e8770638750660bcee253782a1a9bcb",
+      "sameEntrypointAfterLfNormalization": true,
+      "returnSourceFiles": [
+        {
+          "file": "update-user-password/index.ts",
+          "sha256": "61338545403c3ceaff81c372c2fde0751e8770638750660bcee253782a1a9bcb"
+        },
+        {
+          "file": "_shared/cors.ts",
+          "sha256": "409589a20b7e1006bc0e9e78be41d11745fee7e480ed5133a75b19e93b5e4a10"
+        },
+        {
+          "file": "_core/http/body.ts",
+          "sha256": "4d12d822815d94e22d2ff7003afc7f9dd030a41cc0879f741e66d1cd8e5c49cf"
+        },
+        {
+          "file": "_core/http/response.ts",
+          "sha256": "7f62f3aabe8d0456bb30ef748a245623a1263944819477f93f1841654a84577e"
+        },
+        {
+          "file": "_core/auth-admin/domain/auth-admin-error.ts",
+          "sha256": "d45fdc41fab730b105ddbe3e2889eac203b4f0748d893951a150d9f79c0e5d5f"
+        },
+        {
+          "file": "_core/auth-admin/application/use-cases/update-user-password-use-case.ts",
+          "sha256": "635afce93fdaa13f5dd16fb41a76662c5241b2da92afbc6291603ac1801e87d3"
+        },
+        {
+          "file": "_core/auth-admin/infrastructure/supabase-auth-admin-gateway.ts",
+          "sha256": "63a0c3b27f50a3018bf5f711e42357f23feb10d5eae3fc536f296abd227f8dd3"
+        }
+      ],
+      "relativeImportsVerified": 10,
+      "omittedTypeImports": [],
+      "returnDirectory": ".e2e-local/edge-production/packets/return/update-user-password"
+    },
+    {
+      "slug": "delete-auth-user",
+      "cloudVersion": 5,
+      "verifyJwt": true,
+      "cloudBundleSha256": "a48f507f4b7ae1ccda5ac36ec939ed9dcdf047eaf5174697449fd5a1aedacc49",
+      "cloudEntrypointSourceSha256": "e4779da9c42c82ceb53d7e468df2b54098e61a33270da86b59f50a1d5e5d2ecd",
+      "candidateEntrypointSourceSha256": "92977d11b43a3fcdb5d10a549e43f0748c7dbd70805184fbc7cf5f99dff6610b",
+      "sameEntrypointAfterLfNormalization": false,
+      "returnSourceFiles": [
+        {
+          "file": "delete-auth-user/index.ts",
+          "sha256": "e4779da9c42c82ceb53d7e468df2b54098e61a33270da86b59f50a1d5e5d2ecd"
+        }
+      ],
+      "relativeImportsVerified": 0,
+      "omittedTypeImports": [],
+      "returnDirectory": ".e2e-local/edge-production/packets/return/delete-auth-user"
+    },
+    {
+      "slug": "generate-report",
+      "cloudVersion": 10,
+      "verifyJwt": true,
+      "cloudBundleSha256": "9aae62ae304649cd52f9be8aa62d9bffd9b2c42046d7da014fca8ea371dd4a9d",
+      "cloudEntrypointSourceSha256": "7ee235af5b21122a27681397593355deb5a21ebdeb84f2cca43054fb7a9da758",
+      "candidateEntrypointSourceSha256": "7ee235af5b21122a27681397593355deb5a21ebdeb84f2cca43054fb7a9da758",
+      "sameEntrypointAfterLfNormalization": true,
+      "returnSourceFiles": [
+        {
+          "file": "generate-report/index.ts",
+          "sha256": "7ee235af5b21122a27681397593355deb5a21ebdeb84f2cca43054fb7a9da758"
+        },
+        {
+          "file": "_shared/cors.ts",
+          "sha256": "409589a20b7e1006bc0e9e78be41d11745fee7e480ed5133a75b19e93b5e4a10"
+        },
+        {
+          "file": "_core/http/body.ts",
+          "sha256": "4d12d822815d94e22d2ff7003afc7f9dd030a41cc0879f741e66d1cd8e5c49cf"
+        },
+        {
+          "file": "_core/http/response.ts",
+          "sha256": "5896c6f92e2cedd3f53db7bce22c21352e3a90d0a18b2601e92134455ba343a3"
+        },
+        {
+          "file": "_core/reporting/application/use-cases/generate-report-run-use-case.ts",
+          "sha256": "bea10104c1d5f9117f88673892f4ed7f83b4acd9c9635bfeb96807f4f24959a6"
+        },
+        {
+          "file": "_core/reporting/infrastructure/legacy-reporting-gateway.ts",
+          "sha256": "875b3db978249a668e77de9d69552cbc4f8dd08f29c31dc2fe5e850faba01865"
+        },
+        {
+          "file": "_shared/reporting.ts",
+          "sha256": "208b833887b6e79ba1ea23c17de391a50602c4d6f3d991b241ac5d3acdc990f3"
+        }
+      ],
+      "relativeImportsVerified": 8,
+      "omittedTypeImports": [
+        {
+          "file": "_core/reporting/application/use-cases/generate-report-run-use-case.ts",
+          "specifier": "../../domain/reporting-types.ts"
+        },
+        {
+          "file": "_core/reporting/infrastructure/legacy-reporting-gateway.ts",
+          "specifier": "../domain/reporting-types.ts"
+        }
+      ],
+      "returnDirectory": ".e2e-local/edge-production/packets/return/generate-report"
+    },
+    {
+      "slug": "generate-scheduled-reports",
+      "cloudVersion": 10,
+      "verifyJwt": true,
+      "cloudBundleSha256": "b640a0903625eb195d26cbc6043940340615b1aa5a56414ff4c1bc1726d6f480",
+      "cloudEntrypointSourceSha256": "1007225baa710fd6c18e890c6569237115ee2d0bc6250b32930afb1e55cba5d8",
+      "candidateEntrypointSourceSha256": "1007225baa710fd6c18e890c6569237115ee2d0bc6250b32930afb1e55cba5d8",
+      "sameEntrypointAfterLfNormalization": true,
+      "returnSourceFiles": [
+        {
+          "file": "generate-scheduled-reports/index.ts",
+          "sha256": "1007225baa710fd6c18e890c6569237115ee2d0bc6250b32930afb1e55cba5d8"
+        },
+        {
+          "file": "_shared/cors.ts",
+          "sha256": "409589a20b7e1006bc0e9e78be41d11745fee7e480ed5133a75b19e93b5e4a10"
+        },
+        {
+          "file": "_core/http/body.ts",
+          "sha256": "4d12d822815d94e22d2ff7003afc7f9dd030a41cc0879f741e66d1cd8e5c49cf"
+        },
+        {
+          "file": "_core/http/response.ts",
+          "sha256": "5896c6f92e2cedd3f53db7bce22c21352e3a90d0a18b2601e92134455ba343a3"
+        },
+        {
+          "file": "_core/reporting/application/use-cases/generate-scheduled-reports-use-case.ts",
+          "sha256": "5f9887fcb406bb4eef01d4fb2e266aa6a5c4562e59bdc12200116fc7d951c611"
+        },
+        {
+          "file": "_core/reporting/infrastructure/legacy-reporting-gateway.ts",
+          "sha256": "875b3db978249a668e77de9d69552cbc4f8dd08f29c31dc2fe5e850faba01865"
+        },
+        {
+          "file": "_shared/reporting.ts",
+          "sha256": "208b833887b6e79ba1ea23c17de391a50602c4d6f3d991b241ac5d3acdc990f3"
+        }
+      ],
+      "relativeImportsVerified": 8,
+      "omittedTypeImports": [
+        {
+          "file": "_core/reporting/infrastructure/legacy-reporting-gateway.ts",
+          "specifier": "../domain/reporting-types.ts"
+        }
+      ],
+      "returnDirectory": ".e2e-local/edge-production/packets/return/generate-scheduled-reports"
+    },
+    {
+      "slug": "delete-report-run",
+      "cloudVersion": 6,
+      "verifyJwt": true,
+      "cloudBundleSha256": "d30e4a2b5c8f3ba2cda9a15345289129ae2b94ab4432f1fe4c36c93ac87cfe40",
+      "cloudEntrypointSourceSha256": "9bae9f8176a9d2c702fc6cd323cf19b45c1940a12a295c0c89b48c0dc6cdb41f",
+      "candidateEntrypointSourceSha256": "9bae9f8176a9d2c702fc6cd323cf19b45c1940a12a295c0c89b48c0dc6cdb41f",
+      "sameEntrypointAfterLfNormalization": true,
+      "returnSourceFiles": [
+        {
+          "file": "delete-report-run/index.ts",
+          "sha256": "9bae9f8176a9d2c702fc6cd323cf19b45c1940a12a295c0c89b48c0dc6cdb41f"
+        },
+        {
+          "file": "_shared/cors.ts",
+          "sha256": "409589a20b7e1006bc0e9e78be41d11745fee7e480ed5133a75b19e93b5e4a10"
+        },
+        {
+          "file": "_core/http/body.ts",
+          "sha256": "4d12d822815d94e22d2ff7003afc7f9dd030a41cc0879f741e66d1cd8e5c49cf"
+        },
+        {
+          "file": "_core/http/response.ts",
+          "sha256": "5896c6f92e2cedd3f53db7bce22c21352e3a90d0a18b2601e92134455ba343a3"
+        },
+        {
+          "file": "_core/reporting/application/use-cases/delete-report-run-use-case.ts",
+          "sha256": "e8070102f2586dc37a0016878c3f4c3998d37f8bc4f5a22c5d299811fe3af7f7"
+        },
+        {
+          "file": "_core/reporting/infrastructure/legacy-reporting-gateway.ts",
+          "sha256": "875b3db978249a668e77de9d69552cbc4f8dd08f29c31dc2fe5e850faba01865"
+        },
+        {
+          "file": "_shared/reporting.ts",
+          "sha256": "208b833887b6e79ba1ea23c17de391a50602c4d6f3d991b241ac5d3acdc990f3"
+        }
+      ],
+      "relativeImportsVerified": 8,
+      "omittedTypeImports": [
+        {
+          "file": "_core/reporting/infrastructure/legacy-reporting-gateway.ts",
+          "specifier": "../domain/reporting-types.ts"
+        }
+      ],
+      "returnDirectory": ".e2e-local/edge-production/packets/return/delete-report-run"
+    },
+    {
+      "slug": "sync-mobile-device",
+      "cloudVersion": 8,
+      "verifyJwt": true,
+      "cloudBundleSha256": "39b175f5e2762166ae0a18c4324025c09b496302f27c86e412bc5f0d1f7cd536",
+      "cloudEntrypointSourceSha256": "923cc50b991f91f55df7db9e53d365f3d9ecba919863cd9e01046e959bb14873",
+      "candidateEntrypointSourceSha256": "923cc50b991f91f55df7db9e53d365f3d9ecba919863cd9e01046e959bb14873",
+      "sameEntrypointAfterLfNormalization": true,
+      "returnSourceFiles": [
+        {
+          "file": "sync-mobile-device/index.ts",
+          "sha256": "923cc50b991f91f55df7db9e53d365f3d9ecba919863cd9e01046e959bb14873"
+        },
+        {
+          "file": "_shared/cors.ts",
+          "sha256": "7a4949fde4c669a4c46912b51123b4880568f414220eb8aa9413f66a09b96794"
+        },
+        {
+          "file": "_core/http/body.ts",
+          "sha256": "69ca865ed0ebc0ef5fa10f1319388da4698b4c2ab71f7f4ad2211fb422c2b32e"
+        },
+        {
+          "file": "_core/http/response.ts",
+          "sha256": "b8fe208c9cce43d1a7e628ac0849b8399295fed5a30dcb2461464a90a0c27ea8"
+        }
+      ],
+      "relativeImportsVerified": 4,
+      "omittedTypeImports": [],
+      "returnDirectory": ".e2e-local/edge-production/packets/return/sync-mobile-device"
+    },
+    {
+      "slug": "send-push",
+      "cloudVersion": 14,
+      "verifyJwt": true,
+      "cloudBundleSha256": "4352841040d00df16572b8c0d20a22c2564f81d266760e306da2e53c16b51fbd",
+      "cloudEntrypointSourceSha256": "bac35b5d6fd313625485d0f89e3a109489b051f7b9178a0aaa38aec4b81331cb",
+      "candidateEntrypointSourceSha256": "0ecef1c8642781138ecda6956072204a89fbb0b85bdc0a094c0331afa3ced3fc",
+      "sameEntrypointAfterLfNormalization": false,
+      "returnSourceFiles": [
+        {
+          "file": "send-push/index.ts",
+          "sha256": "bac35b5d6fd313625485d0f89e3a109489b051f7b9178a0aaa38aec4b81331cb"
+        },
+        {
+          "file": "_shared/cors.ts",
+          "sha256": "5dc925b032d684437f03fd25350dcc3d266e9c223d5e5838abf3eb9b6e94c286"
+        },
+        {
+          "file": "_core/http/body.ts",
+          "sha256": "4d12d822815d94e22d2ff7003afc7f9dd030a41cc0879f741e66d1cd8e5c49cf"
+        },
+        {
+          "file": "_core/http/response.ts",
+          "sha256": "7f62f3aabe8d0456bb30ef748a245623a1263944819477f93f1841654a84577e"
+        },
+        {
+          "file": "_core/push/infrastructure/firebase-push-gateway.ts",
+          "sha256": "16eea0d6d4406daa1969bf274b81d7f8aed5f90152b1fa4692aa3eba63005aed"
+        }
+      ],
+      "relativeImportsVerified": 5,
+      "omittedTypeImports": [],
+      "returnDirectory": ".e2e-local/edge-production/packets/return/send-push"
+    },
+    {
+      "slug": "send-payment-reminders",
+      "cloudVersion": 9,
+      "verifyJwt": true,
+      "cloudBundleSha256": "6f899b18d9ab91b767e08e9ee58dd0506359a6c8a45287160825e9283c8b8605",
+      "cloudEntrypointSourceSha256": "fb896d22520a0bb16b0943f0b21993132288918dfb54c3b22219fb4508ffdc03",
+      "candidateEntrypointSourceSha256": "7ed6d261daf47f25930e3a46dc3333857fb83263b5d71c31eed31616dfc244e9",
+      "sameEntrypointAfterLfNormalization": false,
+      "returnSourceFiles": [
+        {
+          "file": "send-payment-reminders/index.ts",
+          "sha256": "fb896d22520a0bb16b0943f0b21993132288918dfb54c3b22219fb4508ffdc03"
+        },
+        {
+          "file": "_shared/cors.ts",
+          "sha256": "5dc925b032d684437f03fd25350dcc3d266e9c223d5e5838abf3eb9b6e94c286"
+        },
+        {
+          "file": "_core/http/response.ts",
+          "sha256": "7f62f3aabe8d0456bb30ef748a245623a1263944819477f93f1841654a84577e"
+        },
+        {
+          "file": "_core/push/infrastructure/firebase-push-gateway.ts",
+          "sha256": "16eea0d6d4406daa1969bf274b81d7f8aed5f90152b1fa4692aa3eba63005aed"
+        }
+      ],
+      "relativeImportsVerified": 4,
+      "omittedTypeImports": [],
+      "returnDirectory": ".e2e-local/edge-production/packets/return/send-payment-reminders"
+    }
+  ],
+  "requiredEnvNames": [
+    "FCM_CLIENT_EMAIL",
+    "FCM_PRIVATE_KEY",
+    "FCM_PROJECT_ID",
+    "FROM_EMAIL",
+    "REPORTS_SCHEDULER_SECRET",
+    "RESEND_API_KEY",
+    "SUPABASE_ANON_KEY",
+    "SUPABASE_SERVICE_ROLE_KEY",
+    "SUPABASE_URL"
+  ],
+  "candidateDirectory": ".e2e-local/edge-production/packets/candidate",
+  "candidateFiles": [
+    {
+      "file": "supabase/config.toml",
+      "sha256": "50cecd649d25e9d2bc56717fdb2b295990a121e0e887247ed078fcf4a42d9354"
+    },
+    {
+      "file": "supabase/functions/delete-auth-user/deno.json",
+      "sha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867"
+    },
+    {
+      "file": "supabase/functions/delete-auth-user/index.ts",
+      "sha256": "92977d11b43a3fcdb5d10a549e43f0748c7dbd70805184fbc7cf5f99dff6610b"
+    },
+    {
+      "file": "supabase/functions/delete-report-run/deno.json",
+      "sha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867"
+    },
+    {
+      "file": "supabase/functions/delete-report-run/index.ts",
+      "sha256": "9bae9f8176a9d2c702fc6cd323cf19b45c1940a12a295c0c89b48c0dc6cdb41f"
+    },
+    {
+      "file": "supabase/functions/deno.lock",
+      "sha256": "1cc56994c3440ba028c057efa239a0085a5b54f8a629108f790d136fec7e2767"
+    },
+    {
+      "file": "supabase/functions/generate-report/deno.json",
+      "sha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867"
+    },
+    {
+      "file": "supabase/functions/generate-report/index.ts",
+      "sha256": "7ee235af5b21122a27681397593355deb5a21ebdeb84f2cca43054fb7a9da758"
+    },
+    {
+      "file": "supabase/functions/generate-scheduled-reports/deno.json",
+      "sha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867"
+    },
+    {
+      "file": "supabase/functions/generate-scheduled-reports/index.ts",
+      "sha256": "1007225baa710fd6c18e890c6569237115ee2d0bc6250b32930afb1e55cba5d8"
+    },
+    {
+      "file": "supabase/functions/send-email/deno.json",
+      "sha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867"
+    },
+    {
+      "file": "supabase/functions/send-email/index.ts",
+      "sha256": "eb7ab4da498cf23add764a8b7ab8ad6519abc142fa60af781514121e05afe31e"
+    },
+    {
+      "file": "supabase/functions/send-payment-reminders/deno.json",
+      "sha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867"
+    },
+    {
+      "file": "supabase/functions/send-payment-reminders/index.ts",
+      "sha256": "7ed6d261daf47f25930e3a46dc3333857fb83263b5d71c31eed31616dfc244e9"
+    },
+    {
+      "file": "supabase/functions/send-push/deno.json",
+      "sha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867"
+    },
+    {
+      "file": "supabase/functions/send-push/index.ts",
+      "sha256": "0ecef1c8642781138ecda6956072204a89fbb0b85bdc0a094c0331afa3ced3fc"
+    },
+    {
+      "file": "supabase/functions/sync-mobile-device/deno.json",
+      "sha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867"
+    },
+    {
+      "file": "supabase/functions/sync-mobile-device/index.ts",
+      "sha256": "923cc50b991f91f55df7db9e53d365f3d9ecba919863cd9e01046e959bb14873"
+    },
+    {
+      "file": "supabase/functions/update-user-password/deno.json",
+      "sha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867"
+    },
+    {
+      "file": "supabase/functions/update-user-password/index.ts",
+      "sha256": "61338545403c3ceaff81c372c2fde0751e8770638750660bcee253782a1a9bcb"
+    },
+    {
+      "file": "supabase/functions/_core/auth-admin/application/require-active-staff.ts",
+      "sha256": "0255cd95832f5465c10732614cb2779afc99fc90d9a4ac60cbc8f0dcc3f1bfe0"
+    },
+    {
+      "file": "supabase/functions/_core/auth-admin/application/use-cases/delete-auth-user-use-case.ts",
+      "sha256": "78c232ea449c66adde1d90562bc2114039f79c25d58d3d1aa8d91ec0e1dac5cd"
+    },
+    {
+      "file": "supabase/functions/_core/auth-admin/application/use-cases/update-user-password-use-case.ts",
+      "sha256": "635afce93fdaa13f5dd16fb41a76662c5241b2da92afbc6291603ac1801e87d3"
+    },
+    {
+      "file": "supabase/functions/_core/auth-admin/domain/auth-admin-error.ts",
+      "sha256": "d45fdc41fab730b105ddbe3e2889eac203b4f0748d893951a150d9f79c0e5d5f"
+    },
+    {
+      "file": "supabase/functions/_core/auth-admin/infrastructure/supabase-auth-admin-gateway.ts",
+      "sha256": "882a5e827317cf1a6a60079270bf65c93b7d05dbe6da4e964a58f564205e2b30"
+    },
+    {
+      "file": "supabase/functions/_core/communications/application/use-cases/send-email-use-case.ts",
+      "sha256": "5112db1026983bc10a4094fd452303621b6321fa1471b8cb8c6c3073e3b2877a"
+    },
+    {
+      "file": "supabase/functions/_core/communications/domain/communications-error.ts",
+      "sha256": "a35c82230fbc5982d5a6003b6fd25a7e6130dcfea562a7e14d1d045924b1719e"
+    },
+    {
+      "file": "supabase/functions/_core/communications/infrastructure/resend-communications-gateway.ts",
+      "sha256": "127ca1d5ae9626428163f86b49ef8cf56f629e6876f908aecda274b5ce4c399c"
+    },
+    {
+      "file": "supabase/functions/_core/http/body.ts",
+      "sha256": "4d12d822815d94e22d2ff7003afc7f9dd030a41cc0879f741e66d1cd8e5c49cf"
+    },
+    {
+      "file": "supabase/functions/_core/http/response.ts",
+      "sha256": "7f62f3aabe8d0456bb30ef748a245623a1263944819477f93f1841654a84577e"
+    },
+    {
+      "file": "supabase/functions/_core/push/infrastructure/firebase-push-gateway.ts",
+      "sha256": "1dc61617c01b525a2943e64b620edbe197c030443ad8acba8129f4624a957620"
+    },
+    {
+      "file": "supabase/functions/_core/reporting/application/use-cases/delete-report-run-use-case.ts",
+      "sha256": "e8070102f2586dc37a0016878c3f4c3998d37f8bc4f5a22c5d299811fe3af7f7"
+    },
+    {
+      "file": "supabase/functions/_core/reporting/application/use-cases/generate-report-run-use-case.ts",
+      "sha256": "bea10104c1d5f9117f88673892f4ed7f83b4acd9c9635bfeb96807f4f24959a6"
+    },
+    {
+      "file": "supabase/functions/_core/reporting/application/use-cases/generate-scheduled-reports-use-case.ts",
+      "sha256": "5f9887fcb406bb4eef01d4fb2e266aa6a5c4562e59bdc12200116fc7d951c611"
+    },
+    {
+      "file": "supabase/functions/_core/reporting/domain/reporting-types.ts",
+      "sha256": "e7e00279bd7e0df7bdb079293ada25b48d102fbd2d1a86b93140cf9ee3fdc87c"
+    },
+    {
+      "file": "supabase/functions/_core/reporting/infrastructure/legacy-reporting-gateway.ts",
+      "sha256": "875b3db978249a668e77de9d69552cbc4f8dd08f29c31dc2fe5e850faba01865"
+    },
+    {
+      "file": "supabase/functions/_shared/cors.ts",
+      "sha256": "409589a20b7e1006bc0e9e78be41d11745fee7e480ed5133a75b19e93b5e4a10"
+    },
+    {
+      "file": "supabase/functions/_shared/relations.ts",
+      "sha256": "a279486f00b3a0a354e412168b38f4d4003118b9d860143975afee9e94a78a88"
+    },
+    {
+      "file": "supabase/functions/_shared/reporting.ts",
+      "sha256": "015644c76b16683e1e202108c1867518341d841d1a8a1bbf7246bd1177bc194d"
+    }
+  ],
+  "returnScope": "Fuentes descargadas y configuración JWT por función; no reproducción binaria del bundle ni ensayo gestionado de retorno.",
+  "revision": 2,
+  "note": "Normalizacion LF del archivo modificado, sin cambio de logica; manifiesto anterior conserva el borrador."
+}

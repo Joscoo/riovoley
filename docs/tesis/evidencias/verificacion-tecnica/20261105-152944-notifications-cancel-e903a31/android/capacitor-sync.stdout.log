@@ -1,0 +1,15 @@
+√ Copying web assets from build-safe to android\app\src\main\assets\public in 281.60ms
+√ Creating capacitor.config.json in android\app\src\main\assets in 893.90μs
+√ copy android in 345.40ms
+√ Updating Android plugins in 24.90ms
+[info] Found 7 Capacitor plugins for android:
+       @capacitor/app@8.1.0
+       @capacitor/browser@8.0.3
+       @capacitor/filesystem@8.1.2
+       @capacitor/preferences@8.0.1
+       @capacitor/push-notifications@8.1.1
+       @capacitor/share@8.0.1
+       @capgo/capacitor-updater@8.47.9
+√ update android in 387.12ms
+[info] Sync finished in 1.078s
+

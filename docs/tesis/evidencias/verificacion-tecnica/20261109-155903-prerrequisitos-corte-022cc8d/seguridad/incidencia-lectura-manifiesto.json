@@ -1,0 +1,9 @@
+{
+  "at": "2026-11-09T16:03:45.755Z",
+  "stage": "PRIOR_SQL_HASH_REQUIRED",
+  "actualExitCode": 1,
+  "cause": "One-off evidence reader expected files/sqlFiles; actual prior manifest stores sql.",
+  "productChanged": false,
+  "institutionalAccessAttemptedByFailingStep": false,
+  "correction": "Read the observed sql property and preserve reproducible artifact checks in refresh-cutover.cjs."
+}

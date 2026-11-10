@@ -1,0 +1,11 @@
+{
+  "observedAt": "2026-11-01T22:52:24.404Z",
+  "command": [
+    "node",
+    "<sondeo conjunto de versiones>"
+  ],
+  "exitCode": 1,
+  "stage": "VERSION_FAILED",
+  "individualToolNotIdentified": true,
+  "rawOutputSaved": false
+}

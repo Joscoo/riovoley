@@ -1,0 +1,30 @@
+{
+  "startedAt": "2026-11-01T17:24:49.126Z",
+  "status": "SIGNED_RELEASE_APK_VERIFIED",
+  "work": ".e2e-local/android-release/20261101172449-62804124",
+  "sourceCommit": "ef9a05ad20bba4f9303f547130c07336eeea61e7",
+  "existingKeystoreUsed": true,
+  "credentialsRecorded": false,
+  "installed": false,
+  "published": false,
+  "stage": "VERIFIED",
+  "finishedAt": "2026-11-01T17:32:03.808Z",
+  "privateApk": ".e2e-local/android-release/20261101172449-62804124/project/android/app/build/outputs/apk/release/app-release.apk",
+  "apkBytes": 28376554,
+  "apkSha256": "3305c32983cba75a1361c5b6d741836051f98acfd0c7fefe8bd42dcb81cce16c",
+  "signerCertificateSha256": "727e9b2444bdfaeb2c172bd4c0a59919c2d7481c570e85ba237a7b44913bf7c7",
+  "signatureVerified": true,
+  "existingSigningIdentityMatches": true,
+  "originalKeystoreUnchanged": true,
+  "debuggable": false,
+  "productionBackendConfigured": true,
+  "piiKeyContinuityCheckedInMemory": true,
+  "googleServicesCopied": true,
+  "updaterChannel": "production",
+  "gradleTasks": [
+    "assembleRelease",
+    "testReleaseUnitTest"
+  ],
+  "nativeTestCaseCountNotParsed": true,
+  "deviceExecutionPerformed": false
+}

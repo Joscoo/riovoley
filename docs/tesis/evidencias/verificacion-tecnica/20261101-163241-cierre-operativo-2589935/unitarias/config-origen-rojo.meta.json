@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/unit/supabase-config-summary.test.cjs"
+  ],
+  "start": "2026-11-01T21:13:40.570Z",
+  "end": "2026-11-01T21:13:42.443Z",
+  "durationSeconds": 1.873,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

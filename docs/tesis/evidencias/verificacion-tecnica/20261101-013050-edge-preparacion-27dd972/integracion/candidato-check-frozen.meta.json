@@ -1,0 +1,23 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\deno-tool\\node_modules\\@deno\\win32-x64\\deno.exe",
+    "check",
+    "--cached-only",
+    "--config=D:\\Riovoley\\riovoley\\.e2e-local\\edge-production\\packets\\candidate\\supabase\\functions\\send-push\\deno.json",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\edge-production\\packets\\candidate\\supabase\\functions\\send-email\\index.ts",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\edge-production\\packets\\candidate\\supabase\\functions\\update-user-password\\index.ts",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\edge-production\\packets\\candidate\\supabase\\functions\\delete-auth-user\\index.ts",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\edge-production\\packets\\candidate\\supabase\\functions\\generate-report\\index.ts",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\edge-production\\packets\\candidate\\supabase\\functions\\generate-scheduled-reports\\index.ts",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\edge-production\\packets\\candidate\\supabase\\functions\\delete-report-run\\index.ts",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\edge-production\\packets\\candidate\\supabase\\functions\\sync-mobile-device\\index.ts",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\edge-production\\packets\\candidate\\supabase\\functions\\send-push\\index.ts",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\edge-production\\packets\\candidate\\supabase\\functions\\send-payment-reminders\\index.ts"
+  ],
+  "start": "2026-11-01T01:45:27.448Z",
+  "end": "2026-11-01T01:45:29.671Z",
+  "durationSeconds": 2.223,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

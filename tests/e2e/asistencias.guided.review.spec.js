@@ -58,17 +58,19 @@ test('guided review: admin asistencias quick mode per viewport', async ({ page }
 
   const screenshotPath = testInfo.outputPath(`asistencias-quick-${testInfo.project.name}.png`);
   const isMobileProject = /mobile/i.test(testInfo.project.name);
-  const pageHeight = await page.evaluate(() => {
+  const pageHeight = await page.evaluate(async () => {
+    await document.fonts.ready;
     const root = document.documentElement;
     const body = document.body;
     return Math.max(root.scrollHeight, body ? body.scrollHeight : 0);
   });
 
-  // Chromium cannot capture full-page images above 32767px in either dimension.
+  // Compare and capture in CSS pixels: tablet DPR=2 otherwise doubles the
+  // bitmap height and can exceed the browser's 32767px limit below this guard.
   if (isMobileProject || pageHeight >= 32000) {
-    await page.screenshot({ path: screenshotPath, fullPage: false });
+    await page.screenshot({ path: screenshotPath, fullPage: false, scale: 'css' });
   } else {
-    await page.screenshot({ path: screenshotPath, fullPage: true });
+    await page.screenshot({ path: screenshotPath, fullPage: true, scale: 'css' });
   }
 
   const metrics = await collectAsistenciasMetrics(page);

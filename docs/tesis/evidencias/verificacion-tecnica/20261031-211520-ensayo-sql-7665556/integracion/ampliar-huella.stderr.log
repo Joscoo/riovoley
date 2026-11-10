@@ -1,0 +1,23 @@
+error: permission denied to change default privileges
+    at D:\Riovoley\riovoley\.e2e-local\sql-driver\node_modules\pg\lib\client.js:694:17
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async alignAccess (D:\Riovoley\riovoley\scripts\audit\production\upgrade-sql-packet.cjs:10:246)
+    at async upgrade (D:\Riovoley\riovoley\scripts\audit\production\upgrade-sql-packet.cjs:19:3) {
+  length: 122,
+  severity: 'ERROR',
+  code: '42501',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'aclchk.c',
+  line: '1146',
+  routine: 'ExecAlterDefaultPrivilegesStmt'
+}

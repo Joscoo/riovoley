@@ -1,0 +1,107 @@
+TAP version 13
+# Subtest: reconoce topResumedActivity de Android36 sin exigir mResumedActivity
+not ok 1 - reconoce topResumedActivity de Android36 sin exigir mResumedActivity
+  ---
+  duration_ms: 36.7958
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\android-offline-state.test.cjs:3:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Cannot find module '../../scripts/audit/android/activity-state.cjs'
+    Require stack:
+    - D:\Riovoley\riovoley\tests\unit\android-offline-state.test.cjs
+  code: 'MODULE_NOT_FOUND'
+  stack: |-
+    Module._resolveFilename (node:internal/modules/cjs/loader:1517:15)
+    wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    Module._load (node:internal/modules/cjs/loader:1294:5)
+    wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    Module.require (node:internal/modules/cjs/loader:1617:12)
+    require (node:internal/modules/helpers:153:16)
+    parse (D:\Riovoley\riovoley\tests\unit\android-offline-state.test.cjs:2:19)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\android-offline-state.test.cjs:3:90)
+  ...
+# Subtest: conserva el formato mResumedActivity anterior
+not ok 2 - conserva el formato mResumedActivity anterior
+  ---
+  duration_ms: 1.1951
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\android-offline-state.test.cjs:4:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Cannot find module '../../scripts/audit/android/activity-state.cjs'
+    Require stack:
+    - D:\Riovoley\riovoley\tests\unit\android-offline-state.test.cjs
+  code: 'MODULE_NOT_FOUND'
+  stack: |-
+    Module._resolveFilename (node:internal/modules/cjs/loader:1517:15)
+    wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    Module._load (node:internal/modules/cjs/loader:1294:5)
+    wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    Module.require (node:internal/modules/cjs/loader:1617:12)
+    require (node:internal/modules/helpers:153:16)
+    parse (D:\Riovoley\riovoley\tests\unit\android-offline-state.test.cjs:2:19)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\android-offline-state.test.cjs:4:71)
+  ...
+# Subtest: una actividad histórica de RIOVOLEY no acredita primer plano
+not ok 3 - una actividad histórica de RIOVOLEY no acredita primer plano
+  ---
+  duration_ms: 0.6772
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\android-offline-state.test.cjs:5:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Cannot find module '../../scripts/audit/android/activity-state.cjs'
+    Require stack:
+    - D:\Riovoley\riovoley\tests\unit\android-offline-state.test.cjs
+  code: 'MODULE_NOT_FOUND'
+  stack: |-
+    Module._resolveFilename (node:internal/modules/cjs/loader:1517:15)
+    wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    Module._load (node:internal/modules/cjs/loader:1294:5)
+    wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    Module.require (node:internal/modules/cjs/loader:1617:12)
+    require (node:internal/modules/helpers:153:16)
+    parse (D:\Riovoley\riovoley\tests\unit\android-offline-state.test.cjs:2:19)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\android-offline-state.test.cjs:5:86)
+  ...
+# Subtest: un ANR de SystemUI bloquea la verificación visual sin atribuir crash a RIOVOLEY
+not ok 4 - un ANR de SystemUI bloquea la verificación visual sin atribuir crash a RIOVOLEY
+  ---
+  duration_ms: 1.0796
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\android-offline-state.test.cjs:6:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Cannot find module '../../scripts/audit/android/activity-state.cjs'
+    Require stack:
+    - D:\Riovoley\riovoley\tests\unit\android-offline-state.test.cjs
+  code: 'MODULE_NOT_FOUND'
+  stack: |-
+    Module._resolveFilename (node:internal/modules/cjs/loader:1517:15)
+    wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    Module._load (node:internal/modules/cjs/loader:1294:5)
+    wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    Module.require (node:internal/modules/cjs/loader:1617:12)
+    require (node:internal/modules/helpers:153:16)
+    parse (D:\Riovoley\riovoley\tests\unit\android-offline-state.test.cjs:2:19)
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\android-offline-state.test.cjs:6:101)
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 0
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 239.6118
+

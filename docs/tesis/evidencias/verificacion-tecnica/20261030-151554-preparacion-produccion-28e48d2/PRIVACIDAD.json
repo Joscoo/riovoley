@@ -1,0 +1,9 @@
+{
+  "textFilesChecked": 1410,
+  "embeddedArchivesChecked": 7,
+  "redactedCopies": [],
+  "unresolved": [],
+  "unresolvedArchiveEntries": [],
+  "images": "Solo fixtures locales. Se revisan además capturas representativas y contextos; no se pretende certificar OCR exhaustivo.",
+  "scope": "Valores de claves/contraseñas locales y variables sensibles institucionales, JWT, claves Supabase y correos; incluye ZIP base64 de los reportes HTML. Redacciones de copias, sin alterar estados ni cantidades."
+}

@@ -1,0 +1,8 @@
+{
+  "version": "7.1.4",
+  "main": "index.js",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
+

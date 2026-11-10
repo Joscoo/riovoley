@@ -296,6 +296,10 @@ export class SupabaseUserManagementRepository {
       throw new UserManagementError('No se puede eliminar una cuenta de administrador desde este módulo.');
     }
 
+    // Autorizar el objetivo en el backend mientras su rol canónico aún existe.
+    // Un rechazo debe dejar intactos estudiante, perfil y usuario.
+    await deleteAuthUserById(userId);
+
     if (userType === 'atleta') {
       const { error: studentError } = await supabase
         .from('students')
@@ -327,8 +331,6 @@ export class SupabaseUserManagementRepository {
         userError,
       );
     }
-
-    await deleteAuthUserById(userId);
 
     return { success: true };
   }

@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-11-01T15:50:19.970Z",
+  "source": "Supabase MCP SQL READ ONLY aggregate by public flag",
+  "privateBuckets": 1,
+  "privateObjects": 40,
+  "publicBuckets": 2,
+  "publicObjects": 3,
+  "objectNamesPublished": false,
+  "objectsDownloaded": false
+}

@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-11-05T15:03:58.086Z",
+  "previousManifests": 23,
+  "previousEntries": 9286,
+  "previousEntriesMatching": true,
+  "nativeCases": 14,
+  "nativePassed": 14,
+  "nativeFailed": 0,
+  "nodeCases": 13,
+  "junitTemplateCases": 1,
+  "webFilesMatching": 65,
+  "apkHashMatches": true,
+  "productSourcesChanged": false,
+  "originalProtectedTestsUnchanged": true,
+  "linksChecked": 83,
+  "brokenLinks": 0,
+  "privacyIssues": 0,
+  "emulatorStopped": true,
+  "productionChanged": false,
+  "releaseSigned": false,
+  "documents": 3
+}

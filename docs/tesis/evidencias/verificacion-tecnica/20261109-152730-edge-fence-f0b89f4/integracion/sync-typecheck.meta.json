@@ -1,0 +1,17 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\deno-tool\\node_modules\\@deno\\win32-x64\\deno.exe",
+    "check",
+    "--no-config",
+    "--cached-only",
+    "--no-lock",
+    "--import-map=D:\\Riovoley\\riovoley\\.e2e-local\\edge-fence\\20261109-152730\\typecheck-imports.json",
+    "supabase/functions/sync-mobile-device/index.ts"
+  ],
+  "start": "2026-11-09T15:33:05.662Z",
+  "end": "2026-11-09T15:33:09.852Z",
+  "durationSeconds": 4.19,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

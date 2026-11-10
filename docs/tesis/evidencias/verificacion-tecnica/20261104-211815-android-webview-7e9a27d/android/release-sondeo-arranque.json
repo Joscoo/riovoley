@@ -1,0 +1,30 @@
+{
+  "checkedAt": "2026-11-04T21:31:00.932Z",
+  "observations": [
+    {
+      "command": [
+        "adb",
+        "-s",
+        "emulator-5582",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "result": ""
+    },
+    {
+      "command": [
+        "adb",
+        "-s",
+        "emulator-5582",
+        "shell",
+        "getprop",
+        "ro.build.version.sdk"
+      ],
+      "exitCode": 0,
+      "result": "36"
+    }
+  ],
+  "scope": "Consultas al emulador release propio mientras arranca; no cuentan como casos del APK debug."
+}

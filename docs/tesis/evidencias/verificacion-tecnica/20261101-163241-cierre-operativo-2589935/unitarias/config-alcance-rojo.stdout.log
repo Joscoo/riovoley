@@ -1,0 +1,67 @@
+TAP version 13
+# Subtest: lee la configuración remota y no publica datos privados de SMTP
+ok 1 - lee la configuración remota y no publica datos privados de SMTP
+  ---
+  duration_ms: 314.0571
+  type: 'test'
+  ...
+# Subtest: no acredita readback para otro origen
+ok 2 - no acredita readback para otro origen
+  ---
+  duration_ms: 1159.2252
+  type: 'test'
+  ...
+# Subtest: un formato desconocido se conserva como no comprobado
+ok 3 - un formato desconocido se conserva como no comprobado
+  ---
+  duration_ms: 140.2169
+  type: 'test'
+  ...
+# Subtest: prefiere el remoto indicado frente a un auth local con el mismo origen
+ok 4 - prefiere el remoto indicado frente a un auth local con el mismo origen
+  ---
+  duration_ms: 128.1316
+  type: 'test'
+  ...
+# Subtest: procesa la vista estructurada dry-run de CLI 2.122 sin escribir config
+ok 5 - procesa la vista estructurada dry-run de CLI 2.122 sin escribir config
+  ---
+  duration_ms: 93.8525
+  type: 'test'
+  ...
+# Subtest: no acredita el auth local si falta el alcance auth remoto en la vista
+not ok 6 - no acredita el auth local si falta el alcance auth remoto en la vista
+  ---
+  duration_ms: 149.6717
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\unit\\supabase-config-summary.test.cjs:9:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\unit\supabase-config-summary.test.cjs:9:366)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 5
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2107.9692
+

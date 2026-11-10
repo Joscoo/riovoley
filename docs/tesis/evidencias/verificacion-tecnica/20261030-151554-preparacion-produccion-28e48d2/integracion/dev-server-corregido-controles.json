@@ -1,0 +1,12 @@
+{
+  "checks": [
+    {
+      "name": "Control 1",
+      "state": "FALLIDO",
+      "error": "CRA no devolvió HTML dentro del plazo"
+    }
+  ],
+  "executed": 1,
+  "passed": 0,
+  "failed": 1
+}

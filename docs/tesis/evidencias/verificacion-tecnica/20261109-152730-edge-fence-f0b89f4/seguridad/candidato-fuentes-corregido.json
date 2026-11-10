@@ -1,0 +1,324 @@
+{
+  "recordedAt": "2026-11-09T15:47:38.470Z",
+  "privateCandidateDirectory": ".e2e-local/edge-fence/20261109-152730/candidate-1794239258262",
+  "files": [
+    {
+      "file": "supabase/config.toml",
+      "origin": "previous-generated-configuration",
+      "sha256": "50cecd649d25e9d2bc56717fdb2b295990a121e0e887247ed078fcf4a42d9354",
+      "previousSha256": "50cecd649d25e9d2bc56717fdb2b295990a121e0e887247ed078fcf4a42d9354",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/delete-auth-user/deno.json",
+      "origin": "previous-generated-configuration",
+      "sha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867",
+      "previousSha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/delete-auth-user/index.ts",
+      "origin": "current-repository",
+      "sha256": "92977d11b43a3fcdb5d10a549e43f0748c7dbd70805184fbc7cf5f99dff6610b",
+      "previousSha256": "92977d11b43a3fcdb5d10a549e43f0748c7dbd70805184fbc7cf5f99dff6610b",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/delete-report-run/deno.json",
+      "origin": "previous-generated-configuration",
+      "sha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867",
+      "previousSha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/delete-report-run/index.ts",
+      "origin": "current-repository",
+      "sha256": "9bae9f8176a9d2c702fc6cd323cf19b45c1940a12a295c0c89b48c0dc6cdb41f",
+      "previousSha256": "9bae9f8176a9d2c702fc6cd323cf19b45c1940a12a295c0c89b48c0dc6cdb41f",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/deno.lock",
+      "origin": "previous-generated-configuration",
+      "sha256": "1cc56994c3440ba028c057efa239a0085a5b54f8a629108f790d136fec7e2767",
+      "previousSha256": "1cc56994c3440ba028c057efa239a0085a5b54f8a629108f790d136fec7e2767",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/generate-report/deno.json",
+      "origin": "previous-generated-configuration",
+      "sha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867",
+      "previousSha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/generate-report/index.ts",
+      "origin": "current-repository",
+      "sha256": "7ee235af5b21122a27681397593355deb5a21ebdeb84f2cca43054fb7a9da758",
+      "previousSha256": "7ee235af5b21122a27681397593355deb5a21ebdeb84f2cca43054fb7a9da758",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/generate-scheduled-reports/deno.json",
+      "origin": "previous-generated-configuration",
+      "sha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867",
+      "previousSha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/generate-scheduled-reports/index.ts",
+      "origin": "current-repository",
+      "sha256": "1007225baa710fd6c18e890c6569237115ee2d0bc6250b32930afb1e55cba5d8",
+      "previousSha256": "1007225baa710fd6c18e890c6569237115ee2d0bc6250b32930afb1e55cba5d8",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/send-email/deno.json",
+      "origin": "previous-generated-configuration",
+      "sha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867",
+      "previousSha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/send-email/index.ts",
+      "origin": "current-repository",
+      "sha256": "eb7ab4da498cf23add764a8b7ab8ad6519abc142fa60af781514121e05afe31e",
+      "previousSha256": "eb7ab4da498cf23add764a8b7ab8ad6519abc142fa60af781514121e05afe31e",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/send-payment-reminders/deno.json",
+      "origin": "previous-generated-configuration",
+      "sha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867",
+      "previousSha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/send-payment-reminders/index.ts",
+      "origin": "current-repository",
+      "sha256": "7ed6d261daf47f25930e3a46dc3333857fb83263b5d71c31eed31616dfc244e9",
+      "previousSha256": "7ed6d261daf47f25930e3a46dc3333857fb83263b5d71c31eed31616dfc244e9",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/send-push/deno.json",
+      "origin": "previous-generated-configuration",
+      "sha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867",
+      "previousSha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/send-push/index.ts",
+      "origin": "current-repository",
+      "sha256": "0ecef1c8642781138ecda6956072204a89fbb0b85bdc0a094c0331afa3ced3fc",
+      "previousSha256": "0ecef1c8642781138ecda6956072204a89fbb0b85bdc0a094c0331afa3ced3fc",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/sync-mobile-device/deno.json",
+      "origin": "previous-generated-configuration",
+      "sha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867",
+      "previousSha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/sync-mobile-device/index.ts",
+      "origin": "current-repository",
+      "sha256": "509754a426417b4a4f90a9450aaef5fea4d856bfb94eb683ca208f5cdec654e5",
+      "previousSha256": "923cc50b991f91f55df7db9e53d365f3d9ecba919863cd9e01046e959bb14873",
+      "changedFromPreviousCandidate": true,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/update-user-password/deno.json",
+      "origin": "previous-generated-configuration",
+      "sha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867",
+      "previousSha256": "0e09106543843a15b4a7a175a138f190e0a677afe34ce84a13cafd74f5e34867",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/update-user-password/index.ts",
+      "origin": "current-repository",
+      "sha256": "61338545403c3ceaff81c372c2fde0751e8770638750660bcee253782a1a9bcb",
+      "previousSha256": "61338545403c3ceaff81c372c2fde0751e8770638750660bcee253782a1a9bcb",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/_core/auth-admin/application/require-active-staff.ts",
+      "origin": "current-repository",
+      "sha256": "0255cd95832f5465c10732614cb2779afc99fc90d9a4ac60cbc8f0dcc3f1bfe0",
+      "previousSha256": "0255cd95832f5465c10732614cb2779afc99fc90d9a4ac60cbc8f0dcc3f1bfe0",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/_core/auth-admin/application/use-cases/delete-auth-user-use-case.ts",
+      "origin": "current-repository",
+      "sha256": "78c232ea449c66adde1d90562bc2114039f79c25d58d3d1aa8d91ec0e1dac5cd",
+      "previousSha256": "78c232ea449c66adde1d90562bc2114039f79c25d58d3d1aa8d91ec0e1dac5cd",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/_core/auth-admin/application/use-cases/update-user-password-use-case.ts",
+      "origin": "current-repository",
+      "sha256": "635afce93fdaa13f5dd16fb41a76662c5241b2da92afbc6291603ac1801e87d3",
+      "previousSha256": "635afce93fdaa13f5dd16fb41a76662c5241b2da92afbc6291603ac1801e87d3",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/_core/auth-admin/domain/auth-admin-error.ts",
+      "origin": "current-repository",
+      "sha256": "d45fdc41fab730b105ddbe3e2889eac203b4f0748d893951a150d9f79c0e5d5f",
+      "previousSha256": "d45fdc41fab730b105ddbe3e2889eac203b4f0748d893951a150d9f79c0e5d5f",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/_core/auth-admin/infrastructure/supabase-auth-admin-gateway.ts",
+      "origin": "current-repository",
+      "sha256": "882a5e827317cf1a6a60079270bf65c93b7d05dbe6da4e964a58f564205e2b30",
+      "previousSha256": "882a5e827317cf1a6a60079270bf65c93b7d05dbe6da4e964a58f564205e2b30",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/_core/communications/application/use-cases/send-email-use-case.ts",
+      "origin": "current-repository",
+      "sha256": "5112db1026983bc10a4094fd452303621b6321fa1471b8cb8c6c3073e3b2877a",
+      "previousSha256": "5112db1026983bc10a4094fd452303621b6321fa1471b8cb8c6c3073e3b2877a",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/_core/communications/domain/communications-error.ts",
+      "origin": "current-repository",
+      "sha256": "a35c82230fbc5982d5a6003b6fd25a7e6130dcfea562a7e14d1d045924b1719e",
+      "previousSha256": "a35c82230fbc5982d5a6003b6fd25a7e6130dcfea562a7e14d1d045924b1719e",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/_core/communications/infrastructure/resend-communications-gateway.ts",
+      "origin": "current-repository",
+      "sha256": "127ca1d5ae9626428163f86b49ef8cf56f629e6876f908aecda274b5ce4c399c",
+      "previousSha256": "127ca1d5ae9626428163f86b49ef8cf56f629e6876f908aecda274b5ce4c399c",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/_core/http/body.ts",
+      "origin": "current-repository",
+      "sha256": "4d12d822815d94e22d2ff7003afc7f9dd030a41cc0879f741e66d1cd8e5c49cf",
+      "previousSha256": "4d12d822815d94e22d2ff7003afc7f9dd030a41cc0879f741e66d1cd8e5c49cf",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/_core/http/response.ts",
+      "origin": "current-repository",
+      "sha256": "7f62f3aabe8d0456bb30ef748a245623a1263944819477f93f1841654a84577e",
+      "previousSha256": "7f62f3aabe8d0456bb30ef748a245623a1263944819477f93f1841654a84577e",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/_core/push/infrastructure/firebase-push-gateway.ts",
+      "origin": "current-repository",
+      "sha256": "1dc61617c01b525a2943e64b620edbe197c030443ad8acba8129f4624a957620",
+      "previousSha256": "1dc61617c01b525a2943e64b620edbe197c030443ad8acba8129f4624a957620",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/_core/reporting/application/use-cases/delete-report-run-use-case.ts",
+      "origin": "current-repository",
+      "sha256": "e8070102f2586dc37a0016878c3f4c3998d37f8bc4f5a22c5d299811fe3af7f7",
+      "previousSha256": "e8070102f2586dc37a0016878c3f4c3998d37f8bc4f5a22c5d299811fe3af7f7",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/_core/reporting/application/use-cases/generate-report-run-use-case.ts",
+      "origin": "current-repository",
+      "sha256": "bea10104c1d5f9117f88673892f4ed7f83b4acd9c9635bfeb96807f4f24959a6",
+      "previousSha256": "bea10104c1d5f9117f88673892f4ed7f83b4acd9c9635bfeb96807f4f24959a6",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/_core/reporting/application/use-cases/generate-scheduled-reports-use-case.ts",
+      "origin": "current-repository",
+      "sha256": "5f9887fcb406bb4eef01d4fb2e266aa6a5c4562e59bdc12200116fc7d951c611",
+      "previousSha256": "5f9887fcb406bb4eef01d4fb2e266aa6a5c4562e59bdc12200116fc7d951c611",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/_core/reporting/domain/reporting-types.ts",
+      "origin": "current-repository",
+      "sha256": "e7e00279bd7e0df7bdb079293ada25b48d102fbd2d1a86b93140cf9ee3fdc87c",
+      "previousSha256": "e7e00279bd7e0df7bdb079293ada25b48d102fbd2d1a86b93140cf9ee3fdc87c",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/_core/reporting/infrastructure/legacy-reporting-gateway.ts",
+      "origin": "current-repository",
+      "sha256": "875b3db978249a668e77de9d69552cbc4f8dd08f29c31dc2fe5e850faba01865",
+      "previousSha256": "875b3db978249a668e77de9d69552cbc4f8dd08f29c31dc2fe5e850faba01865",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/_shared/cors.ts",
+      "origin": "current-repository",
+      "sha256": "409589a20b7e1006bc0e9e78be41d11745fee7e480ed5133a75b19e93b5e4a10",
+      "previousSha256": "409589a20b7e1006bc0e9e78be41d11745fee7e480ed5133a75b19e93b5e4a10",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/_shared/relations.ts",
+      "origin": "current-repository",
+      "sha256": "a279486f00b3a0a354e412168b38f4d4003118b9d860143975afee9e94a78a88",
+      "previousSha256": "a279486f00b3a0a354e412168b38f4d4003118b9d860143975afee9e94a78a88",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    },
+    {
+      "file": "supabase/functions/_shared/reporting.ts",
+      "origin": "current-repository",
+      "sha256": "015644c76b16683e1e202108c1867518341d841d1a8a1bbf7246bd1177bc194d",
+      "previousSha256": "015644c76b16683e1e202108c1867518341d841d1a8a1bbf7246bd1177bc194d",
+      "changedFromPreviousCandidate": false,
+      "privateCopyMatchesSource": true
+    }
+  ],
+  "changedSourceFiles": [
+    "supabase/functions/sync-mobile-device/index.ts"
+  ],
+  "cloudBundleBuilt": false,
+  "deployed": false,
+  "note": "Current repository source copies only. Previous private candidate/return artifacts preserved; no Cloud metadata recheck in this step."
+}

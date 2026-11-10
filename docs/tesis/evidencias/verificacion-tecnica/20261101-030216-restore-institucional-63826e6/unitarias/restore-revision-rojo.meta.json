@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/unit/restore-guards.test.cjs"
+  ],
+  "start": "2026-11-01T15:52:54.432Z",
+  "end": "2026-11-01T15:52:54.696Z",
+  "durationSeconds": 0.264,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

@@ -1,0 +1,30 @@
+{
+  "command": [
+    "docker",
+    "exec",
+    "-i",
+    "--user",
+    "postgres",
+    "riovoley-restore-20261101-030216-04",
+    "psql",
+    "-X",
+    "-q",
+    "-A",
+    "-t",
+    "-v",
+    "ON_ERROR_STOP=1",
+    "-h",
+    "/tmp",
+    "-d",
+    "postgres"
+  ],
+  "startedAt": "2026-11-01T03:06:06.676Z",
+  "finishedAt": "2026-11-01T03:06:06.819Z",
+  "durationSeconds": 0.143,
+  "exitCode": 0,
+  "signal": null,
+  "stdoutBytes": 0,
+  "stderrBytes": 0,
+  "inputRecorded": false,
+  "rawOutputPublished": false
+}

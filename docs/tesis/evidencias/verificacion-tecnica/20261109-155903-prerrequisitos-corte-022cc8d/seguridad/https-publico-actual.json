@@ -1,0 +1,93 @@
+{
+  "observedAt": "2026-11-09T16:02:21.035Z",
+  "observations": [
+    {
+      "pathname": "/",
+      "startedAt": "2026-11-09T16:02:19.993Z",
+      "finishedAt": "2026-11-09T16:02:20.736Z",
+      "finalUrl": "https://riovoley.com/",
+      "status": 200,
+      "redirects": [],
+      "bytes": 2412,
+      "bodySha256": "dd3d08b0d721cc85faf105325ad0c3a84e708ad6d65a264bfa50c3d3ab9c8ca1",
+      "rootElement": true,
+      "manifestNamePresent": null,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "strict-transport-security": "max-age=63072000",
+        "x-content-type-options": null,
+        "x-frame-options": null,
+        "referrer-policy": null,
+        "content-security-policy": null
+      }
+    },
+    {
+      "pathname": "/login",
+      "startedAt": "2026-11-09T16:02:20.737Z",
+      "finishedAt": "2026-11-09T16:02:20.841Z",
+      "finalUrl": "https://riovoley.com/login",
+      "status": 200,
+      "redirects": [],
+      "bytes": 2412,
+      "bodySha256": "dd3d08b0d721cc85faf105325ad0c3a84e708ad6d65a264bfa50c3d3ab9c8ca1",
+      "rootElement": true,
+      "manifestNamePresent": null,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "strict-transport-security": "max-age=63072000",
+        "x-content-type-options": null,
+        "x-frame-options": null,
+        "referrer-policy": null,
+        "content-security-policy": null
+      }
+    },
+    {
+      "pathname": "/reset-password",
+      "startedAt": "2026-11-09T16:02:20.841Z",
+      "finishedAt": "2026-11-09T16:02:20.943Z",
+      "finalUrl": "https://riovoley.com/reset-password",
+      "status": 200,
+      "redirects": [],
+      "bytes": 2412,
+      "bodySha256": "dd3d08b0d721cc85faf105325ad0c3a84e708ad6d65a264bfa50c3d3ab9c8ca1",
+      "rootElement": true,
+      "manifestNamePresent": null,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "strict-transport-security": "max-age=63072000",
+        "x-content-type-options": null,
+        "x-frame-options": null,
+        "referrer-policy": null,
+        "content-security-policy": null
+      }
+    },
+    {
+      "pathname": "/manifest.json",
+      "startedAt": "2026-11-09T16:02:20.943Z",
+      "finishedAt": "2026-11-09T16:02:21.035Z",
+      "finalUrl": "https://riovoley.com/manifest.json",
+      "status": 200,
+      "redirects": [],
+      "bytes": 580,
+      "bodySha256": "fe96404cf250253191f98b621067ba7646b6d96bb20a1b8307adc3d7ca5621bb",
+      "rootElement": false,
+      "manifestNamePresent": true,
+      "headers": {
+        "content-type": "application/json; charset=utf-8",
+        "strict-transport-security": "max-age=63072000",
+        "x-content-type-options": null,
+        "x-frame-options": null,
+        "referrer-policy": null,
+        "content-security-policy": null
+      }
+    }
+  ],
+  "methods": [
+    "GET"
+  ],
+  "javascriptExecuted": false,
+  "loginPerformed": false,
+  "edgeInvoked": false,
+  "productionChanged": false,
+  "scope": "Transporte HTTPS con validacion TLS predeterminada, HTML SPA y manifest publico. HTTP200 no demuestra acceso por rol ni funcionamiento integral."
+}

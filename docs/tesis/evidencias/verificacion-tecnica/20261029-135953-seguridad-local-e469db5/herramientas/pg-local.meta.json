@@ -1,0 +1,19 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "install",
+    "--prefix",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\sql-driver",
+    "--no-audit",
+    "--no-fund",
+    "--save-exact",
+    "pg@8.23.1"
+  ],
+  "start": "2026-10-29T14:10:25.912Z",
+  "end": "2026-10-29T14:10:29.568Z",
+  "durationSeconds": 3.656,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

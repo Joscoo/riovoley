@@ -1,0 +1,13 @@
+{
+  "state": "APROBADO",
+  "entries": [
+    {
+      "map": "main.2aa92cc6.js.map",
+      "source": "src/shared/platform/push.js",
+      "matchesCurrent": true,
+      "sourceSha256": "4e88d26b00c59355f2e7a171b300c9ae674a028b320629f61e01c6e9dc44a288",
+      "bundledSourceSha256": "4e88d26b00c59355f2e7a171b300c9ae674a028b320629f61e01c6e9dc44a288"
+    }
+  ],
+  "scope": "Comparación exacta del contenido de push.js del mapa de fuentes compilado con el archivo actual, normalizando únicamente CRLF."
+}

@@ -1,0 +1,16 @@
+{
+  "command": [
+    "node",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\tools\\node_modules\\supabase\\dist\\supabase.js",
+    "migration",
+    "new",
+    "riovoley_security_production_proposal",
+    "--workdir",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\production-migration\\cli"
+  ],
+  "start": "2026-10-31T21:16:09.169Z",
+  "end": "2026-10-31T21:16:13.719Z",
+  "durationSeconds": 4.55,
+  "exitCode": 0,
+  "signal": null
+}

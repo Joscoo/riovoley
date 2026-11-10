@@ -1,0 +1,148 @@
+✖ glob: minimatch conserva API callable y nombrada con motor corregido (15.8711ms)
+✖ eslint: minimatch conserva API callable y nombrada con motor corregido (7.413ms)
+✖ filelist: minimatch conserva API callable y nombrada con motor corregido (554.588ms)
+✔ glob heredado conserva callbacks y API sync con patrones del motor corregido (36.1864ms)
+✖ glob de Capacitor admite API async y cancela antes de recorrer (15.7267ms)
+✖ patrón de amplificación finaliza con límite externo de recursos (98.9376ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 1
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 854.6091
+
+✖ failing tests:
+
+test at tests\integration\toolchain.patterns.test.cjs:3:52
+✖ glob: minimatch conserva API callable y nombrada con motor corregido (15.8711ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.patterns.test.cjs:5:47)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\integration\toolchain.patterns.test.cjs:3:52
+✖ eslint: minimatch conserva API callable y nombrada con motor corregido (7.413ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.patterns.test.cjs:5:47)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\integration\toolchain.patterns.test.cjs:3:52
+✖ filelist: minimatch conserva API callable y nombrada con motor corregido (554.588ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.patterns.test.cjs:5:47)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\integration\toolchain.patterns.test.cjs:23:1
+✖ glob de Capacitor admite API async y cancela antes de recorrer (15.7267ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  '13.0.6' !== '14.0.3'
+  
+      at TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.patterns.test.cjs:25:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '13.0.6',
+    expected: '14.0.3',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\integration\toolchain.patterns.test.cjs:34:1
+✖ patrón de amplificación finaliza con límite externo de recursos (98.9376ms)
+  AssertionError [ERR_ASSERTION]: node:internal/modules/cjs/loader:1520
+    throw err;
+    ^
+  
+  Error: Cannot find module '@riovoley/minimatch-engine'
+  Require stack:
+  - D:\Riovoley\riovoley\[eval]
+      at Module._resolveFilename (node:internal/modules/cjs/loader:1517:15)
+      at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+      at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+      at Module._load (node:internal/modules/cjs/loader:1294:5)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+      at Module.require (node:internal/modules/cjs/loader:1617:12)
+      at require (node:internal/modules/helpers:153:16)
+      at [eval]:1:19
+      at runScriptInThisContext (node:internal/vm:219:10) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [ 'D:\\Riovoley\\riovoley\\[eval]' ]
+  }
+  
+  Node.js v24.18.0
+  
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.patterns.test.cjs:38:46)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+

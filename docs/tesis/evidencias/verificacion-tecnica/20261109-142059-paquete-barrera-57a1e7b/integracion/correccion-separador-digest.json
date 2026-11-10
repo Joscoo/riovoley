@@ -1,0 +1,13 @@
+{
+  "recordedAt": "2026-11-09T14:27:58.442Z",
+  "secondRun": {
+    "executed": 18,
+    "passed": 17,
+    "failed": 1
+  },
+  "cause": "Physical CRLF formatting changed a literal newline in the added gate digest query; main-return guard rejected before execution.",
+  "fix": "Use explicit SQL E-backslash-n delimiter, independent of physical EOL formatting.",
+  "originalSqlFilesChanged": false,
+  "originalGuardRetained": true,
+  "syntheticCloneResetToInitialState": true
+}

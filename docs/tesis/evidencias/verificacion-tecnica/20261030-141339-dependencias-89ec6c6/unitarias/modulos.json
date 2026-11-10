@@ -1,0 +1,288 @@
+[
+  {
+    "module": "gamification",
+    "executed": 69,
+    "passed": 69,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/features/gamification/presentation/components/StudentGamificationPanel.test.js",
+      "src/features/gamification/application/useCases/createGamificationUseCases.test.js",
+      "src/features/gamification/presentation/components/IdentityPortrait.test.js",
+      "src/features/gamification/presentation/components/GamificationAdminPanel.test.js",
+      "src/features/gamification/application/useCases/gamification.audit.integration.test.js",
+      "src/features/gamification/presentation/createGamificationService.test.js",
+      "src/features/gamification/application/useCases/createGamificationAdminUseCases.test.js",
+      "src/features/gamification/infrastructure/repositories/security.contract.test.js",
+      "src/features/gamification/infrastructure/repositories/supabaseGamificationRepository.test.js",
+      "src/features/gamification/presentation/components/cosmeticVisuals.test.js",
+      "src/features/gamification/application/useCases/createGamificationFoundationUseCases.test.js"
+    ]
+  },
+  {
+    "module": "user-management",
+    "executed": 32,
+    "passed": 32,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/features/user-management/presentation/components/tabs/CreationCredentials.test.js",
+      "src/features/user-management/presentation/components/shared/ResendCredentialsModal.test.js",
+      "src/features/user-management/presentation/components/shared/CreatedCredentialsModal.test.js",
+      "src/features/user-management/presentation/components/shared/UserFilters.test.js",
+      "src/features/user-management/application/contracts/userManagementRepositoryContract.test.js",
+      "src/features/user-management/presentation/createUserManagementService.test.js",
+      "src/features/user-management/application/useCases/createUserManagementUseCases.test.js",
+      "src/features/user-management/infrastructure/repositories/deletion.security.test.js"
+    ]
+  },
+  {
+    "module": "student-dashboard",
+    "executed": 32,
+    "passed": 32,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/features/student-dashboard/presentation/components/StudentPhysicalTests.test.js",
+      "src/features/student-dashboard/presentation/components/StudentPanel.access.test.js",
+      "src/features/student-dashboard/presentation/components/StudentProfileIdentityCard.test.js",
+      "src/features/student-dashboard/application/useCases/createStudentDashboardUseCases.test.js",
+      "src/features/student-dashboard/presentation/createStudentDashboardService.test.js",
+      "src/features/student-dashboard/infrastructure/repositories/supabaseStudentDashboardRepository.test.js",
+      "src/features/student-dashboard/presentation/components/physical-tests/buildStudentPhysicalProfile.test.js"
+    ]
+  },
+  {
+    "module": "shared",
+    "executed": 57,
+    "passed": 57,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/shared/platform/push.lifecycle.test.js",
+      "src/shared/ui/panel-guide/PanelUserGuide.test.js",
+      "src/shared/ui/PageShell.test.js",
+      "src/shared/ui/SortableHeader.test.js",
+      "src/shared/ui/Modal.test.js",
+      "src/shared/infrastructure/auth/deleteAuthUserById.test.js",
+      "src/shared/platform/ota.test.js",
+      "src/shared/ui/semanticCatalog.test.js",
+      "src/shared/ui/iconRegistry.test.js",
+      "src/shared/platform/push.test.js",
+      "src/shared/ui/render-profile/renderProfileResolver.test.js",
+      "src/shared/ui/copyQualityCheck.test.js",
+      "src/shared/infrastructure/communications/whatsappBusinessService.test.js",
+      "src/shared/lib/tableQuery.test.js"
+    ]
+  },
+  {
+    "module": "payments",
+    "executed": 40,
+    "passed": 40,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/features/payments/presentation/createPaymentsService.test.js",
+      "src/features/payments/application/useCases/createPaymentsUseCases.test.js",
+      "src/features/payments/infrastructure/repositories/supabasePaymentsRepository.test.js"
+    ]
+  },
+  {
+    "module": "auth-session",
+    "executed": 19,
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/features/auth-session/presentation/components/ResetPassword.recovery.test.js",
+      "src/features/auth-session/presentation/components/Login.auth-events.test.js",
+      "src/features/auth-session/presentation/components/ChangePasswordModal.password.test.js",
+      "src/features/auth-session/application/useCases/createAuthSessionUseCases.test.js",
+      "src/features/auth-session/presentation/createAuthSessionService.test.js",
+      "src/features/auth-session/presentation/utils/deferAuthEvent.test.js"
+    ]
+  },
+  {
+    "module": "notifications",
+    "executed": 14,
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/features/notifications/presentation/components/NotificationBell.access.test.js",
+      "src/features/notifications/infrastructure/repositories/supabaseNotificationsRepository.test.js",
+      "src/features/notifications/presentation/createNotificationsService.test.js",
+      "src/features/notifications/application/useCases/createNotificationsUseCases.test.js"
+    ]
+  },
+  {
+    "module": "otros",
+    "executed": 11,
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/utils/passwordUtils.test.js",
+      "src/App.test.js",
+      "src/config/appUrls.test.js"
+    ]
+  },
+  {
+    "module": "user-provisioning",
+    "executed": 20,
+    "passed": 20,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/features/user-provisioning/infrastructure/repositories/supabaseUserProvisioningRepository.test.js",
+      "src/features/user-provisioning/application/useCases/createUserProvisioningUseCases.test.js",
+      "src/features/user-provisioning/presentation/createUserProvisioningService.test.js"
+    ]
+  },
+  {
+    "module": "reporting",
+    "executed": 7,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/features/reporting/presentation/createReportingService.test.js",
+      "src/features/reporting/application/useCases/ensureDailyAttendanceReportUseCase.test.js",
+      "src/features/reporting/infrastructure/repositories/supabaseReportingRepository.contract.test.js"
+    ]
+  },
+  {
+    "module": "physical-tests",
+    "executed": 9,
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/features/physical-tests/application/useCases/createPhysicalTestsUseCases.test.js",
+      "src/features/physical-tests/presentation/createPhysicalTestsService.test.js"
+    ]
+  },
+  {
+    "module": "trainer-management",
+    "executed": 8,
+    "passed": 8,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/features/trainer-management/presentation/createTrainerManagementService.test.js",
+      "src/features/trainer-management/application/useCases/createTrainerManagementUseCases.test.js"
+    ]
+  },
+  {
+    "module": "athletes",
+    "executed": 14,
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/features/athletes/application/useCases/createAthletesUseCases.test.js",
+      "src/features/athletes/presentation/createAthletesService.test.js"
+    ]
+  },
+  {
+    "module": "account-admin",
+    "executed": 12,
+    "passed": 12,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/features/account-admin/presentation/createAccountAdminService.test.js",
+      "src/features/account-admin/application/useCases/createAccountAdminUseCases.test.js",
+      "src/features/account-admin/infrastructure/repositories/supabaseAccountAdminRepository.password.test.js"
+    ]
+  },
+  {
+    "module": "communications",
+    "executed": 11,
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/features/communications/presentation/createCommunicationsService.test.js",
+      "src/features/communications/infrastructure/repositories/supabaseCommunicationsRepository.test.js",
+      "src/features/communications/application/useCases/createCommunicationsUseCases.test.js"
+    ]
+  },
+  {
+    "module": "trainer-dashboard",
+    "executed": 4,
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/features/trainer-dashboard/presentation/createTrainerDashboardService.test.js",
+      "src/features/trainer-dashboard/application/useCases/createTrainerDashboardUseCases.test.js"
+    ]
+  },
+  {
+    "module": "auth-profile",
+    "executed": 5,
+    "passed": 5,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/features/auth-profile/presentation/createAuthProfileService.test.js",
+      "src/features/auth-profile/application/useCases/loadUserProfileUseCase.test.js"
+    ]
+  },
+  {
+    "module": "admin-dashboard",
+    "executed": 9,
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/features/admin-dashboard/presentation/createAdminDashboardService.test.js",
+      "src/features/admin-dashboard/application/useCases/createAdminDashboardUseCases.test.js"
+    ]
+  },
+  {
+    "module": "attendance",
+    "executed": 32,
+    "passed": 32,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/features/attendance/presentation/createAttendanceService.test.js",
+      "src/features/attendance/application/useCases/createAttendanceUseCases.test.js",
+      "src/features/attendance/infrastructure/repositories/supabaseAttendanceRepository.test.js"
+    ]
+  },
+  {
+    "module": "training-categories",
+    "executed": 3,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/features/training-categories/application/useCases/createTrainingCategoriesUseCases.test.js"
+    ]
+  },
+  {
+    "module": "schedules",
+    "executed": 4,
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/features/schedules/presentation/createSchedulesService.test.js",
+      "src/features/schedules/application/useCases/createSchedulesUseCases.test.js"
+    ]
+  },
+  {
+    "module": "announcements",
+    "executed": 7,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "src/features/announcements/application/useCases/createAnnouncementsUseCases.test.js",
+      "src/features/announcements/presentation/createAnnouncementsService.test.js"
+    ]
+  }
+]

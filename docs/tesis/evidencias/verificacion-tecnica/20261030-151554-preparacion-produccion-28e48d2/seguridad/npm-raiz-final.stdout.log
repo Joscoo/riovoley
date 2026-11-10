@@ -1,0 +1,1054 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "@babel/eslint-parser": {
+      "name": "@babel/eslint-parser",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "eslint"
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/@babel/eslint-parser"
+      ],
+      "fixAvailable": true
+    },
+    "@capacitor/cli": {
+      "name": "@capacitor/cli",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "rimraf"
+      ],
+      "effects": [],
+      "range": ">=5.0.0-alpha.1",
+      "nodes": [
+        "node_modules/@capacitor/cli"
+      ],
+      "fixAvailable": {
+        "name": "@capacitor/cli",
+        "version": "4.8.2",
+        "isSemVerMajor": true
+      }
+    },
+    "@eslint-community/eslint-utils": {
+      "name": "@eslint-community/eslint-utils",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "eslint"
+      ],
+      "effects": [
+        "@typescript-eslint/utils",
+        "eslint"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@eslint-community/eslint-utils"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "1.0.10",
+        "isSemVerMajor": true
+      }
+    },
+    "@eslint/eslintrc": {
+      "name": "@eslint/eslintrc",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "minimatch"
+      ],
+      "effects": [
+        "eslint"
+      ],
+      "range": "0.0.1 || >=0.1.1",
+      "nodes": [
+        "node_modules/@eslint/eslintrc"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "1.0.10",
+        "isSemVerMajor": true
+      }
+    },
+    "@humanwhocodes/config-array": {
+      "name": "@humanwhocodes/config-array",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "minimatch"
+      ],
+      "effects": [
+        "eslint"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@humanwhocodes/config-array"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "1.0.10",
+        "isSemVerMajor": true
+      }
+    },
+    "@jest/core": {
+      "name": "@jest/core",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@jest/reporters",
+        "@jest/transform",
+        "jest-config",
+        "jest-resolve-dependencies",
+        "jest-runner",
+        "jest-runtime",
+        "jest-snapshot",
+        "rimraf"
+      ],
+      "effects": [
+        "jest",
+        "jest-cli"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@jest/core"
+      ],
+      "fixAvailable": true
+    },
+    "@jest/reporters": {
+      "name": "@jest/reporters",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@jest/transform",
+        "glob"
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/@jest/reporters"
+      ],
+      "fixAvailable": true
+    },
+    "@jest/test-sequencer": {
+      "name": "@jest/test-sequencer",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "jest-runtime"
+      ],
+      "effects": [
+        "jest-config"
+      ],
+      "range": "<=28.0.0-alpha.11",
+      "nodes": [
+        "node_modules/@jest/test-sequencer"
+      ],
+      "fixAvailable": true
+    },
+    "@jest/transform": {
+      "name": "@jest/transform",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "babel-plugin-istanbul"
+      ],
+      "effects": [
+        "babel-jest",
+        "jest-runner",
+        "jest-runtime",
+        "jest-snapshot"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@jest/transform"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "1.0.10",
+        "isSemVerMajor": true
+      }
+    },
+    "@surma/rollup-plugin-off-main-thread": {
+      "name": "@surma/rollup-plugin-off-main-thread",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "ejs"
+      ],
+      "effects": [
+        "workbox-build"
+      ],
+      "range": ">=2.2.0",
+      "nodes": [
+        "node_modules/@surma/rollup-plugin-off-main-thread"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "1.0.10",
+        "isSemVerMajor": true
+      }
+    },
+    "@typescript-eslint/eslint-plugin": {
+      "name": "@typescript-eslint/eslint-plugin",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@typescript-eslint/parser",
+        "@typescript-eslint/type-utils",
+        "@typescript-eslint/utils",
+        "eslint"
+      ],
+      "effects": [
+        "eslint-plugin-jest"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@typescript-eslint/eslint-plugin"
+      ],
+      "fixAvailable": true
+    },
+    "@typescript-eslint/experimental-utils": {
+      "name": "@typescript-eslint/experimental-utils",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@typescript-eslint/utils",
+        "eslint"
+      ],
+      "effects": [],
+      "range": ">=5.7.1-alpha.0",
+      "nodes": [
+        "node_modules/@typescript-eslint/experimental-utils"
+      ],
+      "fixAvailable": true
+    },
+    "@typescript-eslint/parser": {
+      "name": "@typescript-eslint/parser",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "eslint"
+      ],
+      "effects": [
+        "@typescript-eslint/eslint-plugin",
+        "eslint-config-react-app"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@typescript-eslint/parser"
+      ],
+      "fixAvailable": true
+    },
+    "@typescript-eslint/type-utils": {
+      "name": "@typescript-eslint/type-utils",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@typescript-eslint/utils"
+      ],
+      "effects": [],
+      "range": ">=5.9.2-alpha.0",
+      "nodes": [
+        "node_modules/@typescript-eslint/type-utils"
+      ],
+      "fixAvailable": true
+    },
+    "@typescript-eslint/utils": {
+      "name": "@typescript-eslint/utils",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@eslint-community/eslint-utils",
+        "eslint"
+      ],
+      "effects": [
+        "@typescript-eslint/eslint-plugin",
+        "@typescript-eslint/experimental-utils",
+        "@typescript-eslint/type-utils",
+        "eslint-plugin-testing-library"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@typescript-eslint/utils"
+      ],
+      "fixAvailable": true
+    },
+    "babel-jest": {
+      "name": "babel-jest",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@jest/transform",
+        "babel-plugin-istanbul"
+      ],
+      "effects": [
+        "jest-config",
+        "react-scripts"
+      ],
+      "range": ">=24.0.0-alpha.0",
+      "nodes": [
+        "node_modules/babel-jest"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "1.0.10",
+        "isSemVerMajor": true
+      }
+    },
+    "babel-plugin-istanbul": {
+      "name": "babel-plugin-istanbul",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "test-exclude"
+      ],
+      "effects": [
+        "@jest/transform",
+        "babel-jest"
+      ],
+      "range": ">=5.0.1",
+      "nodes": [
+        "node_modules/babel-plugin-istanbul"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "1.0.10",
+        "isSemVerMajor": true
+      }
+    },
+    "ejs": {
+      "name": "ejs",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "jake"
+      ],
+      "effects": [
+        "@surma/rollup-plugin-off-main-thread"
+      ],
+      "range": "3.1.2 - 4.0.1",
+      "nodes": [
+        "node_modules/ejs"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "1.0.10",
+        "isSemVerMajor": true
+      }
+    },
+    "eslint": {
+      "name": "eslint",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@eslint-community/eslint-utils",
+        "@eslint/eslintrc",
+        "@humanwhocodes/config-array",
+        "file-entry-cache",
+        "minimatch"
+      ],
+      "effects": [
+        "@babel/eslint-parser",
+        "@eslint-community/eslint-utils",
+        "@typescript-eslint/eslint-plugin",
+        "@typescript-eslint/experimental-utils",
+        "@typescript-eslint/parser",
+        "@typescript-eslint/utils",
+        "eslint-config-react-app",
+        "eslint-plugin-flowtype",
+        "eslint-plugin-jest",
+        "eslint-plugin-testing-library",
+        "eslint-webpack-plugin",
+        "fork-ts-checker-webpack-plugin",
+        "react-scripts"
+      ],
+      "range": "0.7.1 - 2.0.0-rc.1 || >=4.1.0",
+      "nodes": [
+        "node_modules/eslint"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "1.0.10",
+        "isSemVerMajor": true
+      }
+    },
+    "eslint-config-react-app": {
+      "name": "eslint-config-react-app",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@babel/eslint-parser",
+        "@typescript-eslint/eslint-plugin",
+        "@typescript-eslint/parser",
+        "eslint",
+        "eslint-plugin-flowtype",
+        "eslint-plugin-import",
+        "eslint-plugin-jest",
+        "eslint-plugin-jsx-a11y",
+        "eslint-plugin-react",
+        "eslint-plugin-testing-library"
+      ],
+      "effects": [],
+      "range": ">=0.3.0-alpha.9c45b252",
+      "nodes": [
+        "node_modules/eslint-config-react-app"
+      ],
+      "fixAvailable": true
+    },
+    "eslint-plugin-flowtype": {
+      "name": "eslint-plugin-flowtype",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "eslint"
+      ],
+      "effects": [],
+      "range": ">=3.10.5",
+      "nodes": [
+        "node_modules/eslint-plugin-flowtype"
+      ],
+      "fixAvailable": true
+    },
+    "eslint-plugin-import": {
+      "name": "eslint-plugin-import",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "minimatch"
+      ],
+      "effects": [
+        "eslint-config-react-app"
+      ],
+      "range": ">=1.15.0",
+      "nodes": [
+        "node_modules/eslint-plugin-import"
+      ],
+      "fixAvailable": true
+    },
+    "eslint-plugin-jest": {
+      "name": "eslint-plugin-jest",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@typescript-eslint/eslint-plugin",
+        "eslint"
+      ],
+      "effects": [
+        "eslint-config-react-app"
+      ],
+      "range": ">=22.0.0",
+      "nodes": [
+        "node_modules/eslint-plugin-jest"
+      ],
+      "fixAvailable": true
+    },
+    "eslint-plugin-jsx-a11y": {
+      "name": "eslint-plugin-jsx-a11y",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "minimatch"
+      ],
+      "effects": [
+        "eslint-config-react-app"
+      ],
+      "range": ">=6.5.0",
+      "nodes": [
+        "node_modules/eslint-plugin-jsx-a11y"
+      ],
+      "fixAvailable": true
+    },
+    "eslint-plugin-react": {
+      "name": "eslint-plugin-react",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "minimatch"
+      ],
+      "effects": [],
+      "range": ">=7.23.0",
+      "nodes": [
+        "node_modules/eslint-plugin-react"
+      ],
+      "fixAvailable": true
+    },
+    "eslint-plugin-testing-library": {
+      "name": "eslint-plugin-testing-library",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@typescript-eslint/utils",
+        "eslint"
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/eslint-plugin-testing-library"
+      ],
+      "fixAvailable": true
+    },
+    "eslint-webpack-plugin": {
+      "name": "eslint-webpack-plugin",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "eslint"
+      ],
+      "effects": [
+        "react-scripts"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/eslint-webpack-plugin"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "1.0.10",
+        "isSemVerMajor": true
+      }
+    },
+    "file-entry-cache": {
+      "name": "file-entry-cache",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "flat-cache"
+      ],
+      "effects": [
+        "eslint"
+      ],
+      "range": "4.0.0 - 7.0.2",
+      "nodes": [
+        "node_modules/file-entry-cache"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "1.0.10",
+        "isSemVerMajor": true
+      }
+    },
+    "filelist": {
+      "name": "filelist",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "minimatch"
+      ],
+      "effects": [
+        "jake"
+      ],
+      "range": ">=0.0.2",
+      "nodes": [
+        "node_modules/filelist"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "1.0.10",
+        "isSemVerMajor": true
+      }
+    },
+    "flat-cache": {
+      "name": "flat-cache",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "rimraf"
+      ],
+      "effects": [
+        "file-entry-cache"
+      ],
+      "range": "1.3.4 - 4.0.0",
+      "nodes": [
+        "node_modules/flat-cache"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "1.0.10",
+        "isSemVerMajor": true
+      }
+    },
+    "fork-ts-checker-webpack-plugin": {
+      "name": "fork-ts-checker-webpack-plugin",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "eslint",
+        "glob",
+        "minimatch"
+      ],
+      "effects": [
+        "react-dev-utils"
+      ],
+      "range": ">=0.2.9",
+      "nodes": [
+        "node_modules/fork-ts-checker-webpack-plugin"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "1.0.10",
+        "isSemVerMajor": true
+      }
+    },
+    "glob": {
+      "name": "glob",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1244013,
+          "name": "glob",
+          "dependency": "glob",
+          "title": "Glob: AbortSignal cancellation bypass allows post-timeout filesystem traversal",
+          "url": "https://github.com/advisories/GHSA-3g3m-2fjr-6pw4",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-400"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": ">=9.0.0 <=14.0.1"
+        },
+        "minimatch"
+      ],
+      "effects": [
+        "@jest/reporters",
+        "fork-ts-checker-webpack-plugin",
+        "jest-config",
+        "jest-runtime",
+        "rimraf",
+        "test-exclude",
+        "workbox-build"
+      ],
+      "range": "3.0.0 - 14.0.1",
+      "nodes": [
+        "node_modules/@capacitor/cli/node_modules/glob",
+        "node_modules/glob"
+      ],
+      "fixAvailable": {
+        "name": "@capacitor/cli",
+        "version": "4.8.2",
+        "isSemVerMajor": true
+      }
+    },
+    "jake": {
+      "name": "jake",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "filelist"
+      ],
+      "effects": [
+        "ejs"
+      ],
+      "range": ">=10.6.1",
+      "nodes": [
+        "node_modules/jake"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "1.0.10",
+        "isSemVerMajor": true
+      }
+    },
+    "jest": {
+      "name": "jest",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@jest/core",
+        "jest-cli"
+      ],
+      "effects": [
+        "jest-watch-typeahead"
+      ],
+      "range": ">=19.1.0-alpha.eed82034",
+      "nodes": [
+        "node_modules/jest"
+      ],
+      "fixAvailable": true
+    },
+    "jest-circus": {
+      "name": "jest-circus",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "jest-runtime",
+        "jest-snapshot"
+      ],
+      "effects": [
+        "jest-config"
+      ],
+      "range": ">=25.2.4",
+      "nodes": [
+        "node_modules/jest-circus"
+      ],
+      "fixAvailable": true
+    },
+    "jest-cli": {
+      "name": "jest-cli",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@jest/core",
+        "jest-config"
+      ],
+      "effects": [
+        "jest"
+      ],
+      "range": ">=19.1.0-alpha.eed82034",
+      "nodes": [
+        "node_modules/jest-cli"
+      ],
+      "fixAvailable": true
+    },
+    "jest-config": {
+      "name": "jest-config",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@jest/test-sequencer",
+        "babel-jest",
+        "glob",
+        "jest-circus",
+        "jest-jasmine2",
+        "jest-runner"
+      ],
+      "effects": [
+        "@jest/core",
+        "jest-cli"
+      ],
+      "range": ">=19.1.0-alpha.eed82034",
+      "nodes": [
+        "node_modules/jest-config"
+      ],
+      "fixAvailable": true
+    },
+    "jest-jasmine2": {
+      "name": "jest-jasmine2",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "jest-runtime",
+        "jest-snapshot"
+      ],
+      "effects": [
+        "jest-config"
+      ],
+      "range": ">=24.2.0-alpha.0",
+      "nodes": [
+        "node_modules/jest-jasmine2"
+      ],
+      "fixAvailable": true
+    },
+    "jest-resolve-dependencies": {
+      "name": "jest-resolve-dependencies",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "jest-snapshot"
+      ],
+      "effects": [],
+      "range": ">=27.0.0-next.0",
+      "nodes": [
+        "node_modules/jest-resolve-dependencies"
+      ],
+      "fixAvailable": true
+    },
+    "jest-runner": {
+      "name": "jest-runner",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@jest/transform",
+        "jest-runtime"
+      ],
+      "effects": [
+        "jest-config"
+      ],
+      "range": ">=24.0.0-alpha.0",
+      "nodes": [
+        "node_modules/jest-runner"
+      ],
+      "fixAvailable": true
+    },
+    "jest-runtime": {
+      "name": "jest-runtime",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@jest/transform",
+        "glob",
+        "jest-snapshot"
+      ],
+      "effects": [
+        "@jest/test-sequencer",
+        "jest-circus",
+        "jest-jasmine2",
+        "jest-runner"
+      ],
+      "range": ">=24.0.0-alpha.0",
+      "nodes": [
+        "node_modules/jest-runtime"
+      ],
+      "fixAvailable": true
+    },
+    "jest-snapshot": {
+      "name": "jest-snapshot",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@jest/transform"
+      ],
+      "effects": [
+        "@jest/core",
+        "jest-circus",
+        "jest-jasmine2",
+        "jest-resolve-dependencies",
+        "jest-runtime"
+      ],
+      "range": ">=27.0.0-next.0",
+      "nodes": [
+        "node_modules/jest-snapshot"
+      ],
+      "fixAvailable": true
+    },
+    "jest-watch-typeahead": {
+      "name": "jest-watch-typeahead",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "jest"
+      ],
+      "effects": [],
+      "range": "0.6.0 - 2.0.0",
+      "nodes": [
+        "node_modules/jest-watch-typeahead"
+      ],
+      "fixAvailable": true
+    },
+    "minimatch": {
+      "name": "minimatch",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1244012,
+          "name": "minimatch",
+          "dependency": "minimatch",
+          "title": "minimatch has potential denial of service via globparts amplification",
+          "url": "https://github.com/advisories/GHSA-g3hv-75wg-m249",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-405"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<11.0.1"
+        }
+      ],
+      "effects": [
+        "@eslint/eslintrc",
+        "@humanwhocodes/config-array",
+        "eslint",
+        "eslint-plugin-import",
+        "eslint-plugin-jsx-a11y",
+        "eslint-plugin-react",
+        "filelist",
+        "fork-ts-checker-webpack-plugin",
+        "glob",
+        "recursive-readdir",
+        "test-exclude"
+      ],
+      "range": "<11.0.1",
+      "nodes": [
+        "node_modules/@capacitor/cli/node_modules/minimatch",
+        "node_modules/filelist/node_modules/minimatch",
+        "node_modules/minimatch"
+      ],
+      "fixAvailable": {
+        "name": "@capacitor/cli",
+        "version": "4.8.2",
+        "isSemVerMajor": true
+      }
+    },
+    "react-dev-utils": {
+      "name": "react-dev-utils",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "fork-ts-checker-webpack-plugin",
+        "recursive-readdir"
+      ],
+      "effects": [
+        "react-scripts"
+      ],
+      "range": ">=0.5.2",
+      "nodes": [
+        "node_modules/react-dev-utils"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "1.0.10",
+        "isSemVerMajor": true
+      }
+    },
+    "react-scripts": {
+      "name": "react-scripts",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "babel-jest",
+        "eslint",
+        "eslint-config-react-app",
+        "eslint-webpack-plugin",
+        "jest",
+        "jest-watch-typeahead",
+        "react-dev-utils",
+        "workbox-webpack-plugin"
+      ],
+      "effects": [],
+      "range": ">=0.9.4",
+      "nodes": [
+        "node_modules/react-scripts"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "1.0.10",
+        "isSemVerMajor": true
+      }
+    },
+    "recursive-readdir": {
+      "name": "recursive-readdir",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "minimatch"
+      ],
+      "effects": [
+        "react-dev-utils"
+      ],
+      "range": ">=1.2.0",
+      "nodes": [
+        "node_modules/recursive-readdir"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "1.0.10",
+        "isSemVerMajor": true
+      }
+    },
+    "rimraf": {
+      "name": "rimraf",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "glob",
+        "glob"
+      ],
+      "effects": [
+        "@capacitor/cli",
+        "@jest/core",
+        "flat-cache"
+      ],
+      "range": "2.3.0 - 3.0.2 || >=4.2.0",
+      "nodes": [
+        "node_modules/@capacitor/cli/node_modules/rimraf",
+        "node_modules/rimraf"
+      ],
+      "fixAvailable": {
+        "name": "@capacitor/cli",
+        "version": "4.8.2",
+        "isSemVerMajor": true
+      }
+    },
+    "test-exclude": {
+      "name": "test-exclude",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "glob",
+        "minimatch"
+      ],
+      "effects": [
+        "babel-plugin-istanbul"
+      ],
+      "range": "4.2.2 || >=5.0.0",
+      "nodes": [
+        "node_modules/test-exclude"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "1.0.10",
+        "isSemVerMajor": true
+      }
+    },
+    "workbox-build": {
+      "name": "workbox-build",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@surma/rollup-plugin-off-main-thread",
+        "glob"
+      ],
+      "effects": [
+        "workbox-webpack-plugin"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/workbox-build"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "1.0.10",
+        "isSemVerMajor": true
+      }
+    },
+    "workbox-webpack-plugin": {
+      "name": "workbox-webpack-plugin",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "workbox-build"
+      ],
+      "effects": [
+        "react-scripts"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/workbox-webpack-plugin"
+      ],
+      "fixAvailable": {
+        "name": "react-scripts",
+        "version": "1.0.10",
+        "isSemVerMajor": true
+      }
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 51,
+      "high": 0,
+      "critical": 0,
+      "total": 51
+    },
+    "dependencies": {
+      "prod": 1430,
+      "dev": 5,
+      "optional": 14,
+      "peer": 2,
+      "peerOptional": 0,
+      "total": 1450
+    }
+  }
+}
+

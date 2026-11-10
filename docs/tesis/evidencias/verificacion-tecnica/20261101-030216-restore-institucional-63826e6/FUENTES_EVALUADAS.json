@@ -1,0 +1,89 @@
+{
+  "baseCommit": "63826e6098ce1358f2e0cf727790c680dd458449",
+  "files": [
+    {
+      "file": "docs/produccion/RESPALDO_Y_RESTAURACION.md",
+      "sha256": "2ca827f09d152c9803a58afc0bd62ef7d38aac2bebdf0b71c8e17ea989986565"
+    },
+    {
+      "file": "docs/produccion/RUNBOOK.md",
+      "sha256": "2413d6d785d29855bf46e8e274231dd7623c62a300a1e721a28f06f85ec8ca8f"
+    },
+    {
+      "file": "docs/superpowers/plans/2026-11-01-restauracion-institucional.md",
+      "sha256": "fb741598af3e53b84f26056081cbe0dee36767f6d52b230136787c29b6287bfd"
+    },
+    {
+      "file": "scripts/audit/production/compare-restored-catalog.cjs",
+      "sha256": "b4dd1203b73aeef7d013af763b9a8a743c68a426343e1fb2e106ecc1328c4087"
+    },
+    {
+      "file": "scripts/audit/production/compare-restored-data.cjs",
+      "sha256": "1b5cafd288d97a313c00635923bc9005db5be10f076b375643d0434b6264925f"
+    },
+    {
+      "file": "scripts/audit/production/finalize-restore-packet.cjs",
+      "sha256": "0eb01f52bb3283a87327359a9ec02da3b22e45b5bd94e6644f6d52e29efc4e78"
+    },
+    {
+      "file": "scripts/audit/production/initialize-restore-packet.cjs",
+      "sha256": "b6d8a2c727750e02538dbbcef554306e244dadab49740fc36c9c03e38af9855c"
+    },
+    {
+      "file": "scripts/audit/production/inspect-institutional-backup.cjs",
+      "sha256": "22d8bd5c0fd40c61b1b6860a0f22f620b8721723d6a70d7eb569f019a0df4522"
+    },
+    {
+      "file": "scripts/audit/production/inspect-restore-error.cjs",
+      "sha256": "ccfbcbd556f4809eb6b23b75f39cb71b1c5c871bd9d6da57f15f01faac7394a2"
+    },
+    {
+      "file": "scripts/audit/production/report-restore-packet.cjs",
+      "sha256": "044dabcf40d56e4c44dd2aafadc3d15efee84a3c74d0ab4eb85ba542aa93b19a"
+    },
+    {
+      "file": "scripts/audit/production/test-storage-crypto.cjs",
+      "sha256": "bc23718a3c08acbd92424c482ab391dc30ea0b3da45b0476b3c7760691cb4a38"
+    },
+    {
+      "file": "scripts/production/restore-guards.cjs",
+      "sha256": "490398abb85ec56ff737b3562941a3077f3fae49cb65f2110917a473fc1151ce"
+    },
+    {
+      "file": "scripts/production/restore-isolated.cjs",
+      "sha256": "fe802d5083da6d76bd603342d9b42844a7124a3d50db43957b1c44f32b743960"
+    },
+    {
+      "file": "scripts/production/storage-backup.cjs",
+      "sha256": "1e334ed4ee69f54595677c1700ef00f7f602c3d036dd116c1f6d68588c8af1d8"
+    },
+    {
+      "file": "scripts/production/storage-backup.ps1",
+      "sha256": "f77706375cc4efaef25593b75ee3b08e10203110fe4ed666da9e355bf173cbe6"
+    },
+    {
+      "file": "scripts/production/unlock-restore.cjs",
+      "sha256": "f9f490ef68e451bcf59e4637bbf01ff455ba4c7d30e0b3a1b9b3471cb57da667"
+    },
+    {
+      "file": "scripts/production/unlock-restore.ps1",
+      "sha256": "d125018a183e42ef0f2aa5dae5b14b31718e1e0b1f7502206b2eaff33c632ad7"
+    },
+    {
+      "file": "tests/unit/institutional-restore.test.cjs",
+      "sha256": "cf0a9f85ee091fa98b911a12cece615400a33f9c6f6d063646f77088a5b418d3"
+    },
+    {
+      "file": "tests/unit/restore-data.test.cjs",
+      "sha256": "b08291ebf473c5d50ff8c0b078a010d6007101761494b2e144964ae3276dc4bd"
+    },
+    {
+      "file": "tests/unit/restore-guards.test.cjs",
+      "sha256": "4f8184dd9e3362ab191724bb655624b62743fa1019da0441b8788a21e4f592eb"
+    },
+    {
+      "file": "tests/unit/storage-backup.test.cjs",
+      "sha256": "843e3bd9e5df64b00da23ba661b1183e0769c08fccd794efaacac75cc24180b7"
+    }
+  ]
+}

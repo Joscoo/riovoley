@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/audit/production/create-edge-packet.cjs"
+  ],
+  "start": "2026-11-01T01:45:03.996Z",
+  "end": "2026-11-01T01:45:04.839Z",
+  "durationSeconds": 0.843,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

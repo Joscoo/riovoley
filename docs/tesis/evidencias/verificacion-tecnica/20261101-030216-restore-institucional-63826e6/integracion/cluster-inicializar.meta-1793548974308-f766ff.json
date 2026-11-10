@@ -1,0 +1,25 @@
+{
+  "command": [
+    "docker",
+    "exec",
+    "--user",
+    "postgres",
+    "riovoley-restore-20261101-030216-07",
+    "initdb",
+    "-D",
+    "/restore/pgdata",
+    "-A",
+    "trust",
+    "--locale=C.UTF-8",
+    "--encoding=UTF8"
+  ],
+  "startedAt": "2026-11-01T16:02:53.352Z",
+  "finishedAt": "2026-11-01T16:02:54.306Z",
+  "durationSeconds": 0.954,
+  "exitCode": 0,
+  "signal": null,
+  "stdoutBytes": 824,
+  "stderrBytes": 0,
+  "inputRecorded": false,
+  "rawOutputPublished": false
+}

@@ -1,0 +1,14 @@
+{
+  "files": [
+    {
+      "file": "docs/produccion/RUNBOOK.md",
+      "sha256": "fcedccf69b14cc76771c5868fc44448fd5359c029366a1c08f990169f4abe02c"
+    },
+    {
+      "file": "scripts/audit/production/refresh-cutover.cjs",
+      "sha256": "5936c2df7896e3daa2cfdb261cc9d2add0db4c00c5e7b0492495d478d80a8293"
+    }
+  ],
+  "productChanged": false,
+  "sqlChanged": false
+}

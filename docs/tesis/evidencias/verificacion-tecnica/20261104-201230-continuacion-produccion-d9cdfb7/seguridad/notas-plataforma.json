@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-11-04T20:16:59.748Z",
+  "pgNet": [
+    {
+      "extname": "pg_net",
+      "schema": "public",
+      "extversion": "0.14.0",
+      "extrelocatable": false
+    }
+  ],
+  "documentation": [
+    {
+      "title": "Database Webhooks",
+      "url": "https://supabase.com/docs/guides/database/webhooks"
+    },
+    {
+      "title": "Upgrading",
+      "url": "https://supabase.com/docs/guides/platform/upgrading"
+    },
+    {
+      "title": "Scheduling Edge Functions",
+      "url": "https://supabase.com/docs/guides/functions/schedule-functions"
+    }
+  ],
+  "scope": "Documentacion oficial leida via MCP; ninguna operacion de upgrade o cambios de extension realizada."
+}

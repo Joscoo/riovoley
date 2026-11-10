@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-11-01T16:38:00.476Z",
+  "source": "Clave frontend actual de Vercel en memoria; datos cifrados del respaldo SQL local",
+  "archiveSha256": "22da6c77d9bbd3def2e6113c6c53531d76d900c0abe9c1f364c2dbb7828e54e6",
+  "localConfiguredKeyMatchesVercel": true,
+  "fields": {
+    "email": {
+      "ciphertexts": 60,
+      "authenticated": 60,
+      "exactIndexMatches": 60,
+      "partialIndexMatches": 60,
+      "unsupported": 0,
+      "withoutCiphertext": 85
+    },
+    "telefono": {
+      "ciphertexts": 57,
+      "authenticated": 57,
+      "exactIndexMatches": 57,
+      "partialIndexMatches": 57,
+      "unsupported": 0,
+      "withoutCiphertext": 88
+    }
+  },
+  "allPresentCiphertextsAndIndexesMatch": true,
+  "originalRowsNotChanged": true,
+  "cleartextPublished": false,
+  "keyValueOrDigestPublished": false,
+  "activeBundleKeyNotInspected": true
+}

@@ -1,0 +1,115 @@
+{
+  "generatedAt": "2026-10-31T21:29:35.316Z",
+  "finalIntegration": {
+    "file": "integracion/ensayo-07-propietario.stdout.log",
+    "tests": 29,
+    "pass": 29,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "durationMs": 2037.9012,
+    "hookFailures": 0
+  },
+  "finalToolContracts": {
+    "file": "unitarias/contratos-cierre.stdout.log",
+    "tests": 6,
+    "pass": 6,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "durationMs": 221.5022,
+    "hookFailures": 0
+  },
+  "attempts": [
+    {
+      "file": "integracion/ensayo-01.stdout.log",
+      "tests": 23,
+      "pass": 0,
+      "fail": 23,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationMs": 350.4344,
+      "hookFailures": 23
+    },
+    {
+      "file": "integracion/ensayo-02.stdout.log",
+      "tests": 23,
+      "pass": 21,
+      "fail": 2,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationMs": 979.3581,
+      "hookFailures": 0
+    },
+    {
+      "file": "integracion/ensayo-03.stdout.log",
+      "tests": 23,
+      "pass": 23,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationMs": 1346.6618,
+      "hookFailures": 0
+    },
+    {
+      "file": "integracion/ensayo-04-ampliado.stdout.log",
+      "tests": 28,
+      "pass": 27,
+      "fail": 1,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationMs": 1813.6623,
+      "hookFailures": 0
+    },
+    {
+      "file": "integracion/ensayo-05-final.stdout.log",
+      "tests": 28,
+      "pass": 28,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationMs": 1782.9162,
+      "hookFailures": 0
+    },
+    {
+      "file": "integracion/ensayo-06-reproduccion.stdout.log",
+      "tests": 28,
+      "pass": 28,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationMs": 1584.4378,
+      "hookFailures": 0
+    },
+    {
+      "file": "integracion/ensayo-07-propietario.stdout.log",
+      "tests": 29,
+      "pass": 29,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationMs": 2037.9012,
+      "hookFailures": 0
+    },
+    {
+      "file": "unitarias/contratos-cierre.stdout.log",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationMs": 221.5022,
+      "hookFailures": 0
+    },
+    {
+      "file": "unitarias/contratos-final.stdout.log",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationMs": 166.8982,
+      "hookFailures": 0
+    }
+  ]
+}

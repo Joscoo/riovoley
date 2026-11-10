@@ -1,0 +1,212 @@
+{
+  "checkedAt": "2026-11-04T20:15:41.870Z",
+  "functions": [
+    {
+      "schema": "public",
+      "proname": "soft_delete_payment",
+      "arguments": "payment_id uuid",
+      "typtype": "b",
+      "return_type": "boolean",
+      "anon_execute": true,
+      "authenticated_execute": true,
+      "contains_auth_uid_literal": false
+    },
+    {
+      "schema": "public",
+      "proname": "restore_payment",
+      "arguments": "payment_id uuid",
+      "typtype": "b",
+      "return_type": "boolean",
+      "anon_execute": true,
+      "authenticated_execute": true,
+      "contains_auth_uid_literal": false
+    },
+    {
+      "schema": "public",
+      "proname": "sync_first_login_on_password_change",
+      "arguments": "",
+      "typtype": "p",
+      "return_type": "trigger",
+      "anon_execute": true,
+      "authenticated_execute": true,
+      "contains_auth_uid_literal": false
+    },
+    {
+      "schema": "public",
+      "proname": "sync_last_login_from_auth",
+      "arguments": "",
+      "typtype": "p",
+      "return_type": "trigger",
+      "anon_execute": true,
+      "authenticated_execute": true,
+      "contains_auth_uid_literal": false
+    },
+    {
+      "schema": "public",
+      "proname": "audit_payments",
+      "arguments": "",
+      "typtype": "p",
+      "return_type": "trigger",
+      "anon_execute": true,
+      "authenticated_execute": true,
+      "contains_auth_uid_literal": true
+    },
+    {
+      "schema": "public",
+      "proname": "sync_user_profile_on_user_update",
+      "arguments": "",
+      "typtype": "p",
+      "return_type": "trigger",
+      "anon_execute": true,
+      "authenticated_execute": true,
+      "contains_auth_uid_literal": false
+    },
+    {
+      "schema": "public",
+      "proname": "calculate_age",
+      "arguments": "birthdate date",
+      "typtype": "b",
+      "return_type": "integer",
+      "anon_execute": true,
+      "authenticated_execute": true,
+      "contains_auth_uid_literal": false
+    },
+    {
+      "schema": "public",
+      "proname": "soft_delete_payment",
+      "arguments": "payment_id bigint",
+      "typtype": "b",
+      "return_type": "boolean",
+      "anon_execute": true,
+      "authenticated_execute": true,
+      "contains_auth_uid_literal": false
+    },
+    {
+      "schema": "public",
+      "proname": "restore_payment",
+      "arguments": "payment_id bigint",
+      "typtype": "b",
+      "return_type": "boolean",
+      "anon_execute": true,
+      "authenticated_execute": true,
+      "contains_auth_uid_literal": false
+    },
+    {
+      "schema": "public",
+      "proname": "check_login_allowed",
+      "arguments": "p_email text",
+      "typtype": "p",
+      "return_type": "record",
+      "anon_execute": true,
+      "authenticated_execute": true,
+      "contains_auth_uid_literal": false
+    },
+    {
+      "schema": "public",
+      "proname": "admin_insert_user",
+      "arguments": "p_id uuid, p_email text, p_role text, p_nombre text, p_apellido text, p_fecha_nacimiento date, p_telefono text",
+      "typtype": "p",
+      "return_type": "record",
+      "anon_execute": true,
+      "authenticated_execute": true,
+      "contains_auth_uid_literal": true
+    },
+    {
+      "schema": "public",
+      "proname": "is_admin_or_trainer",
+      "arguments": "",
+      "typtype": "b",
+      "return_type": "boolean",
+      "anon_execute": true,
+      "authenticated_execute": true,
+      "contains_auth_uid_literal": true
+    },
+    {
+      "schema": "public",
+      "proname": "record_login_attempt",
+      "arguments": "p_email text, p_success boolean, p_error_code text",
+      "typtype": "p",
+      "return_type": "void",
+      "anon_execute": true,
+      "authenticated_execute": true,
+      "contains_auth_uid_literal": false
+    },
+    {
+      "schema": "public",
+      "proname": "is_admin",
+      "arguments": "",
+      "typtype": "b",
+      "return_type": "boolean",
+      "anon_execute": true,
+      "authenticated_execute": true,
+      "contains_auth_uid_literal": true
+    },
+    {
+      "schema": "public",
+      "proname": "handle_new_user",
+      "arguments": "",
+      "typtype": "p",
+      "return_type": "trigger",
+      "anon_execute": true,
+      "authenticated_execute": true,
+      "contains_auth_uid_literal": false
+    },
+    {
+      "schema": "public",
+      "proname": "get_user_role",
+      "arguments": "",
+      "typtype": "e",
+      "return_type": "user_role_enum",
+      "anon_execute": true,
+      "authenticated_execute": false,
+      "contains_auth_uid_literal": true
+    },
+    {
+      "schema": "public",
+      "proname": "apply_payment_membership_rules",
+      "arguments": "",
+      "typtype": "p",
+      "return_type": "trigger",
+      "anon_execute": true,
+      "authenticated_execute": true,
+      "contains_auth_uid_literal": false
+    },
+    {
+      "schema": "public",
+      "proname": "purchase_gamification_item",
+      "arguments": "p_student_id uuid, p_item_slug text",
+      "typtype": "b",
+      "return_type": "jsonb",
+      "anon_execute": false,
+      "authenticated_execute": true,
+      "contains_auth_uid_literal": true
+    },
+    {
+      "schema": "public",
+      "proname": "equip_gamification_item",
+      "arguments": "p_student_id uuid, p_item_slug text",
+      "typtype": "b",
+      "return_type": "jsonb",
+      "anon_execute": false,
+      "authenticated_execute": true,
+      "contains_auth_uid_literal": true
+    },
+    {
+      "schema": "public",
+      "proname": "unequip_gamification_item",
+      "arguments": "p_student_id uuid, p_category text",
+      "typtype": "b",
+      "return_type": "jsonb",
+      "anon_execute": false,
+      "authenticated_execute": true,
+      "contains_auth_uid_literal": true
+    }
+  ],
+  "counts": {
+    "all": 20,
+    "anon": 17,
+    "authenticated": 19,
+    "triggerReturnType": 6
+  },
+  "scope": "Indicadores lexicos y metadatos; auth.uid literal no equivale a autorizacion suficiente ni su ausencia prueba explotabilidad. No se ejecutaron RPC de negocio."
+}

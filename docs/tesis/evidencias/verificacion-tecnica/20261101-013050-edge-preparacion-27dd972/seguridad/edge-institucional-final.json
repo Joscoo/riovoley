@@ -1,0 +1,62 @@
+{
+  "observedAt": "2026-11-01T01:48:23.461Z",
+  "projectId": "mayvvlkvheagkojunzzb",
+  "readOnly": true,
+  "functions": [
+    {
+      "slug": "send-email",
+      "version": 19,
+      "verifyJwt": true,
+      "bundleSha256": "9c097c7f94aac8f2399560ebfd184f8f017c082650375ed777a3f05fc46fe909"
+    },
+    {
+      "slug": "update-user-password",
+      "version": 20,
+      "verifyJwt": true,
+      "bundleSha256": "34eedb50281c26d6aec8ef04d7556d3136cb909a2f9eb3f86f773415c1d64649"
+    },
+    {
+      "slug": "delete-auth-user",
+      "version": 5,
+      "verifyJwt": true,
+      "bundleSha256": "a48f507f4b7ae1ccda5ac36ec939ed9dcdf047eaf5174697449fd5a1aedacc49"
+    },
+    {
+      "slug": "generate-report",
+      "version": 10,
+      "verifyJwt": true,
+      "bundleSha256": "9aae62ae304649cd52f9be8aa62d9bffd9b2c42046d7da014fca8ea371dd4a9d"
+    },
+    {
+      "slug": "generate-scheduled-reports",
+      "version": 10,
+      "verifyJwt": true,
+      "bundleSha256": "b640a0903625eb195d26cbc6043940340615b1aa5a56414ff4c1bc1726d6f480"
+    },
+    {
+      "slug": "delete-report-run",
+      "version": 6,
+      "verifyJwt": true,
+      "bundleSha256": "d30e4a2b5c8f3ba2cda9a15345289129ae2b94ab4432f1fe4c36c93ac87cfe40"
+    },
+    {
+      "slug": "sync-mobile-device",
+      "version": 8,
+      "verifyJwt": true,
+      "bundleSha256": "39b175f5e2762166ae0a18c4324025c09b496302f27c86e412bc5f0d1f7cd536"
+    },
+    {
+      "slug": "send-push",
+      "version": 14,
+      "verifyJwt": true,
+      "bundleSha256": "4352841040d00df16572b8c0d20a22c2564f81d266760e306da2e53c16b51fbd"
+    },
+    {
+      "slug": "send-payment-reminders",
+      "version": 9,
+      "verifyJwt": true,
+      "bundleSha256": "6f899b18d9ab91b767e08e9ee58dd0506359a6c8a45287160825e9283c8b8605"
+    }
+  ],
+  "matchesCapturedVersionsAndBundles": true
+}

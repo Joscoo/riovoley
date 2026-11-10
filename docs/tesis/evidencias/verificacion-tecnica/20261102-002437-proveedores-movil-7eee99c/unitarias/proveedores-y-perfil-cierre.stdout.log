@@ -1,0 +1,113 @@
+TAP version 13
+# Subtest: solo acepta origen de laboratorio y nunca copia service_role al cliente
+ok 1 - solo acepta origen de laboratorio y nunca copia service_role al cliente
+  ---
+  duration_ms: 28.0516
+  type: 'test'
+  ...
+# Subtest: excluye credenciales heredadas de proveedor/firma y conserva valores locales literales
+ok 2 - excluye credenciales heredadas de proveedor/firma y conserva valores locales literales
+  ---
+  duration_ms: 0.2254
+  type: 'test'
+  ...
+# Subtest: la copia Capacitor elimina URL remota y desactiva OTA
+ok 3 - la copia Capacitor elimina URL remota y desactiva OTA
+  ---
+  duration_ms: 0.1715
+  type: 'test'
+  ...
+# Subtest: rechaza cualquier envio de correo aunque tenga autorizacion HTTP
+ok 4 - rechaza cualquier envio de correo aunque tenga autorizacion HTTP
+  ---
+  duration_ms: 4.1936
+  type: 'test'
+  ...
+# Subtest: permite solo GET de dominios Resend sin query o body
+ok 5 - permite solo GET de dominios Resend sin query o body
+  ---
+  duration_ms: 4.9204
+  type: 'test'
+  ...
+# Subtest: FCM exige validate_only=true y topic sintetico sin tokens de atletas
+ok 6 - FCM exige validate_only=true y topic sintetico sin tokens de atletas
+  ---
+  duration_ms: 1.6357
+  type: 'test'
+  ...
+# Subtest: no consulta un proyecto Firebase distinto o dominios HTTP
+ok 7 - no consulta un proyecto Firebase distinto o dominios HTTP
+  ---
+  duration_ms: 0.4882
+  type: 'test'
+  ...
+# Subtest: firma JWT OAuth real con alcance FCM, aud fijo y caducidad limitada
+ok 8 - firma JWT OAuth real con alcance FCM, aud fijo y caducidad limitada
+  ---
+  duration_ms: 30.1025
+  type: 'test'
+  ...
+# Subtest: rechaza entradas de cabecera en remitente y PEM invalido sin devolver valores
+ok 9 - rechaza entradas de cabecera en remitente y PEM invalido sin devolver valores
+  ---
+  duration_ms: 0.6993
+  type: 'test'
+  ...
+# Subtest: acepta variante PEM con saltos escapados solo cuando coincide con digest actual
+ok 10 - acepta variante PEM con saltos escapados solo cuando coincide con digest actual
+  ---
+  duration_ms: 0.4647
+  type: 'test'
+  ...
+# Subtest: 403 de lectura Resend bloquea alcance y no se presenta como clave invalida
+ok 11 - 403 de lectura Resend bloquea alcance y no se presenta como clave invalida
+  ---
+  duration_ms: 0.2478
+  type: 'test'
+  ...
+# Subtest: dominio verificado se acredita solo para el remitente indicado
+ok 12 - dominio verificado se acredita solo para el remitente indicado
+  ---
+  duration_ms: 0.2572
+  type: 'test'
+  ...
+# Subtest: el transporte siempre niega redirecciones y corta endpoints no autorizados
+ok 13 - el transporte siempre niega redirecciones y corta endpoints no autorizados
+  ---
+  duration_ms: 24.7376
+  type: 'test'
+  ...
+# Subtest: un dominio ausente de una pagina incompleta no se declara invalido
+ok 14 - un dominio ausente de una pagina incompleta no se declara invalido
+  ---
+  duration_ms: 0.2982
+  type: 'test'
+  ...
+# Subtest: Resend puede validarse por separado cuando falta el JSON Firebase
+ok 15 - Resend puede validarse por separado cuando falta el JSON Firebase
+  ---
+  duration_ms: 1.6367
+  type: 'test'
+  ...
+# Subtest: credenciales diferentes a los digests actuales impiden toda llamada a proveedor
+ok 16 - credenciales diferentes a los digests actuales impiden toda llamada a proveedor
+  ---
+  duration_ms: 0.2236
+  type: 'test'
+  ...
+# Subtest: flujo completo con OAuth firmado real y transportes simulados nunca entrega mensajes
+ok 17 - flujo completo con OAuth firmado real y transportes simulados nunca entrega mensajes
+  ---
+  duration_ms: 44.5701
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 262.675
+

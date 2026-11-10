@@ -46,5 +46,8 @@ function run(label,command,args=[],options={}) {
     if(options.input) child.stdin.end(options.input); else child.stdin.end();
   });
 }
-async function sql(label,query) { return run(label,'docker',['exec','-i',container,'psql','-X','-U','postgres','-d','postgres','-v','ON_ERROR_STOP=1','-A','-t'],{input:query}); }
+async function sql(label,query) {
+  if(process.env.RIOVOLEY_LOCAL_SQL_DRIVER==='pg') return run(label,process.execPath,['scripts/audit/security/query-local.cjs'],{input:query});
+  return run(label,'docker',['exec','-i',container,'psql','-X','-U','postgres','-d','postgres','-v','ON_ERROR_STOP=1','-A','-t'],{input:query});
+}
 module.exports={root,runtime,projectId,evidence,cli,container,run,write,sql};

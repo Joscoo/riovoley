@@ -1,0 +1,43 @@
+✖ Underscore usado por JSONPath procesa arrays de 20000 niveles sin desbordar la pila (CVE-2026-27601) (8.1021ms)
+✖ Underscore compara objetos de 6000 niveles sin desbordar la pila (22.7935ms)
+✔ JSONPath mantiene filtros y selección recursiva con el parche de Underscore (2987.8342ms)
+✔ BFJ conserva la lectura y escritura JSON del informe de compilación (5943.5994ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 2
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10018.5717
+
+✖ failing tests:
+
+test at tests\integration\toolchain.dependencies.test.cjs:8:1
+✖ Underscore usado por JSONPath procesa arrays de 20000 niveles sin desbordar la pila (CVE-2026-27601) (8.1021ms)
+  RangeError: Maximum call stack size exceeded
+      at flatten$1 (D:\Riovoley\riovoley\node_modules\underscore\underscore-node-f.cjs:1024:3)
+      at flatten$1 (D:\Riovoley\riovoley\node_modules\underscore\underscore-node-f.cjs:1036:9)
+      at flatten$1 (D:\Riovoley\riovoley\node_modules\underscore\underscore-node-f.cjs:1036:9)
+      at flatten$1 (D:\Riovoley\riovoley\node_modules\underscore\underscore-node-f.cjs:1036:9)
+      at flatten$1 (D:\Riovoley\riovoley\node_modules\underscore\underscore-node-f.cjs:1036:9)
+      at flatten$1 (D:\Riovoley\riovoley\node_modules\underscore\underscore-node-f.cjs:1036:9)
+      at flatten$1 (D:\Riovoley\riovoley\node_modules\underscore\underscore-node-f.cjs:1036:9)
+      at flatten$1 (D:\Riovoley\riovoley\node_modules\underscore\underscore-node-f.cjs:1036:9)
+      at flatten$1 (D:\Riovoley\riovoley\node_modules\underscore\underscore-node-f.cjs:1036:9)
+      at flatten$1 (D:\Riovoley\riovoley\node_modules\underscore\underscore-node-f.cjs:1036:9)
+
+test at tests\integration\toolchain.dependencies.test.cjs:12:1
+✖ Underscore compara objetos de 6000 niveles sin desbordar la pila (22.7935ms)
+  RangeError: Maximum call stack size exceeded
+      at [Symbol.hasInstance] (<anonymous>)
+      at deepEq (D:\Riovoley\riovoley\node_modules\underscore\underscore-node-f.cjs:366:9)
+      at eq (D:\Riovoley\riovoley\node_modules\underscore\underscore-node-f.cjs:360:10)
+      at deepEq (D:\Riovoley\riovoley\node_modules\underscore\underscore-node-f.cjs:459:30)
+      at eq (D:\Riovoley\riovoley\node_modules\underscore\underscore-node-f.cjs:360:10)
+      at deepEq (D:\Riovoley\riovoley\node_modules\underscore\underscore-node-f.cjs:459:30)
+      at eq (D:\Riovoley\riovoley\node_modules\underscore\underscore-node-f.cjs:360:10)
+      at deepEq (D:\Riovoley\riovoley\node_modules\underscore\underscore-node-f.cjs:459:30)
+      at eq (D:\Riovoley\riovoley\node_modules\underscore\underscore-node-f.cjs:360:10)
+      at deepEq (D:\Riovoley\riovoley\node_modules\underscore\underscore-node-f.cjs:459:30)
+

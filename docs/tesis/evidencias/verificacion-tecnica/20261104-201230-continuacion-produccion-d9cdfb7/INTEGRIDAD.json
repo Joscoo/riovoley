@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-11-04T20:25:19.091Z",
+  "priorManifests": 19,
+  "priorEntries": 8992,
+  "priorEntriesMatching": true,
+  "sqlFilesChecked": 4,
+  "edgeBundleHashesMatching": 9,
+  "npmAuditTrees": 3,
+  "npmAuditEachTotal": 0,
+  "publicHtml200": 4,
+  "newAndroidRuntimeCases": 0,
+  "apkHashMatches": true,
+  "relativeLinksChecked": 93,
+  "brokenLinks": 0,
+  "productSourceChanged": false,
+  "sqlProposalChanged": false,
+  "productionChanged": false,
+  "documentsCreated": 4
+}

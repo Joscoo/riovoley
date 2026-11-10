@@ -1,0 +1,59 @@
+TAP version 13
+# Subtest: dos ejecuciones normales no comparten ni limpian evidencias
+ok 1 - dos ejecuciones normales no comparten ni limpian evidencias
+  ---
+  duration_ms: 7.4668
+  type: 'test'
+  ...
+# Subtest: logs repetidos se preservan y el entorno Edge siempre se genera vacío
+ok 2 - logs repetidos se preservan y el entorno Edge siempre se genera vacío
+  ---
+  duration_ms: 18.425
+  type: 'test'
+  ...
+# Subtest: permite solamente el API local dedicado
+ok 3 - permite solamente el API local dedicado
+  ---
+  duration_ms: 2.2473
+  type: 'test'
+  ...
+# Subtest: rechaza producción, puertos de otros proyectos y URLs ambiguas
+ok 4 - rechaza producción, puertos de otros proyectos y URLs ambiguas
+  ---
+  duration_ms: 2.3723
+  type: 'test'
+  ...
+# Subtest: el frontend no hereda claves ni destinos REACT_APP institucionales
+ok 5 - el frontend no hereda claves ni destinos REACT_APP institucionales
+  ---
+  duration_ms: 4.177
+  type: 'test'
+  ...
+# Subtest: redacta tokens, claves locales y datos de login en logs
+ok 6 - redacta tokens, claves locales y datos de login en logs
+  ---
+  duration_ms: 0.8606
+  type: 'test'
+  ...
+# Subtest: no permite cambiar config, reporteros ni servidor mediante argumentos
+ok 7 - no permite cambiar config, reporteros ni servidor mediante argumentos
+  ---
+  duration_ms: 10.2772
+  type: 'test'
+  ...
+# Subtest: Docker y CLI no heredan un motor remoto ni TLS/contexto externos
+ok 8 - Docker y CLI no heredan un motor remoto ni TLS/contexto externos
+  ---
+  duration_ms: 0.7247
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 367.2512
+

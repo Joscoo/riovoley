@@ -1,0 +1,12 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+const root=path.resolve(__dirname,'../../..'),runtime=path.join(root,'.e2e-local'),privateDir=path.join(runtime,'institutional-restore');
+const receipt=JSON.parse(fs.readFileSync(path.join(runtime,'institutional-backup/artifacts/20261101-025806-728619b0/receipt.json'),'utf8'));
+assert.equal(receipt.status,'ENCRYPTED_LOGICAL_ARCHIVE_VERIFIED');const sha=b=>crypto.createHash('sha256').update(b).digest('hex');assert.equal(sha(fs.readFileSync(receipt.archive)),receipt.sha256);assert.equal(sha(fs.readFileSync(receipt.recoveryKey)),receipt.recoveryKeySha256);
+const commit=cp.execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),stamp=new Date().toISOString().replace(/[-:]/g,'').replace('T','-').slice(0,15),evidence=path.join(root,'docs/tesis/evidencias/verificacion-tecnica',stamp+'-restore-institucional-'+commit.slice(0,7));assert.ok(!fs.existsSync(evidence));
+for(const dir of ['unitarias','integracion','seguridad','e2e','compilacion-web','android'])fs.mkdirSync(path.join(evidence,dir),{recursive:true});
+const context={commit,evidence,createdAt:new Date().toISOString(),container:'riovoley-restore-'+stamp.toLowerCase(),institutionalBackupSha256:receipt.sha256};
+fs.writeFileSync(path.join(privateDir,'context.json'),JSON.stringify(context,null,2)+'\n',{flag:'wx'});fs.writeFileSync(path.join(runtime,'evidence-dir.txt'),evidence+'\n');
+const h=require('../../e2e/local/harness.cjs');h.write('CONTEXTO.json',{...context,evidence:path.relative(root,evidence),scope:'Verificar copia institucional cifrada y ensayar restauracion local sin red, puertos ni servicios Auth/Edge/Storage. No modificar produccion.'});
+h.write('seguridad/respaldo-institucional.json',{startedAt:receipt.startedAt,finishedAt:receipt.finishedAt,bytes:receipt.bytes,sha256:receipt.sha256,status:receipt.status,sourceFingerprint:receipt.sourceFingerprint,recipientFingerprint:receipt.recipientFingerprint,recoveryKeySha256:receipt.recoveryKeySha256,decryptExitCode:receipt.decryptExitCode,pgRestoreListExitCode:receipt.pgRestoreListExitCode,tocEntries:receipt.tocEntries,independentRecoveryKeyVerified:receipt.independentRecoveryKeyVerified,archiveHashRechecked:true,recoveryKeyHashRechecked:true,storageObjectsIncluded:false,globalRolesIncluded:false,productionChanged:false});
+console.log(path.relative(root,evidence));

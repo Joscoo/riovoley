@@ -1,0 +1,17 @@
+{
+  "initialBackend": "Detenido al inicio; primera conexión rechazada y siguiente en recuperación; reinicio de Docker Desktop local y verificación de identidad antes de continuar.",
+  "memoryObserved": {
+    "freeKiB": 112384,
+    "totalKiB": 16700460
+  },
+  "action": "Se detuvo solamente el emulador riovoley-audit para compilar con memoria disponible.",
+  "stageRepeated": {
+    "command": "node scripts/audit/android/stage.cjs local-auth",
+    "exitCode": 1,
+    "webBuildExitCode": 0,
+    "capacitorSyncExitCode": 0,
+    "cause": "El segundo intento se detuvo al escribir un nombre de evidencia existente. Se agregó identificador temporal al registro de configuración; el tercer intento terminó con código 0.",
+    "productionLogicChanged": false
+  },
+  "previousEvidenceOverwritten": false
+}

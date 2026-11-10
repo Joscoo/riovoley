@@ -1,0 +1,16 @@
+{
+  "command": [
+    "D:\\Riovoley\\riovoley\\.e2e-local\\native-validation\\20261105-145206\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5580",
+    "reverse",
+    "--remove",
+    "tcp:55321"
+  ],
+  "start": "2026-11-05T14:58:24.372Z",
+  "end": "2026-11-05T14:58:24.469Z",
+  "durationSeconds": 0.097,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

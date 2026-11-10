@@ -1,0 +1,110 @@
+{
+  "checkedAt": "2026-11-01T15:59:32.352Z",
+  "source": "Catalogo institucional pg_roles de solo lectura; sin contrasenas",
+  "roles": [
+    {
+      "rolname": "anon",
+      "rolsuper": false,
+      "rolinherit": true,
+      "rolcreaterole": false,
+      "rolcreatedb": false,
+      "rolreplication": false,
+      "rolbypassrls": false
+    },
+    {
+      "rolname": "authenticated",
+      "rolsuper": false,
+      "rolinherit": true,
+      "rolcreaterole": false,
+      "rolcreatedb": false,
+      "rolreplication": false,
+      "rolbypassrls": false
+    },
+    {
+      "rolname": "dashboard_user",
+      "rolsuper": false,
+      "rolinherit": true,
+      "rolcreaterole": true,
+      "rolcreatedb": true,
+      "rolreplication": true,
+      "rolbypassrls": false
+    },
+    {
+      "rolname": "pgbouncer",
+      "rolsuper": false,
+      "rolinherit": true,
+      "rolcreaterole": false,
+      "rolcreatedb": false,
+      "rolreplication": false,
+      "rolbypassrls": false
+    },
+    {
+      "rolname": "postgres",
+      "rolsuper": false,
+      "rolinherit": true,
+      "rolcreaterole": true,
+      "rolcreatedb": true,
+      "rolreplication": true,
+      "rolbypassrls": true
+    },
+    {
+      "rolname": "service_role",
+      "rolsuper": false,
+      "rolinherit": true,
+      "rolcreaterole": false,
+      "rolcreatedb": false,
+      "rolreplication": false,
+      "rolbypassrls": true
+    },
+    {
+      "rolname": "supabase_admin",
+      "rolsuper": true,
+      "rolinherit": true,
+      "rolcreaterole": true,
+      "rolcreatedb": true,
+      "rolreplication": true,
+      "rolbypassrls": true
+    },
+    {
+      "rolname": "supabase_auth_admin",
+      "rolsuper": false,
+      "rolinherit": false,
+      "rolcreaterole": true,
+      "rolcreatedb": false,
+      "rolreplication": false,
+      "rolbypassrls": false
+    },
+    {
+      "rolname": "supabase_functions_admin",
+      "rolsuper": false,
+      "rolinherit": false,
+      "rolcreaterole": true,
+      "rolcreatedb": false,
+      "rolreplication": false,
+      "rolbypassrls": false
+    },
+    {
+      "rolname": "supabase_realtime_admin",
+      "rolsuper": false,
+      "rolinherit": false,
+      "rolcreaterole": false,
+      "rolcreatedb": false,
+      "rolreplication": false,
+      "rolbypassrls": false
+    },
+    {
+      "rolname": "supabase_storage_admin",
+      "rolsuper": false,
+      "rolinherit": false,
+      "rolcreaterole": true,
+      "rolcreatedb": false,
+      "rolreplication": false,
+      "rolbypassrls": false
+    }
+  ],
+  "sourceGlobalPasswordsIncluded": false,
+  "membershipsRestored": false,
+  "targetLoginDisabledExceptRestoreOperator": true,
+  "localRestoreOperatorRemainsSuperuser": true,
+  "productionChanged": false
+}

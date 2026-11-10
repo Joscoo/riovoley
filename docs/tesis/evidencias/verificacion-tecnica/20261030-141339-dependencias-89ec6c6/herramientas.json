@@ -1,0 +1,13 @@
+{
+  "node": "v24.18.0",
+  "npm": "11.16.0",
+  "playwright": "1.59.1",
+  "javaRelease": [
+    "JAVA_VERSION=\"21.0.12.1\""
+  ],
+  "gradleWrapper": "distributionUrl=https\\://services.gradle.org/distributions/gradle-8.14.3-all.zip",
+  "buildTools": [
+    "35.0.0"
+  ],
+  "timezone": "America/Guayaquil"
+}

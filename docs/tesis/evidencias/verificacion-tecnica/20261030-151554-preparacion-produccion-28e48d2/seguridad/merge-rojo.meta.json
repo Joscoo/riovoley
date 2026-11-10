@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--test",
+    "--test-reporter=tap",
+    "tests/integration/toolchain.production-readiness.test.cjs"
+  ],
+  "start": "2026-10-30T15:19:40.139Z",
+  "end": "2026-10-30T15:19:40.591Z",
+  "durationSeconds": 0.452,
+  "exitCode": 1,
+  "signal": null,
+  "cwd": "."
+}

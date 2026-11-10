@@ -1,0 +1,15 @@
+{
+  "recordedAt": "2026-11-04T21:56:20.571Z",
+  "originalRunCommands": "ip route show default / ip -6 route show default",
+  "additionalQueries": "ip route show table all / ip -6 route show table all",
+  "policyDefaultsObservedOnInterface": "dummy0",
+  "policyTable": 1002,
+  "interfaceKindQueryExitCode": 1,
+  "interfaceKindQueryReason": "Permission denied",
+  "interfaceDriverVerified": false,
+  "privilegesElevated": false,
+  "allPolicyTablesOfflineCertified": false,
+  "sourceAcquisitionUpdatedTo": "Unfiltered table main, IPv4 and IPv6; explicit main scope",
+  "updatedAcquisitionExecutedWithin13Cases": false,
+  "explanation": "Los indicadores noDefaultRoute/noIpv6DefaultRoute del flujo original describen las salidas filtradas, no la ausencia universal en todas las tablas. La comprobacion ampliada encontro rutas policy por dummy0; no se declara verificado su tipo de controlador. Los radios deshabilitados y proxy sin reenvio son controles adicionales, no una auditoria exhaustiva de red. El APK debug tuvo ademas interceptor WebView que solo permite localhost y backend local."
+}

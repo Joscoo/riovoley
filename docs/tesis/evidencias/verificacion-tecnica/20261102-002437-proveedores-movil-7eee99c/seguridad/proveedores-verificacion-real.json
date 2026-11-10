@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-11-02T03:44:08.444Z",
+  "state": "BLOQUEADO",
+  "reason": "INPUT_DOES_NOT_MATCH_CURRENT_CONFIGURATION",
+  "configChecks": [
+    {
+      "name": "RESEND_API_KEY",
+      "matchesCurrent": false
+    },
+    {
+      "name": "FROM_EMAIL",
+      "matchesCurrent": true
+    }
+  ],
+  "projectMatchesAndroid": null,
+  "providersRequested": [
+    "resend"
+  ],
+  "providerRequestsPerformed": false,
+  "messagesDelivered": false,
+  "requestsCompleted": 0,
+  "scope": "Solo GET dominios Resend; Firebase no ejecutado",
+  "rawDiagnosticsPublished": false
+}

@@ -1,0 +1,117 @@
+TAP version 13
+# Subtest: UUID usado por SockJS rechaza buffers insuficientes al generar v5
+not ok 1 - UUID usado por SockJS rechaza buffers insuficientes al generar v5
+  ---
+  duration_ms: 493.9203
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.loaders-security.test.cjs:10:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected exception (RangeError).'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.loaders-security.test.cjs:12:9)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.start (node:internal/test_runner/test:1191:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17)
+  ...
+# Subtest: SockJS conserva conexiones con identificadores UUID v4 válidos y distintos
+ok 2 - SockJS conserva conexiones con identificadores UUID v4 válidos y distintos
+  ---
+  duration_ms: 14.5575
+  type: 'test'
+  ...
+# Subtest: SVGO del cargador SVG elimina enlaces ejecutables con namespace y tabulador codificado
+not ok 3 - SVGO del cargador SVG elimina enlaces ejecutables con namespace y tabulador codificado
+  ---
+  duration_ms: 12951.8649
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.loaders-security.test.cjs:22:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input was expected to not match the regular expression /java(?:[\t\n\r]|&#(?:9|10|13);)*script:/i. Input:
+    
+    '<svg xmlns="http://www.w3.org/2000/svg" xmlns:s="http://www.w3.org/2000/svg"><s:a href="javascript:alert(1)"><text>A</text></s:a><a><text>B</text></a></svg>'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: '<svg xmlns="http://www.w3.org/2000/svg" xmlns:s="http://www.w3.org/2000/svg"><s:a href="javascript:alert(1)"><text>A</text></s:a><a><text>B</text></a></svg>'
+  operator: 'doesNotMatch'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.loaders-security.test.cjs:29:9)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# You did not set any plugins, parser, or stringifier. Right now, PostCSS does nothing. Pick plugins for your case on https://www.postcss.parts/ and use them in postcss.config.js.
+# Without `from` option PostCSS could generate wrong source map and will not find Browserslist config. Set it to CSS file path or to `undefined` to prevent this warning.
+# <i> [webpack-dev-middleware] wait until bundle finished
+# Subtest: SVG conserva ReactComponent, título, ref, viewBox y URL de archivo con las opciones CRA
+ok 4 - SVG conserva ReactComponent, título, ref, viewBox y URL de archivo con las opciones CRA
+  ---
+  duration_ms: 41910.5875
+  type: 'test'
+  ...
+# Subtest: PostCSS del resolvedor CSS no incorpora contenido de un mapa absoluto sin from
+not ok 5 - PostCSS del resolvedor CSS no incorpora contenido de un mapa absoluto sin from
+  ---
+  duration_ms: 1631.5379
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.loaders-security.test.cjs:49:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.loaders-security.test.cjs:55:9)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: Resolve URL Loader conserva CSS, URL de recurso y mapa con las opciones existentes
+ok 6 - Resolve URL Loader conserva CSS, URL de recurso y mapa con las opciones existentes
+  ---
+  duration_ms: 1642.0045
+  type: 'test'
+  ...
+# Subtest: Middleware sirve el bundle y rechaza escapar del directorio con publicPath sin barra final
+not ok 7 - Middleware sirve el bundle y rechaza escapar del directorio con publicPath sin barra final
+  ---
+  duration_ms: 1404.9902
+  type: 'test'
+  location: 'D:\\Riovoley\\riovoley\\tests\\integration\\toolchain.loaders-security.test.cjs:72:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'C:\\Users\\[USUARIO_LOCAL]\\AppData\\Local\\Temp\\riovoley-toolchain-0QtThC\\outside.txt'
+    - undefined
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  actual: 'C:\\Users\\[USUARIO_LOCAL]\\AppData\\Local\\Temp\\riovoley-toolchain-0QtThC\\outside.txt'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Riovoley\riovoley\tests\integration\toolchain.loaders-security.test.cjs:82:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1332:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 3
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 60840.4292
+

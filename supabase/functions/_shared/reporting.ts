@@ -1,5 +1,6 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.49.4';
 import { PDFDocument, StandardFonts, rgb } from 'https://esm.sh/pdf-lib@1.17.1';
+import { oneRelatedRow } from './relations.ts';
 
 export class HttpError extends Error {
   status: number;
@@ -72,8 +73,8 @@ interface AttendanceSnapshot {
   filters_applied: Record<string, unknown>;
 }
 
-interface BuildSnapshotResult {
-  snapshot: Record<string, unknown>;
+interface BuildSnapshotResult<TSnapshot> {
+  snapshot: TSnapshot;
   summary: Record<string, unknown>;
 }
 
@@ -286,12 +287,16 @@ export const getUserRoleFromToken = async (authorization: string) => {
 
   const { data: dbUser, error: dbUserError } = await serviceClient
     .from('users')
-    .select('id, role')
+    .select('id, role, suspended')
     .eq('id', user.id)
     .maybeSingle();
 
   if (dbUserError) {
     throw new HttpError(500, 'ROLE_QUERY_FAILED', 'No se pudo verificar el rol del usuario', dbUserError);
+  }
+
+  if (dbUser?.suspended) {
+    throw new HttpError(403, 'ACCOUNT_SUSPENDED', 'La cuenta solicitante está suspendida');
   }
 
   if (!dbUser || !ALLOWED_ROLES.has(String(dbUser.role || '').toLowerCase())) {
@@ -317,7 +322,7 @@ const buildAttendanceSnapshot = async (
   periodEnd: string,
   timezone: string,
   observations?: string,
-): Promise<BuildSnapshotResult> => {
+): Promise<BuildSnapshotResult<AttendanceSnapshot>> => {
   const { data: attendanceRows, error: attendanceError } = await serviceClient
     .from('attendances')
     .select('id, student_id, fecha, metodo_pago_id, schedule_id')
@@ -352,8 +357,9 @@ const buildAttendanceSnapshot = async (
     }
 
     for (const row of studentsRows || []) {
-      const firstName = row?.users?.nombre || '';
-      const lastName = row?.users?.apellido || '';
+      const user = oneRelatedRow(row.users);
+      const firstName = user?.nombre || '';
+      const lastName = user?.apellido || '';
       studentsById.set(row.id, {
         categoria: row.categoria || null,
         nombre: firstName,
@@ -542,7 +548,7 @@ const buildFinancialSnapshot = async (
   periodStart: string,
   periodEnd: string,
   timezone: string,
-): Promise<BuildSnapshotResult> => {
+): Promise<BuildSnapshotResult<FinancialSnapshot>> => {
   const [
     paymentTypesResult,
     studentsResult,
@@ -601,8 +607,8 @@ const buildFinancialSnapshot = async (
       {
         id: String(student.id),
         categoria: student.categoria || null,
-        nombre: student?.users?.nombre || '',
-        apellido: student?.users?.apellido || '',
+        nombre: oneRelatedRow(student.users)?.nombre || '',
+        apellido: oneRelatedRow(student.users)?.apellido || '',
       },
     ]),
   );
@@ -732,7 +738,7 @@ const buildStudentRosterSnapshot = async (
   periodStart: string,
   periodEnd: string,
   timezone: string,
-): Promise<BuildSnapshotResult> => {
+): Promise<BuildSnapshotResult<StudentRosterSnapshot>> => {
   const { data, error } = await serviceClient
     .from('students')
     .select('id, categoria, fecha_ingreso, users(nombre, apellido, email, telefono, fecha_nacimiento, suspended)')
@@ -742,19 +748,22 @@ const buildStudentRosterSnapshot = async (
     throw new HttpError(500, 'STUDENT_ROSTER_QUERY_FAILED', 'No se pudo consultar el padron de estudiantes', error);
   }
 
-  const rows: StudentRosterRow[] = (data || []).map((student) => ({
+  const rows: StudentRosterRow[] = (data || []).map((student) => {
+    const user = oneRelatedRow(student.users);
+    return {
     student_id: String(student.id),
-    full_name: `${student?.users?.nombre || ''} ${student?.users?.apellido || ''}`.trim() || 'Sin nombre',
-    first_name: student?.users?.nombre || '',
-    last_name: student?.users?.apellido || '',
-    email: student?.users?.email || '',
-    phone: student?.users?.telefono || '',
+    full_name: `${user?.nombre || ''} ${user?.apellido || ''}`.trim() || 'Sin nombre',
+    first_name: user?.nombre || '',
+    last_name: user?.apellido || '',
+    email: user?.email || '',
+    phone: user?.telefono || '',
     category: student.categoria || '',
     category_label: CATEGORY_LABELS[student.categoria || ''] || (student.categoria || ''),
-    birth_date: student?.users?.fecha_nacimiento || null,
+    birth_date: user?.fecha_nacimiento || null,
     admission_date: student.fecha_ingreso || null,
-    status: student?.users?.suspended ? 'suspendido' : 'activo',
-  }));
+    status: user?.suspended ? 'suspendido' : 'activo',
+  };
+  });
 
   rows.sort((a, b) => a.full_name.localeCompare(b.full_name, 'es'));
 
@@ -1491,7 +1500,7 @@ const renderStudentRosterPdf = async (snapshot: StudentRosterSnapshot) => {
 };
 
 const computeSha256Hex = async (bytes: Uint8Array) => {
-  const hashBuffer = await crypto.subtle.digest('SHA-256', bytes);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', Uint8Array.from(bytes).buffer);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
   return hashArray.map((byte) => byte.toString(16).padStart(2, '0')).join('');
 };
@@ -1671,7 +1680,7 @@ export const generateReportRun = async (input: GenerateReportInput) => {
     .eq('id', runId);
 
   try {
-    let snapshot: Record<string, unknown>;
+    let snapshot: AttendanceSnapshot | FinancialSnapshot | StudentRosterSnapshot;
     let summary: Record<string, unknown>;
     let pdfBytes: Uint8Array;
 
@@ -1687,7 +1696,7 @@ export const generateReportRun = async (input: GenerateReportInput) => {
       );
       snapshot = result.snapshot;
       summary = result.summary;
-      pdfBytes = await renderAttendancePdf(snapshot as AttendanceSnapshot, input.observations);
+      pdfBytes = await renderAttendancePdf(result.snapshot, input.observations);
     } else if (definition.source_kind === 'financial_monthly_summary') {
       const result = await buildFinancialSnapshot(
         serviceClient,
@@ -1699,7 +1708,7 @@ export const generateReportRun = async (input: GenerateReportInput) => {
       );
       snapshot = result.snapshot;
       summary = result.summary;
-      pdfBytes = await renderFinancialPdf(snapshot as FinancialSnapshot);
+      pdfBytes = await renderFinancialPdf(result.snapshot);
     } else if (definition.source_kind === 'student_roster_snapshot') {
       const result = await buildStudentRosterSnapshot(
         serviceClient,
@@ -1711,7 +1720,7 @@ export const generateReportRun = async (input: GenerateReportInput) => {
       );
       snapshot = result.snapshot;
       summary = result.summary;
-      pdfBytes = await renderStudentRosterPdf(snapshot as StudentRosterSnapshot);
+      pdfBytes = await renderStudentRosterPdf(result.snapshot);
     } else {
       throw new HttpError(400, 'SOURCE_KIND_NOT_IMPLEMENTED', `source_kind no soportado en V1: ${definition.source_kind}`);
     }

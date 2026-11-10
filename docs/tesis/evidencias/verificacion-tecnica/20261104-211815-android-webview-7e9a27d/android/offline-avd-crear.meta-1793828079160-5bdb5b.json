@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\WINDOWS\\system32\\cmd.exe",
+    "/d",
+    "/c",
+    "D:\\Riovoley\\riovoley\\.e2e-local\\android-native\\20261028-155551\\sdk\\cmdline-tools\\latest\\bin\\avdmanager.bat create avd -n riovoley_release_1793828076399 -k system-images;android-36;google_apis;x86_64 -p D:\\Riovoley\\riovoley\\.e2e-local\\android-release-smoke\\20261104213436\\device"
+  ],
+  "startedAt": "2026-11-04T21:34:36.399Z",
+  "finishedAt": "2026-11-04T21:34:39.158Z",
+  "exitCode": 0,
+  "errorCode": null,
+  "signal": null,
+  "rawOutputSaved": false
+}

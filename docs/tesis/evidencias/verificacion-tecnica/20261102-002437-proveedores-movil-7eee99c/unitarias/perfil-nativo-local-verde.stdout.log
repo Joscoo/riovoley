@@ -1,0 +1,29 @@
+TAP version 13
+# Subtest: solo acepta origen de laboratorio y nunca copia service_role al cliente
+ok 1 - solo acepta origen de laboratorio y nunca copia service_role al cliente
+  ---
+  duration_ms: 12.3811
+  type: 'test'
+  ...
+# Subtest: excluye credenciales heredadas de proveedor/firma y conserva valores locales literales
+ok 2 - excluye credenciales heredadas de proveedor/firma y conserva valores locales literales
+  ---
+  duration_ms: 0.3786
+  type: 'test'
+  ...
+# Subtest: la copia Capacitor elimina URL remota y desactiva OTA
+ok 3 - la copia Capacitor elimina URL remota y desactiva OTA
+  ---
+  duration_ms: 0.2134
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 106.9715
+

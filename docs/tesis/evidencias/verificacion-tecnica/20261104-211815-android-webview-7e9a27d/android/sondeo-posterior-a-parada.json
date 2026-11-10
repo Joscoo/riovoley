@@ -1,0 +1,9 @@
+{
+  "checkedAt": "2026-11-04T21:26:08.646Z",
+  "referencedFile": "entorno-real-ejecutado.json",
+  "probeCheckedAt": "2026-11-04T21:24:19.508Z",
+  "emulatorStoppedAt": "2026-11-04T21:24:14.704Z",
+  "afterEmulatorStopped": true,
+  "commandsWithExit1": 3,
+  "scope": "Tres sondeos de API/tamano/densidad emitidos tras terminar y detener el emulador; sin resultado. No se atribuye una version o resolucion medida a esas consultas ni se cuentan como fallos de los 13 casos."
+}

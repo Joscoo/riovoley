@@ -1,0 +1,19 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/react-scripts/bin/react-scripts.js",
+    "test",
+    "--watchAll=false",
+    "--runInBand",
+    "--runTestsByPath",
+    "src/shared/platform/push.lifecycle.test.js",
+    "--json",
+    "--outputFile=D:\\Riovoley\\riovoley\\docs\\tesis\\evidencias\\verificacion-tecnica\\20261029-221208-android-autenticado-317e5e3\\unitarias\\push-lifecycle-verde-final.json"
+  ],
+  "start": "2026-10-29T22:52:05.276Z",
+  "end": "2026-10-29T22:52:09.095Z",
+  "durationSeconds": 3.819,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

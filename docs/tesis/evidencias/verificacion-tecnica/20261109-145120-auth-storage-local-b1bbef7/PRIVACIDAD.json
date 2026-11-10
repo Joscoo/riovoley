@@ -1,0 +1,12 @@
+{
+  "at": "2026-11-09T15:08:08.222Z",
+  "filesChecked": 48,
+  "issues": 0,
+  "credentialsRequested": false,
+  "newProviderKeysGenerated": false,
+  "existingPasswordsChanged": false,
+  "rawAuthTokensPublished": false,
+  "institutionalRowsPublished": false,
+  "syntheticExampleTestSourceLiteralsAllowed": true,
+  "scope": "Current evidence and changed source files, known private values and bounded patterns; example.test source templates are explicitly synthetic. Not universal privacy guarantee."
+}

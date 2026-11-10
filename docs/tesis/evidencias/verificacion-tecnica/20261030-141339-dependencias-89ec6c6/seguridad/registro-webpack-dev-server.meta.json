@@ -1,0 +1,18 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+    "view",
+    "webpack-dev-server",
+    "version",
+    "dist-tags",
+    "engines",
+    "--json"
+  ],
+  "start": "2026-10-30T14:14:37.916Z",
+  "end": "2026-10-30T14:14:39.060Z",
+  "durationSeconds": 1.144,
+  "exitCode": 0,
+  "signal": null,
+  "cwd": "."
+}

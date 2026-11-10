@@ -1,0 +1,95 @@
+{
+  "results": [
+    {
+      "slug": "send-email",
+      "exitCode": 0,
+      "originalCloudVersion": 19,
+      "cloudBundleSha256": "9c097c7f94aac8f2399560ebfd184f8f017c082650375ed777a3f05fc46fe909",
+      "typeCheck": false,
+      "output": ".e2e-local/edge-production/return-bundles/send-email.mjs",
+      "bytes": 1211694,
+      "sha256": "bc9daa4e9583b6dfaf837f646fc7625e98df818b0b8f26a3cfe82c6432f5f08b"
+    },
+    {
+      "slug": "update-user-password",
+      "exitCode": 0,
+      "originalCloudVersion": 20,
+      "cloudBundleSha256": "34eedb50281c26d6aec8ef04d7556d3136cb909a2f9eb3f86f773415c1d64649",
+      "typeCheck": false,
+      "output": ".e2e-local/edge-production/return-bundles/update-user-password.mjs",
+      "bytes": 1208376,
+      "sha256": "020bc1b19da8867d4f377c3228a685b03fe717cb5eb4caf1222e8e1d1bcdec49"
+    },
+    {
+      "slug": "delete-auth-user",
+      "exitCode": 0,
+      "originalCloudVersion": 5,
+      "cloudBundleSha256": "a48f507f4b7ae1ccda5ac36ec939ed9dcdf047eaf5174697449fd5a1aedacc49",
+      "typeCheck": false,
+      "output": ".e2e-local/edge-production/return-bundles/delete-auth-user.mjs",
+      "bytes": 1203207,
+      "sha256": "6dafbd66d2a206d7c825bf1f06ba0c241cc5839a9861bc63a4b573e66dfe21a8"
+    },
+    {
+      "slug": "generate-report",
+      "exitCode": 0,
+      "originalCloudVersion": 10,
+      "cloudBundleSha256": "9aae62ae304649cd52f9be8aa62d9bffd9b2c42046d7da014fca8ea371dd4a9d",
+      "typeCheck": false,
+      "output": ".e2e-local/edge-production/return-bundles/generate-report.mjs",
+      "bytes": 2138850,
+      "sha256": "f91da4975f9c0e1dafb6cc41a903d3c1c66bba0d2cd540c4ce37d4d8af038772"
+    },
+    {
+      "slug": "generate-scheduled-reports",
+      "exitCode": 0,
+      "originalCloudVersion": 10,
+      "cloudBundleSha256": "b640a0903625eb195d26cbc6043940340615b1aa5a56414ff4c1bc1726d6f480",
+      "typeCheck": false,
+      "output": ".e2e-local/edge-production/return-bundles/generate-scheduled-reports.mjs",
+      "bytes": 2140368,
+      "sha256": "9b7d51389d670df5930623e8a7bd46a2ccb19bf9c17904d57b9088625968686a"
+    },
+    {
+      "slug": "delete-report-run",
+      "exitCode": 0,
+      "originalCloudVersion": 6,
+      "cloudBundleSha256": "d30e4a2b5c8f3ba2cda9a15345289129ae2b94ab4432f1fe4c36c93ac87cfe40",
+      "typeCheck": false,
+      "output": ".e2e-local/edge-production/return-bundles/delete-report-run.mjs",
+      "bytes": 2138285,
+      "sha256": "3ffd863c947e512dd0ce8e7236b88bcaf6143d22d3a9d7654e196f683ee1dc6a"
+    },
+    {
+      "slug": "sync-mobile-device",
+      "exitCode": 0,
+      "originalCloudVersion": 8,
+      "cloudBundleSha256": "39b175f5e2762166ae0a18c4324025c09b496302f27c86e412bc5f0d1f7cd536",
+      "typeCheck": false,
+      "output": ".e2e-local/edge-production/return-bundles/sync-mobile-device.mjs",
+      "bytes": 849014,
+      "sha256": "69a7f4045663315b314993848c88713dfc5978cbdab513b748816646683ff3e7"
+    },
+    {
+      "slug": "send-push",
+      "exitCode": 0,
+      "originalCloudVersion": 14,
+      "cloudBundleSha256": "4352841040d00df16572b8c0d20a22c2564f81d266760e306da2e53c16b51fbd",
+      "typeCheck": false,
+      "output": ".e2e-local/edge-production/return-bundles/send-push.mjs",
+      "bytes": 1361538,
+      "sha256": "0a524f382426b5d1eb9b2b0528e9a8c35ce1dd798dcdf3ba6ad133b90c9dc15f"
+    },
+    {
+      "slug": "send-payment-reminders",
+      "exitCode": 0,
+      "originalCloudVersion": 9,
+      "cloudBundleSha256": "6f899b18d9ab91b767e08e9ee58dd0506359a6c8a45287160825e9283c8b8605",
+      "typeCheck": false,
+      "output": ".e2e-local/edge-production/return-bundles/send-payment-reminders.mjs",
+      "bytes": 1356565,
+      "sha256": "478fab7046a59461273f8f2140cf2b14f7f38161f3e4e1ee572d922adc73c186"
+    }
+  ],
+  "scope": "Compilacion JavaScript local de fuentes Cloud, sin chequeo de tipos por diseno del bundler. No reproduce el ESZIP binario original ni ensaya despliegue o retorno gestionado."
+}

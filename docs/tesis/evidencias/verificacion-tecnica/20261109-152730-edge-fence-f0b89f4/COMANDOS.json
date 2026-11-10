@@ -1,0 +1,248 @@
+{
+  "commands": [
+    {
+      "file": "integracion/contratos-edge.meta.json",
+      "command": [
+        "C:\\WINDOWS\\system32\\cmd.exe",
+        "/d",
+        "/s",
+        "/c",
+        "npm run test:edge-contracts"
+      ],
+      "start": "2026-11-09T15:35:46.681Z",
+      "end": "2026-11-09T15:35:53.463Z",
+      "durationSeconds": 6.782,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "integracion/deno-version.meta.json",
+      "command": [
+        "D:\\Riovoley\\riovoley\\.e2e-local\\deno-tool\\node_modules\\@deno\\win32-x64\\deno.exe",
+        "--version"
+      ],
+      "start": "2026-11-09T15:33:05.378Z",
+      "end": "2026-11-09T15:33:05.657Z",
+      "durationSeconds": 0.279,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "integracion/edge-cases-green-1794238390727.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/audit/maintenance/edge-fence-cases.cjs",
+        "green"
+      ],
+      "start": "2026-11-09T15:33:10.727Z",
+      "end": "2026-11-09T15:33:12.841Z",
+      "durationSeconds": 2.114,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "integracion/edge-cases-green.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/audit/maintenance/edge-fence-cases.cjs",
+        "green"
+      ],
+      "start": "2026-11-09T15:29:40.755Z",
+      "end": "2026-11-09T15:29:43.362Z",
+      "durationSeconds": 2.607,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "integracion/edge-cases-red.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/audit/maintenance/edge-fence-cases.cjs",
+        "red"
+      ],
+      "start": "2026-11-09T15:29:06.573Z",
+      "end": "2026-11-09T15:29:08.415Z",
+      "durationSeconds": 1.842,
+      "exitCode": 1,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "integracion/edge-server-green-1794238389962.meta.json",
+      "command": [
+        "D:\\Riovoley\\riovoley\\.e2e-local\\deno-tool\\node_modules\\@deno\\win32-x64\\deno.exe",
+        "run",
+        "--no-config",
+        "--cached-only",
+        "--no-prompt",
+        "--import-map=D:\\Riovoley\\riovoley\\.e2e-local\\edge-fence\\20261109-152730\\green\\imports.json",
+        "--allow-net=127.0.0.1:55321,127.0.0.1:6163",
+        "--deny-net=api.resend.com,fcm.googleapis.com,oauth2.googleapis.com,accounts.google.com",
+        "--allow-env",
+        "--allow-read=D:\\Riovoley\\riovoley\\.e2e-local\\deno-cache",
+        "D:\\Riovoley\\riovoley\\.e2e-local\\edge-fence\\20261109-152730\\green\\entry.ts"
+      ],
+      "start": "2026-11-09T15:33:09.962Z",
+      "end": "2026-11-09T15:33:12.920Z",
+      "durationSeconds": 2.958,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "integracion/edge-server-green.meta.json",
+      "command": [
+        "D:\\Riovoley\\riovoley\\.e2e-local\\deno-tool\\node_modules\\@deno\\win32-x64\\deno.exe",
+        "run",
+        "--no-config",
+        "--cached-only",
+        "--no-prompt",
+        "--import-map=D:\\Riovoley\\riovoley\\.e2e-local\\edge-fence\\20261109-152730\\green\\imports.json",
+        "--allow-net=127.0.0.1:55321,127.0.0.1:6163",
+        "--deny-net=api.resend.com,fcm.googleapis.com,oauth2.googleapis.com,accounts.google.com",
+        "--allow-env",
+        "--allow-read=D:\\Riovoley\\riovoley\\.e2e-local\\deno-cache",
+        "D:\\Riovoley\\riovoley\\.e2e-local\\edge-fence\\20261109-152730\\green\\entry.ts"
+      ],
+      "start": "2026-11-09T15:29:39.966Z",
+      "end": "2026-11-09T15:29:43.453Z",
+      "durationSeconds": 3.487,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "integracion/edge-server-red.meta.json",
+      "command": [
+        "D:\\Riovoley\\riovoley\\.e2e-local\\deno-tool\\node_modules\\@deno\\win32-x64\\deno.exe",
+        "run",
+        "--no-config",
+        "--cached-only",
+        "--no-prompt",
+        "--import-map=D:\\Riovoley\\riovoley\\.e2e-local\\edge-fence\\20261109-152730\\red\\imports.json",
+        "--allow-net=127.0.0.1:55321,127.0.0.1:6163",
+        "--deny-net=api.resend.com,fcm.googleapis.com,oauth2.googleapis.com,accounts.google.com",
+        "--allow-env",
+        "--allow-read=D:\\Riovoley\\riovoley\\.e2e-local\\deno-cache",
+        "D:\\Riovoley\\riovoley\\.e2e-local\\edge-fence\\20261109-152730\\red\\entry.ts"
+      ],
+      "start": "2026-11-09T15:28:55.778Z",
+      "end": "2026-11-09T15:29:08.778Z",
+      "durationSeconds": 13,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "integracion/informe-final.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/audit/maintenance/edge-fence-report.cjs"
+      ],
+      "start": "2026-11-09T15:47:40.482Z",
+      "end": "2026-11-09T15:47:40.578Z",
+      "durationSeconds": 0.096,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "integracion/procedencia-candidato-corregido.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/audit/maintenance/edge-fence-provenance.cjs"
+      ],
+      "start": "2026-11-09T15:47:38.095Z",
+      "end": "2026-11-09T15:47:38.503Z",
+      "durationSeconds": 0.408,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "integracion/procedencia-candidato.meta.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/audit/maintenance/edge-fence-provenance.cjs"
+      ],
+      "start": "2026-11-09T15:37:01.302Z",
+      "end": "2026-11-09T15:37:01.727Z",
+      "durationSeconds": 0.425,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "integracion/sync-typecheck-candidato-corregido.meta.json",
+      "command": [
+        "D:\\Riovoley\\riovoley\\.e2e-local\\deno-tool\\node_modules\\@deno\\win32-x64\\deno.exe",
+        "check",
+        "--cached-only",
+        "--frozen",
+        "--config=D:\\Riovoley\\riovoley\\.e2e-local\\edge-fence\\20261109-152730\\candidate-1794239258262\\supabase\\functions\\sync-mobile-device\\deno.json",
+        "--import-map=D:\\Riovoley\\riovoley\\.e2e-local\\edge-fence\\20261109-152730\\typecheck-imports.json",
+        "D:\\Riovoley\\riovoley\\.e2e-local\\edge-fence\\20261109-152730\\candidate-1794239258262\\supabase\\functions\\sync-mobile-device\\index.ts"
+      ],
+      "start": "2026-11-09T15:47:38.517Z",
+      "end": "2026-11-09T15:47:40.479Z",
+      "durationSeconds": 1.962,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "integracion/sync-typecheck-candidato-frozen.meta.json",
+      "command": [
+        "D:\\Riovoley\\riovoley\\.e2e-local\\deno-tool\\node_modules\\@deno\\win32-x64\\deno.exe",
+        "check",
+        "--cached-only",
+        "--frozen",
+        "--config=D:\\Riovoley\\riovoley\\.e2e-local\\edge-fence\\20261109-152730\\candidate-1794238621412\\supabase\\functions\\sync-mobile-device\\deno.json",
+        "--import-map=D:\\Riovoley\\riovoley\\.e2e-local\\edge-fence\\20261109-152730\\typecheck-imports.json",
+        "D:\\Riovoley\\riovoley\\.e2e-local\\edge-fence\\20261109-152730\\candidate-1794238621412\\supabase\\functions\\sync-mobile-device\\index.ts"
+      ],
+      "start": "2026-11-09T15:37:01.825Z",
+      "end": "2026-11-09T15:37:03.795Z",
+      "durationSeconds": 1.97,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    },
+    {
+      "file": "integracion/sync-typecheck.meta.json",
+      "command": [
+        "D:\\Riovoley\\riovoley\\.e2e-local\\deno-tool\\node_modules\\@deno\\win32-x64\\deno.exe",
+        "check",
+        "--no-config",
+        "--cached-only",
+        "--no-lock",
+        "--import-map=D:\\Riovoley\\riovoley\\.e2e-local\\edge-fence\\20261109-152730\\typecheck-imports.json",
+        "supabase/functions/sync-mobile-device/index.ts"
+      ],
+      "start": "2026-11-09T15:33:05.662Z",
+      "end": "2026-11-09T15:33:09.852Z",
+      "durationSeconds": 4.19,
+      "exitCode": 0,
+      "signal": null,
+      "cwd": "."
+    }
+  ],
+  "selectedAttempt": {
+    "recordedAt": "2026-11-09T15:33:12.816Z",
+    "phase": "green",
+    "resultFile": "integracion/casos-green-1794238392821-383d5a.json",
+    "casesMetaFile": "integracion/edge-cases-green-1794238390727.meta.json",
+    "serverMetaFile": "integracion/edge-server-green-1794238389962.meta.json",
+    "executed": 57,
+    "passed": 57,
+    "failed": 0,
+    "exitCode": 0,
+    "durationSeconds": 2.114,
+    "cleanupPassed": true
+  },
+  "note": "Server environment values are not recorded. Logs preserve runtime deprecation warning and real process exit codes."
+}

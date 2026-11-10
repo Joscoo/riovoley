@@ -1,0 +1,9 @@
+╭ uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided
+│ Severity:   moderate
+│ Package:    uuid
+│ Vulnerable: <11.1.1
+╰ Info:       https://github.com/advisories/GHSA-w5hq-g745-h8pq
+
+Found 1 vulnerabilities
+Severity: 0 low, 1 moderate, 0 high, 0 critical
+

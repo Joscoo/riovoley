@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "D:\Riovoley\riovoley\scripts\audit\android\privacy.py", line 44, in <module>
+    assert len(list((BASE/'android/artefactos').glob('*.apk')))==1,'Se requiere exactamente el APK final para validar su privacidad'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Se requiere exactamente el APK final para validar su privacidad
+
